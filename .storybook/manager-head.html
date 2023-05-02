@@ -1,0 +1,58 @@
+<!-- .storybook/manager-head.html -->
+
+<script defer data-domain="tegel-storybook.netlify.app" src="https://plausible.io/js/script.manual.js"></script>
+
+<!-- 1. define the `plausible` function to manually trigger events -->
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+
+<!-- 2. script to help trigger Plausible tracking based on url changes -->
+<script>
+  ;(function() {
+    const pushState = history.pushState;
+    const replaceState = history.replaceState;
+
+    history.pushState = function() {
+      pushState.apply(history, arguments);
+      window.dispatchEvent(new Event('pushstate'));
+      window.dispatchEvent(new Event('locationchange'));
+    };
+
+    history.replaceState = function() {
+      replaceState.apply(history, arguments);
+      window.dispatchEvent(new Event('replacestate'));
+      window.dispatchEvent(new Event('locationchange'));
+    };
+
+    window.addEventListener('popstate', function() {
+      window.dispatchEvent(new Event('locationchange'))
+    });
+  })();
+</script>
+
+<!-- 3. Plausible manual script -->
+<script>
+  function prepareUrl(params) {
+    const url = new URL(location.href)
+    const queryParams = new URLSearchParams(location.search)
+    let customUrl = url.protocol + "//" + url.hostname + url.pathname.replace(/\/$/, '')
+    for (const paramName of params) {
+      const paramValue = queryParams.get(paramName)
+      if (paramValue) customUrl = customUrl + '/' + paramValue
+    }
+    return customUrl
+  }
+  plausible('pageview', { u: prepareUrl(["path", "args"]) })
+
+  /* 4. trigger Plausible script on event */
+  window.addEventListener('locationchange', function(){
+    plausible('pageview', { u: prepareUrl(["path", "args"]) })
+  })
+
+</script>
+
+<title>Tegel Design System</title>
+<meta name="description" content="Tegel Storybook page - Scania's Digital Design System" key="desc" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">

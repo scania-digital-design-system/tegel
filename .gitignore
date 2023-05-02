@@ -1,0 +1,46 @@
+dist/
+www/
+loader/
+
+*~
+*.sw[mnpcod]
+*.log
+*.lock
+*.tmp
+*.tmp.*
+log.txt
+*.sublime-project
+*.sublime-workspace
+
+.stencil/
+.idea/
+.vscode/
+.sass-cache/
+.versions/
+node_modules/
+$RECYCLE.BIN/
+
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+.env
+
+
+# OLD ONES BELOW
+# TODO: Clean up section below.gitignore
+
+# Compiled from Stencil
+
+.build/
+.www/
+.data/
+# src/**/**.md
+
+# Compiled theme
+src/themes.built/
+
+
+# Compiled from storybook
+storybook-static/
+
+components.d.ts

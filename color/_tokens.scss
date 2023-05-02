@@ -1,0 +1,92 @@
+@import './mixins';
+
+$grey: (
+  grey-958: #0d0f13,
+  grey-900: #1d2229,
+  grey-868: #242a33,
+  grey-846: #2b323d,
+  grey-800: #37414f,
+  grey-700: #56657a,
+  grey-600: #868fa2,
+  grey-500: #b0b7c4,
+  grey-400: #cdd1db,
+  grey-300: #dbdfe6,
+  grey-200: #e7e9ee,
+  grey-100: #edeff3,
+  grey-50: #f9fafb,
+);
+
+$blue: (
+  blue-900: #001533,
+  blue-800: #041e42,
+  blue-700: #0f3263,
+  blue-600: #16417f,
+  blue-500: #2058a8,
+  blue-400: #2b70d3,
+  blue-300: #4a89f3,
+  blue-200: #87afe8,
+  blue-100: #bacde8,
+  blue-50: #e4e9f1,
+);
+
+$red: (
+  red-900: #450307,
+  red-800: #6a080f,
+  red-700: #950a16,
+  red-600: #d6001c,
+  red-500: #de2b36,
+  red-400: #f35359,
+  red-300: #f58e90,
+  red-200: #f8b6b7,
+  red-100: #fadbdc,
+  red-50: #fdf4f5,
+);
+
+//TODO: Remove this later on when the time is right
+$green: (
+  green-900: #112616,
+  green-800: #1c3822,
+  green-700: #2c5234,
+  green-600: #386e44,
+  green-500: #438151,
+  green-400: #539e63,
+  green-300: #89b691,
+  green-200: #a6d1ad,
+  green-100: #caebd0,
+  green-50: #f1f8f2,
+);
+
+//TODO: Remove this later on when the time is right
+$orange: (
+  orange-900: #331103,
+  orange-800: #893b15,
+  orange-700: #c65416,
+  orange-600: #eb6200,
+  orange-500: #fa6e23,
+  orange-400: #f98a67,
+  orange-300: #f9a38d,
+  orange-200: #f9cac0,
+  orange-100: #fbe3df,
+  orange-50: #fdf5f3,
+);
+
+$original-colors: map-collect($grey, $blue, $red, $green, $orange);
+//TODO: Should we keep brand pallete?
+$brand-pallete: (
+  black: #000,
+  white: #fff,
+  blue: get-color-original(blue-800),
+  red: get-color-original(red-600),
+);
+
+//TODO: CTA color should be removed
+//TODO: change token name to be $sementic-negative
+$semantic: (
+  cta: get-color-original(blue-700),
+  negative: #ff2340,
+  warning: #f1c21b,
+  positive: #1dab8b,
+  information: get-color-original(blue-400),
+);
+
+$all-colors: map-collect($original-colors, $semantic, $brand-pallete);
