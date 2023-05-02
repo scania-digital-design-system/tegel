@@ -1,0 +1,27 @@
+@import '../globals.scss';
+@import 'breakpoints';
+@import 'mixins';
+@import '../spacing/spacing-vars';
+
+/*
+  Mixin file for create grid layout, container, rows and columns
+  Setting up grid layout based on breakpoint mapping
+*/
+
+// Container for the gridsystem
+@include grid-container($prefix);
+
+//Setup breakpoints for the container
+@include grid-container-breakpoints($prefix, $sdds-grid-breakpoints);
+
+// Row which columns are places
+@include grid-row($prefix);
+
+// Create columns
+@include grid-make-col($sdds-grid-breakpoints);
+
+// Adding offset classes for the grid
+@include grid-offset-col($sdds-grid-breakpoints);
+
+//Pushed grid
+@include grid-push($sdds-grid-breakpoints-push);

@@ -1,0 +1,21 @@
+{
+  "name": "@scania/tegel-grid",
+  "version": "0.0.1",
+  "description": "Tegel Design System grid package",
+  "scripts": {
+    "build": "node compile.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.49.9",
+    "scss-bundle": "^3.1.2",
+    "del": "^6.0.0"
+  }
+}
