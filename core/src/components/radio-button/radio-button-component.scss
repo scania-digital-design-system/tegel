@@ -1,0 +1,133 @@
+@import './radio-button-vars.scss';
+@import '../../mixins/box-sizing';
+
+.sdds-radio-button {
+  @include sdds-box-sizing;
+
+  display: flex;
+  align-items: center;
+  margin-left: -4px;
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  color: var(--sdds-radio-button-color);
+
+  .sdds-form-input[type='radio'] {
+    appearance: none;
+    outline: none;
+    margin: 0;
+    border: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    align-self: flex-start;
+
+    + label {
+      padding: var(--sdds-spacing-element-4) 0 var(--sdds-spacing-element-4)
+        var(--sdds-spacing-element-4);
+      cursor: pointer;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      box-sizing: border-box;
+    }
+
+    &::before {
+      width: 24px;
+      height: 24px;
+      left: 0;
+      top: 0;
+    }
+
+    &::after {
+      border: 1px solid var(--sdds-radio-button-interaction-01);
+      background-color: var(--sdds-radio-button-interaction-02);
+      width: 16px;
+      height: 16px;
+      left: 4px;
+      top: 4px;
+    }
+
+    &:hover {
+      &::before {
+        background-color: var(--sdds-radio-button-background-hover);
+        opacity: 0.12;
+      }
+    }
+
+    &:focus {
+      &::before {
+        background-color: var(--sdds-radio-button-background-focus);
+        opacity: 0.24;
+        animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
+      }
+    }
+
+    &:disabled,
+    &.disabled {
+      cursor: not-allowed;
+
+      &::after {
+        border-color: var(--sdds-radio-button-border-color-disabled-after);
+        background-color: var(--sdds-radio-button-interaction-02);
+      }
+
+      + label {
+        color: var(--sdds-radio-button-disabled);
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        &::before {
+          display: none;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .sdds-form-input[type='radio']:checked {
+    &::after {
+      border: 4px solid var(--sdds-radio-button-interaction-01);
+    }
+
+    &:disabled,
+    &.disabled {
+      &:hover::before,
+      &::before {
+        display: block;
+        width: 16px;
+        height: 16px;
+        left: 4px;
+        top: 4px;
+        border: 1px solid var(--sdds-radio-button-color-disabled-before);
+        box-sizing: content-box;
+      }
+
+      &::after {
+        border: 4px solid var(--sdds-radio-button-interaction-02);
+        background-color: var(--sdds-radio-button-color-disabled-after);
+        left: calc(4px + 1px);
+        top: calc(4px + 1px);
+      }
+    }
+  }
+
+  @keyframes rb-focus {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 0.24;
+    }
+  }
+}

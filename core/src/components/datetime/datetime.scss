@@ -1,0 +1,398 @@
+@import '../../mixins/box-sizing';
+
+@mixin datetime-base {
+  @include sdds-box-sizing;
+
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  color: var(--sdds-datetime-color);
+  background-color: var(--sdds-datetime-background);
+
+  &::placeholder {
+    opacity: 1;
+    color: var(--sdds-datetime-placeholder);
+  }
+
+  &:focus::placeholder {
+    color: var(--sdds-datetime-placeholder-color-focus);
+  }
+
+  &:disabled {
+    background-color: var(--sdds-datetime-background-disabled);
+    color: var(--sdds-datetime-color-disabled);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--sdds-datetime-placeholder-disabled);
+    }
+
+    ~ .sdds-datetime-label-inside {
+      color: var(--sdds-datetime-label-disabled);
+    }
+  }
+}
+
+// icons
+
+.sdds-datetime-input,
+.sdds-datetime-input-md,
+.sdds-datetime-input-sm {
+  &[type='datetime-local'] {
+    ~ .icon-time {
+      display: none;
+    }
+  }
+
+  &[type='date'] {
+    ~ .icon-time {
+      display: none;
+    }
+  }
+
+  &[type='time'] {
+    ~ .icon-datetime-local {
+      display: none;
+    }
+  }
+}
+
+//Sizes
+.sdds-datetime-input {
+  @include datetime-base;
+
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  padding: var(--sdds-spacing-element-20) var(--sdds-spacing-element-16);
+}
+
+.sdds-datetime-input-md {
+  @include datetime-base;
+
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  padding: var(--sdds-spacing-element-16);
+}
+
+.sdds-datetime-input-sm {
+  @include datetime-base;
+
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  padding: var(--sdds-spacing-element-16);
+}
+
+//Container for input field and prefix/suffix
+.sdds-datetime-container {
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  position: relative;
+  height: 56px;
+  box-sizing: border-box;
+  background-color: var(--sdds-datetime-background);
+  border-bottom: 1px solid var(--sdds-datetime-border-bottom);
+  transition: border-bottom-color 200ms ease;
+
+  &:hover {
+    border-bottom-color: var(--sdds-datetime-border-bottom-hover);
+  }
+
+  .sdds-form-datetime-md & {
+    height: 48px;
+  }
+
+  .sdds-form-datetime-sm & {
+    height: 40px;
+  }
+}
+
+.sdds-datetime-input-container {
+  position: relative;
+  width: 100%;
+
+  .datetime-icon {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 18px;
+    pointer-events: none;
+
+    path {
+      fill: var(--sdds-datetime-icon);
+    }
+  }
+}
+
+.sdds-datetime-label {
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  display: block;
+  margin-bottom: var(--sdds-spacing-element-8);
+  color: var(--sdds-datetime-label-color);
+}
+
+.sdds-datetime-label-inside {
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  position: absolute;
+  pointer-events: none;
+  color: var(--sdds-datetime-label-inside-color);
+  left: 16px;
+}
+
+@mixin placeholder-label {
+  &::placeholder {
+    color: transparent;
+  }
+
+  &::input-placeholder {
+    color: transparent;
+  }
+
+  &:placeholder {
+    color: transparent;
+  }
+
+  ::placeholder {
+    color: transparent;
+  }
+
+  //Input field in focus
+  &:focus::placeholder {
+    transition: color 0.35s ease;
+    color: var(--sdds-datetime-placeholder-color-focus);
+  }
+}
+
+@mixin label-inside-transition {
+  transition: 0.1s ease all;
+}
+
+//Form control
+.sdds-form-datetime {
+  display: block;
+  min-width: 208px;
+  background: unset;
+
+  &-nomin {
+    min-width: auto;
+  }
+}
+
+//datetime container with label inside
+//Handling position, focus and transition for label inside
+.sdds-form-datetime.sdds-datetime-container-label-inside {
+  .sdds-datetime-input {
+    padding-top: var(--sdds-spacing-element-24);
+    padding-bottom: 15px;
+
+    ~ .sdds-datetime-label-inside {
+      top: 20px;
+    }
+
+    @include placeholder-label;
+  }
+
+  .sdds-datetime-input-md {
+    padding-top: var(--sdds-spacing-element-20);
+    padding-bottom: 11px;
+
+    ~ .sdds-datetime-label-inside {
+      top: 16px;
+    }
+
+    @include placeholder-label;
+  }
+
+  .sdds-datetime-input-sm {
+    padding-top: var(--sdds-spacing-element-20);
+    padding-bottom: 11px;
+
+    ~ .sdds-datetime-label-inside {
+      top: 16px;
+    }
+
+    @include placeholder-label;
+  }
+
+  &.sdds-datetime-focus,
+  &.sdds-datetime-data {
+    .sdds-datetime-input-sm ~ .sdds-datetime-label-inside {
+      font: var(--sdds-detail-07);
+      letter-spacing: var(--sdds-detail-07-ls);
+      @include label-inside-transition;
+
+      top: 8px;
+    }
+
+    .sdds-datetime-input-md ~ .sdds-datetime-label-inside {
+      font: var(--sdds-detail-07);
+      letter-spacing: var(--sdds-detail-07-ls);
+      @include label-inside-transition;
+
+      top: 8px;
+    }
+
+    .sdds-datetime-input ~ .sdds-datetime-label-inside {
+      font: var(--sdds-detail-07);
+      letter-spacing: var(--sdds-detail-07-ls);
+      @include label-inside-transition;
+
+      top: 12px;
+    }
+  }
+}
+
+//datetime bottom bar when in focus
+.sdds-datetime-bar {
+  position: absolute;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    height: 2px;
+    top: 54px;
+    width: 0;
+    position: absolute;
+    background: var(--sdds-datetime-bar);
+    transition: 0.35s ease all;
+
+    .sdds-form-datetime-md & {
+      top: 46px;
+    }
+
+    .sdds-form-datetime-sm & {
+      top: 40px;
+    }
+  }
+
+  &::before {
+    left: 50%;
+  }
+
+  &::after {
+    right: 50%;
+  }
+
+  .sdds-datetime-focus &::before,
+  .sdds-datetime-focus &::after {
+    width: 50%;
+  }
+}
+
+//Helper text
+.sdds-datetime-helper {
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  display: block;
+  flex-basis: 100%;
+  padding-top: var(--sdds-spacing-element-4);
+  color: var(--sdds-datetime-helper);
+
+  .sdds-helper {
+    display: inline-flex;
+    gap: 8px;
+  }
+}
+
+//Disabled state
+.sdds-form-datetime-disabled {
+  .sdds-datetime-container {
+    border-bottom-color: transparent;
+  }
+
+  .datetime-icon {
+    sdds-icon {
+      color: var(--sdds-datetime-icon-disabled);
+    }
+  }
+
+  .sdds-datetime-label {
+    color: var(--sdds-datetime-label-disabled);
+    cursor: not-allowed;
+  }
+}
+
+//Success state
+.sdds-form-datetime-success {
+  .sdds-datetime-container {
+    border-bottom-color: var(--sdds-datetime-border-bottom-success);
+    color: var(--sdds-datetime-color-success);
+  }
+
+  .sdds-datetime-bar {
+    &::before,
+    &::after {
+      background: var(--sdds-datetime-bar-sucess);
+    }
+  }
+}
+
+//Error State
+.sdds-form-datetime-error {
+  .sdds-datetime-helper {
+    color: var(--sdds-datetime-helper-error);
+  }
+
+  .sdds-datetime-container {
+    border-bottom-color: var(--sdds-datetime-border-bottom-error);
+  }
+
+  .sdds-datetime-bar {
+    &::before,
+    &::after {
+      background: var(--sdds-datetime-bar-error);
+    }
+  }
+
+  .datetime-icon {
+    sdds-icon {
+      color: var(--sdds-datetime-icon-error);
+    }
+  }
+}
+
+.sdds-datetime-textcounter {
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  color: var(--sdds-datetime-textcounter);
+  float: right;
+
+  & .sdds-datetime-textcounter-divider {
+    // font: var(--sdds-detail-05);
+    letter-spacing: var(--sdds-detail-05-ls);
+    color: var(--sdds-datetime-textcounter-divider);
+  }
+}
+
+/* datetime picker icon remove testing */
+
+input[type='datetime-local']::-webkit-inner-spin-button,
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+input[type='date']::-webkit-inner-spin-button,
+input[type='date']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+input[type='time']::-webkit-inner-spin-button,
+input[type='time']::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.sdds-mode-variant-primary {
+  --sdds-datetime-background: var(--sdds-datetime-background-primary);
+}
+
+.sdds-mode-variant-secondary {
+  --sdds-datetime-background: var(--sdds-datetime-background-secondary);
+}

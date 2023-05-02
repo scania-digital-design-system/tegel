@@ -1,0 +1,44 @@
+:root,
+.sdds-mode-light {
+  --sdds-accordion-border: var(--sdds-grey-300);
+  --sdds-accordion-background: transparent;
+  --sdds-accordion-background-hover-primary: var(--sdds-grey-50);
+  --sdds-accordion-background-hover-secondary: var(--sdds-white);
+  --sdds-accordion-background-hover: var(--sdds-accordion-background-hover-primary);
+  --sdds-accordion-background-focus: transparent;
+  --sdds-accordion-background-active: var(--sdds-grey-100);
+  --sdds-accordion-color: var(--sdds-grey-958);
+  --sdds-accordion-border-focus: var(--sdds-grey-500);
+  --sdds-accordion-color-disabled: var(--sdds-grey-400);
+  --sdds-accordion-icon-color: var(--sdds-black);
+
+  .sdds-mode-variant-primary {
+    --sdds-accordion-background-hover: var(--sdds-accordion-background-hover-primary);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-accordion-background-hover: var(--sdds-accordion-background-hover-secondary);
+  }
+}
+
+.sdds-mode-dark {
+  --sdds-accordion-border: var(--sdds-grey-700);
+  --sdds-accordion-background: transparent;
+  --sdds-accordion-background-hover-primary: var(--sdds-grey-900);
+  --sdds-accordion-background-hover-secondary: var(--sdds-grey-868);
+  --sdds-accordion-background-hover: var(--sdds-accordion-background-hover-primary);
+  --sdds-accordion-background-focus: transparent;
+  --sdds-accordion-background-active: var(--sdds-grey-900);
+  --sdds-accordion-color: var(--sdds-grey-50);
+  --sdds-accordion-border-focus: var(--sdds-grey-500);
+  --sdds-accordion-color-disabled: var(--sdds-grey-800);
+  --sdds-accordion-icon-color: var(--sdds-grey-50);
+
+  .sdds-mode-variant-primary {
+    --sdds-accordion-background-hover: var(--sdds-accordion-background-hover-primary);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-accordion-background-hover: var(--sdds-accordion-background-hover-secondary);
+  }
+}

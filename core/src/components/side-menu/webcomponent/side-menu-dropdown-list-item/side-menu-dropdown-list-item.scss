@@ -1,0 +1,66 @@
+@import '../../../../mixins/focus-state';
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  height: 48px;
+  width: 100%;
+
+  .component {
+    height: 100%;
+    width: 100%;
+
+    ::slotted(a),
+    ::slotted(button) {
+      all: unset;
+      box-sizing: border-box;
+      border-right: 1px solid var(--sdds-nav-item-border-color);
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 24px;
+      width: 100%;
+      font: var(--sdds-detail-02);
+      letter-spacing: var(--sdds-detail-02-ls);
+      background-color: var(--sdds-header-nav-item-dropdown-opened-background);
+      color: var(--sdds-header-nav-item-dropdown-opened-color);
+      border: none;
+    }
+
+    ::slotted(a:hover),
+    ::slotted(button:hover) {
+      background-color: var(--sdds-header-nav-item-dropdown-opened-background-hover);
+      cursor: pointer;
+    }
+
+    ::slotted(a:active),
+    ::slotted(button:active) {
+      background-color: var(--sdds-header-nav-item-dropdown-opened-background-active) !important;
+      cursor: pointer;
+    }
+
+    ::slotted(a:focus-visible) {
+      @include sdds-focus-state;
+    }
+  }
+
+  .component.component-selected {
+    ::slotted(a),
+    ::slotted(button) {
+      border-left: 4px solid var(--sdds-nav-item-border-color-active);
+      padding-left: 20px;
+      background-color: var(
+        --sdds-header-nav-item-dropdown-opened-background-selected
+      ); //var(--sdds-grey-868);
+    }
+  }
+
+  .component.component-dropdown-has-icon {
+    &:not(.component-collapsed) {
+      ::slotted(a),
+      ::slotted(button) {
+        padding-left: 56px;
+      }
+    }
+  }
+}

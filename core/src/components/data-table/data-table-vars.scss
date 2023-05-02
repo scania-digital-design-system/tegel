@@ -1,0 +1,101 @@
+:root,
+.sdds-mode-light {
+  /* Table-color */
+  --sdds-data-table-color: var(--sdds-grey-958);
+
+  /* Table-body-cell */
+  --sdds-data-table-body-cell-background-hover: var(--sdds-grey-200);
+
+  /* Table-body-row */
+  --sdds-data-table-body-row-background: var(--sdds-grey-50);
+  --sdds-data-table-body-row-background-hover: var(--sdds-grey-200);
+
+  .sdds-mode-variant-primary {
+    --sdds-data-table-body-row-background: var(--sdds-grey-50);
+    --sdds-data-table-body-row-background-hover: var(--sdds-grey-200);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-data-table-body-row-background: var(--sdds-white);
+    --sdds-data-table-body-row-background-hover: var(--sdds-grey-100);
+  }
+
+  --sdds-data-table-body-row-background-selected: var(--sdds-grey-300);
+  --sdds-data-table-body-row-background-selected-hover: var(--sdds-grey-300);
+
+  /* Table-footer */
+  --sdds-data-table-footer-background: var(--sdds-grey-100);
+  --sdds-data-table-footer-page-selector-input-background: var(--sdds-grey-50);
+  --sdds-data-table-footer-page-selector-input-background-hover: var(--sdds-white);
+  --sdds-data-table-footer-page-selector-input-background-disabled: var(
+    --sdds-grey-600
+  ); //Should this be 400?
+
+  --sdds-data-table-footer-btn-hover: var(--sdds-grey-300);
+
+  /* Table-header */
+  --sdds-data-table-header-background: var(--sdds-grey-300);
+  --sdds-data-table-header-background-hover: var(--sdds-grey-400);
+  --sdds-data-table-header-btn-color: var(--sdds-grey-958);
+  --sdds-data-table-header-btn-background: var(--sdds-grey-500);
+  --sdds-data-table-header-btn-background-hover: var(--sdds-grey-600);
+  --sdds-data-table-header-btn-focus: var(--sdds-blue-400);
+
+  /* Table-toolbar */
+  --sdds-data-table-toolbar-background: var(--sdds-grey-400);
+  --sdds-data-table-toolbar-searchbar-background: var(--sdds-grey-50);
+  --sdds-data-table-toolbar-searchbar-background-hover: var(--sdds-grey-300);
+
+  /* Divider */
+  --sdds-data-table-divider: var(
+    --sdds-grey-400
+  ); // light divider is grey-300 but expandable row is the same color when selected
+}
+
+.sdds-mode-dark {
+  /* Table-body */
+  --sdds-data-table-color: var(--sdds-grey-50);
+
+  /* Table-body-cell */
+  --sdds-data-table-body-cell-background-hover: var(--sdds-grey-846);
+
+  /* Table-body-row */
+  --sdds-data-table-body-row-background: var(--sdds-grey-868);
+  --sdds-data-table-body-row-background-hover: var(--sdds-grey-846);
+
+  .sdds-mode-variant-primary {
+    --sdds-data-table-body-row-background: var(--sdds-grey-868);
+    --sdds-data-table-body-row-background-hover: var(--sdds-grey-846);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-data-table-body-row-background: var(--sdds-grey-900);
+    --sdds-data-table-body-row-background-hover: var(--sdds-grey-846);
+  }
+
+  --sdds-data-table-body-row-background-selected: var(--sdds-grey-800);
+  --sdds-data-table-body-row-background-selected-hover: var(--sdds-grey-700);
+
+  /* Table-footer */
+  --sdds-data-table-footer-background: var(--sdds-grey-846);
+  --sdds-data-table-footer-page-selector-input-background: var(--sdds-grey-900);
+  --sdds-data-table-footer-page-selector-input-background-hover: var(--sdds-grey-958);
+  --sdds-data-table-footer-page-selector-input-background-disabled: var(--sdds-grey-700);
+  --sdds-data-table-footer-btn-hover: var(--sdds-grey-900);
+
+  /* Table-header */
+  --sdds-data-table-header-background: var(--sdds-grey-800);
+  --sdds-data-table-header-background-hover: var(--sdds-grey-700);
+  --sdds-data-table-header-btn-color: var(--sdds-grey-50);
+  --sdds-data-table-header-btn-background: var(--sdds-grey-600);
+  --sdds-data-table-header-btn-background-hover: var(--sdds-grey-700);
+  --sdds-data-table-header-btn-focus: var(--sdds-blue-400);
+
+  /* Table-toolbar */
+  --sdds-data-table-toolbar-background: var(--sdds-grey-700);
+  --sdds-data-table-toolbar-searchbar-background: var(--sdds-grey-900);
+  --sdds-data-table-toolbar-searchbar-background-hover: var(--sdds-grey-800);
+
+  /* Divider */
+  --sdds-data-table-divider: var(--sdds-grey-700);
+}

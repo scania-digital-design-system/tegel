@@ -1,0 +1,90 @@
+@import './dropdown-vars.scss';
+
+@mixin dropdown-wrapper {
+  font: var(--sdds-detail-ex-02);
+  letter-spacing: var(--sdds-detail-ex-02-ls);
+  color: var(--sdds-dropdown-color);
+  display: flex;
+  align-items: center;
+  background-color: var(--sdds-dropdown-background);
+  cursor: pointer;
+  transition: box-shadow 0.1s ease-in, border-bottom-color 150ms ease;
+  border-radius: 4px 4px 0 0;
+  border: none;
+  border-bottom: 1px solid var(--sdds-dropdown-border-not-focused);
+  box-shadow: none;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  padding: 20px 16px;
+
+  &:hover {
+    border-bottom-color: var(--sdds-grey-600);
+  }
+
+  &:focus {
+    &::before {
+      content: ' ';
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: 2px solid var(--sdds-blue-400);
+    }
+  }
+
+  &:active,
+  &.active &.selected {
+    border-bottom-color: var(--sdds-dropdown-border-not-focused);
+  }
+
+  &.is-filter {
+    transition: border 0.1s ease-in 0.1s;
+    cursor: text;
+  }
+}
+@mixin sdds-scrollbar {
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: inherit;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--sdds-grey-300);
+  }
+
+  ::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+  }
+}
+
+.sdds-dropdown-helper {
+  font: var(--sdds-detail-ex-05);
+  letter-spacing: var(--sdds-detail-ex-05-ls);
+  color: var(--sdds-grey-700);
+  margin-top: var(--sdds-spacing-element-4);
+  display: flex;
+
+  .sdds-dropdown-error-icon {
+    width: 16px;
+    height: 16px;
+    padding-right: 9px;
+    display: none;
+  }
+}
+
+.sdds-dropdown-label-inside {
+  font: var(--sdds-detail-ex-07);
+  letter-spacing: var(--sdds-detail-ex-07-ls);
+  color: var(--sdds-dropdown-label-inside);
+}
+
+.sdds-dropdown-label-outside {
+  font: var(--sdds-detail-ex-05);
+  letter-spacing: var(--sdds-detail-ex-05-ls);
+  display: block;
+  color: var(--sdds-dropdown-label-outside);
+  margin-bottom: var(--sdds-spacing-element-8);
+}

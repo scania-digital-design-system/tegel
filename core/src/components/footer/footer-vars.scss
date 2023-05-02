@@ -1,0 +1,51 @@
+// TODO - Check hover states
+:root,
+.sdds-mode-light {
+  --sdds-footer-top-background-primary: var(--sdds-grey-50);
+  --sdds-footer-top-background-secondary: var(--sdds-white);
+  --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
+  --sdds-footer-top-divider: var(--sdds-grey-300);
+  --sdds-footer-top-links: var(--sdds-blue-800);
+  --sdds-footer-top-links-background-hover: var(--sdds-grey-300);
+  --sdds-footer-top-button-active: var(--sdds-grey-300);
+  --sdds-footer-top-links-opacity: 0.87;
+  --sdds-footer-top-links-opacity-hover: 0.38;
+  --sdds-footer-top-title-opacity-mobile: 0.87;
+  --sdds-footer-top-title-opacity: 0.6;
+  --sdds-footer-main-background: var(--sdds-blue-800);
+  --sdds-footer-main-links: var(--sdds-white);
+  --sdds-footer-main-divider: var(--sdds-blue-600);
+  --sdds-footer-main-links-opacity: 0.87;
+  --sdds-footer-main-copyright: rgb(255 255 255 / 60%);
+
+  .sdds-mode-variant-primary {
+    --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-footer-top-background: var(--sdds-footer-top-background-secondary);
+  }
+}
+
+.sdds-mode-dark {
+  --sdds-footer-top-background-primary: var(--sdds-grey-868);
+  --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
+  --sdds-footer-top-divider: var(--sdds-grey-800);
+  --sdds-footer-top-links: var(--sdds-grey-50);
+  --sdds-footer-top-links-background-hover: var(--sdds-grey-700);
+  --sdds-footer-top-button-active: var(--sdds-grey-700);
+  --sdds-footer-top-links-opacity: 0.87;
+  --sdds-footer-top-links-opacity-hover: 0.38;
+  --sdds-footer-top-title-opacity-mobile: 0.87;
+  --sdds-footer-top-title-opacity: 0.6;
+  --sdds-footer-main-background: var(--sdds-blue-900);
+  --sdds-footer-main-links: var(--sdds-white);
+  --sdds-footer-main-divider: var(--sdds-blue-600);
+  --sdds-footer-main-links-opacity: 0.87;
+  --sdds-footer-main-copyright: rgb(255 255 255 / 60%);
+
+  .sdds-mode-variant-primary,
+  .sdds-mode-variant-secondary {
+    --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
+  }
+}

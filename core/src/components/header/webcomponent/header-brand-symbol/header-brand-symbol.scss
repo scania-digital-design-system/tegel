@@ -1,0 +1,21 @@
+:host {
+  // "On smaller breakpoints, starting from the width 520px, the Scania symbol is removed."
+  // (tegel.scania.com, 2023-03-01)
+  sdds-header-item {
+    display: none;
+  }
+
+  sdds-header-item a {
+    background-image: var(--sdds-background-image-scania-symbol-svg),
+      var(--sdds-background-image-scania-symbol-png);
+    background-size: 30px auto;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (min-width: 992px) {
+    sdds-header-item {
+      display: block;
+    }
+  }
+}

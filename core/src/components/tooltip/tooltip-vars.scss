@@ -1,0 +1,10 @@
+:root,
+.sdds-mode-light {
+  --sdds-tooltip-background: var(--sdds-grey-800);
+  --sdds-tooltip-color: var(--sdds-white);
+}
+
+.sdds-mode-dark {
+  --sdds-tooltip-background: var(--sdds-grey-200);
+  --sdds-tooltip-color: var(--sdds-grey-958);
+}

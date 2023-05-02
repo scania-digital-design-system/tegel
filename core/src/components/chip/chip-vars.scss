@@ -1,0 +1,22 @@
+:root,
+.sdds-mode-light {
+  --sdds-chips-color: var(--sdds-grey-958);
+  --sdds-chips-color-active: var(--sdds-white);
+  --sdds-chips-background: var(--sdds-grey-200);
+  --sdds-chips-background-active: var(--sdds-blue-500);
+  --sdds-chips-background-active-hover: var(--sdds-blue-600);
+  --sdds-chips-background-hover: var(--sdds-grey-400);
+  --sdds-chips-icon-fill: var(--sdds-grey-958);
+  --sdds-chips-icon-fill-active: var(--sdds-white);
+}
+
+.sdds-mode-dark {
+  --sdds-chips-color: var(--sdds-white);
+  --sdds-chips-color-active: var(--sdds-white);
+  --sdds-chips-background: var(--sdds-grey-800);
+  --sdds-chips-background-hover: var(--sdds-grey-600);
+  --sdds-chips-background-active: var(--sdds-blue-500);
+  --sdds-chips-background-active-hover: var(--sdds-blue-300);
+  --sdds-chips-icon-fill: var(--sdds-white);
+  --sdds-chips-icon-fill-active: var(--sdds-white);
+}

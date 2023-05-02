@@ -1,0 +1,41 @@
+.sdds-mode-light {
+  --sdds-toggle-switch: var(--sdds-white);
+  --sdds-toggle-switch-disabled: var(--sdds-grey-200);
+  --sdds-toggle-headline: var(--sdds-grey-700);
+  --sdds-toggle-headline-disabled: var(--sdds-grey-600);
+  --sdds-toggle-on-slider: var(--sdds-positive);
+  --sdds-toggle-on-slider-hover: var(--sdds-positive);
+  --sdds-toggle-on-slider-focus: var(--sdds-positive);
+  --sdds-toggle-on-slider-pressed: var(--sdds-positive);
+  --sdds-toggle-on-border-focus: var(--sdds-positive);
+  --sdds-toggle-on-slider-disabled: var(--sdds-grey-400);
+  --sdds-toggle-slider-disabled: var(--sdds-grey-400);
+  --sdds-toggle-label-color: var(--sdds-grey-958);
+  --sdds-toggle-label-color-disabled: var(--sdds-grey-600);
+  --sdds-toggle-off-slider: var(--sdds-grey-500);
+  --sdds-toggle-off-slider-hover: var(--sdds-grey-600);
+  --sdds-toggle-off-slider-focus: var(--sdds-grey-600);
+  --sdds-toggle-off-slider-pressed: var(--sdds-grey-700);
+  --sdds-toggle-off-border-focus: var(--sdds-grey-800);
+}
+
+.sdds-mode-dark {
+  --sdds-toggle-switch: var(--sdds-white);
+  --sdds-toggle-switch-disabled: var(--sdds-grey-200);
+  --sdds-toggle-headline: var(--sdds-grey-100);
+  --sdds-toggle-headline-disabled: var(--sdds-grey-700);
+  --sdds-toggle-on-slider: var(--sdds-positive);
+  --sdds-toggle-on-slider-hover: var(--sdds-positive);
+  --sdds-toggle-on-slider-focus: var(--sdds-positive);
+  --sdds-toggle-on-slider-pressed: var(--sdds-positive);
+  --sdds-toggle-on-border-focus: var(--sdds-positive);
+  --sdds-toggle-on-slider-disabled: var(--sdds-grey-800);
+  --sdds-toggle-slider-disabled: var(--sdds-grey-400);
+  --sdds-toggle-label-color: var(--sdds-white);
+  --sdds-toggle-label-color-disabled: var(--sdds-grey-400);
+  --sdds-toggle-off-slider: var(--sdds-grey-500);
+  --sdds-toggle-off-slider-hover: var(--sdds-grey-600);
+  --sdds-toggle-off-slider-focus: var(--sdds-grey-600);
+  --sdds-toggle-off-slider-pressed: var(--sdds-grey-700);
+  --sdds-toggle-off-border-focus: var(--sdds-grey-800);
+}

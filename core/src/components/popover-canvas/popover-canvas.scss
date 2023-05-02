@@ -1,0 +1,18 @@
+@import '../../mixins/box-sizing';
+
+@import '../../mixins/z-index';
+
+:host {
+  @include sdds-box-sizing;
+
+  color: var(--sdds-popover-canvas-color);
+  background-color: var(--sdds-popover-canvas-background);
+  box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  z-index: z(tooltip);
+  display: none;
+}
+
+:host(.sdds-popover-canvas-show) {
+  display: block;
+}

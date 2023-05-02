@@ -1,0 +1,127 @@
+:root,
+.sdds-mode-light {
+  --sdds-textfield-background-primary: var(--sdds-grey-50);
+  --sdds-textfield-background-secondary: var(--sdds-white);
+  --sdds-textfield-background: var(--sdds-textfield-background-primary);
+  --sdds-textfield-color: var(--sdds-grey-868);
+  --sdds-textfield-placeholder: var(--sdds-grey-500);
+
+  //Disabled
+  --sdds-textfield-background-disabled-primary: var(--sdds-grey-50);
+  --sdds-textfield-background-disabled-secondary: var(--sdds-white);
+  --sdds-textfield-background-disabled: var(--sdds-textfield-background-disabled-primary);
+  --sdds-textfield-color-disabled: var(--sdds-grey-400);
+  --sdds-textfield-placeholder-disabled: var(--sdds-grey-400);
+  --sdds-textfield-label-disabled: var(--sdds-grey-400);
+  --sdds-textfield-ps-color-disabled: var(--sdds-grey-400);
+
+  //Label
+  --sdds-textfield-label-color: var(--sdds-grey-958);
+  --sdds-textfield-label-inside-color: var(--sdds-grey-700);
+  --sdds-textfield-placeholder-focus-color: var(--sdds-grey-500);
+
+  //Highlight bar
+  --sdds-textfield-bar: var(--sdds-blue-400);
+
+  //helper
+  --sdds-textfield-helper: var(--sdds-grey-700);
+
+  //error
+  --sdds-textfield-border-bottom-error: var(--sdds-negative);
+  --sdds-textfield-helper-error: var(--sdds-negative);
+  --sdds-textfield-bar-error: var(--sdds-negative);
+  --sdds-textfield-icon-error: var(--sdds-negative);
+
+  //Textcounter
+  --sdds-textfield-textcounter: var(--sdds-grey-700);
+  --sdds-textfield-textcounter-divider: var(--sdds-grey-500);
+
+  //Prefix and Suffix
+  --sdds-textfield-ps-color: var(--sdds-grey-600);
+  --sdds-textfield-ps-color-error: var(--sdds-negative);
+
+  // Textfield resize icon
+  --sdds-textfield-resize-icon: var(--sdds-grey-500);
+
+  // Border bottom
+  --sdds-textfield-border-bottom: var(--sdds-grey-600);
+  --sdds-textfield-border-bottom-hover: var(--sdds-grey-800);
+  --sdds-textfield-border-bottom-success: var(--sdds-grey-958);
+
+  // Read only
+  --sdds-textfield-icon-read-only-color: var(--sdds-grey-958);
+  --sdds-textfield-icon-read-only-label-color: var(--sdds-grey-958);
+
+  .sdds-mode-variant-primary {
+    --sdds-textfield-background: var(--sdds-textfield-background-primary);
+    --sdds-textfield-background-disabled: var(--sdds-textfield-background-disabled-primary);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-textfield-background: var(--sdds-textfield-background-secondary);
+    --sdds-textfield-background-disabled: var(--sdds-textfield-background-disabled-secondary);
+  }
+}
+
+.sdds-mode-dark {
+  --sdds-textfield-background-primary: var(--sdds-grey-900);
+  --sdds-textfield-background: var(--sdds-textfield-background-primary);
+  --sdds-textfield-background-secondary: var(--sdds-grey-868);
+  --sdds-textfield-color: var(--sdds-grey-200);
+  --sdds-textfield-placeholder: var(--sdds-grey-600);
+
+  //Disabled
+  --sdds-textfield-ps-color-disabled: var(--sdds-grey-700);
+  --sdds-textfield-color-disabled: var(--sdds-grey-800);
+  --sdds-textfield-background-disabled-primary: var(--sdds-grey-900);
+  --sdds-textfield-background-disabled-secondary: var(--sdds-grey-868);
+  --sdds-textfield-background-disabled: var(--sdds-textfield-background-disabled-primary);
+  --sdds-textfield-placeholder-disabled: var(--sdds-grey-800);
+  --sdds-textfield-label-disabled: var(--sdds-grey-700);
+
+  // Label
+  --sdds-textfield-label-color: var(--sdds-grey-100);
+  --sdds-textfield-label-inside-color: var(--sdds-grey-400);
+  --sdds-textfield-placeholder-focus-color: var(--sdds-grey-700);
+
+  //Highlight bar
+  --sdds-textfield-bar: var(--sdds-blue-400);
+
+  //helper
+  --sdds-textfield-helper: var(--sdds-grey-600);
+
+  //error
+  --sdds-textfield-helper-error: var(--sdds-negative);
+  --sdds-textfield-bar-error: var(--sdds-negative);
+  --sdds-textfield-icon-error: var(--sdds-negative);
+
+  //Textcounter
+  --sdds-textfield-textcounter: var(--sdds-grey-600);
+  --sdds-textfield-textcounter-divider: var(--sdds-grey-700);
+
+  //Prefix and Suffix
+  --sdds-textfield-ps-color: var(--sdds-grey-100);
+
+  // Textarea resize icon
+  --sdds-textfield-resize-icon: var(--sdds-grey-500);
+
+  // Border bottom
+  --sdds-textfield-border-bottom: var(--sdds-grey-600);
+  --sdds-textfield-border-bottom-hover: var(--sdds-grey-400);
+  --sdds-textfield-border-bottom-success: var(--sdds-grey-50);
+  --sdds-textfield-border-bottom-error: var(--sdds-negative);
+
+  // Read only
+  --sdds-textfield-icon-read-only-color: var(--sdds-grey-100);
+  --sdds-textfield-icon-read-only-label-color: var(--sdds-grey-50);
+
+  .sdds-mode-variant-primary {
+    --sdds-textfield-background: var(--sdds-textfield-background-primary);
+    --sdds-textfield-background-disabled: var(--sdds-textfield-background-disabled-primary);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-textfield-background: var(--sdds-textfield-background-secondary);
+    --sdds-textfield-background-disabled: var(--sdds-textfield-background-disabled-secondary);
+  }
+}
