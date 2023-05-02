@@ -1,0 +1,193 @@
+@use "sass:math";
+@import "../globals.scss";
+@import "breakpoints";
+
+// Container
+@mixin grid-container($prefix) {
+  .#{$prefix}-container,
+  .#{$prefix}-container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .#{$prefix}-container-fluid {
+    max-width: 2560px;
+  }
+}
+
+// Grid breakpoints
+@mixin grid-container-breakpoints($prefix, $breakpoints) {
+  @each $key, $values in $breakpoints {
+    $container-margin: map-get($values, "margin");
+    $container-width: map-get($values, "container");
+    $breakpoint: map-get($values, "breakpoint");
+
+    @media (min-width: $breakpoint) {
+      .#{$prefix}-container,
+      .#{$prefix}-container-fluid {
+        padding-right: $container-margin;
+        padding-left: $container-margin;
+      }
+      .#{$prefix}-container {
+        max-width: $container-width;
+      }
+    }
+
+    @include display-hidden($prefix, $breakpoint, $key);
+  }
+}
+
+@mixin grid-row($prefix) {
+  .#{$prefix}-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+// Display hidden and show
+
+@mixin display-hidden($prefix, $breakpoint, $key) {
+  @media (min-width: $breakpoint) {
+    .sdds-hide-#{$key} {
+      display: none !important;
+    }
+    .sdds-show-#{$key} {
+      display: block !important;
+    }
+  }
+}
+
+// Columns
+
+@mixin grid-make-col($grid) {
+  @each $size, $values in $grid {
+    $breakpoint: map-get($values, "breakpoint");
+    $columns: map-get($values, "columns");
+    $padding: map-get($values, "padding");
+
+    @media (min-width: $breakpoint) {
+      @for $i from 1 through $columns {
+        .#{$prefix}-col-#{$size}-#{$i} {
+          @include grid-col-size($columns, $i, $padding);
+
+          &.#{$prefix}-no-padding {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    @include grid-col-auto($prefix, $size, $breakpoint, $padding);
+  }
+
+  .#{$prefix}-no-padding [class|='#{$prefix}-col'] {
+    padding: 0 !important;
+  }
+}
+
+// Column size calculation
+@mixin grid-col-size($columns, $i, $padding) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-left: $padding;
+  padding-right: $padding;
+  box-sizing: border-box;
+
+  // Index divided by amount of the columns
+  flex-basis: calc(percentage(math.div($i, $columns)));
+  max-width: percentage(math.div($i, $columns));
+}
+
+//Column auto size
+@mixin grid-col-auto($prefix, $size, $breakpoint, $padding) {
+  @media (min-width: $breakpoint) {
+    .sdds-col,
+    .#{$prefix}-col-#{$size} {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+      min-width: 8.3333%;
+      padding-left: $padding;
+      padding-right: $padding;
+    }
+  }
+}
+
+//Offset
+
+@mixin grid-offset-col($breakpoints) {
+  // Column offset for every breakpoint
+
+  @each $sizes, $values in $breakpoints {
+    $columns: map-get($values, "columns");
+    $padding: map-get($values, "padding");
+    $breakpoint: map-get($values, "breakpoint");
+
+    //  Each column for everysize
+    @media (min-width: $breakpoint) {
+      @for $i from 1 through $columns {
+        .#{$prefix}-col-#{$sizes}-#{$i}-offset {
+          margin-left: percentage(math.div($i, $columns));
+        }
+      }
+    }
+  }
+}
+
+// Push grid
+
+@mixin grid-push($breakpoints) {
+  @include grid-push-container($breakpoints);
+
+  .#{$prefix}-push {
+    display: flex;
+
+    @include grid-make-col($breakpoints);
+
+    @media (min-width: 992px) {
+      .#{$prefix}-container {
+        margin: 0;
+      }
+    }
+  }
+
+  .#{$prefix}-content-push {
+    flex-grow: 1;
+  }
+}
+
+@mixin grid-push-container($breakpoints) {
+  @each $key, $values in $breakpoints {
+    $breakpoint: map-get($values, "breakpoint");
+    $container-margin: map-get($values, "margin");
+    $container-width: map-get($values, "container");
+    $display-sidebar: map-get($values, "sidebar");
+
+    @media (min-width: $breakpoint) {
+      .#{$prefix}-sidebar {
+        flex-basis: 288px;
+        min-width: 288px;
+        display: $display-sidebar;
+
+        &.#{$prefix}-sidebar-collapse {
+          flex-basis: 17rem;
+          min-width: 17rem;
+        }
+      }
+
+      .#{$prefix}-container-push {
+        padding-right: $container-margin;
+        padding-left: $container-margin;
+        max-width: $container-width;
+      }
+
+      .#{$prefix}-container-push-fluid {
+        padding-right: $container-margin;
+        padding-left: $container-margin;
+      }
+    }
+  }
+}
