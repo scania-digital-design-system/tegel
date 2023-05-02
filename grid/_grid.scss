@@ -1,7 +1,8 @@
 @import '../globals.scss';
 @import 'breakpoints';
 @import 'mixins';
-@import '../spacing/spacing-vars';
+@import './spacing-vars.scss';
+//@import '../spacing/spacing-vars';
 
 /*
   Mixin file for create grid layout, container, rows and columns
