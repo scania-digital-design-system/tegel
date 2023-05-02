@@ -1,0 +1,51 @@
+@import '../../mixins/box-sizing';
+
+// This component does not have dark version so all css is in this file
+
+:host {
+  // Variables
+  --sdds-badges-background-color: var(--sdds-negative);
+  --sdds-badges-color-text: var(--sdds-white);
+
+  // Styling
+  @include sdds-box-sizing;
+
+  display: block;
+}
+
+.sdds-badges {
+  display: block;
+  border-radius: 12px;
+  background-color: var(--sdds-badges-background-color);
+  text-align: center;
+
+  &.sdds-badges-sm {
+    height: 8px;
+    width: 8px;
+    line-height: 8px;
+  }
+
+  &.sdds-badges-lg {
+    height: 20px;
+    line-height: 20px;
+    width: 20px;
+  }
+
+  &.sdds-badges-pill {
+    display: inline-block;
+    width: unset;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &.sdds-badges-hidden {
+    display: none;
+  }
+}
+
+.sdds-badges-text {
+  font-family: var(--sdds-font-family-semi-condensed-bold);
+  font-size: 12px;
+  color: var(--sdds-badges-color-text);
+  font-weight: bold;
+}

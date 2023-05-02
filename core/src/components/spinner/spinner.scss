@@ -1,0 +1,71 @@
+@import './spinner-vars.scss';
+@import '../../mixins/box-sizing';
+
+:host {
+  @include sdds-box-sizing;
+
+  display: block;
+}
+
+.sdds-spinner-svg {
+  width: calc(var(--sdds-spinner-radius) * 2);
+  height: calc(var(--sdds-spinner-radius) * 2);
+  transform: scale(-1, 1) rotate(-90deg);
+
+  &-xs {
+    --sdds-spinner-radius: var(--sdds-spinner-radius-xs);
+    --sdds-spinner-stroke-width: var(--sdds-spinner-stroke-width-xs);
+    --sdds-spinner-animation-speed: var(--sdds-spinner-speed);
+  }
+
+  &-sm {
+    --sdds-spinner-radius: var(--sdds-spinner-radius-sm);
+    --sdds-spinner-stroke-width: var(--sdds-spinner-stroke-width-sm);
+    --sdds-spinner-animation-speed: var(--sdds-spinner-speed);
+  }
+
+  &-md {
+    --sdds-spinner-radius: var(--sdds-spinner-radius-md);
+    --sdds-spinner-stroke-width: var(--sdds-spinner-stroke-width-md);
+    --sdds-spinner-animation-speed: var(--sdds-spinner-speed);
+  }
+
+  &-lg {
+    --sdds-spinner-radius: var(--sdds-spinner-radius-lg);
+    --sdds-spinner-stroke-width: var(--sdds-spinner-stroke-width-lg);
+    --sdds-spinner-animation-speed: var(--sdds-spinner-speed-lg);
+  }
+}
+
+.sdds-spinner-circle {
+  cx: var(--sdds-spinner-radius);
+  cy: var(--sdds-spinner-radius);
+  r: calc(var(--sdds-spinner-radius) - (var(--sdds-spinner-stroke-width) / 2));
+  stroke-width: var(--sdds-spinner-stroke-width);
+  fill: none;
+
+  //Calculation for lenght of dash
+  --sdds-spinner-stroke-dash: calc((2 * var(--PI)) * var(--sdds-spinner-radius));
+
+  stroke-dasharray: var(--sdds-spinner-stroke-dash);
+  stroke-width: var(--sdds-spinner-stroke-width);
+  animation: dash var(--sdds-spinner-animation-speed) cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+
+  &-standard {
+    stroke: var(--sdds-spinner-background);
+  }
+
+  &-inverted {
+    stroke: var(--sdds-spinner-background-inverted);
+  }
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: calc(-1 * var(--sdds-spinner-stroke-dash));
+  }
+
+  to {
+    stroke-dashoffset: var(--sdds-spinner-stroke-dash);
+  }
+}

@@ -1,0 +1,41 @@
+@import '../../mixins/z-index';
+@import './tooltip-vars.scss';
+@import '../../mixins/box-sizing';
+
+.sdds-tooltip {
+  @include sdds-box-sizing;
+
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  color: var(--sdds-tooltip-color);
+  background-color: var(--sdds-tooltip-background);
+  border-radius: 4px;
+  padding: 8px;
+  word-wrap: break-word;
+  max-width: 192px;
+  z-index: z(tooltip);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in, visibility 200ms ease-in;
+
+  &.sdds-tooltip-top-left {
+    border-radius: 0 4px 4px;
+  }
+
+  &.sdds-tooltip-top-right {
+    border-radius: 4px 0 4px 4px;
+  }
+
+  &.sdds-tooltip-bottom-right {
+    border-radius: 4px 4px 0;
+  }
+
+  &.sdds-tooltip-bottom-left {
+    border-radius: 4px 4px 4px 0;
+  }
+}
+
+.sdds-tooltip-show {
+  opacity: 1;
+  visibility: visible;
+}

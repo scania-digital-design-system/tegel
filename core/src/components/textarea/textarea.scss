@@ -1,0 +1,320 @@
+@mixin textfield-base {
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  color: var(--sdds-textarea-color);
+  background-color: var(--sdds-textarea-background);
+
+  &::placeholder {
+    opacity: 1;
+    color: var(--sdds-textarea-placeholder);
+  }
+
+  &:focus::placeholder {
+    color: var(--sdds-textarea-placeholder-focus-color);
+  }
+
+  &:disabled {
+    background-color: var(--sdds-textarea-disabled-background);
+    color: var(--sdds-textarea-disabled-color);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--sdds-textarea-disabled-placeholder);
+    }
+
+    ~ .textfield-label-inside {
+      color: var(--sdds-textarea-disabled-label);
+    }
+  }
+}
+
+@mixin placeholder-label {
+  &::placeholder {
+    color: transparent;
+  }
+
+  ::placeholder {
+    color: transparent;
+  }
+
+  //Input field in focus
+  &:focus::placeholder {
+    transition: color 0.35s ease;
+    color: var(--sdds-textarea-placeholder-focus-color);
+  }
+}
+
+.textarea-container {
+  //@extend .sdds-textfield-container;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  box-sizing: border-box;
+
+  //@extend end
+
+  height: auto;
+  width: 100%;
+  min-width: 208px;
+  display: inline-flex;
+  background-color: transparent;
+  flex-flow: row wrap;
+  border-bottom: 0;
+
+  &.no-min-width {
+    min-width: unset;
+  }
+}
+
+.textarea-container {
+  .textarea-wrapper {
+    position: relative;
+    width: unset;
+    min-width: 100%;
+  }
+}
+
+.textarea-container:not(.textarea-disabled) {
+  .textarea-wrapper {
+    &::before,
+    &::after {
+      content: '';
+      height: 2px;
+      width: 0;
+      position: absolute;
+      background: var(--sdds-textarea-bar);
+      transition: 0.35s ease all;
+    }
+
+    &::before {
+      left: 50%;
+    }
+
+    &::after {
+      right: 50%;
+    }
+
+    &::after,
+    &::before {
+      top: calc(100% - 2px);
+    }
+  }
+}
+
+.textarea-input {
+  @include textfield-base;
+
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  padding: var(--sdds-spacing-element-20) var(--sdds-spacing-element-16);
+  display: block;
+  resize: vertical;
+  border-bottom: 1px solid var(--sdds-textarea-border-bottom);
+  transition: border-bottom-color 200ms ease;
+
+  // Display none only works in Chrome
+  &::-webkit-resizer {
+    display: none;
+  }
+
+  &:hover {
+    border-bottom-color: var(--sdds-textarea-border-bottom-hover);
+  }
+}
+
+// Need to override default resizer in FF & Safari
+.textarea-resizer-icon {
+  color: var(--sdds-textarea-resize-icon);
+  position: absolute;
+  display: block;
+  bottom: 2px;
+  right: 1px;
+  padding-bottom: 2px;
+  padding-right: 2px;
+  pointer-events: none;
+  background-color: var(--sdds-textarea-background);
+
+  svg {
+    display: block;
+  }
+}
+
+.textarea-label {
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  display: block;
+  z-index: 1;
+  margin-bottom: var(--sdds-spacing-element-8);
+  color: var(--sdds-textarea-label-color);
+}
+
+.textarea-container {
+  &.textarea-label-inside {
+    .textarea-label {
+      font: var(--sdds-detail-02);
+      letter-spacing: var(--sdds-detail-02-ls);
+      transition: 0.1s ease all;
+
+      //@include end
+
+      color: var(--sdds-textarea-label-inside-color);
+      position: absolute;
+      top: var(--sdds-spacing-element-20);
+      left: var(--sdds-spacing-element-16);
+    }
+
+    .textarea-input {
+      @include placeholder-label;
+    }
+  }
+
+  &.textarea-focus {
+    &.textarea-label-inside {
+      .textarea-label {
+        font: var(--sdds-detail-07);
+        letter-spacing: var(--sdds-detail-07-ls);
+        top: var(--sdds-spacing-element-8);
+      }
+    }
+
+    .textarea-wrapper {
+      &::before,
+      &::after {
+        width: 50%;
+      }
+    }
+  }
+
+  &.textarea-data {
+    &.textarea-label-inside {
+      .textarea-label {
+        font: var(--sdds-detail-07);
+        letter-spacing: var(--sdds-detail-07-ls);
+        top: var(--sdds-spacing-element-8);
+      }
+    }
+  }
+}
+
+.textarea-textcounter {
+  //@extend .sdds-textfield-textcounter;
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  color: var(--sdds-textarea-textcounter);
+  float: right;
+
+  & .textfield-textcounter-divider {
+    font: var(--sdds-detail-05);
+    letter-spacing: var(--sdds-detail-05-ls);
+    color: var(--sdds-textarea-textcounter-divider);
+  }
+
+  //@extend end
+
+  flex-basis: 100%;
+  text-align: right;
+  padding-top: var(--sdds-spacing-element-4);
+}
+
+.textarea-helper {
+  font: var(--sdds-detail-05);
+  letter-spacing: var(--sdds-detail-05-ls);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-top: var(--sdds-spacing-element-4);
+  color: var(--sdds-textarea-helper);
+  flex-grow: 2;
+  flex-basis: auto;
+
+  ~ .textarea-textcounter {
+    flex-basis: auto;
+  }
+}
+
+// Different state
+
+.textarea-success {
+  .textarea-input {
+    border-bottom-color: var(--sdds-textarea-border-bottom-success);
+  }
+}
+
+.textarea-error {
+  .textarea-input {
+    border-bottom-color: var(--sdds-textarea-border-bottom-error);
+  }
+
+  .textarea-wrapper {
+    &::after,
+    &::before {
+      background: var(--sdds-textarea-bar-error);
+    }
+  }
+
+  .textarea-helper {
+    color: var(--sdds-textarea-helper-error);
+  }
+}
+
+//Disabled state
+.textarea-disabled {
+  .textarea-input {
+    border-bottom-color: transparent;
+  }
+
+  .textarea-label {
+    color: var(--sdds-textarea-disabled-label);
+  }
+}
+
+//Read only state
+
+.textarea-icon__readonly {
+  display: none;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  color: var(--sdds-textarea-icon-read-only-color);
+
+  &-label {
+    display: none;
+    position: absolute;
+    right: 18px;
+    top: 48px;
+    font: var(--sdds-detail-05);
+    letter-spacing: var(--sdds-detail-05-ls);
+    padding: 8px;
+    color: var(--sdds-textarea-icon-read-only-label-color);
+    background-color: var(--sdds-textarea-icon-read-only-label-background);
+    white-space: nowrap;
+    border-radius: 4px 0 4px 4px;
+  }
+}
+
+.textarea-readonly {
+  pointer-events: none;
+
+  .textarea-icon__readonly {
+    display: block;
+
+    &:hover {
+      ~ .textarea-icon__readonly-label {
+        display: block;
+      }
+    }
+  }
+
+  .textfield-input {
+    padding-right: 54px;
+    background-color: transparent;
+  }
+
+  .textfield-container {
+    background-color: transparent;
+  }
+}

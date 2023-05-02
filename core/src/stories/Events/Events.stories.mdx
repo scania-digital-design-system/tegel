@@ -1,0 +1,54 @@
+<Meta title="Intro/Events" />
+
+## Events
+
+The tegel components emit custom events to allow the users to repond to changes/updates in the components. These are all named using the
+sdds-prefix. This is done in order to not have conflicting events and to make it clear to the user the specified event is something that is emitted
+from a tegel component.
+
+The events are named according to our naming convention: **sdds** + event.
+For a click event this would result in the event being called `sddsClick`. To listen for these events in vanilla JS the event name
+should be passed to the `addEventListener` function as the first argument:
+
+```javascript
+document.addEventListener('sddsClick', (event) => {
+  // Do something with/based on the event.
+});
+```
+
+In React these events needs to be listened to by adding an event listener to the element that emits the event. This can be easily done by
+grabbing a reference to the element and adding the event listener inline:
+
+This solution is a workaround based on how React handles events, you can read more on this [here.](https://reactjs.org/docs/events.html)
+
+```jsx
+<sdds-textfield
+  ref={(element) =>
+    element.addEventListener('sddsClick', (event) => {
+      {
+        /* Do something with/based on the event. */
+      }
+    })
+  }
+></sdds-textfield>
+```
+
+In other JSX-enviroments (apart from React) these events can be listened to by prefixing them with an `on` directly on the component:
+
+```jsx
+<sdds-textfield
+  onSddsChange={(event) => {
+    /* Do something with/based on the event. */
+  }}
+></sdds-textfield>
+```
+
+What is attached to the event object is highlighted in our storybook. Under the docs tab of each component the events are outlined,
+inluding what data is passed with the event to the user.
+
+### Internal events
+
+Some of the component are using event to communicate with its parent/child. These events are not recommended to use in any way since
+they might change without notice. Their payload might also be changed based on refactoring of components. These events are prefixed
+with **internal**. This is to make it as clear as possible to a user that this is an internal event that the components are using,
+but the user should not interact with it. E.g. `internalSddsPropsChange`.

@@ -1,0 +1,89 @@
+:host {
+  .message-wrapper {
+    display: flex;
+    padding: 16px;
+    background-color: var(--sdds-message-background);
+    border-radius: 4px;
+
+    &.information {
+      border-left: 4px solid var(--sdds-information);
+
+      sdds-icon {
+        color: var(--sdds-information);
+      }
+    }
+
+    &.success {
+      border-left: 4px solid var(--sdds-positive);
+
+      sdds-icon {
+        color: var(--sdds-positive);
+      }
+    }
+
+    &.error {
+      background-color: var(--sdds-message-type-error-background);
+      border-left: 4px solid var(--sdds-negative);
+
+      sdds-icon {
+        color: var(--sdds-negative);
+      }
+    }
+
+    &.warning {
+      border-left: 4px solid var(--sdds-warning);
+
+      sdds-icon {
+        color: var(--sdds-warning);
+      }
+    }
+
+    &.message-minimal {
+      border: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      background-color: transparent;
+
+      .message-header {
+        font: var(--sdds-detail-02);
+        letter-spacing: var(--sdds-detail-02-ls);
+      }
+
+      sdds-icon {
+        padding-right: 8px;
+      }
+    }
+  }
+
+  sdds-icon {
+    padding-right: 16px;
+  }
+
+  .message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--sdds-message-color);
+    padding: 2px 0;
+
+    .message-header {
+      font: var(--sdds-headline-07);
+      letter-spacing: var(--sdds-headline-07-ls);
+    }
+
+    .message-extended-message {
+      color: var(--sdds-message-color);
+      font: var(--sdds-detail-02);
+      letter-spacing: var(--sdds-detail-02-ls);
+    }
+  }
+
+  .sdds-mode-variant-primary {
+    --sdds-message-background: var(--sdds-message-background-primary);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-message-background: var(--sdds-message-background-secondary);
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../../../mixins/scrollbar';
+@import '../../../../mixins/z-index';
+
+:host {
+  height: var(--sdds-header-height);
+  position: relative;
+
+  .menu {
+    flex-direction: column;
+
+    @include sdds-scrollbar;
+
+    overflow-y: auto;
+    max-height: calc(100vh - var(--sdds-header-height));
+    box-shadow: var(--sdds-nav-dropdown-menu-box);
+    background-color: var(--sdds-header-app-launcher-menu-background);
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .state-open {
+    .dropdown-icon {
+      transform: rotateZ(180deg);
+    }
+
+    .button {
+      position: relative;
+      z-index: z(tooltip) + 1;
+    }
+  }
+}

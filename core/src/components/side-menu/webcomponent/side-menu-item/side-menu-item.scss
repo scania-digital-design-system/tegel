@@ -1,0 +1,82 @@
+//@import '../theme/core/spacing/vars';
+@import '../../../../../../grid/vars';
+
+@import '../../../../mixins/focus-state';
+
+:host {
+  display: block;
+
+  .component {
+    ::slotted(a),
+    ::slotted(button) {
+      all: unset;
+      box-sizing: border-box;
+      height: 68px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 24px;
+      border: none;
+      background-color: var(--sdds-sidebar-side-menu-background-cover);
+      font: var(--sdds-headline-07);
+      letter-spacing: var(--sdds-headline-07-ls);
+      color: var(--sdds-sidebar-side-menu-single-item-color);
+      cursor: pointer;
+    }
+    sdds-icon {
+      color: red !important;
+    }
+
+
+    ::slotted(a:focus-visible),
+    ::slotted(button:focus-visible) {
+      @include sdds-focus-state;
+    }
+
+    &:hover {
+      ::slotted(a),
+      ::slotted(button) {
+        background-color: var(--sdds-sidebar-item-state-hover);
+      }
+    }
+
+    &:active {
+      ::slotted(a),
+      ::slotted(button) {
+        background-color: var(--sdds-sidemenu-item-state-active);
+      }
+    }
+
+    &-collapsed {
+      ::slotted(a),
+      ::slotted(button) {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &-selected:not(&-active) {
+      ::slotted(a),
+      ::slotted(button) {
+        border-left: 4px solid var(--sdds-sidebar-side-menu-single-subitem-selected-border-color);
+        padding-left: 20px;
+        background-color: var(--sdds-sidebar-item-state-selected);
+      }
+    }
+  }
+}
+
+@media (min-width: $grid-lg) {
+  :host {
+    .component.component-collapsed {
+      ::slotted(a),
+      ::slotted(button) {
+        color: rgb(90 90 90 / 0%);
+        overflow: hidden;
+      }
+    }
+  }
+}

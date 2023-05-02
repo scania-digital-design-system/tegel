@@ -1,0 +1,7 @@
+@mixin sdds-box-sizing {
+  box-sizing: border-box;
+
+  & * {
+    box-sizing: border-box;
+  }
+}

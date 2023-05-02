@@ -1,0 +1,31 @@
+:root,
+.sdds-mode-light {
+  --sdds-checkbox-color: var(--sdds-grey-900);
+  --sdds-checkbox-interaction-01: var(--sdds-blue-800);
+  --sdds-checkbox-interaction-02: var(--sdds-white);
+  --sdds-checkbox-background-hover: var(--sdds-blue-800);
+  --sdds-checkbox-background-focus: var(--sdds-blue-800);
+  --sdds-checkbox-background-opacity-hover: 0.12;
+  --sdds-checkbox-background-opacity-focus: 0.24;
+  --sdds-checkbox-disabled: var(--sdds-grey-400);
+  --sdds-checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  --sdds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23b0b7c4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  --sdds-checkbox-border-color-disabled-after: var(--sdds-grey-500);
+  --sdds-checkbox-color-disabled-after: var(--sdds-grey-500);
+
+  // TODO - Add correct colors for dark theme
+  .sdds-mode-dark {
+    --sdds-checkbox-color: var(--sdds-white);
+    --sdds-checkbox-interaction-01: var(--sdds-white);
+    --sdds-checkbox-interaction-02: var(--sdds-grey-958);
+    --sdds-checkbox-background-hover: var(--sdds-grey-600);
+    --sdds-checkbox-background-focus: var(--sdds-grey-600);
+    --sdds-checkbox-background-opacity-hover: 0.48;
+    --sdds-checkbox-background-opacity-focus: 0.72;
+    --sdds-checkbox-disabled: white;
+    --sdds-checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%230D0F13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    --sdds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%2356657A' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    --sdds-checkbox-border-color-disabled-after: var(--sdds-grey-700);
+    --sdds-checkbox-color-disabled-after: var(--sdds-grey-700);
+  }
+}

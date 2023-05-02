@@ -1,0 +1,41 @@
+.sdds-mode-light {
+  --sdds-dropdown-option-color: var(--sdds-grey-868);
+  --sdds-dropdown-option-color-selected: var(--sdds-grey-868);
+  --sdds-dropdown-option-color-disabled: var(--sdds-grey-400);
+  --sdds-dropdown-option-background: var(--sdds-grey-50);
+  --sdds-dropdown-option-background-hover: var(--sdds-grey-100);
+  --sdds-dropdown-option-background-selected: var(--sdds-grey-300);
+  --sdds-dropdown-option-border: var(--sdds-grey-300);
+  --sdds-dropdown-label-color: var(--sdds-grey-958);
+  --sdds-dropdown-helper-color: var(--sdds-grey-700);
+  --sdds-dropdown-placeholder-color: var(--sdds-grey-700);
+
+  .sdds-mode-variant-primary {
+    --sdds-dropdown-option-background: var(--sdds-grey-50);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-dropdown-option-background: var(--sdds-white);
+  }
+}
+
+.sdds-mode-dark {
+  --sdds-dropdown-option-color: var(--sdds-grey-50);
+  --sdds-dropdown-option-color-selected: var(--sdds-grey-50);
+  --sdds-dropdown-option-color-disabled: var(--sdds-grey-800);
+  --sdds-dropdown-option-background: var(--sdds-grey-868);
+  --sdds-dropdown-option-background-hover: var(--sdds-grey-800);
+  --sdds-dropdown-option-background-selected: var(--sdds-grey-700);
+  --sdds-dropdown-option-border: var(--sdds-grey-800);
+  --sdds-dropdown-label-color: var(--sdds-grey-400);
+  --sdds-dropdown-helper-color: var(--sdds-grey-500);
+  --sdds-dropdown-placeholder-color: var(--sdds-grey-400);
+
+  .sdds-mode-variant-primary {
+    --sdds-dropdown-option-background: var(--sdds-grey-868);
+  }
+
+  .sdds-mode-variant-secondary {
+    --sdds-dropdown-option-background: var(--sdds-grey-900);
+  }
+}

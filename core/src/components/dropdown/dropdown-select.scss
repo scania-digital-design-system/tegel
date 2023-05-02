@@ -1,0 +1,71 @@
+@import './dropdown-core';
+@import '../../global/scania-fonts-vars.scss';
+@import '../../mixins/box-sizing';
+
+.sdds-dropdown {
+  @include sdds-box-sizing;
+
+  position: relative;
+
+  select {
+    @include dropdown-wrapper;
+
+    color: var(--sdds-dropdown-color);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg class='sdds-dropdown-arrow' width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='currentColor' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+
+    &:focus {
+      border-bottom: 2px solid var(--sdds-blue-400);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      border-bottom: none;
+      color: var(--sdds-dropdown-option-disabled-color);
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg class='sdds-dropdown-arrow' width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23cdd1db' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+    }
+  }
+
+  &.sdds-dropdown-medium,
+  &.sdds-dropdown {
+    select {
+      padding: 20px;
+    }
+  }
+
+  // Size medium
+  &.sdds-dropdown-medium,
+  &.sdds-dropdown-md {
+    select {
+      padding: 16px;
+    }
+  }
+
+  // Size small
+  &.sdds-dropdown-small,
+  &.sdds-dropdown-sm {
+    select {
+      padding: 12px 16px;
+    }
+  }
+
+  &.sdds-dropdown--error {
+    select {
+      border-color: var(--sdds-negative);
+    }
+
+    .sdds-dropdown-helper {
+      color: var(--sdds-negative);
+    }
+  }
+}
+
+/* fix for icon in dark theme */
+.sdds-mode-dark {
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg class='sdds-dropdown-arrow' width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23cdd1db' stroke-width='1.25' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E");
+  }
+}
