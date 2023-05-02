@@ -1,0 +1,13 @@
+html,
+body,
+#root {
+  /* This is needed to demo side-menu properly */
+  height: 100%;
+}
+
+*:has(> .docblock-code-toggle) {
+  /* This is the "show code" buttons that appears in examples under the docs tab. */
+  /* Known issue: :has is not currently supported in firefox */
+  position: relative;
+  z-index: 100000 !important; /* show above things like modals, headers, etc */
+}
