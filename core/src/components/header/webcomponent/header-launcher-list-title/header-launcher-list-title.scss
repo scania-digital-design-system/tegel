@@ -1,0 +1,14 @@
+.sdds-header-launcher-list-title {
+  all: unset;
+  box-sizing: border-box;
+  font: var(--sdds-detail-06);
+  letter-spacing: var(--sdds-detail-06-ls);
+  color: var(--sdds-header-app-launcher-category-title-color);
+  text-transform: uppercase;
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--sdds-nav-dropdown-item-border-color);
+  margin: 0;
+}

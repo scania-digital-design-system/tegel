@@ -1,0 +1,17 @@
+:root,
+html,
+.sdds-mode-light {
+  --sdds-toast-background-color: var(--sdds-grey-958);
+  --sdds-toast-headline-color: var(--sdds-grey-50);
+  --sdds-toast-subheadline-color: var(--sdds-grey-50);
+  --sdds-toast-link-color: var(--sdds-blue-300);
+  --sdds-toast-dissmiss-color: var(--sdds-white);
+}
+
+.sdds-mode-dark {
+  --sdds-toast-background-color: var(--sdds-grey-50);
+  --sdds-toast-headline-color: var(--sdds-grey-958);
+  --sdds-toast-subheadline-color: var(--sdds-grey-958);
+  --sdds-toast-link-color: var(--sdds-blue-500);
+  --sdds-toast-dissmiss-color: var(--sdds-black);
+}

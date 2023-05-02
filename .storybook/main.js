@@ -20,6 +20,7 @@ module.exports = {
   stories: [
     "../color/stories/*.stories.@(js|jsx|ts|tsx)",
     "../grid/stories/*.stories.@(js|jsx|ts|tsx)",
+    "../core/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   framework: "@storybook/html",
   staticDirs: ["../dist", "../public"],

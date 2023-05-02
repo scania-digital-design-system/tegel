@@ -1,0 +1,127 @@
+/* https://medium.com/swlh/full-text-styling-with-a-single-line-of-css-838e8c666f4d */
+
+// CHEATSHEET --> font: style variant weight size/line-height family
+// Letter spacing is in another variable as it can not be part of font variable
+
+:root {
+  /* FUNCTIONAL TYPOGRAPHY */
+
+  //HEADLINE
+  --sdds-headline-01: normal normal bold 40px/40px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-headline-01-ls: 0;
+  --sdds-headline-02: normal normal bold 32px/32px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-headline-02-ls: -0.04em;
+  --sdds-headline-03: normal normal bold 24px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-headline-03-ls: -0.03em;
+  --sdds-headline-04: normal normal bold 20px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-headline-04-ls: -0.02em;
+  --sdds-headline-05: normal normal bold 14px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-headline-05-ls: -0.02em;
+  --sdds-headline-06: normal normal bold 14px/16px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-headline-06-ls: -0.02em;
+  --sdds-headline-07: normal normal bold 14px/16px 'Scania Sans Semi Condensed', arial, helvetica,
+    sans-serif;
+  --sdds-headline-07-ls: -0.01em;
+
+  //PARAGRAPH
+  --sdds-paragraph-01: normal normal normal 24px/32px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-paragraph-01-ls: -0.03em;
+  --sdds-paragraph-02: normal normal normal 20px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-paragraph-02-ls: -0.01em;
+
+  //BODY
+  --sdds-body-01: normal normal normal 16px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-body-01-ls: -0.02em;
+  --sdds-body-02: normal normal normal 14px/20px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-body-02-ls: -0.02em;
+
+  //DETAIL
+  --sdds-detail-01: normal normal normal 16px/24px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-01-ls: -0.01em;
+  --sdds-detail-02: normal normal normal 14px/16px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-02-ls: -0.01em;
+  --sdds-detail-03: normal normal normal 14px/20px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-03-ls: -0.01em;
+  --sdds-detail-04: normal normal bold 12px/16px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-detail-04-ls: 0.08em;
+  --sdds-detail-04-tt: uppercase;
+  --sdds-detail-05: normal normal normal 12px/16px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-05-ls: 0;
+  --sdds-detail-06: normal normal bold 10px/16px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-detail-06-ls: 0.08em;
+  --sdds-detail-06-tt: uppercase;
+  --sdds-detail-07: normal normal normal 10px/8px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-07-ls: 0;
+
+  /* EXPRESSIVE TYPOGRAPHY */
+
+  //HEADLINE
+
+  --sdds-expressive-headline-01: normal normal bold 80px/80px 'Scania Sans Headline', arial,
+    helvetica, sans-serif;
+  --sdds-expressive-headline-01-ls: 0;
+  --sdds-expressive-headline-02: normal normal bold 56px/56px 'Scania Sans Headline', arial,
+    helvetica, sans-serif;
+  --sdds-expressive-headline-02-ls: 0;
+  --sdds-headline-ex-01: normal normal bold 40px/40px 'Scania Sans Headline', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-01-ls: 0;
+  --sdds-headline-ex-02: normal normal bold 32px/32px 'Scania Sans Headline', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-02-ls: -0.04em;
+  --sdds-headline-ex-03: normal normal bold 24px/24px 'Scania Sans Headline', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-03-ls: -0.03em;
+  --sdds-headline-ex-04: normal normal bold 20px/24px 'Scania Sans Headline', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-04-ls: -0.01em;
+  --sdds-headline-ex-05: normal normal bold 16px/24px 'Scania Sans Headline', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-05-ls: -0.02em;
+  --sdds-headline-ex-06: normal normal bold 14px/16px 'Scania Sans Headline', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-06-ls: -0.02em;
+  --sdds-headline-ex-07: normal normal bold 14px/16px 'Scania Sans Semi Condensed', arial, helvetica,
+    sans-serif;
+  --sdds-headline-ex-07-ls: -0.01em;
+
+  //PARAGRAPH
+  --sdds-paragraph-ex-01: normal normal normal 24px/32px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-paragraph-ex-01-ls: -0.03em;
+  --sdds-paragraph-ex-02: normal normal normal 20px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-paragraph-ex-02-ls: -0.01em;
+
+  //BODY
+  --sdds-body-ex-01: normal normal normal 16px/24px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-body-ex-01-ls: -0.02em;
+  --sdds-body-ex-02: normal normal normal 14px/20px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-body-ex-02-ls: -0.01em;
+
+  //DETAIL
+  --sdds-detail-ex-01: normal normal normal 16px/24px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-ex-01-ls: -0.01em;
+  --sdds-detail-ex-02: normal normal normal 14px/16px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-ex-02-ls: -0.01em;
+  --sdds-detail-ex-03: normal normal normal 14px/20px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-ex-03-ls: -0.01em;
+  --sdds-detail-ex-04: normal normal bold 12px/16px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-detail-ex-04-ls: 0.08em;
+  --sdds-detail-ex-04-tt: uppercase;
+  --sdds-detail-ex-05: normal normal normal 12px/16px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-ex-05-ls: 0;
+  --sdds-detail-ex-06: normal normal bold 10px/16px 'Scania Sans', arial, helvetica, sans-serif;
+  --sdds-detail-ex-06-ls: 0.08em;
+  --sdds-detail-ex-06-tt: uppercase;
+  --sdds-detail-ex-07: normal normal normal 10px/8px 'Scania Sans Semi Condensed',
+    'Scania Sans Condensed', arial, helvetica, sans-serif;
+  --sdds-detail-ex-07-ls: 0;
+}

@@ -1,0 +1,70 @@
+@import '../../../mixins/focus-state';
+@import '../../../mixins/box-sizing';
+@import '../../../mixins/z-index';
+
+:host {
+  @include sdds-box-sizing;
+
+  overflow: hidden;
+  outline: 0;
+
+  .wrapper {
+    display: flex;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .scroll-right-button {
+    z-index: calc(z(tab) + 1);
+    right: 0;
+  }
+
+  .scroll-left-button {
+    z-index: calc(z(tab) + 1);
+    left: 0;
+  }
+
+  .scroll-right-button,
+  .scroll-left-button {
+    height: 50px;
+    color: var(--sdds-folder-tabs-scroll-btn-color);
+    cursor: pointer;
+    border: 0;
+    width: 0;
+    background-color: var(--sdds-folder-tabs-scroll-btn-background);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    position: sticky;
+
+    &.show {
+      min-width: 48px;
+      display: block;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:hover {
+      background-color: var(--sdds-folder-tabs-scroll-btn-background-hover);
+    }
+
+    &:active {
+      background-color: var(--sdds-folder-tabs-scroll-btn-background-active);
+    }
+
+    &:focus {
+      @include sdds-focus-state;
+    }
+
+    svg {
+      fill: var(--sdds-folder-tabs-scroll-btn-color);
+    }
+  }
+}

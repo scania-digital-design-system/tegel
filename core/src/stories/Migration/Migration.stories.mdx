@@ -1,0 +1,736 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Intro/Migrating from components v4" />
+
+# Migration Docs
+
+This document includes all the breaking changes when migrating from @scania/components version 4 to @scania/tegel.
+
+## Deprecation of Native Components
+
+In @scania/tegel we have removed all of our "native" components and instead introducing web component
+counterparts to these. This means that every component that was available as a "native" component in
+@scania/components will have a web component counterpart in @scania/tegel. This change does not affect the existing @scania/components package.
+
+## Event name convention
+
+This change affects all components.
+
+Previously we have not had a set naming convention for our events. This has led to misalignment between
+components where some events has had a `custom` prefix, and others have had other ways of indicating whether
+or not it is a custom event. We have now settled on a naming convention for all events.
+Both **external**, events we expect you as a user to interact with, and **internal**, events that are used within
+our components to update state/react to changes.
+
+In short:
+
+- External events are named: 'sdds' + native event name. ('sddsClick', 'sddsChange')
+- Internal events are named: 'internalSdds' + event name. ('internalSddsTablePropsChange', 'internalSddsCheckboxChange')
+
+You can read more about our event naming conventions [here](www.TODOLINKTOCODE_STYLE.md)
+
+## Removed base font-size and moved to `px` instead of `rem`.
+
+This change affects all components/typography/spacing/grid.
+
+In the past we have used a base value of 4px
+that has been used to calculate the spacing/padding/margins etc with rem. This was done by setting the
+base value (4px) as the font-size on the `<html>`-element, which for some users has caused error with
+custom font-sizes. We have now removed these dependencies and are using pixels in our
+components/spacing/typography/margins.
+
+We are doing this to decrease the dependencies between our packages and we want to make sure the Tegel
+can be used on its own.
+
+#### What action is required?
+
+If you are not yourself using `rem` in your project ideally this change should not affect you, but since it is
+something that has an effect on all components and utilities/foundations we expect that there might be some
+unforeseen problems. These will have our highest prio in order to make the migration to Tegel as smooth as possible.
+
+If you are however using `rem` in your project you would have to consider that the base value will no longer be `4px`.
+This value will now by default be `16px`. So for the element in you project that are using rem these would have to be
+recalculated.
+
+## Dark mode and mode variants
+
+We are introducing **dark mode** as an addition to our current **light mode**, as well as two mode variants — **primary** and **secondary** — to our codebase. This will require changes to the classes and properties used for styling components. It is important to note that the primary mode variant used to be referred to as "on-white" and the secondary mode variant as "on-grey-50" in light mode.
+
+**Light mode primary** is designed for a **white** background, while **secondary** is designed for a **grey-50** background. Previously, **grey-50** was used as our primary color.
+
+**Dark mode primary** is designed for a **grey-958** background, and **secondary** is designed for a **grey-900** background.
+
+#### What action is required?
+
+It is important to note that some components may have a different appearance due to these changes. The following components will now have a primary and secondary mode:
+
+- Accordion
+- Block
+- Button
+- Card
+- Data-table
+- Datetime
+- Divider
+- Dropdown
+- Footer
+- Message
+- Tab
+- Textarea
+- Textfield
+
+##### Changing mode
+
+Mode is controlled on a top level, using class `sdds-mode-dark` or `sdds-mode-light` (light is default).
+
+##### Changing mode variant
+
+For all components, you can use the `mode-variant` prop to apply the mode variants, with `primary` or `secondary`
+as valid input (primary is default). If no prop is given, the component is going to inherit the mode variant from its parent.
+
+To switch between the different modes and mode variants, simply use the appropriate classes or properties in your code.
+
+These changes are also planned for the UI kit in Figma.
+
+## Accordion
+
+[Story](/docs/components--accordion)
+
+#### Replaced `affix` with `expand-icon-position`
+
+The attribute `affix` was replaced by `expand-icon-position`, since `affix` is not descriptive enough of what it does.
+
+##### What action is required?
+
+Replace `affix="prefix"` with `expand-icon-position="start"` and remove `affix="suffix"`.
+
+```jsx
+// Old ❌
+<sdds-accordion>
+  <sdds-accordion-item header="Lorem ipsum" affix="prefix" tabindex="0">
+    // ...
+  </sdds-accordion-item>
+</sdds-accordion>
+
+// New ✅
+<sdds-accordion>
+  <sdds-accordion-item header="Lorem ipsum" expand-icon-position="start" tabindex="0">
+    // ...
+  </sdds-accordion-item>
+</sdds-accordion>
+```
+
+#### Added prop for mode-variant and removed class `sdds-on-white-bg`
+
+Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced a prop called `mode-variant` with options`primary` or
+`secondary` to determine which variant is being shown. For this component `primary` is the default value and represents the old `sdds-on-white-bg`
+
+##### What action is required?
+
+Replace all instances of `class="sdds-on-white-bg"` with the prop `mode-variant`.
+If the component is used on a background with a color of grey-50, mode-variant prop value `secondary` should be passed.
+
+```jsx
+// Old ❌
+<sdds-accordion class="sdds-on-white-bg">
+  <sdds-accordion-item header="Lorem ipsum" tabindex="0">
+    // ...
+  </sdds-accordion-item>
+</sdds-accordion>
+
+// New ✅
+<sdds-accordion mode-variant="primary">
+  <sdds-accordion-item header="Lorem ipsum" tabindex="0">
+    // ...
+  </sdds-accordion-item>
+</sdds-accordion>
+```
+
+## Badge
+
+[Story](/docs/components--badge)
+
+#### Replaced "isVisible" prop with "hidden"
+
+The visibility of the badge was previously determined by its `isVisible` prop. This has now been changed to a `hidden`
+prop, to align with other components. This prop is `false` by default, so for visible badges it does not have to be set.
+
+##### What action is required?
+
+Replace all intances of `isVisible="false"` with `hidden`.
+
+```jsx
+// Old ❌
+<sdds-badges value="1" is-visible="false" size="default"></sdds-badges>
+
+// New ✅
+<sdds-badges value="1" hidden size="lg"></sdds-badges>
+```
+
+#### Replaced "default" value of size prop with "lg"
+
+Size value `default` was replaced with value `lg` as part of standardisation size props to use "t-shirt" naming convention.
+
+##### What action is required?
+
+Replace size value `default` with `lg` or just remove prop as component's default size is `lg`.
+
+```jsx
+// Old ❌
+<sdds-badges value="1" is-visible="true" size="default"></sdds-badges>
+
+// New ✅
+<sdds-badges value="1" is-visible="true" size="lg"></sdds-badges>
+```
+
+## Button
+
+[Story](/docs/components--button)
+
+#### Changed prop `variant` to `mode-variant` in web component
+
+We removed the `variant` prop and replaced it with a new prop, `mode-variant`. New available types are `primary`(prev. `variant`) and `secondary`(prev. `default`).
+
+##### What action is required?
+
+Rename `variant` to `mode-variant` and change type name.
+
+```jsx
+// Old ❌
+<sdds-button variant="variant">
+  Button text
+</sdds-button>
+
+// New ✅
+<sdds-button mode-variant="primary">
+  Button text
+</sdds-button>
+```
+
+## Datetime
+
+[Story](/docs/components--datetime)
+
+#### Aligned props for ´label´ and 'helper'
+
+Previously `<sdds-datetime>` component components has used slots for label and helper. This has now been
+aligned with other components and this component now accepts two props `label` and `helper` to display
+these texts.
+
+##### What action is required?
+
+Change all `<sdds-datetime>` that are using slots to use the prop instead.
+
+```jsx
+// Old ❌
+<sdds-datetime id="datetime" type="datetime-local" size="lg" state="none" no-min-width>
+  <label slot="sdds-label">Label text</label>
+  <span slot="sdds-helper">Helper text</span>
+</sdds-datetime>
+
+// New ✅
+<sdds-datetime
+  id="datetime"
+  type="datetime-local"
+  size="lg"
+  state="none"
+  no-min-width
+  label="Label text"
+  helper="Helper text"
+></sdds-datetime>
+```
+
+## Dropdown
+
+[Story](/docs/components--dropdown)
+
+#### Added prop for mode-variant and removed class `sdds-on-white-bg` for web component
+
+Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant` with values `primary` or
+`secondary` to determine which variant is being shown. `primary` is the default value and represents the old `sdds-on-white-bg`
+
+##### What action is required?
+
+Replace all instances of `class="sdds-on-white-bg"` with the prop `mode-variant` and use `primary` as value.
+If the component is used on a background with a color of grey-50, mode-variant prop value `secondary` should be passed.
+
+```jsx
+// Old ❌
+<sdds-dropdown class="sdds-on-white-bg">
+    // ...
+</sdds-dropdown>
+// New ✅
+<sdds-dropdown mode-variant="primary">
+    // ...
+</sdds-dropdown>
+```
+
+## Navigation Tabs
+
+[Story](/docs/components--navigation-tabs)
+
+#### Changed class names `sdds-navigation-tabs--tab__active` and `sdds-navigation-tabs--tab__disabled`
+
+The class names `sdds-navigation-tabs--tab__active` and `sdds-navigation-tabs--tab__disabled` was
+changed to `sdds-navigation-tabs-tab-active` and `sdds-navigation-tabs-tab-disabled` to conform
+with convention.
+
+##### What action is required?
+
+Changed all instaces of `sdds-navigation-tabs--tab__active` and `sdds-navigation-tabs--tab__disabled`
+to `sdds-navigation-tabs-tab-active` and `sdds-navigation-tabs-tab-disabled`.
+
+```jsx
+// Old ❌
+<sdds-navigation-tabs>
+  <a href="#" class="sdds-navigation-tabs--tab__active">Active tab</a>
+  <a href="#">Tab name</a>
+  <a href="#">Tab name</a>
+  <a href="#">Tab name</a>
+  <a role="link" aria-disabled="true" class="sdds-navigation-tabs--tab__disabled">Disabled tab</a>
+</sdds-navigation-tabs>
+
+// New ✅
+<sdds-navigation-tabs>
+  <a href="#" class="sdds-navigation-tabs-tab-active">Active tab</a>
+  <a href="#">Tab name</a>
+  <a href="#">Tab name</a>
+  <a href="#">Tab name</a>
+  <a role="link" aria-disabled="true" class="sdds-navigation-tabs-tab-disabled">Disabled tab</a>
+</sdds-navigation-tabs>
+
+```
+
+## Inline, Folder & Navigation tabs
+
+### Updated `<sdds-inline-tabs>` and `<sdds-navigation-tabs>` and introduced `<sdds-folder-tabs>`. Introduced child components for all tabs.
+
+Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These
+reminded little of eachother in appearence and therefore it made more sense to treat
+these as two totally seperate component. To have a clear distiction between them we
+have now renamed the `<ssd-inline-tabs>` to `<sdds-folder-tabs>`, to futher highlight
+its look and its function.
+
+All three of our tabs (inline/folder/navigation) are meant to work with either buttons
+or links. Therefore we have created a single child element for each tab, that is
+meant to wrapp the underlying element:
+
+```jsx
+<sdds-inline-tab>,
+<sdds-folder-tab> &
+<sdds-navigation-tab>
+```
+
+The content that is displayed under each tab, is no longer handled by the component.
+And is therefor something that you as a user of the components will have to implement
+yourself. We will of course be peresenting examples of how this could be implemented,
+and if you have any questions we are always here to help.
+
+The new components are available here in storybook:
+
+- [Inline tabs](/docs/components--inline-tabs)
+- [Folder tabs](/docs/components--folder-tabs)
+- [Navigation tabs](/docs/components--navigation-tabs)
+
+```jsx
+// New sdds-inline-tabs with buttons 🆕
+<sdds-inline-tabs>
+  <sdds-inline-tab>
+    <button>First tab</button>
+  </sdds-inline-tab>
+  <sdds-inline-tab>
+    <button>Second tab</button>
+  </sdds-inline-tab>
+  <sdds-inline-tab>
+    <button>Third tab</button>
+  </sdds-inline-tab>
+  <sdds-inline-tab disabled>
+    <button>Fourth tab</button>
+  </sdds-inline-tab>
+</sdds-inline-tabs>
+
+// New sdds-inline-tabs with links 🆕
+<sdds-inline-tabs>
+  <sdds-inline-tab>
+    <a href="#">First tab</a>
+  </sdds-inline-tab>
+  <sdds-inline-tab>
+    <a href="#">Second tab</a>
+  </sdds-inline-tab>
+  <sdds-inline-tab>
+    <a href="#">Third tab</a>
+  </sdds-inline-tab>
+  <sdds-inline-tab disabled>
+    <a href="#">Fourth tab</a>
+  </sdds-inline-tab>
+</sdds-inline-tabs>
+
+// New sdds-folder-tabs with buttons 🆕
+<sdds-folder-tabs>
+  <sdds-folder-tab>
+    <button>First tab</button>
+  </sdds-folder-tab>
+  <sdds-folder-tab>
+    <button>Second tab</button>
+  </sdds-folder-tab>
+  <sdds-folder-tab selected>
+    <button>Third tab</button>
+  </sdds-folder-tab>
+  <sdds-folder-tab disabled>
+    <button>Fourth tab</button>
+  </sdds-folder-tab>
+</sdds-folder-tabs>
+
+// New sdds-folder-tabs with links 🆕
+<sdds-folder-tabs>
+  <sdds-folder-tab link-href="#">
+    <a href="#">First tab</a>
+  </sdds-folder-tab>
+  <sdds-folder-tab link-href="#">
+    <a href="#">Second tab</a>
+  </sdds-folder-tab>
+  <sdds-folder-tab>
+    <a href="#">Third tab</a>
+  </sdds-folder-tab>
+  <sdds-folder-tab disabled>
+    <a href="#">Fourth tab</a>
+  </sdds-folder-tab>
+</sdds-folder-tabs>
+
+
+// New sdds-navigation-tabs with buttons 🆕
+<sdds-navigation-tabs>
+  <sdds-navigation-tab>
+    <button>First tab</button>
+  </sdds-navigation-tab>
+  <sdds-navigation-tab>
+    <button>Second tab</button>
+  </sdds-navigation-tab>
+  <sdds-navigation-tab>
+    <button>Third tab</button>
+  </sdds-navigation-tab>
+  <sdds-navigation-tab disabled>
+    <button>Fourth tab</button>
+  </sdds-navigation-tab>
+</sdds-navigation-tabs>
+
+// New sdds-navigation-tabs with links 🆕
+<sdds-navigation-tabs>
+  <sdds-navigation-tab>
+    <a href="#">First tab</a>
+  </sdds-navigation-tab>
+  <sdds-navigation-tab>
+    <a href="#">Second tab</a>
+  </sdds-navigation-tab>
+  <sdds-navigation-tab >
+    <a href="#">Third tab</a>
+  </sdds-navigation-tab>
+  <sdds-navigation-tab disabled >
+    <a href="#">Fourth tab</a>
+  </sdds-navigation-tab>
+</sdds-navigation-tabs>
+```
+
+## Textarea
+
+[Story](/docs/components--textarea)
+
+#### Changed prop name 'max-length'
+
+The prop `maxlength` was changed to `max-length` to conform with other prop names.
+
+##### What action is required?
+
+Rename all instances of `maxlength` to `max-length`.
+
+```jsx
+// Old ❌
+<sdds-textarea
+    maxlength="10"
+></sdds-textarea>
+
+// New ✅
+<sdds-textarea
+    max-length="10"
+></sdds-textarea>
+
+```
+
+#### Changed prop name 'readonly'
+
+The prop `readonly` was changed to `read-only` to conform with other prop names.
+
+##### What action is required?
+
+Rename all instances of `readonly` to `read-only`.
+
+```jsx
+// Old ❌
+<sdds-textarea
+    readonly
+></sdds-textarea>
+
+// New ✅
+<sdds-textarea
+    read-only
+></sdds-textarea>
+
+```
+
+#### Changed prop name 'autofocus'
+
+The prop `autofocus` was changed to `auto-focus` to conform with other prop names.
+
+##### What action is required?
+
+Rename all instances of `autofocus` to `auto-focus`.
+
+```jsx
+// Old ❌
+<sdds-textarea
+    autofocus
+></sdds-textarea>
+
+// New ✅
+<sdds-textarea
+    auto-focus
+></sdds-textarea>
+
+```
+
+#### Added prop for mode-variant and removed class `sdds-on-white-bg` on container element
+
+Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant` with values `primary` or
+`secondary`. `primary` is the default value and represents the old `sdds-on-white-bg`
+
+##### What action is required?
+
+Replace all instances of `class="sdds-on-white-bg"` on container element with the prop `mode-variant` and pass `primary` as value directly on the component element.
+If the component is used on a background with a color of grey-50, mode-variant prop value `secondary` should be passed.
+
+```jsx
+// Old ❌
+<div class="sdds-on-white-bg">
+  <sdds-textarea> </sdds-textarea>
+</div>
+// New ✅
+ <sdds-textarea mode-variant="primary">
+ </sdds-textarea>
+```
+
+## Textfield
+
+[Story](/docs/components--textarea)
+
+#### Changed prop name 'maxlength'
+
+The prop `maxlength` was changed to `max-length` to conform with other prop names.
+
+##### What action is required?
+
+Rename all instances of `maxlength` to `max-length`.
+
+```jsx
+// Old ❌
+<sdds-textfield
+    maxlength="10"
+></sdds-textfield>
+
+// New ✅
+<sdds-textfield
+    max-length="10"
+></sdds-textfield>
+```
+
+#### Changed props for label and label-position to align with convention.
+
+The prop `label-inside` was used to set an inside label, and to set an outside label you would pass a `<slot>`.
+This has been changed and aligned with convention. This component now accepts a `label` prop for the text to
+be displayed and a `label-position` to set the position of this label. For no label just leave out the `label`
+and `label-position` props.
+
+##### What action is required?
+
+For all labels inside remove the `label-inside` prop and add `label-position="inside"` and `label="Your label text"`
+props. For label outside remove the `<label slot="sdds-label">Label text</label>` and add `label-position="outside"`
+and `label="Your label text"` props instead.
+
+```jsx
+// Old ❌ - Inside label
+<sdds-textfield
+  type="text"
+  size="lg"
+  state="none"
+  variant="default"
+  label-inside="Label text"
+  placeholder="Placeholder">
+</sdds-textfield>
+
+// Old ❌ - Outside label
+<sdds-textfield
+  type="text"
+  size="lg"
+  state="none"
+  variant="default"
+  placeholder="Placeholder">
+   <label slot="sdds-label">Label text</label>
+</sdds-textfield>
+
+
+// New ✅ - Inside label
+<sdds-textfield
+  type="text"
+  size="lg"
+  state="none"
+  variant="default"
+  label="Label text"
+  label-position="inside"
+  placeholder="Placeholder"
+></sdds-textfield>
+
+// New ✅ - Outside label
+<sdds-textfield
+  type="text"
+  size="lg"
+  state="none"
+  variant="default"
+  label="Label text"
+  label-position="outside"
+  placeholder="Placeholder"
+  ></sdds-textfield>
+```
+
+#### Changed prop name 'nominwidth'
+
+The prop `nominwidth` was changed to `no-min-width` to conform with other prop names.
+
+##### What action is required?
+
+Rename all instances of `nominwidth` to `no-min-width`.
+
+```jsx
+// Old ❌
+<sdds-textfield
+    nominwidth
+></sdds-textfield>
+
+// New ✅
+<sdds-textfield
+    no-min-width
+></sdds-textfield>
+```
+
+#### Removed slot for helper and added `helper` prop
+
+Previously the textfield has had its helper text set via a slot. This is now changed
+to be a prop instead, to align with other components.
+
+##### What action is required?
+
+Change all instaces of `<span slot='sdds-helper'>${helper}</span>` to attrubute
+`helper="${helper}"`
+
+```jsx
+// Old ❌
+<sdds-textfield
+>
+  <span slot='sdds-helper'>Helper text!</span>
+</sdds-textfield>
+
+// New ✅
+<sdds-textfield
+    helper="Helper text"
+></sdds-textfield>
+```
+
+#### Added prop for mode-variant and removed class `sdds-on-white-bg` on container element
+
+Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant` with values `primary` or
+`secondary`. `primary` is the default value and represents the old `sdds-on-white-bg`
+
+##### What action is required?
+
+Replace all instances of `class="sdds-on-white-bg"` on container element with the prop `mode-variant` with `primary` as value directly on the component.
+If the component is used on a background with a color of grey-50, mode-variant prop value `secondary` should be passed.
+
+```jsx
+// Old ❌
+<div class="sdds-on-white-bg">
+  <sdds-textfield> </sdds-textfield>
+</div>
+// New ✅
+ <sdds-textfield mode-variant="primary">
+ </sdds-textfield>
+```
+
+## Data table
+
+[Story](/docs/components-data-table--default)
+
+#### Renamed `enablePagination` prop to `pagination`.
+
+##### What action is required?
+
+```jsx
+// Old ❌
+<sdds-table >
+  <sdds-table-header>
+    //
+  </sdds-table-header>
+  <sdds-table-body enable-dummy-data>
+    //
+  </sdds-table-body>
+  <sdds-table-footer enable-pagination ></sdds-table-footer>
+</sdds-table>
+
+// New ✅
+<sdds-table >
+  <sdds-table-header>
+    //
+  </sdds-table-header>
+  <sdds-table-body enable-dummy-data>
+    //
+  </sdds-table-body>
+  <sdds-table-footer pagination ></sdds-table-footer>
+</sdds-table>
+```
+
+#### Removed `disableFilteringFunction`, `disableSortingFunction` and `enableClientPagination`.
+
+These props were previously available on the data table component to allow for users to implement
+their own filter/sort and pagination logic. Now we have removed these props, and instead made the
+events that these are emitting cencelable.
+
+The events are: 'sddsPageChange', 'sddsSortChange', 'sddsFilterChange'
+
+##### What action is required?
+
+```jsx
+// Old ❌
+<sdds-table >
+  <sdds-table-header>
+    //
+  </sdds-table-header>
+  <sdds-table-body enable-dummy-data>
+    //
+  </sdds-table-body>
+  <sdds-table-footer pagination enable-client-pagination rows-per-page="4"></sdds-table-footer>
+</sdds-table>
+
+// New ✅
+<sdds-table >
+  <sdds-table-header>
+    //
+  </sdds-table-header>
+  <sdds-table-body enable-dummy-data>
+    //
+  </sdds-table-body>
+  <sdds-table-footer pagination rows-per-page="4"></sdds-table-footer>
+</sdds-table>
+
+<script>
+  document.addEventListener('sddsPageChange', (event) => {
+    event.preventDefault()
+  })
+
+</script>
+```

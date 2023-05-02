@@ -1,0 +1,47 @@
+:root,
+.sdds-mode-light {
+  /* Horizontal divider */
+  --sdds-navigation-tabs-horizontal-divider-background: var(--sdds-blue-900);
+  --sdds-navigation-tabs-horizontal-divider-opacity: 0.16;
+  --sdds-navigation-tabs-background: var(--sdds-white);
+
+  /* Scroll button */
+  --sdds-navigation-tabs-scroll-btn-background: var(--sdds-grey-50);
+  --sdds-navigation-tabs-scroll-btn-background-hover: var(--sdds-grey-300);
+  --sdds-navigation-tabs-scroll-btn-background-active: var(--sdds-grey-400);
+
+  /* Tab */
+  --sdds-navigation-tabs-tab-color: rgba(0 21 51/60%);
+  --sdds-navigation-tabs-tab-color-selected: var(--sdds-grey-958);
+  --sdds-navigation-tabs-tab-color-disabled: var(--sdds-blue-900);
+  --sdds-navigation-tabs-tab-color-opacity-disabled: 0.38;
+  --sdds-navigation-tabs-tab-indicator-background-hover: #d1d5db;
+  --sdds-navigation-tabs-tab-color-hover: var(--sdds-grey-958);
+  --sdds-navigation-tabs-tab-color-focus: var(--sdds-grey-958);
+  --sdds-navigation-tabs-tab-color-active: var(--sdds-grey-958);
+  --sdds-navigation-tabs-tab-indicator-background-active: var(--sdds-blue-400);
+  --sdds-navigation-tabs-tab-indicator-background-hover: #d1d5db;
+}
+
+.sdds-mode-dark {
+  --sdds-navigation-tabs-horizontal-divider-background: var(--sdds-blue-100);
+  --sdds-navigation-tabs-horizontal-divider-opacity: 0.24;
+  --sdds-navigation-tabs-background: var(--sdds-grey-900);
+
+  /* Scroll button */
+  --sdds-navigation-tabs-scroll-btn-background: var(--sdds-grey-800);
+  --sdds-navigation-tabs-scroll-btn-background-hover: var(--sdds-grey-900);
+  --sdds-navigation-tabs-scroll-btn-background-active: var(--sdds-grey-900);
+
+  /* Tab */
+  --sdds-navigation-tabs-tab-color: rgba(228 233 241 /60%);
+  --sdds-navigation-tabs-tab-color-selected: var(--sdds-grey-50);
+  --sdds-navigation-tabs-tab-color-disabled: var(--sdds-blue-50);
+  --sdds-navigation-tabs-tab-color-opacity-disabled: 0.38;
+  --sdds-navigation-tabs-tab-indicator-background-hover: #373d46;
+  --sdds-navigation-tabs-tab-color-hover: var(--sdds-grey-50);
+  --sdds-navigation-tabs-tab-color-focus: var(--sdds-grey-50);
+  --sdds-navigation-tabs-tab-color-active: var(--sdds-grey-50);
+  --sdds-navigation-tabs-tab-indicator-background-active: var(--sdds-blue-300);
+  --sdds-navigation-tabs-tab-indicator-background-hover: #373d46;
+}

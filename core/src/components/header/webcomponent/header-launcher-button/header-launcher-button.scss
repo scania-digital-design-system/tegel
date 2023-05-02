@@ -1,0 +1,14 @@
+:host {
+  display: block;
+
+  sdds-header-item {
+    display: block; // launcher button is always visible, regular header buttons are not.
+  }
+
+  .icon {
+    position: relative;
+    margin-left: -6px;
+    left: 3px;
+    transition: all 0.2s ease-in-out;
+  }
+}

@@ -1,0 +1,40 @@
+:root,
+.sdds-mode-light {
+  // Banner text color
+  --sdds-banner-text-color: var(--sdds-grey-958);
+
+  // Banner "X" color
+  --sdds-banner-x-color: var(--sdds-black);
+
+  // Type: Default
+  --sdds-banner-background-default: var(--sdds-grey-50);
+  --sdds-banner-prefix-default-color: var(--sdds-grey-700);
+
+  // Type: Info
+  --sdds-banner-background-info: var(--sdds-grey-300);
+  --sdds-banner-prefix-info-color: var(--sdds-blue-400);
+
+  // Type: Error
+  --sdds-banner-background-error: var(--sdds-red-100);
+  --sdds-banner-prefix-error-color: var(--sdds-red-500);
+}
+
+.sdds-mode-dark {
+  // Banner text color
+  --sdds-banner-text-color: var(--sdds-grey-50);
+
+  // Banner "X" color
+  --sdds-banner-x-color: var(--sdds-white);
+
+  // Type: Default
+  --sdds-banner-background-default: var(--sdds-grey-900);
+  --sdds-banner-prefix-default-color: var(--sdds-grey-400);
+
+  // Type: Info
+  --sdds-banner-background-info: var(--sdds-blue-700);
+  --sdds-banner-prefix-info-color: var(--sdds-information);
+
+  // Type: Error
+  --sdds-banner-background-error: var(--sdds-red-900);
+  --sdds-banner-prefix-error-color: var(--sdds-negative);
+}

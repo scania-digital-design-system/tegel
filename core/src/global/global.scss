@@ -1,0 +1,112 @@
+// What is this document for:
+// https://stenciljs.com/docs/styling#global-styles
+// https://stenciljs.com/docs/config#globalstyle
+
+// Logos
+//@import '../theme/core/logotype/vars.scss';
+
+// Colors
+@import '../../../color';
+
+
+// Typography
+@import 'scania-fonts';
+@import 'scania-fonts-vars';
+@import 'scania-fonts-selectors';
+
+// Grid
+@import '../../../grid/dist/css/grid.css';
+
+// Vars
+@import '_variables.scss';
+
+@import '_variables.scss';
+
+// Utility classes
+@import 'utility-classes';
+
+@import 'src/components/data-table/native-table';
+
+//Web component theme variables
+@import 'src/components/accordion/accordion-vars';
+@import 'src/components/banner/banner-vars';
+@import 'src/components/breadcrumb/breadcrumb-vars';
+@import 'src/components/block/block-vars';
+@import 'src/components/button/button-vars';
+@import 'src/components/card/card-vars';
+@import 'src/components/checkbox/checkbox-vars';
+@import 'src/components/chip/chip-vars';
+@import 'src/components/data-table/data-table-vars';
+@import 'src/components/datetime/datetime-vars';
+@import 'src/components/dropdown/dropdown-select';
+@import 'src/components/dropdown/dropdown-vars';
+@import 'src/components/footer/footer-vars';
+@import 'src/components/header/header-vars';
+
+// TODO - Remove the webcomponent folder
+@import 'src/components/header/webcomponent/header-item/header-item-global.scss';
+@import 'src/components/link/link-vars';
+@import 'src/components/message/message-vars';
+@import 'src/components/modal/modal';
+@import 'src/components/divider/divider-vars';
+@import 'src/components/popover-canvas/popover-canvas-vars';
+@import 'src/components/popover-menu/popover-menu-vars';
+@import 'src/components/radio-button/radio-button-vars';
+@import 'src/components/side-menu/side-menu-vars';
+
+// TODO - Remove the webcomponent folder
+@import 'src/components/side-menu/webcomponent/side-menu-item/side-menu-item-global';
+@import 'src/components/stepper/stepper-vars.scss';
+@import 'src/components/tabs/folder-tabs/folder-tabs-vars';
+@import 'src/components/tabs/inline-tabs/inline-tabs-vars';
+@import 'src/components/tabs/navigation-tabs/navigation-tabs-vars';
+@import 'src/components/textarea/textarea-vars';
+@import 'src/components/textfield/textfield-vars';
+@import 'src/components/toast/toast-vars';
+@import 'src/components/toggle/toggle-vars';
+@import 'src/components/tooltip/tooltip-vars';
+
+@import 'src/components/dropdown-v2/dropdown-vars';
+@import 'src/components/dropdown-v2/dropdown-option-v2/dropdown-option-vars';
+
+:root {
+  --johnny-red: green;
+}
+
+body {
+  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  flex: 1;
+}
+
+:root,
+.sdds-mode-light {
+  color: var(--sdds-grey-958);
+  background-color: var(--sdds-white);
+
+  & .sdds-mode-variant-primary {
+    color: var(--sdds-grey-958);
+    background-color: var(--sdds-white);
+  }
+
+  & .sdds-mode-variant-secondary {
+    color: var(--sdds-grey-958);
+    background-color: var(--sdds-grey-50);
+  }
+}
+
+.sdds-mode-dark {
+  color: var(--sdds-grey-100);
+  background-color: var(--sdds-grey-958);
+
+  & .sdds-mode-variant-primary {
+    color: var(--sdds-grey-100);
+    background-color: var(--sdds-grey-958);
+  }
+
+  & .sdds-mode-variant-secondary {
+    color: var(--sdds-grey-100);
+    background-color: var(--sdds-grey-900);
+  }
+}

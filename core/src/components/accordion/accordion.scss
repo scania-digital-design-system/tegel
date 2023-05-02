@@ -1,0 +1,49 @@
+@import '../../mixins/focus-state';
+@import '../../mixins/disabled-style';
+@import '../../mixins/box-sizing';
+
+:host {
+  display: block;
+  @include sdds-box-sizing;
+
+  .sdds-accordion-header-icon-start,
+  .sdds-accordion-header-icon-end {
+    position: relative;
+  }
+}
+
+:host(:focus) {
+  @include sdds-focus-state;
+
+  .sdds-accordion-item {
+    .sdds-accordion-header-icon-start,
+    .sdds-accordion-header-icon-end {
+      background-color: var(--sdds-accordion-background-focus);
+      outline: none;
+
+      &::after {
+        border-color: var(--sdds-accordion-border-focus);
+      }
+    }
+  }
+
+  .disabled {
+    @include disabledStyle;
+  }
+}
+
+:host(:active) {
+  .sdds-accordion-header-icon-start,
+  .sdds-accordion-header-icon-end {
+    background-color: var(--sdds-accordion-background-active);
+    outline: none;
+  }
+
+  .disabled {
+    @include disabledStyle;
+  }
+}
+
+:host(:last-child) {
+  border-bottom: 1px solid var(--sdds-accordion-border);
+}

@@ -1,0 +1,22 @@
+The popover canvas, like the popver menu, is a component made for context menus and such, but doesn't have any content by default. Instead it's up to the developer to implement the contents of the popup.
+It requires a valid selector as an attribute and then it will be automatically opened when the user clicks on the element with this selector.
+
+The placement-attribute controls where the popver canvas should popup when the element is clicked.
+
+Valid values are:
+
+'auto', 'auto-left', 'auto-right', 'bottom', 'bottom-start', 'bottom-end', 'top', 'top-start', 'top-end', 'left', 'left-start', 'left-end', 'right', 'right-start, 'right-end'
+
+<sdds-popover-canvas
+    placement="auto"
+    selector="#trigger"> 
+    <div class="my-special-content">
+        <h2>Hello!</h2>
+        <p>
+            Welcome to our popup-content!
+            <a target="_blank" href="https://digitaldesign.scania.com">Links work too!</a>
+        </p>
+    </div>
+</sdds-popover-canvas>
+
+<button id="trigger">Click to open the popover canvas</div>

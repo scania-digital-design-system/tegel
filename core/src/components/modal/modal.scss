@@ -1,0 +1,320 @@
+@import '../../mixins/z-index';
+@import 'modal-vars';
+@import '../../mixins/box-sizing';
+@import '../../mixins/focus-state';
+
+//TODO: Find a way to create a mixin in spacings that can be used for screen size in rem
+//Media rules doesn't calculate correct with using rem
+// Screen breakpoints
+$screen-s: 320px; //320px
+$screen-md: 672px; // 672px
+$screen-l: 1056px; //1056px
+$screen-xl: 1312px; //1312px
+$screen-xxl: 1584px; //1584px
+
+$modals: (
+  $screen-s: (
+    xs: 100%,
+    sm: 100%,
+    md: 100%,
+    lg: 100%,
+  ),
+  $screen-md: (
+    xs: 75%,
+    sm: 62.5%,
+    md: 75%,
+    lg: 100%,
+  ),
+  $screen-l: (
+    xs: 31.25%,
+    sm: 43.75%,
+    md: 62.5%,
+    lg: 75%,
+  ),
+  $screen-xl: (
+    xs: 31.25%,
+    sm: 37.5%,
+    md: 62.5%,
+    lg: 75%,
+  ),
+  $screen-xxl: (
+    xs: 25%,
+    sm: 37.5%,
+    md: 50%,
+    lg: 75%,
+  ),
+);
+
+/* MIXINS */
+
+@mixin modal-scroll-inner {
+  /* SCROLL STUFF */
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--sdds-grey-300);
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background-color: var(--sdds-grey-300);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--sdds-grey-500);
+  }
+}
+
+@mixin modal-scroll-outer {
+  /* SCROLL STUFF */
+
+  /* width */
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: var(--sdds-grey-300);
+    border-radius: 0 1em 1em 0;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background-color: var(--sdds-grey-300);
+    border-radius: 0 1em 1em 0;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--sdds-grey-500);
+    border-radius: 0 1em 1em 0;
+  }
+}
+
+@mixin modal-host {
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: z(modal);
+  background-color: var(--sdds-modal-backdrop);
+  padding: 0 16px;
+
+  @media (max-width: $screen-s) {
+    padding: 0;
+  }
+
+  &.show {
+    display: flex;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+@mixin modal-header {
+  display: flex;
+  padding-bottom: var(--sdds-spacing-element-8);
+  position: sticky;
+  top: 0;
+  background-color: var(--sdds-modal-background);
+  z-index: 1;
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    height: 16px;
+    top: -16px;
+    width: 100%;
+    background-color: var(--sdds-modal-background);
+  }
+}
+
+@mixin modal-headline {
+  color: var(--sdds-modal-text);
+  font: var(--sdds-headline-05);
+  letter-spacing: var(--sdds-headline-05-ls);
+  margin: 0;
+  flex: 1;
+}
+
+@mixin modal-body {
+  color: var(--sdds-modal-text);
+  font: var(--sdds-body-01);
+  letter-spacing: var(--sdds-body-01-ls);
+  padding-bottom: 40px;
+  overflow-y: visible;
+  padding-right: 16px;
+  @include modal-scroll-inner;
+
+  @media (min-width: $screen-l) {
+    padding-right: 64px;
+  }
+}
+
+/* MODAL STYLING */
+
+.sdds-modal {
+  @include sdds-box-sizing;
+
+  background-color: var(--sdds-modal-background);
+  margin: auto;
+  position: relative;
+  border-radius: 4px;
+  padding: 16px;
+  max-height: 85vh;
+  overflow-y: auto;
+
+  @include modal-scroll-outer;
+
+  &__actions-sticky {
+    overflow: hidden;
+
+    .sdds-modal-body {
+      font: var(--sdds-body-01);
+      letter-spacing: var(--sdds-body-01-ls);
+      padding-bottom: 96px;
+      margin: 0 -16px 0 0;
+      max-height: calc(85vh - 36px);
+      overflow-y: auto;
+    }
+
+    .sdds-modal-actions {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      background-color: var(--sdds-modal-background);
+      padding: var(--sdds-spacing-element-16);
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__actions-static {
+    .sdds-modal-actions {
+      background-color: var(--sdds-modal-background);
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
+
+//Width of modals in different breakpoints
+@each $screen, $modals in $modals {
+  @media (min-width: $screen) {
+    @each $modal, $value in $modals {
+      .sdds-modal-#{$modal} {
+        width: $value;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-s) {
+  .sdds-modal-md,
+  .sdds-modal-lg,
+  .sdds-modal-sm {
+    height: 100%;
+
+    slot[name='sdds-modal-actions']::slotted(*) {
+      display: flex;
+    }
+  }
+}
+
+/* MODAL SUBELEMENTS */
+
+.sdds-modal-header {
+  @include modal-header;
+}
+
+.sdds-modal-headline {
+  @include modal-headline;
+
+  color: var(--sdds-modal-text);
+}
+
+.sdds-modal-body {
+  @include modal-body;
+}
+
+.sdds-modal-backdrop {
+  @include sdds-box-sizing;
+  @include modal-host;
+}
+
+button.sdds-modal-close {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  appearance: unset;
+}
+
+.sdds-modal-close {
+  display: inline-block;
+  height: auto;
+  color: var(--sdds-modal-icon);
+  cursor: pointer;
+
+  &:focus {
+    @include sdds-focus-state;
+  }
+
+  @media (min-width: $screen-s) {
+    margin-left: var(--sdds-spacing-element-16);
+  }
+
+  @media (min-width: $screen-l) {
+    margin-left: var(--sdds-spacing-element-48);
+  }
+}
+
+//web component with nested svg
+.sdds-modal-close-btn {
+  display: inline-block;
+  height: auto;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  @media (min-width: $screen-s) {
+    margin-left: var(--sdds-spacing-element-16);
+  }
+
+  @media (min-width: $screen-l) {
+    margin-left: var(--sdds-spacing-element-48);
+  }
+
+  svg {
+    fill: var(--sdds-modal-icon);
+  }
+}
+
+.sdds-modal-overflow {
+  overflow: hidden;
+}
+
+/* WEB COMPONENT STUFF */
+
+:host {
+  @include modal-host;
+
+  .sdds-modal-close {
+    border: none;
+    background-color: transparent;
+  }
+
+  .sdds-modal-close-btn {
+    border: none;
+    background-color: transparent;
+  }
+}
+
+:host(.show) {
+  display: flex;
+}
+
+:host(.hide) {
+  display: none;
+}

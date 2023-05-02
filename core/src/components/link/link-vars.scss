@@ -1,0 +1,16 @@
+:root,
+.sdds-mode-light {
+  --sdds-link: var(--sdds-blue-500);
+  --sdds-link-hover: var(--sdds-blue-400);
+  --sdds-link-focus: var(--sdds-blue-400);
+  --sdds-link-visited: var(--sdds-grey-900);
+  --sdds-link-disabled: var(--sdds-grey-400);
+}
+
+.sdds-mode-dark {
+  --sdds-link: var(--sdds-blue-300);
+  --sdds-link-hover: var(--sdds-blue-400);
+  --sdds-link-focus: var(--sdds-blue-400);
+  --sdds-link-visited: var(--sdds-blue-100);
+  --sdds-link-disabled: var(--sdds-grey-800);
+}

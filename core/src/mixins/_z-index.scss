@@ -1,0 +1,12 @@
+// source: https://www.smashingmagazine.com/2014/06/sassy-z-index-management-for-complex-layouts/
+@function z($element) {
+  $z-index: default, dropdown, tab, header, banner, overlay, modal, toast, tooltip;
+  $value: index($z-index, $element);
+
+  @if $value {
+    @return ($value - 1) * 100;
+  }
+
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @return null;
+}

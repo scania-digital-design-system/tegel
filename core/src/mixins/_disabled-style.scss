@@ -1,0 +1,17 @@
+@mixin disabledStyle {
+  &,
+  * {
+    cursor: not-allowed;
+  }
+
+  .sdds-accordion-header-icon-start,
+  .sdds-accordion-header-icon-end {
+    background-color: var(--sdds-accordion-bg);
+    outline: none;
+    pointer-events: none;
+
+    &::after {
+      border-color: transparent;
+    }
+  }
+}
