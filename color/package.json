@@ -1,0 +1,22 @@
+{
+  "name": "@scania/tegel-color",
+  "version": "0.0.1",
+  "description": "Tegel Design System color package",
+  "main": "dist/scss/color.scss",
+  "scripts": {
+    "build": "node compile.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.49.9",
+    "scss-bundle": "^3.1.2",
+    "del": "^6.0.0"
+  }
+}
