@@ -1,0 +1,42 @@
+/*
+  Contains spacing variables for the layout
+*/
+
+// 1 rem = 4px;
+// Layout scale
+$spacing-layout-8: 8px;
+$spacing-layout-16: 16px;
+$spacing-layout-24: 24px;
+$spacing-layout-32: 32px;
+$spacing-layout-48: 48px;
+$spacing-layout-64: 64px;
+$spacing-layout-72: 72px;
+$spacing-layout-96: 96px;
+$spacing-layout-128: 128px;
+$spacing-layout-160: 160px;
+
+// Element scale
+$spacing-element-2: 2px;
+$spacing-element-4: 4px;
+$spacing-element-8: 8px;
+$spacing-element-12: 12px;
+$spacing-element-16: 16px;
+$spacing-element-20: 20px;
+$spacing-element-24: 24px;
+$spacing-element-32: 32px;
+$spacing-element-40: 40px;
+$spacing-element-48: 48px;
+
+// Screen breakpoints (TODO remove these, the $grid- is the one to use)
+$screen-s: 320px;
+$screen-md: 672px;
+$screen-l: 1056px;
+$screen-xl: 1312px;
+$screen-xxl: 1584px;
+$grid-xs: 0;
+$grid-sm: 608px;
+$grid-md: 800px;
+$grid-lg: 992px;
+$grid-xlg: 1184px;
+$grid-xxlg: 1376px;
+$grid-max: 1584px;
