@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "start-storybook -p 6006"
+    "build-stencil:watch": "cd core && npm run build-stencil:watch",
+    "start-storybook": "start-storybook -p 6006",
+    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
   },
   "repository": {
     "type": "git",

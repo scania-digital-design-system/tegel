@@ -17,11 +17,7 @@ if (process.env.STORYBOOK_ENV === "development") {
 }
 
 module.exports = {
-  stories: [
-    "../color/stories/*.stories.@(js|jsx|ts|tsx)",
-    "../grid/stories/*.stories.@(js|jsx|ts|tsx)",
-    "../core/**/*.stories.@(js|jsx|ts|tsx)",
-  ],
+  stories: ["../core/**/*.stories.@(js|jsx|ts|tsx)"],
   framework: "@storybook/html",
   staticDirs: ["../dist", "../public"],
 };
