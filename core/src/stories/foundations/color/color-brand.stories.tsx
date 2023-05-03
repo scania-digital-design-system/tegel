@@ -1,20 +1,19 @@
-
+import { formatHtmlPreview } from "../../../utils/utils";
 
 export default {
-  title: 'Foundations/Color',
+  title: "Foundations/Color",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       source: {
-        state: 'closed',
+        state: "closed",
       },
     },
   },
 };
 
 const Template = () =>
-  `
-
+  formatHtmlPreview(`
   <style>
   /* Demo code for presentation purposes */
   .demo-wrapper {
@@ -38,6 +37,6 @@ const Template = () =>
   <div class="demo-wrapper" style="background-color: var(--sdds-blue)">
     <span>--sdds-blue</span>
   </div>
-  `;
+  `);
 
 export const Brand = Template.bind({});

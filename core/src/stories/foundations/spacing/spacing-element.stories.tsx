@@ -1,13 +1,15 @@
+import { formatHtmlPreview } from "../../../utils/utils";
 
 export default {
-  title: 'Foundations/Spacing',
+  title: "Foundations/Spacing",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 
-const Template = () => (
-  `
+const Template = () =>
+  formatHtmlPreview(
+    `
   <style>
     /* Demo code for presentation purposes */
     .sdds-spacing-element-demo-box {
@@ -97,7 +99,8 @@ const Template = () => (
       <td><span class="sdds-spacing-element-demo-box" style="width: var(--sdds-spacing-element-48); height: var(--sdds-spacing-element-48);"></span></td>
     </tr>
   </table>
-  `);
+  `
+  );
 
 export const SpacingElement = Template.bind({});
 SpacingElement.args = {};
