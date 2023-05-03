@@ -7,7 +7,7 @@
     "build": "cd core && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-stencil:watch": "cd core && npm run build-stencil:watch",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook --quiet",
     "deploy-storybook": "npm install && npm run build && npm run build-storybook",
     "start-storybook": "start-storybook -p 6006",
     "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
