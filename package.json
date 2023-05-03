@@ -4,10 +4,14 @@
   "description": "Tegel Digital Design System",
   "main": "index.js",
   "scripts": {
+    "build": "cd core && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-stencil:watch": "cd core && npm run build-stencil:watch",
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "npm install && npm run build && npm run build-storybook",
     "start-storybook": "start-storybook -p 6006",
     "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
+   
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,11 @@
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
+    "addon-screen-reader": "^1.8.6"
+  },
+
+  "devDependencies": {
+    "concurrently": "^8.0.1",
     "@storybook/addon-a11y": "^6.5.14",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-docs": "^6.4.19",
@@ -30,11 +39,7 @@
     "@storybook/addon-interactions": "^6.5.12",
     "@storybook/addons": "^6.5.13",
     "@storybook/html": "^6.5.12",
-    "addon-screen-reader": "^1.8.6",
     "storybook-addon-designs": "^6.3.1",
     "storybook-dark-mode": "^3.0.0"
-  },
-  "devDependencies": {
-    "concurrently": "^8.0.1"
   }
 }
