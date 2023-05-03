@@ -20,5 +20,5 @@ module.exports = {
   addons: addons,
   stories: ["../core/**/*.stories.@(js|jsx|ts|tsx)"],
   framework: "@storybook/html",
-  staticDirs: ["../dist", "../public"],
+  staticDirs: ['../public'],
 };
