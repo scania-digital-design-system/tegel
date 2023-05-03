@@ -6,7 +6,7 @@
 //@import '../theme/core/logotype/vars.scss';
 
 // Colors
-@import '../../../color';
+@import '../../../color/color';
 
 
 // Typography
@@ -15,7 +15,7 @@
 @import 'scania-fonts-selectors';
 
 // Grid
-@import '../../../grid/dist/css/grid.css';
+@import '../../../grid/grid';
 
 // Vars
 @import '_variables.scss';
