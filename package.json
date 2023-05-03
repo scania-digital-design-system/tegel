@@ -21,10 +21,20 @@
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
     "@storybook/addon-a11y": "^6.5.14",
+    "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-docs": "^6.4.19",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addons": "^6.5.13",
     "@storybook/html": "^6.5.12",
     "addon-screen-reader": "^1.8.6",
     "storybook-addon-designs": "^6.3.1",
     "storybook-dark-mode": "^3.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }
