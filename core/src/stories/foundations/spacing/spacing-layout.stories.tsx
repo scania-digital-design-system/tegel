@@ -1,9 +1,9 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import { formatHtmlPreview } from "../../../utils/utils";
 
 export default {
-  title: 'Foundations/Spacing',
+  title: "Foundations/Spacing",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 
@@ -93,7 +93,7 @@ const Template = () =>
       <td><span class="demo-wrapper" style="width: var(--sdds-spacing-layout-160); height: var(--sdds-spacing-layout-160);"></span></td>
     </tr>
   </table>
-  `,
+  `
   );
 
 export const SpacingLayout = Template.bind({});

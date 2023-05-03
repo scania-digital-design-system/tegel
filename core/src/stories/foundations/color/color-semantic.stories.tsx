@@ -1,18 +1,19 @@
+import { formatHtmlPreview } from "../../../utils/utils";
 
 export default {
-  title: 'Foundations/Color',
+  title: "Foundations/Color",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       source: {
-        state: 'closed',
+        state: "closed",
       },
     },
   },
 };
 
 const Template = () =>
-  `
+  formatHtmlPreview(`
   <style>
   /* Demo code for presentation purposes */
   .demo-wrapper {
@@ -38,6 +39,6 @@ const Template = () =>
   </div>
   <div class="demo-wrapper" style="background-color: var(--sdds-information)">
     <span>--sdds-information</span>
-  </div>`;
+  </div>`);
 
 export const Sematic = Template.bind({});

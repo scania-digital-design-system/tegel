@@ -1,9 +1,9 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import { formatHtmlPreview } from "../../../utils/utils";
 
 export default {
-  title: 'Foundations/Typography',
+  title: "Foundations/Typography",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 };
 
@@ -17,7 +17,7 @@ const Template = () =>
   <p class='sdds-detail-05'>This text style is used in components, such as the tooltip and as a label for the text field component.</p>
   <p class='sdds-detail-06'>THIS TEXT STYLE IS USED FOR LABELS AND POTENTIALLY COMPONENTS.</p>
   <p class='sdds-detail-07'>This text style should only be used for very small instances, for instance as a label inside a text field.</p>
-  `,
+  `
   );
 
 export const Detail = Template.bind({});

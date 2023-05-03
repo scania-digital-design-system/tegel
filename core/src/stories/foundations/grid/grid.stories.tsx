@@ -1,9 +1,9 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import { formatHtmlPreview } from "../../../utils/utils";
 
 export default {
-  title: 'Foundations/Grid',
+  title: "Foundations/Grid",
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
   args: {
     fluidContainer: false,
@@ -11,17 +11,17 @@ export default {
   },
   argTypes: {
     fluidContainer: {
-      name: 'Fluid container',
-      description: 'Set container to fluid or not',
+      name: "Fluid container",
+      description: "Set container to fluid or not",
       control: {
-        type: 'boolean',
+        type: "boolean",
       },
     },
     padding: {
-      name: 'Fluid container',
-      description: 'Toggle padding on columns',
+      name: "Fluid container",
+      description: "Toggle padding on columns",
       control: {
-        type: 'boolean',
+        type: "boolean",
       },
     },
   },
@@ -65,9 +65,9 @@ const GridTemplate = ({ fluidContainer, padding }) =>
   ${style}
   <h4>Grid</h4>
 
-  <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
-  }">
+  <div class="${
+    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+  } ${padding === false ? "sdds-no-padding" : ""}">
 
     <div class="sdds-row">
       <div class="sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
@@ -153,9 +153,9 @@ const GridAutoColTemplate = ({ fluidContainer, padding }) =>
   <h4>Grid Auto columns</h4>
   <h5>Container 1</h5>
 
-  <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
-  }">
+  <div class="${
+    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+  } ${padding === false ? "sdds-no-padding" : ""}">
     <div class="sdds-row">
       <div class="sdds-col">
         <div class="inside-demo">.sdds-col</div>
@@ -165,9 +165,9 @@ const GridAutoColTemplate = ({ fluidContainer, padding }) =>
 
   <h5>Container 2</h5>
 
-  <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
-  }">
+  <div class="${
+    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+  } ${padding === false ? "sdds-no-padding" : ""}">
     <div class="sdds-row">
       <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
         <div class="inside-demo">.sdds-col</div>
@@ -186,9 +186,9 @@ const GridAutoColTemplate = ({ fluidContainer, padding }) =>
 
   <h5>Container 3</h5>
 
-  <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
-  }">
+  <div class="${
+    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+  } ${padding === false ? "sdds-no-padding" : ""}">
     <div class="sdds-row">
       <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
         <div class="inside-demo">.sdds-col</div>
@@ -239,11 +239,11 @@ const GridPushTemplate = ({ fluidContainer, collapse, padding }) =>
   <h4>Grid Push</h4>
 
   <div class="sdds-push">
-    <div class="sdds-sidebar ${collapse ? 'sdds-sidebar-collapse' : ''}">
+    <div class="sdds-sidebar ${collapse ? "sdds-sidebar-collapse" : ""}">
     </div>
-    <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
-  }">
+    <div class="${
+      fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+    } ${padding === false ? "sdds-no-padding" : ""}">
       <div class="sdds-row">
         <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
           <div class="inside-demo">1</div>
@@ -298,9 +298,9 @@ const GridOffsetTemplate = ({ fluidContainer, padding }) =>
 
   <h4>Grid Offset</h4>
 
-    <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
-  }">
+    <div class="${
+      fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+    } ${padding === false ? "sdds-no-padding" : ""}">
       <div class="sdds-row">
         <div class="sdds-col-max-1 sdds-col-max-2-offset sdds-col-xxlg-1 sdds-col-xxlg-2-offset sdds-col-xlg-1 sdds-col-xlg-2-offset sdds-col-lg-1 sdds-col-lg-2-offset sdds-col-md-1 sdds-col-md-2-offset sdds-col-sm-1 sdds-col-sm-2-offset sdds-col-xs-1 sdds-col-xs-2-offset">
           <div class="inside-demo">Offset</div>
@@ -324,7 +324,7 @@ const GridNoPaddingTemplate = ({ fluidContainer, padding }) =>
     <h4>Grid no-padding</h4>
 
     <div class="${
-      fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'
+      fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
     } demo-example-cols">
       <div class="sdds-row">
         <div class="sdds-no-padding sdds-col-max-8 sdds-col-xxlg-8 sdds-col-xlg-8 sdds-col-lg-8 sdds-col-md-8 sdds-col-sm-8 sdds-col-xs-8">
@@ -334,12 +334,12 @@ const GridNoPaddingTemplate = ({ fluidContainer, padding }) =>
           <div class="inside-demo">no padding</div>
         </div>
         <div class="${
-          padding ? '' : 'sdds-no-padding'
+          padding ? "" : "sdds-no-padding"
         } sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
           <div class="inside-demo">padding</div>
         </div>
         <div class="${
-          padding ? '' : 'sdds-no-padding'
+          padding ? "" : "sdds-no-padding"
         } sdds-col-max-8 sdds-col-xxlg-8 sdds-col-xlg-8 sdds-col-lg-8 sdds-col-md-8 sdds-col-sm-8 sdds-col-xs-8">
           <div class="inside-demo">padding</div>
         </div>
@@ -359,15 +359,17 @@ const GridFluidTemplate = ({ fluidContainer = true, padding }) =>
 
     <h4>Grid fluid</h4>
 
-    <div class="sdds-container-fluid ${padding === false ? 'sdds-no-padding' : ''}">
+    <div class="sdds-container-fluid ${
+      padding === false ? "sdds-no-padding" : ""
+    }">
       <div class="sdds-row">
         <div class="sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
           <div class="inside-demo">container fluid</div>
         </div>
       </div>
     </div>
-    <div class="${fluidContainer ? 'sdds-container-fluid' : 'sdds-container'} ${
-    padding === false ? 'sdds-no-padding' : ''
+    <div class="${fluidContainer ? "sdds-container-fluid" : "sdds-container"} ${
+    padding === false ? "sdds-no-padding" : ""
   } container-demo">
       <div class="sdds-row">
         <div class="sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
@@ -385,10 +387,12 @@ const GridNestedTemplate = ({ fluidContainer, padding }) =>
 
  <h4>Nested</h4>
 
- <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'}">
+ <div class="${
+   fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+ }">
    <div class="sdds-row">
      <div class="${
-       padding === false ? 'sdds-no-padding' : ''
+       padding === false ? "sdds-no-padding" : ""
      } sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
        <div class="inside-demo">12</div>
      </div>
@@ -397,19 +401,19 @@ const GridNestedTemplate = ({ fluidContainer, padding }) =>
      <div class="sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
       <div class="sdds-row">
         <div class="${
-          padding === false ? 'sdds-no-padding' : ''
+          padding === false ? "sdds-no-padding" : ""
         } sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
           <div class="inside-demo">6 nested</div>
         </div>
         <div class=" ${
-          padding === false ? 'sdds-no-padding' : ''
+          padding === false ? "sdds-no-padding" : ""
         } sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
           <div class="inside-demo">6 nested</div>
         </div>
       </div>
      </div>
      <div class="${
-       padding === false ? 'sdds-no-padding' : ''
+       padding === false ? "sdds-no-padding" : ""
      } sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
        <div class="inside-demo">6</div>
      </div>
@@ -425,7 +429,9 @@ const GridHideShow = ({ fluidContainer }) =>
 
   <h4>Hide/show element</h4>
 
-  <div class="${fluidContainer === true ? 'sdds-container-fluid' : 'sdds-container'}">
+  <div class="${
+    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+  }">
     <div class="sdds-row">
       <div class="sdds-hide-xlg sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
         <div class="inside-demo">Hide on xlg and wider</div>
