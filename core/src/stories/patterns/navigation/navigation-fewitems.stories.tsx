@@ -1,28 +1,28 @@
-import { formatHtmlPreview } from '../../utils/utils';
-import readme from './readme.md';
+import { formatHtmlPreview } from "../../../utils/utils";
+import readme from "./readme.md";
 
 export default {
-  title: 'Patterns/Navigation',
+  title: "Patterns/Navigation",
   parameters: {
     notes: {
       Readme: readme,
     },
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       source: {
-        state: 'closed',
+        state: "closed",
       },
     },
     design: [
       {
-        name: 'Figma',
-        type: 'figma',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
+        name: "Figma",
+        type: "figma",
+        url: "https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1",
       },
       {
-        name: 'Link',
-        type: 'link',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
+        name: "Link",
+        type: "link",
+        url: "https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1",
       },
     ],
   },
@@ -258,7 +258,7 @@ const Template = () =>
         <p><i>Note: This example has an alterate launcher menu with a grid layout.</i></p>
       </main>
     </div>
-  `,
+  `
   );
 
 export const FewNavigationItems = Template.bind({});
