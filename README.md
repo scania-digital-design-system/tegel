@@ -16,7 +16,6 @@ The design system supports the design and development of digital solutions at Sc
   - [Angular](#angular)
   - [HTML/JS](#html)
 - [Browser support](#browser-support)
-- [Contributing](#contributing)
 - [Code conventions](#code-conventions)
 - [Development environment](#setting-up-the-development-environment)
 - [Community](#community)
@@ -227,28 +226,22 @@ but the user should not interact with it. E.g. `internalSddsPropsChange`.
 
 See the browser support section on [the Tegel website](https://tegel.scania.com/development/getting-started-development/introduction#browser-support).
 
-## Contributing
-
-Please read through our [contributing guidelines](https://github.com/scania-digital-design-system/sdds/blob/master/CONTRIBUTING.md) for the directions to **develop components**, **create a pull request** and **coding standard**.
-
-- [Report bug](https://github.com/scania-digital-design-system/sdds/issues)
-- [Request feature](https://github.com/scania-digital-design-system/sdds/issues/new)
-
 ## Code conventions
 
-The code conventions used in (and enforced by) Tegel is documented [here](https://github.com/scania-digital-design-system/sdds/blob/main/.github/CODE_STYLE.md).
+The code conventions used in (and enforced by) Tegel is documented [here](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md).
 
 ### Setting up the development environment
 
 1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 16 at the time of writing).
-2. Run `npm install` in the /tegel directory.
+2. Run `npm install` in the root directory.
+3. Run `npm install` in the core directory.
 3. Create a `.env` file in the /tegel directory with the following contents:
 
 ```
 STORYBOOK_ENV=development
 ```
 
-4. Make sure you are in the /tegel directory, and start the dev server with `npm run tegel`.
+4. Make sure you are in the root directory, and start the dev server with `npm run storybook`.
 
 ## Community
 
