@@ -27,7 +27,7 @@
   "plugins": ["@typescript-eslint"],
   "rules": {
     "no-lonely-if": "off",
-    "indent": 2,
+    "indent": "off",
     "spaced-comment": "warn",
     "camelcase": "warn",
     "no-var": "warn",
