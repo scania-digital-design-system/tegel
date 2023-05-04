@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, Event } from '@stencil/core';
-import { EventEmitter, HostElement, Watch } from '@stencil/core/internal';
+import { EventEmitter, Watch } from '@stencil/core/internal';
 
 type SddsStepperProps = {
   orientation: 'horizontal' | 'vertical';
@@ -19,7 +19,7 @@ export type InternalSddsStepperPropChange = {
   shadow: true,
 })
 export class SddsStepper {
-  @Element() host: HostElement;
+  @Element() host: HTMLElement;
 
   /** The orientation the children are layed out. */
   @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';

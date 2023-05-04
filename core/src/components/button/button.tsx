@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
-import { HostElement } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-button',
@@ -7,6 +6,8 @@ import { HostElement } from '@stencil/core/internal';
   shadow: true,
 })
 export class SddsButton {
+  @Element() host: HTMLElement;
+
   // TODO: Make this mandatory prop. Send warning to user if empty and it is not icon only version of button.
   /** Text inside a button */
   @Prop() text: string = '';
@@ -26,8 +27,6 @@ export class SddsButton {
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   @State() onlyIcon: boolean = false;
-
-  @Element() host: HostElement;
 
   componentWillLoad() {
     if (this.text === '') {

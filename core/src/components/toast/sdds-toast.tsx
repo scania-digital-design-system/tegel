@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { HostElement, Method, State } from '@stencil/core/internal';
+import { Method, State } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-toast',
@@ -7,6 +7,8 @@ import { HostElement, Method, State } from '@stencil/core/internal';
   shadow: true,
 })
 export class SddsToast {
+  @Element() host: HTMLElement;
+
   /** ID for the toast. Randomly generated if not specified. */
   @Prop() toastId: string = crypto.randomUUID();
 
@@ -24,8 +26,6 @@ export class SddsToast {
 
   /** ARIA role for the toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
-
-  @Element() host: HostElement;
 
   @State() hasSubheader: boolean;
 

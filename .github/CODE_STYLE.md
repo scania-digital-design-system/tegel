@@ -60,7 +60,7 @@ Our component files (e.g. button.tsx) should follow the following structure, in 
   shadow: true,
 })
 export class SddsComponent {
-  @Element() host: HostElement;
+  @Element() host: HTMLElement;
 
   /** Comment explaining the use of the the prop */
   @Prop() prop: string;

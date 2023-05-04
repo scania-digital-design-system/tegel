@@ -1,5 +1,5 @@
 import { Component, Host, State, Element, h, Prop, Event, EventEmitter } from '@stencil/core';
-import { HostElement, Method } from '@stencil/core/internal';
+import { Method } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-inline-tabs',
@@ -7,6 +7,8 @@ import { HostElement, Method } from '@stencil/core/internal';
   shadow: true,
 })
 export class InlineTabsFullbleed {
+  @Element() host: HTMLElement;
+
   /** Variant of the tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
 
@@ -16,8 +18,6 @@ export class InlineTabsFullbleed {
   /** Sets the selected tab.
    * If this is set all tab changes needs to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
-
-  @Element() host: HostElement;
 
   @State() showLeftScroll: boolean = false;
 
@@ -127,9 +127,9 @@ export class InlineTabsFullbleed {
     this.children = this.children.map((item, index) => {
       item.addEventListener('click', () => {
         const sddsChangeEvent = this.sddsChange.emit({
-          selectedTabIndex: this.children.indexOf(item)
+          selectedTabIndex: this.children.indexOf(item),
         });
-        if(!sddsChangeEvent.defaultPrevented) {
+        if (!sddsChangeEvent.defaultPrevented) {
           if (!item.disabled) {
             this.children.forEach((element) => element.setSelected(false));
             item.setSelected(true);

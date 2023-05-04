@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
-import { HostElement, State } from '@stencil/core/internal';
+import { State } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-banner',
@@ -7,6 +7,8 @@ import { HostElement, State } from '@stencil/core/internal';
   shadow: true,
 })
 export class SddsBanner {
+  @Element() host: HTMLElement;
+
   /** Name of the icon for the component. For error and information type the icon is predefined. */
   @Prop() icon: string;
 
@@ -31,8 +33,6 @@ export class SddsBanner {
   @State() hasSubheader: boolean;
 
   @State() hasLink: boolean;
-
-  @Element() host: HostElement;
 
   /** Sends unique banner identifier when the close button is pressed. */
   @Event({
