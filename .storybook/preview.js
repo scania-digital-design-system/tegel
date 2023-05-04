@@ -6,8 +6,6 @@ import { useDarkMode } from "storybook-dark-mode";
 import { addons } from "@storybook/addons";
 import { UPDATE_GLOBALS } from "@storybook/core-events";
 import "./preview.css";
-import "../color/dist/css/color.css";
-import "../grid/dist/css/grid.css";
 import "../core/dist/tegel/tegel.css";
 
 // https://github.com/storybookjs/storybook/issues/6364
