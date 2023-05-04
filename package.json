@@ -44,7 +44,13 @@
     "cz-conventional-changelog": "^3.3.0",
     "commitizen": "^4.2.4",
     "lint-staged": "^12.3.7",
-    "husky": "^7.0.4"
+    "husky": "^7.0.4",
+    "stylelint": "^14.6.1",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "commitlint": "^15.0.0",
+    "@commitlint/config-conventional": "^16.2.1"
   },
   "config": {
     "commitizen": {
