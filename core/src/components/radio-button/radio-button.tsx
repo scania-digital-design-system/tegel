@@ -1,5 +1,4 @@
 import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
-import { HostElement } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-radio-button',
@@ -8,6 +7,8 @@ import { HostElement } from '@stencil/core/internal';
   scoped: true,
 })
 export class RadioButton {
+  @Element() host: HTMLElement;
+
   /** Name of radio button, used for reference. */
   @Prop() name: string;
 
@@ -33,8 +34,6 @@ export class RadioButton {
 
   /** Decides if the radio button is disabled or not. */
   @Prop() disabled: boolean = false;
-
-  @Element() host: HostElement;
 
   /** Sends unique radio button identifier and status when it is checked. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
   @Event({

@@ -1,5 +1,5 @@
 import { Component, h, State, Element } from '@stencil/core';
-import { Host, HostElement, Prop } from '@stencil/core/internal';
+import { Host, Prop } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-footer',
@@ -7,7 +7,7 @@ import { Host, HostElement, Prop } from '@stencil/core/internal';
   shadow: true,
 })
 export class SddsFooter {
-  @Element() host: HostElement;
+  @Element() host: HTMLElement;
 
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;

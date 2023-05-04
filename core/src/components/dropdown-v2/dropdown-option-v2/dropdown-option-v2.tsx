@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
-import { EventEmitter, HostElement, Method } from '@stencil/core/internal';
+import { EventEmitter, Method } from '@stencil/core/internal';
 import { SddsCheckboxCustomEvent } from '../../../components';
 
 @Component({
@@ -10,7 +10,7 @@ import { SddsCheckboxCustomEvent } from '../../../components';
   },
 })
 export class SddsDropdownOptionV2 {
-  @Element() host: HostElement;
+  @Element() host: HTMLElement;
 
   /** Value for the dropdown option. */
   @Prop() value: string;
