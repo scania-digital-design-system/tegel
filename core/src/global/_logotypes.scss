@@ -1,0 +1,12 @@
+@import '../../../globals';
+
+$folder: '/logotype/1.0.0';
+$logotypes: ('wordmark', 'wordmark-white', 'symbol', 'logotype');
+
+:root,
+html {
+  @each $key in $logotypes {
+    --sdds-background-image-scania-#{$key}-png: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.png);
+    --sdds-background-image-scania-#{$key}-svg: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.svg);
+  }
+}
