@@ -1,0 +1,71 @@
+name: 'Request help 🦸🏼 '
+description: 'Do you need help with your project? In this template you can request design and/or development help.'
+title: '[Feature Request]: add title '
+labels: 'help wanted'
+body:
+  - type: markdown
+    attributes:
+      value: '## Welcome!'
+  - type: markdown
+    attributes:
+      value: 'Do you need help with your project? In this template you can request design and/or development help. Before you report a issue, please read the [FAQ](https://tegel.scania.com/support/faqs) information.'
+  - type: checkboxes
+    attributes:
+      label: Requirements before reporting
+      options:
+        - label: No duplicated [issue](https://github.com/scania-digital-design-system/tegel/issues) reported
+          required: true
+  - type: dropdown
+    attributes:
+      label: What type of help do you need?
+      description: Select one or more.
+      multiple: true
+      options:
+        - Design
+        - Development
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Summary
+      description: 'What needs to be done and why?'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Time frame
+      description: 'Is this project bound to a specific time frame?'
+  - type: textarea
+    attributes:
+      label: Describe the problem
+      description: "State the problem you're facing as clearly as possible and the reach of it."
+  - type: textarea
+    attributes:
+      label: 'Goals and objectives'
+      description: 'What is the desired outcome? What would success look like for your project?'
+  - type: textarea
+    attributes:
+      label: 'Requirements'
+      description: 'List your requirements for the project, e.g., desired functionality, design aesthetic etc. This does not have to be a full list but rather indications.'
+  - type: textarea
+    attributes:
+      label: 'Target audience'
+      description: 'Who will use it?'
+  - type: textarea
+    attributes:
+      label: Deliverables
+      description: 'List what deliverables you expect, per milestone or by the end of the project?'
+  - type: textarea
+    attributes:
+      label: Rescources
+      description: 'Provide previous work/ideas/research/other resources.'
+  - type: input
+    attributes:
+      label: Contact information
+      description: Provide an email if we need to contact you.
+      placeholder: example@example.com
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: 'Please visit our [Teams channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)'

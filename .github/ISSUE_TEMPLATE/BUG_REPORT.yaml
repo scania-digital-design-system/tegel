@@ -1,0 +1,99 @@
+name: 'Bug report 🐞 '
+description: Bug report template.
+title: '[Bug report]: add title '
+labels: 'bug'
+body:
+  - type: markdown
+    attributes:
+      value: '## Welcome!'
+  - type: markdown
+    attributes:
+      value: 'Found a bug in the Scania Digital Design System? Fill in this template and we will look into it! Before you report an issue, please read the [FAQ](https://tegel.scania.com/support/faqs) information.'
+  - type: checkboxes
+    attributes:
+      label: Requirements before reporting
+      options:
+        - label: 'No duplicated [issue](https://github.com/scania-digital-design-system/tegel/issues) reported.'
+          required: true
+        - label: 'I have checked the lastest version if the bug exist there. See all avaliable packages at [npmJS.com](https://www.npmjs.com/package/@scania/tegel)'
+          required: true
+        - label: 'I have followed the installation guide.'
+          required: true
+  - type: input
+    attributes:
+      label: Package versions
+      description: 'What version do you use? You can find it in package.json, see all avaliable versions at [npmJS.com](https://www.npmjs.com/package/@scania/tegel).'
+      placeholder: '@scania/tegel 0.0.7'
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Browser
+      description: 'What browser has the error appeared in or what browser do you mostly use.'
+      options:
+        - 'Chrome'
+        - 'Firefox'
+        - 'Safari'
+        - 'Edge (Chromium)'
+        - 'Other'
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Framework
+      description: 'What framework do you use?'
+      options:
+        - 'Angular'
+        - 'React'
+        - 'Vue'
+        - '.NET'
+        - 'Plain HTML'
+        - 'Other'
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Version
+      description: 'If you use a framework, what version of your framework do you use?'
+      placeholder: 'Angular 15'
+  - type: textarea
+    attributes:
+      label: Reproduction steps
+      description: 'How do you trigger this bug? Please walk us through it step by step.'
+      value: |
+        1. Add component x
+        2. Click y
+        3. Do z
+        ...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Code example'
+      description: 'Add a simple code example how to replicate the error.'
+      value: '<div>....'
+  - type: textarea
+    attributes:
+      label: Screenshots
+      description: 'Add one or more screenshots.'
+      value: 'Add/Copy screenshot here'
+  - type: textarea
+    attributes:
+      label: 'Expected behaviour'
+      description: 'A clear and concise description of what you expected to happen.'
+      value: 'Component x should be able to...'
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 'Console errors'
+      description: 'If any console error has appeared please add it here.'
+      value: 'Add warning/error message'
+  - type: input
+    attributes:
+      label: Contact information
+      description: Provide an email if we need to contact you.
+      placeholder: example@example.com
+  - type: markdown
+    attributes:
+      value: 'Please visit our [Teams channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)'

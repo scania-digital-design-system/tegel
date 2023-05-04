@@ -1,0 +1,78 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:import/typescript",
+    "airbnb-typescript/base",
+    "plugin:storybook/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-lonely-if": "off",
+    "indent": 2,
+    "spaced-comment": "warn",
+    "camelcase": "warn",
+    "no-var": "warn",
+    "lines-between-class-members": "warn",
+    "prefer-arrow-callback": "warn",
+    "arrow-body-style": "warn",
+    "prefer-template": "warn",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "no-underscore-dangle": "warn",
+    "import/no-unresolved": "warn",
+    "no-return-assign": "warn",
+    "class-methods-use-this": ["warn", { "exceptMethods": ["render"] }],
+    "array-callback-return": "warn", // TODO: Check this if needed ["warn", { "checkForEach": false }]
+    "consistent-return": "warn",
+    "no-unused-expressions": "warn",
+    "import/no-dynamic-require": "warn",
+    "prefer-destructuring": "warn", // TODO: Turn this on?
+    "object-shorthand": "warn",
+    "eqeqeq": "warn",
+    "prefer-const": "warn",
+    "no-empty-pattern": "warn",
+    "import/newline-after-import": "warn",
+    "vars-on-top": "warn",
+    "no-shadow": "warn",
+    "no-restricted-globals": "warn",
+    "no-prototype-builtins": "warn",
+    "no-useless-concat": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-useless-escape": "warn",
+    "no-await-in-loop": "warn",
+    "curly": "warn",
+    "no-unused-vars": "warn",
+    "no-nested-ternary": "warn",
+    "import/order": "warn",
+    "no-restricted-syntax": "warn", // TODO: check this - disables for-in related error
+    "default-case-last": "warn",
+    "no-restricted-exports": "warn",
+    "radix": ["error", "as-needed"],
+    "no-use-before-define": "off",
+    "no-console": "off",
+    "no-undef": "off",
+    "function-paren-newline": "off",
+    "dot-notation": "off",
+    "no-plusplus": "off",
+    "no-param-reassign": ["error", { "props": false }]
+  }
+}

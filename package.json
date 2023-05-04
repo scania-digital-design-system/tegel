@@ -10,8 +10,9 @@
     "build-storybook": "build-storybook --quiet",
     "deploy-storybook": "npm install && npm run build && npm run build-storybook",
     "start-storybook": "start-storybook -p 6006",
-    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
-   
+    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'",
+    "commit": "cz",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -26,7 +27,6 @@
   "dependencies": {
     "addon-screen-reader": "^1.8.6"
   },
-
   "devDependencies": {
     "concurrently": "^8.0.1",
     "@storybook/addon-a11y": "^6.5.14",
@@ -40,6 +40,24 @@
     "@storybook/addons": "^6.5.13",
     "@storybook/html": "^6.5.12",
     "storybook-addon-designs": "^6.3.1",
-    "storybook-dark-mode": "^3.0.0"
+    "storybook-dark-mode": "^3.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "commitizen": "^4.2.4",
+    "lint-staged": "^12.3.7",
+    "husky": "^7.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "eslint",
+    "**/*.scss": "stylelint --fix",
+    "**/*.{js,jsx,ts,tsx,scss,md}": "prettier --write"
+  },
+  "engines": {
+    "npm": ">=8.0.0 <9.0.0",
+    "node": ">=16.10.0 <17.0.0"
   }
 }

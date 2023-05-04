@@ -1,0 +1,76 @@
+name: "Feature request 🚀 "
+description: Suggest a feature for Tegel Design System.
+title: '[Feature Request]: add title '
+labels: 'feature'
+body:
+  - type: markdown
+    attributes:
+      value: '## Welcome!'
+  - type: markdown
+    attributes:
+      value: 'Suggest a feature for Tegel Design System, it can be anything from a function to a design idea. Before you report an issue, please read the [FAQ](https://tegel.scania.com/support/faqs) information.'
+  - type: checkboxes
+    attributes:
+      label: Requirements before reporting
+      options:
+        - label: No duplicated [issue](https://github.com/scania-digital-design-system/tegel/issues) reported
+          required: true
+        - label: I have checked the lastest version if the feature exist there
+          required: true
+  - type: dropdown
+    attributes:
+      label: Type of feature request
+      description: What is the feature request related with.
+      options:
+        - Functionality
+        - Design
+        - Accessibility
+        - Documentation
+        - Testing
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: What is your feature request?
+      description: A clear and concise description about the feature. Feel free to add screenshots
+      placeholder: E.g Component x is missing feature y...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Background
+      description: "Why do you need this feature? Describe the benefits of the change (e.g., business justification, user value etc.) and the reach of the problem."
+      placeholder: E.g Because of...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Idea
+      description: "Do you already have a suggestion how to solve it? Any previous work or research can be included."
+      placeholder: E.g if you add X....
+  - type: textarea
+    attributes:
+      label: Goals and objectives
+      description: "What is the desired outcome? What would success look like for you?"
+  - type: input
+    attributes:
+      label: Timeline
+      description: "Are there any requests regarding the time period?"
+      placeholder: E.g around 10th of Jan, because of our release...
+  - type: input
+    attributes:
+      label: Resources
+      description: "Do you have any resoruces available? Can be anything inspirational."
+      placeholder: https://example.com
+  - type: input
+    attributes:
+      label: Contact information
+      description: "Provide an email if we need to contact you."
+      placeholder: example@example.com
+  - type: markdown
+    attributes:
+      value: 'Please visit our [Teams channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)'
+
+
+

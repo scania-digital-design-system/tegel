@@ -1,0 +1,13 @@
+# Eslint comment
+
+**/node_modules
+**/dist
+**/*.d.ts
+**/compile.js
+**/conf.js
+**/.www
+
+core/loader
+core/stencil.config.ts
+
+**/www
