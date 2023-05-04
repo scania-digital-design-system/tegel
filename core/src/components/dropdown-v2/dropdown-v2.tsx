@@ -1,13 +1,5 @@
 import { Component, Host, h, Element, State } from '@stencil/core';
-import {
-  Event,
-  EventEmitter,
-  HostElement,
-  Listen,
-  Method,
-  Prop,
-  Watch,
-} from '@stencil/core/internal';
+import { Event, EventEmitter, Listen, Method, Prop, Watch } from '@stencil/core/internal';
 import {
   appendChildElement,
   appendHiddenInput,
@@ -21,7 +13,7 @@ import {
   shadow: true,
 })
 export class SddsDropdownV2 {
-  @Element() host: HostElement;
+  @Element() host: HTMLElement;
 
   /** Name for the dropdowns input element. */
   @Prop() name: string;

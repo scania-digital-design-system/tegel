@@ -1,6 +1,4 @@
 import { Component, h, Prop, Event, Element, EventEmitter, Method } from '@stencil/core';
-import { HostElement } from '@stencil/core/internal';
-
 @Component({
   tag: 'sdds-toggle',
   styleUrl: 'sdds-toggle.scss',
@@ -8,6 +6,8 @@ import { HostElement } from '@stencil/core/internal';
   scoped: true,
 })
 export class SddsToggle {
+  @Element() host: HTMLElement;
+
   /** Sets the toggle as checked */
   @Prop({ reflect: true }) checked: boolean = false;
 
@@ -28,8 +28,6 @@ export class SddsToggle {
 
   /** ID of the toggles input element, if not specifed it's randomly generated */
   @Prop() toggleId: string = crypto.randomUUID();
-
-  @Element() host: HostElement;
 
   /** Toggles the toggle. */
   @Method()

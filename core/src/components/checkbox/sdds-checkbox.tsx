@@ -1,5 +1,4 @@
 import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
-import { HostElement } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-checkbox',
@@ -8,6 +7,8 @@ import { HostElement } from '@stencil/core/internal';
   scoped: true,
 })
 export class SddsCheckbox {
+  @Element() host: HTMLElement;
+
   /** Name for the checkbox's input element. */
   @Prop() name: string;
 
@@ -25,8 +26,6 @@ export class SddsCheckbox {
 
   /** Value for the checkbox */
   @Prop() value: string;
-
-  @Element() host: HostElement;
 
   /** Toggles the checked value of the component. */
   @Method()

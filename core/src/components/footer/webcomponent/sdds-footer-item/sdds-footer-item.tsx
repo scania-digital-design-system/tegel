@@ -1,13 +1,11 @@
 import { Component, Element, h } from '@stencil/core';
-import { HostElement } from '@stencil/core/internal';
-
 @Component({
   tag: 'sdds-footer-item',
   styleUrl: 'sdds-footer-item.scss',
   shadow: true,
 })
 export class SddsFooterItem {
-  @Element() host: HostElement;
+  @Element() host: HTMLElement;
 
   private parentIsTopPart: boolean = false;
 
