@@ -1,4 +1,4 @@
-@import './button-vars.scss';
+@import './button-vars';
 @import '../../mixins/box-sizing';
 
 .sdds-on-white-bg {
@@ -324,6 +324,7 @@ i.sdds-btn-icon[slot='icon'] {
   ::slotted([slot='icon']) {
     width: var(--sdds-spacing-element-20);
     height: var(--sdds-spacing-element-20);
+    pointer-events: none;
   }
 
   .sdds-btn-sm {

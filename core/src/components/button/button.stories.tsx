@@ -199,6 +199,11 @@ const WebComponentTemplate = ({
         }
     </sdds-button>
   </div>
+  <script>
+        document.querySelector('sdds-button').addEventListener('click', (event) => {
+          console.log(event)
+        })
+  </script>
   `,
   );
 };
