@@ -360,44 +360,25 @@ i.sdds-btn-icon[slot='icon'] {
 
   .sdds-btn-sm {
     ::slotted([slot='icon']) {
-      margin-left: var(--sdds-spacing-element-24);
+      margin-left: var(--sdds-spacing-element-12);
       width: var(--sdds-spacing-element-16);
       height: var(--sdds-spacing-element-16);
-    }
-
-    &.sdds-btn-fullbleed {
-      ::slotted([slot='icon']) {
-        margin-left: var(--sdds-spacing-element-12);
-      }
     }
   }
 
   .sdds-btn-md {
     ::slotted([slot='icon']) {
-      margin-left: var(--sdds-spacing-element-20);
+      margin-left: var(--sdds-spacing-element-16);
       width: var(--sdds-spacing-element-20);
       height: var(--sdds-spacing-element-20);
-    }
-
-    &.sdds-btn-fullbleed {
-      ::slotted([slot='icon']) {
-        margin-left: var(--sdds-spacing-element-16);
-      }
     }
   }
 
   .sdds-btn-lg {
     ::slotted([slot='icon']) {
-      // TODO - This should be a var value
-      margin-left: 28px;
+      margin-left: var(--sdds-spacing-element-20);
       width: var(--sdds-spacing-element-20);
       height: var(--sdds-spacing-element-20);
-    }
-
-    &.sdds-btn-fullbleed {
-      ::slotted([slot='icon']) {
-        margin-left: var(--sdds-spacing-element-16);
-      }
     }
   }
 }
