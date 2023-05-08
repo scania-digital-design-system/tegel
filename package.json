@@ -1,6 +1,6 @@
 {
   "name": "tegel",
-  "version": "0.0.7",
+  "version": "0.0.72",
   "description": "Tegel Digital Design System",
   "main": "index.js",
   "scripts": {
