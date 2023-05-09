@@ -50,11 +50,12 @@ export class SddsButton {
       <Host class={`${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
           disabled={this.disabled}
-          class={`sdds-btn sdds-btn-${this.type} 
-          ${`sdds-btn-${this.size}`}
-          ${this.disabled ? 'disabled' : ''}
-          ${this.fullbleed ? 'sdds-btn-fullbleed' : ''}
-          ${this.onlyIcon ? 'sdds-btn-only-icon' : ''}`}
+          class={`${this.type}
+            ${this.size}
+            ${this.disabled ? 'disabled' : ''}
+            ${this.fullbleed ? 'fullbleed' : ''}
+            ${this.onlyIcon ? 'only-icon' : ''}
+            `}
         >
           {this.text}
           <slot name="icon" />
