@@ -131,10 +131,12 @@ button {
           #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-hover);
         }
 
-        ::slotted([slot='icon']) {
-          @each $prop in $iconProps {
-            fill: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
-            color: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+        &:not(.disabled) {
+          ::slotted([slot='icon']) {
+            @each $prop in $iconProps {
+              fill: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+              color: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+            }
           }
         }
       }
