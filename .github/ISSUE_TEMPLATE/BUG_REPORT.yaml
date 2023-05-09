@@ -15,15 +15,15 @@ body:
       options:
         - label: 'No duplicated [issue](https://github.com/scania-digital-design-system/tegel/issues) reported.'
           required: true
-        - label: 'I have checked the lastest version if the bug exist there. See all avaliable packages at [npmJS.com](https://www.npmjs.com/package/@scania/tegel)'
+        - label: 'I have checked the latest version if the bug exist there. See all available packages at [npmJS.com](https://www.npmjs.com/package/@scania/tegel)'
           required: true
         - label: 'I have followed the installation guide.'
           required: true
   - type: input
     attributes:
       label: Package versions
-      description: 'What version do you use? You can find it in package.json, see all avaliable versions at [npmJS.com](https://www.npmjs.com/package/@scania/tegel).'
-      placeholder: '@scania/tegel 0.0.7'
+      description: 'What version do you use? You can find it in package.json, see all available versions at [npmJS.com](https://www.npmjs.com/package/@scania/tegel).'
+      placeholder: '@scania/tegel: 0.0.7'
     validations:
       required: true
   - type: dropdown
