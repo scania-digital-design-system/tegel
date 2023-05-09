@@ -15,7 +15,7 @@ body:
       options:
         - label: No duplicated [issue](https://github.com/scania-digital-design-system/tegel/issues) reported
           required: true
-        - label: I have checked the lastest version if the feature exist there
+        - label: I have checked the latest version if the feature exist there
           required: true
   - type: dropdown
     attributes:
@@ -61,7 +61,7 @@ body:
   - type: input
     attributes:
       label: Resources
-      description: "Do you have any resoruces available? Can be anything inspirational."
+      description: "Do you have any resources available? Can be anything inspirational."
       placeholder: https://example.com
   - type: input
     attributes:
