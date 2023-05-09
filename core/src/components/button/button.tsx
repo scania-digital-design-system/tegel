@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { disableClickOnElement } from '../../utils/utils';
 
 @Component({
   tag: 'sdds-button',
@@ -8,9 +9,8 @@ import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 export class SddsButton {
   @Element() host: HTMLElement;
 
-  // TODO: Make this mandatory prop. Send warning to user if empty and it is not icon only version of button.
-  /** Text inside a button */
-  @Prop() text: string = '';
+  /** Text displayed inside of the button */
+  @Prop() text: string;
 
   /** Type of button */
   @Prop() type: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
@@ -28,8 +28,18 @@ export class SddsButton {
 
   @State() onlyIcon: boolean = false;
 
-  componentWillLoad() {
-    if (this.text === '') {
+  @State() slotElement: Element;
+
+  connectedCallback() {
+    this.slotElement = this.host.children ? this.host.children[0] : null;
+    if (this.disabled) {
+      disableClickOnElement(this.host);
+      if (this.slotElement?.slot === 'icon') {
+        disableClickOnElement(this.slotElement);
+      }
+    }
+
+    if (!this.text) {
       this.onlyIcon = true;
       this.host.setAttribute('only-icon', '');
     }

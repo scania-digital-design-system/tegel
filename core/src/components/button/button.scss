@@ -324,7 +324,6 @@ i.sdds-btn-icon[slot='icon'] {
   ::slotted([slot='icon']) {
     width: var(--sdds-spacing-element-20);
     height: var(--sdds-spacing-element-20);
-    pointer-events: none;
   }
 
   .sdds-btn-sm {
