@@ -1,8 +1,8 @@
 @import './tokens';
-@import '../globals.scss';
+@import '../globals';
 @import './vars';
 
-// generate color class for background (.sdds-background-{token-name})
+// generate color class for background (.tds-background-{token-name})
 @each $key, $value in $all-colors {
   $val: '' + $key;
   .#{$prefix}-background-#{$val} {
@@ -10,7 +10,7 @@
   }
 }
 
-// generate color class for text (.sdds-text-{token-name})
+// generate color class for text (.tds-text-{token-name})
 @each $key, $value in $all-colors {
   $val: '' + $key;
   .#{$prefix}-text-#{$val} {
