@@ -116,10 +116,14 @@ export class Slider {
   handleKeydown(event) {
     switch (event.key) {
       case 'ArrowLeft':
+      case 'ArrowDown':
+      case '-':
         this.stepLeft();
         break;
 
       case 'ArrowRight':
+      case 'ArrowUp':
+      case '+':
         this.stepRight();
         break;
 
@@ -427,17 +431,9 @@ export class Slider {
       this.tickValues.push(this.getMax());
     }
 
-    if (this.disabled) {
-      this.disabledState = true;
-    } else {
-      this.disabledState = false;
-    }
+    this.disabledState = this.disabled;
 
-    if (this.readOnly) {
-      this.readonlyState = true;
-    } else {
-      this.readonlyState = false;
-    }
+    this.readonlyState = this.readOnly;
 
     this.useInput = false;
     this.useControls = false;
