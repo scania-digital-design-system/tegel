@@ -15,7 +15,6 @@
 
 ### Used by
 
- - [sdds-accordion-item](../accordion/accordion-item)
  - [sdds-banner](../banner)
  - [sdds-datetime](../datetime)
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
@@ -37,6 +36,7 @@
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
  - [sdds-toast](../toast)
+ - [tds-accordion-item](../accordion/accordion-item)
 
 ### Graph
 ```mermaid

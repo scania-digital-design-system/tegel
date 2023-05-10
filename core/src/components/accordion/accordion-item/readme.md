@@ -1,4 +1,5 @@
-# sdds-accordion-item
+# tds-accordion-item
+
 
 
 <!-- Auto Generated Below -->
@@ -17,9 +18,9 @@
 
 ## Events
 
-| Event        | Description                                                                     | Type                                  |
-| ------------ | ------------------------------------------------------------------------------- | ------------------------------------- |
-| `sddsToggle` | Fires when the accordion item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
+| Event       | Description                                                                     | Type                                  |
+| ----------- | ------------------------------------------------------------------------------- | ------------------------------------- |
+| `tdsToggle` | Fires when the accordion item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
 
 
 ## Methods
@@ -44,8 +45,8 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-accordion-item --> tds-icon
-  style sdds-accordion-item fill:#f9f,stroke:#333,stroke-width:4px
+  tds-accordion-item --> sdds-icon
+  style tds-accordion-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

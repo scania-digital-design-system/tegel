@@ -1,7 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-accordion',
+  tag: 'tds-accordion',
   styleUrl: 'accordion.scss',
   shadow: true,
 })
@@ -12,7 +12,9 @@ export class Accordion {
   render() {
     return (
       <Host
-        class={`sdds-accordion ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}`: ''}`}
+        class={`tds-accordion ${
+          this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
+        }`}
       >
         <slot></slot>
       </Host>
