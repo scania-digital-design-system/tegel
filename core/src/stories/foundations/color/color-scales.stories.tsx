@@ -49,8 +49,8 @@ const Template = ({ color }) => {
   let div = '';
 
   picked.forEach((num) => {
-    div += `<div id="test" class="demo-wrapper" style="background-color: var(--sdds-${color}-${num})">
-      <span>--sdds-${color}-${num}</span>
+    div += `<div id="test" class="demo-wrapper" style="background-color: var(--tds-${color}-${num})">
+      <span>--tds-${color}-${num}</span>
       </div>`;
   });
 
