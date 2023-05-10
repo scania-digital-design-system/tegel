@@ -2,6 +2,13 @@
   "name": "@scania/tegel-color",
   "version": "0.0.1",
   "description": "Tegel Design System color package",
+  "keywords": [
+    "tegel",
+    "scania",
+    "design",
+    "system",
+    "color"
+  ],
   "main": "dist/scss/color.scss",
   "scripts": {
     "build": "node compile.js"
@@ -12,7 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "",
+  "author": "IXCD@Scania <designtoolsandsystems@scania.com> (https://tegel.scania.com)",
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.49.9",
