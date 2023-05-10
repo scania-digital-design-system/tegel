@@ -1,5 +1,5 @@
 @use "sass:math";
-@import "../globals.scss";
+@import "../globals";
 @import "breakpoints";
 
 // Container
@@ -50,10 +50,10 @@
 
 @mixin display-hidden($prefix, $breakpoint, $key) {
   @media (min-width: $breakpoint) {
-    .sdds-hide-#{$key} {
+    .tds-hide-#{$key} {
       display: none !important;
     }
-    .sdds-show-#{$key} {
+    .tds-show-#{$key} {
       display: block !important;
     }
   }
@@ -104,7 +104,7 @@
 //Column auto size
 @mixin grid-col-auto($prefix, $size, $breakpoint, $padding) {
   @media (min-width: $breakpoint) {
-    .sdds-col,
+    .tds-col,
     .#{$prefix}-col-#{$size} {
       flex-grow: 1;
       flex-basis: 0;
