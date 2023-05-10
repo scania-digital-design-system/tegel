@@ -1,7 +1,8 @@
 {
-  "name": "tegel",
-  "version": "0.0.72",
+  "name": "tegel-monorepo",
+  "version": "0.0.1",
   "description": "Tegel Digital Design System",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "build": "cd core && npm install && npm run build",
