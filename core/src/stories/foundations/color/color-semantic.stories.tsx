@@ -1,12 +1,12 @@
-import { formatHtmlPreview } from "../../../utils/utils";
+import { formatHtmlPreview } from '../../../utils/utils';
 
 export default {
-  title: "Foundations/Color",
+  title: 'Foundations/Color',
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       source: {
-        state: "closed",
+        state: 'closed',
       },
     },
   },
@@ -28,17 +28,17 @@ const Template = () =>
   }
 </style>
 
-  <div class="demo-wrapper" style="background-color: var(--sdds-positive)">
-    <span>--sdds-positive</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-positive)">
+    <span>--tds-positive</span>
   </div>
-  <div class="demo-wrapper" style="background-color: var(--sdds-warning)">
-    <span>--sdds-warning</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-warning)">
+    <span>--tds-warning</span>
   </div>
-  <div class="demo-wrapper" style="background-color: var(--sdds-negative)">
-    <span>--sdds-negative</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-negative)">
+    <span>--tds-negative</span>
   </div>
-  <div class="demo-wrapper" style="background-color: var(--sdds-information)">
-    <span>--sdds-information</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-information)">
+    <span>--tds-information</span>
   </div>`);
 
 export const Sematic = Template.bind({});

@@ -1,56 +1,56 @@
-import { formatHtmlPreview } from "../../../utils/utils";
+import { formatHtmlPreview } from '../../../utils/utils';
 
 export default {
-  title: "Foundations/Color",
+  title: 'Foundations/Color',
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       source: {
-        state: "closed",
+        state: 'closed',
       },
     },
   },
   argTypes: {
     color: {
-      name: "Color",
-      description: "Choose color scale to display",
+      name: 'Color',
+      description: 'Choose color scale to display',
       control: {
-        type: "select",
+        type: 'select',
       },
-      options: { Grey: "grey", Blue: "blue", Red: "red" },
+      options: { Grey: 'grey', Blue: 'blue', Red: 'red' },
     },
   },
   args: {
-    color: "grey",
+    color: 'grey',
   },
 };
 
 const Template = ({ color }) => {
   const scale = {
     grey: [
-      "50",
-      "100",
-      "200",
-      "300",
-      "400",
-      "500",
-      "600",
-      "700",
-      "800",
-      "846",
-      "868",
-      "900",
-      "958",
+      '50',
+      '100',
+      '200',
+      '300',
+      '400',
+      '500',
+      '600',
+      '700',
+      '800',
+      '846',
+      '868',
+      '900',
+      '958',
     ],
-    blue: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
-    red: ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    blue: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
+    red: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
   };
   const picked = scale[color];
-  let div = "";
+  let div = '';
 
   picked.forEach((num) => {
-    div += `<div id="test" class="demo-wrapper" style="background-color: var(--sdds-${color}-${num})">
-      <span>--sdds-${color}-${num}</span>
+    div += `<div id="test" class="demo-wrapper" style="background-color: var(--tds-${color}-${num})">
+      <span>--tds-${color}-${num}</span>
       </div>`;
   });
 
