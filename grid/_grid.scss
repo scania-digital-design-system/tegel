@@ -1,7 +1,8 @@
-@import '../globals.scss';
+@import '../globals';
 @import 'breakpoints';
 @import 'mixins';
-@import './spacing-vars.scss';
+@import './spacing-vars';
+
 //@import '../spacing/spacing-vars';
 
 /*
@@ -13,16 +14,16 @@
 @include grid-container($prefix);
 
 //Setup breakpoints for the container
-@include grid-container-breakpoints($prefix, $sdds-grid-breakpoints);
+@include grid-container-breakpoints($prefix, $tds-grid-breakpoints);
 
 // Row which columns are places
 @include grid-row($prefix);
 
 // Create columns
-@include grid-make-col($sdds-grid-breakpoints);
+@include grid-make-col($tds-grid-breakpoints);
 
 // Adding offset classes for the grid
-@include grid-offset-col($sdds-grid-breakpoints);
+@include grid-offset-col($tds-grid-breakpoints);
 
 //Pushed grid
-@include grid-push($sdds-grid-breakpoints-push);
+@include grid-push($tds-grid-breakpoints-push);
