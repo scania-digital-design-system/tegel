@@ -17,11 +17,11 @@ sdds-header {
   height: var(--sdds-header-height);
   background-color: var(--sdds-header-background);
   width: 100%;
-  z-index: z(header);
+  z-index: tds-z-index(header);
 }
 
 nav {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   background-color: var(--sdds-header-background);
   width: 100%;

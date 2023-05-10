@@ -18,7 +18,7 @@ $props: (background, border-color, color, outline-color);
 $iconProps: (fill, color);
 
 @mixin button-base {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   font: var(--sdds-detail-02);
   letter-spacing: var(--sdds-detail-02-ls);
@@ -121,7 +121,7 @@ $iconProps: (fill, color);
   }
 
   &:focus-visible {
-    // TODO: decide on what tod o with these @include sdds-focus-state;
+    // TODO: decide on what tod o with these @include tds-focus-state;
     outline: 2px solid var(--sdds-blue-400);
     outline-offset: -2px;
   }
@@ -140,7 +140,7 @@ $iconProps: (fill, color);
     border-radius: 2px;
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
+      // TODO: decide on what tod o with these @include tds-focus-state;
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
@@ -155,7 +155,7 @@ $iconProps: (fill, color);
     }
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
+      // TODO: decide on what tod o with these @include tds-focus-state;
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
@@ -184,7 +184,7 @@ $iconProps: (fill, color);
     }
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
+      // TODO: decide on what tod o with these @include tds-focus-state;
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
@@ -210,7 +210,7 @@ $iconProps: (fill, color);
     }
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
+      // TODO: decide on what tod o with these @include tds-focus-state;
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
