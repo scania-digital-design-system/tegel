@@ -1,9 +1,9 @@
-import { formatHtmlPreview } from "../../../utils/utils";
+import { formatHtmlPreview } from '../../../utils/utils';
 
 export default {
-  title: "Foundations/Grid",
+  title: 'Foundations/Grid',
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
   },
   args: {
     fluidContainer: false,
@@ -11,17 +11,17 @@ export default {
   },
   argTypes: {
     fluidContainer: {
-      name: "Fluid container",
-      description: "Set container to fluid or not",
+      name: 'Fluid container',
+      description: 'Set container to fluid or not',
       control: {
-        type: "boolean",
+        type: 'boolean',
       },
     },
     padding: {
-      name: "Fluid container",
-      description: "Toggle padding on columns",
+      name: 'Fluid container',
+      description: 'Toggle padding on columns',
       control: {
-        type: "boolean",
+        type: 'boolean',
       },
     },
   },
@@ -31,20 +31,20 @@ export default {
 const style = formatHtmlPreview(`
   <style>
     /* Demo code for presentation purposes */
-    .sdds-container,
-    .sdds-container-fluid {
+    .tds-container,
+    .tds-container-fluid {
       background-color: #ff00009e;
       color: black;
       outline: 1px solid red;
     }
 
-    .sdds-row > div {
+    .tds-row > div {
       outline: 1px solid #ef1919;
       background: #fbc5c5;
       min-height: 50px;
     }
 
-    .sdds-sidebar {
+    .tds-sidebar {
       background-color: rgba(255, 0, 0, 0.1);
     }
 
@@ -65,78 +65,78 @@ const GridTemplate = ({ fluidContainer, padding }) =>
   ${style}
   <h4>Grid</h4>
 
-  <div class="${
-    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-  } ${padding === false ? "sdds-no-padding" : ""}">
+  <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
+  }">
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+    <div class="tds-row">
+      <div class="tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
         <div class="inside-demo">12</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-11 sdds-col-xxlg-11 sdds-col-xlg-11 sdds-col-lg-11 sdds-col-md-11 sdds-col-sm-11 sdds-col-xs-11">
+    <div class="tds-row">
+      <div class="tds-col-max-11 tds-col-xxlg-11 tds-col-xlg-11 tds-col-lg-11 tds-col-md-11 tds-col-sm-11 tds-col-xs-11">
         <div class="inside-demo">11</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-10 sdds-col-xxlg-10 sdds-col-xlg-10 sdds-col-lg-10 sdds-col-md-10 sdds-col-sm-10 sdds-col-xs-10">
+    <div class="tds-row">
+      <div class="tds-col-max-10 tds-col-xxlg-10 tds-col-xlg-10 tds-col-lg-10 tds-col-md-10 tds-col-sm-10 tds-col-xs-10">
         <div class="inside-demo">10</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-9 sdds-col-xxlg-9 sdds-col-xlg-9 sdds-col-lg-9 sdds-col-md-9 sdds-col-sm-9 sdds-col-xs-9">
+    <div class="tds-row">
+      <div class="tds-col-max-9 tds-col-xxlg-9 tds-col-xlg-9 tds-col-lg-9 tds-col-md-9 tds-col-sm-9 tds-col-xs-9">
         <div class="inside-demo">9</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-8 sdds-col-xxlg-8 sdds-col-xlg-8 sdds-col-lg-8 sdds-col-md-8 sdds-col-sm-8 sdds-col-xs-8">
+    <div class="tds-row">
+      <div class="tds-col-max-8 tds-col-xxlg-8 tds-col-xlg-8 tds-col-lg-8 tds-col-md-8 tds-col-sm-8 tds-col-xs-8">
         <div class="inside-demo">8</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-7 sdds-col-xxlg-7 sdds-col-xlg-7 sdds-col-lg-7 sdds-col-md-7 sdds-col-sm-7 sdds-col-xs-7">
+    <div class="tds-row">
+      <div class="tds-col-max-7 tds-col-xxlg-7 tds-col-xlg-7 tds-col-lg-7 tds-col-md-7 tds-col-sm-7 tds-col-xs-7">
         <div class="inside-demo">7</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
+    <div class="tds-row">
+      <div class="tds-col-max-6 tds-col-xxlg-6 tds-col-xlg-6 tds-col-lg-6 tds-col-md-6 tds-col-sm-6 tds-col-xs-6">
         <div class="inside-demo">6</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-5 sdds-col-xxlg-5 sdds-col-xlg-5 sdds-col-lg-5 sdds-col-md-5 sdds-col-sm-5 sdds-col-xs-5">
+    <div class="tds-row">
+      <div class="tds-col-max-5 tds-col-xxlg-5 tds-col-xlg-5 tds-col-lg-5 tds-col-md-5 tds-col-sm-5 tds-col-xs-5">
         <div class="inside-demo">5</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-4 sdds-col-xxlg-4 sdds-col-xlg-4 sdds-col-lg-4 sdds-col-md-4 sdds-col-sm-4 sdds-col-xs-4">
+    <div class="tds-row">
+      <div class="tds-col-max-4 tds-col-xxlg-4 tds-col-xlg-4 tds-col-lg-4 tds-col-md-4 tds-col-sm-4 tds-col-xs-4">
         <div class="inside-demo">4</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-3 sdds-col-xxlg-3 sdds-col-xlg-3 sdds-col-lg-3 sdds-col-md-3 sdds-col-sm-3 sdds-col-xs-3">
+    <div class="tds-row">
+      <div class="tds-col-max-3 tds-col-xxlg-3 tds-col-xlg-3 tds-col-lg-3 tds-col-md-3 tds-col-sm-3 tds-col-xs-3">
         <div class="inside-demo">3</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-2 sdds-col-xxlg-2 sdds-col-xlg-2 sdds-col-lg-2 sdds-col-md-2 sdds-col-sm-2 sdds-col-xs-2">
+    <div class="tds-row">
+      <div class="tds-col-max-2 tds-col-xxlg-2 tds-col-xlg-2 tds-col-lg-2 tds-col-md-2 tds-col-sm-2 tds-col-xs-2">
         <div class="inside-demo">2</div>
       </div>
     </div>
 
-    <div class="sdds-row">
-      <div class="sdds-col-max-1 sdds-col-xxlg-1 sdds-col-xlg-1 sdds-col-lg-1 sdds-col-md-1 sdds-col-sm-1 sdds-col-xs-1">
+    <div class="tds-row">
+      <div class="tds-col-max-1 tds-col-xxlg-1 tds-col-xlg-1 tds-col-lg-1 tds-col-md-1 tds-col-sm-1 tds-col-xs-1">
         <div class="inside-demo">1</div>
       </div>
     </div>
@@ -153,78 +153,78 @@ const GridAutoColTemplate = ({ fluidContainer, padding }) =>
   <h4>Grid Auto columns</h4>
   <h5>Container 1</h5>
 
-  <div class="${
-    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-  } ${padding === false ? "sdds-no-padding" : ""}">
-    <div class="sdds-row">
-      <div class="sdds-col">
-        <div class="inside-demo">.sdds-col</div>
+  <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
+  }">
+    <div class="tds-row">
+      <div class="tds-col">
+        <div class="inside-demo">.tds-col</div>
       </div>
     </div>
   </div>
 
   <h5>Container 2</h5>
 
-  <div class="${
-    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-  } ${padding === false ? "sdds-no-padding" : ""}">
-    <div class="sdds-row">
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+  <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
+  }">
+    <div class="tds-row">
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
     </div>
   </div>
 
   <h5>Container 3</h5>
 
-  <div class="${
-    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-  } ${padding === false ? "sdds-no-padding" : ""}">
-    <div class="sdds-row">
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+  <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
+  }">
+    <div class="tds-row">
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
-      <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
-        <div class="inside-demo">.sdds-col</div>
+      <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
+        <div class="inside-demo">.tds-col</div>
       </div>
     </div>
   </div>
@@ -238,47 +238,47 @@ const GridPushTemplate = ({ fluidContainer, collapse, padding }) =>
 
   <h4>Grid Push</h4>
 
-  <div class="sdds-push">
-    <div class="sdds-sidebar ${collapse ? "sdds-sidebar-collapse" : ""}">
+  <div class="tds-push">
+    <div class="tds-sidebar ${collapse ? 'tds-sidebar-collapse' : ''}">
     </div>
-    <div class="${
-      fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-    } ${padding === false ? "sdds-no-padding" : ""}">
-      <div class="sdds-row">
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+    <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
+  }">
+      <div class="tds-row">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
-        <div class="sdds-col-max sdds-col-xxlg sdds-col-xlg sdds-col-lg sdds-col-md sdds-col-sm sdds-col-xs">
+        <div class="tds-col-max tds-col-xxlg tds-col-xlg tds-col-lg tds-col-md tds-col-sm tds-col-xs">
           <div class="inside-demo">1</div>
         </div>
       </div>
@@ -298,17 +298,17 @@ const GridOffsetTemplate = ({ fluidContainer, padding }) =>
 
   <h4>Grid Offset</h4>
 
-    <div class="${
-      fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-    } ${padding === false ? "sdds-no-padding" : ""}">
-      <div class="sdds-row">
-        <div class="sdds-col-max-1 sdds-col-max-2-offset sdds-col-xxlg-1 sdds-col-xxlg-2-offset sdds-col-xlg-1 sdds-col-xlg-2-offset sdds-col-lg-1 sdds-col-lg-2-offset sdds-col-md-1 sdds-col-md-2-offset sdds-col-sm-1 sdds-col-sm-2-offset sdds-col-xs-1 sdds-col-xs-2-offset">
+    <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
+  }">
+      <div class="tds-row">
+        <div class="tds-col-max-1 tds-col-max-2-offset tds-col-xxlg-1 tds-col-xxlg-2-offset tds-col-xlg-1 tds-col-xlg-2-offset tds-col-lg-1 tds-col-lg-2-offset tds-col-md-1 tds-col-md-2-offset tds-col-sm-1 tds-col-sm-2-offset tds-col-xs-1 tds-col-xs-2-offset">
           <div class="inside-demo">Offset</div>
         </div>
-        <div class="sdds-col-max-1 sdds-col-max-2-offset sdds-col-xxlg-1 sdds-col-xxlg-2-offset sdds-col-xlg-1 sdds-col-xlg-2-offset sdds-col-lg-1 sdds-col-lg-2-offset sdds-col-md-1 sdds-col-md-2-offset sdds-col-sm-1 sdds-col-sm-2-offset sdds-col-xs-1 sdds-col-xs-2-offset">
+        <div class="tds-col-max-1 tds-col-max-2-offset tds-col-xxlg-1 tds-col-xxlg-2-offset tds-col-xlg-1 tds-col-xlg-2-offset tds-col-lg-1 tds-col-lg-2-offset tds-col-md-1 tds-col-md-2-offset tds-col-sm-1 tds-col-sm-2-offset tds-col-xs-1 tds-col-xs-2-offset">
           <div class="inside-demo">Offset</div>
         </div>
-        <div class="sdds-col-max-2 sdds-col-max-2-offset sdds-col-xxlg-2 sdds-col-xxlg-2-offset sdds-col-xlg-2 sdds-col-xlg-2-offset sdds-col-lg-2 sdds-col-lg-2-offset sdds-col-md-2 sdds-col-md-2-offset sdds-col-sm-2 sdds-col-sm-2-offset sdds-col-xs-2 sdds-col-xs-2-offset">
+        <div class="tds-col-max-2 tds-col-max-2-offset tds-col-xxlg-2 tds-col-xxlg-2-offset tds-col-xlg-2 tds-col-xlg-2-offset tds-col-lg-2 tds-col-lg-2-offset tds-col-md-2 tds-col-md-2-offset tds-col-sm-2 tds-col-sm-2-offset tds-col-xs-2 tds-col-xs-2-offset">
           <div class="inside-demo">Offset</div>
         </div>
       </div>
@@ -324,23 +324,23 @@ const GridNoPaddingTemplate = ({ fluidContainer, padding }) =>
     <h4>Grid no-padding</h4>
 
     <div class="${
-      fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
+      fluidContainer === true ? 'tds-container-fluid' : 'tds-container'
     } demo-example-cols">
-      <div class="sdds-row">
-        <div class="sdds-no-padding sdds-col-max-8 sdds-col-xxlg-8 sdds-col-xlg-8 sdds-col-lg-8 sdds-col-md-8 sdds-col-sm-8 sdds-col-xs-8">
+      <div class="tds-row">
+        <div class="tds-no-padding tds-col-max-8 tds-col-xxlg-8 tds-col-xlg-8 tds-col-lg-8 tds-col-md-8 tds-col-sm-8 tds-col-xs-8">
           <div class="inside-demo">no padding</div>
         </div>
-        <div class="sdds-no-padding sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+        <div class="tds-no-padding tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
           <div class="inside-demo">no padding</div>
         </div>
         <div class="${
-          padding ? "" : "sdds-no-padding"
-        } sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+          padding ? '' : 'tds-no-padding'
+        } tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
           <div class="inside-demo">padding</div>
         </div>
         <div class="${
-          padding ? "" : "sdds-no-padding"
-        } sdds-col-max-8 sdds-col-xxlg-8 sdds-col-xlg-8 sdds-col-lg-8 sdds-col-md-8 sdds-col-sm-8 sdds-col-xs-8">
+          padding ? '' : 'tds-no-padding'
+        } tds-col-max-8 tds-col-xxlg-8 tds-col-xlg-8 tds-col-lg-8 tds-col-md-8 tds-col-sm-8 tds-col-xs-8">
           <div class="inside-demo">padding</div>
         </div>
       </div>
@@ -359,20 +359,18 @@ const GridFluidTemplate = ({ fluidContainer = true, padding }) =>
 
     <h4>Grid fluid</h4>
 
-    <div class="sdds-container-fluid ${
-      padding === false ? "sdds-no-padding" : ""
-    }">
-      <div class="sdds-row">
-        <div class="sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+    <div class="tds-container-fluid ${padding === false ? 'tds-no-padding' : ''}">
+      <div class="tds-row">
+        <div class="tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
           <div class="inside-demo">container fluid</div>
         </div>
       </div>
     </div>
-    <div class="${fluidContainer ? "sdds-container-fluid" : "sdds-container"} ${
-    padding === false ? "sdds-no-padding" : ""
+    <div class="${fluidContainer ? 'tds-container-fluid' : 'tds-container'} ${
+    padding === false ? 'tds-no-padding' : ''
   } container-demo">
-      <div class="sdds-row">
-        <div class="sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+      <div class="tds-row">
+        <div class="tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
           <div class="inside-demo">container</div>
         </div>
       </div>
@@ -387,34 +385,32 @@ const GridNestedTemplate = ({ fluidContainer, padding }) =>
 
  <h4>Nested</h4>
 
- <div class="${
-   fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
- }">
-   <div class="sdds-row">
+ <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'}">
+   <div class="tds-row">
      <div class="${
-       padding === false ? "sdds-no-padding" : ""
-     } sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+       padding === false ? 'tds-no-padding' : ''
+     } tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
        <div class="inside-demo">12</div>
      </div>
    </div>
-   <div class="sdds-row">
-     <div class="sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
-      <div class="sdds-row">
+   <div class="tds-row">
+     <div class="tds-col-max-6 tds-col-xxlg-6 tds-col-xlg-6 tds-col-lg-6 tds-col-md-6 tds-col-sm-6 tds-col-xs-6">
+      <div class="tds-row">
         <div class="${
-          padding === false ? "sdds-no-padding" : ""
-        } sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
+          padding === false ? 'tds-no-padding' : ''
+        } tds-col-max-6 tds-col-xxlg-6 tds-col-xlg-6 tds-col-lg-6 tds-col-md-6 tds-col-sm-6 tds-col-xs-6">
           <div class="inside-demo">6 nested</div>
         </div>
         <div class=" ${
-          padding === false ? "sdds-no-padding" : ""
-        } sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
+          padding === false ? 'tds-no-padding' : ''
+        } tds-col-max-6 tds-col-xxlg-6 tds-col-xlg-6 tds-col-lg-6 tds-col-md-6 tds-col-sm-6 tds-col-xs-6">
           <div class="inside-demo">6 nested</div>
         </div>
       </div>
      </div>
      <div class="${
-       padding === false ? "sdds-no-padding" : ""
-     } sdds-col-max-6 sdds-col-xxlg-6 sdds-col-xlg-6 sdds-col-lg-6 sdds-col-md-6 sdds-col-sm-6 sdds-col-xs-6">
+       padding === false ? 'tds-no-padding' : ''
+     } tds-col-max-6 tds-col-xxlg-6 tds-col-xlg-6 tds-col-lg-6 tds-col-md-6 tds-col-sm-6 tds-col-xs-6">
        <div class="inside-demo">6</div>
      </div>
    </div>
@@ -429,16 +425,14 @@ const GridHideShow = ({ fluidContainer }) =>
 
   <h4>Hide/show element</h4>
 
-  <div class="${
-    fluidContainer === true ? "sdds-container-fluid" : "sdds-container"
-  }">
-    <div class="sdds-row">
-      <div class="sdds-hide-xlg sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+  <div class="${fluidContainer === true ? 'tds-container-fluid' : 'tds-container'}">
+    <div class="tds-row">
+      <div class="tds-hide-xlg tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
         <div class="inside-demo">Hide on xlg and wider</div>
       </div>
     </div>
-    <div class="sdds-row">
-      <div class="sdds-hide-xs sdds-show-md sdds-col-max-12 sdds-col-xxlg-12 sdds-col-xlg-12 sdds-col-lg-12 sdds-col-md-12 sdds-col-sm-12 sdds-col-xs-12">
+    <div class="tds-row">
+      <div class="tds-hide-xs tds-show-md tds-col-max-12 tds-col-xxlg-12 tds-col-xlg-12 tds-col-lg-12 tds-col-md-12 tds-col-sm-12 tds-col-xs-12">
         <div class="inside-demo">Show on md and wider</div>
       </div>
     </div>
