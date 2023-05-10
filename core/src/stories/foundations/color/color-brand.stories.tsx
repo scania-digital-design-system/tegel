@@ -1,12 +1,12 @@
-import { formatHtmlPreview } from "../../../utils/utils";
+import { formatHtmlPreview } from '../../../utils/utils';
 
 export default {
-  title: "Foundations/Color",
+  title: 'Foundations/Color',
   parameters: {
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       source: {
-        state: "closed",
+        state: 'closed',
       },
     },
   },
@@ -28,14 +28,14 @@ const Template = () =>
   }
 </style>
 
-  <div class="demo-wrapper" style="background-color: var(--sdds-black)">
-    <span>--sdds-black</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-black)">
+    <span>--tds-black</span>
   </div>
-  <div class="demo-wrapper" style="background-color: var(--sdds-white)">
-    <span>--sdds-white</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-white)">
+    <span>--tds-white</span>
   </div>
-  <div class="demo-wrapper" style="background-color: var(--sdds-blue)">
-    <span>--sdds-blue</span>
+  <div class="demo-wrapper" style="background-color: var(--tds-blue)">
+    <span>--tds-blue</span>
   </div>
   `);
 
