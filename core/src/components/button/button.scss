@@ -1,11 +1,6 @@
 @import './button-vars';
 @import '../../mixins/box-sizing';
 
-.sdds-on-white-bg {
-  --sdds-btn-primary-background-disabled: var(--sdds-btn-primary-background-secondary-disabled);
-  --sdds-btn-danger-background-disabled: var(--sdds-btn-danger-background-secondary-disabled);
-}
-
 $btn-lg-height: 56px;
 $btn-md-height: 48px;
 $btn-sm-height: 40px;
@@ -32,79 +27,7 @@ $iconProps: (fill, color);
   cursor: pointer;
 }
 
-.sdds-btn-lg {
-  &:not(.sdds-btn-only-icon) {
-    i.sdds-btn-icon {
-      position: relative;
-
-      &::before {
-        font-size: 20px;
-        line-height: 1;
-        position: absolute;
-        right: 0;
-      }
-    }
-  }
-
-  &.sdds-btn-only-icon {
-    i.sdds-btn-icon::before {
-      font-size: 20px;
-      line-height: 1.25;
-    }
-  }
-}
-
-.sdds-btn-md {
-  &:not(.sdds-btn-only-icon) {
-    i.sdds-btn-icon {
-      position: relative;
-
-      &::before {
-        font-size: 20px;
-        line-height: 1;
-        position: absolute;
-        right: 0;
-      }
-    }
-  }
-
-  &.sdds-btn-only-icon {
-    i.sdds-btn-icon::before {
-      font-size: 20px;
-      line-height: 1.25;
-    }
-  }
-}
-
-.sdds-btn-sm {
-  &:not(.sdds-btn-only-icon) {
-    i.sdds-btn-icon {
-      position: relative;
-
-      &::before {
-        font-size: 16px;
-        line-height: 1;
-        position: absolute;
-        right: 0;
-      }
-    }
-  }
-
-  &.sdds-btn-only-icon {
-    i.sdds-btn-icon::before {
-      font-size: 16px;
-      line-height: 1.25;
-    }
-  }
-}
-
-.sdds-btn.sdds-btn-primary .sdds-btn-icon {
-  fill: var(--sdds-btn-primary-icon-fill);
-  color: var(--sdds-btn-primary-icon-color);
-  font-size: 16px;
-}
-
-.sdds-btn {
+button {
   @include button-base;
 
   height: $btn-lg-height;
@@ -126,14 +49,7 @@ $iconProps: (fill, color);
     outline-offset: -2px;
   }
 
-  span.sdds-btn-text + .sdds-btn-icon {
-    margin-left: var(--sdds-spacing-element-16);
-    width: 20px;
-    height: 20px;
-    line-height: 0;
-  }
-
-  &.sdds-btn-xs {
+  &.xs {
     padding: var(--sdds-spacing-element-4) var(--sdds-spacing-element-8);
     height: $btn-xs-height;
     font-size: 12px;
@@ -146,11 +62,11 @@ $iconProps: (fill, color);
     }
   }
 
-  &.sdds-btn-sm {
+  &.sm {
     padding: var(--sdds-spacing-element-12);
     height: $btn-sm-height;
 
-    &.sdds-btn-only-icon {
+    &.only-icon {
       padding: $btn-sm-only-icon-padding;
     }
 
@@ -159,96 +75,49 @@ $iconProps: (fill, color);
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
-
-    span.sdds-btn-text + .sdds-btn-icon {
-      margin: unset;
-      margin-left: var(--sdds-spacing-element-24);
-      width: 16px;
-      height: 16px;
-    }
-
-    &.sdds-btn-fullbleed {
-      span.sdds-btn-text + .sdds-btn-icon {
-        margin: unset;
-        margin-left: var(--sdds-spacing-element-12);
-      }
-    }
   }
 
-  &.sdds-btn-md {
+  &.md {
     padding: var(--sdds-spacing-element-16);
     height: $btn-md-height;
 
-    &.sdds-btn-only-icon {
+    &.only-icon {
       padding: $btn-md-only-icon-padding;
     }
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
-
-    span.sdds-btn-text + .sdds-btn-icon {
-      margin: unset;
-      margin-left: var(--sdds-spacing-element-20);
-    }
-
-    &.sdds-btn-fullbleed {
-      span.sdds-btn-text + .sdds-btn-icon {
-        margin-left: var(--sdds-spacing-element-16);
-      }
-    }
   }
 
-  &.sdds-btn-lg {
+  &.lg {
     padding: var(--sdds-spacing-element-20);
     height: $btn-lg-height;
 
-    &.sdds-btn-only-icon {
+    &.only-icon {
       padding: $btn-lg-only-icon-padding;
     }
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
       outline: 2px solid var(--sdds-blue-400);
       outline-offset: -2px;
     }
-
-    span.sdds-btn-text + .sdds-btn-icon {
-      margin: unset;
-      margin-left: 28px;
-    }
-
-    &.sdds-btn-fullbleed {
-      span.sdds-btn-text + .sdds-btn-icon {
-        margin-left: var(--sdds-spacing-element-16);
-      }
-    }
   }
 
-  &.sdds-btn-fullbleed {
+  &.fullbleed {
     width: inherit;
     display: flex;
     justify-content: center;
-
-    .sdds-btn-icon,
-    &.sdds-btn-icon {
-      margin-left: var(--sdds-spacing-element-8);
-    }
-  }
-
-  span.sdds-btn-text {
-    align-self: baseline;
   }
 
   @each $type in $types {
-    &.sdds-btn-#{$type} {
+    &.#{$type} {
       @each $prop in $props {
         #{$prop}: var(--sdds-btn-#{$type}-#{$prop});
       }
 
-      .sdds-btn-icon {
+      .icon {
         @each $prop in $iconProps {
           fill: var(--sdds-btn-icon-#{$type}-#{$prop});
           color: var(--sdds-btn-icon-#{$type}-#{$prop});
@@ -262,10 +131,12 @@ $iconProps: (fill, color);
           #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-hover);
         }
 
-        .sdds-btn-icon {
-          @each $prop in $iconProps {
-            fill: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
-            color: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+        &:not(.disabled) {
+          ::slotted([slot='icon']) {
+            @each $prop in $iconProps {
+              fill: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+              color: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+            }
           }
         }
       }
@@ -275,7 +146,7 @@ $iconProps: (fill, color);
           #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-focus);
         }
 
-        .sdds-btn-icon {
+        ::slotted([slot='icon']) {
           @each $prop in $iconProps {
             fill: var(--sdds-btn-icon-#{$type}-#{$prop}-focus);
             color: var(--sdds-btn-icon-#{$type}-#{$prop}-focus);
@@ -296,25 +167,9 @@ $iconProps: (fill, color);
           cursor: not-allowed;
           #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-disabled);
         }
-
-        @if $type == 'ghost' or $type == 'secondary' {
-          .sdds-btn-icon,
-          &.sdds-btn-icon {
-            color: rgb(0 0 0 / 38%);
-          }
-        } @else {
-          .sdds-btn-icon,
-          &.sdds-btn-icon {
-            color: var(--sdds-grey-300);
-          }
-        }
       }
     }
   }
-}
-
-i.sdds-btn-icon[slot='icon'] {
-  line-height: 1;
 }
 
 :host(sdds-button) {
@@ -324,10 +179,9 @@ i.sdds-btn-icon[slot='icon'] {
   ::slotted([slot='icon']) {
     width: var(--sdds-spacing-element-20);
     height: var(--sdds-spacing-element-20);
-    pointer-events: none;
   }
 
-  .sdds-btn-sm {
+  .sm {
     ::slotted([slot='icon']) {
       width: var(--sdds-spacing-element-16);
       height: var(--sdds-spacing-element-16);
@@ -341,15 +195,15 @@ i.sdds-btn-icon[slot='icon'] {
 }
 
 :host(sdds-button[only-icon]) {
-  .sdds-btn-sm {
+  .sm {
     padding: $btn-sm-only-icon-padding;
   }
 
-  .sdds-btn-md {
+  .md {
     padding: $btn-md-only-icon-padding;
   }
 
-  .sdds-btn-lg {
+  .lg {
     padding: $btn-lg-only-icon-padding;
   }
 }
@@ -358,7 +212,7 @@ i.sdds-btn-icon[slot='icon'] {
   display: inline-flex;
   align-items: center;
 
-  .sdds-btn-sm {
+  .sm {
     ::slotted([slot='icon']) {
       margin-left: var(--sdds-spacing-element-12);
       width: var(--sdds-spacing-element-16);
@@ -366,7 +220,7 @@ i.sdds-btn-icon[slot='icon'] {
     }
   }
 
-  .sdds-btn-md {
+  .md {
     ::slotted([slot='icon']) {
       margin-left: var(--sdds-spacing-element-16);
       width: var(--sdds-spacing-element-20);
@@ -374,7 +228,7 @@ i.sdds-btn-icon[slot='icon'] {
     }
   }
 
-  .sdds-btn-lg {
+  .lg {
     ::slotted([slot='icon']) {
       margin-left: var(--sdds-spacing-element-20);
       width: var(--sdds-spacing-element-20);

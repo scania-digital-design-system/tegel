@@ -403,3 +403,16 @@ export function isFocusable(element: HTMLElement): boolean {
 
   return false;
 }
+
+/**
+ * Disables click on a element by adding an event listener
+ * and then preventing default and stopping propogation.
+ * @param {Element} element The element where the click should be
+ * disabled.
+ * */
+export const disableClickOnElement = (element: Element) => {
+  element.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  });
+};
