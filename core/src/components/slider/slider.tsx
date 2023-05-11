@@ -515,7 +515,7 @@ export class Slider {
           )}
 
           <div class="sdds-slider-inner">
-            {/* <label class={this.tickValues.length > 0 && 'offset'}>{this.label}</label> */}
+          
             {this.tickValues.length > 0 && (
               <div class="sdds-slider__value-dividers-wrapper">
                 <div class="sdds-slider__value-dividers">
