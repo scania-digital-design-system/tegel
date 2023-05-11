@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                                   | Type     | Default            |
-| -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------ |
-| `name`   | `name`    | Pass a name of the icon. For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library | `string` | `'arrow_diagonal'` |
-| `size`   | `size`    | Pass a size of icon as a string, for example: 32px, 1rem, 4em...                                                                              | `string` | `'16px'`           |
+| Property | Attribute | Description                                                                                                                                   | Type     | Default   |
+| -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------- |
+| `name`   | `name`    | Pass a name of the icon. For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library | `string` | `'truck'` |
+| `size`   | `size`    | Pass a size of icon as a string, for example: 32px, 1rem, 4em...                                                                              | `string` | `'16px'`  |
 
 
 ## Dependencies
