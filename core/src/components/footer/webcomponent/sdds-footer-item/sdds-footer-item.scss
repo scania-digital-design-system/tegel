@@ -7,17 +7,15 @@
     color: var(--sdds-footer-main-links);
     opacity: var(--sdds-footer-main-links-opacity);
     text-decoration: none;
-
   }
 
   ::slotted(*:focus-visible) {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
-
 
   ::slotted(*:hover) {
     text-decoration: underline;
-    }
+  }
 
   &.top-part-child {
     ::slotted(*) {
@@ -30,7 +28,7 @@
     }
 
     ::slotted(*:focus-visible) {
-      @include sdds-focus-state;
+      @include tds-focus-state;
     }
   }
 }
@@ -46,14 +44,13 @@
       font-weight: normal;
     }
 
-
-    ::slotted(*:hover){
-        text-decoration: underline;
-        background-color: var(--sdds-footer-top-links-background-hover);
+    ::slotted(*:hover) {
+      text-decoration: underline;
+      background-color: var(--sdds-footer-top-links-background-hover);
     }
 
-    ::slotted(*:focus-visible){
-      @include sdds-focus-state;
+    ::slotted(*:focus-visible) {
+      @include tds-focus-state;
     }
   }
 }

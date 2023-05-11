@@ -5,7 +5,7 @@
   ::slotted(button),
   ::slotted(a) {
     all: unset;
-    @include sdds-box-sizing;
+    @include tds-box-sizing;
 
     background-color: var(--sdds-header-background);
     border-right: 1px solid var(--sdds-header--basic-element-border);
@@ -25,7 +25,7 @@
 
   ::slotted(button:focus-visible),
   ::slotted(a:focus-visible) {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 
   .component-active {

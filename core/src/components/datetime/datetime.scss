@@ -1,7 +1,7 @@
 @import '../../mixins/box-sizing';
 
 @mixin datetime-base {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   border-radius: 4px 4px 0 0;
   width: 100%;
