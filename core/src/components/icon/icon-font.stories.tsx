@@ -46,17 +46,17 @@ export default {
   },
 };
 
-const IconFontTemplate = (args) =>
+const Template = (args) =>
   formatHtmlPreview(`
   <style>
     /* Demo code for presentation purposes */
     @import url('https://cdn.digitaldesign.scania.com/icons/webfont/css/sdds-icons.css');
-    .sdds-icon { font-size: ${args.size}px; }
+    .tds-icon { font-size: ${args.size}px; }
   </style>
 
-  <i class="sdds-icon ${args.icon}"></i>
+  <i class="tds-icon ${args.icon}"></i>
   `);
 
-export const Native = IconFontTemplate.bind({});
+export const WebFont = Template.bind({});
 
-Native.args = {};
+WebFont.args = {};
