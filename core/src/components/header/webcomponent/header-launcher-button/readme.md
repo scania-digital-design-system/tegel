@@ -21,13 +21,13 @@
 ### Depends on
 
 - [sdds-header-item](../header-item)
-- [sdds-icon](../../../icon)
+- [tds-icon](../../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   sdds-header-launcher-button --> sdds-header-item
-  sdds-header-launcher-button --> sdds-icon
+  sdds-header-launcher-button --> tds-icon
   sdds-header-item --> sdds-core-header-item
   sdds-header-launcher --> sdds-header-launcher-button
   style sdds-header-launcher-button fill:#f9f,stroke:#333,stroke-width:4px

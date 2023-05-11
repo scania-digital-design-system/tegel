@@ -38,12 +38,12 @@
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-textfield --> sdds-icon
+  sdds-textfield --> tds-icon
   style sdds-textfield fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

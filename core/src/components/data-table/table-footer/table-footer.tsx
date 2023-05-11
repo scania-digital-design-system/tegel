@@ -228,7 +228,7 @@ export class TableFooter {
                     disabled={this.paginationValue <= 1 || this.tempPaginationDisable}
                     onClick={() => this.previousPage()}
                   >
-                    <sdds-icon name="chevron_left" size="20px"></sdds-icon>
+                    <tds-icon name="chevron_left" size="20px"></tds-icon>
                   </button>
                   <button
                     type="button"
@@ -238,7 +238,7 @@ export class TableFooter {
                     }
                     onClick={() => this.nextPage()}
                   >
-                    <sdds-icon name="chevron_right" size="20px"></sdds-icon>
+                    <tds-icon name="chevron_right" size="20px"></tds-icon>
                   </button>
                 </div>
               </div>

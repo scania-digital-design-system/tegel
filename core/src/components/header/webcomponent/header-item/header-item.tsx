@@ -38,7 +38,7 @@ export class HeaderItem {
   updateSlottedElements() {
     if (this.slotEl) {
       const isIconOrSvg = (element) =>
-        element.tagName.toLowerCase() === 'sdds-icon' || element.tagName.toLowerCase() === 'svg';
+        element.tagName.toLowerCase() === 'tds-icon' || element.tagName.toLowerCase() === 'svg';
       const addIconClass = (element) => element.classList.add('__sdds-header-item-icon');
       this.updateSlotted(isIconOrSvg, addIconClass);
 
