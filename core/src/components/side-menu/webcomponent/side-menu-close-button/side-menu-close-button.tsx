@@ -17,7 +17,7 @@ export class SideMenuCloseButton {
     return (
       <Host>
         <button {...buttonProps}>
-          <sdds-icon name="cross" size="20px"></sdds-icon>
+          <tds-icon name="cross" size="20px"></tds-icon>
         </button>
       </Host>
     );

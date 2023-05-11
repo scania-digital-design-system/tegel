@@ -61,7 +61,7 @@ export class HeaderDropdown {
               {this.buttonLabel}
               <slot name="button-label"></slot>
               {!this.noDropdownIcon && (
-                <sdds-icon class="dropdown-icon" name="chevron_down" size="16px"></sdds-icon>
+                <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
               )}
             </button>
           </sdds-header-item>

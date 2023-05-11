@@ -52,12 +52,12 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-banner --> sdds-icon
+  sdds-banner --> tds-icon
   style sdds-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -193,7 +193,7 @@ export class InlineTabsFullbleed {
             onClick={() => this.scrollLeft()}
             disabled={!this.showLeftScroll}
           >
-            <sdds-icon name="chevron_left" size="20px"></sdds-icon>
+            <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
           <slot />
           <button
@@ -201,7 +201,7 @@ export class InlineTabsFullbleed {
             onClick={() => this.scrollRight()}
             disabled={!this.showRightScroll}
           >
-            <sdds-icon name="chevron_right" size="20px"></sdds-icon>
+            <tds-icon name="chevron_right" size="20px"></tds-icon>
           </button>
         </div>
       </Host>

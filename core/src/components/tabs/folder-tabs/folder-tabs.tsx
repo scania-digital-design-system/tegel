@@ -143,24 +143,23 @@ export class InlineTabs {
   };
 
   addEventListenerToTabs = () => {
-      this.children = Array.from(this.host.children) as Array<HTMLSddsFolderTabElement>;
-      this.children = this.children.map((item, index) => {
-        item.addEventListener('click', () => {
-          const sddsChangeEvent = this.sddsChange.emit({
-            selectedTabIndex: this.children.indexOf(item)
-          });
-
-          if(!sddsChangeEvent.defaultPrevented) {
-            if (!item.disabled) {
-              this.children.forEach((element) => element.setSelected(false));
-              item.setSelected(true);
-              this.selectedIndex = index;
-            }
-          }
+    this.children = Array.from(this.host.children) as Array<HTMLSddsFolderTabElement>;
+    this.children = this.children.map((item, index) => {
+      item.addEventListener('click', () => {
+        const sddsChangeEvent = this.sddsChange.emit({
+          selectedTabIndex: this.children.indexOf(item),
         });
-        return item;
+
+        if (!sddsChangeEvent.defaultPrevented) {
+          if (!item.disabled) {
+            this.children.forEach((element) => element.setSelected(false));
+            item.setSelected(true);
+            this.selectedIndex = index;
+          }
+        }
       });
-    
+      return item;
+    });
   };
 
   connectedCallback() {
@@ -217,7 +216,7 @@ export class InlineTabs {
             disabled={!this.showLeftScroll}
             onClick={() => this.scrollLeft()}
           >
-            <sdds-icon name="chevron_left" size="20px"></sdds-icon>
+            <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
           <slot></slot>
           <button
@@ -225,7 +224,7 @@ export class InlineTabs {
             disabled={!this.showRightScroll}
             onClick={() => this.scrollRight()}
           >
-            <sdds-icon name="chevron_right" size="20px"></sdds-icon>
+            <tds-icon name="chevron_right" size="20px"></tds-icon>
           </button>
         </div>
       </Host>
