@@ -160,7 +160,7 @@ export class SddsDropdownOptionV2 {
             >
               <div class="single-select">
                 <slot></slot>
-                {this.selected && <sdds-icon name="tick" size="16px"></sdds-icon>}
+                {this.selected && <tds-icon name="tick" size="16px"></tds-icon>}
               </div>
             </button>
           )}

@@ -107,13 +107,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
             <span slot="label">
                 ${
                   icon && iconPosition === 'Prefix'
-                    ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+                    ? '<tds-icon name="cross" size="16px"></tds-icon>'
                     : ''
                 }
                 ${label}
                 ${
                   icon && iconPosition === 'Suffix'
-                    ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+                    ? '<tds-icon name="cross" size="16px"></tds-icon>'
                     : ''
                 }
             </span>
@@ -142,13 +142,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
           ${label} 1
           ${
             icon && iconPosition === 'Suffix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
         </span>
@@ -157,13 +157,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
           ${label} 2
           ${
             icon && iconPosition === 'Suffix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
         </span>
@@ -172,13 +172,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
           ${label} 3
           ${
             icon && iconPosition === 'Suffix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
         </span>
@@ -208,13 +208,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
           ${label} 1
           ${
             icon && iconPosition === 'Suffix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
         </span>
@@ -223,13 +223,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
           ${label} 2
           ${
             icon && iconPosition === 'Suffix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
         </span>
@@ -238,13 +238,13 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
           ${label} 3
           ${
             icon && iconPosition === 'Suffix'
-              ? '<sdds-icon name="cross" size="16px"></sdds-icon>'
+              ? '<tds-icon name="cross" size="16px"></tds-icon>'
               : ''
           }
         </span>

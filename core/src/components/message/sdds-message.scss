@@ -8,7 +8,7 @@
     &.information {
       border-left: 4px solid var(--sdds-information);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-information);
       }
     }
@@ -16,7 +16,7 @@
     &.success {
       border-left: 4px solid var(--sdds-positive);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-positive);
       }
     }
@@ -25,7 +25,7 @@
       background-color: var(--sdds-message-type-error-background);
       border-left: 4px solid var(--sdds-negative);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-negative);
       }
     }
@@ -33,7 +33,7 @@
     &.warning {
       border-left: 4px solid var(--sdds-warning);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-warning);
       }
     }
@@ -50,13 +50,13 @@
         letter-spacing: var(--sdds-detail-02-ls);
       }
 
-      sdds-icon {
+      tds-icon {
         padding-right: 8px;
       }
     }
   }
 
-  sdds-icon {
+  tds-icon {
     padding-right: 16px;
   }
 

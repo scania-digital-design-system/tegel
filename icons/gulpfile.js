@@ -11,10 +11,10 @@ const iconfontCss = require('gulp-iconfont-css'); // to create css from webfont
 const outputFolder = 'dist';
 const iconFolder = './src/svg/*.svg';
 const tempFolder = 'temp';
-const iconComponentFolderTegel = '../core/src/components/icon/';
+const iconComponentFolder = '../core/src/components/icon/';
 
 const runTimestamp = Math.round(Date.now() / 1000);
-const fontName = 'sdds-icons';
+const fontName = 'tds-icons';
 
 // Use SVGO plugins to clean SVG from unused attributes,
 // Doctype, and unnecessary clipPath
@@ -127,8 +127,8 @@ async function generateIcons() {
   // write file into dist folder for testing/debugging purposes
   fs.writeFileSync(`${outputFolder}/iconsArrays.js`, icons);
 
-  // write icons into /tegel/icons folder for component and story usage
-  fs.writeFileSync(`${iconComponentFolderTegel}/iconsArray.js`, icons);
+  // write icons into /component/icons folder for component and story usage
+  fs.writeFileSync(`${iconComponentFolder}/iconsArray.js`, icons);
 }
 
 // create icon fonts from cleaned svgs
@@ -138,9 +138,9 @@ function createIconfont() {
       iconfontCss({
         fontName,
         path: './src/_icons.css', // iconfont css template path
-        targetPath: 'css/sdds-icons.css', // final result of the css
+        targetPath: 'css/tds-icons.css', // final result of the css
         fontPath: '../',
-        cssClass: 'sdds-icon',
+        cssClass: 'tds-icon',
       }),
     )
     .pipe(

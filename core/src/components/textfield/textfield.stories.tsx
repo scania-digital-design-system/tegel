@@ -243,7 +243,7 @@ const Template = ({
           ${
             prefixType === 'Text'
               ? '<span slot="prefix">$</span>'
-              : '<sdds-icon slot="prefix" name="truck" size="20px"></sdds-icon>'
+              : '<tds-icon slot="prefix" name="truck" size="20px"></tds-icon>'
           }
         `
             : ''
@@ -254,7 +254,7 @@ const Template = ({
           ${
             suffixType === 'Text'
               ? '<span slot="suffix">$</span>'
-              : '<sdds-icon slot="suffix" name="truck" size="20px"></sdds-icon>'
+              : '<tds-icon slot="suffix" name="truck" size="20px"></tds-icon>'
           }        `
             : ''
         }
@@ -280,6 +280,6 @@ const Template = ({
   );
 };
 
-// ${true ? '<sdds-icon name="cross" slot="sdds-prefix"></sdds-icon>' : ''}
+// ${true ? '<tds-icon name="cross" slot="sdds-prefix"></tds-icon>' : ''}
 
 export const Textfield = Template.bind({});

@@ -27,12 +27,12 @@
 
 ### Depends on
 
-- [sdds-icon](../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-table-footer --> sdds-icon
+  sdds-table-footer --> tds-icon
   style sdds-table-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
