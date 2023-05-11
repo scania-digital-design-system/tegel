@@ -43,7 +43,7 @@ export class SddsSideMenuItem {
   updateSlottedElements() {
     if (this.slotEl) {
       const isIconOrSvg = (element) =>
-        element.tagName.toLowerCase() === 'sdds-icon' || element.tagName.toLowerCase() === 'svg';
+        element.tagName.toLowerCase() === 'tds-icon' || element.tagName.toLowerCase() === 'svg';
       const addIconClass = (element) => {
         element.classList.add('__sdds-side-menu-item-icon');
         if (this.collapsed) {

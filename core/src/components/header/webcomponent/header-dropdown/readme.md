@@ -40,14 +40,14 @@ Example:
 ### Depends on
 
 - [sdds-header-item](../header-item)
-- [sdds-icon](../../../icon)
+- [tds-icon](../../../icon)
 - [sdds-popover-canvas](../../../popover-canvas)
 
 ### Graph
 ```mermaid
 graph TD;
   sdds-header-dropdown --> sdds-header-item
-  sdds-header-dropdown --> sdds-icon
+  sdds-header-dropdown --> tds-icon
   sdds-header-dropdown --> sdds-popover-canvas
   sdds-header-item --> sdds-core-header-item
   style sdds-header-dropdown fill:#f9f,stroke:#333,stroke-width:4px

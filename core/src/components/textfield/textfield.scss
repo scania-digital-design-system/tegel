@@ -373,7 +373,7 @@
   margin: 0 0 0 14px;
   color: var(--sdds-textfield-ps-color);
 
-  &::slotted(:not(sdds-icon)) {
+  &::slotted(:not(tds-icon)) {
     margin: 0 0 0 2px;
   }
 
@@ -385,7 +385,7 @@
 .textfield-slot-wrap-suffix {
   margin: 0 14px 0 0;
 
-  &::slotted(:not(sdds-icon)) {
+  &::slotted(:not(tds-icon)) {
     margin: 0 2px 0 0;
   }
 }
