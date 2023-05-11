@@ -9,13 +9,13 @@ export default create({
   base: 'dark',
 
   // UI
-  appContentBg: '#1d2229', // --sdds-grey-900
+  appContentBg: '#1d2229', // --tds-grey-900
 
   // Text colors
-  textInverseColor: '#1d2229', // --sdds-grey-900
+  textInverseColor: '#1d2229', // --tds-grey-900
 
   // Toolbar default and active colors
-  barBg: '#1d2229', // --sdds-grey-900
+  barBg: '#1d2229', // --tds-grey-900
 
   // Form colors
 });
