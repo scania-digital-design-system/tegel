@@ -34,12 +34,12 @@
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-datetime --> sdds-icon
+  sdds-datetime --> tds-icon
   style sdds-datetime fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -141,7 +141,7 @@ export class Modal {
           <div class="sdds-modal-header">
             <slot name="sdds-modal-headline"></slot>
             <button class="sdds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
-              <sdds-icon name="cross" size="20px"></sdds-icon>
+              <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
 

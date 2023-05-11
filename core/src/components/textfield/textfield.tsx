@@ -183,7 +183,7 @@ export class Textfield {
             <slot name="suffix" />
           </div>
           <span class="textfield-icon__readonly">
-            <sdds-icon name="edit_inactive" size="20px"></sdds-icon>
+            <tds-icon name="edit_inactive" size="20px"></tds-icon>
           </span>
           <span class="textfield-icon__readonly-label">This field is non-editable</span>
         </div>
@@ -191,7 +191,7 @@ export class Textfield {
         <div class="textfield-helper">
           {this.state === 'error' && (
             <div class="textfield-helper-error-state">
-              <sdds-icon name="error" size="16px"></sdds-icon>
+              <tds-icon name="error" size="16px"></tds-icon>
               {this.helper}
             </div>
           )}

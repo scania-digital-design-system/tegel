@@ -43,7 +43,7 @@ export class SddsFooterGroup {
             class={`footer-top-title-button  ${this.open ? 'expanded' : 'closed'}`}
           >
             {this.titleText}
-            <sdds-icon name="chevron_down" size="20px"></sdds-icon>
+            <tds-icon name="chevron_down" size="20px"></tds-icon>
           </button>
         )}
         <div
