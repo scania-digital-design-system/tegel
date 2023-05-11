@@ -18,7 +18,7 @@ export class HeaderHamburger {
       <Host>
         <sdds-header-item>
           <button {...inheritedButtonProps}>
-            <sdds-icon class="icon" name="burger" size="20px"></sdds-icon>
+            <tds-icon class="icon" name="burger" size="20px"></tds-icon>
           </button>
         </sdds-header-item>
       </Host>

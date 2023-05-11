@@ -45,7 +45,7 @@ export class SddsMessage {
         ${this.minimal ? 'message-minimal' : ''}
         ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}`}
         >
-          {!this.noIcon && <sdds-icon name={this.getIconName()} size="20px"></sdds-icon>}
+          {!this.noIcon && <tds-icon name={this.getIconName()} size="20px"></tds-icon>}
           <div class={`message-content`}>
             {this.header && <div class="message-header">{this.header}</div>}
             {!this.minimal && (

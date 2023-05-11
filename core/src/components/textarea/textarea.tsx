@@ -175,12 +175,12 @@ export class Textarea {
             </svg>
           </span>
           <span class="textarea-icon__readonly">
-            <sdds-icon name="edit_inactive"></sdds-icon>
+            <tds-icon name="edit_inactive"></tds-icon>
           </span>
           <span class="textarea-icon__readonly-label">This field is non-editable</span>
         </div>
         <span class={'textarea-helper'}>
-          {this.state === 'error' && <sdds-icon name="error" size="16px"></sdds-icon>}
+          {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
           {this.helper}
         </span>
 

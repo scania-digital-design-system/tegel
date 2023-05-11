@@ -136,9 +136,9 @@ export class NavigationTabs {
     this.children = this.children.map((item, index) => {
       item.addEventListener('click', () => {
         const sddsChangeEvent = this.sddsChange.emit({
-          selectedTabIndex: this.children.indexOf(item)
+          selectedTabIndex: this.children.indexOf(item),
         });
-        if(!sddsChangeEvent.defaultPrevented) {
+        if (!sddsChangeEvent.defaultPrevented) {
           if (!item.disabled) {
             this.children.forEach((element) => element.setSelected(false));
             item.setSelected(true);
@@ -196,7 +196,7 @@ export class NavigationTabs {
             onClick={() => this.scrollLeft()}
             disabled={!this.showLeftScroll}
           >
-            <sdds-icon name="chevron_left" size="20px"></sdds-icon>
+            <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
           <slot />
           <button
@@ -204,7 +204,7 @@ export class NavigationTabs {
             onClick={() => this.scrollRight()}
             disabled={!this.showRightScroll}
           >
-            <sdds-icon name="chevron_right" size="20px"></sdds-icon>
+            <tds-icon name="chevron_right" size="20px"></tds-icon>
           </button>
         </div>
       </Host>

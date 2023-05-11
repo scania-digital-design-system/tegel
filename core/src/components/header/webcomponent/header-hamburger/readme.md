@@ -27,13 +27,13 @@ Example:
 ### Depends on
 
 - [sdds-header-item](../header-item)
-- [sdds-icon](../../../icon)
+- [tds-icon](../../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   sdds-header-hamburger --> sdds-header-item
-  sdds-header-hamburger --> sdds-icon
+  sdds-header-hamburger --> tds-icon
   sdds-header-item --> sdds-core-header-item
   style sdds-header-hamburger fill:#f9f,stroke:#333,stroke-width:4px
 ```
