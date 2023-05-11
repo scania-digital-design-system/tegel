@@ -1,6 +1,6 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
-@import '../link/link-vars.scss';
+@import '../link/link-vars';
 
 :host(.hide) {
   display: none;
@@ -18,7 +18,7 @@
 :host {
   display: flex;
   background-color: var(--sdds-banner-background-default);
-  z-index: z(banner);
+  z-index: tds-z-index(banner);
 
   .banner-icon {
     padding-left: 20px;

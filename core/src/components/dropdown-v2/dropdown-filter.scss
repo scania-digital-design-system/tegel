@@ -97,7 +97,7 @@
 
     sdds-icon {
       margin-right: 16px;
-      z-index: calc(z(dropdown) + 1);
+      z-index: calc(tds-z-index(dropdown) + 1);
     }
   }
 }
