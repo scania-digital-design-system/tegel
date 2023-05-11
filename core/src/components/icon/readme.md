@@ -41,7 +41,6 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-accordion-item --> tds-icon
   sdds-banner --> tds-icon
   sdds-datetime --> tds-icon
   sdds-dropdown-option-v2 --> tds-icon
@@ -63,6 +62,7 @@ graph TD;
   sdds-textarea --> tds-icon
   sdds-textfield --> tds-icon
   sdds-toast --> tds-icon
+  tds-accordion-item --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
