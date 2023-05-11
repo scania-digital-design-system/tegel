@@ -1,8 +1,8 @@
-@import './spinner-vars.scss';
+@import './spinner-vars';
 @import '../../mixins/box-sizing';
 
 :host {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: block;
 }
@@ -41,7 +41,6 @@
   cx: var(--sdds-spinner-radius);
   cy: var(--sdds-spinner-radius);
   r: calc(var(--sdds-spinner-radius) - (var(--sdds-spinner-stroke-width) / 2));
-  stroke-width: var(--sdds-spinner-stroke-width);
   fill: none;
 
   //Calculation for lenght of dash

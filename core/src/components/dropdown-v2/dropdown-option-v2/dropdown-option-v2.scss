@@ -45,7 +45,7 @@
       }
 
       &:focus {
-        @include sdds-focus-state;
+        @include tds-focus-state;
       }
     }
 

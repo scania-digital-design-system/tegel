@@ -2,7 +2,7 @@
 @import '../../mixins/box-sizing';
 
 .sdds-radio-button {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: flex;
   align-items: center;

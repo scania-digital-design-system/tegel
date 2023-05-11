@@ -14,7 +14,7 @@
   }
 
   &:focus-visible {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 
   &.disabled,
