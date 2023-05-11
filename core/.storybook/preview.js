@@ -148,8 +148,8 @@ export const parameters = {
 // https://github.com/storybookjs/storybook/issues/12982#issuecomment-865304427
 // https://github.com/storybookjs/storybook/blob/9eeb6ddfdd09a64c554843380187d27a41a8a235/addons/backgrounds/src/containers/BackgroundSelector.tsx#L100
 // https://github.com/hipstersmoothie/storybook-dark-mode/blob/bdb64ee8302bb95c23ebc2709ed3fe88431072f3/src/index.tsx
-if (!window.SDDS_DID_SUBSCRIBE_DARK_BG) {
-  window.SDDS_DID_SUBSCRIBE_DARK_BG = true;
+if (!window.TDS_DID_SUBSCRIBE_DARK_BG) {
+  window.TDS_DID_SUBSCRIBE_DARK_BG = true;
   const darkModeBgColor = parameters.backgrounds.values.find(
     ({ name }) => name === 'grey-958',
   ).value;
@@ -169,7 +169,7 @@ if (!window.SDDS_DID_SUBSCRIBE_DARK_BG) {
           },
         },
       });
-      window.SDDS_DARK_BG = isDarkMode;
+      window.TDS_DARK_BG = isDarkMode;
     }
   });
 }
