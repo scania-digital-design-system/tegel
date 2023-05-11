@@ -110,7 +110,7 @@ const Template = ({ persistent, collapsible }) =>
       display: none;
     }
 
-    // https://tegel.scania.com/components/header#:~:text=breakpoints%20larger%20than-,%24small%2D375.,-On%20smaller%20breakpoints
+    /* https://tegel.scania.com/components/header#:~:text=breakpoints%20larger%20than-,%24small%2D375.,-On%20smaller%20breakpoints */
     @media (min-width: 375px) {
       .demo-xs-hide {
         display: none;
