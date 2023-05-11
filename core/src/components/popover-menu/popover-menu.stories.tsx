@@ -48,7 +48,7 @@ export default {
     },
     icons: {
       name: 'Icons',
-      description: 'Shows the popover menu with/wothout icons.',
+      description: 'Shows the popover menu with/without icons.',
       control: {
         type: 'boolean',
       },
