@@ -2,7 +2,7 @@
 @import '../../../mixins/focus-state';
 
 :host {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: contents;
 
@@ -31,7 +31,6 @@
 
     .sdds-table__expand-input {
       all: unset;
-      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -40,7 +39,7 @@
       cursor: pointer;
 
       &:focus {
-        @include sdds-focus-state;
+        @include tds-focus-state;
       }
     }
 

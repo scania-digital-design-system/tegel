@@ -3,7 +3,7 @@
 @import '../../../mixins/z-index';
 
 :host {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: flex;
   background-color: var(--sdds-inline-tabs-background);
@@ -35,12 +35,12 @@
 
   .scroll-right-button {
     right: 0;
-    z-index: calc(z(tab) + 1);
+    z-index: calc(tds-z-index(tab) + 1);
   }
 
   .scroll-left-button {
     left: 0;
-    z-index: calc(z(tab) + 1);
+    z-index: calc(tds-z-index(tab) + 1);
   }
 
   .scroll-right-button,
@@ -73,7 +73,7 @@
     }
 
     &:focus {
-      @include sdds-focus-state;
+      @include tds-focus-state;
     }
 
     svg {

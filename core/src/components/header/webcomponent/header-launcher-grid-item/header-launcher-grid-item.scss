@@ -36,6 +36,6 @@
 
   ::slotted(a:focus-visible),
   ::slotted(button:focus-visible) {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 }

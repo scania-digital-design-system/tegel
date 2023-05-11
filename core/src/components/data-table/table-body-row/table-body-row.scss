@@ -1,7 +1,7 @@
 @import '../../../mixins/box-sizing';
 
 :host(.sdds-table__row) {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: table-row;
   border-bottom: 1px solid var(--sdds-data-table-divider);
