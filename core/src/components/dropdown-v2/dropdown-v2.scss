@@ -1,12 +1,12 @@
 @import '../../mixins/z-index';
 @import '../../mixins/scrollbar';
-@import './dropdown-button.scss';
-@import './dropdown-filter.scss';
+@import './dropdown-button';
+@import './dropdown-filter';
 
 :host {
   display: block;
   position: relative;
-  z-index: z(dropdown);
+  z-index: tds-z-index(dropdown);
 
   .label-outside {
     font: var(--sdds-detail-05);
@@ -131,7 +131,7 @@
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
     border-radius: 0 0 4px 4px;
     overflow-y: auto;
-    @include sdds-scrollbar;
+    @include tds-scrollbar;
 
     &.lg {
       max-height: 312px;

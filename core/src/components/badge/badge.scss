@@ -8,7 +8,7 @@
   --sdds-badge-color-text: var(--sdds-white);
 
   // Styling
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: block;
 }

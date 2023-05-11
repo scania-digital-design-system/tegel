@@ -6,7 +6,7 @@
 ::slotted(*) {
   color: var(--sdds-grey-958);
   box-sizing: border-box;
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 }
 
 :host,
@@ -134,9 +134,9 @@
   }
 
   .sdds-dropdown-menu {
-    z-index: z(dropdown);
+    z-index: tds-z-index(dropdown);
 
-    @include sdds-scrollbar;
+    @include tds-scrollbar;
 
     background-color: var(--sdds-dropdown-background);
     position: absolute;
