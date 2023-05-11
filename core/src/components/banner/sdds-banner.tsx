@@ -110,7 +110,7 @@ export class SddsBanner {
       >
         {this.icon && (
           <div class={`banner-icon ${this.type}`}>
-            <sdds-icon name={this.icon} size="20px"></sdds-icon>
+            <tds-icon name={this.icon} size="20px"></tds-icon>
           </div>
         )}
         <div class={`banner-content ${this.type} ${!this.icon ? 'no-icon' : ''}`}>
@@ -129,7 +129,7 @@ export class SddsBanner {
                 this.handleClose();
               }}
             >
-              <sdds-icon name="cross" size="20px"></sdds-icon>
+              <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
         )}

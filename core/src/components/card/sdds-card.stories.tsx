@@ -1,3 +1,4 @@
+// @ts-ignore
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import { formatHtmlPreview } from '../../utils/utils';
 import readme from './readme.md';
@@ -119,7 +120,7 @@ export default {
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,
-    cardBottom: `<div slot="card-bottom"><sdds-icon style="font-size: 20px;" name="arrow_right"></sdds-icon></div>`,
+    cardBottom: `<div slot="card-bottom"><tds-icon style="font-size: 20px;" name="arrow_right"></tds-icon></div>`,
     clickable: false,
   },
 };
@@ -154,25 +155,27 @@ const Template = ({
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
-  ${bodyContent
+  ${
+    bodyContent
       ? `
     <div slot="card-body">
         ${bodyContent}
     </div>`
       : ''
-    }
+  }
     ${cardBottom ? `${cardBottom}` : ''}
     </sdds-card>
     </div>
-    ${clickable
-      ? `
+    ${
+      clickable
+        ? `
     <script>
         document.addEventListener('sddsClick', (event)=>{
             console.log('Card with id: ', event.detail.cardId, ' was clicked.')
         })
     </script>
     `
-      : ''
+        : ''
     }
   `,
   );

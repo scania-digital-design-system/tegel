@@ -391,14 +391,14 @@ export class SddsDropdownV2 {
                   }}
                 />
               </div>
-              <sdds-icon
+              <tds-icon
                 onClick={() => {
                   this.open = !this.open;
                 }}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
-              ></sdds-icon>
+              ></tds-icon>
             </div>
           ) : (
             <button
@@ -434,11 +434,11 @@ export class SddsDropdownV2 {
                 <div class={`placeholder ${this.size}`}>
                   {this.selection?.length ? this.getValue() : this.placeholder}
                 </div>
-                <sdds-icon
+                <tds-icon
                   class={`${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
-                ></sdds-icon>
+                ></tds-icon>
               </div>
             </button>
           )}
@@ -460,7 +460,7 @@ export class SddsDropdownV2 {
         {/* DROPDOWN LIST */}
         {this.helper && (
           <div class={`helper ${this.error ? 'error' : ''} ${this.disabled ? 'disabled' : ''}`}>
-            {this.error && <sdds-icon name="error" size="16px"></sdds-icon>}
+            {this.error && <tds-icon name="error" size="16px"></tds-icon>}
             {this.helper}
           </div>
         )}

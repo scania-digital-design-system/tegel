@@ -186,11 +186,11 @@ export class Datetime {
             />
 
             <div class="datetime-icon icon-datetime-local">
-              <sdds-icon size="20px" name="calendar"></sdds-icon>
+              <tds-icon size="20px" name="calendar"></tds-icon>
             </div>
 
             <div class="datetime-icon icon-time">
-              <sdds-icon size="20px" name="clock"></sdds-icon>
+              <tds-icon size="20px" name="clock"></tds-icon>
             </div>
           </div>
           <div class="sdds-datetime-bar"></div>
@@ -199,7 +199,7 @@ export class Datetime {
         <div class="sdds-datetime-helper">
           {this.helper && (
             <div class="sdds-helper">
-              {this.state === 'error' && <sdds-icon name="error" size="16px"></sdds-icon>}
+              {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
               {this.helper}
             </div>
           )}

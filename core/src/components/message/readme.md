@@ -20,12 +20,12 @@
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-message --> sdds-icon
+  sdds-message --> tds-icon
   style sdds-message fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

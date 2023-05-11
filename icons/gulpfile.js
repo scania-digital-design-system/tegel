@@ -1,21 +1,20 @@
-const { series, src, dest } = require("gulp");
-const { parse } = require("svgson"); // to parse SVG to JSON
-const { optimize, extendDefaultPlugins } = require("svgo"); // to clean SVG files
-const path = require("path");
-const glob = require("glob");
-const fs = require("fs-extra");
-const del = require("del");
-const iconfont = require("gulp-iconfont"); // to convert SVG to webfont files
-const iconfontCss = require("gulp-iconfont-css"); // to create css from webfont
+const { series, src, dest } = require('gulp');
+const { parse } = require('svgson'); // to parse SVG to JSON
+const { optimize, extendDefaultPlugins } = require('svgo'); // to clean SVG files
+const path = require('path');
+const glob = require('glob');
+const fs = require('fs-extra');
+const del = require('del');
+const iconfont = require('gulp-iconfont'); // to convert SVG to webfont files
+const iconfontCss = require('gulp-iconfont-css'); // to create css from webfont
 
-const outputFolder = "dist";
-const iconFolder = "./src/svg/*.svg";
-const tempFolder = "temp";
-const iconComponentFolder = "../components/src/components/icon/";
-const iconComponentFolderTegel = "../tegel/src/components/icon/";
+const outputFolder = 'dist';
+const iconFolder = './src/svg/*.svg';
+const tempFolder = 'temp';
+const iconComponentFolder = '../core/src/components/icon/';
 
 const runTimestamp = Math.round(Date.now() / 1000);
-const fontName = "sdds-icons";
+const fontName = 'tds-icons';
 
 // Use SVGO plugins to clean SVG from unused attributes,
 // Doctype, and unnecessary clipPath
@@ -25,35 +24,35 @@ const fontName = "sdds-icons";
 const svgoConfig = {
   plugins: extendDefaultPlugins([
     {
-      name: "removeAttrs",
+      name: 'removeAttrs',
       params: {
-        attrs: "(fill|stroke|clip-path)", // remove clipPath so it does not add blue background on webfont
+        attrs: '(fill|stroke|clip-path)', // remove clipPath so it does not add blue background on webfont
       },
     },
     {
-      name: "mergePaths",
+      name: 'mergePaths',
       params: {
         force: true, // important to set to true
       },
     },
     {
-      name: "removeElementsByAttr",
+      name: 'removeElementsByAttr',
       params: {
-        id: ["a", "b", "SVGID_1_", "SVGID_2_"], // remove clipPath
+        id: ['a', 'b', 'SVGID_1_', 'SVGID_2_'], // remove clipPath
       },
     },
     {
-      name: "removeViewBox",
+      name: 'removeViewBox',
       active: false,
     },
     {
-      name: "removeDimensions",
+      name: 'removeDimensions',
       active: true,
     },
     {
-      name: "addAttributesToSVGElement",
+      name: 'addAttributesToSVGElement',
       params: {
-        attributes: [{ width: "700px" }, { height: "700px" }],
+        attributes: [{ width: '700px' }, { height: '700px' }],
       },
     },
   ]),
@@ -100,18 +99,16 @@ async function generateIcons() {
     iconsNamesArray.push(icon.name);
 
     // Get SVG definition
-    const svgPath = parsedSvg.children.find(
-      (item) => item.name === "path" || item.name === "g"
-    );
+    const svgPath = parsedSvg.children.find((item) => item.name === 'path' || item.name === 'g');
     const node = svgPath.children.length
-      ? svgPath.children.find((item) => item.name === "path")
+      ? svgPath.children.find((item) => item.name === 'path')
       : svgPath;
     const { transform } = node.attributes;
     if (transform !== undefined) {
       let transformObj = [];
       const regExp = /\(([^)]+)\)/;
       const matches = regExp.exec(transform);
-      transformObj = matches[1].split(" ");
+      transformObj = matches[1].split(' ');
       icon.transform = transformObj;
     }
     icon.definition = node.attributes.d;
@@ -131,10 +128,7 @@ async function generateIcons() {
   fs.writeFileSync(`${outputFolder}/iconsArrays.js`, icons);
 
   // write icons into /component/icons folder for component and story usage
-  //fs.writeFileSync(`${iconComponentFolder}/iconsArray.js`, icons);
-
-  // write icons into /tegel/icons folder for component and story usage
-  //fs.writeFileSync(`${iconComponentFolderTegel}/iconsArray.js`, icons);
+  fs.writeFileSync(`${iconComponentFolder}/iconsArray.js`, icons);
 }
 
 // create icon fonts from cleaned svgs
@@ -143,19 +137,19 @@ function createIconfont() {
     .pipe(
       iconfontCss({
         fontName,
-        path: "./src/_icons.css", // iconfont css template path
-        targetPath: "css/sdds-icons.css", // final result of the css
-        fontPath: "../",
-        cssClass: "sdds-icon",
-      })
+        path: './src/_icons.css', // iconfont css template path
+        targetPath: 'css/tds-icons.css', // final result of the css
+        fontPath: '../',
+        cssClass: 'tds-icon',
+      }),
     )
     .pipe(
       iconfont({
         fontName, // required
         prependUnicode: true, // recommended option
-        formats: ["ttf", "eot", "woff", "woff2"], // default, 'woff2' and 'svg' are available
+        formats: ['ttf', 'eot', 'woff', 'woff2'], // default, 'woff2' and 'svg' are available
         timestamp: runTimestamp, // recommended to get consistent builds when watching files,
-      })
+      }),
     )
     .pipe(dest(`${outputFolder}/fonts/`));
 }

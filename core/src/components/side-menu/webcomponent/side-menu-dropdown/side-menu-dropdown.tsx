@@ -99,7 +99,7 @@ export class SideMenuDropdown {
                 <Fragment>
                   {this.buttonLabel}
                   <slot name="button-label"></slot>
-                  <sdds-icon class="dropdown-icon" name="chevron_down" size="16px"></sdds-icon>
+                  <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
                 </Fragment>
               )}
             </button>
