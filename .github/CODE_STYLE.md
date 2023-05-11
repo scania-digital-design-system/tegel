@@ -10,6 +10,11 @@ Welcome to the code conventions section of Tegel, a comprehensive design system 
 Avoid using single-letter variable names, instead of `i` for index, be descriptive and name the variable `index`.
  - Use single quotes (') for strings.
 
+## Branching
+- Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
+- Start the name of the branch with Jira ticket number followed by short description of task
+- example: `fix/DTS-1369-banner-color-correction`
+
 
 ## Folder structure
 
