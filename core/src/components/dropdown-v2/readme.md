@@ -93,12 +93,12 @@ Type: `Promise<{ value: string; label: string; }[]>`
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-v2 --> sdds-icon
+  sdds-dropdown-v2 --> tds-icon
   style sdds-dropdown-v2 fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

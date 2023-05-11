@@ -39,12 +39,12 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [sdds-icon](../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-accordion-item --> sdds-icon
+  sdds-accordion-item --> tds-icon
   style sdds-accordion-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -96,15 +96,6 @@ export default {
       options: ['none', ...iconsNames],
       if: { arg: 'size', neq: 'Extra small' },
     },
-    iconType: {
-      name: 'Icon type',
-      description: 'Switch between showing a native or a web component icon.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Native', 'Web Component'],
-      if: { arg: 'size', neq: 'Extra small' },
-    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the Button.',
@@ -124,7 +115,6 @@ export default {
     fullbleed: false,
     onlyIcon: false,
     icon: 'none',
-    iconType: 'Web Component',
     disabled: false,
   },
 };
@@ -137,7 +127,6 @@ const WebComponentTemplate = ({
   fullbleed,
   onlyIcon,
   icon,
-  iconType,
   disabled,
 }) => {
   const btnTypeLookUp = {
@@ -161,14 +150,7 @@ const WebComponentTemplate = ({
   return formatHtmlPreview(
     `
     <style>
-    /* demo-wrapper is for demonstration purposes only*/${
-      icon && iconType === 'Native'
-        ? `@import url('https://cdn.digitaldesign.scania.com/icons/webfont/css/sdds-icons.css');
-    i.sdds-icon::before{
-      font-size: ${size === 'Large' || size === 'Medium' ? '20' : '16'}px;
-    }`
-        : ''
-    },
+    /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper{
       width: 100%;
     }
@@ -188,13 +170,10 @@ const WebComponentTemplate = ({
         ${
           onlyIcon || (icon && icon !== 'none')
             ? `
-            ${
-              iconType === 'Native'
-                ? `<i class="sdds-btn-icon sdds-icon ${icon}" slot="icon"></i>`
-                : `<sdds-icon slot="icon" class='sdds-btn-icon ' size='${
-                    sizeLookUp[size] === 'sm' ? '16px' : '20px'
-                  }' name='${icon}'></sdds-icon>`
-            }`
+            <tds-icon slot="icon" class='sdds-btn-icon ' size='${
+              sizeLookUp[size] === 'sm' ? '16px' : '20px'
+            }' name='${icon}'></tds-icon>
+            `
             : ''
         }
     </sdds-button>

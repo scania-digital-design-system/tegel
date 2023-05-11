@@ -38,12 +38,12 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 
 ### Depends on
 
-- [sdds-icon](../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-folder-tabs --> sdds-icon
+  sdds-folder-tabs --> tds-icon
   style sdds-folder-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

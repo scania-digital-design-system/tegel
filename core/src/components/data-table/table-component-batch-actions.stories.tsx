@@ -126,7 +126,7 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      '<button slot="sdds-table__actionbar" class="sdds-table__actionbar-btn"><sdds-icon class="sdds-table__actionbar-btn-icon" name="settings" size="20px"></sdds-icon> </button><sdds-button slot="sdds-table__actionbar" type="primary" size="sm" text="Download"></sdds-button>',
+      '<button slot="sdds-table__actionbar" class="sdds-table__actionbar-btn"><tds-icon class="sdds-table__actionbar-btn-icon" name="settings" size="20px"></tds-icon> </button><sdds-button slot="sdds-table__actionbar" type="primary" size="sm" text="Download"></sdds-button>',
     ),
     verticalDivider: false,
     noMinWidth: false,

@@ -18,7 +18,7 @@
     &.information {
       border-left: 4px solid var(--sdds-information);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-information);
       }
     }
@@ -26,7 +26,7 @@
     &.success {
       border-left: 4px solid var(--sdds-positive);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-positive);
       }
     }
@@ -34,7 +34,7 @@
     &.error {
       border-left: 4px solid var(--sdds-negative);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-negative);
       }
     }
@@ -42,7 +42,7 @@
     &.warning {
       border-left: 4px solid var(--sdds-warning);
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-warning);
       }
     }
@@ -65,14 +65,14 @@
         @include tds-focus-state;
       }
 
-      sdds-icon {
+      tds-icon {
         color: var(--sdds-toast-dissmiss-color);
         padding: 0;
       }
     }
   }
 
-  sdds-icon {
+  tds-icon {
     padding: 14px 0 0 12px;
   }
 

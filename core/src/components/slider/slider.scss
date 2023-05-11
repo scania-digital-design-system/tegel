@@ -348,7 +348,7 @@ sdds-slider {
 
       &.sdds-slider__control-minus,
       &.sdds-slider__control-plus {
-        sdds-icon {
+        tds-icon {
           color: var(--sdds-slider-controls-color);
         }
       }
@@ -362,7 +362,7 @@ sdds-slider {
 
         &.sdds-slider__control-minus,
         &.sdds-slider__control-plus {
-          sdds-icon {
+          tds-icon {
             color: var(--sdds-slider-disabled);
           }
         }

@@ -8,7 +8,7 @@ Example:
 <sdds-side-menu-dropdown
   button-label="Dropdown"
 >
-  <sdds-icon slot="button-icon" name="star" size="24"></sdds-icon>
+  <tds-icon slot="button-icon" name="star" size="24"></tds-icon>
   <span slot="button-label">Button label</span>
   <sdds-side-menu-dropdown-list>
     <sdds-side-menu-dropdown-list-item>
@@ -42,13 +42,13 @@ Example:
 ### Depends on
 
 - [sdds-side-menu-item](../side-menu-item)
-- [sdds-icon](../../../icon)
+- [tds-icon](../../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   sdds-side-menu-dropdown --> sdds-side-menu-item
-  sdds-side-menu-dropdown --> sdds-icon
+  sdds-side-menu-dropdown --> tds-icon
   style sdds-side-menu-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
