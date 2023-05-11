@@ -17,12 +17,12 @@
 
 ### Depends on
 
-- [sdds-icon](../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-stepper-item --> sdds-icon
+  sdds-stepper-item --> tds-icon
   style sdds-stepper-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
