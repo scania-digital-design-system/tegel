@@ -7,7 +7,7 @@
 }
 
 :host {
-  z-index: z(toast);
+  z-index: tds-z-index(toast);
 
   .toast-wrapper {
     display: flex;
@@ -62,7 +62,7 @@
       }
 
       &:focus {
-        @include sdds-focus-state;
+        @include tds-focus-state;
       }
 
       sdds-icon {

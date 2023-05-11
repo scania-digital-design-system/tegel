@@ -1,7 +1,7 @@
 @import '../../../mixins/box-sizing';
 
 :host(.sdds-table__body-cell) {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   font: var(--sdds-detail-02);
   letter-spacing: var(--sdds-detail-02-ls);

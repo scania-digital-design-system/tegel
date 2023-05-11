@@ -2,7 +2,7 @@
 @import '../../mixins/box-sizing';
 
 .sdds-table {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   border-collapse: collapse;
   display: table;
@@ -162,7 +162,7 @@
   margin-left: 0;
 
   &:focus {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 
   &:hover {

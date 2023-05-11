@@ -1,7 +1,7 @@
 @import '../../mixins/box-sizing';
 
 .divider {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   &.horizontal {
     background-color: var(--sdds-divider-background);
