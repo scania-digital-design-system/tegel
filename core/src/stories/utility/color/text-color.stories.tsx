@@ -89,8 +89,8 @@ const Template = ({ color, greyScale, blueScale, redScale }) => {
     }
   </style>
   <div class="demo-wrapper">
-  <h1 class="sdds-text-${color}-${scale}">A text ${color} heading</h1>
-  <p class="sdds-text-${color}-${scale}">A text ${color} paragraph</p>
+  <h1 class="tds-text-${color}-${scale}">A text ${color} heading</h1>
+  <p class="tds-text-${color}-${scale}">A text ${color} paragraph</p>
   </div>
   `,
   );

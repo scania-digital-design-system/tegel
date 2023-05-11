@@ -85,7 +85,7 @@ const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
                 align-items: center;
             }
         </style>
-        <div class="sdds-background-${backgroundColor}-${scale} demo-wrapper">
+        <div class="tds-background-${backgroundColor}-${scale} demo-wrapper">
             <h1>background-color:${backgroundColor}</h1>
         </div>
           `,
