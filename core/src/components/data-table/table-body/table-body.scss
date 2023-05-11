@@ -2,7 +2,7 @@
 
 :host,
 sdds-table-body {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   display: table-row-group;
 

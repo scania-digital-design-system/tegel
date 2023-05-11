@@ -7,7 +7,7 @@
 
   .item {
     all: unset;
-    @include sdds-box-sizing;
+    @include tds-box-sizing;
 
     display: flex;
     justify-content: center;
