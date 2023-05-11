@@ -31,7 +31,7 @@ export default {
     },
     paddingReset: {
       name: 'Less padding right',
-      description: 'Sets less padding on the right inside accordion items.',
+      description: 'Sets less padding on the right inside Accordion Items.',
       control: {
         type: 'boolean',
       },
@@ -41,7 +41,7 @@ export default {
     },
     disabled: {
       name: 'Disable all items',
-      description: 'Disables all accordion items.',
+      description: 'Disables all Accordion Items.',
       control: {
         type: 'boolean',
       },
@@ -51,7 +51,7 @@ export default {
     },
   },
   parameters: {
-    notes: { 'Accordion': readme, 'Accordion item': readmeItem },
+    notes: { 'Accordion': readme, 'Accordion Item': readmeItem },
     design: [
       {
         name: 'Figma',

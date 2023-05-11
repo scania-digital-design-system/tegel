@@ -21,10 +21,10 @@ export class AccordionItem {
   /** When true 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
 
-  /** Method for toggeling the expanded state of the accordion item. */
+  /** Method for toggeling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
-    // This is negated in order to emit the value the accordion item will have after it has expanded/redacted.
+    // This is negated in order to emit the value the Accordion Item will have after it has expanded/redacted.
     const event = this.sddsToggle.emit({
       expanded: !this.expanded,
     });
@@ -33,7 +33,7 @@ export class AccordionItem {
     }
   }
 
-  /** Fires when the accordion item is clicked but before the it is closed or opened. */
+  /** Fires when the Accordion Item is clicked but before the it is closed or opened. */
   @Event({
     eventName: 'sddsToggle',
     composed: true,

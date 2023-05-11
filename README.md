@@ -9,16 +9,21 @@ https://tegel.scania.com/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
-- [Status](#status)
-- [Installation](#installation)
-  - [React with typescript](#with-typescript)
-  - [React with javascript](#with-javascript)
-  - [Angular](#angular)
-  - [HTML/JS](#html)
-- [Browser support](#browser-support)
-- [Code conventions](#code-conventions)
-- [Development environment](#setting-up-the-development-environment)
-- [Community](#community)
+- [Tegel Design System](#tegel-design-system)
+  - [Status](#status)
+  - [Installation](#installation)
+    - [React](#react)
+      - [with Typescript](#with-typescript)
+      - [with Javascript](#with-javascript)
+    - [Angular](#angular)
+    - [HTML](#html)
+  - [Events](#events)
+    - [Internal events](#internal-events)
+  - [Browser support](#browser-support)
+  - [Code conventions](#code-conventions)
+    - [Setting up the development environment](#setting-up-the-development-environment)
+  - [Community](#community)
+  - [License](#license)
 
 ## Status
 
