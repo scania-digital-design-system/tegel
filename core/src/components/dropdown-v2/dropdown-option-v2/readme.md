@@ -40,13 +40,13 @@ Type: `Promise<void>`
 ### Depends on
 
 - [sdds-checkbox](../../checkbox)
-- [sdds-icon](../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   sdds-dropdown-option-v2 --> sdds-checkbox
-  sdds-dropdown-option-v2 --> sdds-icon
+  sdds-dropdown-option-v2 --> tds-icon
   style sdds-dropdown-option-v2 fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
