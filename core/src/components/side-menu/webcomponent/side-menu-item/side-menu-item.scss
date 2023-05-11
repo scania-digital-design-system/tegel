@@ -24,14 +24,14 @@
       color: var(--sdds-sidebar-side-menu-single-item-color);
       cursor: pointer;
     }
+
     sdds-icon {
       color: red !important;
     }
 
-
     ::slotted(a:focus-visible),
     ::slotted(button:focus-visible) {
-      @include sdds-focus-state;
+      @include tds-focus-state;
     }
 
     &:hover {

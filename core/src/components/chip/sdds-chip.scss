@@ -63,7 +63,7 @@
     }
 
     input:focus-visible + label {
-      @include sdds-focus-state;
+      @include tds-focus-state;
     }
 
     input:checked + label {

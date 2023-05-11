@@ -1,9 +1,9 @@
 @import '../../mixins/z-index';
-@import './tooltip-vars.scss';
+@import './tooltip-vars';
 @import '../../mixins/box-sizing';
 
 .sdds-tooltip {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   font: var(--sdds-detail-05);
   letter-spacing: var(--sdds-detail-05-ls);
@@ -13,7 +13,7 @@
   padding: 8px;
   word-wrap: break-word;
   max-width: 192px;
-  z-index: z(tooltip);
+  z-index: tds-z-index(tooltip);
   opacity: 0;
   visibility: hidden;
   transition: opacity 200ms ease-in, visibility 200ms ease-in;

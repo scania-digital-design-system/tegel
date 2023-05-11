@@ -8,7 +8,7 @@
   .menu {
     flex-direction: column;
 
-    @include sdds-scrollbar;
+    @include tds-scrollbar;
 
     overflow-y: auto;
     max-height: calc(100vh - var(--sdds-header-height));
@@ -20,12 +20,12 @@
 
   .state-open {
     .dropdown-icon {
-      transform: rotateZ(180deg);
+      transform: rotatetds-z-index(180deg);
     }
 
     .button {
       position: relative;
-      z-index: z(tooltip) + 1;
+      z-index: tds-z-index(tooltip) + 1;
     }
   }
 }

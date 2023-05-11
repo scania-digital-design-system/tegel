@@ -1,6 +1,6 @@
 @import '../../../../mixins/scrollbar';
 @import '../../../../mixins/z-index';
-@import '../../../../global/_variables.scss';
+@import '../../../../global/_variables';
 
 :host {
   .wrapper {
@@ -12,7 +12,7 @@
         Width and appearance are set inside nested components */
       flex-direction: column;
 
-      @include sdds-scrollbar;
+      @include tds-scrollbar;
 
       overflow-y: auto;
       max-height: calc(100vh - var(--sdds-header-height));
@@ -34,7 +34,7 @@
     &.state-open {
       .button {
         position: relative;
-        z-index: z(tooltip) + 1;
+        z-index: tds-z-index(tooltip) + 1;
       }
     }
   }
