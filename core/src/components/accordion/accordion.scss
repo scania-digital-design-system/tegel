@@ -4,7 +4,7 @@
 
 :host {
   display: block;
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   .sdds-accordion-header-icon-start,
   .sdds-accordion-header-icon-end {
@@ -13,7 +13,7 @@
 }
 
 :host(:focus) {
-  @include sdds-focus-state;
+  @include tds-focus-state;
 
   .sdds-accordion-item {
     .sdds-accordion-header-icon-start,
@@ -28,7 +28,7 @@
   }
 
   .disabled {
-    @include disabledStyle;
+    @include tds-disabled-style;
   }
 }
 
@@ -40,7 +40,7 @@
   }
 
   .disabled {
-    @include disabledStyle;
+    @include tds-disabled-style;
   }
 }
 

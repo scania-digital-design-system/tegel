@@ -96,7 +96,7 @@ $modals: (
   position: fixed;
   height: 100%;
   width: 100%;
-  z-index: z(modal);
+  z-index: tds-z-index(modal);
   background-color: var(--sdds-modal-backdrop);
   padding: 0 16px;
 
@@ -156,7 +156,7 @@ $modals: (
 /* MODAL STYLING */
 
 .sdds-modal {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   background-color: var(--sdds-modal-background);
   margin: auto;
@@ -241,7 +241,7 @@ $modals: (
 }
 
 .sdds-modal-backdrop {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
   @include modal-host;
 }
 
@@ -259,7 +259,7 @@ button.sdds-modal-close {
   cursor: pointer;
 
   &:focus {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 
   @media (min-width: $screen-s) {

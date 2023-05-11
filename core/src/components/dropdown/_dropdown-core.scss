@@ -1,4 +1,4 @@
-@import './dropdown-vars.scss';
+@import './dropdown-vars';
 
 @mixin dropdown-wrapper {
   font: var(--sdds-detail-ex-02);
@@ -44,7 +44,7 @@
     cursor: text;
   }
 }
-@mixin sdds-scrollbar {
+@mixin tds-scrollbar {
   &::-webkit-scrollbar {
     width: 4px;
     background-color: inherit;

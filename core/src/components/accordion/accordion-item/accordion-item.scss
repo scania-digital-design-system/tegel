@@ -3,7 +3,7 @@
 @import '../../../mixins/box-sizing';
 
 .sdds-accordion-item {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   list-style: none;
   color: var(--sdds-accordion-color);
@@ -18,7 +18,7 @@
   .sdds-accordion-header-icon-end,
   button.sdds-accordion-header-icon-start,
   button.sdds-accordion-header-icon-end {
-    @include sdds-box-sizing;
+    @include tds-box-sizing;
 
     cursor: pointer;
     display: flex;
@@ -98,7 +98,7 @@
     &:focus,
     &:active,
     &.active {
-      @include disabledStyle;
+      @include tds-disabled-style;
     }
   }
 
@@ -140,7 +140,7 @@
 
 :host(:focus) {
   .sdds-accordion-item {
-    @include sdds-focus-state;
+    @include tds-focus-state;
 
     .sdds-accordion-header-icon-start,
     .sdds-accordion-header-icon-end {
