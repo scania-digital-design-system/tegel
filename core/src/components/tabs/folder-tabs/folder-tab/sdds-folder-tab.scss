@@ -3,7 +3,7 @@
 @import '../../../../mixins/box-sizing';
 
 :host {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   position: relative;
 
@@ -46,7 +46,7 @@
   }
 
   ::slotted(*:focus-visible) {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 
   .disabled {

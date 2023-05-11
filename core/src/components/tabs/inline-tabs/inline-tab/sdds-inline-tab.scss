@@ -3,9 +3,9 @@
 @import '../../../../mixins/box-sizing';
 
 :host {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
-  z-index: z(tab);
+  z-index: tds-z-index(tab);
   display: block;
 
   ::slotted(*) {
@@ -25,7 +25,7 @@
   }
 
   ::slotted(*:focus-visible) {
-    @include sdds-focus-state;
+    @include tds-focus-state;
   }
 
   .inline-tab-item {
