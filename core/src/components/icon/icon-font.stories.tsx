@@ -50,7 +50,7 @@ const Template = (args) =>
   formatHtmlPreview(`
   <style>
     /* Demo code for presentation purposes */
-    @import url('https://cdn.digitaldesign.scania.com/icons/webfont/css/sdds-icons.css');
+    @import url('https://cdn.digitaldesign.scania.com/icons/webfont/css/tds-icons.css');
     .tds-icon { font-size: ${args.size}px; }
   </style>
 

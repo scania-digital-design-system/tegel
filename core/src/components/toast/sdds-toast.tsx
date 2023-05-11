@@ -116,7 +116,7 @@ export class SddsToast {
             ${this.type}
             `}
         >
-          <sdds-icon name={this.getIconName()} size="20px"></sdds-icon>
+          <tds-icon name={this.getIconName()} size="20px"></tds-icon>
           <div class={`toast-content`}>
             <div
               class={`toast-header
@@ -136,7 +136,7 @@ export class SddsToast {
             }}
             class={`toast-close`}
           >
-            <sdds-icon name="cross" size="20px"></sdds-icon>
+            <tds-icon name="cross" size="20px"></tds-icon>
           </button>
         </div>
       </Host>

@@ -21,7 +21,7 @@ graph TD;
   sdds-header-launcher --> sdds-header-launcher-button
   sdds-header-launcher --> sdds-popover-canvas
   sdds-header-launcher-button --> sdds-header-item
-  sdds-header-launcher-button --> sdds-icon
+  sdds-header-launcher-button --> tds-icon
   sdds-header-item --> sdds-core-header-item
   style sdds-header-launcher fill:#f9f,stroke:#333,stroke-width:4px
 ```

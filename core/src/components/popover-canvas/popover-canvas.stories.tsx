@@ -88,7 +88,7 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
         <span class="sdds-u-mr2">Click icon for popover canvas</span>
         
         <sdds-button aria-label="menu" onlyIcon id="trigger" type="ghost" size="sm">
-          <sdds-icon slot="icon" class="sdds-btn-icon" size="16px" name="kebab"></sdds-icon>
+          <tds-icon slot="icon" class="sdds-btn-icon" size="16px" name="kebab"></tds-icon>
         </sdds-button>
       </div>
     `,

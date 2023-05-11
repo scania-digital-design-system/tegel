@@ -144,20 +144,20 @@ const Template = ({ persistent, collapsible }) =>
 
         <sdds-side-menu-item>
           <button>
-            <sdds-icon name="timer" size="24"></sdds-icon>
+            <tds-icon name="timer" size="24"></tds-icon>
             About us
           </button>
         </sdds-side-menu-item>
 
         <sdds-side-menu-item>
           <button>
-            <sdds-icon name="truck" size="24"></sdds-icon>
+            <tds-icon name="truck" size="24"></tds-icon>
             Trucks
           </button>
         </sdds-side-menu-item>
 
         <sdds-side-menu-dropdown default-open selected>
-          <sdds-icon slot="button-icon" name="profile" size="24"></sdds-icon>
+          <tds-icon slot="button-icon" name="profile" size="24"></tds-icon>
           <span slot="button-label">
             Wheel types
           </span>
@@ -177,7 +177,7 @@ const Template = ({ persistent, collapsible }) =>
 
         <sdds-side-menu-item>
           <button>
-            <sdds-icon name="star" size="24"></sdds-icon>
+            <tds-icon name="star" size="24"></tds-icon>
             Values
           </button>
         </sdds-side-menu-item>

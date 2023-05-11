@@ -65,7 +65,7 @@ export class AccordionItem {
               <slot name="accordion-item-header"></slot>
             </div>
             <div class="sdds-accordion-icon">
-              <sdds-icon name="chevron_down" size="16px"></sdds-icon>
+              <tds-icon name="chevron_down" size="16px"></tds-icon>
             </div>
           </button>
           <div

@@ -501,7 +501,7 @@ export class Slider {
                 ref={(el) => (this.minusElement = el as HTMLElement)}
                 class="sdds-slider__control sdds-slider__control-minus"
               >
-                <sdds-icon name="minus" size="16px"></sdds-icon>
+                <tds-icon name="minus" size="16px"></tds-icon>
               </div>
             </div>
           )}
@@ -602,7 +602,7 @@ export class Slider {
                 ref={(el) => (this.plusElement = el as HTMLElement)}
                 class="sdds-slider__control sdds-slider__control-plus"
               >
-                <sdds-icon name="plus" size="16px"></sdds-icon>
+                <tds-icon name="plus" size="16px"></tds-icon>
               </div>
             </div>
           )}

@@ -163,8 +163,8 @@ const WebComponentTemplate = ({
     <style>
     /* demo-wrapper is for demonstration purposes only*/${
       icon && iconType === 'Native'
-        ? `@import url('https://cdn.digitaldesign.scania.com/icons/webfont/css/sdds-icons.css');
-    i.sdds-icon::before{
+        ? `@import url('https://cdn.digitaldesign.scania.com/icons/webfont/css/tds-icons.css');
+    i.tds-icon::before{
       font-size: ${size === 'Large' || size === 'Medium' ? '20' : '16'}px;
     }`
         : ''
@@ -190,10 +190,10 @@ const WebComponentTemplate = ({
             ? `
             ${
               iconType === 'Native'
-                ? `<i class="sdds-btn-icon sdds-icon ${icon}" slot="icon"></i>`
-                : `<sdds-icon slot="icon" class='sdds-btn-icon ' size='${
+                ? `<i class="sdds-btn-icon tds-icon ${icon}" slot="icon"></i>`
+                : `<tds-icon slot="icon" class='sdds-btn-icon ' size='${
                     sizeLookUp[size] === 'sm' ? '16px' : '20px'
-                  }' name='${icon}'></sdds-icon>`
+                  }' name='${icon}'></tds-icon>`
             }`
             : ''
         }

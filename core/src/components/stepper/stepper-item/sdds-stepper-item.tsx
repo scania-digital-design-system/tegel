@@ -63,10 +63,10 @@ export class SddsStepper {
         >
           <div class={`${this.state} content-container`}>
             {this.state === 'success' || this.state === 'error' ? (
-              <sdds-icon
+              <tds-icon
                 name={this.state === 'success' ? 'tick' : 'warning'}
                 size={this.size === 'lg' ? '20px' : '16px'}
-              ></sdds-icon>
+              ></tds-icon>
             ) : (
               this.index
             )}

@@ -136,13 +136,13 @@ const Template = ({ topPart, modeVariant }) =>
       <div slot="main-right">
         <sdds-footer-group>
           <sdds-footer-item >
-            <a href="#"> <sdds-icon name="truck"></sdds-icon></a>
+            <a href="#"> <tds-icon name="truck"></tds-icon></a>
           </sdds-footer-item>
           <sdds-footer-item >
-            <a href="#"> <sdds-icon name="truck"></sdds-icon></a>
+            <a href="#"> <tds-icon name="truck"></tds-icon></a>
           </sdds-footer-item>
           <sdds-footer-item >
-            <a href="#"> <sdds-icon name="truck"></sdds-icon></a>
+            <a href="#"> <tds-icon name="truck"></tds-icon></a>
           </sdds-footer-item>
         </sdds-footer-group>
       </div>
