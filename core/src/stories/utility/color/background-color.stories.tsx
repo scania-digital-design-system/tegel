@@ -56,6 +56,12 @@ export default {
       if: { arg: 'backgroundColor', eq: 'blue' },
     },
   },
+  args: {
+    backgroundColor: 'blue',
+    blueScale: '500',
+    redScale: '500',
+    greyScale: '958',
+  },
 };
 
 const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
@@ -92,11 +98,4 @@ const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
   );
 };
 
-export const backgroundColor = Template.bind({});
-
-backgroundColor.args = {
-  backgroundColor: 'blue',
-  blueScale: '500',
-  redScale: '500',
-  greyScale: '958',
-};
+export const BackgroundColor = Template.bind({});
