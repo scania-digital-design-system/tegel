@@ -9,7 +9,7 @@ import { Method, State } from '@stencil/core/internal';
 export class SddsToast {
   @Element() host: HTMLElement;
 
-  /** ID for the toast. Randomly generated if not specified. */
+  /** ID for the Toast. Randomly generated if not specified. */
   @Prop() toastId: string = crypto.randomUUID();
 
   /** Header text for the component. */
@@ -18,32 +18,32 @@ export class SddsToast {
   /** Subheader text for the component. */
   @Prop() subheader: string;
 
-  /** Type of toast. */
+  /** Type of Toast. */
   @Prop() type: 'information' | 'error' | 'warning' | 'success' = 'information';
 
-  /** Hides the toast. */
+  /** Hides the Toast. */
   @Prop() hidden: boolean = false;
 
-  /** ARIA role for the toast. */
+  /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
 
   @State() hasSubheader: boolean;
 
   @State() hasLink: boolean;
 
-  /** Hides the toast. */
+  /** Hides the Toast. */
   @Method()
   async hideToast() {
     this.handleClose();
   }
 
-  /** Shows the toast. */
+  /** Shows the Toast. */
   @Method()
   async showToast() {
     this.handleShow();
   }
 
-  /** Sends unique toast identifier component is closed. */
+  /** Sends unique Toast identifier when component is closed. */
   @Event({
     eventName: 'sddsClose',
     composed: true,
