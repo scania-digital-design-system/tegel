@@ -4,8 +4,8 @@
 
 :host {
   // Variables
-  --sdds-badges-background-color: var(--sdds-negative);
-  --sdds-badges-color-text: var(--sdds-white);
+  --sdds-badge-background-color: var(--sdds-negative);
+  --sdds-badge-color-text: var(--sdds-white);
 
   // Styling
   @include sdds-box-sizing;
@@ -13,39 +13,39 @@
   display: block;
 }
 
-.sdds-badges {
+.sdds-badge {
   display: block;
   border-radius: 12px;
-  background-color: var(--sdds-badges-background-color);
+  background-color: var(--sdds-badge-background-color);
   text-align: center;
 
-  &.sdds-badges-sm {
+  &.sdds-badge-sm {
     height: 8px;
     width: 8px;
     line-height: 8px;
   }
 
-  &.sdds-badges-lg {
+  &.sdds-badge-lg {
     height: 20px;
     line-height: 20px;
     width: 20px;
   }
 
-  &.sdds-badges-pill {
+  &.sdds-badge-pill {
     display: inline-block;
     width: unset;
     padding-left: 8px;
     padding-right: 8px;
   }
 
-  &.sdds-badges-hidden {
+  &.sdds-badge-hidden {
     display: none;
   }
 }
 
-.sdds-badges-text {
+.sdds-badge-text {
   font-family: var(--sdds-font-family-semi-condensed-bold);
   font-size: 12px;
-  color: var(--sdds-badges-color-text);
+  color: var(--sdds-badge-color-text);
   font-weight: bold;
 }
