@@ -7,8 +7,8 @@
 
 | Property  | Attribute | Description        | Type                           | Default      |
 | --------- | --------- | ------------------ | ------------------------------ | ------------ |
-| `size`    | `size`    | Size of spinner    | `"lg" \| "md" \| "sm" \| "xs"` | `'lg'`       |
-| `variant` | `variant` | Variant of spinner | `"inverted" \| "standard"`     | `'standard'` |
+| `size`    | `size`    | Size of Spinner    | `"lg" \| "md" \| "sm" \| "xs"` | `'lg'`       |
+| `variant` | `variant` | Variant of Spinner | `"inverted" \| "standard"`     | `'standard'` |
 
 
 ----------------------------------------------
