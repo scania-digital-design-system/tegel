@@ -9,10 +9,10 @@ import { disableClickOnElement } from '../../utils/utils';
 export class SddsButton {
   @Element() host: HTMLElement;
 
-  /** Text displayed inside of the button */
+  /** Text displayed inside of the Button*/
   @Prop() text: string;
 
-  /** Type of button */
+  /** Type of Button*/
   @Prop() type: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
 
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
@@ -20,7 +20,7 @@ export class SddsButton {
   /** Control for disabled state of component */
   @Prop() disabled: boolean = false;
 
-  /** When enabled, makes button take 100% width */
+  /** When enabled, makes Buttontake 100% width */
   @Prop() fullbleed: boolean = false;
 
   /** Set the mode variant of the the button. */
