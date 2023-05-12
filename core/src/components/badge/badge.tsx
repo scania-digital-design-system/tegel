@@ -1,20 +1,16 @@
 import { Component, h, Prop, Watch, State } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-badge',
-  styleUrl: 'badge.scss',
+  tag: 'tds-badge',
+  styleUrl: 'badges.scss',
   shadow: true,
 })
-export class SddsBadge {
-  /** Value shown in Badge */
+export class TdsBadge {
+  /** Value shown in badge */
   @Prop() value: string = '';
-  // TODO: Make upper prop accepts numbers too ?
 
   /** Changes visibility of Badge */
   @Prop() hidden: boolean = false;
-
-  /** @deprecated Use size prop instead. Changes Badge from large to small size */
-  @Prop() isSmall: boolean = false;
 
   /** Sets component size. */
   @Prop() size: 'lg' | 'sm' = 'lg';
@@ -24,7 +20,6 @@ export class SddsBadge {
   @State() text: string = '';
 
   @Watch('value')
-  @Watch('isSmall')
   @Watch('size')
   watchProps() {
     this.checkProps();
@@ -32,10 +27,6 @@ export class SddsBadge {
 
   componentWillLoad() {
     this.checkProps();
-    if (this.isSmall) {
-      this.size = 'sm';
-      console.warn('Prop isSmall is deprecated. Use size"small" instead');
-    }
   }
 
   checkProps() {
@@ -48,8 +39,8 @@ export class SddsBadge {
       // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
       this.value !== '' && this.size !== 'sm'
         ? console.warn(
-            'The provided value is either empty or string, please provide value as number.',
-          )
+          'The provided value is either empty or string, please provide value as number.',
+        )
         : '';
     }
   }
@@ -57,11 +48,10 @@ export class SddsBadge {
   render() {
     return (
       <host
-        class={`sdds-badge sdds-badge-${this.size} ${
-          this.shape === 'pill' ? 'sdds-badge-pill' : ''
-        } ${this.hidden ? 'sdds-badge-hidden' : ''}`}
+        class={`tds-badge tds-badge-${this.size} ${this.shape === 'pill' ? 'tds-badge-pill' : ''
+          } ${this.hidden ? 'tds-badge-hidden' : ''}`}
       >
-        <div class="sdds-badge-text">{this.text}</div>
+        <div class="tds-badge-text">{this.text}</div>
       </host>
     );
   }
