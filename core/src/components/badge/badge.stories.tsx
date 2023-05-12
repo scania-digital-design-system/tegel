@@ -87,13 +87,13 @@ const Template = ({ value, size, hidden, demoCode }) =>
       background-color: #C4C4C4;
     }
 
-    .badges-demo-box sdds-badges[size="lg"]{
+    .badges-demo-box tds-badge[size="lg"]{
       position: absolute;
       left: 16px;
       top: -5px;
     }
 
-    .badges-demo-box sdds-badges[size="sm"]{
+    .badges-demo-box tds-badge[size="sm"]{
       position: absolute;
       left: 26px;
       top: -2px;
@@ -103,11 +103,11 @@ const Template = ({ value, size, hidden, demoCode }) =>
     }
 
     <div class="${demoCode ? 'badges-demo-box' : ''}">
-      <sdds-badges
+      <tds-badge
         ${value ? `value="${value}"` : ''}
         ${hidden ? 'hidden' : ''}
         size="${size}">
-      </sdds-badges>
+      </tds-badge>
     </div>`,
   );
 

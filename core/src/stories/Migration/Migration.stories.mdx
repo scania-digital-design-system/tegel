@@ -149,6 +149,18 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 [Story](/docs/components--badge)
 
+#### Updated component name to conform with convention
+
+The badge was previously named `sdds-badges`, to conform with our naming convetion this has been changed to singular.
+
+```jsx
+// Old ❌
+<sdds-badges></sdds-badges>
+
+// New ✅
+<tds-badge></tds-badge>
+```
+
 #### Replaced "isVisible" prop with "hidden"
 
 The visibility of the badge was previously determined by its `isVisible` prop. This has now been changed to a `hidden`
@@ -163,7 +175,7 @@ Replace all intances of `isVisible="false"` with `hidden`.
 <sdds-badges value="1" is-visible="false" size="default"></sdds-badges>
 
 // New ✅
-<sdds-badges value="1" hidden size="lg"></sdds-badges>
+<tds-badge value="1" hidden size="lg"></tds-badge>
 ```
 
 #### Replaced "default" value of size prop with "lg"
@@ -179,7 +191,7 @@ Replace size value `default` with `lg` or just remove prop as component's defaul
 <sdds-badges value="1" is-visible="true" size="default"></sdds-badges>
 
 // New ✅
-<sdds-badges value="1" is-visible="true" size="lg"></sdds-badges>
+<tds-badge value="1" is-visible="true" size="lg"></tds-badge>
 ```
 
 ## Button
