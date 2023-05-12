@@ -1,6 +1,6 @@
 # sdds-side-menu-dropdown
 
-The side menu dropdown is a container for navigation items.
+The Side Menu dropdown is a container for navigation items.
 
 Example:
 

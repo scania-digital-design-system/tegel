@@ -1,6 +1,6 @@
 # sdds-side-menu-user
 
-The side menu user component is a container for the user image and label(s).
+The Side Menu user component is a container for the user image and label(s).
 
 Example:
   
