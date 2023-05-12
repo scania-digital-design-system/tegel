@@ -1,19 +1,19 @@
 import { Component, h, Prop, Watch, State } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-badges',
-  styleUrl: 'badges.scss',
+  tag: 'sdds-badge',
+  styleUrl: 'badge.scss',
   shadow: true,
 })
-export class SddsBadges {
-  /** Value shown in badge */
+export class SddsBadge {
+  /** Value shown in Badge */
   @Prop() value: string = '';
   // TODO: Make upper prop accepts numbers too ?
 
-  /** Changes visibility of badge */
+  /** Changes visibility of Badge */
   @Prop() hidden: boolean = false;
 
-  /** @deprecated Use size prop instead. Changes badge from large to small size */
+  /** @deprecated Use size prop instead. Changes Badge from large to small size */
   @Prop() isSmall: boolean = false;
 
   /** Sets component size. */
@@ -57,11 +57,11 @@ export class SddsBadges {
   render() {
     return (
       <host
-        class={`sdds-badges sdds-badges-${this.size} ${
-          this.shape === 'pill' ? 'sdds-badges-pill' : ''
-        } ${this.hidden ? 'sdds-badges-hidden' : ''}`}
+        class={`sdds-badge sdds-badge-${this.size} ${
+          this.shape === 'pill' ? 'sdds-badge-pill' : ''
+        } ${this.hidden ? 'sdds-badge-hidden' : ''}`}
       >
-        <div class="sdds-badges-text">{this.text}</div>
+        <div class="sdds-badge-text">{this.text}</div>
       </host>
     );
   }
