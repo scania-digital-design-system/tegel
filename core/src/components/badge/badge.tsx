@@ -2,7 +2,7 @@ import { Component, h, Prop, Watch, State } from '@stencil/core';
 
 @Component({
   tag: 'tds-badge',
-  styleUrl: 'badges.scss',
+  styleUrl: 'badge.scss',
   shadow: true,
 })
 export class TdsBadge {
@@ -39,8 +39,8 @@ export class TdsBadge {
       // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
       this.value !== '' && this.size !== 'sm'
         ? console.warn(
-          'The provided value is either empty or string, please provide value as number.',
-        )
+            'The provided value is either empty or string, please provide value as number.',
+          )
         : '';
     }
   }
@@ -48,8 +48,9 @@ export class TdsBadge {
   render() {
     return (
       <host
-        class={`tds-badge tds-badge-${this.size} ${this.shape === 'pill' ? 'tds-badge-pill' : ''
-          } ${this.hidden ? 'tds-badge-hidden' : ''}`}
+        class={`tds-badge tds-badge-${this.size} ${this.shape === 'pill' ? 'tds-badge-pill' : ''} ${
+          this.hidden ? 'tds-badge-hidden' : ''
+        }`}
       >
         <div class="tds-badge-text">{this.text}</div>
       </host>
