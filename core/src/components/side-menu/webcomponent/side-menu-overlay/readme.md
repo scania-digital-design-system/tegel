@@ -1,6 +1,6 @@
 # sdds-side-menu-overlay
 
-The side menu overlay adds a dark overlay to the page when the side menu is open. It is used to prevent the user from interacting with the page while the side menu is open.
+The Side Menu overlay adds a dark overlay to the page when the Side Menu is open. It is used to prevent the user from interacting with the page while the Side Menu is open.
 
 Example:
 

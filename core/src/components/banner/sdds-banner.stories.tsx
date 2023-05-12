@@ -68,7 +68,7 @@ export default {
     },
     persistent: {
       name: 'Disable closing',
-      description: `Removes the 'close button' in the banner.`,
+      description: `Removes the 'close button' in the Banner.`,
       control: {
         type: 'boolean',
       },

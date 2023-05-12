@@ -1,6 +1,6 @@
 # sdds-side-menu-close-button
 
-The side menu close button is a button that can be used to close the side menu.
+The Side Menu close button is a button that can be used to close the Side Menu.
 
 Example:
 

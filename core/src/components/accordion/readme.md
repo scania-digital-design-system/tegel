@@ -1,4 +1,4 @@
-# sdds-accordion-item
+# sdds-accordion
 
 
 <!-- Auto Generated Below -->

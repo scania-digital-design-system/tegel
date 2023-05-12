@@ -1,6 +1,6 @@
 # sdds-header-hamburger
 
-The header hamburger is a button that should be used to open the side menu.
+The header hamburger is a button that should be used to open the Side Menu.
 
 Example:
 
