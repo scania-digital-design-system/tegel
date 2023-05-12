@@ -20,7 +20,7 @@
 
 | Event       | Description                                                                     | Type                                  |
 | ----------- | ------------------------------------------------------------------------------- | ------------------------------------- |
-| `tdsToggle` | Fires when the accordion item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
+| `tdsToggle` | Fires when the Accordion Item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
 
 
 ## Methods
