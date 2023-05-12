@@ -1,11 +1,11 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-accordion-item',
+  tag: 'tds-accordion-item',
   styleUrl: 'accordion-item.scss',
   shadow: true,
 })
-export class AccordionItem {
+export class TdsAccordionItem {
   /** The header gives users the context about the additional information available inside the panel */
   @Prop() header: string = '';
 
@@ -25,7 +25,7 @@ export class AccordionItem {
   @Method()
   async toggleAccordionItem() {
     // This is negated in order to emit the value the accordion item will have after it has expanded/redacted.
-    const event = this.sddsToggle.emit({
+    const event = this.tdsToggle.emit({
       expanded: !this.expanded,
     });
     if (!event.defaultPrevented) {
@@ -35,12 +35,12 @@ export class AccordionItem {
 
   /** Fires when the accordion item is clicked but before the it is closed or opened. */
   @Event({
-    eventName: 'sddsToggle',
+    eventName: 'tdsToggle',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsToggle: EventEmitter<{
+  tdsToggle: EventEmitter<{
     expanded: boolean;
   }>;
 
@@ -48,7 +48,7 @@ export class AccordionItem {
     return (
       <Host>
         <div
-          class={`sdds-accordion-item
+          class={`tds-accordion-item
         ${this.disabled ? 'disabled' : ''}
         ${this.expanded ? 'expanded' : ''}
         `}
@@ -56,21 +56,21 @@ export class AccordionItem {
           <button
             type="button"
             aria-expanded={this.expanded}
-            class={`sdds-accordion-header-icon-${this.expandIconPosition}`}
+            class={`tds-accordion-header-icon-${this.expandIconPosition}`}
             onClick={() => this.toggleAccordionItem()}
             disabled={this.disabled}
           >
-            <div class="sdds-accordion-title">
+            <div class="tds-accordion-title">
               {this.header}
               <slot name="accordion-item-header"></slot>
             </div>
-            <div class="sdds-accordion-icon">
+            <div class="tds-accordion-icon">
               <tds-icon name="chevron_down" size="16px"></tds-icon>
             </div>
           </button>
           <div
-            class={`sdds-accordion-panel
-            ${this.paddingReset ? 'sdds-accordion-panel--padding-reset ' : ''}
+            class={`tds-accordion-panel
+            ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
             `}
           >
             <slot></slot>
