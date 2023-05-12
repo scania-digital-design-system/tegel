@@ -116,10 +116,14 @@ export class Slider {
   handleKeydown(event) {
     switch (event.key) {
       case 'ArrowLeft':
+      case 'ArrowDown':
+      case '-':
         this.stepLeft();
         break;
 
       case 'ArrowRight':
+      case 'ArrowUp':
+      case '+':
         this.stepRight();
         break;
 
@@ -174,6 +178,26 @@ export class Slider {
     this.scrubberCore(event);
   }
 
+  updateSupposedValueSlot(localLeft) {
+    const numTicks = parseInt(this.ticks);
+    const trackWidth = this.getTrackWidth();
+    const distanceBetweenTicks = Math.round(trackWidth / (numTicks + 1));
+    const snappedLocalLeft = Math.round(localLeft / distanceBetweenTicks) * distanceBetweenTicks;
+
+    let scrubberPositionPX = 0;
+    if (snappedLocalLeft >= 0 && snappedLocalLeft <= trackWidth) {
+      scrubberPositionPX = snappedLocalLeft;
+    } else if (snappedLocalLeft > trackWidth) {
+      scrubberPositionPX = trackWidth;
+    } else if (snappedLocalLeft < 0) {
+      scrubberPositionPX = 0;
+    }
+
+    this.supposedValueSlot = Math.round(scrubberPositionPX / distanceBetweenTicks);
+
+    return snappedLocalLeft;
+  }
+
   scrubberCore(event) {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement.getBoundingClientRect();
@@ -187,26 +211,13 @@ export class Slider {
     this.supposedValueSlot = -1;
 
     if (this.useSnapping && numTicks > 0) {
-      const trackWidth = this.getTrackWidth();
-      const distanceBetweenTicks = Math.round(trackWidth / (numTicks + 1));
-      localLeft = Math.round(localLeft / distanceBetweenTicks) * distanceBetweenTicks;
-
-      let scrubberPositionPX = 0;
-      if (localLeft >= 0 && localLeft <= trackWidth) {
-        scrubberPositionPX = localLeft;
-      } else if (localLeft > trackWidth) {
-        scrubberPositionPX = trackWidth;
-      } else if (localLeft < 0) {
-        scrubberPositionPX = 0;
-      }
-      this.supposedValueSlot = Math.round(scrubberPositionPX / distanceBetweenTicks);
+      localLeft = this.updateSupposedValueSlot(localLeft);
     }
 
     this.scrubberLeft = this.constrainScrubber(localLeft);
     this.scrubberElement.style.left = `${this.scrubberLeft}px`;
 
     this.updateValue();
-    this.updateTrack();
   }
 
   updateTrack() {
@@ -221,16 +232,18 @@ export class Slider {
 
   updateValue() {
     const trackWidth = this.getTrackWidth();
+    const numTicks = parseInt(this.ticks);
 
     /* if snapping (supposedValueSlot > 0) is enabled, make sure we display the supposed value (instead of maybe getting a -1/+1 depending on rounding)  */
-    if (this.supposedValueSlot > 0) {
+    if (this.useSnapping && numTicks) {
       const supposedValue = this.tickValues[this.supposedValueSlot];
       this.value = `${supposedValue}`;
+      this.calculateScrubberLeftFromValue(supposedValue);
     } else {
       const percentage = this.scrubberLeft / trackWidth;
       this.value = `${Math.trunc(this.getMin() + percentage * (this.getMax() - this.getMin()))}`;
     }
-
+    this.updateTrack();
     this.dispatchChangeEvent();
   }
 
@@ -276,6 +289,7 @@ export class Slider {
     const calculatedLeft = (normalizedValue / normalizedMax) * trackWidth;
 
     this.scrubberLeft = calculatedLeft;
+    this.updateSupposedValueSlot(this.scrubberLeft);
 
     this.scrubberElement.style.left = `${this.scrubberLeft}px`;
   }
@@ -359,21 +373,7 @@ export class Slider {
       return;
     }
 
-    const trackWidth = this.getTrackWidth();
-    const percentage = this.scrubberLeft / trackWidth;
     const numTicks = parseInt(this.ticks);
-
-    let currentValue = this.getMin() + percentage * (this.getMax() - this.getMin());
-
-    currentValue += delta;
-
-    if (currentValue < this.getMin()) {
-      currentValue = this.getMin();
-    } else if (currentValue > this.getMax()) {
-      currentValue = this.getMax();
-    }
-
-    this.value = `${currentValue}`;
 
     /* if snapping is enabled, instead just increment or decrement the current "fixed" value from our ticknumber array */
     if (this.useSnapping && numTicks > 0) {
@@ -385,11 +385,27 @@ export class Slider {
       } else if (this.supposedValueSlot > numTicks + 1) {
         this.supposedValueSlot = numTicks + 1;
       }
-    }
+      this.updateValue();
+    } else {
+      const trackWidth = this.getTrackWidth();
+      const percentage = this.scrubberLeft / trackWidth;
 
-    this.calculateScrubberLeftFromValue(currentValue);
-    this.updateTrack();
-    this.updateValue();
+      let currentValue = this.getMin() + percentage * (this.getMax() - this.getMin());
+
+      currentValue += delta;
+      currentValue = Math.round(currentValue);
+
+      if (currentValue < this.getMin()) {
+        currentValue = this.getMin();
+      } else if (currentValue > this.getMax()) {
+        currentValue = this.getMax();
+      }
+
+      this.value = `${currentValue}`;
+      this.calculateScrubberLeftFromValue(this.value);
+      this.updateValueForced(currentValue);
+      this.updateTrack();
+    }
   }
 
   stepLeft() {
@@ -415,17 +431,9 @@ export class Slider {
       this.tickValues.push(this.getMax());
     }
 
-    if (this.disabled) {
-      this.disabledState = true;
-    } else {
-      this.disabledState = false;
-    }
+    this.disabledState = this.disabled;
 
-    if (this.readOnly) {
-      this.readonlyState = true;
-    } else {
-      this.readonlyState = false;
-    }
+    this.readonlyState = this.readOnly;
 
     this.useInput = false;
     this.useControls = false;
@@ -507,6 +515,7 @@ export class Slider {
           )}
 
           <div class="sdds-slider-inner">
+          
             {this.tickValues.length > 0 && (
               <div class="sdds-slider__value-dividers-wrapper">
                 <div class="sdds-slider__value-dividers">
