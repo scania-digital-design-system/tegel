@@ -15,26 +15,26 @@ export class SddsBanner {
   /** Header text. */
   @Prop() header: string;
 
-  /** Type of banner */
+  /** Type of Banner */
   @Prop() type: 'error' | 'information' | 'none' = 'none';
 
   /** ID used for internal table functionality and events, must be unique.
    *
-   * **NOTE**: If you're listening for banner close events you need to set this ID yourself to identify the banner, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for Banner close events you need to set this ID yourself to identify the Banner, as the default ID is random and will be different every time.
    */
   @Prop() bannerId: string = crypto.randomUUID();
 
-  /** Removes the close button on the banner. */
+  /** Removes the close button on the Banner. */
   @Prop() persistent: boolean = false;
 
-  /** Hides the banner */
+  /** Hides the Banner */
   @Prop() hidden = false;
 
   @State() hasSubheader: boolean;
 
   @State() hasLink: boolean;
 
-  /** Sends unique banner identifier when the close button is pressed. */
+  /** Sends a unique Banner identifier when the close button is pressed. */
   @Event({
     eventName: 'sddsClose',
     composed: true,
@@ -45,7 +45,7 @@ export class SddsBanner {
     bannerId: string;
   }>;
 
-  /** Sends unique banner identifier when the close button is pressed. */
+  /** Sends the unique Banner identifier when the close button is pressed. */
   @Event({
     eventName: 'sddsShow',
     composed: true,
@@ -56,13 +56,13 @@ export class SddsBanner {
     bannerId: string;
   }>;
 
-  /** Hides the banner. */
+  /** Hides the Banner. */
   @Method()
   async hideBanner() {
     this.handleClose();
   }
 
-  /** Shows the banner */
+  /** Shows the Banner */
   @Method()
   async showBanner() {
     this.handleShow();
