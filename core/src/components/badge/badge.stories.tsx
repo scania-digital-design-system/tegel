@@ -75,9 +75,8 @@ export default {
 const Template = ({ value, size, hidden, demoCode }) =>
   formatHtmlPreview(
     `
-    ${
-      demoCode
-        ? `<style>
+    ${demoCode
+      ? `<style>
     /* Note: Demo classes used here are just for demo purposes in Storybook */
     .badge-demo-box {
       margin:5px;
@@ -87,27 +86,27 @@ const Template = ({ value, size, hidden, demoCode }) =>
       background-color: #C4C4C4;
     }
 
-    .badge-demo-box sdds-badge[size="lg"]{
+    .badge-demo-box tds-badge[size="lg"]{
       position: absolute;
       left: 16px;
       top: -5px;
     }
 
-    .badge-demo-box sdds-badge[size="sm"]{
+    .badge-demo-box tds-badge[size="sm"]{
       position: absolute;
       left: 26px;
       top: -2px;
     }
     </style>`
-        : ''
+      : ''
     }
 
     <div class="${demoCode ? 'badge-demo-box' : ''}">
-      <sdds-badge
+      <tds-badge
         ${value ? `value="${value}"` : ''}
         ${hidden ? 'hidden' : ''}
         size="${size}">
-      </sdds-badge>
+      </tds-badge>
     </div>`,
   );
 
