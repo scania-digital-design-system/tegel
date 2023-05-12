@@ -68,7 +68,7 @@ export default {
     },
     bodyImg: {
       name: 'Body image',
-      description: 'Toggles an image in the card body. Cannot be combined with divider.',
+      description: 'Toggles an image in the Card body. Cannot be combined with divider.',
       control: {
         type: 'boolean',
       },
@@ -76,7 +76,7 @@ export default {
     },
     bodyContent: {
       name: 'Body text',
-      description: 'Sets the body text for the card.',
+      description: 'Sets the body text for the Card.',
       control: {
         type: 'text',
       },
@@ -94,14 +94,14 @@ export default {
     },
     cardBottom: {
       name: 'Content of the bottom of the card',
-      description: 'Slot to add custom HTML elements to the bottom of the card.',
+      description: 'Slot to add custom HTML elements to the bottom of the Card.',
       control: {
         type: 'text',
       },
     },
     clickable: {
       name: 'Clickable',
-      description: 'Toggles if the card is clickable or not.',
+      description: 'Toggles if the Card is clickable or not.',
       control: {
         type: 'boolean',
       },
@@ -154,25 +154,27 @@ const Template = ({
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
-  ${bodyContent
+  ${
+    bodyContent
       ? `
     <div slot="card-body">
         ${bodyContent}
     </div>`
       : ''
-    }
+  }
     ${cardBottom ? `${cardBottom}` : ''}
     </sdds-card>
     </div>
-    ${clickable
-      ? `
+    ${
+      clickable
+        ? `
     <script>
         document.addEventListener('sddsClick', (event)=>{
             console.log('Card with id: ', event.detail.cardId, ' was clicked.')
         })
     </script>
     `
-      : ''
+        : ''
     }
   `,
   );
