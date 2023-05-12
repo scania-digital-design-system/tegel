@@ -8,22 +8,22 @@ import type { Placement, Instance } from '@popperjs/core';
   shadow: true,
 })
 export class Tooltip {
-  /** In case tooltip contains only text, no HTML, text can be passed by this prop */
+  /** In case Tooltip contains only text, no HTML, text can be passed by this prop */
   @Prop() text: string = '';
 
-  /** The CSS-selector for an element that will trigger the tooltip */
+  /** The CSS-selector for an element that will trigger the Tooltip */
   @Prop() selector: string = '';
 
-  /** Element that will trigger the tooltip (takes priority over selector) */
+  /** Element that will trigger the Tooltip (takes priority over selector) */
   @Prop() referenceEl: HTMLElement;
 
-  /** Allow mouse over tooltip. Useful when tooltip contains clickable elements like link or button. */
+  /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
   @Prop() mouseOverTooltip: boolean = false;
 
   /** Prop in control of showing and hiding prop */
   @Prop({ mutable: true }) show: boolean = false;
 
-  /** Placement of tooltip. */
+  /** Placement of Tooltip. */
   @Prop() placement: Placement = 'bottom';
 
   @State() popperInstance: Instance;
@@ -98,7 +98,7 @@ export class Tooltip {
       hideTooltip();
     });
 
-    // For hovering over tooltip itself:
+    // For hovering over Tooltip itself:
     if (this.mouseOverTooltip === true) {
       this.tooltip.addEventListener('mouseenter', () => {
         showTooltip();

@@ -37,7 +37,7 @@ export default {
     },
     value: {
       name: 'Value',
-      description: 'Sets a value to show on the badge.',
+      description: 'Sets a value to show on the Badge.',
       control: {
         type: 'number',
       },
@@ -45,7 +45,7 @@ export default {
     },
     hidden: {
       name: 'Hidden',
-      description: 'Toggles visibility of the badge.',
+      description: 'Toggles visibility of the Badge.',
       control: {
         type: 'boolean',
       },
@@ -79,7 +79,7 @@ const Template = ({ value, size, hidden, demoCode }) =>
       demoCode
         ? `<style>
     /* Note: Demo classes used here are just for demo purposes in Storybook */
-    .badges-demo-box {
+    .badge-demo-box {
       margin:5px;
       height: 32px;
       width: 32px;
@@ -87,13 +87,13 @@ const Template = ({ value, size, hidden, demoCode }) =>
       background-color: #C4C4C4;
     }
 
-    .badges-demo-box sdds-badges[size="lg"]{
+    .badge-demo-box sdds-badge[size="lg"]{
       position: absolute;
       left: 16px;
       top: -5px;
     }
 
-    .badges-demo-box sdds-badges[size="sm"]{
+    .badge-demo-box sdds-badge[size="sm"]{
       position: absolute;
       left: 26px;
       top: -2px;
@@ -102,12 +102,12 @@ const Template = ({ value, size, hidden, demoCode }) =>
         : ''
     }
 
-    <div class="${demoCode ? 'badges-demo-box' : ''}">
-      <sdds-badges
+    <div class="${demoCode ? 'badge-demo-box' : ''}">
+      <sdds-badge
         ${value ? `value="${value}"` : ''}
         ${hidden ? 'hidden' : ''}
         size="${size}">
-      </sdds-badges>
+      </sdds-badge>
     </div>`,
   );
 

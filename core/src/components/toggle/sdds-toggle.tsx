@@ -8,28 +8,28 @@ import { Component, h, Prop, Event, Element, EventEmitter, Method } from '@stenc
 export class SddsToggle {
   @Element() host: HTMLElement;
 
-  /** Sets the toggle as checked */
+  /** Sets the Toggle as checked */
   @Prop({ reflect: true }) checked: boolean = false;
 
-  /** Make the toggle required */
+  /** Make the Toggle required */
   @Prop() required: boolean = false;
 
-  /** Size of the toggle */
+  /** Size of the Toggle */
   @Prop() size: 'sm' | 'lg' = 'lg';
 
   /** Name of the toggles input element */
   @Prop() name: string;
 
-  /** Headline for the toggle */
+  /** Headline for the Toggle */
   @Prop() headline: string;
 
-  /** Sets the toggle in a disabled state */
+  /** Sets the Toggle in a disabled state */
   @Prop() disabled: boolean = false;
 
-  /** ID of the toggles input element, if not specifed it's randomly generated */
+  /** ID of the Toggle's input element, if not specified it's randomly generated */
   @Prop() toggleId: string = crypto.randomUUID();
 
-  /** Toggles the toggle. */
+  /** Toggles the Toggle. */
   @Method()
   async toggle() {
     this.checked = !this.checked;
@@ -39,7 +39,7 @@ export class SddsToggle {
     };
   }
 
-  /** Sends unique toggle identifier and status when it is toggled. */
+  /** Sends unique Toggle identifier and status when it is toggled. */
   @Event({
     eventName: 'sddsToggle',
     composed: true,

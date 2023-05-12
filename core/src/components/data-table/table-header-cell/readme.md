@@ -20,7 +20,7 @@
 
 | Event            | Description                                                                                                                                                          | Type                                                                                      |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `sddsSortChange` | Sends unique table identifier,column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "desc" \| "asc"; }>` |
+| `sddsSortChange` | Sends unique table identifier,column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "asc" \| "desc"; }>` |
 
 
 ----------------------------------------------
