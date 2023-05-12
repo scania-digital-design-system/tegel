@@ -29,7 +29,7 @@ export default {
   argTypes: {
     tooltipPosition: {
       name: 'Tooltip position',
-      description: 'Sets the position of the tooltip.',
+      description: 'Sets the position of the Tooltip.',
       control: {
         type: 'select',
       },
@@ -55,21 +55,21 @@ export default {
     },
     text: {
       name: 'Tooltip text',
-      description: 'Sets the sext that will be displayed inside tooltip.',
+      description: 'Sets the sext that will be displayed inside Tooltip.',
       control: {
         type: 'text',
       },
     },
     slot: {
       name: 'Tooltip html content',
-      description: 'A slot for the tooltip to pass in html.',
+      description: 'A slot for the Tooltip to pass in html.',
       control: {
         type: 'text',
       },
     },
     mouseOverTooltip: {
-      name: 'Open while hovering over tooltip',
-      description: 'Keeps the tooltip visible as long as the mouse hovers over it.',
+      name: 'Open while hovering over Tooltip',
+      description: 'Keeps the Tooltip visible as long as the mouse hovers over it.',
       control: {
         type: 'boolean',
       },
@@ -82,7 +82,7 @@ export default {
   },
   args: {
     tooltipPosition: 'Bottom',
-    text: 'Text inside tooltip',
+    text: 'Text inside Tooltip',
     slot: '<p class="sdds-detail-05 sdds-u-m0"> Paragraph tag inside of Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
     mouseOverTooltip: true,
   },
