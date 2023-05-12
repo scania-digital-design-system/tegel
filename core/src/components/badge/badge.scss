@@ -4,8 +4,8 @@
 
 :host {
   // Variables
-  --sdds-badge-background-color: var(--sdds-negative);
-  --sdds-badge-color-text: var(--sdds-white);
+  --tds-badge-background-color: var(--tds-negative);
+  --tds-badge-color-text: var(--tds-white);
 
   // Styling
   @include tds-box-sizing;
@@ -13,39 +13,39 @@
   display: block;
 }
 
-.sdds-badge {
+.tds-badges {
   display: block;
   border-radius: 12px;
-  background-color: var(--sdds-badge-background-color);
+  background-color: var(--tds-badge-background-color);
   text-align: center;
 
-  &.sdds-badge-sm {
+  &.tds-badges-sm {
     height: 8px;
     width: 8px;
     line-height: 8px;
   }
 
-  &.sdds-badge-lg {
+  &.tds-badge-lg {
     height: 20px;
     line-height: 20px;
     width: 20px;
   }
 
-  &.sdds-badge-pill {
+  &.tds-badge-pill {
     display: inline-block;
     width: unset;
     padding-left: 8px;
     padding-right: 8px;
   }
 
-  &.sdds-badge-hidden {
+  &.tds-badge-hidden {
     display: none;
   }
 }
 
-.sdds-badge-text {
-  font-family: var(--sdds-font-family-semi-condensed-bold);
+.tds-badge-text {
+  font-family: var(--tds-font-family-semi-condensed-bold);
   font-size: 12px;
-  color: var(--sdds-badge-color-text);
+  color: var(--tds-badges-color-text);
   font-weight: bold;
 }
