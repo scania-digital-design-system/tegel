@@ -6,10 +6,10 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: false,
 })
 export class Spinner {
-  /** Size of Spinner */
+  /** Size of the Spinner */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
-  /** Variant of Spinner */
+  /** Variant of the Spinner */
   @Prop() variant: 'standard' | 'inverted' = 'standard';
 
   render() {

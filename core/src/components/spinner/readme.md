@@ -5,10 +5,10 @@
 
 ## Properties
 
-| Property  | Attribute | Description        | Type                           | Default      |
-| --------- | --------- | ------------------ | ------------------------------ | ------------ |
-| `size`    | `size`    | Size of Spinner    | `"lg" \| "md" \| "sm" \| "xs"` | `'lg'`       |
-| `variant` | `variant` | Variant of Spinner | `"inverted" \| "standard"`     | `'standard'` |
+| Property  | Attribute | Description            | Type                           | Default      |
+| --------- | --------- | ---------------------- | ------------------------------ | ------------ |
+| `size`    | `size`    | Size of the Spinner    | `"lg" \| "md" \| "sm" \| "xs"` | `'lg'`       |
+| `variant` | `variant` | Variant of the Spinner | `"inverted" \| "standard"`     | `'standard'` |
 
 
 ----------------------------------------------
