@@ -12,9 +12,6 @@ export class TdsBadge {
   /** Changes visibility of badge */
   @Prop() hidden: boolean = false;
 
-  /** @deprecated Use size prop instead. Changes badge from large to small size */
-  @Prop() isSmall: boolean = false;
-
   /** Sets component size. */
   @Prop() size: 'lg' | 'sm' = 'lg';
 
@@ -23,7 +20,6 @@ export class TdsBadge {
   @State() text: string = '';
 
   @Watch('value')
-  @Watch('isSmall')
   @Watch('size')
   watchProps() {
     this.checkProps();
@@ -31,10 +27,6 @@ export class TdsBadge {
 
   componentWillLoad() {
     this.checkProps();
-    if (this.isSmall) {
-      this.size = 'sm';
-      console.warn('Prop isSmall is deprecated. Use size"small" instead');
-    }
   }
 
   checkProps() {
