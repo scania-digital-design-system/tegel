@@ -10,10 +10,10 @@ import type { Placement, Instance } from '@popperjs/core';
 export class PopoverMenu {
   @Element() popoverMenuElement!: HTMLElement;
 
-  /** The CSS-selector for an element that will trigger the popover */
+  /** The CSS-selector for an element that will trigger the Popover */
   @Prop() selector: string = '';
 
-  /** Element that will trigger the popover (takes priority over selector) */
+  /** Element that will trigger the Popover (takes priority over selector) */
   @Prop() referenceEl: HTMLElement;
 
   /** Decides if the Popover Menu should be visible from the start */

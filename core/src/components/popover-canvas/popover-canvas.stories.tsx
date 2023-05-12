@@ -11,7 +11,7 @@ export default {
   argTypes: {
     canvasPosition: {
       name: 'Canvas position',
-      description: 'Sets the position of the popover canvas.',
+      description: 'Sets the position of the Popover Canvas.',
       control: {
         type: 'select',
       },
@@ -74,7 +74,7 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
         placement="${canvasPosLookup[canvasPosition]}"
         selector="#trigger"
         class="sdds-u-p2">
-        <h2>A popover canvas!</h2>
+        <h2>A Popover Canvas!</h2>
         <p>
           Where you can put anything you want!
         </p>
@@ -85,7 +85,7 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
 
       <!-- demo-wrapper code below is for demonstration purposes only -->
       <div class="demo-wrapper">
-        <span class="sdds-u-mr2">Click icon for popover canvas</span>
+        <span class="sdds-u-mr2">Click icon for Popover Canvas</span>
         
         <sdds-button aria-label="menu" onlyIcon id="trigger" type="ghost" size="sm">
           <sdds-icon slot="icon" class="sdds-btn-icon" size="16px" name="kebab"></sdds-icon>

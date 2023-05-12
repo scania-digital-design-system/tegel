@@ -10,13 +10,13 @@ import type { Placement, Instance } from '@popperjs/core';
 export class PopoverCanvas {
   @Element() host!: HTMLSddsPopoverCanvasElement;
 
-  /** The CSS-selector for an element that will trigger the popover */
+  /** The CSS-selector for an element that will trigger the Popover */
   @Prop() selector: string = '';
 
-  /** Element that will trigger the popover (takes priority over selector) */
+  /** Element that will trigger the Popover (takes priority over selector) */
   @Prop() referenceEl: HTMLElement;
 
-  /** Controls wether the popover is shown or not. If this is set hiding and showing
+  /** Controls wether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside.
    */
   @Prop() show: boolean = null;

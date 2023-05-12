@@ -1,4 +1,4 @@
-The popover menu is a component made for context menus.
+The Popover Menu is a component made for context menus.
 It requires a valid selector as an attribute and then it will be automatically opened when the user clicks on the element with this selector.
 
 There are two versions, one with and one without icons. Both variants supports a placement-attribute to control where the menu should popup when the element is clicked.
