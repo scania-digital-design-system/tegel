@@ -1,9 +1,9 @@
 <!-- TODO: This looks like the docs from https://tegel.scania.com/components/sidemenu/code. Should we have it here as well? -->
 
 # Introduction
-To use the side menu you need to use the basic structural setup with a [functional header](/components/header) and then a side menu and content area nested in a container with the class `'sdds-push'`. Note that the header should have a `'sdds-nav__mob-menu-btn'` in it so you have something from where to trigger the side-menus open state on lower breakpoints.
+To use the Side Menu you need to use the basic structural setup with a [functional header](/components/header) and then a Side Menu and content area nested in a container with the class `'sdds-push'`. Note that the header should have a `'sdds-nav__mob-menu-btn'` in it so you have something from where to trigger the side-menus open state on lower breakpoints.
 
-<div style="background-color: var(--sdds-information); padding: 14px; font-weight: bold; font-size: 14px; border-radius: 4px;">This documentation applies to side menu component found in sdds version 3.*</div>
+<div style="background-color: var(--sdds-information); padding: 14px; font-weight: bold; font-size: 14px; border-radius: 4px;">This documentation applies to Side Menu component found in sdds version 3.*</div>
 
 # Basic structure code example
 
@@ -28,7 +28,7 @@ To use the side menu you need to use the basic structural setup with a [function
 
 
 # Side menu structure
-The side menu is built up by a wrapper and three sections: mobile header, menu content and menu footer. Footer is used only in collapsible side menu.
+The Side Menu is built up by a wrapper and three sections: mobile header, menu content and menu footer. Footer is used only in collapsible Side Menu.
 
 --------------------------------------------
 
@@ -80,7 +80,7 @@ The page links are to be placed as `'sdds-sidebar-nav__item'` within `'sdds-side
 
 --------------------------------------------
 
-The basic structure of a side menu item is as follows:
+The basic structure of a Side Menu item is as follows:
 
 --------------------------------------------
 
@@ -94,12 +94,12 @@ The basic structure of a side menu item is as follows:
 
 --------------------------------------------
 
-!! The side menu has an active state that is displayed by adding the class `'sdds-item--active'` to the item by a method of you choice.
+!! The Side Menu has an active state that is displayed by adding the class `'sdds-item--active'` to the item by a method of you choice.
 
 
 
 # Sub-menus with page links
-You can nest lists in side menu to create sub-menus. Style the first item in the sub-menu as `'sdds-sidebar-nav__extended'` and add the chevron icon as an inline svg. Repeat the sub-menu name as first list item in the nested list and style as `'sdds-sidebar-nav__item-title'`. This displays the sub-menu name above page links when side menu is collapsed and user hovers over it. List subsequent page links as usual.
+You can nest lists in Side Menu to create sub-menus. Style the first item in the sub-menu as `'sdds-sidebar-nav__extended'` and add the chevron icon as an inline svg. Repeat the sub-menu name as first list item in the nested list and style as `'sdds-sidebar-nav__item-title'`. This displays the sub-menu name above page links when Side Menu is collapsed and user hovers over it. List subsequent page links as usual.
 
 --------------------------------------------
 
@@ -115,7 +115,7 @@ You can nest lists in side menu to create sub-menus. Style the first item in the
     </a>
     {/* Sub menu */}
     <ul class="sdds-sidebar-nav-subnav">
-    {/* Sub menu title shows on collapsed side menu */}
+    {/* Sub menu title shows on collapsed Side Menu */}
         <li class="sdds-sidebar-nav-subnav__item">
             <span class="sdds-sidebar-nav__item-title">Sub-menu</span>
         </li>
@@ -139,7 +139,7 @@ You can nest lists in side menu to create sub-menus. Style the first item in the
 
 --------------------------------------------
 
-!! Toggle the display of the sup page items with the class .subnav-open on the side menu parent.
+!! Toggle the display of the sup page items with the class .subnav-open on the Side Menu parent.
 !! Toggle a sup page options active state with the class .sdds-item--active to the item by a method of you choice.
 
 
@@ -165,7 +165,7 @@ If you are looking for a more dynamic solution you can toggle the visibility of 
 
 
 # Collapsible
-Note that if you opt for a collapsible menu, you need to have icon added, since the collapsed state of the menu shows only the icons. To add a collapse-button simply put a `'sdds-sidebar-nav__item'` (the same way you do any side menu item) in the `'sdds-sidebar-nav--bottom'` container. and select an appropriate icon for it. We recommend arrow-left from the icon library. Below is an example with the recommended icon embedded.
+Note that if you opt for a collapsible menu, you need to have icon added, since the collapsed state of the menu shows only the icons. To add a collapse-button simply put a `'sdds-sidebar-nav__item'` (the same way you do any Side Menu item) in the `'sdds-sidebar-nav--bottom'` container. and select an appropriate icon for it. We recommend arrow-left from the icon library. Below is an example with the recommended icon embedded.
 
 --------------------------------------------
 
@@ -191,4 +191,4 @@ Note that if you opt for a collapsible menu, you need to have icon added, since 
 
 
 # Responsive
-The side menu collapses into a hamburger menu at lower breakpoints. To then access the menu you need to add the att a trigger to open the menu. Place the trigger on the `'sdds-nav__mob-menu-btn'` in the header and make it add the class `'mobile-menu-open'` to the `'side-menu'` container. To close the menu, add a trigger to `'sdds-sidebar-mheader__close'` that removes the class `'mobile-menu-open'`.
+The Side Menu collapses into a hamburger menu at lower breakpoints. To then access the menu you need to add the att a trigger to open the menu. Place the trigger on the `'sdds-nav__mob-menu-btn'` in the header and make it add the class `'mobile-menu-open'` to the `'side-menu'` container. To close the menu, add a trigger to `'sdds-sidebar-mheader__close'` that removes the class `'mobile-menu-open'`.
