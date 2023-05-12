@@ -5,7 +5,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
   styleUrl: 'accordion.scss',
   shadow: true,
 })
-export class Accordion {
+export class TdsAccordion {
   /** Set the variant of the the accordion. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 

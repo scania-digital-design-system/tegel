@@ -5,7 +5,7 @@ import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/
   styleUrl: 'accordion-item.scss',
   shadow: true,
 })
-export class AccordionItem {
+export class TdsAccordionItem {
   /** The header gives users the context about the additional information available inside the panel */
   @Prop() header: string = '';
 
