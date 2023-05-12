@@ -41,14 +41,14 @@ export default {
     persistent: {
       name: 'Persistent',
       description:
-        'Set the side menu to always show. This should be used if there are more navigation items to show than can always fit in the header, more than three header items is a good rule of thumb.',
+        'Set the Side Menu to always show. This should be used if there are more navigation items to show than can always fit in the header, more than three header items is a good rule of thumb.',
       control: {
         type: 'boolean',
       },
     },
     collapsible: {
       name: 'Collapsible',
-      description: 'Make the side menu collapsible',
+      description: 'Make the Side Menu collapsible',
       control: {
         type: 'boolean',
       },
@@ -95,7 +95,7 @@ const Template = ({ persistent, collapsible }) =>
         /* the lg breakpoint is used here to match the breakpoint used in the header */
     @media (min-width: 992px) {
       #demo-side-menu {
-        /* We suggest you attach the persistent side menu to your layout like this: */
+        /* We suggest you attach the persistent Side Menu to your layout like this: */
         height: calc(100vh - var(--app-bar-height));
         position: sticky;
         top: var(--app-bar-height);
@@ -194,9 +194,9 @@ const Template = ({ persistent, collapsible }) =>
 
       <main class="sdds-u-h-100 sdds-u-p3" style="box-sizing: border-box;">
         <p>If there are more than a few buttons and/or links in the header, they might not fit on medium size screens. 
-        <br/>In that case they should be placed in a persistent side menu — which is always visible on large screens.</p>
+        <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
 
-        <p><i>Note: The side menu is sticky, and should not scroll with the main content of the page.</i></p>
+        <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
         <button id="test">Toggle the collapsed state programatically</button>
