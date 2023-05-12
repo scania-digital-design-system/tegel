@@ -26,7 +26,7 @@ export class SddsToggle {
   /** Sets the Toggle in a disabled state */
   @Prop() disabled: boolean = false;
 
-  /** ID of the toggles input element, if not specifed it's randomly generated */
+  /** ID of the Toggle's input element, if not specified it's randomly generated */
   @Prop() toggleId: string = crypto.randomUUID();
 
   /** Toggles the Toggle. */
