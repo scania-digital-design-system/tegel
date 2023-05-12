@@ -23,7 +23,7 @@ export default {
   argTypes: {
     underline: {
       name: 'Underline',
-      description: 'Adds an underline under the link text.',
+      description: 'Adds an underline under the Link text.',
       controls: {
         type: 'boolean',
       },
@@ -33,7 +33,7 @@ export default {
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the link.',
+      description: 'Disables the Link.',
       controls: {
         type: 'boolean',
       },
