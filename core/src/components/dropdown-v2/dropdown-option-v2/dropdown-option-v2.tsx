@@ -12,7 +12,7 @@ import { SddsCheckboxCustomEvent } from '../../../components';
 export class SddsDropdownOptionV2 {
   @Element() host: HTMLElement;
 
-  /** Value for the dropdown option. */
+  /** Value for the Dropdown option. */
   @Prop() value: string;
 
   /** Sets the option as disabled. */
@@ -36,7 +36,7 @@ export class SddsDropdownOptionV2 {
     }
   }
 
-  /** Click event for the dropdown option. */
+  /** Click event for the Dropdown option. */
   @Event({
     eventName: 'sddsSelect',
     composed: true,
@@ -48,7 +48,7 @@ export class SddsDropdownOptionV2 {
     value: string;
   }>;
 
-  /** Focus event for the dropdown option. */
+  /** Focus event for the Dropdown option. */
   @Event({
     eventName: 'sddsFocus',
     composed: true,
@@ -57,7 +57,7 @@ export class SddsDropdownOptionV2 {
   })
   sddsFocus: EventEmitter<FocusEvent>;
 
-  /** Blur event for the dropdown option. */
+  /** Blur event for the Dropdown option. */
   @Event({
     eventName: 'sddsBlur',
     composed: true,

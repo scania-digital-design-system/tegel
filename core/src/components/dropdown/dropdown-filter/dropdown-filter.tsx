@@ -19,17 +19,17 @@ export class DropdownFilter {
   /** Set the variant of the dropdown. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Placeholder text for dropdown with no selected item */
+  /** Placeholder text for Dropdown with no selected item */
   @Prop() placeholder: string = '';
 
-  /** Label for dropdown with no selected item */
+  /** Label for Dropdown with no selected item */
   @Prop() label: string;
 
   /** Add the value of the option to set it as default */
   @Prop() defaultOption: string;
 
-   /** Direction that the dropdown will open. Default is auto. */
-   @Prop() openDirection: 'down' | 'up' | 'auto' = 'auto';
+  /** Direction that the Dropdown will open. Default is auto. */
+  @Prop() openDirection: 'down' | 'up' | 'auto' = 'auto';
 
   /** Add the value of the option as string to set it as new selected value */
   @Prop() selectedOption: string;
@@ -49,7 +49,7 @@ export class DropdownFilter {
   /** Support `error` state */
   @Prop() state: boolean = false;
 
-  /** Add helper text in the bottom of dropdown */
+  /** Add helper text in the bottom of Dropdown */
   @Prop() helper: string = '';
 
   /** Data is an array of objects that contains label and value

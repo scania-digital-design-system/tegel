@@ -18,7 +18,7 @@ export class SddsDropdownV2 {
   /** Name for the dropdowns input element. */
   @Prop() name: string;
 
-  /** Sets the dropdown in a disabled state */
+  /** Sets the Dropdown in a disabled state */
   @Prop() disabled: boolean = false;
 
   /** Helper text for the dropdown. */
@@ -33,7 +33,7 @@ export class SddsDropdownV2 {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** The direction the dropdown should open, auto if not specified. */
+  /** The direction the Dropdown should open, auto if not specified. */
   @Prop() openDirection: 'up' | 'down' | 'auto' = 'auto';
 
   /** Placeholder text for the dropdown. */
@@ -42,7 +42,7 @@ export class SddsDropdownV2 {
   /** The size of the dropdown. */
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
 
-  /** Sets the dropdown in an error state */
+  /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;
 
   /** Enables multiselect in the dropdown. */
@@ -57,7 +57,7 @@ export class SddsDropdownV2 {
   /** Default value selected in the dropdown. */
   @Prop() defaultValue: string;
 
-  /** Populate the dropdown via a JSON array */
+  /** Populate the Dropdown via a JSON array */
   @Prop() options: Array<{ value: string; label: string; disabled: boolean }>;
 
   @State() open: boolean = false;
@@ -207,7 +207,7 @@ export class SddsDropdownV2 {
     }
   }
 
-  // If the dropdown gets closed this sets the value of the drodpown to the current selection labels or null if no selection is made.
+  // If the Dropdown gets closed this sets the value of the drodpown to the current selection labels or null if no selection is made.
   @Watch('open')
   handleOpenState() {
     if (this.filter && this.multiselect) {

@@ -23,7 +23,7 @@ export class Dropdown {
   /** Set the variant of the dropdown. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Placeholder text for dropdown with no selectedLabel item */
+  /** Placeholder text for Dropdown with no selectedLabel item */
   @Prop() placeholder: string;
 
   /** Add the value of the option as string to set it as default */
@@ -53,10 +53,10 @@ export class Dropdown {
   /** Support `error` state */
   @Prop() state: boolean = false;
 
-  /** Add helper text in the bottom of dropdown */
+  /** Add helper text in the bottom of Dropdown */
   @Prop() helper: string = '';
 
-  /** Direction that the dropdown will open. Default is auto. */
+  /** Direction that the Dropdown will open. Default is auto. */
   @Prop() openDirection: 'down' | 'up' | 'auto' = 'auto';
 
   @State() optionValues: Array<any> = [];
@@ -213,8 +213,8 @@ export class Dropdown {
       const distanceToBottom = this.host.getBoundingClientRect().top;
       const viewportHeight = window.innerHeight;
       this.openUpwards = distanceToBottom + this.dropdownMenuHeight + 57 > viewportHeight;
-      // If summary of dropdown menu height and its distance to the bottom is more than viewport height, open menu upwards
-      // Additional 57px is added as compensation for dropdown element own input/button height
+      // If summary of Dropdown menu height and its distance to the bottom is more than viewport height, open menu upwards
+      // Additional 57px is added as compensation for Dropdown element own input/button height
       // It is added on handleClick due to possible dynamic injection of data when component is already rendered
     } else {
       this.openUpwards = this.openDirection === 'up';

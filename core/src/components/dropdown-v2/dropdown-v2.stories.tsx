@@ -34,7 +34,7 @@ export default {
     },
     error: {
       name: 'Error',
-      description: 'Sets the dropdown in an error state.',
+      description: 'Sets the Dropdown in an error state.',
       control: {
         type: 'boolean',
       },
@@ -92,7 +92,7 @@ export default {
     labelText: {
       name: 'Label text',
       control: 'text',
-      description: 'Label text helps to describe what the dropdown contains',
+      description: 'Label text helps to describe what the Dropdown contains',
       if: { arg: 'labelPosition', neq: 'None' },
     },
     disabled: {
@@ -137,7 +137,7 @@ export default {
     },
     openDirection: {
       name: 'Open direction',
-      description: 'The direction the dropdown will open.',
+      description: 'The direction the Dropdown will open.',
       control: {
         type: 'radio',
       },

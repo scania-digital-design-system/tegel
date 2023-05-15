@@ -69,7 +69,7 @@ export default {
     },
     openDirection: {
       name: 'Open direction',
-      description: 'Sets which direction the dropdown will open in.',
+      description: 'Sets which direction the Dropdown will open in.',
       control: {
         type: 'radio',
       },
@@ -91,7 +91,7 @@ export default {
     },
     labelText: {
       name: 'Label text',
-      description: 'Sets a label text to help describe what the dropdown contains.',
+      description: 'Sets a label text to help describe what the Dropdown contains.',
       control: {
         type: 'text',
       },

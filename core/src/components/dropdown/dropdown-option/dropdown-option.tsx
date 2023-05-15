@@ -30,7 +30,7 @@ export class DropdownOption {
   /** Value is a unique string that will be used for application logic */
   @Prop({ reflect: true }) value: string;
 
-  /** @internal Fires on click on one of the dropdown items */
+  /** @internal Fires on click on one of the Dropdown items */
   @Event({
     eventName: 'internalSddsSelect',
     composed: true,
