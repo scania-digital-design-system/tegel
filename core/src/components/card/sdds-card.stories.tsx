@@ -93,7 +93,7 @@ export default {
       },
     },
     cardBottom: {
-      name: 'Content of the bottom of the card',
+      name: 'Content of the bottom of the Card',
       description: 'Slot to add custom HTML elements to the bottom of the Card.',
       control: {
         type: 'text',
