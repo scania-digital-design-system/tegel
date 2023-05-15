@@ -37,7 +37,7 @@ export default {
     btnType: {
       name: 'Type',
       description:
-        'Four different button types to help the user to distinguish the level of importance of the task they represent.',
+        'Four different Button types to help the user to distinguish the level of importance of the task they represent.',
       control: {
         type: 'radio',
       },
@@ -48,7 +48,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Sets the size of the button.',
+      description: 'Sets the size of the Button.',
       control: {
         type: 'radio',
       },
@@ -59,7 +59,7 @@ export default {
     },
     text: {
       name: 'Text',
-      description: 'Sets the text to be displayed on the button.',
+      description: 'Sets the text to be displayed on the Button.',
       control: {
         type: 'text',
       },
@@ -67,7 +67,7 @@ export default {
     },
     fullbleed: {
       name: 'Fullbleed',
-      description: 'Sets a fluid width on the button.',
+      description: 'Sets a fluid width on the Button.',
       control: {
         type: 'boolean',
       },
@@ -78,7 +78,7 @@ export default {
     },
     onlyIcon: {
       name: 'Only Icon',
-      description: 'Displays only the icon and excludes any text from the button.',
+      description: 'Displays only the icon and excludes any text from the Button.',
       control: {
         type: 'boolean',
       },
@@ -89,7 +89,7 @@ export default {
     },
     icon: {
       name: 'Icon',
-      description: 'Sets icon to be displayed on the button. Choose "none" to exclude the icon.',
+      description: 'Sets icon to be displayed on the Button. Choose "none" to exclude the icon.',
       control: {
         type: 'select',
       },
@@ -107,7 +107,7 @@ export default {
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the button.',
+      description: 'Disables the Button.',
       control: {
         type: 'boolean',
       },
@@ -208,5 +208,5 @@ const WebComponentTemplate = ({
   );
 };
 
-/** Button as web component */
+/** Button as a web component */
 export const Button = WebComponentTemplate.bind({});
