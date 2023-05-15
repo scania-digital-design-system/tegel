@@ -19,10 +19,10 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
 ## Folder structure
 
 All components are located in the `src/components` directory. Each component in this folder has a dedicated folder named as the
-component minus the `sdds`-prefix. For our button the file path is `src/components/button`. The components tsx/sccs files are 
+component minus the `sdds`-prefix. For our Button the file path is `src/components/button`. The components tsx/sccs files are 
 all named without the `sdds`-prefix. E.g. `button.tsx`, `button.scss`, `button-vars.scss`.
 
-### Example - folder structure for button
+### Example - folder structure for Button
 
 ```
 ├── src

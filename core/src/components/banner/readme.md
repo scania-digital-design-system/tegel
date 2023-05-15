@@ -9,27 +9,27 @@
 
 | Property     | Attribute    | Description                                                                                                                                                                                                                                        | Type                                 | Default               |
 | ------------ | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | --------------------- |
-| `bannerId`   | `banner-id`  | ID used for internal table functionality and events, must be unique.  **NOTE**: If you're listening for banner close events you need to set this ID yourself to identify the banner, as the default ID is random and will be different every time. | `string`                             | `crypto.randomUUID()` |
+| `bannerId`   | `banner-id`  | ID used for internal table functionality and events, must be unique.  **NOTE**: If you're listening for Banner close events you need to set this ID yourself to identify the Banner, as the default ID is random and will be different every time. | `string`                             | `crypto.randomUUID()` |
 | `header`     | `header`     | Header text.                                                                                                                                                                                                                                       | `string`                             | `undefined`           |
-| `hidden`     | `hidden`     | Hides the banner                                                                                                                                                                                                                                   | `boolean`                            | `false`               |
+| `hidden`     | `hidden`     | Hides the Banner                                                                                                                                                                                                                                   | `boolean`                            | `false`               |
 | `icon`       | `icon`       | Name of the icon for the component. For error and information type the icon is predefined.                                                                                                                                                         | `string`                             | `undefined`           |
-| `persistent` | `persistent` | Removes the close button on the banner.                                                                                                                                                                                                            | `boolean`                            | `false`               |
-| `type`       | `type`       | Type of banner                                                                                                                                                                                                                                     | `"error" \| "information" \| "none"` | `'none'`              |
+| `persistent` | `persistent` | Removes the close button on the Banner.                                                                                                                                                                                                            | `boolean`                            | `false`               |
+| `type`       | `type`       | Type of Banner                                                                                                                                                                                                                                     | `"error" \| "information" \| "none"` | `'none'`              |
 
 
 ## Events
 
-| Event       | Description                                                      | Type                                 |
-| ----------- | ---------------------------------------------------------------- | ------------------------------------ |
-| `sddsClose` | Sends unique banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
-| `sddsShow`  | Sends unique banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
+| Event       | Description                                                          | Type                                 |
+| ----------- | -------------------------------------------------------------------- | ------------------------------------ |
+| `sddsClose` | Sends a unique Banner identifier when the close button is pressed.   | `CustomEvent<{ bannerId: string; }>` |
+| `sddsShow`  | Sends the unique Banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
 
 
 ## Methods
 
 ### `hideBanner() => Promise<void>`
 
-Hides the banner.
+Hides the Banner.
 
 #### Returns
 
@@ -39,7 +39,7 @@ Type: `Promise<void>`
 
 ### `showBanner() => Promise<void>`
 
-Shows the banner
+Shows the Banner
 
 #### Returns
 
