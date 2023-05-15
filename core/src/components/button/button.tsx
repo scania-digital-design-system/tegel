@@ -20,7 +20,7 @@ export class SddsButton {
   /** Control for disabled state of component */
   @Prop() disabled: boolean = false;
 
-  /** When enabled, makes Buttontake 100% width */
+  /** When enabled, makes Button take 100% width */
   @Prop() fullbleed: boolean = false;
 
   /** Set the mode variant of the the button. */
