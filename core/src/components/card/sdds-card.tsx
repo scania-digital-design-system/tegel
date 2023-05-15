@@ -6,7 +6,7 @@ import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@
   shadow: true,
 })
 export class SddsCard {
-  /** Variant of the card based on the theme used. */
+  /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Placement of the header */
@@ -33,16 +33,16 @@ export class SddsCard {
   /** Divider for the body */
   @Prop() bodyDivider: boolean = false;
 
-  /** Makes the card clickable. */
+  /** Makes the Card clickable. */
   @Prop() clickable: boolean = false;
 
-  /** ID for the card, must be unique.
+  /** ID for the Card, must be unique.
    *
-   * **NOTE**: If you're listening for card events you need to set this ID yourself to identify the card, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for Card events you need to set this ID yourself to identify the Card, as the default ID is random and will be different every time.
    */
   @Prop() cardId: string = crypto.randomUUID();
 
-  /** Sends unique card identifier when the card is clicked, if clickable=true */
+  /** Sends unique Card identifier when the Card is clicked, if clickable=true */
   @Event({
     eventName: 'sddsClick',
     composed: true,
