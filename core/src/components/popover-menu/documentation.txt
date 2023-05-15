@@ -1,7 +1,7 @@
 The Popover Menu is a component made for context menus.
-It requires a valid selector as an attribute and then it will be automatically opened when the user clicks on the element with this selector.
+It requires a valid selector as an attribute, and then it will be automatically opened when the user clicks on the element with this selector.
 
-There are two versions, one with and one without icons. Both variants supports a placement-attribute to control where the menu should popup when the element is clicked.
+There are two versions, one with and one without icons. Both variants support a placement-attribute to control where the menu should pop over when the element is clicked.
 
 Valid values are:
 
@@ -11,25 +11,25 @@ Valid values are:
 
 <sdds-popover-menu
     placement="auto"
-    selector="#trigger"> 
+    selector="#trigger">
     <ul class="sdds-popover-menu-wrapper">
         <li>
             <a target="_blank" href="https://digitaldesign.scania.com">Menu item 1</a>
         </li>
-        <li>            
-            <a target="_blank" href="https://digitaldesign.scania.com">Menu item 2</a>        
+        <li>
+            <a target="_blank" href="https://digitaldesign.scania.com">Menu item 2</a>
         </li>
         <li>
             <a target="_blank" href="https://digitaldesign.scania.com">Menu item 3</a>
         </li>
         <li class="divider"></li>
-        <li>        
+        <li>
             <a target="_blank" href="https://digitaldesign.scania.com">Menu item 4</a>
         </li>
         <li>
             <a target="_blank" href="https://digitaldesign.scania.com">Menu item 5</a>
         </li>
-    </ul>        
+    </ul>
 </sdds-popover-menu>
 
 <button id="trigger">Click to open popup menu</div>
@@ -40,10 +40,10 @@ Valid values are:
 
 <sdds-popover-menu
     placement="auto"
-    selector="#trigger2"> 
+    selector="#trigger2">
     <ul class="sdds-popover-menu-wrapper">
         <li>
-            <a target="_blank" href="https://digitaldesign.scania.com">            
+            <a target="_blank" href="https://digitaldesign.scania.com">
                 <i>
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_1815_6834)">
@@ -62,7 +62,7 @@ Valid values are:
                 Menu item 1
             </a>
         </li>
-        <li>            
+        <li>
             <a target="_blank" href="https://digitaldesign.scania.com">
                 <i>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +83,7 @@ Valid values are:
             </a>
         </li>
         <li class="divider"></li>
-        <li>            
+        <li>
             <a target="_blank" href="https://digitaldesign.scania.com">
                 <i>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +102,7 @@ Valid values are:
 
                 Menu item 3
             </a>
-        </li>          
-    </ul>        
+        </li>
+    </ul>
 </sdds-popover-menu>
 
