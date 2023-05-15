@@ -15,16 +15,16 @@ export class SddsCheckbox {
   /** ID for the checkbox's input element. Randomly generated if not specified. */
   @Prop() checkboxId: string = crypto.randomUUID();
 
-  /** Sets the checkbox in a disabled state */
+  /** Sets the Checkbox in a disabled state */
   @Prop() disabled: boolean = false;
 
-  /** Make the checkbox required */
+  /** Make the Checkbox required */
   @Prop() required: boolean = false;
 
-  /** Sets the checkbox as checked */
+  /** Sets the Checkbox as checked */
   @Prop({ reflect: true }) checked: boolean = false;
 
-  /** Value for the checkbox */
+  /** Value for the Checkbox */
   @Prop() value: string;
 
   /** Toggles the checked value of the component. */
@@ -37,7 +37,7 @@ export class SddsCheckbox {
     };
   }
 
-  /** Sends unique checkbox identifier and checked status when it is checked/unchecked. */
+  /** Sends unique Checkbox identifier and checked status when it is checked/unchecked. */
   @Event({
     eventName: 'sddsChange',
     composed: true,
@@ -59,7 +59,7 @@ export class SddsCheckbox {
     });
   };
 
-  /** Focus event for the checkbox */
+  /** Focus event for the Checkbox */
   @Event({
     eventName: 'sddsFocus',
     composed: true,
@@ -73,7 +73,7 @@ export class SddsCheckbox {
     this.sddsFocus.emit(event);
   }
 
-  /** Blur event for the checkbox */
+  /** Blur event for the Checkbox */
   @Event({
     eventName: 'sddsBlur',
     composed: true,

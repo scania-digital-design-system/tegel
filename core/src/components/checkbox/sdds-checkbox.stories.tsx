@@ -30,7 +30,7 @@ export default {
     },
     checked: {
       name: 'Checked',
-      description: 'Checks the checkbox.',
+      description: 'Checks the Checkbox.',
       control: {
         type: 'boolean',
       },
@@ -40,7 +40,7 @@ export default {
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the checkbox.',
+      description: 'Disables the Checkbox.',
       control: {
         type: 'boolean',
       },
