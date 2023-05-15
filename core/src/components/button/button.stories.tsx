@@ -208,5 +208,5 @@ const WebComponentTemplate = ({
   );
 };
 
-/** Button as web component */
+/** Button as a web component */
 export const Button = WebComponentTemplate.bind({});

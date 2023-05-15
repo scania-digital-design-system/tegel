@@ -19,14 +19,14 @@
 
 | Event        | Description                                                                     | Type                                  |
 | ------------ | ------------------------------------------------------------------------------- | ------------------------------------- |
-| `sddsToggle` | Fires when the accordion item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
+| `sddsToggle` | Fires when the Accordion Item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
 
 
 ## Methods
 
 ### `toggleAccordionItem() => Promise<void>`
 
-Method for toggeling the expanded state of the accordion item.
+Method for toggeling the expanded state of the Accordion Item.
 
 #### Returns
 
