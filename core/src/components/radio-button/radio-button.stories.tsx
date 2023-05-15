@@ -23,14 +23,14 @@ export default {
   argTypes: {
     label: {
       name: 'Label text',
-      description: 'Sets the label for the radio button.',
+      description: 'Sets the label for the Radio Button.',
       controls: {
         type: 'text',
       },
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the radio button.',
+      description: 'Disables the Radio Button.',
       control: {
         type: 'boolean',
       },

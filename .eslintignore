@@ -11,3 +11,5 @@ core/loader
 core/stencil.config.ts
 
 **/www
+
+icons/gulpfile.js
