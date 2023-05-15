@@ -1,7 +1,8 @@
 import { Component, h, Prop, Element } from '@stencil/core';
+
 @Component({
   tag: 'sdds-link',
-  styleUrl: 'sdds-link.scss',
+  styleUrl: 'link.scss',
   shadow: false,
 })
 export class SddsLink {
