@@ -1,37 +1,37 @@
-import { formatHtmlPreview } from "../../../utils/utils";
-import readme from "./readme.md";
+import { formatHtmlPreview } from '../../../utils/utils';
+import readme from './readme.md';
 
 export default {
-  title: "Patterns/Navigation",
+  title: 'Patterns/Navigation',
   parameters: {
     notes: {
       Readme: readme,
     },
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       source: {
-        state: "closed",
+        state: 'closed',
       },
     },
     design: [
       {
-        name: "Figma",
-        type: "figma",
-        url: "https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1",
+        name: 'Figma',
+        type: 'figma',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
       },
       {
-        name: "Link",
-        type: "link",
-        url: "https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1",
+        name: 'Link',
+        type: 'link',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
       },
     ],
   },
   argTypes: {
     dummyHtml: {
-      name: "Dummy content",
-      description: "Some html to try out in the main section.",
+      name: 'Dummy content',
+      description: 'Some html to try out in the main section.',
       control: {
-        type: "text",
+        type: 'text',
       },
       table: {
         defaultValue: { summary: null },
@@ -72,7 +72,7 @@ const Template = ({ dummyHtml }) =>
         flex-grow: 1;
       }
 
-      /* The lg breakpoint is used here to match the breakpoint used in the header & sidemenu. */
+      /* The lg breakpoint is used here to match the breakpoint used in the Header & sidemenu. */
       @media (min-width: 992px) {
         #demo-side-menu {
           /* We suggest you attach the persistent side menu to your layout like this: */
@@ -83,7 +83,7 @@ const Template = ({ dummyHtml }) =>
         }
       }
 
-      /* If an extra button in the header is required except on */
+      /* If an extra button in the Header is required except on */
       /* very narrow screens, you can use classes like these: */
       .demo-hide {
         display: none;
@@ -234,7 +234,7 @@ const Template = ({ dummyHtml }) =>
       </sdds-side-menu>
 
       <main class="sdds-u-h-100 sdds-u-p3" style="box-sizing: border-box;">
-        <p>If there are more than a few buttons and/or links in the header, they might not fit on medium size screens. 
+        <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent side menu — which is always visible on large screens.</p>
 
         <p><i>Note: The side menu is sticky, and should not scroll with the main content of the page.</i></p>
@@ -245,7 +245,7 @@ const Template = ({ dummyHtml }) =>
       </main>
     </div>
   </div>
-  `
+  `,
   );
 
 export const ManyNavigationItems = Template.bind({});
