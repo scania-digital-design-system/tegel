@@ -1,16 +1,17 @@
 import { Component, h, Prop, Element } from '@stencil/core';
+
 @Component({
   tag: 'sdds-link',
-  styleUrl: 'sdds-link.scss',
+  styleUrl: 'link.scss',
   shadow: false,
 })
 export class SddsLink {
   @Element() host: HTMLElement;
 
-  /** Disables the link */
+  /** Disables the Link */
   @Prop() disabled: boolean = false;
 
-  /** Displays the link with an underline. */
+  /** Displays the Link with an underline. */
   @Prop() underline: boolean = true;
 
   connectedCallback() {
