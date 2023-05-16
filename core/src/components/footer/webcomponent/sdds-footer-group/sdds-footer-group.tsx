@@ -9,16 +9,16 @@ import { State } from '@stencil/core/internal';
 export class SddsFooterGroup {
   @Element() host: HTMLElement;
 
-  /** Title text for the link group, only valid on top part of footer. */
+  /** Title text for the link group, only valid on top part of Footer. */
   @Prop() titleText: string;
 
   /** In mobile, this indicates when the group (if it's in the top part) is opened/closed. */
   @State() open: boolean = false;
 
-  /** If the group is placed in the main part of the footer it can have either left or right as a slot position otherwise undefined. */
+  /** If the group is placed in the main part of the Footer it can have either left or right as a slot position otherwise undefined. */
   private slotPostion: 'left' | 'right' = null;
 
-  /** Indicates the if group is part of the top part of the footer. */
+  /** Indicates the if group is part of the top part of the Footer. */
   private topPartGroup: boolean = false;
 
   connectedCallback() {

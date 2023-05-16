@@ -22,7 +22,7 @@ export default {
   argTypes: {
     inputType: {
       name: 'Type',
-      description: 'Sets the chip type.',
+      description: 'Sets the Chip type.',
       control: {
         type: 'radio',
       },
@@ -33,7 +33,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Sets the chip size.',
+      description: 'Sets the Chip size.',
       control: {
         type: 'radio',
       },
