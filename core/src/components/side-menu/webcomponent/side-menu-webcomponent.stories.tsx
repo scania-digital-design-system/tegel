@@ -41,7 +41,7 @@ export default {
     persistent: {
       name: 'Persistent',
       description:
-        'Set the Side Menu to always show. This should be used if there are more navigation items to show than can always fit in the header, more than three header items is a good rule of thumb.',
+        'Set the Side Menu to always show. This should be used if there are more navigation items to show than can always fit in the Header, more than three Header items is a good rule of thumb.',
       control: {
         type: 'boolean',
       },
@@ -92,7 +92,7 @@ const Template = ({ persistent, collapsible }) =>
     ${
       persistent
         ? `
-        /* the lg breakpoint is used here to match the breakpoint used in the header */
+        /* the lg breakpoint is used here to match the breakpoint used in the Header */
     @media (min-width: 992px) {
       #demo-side-menu {
         /* We suggest you attach the persistent Side Menu to your layout like this: */
@@ -104,7 +104,7 @@ const Template = ({ persistent, collapsible }) =>
     }`
         : ''
     }
-    /* If an extra button in the header is required except on */
+    /* If an extra button in the Header is required except on */
     /* very narrow screens, you can use classes like these: */
     .demo-hide {
       display: none;
@@ -193,7 +193,7 @@ const Template = ({ persistent, collapsible }) =>
       </sdds-side-menu>
 
       <main class="sdds-u-h-100 sdds-u-p3" style="box-sizing: border-box;">
-        <p>If there are more than a few buttons and/or links in the header, they might not fit on medium size screens. 
+        <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.</p>
 
         <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
