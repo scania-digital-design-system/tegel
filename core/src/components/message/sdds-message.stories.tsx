@@ -46,21 +46,21 @@ export default {
     },
     header: {
       name: 'Header',
-      description: 'Sets the header for the message.',
+      description: 'Sets the header for the Message.',
       control: {
         type: 'text',
       },
     },
     extendedMessage: {
-      name: 'Extended message content',
-      description: 'Sets the content of an extended message.',
+      name: 'Extended Message content',
+      description: 'Sets the content of an extended Message.',
       control: {
         type: 'text',
       },
     },
     minimal: {
       name: 'Minimal',
-      description: 'Applies minimal message styling.',
+      description: 'Applies minimal Message styling.',
       control: {
         type: 'boolean',
       },
@@ -84,7 +84,7 @@ export default {
     messageType: 'Information',
     header: 'Message header',
     extendedMessage:
-      'Longer message text can be placed here. Longer message text can be placed here.',
+      'Longer Message text can be placed here. Longer Message text can be placed here.',
     minimal: false,
     noIcon: false,
   },
