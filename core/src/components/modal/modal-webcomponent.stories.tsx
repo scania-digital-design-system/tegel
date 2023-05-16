@@ -85,7 +85,7 @@ const sizeLookUp = {
 const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
   formatHtmlPreview(
     `
-  <sdds-button id="my-modal-button" text="Open modal"></sdds-button>
+  <sdds-button id="my-modal-button" text="Open Modal"></sdds-button>
   <sdds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
       sizeLookUp[size]
     }" actions="${actions.toLowerCase()}">
