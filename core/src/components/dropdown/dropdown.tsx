@@ -20,7 +20,7 @@ import {
 export class Dropdown {
   textInput?: HTMLInputElement;
 
-  /** Set the variant of the dropdown. */
+  /** Set the variant of the Dropdown. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Placeholder text for Dropdown with no selectedLabel item */
@@ -35,10 +35,10 @@ export class Dropdown {
   /** Set to true for disabled states */
   @Prop() disabled: boolean = false;
 
-  /** `Controls type of dropdown. */
+  /** `Controls type of Dropdown. */
   @Prop() type: 'default' | 'multiselect' | 'filter' = 'default';
 
-  /** Controls the size of dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
+  /** Controls the size of Dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
   @Prop() size: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large' = 'lg';
 
   /** Set to true to make the width following the label text length */

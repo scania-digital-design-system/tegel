@@ -16,7 +16,7 @@ export class DropdownFilter {
 
   @State() dropdownRef?: HTMLSddsDropdownElement;
 
-  /** Set the variant of the dropdown. */
+  /** Set the variant of the Dropdown. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Placeholder text for Dropdown with no selected item */
@@ -37,7 +37,7 @@ export class DropdownFilter {
   /** Add the value of the option to set it as default */
   @Prop() disabled: boolean = false;
 
-  /** Controls the size of dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
+  /** Controls the size of Dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
   @Prop() size: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large' = 'lg';
 
   /** Set to true to make the width following the label text length */
@@ -130,7 +130,7 @@ export class DropdownFilter {
     );
   }
 
-  /** Use this method to reset the dropdown. Then it will go back to its initial state. */
+  /** Use this method to reset the Dropdown. Then it will go back to its initial state. */
   @Method() async resetOption() {
     await this.dropdownRef?.resetOption();
   }

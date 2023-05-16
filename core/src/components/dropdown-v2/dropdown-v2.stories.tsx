@@ -44,7 +44,7 @@ export default {
     },
     filter: {
       name: 'Filter',
-      description: 'Adds filter functionality to the dropdown.',
+      description: 'Adds filter functionality to the Dropdown.',
       control: {
         type: 'boolean',
       },
@@ -54,7 +54,7 @@ export default {
     },
     multiselect: {
       name: 'Multiselect',
-      description: 'Adds multiselect functionality to the dropdown.',
+      description: 'Adds multiselect functionality to the Dropdown.',
       control: {
         type: 'boolean',
       },
@@ -64,7 +64,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Size of the dropdown',
+      description: 'Size of the Dropdown.',
       control: {
         type: 'radio',
       },
@@ -107,13 +107,13 @@ export default {
     },
     helperText: {
       name: 'Helper text',
-      description: 'Helper text assists the user with additional information about the dropdown',
+      description: 'Helper text assists the user with additional information about the Dropdown.',
       control: 'text',
     },
     optionType: {
       name: 'Option type',
       description:
-        'Render the options either via the options prop, or passing them as children to the dropdown.',
+        'Render the options either via the options prop, or passing them as children to the Dropdown.',
       control: 'radio',
       options: ['Children', 'Property'],
     },
