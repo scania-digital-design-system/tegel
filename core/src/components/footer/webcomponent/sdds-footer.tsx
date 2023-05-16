@@ -12,7 +12,7 @@ export class SddsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Indictes whether or not the footer has a top part. */
+  /** Indictes whether or not the Footer has a top part. */
   @State() hasTopPart: boolean;
 
   connectedCallback() {
