@@ -12,13 +12,13 @@ export class SddsMessage {
   /** Variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Type of message. */
+  /** Type of Message. */
   @Prop() type: 'information' | 'error' | 'warning' | 'success' = 'information';
 
-  /** Removes the icon in the message. */
+  /** Removes the icon in the Message. */
   @Prop() noIcon: boolean = false;
 
-  /** Minimal message styling. */
+  /** Minimal Message styling. */
   @Prop() minimal: boolean = false;
 
   getIconName = () => {
@@ -43,7 +43,7 @@ export class SddsMessage {
           class={`
         message-wrapper ${this.type}
         ${this.minimal ? 'message-minimal' : ''}
-        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}`: ''}`}
+        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}`}
         >
           {!this.noIcon && <sdds-icon name={this.getIconName()} size="20px"></sdds-icon>}
           <div class={`message-content`}>
