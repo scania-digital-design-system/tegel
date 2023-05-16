@@ -7,13 +7,13 @@ import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core';
   scoped: true,
 })
 export class SddsChip {
-  /** Type of chip, depends on usage */
+  /** Type of Chip, depends on usage */
   @Prop() type: 'button' | 'radio' | 'checkbox' = 'button';
 
-  /** Size of the chip component */
+  /** Size of the Chip component */
   @Prop() size: 'sm' | 'lg' = 'lg';
 
-  /** ID used for internal chip functionality and events, must be unique.
+  /** ID used for internal Chip functionality and events, must be unique.
    *
    * **NOTE**: If you're listening for input events you need to set this ID yourself to identify the input, as the default ID is random and will be different every time.
    */
@@ -28,7 +28,7 @@ export class SddsChip {
   /** Value of input. Valid only for type checkbox and radio. */
   @Prop() value: string;
 
-  /** Sends unique chip identifier and value when it is changed (checked/unchecked). Valid only for type checkbox and radio. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
+  /** Sends unique Chip identifier and value when it is changed (checked/unchecked). Valid only for type checkbox and radio. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
   @Event({
     eventName: 'sddsChange',
     composed: true,
@@ -47,7 +47,7 @@ export class SddsChip {
     });
   };
 
-  /** Sends unique chip identifier when chip is clicked. Valid only for type button. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
+  /** Sends unique Chip identifier when Chip is clicked. Valid only for type button. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
   @Event({
     eventName: 'sddsClick',
     composed: true,
