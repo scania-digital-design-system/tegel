@@ -37,7 +37,7 @@ export default {
     },
     topPart: {
       name: 'Top part',
-      description: 'Adds the top part of the footer with more links.',
+      description: 'Adds the top part of the Footer with more links.',
       control: {
         type: 'boolean',
       },
@@ -55,7 +55,7 @@ const Template = ({ topPart, modeVariant }) =>
     <main>
       <div class="sdds-u-p3 ">
         <div class="sdds-body-01">
-          Resize the window to see how the footer behaves on smaller/bigger screens.
+          Resize the window to see how the Footer behaves on smaller/bigger screens.
         </div>
       </div>
     </main>

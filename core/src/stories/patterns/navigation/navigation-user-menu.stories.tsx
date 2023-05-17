@@ -1,42 +1,42 @@
-import { formatHtmlPreview } from "../../../utils/utils";
-import readme from "./readme.md";
+import { formatHtmlPreview } from '../../../utils/utils';
+import readme from './readme.md';
 
 export default {
-  title: "Patterns/Navigation",
+  title: 'Patterns/Navigation',
   parameters: {
     notes: {
       Readme: readme,
     },
-    layout: "fullscreen",
+    layout: 'fullscreen',
     docs: {
       source: {
-        state: "closed",
+        state: 'closed',
       },
     },
     design: [
       {
-        name: "Figma",
-        type: "figma",
-        url: "https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1",
+        name: 'Figma',
+        type: 'figma',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
       },
       {
-        name: "Link",
-        type: "link",
-        url: "https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1",
+        name: 'Link',
+        type: 'link',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
       },
     ],
   },
   argTypes: {
     siteName: {
-      name: "Site name",
-      description: "Set a custom title for the header",
+      name: 'Site name',
+      description: 'Set a custom title for the Header.',
       control: {
-        type: "text",
+        type: 'text',
       },
     },
   },
   args: {
-    siteName: "Application",
+    siteName: 'Application',
   },
 };
 
@@ -49,7 +49,7 @@ const Template = () =>
       window.demoHamburger = document.querySelector('#demo-hamburger');
     </script>
     <style>
-      /* If an extra button in the header is required except on 
+      /* If an extra button in the Header is required except on 
       very narrow screens, you can use classes like these: */
       .demo-hide {
         display: none;
@@ -139,7 +139,7 @@ const Template = () =>
         <p><i>Tip: Resize the window to see the user menu move in to a side menu drawer.</i></p>
       </main>
     </div>
-  `
+  `,
   );
 
 export const UserMenu = Template.bind({});

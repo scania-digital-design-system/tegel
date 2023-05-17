@@ -1,4 +1,4 @@
-# radio-button
+# sdds-radio-button
 
 
 
@@ -9,11 +9,11 @@
 
 | Property   | Attribute  | Description                                     | Type      | Default               |
 | ---------- | ---------- | ----------------------------------------------- | --------- | --------------------- |
-| `checked`  | `checked`  | Decides if the radio button is checked or not.  | `boolean` | `false`               |
-| `disabled` | `disabled` | Decides if the radio button is disabled or not. | `boolean` | `false`               |
-| `name`     | `name`     | Name of radio button, used for reference.       | `string`  | `undefined`           |
-| `radioId`  | `radio-id` | Unique radio button identifier.                 | `string`  | `crypto.randomUUID()` |
-| `required` | `required` | Decides if the radio button is required or not. | `boolean` | `false`               |
+| `checked`  | `checked`  | Decides if the Radio Button is checked or not.  | `boolean` | `false`               |
+| `disabled` | `disabled` | Decides if the Radio Button is disabled or not. | `boolean` | `false`               |
+| `name`     | `name`     | Name of Radio Button, used for reference.       | `string`  | `undefined`           |
+| `radioId`  | `radio-id` | Unique Radio Button identifier.                 | `string`  | `crypto.randomUUID()` |
+| `required` | `required` | Decides if the Radio Button is required or not. | `boolean` | `false`               |
 | `value`    | `value`    | Value of input.                                 | `string`  | `undefined`           |
 
 
@@ -21,7 +21,7 @@
 
 | Event        | Description                                                                                                                                                                                                      | Type                                               |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `sddsChange` | Sends unique radio button identifier and status when it is checked. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. | `CustomEvent<{ radioId: string; value: string; }>` |
+| `sddsChange` | Sends unique Radio Button identifier and status when it is checked. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. | `CustomEvent<{ radioId: string; value: string; }>` |
 
 
 ----------------------------------------------

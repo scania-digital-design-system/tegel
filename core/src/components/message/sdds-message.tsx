@@ -12,13 +12,13 @@ export class SddsMessage {
   /** Variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Type of message. */
+  /** Type of Message. */
   @Prop() type: 'information' | 'error' | 'warning' | 'success' = 'information';
 
-  /** Removes the icon in the message. */
+  /** Removes the icon in the Message. */
   @Prop() noIcon: boolean = false;
 
-  /** Minimal message styling. */
+  /** Minimal Message styling. */
   @Prop() minimal: boolean = false;
 
   getIconName = () => {

@@ -18,41 +18,41 @@ import {
 export class Modal {
   @Element() host: HTMLElement;
 
-  /** Disables closing modal on clicking on overlay area. */
+  /** Disables closing Modal on clicking on overlay area. */
   @Prop() prevent: boolean = false;
 
-  /** Size of modal  */
+  /** Size of Modal  */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
 
   /** Sticky or Static Actions  */
   @Prop() actions: 'sticky' | 'static' = 'static';
 
-  /** CSS selector for the element that will show the modal. */
+  /** CSS selector for the element that will show the Modal. */
   @Prop() selector: string;
 
-  /** Element that will show the modal (takes priority over selector) */
+  /** Element that will show the Modal (takes priority over selector) */
   @Prop() referenceEl: HTMLElement;
 
-  /** Controls whether the modal is shown or not. If this is set hiding and showing
+  /** Controls whether the Modal is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. */
   @Prop() show: boolean;
 
-  // State that keeps track of show/closed state for the modal.
+  // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
 
-  /** Shows the modal.  */
+  /** Shows the Modal.  */
   @Method()
   async showModal() {
     this.handleShow();
   }
 
-  /** Closes the modal. */
+  /** Closes the Modal. */
   @Method()
   async closeModal() {
     this.handleClose();
   }
 
-  /** Emitts when the modal is closed. */
+  /** Emitts when the Modal is closed. */
   @Event({
     eventName: 'sddsClose',
     composed: true,
@@ -69,7 +69,7 @@ export class Modal {
     this.setShowButton();
   }
 
-  /** Emits a close event and then close the modal if it is not prevented. */
+  /** Emits a close event and then close the Modal if it is not prevented. */
   handleClose = (event?) => {
     const closeEvent = this.sddsClose.emit(event);
     if (!closeEvent.defaultPrevented) {
@@ -81,7 +81,7 @@ export class Modal {
     this.isShown = true;
   };
 
-  /** Checks if click on modal is on overlay, if so it closes the modal if prevent is not true. */
+  /** Checks if click on Modal is on overlay, if so it closes the Modal if prevent is not true. */
   handleOverlayClick(event) {
     const targetList = event.composedPath();
     const target = targetList[0];
@@ -93,7 +93,7 @@ export class Modal {
     }
   }
 
-  /** Adds an event listener to the reference element that shows/closes the modal. */
+  /** Adds an event listener to the reference element that shows/closes the Modal. */
   initializeReferenceElement = (referenceEl) => {
     if (referenceEl) {
       referenceEl.addEventListener('click', (event) => {
@@ -116,7 +116,7 @@ export class Modal {
     }
   };
 
-  /** Adds an event listener to the dismiss buttons that closes the modal. */
+  /** Adds an event listener to the dismiss buttons that closes the Modal. */
   setDissmissButtons() {
     this.host.querySelectorAll('[data-dismiss-modal]').forEach((dismissButton) => {
       dismissButton.addEventListener('click', (event) => {

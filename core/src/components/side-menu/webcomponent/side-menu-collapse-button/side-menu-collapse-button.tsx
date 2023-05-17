@@ -14,7 +14,7 @@ export class SideMenuCollapseButton {
   private sideMenuEl: HTMLSddsSideMenuElement;
 
   /** Event that is broadcasted when the collapse button is clicked.
-   * Prevent it to disable automatic collapsing, and set the collapsed prop on the side menu yourself. */
+   * Prevent it to disable automatic collapsing, and set the collapsed prop on the Side Menu yourself. */
   @Event({
     eventName: 'sddsCollapse',
     bubbles: false,

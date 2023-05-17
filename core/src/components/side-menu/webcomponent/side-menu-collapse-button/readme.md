@@ -1,6 +1,6 @@
 # sdds-side-menu-collapse-button
 
-The side menu collapse button is a button that can be used to collapse the side menu when the side-menu is in the `persistent` mode.
+The Side Menu collapse button is a button that can be used to collapse the Side Menu when the side-menu is in the `persistent` mode.
 
 Example:
 
@@ -15,7 +15,7 @@ Example:
 
 | Event          | Description                                                                                                                                                      | Type                                   |
 | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `sddsCollapse` | Event that is broadcasted when the collapse button is clicked. Prevent it to disable automatic collapsing, and set the collapsed prop on the side menu yourself. | `CustomEvent<{ collapsed: boolean; }>` |
+| `sddsCollapse` | Event that is broadcasted when the collapse button is clicked. Prevent it to disable automatic collapsing, and set the collapsed prop on the Side Menu yourself. | `CustomEvent<{ collapsed: boolean; }>` |
 
 
 ## Dependencies

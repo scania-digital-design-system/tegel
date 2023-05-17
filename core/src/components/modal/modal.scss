@@ -201,7 +201,7 @@ $modals: (
   }
 }
 
-//Width of modals in different breakpoints
+//Width of Modals in different breakpoints
 @each $screen, $modals in $modals {
   @media (min-width: $screen) {
     @each $modal, $value in $modals {

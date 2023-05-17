@@ -23,7 +23,7 @@ export default {
   argTypes: {
     variant: {
       name: 'Variant',
-      description: 'Switches the variant of the spinner.',
+      description: 'Switches the variant of the Spinner.',
       control: {
         type: 'radio',
       },
@@ -34,7 +34,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Sets the size of the spinner.',
+      description: 'Sets the size of the Spinner.',
       control: {
         type: 'radio',
       },

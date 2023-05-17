@@ -23,7 +23,7 @@ export default {
   argTypes: {
     orientation: {
       name: 'Orientation',
-      description: 'Choose divider orientation.',
+      description: 'Choose Divider orientation.',
       control: {
         type: 'radio',
         options: ['Horizontal', 'Vertical'],
@@ -34,7 +34,7 @@ export default {
     },
     width: {
       name: 'Width',
-      description: 'Sets the divider width.',
+      description: 'Sets the Divider width.',
       control: {
         type: 'number',
       },
@@ -42,7 +42,7 @@ export default {
     },
     height: {
       name: 'Height',
-      description: 'Sets the divider height.',
+      description: 'Sets the Divider height.',
       control: {
         type: 'number',
       },
