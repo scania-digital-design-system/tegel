@@ -34,7 +34,7 @@ export default {
     },
     error: {
       name: 'Error',
-      description: 'Sets the dropdown in an error state.',
+      description: 'Sets the Dropdown in an error state.',
       control: {
         type: 'boolean',
       },
@@ -44,7 +44,7 @@ export default {
     },
     filter: {
       name: 'Filter',
-      description: 'Adds filter functionality to the dropdown.',
+      description: 'Adds filter functionality to the Dropdown.',
       control: {
         type: 'boolean',
       },
@@ -54,7 +54,7 @@ export default {
     },
     multiselect: {
       name: 'Multiselect',
-      description: 'Adds multiselect functionality to the dropdown.',
+      description: 'Adds multiselect functionality to the Dropdown.',
       control: {
         type: 'boolean',
       },
@@ -64,7 +64,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Size of the dropdown',
+      description: 'Size of the Dropdown.',
       control: {
         type: 'radio',
       },
@@ -92,7 +92,7 @@ export default {
     labelText: {
       name: 'Label text',
       control: 'text',
-      description: 'Label text helps to describe what the dropdown contains',
+      description: 'Label text helps to describe what the Dropdown contains',
       if: { arg: 'labelPosition', neq: 'None' },
     },
     disabled: {
@@ -107,13 +107,13 @@ export default {
     },
     helperText: {
       name: 'Helper text',
-      description: 'Helper text assists the user with additional information about the dropdown',
+      description: 'Helper text assists the user with additional information about the Dropdown.',
       control: 'text',
     },
     optionType: {
       name: 'Option type',
       description:
-        'Render the options either via the options prop, or passing them as children to the dropdown.',
+        'Render the options either via the options prop, or passing them as children to the Dropdown.',
       control: 'radio',
       options: ['Children', 'Property'],
     },
@@ -137,7 +137,7 @@ export default {
     },
     openDirection: {
       name: 'Open direction',
-      description: 'The direction the dropdown will open.',
+      description: 'The direction the Dropdown will open.',
       control: {
         type: 'radio',
       },

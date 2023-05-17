@@ -18,13 +18,13 @@ export class SddsDropdownV2 {
   /** Name for the dropdowns input element. */
   @Prop() name: string;
 
-  /** Sets the dropdown in a disabled state */
+  /** Sets the Dropdown in a disabled state */
   @Prop() disabled: boolean = false;
 
-  /** Helper text for the dropdown. */
+  /** Helper text for the Dropdown. */
   @Prop() helper: string;
 
-  /** Label text for the dropdown. */
+  /** Label text for the Dropdown. */
   @Prop() label: string;
 
   /** Label text position */
@@ -33,31 +33,31 @@ export class SddsDropdownV2 {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** The direction the dropdown should open, auto if not specified. */
+  /** The direction the Dropdown should open, auto if not specified. */
   @Prop() openDirection: 'up' | 'down' | 'auto' = 'auto';
 
-  /** Placeholder text for the dropdown. */
+  /** Placeholder text for the Dropdown. */
   @Prop() placeholder: string;
 
-  /** The size of the dropdown. */
+  /** The size of the Dropdown. */
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
 
-  /** Sets the dropdown in an error state */
+  /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;
 
-  /** Enables multiselect in the dropdown. */
+  /** Enables multiselect in the Dropdown. */
   @Prop() multiselect: boolean = false;
 
-  /** Enables filtration in the dropdown. */
+  /** Enables filtration in the Dropdown. */
   @Prop() filter: boolean = false;
 
   /** Text that is displayed if filter is used and there are no options that matches the search. */
   @Prop() noResultText: string = 'No result';
 
-  /** Default value selected in the dropdown. */
+  /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
 
-  /** Populate the dropdown via a JSON array */
+  /** Populate the Dropdown via a JSON array */
   @Prop() options: Array<{ value: string; label: string; disabled: boolean }>;
 
   @State() open: boolean = false;
@@ -74,7 +74,7 @@ export class SddsDropdownV2 {
 
   private children: Array<HTMLSddsDropdownOptionV2Element>;
 
-  /** Method that resets the dropdown. */
+  /** Method that resets the Dropdown. */
   @Method()
   async reset() {
     this.children.forEach((element) => element.setSelected(false));
@@ -82,7 +82,7 @@ export class SddsDropdownV2 {
     this.handleChange();
   }
 
-  /** Method for setting the value of the dropdown. */
+  /** Method for setting the value of the Dropdown. */
   @Method()
   async setValue(newValue: string, newValueLabel: string) {
     if (this.multiselect) {
@@ -102,7 +102,7 @@ export class SddsDropdownV2 {
     return this.selection;
   }
 
-  /** Method for removing a selected value in the dropdown. */
+  /** Method for removing a selected value in the Dropdown. */
   @Method()
   async removeValue(oldValue: string) {
     if (this.multiselect) {
@@ -119,13 +119,13 @@ export class SddsDropdownV2 {
     return this.selection;
   }
 
-  /** Method for closing the dropdown. */
+  /** Method for closing the Dropdown. */
   @Method()
   async close() {
     this.open = false;
   }
 
-  /** Change event for the dropdown. */
+  /** Change event for the Dropdown. */
   @Event({
     eventName: 'sddsChange',
     composed: true,
@@ -137,7 +137,7 @@ export class SddsDropdownV2 {
     value: string;
   }>;
 
-  /** Focus event for the dropdown. */
+  /** Focus event for the Dropdown. */
   @Event({
     eventName: 'sddsFocus',
     composed: true,
@@ -146,7 +146,7 @@ export class SddsDropdownV2 {
   })
   sddsFocus: EventEmitter<FocusEvent>;
 
-  /** Blur event for the dropdown. */
+  /** Blur event for the Dropdown. */
   @Event({
     eventName: 'sddsBlur',
     composed: true,
@@ -155,7 +155,7 @@ export class SddsDropdownV2 {
   })
   sddsBlur: EventEmitter<FocusEvent>;
 
-  /** Input event for the dropdown. */
+  /** Input event for the Dropdown. */
   @Event({
     eventName: 'sddsInput',
     composed: true,
@@ -185,7 +185,7 @@ export class SddsDropdownV2 {
 
     if (event.key === 'ArrowDown') {
       /* Get the index of the currently focus index, if there is no 
-      nextElementSibling return the index for the first child in our dropdown.  */
+      nextElementSibling return the index for the first child in our Dropdown.  */
 
       const startingIndex = activeElement.nextElementSibling
         ? this.children.findIndex((element) => element === activeElement.nextElementSibling)
@@ -195,7 +195,7 @@ export class SddsDropdownV2 {
       this.children[elementIndex].focus();
     } else if (event.key === 'ArrowUp') {
       /* Get the index of the currently focus index, if there is no 
-      previousElementSibling return the index for the first last in our dropdown.  */
+      previousElementSibling return the index for the first last in our Dropdown.  */
       const startingIndex = activeElement.nextElementSibling
         ? this.children.findIndex((element) => element === activeElement.previousElementSibling)
         : 0;
@@ -207,7 +207,7 @@ export class SddsDropdownV2 {
     }
   }
 
-  // If the dropdown gets closed this sets the value of the drodpown to the current selection labels or null if no selection is made.
+  // If the Dropdown gets closed this sets the value of the drodpown to the current selection labels or null if no selection is made.
   @Watch('open')
   handleOpenState() {
     if (this.filter && this.multiselect) {
