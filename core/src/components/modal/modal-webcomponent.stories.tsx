@@ -23,7 +23,7 @@ export default {
   argTypes: {
     actions: {
       name: 'Actions',
-      description: 'Defines the behaviour of modal.',
+      description: 'Defines the behaviour of Modal.',
       control: {
         type: 'radio',
       },
@@ -34,7 +34,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Sets the size of modal.',
+      description: 'Sets the size of Modal.',
       control: {
         type: 'radio',
       },
@@ -45,21 +45,21 @@ export default {
     },
     headline: {
       name: 'Modal headline',
-      description: 'Sets the headline of the modal.',
+      description: 'Sets the headline of the Modal.',
       control: {
         type: 'text',
       },
     },
     bodyText: {
       name: 'Modal body text',
-      description: 'Sets the body text of the modal.',
+      description: 'Sets the body text of the Modal.',
       control: {
         type: 'text',
       },
     },
     showModal: {
-      name: 'Show modal',
-      description: 'Toggles if the modal is displayed.',
+      name: 'Show Modal',
+      description: 'Toggles if the Modal is displayed.',
       control: {
         type: 'boolean',
       },
@@ -68,7 +68,7 @@ export default {
   args: {
     actions: 'Static',
     size: 'Large',
-    headline: 'The buttons for the modal only works in the canvas tab',
+    headline: 'The buttons for the Modal only works in the canvas tab',
     bodyText:
       'The steps fell lightly and oddly, with a certain swing, for all they went so slowly; it was different indeed from the heavy creaking tread of Henry Jekyll. Utterson sighed. “Is there never anything else?” he asked.',
     showModal: true,
@@ -85,7 +85,7 @@ const sizeLookUp = {
 const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
   formatHtmlPreview(
     `
-  <sdds-button id="my-modal-button" text="Open modal"></sdds-button>
+  <sdds-button id="my-modal-button" text="Open Modal"></sdds-button>
   <sdds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
       sizeLookUp[size]
     }" actions="${actions.toLowerCase()}">
