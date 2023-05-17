@@ -37,7 +37,7 @@ export default {
     },
     dropdownType: {
       name: 'Dropdown Type',
-      description: 'Sets the type of the dropdown.',
+      description: 'Sets the type of the Dropdown.',
       control: {
         type: 'radio',
       },
@@ -58,7 +58,7 @@ export default {
     },
     size: {
       name: 'Size',
-      description: 'Sets the size of the dropdown.',
+      description: 'Sets the size of the Dropdown.',
       control: {
         type: 'radio',
       },
@@ -69,7 +69,7 @@ export default {
     },
     openDirection: {
       name: 'Open direction',
-      description: 'Sets which direction the dropdown will open in.',
+      description: 'Sets which direction the Dropdown will open in.',
       control: {
         type: 'radio',
       },
@@ -91,7 +91,7 @@ export default {
     },
     labelText: {
       name: 'Label text',
-      description: 'Sets a label text to help describe what the dropdown contains.',
+      description: 'Sets a label text to help describe what the Dropdown contains.',
       control: {
         type: 'text',
       },
@@ -107,7 +107,7 @@ export default {
     helper: {
       name: 'Helper text',
       description:
-        'Sets a helper text to assist the user with additional information about the dropdown.',
+        'Sets a helper text to assist the user with additional information about the Dropdown.',
       control: {
         type: 'text',
       },
@@ -132,7 +132,7 @@ export default {
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the dropdown.',
+      description: 'Disables the Dropdown.',
       control: {
         type: 'boolean',
       },
