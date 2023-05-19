@@ -10,16 +10,16 @@
 | Property   | Attribute  | Description                    | Type      | Default     |
 | ---------- | ---------- | ------------------------------ | --------- | ----------- |
 | `disabled` | `disabled` | Sets the option as disabled.   | `boolean` | `false`     |
-| `value`    | `value`    | Value for the dropdown option. | `string`  | `undefined` |
+| `value`    | `value`    | Value for the Dropdown option. | `string`  | `undefined` |
 
 
 ## Events
 
 | Event        | Description                          | Type                                                 |
 | ------------ | ------------------------------------ | ---------------------------------------------------- |
-| `sddsBlur`   | Blur event for the dropdown option.  | `CustomEvent<FocusEvent>`                            |
-| `sddsFocus`  | Focus event for the dropdown option. | `CustomEvent<FocusEvent>`                            |
-| `sddsSelect` | Click event for the dropdown option. | `CustomEvent<{ selected: boolean; value: string; }>` |
+| `sddsBlur`   | Blur event for the Dropdown option.  | `CustomEvent<FocusEvent>`                            |
+| `sddsFocus`  | Focus event for the Dropdown option. | `CustomEvent<FocusEvent>`                            |
+| `sddsSelect` | Click event for the Dropdown option. | `CustomEvent<{ selected: boolean; value: string; }>` |
 
 
 ## Methods

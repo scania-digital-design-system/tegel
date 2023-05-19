@@ -9,7 +9,7 @@
 
 | Property    | Attribute    | Description                                                      | Type     | Default     |
 | ----------- | ------------ | ---------------------------------------------------------------- | -------- | ----------- |
-| `titleText` | `title-text` | Title text for the link group, only valid on top part of footer. | `string` | `undefined` |
+| `titleText` | `title-text` | Title text for the link group, only valid on top part of Footer. | `string` | `undefined` |
 
 
 ## Dependencies
