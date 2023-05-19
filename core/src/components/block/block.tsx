@@ -1,22 +1,22 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-block',
+  tag: 'tds-block',
   styleUrl: 'block.scss',
   shadow: true,
 })
-export class SddsBlock {
+export class TdsBlock {
   @Element() host: HTMLElement;
 
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  children: Array<HTMLSddsBlockElement>;
+  children: Array<HTMLTdsBlockElement>;
 
   connectedCallback() {
     this.children = Array.from(this.host.children).filter(
-      (item) => item.tagName === 'SDDS-BLOCK',
-    ) as HTMLSddsBlockElement[];
+      (item) => item.tagName === 'TDS-BLOCK',
+    ) as HTMLTdsBlockElement[];
     this.children.forEach((item) => {
       if (!this.modeVariant) {
         item.setAttribute('mode-variant', 'secondary');
@@ -29,8 +29,8 @@ export class SddsBlock {
   render() {
     return (
       <div
-        class={`sdds-block-webcomponent ${
-          this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''
+        class={`tds-block ${
+          this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
         }`}
       >
         <slot></slot>
