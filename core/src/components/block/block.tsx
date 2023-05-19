@@ -2,7 +2,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
 
 @Component({
   tag: 'sdds-block',
-  styleUrl: 'sdds-block.scss',
+  styleUrl: 'block.scss',
   shadow: true,
 })
 export class SddsBlock {
