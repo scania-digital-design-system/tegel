@@ -25,7 +25,6 @@
 graph TD;
   sdds-table-body --> sdds-table-body-row
   sdds-table-body --> sdds-body-cell
-  sdds-table-body-row --> sdds-checkbox
   style sdds-table-body fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

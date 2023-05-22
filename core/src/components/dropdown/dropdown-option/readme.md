@@ -20,14 +20,9 @@
 
  - [sdds-dropdown-filter](../dropdown-filter)
 
-### Depends on
-
-- [sdds-checkbox](../../checkbox)
-
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-option --> sdds-checkbox
   sdds-dropdown-filter --> sdds-dropdown-option
   style sdds-dropdown-option fill:#f9f,stroke:#333,stroke-width:4px
 ```
