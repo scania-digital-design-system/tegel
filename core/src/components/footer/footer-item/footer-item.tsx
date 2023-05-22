@@ -1,16 +1,17 @@
 import { Component, Element, h } from '@stencil/core';
+
 @Component({
-  tag: 'sdds-footer-item',
-  styleUrl: 'sdds-footer-item.scss',
+  tag: 'tds-footer-item',
+  styleUrl: 'footer-item.scss',
   shadow: true,
 })
-export class SddsFooterItem {
+export class TdsFooterItem {
   @Element() host: HTMLElement;
 
   private parentIsTopPart: boolean = false;
 
   connectedCallback() {
-    this.parentIsTopPart = this.host.closest('sdds-footer-group').parentElement.slot === 'top';
+    this.parentIsTopPart = this.host.closest('tds-footer-group').parentElement.slot === 'top';
   }
 
   render() {
