@@ -1,11 +1,11 @@
 import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-card',
-  styleUrl: 'sdds-card.scss',
+  tag: 'tds-card',
+  styleUrl: 'card.scss',
   shadow: true,
 })
-export class SddsCard {
+export class Card {
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
@@ -38,22 +38,23 @@ export class SddsCard {
 
   /** ID for the Card, must be unique.
    *
-   * **NOTE**: If you're listening for Card events you need to set this ID yourself to identify the Card, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for Card events, you need to set this ID yourself to identify the Card,
+   * as the default ID is random and will be different every time.
    */
   @Prop() cardId: string = crypto.randomUUID();
 
   /** Sends unique Card identifier when the Card is clicked, if clickable=true */
   @Event({
-    eventName: 'sddsClick',
+    eventName: 'tdsClick',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsClick: EventEmitter<{
+  tdsClick: EventEmitter<{
     cardId: string;
   }>;
 
-  @Element() hostElement: HTMLSddsCardElement;
+  @Element() hostElement: HTMLTdsCardElement;
 
   @State() hasCardBottomSlot: boolean = false;
 
@@ -65,7 +66,7 @@ export class SddsCard {
   }
 
   handleClick = () => {
-    this.sddsClick.emit({
+    this.tdsClick.emit({
       cardId: this.cardId,
     });
   };
@@ -108,7 +109,7 @@ export class SddsCard {
             </div>
           </div>
         )}
-        {this.bodyDivider && <div class={`sdds-divider`}></div>}
+        {this.bodyDivider && <div class={`tds-divider`}></div>}
         <slot name="card-body"></slot>
       </div>
       <div class={`card-bottom`}>
@@ -119,7 +120,7 @@ export class SddsCard {
 
   render() {
     return (
-      <Host class={this.modeVariant && `sdds-mode-variant-${this.modeVariant}`}>
+      <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (
           <button
             class={`card ${this.clickable ? 'clickable' : ''} ${this.headerPlacement}`}

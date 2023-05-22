@@ -145,7 +145,7 @@ const Template = ({
     }
     </style>
     <div class="demo-wrapper">
-    <sdds-card
+    <tds-card
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     ${header ? `header="${header}"` : ''}
     header-placement="${headerPlacement.toLowerCase()}"
@@ -164,13 +164,13 @@ const Template = ({
       : ''
   }
     ${cardBottom ? `${cardBottom}` : ''}
-    </sdds-card>
+    </tds-card>
     </div>
     ${
       clickable
         ? `
     <script>
-        document.addEventListener('sddsClick', (event)=>{
+        document.addEventListener('tdsClick', (event)=>{
             console.log('Card with id: ', event.detail.cardId, ' was clicked.')
         })
     </script>
