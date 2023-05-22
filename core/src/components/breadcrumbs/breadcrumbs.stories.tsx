@@ -1,4 +1,4 @@
-import itemReadme from './sdds-breadcrumb-item/readme.md';
+import itemReadme from './breadcrumb/readme.md';
 import readme from './readme.md';
 import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
@@ -6,7 +6,7 @@ import { ComponentsFolder } from '../../utils/constants';
 export default {
   title: ComponentsFolder,
   parameters: {
-    notes: { 'Breadcumb': readme, 'Breadcumb Item': itemReadme },
+    notes: { Breadcrumbs: readme, Breadcrumb: itemReadme },
     design: [
       {
         name: 'Figma',
@@ -25,18 +25,18 @@ export default {
 const Template = () =>
   formatHtmlPreview(
     `   
-      <sdds-breadcrumb>
-        <sdds-breadcrumb-item>
+      <tds-breadcrumbs>
+        <tds-breadcrumb>
           <a href="#">Page 1</a>
-        </sdds-breadcrumb-item>
-        <sdds-breadcrumb-item>
+        </tds-breadcrumb>
+        <tds-breadcrumb>
           <a href="#">Page 2</a>
-        </sdds-breadcrumb-item>
-        <sdds-breadcrumb-item current>
+        </tds-breadcrumb>
+        <tds-breadcrumb current>
           <a href="#">Page 3</a>
-        </sdds-breadcrumb-item>
-      </sdds-breadcrumb>
+        </tds-breadcrumb>
+      </tds-breadcrumbs>
       `,
   );
 
-export const Breadcumb = Template.bind({});
+export const Breadcrumbs = Template.bind({});
