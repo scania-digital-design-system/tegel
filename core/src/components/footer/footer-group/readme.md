@@ -1,4 +1,4 @@
-# sdds-footer-group
+# tds-footer-group
 
 
 
@@ -16,13 +16,13 @@
 
 ### Depends on
 
-- [tds-icon](../../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-footer-group --> tds-icon
-  style sdds-footer-group fill:#f9f,stroke:#333,stroke-width:4px
+  tds-footer-group --> tds-icon
+  style tds-footer-group fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
