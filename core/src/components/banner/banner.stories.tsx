@@ -89,7 +89,7 @@ export default {
 
 const Template = ({ type, icon, header, subheader, persistent, link }) =>
   formatHtmlPreview(`
-      <sdds-banner
+      <tds-banner
           ${type !== 'Default' ? `type="${type.toLowerCase()}"` : ''}
           ${icon !== 'none' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
@@ -97,14 +97,14 @@ const Template = ({ type, icon, header, subheader, persistent, link }) =>
           >
           ${subheader ? `${subheader}` : ''}
           ${link ? `${link}` : ''}
-      </sdds-banner>
+      </tds-banner>
 
       <!-- Script tag with eventlistener for demo purposes. -->
       <script>
-        document.addEventListener('sddsClose', (event) => {
+        document.addEventListener('tdsClose', (event) => {
           console.log(event)
         })
-        document.addEventListener('sddsShow', (event) => {
+        document.addEventListener('tdsShow', (event) => {
           console.log(event)
         })
       </script>
