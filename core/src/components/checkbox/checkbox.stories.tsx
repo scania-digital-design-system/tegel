@@ -58,24 +58,24 @@ export default {
 
 const Template = ({ label, checked, disabled }) =>
   formatHtmlPreview(`
-    <sdds-checkbox
+    <tds-checkbox
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
         value="checkbox-value"
         >
         <div slot="label">${label}</div>
-    </sdds-checkbox>
+    </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
     <script>
-        checkboxElement = document.querySelector('sdds-checkbox')
-        checkboxElement.addEventListener('sddsChange', (event) => {
+        checkboxElement = document.querySelector('tds-checkbox')
+        checkboxElement.addEventListener('tdsChange', (event) => {
             console.log('Checkbox with id: ', event.detail.checkboxId, ' is ', event.detail.checked)
         })
-        checkboxElement.addEventListener('sddsFocus',(event) => {
+        checkboxElement.addEventListener('tdsFocus',(event) => {
           console.log(event)
         })
-        checkboxElement.addEventListener('sddsBlur',(event) => {
+        checkboxElement.addEventListener('tdsBlur',(event) => {
           console.log(event)
         })
     </script>

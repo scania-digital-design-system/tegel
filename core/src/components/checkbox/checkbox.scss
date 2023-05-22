@@ -1,11 +1,11 @@
 @import '../../mixins/box-sizing';
 
-.sdds-checkbox-webcomponent {
+.tds-checkbox {
   @include tds-box-sizing;
 
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
-  color: var(--sdds-checkbox-text);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  color: var(--tds-checkbox-text);
   display: flex;
   align-items: center;
   margin-left: -4px;
@@ -24,10 +24,10 @@
     align-self: flex-start;
 
     + label {
-      color: var(--sdds-checkbox-color);
-      padding-left: var(--sdds-spacing-element-4);
-      padding-top: var(--sdds-spacing-element-4);
-      padding-bottom: var(--sdds-spacing-element-4);
+      color: var(--tds-checkbox-color);
+      padding-left: var(--tds-spacing-element-4);
+      padding-top: var(--tds-spacing-element-4);
+      padding-bottom: var(--tds-spacing-element-4);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -49,8 +49,8 @@
     }
 
     &::after {
-      border: 1px solid var(--sdds-checkbox-interaction-01);
-      background-color: var(--sdds-checkbox-interaction-02);
+      border: 1px solid var(--tds-checkbox-interaction-01);
+      background-color: var(--tds-checkbox-interaction-02);
       width: 16px;
       height: 16px;
       left: 4px;
@@ -60,15 +60,15 @@
 
     &:hover {
       &::before {
-        background-color: var(--sdds-checkbox-background-hover);
-        opacity: var(--sdds-checkbox-background-opacity-hover);
+        background-color: var(--tds-checkbox-background-hover);
+        opacity: var(--tds-checkbox-background-opacity-hover);
       }
     }
 
     &:focus {
       &::before {
-        background-color: var(--sdds-checkbox-background-focus);
-        opacity: var(--sdds-checkbox-background-opacity-focus);
+        background-color: var(--tds-checkbox-background-focus);
+        opacity: var(--tds-checkbox-background-opacity-focus);
         transition: opacity 0.2s ease-in-out;
       }
     }
@@ -78,11 +78,11 @@
       cursor: not-allowed;
 
       &::after {
-        border-color: var(--sdds-checkbox-border-color-disabled-after);
+        border-color: var(--tds-checkbox-border-color-disabled-after);
       }
 
       + label {
-        color: var(--sdds-grey-600);
+        color: var(--tds-grey-600);
         cursor: not-allowed;
       }
 
@@ -95,16 +95,16 @@
 
     &:checked {
       &::after {
-        background-image: var(--sdds-checkbox-background-img);
-        background-color: var(--sdds-checkbox-interaction-01);
+        background-image: var(--tds-checkbox-background-img);
+        background-color: var(--tds-checkbox-interaction-01);
         background-repeat: no-repeat;
         background-position: center;
       }
 
       &:hover {
         &::before {
-          background-color: var(--sdds-checkbox-background-hover);
-          opacity: var(--sdds-checkbox-background-opacity-hover);
+          background-color: var(--tds-checkbox-background-hover);
+          opacity: var(--tds-checkbox-background-opacity-hover);
         }
       }
 
@@ -121,9 +121,9 @@
         }
 
         &::after {
-          background-image: var(--sdds-checkbox-background-img-disabled);
-          background-color: var(--sdds-checkbox-interaction-02);
-          color: var(--sdds-checkbox-color-disabled-after);
+          background-image: var(--tds-checkbox-background-img-disabled);
+          background-color: var(--tds-checkbox-interaction-02);
+          color: var(--tds-checkbox-color-disabled-after);
         }
       }
     }
