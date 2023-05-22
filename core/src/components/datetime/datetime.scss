@@ -185,7 +185,7 @@
   }
 }
 
-//datetime container with label inside
+//Datetime container with label inside
 //Handling position, focus and transition for label inside
 .sdds-form-datetime.sdds-datetime-container-label-inside {
   .sdds-datetime-input {
@@ -249,7 +249,7 @@
   }
 }
 
-//datetime bottom bar when in focus
+//Datetime bottom bar when in focus
 .sdds-datetime-bar {
   position: absolute;
   width: 100%;
@@ -372,7 +372,7 @@
   }
 }
 
-/* datetime picker icon remove testing */
+/* Datetime picker icon remove testing */
 
 input[type='datetime-local']::-webkit-inner-spin-button,
 input[type='datetime-local']::-webkit-calendar-picker-indicator {

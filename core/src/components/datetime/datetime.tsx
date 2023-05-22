@@ -28,7 +28,7 @@ export class Datetime {
   /** Resets min width rule */
   @Prop() noMinWidth: boolean = false;
 
-  /** Set the variant of the datetime component. */
+  /** Set the variant of the Datetime component. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Name property */
@@ -49,7 +49,7 @@ export class Datetime {
   /** Listen to the focus state of the input */
   @State() focusInput: boolean;
 
-  /** Change event for the datetime */
+  /** Change event for the Datetime */
   @Event({
     eventName: 'sddsChange',
     composed: true,
@@ -58,7 +58,7 @@ export class Datetime {
   })
   sddsChange: EventEmitter;
 
-  /** Blur event for the datetime */
+  /** Blur event for the Datetime */
   @Event({
     eventName: 'sddsBlur',
     composed: true,
@@ -67,7 +67,7 @@ export class Datetime {
   })
   sddsBlur: EventEmitter<FocusEvent>;
 
-  /** Focus event for the datetime */
+  /** Focus event for the Datetime */
   @Event({
     eventName: 'sddsFocus',
     composed: true,
@@ -125,13 +125,13 @@ export class Datetime {
     this.sddsChange.emit(e);
   }
 
-  /** Set the input as focus when clicking the whole datetime with suffix/prefix */
+  /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleFocusClick(e): void {
     this.textInput.focus();
     this.sddsFocus.emit(e);
   }
 
-  /** Set the input as focus when clicking the whole datetime with suffix/prefix */
+  /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleBlur(e): void {
     this.textInput.blur();
     this.sddsBlur.emit(e);
