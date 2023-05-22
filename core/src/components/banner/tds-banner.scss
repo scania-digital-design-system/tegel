@@ -1,5 +1,6 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
+@import '../../mixins/focus-state';
 @import '../link/link-vars';
 
 :host(.hide) {
@@ -87,11 +88,11 @@
         cursor: pointer;
       }
 
-      &:focus {
+      &:focus-visible {
         outline: none;
 
         tds-icon {
-          outline: 2px solid var(--sdds-link-focus);
+          @include tds-focus-state;
         }
       }
     }
