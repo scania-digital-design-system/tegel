@@ -1,6 +1,6 @@
 .card {
-  box-shadow: var(--sdds-card-box);
-  background-color: var(--sdds-card-background);
+  box-shadow: var(--tds-card-box);
+  background-color: var(--tds-card-background);
   display: block;
   border-radius: 4px;
   max-width: 368px;
@@ -9,14 +9,14 @@
 
   &.clickable {
     &:hover {
-      box-shadow: var(--sdds-card-box-hover);
+      box-shadow: var(--tds-card-box-hover);
       cursor: pointer;
     }
   }
 
   .card-top {
-    font: var(--sdds-headline-06);
-    letter-spacing: var(--sdds-headline-06-ls);
+    font: var(--tds-headline-06);
+    letter-spacing: var(--tds-headline-06-ls);
     padding: 16px;
     display: flex;
     align-items: center;
@@ -48,27 +48,27 @@
   }
 
   .card-header {
-    color: var(--sdds-card-headline);
+    color: var(--tds-card-headline);
   }
 
   .card-subheader {
-    color: var(--sdds-card-sub-headline);
+    color: var(--tds-card-sub-headline);
   }
 
   .card-body-img {
     width: 100%;
   }
 
-  .sdds-divider {
+  .tds-divider {
     margin: 16px 16px 0;
-    background-color: var(--sdds-card-divider);
+    background-color: var(--tds-card-divider);
     height: 1px;
   }
 
   slot[name='card-body']::slotted(*) {
-    font: var(--sdds-detail-03);
-    letter-spacing: var(--sdds-detail-03-ls);
-    color: var(--sdds-card-body-color);
+    font: var(--tds-detail-03);
+    letter-spacing: var(--tds-detail-03-ls);
+    color: var(--tds-card-body-color);
     padding: 0 16px;
     margin-bottom: 16px;
     margin-top: 16px;
@@ -77,8 +77,8 @@
   slot[name='card-bottom']::slotted(*) {
     display: flex;
     padding: 16px;
-    color: var(--sdds-card-icon-color);
-  } 
+    color: var(--tds-card-icon-color);
+  }
 }
 
 button {
@@ -87,11 +87,11 @@ button {
   padding: 0;
 
   &:focus {
-    outline: 2px solid var(--sdds-blue-400);
+    outline: 2px solid var(--tds-blue-400);
     outline-offset: -2px;
   }
 
   &:active {
-    box-shadow: var(--sdds-card-box-pressed);
+    box-shadow: var(--tds-card-box-pressed);
   }
 }
