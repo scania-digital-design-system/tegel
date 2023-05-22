@@ -1,0 +1,16 @@
+:root,
+.tds-mode-light {
+  --tds-breadcrumb-color: var(--tds-grey-900);
+  --tds-breadcrumb-color-hover: var(--tds-grey-700);
+  --tds-breadcrumb-color-focus: var(--tds-grey-700);
+  --tds-breadcrumb-color-disabled: var(--tds-grey-500);
+  --tds-breadcrumb-separator-color: var(--tds-grey-500);
+}
+
+.tds-mode-dark {
+  --tds-breadcrumb-color: var(--tds-grey-300);
+  --tds-breadcrumb-color-hover: var(--tds-grey-500);
+  --tds-breadcrumb-color-focus: var(--tds-grey-500);
+  --tds-breadcrumb-color-disabled: var(--tds-grey-700);
+  --tds-breadcrumb-separator-color: var(--tds-grey-700);
+}
