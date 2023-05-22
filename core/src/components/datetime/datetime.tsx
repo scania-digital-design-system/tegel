@@ -6,7 +6,7 @@ import { Component, State, h, Prop, Listen, Event, EventEmitter } from '@stencil
   shadow: false,
   scoped: true,
 })
-export class Datetime {
+export class TdsDatetime {
   /** Textinput for focus state */
   textInput?: HTMLInputElement;
 
