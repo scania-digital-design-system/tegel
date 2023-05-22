@@ -19,7 +19,6 @@
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
  - [sdds-folder-tabs](../tabs/folder-tabs)
- - [sdds-footer-group](../footer/webcomponent/sdds-footer-group)
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
@@ -37,6 +36,7 @@
  - [sdds-toast](../toast)
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
+ - [tds-footer-group](../footer/footer-group)
 
 ### Graph
 ```mermaid
@@ -45,7 +45,6 @@ graph TD;
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
   sdds-folder-tabs --> tds-icon
-  sdds-footer-group --> tds-icon
   sdds-header-dropdown --> tds-icon
   sdds-header-hamburger --> tds-icon
   sdds-header-launcher-button --> tds-icon
@@ -63,6 +62,7 @@ graph TD;
   sdds-toast --> tds-icon
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
+  tds-footer-group --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -2,11 +2,11 @@ import { Component, Host, h, Prop, Element } from '@stencil/core';
 import { State } from '@stencil/core/internal';
 
 @Component({
-  tag: 'sdds-footer-group',
-  styleUrl: 'sdds-footer-group.scss',
+  tag: 'tds-footer-group',
+  styleUrl: 'footer-group.scss',
   shadow: true,
 })
-export class SddsFooterGroup {
+export class TdsFooterGroup {
   @Element() host: HTMLElement;
 
   /** Title text for the link group, only valid on top part of Footer. */
