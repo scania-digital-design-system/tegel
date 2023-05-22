@@ -1,48 +1,48 @@
 :root,
-.sdds-mode-light {
-  --sdds-card-background: var(--sdds-white);
-  --sdds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --sdds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
-  --sdds-card-box: var(--sdds-card-box-primary);
-  --sdds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
-  --sdds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
-  --sdds-card-headline: var(--sdds-grey-958);
-  --sdds-card-sub-headline: var(--sdds-grey-600);
-  --sdds-card-body-color: var(--sdds-grey-700);
-  --sdds-card-divider: var(--sdds-grey-300);
-  --sdds-card-icon-color: var(--sdds-grey-300);
+.tds-mode-light {
+  --tds-card-background: var(--tds-white);
+  --tds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --tds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
+  --tds-card-box: var(--tds-card-box-primary);
+  --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
+  --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
+  --tds-card-headline: var(--tds-grey-958);
+  --tds-card-sub-headline: var(--tds-grey-600);
+  --tds-card-body-color: var(--tds-grey-700);
+  --tds-card-divider: var(--tds-grey-300);
+  --tds-card-icon-color: var(--tds-grey-300);
 
-  .sdds-mode-variant-primary {
-    --sdds-card-box: var(--sdds-card-box-primary);
+  .tds-mode-variant-primary {
+    --tds-card-box: var(--tds-card-box-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-card-box: var(--sdds-card-box-secondary);
+  .tds-mode-variant-secondary {
+    --tds-card-box: var(--tds-card-box-secondary);
   }
 }
 
-.sdds-mode-dark {
-  --sdds-card-background-primary: var(--sdds-grey-900);
-  --sdds-card-background-secondary: var(--sdds-grey-868);
-  --sdds-card-background: var(--sdds-card-background-primary);
-  --sdds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --sdds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
-  --sdds-card-box: var(--sdds-card-box-primary);
-  --sdds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
-  --sdds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
-  --sdds-card-headline: var(--sdds-white);
-  --sdds-card-sub-headline: var(--sdds-grey-400);
-  --sdds-card-body-color: var(--sdds-white);
-  --sdds-card-divider: var(--sdds-grey-700);
-  --sdds-card-icon-color: var(--sdds-grey-700);
+.tds-mode-dark {
+  --tds-card-background-primary: var(--tds-grey-900);
+  --tds-card-background-secondary: var(--tds-grey-868);
+  --tds-card-background: var(--tds-card-background-primary);
+  --tds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --tds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
+  --tds-card-box: var(--tds-card-box-primary);
+  --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
+  --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
+  --tds-card-headline: var(--tds-white);
+  --tds-card-sub-headline: var(--tds-grey-400);
+  --tds-card-body-color: var(--tds-white);
+  --tds-card-divider: var(--tds-grey-700);
+  --tds-card-icon-color: var(--tds-grey-700);
 
-  .sdds-mode-variant-primary {
-    --sdds-card-box: var(--sdds-card-box-primary);
-    --sdds-card-background: var(--sdds-card-background-primary);
+  .tds-mode-variant-primary {
+    --tds-card-box: var(--tds-card-box-primary);
+    --tds-card-background: var(--tds-card-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-card-box: var(--sdds-card-box-secondary);
-    --sdds-card-background: var(--sdds-card-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-card-box: var(--tds-card-box-secondary);
+    --tds-card-background: var(--tds-card-background-secondary);
   }
 }
