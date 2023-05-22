@@ -177,7 +177,7 @@ const datetimeTemplate = ({
 
   <div class="demo-wrapper">
 
-    <sdds-datetime
+    <tds-datetime
       id="datetime"
       ${defaultValue !== 'None' ? `default-value="${getDefaultValue(defaultValue, type)}"` : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
@@ -189,20 +189,20 @@ const datetimeTemplate = ({
       ${label ? `label="${label}" ` : ''}
       ${helper ? `helper="${helper}" ` : ''}
       >
-    </sdds-datetime>
+    </tds-datetime>
 
 
     <script>
     /* DEMO Code: Used only for Storybook demo purposes */
       datetimeElement = document.getElementById('storybook-datetime');
-      datetimeElement.addEventListener('sddsChange', (event) => {
-        console.log("Firing sddsChange: " + event.target.value);
+      datetimeElement.addEventListener('tdsChange', (event) => {
+        console.log("Firing tdsChange: " + event.target.value);
       });
-      datetimeElement.addEventListener('sddsFocus', (event) => {
-        console.log("Firing sddsFocus: " + event.target.value);
+      datetimeElement.addEventListener('tdsFocus', (event) => {
+        console.log("Firing tdsFocus: " + event.target.value);
       });
-      datetimeElement.addEventListener('sddsBlur', (event) => {
-        console.log("Firing sddsBlur: " + event.target.value);
+      datetimeElement.addEventListener('tdsBlur', (event) => {
+        console.log("Firing tdsBlur: " + event.target.value);
       });
     </script>
 `,
