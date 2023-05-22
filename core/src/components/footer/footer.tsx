@@ -2,11 +2,11 @@ import { Component, h, State, Element } from '@stencil/core';
 import { Host, Prop } from '@stencil/core/internal';
 
 @Component({
-  tag: 'sdds-footer',
-  styleUrl: 'sdds-footer.scss',
+  tag: 'tds-footer',
+  styleUrl: 'footer.scss',
   shadow: true,
 })
-export class SddsFooter {
+export class TdsFooter {
   @Element() host: HTMLElement;
 
   /** Mode variant of the component, based on current mode. */
@@ -21,7 +21,7 @@ export class SddsFooter {
 
   render() {
     return (
-      <Host class={`${this.modeVariant ? `sdds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <footer>
           {this.hasTopPart && (
             <div class="footer-top">

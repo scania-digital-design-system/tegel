@@ -1,8 +1,8 @@
-import { formatHtmlPreview } from '../../../utils/utils';
+import { formatHtmlPreview } from '../../utils/utils';
+import { ComponentsFolder } from '../../utils/constants';
 import readme from './readme.md';
-import readmeItem from './sdds-footer-item/readme.md';
-import readmeLinkGroup from './sdds-footer-group/readme.md';
-import { ComponentsFolder } from '../../../utils/constants';
+import readmeItem from './footer-item/readme.md';
+import readmeLinkGroup from './footer-group/readme.md';
 
 export default {
   title: ComponentsFolder,
@@ -53,100 +53,100 @@ const Template = ({ topPart, modeVariant }) =>
   formatHtmlPreview(
     `
     <main>
-      <div class="sdds-u-p3 ">
-        <div class="sdds-body-01">
+      <div class="tds-u-p3 ">
+        <div class="tds-body-01">
           Resize the window to see how the Footer behaves on smaller/bigger screens.
         </div>
       </div>
     </main>
-    <sdds-footer
+    <tds-footer
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
       ${
         topPart
           ? `
       <div slot="top">
-        <sdds-footer-group title-text="Title">
-          <sdds-footer-item >
+        <tds-footer-group title-text="Title">
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-        </sdds-footer-group>
+          </tds-footer-item>
+        </tds-footer-group>
 
-        <sdds-footer-group title-text="Title">
-          <sdds-footer-item >
+        <tds-footer-group title-text="Title">
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-        </sdds-footer-group>
+          </tds-footer-item>
+        </tds-footer-group>
 
-        <sdds-footer-group title-text="Title">
-          <sdds-footer-item >
+        <tds-footer-group title-text="Title">
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-        </sdds-footer-group>
+          </tds-footer-item>
+        </tds-footer-group>
 
-        <sdds-footer-group title-text="Title">
-          <sdds-footer-item >
+        <tds-footer-group title-text="Title">
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-        </sdds-footer-group>
+          </tds-footer-item>
+        </tds-footer-group>
       </div>
       `
           : ''
       }
       <div slot="main-left">
-        <sdds-footer-group>
-          <sdds-footer-item >
+        <tds-footer-group>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> Link text</a>
-          </sdds-footer-item>
-        </sdds-footer-group>
+          </tds-footer-item>
+        </tds-footer-group>
       </div>
       <div slot="main-right">
-        <sdds-footer-group>
-          <sdds-footer-item >
+        <tds-footer-group>
+          <tds-footer-item >
             <a href="#"> <tds-icon name="truck"></tds-icon></a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> <tds-icon name="truck"></tds-icon></a>
-          </sdds-footer-item>
-          <sdds-footer-item >
+          </tds-footer-item>
+          <tds-footer-item >
             <a href="#"> <tds-icon name="truck"></tds-icon></a>
-          </sdds-footer-item>
-        </sdds-footer-group>
+          </tds-footer-item>
+        </tds-footer-group>
       </div>
-    </sdds-footer>
+    </tds-footer>
   
   `,
   );
