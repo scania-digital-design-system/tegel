@@ -5,7 +5,7 @@ import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@
   styleUrl: 'card.scss',
   shadow: true,
 })
-export class Card {
+export class TdsCard {
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
