@@ -3,7 +3,7 @@ import { State } from '@stencil/core/internal';
 
 @Component({
   tag: 'tds-banner',
-  styleUrl: 'tds-banner.scss',
+  styleUrl: 'banner.scss',
   shadow: true,
 })
 export class TdsBanner {
