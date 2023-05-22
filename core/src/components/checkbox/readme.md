@@ -1,4 +1,4 @@
-# sdds-checkbox
+# tds-checkbox
 
 
 
@@ -19,11 +19,11 @@
 
 ## Events
 
-| Event        | Description                                                                       | Type                                                                     |
-| ------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `sddsBlur`   | Blur event for the Checkbox                                                       | `CustomEvent<FocusEvent>`                                                |
-| `sddsChange` | Sends unique Checkbox identifier and checked status when it is checked/unchecked. | `CustomEvent<{ checkboxId: string; checked: boolean; value?: string; }>` |
-| `sddsFocus`  | Focus event for the Checkbox                                                      | `CustomEvent<FocusEvent>`                                                |
+| Event       | Description                                                                       | Type                                                                     |
+| ----------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `tdsBlur`   | Blur event for the Checkbox                                                       | `CustomEvent<FocusEvent>`                                                |
+| `tdsChange` | Sends unique Checkbox identifier and checked status when it is checked/unchecked. | `CustomEvent<{ checkboxId: string; checked: boolean; value?: string; }>` |
+| `tdsFocus`  | Focus event for the Checkbox                                                      | `CustomEvent<FocusEvent>`                                                |
 
 
 ## Methods
@@ -38,25 +38,6 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 
 
 
-
-## Dependencies
-
-### Used by
-
- - [sdds-dropdown-option](../dropdown/dropdown-option)
- - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
- - [sdds-table-body-row](../data-table/table-body-row)
- - [sdds-table-header](../data-table/table-header)
-
-### Graph
-```mermaid
-graph TD;
-  sdds-dropdown-option --> sdds-checkbox
-  sdds-dropdown-option-v2 --> sdds-checkbox
-  sdds-table-body-row --> sdds-checkbox
-  sdds-table-header --> sdds-checkbox
-  style sdds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
 import { EventEmitter, Method } from '@stencil/core/internal';
-import { SddsCheckboxCustomEvent } from '../../../components';
+import { TdsCheckboxCustomEvent } from '../../../components';
 
 @Component({
   tag: 'sdds-dropdown-option-v2',
@@ -89,7 +89,7 @@ export class SddsDropdownOptionV2 {
   };
 
   handleMultiselect = (
-    event: SddsCheckboxCustomEvent<{ checkboxId: string; checked: boolean; value?: string }>,
+    event: TdsCheckboxCustomEvent<{ checkboxId: string; checked: boolean; value?: string }>,
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
