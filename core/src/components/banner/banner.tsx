@@ -2,11 +2,11 @@ import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '
 import { State } from '@stencil/core/internal';
 
 @Component({
-  tag: 'sdds-banner',
-  styleUrl: 'sdds-banner.scss',
+  tag: 'tds-banner',
+  styleUrl: 'banner.scss',
   shadow: true,
 })
-export class SddsBanner {
+export class TdsBanner {
   @Element() host: HTMLElement;
 
   /** Name of the icon for the component. For error and information type the icon is predefined. */
@@ -36,23 +36,23 @@ export class SddsBanner {
 
   /** Sends a unique Banner identifier when the close button is pressed. */
   @Event({
-    eventName: 'sddsClose',
+    eventName: 'tdsClose',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsClose: EventEmitter<{
+  tdsClose: EventEmitter<{
     bannerId: string;
   }>;
 
   /** Sends the unique Banner identifier when the close button is pressed. */
   @Event({
-    eventName: 'sddsShow',
+    eventName: 'tdsShow',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsShow: EventEmitter<{
+  tdsShow: EventEmitter<{
     bannerId: string;
   }>;
 
@@ -80,19 +80,19 @@ export class SddsBanner {
   }
 
   handleClose = () => {
-    const sddsCloseEvent = this.sddsClose.emit({
+    const tdsCloseEvent = this.tdsClose.emit({
       bannerId: this.bannerId,
     });
-    if (!sddsCloseEvent.defaultPrevented) {
+    if (!tdsCloseEvent.defaultPrevented) {
       this.hidden = true;
     }
   };
 
   handleShow = () => {
-    const sddsCloseEvent = this.sddsShow.emit({
+    const tdsCloseEvent = this.tdsShow.emit({
       bannerId: this.bannerId,
     });
-    if (!sddsCloseEvent.defaultPrevented) {
+    if (!tdsCloseEvent.defaultPrevented) {
       this.hidden = false;
     }
   };
