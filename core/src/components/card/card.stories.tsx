@@ -120,7 +120,7 @@ export default {
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,
-    cardBottom: `<div slot="card-bottom"><tds-icon style="font-size: 20px;" name="arrow_right"></tds-icon></div>`,
+    cardBottom: `<tds-icon slot="card-bottom" size="20px" name="arrow_right"></tds-icon>`,
     clickable: false,
   },
 };
