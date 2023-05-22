@@ -1,4 +1,4 @@
-# sdds-banner
+# tds-banner
 
 
 
@@ -19,10 +19,10 @@
 
 ## Events
 
-| Event       | Description                                                          | Type                                 |
-| ----------- | -------------------------------------------------------------------- | ------------------------------------ |
-| `sddsClose` | Sends a unique Banner identifier when the close button is pressed.   | `CustomEvent<{ bannerId: string; }>` |
-| `sddsShow`  | Sends the unique Banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
+| Event      | Description                                                          | Type                                 |
+| ---------- | -------------------------------------------------------------------- | ------------------------------------ |
+| `tdsClose` | Sends a unique Banner identifier when the close button is pressed.   | `CustomEvent<{ bannerId: string; }>` |
+| `tdsShow`  | Sends the unique Banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
 
 
 ## Methods
@@ -57,8 +57,8 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-banner --> tds-icon
-  style sdds-banner fill:#f9f,stroke:#333,stroke-width:4px
+  tds-banner --> tds-icon
+  style tds-banner fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
