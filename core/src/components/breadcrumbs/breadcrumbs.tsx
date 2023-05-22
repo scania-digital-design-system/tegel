@@ -5,7 +5,7 @@ import { Component, h, Element } from '@stencil/core';
   styleUrl: 'breadcrumbs.scss',
   shadow: true,
 })
-export class SddsBreadcrumb {
+export class TdsBreadcrumb {
   @Element() el: HTMLElement;
 
   connectedCallback() {
