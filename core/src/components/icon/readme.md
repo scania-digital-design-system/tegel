@@ -23,7 +23,6 @@
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
  - [sdds-inline-tabs](../tabs/inline-tabs)
- - [sdds-message](../message)
  - [sdds-modal](../modal)
  - [sdds-navigation-tabs](../tabs/navigation-tabs)
  - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
@@ -37,6 +36,7 @@
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-footer-group](../footer/footer-group)
+ - [tds-message](../message)
 
 ### Graph
 ```mermaid
@@ -49,7 +49,6 @@ graph TD;
   sdds-header-hamburger --> tds-icon
   sdds-header-launcher-button --> tds-icon
   sdds-inline-tabs --> tds-icon
-  sdds-message --> tds-icon
   sdds-modal --> tds-icon
   sdds-navigation-tabs --> tds-icon
   sdds-side-menu-close-button --> tds-icon
@@ -63,6 +62,7 @@ graph TD;
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
   tds-footer-group --> tds-icon
+  tds-message --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

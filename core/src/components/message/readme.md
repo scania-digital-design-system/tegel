@@ -25,8 +25,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-message --> tds-icon
-  style sdds-message fill:#f9f,stroke:#333,stroke-width:4px
+  tds-message --> tds-icon
+  style tds-message fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
