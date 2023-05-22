@@ -49,7 +49,6 @@ Type: `Promise<void>`
 graph TD;
   sdds-dropdown-filter --> sdds-dropdown-option
   sdds-dropdown-filter --> sdds-dropdown
-  sdds-dropdown-option --> sdds-checkbox
   style sdds-dropdown-filter fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
