@@ -1,51 +1,51 @@
 // TODO - Check hover states
 :root,
-.sdds-mode-light {
-  --sdds-footer-top-background-primary: var(--sdds-grey-50);
-  --sdds-footer-top-background-secondary: var(--sdds-white);
-  --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
-  --sdds-footer-top-divider: var(--sdds-grey-300);
-  --sdds-footer-top-links: var(--sdds-blue-800);
-  --sdds-footer-top-links-background-hover: var(--sdds-grey-300);
-  --sdds-footer-top-button-active: var(--sdds-grey-300);
-  --sdds-footer-top-links-opacity: 0.87;
-  --sdds-footer-top-links-opacity-hover: 0.38;
-  --sdds-footer-top-title-opacity-mobile: 0.87;
-  --sdds-footer-top-title-opacity: 0.6;
-  --sdds-footer-main-background: var(--sdds-blue-800);
-  --sdds-footer-main-links: var(--sdds-white);
-  --sdds-footer-main-divider: var(--sdds-blue-600);
-  --sdds-footer-main-links-opacity: 0.87;
-  --sdds-footer-main-copyright: rgb(255 255 255 / 60%);
+.tds-mode-light {
+  --tds-footer-top-background-primary: var(--tds-grey-50);
+  --tds-footer-top-background-secondary: var(--tds-white);
+  --tds-footer-top-background: var(--tds-footer-top-background-primary);
+  --tds-footer-top-divider: var(--tds-grey-300);
+  --tds-footer-top-links: var(--tds-blue-800);
+  --tds-footer-top-links-background-hover: var(--tds-grey-300);
+  --tds-footer-top-button-active: var(--tds-grey-300);
+  --tds-footer-top-links-opacity: 0.87;
+  --tds-footer-top-links-opacity-hover: 0.38;
+  --tds-footer-top-title-opacity-mobile: 0.87;
+  --tds-footer-top-title-opacity: 0.6;
+  --tds-footer-main-background: var(--tds-blue-800);
+  --tds-footer-main-links: var(--tds-white);
+  --tds-footer-main-divider: var(--tds-blue-600);
+  --tds-footer-main-links-opacity: 0.87;
+  --tds-footer-main-copyright: rgb(255 255 255 / 60%);
 
-  .sdds-mode-variant-primary {
-    --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
+  .tds-mode-variant-primary {
+    --tds-footer-top-background: var(--tds-footer-top-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-footer-top-background: var(--sdds-footer-top-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-footer-top-background: var(--tds-footer-top-background-secondary);
   }
 }
 
-.sdds-mode-dark {
-  --sdds-footer-top-background-primary: var(--sdds-grey-868);
-  --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
-  --sdds-footer-top-divider: var(--sdds-grey-800);
-  --sdds-footer-top-links: var(--sdds-grey-50);
-  --sdds-footer-top-links-background-hover: var(--sdds-grey-700);
-  --sdds-footer-top-button-active: var(--sdds-grey-700);
-  --sdds-footer-top-links-opacity: 0.87;
-  --sdds-footer-top-links-opacity-hover: 0.38;
-  --sdds-footer-top-title-opacity-mobile: 0.87;
-  --sdds-footer-top-title-opacity: 0.6;
-  --sdds-footer-main-background: var(--sdds-blue-900);
-  --sdds-footer-main-links: var(--sdds-white);
-  --sdds-footer-main-divider: var(--sdds-blue-600);
-  --sdds-footer-main-links-opacity: 0.87;
-  --sdds-footer-main-copyright: rgb(255 255 255 / 60%);
+.tds-mode-dark {
+  --tds-footer-top-background-primary: var(--tds-grey-868);
+  --tds-footer-top-background: var(--tds-footer-top-background-primary);
+  --tds-footer-top-divider: var(--tds-grey-800);
+  --tds-footer-top-links: var(--tds-grey-50);
+  --tds-footer-top-links-background-hover: var(--tds-grey-700);
+  --tds-footer-top-button-active: var(--tds-grey-700);
+  --tds-footer-top-links-opacity: 0.87;
+  --tds-footer-top-links-opacity-hover: 0.38;
+  --tds-footer-top-title-opacity-mobile: 0.87;
+  --tds-footer-top-title-opacity: 0.6;
+  --tds-footer-main-background: var(--tds-blue-900);
+  --tds-footer-main-links: var(--tds-white);
+  --tds-footer-main-divider: var(--tds-blue-600);
+  --tds-footer-main-links-opacity: 0.87;
+  --tds-footer-main-copyright: rgb(255 255 255 / 60%);
 
-  .sdds-mode-variant-primary,
-  .sdds-mode-variant-secondary {
-    --sdds-footer-top-background: var(--sdds-footer-top-background-primary);
+  .tds-mode-variant-primary,
+  .tds-mode-variant-secondary {
+    --tds-footer-top-background: var(--tds-footer-top-background-primary);
   }
 }
