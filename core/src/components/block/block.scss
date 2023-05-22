@@ -1,0 +1,22 @@
+@import '../../mixins/box-sizing';
+
+.tds-block {
+  @include tds-box-sizing;
+
+  color: var(--tds-block-color);
+  border-radius: 4px;
+  padding: 16px;
+  font: var(--tds-body-01);
+  letter-spacing: var(--tds-body-01-ls);
+  background-color: var(--tds-block-background);
+}
+
+.tds-mode-variant-primary {
+  --tds-block-background: var(--tds-block-background-primary);
+  --tds-block-background-nested: var(--tds-block-background-nested-primary);
+}
+
+.tds-mode-variant-secondary {
+  --tds-block-background: var(--tds-block-background-secondary);
+  --tds-block-background-nested: var(--tds-block-background-nested-secondary);
+}
