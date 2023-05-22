@@ -1,40 +1,40 @@
 :root,
-.sdds-mode-light {
-  --sdds-block-color: var(--sdds-grey-985);
-  --sdds-block-background-primary: var(--sdds-grey-50);
-  --sdds-block-background-nested-primary: var(--sdds-white);
-  --sdds-block-background-secondary: var(--sdds-white);
-  --sdds-block-background-nested-secondary: var(--sdds-grey-50);
-  --sdds-block-background: var(--sdds-block-background-primary);
-  --sdds-block-background-nested: var(--sdds-block-background-nested-primary);
+.tds-mode-light {
+  --tds-block-color: var(--tds-grey-985);
+  --tds-block-background-primary: var(--tds-grey-50);
+  --tds-block-background-nested-primary: var(--tds-white);
+  --tds-block-background-secondary: var(--tds-white);
+  --tds-block-background-nested-secondary: var(--tds-grey-50);
+  --tds-block-background: var(--tds-block-background-primary);
+  --tds-block-background-nested: var(--tds-block-background-nested-primary);
 
-  .sdds-mode-variant-primary {
-    --sdds-block-background: var(--sdds-block-background-primary);
-    --sdds-block-background-nested: var(--sdds-block-background-nested-primary);
+  .tds-mode-variant-primary {
+    --tds-block-background: var(--tds-block-background-primary);
+    --tds-block-background-nested: var(--tds-block-background-nested-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-block-background: var(--sdds-block-background-secondary);
-    --sdds-block-background-nested: var(--sdds-block-background-nested-secondary);
+  .tds-mode-variant-secondary {
+    --tds-block-background: var(--tds-block-background-secondary);
+    --tds-block-background-nested: var(--tds-block-background-nested-secondary);
   }
 }
 
-.sdds-mode-dark {
-  --sdds-block-color: var(--sdds-grey-50);
-  --sdds-block-background-primary: var(--sdds-grey-900);
-  --sdds-block-background-nested-primary: var(--sdds-grey-868);
-  --sdds-block-background-secondary: var(--sdds-grey-868);
-  --sdds-block-background-nested-secondary: var(--sdds-grey-900);
-  --sdds-block-background: var(--sdds-block-background-primary);
-  --sdds-block-background-nested: var(--sdds-block-background-nested-primary);
+.tds-mode-dark {
+  --tds-block-color: var(--tds-grey-50);
+  --tds-block-background-primary: var(--tds-grey-900);
+  --tds-block-background-nested-primary: var(--tds-grey-868);
+  --tds-block-background-secondary: var(--tds-grey-868);
+  --tds-block-background-nested-secondary: var(--tds-grey-900);
+  --tds-block-background: var(--tds-block-background-primary);
+  --tds-block-background-nested: var(--tds-block-background-nested-primary);
 
-  .sdds-mode-variant-primary {
-    --sdds-block-background: var(--sdds-block-background-primary);
-    --sdds-block-background-nested: var(--sdds-block-background-nested-primary);
+  .tds-mode-variant-primary {
+    --tds-block-background: var(--tds-block-background-primary);
+    --tds-block-background-nested: var(--tds-block-background-nested-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-block-background: var(--sdds-block-background-secondary);
-    --sdds-block-background-nested: var(--sdds-block-background-nested-secondary);
+  .tds-mode-variant-secondary {
+    --tds-block-background: var(--tds-block-background-secondary);
+    --tds-block-background-nested: var(--tds-block-background-nested-secondary);
   }
 }
