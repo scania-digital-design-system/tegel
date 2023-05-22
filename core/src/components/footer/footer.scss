@@ -4,7 +4,7 @@
   $grid-lg: 992px;
 
   .footer-top {
-    background-color: var(--sdds-footer-top-background);
+    background-color: var(--tds-footer-top-background);
     padding: 40px;
 
     ::slotted(*) {
@@ -16,7 +16,7 @@
   }
 
   .footer-main {
-    background-color: var(--sdds-footer-main-background);
+    background-color: var(--tds-footer-main-background);
     padding: 0 40px;
   }
 
@@ -38,17 +38,17 @@
     padding: 40px 0;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid var(--sdds-footer-main-divider);
+    border-top: 1px solid var(--tds-footer-main-divider);
 
     small.copyright {
       margin: 0;
-      font: var(--sdds-detail-02);
-      letter-spacing: var(--sdds-detail-02-ls);
-      color: var(--sdds-footer-main-copyright);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      color: var(--tds-footer-main-copyright);
     }
 
     .brand {
-      background-image: var(--sdds-background-image-scania-wordmark-white-svg);
+      background-image: var(--tds-background-image-scania-wordmark-white-svg);
       background-repeat: no-repeat;
       background-size: 117px;
       background-position: right;
