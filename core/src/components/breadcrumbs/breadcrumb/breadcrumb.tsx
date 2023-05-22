@@ -1,8 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-breadcrumb-item',
-  styleUrl: 'sdds-breadcrumb-item.scss',
+  tag: 'tds-breadcrumb',
+  styleUrl: 'breadcrumb.scss',
   shadow: true,
 })
 export class SddsBreadcrumbItem {

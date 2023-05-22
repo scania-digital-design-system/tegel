@@ -2,13 +2,13 @@
 
 [role='listitem'] {
   ::slotted(*) {
-    color: var(--sdds-breadcrumb-color);
+    color: var(--tds-breadcrumb-color);
     text-decoration: none;
   }
 
   &:hover {
     ::slotted(*) {
-      color: var(--sdds-breadcrumb-color-hover);
+      color: var(--tds-breadcrumb-color-hover);
       text-decoration: underline;
     }
   }
@@ -23,7 +23,7 @@
     ::slotted(*) {
       pointer-events: none;
       cursor: default;
-      color: var(--sdds-breadcrumb-color-disabled);
+      color: var(--tds-breadcrumb-color-disabled);
     }
 
     &:hover {
@@ -36,7 +36,7 @@
 
   ::slotted(*)::after {
     content: '\203A';
-    color: var(--sdds-breadcrumb-separator-color);
+    color: var(--tds-breadcrumb-separator-color);
     margin-right: 4px;
     margin-left: 4px;
     display: inline-block;

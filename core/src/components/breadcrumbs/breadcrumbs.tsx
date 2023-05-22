@@ -1,8 +1,8 @@
 import { Component, h, Element } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-breadcrumb',
-  styleUrl: 'sdds-breadcrumb.scss',
+  tag: 'tds-breadcrumbs',
+  styleUrl: 'breadcrumbs.scss',
   shadow: true,
 })
 export class SddsBreadcrumb {
@@ -15,7 +15,7 @@ export class SddsBreadcrumb {
   render() {
     return (
       <nav>
-        <div role="list" class={'sdds-breadcrumb'}>
+        <div role="list" class={'tds-breadcrumb'}>
           <slot></slot>
         </div>
       </nav>
