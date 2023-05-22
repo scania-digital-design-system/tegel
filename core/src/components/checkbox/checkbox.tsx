@@ -1,12 +1,12 @@
 import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-checkbox',
-  styleUrl: 'sdds-checkbox.scss',
+  tag: 'tds-checkbox',
+  styleUrl: 'checkbox.scss',
   shadow: false,
   scoped: true,
 })
-export class SddsCheckbox {
+export class TdsCheckbox {
   @Element() host: HTMLElement;
 
   /** Name for the checkbox's input element. */
@@ -39,12 +39,12 @@ export class SddsCheckbox {
 
   /** Sends unique Checkbox identifier and checked status when it is checked/unchecked. */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     checkboxId: string;
     checked: boolean;
     value?: string;
@@ -52,7 +52,7 @@ export class SddsCheckbox {
 
   handleChange = () => {
     this.checked = !this.checked;
-    this.sddsChange.emit({
+    this.tdsChange.emit({
       checkboxId: this.checkboxId,
       checked: this.checked,
       value: this.value,
@@ -61,35 +61,35 @@ export class SddsCheckbox {
 
   /** Focus event for the Checkbox */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
   /** Set the input as focus when clicking the whole textfield with suffix/prefix */
   handleFocus(event): void {
-    this.sddsFocus.emit(event);
+    this.tdsFocus.emit(event);
   }
 
   /** Blur event for the Checkbox */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
   /** Set the input as focus when clicking the whole textfield with suffix/prefix */
   handleBlur(event): void {
-    this.sddsBlur.emit(event);
+    this.tdsBlur.emit(event);
   }
 
   render() {
     return (
-      <div class="sdds-checkbox-webcomponent">
+      <div class="tds-checkbox">
         <input
           aria-checked={this.checked}
           aria-required={this.required}
