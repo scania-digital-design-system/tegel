@@ -1,40 +1,40 @@
 :root,
-.sdds-mode-light {
+.tds-mode-light {
   // Banner text color
-  --sdds-banner-text-color: var(--sdds-grey-958);
+  --tds-banner-text-color: var(--tds-grey-958);
 
   // Banner "X" color
-  --sdds-banner-x-color: var(--sdds-black);
+  --tds-banner-x-color: var(--tds-black);
 
   // Type: Default
-  --sdds-banner-background-default: var(--sdds-grey-50);
-  --sdds-banner-prefix-default-color: var(--sdds-grey-700);
+  --tds-banner-background-default: var(--tds-grey-50);
+  --tds-banner-prefix-default-color: var(--tds-grey-700);
 
   // Type: Info
-  --sdds-banner-background-info: var(--sdds-grey-300);
-  --sdds-banner-prefix-info-color: var(--sdds-blue-400);
+  --tds-banner-background-info: var(--tds-grey-300);
+  --tds-banner-prefix-info-color: var(--tds-blue-400);
 
   // Type: Error
-  --sdds-banner-background-error: var(--sdds-red-100);
-  --sdds-banner-prefix-error-color: var(--sdds-red-500);
+  --tds-banner-background-error: var(--tds-red-100);
+  --tds-banner-prefix-error-color: var(--tds-red-500);
 }
 
-.sdds-mode-dark {
+.tds-mode-dark {
   // Banner text color
-  --sdds-banner-text-color: var(--sdds-grey-50);
+  --tds-banner-text-color: var(--tds-grey-50);
 
   // Banner "X" color
-  --sdds-banner-x-color: var(--sdds-white);
+  --tds-banner-x-color: var(--tds-white);
 
   // Type: Default
-  --sdds-banner-background-default: var(--sdds-grey-900);
-  --sdds-banner-prefix-default-color: var(--sdds-grey-400);
+  --tds-banner-background-default: var(--tds-grey-900);
+  --tds-banner-prefix-default-color: var(--tds-grey-400);
 
   // Type: Info
-  --sdds-banner-background-info: var(--sdds-blue-700);
-  --sdds-banner-prefix-info-color: var(--sdds-information);
+  --tds-banner-background-info: var(--tds-blue-700);
+  --tds-banner-prefix-info-color: var(--tds-information);
 
   // Type: Error
-  --sdds-banner-background-error: var(--sdds-red-900);
-  --sdds-banner-prefix-error-color: var(--sdds-negative);
+  --tds-banner-background-error: var(--tds-red-900);
+  --tds-banner-prefix-error-color: var(--tds-negative);
 }
