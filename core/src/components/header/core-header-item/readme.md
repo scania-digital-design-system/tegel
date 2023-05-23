@@ -11,6 +11,10 @@
 
  - [tds-header-item](../header-item)
 
+### Depends on
+
+- [sdds-checkbox](../../checkbox)
+
 ### Graph
 ```mermaid
 graph TD;
