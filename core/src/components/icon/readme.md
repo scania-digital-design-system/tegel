@@ -27,7 +27,7 @@
  - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
  - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
  - [sdds-stepper-item](../stepper/stepper-item)
- - [sdds-table-footer](../data-table/table-footer)
+ - [sdds-table-footer](../table/table-footer)
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
  - [sdds-toast](../toast)
