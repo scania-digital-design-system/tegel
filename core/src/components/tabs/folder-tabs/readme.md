@@ -1,4 +1,4 @@
-# sdds-folder-tabs
+# tds-folder-tabs
 
 
 
@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event        | Description                                     | Type                                         |
-| ------------ | ----------------------------------------------- | -------------------------------------------- |
-| `sddsChange` | Event emitted when the selected tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
+| Event       | Description                                     | Type                                         |
+| ----------- | ----------------------------------------------- | -------------------------------------------- |
+| `tdsChange` | Event emitted when the selected tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
 
 
 ## Methods
@@ -43,8 +43,8 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-folder-tabs --> tds-icon
-  style sdds-folder-tabs fill:#f9f,stroke:#333,stroke-width:4px
+  tds-folder-tabs --> tds-icon
+  style tds-folder-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
