@@ -1,34 +1,26 @@
-html,
-:root {
+:root,
+.sdds-mode-light {
   --sdds-message-color: var(--sdds-grey-958);
   --sdds-message-background-primary: var(--sdds-grey-50);
   --sdds-message-background-secondary: var(--sdds-white);
   --sdds-message-background: var(--sdds-message-background-primary);
   --sdds-message-type-error-background: var(--sdds-red-50);
 
-  .sdds-mode-light {
-    --sdds-message-color: var(--sdds-grey-958);
-    --sdds-message-background-primary: var(--sdds-grey-50);
-    --sdds-message-background-secondary: var(--sdds-white);
+  .sdds-mode-variant-primary {
     --sdds-message-background: var(--sdds-message-background-primary);
-    --sdds-message-type-error-background: var(--sdds-red-50);
-
-    .sdds-mode-variant-primary {
-      --sdds-message-background: var(--sdds-message-background-primary);
-    }
-
-    .sdds-mode-variant-secondary {
-      --sdds-message-background: var(--sdds-message-background-secondary);
-    }
   }
 
-  .sdds-mode-dark {
-    --sdds-message-color: var(--sdds-grey-50);
-    --sdds-message-background-primary: var(--sdds-grey-900);
-    --sdds-message-background-secondary: var(--sdds-grey-868);
-    --sdds-message-background: var(--sdds-message-background-primary);
-    --sdds-message-type-error-background: rgb(255 35 64 / 24%);
+  .sdds-mode-variant-secondary {
+    --sdds-message-background: var(--sdds-message-background-secondary);
   }
+}
+
+.sdds-mode-dark {
+  --sdds-message-color: var(--sdds-grey-50);
+  --sdds-message-background-primary: var(--sdds-grey-900);
+  --sdds-message-background-secondary: var(--sdds-grey-868);
+  --sdds-message-background: var(--sdds-message-background-primary);
+  --sdds-message-type-error-background: rgb(255 35 64 / 24%);
 
   .sdds-mode-variant-primary {
     --sdds-message-background: var(--sdds-message-background-primary);
