@@ -13,7 +13,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-body-row.scss',
   shadow: true,
 })
-export class TableBodyRow {
+export class TdsTableBodyRow {
   @State() enableMultiselect: boolean = false;
 
   @State() bodyCheckBoxStatus: boolean = false;

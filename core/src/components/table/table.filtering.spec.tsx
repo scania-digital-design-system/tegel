@@ -2,12 +2,12 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { h } from '@stencil/core';
 
-import { TableBody } from './table-body/table-body';
-import { TableHeaderRow } from './table-header/table-header';
-import { Table } from './table/table';
+import { TdsTableBody } from './table-body/table-body';
+import { TdsTableHeaderRow } from './table-header/table-header';
+import { TdsTable } from './table/table';
 import dummyData from './table-body/dummy-data.json';
-import { TableHeaderCell } from './table-header-cell/table-header-cell';
-import { TableToolbar } from './table-toolbar/table-toolbar';
+import { TdsTableHeaderCell } from './table-header-cell/table-header-cell';
+import { TdsTableToolbar } from './table-toolbar/table-toolbar';
 
 const columnKeys = Object.keys(dummyData[0]);
 const crypto = require('crypto');
@@ -22,7 +22,7 @@ describe('tds-table filtering', () => {
     const mismatchingCellSpy = jest.fn();
     const matchingCellSpy = jest.fn();
     const page = await newSpecPage({
-      components: [Table, TableToolbar, TableHeaderRow, TableHeaderCell, TableBody],
+      components: [TdsTable, TdsTableToolbar, TdsTableHeaderRow, TdsTableHeaderCell, TdsTableBody],
       template: () => (
         <tds-table table-id="unique-test-id">
           <tds-table-toolbar table-title="Filter me" enableFiltering />

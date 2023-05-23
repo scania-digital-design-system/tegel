@@ -68,7 +68,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-body.scss',
   shadow: false,
 })
-export class TableBody {
+export class TdsTableBody {
   /** Prop to pass JSON string which enables automatic rendering of table rows and cells  */
   @Prop({ mutable: true }) bodyData: any;
 
@@ -202,7 +202,7 @@ export class TableBody {
 
     // use spread operator to make enable sorting and modifying array, same as using .slice()
     this.bodyDataManipulated = [...this.bodyDataManipulated];
-    this.bodyDataManipulated.sort(TableBody.compareValues(keyValue, sortingDirection));
+    this.bodyDataManipulated.sort(TdsTableBody.compareValues(keyValue, sortingDirection));
   }
 
   // Listen to sortColumnData from table-header-element - TODO

@@ -14,7 +14,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-header.scss',
   shadow: true,
 })
-export class TableHeaderRow {
+export class TdsTableHeaderRow {
   @State() enableMultiselect: boolean = false;
 
   @State() enableExpandableRows: boolean = false;

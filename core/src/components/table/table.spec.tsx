@@ -2,11 +2,11 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { h } from '@stencil/core';
 
-import { TableBody } from './table-body/table-body';
-import { TableHeaderRow } from './table-header/table-header';
-import { Table } from './table/table';
+import { TdsTableBody } from './table-body/table-body';
+import { TdsTableHeaderRow } from './table-header/table-header';
+import { TdsTable } from './table/table';
 import dummyData from './table-body/dummy-data.json';
-import { TableHeaderCell } from './table-header-cell/table-header-cell';
+import { TdsTableHeaderCell } from './table-header-cell/table-header-cell';
 
 const columnKeys = Object.keys(dummyData[0]);
 
@@ -23,7 +23,7 @@ Object.defineProperty(globalThis, 'crypto', {
 describe('tds-table', () => {
   it('should render cells from enable-dummy-data prop', async () => {
     const page = await newSpecPage({
-      components: [Table, TableHeaderRow, TableHeaderCell, TableBody],
+      components: [TdsTable, TdsTableHeaderRow, TdsTableHeaderCell, TdsTableBody],
       template: () => (
         <tds-table table-id="unique-test-id">
           <tds-table-header>
@@ -43,7 +43,7 @@ describe('tds-table', () => {
 
   it('should render cells from body-data prop', async () => {
     const page = await newSpecPage({
-      components: [Table, TableHeaderRow, TableHeaderCell, TableBody],
+      components: [TdsTable, TdsTableHeaderRow, TdsTableHeaderCell, TdsTableBody],
       template: () => (
         <tds-table table-id="unique-test-id">
           <tds-table-header>

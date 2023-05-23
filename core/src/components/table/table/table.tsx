@@ -24,7 +24,7 @@ export type InternalTdsTablePropChange = {
   styleUrl: 'table.scss',
   shadow: true,
 })
-export class Table {
+export class TdsTable {
   /** Enables style with vertical dividers between columns */
   @Prop({ reflect: true }) verticalDividers: boolean = false;
 

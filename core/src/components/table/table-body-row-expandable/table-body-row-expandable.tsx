@@ -22,7 +22,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-body-row-expandable.scss',
   shadow: true,
 })
-export class TableBodyRowExpandable {
+export class TdsTableBodyRowExpandable {
   /** In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too */
   @Prop() colSpan: number = null;
 

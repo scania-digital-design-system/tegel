@@ -22,7 +22,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-toolbar.scss',
   shadow: true,
 })
-export class TableToolbar {
+export class TdsTableToolbar {
   /** Adds title to the Table */
   @Prop({ reflect: true }) tableTitle: string = '';
 

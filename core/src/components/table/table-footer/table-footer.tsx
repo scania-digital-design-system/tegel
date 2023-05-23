@@ -22,7 +22,7 @@ function removeShakeAnimation(e: AnimationEvent & { target: HTMLElement }) {
   styleUrl: 'table-footer.scss',
   shadow: true,
 })
-export class TableFooter {
+export class TdsTableFooter {
   /** Enable pagination and show pagination controls  */
   @Prop({ reflect: true }) pagination: boolean = false;
 

@@ -24,7 +24,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-header-cell.scss',
   shadow: true,
 })
-export class TableHeaderCell {
+export class TdsTableHeaderCell {
   /** The Value of column key, usually comes from JSON, needed for sorting */
   @Prop({ reflect: true }) columnKey: string;
 

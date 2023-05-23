@@ -11,7 +11,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   styleUrl: 'table-body-cell.scss',
   shadow: true,
 })
-export class TableBodyCell {
+export class TdsTableBodyCell {
   /** Value that will be presented as text inside a cell */
   @Prop({ reflect: true }) cellValue: string | number;
 
