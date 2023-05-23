@@ -190,19 +190,19 @@ const datetimeTemplate = ({
       ${helper ? `helper="${helper}" ` : ''}
       >
     </tds-datetime>
-
+  </div>
 
     <script>
     /* DEMO Code: Used only for Storybook demo purposes */
-      datetimeElement = document.getElementById('storybook-datetime');
+      datetimeElement = document.querySelector('tds-datetime');
       datetimeElement.addEventListener('tdsChange', (event) => {
-        console.log("Firing tdsChange: " + event.target.value);
+        console.log(event);
       });
       datetimeElement.addEventListener('tdsFocus', (event) => {
-        console.log("Firing tdsFocus: " + event.target.value);
+        console.log(event);
       });
       datetimeElement.addEventListener('tdsBlur', (event) => {
-        console.log("Firing tdsBlur: " + event.target.value);
+        console.log(event);
       });
     </script>
 `,

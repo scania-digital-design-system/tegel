@@ -15,7 +15,6 @@
 
 ### Used by
 
- - [sdds-banner](../banner)
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
  - [sdds-folder-tabs](../tabs/folder-tabs)
@@ -34,15 +33,14 @@
  - [sdds-toast](../toast)
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
+ - [tds-datetime](../datetime)
  - [tds-footer-group](../footer/footer-group)
  - [tds-message](../message)
  - [tds-slider](../slider)
- - [tds-datetime](../datetime)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-banner --> tds-icon
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
   sdds-folder-tabs --> tds-icon
@@ -61,10 +59,10 @@ graph TD;
   sdds-toast --> tds-icon
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
+  tds-datetime --> tds-icon
   tds-footer-group --> tds-icon
   tds-message --> tds-icon
   tds-slider --> tds-icon
-  tds-datetime --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
