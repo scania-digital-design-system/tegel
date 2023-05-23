@@ -45,7 +45,6 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-banner --> tds-icon
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
   sdds-folder-tabs --> tds-icon
