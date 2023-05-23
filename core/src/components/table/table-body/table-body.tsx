@@ -205,7 +205,7 @@ export class TableBody {
     this.bodyDataManipulated.sort(TableBody.compareValues(keyValue, sortingDirection));
   }
 
-  // Listen to sortColumnData from data-table-header-element - TODO
+  // Listen to sortColumnData from table-header-element - TODO
   @Listen('internalSddsSortChange', { target: 'body' })
   updateOptionsContent(event: CustomEvent<any>) {
     const { tableId, columnKey, sortingDirection } = event.detail;

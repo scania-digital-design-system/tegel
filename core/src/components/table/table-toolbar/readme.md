@@ -10,7 +10,7 @@
 | Property          | Attribute          | Description                  | Type      | Default |
 | ----------------- | ------------------ | ---------------------------- | --------- | ------- |
 | `enableFiltering` | `enable-filtering` | Enables preview of searchbar | `boolean` | `false` |
-| `tableTitle`      | `table-title`      | Adds title to the data-table | `string`  | `''`    |
+| `tableTitle`      | `table-title`      | Adds title to the table      | `string`  | `''`    |
 
 
 ## Events

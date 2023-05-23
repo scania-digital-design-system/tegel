@@ -10,9 +10,9 @@
     letter-spacing: var(--sdds-headline-07-ls);
     display: table-cell;
     text-align: left;
-    color: var(--sdds-data-table-color);
-    background-color: var(--sdds-data-table-header-background);
-    border-bottom: 1px solid var(--sdds-data-table-divider);
+    color: var(--sdds-table-color);
+    background-color: var(--sdds-table-header-background);
+    border-bottom: 1px solid var(--sdds-table-divider);
     height: 48px;
     box-sizing: border-box;
 
@@ -25,8 +25,8 @@
     border-top-left-radius: 4px;
   }
 
-  // Extra rule for label use in data-data-table
-  .sdds-form-label--data-table {
+  // Extra rule for label use in data-table
+  .sdds-form-label--table {
     width: 100%;
     height: 48px;
     display: flex;
@@ -59,7 +59,7 @@
   }
 
   ::slotted(sdds-header-cell:hover) {
-    background-color: var(--sdds-data-table-header-background-hover);
+    background-color: var(--sdds-table-header-background-hover);
   }
 }
 
@@ -68,15 +68,15 @@
     height: 32px;
   }
 
-  // Extra rule for label use in data-data-table
-  .sdds-form-label--data-table {
+  // Extra rule for label use in data-table
+  .sdds-form-label--table {
     height: 32px;
   }
 }
 
 :host(.sdds-table--divider) {
   .sdds-table__header-cell--checkbox {
-    border-right: 1px solid var(--sdds-data-table-divider);
+    border-right: 1px solid var(--sdds-table-divider);
   }
 }
 

@@ -7,7 +7,7 @@
   letter-spacing: var(--sdds-detail-02-ls);
   display: table-cell;
   box-sizing: border-box;
-  color: var(--sdds-data-table-color);
+  color: var(--sdds-table-color);
   padding: var(--sdds-spacing-element-16);
   min-width: 192px;
   vertical-align: top;
@@ -20,7 +20,7 @@
 }
 
 :host(.sdds-table__body-cell--hover) {
-  background-color: var(--sdds-data-table-body-cell-background-hover);
+  background-color: var(--sdds-table-body-cell-background-hover);
 }
 
 :host(.sdds-table__compact) {
@@ -28,7 +28,7 @@
 }
 
 :host(.sdds-table--divider) {
-  border-right: 1px solid var(--sdds-data-table-divider);
+  border-right: 1px solid var(--sdds-table-divider);
 }
 
 :host(.sdds-table--divider:last-of-type) {

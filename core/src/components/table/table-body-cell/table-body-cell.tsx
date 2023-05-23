@@ -53,7 +53,7 @@ export class TableBodyCell {
     }
   }
 
-  // Listen to headKey from data-table-header-element
+  // Listen to headKey from table-header-element
   @Listen('internalSddsHover', { target: 'body' })
   internalSddsHoverListener(event: CustomEvent<any>) {
     const { tableId, key } = event.detail;
@@ -63,7 +63,7 @@ export class TableBodyCell {
     }
   }
 
-  // Listen to internalSddsTextAlign from data-table-header-element
+  // Listen to internalSddsTextAlign from table-header-element
   @Listen('internalSddsTextAlign', { target: 'body' })
   internalSddsTextAlignListener(event: CustomEvent<any>) {
     const [receivedID, receivedKey, receivedTextAlign] = event.detail;

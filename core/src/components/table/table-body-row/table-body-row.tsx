@@ -131,7 +131,7 @@ export class TableBodyRow {
         }}
       >
         {this.enableMultiselect && (
-          <td class="sdds-table__body-cell sdds-table__body-cell--checkbox sdds-form-label sdds-form-label--data-table">
+          <td class="sdds-table__body-cell sdds-table__body-cell--checkbox sdds-form-label sdds-form-label--table">
             <sdds-checkbox
               onSddsChange={(event) => this.bodyCheckBoxClicked(event)}
               checked={this.bodyCheckBoxStatus}

@@ -139,7 +139,7 @@ export class TableHeaderCell {
     }
   }
 
-  // Listen to parent data-table if sorting is allowed
+  // Listen to parent table if sorting is allowed
   @Listen('internalSddsSortingChange', { target: 'body' })
   internalSddsSortingChangeListener(event: CustomEvent<any>) {
     const [receivedID, receivedSortingStatus] = event.detail;

@@ -7,9 +7,9 @@
   letter-spacing: var(--sdds-headline-07-ls);
   display: table-cell;
   text-align: left;
-  color: var(--sdds-data-table-color);
-  background-color: var(--sdds-data-table-header-background);
-  border-bottom: 1px solid var(--sdds-data-table-header-background-hover);
+  color: var(--sdds-table-color);
+  background-color: var(--sdds-table-header-background);
+  border-bottom: 1px solid var(--sdds-table-header-background-hover);
   padding: 0;
   height: 48px;
   min-width: 192px;
@@ -40,7 +40,7 @@
     transition: background-color 200ms ease;
 
     &:focus {
-      outline: 2px solid var(--sdds-data-table-header-btn-focus);
+      outline: 2px solid var(--sdds-table-header-btn-focus);
       outline-offset: -2px;
 
       .sdds-table__header-button-icon {
@@ -52,7 +52,7 @@
       font: var(--sdds-headline-07);
       letter-spacing: var(--sdds-headline-07-ls);
       text-align: left;
-      color: var(--sdds-data-table-header-btn-color);
+      color: var(--sdds-table-header-btn-color);
     }
 
     .sdds-table__header-button-icon {
@@ -62,7 +62,7 @@
       opacity: 0;
       transform-origin: center;
       transition: opacity 200ms ease-in, transform 200ms ease;
-      fill: var(--sdds-data-table-color);
+      fill: var(--sdds-table-color);
     }
 
     &:hover {
@@ -83,10 +83,10 @@
 
 :host(.sdds-table__header-cell--is-sorted) {
   .sdds-table__header-button {
-    background-color: var(--sdds-data-table-header-btn-background);
+    background-color: var(--sdds-table-header-btn-background);
 
     &:hover {
-      background-color: var(--sdds-data-table-header-btn-background-hover);
+      background-color: var(--sdds-table-header-btn-background-hover);
     }
 
     .sdds-table__header-button-icon {
@@ -104,7 +104,7 @@
 }
 
 :host(.sdds-table--divider) {
-  border-right: 1px solid var(--sdds-data-table-divider);
+  border-right: 1px solid var(--sdds-table-divider);
 }
 
 :host(.sdds-table--divider:last-of-type) {

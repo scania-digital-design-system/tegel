@@ -128,7 +128,7 @@ export class TableHeaderRow {
         <tr>
           {this.enableMultiselect && (
             <th class="sdds-table__header-cell sdds-table__header-cell--checkbox">
-              <div class="sdds-form-label sdds-form-label--data-table">
+              <div class="sdds-form-label sdds-form-label--table">
                 <sdds-checkbox
                   checked={this.mainCheckboxSelected}
                   onSddsChange={(event) => this.headCheckBoxClicked(event)}

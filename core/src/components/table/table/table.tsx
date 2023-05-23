@@ -28,17 +28,17 @@ export class Table {
   /** Enables style with vertical dividers between columns */
   @Prop({ reflect: true }) verticalDividers: boolean = false;
 
-  /** Enables style where data-table toolbar, rows and footer are less high */
+  /** Enables style where table toolbar, rows and footer are less high */
   @Prop({ reflect: true }) compactDesign: boolean = false;
 
-  /** Enables to customise width on data-table columns */
+  /** Enables to customise width on table columns */
   @Prop({ reflect: true }) noMinWidth: boolean;
-  // TODO: Due to unknown reason, one of this items has to be left as is. If all are false, it seems like emitting is not properly done and it affects other events in data table. Try setting it and observe text-align set on header cell
+  // TODO: Due to unknown reason, one of this items has to be left as is. If all are false, it seems like emitting is not properly done and it affects other events in table. Try setting it and observe text-align set on header cell
 
-  /** Enables multiselect feature of data-table */
+  /** Enables multiselect feature of table */
   @Prop({ reflect: true }) enableMultiselect: boolean = false;
 
-  /** Enables extended row feature of data-table */
+  /** Enables extended row feature of table */
   @Prop({ reflect: true }) enableExpandableRows: boolean = false;
 
   /** Enables table to take 100% available width with equal spacing of columns */

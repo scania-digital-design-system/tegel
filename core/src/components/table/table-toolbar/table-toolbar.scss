@@ -5,8 +5,8 @@
 
   display: table-caption;
   position: relative;
-  background-color: var(--sdds-data-table-toolbar-background);
-  color: var(--sdds-data-table-color);
+  background-color: var(--sdds-table-toolbar-background);
+  color: var(--sdds-table-color);
   padding: 0 var(--sdds-spacing-element-16);
   height: 64px;
   border-top-left-radius: 4px;
@@ -63,17 +63,17 @@
     &:focus-within,
     &.sdds-table__searchbar--active {
       width: 208px;
-      background-color: var(--sdds-data-table-toolbar-searchbar-background);
+      background-color: var(--sdds-table-toolbar-searchbar-background);
 
       &:hover {
-        background-color: var(--sdds-data-table-toolbar-searchbar-background);
+        background-color: var(--sdds-table-toolbar-searchbar-background);
       }
     }
 
     .sdds-table__searchbar-input {
       font: var(--sdds-detail-02);
       letter-spacing: var(--sdds-detail-02-ls);
-      color: var(--sdds-data-table-color);
+      color: var(--sdds-table-color);
       z-index: 1;
       width: 100%;
       height: 100%;
@@ -84,12 +84,12 @@
       cursor: pointer;
 
       :focus {
-        background-color: var(--sdds-data-table-toolbar-searchbar-background);
+        background-color: var(--sdds-table-toolbar-searchbar-background);
       }
     }
 
     &:hover {
-      background-color: var(--sdds-data-table-toolbar-searchbar-background-hover);
+      background-color: var(--sdds-table-toolbar-searchbar-background-hover);
     }
 
     .sdds-table__searchbar-icon {

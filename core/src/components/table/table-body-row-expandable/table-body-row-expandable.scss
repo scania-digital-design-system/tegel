@@ -9,15 +9,15 @@
   .sdds-table__row,
   .sdds-table__row-extend {
     display: table-row;
-    border-bottom: 1px solid var(--sdds-data-table-divider);
-    background-color: var(--sdds-data-table-body-row-background);
+    border-bottom: 1px solid var(--sdds-table-divider);
+    background-color: var(--sdds-table-body-row-background);
     transition: background-color 200ms ease;
-    color: var(--sdds-data-table-color);
+    color: var(--sdds-table-color);
   }
 
   .sdds-table__row:hover,
   .sdds-table__row-extend:hover {
-    background-color: var(--sdds-data-table-body-row-background-hover);
+    background-color: var(--sdds-table-body-row-background-hover);
   }
 
   .sdds-table__expand-control-container {
@@ -57,14 +57,14 @@
 
     .sdds-table__cell-expand {
       padding: 16px 16px 16px 66px;
-      color: var(--sdds-data-table-color);
+      color: var(--sdds-table-color);
     }
   }
 }
 
 :host(.sdds-table__row-expand--active) {
   .sdds-table__row {
-    background-color: var(--sdds-data-table-body-row-background-selected);
+    background-color: var(--sdds-table-body-row-background-selected);
   }
 
   .sdds-table__expand-control-container {
@@ -74,7 +74,7 @@
   }
 
   .sdds-table__row-expand {
-    background-color: var(--sdds-data-table-body-row-background-selected);
+    background-color: var(--sdds-table-body-row-background-selected);
     display: table-row;
   }
 }
@@ -94,6 +94,6 @@
 
 :host(.sdds-table--divider) {
   .sdds-table__cell--expand {
-    border-right: 1px solid var(--sdds-data-table-divider);
+    border-right: 1px solid var(--sdds-table-divider);
   }
 }

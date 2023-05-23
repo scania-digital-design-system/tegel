@@ -4,10 +4,10 @@
   @include tds-box-sizing;
 
   display: table-row;
-  border-bottom: 1px solid var(--sdds-data-table-divider);
-  background-color: var(--sdds-data-table-body-row-background);
+  border-bottom: 1px solid var(--sdds-table-divider);
+  background-color: var(--sdds-table-body-row-background);
   transition: background-color 200ms ease;
-  color: var(--sdds-data-table-color);
+  color: var(--sdds-table-color);
 
   .sdds-table__body-cell--checkbox {
     min-width: 48px;
@@ -17,15 +17,15 @@
 }
 
 :host(.sdds-table__row:hover) {
-  background-color: var(--sdds-data-table-body-row-background-hover);
+  background-color: var(--sdds-table-body-row-background-hover);
 }
 
 :host(.sdds-table__row--selected) {
-  background-color: var(--sdds-data-table-body-row-background-active);
+  background-color: var(--sdds-table-body-row-background-active);
 }
 
 :host(.sdds-table__row--selected:hover) {
-  background-color: var(--sdds-data-table-body-row-background-active-hover);
+  background-color: var(--sdds-table-body-row-background-active-hover);
 }
 
 :host(.sdds-table__row--hidden) {
@@ -38,8 +38,8 @@
 }
 
 :host {
-  // Extra rule for label use in data-data-table
-  .sdds-form-label--data-table {
+  // Extra rule for label use in data-table
+  .sdds-form-label--table {
     width: 100%;
     height: 48px;
     display: flex;
@@ -50,13 +50,13 @@
 }
 
 :host(.sdds-table__compact) {
-  .sdds-form-label--data-table {
+  .sdds-form-label--table {
     height: 32px;
   }
 }
 
 :host(.sdds-table--divider) {
   .sdds-table__body-cell--checkbox {
-    border-right: 1px solid var(--sdds-data-table-divider);
+    border-right: 1px solid var(--sdds-table-divider);
   }
 }
