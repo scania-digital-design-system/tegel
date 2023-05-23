@@ -1,28 +1,28 @@
 import { formatHtmlPreview } from '../../utils/utils';
-import sddsTable from './table/readme.md';
-import sddsTableToolbar from './table-toolbar/readme.md';
-import sddsHeader from './table-header/readme.md';
-import sddsHeaderCell from './table-header-cell/readme.md';
-import sddsTableBody from './table-body/readme.md';
-import sddsBodyRow from './table-body-row/readme.md';
-import sddsBodyRowExpandable from './table-body-row-expandable/readme.md';
-import sddsBodyCell from './table-body-cell/readme.md';
-import sddsTableFooter from './table-footer/readme.md';
+import tdsTable from './table/readme.md';
+import tdsTableToolbar from './table-toolbar/readme.md';
+import tdsHeader from './table-header/readme.md';
+import tdsHeaderCell from './table-header-cell/readme.md';
+import tdsTableBody from './table-body/readme.md';
+import tdsBodyRow from './table-body-row/readme.md';
+import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
+import tdsBodyCell from './table-body-cell/readme.md';
+import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
   title: `${ComponentsFolder}/Table`,
   parameters: {
     notes: {
-      'sdds-table': sddsTable,
-      'sdds-table-toolbar': sddsTableToolbar,
-      'sdds-header': sddsHeader,
-      'sdds-header-cell': sddsHeaderCell,
-      'sdds-table-body': sddsTableBody,
-      'sdds-body-row': sddsBodyRow,
-      'sdds-body-row-expandable': sddsBodyRowExpandable,
-      'sdds-body-cell': sddsBodyCell,
-      'sdds-table-footer': sddsTableFooter,
+      'tds-table': tdsTable,
+      'tds-table-toolbar': tdsTableToolbar,
+      'tds-header': tdsHeader,
+      'tds-header-cell': tdsHeaderCell,
+      'tds-table-body': tdsTableBody,
+      'tds-body-row': tdsBodyRow,
+      'tds-body-row-expandable': tdsBodyRowExpandable,
+      'tds-body-cell': tdsBodyCell,
+      'tds-table-footer': tdsTableFooter,
     },
   },
   argTypes: {
@@ -141,62 +141,62 @@ const EventListenersTemplate = ({
   formatHtmlPreview(`
     <script>
       // Note: Script here is only for demo purposes
-      window.addEventListener('sddsFilterChange', e => {
-        document.getElementById('event-name-textarea').value = 'sddsFilterChange';
+      window.addEventListener('tdsFilterChange', e => {
+        document.getElementById('event-name-textarea').value = 'tdsFilterChange';
         document.getElementById('event-value-textarea').value = JSON.stringify(e.detail)
       });
 
-      window.addEventListener('sddsSortChange', e => {
-        document.getElementById('event-name-textarea').value = 'sddsSortChange';
+      window.addEventListener('tdsSortChange', e => {
+        document.getElementById('event-name-textarea').value = 'tdsSortChange';
         document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
       });
 
-      window.addEventListener('sddsPageChange', e => {
-        document.getElementById('event-name-textarea').value = 'sddsPageChange';
+      window.addEventListener('tdsPageChange', e => {
+        document.getElementById('event-name-textarea').value = 'tdsPageChange';
         document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
       });
     </script>
 
-   <sdds-table
+   <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       enable-responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
    >
-          <sdds-table-toolbar table-title="Disabled filtering, pagination and sorting - left to the user to listen to events" enable-filtering></sdds-table-toolbar>
-          <sdds-table-header>
-              <sdds-header-cell column-key='truck' column-title='Truck type' sortable ${
+          <tds-table-toolbar table-title="Disabled filtering, pagination and sorting - left to the user to listen to events" enable-filtering></tds-table-toolbar>
+          <tds-table-header>
+              <tds-header-cell column-key='truck' column-title='Truck type' sortable ${
                 column1Width ? `custom-width="${column1Width}"` : ''
-              }></sdds-header-cell>
-              <sdds-header-cell column-key='driver' column-title='Driver name' sortable ${
+              }></tds-header-cell>
+              <tds-header-cell column-key='driver' column-title='Driver name' sortable ${
                 column2Width ? `custom-width="${column2Width}"` : ''
-              }></sdds-header-cell>
-              <sdds-header-cell column-key='country' column-title='Country' sortable ${
+              }></tds-header-cell>
+              <tds-header-cell column-key='country' column-title='Country' sortable ${
                 column3Width ? `custom-width="${column3Width}"` : ''
-              }></sdds-header-cell>
-              <sdds-header-cell column-key='mileage' column-title='Mileage' sortable text-align='right' ${
+              }></tds-header-cell>
+              <tds-header-cell column-key='mileage' column-title='Mileage' sortable text-align='right' ${
                 column4Width ? `custom-width="${column4Width}"` : ''
-              }></sdds-header-cell>
-          </sdds-table-header>
-          <sdds-table-body disable-pagination-function disable-filtering-function disable-sorting-function enable-json-data>
-              <sdds-table-body-row>
-                  <sdds-body-cell cell-value="Test value 5" cell-key="truck"></sdds-body-cell>
-                  <sdds-body-cell cell-value="Test value 6" cell-key="driver"></sdds-body-cell>
-                  <sdds-body-cell cell-value="Test value 7" cell-key="country"></sdds-body-cell>
-                  <sdds-body-cell cell-value="Test value 8" cell-key="mileage"></sdds-body-cell>
-              </sdds-table-body-row>
-          </sdds-table-body>
-        <sdds-table-footer pagination max-pages="10"></sdds-table-footer>
-  </sdds-table>
+              }></tds-header-cell>
+          </tds-table-header>
+          <tds-table-body disable-pagination-function disable-filtering-function disable-sorting-function enable-json-data>
+              <tds-table-body-row>
+                  <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+              </tds-table-body-row>
+          </tds-table-body>
+        <tds-table-footer pagination max-pages="10"></tds-table-footer>
+  </tds-table>
 
   <!-- Note: Code below is just for demo purposes -->
-  <div class="sdds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
-  <p class="sdds-u-mt0">Note: This box works only in "Canvas" tab.</p>
-    <h5 class="sdds-u-mt0 sdds-u-mb0">Event test box</h5>
-    <h6 class="sdds-u-mt1 sdds-u-mb0">Event name:</h6>
+  <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
+  <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
+    <h5 class="tds-u-mt0 tds-u-mb0">Event test box</h5>
+    <h6 class="tds-u-mt1 tds-u-mb0">Event name:</h6>
     <textarea id="event-name-textarea" rows="1" cols="50" readonly></textarea>
-    <h6 class="sdds-u-mt0 sdds-u-mb0">Events value (aka detail)</h6>
+    <h6 class="tds-u-mt0 tds-u-mb0">Events value (aka detail)</h6>
     <br>
     <textarea id="event-value-textarea" rows="1" cols="50" readonly></textarea>
   </div>`);

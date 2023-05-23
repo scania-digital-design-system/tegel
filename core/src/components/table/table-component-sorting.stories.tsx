@@ -1,28 +1,28 @@
 import { formatHtmlPreview } from '../../utils/utils';
-import sddsTable from './table/readme.md';
-import sddsTableToolbar from './table-toolbar/readme.md';
-import sddsHeader from './table-header/readme.md';
-import sddsHeaderCell from './table-header-cell/readme.md';
-import sddsTableBody from './table-body/readme.md';
-import sddsBodyRow from './table-body-row/readme.md';
-import sddsBodyRowExpandable from './table-body-row-expandable/readme.md';
-import sddsBodyCell from './table-body-cell/readme.md';
-import sddsTableFooter from './table-footer/readme.md';
+import tdsTable from './table/readme.md';
+import tdsTableToolbar from './table-toolbar/readme.md';
+import tdsHeader from './table-header/readme.md';
+import tdsHeaderCell from './table-header-cell/readme.md';
+import tdsTableBody from './table-body/readme.md';
+import tdsBodyRow from './table-body-row/readme.md';
+import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
+import tdsBodyCell from './table-body-cell/readme.md';
+import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
   title: `${ComponentsFolder}/Table`,
   parameters: {
     notes: {
-      'sdds-table': sddsTable,
-      'sdds-table-toolbar': sddsTableToolbar,
-      'sdds-header': sddsHeader,
-      'sdds-header-cell': sddsHeaderCell,
-      'sdds-table-body': sddsTableBody,
-      'sdds-body-row': sddsBodyRow,
-      'sdds-body-row-expandable': sddsBodyRowExpandable,
-      'sdds-body-cell': sddsBodyCell,
-      'sdds-table-footer': sddsTableFooter,
+      'tds-table': tdsTable,
+      'tds-table-toolbar': tdsTableToolbar,
+      'tds-header': tdsHeader,
+      'tds-header-cell': tdsHeaderCell,
+      'tds-table-body': tdsTableBody,
+      'tds-body-row': tdsBodyRow,
+      'tds-body-row-expandable': tdsBodyRowExpandable,
+      'tds-body-cell': tdsBodyCell,
+      'tds-table-footer': tdsTableFooter,
     },
   },
   argTypes: {
@@ -187,36 +187,36 @@ const SortingTemplate = ({
   column4Width,
 }) =>
   formatHtmlPreview(`
-    <sdds-table
+    <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       enable-responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
-      <sdds-table-toolbar table-title="Sorting"></sdds-table-toolbar>
-          <sdds-table-header>
-              <sdds-header-cell column-key='truck' column-title='Truck type' sortable="${column1sortable}" ${
+      <tds-table-toolbar table-title="Sorting"></tds-table-toolbar>
+          <tds-table-header>
+              <tds-header-cell column-key='truck' column-title='Truck type' sortable="${column1sortable}" ${
     column1Width ? `custom-width="${column1Width}"` : ''
-  }></sdds-header-cell>
-              <sdds-header-cell column-key='driver' column-title='Driver name' sortable="${column2sortable}" ${
+  }></tds-header-cell>
+              <tds-header-cell column-key='driver' column-title='Driver name' sortable="${column2sortable}" ${
     column2Width ? `custom-width="${column2Width}"` : ''
-  }></sdds-header-cell>
-              <sdds-header-cell column-key='country' column-title='Country' sortable="${column3sortable}" ${
+  }></tds-header-cell>
+              <tds-header-cell column-key='country' column-title='Country' sortable="${column3sortable}" ${
     column3Width ? `custom-width="${column3Width}"` : ''
-  }></sdds-header-cell>
-              <sdds-header-cell column-key='mileage' column-title='Mileage' sortable="${column4sortable}" text-align='right' ${
+  }></tds-header-cell>
+              <tds-header-cell column-key='mileage' column-title='Mileage' sortable="${column4sortable}" text-align='right' ${
     column4Width ? `custom-width="${column4Width}"` : ''
-  }></sdds-header-cell>
-          </sdds-table-header>
-          <sdds-table-body enable-dummy-data>
-          </sdds-table-body>
-  </sdds-table>
+  }></tds-header-cell>
+          </tds-table-header>
+          <tds-table-body enable-dummy-data>
+          </tds-table-body>
+  </tds-table>
   
   
   <script>
 
-    document.addEventListener('sddsSortChange', (event) => {
+    document.addEventListener('tdsSortChange', (event) => {
       console.log(event)
     })
   

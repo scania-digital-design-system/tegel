@@ -1,4 +1,4 @@
-# sdds-table-body-row-expended
+# tds-table-body-row-expended
 
 
 
