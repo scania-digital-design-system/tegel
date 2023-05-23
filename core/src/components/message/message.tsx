@@ -1,11 +1,11 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-message',
-  styleUrl: 'sdds-message.scss',
+  tag: 'tds-message',
+  styleUrl: 'message.scss',
   shadow: true,
 })
-export class SddsMessage {
+export class TdsMessage {
   /** Header text for the component. */
   @Prop() header: string;
 
@@ -43,7 +43,7 @@ export class SddsMessage {
           class={`
         message-wrapper ${this.type}
         ${this.minimal ? 'message-minimal' : ''}
-        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}`}
+        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
         >
           {!this.noIcon && <tds-icon name={this.getIconName()} size="20px"></tds-icon>}
           <div class={`message-content`}>

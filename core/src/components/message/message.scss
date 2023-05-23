@@ -1,0 +1,89 @@
+:host {
+  .message-wrapper {
+    display: flex;
+    padding: 16px;
+    background-color: var(--tds-message-background);
+    border-radius: 4px;
+
+    &.information {
+      border-left: 4px solid var(--tds-information);
+
+      tds-icon {
+        color: var(--tds-information);
+      }
+    }
+
+    &.success {
+      border-left: 4px solid var(--tds-positive);
+
+      tds-icon {
+        color: var(--tds-positive);
+      }
+    }
+
+    &.error {
+      background-color: var(--tds-message-type-error-background);
+      border-left: 4px solid var(--tds-negative);
+
+      tds-icon {
+        color: var(--tds-negative);
+      }
+    }
+
+    &.warning {
+      border-left: 4px solid var(--tds-warning);
+
+      tds-icon {
+        color: var(--tds-warning);
+      }
+    }
+
+    &.message-minimal {
+      border: none;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      background-color: transparent;
+
+      .message-header {
+        font: var(--tds-detail-02);
+        letter-spacing: var(--tds-detail-02-ls);
+      }
+
+      tds-icon {
+        padding-right: 8px;
+      }
+    }
+  }
+
+  tds-icon {
+    padding-right: 16px;
+  }
+
+  .message-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--tds-message-color);
+    padding: 2px 0;
+
+    .message-header {
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+    }
+
+    .message-extended-message {
+      color: var(--tds-message-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+    }
+  }
+
+  .tds-mode-variant-primary {
+    --tds-message-background: var(--tds-message-background-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--tds-message-background-secondary);
+  }
+}
