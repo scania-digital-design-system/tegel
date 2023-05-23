@@ -1,4 +1,4 @@
-# sdds-navigation-tabs-item
+# tds-navigation-tab
 
 
 

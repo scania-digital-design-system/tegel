@@ -1,81 +1,81 @@
 :root,
-.sdds-mode-light {
+.tds-mode-light {
   /* Horizontal divider */
-  --sdds-inline-tabs-horizontal-divider-background: var(--sdds-blue-900);
-  --sdds-inline-tabs-horizontal-divider-opacity: 0.16;
-  --sdds-inline-tabs-tab-background-primary: var(--sdds-white);
-  --sdds-inline-tabs-tab-background-secondary: var(--sdds-grey-50);
-  --sdds-inline-tabs-background: var(--sdds-inline-tabs-tab-background-primary);
+  --tds-inline-tabs-horizontal-divider-background: var(--tds-blue-900);
+  --tds-inline-tabs-horizontal-divider-opacity: 0.16;
+  --tds-inline-tabs-tab-background-primary: var(--tds-white);
+  --tds-inline-tabs-tab-background-secondary: var(--tds-grey-50);
+  --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
 
   /* Scroll button */
-  --sdds-inline-tabs-scroll-btn-color: var(--sdds-grey-958);
-  --sdds-inline-tabs-scroll-btn-background: var(--sdds-white);
-  --sdds-inline-tabs-scroll-btn-background-hover: var(--sdds-grey-300);
-  --sdds-inline-tabs-scroll-btn-background-active: var(--sdds-grey-400);
-  --sdds-inline-tabs-scroll-btn-primary: var(--sdds-white);
-  --sdds-inline-tabs-scroll-btn-secondary: var(--sdds-grey-50);
+  --tds-inline-tabs-scroll-btn-color: var(--tds-grey-958);
+  --tds-inline-tabs-scroll-btn-background: var(--tds-white);
+  --tds-inline-tabs-scroll-btn-background-hover: var(--tds-grey-300);
+  --tds-inline-tabs-scroll-btn-background-active: var(--tds-grey-400);
+  --tds-inline-tabs-scroll-btn-primary: var(--tds-white);
+  --tds-inline-tabs-scroll-btn-secondary: var(--tds-grey-50);
 
   /* Tab */
-  --sdds-inline-tabs-tab-color: rgba(0 21 51 /60%); // blue-900
-  --sdds-inline-tabs-tab-color-selected: var(--sdds-grey-958);
-  --sdds-inline-tabs-tab-color-disabled: var(--sdds-blue-900);
-  --sdds-inline-tabs-tab-color-opacity-disabled: 0.38;
-  --sdds-inline-tabs-tab-indicator-background-hover: #d1d5db;
-  --sdds-inline-tabs-tab-color-hover: var(--sdds-grey-958);
-  --sdds-inline-tabs-tab-color-focus: var(--sdds-grey-958);
-  --sdds-inline-tabs-tab-color-active: var(--sdds-grey-958);
-  --sdds-inline-tabs-tab-indicator-background-active: var(--sdds-blue-400);
+  --tds-inline-tabs-tab-color: rgba(0 21 51 /60%); // blue-900
+  --tds-inline-tabs-tab-color-selected: var(--tds-grey-958);
+  --tds-inline-tabs-tab-color-disabled: var(--tds-blue-900);
+  --tds-inline-tabs-tab-color-opacity-disabled: 0.38;
+  --tds-inline-tabs-tab-indicator-background-hover: #d1d5db;
+  --tds-inline-tabs-tab-color-hover: var(--tds-grey-958);
+  --tds-inline-tabs-tab-color-focus: var(--tds-grey-958);
+  --tds-inline-tabs-tab-color-active: var(--tds-grey-958);
+  --tds-inline-tabs-tab-indicator-background-active: var(--tds-blue-400);
 
-  .sdds-mode-variant-primary {
-    --sdds-inline-tabs-background: var(--sdds-inline-tabs-tab-background-primary);
-    --sdds-inline-tabs-scroll-btn-background: var(--sdds-inline-tabs-scroll-btn-primary);
+  .tds-mode-variant-primary {
+    --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
+    --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-inline-tabs-background: var(--sdds-inline-tabs-tab-background-secondary);
-    --sdds-inline-tabs-scroll-btn-background: var(--sdds-inline-tabs-scroll-btn-secondary);
+  .tds-mode-variant-secondary {
+    --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-secondary);
+    --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-secondary);
   }
 }
 
-.sdds-mode-dark {
-  --sdds-inline-tabs-horizontal-divider-background: var(--sdds-blue-100);
-  --sdds-inline-tabs-horizontal-divider-opacity: 0.24;
-  --sdds-inline-tabs-tab-background-primary: var(--sdds-grey-900);
-  --sdds-inline-tabs-tab-background-secondary: var(--sdds-grey-868);
-  --sdds-inline-tabs-background: var(--sdds-inline-tabs-tab-background-primary);
+.tds-mode-dark {
+  --tds-inline-tabs-horizontal-divider-background: var(--tds-blue-100);
+  --tds-inline-tabs-horizontal-divider-opacity: 0.24;
+  --tds-inline-tabs-tab-background-primary: var(--tds-grey-900);
+  --tds-inline-tabs-tab-background-secondary: var(--tds-grey-868);
+  --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
 
   /* Scroll button */
-  --sdds-inline-tabs-scroll-btn-color: var(--sdds-grey-50);
-  --sdds-inline-tabs-scroll-btn-background: var(--sdds-grey-900);
-  --sdds-inline-tabs-scroll-btn-background-hover: var(--sdds-grey-900);
-  --sdds-inline-tabs-scroll-btn-background-active: var(--sdds-grey-900);
-  --sdds-inline-tabs-scroll-btn-primary: var(--sdds-grey-900);
-  --sdds-inline-tabs-scroll-btn-secondary: var(--sdds-grey-800);
+  --tds-inline-tabs-scroll-btn-color: var(--tds-grey-50);
+  --tds-inline-tabs-scroll-btn-background: var(--tds-grey-900);
+  --tds-inline-tabs-scroll-btn-background-hover: var(--tds-grey-900);
+  --tds-inline-tabs-scroll-btn-background-active: var(--tds-grey-900);
+  --tds-inline-tabs-scroll-btn-primary: var(--tds-grey-900);
+  --tds-inline-tabs-scroll-btn-secondary: var(--tds-grey-800);
 
   /* Tab */
-  --sdds-inline-tab-color-opacity: 0.6;
-  --sdds-inline-tab-color-opacity-selected: 1;
-  --sdds-inline-tabs-tab-color: var(--sdds-blue-50);
-  --sdds-inline-tabs-tab-color-selected: var(--sdds-grey-50);
-  --sdds-inline-tabs-tab-color-disabled: var(--sdds-blue-50);
-  --sdds-inline-tabs-tab-color-opacity-disabled: 0.38;
-  --sdds-inline-tab-color-opacity-selected: 1;
-  --sdds-inline-tabs-tab-color: rgba(228 233 241/60%); //blue-50
-  --sdds-inline-tabs-tab-color-selected: var(--sdds-grey-50);
-  --sdds-inline-tabs-tab-color-disabled: var(--sdds-blue-50);
-  --sdds-inline-tabs-tab-indicator-background-hover: #373d46;
-  --sdds-inline-tabs-tab-color-hover: var(--sdds-grey-50);
-  --sdds-inline-tabs-tab-color-focus: var(--sdds-grey-50);
-  --sdds-inline-tabs-tab-color-active: var(--sdds-grey-50);
-  --sdds-inline-tabs-tab-indicator-background-active: var(--sdds-blue-300);
+  --tds-inline-tab-color-opacity: 0.6;
+  --tds-inline-tab-color-opacity-selected: 1;
+  --tds-inline-tabs-tab-color: var(--tds-blue-50);
+  --tds-inline-tabs-tab-color-selected: var(--tds-grey-50);
+  --tds-inline-tabs-tab-color-disabled: var(--tds-blue-50);
+  --tds-inline-tabs-tab-color-opacity-disabled: 0.38;
+  --tds-inline-tab-color-opacity-selected: 1;
+  --tds-inline-tabs-tab-color: rgba(228 233 241/60%); //blue-50
+  --tds-inline-tabs-tab-color-selected: var(--tds-grey-50);
+  --tds-inline-tabs-tab-color-disabled: var(--tds-blue-50);
+  --tds-inline-tabs-tab-indicator-background-hover: #373d46;
+  --tds-inline-tabs-tab-color-hover: var(--tds-grey-50);
+  --tds-inline-tabs-tab-color-focus: var(--tds-grey-50);
+  --tds-inline-tabs-tab-color-active: var(--tds-grey-50);
+  --tds-inline-tabs-tab-indicator-background-active: var(--tds-blue-300);
 
-  .sdds-mode-variant-primary {
-    --sdds-inline-tabs-background: var(--sdds-inline-tabs-tab-background-primary);
-    --sdds-inline-tabs-scroll-btn-background: var(--sdds-inline-tabs-scroll-btn-primary);
+  .tds-mode-variant-primary {
+    --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
+    --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-inline-tabs-background: var(--sdds-inline-tabs-tab-background-secondary);
-    --sdds-inline-tabs-scroll-btn-background: var(--sdds-inline-tabs-scroll-btn-secondary);
+  .tds-mode-variant-secondary {
+    --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-secondary);
+    --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-secondary);
   }
 }
