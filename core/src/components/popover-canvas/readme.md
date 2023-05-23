@@ -1,4 +1,4 @@
-# sdds-popover-canvas
+# tds-popover-canvas
 
 
 
@@ -17,21 +17,6 @@
 | `selector`       | `selector`        | The CSS-selector for an element that will trigger the Popover                                                                                                 | `string`                                                                                                                                                                                                     | `''`        |
 | `show`           | `show`            | Controls whether the Popover is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                                                                                                                                                                                                    | `null`      |
 
-
-## Dependencies
-
-### Used by
-
- - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
- - [sdds-header-launcher](../header/webcomponent/header-launcher)
-
-### Graph
-```mermaid
-graph TD;
-  sdds-header-dropdown --> sdds-popover-canvas
-  sdds-header-launcher --> sdds-popover-canvas
-  style sdds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

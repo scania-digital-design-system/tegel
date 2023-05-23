@@ -1,10 +1,10 @@
 :root,
-.sdds-mode-light {
-  --sdds-popover-canvas-color: var(--sdds-grey-958);
-  --sdds-popover-canvas-background: var(--sdds-white);
+.tds-mode-light {
+  --tds-popover-canvas-color: var(--tds-grey-958);
+  --tds-popover-canvas-background: var(--tds-white);
 }
 
-.sdds-mode-dark {
-  --sdds-popover-canvas-color: var(--sdds-grey-50);
-  --sdds-popover-canvas-background: var(--sdds-grey-900);
+.tds-mode-dark {
+  --tds-popover-canvas-color: var(--tds-grey-50);
+  --tds-popover-canvas-background: var(--tds-grey-900);
 }
