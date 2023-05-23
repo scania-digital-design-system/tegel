@@ -23,7 +23,7 @@ const relevantTableProps: InternalSddsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TableToolbar {
-  /** Adds title to the table */
+  /** Adds title to the Table */
   @Prop({ reflect: true }) tableTitle: string = '';
 
   /** Enables preview of searchbar */
