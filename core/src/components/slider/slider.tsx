@@ -1,11 +1,11 @@
 import { Component, h, Prop, Listen, EventEmitter, Event, Method } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-slider',
+  tag: 'tds-slider',
   styleUrl: 'slider.scss',
   shadow: false,
 })
-export class Slider {
+export class TdsSlider {
   /** Text for label */
   @Prop() label: string = '';
 
@@ -96,12 +96,12 @@ export class Slider {
 
   /** Sends the value of the slider when changed. */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     value: string;
   }>;
 
@@ -227,7 +227,7 @@ export class Slider {
   }
 
   dispatchChangeEvent() {
-    this.sddsChange.emit({ value: this.value });
+    this.tdsChange.emit({ value: this.value });
   }
 
   updateValue() {
@@ -469,9 +469,9 @@ export class Slider {
 
   render() {
     return (
-      <div class={`sdds-slider-wrapper ${this.readonlyState ? 'read-only' : ''}`}>
+      <div class={`tds-slider-wrapper ${this.readonlyState ? 'read-only' : ''}`}>
         <input
-          class="sdds-slider-native-element"
+          class="tds-slider-native-element"
           type="range"
           value={this.value}
           name={this.name}
@@ -481,8 +481,8 @@ export class Slider {
         ></input>
 
         <div
-          class={`sdds-slider ${this.disabledState ? 'disabled' : ''} ${
-            this.useSmall ? 'sdds-slider-small' : ''
+          class={`tds-slider ${this.disabledState ? 'disabled' : ''} ${
+            this.useSmall ? 'tds-slider-small' : ''
           }`}
           ref={(el) => {
             this.wrapperElement = el as HTMLElement;
@@ -491,12 +491,12 @@ export class Slider {
           <label class={this.showTickNumbers && 'offset'}>{this.label}</label>
 
           {this.useInput && (
-            <div class="sdds-slider__input-values">
+            <div class="tds-slider__input-values">
               <div
                 ref={(el) => {
                   this.minusElement = el as HTMLElement;
                 }}
-                class="sdds-slider__input-value min-value"
+                class="tds-slider__input-value min-value"
               >
                 {this.min}
               </div>
@@ -504,23 +504,22 @@ export class Slider {
           )}
 
           {this.useControls && (
-            <div class="sdds-slider__controls">
+            <div class="tds-slider__controls">
               <div
                 ref={(el) => (this.minusElement = el as HTMLElement)}
-                class="sdds-slider__control sdds-slider__control-minus"
+                class="tds-slider__control tds-slider__control-minus"
               >
                 <tds-icon name="minus" size="16px"></tds-icon>
               </div>
             </div>
           )}
 
-          <div class="sdds-slider-inner">
-          
+          <div class="tds-slider-inner">
             {this.tickValues.length > 0 && (
-              <div class="sdds-slider__value-dividers-wrapper">
-                <div class="sdds-slider__value-dividers">
+              <div class="tds-slider__value-dividers-wrapper">
+                <div class="tds-slider__value-dividers">
                   {this.tickValues.map((value) => (
-                    <div class="sdds-slider__value-divider">
+                    <div class="tds-slider__value-divider">
                       {this.showTickNumbers && <span>{value}</span>}
                     </div>
                   ))}
@@ -529,27 +528,27 @@ export class Slider {
             )}
 
             <div
-              class="sdds-slider__track"
+              class="tds-slider__track"
               ref={(el) => {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
             >
               <div
-                class="sdds-slider__track-fill"
+                class="tds-slider__track-fill"
                 ref={(el) => {
                   this.trackFillElement = el as HTMLElement;
                 }}
               ></div>
 
               <div
-                class="sdds-slider__scrubber"
+                class="tds-slider__scrubber"
                 ref={(el) => {
                   this.scrubberElement = el as HTMLElement;
                 }}
               >
                 {this.tooltip && (
-                  <div class="sdds-slider__value">
+                  <div class="tds-slider__value">
                     {this.value}
                     <svg
                       width="18"
@@ -567,7 +566,7 @@ export class Slider {
                 )}
 
                 <div
-                  class="sdds-slider__scrubber-inner"
+                  class="tds-slider__scrubber-inner"
                   ref={(el) => {
                     this.scrubberInnerElement = el as HTMLElement;
                   }}
@@ -577,16 +576,16 @@ export class Slider {
           </div>
 
           {this.useInput && (
-            <div class="sdds-slider__input-values">
+            <div class="tds-slider__input-values">
               <div
                 ref={(el) => {
                   this.minusElement = el as HTMLElement;
                 }}
-                class="sdds-slider__input-value"
+                class="tds-slider__input-value"
               >
                 {this.max}
               </div>
-              <div class="sdds-slider__input-field-wrapper">
+              <div class="tds-slider__input-field-wrapper">
                 <input
                   onFocus={(e) => {
                     if (this.readonlyState) {
@@ -595,7 +594,7 @@ export class Slider {
                     }
                   }}
                   size={this.calculateInputSizeFromMax()}
-                  class="sdds-slider__input-field"
+                  class="tds-slider__input-field"
                   value={this.value}
                   ref={(el) => {
                     this.inputElement = el as HTMLInputElement;
@@ -606,10 +605,10 @@ export class Slider {
           )}
 
           {this.useControls && (
-            <div class="sdds-slider__controls">
+            <div class="tds-slider__controls">
               <div
                 ref={(el) => (this.plusElement = el as HTMLElement)}
-                class="sdds-slider__control sdds-slider__control-plus"
+                class="tds-slider__control tds-slider__control-plus"
               >
                 <tds-icon name="plus" size="16px"></tds-icon>
               </div>

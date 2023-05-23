@@ -1,34 +1,34 @@
 :root,
-.sdds-mode-light {
-  --sdds-slider-label-color: var(--sdds-grey-958);
-  --sdds-slider-thumb-color: var(--sdds-blue-800);
-  --sdds-slider-divider-color: var(--sdds-grey-400);
-  --sdds-slider-track-color: var(--sdds-grey-400);
-  --sdds-slider-track-fill-color: var(--sdds-blue-800);
-  --sdds-slider-input-inputfield-color: var(--sdds-grey-700);
-  --sdds-slider-inputfield-color: var(--sdds-grey-400);
-  --sdds-slider-controls-color: var(--sdds-grey-958);
-  --sdds-slider-inputfield-background: var(--sdds-white);
-  --sdds-slider-inputfield-box-shadow: var(--sdds-grey-400);
-  --sdds-slider-divider-values-color: var(--sdds-grey-958);
-  --sdds-slider-disabled: var(--sdds-grey-400);
-  --sdds-slider-value-tooltip-background: var(--sdds-grey-800);
-  --sdds-slider-value-tooltip-color: var(--sdds-white);
+.tds-mode-light {
+  --tds-slider-label-color: var(--tds-grey-958);
+  --tds-slider-thumb-color: var(--tds-blue-800);
+  --tds-slider-divider-color: var(--tds-grey-400);
+  --tds-slider-track-color: var(--tds-grey-400);
+  --tds-slider-track-fill-color: var(--tds-blue-800);
+  --tds-slider-input-inputfield-color: var(--tds-grey-700);
+  --tds-slider-inputfield-color: var(--tds-grey-400);
+  --tds-slider-controls-color: var(--tds-grey-958);
+  --tds-slider-inputfield-background: var(--tds-white);
+  --tds-slider-inputfield-box-shadow: var(--tds-grey-400);
+  --tds-slider-divider-values-color: var(--tds-grey-958);
+  --tds-slider-disabled: var(--tds-grey-400);
+  --tds-slider-value-tooltip-background: var(--tds-grey-800);
+  --tds-slider-value-tooltip-color: var(--tds-white);
 }
 
-.sdds-mode-dark {
-  --sdds-slider-label-color: var(--sdds-grey-100);
-  --sdds-slider-thumb-color: var(--sdds-grey-100);
-  --sdds-slider-divider-color: var(--sdds-grey-700);
-  --sdds-slider-track-color: var(--sdds-grey-700);
-  --sdds-slider-track-fill-color: var(--sdds-grey-100);
-  --sdds-slider-inputfield-color: var(--sdds-grey-700);
-  --sdds-slider-input-inputfield-color: var(--sdds-grey-400);
-  --sdds-slider-controls-color: var(--sdds-grey-100);
-  --sdds-slider-inputfield-background: var(--sdds-grey-900);
-  --sdds-slider-inputfield-box-shadow: var(--sdds-grey-800);
-  --sdds-slider-divider-values-color: var(--sdds-grey-100);
-  --sdds-slider-disabled: var(--sdds-grey-700);
-  --sdds-slider-value-tooltip-background: var(--sdds-grey-200);
-  --sdds-slider-value-tooltip-color: var(--sdds-grey-958);
+.tds-mode-dark {
+  --tds-slider-label-color: var(--tds-grey-100);
+  --tds-slider-thumb-color: var(--tds-grey-100);
+  --tds-slider-divider-color: var(--tds-grey-700);
+  --tds-slider-track-color: var(--tds-grey-700);
+  --tds-slider-track-fill-color: var(--tds-grey-100);
+  --tds-slider-inputfield-color: var(--tds-grey-700);
+  --tds-slider-input-inputfield-color: var(--tds-grey-400);
+  --tds-slider-controls-color: var(--tds-grey-100);
+  --tds-slider-inputfield-background: var(--tds-grey-900);
+  --tds-slider-inputfield-box-shadow: var(--tds-grey-800);
+  --tds-slider-divider-values-color: var(--tds-grey-100);
+  --tds-slider-disabled: var(--tds-grey-700);
+  --tds-slider-value-tooltip-background: var(--tds-grey-200);
+  --tds-slider-value-tooltip-color: var(--tds-grey-958);
 }
