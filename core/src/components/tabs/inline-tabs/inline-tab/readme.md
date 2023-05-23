@@ -1,4 +1,4 @@
-# sdds-inline-tabs-item
+# tds-inline-tab
 
 
 
