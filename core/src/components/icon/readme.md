@@ -24,10 +24,6 @@
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
  - [sdds-inline-tabs](../tabs/inline-tabs)
- - [sdds-message](../message)
- - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
- - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
- - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
  - [sdds-modal](../modal)
  - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
  - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
@@ -58,10 +54,6 @@ graph TD;
   sdds-header-hamburger --> tds-icon
   sdds-header-launcher-button --> tds-icon
   sdds-inline-tabs --> tds-icon
-  sdds-message --> tds-icon
-  sdds-header-dropdown --> tds-icon
-  sdds-header-hamburger --> tds-icon
-  sdds-header-launcher-button --> tds-icon
   sdds-modal --> tds-icon
   sdds-side-menu-close-button --> tds-icon
   sdds-side-menu-dropdown --> tds-icon
