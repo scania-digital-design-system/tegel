@@ -5,20 +5,22 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                            | Type     | Default            |
-| -------- | --------- | ---------------------------------------------------------------------------------------------------------------------- | -------- | ------------------ |
-| `name`   | `name`    | Pass a name of the icon. For icon names, refer to https://tegel.scania.com/foundations/icons/icon-library or storybook | `string` | `'arrow_diagonal'` |
-| `size`   | `size`    | Pass a size of icon as a string, for example: 32px, 1rem, 4em...                                                       | `string` | `'16px'`           |
+| Property | Attribute | Description                                                                                                                                   | Type     | Default   |
+| -------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --------- |
+| `name`   | `name`    | Pass a name of the icon. For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library | `string` | `'truck'` |
+| `size`   | `size`    | Pass a size of icon as a string, for example: 32px, 1rem, 4em...                                                                              | `string` | `'16px'`  |
 
 
 ## Dependencies
 
 ### Used by
 
+ - [sdds-banner](../banner)
  - [sdds-datetime](../datetime)
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
  - [sdds-folder-tabs](../tabs/folder-tabs)
+ - [sdds-footer-group](../footer/webcomponent/sdds-footer-group)
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
@@ -37,14 +39,17 @@
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-footer-group](../footer/footer-group)
+ - [tds-message](../message)
 
 ### Graph
 ```mermaid
 graph TD;
+  sdds-banner --> tds-icon
   sdds-datetime --> tds-icon
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
   sdds-folder-tabs --> tds-icon
+  sdds-footer-group --> tds-icon
   sdds-header-dropdown --> tds-icon
   sdds-header-hamburger --> tds-icon
   sdds-header-launcher-button --> tds-icon
@@ -63,6 +68,7 @@ graph TD;
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
   tds-footer-group --> tds-icon
+  tds-message --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
