@@ -12,7 +12,7 @@ import dummyData from './table-body/dummy-data.json';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Data Table`,
+  title: `${ComponentsFolder}/Table`,
   parameters: {
     notes: {
       'sdds-table': sddsTable,
