@@ -15,9 +15,9 @@
 
 ## Events
 
-| Event             | Description                                                                                                                                     | Type                                               |
-| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `tdsFilterChange` | Used for sending users' input to the main parent <tds-table> the component, can also be listened to in order to implement custom sorting logic. | `CustomEvent<{ tableId: string; query: string; }>` |
+| Event             | Description                                                                                                                                   | Type                                               |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `tdsFilterChange` | Used for sending users' input to the main parent tds-table the component, can also be listened to in order to implement custom sorting logic. | `CustomEvent<{ tableId: string; query: string; }>` |
 
 
 ----------------------------------------------

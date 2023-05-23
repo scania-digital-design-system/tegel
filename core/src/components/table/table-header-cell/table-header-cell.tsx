@@ -25,13 +25,13 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableHeaderCell {
-  /** The Value of column key, usually comes from JSON, needed for sorting */
+  /** The value of column key, usually comes from JSON, needed for sorting */
   @Prop({ reflect: true }) columnKey: string;
 
   /** Text that displays in column cell */
   @Prop({ reflect: true }) columnTitle: string;
 
-  /** In case noMinWidth setting, user has to specify width value for each column, for example "150px" */
+  /** In case noMinWidth setting, user has to specify width value for each column, for example, "150px" */
   @Prop({ reflect: true }) customWidth: string;
 
   /** If passed as prop, enables sorting on that column */
@@ -79,7 +79,8 @@ export class TdsTableHeaderCell {
     sortingDirection: 'asc' | 'desc';
   }>;
 
-  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component,
+   * can also be listened to in order to implement custom-sorting logic. */
   @Event({
     eventName: 'internalSortButtonClicked',
     composed: true,
@@ -91,7 +92,8 @@ export class TdsTableHeaderCell {
     key: string;
   }>;
 
-  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component,
+   *  can also be listened to in order to implement custom-sorting logic. */
   @Event({
     eventName: 'internalTdsSortChange',
     composed: true,
@@ -104,7 +106,8 @@ export class TdsTableHeaderCell {
     sortingDirection: 'asc' | 'desc';
   }>;
 
-  /** @internal Sends unique Table identifier, column key and text align value so the body cells with a same key take the same text alignment as header cell */
+  /** @internal Sends unique Table identifier,
+   * column key and text align value so the body cells with a same key take the same text alignment as header cell */
   @Event({
     eventName: 'internalTdsTextAlign',
     composed: true,
@@ -113,7 +116,8 @@ export class TdsTableHeaderCell {
   })
   internalTdsTextAlign: EventEmitter<any>;
 
-  /** @internal Sends unique Table identifier, column key so the body cells with the same key change background when user hovers over header cell */
+  /** @internal Sends unique Table identifier,
+   * column key so the body cells with the same key change background when user hovers over header cell */
   @Event({
     eventName: 'internalTdsHover',
     composed: true,

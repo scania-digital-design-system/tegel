@@ -69,7 +69,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: false,
 })
 export class TdsTableBody {
-  /** Prop to pass JSON string which enables automatic rendering of table rows and cells  */
+  /** Prop to pass JSON string which enables automatic rendering of Table rows and cells  */
   @Prop({ mutable: true }) bodyData: any;
 
   /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
@@ -126,7 +126,7 @@ export class TdsTableBody {
     this.bodyDataOriginal = [...this.innerBodyData];
   }
 
-  /** @internal Event that sends unique table identifier and enable/disable status for sorting functionality */
+  /** @internal Event that sends unique Table identifier and enable/disable status for sorting functionality */
   @Event({
     eventName: 'internalTdsSortingChange',
     composed: true,
@@ -135,7 +135,7 @@ export class TdsTableBody {
   })
   internalTdsSortingChange: EventEmitter<any>;
 
-  /** @internal Sends unique table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
+  /** @internal Sends unique Table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
   @Event({
     eventName: 'internalTdsCheckboxChange',
     composed: true,
@@ -144,7 +144,9 @@ export class TdsTableBody {
   })
   internalTdsCheckboxChange: EventEmitter<any>;
 
-  /** @internal Sends unique table identifier and status if mainCheckbox should change its state based on selection status of single rows when multiselect feature is used */
+  /** @internal Sends unique Table identifier and status
+   * if mainCheckbox should change its state based on selection status of single rows
+   * when multiselect feature is used */
   @Event({
     eventName: 'internalTdsMainCheckboxChange',
     composed: true,
@@ -196,11 +198,11 @@ export class TdsTableBody {
 
   sortData(keyValue, sortingDirection) {
     if (this.enableMultiselect) {
-      // Uncheck all checkboxes as state of checkbox is lost on sorting. Do it only in case multiSelect is True.
+      // Uncheck all checkboxes as the state of checkbox is lost on sorting. Do it only in case multiSelect is True.
       this.uncheckAll();
     }
 
-    // use spread operator to make enable sorting and modifying array, same as using .slice()
+    // use spread operator to make enable a sorting and modifying array, same as using .slice()
     this.bodyDataManipulated = [...this.bodyDataManipulated];
     this.bodyDataManipulated.sort(TdsTableBody.compareValues(keyValue, sortingDirection));
   }
@@ -272,13 +274,13 @@ export class TdsTableBody {
         const cells = item.querySelectorAll('tds-body-cell');
         const cellValuesArray = [];
 
-        // go through cells and save cell-values in array
+        // go through cells and save cell-values in an array
         cells.forEach((cellItem) => {
           const cellValue = cellItem.getAttribute('cell-value').toLowerCase();
           cellValuesArray.push(cellValue);
         });
 
-        // iterate over array of values and see if one matches search string
+        // iterate over an array of values and see if one matches search string
         const matchCounter = cellValuesArray.find((element) => element.includes(searchTerm));
 
         // if matches, show parent row, otherwise hide the row
@@ -294,7 +296,7 @@ export class TdsTableBody {
 
       const dataRowsHidden = this.host.querySelectorAll('.tds-table__row--hidden');
 
-      // If same, info message will be shown
+      // If same, an info message will be shown
       this.showNoResultsMessage = dataRowsHidden.length === dataRowsFiltering.length;
     } else {
       if (this.enablePaginationTableBody) {

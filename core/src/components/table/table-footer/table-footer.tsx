@@ -32,7 +32,7 @@ export class TdsTableFooter {
   /** Sets the pagination number. */
   @Prop({ reflect: true }) paginationValue: number = 1;
 
-  /** Prop for client to set max number of pages. */
+  /** Prop for a client to set max number of pages. */
   @Prop({ reflect: true }) maxPages: number;
 
   /** In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too */

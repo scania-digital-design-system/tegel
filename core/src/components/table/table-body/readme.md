@@ -9,7 +9,7 @@
 
 | Property          | Attribute           | Description                                                                        | Type      | Default     |
 | ----------------- | ------------------- | ---------------------------------------------------------------------------------- | --------- | ----------- |
-| `bodyData`        | `body-data`         | Prop to pass JSON string which enables automatic rendering of table rows and cells | `any`     | `undefined` |
+| `bodyData`        | `body-data`         | Prop to pass JSON string which enables automatic rendering of Table rows and cells | `any`     | `undefined` |
 | `enableDummyData` | `enable-dummy-data` | Prop for showcase of rendering JSON in body-data, just for presentation purposes   | `boolean` | `false`     |
 
 

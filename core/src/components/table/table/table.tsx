@@ -33,7 +33,9 @@ export class TdsTable {
 
   /** Enables to customize width on Table columns */
   @Prop({ reflect: true }) noMinWidth: boolean;
-  // TODO: Due to unknown reason, one of this items has to be left as is. If all are false, it seems like emitting is not properly done and it affects other events in Table. Try setting it and observe text-align set on header cell
+  // TODO: Due to unknown reason, one of this items has to be left as is.
+  //  If all are false, it seems like emitting is not properly done and it affects other events in Table.
+  //  Try setting it and observe text-align set on header cell
 
   /** Enables multiselect feature of Table */
   @Prop({ reflect: true }) enableMultiselect: boolean = false;

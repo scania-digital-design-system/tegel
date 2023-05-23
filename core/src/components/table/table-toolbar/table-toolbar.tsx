@@ -43,7 +43,8 @@ export class TdsTableToolbar {
 
   tableEl: HTMLTdsTableElement;
 
-  /** Used for sending users' input to the main parent <tds-table> the component, can also be listened to in order to implement custom sorting logic. */
+  /** Used for sending users' input to the main parent tds-table the component,
+   * can also be listened to in order to implement custom sorting logic. */
   @Event({
     eventName: 'tdsFilterChange',
     composed: true,
