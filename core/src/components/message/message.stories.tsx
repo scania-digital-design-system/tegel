@@ -99,7 +99,7 @@ const Template = ({ modeVariant, messageType, header, extendedMessage, minimal, 
       }
     </style>
     <div class="demo-wrapper">
-      <sdds-message
+      <tds-message
           type="${messageType.toLowerCase()}"
           header="${header}"
           ${noIcon ? 'no-icon' : ''}
@@ -112,7 +112,7 @@ const Template = ({ modeVariant, messageType, header, extendedMessage, minimal, 
           }
       >
       ${extendedMessage}
-      </sdds-message>
+      </tds-message>
     </div>
     `,
   );
