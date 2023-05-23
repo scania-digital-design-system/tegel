@@ -43,7 +43,7 @@ export class TableToolbar {
 
   tableEl: HTMLSddsTableElement;
 
-  /** Used for sending users input to main parent <sdds-table> component, can also be listened to in order to implement custom sorting logic. */
+  /** Used for sending users' input to the main parent <sdds-table> the component, can also be listened to in order to implement custom sorting logic. */
   @Event({
     eventName: 'sddsFilterChange',
     composed: true,

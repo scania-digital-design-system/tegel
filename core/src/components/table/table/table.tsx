@@ -28,34 +28,34 @@ export class Table {
   /** Enables style with vertical dividers between columns */
   @Prop({ reflect: true }) verticalDividers: boolean = false;
 
-  /** Enables style where table toolbar, rows and footer are less high */
+  /** Enables style where Table toolbar, rows and footer are less high */
   @Prop({ reflect: true }) compactDesign: boolean = false;
 
-  /** Enables to customise width on table columns */
+  /** Enables to customize width on Table columns */
   @Prop({ reflect: true }) noMinWidth: boolean;
-  // TODO: Due to unknown reason, one of this items has to be left as is. If all are false, it seems like emitting is not properly done and it affects other events in table. Try setting it and observe text-align set on header cell
+  // TODO: Due to unknown reason, one of this items has to be left as is. If all are false, it seems like emitting is not properly done and it affects other events in Table. Try setting it and observe text-align set on header cell
 
-  /** Enables multiselect feature of table */
+  /** Enables multiselect feature of Table */
   @Prop({ reflect: true }) enableMultiselect: boolean = false;
 
-  /** Enables extended row feature of table */
+  /** Enables extended row feature of Table */
   @Prop({ reflect: true }) enableExpandableRows: boolean = false;
 
-  /** Enables table to take 100% available width with equal spacing of columns */
+  /** Enables Table to take 100% available width with equal spacing of columns */
   @Prop({ reflect: true }) enableResponsive: boolean = false;
 
   /** Variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = null;
 
-  /** ID used for internal table functionality and events, must be unique.
+  /** ID used for internal Table functionality and events, must be unique.
    *
-   * **NOTE**: If you're listening for table events you need to set this ID yourself to identify the table, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table, as the default ID is random and will be different every time.
    */
   @Prop() tableId: string = crypto.randomUUID();
 
   @Element() host: HTMLElement;
 
-  /** @internal Broadcasts changes to the tables props */
+  /** @internal Broadcasts changes to the Table props */
   @Event({
     eventName: 'internalSddsTablePropChange',
     bubbles: true,

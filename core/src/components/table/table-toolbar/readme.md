@@ -10,14 +10,14 @@
 | Property          | Attribute          | Description                  | Type      | Default |
 | ----------------- | ------------------ | ---------------------------- | --------- | ------- |
 | `enableFiltering` | `enable-filtering` | Enables preview of searchbar | `boolean` | `false` |
-| `tableTitle`      | `table-title`      | Adds title to the table      | `string`  | `''`    |
+| `tableTitle`      | `table-title`      | Adds title to the Table      | `string`  | `''`    |
 
 
 ## Events
 
-| Event              | Description                                                                                                                             | Type                                               |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| `sddsFilterChange` | Used for sending users input to main parent <sdds-table> component, can also be listened to in order to implement custom sorting logic. | `CustomEvent<{ tableId: string; query: string; }>` |
+| Event              | Description                                                                                                                                      | Type                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------- |
+| `sddsFilterChange` | Used for sending users' input to the main parent <sdds-table> the component, can also be listened to in order to implement custom sorting logic. | `CustomEvent<{ tableId: string; query: string; }>` |
 
 
 ----------------------------------------------

@@ -57,7 +57,7 @@ export class TableFooter {
   /* A reference for the input element used for pagination in the footer. */
   private inputElement: HTMLInputElement;
 
-  /* The footers parent table. */
+  /* The footer parent Table. */
   private tableEl: HTMLSddsTableElement;
 
   /** Event to send current page value to sdds-table-body component, can also be listened to in order to implement custom pagination logic. */

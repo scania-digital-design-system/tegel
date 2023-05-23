@@ -25,7 +25,7 @@ const relevantTableProps: InternalSddsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TableHeaderCell {
-  /** Value of column key, usually comes from JSON, needed for sorting */
+  /** The Value of column key, usually comes from JSON, needed for sorting */
   @Prop({ reflect: true }) columnKey: string;
 
   /** Text that displays in column cell */
@@ -66,7 +66,7 @@ export class TableHeaderCell {
 
   tableEl: HTMLSddsTableElement;
 
-  /** Sends unique table identifier,column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom sorting logic. */
+  /** Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
     eventName: 'sddsSortChange',
     composed: true,
@@ -79,7 +79,7 @@ export class TableHeaderCell {
     sortingDirection: 'asc' | 'desc';
   }>;
 
-  /** @internal Sends unique table identifier,column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom sorting logic. */
+  /** @internal Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
     eventName: 'internalSortButtonClicked',
     composed: true,
@@ -91,7 +91,7 @@ export class TableHeaderCell {
     key: string;
   }>;
 
-  /** @internal Sends unique table identifier,column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom sorting logic. */
+  /** @internal Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
     eventName: 'internalSddsSortChange',
     composed: true,
@@ -104,7 +104,7 @@ export class TableHeaderCell {
     sortingDirection: 'asc' | 'desc';
   }>;
 
-  /** @internal Sends unique table identifier, column key and text align value so the body cells with same key take the same text alignment as header cell */
+  /** @internal Sends unique Table identifier, column key and text align value so the body cells with a same key take the same text alignment as header cell */
   @Event({
     eventName: 'internalSddsTextAlign',
     composed: true,
@@ -113,7 +113,7 @@ export class TableHeaderCell {
   })
   internalSddsTextAlign: EventEmitter<any>;
 
-  /** @internal Sends unique table identifier, column key so the body cells with the same key change background when user hovers over header cell */
+  /** @internal Sends unique Table identifier, column key so the body cells with the same key change background when user hovers over header cell */
   @Event({
     eventName: 'internalSddsHover',
     composed: true,

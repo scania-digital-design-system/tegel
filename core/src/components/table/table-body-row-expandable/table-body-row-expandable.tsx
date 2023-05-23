@@ -44,7 +44,7 @@ export class TableBodyRowExpandable {
 
   tableEl: HTMLSddsTableElement;
 
-  /** @internal Sends out expanded status which is used by the table header component */
+  /** @internal Sends out expanded status which is used by the Table header component */
   @Event({
     eventName: 'internalSddsRowExpanded',
     bubbles: true,

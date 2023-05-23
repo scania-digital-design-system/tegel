@@ -39,7 +39,7 @@ export class TableHeaderRow {
 
   tableEl: HTMLSddsTableElement;
 
-  /** @internal Send status of main checkbox in header to the parent, sdds-table component */
+  /** @internal Send status of the main checkbox in header to the parent, sdds-table component */
   @Event({
     eventName: 'internalSddsMainCheckboxSelect',
     composed: true,
