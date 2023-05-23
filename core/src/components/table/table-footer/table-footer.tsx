@@ -9,20 +9,20 @@ import {
   Prop,
   Element,
 } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = ['compactDesign'];
+const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesign'];
 
 function removeShakeAnimation(e: AnimationEvent & { target: HTMLElement }) {
-  e.target.classList.remove('sdds-table__page-selector-input--shake');
+  e.target.classList.remove('tds-table__page-selector-input--shake');
 }
 
 @Component({
-  tag: 'sdds-table-footer',
+  tag: 'tds-table-footer',
   styleUrl: 'table-footer.scss',
   shadow: true,
 })
-export class TableFooter {
+export class TdsTableFooter {
   /** Enable pagination and show pagination controls  */
   @Prop({ reflect: true }) pagination: boolean = false;
 
@@ -32,7 +32,7 @@ export class TableFooter {
   /** Sets the pagination number. */
   @Prop({ reflect: true }) paginationValue: number = 1;
 
-  /** Prop for client to set max number of pages. */
+  /** Prop for a client to set max number of pages. */
   @Prop({ reflect: true }) maxPages: number;
 
   /** In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too */
@@ -58,22 +58,22 @@ export class TableFooter {
   private inputElement: HTMLInputElement;
 
   /* The footer parent Table. */
-  private tableEl: HTMLSddsTableElement;
+  private tableEl: HTMLTdsTableElement;
 
-  /** Event to send current page value to sdds-table-body component, can also be listened to in order to implement custom pagination logic. */
+  /** Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic. */
   @Event({
-    eventName: 'sddsPageChange',
+    eventName: 'tdsPageChange',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsPageChange: EventEmitter<{
+  tdsPageChange: EventEmitter<{
     tableId: string;
     paginationValue: number;
   }>;
 
-  @Listen('internalSddsTablePropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -87,7 +87,7 @@ export class TableFooter {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -96,10 +96,10 @@ export class TableFooter {
       this[tablePropName] = this.tableEl[tablePropName];
     });
 
-    const numberOfRows = this.host.parentElement.querySelector('sdds-table-body').childElementCount;
+    const numberOfRows = this.host.parentElement.querySelector('tds-table-body').childElementCount;
 
     const numberOfColumns =
-      this.host.parentElement.querySelector('sdds-table-header').childElementCount;
+      this.host.parentElement.querySelector('tds-table-header').childElementCount;
 
     this.numberOfPages = Math.ceil(numberOfRows / this.rowsPerPage);
 
@@ -112,7 +112,7 @@ export class TableFooter {
 
   private previousPage = () => {
     /* Emits pagination event. */
-    const pageChangeEvent = this.sddsPageChange.emit({
+    const pageChangeEvent = this.tdsPageChange.emit({
       tableId: this.tableId,
       paginationValue: Number(this.inputElement.value) - 1,
     });
@@ -130,7 +130,7 @@ export class TableFooter {
 
   private nextPage = () => {
     /* Emits pagination event. */
-    const pageChangeEvent = this.sddsPageChange.emit({
+    const pageChangeEvent = this.tdsPageChange.emit({
       tableId: this.tableId,
       paginationValue: Number(this.inputElement.value) + 1,
     });
@@ -151,12 +151,12 @@ export class TableFooter {
     const insertedValue = event.target.value;
 
     if (insertedValue > this.numberOfPages || insertedValue < 1) {
-      event.target.classList.add('sdds-table__page-selector-input--shake');
+      event.target.classList.add('tds-table__page-selector-input--shake');
       this.paginationValue = event.target.max;
     } else {
       this.paginationValue = event.target.value;
     }
-    const paginationEvent = this.sddsPageChange.emit({
+    const paginationEvent = this.tdsPageChange.emit({
       tableId: this.tableId,
       paginationValue: Number(this.inputElement.value) - 1,
     });
@@ -165,8 +165,8 @@ export class TableFooter {
     }
   }
 
-  @Listen('internalSddsPagination', { target: 'body' })
-  sddsPaginationListener(event: CustomEvent<any>) {
+  @Listen('internalTdsPagination', { target: 'body' })
+  tdsPaginationListener(event: CustomEvent<any>) {
     if (this.tableId === event.detail) {
       this.runPagination();
     }
@@ -175,8 +175,8 @@ export class TableFooter {
   runPagination = () => {
     // grab all rows in body
     const dataRowsPagination = this.host.parentNode
-      .querySelector('sdds-table-body')
-      .querySelectorAll('.sdds-table__row');
+      .querySelector('tds-table-body')
+      .querySelectorAll('.tds-table__row');
 
     dataRowsPagination.forEach((item, i) => {
       // for making logic easier 1st result, 2nd result...
@@ -188,9 +188,9 @@ export class TableFooter {
         const lastResult = this.rowsPerPage * this.paginationValue;
         const firstResult = lastResult - this.rowsPerPage;
         if (index > firstResult && index <= lastResult) {
-          item.classList.remove('sdds-table__row--hidden');
+          item.classList.remove('tds-table__row--hidden');
         } else {
-          item.classList.add('sdds-table__row--hidden');
+          item.classList.add('tds-table__row--hidden');
         }
       }
     });
@@ -198,16 +198,16 @@ export class TableFooter {
 
   render() {
     return (
-      <Host class={this.compactDesign ? 'sdds-table--compact' : ''}>
-        <tr class="sdds-table__footer-row">
-          <td class="sdds-table__footer-cell" colSpan={this.columnsNumber}>
+      <Host class={this.compactDesign ? 'tds-table--compact' : ''}>
+        <tr class="tds-table__footer-row">
+          <td class="tds-table__footer-cell" colSpan={this.columnsNumber}>
             {this.pagination && (
-              <div class="sdds-table__pagination">
-                <div class="sdds-table__row-selector"></div>
-                <div class="sdds-table__page-selector">
+              <div class="tds-table__pagination">
+                <div class="tds-table__row-selector"></div>
+                <div class="tds-table__page-selector">
                   <input
                     ref={(element) => (this.inputElement = element)}
-                    class="sdds-table__page-selector-input"
+                    class="tds-table__page-selector-input"
                     type="number"
                     min="1"
                     max={this.maxPages ?? this.numberOfPages}
@@ -219,12 +219,12 @@ export class TableFooter {
                     onAnimationEnd={removeShakeAnimation}
                     disabled={this.tempPaginationDisable}
                   />
-                  <p class="sdds-table__footer-text">
+                  <p class="tds-table__footer-text">
                     of <span>{this.tempPaginationDisable ? 1 : this.numberOfPages}</span> pages
                   </p>
                   <button
                     type="button"
-                    class="sdds-table__footer-btn"
+                    class="tds-table__footer-btn"
                     disabled={this.paginationValue <= 1 || this.tempPaginationDisable}
                     onClick={() => this.previousPage()}
                   >
@@ -232,7 +232,7 @@ export class TableFooter {
                   </button>
                   <button
                     type="button"
-                    class="sdds-table__footer-btn"
+                    class="tds-table__footer-btn"
                     disabled={
                       this.paginationValue >= this.numberOfPages || this.tempPaginationDisable
                     }

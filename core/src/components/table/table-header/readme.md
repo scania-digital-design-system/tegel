@@ -1,4 +1,4 @@
-# sdds-table-header-row
+# tds-table-header-row
 
 
 
@@ -9,13 +9,13 @@
 
 ### Depends on
 
-- [sdds-checkbox](../../checkbox)
+- [tds-checkbox](../../checkbox)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-table-header --> sdds-checkbox
-  style sdds-table-header fill:#f9f,stroke:#333,stroke-width:4px
+  tds-table-header --> tds-checkbox
+  style tds-table-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -32,7 +32,6 @@
  - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
  - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
  - [sdds-stepper-item](../stepper/stepper-item)
- - [sdds-table-footer](../table/table-footer)
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
  - [sdds-toast](../toast)
@@ -45,6 +44,7 @@
  - [tds-message](../message)
  - [tds-navigation-tabs](../tabs/navigation-tabs)
  - [tds-slider](../slider)
+ - [tds-table-footer](../table/table-footer)
 
 ### Graph
 ```mermaid
@@ -66,7 +66,6 @@ graph TD;
   sdds-side-menu-close-button --> tds-icon
   sdds-side-menu-dropdown --> tds-icon
   sdds-stepper-item --> tds-icon
-  sdds-table-footer --> tds-icon
   sdds-textarea --> tds-icon
   sdds-textfield --> tds-icon
   sdds-toast --> tds-icon
@@ -79,6 +78,7 @@ graph TD;
   tds-message --> tds-icon
   tds-navigation-tabs --> tds-icon
   tds-slider --> tds-icon
+  tds-table-footer --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
