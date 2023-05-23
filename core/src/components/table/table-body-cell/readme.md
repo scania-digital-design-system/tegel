@@ -1,4 +1,4 @@
-# sdds-body-cell
+# tds-body-cell
 
 
 
@@ -18,13 +18,13 @@
 
 ### Used by
 
- - [sdds-table-body](../table-body)
+ - [tds-table-body](../table-body)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-table-body --> sdds-body-cell
-  style sdds-body-cell fill:#f9f,stroke:#333,stroke-width:4px
+  tds-table-body --> tds-body-cell
+  style tds-body-cell fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

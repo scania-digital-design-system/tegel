@@ -6,21 +6,21 @@
 
   display: contents;
 
-  .sdds-table__row,
-  .sdds-table__row-extend {
+  .tds-table__row,
+  .tds-table__row-extend {
     display: table-row;
-    border-bottom: 1px solid var(--sdds-table-divider);
-    background-color: var(--sdds-table-body-row-background);
+    border-bottom: 1px solid var(--tds-table-divider);
+    background-color: var(--tds-table-body-row-background);
     transition: background-color 200ms ease;
-    color: var(--sdds-table-color);
+    color: var(--tds-table-color);
   }
 
-  .sdds-table__row:hover,
-  .sdds-table__row-extend:hover {
-    background-color: var(--sdds-table-body-row-background-hover);
+  .tds-table__row:hover,
+  .tds-table__row-extend:hover {
+    background-color: var(--tds-table-body-row-background-hover);
   }
 
-  .sdds-table__expand-control-container {
+  .tds-table__expand-control-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@
     padding: 0 16px;
     position: relative;
 
-    .sdds-table__expand-input {
+    .tds-table__expand-input {
       all: unset;
       top: 0;
       left: 0;
@@ -43,7 +43,7 @@
       }
     }
 
-    .sdds-expendable-row-icon {
+    .tds-expendable-row-icon {
       height: 16px;
       width: 16px;
       transition: transform 200ms ease;
@@ -51,49 +51,49 @@
     }
   }
 
-  .sdds-table__row-expand {
+  .tds-table__row-expand {
     display: none;
     transition: background-color 200ms ease;
 
-    .sdds-table__cell-expand {
+    .tds-table__cell-expand {
       padding: 16px 16px 16px 66px;
-      color: var(--sdds-table-color);
+      color: var(--tds-table-color);
     }
   }
 }
 
-:host(.sdds-table__row-expand--active) {
-  .sdds-table__row {
-    background-color: var(--sdds-table-body-row-background-selected);
+:host(.tds-table__row-expand--active) {
+  .tds-table__row {
+    background-color: var(--tds-table-body-row-background-selected);
   }
 
-  .sdds-table__expand-control-container {
-    .sdds-expendable-row-icon {
+  .tds-table__expand-control-container {
+    .tds-expendable-row-icon {
       transform: rotate(180deg);
     }
   }
 
-  .sdds-table__row-expand {
-    background-color: var(--sdds-table-body-row-background-selected);
+  .tds-table__row-expand {
+    background-color: var(--tds-table-body-row-background-selected);
     display: table-row;
   }
 }
 
 // test
-:host(.sdds-table__compact) {
-  .sdds-table__expand-control-container {
+:host(.tds-table__compact) {
+  .tds-table__expand-control-container {
     height: 30px;
   }
 
-  .sdds-table__row-expand {
-    .sdds-table__cell-expand {
+  .tds-table__row-expand {
+    .tds-table__cell-expand {
       padding: 8px 16px 8px 66px;
     }
   }
 }
 
-:host(.sdds-table--divider) {
-  .sdds-table__cell--expand {
-    border-right: 1px solid var(--sdds-table-divider);
+:host(.tds-table--divider) {
+  .tds-table__cell--expand {
+    border-right: 1px solid var(--tds-table-divider);
   }
 }

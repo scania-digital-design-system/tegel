@@ -1,4 +1,4 @@
-# sdds-table-body-row
+# tds-table-body-row
 
 
 
@@ -9,7 +9,11 @@
 
 ### Used by
 
- - [sdds-table-body](../table-body)
+ - [tds-table-body](../table-body)
+
+### Depends on
+
+- [tds-checkbox](../../checkbox)
 
 ### Depends on
 
@@ -18,9 +22,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-table-body-row --> sdds-checkbox
-  sdds-table-body --> sdds-table-body-row
-  style sdds-table-body-row fill:#f9f,stroke:#333,stroke-width:4px
+  tds-table-body-row --> tds-checkbox
+  tds-table-body --> tds-table-body-row
+  style tds-table-body-row fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
