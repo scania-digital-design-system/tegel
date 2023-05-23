@@ -1,0 +1,40 @@
+@import '../../../mixins/box-sizing';
+
+:host(.sdds-table__body-cell) {
+  @include tds-box-sizing;
+
+  font: var(--sdds-detail-02);
+  letter-spacing: var(--sdds-detail-02-ls);
+  display: table-cell;
+  box-sizing: border-box;
+  color: var(--sdds-table-color);
+  padding: var(--sdds-spacing-element-16);
+  min-width: 192px;
+  vertical-align: top;
+  background-color: transparent;
+  transition: background-color 200ms ease;
+}
+
+:host(.sdds-table__body-cell--no-padding) {
+  padding: 0;
+}
+
+:host(.sdds-table__body-cell--hover) {
+  background-color: var(--sdds-table-body-cell-background-hover);
+}
+
+:host(.sdds-table__compact) {
+  padding: var(--sdds-spacing-element-8) var(--sdds-spacing-element-16);
+}
+
+:host(.sdds-table--divider) {
+  border-right: 1px solid var(--sdds-table-divider);
+}
+
+:host(.sdds-table--divider:last-of-type) {
+  border-right: none;
+}
+
+:host(.sdds-table--no-min-width) {
+  min-width: unset;
+}
