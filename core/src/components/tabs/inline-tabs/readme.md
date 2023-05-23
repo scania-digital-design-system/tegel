@@ -1,4 +1,4 @@
-# sdds-inline-tabs
+# tds-inline-tabs
 
 
 
@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event        | Description | Type                                         |
-| ------------ | ----------- | -------------------------------------------- |
-| `sddsChange` |             | `CustomEvent<{ selectedTabIndex: number; }>` |
+| Event       | Description | Type                                         |
+| ----------- | ----------- | -------------------------------------------- |
+| `tdsChange` |             | `CustomEvent<{ selectedTabIndex: number; }>` |
 
 
 ## Methods
@@ -43,8 +43,8 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-inline-tabs --> tds-icon
-  style sdds-inline-tabs fill:#f9f,stroke:#333,stroke-width:4px
+  tds-inline-tabs --> tds-icon
+  style tds-inline-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
