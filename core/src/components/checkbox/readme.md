@@ -45,8 +45,8 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 
  - [sdds-dropdown-option](../dropdown/dropdown-option)
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
- - [sdds-table-body-row](../data-table/table-body-row)
- - [sdds-table-header](../data-table/table-header)
+ - [sdds-table-body-row](../table/table-body-row)
+ - [sdds-table-header](../table/table-header)
 
 ### Graph
 ```mermaid
