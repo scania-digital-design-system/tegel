@@ -18,12 +18,9 @@
  - [sdds-banner](../banner)
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
- - [sdds-folder-tabs](../tabs/folder-tabs)
- - [sdds-footer-group](../footer/webcomponent/sdds-footer-group)
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
- - [sdds-inline-tabs](../tabs/inline-tabs)
  - [sdds-modal](../modal)
  - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
  - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
@@ -47,12 +44,9 @@
 graph TD;
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
-  sdds-folder-tabs --> tds-icon
-  sdds-footer-group --> tds-icon
   sdds-header-dropdown --> tds-icon
   sdds-header-hamburger --> tds-icon
   sdds-header-launcher-button --> tds-icon
-  sdds-inline-tabs --> tds-icon
   sdds-modal --> tds-icon
   sdds-side-menu-close-button --> tds-icon
   sdds-side-menu-dropdown --> tds-icon
