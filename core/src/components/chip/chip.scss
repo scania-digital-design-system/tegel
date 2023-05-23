@@ -21,14 +21,14 @@
 /* Component styling */
 
 .component {
-  .sdds-chip-component {
+  .tds-chip-component {
     display: inline-flex;
 
     label {
-      background-color: var(--sdds-chips-background);
-      color: var(--sdds-chips-color);
-      font: var(--sdds-detail-02);
-      letter-spacing: var(--sdds-detail-02-ls);
+      background-color: var(--tds-chips-background);
+      color: var(--tds-chips-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
       display: inline-flex;
       align-items: center;
       border-radius: 16px;
@@ -36,7 +36,7 @@
       white-space: nowrap;
 
       &:hover {
-        background-color: var(--sdds-chips-background-hover);
+        background-color: var(--tds-chips-background-hover);
       }
     }
 
@@ -67,11 +67,11 @@
     }
 
     input:checked + label {
-      background-color: var(--sdds-chips-background-active);
-      color: var(--sdds-chips-color-active);
+      background-color: var(--tds-chips-background-active);
+      color: var(--tds-chips-color-active);
 
       &:hover {
-        background-color: var(--sdds-chips-background-active-hover);
+        background-color: var(--tds-chips-background-active-hover);
       }
     }
   }
