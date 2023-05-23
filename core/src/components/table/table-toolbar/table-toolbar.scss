@@ -5,34 +5,34 @@
 
   display: table-caption;
   position: relative;
-  background-color: var(--sdds-table-toolbar-background);
-  color: var(--sdds-table-color);
-  padding: 0 var(--sdds-spacing-element-16);
+  background-color: var(--tds-table-toolbar-background);
+  color: var(--tds-table-color);
+  padding: 0 var(--tds-spacing-element-16);
   height: 64px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 
-  .sdds-table__upper-bar-flex {
+  .tds-table__upper-bar-flex {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
   }
 
-  .sdds-table__title {
-    font: var(--sdds-headline-07);
-    letter-spacing: var(--sdds-headline-07-ls);
-    padding-top: var(--sdds-spacing-element-16);
+  .tds-table__title {
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
+    padding-top: var(--tds-spacing-element-16);
     text-align: left;
   }
 
-  .sdds-table__actionbar {
+  .tds-table__actionbar {
     display: flex;
     align-self: center;
     gap: 8px;
   }
 
-  .sdds-table__searchbar {
+  .tds-table__searchbar {
     display: flex;
     align-self: center;
     position: relative;
@@ -49,7 +49,7 @@
       height: 2px;
       position: absolute;
       bottom: 0;
-      background-color: var(--sdds-blue-400);
+      background-color: var(--tds-blue-400);
       transform: scaleX(0);
       transition: transform 150ms ease;
     }
@@ -61,19 +61,19 @@
     }
 
     &:focus-within,
-    &.sdds-table__searchbar--active {
+    &.tds-table__searchbar--active {
       width: 208px;
-      background-color: var(--sdds-table-toolbar-searchbar-background);
+      background-color: var(--tds-table-toolbar-searchbar-background);
 
       &:hover {
-        background-color: var(--sdds-table-toolbar-searchbar-background);
+        background-color: var(--tds-table-toolbar-searchbar-background);
       }
     }
 
-    .sdds-table__searchbar-input {
-      font: var(--sdds-detail-02);
-      letter-spacing: var(--sdds-detail-02-ls);
-      color: var(--sdds-table-color);
+    .tds-table__searchbar-input {
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      color: var(--tds-table-color);
       z-index: 1;
       width: 100%;
       height: 100%;
@@ -84,15 +84,15 @@
       cursor: pointer;
 
       :focus {
-        background-color: var(--sdds-table-toolbar-searchbar-background);
+        background-color: var(--tds-table-toolbar-searchbar-background);
       }
     }
 
     &:hover {
-      background-color: var(--sdds-table-toolbar-searchbar-background-hover);
+      background-color: var(--tds-table-toolbar-searchbar-background-hover);
     }
 
-    .sdds-table__searchbar-icon {
+    .tds-table__searchbar-icon {
       z-index: 0;
       position: absolute;
       right: 9px;
@@ -103,6 +103,6 @@
   }
 }
 
-:host(.sdds-table--compact) {
+:host(.tds-table--compact) {
   height: 56px;
 }
