@@ -1,0 +1,83 @@
+@import '../../mixins/focus-state';
+@import '../../mixins/box-sizing';
+@import '../../mixins/z-index';
+
+:host {
+  @include sdds-box-sizing;
+
+  display: flex;
+  background-color: var(--sdds-inline-tabs-background);
+  position: relative;
+
+  &::after {
+    content: ' ';
+    display: block;
+    border-bottom: 1px solid var(--sdds-inline-tabs-horizontal-divider-background);
+    opacity: var(--sdds-inline-tabs-horizontal-divider-opacity);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .scroll-right-button {
+    right: 0;
+    z-index: calc(z(tab) + 1);
+  }
+
+  .scroll-left-button {
+    left: 0;
+    z-index: calc(z(tab) + 1);
+  }
+
+  .scroll-right-button,
+  .scroll-left-button {
+    color: var(--sdds-folder-tabs-scroll-btn-color);
+    cursor: pointer;
+    border: 0;
+    width: 0;
+    background-color: var(--sdds-inline-tabs-scroll-btn-background);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    position: sticky;
+
+    &.show {
+      min-width: 48px;
+      display: block;
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    &:hover {
+      background-color: var(--sdds-folder-tabs-scroll-btn-background-hover);
+    }
+
+    &:active {
+      background-color: var(--sdds-folder-tabs-scroll-btn-background-active);
+    }
+
+    &:focus {
+      @include sdds-focus-state;
+    }
+
+    svg {
+      fill: var(--sdds-folder-tabs-scroll-btn-color);
+    }
+  }
+}
