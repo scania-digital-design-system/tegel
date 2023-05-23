@@ -1,28 +1,28 @@
 import { formatHtmlPreview } from '../../utils/utils';
-import tdsTable from './table/readme.md';
-import tdsTableToolbar from './table-toolbar/readme.md';
-import tdsHeader from './table-header/readme.md';
-import tdsHeaderCell from './table-header-cell/readme.md';
-import tdsTableBody from './table-body/readme.md';
-import tdsBodyRow from './table-body-row/readme.md';
-import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
-import tdsBodyCell from './table-body-cell/readme.md';
-import tdsTableFooter from './table-footer/readme.md';
+import sddsTable from './table/readme.md';
+import sddsTableToolbar from './table-toolbar/readme.md';
+import sddsHeader from './table-header/readme.md';
+import sddsHeaderCell from './table-header-cell/readme.md';
+import sddsTableBody from './table-body/readme.md';
+import sddsBodyRow from './table-body-row/readme.md';
+import sddsBodyRowExpandable from './table-body-row-expandable/readme.md';
+import sddsBodyCell from './table-body-cell/readme.md';
+import sddsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
   title: `${ComponentsFolder}/Table`,
   parameters: {
     notes: {
-      'tds-table': tdsTable,
-      'tds-table-toolbar': tdsTableToolbar,
-      'tds-header': tdsHeader,
-      'tds-header-cell': tdsHeaderCell,
-      'tds-table-body': tdsTableBody,
-      'tds-body-row': tdsBodyRow,
-      'tds-body-row-expandable': tdsBodyRowExpandable,
-      'tds-body-cell': tdsBodyCell,
-      'tds-table-footer': tdsTableFooter,
+      'sdds-table': sddsTable,
+      'sdds-table-toolbar': sddsTableToolbar,
+      'sdds-header': sddsHeader,
+      'sdds-header-cell': sddsHeaderCell,
+      'sdds-table-body': sddsTableBody,
+      'sdds-body-row': sddsBodyRow,
+      'sdds-body-row-expandable': sddsBodyRowExpandable,
+      'sdds-body-cell': sddsBodyCell,
+      'sdds-table-footer': sddsTableFooter,
     },
   },
   argTypes: {
@@ -45,14 +45,14 @@ export default {
 
 const DataPropertyTemplate = ({ bodyData }) =>
   formatHtmlPreview(`
-    <tds-table enable-expandable-rows="false">
-    <tds-table-toolbar table-title="'body-data' property example"></tds-table-toolbar>
-      <tds-table-header>
-          <tds-header-cell column-key='truck' column-title='Truck type'></tds-header-cell>
-          <tds-header-cell column-key='driver' column-title='Driver name'></tds-header-cell>
-      </tds-table-header>
-      <tds-table-body body-data='${JSON.stringify(bodyData)}'>
-      </tds-table-body>
-  </tds-table>`);
+    <sdds-table enable-expandable-rows="false">
+    <sdds-table-toolbar table-title="'body-data' property example"></sdds-table-toolbar>
+      <sdds-table-header>
+          <sdds-header-cell column-key='truck' column-title='Truck type'></sdds-header-cell>
+          <sdds-header-cell column-key='driver' column-title='Driver name'></sdds-header-cell>
+      </sdds-table-header>
+      <sdds-table-body body-data='${JSON.stringify(bodyData)}'>
+      </sdds-table-body>
+  </sdds-table>`);
 
 export const DataProperty = DataPropertyTemplate.bind({});
