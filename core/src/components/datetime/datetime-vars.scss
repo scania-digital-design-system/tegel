@@ -1,91 +1,91 @@
 :root,
-.sdds-mode-light {
-  --sdds-datetime-color: var(--sdds-grey-868);
-  --sdds-datetime-background-primary: var(--sdds-grey-50);
-  --sdds-datetime-background-secondary: var(--sdds-white);
-  --sdds-datetime-background: var(--sdds-datetime-background-primary);
-  --sdds-datetime-icon: var(--sdds-grey-868);
-  --sdds-datetime-border-bottom: var(--sdds-grey-400);
-  --sdds-datetime-placeholder: var(--sdds-grey-500);
-  --sdds-datetime-border-bottom-hover: var(--sdds-grey-600);
+.tds-mode-light {
+  --tds-datetime-color: var(--tds-grey-868);
+  --tds-datetime-background-primary: var(--tds-grey-50);
+  --tds-datetime-background-secondary: var(--tds-white);
+  --tds-datetime-background: var(--tds-datetime-background-primary);
+  --tds-datetime-icon: var(--tds-grey-868);
+  --tds-datetime-border-bottom: var(--tds-grey-400);
+  --tds-datetime-placeholder: var(--tds-grey-500);
+  --tds-datetime-border-bottom-hover: var(--tds-grey-600);
 
   // Disabled
-  --sdds-datetime-background-disabled: var(--sdds-white);
-  --sdds-datetime-color-disabled: var(--sdds-grey-400);
-  --sdds-datetime-placeholder-disabled: var(--sdds-grey-400);
-  --sdds-datetime-label-disabled: var(--sdds-grey-400);
-  --sdds-datetime-icon-disabled: var(--sdds-grey-400);
+  --tds-datetime-background-disabled: var(--tds-white);
+  --tds-datetime-color-disabled: var(--tds-grey-400);
+  --tds-datetime-placeholder-disabled: var(--tds-grey-400);
+  --tds-datetime-label-disabled: var(--tds-grey-400);
+  --tds-datetime-icon-disabled: var(--tds-grey-400);
 
   // Label
-  --sdds-datetime-label-color: var(--sdds-grey-958);
-  --sdds-datetime-label-inside-color: var(--sdds-grey-700);
-  --sdds-datetime-placeholder-color-focus: var(--sdds-grey-500);
+  --tds-datetime-label-color: var(--tds-grey-958);
+  --tds-datetime-label-inside-color: var(--tds-grey-700);
+  --tds-datetime-placeholder-color-focus: var(--tds-grey-500);
 
   // Highlight bar
-  --sdds-datetime-bar: var(--sdds-blue-400);
+  --tds-datetime-bar: var(--tds-blue-400);
 
   // helper
-  --sdds-datetime-helper: var(--sdds-grey-700);
+  --tds-datetime-helper: var(--tds-grey-700);
 
   // success
-  --sdds-datetime-border-bottom-success: var(--sdds-grey-800);
+  --tds-datetime-border-bottom-success: var(--tds-grey-800);
 
   // error
-  --sdds-datetime-border-bottom-error: var(--sdds-negative);
-  --sdds-datetime-helper-error: var(--sdds-negative);
-  --sdds-datetime-bar-error: var(--sdds-negative);
-  --sdds-datetime-icon-error: var(--sdds-negative);
+  --tds-datetime-border-bottom-error: var(--tds-negative);
+  --tds-datetime-helper-error: var(--tds-negative);
+  --tds-datetime-bar-error: var(--tds-negative);
+  --tds-datetime-icon-error: var(--tds-negative);
 
   // Textcounter
-  --sdds-datetime-textcounter: var(--sdds-grey-700);
-  --sdds-datetime-textcounter-divider: var(--sdds-grey-500);
+  --tds-datetime-textcounter: var(--tds-grey-700);
+  --tds-datetime-textcounter-divider: var(--tds-grey-500);
 
   // Prefix and Suffix
-  --sdds-datetime-ps-color: var(--sdds-grey-600);
+  --tds-datetime-ps-color: var(--tds-grey-600);
 }
 
-.sdds-mode-dark {
-  --sdds-datetime-color: var(--sdds-grey-600);
-  --sdds-datetime-background-primary: var(--sdds-grey-900);
-  --sdds-datetime-background-secondary: var(--sdds-grey-868);
-  --sdds-datetime-background: var(--sdds-datetime-background-primary);
-  --sdds-datetime-icon: var(--sdds-grey-50);
-  --sdds-datetime-border-bottom: var(--sdds-grey-600);
-  --sdds-datetime-placeholder: var(--sdds-grey-500);
-  --sdds-datetime-border-bottom-hover: var(--sdds-grey-600);
+.tds-mode-dark {
+  --tds-datetime-color: var(--tds-grey-600);
+  --tds-datetime-background-primary: var(--tds-grey-900);
+  --tds-datetime-background-secondary: var(--tds-grey-868);
+  --tds-datetime-background: var(--tds-datetime-background-primary);
+  --tds-datetime-icon: var(--tds-grey-50);
+  --tds-datetime-border-bottom: var(--tds-grey-600);
+  --tds-datetime-placeholder: var(--tds-grey-500);
+  --tds-datetime-border-bottom-hover: var(--tds-grey-600);
 
   // Disabled
-  --sdds-datetime-background-disabled: var(--sdds-grey-900);
-  --sdds-datetime-color-disabled: var(--sdds-grey-700);
-  --sdds-datetime-placeholder-disabled: var(--sdds-grey-700);
-  --sdds-datetime-label-disabled: var(--sdds-grey-700);
-  --sdds-datetime-icon-disabled: var(--sdds-grey-800);
+  --tds-datetime-background-disabled: var(--tds-grey-900);
+  --tds-datetime-color-disabled: var(--tds-grey-700);
+  --tds-datetime-placeholder-disabled: var(--tds-grey-700);
+  --tds-datetime-label-disabled: var(--tds-grey-700);
+  --tds-datetime-icon-disabled: var(--tds-grey-800);
 
   // Label
-  --sdds-datetime-label-color: var(--sdds-grey-100);
-  --sdds-datetime-label-inside-color: var(--sdds-grey-700);
-  --sdds-datetime-placeholder-color-focus: var(--sdds-grey-500);
+  --tds-datetime-label-color: var(--tds-grey-100);
+  --tds-datetime-label-inside-color: var(--tds-grey-700);
+  --tds-datetime-placeholder-color-focus: var(--tds-grey-500);
 
   // Highlight bar
-  --sdds-datetime-bar: var(--sdds-blue-400);
+  --tds-datetime-bar: var(--tds-blue-400);
 
   // helper
-  --sdds-datetime-helper: var(--sdds-grey-500);
+  --tds-datetime-helper: var(--tds-grey-500);
 
   // success
-  --sdds-datetime-border-bottom-success: var(--sdds-grey-50);
-  --sdds-datetime-color-success: var(--sdds-grey-50);
+  --tds-datetime-border-bottom-success: var(--tds-grey-50);
+  --tds-datetime-color-success: var(--tds-grey-50);
 
   // error
-  --sdds-datetime-border-bottom-error: var(--sdds-negative);
-  --sdds-datetime-helper-error: var(--sdds-negative);
-  --sdds-datetime-bar-error: var(--sdds-negative);
-  --sdds-datetime-icon-error: var(--sdds-negative);
+  --tds-datetime-border-bottom-error: var(--tds-negative);
+  --tds-datetime-helper-error: var(--tds-negative);
+  --tds-datetime-bar-error: var(--tds-negative);
+  --tds-datetime-icon-error: var(--tds-negative);
 
   // Textcounter
-  --sdds-datetime-textcounter: var(--sdds-grey-700);
-  --sdds-datetime-textcounter-divider: var(--sdds-grey-500);
+  --tds-datetime-textcounter: var(--tds-grey-700);
+  --tds-datetime-textcounter-divider: var(--tds-grey-500);
 
   // Prefix and Suffix
-  --sdds-datetime-ps-color: var(--sdds-grey-600);
+  --tds-datetime-ps-color: var(--tds-grey-600);
 }

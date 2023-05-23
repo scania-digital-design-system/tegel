@@ -10,38 +10,38 @@
   border: none;
   outline: none;
   height: 100%;
-  color: var(--sdds-datetime-color);
-  background-color: var(--sdds-datetime-background);
+  color: var(--tds-datetime-color);
+  background-color: var(--tds-datetime-background);
 
   &::placeholder {
     opacity: 1;
-    color: var(--sdds-datetime-placeholder);
+    color: var(--tds-datetime-placeholder);
   }
 
   &:focus::placeholder {
-    color: var(--sdds-datetime-placeholder-color-focus);
+    color: var(--tds-datetime-placeholder-color-focus);
   }
 
   &:disabled {
-    background-color: var(--sdds-datetime-background-disabled);
-    color: var(--sdds-datetime-color-disabled);
+    background-color: var(--tds-datetime-background-disabled);
+    color: var(--tds-datetime-color-disabled);
     cursor: not-allowed;
 
     &::placeholder {
-      color: var(--sdds-datetime-placeholder-disabled);
+      color: var(--tds-datetime-placeholder-disabled);
     }
 
-    ~ .sdds-datetime-label-inside {
-      color: var(--sdds-datetime-label-disabled);
+    ~ .tds-datetime-label-inside {
+      color: var(--tds-datetime-label-disabled);
     }
   }
 }
 
 // icons
 
-.sdds-datetime-input,
-.sdds-datetime-input-md,
-.sdds-datetime-input-sm {
+.tds-datetime-input,
+.tds-datetime-input-md,
+.tds-datetime-input-sm {
   &[type='datetime-local'] {
     ~ .icon-time {
       display: none;
@@ -62,55 +62,55 @@
 }
 
 //Sizes
-.sdds-datetime-input {
+.tds-datetime-input {
   @include datetime-base;
 
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
-  padding: var(--sdds-spacing-element-20) var(--sdds-spacing-element-16);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
 }
 
-.sdds-datetime-input-md {
+.tds-datetime-input-md {
   @include datetime-base;
 
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
-  padding: var(--sdds-spacing-element-16);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-16);
 }
 
-.sdds-datetime-input-sm {
+.tds-datetime-input-sm {
   @include datetime-base;
 
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
-  padding: var(--sdds-spacing-element-16);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-16);
 }
 
 //Container for input field and prefix/suffix
-.sdds-datetime-container {
+.tds-datetime-container {
   border-radius: 4px 4px 0 0;
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--sdds-datetime-background);
-  border-bottom: 1px solid var(--sdds-datetime-border-bottom);
+  background-color: var(--tds-datetime-background);
+  border-bottom: 1px solid var(--tds-datetime-border-bottom);
   transition: border-bottom-color 200ms ease;
 
   &:hover {
-    border-bottom-color: var(--sdds-datetime-border-bottom-hover);
+    border-bottom-color: var(--tds-datetime-border-bottom-hover);
   }
 
-  .sdds-form-datetime-md & {
+  .tds-form-datetime-md & {
     height: 48px;
   }
 
-  .sdds-form-datetime-sm & {
+  .tds-form-datetime-sm & {
     height: 40px;
   }
 }
 
-.sdds-datetime-input-container {
+.tds-datetime-input-container {
   position: relative;
   width: 100%;
 
@@ -124,25 +124,25 @@
     pointer-events: none;
 
     path {
-      fill: var(--sdds-datetime-icon);
+      fill: var(--tds-datetime-icon);
     }
   }
 }
 
-.sdds-datetime-label {
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
+.tds-datetime-label {
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
   display: block;
-  margin-bottom: var(--sdds-spacing-element-8);
-  color: var(--sdds-datetime-label-color);
+  margin-bottom: var(--tds-spacing-element-8);
+  color: var(--tds-datetime-label-color);
 }
 
-.sdds-datetime-label-inside {
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
+.tds-datetime-label-inside {
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
   position: absolute;
   pointer-events: none;
-  color: var(--sdds-datetime-label-inside-color);
+  color: var(--tds-datetime-label-inside-color);
   left: 16px;
 }
 
@@ -158,7 +158,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--sdds-datetime-placeholder-color-focus);
+    color: var(--tds-datetime-placeholder-color-focus);
   }
 }
 
@@ -167,7 +167,7 @@
 }
 
 //Form control
-.sdds-form-datetime {
+.tds-form-datetime {
   display: block;
   min-width: 208px;
   background: unset;
@@ -179,61 +179,61 @@
 
 //Datetime container with label inside
 //Handling position, focus and transition for label inside
-.sdds-form-datetime.sdds-datetime-container-label-inside {
-  .sdds-datetime-input {
-    padding-top: var(--sdds-spacing-element-24);
+.tds-form-datetime.tds-datetime-container-label-inside {
+  .tds-datetime-input {
+    padding-top: var(--tds-spacing-element-24);
     padding-bottom: 15px;
 
-    ~ .sdds-datetime-label-inside {
+    ~ .tds-datetime-label-inside {
       top: 20px;
     }
 
     @include placeholder-label;
   }
 
-  .sdds-datetime-input-md {
-    padding-top: var(--sdds-spacing-element-20);
+  .tds-datetime-input-md {
+    padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
 
-    ~ .sdds-datetime-label-inside {
+    ~ .tds-datetime-label-inside {
       top: 16px;
     }
 
     @include placeholder-label;
   }
 
-  .sdds-datetime-input-sm {
-    padding-top: var(--sdds-spacing-element-20);
+  .tds-datetime-input-sm {
+    padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
 
-    ~ .sdds-datetime-label-inside {
+    ~ .tds-datetime-label-inside {
       top: 16px;
     }
 
     @include placeholder-label;
   }
 
-  &.sdds-datetime-focus,
-  &.sdds-datetime-data {
-    .sdds-datetime-input-sm ~ .sdds-datetime-label-inside {
-      font: var(--sdds-detail-07);
-      letter-spacing: var(--sdds-detail-07-ls);
+  &.tds-datetime-focus,
+  &.tds-datetime-data {
+    .tds-datetime-input-sm ~ .tds-datetime-label-inside {
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
       @include label-inside-transition;
 
       top: 8px;
     }
 
-    .sdds-datetime-input-md ~ .sdds-datetime-label-inside {
-      font: var(--sdds-detail-07);
-      letter-spacing: var(--sdds-detail-07-ls);
+    .tds-datetime-input-md ~ .tds-datetime-label-inside {
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
       @include label-inside-transition;
 
       top: 8px;
     }
 
-    .sdds-datetime-input ~ .sdds-datetime-label-inside {
-      font: var(--sdds-detail-07);
-      letter-spacing: var(--sdds-detail-07-ls);
+    .tds-datetime-input ~ .tds-datetime-label-inside {
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
       @include label-inside-transition;
 
       top: 12px;
@@ -242,7 +242,7 @@
 }
 
 //Datetime bottom bar when in focus
-.sdds-datetime-bar {
+.tds-datetime-bar {
   position: absolute;
   width: 100%;
 
@@ -253,14 +253,14 @@
     top: 54px;
     width: 0;
     position: absolute;
-    background: var(--sdds-datetime-bar);
+    background: var(--tds-datetime-bar);
     transition: 0.35s ease all;
 
-    .sdds-form-datetime-md & {
+    .tds-form-datetime-md & {
       top: 46px;
     }
 
-    .sdds-form-datetime-sm & {
+    .tds-form-datetime-sm & {
       top: 40px;
     }
   }
@@ -273,94 +273,94 @@
     right: 50%;
   }
 
-  .sdds-datetime-focus &::before,
-  .sdds-datetime-focus &::after {
+  .tds-datetime-focus &::before,
+  .tds-datetime-focus &::after {
     width: 50%;
   }
 }
 
 //Helper text
-.sdds-datetime-helper {
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
+.tds-datetime-helper {
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
   display: block;
   flex-basis: 100%;
-  padding-top: var(--sdds-spacing-element-4);
-  color: var(--sdds-datetime-helper);
+  padding-top: var(--tds-spacing-element-4);
+  color: var(--tds-datetime-helper);
 
-  .sdds-helper {
+  .tds-helper {
     display: inline-flex;
     gap: 8px;
   }
 }
 
 //Disabled state
-.sdds-form-datetime-disabled {
-  .sdds-datetime-container {
+.tds-form-datetime-disabled {
+  .tds-datetime-container {
     border-bottom-color: transparent;
   }
 
   .datetime-icon {
     tds-icon {
-      color: var(--sdds-datetime-icon-disabled);
+      color: var(--tds-datetime-icon-disabled);
     }
   }
 
-  .sdds-datetime-label {
-    color: var(--sdds-datetime-label-disabled);
+  .tds-datetime-label {
+    color: var(--tds-datetime-label-disabled);
     cursor: not-allowed;
   }
 }
 
 //Success state
-.sdds-form-datetime-success {
-  .sdds-datetime-container {
-    border-bottom-color: var(--sdds-datetime-border-bottom-success);
-    color: var(--sdds-datetime-color-success);
+.tds-form-datetime-success {
+  .tds-datetime-container {
+    border-bottom-color: var(--tds-datetime-border-bottom-success);
+    color: var(--tds-datetime-color-success);
   }
 
-  .sdds-datetime-bar {
+  .tds-datetime-bar {
     &::before,
     &::after {
-      background: var(--sdds-datetime-bar-sucess);
+      background: var(--tds-datetime-bar-sucess);
     }
   }
 }
 
 //Error State
-.sdds-form-datetime-error {
-  .sdds-datetime-helper {
-    color: var(--sdds-datetime-helper-error);
+.tds-form-datetime-error {
+  .tds-datetime-helper {
+    color: var(--tds-datetime-helper-error);
   }
 
-  .sdds-datetime-container {
-    border-bottom-color: var(--sdds-datetime-border-bottom-error);
+  .tds-datetime-container {
+    border-bottom-color: var(--tds-datetime-border-bottom-error);
   }
 
-  .sdds-datetime-bar {
+  .tds-datetime-bar {
     &::before,
     &::after {
-      background: var(--sdds-datetime-bar-error);
+      background: var(--tds-datetime-bar-error);
     }
   }
 
   .datetime-icon {
     tds-icon {
-      color: var(--sdds-datetime-icon-error);
+      color: var(--tds-datetime-icon-error);
     }
   }
 }
 
-.sdds-datetime-textcounter {
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
-  color: var(--sdds-datetime-textcounter);
+.tds-datetime-textcounter {
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
+  color: var(--tds-datetime-textcounter);
   float: right;
 
-  & .sdds-datetime-textcounter-divider {
-    // font: var(--sdds-detail-05);
-    letter-spacing: var(--sdds-detail-05-ls);
-    color: var(--sdds-datetime-textcounter-divider);
+  & .tds-datetime-textcounter-divider {
+    // font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
+    color: var(--tds-datetime-textcounter-divider);
   }
 }
 
@@ -381,10 +381,10 @@ input[type='time']::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
 
-.sdds-mode-variant-primary {
-  --sdds-datetime-background: var(--sdds-datetime-background-primary);
+.tds-mode-variant-primary {
+  --tds-datetime-background: var(--tds-datetime-background-primary);
 }
 
-.sdds-mode-variant-secondary {
-  --sdds-datetime-background: var(--sdds-datetime-background-secondary);
+.tds-mode-variant-secondary {
+  --tds-datetime-background: var(--tds-datetime-background-secondary);
 }

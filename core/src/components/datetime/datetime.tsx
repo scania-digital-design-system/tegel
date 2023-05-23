@@ -1,12 +1,12 @@
 import { Component, State, h, Prop, Listen, Event, EventEmitter } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-datetime',
+  tag: 'tds-datetime',
   styleUrl: 'datetime.scss',
   shadow: false,
   scoped: true,
 })
-export class Datetime {
+export class TdsDatetime {
   /** Textinput for focus state */
   textInput?: HTMLInputElement;
 
@@ -51,30 +51,30 @@ export class Datetime {
 
   /** Change event for the Datetime */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsChange: EventEmitter;
+  tdsChange: EventEmitter;
 
   /** Blur event for the Datetime */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
   /** Focus event for the Datetime */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
   getDefaultValue = () => {
     const dateTimeObj = {
@@ -117,28 +117,28 @@ export class Datetime {
   // Data input event in value prop
   handleInput(e): void {
     this.value = e.target.value;
-    this.sddsChange.emit(e);
+    this.tdsChange.emit(e);
   }
 
   // Change event isn't a composed:true by default in for input
   handleChange(e: Event): void {
-    this.sddsChange.emit(e);
+    this.tdsChange.emit(e);
   }
 
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleFocusClick(e): void {
     this.textInput.focus();
-    this.sddsFocus.emit(e);
+    this.tdsFocus.emit(e);
   }
 
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleBlur(e): void {
     this.textInput.blur();
-    this.sddsBlur.emit(e);
+    this.tdsBlur.emit(e);
   }
 
   render() {
-    let className = ' sdds-datetime-input';
+    let className = ' tds-datetime-input';
     if (this.size === 'md') {
       className += `${className}-md`;
     }
@@ -148,30 +148,27 @@ export class Datetime {
     return (
       <div
         class={`
-        ${this.noMinWidth ? 'sdds-form-datetime-nomin' : ''}
-        ${this.focusInput ? 'sdds-form-datetime sdds-datetime-focus' : ' sdds-form-datetime'}
-        ${this.value.length > 0 ? 'sdds-datetime-data' : ''}
-        ${this.disabled ? 'sdds-form-datetime-disabled' : ''}
-        ${this.size === 'md' ? 'sdds-form-datetime-md' : ''}
-        ${this.size === 'sm' ? 'sdds-form-datetime-sm' : ''}
+        ${this.noMinWidth ? 'tds-form-datetime-nomin' : ''}
+        ${this.focusInput ? 'tds-form-datetime tds-datetime-focus' : ' tds-form-datetime'}
+        ${this.value.length > 0 ? 'tds-datetime-data' : ''}
+        ${this.disabled ? 'tds-form-datetime-disabled' : ''}
+        ${this.size === 'md' ? 'tds-form-datetime-md' : ''}
+        ${this.size === 'sm' ? 'tds-form-datetime-sm' : ''}
         ${
           this.state === 'error' || this.state === 'success'
-            ? `sdds-form-datetime-${this.state}`
+            ? `tds-form-datetime-${this.state}`
             : ''
         }
-        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}
+        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
         `}
       >
         {this.label && (
-          <label htmlFor={this.name} class="sdds-datetime-label">
+          <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
           </label>
         )}
-        <div
-          onClick={(e) => this.handleFocusClick(e)}
-          class="sdds-datetime-container sdds-datetime-container"
-        >
-          <div class="sdds-datetime-input-container">
+        <div onClick={(e) => this.handleFocusClick(e)} class="tds-datetime-container">
+          <div class="tds-datetime-input-container">
             <input
               ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
               class={className}
@@ -193,12 +190,12 @@ export class Datetime {
               <tds-icon size="20px" name="clock"></tds-icon>
             </div>
           </div>
-          <div class="sdds-datetime-bar"></div>
+          <div class="tds-datetime-bar"></div>
         </div>
 
-        <div class="sdds-datetime-helper">
+        <div class="tds-datetime-helper">
           {this.helper && (
-            <div class="sdds-helper">
+            <div class="tds-helper">
               {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
               {this.helper}
             </div>
