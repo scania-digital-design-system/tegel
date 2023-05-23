@@ -1,45 +1,45 @@
 @import '../../../mixins/box-sizing';
 
-:host(.tds-table__row) {
+:host(.sdds-table__row) {
   @include tds-box-sizing;
 
   display: table-row;
-  border-bottom: 1px solid var(--tds-table-divider);
-  background-color: var(--tds-table-body-row-background);
+  border-bottom: 1px solid var(--sdds-table-divider);
+  background-color: var(--sdds-table-body-row-background);
   transition: background-color 200ms ease;
-  color: var(--tds-table-color);
+  color: var(--sdds-table-color);
 
-  .tds-table__body-cell--checkbox {
+  .sdds-table__body-cell--checkbox {
     min-width: 48px;
     width: 48px;
     padding: 0;
   }
 }
 
-:host(.tds-table__row:hover) {
-  background-color: var(--tds-table-body-row-background-hover);
+:host(.sdds-table__row:hover) {
+  background-color: var(--sdds-table-body-row-background-hover);
 }
 
-:host(.tds-table__row--selected) {
-  background-color: var(--tds-table-body-row-background-active);
+:host(.sdds-table__row--selected) {
+  background-color: var(--sdds-table-body-row-background-active);
 }
 
-:host(.tds-table__row--selected:hover) {
-  background-color: var(--tds-table-body-row-background-active-hover);
+:host(.sdds-table__row--selected:hover) {
+  background-color: var(--sdds-table-body-row-background-active-hover);
 }
 
-:host(.tds-table__row--hidden) {
+:host(.sdds-table__row--hidden) {
   display: none;
 }
 
-:host(.tds-table__row--expended) {
+:host(.sdds-table__row--expended) {
   width: 100%;
   background-color: pink;
 }
 
 :host {
   // Extra rule for label use in table
-  .tds-form-label--table {
+  .sdds-form-label--table {
     width: 100%;
     height: 48px;
     display: flex;
@@ -49,14 +49,14 @@
   }
 }
 
-:host(.tds-table__compact) {
-  .tds-form-label--table {
+:host(.sdds-table__compact) {
+  .sdds-form-label--table {
     height: 32px;
   }
 }
 
-:host(.tds-table--divider) {
-  .tds-table__body-cell--checkbox {
-    border-right: 1px solid var(--tds-table-divider);
+:host(.sdds-table--divider) {
+  .sdds-table__body-cell--checkbox {
+    border-right: 1px solid var(--sdds-table-divider);
   }
 }
