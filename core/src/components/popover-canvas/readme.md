@@ -18,6 +18,21 @@
 | `show`           | `show`            | Controls whether the Popover is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                                                                                                                                                                                                    | `null`      |
 
 
+## Dependencies
+
+### Used by
+
+ - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
+ - [sdds-header-launcher](../header/webcomponent/header-launcher)
+
+### Graph
+```mermaid
+graph TD;
+  sdds-header-dropdown --> tds-popover-canvas
+  sdds-header-launcher --> tds-popover-canvas
+  style tds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
