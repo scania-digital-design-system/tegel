@@ -1,6 +1,6 @@
-# sdds-navigation-tabs
+# tds-navigation-tabs
 
-This component neither accepts any properties, nor exposes any methods.
+
 
 <!-- Auto Generated Below -->
 
@@ -16,9 +16,9 @@ This component neither accepts any properties, nor exposes any methods.
 
 ## Events
 
-| Event        | Description                                     | Type                                         |
-| ------------ | ----------------------------------------------- | -------------------------------------------- |
-| `sddsChange` | Event emitted when the selected tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
+| Event       | Description                                     | Type                                         |
+| ----------- | ----------------------------------------------- | -------------------------------------------- |
+| `tdsChange` | Event emitted when the selected tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
 
 
 ## Methods
@@ -43,8 +43,8 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-navigation-tabs --> tds-icon
-  style sdds-navigation-tabs fill:#f9f,stroke:#333,stroke-width:4px
+  tds-navigation-tabs --> tds-icon
+  style tds-navigation-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

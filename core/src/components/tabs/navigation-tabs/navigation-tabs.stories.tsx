@@ -68,37 +68,37 @@ export default {
 
 const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
   formatHtmlPreview(`
-    <sdds-navigation-tabs
+    <tds-navigation-tabs
       ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
       ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
       ${modeVariant !== 'Inherit from parent' ? ` mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
-      <sdds-navigation-tab>
+      <tds-navigation-tab>
         <a href="#">First tab</a>
-      </sdds-navigation-tab>
-      <sdds-navigation-tab>
+      </tds-navigation-tab>
+      <tds-navigation-tab>
         <a href="#">Second tab is much longer</a>
-      </sdds-navigation-tab>
-      <sdds-navigation-tab selected>
+      </tds-navigation-tab>
+      <tds-navigation-tab>
         <a href="#">Third tab</a>
-      </sdds-navigation-tab>
-      <sdds-navigation-tab disabled>
+      </tds-navigation-tab>
+      <tds-navigation-tab disabled>
         <a href="#">Fourth tab</a>
-      </sdds-navigation-tab>
-    </sdds-navigation-tabs>
+      </tds-navigation-tab>
+    </tds-navigation-tabs>
 
     <!-- Demo container. -->
     <div class="demo-container">
-      <h4 class="sdds-headline-04">Selected tabindex: <span class="selectedTabIndex"></span></h4>
+      <h4 class="tds-headline-04">Selected tabindex: <span class="selectedTabIndex"></span></h4>
     </div>
  
     <!-- Script tag with eventlistener for demo purposes. -->
     <script>
     selectedTab = document.getElementsByClassName('selectedTab')[0]
     selectedTabIndex = document.getElementsByClassName('selectedTabIndex')[0]
-    tabs = document.querySelector('sdds-navigation-tabs');
+    tabs = document.querySelector('tds-navigation-tabs');
     
-    tabs.addEventListener('sddsChange', (event) => {
+    tabs.addEventListener('tdsChange', (event) => {
       selectedTabIndex.innerHTML = event.detail.selectedTabIndex
       console.log(event)
     })
