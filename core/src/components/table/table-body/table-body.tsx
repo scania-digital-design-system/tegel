@@ -11,7 +11,7 @@ import {
   Watch,
 } from '@stencil/core';
 
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
 const jsonData = [
   {
@@ -58,18 +58,18 @@ const jsonData = [
   },
 ];
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableMultiselect',
   'enableExpandableRows',
 ];
 
 @Component({
-  tag: 'sdds-table-body',
+  tag: 'tds-table-body',
   styleUrl: 'table-body.scss',
   shadow: false,
 })
-export class TableBody {
-  /** Prop to pass JSON string which enables automatic rendering of table rows and cells  */
+export class TdsTableBody {
+  /** Prop to pass JSON string which enables automatic rendering of Table rows and cells  */
   @Prop({ mutable: true }) bodyData: any;
 
   /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
@@ -113,7 +113,7 @@ export class TableBody {
 
   @State() tableId: string = '';
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
   @Watch('bodyData')
   arrayDataWatcher(newValue: string) {
@@ -126,35 +126,37 @@ export class TableBody {
     this.bodyDataOriginal = [...this.innerBodyData];
   }
 
-  /** @internal Event that sends unique table identifier and enable/disable status for sorting functionality */
+  /** @internal Event that sends unique Table identifier and enable/disable status for sorting functionality */
   @Event({
-    eventName: 'internalSddsSortingChange',
+    eventName: 'internalTdsSortingChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsSortingChange: EventEmitter<any>;
+  internalTdsSortingChange: EventEmitter<any>;
 
-  /** @internal Sends unique table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
+  /** @internal Sends unique Table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
   @Event({
-    eventName: 'internalSddsCheckboxChange',
+    eventName: 'internalTdsCheckboxChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsCheckboxChange: EventEmitter<any>;
+  internalTdsCheckboxChange: EventEmitter<any>;
 
-  /** @internal Sends unique table identifier and status if mainCheckbox should change its state based on selection status of single rows when multiselect feature is used */
+  /** @internal Sends unique Table identifier and status
+   * if mainCheckbox should change its state based on selection status of single rows
+   * when multiselect feature is used */
   @Event({
-    eventName: 'internalSddsMainCheckboxChange',
+    eventName: 'internalTdsMainCheckboxChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsMainCheckboxChange: EventEmitter<any>;
+  internalTdsMainCheckboxChange: EventEmitter<any>;
 
-  @Listen('internalSddsTablePropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -190,23 +192,23 @@ export class TableBody {
 
   uncheckAll = () => {
     this.mainCheckboxStatus = false;
-    this.internalSddsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
-    this.internalSddsCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
+    this.internalTdsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
+    this.internalTdsCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
   };
 
   sortData(keyValue, sortingDirection) {
     if (this.enableMultiselect) {
-      // Uncheck all checkboxes as state of checkbox is lost on sorting. Do it only in case multiSelect is True.
+      // Uncheck all checkboxes as the state of checkbox is lost on sorting. Do it only in case multiSelect is True.
       this.uncheckAll();
     }
 
-    // use spread operator to make enable sorting and modifying array, same as using .slice()
+    // use spread operator to make enable a sorting and modifying array, same as using .slice()
     this.bodyDataManipulated = [...this.bodyDataManipulated];
-    this.bodyDataManipulated.sort(TableBody.compareValues(keyValue, sortingDirection));
+    this.bodyDataManipulated.sort(TdsTableBody.compareValues(keyValue, sortingDirection));
   }
 
   // Listen to sortColumnData from table-header-element - TODO
-  @Listen('internalSddsSortChange', { target: 'body' })
+  @Listen('internalTdsSortChange', { target: 'body' })
   updateOptionsContent(event: CustomEvent<any>) {
     const { tableId, columnKey, sortingDirection } = event.detail;
     if (this.tableId === tableId) {
@@ -215,11 +217,11 @@ export class TableBody {
   }
 
   selectedDataExporter = () => {
-    const selectedRows = this.host.getElementsByClassName('sdds-table__row--selected');
+    const selectedRows = this.host.getElementsByClassName('tds-table__row--selected');
 
     this.multiselectArray = [];
     for (let j = 0; j < selectedRows.length; j++) {
-      const rowCells = selectedRows[j].getElementsByTagName('sdds-body-cell');
+      const rowCells = selectedRows[j].getElementsByTagName('tds-body-cell');
       const selectedObject = {};
       for (let i = 0; i < rowCells.length; i++) {
         const currentCellKey = rowCells[i].getAttribute('cell-key');
@@ -231,7 +233,7 @@ export class TableBody {
     this.multiselectArrayJSON = JSON.stringify(this.multiselectArray);
   };
 
-  @Listen('internalSddsMainCheckboxChange', { target: 'body' }) // -
+  @Listen('internalTdsMainCheckboxChange', { target: 'body' }) // -
   headCheckboxListener(event: CustomEvent<any>) {
     if (this.tableId === event.detail[0]) {
       [, this.mainCheckboxStatus] = event.detail;
@@ -240,28 +242,28 @@ export class TableBody {
   }
 
   bodyCheckBoxClicked = () => {
-    const numberOfRows = this.host.getElementsByClassName('sdds-table__row').length;
+    const numberOfRows = this.host.getElementsByClassName('tds-table__row').length;
 
     const numberOfRowsSelected = this.host.getElementsByClassName(
-      'sdds-table__row--selected',
+      'tds-table__row--selected',
     ).length;
 
     this.mainCheckboxStatus = numberOfRows === numberOfRowsSelected;
 
-    this.internalSddsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
+    this.internalTdsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
 
     this.selectedDataExporter();
   };
 
   // No need to read the value, event is here just to trigger another function
-  @Listen('internalSddsRowChange', { target: 'body' })
+  @Listen('internalTdsRowChange', { target: 'body' })
   bodyCheckboxListener() {
     this.bodyCheckBoxClicked();
   }
 
   searchFunction(searchTerm) {
     // grab all rows in body
-    const dataRowsFiltering = this.host.querySelectorAll('sdds-table-body-row');
+    const dataRowsFiltering = this.host.querySelectorAll('tds-table-body-row');
 
     if (searchTerm.length > 0) {
       if (this.enablePaginationTableBody) {
@@ -269,32 +271,32 @@ export class TableBody {
       }
 
       dataRowsFiltering.forEach((item) => {
-        const cells = item.querySelectorAll('sdds-body-cell');
+        const cells = item.querySelectorAll('tds-body-cell');
         const cellValuesArray = [];
 
-        // go through cells and save cell-values in array
+        // go through cells and save cell-values in an array
         cells.forEach((cellItem) => {
           const cellValue = cellItem.getAttribute('cell-value').toLowerCase();
           cellValuesArray.push(cellValue);
         });
 
-        // iterate over array of values and see if one matches search string
+        // iterate over an array of values and see if one matches search string
         const matchCounter = cellValuesArray.find((element) => element.includes(searchTerm));
 
         // if matches, show parent row, otherwise hide the row
         if (matchCounter) {
-          item.classList.remove('sdds-table__row--hidden');
+          item.classList.remove('tds-table__row--hidden');
         } else {
-          item.classList.add('sdds-table__row--hidden');
+          item.classList.add('tds-table__row--hidden');
         }
       });
 
       this.disableAllSorting = true;
-      this.internalSddsSortingChange.emit([this.tableId, this.disableAllSorting]);
+      this.internalTdsSortingChange.emit([this.tableId, this.disableAllSorting]);
 
-      const dataRowsHidden = this.host.querySelectorAll('.sdds-table__row--hidden');
+      const dataRowsHidden = this.host.querySelectorAll('.tds-table__row--hidden');
 
-      // If same, info message will be shown
+      // If same, an info message will be shown
       this.showNoResultsMessage = dataRowsHidden.length === dataRowsFiltering.length;
     } else {
       if (this.enablePaginationTableBody) {
@@ -304,18 +306,18 @@ export class TableBody {
       // If pagination is NOT enabled, we show all rows.
       if (!this.enablePaginationTableBody) {
         dataRowsFiltering.forEach((item) => {
-          item.classList.remove('sdds-table__row--hidden');
+          item.classList.remove('tds-table__row--hidden');
         });
       }
 
       this.disableAllSorting = false;
-      this.internalSddsSortingChange.emit([this.tableId, this.disableAllSorting]);
+      this.internalTdsSortingChange.emit([this.tableId, this.disableAllSorting]);
     }
   }
 
-  /** Listens to internalSddsFilter from tableToolbar component */
-  @Listen('internalSddsFilter', { target: 'body' })
-  sddsFilterListener(
+  /** Listens to internalTdsFilter from tableToolbar component */
+  @Listen('internalTdsFilter', { target: 'body' })
+  tdsFilterListener(
     event: CustomEvent<{
       tableId: string;
       query: string;
@@ -327,7 +329,7 @@ export class TableBody {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -345,7 +347,7 @@ export class TableBody {
 
   componentWillRender() {
     const headerColumnsNo =
-      this.host.parentElement.querySelector('sdds-table-header').children.length;
+      this.host.parentElement.querySelector('tds-table-header').children.length;
 
     // multiselect and expended features requires one extra column for controls...
     if (this.enableMultiselect || this.enableExpandableRows) {
@@ -359,15 +361,15 @@ export class TableBody {
     return (
       <Host data-selected-rows={this.multiselectArrayJSON}>
         {this.bodyDataManipulated.map((row) => (
-          <sdds-table-body-row>
+          <tds-table-body-row>
             {Object.keys(row).map((cellData) => (
-              <sdds-body-cell cell-key={cellData} cell-value={row[cellData]}></sdds-body-cell>
+              <tds-body-cell cell-key={cellData} cell-value={row[cellData]}></tds-body-cell>
             ))}
-          </sdds-table-body-row>
+          </tds-table-body-row>
         ))}
         {this.showNoResultsMessage && (
           <tr>
-            <td class="sdds-table__info-message" colSpan={this.columnsNumber}>
+            <td class="tds-table__info-message" colSpan={this.columnsNumber}>
               Unfortunately, no data matches your search term &#128533;
             </td>
           </tr>

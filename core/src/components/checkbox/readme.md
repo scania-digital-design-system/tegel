@@ -39,6 +39,21 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 
 
 
+## Dependencies
+
+### Used by
+
+ - [tds-table-body-row](../table/table-body-row)
+ - [tds-table-header](../table/table-header)
+
+### Graph
+```mermaid
+graph TD;
+  tds-table-body-row --> tds-checkbox
+  tds-table-header --> tds-checkbox
+  style tds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
