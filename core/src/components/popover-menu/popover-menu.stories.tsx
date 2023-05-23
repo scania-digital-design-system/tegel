@@ -93,7 +93,7 @@ const Template = ({ menuPosition, icons }) => {
       placement="${menuPosLookup[menuPosition]}">
       <ul class="sdds-popover-menu-wrapper">
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
             ${
               icons
                 ? `
@@ -106,7 +106,7 @@ const Template = ({ menuPosition, icons }) => {
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
             ${
               icons
                 ? `
@@ -119,7 +119,7 @@ const Template = ({ menuPosition, icons }) => {
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
             ${
               icons
                 ? `
@@ -133,7 +133,7 @@ const Template = ({ menuPosition, icons }) => {
         </li>
         <li class="divider"></li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
             ${
               icons
                 ? `
@@ -146,7 +146,7 @@ const Template = ({ menuPosition, icons }) => {
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
             ${
               icons
                 ? `

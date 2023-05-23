@@ -14,7 +14,7 @@ Valid values are:
         <h2>Hello!</h2>
         <p>
             Welcome to our popup-content!
-            <a target="_blank" href="https://digitaldesign.scania.com">Links work too!</a>
+            <a target="_blank" href="https://tegel.scania.com">Links work too!</a>
         </p>
     </div>
 </sdds-popover-canvas>
