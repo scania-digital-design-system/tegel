@@ -1,13 +1,13 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
   'compactDesign',
   'noMinWidth',
 ];
 @Component({
-  tag: 'sdds-body-cell',
+  tag: 'tds-body-cell',
   styleUrl: 'table-body-cell.scss',
   shadow: true,
 })
@@ -37,10 +37,10 @@ export class TableBodyCell {
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
-  @Listen('internalSddsPropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsPropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -54,8 +54,8 @@ export class TableBodyCell {
   }
 
   // Listen to headKey from table-header-element
-  @Listen('internalSddsHover', { target: 'body' })
-  internalSddsHoverListener(event: CustomEvent<any>) {
+  @Listen('internalTdsHover', { target: 'body' })
+  internalTdsHoverListener(event: CustomEvent<any>) {
     const { tableId, key } = event.detail;
 
     if (tableId === this.tableId) {
@@ -63,9 +63,9 @@ export class TableBodyCell {
     }
   }
 
-  // Listen to internalSddsTextAlign from table-header-element
-  @Listen('internalSddsTextAlign', { target: 'body' })
-  internalSddsTextAlignListener(event: CustomEvent<any>) {
+  // Listen to internalTdsTextAlign from table-header-element
+  @Listen('internalTdsTextAlign', { target: 'body' })
+  internalTdsTextAlignListener(event: CustomEvent<any>) {
     const [receivedID, receivedKey, receivedTextAlign] = event.detail;
 
     if (this.tableId === receivedID) {
@@ -76,7 +76,7 @@ export class TableBodyCell {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -90,12 +90,12 @@ export class TableBodyCell {
     return (
       <Host
         class={{
-          'sdds-table__body-cell': true,
-          'sdds-table__body-cell--hover': this.activeSorting,
-          'sdds-table__compact': this.compactDesign,
-          'sdds-table--divider': this.verticalDividers,
-          'sdds-table--no-min-width': this.noMinWidth,
-          'sdds-table__body-cell--no-padding': this.disablePadding,
+          'tds-table__body-cell': true,
+          'tds-table__body-cell--hover': this.activeSorting,
+          'tds-table__compact': this.compactDesign,
+          'tds-table--divider': this.verticalDividers,
+          'tds-table--no-min-width': this.noMinWidth,
+          'tds-table__body-cell--no-padding': this.disablePadding,
         }}
         style={{ textAlign: this.textAlignState }}
       >

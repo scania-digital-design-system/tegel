@@ -1,18 +1,18 @@
 @import '../../../mixins/box-sizing';
 
 :host,
-sdds-table-body {
+tds-table-body {
   @include tds-box-sizing;
 
   display: table-row-group;
 
-  .sdds-table__info-message {
-    font: var(--sdds-detail-02);
-    letter-spacing: var(--sdds-detail-02-ls);
+  .tds-table__info-message {
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
     display: table-cell;
     box-sizing: border-box;
-    color: var(--sdds-table-color);
-    padding: var(--sdds-spacing-element-16);
+    color: var(--tds-table-color);
+    padding: var(--tds-spacing-element-16);
     min-width: 192px;
     vertical-align: top;
     background-color: transparent;

@@ -1,4 +1,4 @@
-# sdds-table-header-cell
+# tds-table-header-cell
 
 
 
@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event            | Description                                                                                                                                                           | Type                                                                                      |
-| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `sddsSortChange` | Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "desc" \| "asc"; }>` |
+| Event           | Description                                                                                                                                                          | Type                                                                                      |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `tdsSortChange` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "desc" \| "asc"; }>` |
 
 
 ----------------------------------------------

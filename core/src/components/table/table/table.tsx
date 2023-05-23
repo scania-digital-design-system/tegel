@@ -14,13 +14,13 @@ type Props = {
   textAlign: string;
 };
 
-export type InternalSddsTablePropChange = {
+export type InternalTdsTablePropChange = {
   tableId: string;
   changed: Array<keyof Props>;
 } & Partial<Props>;
 
 @Component({
-  tag: 'sdds-table',
+  tag: 'tds-table',
   styleUrl: 'table.scss',
   shadow: true,
 })
@@ -57,15 +57,15 @@ export class Table {
 
   /** @internal Broadcasts changes to the Table props */
   @Event({
-    eventName: 'internalSddsTablePropChange',
+    eventName: 'internalTdsTablePropChange',
     bubbles: true,
     composed: true,
     cancelable: false,
   })
-  internalSddsTablePropChange: EventEmitter<InternalSddsTablePropChange>;
+  internalTdsTablePropChange: EventEmitter<InternalTdsTablePropChange>;
 
-  emitInternalSddsPropChange(changedValueName: keyof Props, changedValue: Props[keyof Props]) {
-    this.internalSddsTablePropChange.emit({
+  emitInternalTdsPropChange(changedValueName: keyof Props, changedValue: Props[keyof Props]) {
+    this.internalTdsTablePropChange.emit({
       tableId: this.tableId,
       changed: [changedValueName],
       [changedValueName]: changedValue,
@@ -74,44 +74,44 @@ export class Table {
 
   @Watch('enableMultiselect')
   enableMultiselectChanged(newValue: boolean) {
-    this.emitInternalSddsPropChange('enableMultiselect', newValue);
+    this.emitInternalTdsPropChange('enableMultiselect', newValue);
   }
 
   @Watch('enableExpandableRows')
   enableExpandableRowsChanged(newValue: boolean) {
-    this.emitInternalSddsPropChange('enableExpandableRows', newValue);
+    this.emitInternalTdsPropChange('enableExpandableRows', newValue);
   }
 
   @Watch('compactDesign')
   compactDesignChanged(newValue: boolean) {
-    this.emitInternalSddsPropChange('compactDesign', newValue);
+    this.emitInternalTdsPropChange('compactDesign', newValue);
   }
 
   @Watch('verticalDividers')
   verticalDividersChanged(newValue: boolean) {
-    this.emitInternalSddsPropChange('verticalDividers', newValue);
+    this.emitInternalTdsPropChange('verticalDividers', newValue);
   }
 
   @Watch('noMinWidth')
   noMinWidthChanged(newValue: boolean) {
-    this.emitInternalSddsPropChange('noMinWidth', newValue);
+    this.emitInternalTdsPropChange('noMinWidth', newValue);
   }
 
   @Watch('modeVariant')
   modeVariantChanged(newValue: 'primary' | 'secondary' | null) {
-    this.emitInternalSddsPropChange('modeVariant', newValue);
+    this.emitInternalTdsPropChange('modeVariant', newValue);
   }
 
   render() {
     return (
-      <Host class={{ 'sdds-table--responsive': this.enableResponsive }}>
+      <Host class={{ 'tds-table--responsive': this.enableResponsive }}>
         <table
           class={{
-            'sdds-table': true,
-            'sdds-table--compact': this.compactDesign,
-            'sdds-table--divider': this.verticalDividers,
-            'sdds-table--no-min-width': this.noMinWidth,
-            'sdds-table--responsive': this.enableResponsive,
+            'tds-table': true,
+            'tds-table--compact': this.compactDesign,
+            'tds-table--divider': this.verticalDividers,
+            'tds-table--no-min-width': this.noMinWidth,
+            'tds-table--responsive': this.enableResponsive,
           }}
         >
           <slot />

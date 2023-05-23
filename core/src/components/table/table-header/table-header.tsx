@@ -1,7 +1,7 @@
 import { Component, h, Host, State, Event, EventEmitter, Listen, Element } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableMultiselect',
   'enableExpandableRows',
   'verticalDividers',
@@ -10,7 +10,7 @@ const relevantTableProps: InternalSddsTablePropChange['changed'] = [
 ];
 
 @Component({
-  tag: 'sdds-table-header',
+  tag: 'tds-table-header',
   styleUrl: 'table-header.scss',
   shadow: true,
 })
@@ -37,19 +37,19 @@ export class TableHeaderRow {
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
-  /** @internal Send status of the main checkbox in header to the parent, sdds-table component */
+  /** @internal Send status of the main checkbox in header to the parent, tds-table component */
   @Event({
-    eventName: 'internalSddsMainCheckboxSelect',
+    eventName: 'internalTdsMainCheckboxSelect',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsMainCheckboxSelect: EventEmitter<any>;
+  internalTdsMainCheckboxSelect: EventEmitter<any>;
 
-  @Listen('internalSddsTablePropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -62,16 +62,16 @@ export class TableHeaderRow {
     }
   }
 
-  @Listen('internalSddsMainCheckboxChange', { target: 'body' })
-  internalSddsMainCheckboxChangeListener(event: CustomEvent<any>) {
+  @Listen('internalTdsMainCheckboxChange', { target: 'body' })
+  internalTdsMainCheckboxChangeListener(event: CustomEvent<any>) {
     const [receivedID, receivedMainCheckboxStatus] = event.detail;
     if (this.tableId === receivedID) {
       this.mainCheckboxSelected = receivedMainCheckboxStatus;
     }
   }
 
-  @Listen('internalSddsRowExpanded', { target: 'body' })
-  internalSddsRowExpandedListener(event: CustomEvent<any>) {
+  @Listen('internalTdsRowExpanded', { target: 'body' })
+  internalTdsRowExpandedListener(event: CustomEvent<any>) {
     if (this.tableId === event.detail[0]) {
       // TODO: Improve this logic. Why we get late repose in DOM?
       setTimeout(() => {
@@ -82,11 +82,11 @@ export class TableHeaderRow {
 
   bodyExpandClicked() {
     const numberOfExtendRowsActive = this.host.parentElement
-      .querySelector('sdds-table-body')
-      .getElementsByClassName('sdds-table__row-extend--active').length;
+      .querySelector('tds-table-body')
+      .getElementsByClassName('tds-table__row-extend--active').length;
     const numberOfExtendRows = this.host.parentElement
-      .querySelector('sdds-table-body')
-      .getElementsByTagName('sdds-table-body-row-expendable').length;
+      .querySelector('tds-table-body')
+      .getElementsByTagName('tds-table-body-row-expendable').length;
 
     if (numberOfExtendRows === numberOfExtendRowsActive) {
       this.mainExpendSelected = true;
@@ -96,7 +96,7 @@ export class TableHeaderRow {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -108,36 +108,36 @@ export class TableHeaderRow {
 
   componentWillRender() {
     this.enableToolbarDesign =
-      this.host.closest('sdds-table').getElementsByTagName('sdds-table-toolbar').length >= 1;
+      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
   }
 
   headCheckBoxClicked(event) {
     this.mainCheckboxSelected = event.currentTarget.checked;
-    this.internalSddsMainCheckboxSelect.emit([this.tableId, this.mainCheckboxSelected]);
+    this.internalTdsMainCheckboxSelect.emit([this.tableId, this.mainCheckboxSelected]);
   }
 
   render() {
     return (
       <Host
         class={{
-          'sdds-table--compact': this.compactDesign,
-          'sdds-table--divider': this.verticalDividers,
-          'sdds-table--toolbar-available': this.enableToolbarDesign,
+          'tds-table--compact': this.compactDesign,
+          'tds-table--divider': this.verticalDividers,
+          'tds-table--toolbar-available': this.enableToolbarDesign,
         }}
       >
         <tr>
           {this.enableMultiselect && (
-            <th class="sdds-table__header-cell sdds-table__header-cell--checkbox">
-              <div class="sdds-form-label sdds-form-label--table">
-                <sdds-checkbox
+            <th class="tds-table__header-cell tds-table__header-cell--checkbox">
+              <div class="tds-form-label tds-form-label--table">
+                <tds-checkbox
                   checked={this.mainCheckboxSelected}
-                  onSddsChange={(event) => this.headCheckBoxClicked(event)}
-                ></sdds-checkbox>
+                  onTdsChange={(event) => this.headCheckBoxClicked(event)}
+                ></tds-checkbox>
               </div>
             </th>
           )}
           {this.enableExpandableRows && (
-            <th class="sdds-table__header-cell sdds-table__header-cell--checkbox"></th>
+            <th class="tds-table__header-cell tds-table__header-cell--checkbox"></th>
           )}
           <slot></slot>
         </tr>

@@ -1,13 +1,13 @@
 @import '../../../mixins/box-sizing';
 
 :host,
-.sdds-table {
+.tds-table {
   border-collapse: collapse;
   display: table;
   @include tds-box-sizing;
 }
 
-:host(.sdds-table--responsive),
-.sdds-table--responsive {
+:host(.tds-table--responsive),
+.tds-table--responsive {
   width: 100%;
 }

@@ -9,9 +9,9 @@ import {
   Listen,
   Element,
 } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableMultiselect',
   'enableExpandableRows',
   'compactDesign',
@@ -20,7 +20,7 @@ const relevantTableProps: InternalSddsTablePropChange['changed'] = [
 ];
 
 @Component({
-  tag: 'sdds-header-cell',
+  tag: 'tds-header-cell',
   styleUrl: 'table-header-cell.scss',
   shadow: true,
 })
@@ -64,22 +64,22 @@ export class TableHeaderCell {
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
-  /** Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /** Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
-    eventName: 'sddsSortChange',
+    eventName: 'tdsSortChange',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsSortChange: EventEmitter<{
+  tdsSortChange: EventEmitter<{
     tableId: string;
     columnKey: string;
     sortingDirection: 'asc' | 'desc';
   }>;
 
-  /** @internal Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
     eventName: 'internalSortButtonClicked',
     composed: true,
@@ -91,14 +91,14 @@ export class TableHeaderCell {
     key: string;
   }>;
 
-  /** @internal Sends unique Table identifier, column key and sorting direction to the sdds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
-    eventName: 'internalSddsSortChange',
+    eventName: 'internalTdsSortChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsSortChange: EventEmitter<{
+  internalTdsSortChange: EventEmitter<{
     tableId: string;
     columnKey: string;
     sortingDirection: 'asc' | 'desc';
@@ -106,27 +106,27 @@ export class TableHeaderCell {
 
   /** @internal Sends unique Table identifier, column key and text align value so the body cells with a same key take the same text alignment as header cell */
   @Event({
-    eventName: 'internalSddsTextAlign',
+    eventName: 'internalTdsTextAlign',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsTextAlign: EventEmitter<any>;
+  internalTdsTextAlign: EventEmitter<any>;
 
   /** @internal Sends unique Table identifier, column key so the body cells with the same key change background when user hovers over header cell */
   @Event({
-    eventName: 'internalSddsHover',
+    eventName: 'internalTdsHover',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsHover: EventEmitter<{
+  internalTdsHover: EventEmitter<{
     tableId: string;
     key: string;
   }>;
 
-  @Listen('internalSddsPropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsPropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -140,8 +140,8 @@ export class TableHeaderCell {
   }
 
   // Listen to parent Table if sorting is allowed
-  @Listen('internalSddsSortingChange', { target: 'body' })
-  internalSddsSortingChangeListener(event: CustomEvent<any>) {
+  @Listen('internalTdsSortingChange', { target: 'body' })
+  internalTdsSortingChangeListener(event: CustomEvent<any>) {
     const [receivedID, receivedSortingStatus] = event.detail;
     if (this.tableId === receivedID) {
       this.disableSortingBtn = receivedSortingStatus;
@@ -168,7 +168,7 @@ export class TableHeaderCell {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -186,10 +186,10 @@ export class TableHeaderCell {
       this.textAlignState = 'left';
     }
     // To enable body cells text align per rules set in head cell
-    this.internalSddsTextAlign.emit([this.tableId, this.columnKey, this.textAlignState]);
+    this.internalTdsTextAlign.emit([this.tableId, this.columnKey, this.textAlignState]);
 
     this.enableToolbarDesign =
-      this.host.closest('sdds-table').getElementsByTagName('sdds-table-toolbar').length >= 1;
+      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
   }
 
   sortButtonClick = () => {
@@ -203,7 +203,7 @@ export class TableHeaderCell {
     this.sortedByMyKey = true;
 
     /* Emit sort event */
-    const sddsSortEvent = this.sddsSortChange.emit({
+    const tdsSortEvent = this.tdsSortChange.emit({
       tableId: this.tableId,
       columnKey: this.columnKey,
       sortingDirection: this.sortingDirection,
@@ -219,9 +219,9 @@ export class TableHeaderCell {
     });
 
     /* If the user has not prevented the sort event. */
-    if (!sddsSortEvent.defaultPrevented) {
+    if (!tdsSortEvent.defaultPrevented) {
       /* Emit internal sort event, which is listened to in table-body <- this does the actual sorting.  */
-      this.internalSddsSortChange.emit({
+      this.internalTdsSortChange.emit({
         tableId: this.tableId,
         columnKey: this.columnKey,
         sortingDirection: this.sortingDirection,
@@ -232,14 +232,14 @@ export class TableHeaderCell {
   headerCellContent = () => {
     if (this.sortable && !this.disableSortingBtn) {
       return (
-        <button class="sdds-table__header-button" onClick={() => this.sortButtonClick()}>
-          <span class="sdds-table__header-button-text" style={{ textAlign: this.textAlignState }}>
+        <button class="tds-table__header-button" onClick={() => this.sortButtonClick()}>
+          <span class="tds-table__header-button-text" style={{ textAlign: this.textAlignState }}>
             {this.columnTitle}
           </span>
 
           {this.sortingDirection === null && (
             <svg
-              class="sdds-table__header-button-icon"
+              class="tds-table__header-button-icon"
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 12 15"
@@ -264,8 +264,8 @@ export class TableHeaderCell {
           {/* First icon is arrow down as first set direction is ascending, clicking it again rotates the icon as we set descending order */}
           {this.sortingDirection && (
             <svg
-              class={`sdds-table__header-button-icon ${
-                this.sortingDirection === 'desc' ? 'sdds-table__header-button-icon--rotate' : ''
+              class={`tds-table__header-button-icon ${
+                this.sortingDirection === 'desc' ? 'tds-table__header-button-icon--rotate' : ''
               }`}
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
@@ -282,14 +282,14 @@ export class TableHeaderCell {
       );
     }
     return (
-      <p class="sdds-table__header-text" style={{ textAlign: this.textAlignState }}>
+      <p class="tds-table__header-text" style={{ textAlign: this.textAlignState }}>
         {this.columnTitle}
       </p>
     );
   };
 
   onHeadCellHover = (key) => {
-    this.internalSddsHover.emit({
+    this.internalTdsHover.emit({
       tableId: this.tableId,
       key,
     });
@@ -299,16 +299,16 @@ export class TableHeaderCell {
     return (
       <Host
         class={{
-          'sdds-table__header-cell': true,
-          'sdds-table__header-cell--sortable': this.sortable,
-          'sdds-table__header-cell--is-sorted': this.sortedByMyKey,
-          'sdds-table__header-cell--custom-width': this.customWidth !== '',
-          'sdds-table__header-cell--right-align': this.textAlignState === 'right',
-          'sdds-table--compact': this.compactDesign,
-          'sdds-table--divider': this.verticalDividers,
-          'sdds-table--no-min-width': this.noMinWidth,
-          'sdds-table--extra-column': this.enableMultiselect || this.enableExpandableRows,
-          'sdds-table--toolbar-available': this.enableToolbarDesign,
+          'tds-table__header-cell': true,
+          'tds-table__header-cell--sortable': this.sortable,
+          'tds-table__header-cell--is-sorted': this.sortedByMyKey,
+          'tds-table__header-cell--custom-width': this.customWidth !== '',
+          'tds-table__header-cell--right-align': this.textAlignState === 'right',
+          'tds-table--compact': this.compactDesign,
+          'tds-table--divider': this.verticalDividers,
+          'tds-table--no-min-width': this.noMinWidth,
+          'tds-table--extra-column': this.enableMultiselect || this.enableExpandableRows,
+          'tds-table--toolbar-available': this.enableToolbarDesign,
         }}
         style={{ width: this.customWidth }}
         // Calling actions from here to enable hover functionality for both sortable and un-sortable tables

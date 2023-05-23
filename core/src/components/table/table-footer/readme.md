@@ -1,4 +1,4 @@
-# sdds-table-footer
+# tds-table-footer
 
 
 
@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event            | Description                                                                                                                           | Type                                                         |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| `sddsPageChange` | Event to send current page value to sdds-table-body component, can also be listened to in order to implement custom pagination logic. | `CustomEvent<{ tableId: string; paginationValue: number; }>` |
+| Event           | Description                                                                                                                          | Type                                                         |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| `tdsPageChange` | Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic. | `CustomEvent<{ tableId: string; paginationValue: number; }>` |
 
 
 ## Dependencies
@@ -32,8 +32,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-table-footer --> tds-icon
-  style sdds-table-footer fill:#f9f,stroke:#333,stroke-width:4px
+  tds-table-footer --> tds-icon
+  style tds-table-footer fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

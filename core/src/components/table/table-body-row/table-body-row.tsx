@@ -1,7 +1,7 @@
 import { Component, Element, h, Host, State, Event, EventEmitter, Listen } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableMultiselect',
   'verticalDividers',
   'compactDesign',
@@ -9,7 +9,7 @@ const relevantTableProps: InternalSddsTablePropChange['changed'] = [
 ];
 
 @Component({
-  tag: 'sdds-table-body-row',
+  tag: 'tds-table-body-row',
   styleUrl: 'table-body-row.scss',
   shadow: true,
 })
@@ -32,17 +32,17 @@ export class TableBodyRow {
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
   bodyCheckBoxClicked(event) {
     const row = this.host;
     this.bodyCheckBoxStatus = event.currentTarget.checked;
     if (this.bodyCheckBoxStatus === true) {
-      row.classList.add('sdds-table__row--selected');
+      row.classList.add('tds-table__row--selected');
     } else {
-      row.classList.remove('sdds-table__row--selected');
+      row.classList.remove('tds-table__row--selected');
     }
-    this.internalSddsRowChange.emit(this.bodyCheckBoxStatus);
+    this.internalTdsRowChange.emit(this.bodyCheckBoxStatus);
   }
 
   bodyCheckBoxStatusUpdater(status) {
@@ -50,15 +50,15 @@ export class TableBodyRow {
     this.bodyCheckBoxStatus = this.mainCheckBoxStatus;
     const row = this.host;
     if (this.bodyCheckBoxStatus === true) {
-      row.classList.add('sdds-table__row--selected');
+      row.classList.add('tds-table__row--selected');
     } else {
-      row.classList.remove('sdds-table__row--selected');
+      row.classList.remove('tds-table__row--selected');
     }
-    this.internalSddsRowChange.emit(this.bodyCheckBoxStatus);
+    this.internalTdsRowChange.emit(this.bodyCheckBoxStatus);
   }
 
-  @Listen('internalSddsTablePropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -71,33 +71,33 @@ export class TableBodyRow {
     }
   }
 
-  /** @internal Send status of single row to the parent, sdds-table component that hold logic for data export and main checkbox control */
+  /** @internal Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control */
   @Event({
-    eventName: 'internalSddsRowChange',
+    eventName: 'internalTdsRowChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsRowChange: EventEmitter<boolean>;
+  internalTdsRowChange: EventEmitter<boolean>;
 
   /** @internal Event that triggers pagination function. Needed as first rows have to be rendered in order for pagination to run */
   @Event({
-    eventName: 'internalSddsPagination',
+    eventName: 'internalTdsPagination',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsPagination: EventEmitter<string>;
+  internalTdsPagination: EventEmitter<string>;
 
-  @Listen('internalSddsMainCheckboxSelect', { target: 'body' })
+  @Listen('internalTdsMainCheckboxSelect', { target: 'body' })
   headCheckboxListener(event: CustomEvent<any>) {
     if (this.tableId === event.detail[0]) {
       this.bodyCheckBoxStatusUpdater(event.detail[1]);
     }
   }
 
-  @Listen('internalSddsCheckboxChange', { target: 'body' })
-  internalSddsCheckboxChangeListener(event: CustomEvent<any>) {
+  @Listen('internalTdsCheckboxChange', { target: 'body' })
+  internalTdsCheckboxChangeListener(event: CustomEvent<any>) {
     const [receivedID, receivedBodyCheckboxStatus] = event.detail;
     if (this.tableId === receivedID) {
       this.bodyCheckBoxStatusUpdater(receivedBodyCheckboxStatus);
@@ -105,7 +105,7 @@ export class TableBodyRow {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -116,26 +116,26 @@ export class TableBodyRow {
   }
 
   componentDidLoad() {
-    this.internalSddsPagination.emit(this.tableId);
+    this.internalTdsPagination.emit(this.tableId);
   }
 
   render() {
     return (
       <Host
         class={{
-          'sdds-table__row': true,
-          'sdds-table__compact': this.compactDesign,
-          'sdds-table--divider': this.verticalDividers,
-          'sdds-mode-variant-primary': this.modeVariant === 'primary',
-          'sdds-mode-variant-secondary': this.modeVariant === 'secondary',
+          'tds-table__row': true,
+          'tds-table__compact': this.compactDesign,
+          'tds-table--divider': this.verticalDividers,
+          'tds-mode-variant-primary': this.modeVariant === 'primary',
+          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
         {this.enableMultiselect && (
-          <td class="sdds-table__body-cell sdds-table__body-cell--checkbox sdds-form-label sdds-form-label--table">
-            <sdds-checkbox
-              onSddsChange={(event) => this.bodyCheckBoxClicked(event)}
+          <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">
+            <tds-checkbox
+              onTdsChange={(event) => this.bodyCheckBoxClicked(event)}
               checked={this.bodyCheckBoxStatus}
-            ></sdds-checkbox>
+            ></tds-checkbox>
           </td>
         )}
         <slot></slot>

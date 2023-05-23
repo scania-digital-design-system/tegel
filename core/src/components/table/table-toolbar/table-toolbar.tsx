@@ -9,16 +9,16 @@ import {
   State,
   Element,
 } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
   'verticalDividers',
 ];
 
 @Component({
-  tag: 'sdds-table-toolbar',
+  tag: 'tds-table-toolbar',
   styleUrl: 'table-toolbar.scss',
   shadow: true,
 })
@@ -41,34 +41,34 @@ export class TableToolbar {
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
-  /** Used for sending users' input to the main parent <sdds-table> the component, can also be listened to in order to implement custom sorting logic. */
+  /** Used for sending users' input to the main parent <tds-table> the component, can also be listened to in order to implement custom sorting logic. */
   @Event({
-    eventName: 'sddsFilterChange',
+    eventName: 'tdsFilterChange',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsFilterChange: EventEmitter<{
+  tdsFilterChange: EventEmitter<{
     tableId: string;
     query: string;
   }>;
 
-  /** @internal Internal event to notify sdds-table-body that a filter/search has been made. */
+  /** @internal Internal event to notify tds-table-body that a filter/search has been made. */
   @Event({
-    eventName: 'internalSddsFilter',
+    eventName: 'internalTdsFilter',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  internalSddsFilter: EventEmitter<{
+  internalTdsFilter: EventEmitter<{
     tableId: string;
     query: string;
   }>;
 
-  @Listen('internalSddsTablePropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -82,7 +82,7 @@ export class TableToolbar {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -94,41 +94,41 @@ export class TableToolbar {
 
   searchFunction(event) {
     const searchTerm = event.currentTarget.value.toLowerCase();
-    const sddsTableSearchBar = event.currentTarget.parentElement;
+    const tdsTableSearchBar = event.currentTarget.parentElement;
 
-    const sddsFilterEvent = this.sddsFilterChange.emit({
+    const tdsFilterEvent = this.tdsFilterChange.emit({
       tableId: this.tableId,
       query: searchTerm,
     });
 
-    if (!sddsFilterEvent.defaultPrevented) {
-      this.internalSddsFilter.emit({
+    if (!tdsFilterEvent.defaultPrevented) {
+      this.internalTdsFilter.emit({
         tableId: this.tableId,
         query: searchTerm,
       });
     }
 
     if (searchTerm.length > 0) {
-      sddsTableSearchBar.classList.add('sdds-table__searchbar--active');
+      tdsTableSearchBar.classList.add('tds-table__searchbar--active');
     } else {
-      sddsTableSearchBar.classList.remove('sdds-table__searchbar--active');
+      tdsTableSearchBar.classList.remove('tds-table__searchbar--active');
     }
   }
 
   render() {
     return (
-      <Host class={this.compactDesign ? 'sdds-table--compact' : ''}>
-        <div class="sdds-table__upper-bar-flex">
-          <caption class="sdds-table__title">{this.tableTitle}</caption>
-          <div class="sdds-table__actionbar">
+      <Host class={this.compactDesign ? 'tds-table--compact' : ''}>
+        <div class="tds-table__upper-bar-flex">
+          <caption class="tds-table__title">{this.tableTitle}</caption>
+          <div class="tds-table__actionbar">
             {this.enableFiltering && (
-              <div class="sdds-table__searchbar">
+              <div class="tds-table__searchbar">
                 <input
-                  class="sdds-table__searchbar-input"
+                  class="tds-table__searchbar-input"
                   type="text"
                   onKeyUp={(event) => this.searchFunction(event)}
                 />
-                <span class="sdds-table__searchbar-icon">
+                <span class="tds-table__searchbar-icon">
                   <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                     <path
                       fill-rule="evenodd"
@@ -140,7 +140,7 @@ export class TableToolbar {
                 </span>
               </div>
             )}
-            <slot name="sdds-table__actionbar" />
+            <slot name="tds-table__actionbar" />
           </div>
         </div>
       </Host>

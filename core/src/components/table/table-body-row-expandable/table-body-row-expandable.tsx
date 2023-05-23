@@ -9,16 +9,16 @@ import {
   Prop,
   State,
 } from '@stencil/core';
-import { InternalSddsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalSddsTablePropChange['changed'] = [
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
   'compactDesign',
   'noMinWidth',
   'modeVariant',
 ];
 @Component({
-  tag: 'sdds-table-body-row-expandable',
+  tag: 'tds-table-body-row-expandable',
   styleUrl: 'table-body-row-expandable.scss',
   shadow: true,
 })
@@ -42,28 +42,28 @@ export class TableBodyRowExpandable {
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLSddsTableElement;
+  tableEl: HTMLTdsTableElement;
 
   /** @internal Sends out expanded status which is used by the Table header component */
   @Event({
-    eventName: 'internalSddsRowExpanded',
+    eventName: 'internalTdsRowExpanded',
     bubbles: true,
     cancelable: false,
     composed: true,
   })
-  internalSddsRowExpanded: EventEmitter<any>;
+  internalTdsRowExpanded: EventEmitter<any>;
 
   /** @internal Event that triggers pagination function. Needed as first rows have to be rendered in order for pagination to run */
   @Event({
-    eventName: 'internalSddsPagination',
+    eventName: 'internalTdsPagination',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsPagination: EventEmitter<string>;
+  internalTdsPagination: EventEmitter<string>;
 
-  @Listen('internalSddsTablePropChange', { target: 'body' })
-  internalSddsPropChangeListener(event: CustomEvent<InternalSddsTablePropChange>) {
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
       event.detail.changed
         .filter((changedProp) => relevantTableProps.includes(changedProp))
@@ -77,7 +77,7 @@ export class TableBodyRowExpandable {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('sdds-table');
+    this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
 
@@ -88,19 +88,19 @@ export class TableBodyRowExpandable {
   }
 
   componentDidLoad() {
-    this.internalSddsPagination.emit(this.tableId);
+    this.internalTdsPagination.emit(this.tableId);
   }
 
   componentWillRender() {
     if (this.colSpan !== null) {
       this.columnsNumber = this.colSpan;
     } else {
-      this.columnsNumber = this.tableEl.querySelector('sdds-table-header').childElementCount + 1;
+      this.columnsNumber = this.tableEl.querySelector('tds-table-header').childElementCount + 1;
     }
   }
 
   sendValue() {
-    this.internalSddsRowExpanded.emit([this.tableId, this.isExpanded]);
+    this.internalTdsRowExpanded.emit([this.tableId, this.isExpanded]);
   }
 
   onChangeHandler(event) {
@@ -112,24 +112,24 @@ export class TableBodyRowExpandable {
     return (
       <Host
         class={{
-          'sdds-table__row': true,
-          'sdds-table__row-expand--active': this.isExpanded,
-          'sdds-table__compact': this.compactDesign,
-          'sdds-table--divider': this.verticalDividers,
-          'sdds-mode-variant-primary': this.modeVariant === 'primary',
-          'sdds-mode-variant-secondary': this.modeVariant === 'secondary',
+          'tds-table__row': true,
+          'tds-table__row-expand--active': this.isExpanded,
+          'tds-table__compact': this.compactDesign,
+          'tds-table--divider': this.verticalDividers,
+          'tds-mode-variant-primary': this.modeVariant === 'primary',
+          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
-        <tr class="sdds-table__row">
-          <td class="sdds-table__cell sdds-table__cell--expand">
-            <label class="sdds-table__expand-control-container">
+        <tr class="tds-table__row">
+          <td class="tds-table__cell tds-table__cell--expand">
+            <label class="tds-table__expand-control-container">
               <input
-                class="sdds-table__expand-input"
+                class="tds-table__expand-input"
                 type="checkbox"
                 onChange={(event) => this.onChangeHandler(event)}
                 checked={this.isExpanded}
               />
-              <span class="sdds-expendable-row-icon">
+              <span class="tds-expendable-row-icon">
                 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                   <path
                     fill-rule="evenodd"
@@ -144,8 +144,8 @@ export class TableBodyRowExpandable {
           <slot />
         </tr>
 
-        <tr class="sdds-table__row-expand">
-          <td class="sdds-table__cell-expand" colSpan={this.columnsNumber}>
+        <tr class="tds-table__row-expand">
+          <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
             <slot name="expand-row" />
           </td>
         </tr>
