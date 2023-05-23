@@ -17,7 +17,6 @@
 
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
- - [sdds-folder-tabs](../tabs/folder-tabs)
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
@@ -34,6 +33,7 @@
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-datetime](../datetime)
+ - [tds-folder-tabs](../tabs/folder-tabs)
  - [tds-footer-group](../footer/footer-group)
  - [tds-message](../message)
  - [tds-slider](../slider)
@@ -43,7 +43,6 @@
 graph TD;
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
-  sdds-folder-tabs --> tds-icon
   sdds-header-dropdown --> tds-icon
   sdds-header-hamburger --> tds-icon
   sdds-header-launcher-button --> tds-icon
@@ -60,6 +59,7 @@ graph TD;
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
   tds-datetime --> tds-icon
+  tds-folder-tabs --> tds-icon
   tds-footer-group --> tds-icon
   tds-message --> tds-icon
   tds-slider --> tds-icon

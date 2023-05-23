@@ -1,11 +1,11 @@
 import { Component, Host, h, Method, State, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-folder-tab',
-  styleUrl: 'sdds-folder-tab.scss',
+  tag: 'tds-folder-tab',
+  styleUrl: 'folder-tab.scss',
   shadow: true,
 })
-export class SddsFolderTab {
+export class TdsFolderTab {
   /** Disables the tab. */
   @Prop() disabled: boolean = false;
 
@@ -13,13 +13,13 @@ export class SddsFolderTab {
 
   @State() tabWidth: number;
 
-  /** @internal Method to set the width of the tab. Used by the <sdds-folder-tabs> */
+  /** @internal Method to set the width of the tab. Used by the <tds-folder-tabs> */
   @Method()
   async setTabWidth(width: number) {
     this.tabWidth = width;
   }
 
-  /** @internal Method to set the tab as selected. Used by the <sdds-folder-tabs> */
+  /** @internal Method to set the tab as selected. Used by the <tds-folder-tabs> */
   @Method()
   async setSelected(selected: boolean) {
     this.selected = selected;

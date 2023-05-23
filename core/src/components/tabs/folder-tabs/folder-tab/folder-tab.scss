@@ -12,8 +12,8 @@
     min-width: 142px;
     display: block;
     width: calc(100% - 32px);
-    font: var(--sdds-headline-07);
-    letter-spacing: var(--sdds-headline-07-ls);
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
     cursor: pointer;
     padding: 16px;
     white-space: nowrap;
@@ -26,21 +26,21 @@
   }
 
   div:not(.selected) {
-    background-color: var(--sdds-folder-tab-background);
+    background-color: var(--tds-folder-tab-background);
 
     ::slotted(*) {
-      border-left-color: var(--sdds-folder-tab-divider-color);
-      border-top: 2px solid var(--sdds-folder-tab-background);
-      color: var(--sdds-folder-tab-item-color);
+      border-left-color: var(--tds-folder-tab-divider-color);
+      border-top: 2px solid var(--tds-folder-tab-background);
+      color: var(--tds-folder-tab-item-color);
     }
 
     &:hover {
-      background-color: var(--sdds-folder-tab-background-hover);
+      background-color: var(--tds-folder-tab-background-hover);
       cursor: pointer;
 
       ::slotted(*) {
-        border-top-color: var(--sdds-folder-tab-background-hover);
-        color: var(--sdds-folder-tab-color);
+        border-top-color: var(--tds-folder-tab-background-hover);
+        color: var(--tds-folder-tab-color);
       }
     }
   }
@@ -53,7 +53,7 @@
     pointer-events: none;
 
     ::slotted(*) {
-      color: var(--sdds-folder-tab-item-color-disabled);
+      color: var(--tds-folder-tab-item-color-disabled);
     }
 
     &:focus-visible {
@@ -62,12 +62,12 @@
   }
 
   .selected {
-    background-color: var(--sdds-folder-tab-background-selected);
-    border-top: 2px solid var(--sdds-folder-tab-border-selected);
+    background-color: var(--tds-folder-tab-background-selected);
+    border-top: 2px solid var(--tds-folder-tab-border-selected);
 
     &::after {
       content: ' ';
-      background-color: var(--sdds-folder-tab-background-selected);
+      background-color: var(--tds-folder-tab-background-selected);
       width: 1px;
       top: 0;
       bottom: 0;
@@ -78,7 +78,7 @@
     }
 
     ::slotted(*) {
-      color: var(--sdds-folder-tab-color);
+      color: var(--tds-folder-tab-color);
     }
   }
 }
