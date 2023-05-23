@@ -68,35 +68,35 @@ export default {
 
 const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
   formatHtmlPreview(`
-  <sdds-inline-tabs
+  <tds-inline-tabs
     ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
     ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
-      <sdds-inline-tab>
+      <tds-inline-tab>
         <button>First tab</button>
-      </sdds-inline-tab>
-      <sdds-inline-tab>
+      </tds-inline-tab>
+      <tds-inline-tab>
         <button>Second tab is much longer</button>
-      </sdds-inline-tab>
-      <sdds-inline-tab>
+      </tds-inline-tab>
+      <tds-inline-tab>
         <button>Third tab</button>
-      </sdds-inline-tab>
-      <sdds-inline-tab disabled>
+      </tds-inline-tab>
+      <tds-inline-tab disabled>
         <button>Fourth tab</button>
-      </sdds-inline-tab>
-   </sdds-inline-tabs>
+      </tds-inline-tab>
+   </tds-inline-tabs>
 
    <!-- Demo container. -->
    <div class="demo-container">
-     <h4 class="sdds-headline-04">Selected tabindex: <span class="selectedTabIndex"></span></h4>
+     <h4 class="tds-headline-04">Selected tabindex: <span class="selectedTabIndex"></span></h4>
    </div>
 
    <!-- Script tag with eventlistener for demo purposes. -->
    <script>
    selectedTabIndex = document.getElementsByClassName('selectedTabIndex')[0]
-   tabs = document.querySelector('sdds-inline-tabs');
+   tabs = document.querySelector('tds-inline-tabs');
    
-   tabs.addEventListener('sddsChange', (event) => {
+   tabs.addEventListener('tdsChange', (event) => {
      selectedTabIndex.innerHTML = event.detail.selectedTabIndex
      console.log(event)
     })

@@ -32,11 +32,11 @@
   .scroll-right-button,
   .scroll-left-button {
     height: 50px;
-    color: var(--sdds-folder-tabs-scroll-btn-color);
+    color: var(--tds-folder-tabs-scroll-btn-color);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--sdds-folder-tabs-scroll-btn-background);
+    background-color: var(--tds-folder-tabs-scroll-btn-background);
     display: none;
     justify-content: center;
     align-items: center;
@@ -52,11 +52,11 @@
     }
 
     &:hover {
-      background-color: var(--sdds-folder-tabs-scroll-btn-background-hover);
+      background-color: var(--tds-folder-tabs-scroll-btn-background-hover);
     }
 
     &:active {
-      background-color: var(--sdds-folder-tabs-scroll-btn-background-active);
+      background-color: var(--tds-folder-tabs-scroll-btn-background-active);
     }
 
     &:focus {
@@ -64,7 +64,7 @@
     }
 
     svg {
-      fill: var(--sdds-folder-tabs-scroll-btn-color);
+      fill: var(--tds-folder-tabs-scroll-btn-color);
     }
   }
 }

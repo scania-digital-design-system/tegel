@@ -1,17 +1,17 @@
 import { Component, Host, h, Prop, State, Method } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-navigation-tab',
-  styleUrl: 'sdds-navigation-tab.scss',
+  tag: 'tds-navigation-tab',
+  styleUrl: 'navigation-tab.scss',
   shadow: true,
 })
-export class SddsNavigationTab {
+export class TdsNavigationTab {
   /** Disables the tab. */
   @Prop() disabled: boolean = false;
 
   @State() selected: boolean = false;
 
-  /** @internal Method to set the tab as selected. Used by the <sdds-folder-tabs> */
+  /** @internal Method to set the tab as selected. Used by the <tds-navigation-tabs> */
   @Method()
   async setSelected(selected: boolean) {
     this.selected = selected;
