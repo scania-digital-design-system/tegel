@@ -1,28 +1,28 @@
 import { formatHtmlPreview } from '../../utils/utils';
-import sddsTable from './table/readme.md';
-import sddsTableToolbar from './table-toolbar/readme.md';
-import sddsHeader from './table-header/readme.md';
-import sddsHeaderCell from './table-header-cell/readme.md';
-import sddsTableBody from './table-body/readme.md';
-import sddsBodyRow from './table-body-row/readme.md';
-import sddsBodyRowExpandable from './table-body-row-expandable/readme.md';
-import sddsBodyCell from './table-body-cell/readme.md';
-import sddsTableFooter from './table-footer/readme.md';
+import tdsTable from './table/readme.md';
+import tdsTableToolbar from './table-toolbar/readme.md';
+import tdsHeader from './table-header/readme.md';
+import tdsHeaderCell from './table-header-cell/readme.md';
+import tdsTableBody from './table-body/readme.md';
+import tdsBodyRow from './table-body-row/readme.md';
+import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
+import tdsBodyCell from './table-body-cell/readme.md';
+import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
   title: `${ComponentsFolder}/Table`,
   parameters: {
     notes: {
-      'sdds-table': sddsTable,
-      'sdds-table-toolbar': sddsTableToolbar,
-      'sdds-header': sddsHeader,
-      'sdds-header-cell': sddsHeaderCell,
-      'sdds-table-body': sddsTableBody,
-      'sdds-body-row': sddsBodyRow,
-      'sdds-body-row-expandable': sddsBodyRowExpandable,
-      'sdds-body-cell': sddsBodyCell,
-      'sdds-table-footer': sddsTableFooter,
+      'tds-table': tdsTable,
+      'tds-table-toolbar': tdsTableToolbar,
+      'tds-header': tdsHeader,
+      'tds-header-cell': tdsHeaderCell,
+      'tds-table-body': tdsTableBody,
+      'tds-body-row': tdsBodyRow,
+      'tds-body-row-expandable': tdsBodyRowExpandable,
+      'tds-body-cell': tdsBodyCell,
+      'tds-table-footer': tdsTableFooter,
     },
   },
   argTypes: {
@@ -126,7 +126,7 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      '<button slot="sdds-table__actionbar" class="sdds-table__actionbar-btn"><tds-icon class="sdds-table__actionbar-btn-icon" name="settings" size="20px"></tds-icon> </button><sdds-button slot="sdds-table__actionbar" type="primary" size="sm" text="Download"></sdds-button>',
+      '<button slot="tds-table__actionbar" class="tds-table__actionbar-btn"><tds-icon class="tds-table__actionbar-btn-icon" name="settings" size="20px"></tds-icon> </button><tds-button slot="tds-table__actionbar" type="primary" size="sm" text="Download"></tds-button>',
     ),
     verticalDivider: false,
     noMinWidth: false,
@@ -150,7 +150,7 @@ const BatchActionTemplate = ({
   column4Width,
 }) =>
   formatHtmlPreview(`
-   <sdds-table
+   <tds-table
         enable-multiselect
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
@@ -160,25 +160,25 @@ const BatchActionTemplate = ({
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         }
       >
-          <sdds-table-toolbar table-title="Batch action">
+          <tds-table-toolbar table-title="Batch action">
           ${batchArea}
-        </sdds-table-toolbar>
-          <sdds-table-header>
-              <sdds-header-cell ${
+        </tds-table-toolbar>
+          <tds-table-header>
+              <tds-header-cell ${
                 column1Width ? `style="width: ${column1Width};"` : ''
-              } column-key='truck' column-title='Truck type'></sdds-header-cell>
-              <sdds-header-cell ${
+              } column-key='truck' column-title='Truck type'></tds-header-cell>
+              <tds-header-cell ${
                 column2Width ? `style="width: ${column2Width};"` : ''
-              } column-key='driver' column-title='Driver name'></sdds-header-cell>
-              <sdds-header-cell ${
+              } column-key='driver' column-title='Driver name'></tds-header-cell>
+              <tds-header-cell ${
                 column3Width ? `style="width: ${column3Width};"` : ''
-              } column-key='country' column-title='Country'></sdds-header-cell>
-              <sdds-header-cell ${
+              } column-key='country' column-title='Country'></tds-header-cell>
+              <tds-header-cell ${
                 column4Width ? `style="width: ${column4Width};"` : ''
-              } column-key='mileage' column-title='Mileage' text-align='right'></sdds-header-cell>
-          </sdds-table-header>
-          <sdds-table-body enable-dummy-data>
-          </sdds-table-body>
-  </sdds-table>`);
+              } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
+          </tds-table-header>
+          <tds-table-body enable-dummy-data>
+          </tds-table-body>
+  </tds-table>`);
 
 export const BatchAction = BatchActionTemplate.bind({});
