@@ -1,4 +1,4 @@
-# sdds-slider
+# tds-slider
 
 
 
@@ -29,9 +29,9 @@
 
 ## Events
 
-| Event        | Description                                 | Type                              |
-| ------------ | ------------------------------------------- | --------------------------------- |
-| `sddsChange` | Sends the value of the slider when changed. | `CustomEvent<{ value: string; }>` |
+| Event       | Description                                 | Type                              |
+| ----------- | ------------------------------------------- | --------------------------------- |
+| `tdsChange` | Sends the value of the slider when changed. | `CustomEvent<{ value: string; }>` |
 
 
 ## Methods
@@ -56,8 +56,8 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-slider --> tds-icon
-  style sdds-slider fill:#f9f,stroke:#333,stroke-width:4px
+  tds-slider --> tds-icon
+  style tds-slider fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
