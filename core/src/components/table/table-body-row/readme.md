@@ -15,10 +15,6 @@
 
 - [tds-checkbox](../../checkbox)
 
-### Depends on
-
-- [sdds-checkbox](../../checkbox)
-
 ### Graph
 ```mermaid
 graph TD;
