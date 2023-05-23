@@ -233,7 +233,7 @@ const Template = ({
     </style>
 
    <div class="demo-wrapper">
-     <sdds-slider id="sdds-slider"
+     <tds-slider 
         min="${min}"
         max="${max}"
         ${showControls && step ? `step="${step}"` : ''}
@@ -249,15 +249,15 @@ const Template = ({
         scrubber-size="${sizeLookUp[scrubberSize]}"
         ${readonly ? 'read-only' : ''}
         >
-      </sdds-slider>
+      </tds-slider>
     </div>
 
      <!-- Script tag for demo purposes -->
     <script>
-      slider = document.querySelectorAll('sdds-slider')[0]
+      slider = document.querySelector('tds-slider')
 
-      slider.removeEventListener('sddsChange', null)
-      slider.addEventListener('sddsChange', (event) => {
+      slider.removeEventListener('tdsChange', null)
+      slider.addEventListener('tdsChange', (event) => {
         console.log(event);
       });
     </script>
