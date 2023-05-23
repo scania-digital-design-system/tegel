@@ -5,14 +5,14 @@
 
   display: table-header-group;
 
-  .sdds-table__header-cell--checkbox {
-    font: var(--sdds-headline-07);
-    letter-spacing: var(--sdds-headline-07-ls);
+  .tds-table__header-cell--checkbox {
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
     display: table-cell;
     text-align: left;
-    color: var(--sdds-table-color);
-    background-color: var(--sdds-table-header-background);
-    border-bottom: 1px solid var(--sdds-table-divider);
+    color: var(--tds-table-color);
+    background-color: var(--tds-table-header-background);
+    border-bottom: 1px solid var(--tds-table-divider);
     height: 48px;
     box-sizing: border-box;
 
@@ -26,7 +26,7 @@
   }
 
   // Extra rule for label use in data-table
-  .sdds-form-label--table {
+  .tds-form-label--table {
     width: 100%;
     height: 48px;
     display: flex;
@@ -35,53 +35,53 @@
     cursor: pointer;
   }
 
-  .sdds-table__expand-control-container {
+  .tds-table__expand-control-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 48px;
     cursor: pointer;
 
-    .sdds-table__expand-input {
+    .tds-table__expand-input {
       display: none;
     }
 
-    .sdds-expandable-row-icon {
+    .tds-expandable-row-icon {
       height: 20px;
       width: 20px;
       transition: transform 200ms ease;
       transform: rotate(0);
     }
 
-    .sdds-expandable-row-icon--opened {
+    .tds-expandable-row-icon--opened {
       transform: rotate(180deg);
     }
   }
 
-  ::slotted(sdds-header-cell:hover) {
-    background-color: var(--sdds-table-header-background-hover);
+  ::slotted(tds-header-cell:hover) {
+    background-color: var(--tds-table-header-background-hover);
   }
 }
 
-:host(.sdds-table--compact) {
-  .sdds-table__header-cell--checkbox {
+:host(.tds-table--compact) {
+  .tds-table__header-cell--checkbox {
     height: 32px;
   }
 
   // Extra rule for label use in data-table
-  .sdds-form-label--table {
+  .tds-form-label--table {
     height: 32px;
   }
 }
 
-:host(.sdds-table--divider) {
-  .sdds-table__header-cell--checkbox {
-    border-right: 1px solid var(--sdds-table-divider);
+:host(.tds-table--divider) {
+  .tds-table__header-cell--checkbox {
+    border-right: 1px solid var(--tds-table-divider);
   }
 }
 
-:host(.sdds-table--toolbar-available) {
-  .sdds-table__header-cell--checkbox {
+:host(.tds-table--toolbar-available) {
+  .tds-table__header-cell--checkbox {
     border-top-left-radius: 0;
   }
 }
