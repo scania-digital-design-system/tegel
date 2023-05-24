@@ -62,9 +62,8 @@ const Template = ({ topPart, modeVariant }) =>
     <tds-footer
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
-      ${
-        topPart
-          ? `
+      ${topPart
+      ? `
       <div slot="top">
         <tds-footer-group title-text="Title">
           <tds-footer-item >
@@ -115,8 +114,8 @@ const Template = ({ topPart, modeVariant }) =>
         </tds-footer-group>
       </div>
       `
-          : ''
-      }
+      : ''
+    }
       <div slot="main-left">
         <tds-footer-group>
           <tds-footer-item >
