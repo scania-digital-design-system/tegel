@@ -7,7 +7,7 @@ Valid values are:
 
 'auto', 'auto-left', 'auto-right', 'bottom', 'bottom-start', 'bottom-end', 'top', 'top-start', 'top-end', 'left', 'left-start', 'left-end', 'right', 'right-start, 'right-end'
 
-<sdds-popover-canvas
+<tds-popover-canvas
     placement="auto"
     selector="#trigger">
     <div class="my-special-content">
@@ -17,6 +17,6 @@ Valid values are:
             <a target="_blank" href="https://tegel.scania.com">Links work too!</a>
         </p>
     </div>
-</sdds-popover-canvas>
+</tds-popover-canvas>
 
 <button id="trigger">Click to open the Popover Canvas</div>

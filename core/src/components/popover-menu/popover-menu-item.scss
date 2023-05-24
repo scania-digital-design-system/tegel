@@ -1,7 +1,7 @@
 // TODO - Investigate whether or not this should instead be a Web Component.
 @import '../../mixins/box-sizing';
 
-ul.sdds-popover-menu-wrapper {
+ul.tds-popover-menu-wrapper {
   @include tds-box-sizing;
 
   list-style-type: none;
@@ -10,9 +10,9 @@ ul.sdds-popover-menu-wrapper {
   padding: 0;
 
   li {
-    font: var(--sdds-detail-02);
-    letter-spacing: var(--sdds-detail-02-ls);
-    color: var(--sdds-popover-menu-color);
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
+    color: var(--tds-popover-menu-color);
     margin-bottom: 16px;
     position: relative;
     width: 100%;
@@ -25,7 +25,7 @@ ul.sdds-popover-menu-wrapper {
       text-decoration: none;
       position: relative;
       width: 100%;
-      color: var(--sdds-popover-menu-color);
+      color: var(--tds-popover-menu-color);
       display: flex;
       flex-wrap: nowrap;
 
@@ -54,7 +54,7 @@ ul.sdds-popover-menu-wrapper {
           height: calc(100% + 16px);
           top: -8px;
           left: -16px;
-          background-color: var(--sdds-popover-menu-background-hover);
+          background-color: var(--tds-popover-menu-background-hover);
         }
       }
     }
@@ -68,7 +68,7 @@ ul.sdds-popover-menu-wrapper {
         position: relative;
         content: ' ';
         display: block;
-        background-color: var(--sdds-popover-menu-divider-color);
+        background-color: var(--tds-popover-menu-divider-color);
         height: 1px;
         left: -16px;
         width: calc(100% + 32px);

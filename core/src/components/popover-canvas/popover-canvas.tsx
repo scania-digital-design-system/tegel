@@ -3,12 +3,12 @@ import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
 @Component({
-  tag: 'sdds-popover-canvas',
+  tag: 'tds-popover-canvas',
   styleUrl: 'popover-canvas.scss',
   shadow: true,
 })
-export class PopoverCanvas {
-  @Element() host!: HTMLSddsPopoverCanvasElement;
+export class TdsPopoverCanvas {
+  @Element() host!: HTMLTdsPopoverCanvasElement;
 
   /** The CSS-selector for an element that will trigger the Popover */
   @Prop() selector: string = '';
@@ -125,7 +125,7 @@ export class PopoverCanvas {
 
   render() {
     return (
-      <Host class={`sdds-popover-canvas ${this.isShown ? 'sdds-popover-canvas-show' : ''}`}>
+      <Host class={`tds-popover-canvas ${this.isShown ? 'tds-popover-canvas-show' : ''}`}>
         <slot></slot>
       </Host>
     );
