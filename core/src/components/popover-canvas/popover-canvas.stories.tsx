@@ -79,7 +79,7 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
           Where you can put anything you want!
         </p>
         <p>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">Even links!</a>
+          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">Even links!</a>
         </p>
       </sdds-popover-canvas>
 
