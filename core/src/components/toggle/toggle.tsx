@@ -1,11 +1,11 @@
 import { Component, h, Prop, Event, Element, EventEmitter, Method } from '@stencil/core';
 @Component({
-  tag: 'sdds-toggle',
-  styleUrl: 'sdds-toggle.scss',
+  tag: 'tds-toggle',
+  styleUrl: 'toggle.scss',
   shadow: false,
   scoped: true,
 })
-export class SddsToggle {
+export class TdsToggle {
   @Element() host: HTMLElement;
 
   /** Sets the Toggle as checked */
@@ -41,19 +41,19 @@ export class SddsToggle {
 
   /** Sends unique Toggle identifier and status when it is toggled. */
   @Event({
-    eventName: 'sddsToggle',
+    eventName: 'tdsToggle',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsToggle: EventEmitter<{
+  tdsToggle: EventEmitter<{
     toggleId: string;
     checked: boolean;
   }>;
 
   handleToggle = () => {
     this.checked = !this.checked;
-    this.sddsToggle.emit({
+    this.tdsToggle.emit({
       toggleId: this.toggleId,
       checked: this.checked,
     });
@@ -61,7 +61,7 @@ export class SddsToggle {
 
   render() {
     return (
-      <div class="sdds-toggle-webcomponent">
+      <div class="tds-toggle">
         {this.headline && (
           <div class={`toggle-headline ${this.disabled ? 'disabled' : ''}`}>{this.headline}</div>
         )}

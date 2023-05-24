@@ -1,4 +1,4 @@
-# sdds-toggle
+# tds-toggle
 
 
 
@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event        | Description                                                   | Type                                                   |
-| ------------ | ------------------------------------------------------------- | ------------------------------------------------------ |
-| `sddsToggle` | Sends unique Toggle identifier and status when it is toggled. | `CustomEvent<{ toggleId: string; checked: boolean; }>` |
+| Event       | Description                                                   | Type                                                   |
+| ----------- | ------------------------------------------------------------- | ------------------------------------------------------ |
+| `tdsToggle` | Sends unique Toggle identifier and status when it is toggled. | `CustomEvent<{ toggleId: string; checked: boolean; }>` |
 
 
 ## Methods
