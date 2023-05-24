@@ -78,20 +78,20 @@ export default {
 
 const Template = ({ size, headline, label, checked, disabled }) =>
   formatHtmlPreview(`
-      <sdds-toggle
+      <tds-toggle
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
         ${headline ? `headline="${headline}"` : ''}
         size="${size === 'Large' ? 'lg' : 'sm'}">
         <div slot="label">${label}</div>
-    </sdds-toggle>
+    </tds-toggle>
 
     <!-- Script tag with eventlistener for demo purposes. -->
     <script>
-      toggleElement = document.querySelector('sdds-toggle')
+      toggleElement = document.querySelector('tds-toggle')
 
-      toggleElement.addEventListener('sddsToggle', (event)=> {
-        console.log('Toggle with id: ', event.detail.toggleId, ' is ', event.detail.checked)
+      toggleElement.addEventListener('tdsToggle', (event)=> {
+        console.log(event)
       })
     </script>
   `);
