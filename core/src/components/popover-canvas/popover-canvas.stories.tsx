@@ -87,7 +87,7 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
       <div class="demo-wrapper">
         <span class="tds-u-mr2">Click icon for Popover Canvas</span>
         
-        <sdds-button aria-label="menu" onlyIcon id="trigger" type="ghost" size="sm">
+        <sdds-button aria-label="menu" only-icon id="trigger" type="ghost" size="sm">
           <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
         </sdds-button>
       </div>

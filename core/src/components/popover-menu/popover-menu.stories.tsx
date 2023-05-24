@@ -130,7 +130,7 @@ const Template = ({ menuPosition, icons }) => {
     <div class="demo-wrapper">
       <span class="tds-u-mr2">Click icon for Popover Menu</span>
       
-      <sdds-button aria-label="menu" onlyIcon id="my-popover-button" type="ghost" size="sm">
+      <sdds-button aria-label="menu" only-icon id="my-popover-button" type="ghost" size="sm">
         <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
       </sdds-button>
     </div>
