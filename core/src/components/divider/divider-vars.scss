@@ -1,14 +1,14 @@
 $border-types: top, right, bottom, left;
 
 :root,
-.sdds-mode-light {
-  --sdds-divider-background: var(--sdds-grey-300);
+.tds-mode-light {
+  --tds-divider-background: var(--tds-grey-300);
 }
 
-.sdds-mode-dark {
-  --sdds-divider-background: var(--sdds-grey-700);
+.tds-mode-dark {
+  --tds-divider-background: var(--tds-grey-700);
 }
 
-.sdds-theme-colored {
-  --sdds-divider-background: var(--sdds-blue-700);
+.tds-theme-colored {
+  --tds-divider-background: var(--tds-blue-700);
 }

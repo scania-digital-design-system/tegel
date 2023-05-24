@@ -1,11 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Divider } from './divider';
 
-describe('sdds-divider', () => {
+describe('tds-divider', () => {
   it('renders a horizontal divider by default', async () => {
     const page = await newSpecPage({
       components: [Divider],
-      html: '<sdds-divider></sdds-divider>',
+      html: '<tds-divider></tds-divider>',
       supportsShadowDom: true,
     });
     const { root } = page;
@@ -18,7 +18,7 @@ describe('sdds-divider', () => {
   it('renders a vertical divider when orientation is set to "vertical"', async () => {
     const page = await newSpecPage({
       components: [Divider],
-      html: '<sdds-divider orientation="vertical"></sdds-divider>',
+      html: '<tds-divider orientation="vertical"></tds-divider>',
       supportsShadowDom: true,
     });
     const { root } = page;
