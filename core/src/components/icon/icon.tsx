@@ -10,7 +10,7 @@ import { iconsCollection } from './iconsArray';
   shadow: true,
 })
 export class Icon {
-  /** Pass a name of the icon. For icon names, refer to https://digitaldesign.scania.com/foundations/icons/icon-library or storybook */
+  /** Pass a name of the icon. For icon names, refer to https://tegel.scania.com/foundations/icons/icon-library or storybook */
   @Prop({ reflect: true }) name: string = 'arrow_diagonal';
 
   /** Pass a size of icon as a string, for example: 32px, 1rem, 4em... */
