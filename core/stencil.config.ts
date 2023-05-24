@@ -5,7 +5,7 @@ export const config: Config = {
   namespace: 'tegel',
   globalStyle: 'src/global/global.scss',
   extras: {
-    experimentalImportInjection: true,
+    enableImportInjection: true,
   },
   plugins: [sass()],
   sourceMap: false,
