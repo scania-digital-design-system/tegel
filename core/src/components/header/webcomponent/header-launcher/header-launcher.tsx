@@ -73,7 +73,7 @@ export class HeaderLauncher {
           <sdds-header-launcher-button {...buttonAttributes}></sdds-header-launcher-button>
 
           {this.buttonEl && (
-            <sdds-popover-canvas
+            <tds-popover-canvas
               id={`sdds-launcher-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
@@ -90,7 +90,7 @@ export class HeaderLauncher {
               ]}
             >
               <slot></slot>
-            </sdds-popover-canvas>
+            </tds-popover-canvas>
           )}
         </div>
       </Host>

@@ -9,10 +9,10 @@ Valid values are:
 
 #Popover Menu
 
-<sdds-popover-menu
+<tds-popover-menu
     placement="auto"
     selector="#trigger">
-    <ul class="sdds-popover-menu-wrapper">
+    <ul class="tds-popover-menu-wrapper">
         <li>
             <a target="_blank" href="https://tegel.scania.com">Menu item 1</a>
         </li>
@@ -30,7 +30,7 @@ Valid values are:
             <a target="_blank" href="https://tegel.scania.com">Menu item 5</a>
         </li>
     </ul>
-</sdds-popover-menu>
+</tds-popover-menu>
 
 <button id="trigger">Click to open popup menu</div>
 
@@ -38,10 +38,10 @@ Valid values are:
 
 #Popover Menu with icons
 
-<sdds-popover-menu
+<tds-popover-menu
     placement="auto"
     selector="#trigger2">
-    <ul class="sdds-popover-menu-wrapper">
+    <ul class="tds-popover-menu-wrapper">
         <li>
             <a target="_blank" href="https://tegel.scania.com">
                 <i>
@@ -104,5 +104,5 @@ Valid values are:
             </a>
         </li>
     </ul>
-</sdds-popover-menu>
+</tds-popover-menu>
 
