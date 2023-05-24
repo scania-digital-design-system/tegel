@@ -159,14 +159,18 @@ const BasicTemplate = ({
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
       <tds-table-header>
-          <tds-header-cell column-key='truck' column-title='Truck type' ${column1Width ? `custom-width="${column1Width}"` : ''
-    }></tds-header-cell>
-          <tds-header-cell column-key='driver' column-title='Driver name' ${column2Width ? `custom-width="${column2Width}"` : ''
-    }></tds-header-cell>
-          <tds-header-cell column-key='country' column-title='Country' ${column3Width ? `custom-width="${column3Width}"` : ''
-    }></tds-header-cell>
-          <tds-header-cell column-key='mileage' column-title='Mileage' text-align='right' ${column4Width ? `custom-width="${column4Width}"` : ''
-    }></tds-header-cell>
+          <tds-header-cell column-key='truck' column-title='Truck type' ${
+            column1Width ? `custom-width="${column1Width}"` : ''
+          }></tds-header-cell>
+          <tds-header-cell column-key='driver' column-title='Driver name' ${
+            column2Width ? `custom-width="${column2Width}"` : ''
+          }></tds-header-cell>
+          <tds-header-cell column-key='country' column-title='Country' ${
+            column3Width ? `custom-width="${column3Width}"` : ''
+          }></tds-header-cell>
+          <tds-header-cell column-key='mileage' column-title='Mileage' text-align='right' ${
+            column4Width ? `custom-width="${column4Width}"` : ''
+          }></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
           <tds-table-body-row>
