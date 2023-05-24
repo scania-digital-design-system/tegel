@@ -128,7 +128,7 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
     </sdds-tooltip>
 
     <!-- Demo button for presentation purposes -->
-    tds-button size= 'sm' id="button-1" text='Hover me'></tds-button>
+    <tds-button size= 'sm' id="button-1" text='Hover me'></tds-button>
    </div>
   `,
   );
