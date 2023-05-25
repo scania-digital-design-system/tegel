@@ -15,7 +15,6 @@
 
 ### Used by
 
- - [sdds-banner](../banner)
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
