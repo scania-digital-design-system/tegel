@@ -59,7 +59,7 @@ export default {
 const Template = ({ orientation, width, height }) =>
   formatHtmlPreview(`
   <div style="${orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`}">
-    <sdds-divider orientation="${orientation.toLowerCase()}"></sdds-divider>
+    <tds-divider orientation="${orientation.toLowerCase()}"></tds-divider>
   </div>
 `);
 
