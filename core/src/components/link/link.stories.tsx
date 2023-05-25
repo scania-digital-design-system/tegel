@@ -51,12 +51,12 @@ export default {
 const Template = ({ underline, disabled }) =>
   formatHtmlPreview(
     `
-    <sdds-link
+    <tds-link
         ${disabled ? 'disabled' : ''}
         ${underline ? '' : 'underline="false"'}
         >
         <a href="#">This is a link.</a>
-    </sdds-link>
+    </tds-link>
   `,
   );
 export const Link = Template.bind({});
