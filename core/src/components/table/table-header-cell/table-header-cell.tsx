@@ -268,9 +268,8 @@ export class TdsTableHeaderCell {
           {/* First icon is arrow down as first set direction is ascending, clicking it again rotates the icon as we set descending order */}
           {this.sortingDirection && (
             <svg
-              class={`tds-table__header-button-icon ${
-                this.sortingDirection === 'desc' ? 'tds-table__header-button-icon--rotate' : ''
-              }`}
+              class={`tds-table__header-button-icon ${this.sortingDirection === 'desc' ? 'tds-table__header-button-icon--rotate' : ''
+                }`}
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"

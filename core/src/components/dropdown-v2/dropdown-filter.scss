@@ -99,7 +99,7 @@
 
     tds-icon {
       margin-right: 16px;
-      z-index: calc(tds-z-index(dropdown) + 1);
+      z-index: tds-z-index(dropdown) + 1;
     }
   }
 }
