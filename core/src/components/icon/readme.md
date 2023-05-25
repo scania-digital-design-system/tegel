@@ -15,9 +15,10 @@
 
 ### Used by
 
-<<<<<<< HEAD
+
 =======
  - [sdds-banner](../banner)
+=======
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
@@ -30,7 +31,6 @@
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
  - [sdds-toast](../toast)
->>>>>>> b6cd305 (feat(button): prefix change (#94))
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-datetime](../datetime)
@@ -57,21 +57,6 @@
 ### Graph
 ```mermaid
 graph TD;
-<<<<<<< HEAD
-=======
-  sdds-dropdown-option-v2 --> tds-icon
-  sdds-dropdown-v2 --> tds-icon
-  sdds-header-dropdown --> tds-icon
-  sdds-header-hamburger --> tds-icon
-  sdds-header-launcher-button --> tds-icon
-  sdds-modal --> tds-icon
-  sdds-side-menu-close-button --> tds-icon
-  sdds-side-menu-dropdown --> tds-icon
-  sdds-stepper-item --> tds-icon
-  sdds-textarea --> tds-icon
-  sdds-textfield --> tds-icon
-  sdds-toast --> tds-icon
->>>>>>> b6cd305 (feat(button): prefix change (#94))
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
   tds-datetime --> tds-icon
