@@ -66,7 +66,7 @@ export class HeaderDropdown {
             </button>
           </sdds-header-item>
           {this.buttonEl && (
-            <sdds-popover-canvas
+            <tds-popover-canvas
               id={`sdds-dropdown-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
@@ -83,7 +83,7 @@ export class HeaderDropdown {
               ]}
             >
               <slot></slot>
-            </sdds-popover-canvas>
+            </tds-popover-canvas>
           )}
         </div>
       </Host>
