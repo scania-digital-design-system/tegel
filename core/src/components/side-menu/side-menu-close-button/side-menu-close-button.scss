@@ -1,0 +1,29 @@
+:host {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  button {
+    height: 64px;
+    width: 100%;
+    text-align: left;
+    padding: 0 24px;
+    border: none;
+    background-color: var(--tds-sidebar-side-menu-background-cover);
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
+    color: var(--tds-sidebar-side-menu-single-item-color);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--tds-sidebar-item-state-hover);
+    }
+
+    &:focus-visible {
+      cursor: pointer;
+      border: 1px solid var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+    }
+  }
+}

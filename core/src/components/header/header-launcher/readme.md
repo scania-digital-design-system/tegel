@@ -10,11 +10,13 @@
 ### Depends on
 
 - [tds-header-launcher-button](../header-launcher-button)
+- [tds-popover-canvas](../../popover-canvas)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-header-launcher --> tds-header-launcher-button
+  tds-header-launcher --> tds-popover-canvas
   tds-header-launcher-button --> tds-header-item
   tds-header-launcher-button --> tds-icon
   tds-header-item --> tds-core-header-item
