@@ -29,6 +29,19 @@
 | `tdsClick` | Sends unique Card identifier when the Card is clicked, if clickable=true | `CustomEvent<{ cardId: string; }>` |
 
 
+## Dependencies
+
+### Depends on
+
+- [tds-divider](../divider)
+
+### Graph
+```mermaid
+graph TD;
+  tds-card --> tds-divider
+  style tds-card fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
