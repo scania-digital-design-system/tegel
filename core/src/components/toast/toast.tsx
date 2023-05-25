@@ -2,11 +2,11 @@ import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil
 import { Method, State } from '@stencil/core/internal';
 
 @Component({
-  tag: 'sdds-toast',
+  tag: 'tds-toast',
   styleUrl: 'toast.scss',
   shadow: true,
 })
-export class Toast {
+export class TdsToast {
   @Element() host: HTMLElement;
 
   /** ID for the Toast. Randomly generated if not specified. */
@@ -45,12 +45,12 @@ export class Toast {
 
   /** Sends unique Toast identifier when component is closed. */
   @Event({
-    eventName: 'sddsClose',
+    eventName: 'tdsClose',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsClose: EventEmitter<{
+  tdsClose: EventEmitter<{
     toastId: string;
   }>;
 
@@ -70,19 +70,19 @@ export class Toast {
   };
 
   handleClose = () => {
-    const sddsCloseEvent = this.sddsClose.emit({
+    const tdsCloseEvent = this.tdsClose.emit({
       toastId: this.toastId,
     });
-    if (!sddsCloseEvent.defaultPrevented) {
+    if (!tdsCloseEvent.defaultPrevented) {
       this.hidden = true;
     }
   };
 
   handleShow = () => {
-    const sddsCloseEvent = this.sddsClose.emit({
+    const tdsCloseEvent = this.tdsClose.emit({
       toastId: this.toastId,
     });
-    if (!sddsCloseEvent.defaultPrevented) {
+    if (!tdsCloseEvent.defaultPrevented) {
       this.hidden = false;
     }
   };
