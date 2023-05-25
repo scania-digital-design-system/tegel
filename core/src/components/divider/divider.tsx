@@ -1,8 +1,8 @@
 import { Component, Prop, Host, h } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-divider',
-  styleUrl: 'divider-component.scss',
+  tag: 'tds-divider',
+  styleUrl: 'divider.scss',
   shadow: true,
 })
 export class Divider {
