@@ -3,10 +3,10 @@ import { Method, State } from '@stencil/core/internal';
 
 @Component({
   tag: 'sdds-toast',
-  styleUrl: 'sdds-toast.scss',
+  styleUrl: 'toast.scss',
   shadow: true,
 })
-export class SddsToast {
+export class Toast {
   @Element() host: HTMLElement;
 
   /** ID for the Toast. Randomly generated if not specified. */
