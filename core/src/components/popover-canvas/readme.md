@@ -1,4 +1,4 @@
-# sdds-popover-canvas
+# tds-popover-canvas
 
 
 
@@ -28,9 +28,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-header-dropdown --> sdds-popover-canvas
-  sdds-header-launcher --> sdds-popover-canvas
-  style sdds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px
+  sdds-header-dropdown --> tds-popover-canvas
+  sdds-header-launcher --> tds-popover-canvas
+  style tds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

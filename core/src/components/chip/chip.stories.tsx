@@ -103,7 +103,7 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
   return formatHtmlPreview(`
   ${
     inputType === 'Button'
-      ? `<sdds-chip type="button" size="${sizeLookUp[size]}">
+      ? `<tds-chip type="button" size="${sizeLookUp[size]}">
             <span slot="label">
                 ${
                   icon && iconPosition === 'Prefix'
@@ -117,11 +117,11 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
                     : ''
                 }
             </span>
-        </sdds-chip>
+        </tds-chip>
 
         <!-- Script tag for demo purposes -->
         <script>
-          document.addEventListener('sddsClick', (event)=>{
+          document.addEventListener('tdsClick', (event)=>{
           console.log(event)
           })
         </script>`
@@ -138,7 +138,7 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
     </style>
 
     <div class="demo-wrapper">
-      <sdds-chip type="checkbox" size="${sizeLookUp[size]}" checked value="checkbox-1-value">
+      <tds-chip type="checkbox" size="${sizeLookUp[size]}" checked value="checkbox-1-value">
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
@@ -152,8 +152,8 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
               : ''
           }
         </span>
-      </sdds-chip>
-      <sdds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-2-value">
+      </tds-chip>
+      <tds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-2-value">
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
@@ -167,8 +167,8 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
               : ''
           }
         </span>
-      </sdds-chip>
-      <sdds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-3-value">
+      </tds-chip>
+      <tds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-3-value">
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
@@ -182,12 +182,12 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
               : ''
           }
         </span>
-      </sdds-chip>
+      </tds-chip>
     </div>
 
     <!-- Script tag for demo purposes -->
     <script>
-      document.addEventListener('sddsChange', (event)=>{
+      document.addEventListener('tdsChange', (event)=>{
           console.log(event)
       })
     </script>`
@@ -204,7 +204,7 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
     </style>
 
     <div class="demo-wrapper">
-      <sdds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-1-value">
+      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-1-value">
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
@@ -218,8 +218,8 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
               : ''
           }
         </span>
-      </sdds-chip>
-      <sdds-chip name="test" type="radio" size="${sizeLookUp[size]}" checked value="radio-2-value">
+      </tds-chip>
+      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" checked value="radio-2-value">
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
@@ -233,8 +233,8 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
               : ''
           }
         </span>
-      </sdds-chip>
-      <sdds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
+      </tds-chip>
+      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
         <span slot="label">
           ${
             icon && iconPosition === 'Prefix'
@@ -248,12 +248,12 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
               : ''
           }
         </span>
-      </sdds-chip>
+      </tds-chip>
     </div>
 
     <!-- Script tag for demo purposes -->
     <script>
-      document.addEventListener('sddsChange', (event)=>{
+      document.addEventListener('tdsChange', (event)=>{
           console.log(event)
       })
     </script>`
