@@ -156,26 +156,21 @@ const BatchActionTemplate = ({
         compact-design="${compactDesign}"
         enable-responsive="${responsiveDesign}"
         ${noMinWidth ? 'no-min-width' : ''}
-        ${
-          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-        }
+        ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+    }
       >
           <tds-table-toolbar table-title="Batch action">
           ${batchArea}
         </tds-table-toolbar>
           <tds-table-header>
-              <tds-header-cell ${
-                column1Width ? `style="width: ${column1Width};"` : ''
-              } column-key='truck' column-title='Truck type'></tds-header-cell>
-              <tds-header-cell ${
-                column2Width ? `style="width: ${column2Width};"` : ''
-              } column-key='driver' column-title='Driver name'></tds-header-cell>
-              <tds-header-cell ${
-                column3Width ? `style="width: ${column3Width};"` : ''
-              } column-key='country' column-title='Country'></tds-header-cell>
-              <tds-header-cell ${
-                column4Width ? `style="width: ${column4Width};"` : ''
-              } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
+              <tds-header-cell ${column1Width ? `style="width: ${column1Width};"` : ''
+    } column-key='truck' column-title='Truck type'></tds-header-cell>
+              <tds-header-cell ${column2Width ? `style="width: ${column2Width};"` : ''
+    } column-key='driver' column-title='Driver name'></tds-header-cell>
+              <tds-header-cell ${column3Width ? `style="width: ${column3Width};"` : ''
+    } column-key='country' column-title='Country'></tds-header-cell>
+              <tds-header-cell ${column4Width ? `style="width: ${column4Width};"` : ''
+    } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
           </tds-table-header>
           <tds-table-body enable-dummy-data>
           </tds-table-body>

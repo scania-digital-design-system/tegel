@@ -1,12 +1,12 @@
 import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-chip',
-  styleUrl: 'sdds-chip.scss',
+  tag: 'tds-chip',
+  styleUrl: 'chip.scss',
   shadow: false,
   scoped: true,
 })
-export class SddsChip {
+export class TdsChip {
   /** Type of Chip, depends on usage */
   @Prop() type: 'button' | 'radio' | 'checkbox' = 'button';
 
@@ -30,18 +30,18 @@ export class SddsChip {
 
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked). Valid only for type checkbox and radio. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     chipId: string;
     value: string;
   }>;
 
   private handleChange = () => {
-    this.sddsChange.emit({
+    this.tdsChange.emit({
       chipId: this.chipId,
       value: this.value,
     });
@@ -49,17 +49,17 @@ export class SddsChip {
 
   /** Sends unique Chip identifier when Chip is clicked. Valid only for type button. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
   @Event({
-    eventName: 'sddsClick',
+    eventName: 'tdsClick',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsClick: EventEmitter<{
+  tdsClick: EventEmitter<{
     chipId: string;
   }>;
 
   private handleClick = () => {
-    this.sddsClick.emit({
+    this.tdsClick.emit({
       chipId: this.chipId,
     });
   };
@@ -84,7 +84,7 @@ export class SddsChip {
     return (
       <Host>
         <div class="component">
-          <div class={`sdds-chip-component ${this.size}`}>
+          <div class={`tds-chip-component ${this.size}`}>
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
             <label htmlFor={this.chipId}>
               <slot name="label" />

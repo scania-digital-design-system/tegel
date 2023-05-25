@@ -88,10 +88,10 @@ const Template = ({ menuPosition, icons }) => {
       }
     </style>
 
-    <sdds-popover-menu
+    <tds-popover-menu
       id="my-popover-menu"
       placement="${menuPosLookup[menuPosition]}">
-      <ul class="sdds-popover-menu-wrapper">
+      <ul class="tds-popover-menu-wrapper">
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
             ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
@@ -124,14 +124,14 @@ const Template = ({ menuPosition, icons }) => {
           </a>
         </li>
       </ul>
-    </sdds-popover-menu>
+    </tds-popover-menu>
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
     <div class="demo-wrapper">
-      <span class="sdds-u-mr2">Click icon for Popover Menu</span>
+      <span class="tds-u-mr2">Click icon for Popover Menu</span>
       
-      <sdds-button aria-label="menu" onlyIcon id="my-popover-button" type="ghost" size="sm">
-        <tds-icon slot="icon" class="sdds-btn-icon" size="16px" name="kebab"></tds-icon>
+      <sdds-button aria-label="menu" only-icon id="my-popover-button" type="ghost" size="sm">
+        <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
       </sdds-button>
     </div>
 

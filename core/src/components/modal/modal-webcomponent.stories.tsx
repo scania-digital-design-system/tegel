@@ -85,7 +85,7 @@ const sizeLookUp = {
 const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
   formatHtmlPreview(
     `
-  <sdds-button id="my-modal-button" text="Open Modal"></sdds-button>
+  <tds-button id="my-modal-button" text="Open Modal"></tds-button>
   <sdds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
       sizeLookUp[size]
     }" actions="${actions.toLowerCase()}">
@@ -93,8 +93,8 @@ const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
       <span slot="sdds-modal-body">
           ${bodyText}
       </span>
-      <sdds-button slot="sdds-modal-actions" data-dismiss-modal size="md" text="Delete" type="danger"></sdds-button>
-      <sdds-button slot="sdds-modal-actions" data-dismiss-modal size="md" text="Cancel"></sdds-button>
+      <tds-button slot="sdds-modal-actions" data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
+      <tds-button slot="sdds-modal-actions" data-dismiss-modal size="md" text="Cancel"></tds-button>
       
   </sdds-modal>
   <script>
