@@ -90,12 +90,12 @@ export class TdsSideMenu {
   }
 
   @Watch('open')
-  onOpenChange(newVal: boolean, oldVal?: boolean) {
+  async onOpenChange(newVal: boolean, oldVal?: boolean) {
     if (newVal && !oldVal) {
-      this.setOpening();
+      await this.setOpening();
     }
     if (!newVal && oldVal) {
-      this.setClosing();
+      await this.setClosing();
     }
   }
 
