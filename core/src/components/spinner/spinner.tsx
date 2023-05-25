@@ -5,7 +5,7 @@ import { Component, h, Prop } from '@stencil/core';
   styleUrl: 'spinner.scss',
   shadow: false,
 })
-export class Spinner {
+export class TdsSpinner {
   /** Size of the Spinner */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
