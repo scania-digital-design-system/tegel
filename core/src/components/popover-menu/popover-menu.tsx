@@ -3,11 +3,11 @@ import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
 @Component({
-  tag: 'sdds-popover-menu',
+  tag: 'tds-popover-menu',
   styleUrl: 'popover-menu.scss',
   shadow: true,
 })
-export class PopoverMenu {
+export class TdsPopoverMenu {
   @Element() popoverMenuElement!: HTMLElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
@@ -100,7 +100,7 @@ export class PopoverMenu {
 
   render() {
     return (
-      <Host class={`sdds-popover-menu ${this.show ? 'sdds-popover-menu-show' : ''}`}>
+      <Host class={`tds-popover-menu ${this.show ? 'tds-popover-menu-show' : ''}`}>
         <slot></slot>
       </Host>
     );

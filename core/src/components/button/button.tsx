@@ -2,11 +2,11 @@ import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { disableClickOnElement } from '../../utils/utils';
 
 @Component({
-  tag: 'sdds-button',
+  tag: 'tds-button',
   styleUrl: 'button.scss',
   shadow: true,
 })
-export class SddsButton {
+export class TdsButton {
   @Element() host: HTMLElement;
 
   /** Text displayed inside the Button */
@@ -47,7 +47,7 @@ export class SddsButton {
 
   render() {
     return (
-      <Host class={`${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
           disabled={this.disabled}
           class={`${this.type}

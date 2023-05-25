@@ -13,13 +13,13 @@ The [navigation pattern with few items](/docs/patterns-navigation--few-navigatio
 ### Depends on
 
 - [sdds-header-launcher-button](../header-launcher-button)
-- [sdds-popover-canvas](../../../popover-canvas)
+- [tds-popover-canvas](../../../popover-canvas)
 
 ### Graph
 ```mermaid
 graph TD;
   sdds-header-launcher --> sdds-header-launcher-button
-  sdds-header-launcher --> sdds-popover-canvas
+  sdds-header-launcher --> tds-popover-canvas
   sdds-header-launcher-button --> sdds-header-item
   sdds-header-launcher-button --> tds-icon
   sdds-header-item --> sdds-core-header-item
