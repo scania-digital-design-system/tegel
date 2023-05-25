@@ -161,77 +161,77 @@ const Template = ({ dummyHtml }) =>
 
     <div class="demo-wrap-side-menu-and-main">
       <!-- Note: the "persistent" property keeps the menu open on desktop -->
-      <sdds-side-menu id="demo-side-menu" aria-label="Side menu" persistent>
-        <sdds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-overlay>
+      <tds-side-menu id="demo-side-menu" aria-label="Side menu" persistent>
+        <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-overlay>
 
-        <sdds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-close-button>
+        <tds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-close-button>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
             <tds-icon name="timer" size="24"></tds-icon>
             About us
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <a href="https://www.scania.com">
             <tds-icon name="truck" size="24"></tds-icon>
             Trucks
           </a>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
             <tds-icon name="wifi" size="24"></tds-icon>
             Our services
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-dropdown default-open selected>
+        <tds-side-menu-dropdown default-open selected>
           <tds-icon slot="button-icon" name="profile" size="24"></tds-icon>
           <span slot="button-label">
             Wheel types
           </span>
-          <sdds-side-menu-dropdown-list>
-            <sdds-side-menu-dropdown-list-item>
+          <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">Hub-centric wheel</a>
-            </sdds-side-menu-dropdown-list-item>
-            <sdds-side-menu-dropdown-list-item selected>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item selected>
               <a href="https://www.scania.com">Rim wheel</a>
-            </sdds-side-menu-dropdown-list-item>
-          </sdds-side-menu-dropdown-list>
-        </sdds-side-menu-dropdown>
+            </tds-side-menu-dropdown-list-item>
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
             <tds-icon name="star" size="24"></tds-icon>
             Values
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
 
-        <sdds-side-menu-item slot="end">
+        <tds-side-menu-item slot="end">
           <button>
             <tds-icon name="calendar" size="24"></tds-icon>
             My Calendar
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item slot="end" class="demo-xs-hide">
+        <tds-side-menu-item slot="end" class="demo-xs-hide">
           <button>
-            <sdds-side-menu-user heading="Name Namesson" subheading="Company name">
+            <tds-side-menu-user heading="Name Namesson" subheading="Company name">
               <img
                 slot="image"
                 src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
                 alt="User menu."
               />
-            </sdds-side-menu-user>
+            </tds-side-menu-user>
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-collapse-button slot="sticky-end" onclick="demoSideMenu.collapsed = !demoSideMenu.collapsed;"></sdds-side-menu-collapse-button>
+        <tds-side-menu-collapse-button slot="sticky-end" onclick="demoSideMenu.collapsed = !demoSideMenu.collapsed;"></tds-side-menu-collapse-button>
 
-      </sdds-side-menu>
+      </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 

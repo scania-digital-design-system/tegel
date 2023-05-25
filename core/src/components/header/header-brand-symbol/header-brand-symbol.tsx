@@ -18,9 +18,9 @@ export class TdsHeaderBrandSymbol {
     };
     return (
       <Host>
-        <sdds-header-item>
+        <tds-header-item>
           <a {...inheritedLinkProps} href={this.linkHref}></a>
-        </sdds-header-item>
+        </tds-header-item>
       </Host>
     );
   }

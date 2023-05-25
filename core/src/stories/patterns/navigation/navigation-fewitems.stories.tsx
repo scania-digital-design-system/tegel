@@ -189,69 +189,69 @@ const Template = () =>
       </tds-header>
 
 
-      <sdds-side-menu id="demo-side-menu" aria-label="Side menu">
-        <sdds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-overlay>
+      <tds-side-menu id="demo-side-menu" aria-label="Side menu">
+        <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-overlay>
 
-        <sdds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-close-button>
+        <tds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-close-button>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
             <tds-icon name="info" size="24"></tds-icon>
             About
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <a href="https://www.scania.com">
             <tds-icon name="truck" size="24"></tds-icon>
             Truck types
           </a>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-dropdown>
+        <tds-side-menu-dropdown>
           <tds-icon slot="button-icon" name="tool" size="24"></tds-icon>
           <span slot="button-label">
             Wheel types
           </span>
-          <sdds-side-menu-dropdown-list>
-            <sdds-side-menu-dropdown-list-item>
+          <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item>
               <a href="https://design.scania.com">Hub-centric wheel</a>
-            </sdds-side-menu-dropdown-list-item>
-            <sdds-side-menu-dropdown-list-item>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
               <a href="https://design.scania.com">Rim wheel</a>
-            </sdds-side-menu-dropdown-list-item>
-          </sdds-side-menu-dropdown-list>
-        </sdds-side-menu-dropdown>
+            </tds-side-menu-dropdown-list-item>
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
 
-        <sdds-side-menu-item slot="end" onclick="alert('Calendar button clicked')">
+        <tds-side-menu-item slot="end" onclick="alert('Calendar button clicked')">
           <button>
             <tds-icon name="calendar" size="24px"></tds-icon>
             Calendar
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
         
-        <sdds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
-          <sdds-side-menu-user 
+        <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
+          <tds-side-menu-user 
             slot="button-label" 
             heading="Name Namesson" 
             subheading="Company name" 
             img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
             img-alt="">
-          </sdds-side-menu-user>
-          <sdds-side-menu-dropdown-list>
-            <sdds-side-menu-dropdown-list-item selected>
+          </tds-side-menu-user>
+          <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item selected>
               <a href="https://design.scania.com">My Instructions</a>
-            </sdds-side-menu-dropdown-list-item>
-            <sdds-side-menu-dropdown-list-item>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
               <a href="https://design.scania.com">Task List</a>
-            </sdds-side-menu-dropdown-list-item>
-          </sdds-side-menu-dropdown-list>
-        </sdds-side-menu-dropdown>
+            </tds-side-menu-dropdown-list-item>
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
       
 
-      </sdds-side-menu>
+      </tds-side-menu>
 
-      <main class="demo-main sdds-u-p3" style="box-sizing: border-box;">
+      <main class="demo-main tds-u-p3" style="box-sizing: border-box;">
         <p>If the Header contains navigational items like links or buttons, a side menu is needed for small screens.</p>
         <br/>
         <p><i>Tip: Resize the window to see the buttons move in to the side menu drawer.</i></p>

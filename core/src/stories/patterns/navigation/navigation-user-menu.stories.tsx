@@ -107,31 +107,31 @@ const Template = () =>
 
       </tds-header>
 
-      <sdds-side-menu id="demo-side-menu" aria-label="Side menu">
-        <sdds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-overlay>
+      <tds-side-menu id="demo-side-menu" aria-label="Side menu">
+        <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-overlay>
 
-        <sdds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-close-button>
+        <tds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-close-button>
 
-        <sdds-side-menu-dropdown slot="end" class="demo-xs-hide" selected default-open>
-          <sdds-side-menu-user 
+        <tds-side-menu-dropdown slot="end" class="demo-xs-hide" selected default-open>
+          <tds-side-menu-user 
             slot="button-label" 
             heading="Name Namesson" 
             subheading="Company name" 
             img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
             img-alt="">
-          </sdds-side-menu-user>
-          <sdds-side-menu-dropdown-list type="lg">
-            <sdds-side-menu-dropdown-list-item selected>
+          </tds-side-menu-user>
+          <tds-side-menu-dropdown-list type="lg">
+            <tds-side-menu-dropdown-list-item selected>
               <a href="https://www.scania.com">My Instructions</a>
-            </sdds-side-menu-dropdown-list-item>
-            <sdds-side-menu-dropdown-list-item>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">Task List</a>
-            </sdds-side-menu-dropdown-list-item>
-          </sdds-side-menu-dropdown-list>
-        </sdds-side-menu-dropdown>
+            </tds-side-menu-dropdown-list-item>
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
 
 
-      </sdds-side-menu>
+      </tds-side-menu>
 
       <main class="demo-main tds-u-p3" style="box-sizing: border-box;">
         <p>If you display a user menu, a side menu is needed to show it on extra small screens.</p>

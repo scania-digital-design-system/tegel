@@ -11,7 +11,7 @@ export class TdsHeaderLauncherGridTitle {
   render() {
     return (
       <Host>
-        <h3 class="tds-header-launcher-grid-title" id={`sdds-${this.uuid}`}>
+        <h3 class="tds-header-launcher-grid-title" id={`tds-${this.uuid}`}>
           <slot></slot>
         </h3>
       </Host>

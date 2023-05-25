@@ -17,6 +17,7 @@
 
 ### Used by
 
+ - [tds-header-brand-symbol](../header-brand-symbol)
  - [tds-header-dropdown](../header-dropdown)
  - [tds-header-hamburger](../header-hamburger)
  - [tds-header-launcher-button](../header-launcher-button)
@@ -29,6 +30,7 @@
 ```mermaid
 graph TD;
   tds-header-item --> tds-core-header-item
+  tds-header-brand-symbol --> tds-header-item
   tds-header-dropdown --> tds-header-item
   tds-header-hamburger --> tds-header-item
   tds-header-launcher-button --> tds-header-item
