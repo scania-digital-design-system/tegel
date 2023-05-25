@@ -155,27 +155,25 @@ const Template = ({
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
-  ${
-    bodyContent
+  ${bodyContent
       ? `
     <div slot="card-body">
         ${bodyContent}
     </div>`
       : ''
-  }
+    }
     ${cardBottom ? `${cardBottom}` : ''}
     </tds-card>
     </div>
-    ${
-      clickable
-        ? `
+    ${clickable
+      ? `
     <script>
         document.addEventListener('tdsClick', (event)=>{
             console.log('Card with id: ', event.detail.cardId, ' was clicked.')
         })
     </script>
     `
-        : ''
+      : ''
     }
   `,
   );

@@ -157,7 +157,7 @@ const WebComponentTemplate = ({
   </style>
 
   <div class="demo-wrapper">
-    <sdds-button
+    <tds-button
       type="${btnTypeLookUp[btnType]}"
       size="${sizeLookUp[size]}" ${disabled ? 'disabled' : ''} ${fullbleed ? 'fullbleed' : ''}
       ${!onlyIcon ? `text="${text}"` : ''}
@@ -170,16 +170,16 @@ const WebComponentTemplate = ({
         ${
           onlyIcon || (icon && icon !== 'none')
             ? `
-            <tds-icon slot="icon" class='sdds-btn-icon ' size='${
+            <tds-icon slot="icon" class='tds-btn-icon ' size='${
               sizeLookUp[size] === 'sm' ? '16px' : '20px'
             }' name='${icon}'></tds-icon>
             `
             : ''
         }
-    </sdds-button>
+    </tds-button>
   </div>
   <script>
-        document.querySelector('sdds-button').addEventListener('click', (event) => {
+        document.querySelector('tds-button').addEventListener('click', (event) => {
           console.log(event)
         })
   </script>

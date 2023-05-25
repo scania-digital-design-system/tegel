@@ -1,14 +1,14 @@
 :root,
-.sdds-mode-light {
-  --sdds-popover-menu-color: var(--sdds-grey-958);
-  --sdds-popover-menu-background: var(--sdds-white);
-  --sdds-popover-menu-background-hover: var(--sdds-grey-100);
-  --sdds-popover-menu-divider-color: var(--sdds-grey-300);
+.tds-mode-light {
+  --tds-popover-menu-color: var(--tds-grey-958);
+  --tds-popover-menu-background: var(--tds-white);
+  --tds-popover-menu-background-hover: var(--tds-grey-100);
+  --tds-popover-menu-divider-color: var(--tds-grey-300);
 }
 
-.sdds-mode-dark {
-  --sdds-popover-menu-color: var(--sdds-grey-50);
-  --sdds-popover-menu-background: var(--sdds-grey-958);
-  --sdds-popover-menu-background-hover: var(--sdds-grey-800);
-  --sdds-popover-menu-divider-color: var(--sdds-grey-800);
+.tds-mode-dark {
+  --tds-popover-menu-color: var(--tds-grey-50);
+  --tds-popover-menu-background: var(--tds-grey-958);
+  --tds-popover-menu-background-hover: var(--tds-grey-800);
+  --tds-popover-menu-divider-color: var(--tds-grey-800);
 }
