@@ -109,7 +109,7 @@ export class TdsCard {
             </div>
           </div>
         )}
-        {this.bodyDivider && <sdds-divider></sdds-divider>}
+        {this.bodyDivider && <tds-divider></tds-divider>}
         <slot name="card-body"></slot>
       </div>
       <div class={`card-bottom`}>
