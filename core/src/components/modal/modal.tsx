@@ -15,7 +15,7 @@ import {
   styleUrl: 'modal.scss',
   shadow: true,
 })
-export class Modal {
+export class TdsModal {
   @Element() host: HTMLElement;
 
   /** Disables closing Modal on clicking on overlay area. */
