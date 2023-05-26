@@ -23,7 +23,6 @@
  - [sdds-dropdown-v2](../dropdown-v2)
  - [sdds-stepper-item](../stepper/stepper-item)
  - [sdds-textarea](../textarea)
- - [sdds-textfield](../textfield)
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-datetime](../datetime)
