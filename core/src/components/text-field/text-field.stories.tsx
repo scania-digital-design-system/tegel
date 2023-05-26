@@ -46,7 +46,7 @@ export default {
     },
     type: {
       name: 'Type',
-      description: 'Which type of textfield',
+      description: 'Which type of Text Field',
       control: {
         type: 'radio',
       },
@@ -100,7 +100,7 @@ export default {
     },
     prefix: {
       name: 'Prefix',
-      description: 'Adds a prefix symbol or text before the textfield.',
+      description: 'Adds a prefix symbol or text before the Text Field.',
       control: {
         type: 'boolean',
       },
@@ -116,7 +116,7 @@ export default {
     },
     suffix: {
       name: 'Suffix',
-      description: 'Adds a suffix symbol or text after the textfield.',
+      description: 'Adds a suffix symbol or text after the Text Field.',
       control: {
         type: 'boolean',
       },
@@ -148,7 +148,7 @@ export default {
       },
     },
     readonly: {
-      description: 'Sets the textfield to read-only state.',
+      description: 'Sets the Text Field to read-only state.',
       name: 'Read Only',
       control: {
         type: 'boolean',
@@ -158,7 +158,7 @@ export default {
       },
     },
     disabled: {
-      description: 'Disables the textfield.',
+      description: 'Disables the Text Field.',
       name: 'Disabled',
       control: {
         type: 'boolean',
@@ -224,7 +224,7 @@ const Template = ({
     </style>
 
   <div class="demo-wrapper">
-    <sdds-textfield
+    <tds-text-field
       type="${type}"
       size="${sizeLookUp[size]}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
@@ -238,41 +238,34 @@ const Template = ({
       ${noMinWidth ? 'no-min-width' : ''}
       placeholder="${placeholderText}" >
         ${
-          prefix
+          prefix || suffix
             ? `
           ${
-            prefixType === 'Text'
-              ? '<span slot="prefix">$</span>'
-              : '<tds-icon slot="prefix" name="truck" size="20px"></tds-icon>'
+            prefixType || suffixType === 'Text'
+              ? `<span slot="${prefix ? 'prefix' : 'suffix'}">$</span>`
+              : `<tds-icon slot="${
+                  prefix ? 'prefix' : 'suffix'
+                }" name="truck" size="20px"></tds-icon>`
           }
         `
             : ''
         }
-        ${
-          suffix
-            ? `
-          ${
-            suffixType === 'Text'
-              ? '<span slot="suffix">$</span>'
-              : '<tds-icon slot="suffix" name="truck" size="20px"></tds-icon>'
-          }        `
-            : ''
-        }
-        </sdds-textfield>
+
+        </tds-text-field>
   </div>
   <!-- Script tag for demo purposes -->
   <script>
-    textElement = document.querySelector('sdds-textfield')
-    textElement.addEventListener('sddsFocus',(event) => {
+    textElement = document.querySelector('tds-text-field')
+    textElement.addEventListener('tdsFocus',(event) => {
       console.log(event)
     })
-    textElement.addEventListener('sddsBlur',(event) => {
+    textElement.addEventListener('tdsBlur',(event) => {
       console.log(event)
     })
-    textElement.addEventListener('sddsInput',(event) => {
+    textElement.addEventListener('tdsInput',(event) => {
       console.log(event)
     })
-    textElement.addEventListener('sddsChange',(event) => {
+    textElement.addEventListener('tdsChange',(event) => {
       console.log(event)
     })
   </script>
@@ -280,6 +273,4 @@ const Template = ({
   );
 };
 
-// ${true ? '<tds-icon name="cross" slot="sdds-prefix"></tds-icon>' : ''}
-
-export const Textfield = Template.bind({});
+export const TextField = Template.bind({});
