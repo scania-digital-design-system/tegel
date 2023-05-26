@@ -2,13 +2,13 @@
 @import './tooltip-vars';
 @import '../../mixins/box-sizing';
 
-.sdds-tooltip {
+.tds-tooltip {
   @include tds-box-sizing;
 
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
-  color: var(--sdds-tooltip-color);
-  background-color: var(--sdds-tooltip-background);
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
+  color: var(--tds-tooltip-color);
+  background-color: var(--tds-tooltip-background);
   border-radius: 4px;
   padding: 8px;
   word-wrap: break-word;
@@ -18,24 +18,24 @@
   visibility: hidden;
   transition: opacity 200ms ease-in, visibility 200ms ease-in;
 
-  &.sdds-tooltip-top-left {
+  &.tds-tooltip-top-left {
     border-radius: 0 4px 4px;
   }
 
-  &.sdds-tooltip-top-right {
+  &.tds-tooltip-top-right {
     border-radius: 4px 0 4px 4px;
   }
 
-  &.sdds-tooltip-bottom-right {
+  &.tds-tooltip-bottom-right {
     border-radius: 4px 4px 0;
   }
 
-  &.sdds-tooltip-bottom-left {
+  &.tds-tooltip-bottom-left {
     border-radius: 4px 4px 4px 0;
   }
 }
 
-.sdds-tooltip-show {
+.tds-tooltip-show {
   opacity: 1;
   visibility: visible;
 }

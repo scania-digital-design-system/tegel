@@ -3,11 +3,11 @@ import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
 @Component({
-  tag: 'sdds-tooltip',
+  tag: 'tds-tooltip',
   styleUrl: 'tooltip.scss',
   shadow: true,
 })
-export class Tooltip {
+export class TdsTooltip {
   /** In case Tooltip contains only text, no HTML, text can be passed by this prop */
   @Prop() text: string = '';
 
@@ -121,7 +121,7 @@ export class Tooltip {
         ref={(el) => {
           this.tooltip = el as HTMLInputElement;
         }}
-        class={`sdds-tooltip sdds-tooltip-${this.border} ${this.show ? 'sdds-tooltip-show' : ''}`}
+        class={`tds-tooltip tds-tooltip-${this.border} ${this.show ? 'tds-tooltip-show' : ''}`}
       >
         {this.text}
         <slot />
