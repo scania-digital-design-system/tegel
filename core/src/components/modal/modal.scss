@@ -53,17 +53,17 @@ $modals: (
   /* width */
   &::-webkit-scrollbar {
     width: 5px;
-    background-color: var(--sdds-grey-300);
+    background-color: var(--tds-grey-300);
   }
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background-color: var(--sdds-grey-300);
+    background-color: var(--tds-grey-300);
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background-color: var(--sdds-grey-500);
+    background-color: var(--tds-grey-500);
   }
 }
 
@@ -73,19 +73,19 @@ $modals: (
   /* width */
   &::-webkit-scrollbar {
     width: 5px;
-    background-color: var(--sdds-grey-300);
+    background-color: var(--tds-grey-300);
     border-radius: 0 1em 1em 0;
   }
 
   /* Track */
   &::-webkit-scrollbar-track {
-    background-color: var(--sdds-grey-300);
+    background-color: var(--tds-grey-300);
     border-radius: 0 1em 1em 0;
   }
 
   /* Handle */
   &::-webkit-scrollbar-thumb {
-    background-color: var(--sdds-grey-500);
+    background-color: var(--tds-grey-500);
     border-radius: 0 1em 1em 0;
   }
 }
@@ -97,7 +97,7 @@ $modals: (
   height: 100%;
   width: 100%;
   z-index: tds-z-index(modal);
-  background-color: var(--sdds-modal-backdrop);
+  background-color: var(--tds-modal-backdrop);
   padding: 0 16px;
 
   @media (max-width: $screen-s) {
@@ -115,10 +115,10 @@ $modals: (
 
 @mixin modal-header {
   display: flex;
-  padding-bottom: var(--sdds-spacing-element-8);
+  padding-bottom: var(--tds-spacing-element-8);
   position: sticky;
   top: 0;
-  background-color: var(--sdds-modal-background);
+  background-color: var(--tds-modal-background);
   z-index: 1;
 
   &::before {
@@ -127,22 +127,22 @@ $modals: (
     height: 16px;
     top: -16px;
     width: 100%;
-    background-color: var(--sdds-modal-background);
+    background-color: var(--tds-modal-background);
   }
 }
 
 @mixin modal-headline {
-  color: var(--sdds-modal-text);
-  font: var(--sdds-headline-05);
-  letter-spacing: var(--sdds-headline-05-ls);
+  color: var(--tds-modal-text);
+  font: var(--tds-headline-05);
+  letter-spacing: var(--tds-headline-05-ls);
   margin: 0;
   flex: 1;
 }
 
 @mixin modal-body {
-  color: var(--sdds-modal-text);
-  font: var(--sdds-body-01);
-  letter-spacing: var(--sdds-body-01-ls);
+  color: var(--tds-modal-text);
+  font: var(--tds-body-01);
+  letter-spacing: var(--tds-body-01-ls);
   padding-bottom: 40px;
   overflow-y: visible;
   padding-right: 16px;
@@ -155,10 +155,10 @@ $modals: (
 
 /* MODAL STYLING */
 
-.sdds-modal {
+.tds-modal {
   @include tds-box-sizing;
 
-  background-color: var(--sdds-modal-background);
+  background-color: var(--tds-modal-background);
   margin: auto;
   position: relative;
   border-radius: 4px;
@@ -171,30 +171,30 @@ $modals: (
   &__actions-sticky {
     overflow: hidden;
 
-    .sdds-modal-body {
-      font: var(--sdds-body-01);
-      letter-spacing: var(--sdds-body-01-ls);
+    .tds-modal-body {
+      font: var(--tds-body-01);
+      letter-spacing: var(--tds-body-01-ls);
       padding-bottom: 96px;
       margin: 0 -16px 0 0;
       max-height: calc(85vh - 36px);
       overflow-y: auto;
     }
 
-    .sdds-modal-actions {
+    .tds-modal-actions {
       position: absolute;
       bottom: -1px;
       left: 0;
       right: 0;
-      background-color: var(--sdds-modal-background);
-      padding: var(--sdds-spacing-element-16);
+      background-color: var(--tds-modal-background);
+      padding: var(--tds-spacing-element-16);
       display: flex;
       gap: 16px;
     }
   }
 
   &__actions-static {
-    .sdds-modal-actions {
-      background-color: var(--sdds-modal-background);
+    .tds-modal-actions {
+      background-color: var(--tds-modal-background);
       display: flex;
       gap: 16px;
     }
@@ -205,7 +205,7 @@ $modals: (
 @each $screen, $modals in $modals {
   @media (min-width: $screen) {
     @each $modal, $value in $modals {
-      .sdds-modal-#{$modal} {
+      .tds-modal-#{$modal} {
         width: $value;
       }
     }
@@ -213,12 +213,12 @@ $modals: (
 }
 
 @media (max-width: $screen-s) {
-  .sdds-modal-md,
-  .sdds-modal-lg,
-  .sdds-modal-sm {
+  .tds-modal-md,
+  .tds-modal-lg,
+  .tds-modal-sm {
     height: 100%;
 
-    slot[name='sdds-modal-actions']::slotted(*) {
+    slot[name='tds-modal-actions']::slotted(*) {
       display: flex;
     }
   }
@@ -226,36 +226,36 @@ $modals: (
 
 /* MODAL SUBELEMENTS */
 
-.sdds-modal-header {
+.tds-modal-header {
   @include modal-header;
 }
 
-.sdds-modal-headline {
+.tds-modal-headline {
   @include modal-headline;
 
-  color: var(--sdds-modal-text);
+  color: var(--tds-modal-text);
 }
 
-.sdds-modal-body {
+.tds-modal-body {
   @include modal-body;
 }
 
-.sdds-modal-backdrop {
+.tds-modal-backdrop {
   @include tds-box-sizing;
   @include modal-host;
 }
 
-button.sdds-modal-close {
+button.tds-modal-close {
   background-color: transparent;
   border: 0;
   padding: 0;
   appearance: unset;
 }
 
-.sdds-modal-close {
+.tds-modal-close {
   display: inline-block;
   height: auto;
-  color: var(--sdds-modal-icon);
+  color: var(--tds-modal-icon);
   cursor: pointer;
 
   &:focus {
@@ -263,35 +263,35 @@ button.sdds-modal-close {
   }
 
   @media (min-width: $screen-s) {
-    margin-left: var(--sdds-spacing-element-16);
+    margin-left: var(--tds-spacing-element-16);
   }
 
   @media (min-width: $screen-l) {
-    margin-left: var(--sdds-spacing-element-48);
+    margin-left: var(--tds-spacing-element-48);
   }
 }
 
 //web component with nested svg
-.sdds-modal-close-btn {
+.tds-modal-close-btn {
   display: inline-block;
   height: auto;
   background-repeat: no-repeat;
   cursor: pointer;
 
   @media (min-width: $screen-s) {
-    margin-left: var(--sdds-spacing-element-16);
+    margin-left: var(--tds-spacing-element-16);
   }
 
   @media (min-width: $screen-l) {
-    margin-left: var(--sdds-spacing-element-48);
+    margin-left: var(--tds-spacing-element-48);
   }
 
   svg {
-    fill: var(--sdds-modal-icon);
+    fill: var(--tds-modal-icon);
   }
 }
 
-.sdds-modal-overflow {
+.tds-modal-overflow {
   overflow: hidden;
 }
 
@@ -300,12 +300,12 @@ button.sdds-modal-close {
 :host {
   @include modal-host;
 
-  .sdds-modal-close {
+  .tds-modal-close {
     border: none;
     background-color: transparent;
   }
 
-  .sdds-modal-close-btn {
+  .tds-modal-close-btn {
     border: none;
     background-color: transparent;
   }
