@@ -11,11 +11,11 @@ import {
 } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-modal',
+  tag: 'tds-modal',
   styleUrl: 'modal.scss',
   shadow: true,
 })
-export class Modal {
+export class TdsModal {
   @Element() host: HTMLElement;
 
   /** Disables closing Modal on clicking on overlay area. */
@@ -54,12 +54,12 @@ export class Modal {
 
   /** Emitts when the Modal is closed. */
   @Event({
-    eventName: 'sddsClose',
+    eventName: 'tdsClose',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsClose: EventEmitter<any>;
+  tdsClose: EventEmitter<any>;
 
   connectedCallback() {
     if (this.show !== null) {
@@ -71,7 +71,7 @@ export class Modal {
 
   /** Emits a close event and then close the Modal if it is not prevented. */
   handleClose = (event?) => {
-    const closeEvent = this.sddsClose.emit(event);
+    const closeEvent = this.tdsClose.emit(event);
     if (!closeEvent.defaultPrevented) {
       this.isShown = false;
     }
@@ -86,8 +86,8 @@ export class Modal {
     const targetList = event.composedPath();
     const target = targetList[0];
     if (
-      target.classList[0] === 'sdds-modal-close' ||
-      (target.classList[0] === 'sdds-modal-backdrop' && this.prevent === false)
+      target.classList[0] === 'tds-modal-close' ||
+      (target.classList[0] === 'tds-modal-backdrop' && this.prevent === false)
     ) {
       this.handleClose(event);
     }
@@ -131,26 +131,26 @@ export class Modal {
         onClick={(event) => {
           this.handleOverlayClick(event);
         }}
-        class={`sdds-modal-backdrop ${this.isShown ? 'show' : 'hide'}`}
+        class={`tds-modal-backdrop ${this.isShown ? 'show' : 'hide'}`}
       >
         <div
-          class={`sdds-modal ${this.actions ? `sdds-modal__actions-${this.actions}` : ''} ${
-            this.size ? `sdds-modal-${this.size}` : ''
+          class={`tds-modal ${this.actions ? `tds-modal__actions-${this.actions}` : ''} ${
+            this.size ? `tds-modal-${this.size}` : ''
           } `}
         >
-          <div class="sdds-modal-header">
-            <slot name="sdds-modal-headline"></slot>
-            <button class="sdds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
+          <div class="tds-modal-header">
+            <slot name="tds-modal-headline"></slot>
+            <button class="tds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
 
-          <div class="sdds-modal-body">
-            <slot name="sdds-modal-body"></slot>
+          <div class="tds-modal-body">
+            <slot name="tds-modal-body"></slot>
           </div>
 
-          <div class="sdds-modal-actions">
-            <slot name="sdds-modal-actions"></slot>
+          <div class="tds-modal-actions">
+            <slot name="tds-modal-actions"></slot>
           </div>
         </div>
       </Host>

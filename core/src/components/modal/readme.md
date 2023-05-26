@@ -1,4 +1,6 @@
-# sdds-modal
+# tds-modal
+
+
 
 <!-- Auto Generated Below -->
 
@@ -17,9 +19,9 @@
 
 ## Events
 
-| Event       | Description                      | Type               |
-| ----------- | -------------------------------- | ------------------ |
-| `sddsClose` | Emitts when the Modal is closed. | `CustomEvent<any>` |
+| Event      | Description                      | Type               |
+| ---------- | -------------------------------- | ------------------ |
+| `tdsClose` | Emitts when the Modal is closed. | `CustomEvent<any>` |
 
 
 ## Methods
@@ -54,8 +56,8 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-modal --> tds-icon
-  style sdds-modal fill:#f9f,stroke:#333,stroke-width:4px
+  tds-modal --> tds-icon
+  style tds-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

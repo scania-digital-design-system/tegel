@@ -1,22 +1,22 @@
 :root,
-.sdds-mode-light {
-  --sdds-modal-backdrop: rgba(0 0 0 / 40%);
-  --sdds-modal-background: var(--sdds-white);
-  --sdds-modal-text: var(--sdds-grey-958);
-  --sdds-modal-icon: var(--sdds-black);
-  --sdds-modal-icon-native: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.40338 2.34308C3.11048 2.05019 2.63561 2.05019 2.34272 2.34308C2.04982 2.63598 2.04982 3.11085 2.34272 3.40374L6.93897 8L2.34283 12.5961C2.04994 12.889 2.04994 13.3639 2.34283 13.6568C2.63572 13.9497 3.1106 13.9497 3.40349 13.6568L7.99963 9.06066L12.5958 13.6568C12.8887 13.9497 13.3635 13.9497 13.6564 13.6568C13.9493 13.3639 13.9493 12.889 13.6564 12.5961L9.06029 8L13.6565 3.40376C13.9494 3.11086 13.9494 2.63599 13.6565 2.3431C13.3636 2.0502 12.8888 2.0502 12.5959 2.3431L7.99963 6.93934L3.40338 2.34308Z' fill='black'/%3E%3C/svg%3E%0A");
-  --sdds-modal-scrollbar: var(--sdds-grey-300);
-  --sdds-modal-scrollbar-track: var(--sdds-grey-300);
-  --sdds-modal-scrollbar-thumb: var(--sdds-grey-500);
+.tds-mode-light {
+  --tds-modal-backdrop: rgba(0 0 0 / 40%);
+  --tds-modal-background: var(--tds-white);
+  --tds-modal-text: var(--tds-grey-958);
+  --tds-modal-icon: var(--tds-black);
+  --tds-modal-icon-native: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.40338 2.34308C3.11048 2.05019 2.63561 2.05019 2.34272 2.34308C2.04982 2.63598 2.04982 3.11085 2.34272 3.40374L6.93897 8L2.34283 12.5961C2.04994 12.889 2.04994 13.3639 2.34283 13.6568C2.63572 13.9497 3.1106 13.9497 3.40349 13.6568L7.99963 9.06066L12.5958 13.6568C12.8887 13.9497 13.3635 13.9497 13.6564 13.6568C13.9493 13.3639 13.9493 12.889 13.6564 12.5961L9.06029 8L13.6565 3.40376C13.9494 3.11086 13.9494 2.63599 13.6565 2.3431C13.3636 2.0502 12.8888 2.0502 12.5959 2.3431L7.99963 6.93934L3.40338 2.34308Z' fill='black'/%3E%3C/svg%3E%0A");
+  --tds-modal-scrollbar: var(--tds-grey-300);
+  --tds-modal-scrollbar-track: var(--tds-grey-300);
+  --tds-modal-scrollbar-thumb: var(--tds-grey-500);
 }
 
-.sdds-mode-dark {
-  --sdds-modal-backdrop: rgba(0 0 0 / 40%);
-  --sdds-modal-background: var(--sdds-grey-900);
-  --sdds-modal-text: var(--sdds-grey-50);
-  --sdds-modal-icon: var(--sdds-white);
-  --sdds-modal-icon-native: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.40338 2.34308C3.11048 2.05019 2.63561 2.05019 2.34272 2.34308C2.04982 2.63598 2.04982 3.11085 2.34272 3.40374L6.93897 8L2.34283 12.5961C2.04994 12.889 2.04994 13.3639 2.34283 13.6568C2.63572 13.9497 3.1106 13.9497 3.40349 13.6568L7.99963 9.06066L12.5958 13.6568C12.8887 13.9497 13.3635 13.9497 13.6564 13.6568C13.9493 13.3639 13.9493 12.889 13.6564 12.5961L9.06029 8L13.6565 3.40376C13.9494 3.11086 13.9494 2.63599 13.6565 2.3431C13.3636 2.0502 12.8888 2.0502 12.5959 2.3431L7.99963 6.93934L3.40338 2.34308Z' fill='white'/%3E%3C/svg%3E%0A");
-  --sdds-modal-scrollbar: var(--sdds-grey-300);
-  --sdds-modal-scrollbar-track: var(--sdds-grey-300);
-  --sdds-modal-scrollbar-thumb: var(--sdds-grey-500);
+.tds-mode-dark {
+  --tds-modal-backdrop: rgba(0 0 0 / 40%);
+  --tds-modal-background: var(--tds-grey-900);
+  --tds-modal-text: var(--tds-grey-50);
+  --tds-modal-icon: var(--tds-white);
+  --tds-modal-icon-native: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.40338 2.34308C3.11048 2.05019 2.63561 2.05019 2.34272 2.34308C2.04982 2.63598 2.04982 3.11085 2.34272 3.40374L6.93897 8L2.34283 12.5961C2.04994 12.889 2.04994 13.3639 2.34283 13.6568C2.63572 13.9497 3.1106 13.9497 3.40349 13.6568L7.99963 9.06066L12.5958 13.6568C12.8887 13.9497 13.3635 13.9497 13.6564 13.6568C13.9493 13.3639 13.9493 12.889 13.6564 12.5961L9.06029 8L13.6565 3.40376C13.9494 3.11086 13.9494 2.63599 13.6565 2.3431C13.3636 2.0502 12.8888 2.0502 12.5959 2.3431L7.99963 6.93934L3.40338 2.34308Z' fill='white'/%3E%3C/svg%3E%0A");
+  --tds-modal-scrollbar: var(--tds-grey-300);
+  --tds-modal-scrollbar-track: var(--tds-grey-300);
+  --tds-modal-scrollbar-thumb: var(--tds-grey-500);
 }
