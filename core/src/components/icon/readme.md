@@ -24,7 +24,6 @@
  - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
  - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
  - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
- - [sdds-modal](../modal)
  - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
  - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
  - [sdds-stepper-item](../stepper/stepper-item)
