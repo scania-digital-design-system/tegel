@@ -207,7 +207,7 @@ const Template = ({
   </style>
 
     <div class="demo-wrapper">
-        <sdds-dropdown-v2
+        <tds-dropdown-v2
         ${
           defaultOption && defaultOption !== 'No default'
             ? `default-value="${defaultOptionLookUp[defaultOption]}"`
@@ -240,35 +240,35 @@ const Template = ({
           ${
             optionType === 'Children'
               ? `
-              <sdds-dropdown-option-v2 value="option-1">
+              <tds-dropdown-option-v2 value="option-1">
                 Option 1
-              </sdds-dropdown-option-v2>
-              <sdds-dropdown-option-v2 disabled value="option-2">
+              </tds-dropdown-option-v2>
+              <tds-dropdown-option-v2 disabled value="option-2">
                 Option 2
-              </sdds-dropdown-option-v2>
-              <sdds-dropdown-option-v2 value="option-3">
+              </tds-dropdown-option-v2>
+              <tds-dropdown-option-v2 value="option-3">
                 Option 3
-              </sdds-dropdown-option-v2>
-              <sdds-dropdown-option-v2 value="option-4">
+              </tds-dropdown-option-v2>
+              <tds-dropdown-option-v2 value="option-4">
                 Option 4
-              </sdds-dropdown-option-v2>
-              <sdds-dropdown-option-v2 value="option-5">
+              </tds-dropdown-option-v2>
+              <tds-dropdown-option-v2 value="option-5">
                 Option 5
-              </sdds-dropdown-option-v2>
-              <sdds-dropdown-option-v2 value="option-6">
+              </tds-dropdown-option-v2>
+              <tds-dropdown-option-v2 value="option-6">
                 Option 6
-              </sdds-dropdown-option-v2>
-              <sdds-dropdown-option-v2 value="option-7">
+              </tds-dropdown-option-v2>
+              <tds-dropdown-option-v2 value="option-7">
                 Option 7
-              </sdds-dropdown-option-v2>`
+              </tds-dropdown-option-v2>`
               : ''
           }
-        </sdds-dropdown-v2>
+        </tds-dropdown-v2>
     </div>
 
     <script>
-    dropdown = document.querySelector('sdds-dropdown-v2')
-    dropdown.addEventListener('sddsChange', (event) => {
+    dropdown = document.querySelector('tds-dropdown-v2')
+    dropdown.addEventListener('tdsChange', (event) => {
       console.log(event)
     })
 
@@ -300,4 +300,4 @@ const Template = ({
         
   `);
 
-export const WebComponent = Template.bind({});
+export const Default = Template.bind({});
