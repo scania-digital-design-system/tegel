@@ -1,34 +1,26 @@
-html,
-:root {
+:root,
+.tds-mode-light {
   --tds-message-color: var(--tds-grey-958);
   --tds-message-background-primary: var(--tds-grey-50);
   --tds-message-background-secondary: var(--tds-white);
   --tds-message-background: var(--tds-message-background-primary);
   --tds-message-type-error-background: var(--tds-red-50);
 
-  .tds-mode-light {
-    --tds-message-color: var(--tds-grey-958);
-    --tds-message-background-primary: var(--tds-grey-50);
-    --tds-message-background-secondary: var(--tds-white);
+  .tds-mode-variant-primary {
     --tds-message-background: var(--tds-message-background-primary);
-    --tds-message-type-error-background: var(--tds-red-50);
-
-    .tds-mode-variant-primary {
-      --tds-message-background: var(--tds-message-background-primary);
-    }
-
-    .tds-mode-variant-secondary {
-      --tds-message-background: var(--tds-message-background-secondary);
-    }
   }
 
-  .tds-mode-dark {
-    --tds-message-color: var(--tds-grey-50);
-    --tds-message-background-primary: var(--tds-grey-900);
-    --tds-message-background-secondary: var(--tds-grey-868);
-    --tds-message-background: var(--tds-message-background-primary);
-    --tds-message-type-error-background: rgb(255 35 64 / 24%);
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--tds-message-background-secondary);
   }
+}
+
+.tds-mode-dark {
+  --tds-message-color: var(--tds-grey-50);
+  --tds-message-background-primary: var(--tds-grey-900);
+  --tds-message-background-secondary: var(--tds-grey-868);
+  --tds-message-background: var(--tds-message-background-primary);
+  --tds-message-type-error-background: rgb(255 35 64 / 24%);
 
   .tds-mode-variant-primary {
     --tds-message-background: var(--tds-message-background-primary);
