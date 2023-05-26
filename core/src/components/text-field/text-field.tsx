@@ -1,19 +1,19 @@
 import { Component, h, State, Prop, Event, EventEmitter } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-textfield',
-  styleUrl: 'textfield.scss',
+  tag: 'tds-text-field',
+  styleUrl: 'text-field.scss',
   shadow: false,
   scoped: true,
 })
-export class Textfield {
+export class TdsTextField {
   /** Textinput for focus state */
   textInput?: HTMLInputElement;
 
   /** Which input type, text, password or similar */
   @Prop({ reflect: true }) type: 'text' | 'password' = 'text';
 
-  /** Position of the label for the textfield. */
+  /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Label text */
@@ -37,7 +37,7 @@ export class Textfield {
   /** Size of the input */
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
 
-  /** Mode variant of the textfield */
+  /** Mode variant of the Text Field */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** With setting */
@@ -58,99 +58,103 @@ export class Textfield {
   /** Listen to the focus state of the input */
   @State() focusInput;
 
-  /** Change event for the textfield */
+  /** Change event for the Text Field */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsChange: EventEmitter;
+  tdsChange: EventEmitter;
 
   handleChange(event): void {
-    this.sddsChange.emit(event);
+    this.tdsChange.emit(event);
   }
 
-  /** Input event for the textfield */
+  /** Input event for the Text Field */
   @Event({
-    eventName: 'sddsInput',
+    eventName: 'tdsInput',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsInput: EventEmitter<InputEvent>;
+  tdsInput: EventEmitter<InputEvent>;
 
   // Data input event in value prop
   handleInput(event): void {
-    this.sddsInput.emit(event);
+    this.tdsInput.emit(event);
     this.value = event.target.value;
   }
 
-  /** Focus event for the textfield */
+  /** Focus event for the Text Field */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
-  /** Set the input as focus when clicking the whole textfield with suffix/prefix */
+  /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleFocus(event): void {
     this.textInput.focus();
     this.focusInput = true;
-    this.sddsFocus.emit(event);
+    this.tdsFocus.emit(event);
   }
 
-  /** Blur event for the textfield */
+  /** Blur event for the Text Field */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
-  /** Set the input as focus when clicking the whole textfield with suffix/prefix */
+  /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleBlur(event): void {
     this.focusInput = false;
-    this.sddsBlur.emit(event);
+    this.tdsBlur.emit(event);
   }
 
   render() {
     return (
       <div
         class={`
-        ${this.noMinWidth ? 'form-textfield-nomin' : ''}
-        ${this.focusInput && !this.disabled ? 'form-textfield textfield-focus' : ' form-textfield'}
-        ${this.value ? 'textfield-data' : ''}
+        ${this.noMinWidth ? 'form-text-field-nomin' : ''}
+        ${
+          this.focusInput && !this.disabled
+            ? 'form-text-field text-field-focus'
+            : ' form-text-field'
+        }
+        ${this.value ? 'text-field-data' : ''}
         ${
           this.labelPosition === 'inside' && this.size !== 'sm'
-            ? 'textfield-container-label-inside'
+            ? 'text-field-container-label-inside'
             : ''
         }
-        ${this.disabled ? 'form-textfield-disabled' : ''}
-        ${this.readOnly ? 'form-textfield-readonly' : ''}
-        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}
-        ${this.size === 'md' ? 'form-textfield-md' : ''}
-        ${this.size === 'sm' ? 'form-textfield-sm' : ''}
-        ${this.state === 'error' || this.state === 'success' ? `form-textfield-${this.state}` : ''}
+        ${this.disabled ? 'form-text-field-disabled' : ''}
+        ${this.readOnly ? 'form-text-field-readonly' : ''}
+        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
+        ${this.size === 'md' ? 'form-text-field-md' : ''}
+        ${this.size === 'sm' ? 'form-text-field-sm' : ''}
+        ${this.state === 'error' || this.state === 'success' ? `form-text-field-${this.state}` : ''}
         `}
       >
         {this.labelPosition === 'outside' && (
-          <div class="textfield-label-outside">
+          <div class="text-field-label-outside">
             <div>{this.label}</div>
           </div>
         )}
-        <div onClick={() => this.textInput.focus()} class="textfield-container">
-          <div class={`textfield-slot-wrap-prefix textfield-${this.state}`}>
+        <div onClick={() => this.textInput.focus()} class="text-field-container">
+          <div class={`text-field-slot-wrap-prefix text-field-${this.state}`}>
             <slot name="prefix" />
           </div>
 
-          <div class="textfield-input-container">
+          <div class="text-field-input-container">
             <input
               ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
-              class={`textfield-input textfield-input-${this.size}`}
+              class={`text-field-input text-field-input-${this.size}`}
               type={this.type}
               disabled={this.disabled}
               readonly={this.readOnly}
@@ -174,23 +178,23 @@ export class Textfield {
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
-              <label class="textfield-label-inside">{this.label}</label>
+              <label class="text-field-label-inside">{this.label}</label>
             )}
           </div>
-          <div class="textfield-bar"></div>
+          <div class="text-field-bar"></div>
 
-          <div class={`textfield-slot-wrap-suffix textfield-${this.state}`}>
+          <div class={`text-field-slot-wrap-suffix text-field-${this.state}`}>
             <slot name="suffix" />
           </div>
-          <span class="textfield-icon__readonly">
+          <span class="text-field-icon__readonly">
             <tds-icon name="edit_inactive" size="20px"></tds-icon>
           </span>
-          <span class="textfield-icon__readonly-label">This field is non-editable</span>
+          <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
-        <div class="textfield-helper">
+        <div class="text-field-helper">
           {this.state === 'error' && (
-            <div class="textfield-helper-error-state">
+            <div class="text-field-helper-error-state">
               <tds-icon name="error" size="16px"></tds-icon>
               {this.helper}
             </div>
@@ -198,9 +202,9 @@ export class Textfield {
           {this.state !== 'error' && this.helper}
 
           {this.maxLength > 0 && (
-            <div class="textfield-textcounter">
+            <div class="text-field-textcounter">
               {this.value === null ? 0 : this.value?.length}
-              <span class="textfield-textcounter-divider"> / </span>
+              <span class="text-field-textcounter-divider"> / </span>
               {this.maxLength}
             </div>
           )}
