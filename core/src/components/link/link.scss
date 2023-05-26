@@ -1,53 +1,53 @@
-.sdds-link-component {
+.tds-link-component {
   all: unset;
   cursor: pointer;
   outline: none;
-  color: var(--sdds-link);
+  color: var(--tds-link);
   text-decoration: underline;
 
   &.active,
   &:active {
-    color: var(--sdds-link);
+    color: var(--tds-link);
     text-decoration: underline;
-    text-decoration-color: var(--sdds-link);
+    text-decoration-color: var(--tds-link);
   }
 
   &:hover {
-    color: var(--sdds-link-hover);
+    color: var(--tds-link-hover);
     text-decoration: underline;
-    text-decoration-color: var(--sdds-link-hover);
+    text-decoration-color: var(--tds-link-hover);
   }
 
   &:visited {
-    color: var(--sdds-link-visited);
-    text-decoration-color: var(--sdds-link-visited);
+    color: var(--tds-link-visited);
+    text-decoration-color: var(--tds-link-visited);
   }
 
   &:focus {
-    color: var(--sdds-link-focus);
+    color: var(--tds-link-focus);
     text-decoration: none;
-    outline: 2px solid var(--sdds-link-focus);
+    outline: 2px solid var(--tds-link-focus);
     outline-offset: -2px;
   }
 }
 
 .disabled {
-  .sdds-link-component {
-    color: var(--sdds-link-disabled);
-    text-decoration-color: var(--sdds-link-disabled);
+  .tds-link-component {
+    color: var(--tds-link-disabled);
+    text-decoration-color: var(--tds-link-disabled);
     pointer-events: none;
   }
 }
 
 .no-underline {
-  .sdds-link-component {
+  .tds-link-component {
     text-decoration: none;
   }
 }
 
 .no-underline {
   &:hover {
-    .sdds-link-component {
+    .tds-link-component {
       text-decoration: none;
     }
   }
