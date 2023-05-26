@@ -20,7 +20,7 @@
 | `openDirection`  | `open-direction`  | Direction that the Dropdown will open. Default is auto.                                                                                  | `"auto" \| "down" \| "up"`                               | `'auto'`     |
 | `placeholder`    | `placeholder`     | Placeholder text for Dropdown with no selected item                                                                                      | `string`                                                 | `''`         |
 | `selectedOption` | `selected-option` | Add the value of the option as string to set it as new selected value                                                                    | `string`                                                 | `undefined`  |
-| `size`           | `size`            | Controls the size of Dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated                       | `"large" \| "lg" \| "md" \| "medium" \| "sm" \| "small"` | `'lg'`       |
+| `size`           | `size`            | Controls the size of the Dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated                   | `"large" \| "lg" \| "md" \| "medium" \| "sm" \| "small"` | `'lg'`       |
 | `state`          | `state`           | Support `error` state                                                                                                                    | `boolean`                                                | `false`      |
 
 
@@ -41,15 +41,16 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [sdds-dropdown-option](../dropdown-option)
-- [sdds-dropdown](..)
+- [tds-dropdown-option](../dropdown-option)
+- [tds-dropdown](..)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-filter --> sdds-dropdown-option
-  sdds-dropdown-filter --> sdds-dropdown
-  style sdds-dropdown-filter fill:#f9f,stroke:#333,stroke-width:4px
+  tds-dropdown-filter --> tds-dropdown-option
+  tds-dropdown-filter --> tds-dropdown
+  tds-dropdown-option --> tds-checkbox
+  style tds-dropdown-filter fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
