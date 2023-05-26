@@ -101,8 +101,8 @@ export const parameters = {
     dark: ScaniaThemeDark,
     // Override the default light theme
     light: ScaniaThemeLight,
-    darkClass: 'sdds-mode-dark',
-    lightClass: 'sdds-mode-light',
+    darkClass: 'tds-mode-dark',
+    lightClass: 'tds-mode-light',
     stylePreview: true,
   },
   backgrounds: {
@@ -161,7 +161,7 @@ if (!window.TDS_DID_SUBSCRIBE_DARK_BG) {
     globals: { backgrounds: { value: lightModeBgColor } },
   });
   channel.on('DARK_MODE', (isDarkMode) => {
-    if ((isDarkMode && !window.SDDS_DARK_BG) || (!isDarkMode && window.SDDS_DARK_BG)) {
+    if ((isDarkMode && !window.TDS_DARK_BG) || (!isDarkMode && window.TDS_DARK_BG)) {
       channel.emit(UPDATE_GLOBALS, {
         globals: {
           backgrounds: {
