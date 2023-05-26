@@ -1,11 +1,11 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-link',
+  tag: 'tds-link',
   styleUrl: 'link.scss',
   shadow: false,
 })
-export class SddsLink {
+export class TdsLink {
   @Element() host: HTMLElement;
 
   /** Disables the Link */
@@ -15,7 +15,7 @@ export class SddsLink {
   @Prop() underline: boolean = true;
 
   connectedCallback() {
-    this.host.children[0].classList.add('sdds-link-component');
+    this.host.children[0].classList.add('tds-link-component');
   }
 
   render() {
