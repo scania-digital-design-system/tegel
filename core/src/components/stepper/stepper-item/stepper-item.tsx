@@ -1,9 +1,9 @@
 import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
-import { InternalSddsStepperPropChange } from '../sdds-stepper';
+import { InternalSddsStepperPropChange } from '../stepper';
 
 @Component({
   tag: 'sdds-stepper-item',
-  styleUrl: 'sdds-stepper-item.scss',
+  styleUrl: 'stepper-item.scss',
   shadow: true,
 })
 export class SddsStepper {

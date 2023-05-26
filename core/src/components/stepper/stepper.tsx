@@ -15,10 +15,10 @@ export type InternalSddsStepperPropChange = {
 
 @Component({
   tag: 'sdds-stepper',
-  styleUrl: 'sdds-stepper.scss',
+  styleUrl: 'stepper.scss',
   shadow: true,
 })
-export class SddsStepper {
+export class Stepper {
   @Element() host: HTMLElement;
 
   /** The orientation the children are layed out. */

@@ -82,7 +82,8 @@ const sizeLookUp = {
 };
 const Template = ({ size, orientation, labelPosition, hideLabels }) =>
   formatHtmlPreview(
-    `<sdds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
+    `<sdds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
+      orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
     } orientation="${orientation.toLowerCase()}">
     <sdds-stepper-item state="success" index="1">
       <div slot="label">Success step</div>
