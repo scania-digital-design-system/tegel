@@ -25,7 +25,7 @@ export class TdsTextarea {
   /** Textarea rows attribute */
   @Prop() rows: number;
 
-  /** Position of the label for the textfield. */
+  /** Position of the label for the Textarea. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Placeholder text */
@@ -46,7 +46,7 @@ export class TdsTextarea {
   /** Max length of input */
   @Prop() maxLength: number;
 
-  /** Mode variant of the textarea */
+  /** Mode variant of the Textarea */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Control of autofocus */
@@ -58,7 +58,7 @@ export class TdsTextarea {
   /** Listen to the focus state of the input */
   @State() focusInput;
 
-  /** Change event for the textarea */
+  /** Change event for the Textarea */
   @Event({
     eventName: 'tdsChange',
     composed: true,
@@ -71,7 +71,7 @@ export class TdsTextarea {
     this.tdsChange.emit(event);
   }
 
-  /** Blur event for the textarea */
+  /** Blur event for the Textarea */
   @Event({
     eventName: 'tdsBlur',
     composed: true,
@@ -85,7 +85,7 @@ export class TdsTextarea {
     this.focusInput = false;
   }
 
-  /** Input event for the textarea */
+  /** Input event for the Textarea */
   @Event({
     eventName: 'tdsInput',
     composed: true,
@@ -100,7 +100,7 @@ export class TdsTextarea {
     this.value = event.target.value;
   }
 
-  /** Focus event for the textarea */
+  /** Focus event for the Textarea */
   @Event({
     eventName: 'tdsFocus',
     composed: true,
@@ -109,7 +109,7 @@ export class TdsTextarea {
   })
   tdsFocus: EventEmitter<FocusEvent>;
 
-  /* Set the input as focus when clicking the whole textfield with suffix/prefix */
+  /* Set the input as focus when clicking the whole textarea with suffix/prefix */
   handleFocus(event): void {
     this.textEl.focus();
     this.focusInput = true;

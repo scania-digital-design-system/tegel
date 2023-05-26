@@ -102,7 +102,7 @@ export default {
     },
     readonly: {
       name: 'Read only',
-      description: 'Sets the textarea to read-only state.',
+      description: 'Sets the Textarea to read-only state.',
       control: {
         type: 'boolean',
       },
@@ -112,7 +112,7 @@ export default {
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the textarea.',
+      description: 'Disables the Textarea.',
       control: {
         type: 'boolean',
       },
