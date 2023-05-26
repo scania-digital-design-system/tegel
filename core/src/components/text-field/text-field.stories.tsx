@@ -238,26 +238,19 @@ const Template = ({
       ${noMinWidth ? 'no-min-width' : ''}
       placeholder="${placeholderText}" >
         ${
-          prefix
+          prefix || suffix
             ? `
           ${
-            prefixType === 'Text'
-              ? '<span slot="prefix">$</span>'
-              : '<tds-icon slot="prefix" name="truck" size="20px"></tds-icon>'
+            prefixType || suffixType === 'Text'
+              ? `<span slot="${prefix ? 'prefix' : 'suffix'}">$</span>`
+              : `<tds-icon slot="${
+                  prefix ? 'prefix' : 'suffix'
+                }" name="truck" size="20px"></tds-icon>`
           }
         `
             : ''
         }
-        ${
-          suffix
-            ? `
-          ${
-            suffixType === 'Text'
-              ? '<span slot="suffix">$</span>'
-              : '<tds-icon slot="suffix" name="truck" size="20px"></tds-icon>'
-          }        `
-            : ''
-        }
+
         </tds-text-field>
   </div>
   <!-- Script tag for demo purposes -->
