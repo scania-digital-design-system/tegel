@@ -9,13 +9,13 @@
   z-index: tds-z-index(dropdown);
 
   .label-outside {
-    font: var(--sdds-detail-05);
-    letter-spacing: var(--sdds-detail-05-ls);
-    color: var(--sdds-dropdown-label-color);
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
+    color: var(--tds-dropdown-label-color);
     margin-bottom: 8px;
 
     &.disabled {
-      color: var(--sdds-dropdown-disabled-color);
+      color: var(--tds-dropdown-disabled-color);
     }
   }
 
@@ -27,15 +27,15 @@
       .placeholder,
       .label-inside-as-placeholder,
       .value-wrapper {
-        color: var(--sdds-dropdown-disabled-color);
+        color: var(--tds-dropdown-disabled-color);
       }
     }
 
     .label-inside {
       position: absolute;
-      font: var(--sdds-detail-07);
-      letter-spacing: var(--sdds-detail-07-ls);
-      color: var(--sdds-dropdown-label-inside-color);
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
+      color: var(--tds-dropdown-label-inside-color);
 
       &.lg {
         top: 12px;
@@ -63,14 +63,14 @@
     }
 
     .label-inside-as-placeholder {
-      font: var(--sdds-detail-02);
-      letter-spacing: var(--sdds-detail-02-ls);
-      color: var(--sdds-dropdown-placeholder-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      color: var(--tds-dropdown-placeholder-color);
 
       &.selected {
         position: absolute;
-        font: var(--sdds-detail-07);
-        letter-spacing: var(--sdds-detail-07-ls);
+        font: var(--tds-detail-07);
+        letter-spacing: var(--tds-detail-07-ls);
         transition: all 0.2s ease-in-out;
 
         &.lg {
@@ -106,19 +106,19 @@
 
   .helper {
     margin-top: 4px;
-    color: var(--sdds-dropdown-helper-color);
-    font: var(--sdds-detail-05);
-    letter-spacing: var(--sdds-detail-05-ls);
+    color: var(--tds-dropdown-helper-color);
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
     display: flex;
     align-items: center;
     gap: 8px;
 
     &.error {
-      color: var(--sdds-negative);
+      color: var(--tds-negative);
     }
 
     &.disabled {
-      color: var(--sdds-dropdown-disabled-color);
+      color: var(--tds-dropdown-disabled-color);
     }
   }
 
@@ -173,7 +173,7 @@
       display: flex;
       align-items: center;
       padding: 0 16px;
-      background-color: var(--sdds-dropdown-bg);
+      background-color: var(--tds-dropdown-bg);
 
       &.lg {
         height: 56px;

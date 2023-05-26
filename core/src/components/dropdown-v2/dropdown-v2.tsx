@@ -8,14 +8,14 @@ import {
 } from '../../utils/utils';
 
 @Component({
-  tag: 'sdds-dropdown-v2',
+  tag: 'tds-dropdown-v2',
   styleUrl: 'dropdown-v2.scss',
   shadow: true,
 })
-export class SddsDropdownV2 {
+export class TdsDropdownV2 {
   @Element() host: HTMLElement;
 
-  /** Name for the dropdowns input element. */
+  /** Name for the Dropdowns input element. */
   @Prop() name: string;
 
   /** Sets the Dropdown in a disabled state */
@@ -72,7 +72,7 @@ export class SddsDropdownV2 {
 
   private inputElement: HTMLInputElement;
 
-  private children: Array<HTMLSddsDropdownOptionV2Element>;
+  private children: Array<HTMLTdsDropdownOptionV2Element>;
 
   /** Method that resets the Dropdown. */
   @Method()
@@ -91,7 +91,7 @@ export class SddsDropdownV2 {
         : [{ value: newValue, label: newValueLabel }];
     } else {
       this.selection = [{ value: newValue, label: newValueLabel }];
-      this.children = this.children.map((element: HTMLSddsDropdownOptionV2Element) => {
+      this.children = this.children.map((element: HTMLTdsDropdownOptionV2Element) => {
         if (element.value !== newValue) {
           element.setSelected(false);
         }
@@ -127,42 +127,42 @@ export class SddsDropdownV2 {
 
   /** Change event for the Dropdown. */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     name: string;
     value: string;
   }>;
 
   /** Focus event for the Dropdown. */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
   /** Blur event for the Dropdown. */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
   /** Input event for the Dropdown. */
   @Event({
-    eventName: 'sddsInput',
+    eventName: 'tdsInput',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsInput: EventEmitter<InputEvent>;
+  tdsInput: EventEmitter<InputEvent>;
 
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
@@ -184,7 +184,7 @@ export class SddsDropdownV2 {
     }
 
     if (event.key === 'ArrowDown') {
-      /* Get the index of the currently focus index, if there is no 
+      /* Get the index of the currently focus index, if there is no
       nextElementSibling return the index for the first child in our Dropdown.  */
 
       const startingIndex = activeElement.nextElementSibling
@@ -194,7 +194,7 @@ export class SddsDropdownV2 {
       const elementIndex = findNextFocusableItem(this.children, startingIndex);
       this.children[elementIndex].focus();
     } else if (event.key === 'ArrowUp') {
-      /* Get the index of the currently focus index, if there is no 
+      /* Get the index of the currently focus index, if there is no
       previousElementSibling return the index for the first last in our Dropdown.  */
       const startingIndex = activeElement.nextElementSibling
         ? this.children.findIndex((element) => element === activeElement.previousElementSibling)
@@ -219,7 +219,7 @@ export class SddsDropdownV2 {
 
   connectedCallback = () => {
     if (!this.options) {
-      this.children = Array.from(this.host.children) as Array<HTMLSddsDropdownOptionV2Element>;
+      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionV2Element>;
     }
   };
 
@@ -233,7 +233,7 @@ export class SddsDropdownV2 {
   }
 
   setDefaultOption = () => {
-    this.children = this.children.map((element: HTMLSddsDropdownOptionV2Element) => {
+    this.children = this.children.map((element: HTMLTdsDropdownOptionV2Element) => {
       if (this.multiselect) {
         this.defaultValue.split(',').forEach((defaultValue) => {
           if (defaultValue === element.value) {
@@ -274,7 +274,7 @@ export class SddsDropdownV2 {
   };
 
   handleFilter = (event) => {
-    this.sddsInput.emit(event);
+    this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
     /* Check if the query is empty, and if so show all options */
     if (query === '') {
@@ -297,15 +297,15 @@ export class SddsDropdownV2 {
   };
 
   handleFocus = (event) => {
-    this.sddsFocus.emit(event);
+    this.tdsFocus.emit(event);
   };
 
   handleBlur = (event) => {
-    this.sddsBlur.emit(event);
+    this.tdsBlur.emit(event);
   };
 
   handleChange = () => {
-    this.sddsChange.emit({
+    this.tdsChange.emit({
       name: this.name,
       value: this.selection?.map((item) => item.value).toString() ?? null,
     });
@@ -317,7 +317,7 @@ export class SddsDropdownV2 {
       this.options.forEach((option) => {
         appendChildElement(
           this.host,
-          'sdds-dropdown-option-v2',
+          'tds-dropdown-option-v2',
           [
             { key: 'value', value: option.value },
             { key: 'disabled', value: option.disabled.toString() },
@@ -328,7 +328,7 @@ export class SddsDropdownV2 {
       });
       this.children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'SDDS-DROPDOWN-OPTION-V2',
-      ) as HTMLSddsDropdownOptionV2Element[];
+      ) as HTMLTdsDropdownOptionV2Element[];
     }
 
     appendHiddenInput(
@@ -340,7 +340,7 @@ export class SddsDropdownV2 {
     return (
       <Host
         role="select"
-        class={`${this.modeVariant ? `sdds-mode-variant-${this.modeVariant}` : ''}`}
+        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}
       >
         {this.label && this.labelPosition === 'outside' && (
           <div class={`label-outside ${this.disabled ? 'disabled' : ''}`}>{this.label}</div>
