@@ -1,16 +1,16 @@
 :root,
-.sdds-mode-light {
-  --sdds-link: var(--sdds-blue-500);
-  --sdds-link-hover: var(--sdds-blue-400);
-  --sdds-link-focus: var(--sdds-blue-400);
-  --sdds-link-visited: var(--sdds-grey-900);
-  --sdds-link-disabled: var(--sdds-grey-400);
+.tds-mode-light {
+  --tds-link: var(--tds-blue-500);
+  --tds-link-hover: var(--tds-blue-400);
+  --tds-link-focus: var(--tds-blue-400);
+  --tds-link-visited: var(--tds-grey-900);
+  --tds-link-disabled: var(--tds-grey-400);
 }
 
-.sdds-mode-dark {
-  --sdds-link: var(--sdds-blue-300);
-  --sdds-link-hover: var(--sdds-blue-400);
-  --sdds-link-focus: var(--sdds-blue-400);
-  --sdds-link-visited: var(--sdds-blue-100);
-  --sdds-link-disabled: var(--sdds-grey-800);
+.tds-mode-dark {
+  --tds-link: var(--tds-blue-300);
+  --tds-link-hover: var(--tds-blue-400);
+  --tds-link-focus: var(--tds-blue-400);
+  --tds-link-visited: var(--tds-blue-100);
+  --tds-link-disabled: var(--tds-grey-800);
 }
