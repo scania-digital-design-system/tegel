@@ -81,7 +81,7 @@ export default {
     type: 'Default',
     header: 'This is a header text area',
     subheader: '<div slot="banner-subheader">Short subheader</div>',
-    link: '<sdds-link slot="banner-link" ><a href="/">Link example</a></sdds-link>',
+    link: '<tds-link slot="banner-link" ><a href="/">Link example</a></tds-link>',
     icon: 'truck',
     persistent: false,
   },
