@@ -1,0 +1,11 @@
+.__tds-side-menu-item-icon {
+  margin-left: -4px; // makes left padding 20px if there is an icon
+}
+
+.__tds-side-menu-item-icon-collapsed {
+  color: var(--tds-sidebar-side-menu-single-item-color);
+  margin-left: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

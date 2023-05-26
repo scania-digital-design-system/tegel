@@ -1,0 +1,24 @@
+@import '../../../mixins/flex-center';
+
+:host {
+  display: block;
+  flex-shrink: 1;
+  box-sizing: border-box;
+  color: var(--tds-header-nav-item-color);
+  font-weight: normal;
+  font-family: var(--tds-font-family-headline);
+  letter-spacing: normal;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  slot {
+    display: block;
+    align-items: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 0 32px 0 16px;
+  }
+}

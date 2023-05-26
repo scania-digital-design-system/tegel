@@ -1,0 +1,26 @@
+@import '../../../../../grid/vars';
+
+:host {
+  color: var(--tds-white);
+
+  tds-header-item {
+    display: block;
+  }
+
+  .icon {
+    position: relative;
+    margin-left: -6px;
+    left: 3px;
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+}
+
+@media screen and (min-width: $grid-lg) {
+  :host tds-header-item {
+    display: none;
+  }
+
+  :host([persistent]) tds-header-item {
+    display: block;
+  }
+}

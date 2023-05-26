@@ -1,0 +1,50 @@
+@import '../../../mixins/box-sizing';
+@import '../../../mixins/focus-state';
+
+:host {
+  ::slotted(button),
+  ::slotted(a) {
+    all: unset;
+    @include tds-box-sizing;
+
+    background-color: var(--tds-header-background);
+    border-right: 1px solid var(--tds-header--basic-element-border);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  ::slotted(button:hover),
+  ::slotted(a:hover) {
+    background-color: var(--tds-header-item-hover);
+  }
+
+  ::slotted(button:focus-visible),
+  ::slotted(a:focus-visible) {
+    @include tds-focus-state;
+  }
+
+  .component-active {
+    ::slotted(button),
+    ::slotted(a) {
+      background-color: var(--tds-header--basic-element-background-open);
+      color: var(--tds-header-nav-item-dropdown-opened-color);
+      border-color: var(--tds-header--basic-element-border-open);
+    }
+  }
+
+  .component-selected:not(.component-active) {
+    ::slotted(button),
+    ::slotted(a) {
+      background-color: var(--tds-header--basic-element-background-selected);
+      padding-top: 4px;
+      border-bottom-style: solid;
+      border-bottom-width: 4px;
+      border-bottom-color: var(--tds-nav-item-border-color-active);
+    }
+  }
+}
