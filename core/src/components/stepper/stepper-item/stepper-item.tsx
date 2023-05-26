@@ -10,7 +10,7 @@ export class TdsStepperItem {
   /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
   @Prop() index: string;
 
-  /** State of the stepper-item */
+  /** State of the Stepper Item */
   @Prop() state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
 
   @State() hideLabel: boolean;

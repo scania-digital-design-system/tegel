@@ -24,7 +24,7 @@ export default {
   argTypes: {
     size: {
       name: 'Size',
-      description: 'Sets the size of the stepper.',
+      description: 'Sets the size of the Stepper.',
       control: {
         type: 'radio',
       },
@@ -35,7 +35,7 @@ export default {
     },
     orientation: {
       name: 'Orientation',
-      description: 'Sets the orientation which the stepper is displayed.',
+      description: 'Sets the orientation which the Stepper is displayed.',
       control: {
         type: 'radio',
       },
@@ -59,7 +59,7 @@ export default {
     },
     hideLabels: {
       name: 'Hide labels',
-      description: 'Hides the labels for all stepper items.',
+      description: 'Hides the labels for all Stepper Items.',
       control: {
         type: 'boolean',
       },

@@ -18,10 +18,10 @@ export type InternalTdsStepperPropChange = {
   styleUrl: 'stepper.scss',
   shadow: true,
 })
-export class Stepper {
+export class TdsStepper {
   @Element() host: HTMLElement;
 
-  /** The orientation the children are layed out. */
+  /** The orientation the Stepper Items */
   @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Text position, only available on a direction: horizontal */
@@ -33,9 +33,9 @@ export class Stepper {
   /** Hides the label for the child components if true. */
   @Prop() hideLabels: boolean = false;
 
-  /** ID used for internal stepper functionality and events, must be unique.
+  /** ID used for internal Stepper functionality and events, must be unique.
    *
-   * **NOTE**: If you're listening for stepper events, you need to set this ID yourself to identify the stepper,
+   * **NOTE**: If you're listening for Stepper events, you need to set this ID yourself to identify the Stepper,
    * as the default ID is random and will be different every time.
    */
   @Prop() stepperId: string = crypto.randomUUID();
@@ -49,16 +49,16 @@ export class Stepper {
   }
 
   @Event({
-    eventName: 'internaltdsPropsChange',
+    eventName: 'internalTdsPropsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  internaltdsPropsChange: EventEmitter<InternalTdsStepperPropChange>;
+  internalTdsPropsChange: EventEmitter<InternalTdsStepperPropChange>;
 
   @Watch('orientation')
   handleDirectionChange() {
-    this.internaltdsPropsChange.emit({
+    this.internalTdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['orientation'],
       orientation: this.orientation,
@@ -67,7 +67,7 @@ export class Stepper {
 
   @Watch('labelPosition')
   handleLabelPositionChange() {
-    this.internaltdsPropsChange.emit({
+    this.internalTdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['labelPosition'],
       labelPosition: this.labelPosition,
@@ -76,7 +76,7 @@ export class Stepper {
 
   @Watch('size')
   handleSizeChange() {
-    this.internaltdsPropsChange.emit({
+    this.internalTdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['size'],
       size: this.size,
@@ -85,7 +85,7 @@ export class Stepper {
 
   @Watch('hideLabels')
   handleHideLabelsChange() {
-    this.internaltdsPropsChange.emit({
+    this.internalTdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['hideLabels'],
       hideLabels: this.hideLabels,
