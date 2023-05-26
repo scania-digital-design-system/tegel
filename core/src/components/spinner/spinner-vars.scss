@@ -1,18 +1,18 @@
 :root,
 html {
-  --sdds-spinner-background: var(--sdds-blue-400);
-  --sdds-spinner-background-inverted: var(--sdds-white);
-  --sdds-spinner-speed: 1.8s;
-  --sdds-spinner-speed-lg: 2s;
-  --sdds-spinner-radius-xs: 8px;
-  --sdds-spinner-radius-sm: 12px;
-  --sdds-spinner-radius-md: 26px;
-  --sdds-spinner-radius-lg: 42px;
-  --sdds-spinner-radius: var(--sdds-spinner-radius-lg);
-  --sdds-spinner-stroke-width-xs: 3px;
-  --sdds-spinner-stroke-width-sm: 4px;
-  --sdds-spinner-stroke-width-md: 6px;
-  --sdds-spinner-stroke-width-lg: 8px;
-  --sdds-spinner-stroke-width: var(--sdds-spinner-stroke-width-lg);
+  --tds-spinner-background: var(--tds-blue-400);
+  --tds-spinner-background-inverted: var(--tds-white);
+  --tds-spinner-speed: 1.8s;
+  --tds-spinner-speed-lg: 2s;
+  --tds-spinner-radius-xs: 8px;
+  --tds-spinner-radius-sm: 12px;
+  --tds-spinner-radius-md: 26px;
+  --tds-spinner-radius-lg: 42px;
+  --tds-spinner-radius: var(--tds-spinner-radius-lg);
+  --tds-spinner-stroke-width-xs: 3px;
+  --tds-spinner-stroke-width-sm: 4px;
+  --tds-spinner-stroke-width-md: 6px;
+  --tds-spinner-stroke-width-lg: 8px;
+  --tds-spinner-stroke-width: var(--tds-spinner-stroke-width-lg);
   --PI: 3.14159265358979;
 }
