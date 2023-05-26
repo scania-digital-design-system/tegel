@@ -12,38 +12,38 @@
   .toast-wrapper {
     display: flex;
     width: calc(352px - 4px);
-    background-color: var(--sdds-toast-background-color);
+    background-color: var(--tds-toast-background-color);
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--sdds-information);
+      border-left: 4px solid var(--tds-information);
 
       tds-icon {
-        color: var(--sdds-information);
+        color: var(--tds-information);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--sdds-positive);
+      border-left: 4px solid var(--tds-positive);
 
       tds-icon {
-        color: var(--sdds-positive);
+        color: var(--tds-positive);
       }
     }
 
     &.error {
-      border-left: 4px solid var(--sdds-negative);
+      border-left: 4px solid var(--tds-negative);
 
       tds-icon {
-        color: var(--sdds-negative);
+        color: var(--tds-negative);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--sdds-warning);
+      border-left: 4px solid var(--tds-warning);
 
       tds-icon {
-        color: var(--sdds-warning);
+        color: var(--tds-warning);
       }
     }
 
@@ -66,7 +66,7 @@
       }
 
       tds-icon {
-        color: var(--sdds-toast-dissmiss-color);
+        color: var(--tds-toast-dissmiss-color);
         padding: 0;
       }
     }
@@ -83,9 +83,9 @@
     flex: 1;
 
     .toast-header {
-      font: var(--sdds-headline-07);
-      letter-spacing: var(--sdds-headline-07-ls);
-      color: var(--sdds-toast-headline-color);
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+      color: var(--tds-toast-headline-color);
 
       &.no-subheader {
         margin-bottom: 4px;
@@ -99,9 +99,9 @@
     .toast-subheader {
       slot::slotted(*) {
         margin-top: 4px;
-        color: var(--sdds-toast-subheadline-color);
-        font: var(--sdds-detail-02);
-        letter-spacing: var(--sdds-detail-02-ls);
+        color: var(--tds-toast-subheadline-color);
+        font: var(--tds-detail-02);
+        letter-spacing: var(--tds-detail-02-ls);
         padding-bottom: 16px;
         max-width: 252px;
         white-space: nowrap;
@@ -118,14 +118,14 @@
   }
 
   slot[name='toast-link']::slotted(*) {
-    color: var(--sdds-toast-link-color);
+    color: var(--tds-toast-link-color);
   }
 
-  .sdds-mode-variant-primary {
-    --sdds-toast-background: var(--sdds-toast-background-primary);
+  .tds-mode-variant-primary {
+    --tds-toast-background: var(--tds-toast-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-toast-background: var(--sdds-toast-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-toast-background: var(--tds-toast-background-secondary);
   }
 }

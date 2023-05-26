@@ -66,7 +66,7 @@ export default {
 
 const Template = ({ type, header, subheader, link }) =>
   formatHtmlPreview(
-    `<sdds-toast
+    `<tds-toast
         type="${type.toLowerCase()}"
         header="${header}"
     >
@@ -85,11 +85,12 @@ const Template = ({ type, header, subheader, link }) =>
        `
            : ''
        }
-    </sdds-toast>
-        <script>
-        document.addEventListener('sddsClose', (event) => {
-            console.log(event)
-        })
+    </tds-toast>
+    
+    <script>
+      document.addEventListener('tdsClose', (event) => {
+          console.log(event)
+      })
     </script>
   `,
   );
