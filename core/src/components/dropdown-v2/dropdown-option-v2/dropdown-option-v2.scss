@@ -2,22 +2,22 @@
 
 :host {
   display: block;
-  background-color: var(--sdds-dropdown-option-background);
+  background-color: var(--tds-dropdown-option-background);
 
   .dropdown-option {
     display: flex;
     align-items: center;
-    color: var(--sdds-dropdown-option-color);
-    border-bottom: 1px solid var(--sdds-dropdown-option-border);
-    font: var(--sdds-detail-02);
-    letter-spacing: var(--sdds-detail-02-ls);
+    color: var(--tds-dropdown-option-color);
+    border-bottom: 1px solid var(--tds-dropdown-option-border);
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
 
     &.selected {
-      background-color: var(--sdds-dropdown-option-background-selected);
+      background-color: var(--tds-dropdown-option-background-selected);
     }
 
     &.disabled {
-      color: var(--sdds-dropdown-option-color-disabled);
+      color: var(--tds-dropdown-option-color-disabled);
     }
 
     &.lg {
@@ -54,8 +54,8 @@
       width: 100%;
 
       // This is to make the entire button clickable
-      sdds-checkbox,
-      .sdds-checkbox-webcomponent,
+      tds-checkbox,
+      .tds-checkbox-webcomponent,
       label {
         height: 100%;
         width: 100%;
@@ -63,12 +63,12 @@
     }
 
     &:hover {
-      background-color: var(--sdds-dropdown-option-background-hover);
+      background-color: var(--tds-dropdown-option-background-hover);
       cursor: pointer;
     }
 
     &:hover.disabled {
-      background-color: var(--sdds-dropdown-option-background);
+      background-color: var(--tds-dropdown-option-background);
       cursor: not-allowed;
     }
   }
