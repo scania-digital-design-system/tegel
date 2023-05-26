@@ -22,14 +22,14 @@
 
 ### Used by
 
- - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
- - [sdds-header-launcher](../header/webcomponent/header-launcher)
+ - [tds-header-dropdown](../header/header-dropdown)
+ - [tds-header-launcher](../header/header-launcher)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-header-dropdown --> tds-popover-canvas
-  sdds-header-launcher --> tds-popover-canvas
+  tds-header-dropdown --> tds-popover-canvas
+  tds-header-launcher --> tds-popover-canvas
   style tds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

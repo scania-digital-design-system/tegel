@@ -1,0 +1,16 @@
+.__tds-header-item-icon:only-child {
+  position: relative;
+  margin-left: -6px;
+  left: 3px;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.__tds-header-item-image {
+  position: relative;
+  margin-left: -20px;
+  left: 10px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+}

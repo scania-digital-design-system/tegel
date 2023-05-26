@@ -1,58 +1,58 @@
 :root,
-.sdds-mode-light {
-  --sdds-sidebar-mobile-menu-btn-hover: var(--sdds-blue-700);
-  --sdds-sidebar-mobile-menu-btn-icon: var(--sdds-white);
-  --sdds-sidebar-item-state-focus: var(--sdds-grey-50);
-  --sdds-sidebar-item-state-border-focus: var(--sdds-blue-400);
-  --sdds-sidebar-item-state-hover: var(--sdds-grey-100);
-  --sdds-sidebar-item-state-active: var(--sdds-grey-300);
-  --sdds-sidemenu-item-state-active: var(--sdds-grey-300);
-  --sdds-sidebar-item-state-selected: var(--sdds-grey-100);
+.tds-mode-light {
+  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
+  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
+  --tds-sidebar-item-state-focus: var(--tds-grey-50);
+  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
+  --tds-sidebar-item-state-hover: var(--tds-grey-100);
+  --tds-sidebar-item-state-active: var(--tds-grey-300);
+  --tds-sidemenu-item-state-active: var(--tds-grey-300);
+  --tds-sidebar-item-state-selected: var(--tds-grey-100);
 
   // TODO - Not sure why this was black before?
-  --sdds-sidebar-side-menu: var(--sdds-white);
-  --sdds-sidebar-side-menu-border-right: var(--sdds-grey-300);
-  --sdds-sidebar-side-menu-background-cover: var(--sdds-white);
-  --sdds-sidebar-side-menu-mobile-header-border-bottom: var(--sdds-grey-300);
-  --sdds-sidebar-side-menu-bottom-menu-background: var(--sdds-white);
-  --sdds-sidebar-side-menu-bottom-menu-border-top: var(--sdds-grey-300);
-  --sdds-sidebar-side-menu-single-item-border-bottom: var(--sdds-grey-300);
-  --sdds-sidebar-side-menu-single-item-color: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-single-item-background-selected: var(--sdds-grey-100);
-  --sdds-sidebar-side-menu-single-item-border-left-selected: var(--sdds-blue-400);
-  --sdds-sidebar-side-menu-single-subitem-color: var(--sdds-grey-800);
-  --sdds-sidebar-side-menu-single-subitem-title-color: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-single-subitem-color-active: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-single-subitem-backgrund: var(--sdds-white);
-  --sdds-sidebar-side-menu-single-subitem-divider: var(--sdds-grey-300);
-  --sdds-sidebar-side-menu-subnav-backgrund: var(--sdds-white);
-  --sdds-sidebar-side-menu-single-subitem-selected-border-color: var(--sdds-blue-400);
+  --tds-sidebar-side-menu: var(--tds-white);
+  --tds-sidebar-side-menu-border-right: var(--tds-grey-300);
+  --tds-sidebar-side-menu-background-cover: var(--tds-white);
+  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-300);
+  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-white);
+  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-300);
+  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-300);
+  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-958);
+  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-100);
+  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
+  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-800);
+  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-958);
+  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
+  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-white);
+  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-300);
+  --tds-sidebar-side-menu-subnav-backgrund: var(--tds-white);
+  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
 }
 
-.sdds-mode-dark {
-  --sdds-sidebar-mobile-menu-btn-hover: var(--sdds-blue-700);
-  --sdds-sidebar-mobile-menu-btn-icon: var(--sdds-white);
-  --sdds-sidebar-item-state-focus: var(--sdds-grey-958);
-  --sdds-sidebar-item-state-border-focus: var(--sdds-blue-400);
-  --sdds-sidebar-item-state-hover: var(--sdds-grey-868);
-  --sdds-sidebar-item-state-active: var(--sdds-grey-800);
-  --sdds-sidemenu-item-state-active: var(--sdds-grey-800);
-  --sdds-sidebar-item-state-selected: var(--sdds-grey-868);
-  --sdds-sidebar-side-menu: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-border-right: var(--sdds-grey-868);
-  --sdds-sidebar-side-menu-background-cover: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-mobile-header-border-bottom: var(--sdds-grey-868);
-  --sdds-sidebar-side-menu-bottom-menu-background: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-bottom-menu-border-top: var(--sdds-grey-868);
-  --sdds-sidebar-side-menu-single-item-border-bottom: var(--sdds-grey-868);
-  --sdds-sidebar-side-menu-single-item-color: var(--sdds-grey-50);
-  --sdds-sidebar-side-menu-single-item-background-selected: var(--sdds-grey-868);
-  --sdds-sidebar-side-menu-single-item-border-left-selected: var(--sdds-blue-400);
-  --sdds-sidebar-side-menu-single-subitem-color: var(--sdds-grey-100);
-  --sdds-sidebar-side-menu-single-subitem-title-color: var(--sdds-grey-50);
-  --sdds-sidebar-side-menu-single-subitem-color-active: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-single-subitem-backgrund: var(--sdds-grey-958);
-  --sdds-sidebar-side-menu-single-subitem-divider: var(--sdds-grey-700);
-  --sdds-sidebar-side-menu-subnav-backgrund: var(--sdds-grey-800);
-  --sdds-sidebar-side-menu-single-subitem-selected-border-color: var(--sdds-blue-400);
+.tds-mode-dark {
+  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
+  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
+  --tds-sidebar-item-state-focus: var(--tds-grey-958);
+  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
+  --tds-sidebar-item-state-hover: var(--tds-grey-868);
+  --tds-sidebar-item-state-active: var(--tds-grey-800);
+  --tds-sidemenu-item-state-active: var(--tds-grey-800);
+  --tds-sidebar-item-state-selected: var(--tds-grey-868);
+  --tds-sidebar-side-menu: var(--tds-grey-958);
+  --tds-sidebar-side-menu-border-right: var(--tds-grey-868);
+  --tds-sidebar-side-menu-background-cover: var(--tds-grey-958);
+  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-868);
+  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-grey-958);
+  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-868);
+  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-868);
+  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-50);
+  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-868);
+  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
+  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-100);
+  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-50);
+  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
+  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-grey-958);
+  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-700);
+  --tds-sidebar-side-menu-subnav-backgrund: var(--tds-grey-800);
+  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
 }

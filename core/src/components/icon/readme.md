@@ -17,11 +17,6 @@
 
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
- - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
- - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
- - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
- - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
- - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
  - [sdds-stepper-item](../stepper/stepper-item)
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
@@ -30,10 +25,15 @@
  - [tds-datetime](../datetime)
  - [tds-folder-tabs](../tabs/folder-tabs)
  - [tds-footer-group](../footer/footer-group)
+ - [tds-header-dropdown](../header/header-dropdown)
+ - [tds-header-hamburger](../header/header-hamburger)
+ - [tds-header-launcher-button](../header/header-launcher-button)
  - [tds-inline-tabs](../tabs/inline-tabs)
  - [tds-message](../message)
  - [tds-modal](../modal)
  - [tds-navigation-tabs](../tabs/navigation-tabs)
+ - [tds-side-menu-close-button](../side-menu/side-menu-close-button)
+ - [tds-side-menu-dropdown](../side-menu/side-menu-dropdown)
  - [tds-slider](../slider)
  - [tds-table-footer](../table/table-footer)
  - [tds-toast](../toast)
@@ -43,11 +43,6 @@
 graph TD;
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
-  sdds-header-dropdown --> tds-icon
-  sdds-header-hamburger --> tds-icon
-  sdds-header-launcher-button --> tds-icon
-  sdds-side-menu-close-button --> tds-icon
-  sdds-side-menu-dropdown --> tds-icon
   sdds-stepper-item --> tds-icon
   sdds-textarea --> tds-icon
   sdds-textfield --> tds-icon
@@ -56,10 +51,15 @@ graph TD;
   tds-datetime --> tds-icon
   tds-folder-tabs --> tds-icon
   tds-footer-group --> tds-icon
+  tds-header-dropdown --> tds-icon
+  tds-header-hamburger --> tds-icon
+  tds-header-launcher-button --> tds-icon
   tds-inline-tabs --> tds-icon
   tds-message --> tds-icon
   tds-modal --> tds-icon
   tds-navigation-tabs --> tds-icon
+  tds-side-menu-close-button --> tds-icon
+  tds-side-menu-dropdown --> tds-icon
   tds-slider --> tds-icon
   tds-table-footer --> tds-icon
   tds-toast --> tds-icon
