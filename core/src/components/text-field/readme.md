@@ -1,4 +1,6 @@
-# sdds-textfield
+# tds-text-field
+
+
 
 <!-- Auto Generated Below -->
 
@@ -11,9 +13,9 @@
 | `disabled`      | `disabled`       | Set input in disabled state                 | `boolean`                             | `false`      |
 | `helper`        | `helper`         | Helper text                                 | `string`                              | `undefined`  |
 | `label`         | `label`          | Label text                                  | `string`                              | `''`         |
-| `labelPosition` | `label-position` | Position of the label for the textfield.    | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
+| `labelPosition` | `label-position` | Position of the label for the Text Field.   | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
 | `maxLength`     | `max-length`     | Max length of input                         | `number`                              | `undefined`  |
-| `modeVariant`   | `mode-variant`   | Mode variant of the textfield               | `"primary" \| "secondary"`            | `null`       |
+| `modeVariant`   | `mode-variant`   | Mode variant of the Text Field              | `"primary" \| "secondary"`            | `null`       |
 | `name`          | `name`           | Name property                               | `string`                              | `''`         |
 | `noMinWidth`    | `no-min-width`   | With setting                                | `boolean`                             | `false`      |
 | `placeholder`   | `placeholder`    | Placeholder text                            | `string`                              | `''`         |
@@ -26,12 +28,12 @@
 
 ## Events
 
-| Event        | Description                    | Type                      |
-| ------------ | ------------------------------ | ------------------------- |
-| `sddsBlur`   | Blur event for the textfield   | `CustomEvent<FocusEvent>` |
-| `sddsChange` | Change event for the textfield | `CustomEvent<any>`        |
-| `sddsFocus`  | Focus event for the textfield  | `CustomEvent<FocusEvent>` |
-| `sddsInput`  | Input event for the textfield  | `CustomEvent<InputEvent>` |
+| Event       | Description                     | Type                      |
+| ----------- | ------------------------------- | ------------------------- |
+| `tdsBlur`   | Blur event for the Text Field   | `CustomEvent<FocusEvent>` |
+| `tdsChange` | Change event for the Text Field | `CustomEvent<any>`        |
+| `tdsFocus`  | Focus event for the Text Field  | `CustomEvent<FocusEvent>` |
+| `tdsInput`  | Input event for the Text Field  | `CustomEvent<InputEvent>` |
 
 
 ## Dependencies
@@ -43,8 +45,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-textfield --> tds-icon
-  style sdds-textfield fill:#f9f,stroke:#333,stroke-width:4px
+  tds-text-field --> tds-icon
+  style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
