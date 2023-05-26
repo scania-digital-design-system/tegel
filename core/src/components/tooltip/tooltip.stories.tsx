@@ -55,7 +55,7 @@ export default {
     },
     text: {
       name: 'Tooltip text',
-      description: 'Sets the sext that will be displayed inside Tooltip.',
+      description: 'Sets the text that will be displayed inside Tooltip.',
       control: {
         type: 'text',
       },
@@ -83,7 +83,7 @@ export default {
   args: {
     tooltipPosition: 'Bottom',
     text: 'Text inside Tooltip',
-    slot: '<p class="tds-detail-05 tds-u-m0"> Paragraph tag inside of Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
+    slot: '<p class="tds-detail-05 tds-u-m0"> Paragraph tag inside Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
     mouseOverTooltip: true,
   },
 };
