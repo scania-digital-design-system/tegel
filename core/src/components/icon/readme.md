@@ -17,7 +17,6 @@
 
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
- - [sdds-modal](../modal)
  - [sdds-stepper-item](../stepper/stepper-item)
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
@@ -44,7 +43,6 @@
 graph TD;
   sdds-dropdown-option-v2 --> tds-icon
   sdds-dropdown-v2 --> tds-icon
-  sdds-modal --> tds-icon
   sdds-stepper-item --> tds-icon
   sdds-textarea --> tds-icon
   sdds-textfield --> tds-icon
