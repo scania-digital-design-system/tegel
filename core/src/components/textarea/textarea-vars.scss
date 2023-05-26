@@ -1,118 +1,118 @@
 .root,
-.sdds-mode-light {
-  --sdds-textarea-background-primary: var(--sdds-grey-50);
-  --sdds-textarea-background-secondary: var(--sdds-white);
-  --sdds-textarea-background: var(--sdds-textarea-background-primary);
-  --sdds-textarea-color: var(--sdds-grey-868);
-  --sdds-textarea-placeholder: var(--sdds-grey-500);
-  --sdds-textarea-placeholder-focus-color: var(--sdds-grey-500);
+.tds-mode-light {
+  --tds-textarea-background-primary: var(--tds-grey-50);
+  --tds-textarea-background-secondary: var(--tds-white);
+  --tds-textarea-background: var(--tds-textarea-background-primary);
+  --tds-textarea-color: var(--tds-grey-868);
+  --tds-textarea-placeholder: var(--tds-grey-500);
+  --tds-textarea-placeholder-focus-color: var(--tds-grey-500);
 
   // Disabled
-  --sdds-textarea-disabled-color: var(--sdds-grey-400);
-  --sdds-textarea-disabled-background-primary: var(--sdds-grey-50);
-  --sdds-textarea-disabled-background-secondary: var(--sdds-white);
-  --sdds-textarea-disabled-background: var(--sdds-textarea-disabled-background-primary);
-  --sdds-textarea-disabled-placeholder: var(--sdds-grey-400);
-  --sdds-textarea-disabled-label: var(--sdds-grey-400);
+  --tds-textarea-disabled-color: var(--tds-grey-400);
+  --tds-textarea-disabled-background-primary: var(--tds-grey-50);
+  --tds-textarea-disabled-background-secondary: var(--tds-white);
+  --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
+  --tds-textarea-disabled-placeholder: var(--tds-grey-400);
+  --tds-textarea-disabled-label: var(--tds-grey-400);
 
   // Label
-  --sdds-textarea-label-color: var(--sdds-grey-958);
-  --sdds-textarea-label-inside-color: var(--sdds-grey-700);
+  --tds-textarea-label-color: var(--tds-grey-958);
+  --tds-textarea-label-inside-color: var(--tds-grey-700);
 
   // Placeholder
-  --sdds-textarea-placeholder-focus-color: var(--sdds-grey-500);
+  --tds-textarea-placeholder-focus-color: var(--tds-grey-500);
 
   // Helper
-  --sdds-textarea-helper: var(--sdds-grey-700);
-  --sdds-textarea-helper-error: var(--sdds-negative);
+  --tds-textarea-helper: var(--tds-grey-700);
+  --tds-textarea-helper-error: var(--tds-negative);
 
   // Highlight bar
-  --sdds-textarea-bar: var(--sdds-blue-400);
-  --sdds-textarea-bar-error: var(--sdds-negative);
+  --tds-textarea-bar: var(--tds-blue-400);
+  --tds-textarea-bar-error: var(--tds-negative);
 
   // Textcounter
-  --sdds-textarea-textcounter: var(--sdds-grey-700);
-  --sdds-textarea-textcounter-divider: var(--sdds-grey-500);
+  --tds-textarea-textcounter: var(--tds-grey-700);
+  --tds-textarea-textcounter-divider: var(--tds-grey-500);
 
   // Border bottom
-  --sdds-textarea-border-bottom: var(--sdds-grey-600);
-  --sdds-textarea-border-bottom-hover: var(--sdds-grey-800);
-  --sdds-textarea-border-bottom-success: var(--sdds-grey-958);
-  --sdds-textarea-border-bottom-error: var(--sdds-negative);
+  --tds-textarea-border-bottom: var(--tds-grey-600);
+  --tds-textarea-border-bottom-hover: var(--tds-grey-800);
+  --tds-textarea-border-bottom-success: var(--tds-grey-958);
+  --tds-textarea-border-bottom-error: var(--tds-negative);
 
   // Read only
-  --sdds-textarea-icon-read-only-color: var(--sdds-grey-958);
-  --sdds-textarea-icon-read-only-label-color: var(--sdds-grey-958);
+  --tds-textarea-icon-read-only-color: var(--tds-grey-958);
+  --tds-textarea-icon-read-only-label-color: var(--tds-grey-958);
 
   // Resize
-  --sdds-textarea-resize-icon: var(--sdds-grey-500);
+  --tds-textarea-resize-icon: var(--tds-grey-500);
 
-  .sdds-mode-variant-primary {
-    --sdds-textarea-background: var(--sdds-textarea-background-primary);
-    --sdds-textarea-disabled-background: var(--sdds-textarea-disabled-background-primary);
+  .tds-mode-variant-primary {
+    --tds-textarea-background: var(--tds-textarea-background-primary);
+    --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-textarea-background: var(--sdds-textarea-background-secondary);
-    --sdds-textarea-disabled-background: var(--sdds-textarea-disabled-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-textarea-background: var(--tds-textarea-background-secondary);
+    --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
   }
 }
 
-.sdds-mode-dark {
-  --sdds-textarea-background-primary: var(--sdds-grey-900);
-  --sdds-textarea-background-secondary: var(--sdds-grey-868);
-  --sdds-textarea-background: var(--sdds-textarea-background-primary);
-  --sdds-textarea-color: var(--sdds-grey-200);
-  --sdds-textarea-placeholder: var(--sdds-grey-600);
-  --sdds-textarea-placeholder-focus-color: var(--sdds-grey-700);
+.tds-mode-dark {
+  --tds-textarea-background-primary: var(--tds-grey-900);
+  --tds-textarea-background-secondary: var(--tds-grey-868);
+  --tds-textarea-background: var(--tds-textarea-background-primary);
+  --tds-textarea-color: var(--tds-grey-200);
+  --tds-textarea-placeholder: var(--tds-grey-600);
+  --tds-textarea-placeholder-focus-color: var(--tds-grey-700);
 
   // Disabled
-  --sdds-textarea-disabled-color: var(--sdds-grey-800);
-  --sdds-textarea-disabled-background-primary: var(--sdds-grey-900);
-  --sdds-textarea-disabled-background-secondary: var(--sdds-grey-868);
-  --sdds-textarea-disabled-background: var(--sdds-textarea-disabled-background-primary);
-  --sdds-textarea-disabled-placeholder: var(--sdds-grey-800);
-  --sdds-textarea-disabled-label: var(--sdds-grey-700);
+  --tds-textarea-disabled-color: var(--tds-grey-800);
+  --tds-textarea-disabled-background-primary: var(--tds-grey-900);
+  --tds-textarea-disabled-background-secondary: var(--tds-grey-868);
+  --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
+  --tds-textarea-disabled-placeholder: var(--tds-grey-800);
+  --tds-textarea-disabled-label: var(--tds-grey-700);
 
   // Label
-  --sdds-textarea-label-color: var(--sdds-grey-100);
-  --sdds-textarea-label-inside-color: var(--sdds-grey-400);
+  --tds-textarea-label-color: var(--tds-grey-100);
+  --tds-textarea-label-inside-color: var(--tds-grey-400);
 
   // Placeholder
-  --sdds-textarea-placeholder-focus-color: var(--sdds-grey-700);
+  --tds-textarea-placeholder-focus-color: var(--tds-grey-700);
 
   // Helper
-  --sdds-textarea-helper: var(--sdds-grey-600);
-  --sdds-textarea-helper-error: var(--sdds-negative);
+  --tds-textarea-helper: var(--tds-grey-600);
+  --tds-textarea-helper-error: var(--tds-negative);
 
   // Highlight bar
-  --sdds-textarea-bar: var(--sdds-blue-400);
-  --sdds-textarea-bar-error: var(--sdds-negative);
+  --tds-textarea-bar: var(--tds-blue-400);
+  --tds-textarea-bar-error: var(--tds-negative);
 
   // Textcounter
-  --sdds-textarea-textcounter: var(--sdds-grey-600);
-  --sdds-textarea-textcounter-divider: var(--sdds-grey-700);
+  --tds-textarea-textcounter: var(--tds-grey-600);
+  --tds-textarea-textcounter-divider: var(--tds-grey-700);
 
   // Border bottom
-  --sdds-textarea-border-bottom: var(--sdds-grey-600);
-  --sdds-textarea-border-bottom-hover: var(--sdds-grey-400);
-  --sdds-textarea-border-bottom-success: var(--sdds-grey-50);
-  --sdds-textarea-border-bottom-error: var(--sdds-negative);
+  --tds-textarea-border-bottom: var(--tds-grey-600);
+  --tds-textarea-border-bottom-hover: var(--tds-grey-400);
+  --tds-textarea-border-bottom-success: var(--tds-grey-50);
+  --tds-textarea-border-bottom-error: var(--tds-negative);
 
   // Read only
-  --sdds-textarea-icon-read-only-color: var(--sdds-grey-100);
-  --sdds-textarea-icon-read-only-label-color: var(--sdds-grey-50);
+  --tds-textarea-icon-read-only-color: var(--tds-grey-100);
+  --tds-textarea-icon-read-only-label-color: var(--tds-grey-50);
 
   // Resize
-  --sdds-textarea-resize-icon: var(--sdds-grey-500);
+  --tds-textarea-resize-icon: var(--tds-grey-500);
 
-  .sdds-mode-variant-primary {
-    --sdds-textarea-background: var(--sdds-textarea-background-primary);
-    --sdds-textarea-disabled-background: var(--sdds-textarea-disabled-background-primary);
+  .tds-mode-variant-primary {
+    --tds-textarea-background: var(--tds-textarea-background-primary);
+    --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-textarea-background: var(--sdds-textarea-background-secondary);
-    --sdds-textarea-disabled-background: var(--sdds-textarea-disabled-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-textarea-background: var(--tds-textarea-background-secondary);
+    --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
   }
 }

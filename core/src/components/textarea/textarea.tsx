@@ -1,12 +1,12 @@
 import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-textarea',
+  tag: 'tds-textarea',
   styleUrl: 'textarea.scss',
   shadow: false,
   scoped: true,
 })
-export class Textarea {
+export class TdsTextarea {
   /** Textinput for focus state */
   textEl?: HTMLTextAreaElement;
 
@@ -60,60 +60,60 @@ export class Textarea {
 
   /** Change event for the textarea */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsChange: EventEmitter;
+  tdsChange: EventEmitter;
 
   handleChange(event): void {
-    this.sddsChange.emit(event);
+    this.tdsChange.emit(event);
   }
 
   /** Blur event for the textarea */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
   handleBlur(event): void {
-    this.sddsBlur.emit(event);
+    this.tdsBlur.emit(event);
     this.focusInput = false;
   }
 
   /** Input event for the textarea */
   @Event({
-    eventName: 'sddsInput',
+    eventName: 'tdsInput',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsInput: EventEmitter<InputEvent>;
+  tdsInput: EventEmitter<InputEvent>;
 
   // Data input event in value prop
   handleInput(event): void {
-    this.sddsInput.emit(event);
+    this.tdsInput.emit(event);
     this.value = event.target.value;
   }
 
   /** Focus event for the textarea */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
   /* Set the input as focus when clicking the whole textfield with suffix/prefix */
   handleFocus(event): void {
     this.textEl.focus();
     this.focusInput = true;
-    this.sddsFocus.emit(event);
+    this.tdsFocus.emit(event);
   }
 
   render() {
@@ -125,7 +125,7 @@ export class Textarea {
         ${this.focusInput ? 'textarea-focus' : ''}
         ${this.disabled ? 'textarea-disabled' : ''}
         ${this.readOnly ? 'textarea-readonly' : ''}
-        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}
+        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
         ${this.value ? 'textarea-data' : ''}
         ${this.state === 'error' || this.state === 'success' ? `textarea-${this.state}` : ''}
         ${this.noMinWidth ? 'no-min-width' : ''}
