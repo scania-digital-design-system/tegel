@@ -122,10 +122,7 @@
     transform: translateY(-50%);
     right: 18px;
     pointer-events: none;
-
-    path {
-      fill: var(--tds-datetime-icon);
-    }
+    color: var(--tds-datetime-icon);
   }
 }
 
