@@ -1,0 +1,31 @@
+@import '../../../mixins/scrollbar';
+@import '../../../mixins/z-index';
+
+:host {
+  height: var(--tds-header-height);
+  position: relative;
+
+  .menu {
+    flex-direction: column;
+
+    @include tds-scrollbar;
+
+    overflow-y: auto;
+    max-height: calc(100vh - var(--tds-header-height));
+    box-shadow: var(--tds-nav-dropdown-menu-box);
+    background-color: var(--tds-header-app-launcher-menu-background);
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  .state-open {
+    .dropdown-icon {
+      transform: rotatetds-z-index(180deg);
+    }
+
+    .button {
+      position: relative;
+      z-index: tds-z-index(tooltip) + 1;
+    }
+  }
+}

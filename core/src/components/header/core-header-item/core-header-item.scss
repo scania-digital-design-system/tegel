@@ -1,0 +1,27 @@
+@import '../../../mixins/box-sizing';
+
+:host {
+  font: var(--tds-headline-07);
+  letter-spacing: var(--tds-headline-07-ls);
+  color: var(--tds-header-nav-item-color);
+
+  .item {
+    all: unset;
+    @include tds-box-sizing;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--tds-header-height);
+    height: var(--tds-header-height);
+    margin: 0;
+  }
+
+  slot {
+    white-space: nowrap;
+  }
+
+  ::slotted(svg) {
+    font-size: 20px;
+  }
+}
