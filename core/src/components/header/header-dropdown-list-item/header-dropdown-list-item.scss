@@ -1,0 +1,64 @@
+@import '../../../mixins/focus-state';
+
+:host {
+  display: block;
+  box-sizing: border-box;
+  height: var(--tds-header-list-item-md-height);
+  width: 100%;
+
+  .component {
+    height: 100%;
+
+    ::slotted(a),
+    ::slotted(button) {
+      all: unset;
+      box-sizing: border-box;
+      border: none;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 24px;
+      width: 100%;
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      background-color: var(--tds-nav-dropdown-item-background);
+      color: var(--tds-header-nav-item-dropdown-opened-color);
+    }
+
+    ::slotted(a:hover) {
+      background-color: var(--tds-nav-item-background-hover);
+      cursor: pointer;
+    }
+
+    ::slotted(a:focus-visible) {
+      @include tds-focus-state;
+    }
+
+    &-selected {
+      background-color: var(--tds-nav-item-background-selected);
+      padding-right: 4px;
+      border-left-width: 4px;
+      border-left-style: solid;
+      border-left-color: var(--tds-nav-item-border-color-active);
+
+      ::slotted(a),
+      ::slotted(button) {
+        background-color: var(--tds-nav-item-background-selected);
+      }
+    }
+  }
+}
+
+:host(:not(:last-child)) {
+  border-bottom: 1px solid var(--tds-nav-dropdown-item-border-color);
+}
+
+:host([type='lg']) {
+  height: var(--tds-header-height);
+
+  ::slotted(a),
+  ::slotted(button) {
+    padding: 0 16px;
+    color: var(--tds-header-app-launcher-item-color);
+  }
+}

@@ -100,140 +100,140 @@ const Template = ({ dummyHtml }) =>
     </style>
 
   <div class="demo-layout">
-    <sdds-header class="demo-header">
-      <sdds-header-hamburger onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></sdds-header-hamburger>
+    <tds-header class="demo-header">
+      <tds-header-hamburger onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></tds-header-hamburger>
 
-      <sdds-header-title>
+      <tds-header-title>
         Example: Many items
-      </sdds-header-title>
+      </tds-header-title>
 
-      <sdds-header-item slot="end">
+      <tds-header-item slot="end">
         <button onclick="alert('clicked')">
-          <sdds-icon name="calendar" size="20px"></sdds-icon>
+          <tds-icon name="calendar" size="20px"></tds-icon>
         </button>
-      </sdds-header-item>
+      </tds-header-item>
 
-      <sdds-header-launcher slot="end">
-        <sdds-header-launcher-list-title>Good</sdds-header-launcher-list-title>
-        <sdds-header-launcher-list>
-          <sdds-header-launcher-list-item>
+      <tds-header-launcher slot="end">
+        <tds-header-launcher-list-title>Good</tds-header-launcher-list-title>
+        <tds-header-launcher-list>
+          <tds-header-launcher-list-item>
             <a href="https://tegel.scania.com">Spider-Man</a>
-          </sdds-header-launcher-list-item>
-          <sdds-header-launcher-list-item>
+          </tds-header-launcher-list-item>
+          <tds-header-launcher-list-item>
             <a href="https://tegel.scania.com">Groot</a>
-          </sdds-header-launcher-list-item>
-        </sdds-header-launcher-list>
-        <sdds-header-launcher-list-title>Evil</sdds-header-launcher-list-title>
-        <sdds-header-launcher-list>
-          <sdds-header-launcher-list-item>
+          </tds-header-launcher-list-item>
+        </tds-header-launcher-list>
+        <tds-header-launcher-list-title>Evil</tds-header-launcher-list-title>
+        <tds-header-launcher-list>
+          <tds-header-launcher-list-item>
             <a href="https://tegel.scania.com">Dr Octopus</a>
-          </sdds-header-launcher-list-item>
-          <sdds-header-launcher-list-item>
+          </tds-header-launcher-list-item>
+          <tds-header-launcher-list-item>
             <a href="https://tegel.scania.com">Apocalypse</a>
-          </sdds-header-launcher-list-item>
-          <sdds-header-launcher-list-item>
+          </tds-header-launcher-list-item>
+          <tds-header-launcher-list-item>
             <a href="https://tegel.scania.com">Scarlet Witch</a>
-          </sdds-header-launcher-list-item>
-        </sdds-header-launcher-list>
-      </sdds-header-launcher>
+          </tds-header-launcher-list-item>
+        </tds-header-launcher-list>
+      </tds-header-launcher>
       
-      <sdds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-xs-show">
+      <tds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-xs-show">
         <img slot="button-icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
-        <sdds-header-dropdown-list type="lg">
-          <sdds-header-dropdown-list-user
+        <tds-header-dropdown-list type="lg">
+          <tds-header-dropdown-list-user
             heading="Name Nameson"
             subheading="Company name">
-          </sdds-header-dropdown-list-user>
-          <sdds-header-dropdown-list-item>
+          </tds-header-dropdown-list-user>
+          <tds-header-dropdown-list-item>
             <a href="https://www.scania.com">Link here</a>
-          </sdds-header-dropdown-list-item>
-          <sdds-header-dropdown-list-item>
+          </tds-header-dropdown-list-item>
+          <tds-header-dropdown-list-item>
             <a href="https://www.scania.com">Link there</a>
-          </sdds-header-dropdown-list-item>
-        </sdds-header-dropdown-list>
-      </sdds-header-dropdown>
+          </tds-header-dropdown-list-item>
+        </tds-header-dropdown-list>
+      </tds-header-dropdown>
       
       
-      <sdds-header-brand-symbol slot="end" link-href="https://design.scania.com" aria-label="Scania - red gryphon on blue shield">
-      </sdds-header-brand-symbol>
+      <tds-header-brand-symbol slot="end" link-href="https://design.scania.com" aria-label="Scania - red gryphon on blue shield">
+      </tds-header-brand-symbol>
 
-    </sdds-header>
+    </tds-header>
 
     <div class="demo-wrap-side-menu-and-main">
       <!-- Note: the "persistent" property keeps the menu open on desktop -->
-      <sdds-side-menu id="demo-side-menu" aria-label="Side menu" persistent>
-        <sdds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-overlay>
+      <tds-side-menu id="demo-side-menu" aria-label="Side menu" persistent>
+        <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-overlay>
 
-        <sdds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></sdds-side-menu-close-button>
+        <tds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-close-button>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
-            <sdds-icon name="timer" size="24"></sdds-icon>
+            <tds-icon name="timer" size="24"></tds-icon>
             About us
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <a href="https://www.scania.com">
-            <sdds-icon name="truck" size="24"></sdds-icon>
+            <tds-icon name="truck" size="24"></tds-icon>
             Trucks
           </a>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
-            <sdds-icon name="wifi" size="24"></sdds-icon>
+            <tds-icon name="wifi" size="24"></tds-icon>
             Our services
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-dropdown default-open selected>
-          <sdds-icon slot="button-icon" name="profile" size="24"></sdds-icon>
+        <tds-side-menu-dropdown default-open selected>
+          <tds-icon slot="button-icon" name="profile" size="24"></tds-icon>
           <span slot="button-label">
             Wheel types
           </span>
-          <sdds-side-menu-dropdown-list>
-            <sdds-side-menu-dropdown-list-item>
+          <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item>
               <a href="https://www.scania.com">Hub-centric wheel</a>
-            </sdds-side-menu-dropdown-list-item>
-            <sdds-side-menu-dropdown-list-item selected>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item selected>
               <a href="https://www.scania.com">Rim wheel</a>
-            </sdds-side-menu-dropdown-list-item>
-          </sdds-side-menu-dropdown-list>
-        </sdds-side-menu-dropdown>
+            </tds-side-menu-dropdown-list-item>
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
 
-        <sdds-side-menu-item>
+        <tds-side-menu-item>
           <button>
-            <sdds-icon name="star" size="24"></sdds-icon>
+            <tds-icon name="star" size="24"></tds-icon>
             Values
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
 
-        <sdds-side-menu-item slot="end">
+        <tds-side-menu-item slot="end">
           <button>
-            <sdds-icon name="calendar" size="24"></sdds-icon>
+            <tds-icon name="calendar" size="24"></tds-icon>
             My Calendar
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-item slot="end" class="demo-xs-hide">
+        <tds-side-menu-item slot="end" class="demo-xs-hide">
           <button>
-            <sdds-side-menu-user heading="Name Namesson" subheading="Company name">
+            <tds-side-menu-user heading="Name Namesson" subheading="Company name">
               <img
                 slot="image"
                 src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
                 alt="User menu."
               />
-            </sdds-side-menu-user>
+            </tds-side-menu-user>
           </button>
-        </sdds-side-menu-item>
+        </tds-side-menu-item>
 
-        <sdds-side-menu-collapse-button slot="sticky-end" onclick="demoSideMenu.collapsed = !demoSideMenu.collapsed;"></sdds-side-menu-collapse-button>
+        <tds-side-menu-collapse-button slot="sticky-end" onclick="demoSideMenu.collapsed = !demoSideMenu.collapsed;"></tds-side-menu-collapse-button>
 
-      </sdds-side-menu>
+      </tds-side-menu>
 
-      <main class="sdds-u-h-100 sdds-u-p3" style="box-sizing: border-box;">
+      <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent side menu — which is always visible on large screens.</p>
 
