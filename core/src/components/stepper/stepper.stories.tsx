@@ -1,6 +1,6 @@
 import { formatHtmlPreview } from '../../utils/utils';
 import readmeStepper from './readme.md';
-import readmeStepperItem from './stepper-item/readme.md';
+import readmeStep from './step/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
@@ -19,12 +19,12 @@ export default {
         url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=10508%3A32221&t=Ne6myqwca5m00de7-1',
       },
     ],
-    notes: { 'Stepper': readmeStepper, 'Stepper Item': readmeStepperItem },
+    notes: { Stepper: readmeStepper, Step: readmeStep },
   },
   argTypes: {
     size: {
       name: 'Size',
-      description: 'Sets the size of the stepper.',
+      description: 'Sets the size of the Stepper.',
       control: {
         type: 'radio',
       },
@@ -35,7 +35,7 @@ export default {
     },
     orientation: {
       name: 'Orientation',
-      description: 'Sets the orientation which the stepper is displayed.',
+      description: 'Sets the orientation which the Stepper is displayed.',
       control: {
         type: 'radio',
       },
@@ -59,7 +59,7 @@ export default {
     },
     hideLabels: {
       name: 'Hide labels',
-      description: 'Hides the labels for all stepper items.',
+      description: 'Hides the labels for all Stepper Items.',
       control: {
         type: 'boolean',
       },
@@ -82,21 +82,22 @@ const sizeLookUp = {
 };
 const Template = ({ size, orientation, labelPosition, hideLabels }) =>
   formatHtmlPreview(
-    `<sdds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
+    `<tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
+      orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
     } orientation="${orientation.toLowerCase()}">
-    <sdds-stepper-item state="success" index="1">
+    <tds-step state="success" index="1">
       <div slot="label">Success step</div>
-    </sdds-stepper-item>
-    <sdds-stepper-item state="error" index="2">
+    </tds-step>
+    <tds-step state="error" index="2">
       <div slot="label">Error step</div>
-    </sdds-stepper-item>
-    <sdds-stepper-item state="current" index="3">
+    </tds-step>
+    <tds-step state="current" index="3">
       <div slot="label">Current step</div>
-    </sdds-stepper-item>
-    <sdds-stepper-item index="4">
+    </tds-step>
+    <tds-step index="4">
       <div slot="label">Upcoming step</div>
-    </sdds-stepper-item>
-  </sdds-stepper>
+    </tds-step>
+  </tds-stepper>
         `,
   );
 export const Stepper = Template.bind({});
