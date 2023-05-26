@@ -1,16 +1,5 @@
 # tds-dropdown-v2
 
-The dropdown can be populated with options either by passing the `<tds-dropdown-option>` as a child to the element. Or by specifying a data property on the element.
-This property should be a JSON array containing objects of the following structure:
-
-```json
-{ 
-  "value": string;
-  "label": any;
-  "disabled": boolean; 
-}
-```
-
 
 <!-- Auto Generated Below -->
 

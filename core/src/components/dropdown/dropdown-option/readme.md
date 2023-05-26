@@ -10,7 +10,7 @@
 | Property   | Attribute  | Description                                                      | Type      | Default     |
 | ---------- | ---------- | ---------------------------------------------------------------- | --------- | ----------- |
 | `disabled` | `disabled` | Sets option to disabled state if true                            | `boolean` | `false`     |
-| `selected` | `selected` | Selected a set to true if selected                               | `boolean` | `false`     |
+| `selected` | `selected` | Set to true if selected                                          | `boolean` | `false`     |
 | `value`    | `value`    | Value is a unique string that will be used for application logic | `string`  | `undefined` |
 
 
