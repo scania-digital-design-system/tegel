@@ -21,7 +21,7 @@ export class TdsDropdownOption {
   // Used as a fallback if value prop is not recognized to match handleClick
   @State() innerValue: string;
 
-  /** Selected a set to true if selected */
+  /** Set to true if selected */
   @Prop() selected: boolean = false;
 
   /** Sets option to disabled state if true */
