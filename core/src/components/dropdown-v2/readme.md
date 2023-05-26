@@ -1,15 +1,4 @@
-# sdds-dropdown-v2
-
-The dropdown can be populated with options either by passing the `<sdds-dropdown-option>` as a child to the element. Or by specifying a data property on the element.
-This property should be a JSON array containing objects of the following structure:
-
-```json
-{ 
-  "value": string;
-  "label": any;
-  "disabled": boolean; 
-}
-```
+# tds-dropdown-v2
 
 
 <!-- Auto Generated Below -->
@@ -28,7 +17,7 @@ This property should be a JSON array containing objects of the following structu
 | `labelPosition` | `label-position` | Label text position                                                                        | `"inside" \| "outside"`                                  | `undefined`   |
 | `modeVariant`   | `mode-variant`   | Mode variant of the component, based on current mode.                                      | `"primary" \| "secondary"`                               | `null`        |
 | `multiselect`   | `multiselect`    | Enables multiselect in the Dropdown.                                                       | `boolean`                                                | `false`       |
-| `name`          | `name`           | Name for the dropdowns input element.                                                      | `string`                                                 | `undefined`   |
+| `name`          | `name`           | Name for the Dropdowns input element.                                                      | `string`                                                 | `undefined`   |
 | `noResultText`  | `no-result-text` | Text that is displayed if filter is used and there are no options that matches the search. | `string`                                                 | `'No result'` |
 | `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                             | `"auto" \| "down" \| "up"`                               | `'auto'`      |
 | `options`       | --               | Populate the Dropdown via a JSON array                                                     | `{ value: string; label: string; disabled: boolean; }[]` | `undefined`   |
@@ -38,12 +27,12 @@ This property should be a JSON array containing objects of the following structu
 
 ## Events
 
-| Event        | Description                    | Type                                            |
-| ------------ | ------------------------------ | ----------------------------------------------- |
-| `sddsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                       |
-| `sddsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
-| `sddsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                       |
-| `sddsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                       |
+| Event       | Description                    | Type                                            |
+| ----------- | ------------------------------ | ----------------------------------------------- |
+| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                       |
+| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
+| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                       |
+| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                       |
 
 
 ## Methods
@@ -98,8 +87,8 @@ Type: `Promise<{ value: string; label: string; }[]>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-v2 --> tds-icon
-  style sdds-dropdown-v2 fill:#f9f,stroke:#333,stroke-width:4px
+  tds-dropdown-v2 --> tds-icon
+  style tds-dropdown-v2 fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -15,11 +15,11 @@
 
 ### Used by
 
- - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
- - [sdds-dropdown-v2](../dropdown-v2)
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-datetime](../datetime)
+ - [tds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
+ - [tds-dropdown-v2](../dropdown-v2)
  - [tds-folder-tabs](../tabs/folder-tabs)
  - [tds-footer-group](../footer/footer-group)
  - [tds-header-dropdown](../header/header-dropdown)
@@ -41,11 +41,11 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-option-v2 --> tds-icon
-  sdds-dropdown-v2 --> tds-icon
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
   tds-datetime --> tds-icon
+  tds-dropdown-option-v2 --> tds-icon
+  tds-dropdown-v2 --> tds-icon
   tds-folder-tabs --> tds-icon
   tds-footer-group --> tds-icon
   tds-header-dropdown --> tds-icon
