@@ -6,7 +6,7 @@ import { CollapseEvent } from '../side-menu';
   styleUrl: 'side-menu-dropdown-list.scss',
   shadow: true,
 })
-export class SideMenuDropdownList {
+export class TdsSideMenuDropdownList {
   @Element() host: HTMLElement;
 
   @State() collapsed: boolean = false;
