@@ -6,29 +6,29 @@
   border: none;
   outline: none;
   height: 100%;
-  color: var(--sdds-textarea-color);
-  background-color: var(--sdds-textarea-background);
+  color: var(--tds-textarea-color);
+  background-color: var(--tds-textarea-background);
 
   &::placeholder {
     opacity: 1;
-    color: var(--sdds-textarea-placeholder);
+    color: var(--tds-textarea-placeholder);
   }
 
   &:focus::placeholder {
-    color: var(--sdds-textarea-placeholder-focus-color);
+    color: var(--tds-textarea-placeholder-focus-color);
   }
 
   &:disabled {
-    background-color: var(--sdds-textarea-disabled-background);
-    color: var(--sdds-textarea-disabled-color);
+    background-color: var(--tds-textarea-disabled-background);
+    color: var(--tds-textarea-disabled-color);
     cursor: not-allowed;
 
     &::placeholder {
-      color: var(--sdds-textarea-disabled-placeholder);
+      color: var(--tds-textarea-disabled-placeholder);
     }
 
     ~ .textfield-label-inside {
-      color: var(--sdds-textarea-disabled-label);
+      color: var(--tds-textarea-disabled-label);
     }
   }
 }
@@ -45,12 +45,12 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--sdds-textarea-placeholder-focus-color);
+    color: var(--tds-textarea-placeholder-focus-color);
   }
 }
 
 .textarea-container {
-  //@extend .sdds-textfield-container;
+  //@extend .tds-textfield-container;
   border-radius: 4px 4px 0 0;
   position: relative;
   box-sizing: border-box;
@@ -86,7 +86,7 @@
       height: 2px;
       width: 0;
       position: absolute;
-      background: var(--sdds-textarea-bar);
+      background: var(--tds-textarea-bar);
       transition: 0.35s ease all;
     }
 
@@ -108,12 +108,12 @@
 .textarea-input {
   @include textfield-base;
 
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
-  padding: var(--sdds-spacing-element-20) var(--sdds-spacing-element-16);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
-  border-bottom: 1px solid var(--sdds-textarea-border-bottom);
+  border-bottom: 1px solid var(--tds-textarea-border-bottom);
   transition: border-bottom-color 200ms ease;
 
   // Display none only works in Chrome
@@ -122,13 +122,13 @@
   }
 
   &:hover {
-    border-bottom-color: var(--sdds-textarea-border-bottom-hover);
+    border-bottom-color: var(--tds-textarea-border-bottom-hover);
   }
 }
 
 // Need to override default resizer in FF & Safari
 .textarea-resizer-icon {
-  color: var(--sdds-textarea-resize-icon);
+  color: var(--tds-textarea-resize-icon);
   position: absolute;
   display: block;
   bottom: 2px;
@@ -136,7 +136,7 @@
   padding-bottom: 2px;
   padding-right: 2px;
   pointer-events: none;
-  background-color: var(--sdds-textarea-background);
+  background-color: var(--tds-textarea-background);
 
   svg {
     display: block;
@@ -144,27 +144,27 @@
 }
 
 .textarea-label {
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
   display: block;
   z-index: 1;
-  margin-bottom: var(--sdds-spacing-element-8);
-  color: var(--sdds-textarea-label-color);
+  margin-bottom: var(--tds-spacing-element-8);
+  color: var(--tds-textarea-label-color);
 }
 
 .textarea-container {
   &.textarea-label-inside {
     .textarea-label {
-      font: var(--sdds-detail-02);
-      letter-spacing: var(--sdds-detail-02-ls);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
       transition: 0.1s ease all;
 
       //@include end
 
-      color: var(--sdds-textarea-label-inside-color);
+      color: var(--tds-textarea-label-inside-color);
       position: absolute;
-      top: var(--sdds-spacing-element-20);
-      left: var(--sdds-spacing-element-16);
+      top: var(--tds-spacing-element-20);
+      left: var(--tds-spacing-element-16);
     }
 
     .textarea-input {
@@ -175,9 +175,9 @@
   &.textarea-focus {
     &.textarea-label-inside {
       .textarea-label {
-        font: var(--sdds-detail-07);
-        letter-spacing: var(--sdds-detail-07-ls);
-        top: var(--sdds-spacing-element-8);
+        font: var(--tds-detail-07);
+        letter-spacing: var(--tds-detail-07-ls);
+        top: var(--tds-spacing-element-8);
       }
     }
 
@@ -192,42 +192,42 @@
   &.textarea-data {
     &.textarea-label-inside {
       .textarea-label {
-        font: var(--sdds-detail-07);
-        letter-spacing: var(--sdds-detail-07-ls);
-        top: var(--sdds-spacing-element-8);
+        font: var(--tds-detail-07);
+        letter-spacing: var(--tds-detail-07-ls);
+        top: var(--tds-spacing-element-8);
       }
     }
   }
 }
 
 .textarea-textcounter {
-  //@extend .sdds-textfield-textcounter;
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
-  color: var(--sdds-textarea-textcounter);
+  //@extend .tds-textfield-textcounter;
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
+  color: var(--tds-textarea-textcounter);
   float: right;
 
   & .textfield-textcounter-divider {
-    font: var(--sdds-detail-05);
-    letter-spacing: var(--sdds-detail-05-ls);
-    color: var(--sdds-textarea-textcounter-divider);
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
+    color: var(--tds-textarea-textcounter-divider);
   }
 
   //@extend end
 
   flex-basis: 100%;
   text-align: right;
-  padding-top: var(--sdds-spacing-element-4);
+  padding-top: var(--tds-spacing-element-4);
 }
 
 .textarea-helper {
-  font: var(--sdds-detail-05);
-  letter-spacing: var(--sdds-detail-05-ls);
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
   display: flex;
   gap: 8px;
   align-items: center;
-  padding-top: var(--sdds-spacing-element-4);
-  color: var(--sdds-textarea-helper);
+  padding-top: var(--tds-spacing-element-4);
+  color: var(--tds-textarea-helper);
   flex-grow: 2;
   flex-basis: auto;
 
@@ -240,24 +240,24 @@
 
 .textarea-success {
   .textarea-input {
-    border-bottom-color: var(--sdds-textarea-border-bottom-success);
+    border-bottom-color: var(--tds-textarea-border-bottom-success);
   }
 }
 
 .textarea-error {
   .textarea-input {
-    border-bottom-color: var(--sdds-textarea-border-bottom-error);
+    border-bottom-color: var(--tds-textarea-border-bottom-error);
   }
 
   .textarea-wrapper {
     &::after,
     &::before {
-      background: var(--sdds-textarea-bar-error);
+      background: var(--tds-textarea-bar-error);
     }
   }
 
   .textarea-helper {
-    color: var(--sdds-textarea-helper-error);
+    color: var(--tds-textarea-helper-error);
   }
 }
 
@@ -268,7 +268,7 @@
   }
 
   .textarea-label {
-    color: var(--sdds-textarea-disabled-label);
+    color: var(--tds-textarea-disabled-label);
   }
 }
 
@@ -279,18 +279,18 @@
   position: absolute;
   right: 18px;
   top: 18px;
-  color: var(--sdds-textarea-icon-read-only-color);
+  color: var(--tds-textarea-icon-read-only-color);
 
   &-label {
     display: none;
     position: absolute;
     right: 18px;
     top: 48px;
-    font: var(--sdds-detail-05);
-    letter-spacing: var(--sdds-detail-05-ls);
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
     padding: 8px;
-    color: var(--sdds-textarea-icon-read-only-label-color);
-    background-color: var(--sdds-textarea-icon-read-only-label-background);
+    color: var(--tds-textarea-icon-read-only-label-color);
+    background-color: var(--tds-textarea-icon-read-only-label-background);
     white-space: nowrap;
     border-radius: 4px 0 4px 4px;
   }

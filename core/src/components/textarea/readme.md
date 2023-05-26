@@ -1,4 +1,6 @@
-# sdds-textarea
+# tds-textarea
+
+
 
 <!-- Auto Generated Below -->
 
@@ -26,12 +28,12 @@
 
 ## Events
 
-| Event        | Description                   | Type                      |
-| ------------ | ----------------------------- | ------------------------- |
-| `sddsBlur`   | Blur event for the textarea   | `CustomEvent<FocusEvent>` |
-| `sddsChange` | Change event for the textarea | `CustomEvent<any>`        |
-| `sddsFocus`  | Focus event for the textarea  | `CustomEvent<FocusEvent>` |
-| `sddsInput`  | Input event for the textarea  | `CustomEvent<InputEvent>` |
+| Event       | Description                   | Type                      |
+| ----------- | ----------------------------- | ------------------------- |
+| `tdsBlur`   | Blur event for the textarea   | `CustomEvent<FocusEvent>` |
+| `tdsChange` | Change event for the textarea | `CustomEvent<any>`        |
+| `tdsFocus`  | Focus event for the textarea  | `CustomEvent<FocusEvent>` |
+| `tdsInput`  | Input event for the textarea  | `CustomEvent<InputEvent>` |
 
 
 ## Dependencies
@@ -43,8 +45,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  sdds-textarea --> tds-icon
-  style sdds-textarea fill:#f9f,stroke:#333,stroke-width:4px
+  tds-textarea --> tds-icon
+  style tds-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
