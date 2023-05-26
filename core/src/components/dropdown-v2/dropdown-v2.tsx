@@ -327,7 +327,7 @@ export class TdsDropdownV2 {
         );
       });
       this.children = Array.from(this.host.children).filter(
-        (element) => element.tagName === 'SDDS-DROPDOWN-OPTION-V2',
+        (element) => element.tagName === 'TDS-DROPDOWN-OPTION-V2',
       ) as HTMLTdsDropdownOptionV2Element[];
     }
 
