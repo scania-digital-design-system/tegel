@@ -57,7 +57,7 @@ const Template = ({ label, disabled }) =>
 </style>
 
   <fieldset class="demo-fieldset-reset">
-  <sdds-radio-button 
+  <tds-radio-button 
     name="rb-example"
     value="option1"
     radio-id="option-1"
@@ -68,9 +68,9 @@ const Template = ({ label, disabled }) =>
     <div slot="label">
       ${label} 1
     </div>
-  </sdds-radio-button>
+  </tds-radio-button>
 
-  <sdds-radio-button
+  <tds-radio-button
     name="rb-example"
     value="option2"
     radio-id="option-2"
@@ -80,13 +80,13 @@ const Template = ({ label, disabled }) =>
     <div slot="label">
       ${label} 2
     </div>
-  </sdds-radio-button>
+  </tds-radio-button>
     
   </fieldset>
 
   <!-- Script tag with eventlistener for demo purposes. -->
   <script>
-  document.addEventListener('sddsChange', (event) => {
+  document.addEventListener('tdsChange', (event) => {
     console.log(event)
   })
   </script>
