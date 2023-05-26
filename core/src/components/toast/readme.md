@@ -1,4 +1,4 @@
-# sdds-toast
+# tds-toast
 
 
 
@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event       | Description                                             | Type                                |
-| ----------- | ------------------------------------------------------- | ----------------------------------- |
-| `sddsClose` | Sends unique Toast identifier when component is closed. | `CustomEvent<{ toastId: string; }>` |
+| Event      | Description                                             | Type                                |
+| ---------- | ------------------------------------------------------- | ----------------------------------- |
+| `tdsClose` | Sends unique Toast identifier when component is closed. | `CustomEvent<{ toastId: string; }>` |
 
 
 ## Methods
@@ -56,8 +56,8 @@ Type: `Promise<void>`
 ### Graph
 ```mermaid
 graph TD;
-  sdds-toast --> tds-icon
-  style sdds-toast fill:#f9f,stroke:#333,stroke-width:4px
+  tds-toast --> tds-icon
+  style tds-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
