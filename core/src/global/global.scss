@@ -71,32 +71,32 @@ body {
 }
 
 :root,
-.sdds-mode-light {
-  color: var(--sdds-grey-958);
-  background-color: var(--sdds-white);
+.tds-mode-light {
+  color: var(--tds-grey-958);
+  background-color: var(--tds-white);
 
-  & .sdds-mode-variant-primary {
-    color: var(--sdds-grey-958);
-    background-color: var(--sdds-white);
+  & .tds-mode-variant-primary {
+    color: var(--tds-grey-958);
+    background-color: var(--tds-white);
   }
 
-  & .sdds-mode-variant-secondary {
-    color: var(--sdds-grey-958);
-    background-color: var(--sdds-grey-50);
+  & .tds-mode-variant-secondary {
+    color: var(--tds-grey-958);
+    background-color: var(--tds-grey-50);
   }
 }
 
-.sdds-mode-dark {
-  color: var(--sdds-grey-100);
-  background-color: var(--sdds-grey-958);
+.tds-mode-dark {
+  color: var(--tds-grey-100);
+  background-color: var(--tds-grey-958);
 
-  & .sdds-mode-variant-primary {
-    color: var(--sdds-grey-100);
-    background-color: var(--sdds-grey-958);
+  & .tds-mode-variant-primary {
+    color: var(--tds-grey-100);
+    background-color: var(--tds-grey-958);
   }
 
-  & .sdds-mode-variant-secondary {
-    color: var(--sdds-grey-100);
-    background-color: var(--sdds-grey-900);
+  & .tds-mode-variant-secondary {
+    color: var(--tds-grey-100);
+    background-color: var(--tds-grey-900);
   }
 }
