@@ -11,17 +11,17 @@ import {
 } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-dropdown-option',
+  tag: 'tds-dropdown-option',
   styleUrl: './../dropdown.scss',
   shadow: true,
 })
-export class DropdownOption {
+export class TdsDropdownOption {
   @Element() host: HTMLElement;
 
   // Used as a fallback if value prop is not recognized to match handleClick
   @State() innerValue: string;
 
-  /** Selected set to true if selected */
+  /** Set to true if selected */
   @Prop() selected: boolean = false;
 
   /** Sets option to disabled state if true */
@@ -32,15 +32,15 @@ export class DropdownOption {
 
   /** @internal Fires on click on one of the Dropdown items */
   @Event({
-    eventName: 'internalSddsSelect',
+    eventName: 'internalTdsSelect',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsSelect: EventEmitter<{
+  internalTdsSelect: EventEmitter<{
     value: string | number;
     label: string | number;
-    parent: HTMLSddsDropdownElement;
+    parent: HTMLTdsDropdownElement;
   }>;
 
   isMultiSelectOption: boolean;
@@ -69,14 +69,14 @@ export class DropdownOption {
   componentWillLoad() {
     this.innerValue = this.value;
     this.isMultiSelectOption = this.host
-      .closest('sdds-dropdown')
-      .classList.contains('sdds-dropdown-multiselect');
+      .closest('tds-dropdown')
+      .classList.contains('tds-dropdown-multiselect');
   }
 
   handleClick(value) {
     if (!this.disabled) {
       const listOptions = value.parent.childNodes;
-      this.internalSddsSelect.emit(value);
+      this.internalTdsSelect.emit(value);
       if (!this.isMultiSelectOption) {
         listOptions.forEach((optionEl) => {
           optionEl.selected = false;
@@ -113,21 +113,21 @@ export class DropdownOption {
         }}
         class={{
           'selected': this.selected,
-          'sdds-dropdown-option-disabled': this.disabled,
+          'tds-dropdown-option-disabled': this.disabled,
         }}
         tabindex="-1"
         aria-disabled={this.disabled}
       >
         {this.isMultiSelectOption && (
-          <div class="sdds-checkbox-item sdds-option-checkbox">
-            <sdds-checkbox checked={this.selected} disabled={this.disabled}></sdds-checkbox>
+          <div class="tds-checkbox-item tds-option-checkbox">
+            <tds-checkbox checked={this.selected} disabled={this.disabled}></tds-checkbox>
           </div>
         )}
-        <span class="sdds-option-label">
+        <span class="tds-option-label">
           <slot />
         </span>
         {!this.isMultiSelectOption && (
-          <span class="sdds-option-checkmark">
+          <span class="tds-option-checkmark">
             <svg
               width="10"
               height="7"

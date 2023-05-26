@@ -3,13 +3,13 @@ import { EventEmitter, Method } from '@stencil/core/internal';
 import { TdsCheckboxCustomEvent } from '../../../components';
 
 @Component({
-  tag: 'sdds-dropdown-option-v2',
+  tag: 'tds-dropdown-option-v2',
   styleUrl: 'dropdown-option-v2.scss',
   shadow: {
     delegatesFocus: true,
   },
 })
-export class SddsDropdownOptionV2 {
+export class TdsDropdownOptionV2 {
   @Element() host: HTMLElement;
 
   /** Value for the Dropdown option. */
@@ -24,7 +24,7 @@ export class SddsDropdownOptionV2 {
 
   @State() size: 'sm' | 'md' | 'lg' = 'lg';
 
-  private parentElement: HTMLSddsDropdownV2Element;
+  private parentElement: HTMLTdsDropdownV2Element;
 
   private label: string;
 
@@ -38,39 +38,39 @@ export class SddsDropdownOptionV2 {
 
   /** Click event for the Dropdown option. */
   @Event({
-    eventName: 'sddsSelect',
+    eventName: 'tdsSelect',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsSelect: EventEmitter<{
+  tdsSelect: EventEmitter<{
     selected: boolean;
     value: string;
   }>;
 
   /** Focus event for the Dropdown option. */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
   /** Blur event for the Dropdown option. */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
   connectedCallback = () => {
     this.parentElement =
-      this.host.parentElement.tagName === 'SDDS-DROPDOWN-V2'
-        ? (this.host.parentElement as HTMLSddsDropdownV2Element)
-        : ((this.host.getRootNode() as ShadowRoot).host as HTMLSddsDropdownV2Element);
+      this.host.parentElement.tagName === 'TDS-DROPDOWN-V2'
+        ? (this.host.parentElement as HTMLTdsDropdownV2Element)
+        : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownV2Element);
     this.multiselect = this.parentElement.multiselect;
     this.size = this.parentElement.size;
     this.label = this.host.textContent.trim();
@@ -81,7 +81,7 @@ export class SddsDropdownOptionV2 {
       this.selected = true;
       this.parentElement.setValue(this.value, this.label);
       this.parentElement.close();
-      this.sddsSelect.emit({
+      this.tdsSelect.emit({
         value: this.value,
         selected: this.selected,
       });
@@ -95,14 +95,14 @@ export class SddsDropdownOptionV2 {
       if (event.detail.checked) {
         this.parentElement.setValue(this.value, this.label);
         this.selected = true;
-        this.sddsSelect.emit({
+        this.tdsSelect.emit({
           value: this.value,
           selected: this.selected,
         });
       } else {
         this.parentElement.removeValue(this.value);
         this.selected = false;
-        this.sddsSelect.emit({
+        this.tdsSelect.emit({
           value: this.value,
           selected: this.selected,
         });
@@ -111,11 +111,11 @@ export class SddsDropdownOptionV2 {
   };
 
   handleFocus = (event) => {
-    this.sddsFocus.emit(event);
+    this.tdsFocus.emit(event);
   };
 
   handleBlur = (event) => {
-    this.sddsBlur.emit(event);
+    this.tdsBlur.emit(event);
   };
 
   render() {
@@ -137,8 +137,8 @@ export class SddsDropdownOptionV2 {
                 }
               }}
             >
-              <sdds-checkbox
-                onSddsChange={(event) => {
+              <tds-checkbox
+                onTdsChange={(event) => {
                   this.handleMultiselect(event);
                 }}
                 disabled={this.disabled}
@@ -147,7 +147,7 @@ export class SddsDropdownOptionV2 {
                 <div slot="label">
                   <slot></slot>
                 </div>
-              </sdds-checkbox>
+              </tds-checkbox>
             </div>
           ) : (
             <button
