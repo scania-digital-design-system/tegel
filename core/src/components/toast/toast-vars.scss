@@ -1,16 +1,16 @@
 :root,
-.sdds-mode-light {
-  --sdds-toast-background-color: var(--sdds-grey-958);
-  --sdds-toast-headline-color: var(--sdds-grey-50);
-  --sdds-toast-subheadline-color: var(--sdds-grey-50);
-  --sdds-toast-link-color: var(--sdds-blue-300);
-  --sdds-toast-dissmiss-color: var(--sdds-white);
+.tds-mode-light {
+  --tds-toast-background-color: var(--tds-grey-958);
+  --tds-toast-headline-color: var(--tds-grey-50);
+  --tds-toast-subheadline-color: var(--tds-grey-50);
+  --tds-toast-link-color: var(--tds-blue-300);
+  --tds-toast-dissmiss-color: var(--tds-white);
 }
 
-.sdds-mode-dark {
-  --sdds-toast-background-color: var(--sdds-grey-50);
-  --sdds-toast-headline-color: var(--sdds-grey-958);
-  --sdds-toast-subheadline-color: var(--sdds-grey-958);
-  --sdds-toast-link-color: var(--sdds-blue-500);
-  --sdds-toast-dissmiss-color: var(--sdds-black);
+.tds-mode-dark {
+  --tds-toast-background-color: var(--tds-grey-50);
+  --tds-toast-headline-color: var(--tds-grey-958);
+  --tds-toast-subheadline-color: var(--tds-grey-958);
+  --tds-toast-link-color: var(--tds-blue-500);
+  --tds-toast-dissmiss-color: var(--tds-black);
 }
