@@ -1,4 +1,5 @@
-import { Component, Element, h, Host } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { inheritAriaAttributes } from '../../../utils/utils';
 
 @Component({
   tag: 'tds-header-brand-symbol',
@@ -8,11 +9,17 @@ import { Component, Element, h, Host } from '@stencil/core';
 export class TdsHeaderBrandSymbol {
   @Element() host: HTMLElement;
 
+  /** The href for the logo link. */
+  @Prop() linkHref: string = 'https://www.scania.com';
+
   render() {
+    const inheritedLinkProps = {
+      ...inheritAriaAttributes(this.host),
+    };
     return (
       <Host>
         <tds-header-item>
-          <slot></slot>
+          <a {...inheritedLinkProps} href={this.linkHref}></a>
         </tds-header-item>
       </Host>
     );

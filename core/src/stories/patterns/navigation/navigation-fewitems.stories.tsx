@@ -183,8 +183,12 @@ const Template = () =>
           </tds-header-dropdown-list>
         </tds-header-dropdown>
 
+<<<<<<< HEAD
         <tds-header-brand-symbol slot="end">
           <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
+=======
+        <tds-header-brand-symbol slot="end" href="https://design.scania.com" aria-label="Scania - red gryphon on blue shield">
+>>>>>>> 32e1489 (feat(header/side-menu): prefix change (#103))
         </tds-header-brand-symbol>
 
       </tds-header>

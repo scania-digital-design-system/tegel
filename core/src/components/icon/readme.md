@@ -21,11 +21,6 @@
 =======
  - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
  - [sdds-dropdown-v2](../dropdown-v2)
- - [sdds-header-dropdown](../header/webcomponent/header-dropdown)
- - [sdds-header-hamburger](../header/webcomponent/header-hamburger)
- - [sdds-header-launcher-button](../header/webcomponent/header-launcher-button)
- - [sdds-side-menu-close-button](../side-menu/webcomponent/side-menu-close-button)
- - [sdds-side-menu-dropdown](../side-menu/webcomponent/side-menu-dropdown)
  - [sdds-stepper-item](../stepper/stepper-item)
  - [sdds-textarea](../textarea)
  - [sdds-textfield](../textfield)
