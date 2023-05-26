@@ -33,7 +33,7 @@
  - [tds-side-menu-close-button](../side-menu/side-menu-close-button)
  - [tds-side-menu-dropdown](../side-menu/side-menu-dropdown)
  - [tds-slider](../slider)
- - [tds-stepper-item](../stepper/stepper-item)
+ - [tds-step](../stepper/step)
  - [tds-table-footer](../table/table-footer)
  - [tds-text-field](../text-field)
  - [tds-toast](../toast)
@@ -59,7 +59,7 @@ graph TD;
   tds-side-menu-close-button --> tds-icon
   tds-side-menu-dropdown --> tds-icon
   tds-slider --> tds-icon
-  tds-stepper-item --> tds-icon
+  tds-step --> tds-icon
   tds-table-footer --> tds-icon
   tds-text-field --> tds-icon
   tds-toast --> tds-icon

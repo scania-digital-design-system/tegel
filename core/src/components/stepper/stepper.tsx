@@ -21,7 +21,7 @@ export type InternalTdsStepperPropChange = {
 export class TdsStepper {
   @Element() host: HTMLElement;
 
-  /** The orientation the Stepper Items */
+  /** The orientation the Steps */
   @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
   /** Text position, only available on a direction: horizontal */

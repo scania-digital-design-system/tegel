@@ -10,7 +10,7 @@
 | Property | Attribute | Description                                                                        | Type                                              | Default      |
 | -------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
 | `index`  | `index`   | Index of the step. Will be displayed in the step if the state is current/upcoming. | `string`                                          | `undefined`  |
-| `state`  | `state`   | State of the Stepper Item                                                          | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
+| `state`  | `state`   | State of the Step                                                                  | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
 
 
 ## Dependencies
@@ -22,8 +22,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  tds-stepper-item --> tds-icon
-  style tds-stepper-item fill:#f9f,stroke:#333,stroke-width:4px
+  tds-step --> tds-icon
+  style tds-step fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

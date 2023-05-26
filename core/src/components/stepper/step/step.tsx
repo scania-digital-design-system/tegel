@@ -2,15 +2,15 @@ import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core'
 import { InternalTdsStepperPropChange } from '../stepper';
 
 @Component({
-  tag: 'tds-stepper-item',
-  styleUrl: 'stepper-item.scss',
+  tag: 'tds-step',
+  styleUrl: 'step.scss',
   shadow: true,
 })
-export class TdsStepperItem {
+export class TdsStep {
   /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
   @Prop() index: string;
 
-  /** State of the Stepper Item */
+  /** State of the Step */
   @Prop() state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
 
   @State() hideLabel: boolean;

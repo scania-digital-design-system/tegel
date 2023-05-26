@@ -1,6 +1,6 @@
 import { formatHtmlPreview } from '../../utils/utils';
 import readmeStepper from './readme.md';
-import readmeStepperItem from './stepper-item/readme.md';
+import readmeStep from './step/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
@@ -19,7 +19,7 @@ export default {
         url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=10508%3A32221&t=Ne6myqwca5m00de7-1',
       },
     ],
-    notes: { 'Stepper': readmeStepper, 'Stepper Item': readmeStepperItem },
+    notes: { Stepper: readmeStepper, Step: readmeStep },
   },
   argTypes: {
     size: {
@@ -85,18 +85,18 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
     `<tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
       orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
     } orientation="${orientation.toLowerCase()}">
-    <tds-stepper-item state="success" index="1">
+    <tds-step state="success" index="1">
       <div slot="label">Success step</div>
-    </tds-stepper-item>
-    <tds-stepper-item state="error" index="2">
+    </tds-step>
+    <tds-step state="error" index="2">
       <div slot="label">Error step</div>
-    </tds-stepper-item>
-    <tds-stepper-item state="current" index="3">
+    </tds-step>
+    <tds-step state="current" index="3">
       <div slot="label">Current step</div>
-    </tds-stepper-item>
-    <tds-stepper-item index="4">
+    </tds-step>
+    <tds-step index="4">
       <div slot="label">Upcoming step</div>
-    </tds-stepper-item>
+    </tds-step>
   </tds-stepper>
         `,
   );
