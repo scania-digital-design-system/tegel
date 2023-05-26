@@ -1,20 +1,20 @@
 import { Component, Host, h, Prop, Element, Event } from '@stencil/core';
 import { EventEmitter, Watch } from '@stencil/core/internal';
 
-type SddsStepperProps = {
+type TdsStepperProps = {
   orientation: 'horizontal' | 'vertical';
   labelPosition: 'aside' | 'below';
   size: 'sm' | 'lg';
   hideLabels: boolean;
 };
 
-export type InternalSddsStepperPropChange = {
+export type InternalTdsStepperPropChange = {
   stepperId: string;
-  changed: Array<keyof SddsStepperProps>;
-} & Partial<SddsStepperProps>;
+  changed: Array<keyof TdsStepperProps>;
+} & Partial<TdsStepperProps>;
 
 @Component({
-  tag: 'sdds-stepper',
+  tag: 'tds-stepper',
   styleUrl: 'stepper.scss',
   shadow: true,
 })
@@ -24,7 +24,7 @@ export class Stepper {
   /** The orientation the children are layed out. */
   @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-  /** Text position, only available on direction:horizontal */
+  /** Text position, only available on a direction: horizontal */
   @Prop() labelPosition: 'aside' | 'below' = 'below';
 
   /** Size of the component and it's children. */
@@ -35,7 +35,8 @@ export class Stepper {
 
   /** ID used for internal stepper functionality and events, must be unique.
    *
-   * **NOTE**: If you're listening for stepper events you need to set this ID yourself to identify the stepper, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for stepper events, you need to set this ID yourself to identify the stepper,
+   * as the default ID is random and will be different every time.
    */
   @Prop() stepperId: string = crypto.randomUUID();
 
@@ -48,16 +49,16 @@ export class Stepper {
   }
 
   @Event({
-    eventName: 'internalSddsPropsChange',
+    eventName: 'internaltdsPropsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  internalSddsPropsChange: EventEmitter<InternalSddsStepperPropChange>;
+  internaltdsPropsChange: EventEmitter<InternalTdsStepperPropChange>;
 
   @Watch('orientation')
   handleDirectionChange() {
-    this.internalSddsPropsChange.emit({
+    this.internaltdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['orientation'],
       orientation: this.orientation,
@@ -66,7 +67,7 @@ export class Stepper {
 
   @Watch('labelPosition')
   handleLabelPositionChange() {
-    this.internalSddsPropsChange.emit({
+    this.internaltdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['labelPosition'],
       labelPosition: this.labelPosition,
@@ -75,7 +76,7 @@ export class Stepper {
 
   @Watch('size')
   handleSizeChange() {
-    this.internalSddsPropsChange.emit({
+    this.internaltdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['size'],
       size: this.size,
@@ -84,7 +85,7 @@ export class Stepper {
 
   @Watch('hideLabels')
   handleHideLabelsChange() {
-    this.internalSddsPropsChange.emit({
+    this.internaltdsPropsChange.emit({
       stepperId: this.stepperId,
       changed: ['hideLabels'],
       hideLabels: this.hideLabels,

@@ -1,7 +1,7 @@
 @mixin divider {
   content: ' ';
   position: absolute;
-  background-color: var(--sdds-stepper-icon-step-background-after);
+  background-color: var(--tds-stepper-icon-step-background-after);
   opacity: 0.16;
 }
 
@@ -26,8 +26,8 @@
 
     &.lg {
       padding: 0 20px;
-      font: var(--sdds-detail-01);
-      letter-spacing: var(--sdds-detail-01-ls);
+      font: var(--tds-detail-01);
+      letter-spacing: var(--tds-detail-01-ls);
 
       .content-container {
         height: 30px;
@@ -92,8 +92,8 @@
 
     &.sm {
       padding: 0 20px;
-      font: var(--sdds-detail-05);
-      letter-spacing: var(--sdds-detail-05-ls);
+      font: var(--tds-detail-05);
+      letter-spacing: var(--tds-detail-05-ls);
 
       .content-container {
         height: 24px;
@@ -167,28 +167,28 @@
 
     .content-container {
       border-radius: 100px;
-      border: 1px solid var(--sdds-stepper-icon-background);
+      border: 1px solid var(--tds-stepper-icon-background);
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
 
       &.error {
-        border-color: var(--sdds-negative);
-        color: var(--sdds-negative);
+        border-color: var(--tds-negative);
+        color: var(--tds-negative);
       }
 
       &.success {
-        background-color: var(--sdds-positive);
-        border-color: var(--sdds-positive);
-        color: var(--sdds-white);
+        background-color: var(--tds-positive);
+        border-color: var(--tds-positive);
+        color: var(--tds-white);
       }
 
       &.upcoming {
         background-color: transparent;
-        border-color: var(--sdds-stepper-label-border-color-upcoming);
-        color: var(--sdds-stepper-label-text-color-upcoming);
-        opacity: var(--sdds-stepper-label-text-opacity-upcoming);
+        border-color: var(--tds-stepper-label-border-color-upcoming);
+        color: var(--tds-stepper-label-text-color-upcoming);
+        opacity: var(--tds-stepper-label-text-opacity-upcoming);
       }
     }
 
@@ -196,18 +196,18 @@
       text-align: center;
 
       &.lg {
-        font: var(--sdds-detail-01);
-        letter-spacing: var(--sdds-detail-01-ls);
+        font: var(--tds-detail-01);
+        letter-spacing: var(--tds-detail-01-ls);
       }
 
       &.sm {
-        font: var(--sdds-detail-05);
-        letter-spacing: var(--sdds-detail-05-ls);
+        font: var(--tds-detail-05);
+        letter-spacing: var(--tds-detail-05-ls);
       }
 
       &.upcoming {
-        color: var(--sdds-stepper-label-text-color-upcoming);
-        opacity: var(--sdds-stepper-label-text-opacity-upcoming);
+        color: var(--tds-stepper-label-text-color-upcoming);
+        opacity: var(--tds-stepper-label-text-opacity-upcoming);
       }
     }
   }

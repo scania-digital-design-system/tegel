@@ -1,13 +1,13 @@
 import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
-import { InternalSddsStepperPropChange } from '../stepper';
+import { InternalTdsStepperPropChange } from '../stepper';
 
 @Component({
-  tag: 'sdds-stepper-item',
+  tag: 'tds-stepper-item',
   styleUrl: 'stepper-item.scss',
   shadow: true,
 })
-export class SddsStepper {
-  /** Index of the step. Will be displayed in the step if state is current/upcoming. */
+export class TdsStepperItem {
+  /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
   @Prop() index: string;
 
   /** State of the stepper-item */
@@ -23,13 +23,13 @@ export class SddsStepper {
 
   @Element() el: HTMLElement;
 
-  private stepperEl: HTMLSddsStepperElement;
+  private stepperEl: HTMLTdsStepperElement;
 
   private stepperId: string;
 
   /* Needs to be onload to do this on any updates. */
   componentWillLoad() {
-    this.stepperEl = this.el.closest('sdds-stepper');
+    this.stepperEl = this.el.closest('tds-stepper');
     this.orientation = this.stepperEl.orientation;
     this.labelPosition = this.stepperEl.labelPosition;
     this.size = this.stepperEl.size;
@@ -37,8 +37,8 @@ export class SddsStepper {
     this.stepperId = this.stepperEl.stepperId;
   }
 
-  @Listen('internalSddsPropsChange', { target: 'body' })
-  handlePropsChange(event: CustomEvent<InternalSddsStepperPropChange>) {
+  @Listen('internalTdsPropsChange', { target: 'body' })
+  handlePropsChange(event: CustomEvent<InternalTdsStepperPropChange>) {
     if (this.stepperId === event.detail.stepperId) {
       event.detail.changed.forEach((changedProp) => {
         if (typeof this[changedProp] === 'undefined') {

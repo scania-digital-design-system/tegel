@@ -82,22 +82,22 @@ const sizeLookUp = {
 };
 const Template = ({ size, orientation, labelPosition, hideLabels }) =>
   formatHtmlPreview(
-    `<sdds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
+    `<tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
       orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
     } orientation="${orientation.toLowerCase()}">
-    <sdds-stepper-item state="success" index="1">
+    <tds-stepper-item state="success" index="1">
       <div slot="label">Success step</div>
-    </sdds-stepper-item>
-    <sdds-stepper-item state="error" index="2">
+    </tds-stepper-item>
+    <tds-stepper-item state="error" index="2">
       <div slot="label">Error step</div>
-    </sdds-stepper-item>
-    <sdds-stepper-item state="current" index="3">
+    </tds-stepper-item>
+    <tds-stepper-item state="current" index="3">
       <div slot="label">Current step</div>
-    </sdds-stepper-item>
-    <sdds-stepper-item index="4">
+    </tds-stepper-item>
+    <tds-stepper-item index="4">
       <div slot="label">Upcoming step</div>
-    </sdds-stepper-item>
-  </sdds-stepper>
+    </tds-stepper-item>
+  </tds-stepper>
         `,
   );
 export const Stepper = Template.bind({});
