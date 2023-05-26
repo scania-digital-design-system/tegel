@@ -1,11 +1,11 @@
 import { Component, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-dropdown-filter',
+  tag: 'tds-dropdown-filter',
   shadow: true,
   styleUrl: './../dropdown.scss',
 })
-export class DropdownFilter {
+export class TdsDropdownFilter {
   @State() dataOptions = [];
 
   @State() filteredContent = [];
@@ -14,7 +14,7 @@ export class DropdownFilter {
 
   @State() selectedOptionState: any;
 
-  @State() dropdownRef?: HTMLSddsDropdownElement;
+  @State() dropdownRef?: HTMLTdsDropdownElement;
 
   /** Set the variant of the Dropdown. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
@@ -37,7 +37,8 @@ export class DropdownFilter {
   /** Add the value of the option to set it as default */
   @Prop() disabled: boolean = false;
 
-  /** Controls the size of Dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
+  /** Controls the size of the Dropdown.
+   * 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
   @Prop() size: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large' = 'lg';
 
   /** Set to true to make the width following the label text length */
@@ -75,20 +76,20 @@ export class DropdownFilter {
     this.filteredContent = this.dataOptions;
   }
 
-  @Listen('internalSddsSearch')
+  @Listen('internalTdsSearch')
   updateOptionsContent(event: CustomEvent<any>) {
     this.searchTerm = event.detail;
     this.findData();
   }
 
-  @Listen('internalSddsSelect')
+  @Listen('internalTdsSelect')
   selectOptionHandler(event: CustomEvent<any>) {
     this.selectedOptionState = event.detail.value;
     this.selectedLabel = event.detail.label;
     this.selectedValue = event.detail.value;
 
-    // Reset list when search is done and user have selected one option
-    // To match with animation time for option list to fadeout first
+    // Reset list when search is done and the user has selected one option
+    // To match with animation time for an option list to fadeout first
     setTimeout(() => {
       this.filteredContent = this.dataOptions;
     }, 200);
@@ -112,21 +113,21 @@ export class DropdownFilter {
 
   setOptionsContent() {
     const newList = this.filteredContent.map((obj) => (
-      <sdds-dropdown-option
+      <tds-dropdown-option
         tabindex="0"
         value={obj.value}
         class={`${this.selectedOptionState === obj.value ? 'selected' : ''}`}
       >
         {obj.label}
-      </sdds-dropdown-option>
+      </tds-dropdown-option>
     ));
     if (newList.length > 0) {
       return newList;
     }
     return (
-      <sdds-dropdown-option tabindex="-1" value="no-result" class="sdds-option--no-result">
+      <tds-dropdown-option tabindex="-1" value="no-result" class="tds-option--no-result">
         No result
-      </sdds-dropdown-option>
+      </tds-dropdown-option>
     );
   }
 
@@ -141,10 +142,10 @@ export class DropdownFilter {
         selected-value={this.selectedValue}
         selected-text={this.selectedLabel}
         class={`
-      ${this.modeVariant ? `sdds-mode-variant-${this.modeVariant}` : ''}
+      ${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}
      `}
       >
-        <sdds-dropdown
+        <tds-dropdown
           ref={(el) => (this.dropdownRef = el)}
           exportparts="dropdown-filter-disabled"
           size={this.size}
@@ -161,7 +162,7 @@ export class DropdownFilter {
           openDirection={this.openDirection}
         >
           {this.setOptionsContent()}
-        </sdds-dropdown>
+        </tds-dropdown>
       </Host>
     );
   }
