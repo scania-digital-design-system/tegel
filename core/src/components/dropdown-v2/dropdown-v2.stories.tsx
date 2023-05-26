@@ -300,4 +300,4 @@ const Template = ({
         
   `);
 
-export const Default = Template.bind({});
+export const DropdownV2 = Template.bind({});
