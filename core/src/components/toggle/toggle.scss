@@ -11,6 +11,8 @@
   }
 
   input[type='checkbox'] {
+    appearance: initial; /* Firefox */
+    appearance: initial; /* Safari/Chrome */
     margin: 0;
     width: 44px;
     height: 24px;
