@@ -1,33 +1,17 @@
 [![Github release](https://img.shields.io/npm/v/@scania/tegel?color=1081C2)](https://www.npmjs.com/package/@scania/tegel)
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
-![](https://img.shields.io/github/license/scania-digital-design-system/sdds)
+![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
 
-# Tegel Design System
+# @scania/tegel
 
 https://tegel.scania.com/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
-- [Tegel Design System](#tegel-design-system)
-  - [Status](#status)
-  - [Installation](#installation)
-    - [React](#react)
-      - [with Typescript](#with-typescript)
-      - [with Javascript](#with-javascript)
-    - [Angular](#angular)
-    - [HTML](#html)
-  - [Events](#events)
-    - [Internal events](#internal-events)
-  - [Browser support](#browser-support)
-  - [Code conventions](#code-conventions)
-    - [Setting up the development environment](#setting-up-the-development-environment)
-  - [Community](#community)
-  - [License](#license)
-
 ## Status
 
-This package is currently in a pre-beta stage. We are now working hard towards a 1.0-beta release, but if you want to try out the package today you can! It's available via NPM and can be installed using the installation guide below.
+This package is currently in a pre-beta stage. We are now working hard towards a 1.0-beta release, but if you want to try out the package today you can!
 
 ## Installation
 
@@ -174,79 +158,9 @@ export class AppModule {}
 
 See all available components in the [Tegel Design System](https://tegel.scania.com/components/overview).
 
-## Events
-
-The tegel components emit custom events to allow the users to repond to changes/updates in the components. These are all named using the
-sdds-prefix. This is done in order to not have conflicting events and to make it clear to the user the specified event is something that is emitted
-from a tegel component.
-
-The events are named according to our naming convention: 'sdds' + event.
-For a click event this would result in the event being called `sddsClick`. To listen for these events in vanilla JS the event name
-should be passed to the `addEventListener` function as the first argument:
-
-```javascript
-document.addEventListener('sddsClick', (event) => {
-  // Do something with/based on the event.
-});
-```
-
-In React these events needs to be listened to by adding an event listener to the element that emits the event. This can be easily done by
-grabbing a reference to the element and adding the event listener inline:
-
-This solution is a workaround based on how React handles events, you can read more on this [here.](https://reactjs.org/docs/events.html)
-
-```jsx
-<sdds-textfield
-  ref={(element) =>
-    element.addEventListener('sddsClick', (event) => {
-      {
-        /* Do something with/based on the event. */
-      }
-    })
-  }
-></sdds-textfield>
-```
-
-In other JSX-enviroments (apart from React) these events can be listened to by prefixing them with an `on` directly on the component:
-
-```jsx
-<sdds-textfield
-  onSddsChange={(event) => {
-    /* Do something with/based on the event. */
-  }}
-></sdds-textfield>
-```
-
-What is attached to the event object is highlighted in our storybook. Under the docs tab of each component the events are outlined,
-inluding what data is passed with the event to the user.
-
-### Internal events
-
-Some of the component are using event to communicate with its parent/child. These events are not recommended to use in any way since
-they might change without notice. Their payload might also be changed based on refactoring of components. These events are prefixed
-with 'internal'. This is to make it as clear as possible to a user that this is an internal event that the components are using,
-but the user should not interact with it. E.g. `internalSddsPropsChange`.
-
 ## Browser support
 
 See the browser support section on [the Tegel website](https://tegel.scania.com/development/getting-started-development/introduction#browser-support).
-
-## Code conventions
-
-The code conventions used in (and enforced by) Tegel is documented [here](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md).
-
-### Setting up the development environment
-
-1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 16 at the time of writing).
-2. Run `npm install` in the root directory.
-3. Run `npm install` in the core directory.
-3. Create a `.env` file in the /tegel directory with the following contents:
-
-```
-STORYBOOK_ENV=development
-```
-
-4. Make sure you are in the root directory, and start the dev server with `npm run storybook`.
 
 ## Community
 
