@@ -1,4 +1,8 @@
+@import '../../mixins/box-sizing';
+
 .card {
+  @include tds-box-sizing;
+
   box-shadow: var(--tds-card-box);
   background-color: var(--tds-card-background);
   display: block;
@@ -63,6 +67,11 @@
     margin: 16px 16px 0;
     background-color: var(--tds-card-divider);
     height: 1px;
+  }
+
+  .card-body {
+    display: block;
+    overflow-wrap: break-word;
   }
 
   slot[name='card-body']::slotted(*) {
