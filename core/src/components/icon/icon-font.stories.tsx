@@ -33,11 +33,9 @@ export default {
       name: 'Size in pixels',
       description: 'Set the size of the icon',
       control: {
-        type: 'range',
-        min: 16,
-        max: 100,
-        step: 4,
+        type: 'select',
       },
+      options: [16, 20, 24, 32],
     },
   },
   args: {
