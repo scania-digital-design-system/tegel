@@ -55,6 +55,4 @@ const IconFontTemplate = (args) =>
   <i class="sdds-icon ${args.icon}"></i>
   `);
 
-export const Native = IconFontTemplate.bind({});
-
-Native.args = {};
+export const WebFont = IconFontTemplate.bind({});
