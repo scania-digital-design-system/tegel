@@ -132,7 +132,7 @@ export const parameters = {
       order: [
         'Intro',
         [
-          'Tegel',
+          'Tegel Design System',
           'Migrating from components v4',
           'Installation',
           'Events',
