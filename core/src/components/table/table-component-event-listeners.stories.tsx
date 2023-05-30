@@ -40,7 +40,7 @@ export default {
     },
     compactDesign: {
       name: 'Compact design',
-      description: 'Enables compact design of the table, rows with less height.',
+      description: 'Enables compact design of the Table, rows with less height.',
       control: {
         type: 'boolean',
       },
@@ -49,9 +49,9 @@ export default {
       },
     },
     responsiveDesign: {
-      name: 'Responsive table',
+      name: 'Responsive Table',
       description:
-        'Enables table to take 100% of available width. For column values less than 192px, "No minimum width" has to be enabled too.',
+        'Enables Table to take 100% of available width. For column values less than 192px, "No minimum width" has to be enabled too.',
       control: {
         type: 'boolean',
       },
@@ -61,7 +61,7 @@ export default {
     },
     verticalDivider: {
       name: 'Vertical dividers',
-      description: 'Enables vertical dividers between table columns.',
+      description: 'Enables vertical dividers between Table columns.',
       control: {
         type: 'boolean',
       },
