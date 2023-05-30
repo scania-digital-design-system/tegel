@@ -16,6 +16,8 @@ import {
   shadow: true,
 })
 export class TdsNavigationTabs {
+  @Element() host: HTMLElement;
+
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
 
@@ -25,8 +27,6 @@ export class TdsNavigationTabs {
   /** Sets the selected Tab.
    * If this is set all Tab changes needs to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
-
-  @Element() host: HTMLElement;
 
   @State() showLeftScroll: boolean = false;
 
