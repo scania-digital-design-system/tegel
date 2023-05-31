@@ -4,6 +4,9 @@ const meta: Meta = {
   title: 'Intro/Announcements',
   parameters: {
     layout: 'fullscreen',
+    options: {
+      showPanel: false,
+    },
   },
 };
 
