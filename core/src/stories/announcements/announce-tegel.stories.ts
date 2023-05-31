@@ -50,7 +50,7 @@ export const Tegel = {
                     <h3 class="tds-u-mb1">
                         What is @scania/tegel? 🧱
                     </h3>
-                    tds-divider></tds-divider>
+                    <tds-divider></tds-divider>
 
                     <p class="tds-body-01">
                         In short, the new @scania/tegel package is an improvement and continuation of the previous @scania/component,
