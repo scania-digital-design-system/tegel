@@ -9,23 +9,23 @@
 
 | Property               | Attribute                | Description                                                                            | Type                       | Default     |
 | ---------------------- | ------------------------ | -------------------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `defaultSelectedIndex` | `default-selected-index` | Sets the default selected tab.                                                         | `number`                   | `0`         |
-| `modeVariant`          | `mode-variant`           | Variant of the tabs, primary= on white, secondary= on grey50                           | `"primary" \| "secondary"` | `'primary'` |
-| `selectedIndex`        | `selected-index`         | Sets the selected tab. If this is set all tab changes needs to be handled by the user. | `number`                   | `undefined` |
+| `defaultSelectedIndex` | `default-selected-index` | Sets the default selected Tab.                                                         | `number`                   | `0`         |
+| `modeVariant`          | `mode-variant`           | Variant of the Tabs, primary= on white, secondary= on grey50                           | `"primary" \| "secondary"` | `'primary'` |
+| `selectedIndex`        | `selected-index`         | Sets the selected Tab. If this is set all Tab changes needs to be handled by the user. | `number`                   | `undefined` |
 
 
 ## Events
 
 | Event       | Description                                     | Type                                         |
 | ----------- | ----------------------------------------------- | -------------------------------------------- |
-| `tdsChange` | Event emitted when the selected tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
+| `tdsChange` | Event emitted when the selected Tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
 
 
 ## Methods
 
 ### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number; }>`
 
-Sets the passed tabindex as the selected tab.
+Sets the passed tabindex as the selected Tab.
 
 #### Returns
 

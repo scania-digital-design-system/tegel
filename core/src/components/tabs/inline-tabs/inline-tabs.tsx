@@ -9,14 +9,14 @@ import { Method } from '@stencil/core/internal';
 export class TdsInlineTabs {
   @Element() host: HTMLElement;
 
-  /** Variant of the tabs, primary= on white, secondary= on grey50 */
+  /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
 
-  /** Sets the default selected tab. */
+  /** Sets the default selected Tab. */
   @Prop() defaultSelectedIndex: number = 0;
 
-  /** Sets the selected tab.
-   * If this is set all tab changes needs to be handled by the user. */
+  /** Sets the selected Tab.
+   * If this is set all Tab changes needs to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
   @State() showLeftScroll: boolean = false;
@@ -45,7 +45,7 @@ export class TdsInlineTabs {
     selectedTabIndex: number;
   }>;
 
-  /** Selects a tab based on tabindex, will not select a disabled tab. */
+  /** Selects a Tab based on tabindex, will not select a disabled Tab. */
   @Method()
   async selectTab(tabIndex: number) {
     if (!this.children[tabIndex].disabled) {
