@@ -25,8 +25,8 @@ export const PrefixChange = {
         }
 
         section p,
-        ul,
-        tds-link {
+        section ul,
+        section tds-link {
             margin-bottom: 32px;
         }
 
