@@ -7,8 +7,8 @@ export default {
   title: ComponentsFolder,
   parameters: {
     notes: {
-      'Folder tabs': readme,
-      'Folder tabs item': readmeItem,
+      'Folder Tabs': readme,
+      'Folder Tabs item': readmeItem,
     },
     backgrounds: { default: 'white' },
     design: [
