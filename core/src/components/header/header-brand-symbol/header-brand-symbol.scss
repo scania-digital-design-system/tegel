@@ -5,12 +5,14 @@
     display: none;
   }
 
-  tds-header-item a {
-    background-image: var(--tds-background-image-scania-symbol-svg),
-      var(--tds-background-image-scania-symbol-png);
-    background-size: 30px auto;
-    background-position: center;
-    background-repeat: no-repeat;
+  tds-header-item {
+    ::slotted(*) {
+      background-image: var(--tds-background-image-scania-symbol-svg),
+        var(--tds-background-image-scania-symbol-png);
+      background-size: 30px auto;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
   }
 
   @media (min-width: 992px) {
