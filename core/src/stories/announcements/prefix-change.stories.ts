@@ -19,7 +19,6 @@ export const PrefixChange = {
             box-sizing: border-box;
             max-width: 688px;
             margin: auto;
-            color: rgba(0, 0, 0, 0.87);
             display: flex;
             flex-direction: column;
             gap: 72px;

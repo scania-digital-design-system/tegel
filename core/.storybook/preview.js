@@ -127,6 +127,9 @@ export const parameters = {
     ],
   },
   options: {
+    showPanel: true,
+    showToolbar: true,
+    enableShortcuts: false,
     storySort: {
       method: 'alphabetical',
       order: [
@@ -145,7 +148,6 @@ export const parameters = {
         'Components',
       ],
     },
-    enableShortcuts: false,
   },
   layout: 'padded',
 };
