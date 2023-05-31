@@ -8,9 +8,7 @@ This document includes all the breaking changes when migrating from @scania/comp
 
 ## Deprecation of Native Components
 
-In @scania/tegel we have removed all of our "native" components and instead introducing web component
-counterparts to these. This means that every component that was available as a "native" component in
-@scania/components will have a web component counterpart in @scania/tegel. This change does not affect the existing @scania/components package.
+In @scania/tegel, we have replaced all of our "native" components with their corresponding web component counterparts. As a result, every component previously available as a "native" component in @scania/components now has a web component equivalent in @scania/tegel. It's important to note that this change does not impact the existing @scania/components package.
 
 ## Event name convention
 
@@ -20,9 +18,18 @@ Previously we have not had a set naming convention for our events. This has led 
 components where some events has had a `custom` prefix, and others have had other ways of indicating whether
 or not it is a custom event. We have now settled on a naming convention for all events.
 Both **external**, events we expect you as a user to interact with, and **internal**, events that are used within
-our components to update state/react to changes.
+our components to update state/react to changes. 
 
-In short:
+## Prefix change
+Furthermore we decided to rename the previously used 'sdds'-prefix to 'tds'. 
+This occurred as a result of a deliberate choice to facilitate the transition to the new Tegel package and prevent conflicts with previously used components.
+
+In short, before the prefix change:
+
+- External events are named: 'sdds' + native event name. ('sddsClick', 'sddsChange')
+- Internal events are named: 'internalsdds' + event name. ('internalsddsTablePropsChange', 'internalsddsCheckboxChange')
+
+Now, after prefix change:
 
 - External events are named: 'tds' + native event name. ('tdsClick', 'tdsChange')
 - Internal events are named: 'internaltds' + event name. ('internaltdsTablePropsChange', 'internaltdsCheckboxChange')
@@ -44,9 +51,7 @@ can be used on its own.
 
 #### What action is required?
 
-If you are not yourself using `rem` in your project ideally this change should not affect you, but since it is
-something that has an effect on all components and utilities/foundations we expect that there might be some
-unforeseen problems. These will have our highest prio in order to make the migration to Tegel as smooth as possible.
+If you are not currently utilizing `rem` in your project, this change ideally should not impact you directly. However, since it affects all components, utilities, and foundations, there is a possibility of encountering unforeseen issues. Resolving these problems will be our top priority to ensure a seamless transition to Tegel.
 
 If you are however using `rem` in your project you would have to consider that the base value will no longer be `4px`.
 This value will now by default be `16px`. So for the element in you project that are using rem these would have to be
@@ -121,8 +126,7 @@ Replace `affix="prefix"` with `expand-icon-position="start"` and remove `affix="
 
 #### Added prop for mode-variant and removed class `sdds-on-white-bg`
 
-Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced a prop called `mode-variant` with options`primary` or
-`secondary` to determine which variant is being shown. For this component `primary` is the default value and represents the old `sdds-on-white-bg`
+Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant`, which has the values `primary` or `secondary`, to determine the variant being displayed. For this component `primary` is the default value and represents the old `sdds-on-white-bg`
 
 ##### What action is required?
 
@@ -149,9 +153,9 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 [Story](/docs/components--badge)
 
-#### Updated component name to conform with convention
+#### Component name updated to adhere to convention
 
-The badge was previously named `sdds-badges`, to conform with our naming convetion this has been changed to singular.
+The badge was previously named `sdds-badges`, to conform with our naming convention this has been changed to singular.
 
 ```jsx
 // Old ❌
@@ -180,7 +184,7 @@ Replace all intances of `isVisible="false"` with `hidden`.
 
 #### Replaced "default" value of size prop with "lg", renamed to sdds-badge
 
-Size value `default` was replaced with value `lg` as part of standardisation size props to use "t-shirt" naming convention.
+As part of the standardization of size props, the default value "size" was replaced with "lg" to align with the "t-shirt" naming convention.
 
 Renamed from "badges" to "badge" to conform with other components.
 
@@ -284,15 +288,10 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 ### Updated `<sdds-inline-tabs>` and `<sdds-navigation-tabs>` and introduced `<sdds-folder-tabs>`. Introduced child components for all Tabs.
 
-Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These
-reminded little of eachother in appearence and therefore it made more sense to treat
-these as two totally seperate component. To have a clear distiction between them we
-have now renamed the `<ssd-inline-tabs>` to `<sdds-folder-tabs>`, to futher highlight
-its look and its function.
+Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These had little resemblance to each other in appearance, thus it was more logical to consider them as completely distinct components. 
+In order to establish a clear differentiation between them, we have recently renamed the `<ssd-inline-tabs>` as `<sdds-folder-tabs>` to better emphasize both its visual appearance and its functionality.
 
-All three of our Tabs (inline/folder/navigation) are meant to work with either buttons
-or links. Therefore we have created a single child element for each tab, that is
-meant to wrapp the underlying element:
+Our three tabs (inline, folder, and navigation) are designed to function with both buttons and links. To achieve this, we have introduced a single child element for each tab, which is intended to wrap the underlying element.
 
 ```jsx
 <tds-inline-tab>,
@@ -300,10 +299,7 @@ meant to wrapp the underlying element:
 <tds-navigation-tab>
 ```
 
-The content that is displayed under each tab, is no longer handled by the component.
-And is therefor something that you as a user of the components will have to implement
-yourself. We will of course be peresenting examples of how this could be implemented,
-and if you have any questions we are always here to help.
+The component no longer manages the content displayed under each tab. Therefore, it is now up to you, as a component user to implement it yourself. We will provide examples of how this can be done, and if you have any questions, we are always here to assist you.
 
 The new components are available here in storybook:
 
@@ -312,21 +308,21 @@ The new components are available here in storybook:
 - [Navigation Tabs](/docs/components--navigation-tabs)
 
 ```jsx
-// New sdds-inline-tabs with buttons 🆕
-<sdds-inline-tabs>
-  <sdds-inline-tab>
+// New tds-inline-tabs with buttons 🆕
+<tds-inline-tabs>
+  <tds-inline-tab>
     <button>First tab</button>
-  </sdds-inline-tab>
-  <sdds-inline-tab>
+  </tds-inline-tab>
+  <tds-inline-tab>
     <button>Second tab</button>
-  </sdds-inline-tab>
-  <sdds-inline-tab>
+  </tds-inline-tab>
+  <tds-inline-tab>
     <button>Third tab</button>
-  </sdds-inline-tab>
-  <sdds-inline-tab disabled>
+  </tds-inline-tab>
+  <tds-inline-tab disabled>
     <button>Fourth tab</button>
-  </sdds-inline-tab>
-</sdds-inline-tabs>
+  </tds-inline-tab>
+</tds-inline-tabs>
 
 // New tds-inline-tabs with links 🆕
 <tds-inline-tabs>
@@ -694,9 +690,7 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 #### Removed `disableFilteringFunction`, `disableSortingFunction` and `enableClientPagination`.
 
-These props were previously available on the data table component to allow for users to implement
-their own filter/sort and pagination logic. Now we have removed these props, and instead made the
-events that these are emitting cencelable.
+Previously, the data table component provided these props to enable users to implement their own filter, sort, and pagination logic. However, we have now removed these props and replaced them with cancellable events emitted by the component.
 
 The events are: 'tdsPageChange', 'tdsSortChange', 'tdsFilterChange'
 
