@@ -4,3 +4,17 @@
   position: relative;
   z-index: 100000 !important; /* show above things like modals, headers, etc */
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--tds-grey-300);
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
+}
