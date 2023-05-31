@@ -33,11 +33,9 @@ export default {
       name: 'Size in pixels',
       description: 'Set the size of the icon',
       control: {
-        type: 'range',
-        min: 16,
-        max: 100,
-        step: 4,
+        type: 'select',
       },
+      options: [16, 20, 24, 32],
     },
   },
   args: {
@@ -57,6 +55,4 @@ const IconFontTemplate = (args) =>
   <i class="sdds-icon ${args.icon}"></i>
   `);
 
-export const Native = IconFontTemplate.bind({});
-
-Native.args = {};
+export const WebFont = IconFontTemplate.bind({});
