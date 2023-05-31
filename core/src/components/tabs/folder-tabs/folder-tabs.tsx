@@ -18,14 +18,14 @@ import {
 export class TdsFolderTabs {
   @Element() host: HTMLElement;
 
-  /** Variant of the tabs, primary= on white, secondary= on grey50 */
+  /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Sets the default selected tab. */
   @Prop() defaultSelectedIndex: number = 0;
 
-  /** Sets the selected tab.
-   * If this is set all tab changes needs to be handled by the user. */
+  /** Sets the selected Tab.
+   * If this is set all Tab changes needs to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
   @State() buttonWidth: number = 0;
@@ -44,7 +44,7 @@ export class TdsFolderTabs {
 
   private children: Array<HTMLTdsFolderTabElement>;
 
-  /** Event emitted when the selected tab is changed. */
+  /** Event emitted when the selected Tab is changed. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
@@ -55,7 +55,7 @@ export class TdsFolderTabs {
     selectedTabIndex: number;
   }>;
 
-  /** Sets the passed tabindex as the selected tab. */
+  /** Sets the passed tabindex as the selected Tab. */
   @Method()
   async selectTab(tabIndex: number) {
     if (!this.children[tabIndex].disabled) {
