@@ -17,10 +17,11 @@ export const TegelDesignSystem = {
                     article {
                         box-sizing: border-box;
                         max-width: 688px;
-                        margin: auto;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 72px;
+                        padding: 32px;
+
+                        > * {
+                            margin-bottom: 72px;
+                        }
                     }
 
                     section > p,
@@ -45,7 +46,7 @@ export const TegelDesignSystem = {
                 </tds-link>
                 </tds-banner>
 
-                <article class="tds-u-p2 tds-body-01">
+                <article class="tds-body-01">
                     <section>
                         <h1 class="tds-headline-02 mb-72">Tegel Design System</h1>
                         <p class="tds-paragraph-01 mb-72">The design system supports the design and development of digital solutions at
