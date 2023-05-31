@@ -10,6 +10,11 @@ const meta: Meta = {
 export default meta;
 export const Tegel = {
   render: () => `
+            <style>
+                tds-link {
+                    display: inline-block;
+                }
+            </style>
              <div class="tds-u-p2">
                 <p class="tds-body-01"><strong>Published: 2022-04-25</strong></p>
                 <h1>Annoucing @scania/tegel</h1>
@@ -17,9 +22,11 @@ export const Tegel = {
                     
                 </p>
 
-                <a href="https://tegel.scania.com/">
-                    https://tegel.scania.com/
-                </a>
+                <tds-link class="tds-body-01">
+                    <a href="https://tegel.scania.com/">
+                        https://tegel.scania.com/
+                    </a>
+                </tds-link>
 
                 <h2>Who is this announcement aimed at? 🙋‍♂️🙋‍♀️🙋</h2>
 
@@ -64,7 +71,7 @@ export const Tegel = {
                     <p class="tds-body-01">
                         So, what we are striving for in the new package is:
 
-                        <ul>
+                        <ul class="tds-body-01">
                             <li>Easy installation and updates</li>
                             <li>A clear and intuitive API</li>
                             <li>Types to be included in package bundle</li>
@@ -74,9 +81,11 @@ export const Tegel = {
                             <li>Improved interactive documentation - Storybook</li>
                         </ul>
 
-                        With this new package we are creating a foundation for us to stand on going forward. We will keep improving and
-                        maintaining it after its initial release and with the changes we are introducing now we hope to be able to do this as
-                        smoothly as possible.
+                        <p class="tds-body-01">
+                            With this new package we are creating a foundation for us to stand on going forward. We will keep improving and
+                            maintaining it after its initial release and with the changes we are introducing now we hope to be able to do this as
+                            smoothly as possible.
+                        </p>
 
 
                     </p>
@@ -85,7 +94,7 @@ export const Tegel = {
                     <h3 class="tds-u-mb1">
                         Removing "native" components ❌
                     </h3>
- <tds-divider></tds-divider>
+                    <tds-divider></tds-divider>
                     <p class="tds-body-01">
                         With this new package we are also removing our "native" components and instead introducing web component
                         counterparts to these. This means that every component that was available as a "native" component in
@@ -98,34 +107,36 @@ export const Tegel = {
                     <h3 class="tds-u-mb1">
                         Prefix change 🔁
                     </h3>
- <tds-divider></tds-divider>
-                    <tds-link>
-                        <a href="?path=/story/intro-announcements-prefix-change--page">Read more here.</a>
+                    <tds-divider></tds-divider>
+                    <tds-link class="tds-u-mt2 tds-body-01">
+                         <a href="?path=/story/intro-announcements-prefix-change--page">Read more here.</a>
                     </tds-link>
                     <p class="tds-body-01">
                         We are also working on a prefix change for our new package. Instead of "sdds" the components, CSS variables and
-                        utility classes will instead be prefixed with something else, for example:
-                        <ul>
+                        utility classes will instead be prefixed with something else, for example: 
+                        </p>
+                        <ul class="tds-body-01">
                             <li> <{prefix}-button /> </li>
                             <li> --{prefix}-button-color </li>
                             <li>.{prefix}-u-flex</li>
                         </ul>
+                        <p class="tds-body-01">
                         This is done to have a clear distinction between what was @scania/components and what is @scania/tegel. What it also
                         does is that it enables the two solutions to be installed alongside each other. This means that your migration can be
                         done incrementally.
-                    </p>
+                        </p>
 
 
                     <h3 class="tds-u-mb1">
                         Migration docs 📜
                     </h3>
- <tds-divider></tds-divider>
+                    <tds-divider></tds-divider>
                     <p class="tds-body-01">
                         Migrations are always hard, but during the last couple of months we have put a lot of effort into creating a
                         "migration document", which explains and highlights all the changes in our API from version 4 of @scania/components
                         and @scania/tegel. We hope that this will ease your migration to our new package. The migration document will
                         continue to be updated until we release 1.0 and is available
-                        <a href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a>
+                        <tds-link><a href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a></tds-link>
 
                     </p>
 
@@ -149,8 +160,8 @@ export const Tegel = {
                     <p class="tds-body-01">
                         Today! Some of you have already tried this package out, and provided us with valuable feedback, thank you! But
                         please note that this package is still in beta and breaking changes are to be expected before we release 1.0. The
-                        package is available via npm and an installation guide is available <a
-                            href="https://www.npmjs.com/package/@scania/tegel">here.</a>
+                        package is available via npm and an installation guide is available <tds-link><a
+                        href="https://www.npmjs.com/package/@scania/tegel">here.</a></tds-link>
 
                     </p>
 

@@ -30,14 +30,14 @@ export const PrefixChange = {
             different prefix for @scania/tegel, which will be 'tds'. As a result, all our components, utility classes, and CSS
             variables will now be prefixed with 'tds', as shown below:
 
-        <ul>
+        <ul class="tds-body-01">
             <li> &lt;tds-button/&gt; </li>
             <li>--tds-1button-color</li>
             <li>.tds-u-flex</li>
         </ul>
-        We have made this change to establish a clear distinction between @scania/components and @scania/tegel. Additionally, it
+        <p class="tds-body-01">We have made this change to establish a clear distinction between @scania/components and @scania/tegel. Additionally, it
         will facilitate a smoother transition to the new package for you, the users. You can now install @scania/tegel alongside
-        @scania/components, allowing for an incremental transition.
+        @scania/components, allowing for an incremental transition.</p>
         </p>
 
         <h3 class="tds-u-mb1">Want to get in touch? 📞</h3>

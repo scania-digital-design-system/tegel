@@ -29,9 +29,11 @@ export const TegelDesignSystem = {
                     coherent, premium brand and user experience across all of Scania's digital touchpoints.
                 </p>
 
-                <a href="https://tegel.scania.com/">
-                    https://tegel.scania.com/
-                </a>
+                <tds-link class="tds-body-01">
+                    <a href="https://tegel.scania.com/">
+                        https://tegel.scania.com/
+                    </a>
+                </tds-link>
 
                 <h3 class="tds-u-mb1">Status</h3>
 
@@ -116,20 +118,22 @@ export const TegelDesignSystem = {
                     </h3>
                     <tds-divider></tds-divider>
 
-                    <tds-link>
+                       <tds-link class="tds-u-mt2 tds-body-01">
                         <a href="?path=/story/intro-announcements-prefix-change--page">Read more here.</a>
-                    </tds-link>
+                        </tds-link>
                     <p class="tds-body-01">
                         We are also working on a prefix change for our new package. Instead of "sdds" the components, CSS variables and
                         utility classes will instead be prefixed with something else, for example:
-                        <ul>
+                        <ul class="tds-body-01">
                             <li> <{prefix}-button /> </li>
                             <li> --{prefix}-button-color </li>
                             <li>.{prefix}-u-flex</li>
                         </ul>
+                        <p class="tds-body-01">
                         This is done to have a clear distinction between what was @scania/components and what is @scania/tegel. What it also
                         does is that it enables the two solutions to be installed alongside each other. This means that your migration can be
                         done incrementally.
+                        </p>
                     </p>
 
 
@@ -143,7 +147,7 @@ export const TegelDesignSystem = {
                         "migration document", which explains and highlights all the changes in our API from version 4 of @scania/components
                         and @scania/tegel. We hope that this will ease your migration to our new package. The migration document will
                         continue to be updated until we release 1.0 and is available
-                        <a href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a>
+                        <tds-link><a href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a></tds-link<
 
                     </p>
 
@@ -169,8 +173,8 @@ export const TegelDesignSystem = {
                     <p class="tds-body-01">
                         Today! Some of you have already tried this package out, and provided us with valuable feedback, thank you! But
                         please note that this package is still in beta and breaking changes are to be expected before we release 1.0. The
-                        package is available via npm and an installation guide is available <a
-                            href="https://www.npmjs.com/package/@scania/tegel">here.</a>
+                        package is available via npm and an installation guide is available <tds-link><a
+                        href="https://www.npmjs.com/package/@scania/tegel">here.</a></tds-link>
 
                     </p>
 
