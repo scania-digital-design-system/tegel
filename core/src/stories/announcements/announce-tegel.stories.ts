@@ -13,31 +13,32 @@ const meta: Meta = {
 
 export default meta;
 export const Tegel = {
-  render: () => `
-            <style>
-                article {
-                    box-sizing: border-box;
-                    max-width: 688px;
-                    margin: auto;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 72px;
-                }
+  render: () => `<style>
+            article {
+                box-sizing: border-box;
+                max-width: 688px;
+                padding: 32px;
 
-                section > p,
-                section > ul,
-                section > tds-link {
-                    margin-bottom: 32px;
-                }
-
-                tds-link {
-                    display: inline-block;
-                }
-
-                .mb-72 {
+                > * {
                     margin-bottom: 72px;
                 }
+            }
+
+            section > p,
+            section > ul,
+            section > tds-link {
+                margin-bottom: 32px;
+            }
+
+            tds-link {
+                display: inline-block;
+            }
+
+            .mb-72 {
+                margin-bottom: 72px;
+            }
             </style>
+
             <article class="tds-u-p2 tds-body-01">
             <section>
                         <p class="tds-body-01"><strong>Published: 2022-04-25</strong></p>
