@@ -102,7 +102,8 @@ const Template = () =>
           </tds-header-dropdown-list>
         </tds-header-dropdown>
 
-        <tds-header-brand-symbol slot="end" link-href="https://design.scania.com" aria-label="Scania - red gryphon on blue shield">
+        <tds-header-brand-symbol slot="end">
+          <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
         </tds-header-brand-symbol>
 
       </tds-header>
