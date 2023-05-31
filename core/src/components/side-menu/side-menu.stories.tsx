@@ -131,8 +131,8 @@ const Template = ({ persistent, collapsible }) =>
 
       <i style="color:white">Header items omitted for brevity. See patterns/navigation</i>
 
-      <tds-header-brand-symbol slot="end" aria-label="Scania - red gryphon on blue shield">
-        <a href="https://scania.com"></a>
+      <tds-header-brand-symbol slot="end">
+        <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
       </tds-header-brand-symbol>
     </tds-header>
 

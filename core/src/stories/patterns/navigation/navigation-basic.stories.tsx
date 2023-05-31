@@ -76,8 +76,8 @@ const Template = () =>
       </tds-header-launcher-list>
     </tds-header-launcher>
   
-    <tds-header-brand-symbol slot="end" aria-label="Scania - red gryphon on blue shield">
-      <a href="https://scania.com"></a>
+    <tds-header-brand-symbol slot="end">
+      <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
     </tds-header-brand-symbol>
 
   </tds-header>
