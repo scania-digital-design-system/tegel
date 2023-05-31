@@ -12,37 +12,61 @@ The design system supports the design and development of digital solutions at Sc
 
 This package is currently in a **pre-beta** stage. We are now working hard towards a 1.0-beta release, but if you want to try out the package today you can! It's available via NPM and can be installed using the installation guide below.
 
-## Getting started
 
-Read about how to get started on our website: https://tegel.scania.com/development/getting-started-development
+# @scania/tegel 🧱
 
-The website also includes information on browser support.
+**TLDR** ;_The new @scania/tegel package is an improvement and continuation of the previous @scania/component, @scania/theme-light, and @scania/icons packages. It simplifies the installation process and ships with types which offers type safety and improves the developer experience with intellisence and autocompletion. The new package includes all components as web components, removes the old "native" components and makes the installation and updates easier. The current prefix for components, CSS variables, and utility classes - "sdds", will be changed. We have also created a new Storybook for @scania/tegel, which allows developers and designers to preview all variants of the components by changing the props._
 
-## Contributing
 
-### Code conventions
+## What is @scania/tegel? 🧱
 
-The code conventions used in (and enforced by) Tegel is documented [here](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md).
+In short, the new @scania/tegel package is an improvement and continuation of the previous @scania/component, @scania/theme-light and @scania/icons packages. These three packages have now instead been merged into one to simplify both the installation process, but also to make it easier for us to maintain and keep improving going forward. The new @scania/tegel is also shipped with types. This makes integrations in other Stenciljs projects possible, but also improves the developer experience with intellisence and autocompletion, and of course type safety. In this work we have also bumped the Stenciljs version (the compiler used to build our components) to the latest major. And we have saved the best for last, @scania/tegel is 100% web component. Previous packages had some web components, but also "native" components, these were utility classes that could be added to a predefined HTML structure to create the look and feel of Tegel. Now we are making a big effort to provide all components as web components.
 
-### Setting up the development environment
+## What improvements does @scania/tegel have? 🚀
 
-1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 16 at the time of writing).
-2. Run `npm install` in the root directory.
-3. Run `npm install` in the core directory.
-4. Create a `.env` file in the /tegel directory with the following contents:
+So, what we are striving for in the new package is:
 
-```
-STORYBOOK_ENV=development
-```
+- Easy installation and updates
+- A clear and intuitive API
+- Types to be included in package bundle
+- All input elements to work within a form
+- Only web components
+- Dark mode
+- Improved interactive documentation - Storybook
 
-4. Make sure you are in the root directory, and start the dev server with `npm run storybook`.
+With this new package we are creating a foundation for us to stand on going forward. We will keep improving and maintaining it after its initial release and with the changes we are introducing now we hope to be able to do this as smoothly as possible.
 
-## Community
+## Removing "native" components ❌
 
-Get in touch with the team and the community:
+With this new package we are also removing our "native" components and instead introducing web component counterparts to these. This means that every component that was available as a "native" component in @scania/components will have a web component alternative in @scania/tegel. This removal will be done in our next release of @scania/tegel. This change does not change the current @scania/components package.
 
-- [Teams](https://teams.microsoft.com/l/team/19%3a1257007a64d44c64954acca27a9d4b46%40thread.skype/conversations?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)
+## Prefix change 🔁
 
-## License
+Read more [here.](?path=/story/intro-announcements-prefix-change--page)
 
-All CSS, HTML and JS code are available under the MIT license. The Scania brand identity, logos and photographs found in this repository are copyrighted Scania CV AB and are not available on an open source basis or to be used as examples or in any other way, if not specifically ordered by Scania CV AB.
+We are also working on a prefix change for our new package. Instead of "sdds" the components, CSS variables and utility classes will instead be prefixed with something else, for example:
+
+- `<{prefix}-button/>`
+- `--{prefix}-button-color`
+- `.{prefix}-u-flex`
+
+  This is done to have a clear distinction between what was @scania/components and what is @scania/tegel. What it also does is that it enables the two solutions to be installed alongside each other. This means that your migration can be done incrementally.
+
+## Migration docs 📜
+
+Migrations are always hard, but during the last couple of months we have put a lot of effort into creating a "migration document", which explains and highlights all the changes in our API from version 4 of @scania/components and @scania/tegel. We hope that this will ease your migration to our new package. The migration document will continue to be updated until we release 1.0 and is available [here.](https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page)
+
+## Support for @scania/components 🤳
+
+We will keep supporting @scania/components for a short while going forward, however we see no major updates being done to the package. This means we will keep answering and helping with support questions and do minor releases with bugfixes, but we are not introducing any new features.
+
+## When can I try our @scania/tegel? 🧪
+
+Today! Some of you have already tried this package out, and provided us with valuable feedback, thank you! But please note that this package is still in beta and breaking changes are to be expected before we release 1.0. The package is available via npm and an installation guide is available [here.](https://www.npmjs.com/package/@scania/tegel)
+
+## Want to get in touch? 📞
+
+Awesome! We are available via teams and have two support channels. One for [development](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac) and one for [design](https://teams.microsoft.com/l/channel/19%3A8d30ded56af14672b471062ec1e66345%40thread.skype/Design%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac). If you want to submit a bug report or feature request, please do so via our [GitHub](https://github.com/scania-digital-design-system/tegel/issues).
+
+All the best,
+The Tegel Team.
