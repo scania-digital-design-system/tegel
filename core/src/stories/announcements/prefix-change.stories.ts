@@ -17,13 +17,13 @@ export const PrefixChange = {
     </style>
 
     <div class="tds-u-p2">
-        <p class="tds-body-02"><strong>Published: 2022-05-30</strong></p>
+        <p class="tds-body-01"><strong>Published: 2022-05-30</strong></p>
 
         <h1 class="tds-u-mb0">Prefix change 🔁</h1>
 
-        <p class="tds-body-02">Introduced in: <strong>@scania/tegel 0.0.9</strong> </p>
+        <p class="tds-body-01">Introduced in: <strong>@scania/tegel 0.0.9</strong> </p>
 
-        <p class="tds-body-02">
+        <p class="tds-body-01">
             In a previous announcement, we mentioned that @scania/tegel would undergo a prefix change. We have been diligently
             working on this for the past few weeks, and we are pleased to inform you that it is now complete. Previously, all
             components, utility classes, and CSS variables were prefixed with 'sdds'. However, we have decided to introduce a
@@ -40,9 +40,10 @@ export const PrefixChange = {
         @scania/components, allowing for an incremental transition.
         </p>
 
-        <h3>Want to get in touch? 📞</h3>
+        <h3 class="tds-u-mb1">Want to get in touch? 📞</h3>
+        <tds-divider></tds-divider>
 
-        <p class="tds-body-02">
+        <p class="tds-body-01">
             Awesome! We are available via teams and have two support channels. One for
             <tds-link>
                 <a
@@ -59,7 +60,7 @@ export const PrefixChange = {
                 <a href="https://github.com/scania-digital-design-system/tegel/issues">GitHub</a>
             </tds-link>.
 
-            <p class="tds-body-02">
+            <p class="tds-body-01">
                 All the best,<br />
                 The Tegel Team.
             </p>
