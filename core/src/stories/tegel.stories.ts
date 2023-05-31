@@ -23,9 +23,9 @@ export const TegelDesignSystem = {
                         gap: 72px;
                     }
 
-                    section p,
-                    section ul,
-                    section tds-link {
+                    section > p,
+                    section > ul,
+                    section > tds-link {
                         margin-bottom: 32px;
                     }
 
