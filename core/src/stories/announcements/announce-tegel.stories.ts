@@ -44,7 +44,7 @@ export const Tegel = {
                         <p class="tds-body-01"><strong>Published: 2022-04-25</strong></p>
                         <h1 class="tds-headline-02">Annoucing @scania</h1>
                         <p>
-                            <b>TLDR;</b>The new @scania/tegel package is an improvement and continuation of the previous
+                            <b>TLDR;</b> The new @scania/tegel package is an improvement and continuation of the previous
                             @scania/components,
                             @scania/theme-light, and @scania/icons packages. It simplifies the installation process and ships with types
                             which offers type safety and improves the developer experience with intellisence and autocompletion.
