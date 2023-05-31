@@ -6,6 +6,7 @@ const meta: Meta = {
     layout: 'fullscreen',
     options: {
       showPanel: false,
+      showToolbar: false,
     },
   },
 };
