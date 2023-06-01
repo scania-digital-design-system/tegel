@@ -18,7 +18,7 @@ export const PrefixChange = {
         box-sizing: border-box;
         max-width: 688px;
         padding: 32px;
-
+        margin: auto;
         > * {
             margin-bottom: 72px;
         }
