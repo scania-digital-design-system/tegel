@@ -11,6 +11,8 @@ For this reason we recommend a minimal CSS reset, the included comments explain 
 The CSS Reset is based on [Joshua Comeaus reset](https://www.joshwcomeau.com/css/custom-css-reset). 
 For an in-depth explanation of each part we recommend reading the article on his website.
 
+Place the reset where you put your other global styles, before other styles are declared.
+
 ## The CSS Reset
 
 ```css
@@ -52,7 +54,7 @@ input, button, textarea, select {
   font: inherit;
 }
 /*
-  Prevent text overflowing its container.
+  Prevent text from overflowing its container.
 */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
