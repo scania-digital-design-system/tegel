@@ -95,9 +95,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb2">
+                        <h4 class="tds-u-mb2">
                             What is @scania/tegel? 🧱
-                        </h3>
+                        </h4>
 
 
 
@@ -133,9 +133,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb2">
+                        <h4 class="tds-u-mb2">
                             What improvements does @scania/tegel have? 🚀
-                        </h3>
+                        </h4>
 
 
                         <p>
@@ -165,9 +165,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb2">
+                        <h4 class="tds-u-mb2">
                             Removing "native" components ❌
-                        </h3>
+                        </h4>
 
 
                         <p>
@@ -180,9 +180,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb2">
+                        <h4 class="tds-u-mb2">
                             Prefix change 🔁
-                        </h3>
+                        </h4>
 
 
                         <tds-link class="tds-u-mt2 tds-body-01">
@@ -210,9 +210,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb1">
+                        <h4 class="tds-u-mb1">
                             Migration docs 📜
-                        </h3>
+                        </h4>
 
 
                         <p>
@@ -227,9 +227,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb1">
+                        <h4 class="tds-u-mb1">
                             Support for @scania/components 🤳
-                        </h3>
+                        </h4>
 
 
                         <p>
@@ -244,9 +244,9 @@ export const TegelDesignSystem = {
                         </p>
                     </section>
                     <section>
-                        <h3 class="tds-u-mb1">
+                        <h4 class="tds-u-mb1">
                             When can I try our @scania/tegel? 🧪
-                        </h3>
+                        </h4>
 
 
                         <p>
@@ -264,9 +264,9 @@ export const TegelDesignSystem = {
                     </section>
                     <section>
 
-                        <h3 class="tds-u-mb1">
+                        <h4 class="tds-u-mb1">
                             Want to get in touch? 📞
-                        </h3>
+                        </h4>
 
 
                         <p>

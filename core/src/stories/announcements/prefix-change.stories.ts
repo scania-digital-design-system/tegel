@@ -62,9 +62,9 @@ export const PrefixChange = {
             </p>
         </section>
         <section>
-            <h3 class="tds-u-mb1">
+            <h4 class="tds-u-mb1">
                 Want to get in touch? 📞
-            </h3>
+            </h4>
 
 
             <p>
