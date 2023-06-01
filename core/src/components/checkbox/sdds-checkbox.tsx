@@ -18,6 +18,9 @@ export class SddsCheckbox {
   /** Sets the Checkbox in a disabled state */
   @Prop() disabled: boolean = false;
 
+  /** Sets the Checkbox in a indeterminate state */
+  @Prop() indeterminate: boolean = false;
+
   /** Make the Checkbox required */
   @Prop() required: boolean = false;
 
@@ -32,6 +35,7 @@ export class SddsCheckbox {
   async toggleCheckbox() {
     this.checked = !this.checked;
     return {
+      indeterminate: this.indeterminate,
       checkboxId: this.checkboxId,
       checked: this.checked,
     };
@@ -47,6 +51,7 @@ export class SddsCheckbox {
   sddsChange: EventEmitter<{
     checkboxId: string;
     checked: boolean;
+    indeterminate: boolean;
     value?: string;
   }>;
 
@@ -55,6 +60,7 @@ export class SddsCheckbox {
     this.sddsChange.emit({
       checkboxId: this.checkboxId,
       checked: this.checked,
+      indeterminate: this.indeterminate,
       value: this.value,
     });
   };
@@ -93,6 +99,7 @@ export class SddsCheckbox {
         <input
           aria-checked={this.checked}
           aria-required={this.required}
+          aria-indeterminate={this.indeterminate}
           aria-describedby={this.host.getAttribute('aria-describedby')}
           aria-labelledby={this.host.getAttribute('aria-labelledby')}
           required={this.required}
@@ -102,6 +109,7 @@ export class SddsCheckbox {
           id={this.checkboxId}
           checked={this.checked}
           disabled={this.disabled}
+          indeterminate={this.indeterminate}
           onFocus={(event) => this.handleFocus(event)}
           onBlur={(event) => this.handleBlur(event)}
           onChange={() => {
