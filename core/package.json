@@ -48,8 +48,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@stencil/core": "3.3.0",
-    "dotenv": "^16.0.3",
-    "prettier": "^2.7.1"
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
