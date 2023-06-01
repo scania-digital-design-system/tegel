@@ -12,6 +12,5 @@
     "jsxFactory": "h"
   },
   "include": ["src"],
-  "exclude": ["**/*.stories.tsx"]
-
+  "exclude": ["**/*.stories.tsx", "**/*.stories.ts", "**/stories"]
 }
