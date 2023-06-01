@@ -48,8 +48,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@stencil/core": "3.3.0",
-    "dotenv": "^16.0.3",
-    "prettier": "^2.7.1"
+    "dotenv": "^16.0.3"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
@@ -72,7 +71,8 @@
     "babel-loader": "^8.2.5",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
-    "puppeteer": "^10.0.0"
+    "puppeteer": "^10.0.0",
+    "prettier": "^2.8.8"
   },
   "license": "MIT",
   "engines": {
