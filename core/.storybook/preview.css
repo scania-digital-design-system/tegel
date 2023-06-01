@@ -1,13 +1,20 @@
-html,
-body,
-#root {
-  /* This is needed to demo side-menu properly */
-  height: 100%;
-}
-
 *:has(> .docblock-code-toggle) {
   /* This is the "show code" buttons that appears in examples under the docs tab. */
   /* Known issue: :has is not currently supported in firefox */
   position: relative;
   z-index: 100000 !important; /* show above things like modals, headers, etc */
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--tds-grey-300);
+}
+
+::-webkit-scrollbar-button {
+  height: 0;
+  width: 0;
 }

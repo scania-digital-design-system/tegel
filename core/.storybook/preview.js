@@ -127,18 +127,27 @@ export const parameters = {
     ],
   },
   options: {
+    showPanel: true,
+    showToolbar: true,
+    enableShortcuts: false,
     storySort: {
       method: 'alphabetical',
       order: [
         'Intro',
-        ['Tegel', 'Migrating from components v4', 'Installation', 'Events'],
+        [
+          'Tegel Design System',
+          'Migrating from components v4',
+          'Installation',
+          'Events',
+          'Announcements',
+          ['Tegel', 'Prefix change'],
+        ],
         'Foundations',
         'Utilities',
         'Patterns',
         'Components',
       ],
     },
-    enableShortcuts: false,
   },
   layout: 'padded',
 };
