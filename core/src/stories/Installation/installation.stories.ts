@@ -3,7 +3,7 @@ import hljs from 'highlight.js';
 import '../../../.storybook/tegel.syntax.highlighter.css';
 
 const meta: Meta = {
-  title: 'Intro/Tester',
+  title: 'Intro',
   parameters: {
     layout: 'fullscreen',
     options: {
@@ -163,12 +163,13 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 @NgModule({
-declarations: [AppComponent],
-imports: [BrowserModule],
-providers: [],
-bootstrap: [AppComponent],
-schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    declarations: [AppComponent],
+    imports: [BrowserModule],
+    providers: [],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
 export class AppModule {}</code>
                 </pre>
             </li>
