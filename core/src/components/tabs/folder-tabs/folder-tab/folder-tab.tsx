@@ -6,7 +6,7 @@ import { Component, Host, h, Method, State, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsFolderTab {
-  /** Disables the tab. */
+  /** Disables the Tab. */
   @Prop() disabled: boolean = false;
 
   @State() selected: boolean = false;

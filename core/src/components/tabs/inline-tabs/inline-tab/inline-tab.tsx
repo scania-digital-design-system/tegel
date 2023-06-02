@@ -6,12 +6,12 @@ import { Component, Host, h, Prop, Method, State } from '@stencil/core';
   shadow: true,
 })
 export class TdsInlineTab {
-  /** Disables the tab. */
+  /** Disables the Tab. */
   @Prop() disabled: boolean = false;
 
   @State() selected: boolean = false;
 
-  /** @internal Method to set the tab as selected. Used by the <tds-inline-tabs> */
+  /** @internal Method to set the Tab as selected. Used by the <tds-inline-tabs> */
   @Method()
   async setSelected(selected: boolean) {
     this.selected = selected;
