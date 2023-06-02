@@ -9,7 +9,7 @@ import { State } from '@stencil/core/internal';
 export class TdsBanner {
   @Element() host: HTMLElement;
 
-  /** Name of the icon for the component. For error and information type the icon is predefined. */
+  /** Name of the icon for the component. For error and information type, the icon is predefined. */
   @Prop() icon: string;
 
   /** Header text. */
@@ -20,7 +20,8 @@ export class TdsBanner {
 
   /** ID used for internal table functionality and events, must be unique.
    *
-   * **NOTE**: If you're listening for Banner close events you need to set this ID yourself to identify the Banner, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for Banner close events, you need to set this ID yourself to identify the Banner,
+   * as the default ID is random and will be different every time.
    */
   @Prop() bannerId: string = crypto.randomUUID();
 
