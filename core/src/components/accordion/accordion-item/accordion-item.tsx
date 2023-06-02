@@ -9,7 +9,7 @@ export class TdsAccordionItem {
   /** The header gives users the context about the additional information available inside the panel */
   @Prop() header: string = '';
 
-  /** Changes where the expand icon is placed. */
+  /** Changes position where of expand icon. */
   @Prop() expandIconPosition: 'start' | 'end' = 'end';
 
   /** Disabled option in `boolean`. */
@@ -18,10 +18,10 @@ export class TdsAccordionItem {
   /** Set to true to expand panel open */
   @Prop() expanded: boolean = false;
 
-  /** When true 16px on right padding instead of 64px */
+  /** When true, 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
 
-  /** Method for toggeling the expanded state of the Accordion Item. */
+  /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
     // This is negated in order to emit the value the Accordion Item will have after it has expanded/redacted.
@@ -33,7 +33,7 @@ export class TdsAccordionItem {
     }
   }
 
-  /** Fires when the Accordion Item is clicked but before the it is closed or opened. */
+  /** Fires when the Accordion Item is clicked, but before it is closed or opened. */
   @Event({
     eventName: 'tdsToggle',
     composed: true,
