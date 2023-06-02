@@ -20,8 +20,9 @@ export const Installation = {
     <style>
     article {
         box-sizing: border-box;
+        max-width: 688px;
         padding: 32px;
-
+        margin: auto;
         >* {
             margin-bottom: 72px;
         }
@@ -29,6 +30,7 @@ export const Installation = {
 
     code {
         border-radius: 4px;
+        font-size: 12px;
     }
 </style>
 <article class="tds-u-p2 tds-body-01">
