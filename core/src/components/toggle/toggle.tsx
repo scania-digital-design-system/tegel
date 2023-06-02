@@ -17,7 +17,7 @@ export class TdsToggle {
   /** Size of the Toggle */
   @Prop() size: 'sm' | 'lg' = 'lg';
 
-  /** Name of the toggles input element */
+  /** Name of the toggle's input element */
   @Prop() name: string;
 
   /** Headline for the Toggle */
@@ -26,7 +26,7 @@ export class TdsToggle {
   /** Sets the Toggle in a disabled state */
   @Prop() disabled: boolean = false;
 
-  /** ID of the Toggle's input element, if not specified it's randomly generated */
+  /** ID of the Toggle's input element, if not specified, it's randomly generated */
   @Prop() toggleId: string = crypto.randomUUID();
 
   /** Toggles the Toggle. */
