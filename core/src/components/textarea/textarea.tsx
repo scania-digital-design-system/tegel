@@ -7,7 +7,7 @@ import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
   scoped: true,
 })
 export class TdsTextarea {
-  /** Textinput for focus state */
+  /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
 
   /** Label text */
