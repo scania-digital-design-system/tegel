@@ -31,7 +31,7 @@ export default {
     },
     size: {
       name: 'Size in pixels',
-      description: 'Set the size of the icon',
+      description: 'Set the size of the Icon',
       control: {
         type: 'select',
       },
