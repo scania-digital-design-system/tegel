@@ -3,7 +3,7 @@ import hljs from 'highlight.js';
 import '../../../.storybook/tegel.syntax.highlighter.css';
 
 const meta: Meta = {
-  title: 'Intro',
+  title: 'Intro/Installation',
   parameters: {
     layout: 'fullscreen',
     options: {

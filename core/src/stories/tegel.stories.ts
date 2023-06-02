@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Intro',
+  title: 'Intro/Tegel Design System',
   parameters: {
     layout: 'fullscreen',
     options: {
