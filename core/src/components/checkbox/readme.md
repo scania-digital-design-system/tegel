@@ -9,10 +9,10 @@
 
 | Property     | Attribute     | Description                                                               | Type      | Default               |
 | ------------ | ------------- | ------------------------------------------------------------------------- | --------- | --------------------- |
-| `checkboxId` | `checkbox-id` | ID for the checkbox's input element. Randomly generated if not specified. | `string`  | `crypto.randomUUID()` |
+| `checkboxId` | `checkbox-id` | ID for the Checkbox's input element. Randomly generated if not specified. | `string`  | `crypto.randomUUID()` |
 | `checked`    | `checked`     | Sets the Checkbox as checked                                              | `boolean` | `false`               |
 | `disabled`   | `disabled`    | Sets the Checkbox in a disabled state                                     | `boolean` | `false`               |
-| `name`       | `name`        | Name for the checkbox's input element.                                    | `string`  | `undefined`           |
+| `name`       | `name`        | Name for the Checkbox's input element.                                    | `string`  | `undefined`           |
 | `required`   | `required`    | Make the Checkbox required                                                | `boolean` | `false`               |
 | `value`      | `value`       | Value for the Checkbox                                                    | `string`  | `undefined`           |
 

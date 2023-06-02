@@ -9,10 +9,10 @@ import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stenc
 export class TdsCheckbox {
   @Element() host: HTMLElement;
 
-  /** Name for the checkbox's input element. */
+  /** Name for the Checkbox's input element. */
   @Prop() name: string;
 
-  /** ID for the checkbox's input element. Randomly generated if not specified. */
+  /** ID for the Checkbox's input element. Randomly generated if not specified. */
   @Prop() checkboxId: string = crypto.randomUUID();
 
   /** Sets the Checkbox in a disabled state */
@@ -68,7 +68,7 @@ export class TdsCheckbox {
   })
   tdsFocus: EventEmitter<FocusEvent>;
 
-  /** Set the input as focus when clicking the whole textfield with suffix/prefix */
+  /** Set the input as focus when clicking the component */
   handleFocus(event): void {
     this.tdsFocus.emit(event);
   }
@@ -82,7 +82,7 @@ export class TdsCheckbox {
   })
   tdsBlur: EventEmitter<FocusEvent>;
 
-  /** Set the input as focus when clicking the whole textfield with suffix/prefix */
+  /** Set the input as blur when clicking outside the component */
   handleBlur(event): void {
     this.tdsBlur.emit(event);
   }
