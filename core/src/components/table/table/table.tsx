@@ -51,7 +51,8 @@ export class TdsTable {
 
   /** ID used for internal Table functionality and events, must be unique.
    *
-   * **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table, as the default ID is random and will be different every time.
+   * **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table,
+   * as the default ID is random and will be different every time.
    */
   @Prop() tableId: string = crypto.randomUUID();
 

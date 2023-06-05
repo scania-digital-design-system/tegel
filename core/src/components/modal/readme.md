@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event      | Description                      | Type               |
-| ---------- | -------------------------------- | ------------------ |
-| `tdsClose` | Emitts when the Modal is closed. | `CustomEvent<any>` |
+| Event      | Description                     | Type               |
+| ---------- | ------------------------------- | ------------------ |
+| `tdsClose` | Emits when the Modal is closed. | `CustomEvent<any>` |
 
 
 ## Methods

@@ -7,7 +7,7 @@ import { Component, State, h, Prop, Listen, Event, EventEmitter } from '@stencil
   scoped: true,
 })
 export class TdsDatetime {
-  /** Textinput for focus state */
+  /** Text-input for focus state */
   textInput?: HTMLInputElement;
 
   /** Which input type, text, password or similar */
@@ -154,10 +154,11 @@ export class TdsDatetime {
         ${this.disabled ? 'tds-form-datetime-disabled' : ''}
         ${this.size === 'md' ? 'tds-form-datetime-md' : ''}
         ${this.size === 'sm' ? 'tds-form-datetime-sm' : ''}
-        ${this.state === 'error' || this.state === 'success'
+        ${
+          this.state === 'error' || this.state === 'success'
             ? `tds-form-datetime-${this.state}`
             : ''
-          }
+        }
         ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
         `}
       >

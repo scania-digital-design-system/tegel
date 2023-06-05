@@ -9,7 +9,7 @@ export class TdsBreadcrumb {
   /** Boolean for the current link */
   @Prop() current: boolean = false;
 
-  /** Toggle the disabled state for the breadcrumb */
+  /** Toggle the disabled state for the Breadcrumb */
   @Prop() disabled: boolean = false;
 
   render() {

@@ -8,7 +8,7 @@ import type { Placement, Instance } from '@popperjs/core';
   shadow: true,
 })
 export class TdsTooltip {
-  /** In case Tooltip contains only text, no HTML, text can be passed by this prop */
+  /** In case Tooltip contains only text, no HTML, a text can be passed by this prop */
   @Prop() text: string = '';
 
   /** The CSS-selector for an element that will trigger the Tooltip */

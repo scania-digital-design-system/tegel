@@ -7,9 +7,9 @@
 
 ## Events
 
-| Event         | Description                                                                                                                                                      | Type                                   |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
-| `tdsCollapse` | Event that is broadcasted when the collapse button is clicked. Prevent it to disable automatic collapsing, and set the collapsed prop on the Side Menu yourself. | `CustomEvent<{ collapsed: boolean; }>` |
+| Event         | Description                                                                                                                                                        | Type                                   |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+| `tdsCollapse` | Event that is broadcast when the collapse button is clicked. Prevent it from disabling automatic collapsing, and set the collapsed prop on the Side Menu yourself. | `CustomEvent<{ collapsed: boolean; }>` |
 
 
 ## Dependencies

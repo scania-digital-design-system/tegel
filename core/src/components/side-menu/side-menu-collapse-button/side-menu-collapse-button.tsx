@@ -13,8 +13,8 @@ export class TdsSideMenuCollapseButton {
 
   private sideMenuEl: HTMLTdsSideMenuElement;
 
-  /** Event that is broadcasted when the collapse button is clicked.
-   * Prevent it to disable automatic collapsing, and set the collapsed prop on the Side Menu yourself. */
+  /** Event that is broadcast when the collapse button is clicked.
+   * Prevent it from disabling automatic collapsing, and set the collapsed prop on the Side Menu yourself. */
   @Event({
     eventName: 'tdsCollapse',
     bubbles: false,
@@ -23,7 +23,7 @@ export class TdsSideMenuCollapseButton {
   })
   tdsCollapse: EventEmitter<CollapseEvent>;
 
-  /** @internal Event that is broadcasted when the internal collapse state changes. Contains the future of the collapse state. */
+  /** @internal Event that is broadcast when the internal collapse state changes. Contains the future of the collapse state. */
   @Event({
     eventName: 'internalTdsCollapse',
     bubbles: true,
@@ -33,7 +33,7 @@ export class TdsSideMenuCollapseButton {
   internalTdsCollapse: EventEmitter<CollapseEvent>;
 
   private handleClick = () => {
-    /** Emit public event that the user can prevent. */
+    /** Emit a public event that the user can prevent. */
     const tdsCollapseEvent = this.tdsCollapse.emit({
       collapsed: !this.collapsed,
     });
