@@ -50,11 +50,11 @@ export default {
         type: 'text',
       },
     },
-    headerImg: {
-      name: 'Header image',
-      description: 'Toggles an image in the header.',
+    thumbnail: {
+      name: 'Header thumbnail',
+      description: 'Adds a thumbnail in the card header.',
       control: {
-        type: 'boolean',
+        type: 'text',
       },
     },
     headerPlacement: {
@@ -116,7 +116,7 @@ export default {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
     subheader: 'Subheader text',
-    headerImg: true,
+    thumbnail: `<img src="${CardPlaceholder}" slot="card-thumbnail" />`,
     headerPlacement: 'Above',
     bodyImg: false,
     bodyContent: '',
@@ -130,8 +130,8 @@ const Template = ({
   modeVariant,
   header,
   subheader,
-  headerImg,
   headerPlacement,
+  thumbnail,
   bodyImg,
   bodyContent,
   bodyDivider,
@@ -151,11 +151,11 @@ const Template = ({
     ${header ? `header="${header}"` : ''}
     header-placement="${headerPlacement.toLowerCase()}"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${headerImg ? `header-img="${CardPlaceholder}"` : ''}
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
+    ${thumbnail}
   ${
     bodyContent
       ? `
@@ -172,7 +172,7 @@ const Template = ({
         ? `
     <script>
         document.addEventListener('tdsClick', (event)=>{
-            console.log('Card with id: ', event.detail.cardId, ' was clicked.')
+            console.log(event)
         })
     </script>
     `
