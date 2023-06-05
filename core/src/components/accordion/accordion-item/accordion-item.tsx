@@ -9,7 +9,7 @@ export class TdsAccordionItem {
   /** The header gives users the context about the additional information available inside the panel */
   @Prop() header: string = '';
 
-  /** Changes position where of expand icon. */
+  /** Changes position of the expand icon. */
   @Prop() expandIconPosition: 'start' | 'end' = 'end';
 
   /** Disabled option in `boolean`. */
