@@ -41,7 +41,7 @@ export const PrefixChange = {
 
     <article class="tds-u-p2 tds-body-01">
         <section>
-            <p class="tds-body-01"><strong>Published: 2022-05-30</strong></p>
+            <p class="tds-body-01"><strong>Published: 2022-06-05</strong></p>
             <h1 class="tds-headline-02">Prefix change 🔁</h1>
             <p>
                 In a previous announcement, we mentioned that @scania/tegel would undergo a prefix change. We have been diligently
