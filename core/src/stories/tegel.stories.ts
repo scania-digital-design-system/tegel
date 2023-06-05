@@ -41,7 +41,7 @@ export const TegelDesignSystem = {
 
                 <tds-banner type="information" icon="information" header="We are moving away from the sdds prefix!">
                 <tds-link slot="banner-link">
-                    <a href="/?path=/story/intro-announcements--prefix-change">
+                    <a target="_self" href="?path=/story/intro-announcements--prefix-change">
                         Read more here!
                     </a>
                 </tds-link>
@@ -186,7 +186,7 @@ export const TegelDesignSystem = {
 
 
                         <tds-link class="tds-u-mt2 tds-body-01">
-                            <a href="?path=/story/intro-announcements--prefix-change">Read more here.</a>
+                            <a target="_self" href="?path=/story/intro-announcements--prefix-change">Read more here.</a>
                         </tds-link>
                         <p>
                             We are also working on a prefix change for our new package. Instead of "sdds" the components, CSS variables
@@ -222,8 +222,8 @@ export const TegelDesignSystem = {
                             and @scania/tegel. We hope that this will ease your migration to our new package. The migration document
                             will
                             continue to be updated until we release 1.0 and is available
-                            <tds-link><a
-                                    href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a></tds-link>
+                            <tds-link><a target="_self"
+                                    href="?path=/story/intro-migrating-from-components-v4--page">here.</a></tds-link>
                         </p>
                     </section>
                     <section>
