@@ -1,7 +1,8 @@
 // @ts-ignore
+import readme from './readme.md';
+// @ts-ignore
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import { formatHtmlPreview } from '../../utils/utils';
-import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
@@ -155,25 +156,27 @@ const Template = ({
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
-  ${bodyContent
+  ${
+    bodyContent
       ? `
     <div slot="card-body">
         ${bodyContent}
     </div>`
       : ''
-    }
+  }
     ${cardBottom ? `${cardBottom}` : ''}
     </tds-card>
     </div>
-    ${clickable
-      ? `
+    ${
+      clickable
+        ? `
     <script>
         document.addEventListener('tdsClick', (event)=>{
             console.log('Card with id: ', event.detail.cardId, ' was clicked.')
         })
     </script>
     `
-      : ''
+        : ''
     }
   `,
   );
