@@ -10,24 +10,24 @@
 | Property             | Attribute              | Description                                                                                    | Type               | Default |
 | -------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- | ------------------ | ------- |
 | `disabled`           | `disabled`             | Disabled option in `boolean`.                                                                  | `boolean`          | `false` |
-| `expandIconPosition` | `expand-icon-position` | Changes where the expand icon is placed.                                                       | `"end" \| "start"` | `'end'` |
+| `expandIconPosition` | `expand-icon-position` | Changes position where of expand icon.                                                         | `"end" \| "start"` | `'end'` |
 | `expanded`           | `expanded`             | Set to true to expand panel open                                                               | `boolean`          | `false` |
 | `header`             | `header`               | The header gives users the context about the additional information available inside the panel | `string`           | `''`    |
-| `paddingReset`       | `padding-reset`        | When true 16px on right padding instead of 64px                                                | `boolean`          | `false` |
+| `paddingReset`       | `padding-reset`        | When true, 16px on right padding instead of 64px                                               | `boolean`          | `false` |
 
 
 ## Events
 
-| Event       | Description                                                                     | Type                                  |
-| ----------- | ------------------------------------------------------------------------------- | ------------------------------------- |
-| `tdsToggle` | Fires when the Accordion Item is clicked but before the it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
+| Event       | Description                                                                  | Type                                  |
+| ----------- | ---------------------------------------------------------------------------- | ------------------------------------- |
+| `tdsToggle` | Fires when the Accordion Item is clicked, but before it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
 
 
 ## Methods
 
 ### `toggleAccordionItem() => Promise<void>`
 
-Method for toggeling the expanded state of the Accordion Item.
+Method for toggling the expanded state of the Accordion Item.
 
 #### Returns
 

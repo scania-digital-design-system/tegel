@@ -52,7 +52,7 @@ export class TdsModal {
     this.handleClose();
   }
 
-  /** Emitts when the Modal is closed. */
+  /** Emits when the Modal is closed. */
   @Event({
     eventName: 'tdsClose',
     composed: true,
@@ -65,7 +65,7 @@ export class TdsModal {
     if (this.show !== null) {
       this.isShown = this.show;
     }
-    this.setDissmissButtons();
+    this.setDismissButtons();
     this.setShowButton();
   }
 
@@ -117,7 +117,7 @@ export class TdsModal {
   };
 
   /** Adds an event listener to the dismiss buttons that closes the Modal. */
-  setDissmissButtons() {
+  setDismissButtons() {
     this.host.querySelectorAll('[data-dismiss-modal]').forEach((dismissButton) => {
       dismissButton.addEventListener('click', (event) => {
         this.handleClose(event);

@@ -40,7 +40,7 @@ export default {
     defaultSelectedIndex: {
       name: 'Default selected index',
       description:
-        'Sets the default selected tab, if this is used the tab changes will be done automatically.',
+        'Sets the default selected Tab, if this is used the Tab changes will be done automatically.',
       control: {
         type: 'radio',
       },
@@ -52,7 +52,7 @@ export default {
     selectedIndex: {
       name: 'Selected index',
       description:
-        'Sets the selected tab, if this is used the tab changes has to be handled by the user.',
+        'Sets the selected Tab, if this is used the Tab changes has to be handled by the user.',
       control: {
         type: 'radio',
       },

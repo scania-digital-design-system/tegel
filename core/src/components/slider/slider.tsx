@@ -48,10 +48,10 @@ export class TdsSlider {
   /** Sets the size of the scrubber */
   @Prop() scrubberSize: 'sm' | 'lg' = 'lg';
 
-  /** Snap to the ticks grid */
+  /** Snap to the tick's grid */
   @Prop() snap: boolean = false;
 
-  /** ID for the sliders input element, randomly generated if not specified. */
+  /** ID for the Slider's input element, randomly generated if not specified. */
   @Prop() sliderId: string = crypto.randomUUID();
 
   private wrapperElement: HTMLElement = null;

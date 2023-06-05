@@ -15,16 +15,17 @@ export class TdsFooterGroup {
   /** In mobile, this indicates when the group (if it's in the top part) is opened/closed. */
   @State() open: boolean = false;
 
-  /** If the group is placed in the main part of the Footer it can have either left or right as a slot position otherwise undefined. */
-  private slotPostion: 'left' | 'right' = null;
+  /** If the group is placed in the main part of the Footer,
+   * it can have either left or right as a slot position otherwise undefined. */
+  private slotPosition: 'left' | 'right' = null;
 
-  /** Indicates the if group is part of the top part of the Footer. */
+  /** Indicates if a group is part of the top part of the Footer. */
   private topPartGroup: boolean = false;
 
   connectedCallback() {
     this.topPartGroup = this.host.parentElement.slot === 'top';
     if (!this.topPartGroup) {
-      this.slotPostion = this.host.parentElement.slot === 'main-right' ? 'right' : 'left';
+      this.slotPosition = this.host.parentElement.slot === 'main-right' ? 'right' : 'left';
     }
   }
 
@@ -48,7 +49,7 @@ export class TdsFooterGroup {
         )}
         <div
           role="list"
-          class={`${this.slotPostion ? this.slotPostion : ''}
+          class={`${this.slotPosition ? this.slotPosition : ''}
             ${this.topPartGroup ? 'top-part-child' : ''}
             ${this.open ? 'expanded' : 'closed'}`}
         >

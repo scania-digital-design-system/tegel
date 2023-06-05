@@ -7,7 +7,7 @@ import { Component, h, State, Prop, Event, EventEmitter } from '@stencil/core';
   scoped: true,
 })
 export class TdsTextField {
-  /** Textinput for focus state */
+  /** Text input for focus state */
   textInput?: HTMLInputElement;
 
   /** Which input type, text, password or similar */
