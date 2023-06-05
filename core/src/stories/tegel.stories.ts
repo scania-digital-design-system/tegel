@@ -186,7 +186,7 @@ export const TegelDesignSystem = {
 
 
                         <tds-link class="tds-u-mt2 tds-body-01">
-                            <a href="?path=/story/intro-announcements-prefix-change--page">Read more here.</a>
+                            <a href="?path=/story/intro-announcements--prefix-change">Read more here.</a>
                         </tds-link>
                         <p>
                             We are also working on a prefix change for our new package. Instead of "sdds" the components, CSS variables
