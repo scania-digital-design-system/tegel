@@ -18,12 +18,6 @@ export class TdsCard {
   /** Subheader text in the header */
   @Prop() subheader: string;
 
-  /** Header image src */
-  @Prop() headerImg: string;
-
-  /** Alt text for the header image */
-  @Prop() headerImgAlt: string;
-
   /** Body image src */
   @Prop() bodyImg: string;
 
@@ -60,7 +54,10 @@ export class TdsCard {
 
   @State() hasCardBodySlot: boolean = false;
 
+  @State() hasCardThumbnail: boolean = false;
+
   connectedCallback() {
+    this.hasCardThumbnail = !!this.hostElement.querySelector('[slot="card-thumbnail"]');
     this.hasCardBottomSlot = !!this.hostElement.querySelector('[slot="card-bottom"]');
     this.hasCardBodySlot = !!this.hostElement.querySelector('[slot="card-body"]');
   }
@@ -75,13 +72,15 @@ export class TdsCard {
     <div>
       {this.headerPlacement === 'above' && (
         <div class={`card-top ${this.headerPlacement}`}>
-          {this.headerImg && (
-            <img class={`card-top-image`} src={this.headerImg} alt={this.headerImgAlt} />
-          )}{' '}
+          {this.hasCardThumbnail && (
+            <div class={this.hasCardThumbnail ? 'card-thumbnail' : 'no-header-img'}>
+              <slot name="card-thumbnail"></slot>
+            </div>
+          )}
           <div
             class={`
           card-top-header
-          ${!this.headerImg ? 'no-header-img' : ''}
+          ${!this.hasCardThumbnail ? 'no-header-img' : ''}
           ${!this.header || !this.subheader ? 'single-line-header' : ''}
           `}
           >
@@ -92,15 +91,17 @@ export class TdsCard {
       )}
       <div class={`card-body`}>
         {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
-        {this.headerPlacement === 'below' && (this.headerImg || this.header || this.subheader) && (
+        {this.headerPlacement === 'below' && (this.header || this.subheader) && (
           <div class={`card-top ${this.headerPlacement}`}>
-            {this.headerImg && (
-              <img class={`card-top-image`} src={this.headerImg} alt={this.headerImgAlt} />
+            {this.hasCardThumbnail && (
+              <div class={this.hasCardThumbnail ? 'card-thumbnail' : 'no-header-img'}>
+                <slot name="card-thumbnail"></slot>
+              </div>
             )}
             <div
               class={`
             card-top-header
-            ${!this.headerImg ? 'no-header-img' : ''}
+            ${!this.hasCardThumbnail ? 'no-header-img' : ''}
             ${!this.header || !this.subheader ? 'single-line-header' : ''}
             `}
             >
