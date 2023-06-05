@@ -27,7 +27,9 @@ export class TdsRadioButton {
   /** Decides if the Radio Button is disabled or not. */
   @Prop() disabled: boolean = false;
 
-  /** Sends unique Radio Button identifier and status when it is checked. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
+  /** Sends unique Radio Button identifier and status when it is checked.
+   * If no ID is specified, a random one will be generated.
+   * To use this listener, don't use the randomized ID, use a specific one of your choosing. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
@@ -57,9 +59,6 @@ export class TdsRadioButton {
           value={this.value}
           checked={this.checked}
           aria-checked={this.checked}
-          // REMEMBER TO ENABLE ARIA PROPS ONCE ALIGNMENT HAS BEEN MADE!
-          // aria-labelledby={this.ariaLabelledBy}
-          // aria-describedby={this.host.getAttribute('aria-describedby')}
           required={this.required}
           disabled={this.disabled}
           onChange={() => this.handleChange()}

@@ -25,7 +25,7 @@ export class TdsNavigationTabs {
   @Prop() defaultSelectedIndex: number = 0;
 
   /** Sets the selected Tab.
-   * If this is set all Tab changes needs to be handled by the user. */
+   * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
   @State() showLeftScroll: boolean = false;

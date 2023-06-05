@@ -21,11 +21,11 @@ export class TdsFolderTabs {
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Sets the default selected tab. */
+  /** Sets the default selected Tab. */
   @Prop() defaultSelectedIndex: number = 0;
 
   /** Sets the selected Tab.
-   * If this is set all Tab changes needs to be handled by the user. */
+   * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
   @State() buttonWidth: number = 0;

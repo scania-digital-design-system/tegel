@@ -6,7 +6,7 @@ import { Component, h, Prop, Watch, State } from '@stencil/core';
   shadow: true,
 })
 export class TdsBadge {
-  /** Value shown in badge */
+  /** Value shown in Badge */
   @Prop() value: string = '';
 
   /** Changes visibility of Badge */

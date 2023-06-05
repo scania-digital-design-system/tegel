@@ -23,7 +23,7 @@ export default {
   argTypes: {
     type: {
       name: 'Message type',
-      description: 'Changes the type of message.',
+      description: 'Changes the type of Toast.',
       control: {
         type: 'radio',
       },
