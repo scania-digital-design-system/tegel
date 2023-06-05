@@ -6,7 +6,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsAccordion {
-  /** Set the variant of the the accordion. */
+  /** Set the variant of the accordion. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   render() {

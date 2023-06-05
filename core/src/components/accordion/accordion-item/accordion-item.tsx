@@ -24,7 +24,7 @@ export class TdsAccordionItem {
   /** Method for toggeling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
-    // This is negated in order to emit the value the accordion item will have after it has expanded/redacted.
+    // This is negated in order to emit the value the Accordion Item will have after it has expanded/redacted.
     const event = this.tdsToggle.emit({
       expanded: !this.expanded,
     });
