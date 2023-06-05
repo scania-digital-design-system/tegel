@@ -70,8 +70,7 @@ export const TegelDesignSystem = {
                             you
                             want to try out the package today you can! It's available via NPM and can be installed using the
                             installation
-                            guide
-                            below.
+                            guide which you can find <tds-link><a target="_self" href="?path=/story/intro-installation--page">here.</a></tds-link>
                         </p>
 
                     </section>
@@ -79,7 +78,7 @@ export const TegelDesignSystem = {
                         <h4 class="tds-u-mb2">@scania/tegel 🧱</h4>
 
                         <p>
-                            <b>TLDR;</b>The new @scania/tegel package is an improvement and continuation of the previous
+                            <b>TLDR;</b> The new @scania/tegel package is an improvement and continuation of the previous
                             @scania/component,
                             @scania/theme-light, and @scania/icons packages. It simplifies the installation process and ships with types
                             which offers type safety and improves the developer experience with intellisence and autocompletion.
