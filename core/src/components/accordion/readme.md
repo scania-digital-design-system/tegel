@@ -9,7 +9,7 @@
 
 | Property      | Attribute      | Description                       | Type                       | Default |
 | ------------- | -------------- | --------------------------------- | -------------------------- | ------- |
-| `modeVariant` | `mode-variant` | Set the variant of the accordion. | `"primary" \| "secondary"` | `null`  |
+| `modeVariant` | `mode-variant` | Set the variant of the Accordion. | `"primary" \| "secondary"` | `null`  |
 
 
 ----------------------------------------------
