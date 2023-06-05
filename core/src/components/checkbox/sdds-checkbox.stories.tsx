@@ -48,19 +48,31 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    indeterminate: {
+      name: 'Indeterminate',
+      description: 'Set the checkbox state to indeterminate',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   args: {
     label: 'Label',
     checked: false,
     disabled: false,
+    indeterminate: false,
   },
 };
 
-const Template = ({ label, checked, disabled }) =>
+const Template = ({ label, checked, disabled, indeterminate }) =>
   formatHtmlPreview(`
     <sdds-checkbox
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
+        ${indeterminate ? 'indeterminate' : ''}
         value="checkbox-value"
         >
         <div slot="label">${label}</div>
