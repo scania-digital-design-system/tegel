@@ -203,7 +203,7 @@ export class AppModule {}</code>
     <h2>Stencil</h2>
     <section>
         <ol>
-            <li><p>Run <code>npm istall @scania/tegel</code></p></li>
+            <li><p>Run <code>npm install @scania/tegel</code></p></li>
             <li><p>Import @scania/tegel in your stencil component.</p></li>
             <li><p>In your global css file import the tegel stylesheet.</p>
             <pre>
