@@ -1,8 +1,10 @@
 # tds-card
 
 
-### The subheader of the card is also available as a slot.
 
+## Slots
+
+### Subheader
 ```jsx
 <div class="demo-wrapper">
   <tds-card header="Header text" header-placement="above">

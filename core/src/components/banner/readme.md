@@ -1,7 +1,9 @@
 # tds-banner
 
-### The subheader of the Banner is also available as a slot.
 
+## Slots
+
+### Subheader
 ```jsx
 <tds-banner icon="truck" header="This is a header text area" >
   <div slot="banner-subheader">Subheader text</div>
