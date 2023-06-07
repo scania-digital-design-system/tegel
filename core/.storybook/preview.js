@@ -136,8 +136,8 @@ export const parameters = {
         'Intro',
         [
           'Tegel Design System',
-          'Migrating from components v4',
           'Installation',
+          'Migrating from components v4',
           'Events',
           'Announcements',
           ['Tegel', 'Prefix change'],
