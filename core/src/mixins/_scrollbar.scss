@@ -1,11 +1,11 @@
-@mixin sdds-scrollbar {
+@mixin tds-scrollbar {
   &::-webkit-scrollbar {
     width: 4px;
     background-color: inherit;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--sdds-grey-300);
+    background-color: var(--tds-grey-300);
   }
 
   ::-webkit-scrollbar-button {

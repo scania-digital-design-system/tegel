@@ -8,9 +8,7 @@ This document includes all the breaking changes when migrating from @scania/comp
 
 ## Deprecation of Native Components
 
-In @scania/tegel we have removed all of our "native" components and instead introducing web component
-counterparts to these. This means that every component that was available as a "native" component in
-@scania/components will have a web component counterpart in @scania/tegel. This change does not affect the existing @scania/components package.
+In @scania/tegel, we have replaced all of our "native" components with their corresponding web component counterparts. As a result, every component previously available as a "native" component in @scania/components now has a web component equivalent in @scania/tegel. It's important to note that this change does not impact the existing @scania/components package.
 
 ## Event name convention
 
@@ -20,14 +18,25 @@ Previously we have not had a set naming convention for our events. This has led 
 components where some events has had a `custom` prefix, and others have had other ways of indicating whether
 or not it is a custom event. We have now settled on a naming convention for all events.
 Both **external**, events we expect you as a user to interact with, and **internal**, events that are used within
-our components to update state/react to changes.
+our components to update state/react to changes. 
 
-In short:
+## Prefix change
+Furthermore we decided to rename the previously used 'sdds'-prefix to 'tds'. 
+This occurred as a result of a deliberate choice to facilitate the transition to the new Tegel package and prevent conflicts with previously used components.
 
+In short, before the prefix change:
+
+- Web component names are named with 'sdds-' + component name. ('sdds-badge')
 - External events are named: 'sdds' + native event name. ('sddsClick', 'sddsChange')
-- Internal events are named: 'internalSdds' + event name. ('internalSddsTablePropsChange', 'internalSddsCheckboxChange')
+- Internal events are named: 'internalsdds' + event name. ('internalsddsTablePropsChange', 'internalsddsCheckboxChange')
 
-You can read more about our event naming conventions [here](www.TODOLINKTOCODE_STYLE.md)
+Now, after prefix change:
+
+- Web component names are named with 'tds-' + component name ('tds-badge')
+- External events are named: 'tds' + native event name. ('tdsClick', 'tdsChange')
+- Internal events are named: 'internaltds' + event name. ('internaltdsTablePropsChange', 'internaltdsCheckboxChange')
+
+You can read more about naming in our code conventions [here].(https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md)
 
 ## Removed base font-size and moved to `px` instead of `rem`.
 
@@ -44,9 +53,7 @@ can be used on its own.
 
 #### What action is required?
 
-If you are not yourself using `rem` in your project ideally this change should not affect you, but since it is
-something that has an effect on all components and utilities/foundations we expect that there might be some
-unforeseen problems. These will have our highest prio in order to make the migration to Tegel as smooth as possible.
+If you are not currently utilizing `rem` in your project, this change ideally should not impact you directly. However, since it affects all components, utilities, and foundations, there is a possibility of encountering unforeseen issues. Resolving these problems will be our top priority to ensure a seamless transition to Tegel.
 
 If you are however using `rem` in your project you would have to consider that the base value will no longer be `4px`.
 This value will now by default be `16px`. So for the element in you project that are using rem these would have to be
@@ -75,12 +82,12 @@ It is important to note that some components may have a different appearance due
 - Footer
 - Message
 - Tab
+- Text Field
 - Textarea
-- Textfield
 
 ##### Changing mode
 
-Mode is controlled on a top level, using class `sdds-mode-dark` or `sdds-mode-light` (light is default).
+Mode is controlled on a top level, using class `tds-mode-dark` or `tds-mode-light` (light is default).
 
 ##### Changing mode variant
 
@@ -112,17 +119,16 @@ Replace `affix="prefix"` with `expand-icon-position="start"` and remove `affix="
 </sdds-accordion>
 
 // New ✅
-<sdds-accordion>
-  <sdds-accordion-item header="Lorem ipsum" expand-icon-position="start" tabindex="0">
+<tds-accordion>
+  <tds-accordion-item header="Lorem ipsum" expand-icon-position="start" tabindex="0">
     // ...
-  </sdds-accordion-item>
-</sdds-accordion>
+  </tds-accordion-item>
+</tds-accordion>
 ```
 
 #### Added prop for mode-variant and removed class `sdds-on-white-bg`
 
-Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced a prop called `mode-variant` with options`primary` or
-`secondary` to determine which variant is being shown. For this component `primary` is the default value and represents the old `sdds-on-white-bg`
+Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant`, which has the values `primary` or `secondary`, to determine the variant being displayed. For this component `primary` is the default value and represents the old `sdds-on-white-bg`
 
 ##### What action is required?
 
@@ -138,18 +144,30 @@ If the component is used on a background with a color of grey-50, mode-variant p
 </sdds-accordion>
 
 // New ✅
-<sdds-accordion mode-variant="primary">
-  <sdds-accordion-item header="Lorem ipsum" tabindex="0">
+<tds-accordion mode-variant="primary">
+  <tds-accordion-item header="Lorem ipsum" tabindex="0">
     // ...
-  </sdds-accordion-item>
-</sdds-accordion>
+  </tds-accordion-item>
+</tds-accordion>
 ```
 
 ## Badge
 
 [Story](/docs/components--badge)
 
-#### Replaced "isVisible" prop with "hidden", renamed to sdds-badge
+#### Component name updated to adhere to convention
+
+The badge was previously named `sdds-badges`, to conform with our naming convention this has been changed to singular.
+
+```jsx
+// Old ❌
+<sdds-badges></sdds-badges>
+
+// New ✅
+<tds-badge></tds-badge>
+```
+
+#### Replaced "isVisible" prop with "hidden"
 
 The visibility of the Badge was previously determined by its `isVisible` prop. This has now been changed to a `hidden`
 prop, to align with other components. This prop is `false` by default, so for visible badges it does not have to be set.
@@ -163,12 +181,12 @@ Replace all intances of `isVisible="false"` with `hidden`.
 <sdds-badges value="1" is-visible="false" size="default"></sdds-badges>
 
 // New ✅
-<sdds-badge value="1" hidden size="lg"></sdds-badge>
+<tds-badge value="1" hidden size="lg"></tds-badge>
 ```
 
 #### Replaced "default" value of size prop with "lg", renamed to sdds-badge
 
-Size value `default` was replaced with value `lg` as part of standardisation size props to use "t-shirt" naming convention.
+As part of the standardization of size props, the default value "size" was replaced with "lg" to align with the "t-shirt" naming convention.
 
 Renamed from "badges" to "badge" to conform with other components.
 
@@ -183,7 +201,7 @@ Rename component.
 <sdds-badges value="1" is-visible="true" size="default"></sdds-badges>
 
 // New ✅
-<sdds-badge value="1" is-visible="true" size="lg"></sdds-badge>
+<tds-badge value="1" is-visible="true" size="lg"></tds-badge>
 ```
 
 ## Button
@@ -205,9 +223,9 @@ Rename `variant` to `mode-variant` and change type name.
 </sdds-button>
 
 // New ✅
-<sdds-button mode-variant="primary">
+<tds-button mode-variant="primary">
   Button text
-</sdds-button>
+</tds-button>
 ```
 
 ## Datetime
@@ -232,7 +250,7 @@ Change all `<sdds-datetime>` that are using slots to use the prop instead.
 </sdds-datetime>
 
 // New ✅
-<sdds-datetime
+<tds-datetime
   id="datetime"
   type="datetime-local"
   size="lg"
@@ -240,7 +258,7 @@ Change all `<sdds-datetime>` that are using slots to use the prop instead.
   no-min-width
   label="Label text"
   helper="Helper text"
-></sdds-datetime>
+></tds-datetime>
 ```
 
 ## Dropdown
@@ -263,175 +281,130 @@ If the component is used on a background with a color of grey-50, mode-variant p
     // ...
 </sdds-dropdown>
 // New ✅
-<sdds-dropdown mode-variant="primary">
+<tds-dropdown mode-variant="primary">
     // ...
-</sdds-dropdown>
+</tds-dropdown>
 ```
 
-## Navigation Tabs
+## Inline, Folder & Navigation Tabs
 
-[Story](/docs/components--navigation-tabs)
+### Updated `<sdds-inline-tabs>` and `<sdds-navigation-tabs>` and introduced `<sdds-folder-tabs>`. Introduced child components for all Tabs.
 
-#### Changed class names `sdds-navigation-tabs--tab__active` and `sdds-navigation-tabs--tab__disabled`
-
-The class names `sdds-navigation-tabs--tab__active` and `sdds-navigation-tabs--tab__disabled` was
-changed to `sdds-navigation-tabs-tab-active` and `sdds-navigation-tabs-tab-disabled` to conform
-with convention.
-
-##### What action is required?
-
-Changed all instaces of `sdds-navigation-tabs--tab__active` and `sdds-navigation-tabs--tab__disabled`
-to `sdds-navigation-tabs-tab-active` and `sdds-navigation-tabs-tab-disabled`.
+Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These had little resemblance to each other in appearance, thus it was more logical to consider them as completely distinct components. 
+In order to establish a clear differentiation between them, we have renamed `<sdds-inline-tabs>` to `<sdds-folder-tabs>` so as to better reflect its visual appearance.
+Our three tabs (inline, folder, and navigation) are designed to function with both buttons and links. To achieve this, we have introduced a single child element for each tab, which is intended to wrap the underlying element.
 
 ```jsx
-// Old ❌
-<sdds-navigation-tabs>
-  <a href="#" class="sdds-navigation-tabs--tab__active">Active tab</a>
-  <a href="#">Tab name</a>
-  <a href="#">Tab name</a>
-  <a href="#">Tab name</a>
-  <a role="link" aria-disabled="true" class="sdds-navigation-tabs--tab__disabled">Disabled tab</a>
-</sdds-navigation-tabs>
-
-// New ✅
-<sdds-navigation-tabs>
-  <a href="#" class="sdds-navigation-tabs-tab-active">Active tab</a>
-  <a href="#">Tab name</a>
-  <a href="#">Tab name</a>
-  <a href="#">Tab name</a>
-  <a role="link" aria-disabled="true" class="sdds-navigation-tabs-tab-disabled">Disabled tab</a>
-</sdds-navigation-tabs>
-
+<tds-inline-tab>,
+<tds-folder-tab> &
+<tds-navigation-tab>
 ```
 
-## Inline, Folder & Navigation tabs
-
-### Updated `<sdds-inline-tabs>` and `<sdds-navigation-tabs>` and introduced `<sdds-folder-tabs>`. Introduced child components for all tabs.
-
-Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These
-reminded little of eachother in appearence and therefore it made more sense to treat
-these as two totally seperate component. To have a clear distiction between them we
-have now renamed the `<ssd-inline-tabs>` to `<sdds-folder-tabs>`, to futher highlight
-its look and its function.
-
-All three of our tabs (inline/folder/navigation) are meant to work with either buttons
-or links. Therefore we have created a single child element for each tab, that is
-meant to wrapp the underlying element:
-
-```jsx
-<sdds-inline-tab>,
-<sdds-folder-tab> &
-<sdds-navigation-tab>
-```
-
-The content that is displayed under each tab, is no longer handled by the component.
-And is therefor something that you as a user of the components will have to implement
-yourself. We will of course be peresenting examples of how this could be implemented,
-and if you have any questions we are always here to help.
+The component no longer manages the content displayed under each tab. Therefore, it is now up to you, as a component user to implement it yourself. We will provide examples of how this can be done, and if you have any questions, we are always here to assist you.
 
 The new components are available here in storybook:
 
-- [Inline tabs](/docs/components--inline-tabs)
-- [Folder tabs](/docs/components--folder-tabs)
-- [Navigation tabs](/docs/components--navigation-tabs)
+- [Inline Tabs](/docs/components--inline-tabs)
+- [Folder Tabs](/docs/components--folder-tabs)
+- [Navigation Tabs](/docs/components--navigation-tabs)
 
 ```jsx
-// New sdds-inline-tabs with buttons 🆕
-<sdds-inline-tabs>
-  <sdds-inline-tab>
+// New tds-inline-tabs with buttons 🆕
+<tds-inline-tabs>
+  <tds-inline-tab>
     <button>First tab</button>
-  </sdds-inline-tab>
-  <sdds-inline-tab>
+  </tds-inline-tab>
+  <tds-inline-tab>
     <button>Second tab</button>
-  </sdds-inline-tab>
-  <sdds-inline-tab>
+  </tds-inline-tab>
+  <tds-inline-tab>
     <button>Third tab</button>
-  </sdds-inline-tab>
-  <sdds-inline-tab disabled>
+  </tds-inline-tab>
+  <tds-inline-tab disabled>
     <button>Fourth tab</button>
-  </sdds-inline-tab>
-</sdds-inline-tabs>
+  </tds-inline-tab>
+</tds-inline-tabs>
 
-// New sdds-inline-tabs with links 🆕
-<sdds-inline-tabs>
-  <sdds-inline-tab>
+// New tds-inline-tabs with links 🆕
+<tds-inline-tabs>
+  <tds-inline-tab>
     <a href="#">First tab</a>
-  </sdds-inline-tab>
-  <sdds-inline-tab>
+  </tds-inline-tab>
+  <tds-inline-tab>
     <a href="#">Second tab</a>
-  </sdds-inline-tab>
-  <sdds-inline-tab>
+  </tds-inline-tab>
+  <tds-inline-tab>
     <a href="#">Third tab</a>
-  </sdds-inline-tab>
-  <sdds-inline-tab disabled>
+  </tds-inline-tab>
+  <tds-inline-tab disabled>
     <a href="#">Fourth tab</a>
-  </sdds-inline-tab>
-</sdds-inline-tabs>
+  </tds-inline-tab>
+</tds-inline-tabs>
 
-// New sdds-folder-tabs with buttons 🆕
-<sdds-folder-tabs>
-  <sdds-folder-tab>
+// New tds-folder-tabs with buttons 🆕
+<tds-folder-tabs>
+  <tds-folder-tab>
     <button>First tab</button>
-  </sdds-folder-tab>
-  <sdds-folder-tab>
+  </tds-folder-tab>
+  <tds-folder-tab>
     <button>Second tab</button>
-  </sdds-folder-tab>
-  <sdds-folder-tab selected>
+  </tds-folder-tab>
+  <tds-folder-tab selected>
     <button>Third tab</button>
-  </sdds-folder-tab>
-  <sdds-folder-tab disabled>
+  </tds-folder-tab>
+  <tds-folder-tab disabled>
     <button>Fourth tab</button>
-  </sdds-folder-tab>
-</sdds-folder-tabs>
+  </tds-folder-tab>
+</tds-folder-tabs>
 
-// New sdds-folder-tabs with links 🆕
-<sdds-folder-tabs>
-  <sdds-folder-tab link-href="#">
+// New tds-folder-tabs with links 🆕
+<tds-folder-tabs>
+  <tds-folder-tab link-href="#">
     <a href="#">First tab</a>
-  </sdds-folder-tab>
-  <sdds-folder-tab link-href="#">
+  </tds-folder-tab>
+  <tds-folder-tab link-href="#">
     <a href="#">Second tab</a>
-  </sdds-folder-tab>
-  <sdds-folder-tab>
+  </tds-folder-tab>
+  <tds-folder-tab>
     <a href="#">Third tab</a>
-  </sdds-folder-tab>
-  <sdds-folder-tab disabled>
+  </tds-folder-tab>
+  <tds-folder-tab disabled>
     <a href="#">Fourth tab</a>
-  </sdds-folder-tab>
-</sdds-folder-tabs>
+  </tds-folder-tab>
+</tds-folder-tabs>
 
 
-// New sdds-navigation-tabs with buttons 🆕
-<sdds-navigation-tabs>
-  <sdds-navigation-tab>
+// New tds-navigation-tabs with buttons 🆕
+<tds-navigation-tabs>
+  <tds-navigation-tab>
     <button>First tab</button>
-  </sdds-navigation-tab>
-  <sdds-navigation-tab>
+  </tds-navigation-tab>
+  <tds-navigation-tab>
     <button>Second tab</button>
-  </sdds-navigation-tab>
-  <sdds-navigation-tab>
+  </tds-navigation-tab>
+  <tds-navigation-tab>
     <button>Third tab</button>
-  </sdds-navigation-tab>
-  <sdds-navigation-tab disabled>
+  </tds-navigation-tab>
+  <tds-navigation-tab disabled>
     <button>Fourth tab</button>
-  </sdds-navigation-tab>
-</sdds-navigation-tabs>
+  </tds-navigation-tab>
+</tds-navigation-tabs>
 
-// New sdds-navigation-tabs with links 🆕
-<sdds-navigation-tabs>
-  <sdds-navigation-tab>
+// New tds-navigation-tabs with links 🆕
+<tds-navigation-tabs>
+  <tds-navigation-tab>
     <a href="#">First tab</a>
-  </sdds-navigation-tab>
-  <sdds-navigation-tab>
+  </tds-navigation-tab>
+  <tds-navigation-tab>
     <a href="#">Second tab</a>
-  </sdds-navigation-tab>
-  <sdds-navigation-tab >
+  </tds-navigation-tab>
+  <tds-navigation-tab >
     <a href="#">Third tab</a>
-  </sdds-navigation-tab>
-  <sdds-navigation-tab disabled >
+  </tds-navigation-tab>
+  <tds-navigation-tab disabled >
     <a href="#">Fourth tab</a>
-  </sdds-navigation-tab>
-</sdds-navigation-tabs>
+  </tds-navigation-tab>
+</tds-navigation-tabs>
 ```
 
 ## Textarea
@@ -453,9 +426,9 @@ Rename all instances of `maxlength` to `max-length`.
 ></sdds-textarea>
 
 // New ✅
-<sdds-textarea
+<tds-textarea
     max-length="10"
-></sdds-textarea>
+></tds-textarea>
 
 ```
 
@@ -474,9 +447,9 @@ Rename all instances of `readonly` to `read-only`.
 ></sdds-textarea>
 
 // New ✅
-<sdds-textarea
+<tds-textarea
     read-only
-></sdds-textarea>
+></tds-textarea>
 
 ```
 
@@ -495,9 +468,9 @@ Rename all instances of `autofocus` to `auto-focus`.
 ></sdds-textarea>
 
 // New ✅
-<sdds-textarea
+<tds-textarea
     auto-focus
-></sdds-textarea>
+></tds-textarea>
 
 ```
 
@@ -517,13 +490,31 @@ If the component is used on a background with a color of grey-50, mode-variant p
   <sdds-textarea> </sdds-textarea>
 </div>
 // New ✅
- <sdds-textarea mode-variant="primary">
- </sdds-textarea>
+ <tds-textarea mode-variant="primary">
+ </tds-textarea>
 ```
 
-## Textfield
+## Text Field
 
 [Story](/docs/components--textarea)
+
+#### Changed component name to conform with convention.
+
+The Text Field components was renamed to conform with american english convention.
+
+##### What action is required?
+
+Update all instaces of textfield to text-field.
+
+```jsx
+// Old ❌
+<sdds-textfield
+></sdds-textfield>
+
+// New ✅
+<tds-text-field
+></tds-text-field>
+```
 
 #### Changed prop name 'maxlength'
 
@@ -540,9 +531,9 @@ Rename all instances of `maxlength` to `max-length`.
 ></sdds-textfield>
 
 // New ✅
-<sdds-textfield
+<tds-text-field
     max-length="10"
-></sdds-textfield>
+></tds-text-field>
 ```
 
 #### Changed props for label and label-position to align with convention.
@@ -581,7 +572,7 @@ and `label="Your label text"` props instead.
 
 
 // New ✅ - Inside label
-<sdds-textfield
+<tds-text-field
   type="text"
   size="lg"
   state="none"
@@ -589,10 +580,10 @@ and `label="Your label text"` props instead.
   label="Label text"
   label-position="inside"
   placeholder="Placeholder"
-></sdds-textfield>
+></tds-text-field>
 
 // New ✅ - Outside label
-<sdds-textfield
+<tds-text-field
   type="text"
   size="lg"
   state="none"
@@ -600,7 +591,7 @@ and `label="Your label text"` props instead.
   label="Label text"
   label-position="outside"
   placeholder="Placeholder"
-  ></sdds-textfield>
+  ></tds-text-field>
 ```
 
 #### Changed prop name 'nominwidth'
@@ -618,9 +609,9 @@ Rename all instances of `nominwidth` to `no-min-width`.
 ></sdds-textfield>
 
 // New ✅
-<sdds-textfield
+<tds-text-field
     no-min-width
-></sdds-textfield>
+></tds-text-field>
 ```
 
 #### Removed slot for helper and added `helper` prop
@@ -641,9 +632,9 @@ Change all instaces of `<span slot='sdds-helper'>${helper}</span>` to attrubute
 </sdds-textfield>
 
 // New ✅
-<sdds-textfield
+<tds-text-field
     helper="Helper text"
-></sdds-textfield>
+></tds-text-field>
 ```
 
 #### Added prop for mode-variant and removed class `sdds-on-white-bg` on container element
@@ -662,8 +653,8 @@ If the component is used on a background with a color of grey-50, mode-variant p
   <sdds-textfield> </sdds-textfield>
 </div>
 // New ✅
- <sdds-textfield mode-variant="primary">
- </sdds-textfield>
+ <tds-text-field mode-variant="primary">
+ </tds-text-field>
 ```
 
 ## Data table
@@ -687,24 +678,22 @@ If the component is used on a background with a color of grey-50, mode-variant p
 </sdds-table>
 
 // New ✅
-<sdds-table >
-  <sdds-table-header>
+<tds-table >
+  <tds-table-header>
     //
-  </sdds-table-header>
-  <sdds-table-body enable-dummy-data>
+  </tds-table-header>
+  <tds-table-body enable-dummy-data>
     //
-  </sdds-table-body>
-  <sdds-table-footer pagination ></sdds-table-footer>
-</sdds-table>
+  </tds-table-body>
+  <tds-table-footer pagination ></tds-table-footer>
+</tds-table>
 ```
 
 #### Removed `disableFilteringFunction`, `disableSortingFunction` and `enableClientPagination`.
 
-These props were previously available on the data table component to allow for users to implement
-their own filter/sort and pagination logic. Now we have removed these props, and instead made the
-events that these are emitting cencelable.
+Previously, the data table component provided these props to enable users to implement their own filter, sort, and pagination logic. However, we have now removed these props and replaced them with cancellable events emitted by the component.
 
-The events are: 'sddsPageChange', 'sddsSortChange', 'sddsFilterChange'
+The events are: 'tdsPageChange', 'tdsSortChange', 'tdsFilterChange'
 
 ##### What action is required?
 
@@ -721,18 +710,18 @@ The events are: 'sddsPageChange', 'sddsSortChange', 'sddsFilterChange'
 </sdds-table>
 
 // New ✅
-<sdds-table >
-  <sdds-table-header>
+<tds-table >
+  <tds-table-header>
     //
-  </sdds-table-header>
-  <sdds-table-body enable-dummy-data>
+  </tds-table-header>
+  <tds-table-body enable-dummy-data>
     //
-  </sdds-table-body>
-  <sdds-table-footer pagination rows-per-page="4"></sdds-table-footer>
-</sdds-table>
+  </tds-table-body>
+  <tds-table-footer pagination rows-per-page="4"></tds-table-footer>
+</tds-table>
 
 <script>
-  document.addEventListener('sddsPageChange', (event) => {
+  document.addEventListener('tdsPageChange', (event) => {
     event.preventDefault()
   })
 

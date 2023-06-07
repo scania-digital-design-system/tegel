@@ -1,4 +1,4 @@
-# sdds-checkbox
+# tds-checkbox
 
 
 
@@ -9,21 +9,21 @@
 
 | Property     | Attribute     | Description                                                               | Type      | Default               |
 | ------------ | ------------- | ------------------------------------------------------------------------- | --------- | --------------------- |
-| `checkboxId` | `checkbox-id` | ID for the checkbox's input element. Randomly generated if not specified. | `string`  | `crypto.randomUUID()` |
+| `checkboxId` | `checkbox-id` | ID for the Checkbox's input element. Randomly generated if not specified. | `string`  | `crypto.randomUUID()` |
 | `checked`    | `checked`     | Sets the Checkbox as checked                                              | `boolean` | `false`               |
 | `disabled`   | `disabled`    | Sets the Checkbox in a disabled state                                     | `boolean` | `false`               |
-| `name`       | `name`        | Name for the checkbox's input element.                                    | `string`  | `undefined`           |
+| `name`       | `name`        | Name for the Checkbox's input element.                                    | `string`  | `undefined`           |
 | `required`   | `required`    | Make the Checkbox required                                                | `boolean` | `false`               |
 | `value`      | `value`       | Value for the Checkbox                                                    | `string`  | `undefined`           |
 
 
 ## Events
 
-| Event        | Description                                                                       | Type                                                                     |
-| ------------ | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| `sddsBlur`   | Blur event for the Checkbox                                                       | `CustomEvent<FocusEvent>`                                                |
-| `sddsChange` | Sends unique Checkbox identifier and checked status when it is checked/unchecked. | `CustomEvent<{ checkboxId: string; checked: boolean; value?: string; }>` |
-| `sddsFocus`  | Focus event for the Checkbox                                                      | `CustomEvent<FocusEvent>`                                                |
+| Event       | Description                                                                       | Type                                                                     |
+| ----------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `tdsBlur`   | Blur event for the Checkbox                                                       | `CustomEvent<FocusEvent>`                                                |
+| `tdsChange` | Sends unique Checkbox identifier and checked status when it is checked/unchecked. | `CustomEvent<{ checkboxId: string; checked: boolean; value?: string; }>` |
+| `tdsFocus`  | Focus event for the Checkbox                                                      | `CustomEvent<FocusEvent>`                                                |
 
 
 ## Methods
@@ -43,19 +43,19 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 
 ### Used by
 
- - [sdds-dropdown-option](../dropdown/dropdown-option)
- - [sdds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
- - [sdds-table-body-row](../data-table/table-body-row)
- - [sdds-table-header](../data-table/table-header)
+ - [tds-dropdown-option](../dropdown/dropdown-option)
+ - [tds-dropdown-option-v2](../dropdown-v2/dropdown-option-v2)
+ - [tds-table-body-row](../table/table-body-row)
+ - [tds-table-header](../table/table-header)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-option --> sdds-checkbox
-  sdds-dropdown-option-v2 --> sdds-checkbox
-  sdds-table-body-row --> sdds-checkbox
-  sdds-table-header --> sdds-checkbox
-  style sdds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
+  tds-dropdown-option --> tds-checkbox
+  tds-dropdown-option-v2 --> tds-checkbox
+  tds-table-body-row --> tds-checkbox
+  tds-table-header --> tds-checkbox
+  style tds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

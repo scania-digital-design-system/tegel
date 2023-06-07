@@ -14,7 +14,7 @@
 @import '../../../typography/scania-fonts-selectors';
 
 // Logos
-@import './logotypes';
+@import '../../../logotype/logotype';
 
 // Vars
 @import '_variables';
@@ -26,18 +26,18 @@
 @import '../components/accordion/accordion-vars';
 @import '../components/banner/banner-vars';
 @import '../components/block/block-vars';
-@import '../components/breadcrumb/breadcrumb-vars';
+@import '../components/breadcrumbs/breadcrumbs-vars';
 @import '../components/button/button-vars';
 @import '../components/card/card-vars';
 @import '../components/checkbox/checkbox-vars';
 @import '../components/chip/chip-vars';
-@import '../components/data-table/data-table-vars';
+@import '../components/table/table-vars';
 @import '../components/datetime/datetime-vars';
 @import '../components/divider/divider-vars';
 @import '../components/dropdown/dropdown-select';
 @import '../components/dropdown/dropdown-vars';
 @import '../components/footer/footer-vars';
-@import '../components/header/webcomponent/header-item/header-item-global';
+@import '../components/header/header-item/header-item-global';
 @import '../components/header/header-vars';
 @import '../components/link/link-vars';
 @import '../components/message/message-vars';
@@ -46,7 +46,7 @@
 @import '../components/popover-menu/popover-menu-vars';
 @import '../components/popover-menu/popover-menu-item';
 @import '../components/radio-button/radio-button-vars';
-@import '../components/side-menu/webcomponent/side-menu-item/side-menu-item-global';
+@import '../components/side-menu/side-menu-item/side-menu-item-global';
 @import '../components/side-menu/side-menu-vars';
 @import '../components/slider/slider-vars';
 @import '../components/stepper/stepper-vars';
@@ -54,7 +54,7 @@
 @import '../components/tabs/inline-tabs/inline-tabs-vars';
 @import '../components/tabs/navigation-tabs/navigation-tabs-vars';
 @import '../components/textarea/textarea-vars';
-@import '../components/textfield/textfield-vars';
+@import '../components/text-field/text-field-vars';
 @import '../components/toast/toast-vars';
 @import '../components/toggle/toggle-vars';
 @import '../components/tooltip/tooltip-vars';
@@ -71,32 +71,32 @@ body {
 }
 
 :root,
-.sdds-mode-light {
-  color: var(--sdds-grey-958);
-  background-color: var(--sdds-white);
+.tds-mode-light {
+  color: var(--tds-grey-958);
+  background-color: var(--tds-white);
 
-  & .sdds-mode-variant-primary {
-    color: var(--sdds-grey-958);
-    background-color: var(--sdds-white);
+  & .tds-mode-variant-primary {
+    color: var(--tds-grey-958);
+    background-color: var(--tds-white);
   }
 
-  & .sdds-mode-variant-secondary {
-    color: var(--sdds-grey-958);
-    background-color: var(--sdds-grey-50);
+  & .tds-mode-variant-secondary {
+    color: var(--tds-grey-958);
+    background-color: var(--tds-grey-50);
   }
 }
 
-.sdds-mode-dark {
-  color: var(--sdds-grey-100);
-  background-color: var(--sdds-grey-958);
+.tds-mode-dark {
+  color: var(--tds-grey-100);
+  background-color: var(--tds-grey-958);
 
-  & .sdds-mode-variant-primary {
-    color: var(--sdds-grey-100);
-    background-color: var(--sdds-grey-958);
+  & .tds-mode-variant-primary {
+    color: var(--tds-grey-100);
+    background-color: var(--tds-grey-958);
   }
 
-  & .sdds-mode-variant-secondary {
-    color: var(--sdds-grey-100);
-    background-color: var(--sdds-grey-900);
+  & .tds-mode-variant-secondary {
+    color: var(--tds-grey-100);
+    background-color: var(--tds-grey-900);
   }
 }

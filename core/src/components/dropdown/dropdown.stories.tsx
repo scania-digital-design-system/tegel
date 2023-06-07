@@ -36,7 +36,7 @@ export default {
       },
     },
     dropdownType: {
-      name: 'Dropdown Type',
+      name: 'Dropdown type',
       description: 'Sets the type of the Dropdown.',
       control: {
         type: 'radio',
@@ -197,14 +197,14 @@ const Template = ({
     ${
       dropdownType !== 'Filter'
         ? `
-        <sdds-dropdown
+        <tds-dropdown
           ${
             modeVariant !== 'Inherit from parent'
-              ? `mode-variant="${modeVariant.toLowerCase()}".sdds-option-label {
+              ? `mode-variant="${modeVariant.toLowerCase()}".tds-option-label {
             `
               : ''
           }
-          id="sdds-dropdown-reg"
+          id="tds-dropdown-reg"
           size="${sizeLookup[size]}"
           placeholder="${placeholder}"
           disabled="${disabled}"
@@ -220,19 +220,19 @@ const Template = ({
               : multiDefaultOptionValue
           }"
         >
-          <sdds-dropdown-option value="option-1" tabindex="0" disabled>Option 1</sdds-dropdown-option>
-          <sdds-dropdown-option value="option-2" tabindex="0">Option 2</sdds-dropdown-option>
-          <sdds-dropdown-option value="option-3" tabindex="0">Option 3</sdds-dropdown-option>
-        </sdds-dropdown>
+          <tds-dropdown-option value="option-1" tabindex="0" disabled>Option 1</tds-dropdown-option>
+          <tds-dropdown-option value="option-2" tabindex="0">Option 2</tds-dropdown-option>
+          <tds-dropdown-option value="option-3" tabindex="0">Option 3</tds-dropdown-option>
+        </tds-dropdown>
     `
         : `
-        <sdds-dropdown-filter
+        <tds-dropdown-filter
           ${
             modeVariant !== 'Inherit from parent'
-              ? `mode-variant="${modeVariant.toLowerCase()}".sdds-option-label {          `
+              ? `mode-variant="${modeVariant.toLowerCase()}".tds-option-label {          `
               : ''
           }
-          id="sdds-dropdown-filter"
+          id="tds-dropdown-filter"
           size="${sizeLookup[size]}"
           placeholder="${placeholder}"
           disabled="${disabled}"
@@ -257,7 +257,7 @@ const Template = ({
           ]'
           default-option="${defaultOptionLookup[defaultOption]}">
 
-        </sdds-dropdown-filter>`
+        </tds-dropdown-filter>`
     }
 
       </div>

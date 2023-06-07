@@ -1,4 +1,6 @@
-# sdds-textfield
+# tds-datetime
+
+
 
 <!-- Auto Generated Below -->
 
@@ -23,24 +25,24 @@
 
 ## Events
 
-| Event        | Description                   | Type                      |
-| ------------ | ----------------------------- | ------------------------- |
-| `sddsBlur`   | Blur event for the Datetime   | `CustomEvent<FocusEvent>` |
-| `sddsChange` | Change event for the Datetime | `CustomEvent<any>`        |
-| `sddsFocus`  | Focus event for the Datetime  | `CustomEvent<FocusEvent>` |
+| Event       | Description                   | Type                      |
+| ----------- | ----------------------------- | ------------------------- |
+| `tdsBlur`   | Blur event for the Datetime   | `CustomEvent<FocusEvent>` |
+| `tdsChange` | Change event for the Datetime | `CustomEvent<any>`        |
+| `tdsFocus`  | Focus event for the Datetime  | `CustomEvent<FocusEvent>` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-datetime --> sdds-icon
-  style sdds-datetime fill:#f9f,stroke:#333,stroke-width:4px
+  tds-datetime --> tds-icon
+  style tds-datetime fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -3,19 +3,19 @@
 @import '../../mixins/z-index';
 
 :host {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
   overflow: hidden;
   width: 160px;
-  background-color: var(--sdds-popover-menu-background);
+  background-color: var(--tds-popover-menu-background);
   padding: 16px;
   box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
   border-radius: 4px;
   display: none;
-  z-index: z(tooltip);
+  z-index: tds-z-index(tooltip);
 }
 
-:host(.sdds-popover-menu-show) {
+:host(.tds-popover-menu-show) {
   opacity: 1;
   display: block;
 }

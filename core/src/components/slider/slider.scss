@@ -1,16 +1,16 @@
 @import '../../mixins/box-sizing';
 
-sdds-slider {
-  @include sdds-box-sizing;
+tds-slider {
+  @include tds-box-sizing;
 
   width: 100%;
 
-  input[type='range'].sdds-slider-native-element {
+  input[type='range'].tds-slider-native-element {
     display: none;
   }
 }
 
-.sdds-slider-wrapper {
+.tds-slider-wrapper {
   width: 100%;
 
   &.read-only {
@@ -18,81 +18,81 @@ sdds-slider {
   }
 }
 
-.sdds-slider {
+.tds-slider {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
   padding-top: 65px;
 
-  .sdds-slider-inner {
+  .tds-slider-inner {
     width: 100%;
     height: 20px;
     position: relative;
   }
 
-  .sdds-slider__controls {
+  .tds-slider__controls {
     position: relative;
     top: -25px;
 
-    .sdds-slider__control {
+    .tds-slider__control {
       cursor: pointer;
 
-      &.sdds-slider__control-minus {
+      &.tds-slider__control-minus {
         padding: 18px 18px 18px 0;
       }
 
-      &.sdds-slider__control-plus {
+      &.tds-slider__control-plus {
         padding: 18px 0 18px 18px;
       }
     }
   }
 
-  .sdds-slider__input-values {
+  .tds-slider__input-values {
     position: relative;
     top: -25px;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
 
-    .sdds-slider__input-value {
+    .tds-slider__input-value {
       user-select: none;
       padding: 18px;
-      color: var(--sdds-grey-700);
+      color: var(--tds-grey-700);
 
       //@include type-style('detail-02');
-      font: var(--sdds-detail-02);
-      letter-spacing: var(--sdds-detail-02-ls);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
 
       &.min-value {
         padding-left: 0;
       }
     }
 
-    .sdds-slider__input-field-wrapper {
-      background-color: var(--sdds-slider-inputfield-background);
+    .tds-slider__input-field-wrapper {
+      background-color: var(--tds-slider-inputfield-background);
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 4px 4px 0 0;
 
-      input.sdds-slider__input-field {
+      input.tds-slider__input-field {
         // @include type-style('detail-02');
-        font: var(--sdds-detail-02);
-        letter-spacing: var(--sdds-detail-02-ls);
-        color: var(--sdds-slider-input-inputfield-color);
+        font: var(--tds-detail-02);
+        letter-spacing: var(--tds-detail-02-ls);
+        color: var(--tds-slider-input-inputfield-color);
         border: 0;
         background-color: transparent;
         text-align: center;
         padding: 12px;
-        box-shadow: inset 0 -1px 0 var(--sdds-slider-inputfield-box-shadow);
+        box-shadow: inset 0 -1px 0 var(--tds-slider-inputfield-box-shadow);
         border-radius: 4px 4px 0 0;
 
         &:hover {
-          box-shadow: inset 0 -1px 0 var(--sdds-grey-600);
+          box-shadow: inset 0 -1px 0 var(--tds-grey-600);
         }
 
         &:focus {
-          box-shadow: inset 0 -2px 0 var(--sdds-blue-400);
+          box-shadow: inset 0 -2px 0 var(--tds-blue-400);
           outline: 0;
         }
       }
@@ -101,11 +101,11 @@ sdds-slider {
 
   label {
     // @include type-style('detail-05');
-    font: var(--sdds-detail-05);
-    letter-spacing: var(--sdds-detail-05-ls);
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
     user-select: none;
     position: absolute;
-    color: var(--sdds-slider-label-color);
+    color: var(--tds-slider-label-color);
     padding-bottom: 16px;
     transform: translateY(-100%);
 
@@ -114,21 +114,21 @@ sdds-slider {
     }
   }
 
-  .sdds-slider__value {
+  .tds-slider__value {
     // @include type-style('detail-01');
-    font: var(--sdds-detail-01);
-    letter-spacing: var(--sdds-detail-01-ls);
+    font: var(--tds-detail-01);
+    letter-spacing: var(--tds-detail-01-ls);
     user-select: none;
     border-radius: 4px;
     padding: 8px;
     position: absolute;
     transform: translate(-50%, -100%);
     top: -24px;
-    background-color: var(--sdds-slider-value-tooltip-background);
-    color: var(--sdds-slider-value-tooltip-color);
+    background-color: var(--tds-slider-value-tooltip-background);
+    color: var(--tds-slider-value-tooltip-color);
 
     svg {
-      color: var(--sdds-slider-value-tooltip-background);
+      color: var(--tds-slider-value-tooltip-background);
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -136,14 +136,14 @@ sdds-slider {
     }
   }
 
-  .sdds-slider__scrubber {
+  .tds-slider__scrubber {
     position: absolute;
 
-    .sdds-slider__scrubber-inner {
+    .tds-slider__scrubber-inner {
       width: 20px;
       height: 20px;
       border-radius: 100%;
-      background-color: var(--sdds-slider-thumb-color);
+      background-color: var(--tds-slider-thumb-color);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -155,7 +155,7 @@ sdds-slider {
         display: none;
         width: 48px;
         height: 48px;
-        background-color: var(--sdds-slider-thumb-color);
+        background-color: var(--tds-slider-thumb-color);
         position: absolute;
         border-radius: 100%;
         top: 50%;
@@ -182,34 +182,34 @@ sdds-slider {
     }
   }
 
-  .sdds-slider__value-dividers-wrapper {
+  .tds-slider__value-dividers-wrapper {
     position: relative;
     width: 100%;
     pointer-events: none;
   }
 
-  .sdds-slider__value-dividers {
+  .tds-slider__value-dividers {
     pointer-events: none;
     position: absolute;
     display: flex;
     justify-content: space-between;
     width: 100%;
 
-    .sdds-slider__value-divider {
+    .tds-slider__value-divider {
       transform: translateY(-50%);
       height: 16px;
-      background-color: var(--sdds-slider-divider-color);
-      color: var(--sdds-slider-divider-values-color);
+      background-color: var(--tds-slider-divider-color);
+      color: var(--tds-slider-divider-values-color);
       width: 1px;
 
       span {
         display: block;
         user-select: none;
-        color: var(-sdds-grey-700);
+        color: var(-tds-grey-700);
 
         // @include type-style('detail-05');
-        font: var(--sdds-detail-05);
-        letter-spacing: var(--sdds-detail-05-ls);
+        font: var(--tds-detail-05);
+        letter-spacing: var(--tds-detail-05-ls);
         position: relative;
         top: -7px;
         left: 50%;
@@ -220,18 +220,18 @@ sdds-slider {
     }
   }
 
-  .sdds-slider__track {
+  .tds-slider__track {
     width: 100%;
     height: 2px;
     border-radius: 1px;
-    background-color: var(--sdds-slider-track-color);
+    background-color: var(--tds-slider-track-color);
     position: relative;
 
     &:focus {
       outline: 0;
 
-      .sdds-slider__scrubber {
-        .sdds-slider__scrubber-inner {
+      .tds-slider__scrubber {
+        .tds-slider__scrubber-inner {
           width: 24px;
           height: 24px;
 
@@ -243,8 +243,8 @@ sdds-slider {
       }
     }
 
-    .sdds-slider__track-fill {
-      background-color: var(--sdds-slider-track-fill-color);
+    .tds-slider__track-fill {
+      background-color: var(--tds-slider-track-fill-color);
       border-radius: 2px;
       height: 4px;
       position: absolute;
@@ -262,68 +262,68 @@ sdds-slider {
     }
 
     label {
-      color: var(--sdds-slider-disabled);
+      color: var(--tds-slider-disabled);
     }
 
-    .sdds-slider__controls {
-      .sdds-slider__control {
+    .tds-slider__controls {
+      .tds-slider__control {
         cursor: default;
 
-        &.sdds-slider__control-minus,
-        &.sdds-slider__control-plus {
+        &.tds-slider__control-minus,
+        &.tds-slider__control-plus {
           svg {
-            fill: var(--sdds-slider-disabled);
+            fill: var(--tds-slider-disabled);
           }
         }
       }
     }
 
-    .sdds-slider__input-values {
-      .sdds-slider__input-value {
-        color: var(--sdds-slider-disabled);
+    .tds-slider__input-values {
+      .tds-slider__input-value {
+        color: var(--tds-slider-disabled);
       }
 
-      .sdds-slider__input-field-wrapper {
+      .tds-slider__input-field-wrapper {
         pointer-events: none;
 
-        input.sdds-slider__input-field {
-          color: var(--sdds-slider-disabled);
+        input.tds-slider__input-field {
+          color: var(--tds-slider-disabled);
           pointer-events: none;
         }
       }
     }
 
-    .sdds-slider__value {
+    .tds-slider__value {
       display: none;
     }
 
-    .sdds-slider__track {
-      .sdds-slider__track-fill {
-        background-color: var(--sdds-slider-disabled);
+    .tds-slider__track {
+      .tds-slider__track-fill {
+        background-color: var(--tds-slider-disabled);
       }
     }
 
-    .sdds-slider__value-dividers {
-      .sdds-slider__value-divider {
+    .tds-slider__value-dividers {
+      .tds-slider__value-divider {
         span {
-          color: var(--sdds-slider-disabled);
+          color: var(--tds-slider-disabled);
         }
       }
     }
 
-    .sdds-slider__scrubber {
+    .tds-slider__scrubber {
       pointer-events: none;
 
-      .sdds-slider__scrubber-inner {
-        background-color: var(--sdds-slider-disabled);
+      .tds-slider__scrubber-inner {
+        background-color: var(--tds-slider-disabled);
         cursor: default;
       }
     }
   }
 
-  &.sdds-slider-small {
-    .sdds-slider__scrubber {
-      .sdds-slider__scrubber-inner {
+  &.tds-slider-small {
+    .tds-slider__scrubber {
+      .tds-slider__scrubber-inner {
         width: 16px;
         height: 16px;
 
@@ -341,29 +341,29 @@ sdds-slider {
   }
 }
 
-.sdds-slider {
-  .sdds-slider__controls {
-    .sdds-slider__control {
+.tds-slider {
+  .tds-slider__controls {
+    .tds-slider__control {
       cursor: default;
 
-      &.sdds-slider__control-minus,
-      &.sdds-slider__control-plus {
-        sdds-icon {
-          color: var(--sdds-slider-controls-color);
+      &.tds-slider__control-minus,
+      &.tds-slider__control-plus {
+        tds-icon {
+          color: var(--tds-slider-controls-color);
         }
       }
     }
   }
 
   &.disabled {
-    .sdds-slider__controls {
-      .sdds-slider__control {
+    .tds-slider__controls {
+      .tds-slider__control {
         cursor: default;
 
-        &.sdds-slider__control-minus,
-        &.sdds-slider__control-plus {
-          sdds-icon {
-            color: var(--sdds-slider-disabled);
+        &.tds-slider__control-minus,
+        &.tds-slider__control-plus {
+          tds-icon {
+            color: var(--tds-slider-disabled);
           }
         }
       }

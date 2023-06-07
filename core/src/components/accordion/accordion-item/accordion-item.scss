@@ -2,23 +2,23 @@
 @import '../../../mixins/disabled-style';
 @import '../../../mixins/box-sizing';
 
-.sdds-accordion-item {
-  @include sdds-box-sizing;
+.tds-accordion-item {
+  @include tds-box-sizing;
 
   list-style: none;
-  color: var(--sdds-accordion-color);
+  color: var(--tds-accordion-color);
   position: relative;
 
-  button.sdds-accordion-header-icon-start,
-  button.sdds-accordion-header-icon-end {
+  button.tds-accordion-header-icon-start,
+  button.tds-accordion-header-icon-end {
     all: unset;
   }
 
-  .sdds-accordion-header-icon-start,
-  .sdds-accordion-header-icon-end,
-  button.sdds-accordion-header-icon-start,
-  button.sdds-accordion-header-icon-end {
-    @include sdds-box-sizing;
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end,
+  button.tds-accordion-header-icon-start,
+  button.tds-accordion-header-icon-end {
+    @include tds-box-sizing;
 
     cursor: pointer;
     display: flex;
@@ -26,33 +26,33 @@
     width: 100%;
 
     // fixme: wrong line-height compared to production
-    font: var(--sdds-headline-07);
-    letter-spacing: var(--sdds-headline-07-ls);
-    padding: var(--sdds-spacing-element-16);
-    background-color: var(--sdds-accordion-background);
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
+    padding: var(--tds-spacing-element-16);
+    background-color: var(--tds-accordion-background);
 
-    .sdds-accordion-icon {
+    .tds-accordion-icon {
       transform-origin: center;
       transition: transform 0.15s ease-in-out;
-      color: var(--sdds-accordion-icon-color);
+      color: var(--tds-accordion-icon-color);
 
-      & > sdds-icon {
+      & > tds-icon {
         display: block;
       }
     }
   }
 
-  .sdds-accordion-title {
+  .tds-accordion-title {
     flex-grow: 2;
   }
 
-  .sdds-accordion-panel {
+  .tds-accordion-panel {
     cursor: default;
-    padding: var(--sdds-spacing-element-8) var(--sdds-spacing-layout-64)
-      var(--sdds-spacing-element-32) var(--sdds-spacing-element-16);
+    padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
+      var(--tds-spacing-element-16);
     display: none;
-    font: var(--sdds-detail-03);
-    letter-spacing: var(--sdds-detail-03-ls);
+    font: var(--tds-detail-03);
+    letter-spacing: var(--tds-detail-03-ls);
 
     p {
       margin: 0;
@@ -60,37 +60,37 @@
     }
 
     &--padding-reset {
-      padding-right: var(--sdds-spacing-element-16);
+      padding-right: var(--tds-spacing-element-16);
     }
   }
 
-  .sdds-accordion-header-icon-end {
-    .sdds-accordion-icon {
-      margin: 0 0 0 var(--sdds-spacing-element-32);
+  .tds-accordion-header-icon-end {
+    .tds-accordion-icon {
+      margin: 0 0 0 var(--tds-spacing-element-32);
     }
   }
 
-  .sdds-accordion-header-icon-start {
-    .sdds-accordion-title {
+  .tds-accordion-header-icon-start {
+    .tds-accordion-title {
       order: 1;
     }
 
-    .sdds-accordion-icon {
+    .tds-accordion-icon {
       order: 0;
-      margin: 0 var(--sdds-spacing-element-16) 0 0;
+      margin: 0 var(--tds-spacing-element-16) 0 0;
     }
   }
 
   &.disabled {
     &,
-    .sdds-accordion-header-icon-end,
-    .sdds-accordion-header-icon-start,
-    .sdds-accordion-panel {
-      color: var(--sdds-accordion-color-disabled);
+    .tds-accordion-header-icon-end,
+    .tds-accordion-header-icon-start,
+    .tds-accordion-panel {
+      color: var(--tds-accordion-color-disabled);
       cursor: not-allowed;
 
-      .sdds-accordion-icon {
-        color: var(--sdds-accordion-color-disabled);
+      .tds-accordion-icon {
+        color: var(--tds-accordion-color-disabled);
       }
     }
 
@@ -98,69 +98,69 @@
     &:focus,
     &:active,
     &.active {
-      @include disabledStyle;
+      @include tds-disabled-style;
     }
   }
 
   &.expanded {
-    .sdds-accordion-panel {
+    .tds-accordion-panel {
       display: block;
       padding-bottom: 31px;
     }
 
-    .sdds-accordion-icon {
+    .tds-accordion-icon {
       transform: rotate(180deg);
     }
 
-    .sdds-accordion-header-icon-end {
-      .sdds-accordion-icon {
+    .tds-accordion-header-icon-end {
+      .tds-accordion-icon {
         margin-right: 0;
-        margin-left: var(--sdds-spacing-element-32);
+        margin-left: var(--tds-spacing-element-32);
       }
     }
 
-    .sdds-accordion-header-icon-start {
-      .sdds-accordion-icon {
+    .tds-accordion-header-icon-start {
+      .tds-accordion-icon {
         margin-left: 0;
-        margin-right: var(--sdds-spacing-element-16);
+        margin-right: var(--tds-spacing-element-16);
       }
     }
   }
 
-  border-top: 1px solid var(--sdds-accordion-border);
+  border-top: 1px solid var(--tds-accordion-border);
 
   &:focus {
-    border-top: 1px solid var(--sdds-accordion-border-focus);
+    border-top: 1px solid var(--tds-accordion-border-focus);
   }
 
   &[disabled='true']:focus {
-    border-color: var(--sdds-accordion-border);
+    border-color: var(--tds-accordion-border);
   }
 }
 
 :host(:focus) {
-  .sdds-accordion-item {
-    @include sdds-focus-state;
+  .tds-accordion-item {
+    @include tds-focus-state;
 
-    .sdds-accordion-header-icon-start,
-    .sdds-accordion-header-icon-end {
-      background-color: var(--sdds-accordion-background-focus);
+    .tds-accordion-header-icon-start,
+    .tds-accordion-header-icon-end {
+      background-color: var(--tds-accordion-background-focus);
       outline: none;
     }
   }
 }
 
 :host(:hover) {
-  .sdds-accordion-header-icon-start,
-  .sdds-accordion-header-icon-end {
-    background-color: var(--sdds-accordion-background-hover);
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end {
+    background-color: var(--tds-accordion-background-hover);
   }
 }
 
 :host(:active) {
-  .sdds-accordion-header-icon-start,
-  .sdds-accordion-header-icon-end {
-    background-color: var(--sdds-accordion-background-active);
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end {
+    background-color: var(--tds-accordion-background-active);
     outline: none;
   }
 }

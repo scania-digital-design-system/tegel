@@ -1,13 +1,13 @@
 import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-textarea',
+  tag: 'tds-textarea',
   styleUrl: 'textarea.scss',
   shadow: false,
   scoped: true,
 })
-export class Textarea {
-  /** Textinput for focus state */
+export class TdsTextarea {
+  /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
 
   /** Label text */
@@ -25,7 +25,7 @@ export class Textarea {
   /** Textarea rows attribute */
   @Prop() rows: number;
 
-  /** Position of the label for the textfield. */
+  /** Position of the label for the Textarea. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Placeholder text */
@@ -46,7 +46,7 @@ export class Textarea {
   /** Max length of input */
   @Prop() maxLength: number;
 
-  /** Mode variant of the textarea */
+  /** Mode variant of the Textarea */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Control of autofocus */
@@ -58,62 +58,62 @@ export class Textarea {
   /** Listen to the focus state of the input */
   @State() focusInput;
 
-  /** Change event for the textarea */
+  /** Change event for the Textarea */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsChange: EventEmitter;
+  tdsChange: EventEmitter;
 
   handleChange(event): void {
-    this.sddsChange.emit(event);
+    this.tdsChange.emit(event);
   }
 
-  /** Blur event for the textarea */
+  /** Blur event for the Textarea */
   @Event({
-    eventName: 'sddsBlur',
+    eventName: 'tdsBlur',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsBlur: EventEmitter<FocusEvent>;
+  tdsBlur: EventEmitter<FocusEvent>;
 
   handleBlur(event): void {
-    this.sddsBlur.emit(event);
+    this.tdsBlur.emit(event);
     this.focusInput = false;
   }
 
-  /** Input event for the textarea */
+  /** Input event for the Textarea */
   @Event({
-    eventName: 'sddsInput',
+    eventName: 'tdsInput',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsInput: EventEmitter<InputEvent>;
+  tdsInput: EventEmitter<InputEvent>;
 
   // Data input event in value prop
   handleInput(event): void {
-    this.sddsInput.emit(event);
+    this.tdsInput.emit(event);
     this.value = event.target.value;
   }
 
-  /** Focus event for the textarea */
+  /** Focus event for the Textarea */
   @Event({
-    eventName: 'sddsFocus',
+    eventName: 'tdsFocus',
     composed: true,
     bubbles: true,
     cancelable: false,
   })
-  sddsFocus: EventEmitter<FocusEvent>;
+  tdsFocus: EventEmitter<FocusEvent>;
 
-  /* Set the input as focus when clicking the whole textfield with suffix/prefix */
+  /* Set the input as focus when clicking the whole textarea with suffix/prefix */
   handleFocus(event): void {
     this.textEl.focus();
     this.focusInput = true;
-    this.sddsFocus.emit(event);
+    this.tdsFocus.emit(event);
   }
 
   render() {
@@ -125,7 +125,7 @@ export class Textarea {
         ${this.focusInput ? 'textarea-focus' : ''}
         ${this.disabled ? 'textarea-disabled' : ''}
         ${this.readOnly ? 'textarea-readonly' : ''}
-        ${this.modeVariant !== null ? `sdds-mode-variant-${this.modeVariant}` : ''}
+        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
         ${this.value ? 'textarea-data' : ''}
         ${this.state === 'error' || this.state === 'success' ? `textarea-${this.state}` : ''}
         ${this.noMinWidth ? 'no-min-width' : ''}
@@ -175,12 +175,12 @@ export class Textarea {
             </svg>
           </span>
           <span class="textarea-icon__readonly">
-            <sdds-icon name="edit_inactive"></sdds-icon>
+            <tds-icon name="edit_inactive"></tds-icon>
           </span>
           <span class="textarea-icon__readonly-label">This field is non-editable</span>
         </div>
         <span class={'textarea-helper'}>
-          {this.state === 'error' && <sdds-icon name="error" size="16px"></sdds-icon>}
+          {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
           {this.helper}
         </span>
 

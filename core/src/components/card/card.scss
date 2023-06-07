@@ -1,0 +1,105 @@
+@import '../../mixins/box-sizing';
+
+.card {
+  @include tds-box-sizing;
+
+  box-shadow: var(--tds-card-box);
+  background-color: var(--tds-card-background);
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+
+  &.clickable {
+    &:hover {
+      box-shadow: var(--tds-card-box-hover);
+      cursor: pointer;
+    }
+  }
+
+  .card-top {
+    font: var(--tds-headline-06);
+    letter-spacing: var(--tds-headline-06-ls);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+
+    img.card-top-image {
+      width: 36px;
+      height: 36px;
+      border-radius: 100%;
+    }
+
+    .card-top-header {
+      padding-left: 16px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+
+      &.no-header-img {
+        padding-left: 0;
+      }
+
+      &.single-line-header {
+        row-gap: 0;
+      }
+    }
+
+    &.below {
+      padding-top: 16px;
+    }
+  }
+
+  .card-header {
+    color: var(--tds-card-headline);
+  }
+
+  .card-subheader {
+    color: var(--tds-card-sub-headline);
+  }
+
+  .card-body-img {
+    width: 100%;
+  }
+
+  .tds-divider {
+    margin: 16px 16px 0;
+    background-color: var(--tds-card-divider);
+    height: 1px;
+  }
+
+  .card-body {
+    display: block;
+    word-wrap: break-word;
+  }
+
+  slot[name='card-body']::slotted(*) {
+    font: var(--tds-detail-03);
+    letter-spacing: var(--tds-detail-03-ls);
+    color: var(--tds-card-body-color);
+    padding: 0 16px;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    max-width: 336px;
+  }
+
+  slot[name='card-bottom']::slotted(*) {
+    display: flex;
+    padding: 16px;
+    color: var(--tds-card-icon-color);
+  }
+}
+
+button {
+  border: none;
+  text-align: left;
+  padding: 0;
+
+  &:focus {
+    outline: 2px solid var(--tds-blue-400);
+    outline-offset: -2px;
+  }
+
+  &:active {
+    box-shadow: var(--tds-card-box-pressed);
+  }
+}

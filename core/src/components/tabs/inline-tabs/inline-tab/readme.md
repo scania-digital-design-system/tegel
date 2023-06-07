@@ -1,4 +1,4 @@
-# sdds-inline-tabs-item
+# tds-inline-tab
 
 
 
@@ -9,7 +9,7 @@
 
 | Property   | Attribute  | Description       | Type      | Default |
 | ---------- | ---------- | ----------------- | --------- | ------- |
-| `disabled` | `disabled` | Disables the tab. | `boolean` | `false` |
+| `disabled` | `disabled` | Disables the Tab. | `boolean` | `false` |
 
 
 ----------------------------------------------

@@ -1,4 +1,4 @@
-# sdds-slider
+# tds-slider
 
 
 
@@ -19,8 +19,8 @@
 | `readOnly`        | `read-only`         | Sets the read only state for the whole component                                 | `boolean`      | `false`               |
 | `scrubberSize`    | `scrubber-size`     | Sets the size of the scrubber                                                    | `"lg" \| "sm"` | `'lg'`                |
 | `showTickNumbers` | `show-tick-numbers` | Decide to show numbers above the tick markers or not                             | `boolean`      | `false`               |
-| `sliderId`        | `slider-id`         | ID for the sliders input element, randomly generated if not specified.           | `string`       | `crypto.randomUUID()` |
-| `snap`            | `snap`              | Snap to the ticks grid                                                           | `boolean`      | `false`               |
+| `sliderId`        | `slider-id`         | ID for the Slider's input element, randomly generated if not specified.          | `string`       | `crypto.randomUUID()` |
+| `snap`            | `snap`              | Snap to the tick's grid                                                          | `boolean`      | `false`               |
 | `step`            | `step`              | Defines how much to increment/decrement the value when using controls            | `string`       | `'1'`                 |
 | `ticks`           | `ticks`             | Number of tick markers (tick for min- and max-value will be added automatically) | `string`       | `'0'`                 |
 | `tooltip`         | `tooltip`           | Decide to show the tooltip or not                                                | `boolean`      | `false`               |
@@ -29,9 +29,9 @@
 
 ## Events
 
-| Event        | Description                                 | Type                              |
-| ------------ | ------------------------------------------- | --------------------------------- |
-| `sddsChange` | Sends the value of the slider when changed. | `CustomEvent<{ value: string; }>` |
+| Event       | Description                                 | Type                              |
+| ----------- | ------------------------------------------- | --------------------------------- |
+| `tdsChange` | Sends the value of the slider when changed. | `CustomEvent<{ value: string; }>` |
 
 
 ## Methods
@@ -51,13 +51,13 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [sdds-icon](../icon)
+- [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-slider --> sdds-icon
-  style sdds-slider fill:#f9f,stroke:#333,stroke-width:4px
+  tds-slider --> tds-icon
+  style tds-slider fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

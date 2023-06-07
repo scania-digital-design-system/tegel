@@ -101,8 +101,8 @@ export const parameters = {
     dark: ScaniaThemeDark,
     // Override the default light theme
     light: ScaniaThemeLight,
-    darkClass: 'sdds-mode-dark',
-    lightClass: 'sdds-mode-light',
+    darkClass: 'tds-mode-dark',
+    lightClass: 'tds-mode-light',
     stylePreview: true,
   },
   backgrounds: {
@@ -127,18 +127,27 @@ export const parameters = {
     ],
   },
   options: {
+    showPanel: true,
+    showToolbar: true,
+    enableShortcuts: false,
     storySort: {
       method: 'alphabetical',
       order: [
         'Intro',
-        ['Tegel', 'Migrating from components v4', 'Installation', 'Events'],
+        [
+          'Tegel Design System',
+          'Migrating from components v4',
+          'Installation',
+          'Events',
+          'Announcements',
+          ['Tegel', 'Prefix change'],
+        ],
         'Foundations',
         'Utilities',
         'Patterns',
         'Components',
       ],
     },
-    enableShortcuts: false,
   },
   layout: 'padded',
 };
@@ -148,8 +157,8 @@ export const parameters = {
 // https://github.com/storybookjs/storybook/issues/12982#issuecomment-865304427
 // https://github.com/storybookjs/storybook/blob/9eeb6ddfdd09a64c554843380187d27a41a8a235/addons/backgrounds/src/containers/BackgroundSelector.tsx#L100
 // https://github.com/hipstersmoothie/storybook-dark-mode/blob/bdb64ee8302bb95c23ebc2709ed3fe88431072f3/src/index.tsx
-if (!window.SDDS_DID_SUBSCRIBE_DARK_BG) {
-  window.SDDS_DID_SUBSCRIBE_DARK_BG = true;
+if (!window.TDS_DID_SUBSCRIBE_DARK_BG) {
+  window.TDS_DID_SUBSCRIBE_DARK_BG = true;
   const darkModeBgColor = parameters.backgrounds.values.find(
     ({ name }) => name === 'grey-958',
   ).value;
@@ -161,7 +170,7 @@ if (!window.SDDS_DID_SUBSCRIBE_DARK_BG) {
     globals: { backgrounds: { value: lightModeBgColor } },
   });
   channel.on('DARK_MODE', (isDarkMode) => {
-    if ((isDarkMode && !window.SDDS_DARK_BG) || (!isDarkMode && window.SDDS_DARK_BG)) {
+    if ((isDarkMode && !window.TDS_DARK_BG) || (!isDarkMode && window.TDS_DARK_BG)) {
       channel.emit(UPDATE_GLOBALS, {
         globals: {
           backgrounds: {
@@ -169,7 +178,7 @@ if (!window.SDDS_DID_SUBSCRIBE_DARK_BG) {
           },
         },
       });
-      window.SDDS_DARK_BG = isDarkMode;
+      window.TDS_DARK_BG = isDarkMode;
     }
   });
 }

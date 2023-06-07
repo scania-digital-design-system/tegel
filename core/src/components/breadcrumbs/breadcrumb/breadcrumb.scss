@@ -1,0 +1,52 @@
+@import '../../../mixins/focus-state';
+
+[role='listitem'] {
+  ::slotted(*) {
+    color: var(--tds-breadcrumb-color);
+    text-decoration: none;
+  }
+
+  &:hover {
+    ::slotted(*) {
+      color: var(--tds-breadcrumb-color-hover);
+      text-decoration: underline;
+    }
+  }
+
+  &:focus-visible {
+    @include tds-focus-state;
+  }
+
+  &.disabled,
+  &.current,
+  [aria-current='page'] {
+    ::slotted(*) {
+      pointer-events: none;
+      cursor: default;
+      color: var(--tds-breadcrumb-color-disabled);
+    }
+
+    &:hover {
+      ::slotted(*) {
+        text-decoration: none;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  ::slotted(*)::after {
+    content: '\203A';
+    color: var(--tds-breadcrumb-separator-color);
+    margin-right: 4px;
+    margin-left: 4px;
+    display: inline-block;
+    width: 4px;
+    height: 8px;
+  }
+}
+
+:host(.last) {
+  ::slotted(*)::after {
+    display: none;
+  }
+}

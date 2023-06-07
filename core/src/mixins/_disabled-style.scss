@@ -1,12 +1,12 @@
-@mixin disabledStyle {
+@mixin tds-disabled-style {
   &,
   * {
     cursor: not-allowed;
   }
 
-  .sdds-accordion-header-icon-start,
-  .sdds-accordion-header-icon-end {
-    background-color: var(--sdds-accordion-bg);
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end {
+    background-color: var(--tds-accordion-bg);
     outline: none;
     pointer-events: none;
 

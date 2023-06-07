@@ -88,86 +88,51 @@ const Template = ({ menuPosition, icons }) => {
       }
     </style>
 
-    <sdds-popover-menu
+    <tds-popover-menu
       id="my-popover-menu"
       placement="${menuPosLookup[menuPosition]}">
-      <ul class="sdds-popover-menu-wrapper">
+      <ul class="tds-popover-menu-wrapper">
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
-            ${
-              icons
-                ? `
-            <i>
-              <sdds-icon name="save" size="16px"></sdds-icon>
-            </i>`
-                : ''
-            }
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
           Menu item 1
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
-            ${
-              icons
-                ? `
-            <i>
-              <sdds-icon name="save" size="16px"></sdds-icon>
-            </i>`
-                : ''
-            }
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
             Menu item 2
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
-            ${
-              icons
-                ? `
-            <i>
-              <sdds-icon name="save" size="16px"></sdds-icon>
-            </i>`
-                : ''
-            }
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
             Menu item 3
           </a>
         </li>
         <li class="divider"></li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
-            ${
-              icons
-                ? `
-            <i>
-              <sdds-icon name="save" size="16px"></sdds-icon>
-            </i>`
-                : ''
-            }
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
             Menu item 4
           </a>
         </li>
         <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">
-            ${
-              icons
-                ? `
-            <i>
-              <sdds-icon name="save" size="16px"></sdds-icon>
-            </i>`
-                : ''
-            }  
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}  
             Menu item 5
           </a>
         </li>
       </ul>
-    </sdds-popover-menu>
+    </tds-popover-menu>
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
     <div class="demo-wrapper">
-      <span class="sdds-u-mr2">Click icon for Popover Menu</span>
+      <span class="tds-u-mr2">Click icon for Popover Menu</span>
       
-      <sdds-button aria-label="menu" onlyIcon id="my-popover-button" type="ghost" size="sm">
-        <sdds-icon slot="icon" class="sdds-btn-icon" size="16px" name="kebab"></sdds-icon>
-      </sdds-button>
+      <tds-button aria-label="menu" only-icon id="my-popover-button" type="ghost" size="sm">
+        <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
+      </tds-button>
     </div>
 
     <script>

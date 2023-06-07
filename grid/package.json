@@ -2,6 +2,13 @@
   "name": "@scania/tegel-grid",
   "version": "0.0.1",
   "description": "Tegel Design System grid package",
+  "keywords": [
+    "tegel",
+    "scania",
+    "design",
+    "system",
+    "grid"
+  ],
   "scripts": {
     "build": "node compile.js"
   },
@@ -11,7 +18,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "",
+  "author": "IXCD@Scania <designtoolsandsystems@scania.com> (https://tegel.scania.com)",
   "license": "MIT",
   "devDependencies": {
     "sass": "^1.49.9",

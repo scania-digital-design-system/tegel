@@ -1,0 +1,37 @@
+:host {
+  background-color: var(--tds-header-avatar-item-background);
+  display: flex;
+  height: 84px;
+
+  .user-box {
+    gap: 16px;
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--tds-nav-dropdown-item-border-color);
+  }
+
+  img,
+  slot[name='image']::slotted(*) {
+    width: 34px;
+    border-radius: 100%;
+  }
+
+  .user-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .header {
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+    }
+
+    .subheader {
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+      color: var(--tds-header-avatar-item-color);
+    }
+  }
+}

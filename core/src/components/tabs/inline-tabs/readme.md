@@ -1,4 +1,4 @@
-# sdds-inline-tabs
+# tds-inline-tabs
 
 
 
@@ -9,23 +9,23 @@
 
 | Property               | Attribute                | Description                                                                            | Type                       | Default     |
 | ---------------------- | ------------------------ | -------------------------------------------------------------------------------------- | -------------------------- | ----------- |
-| `defaultSelectedIndex` | `default-selected-index` | Sets the default selected tab.                                                         | `number`                   | `0`         |
-| `modeVariant`          | `mode-variant`           | Variant of the tabs, primary= on white, secondary= on grey50                           | `"primary" \| "secondary"` | `'primary'` |
-| `selectedIndex`        | `selected-index`         | Sets the selected tab. If this is set all tab changes needs to be handled by the user. | `number`                   | `undefined` |
+| `defaultSelectedIndex` | `default-selected-index` | Sets the default selected Tab.                                                         | `number`                   | `0`         |
+| `modeVariant`          | `mode-variant`           | Variant of the Tabs, primary= on white, secondary= on grey50                           | `"primary" \| "secondary"` | `'primary'` |
+| `selectedIndex`        | `selected-index`         | Sets the selected Tab. If this is set, all Tab changes need to be handled by the user. | `number`                   | `undefined` |
 
 
 ## Events
 
-| Event        | Description | Type                                         |
-| ------------ | ----------- | -------------------------------------------- |
-| `sddsChange` |             | `CustomEvent<{ selectedTabIndex: number; }>` |
+| Event       | Description | Type                                         |
+| ----------- | ----------- | -------------------------------------------- |
+| `tdsChange` |             | `CustomEvent<{ selectedTabIndex: number; }>` |
 
 
 ## Methods
 
 ### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number; }>`
 
-Selects a tab based on tabindex, will not select a disabled tab.
+Selects a Tab based on tabindex, will not select a disabled Tab.
 
 #### Returns
 
@@ -38,13 +38,13 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 
 ### Depends on
 
-- [sdds-icon](../../icon)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-inline-tabs --> sdds-icon
-  style sdds-inline-tabs fill:#f9f,stroke:#333,stroke-width:4px
+  tds-inline-tabs --> tds-icon
+  style tds-inline-tabs fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

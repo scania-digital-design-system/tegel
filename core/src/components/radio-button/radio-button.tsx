@@ -1,12 +1,12 @@
 import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-radio-button',
+  tag: 'tds-radio-button',
   styleUrl: 'radio-button.scss',
   shadow: false,
   scoped: true,
 })
-export class RadioButton {
+export class TdsRadioButton {
   @Element() host: HTMLElement;
 
   /** Name of Radio Button, used for reference. */
@@ -27,20 +27,22 @@ export class RadioButton {
   /** Decides if the Radio Button is disabled or not. */
   @Prop() disabled: boolean = false;
 
-  /** Sends unique Radio Button identifier and status when it is checked. If no ID is specified a random one will be generated. To use this listener don't use the randomized ID, use a specific one of your choosing. */
+  /** Sends unique Radio Button identifier and status when it is checked.
+   * If no ID is specified, a random one will be generated.
+   * To use this listener, don't use the randomized ID, use a specific one of your choosing. */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     radioId: string;
     value: string;
   }>;
 
   handleChange = () => {
-    this.sddsChange.emit({
+    this.tdsChange.emit({
       radioId: this.radioId,
       value: this.value,
     });
@@ -48,18 +50,15 @@ export class RadioButton {
 
   render() {
     return (
-      <div class="sdds-radio-button">
+      <div class="tds-radio-button">
         <input
-          class="sdds-form-input"
+          class="tds-form-input"
           type="radio"
           name={this.name}
           id={this.radioId}
           value={this.value}
           checked={this.checked}
           aria-checked={this.checked}
-          // REMEMBER TO ENABLE ARIA PROPS ONCE ALIGNMENT HAS BEEN MADE!
-          // aria-labelledby={this.ariaLabelledBy}
-          // aria-describedby={this.host.getAttribute('aria-describedby')}
           required={this.required}
           disabled={this.disabled}
           onChange={() => this.handleChange()}

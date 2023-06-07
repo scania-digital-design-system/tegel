@@ -56,10 +56,10 @@ const Template = ({ size, variant }) => {
 
   return formatHtmlPreview(
     `
-  <sdds-spinner 
+  <tds-spinner 
     size="${sizeLookup[size]}"  
     variant="${variantLookup[variant]}">
-  </sdds-spinner>
+  </tds-spinner>
   `,
   );
 };

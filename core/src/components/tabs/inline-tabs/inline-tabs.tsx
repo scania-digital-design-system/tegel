@@ -2,21 +2,21 @@ import { Component, Host, State, Element, h, Prop, Event, EventEmitter } from '@
 import { Method } from '@stencil/core/internal';
 
 @Component({
-  tag: 'sdds-inline-tabs',
+  tag: 'tds-inline-tabs',
   styleUrl: 'inline-tabs.scss',
   shadow: true,
 })
-export class InlineTabsFullbleed {
+export class TdsInlineTabs {
   @Element() host: HTMLElement;
 
-  /** Variant of the tabs, primary= on white, secondary= on grey50 */
+  /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
 
-  /** Sets the default selected tab. */
+  /** Sets the default selected Tab. */
   @Prop() defaultSelectedIndex: number = 0;
 
-  /** Sets the selected tab.
-   * If this is set all tab changes needs to be handled by the user. */
+  /** Sets the selected Tab.
+   * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
   @State() showLeftScroll: boolean = false;
@@ -33,19 +33,19 @@ export class InlineTabsFullbleed {
 
   private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLSddsInlineTabElement>;
+  private children: Array<HTMLTdsInlineTabElement>;
 
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     selectedTabIndex: number;
   }>;
 
-  /** Selects a tab based on tabindex, will not select a disabled tab. */
+  /** Selects a Tab based on tabindex, will not select a disabled Tab. */
   @Method()
   async selectTab(tabIndex: number) {
     if (!this.children[tabIndex].disabled) {
@@ -54,7 +54,7 @@ export class InlineTabsFullbleed {
         if (index === tabIndex) {
           element.setSelected(true);
           this.selectedIndex = tabIndex;
-          this.sddsChange.emit({
+          this.tdsChange.emit({
             selectedTabIndex: this.selectedIndex,
           });
         }
@@ -126,15 +126,15 @@ export class InlineTabsFullbleed {
   addEventListenerToTabs = () => {
     this.children = this.children.map((item, index) => {
       item.addEventListener('click', () => {
-        const sddsChangeEvent = this.sddsChange.emit({
+        const tdsChangeEvent = this.tdsChange.emit({
           selectedTabIndex: this.children.indexOf(item),
         });
-        if (!sddsChangeEvent.defaultPrevented) {
+        if (!tdsChangeEvent.defaultPrevented) {
           if (!item.disabled) {
             this.children.forEach((element) => element.setSelected(false));
             item.setSelected(true);
             this.selectedIndex = index;
-            this.sddsChange.emit({
+            this.tdsChange.emit({
               selectedTabIndex: this.selectedIndex,
             });
           }
@@ -145,7 +145,7 @@ export class InlineTabsFullbleed {
   };
 
   connectedCallback() {
-    this.children = Array.from(this.host.children) as Array<HTMLSddsInlineTabElement>;
+    this.children = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
   }
@@ -155,12 +155,12 @@ export class InlineTabsFullbleed {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
-      this.sddsChange.emit({
+      this.tdsChange.emit({
         selectedTabIndex: this.selectedIndex,
       });
     } else {
       this.children[this.selectedIndex].setSelected(true);
-      this.sddsChange.emit({
+      this.tdsChange.emit({
         selectedTabIndex: this.selectedIndex,
       });
     }
@@ -178,10 +178,7 @@ export class InlineTabsFullbleed {
 
   render() {
     return (
-      <Host
-        role="list"
-        class={`${this.modeVariant ? `sdds-mode-variant-${this.modeVariant}` : ''}`}
-      >
+      <Host role="list" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <div
           class="wrapper"
           ref={(el) => {
@@ -193,7 +190,7 @@ export class InlineTabsFullbleed {
             onClick={() => this.scrollLeft()}
             disabled={!this.showLeftScroll}
           >
-            <sdds-icon name="chevron_left" size="20px"></sdds-icon>
+            <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
           <slot />
           <button
@@ -201,7 +198,7 @@ export class InlineTabsFullbleed {
             onClick={() => this.scrollRight()}
             disabled={!this.showRightScroll}
           >
-            <sdds-icon name="chevron_right" size="20px"></sdds-icon>
+            <tds-icon name="chevron_right" size="20px"></tds-icon>
           </button>
         </div>
       </Host>

@@ -1,0 +1,78 @@
+@import '../../mixins/focus-state';
+
+/* Styling for slotted content */
+::slotted(*) {
+  display: inline-flex;
+  align-items: center;
+}
+
+:host([size='sm']) {
+  ::slotted(*) {
+    gap: 6px;
+  }
+}
+
+:host([size='lg']) {
+  ::slotted(*) {
+    gap: 8px;
+  }
+}
+
+/* Component styling */
+
+.component {
+  .tds-chip-component {
+    display: inline-flex;
+
+    label {
+      background-color: var(--tds-chips-background);
+      color: var(--tds-chips-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      display: inline-flex;
+      align-items: center;
+      border-radius: 16px;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: var(--tds-chips-background-hover);
+      }
+    }
+
+    &.lg {
+      label {
+        height: 32px;
+        padding: 1px 16px 0;
+        gap: 8px;
+      }
+    }
+
+    &.sm {
+      label {
+        height: 24px;
+        padding: 1px 12px 0;
+        gap: 6px;
+      }
+    }
+
+    input {
+      opacity: 0;
+      position: absolute;
+      z-index: -1;
+    }
+
+    input:focus-visible + label {
+      @include tds-focus-state;
+    }
+
+    input:checked + label {
+      background-color: var(--tds-chips-background-active);
+      color: var(--tds-chips-color-active);
+
+      &:hover {
+        background-color: var(--tds-chips-background-active-hover);
+      }
+    }
+  }
+}

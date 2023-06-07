@@ -1,4 +1,4 @@
-# sdds-divider
+# tds-divider
 
 
 
@@ -11,6 +11,19 @@
 | ------------- | ------------- | -------------------------------------------------------- | ---------------------------- | -------------- |
 | `orientation` | `orientation` | Orientation of the Divider, horizontal if not specified. | `"horizontal" \| "vertical"` | `'horizontal'` |
 
+
+## Dependencies
+
+### Used by
+
+ - [tds-card](../card)
+
+### Graph
+```mermaid
+graph TD;
+  tds-card --> tds-divider
+  style tds-divider fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

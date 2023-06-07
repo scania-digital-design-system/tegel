@@ -11,21 +11,21 @@ import {
 } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-folder-tabs',
+  tag: 'tds-folder-tabs',
   styleUrl: 'folder-tabs.scss',
   shadow: true,
 })
-export class InlineTabs {
+export class TdsFolderTabs {
   @Element() host: HTMLElement;
 
-  /** Variant of the tabs, primary= on white, secondary= on grey50 */
+  /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Sets the default selected tab. */
+  /** Sets the default selected Tab. */
   @Prop() defaultSelectedIndex: number = 0;
 
-  /** Sets the selected tab.
-   * If this is set all tab changes needs to be handled by the user. */
+  /** Sets the selected Tab.
+   * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
   @State() buttonWidth: number = 0;
@@ -42,20 +42,20 @@ export class InlineTabs {
 
   private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLSddsFolderTabElement>;
+  private children: Array<HTMLTdsFolderTabElement>;
 
-  /** Event emitted when the selected tab is changed. */
+  /** Event emitted when the selected Tab is changed. */
   @Event({
-    eventName: 'sddsChange',
+    eventName: 'tdsChange',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  sddsChange: EventEmitter<{
+  tdsChange: EventEmitter<{
     selectedTabIndex: number;
   }>;
 
-  /** Sets the passed tabindex as the selected tab. */
+  /** Sets the passed tabindex as the selected Tab. */
   @Method()
   async selectTab(tabIndex: number) {
     if (!this.children[tabIndex].disabled) {
@@ -74,7 +74,7 @@ export class InlineTabs {
   }
 
   calculateButtonWidth() {
-    this.children = this.children.map((tab: HTMLSddsFolderTabElement) => {
+    this.children = this.children.map((tab: HTMLTdsFolderTabElement) => {
       if (tab.offsetWidth > this.buttonWidth) {
         this.buttonWidth = tab.offsetWidth;
       }
@@ -143,28 +143,27 @@ export class InlineTabs {
   };
 
   addEventListenerToTabs = () => {
-      this.children = Array.from(this.host.children) as Array<HTMLSddsFolderTabElement>;
-      this.children = this.children.map((item, index) => {
-        item.addEventListener('click', () => {
-          const sddsChangeEvent = this.sddsChange.emit({
-            selectedTabIndex: this.children.indexOf(item)
-          });
-
-          if(!sddsChangeEvent.defaultPrevented) {
-            if (!item.disabled) {
-              this.children.forEach((element) => element.setSelected(false));
-              item.setSelected(true);
-              this.selectedIndex = index;
-            }
-          }
+    this.children = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
+    this.children = this.children.map((item, index) => {
+      item.addEventListener('click', () => {
+        const tdsChangeEvent = this.tdsChange.emit({
+          selectedTabIndex: this.children.indexOf(item),
         });
-        return item;
+
+        if (!tdsChangeEvent.defaultPrevented) {
+          if (!item.disabled) {
+            this.children.forEach((element) => element.setSelected(false));
+            item.setSelected(true);
+            this.selectedIndex = index;
+          }
+        }
       });
-    
+      return item;
+    });
   };
 
   connectedCallback() {
-    this.children = Array.from(this.host.children) as Array<HTMLSddsFolderTabElement>;
+    this.children = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
   }
@@ -174,12 +173,12 @@ export class InlineTabs {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
-      this.sddsChange.emit({
+      this.tdsChange.emit({
         selectedTabIndex: this.selectedIndex,
       });
     } else {
       this.children[this.selectedIndex].setSelected(true);
-      this.sddsChange.emit({
+      this.tdsChange.emit({
         selectedTabIndex: this.selectedIndex,
       });
     }
@@ -202,10 +201,7 @@ export class InlineTabs {
 
   render() {
     return (
-      <Host
-        role="list"
-        class={`${this.modeVariant ? `sdds-mode-variant-${this.modeVariant}` : ''}`}
-      >
+      <Host role="list" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <div
           class="wrapper"
           ref={(el) => {
@@ -217,7 +213,7 @@ export class InlineTabs {
             disabled={!this.showLeftScroll}
             onClick={() => this.scrollLeft()}
           >
-            <sdds-icon name="chevron_left" size="20px"></sdds-icon>
+            <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
           <slot></slot>
           <button
@@ -225,7 +221,7 @@ export class InlineTabs {
             disabled={!this.showRightScroll}
             onClick={() => this.scrollRight()}
           >
-            <sdds-icon name="chevron_right" size="20px"></sdds-icon>
+            <tds-icon name="chevron_right" size="20px"></tds-icon>
           </button>
         </div>
       </Host>

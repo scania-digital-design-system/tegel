@@ -1,7 +1,7 @@
-import { Accordion } from './accordion';
+import { TdsAccordion } from './accordion';
 
-describe('sdds-accordion', () => {
+describe('tds-accordion', () => {
   it('builds', () => {
-    expect(new Accordion()).toBeTruthy();
+    expect(new TdsAccordion()).toBeTruthy();
   });
 });

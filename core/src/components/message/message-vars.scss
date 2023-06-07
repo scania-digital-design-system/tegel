@@ -1,32 +1,32 @@
 :root,
-.sdds-mode-light {
-  --sdds-message-color: var(--sdds-grey-958);
-  --sdds-message-background-primary: var(--sdds-grey-50);
-  --sdds-message-background-secondary: var(--sdds-white);
-  --sdds-message-background: var(--sdds-message-background-primary);
-  --sdds-message-type-error-background: var(--sdds-red-50);
+.tds-mode-light {
+  --tds-message-color: var(--tds-grey-958);
+  --tds-message-background-primary: var(--tds-grey-50);
+  --tds-message-background-secondary: var(--tds-white);
+  --tds-message-background: var(--tds-message-background-primary);
+  --tds-message-type-error-background: var(--tds-red-50);
 
-  .sdds-mode-variant-primary {
-    --sdds-message-background: var(--sdds-message-background-primary);
+  .tds-mode-variant-primary {
+    --tds-message-background: var(--tds-message-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-message-background: var(--sdds-message-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--tds-message-background-secondary);
   }
 }
 
-.sdds-mode-dark {
-  --sdds-message-color: var(--sdds-grey-50);
-  --sdds-message-background-primary: var(--sdds-grey-900);
-  --sdds-message-background-secondary: var(--sdds-grey-868);
-  --sdds-message-background: var(--sdds-message-background-primary);
-  --sdds-message-type-error-background: rgb(255 35 64 / 24%);
+.tds-mode-dark {
+  --tds-message-color: var(--tds-grey-50);
+  --tds-message-background-primary: var(--tds-grey-900);
+  --tds-message-background-secondary: var(--tds-grey-868);
+  --tds-message-background: var(--tds-message-background-primary);
+  --tds-message-type-error-background: rgb(255 35 64 / 24%);
 
-  .sdds-mode-variant-primary {
-    --sdds-message-background: var(--sdds-message-background-primary);
+  .tds-mode-variant-primary {
+    --tds-message-background: var(--tds-message-background-primary);
   }
 
-  .sdds-mode-variant-secondary {
-    --sdds-message-background: var(--sdds-message-background-secondary);
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--tds-message-background-secondary);
   }
 }

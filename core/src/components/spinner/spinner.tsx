@@ -1,11 +1,11 @@
 import { Component, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-spinner',
+  tag: 'tds-spinner',
   styleUrl: 'spinner.scss',
   shadow: false,
 })
-export class Spinner {
+export class TdsSpinner {
   /** Size of the Spinner */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
@@ -15,8 +15,8 @@ export class Spinner {
   render() {
     return (
       <div aria-live="assertive" role="status" aria-label="loading">
-        <svg class={`sdds-spinner-svg sdds-spinner-svg-${this.size}`} aria-hidden="true">
-          <circle class={`sdds-spinner-circle sdds-spinner-circle-${this.variant}`} />
+        <svg class={`tds-spinner-svg tds-spinner-svg-${this.size}`} aria-hidden="true">
+          <circle class={`tds-spinner-circle tds-spinner-circle-${this.variant}`} />
         </svg>
       </div>
     );

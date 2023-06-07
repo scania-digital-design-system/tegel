@@ -1,4 +1,4 @@
-# sdds-dropdown-option-v2
+# tds-dropdown-option-v2
 
 
 
@@ -15,11 +15,11 @@
 
 ## Events
 
-| Event        | Description                          | Type                                                 |
-| ------------ | ------------------------------------ | ---------------------------------------------------- |
-| `sddsBlur`   | Blur event for the Dropdown option.  | `CustomEvent<FocusEvent>`                            |
-| `sddsFocus`  | Focus event for the Dropdown option. | `CustomEvent<FocusEvent>`                            |
-| `sddsSelect` | Click event for the Dropdown option. | `CustomEvent<{ selected: boolean; value: string; }>` |
+| Event       | Description                          | Type                                                 |
+| ----------- | ------------------------------------ | ---------------------------------------------------- |
+| `tdsBlur`   | Blur event for the Dropdown option.  | `CustomEvent<FocusEvent>`                            |
+| `tdsFocus`  | Focus event for the Dropdown option. | `CustomEvent<FocusEvent>`                            |
+| `tdsSelect` | Click event for the Dropdown option. | `CustomEvent<{ selected: boolean; value: string; }>` |
 
 
 ## Methods
@@ -39,15 +39,15 @@ Type: `Promise<void>`
 
 ### Depends on
 
-- [sdds-checkbox](../../checkbox)
-- [sdds-icon](../../icon)
+- [tds-checkbox](../../checkbox)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  sdds-dropdown-option-v2 --> sdds-checkbox
-  sdds-dropdown-option-v2 --> sdds-icon
-  style sdds-dropdown-option-v2 fill:#f9f,stroke:#333,stroke-width:4px
+  tds-dropdown-option-v2 --> tds-checkbox
+  tds-dropdown-option-v2 --> tds-icon
+  style tds-dropdown-option-v2 fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -55,7 +55,7 @@ export default {
     },
     text: {
       name: 'Tooltip text',
-      description: 'Sets the sext that will be displayed inside Tooltip.',
+      description: 'Sets the text that will be displayed inside Tooltip.',
       control: {
         type: 'text',
       },
@@ -83,7 +83,7 @@ export default {
   args: {
     tooltipPosition: 'Bottom',
     text: 'Text inside Tooltip',
-    slot: '<p class="sdds-detail-05 sdds-u-m0"> Paragraph tag inside of Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
+    slot: '<p class="tds-detail-05 tds-u-m0"> Paragraph tag inside Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
     mouseOverTooltip: true,
   },
 };
@@ -119,16 +119,16 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
    <div class="demo-wrapper">
    <!-- The 'referenceEl' prop can be used instead of 'selector',
     which might be preferable in frameworks like React -->
-   <sdds-tooltip
+   <tds-tooltip
       placement="${positionLookup[tooltipPosition]}"
       selector="#button-1"
       text="${text}"
       mouse-over-tooltip="${mouseOverTooltip}">
       ${slot}
-    </sdds-tooltip>
+    </tds-tooltip>
 
     <!-- Demo button for presentation purposes -->
-    <sdds-button size= 'sm' id="button-1" text='Hover me'></sdds-button>
+    <tds-button size= 'sm' id="button-1" text='Hover me'></tds-button>
    </div>
   `,
   );

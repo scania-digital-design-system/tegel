@@ -13,11 +13,11 @@ import {
 } from '@stencil/core';
 
 @Component({
-  tag: 'sdds-dropdown',
+  tag: 'tds-dropdown',
   styleUrl: 'dropdown.scss',
   shadow: true,
 })
-export class Dropdown {
+export class TdsDropdown {
   textInput?: HTMLInputElement;
 
   /** Set the variant of the Dropdown. */
@@ -38,7 +38,8 @@ export class Dropdown {
   /** `Controls type of Dropdown. */
   @Prop() type: 'default' | 'multiselect' | 'filter' = 'default';
 
-  /** Controls the size of Dropdown. 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
+  /** Controls the size of the Dropdown.
+   * 'sm', 'md' and 'lg' correct values and 'small', 'medium' and 'large' are deprecated */
   @Prop() size: 'sm' | 'md' | 'lg' | 'small' | 'medium' | 'large' = 'lg';
 
   /** Set to true to make the width following the label text length */
@@ -92,7 +93,7 @@ export class Dropdown {
   @Element() host: HTMLElement;
 
   componentWillLoad() {
-    // If default option is set, update the default selectedLabel value
+    // If a default option is set, update the default selectedLabel value
     // this.host.children is a HTMLCollection type, cannot use forEach
     this.listItemObject = this.host.children;
     this.listItemArray = Array.from(this.listItemObject);
@@ -225,7 +226,7 @@ export class Dropdown {
     if (typeof this.textInput !== 'undefined' || this.textInput === null) {
       if (!this.selectedLabel && this.selectedLabel.length <= 0) {
         this.textInput.value = '';
-        this.internalSddsSearch.emit('');
+        this.internalTdsSearch.emit('');
       }
       if (this.selectedLabel !== this.textInput.value) {
         this.textInput.value = this.selectedLabel;
@@ -233,7 +234,7 @@ export class Dropdown {
     }
   }
 
-  @Listen('internalSddsSelect')
+  @Listen('internalTdsSelect')
   selectOptionHandler(event: CustomEvent<any>) {
     this.open = this.type === 'multiselect';
     if (this.type !== 'multiselect') {
@@ -256,18 +257,18 @@ export class Dropdown {
     }
   }
 
-  /** @internal Search event that is emitted to the sdds-dropdown-filter */
+  /** @internal Search event that is emitted to the tds-dropdown-filter */
   @Event({
-    eventName: 'internalSddsSearch',
+    eventName: 'internalTdsSearch',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalSddsSearch: EventEmitter<any>;
+  internalTdsSearch: EventEmitter<any>;
 
   handleSearch(ev) {
     const searchTerm = ev.target.value;
-    this.internalSddsSearch.emit(searchTerm);
+    this.internalTdsSearch.emit(searchTerm);
     this.open = true;
   }
 
@@ -295,20 +296,18 @@ export class Dropdown {
     return (
       <Host
         class={`
-        ${this.modeVariant ? `sdds-mode-variant-${this.modeVariant}` : ''}
-        ${this.open && !this.disabled ? 'sdds-dropdown--open' : ''}
-        ${this.type === 'multiselect' ? 'sdds-dropdown-multiselect' : ''}
-        ${this.inline ? 'sdds-dropdown-inline' : ''}
+        ${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}
+        ${this.open && !this.disabled ? 'tds-dropdown--open' : ''}
+        ${this.type === 'multiselect' ? 'tds-dropdown-multiselect' : ''}
+        ${this.inline ? 'tds-dropdown-inline' : ''}
         ${
-          this.selectedLabel.length > 0 || this.selectedLabel === ''
-            ? 'sdds-dropdown--selected'
-            : ''
+          this.selectedLabel.length > 0 || this.selectedLabel === '' ? 'tds-dropdown--selected' : ''
         }
-        ${this.state ? 'sdds-dropdown--error' : ''}
-        ${this.openUpwards ? 'sdds-dropdown--open-upwards' : ''}
+        ${this.state ? 'tds-dropdown--error' : ''}
+        ${this.openUpwards ? 'tds-dropdown--open-upwards' : ''}
         ${
           this.labelPosition === 'inside' && this.selectedLabelsArray.length > 0
-            ? 'sdds-dropdown--label-inside-position'
+            ? 'tds-dropdown--label-inside-position'
             : ''
         }
        `}
@@ -317,9 +316,9 @@ export class Dropdown {
         multi-selected-values={JSON.stringify(this.selectedValuesArray)}
         multi-selected-labels={JSON.stringify(this.selectedLabelsArray)}
       >
-        <span class={`sdds-dropdown sdds-dropdown-${this.size}`}>
+        <span class={`tds-dropdown tds-dropdown-${this.size}`}>
           {this.labelPosition === 'outside' && this.label.length > 0 ? (
-            <span class="sdds-dropdown-label-outside">{this.label}</span>
+            <span class="tds-dropdown-label-outside">{this.label}</span>
           ) : (
             ''
           )}
@@ -327,28 +326,28 @@ export class Dropdown {
             part={this.disabled ? 'dropdown-filter-disabled' : ''}
             disabled={this.disabled}
             tabindex={this.disabled ? '-1' : null}
-            class={`sdds-dropdown-toggle ${this.selectedValue === 'filter' ? 'is-filter' : ''} ${
+            class={`tds-dropdown-toggle ${this.selectedValue === 'filter' ? 'is-filter' : ''} ${
               this.selectedValue !== '' || this.selectedLabelsArray.length > 0
-                ? 'sdds-dropdown-toggle--selected'
+                ? 'tds-dropdown-toggle--selected'
                 : ''
             }
                 ${
                   this.labelPosition === 'inside' && this.selectedValue !== '' && this.size !== 'sm'
-                    ? `sdds-dropdown-toggle-label-inside-${this.size}`
-                    : `sdds-dropdown-toggle-${this.size}`
+                    ? `tds-dropdown-toggle-label-inside-${this.size}`
+                    : `tds-dropdown-toggle-${this.size}`
                 }`}
             type="button"
             onClick={() => this.handleClick()}
             ref={(node) => (this.node = node)}
           >
-            <span class="sdds-dropdown-label">
+            <span class="tds-dropdown-label">
               {this.type === 'filter' ? (
                 <input
                   part={this.disabled ? 'dropdown-filter-disabled' : ''}
                   disabled={this.disabled}
                   tabindex="-1"
                   ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
-                  class="sdds-dropdown-filter"
+                  class="tds-dropdown-filter"
                   type="text"
                   placeholder={this.placeholder}
                   value={this.selectedLabel}
@@ -357,8 +356,8 @@ export class Dropdown {
               ) : (
                 <span
                   class={{
-                    'sdds-dropdown-label-container': true,
-                    'sdds-dropdown-label-container--label-inside':
+                    'tds-dropdown-label-container': true,
+                    'tds-dropdown-label-container--label-inside':
                       this.labelPosition === 'inside' &&
                       this.size !== 'sm' &&
                       (this.selectedLabel.length > 0 || this.selectedLabelsArray.length > 0),
@@ -368,13 +367,13 @@ export class Dropdown {
                     (this.selectedLabel.length > 0 || this.selectedLabelsArray.length > 0) &&
                     this.labelPosition === 'inside' &&
                     this.label.length > 0 && (
-                      <span class="sdds-dropdown-label-inside">{this.label}</span>
+                      <span class="tds-dropdown-label-inside">{this.label}</span>
                     )}
                   <span
-                    class={`sdds-dropdown-label-main ${
+                    class={`tds-dropdown-label-main ${
                       (this.selectedLabel.length === 0 ||
                         (this.labelPosition === 'inside' && this.label.length < 0)) &&
-                      'sdds-dropdown-placeholder'
+                      'tds-dropdown-placeholder'
                     }`}
                   >
                     {this.selectedLabel.length > 0 &&
@@ -382,7 +381,7 @@ export class Dropdown {
                       this.selectedLabel}
 
                     {this.type === 'multiselect' && (
-                      <span class="sdds-dropdown-multiselect-result">
+                      <span class="tds-dropdown-multiselect-result">
                         {this.labelPosition !== 'inside' &&
                           this.selectedLabelsArray.toString().length < 1 &&
                           this.placeholder}
@@ -409,7 +408,7 @@ export class Dropdown {
               )}
             </span>
             <svg
-              class="sdds-dropdown-arrow"
+              class="tds-dropdown-arrow"
               width="12"
               height="7"
               viewBox="0 0 12 7"
@@ -426,16 +425,16 @@ export class Dropdown {
             </svg>
           </button>
           <span
-            class="sdds-dropdown-menu"
+            class="tds-dropdown-menu"
             // Need to have reference in order to calc height and distance from bottom
             ref={(dropdownMenu) => (this.dropdownMenuSelector = dropdownMenu)}
           >
             <slot />
           </span>
         </span>
-        <p class="sdds-dropdown-helper">
+        <p class="tds-dropdown-helper">
           <svg
-            class="sdds-dropdown-error-icon"
+            class="tds-dropdown-error-icon"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"

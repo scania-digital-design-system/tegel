@@ -1,0 +1,108 @@
+@import '../../../mixins/box-sizing';
+
+:host {
+  @include tds-box-sizing;
+
+  display: table-caption;
+  position: relative;
+  background-color: var(--tds-table-toolbar-background);
+  color: var(--tds-table-color);
+  padding: 0 var(--tds-spacing-element-16);
+  height: 64px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  .tds-table__upper-bar-flex {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .tds-table__title {
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
+    padding-top: var(--tds-spacing-element-16);
+    text-align: left;
+  }
+
+  .tds-table__actionbar {
+    display: flex;
+    align-self: center;
+    gap: 8px;
+  }
+
+  .tds-table__searchbar {
+    display: flex;
+    align-self: center;
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 4px 4px 0 0;
+    transition: background-color 250ms ease, width 250ms ease;
+    overflow: hidden;
+    background-color: transparent;
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      background-color: var(--tds-blue-400);
+      transform: scaleX(0);
+      transition: transform 150ms ease;
+    }
+
+    &:focus-within {
+      &::after {
+        transform: scaleX(100%);
+      }
+    }
+
+    &:focus-within,
+    &.tds-table__searchbar--active {
+      width: 208px;
+      background-color: var(--tds-table-toolbar-searchbar-background);
+
+      &:hover {
+        background-color: var(--tds-table-toolbar-searchbar-background);
+      }
+    }
+
+    .tds-table__searchbar-input {
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      color: var(--tds-table-color);
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border: none;
+      padding: 0 36px 0 16px;
+      background-color: transparent;
+      outline: none;
+      cursor: pointer;
+
+      :focus {
+        background-color: var(--tds-table-toolbar-searchbar-background);
+      }
+    }
+
+    &:hover {
+      background-color: var(--tds-table-toolbar-searchbar-background-hover);
+    }
+
+    .tds-table__searchbar-icon {
+      z-index: 0;
+      position: absolute;
+      right: 9px;
+      top: 9px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+:host(.tds-table--compact) {
+  height: 56px;
+}

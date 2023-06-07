@@ -102,7 +102,7 @@ export default {
     },
     readonly: {
       name: 'Read only',
-      description: 'Sets the textarea to read-only state.',
+      description: 'Sets the Textarea to read-only state.',
       control: {
         type: 'boolean',
       },
@@ -112,7 +112,7 @@ export default {
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the textarea.',
+      description: 'Disables the Textarea.',
       control: {
         type: 'boolean',
       },
@@ -165,7 +165,7 @@ const Template = ({
   </style>
 
   <div class="demo-wrapper">
-        <sdds-textarea
+        <tds-textarea
           rows="${rows}"
           state="${stateValue}"
           label="${label}"
@@ -181,22 +181,22 @@ const Template = ({
           ${noMinWidth ? 'no-min-width' : ''}
           placeholder="${placeholder}"
           ${maxlength}>
-        </sdds-textarea>
+        </tds-textarea>
   </div>
   <!-- Script tag for demo purposes -->
   <script>
-    textElement = document.querySelector('sdds-textarea')
+    textElement = document.querySelector('tds-textarea')
 
-    textElement.addEventListener('sddsFocus',(event) => {
+    textElement.addEventListener('tdsFocus',(event) => {
       console.log(event)
     })
-    textElement.addEventListener('sddsBlur',(event) => {
+    textElement.addEventListener('tdsBlur',(event) => {
       console.log(event)
     })
-    textElement.addEventListener('sddsInput',(event) => {
+    textElement.addEventListener('tdsInput',(event) => {
       console.log(event)
     })
-    textElement.addEventListener('sddsChange',(event) => {
+    textElement.addEventListener('tdsChange',(event) => {
       console.log(event)
     })
   </script>

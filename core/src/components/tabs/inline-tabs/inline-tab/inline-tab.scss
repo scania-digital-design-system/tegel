@@ -1,0 +1,86 @@
+@import '../../../../mixins/focus-state';
+@import '../../../../mixins/z-index';
+@import '../../../../mixins/box-sizing';
+
+:host {
+  @include tds-box-sizing;
+
+  z-index: tds-z-index(tab);
+  display: block;
+
+  ::slotted(*) {
+    all: unset;
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
+    color: var(--tds-navigation-tabs-tab-color);
+    text-decoration: none;
+    display: block;
+    position: relative;
+    transition: color 0.15s ease-in-out 0s;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    margin: 20px 4px;
+  }
+
+  ::slotted(*:focus-visible) {
+    @include tds-focus-state;
+  }
+
+  .inline-tab-item {
+    position: relative;
+    margin-right: 32px;
+
+    &:hover {
+      cursor: pointer;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  .inline-tab-item::after {
+    content: ' ';
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    width: 0%;
+    margin-right: auto;
+    height: 2px;
+    background-color: var(--tds-inline-tabs-tab-indicator-background-hover);
+    transition: width 0.15s ease-in-out 0s;
+    z-index: 1;
+  }
+
+  .selected {
+    ::slotted(*) {
+      color: var(--tds-inline-tabs-tab-color-selected);
+    }
+
+    &::after {
+      width: 100%;
+      background-color: var(--tds-inline-tabs-tab-indicator-background-active);
+    }
+  }
+
+  .disabled {
+    color: var(--tds-inline-tabs-tab-color-disabled);
+    pointer-events: none;
+
+    ::slotted(*) {
+      opacity: var(--tds-inline-tabs-tab-color-opacity-disabled);
+    }
+  }
+}
+
+:host(.first) {
+  margin-left: 32px;
+}
+
+:host(.last) {
+  margin-right: 32px;
+}

@@ -1,5 +1,6 @@
 @import './button-vars';
 @import '../../mixins/box-sizing';
+@import '../../mixins/focus-state';
 
 $btn-lg-height: 56px;
 $btn-md-height: 48px;
@@ -13,10 +14,10 @@ $props: (background, border-color, color, outline-color);
 $iconProps: (fill, color);
 
 @mixin button-base {
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
-  font: var(--sdds-detail-02);
-  letter-spacing: var(--sdds-detail-02-ls);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
   display: inline-flex;
   align-items: center;
   border-radius: 4px;
@@ -31,7 +32,7 @@ button {
   @include button-base;
 
   height: $btn-lg-height;
-  padding: var(--sdds-spacing-element-20);
+  padding: var(--tds-spacing-element-20);
   border: 1px solid;
 
   &:disabled,
@@ -44,26 +45,26 @@ button {
   }
 
   &:focus-visible {
-    // TODO: decide on what tod o with these @include sdds-focus-state;
-    outline: 2px solid var(--sdds-blue-400);
+    // TODO: decide on what tod o with these @include tds-focus-state;
+    outline: 2px solid var(--tds-blue-400);
     outline-offset: -2px;
   }
 
   &.xs {
-    padding: var(--sdds-spacing-element-4) var(--sdds-spacing-element-8);
+    padding: var(--tds-spacing-element-4) var(--tds-spacing-element-8);
     height: $btn-xs-height;
     font-size: 12px;
     border-radius: 2px;
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
-      outline: 2px solid var(--sdds-blue-400);
+      // TODO: decide on what tod o with these @include tds-focus-state;
+      outline: 2px solid var(--tds-blue-400);
       outline-offset: -2px;
     }
   }
 
   &.sm {
-    padding: var(--sdds-spacing-element-12);
+    padding: var(--tds-spacing-element-12);
     height: $btn-sm-height;
 
     &.only-icon {
@@ -71,14 +72,14 @@ button {
     }
 
     &:focus-visible {
-      // TODO: decide on what tod o with these @include sdds-focus-state;
-      outline: 2px solid var(--sdds-blue-400);
+      // TODO: decide on what tod o with these @include tds-focus-state;
+      outline: 2px solid var(--tds-blue-400);
       outline-offset: -2px;
     }
   }
 
   &.md {
-    padding: var(--sdds-spacing-element-16);
+    padding: var(--tds-spacing-element-16);
     height: $btn-md-height;
 
     &.only-icon {
@@ -86,13 +87,12 @@ button {
     }
 
     &:focus-visible {
-      outline: 2px solid var(--sdds-blue-400);
-      outline-offset: -2px;
+      @include tds-focus-state;
     }
   }
 
   &.lg {
-    padding: var(--sdds-spacing-element-20);
+    padding: var(--tds-spacing-element-20);
     height: $btn-lg-height;
 
     &.only-icon {
@@ -100,8 +100,7 @@ button {
     }
 
     &:focus-visible {
-      outline: 2px solid var(--sdds-blue-400);
-      outline-offset: -2px;
+      @include tds-focus-state;
     }
   }
 
@@ -114,13 +113,13 @@ button {
   @each $type in $types {
     &.#{$type} {
       @each $prop in $props {
-        #{$prop}: var(--sdds-btn-#{$type}-#{$prop});
+        #{$prop}: var(--tds-btn-#{$type}-#{$prop});
       }
 
       .icon {
         @each $prop in $iconProps {
-          fill: var(--sdds-btn-icon-#{$type}-#{$prop});
-          color: var(--sdds-btn-icon-#{$type}-#{$prop});
+          fill: var(--tds-btn-icon-#{$type}-#{$prop});
+          color: var(--tds-btn-icon-#{$type}-#{$prop});
         }
 
         font-size: 16px; //16px
@@ -128,14 +127,14 @@ button {
 
       &:hover {
         @each $prop in $props {
-          #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-hover);
+          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-hover);
         }
 
         &:not(.disabled) {
           ::slotted([slot='icon']) {
             @each $prop in $iconProps {
-              fill: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
-              color: var(--sdds-btn-icon-#{$type}-#{$prop}-hover);
+              fill: var(--tds-btn-icon-#{$type}-#{$prop}-hover);
+              color: var(--tds-btn-icon-#{$type}-#{$prop}-hover);
             }
           }
         }
@@ -143,13 +142,13 @@ button {
 
       &:focus-visible {
         @each $prop in $props {
-          #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-focus);
+          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-focus);
         }
 
         ::slotted([slot='icon']) {
           @each $prop in $iconProps {
-            fill: var(--sdds-btn-icon-#{$type}-#{$prop}-focus);
-            color: var(--sdds-btn-icon-#{$type}-#{$prop}-focus);
+            fill: var(--tds-btn-icon-#{$type}-#{$prop}-focus);
+            color: var(--tds-btn-icon-#{$type}-#{$prop}-focus);
           }
         }
       }
@@ -157,7 +156,7 @@ button {
       &:active,
       &.active {
         @each $prop in $props {
-          #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-active);
+          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-active);
         }
       }
 
@@ -165,36 +164,36 @@ button {
       &:disabled {
         @each $prop in $props {
           cursor: not-allowed;
-          #{$prop}: var(--sdds-btn-#{$type}-#{$prop}-disabled);
+          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-disabled);
         }
       }
     }
   }
 }
 
-:host(sdds-button) {
+:host(tds-button) {
   display: inline-flex;
   align-items: center;
 
   ::slotted([slot='icon']) {
-    width: var(--sdds-spacing-element-20);
-    height: var(--sdds-spacing-element-20);
+    width: var(--tds-spacing-element-20);
+    height: var(--tds-spacing-element-20);
   }
 
   .sm {
     ::slotted([slot='icon']) {
-      width: var(--sdds-spacing-element-16);
-      height: var(--sdds-spacing-element-16);
+      width: var(--tds-spacing-element-16);
+      height: var(--tds-spacing-element-16);
     }
   }
 }
 
-:host(sdds-button[fullbleed]) {
+:host(tds-button[fullbleed]) {
   width: 100%;
   justify-content: center;
 }
 
-:host(sdds-button[only-icon]) {
+:host(tds-button[only-icon]) {
   .sm {
     padding: $btn-sm-only-icon-padding;
   }
@@ -208,31 +207,31 @@ button {
   }
 }
 
-:host(sdds-button:not([only-icon])) {
+:host(tds-button:not([only-icon])) {
   display: inline-flex;
   align-items: center;
 
   .sm {
     ::slotted([slot='icon']) {
-      margin-left: var(--sdds-spacing-element-12);
-      width: var(--sdds-spacing-element-16);
-      height: var(--sdds-spacing-element-16);
+      margin-left: var(--tds-spacing-element-12);
+      width: var(--tds-spacing-element-16);
+      height: var(--tds-spacing-element-16);
     }
   }
 
   .md {
     ::slotted([slot='icon']) {
-      margin-left: var(--sdds-spacing-element-16);
-      width: var(--sdds-spacing-element-20);
-      height: var(--sdds-spacing-element-20);
+      margin-left: var(--tds-spacing-element-16);
+      width: var(--tds-spacing-element-20);
+      height: var(--tds-spacing-element-20);
     }
   }
 
   .lg {
     ::slotted([slot='icon']) {
-      margin-left: var(--sdds-spacing-element-20);
-      width: var(--sdds-spacing-element-20);
-      height: var(--sdds-spacing-element-20);
+      margin-left: var(--tds-spacing-element-20);
+      width: var(--tds-spacing-element-20);
+      height: var(--tds-spacing-element-20);
     }
   }
 }

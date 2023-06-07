@@ -4,46 +4,46 @@
 
 :host {
   display: block;
-  @include sdds-box-sizing;
+  @include tds-box-sizing;
 
-  .sdds-accordion-header-icon-start,
-  .sdds-accordion-header-icon-end {
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end {
     position: relative;
   }
 }
 
 :host(:focus) {
-  @include sdds-focus-state;
+  @include tds-focus-state;
 
-  .sdds-accordion-item {
-    .sdds-accordion-header-icon-start,
-    .sdds-accordion-header-icon-end {
-      background-color: var(--sdds-accordion-background-focus);
+  .tds-accordion-item {
+    .tds-accordion-header-icon-start,
+    .tds-accordion-header-icon-end {
+      background-color: var(--tds-accordion-background-focus);
       outline: none;
 
       &::after {
-        border-color: var(--sdds-accordion-border-focus);
+        border-color: var(--tds-accordion-border-focus);
       }
     }
   }
 
   .disabled {
-    @include disabledStyle;
+    @include tds-disabled-style;
   }
 }
 
 :host(:active) {
-  .sdds-accordion-header-icon-start,
-  .sdds-accordion-header-icon-end {
-    background-color: var(--sdds-accordion-background-active);
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end {
+    background-color: var(--tds-accordion-background-active);
     outline: none;
   }
 
   .disabled {
-    @include disabledStyle;
+    @include tds-disabled-style;
   }
 }
 
 :host(:last-child) {
-  border-bottom: 1px solid var(--sdds-accordion-border);
+  border-bottom: 1px solid var(--tds-accordion-border);
 }

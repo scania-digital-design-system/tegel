@@ -1,0 +1,131 @@
+@import '../../mixins/focus-state';
+@import '../../mixins/z-index';
+
+:host(.hide) {
+  display: none;
+  visibility: hidden;
+}
+
+:host {
+  z-index: tds-z-index(toast);
+
+  .toast-wrapper {
+    display: flex;
+    width: calc(352px - 4px);
+    background-color: var(--tds-toast-background-color);
+    border-radius: 4px;
+
+    &.information {
+      border-left: 4px solid var(--tds-information);
+
+      tds-icon {
+        color: var(--tds-information);
+      }
+    }
+
+    &.success {
+      border-left: 4px solid var(--tds-positive);
+
+      tds-icon {
+        color: var(--tds-positive);
+      }
+    }
+
+    &.error {
+      border-left: 4px solid var(--tds-negative);
+
+      tds-icon {
+        color: var(--tds-negative);
+      }
+    }
+
+    &.warning {
+      border-left: 4px solid var(--tds-warning);
+
+      tds-icon {
+        color: var(--tds-warning);
+      }
+    }
+
+    button.toast-close {
+      height: 20px;
+      width: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 14px 14px 0 0;
+      border: none;
+      background: transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &:focus {
+        @include tds-focus-state;
+      }
+
+      tds-icon {
+        color: var(--tds-toast-dissmiss-color);
+        padding: 0;
+      }
+    }
+  }
+
+  tds-icon {
+    padding: 14px 0 0 12px;
+  }
+
+  .toast-content {
+    padding: 16px 0 16px 10px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .toast-header {
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+      color: var(--tds-toast-headline-color);
+
+      &.no-subheader {
+        margin-bottom: 4px;
+      }
+
+      &.only-header {
+        margin-bottom: 0;
+      }
+    }
+
+    .toast-subheader {
+      slot::slotted(*) {
+        margin-top: 4px;
+        color: var(--tds-toast-subheadline-color);
+        font: var(--tds-detail-02);
+        letter-spacing: var(--tds-detail-02-ls);
+        padding-bottom: 16px;
+        max-width: 252px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &.no-link {
+        slot::slotted(*) {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  slot[name='toast-link']::slotted(*) {
+    color: var(--tds-toast-link-color);
+  }
+
+  .tds-mode-variant-primary {
+    --tds-toast-background: var(--tds-toast-background-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-toast-background: var(--tds-toast-background-secondary);
+  }
+}

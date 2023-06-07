@@ -1,0 +1,146 @@
+@import '../../../mixins/box-sizing';
+
+:host(.tds-table__header-cell) {
+  @include tds-box-sizing;
+
+  font: var(--tds-headline-07);
+  letter-spacing: var(--tds-headline-07-ls);
+  display: table-cell;
+  text-align: left;
+  color: var(--tds-table-color);
+  background-color: var(--tds-table-header-background);
+  border-bottom: 1px solid var(--tds-table-header-background-hover);
+  padding: 0;
+  height: 48px;
+  min-width: 192px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: background-color 200ms ease;
+
+  .tds-table__header-text {
+    padding: 0 16px;
+    margin: 0;
+  }
+}
+
+:host(.tds-table__header-cell--sortable) {
+  .tds-table__header-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms ease;
+
+    &:focus {
+      outline: 2px solid var(--tds-table-header-btn-focus);
+      outline-offset: -2px;
+
+      .tds-table__header-button-icon {
+        opacity: 1;
+      }
+    }
+
+    .tds-table__header-button-text {
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+      text-align: left;
+      color: var(--tds-table-header-btn-color);
+    }
+
+    .tds-table__header-button-icon {
+      /* not to shrink on lot of text */
+      flex: 0 0 16px;
+      height: 16px;
+      opacity: 0;
+      transform-origin: center;
+      transition: opacity 200ms ease-in, transform 200ms ease;
+      fill: var(--tds-table-color);
+    }
+
+    &:hover {
+      .tds-table__header-button-icon {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+:host(.tds-table__header-cell--right-align) {
+  .tds-table__header-button {
+    text-align: right;
+    justify-content: end;
+    flex-direction: row-reverse;
+  }
+}
+
+:host(.tds-table__header-cell--is-sorted) {
+  .tds-table__header-button {
+    background-color: var(--tds-table-header-btn-background);
+
+    &:hover {
+      background-color: var(--tds-table-header-btn-background-hover);
+    }
+
+    .tds-table__header-button-icon {
+      opacity: 1;
+    }
+
+    .tds-table__header-button-icon--rotate {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+:host(.tds-table--compact) {
+  height: 33px;
+}
+
+:host(.tds-table--divider) {
+  border-right: 1px solid var(--tds-table-divider);
+}
+
+:host(.tds-table--divider:last-of-type) {
+  border-right: none;
+}
+
+:host(.tds-table--no-min-width) {
+  min-width: unset;
+}
+
+// border-radius style control
+// it depends id multiselect si on or off, same for if toolbar is there or not
+:host(.tds-table__header-cell:first-of-type) {
+  border-top-left-radius: 4px;
+}
+
+:host(.tds-table__header-cell:last-of-type) {
+  border-top-right-radius: 4px;
+}
+
+:host(.tds-table--extra-column:first-of-type) {
+  border-top-left-radius: 0;
+}
+
+:host(.tds-table--toolbar-available) {
+  border-radius: 0;
+}
+
+:host(.tds-table--extra-column.tds-table--toolbar-available) {
+  border-radius: 0;
+}
+
+:host(.tds-table__header-cell.tds-table--toolbar-available:first-of-type) {
+  border-top-left-radius: 0;
+}
+
+:host(.tds-table__header-cell.tds-table--toolbar-available:last-of-type) {
+  border-top-right-radius: 0;
+}
