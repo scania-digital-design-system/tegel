@@ -99,7 +99,7 @@ export class TdsCard {
         {this.headerPlacement === 'below' && (this.header || this.hasSubheaderSlot) && (
           <div class={`card-top ${this.headerPlacement}`}>
             {this.hasCardThumbnailSlot && (
-              <div class={this.hasCardThumbnailSlot ? 'card-thumbnail' : 'no-header-img'}>
+              <div class="card-thumbnail">
                 <slot name="card-thumbnail"></slot>
               </div>
             )}
