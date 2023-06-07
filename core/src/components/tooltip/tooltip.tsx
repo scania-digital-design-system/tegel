@@ -120,7 +120,6 @@ export class TdsTooltip {
     this.popperInstance?.destroy();
   }
 
-  /* Slot on line 118 is added to support adding HTML elements to component */
   render() {
     return (
       <span
@@ -130,6 +129,7 @@ export class TdsTooltip {
         class={`tds-tooltip tds-tooltip-${this.border} ${this.show ? 'tds-tooltip-show' : ''}`}
       >
         {this.text}
+        {/* Slot is added to support adding HTML elements to component */}
         <slot />
       </span>
     );
