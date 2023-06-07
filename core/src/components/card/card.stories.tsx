@@ -52,7 +52,7 @@ export default {
     },
     thumbnail: {
       name: 'Header thumbnail',
-      description: 'Adds a thumbnail in the card header.',
+      description: 'Adds a thumbnail in the Card header.',
       control: {
         type: 'text',
       },
