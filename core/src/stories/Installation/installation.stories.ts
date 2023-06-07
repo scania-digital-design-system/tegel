@@ -12,6 +12,7 @@ const meta: Meta = {
     },
   },
 };
+
 hljs.highlightAll();
 
 export default meta;
@@ -21,6 +22,7 @@ export const Installation = {
     article {
         box-sizing: border-box;
         max-width: 688px;
+
         padding: 32px;
         margin: auto;
         >* {
@@ -28,9 +30,8 @@ export const Installation = {
         }
     }
 
-    pre > code {
+    code {
         border-radius: 4px;
-        font-size: 12px;
     }
 </style>
 <article class="tds-u-p2 tds-body-01">
@@ -47,25 +48,25 @@ export const Installation = {
             <li>
                 <p>Paste the following into that file:</p>
                 <pre>
-<code>import &#123; defineCustomElements, JSX as LocalJSX &#125;from '@scania/tegel/loader';
+<code>import &#123; defineCustomElements, JSX as LocalJSX &#125; from
+    '@scania/tegel/loader';
 import &#123; DetailedHTMLProps, HTMLAttributes &#125; from 'react';
 
 type StencilProps&lt;T&gt; = &#123;
-[P in keyof T]?: Omit&lt;T[P], 'ref'&gt; | HTMLAttributes&lt;T&gt;;
-&#125;;
+    [P in keyof T]?:Omit&lt;T[P], 'ref'&gt; | HTMLAttributes&lt;T&gt;;&#125;;
 
 type ReactProps&lt;T&gt; = &#123;
-[P in keyof T]?: DetailedHTMLProps&lt;HTMLAttributes&lt;T[P]&gt;, T[P]&gt;;
-&#125;;
+[P in keyof T]?: DetailedHTMLProps&lt;HTMLAttributes&lt;T[P]&gt;,
+    T[P]&gt;;&#125;;
 
 type StencilToReact&lt;T = LocalJSX.IntrinsicElements,
-U = HTMLElementTagNameMap&gt; = StencilProps&lt;T&gt; &
-ReactProps&lt;U&gt;;
+    U = HTMLElementTagNameMap&gt; = StencilProps&lt;T&gt; &
+    ReactProps&lt;U&gt;;
 
 declare global &#123;
-export namespace JSX &#123;
-    interface IntrinsicElements extends StencilToReact &#123;&#125;
-&#125;
+    export namespace JSX &#123;
+        interface IntrinsicElements extends StencilToReact &#123;&#125;
+    &#125;
 &#125;
 
 defineCustomElements(window);
@@ -82,7 +83,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './register-webcomponents';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(document.
+    getElementById('root') as HTMLElement);
 root.render(
 &lt;React.StrictMode&gt;
     &lt;App /&gt;
@@ -117,7 +119,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { defineCustomElements } from '@scania/tegel/loader';
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(document.
+    getElementById('root') as HTMLElement);
 root.render(
 &lt;React.StrictMode&gt;
     &lt;App /&gt;
@@ -146,7 +149,8 @@ defineCustomElements();</code>
             <li>
                 <p>In your main.ts import and call the function <code>defineCustomElements()</code></p>
                 <pre>
-                    <code>import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+                    <code>import { platformBrowserDynamic } from
+                        '@angular/platform-browser-dynamic';
 import { defineCustomElements } from '@scania/tegel/loader';
 import { AppModule } from './app/app.module';
 
@@ -162,7 +166,10 @@ defineCustomElements(window);</code>
                 <pre>
                     <code>import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { 
+    CUSTOM_ELEMENTS_SCHEMA,
+    NgModule
+    } from '@angular/core';
 
 @NgModule({
     declarations: [AppComponent],
@@ -191,10 +198,12 @@ export class AppModule {}</code>
             <li><p>Import the package and stylesheet in your <code>&lt;head&gt;</code></p>
                 <pre>
                     <code>&lt;script type="module"&gt;
-    import { defineCustomElements } from './node_modules/@scania/tegel/loader/index.es2017.js';
+    import { defineCustomElements } from 
+        './node_modules/@scania/tegel/loader/index.es2017.js';
     defineCustomElements();
 &lt;/script&gt;
-&lt;link rel="stylesheet" href="./node_modules/@scania/tegel/dist/tegel/tegel.css"/&gt;</code>
+&lt;link rel="stylesheet"
+    href="./node_modules/@scania/tegel/dist/tegel/tegel.css"/&gt;</code>
                 <pre>
             </li>
             
