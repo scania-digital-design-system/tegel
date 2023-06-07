@@ -209,7 +209,7 @@ export class AppModule {}</code>
             <pre>
                 <code>@import url('@scania/tegel/dist/tegel/tegel.css');</code>
             </pre></li>
-            <li><p>And don't forget to set 'shadow: false' for your component.</p></li>
+            <li><p>And don't forget to set <code>'shadow: false';</code> for your component.</p></li>
         </ol>
     </section>
 </article>
