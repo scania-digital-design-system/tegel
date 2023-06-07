@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { Method, State } from '@stencil/core/internal';
+import { hasSlot } from '../../utils/utils';
 
 @Component({
   tag: 'tds-toast',
@@ -27,7 +28,7 @@ export class TdsToast {
   /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
 
-  @State() hasSubheader: boolean;
+  @State() hasSubheaderSlot: boolean;
 
   @State() hasLink: boolean;
 
@@ -88,16 +89,15 @@ export class TdsToast {
   };
 
   connectedCallback() {
-    const children = Array.from(this.host.children);
-    this.hasSubheader = children.some((childElement) => childElement.slot === 'toast-subheader');
-    this.hasLink = children.some((childElement) => childElement.slot === 'toast-link');
+    this.hasSubheaderSlot = hasSlot('toast-subheader', this.host);
+    this.hasLink = hasSlot('toast-link', this.host);
   }
 
   getHeaderClasses = () => {
-    if (!this.hasSubheader && !this.hasLink) {
+    if (!this.hasSubheaderSlot && !this.hasLink) {
       return 'only-header';
     }
-    if (!this.hasSubheader) {
+    if (!this.hasSubheaderSlot) {
       return 'no-subheader';
     }
     return '';

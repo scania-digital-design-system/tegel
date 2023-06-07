@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 import { State } from '@stencil/core/internal';
+import { hasSlot } from '../../utils/utils';
 
 @Component({
   tag: 'tds-banner',
@@ -31,7 +32,7 @@ export class TdsBanner {
   /** Hides the Banner */
   @Prop({ reflect: true }) hidden = false;
 
-  @State() hasSubheader: boolean;
+  @State() hasSubheaderSlot: boolean;
 
   @State() hasLink: boolean;
 
@@ -75,9 +76,8 @@ export class TdsBanner {
     } else if (this.type === 'information') {
       this.icon = 'info';
     }
-    const children = Array.from(this.host.children);
-    this.hasSubheader = children.some((childElement) => childElement.slot === 'banner-subheader');
-    this.hasLink = children.some((childElement) => childElement.slot === 'banner-link');
+    this.hasSubheaderSlot = hasSlot('banner-subheader', this.host);
+    this.hasLink = hasSlot('banner-link', this.host);
   }
 
   handleClose = () => {
@@ -116,9 +116,9 @@ export class TdsBanner {
         )}
         <div class={`banner-content ${this.type} ${!this.icon ? 'no-icon' : ''}`}>
           {this.header && <span class={`banner-header`}>{this.header}</span>}
-          {this.hasSubheader && <slot name="banner-subheader"></slot>}
+          {this.hasSubheaderSlot && <slot name="banner-subheader"></slot>}
           {this.hasLink && (
-            <div class={`banner-link ${!this.hasSubheader ? 'no-subheader' : ''}`}>
+            <div class={`banner-link ${!this.hasSubheaderSlot ? 'no-subheader' : ''}`}>
               <slot name="banner-link"></slot>
             </div>
           )}
