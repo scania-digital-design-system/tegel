@@ -49,4 +49,4 @@ const IconTemplate = (args) =>
   <tds-icon name="${args.icon}" size="${`${args.size.toString()}px`}"></tds-icon> 
   `);
 
-export const WebComponent = IconTemplate.bind({});
+export const Icons = IconTemplate.bind({});
