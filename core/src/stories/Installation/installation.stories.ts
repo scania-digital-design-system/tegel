@@ -28,7 +28,7 @@ export const Installation = {
         }
     }
 
-    code {
+    pre > code {
         border-radius: 4px;
         font-size: 12px;
     }
