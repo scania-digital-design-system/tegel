@@ -13,8 +13,11 @@ export class TdsCard {
   /** Placement of the header */
   @Prop() headerPlacement: 'above' | 'below' = 'above';
 
-  /** Text in the header */
+  /** Header text for the Card. */
   @Prop() header: string;
+
+  /** Subheader text for the Card. */
+  @Prop() subheader: string;
 
   /** Body image src */
   @Prop() bodyImg: string;
@@ -82,12 +85,13 @@ export class TdsCard {
             class={`
           card-top-header
           ${!this.hasCardThumbnailSlot ? 'no-header-img' : ''}
-          ${!this.header || !this.hasSubheaderSlot ? 'single-line-header' : ''}
+          ${!this.header || (!this.hasSubheaderSlot && !this.subheader) ? 'single-line-header' : ''}
           `}
           >
             <span class={`card-header`}>{this.header}</span>
-            {this.hasSubheaderSlot && (
+            {(this.hasSubheaderSlot || this.subheader) && (
               <span class={`card-subheader`}>
+                {this.subheader}
                 <slot name="card-subheader"></slot>
               </span>
             )}
@@ -96,27 +100,29 @@ export class TdsCard {
       )}
       <div class={`card-body`}>
         {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
-        {this.headerPlacement === 'below' && (this.header || this.hasSubheaderSlot) && (
-          <div class={`card-top ${this.headerPlacement}`}>
-            {this.hasCardThumbnailSlot && (
-              <div class="card-thumbnail">
-                <slot name="card-thumbnail"></slot>
-              </div>
-            )}
-            <div
-              class={`
+        {this.headerPlacement === 'below' &&
+          (this.header || this.hasSubheaderSlot || this.subheader) && (
+            <div class={`card-top ${this.headerPlacement}`}>
+              {this.hasCardThumbnailSlot && (
+                <div class="card-thumbnail">
+                  <slot name="card-thumbnail"></slot>
+                </div>
+              )}
+              <div
+                class={`
             card-top-header
             ${!this.hasCardThumbnailSlot ? 'no-header-img' : ''}
-            ${!this.header || !this.hasSubheaderSlot ? 'single-line-header' : ''}
+            ${!this.header || !this.hasSubheaderSlot || this.subheader ? 'single-line-header' : ''}
             `}
-            >
-              <span class={`card-header`}>{this.header}</span>
-              <span class={`card-subheader`}>
-                <slot name="card-subheader"></slot>
-              </span>
+              >
+                <span class={`card-header`}>{this.header}</span>
+                <span class={`card-subheader`}>
+                  <slot name="card-subheader"></slot>
+                  {this.subheader}
+                </span>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         {this.bodyDivider && <tds-divider></tds-divider>}
         <slot name="card-body"></slot>
       </div>

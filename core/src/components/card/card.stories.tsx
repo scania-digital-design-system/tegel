@@ -115,7 +115,7 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
-    subheader: '<div slot="card-subheader">Subheader text</div>',
+    subheader: 'Subheader text',
     thumbnail: `<img src="${CardPlaceholder}" slot="card-thumbnail" />`,
     headerPlacement: 'Above',
     bodyImg: false,
@@ -149,12 +149,12 @@ const Template = ({
     <tds-card
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     ${header ? `header="${header}"` : ''}
+    ${subheader ? `subheader="${subheader}"` : ''}
     header-placement="${headerPlacement.toLowerCase()}"
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
-    ${subheader}
     ${thumbnail}
     ${
       bodyContent

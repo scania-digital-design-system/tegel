@@ -1,6 +1,17 @@
 # tds-card
 
 
+### The subheader of the card is also available as a slot.
+
+```jsx
+<div class="demo-wrapper">
+  <tds-card header="Header text" header-placement="above">
+    <div slot="card-subheader">Subheader text</div>
+    <img src="static/media/src/stories/assets/image/card-placeholder.png" slot="card-thumbnail" />
+    <tds-icon slot="card-bottom" size="20px" name="arrow_right"></tds-icon>
+  </tds-card>
+</div>
+```
 
 <!-- Auto Generated Below -->
 
@@ -14,9 +25,10 @@
 | `bodyImgAlt`      | `body-img-alt`     | Alt text for the body image                                                                                                                                                                           | `string`                   | `undefined`           |
 | `cardId`          | `card-id`          | ID for the Card, must be unique.  **NOTE**: If you're listening for Card events, you need to set this ID yourself to identify the Card, as the default ID is random and will be different every time. | `string`                   | `crypto.randomUUID()` |
 | `clickable`       | `clickable`        | Makes the Card clickable.                                                                                                                                                                             | `boolean`                  | `false`               |
-| `header`          | `header`           | Text in the header                                                                                                                                                                                    | `string`                   | `undefined`           |
+| `header`          | `header`           | Header text for the Card.                                                                                                                                                                             | `string`                   | `undefined`           |
 | `headerPlacement` | `header-placement` | Placement of the header                                                                                                                                                                               | `"above" \| "below"`       | `'above'`             |
 | `modeVariant`     | `mode-variant`     | Variant of the Card based on the theme used.                                                                                                                                                          | `"primary" \| "secondary"` | `null`                |
+| `subheader`       | `subheader`        | Subheader text for the Card.                                                                                                                                                                          | `string`                   | `undefined`           |
 
 
 ## Events
