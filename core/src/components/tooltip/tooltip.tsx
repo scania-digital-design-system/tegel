@@ -1,4 +1,4 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Method } from '@stencil/core';
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
@@ -29,6 +29,12 @@ export class TdsTooltip {
   @State() popperInstance: Instance;
 
   @State() target: any;
+
+  /** Method to update the Tooltip. Will reevaluate the Tooltips position. */
+  @Method()
+  async updateTooltip() {
+    this.popperInstance?.update();
+  }
 
   border: string;
 
