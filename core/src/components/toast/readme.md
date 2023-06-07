@@ -1,6 +1,15 @@
 # tds-toast
 
 
+## Slots
+
+### Subheader
+```jsx
+<tds-toast type="information" header="Header">
+  <div slot="toast-subheader">Subheader</div>
+  <a slot="toast-link" href="#">This is a link.</a>
+</tds-toast>
+```
 
 <!-- Auto Generated Below -->
 
@@ -9,7 +18,7 @@
 
 | Property    | Attribute    | Description                                            | Type                                                 | Default               |
 | ----------- | ------------ | ------------------------------------------------------ | ---------------------------------------------------- | --------------------- |
-| `header`    | `header`     | Header text for the component.                         | `string`                                             | `undefined`           |
+| `header`    | `header`     | Header text for the Toast.                             | `string`                                             | `undefined`           |
 | `hidden`    | `hidden`     | Hides the Toast.                                       | `boolean`                                            | `false`               |
 | `subheader` | `subheader`  | Subheader text for the component.                      | `string`                                             | `undefined`           |
 | `toastId`   | `toast-id`   | ID for the Toast. Randomly generated if not specified. | `string`                                             | `crypto.randomUUID()` |

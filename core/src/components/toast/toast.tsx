@@ -13,7 +13,7 @@ export class TdsToast {
   /** ID for the Toast. Randomly generated if not specified. */
   @Prop() toastId: string = crypto.randomUUID();
 
-  /** Header text for the component. */
+  /** Header text for the Toast. */
   @Prop() header: string;
 
   /** Subheader text for the component. */
@@ -97,7 +97,7 @@ export class TdsToast {
     if (!this.hasSubheaderSlot && !this.hasLink) {
       return 'only-header';
     }
-    if (!this.hasSubheaderSlot) {
+    if (!this.hasSubheaderSlot && !this.subheader) {
       return 'no-subheader';
     }
     return '';
@@ -120,14 +120,16 @@ export class TdsToast {
           <div class={`toast-content`}>
             <div
               class={`toast-header
-              ${this.getHeaderClasses()}
-              `}
+              ${this.getHeaderClasses()}`}
             >
               {this.header}
             </div>
-            <div class={`toast-subheader ${this.hasLink ? '' : 'no-link'}`}>
-              <slot name="toast-subheader"></slot>
-            </div>
+            {(this.hasSubheaderSlot || this.subheader) && (
+              <div class={`toast-subheader ${this.hasLink ? '' : 'no-link'}`}>
+                <slot name="toast-subheader"></slot>
+                {this.subheader}
+              </div>
+            )}
             <slot name="toast-link"></slot>
           </div>
           <button

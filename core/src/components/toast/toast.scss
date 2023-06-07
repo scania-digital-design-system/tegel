@@ -97,22 +97,18 @@
     }
 
     .toast-subheader {
-      slot::slotted(*) {
-        margin-top: 4px;
-        color: var(--tds-toast-subheadline-color);
-        font: var(--tds-detail-02);
-        letter-spacing: var(--tds-detail-02-ls);
-        padding-bottom: 16px;
-        max-width: 252px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      margin-top: 4px;
+      color: var(--tds-toast-subheadline-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+      padding-bottom: 16px;
+      max-width: 252px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       &.no-link {
-        slot::slotted(*) {
-          padding-bottom: 0;
-        }
+        padding-bottom: 0;
       }
     }
   }
