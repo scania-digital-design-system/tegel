@@ -17,7 +17,6 @@
 | `header`          | `header`           | Text in the header                                                                                                                                                                                    | `string`                   | `undefined`           |
 | `headerPlacement` | `header-placement` | Placement of the header                                                                                                                                                                               | `"above" \| "below"`       | `'above'`             |
 | `modeVariant`     | `mode-variant`     | Variant of the Card based on the theme used.                                                                                                                                                          | `"primary" \| "secondary"` | `null`                |
-| `subheader`       | `subheader`        | Subheader text in the header                                                                                                                                                                          | `string`                   | `undefined`           |
 
 
 ## Events

@@ -56,7 +56,9 @@
   }
 
   .card-subheader {
-    color: var(--tds-card-sub-headline);
+    ::slotted(*) {
+      color: var(--tds-card-sub-headline);
+    }
   }
 
   .card-body-img {

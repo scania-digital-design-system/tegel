@@ -115,7 +115,7 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
-    subheader: 'Subheader text',
+    subheader: '<div slot="card-subheader">Subheader text</div>',
     thumbnail: `<img src="${CardPlaceholder}" slot="card-thumbnail" />`,
     headerPlacement: 'Above',
     bodyImg: false,
@@ -129,9 +129,9 @@ export default {
 const Template = ({
   modeVariant,
   header,
-  subheader,
   headerPlacement,
   thumbnail,
+  subheader,
   bodyImg,
   bodyContent,
   bodyDivider,
@@ -150,21 +150,19 @@ const Template = ({
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     ${header ? `header="${header}"` : ''}
     header-placement="${headerPlacement.toLowerCase()}"
-    ${subheader ? `subheader="${subheader}"` : ''}
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
+    ${subheader}
     ${thumbnail}
-  ${
-    bodyContent
-      ? `
-    <div slot="card-body">
-        ${bodyContent}
-    </div>`
-      : ''
-  }
-    ${cardBottom ? `${cardBottom}` : ''}
+    ${
+      bodyContent
+        ? `<div slot="card-body">
+          ${bodyContent}
+        </div>`
+        : ''
+    }${cardBottom ? `${cardBottom}` : ''}
     </tds-card>
     </div>
     ${
