@@ -1,4 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@stencil/core';
+import { hasSlot } from '../../utils/utils';
 
 @Component({
   tag: 'tds-card',
@@ -14,9 +15,6 @@ export class TdsCard {
 
   /** Text in the header */
   @Prop() header: string;
-
-  /** Subheader text in the header */
-  @Prop() subheader: string;
 
   /** Body image src */
   @Prop() bodyImg: string;
@@ -54,12 +52,15 @@ export class TdsCard {
 
   @State() hasCardBodySlot: boolean = false;
 
-  @State() hasCardThumbnail: boolean = false;
+  @State() hasCardThumbnailSlot: boolean = false;
+
+  @State() hasSubheaderSlot: boolean;
 
   connectedCallback() {
-    this.hasCardThumbnail = !!this.hostElement.querySelector('[slot="card-thumbnail"]');
-    this.hasCardBottomSlot = !!this.hostElement.querySelector('[slot="card-bottom"]');
-    this.hasCardBodySlot = !!this.hostElement.querySelector('[slot="card-body"]');
+    this.hasCardThumbnailSlot = hasSlot('card-thumbnail', this.hostElement);
+    this.hasSubheaderSlot = hasSlot('card-subheader', this.hostElement);
+    this.hasCardBodySlot = hasSlot('card-body', this.hostElement);
+    this.hasCardBottomSlot = hasSlot('card-bottom', this.hostElement);
   }
 
   handleClick = () => {
@@ -72,41 +73,47 @@ export class TdsCard {
     <div>
       {this.headerPlacement === 'above' && (
         <div class={`card-top ${this.headerPlacement}`}>
-          {this.hasCardThumbnail && (
-            <div class={this.hasCardThumbnail ? 'card-thumbnail' : 'no-header-img'}>
+          {this.hasCardThumbnailSlot && (
+            <div class={this.hasCardThumbnailSlot ? 'card-thumbnail' : 'no-header-img'}>
               <slot name="card-thumbnail"></slot>
             </div>
           )}
           <div
             class={`
           card-top-header
-          ${!this.hasCardThumbnail ? 'no-header-img' : ''}
-          ${!this.header || !this.subheader ? 'single-line-header' : ''}
+          ${!this.hasCardThumbnailSlot ? 'no-header-img' : ''}
+          ${!this.header || !this.hasSubheaderSlot ? 'single-line-header' : ''}
           `}
           >
             <span class={`card-header`}>{this.header}</span>
-            <span class={`card-subheader`}>{this.subheader}</span>
+            {this.hasSubheaderSlot && (
+              <span class={`card-subheader`}>
+                <slot name="card-subheader"></slot>
+              </span>
+            )}
           </div>
         </div>
       )}
       <div class={`card-body`}>
         {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
-        {this.headerPlacement === 'below' && (this.header || this.subheader) && (
+        {this.headerPlacement === 'below' && (this.header || this.hasSubheaderSlot) && (
           <div class={`card-top ${this.headerPlacement}`}>
-            {this.hasCardThumbnail && (
-              <div class={this.hasCardThumbnail ? 'card-thumbnail' : 'no-header-img'}>
+            {this.hasCardThumbnailSlot && (
+              <div class={this.hasCardThumbnailSlot ? 'card-thumbnail' : 'no-header-img'}>
                 <slot name="card-thumbnail"></slot>
               </div>
             )}
             <div
               class={`
             card-top-header
-            ${!this.hasCardThumbnail ? 'no-header-img' : ''}
-            ${!this.header || !this.subheader ? 'single-line-header' : ''}
+            ${!this.hasCardThumbnailSlot ? 'no-header-img' : ''}
+            ${!this.header || !this.hasSubheaderSlot ? 'single-line-header' : ''}
             `}
             >
               <span class={`card-header`}>{this.header}</span>
-              <span class={`card-subheader`}>{this.subheader}</span>
+              <span class={`card-subheader`}>
+                <slot name="card-subheader"></slot>
+              </span>
             </div>
           </div>
         )}
