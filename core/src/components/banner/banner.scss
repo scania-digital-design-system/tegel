@@ -52,7 +52,7 @@
       letter-spacing: var(--tds-headline-06-ls);
     }
 
-    slot[name='banner-subheader'] {
+    .banner-subheader {
       display: block;
       margin-top: 4px;
       font: var(--tds-detail-02);

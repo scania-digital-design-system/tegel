@@ -13,8 +13,11 @@ export class TdsBanner {
   /** Name of the icon for the component. For error and information type, the icon is predefined. */
   @Prop() icon: string;
 
-  /** Header text. */
+  /** Header text for the Banner. */
   @Prop() header: string;
+
+  /** Subheader text for the Banner. */
+  @Prop() subheader: string;
 
   /** Type of Banner */
   @Prop() type: 'error' | 'information' | 'none' = 'none';
@@ -116,9 +119,18 @@ export class TdsBanner {
         )}
         <div class={`banner-content ${this.type} ${!this.icon ? 'no-icon' : ''}`}>
           {this.header && <span class={`banner-header`}>{this.header}</span>}
-          {this.hasSubheaderSlot && <slot name="banner-subheader"></slot>}
+          {(this.hasSubheaderSlot || this.subheader) && (
+            <div class="banner-subheader">
+              {this.subheader}
+              <slot name="banner-subheader"></slot>
+            </div>
+          )}
           {this.hasLink && (
-            <div class={`banner-link ${!this.hasSubheaderSlot ? 'no-subheader' : ''}`}>
+            <div
+              class={`banner-link ${
+                !this.hasSubheaderSlot && !this.subheader ? 'no-subheader' : ''
+              }`}
+            >
               <slot name="banner-link"></slot>
             </div>
           )}
