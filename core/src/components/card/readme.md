@@ -2,19 +2,6 @@
 
 
 
-## Slots
-
-### Subheader
-```jsx
-<div class="demo-wrapper">
-  <tds-card header="Header text" header-placement="above">
-    <div slot="card-subheader">Subheader text</div>
-    <img src="static/media/src/stories/assets/image/card-placeholder.png" slot="card-thumbnail" />
-    <tds-icon slot="card-bottom" size="20px" name="arrow_right"></tds-icon>
-  </tds-card>
-</div>
-```
-
 <!-- Auto Generated Below -->
 
 
@@ -38,6 +25,16 @@
 | Event      | Description                                                              | Type                               |
 | ---------- | ------------------------------------------------------------------------ | ---------------------------------- |
 | `tdsClick` | Sends unique Card identifier when the Card is clicked, if clickable=true | `CustomEvent<{ cardId: string; }>` |
+
+
+## Slots
+
+| Slot               | Description                              |
+| ------------------ | ---------------------------------------- |
+| `"card-body"`      | Slot for the body section of the Card.   |
+| `"card-bottom"`    | Slot for the bottom section of the Card. |
+| `"card-subheader"` | Slot for the Card subheader.             |
+| `"card-thumbnail"` | Slot for the Card thumbnail.             |
 
 
 ## Dependencies

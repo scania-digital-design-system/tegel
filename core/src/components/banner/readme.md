@@ -1,15 +1,6 @@
 # tds-banner
 
 
-## Slots
-
-### Subheader
-```jsx
-<tds-banner icon="truck" header="This is a header text area" >
-  <div slot="banner-subheader">Subheader text</div>
-  <tds-link slot="banner-link"><a href="/">Link example</a></tds-link>
-</tds-banner>
-```
 
 <!-- Auto Generated Below -->
 
@@ -56,6 +47,15 @@ Shows the Banner
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot                 | Description                       |
+| -------------------- | --------------------------------- |
+| `"banner-header"`    | Slot for the Banner header.       |
+| `"banner-link"`      | Slot for the Banner link section. |
+| `"banner-subheader"` | Slot for the Banner subheader.    |
 
 
 ## Dependencies

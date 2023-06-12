@@ -2,6 +2,11 @@ import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '
 import { State } from '@stencil/core/internal';
 import { hasSlot } from '../../utils/utils';
 
+/**
+ * @slot banner-header - Slot for the Banner header.
+ * @slot banner-subheader - Slot for the Banner subheader.
+ * @slot banner-link - Slot for the Banner link section.
+ */
 @Component({
   tag: 'tds-banner',
   styleUrl: 'banner.scss',
@@ -35,8 +40,13 @@ export class TdsBanner {
   /** Hides the Banner */
   @Prop({ reflect: true }) hidden = false;
 
+  /* Boolean to check if the slot is being used. */
   @State() hasSubheaderSlot: boolean;
 
+  /* Boolean to check if the slot is being used. */
+  @State() hasHeaderSlot: boolean;
+
+  /* Boolean to check if the slot is being used. */
   @State() hasLink: boolean;
 
   /** Sends a unique Banner identifier when the close button is pressed. */
@@ -79,6 +89,7 @@ export class TdsBanner {
     } else if (this.type === 'information') {
       this.icon = 'info';
     }
+    this.hasHeaderSlot = hasSlot('banner-header', this.host);
     this.hasSubheaderSlot = hasSlot('banner-subheader', this.host);
     this.hasLink = hasSlot('banner-link', this.host);
   }
@@ -118,7 +129,13 @@ export class TdsBanner {
           </div>
         )}
         <div class={`banner-content ${this.type} ${!this.icon ? 'no-icon' : ''}`}>
-          {this.header && <span class={`banner-header`}>{this.header}</span>}
+          {this.header ||
+            (this.hasHeaderSlot && (
+              <span class={`banner-header`}>
+                {this.header}
+                <slot name="banner-header"></slot>
+              </span>
+            ))}
           {(this.hasSubheaderSlot || this.subheader) && (
             <div class="banner-subheader">
               {this.subheader}

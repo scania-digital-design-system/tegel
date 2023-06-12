@@ -1,15 +1,6 @@
 # tds-toast
 
 
-## Slots
-
-### Subheader
-```jsx
-<tds-toast type="information" header="Header">
-  <div slot="toast-subheader">Subheader</div>
-  <a slot="toast-link" href="#">This is a link.</a>
-</tds-toast>
-```
 
 <!-- Auto Generated Below -->
 
@@ -54,6 +45,15 @@ Shows the Toast.
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot                | Description                      |
+| ------------------- | -------------------------------- |
+| `"toast-header"`    | Slot for the Toast header.       |
+| `"toast-link"`      | Slot for the Toast link section. |
+| `"toast-subheader"` | Slot for the Toast subheader.    |
 
 
 ## Dependencies

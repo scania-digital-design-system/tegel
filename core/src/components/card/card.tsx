@@ -1,6 +1,12 @@
 import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@stencil/core';
 import { hasSlot } from '../../utils/utils';
 
+/**
+ * @slot card-subheader - Slot for the Card subheader.
+ * @slot card-thumbnail - Slot for the Card thumbnail.
+ * @slot card-body - Slot for the body section of the Card.
+ * @slot card-bottom - Slot for the bottom section of the Card.
+ */
 @Component({
   tag: 'tds-card',
   styleUrl: 'card.scss',

@@ -2,6 +2,11 @@ import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil
 import { Method, State } from '@stencil/core/internal';
 import { hasSlot } from '../../utils/utils';
 
+/**
+ * @slot toast-header - Slot for the Toast header.
+ * @slot toast-subheader - Slot for the Toast subheader.
+ * @slot toast-link - Slot for the Toast link section.
+ */
 @Component({
   tag: 'tds-toast',
   styleUrl: 'toast.scss',
@@ -28,8 +33,10 @@ export class TdsToast {
   /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
 
+  /* Boolean to check if the slot is being used. */
   @State() hasSubheaderSlot: boolean;
 
+  /* Boolean to check if the slot is being used. */
   @State() hasLink: boolean;
 
   /** Hides the Toast. */
@@ -122,6 +129,7 @@ export class TdsToast {
               class={`toast-header
               ${this.getHeaderClasses()}`}
             >
+              <slot name="toast-header"></slot>
               {this.header}
             </div>
             {(this.hasSubheaderSlot || this.subheader) && (
