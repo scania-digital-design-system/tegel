@@ -416,3 +416,11 @@ export const disableClickOnElement = (element: Element) => {
     event.stopPropagation();
   });
 };
+
+export const enableClickOnElement = (element: Element) => {
+  const clickHandler = (event: Event) => {
+    event.stopPropagation();
+  };
+
+  element.removeEventListener('click', clickHandler);
+};

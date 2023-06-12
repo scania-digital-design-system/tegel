@@ -1,5 +1,5 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
-import { disableClickOnElement } from '../../utils/utils';
+import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { disableClickOnElement, enableClickOnElement } from '../../utils/utils';
 
 @Component({
   tag: 'tds-button',
@@ -33,16 +33,34 @@ export class TdsButton {
   connectedCallback() {
     this.slotElement = this.host.children ? this.host.children[0] : null;
     if (this.disabled) {
-      disableClickOnElement(this.host);
-      if (this.slotElement?.slot === 'icon') {
-        disableClickOnElement(this.slotElement);
-      }
+      this.disableComponent();
     }
 
     if (!this.text) {
       this.onlyIcon = true;
       this.host.setAttribute('only-icon', '');
     }
+  }
+
+  disableComponent() {
+    disableClickOnElement(this.host);
+    if (this.slotElement?.slot === 'icon') {
+      disableClickOnElement(this.slotElement);
+    }
+  }
+
+  enableComponent() {
+    enableClickOnElement(this.host);
+    if (this.slotElement?.slot === 'icon') {
+      enableClickOnElement(this.slotElement);
+    }
+  }
+
+  @Watch('disabled')
+  updateValue(newValue: boolean) {
+    if (newValue === true) {
+      this.enableComponent();
+    } else this.disableComponent();
   }
 
   render() {
