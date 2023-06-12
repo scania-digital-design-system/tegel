@@ -10,7 +10,7 @@ export class TdsBadge {
   @Prop() value: string = '';
 
   /** Changes visibility of Badge */
-  @Prop() hidden: boolean = false;
+  @Prop({ reflect: true }) hidden: boolean = false;
 
   /** Sets component size. */
   @Prop() size: 'lg' | 'sm' = 'lg';

@@ -22,7 +22,7 @@ export class TdsToast {
   @Prop() type: 'information' | 'error' | 'warning' | 'success' = 'information';
 
   /** Hides the Toast. */
-  @Prop() hidden: boolean = false;
+  @Prop({ reflect: true }) hidden: boolean = false;
 
   /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
