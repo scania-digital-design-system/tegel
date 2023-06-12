@@ -129,8 +129,7 @@ export class TdsBanner {
           </div>
         )}
         <div class={`banner-content ${this.type} ${!this.icon ? 'no-icon' : ''}`}>
-          {this.header ||
-            (this.hasHeaderSlot && (
+          {(this.header || this.hasHeaderSlot) && (
               <span class={`banner-header`}>
                 {this.header}
                 <slot name="banner-header"></slot>
