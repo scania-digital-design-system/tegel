@@ -29,7 +29,7 @@ export class TdsBanner {
   @Prop() persistent: boolean = false;
 
   /** Hides the Banner */
-  @Prop() hidden = false;
+  @Prop({ reflect: true }) hidden = false;
 
   @State() hasSubheader: boolean;
 
