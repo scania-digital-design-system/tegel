@@ -41,7 +41,7 @@ export class TdsBadge {
         ? console.warn(
             'The provided value is either empty or string, please provide value as number.',
           )
-        : '';
+        : undefined;
     }
   }
 
