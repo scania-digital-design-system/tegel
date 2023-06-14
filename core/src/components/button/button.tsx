@@ -1,5 +1,4 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
-import { disableClickOnElement } from '../../utils/utils';
 
 @Component({
   tag: 'tds-button',
@@ -28,17 +27,7 @@ export class TdsButton {
 
   @State() onlyIcon: boolean = false;
 
-  @State() slotElement: Element;
-
   connectedCallback() {
-    this.slotElement = this.host.children ? this.host.children[0] : null;
-    if (this.disabled) {
-      disableClickOnElement(this.host);
-      if (this.slotElement?.slot === 'icon') {
-        disableClickOnElement(this.slotElement);
-      }
-    }
-
     if (!this.text) {
       this.onlyIcon = true;
       this.host.setAttribute('only-icon', '');
