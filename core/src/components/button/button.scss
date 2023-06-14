@@ -188,6 +188,14 @@ button {
   }
 }
 
+:host(tds-button[disabled]) {
+  pointer-events: none;
+
+  ::slotted([slot='icon']) {
+    pointer-events: none;
+  }
+}
+
 :host(tds-button[fullbleed]) {
   width: 100%;
   justify-content: center;
