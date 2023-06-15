@@ -37,11 +37,11 @@ export class TdsBadge {
       this.text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
     } else {
       // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
-      this.value !== '' && this.size !== 'sm'
-        ? console.warn(
-            'The provided value is either empty or string, please provide value as number.',
-          )
-        : undefined;
+      if (this.value !== '' && this.size !== 'sm') {
+        console.warn(
+          'The provided value is either empty or string, please provide value as number.',
+        );
+      }
     }
   }
 
