@@ -91,6 +91,8 @@ export class TdsToast {
   };
 
   render() {
+    const hasSubheader = hasSlot('toast-subheader', this.host) || !!this.subheader;
+    const hasBottomSlot = hasSlot('toast-bottom', this.host);
     return (
       <Host
         toastRole={this.toastRole}
@@ -109,13 +111,7 @@ export class TdsToast {
             {this.subheader && <div class="subheader">{this.subheader}</div>}
             <slot name="toast-subheader"></slot>
             <div
-              class={`toast-bottom ${
-                /* Check if there is a toast-bottom slot and if there is a subheader (either slot or prop.) */
-                (hasSlot('toast-subheader', this.host) || this.subheader) &&
-                hasSlot('toast-bottom', this.host)
-                  ? 'subheader'
-                  : 'no-subheader'
-              }`}
+              class={`toast-bottom ${hasSubheader && hasBottomSlot ? 'subheader' : 'no-subheader'}`}
             >
               <slot name="toast-bottom"></slot>
             </div>
