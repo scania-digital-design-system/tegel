@@ -502,7 +502,9 @@ export class TdsSlider {
           {this.useControls && (
             <div class="tds-slider__controls">
               <div
-                ref={(el) => (this.minusElement = el as HTMLElement)}
+                ref={(el) => {
+                  this.minusElement = el as HTMLElement;
+                }}
                 class="tds-slider__control tds-slider__control-minus"
               >
                 <tds-icon name="minus" size="16px"></tds-icon>
