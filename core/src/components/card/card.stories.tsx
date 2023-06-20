@@ -57,7 +57,7 @@ export default {
         type: 'boolean',
       },
     },
-    headerPlacement: {
+    imagePlacement: {
       name: 'Header placement',
       description: 'Sets the placement of the header, above or below the body image.',
       control: {
@@ -116,7 +116,8 @@ export default {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
     subheader: 'Subheader text',
-    headerPlacement: 'Above',
+    headerImg: true,
+    imagePlacement: 'Above',
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,
@@ -129,7 +130,8 @@ const Template = ({
   modeVariant,
   header,
   subheader,
-  headerPlacement,
+  headerImg,
+  imagePlacement,
   bodyImg,
   bodyContent,
   bodyDivider,
@@ -147,13 +149,13 @@ const Template = ({
     <tds-card
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     ${header ? `header="${header}"` : ''}
-    header-placement="${headerPlacement.toLowerCase()}"
+    image-placement="${imagePlacement.toLowerCase()}-header"
     ${subheader ? `subheader="${subheader}"` : ''}
+    ${headerImg ? `header-img="${CardPlaceholder}"` : ''}
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
-  <img slot="card-thumbnail" src="${CardPlaceholder}">
   ${
     bodyContent
       ? `
