@@ -440,17 +440,8 @@ export class TdsSlider {
       this.useInput = true;
     }
 
-    this.useSmall = false;
-
-    if (this.scrubberSize === 'sm') {
-      this.useSmall = true;
-    }
-
-    this.useSnapping = false;
-
-    if (this.snap) {
-      this.useSnapping = true;
-    }
+    this.useSmall = this.scrubberSize === 'sm';
+    this.useSnapping = this.snap;
 
     const min = this.getMin();
     const max = this.getMax();
