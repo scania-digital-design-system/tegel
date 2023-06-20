@@ -1,12 +1,11 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 import { hasSlot } from '../../utils/utils';
 
-
 /**
  * @slot banner-header - Slot for the Header of the Banner
  * @slot banner-subheader - Slot for the Subheader of the Banner
  * @slot banner-bottom - Slot for the bottom part of the Banner, used for links.
-*/
+ */
 @Component({
   tag: 'tds-banner',
   styleUrl: 'banner.scss',
@@ -101,6 +100,7 @@ export class TdsBanner {
   };
 
   render() {
+    const hasSubheader = hasSlot('banner-subheader', this.host) || !!this.subheader;
     return (
       <Host
         role="banner"
@@ -120,7 +120,7 @@ export class TdsBanner {
         <div class="content">
           <div class="header-subheader">
             {/* Checks if there is a subheader (either slot of prop.) */}
-            <div class={`header ${(hasSlot('banner-subheader', this.host) || this.subheader) ? '' : 'no-subheader'}`}>
+            <div class={`header ${!hasSubheader ? 'no-subheader' : ''}`}>
               {this.header}
               <slot name="banner-header"></slot>
             </div>
@@ -137,7 +137,7 @@ export class TdsBanner {
               onClick={() => {
                 this.handleClose();
               }}
-              >
+            >
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
