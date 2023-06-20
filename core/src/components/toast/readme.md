@@ -5,6 +5,10 @@
 <!-- Auto Generated Below -->
 
 
+## Overview
+
+/**
+
 ## Properties
 
 | Property    | Attribute    | Description                                            | Type                                                 | Default               |
@@ -45,6 +49,15 @@ Shows the Toast.
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot                | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `"toast-bottom"`    | Slot for the Toast bottom section, used for links. |
+| `"toast-header"`    | Slot for the Toast header.                         |
+| `"toast-subheader"` | Slot for the Toast subheader.                      |
 
 
 ## Dependencies

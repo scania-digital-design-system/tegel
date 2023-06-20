@@ -1,6 +1,13 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { Method, State } from '@stencil/core/internal';
+import { Method } from '@stencil/core/internal';
+import { hasSlot } from '../../utils/utils';
 
+/**
+/**
+ * @slot toast-header - Slot for the Toast header.
+ * @slot toast-subheader - Slot for the Toast subheader.
+ * @slot toast-bottom - Slot for the Toast bottom section, used for links.
+ */
 @Component({
   tag: 'tds-toast',
   styleUrl: 'toast.scss',
@@ -26,10 +33,6 @@ export class TdsToast {
 
   /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
-
-  @State() hasSubheader: boolean;
-
-  @State() hasLink: boolean;
 
   /** Hides the Toast. */
   @Method()
@@ -87,22 +90,6 @@ export class TdsToast {
     }
   };
 
-  connectedCallback() {
-    const children = Array.from(this.host.children);
-    this.hasSubheader = children.some((childElement) => childElement.slot === 'toast-subheader');
-    this.hasLink = children.some((childElement) => childElement.slot === 'toast-link');
-  }
-
-  getHeaderClasses = () => {
-    if (!this.hasSubheader && !this.hasLink) {
-      return 'only-header';
-    }
-    if (!this.hasSubheader) {
-      return 'no-subheader';
-    }
-    return '';
-  };
-
   render() {
     return (
       <Host
@@ -112,29 +99,32 @@ export class TdsToast {
       >
         <div
           class={`
-            toast-wrapper
-            ${this.type}
-            `}
+            wrapper
+            ${this.type}`}
         >
           <tds-icon name={this.getIconName()} size="20px"></tds-icon>
-          <div class={`toast-content`}>
+          <div class={`content`}>
+            {this.header && <div class="header">{this.header}</div>}
+            <slot name="toast-header"></slot>
+            {this.subheader && <div class="subheader">{this.subheader}</div>}
+            <slot name="toast-subheader"></slot>
             <div
-              class={`toast-header
-              ${this.getHeaderClasses()}
-              `}
+              class={`toast-bottom ${
+                /* Check if there is a toast-bottom slot and if there is a subheader (either slot or prop.) */
+                (hasSlot('toast-subheader', this.host) || this.subheader) &&
+                hasSlot('toast-bottom', this.host)
+                  ? 'subheader'
+                  : 'no-subheader'
+              }`}
             >
-              {this.header}
+              <slot name="toast-bottom"></slot>
             </div>
-            <div class={`toast-subheader ${this.hasLink ? '' : 'no-link'}`}>
-              <slot name="toast-subheader"></slot>
-            </div>
-            <slot name="toast-link"></slot>
           </div>
           <button
             onClick={() => {
               this.handleClose();
             }}
-            class={`toast-close`}
+            class={`close`}
           >
             <tds-icon name="cross" size="20px"></tds-icon>
           </button>

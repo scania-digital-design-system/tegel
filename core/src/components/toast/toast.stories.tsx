@@ -59,8 +59,8 @@ export default {
   args: {
     type: 'Information',
     header: 'Header',
-    subheader: '',
-    link: false,
+    subheader: 'Subheader',
+    link: true,
   },
 };
 
@@ -69,19 +69,11 @@ const Template = ({ type, header, subheader, link }) =>
     `<tds-toast
         type="${type.toLowerCase()}"
         header="${header}"
+        ${subheader ? `subheader="${subheader}"`:'' }
     >
-      ${
-        subheader
-          ? `
-      <div  slot="toast-subheader">
-        ${subheader}
-      </div>
-      `
-          : ''
-      }
        ${
          link
-           ? `<a slot="toast-link" href="#">This is a link.</a>
+           ? `<a slot="toast-bottom" href="#">This is a link.</a>
        `
            : ''
        }
