@@ -76,8 +76,6 @@ export class TdsSlider {
 
   private tickValues: Array<number> = [];
 
-  private disabledState: boolean = false;
-
   private readonlyState: boolean = false;
 
   private useControls: boolean = false;
@@ -431,8 +429,6 @@ export class TdsSlider {
       this.tickValues.push(this.getMax());
     }
 
-    this.disabledState = this.disabled;
-
     this.readonlyState = this.readOnly;
 
     this.useInput = false;
@@ -463,7 +459,7 @@ export class TdsSlider {
       console.warn(
         'min-prop must have a higher value than max-prop for the component to work correctly.',
       );
-      this.disabledState = true;
+      this.disabled = true;
     }
   }
 
@@ -481,7 +477,7 @@ export class TdsSlider {
         ></input>
 
         <div
-          class={`tds-slider ${this.disabledState ? 'disabled' : ''} ${
+          class={`tds-slider ${this.disabled ? 'disabled' : ''} ${
             this.useSmall ? 'tds-slider-small' : ''
           }`}
           ref={(el) => {
