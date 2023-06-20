@@ -116,7 +116,6 @@ export default {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
     subheader: 'Subheader text',
-    headerImg: true,
     headerPlacement: 'Above',
     bodyImg: false,
     bodyContent: '',
@@ -130,7 +129,6 @@ const Template = ({
   modeVariant,
   header,
   subheader,
-  headerImg,
   headerPlacement,
   bodyImg,
   bodyContent,
@@ -151,11 +149,11 @@ const Template = ({
     ${header ? `header="${header}"` : ''}
     header-placement="${headerPlacement.toLowerCase()}"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${headerImg ? `header-img="${CardPlaceholder}"` : ''}
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
   >
+  <img slot="card-thumbnail" src="${CardPlaceholder}">
   ${
     bodyContent
       ? `

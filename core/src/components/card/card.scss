@@ -23,24 +23,22 @@
     display: flex;
     align-items: center;
 
-    img.card-top-image {
-      width: 36px;
-      height: 36px;
-      border-radius: 100%;
+    .card-thumbnail {
+      ::slotted(*) {
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+        margin-right: 16px;
+      }
     }
 
     .card-top-header {
       padding-left: 16px;
       display: flex;
       flex-direction: column;
-      row-gap: 4px;
 
       &.no-header-img {
         padding-left: 0;
-      }
-
-      &.single-line-header {
-        row-gap: 0;
       }
     }
 
@@ -52,9 +50,13 @@
   .card-header {
     color: var(--tds-card-headline);
   }
-
   .card-subheader {
+    margin-top: 4px;
     color: var(--tds-card-sub-headline);
+
+    &.no-subheader {
+      margin-top: 0px;
+    }
   }
 
   .card-body-img {
@@ -94,7 +96,7 @@ button {
   text-align: left;
   padding: 0;
 
-  &:focus {
+  &:focus-visible {
     outline: 2px solid var(--tds-blue-400);
     outline-offset: -2px;
   }

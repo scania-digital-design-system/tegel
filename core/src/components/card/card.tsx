@@ -1,11 +1,22 @@
-import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
+import { hasSlot } from '../../utils/utils';
 
+
+/**
+ * @slot card-header - Slot for the Card header.
+ * @slot card-subheader - Slot for the Card subheader.
+ * @slot card-thumbnail - Slot for the Card thumbnail.
+ * @slot card-body - Slot for the body section of the Card.
+ * @slot card-bottom - Slot for the bottom section of the Card.
+ */
 @Component({
   tag: 'tds-card',
   styleUrl: 'card.scss',
   shadow: true,
 })
 export class TdsCard {
+  @Element() host: HTMLElement;
+
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
@@ -17,12 +28,6 @@ export class TdsCard {
 
   /** Subheader text in the header */
   @Prop() subheader: string;
-
-  /** Header image src */
-  @Prop() headerImg: string;
-
-  /** Alt text for the header image */
-  @Prop() headerImgAlt: string;
 
   /** Body image src */
   @Prop() bodyImg: string;
@@ -54,17 +59,6 @@ export class TdsCard {
     cardId: string;
   }>;
 
-  @Element() hostElement: HTMLTdsCardElement;
-
-  @State() hasCardBottomSlot: boolean = false;
-
-  @State() hasCardBodySlot: boolean = false;
-
-  connectedCallback() {
-    this.hasCardBottomSlot = !!this.hostElement.querySelector('[slot="card-bottom"]');
-    this.hasCardBodySlot = !!this.hostElement.querySelector('[slot="card-body"]');
-  }
-
   handleClick = () => {
     this.tdsClick.emit({
       cardId: this.cardId,
@@ -75,46 +69,54 @@ export class TdsCard {
     <div>
       {this.headerPlacement === 'above' && (
         <div class={`card-top ${this.headerPlacement}`}>
-          {this.headerImg && (
-            <img class={`card-top-image`} src={this.headerImg} alt={this.headerImgAlt} />
-          )}{' '}
-          <div
-            class={`
-          card-top-header
-          ${!this.headerImg ? 'no-header-img' : ''}
-          ${!this.header || !this.subheader ? 'single-line-header' : ''}
-          `}
-          >
-            <span class={`card-header`}>{this.header}</span>
-            <span class={`card-subheader`}>{this.subheader}</span>
+            <div class={hasSlot('card-thumbnail', this.host) ? 'card-thumbnail' : 'no-header-img'}>
+              <slot name="card-thumbnail"></slot>
+            </div>          
+            <div class={`card-top-header ${!hasSlot('card-thumbail', this.host) ? 'no-header-img' : ''}`}>
+            <span class={`card-header`}>
+              {this.header}
+              <slot name="card-header"></slot>
+            </span>
+            <span
+              class={`card-subheader  ${
+                !this.subheader && !hasSlot('card-subheader', this.host) ? 'no-subheader' : ''
+              }`}
+            >
+              {this.subheader}
+              <slot name="card-subheader"></slot>
+            </span>
           </div>
         </div>
       )}
       <div class={`card-body`}>
         {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
-        {this.headerPlacement === 'below' && (this.headerImg || this.header || this.subheader) && (
+        {this.headerPlacement === 'below' && (this.header || this.subheader) && (
           <div class={`card-top ${this.headerPlacement}`}>
-            {this.headerImg && (
-              <img class={`card-top-image`} src={this.headerImg} alt={this.headerImgAlt} />
-            )}
+            <div class={hasSlot('card-thumbnail', this.host) ? 'card-thumbnail' : 'no-header-img'}>
+              <slot name="card-thumbnail"></slot>
+            </div>   
             <div
               class={`
             card-top-header
-            ${!this.headerImg ? 'no-header-img' : ''}
-            ${!this.header || !this.subheader ? 'single-line-header' : ''}
+            ${!hasSlot('card-thumbail', this.host) ? 'no-header-img' : ''}
             `}
             >
               <span class={`card-header`}>{this.header}</span>
-              <span class={`card-subheader`}>{this.subheader}</span>
+              <span
+                class={`card-subheader ${
+                  !this.subheader && !hasSlot('card-subheader', this.host) ? 'no-subheader' : ''
+                }`}
+              >
+                {this.subheader}
+                <slot name="card-subheader"></slot>
+              </span>
             </div>
           </div>
         )}
         {this.bodyDivider && <tds-divider></tds-divider>}
         <slot name="card-body"></slot>
       </div>
-      <div class={`card-bottom`}>
-        {this.hasCardBottomSlot && <slot name={`card-bottom`}></slot>}
-      </div>
+      <slot name={`card-bottom`}></slot>
     </div>
   );
 

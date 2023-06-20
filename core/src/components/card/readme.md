@@ -15,8 +15,6 @@
 | `cardId`          | `card-id`          | ID for the Card, must be unique.  **NOTE**: If you're listening for Card events, you need to set this ID yourself to identify the Card, as the default ID is random and will be different every time. | `string`                   | `crypto.randomUUID()` |
 | `clickable`       | `clickable`        | Makes the Card clickable.                                                                                                                                                                             | `boolean`                  | `false`               |
 | `header`          | `header`           | Text in the header                                                                                                                                                                                    | `string`                   | `undefined`           |
-| `headerImg`       | `header-img`       | Header image src                                                                                                                                                                                      | `string`                   | `undefined`           |
-| `headerImgAlt`    | `header-img-alt`   | Alt text for the header image                                                                                                                                                                         | `string`                   | `undefined`           |
 | `headerPlacement` | `header-placement` | Placement of the header                                                                                                                                                                               | `"above" \| "below"`       | `'above'`             |
 | `modeVariant`     | `mode-variant`     | Variant of the Card based on the theme used.                                                                                                                                                          | `"primary" \| "secondary"` | `null`                |
 | `subheader`       | `subheader`        | Subheader text in the header                                                                                                                                                                          | `string`                   | `undefined`           |
@@ -27,6 +25,17 @@
 | Event      | Description                                                              | Type                               |
 | ---------- | ------------------------------------------------------------------------ | ---------------------------------- |
 | `tdsClick` | Sends unique Card identifier when the Card is clicked, if clickable=true | `CustomEvent<{ cardId: string; }>` |
+
+
+## Slots
+
+| Slot               | Description                              |
+| ------------------ | ---------------------------------------- |
+| `"card-body"`      | Slot for the body section of the Card.   |
+| `"card-bottom"`    | Slot for the bottom section of the Card. |
+| `"card-header"`    | Slot for the Card header.                |
+| `"card-subheader"` | Slot for the Card subheader.             |
+| `"card-thumbnail"` | Slot for the Card thumbnail.             |
 
 
 ## Dependencies
