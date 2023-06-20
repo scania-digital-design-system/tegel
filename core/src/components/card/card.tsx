@@ -65,25 +65,19 @@ export class TdsCard {
     });
   };
 
-  getCardContent = () => (
+  getCardContent = (hasThumbnail: boolean, hasSubheader: boolean) => (
     <div>
       {this.imagePlacement === 'above-header' && (
         <div class={`card-top ${this.imagePlacement}`}>
           <div class={hasSlot('card-thumbnail', this.host) ? 'card-thumbnail' : 'no-header-img'}>
             <slot name="card-thumbnail"></slot>
           </div>
-          <div
-            class={`card-top-header ${!hasSlot('card-thumbail', this.host) ? 'no-header-img' : ''}`}
-          >
+          <div class={`card-top-header ${!hasThumbnail ? 'no-header-img' : ''}`}>
             <span class={`card-header`}>
               {this.header}
               <slot name="card-header"></slot>
             </span>
-            <span
-              class={`card-subheader  ${
-                !this.subheader && !hasSlot('card-subheader', this.host) ? 'no-subheader' : ''
-              }`}
-            >
+            <span class={`card-subheader ${!hasSubheader ? 'no-subheader' : ''}`}>
               {this.subheader}
               <slot name="card-subheader"></slot>
             </span>
@@ -95,7 +89,7 @@ export class TdsCard {
         {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
         {this.imagePlacement === 'below-header' && (this.header || this.subheader) && (
           <div class={`card-top ${this.imagePlacement}`}>
-            <div class={hasSlot('card-thumbnail', this.host) ? 'card-thumbnail' : 'no-header-img'}>
+            <div class={hasThumbnail ? 'card-thumbnail' : 'no-header-img'}>
               <slot name="card-thumbnail"></slot>
             </div>
             <div
@@ -105,11 +99,7 @@ export class TdsCard {
             `}
             >
               <span class={`card-header`}>{this.header}</span>
-              <span
-                class={`card-subheader ${
-                  !this.subheader && !hasSlot('card-subheader', this.host) ? 'no-subheader' : ''
-                }`}
-              >
+              <span class={`card-subheader ${!hasSubheader ? 'no-subheader' : ''}`}>
                 {this.subheader}
                 <slot name="card-subheader"></slot>
               </span>
@@ -124,6 +114,8 @@ export class TdsCard {
   );
 
   render() {
+    const hasThumbnail = hasSlot('card-thumbail', this.host);
+    const hasSubheader = !!this.subheader || hasSlot('card-subheader', this.host);
     return (
       <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (
@@ -135,11 +127,11 @@ export class TdsCard {
               }
             }}
           >
-            {this.getCardContent()}
+            {this.getCardContent(hasThumbnail, hasSubheader)}
           </button>
         ) : (
           <div class={`card ${this.clickable ? 'clickable' : ''} ${this.imagePlacement}`}>
-            {this.getCardContent()}
+            {this.getCardContent(hasThumbnail, hasSubheader)}
           </div>
         )}
       </Host>
