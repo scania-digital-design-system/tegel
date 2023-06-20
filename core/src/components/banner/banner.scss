@@ -46,10 +46,16 @@
     &.no-icon {
       padding-left: 16px;
     }
+  }
 
-    .header {
-      font: var(--tds-headline-06);
-      letter-spacing: var(--tds-headline-06-ls);
+
+  .header {
+    font: var(--tds-headline-06);
+    letter-spacing: var(--tds-headline-06-ls);
+    margin-bottom: 4px;
+
+    &.no-subheader {
+      margin-bottom: 0px;
     }
   }
 
@@ -62,7 +68,6 @@
     display: block;
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
-    margin-top: 4px;
   }
 
   slot[name='banner-bottom'] {

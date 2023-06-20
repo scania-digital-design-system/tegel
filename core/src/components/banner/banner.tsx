@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
-import { State } from '@stencil/core/internal';
+import { hasSlot } from '../../utils/utils';
 
 
 /**
@@ -119,7 +119,8 @@ export class TdsBanner {
 
         <div class="content">
           <div class="header-subheader">
-            <div class={`header`}>
+            {/* Checks if there is a subheader (either slot of prop.) */}
+            <div class={`header ${(hasSlot('banner-subheader', this.host) || this.subheader) ? '' : 'no-subheader'}`}>
               {this.header}
               <slot name="banner-header"></slot>
             </div>
@@ -136,7 +137,7 @@ export class TdsBanner {
               onClick={() => {
                 this.handleClose();
               }}
-            >
+              >
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
