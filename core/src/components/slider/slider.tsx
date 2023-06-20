@@ -603,7 +603,9 @@ export class TdsSlider {
           {this.useControls && (
             <div class="tds-slider__controls">
               <div
-                ref={(el) => (this.plusElement = el as HTMLElement)}
+                ref={(el) => {
+                  this.plusElement = el as HTMLElement;
+                }}
                 class="tds-slider__control tds-slider__control-plus"
               >
                 <tds-icon name="plus" size="16px"></tds-icon>
