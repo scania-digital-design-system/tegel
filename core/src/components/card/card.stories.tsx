@@ -50,9 +50,9 @@ export default {
         type: 'text',
       },
     },
-    headerImg: {
-      name: 'Header image',
-      description: 'Toggles an image in the header.',
+    thumbnail: {
+      name: 'Header thumbnail',
+      description: 'Toggles a thumbnail in the header.',
       control: {
         type: 'boolean',
       },
@@ -116,7 +116,7 @@ export default {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
     subheader: 'Subheader text',
-    headerImg: true,
+    thumbnail: true,
     imagePlacement: 'Above',
     bodyImg: false,
     bodyContent: '',
@@ -130,7 +130,7 @@ const Template = ({
   modeVariant,
   header,
   subheader,
-  headerImg,
+  thumbnail,
   imagePlacement,
   bodyImg,
   bodyContent,
@@ -151,11 +151,11 @@ const Template = ({
     ${header ? `header="${header}"` : ''}
     image-placement="${imagePlacement.toLowerCase()}-header"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${headerImg ? `header-img="${CardPlaceholder}"` : ''}
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
-  >
+    >
+    ${thumbnail ? `<img slot="card-thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>` : ''}
   ${
     bodyContent
       ? `
