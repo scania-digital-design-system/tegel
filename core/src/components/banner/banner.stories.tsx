@@ -80,8 +80,8 @@ export default {
   args: {
     type: 'Default',
     header: 'This is a header text area',
-    subheader: '<div slot="banner-subheader">Short subheader</div>',
-    link: '<tds-link slot="banner-link" ><a href="/">Link example</a></tds-link>',
+    subheader: 'This is the subheader text area',
+    link: '<tds-link slot="banner-bottom" ><a href="/">Link example</a></tds-link>',
     icon: 'truck',
     persistent: false,
   },
@@ -93,9 +93,9 @@ const Template = ({ type, icon, header, subheader, persistent, link }) =>
           ${type !== 'Default' ? `type="${type.toLowerCase()}"` : ''}
           ${icon !== 'none' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
+          ${subheader ? `subheader="${subheader}"` : ''}
           ${persistent ? `persistent` : ''}
           >
-          ${subheader ? `${subheader}` : ''}
           ${link ? `${link}` : ''}
       </tds-banner>
 

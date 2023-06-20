@@ -1,6 +1,12 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 import { State } from '@stencil/core/internal';
 
+
+/**
+ * @slot banner-header - Slot for the Header of the Banner
+ * @slot banner-subheader - Slot for the Subheader of the Banner
+ * @slot banner-bottom - Slot for the bottom part of the Banner, used for links.
+*/
 @Component({
   tag: 'tds-banner',
   styleUrl: 'banner.scss',
@@ -14,6 +20,9 @@ export class TdsBanner {
 
   /** Header text. */
   @Prop() header: string;
+
+  /** Subheader text. */
+  @Prop() subheader: string;
 
   /** Type of Banner */
   @Prop() type: 'error' | 'information' | 'none' = 'none';
@@ -30,10 +39,6 @@ export class TdsBanner {
 
   /** Hides the Banner */
   @Prop({ reflect: true }) hidden = false;
-
-  @State() hasSubheader: boolean;
-
-  @State() hasLink: boolean;
 
   /** Sends a unique Banner identifier when the close button is pressed. */
   @Event({
@@ -75,9 +80,6 @@ export class TdsBanner {
     } else if (this.type === 'information') {
       this.icon = 'info';
     }
-    const children = Array.from(this.host.children);
-    this.hasSubheader = children.some((childElement) => childElement.slot === 'banner-subheader');
-    this.hasLink = children.some((childElement) => childElement.slot === 'banner-link');
   }
 
   handleClose = () => {
@@ -114,14 +116,19 @@ export class TdsBanner {
             <tds-icon name={this.icon} size="20px"></tds-icon>
           </div>
         )}
-        <div class={`banner-content ${this.type} ${!this.icon ? 'no-icon' : ''}`}>
-          {this.header && <span class={`banner-header`}>{this.header}</span>}
-          {this.hasSubheader && <slot name="banner-subheader"></slot>}
-          {this.hasLink && (
-            <div class={`banner-link ${!this.hasSubheader ? 'no-subheader' : ''}`}>
-              <slot name="banner-link"></slot>
+
+        <div class="content">
+          <div class="header-subheader">
+            <div class={`header`}>
+              {this.header}
+              <slot name="banner-header"></slot>
             </div>
-          )}
+            <div class="subheader">
+              <slot name="banner-subheader"></slot>
+              {this.subheader}
+            </div>
+          </div>
+          <slot name="banner-bottom"></slot>
         </div>
         {!this.persistent && (
           <div class={`banner-close`}>
