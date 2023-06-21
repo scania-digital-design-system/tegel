@@ -1,5 +1,10 @@
 import { Component, h, Prop, Element, Host } from '@stencil/core';
 
+/**
+ * @slot thumbnail - Slot for the thumbnail.
+ * @slot header - Slot for the header.
+ * @slot thumbnail - Slot for the thumbnail.
+ */
 @Component({
   tag: 'tds-header-dropdown-list-user',
   styleUrl: 'header-dropdown-list-user.scss',
@@ -12,11 +17,11 @@ export class TdsHeaderDropdownListLgUser {
   /** Image alt text. */
   @Prop() imgAlt: string;
 
-  /** Heading, usually the users first name and last name. */
-  @Prop() heading: string;
+  /** Header text, usually the users first name and last name. */
+  @Prop() header: string;
 
-  /** Subheading. */
-  @Prop() subheading: string;
+  /** Subheader text. */
+  @Prop() subheader: string;
 
   @Element() host: HTMLElement;
 
@@ -25,15 +30,15 @@ export class TdsHeaderDropdownListLgUser {
       <Host role="listitem">
         <div class="user-box">
           {this.imgUrl && <img src={this.imgUrl} alt={this.imgAlt} />}
-          <slot name="image"></slot>
+          <slot name="thumbanil"></slot>
           <div class="user-content">
             <div class="header">
-              {this.heading}
-              <slot name="heading"></slot>
+              {this.header}
+              <slot name="header"></slot>
             </div>
             <div class="subheader">
-              {this.subheading}
-              <slot name="subheading"></slot>
+              {this.subheader}
+              <slot name="subheader"></slot>
             </div>
           </div>
         </div>

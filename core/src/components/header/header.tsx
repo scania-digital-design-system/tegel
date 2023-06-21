@@ -1,6 +1,11 @@
 import { Component, h, Host, Element } from '@stencil/core';
 import { inheritAriaAttributes, updateListChildrenRoles } from '../../utils/utils';
 
+/**
+ * @slot hamburger - Slot for the hamburger button for opening the mobile menu.
+ * @slot title - Slot for the title.
+ * @slot end - Slot for the end (right side) of the header.
+ */
 @Component({
   tag: 'tds-header',
   styleUrl: 'header.scss',
