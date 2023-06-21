@@ -1,6 +1,9 @@
 import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
 import { InternalTdsStepperPropChange } from '../stepper';
 
+/**
+ * @slot label - Slot for the label text.
+ */
 @Component({
   tag: 'tds-step',
   styleUrl: 'step.scss',
