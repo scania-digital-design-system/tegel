@@ -29,14 +29,13 @@
 
 ## Slots
 
-| Slot                | Description                                            |
-| ------------------- | ------------------------------------------------------ |
-| `"card-body"`       | Slot for the body section of the Card.                 |
-| `"card-body-image"` | Slot for the body section of the Card, used for image. |
-| `"card-bottom"`     | Slot for the bottom section of the Card.               |
-| `"card-header"`     | Slot for the Card header.                              |
-| `"card-subheader"`  | Slot for the Card subheader.                           |
-| `"card-thumbnail"`  | Slot for the Card thumbnail.                           |
+| Slot           | Description                                            |
+| -------------- | ------------------------------------------------------ |
+| `"body"`       | Slot for the body section of the Card.                 |
+| `"body-image"` | Slot for the body section of the Card, used for image. |
+| `"bottom"`     | Slot for the bottom section of the Card.               |
+| `"subheader"`  | Slot for the Card subheader.                           |
+| `"thumbnail"`  | Slot for the Card thumbnail.                           |
 
 
 ## Dependencies

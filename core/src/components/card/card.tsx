@@ -2,12 +2,12 @@ import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil
 import { hasSlot } from '../../utils/utils';
 
 /**
- * @slot card-header - Slot for the Card header.
- * @slot card-subheader - Slot for the Card subheader.
- * @slot card-thumbnail - Slot for the Card thumbnail.
- * @slot card-body - Slot for the body section of the Card.
- * @slot card-body-image - Slot for the body section of the Card, used for image.
- * @slot card-bottom - Slot for the bottom section of the Card.
+ * @slto header - Slot for the Card header.
+ * @slot subheader - Slot for the Card subheader.
+ * @slot thumbnail - Slot for the Card thumbnail.
+ * @slot body - Slot for the body section of the Card.
+ * @slot body-image - Slot for the body section of the Card, used for image.
+ * @slot bottom - Slot for the bottom section of the Card.
  */
 @Component({
   tag: 'tds-card',
@@ -69,53 +69,53 @@ export class TdsCard {
     <div>
       {this.imagePlacement === 'above-header' && (
         <div class={`card-top ${this.imagePlacement}`}>
-          <div class={hasSlot('card-thumbnail', this.host) ? 'card-thumbnail' : 'no-header-img'}>
-            <slot name="card-thumbnail"></slot>
+          <div class={hasSlot('thumbnail', this.host) ? 'thumbnail' : 'no-header-img'}>
+            <slot name="thumbnail"></slot>
           </div>
           <div class={`card-top-header ${!hasThumbnail ? 'no-header-img' : ''}`}>
             <span class={`card-header`}>
               {this.header}
-              <slot name="card-header"></slot>
+              <slot name="header"></slot>
             </span>
             <span class={`card-subheader ${!hasSubheader ? 'no-subheader' : ''}`}>
               {this.subheader}
-              <slot name="card-subheader"></slot>
+              <slot name="subheader"></slot>
             </span>
           </div>
         </div>
       )}
       <div class={`card-body`}>
-        <slot name="card-body-image"></slot>
+        <slot name="body-image"></slot>
         {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
         {this.imagePlacement === 'below-header' && (this.header || this.subheader) && (
           <div class={`card-top ${this.imagePlacement}`}>
             <div class={hasThumbnail ? 'card-thumbnail' : 'no-header-img'}>
-              <slot name="card-thumbnail"></slot>
+              <slot name="thumbnail"></slot>
             </div>
             <div
               class={`
             card-top-header
-            ${!hasSlot('card-thumbail', this.host) ? 'no-header-img' : ''}
+            ${!hasSlot('thumbail', this.host) ? 'no-header-img' : ''}
             `}
             >
               <span class={`card-header`}>{this.header}</span>
               <span class={`card-subheader ${!hasSubheader ? 'no-subheader' : ''}`}>
                 {this.subheader}
-                <slot name="card-subheader"></slot>
+                <slot name="subheader"></slot>
               </span>
             </div>
           </div>
         )}
         {this.bodyDivider && <tds-divider></tds-divider>}
-        <slot name="card-body"></slot>
+        <slot name="body"></slot>
       </div>
-      <slot name={`card-bottom`}></slot>
+      <slot name={`bottom`}></slot>
     </div>
   );
 
   render() {
-    const hasThumbnail = hasSlot('card-thumbail', this.host);
-    const hasSubheader = !!this.subheader || hasSlot('card-subheader', this.host);
+    const hasThumbnail = hasSlot('thumbail', this.host);
+    const hasSubheader = !!this.subheader || hasSlot('subheader', this.host);
     return (
       <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (

@@ -121,7 +121,7 @@ export default {
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,
-    cardBottom: `<tds-icon slot="card-bottom" size="20px" name="arrow_right"></tds-icon>`,
+    cardBottom: `<tds-icon slot="bottom" size="20px" name="arrow_right"></tds-icon>`,
     clickable: false,
   },
 };
@@ -155,11 +155,15 @@ const Template = ({
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
     >
-    ${thumbnail ? `<img slot="card-thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>` : ''}
+    ${
+      thumbnail
+        ? `<img slot="thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>`
+        : ''
+    }
   ${
     bodyContent
       ? `
-    <div slot="card-body">
+    <div slot="body">
         ${bodyContent}
     </div>`
       : ''

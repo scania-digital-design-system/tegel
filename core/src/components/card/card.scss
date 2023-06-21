@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
 
-    .card-thumbnail {
+    .thumbnail {
       ::slotted(*) {
         width: 36px;
         height: 36px;
@@ -50,12 +50,13 @@
   .card-header {
     color: var(--tds-card-headline);
   }
+
   .card-subheader {
     margin-top: 4px;
     color: var(--tds-card-sub-headline);
 
     &.no-subheader {
-      margin-top: 0px;
+      margin-top: 0;
     }
   }
 
@@ -70,7 +71,7 @@
     word-wrap: break-word;
   }
 
-  slot[name='card-body']::slotted(*) {
+  slot[name='body']::slotted(*) {
     font: var(--tds-detail-03);
     letter-spacing: var(--tds-detail-03-ls);
     color: var(--tds-card-body-color);
@@ -80,7 +81,7 @@
     max-width: 336px;
   }
 
-  slot[name='card-bottom']::slotted(*) {
+  slot[name='bottom']::slotted(*) {
     display: flex;
     padding: 16px;
     color: var(--tds-card-icon-color);
