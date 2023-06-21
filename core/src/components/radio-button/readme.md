@@ -24,6 +24,13 @@
 | `tdsChange` | Sends unique Radio Button identifier and status when it is checked. If no ID is specified, a random one will be generated. To use this listener, don't use the randomized ID, use a specific one of your choosing. | `CustomEvent<{ radioId: string; value: string; }>` |
 
 
+## Slots
+
+| Slot      | Description              |
+| --------- | ------------------------ |
+| `"label"` | Slot for the label text. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

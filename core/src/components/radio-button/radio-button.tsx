@@ -1,5 +1,8 @@
 import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
 
+/**
+ * @slot label - Slot for the label text.
+ */
 @Component({
   tag: 'tds-radio-button',
   styleUrl: 'radio-button.scss',
