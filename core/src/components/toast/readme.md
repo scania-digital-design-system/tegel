@@ -53,11 +53,11 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                | Description                                        |
-| ------------------- | -------------------------------------------------- |
-| `"toast-bottom"`    | Slot for the Toast bottom section, used for links. |
-| `"toast-header"`    | Slot for the Toast header.                         |
-| `"toast-subheader"` | Slot for the Toast subheader.                      |
+| Slot          | Description                                        |
+| ------------- | -------------------------------------------------- |
+| `"bottom"`    | Slot for the Toast bottom section, used for links. |
+| `"header"`    | Slot for the Toast header.                         |
+| `"subheader"` | Slot for the Toast subheader.                      |
 
 
 ## Dependencies

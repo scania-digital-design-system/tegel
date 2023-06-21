@@ -4,9 +4,9 @@ import { hasSlot } from '../../utils/utils';
 
 /**
 /**
- * @slot toast-header - Slot for the Toast header.
- * @slot toast-subheader - Slot for the Toast subheader.
- * @slot toast-bottom - Slot for the Toast bottom section, used for links.
+ * @slot header - Slot for the Toast header.
+ * @slot subheader - Slot for the Toast subheader.
+ * @slot bottom - Slot for the Toast bottom section, used for links.
  */
 @Component({
   tag: 'tds-toast',
@@ -91,8 +91,8 @@ export class TdsToast {
   };
 
   render() {
-    const hasSubheader = hasSlot('toast-subheader', this.host) || !!this.subheader;
-    const hasBottomSlot = hasSlot('toast-bottom', this.host);
+    const hasSubheader = hasSlot('subheader', this.host) || !!this.subheader;
+    const hasBottomSlot = hasSlot('bottom', this.host);
     return (
       <Host
         toastRole={this.toastRole}
@@ -107,13 +107,13 @@ export class TdsToast {
           <tds-icon name={this.getIconName()} size="20px"></tds-icon>
           <div class={`content`}>
             {this.header && <div class="header">{this.header}</div>}
-            <slot name="toast-header"></slot>
+            <slot name="header"></slot>
             {this.subheader && <div class="subheader">{this.subheader}</div>}
-            <slot name="toast-subheader"></slot>
+            <slot name="subheader"></slot>
             <div
               class={`toast-bottom ${hasSubheader && hasBottomSlot ? 'subheader' : 'no-subheader'}`}
             >
-              <slot name="toast-bottom"></slot>
+              <slot name="bottom"></slot>
             </div>
           </div>
           <button

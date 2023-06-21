@@ -69,11 +69,11 @@ const Template = ({ type, header, subheader, link }) =>
     `<tds-toast
         type="${type.toLowerCase()}"
         header="${header}"
-        ${subheader ? `subheader="${subheader}"`:'' }
+        ${subheader ? `subheader="${subheader}"` : ''}
     >
        ${
          link
-           ? `<a slot="toast-bottom" href="#">This is a link.</a>
+           ? `<a slot="bottom" href="#">This is a link.</a>
        `
            : ''
        }
