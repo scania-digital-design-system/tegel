@@ -1,5 +1,8 @@
 import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core';
 
+/**
+ * @slot label - Slot for the label text.
+ */
 @Component({
   tag: 'tds-chip',
   styleUrl: 'chip.scss',
