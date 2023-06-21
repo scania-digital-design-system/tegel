@@ -38,6 +38,13 @@ Type: `Promise<{ toggleId: string; checked: boolean; }>`
 
 
 
+## Slots
+
+| Slot      | Description              |
+| --------- | ------------------------ |
+| `"label"` | Slot for the label text. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
