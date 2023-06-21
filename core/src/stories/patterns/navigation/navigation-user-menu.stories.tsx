@@ -91,7 +91,7 @@ const Template = () =>
           <tds-header-dropdown-list type="lg">
             <tds-header-dropdown-list-user
               header="Name Nameson"
-              subehader="Company name">
+              subheader="Company name">
             </tds-header-dropdown-list-user>
             <tds-header-dropdown-list-item selected>
               <a href="https://www.scania.com">My Instructions</a>
