@@ -51,11 +51,11 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot                 | Description                                             |
-| -------------------- | ------------------------------------------------------- |
-| `"banner-bottom"`    | Slot for the bottom part of the Banner, used for links. |
-| `"banner-header"`    | Slot for the Header of the Banner                       |
-| `"banner-subheader"` | Slot for the Subheader of the Banner                    |
+| Slot          | Description                                             |
+| ------------- | ------------------------------------------------------- |
+| `"bottom"`    | Slot for the bottom part of the Banner, used for links. |
+| `"header"`    | Slot for the Header of the Banner                       |
+| `"subheader"` | Slot for the Subheader of the Banner                    |
 
 
 ## Dependencies

@@ -2,9 +2,9 @@ import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '
 import { hasSlot } from '../../utils/utils';
 
 /**
- * @slot banner-header - Slot for the Header of the Banner
- * @slot banner-subheader - Slot for the Subheader of the Banner
- * @slot banner-bottom - Slot for the bottom part of the Banner, used for links.
+ * @slot header - Slot for the Header of the Banner
+ * @slot subheader - Slot for the Subheader of the Banner
+ * @slot bottom - Slot for the bottom part of the Banner, used for links.
  */
 @Component({
   tag: 'tds-banner',
@@ -100,7 +100,7 @@ export class TdsBanner {
   };
 
   render() {
-    const hasSubheader = hasSlot('banner-subheader', this.host) || !!this.subheader;
+    const hasSubheader = hasSlot('subheader', this.host) || !!this.subheader;
     return (
       <Host
         role="banner"
@@ -122,14 +122,14 @@ export class TdsBanner {
             {/* Checks if there is a subheader (either slot of prop.) */}
             <div class={`header ${!hasSubheader ? 'no-subheader' : ''}`}>
               {this.header}
-              <slot name="banner-header"></slot>
+              <slot name="header"></slot>
             </div>
             <div class="subheader">
-              <slot name="banner-subheader"></slot>
+              <slot name="subheader"></slot>
               {this.subheader}
             </div>
           </div>
-          <slot name="banner-bottom"></slot>
+          <slot name="bottom"></slot>
         </div>
         {!this.persistent && (
           <div class={`banner-close`}>

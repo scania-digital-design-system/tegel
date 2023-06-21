@@ -48,14 +48,13 @@
     }
   }
 
-
   .header {
     font: var(--tds-headline-06);
     letter-spacing: var(--tds-headline-06-ls);
     margin-bottom: 4px;
 
     &.no-subheader {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
   }
 
@@ -70,7 +69,7 @@
     letter-spacing: var(--tds-detail-02-ls);
   }
 
-  slot[name='banner-bottom'] {
+  slot[name='bottom'] {
     &::slotted(*) {
       display: block;
       width: fit-content;
