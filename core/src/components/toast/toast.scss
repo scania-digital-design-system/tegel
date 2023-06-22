@@ -82,6 +82,12 @@
     flex-direction: column;
     flex: 1;
 
+    .header-subheader {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .header,
     slot[name='header'] {
       font: var(--tds-headline-07);
@@ -109,6 +115,10 @@
     .toast-bottom {
       &.subheader {
         margin-top: 16px;
+      }
+
+      &.no-subheader {
+        margin-top: 4px;
       }
     }
 

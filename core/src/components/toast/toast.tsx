@@ -91,8 +91,9 @@ export class TdsToast {
   };
 
   render() {
-    const hasSubheader = hasSlot('subheader', this.host) || !!this.subheader;
-    const hasBottomSlot = hasSlot('bottom', this.host);
+    const usesHeaderSlot = hasSlot('header', this.host);
+    const usesSubheaderSlot = hasSlot('subheader', this.host);
+    const usesBottomSlot = hasSlot('bottom', this.host);
     return (
       <Host
         toastRole={this.toastRole}
@@ -106,15 +107,21 @@ export class TdsToast {
         >
           <tds-icon name={this.getIconName()} size="20px"></tds-icon>
           <div class={`content`}>
-            {this.header && <div class="header">{this.header}</div>}
-            <slot name="header"></slot>
-            {this.subheader && <div class="subheader">{this.subheader}</div>}
-            <slot name="subheader"></slot>
-            <div
-              class={`toast-bottom ${hasSubheader && hasBottomSlot ? 'subheader' : 'no-subheader'}`}
-            >
-              <slot name="bottom"></slot>
+            <div class="header-subheader">
+              {this.header && <div class="header">{this.header}</div>}
+              {usesHeaderSlot && <slot name="header"></slot>}
+              {this.subheader && <div class="subheader">{this.subheader}</div>}
+              {usesSubheaderSlot && <slot name="subheader"></slot>}
             </div>
+            {usesBottomSlot && (
+              <div
+                class={`toast-bottom ${
+                  usesSubheaderSlot || this.subheader ? 'subheader' : 'no-subheader'
+                }`}
+              >
+                <slot name="bottom"></slot>
+              </div>
+            )}
           </div>
           <button
             onClick={() => {
