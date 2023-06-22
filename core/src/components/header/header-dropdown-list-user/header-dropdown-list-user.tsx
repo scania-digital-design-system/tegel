@@ -3,7 +3,6 @@ import { Component, h, Prop, Element, Host } from '@stencil/core';
 /**
  * @slot thumbnail - Slot for the thumbnail.
  * @slot header - Slot for the header.
- * @slot thumbnail - Slot for the thumbnail.
  */
 @Component({
   tag: 'tds-header-dropdown-list-user',
