@@ -1,4 +1,8 @@
 import { Component, h, Prop, Event, Element, EventEmitter, Method } from '@stencil/core';
+
+/**
+ * @slot label - Slot for the label text.
+ */
 @Component({
   tag: 'tds-toggle',
   styleUrl: 'toggle.scss',
