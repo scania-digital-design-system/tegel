@@ -39,6 +39,13 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 
 
 
+## Slots
+
+| Slot      | Description              |
+| --------- | ------------------------ |
+| `"label"` | Slot for the label text. |
+
+
 ## Dependencies
 
 ### Used by

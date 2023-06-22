@@ -1,5 +1,8 @@
 import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 
+/**
+ * @slot label - Slot for the label text.
+ */
 @Component({
   tag: 'tds-checkbox',
   styleUrl: 'checkbox.scss',
