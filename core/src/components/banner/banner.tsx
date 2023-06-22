@@ -100,7 +100,9 @@ export class TdsBanner {
   };
 
   render() {
-    const hasSubheader = hasSlot('subheader', this.host) || !!this.subheader;
+    const usesHeaderSlot = hasSlot('subheader', this.host);
+    const usesSubheaderSlot = hasSlot('subheader', this.host);
+    const usesBottomSlot = hasSlot('bottom', this.host);
     return (
       <Host
         role="banner"
@@ -119,17 +121,12 @@ export class TdsBanner {
 
         <div class="content">
           <div class="header-subheader">
-            {/* Checks if there is a subheader (either slot of prop.) */}
-            <div class={`header ${!hasSubheader ? 'no-subheader' : ''}`}>
-              {this.header}
-              <slot name="header"></slot>
-            </div>
-            <div class="subheader">
-              <slot name="subheader"></slot>
-              {this.subheader}
-            </div>
+            {this.header && <div class="header">{this.header}</div>}
+            {usesHeaderSlot && <slot name="header"></slot>}
+            {this.subheader && <div class="subheader">{this.subheader}</div>}
+            {usesSubheaderSlot && <slot name="subheader"></slot>}
           </div>
-          <slot name="bottom"></slot>
+          {usesBottomSlot && <slot name="bottom"></slot>}
         </div>
         {!this.persistent && (
           <div class={`banner-close`}>

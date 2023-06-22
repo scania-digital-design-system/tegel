@@ -48,22 +48,20 @@
     }
   }
 
-  .header {
-    font: var(--tds-headline-06);
-    letter-spacing: var(--tds-headline-06-ls);
-    margin-bottom: 4px;
-
-    &.no-subheader {
-      margin-bottom: 0;
-    }
-  }
-
   .header-subheader {
     display: flex;
     flex-direction: column;
+    gap: 4px;
   }
 
-  .subheader {
+  .header,
+  slot[name='header'] {
+    font: var(--tds-headline-06);
+    letter-spacing: var(--tds-headline-06-ls);
+  }
+
+  .subheader,
+  slot[name='subheader'] {
     display: block;
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
