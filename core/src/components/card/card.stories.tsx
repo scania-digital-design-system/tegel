@@ -65,7 +65,7 @@ export default {
       },
       options: ['Above', 'Below'],
       table: {
-        defaultValue: { summary: 'above' },
+        defaultValue: { summary: 'below' },
       },
     },
     bodyImg: {
@@ -117,7 +117,7 @@ export default {
     header: 'Header text',
     subheader: 'Subheader text',
     thumbnail: true,
-    imagePlacement: 'Above',
+    imagePlacement: 'Below',
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,

@@ -16,20 +16,18 @@
     }
   }
 
-  .card-top {
+  .card-header {
     font: var(--tds-headline-06);
     letter-spacing: var(--tds-headline-06-ls);
     padding: 16px;
     display: flex;
     align-items: center;
 
-    .thumbnail {
-      ::slotted(*) {
-        width: 36px;
-        height: 36px;
-        border-radius: 100%;
-        margin-right: 16px;
-      }
+    slot[name='thumbnail']::slotted(*) {
+      width: 36px;
+      height: 36px;
+      border-radius: 100%;
+      margin-right: 16px;
     }
 
     .card-top-header {
@@ -47,16 +45,19 @@
     }
   }
 
-  .card-header {
-    color: var(--tds-card-headline);
-  }
+  .header-subheader {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 
-  .card-subheader {
-    margin-top: 4px;
-    color: var(--tds-card-sub-headline);
+    .header,
+    slot[name='header'] {
+      color: var(--tds-card-headline);
+    }
 
-    &.no-subheader {
-      margin-top: 0;
+    .subheader,
+    slot[name='subheader'] {
+      color: var(--tds-card-sub-headline);
     }
   }
 
