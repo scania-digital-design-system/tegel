@@ -17,6 +17,13 @@
 | `type`        | `type`         | Type of Button                            | `"danger" \| "ghost" \| "primary" \| "secondary"` | `'primary'` |
 
 
+## Slots
+
+| Slot     | Description                                 |
+| -------- | ------------------------------------------- |
+| `"icon"` | Slot used to display an Icon in the Button. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

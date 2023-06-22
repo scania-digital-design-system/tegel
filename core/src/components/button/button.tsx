@@ -1,5 +1,8 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 
+/**
+ * @slot icon - Slot used to display an Icon in the Button.
+ */
 @Component({
   tag: 'tds-button',
   styleUrl: 'button.scss',
