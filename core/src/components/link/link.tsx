@@ -3,7 +3,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
 @Component({
   tag: 'tds-link',
   styleUrl: 'link.scss',
-  shadow: false,
+  shadow: true,
 })
 export class TdsLink {
   @Element() host: HTMLElement;
