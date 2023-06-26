@@ -26,6 +26,8 @@ This solution is a workaround based on how React handles events, you can read mo
 ```jsx
 <tds-textfield
   ref={(element) =>
+    /* Note: workaround for React, in a real world app listeners 
+       should be removed as well to prevent memory leaks. */
     element.addEventListener('tdsClick', (event) => {
       {
         /* Do something with/based on the event. */
