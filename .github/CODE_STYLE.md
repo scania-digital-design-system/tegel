@@ -122,7 +122,7 @@ export class TdsComponent {
 ## Slots
 
 Slots are used throughout many of our components. Some of these are named slots, and in that case they should follow
-to following convention: The slot should always be named to represent it position/use case. For example this could be
+the following convention: The slot should always be named to represent its position/use case. For example this could be
 'bottom', 'label' or 'end'.
 
 ## Events
