@@ -13,6 +13,13 @@
 | `state`  | `state`   | State of the Step                                                                  | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
 
 
+## Slots
+
+| Slot      | Description              |
+| --------- | ------------------------ |
+| `"label"` | Slot for the label text. |
+
+
 ## Dependencies
 
 ### Depends on
