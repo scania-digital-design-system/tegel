@@ -25,6 +25,13 @@
 | `tdsClick`  | Sends unique Chip identifier when Chip is clicked. Valid only for type button. If no ID is specified, a random one will be generated. To use this listener, don't use the randomized ID, use a specific one of your choosing.                                         | `CustomEvent<{ chipId: string; }>`                |
 
 
+## Slots
+
+| Slot      | Description              |
+| --------- | ------------------------ |
+| `"label"` | Slot for the label text. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
