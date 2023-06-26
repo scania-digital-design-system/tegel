@@ -87,11 +87,11 @@ const Template = () =>
         </tds-header-launcher>
         
         <tds-header-dropdown slot="end" class="demo-hide demo-xs-show" no-dropdown-icon selected>
-          <img slot="button-icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
+          <img slot="icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
           <tds-header-dropdown-list type="lg">
             <tds-header-dropdown-list-user
-              heading="Name Nameson"
-              subheading="Company name">
+              header="Name Nameson"
+              subheader="Company name">
             </tds-header-dropdown-list-user>
             <tds-header-dropdown-list-item selected>
               <a href="https://www.scania.com">My Instructions</a>

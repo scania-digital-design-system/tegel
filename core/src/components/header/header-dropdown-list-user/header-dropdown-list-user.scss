@@ -13,7 +13,7 @@
   }
 
   img,
-  slot[name='image']::slotted(*) {
+  slot[name='thumbnail']::slotted(*) {
     width: 34px;
     border-radius: 100%;
   }
