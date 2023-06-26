@@ -1,5 +1,9 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 
+/**
+ * @slot icon - Slot for an Icon in the dropdown button.
+ * @slot label - Slot for a label text in the dropdown button.
+ */
 @Component({
   tag: 'tds-header-dropdown',
   styleUrl: 'header-dropdown.scss',
@@ -10,7 +14,7 @@ export class TdsHeaderDropdown {
 
   /** The label of the button that opens the dropdown.
    * This is an alternative to the button-label slot. */
-  @Prop() buttonLabel: string;
+  @Prop() label: string;
 
   /** If the dropdown icon (downwards chevron) should be hidden. */
   @Prop() noDropdownIcon: boolean = false;
@@ -57,9 +61,9 @@ export class TdsHeaderDropdown {
                 this.toggleDropdown();
               }}
             >
-              <slot name="button-icon"></slot>
-              {this.buttonLabel}
-              <slot name="button-label"></slot>
+              <slot name="icon"></slot>
+              {this.label}
+              <slot name="label"></slot>
               {!this.noDropdownIcon && (
                 <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
               )}
