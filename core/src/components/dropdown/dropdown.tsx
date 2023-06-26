@@ -413,6 +413,7 @@ export class TdsDropdown {
               class={`
                 ${this.selection ? 'value' : 'placeholder'}
                 ${this.open ? 'open' : 'closed'}
+                ${this.error ? 'error' : ''}
                 `}
               disabled={this.disabled}
             >
