@@ -76,8 +76,6 @@ export class TdsSlider {
 
   private tickValues: Array<number> = [];
 
-  private disabledState: boolean = false;
-
   private readonlyState: boolean = false;
 
   private useControls: boolean = false;
@@ -431,8 +429,6 @@ export class TdsSlider {
       this.tickValues.push(this.getMax());
     }
 
-    this.disabledState = this.disabled;
-
     this.readonlyState = this.readOnly;
 
     this.useInput = false;
@@ -444,17 +440,8 @@ export class TdsSlider {
       this.useInput = true;
     }
 
-    this.useSmall = false;
-
-    if (this.scrubberSize === 'sm') {
-      this.useSmall = true;
-    }
-
-    this.useSnapping = false;
-
-    if (this.snap) {
-      this.useSnapping = true;
-    }
+    this.useSmall = this.scrubberSize === 'sm';
+    this.useSnapping = this.snap;
 
     const min = this.getMin();
     const max = this.getMax();
@@ -463,7 +450,7 @@ export class TdsSlider {
       console.warn(
         'min-prop must have a higher value than max-prop for the component to work correctly.',
       );
-      this.disabledState = true;
+      this.disabled = true;
     }
   }
 
@@ -481,7 +468,7 @@ export class TdsSlider {
         ></input>
 
         <div
-          class={`tds-slider ${this.disabledState ? 'disabled' : ''} ${
+          class={`tds-slider ${this.disabled ? 'disabled' : ''} ${
             this.useSmall ? 'tds-slider-small' : ''
           }`}
           ref={(el) => {
@@ -506,7 +493,9 @@ export class TdsSlider {
           {this.useControls && (
             <div class="tds-slider__controls">
               <div
-                ref={(el) => (this.minusElement = el as HTMLElement)}
+                ref={(el) => {
+                  this.minusElement = el as HTMLElement;
+                }}
                 class="tds-slider__control tds-slider__control-minus"
               >
                 <tds-icon name="minus" size="16px"></tds-icon>
@@ -607,7 +596,9 @@ export class TdsSlider {
           {this.useControls && (
             <div class="tds-slider__controls">
               <div
-                ref={(el) => (this.plusElement = el as HTMLElement)}
+                ref={(el) => {
+                  this.plusElement = el as HTMLElement;
+                }}
                 class="tds-slider__control tds-slider__control-plus"
               >
                 <tds-icon name="plus" size="16px"></tds-icon>
