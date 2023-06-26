@@ -48,11 +48,11 @@ export default {
         type: 'text',
       },
     },
-    link: {
-      name: 'Link',
-      description: 'Adds a CTA link.',
+    bottom: {
+      name: 'Bottom slot',
+      description: 'Slot for the bottom part of the Toast, used for links.',
       control: {
-        type: 'boolean',
+        type: 'text',
       },
     },
   },
@@ -60,23 +60,18 @@ export default {
     type: 'Information',
     header: 'Header',
     subheader: 'Subheader',
-    link: true,
+    bottom: '<a slot="bottom" href="#">This is a link.</a>',
   },
 };
 
-const Template = ({ type, header, subheader, link }) =>
+const Template = ({ type, header, subheader, bottom }) =>
   formatHtmlPreview(
     `<tds-toast
         type="${type.toLowerCase()}"
         header="${header}"
         ${subheader ? `subheader="${subheader}"` : ''}
     >
-       ${
-         link
-           ? `<a slot="bottom" href="#">This is a link.</a>
-       `
-           : ''
-       }
+    ${bottom || ''}
     </tds-toast>
     
     <script>
