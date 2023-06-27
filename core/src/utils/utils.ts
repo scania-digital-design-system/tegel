@@ -404,13 +404,14 @@ export function isFocusable(element: HTMLElement): boolean {
   return false;
 }
 
-
 /**
- * Check if the provided element has a slot that corresponds
- * to the provided slotName.
+ * Checks if the provided element has a slotted element
+ * in the slot with the corresponding slotName
  * @param slotName the name of the slot.
  * @param element the element to look for the slot within.
  */
 export const hasSlot = (slotName: string, element: HTMLElement) =>
   !!element.querySelector(`[slot="${slotName}"]`);
+  
+
   
