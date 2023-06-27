@@ -14,6 +14,7 @@
 | `hidden`     | `hidden`     | Hides the Banner                                                                                                                                                                                                                                    | `boolean`                            | `false`               |
 | `icon`       | `icon`       | Name of the icon for the component. For error and information type, the icon is predefined.                                                                                                                                                         | `string`                             | `undefined`           |
 | `persistent` | `persistent` | Removes the close button on the Banner.                                                                                                                                                                                                             | `boolean`                            | `false`               |
+| `subheader`  | `subheader`  | Subheader text.                                                                                                                                                                                                                                     | `string`                             | `undefined`           |
 | `type`       | `type`       | Type of Banner                                                                                                                                                                                                                                      | `"error" \| "information" \| "none"` | `'none'`              |
 
 
@@ -46,6 +47,15 @@ Shows the Banner
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot          | Description                                             |
+| ------------- | ------------------------------------------------------- |
+| `"bottom"`    | Slot for the bottom part of the Banner, used for links. |
+| `"header"`    | Slot for the Header of the Banner                       |
+| `"subheader"` | Slot for the Subheader of the Banner                    |
 
 
 ## Dependencies
