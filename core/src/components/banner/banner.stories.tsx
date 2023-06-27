@@ -49,9 +49,9 @@ export default {
         type: 'text',
       },
     },
-    link: {
-      name: 'Link',
-      description: 'Sets a link to be displayed in the link section.',
+    bottom: {
+      name: 'Bottom slot',
+      description: 'Slot for the bottom part of the Banner, used for links.',
       control: {
         type: 'text',
       },
@@ -80,23 +80,23 @@ export default {
   args: {
     type: 'Default',
     header: 'This is a header text area',
-    subheader: '<div slot="banner-subheader">Short subheader</div>',
-    link: '<tds-link slot="banner-link" ><a href="/">Link example</a></tds-link>',
+    subheader: 'This is the subheader text area',
+    bottom: '<tds-link slot="bottom" ><a href="/">Link example</a></tds-link>',
     icon: 'truck',
     persistent: false,
   },
 };
 
-const Template = ({ type, icon, header, subheader, persistent, link }) =>
+const Template = ({ type, icon, header, subheader, persistent, bottom }) =>
   formatHtmlPreview(`
       <tds-banner
           ${type !== 'Default' ? `type="${type.toLowerCase()}"` : ''}
           ${icon !== 'none' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
+          ${subheader ? `subheader="${subheader}"` : ''}
           ${persistent ? `persistent` : ''}
           >
-          ${subheader ? `${subheader}` : ''}
-          ${link ? `${link}` : ''}
+          ${bottom ? `${bottom}` : ''}
       </tds-banner>
 
       <!-- Script tag with eventlistener for demo purposes. -->
