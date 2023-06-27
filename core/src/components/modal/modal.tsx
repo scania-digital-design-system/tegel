@@ -10,6 +10,11 @@ import {
   EventEmitter,
 } from '@stencil/core';
 
+/**
+ * @slot header - slot for header text
+ * @slot body - slot for main content of modal
+ * @slot actions - slot for extra buttons
+ * */
 @Component({
   tag: 'tds-modal',
   styleUrl: 'modal.scss',
@@ -139,18 +144,18 @@ export class TdsModal {
           } `}
         >
           <div class="tds-modal-header">
-            <slot name="tds-modal-headline"></slot>
+            <slot name="header"></slot>
             <button class="tds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
 
           <div class="tds-modal-body">
-            <slot name="tds-modal-body"></slot>
+            <slot name="body"></slot>
           </div>
 
           <div class="tds-modal-actions">
-            <slot name="tds-modal-actions"></slot>
+            <slot name="actions"></slot>
           </div>
         </div>
       </Host>
