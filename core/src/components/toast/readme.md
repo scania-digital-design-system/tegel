@@ -5,10 +5,6 @@
 <!-- Auto Generated Below -->
 
 
-## Overview
-
-/**
-
 ## Properties
 
 | Property    | Attribute    | Description                                            | Type                                                 | Default               |

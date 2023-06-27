@@ -3,7 +3,6 @@ import { Method } from '@stencil/core/internal';
 import { hasSlot } from '../../utils/utils';
 
 /**
-/**
  * @slot header - Slot for the Toast header.
  * @slot subheader - Slot for the Toast subheader.
  * @slot bottom - Slot for the Toast bottom section, used for links.
