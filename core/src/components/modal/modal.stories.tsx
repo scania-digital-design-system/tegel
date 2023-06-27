@@ -85,18 +85,24 @@ const sizeLookUp = {
 const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
   formatHtmlPreview(
     `
+ <!-- Button below is just for demo purposes -->
   <tds-button id="my-modal-button" text="Open Modal"></tds-button>
+  
+  
   <tds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
       sizeLookUp[size]
-    }" actions="${actions.toLowerCase()}">
-      <h5 class="tds-modal-headline" slot="tds-modal-headline">${headline}</h5>
-      <span slot="tds-modal-body">
+    }" actions="${actions.toLowerCase()}">  
+      <h5 class="tds-modal-headline" slot="header">${headline}</h5>      
+      <span slot="body">
           ${bodyText}
-      </span>
-      <tds-button slot="tds-modal-actions" data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
-      <tds-button slot="tds-modal-actions" data-dismiss-modal size="md" text="Cancel"></tds-button>
-      
+      </span>      
+      <span slot='actions'>
+        <tds-button data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
+        <tds-button data-dismiss-modal size="md" text="Cancel"></tds-button>
+      </span>      
   </tds-modal>
+  
+  <!-- The script below is just for demo purposes -->
   <script>
     modal = document.querySelector('tds-modal')
     modal.addEventListener('tdsClose', (event) => {
