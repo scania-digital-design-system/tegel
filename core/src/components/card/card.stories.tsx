@@ -58,7 +58,7 @@ export default {
       },
     },
     imagePlacement: {
-      name: 'Body Image placement',
+      name: 'Body image placement',
       description: 'Sets the placement of the body image, above or below the header.',
       control: {
         type: 'radio',
