@@ -50,22 +50,22 @@ export default {
         type: 'text',
       },
     },
-    headerImg: {
-      name: 'Header image',
-      description: 'Toggles an image in the header.',
+    thumbnail: {
+      name: 'Header thumbnail',
+      description: 'Toggles a thumbnail in the header.',
       control: {
         type: 'boolean',
       },
     },
-    headerPlacement: {
-      name: 'Header placement',
-      description: 'Sets the placement of the header, above or below the body image.',
+    imagePlacement: {
+      name: 'Body image placement',
+      description: 'Sets the placement of the body image, above or below the header.',
       control: {
         type: 'radio',
       },
       options: ['Above', 'Below'],
       table: {
-        defaultValue: { summary: 'above' },
+        defaultValue: { summary: 'below' },
       },
     },
     bodyImg: {
@@ -116,12 +116,12 @@ export default {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
     subheader: 'Subheader text',
-    headerImg: true,
-    headerPlacement: 'Above',
+    thumbnail: true,
+    imagePlacement: 'Below',
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,
-    cardBottom: `<tds-icon slot="card-bottom" size="20px" name="arrow_right"></tds-icon>`,
+    cardBottom: `<tds-icon slot="bottom" size="20px" name="arrow_right"></tds-icon>`,
     clickable: false,
   },
 };
@@ -130,8 +130,8 @@ const Template = ({
   modeVariant,
   header,
   subheader,
-  headerImg,
-  headerPlacement,
+  thumbnail,
+  imagePlacement,
   bodyImg,
   bodyContent,
   bodyDivider,
@@ -149,17 +149,21 @@ const Template = ({
     <tds-card
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     ${header ? `header="${header}"` : ''}
-    header-placement="${headerPlacement.toLowerCase()}"
+    image-placement="${imagePlacement.toLowerCase()}-header"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${headerImg ? `header-img="${CardPlaceholder}"` : ''}
     ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
-  >
+    >
+    ${
+      thumbnail
+        ? `<img slot="thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>`
+        : ''
+    }
   ${
     bodyContent
       ? `
-    <div slot="card-body">
+    <div slot="body">
         ${bodyContent}
     </div>`
       : ''

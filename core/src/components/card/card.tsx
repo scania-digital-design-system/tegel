@@ -1,28 +1,33 @@
-import { Component, h, Prop, Event, EventEmitter, Element, State, Host } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
+import { hasSlot } from '../../utils/utils';
 
+/**
+ * @slto header - Slot for the Card header.
+ * @slot subheader - Slot for the Card subheader.
+ * @slot thumbnail - Slot for the Card thumbnail.
+ * @slot body - Slot for the body section of the Card.
+ * @slot body-image - Slot for the body section of the Card, used for image.
+ * @slot bottom - Slot for the bottom section of the Card.
+ */
 @Component({
   tag: 'tds-card',
   styleUrl: 'card.scss',
   shadow: true,
 })
 export class TdsCard {
+  @Element() host: HTMLElement;
+
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Placement of the header */
-  @Prop() headerPlacement: 'above' | 'below' = 'above';
+  @Prop() imagePlacement: 'above-header' | 'below-header' = 'below-header';
 
   /** Text in the header */
   @Prop() header: string;
 
   /** Subheader text in the header */
   @Prop() subheader: string;
-
-  /** Header image src */
-  @Prop() headerImg: string;
-
-  /** Alt text for the header image */
-  @Prop() headerImgAlt: string;
 
   /** Body image src */
   @Prop() bodyImg: string;
@@ -54,76 +59,54 @@ export class TdsCard {
     cardId: string;
   }>;
 
-  @Element() hostElement: HTMLTdsCardElement;
-
-  @State() hasCardBottomSlot: boolean = false;
-
-  @State() hasCardBodySlot: boolean = false;
-
-  connectedCallback() {
-    this.hasCardBottomSlot = !!this.hostElement.querySelector('[slot="card-bottom"]');
-    this.hasCardBodySlot = !!this.hostElement.querySelector('[slot="card-body"]');
-  }
-
   handleClick = () => {
     this.tdsClick.emit({
       cardId: this.cardId,
     });
   };
 
-  getCardContent = () => (
-    <div>
-      {this.headerPlacement === 'above' && (
-        <div class={`card-top ${this.headerPlacement}`}>
-          {this.headerImg && (
-            <img class={`card-top-image`} src={this.headerImg} alt={this.headerImgAlt} />
-          )}{' '}
-          <div
-            class={`
-          card-top-header
-          ${!this.headerImg ? 'no-header-img' : ''}
-          ${!this.header || !this.subheader ? 'single-line-header' : ''}
-          `}
-          >
-            <span class={`card-header`}>{this.header}</span>
-            <span class={`card-subheader`}>{this.subheader}</span>
-          </div>
+  getCardHeader = () => {
+    const usesHeaderSlot = hasSlot('header', this.host);
+    const usesSubheaderSlot = hasSlot('subheader', this.host);
+    const usesThumbnailSlot = hasSlot('thumbnail', this.host);
+    return (
+      <div class="card-header">
+        {usesThumbnailSlot && <slot name="thumbnail"></slot>}
+        <div class="header-subheader">
+          {this.header && <span class="header">{this.header}</span>}
+          {usesHeaderSlot && <slot name="header"></slot>}
+          {this.subheader && <span class="subheader">{this.subheader}</span>}
+          {usesSubheaderSlot && <slot name="subheader"></slot>}
         </div>
-      )}
-      <div class={`card-body`}>
-        {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
-        {this.headerPlacement === 'below' && (this.headerImg || this.header || this.subheader) && (
-          <div class={`card-top ${this.headerPlacement}`}>
-            {this.headerImg && (
-              <img class={`card-top-image`} src={this.headerImg} alt={this.headerImgAlt} />
-            )}
-            <div
-              class={`
-            card-top-header
-            ${!this.headerImg ? 'no-header-img' : ''}
-            ${!this.header || !this.subheader ? 'single-line-header' : ''}
-            `}
-            >
-              <span class={`card-header`}>{this.header}</span>
-              <span class={`card-subheader`}>{this.subheader}</span>
-            </div>
-          </div>
-        )}
-        {this.bodyDivider && <tds-divider></tds-divider>}
-        <slot name="card-body"></slot>
       </div>
-      <div class={`card-bottom`}>
-        {this.hasCardBottomSlot && <slot name={`card-bottom`}></slot>}
+    );
+  };
+
+  getCardContent = () => {
+    const usesBodySlot = hasSlot('body', this.host);
+    const usesBodyImageSlot = hasSlot('body-image', this.host);
+    const usesBottomSlot = hasSlot('bottom', this.host);
+    return (
+      <div>
+        {this.imagePlacement === 'below-header' && this.getCardHeader()}
+        <div class={`card-body`}>
+          {usesBodyImageSlot && <slot name="body-image"></slot>}
+          {this.bodyImg && <img class={`card-body-img`} src={this.bodyImg} alt={this.bodyImgAlt} />}
+          {this.imagePlacement === 'above-header' && this.getCardHeader()}
+          {this.bodyDivider && <tds-divider></tds-divider>}
+          {usesBodySlot && <slot name="body"></slot>}
+        </div>
+        {usesBottomSlot && <slot name={`bottom`}></slot>}
       </div>
-    </div>
-  );
+    );
+  };
 
   render() {
     return (
       <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (
           <button
-            class={`card ${this.clickable ? 'clickable' : ''} ${this.headerPlacement}`}
+            class={`card ${this.clickable ? 'clickable' : ''} ${this.imagePlacement}`}
             onClick={() => {
               if (this.clickable) {
                 this.handleClick();
@@ -133,7 +116,7 @@ export class TdsCard {
             {this.getCardContent()}
           </button>
         ) : (
-          <div class={`card ${this.clickable ? 'clickable' : ''} ${this.headerPlacement}`}>
+          <div class={`card ${this.clickable ? 'clickable' : ''} ${this.imagePlacement}`}>
             {this.getCardContent()}
           </div>
         )}
