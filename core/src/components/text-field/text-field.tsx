@@ -1,5 +1,10 @@
-import { Component, h, State, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, h, State, Prop, Event, EventEmitter, Element } from '@stencil/core';
+import { hasSlot } from '../../utils/utils';
 
+/**
+ * @slot prefix - Slot for the prefix in the Text Field
+ * @slot suffix - Slot for the suffix in the Text Field
+ */
 @Component({
   tag: 'tds-text-field',
   styleUrl: 'text-field.scss',
@@ -7,6 +12,8 @@ import { Component, h, State, Prop, Event, EventEmitter } from '@stencil/core';
   scoped: true,
 })
 export class TdsTextField {
+  @Element() host: HTMLElement;
+
   /** Text input for focus state */
   textInput?: HTMLInputElement;
 
@@ -118,6 +125,8 @@ export class TdsTextField {
   }
 
   render() {
+    const usesPrefixSlot = hasSlot('prefix', this.host);
+    const usesSuffixSlot = hasSlot('suffix', this.host);
     return (
       <div
         class={`
@@ -147,9 +156,11 @@ export class TdsTextField {
           </div>
         )}
         <div onClick={() => this.textInput.focus()} class="text-field-container">
-          <div class={`text-field-slot-wrap-prefix text-field-${this.state}`}>
-            <slot name="prefix" />
-          </div>
+          {usesPrefixSlot && (
+            <div class={`text-field-slot-wrap-prefix text-field-${this.state}`}>
+              <slot name="prefix" />
+            </div>
+          )}
 
           <div class="text-field-input-container">
             <input
@@ -183,9 +194,11 @@ export class TdsTextField {
           </div>
           <div class="text-field-bar"></div>
 
-          <div class={`text-field-slot-wrap-suffix text-field-${this.state}`}>
-            <slot name="suffix" />
-          </div>
+          {usesSuffixSlot && (
+            <div class={`text-field-slot-wrap-suffix text-field-${this.state}`}>
+              <slot name="suffix" />
+            </div>
+          )}
           <span class="text-field-icon__readonly">
             <tds-icon name="edit_inactive" size="20px"></tds-icon>
           </span>
