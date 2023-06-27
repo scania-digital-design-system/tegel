@@ -14,11 +14,11 @@
 
 ## Slots
 
-| Slot      | Description                                   |
-| --------- | --------------------------------------------- |
-| `"left"`  | Slot for left side of the Footers main part.  |
-| `"right"` | Slot for right side of the Footers main part. |
-| `"top"`   | Slot for the top part of the Footer.          |
+| Slot      | Description                                          |
+| --------- | ---------------------------------------------------- |
+| `"end"`   | Slot for end (right side) of the Footers main part.  |
+| `"start"` | Slot for start (left side) of the Footers main part. |
+| `"top"`   | Slot for the top part of the Footer.                 |
 
 
 ----------------------------------------------

@@ -4,8 +4,8 @@ import { hasSlot } from '../../utils/utils';
 
 /**
  * @slot top - Slot for the top part of the Footer.
- * @slot left - Slot for left side of the Footers main part.
- * @slot right - Slot for right side of the Footers main part.
+ * @slot start - Slot for start (left side) of the Footers main part.
+ * @slot end - Slot for end (right side) of the Footers main part.
  */
 @Component({
   tag: 'tds-footer',
