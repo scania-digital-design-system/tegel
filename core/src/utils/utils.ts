@@ -412,7 +412,7 @@ export function isFocusable(element: HTMLElement): boolean {
  * @param element the element to look for the slot within.
  */
 export const hasSlot = (slotName: string, element: HTMLElement) =>
-
+  !!element.querySelector(`[slot="${slotName}"]`);
 
 
   
