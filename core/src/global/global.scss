@@ -34,8 +34,8 @@
 @import '../components/table/table-vars';
 @import '../components/datetime/datetime-vars';
 @import '../components/divider/divider-vars';
-@import '../components/dropdown/dropdown-select';
 @import '../components/dropdown/dropdown-vars';
+@import '../components/dropdown/dropdown-option/dropdown-option-vars';
 @import '../components/footer/footer-vars';
 @import '../components/header/header-item/header-item-global';
 @import '../components/header/header-vars';
@@ -58,10 +58,6 @@
 @import '../components/toast/toast-vars';
 @import '../components/toggle/toggle-vars';
 @import '../components/tooltip/tooltip-vars';
-
-// Beta component - theme variables
-@import '../components/dropdown-v2/dropdown-vars';
-@import '../components/dropdown-v2/dropdown-option-v2/dropdown-option-vars';
 
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;

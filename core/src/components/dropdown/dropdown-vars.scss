@@ -1,54 +1,42 @@
 :root,
 .tds-mode-light {
-  /* This one is overriding the --tds-link css for the link component. */
-
-  --tds-link-text-decoration: none;
-  --tds-dropdown-color: var(--tds-grey-958);
-  --tds-dropdown-background: var(--tds-grey-50);
-  --tds-dropdown-background-hover: var(--tds-grey-100);
-  --tds-dropdown-disabled: var(--tds-grey-400);
-  --tds-dropdown-border: var(--tds-grey-100);
-  --tds-dropdown-label-inside: var(--tds-grey-700);
-  --tds-dropdown-label-outside: var(--tds-grey-958);
-  --tds-dropdown-placeholder: var(--tds-grey-700);
-  --tds-dropdown-border-not-focused: var(--tds-grey-600);
-  --tds-dropdown-option-color: var(--tds-grey-900);
-  --tds-dropdown-option-disabled-color: var(--tds-grey-400);
-  --tds-dropdown-background-disabled: var(--tds-dropdown-background);
+  --tds-dropdown-bg: var(--tds-grey-50);
+  --tds-dropdown-border-bottom: var(--tds-grey-600);
+  --tds-dropdown-border-bottom-hover: var(--tds-grey-800);
+  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
+  --tds-dropdown-value-color: var(--tds-grey-868);
+  --tds-dropdown-label-color: var(--tds-grey-958);
+  --tds-dropdown-label-inside-color: var(--tds-grey-700);
+  --tds-dropdown-helper-color: var(--tds-grey-700);
+  --tds-dropdown-placeholder-color: var(--tds-grey-700);
+  --tds-dropdown-disabled-color: var(--tds-grey-400);
 
   .tds-mode-variant-primary {
-    --tds-dropdown-background: var(--tds-grey-50);
-    --tds-dropdown-background-hover: var(--tds-grey-100);
+    --tds-dropdown-bg: var(--tds-grey-50);
   }
 
   .tds-mode-variant-secondary {
-    --tds-dropdown-background: var(--tds-white);
-    --tds-dropdown-background-hover: var(--tds-grey-50);
+    --tds-dropdown-bg: var(--tds-white);
   }
 }
 
 .tds-mode-dark {
-  --tds-link-text-decoration: none;
-  --tds-dropdown-color: var(--tds-grey-400);
-  --tds-dropdown-background: var(--tds-grey-868);
-  --tds-dropdown-background-hover: var(--tds-grey-800);
-  --tds-dropdown-disabled: var(--tds-grey-800);
-  --tds-dropdown-border: var(--tds-grey-800);
-  --tds-dropdown-label-inside: var(--tds-grey-400);
-  --tds-dropdown-label-outside: var(--tds-grey-100);
-  --tds-dropdown-placeholder: var(--tds-grey-400);
-  --tds-dropdown-border-not-focused: var(--tds-grey-600);
-  --tds-dropdown-option-color: var(--tds-grey-50);
-  --tds-dropdown-option-disabled-color: var(--tds-grey-800);
-  --tds-dropdown-background-disabled: var(--tds-dropdown-background);
+  --tds-dropdown-bg: var(--tds-grey-868);
+  --tds-dropdown-border-bottom: var(--tds-grey-600);
+  --tds-dropdown-border-bottom-hover: var(--tds-grey-400);
+  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
+  --tds-dropdown-value-color: var(--tds-white);
+  --tds-dropdown-label-color: var(--tds-grey-400);
+  --tds-dropdown-label-inside-color: var(--tds-grey-400);
+  --tds-dropdown-helper-color: var(--tds-grey-500);
+  --tds-dropdown-placeholder-color: var(--tds-grey-400);
+  --tds-dropdown-disabled-color: var(--tds-grey-800);
 
   .tds-mode-variant-primary {
-    --tds-dropdown-background: var(--tds-grey-868);
-    --tds-dropdown-background-hover: var(--tds-grey-800);
+    --tds-dropdown-bg: var(--tds-grey-868);
   }
 
   .tds-mode-variant-secondary {
-    --tds-dropdown-background: var(--tds-grey-900);
-    --tds-dropdown-background-hover: var(--tds-grey-800);
+    --tds-dropdown-bg: var(--tds-grey-900);
   }
 }

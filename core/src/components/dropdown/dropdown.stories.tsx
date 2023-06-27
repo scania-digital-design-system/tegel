@@ -1,6 +1,5 @@
 import readme from './readme.md';
-import readmeOption from './dropdown-option/readme.md';
-import readmeFilter from './dropdown-filter/readme.md';
+import readmeDropdownOption from './dropdown-option/readme.md';
 import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
@@ -8,7 +7,7 @@ export default {
   title: ComponentsFolder,
   parameters: {
     layout: 'centered',
-    notes: { 'Dropdown': readme, 'Dropdown option': readmeOption, 'Dropdown filter': readmeFilter },
+    notes: { 'Dropdown': readme, 'Dropdown option': readmeDropdownOption },
     design: [
       {
         name: 'Figma',
@@ -25,8 +24,7 @@ export default {
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
-      description:
-        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+      description: 'Mode variant of the component.',
       control: {
         type: 'radio',
       },
@@ -35,30 +33,39 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
-    dropdownType: {
-      name: 'Dropdown type',
-      description: 'Sets the type of the Dropdown.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Default', 'Filter', 'Multiselect'],
-      table: {
-        defaultValue: { summary: 'Default' },
-      },
-    },
-    state: {
-      name: 'Error state',
-      description: 'Puts the component in error state.',
+    error: {
+      name: 'Error',
+      description: 'Sets the Dropdown in an error state.',
       control: {
         type: 'boolean',
       },
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    filter: {
+      name: 'Filter',
+      description: 'Adds filter functionality to the Dropdown.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+    multiselect: {
+      name: 'Multiselect',
+      description: 'Adds multiselect functionality to the Dropdown.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: 'false' },
       },
     },
     size: {
       name: 'Size',
-      description: 'Sets the size of the Dropdown.',
+      description: 'Size of the Dropdown.',
       control: {
         type: 'radio',
       },
@@ -67,124 +74,131 @@ export default {
         defaultValue: { summary: 'lg' },
       },
     },
-    openDirection: {
-      name: 'Open direction',
-      description: 'Sets which direction the Dropdown will open in.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Up', 'Down', 'Auto'],
-      table: {
-        defaultValue: { summary: 'lg' },
-      },
+    placeholder: {
+      name: 'Placeholder',
+      type: 'string',
+      description: 'Placeholder text when no option is selected',
     },
     labelPosition: {
       name: 'Label position',
-      description: 'Sets the label text position.',
+      description: 'Label text position',
       control: {
         type: 'radio',
       },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'None'],
       table: {
-        defaultValue: { summary: 'no-label' },
+        defaultValue: { summary: 'null' },
       },
     },
     labelText: {
       name: 'Label text',
-      description: 'Sets a label text to help describe what the Dropdown contains.',
-      control: {
-        type: 'text',
-      },
-      if: { arg: 'labelPosition', neq: 'No label' },
-    },
-    placeholder: {
-      name: 'Placeholder',
-      description: 'Sets the placeholder text when no option is selected.',
-      control: {
-        type: 'text',
-      },
-    },
-    helper: {
-      name: 'Helper text',
-      description:
-        'Sets a helper text to assist the user with additional information about the Dropdown.',
-      control: {
-        type: 'text',
-      },
-    },
-    defaultOption: {
-      if: { arg: 'dropdownType', neq: 'Multiselect' },
-      name: 'Default option',
-      description: 'Sets a pre-selected option and replaces the placeholder.',
-      control: {
-        type: 'radio',
-      },
-      options: ['No default', 'Option 1', 'Option 2', 'Option 3'],
-    },
-    multiDefaultOption: {
-      name: 'Default options',
-      description: 'Sets a pre-selected option and replaces the placeholder.',
-      if: { arg: 'dropdownType', eq: 'Multiselect' },
-      control: {
-        type: 'check',
-      },
-      options: ['Option 1', 'Option 2', 'Option 3'],
+      control: 'text',
+      description: 'Label text helps to describe what the Dropdown contains',
+      if: { arg: 'labelPosition', neq: 'None' },
     },
     disabled: {
       name: 'Disabled',
-      description: 'Disables the Dropdown.',
+      description: 'Disables the component',
       control: {
         type: 'boolean',
       },
       table: {
-        defaultValue: { summary: false },
+        defaultValue: { summary: 'false' },
+      },
+    },
+    helperText: {
+      name: 'Helper text',
+      description: 'Helper text assists the user with additional information about the Dropdown.',
+      control: 'text',
+    },
+    optionType: {
+      name: 'Option type',
+      description:
+        'Render the options either via the options prop, or passing them as children to the Dropdown.',
+      control: 'radio',
+      options: ['Children', 'Property'],
+    },
+    defaultOption: {
+      name: 'Default options',
+      description: 'Sets a pre-selected option.',
+      control: {
+        type: 'radio',
+      },
+      options: ['No default', 'Option 1', 'Option 2', 'Option 3'],
+      if: { arg: 'multiselect', eq: false },
+    },
+    multiDefaultOption: {
+      name: 'Default options',
+      description: 'Sets a pre-selected option.',
+      control: {
+        type: 'check',
+      },
+      options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
+      if: { arg: 'multiselect', eq: true },
+    },
+    openDirection: {
+      name: 'Open direction',
+      description: 'The direction the Dropdown will open.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Auto', 'Up', 'Down'],
+      table: {
+        summary: {
+          defaultValue: 'auto',
+        },
       },
     },
   },
   args: {
     modeVariant: 'Inherit from parent',
-    dropdownType: 'Default',
-    state: false,
     size: 'Large',
-    openDirection: 'Auto',
-    labelPosition: 'No label',
-    labelText: 'Label text',
     placeholder: 'Placeholder',
-    helper: '',
-    defaultOption: 'Option 1',
-    multiDefaultOption: ['Option 1', 'Option 2'],
+    labelText: 'Label text',
+    labelPosition: 'Outside',
     disabled: false,
+    error: false,
+    filter: false,
+    multiselect: false,
+    helperText: 'Helper text',
+    optionType: 'Children',
+    defaultOption: 'No default',
+    openDirection: 'Auto',
   },
 };
 
+const sizeLookUp = {
+  Large: 'lg',
+  Medium: 'md',
+  Small: 'sm',
+};
+
+const defaultOptionLookUp = {
+  'Option 1': 'option-1',
+  'Option 2': 'option-2',
+  'Option 3': 'option-3',
+};
+
+const getMultiselectDefaultValue = (multiDefaultOption: string[]) =>
+  multiDefaultOption.map((item) => defaultOptionLookUp[item]);
+
 const Template = ({
-  modeVariant,
-  dropdownType,
-  state = false,
-  size,
-  openDirection,
+  placeholder,
   labelText,
   labelPosition,
-  placeholder,
-  helper,
+  helperText,
+  size,
+  error,
+  filter,
+  multiselect,
+  openDirection,
+  modeVariant,
+  disabled,
+  optionType,
   defaultOption,
   multiDefaultOption,
-  disabled = false,
-}) => {
-  const sizeLookup = { Large: 'lg', Medium: 'md', Small: 'sm' };
-  const labelPosLookup = { 'No label': 'no-label', 'Inside': 'inside', 'Outside': 'outside' };
-  const defaultOptionLookup = {
-    'No default': 'no-default',
-    'Option 1': 'option-1',
-    'Option 2': 'option-2',
-    'Option 3': 'option-3',
-  };
-
-  const multiDefaultOptionValue =
-    dropdownType === 'Multiselect' &&
-    multiDefaultOption.map((value) => value.toLowerCase().replace(' ', '-'));
-
-  return formatHtmlPreview(`
+}) =>
+  formatHtmlPreview(`
   <style>
   /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
@@ -194,74 +208,97 @@ const Template = ({
   </style>
 
     <div class="demo-wrapper">
-    ${
-      dropdownType !== 'Filter'
-        ? `
         <tds-dropdown
+        ${
+          defaultOption && defaultOption !== 'No default'
+            ? `default-value="${defaultOptionLookUp[defaultOption]}"`
+            : ''
+        }
+        ${
+          multiDefaultOption
+            ? `default-value="${getMultiselectDefaultValue(multiDefaultOption)}"`
+            : ''
+        }
+        ${
+          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+        }
+          name="dropdown"
+          label="${labelText}"
           ${
-            modeVariant !== 'Inherit from parent'
-              ? `mode-variant="${modeVariant.toLowerCase()}".tds-option-label {
-            `
+            labelPosition && labelPosition !== 'None'
+              ? `label-position="${labelPosition.toLowerCase()}"`
               : ''
           }
-          id="tds-dropdown-reg"
-          size="${sizeLookup[size]}"
           placeholder="${placeholder}"
-          disabled="${disabled}"
+          helper="${helperText}"
+          size="${sizeLookUp[size]}"
+          ${error ? 'error' : ''}
+          ${filter ? 'filter' : ''}
+          ${multiselect ? 'multiselect' : ''}
+          ${disabled ? 'disabled' : ''}
           open-direction="${openDirection.toLowerCase()}"
-          label-position="${labelPosLookup[labelPosition]}"
-          ${labelPosLookup[labelPosition] !== 'no-label' ? `label="${labelText}"` : ''}
-          ${helper !== '' ? `helper="${helper}"` : ''}
-          state="${state}"
-          type="${dropdownType.toLowerCase()}"
-          default-option="${
-            dropdownType === 'Default'
-              ? defaultOptionLookup[defaultOption]
-              : multiDefaultOptionValue
-          }"
-        >
-          <tds-dropdown-option value="option-1" tabindex="0" disabled>Option 1</tds-dropdown-option>
-          <tds-dropdown-option value="option-2" tabindex="0">Option 2</tds-dropdown-option>
-          <tds-dropdown-option value="option-3" tabindex="0">Option 3</tds-dropdown-option>
+          >
+          ${
+            optionType === 'Children'
+              ? `
+              <tds-dropdown-option value="option-1">
+                Option 1
+              </tds-dropdown-option>
+              <tds-dropdown-option disabled value="option-2">
+                Option 2
+              </tds-dropdown-option>
+              <tds-dropdown-option value="option-3">
+                Option 3
+              </tds-dropdown-option>
+              <tds-dropdown-option value="option-4">
+                Option 4
+              </tds-dropdown-option>
+              <tds-dropdown-option value="option-5">
+                Option 5
+              </tds-dropdown-option>
+              <tds-dropdown-option value="option-6">
+                Option 6
+              </tds-dropdown-option>
+              <tds-dropdown-option value="option-7">
+                Option 7
+              </tds-dropdown-option>`
+              : ''
+          }
         </tds-dropdown>
+    </div>
+
+    <script>
+    dropdown = document.querySelector('tds-dropdown')
+    dropdown.addEventListener('tdsChange', (event) => {
+      console.log(event)
+    })
+
+    ${
+      optionType === 'Property'
+        ? `
+        dropdown.options = [
+            {
+              label: 'Option 1',
+              value: 'option-1',
+              disabled: 'false',
+            },
+            {
+              label: 'Option 2',
+              value: 'option-2',
+              disabled: 'false',
+            },
+            {
+              label: 'Option 3',
+              value: 'option-3',
+              disabled: 'false',
+            },
+          ]
+        
     `
-        : `
-        <tds-dropdown-filter
-          ${
-            modeVariant !== 'Inherit from parent'
-              ? `mode-variant="${modeVariant.toLowerCase()}".tds-option-label {          `
-              : ''
-          }
-          id="tds-dropdown-filter"
-          size="${sizeLookup[size]}"
-          placeholder="${placeholder}"
-          disabled="${disabled}"
-          open-direction="${openDirection.toLowerCase()}"
-          label-position="${labelPosLookup[labelPosition]}"
-          ${labelPosLookup[labelPosition] !== 'no-label' ? `label="${labelText}"` : ''}
-          ${helper !== '' ? `helper="${helper}"` : ''}
-          state="${state}"
-          data='[
-            {
-              "value": "option-1",
-              "label":"Jakarta"
-            },
-            {
-              "value":"option-2"
-              ,"label":"Stockholm"
-            },
-            {
-              "value":"option-3",
-              "label":"Barcelona"
-            }
-          ]'
-          default-option="${defaultOptionLookup[defaultOption]}">
-
-        </tds-dropdown-filter>`
+        : ''
     }
-
-      </div>
+    </script>
+        
   `);
-};
 
 export const Dropdown = Template.bind({});

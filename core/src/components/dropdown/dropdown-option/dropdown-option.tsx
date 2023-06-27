@@ -1,150 +1,170 @@
-import {
-  Component,
-  h,
-  Prop,
-  State,
-  Element,
-  Host,
-  Event,
-  EventEmitter,
-  Listen,
-} from '@stencil/core';
+import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
+import { EventEmitter, Method } from '@stencil/core/internal';
+import { TdsCheckboxCustomEvent } from '../../../components';
 
 @Component({
   tag: 'tds-dropdown-option',
-  styleUrl: './../dropdown.scss',
-  shadow: true,
+  styleUrl: 'dropdown-option.scss',
+  shadow: {
+    delegatesFocus: true,
+  },
 })
 export class TdsDropdownOption {
   @Element() host: HTMLElement;
 
-  // Used as a fallback if value prop is not recognized to match handleClick
-  @State() innerValue: string;
+  /** Value for the Dropdown option. */
+  @Prop() value: string;
 
-  /** Set to true if selected */
-  @Prop() selected: boolean = false;
-
-  /** Sets option to disabled state if true */
+  /** Sets the option as disabled. */
   @Prop() disabled: boolean = false;
 
-  /** Value is a unique string that will be used for application logic */
-  @Prop({ reflect: true }) value: string;
+  @State() selected: boolean = false;
 
-  /** @internal Fires on click on one of the Dropdown items */
+  @State() multiselect: boolean;
+
+  @State() size: 'sm' | 'md' | 'lg' = 'lg';
+
+  private parentElement: HTMLTdsDropdownElement;
+
+  private label: string;
+
+  /** Method to select/deselect an option if the option is not disabled. */
+  @Method()
+  async setSelected(selected: boolean) {
+    if (!this.disabled) {
+      this.selected = selected;
+    }
+  }
+
+  /** Click event for the Dropdown option. */
   @Event({
-    eventName: 'internalTdsSelect',
+    eventName: 'tdsSelect',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalTdsSelect: EventEmitter<{
-    value: string | number;
-    label: string | number;
-    parent: HTMLTdsDropdownElement;
+  tdsSelect: EventEmitter<{
+    selected: boolean;
+    value: string;
   }>;
 
-  isMultiSelectOption: boolean;
+  /** Focus event for the Dropdown option. */
+  @Event({
+    eventName: 'tdsFocus',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsFocus: EventEmitter<FocusEvent>;
 
-  @Listen('mouseover')
-  changeFocusHandler() {
-    this.host.focus();
-  }
+  /** Blur event for the Dropdown option. */
+  @Event({
+    eventName: 'tdsBlur',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsBlur: EventEmitter<FocusEvent>;
 
-  @Listen('mouseout')
-  removeFocusHandler() {
-    this.host.blur();
-  }
+  connectedCallback = () => {
+    this.parentElement =
+      this.host.parentElement.tagName === 'TDS-DROPDOWN'
+        ? (this.host.parentElement as HTMLTdsDropdownElement)
+        : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
+    this.multiselect = this.parentElement.multiselect;
+    this.size = this.parentElement.size;
+    this.label = this.host.textContent.trim();
+  };
 
-  @Listen('keydown')
-  onKeyDown(event: KeyboardEvent) {
-    if (event.code === 'Enter') {
-      this.handleClick({
+  handleSingleSelect = () => {
+    if (!this.disabled) {
+      this.selected = true;
+      this.parentElement.setValue(this.value, this.label);
+      this.parentElement.close();
+      this.tdsSelect.emit({
         value: this.value,
-        label: this.host.innerText,
-        parent: this.host.parentNode,
+        selected: this.selected,
       });
     }
-  }
+  };
 
-  componentWillLoad() {
-    this.innerValue = this.value;
-    this.isMultiSelectOption = this.host
-      .closest('tds-dropdown')
-      .classList.contains('tds-dropdown-multiselect');
-  }
-
-  handleClick(value) {
+  handleMultiselect = (
+    event: TdsCheckboxCustomEvent<{ checkboxId: string; checked: boolean; value?: string }>,
+  ) => {
     if (!this.disabled) {
-      const listOptions = value.parent.childNodes;
-      this.internalTdsSelect.emit(value);
-      if (!this.isMultiSelectOption) {
-        listOptions.forEach((optionEl) => {
-          optionEl.selected = false;
+      if (event.detail.checked) {
+        this.parentElement.setValue(this.value, this.label);
+        this.selected = true;
+        this.tdsSelect.emit({
+          value: this.value,
+          selected: this.selected,
+        });
+      } else {
+        this.parentElement.removeValue(this.value);
+        this.selected = false;
+        this.tdsSelect.emit({
+          value: this.value,
+          selected: this.selected,
         });
       }
-      const optionCheckbox = this.host.shadowRoot.querySelector('input');
-
-      if (this.selected) {
-        this.selected = false;
-        if (optionCheckbox) {
-          optionCheckbox.checked = false;
-        }
-      } else {
-        this.selected = true;
-        if (optionCheckbox) {
-          optionCheckbox.checked = true;
-        }
-      }
     }
-  }
+  };
+
+  handleFocus = (event) => {
+    this.tdsFocus.emit(event);
+  };
+
+  handleBlur = (event) => {
+    this.tdsBlur.emit(event);
+  };
 
   render() {
     return (
-      <Host
-        onClick={(event) => {
-          if (this.isMultiSelectOption) {
-            event.stopPropagation();
-          }
-          return this.handleClick({
-            value: this.value,
-            label: this.host.innerText,
-            parent: event.target.parentNode,
-          });
-        }}
-        class={{
-          'selected': this.selected,
-          'tds-dropdown-option-disabled': this.disabled,
-        }}
-        tabindex="-1"
-        aria-disabled={this.disabled}
-      >
-        {this.isMultiSelectOption && (
-          <div class="tds-checkbox-item tds-option-checkbox">
-            <tds-checkbox checked={this.selected} disabled={this.disabled}></tds-checkbox>
-          </div>
-        )}
-        <span class="tds-option-label">
-          <slot />
-        </span>
-        {!this.isMultiSelectOption && (
-          <span class="tds-option-checkmark">
-            <svg
-              width="10"
-              height="7"
-              viewBox="0 0 10 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      <Host role="option" aria-disabled={this.disabled} aria-selected={this.selected}>
+        <div
+          class={`dropdown-option 
+          ${this.size}
+          ${this.selected ? 'selected' : ''}
+          ${this.disabled ? 'disabled' : ''}
+          `}
+        >
+          {this.multiselect ? (
+            <div
+              class="multiselect"
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  this.parentElement.close();
+                }
+              }}
             >
-              <path
-                d="M1 3L4 6L9 1"
-                stroke="currentColor"
-                stroke-width="1.25"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
-        )}
+              <tds-checkbox
+                onTdsChange={(event) => {
+                  this.handleMultiselect(event);
+                }}
+                disabled={this.disabled}
+                checked={this.selected}
+              >
+                <div slot="label">
+                  <slot></slot>
+                </div>
+              </tds-checkbox>
+            </div>
+          ) : (
+            <button
+              onClick={() => {
+                this.handleSingleSelect();
+              }}
+              onFocus={(event) => this.handleFocus(event)}
+              onBlur={(event) => this.handleBlur(event)}
+              disabled={this.disabled}
+            >
+              <div class="single-select">
+                <slot></slot>
+                {this.selected && <tds-icon name="tick" size="16px"></tds-icon>}
+              </div>
+            </button>
+          )}
+        </div>
       </Host>
     );
   }

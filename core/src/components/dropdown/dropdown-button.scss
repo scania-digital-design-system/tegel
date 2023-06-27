@@ -40,8 +40,13 @@
       }
     }
 
+    &.error {
+      border-bottom: 1px solid var(--tds-negative);
+    }
+
     &:disabled {
       color: var(--tds-dropdown-disabled-color);
+      border-bottom: 1px solid transparent;
     }
   }
 }
