@@ -118,6 +118,13 @@ export class TdsComponent {
 
 ```
 
+
+## Slots
+
+Slots are used throughout many of our components. Some of these are named slots, and in that case they should follow
+the following convention: The slot should always be named to represent its position/use case. For example this could be
+'bottom', 'label' or 'end'.
+
 ## Events
 The tegel components emit custom events to allow the users to repond to changes/updates in the components. These are all named using the 
 tds-prefix. This is done in order to not have conflicting events and to make it clear to the user the specified event is something that is emitted

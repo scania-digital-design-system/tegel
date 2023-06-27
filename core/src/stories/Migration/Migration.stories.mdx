@@ -20,6 +20,41 @@ or not it is a custom event. We have now settled on a naming convention for all 
 Both **external**, events we expect you as a user to interact with, and **internal**, events that are used within
 our components to update state/react to changes. 
 
+## Slot name convention
+
+For @scania/tegel we have taken another look at the naming convention of our slot names. With this we discovered
+a number on inconsistencies. To align on this we have now decided on a naming convention that goes for all of our 
+named slot. 
+
+The slot should always be named to represent its position/use case. This could for example be 'bottom', 'label' or 
+'suffix'.
+
+These components have been updated:
+
+ - Accordion
+ - Button
+ - Card
+ - Checkbox
+ - Chip
+ - Dropdown
+ - Footer
+ - Footer
+ - Header
+ - Message
+ - Modal
+ - Radio Button
+ - Side Menu
+ - Stepper
+ - Table
+ - Text Field
+ - Toast
+ - Toggle
+
+ #### What action is required?
+
+Make sure all slots that are being used follow the convention. 
+
+
 ## Prefix change
 Furthermore we decided to rename the previously used 'sdds'-prefix to 'tds'. 
 This occurred as a result of a deliberate choice to facilitate the transition to the new Tegel package and prevent conflicts with previously used components.
