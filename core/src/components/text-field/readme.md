@@ -36,6 +36,14 @@
 | `tdsInput`  | Input event for the Text Field  | `CustomEvent<InputEvent>` |
 
 
+## Slots
+
+| Slot       | Description                           |
+| ---------- | ------------------------------------- |
+| `"prefix"` | Slot for the prefix in the Text Field |
+| `"suffix"` | Slot for the suffix in the Text Field |
+
+
 ## Dependencies
 
 ### Depends on
