@@ -56,8 +56,8 @@
     display: flex;
     gap: 8px;
 
-    &.left,
-    &.right {
+    &.start,
+    &.end {
       gap: 24px;
     }
 
@@ -67,11 +67,11 @@
   }
 
   @media all and (max-width: 992px) {
-    [role='list'].left:not(.top-part-child) {
+    [role='list'].start:not(.top-part-child) {
       flex-direction: column;
 
-      &.left,
-      &.right {
+      &.start,
+      &.end {
         gap: 8px;
       }
     }

@@ -3,16 +3,13 @@
 
   $grid-lg: 992px;
 
-  .footer-top {
+  slot[name='top']::slotted(*) {
     background-color: var(--tds-footer-top-background);
     padding: 40px;
-
-    ::slotted(*) {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      row-gap: 40px;
-      width: 100%;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 40px;
+    width: 100%;
   }
 
   .footer-main {
@@ -26,9 +23,9 @@
     justify-content: space-between;
   }
 
-  .footer-bottom-right,
-  .footer-bottom-left {
-    ::slotted(*) {
+  slot[name='start'],
+  slot[name='end'] {
+    &::slotted(*) {
       display: flex;
       column-gap: 24px;
     }
@@ -66,13 +63,10 @@
   }
 
   @media all and (max-width: $grid-lg) {
-    .footer-top {
+    slot[name='top']::slotted(*) {
+      display: block;
+      width: 100%;
       padding: 0;
-
-      ::slotted(*) {
-        display: block;
-        width: 100%;
-      }
     }
 
     .footer-main {
@@ -85,9 +79,9 @@
       padding: 24px 0;
     }
 
-    .footer-bottom-left {
-      ::slotted(*) {
-        flex-direction: column;
+    slot[name='end'] {
+      &::slotted(*) {
+        flex-direction: row;
         gap: 8px;
       }
     }

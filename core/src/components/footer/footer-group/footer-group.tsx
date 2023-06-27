@@ -16,8 +16,8 @@ export class TdsFooterGroup {
   @State() open: boolean = false;
 
   /** If the group is placed in the main part of the Footer,
-   * it can have either left or right as a slot position otherwise undefined. */
-  private slotPosition: 'left' | 'right' = null;
+   * it can have either stat or end as a slot position otherwise undefined. */
+  private slotPosition: 'start' | 'end' = null;
 
   /** Indicates if a group is part of the top part of the Footer. */
   private topPartGroup: boolean = false;
@@ -25,7 +25,7 @@ export class TdsFooterGroup {
   connectedCallback() {
     this.topPartGroup = this.host.parentElement.slot === 'top';
     if (!this.topPartGroup) {
-      this.slotPosition = this.host.parentElement.slot === 'main-right' ? 'right' : 'left';
+      this.slotPosition = this.host.parentElement.slot === 'end' ? 'end' : 'start';
     }
   }
 

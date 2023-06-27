@@ -1,6 +1,12 @@
-import { Component, h, State, Element } from '@stencil/core';
+import { Component, h, Element } from '@stencil/core';
 import { Host, Prop } from '@stencil/core/internal';
+import { hasSlot } from '../../utils/utils';
 
+/**
+ * @slot top - Slot for the top part of the Footer.
+ * @slot left - Slot for left side of the Footers main part.
+ * @slot right - Slot for right side of the Footers main part.
+ */
 @Component({
   tag: 'tds-footer',
   styleUrl: 'footer.scss',
@@ -12,30 +18,18 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Indicates whether the Footer has a top part. */
-  @State() hasTopPart: boolean;
-
-  connectedCallback() {
-    this.hasTopPart = Array.from(this.host.children).some((element) => element.slot === 'top');
-  }
-
   render() {
+    const usesTopSlot = hasSlot('top', this.host);
+    const usesStartSlot = hasSlot('start', this.host);
+    const usesEndSlot = hasSlot('end', this.host);
     return (
       <Host class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <footer>
-          {this.hasTopPart && (
-            <div class="footer-top">
-              <slot name="top"></slot>
-            </div>
-          )}
+          {usesTopSlot && <slot name="top"></slot>}
           <div class="footer-main">
             <div class="footer-main-top">
-              <div class="footer-bottom-left">
-                <slot name="main-left"></slot>
-              </div>
-              <div class="footer-bottom-right">
-                <slot name="main-right"></slot>
-              </div>
+              {usesStartSlot && <slot name="start"></slot>}
+              {usesEndSlot && <slot name="end"></slot>}
             </div>
             <div class="footer-main-bottom">
               <small class="copyright">Copyright &#169; {new Date().getFullYear()} Scania</small>
