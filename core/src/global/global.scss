@@ -71,11 +71,13 @@ body {
   color: var(--tds-grey-958);
   background-color: var(--tds-white);
 
+  &.tds-mode-variant-primary,
   & .tds-mode-variant-primary {
     color: var(--tds-grey-958);
     background-color: var(--tds-white);
   }
 
+  &.tds-mode-variant-secondary,
   & .tds-mode-variant-secondary {
     color: var(--tds-grey-958);
     background-color: var(--tds-grey-50);
@@ -86,11 +88,13 @@ body {
   color: var(--tds-grey-100);
   background-color: var(--tds-grey-958);
 
+  &.tds-mode-variant-primary,
   & .tds-mode-variant-primary {
     color: var(--tds-grey-100);
     background-color: var(--tds-grey-958);
   }
 
+  &.tds-mode-variant-secondary,
   & .tds-mode-variant-secondary {
     color: var(--tds-grey-100);
     background-color: var(--tds-grey-900);
