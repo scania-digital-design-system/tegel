@@ -265,26 +265,15 @@ Change all `<sdds-datetime>` that are using slots to use the prop instead.
 
 [Story](/docs/components--dropdown)
 
-#### Added prop for mode-variant and removed class `sdds-on-white-bg` for web component
+#### Refactored component
 
-Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant` with values `primary` or
-`secondary` to determine which variant is being shown. `primary` is the default value and represents the old `sdds-on-white-bg`
+The dropdown has been completely overhauled and redone. This leads to a number of props/event/etc changing names
+and features. Please have a look at the component and do the updates that affect you.
 
 ##### What action is required?
 
-Replace all instances of `class="sdds-on-white-bg"` with the prop `mode-variant` and use `primary` as value.
-If the component is used on a background with a color of grey-50, mode-variant prop value `secondary` should be passed.
+Please have a look at the component and do the updates that affect you.
 
-```jsx
-// Old ❌
-<sdds-dropdown class="sdds-on-white-bg">
-    // ...
-</sdds-dropdown>
-// New ✅
-<tds-dropdown mode-variant="primary">
-    // ...
-</tds-dropdown>
-```
 
 ## Inline, Folder & Navigation Tabs
 
