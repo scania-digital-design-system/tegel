@@ -45,7 +45,7 @@
   }
 }
 
-:host(.last) {
+:host(:last-of-type) {
   ::slotted(*)::after {
     display: none;
   }

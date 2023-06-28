@@ -8,10 +8,6 @@ import { Component, h, Element } from '@stencil/core';
 export class TdsBreadcrumbs {
   @Element() el: HTMLElement;
 
-  connectedCallback() {
-    this.el.children[this.el.children.length - 1].classList.add('last');
-  }
-
   render() {
     return (
       <nav>
