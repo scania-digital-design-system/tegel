@@ -17,13 +17,12 @@
     @include tds-focus-state;
   }
 
-  &.disabled,
   &.current,
   [aria-current='page'] {
     ::slotted(*) {
       pointer-events: none;
       cursor: default;
-      color: var(--tds-breadcrumb-color-disabled);
+      color: var(--tds-breadcrumb-color-current);
     }
 
     &:hover {
@@ -45,7 +44,7 @@
   }
 }
 
-:host(.last) {
+:host(:last-of-type) {
   ::slotted(*)::after {
     display: none;
   }
