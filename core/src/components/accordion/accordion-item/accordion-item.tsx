@@ -1,5 +1,9 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
+/**
+ * @slot header - Slot for the Accordion Item header.
+ */
+
 @Component({
   tag: 'tds-accordion-item',
   styleUrl: 'accordion-item.scss',
@@ -62,7 +66,7 @@ export class TdsAccordionItem {
           >
             <div class="tds-accordion-title">
               {this.header}
-              <slot name="accordion-item-header"></slot>
+              <slot name="header"></slot>
             </div>
             <div class="tds-accordion-icon">
               <tds-icon name="chevron_down" size="16px"></tds-icon>
