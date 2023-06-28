@@ -131,7 +131,7 @@ $modals: (
   }
 }
 
-@mixin modal-headline {
+@mixin modal-header-title {
   color: var(--tds-modal-text);
   font: var(--tds-headline-05);
   letter-spacing: var(--tds-headline-05-ls);
@@ -171,7 +171,7 @@ $modals: (
   &__actions-sticky {
     overflow: hidden;
 
-    .tds-modal-body {
+    .body {
       font: var(--tds-body-01);
       letter-spacing: var(--tds-body-01-ls);
       padding-bottom: 96px;
@@ -180,7 +180,7 @@ $modals: (
       overflow-y: auto;
     }
 
-    .tds-modal-actions {
+    slot[name='actions'] {
       position: absolute;
       bottom: -1px;
       left: 0;
@@ -193,7 +193,7 @@ $modals: (
   }
 
   &__actions-static {
-    .tds-modal-actions {
+    slot[name='actions'] {
       background-color: var(--tds-modal-background);
       display: flex;
       gap: 16px;
@@ -218,25 +218,24 @@ $modals: (
   .tds-modal-sm {
     height: 100%;
 
-    slot[name='tds-modal-actions']::slotted(*) {
+    slot[name='actions']::slotted(*) {
       display: flex;
     }
   }
 }
 
-/* MODAL SUBELEMENTS */
+/* MODAL SUB ELEMENTS */
 
-.tds-modal-header {
+.header {
   @include modal-header;
 }
 
-.tds-modal-headline {
-  @include modal-headline;
-
-  color: var(--tds-modal-text);
+.header,
+slot[name='header']::slotted(*) {
+  @include modal-header-title;
 }
 
-.tds-modal-body {
+.body {
   @include modal-body;
 }
 
@@ -246,6 +245,7 @@ $modals: (
 }
 
 button.tds-modal-close {
+  margin: 0 0 auto auto;
   background-color: transparent;
   border: 0;
   padding: 0;
