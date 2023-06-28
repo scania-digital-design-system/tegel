@@ -23,7 +23,8 @@ export default {
   argTypes: {
     actions: {
       name: 'Actions',
-      description: 'Defines the behaviour of Modal.',
+      description:
+        "Defines the behaviour of Modal action's slot - if slot scrolls or stays on top of the content.",
       control: {
         type: 'radio',
       },
@@ -43,16 +44,16 @@ export default {
         defaultValue: { summary: 'md' },
       },
     },
-    headline: {
-      name: 'Modal headline',
-      description: 'Sets the headline of the Modal.',
+    headerText: {
+      name: 'Modal header',
+      description: 'Sets the header text of the Modal.',
       control: {
         type: 'text',
       },
     },
-    bodyText: {
+    bodyContent: {
       name: 'Modal body text',
-      description: 'Sets the body text of the Modal.',
+      description: 'Sets the body content of the Modal.',
       control: {
         type: 'text',
       },
@@ -68,8 +69,8 @@ export default {
   args: {
     actions: 'Static',
     size: 'Large',
-    headline: 'The buttons for the Modal only works in the canvas tab',
-    bodyText:
+    headerText: 'The buttons for the Modal only works in the canvas tab',
+    bodyContent:
       'The steps fell lightly and oddly, with a certain swing, for all they went so slowly; it was different indeed from the heavy creaking tread of Henry Jekyll. Utterson sighed. “Is there never anything else?” he asked.',
     showModal: true,
   },
@@ -82,21 +83,29 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
+const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
   formatHtmlPreview(
     `
+ <!-- The button below is just for demo purposes -->
   <tds-button id="my-modal-button" text="Open Modal"></tds-button>
-  <tds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
-      sizeLookUp[size]
-    }" actions="${actions.toLowerCase()}">
-      <h5 class="tds-modal-headline" slot="tds-modal-headline">${headline}</h5>
-      <span slot="tds-modal-body">
-          ${bodyText}
-      </span>
-      <tds-button slot="tds-modal-actions" data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
-      <tds-button slot="tds-modal-actions" data-dismiss-modal size="md" text="Cancel"></tds-button>
-      
+  
+  
+  <tds-modal 
+  header="${headerText}"
+  selector="#my-modal-button"   
+   ${showModal ? 'show' : ''} 
+   id="my-modal" size="${sizeLookUp[size]}" 
+   actions="${actions.toLowerCase()}">          
+      <span slot="body">
+          ${bodyContent}
+      </span>      
+      <span slot='actions'>
+        <tds-button data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
+        <tds-button data-dismiss-modal size="md" text="Cancel"></tds-button>
+      </span>      
   </tds-modal>
+  
+  <!-- The script below is just for demo purposes -->
   <script>
     modal = document.querySelector('tds-modal')
     modal.addEventListener('tdsClose', (event) => {

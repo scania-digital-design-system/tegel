@@ -10,6 +10,7 @@
 | Property      | Attribute  | Description                                                                                                                                                 | Type                           | Default     |
 | ------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------- |
 | `actions`     | `actions`  | Sticky or Static Actions                                                                                                                                    | `"static" \| "sticky"`         | `'static'`  |
+| `header`      | `header`   | Sets the header of the Modal.                                                                                                                               | `string`                       | `undefined` |
 | `prevent`     | `prevent`  | Disables closing Modal on clicking on overlay area.                                                                                                         | `boolean`                      | `false`     |
 | `referenceEl` | --         | Element that will show the Modal (takes priority over selector)                                                                                             | `HTMLElement`                  | `undefined` |
 | `selector`    | `selector` | CSS selector for the element that will show the Modal.                                                                                                      | `string`                       | `undefined` |
@@ -45,6 +46,15 @@ Shows the Modal.
 Type: `Promise<void>`
 
 
+
+
+## Slots
+
+| Slot        | Description                    |
+| ----------- | ------------------------------ |
+| `"actions"` | Slot for extra buttons         |
+| `"body"`    | Slot for main content of modal |
+| `"header"`  | Slot for header text           |
 
 
 ## Dependencies
