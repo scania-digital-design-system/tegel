@@ -163,7 +163,7 @@ export class TdsModal {
             </button>
           </div>
 
-          <div class="tds-modal-body">
+          <div class="body">
             <slot name="body"></slot>
           </div>
 
