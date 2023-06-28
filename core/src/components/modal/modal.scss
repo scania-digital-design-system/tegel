@@ -230,7 +230,7 @@ $modals: (
   @include modal-header;
 }
 
-.tds-modal-header-title,
+.header,
 slot[name='header']::slotted(*) {
   @include modal-header-title;
 }
