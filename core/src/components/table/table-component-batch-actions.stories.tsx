@@ -126,7 +126,9 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      '<div slot="end"><button class="tds-table__actionbar-btn"><tds-icon class="tds-table__actionbar-btn-icon" name="settings" size="20px"></tds-icon> </button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>',
+      '<div slot="end"><tds-button type="ghost" size="sm">
+    <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
+  </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>',
     ),
     verticalDivider: false,
     noMinWidth: false,
