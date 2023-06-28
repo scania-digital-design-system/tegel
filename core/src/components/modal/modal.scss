@@ -230,6 +230,7 @@ $modals: (
   @include modal-header;
 }
 
+.tds-modal-header-title,
 slot[name='header']::slotted(*) {
   @include modal-header-title;
 }
@@ -244,6 +245,7 @@ slot[name='header']::slotted(*) {
 }
 
 button.tds-modal-close {
+  margin: 0 0 auto auto;
   background-color: transparent;
   border: 0;
   padding: 0;

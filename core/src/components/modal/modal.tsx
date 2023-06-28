@@ -9,6 +9,7 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core';
+import { hasSlot } from '../../utils/utils';
 
 /**
  * @slot header - slot for header text
@@ -22,6 +23,9 @@ import {
 })
 export class TdsModal {
   @Element() host: HTMLElement;
+
+  /** Sets the header of the Modal. */
+  @Prop() header: string;
 
   /** Disables closing Modal on clicking on overlay area. */
   @Prop() prevent: boolean = false;
@@ -72,6 +76,12 @@ export class TdsModal {
     }
     this.setDismissButtons();
     this.setShowButton();
+
+    if (this.header && hasSlot('header', this.host)) {
+      console.warn(
+        "Tegel Modal component: Using both header prop and header slot might break modal's design. Please use just one of them. ",
+      );
+    }
   }
 
   /** Emits a close event and then close the Modal if it is not prevented. */
@@ -131,6 +141,8 @@ export class TdsModal {
   }
 
   render() {
+    const usesHeaderSlot = hasSlot('header', this.host);
+    const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <Host
         onClick={(event) => {
@@ -144,7 +156,8 @@ export class TdsModal {
           } `}
         >
           <div class="tds-modal-header">
-            <slot name="header"></slot>
+            {this.header && <div class="tds-modal-header-title">{this.header}</div>}
+            {usesHeaderSlot && <slot name="header"></slot>}
             <button class="tds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
@@ -154,9 +167,11 @@ export class TdsModal {
             <slot name="body"></slot>
           </div>
 
-          <div class="tds-modal-actions">
-            <slot name="actions"></slot>
-          </div>
+          {usesActionsSlot && (
+            <div class="tds-modal-actions">
+              <slot name="actions"></slot>
+            </div>
+          )}
         </div>
       </Host>
     );

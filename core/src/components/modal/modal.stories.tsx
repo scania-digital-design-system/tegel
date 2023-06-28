@@ -43,16 +43,16 @@ export default {
         defaultValue: { summary: 'md' },
       },
     },
-    header: {
+    headerText: {
       name: 'Modal header',
       description: 'Sets the header of the Modal.',
       control: {
         type: 'text',
       },
     },
-    bodyText: {
+    bodyContent: {
       name: 'Modal body text',
-      description: 'Sets the body text of the Modal.',
+      description: 'Sets the body content of the Modal.',
       control: {
         type: 'text',
       },
@@ -68,8 +68,8 @@ export default {
   args: {
     actions: 'Static',
     size: 'Large',
-    header: 'The buttons for the Modal only works in the canvas tab',
-    bodyText:
+    headerText: 'The buttons for the Modal only works in the canvas tab',
+    bodyContent:
       'The steps fell lightly and oddly, with a certain swing, for all they went so slowly; it was different indeed from the heavy creaking tread of Henry Jekyll. Utterson sighed. “Is there never anything else?” he asked.',
     showModal: true,
   },
@@ -82,19 +82,21 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actions, size, header, bodyText, showModal }) =>
+const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
   formatHtmlPreview(
     `
  <!-- The button below is just for demo purposes -->
   <tds-button id="my-modal-button" text="Open Modal"></tds-button>
   
   
-  <tds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
-      sizeLookUp[size]
-    }" actions="${actions.toLowerCase()}">  
-      <h5 slot="header">${header}</h5>      
+  <tds-modal 
+  header="${headerText}"
+  selector="#my-modal-button"   
+   ${showModal ? 'show' : ''} 
+   id="my-modal" size="${sizeLookUp[size]}" 
+   actions="${actions.toLowerCase()}">          
       <span slot="body">
-          ${bodyText}
+          ${bodyContent}
       </span>      
       <span slot='actions'>
         <tds-button data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
