@@ -155,7 +155,7 @@ export class TdsModal {
             this.size ? `tds-modal-${this.size}` : ''
           } `}
         >
-          <div class="tds-modal-header">
+          <div class="header">
             {this.header && <div class="header">{this.header}</div>}
             {usesHeaderSlot && <slot name="header"></slot>}
             <button class="tds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
