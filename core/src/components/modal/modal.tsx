@@ -12,9 +12,9 @@ import {
 import { hasSlot } from '../../utils/utils';
 
 /**
- * @slot header - slot for header text
- * @slot body - slot for main content of modal
- * @slot actions - slot for extra buttons
+ * @slot header - Slot for header text
+ * @slot body - Slot for main content of modal
+ * @slot actions - Slot for extra buttons
  * */
 @Component({
   tag: 'tds-modal',
@@ -167,9 +167,7 @@ export class TdsModal {
             <slot name="body"></slot>
           </div>
 
-          {usesActionsSlot && (
-              <slot name="actions"></slot>
-          )}
+          {usesActionsSlot && <slot name="actions"></slot>}
         </div>
       </Host>
     );

@@ -23,7 +23,8 @@ export default {
   argTypes: {
     actions: {
       name: 'Actions',
-      description: 'Defines the behaviour of Modal.',
+      description:
+        "Defines the behaviour of Modal action's slot - if slot scrolls or stays on top of the content.",
       control: {
         type: 'radio',
       },
@@ -45,7 +46,7 @@ export default {
     },
     headerText: {
       name: 'Modal header',
-      description: 'Sets the header of the Modal.',
+      description: 'Sets the header text of the Modal.',
       control: {
         type: 'text',
       },
