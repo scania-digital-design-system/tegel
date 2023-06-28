@@ -171,7 +171,7 @@ $modals: (
   &__actions-sticky {
     overflow: hidden;
 
-    .tds-modal-body {
+    .body {
       font: var(--tds-body-01);
       letter-spacing: var(--tds-body-01-ls);
       padding-bottom: 96px;
@@ -180,7 +180,7 @@ $modals: (
       overflow-y: auto;
     }
 
-    .tds-modal-actions {
+    slot[name='actions'] {
       position: absolute;
       bottom: -1px;
       left: 0;
@@ -193,7 +193,7 @@ $modals: (
   }
 
   &__actions-static {
-    .tds-modal-actions {
+    slot[name='actions'] {
       background-color: var(--tds-modal-background);
       display: flex;
       gap: 16px;
