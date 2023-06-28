@@ -135,11 +135,11 @@ export class TdsNavigationTabs {
     this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
     this.children = this.children.map((item, index) => {
       item.addEventListener('click', () => {
-        const tdsChangeEvent = this.tdsChange.emit({
-          selectedTabIndex: this.children.indexOf(item),
-        });
-        if (!tdsChangeEvent.defaultPrevented) {
-          if (!item.disabled) {
+        if (!item.disabled) {
+          const tdsChangeEvent = this.tdsChange.emit({
+            selectedTabIndex: this.children.indexOf(item),
+          });
+          if (!tdsChangeEvent.defaultPrevented) {
             this.children.forEach((element) => element.setSelected(false));
             item.setSelected(true);
             this.selectedIndex = index;
