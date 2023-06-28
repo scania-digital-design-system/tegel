@@ -131,7 +131,7 @@ $modals: (
   }
 }
 
-@mixin modal-headline {
+@mixin modal-header-title {
   color: var(--tds-modal-text);
   font: var(--tds-headline-05);
   letter-spacing: var(--tds-headline-05-ls);
@@ -224,16 +224,14 @@ $modals: (
   }
 }
 
-/* MODAL SUBELEMENTS */
+/* MODAL SUB ELEMENTS */
 
 .tds-modal-header {
   @include modal-header;
 }
 
-.tds-modal-headline {
-  @include modal-headline;
-
-  color: var(--tds-modal-text);
+slot[name='header']::slotted(*) {
+  @include modal-header-title;
 }
 
 .tds-modal-body {

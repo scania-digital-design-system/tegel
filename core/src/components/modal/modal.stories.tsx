@@ -43,9 +43,9 @@ export default {
         defaultValue: { summary: 'md' },
       },
     },
-    headline: {
-      name: 'Modal headline',
-      description: 'Sets the headline of the Modal.',
+    header: {
+      name: 'Modal header',
+      description: 'Sets the header of the Modal.',
       control: {
         type: 'text',
       },
@@ -68,7 +68,7 @@ export default {
   args: {
     actions: 'Static',
     size: 'Large',
-    headline: 'The buttons for the Modal only works in the canvas tab',
+    header: 'The buttons for the Modal only works in the canvas tab',
     bodyText:
       'The steps fell lightly and oddly, with a certain swing, for all they went so slowly; it was different indeed from the heavy creaking tread of Henry Jekyll. Utterson sighed. “Is there never anything else?” he asked.',
     showModal: true,
@@ -82,17 +82,17 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actions, size, headline, bodyText, showModal }) =>
+const ModalTemplate = ({ actions, size, header, bodyText, showModal }) =>
   formatHtmlPreview(
     `
- <!-- Button below is just for demo purposes -->
+ <!-- The button below is just for demo purposes -->
   <tds-button id="my-modal-button" text="Open Modal"></tds-button>
   
   
   <tds-modal selector="#my-modal-button" ${showModal ? 'show' : ''} id="my-modal" size="${
       sizeLookUp[size]
     }" actions="${actions.toLowerCase()}">  
-      <h5 class="tds-modal-headline" slot="header">${headline}</h5>      
+      <h5 slot="header">${header}</h5>      
       <span slot="body">
           ${bodyText}
       </span>      
