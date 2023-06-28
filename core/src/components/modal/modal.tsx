@@ -168,9 +168,7 @@ export class TdsModal {
           </div>
 
           {usesActionsSlot && (
-            <div class="tds-modal-actions">
               <slot name="actions"></slot>
-            </div>
           )}
         </div>
       </Host>
