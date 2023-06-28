@@ -18,7 +18,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 ];
 
 /**
- * @slot end  - Slot the the end (right side) of the Table Toolbar.
+ * @slot end  - Slot the end (right side) of the Table Toolbar.
  */
 @Component({
   tag: 'tds-table-toolbar',
