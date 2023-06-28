@@ -7,6 +7,8 @@
   display: block;
   position: relative;
   z-index: tds-z-index(dropdown);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
 
   .label-outside {
     font: var(--tds-detail-05);
@@ -63,8 +65,6 @@
     }
 
     .label-inside-as-placeholder {
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
       color: var(--tds-dropdown-placeholder-color);
 
       &.selected {
