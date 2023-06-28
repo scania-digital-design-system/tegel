@@ -21,7 +21,6 @@
 | ------------- | ----------------------- |
 | `"header"`    | Slot for the header.    |
 | `"thumbnail"` | Slot for the thumbnail. |
-| `"thumbnail"` | Slot for the thumbnail. |
 
 
 ----------------------------------------------
