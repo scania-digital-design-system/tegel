@@ -23,6 +23,7 @@ export default {
       'Side Menu Dropdown List': readmeSideMenuDropdownList,
       'Side Menu Dropdown List Item': readmeSideMenuDropdownListItem,
       'Side Menu Item': readmeSideMenuItem,
+      'Side Menu Collapse Button': readmeSideMenuCollapseButton,
     },
     layout: 'fullscreen',
     docs: {

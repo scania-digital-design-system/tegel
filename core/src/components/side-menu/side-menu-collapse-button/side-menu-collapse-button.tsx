@@ -1,6 +1,10 @@
 import { Component, Element, h, Host, Listen, State, Event, EventEmitter } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 
+/**
+ * @slot UNNAMED-SLOT - IS IT REALLY NEEDED?
+ * */
+
 @Component({
   tag: 'tds-side-menu-collapse-button',
   styleUrl: 'side-menu-collapse-button.scss',
