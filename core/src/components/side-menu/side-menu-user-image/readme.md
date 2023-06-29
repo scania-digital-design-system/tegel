@@ -13,6 +13,13 @@
 | `src`    | `src`     | The image source.   | `string` | `undefined` |
 
 
+## Slots
+
+| Slot             | Description                   |
+| ---------------- | ----------------------------- |
+| `"UNNAMED-SLOT"` | TO BE CHECKED IF IT IS NEEDED |
+
+
 ## Dependencies
 
 ### Used by
