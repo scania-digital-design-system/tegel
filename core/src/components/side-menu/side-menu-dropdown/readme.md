@@ -14,6 +14,14 @@
 | `selected`    | `selected`     | If the button that opens the dropdown should appear selected.                                     | `boolean` | `false`     |
 
 
+## Slots
+
+| Slot             | Description                                                     |
+| ---------------- | --------------------------------------------------------------- |
+| `"button-icon"`  | Used for injecting the icon that compliments the dropdown title |
+| `"button-label"` | Used for injecting the text, aka dropdown title                 |
+
+
 ## Dependencies
 
 ### Depends on

@@ -1,6 +1,10 @@
 import { Component, Element, Fragment, h, Host, Listen, Prop, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 
+/**
+ * @slot button-icon - Used for injecting the icon that compliments the dropdown title
+ * @slot button-label - Used for injecting the text, aka dropdown title
+ * */
 @Component({
   tag: 'tds-side-menu-dropdown',
   styleUrl: 'side-menu-dropdown.scss',
