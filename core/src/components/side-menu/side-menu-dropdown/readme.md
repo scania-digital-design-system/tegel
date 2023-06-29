@@ -18,6 +18,7 @@
 
 | Slot             | Description                                                     |
 | ---------------- | --------------------------------------------------------------- |
+| `"UNNAMED-SLOT"` | Used for nesting another side-menu subcomponent                 |
 | `"button-icon"`  | Used for injecting the icon that compliments the dropdown title |
 | `"button-label"` | Used for injecting the text, aka dropdown title                 |
 
