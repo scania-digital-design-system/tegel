@@ -5,6 +5,7 @@ import readmeSideMenuOverlay from './side-menu-overlay/readme.md';
 import readmeSideMenuUser from './side-menu-user/readme.md';
 import readmeSideMenuCollapseButton from './side-menu-collapse-button/readme.md';
 import readmeSideMenuDropdown from './side-menu-dropdown/readme.md';
+import readmeSideMenuItem from './side-menu-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
@@ -17,6 +18,7 @@ export default {
       'Side Menu User': readmeSideMenuUser,
       'Side Menu Collapse Button': readmeSideMenuCollapseButton,
       'Side Menu Dropdown': readmeSideMenuDropdown,
+      'Side Menu Item': readmeSideMenuItem,
     },
     layout: 'fullscreen',
     docs: {

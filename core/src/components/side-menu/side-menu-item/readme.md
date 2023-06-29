@@ -13,6 +13,13 @@
 | `selected` | `selected` | If the item should appear selected.                                                                                          | `boolean` | `false` |
 
 
+## Slots
+
+| Slot | Description                                                       |
+| ---- | ----------------------------------------------------------------- |
+|      | UNNAMED-SLOT - used for injecting native button and link elements |
+
+
 ## Dependencies
 
 ### Used by
