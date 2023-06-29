@@ -15,6 +15,13 @@
 | `subheading`           | `subheading` | The subheading text. | `string` | `undefined` |
 
 
+## Slots
+
+| Slot      | Description                                                                                                   |
+| --------- | ------------------------------------------------------------------------------------------------------------- |
+| `"image"` | Used as alternative to imgSrc and imgAlt props. Offers injecting <code>HTML</code> directly into a component. |
+
+
 ## Dependencies
 
 ### Depends on
