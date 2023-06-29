@@ -6,15 +6,15 @@
   align-items: center;
 }
 
-:host([size='sm']) {
-  ::slotted(*) {
-    gap: 6px;
-  }
-}
-
-:host([size='lg']) {
+:host {
   ::slotted(*) {
     gap: 8px;
+  }
+
+  &[size='sm'] {
+    ::slotted(*) {
+      gap: 6px;
+    }
   }
 }
 
