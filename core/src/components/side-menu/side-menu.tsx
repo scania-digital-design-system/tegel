@@ -28,6 +28,14 @@ const GRID_LG_BREAKPOINT = '992px';
 const OPENING_ANIMATION_DURATION = 400;
 const INITIALIZE_ANIMATION_DELAY = 500;
 
+/**
+ * @slot overlay - Used of injection of tds-side-menu-overlay
+ * @slot close-button - Used for injection of tds-side-menu-close-button that is show when in mobile view
+ * @slot UNNAMED-SLOT - Used for nesting upper/top content in Side menu
+ * @slot end - Used for items that are presented at the bottom of the side menu, eg. profile settings
+ * @slot sticky-end - Used for tds-side-menu-collapse-button component
+ * */
+
 @Component({
   tag: 'tds-side-menu',
   styleUrl: 'side-menu.scss',
@@ -192,6 +200,7 @@ export class TdsSideMenu {
             <slot name="close-button"></slot>
             <div class="tds-side-menu-wrapper">
               <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
+                {/* FIXME: Change to start-end, top-bottom and name the slot */}
                 <slot></slot>
               </ul>
               <ul class={`tds-side-menu-list tds-side-menu-list-end`}>
