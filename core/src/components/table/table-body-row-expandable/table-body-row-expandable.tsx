@@ -17,6 +17,10 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'noMinWidth',
   'modeVariant',
 ];
+
+/**
+ * @slot expand-row - Slot for the expanded row.
+ */
 @Component({
   tag: 'tds-table-body-row-expandable',
   styleUrl: 'table-body-row-expandable.scss',
