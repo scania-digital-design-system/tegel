@@ -87,7 +87,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant }) => {
         Lorem ipsum doler sit amet.
       </tds-accordion-item>
       <tds-accordion-item ${affixAttr} ${disabledAttr} ${paddingResetAttr} expanded>
-        <div slot="accordion-item-header">Second item</div>
+        <div slot="header">Second item</div>
         This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet vestibulum fermentum.
       </tds-accordion-item>
