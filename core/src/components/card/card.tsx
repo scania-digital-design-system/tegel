@@ -2,7 +2,7 @@ import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil
 import { hasSlot } from '../../utils/utils';
 
 /**
- * @slto header - Slot for the Card header.
+ * @slot header - Slot for the Card header.
  * @slot subheader - Slot for the Card subheader.
  * @slot thumbnail - Slot for the Card thumbnail.
  * @slot body - Slot for the body section of the Card.
