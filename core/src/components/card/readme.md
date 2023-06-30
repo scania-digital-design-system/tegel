@@ -34,6 +34,7 @@
 | `"body"`       | Slot for the body section of the Card.                 |
 | `"body-image"` | Slot for the body section of the Card, used for image. |
 | `"bottom"`     | Slot for the bottom section of the Card.               |
+| `"header"`     | Slot for the Card header.                              |
 | `"subheader"`  | Slot for the Card subheader.                           |
 | `"thumbnail"`  | Slot for the Card thumbnail.                           |
 
