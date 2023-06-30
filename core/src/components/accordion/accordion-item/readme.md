@@ -36,6 +36,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot       | Description                         |
+| ---------- | ----------------------------------- |
+| `"header"` | Slot for the Accordion Item header. |
+
+
 ## Dependencies
 
 ### Depends on
