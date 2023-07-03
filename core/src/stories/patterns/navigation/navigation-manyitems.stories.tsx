@@ -230,7 +230,7 @@ const Template = ({ dummyHtml }) =>
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-collapse-button slot="sticky-end" onclick="demoSideMenu.collapsed = !demoSideMenu.collapsed;"></tds-side-menu-collapse-button>
+        <tds-side-menu-collapse-button slot="sticky-end"></tds-side-menu-collapse-button>
 
       </tds-side-menu>
 
