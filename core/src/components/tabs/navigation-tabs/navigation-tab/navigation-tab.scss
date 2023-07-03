@@ -52,8 +52,11 @@
     margin-right: auto;
     height: 2px;
     background-color: var(--tds-navigation-tabs-tab-indicator-background-hover);
-    transition: width 0.15s ease-in-out 0s;
     z-index: 1;
+  }
+
+  .navigation-tab-item:hover::after {
+    transition: width 0.15s ease-in-out 0s;
   }
 
   .selected {
