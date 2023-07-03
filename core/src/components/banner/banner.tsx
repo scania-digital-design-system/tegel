@@ -64,13 +64,13 @@ export class TdsBanner {
   /** Hides the Banner. */
   @Method()
   async hideBanner() {
-    this.handleClose();
+    this.hidden = true;
   }
 
   /** Shows the Banner */
   @Method()
   async showBanner() {
-    this.handleShow();
+    this.hidden = false;
   }
 
   connectedCallback() {
