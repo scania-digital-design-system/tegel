@@ -50,8 +50,10 @@
         letter-spacing: var(--tds-detail-02-ls);
       }
 
-      tds-icon {
-        padding-right: 8px;
+      &.error {
+        .message-header {
+          color: var(--tds-negative);
+        }
       }
     }
   }
