@@ -36,13 +36,13 @@ export class TdsToast {
   /** Hides the Toast. */
   @Method()
   async hideToast() {
-    this.handleClose();
+    this.hidden = true;
   }
 
   /** Shows the Toast. */
   @Method()
   async showToast() {
-    this.handleShow();
+    this.hidden = false;
   }
 
   /** Sends unique Toast identifier when component is closed. */
