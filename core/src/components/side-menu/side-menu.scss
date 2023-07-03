@@ -4,11 +4,6 @@
 @import '../../mixins/z-index';
 @import '../../global/variables';
 
-:host([open]) {
-  pointer-events: auto;
-  z-index: tds-z-index(header) + 1;
-}
-
 :host {
   pointer-events: none;
   display: block;
@@ -70,6 +65,11 @@
 }
 
 @media (min-width: $grid-lg) {
+  :host([open]) {
+    pointer-events: auto;
+    z-index: tds-z-index(header) + 1;
+  }
+
   :host([persistent]) {
     pointer-events: auto;
     position: static;
