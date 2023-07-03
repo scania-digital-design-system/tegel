@@ -171,7 +171,7 @@ const FilteringTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body ${useDataProp ? `body-data='${JSON.stringify(dummyData)}'` : ''}>
+          <tds-table-body no-result-message="The query did not match any data." ${useDataProp ? `body-data='${JSON.stringify(dummyData)}'` : ''}>
             ${
               !useDataProp
                 ? dummyData

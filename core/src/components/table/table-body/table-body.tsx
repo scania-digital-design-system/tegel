@@ -12,6 +12,7 @@ import {
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { hasSlot } from '../../../utils/utils';
 
 const jsonData = [
   {
@@ -63,6 +64,11 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableExpandableRows',
 ];
 
+
+/**
+ * @slot default - Slot for <tds-table-body-row>
+ * @slot no-result - Slot for no result message when using filtering.
+*/
 @Component({
   tag: 'tds-table-body',
   styleUrl: 'table-body.scss',
@@ -74,6 +80,9 @@ export class TdsTableBody {
 
   /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
   @Prop() enableDummyData: boolean = false;
+
+  /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
+  @Prop() noResultMessage: string;
 
   @State() jsonData: any = JSON.stringify(jsonData);
 
@@ -264,7 +273,7 @@ export class TdsTableBody {
   searchFunction(searchTerm) {
     // grab all rows in body
     const dataRowsFiltering = this.host.querySelectorAll('tds-table-body-row');
-
+    
     if (searchTerm.length > 0) {
       if (this.enablePaginationTableBody) {
         this.tempPaginationDisable = true;
@@ -293,7 +302,6 @@ export class TdsTableBody {
 
       this.disableAllSorting = true;
       this.internalTdsSortingChange.emit([this.tableId, this.disableAllSorting]);
-
       const dataRowsHidden = this.host.querySelectorAll('.tds-table__row--hidden');
 
       // If same, an info message will be shown
@@ -302,14 +310,16 @@ export class TdsTableBody {
       if (this.enablePaginationTableBody) {
         this.tempPaginationDisable = false;
       }
-
+      
+      
       // If pagination is NOT enabled, we show all rows.
       if (!this.enablePaginationTableBody) {
         dataRowsFiltering.forEach((item) => {
           item.classList.remove('tds-table__row--hidden');
         });
       }
-
+      
+      this.showNoResultsMessage = false;
       this.disableAllSorting = false;
       this.internalTdsSortingChange.emit([this.tableId, this.disableAllSorting]);
     }
@@ -367,13 +377,12 @@ export class TdsTableBody {
             ))}
           </tds-table-body-row>
         ))}
-        {this.showNoResultsMessage && (
-          <tr>
+          <tr hidden={!this.showNoResultsMessage}>
             <td class="tds-table__info-message" colSpan={this.columnsNumber}>
-              Unfortunately, no data matches your search term &#128533;
+              <slot name="no-result"/>
+              {this.noResultMessage}
             </td>
           </tr>
-        )}
         <slot></slot>
       </Host>
     );
