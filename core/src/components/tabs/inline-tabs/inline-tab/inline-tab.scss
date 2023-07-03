@@ -28,6 +28,11 @@
     @include tds-focus-state;
   }
 
+  .inline-tab-item:not(.selected)::after {
+    width: 0%;
+    transition: width 0.15s ease-in-out 0s;
+  }
+
   .inline-tab-item {
     position: relative;
     margin-right: 32px;
@@ -53,10 +58,6 @@
     height: 2px;
     background-color: var(--tds-inline-tabs-tab-indicator-background-hover);
     z-index: 1;
-  }
-
-  .inline-tab-item:hover::after {
-    transition: width 0.15s ease-in-out 0s;
   }
 
   .selected {
