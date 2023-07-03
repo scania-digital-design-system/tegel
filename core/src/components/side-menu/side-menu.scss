@@ -4,11 +4,6 @@
 @import '../../mixins/z-index';
 @import '../../global/variables';
 
-:host([open]) {
-  pointer-events: auto;
-  z-index: tds-z-index(header) + 1;
-}
-
 :host {
   pointer-events: none;
   display: block;
@@ -66,6 +61,13 @@
       border-top: none;
       border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
     }
+  }
+}
+
+@media (max-width: $grid-lg) {
+  :host([open]) {
+    pointer-events: auto;
+    z-index: tds-z-index(header) + 1;
   }
 }
 
