@@ -34,6 +34,20 @@
       color: var(--tds-folder-tab-item-color);
     }
 
+    &.disabled {
+      ::slotted(*) {
+        color: var(--tds-folder-tab-item-color-disabled);
+
+        &:focus-visible {
+          outline: none;
+        }
+
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+    }
+
     &:hover {
       background-color: var(--tds-folder-tab-background-hover);
       cursor: pointer;
@@ -47,18 +61,6 @@
 
   ::slotted(*:focus-visible) {
     @include tds-focus-state;
-  }
-
-  .disabled {
-    pointer-events: none;
-
-    ::slotted(*) {
-      color: var(--tds-folder-tab-item-color-disabled);
-    }
-
-    &:focus-visible {
-      outline: none;
-    }
   }
 
   .selected {
