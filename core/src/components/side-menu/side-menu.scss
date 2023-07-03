@@ -64,6 +64,13 @@
   }
 }
 
+@media (max-width: $grid-lg) {
+  :host([open]) {
+    pointer-events: auto;
+    z-index: tds-z-index(header) + 1;
+  }
+}
+
 @media (min-width: $grid-lg) {
   :host([persistent]) {
     pointer-events: auto;
