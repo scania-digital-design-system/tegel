@@ -52,13 +52,13 @@ export class TdsModal {
   /** Shows the Modal.  */
   @Method()
   async showModal() {
-    this.isShown = true;
+    this.handleShow();
   }
 
   /** Closes the Modal. */
   @Method()
   async closeModal() {
-    this.isShown = false;
+    this.handleClose();
   }
 
   /** Emits when the Modal is closed. */
@@ -84,7 +84,8 @@ export class TdsModal {
     }
   }
 
-  handleClose = (event) => {
+  /** Emits a close event and then close the Modal if it is not prevented. */
+  handleClose = (event?) => {
     const closeEvent = this.tdsClose.emit(event);
     if (!closeEvent.defaultPrevented) {
       this.isShown = false;
@@ -157,13 +158,7 @@ export class TdsModal {
           <div class="header">
             {this.header && <div class="header">{this.header}</div>}
             {usesHeaderSlot && <slot name="header"></slot>}
-            <button
-              class="tds-modal-close"
-              aria-label="close"
-              onClick={(event) => {
-                this.handleClose(event);
-              }}
-            >
+            <button class="tds-modal-close" aria-label="close" onClick={() => this.handleClose()}>
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           </div>
