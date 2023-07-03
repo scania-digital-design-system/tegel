@@ -74,10 +74,11 @@ export default {
         defaultValue: { summary: 'lg' },
       },
     },
-    placeholder: {
-      name: 'Placeholder',
-      type: 'string',
-      description: 'Placeholder text when no option is selected',
+    labelText: {
+      name: 'Label text',
+      control: 'text',
+      description: 'Label text helps to describe what the Dropdown contains',
+      if: { arg: 'labelPosition', neq: 'None' },
     },
     labelPosition: {
       name: 'Label position',
@@ -90,11 +91,15 @@ export default {
         defaultValue: { summary: 'null' },
       },
     },
-    labelText: {
-      name: 'Label text',
+    helperText: {
+      name: 'Helper text',
+      description: 'Helper text assists the user with additional information about the Dropdown.',
       control: 'text',
-      description: 'Label text helps to describe what the Dropdown contains',
-      if: { arg: 'labelPosition', neq: 'None' },
+    },
+    placeholder: {
+      name: 'Placeholder',
+      type: 'string',
+      description: 'Placeholder text when no option is selected',
     },
     disabled: {
       name: 'Disabled',
@@ -106,10 +111,18 @@ export default {
         defaultValue: { summary: 'false' },
       },
     },
-    helperText: {
-      name: 'Helper text',
-      description: 'Helper text assists the user with additional information about the Dropdown.',
-      control: 'text',
+    openDirection: {
+      name: 'Open direction',
+      description: 'The direction the Dropdown will open.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Auto', 'Up', 'Down'],
+      table: {
+        summary: {
+          defaultValue: 'auto',
+        },
+      },
     },
     optionType: {
       name: 'Option type',
@@ -135,19 +148,6 @@ export default {
       },
       options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       if: { arg: 'multiselect', eq: true },
-    },
-    openDirection: {
-      name: 'Open direction',
-      description: 'The direction the Dropdown will open.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Auto', 'Up', 'Down'],
-      table: {
-        summary: {
-          defaultValue: 'auto',
-        },
-      },
     },
   },
   args: {
