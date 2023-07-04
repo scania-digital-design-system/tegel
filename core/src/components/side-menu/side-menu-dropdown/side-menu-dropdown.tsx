@@ -4,7 +4,7 @@ import { CollapseEvent } from '../side-menu';
 /**
  * @slot button-icon - Used for injecting the icon that compliments the dropdown title
  * @slot button-label - Used for injecting the text, aka dropdown title
- * @slot UNNAMED-SLOT - Used for nesting another side-menu subcomponent
+ * @slot <default>  - <b>Unnamed slot.</b> Used for injection of <code>tds-side-menu-dropdown-list</code> subcomponent
  * */
 @Component({
   tag: 'tds-side-menu-dropdown',

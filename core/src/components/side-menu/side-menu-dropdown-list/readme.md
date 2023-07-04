@@ -7,9 +7,9 @@
 
 ## Slots
 
-| Slot | Description                                                                        |
-| ---- | ---------------------------------------------------------------------------------- |
-|      | UNNAMED-SLOT - Used for injection of tds-side-menu-dropdown-list-item subcomponent |
+| Slot          | Description                                                                                           |
+| ------------- | ----------------------------------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> Used for injection of <code>tds-side-menu-dropdown-list-item</code> subcomponent |
 
 
 ----------------------------------------------
