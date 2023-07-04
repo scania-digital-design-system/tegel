@@ -66,7 +66,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 
 
 /**
- * @slot default - Slot for <tds-table-body-row>
+ * @slot default - Default slot for the Table Body, used by <tds-table-body-row>
  * @slot no-result - Slot for no result message when using filtering.
 */
 @Component({
