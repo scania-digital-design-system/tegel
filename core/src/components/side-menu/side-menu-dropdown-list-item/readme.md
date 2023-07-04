@@ -14,9 +14,9 @@
 
 ## Slots
 
-| Slot | Description                                                                    |
-| ---- | ------------------------------------------------------------------------------ |
-|      | UNNAMED-SLOT - Used for injecting a native HTML elements like a link or button |
+| Slot          | Description                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> Used for injecting native <code>button</code> and <code>link</code> elements |
 
 
 ----------------------------------------------
