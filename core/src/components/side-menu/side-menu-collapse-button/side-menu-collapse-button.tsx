@@ -2,7 +2,7 @@ import { Component, Element, h, Host, Listen, State, Event, EventEmitter } from 
 import { CollapseEvent } from '../side-menu';
 
 /**
- * @slot UNNAMED-SLOT - IS IT REALLY NEEDED?
+ * @slot <default>  - <b>Unnamed slot.</b> Used for injecting text presented in collapse button
  * */
 
 @Component({

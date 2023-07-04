@@ -14,9 +14,9 @@
 
 ## Slots
 
-| Slot             | Description          |
-| ---------------- | -------------------- |
-| `"UNNAMED-SLOT"` | IS IT REALLY NEEDED? |
+| Slot          | Description                                                               |
+| ------------- | ------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> Used for injecting text presented in collapse button |
 
 
 ## Dependencies
