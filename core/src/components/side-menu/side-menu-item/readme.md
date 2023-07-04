@@ -15,9 +15,9 @@
 
 ## Slots
 
-| Slot | Description                                                       |
-| ---- | ----------------------------------------------------------------- |
-|      | UNNAMED-SLOT - used for injecting native button and link elements |
+| Slot          | Description                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> Used for injecting native <code>button</code> and <code>link</code> elements |
 
 
 ## Dependencies
