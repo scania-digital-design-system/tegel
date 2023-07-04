@@ -16,6 +16,13 @@
 | `type`        | `type`         | Type of Message.                                 | `"error" \| "information" \| "success" \| "warning"` | `'information'` |
 
 
+## Slots
+
+| Slot          | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `"<default>"` | Default slot for the extended message section. |
+
+
 ## Dependencies
 
 ### Depends on
