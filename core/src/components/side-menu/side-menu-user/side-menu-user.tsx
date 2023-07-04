@@ -1,8 +1,10 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
 /**
- * @slot image - Used as alternative to imgSrc and imgAlt props. Offers injecting <code>HTML</code> directly into a component.
+ * @slot <default> -
+ * <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.
  * */
+
 @Component({
   tag: 'tds-side-menu-user',
   styleUrl: 'side-menu-user.scss',
