@@ -48,7 +48,7 @@
       }
     }
 
-    &:hover {
+    &:hover:not(.disabled) {
       background-color: var(--tds-folder-tab-background-hover);
       cursor: pointer;
 
