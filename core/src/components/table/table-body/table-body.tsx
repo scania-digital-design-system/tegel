@@ -81,7 +81,7 @@ export class TdsTableBody {
   /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
   @Prop() enableDummyData: boolean = false;
 
-  /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
+  /** Prop for no result message when using filtering */
   @Prop() noResultMessage: string;
 
   @State() jsonData: any = JSON.stringify(jsonData);
