@@ -5,7 +5,8 @@ import { Component, h, Host, Prop } from '@stencil/core';
 // FIXME: Can the logic for it be directly integrated in side-menu-user instead?
 
 /**
- * @slot UNNAMED-SLOT - TO BE CHECKED IF IT IS NEEDED
+ * @slot <default> -
+ * <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.
  * */
 
 @Component({

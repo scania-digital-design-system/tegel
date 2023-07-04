@@ -1,12 +1,10 @@
 import readme from './readme.md';
 import { formatHtmlPreview } from '../../utils/utils';
-import readmeSideMenuCloseButton from './side-menu-close-button/readme.md';
-import readmeSideMenuOverlay from './side-menu-overlay/readme.md';
+
 import readmeSideMenuUser from './side-menu-user/readme.md';
 import readmeSideMenuCollapseButton from './side-menu-collapse-button/readme.md';
 import readmeSideMenuDropdown from './side-menu-dropdown/readme.md';
 import readmeSideMenuItem from './side-menu-item/readme.md';
-import readmeSideMenuDropdownList from './side-menu-dropdown-list/readme.md';
 import readmeSideMenuDropdownListItem from './side-menu-dropdown-list-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
@@ -15,15 +13,11 @@ export default {
   parameters: {
     notes: {
       'Side Menu': readme,
-      'Side Menu Close Button': readmeSideMenuCloseButton,
-      'Side Menu Overlay': readmeSideMenuOverlay,
       'Side Menu User': readmeSideMenuUser,
       'Side Menu Collapse Button': readmeSideMenuCollapseButton,
       'Side Menu Dropdown': readmeSideMenuDropdown,
-      'Side Menu Dropdown List': readmeSideMenuDropdownList,
       'Side Menu Dropdown List Item': readmeSideMenuDropdownListItem,
       'Side Menu Item': readmeSideMenuItem,
-      'Side Menu Collapse Button': readmeSideMenuCollapseButton,
     },
     layout: 'fullscreen',
     docs: {

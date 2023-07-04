@@ -15,9 +15,9 @@
 
 ## Slots
 
-| Slot             | Description                   |
-| ---------------- | ----------------------------- |
-| `"UNNAMED-SLOT"` | TO BE CHECKED IF IT IS NEEDED |
+| Slot                                                                                                                            | Description |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `"<default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM."` |             |
 
 
 ## Dependencies
