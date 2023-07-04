@@ -41,15 +41,15 @@ export class TdsMessage {
       <Host>
         <div
           class={`
-        message-wrapper ${this.type}
-        ${this.minimal ? 'message-minimal' : ''}
+        wrapper ${this.type}
+        ${this.minimal ? 'minimal' : ''}
         ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
         >
           {!this.noIcon && <tds-icon name={this.getIconName()} size="20px"></tds-icon>}
-          <div class={`message-content`}>
-            {this.header && <div class="message-header">{this.header}</div>}
+          <div class={`content`}>
+            {this.header && <div class="header">{this.header}</div>}
             {!this.minimal && (
-              <div class="message-extended-message">
+              <div class="extended-message">
                 <slot></slot>
               </div>
             )}
