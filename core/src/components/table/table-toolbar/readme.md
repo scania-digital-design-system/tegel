@@ -24,7 +24,7 @@
 
 | Slot    | Description                                         |
 | ------- | --------------------------------------------------- |
-| `"end"` | Slot for the end (right side) of the Table Toolbar. |
+| `"end"` | Slot the end (right side) of the Table Toolbar. |
 
 
 ## Dependencies

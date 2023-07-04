@@ -1,5 +1,5 @@
 :host {
-  .wrapper {
+  .message-wrapper {
     display: flex;
     padding: 16px;
     background-color: var(--tds-message-background);
@@ -38,20 +38,20 @@
       }
     }
 
-    &.minimal {
+    &.message-minimal {
       border: none;
       display: flex;
       align-items: center;
       padding: 0;
       background-color: transparent;
 
-      .header {
+      .message-header {
         font: var(--tds-detail-02);
         letter-spacing: var(--tds-detail-02-ls);
       }
 
       &.error {
-        .header {
+        .message-header {
           color: var(--tds-negative);
         }
       }
@@ -62,19 +62,19 @@
     padding-right: 16px;
   }
 
-  .content {
+  .message-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
     color: var(--tds-message-color);
     padding: 2px 0;
 
-    .header {
+    .message-header {
       font: var(--tds-headline-07);
       letter-spacing: var(--tds-headline-07-ls);
     }
 
-    .extended-message {
+    .message-extended-message {
       color: var(--tds-message-color);
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
