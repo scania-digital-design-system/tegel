@@ -17,9 +17,9 @@
 
 ## Slots
 
-| Slot      | Description                                                                                                   |
-| --------- | ------------------------------------------------------------------------------------------------------------- |
-| `"image"` | Used as alternative to imgSrc and imgAlt props. Offers injecting <code>HTML</code> directly into a component. |
+| Slot                                                                                                                            | Description |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `"<default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM."` |             |
 
 
 ## Dependencies
