@@ -12,6 +12,13 @@
 | `tdsCollapse` | Event that is broadcast when the collapse button is clicked. Prevent it from disabling automatic collapsing, and set the collapsed prop on the Side Menu yourself. | `CustomEvent<{ collapsed: boolean; }>` |
 
 
+## Slots
+
+| Slot          | Description                                                               |
+| ------------- | ------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> Used for injecting text presented in collapse button |
+
+
 ## Dependencies
 
 ### Depends on

@@ -14,6 +14,15 @@
 | `selected`    | `selected`     | If the button that opens the dropdown should appear selected.                                     | `boolean` | `false`     |
 
 
+## Slots
+
+| Slot             | Description                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------ |
+| `"<default>"`    | <b>Unnamed slot.</b> Used for injection of <code>tds-side-menu-dropdown-list</code> subcomponent |
+| `"button-icon"`  | Used for injecting the icon that compliments the dropdown title                                  |
+| `"button-label"` | Used for injecting the text, aka dropdown title                                                  |
+
+
 ## Dependencies
 
 ### Depends on
