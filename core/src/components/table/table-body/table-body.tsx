@@ -297,7 +297,9 @@ export class TdsTableBody {
       this[tablePropName] = this.tableEl[tablePropName];
     });
 
-    this.arrayDataWatcher(this.bodyData);
+    if(this.bodyData){
+      this.arrayDataWatcher(this.bodyData);
+    }
   }
 
   componentWillRender() {

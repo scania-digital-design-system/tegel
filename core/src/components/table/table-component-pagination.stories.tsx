@@ -173,7 +173,7 @@ const PaginationTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body body-data='${JSON.stringify(dummyData)}'>
+          <tds-table-body>
           </tds-table-body>
           <tds-table-footer pagination rows-per-page="${rowsPerPageControl}"></tds-table-footer>
   </tds-table>
@@ -183,6 +183,53 @@ const PaginationTemplate = ({
     document.addEventListener('tdsPageChange', (event) => {
       console.log(event)
     })
+
+    /* ONLY WORKS IN THE CANVAS TAB. */
+    tableBody = document.querySelector('tds-table-body');
+    tableBody.bodyData = [
+      {
+        "truck": "L-series",
+        "driver": "Sonya Bruce",
+        "country": "Brazil",
+        "mileage": 123987
+      },
+      {
+        "truck": "P-series",
+        "driver": "Guerra Bowman",
+        "country": "Sweden",
+        "mileage": 2000852
+      },
+      {
+        "truck": "G-series",
+        "driver": "Ferrell Wallace",
+        "country": "Germany",
+        "mileage": 564
+      },
+      {
+        "truck": "R-series",
+        "driver": "Cox Burris",
+        "country": "Spain",
+        "mileage": 1789357
+      },
+      {
+        "truck": "S-series",
+        "driver": "Montgomery Cervantes",
+        "country": "Croatia",
+        "mileage": 65
+      },
+      {
+        "truck": "L-series",
+        "driver": "Sheryl Nielsen",
+        "country": "Greece",
+        "mileage": 365784
+      },
+      {
+        "truck": "G-series",
+        "driver": "Benton Gomez",
+        "country": "France",
+        "mileage": 80957
+      }
+    ]
   </script>
   
   `);
