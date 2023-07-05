@@ -34,6 +34,7 @@
  - [tds-slider](../slider)
  - [tds-step](../stepper/step)
  - [tds-table-footer](../table/table-footer)
+ - [tds-table-toolbar](../table/table-toolbar)
  - [tds-text-field](../text-field)
  - [tds-textarea](../textarea)
  - [tds-toast](../toast)
@@ -60,6 +61,7 @@ graph TD;
   tds-slider --> tds-icon
   tds-step --> tds-icon
   tds-table-footer --> tds-icon
+  tds-table-toolbar --> tds-icon
   tds-text-field --> tds-icon
   tds-textarea --> tds-icon
   tds-toast --> tds-icon

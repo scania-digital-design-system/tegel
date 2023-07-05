@@ -11,6 +11,15 @@
 | ----------------- | ------------------- | ---------------------------------------------------------------------------------- | --------- | ----------- |
 | `bodyData`        | `body-data`         | Prop to pass JSON string which enables automatic rendering of Table rows and cells | `any`     | `undefined` |
 | `enableDummyData` | `enable-dummy-data` | Prop for showcase of rendering JSON in body-data, just for presentation purposes   | `boolean` | `false`     |
+| `noResultMessage` | `no-result-message` | Prop for no result message when using filtering                                    | `string`  | `undefined` |
+
+
+## Slots
+
+| Slot          | Description                                                   |
+| ------------- | ------------------------------------------------------------- |
+| `"default"`   | Default slot for the Table Body, used by <tds-table-body-row> |
+| `"no-result"` | Slot for no result message when using filtering.              |
 
 
 ## Dependencies
