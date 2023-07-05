@@ -73,10 +73,21 @@
 
   .disabled {
     color: var(--tds-inline-tabs-tab-color-disabled);
-    pointer-events: none;
 
     ::slotted(*) {
       opacity: var(--tds-inline-tabs-tab-color-opacity-disabled);
+    }
+
+    &::after {
+      content: none;
+    }
+
+    ::slotted(*:hover) {
+      cursor: not-allowed;
+    }
+
+    ::slotted(*:focus-visible) {
+      outline: none;
     }
   }
 }

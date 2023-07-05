@@ -34,7 +34,7 @@
       color: var(--tds-folder-tab-item-color);
     }
 
-    &:hover {
+    &:hover:not(.disabled) {
       background-color: var(--tds-folder-tab-background-hover);
       cursor: pointer;
 
@@ -43,21 +43,23 @@
         color: var(--tds-folder-tab-color);
       }
     }
-  }
 
-  ::slotted(*:focus-visible) {
-    @include tds-focus-state;
-  }
+    &.disabled {
+      ::slotted(*) {
+        color: var(--tds-folder-tab-item-color-disabled);
+      }
 
-  .disabled {
-    pointer-events: none;
+      ::slotted(*:focus-visible) {
+        outline: none;
+      }
 
-    ::slotted(*) {
-      color: var(--tds-folder-tab-item-color-disabled);
-    }
+      ::slotted(*:hover) {
+        cursor: not-allowed;
+      }
 
-    &:focus-visible {
-      outline: none;
+      ::slotted(*::after) {
+        content: none;
+      }
     }
   }
 

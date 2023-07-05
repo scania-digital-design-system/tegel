@@ -83,7 +83,7 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
         <a href="#">Third tab</a>
       </tds-navigation-tab>
       <tds-navigation-tab disabled>
-        <a href="#">Fourth tab</a>
+        <a href="javascript:void(0)">Fourth tab</a>
       </tds-navigation-tab>
     </tds-navigation-tabs>
 
