@@ -201,7 +201,6 @@ export class TdsSideMenu {
             <slot name="close-button"></slot>
             <div class="tds-side-menu-wrapper">
               <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
-                {/* FIXME: Change to start-end, top-bottom and name the slot */}
                 <slot></slot>
               </ul>
               <ul class={`tds-side-menu-list tds-side-menu-list-end`}>
