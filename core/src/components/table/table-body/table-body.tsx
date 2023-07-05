@@ -12,52 +12,6 @@ import {
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
-import { hasSlot } from '../../../utils/utils';
-
-const jsonData = [
-  {
-    truck: 'L-series',
-    driver: 'Sonya Bruce',
-    country: 'Brazil',
-    mileage: 123987,
-  },
-  {
-    truck: 'P-series',
-    driver: 'Guerra Bowman',
-    country: 'Sweden',
-    mileage: 2000852,
-  },
-  {
-    truck: 'G-series',
-    driver: 'Ferrell Wallace',
-    country: 'Germany',
-    mileage: 564,
-  },
-  {
-    truck: 'R-series',
-    driver: 'Cox Burris',
-    country: 'Spain',
-    mileage: 1789357,
-  },
-  {
-    truck: 'S-series',
-    driver: 'Montgomery Cervantes',
-    country: 'Croatia',
-    mileage: 65,
-  },
-  {
-    truck: 'L-series',
-    driver: 'Sheryl Nielsen',
-    country: 'Greece',
-    mileage: 365784,
-  },
-  {
-    truck: 'G-series',
-    driver: 'Benton Gomez',
-    country: 'France',
-    mileage: 80957,
-  },
-];
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableMultiselect',
@@ -78,13 +32,8 @@ export class TdsTableBody {
   /** Prop to pass JSON string which enables automatic rendering of Table rows and cells  */
   @Prop({ mutable: true }) bodyData: any;
 
-  /** Prop for showcase of rendering JSON in body-data, just for presentation purposes */
-  @Prop() enableDummyData: boolean = false;
-
   /** Prop for no result message when using filtering */
   @Prop() noResultMessage: string;
-
-  @State() jsonData: any = JSON.stringify(jsonData);
 
   @Element() host: HTMLElement;
 
@@ -348,11 +297,7 @@ export class TdsTableBody {
       this[tablePropName] = this.tableEl[tablePropName];
     });
 
-    if (this.enableDummyData) {
-      this.bodyData = this.jsonData;
-    } else if (this.bodyData) {
-      this.arrayDataWatcher(this.bodyData);
-    }
+    this.arrayDataWatcher(this.bodyData);
   }
 
   componentWillRender() {

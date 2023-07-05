@@ -9,6 +9,7 @@ import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
+import dummyData from './table-body/dummy-data.json';
 
 export default {
   title: `${ComponentsFolder}/Table`,
@@ -198,7 +199,7 @@ const MultiselectTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body enable-dummy-data>
+          <tds-table-body body-data='${JSON.stringify(dummyData)}'>
           </tds-table-body>
   </tds-table>
 

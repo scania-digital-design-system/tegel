@@ -9,6 +9,7 @@ import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
+import dummyData from './table-body/dummy-data.json';
 
 export default {
   title: `${ComponentsFolder}/Table`,
@@ -179,7 +180,7 @@ const BatchActionTemplate = ({
                 column4Width ? `style="width: ${column4Width};"` : ''
               } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
           </tds-table-header>
-          <tds-table-body enable-dummy-data>
+          <tds-table-body body-data='${JSON.stringify(dummyData)}'>
           </tds-table-body>
   </tds-table>`);
 
