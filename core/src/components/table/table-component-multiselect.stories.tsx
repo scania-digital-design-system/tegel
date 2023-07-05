@@ -9,6 +9,7 @@ import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
+import dummyData from './table-body/dummy-data.json';
 
 export default {
   title: `${ComponentsFolder}/Table`,
@@ -198,9 +199,57 @@ const MultiselectTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body enable-dummy-data>
+          <tds-table-body>
           </tds-table-body>
   </tds-table>
+  <script>
+  /* ONLY WORKS IN THE CANVAS TAB. */
+  tableBody = document.querySelector('tds-table-body');
+  tableBody.bodyData = [
+    {
+      "truck": "L-series",
+      "driver": "Sonya Bruce",
+      "country": "Brazil",
+      "mileage": 123987
+    },
+    {
+      "truck": "P-series",
+      "driver": "Guerra Bowman",
+      "country": "Sweden",
+      "mileage": 2000852
+    },
+    {
+      "truck": "G-series",
+      "driver": "Ferrell Wallace",
+      "country": "Germany",
+      "mileage": 564
+    },
+    {
+      "truck": "R-series",
+      "driver": "Cox Burris",
+      "country": "Spain",
+      "mileage": 1789357
+    },
+    {
+      "truck": "S-series",
+      "driver": "Montgomery Cervantes",
+      "country": "Croatia",
+      "mileage": 65
+    },
+    {
+      "truck": "L-series",
+      "driver": "Sheryl Nielsen",
+      "country": "Greece",
+      "mileage": 365784
+    },
+    {
+      "truck": "G-series",
+      "driver": "Benton Gomez",
+      "country": "France",
+      "mileage": 80957
+    }
+  ]
+</script>
 
   <!-- Note: Code below is just for demo purposes -->
   <div class="tds-u-mt1" style="width: 450px; background-color: lightblue; padding: 16px;">
@@ -208,6 +257,7 @@ const MultiselectTemplate = ({
     <h6 class="tds-u-pb0 tds-u-mb0 tds-u-mt0">Selected rows data</h6>
     <small>Values here are values found in data-selected-rows attribute of tds-table-body element. They are shown here just for presentation purposes.</small>
     <textarea id="selected-rows-value-textarea" rows="5" cols="50" readonly></textarea>
-  </div>`);
+  </div>
+  `);
 
 export const Multiselect = MultiselectTemplate.bind({});

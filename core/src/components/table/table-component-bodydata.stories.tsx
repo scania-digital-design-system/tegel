@@ -37,8 +37,48 @@ export default {
   },
   args: {
     bodyData: [
-      { truck: 'L-series', driver: 'Sonya Bruce' },
-      { truck: 'P-series', driver: 'Guerra Bowman' },
+      {
+        truck: 'L-series',
+        driver: 'Sonya Bruce',
+        country: 'Brazil',
+        mileage: 123987,
+      },
+      {
+        truck: 'P-series',
+        driver: 'Guerra Bowman',
+        country: 'Sweden',
+        mileage: 2000852,
+      },
+      {
+        truck: 'G-series',
+        driver: 'Ferrell Wallace',
+        country: 'Germany',
+        mileage: 564,
+      },
+      {
+        truck: 'R-series',
+        driver: 'Cox Burris',
+        country: 'Spain',
+        mileage: 1789357,
+      },
+      {
+        truck: 'S-series',
+        driver: 'Montgomery Cervantes',
+        country: 'Croatia',
+        mileage: 65,
+      },
+      {
+        truck: 'L-series',
+        driver: 'Sheryl Nielsen',
+        country: 'Greece',
+        mileage: 365784,
+      },
+      {
+        truck: 'G-series',
+        driver: 'Benton Gomez',
+        country: 'France',
+        mileage: 80957,
+      },
     ],
   },
 };
@@ -50,9 +90,17 @@ const DataPropertyTemplate = ({ bodyData }) =>
       <tds-table-header>
           <tds-header-cell column-key='truck' column-title='Truck type'></tds-header-cell>
           <tds-header-cell column-key='driver' column-title='Driver name'></tds-header-cell>
+          <tds-header-cell column-key='country' column-title='Country'></tds-header-cell>
+          <tds-header-cell column-key='milage' column-title='Milage'></tds-header-cell>
       </tds-table-header>
-      <tds-table-body body-data='${JSON.stringify(bodyData)}'>
+      <tds-table-body>
       </tds-table-body>
-  </tds-table>`);
+  </tds-table>
+  
+  <script>
+    /* ONLY WORKS IN THE CANVAS TAB. */
+    tableBody = document.querySelector('tds-table-body');
+    tableBody.bodyData = ${JSON.stringify(bodyData)}
+  </script>`);
 
 export const DataProperty = DataPropertyTemplate.bind({});
