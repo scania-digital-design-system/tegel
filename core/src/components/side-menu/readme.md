@@ -1,22 +1,5 @@
 # tds-side-menu
 
-### Side Menu is a component that consists of these sub-components:
-
- - side-menu-user-label
- - side-menu-user-image
- - side-menu-user
- - side-menu-overlay
- - side-menu-item
- - side-menu-dropdown
- - side-menu-dropdown-list
- - side-menu-dropdown-list-item
- - side-menu-collapse-button
- - side-menu-close-button
-
-Some of the upper mentioned subcomponents are not listed under <i>Notes</i> tab
-because either they are used only internally or they have no props or events but serve as wrappers.
-Their purpose is to improve code readability and present hierarchy structure.
-
 <!-- Auto Generated Below -->
 
 
