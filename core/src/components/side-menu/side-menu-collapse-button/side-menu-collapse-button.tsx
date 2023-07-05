@@ -1,6 +1,10 @@
 import { Component, Element, h, Host, Listen, State, Event, EventEmitter } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 
+/**
+ * @slot <default>  - <b>Unnamed slot.</b> Used for injecting text presented in collapse button
+ * */
+
 @Component({
   tag: 'tds-side-menu-collapse-button',
   styleUrl: 'side-menu-collapse-button.scss',

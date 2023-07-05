@@ -15,6 +15,13 @@
 | `subheading`           | `subheading` | The subheading text. | `string` | `undefined` |
 
 
+## Slots
+
+| Slot          | Description                                                                                                     |
+| ------------- | --------------------------------------------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM. |
+
+
 ## Dependencies
 
 ### Depends on

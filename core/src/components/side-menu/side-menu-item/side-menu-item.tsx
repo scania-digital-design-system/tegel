@@ -2,6 +2,9 @@ import { Component, h, Host, Element, Listen, Prop, State } from '@stencil/core'
 import { CollapseEvent } from '../side-menu';
 import { dfs } from '../../../utils/utils';
 
+/**
+ * @slot <default>  - <b>Unnamed slot.</b> Used for injecting native <code>button</code> and <code>link</code> elements
+ * */
 @Component({
   tag: 'tds-side-menu-item',
   styleUrl: 'side-menu-item.scss',
