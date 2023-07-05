@@ -4,7 +4,7 @@ import readmeStep from './step/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Stepper`,
   parameters: {
     layout: 'centered',
     design: [
@@ -100,4 +100,4 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
   </tds-stepper>
         `,
   );
-export const Stepper = Template.bind({});
+export const Default = Template.bind({});

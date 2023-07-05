@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Divider`,
   parameters: {
     layout: 'centered',
     notes: { Divider: readme },
@@ -63,4 +63,4 @@ const Template = ({ orientation, width, height }) =>
   </div>
 `);
 
-export const Divider = Template.bind({});
+export const Default = Template.bind({});

@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Block`,
   parameters: {
     layout: 'padded',
     notes: readme,
@@ -55,4 +55,4 @@ const Template = ({ modeVariant }) =>
     `,
   );
 
-export const Block = Template.bind({});
+export const Default = Template.bind({});

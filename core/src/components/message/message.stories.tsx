@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Message`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -117,4 +117,4 @@ const Template = ({ modeVariant, messageType, header, extendedMessage, minimal, 
     `,
   );
 
-export const Message = Template.bind({});
+export const Default = Template.bind({});

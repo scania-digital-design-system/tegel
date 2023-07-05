@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Spinner`,
   parameters: {
     layout: 'centered', // Center the component horizontally and vertically in the Canvas
     notes: readme,
@@ -64,4 +64,4 @@ const Template = ({ size, variant }) => {
   );
 };
 
-export const Spinner = Template.bind({});
+export const Default = Template.bind({});
