@@ -175,7 +175,6 @@ export class TdsTableBody {
 
   selectedDataExporter = () => {
     const selectedRows = this.host.getElementsByClassName('tds-table__row--selected');
-
     this.multiselectArray = [];
     for (let j = 0; j < selectedRows.length; j++) {
       const rowCells = selectedRows[j].getElementsByTagName('tds-body-cell');

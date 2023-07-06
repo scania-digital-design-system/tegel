@@ -198,16 +198,32 @@ const MultiselectTemplate = ({
     <h5 class="tds-u-mt0 tds-u-mb0">Event test box</h5>
     <h6 class="tds-u-mt1 tds-u-mb0">Event name:</h6>
     <textarea id="event-name-textarea" rows="1" cols="50" readonly></textarea>
+    <br><br>
     <h6 class="tds-u-mt0 tds-u-mb0">Events value (aka detail)</h6>
-    <br>
     <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
-  </div>
-  
+    <br><br>
+    <h6 class="tds-u-mt0 tds-u-mb0">Selected rows</h6>
+    <textarea  id="selected-rows-textarea" rows="4" cols="50" readonly></textarea>
+  </div>  
   <script>
   // Note: Script here is only for demo purposes
+
+  async function getSelectedRows() {
+    return await document.getElementById('multiselect-table').getSelectedRows().then((value) => value);
+  }
+
   window.addEventListener('tdsSelectAllChange', e => {
     document.getElementById('event-name-textarea').value = 'tdsSelectAllChange';
-    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail)
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+  });
+
+  window.addEventListener('tdsSelectChange', e => {
+    document.getElementById('event-name-textarea').value = 'tdsSelectChange';
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+
+    getSelectedRows().then(selectedRows => {
+      document.getElementById('selected-rows-textarea').value = selectedRows;
+    });
   });
 </script>
   `);

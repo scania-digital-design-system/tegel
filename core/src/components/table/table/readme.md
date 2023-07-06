@@ -19,6 +19,19 @@
 | `verticalDividers`     | `vertical-dividers`      | Enables style with vertical dividers between columns                                                                                                                                                                                        | `boolean`                  | `false`               |
 
 
+## Methods
+
+### `getSelectedRows() => Promise<string>`
+
+Returns all selected rows data in JSON
+
+#### Returns
+
+Type: `Promise<string>`
+
+
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

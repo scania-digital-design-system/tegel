@@ -20,11 +20,11 @@
   background-color: var(--tds-table-body-row-background-hover);
 }
 
-:host(.tds-table__row--selected) {
-  background-color: var(--tds-table-body-row-background-active);
+:host(.selected:hover) {
+  background-color: var(--tds-table-body-row-background-active-hover);
 }
 
-:host(.tds-table__row--selected:hover) {
+:host(.selected:hover) {
   background-color: var(--tds-table-body-row-background-active-hover);
 }
 
