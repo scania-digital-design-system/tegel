@@ -5,11 +5,18 @@
 <!-- Auto Generated Below -->
 
 
-## Slots
+## Properties
 
-| Slot          | Description                         |
-| ------------- | ----------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For the cells. |
+| Property   | Attribute  | Description | Type      | Default |
+| ---------- | ---------- | ----------- | --------- | ------- |
+| `selected` | `selected` |             | `boolean` | `false` |
+
+
+## Events
+
+| Event             | Description                                                                                                            | Type                                                  |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `tdsSelectChange` | Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control | `CustomEvent<{ tableId: string; checked: boolean; }>` |
 
 
 ## Dependencies

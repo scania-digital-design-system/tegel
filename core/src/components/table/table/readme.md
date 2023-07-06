@@ -19,11 +19,17 @@
 | `verticalDividers` | `vertical-dividers` | Enables style with vertical dividers between columns                                                                                                                                                                                        | `boolean`                  | `false`              |
 
 
-## Slots
+## Methods
 
-| Slot          | Description                                  |
-| ------------- | -------------------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For the table contents. |
+### `getSelectedRows() => Promise<string>`
+
+Returns all selected rows data in JSON
+
+#### Returns
+
+Type: `Promise<string>`
+
+
 
 
 ----------------------------------------------

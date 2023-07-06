@@ -126,6 +126,7 @@ export default {
     column4Width: '',
   },
 };
+//TODO: Check with Marting regarding tableId which goes to table-id, should we use attribute ID instead?
 
 const PaginationTemplate = ({
   modeVariant,
@@ -140,6 +141,7 @@ const PaginationTemplate = ({
 }) =>
   formatHtmlPreview(`
     <tds-table
+      table-id='pagination-table'
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
@@ -162,7 +164,7 @@ const PaginationTemplate = ({
           </tds-table-header>
           <tds-table-body>
           </tds-table-body>
-          <tds-table-footer default-page="2" pages="4" pagination></tds-table-footer>
+          <tds-table-footer pages="4" pagination></tds-table-footer>
   </tds-table>
   
 

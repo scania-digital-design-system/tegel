@@ -26,8 +26,8 @@ export class TdsTableFooter {
   /** Enable pagination and show pagination controls  */
   @Prop({ reflect: true }) pagination: boolean = false;
 
-  /** Sets the default page number. */
-  @Prop({ reflect: true }) defaultPage: number = 1;
+  /** Sets the pagination number. */
+  @Prop({ reflect: true, mutable: true }) paginationValue: number = 1;
 
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = null;
@@ -35,7 +35,7 @@ export class TdsTableFooter {
   /** @deprecated Used to set rows per page, this also enabled automatic pagination of the table. */
   @Prop({ reflect: true }) rowsPerPage: number;
 
-  /** <b>Client override</b> Used to set the number of columns, use as fallback if the automatic count of columns fail. */
+  /** <b>Client override</b> Used to set the number of columns, use as fallback if the automatic count of columns fails. */
   @Prop() cols: number = null;
 
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
@@ -44,11 +44,10 @@ export class TdsTableFooter {
   /** Total number of pages, number of the rows divided with number of rows per page */
   @State() numberOfPages: number = 0;
 
-  /** Temporarily disable pagination - due to search - set from parent level */
-  @State() tempPaginationDisable: boolean = false;
-
   /* Sets the footer to use compact design. */
   @State() compactDesign: boolean = false;
+
+  @State() lastCorrectValue: number;
 
   @State() tableId: string = '';
 
@@ -96,6 +95,8 @@ export class TdsTableFooter {
       this[tablePropName] = this.tableEl[tablePropName];
     });
 
+    this.storeLastCorrectValue(this.paginationValue);
+
     if (this.rowsPerPage) {
       /* Number of children which are <tds-table-body-row> */
       const numberOfRows = Array.from(
@@ -113,17 +114,26 @@ export class TdsTableFooter {
     }
   }
 
+  /* Function to store last valid input */
+  private storeLastCorrectValue(value) {
+    this.lastCorrectValue = value;
+  }
+
   private previousPage = () => {
+    /** If pages and greater or equal to 2, decrease pagination value.
+     * This is to not get under 1 in pagination value.  */
+    if (this.paginationValue >= 2) {
+      this.paginationValue--;
+    }
+
     /* Emits pagination event. */
     this.tdsPageChange.emit({
       tableId: this.tableId,
-      paginationValue: Number(this.inputElement.value) - 1,
+      paginationValue: Number(this.paginationValue),
     });
-    /** If pages and greater or equal to 2, decrease pagination value.
-     * This is to not get under 1 in pagination value.  */
-    if (this.defaultPage >= 2) {
-      this.defaultPage--;
-    }
+
+    this.storeLastCorrectValue(this.paginationValue);
+
     /* If the change event is not prevented -> do pagination. */
     if (!this.pages) {
       /* Decrease the pagination until the first page. */
@@ -132,16 +142,19 @@ export class TdsTableFooter {
   };
 
   private nextPage = () => {
+    /** If pages and greater or equal to the number of pages, increase pagination value.
+     * This is to not get above the number of pages in pagination value.  */
+    if (this.paginationValue <= (this.pages ?? this.numberOfPages)) {
+      this.paginationValue++;
+    }
+
     this.tdsPageChange.emit({
       tableId: this.tableId,
-      paginationValue: Number(this.inputElement.value) + 1,
+      paginationValue: Number(this.paginationValue),
     });
 
-    /** If pages and greater or equal to the amount of pages, increase pagination value.
-     * This is to not get above the amount of pages in pagination value.  */
-    if (this.defaultPage <= (this.pages ?? this.numberOfPages)) {
-      this.defaultPage++;
-    }
+    this.storeLastCorrectValue(this.paginationValue);
+
     /* If the change event is not prevented -> do pagination. */
     if (!this.pages) {
       /* Increase the pagination until the last page. */
@@ -150,19 +163,24 @@ export class TdsTableFooter {
   };
 
   private paginationInputChange(event) {
-    const insertedValue = event.target.value;
+    /* TODO: Inform colleagues, seems like the event.target.value is always considered a string */
+    const insertedValue = Number(event.target.value);
 
-    if (insertedValue > this.numberOfPages || insertedValue < 1) {
+    if (insertedValue > event.target.max || insertedValue < event.target.min) {
       event.target.classList.add('tds-table__page-selector-input--shake');
-      this.defaultPage = event.target.max;
+      this.inputElement.value = String(this.lastCorrectValue);
+      this.paginationValue = Number(this.inputElement.value);
     } else {
-      this.defaultPage = event.target.value;
+      this.paginationValue = insertedValue;
     }
     const paginationEvent = this.tdsPageChange.emit({
       tableId: this.tableId,
-      paginationValue: Number(this.inputElement.value) - 1,
+      paginationValue: Number(this.paginationValue),
     });
-    if (!paginationEvent.defaultPrevented) {
+
+    this.storeLastCorrectValue(this.paginationValue);
+
+    if (!paginationEvent.defaultPrevented || !this.pages) {
       this.runPagination();
     }
   }
@@ -186,16 +204,12 @@ export class TdsTableFooter {
         // for making logic easier 1st result, 2nd result...
         const index = i + 1;
 
-        if (this.tempPaginationDisable) {
-          this.defaultPage = 1;
+        const lastResult = this.rowsPerPage * this.paginationValue;
+        const firstResult = lastResult - this.rowsPerPage;
+        if (index > firstResult && index <= lastResult) {
+          item.classList.remove('tds-table__row--hidden');
         } else {
-          const lastResult = this.rowsPerPage * this.defaultPage;
-          const firstResult = lastResult - this.rowsPerPage;
-          if (index > firstResult && index <= lastResult) {
-            item.classList.remove('tds-table__row--hidden');
-          } else {
-            item.classList.add('tds-table__row--hidden');
-          }
+          item.classList.add('tds-table__row--hidden');
         }
       });
     }
@@ -216,23 +230,19 @@ export class TdsTableFooter {
                     type="number"
                     min="1"
                     max={this.pages ?? this.numberOfPages}
-                    value={this.defaultPage}
+                    value={this.paginationValue}
                     pattern="[0-9]+"
-                    dir="rtl"
+                    dir="ltr"
                     onChange={(event) => this.paginationInputChange(event)}
-                    onFocusout={(event) => this.paginationInputChange(event)}
                     onAnimationEnd={removeShakeAnimation}
-                    disabled={this.tempPaginationDisable}
                   />
                   <p class="tds-table__footer-text">
-                    of{' '}
-                    <span>{this.tempPaginationDisable ? 1 : this.pages ?? this.numberOfPages}</span>{' '}
-                    pages
+                    of <span>{this.pages ?? this.numberOfPages}</span> pages
                   </p>
                   <button
                     type="button"
                     class="tds-table__footer-btn"
-                    disabled={this.defaultPage <= 1 || this.tempPaginationDisable}
+                    disabled={this.paginationValue <= 1}
                     onClick={() => this.previousPage()}
                   >
                     <tds-icon name="chevron_left" size="20px"></tds-icon>
@@ -240,10 +250,7 @@ export class TdsTableFooter {
                   <button
                     type="button"
                     class="tds-table__footer-btn"
-                    disabled={
-                      this.defaultPage >= (this.pages ?? this.numberOfPages) ||
-                      this.tempPaginationDisable
-                    }
+                    disabled={this.paginationValue >= (this.pages ?? this.numberOfPages)}
                     onClick={() => this.nextPage()}
                   >
                     <tds-icon name="chevron_right" size="20px"></tds-icon>

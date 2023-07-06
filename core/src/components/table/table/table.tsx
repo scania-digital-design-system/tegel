@@ -1,7 +1,7 @@
 // https://stackoverflow.com/questions/63051941/how-to-pass-data-as-array-of-object-in-stencil-js
 // https://medium.com/@scottmgerstl/passing-an-object-or-array-to-stencil-dd62b7d92641
 
-import { Component, Prop, h, Host, Event, EventEmitter, Element, Watch } from '@stencil/core';
+import { Component, Prop, h, Host, Event, EventEmitter, Element, Watch, Method } from '@stencil/core';
 import { generateUniqueId } from '../../../utils/utils';
 
 type Props = {
@@ -79,8 +79,31 @@ export class TdsTable {
     });
   }
 
+  /** Returns all selected rows data in JSON */
+  @Method()
+  async getSelectedRows() {
+    const tableBody = this.host.querySelector('tds-table-body');
+    const selectedRows = Array.from(tableBody.querySelectorAll('tds-table-body-row')).filter(
+      (element) => element.selected,
+    );
+
+    let selectedRowsArray = [];
+    for (let j = 0; j < selectedRows.length; j++) {
+      const rowCells = selectedRows[j].getElementsByTagName('tds-body-cell');
+      const selectedObject = {};
+      for (let i = 0; i < rowCells.length; i++) {
+        const currentCellKey = rowCells[i].getAttribute('cell-key');
+        const currentCellValue = rowCells[i].getAttribute('cell-value');
+        selectedObject[currentCellKey] = currentCellValue;
+      }
+      selectedRowsArray = [...selectedRowsArray, selectedObject];
+    }
+    console.log(selectedRowsArray);
+    return JSON.stringify(selectedRowsArray);
+  }
+
   @Watch('multiselect')
-  enableMultiselectChanged(newValue: boolean) {
+  multiselectChanged(newValue: boolean) {
     this.emitInternalTdsPropChange('multiselect', newValue);
   }
 
