@@ -220,30 +220,17 @@ const PaginationTemplate = ({
   ]
   tableBody = document.querySelector('tds-table-body');
   tableFooter = document.querySelector('tds-table-footer');
-  tableBody.bodyData = myData.slice(0,2);
+
   rowsPerPage = 2;
+
+  tableBody.bodyData = myData.slice(0, rowsPerPage);
 
 
     tableFooter.addEventListener('tdsPageChange', (event) => {
-      switch(event.detail.paginationValue){
-        case 1:
-          tableBody.bodyData = myData.slice(0,2);
-          console.log(1)
-          return;
-        case 2:
-          tableBody.bodyData = myData.slice(2,4);
-          console.log(2)
-          return;
-        case 3:
-          tableBody.bodyData = myData.slice(4,6);
-          console.log(3)
-          console.log( myData.slice(4,2))
-          return;
-        case 4:
-          tableBody.bodyData = myData.slice(6,8);
-          console.log(4)
-          return;
-      }
+      const page = event.detail.paginationValue;
+      const start = (page - 1) * rowsPerPage;
+      
+      tableBody.bodyData = myData.slice(start, start + rowsPerPage);
     })
 
   </script>
