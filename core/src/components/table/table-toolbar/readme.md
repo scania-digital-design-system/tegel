@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property          | Attribute          | Description                  | Type      | Default |
-| ----------------- | ------------------ | ---------------------------- | --------- | ------- |
-| `enableFiltering` | `enable-filtering` | Enables preview of searchbar | `boolean` | `false` |
-| `tableTitle`      | `table-title`      | Adds title to the Table      | `string`  | `''`    |
+| Property     | Attribute     | Description                  | Type      | Default |
+| ------------ | ------------- | ---------------------------- | --------- | ------- |
+| `filter`     | `filter`      | Enables preview of searchbar | `boolean` | `false` |
+| `tableTitle` | `table-title` | Adds title to the Table      | `string`  | `''`    |
 
 
 ## Events

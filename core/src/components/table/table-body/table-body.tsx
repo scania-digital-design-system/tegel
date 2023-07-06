@@ -18,11 +18,10 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'enableExpandableRows',
 ];
 
-
 /**
  * @slot <default> - Default slot for the Table Body, used by <tds-table-body-row>
  * @slot no-result - Slot for no result message when using filtering.
-*/
+ */
 @Component({
   tag: 'tds-table-body',
   styleUrl: 'table-body.scss',
@@ -219,74 +218,6 @@ export class TdsTableBody {
     this.bodyCheckBoxClicked();
   }
 
-  searchFunction(searchTerm) {
-    // grab all rows in body
-    const dataRowsFiltering = this.host.querySelectorAll('tds-table-body-row');
-    
-    if (searchTerm.length > 0) {
-      if (this.enablePaginationTableBody) {
-        this.tempPaginationDisable = true;
-      }
-
-      dataRowsFiltering.forEach((item) => {
-        const cells = item.querySelectorAll('tds-body-cell');
-        const cellValuesArray = [];
-
-        // go through cells and save cell-values in an array
-        cells.forEach((cellItem) => {
-          const cellValue = cellItem.getAttribute('cell-value').toLowerCase();
-          cellValuesArray.push(cellValue);
-        });
-
-        // iterate over an array of values and see if one matches search string
-        const matchCounter = cellValuesArray.find((element) => element.includes(searchTerm));
-
-        // if matches, show parent row, otherwise hide the row
-        if (matchCounter) {
-          item.classList.remove('tds-table__row--hidden');
-        } else {
-          item.classList.add('tds-table__row--hidden');
-        }
-      });
-
-      this.disableAllSorting = true;
-      this.internalTdsSortingChange.emit([this.tableId, this.disableAllSorting]);
-      const dataRowsHidden = this.host.querySelectorAll('.tds-table__row--hidden');
-
-      // If same, an info message will be shown
-      this.showNoResultsMessage = dataRowsHidden.length === dataRowsFiltering.length;
-    } else {
-      if (this.enablePaginationTableBody) {
-        this.tempPaginationDisable = false;
-      }
-      
-      
-      // If pagination is NOT enabled, we show all rows.
-      if (!this.enablePaginationTableBody) {
-        dataRowsFiltering.forEach((item) => {
-          item.classList.remove('tds-table__row--hidden');
-        });
-      }
-      
-      this.showNoResultsMessage = false;
-      this.disableAllSorting = false;
-      this.internalTdsSortingChange.emit([this.tableId, this.disableAllSorting]);
-    }
-  }
-
-  /** Listens to internalTdsFilter from tableToolbar component */
-  @Listen('internalTdsFilter', { target: 'body' })
-  tdsFilterListener(
-    event: CustomEvent<{
-      tableId: string;
-      query: string;
-    }>,
-  ) {
-    if (this.tableId === event.detail.tableId) {
-      this.searchFunction(event.detail.query);
-    }
-  }
-
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
@@ -297,7 +228,7 @@ export class TdsTableBody {
       this[tablePropName] = this.tableEl[tablePropName];
     });
 
-    if(this.bodyData){
+    if (this.bodyData) {
       this.arrayDataWatcher(this.bodyData);
     }
   }
@@ -324,12 +255,12 @@ export class TdsTableBody {
             ))}
           </tds-table-body-row>
         ))}
-          <tr hidden={!this.showNoResultsMessage}>
-            <td class="tds-table__info-message" colSpan={this.columnsNumber}>
-              <slot name="no-result"/>
-              {this.noResultMessage}
-            </td>
-          </tr>
+        <tr hidden={!this.showNoResultsMessage}>
+          <td class="tds-table__info-message" colSpan={this.columnsNumber}>
+            <slot name="no-result" />
+            {this.noResultMessage}
+          </td>
+        </tr>
         <slot></slot>
       </Host>
     );
