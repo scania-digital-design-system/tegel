@@ -46,6 +46,17 @@ export default {
         defaultValue: { summary: 'primary' },
       },
     },
+    htmlType: {
+      name: 'Button Type',
+      description: 'Native types of button',
+      control: {
+        type: 'radio',
+      },
+      options: ['button', 'submit', 'reset'],
+      table: {
+        defaultValue: { summary: 'button' },
+      },
+    },
     size: {
       name: 'Size',
       description: 'Sets the size of the Button.',
@@ -109,6 +120,7 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
+    htmlType: 'button',
     btnType: 'Primary',
     size: 'Large',
     text: 'Button',
@@ -121,6 +133,7 @@ export default {
 
 const WebComponentTemplate = ({
   modeVariant,
+  htmlType,
   btnType,
   size,
   text = 'Button',
@@ -158,6 +171,7 @@ const WebComponentTemplate = ({
 
   <div class="demo-wrapper">
     <tds-button
+      button-type='${htmlType}'
       type="${btnTypeLookUp[btnType]}"
       size="${sizeLookUp[size]}" ${disabled ? 'disabled' : ''} ${fullbleed ? 'fullbleed' : ''}
       ${!onlyIcon ? `text="${text}"` : ''}
