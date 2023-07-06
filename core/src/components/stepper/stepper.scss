@@ -17,10 +17,14 @@
       flex-direction: column;
       justify-content: unset;
       gap: 52px;
+
+      &.sm {
+        gap: 36px;
+      }
     }
 
-    &.vertical.sm {
-      gap: 36px;
+    &.horizontal.text-position-aside {
+      justify-content: unset;
     }
   }
 }
