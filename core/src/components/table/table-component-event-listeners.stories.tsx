@@ -205,7 +205,7 @@ const EventListenersTemplate = ({
                   <tds-body-cell cell-value="Test value 20" cell-key="mileage"></tds-body-cell>
               </tds-table-body-row>
           </tds-table-body>
-        <tds-table-footer pagination rows-per-page="1"></tds-table-footer>
+        <tds-table-footer pagination pages="4"></tds-table-footer>
   </tds-table>
 
   <!-- Note: Code below is just for demo purposes -->
