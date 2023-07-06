@@ -67,6 +67,10 @@ button {
     padding: var(--tds-spacing-element-12);
     height: $btn-sm-height;
 
+    &.icon {
+      padding: 10px var(--tds-spacing-element-12);
+    }
+
     &.only-icon {
       padding: $btn-sm-only-icon-padding;
     }
@@ -82,6 +86,10 @@ button {
     padding: var(--tds-spacing-element-16);
     height: $btn-md-height;
 
+    &.icon {
+      padding: 14px var(--tds-spacing-element-16);
+    }
+
     &.only-icon {
       padding: $btn-md-only-icon-padding;
     }
@@ -94,6 +102,10 @@ button {
   &.lg {
     padding: var(--tds-spacing-element-20);
     height: $btn-lg-height;
+
+    &.icon {
+      padding: 18px var(--tds-spacing-element-20);
+    }
 
     &.only-icon {
       padding: $btn-lg-only-icon-padding;
