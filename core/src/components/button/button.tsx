@@ -7,7 +7,8 @@ import { hasSlot } from '../../utils/utils';
 @Component({
   tag: 'tds-button',
   styleUrl: 'button.scss',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
 export class TdsButton {
   @Element() host: HTMLElement;
@@ -15,7 +16,10 @@ export class TdsButton {
   /** Text displayed inside the Button */
   @Prop() text: string;
 
-  /** Type of Button */
+  /** Button's type */
+  @Prop() buttonType: 'button' | 'submit' | 'reset' = 'button';
+
+  /** Type of Button's design */
   @Prop() type: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
 
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
@@ -43,6 +47,7 @@ export class TdsButton {
     return (
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
+          type={this.buttonType}
           disabled={this.disabled}
           class={{
             'primary': this.type === 'primary',
