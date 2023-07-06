@@ -162,7 +162,7 @@ const PaginationTemplate = ({
           </tds-table-header>
           <tds-table-body>
           </tds-table-body>
-          <tds-table-footer default-page="1" pages="4" pagination></tds-table-footer>
+          <tds-table-footer default-page="2" pages="4" pagination></tds-table-footer>
   </tds-table>
   
 
@@ -221,16 +221,20 @@ const PaginationTemplate = ({
   tableBody = document.querySelector('tds-table-body');
   tableFooter = document.querySelector('tds-table-footer');
 
-  rowsPerPage = 2;
 
-  tableBody.bodyData = myData.slice(0, rowsPerPage);
+  setPage = (page) => {
+    const rowsPerPage = 2;
+    const start = (page - 1) * rowsPerPage;
+
+    tableBody.bodyData = myData.slice(start, start + rowsPerPage);
+  } 
+
+  setPage(2);
 
 
     tableFooter.addEventListener('tdsPageChange', (event) => {
       const page = event.detail.paginationValue;
-      const start = (page - 1) * rowsPerPage;
-      
-      tableBody.bodyData = myData.slice(start, start + rowsPerPage);
+      setPage(page);
     })
 
   </script>
