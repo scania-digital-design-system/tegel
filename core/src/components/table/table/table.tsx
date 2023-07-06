@@ -7,7 +7,7 @@ type Props = {
   verticalDividers: boolean;
   compactDesign: boolean;
   noMinWidth: boolean;
-  enableMultiselect: boolean;
+  multiselect: boolean;
   enableExpandableRows: boolean;
   enableResponsive: boolean;
   modeVariant: 'primary' | 'secondary' | null;
@@ -38,7 +38,7 @@ export class TdsTable {
   //  Try setting it and observe text-align set on header cell
 
   /** Enables multiselect feature of Table */
-  @Prop({ reflect: true }) enableMultiselect: boolean = false;
+  @Prop({ reflect: true }) multiselect: boolean = false;
 
   /** Enables extended row feature of Table */
   @Prop({ reflect: true }) enableExpandableRows: boolean = false;
@@ -75,9 +75,9 @@ export class TdsTable {
     });
   }
 
-  @Watch('enableMultiselect')
-  enableMultiselectChanged(newValue: boolean) {
-    this.emitInternalTdsPropChange('enableMultiselect', newValue);
+  @Watch('multiselect')
+  multiselectChanged(newValue: boolean) {
+    this.emitInternalTdsPropChange('multiselect', newValue);
   }
 
   @Watch('enableExpandableRows')

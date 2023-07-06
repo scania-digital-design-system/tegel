@@ -14,7 +14,7 @@ import {
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
-  'enableMultiselect',
+  'multiselect',
   'enableExpandableRows',
 ];
 
@@ -38,7 +38,7 @@ export class TdsTableBody {
 
   @State() rowsPerPage: number = 1;
 
-  @State() enableMultiselect: boolean = false;
+  @State() multiselect: boolean = false;
 
   @State() enablePaginationTableBody: boolean = false;
 
@@ -154,7 +154,7 @@ export class TdsTableBody {
   };
 
   sortData(keyValue, sortingDirection) {
-    if (this.enableMultiselect) {
+    if (this.multiselect) {
       // Uncheck all checkboxes as the state of checkbox is lost on sorting. Do it only in case multiSelect is True.
       this.uncheckAll();
     }
@@ -238,7 +238,7 @@ export class TdsTableBody {
       this.host.parentElement.querySelector('tds-table-header').children.length;
 
     // multiselect and expended features requires one extra column for controls...
-    if (this.enableMultiselect || this.enableExpandableRows) {
+    if (this.multiselect || this.enableExpandableRows) {
       this.columnsNumber = headerColumnsNo + 1;
     } else {
       this.columnsNumber = headerColumnsNo;

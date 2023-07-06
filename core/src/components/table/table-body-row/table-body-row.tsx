@@ -2,7 +2,7 @@ import { Component, Element, h, Host, State, Event, EventEmitter, Listen } from 
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
-  'enableMultiselect',
+  'multiselect',
   'verticalDividers',
   'compactDesign',
   'modeVariant',
@@ -14,7 +14,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableBodyRow {
-  @State() enableMultiselect: boolean = false;
+  @State() multiselect: boolean = false;
 
   @State() bodyCheckBoxStatus: boolean = false;
 
@@ -89,13 +89,6 @@ export class TdsTableBodyRow {
   })
   internalTdsPagination: EventEmitter<string>;
 
-  @Listen('internalTdsMainCheckboxSelect', { target: 'body' })
-  headCheckboxListener(event: CustomEvent<any>) {
-    if (this.tableId === event.detail[0]) {
-      this.bodyCheckBoxStatusUpdater(event.detail[1]);
-    }
-  }
-
   @Listen('internalTdsCheckboxChange', { target: 'body' })
   internalTdsCheckboxChangeListener(event: CustomEvent<any>) {
     const [receivedID, receivedBodyCheckboxStatus] = event.detail;
@@ -130,7 +123,7 @@ export class TdsTableBodyRow {
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
-        {this.enableMultiselect && (
+        {this.multiselect && (
           <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">
             <tds-checkbox
               onTdsChange={(event) => this.bodyCheckBoxClicked(event)}
