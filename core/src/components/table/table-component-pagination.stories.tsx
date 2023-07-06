@@ -118,7 +118,6 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: false,
-    rowsPerPageControl: 4,
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -163,7 +162,7 @@ const PaginationTemplate = ({
           </tds-table-header>
           <tds-table-body>
           </tds-table-body>
-          <tds-table-footer pages="4" pagination></tds-table-footer>
+          <tds-table-footer default-page="1" pages="4" pagination></tds-table-footer>
   </tds-table>
   
 

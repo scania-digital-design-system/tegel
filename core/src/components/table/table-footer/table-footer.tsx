@@ -26,8 +26,8 @@ export class TdsTableFooter {
   /** Enable pagination and show pagination controls  */
   @Prop({ reflect: true }) pagination: boolean = false;
 
-  /** Sets the pagination number. */
-  @Prop({ reflect: true }) paginationValue: number = 1;
+  /** Sets the default page number. */
+  @Prop({ reflect: true }) defaultPage: number = 1;
 
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = null;
@@ -121,8 +121,8 @@ export class TdsTableFooter {
     });
     /** If pages and greater or equal to 2, decrease pagination value.
      * This is to not get under 1 in pagination value.  */
-    if (this.paginationValue >= 2) {
-      this.paginationValue--;
+    if (this.defaultPage >= 2) {
+      this.defaultPage--;
     }
     /* If the change event is not prevented -> do pagination. */
     if (!this.pages) {
@@ -139,8 +139,8 @@ export class TdsTableFooter {
 
     /** If pages and greater or equal to the amount of pages, increase pagination value.
      * This is to not get above the amount of pages in pagination value.  */
-    if (this.paginationValue <= (this.pages ?? this.numberOfPages)) {
-      this.paginationValue++;
+    if (this.defaultPage <= (this.pages ?? this.numberOfPages)) {
+      this.defaultPage++;
     }
     /* If the change event is not prevented -> do pagination. */
     if (!this.pages) {
@@ -154,9 +154,9 @@ export class TdsTableFooter {
 
     if (insertedValue > this.numberOfPages || insertedValue < 1) {
       event.target.classList.add('tds-table__page-selector-input--shake');
-      this.paginationValue = event.target.max;
+      this.defaultPage = event.target.max;
     } else {
-      this.paginationValue = event.target.value;
+      this.defaultPage = event.target.value;
     }
     const paginationEvent = this.tdsPageChange.emit({
       tableId: this.tableId,
@@ -187,9 +187,9 @@ export class TdsTableFooter {
         const index = i + 1;
 
         if (this.tempPaginationDisable) {
-          this.paginationValue = 1;
+          this.defaultPage = 1;
         } else {
-          const lastResult = this.rowsPerPage * this.paginationValue;
+          const lastResult = this.rowsPerPage * this.defaultPage;
           const firstResult = lastResult - this.rowsPerPage;
           if (index > firstResult && index <= lastResult) {
             item.classList.remove('tds-table__row--hidden');
@@ -216,7 +216,7 @@ export class TdsTableFooter {
                     type="number"
                     min="1"
                     max={this.pages ?? this.numberOfPages}
-                    value={this.paginationValue}
+                    value={this.defaultPage}
                     pattern="[0-9]+"
                     dir="rtl"
                     onChange={(event) => this.paginationInputChange(event)}
@@ -232,7 +232,7 @@ export class TdsTableFooter {
                   <button
                     type="button"
                     class="tds-table__footer-btn"
-                    disabled={this.paginationValue <= 1 || this.tempPaginationDisable}
+                    disabled={this.defaultPage <= 1 || this.tempPaginationDisable}
                     onClick={() => this.previousPage()}
                   >
                     <tds-icon name="chevron_left" size="20px"></tds-icon>
@@ -241,7 +241,7 @@ export class TdsTableFooter {
                     type="button"
                     class="tds-table__footer-btn"
                     disabled={
-                      this.paginationValue >= (this.pages ?? this.numberOfPages) ||
+                      this.defaultPage >= (this.pages ?? this.numberOfPages) ||
                       this.tempPaginationDisable
                     }
                     onClick={() => this.nextPage()}
