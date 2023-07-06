@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { hasSlot } from '../../utils/utils';
 
 /**
  * @slot icon - Slot used to display an Icon in the Button.
@@ -38,6 +39,7 @@ export class TdsButton {
   }
 
   render() {
+    const usesIconSlot = hasSlot('icon', this.host);
     return (
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
@@ -46,6 +48,7 @@ export class TdsButton {
             ${this.size}
             ${this.disabled ? 'disabled' : ''}
             ${this.fullbleed ? 'fullbleed' : ''}
+            ${usesIconSlot ? 'icon' : ''}
             ${this.onlyIcon ? 'only-icon' : ''}
             `}
         >
