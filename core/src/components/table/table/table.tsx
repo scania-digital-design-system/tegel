@@ -1,13 +1,23 @@
 // https://stackoverflow.com/questions/63051941/how-to-pass-data-as-array-of-object-in-stencil-js
 // https://medium.com/@scottmgerstl/passing-an-object-or-array-to-stencil-dd62b7d92641
 
-import { Component, Prop, h, Host, Event, EventEmitter, Element, Watch } from '@stencil/core';
+import {
+  Component,
+  Prop,
+  h,
+  Host,
+  Event,
+  EventEmitter,
+  Element,
+  Watch,
+  Method,
+} from '@stencil/core';
 
 type Props = {
   verticalDividers: boolean;
   compactDesign: boolean;
   noMinWidth: boolean;
-  enableMultiselect: boolean;
+  multiselect: boolean;
   enableExpandableRows: boolean;
   enableResponsive: boolean;
   modeVariant: 'primary' | 'secondary' | null;
@@ -38,7 +48,7 @@ export class TdsTable {
   //  Try setting it and observe text-align set on header cell
 
   /** Enables multiselect feature of Table */
-  @Prop({ reflect: true }) enableMultiselect: boolean = false;
+  @Prop({ reflect: true }) multiselect: boolean = false;
 
   /** Enables extended row feature of Table */
   @Prop({ reflect: true }) enableExpandableRows: boolean = false;
@@ -75,9 +85,32 @@ export class TdsTable {
     });
   }
 
-  @Watch('enableMultiselect')
-  enableMultiselectChanged(newValue: boolean) {
-    this.emitInternalTdsPropChange('enableMultiselect', newValue);
+  /** Returns all selected rows data in JSON */
+  @Method()
+  async getSelectedRows() {
+    const tableBody = this.host.querySelector('tds-table-body');
+    const selectedRows = Array.from(tableBody.querySelectorAll('tds-table-body-row')).filter(
+      (element) => element.selected,
+    );
+
+    let selectedRowsArray = [];
+    for (let j = 0; j < selectedRows.length; j++) {
+      const rowCells = selectedRows[j].getElementsByTagName('tds-body-cell');
+      const selectedObject = {};
+      for (let i = 0; i < rowCells.length; i++) {
+        const currentCellKey = rowCells[i].getAttribute('cell-key');
+        const currentCellValue = rowCells[i].getAttribute('cell-value');
+        selectedObject[currentCellKey] = currentCellValue;
+      }
+      selectedRowsArray = [...selectedRowsArray, selectedObject];
+    }
+    console.log(selectedRowsArray);
+    return JSON.stringify(selectedRowsArray);
+  }
+
+  @Watch('multiselect')
+  multiselectChanged(newValue: boolean) {
+    this.emitInternalTdsPropChange('multiselect', newValue);
   }
 
   @Watch('enableExpandableRows')

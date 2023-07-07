@@ -12,7 +12,7 @@ import {
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
-  'enableMultiselect',
+  'multiselect',
   'enableExpandableRows',
   'compactDesign',
   'noMinWidth',
@@ -54,7 +54,7 @@ export class TdsTableHeaderCell {
 
   @State() noMinWidth: boolean = false;
 
-  @State() enableMultiselect: boolean = false;
+  @State() multiselect: boolean = false;
 
   @State() enableToolbarDesign: boolean = false;
 
@@ -311,7 +311,7 @@ export class TdsTableHeaderCell {
           'tds-table--compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--no-min-width': this.noMinWidth,
-          'tds-table--extra-column': this.enableMultiselect || this.enableExpandableRows,
+          'tds-table--extra-column': this.multiselect || this.enableExpandableRows,
           'tds-table--toolbar-available': this.enableToolbarDesign,
         }}
         style={{ width: this.customWidth }}
