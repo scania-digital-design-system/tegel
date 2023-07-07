@@ -2,6 +2,9 @@
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
+![node-current](https://img.shields.io/node/v/%40scania%2Ftegel)
+
+
 
 # @scania/tegel
 
