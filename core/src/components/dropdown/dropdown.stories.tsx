@@ -4,7 +4,7 @@ import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Dropdown`,
   parameters: {
     layout: 'centered',
     notes: { 'Dropdown': readme, 'Dropdown option': readmeDropdownOption },
@@ -301,4 +301,4 @@ const Template = ({
         
   `);
 
-export const Dropdown = Template.bind({});
+export const Default = Template.bind({});

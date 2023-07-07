@@ -3,7 +3,7 @@ import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Datetime`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -209,4 +209,4 @@ const datetimeTemplate = ({
   );
 };
 
-export const Datetime = datetimeTemplate.bind({});
+export const Default = datetimeTemplate.bind({});

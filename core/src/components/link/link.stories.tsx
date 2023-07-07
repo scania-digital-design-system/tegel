@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Link`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -59,4 +59,4 @@ const Template = ({ underline, disabled }) =>
     </tds-link>
   `,
   );
-export const Link = Template.bind({});
+export const Default = Template.bind({});

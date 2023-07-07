@@ -4,7 +4,7 @@ import readmeItem from './accordion-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Accordion`,
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
@@ -104,4 +104,4 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant }) => {
   </script>`);
 };
 
-export const Accordion = Template.bind({});
+export const Default = Template.bind({});

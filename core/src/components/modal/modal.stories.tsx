@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Modal`,
   parameters: {
     layout: 'fullscreen',
     notes: readme,
@@ -115,4 +115,4 @@ const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
   `,
   );
 
-export const Modal = ModalTemplate.bind({});
+export const Default = ModalTemplate.bind({});

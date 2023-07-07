@@ -11,7 +11,7 @@ import readmeLauncher from './header-launcher/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Header`,
   parameters: {
     notes: {
       'Header': readme,
@@ -83,4 +83,4 @@ const Template = () =>
   `,
   );
 
-export const Header = Template.bind({});
+export const Default = Template.bind({});

@@ -4,7 +4,7 @@ import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Breadcrumbs`,
   parameters: {
     notes: { Breadcrumbs: readme, Breadcrumb: itemReadme },
     design: [
@@ -39,4 +39,4 @@ const Template = () =>
       `,
   );
 
-export const Breadcrumbs = Template.bind({});
+export const Default = Template.bind({});

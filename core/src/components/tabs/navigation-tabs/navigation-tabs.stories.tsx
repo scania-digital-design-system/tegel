@@ -4,7 +4,7 @@ import readmeTab from './navigation-tab/readme.md';
 import { ComponentsFolder } from '../../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Tabs`,
   parameters: {
     notes: {
       'Navigation Tabs': readme,

@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Slider`,
   argTypes: {
     min: {
       name: 'Min. value',
@@ -263,4 +263,4 @@ const Template = ({
     </script>
   `);
 
-export const Slider = Template.bind({});
+export const Default = Template.bind({});
