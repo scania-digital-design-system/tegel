@@ -13,6 +13,9 @@ if (process.env.STORYBOOK_ENV === 'development') {
 
 module.exports = {
   addons: addons,
+  features: {
+    postcss: false,
+  },
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   framework: '@storybook/html',
   staticDirs: ['../public'],
