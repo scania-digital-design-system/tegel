@@ -1,8 +1,9 @@
 import { formatHtmlPreview } from '../../utils/utils';
 import readme from './readme.md';
+import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: 'Components',
+  title: `${ComponentsFolder}/Chip`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -264,4 +265,4 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
   `);
 };
 
-export const Chip = Template.bind({});
+export const Default = Template.bind({});

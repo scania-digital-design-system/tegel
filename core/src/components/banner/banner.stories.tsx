@@ -6,7 +6,7 @@ import { ComponentsFolder } from '../../utils/constants';
 // FIXME: CMS: Change state to type in Code tab of component
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Banner`,
   parameters: {
     notes: readme,
     layout: 'fullscreen',
@@ -109,4 +109,4 @@ const Template = ({ type, icon, header, subheader, persistent, bottom }) =>
         })
       </script>
     `);
-export const Banner = Template.bind({});
+export const Default = Template.bind({});

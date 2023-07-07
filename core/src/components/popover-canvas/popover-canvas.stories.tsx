@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Popover Canvas`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -94,4 +94,4 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
     `,
   );
 };
-export const PopoverCanvas = ComponentPopoverCanvas.bind({});
+export const Default = ComponentPopoverCanvas.bind({});

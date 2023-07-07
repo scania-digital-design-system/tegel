@@ -132,6 +132,7 @@ export const parameters = {
     enableShortcuts: false,
     storySort: {
       method: 'alphabetical',
+      includeNames: true,
       order: [
         'Intro',
         [

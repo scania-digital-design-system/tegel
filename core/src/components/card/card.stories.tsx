@@ -6,7 +6,7 @@ import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Card`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -185,4 +185,4 @@ const Template = ({
   `,
   );
 
-export const Card = Template.bind({});
+export const Default = Template.bind({});

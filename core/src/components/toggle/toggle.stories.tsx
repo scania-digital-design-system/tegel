@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Toggle`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -95,4 +95,4 @@ const Template = ({ size, headline, label, checked, disabled }) =>
       })
     </script>
   `);
-export const Toggle = Template.bind({});
+export const Default = Template.bind({});

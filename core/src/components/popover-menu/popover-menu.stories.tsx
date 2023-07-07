@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Popover Menu`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -143,4 +143,4 @@ const Template = ({ menuPosition, icons }) => {
   );
 };
 
-export const PopoverMenu = Template.bind({});
+export const Default = Template.bind({});
