@@ -220,7 +220,7 @@ export class TdsTableFooter {
                     disabled={this.tempPaginationDisable}
                   />
                   <p class="tds-table__footer-text">
-                    of <span>{this.tempPaginationDisable ? 1 : this.numberOfPages}</span> pages
+                    of <span>{this.tempPaginationDisable ? 1 : (this.maxPages ?? this.numberOfPages)}</span> pages
                   </p>
                   <button
                     type="button"
