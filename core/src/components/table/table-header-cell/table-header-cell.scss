@@ -59,6 +59,7 @@
       /* not to shrink on lot of text */
       flex: 0 0 16px;
       height: 16px;
+      width: 16px;
       opacity: 0;
       transform-origin: center;
       transition: opacity 200ms ease-in, transform 200ms ease;
