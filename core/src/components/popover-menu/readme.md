@@ -14,8 +14,21 @@
 | `placement`      | `placement`       | Decides the placement of the Popover Menu                             | `"auto" \| "auto-end" \| "auto-start" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'auto'`    |
 | `referenceEl`    | --                | Element that will trigger the pop-over (takes priority over selector) | `HTMLElement`                                                                                                                                                                                                | `undefined` |
 | `selector`       | `selector`        | The CSS-selector for an element that will trigger the pop-over        | `string`                                                                                                                                                                                                     | `''`        |
-| `show`           | `show`            | Decides if the Popover Menu should be visible from the start          | `boolean`                                                                                                                                                                                                    | `false`     |
+| `show`           | `show`            | Decides if the Popover Menu should be visible from the start          | `boolean`                                                                                                                                                                                                    | `null`      |
 
+
+## Dependencies
+
+### Depends on
+
+- [tds-core-popover](../core-popover)
+
+### Graph
+```mermaid
+graph TD;
+  tds-popover-menu --> tds-core-popover
+  style tds-popover-menu fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

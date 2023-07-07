@@ -2,7 +2,7 @@
 
 @import '../../mixins/z-index';
 
-:host {
+.tds-popover-menu {
   @include tds-box-sizing;
 
   overflow: hidden;
@@ -11,11 +11,5 @@
   padding: 16px;
   box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
   border-radius: 4px;
-  display: none;
   z-index: tds-z-index(tooltip);
-}
-
-:host(.tds-popover-menu-show) {
-  opacity: 1;
-  display: block;
 }
