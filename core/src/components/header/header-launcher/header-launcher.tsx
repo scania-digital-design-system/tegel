@@ -1,5 +1,5 @@
 import { Component, Host, h, Element, Listen, State } from '@stencil/core';
-import { Attributes, inheritAriaAttributes } from '../../../utils/utils';
+import { Attributes, generateUniqueId, inheritAriaAttributes } from '../../../utils/utils';
 
 @Component({
   tag: 'tds-header-launcher',
@@ -15,7 +15,7 @@ export class TdsHeaderLauncher {
 
   @State() hasListTypeMenu = false;
 
-  private uuid: string = crypto.randomUUID();
+  private uuid: string = generateUniqueId();
 
   private ariaAttributes: Attributes;
 

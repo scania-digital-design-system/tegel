@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { generateUniqueId } from '../../../utils/utils';
 
 /**
  * @slot icon - Slot for an Icon in the dropdown button.
@@ -26,7 +27,7 @@ export class TdsHeaderDropdown {
 
   @State() buttonEl?: HTMLButtonElement;
 
-  private uuid: string = crypto.randomUUID();
+  private uuid: string = generateUniqueId();
 
   @Listen('click', { target: 'document' })
   onAnyClick(event: MouseEvent) {
