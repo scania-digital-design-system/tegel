@@ -17,18 +17,18 @@
 | `text`             | `text`               | In case Tooltip contains only text, no HTML, a text can be passed by this prop                 | `string`                                                                                                                                                                                                     | `''`        |
 
 
-## Methods
+## Dependencies
 
-### `updateTooltip() => Promise<void>`
+### Depends on
 
-Method to update the Tooltip. Will reevaluate the Tooltips position.
+- [tds-core-popover](../core-popover)
 
-#### Returns
-
-Type: `Promise<void>`
-
-
-
+### Graph
+```mermaid
+graph TD;
+  tds-tooltip --> tds-core-popover
+  style tds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

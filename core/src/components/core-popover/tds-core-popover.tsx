@@ -30,6 +30,9 @@ export class TdsPopoverMenu {
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: Object[] = [];
 
+  /** What triggers the popover to show */
+  @Prop() trigger: 'click' | 'hover' | 'hover-popover' = 'click';
+
   @State() renderedShowValue: boolean = false;
 
   @State() popperInstance: Instance | null;
@@ -40,7 +43,7 @@ export class TdsPopoverMenu {
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
-    if (this.isShown && this.show === null) {
+    if (this.trigger === 'click' && this.isShown && this.show === null) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
       const isClickOutside = !event.composedPath().includes(this.host as any);
       if (isClickOutside) {
@@ -62,6 +65,16 @@ export class TdsPopoverMenu {
   private onClickTarget = function onClickTarget(event) {
     event.stopPropagation();
     this.isShown = !this.isShown;
+  }.bind(this);
+
+  private handleShow = function handleShow(event) {
+    event.stopPropagation();
+    this.isShown = true;
+  }.bind(this);
+
+  private handleHide = function handleShow(event) {
+    event.stopPropagation();
+    this.isShown = false;
   }.bind(this);
 
   private initialize(referenceEl: HTMLElement | null) {
@@ -93,13 +106,36 @@ export class TdsPopoverMenu {
       console.error(`Could not initialize: reference element not found.`);
     }
 
-    if (this.show === null) {
+    if (this.trigger === 'click' && this.show === null) {
       this.target.addEventListener('click', this.onClickTarget);
+    }
+
+    if (this.trigger === 'hover' || this.trigger === 'hover-popover') {
+      // For tabbing over element
+      this.target.addEventListener('focusin', this.handleShow);
+      this.target.addEventListener('focusout', this.handleHide);
+
+      // For hovering over element with selector
+      this.target.addEventListener('mouseenter', this.handleShow);
+      this.target.addEventListener('mouseleave', this.handleHide);
+
+      // For hovering over Popover itself
+      if (this.trigger === 'hover-popover') {
+        this.host.addEventListener('mouseenter', this.handleShow);
+        this.host.addEventListener('mouseleave', this.handleHide);
+      }
     }
   }
 
   private cleanUp() {
     this.target?.removeEventListener('click', this.onClickTarget);
+    this.target?.removeEventListener('focusin', this.handleShow);
+    this.target?.removeEventListener('focusout', this.handleHide);
+    this.target?.removeEventListener('mouseenter', this.handleShow);
+    this.target?.removeEventListener('mouseleave', this.handleHide);
+    this.host?.removeEventListener('mouseenter', this.handleShow);
+    this.host?.removeEventListener('mouseleave', this.handleHide);
+
     this.popperInstance?.destroy();
   }
 

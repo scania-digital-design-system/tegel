@@ -53,6 +53,7 @@ export class TdsPopoverCanvas {
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
           modifiers={this.modifiers}
+          trigger={'click'}
         >
           <slot></slot>
         </tds-core-popover>

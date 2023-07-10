@@ -16,6 +16,7 @@
 | `referenceEl`    | --                | Element that will trigger the pop-over (takes priority over selector)                        | `HTMLElement`                                                                                                                                                                                                | `undefined` |
 | `selector`       | `selector`        | The CSS-selector for an element that will trigger the pop-over                               | `string`                                                                                                                                                                                                     | `''`        |
 | `show`           | `show`            | Decides if the Popover Menu should be visible from the start                                 | `boolean`                                                                                                                                                                                                    | `null`      |
+| `trigger`        | `trigger`         | What triggers the popover to show                                                            | `"click" \| "hover" \| "hover-popover"`                                                                                                                                                                      | `'click'`   |
 
 
 ## Dependencies
@@ -24,12 +25,14 @@
 
  - [tds-popover-canvas](../popover-canvas)
  - [tds-popover-menu](../popover-menu)
+ - [tds-tooltip](../tooltip)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-popover-canvas --> tds-core-popover
   tds-popover-menu --> tds-core-popover
+  tds-tooltip --> tds-core-popover
   style tds-core-popover fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
