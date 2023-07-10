@@ -1,6 +1,4 @@
-// @ts-ignore
 import readme from './readme.md';
-// @ts-ignore
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
