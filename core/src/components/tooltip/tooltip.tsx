@@ -15,7 +15,7 @@ export class TdsTooltip {
   @Prop() selector: string = '';
 
   /** Element that will trigger the Tooltip (takes priority over selector) */
-  @Prop() referenceEl: HTMLElement;
+  @Prop() referenceEl?: HTMLElement | null;
 
   /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
   @Prop() mouseOverTooltip: boolean = false;

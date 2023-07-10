@@ -14,7 +14,7 @@ export class TdsPopoverCanvas {
   @Prop() selector: string = '';
 
   /** Element that will trigger the Popover (takes priority over selector) */
-  @Prop() referenceEl: HTMLElement;
+  @Prop() referenceEl?: HTMLElement | null;
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside.
