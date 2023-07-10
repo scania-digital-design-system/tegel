@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Radio Button`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -92,4 +92,4 @@ const Template = ({ label, disabled }) =>
   </script>
   `);
 
-export const RadioButton = Template.bind({});
+export const Default = Template.bind({});

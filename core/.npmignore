@@ -1,0 +1,6 @@
+# Files to be ignored in npm publish
+
+# Ignoring story files here instead of tsconfig to avoid issues with files being shipped
+# + issues with typscript trowing error for imported readme files when they are exluded in tsconfig
+**/*.stories.tsx
+**/stories

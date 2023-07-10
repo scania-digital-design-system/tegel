@@ -3,7 +3,7 @@ import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Textarea`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -203,4 +203,4 @@ const Template = ({
   `);
 };
 
-export const Textarea = Template.bind({});
+export const Default = Template.bind({});

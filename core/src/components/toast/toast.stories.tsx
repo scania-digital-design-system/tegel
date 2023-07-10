@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Toast`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -81,4 +81,4 @@ const Template = ({ type, header, subheader, bottom }) =>
     </script>
   `,
   );
-export const Toast = Template.bind({});
+export const Default = Template.bind({});
