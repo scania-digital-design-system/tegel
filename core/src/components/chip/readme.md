@@ -27,9 +27,11 @@
 
 ## Slots
 
-| Slot      | Description              |
-| --------- | ------------------------ |
-| `"label"` | Slot for the label text. |
+| Slot                                  | Description               |
+| ------------------------------------- | ------------------------- |
+| `"label"`                             | Slot for the label text.  |
+| `"prefix"`                            | Slot for the prefix icon. |
+| `"suffix- Slot for the suffix icon."` |                           |
 
 
 ----------------------------------------------
