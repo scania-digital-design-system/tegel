@@ -59,7 +59,15 @@ export class TdsPopoverMenu {
 
   @Watch('referenceEl')
   onReferenceElChanged(newValue: HTMLElement, oldValue: HTMLElement) {
-    if (newValue !== oldValue) this.initialize(newValue);
+    if (newValue !== oldValue) this.initialize({ referenceEl: newValue, trigger: this.trigger });
+  }
+
+  @Watch('trigger')
+  onTriggerChanged(newValue: 'click' | 'hover' | 'hover-popover') {
+    this.initialize({
+      referenceEl: this.referenceEl,
+      trigger: newValue,
+    });
   }
 
   private onClickTarget = function onClickTarget(event) {
@@ -77,7 +85,13 @@ export class TdsPopoverMenu {
     this.isShown = false;
   }.bind(this);
 
-  private initialize(referenceEl: HTMLElement | null) {
+  private initialize({
+    referenceEl,
+    trigger,
+  }: {
+    referenceEl: HTMLElement | null;
+    trigger: 'click' | 'hover' | 'hover-popover';
+  }) {
     this.cleanUp();
 
     if (typeof referenceEl !== 'undefined') {
@@ -106,11 +120,11 @@ export class TdsPopoverMenu {
       console.error(`Could not initialize: reference element not found.`);
     }
 
-    if (this.trigger === 'click' && this.show === null) {
+    if (trigger === 'click' && this.show === null) {
       this.target.addEventListener('click', this.onClickTarget);
     }
 
-    if (this.trigger === 'hover' || this.trigger === 'hover-popover') {
+    if (trigger === 'hover' || trigger === 'hover-popover') {
       // For tabbing over element
       this.target.addEventListener('focusin', this.handleShow);
       this.target.addEventListener('focusout', this.handleHide);
@@ -120,7 +134,7 @@ export class TdsPopoverMenu {
       this.target.addEventListener('mouseleave', this.handleHide);
 
       // For hovering over Popover itself
-      if (this.trigger === 'hover-popover') {
+      if (trigger === 'hover-popover') {
         this.host.addEventListener('mouseenter', this.handleShow);
         this.host.addEventListener('mouseleave', this.handleHide);
       }
@@ -140,7 +154,10 @@ export class TdsPopoverMenu {
   }
 
   componentDidLoad() {
-    this.initialize(this.referenceEl);
+    this.initialize({
+      referenceEl: this.referenceEl,
+      trigger: this.trigger,
+    });
   }
 
   componentDidRender() {
