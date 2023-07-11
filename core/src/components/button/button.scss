@@ -227,7 +227,7 @@ button {
   }
 }
 
-:host(tds-button:not([only-icon])) {
+tds-button:not([only-icon]) {
   display: inline-flex;
   align-items: center;
 
