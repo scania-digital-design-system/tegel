@@ -7,13 +7,15 @@
 }
 
 :host {
-  ::slotted(*) {
-    gap: 8px;
+  ::slotted([slot='prefix']),
+  ::slotted([slot='suffix']) {
+    padding-right: 0;
   }
 
   &[size='sm'] {
-    ::slotted(*) {
-      gap: 6px;
+    ::slotted([slot='prefix']),
+    ::slotted([slot='suffix']) {
+      gap: 0;
     }
   }
 }

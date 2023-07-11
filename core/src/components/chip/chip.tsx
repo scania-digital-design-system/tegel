@@ -102,7 +102,11 @@ export class TdsChip {
     return (
       <Host>
         <div class="component">
-          <div class={`tds-chip-component ${this.size}`}>
+          <div
+            class={`tds-chip-component ${this.size}  ${hasPrefixSlot && 'prefix'} ${
+              hasSuffixSlot && 'suffix'
+            }`}
+          >
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
             <label htmlFor={this.chipId}>
               {hasPrefixSlot && <slot name="prefix" />}
