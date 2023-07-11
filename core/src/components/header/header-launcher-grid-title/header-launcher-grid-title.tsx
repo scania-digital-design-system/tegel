@@ -1,4 +1,5 @@
 import { Component, h, Host } from '@stencil/core';
+import { generateUniqueId } from '../../../utils/utils';
 
 @Component({
   tag: 'tds-header-launcher-grid-title',
@@ -6,12 +7,15 @@ import { Component, h, Host } from '@stencil/core';
   shadow: false,
 })
 export class TdsHeaderLauncherGridTitle {
-  private uuid: string = crypto.randomUUID();
+  private uuid: string = generateUniqueId();
 
   render() {
     return (
       <Host>
-        <h3 class="tds-header-launcher-grid-title" id={`tds-${this.uuid}`}>
+        <h3
+          class="tds-header-launcher-grid-title"
+          id={`tds-header-launcher-grid-title-${this.uuid}`}
+        >
           <slot></slot>
         </h3>
       </Host>

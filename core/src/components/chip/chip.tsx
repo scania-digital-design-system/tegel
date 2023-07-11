@@ -1,4 +1,5 @@
 import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core';
+import { generateUniqueId } from '../../utils/utils';
 
 /**
  * @slot label - Slot for the label text.
@@ -21,7 +22,7 @@ export class TdsChip {
    * **NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,
    * as the default ID is random and will be different every time.
    */
-  @Prop() chipId: string = crypto.randomUUID();
+  @Prop() chipId: string = generateUniqueId();
 
   /** Controls component's checked attribute. Valid only for type checkbox and radio. */
   @Prop() checked: boolean = false;

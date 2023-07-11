@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
-import { hasSlot } from '../../utils/utils';
+import { generateUniqueId, hasSlot } from '../../utils/utils';
 
 /**
  * @slot header - Slot for the Card header.
@@ -46,7 +46,7 @@ export class TdsCard {
    * **NOTE**: If you're listening for Card events, you need to set this ID yourself to identify the Card,
    * as the default ID is random and will be different every time.
    */
-  @Prop() cardId: string = crypto.randomUUID();
+  @Prop() cardId: string = generateUniqueId();
 
   /** Sends unique Card identifier when the Card is clicked, if clickable=true */
   @Event({

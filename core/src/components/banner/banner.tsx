@@ -1,5 +1,5 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
-import { hasSlot } from '../../utils/utils';
+import { generateUniqueId, hasSlot } from '../../utils/utils';
 
 /**
  * @slot header - Slot for the Header of the Banner
@@ -31,7 +31,7 @@ export class TdsBanner {
    * **NOTE**: If you're listening for Banner close events, you need to set this ID yourself to identify the Banner,
    * as the default ID is random and will be different every time.
    */
-  @Prop() bannerId: string = crypto.randomUUID();
+  @Prop() bannerId: string = generateUniqueId();
 
   /** Removes the close button on the Banner. */
   @Prop() persistent: boolean = false;

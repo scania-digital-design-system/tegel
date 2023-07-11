@@ -10,13 +10,7 @@ import { TdsTableHeaderCell } from './table-header-cell/table-header-cell';
 import { TdsTableToolbar } from './table-toolbar/table-toolbar';
 
 const columnKeys = Object.keys(dummyData[0]);
-const crypto = require('crypto');
 
-Object.defineProperty(globalThis, 'crypto', {
-  value: {
-    randomUUID: () => crypto.randomBytes(10),
-  },
-});
 describe('tds-table filtering', () => {
   it('should render cells from enable-dummy-data prop', async () => {
     const mismatchingCellSpy = jest.fn();
