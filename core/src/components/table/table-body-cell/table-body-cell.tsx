@@ -6,6 +6,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
 ];
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the cell contents.
+ */
 @Component({
   tag: 'tds-body-cell',
   styleUrl: 'table-body-cell.scss',

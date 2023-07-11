@@ -15,10 +15,10 @@
 
 ## Slots
 
-| Slot          | Description                                                   |
-| ------------- | ------------------------------------------------------------- |
-| `"<default>"` | Default slot for the Table Body, used by <tds-table-body-row> |
-| `"no-result"` | Slot for no result message when using filtering.              |
+| Slot          | Description                                      |
+| ------------- | ------------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For table rows.             |
+| `"no-result"` | Slot for no result message when using filtering. |
 
 
 ## Dependencies

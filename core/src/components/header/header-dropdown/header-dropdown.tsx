@@ -2,6 +2,7 @@ import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core'
 import { generateUniqueId } from '../../../utils/utils';
 
 /**
+ * @slot <default> - <b>Unnamed slot.</b> For injecting a dropdown list.
  * @slot icon - Slot for an Icon in the dropdown button.
  * @slot label - Slot for a label text in the dropdown button.
  */

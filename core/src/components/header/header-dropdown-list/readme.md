@@ -12,6 +12,13 @@
 | `type`   | `type`    |             | `"lg" \| "md"` | `'md'`  |
 
 
+## Slots
+
+| Slot          | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For a dropdown list item. |
+
+
 ## Dependencies
 
 ### Used by

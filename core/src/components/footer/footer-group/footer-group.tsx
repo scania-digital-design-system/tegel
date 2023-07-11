@@ -1,6 +1,9 @@
 import { Component, Host, h, Prop, Element } from '@stencil/core';
 import { State } from '@stencil/core/internal';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For footer items.
+ */
 @Component({
   tag: 'tds-footer-group',
   styleUrl: 'footer-group.scss',

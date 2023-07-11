@@ -7,6 +7,7 @@ import readmeDropdown from './header-dropdown/readme.md';
 import readmeDropdownList from './header-dropdown-list/readme.md';
 import readmeDropdownListItem from './header-dropdown-list-item/readme.md';
 import readmeDropdownListUser from './header-dropdown-list-user/readme.md';
+import readmeBrandSymbol from './header-brand-symbol/readme.md';
 import readmeLauncher from './header-launcher/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
@@ -23,6 +24,7 @@ export default {
       'Header dropdown list item': readmeDropdownListItem,
       'Header dropdown list user': readmeDropdownListUser,
       'Header launcher': readmeLauncher,
+      'Header brand symbol': readmeBrandSymbol,
     },
     layout: 'fullscreen',
     docs: {

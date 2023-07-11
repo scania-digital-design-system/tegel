@@ -1,6 +1,9 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
 import { getPreviousNestedChildOfSiblingsMatching, isHeadingElement } from '../../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For a dropdown list item.
+ */
 @Component({
   tag: 'tds-header-dropdown-list',
   styleUrl: 'header-dropdown-list.scss',

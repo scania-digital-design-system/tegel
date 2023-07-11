@@ -2,6 +2,9 @@ import { Component, Element, Host, Listen, h, Prop, State } from '@stencil/core'
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the list of menu items.
+ */
 @Component({
   tag: 'tds-popover-menu',
   styleUrl: 'popover-menu.scss',

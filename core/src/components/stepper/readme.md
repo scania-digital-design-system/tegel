@@ -23,6 +23,13 @@
 | `internalTdsPropsChange` |             | `CustomEvent<{ stepperId: string; changed: (keyof TdsStepperProps)[]; } & Partial<TdsStepperProps>>` |
 
 
+## Slots
+
+| Slot          | Description                                 |
+| ------------- | ------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the step elements. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

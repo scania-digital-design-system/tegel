@@ -9,6 +9,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'noMinWidth',
 ];
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the header cells.
+ */
 @Component({
   tag: 'tds-table-header',
   styleUrl: 'table-header.scss',

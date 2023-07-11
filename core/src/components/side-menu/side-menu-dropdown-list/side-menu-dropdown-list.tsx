@@ -2,7 +2,7 @@ import { Component, Host, h, Listen, Element, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 
 /**
- * @slot <default>  - <b>Unnamed slot.</b> Used for injection of <code>tds-side-menu-dropdown-list-item</code> subcomponent
+ * @slot <default>  - <b>Unnamed slot.</b> For injection of <code>tds-side-menu-dropdown-list-item</code> subcomponents.
  * */
 @Component({
   tag: 'tds-side-menu-dropdown-list',

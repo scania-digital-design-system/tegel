@@ -1,6 +1,9 @@
 import { Component, Element, h, Host } from '@stencil/core';
 import { generateUniqueId } from '../../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the title text.
+ */
 @Component({
   tag: 'tds-header-launcher-list-title',
   styleUrl: 'header-launcher-list-title.scss',

@@ -30,6 +30,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot          | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the tooltip contents. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

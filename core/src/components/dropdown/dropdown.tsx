@@ -7,6 +7,9 @@ import {
   findPreviousFocusableItem,
 } from '../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
+ */
 @Component({
   tag: 'tds-dropdown',
   styleUrl: 'dropdown.scss',

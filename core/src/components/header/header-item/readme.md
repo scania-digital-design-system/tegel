@@ -13,6 +13,13 @@
 | `selected` | `selected` | If the button should appear selected.                                                                                            | `boolean` | `false` |
 
 
+## Slots
+
+| Slot          | Description                                        |
+| ------------- | -------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For a link or button element. |
+
+
 ## Dependencies
 
 ### Used by
