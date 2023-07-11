@@ -64,6 +64,8 @@
 
     input:focus-visible + label {
       @include tds-focus-state;
+
+      background-color: var(--tds-chips-background-focus);
     }
 
     input:checked + label {
