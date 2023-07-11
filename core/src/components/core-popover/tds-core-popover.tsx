@@ -1,13 +1,25 @@
-import { Component, Element, Host, Listen, h, Prop, State, Watch } from '@stencil/core';
+import {
+  Component,
+  Element,
+  Host,
+  Listen,
+  h,
+  Prop,
+  State,
+  Watch,
+  EventEmitter,
+  Event,
+} from '@stencil/core';
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
 @Component({
   tag: 'tds-core-popover',
-  shadow: true,
+  shadow: false,
+  scoped: true,
 })
-export class TdsPopoverMenu {
-  @Element() host!: HTMLElement;
+export class TdsCorePopover {
+  @Element() host!: HTMLTdsCorePopoverElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
   @Prop() selector: string = '';
@@ -33,6 +45,10 @@ export class TdsPopoverMenu {
   /** What triggers the popover to show */
   @Prop() trigger: 'click' | 'hover' | 'hover-popover' = 'click';
 
+  /** Decides if the popover should hide automatically.
+   * Alternatevly it can be hidden externally based on emitted events. */
+  @Prop() autoHide: boolean = true;
+
   @State() renderedShowValue: boolean = false;
 
   @State() popperInstance: Instance | null;
@@ -41,20 +57,38 @@ export class TdsPopoverMenu {
 
   @State() isShown: boolean = false;
 
+  /** @internal Show event. */
+  @Event({
+    eventName: 'internalTdsShow',
+    composed: false,
+    cancelable: false,
+    bubbles: false,
+  })
+  tdsShow: EventEmitter<{}>;
+
+  /** @internal Close event. */
+  @Event({
+    eventName: 'internalTdsClose',
+    composed: false,
+    cancelable: false,
+    bubbles: false,
+  })
+  tdsClose: EventEmitter<{}>;
+
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     if (this.trigger === 'click' && this.isShown && this.show === null) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
       const isClickOutside = !event.composedPath().includes(this.host as any);
       if (isClickOutside) {
-        this.isShown = false;
+        this.setIsShown(false);
       }
     }
   }
 
   @Watch('show')
   onShowChange(newValue: boolean) {
-    this.isShown = newValue;
+    this.setIsShown(newValue);
   }
 
   @Watch('referenceEl')
@@ -70,19 +104,32 @@ export class TdsPopoverMenu {
     });
   }
 
+  private setIsShown = function setIsShown(isShown: boolean | ((s: boolean) => void)) {
+    if (typeof isShown === 'function') {
+      this.isShown = isShown(this.isShown);
+    } else {
+      this.isShown = isShown;
+    }
+    if (this.isShown) {
+      this.tdsShow.emit();
+    } else {
+      this.tdsClose.emit();
+    }
+  }.bind(this);
+
   private onClickTarget = function onClickTarget(event) {
     event.stopPropagation();
-    this.isShown = !this.isShown;
+    this.setIsShown((isShown) => !isShown);
   }.bind(this);
 
   private handleShow = function handleShow(event) {
     event.stopPropagation();
-    this.isShown = true;
+    this.setIsShown(true);
   }.bind(this);
 
   private handleHide = function handleShow(event) {
     event.stopPropagation();
-    this.isShown = false;
+    this.setIsShown(false);
   }.bind(this);
 
   private initialize({
@@ -174,8 +221,13 @@ export class TdsPopoverMenu {
   }
 
   render() {
+    let hostStyle = {};
+    if (this.autoHide) {
+      hostStyle = { display: this.isShown ? 'block' : 'none' };
+    }
+
     return (
-      <Host style={{ display: this.isShown ? 'block' : 'none' }}>
+      <Host style={hostStyle}>
         <slot></slot>
       </Host>
     );

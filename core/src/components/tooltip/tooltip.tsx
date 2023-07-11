@@ -64,6 +64,13 @@ export class TdsTooltip {
           modifiers={this.popperjsExtraModifiers}
           show={this.show}
           placement={this.placement}
+          autoHide={false}
+          onInternalTdsShow={() => {
+            this.show = true;
+          }}
+          onInternalTdsClose={() => {
+            this.show = false;
+          }}
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}

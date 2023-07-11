@@ -131,10 +131,12 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
     <tds-button size= 'sm' id="button-1" text='Hover me'></tds-button>
    </div>
    <script>
+   (() => {
      const tooltip = document.getElementById('tooltip-1');
      const button = document.getElementById('button-1');
 
      tooltip.referenceEl = button;
+    })();
    </script>
   `,
   );
