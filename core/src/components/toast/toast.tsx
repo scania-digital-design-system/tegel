@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
 import { Method } from '@stencil/core/internal';
-import { hasSlot } from '../../utils/utils';
+import { generateUniqueId, hasSlot } from '../../utils/utils';
 
 /**
  * @slot header - Slot for the Toast header.
@@ -16,7 +16,7 @@ export class TdsToast {
   @Element() host: HTMLElement;
 
   /** ID for the Toast. Randomly generated if not specified. */
-  @Prop() toastId: string = crypto.randomUUID();
+  @Prop() toastId: string = generateUniqueId();
 
   /** Header text for the component. */
   @Prop() header: string;

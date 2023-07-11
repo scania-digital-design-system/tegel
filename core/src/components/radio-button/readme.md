@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                     | Type      | Default               |
-| ---------- | ---------- | ----------------------------------------------- | --------- | --------------------- |
-| `checked`  | `checked`  | Decides if the Radio Button is checked or not.  | `boolean` | `false`               |
-| `disabled` | `disabled` | Decides if the Radio Button is disabled or not. | `boolean` | `false`               |
-| `name`     | `name`     | Name of Radio Button, used for reference.       | `string`  | `undefined`           |
-| `radioId`  | `radio-id` | Unique Radio Button identifier.                 | `string`  | `crypto.randomUUID()` |
-| `required` | `required` | Decides if the Radio Button is required or not. | `boolean` | `false`               |
-| `value`    | `value`    | Value of input.                                 | `string`  | `undefined`           |
+| Property   | Attribute  | Description                                     | Type      | Default              |
+| ---------- | ---------- | ----------------------------------------------- | --------- | -------------------- |
+| `checked`  | `checked`  | Decides if the Radio Button is checked or not.  | `boolean` | `false`              |
+| `disabled` | `disabled` | Decides if the Radio Button is disabled or not. | `boolean` | `false`              |
+| `name`     | `name`     | Name of Radio Button, used for reference.       | `string`  | `undefined`          |
+| `radioId`  | `radio-id` | Unique Radio Button identifier.                 | `string`  | `generateUniqueId()` |
+| `required` | `required` | Decides if the Radio Button is required or not. | `boolean` | `false`              |
+| `value`    | `value`    | Value of input.                                 | `string`  | `undefined`          |
 
 
 ## Events

@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                                                                 | Type           | Default               |
-| ---------- | ----------- | --------------------------------------------------------------------------- | -------------- | --------------------- |
-| `checked`  | `checked`   | Sets the Toggle as checked                                                  | `boolean`      | `false`               |
-| `disabled` | `disabled`  | Sets the Toggle in a disabled state                                         | `boolean`      | `false`               |
-| `headline` | `headline`  | Headline for the Toggle                                                     | `string`       | `undefined`           |
-| `name`     | `name`      | Name of the toggle's input element                                          | `string`       | `undefined`           |
-| `required` | `required`  | Make the Toggle required                                                    | `boolean`      | `false`               |
-| `size`     | `size`      | Size of the Toggle                                                          | `"lg" \| "sm"` | `'lg'`                |
-| `toggleId` | `toggle-id` | ID of the Toggle's input element, if not specified, it's randomly generated | `string`       | `crypto.randomUUID()` |
+| Property   | Attribute   | Description                                                                 | Type           | Default              |
+| ---------- | ----------- | --------------------------------------------------------------------------- | -------------- | -------------------- |
+| `checked`  | `checked`   | Sets the Toggle as checked                                                  | `boolean`      | `false`              |
+| `disabled` | `disabled`  | Sets the Toggle in a disabled state                                         | `boolean`      | `false`              |
+| `headline` | `headline`  | Headline for the Toggle                                                     | `string`       | `undefined`          |
+| `name`     | `name`      | Name of the toggle's input element                                          | `string`       | `undefined`          |
+| `required` | `required`  | Make the Toggle required                                                    | `boolean`      | `false`              |
+| `size`     | `size`      | Size of the Toggle                                                          | `"lg" \| "sm"` | `'lg'`               |
+| `toggleId` | `toggle-id` | ID of the Toggle's input element, if not specified, it's randomly generated | `string`       | `generateUniqueId()` |
 
 
 ## Events
