@@ -1,5 +1,5 @@
 import { Component, Host, h, Event, EventEmitter, Prop, Element } from '@stencil/core';
-import { generateUniqueId, hasSlot  } from '../../utils/utils';
+import { generateUniqueId, hasSlot } from '../../utils/utils';
 
 /**
  * @slot prefix - Slot for the prefix icon.
@@ -103,9 +103,13 @@ export class TdsChip {
       <Host>
         <div class="component">
           <div
-            class={`tds-chip-component ${this.size}  ${hasPrefixSlot && 'prefix'} ${
-              hasSuffixSlot && 'suffix'
-            }`}
+            class={{
+              'tds-chip-component': true,
+              'sm': this.size === 'sm',
+              'lg': this.size === 'lg',
+              'prefix': hasPrefixSlot,
+              'suffix': hasSuffixSlot,
+            }}
           >
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
             <label htmlFor={this.chipId}>
