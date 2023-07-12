@@ -104,25 +104,20 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
   return formatHtmlPreview(`
   ${
     inputType === 'Button'
-      ? `<tds-chip type="button" size="${sizeLookUp[size]}">
-            <span slot='prefix'>
+      ? `<tds-chip type="button" size="${sizeLookUp[size]}">        
             ${
               icon && iconPosition === 'Prefix'
-                ? '<tds-icon name="cross" size="16px"></tds-icon>'
+                ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
                 : ''
-            }
-            </span>
+            }           
             <span slot="label">                
-                ${label}
-                
-            </span>
-            <span slot='suffix'>
+                ${label}                
+            </span>         
             ${
               icon && iconPosition === 'Suffix'
-                ? '<tds-icon name="cross" size="16px"></tds-icon>'
+                ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
                 : ''
-            }
-          </span>
+            }          
         </tds-chip>
 
         <!-- Script tag for demo purposes -->
