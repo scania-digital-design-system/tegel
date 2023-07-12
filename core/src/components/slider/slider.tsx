@@ -469,9 +469,11 @@ export class TdsSlider {
         ></input>
 
         <div
-          class={`tds-slider ${this.disabled ? 'disabled' : ''} ${
-            this.useSmall ? 'tds-slider-small' : ''
-          }`}
+          class={{
+            'tds-slider': true,
+            'disabled': this.disabled,
+            'tds-slider-small': this.useSmall,
+          }}
           ref={(el) => {
             this.wrapperElement = el as HTMLElement;
           }}
