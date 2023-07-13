@@ -5,7 +5,7 @@ import { Attributes, inheritAttributes } from '../../utils/utils';
 @Component({
   tag: 'tds-popover-menu',
   styleUrl: 'popover-menu.scss',
-  shadow: false,
+  shadow: false, // Shadow false so you can put a global class directly on the element
   scoped: true,
 })
 export class TdsPopoverMenu {
@@ -39,7 +39,10 @@ export class TdsPopoverMenu {
     return (
       <Host>
         <tds-core-popover
-          class={`tds-popover-menu ${this.inheritedAttributes.class}`}
+          class={{
+            'tds-popover-menu': true,
+            [this.inheritedAttributes.class ?? '']: true,
+          }}
           selector={this.selector}
           referenceEl={this.referenceEl}
           show={this.show}

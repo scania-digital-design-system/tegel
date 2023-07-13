@@ -1,13 +1,16 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
+import { Attributes, inheritAttributes } from '../../utils/utils';
 
 @Component({
   tag: 'tds-tooltip',
   styleUrl: 'tooltip.scss',
-  shadow: false,
+  shadow: false, // Shadow false so you can put a global class directly on the element
   scoped: true,
 })
 export class TdsTooltip {
+  @Element() host: HTMLTdsTooltipElement;
+
   /** In case Tooltip contains only text, no HTML, a text can be passed by this prop */
   @Prop() text: string = '';
 
@@ -53,11 +56,23 @@ export class TdsTooltip {
     },
   ];
 
+  inheritedAttributes: Attributes = [];
+
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
+  }
+
   render() {
     return (
       <Host>
         <tds-core-popover
-          class={`tds-tooltip tds-tooltip-${this.border} ${this.show ? 'tds-tooltip-show' : ''}`}
+          {...this.inheritedAttributes}
+          class={{
+            'tds-tooltip': true,
+            [`tds-tooltip-${this.border}`]: true,
+            [this.inheritedAttributes.class ?? '']: true,
+            'tds-tooltip-show': this.show,
+          }}
           selector={this.selector}
           referenceEl={this.referenceEl}
           trigger={this.mouseOverTooltip ? 'hover-popover' : 'hover'}
@@ -74,7 +89,7 @@ export class TdsTooltip {
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}
-          <slot />
+          <slot></slot>
         </tds-core-popover>
       </Host>
     );

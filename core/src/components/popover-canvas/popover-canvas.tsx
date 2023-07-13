@@ -5,7 +5,7 @@ import { Attributes, inheritAttributes } from '../../utils/utils';
 @Component({
   tag: 'tds-popover-canvas',
   styleUrl: 'popover-canvas.scss',
-  shadow: false,
+  shadow: false, // Shadow false so you can put a global class directly on the element
   scoped: true,
 })
 export class TdsPopoverCanvas {
@@ -45,7 +45,10 @@ export class TdsPopoverCanvas {
       <Host>
         <tds-core-popover
           {...this.inheritedAttributes}
-          class={`tds-popover-canvas ${this.inheritedAttributes.class}`}
+          class={{
+            'tds-popover-canvas': true,
+            [this.inheritedAttributes.class ?? '']: true,
+          }}
           selector={this.selector}
           referenceEl={this.referenceEl}
           show={this.show}
@@ -55,7 +58,10 @@ export class TdsPopoverCanvas {
           modifiers={this.modifiers}
           trigger={'click'}
         >
-          <slot></slot>
+          <div>
+            {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}
+            <slot></slot>
+          </div>
         </tds-core-popover>
       </Host>
     );
