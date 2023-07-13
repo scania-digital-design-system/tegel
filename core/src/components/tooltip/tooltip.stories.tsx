@@ -120,8 +120,8 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
    <!-- The 'referenceEl' prop can be used instead of 'selector',
     which might be preferable in frameworks like React -->
    <tds-tooltip
+      id="tooltip-1"
       placement="${positionLookup[tooltipPosition]}"
-      selector="#button-1"
       text="${text}"
       mouse-over-tooltip="${mouseOverTooltip}">
       ${slot}
@@ -130,6 +130,14 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
     <!-- Demo button for presentation purposes -->
     <tds-button size= 'sm' id="button-1" text='Hover me'></tds-button>
    </div>
+   <script>
+   (() => {
+     const tooltip = document.getElementById('tooltip-1');
+     const button = document.getElementById('button-1');
+
+     tooltip.referenceEl = button;
+    })();
+   </script>
   `,
   );
 

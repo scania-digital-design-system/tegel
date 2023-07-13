@@ -1,6 +1,6 @@
-import { Component, h, Prop, State, Method } from '@stencil/core';
-import { createPopper } from '@popperjs/core';
-import type { Placement, Instance } from '@popperjs/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
+import type { Placement } from '@popperjs/core';
+import { Attributes, inheritAttributes } from '../../utils/utils';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the tooltip contents.
@@ -8,9 +8,12 @@ import type { Placement, Instance } from '@popperjs/core';
 @Component({
   tag: 'tds-tooltip',
   styleUrl: 'tooltip.scss',
-  shadow: true,
+  shadow: false, // Shadow false so you can put a global class directly on the element
+  scoped: true,
 })
 export class TdsTooltip {
+  @Element() host: HTMLTdsTooltipElement;
+
   /** In case Tooltip contains only text, no HTML, a text can be passed by this prop */
   @Prop() text: string = '';
 
@@ -29,112 +32,69 @@ export class TdsTooltip {
   /** Placement of Tooltip. */
   @Prop() placement: Placement = 'bottom';
 
-  @State() popperInstance: Instance;
-
-  @State() target: any;
-
-  /** Method to update the Tooltip. Will reevaluate the Tooltips position. */
-  @Method()
-  async updateTooltip() {
-    this.popperInstance?.update();
-  }
-
   border: string;
 
   offsetSkidding: number = 0;
 
   offsetDistance: number = 8;
 
-  tooltip!: HTMLInputElement;
+  popperjsExtraModifiers = [
+    {
+      name: 'positionCalc',
+      enabled: true,
+      phase: 'main',
+      fn: ({ state }) => {
+        if (state.placement === 'bottom-start' || state.placement === 'right-start') {
+          this.border = 'top-left';
+        } else if (state.placement === 'bottom-end' || state.placement === 'left-start') {
+          this.border = 'top-right';
+        } else if (state.placement === 'top-end' || state.placement === 'left-end') {
+          this.border = 'bottom-right';
+        } else if (state.placement === 'top-start' || state.placement === 'right-end') {
+          this.border = 'bottom-left';
+        } else if (state.placement === 'bottom' || state.placement === 'top') {
+          this.border = 'default';
+        }
+      },
+    },
+  ];
 
-  componentDidLoad() {
-    this.target = this.referenceEl ?? document.querySelector(this.selector);
+  inheritedAttributes: Attributes = [];
 
-    const thisValue = this;
-    this.popperInstance = createPopper(this.target, this.tooltip, {
-      placement: thisValue.placement,
-      modifiers: [
-        {
-          name: 'positionCalc',
-          enabled: true,
-          phase: 'main',
-          fn({ state }) {
-            if (state.placement === 'bottom-start' || state.placement === 'right-start') {
-              thisValue.border = 'top-left';
-            } else if (state.placement === 'bottom-end' || state.placement === 'left-start') {
-              thisValue.border = 'top-right';
-            } else if (state.placement === 'top-end' || state.placement === 'left-end') {
-              thisValue.border = 'bottom-right';
-            } else if (state.placement === 'top-start' || state.placement === 'right-end') {
-              thisValue.border = 'bottom-left';
-            } else if (state.placement === 'bottom' || state.placement === 'top') {
-              thisValue.border = 'default';
-            }
-          },
-        },
-        {
-          name: 'offset',
-          options: {
-            offset: [this.offsetSkidding, this.offsetDistance],
-          },
-        },
-      ],
-    });
-
-    const showTooltip = () => {
-      this.show = true;
-    };
-
-    const hideTooltip = () => {
-      this.show = false;
-    };
-
-    // For tabbing over element
-    this.target.addEventListener('focusin', () => {
-      showTooltip();
-    });
-
-    this.target.addEventListener('focusout', () => {
-      hideTooltip();
-    });
-
-    // For hovering over element with selector
-    this.target.addEventListener('mouseenter', () => {
-      showTooltip();
-    });
-
-    this.target.addEventListener('mouseleave', () => {
-      hideTooltip();
-    });
-
-    // For hovering over Tooltip itself:
-    if (this.mouseOverTooltip === true) {
-      this.tooltip.addEventListener('mouseenter', () => {
-        showTooltip();
-      });
-
-      this.tooltip.addEventListener('mouseleave', () => {
-        hideTooltip();
-      });
-    }
-  }
-
-  disconnectedCallback() {
-    this.popperInstance?.destroy();
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
   }
 
   render() {
     return (
-      <span
-        ref={(el) => {
-          this.tooltip = el as HTMLInputElement;
-        }}
-        class={`tds-tooltip tds-tooltip-${this.border} ${this.show ? 'tds-tooltip-show' : ''}`}
-      >
-        {this.text}
-        {/* Slot is added to support adding HTML elements to component */}
-        <slot />
-      </span>
+      <Host>
+        <tds-core-popover
+          {...this.inheritedAttributes}
+          class={{
+            'tds-tooltip': true,
+            [`tds-tooltip-${this.border}`]: true,
+            [this.inheritedAttributes.class ?? '']: true,
+            'tds-tooltip-show': this.show,
+          }}
+          selector={this.selector}
+          referenceEl={this.referenceEl}
+          trigger={this.mouseOverTooltip ? 'hover-popover' : 'hover'}
+          modifiers={this.popperjsExtraModifiers}
+          show={this.show}
+          placement={this.placement}
+          autoHide={false}
+          onInternalTdsShow={() => {
+            this.show = true;
+          }}
+          onInternalTdsClose={() => {
+            this.show = false;
+          }}
+        >
+          {this.text}
+          {/* Slot is added to support adding HTML elements to component */}
+          <slot></slot>
+        </tds-core-popover>
+      </Host>
     );
   }
 }

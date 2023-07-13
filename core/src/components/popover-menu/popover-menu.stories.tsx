@@ -134,7 +134,7 @@ const Template = ({ menuPosition, icons }) => {
         <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
       </tds-button>
     </div>
-
+    
     <script>
       // The 'selector' prop on Popover-Menu can be used instead, but it might be less ideal in frameworks like React 
       document.getElementById('my-popover-menu').referenceEl = document.getElementById('my-popover-button');

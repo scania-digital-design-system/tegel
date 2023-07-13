@@ -1,6 +1,6 @@
-import { Component, Element, Host, Listen, h, Prop, State } from '@stencil/core';
-import { createPopper } from '@popperjs/core';
-import type { Placement, Instance } from '@popperjs/core';
+import { Component, Host, h, Prop, Element } from '@stencil/core';
+import type { Placement } from '@popperjs/core';
+import { Attributes, inheritAttributes } from '../../utils/utils';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the list of menu items.
@@ -8,10 +8,11 @@ import type { Placement, Instance } from '@popperjs/core';
 @Component({
   tag: 'tds-popover-menu',
   styleUrl: 'popover-menu.scss',
-  shadow: true,
+  shadow: false, // Shadow false so you can put a global class directly on the element
+  scoped: true,
 })
 export class TdsPopoverMenu {
-  @Element() popoverMenuElement!: HTMLElement;
+  @Element() host: HTMLTdsPopoverMenuElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
   @Prop() selector: string = '';
@@ -20,7 +21,7 @@ export class TdsPopoverMenu {
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the Popover Menu should be visible from the start */
-  @Prop() show: boolean = false;
+  @Prop() show: boolean = null;
 
   /** Decides the placement of the Popover Menu */
   @Prop() placement: Placement = 'auto';
@@ -31,80 +32,29 @@ export class TdsPopoverMenu {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
-  @State() renderedShowValue: boolean = false;
+  inheritedAttributes: Attributes = [];
 
-  @State() popperInstance: Instance;
-
-  @State() target: any;
-
-  @Listen('mousedown', { target: 'window' })
-  handleOutsideClick() {
-    if (this.show) {
-      this.show = false;
-    }
-  }
-
-  componentDidLoad() {
-    this.target = this.referenceEl ?? document.querySelector(this.selector);
-    this.renderedShowValue = this.show;
-
-    this.popperInstance = createPopper(this.target, this.popoverMenuElement, {
-      strategy: 'fixed',
-      placement: this.placement,
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [this.offsetSkidding, this.offsetDistance],
-          },
-        },
-      ],
-    });
-
-    const showMenu = () => {
-      this.show = true;
-    };
-
-    const hideMenu = () => {
-      this.show = false;
-    };
-
-    this.target.addEventListener('mousedown', (event) => {
-      event.stopPropagation();
-
-      if (this.show) {
-        hideMenu();
-      } else {
-        showMenu();
-      }
-    });
-
-    this.popoverMenuElement.addEventListener('mousemove', (event) => {
-      event.stopPropagation();
-    });
-
-    this.popoverMenuElement.addEventListener('mousedown', (event) => {
-      event.stopPropagation();
-    });
-  }
-
-  componentDidRender() {
-    if (this.show && !this.renderedShowValue) {
-      // Here we update the popper position since its position is wrong
-      // before it is rendered.
-      this.popperInstance.update();
-    }
-    this.renderedShowValue = this.show;
-  }
-
-  disconnectedCallback() {
-    this.popperInstance?.destroy();
+  componentWillLoad() {
+    this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
   }
 
   render() {
     return (
-      <Host class={`tds-popover-menu ${this.show ? 'tds-popover-menu-show' : ''}`}>
-        <slot></slot>
+      <Host>
+        <tds-core-popover
+          class={{
+            'tds-popover-menu': true,
+            [this.inheritedAttributes.class ?? '']: true,
+          }}
+          selector={this.selector}
+          referenceEl={this.referenceEl}
+          show={this.show}
+          placement={this.placement}
+          offsetSkidding={this.offsetSkidding}
+          offsetDistance={this.offsetDistance}
+        >
+          <slot></slot>
+        </tds-core-popover>
       </Host>
     );
   }
