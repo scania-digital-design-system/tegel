@@ -1,5 +1,8 @@
 import { Component, Element, h } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For slotting a link, button, or similar.
+ */
 @Component({
   tag: 'tds-footer-item',
   styleUrl: 'footer-item.scss',

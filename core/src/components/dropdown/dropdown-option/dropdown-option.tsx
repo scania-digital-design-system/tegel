@@ -2,6 +2,9 @@ import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
 import { EventEmitter, Method } from '@stencil/core/internal';
 import { TdsCheckboxCustomEvent } from '../../../components';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the option label text.
+ */
 @Component({
   tag: 'tds-dropdown-option',
   styleUrl: 'dropdown-option.scss',

@@ -1,5 +1,8 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For a link or button element.
+ */
 @Component({
   tag: 'tds-header-dropdown-list-item',
   styleUrl: 'header-dropdown-list-item.scss',

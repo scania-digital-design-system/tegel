@@ -1,6 +1,9 @@
 import { Component, Element, h, Host, State } from '@stencil/core';
 import { getPreviousNestedChildOfSiblingsMatching, isHeadingElement } from '../../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For a grid item element.
+ */
 @Component({
   tag: 'tds-header-launcher-grid',
   styleUrl: 'header-launcher-grid.scss',

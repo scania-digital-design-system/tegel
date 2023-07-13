@@ -35,6 +35,13 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot          | Description                                     |
+| ------------- | ----------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the option label text. |
+
+
 ## Dependencies
 
 ### Depends on

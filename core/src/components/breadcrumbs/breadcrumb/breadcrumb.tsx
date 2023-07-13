@@ -1,5 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For a native <code>&lt;a></code> element.
+ */
 @Component({
   tag: 'tds-breadcrumb',
   styleUrl: 'breadcrumb.scss',

@@ -31,7 +31,7 @@ const INITIALIZE_ANIMATION_DELAY = 500;
 /**
  * @slot overlay - Used of injection of tds-side-menu-overlay
  * @slot close-button - Used for injection of tds-side-menu-close-button that is show when in mobile view
- * @slot <default> - <b>Unnamed slot.</b>
+ * @slot <default> - <b>Unnamed slot.</b> For primary content of the side menu - like buttons.
  * Used for nesting main content of Side Menu, e.g. <code><tds-side-menu-item></code> and <code><tds-side-menu-dropdown></code> components
  * @slot end - Used for items that are presented at the bottom of the Side Menu, e.g. profile settings
  * @slot sticky-end - Used for tds-side-menu-collapse-button component

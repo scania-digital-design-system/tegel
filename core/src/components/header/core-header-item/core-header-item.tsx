@@ -1,5 +1,8 @@
 import { Component, h, Host } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For content.
+ */
 @Component({
   tag: 'tds-core-header-item',
   styleUrl: 'core-header-item.scss',

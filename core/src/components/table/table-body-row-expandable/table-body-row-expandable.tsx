@@ -19,6 +19,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 ];
 
 /**
+ * @slot <default> - <b>Unnamed slot.</b> For the cells.
  * @slot expand-row - Slot for the expanded row.
  */
 @Component({

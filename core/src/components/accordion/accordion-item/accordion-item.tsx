@@ -1,6 +1,7 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
 
 /**
+ * @slot <default> - <b>Unnamed slot.</b> For content of an expanded accordion.
  * @slot header - Slot for the Accordion Item header.
  */
 

@@ -1,6 +1,9 @@
 import { Component, Host, h } from '@stencil/core';
 import { generateUniqueId } from '../../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For list items.
+ */
 @Component({
   tag: 'tds-header-launcher-list',
   shadow: false,

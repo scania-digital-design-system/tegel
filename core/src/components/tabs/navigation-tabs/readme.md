@@ -34,6 +34,13 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 
 
 
+## Slots
+
+| Slot          | Description                                |
+| ------------- | ------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For the tab elements. |
+
+
 ## Dependencies
 
 ### Depends on
