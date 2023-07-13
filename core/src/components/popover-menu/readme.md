@@ -17,6 +17,13 @@
 | `show`           | `show`            | Decides if the Popover Menu should be visible from the start          | `boolean`                                                                                                                                                                                                    | `null`      |
 
 
+## Slots
+
+| Slot          | Description                                      |
+| ------------- | ------------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For the list of menu items. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -29,13 +36,6 @@ graph TD;
   tds-popover-menu --> tds-core-popover
   style tds-popover-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
-
-## Slots
-
-| Slot          | Description                                      |
-| ------------- | ------------------------------------------------ |
-| `"<default>"` | <b>Unnamed slot.</b> For the list of menu items. |
-
 
 ----------------------------------------------
 
