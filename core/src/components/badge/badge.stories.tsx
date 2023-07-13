@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Badge`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -75,8 +75,9 @@ export default {
 const Template = ({ value, size, hidden, demoCode }) =>
   formatHtmlPreview(
     `
-    ${demoCode
-      ? `<style>
+    ${
+      demoCode
+        ? `<style>
     /* Note: Demo classes used here are just for demo purposes in Storybook */
     .badge-demo-box {
       margin:5px;
@@ -98,7 +99,7 @@ const Template = ({ value, size, hidden, demoCode }) =>
       top: -2px;
     }
     </style>`
-      : ''
+        : ''
     }
 
     <div class="${demoCode ? 'badge-demo-box' : ''}">
@@ -110,4 +111,4 @@ const Template = ({ value, size, hidden, demoCode }) =>
     </div>`,
   );
 
-export const Badge = Template.bind({});
+export const Default = Template.bind({});

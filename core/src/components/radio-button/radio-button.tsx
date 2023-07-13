@@ -1,4 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
+import { generateUniqueId } from '../../utils/utils';
 
 /**
  * @slot label - Slot for the label text.
@@ -19,7 +20,7 @@ export class TdsRadioButton {
   @Prop() value: string;
 
   /** Unique Radio Button identifier. */
-  @Prop() radioId: string = crypto.randomUUID();
+  @Prop() radioId: string = generateUniqueId();
 
   /** Decides if the Radio Button is checked or not. */
   @Prop({ reflect: true }) checked: boolean = false;

@@ -179,15 +179,33 @@ const EventListenersTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body disable-pagination-function disable-filtering-function disable-sorting-function enable-json-data>
+          <tds-table-body>
               <tds-table-body-row>
                   <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
                   <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
                   <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                   <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
               </tds-table-body-row>
+              <tds-table-body-row>
+                  <tds-body-cell cell-value="Test value 9" cell-key="truck"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 10" cell-key="driver"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 11" cell-key="country"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 12" cell-key="mileage"></tds-body-cell>
+              </tds-table-body-row>
+              <tds-table-body-row>
+                  <tds-body-cell cell-value="Test value 13" cell-key="truck"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 14" cell-key="driver"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 15" cell-key="country"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 16" cell-key="mileage"></tds-body-cell>
+              </tds-table-body-row>
+              <tds-table-body-row>
+                  <tds-body-cell cell-value="Test value 17" cell-key="truck"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 18" cell-key="driver"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 19" cell-key="country"></tds-body-cell>
+                  <tds-body-cell cell-value="Test value 20" cell-key="mileage"></tds-body-cell>
+              </tds-table-body-row>
           </tds-table-body>
-        <tds-table-footer pagination max-pages="10"></tds-table-footer>
+        <tds-table-footer pagination pages="4"></tds-table-footer>
   </tds-table>
 
   <!-- Note: Code below is just for demo purposes -->

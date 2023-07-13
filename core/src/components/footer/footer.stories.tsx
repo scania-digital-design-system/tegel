@@ -5,7 +5,7 @@ import readmeItem from './footer-item/readme.md';
 import readmeLinkGroup from './footer-group/readme.md';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Footer`,
   parameters: {
     notes: { 'Footer': readme, 'Footer link group': readmeLinkGroup, 'Footer item': readmeItem },
     layout: 'fullscreen',
@@ -151,4 +151,4 @@ const Template = ({ topPart, modeVariant }) =>
   `,
   );
 
-export const Footer = Template.bind({});
+export const Default = Template.bind({});

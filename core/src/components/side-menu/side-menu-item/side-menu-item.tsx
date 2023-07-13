@@ -3,7 +3,7 @@ import { CollapseEvent } from '../side-menu';
 import { dfs } from '../../../utils/utils';
 
 /**
- * @slot <default>  - <b>Unnamed slot.</b> Used for injecting native <code>button</code> and <code>link</code> elements
+ * @slot <default> - <b>Unnamed slot.</b> For injecting a native <code>&lt;button</code> and <code>&lt;a></code> element.
  * */
 @Component({
   tag: 'tds-side-menu-item',

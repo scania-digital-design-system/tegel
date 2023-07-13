@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Tooltip`,
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -141,4 +141,4 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
   `,
   );
 
-export const Tooltip = ComponentTooltip.bind({});
+export const Default = ComponentTooltip.bind({});

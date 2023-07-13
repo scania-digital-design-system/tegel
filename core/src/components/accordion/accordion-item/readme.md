@@ -38,9 +38,10 @@ Type: `Promise<void>`
 
 ## Slots
 
-| Slot       | Description                         |
-| ---------- | ----------------------------------- |
-| `"header"` | Slot for the Accordion Item header. |
+| Slot          | Description                                                |
+| ------------- | ---------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For content of an expanded accordion. |
+| `"header"`    | Slot for the Accordion Item header.                        |
 
 
 ## Dependencies

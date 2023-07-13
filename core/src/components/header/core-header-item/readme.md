@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Slots
+
+| Slot          | Description                       |
+| ------------- | --------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For content. |
+
+
 ## Dependencies
 
 ### Used by

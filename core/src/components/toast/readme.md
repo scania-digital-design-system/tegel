@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                                            | Type                                                 | Default               |
-| ----------- | ------------ | ------------------------------------------------------ | ---------------------------------------------------- | --------------------- |
-| `header`    | `header`     | Header text for the component.                         | `string`                                             | `undefined`           |
-| `hidden`    | `hidden`     | Hides the Toast.                                       | `boolean`                                            | `false`               |
-| `subheader` | `subheader`  | Subheader text for the component.                      | `string`                                             | `undefined`           |
-| `toastId`   | `toast-id`   | ID for the Toast. Randomly generated if not specified. | `string`                                             | `crypto.randomUUID()` |
-| `toastRole` | `toast-role` | ARIA role for the Toast.                               | `"alert" \| "log" \| "status"`                       | `'alert'`             |
-| `type`      | `type`       | Type of Toast.                                         | `"error" \| "information" \| "success" \| "warning"` | `'information'`       |
+| Property    | Attribute    | Description                                            | Type                                                 | Default              |
+| ----------- | ------------ | ------------------------------------------------------ | ---------------------------------------------------- | -------------------- |
+| `header`    | `header`     | Header text for the component.                         | `string`                                             | `undefined`          |
+| `hidden`    | `hidden`     | Hides the Toast.                                       | `boolean`                                            | `false`              |
+| `subheader` | `subheader`  | Subheader text for the component.                      | `string`                                             | `undefined`          |
+| `toastId`   | `toast-id`   | ID for the Toast. Randomly generated if not specified. | `string`                                             | `generateUniqueId()` |
+| `toastRole` | `toast-role` | ARIA role for the Toast.                               | `"alert" \| "log" \| "status"`                       | `'alert'`            |
+| `type`      | `type`       | Type of Toast.                                         | `"error" \| "information" \| "success" \| "warning"` | `'information'`      |
 
 
 ## Events

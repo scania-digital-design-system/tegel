@@ -2,6 +2,7 @@
 // https://medium.com/@scottmgerstl/passing-an-object-or-array-to-stencil-dd62b7d92641
 
 import { Component, Prop, h, Host, Event, EventEmitter, Element, Watch } from '@stencil/core';
+import { generateUniqueId } from '../../../utils/utils';
 
 type Props = {
   verticalDividers: boolean;
@@ -19,6 +20,9 @@ export type InternalTdsTablePropChange = {
   changed: Array<keyof Props>;
 } & Partial<Props>;
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the table contents.
+ */
 @Component({
   tag: 'tds-table',
   styleUrl: 'table.scss',
@@ -54,7 +58,7 @@ export class TdsTable {
    * **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table,
    * as the default ID is random and will be different every time.
    */
-  @Prop() tableId: string = crypto.randomUUID();
+  @Prop() tableId: string = generateUniqueId();
 
   @Element() host: HTMLElement;
 

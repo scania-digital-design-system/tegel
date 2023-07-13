@@ -7,6 +7,9 @@ import {
   findPreviousFocusableItem,
 } from '../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
+ */
 @Component({
   tag: 'tds-dropdown',
   styleUrl: 'dropdown.scss',
@@ -227,9 +230,6 @@ export class TdsDropdown {
     if (this.defaultValue) {
       this.setDefaultOption();
     }
-    if (this.openDirection === 'auto') {
-      this.getOpenDirection();
-    }
   }
 
   setDefaultOption = () => {
@@ -256,14 +256,17 @@ export class TdsDropdown {
   };
 
   getOpenDirection = () => {
-    const dropdownMenuHeight = this.dropdownList.offsetHeight;
-    const distanceToBottom = this.host.getBoundingClientRect().top;
-    const viewportHeight = window.innerHeight;
-    if (distanceToBottom + dropdownMenuHeight + 57 > viewportHeight) {
-      this.openDirection = 'up';
-    } else {
-      this.openDirection = 'down';
+    if (this.openDirection === 'auto' || !this.openDirection) {
+      const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
+      const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
+      const viewportHeight = window.innerHeight;
+      if (distanceToBottom + dropdownMenuHeight + 57 > viewportHeight) {
+        return 'up';
+      }
+      return 'down';
     }
+
+    return this.openDirection;
   };
 
   getValue = () => {
@@ -450,7 +453,7 @@ export class TdsDropdown {
           class={`dropdown-list
             ${this.size}
             ${this.open ? 'open' : 'closed'}
-            ${this.openDirection}
+            ${this.getOpenDirection()}
             ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}`}
         >
           <slot></slot>

@@ -212,4 +212,4 @@ const BasicTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const Default = BasicTemplate.bind({});
+export const Basic = BasicTemplate.bind({});

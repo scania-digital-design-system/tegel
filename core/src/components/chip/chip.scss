@@ -7,14 +7,8 @@
 }
 
 :host {
-  ::slotted(*) {
-    gap: 8px;
-  }
-
-  &[size='sm'] {
-    ::slotted(*) {
-      gap: 6px;
-    }
+  ::slotted([slot='label']) {
+    padding-top: 2px;
   }
 }
 
@@ -43,7 +37,7 @@
     &.lg {
       label {
         height: 32px;
-        padding: 1px 16px 0;
+        padding: 0 16px;
         gap: 8px;
       }
     }
@@ -51,8 +45,44 @@
     &.sm {
       label {
         height: 24px;
-        padding: 1px 12px 0;
+        padding: 0 12px;
         gap: 6px;
+      }
+    }
+
+    &.sm.prefix {
+      label {
+        padding: 0 12px 0 6px;
+      }
+    }
+
+    &.sm.suffix {
+      label {
+        padding: 0 6px 0 12px;
+      }
+    }
+
+    &.lg.prefix {
+      label {
+        padding: 0 16px 0 8px;
+      }
+    }
+
+    &.lg.suffix {
+      label {
+        padding: 0 8px 0 16px;
+      }
+    }
+
+    &.lg.prefix.suffix {
+      label {
+        padding: 0 8px;
+      }
+    }
+
+    &.sm.prefix.suffix {
+      label {
+        padding: 0 6px;
       }
     }
 
@@ -64,6 +94,8 @@
 
     input:focus-visible + label {
       @include tds-focus-state;
+
+      background-color: var(--tds-chips-background-focus);
     }
 
     input:checked + label {

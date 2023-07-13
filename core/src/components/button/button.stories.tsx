@@ -4,7 +4,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Button`,
   parameters: {
     notes: readme,
     layout: 'padded',
@@ -188,4 +188,4 @@ const WebComponentTemplate = ({
 };
 
 /** Button as a web component */
-export const Button = WebComponentTemplate.bind({});
+export const Default = WebComponentTemplate.bind({});

@@ -1,4 +1,5 @@
 import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
+import { generateUniqueId } from '../../utils/utils';
 
 /**
  * @slot label - Slot for the label text.
@@ -16,7 +17,7 @@ export class TdsCheckbox {
   @Prop() name: string;
 
   /** ID for the Checkbox's input element. Randomly generated if not specified. */
-  @Prop() checkboxId: string = crypto.randomUUID();
+  @Prop() checkboxId: string = generateUniqueId();
 
   /** Sets the Checkbox in a disabled state */
   @Prop() disabled: boolean = false;

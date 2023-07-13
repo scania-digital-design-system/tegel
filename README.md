@@ -27,7 +27,7 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 
 ### Setting up the development environment
 
-1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 16 at the time of writing).
+1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 18 at the time of writing).
 2. Run `npm install` in the root directory.
 3. Run `npm install` in the core directory.
 3. Create a `.env` file in the /tegel directory with the following contents:

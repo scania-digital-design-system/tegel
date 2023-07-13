@@ -1,5 +1,8 @@
 import { Component, Host, h, Method, State, Prop } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the tab link or button.
+ */
 @Component({
   tag: 'tds-folder-tab',
   styleUrl: 'folder-tab.scss',

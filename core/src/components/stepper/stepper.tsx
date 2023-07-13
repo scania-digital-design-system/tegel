@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, Event } from '@stencil/core';
 import { EventEmitter, Watch } from '@stencil/core/internal';
+import { generateUniqueId } from '../../utils/utils';
 
 type TdsStepperProps = {
   orientation: 'horizontal' | 'vertical';
@@ -13,6 +14,9 @@ export type InternalTdsStepperPropChange = {
   changed: Array<keyof TdsStepperProps>;
 } & Partial<TdsStepperProps>;
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the step elements.
+ */
 @Component({
   tag: 'tds-stepper',
   styleUrl: 'stepper.scss',
@@ -38,7 +42,7 @@ export class TdsStepper {
    * **NOTE**: If you're listening for Stepper events, you need to set this ID yourself to identify the Stepper,
    * as the default ID is random and will be different every time.
    */
-  @Prop() stepperId: string = crypto.randomUUID();
+  @Prop() stepperId: string = generateUniqueId();
 
   componentWillLoad() {
     this.host.children[0].classList.add('first');

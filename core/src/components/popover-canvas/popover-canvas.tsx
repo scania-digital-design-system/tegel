@@ -2,6 +2,9 @@ import { Component, Host, h, Prop, Element } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes, inheritAttributes } from '../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the contents of the popover.
+ */
 @Component({
   tag: 'tds-popover-canvas',
   styleUrl: 'popover-canvas.scss',

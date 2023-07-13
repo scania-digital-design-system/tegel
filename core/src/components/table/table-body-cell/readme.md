@@ -14,6 +14,13 @@
 | `disablePadding` | `disable-padding` | Disables internal padding. Useful when passing other components to cell.                                            | `boolean`          | `false`     |
 
 
+## Slots
+
+| Slot          | Description                                 |
+| ------------- | ------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the cell contents. |
+
+
 ## Dependencies
 
 ### Used by

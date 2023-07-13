@@ -1,4 +1,5 @@
 import { Component, h, Prop, Event, Element, EventEmitter, Method } from '@stencil/core';
+import { generateUniqueId } from '../../utils/utils';
 
 /**
  * @slot label - Slot for the label text.
@@ -31,7 +32,7 @@ export class TdsToggle {
   @Prop() disabled: boolean = false;
 
   /** ID of the Toggle's input element, if not specified, it's randomly generated */
-  @Prop() toggleId: string = crypto.randomUUID();
+  @Prop() toggleId: string = generateUniqueId();
 
   /** Toggles the Toggle. */
   @Method()

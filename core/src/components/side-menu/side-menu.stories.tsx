@@ -13,7 +13,7 @@ import readmeSideMenuDropdownListItem from './side-menu-dropdown-list-item/readm
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Side Menu`,
   parameters: {
     notes: {
       'Side Menu': readme,
@@ -225,4 +225,4 @@ const Template = ({ persistent, collapsible }) =>
   `,
   );
 
-export const SideMenu = Template.bind({});
+export const Default = Template.bind({});

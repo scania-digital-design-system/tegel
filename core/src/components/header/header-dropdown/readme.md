@@ -16,10 +16,11 @@
 
 ## Slots
 
-| Slot      | Description                                   |
-| --------- | --------------------------------------------- |
-| `"icon"`  | Slot for an Icon in the dropdown button.      |
-| `"label"` | Slot for a label text in the dropdown button. |
+| Slot          | Description                                         |
+| ------------- | --------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For injecting a dropdown list. |
+| `"icon"`      | Slot for an Icon in the dropdown button.            |
+| `"label"`     | Slot for a label text in the dropdown button.       |
 
 
 ## Dependencies

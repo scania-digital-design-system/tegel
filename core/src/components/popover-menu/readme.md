@@ -30,6 +30,13 @@ graph TD;
   style tds-popover-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
+## Slots
+
+| Slot          | Description                                      |
+| ------------- | ------------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For the list of menu items. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -4,7 +4,7 @@ import readmeItem from './folder-tab/readme.md';
 import { ComponentsFolder } from '../../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Tabs`,
   parameters: {
     notes: {
       'Folder Tabs': readme,

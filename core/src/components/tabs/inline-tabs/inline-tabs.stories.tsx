@@ -4,7 +4,7 @@ import readmeTab from './inline-tab/readme.md';
 import { ComponentsFolder } from '../../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Tabs`,
   parameters: {
     notes: {
       'Inline tabs': readme,

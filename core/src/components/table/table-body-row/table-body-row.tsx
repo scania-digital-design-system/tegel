@@ -8,6 +8,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'modeVariant',
 ];
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the cells.
+ */
 @Component({
   tag: 'tds-table-body-row',
   styleUrl: 'table-body-row.scss',

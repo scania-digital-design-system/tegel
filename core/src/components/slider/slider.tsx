@@ -1,4 +1,5 @@
 import { Component, h, Prop, Listen, EventEmitter, Event, Method } from '@stencil/core';
+import { generateUniqueId } from '../../utils/utils';
 
 @Component({
   tag: 'tds-slider',
@@ -52,7 +53,7 @@ export class TdsSlider {
   @Prop() snap: boolean = false;
 
   /** ID for the Slider's input element, randomly generated if not specified. */
-  @Prop() sliderId: string = crypto.randomUUID();
+  @Prop() sliderId: string = generateUniqueId();
 
   private wrapperElement: HTMLElement = null;
 
@@ -468,9 +469,11 @@ export class TdsSlider {
         ></input>
 
         <div
-          class={`tds-slider ${this.disabled ? 'disabled' : ''} ${
-            this.useSmall ? 'tds-slider-small' : ''
-          }`}
+          class={{
+            'tds-slider': true,
+            'disabled': this.disabled,
+            'tds-slider-small': this.useSmall,
+          }}
           ref={(el) => {
             this.wrapperElement = el as HTMLElement;
           }}

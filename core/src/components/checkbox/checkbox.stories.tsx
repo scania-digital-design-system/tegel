@@ -3,7 +3,7 @@ import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: ComponentsFolder,
+  title: `${ComponentsFolder}/Checkbox`,
   parameters: {
     notes: readme,
     layout: 'centered',
@@ -81,4 +81,4 @@ const Template = ({ label, checked, disabled }) =>
     </script>
   `);
 
-export const Checkbox = Template.bind({});
+export const Default = Template.bind({});

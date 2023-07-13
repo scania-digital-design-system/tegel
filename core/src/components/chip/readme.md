@@ -7,14 +7,14 @@
 
 ## Properties
 
-| Property  | Attribute | Description                                                                                                                                                                                                                                | Type                                | Default               |
-| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | --------------------- |
-| `checked` | `checked` | Controls component's checked attribute. Valid only for type checkbox and radio.                                                                                                                                                            | `boolean`                           | `false`               |
-| `chipId`  | `chip-id` | ID used for internal Chip functionality and events, must be unique.  **NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input, as the default ID is random and will be different every time. | `string`                            | `crypto.randomUUID()` |
-| `name`    | `name`    | Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio.                                                                                                    | `string`                            | `undefined`           |
-| `size`    | `size`    | Size of the Chip component                                                                                                                                                                                                                 | `"lg" \| "sm"`                      | `'lg'`                |
-| `type`    | `type`    | Type of Chip, depends on usage                                                                                                                                                                                                             | `"button" \| "checkbox" \| "radio"` | `'button'`            |
-| `value`   | `value`   | Value of input. Valid only for type checkbox and radio.                                                                                                                                                                                    | `string`                            | `undefined`           |
+| Property  | Attribute | Description                                                                                                                                                                                                                                | Type                                | Default              |
+| --------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- | -------------------- |
+| `checked` | `checked` | Controls component's checked attribute. Valid only for type checkbox and radio.                                                                                                                                                            | `boolean`                           | `false`              |
+| `chipId`  | `chip-id` | ID used for internal Chip functionality and events, must be unique.  **NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input, as the default ID is random and will be different every time. | `string`                            | `generateUniqueId()` |
+| `name`    | `name`    | Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio.                                                                                                    | `string`                            | `undefined`          |
+| `size`    | `size`    | Size of the Chip component                                                                                                                                                                                                                 | `"lg" \| "sm"`                      | `'lg'`               |
+| `type`    | `type`    | Type of Chip, depends on usage                                                                                                                                                                                                             | `"button" \| "checkbox" \| "radio"` | `'button'`           |
+| `value`   | `value`   | Value of input. Valid only for type checkbox and radio.                                                                                                                                                                                    | `string`                            | `undefined`          |
 
 
 ## Events
@@ -27,9 +27,11 @@
 
 ## Slots
 
-| Slot      | Description              |
-| --------- | ------------------------ |
-| `"label"` | Slot for the label text. |
+| Slot                                  | Description               |
+| ------------------------------------- | ------------------------- |
+| `"label"`                             | Slot for the label text.  |
+| `"prefix"`                            | Slot for the prefix icon. |
+| `"suffix- Slot for the suffix icon."` |                           |
 
 
 ----------------------------------------------

@@ -1,5 +1,8 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For accordion items.
+ */
 @Component({
   tag: 'tds-accordion',
   styleUrl: 'accordion.scss',

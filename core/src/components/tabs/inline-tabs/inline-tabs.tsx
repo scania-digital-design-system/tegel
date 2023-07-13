@@ -1,6 +1,9 @@
 import { Component, Host, State, Element, h, Prop, Event, EventEmitter } from '@stencil/core';
 import { Method } from '@stencil/core/internal';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the tab elements.
+ */
 @Component({
   tag: 'tds-inline-tabs',
   styleUrl: 'inline-tabs.scss',

@@ -1,7 +1,10 @@
-import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Prop, Element } from '@stencil/core';
+import { generateUniqueId, hasSlot } from '../../utils/utils';
 
 /**
+ * @slot prefix - Slot for the prefix icon.
  * @slot label - Slot for the label text.
+ * @slot suffix - Slot for the suffix icon.
  */
 @Component({
   tag: 'tds-chip',
@@ -10,6 +13,8 @@ import { Component, Host, h, Event, EventEmitter, Prop } from '@stencil/core';
   scoped: true,
 })
 export class TdsChip {
+  @Element() host: HTMLElement;
+
   /** Type of Chip, depends on usage */
   @Prop() type: 'button' | 'radio' | 'checkbox' = 'button';
 
@@ -21,7 +26,7 @@ export class TdsChip {
    * **NOTE**: If you're listening for input events, you need to set this ID yourself to identify the input,
    * as the default ID is random and will be different every time.
    */
-  @Prop() chipId: string = crypto.randomUUID();
+  @Prop() chipId: string = generateUniqueId();
 
   /** Controls component's checked attribute. Valid only for type checkbox and radio. */
   @Prop() checked: boolean = false;
@@ -90,14 +95,27 @@ export class TdsChip {
 
   render() {
     const inputAttributes = this.renderInputAttributes();
+    const hasPrefixSlot = hasSlot('prefix', this.host);
+    const hasLabelSlot = hasSlot('label', this.host);
+    const hasSuffixSlot = hasSlot('suffix', this.host);
 
     return (
       <Host>
         <div class="component">
-          <div class={`tds-chip-component ${this.size}`}>
+          <div
+            class={{
+              'tds-chip-component': true,
+              'sm': this.size === 'sm',
+              'lg': this.size === 'lg',
+              'prefix': hasPrefixSlot,
+              'suffix': hasSuffixSlot,
+            }}
+          >
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
             <label htmlFor={this.chipId}>
-              <slot name="label" />
+              {hasPrefixSlot && <slot name="prefix" />}
+              {hasLabelSlot && <slot name="label" />}
+              {hasSuffixSlot && <slot name="suffix" />}
             </label>
           </div>
         </div>

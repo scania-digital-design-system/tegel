@@ -2,6 +2,9 @@ import { Component, Element, h, Host, Prop } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes, inheritAttributes } from '../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the tooltip contents.
+ */
 @Component({
   tag: 'tds-tooltip',
   styleUrl: 'tooltip.scss',
