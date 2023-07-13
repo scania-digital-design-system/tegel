@@ -104,20 +104,20 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
   return formatHtmlPreview(`
   ${
     inputType === 'Button'
-      ? `<tds-chip type="button" size="${sizeLookUp[size]}">
-            <span slot="label">
-                ${
-                  icon && iconPosition === 'Prefix'
-                    ? '<tds-icon name="cross" size="16px"></tds-icon>'
-                    : ''
-                }
-                ${label}
-                ${
-                  icon && iconPosition === 'Suffix'
-                    ? '<tds-icon name="cross" size="16px"></tds-icon>'
-                    : ''
-                }
-            </span>
+      ? `<tds-chip type="button" size="${sizeLookUp[size]}">        
+            ${
+              icon && iconPosition === 'Prefix'
+                ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
+                : ''
+            }           
+            <span slot="label">                
+                ${label}                
+            </span>         
+            ${
+              icon && iconPosition === 'Suffix'
+                ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
+                : ''
+            }          
         </tds-chip>
 
         <!-- Script tag for demo purposes -->
@@ -139,50 +139,50 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
     </style>
 
     <div class="demo-wrapper">
-      <tds-chip type="checkbox" size="${sizeLookUp[size]}" checked value="checkbox-1-value">
-        <span slot="label">
+      <tds-chip type="checkbox" size="${sizeLookUp[size]}" checked value="checkbox-1-value">        
           ${
             icon && iconPosition === 'Prefix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="prefix" name="heart" size="16px"></tds-icon>'
               : ''
           }
-          ${label} 1
+          <span slot="label">
+            ${label} 1
+          </span>
           ${
             icon && iconPosition === 'Suffix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
               : ''
-          }
-        </span>
+          }        
       </tds-chip>
       <tds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-2-value">
-        <span slot="label">
-          ${
-            icon && iconPosition === 'Prefix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
-              : ''
-          }
-          ${label} 2
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="email" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 2
+          </span>
           ${
             icon && iconPosition === 'Suffix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
               : ''
-          }
-        </span>
+          } 
       </tds-chip>
       <tds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-3-value">
-        <span slot="label">
-          ${
-            icon && iconPosition === 'Prefix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
-              : ''
-          }
-          ${label} 3
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="smartphone" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 3
+          </span>
           ${
             icon && iconPosition === 'Suffix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
               : ''
-          }
-        </span>
+          } 
       </tds-chip>
     </div>
 
@@ -206,49 +206,49 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
 
     <div class="demo-wrapper">
       <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-1-value">
-        <span slot="label">
-          ${
-            icon && iconPosition === 'Prefix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
-              : ''
-          }
-          ${label} 1
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="sorting" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 1
+          </span>
           ${
             icon && iconPosition === 'Suffix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
               : ''
-          }
-        </span>
+          } 
       </tds-chip>
       <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" checked value="radio-2-value">
-        <span slot="label">
-          ${
-            icon && iconPosition === 'Prefix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
-              : ''
-          }
-          ${label} 2
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="cart" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 2
+          </span>
           ${
             icon && iconPosition === 'Suffix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
               : ''
-          }
-        </span>
+          } 
       </tds-chip>
       <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
-        <span slot="label">
-          ${
-            icon && iconPosition === 'Prefix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
-              : ''
-          }
-          ${label} 3
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 3
+          </span>
           ${
             icon && iconPosition === 'Suffix'
-              ? '<tds-icon name="cross" size="16px"></tds-icon>'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
               : ''
-          }
-        </span>
+          } 
       </tds-chip>
     </div>
 
