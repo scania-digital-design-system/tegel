@@ -20,6 +20,9 @@ export type InternalTdsTablePropChange = {
   changed: Array<keyof Props>;
 } & Partial<Props>;
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the table contents.
+ */
 @Component({
   tag: 'tds-table',
   styleUrl: 'table.scss',

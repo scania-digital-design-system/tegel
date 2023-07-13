@@ -14,9 +14,10 @@
 
 ## Slots
 
-| Slot           | Description                |
-| -------------- | -------------------------- |
-| `"expand-row"` | Slot for the expanded row. |
+| Slot           | Description                         |
+| -------------- | ----------------------------------- |
+| `"<default>"`  | <b>Unnamed slot.</b> For the cells. |
+| `"expand-row"` | Slot for the expanded row.          |
 
 
 ----------------------------------------------

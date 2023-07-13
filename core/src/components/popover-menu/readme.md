@@ -17,6 +17,13 @@
 | `show`           | `show`            | Decides if the Popover Menu should be visible from the start          | `boolean`                                                                                                                                                                                                    | `false`     |
 
 
+## Slots
+
+| Slot          | Description                                      |
+| ------------- | ------------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For the list of menu items. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

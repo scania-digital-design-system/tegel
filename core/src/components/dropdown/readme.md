@@ -78,6 +78,13 @@ Type: `Promise<{ value: string; label: string; }[]>`
 
 
 
+## Slots
+
+| Slot          | Description                                        |
+| ------------- | -------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
+
+
 ## Dependencies
 
 ### Depends on

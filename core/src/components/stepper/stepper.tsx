@@ -14,6 +14,9 @@ export type InternalTdsStepperPropChange = {
   changed: Array<keyof TdsStepperProps>;
 } & Partial<TdsStepperProps>;
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the step elements.
+ */
 @Component({
   tag: 'tds-stepper',
   styleUrl: 'stepper.scss',

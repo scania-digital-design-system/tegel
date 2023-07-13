@@ -1,5 +1,8 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For a link element. Eg. <code>&lt;a><a></code>.
+ */
 @Component({
   tag: 'tds-link',
   styleUrl: 'link.scss',

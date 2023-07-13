@@ -2,6 +2,7 @@ import { Component, h, Host, Element } from '@stencil/core';
 import { inheritAriaAttributes, updateListChildrenRoles } from '../../utils/utils';
 
 /**
+ * @slot <default> - <b>Unnamed slot.</b> Slot for the left-aligned content consisting of buttons, dropdowns, links, etc.
  * @slot hamburger - Slot for the hamburger button for opening the mobile menu.
  * @slot title - Slot for the title.
  * @slot end - Slot for the end (right side) of the header.

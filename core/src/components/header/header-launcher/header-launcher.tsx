@@ -1,6 +1,9 @@
 import { Component, Host, h, Element, Listen, State } from '@stencil/core';
 import { Attributes, generateUniqueId, inheritAriaAttributes } from '../../../utils/utils';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For a launcher list (or grid) element.
+ */
 @Component({
   tag: 'tds-header-launcher',
   styleUrl: 'header-launcher.scss',

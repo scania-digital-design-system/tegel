@@ -18,9 +18,9 @@
 
 ## Slots
 
-| Slot          | Description                                    |
-| ------------- | ---------------------------------------------- |
-| `"<default>"` | Default slot for the extended message section. |
+| Slot          | Description                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the extended message. Not visible on minimal messages. |
 
 
 ## Dependencies

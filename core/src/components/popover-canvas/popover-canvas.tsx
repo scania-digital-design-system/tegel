@@ -2,6 +2,9 @@ import { Component, Host, Element, Listen, h, Prop, State, Watch } from '@stenci
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the contents of the popover.
+ */
 @Component({
   tag: 'tds-popover-canvas',
   styleUrl: 'popover-canvas.scss',

@@ -10,6 +10,9 @@ import {
   Method,
 } from '@stencil/core';
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the tab elements.
+ */
 @Component({
   tag: 'tds-folder-tabs',
   styleUrl: 'folder-tabs.scss',

@@ -18,6 +18,13 @@
 | `show`           | `show`            | Controls whether the Popover is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                                                                                                                                                                                                    | `null`      |
 
 
+## Slots
+
+| Slot          | Description                                           |
+| ------------- | ----------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the contents of the popover. |
+
+
 ## Dependencies
 
 ### Used by
