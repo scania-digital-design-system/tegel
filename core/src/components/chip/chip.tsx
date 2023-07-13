@@ -4,7 +4,7 @@ import { generateUniqueId, hasSlot } from '../../utils/utils';
 /**
  * @slot prefix - Slot for the prefix icon.
  * @slot label - Slot for the label text.
- * @slot suffix- Slot for the suffix icon.
+ * @slot suffix - Slot for the suffix icon.
  */
 @Component({
   tag: 'tds-chip',
