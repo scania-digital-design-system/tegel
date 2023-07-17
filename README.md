@@ -1,11 +1,14 @@
-[![Github release](https://img.shields.io/npm/v/@scania/tegel?color=1081C2)](https://www.npmjs.com/package/@scania/tegel)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/scania-digital-design-system/tegel)
+![Status: Beta](https://img.shields.io/badge/status-beta-red)
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
-![Status: Beta](https://img.shields.io/badge/status-beta-red)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-![node-current](https://img.shields.io/badge/Node.js-18-green)
-
-
+![node-current](https://img.shields.io/badge/Node.js-18-orange)
+[![Downloads](https://img.shields.io/npm/dy/@scania/tegel?color=f4c430)](https://www.npmjs.com/package/@scania/tegel)
+[![Downloads](https://img.shields.io/npm/dw/@scania/tegel?color=76a4ed)](https://www.npmjs.com/package/@scania/tegel)
+[![Last Commit](https://img.shields.io/github/last-commit/scania-digital-design-system/tegel)](https://github.com/scania-digital-design-system/tegel/commits/main)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/scania-digital-design-system/tegel/pulls)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8070a4bb-ed31-4125-86aa-0c6140c55e73/deploy-status)](https://app.netlify.com/sites/tegel-storybook/deploys)
 
 
 
