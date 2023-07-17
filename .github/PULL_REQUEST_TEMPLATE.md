@@ -3,7 +3,7 @@ _Describe what the pull-request is about_
 
 **Solving issue**  
 _In case of GitHub issue add # plus the number of the issue (for example #123) OR if it is Azure then AB# and number of ticket_
-Fixes: #
+Fixes: [DTS-](https://tegel.atlassian.net/browse/DTS-)
 
 **How to test**  
 _Add description how to test if possible_
