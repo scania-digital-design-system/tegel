@@ -5,6 +5,7 @@ let addons = [
   '@storybook/addon-essentials',
   'storybook-dark-mode',
   '@storybook/addon-notes/register',
+  'storybook-version',
 ];
 
 if (process.env.STORYBOOK_ENV === 'development') {

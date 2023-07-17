@@ -2,7 +2,6 @@ import React from 'react';
 import { DocsContainer } from '@storybook/addon-docs';
 import { defineCustomElements } from '../loader';
 import { useDarkMode } from 'storybook-dark-mode';
-
 import { addons } from '@storybook/addons';
 import { UPDATE_GLOBALS } from '@storybook/core-events';
 import './preview.css';
@@ -14,6 +13,10 @@ import '../dist/tegel/tegel.css';
 // Test below one in Netlify/Amplify build
 import ScaniaThemeDark from './ScaniaThemeDark';
 import ScaniaThemeLight from './ScaniaThemeLight';
+
+// To be able to show version number in elegant way in storybook-version addon, more on line 157
+import { version } from '../package.json';
+const [major, minor, patch] = version.split('.');
 
 const customViewports = {
   xs: {
@@ -151,6 +154,24 @@ export const parameters = {
     },
   },
   layout: 'padded',
+  version: {
+    major: `@scania/tegel: ${major}`,
+    minor: minor,
+    patch: patch,
+    style: {
+      'text-transform': 'unset',
+      'font-size': '14px',
+      'font-style': 'normal',
+      'font-weight': '400',
+      'line-height': '16px',
+      'letter-spacing': '-0.14px',
+      'margin-left': '16px',
+      'background-color': '#2058A8',
+      'color': '#ffffff',
+      'border-radius': '16px',
+      'padding': '4px 12px',
+    },
+  },
 };
 
 // Below is some hacky code that changes selected background when the theme changes
