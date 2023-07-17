@@ -13,3 +13,5 @@ core/stencil.config.ts
 **/www
 
 icons/gulpfile.js
+
+commitlint.config.js

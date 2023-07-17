@@ -2,6 +2,10 @@
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+![node-current](https://img.shields.io/node/v/@scania/tegel)
+
+
 
 # Tegel Design System
 
