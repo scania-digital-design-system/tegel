@@ -40,7 +40,7 @@ export const TegelDesignSystem = {
                 </style>
 
                 <tds-banner type="information" icon="information" header="We are moving away from the sdds prefix!">
-                <tds-link slot="banner-link">
+                <tds-link slot="bottom">
                     <a target="_self" href="?path=/story/intro-announcements--prefix-change">
                         Read more here!
                     </a>
