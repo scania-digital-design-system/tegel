@@ -3,7 +3,9 @@
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-![node-current](https://img.shields.io/node/v/@scania/tegel)
+![node-current](https://img.shields.io/badge/Node.js-18-green)
+
+
 
 
 
