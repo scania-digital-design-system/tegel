@@ -17,6 +17,13 @@
 | `text`             | `text`               | In case Tooltip contains only text, no HTML, a text can be passed by this prop                 | `string`                                                                                                                                                                                                     | `''`        |
 
 
+## Slots
+
+| Slot          | Description                                    |
+| ------------- | ---------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the tooltip contents. |
+
+
 ## Dependencies
 
 ### Depends on
@@ -29,13 +36,6 @@ graph TD;
   tds-tooltip --> tds-core-popover
   style tds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
-
-## Slots
-
-| Slot          | Description                                    |
-| ------------- | ---------------------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For the tooltip contents. |
-
 
 ----------------------------------------------
 
