@@ -44,13 +44,20 @@ export class TdsButton {
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
           disabled={this.disabled}
-          class={`${this.type}
-            ${this.size}
-            ${this.disabled ? 'disabled' : ''}
-            ${this.fullbleed ? 'fullbleed' : ''}
-            ${usesIconSlot ? 'icon' : ''}
-            ${this.onlyIcon ? 'only-icon' : ''}
-            `}
+          class={{
+            'primary': this.type === 'primary',
+            'secondary': this.type === 'secondary',
+            'ghost': this.type === 'ghost',
+            'danger': this.type === 'danger',
+            'lg': this.size === 'lg',
+            'md': this.size === 'md',
+            'sm': this.size === 'sm',
+            'xs': this.size === 'xs',
+            'disabled': this.disabled,
+            'fullbleed': this.fullbleed,
+            'icon': usesIconSlot,
+            'only-icon': this.onlyIcon,
+          }}
         >
           {this.text}
           <slot name="icon" />
