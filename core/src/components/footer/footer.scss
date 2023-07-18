@@ -4,6 +4,7 @@
   $grid-lg: 992px;
 
   slot[name='top']::slotted(*) {
+    box-sizing: border-box;
     background-color: var(--tds-footer-top-background);
     padding: 40px;
     display: grid;
