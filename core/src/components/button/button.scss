@@ -200,7 +200,7 @@ button {
   }
 }
 
-:host(tds-button[disabled]) {
+:host(tds-button[disabled='true']) {
   pointer-events: none;
 
   ::slotted([slot='icon']) {
@@ -208,12 +208,12 @@ button {
   }
 }
 
-:host(tds-button[fullbleed]) {
+:host(tds-button[fullbleed='true']) {
   width: 100%;
   justify-content: center;
 }
 
-:host(tds-button[only-icon]) {
+:host(tds-button[only-icon='true']) {
   .sm {
     padding: $btn-sm-only-icon-padding;
   }
@@ -227,7 +227,7 @@ button {
   }
 }
 
-:host(tds-button:not([only-icon])) {
+:host(tds-button:not([only-icon='true'])) {
   display: inline-flex;
   align-items: center;
 
