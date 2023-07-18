@@ -1,5 +1,6 @@
 import readme from './readme.md';
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
+import CardBodyImage from '../../stories/assets/image/card-img.png';
 import { formatHtmlPreview } from '../../utils/utils';
 import { ComponentsFolder } from '../../utils/constants';
 
@@ -149,7 +150,7 @@ const Template = ({
     ${header ? `header="${header}"` : ''}
     image-placement="${imagePlacement.toLowerCase()}-header"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${bodyImg ? `body-img="${CardPlaceholder}"` : ''}
+    ${bodyImg ? `body-img="${CardBodyImage}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
     >
