@@ -41,7 +41,7 @@ export class TdsPopoverMenu {
   render() {
     return (
       <Host>
-        <tds-core-popover
+        <tds-popover-core
           class={{
             'tds-popover-menu': true,
             [this.inheritedAttributes.class ?? '']: true,
@@ -54,7 +54,7 @@ export class TdsPopoverMenu {
           offsetDistance={this.offsetDistance}
         >
           <slot></slot>
-        </tds-core-popover>
+        </tds-popover-core>
       </Host>
     );
   }

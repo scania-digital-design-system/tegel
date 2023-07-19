@@ -34,12 +34,12 @@
 
 ### Depends on
 
-- [tds-core-popover](../core-popover)
+- [tds-popover-core](../popover-core)
 
 ### Graph
 ```mermaid
 graph TD;
-  tds-popover-canvas --> tds-core-popover
+  tds-popover-canvas --> tds-popover-core
   tds-header-dropdown --> tds-popover-canvas
   tds-header-launcher --> tds-popover-canvas
   style tds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px

@@ -27,7 +27,7 @@ graph TD;
   tds-header-launcher-button --> tds-header-item
   tds-header-launcher-button --> tds-icon
   tds-header-item --> tds-core-header-item
-  tds-popover-canvas --> tds-core-popover
+  tds-popover-canvas --> tds-popover-core
   style tds-header-launcher fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

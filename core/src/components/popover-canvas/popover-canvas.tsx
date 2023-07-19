@@ -46,7 +46,7 @@ export class TdsPopoverCanvas {
   render() {
     return (
       <Host>
-        <tds-core-popover
+        <tds-popover-core
           {...this.inheritedAttributes}
           class={{
             'tds-popover-canvas': true,
@@ -65,7 +65,7 @@ export class TdsPopoverCanvas {
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}
             <slot></slot>
           </div>
-        </tds-core-popover>
+        </tds-popover-core>
       </Host>
     );
   }

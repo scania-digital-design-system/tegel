@@ -28,12 +28,12 @@
 
 ### Depends on
 
-- [tds-core-popover](../core-popover)
+- [tds-popover-core](../popover-core)
 
 ### Graph
 ```mermaid
 graph TD;
-  tds-tooltip --> tds-core-popover
+  tds-tooltip --> tds-popover-core
   style tds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
