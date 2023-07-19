@@ -20,9 +20,10 @@
 
 ## Slots
 
-| Slot     | Description                                 |
-| -------- | ------------------------------------------- |
-| `"icon"` | Slot used to display an Icon in the Button. |
+| Slot      | Description                                                      |
+| --------- | ---------------------------------------------------------------- |
+| `"icon"`  | Slot used to display an Icon in the Button.                      |
+| `"label"` | Slot for the text injection. Serves as alternative to text prop. |
 
 
 ----------------------------------------------

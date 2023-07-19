@@ -1,3 +1,5 @@
+// TODO: Refactor this code so it is more readable and easy to maintain
+
 @import './button-vars';
 @import '../../mixins/box-sizing';
 @import '../../mixins/focus-state';
@@ -211,20 +213,6 @@ button {
 :host(tds-button[fullbleed]) {
   width: 100%;
   justify-content: center;
-}
-
-:host(tds-button[only-icon]) {
-  .sm {
-    padding: $btn-sm-only-icon-padding;
-  }
-
-  .md {
-    padding: $btn-md-only-icon-padding;
-  }
-
-  .lg {
-    padding: $btn-lg-only-icon-padding;
-  }
 }
 
 tds-button:not([only-icon]) {

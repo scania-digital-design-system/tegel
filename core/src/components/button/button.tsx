@@ -2,6 +2,7 @@ import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { hasSlot } from '../../utils/utils';
 
 /**
+ * @slot label - Slot for the text injection. Serves as alternative to text prop.
  * @slot icon - Slot used to display an Icon in the Button.
  */
 @Component({
@@ -44,7 +45,9 @@ export class TdsButton {
   }
 
   render() {
-    const usesIconSlot = hasSlot('icon', this.host);
+    const hasLabelSlot = hasSlot('label', this.host);
+    const hasIconSlot = hasSlot('icon', this.host);
+
     return (
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
@@ -61,12 +64,13 @@ export class TdsButton {
             'xs': this.size === 'xs',
             'disabled': this.disabled,
             'fullbleed': this.fullbleed,
-            'icon': usesIconSlot,
+            'icon': hasIconSlot,
             'only-icon': this.onlyIcon,
           }}
         >
           {this.text}
-          <slot name="icon" />
+          {hasLabelSlot && !this.onlyIcon && <slot name="label" />}
+          {hasIconSlot && <slot name="icon" />}
         </button>
       </Host>
     );

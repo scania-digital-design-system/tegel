@@ -195,7 +195,7 @@ const WebComponentTemplate = ({
             }' name='${icon}'></tds-icon>
             `
             : ''
-        }
+        }        
     </tds-button>
   </div>
   <script>
