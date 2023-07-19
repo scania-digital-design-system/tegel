@@ -51,12 +51,14 @@ export default {
 const Template = ({ underline, disabled }) =>
   formatHtmlPreview(
     `
-    <tds-link
+    <p class='tds-body-02'>The <tds-link
         ${disabled ? 'disabled' : ''}
         ${underline ? '' : 'underline="false"'}
         >
-        <a href="#">This is a link.</a>
-    </tds-link>
+        <a href="https://tegel.scania.com/home" target='_blank'>Tegel</a>
+    </tds-link> Design System is for digital products and services at Scania.
+     It enables an efficient development process and ensures a premium experience across all of Scania's digital touchpoints.    
+    </p>  
   `,
   );
 export const Default = Template.bind({});
