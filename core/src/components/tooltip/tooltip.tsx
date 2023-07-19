@@ -68,7 +68,7 @@ export class TdsTooltip {
   render() {
     return (
       <Host>
-        <tds-core-popover
+        <tds-popover-core
           {...this.inheritedAttributes}
           class={{
             'tds-tooltip': true,
@@ -93,7 +93,7 @@ export class TdsTooltip {
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}
           <slot></slot>
-        </tds-core-popover>
+        </tds-popover-core>
       </Host>
     );
   }

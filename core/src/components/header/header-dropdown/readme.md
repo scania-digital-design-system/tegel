@@ -38,7 +38,7 @@ graph TD;
   tds-header-dropdown --> tds-icon
   tds-header-dropdown --> tds-popover-canvas
   tds-header-item --> tds-core-header-item
-  tds-popover-canvas --> tds-core-popover
+  tds-popover-canvas --> tds-popover-core
   style tds-header-dropdown fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
