@@ -74,20 +74,20 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
         placement="${canvasPosLookup[canvasPosition]}"
         selector="#trigger"
         class="tds-u-p2">
-        <h2>A Popover Canvas!</h2>
-        <p>
+        <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
+        <p class="tds-body-01">
           Where you can put anything you want!
-        </p>
-        <p>
+        </p>  
+        <tds-link>
           <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">Even links!</a>
-        </p>
+        </tds-link>
       </tds-popover-canvas>
 
       <!-- demo-wrapper code below is for demonstration purposes only -->
       <div class="demo-wrapper">
         <span class="tds-u-mr2">Click icon for Popover Canvas</span>
         
-        <tds-button aria-label="menu" only-icon id="trigger" type="ghost" size="sm">
+        <tds-button aria-label="menu" only-icon id="trigger" type="secondary" size="sm">
           <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
         </tds-button>
       </div>
