@@ -14,12 +14,12 @@ import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 
 @Component({
-  tag: 'tds-core-popover',
+  tag: 'tds-popover-core',
   shadow: false,
   scoped: true,
 })
-export class TdsCorePopover {
-  @Element() host!: HTMLTdsCorePopoverElement;
+export class TdsPopoverCore {
+  @Element() host!: HTMLTdsPopoverCoreElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
   @Prop() selector: string = '';

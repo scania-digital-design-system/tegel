@@ -31,10 +31,10 @@
 ### Graph
 ```mermaid
 graph TD;
-  tds-popover-canvas --> tds-core-popover
-  tds-popover-menu --> tds-core-popover
-  tds-tooltip --> tds-core-popover
-  style tds-core-popover fill:#f9f,stroke:#333,stroke-width:4px
+  tds-popover-canvas --> tds-popover-core
+  tds-popover-menu --> tds-popover-core
+  tds-tooltip --> tds-popover-core
+  style tds-popover-core fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
