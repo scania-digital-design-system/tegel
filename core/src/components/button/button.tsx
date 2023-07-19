@@ -17,11 +17,12 @@ export class TdsButton {
   @Prop() text: string;
 
   /** Button's type */
-  @Prop() buttonType: 'button' | 'submit' | 'reset' = 'button';
+  @Prop() type: 'button' | 'submit' | 'reset' = 'button';
 
-  /** Type of Button's design */
-  @Prop() type: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
+  /** Variation of Button's design */
+  @Prop() variant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
 
+  /** Size of a Button */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
   /** Control for disabled state of a component */
@@ -47,13 +48,13 @@ export class TdsButton {
     return (
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
-          type={this.buttonType}
+          type={this.type}
           disabled={this.disabled}
           class={{
-            'primary': this.type === 'primary',
-            'secondary': this.type === 'secondary',
-            'ghost': this.type === 'ghost',
-            'danger': this.type === 'danger',
+            'primary': this.variant === 'primary',
+            'secondary': this.variant === 'secondary',
+            'ghost': this.variant === 'ghost',
+            'danger': this.variant === 'danger',
             'lg': this.size === 'lg',
             'md': this.size === 'md',
             'sm': this.size === 'sm',
