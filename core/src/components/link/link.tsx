@@ -23,14 +23,14 @@ export class TdsLink {
 
   render() {
     return (
-      <div
-        class={`
+      <span
+        class={`        
           ${this.disabled ? 'disabled' : ''}
           ${!this.underline ? 'no-underline' : ''}
           `}
       >
         <slot></slot>
-      </div>
+      </span>
     );
   }
 }
