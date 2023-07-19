@@ -34,16 +34,27 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
-    btnType: {
-      name: 'Type',
+    variant: {
+      name: 'Variant',
       description:
-        'Four different Button types to help the user to distinguish the level of importance of the task they represent.',
+        'Four different Button variants to help the user to distinguish the level of importance of the task they represent.',
       control: {
         type: 'radio',
       },
       options: ['Primary', 'Secondary', 'Ghost', 'Danger'],
       table: {
         defaultValue: { summary: 'primary' },
+      },
+    },
+    type: {
+      name: 'Type',
+      description: 'Native types of button',
+      control: {
+        type: 'radio',
+      },
+      options: ['Button', 'Submit', 'Reset'],
+      table: {
+        defaultValue: { summary: 'button' },
       },
     },
     size: {
@@ -109,7 +120,8 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    btnType: 'Primary',
+    type: 'Button',
+    variant: 'Primary',
     size: 'Large',
     text: 'Button',
     fullbleed: false,
@@ -121,7 +133,8 @@ export default {
 
 const WebComponentTemplate = ({
   modeVariant,
-  btnType,
+  type,
+  variant,
   size,
   text = 'Button',
   fullbleed,
@@ -129,7 +142,7 @@ const WebComponentTemplate = ({
   icon,
   disabled,
 }) => {
-  const btnTypeLookUp = {
+  const variantLookUp = {
     Primary: 'primary',
     Secondary: 'secondary',
     Ghost: 'ghost',
@@ -147,6 +160,12 @@ const WebComponentTemplate = ({
     Secondary: 'secondary',
   };
 
+  const typeLookup = {
+    Button: 'button',
+    Submit: 'submit',
+    Reset: 'reset',
+  };
+
   return formatHtmlPreview(
     `
     <style>
@@ -158,7 +177,8 @@ const WebComponentTemplate = ({
 
   <div class="demo-wrapper">
     <tds-button
-      type="${btnTypeLookUp[btnType]}"
+      type='${typeLookup[type]}'
+      variant="${variantLookUp[variant]}"
       size="${sizeLookUp[size]}" ${disabled ? 'disabled' : ''} ${fullbleed ? 'fullbleed' : ''}
       ${!onlyIcon ? `text="${text}"` : ''}
       ${
@@ -175,7 +195,7 @@ const WebComponentTemplate = ({
             }' name='${icon}'></tds-icon>
             `
             : ''
-        }
+        }        
     </tds-button>
   </div>
   <script>
