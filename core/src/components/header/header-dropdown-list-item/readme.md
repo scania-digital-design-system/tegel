@@ -10,7 +10,7 @@
 | Property   | Attribute  | Description                         | Type           | Default |
 | ---------- | ---------- | ----------------------------------- | -------------- | ------- |
 | `selected` | `selected` | If the link should appear selected. | `boolean`      | `false` |
-| `type`     | `type`     | The type of the list.               | `"lg" \| "md"` | `'md'`  |
+| `size`     | `size`     | The size of the component.          | `"lg" \| "md"` | `'md'`  |
 
 
 ## Slots

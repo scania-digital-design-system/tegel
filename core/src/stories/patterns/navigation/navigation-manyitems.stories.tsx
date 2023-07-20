@@ -79,7 +79,7 @@ const Template = ({ dummyHtml }) =>
           height: calc(100vh - var(--app-bar-height));
           position: sticky;
           top: var(--app-bar-height);
-          left: 0px;
+          left: 0;
         }
       }
 
@@ -139,7 +139,7 @@ const Template = ({ dummyHtml }) =>
       
       <tds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-xs-show">
         <img slot="icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
-        <tds-header-dropdown-list type="lg">
+        <tds-header-dropdown-list size="lg">
           <tds-header-dropdown-list-user
             header="Name Nameson"
             subheader="Company name">

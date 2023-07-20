@@ -11,10 +11,10 @@
   padding: 0;
   margin: 0;
   list-style: none;
-  border-radius: none;
+  border-radius: unset;
   background-color: var(--tds-header-app-launcher-menu-bg);
 }
 
-:host([type='lg']) {
+:host([size='lg']) {
   width: 320px;
 }

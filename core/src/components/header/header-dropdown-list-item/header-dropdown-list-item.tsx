@@ -14,8 +14,8 @@ export class TdsHeaderDropdownListItem {
   /** If the link should appear selected. */
   @Prop() selected: boolean = false;
 
-  /** The type of the list. */
-  @Prop({ reflect: true }) type: 'md' | 'lg' = 'md';
+  /** The size of the component. */
+  @Prop({ reflect: true }) size: 'md' | 'lg' = 'md';
 
   render() {
     return (
