@@ -13,7 +13,7 @@
 | `minimal`     | `minimal`      | Minimal Message styling.                         | `boolean`                                            | `false`         |
 | `modeVariant` | `mode-variant` | Variant of the component, based on current mode. | `"primary" \| "secondary"`                           | `null`          |
 | `noIcon`      | `no-icon`      | Removes the icon in the Message.                 | `boolean`                                            | `false`         |
-| `type`        | `type`         | Type of Message.                                 | `"error" \| "information" \| "success" \| "warning"` | `'information'` |
+| `variant`     | `variant`      | Variant of Message.                              | `"error" \| "information" \| "success" \| "warning"` | `'information'` |
 
 
 ## Slots
