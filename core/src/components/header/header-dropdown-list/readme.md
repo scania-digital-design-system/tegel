@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type           | Default |
-| -------- | --------- | ----------- | -------------- | ------- |
-| `type`   | `type`    |             | `"lg" \| "md"` | `'md'`  |
+| Property | Attribute | Description                | Type           | Default |
+| -------- | --------- | -------------------------- | -------------- | ------- |
+| `size`   | `size`    | The size of the component. | `"lg" \| "md"` | `'md'`  |
 
 
 ## Slots
