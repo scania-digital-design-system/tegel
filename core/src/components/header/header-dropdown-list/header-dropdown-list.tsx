@@ -15,19 +15,20 @@ export class TdsHeaderDropdownList {
   // A Map to store the slots and their associated slotchange listeners.
   private slotListeners: Map<HTMLSlotElement, EventListener> = new Map();
 
-  @Prop({ reflect: true }) type: 'lg' | 'md' = 'md';
+  /** The size of the component. */
+  @Prop({ reflect: true }) size: 'lg' | 'md' = 'md';
 
   @State() headingElement: HTMLElement;
 
   componentWillLoad() {
     const { children } = this.host;
 
-    // Set the type prop for each child, if they have such a property
+    // Set the size prop for each child, if they have such a property
     for (let i = 0; i < children.length; i++) {
       const child = children[i] as any;
 
-      if ('type' in child) {
-        child.type = this.type;
+      if ('size' in child) {
+        child.size = this.size;
       }
     }
 

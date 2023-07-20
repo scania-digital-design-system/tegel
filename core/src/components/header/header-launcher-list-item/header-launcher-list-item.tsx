@@ -12,7 +12,7 @@ export class TdsHeaderLauncherListItem {
   render() {
     return (
       <Host>
-        <tds-header-dropdown-list-item type="lg">
+        <tds-header-dropdown-list-item size="lg">
           <slot></slot>
         </tds-header-dropdown-list-item>
       </Host>
