@@ -14,7 +14,7 @@ import { generateUniqueId, hasSlot } from '../../utils/utils';
 export class TdsBanner {
   @Element() host: HTMLElement;
 
-  /** Name of the icon for the component. For error and information type, the icon is predefined. */
+  /** Name of the icon for the component. For error and information variant, the icon is predefined. */
   @Prop() icon: string;
 
   /** Header text. */
@@ -23,8 +23,8 @@ export class TdsBanner {
   /** Subheader text. */
   @Prop() subheader: string;
 
-  /** Type of Banner */
-  @Prop() type: 'error' | 'information' | 'none' = 'none';
+  /** Variant of Banner */
+  @Prop() variant: 'error' | 'information' | 'none' = 'none';
 
   /** ID used for internal table functionality and events, must be unique.
    *
@@ -74,9 +74,9 @@ export class TdsBanner {
   }
 
   connectedCallback() {
-    if (this.type === 'error') {
+    if (this.variant === 'error') {
       this.icon = 'error';
-    } else if (this.type === 'information') {
+    } else if (this.variant === 'information') {
       this.icon = 'info';
     }
   }
@@ -111,10 +111,10 @@ export class TdsBanner {
           this.host.getAttribute('aria-live') ? this.host.getAttribute('aria-live') : 'polite'
         }
         aria-atomic={this.host.getAttribute('aria-atomic')}
-        class={`${this.type} ${this.hidden ? 'hide' : 'show'}`}
+        class={`${this.variant} ${this.hidden ? 'hide' : 'show'}`}
       >
         {this.icon && (
-          <div class={`banner-icon ${this.type}`}>
+          <div class={`banner-icon ${this.variant}`}>
             <tds-icon name={this.icon} size="20px"></tds-icon>
           </div>
         )}
