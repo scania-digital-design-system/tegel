@@ -21,9 +21,9 @@ export default {
     ],
   },
   argTypes: {
-    type: {
-      name: 'Message type',
-      description: 'Changes the type of Toast.',
+    variant: {
+      name: 'Message variant',
+      description: 'Changes the variant of Toast.',
       control: {
         type: 'radio',
       },
@@ -57,17 +57,17 @@ export default {
     },
   },
   args: {
-    type: 'Information',
+    variant: 'Information',
     header: 'Header',
     subheader: 'Subheader',
     bottom: '<a slot="bottom" href="#">This is a link.</a>',
   },
 };
 
-const Template = ({ type, header, subheader, bottom }) =>
+const Template = ({ variant, header, subheader, bottom }) =>
   formatHtmlPreview(
     `<tds-toast
-        type="${type.toLowerCase()}"
+        variant="${variant.toLowerCase()}"
         header="${header}"
         ${subheader ? `subheader="${subheader}"` : ''}
     >

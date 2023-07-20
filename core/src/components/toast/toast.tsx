@@ -25,7 +25,7 @@ export class TdsToast {
   @Prop() subheader: string;
 
   /** Type of Toast. */
-  @Prop() type: 'information' | 'error' | 'warning' | 'success' = 'information';
+  @Prop() variant: 'information' | 'error' | 'warning' | 'success' = 'information';
 
   /** Hides the Toast. */
   @Prop({ reflect: true }) hidden: boolean = false;
@@ -57,7 +57,7 @@ export class TdsToast {
   }>;
 
   getIconName = () => {
-    switch (this.type) {
+    switch (this.variant) {
       case 'information':
         return 'info';
       case 'error':
@@ -102,7 +102,7 @@ export class TdsToast {
         <div
           class={`
             wrapper
-            ${this.type}`}
+            ${this.variant}`}
         >
           <tds-icon name={this.getIconName()} size="20px"></tds-icon>
           <div class={`content`}>
