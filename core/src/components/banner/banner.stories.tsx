@@ -24,9 +24,9 @@ export default {
     ],
   },
   argTypes: {
-    type: {
-      name: 'Type',
-      description: 'Changes the type of the component.',
+    variant: {
+      name: 'Variant',
+      description: 'Changes the variant of the component.',
       options: ['Default', 'Error', 'Information'],
       control: {
         type: 'radio',
@@ -64,7 +64,7 @@ export default {
         type: 'select',
       },
       options: [...iconsNames, 'none'],
-      if: { arg: 'type', eq: 'Default' },
+      if: { arg: 'variant', eq: 'Default' },
     },
     persistent: {
       name: 'Disable closing',
@@ -78,7 +78,7 @@ export default {
     },
   },
   args: {
-    type: 'Default',
+    variant: 'Default',
     header: 'This is a header text area',
     subheader: 'This is the subheader text area',
     bottom: '<tds-link slot="bottom" ><a href="/">Link example</a></tds-link>',
@@ -87,10 +87,10 @@ export default {
   },
 };
 
-const Template = ({ type, icon, header, subheader, persistent, bottom }) =>
+const Template = ({ variant, icon, header, subheader, persistent, bottom }) =>
   formatHtmlPreview(`
       <tds-banner
-          ${type !== 'Default' ? `type="${type.toLowerCase()}"` : ''}
+          ${variant !== 'Default' ? `variant="${variant.toLowerCase()}"` : ''}
           ${icon !== 'none' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
           ${subheader ? `subheader="${subheader}"` : ''}
