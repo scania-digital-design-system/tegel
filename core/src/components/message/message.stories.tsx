@@ -33,9 +33,9 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
-    messageType: {
-      name: 'Message type',
-      description: 'Changes the type of the component.',
+    messageVariant: {
+      name: 'Message variant',
+      description: 'Changes the variant of the component.',
       control: {
         type: 'radio',
       },
@@ -81,7 +81,7 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    messageType: 'Information',
+    messageVariant: 'Information',
     header: 'Message header',
     extendedMessage:
       'Longer Message text can be placed here. Longer Message text can be placed here.',
@@ -90,7 +90,7 @@ export default {
   },
 };
 
-const Template = ({ modeVariant, messageType, header, extendedMessage, minimal, noIcon }) =>
+const Template = ({ modeVariant, messageVariant, header, extendedMessage, minimal, noIcon }) =>
   formatHtmlPreview(
     `
     <style>
@@ -100,7 +100,7 @@ const Template = ({ modeVariant, messageType, header, extendedMessage, minimal, 
     </style>
     <div class="demo-wrapper">
       <tds-message
-          type="${messageType.toLowerCase()}"
+          variant="${messageVariant.toLowerCase()}"
           header="${header}"
           ${noIcon ? 'no-icon' : ''}
           ${minimal ? 'minimal' : ''}
