@@ -16,8 +16,8 @@ export class TdsMessage {
   /** Variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Type of Message. */
-  @Prop() type: 'information' | 'error' | 'warning' | 'success' = 'information';
+  /** Variant of Message. */
+  @Prop() variant: 'information' | 'error' | 'warning' | 'success' = 'information';
 
   /** Removes the icon in the Message. */
   @Prop() noIcon: boolean = false;
@@ -26,7 +26,7 @@ export class TdsMessage {
   @Prop() minimal: boolean = false;
 
   getIconName = () => {
-    switch (this.type) {
+    switch (this.variant) {
       case 'information':
         return 'info';
       case 'error':
@@ -45,7 +45,7 @@ export class TdsMessage {
       <Host>
         <div
           class={`
-        wrapper ${this.type}
+        wrapper ${this.variant}
         ${this.minimal ? 'minimal' : ''}
         ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
         >
