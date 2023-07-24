@@ -187,7 +187,7 @@ export class TdsDropdown {
     }
 
     if (event.key === 'ArrowDown') {
-      /* Get the index of the currently focus index, if there is no
+      /* Get the index of the current focus index, if there is no
       nextElementSibling return the index for the first child in our Dropdown.  */
 
       const startingIndex = activeElement.nextElementSibling
@@ -197,7 +197,7 @@ export class TdsDropdown {
       const elementIndex = findNextFocusableItem(this.children, startingIndex);
       this.children[elementIndex].focus();
     } else if (event.key === 'ArrowUp') {
-      /* Get the index of the currently focus index, if there is no
+      /* Get the index of the current focus index, if there is no
       previousElementSibling return the index for the first last in our Dropdown.  */
       const startingIndex = activeElement.nextElementSibling
         ? this.children.findIndex((element) => element === activeElement.previousElementSibling)
@@ -210,7 +210,8 @@ export class TdsDropdown {
     }
   }
 
-  // If the Dropdown gets closed this sets the value of the drodpown to the current selection labels or null if no selection is made.
+  // If the Dropdown gets closed,
+  // this sets the value of the dropdown to the current selection labels or null if no selection is made.
   @Watch('open')
   handleOpenState() {
     if (this.filter && this.multiselect) {
@@ -241,18 +242,20 @@ export class TdsDropdown {
             this.selection = this.selection
               ? [...this.selection, { value: element.value, label: element.textContent }]
               : [{ value: element.value, label: element.textContent }];
+          } else {
+            element.setSelected(false);
           }
         });
       } else {
         if (this.defaultValue === element.value) {
-          this.reset();
           element.setSelected(true);
           this.selection = [{ value: element.value, label: element.textContent }];
+        } else {
+          element.setSelected(false);
         }
       }
       return element;
     });
-    this.handleChange();
   };
 
   getOpenDirection = () => {
@@ -279,14 +282,14 @@ export class TdsDropdown {
   handleFilter = (event) => {
     this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
-    /* Check if the query is empty, and if so show all options */
+    /* Check if the query is empty, and if so, show all options */
     if (query === '') {
       this.children = this.children.map((element) => {
         element.removeAttribute('hidden');
         return element;
       });
       this.filterResult = null;
-      /* Hide the options that does not match the query */
+      /* Hide the options that do not match the query */
     } else {
       this.filterResult = this.children.filter((element) => {
         if (!element.textContent.toLowerCase().includes(query.toLowerCase())) {
