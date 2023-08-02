@@ -235,12 +235,15 @@ const Template = ({ dummyHtml }) =>
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
+      <tds-button class='tds-u-absolute tds-u-right0 tds-u-pr1' onclick='console.log("Button is clicked!")' text='Test button' size='sm'></tds-button>
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent side menu — which is always visible on large screens.</p>
 
         <p><i>Note: The side menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
+        
+        
 
         ${dummyHtml}
       </main>
