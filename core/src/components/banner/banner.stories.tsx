@@ -32,7 +32,7 @@ export default {
         type: 'radio',
       },
       table: {
-        defaultValue: { summary: 'none' },
+        defaultValue: { summary: 'default' },
       },
     },
     header: {
