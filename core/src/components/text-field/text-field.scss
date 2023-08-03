@@ -151,6 +151,11 @@
     @include placeholder-label;
   }
 
+  .text-field-data,
+  .text-field-input {
+    color: var(--tds-text-field-data-color);
+  }
+
   .text-field-input-md {
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
