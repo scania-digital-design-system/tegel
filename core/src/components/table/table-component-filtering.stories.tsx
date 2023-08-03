@@ -170,30 +170,6 @@ const FilteringTemplate = ({
               }></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
-          <tds-table-body-row>
-            <tds-body-cell cell-key="truck" cell-value="L-series"> </tds-body-cell
-            ><tds-body-cell cell-key="driver" cell-value="Sonya Bruce"></tds-body-cell
-            ><tds-body-cell cell-key="country" cell-value="Brazil"></tds-body-cell
-            ><tds-body-cell cell-key="mileage" cell-value="123987"></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row
-            ><tds-body-cell cell-key="truck" cell-value="P-series"></tds-body-cell
-            ><tds-body-cell cell-key="driver" cell-value="Guerra Bowman"></tds-body-cell
-            ><tds-body-cell cell-key="country" cell-value="Sweden"></tds-body-cell
-            ><tds-body-cell cell-key="mileage" cell-value="2000852"></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row
-            ><tds-body-cell cell-key="truck" cell-value="G-series"></tds-body-cell
-            ><tds-body-cell cell-key="driver" cell-value="Ferrell Wallace"></tds-body-cell
-            ><tds-body-cell cell-key="country" cell-value="Germany"></tds-body-cell
-            ><tds-body-cell cell-key="mileage" cell-value="564"></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row
-            ><tds-body-cell cell-key="truck" cell-value="R-series"></tds-body-cell
-            ><tds-body-cell cell-key="driver" cell-value="Cox Burris"></tds-body-cell
-            ><tds-body-cell cell-key="country" cell-value="Spain"></tds-body-cell
-            ><tds-body-cell cell-key="mileage" cell-value="1789357"></tds-body-cell>
-          </tds-table-body-row>
         </tds-table-body>
           <tds-table-footer>              
           </tds-table-footer>
@@ -209,11 +185,89 @@ const FilteringTemplate = ({
     <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
   </div>
   
-  <script>
+  <script>  
   // Note: Script here is only for demo purposes
+  
+  tableBody = document.querySelector('tds-table-body');
+  
+  const demoData =  [
+      {
+        "truck": "L-series",
+        "driver": "Sonya Bruce",
+        "country": "Brazil",
+        "mileage": 123987
+      },
+      {
+        "truck": "P-series",
+        "driver": "Guerra Bowman",
+        "country": "Sweden",
+        "mileage": 2000852
+      },
+      {
+        "truck": "G-series",
+        "driver": "Ferrell Wallace",
+        "country": "Germany",
+        "mileage": 564
+      },
+      {
+        "truck": "R-series",
+        "driver": "Cox Burris",
+        "country": "Spain",
+        "mileage": 1789357
+      },
+      {
+        "truck": "S-series",
+        "driver": "Montgomery Cervantes",
+        "country": "Croatia",
+        "mileage": 65
+      },
+      {
+        "truck": "L-series",
+        "driver": "Sheryl Nielsen",
+        "country": "Greece",
+        "mileage": 365784
+      },
+      {
+        "truck": "G-series",
+        "driver": "Benton Gomez",
+        "country": "France",
+        "mileage": 80957
+      }
+    ]
+    tableBody.bodyData = demoData;
+  
+    function filterDataBySearchTerm(searchTerm, data) {
+      // Convert the search term to string and lowercase outside the loops   
+      const lowerCaseSearchTerm = String(searchTerm).toLowerCase();
+      
+      const filteredData = [];
+      data.forEach(item => {
+        const lowerCaseItem = {};
+    
+        // Iterate over each property of the item and convert to lowercase
+        for (const key in item) {
+          if (item.hasOwnProperty(key)) {
+            lowerCaseItem[key] = item[key].toString().toLowerCase();
+          }
+        }
+    
+        // Check if any property of the item matches the search term
+        if (
+          Object.values(lowerCaseItem).some(value => value.includes(lowerCaseSearchTerm))
+        ) {
+          filteredData.push(item);
+        }
+      });
+    
+      return filteredData;
+    }  
+  
   window.addEventListener('tdsFilterChange', e => {
     document.getElementById('event-name-textarea').value = 'tdsFilterChange';
-    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail)
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+    let filteredDemoData = filterDataBySearchTerm(e.detail.query, demoData);
+    tableBody = document.querySelector('tds-table-body');
+    tableBody.bodyData = filteredDemoData;
   });
 </script>`);
 
