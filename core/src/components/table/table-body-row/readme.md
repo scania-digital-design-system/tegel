@@ -19,6 +19,13 @@
 | `tdsSelectChange` | Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control | `CustomEvent<{ tableId: string; checked: boolean; }>` |
 
 
+## Slots
+
+| Slot          | Description                         |
+| ------------- | ----------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the cells. |
+
+
 ## Dependencies
 
 ### Used by

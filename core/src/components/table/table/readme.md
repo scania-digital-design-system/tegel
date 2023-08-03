@@ -32,6 +32,13 @@ Type: `Promise<string>`
 
 
 
+## Slots
+
+| Slot          | Description                                  |
+| ------------- | -------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For the table contents. |
+
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

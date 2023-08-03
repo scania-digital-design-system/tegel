@@ -12,6 +12,13 @@
 | `tdsSelectAllChange` | Event emitted when the status of the select all checkbox changes. | `CustomEvent<{ id: string; checked: boolean; }>` |
 
 
+## Slots
+
+| Slot          | Description                                |
+| ------------- | ------------------------------------------ |
+| `"<default>"` | <b>Unnamed slot.</b> For the header cells. |
+
+
 ## Dependencies
 
 ### Depends on
