@@ -32,17 +32,11 @@ export class TdsTableFooter {
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = null;
 
-  /** @deprecated Used to set rows per page, this also enabled automatic pagination of the table. */
-  @Prop({ reflect: true }) rowsPerPage: number;
-
   /** <b>Client override</b> Used to set the number of columns, use as fallback if the automatic count of columns fails. */
   @Prop() cols: number = null;
 
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
   @State() columnsNumber: number = 0;
-
-  /** Total number of pages, number of the rows divided with number of rows per page */
-  @State() numberOfPages: number = 0;
 
   /* Sets the footer to use compact design. */
   @State() compactDesign: boolean = false;
@@ -97,13 +91,6 @@ export class TdsTableFooter {
 
     this.storeLastCorrectValue(this.paginationValue);
 
-    if (this.rowsPerPage) {
-      /* Number of children which are <tds-table-body-row> */
-      const numberOfRows = Array.from(
-        this.host.parentElement.querySelector('tds-table-body').children,
-      ).filter((element) => element.tagName === 'TDS-TABLE-BODY-ROW').length;
-      this.numberOfPages = Math.ceil(numberOfRows / this.rowsPerPage);
-    }
     /** Get the number of columns. */
     const numberOfColumns =
       this.host.parentElement.querySelector('tds-table-header').childElementCount;
@@ -133,18 +120,12 @@ export class TdsTableFooter {
     });
 
     this.storeLastCorrectValue(this.paginationValue);
-
-    /* If the change event is not prevented -> do pagination. */
-    if (!this.pages) {
-      /* Decrease the pagination until the first page. */
-      this.runPagination();
-    }
   };
 
   private nextPage = () => {
     /** If pages and greater or equal to the number of pages, increase pagination value.
      * This is to not get above the number of pages in pagination value.  */
-    if (this.paginationValue <= (this.pages ?? this.numberOfPages)) {
+    if (this.paginationValue <= this.pages) {
       this.paginationValue++;
     }
 
@@ -154,12 +135,6 @@ export class TdsTableFooter {
     });
 
     this.storeLastCorrectValue(this.paginationValue);
-
-    /* If the change event is not prevented -> do pagination. */
-    if (!this.pages) {
-      /* Increase the pagination until the last page. */
-      this.runPagination();
-    }
   };
 
   private paginationInputChange(event) {
@@ -173,47 +148,13 @@ export class TdsTableFooter {
     } else {
       this.paginationValue = insertedValue;
     }
-    const paginationEvent = this.tdsPageChange.emit({
+    this.tdsPageChange.emit({
       tableId: this.tableId,
       paginationValue: Number(this.paginationValue),
     });
 
     this.storeLastCorrectValue(this.paginationValue);
-
-    if (!paginationEvent.defaultPrevented || !this.pages) {
-      this.runPagination();
-    }
   }
-
-  @Listen('internalTdsPagination', { target: 'body' })
-  tdsPaginationListener(event: CustomEvent<any>) {
-    if (this.tableId === event.detail) {
-      this.runPagination();
-    }
-  }
-
-  runPagination = () => {
-    /** Check the rows per page is used - if so, we need to do all the pagination. */
-    if (this.rowsPerPage) {
-      // grab all rows in body
-      const dataRowsPagination = this.host.parentNode
-        .querySelector('tds-table-body')
-        .querySelectorAll('.tds-table__row');
-
-      dataRowsPagination.forEach((item, i) => {
-        // for making logic easier 1st result, 2nd result...
-        const index = i + 1;
-
-        const lastResult = this.rowsPerPage * this.paginationValue;
-        const firstResult = lastResult - this.rowsPerPage;
-        if (index > firstResult && index <= lastResult) {
-          item.classList.remove('tds-table__row--hidden');
-        } else {
-          item.classList.add('tds-table__row--hidden');
-        }
-      });
-    }
-  };
 
   render() {
     return (
@@ -229,7 +170,7 @@ export class TdsTableFooter {
                     class="tds-table__page-selector-input"
                     type="number"
                     min="1"
-                    max={this.pages ?? this.numberOfPages}
+                    max={this.pages}
                     value={this.paginationValue}
                     pattern="[0-9]+"
                     dir="ltr"
@@ -237,7 +178,7 @@ export class TdsTableFooter {
                     onAnimationEnd={removeShakeAnimation}
                   />
                   <p class="tds-table__footer-text">
-                    of <span>{this.pages ?? this.numberOfPages}</span> pages
+                    of <span>{this.pages}</span> pages
                   </p>
                   <button
                     type="button"
@@ -250,7 +191,7 @@ export class TdsTableFooter {
                   <button
                     type="button"
                     class="tds-table__footer-btn"
-                    disabled={this.paginationValue >= (this.pages ?? this.numberOfPages)}
+                    disabled={this.paginationValue >= this.pages}
                     onClick={() => this.nextPage()}
                   >
                     <tds-icon name="chevron_right" size="20px"></tds-icon>
