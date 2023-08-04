@@ -88,6 +88,11 @@
   width: 100%;
 }
 
+.text-field-data,
+.text-field-input {
+  color: var(--tds-text-field-data-color);
+}
+
 //text-field label
 
 .text-field-label-outside > * {
@@ -149,11 +154,6 @@
     }
 
     @include placeholder-label;
-  }
-
-  .text-field-data,
-  .text-field-input {
-    color: var(--tds-text-field-data-color);
   }
 
   .text-field-input-md {
