@@ -80,15 +80,6 @@ export class TdsTableBody {
     this.bodyDataOriginal = [...this.innerBodyData];
   }
 
-  /** @internal Event that sends unique Table identifier and enable/disable status for sorting functionality */
-  @Event({
-    eventName: 'internalTdsSortingChange',
-    composed: true,
-    cancelable: false,
-    bubbles: true,
-  })
-  internalTdsSortingChange: EventEmitter<any>;
-
   /** @internal Sends unique Table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
   @Event({
     eventName: 'internalTdsCheckboxChange',
@@ -123,78 +114,6 @@ export class TdsTableBody {
     }
   }
 
-  static compareValues(key, order = 'asc') {
-    return function innerSort(a, b) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-        // property doesn't exist on either object
-        return 0;
-      }
-
-      const varA = typeof a[key] === 'string' ? a[key].toUpperCase() : a[key];
-      const varB = typeof b[key] === 'string' ? b[key].toUpperCase() : b[key];
-
-      let comparison = 0;
-      if (varA > varB) {
-        comparison = 1;
-      } else if (varA < varB) {
-        comparison = -1;
-      }
-      return order === 'desc' ? comparison * -1 : comparison;
-    };
-  }
-
-  uncheckAll = () => {
-    this.mainCheckboxStatus = false;
-    this.internalTdsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
-    this.internalTdsCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
-  };
-
-  sortData(keyValue, sortingDirection) {
-    if (this.multiselect) {
-      // Uncheck all checkboxes as the state of checkbox is lost on sorting. Do it only in case multiSelect is True.
-      this.uncheckAll();
-    }
-
-    // use spread operator to make enable a sorting and modifying array, same as using .slice()
-    this.bodyDataManipulated = [...this.bodyDataManipulated];
-    this.bodyDataManipulated.sort(TdsTableBody.compareValues(keyValue, sortingDirection));
-  }
-
-  // Listen to sortColumnData from table-header-element - TODO
-  @Listen('internalTdsSortChange', { target: 'body' })
-  updateOptionsContent(event: CustomEvent<any>) {
-    const { tableId, columnKey, sortingDirection } = event.detail;
-    if (this.tableId === tableId) {
-      this.sortData(columnKey, sortingDirection);
-    }
-  }
-
-  selectedDataExporter = () => {
-    const selectedRows = this.host.getElementsByClassName('tds-table__row--selected');
-
-    this.multiselectArray = [];
-    for (let j = 0; j < selectedRows.length; j++) {
-      const rowCells = selectedRows[j].getElementsByTagName('tds-body-cell');
-      const selectedObject = {};
-      for (let i = 0; i < rowCells.length; i++) {
-        const currentCellKey = rowCells[i].getAttribute('cell-key');
-        const currentCellValue = rowCells[i].getAttribute('cell-value');
-        selectedObject[currentCellKey] = currentCellValue;
-      }
-      this.multiselectArray.push(selectedObject);
-    }
-    this.multiselectArrayJSON = JSON.stringify(this.multiselectArray);
-  };
-
-  @Listen('internalTdsMainCheckboxChange', { target: 'body' }) // -
-  headCheckboxListener(event: CustomEvent<any>) {
-    if (this.tableId === event.detail[0]) {
-      [, this.mainCheckboxStatus] = event.detail;
-      this.selectedDataExporter();
-    }
-  }
-
   bodyCheckBoxClicked = () => {
     const numberOfRows = this.host.getElementsByClassName('tds-table__row').length;
 
@@ -205,8 +124,6 @@ export class TdsTableBody {
     this.mainCheckboxStatus = numberOfRows === numberOfRowsSelected;
 
     this.internalTdsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
-
-    this.selectedDataExporter();
   };
 
   // No need to read the value, event is here just to trigger another function

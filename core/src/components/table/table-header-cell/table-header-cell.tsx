@@ -46,8 +46,6 @@ export class TdsTableHeaderCell {
 
   @State() sortedByMyKey: boolean = false;
 
-  @State() disableSortingBtn: boolean = false;
-
   @State() verticalDividers: boolean = false;
 
   @State() compactDesign: boolean = false;
@@ -143,15 +141,6 @@ export class TdsTableHeaderCell {
     }
   }
 
-  // Listen to parent Table if sorting is allowed
-  @Listen('internalTdsSortingChange', { target: 'body' })
-  internalTdsSortingChangeListener(event: CustomEvent<any>) {
-    const [receivedID, receivedSortingStatus] = event.detail;
-    if (this.tableId === receivedID) {
-      this.disableSortingBtn = receivedSortingStatus;
-    }
-  }
-
   @Listen('internalSortButtonClicked', { target: 'body' })
   updateOptionsContent(
     event: CustomEvent<{
@@ -203,11 +192,11 @@ export class TdsTableHeaderCell {
     } else {
       this.sortingDirection = 'desc';
     }
-    // Setting to true we can set enable CSS class for "active" state of column
+    // Settings to true we can set enable CSS class for "active" state of column
     this.sortedByMyKey = true;
 
     /* Emit sort event */
-    const tdsSortEvent = this.tdsSortChange.emit({
+    this.tdsSortChange.emit({
       tableId: this.tableId,
       columnKey: this.columnKey,
       sortingDirection: this.sortingDirection,
@@ -221,20 +210,10 @@ export class TdsTableHeaderCell {
       tableId: this.tableId,
       key: this.columnKey,
     });
-
-    /* If the user has not prevented the sort event. */
-    if (!tdsSortEvent.defaultPrevented) {
-      /* Emit internal sort event, which is listened to in table-body <- this does the actual sorting.  */
-      this.internalTdsSortChange.emit({
-        tableId: this.tableId,
-        columnKey: this.columnKey,
-        sortingDirection: this.sortingDirection,
-      });
-    }
   };
 
   headerCellContent = () => {
-    if (this.sortable && !this.disableSortingBtn) {
+    if (this.sortable) {
       return (
         <button class="tds-table__header-button" onClick={() => this.sortButtonClick()}>
           <span class="tds-table__header-button-text" style={{ textAlign: this.textAlignState }}>
@@ -265,7 +244,7 @@ export class TdsTableHeaderCell {
               />
             </svg>
           )}
-          {/* First icon is arrow down as first set direction is ascending, clicking it again rotates the icon as we set descending order */}
+          {/* The First icon is arrow down as the first-set direction is ascending, clicking it again rotates the icon as we set descending order */}
           {this.sortingDirection && (
             <svg
               class={`tds-table__header-button-icon ${
@@ -315,7 +294,7 @@ export class TdsTableHeaderCell {
           'tds-table--toolbar-available': this.enableToolbarDesign,
         }}
         style={{ width: this.customWidth }}
-        // Calling actions from here to enable hover functionality for both sortable and un-sortable Tables
+        // Calling actions from here to enable hover functionality for both sortable and unsortable Tables
         onMouseOver={() => this.onHeadCellHover(this.columnKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
       >

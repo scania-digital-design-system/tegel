@@ -1,7 +1,17 @@
 // https://stackoverflow.com/questions/63051941/how-to-pass-data-as-array-of-object-in-stencil-js
 // https://medium.com/@scottmgerstl/passing-an-object-or-array-to-stencil-dd62b7d92641
 
-import { Component, Prop, h, Host, Event, EventEmitter, Element, Watch, Method } from '@stencil/core';
+import {
+  Component,
+  Prop,
+  h,
+  Host,
+  Event,
+  EventEmitter,
+  Element,
+  Watch,
+  Method,
+} from '@stencil/core';
 import { generateUniqueId } from '../../../utils/utils';
 
 type Props = {
@@ -98,7 +108,7 @@ export class TdsTable {
       }
       selectedRowsArray = [...selectedRowsArray, selectedObject];
     }
-    console.log(selectedRowsArray);
+
     return JSON.stringify(selectedRowsArray);
   }
 

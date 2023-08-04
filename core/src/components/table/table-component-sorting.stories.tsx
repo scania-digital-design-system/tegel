@@ -188,6 +188,7 @@ const SortingTemplate = ({
 }) =>
   formatHtmlPreview(`
     <tds-table
+      table-id='tds-table-sorting-example'
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
@@ -214,14 +215,17 @@ const SortingTemplate = ({
   </tds-table>
   
   
-  <script>
-
-    document.addEventListener('tdsSortChange', (event) => {
-      console.log(event)
-    })
-    /* ONLY WORKS IN THE CANVAS TAB. */
+  <script>    
+    /* DEMO CODE ONLY WORKS IN THE CANVAS TAB. */
+    
+    // Get the table body
     tableBody = document.querySelector('tds-table-body');
-    tableBody.bodyData = [
+    
+    // Get ID of current table. Recommended in case of multiple tables in the same page
+    currentTableId = tableBody.closest('tds-table').getAttribute('table-id');
+    
+    // Data example
+    const testData = [
       {
         "truck": "L-series",
         "driver": "Sonya Bruce",
@@ -265,7 +269,59 @@ const SortingTemplate = ({
         "mileage": 80957
       }
     ]
-  
+    
+    // Connect example fo data to bodyData prop
+    tableBody.bodyData = testData;
+    
+    // Example of sorting function
+    function sortData(data, key, sortOrder = 'asc') {
+      if (!Array.isArray(data)) {
+        console.error('Input data is not an array.');
+        return [];
+      }
+    
+      if (!data.length) {
+        console.warn('Input data is empty.');
+        return [];
+      }
+    
+      if (typeof key !== 'string') {
+        console.error('Key should be a valid string.');
+        return data.slice(); // Return a copy of the original array
+      }
+    
+      const sortedData = data.slice(); // Create a copy of the original array
+    
+      sortedData.sort((a, b) => {
+        const valueA = a[key];
+        const valueB = b[key];
+    
+        if (typeof valueA === 'undefined' || typeof valueB === 'undefined') {
+          console.warn(\`Key not found in some items. Sorting may be inconsistent.\`);
+          return 0;
+        }
+    
+        const comparison = valueA.toString().localeCompare(valueB.toString(), undefined, { numeric: true });
+    
+        return sortOrder === 'desc' ? -comparison : comparison;
+      });
+    
+      return sortedData;
+    }
+    
+    // Triggering sorting on custom event
+    document.addEventListener('tdsSortChange', (event) => {
+      const emmitedID = event.detail.tableId;
+      const emmitedKey = event.detail.columnKey;
+      const emmitedDirection = event.detail.sortingDirection;      
+      
+      // Recommend check of table ID in case of multiple table components on the same page
+      if (currentTableId === emmitedID) {
+        const sortedArray = sortData(testData, emmitedKey, emmitedDirection);      
+        console.log(sortedArray);        
+        tableBody.bodyData = sortedArray;
+      } 
+    })
   </script>`);
 
 export const Sorting = SortingTemplate.bind({});
