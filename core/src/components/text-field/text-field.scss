@@ -11,7 +11,7 @@
   background-color: var(--tds-text-field-background);
 
   &::placeholder {
-    opacity: 1;
+    color: var(--tds-text-field-color);
   }
 
   &:focus::placeholder {
