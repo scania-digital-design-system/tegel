@@ -29,11 +29,12 @@ export class TdsTableBody {
   @Prop({ mutable: true }) bodyData: any;
 
   /** Prop for no result message when using filtering */
-  @Prop() noResultMessage: string;
+  @Prop() noResultMessage: string = 'Unfortunately, no data match search criteria.';
+
+  /** Prop for a show or hide result message when using filtering */
+  @Prop() showNoResultsMessage: boolean = false;
 
   @Element() host: HTMLElement;
-
-  @State() rowsPerPage: number = 1;
 
   @State() multiselect: boolean = false;
 
@@ -45,8 +46,6 @@ export class TdsTableBody {
 
   @State() bodyDataManipulated = [];
 
-  @State() bodyDataOriginal = [];
-
   @State() multiselectArray = [];
 
   @State() multiselectArrayJSON: string;
@@ -54,16 +53,6 @@ export class TdsTableBody {
   @State() mainCheckboxStatus: boolean = false;
 
   @State() columnsNumber: number = 0;
-
-  @State() disableAllSorting: boolean = false;
-
-  @State() numberOfPages: number = 0;
-
-  @State() paginationValue: number = 1;
-
-  @State() tempPaginationDisable: boolean = false;
-
-  @State() showNoResultsMessage: boolean = false;
 
   @State() tableId: string = '';
 
@@ -77,7 +66,6 @@ export class TdsTableBody {
       this.innerBodyData = newValue;
     }
     this.bodyDataManipulated = [...this.innerBodyData];
-    this.bodyDataOriginal = [...this.innerBodyData];
   }
 
   /** @internal Sends unique Table identifier and mainCheckbox status to all rows when multiselect feature is enabled */

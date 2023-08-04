@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property          | Attribute           | Description                                                                        | Type     | Default     |
-| ----------------- | ------------------- | ---------------------------------------------------------------------------------- | -------- | ----------- |
-| `bodyData`        | `body-data`         | Prop to pass JSON string which enables automatic rendering of Table rows and cells | `any`    | `undefined` |
-| `noResultMessage` | `no-result-message` | Prop for no result message when using filtering                                    | `string` | `undefined` |
+| Property               | Attribute                 | Description                                                                        | Type      | Default                                           |
+| ---------------------- | ------------------------- | ---------------------------------------------------------------------------------- | --------- | ------------------------------------------------- |
+| `bodyData`             | `body-data`               | Prop to pass JSON string which enables automatic rendering of Table rows and cells | `any`     | `undefined`                                       |
+| `noResultMessage`      | `no-result-message`       | Prop for no result message when using filtering                                    | `string`  | `'Unfortunately, no data match search criteria.'` |
+| `showNoResultsMessage` | `show-no-results-message` | Prop for a show or hide result message when using filtering                        | `boolean` | `false`                                           |
 
 
 ## Slots
