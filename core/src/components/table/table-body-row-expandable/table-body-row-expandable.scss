@@ -92,6 +92,10 @@
   }
 }
 
+:host(.tds-table__row--hidden) {
+  display: none;
+}
+
 :host(.tds-table--divider) {
   .tds-table__cell--expand {
     border-right: 1px solid var(--tds-table-divider);

@@ -220,7 +220,7 @@ export class TdsTableBody {
 
   searchFunction(searchTerm) {
     // grab all rows in body
-    const dataRowsFiltering = this.host.querySelectorAll('tds-table-body-row');
+    const dataRowsFiltering = this.host.querySelectorAll('tds-table-body-row, tds-table-body-row-expandable', );
 
     if (searchTerm.length > 0) {
       if (this.enablePaginationTableBody) {
