@@ -67,13 +67,35 @@ export default {
     defaultValue: {
       name: 'Default value',
       description:
-        'Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM.',
+        'Sets max value. Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM.',
       control: {
         type: 'radio',
       },
       options: ['None', 'Custom'],
       table: {
         defaultValue: { summary: 'none' },
+      },
+    },
+    minValue: {
+      description:
+        'Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+      name: 'Min value',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: undefined },
+      },
+    },
+    maxValue: {
+      description:
+        'Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+      name: 'Max value',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: undefined },
       },
     },
     noMinWidth: {
@@ -117,6 +139,8 @@ export default {
     type: 'Datetime',
     size: 'Large',
     defaultValue: 'None',
+    minValue: '',
+    maxValue: '',
     noMinWidth: false,
     label: 'Label text',
     helper: 'Helper text',
@@ -130,6 +154,8 @@ const datetimeTemplate = ({
   type,
   size,
   defaultValue,
+  minValue,
+  maxValue,
   noMinWidth,
   label,
   helper,
@@ -181,7 +207,9 @@ const datetimeTemplate = ({
       id="datetime"
       ${defaultValue !== 'None' ? `default-value="${getDefaultValue(defaultValue, type)}"` : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
-      type="${typeLookup[type]}"
+      type="${typeLookup[type]}"      
+      ${minValue ? `min=${minValue}` : ''}
+      ${maxValue ? `min=${maxValue}` : ''}
       size="${sizeLookup[size]}"
       state="${stateLookup[state]}"
       ${disabled ? 'disabled' : ''}

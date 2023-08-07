@@ -10,11 +10,17 @@ export class TdsDatetime {
   /** Text-input for focus state */
   textInput?: HTMLInputElement;
 
-  /** Which input type, text, password or similar */
+  /** Sets input type */
   @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'time' = 'datetime-local';
 
   /** Value of the input text */
   @Prop({ reflect: true }) value = '';
+
+  /** Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
+  @Prop() min: string;
+
+  /** Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
+  @Prop() max: string;
 
   /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM */
   @Prop() defaultValue: string | 'none' = 'none';
@@ -175,6 +181,8 @@ export class TdsDatetime {
               type={this.type}
               disabled={this.disabled}
               value={this.value}
+              min={this.min}
+              max={this.max}
               autofocus={this.autofocus}
               name={this.name}
               onInput={(e) => this.handleInput(e)}
