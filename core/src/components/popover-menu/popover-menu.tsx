@@ -20,7 +20,9 @@ export class TdsPopoverMenu {
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
-  /** Decides if the Popover Menu should be visible from the start */
+  /** Controls whether the Popover is shown or not. If this is set hiding and showing
+   * will be decided by this prop and will need to be controlled from the outside.
+   */
   @Prop() show: boolean = null;
 
   /** Decides the placement of the Popover Menu */
