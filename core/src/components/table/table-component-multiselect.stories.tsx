@@ -215,6 +215,10 @@ const MultiselectTemplate = ({
   window.addEventListener('tdsSelectAllChange', e => {
     document.getElementById('event-name-textarea').value = 'tdsSelectAllChange';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+    document.querySelectorAll('tds-table-body-row').forEach((element) => element.selected = e.detail.checked)
+    getSelectedRows().then(selectedRows => {
+      document.getElementById('selected-rows-textarea').value = selectedRows;
+    });
   });
 
   window.addEventListener('tdsSelectChange', e => {
