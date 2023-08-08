@@ -225,7 +225,7 @@ const SortingTemplate = ({
     currentTableId = tableBody.closest('tds-table').getAttribute('table-id');
     
     // Data example
-    const testData = [
+    testData = [
       {
         "truck": "L-series",
         "driver": "Sonya Bruce",
@@ -290,7 +290,7 @@ const SortingTemplate = ({
         return data.slice(); // Return a copy of the original array
       }
     
-      const sortedData = data.slice(); // Create a copy of the original array
+      sortedData = data.slice(); // Create a copy of the original array
     
       sortedData.sort((a, b) => {
         const valueA = a[key];
@@ -311,15 +311,13 @@ const SortingTemplate = ({
     
     // Triggering sorting on custom event
     document.addEventListener('tdsSortChange', (event) => {
-      const emmitedID = event.detail.tableId;
-      const emmitedKey = event.detail.columnKey;
-      const emmitedDirection = event.detail.sortingDirection;      
+      emmitedID = event.detail.tableId;
+      emmitedKey = event.detail.columnKey;
+      emmitedDirection = event.detail.sortingDirection;      
       
       // Recommend check of table ID in case of multiple table components on the same page
       if (currentTableId === emmitedID) {
-        const sortedArray = sortData(testData, emmitedKey, emmitedDirection);      
-        console.log(sortedArray);        
-        tableBody.bodyData = sortedArray;
+        tableBody.bodyData = sortData(testData, emmitedKey, emmitedDirection);      
       } 
     })
   </script>`);
