@@ -172,7 +172,7 @@ const MultiselectTemplate = ({
           ><tds-body-cell cell-key="country" cell-value="Brazil"></tds-body-cell
           ><tds-body-cell cell-key="mileage" cell-value="123987"></tds-body-cell>
         </tds-table-body-row>
-        <tds-table-body-row
+        <tds-table-body-row 
           ><tds-body-cell cell-key="truck" cell-value="P-series"></tds-body-cell
           ><tds-body-cell cell-key="driver" cell-value="Guerra Bowman"></tds-body-cell
           ><tds-body-cell cell-key="country" cell-value="Sweden"></tds-body-cell
@@ -224,6 +224,14 @@ const MultiselectTemplate = ({
   window.addEventListener('tdsSelectChange', e => {
     document.getElementById('event-name-textarea').value = 'tdsSelectChange';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+
+    tableBodyRows = document.querySelectorAll('tds-table-body-row');
+
+    anyNotSelected = Array.from(tableBodyRows).some((element) => {
+      return !element.selected;
+    }) 
+
+    document.querySelector('tds-table-header').allSelected = !anyNotSelected ?? false;
 
     getSelectedRows().then(selectedRows => {
       document.getElementById('selected-rows-textarea').value = selectedRows;

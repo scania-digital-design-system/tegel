@@ -1,4 +1,14 @@
-import { Component, h, Host, State, Event, EventEmitter, Listen, Element } from '@stencil/core';
+import {
+  Component,
+  h,
+  Host,
+  State,
+  Event,
+  EventEmitter,
+  Listen,
+  Element,
+  Prop,
+} from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
@@ -18,6 +28,8 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableHeaderRow {
+  @Prop({ mutable: true }) allSelected: boolean = false;
+
   @State() multiselect: boolean = false;
 
   @State() expandableRows: boolean = false;
@@ -65,14 +77,6 @@ export class TdsTableHeaderRow {
           }
           this[changedProp] = event.detail[changedProp];
         });
-    }
-  }
-
-  @Listen('internalTdsMainCheckboxChange', { target: 'body' })
-  internalTdsMainCheckboxChangeListener(event: CustomEvent<any>) {
-    const [receivedID, receivedMainCheckboxStatus] = event.detail;
-    if (this.tableId === receivedID) {
-      this.mainCheckboxSelected = receivedMainCheckboxStatus;
     }
   }
 
@@ -138,7 +142,7 @@ export class TdsTableHeaderRow {
             <th class="tds-table__header-cell tds-table__header-cell--checkbox">
               <div class="tds-form-label tds-form-label--table">
                 <tds-checkbox
-                  checked={this.mainCheckboxSelected}
+                  checked={this.allSelected}
                   onTdsChange={(event) => this.handleCheckboxChange(event)}
                 ></tds-checkbox>
               </div>

@@ -77,17 +77,6 @@ export class TdsTableBody {
   })
   internalTdsCheckboxChange: EventEmitter<any>;
 
-  /** @internal Sends unique Table identifier and status
-   * if mainCheckbox should change its state based on selection status of single rows
-   * when multiselect feature is used */
-  @Event({
-    eventName: 'internalTdsMainCheckboxChange',
-    composed: true,
-    cancelable: false,
-    bubbles: true,
-  })
-  internalTdsMainCheckboxChange: EventEmitter<any>;
-
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
@@ -110,8 +99,6 @@ export class TdsTableBody {
     ).length;
 
     this.mainCheckboxStatus = numberOfRows === numberOfRowsSelected;
-
-    this.internalTdsMainCheckboxChange.emit([this.tableId, this.mainCheckboxStatus]);
   };
 
   // No need to read the value, event is here just to trigger another function
