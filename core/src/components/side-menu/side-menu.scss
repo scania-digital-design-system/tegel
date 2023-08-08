@@ -65,14 +65,14 @@
 }
 
 @media (max-width: $grid-lg) {
-  :host([open]) {
+  :host(.menu-opened) {
     pointer-events: auto;
     z-index: tds-z-index(header) + 1;
   }
 }
 
 @media (min-width: $grid-lg) {
-  :host([persistent]) {
+  :host(.menu-persistent) {
     pointer-events: auto;
     position: static;
     width: 272px;
@@ -101,7 +101,7 @@
       display: block;
     }
 
-    &:host([collapsed]) {
+    &:host(.menu-collapsed) {
       width: 69px; // 68 + 1px for border
 
       .menu {
