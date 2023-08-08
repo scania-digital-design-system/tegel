@@ -158,13 +158,14 @@ const EventListenersTemplate = ({
     </script>
 
    <tds-table
+      
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
    >
-          <tds-table-toolbar table-title="Disabled filtering, pagination and sorting - left to the user to listen to events" enable-filtering></tds-table-toolbar>
+          <tds-table-toolbar filter table-title="Disabled filtering, pagination and sorting - left to the user to listen to events" enable-filtering></tds-table-toolbar>
           <tds-table-header>
               <tds-header-cell column-key='truck' column-title='Truck type' sortable ${
                 column1Width ? `custom-width="${column1Width}"` : ''
