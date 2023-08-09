@@ -141,7 +141,7 @@ const MultiselectTemplate = ({
 }) =>
   formatHtmlPreview(`
     <tds-table
-        id="multiselect-table"
+        table-id="multiselect-table"
         multiselect
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
@@ -209,13 +209,12 @@ const MultiselectTemplate = ({
   // Note: Script here is only for demo purposes
 
   async function getSelectedRows() {
-    return await document.getElementById('multiselect-table').getSelectedRows().then((value) => value);
+    return await document.querySelector('tds-table').getSelectedRows().then((value) => value);
   }
 
   window.addEventListener('tdsSelectAllChange', e => {
     document.getElementById('event-name-textarea').value = 'tdsSelectAllChange';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
-    document.querySelectorAll('tds-table-body-row').forEach((element) => element.selected = e.detail.checked)
     getSelectedRows().then(selectedRows => {
       document.getElementById('selected-rows-textarea').value = selectedRows;
     });
@@ -224,14 +223,6 @@ const MultiselectTemplate = ({
   window.addEventListener('tdsSelectChange', e => {
     document.getElementById('event-name-textarea').value = 'tdsSelectChange';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
-
-    tableBodyRows = document.querySelectorAll('tds-table-body-row');
-
-    anyNotSelected = Array.from(tableBodyRows).some((element) => {
-      return !element.selected;
-    }) 
-
-    document.querySelector('tds-table-header').allSelected = !anyNotSelected ?? false;
 
     getSelectedRows().then(selectedRows => {
       document.getElementById('selected-rows-textarea').value = selectedRows;

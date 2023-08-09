@@ -28,7 +28,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableHeaderRow {
-  @Prop({ mutable: true }) allSelected: boolean = false;
+  @Prop({ mutable: true, reflect: true }) allSelected: boolean = false;
 
   @State() multiselect: boolean = false;
 
@@ -122,6 +122,7 @@ export class TdsTableHeaderRow {
   }
 
   handleCheckboxChange(event) {
+    this.allSelected = event.detail.checked;
     this.tdsSelectAllChange.emit({
       id: this.tableId,
       checked: event.detail.checked,

@@ -63,6 +63,13 @@ export class TdsTableBodyRow {
       tableId: this.tableId,
       checked: this.selected,
     });
+
+    const tableRows = Array.from(this.host.parentElement.querySelectorAll('tds-table-body-row'));
+    const allSelected = tableRows.every((element) => {
+      console.log(element.classList.contains('selected'));
+      return element.selected;
+    });
+    this.tableEl.querySelector('tds-table-header').allSelected = allSelected;
   }
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -76,6 +83,18 @@ export class TdsTableBodyRow {
           }
           this[changedProp] = event.detail[changedProp];
         });
+    }
+  }
+
+  @Listen('tdsSelectAllChange', { target: 'body' })
+  selectAllListener(
+    event: CustomEvent<{
+      id: string;
+      checked: boolean;
+    }>,
+  ) {
+    if (this.tableId === event.detail.id) {
+      this.selected = event.detail.checked;
     }
   }
 
