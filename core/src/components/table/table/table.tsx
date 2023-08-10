@@ -13,6 +13,7 @@ type Props = {
   enableResponsive: boolean;
   modeVariant: 'primary' | 'secondary' | null;
   textAlign: string;
+  headerFilter: boolean;
 };
 
 export type InternalTdsTablePropChange = {
@@ -59,6 +60,8 @@ export class TdsTable {
    * as the default ID is random and will be different every time.
    */
   @Prop() tableId: string = generateUniqueId();
+
+  @Prop() headerFilter: boolean = false;
 
   @Element() host: HTMLElement;
 
@@ -107,6 +110,11 @@ export class TdsTable {
   @Watch('modeVariant')
   modeVariantChanged(newValue: 'primary' | 'secondary' | null) {
     this.emitInternalTdsPropChange('modeVariant', newValue);
+  }
+
+  @Watch('headerFilter')
+  headerFilterChanged(newValue: boolean) {
+    this.emitInternalTdsPropChange('headerFilter', newValue);
   }
 
   render() {

@@ -1,5 +1,13 @@
 @import '../../../mixins/box-sizing';
 
+:host {
+  --verticalAlignment: middle;
+  --alignItems: center;
+  --padding: 0 16px;
+  --height: 48px;
+  --compact-design-height: 33px;
+}
+
 :host(.tds-table__header-cell) {
   @include tds-box-sizing;
 
@@ -11,29 +19,37 @@
   background-color: var(--tds-table-header-background);
   border-bottom: 1px solid var(--tds-table-header-background-hover);
   padding: 0;
-  height: 48px;
+  height: var(--height);
   min-width: 192px;
   box-sizing: border-box;
-  vertical-align: middle;
+  vertical-align: var(--verticalAlignment);
   overflow: hidden;
   transition: background-color 200ms ease;
 
   .tds-table__header-text {
-    padding: 0 16px;
+    padding: var(--padding);
     margin: 0;
   }
+}
+
+:host(.tds-table__header-cell--header-filter) {
+  --verticalAlignment: top;
+  --alignItems: start;
+  --padding: 16px 16px;
+  --height: auto;
+  --compact-design-height: auto;
 }
 
 :host(.tds-table__header-cell--sortable) {
   .tds-table__header-button {
     display: flex;
-    align-items: center;
+    align-items: var(--alignItems);
     gap: 8px;
     justify-content: start;
     flex-direction: row;
     width: 100%;
     height: 100%;
-    padding: 0 16px;
+    padding: var(--padding);
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -101,7 +117,7 @@
 }
 
 :host(.tds-table--compact) {
-  height: 33px;
+  height: var(--compact-design-height);
 }
 
 :host(.tds-table--divider) {

@@ -17,6 +17,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
   'verticalDividers',
+  'headerFilter',
 ];
 
 @Component({
@@ -61,6 +62,8 @@ export class TdsTableHeaderCell {
   @State() tableId: string = '';
 
   @State() enableExpandableRows: boolean = false;
+
+  @State() headerFilter: boolean = false;
 
   @Element() host: HTMLElement;
 
@@ -313,6 +316,7 @@ export class TdsTableHeaderCell {
           'tds-table--no-min-width': this.noMinWidth,
           'tds-table--extra-column': this.enableMultiselect || this.enableExpandableRows,
           'tds-table--toolbar-available': this.enableToolbarDesign,
+          'tds-table__header-cell--header-filter': this.headerFilter,
         }}
         style={{ width: this.customWidth }}
         // Calling actions from here to enable hover functionality for both sortable and un-sortable Tables
@@ -320,6 +324,7 @@ export class TdsTableHeaderCell {
         onMouseLeave={() => this.onHeadCellHover('')}
       >
         {this.headerCellContent()}
+        {this.headerFilter && <slot name="header-filter" />}
       </Host>
     );
   }
