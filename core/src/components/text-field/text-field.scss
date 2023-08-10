@@ -11,8 +11,7 @@
   background-color: var(--tds-text-field-background);
 
   &::placeholder {
-    opacity: 1;
-    color: var(--tds-text-field-placeholder);
+    color: var(--tds-text-field-color);
   }
 
   &:focus::placeholder {
@@ -86,6 +85,11 @@
 .text-field-input-container {
   position: relative;
   width: 100%;
+}
+
+.text-field-data,
+.text-field-input {
+  color: var(--tds-text-field-data-color);
 }
 
 //text-field label

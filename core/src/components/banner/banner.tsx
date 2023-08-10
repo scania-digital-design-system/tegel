@@ -24,7 +24,7 @@ export class TdsBanner {
   @Prop() subheader: string;
 
   /** Variant of Banner */
-  @Prop() variant: 'error' | 'information' | 'none' = 'none';
+  @Prop() variant: 'error' | 'information' | 'default' = 'default';
 
   /** ID used for internal table functionality and events, must be unique.
    *

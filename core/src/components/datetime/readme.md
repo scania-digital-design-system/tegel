@@ -14,12 +14,14 @@
 | `disabled`     | `disabled`      | Set input in disabled state                                                                                             | `boolean`                              | `false`            |
 | `helper`       | `helper`        | Helper text for the component                                                                                           | `string`                               | `''`               |
 | `label`        | `label`         | Label text for the component                                                                                            | `string`                               | `''`               |
+| `max`          | `max`           | Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"                 | `string`                               | `undefined`        |
+| `min`          | `min`           | Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"                 | `string`                               | `undefined`        |
 | `modeVariant`  | `mode-variant`  | Set the variant of the Datetime component.                                                                              | `"primary" \| "secondary"`             | `null`             |
 | `name`         | `name`          | Name property                                                                                                           | `string`                               | `''`               |
 | `noMinWidth`   | `no-min-width`  | Resets min width rule                                                                                                   | `boolean`                              | `false`            |
 | `size`         | `size`          | Size of the input                                                                                                       | `"lg" \| "md" \| "sm"`                 | `'lg'`             |
 | `state`        | `state`         | Error state of input                                                                                                    | `string`                               | `undefined`        |
-| `type`         | `type`          | Which input type, text, password or similar                                                                             | `"date" \| "datetime-local" \| "time"` | `'datetime-local'` |
+| `type`         | `type`          | Sets input type                                                                                                         | `"date" \| "datetime-local" \| "time"` | `'datetime-local'` |
 | `value`        | `value`         | Value of the input text                                                                                                 | `string`                               | `''`               |
 
 
