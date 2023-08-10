@@ -13,7 +13,7 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
 ## Branching
 - Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
 - Start the name of the branch with Jira ticket number followed by short description of task
-- example: `fix/DTS-1369-banner-color-correction`
+- example: `fix/CDEP-1369-banner-color-correction`
 
 
 ## Folder structure
