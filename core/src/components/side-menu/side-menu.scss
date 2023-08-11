@@ -11,6 +11,7 @@
   top: 0;
   width: 100%;
   height: 100%;
+  z-index: tds-z-index(side-menu);
 
   .wrapper {
     height: inherit;
@@ -65,14 +66,14 @@
 }
 
 @media (max-width: $grid-lg) {
-  :host([open]) {
+  :host(.menu-opened) {
     pointer-events: auto;
-    z-index: tds-z-index(header) + 1;
+    z-index: tds-z-index(side-menu);
   }
 }
 
 @media (min-width: $grid-lg) {
-  :host([persistent]) {
+  :host(.menu-persistent) {
     pointer-events: auto;
     position: static;
     width: 272px;
@@ -101,7 +102,7 @@
       display: block;
     }
 
-    &:host([collapsed]) {
+    &:host(.menu-collapsed) {
       width: 69px; // 68 + 1px for border
 
       .menu {
