@@ -46,14 +46,14 @@ export class TdsSideMenu {
   @Element() host: HTMLTdsSideMenuElement;
 
   /** Applicable only for mobile. If the Side Menu is open or not. */
-  @Prop({ reflect: true }) open: boolean = false;
+  @Prop() open: boolean = false;
 
   /** Applicable only for desktop. If the Side Menu should always be shown. */
-  @Prop({ reflect: true }) persistent: boolean = false;
+  @Prop() persistent: boolean = false;
 
   /** If the Side Menu is collapsed. Only a persistent desktop menu can be collapsed.
    * NOTE: Only use this if you have prevented the automatic collapsing with preventDefault on the tds-Collapse event. */
-  @Prop({ reflect: true }) collapsed: boolean = false;
+  @Prop() collapsed: boolean = false;
 
   @State() isUpperSlotEmpty: boolean = false;
 
@@ -187,7 +187,14 @@ export class TdsSideMenu {
 
   render() {
     return (
-      <Host role="navigation">
+      <Host
+        role="navigation"
+        class={{
+          'menu-opened': this.open,
+          'menu-persistent': this.persistent,
+          'menu-collapsed': this.collapsed,
+        }}
+      >
         <div
           class={{
             'wrapper': true,

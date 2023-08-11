@@ -163,7 +163,7 @@ const Template = ({ dummyHtml }) =>
     <div class="demo-wrap-side-menu-and-main">
       <!-- Note: the "persistent" property keeps the menu open on desktop -->
       <tds-side-menu id="demo-side-menu" aria-label="Side menu" persistent>
-        <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-overlay>
+        <tds-side-menu-overlay slot="overlay"></tds-side-menu-overlay>
 
         <tds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-close-button>
 
@@ -235,6 +235,7 @@ const Template = ({ dummyHtml }) =>
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">
+      <button class='tds-u-absolute tds-u-right0' onclick='console.log("Button clicked")'>Test button</button>
         <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens. 
         <br/>In that case they should be placed in a persistent side menu — which is always visible on large screens.</p>
 
