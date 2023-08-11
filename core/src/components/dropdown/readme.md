@@ -10,7 +10,6 @@
 
 | Property        | Attribute        | Description                                                                                | Type                                                     | Default       |
 | --------------- | ---------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------- | ------------- |
-| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                    | `string`                                                 | `undefined`   |
 | `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                      | `boolean`                                                | `false`       |
 | `error`         | `error`          | Sets the Dropdown in an error state                                                        | `boolean`                                                | `false`       |
 | `filter`        | `filter`         | Enables filtration in the Dropdown.                                                        | `boolean`                                                | `false`       |
@@ -25,6 +24,7 @@
 | `options`       | --               | Populate the Dropdown via a JSON array                                                     | `{ value: string; label: string; disabled: boolean; }[]` | `undefined`   |
 | `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                         | `string`                                                 | `undefined`   |
 | `size`          | `size`           | The size of the Dropdown.                                                                  | `"lg" \| "md" \| "sm"`                                   | `'lg'`        |
+| `value`         | `value`          | Value selected in the Dropdown.                                                            | `string`                                                 | `undefined`   |
 
 
 ## Events

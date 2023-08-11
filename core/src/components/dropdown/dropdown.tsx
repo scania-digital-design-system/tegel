@@ -57,8 +57,8 @@ export class TdsDropdown {
   /** Text that is displayed if filter is used and there are no options that matches the search. */
   @Prop() noResultText: string = 'No result';
 
-  /** Default value selected in the Dropdown. */
-  @Prop() defaultValue: string;
+  /** Value selected in the Dropdown. */
+  @Prop({ reflect: true }) value: string;
 
   /** Populate the Dropdown via a JSON array */
   @Prop() options: Array<{ value: string; label: string; disabled: boolean }>;
@@ -94,14 +94,17 @@ export class TdsDropdown {
         : [{ value: newValue, label: newValueLabel }];
     } else {
       this.selection = [{ value: newValue, label: newValueLabel }];
-      this.children = this.children.map((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value !== newValue) {
-          element.setSelected(false);
-        }
-        return element;
-      });
+      this.children = Array.from(this.host.children)
+        .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+        .map((element: HTMLTdsDropdownOptionElement) => {
+          if (element.value !== newValue) {
+            element.setSelected(false);
+          }
+          return element;
+        });
     }
     this.handleChange();
+    this.value = this.selection.map((selection) => selection.value).toString();
     return this.selection;
   }
 
@@ -109,12 +112,15 @@ export class TdsDropdown {
   @Method()
   async removeValue(oldValue: string) {
     if (this.multiselect) {
-      this.children.forEach((element) => {
-        if (element.value === oldValue) {
-          this.selection = this.selection.filter((item) => item.value !== element.value);
-          element.setSelected(false);
-        }
-      });
+      this.children = Array.from(this.host.children)
+        .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+        .map((element: HTMLTdsDropdownOptionElement) => {
+          if (element.value === oldValue) {
+            this.selection = this.selection.filter((item) => item.value !== element.value);
+            element.setSelected(false);
+          }
+          return element;
+        });
     } else {
       this.reset();
     }
@@ -227,8 +233,14 @@ export class TdsDropdown {
     }
   };
 
+  componentWillRender = () => {
+    if (!this.options) {
+      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionElement>;
+    }
+  };
+
   componentDidLoad() {
-    if (this.defaultValue) {
+    if (this.value) {
       this.setDefaultOption();
     }
   }
@@ -236,8 +248,8 @@ export class TdsDropdown {
   setDefaultOption = () => {
     this.children = this.children.map((element: HTMLTdsDropdownOptionElement) => {
       if (this.multiselect) {
-        this.defaultValue.split(',').forEach((defaultValue) => {
-          if (defaultValue === element.value) {
+        this.value.split(',').forEach((value) => {
+          if (value === element.value) {
             element.setSelected(true);
             this.selection = this.selection
               ? [...this.selection, { value: element.value, label: element.textContent }]
@@ -247,7 +259,7 @@ export class TdsDropdown {
           }
         });
       } else {
-        if (this.defaultValue === element.value) {
+        if (this.value === element.value) {
           element.setSelected(true);
           this.selection = [{ value: element.value, label: element.textContent }];
         } else {
@@ -346,7 +358,7 @@ export class TdsDropdown {
     return (
       <Host
         role="select"
-        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}
+        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''} updated1`}
       >
         {this.label && this.labelPosition === 'outside' && (
           <div class={`label-outside ${this.disabled ? 'disabled' : ''}`}>{this.label}</div>
