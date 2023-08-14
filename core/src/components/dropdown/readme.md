@@ -61,7 +61,7 @@ Type: `Promise<{ value: string; label: string; }[]>`
 
 ### `reset() => Promise<void>`
 
-Method that resets the Dropdown.
+Method that resets the Dropdown, marks all children as non-selected and resets the value to null.
 
 #### Returns
 
