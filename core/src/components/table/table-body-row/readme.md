@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default |
-| ---------- | ---------- | ----------- | --------- | ------- |
-| `selected` | `selected` |             | `boolean` | `false` |
+| Property   | Attribute  | Description                                       | Type      | Default |
+| ---------- | ---------- | ------------------------------------------------- | --------- | ------- |
+| `selected` | `selected` | Marks the row as selected, used for multiselect.s | `boolean` | `false` |
 
 
 ## Events
