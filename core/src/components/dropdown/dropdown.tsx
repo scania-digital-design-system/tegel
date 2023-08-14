@@ -77,11 +77,17 @@ export class TdsDropdown {
 
   private children: Array<HTMLTdsDropdownOptionElement>;
 
-  /** Method that resets the Dropdown. */
+  /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.children.forEach((element) => element.setSelected(false));
+    this.children = Array.from(this.host.children)
+      .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+      .map((element: HTMLTdsDropdownOptionElement) => {
+        element.setSelected(false);
+        return element;
+      });
     this.selection = null;
+    this.value = null;
     this.handleChange();
   }
 
