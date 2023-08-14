@@ -155,7 +155,7 @@ const BasicTemplate = ({
   <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
-      enable-responsive="${responsiveDesign}"
+      responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
       <tds-table-header>

@@ -2,8 +2,8 @@ import { Component, h, Host, State, Event, EventEmitter, Listen, Element } from 
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
-  'enableMultiselect',
-  'enableExpandableRows',
+  'multiselect',
+  'expandableRows',
   'verticalDividers',
   'compactDesign',
   'noMinWidth',
@@ -18,9 +18,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableHeaderRow {
-  @State() enableMultiselect: boolean = false;
+  @State() multiselect: boolean = false;
 
-  @State() enableExpandableRows: boolean = false;
+  @State() expandableRows: boolean = false;
 
   @State() mainCheckboxSelected: boolean = false;
 
@@ -129,7 +129,7 @@ export class TdsTableHeaderRow {
         }}
       >
         <tr>
-          {this.enableMultiselect && (
+          {this.multiselect && (
             <th class="tds-table__header-cell tds-table__header-cell--checkbox">
               <div class="tds-form-label tds-form-label--table">
                 <tds-checkbox
@@ -139,7 +139,7 @@ export class TdsTableHeaderRow {
               </div>
             </th>
           )}
-          {this.enableExpandableRows && (
+          {this.expandableRows && (
             <th class="tds-table__header-cell tds-table__header-cell--checkbox"></th>
           )}
           <slot></slot>

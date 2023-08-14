@@ -85,7 +85,7 @@ export default {
 
 const DataPropertyTemplate = ({ bodyData }) =>
   formatHtmlPreview(`
-    <tds-table enable-expandable-rows="false">
+    <tds-table expandable-rows="false">
     <tds-table-toolbar table-title="'body-data' property example"></tds-table-toolbar>
       <tds-table-header>
           <tds-header-cell column-key='truck' column-title='Truck type'></tds-header-cell>

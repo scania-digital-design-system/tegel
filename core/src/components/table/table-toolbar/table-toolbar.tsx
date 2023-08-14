@@ -30,7 +30,7 @@ export class TdsTableToolbar {
   @Prop({ reflect: true }) tableTitle: string = '';
 
   /** Enables preview of searchbar */
-  @Prop({ reflect: true }) enableFiltering: boolean = false;
+  @Prop({ reflect: true }) filter: boolean = false;
 
   @State() verticalDividers: boolean = false;
 
@@ -125,7 +125,7 @@ export class TdsTableToolbar {
         <div class="tds-table__upper-bar-flex">
           <caption class="tds-table__title">{this.tableTitle}</caption>
           <div class="tds-table__actionbar">
-            {this.enableFiltering && (
+            {this.filter && (
               <div class="tds-table__searchbar">
                 <input
                   class="tds-table__searchbar-input"

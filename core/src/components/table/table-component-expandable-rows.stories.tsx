@@ -140,10 +140,10 @@ const ExpandableRowTemplate = ({
 }) =>
   formatHtmlPreview(`
   <tds-table
-    enable-expandable-rows
+    expandable-rows
     vertical-dividers="${verticalDivider}"
     compact-design="${compactDesign}"
-    enable-responsive="${responsiveDesign}"
+    responsive="${responsiveDesign}"
     ${noMinWidth ? 'no-min-width' : ''}
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
