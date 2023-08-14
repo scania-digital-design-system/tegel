@@ -13,10 +13,7 @@ import {
 
 import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalTdsTablePropChange['changed'] = [
-  'enableMultiselect',
-  'enableExpandableRows',
-];
+const relevantTableProps: InternalTdsTablePropChange['changed'] = ['multiselect', 'expandableRows'];
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For table rows.
@@ -38,11 +35,11 @@ export class TdsTableBody {
 
   @State() rowsPerPage: number = 1;
 
-  @State() enableMultiselect: boolean = false;
+  @State() multiselect: boolean = false;
 
   @State() enablePaginationTableBody: boolean = false;
 
-  @State() enableExpandableRows: boolean = true;
+  @State() expandableRows: boolean = false;
 
   @State() innerBodyData = [];
 
@@ -154,7 +151,7 @@ export class TdsTableBody {
   };
 
   sortData(keyValue, sortingDirection) {
-    if (this.enableMultiselect) {
+    if (this.multiselect) {
       // Uncheck all checkboxes as the state of checkbox is lost on sorting. Do it only in case multiSelect is True.
       this.uncheckAll();
     }
@@ -220,7 +217,9 @@ export class TdsTableBody {
 
   searchFunction(searchTerm) {
     // grab all rows in body
-    const dataRowsFiltering = this.host.querySelectorAll('tds-table-body-row, tds-table-body-row-expandable', );
+    const dataRowsFiltering = this.host.querySelectorAll(
+      'tds-table-body-row, tds-table-body-row-expandable',
+    );
 
     if (searchTerm.length > 0) {
       if (this.enablePaginationTableBody) {
@@ -305,7 +304,7 @@ export class TdsTableBody {
       this.host.parentElement.querySelector('tds-table-header').children.length;
 
     // multiselect and expended features requires one extra column for controls...
-    if (this.enableMultiselect || this.enableExpandableRows) {
+    if (this.multiselect || this.expandableRows) {
       this.columnsNumber = headerColumnsNo + 1;
     } else {
       this.columnsNumber = headerColumnsNo;

@@ -19,7 +19,7 @@ describe('tds-table filtering', () => {
       components: [TdsTable, TdsTableToolbar, TdsTableHeaderRow, TdsTableHeaderCell, TdsTableBody],
       template: () => (
         <tds-table table-id="unique-test-id">
-          <tds-table-toolbar table-title="Filter me" enableFiltering />
+          <tds-table-toolbar table-title="Filter me" filter />
           <tds-table-header>
             <tds-header-cell column-key={columnKeys[0]} />
             <tds-header-cell column-key={columnKeys[1]} />

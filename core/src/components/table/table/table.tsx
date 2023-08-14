@@ -8,9 +8,9 @@ type Props = {
   verticalDividers: boolean;
   compactDesign: boolean;
   noMinWidth: boolean;
-  enableMultiselect: boolean;
-  enableExpandableRows: boolean;
-  enableResponsive: boolean;
+  multiselect: boolean;
+  expandableRows: boolean;
+  responsive: boolean;
   modeVariant: 'primary' | 'secondary' | null;
   textAlign: string;
 };
@@ -42,13 +42,13 @@ export class TdsTable {
   //  Try setting it and observe text-align set on header cell
 
   /** Enables multiselect feature of Table */
-  @Prop({ reflect: true }) enableMultiselect: boolean = false;
+  @Prop({ reflect: true }) multiselect: boolean = false;
 
   /** Enables extended row feature of Table */
-  @Prop({ reflect: true }) enableExpandableRows: boolean = false;
+  @Prop({ reflect: true }) expandableRows: boolean = false;
 
   /** Enables Table to take 100% available width with equal spacing of columns */
-  @Prop({ reflect: true }) enableResponsive: boolean = false;
+  @Prop({ reflect: true }) responsive: boolean = false;
 
   /** Variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = null;
@@ -79,14 +79,14 @@ export class TdsTable {
     });
   }
 
-  @Watch('enableMultiselect')
+  @Watch('multiselect')
   enableMultiselectChanged(newValue: boolean) {
-    this.emitInternalTdsPropChange('enableMultiselect', newValue);
+    this.emitInternalTdsPropChange('multiselect', newValue);
   }
 
-  @Watch('enableExpandableRows')
+  @Watch('expandableRows')
   enableExpandableRowsChanged(newValue: boolean) {
-    this.emitInternalTdsPropChange('enableExpandableRows', newValue);
+    this.emitInternalTdsPropChange('expandableRows', newValue);
   }
 
   @Watch('compactDesign')
@@ -111,14 +111,14 @@ export class TdsTable {
 
   render() {
     return (
-      <Host class={{ 'tds-table--responsive': this.enableResponsive }}>
+      <Host class={{ 'tds-table--responsive': this.responsive }}>
         <table
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
             'tds-table--divider': this.verticalDividers,
             'tds-table--no-min-width': this.noMinWidth,
-            'tds-table--responsive': this.enableResponsive,
+            'tds-table--responsive': this.responsive,
           }}
         >
           <slot />

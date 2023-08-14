@@ -9,7 +9,6 @@ import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
-import dummyData from './table-body/dummy-data.json';
 
 export default {
   title: `${ComponentsFolder}/Table`,
@@ -60,7 +59,7 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    enableMultiselect: {
+    multiselect: {
       name: 'Enable multiselect',
       description: 'Enables row selection.',
       control: {
@@ -129,7 +128,7 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: false,
-    enableMultiselect: true,
+    multiselect: true,
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
@@ -143,7 +142,7 @@ const MultiselectTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
-  enableMultiselect,
+  multiselect,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -176,10 +175,10 @@ const MultiselectTemplate = ({
 
     <tds-table
         id="multiselect-table"
-        ${enableMultiselect ? 'enable-multiselect' : ''}
+        ${multiselect ? 'multiselect' : ''}
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
-        enable-responsive="${responsiveDesign}"
+        responsive="${responsiveDesign}"
         ${noMinWidth ? 'no-min-width' : ''}
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''

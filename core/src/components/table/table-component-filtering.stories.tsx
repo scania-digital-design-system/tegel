@@ -152,11 +152,11 @@ const FilteringTemplate = ({
    <tds-table
       vertical-dividers="${verticalDivider}"
       compact-design="${compactDesign}"
-      ${responsiveDesign ? 'enable-responsive' : ''}
+      ${responsiveDesign ? 'responsive' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
   >
-          <tds-table-toolbar table-title="Filter" enable-filtering></tds-table-toolbar>
+          <tds-table-toolbar table-title="Filter" filter></tds-table-toolbar>
           <tds-table-header>
               <tds-header-cell column-key='truck' column-title='Truck type' ${
                 column1Width ? `custom-width="${column1Width}"` : ''
@@ -196,7 +196,9 @@ const FilteringTemplate = ({
     document.addEventListener('tdsFilterChange', (event) => {
       console.log(event)
     })
-    ${useDataProp ? `
+    ${
+      useDataProp
+        ? `
     /* ONLY WORKS IN THE CANVAS TAB. */
     tableBody = document.querySelector('tds-table-body');
     tableBody.bodyData = [
@@ -242,7 +244,9 @@ const FilteringTemplate = ({
         "country": "France",
         "mileage": 80957
       }
-    ]`:''}
+    ]`
+        : ''
+    }
   </script>`);
 
 export const Filtering = FilteringTemplate.bind({});
