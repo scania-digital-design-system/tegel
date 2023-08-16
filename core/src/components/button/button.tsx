@@ -37,17 +37,13 @@ export class TdsButton {
 
   @State() onlyIcon: boolean = false;
 
-  connectedCallback() {
-    if (!this.text) {
-      this.onlyIcon = true;
-      this.host.setAttribute('only-icon', '');
-    }
-  }
-
   render() {
     const hasLabelSlot = hasSlot('label', this.host);
     const hasIconSlot = hasSlot('icon', this.host);
-
+    if (!this.text && !hasLabelSlot) {
+      this.onlyIcon = true;
+      this.host.setAttribute('only-icon', '');
+    }
     return (
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <button
