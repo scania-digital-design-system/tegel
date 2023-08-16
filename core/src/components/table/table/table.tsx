@@ -111,7 +111,13 @@ export class TdsTable {
 
   render() {
     return (
-      <Host class={{ 'tds-table--responsive': this.responsive }}>
+      <Host
+        class={{
+          'tds-table--responsive': this.responsive,
+          'tds-mode-variant-primary': this.modeVariant === 'primary',
+          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
+        }}
+      >
         <table
           class={{
             'tds-table': true,
