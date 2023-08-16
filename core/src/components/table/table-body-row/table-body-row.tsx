@@ -5,7 +5,6 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
   'verticalDividers',
   'compactDesign',
-  'modeVariant',
 ];
 
 /**
@@ -28,8 +27,6 @@ export class TdsTableBodyRow {
   @State() compactDesign: boolean = false;
 
   @State() noMinWidth: boolean = false;
-
-  @State() modeVariant: 'primary' | 'secondary' = null;
 
   @State() tableId: string = '';
 
@@ -129,8 +126,6 @@ export class TdsTableBodyRow {
           'tds-table__row': true,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
-          'tds-mode-variant-primary': this.modeVariant === 'primary',
-          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
         {this.multiselect && (
