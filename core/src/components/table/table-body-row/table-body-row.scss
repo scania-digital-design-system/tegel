@@ -21,11 +21,11 @@
 }
 
 :host(.tds-table__row--selected) {
-  background-color: var(--tds-table-body-row-background-active);
+  background-color: var(--tds-table-body-row-background-selected);
 }
 
 :host(.tds-table__row--selected:hover) {
-  background-color: var(--tds-table-body-row-background-active-hover);
+  background-color: var(--tds-table-body-row-background-selected-hover);
 }
 
 :host(.tds-table__row--hidden) {
