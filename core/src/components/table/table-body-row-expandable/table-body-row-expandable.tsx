@@ -122,8 +122,6 @@ export class TdsTableBodyRowExpandable {
           'tds-table__row-expand--active': this.isExpanded,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
-          'tds-mode-variant-primary': this.modeVariant === 'primary',
-          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
         <tr class="tds-table__row">
