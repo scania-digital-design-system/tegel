@@ -211,14 +211,10 @@ const Template = ({
         <tds-dropdown
         ${
           defaultOption && defaultOption !== 'No default'
-            ? `default-value="${defaultOptionLookUp[defaultOption]}"`
+            ? `value="${defaultOptionLookUp[defaultOption]}"`
             : ''
         }
-        ${
-          multiDefaultOption
-            ? `default-value="${getMultiselectDefaultValue(multiDefaultOption)}"`
-            : ''
-        }
+        ${multiDefaultOption ? `value="${getMultiselectDefaultValue(multiDefaultOption)}"` : ''}
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         }
