@@ -42,7 +42,6 @@ export class TdsButton {
     const hasIconSlot = hasSlot('icon', this.host);
     if (!this.text && !hasLabelSlot) {
       this.onlyIcon = true;
-      this.host.setAttribute('only-icon', '');
     }
     return (
       <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
