@@ -89,27 +89,34 @@ export class TdsTable {
     });
   }
 
-  /** Returns all selected rows data in JSON */
+  /** Returns all selected rows data. */
   @Method()
   async getSelectedRows() {
+    let selectedRowsData = [];
     const tableBody = this.host.querySelector('tds-table-body');
     const selectedRows = Array.from(tableBody.querySelectorAll('tds-table-body-row')).filter(
       (element) => element.selected,
     );
 
-    let selectedRowsArray = [];
-    for (let j = 0; j < selectedRows.length; j++) {
-      const rowCells = selectedRows[j].getElementsByTagName('tds-body-cell');
-      const selectedObject = {};
-      for (let i = 0; i < rowCells.length; i++) {
-        const currentCellKey = rowCells[i].getAttribute('cell-key');
-        const currentCellValue = rowCells[i].getAttribute('cell-value');
-        selectedObject[currentCellKey] = currentCellValue;
-      }
-      selectedRowsArray = [...selectedRowsArray, selectedObject];
-    }
+    selectedRows.forEach((row) => {
+      let selectedRow = [];
+      const rowCells = Array.from(row.getElementsByTagName('tds-body-cell'));
 
-    return JSON.stringify(selectedRowsArray);
+      rowCells.forEach((cell) => {
+        const cellObject = {
+          cellKey: null,
+          cellValue: null,
+        };
+
+        cellObject.cellKey = cell.cellKey;
+        cellObject.cellValue = cell.cellValue ?? cell.innerText;
+
+        selectedRow = [...selectedRow, cellObject];
+      });
+      selectedRowsData = [...selectedRowsData, selectedRow];
+    });
+
+    return selectedRowsData;
   }
 
   @Watch('multiselect')

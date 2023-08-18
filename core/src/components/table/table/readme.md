@@ -21,13 +21,13 @@
 
 ## Methods
 
-### `getSelectedRows() => Promise<string>`
+### `getSelectedRows() => Promise<any[]>`
 
-Returns all selected rows data in JSON
+Returns all selected rows data.
 
 #### Returns
 
-Type: `Promise<string>`
+Type: `Promise<any[]>`
 
 
 

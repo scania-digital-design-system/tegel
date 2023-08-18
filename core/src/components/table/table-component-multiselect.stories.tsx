@@ -216,7 +216,7 @@ const MultiselectTemplate = ({
     document.getElementById('event-name-textarea').value = 'tdsSelectAllChange';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
     getSelectedRows().then(selectedRows => {
-      document.getElementById('selected-rows-textarea').value = selectedRows;
+      document.getElementById('selected-rows-textarea').value = JSON.stringify(selectedRows);
     });
   });
 
