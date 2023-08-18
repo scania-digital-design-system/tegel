@@ -215,31 +215,33 @@ button {
   justify-content: center;
 }
 
-tds-button:not([only-icon]) {
-  display: inline-flex;
-  align-items: center;
+tds-button {
+  :not(.only-icon) {
+    display: inline-flex;
+    align-items: center;
 
-  .sm {
-    ::slotted([slot='icon']) {
-      margin-left: var(--tds-spacing-element-12);
-      width: var(--tds-spacing-element-16);
-      height: var(--tds-spacing-element-16);
+    &.sm {
+      ::slotted([slot='icon']) {
+        margin-left: var(--tds-spacing-element-12);
+        width: var(--tds-spacing-element-16);
+        height: var(--tds-spacing-element-16);
+      }
     }
-  }
 
-  .md {
-    ::slotted([slot='icon']) {
-      margin-left: var(--tds-spacing-element-16);
-      width: var(--tds-spacing-element-20);
-      height: var(--tds-spacing-element-20);
+    &.md {
+      ::slotted([slot='icon']) {
+        margin-left: var(--tds-spacing-element-16);
+        width: var(--tds-spacing-element-20);
+        height: var(--tds-spacing-element-20);
+      }
     }
-  }
 
-  .lg {
-    ::slotted([slot='icon']) {
-      margin-left: var(--tds-spacing-element-20);
-      width: var(--tds-spacing-element-20);
-      height: var(--tds-spacing-element-20);
+    &.lg {
+      ::slotted([slot='icon']) {
+        margin-left: var(--tds-spacing-element-20);
+        width: var(--tds-spacing-element-20);
+        height: var(--tds-spacing-element-20);
+      }
     }
   }
 }
