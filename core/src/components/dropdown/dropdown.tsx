@@ -58,7 +58,7 @@ export class TdsDropdown {
   @Prop() noResultText: string = 'No result';
 
   /** Value selected in the Dropdown. */
-  @Prop({ reflect: true }) value: string;
+  @Prop() defaultValue: string;
 
   /** Populate the Dropdown via a JSON array */
   @Prop() options: Array<{ value: string; label: string; disabled: boolean }>;
@@ -87,7 +87,7 @@ export class TdsDropdown {
         return element;
       });
     this.selection = null;
-    this.value = null;
+    this.host.setAttribute('value', null);
     this.handleChange();
   }
 
@@ -110,7 +110,7 @@ export class TdsDropdown {
         });
     }
     this.handleChange();
-    this.value = this.selection.map((selection) => selection.value).toString();
+    this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
     return this.selection;
   }
 
@@ -246,7 +246,7 @@ export class TdsDropdown {
   };
 
   componentDidLoad() {
-    if (this.value) {
+    if (this.defaultValue) {
       this.setDefaultOption();
     }
   }
@@ -254,7 +254,7 @@ export class TdsDropdown {
   setDefaultOption = () => {
     this.children = this.children.map((element: HTMLTdsDropdownOptionElement) => {
       if (this.multiselect) {
-        this.value.split(',').forEach((value) => {
+        this.defaultValue.split(',').forEach((value) => {
           if (value === element.value) {
             element.setSelected(true);
             this.selection = this.selection
@@ -265,7 +265,7 @@ export class TdsDropdown {
           }
         });
       } else {
-        if (this.value === element.value) {
+        if (this.defaultValue === element.value) {
           element.setSelected(true);
           this.selection = [{ value: element.value, label: element.textContent }];
         } else {
