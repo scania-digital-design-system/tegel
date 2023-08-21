@@ -44,6 +44,8 @@
   --tds-btn-secondary-border-color-disabled: rgb(0 0 0 / 38%);
   --tds-btn-icon-secondary-color-focus: var(--tds-black);
   --tds-btn-icon-secondary-fill-focus: var(--tds-black);
+  --tds-btn-icon-secondary-fill-active: var(--tds-black);
+  --tds-btn-icon-secondary-fill-active: var(--tds-black);
 
   /* ICON */ //not used
   --tds-btn-icon-secondary-fill: var(--tds-black);
@@ -52,6 +54,10 @@
   /* ICON HOVER */ //not used
   --tds-btn-icon-secondary-fill-hover: var(--tds-grey-50);
   --tds-btn-icon-secondary-color-hover: var(--tds-grey-50);
+
+  /* ICON HOVER */ //not used
+  --tds-btn-icon-secondary-fill-active: var(--tds-black);
+  --tds-btn-icon-secondary-color-active: var(--tds-black);
 
   //Ghost
   --tds-btn-ghost-background: transparent;

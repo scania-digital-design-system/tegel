@@ -172,6 +172,15 @@ button {
         @each $prop in $props {
           #{$prop}: var(--tds-btn-#{$type}-#{$prop}-active);
         }
+
+        &:not(.disabled) {
+          ::slotted([slot='icon']) {
+            @each $prop in $iconProps {
+              fill: var(--tds-btn-icon-#{$type}-#{$prop}-active);
+              color: var(--tds-btn-icon-#{$type}-#{$prop}-active);
+            }
+          }
+        }
       }
 
       &.disabled,
