@@ -10,7 +10,7 @@
 
 | Property        | Attribute        | Description                                                                                | Type                                                     | Default       |
 | --------------- | ---------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------- | ------------- |
-| `defaultValue`  | `default-value`  | Value selected in the Dropdown.                                                            | `string`                                                 | `undefined`   |
+| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                    | `string`                                                 | `undefined`   |
 | `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                      | `boolean`                                                | `false`       |
 | `error`         | `error`          | Sets the Dropdown in an error state                                                        | `boolean`                                                | `false`       |
 | `filter`        | `filter`         | Enables filtration in the Dropdown.                                                        | `boolean`                                                | `false`       |
