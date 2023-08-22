@@ -60,7 +60,10 @@ export default {
     variant: 'Information',
     header: 'Header',
     subheader: 'Subheader',
-    bottom: '<a slot="bottom" href="#">This is a link.</a>',
+    bottom:
+      '<tds-link slot="bottom">\n' +
+      '    <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>\n' +
+      '</tds-link>',
   },
 };
 
