@@ -170,6 +170,8 @@
     }
 
     .no-result {
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
       display: flex;
       align-items: center;
       padding: 0 16px;
