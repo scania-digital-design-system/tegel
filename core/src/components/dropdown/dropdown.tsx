@@ -364,7 +364,7 @@ export class TdsDropdown {
     return (
       <Host
         role="select"
-        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''} updated1`}
+        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}
       >
         {this.label && this.labelPosition === 'outside' && (
           <div class={`label-outside ${this.disabled ? 'disabled' : ''}`}>{this.label}</div>
