@@ -57,7 +57,7 @@ export class TdsDropdown {
   /** Text that is displayed if filter is used and there are no options that matches the search. */
   @Prop() noResultText: string = 'No result';
 
-  /** Value selected in the Dropdown. */
+  /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
 
   /** Populate the Dropdown via a JSON array */
