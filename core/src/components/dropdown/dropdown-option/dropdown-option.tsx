@@ -69,7 +69,7 @@ export class TdsDropdownOption {
   })
   tdsBlur: EventEmitter<FocusEvent>;
 
-  connectedCallback = () => {
+  componentWillRender = () => {
     this.parentElement =
       this.host.parentElement.tagName === 'TDS-DROPDOWN'
         ? (this.host.parentElement as HTMLTdsDropdownElement)
