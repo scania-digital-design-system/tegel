@@ -77,11 +77,17 @@ export class TdsDropdown {
 
   private children: Array<HTMLTdsDropdownOptionElement>;
 
-  /** Method that resets the Dropdown. */
+  /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.children.forEach((element) => element.setSelected(false));
+    this.children = Array.from(this.host.children)
+      .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+      .map((element: HTMLTdsDropdownOptionElement) => {
+        element.setSelected(false);
+        return element;
+      });
     this.selection = null;
+    this.host.setAttribute('value', null);
     this.handleChange();
   }
 
@@ -94,14 +100,17 @@ export class TdsDropdown {
         : [{ value: newValue, label: newValueLabel }];
     } else {
       this.selection = [{ value: newValue, label: newValueLabel }];
-      this.children = this.children.map((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value !== newValue) {
-          element.setSelected(false);
-        }
-        return element;
-      });
+      this.children = Array.from(this.host.children)
+        .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+        .map((element: HTMLTdsDropdownOptionElement) => {
+          if (element.value !== newValue) {
+            element.setSelected(false);
+          }
+          return element;
+        });
     }
     this.handleChange();
+    this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
     return this.selection;
   }
 
@@ -109,12 +118,15 @@ export class TdsDropdown {
   @Method()
   async removeValue(oldValue: string) {
     if (this.multiselect) {
-      this.children.forEach((element) => {
-        if (element.value === oldValue) {
-          this.selection = this.selection.filter((item) => item.value !== element.value);
-          element.setSelected(false);
-        }
-      });
+      this.children = Array.from(this.host.children)
+        .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+        .map((element: HTMLTdsDropdownOptionElement) => {
+          if (element.value === oldValue) {
+            this.selection = this.selection.filter((item) => item.value !== element.value);
+            element.setSelected(false);
+          }
+          return element;
+        });
     } else {
       this.reset();
     }
@@ -227,6 +239,12 @@ export class TdsDropdown {
     }
   };
 
+  componentWillRender = () => {
+    if (!this.options) {
+      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionElement>;
+    }
+  };
+
   componentDidLoad() {
     if (this.defaultValue) {
       this.setDefaultOption();
@@ -236,8 +254,8 @@ export class TdsDropdown {
   setDefaultOption = () => {
     this.children = this.children.map((element: HTMLTdsDropdownOptionElement) => {
       if (this.multiselect) {
-        this.defaultValue.split(',').forEach((defaultValue) => {
-          if (defaultValue === element.value) {
+        this.defaultValue.split(',').forEach((value) => {
+          if (value === element.value) {
             element.setSelected(true);
             this.selection = this.selection
               ? [...this.selection, { value: element.value, label: element.textContent }]
