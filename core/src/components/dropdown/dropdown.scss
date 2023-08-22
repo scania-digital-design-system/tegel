@@ -6,7 +6,6 @@
 :host {
   display: block;
   position: relative;
-  z-index: tds-z-index(dropdown);
   font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
 
@@ -123,6 +122,7 @@
   }
 
   .dropdown-list {
+    z-index: tds-z-index(dropdown);
     position: absolute;
     margin-top: 1px;
     width: 100%;
