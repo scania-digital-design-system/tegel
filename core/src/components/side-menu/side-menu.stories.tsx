@@ -214,11 +214,11 @@ const Template = ({ persistent, collapsible }) =>
   </div>
   <script>
     sideMenu = document.querySelector('tds-side-menu')
-    document.querySelector('#test').addEventListener('click', ()=> {
+    document.querySelector('#test')?.addEventListener('click', ()=> {
       sideMenu.collapsed = !sideMenu.collapsed;
     })
 
-    document.querySelector('tds-side-menu-collapse-button').addEventListener('tdsCollapse', (event) => {
+    document.querySelector('tds-side-menu-collapse-button')?.addEventListener('tdsCollapse', (event) => {
       console.log(event)
     })
   </script>
