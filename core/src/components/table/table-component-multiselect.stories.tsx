@@ -212,16 +212,16 @@ const MultiselectTemplate = ({
     return await document.querySelector('tds-table').getSelectedRows().then((value) => value);
   }
 
-  window.addEventListener('tdsSelectAllChange', e => {
-    document.getElementById('event-name-textarea').value = 'tdsSelectAllChange';
+  window.addEventListener('tdsSelectAll', e => {
+    document.getElementById('event-name-textarea').value = 'tdsSelectAll';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
     getSelectedRows().then(selectedRows => {
       document.getElementById('selected-rows-textarea').value = JSON.stringify(selectedRows);
     });
   });
 
-  window.addEventListener('tdsSelectChange', e => {
-    document.getElementById('event-name-textarea').value = 'tdsSelectChange';
+  window.addEventListener('tdsSelect', e => {
+    document.getElementById('event-name-textarea').value = 'tdsSelect';
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
 
     getSelectedRows().then(selectedRows => {

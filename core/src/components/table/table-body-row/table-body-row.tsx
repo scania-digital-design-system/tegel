@@ -47,29 +47,22 @@ export class TdsTableBodyRow {
 
   /**  Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control */
   @Event({
-    eventName: 'tdsSelectChange',
+    eventName: 'tdsSelect',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  tdsSelectChange: EventEmitter<{
+  tdsSelect: EventEmitter<{
     tableId: string;
     checked: boolean;
   }>;
 
   handleCheckboxChange(event) {
     this.selected = event.detail.checked;
-    this.tdsSelectChange.emit({
+    this.tdsSelect.emit({
       tableId: this.tableId,
       checked: this.selected,
     });
-
-    const tableRows = Array.from(this.host.parentElement.querySelectorAll('tds-table-body-row'));
-    const allSelected = tableRows.every((element) => {
-      console.log(element.classList.contains('selected'));
-      return element.selected;
-    });
-    this.tableEl.querySelector('tds-table-header').allSelected = allSelected;
   }
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -83,18 +76,6 @@ export class TdsTableBodyRow {
           }
           this[changedProp] = event.detail[changedProp];
         });
-    }
-  }
-
-  @Listen('tdsSelectAllChange', { target: 'body' })
-  selectAllListener(
-    event: CustomEvent<{
-      id: string;
-      checked: boolean;
-    }>,
-  ) {
-    if (this.tableId === event.detail.id) {
-      this.selected = event.detail.checked;
     }
   }
 

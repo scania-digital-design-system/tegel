@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event             | Description                                                                                                            | Type                                                  |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `tdsSelectChange` | Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control | `CustomEvent<{ tableId: string; checked: boolean; }>` |
+| Event       | Description                                                                                                            | Type                                                  |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `tdsSelect` | Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control | `CustomEvent<{ tableId: string; checked: boolean; }>` |
 
 
 ## Slots
