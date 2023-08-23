@@ -58,22 +58,44 @@ export default {
       options: ['None', 0, 1, 2, 3],
       if: { arg: 'defaultSelectedIndex', eq: 'None' },
     },
+    tabType: {
+      name: 'Button/Link',
+      control: {
+        type: 'radio',
+      },
+      options: ['Button', 'Link'],
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     defaultSelectedIndex: 'None',
     selectedIndex: 'None',
+    tabType: 'Button',
   },
 };
 
-const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
+const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, tabType }) =>
   formatHtmlPreview(`
     <tds-navigation-tabs
       ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
       ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
       ${modeVariant !== 'Inherit from parent' ? ` mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
+    ${
+      tabType === 'Button'
+        ? `<tds-navigation-tab>
+        <button>First tab</button>
+      </tds-navigation-tab>
       <tds-navigation-tab>
+        <button>Second tab is much longer</button>
+      </tds-navigation-tab>
+      <tds-navigation-tab>
+        <button>Third tab</button>
+      </tds-navigation-tab>
+      <tds-navigation-tab disabled>
+        <button>Fourth tab</button>
+      </tds-navigation-tab>`
+        : `<tds-navigation-tab>
         <a href="#">First tab</a>
       </tds-navigation-tab>
       <tds-navigation-tab>
@@ -83,8 +105,9 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
         <a href="#">Third tab</a>
       </tds-navigation-tab>
       <tds-navigation-tab disabled>
-        <a href="javascript:void(0)">Fourth tab</a>
-      </tds-navigation-tab>
+        <a href="#">Fourth tab</a>
+      </tds-navigation-tab>`
+    }
     </tds-navigation-tabs>
 
     <!-- Demo container. -->
