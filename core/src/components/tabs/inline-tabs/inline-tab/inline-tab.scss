@@ -7,6 +7,7 @@
 
   z-index: tds-z-index(tab);
   display: block;
+  position: relative;
 
   ::slotted(*) {
     all: unset;
@@ -24,8 +25,14 @@
     padding: 20px 4px;
   }
 
-  ::slotted(*:focus-visible) {
-    @include tds-focus-state;
+  ::slotted(*:focus-visible)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    bottom: 20px;
+    outline: 2px solid var(--tds-blue-400);
   }
 
   .inline-tab-item:not(.selected)::after {

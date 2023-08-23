@@ -24,8 +24,14 @@
     padding: 26px 4px;
   }
 
-  ::slotted(*:focus-visible) {
-    @include tds-focus-state;
+  ::slotted(*:focus-visible)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 26px;
+    bottom: 26px;
+    outline: 2px solid var(--tds-blue-400);
   }
 
   .navigation-tab-item:not(.selected)::after {
