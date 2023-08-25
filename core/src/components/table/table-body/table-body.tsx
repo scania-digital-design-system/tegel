@@ -1,14 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
 
@@ -49,15 +39,6 @@ export class TdsTableBody {
   @State() tableId: string = '';
 
   tableEl: HTMLTdsTableElement;
-
-  /** @internal Sends unique Table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
-  @Event({
-    eventName: 'internalTdsCheckboxChange',
-    composed: true,
-    cancelable: false,
-    bubbles: true,
-  })
-  internalTdsCheckboxChange: EventEmitter<any>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {

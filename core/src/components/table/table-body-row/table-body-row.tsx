@@ -79,15 +79,6 @@ export class TdsTableBodyRow {
     }
   }
 
-  /** @internal Event that triggers pagination function. Needed as first rows have to be rendered in order for pagination to run */
-  @Event({
-    eventName: 'internalTdsPagination',
-    composed: true,
-    cancelable: false,
-    bubbles: true,
-  })
-  internalTdsPagination: EventEmitter<string>;
-
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
@@ -97,10 +88,6 @@ export class TdsTableBodyRow {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl[tablePropName];
     });
-  }
-
-  componentDidLoad() {
-    this.internalTdsPagination.emit(this.tableId);
   }
 
   render() {

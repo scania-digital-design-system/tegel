@@ -89,19 +89,6 @@ export class TdsTableHeaderCell {
     key: string;
   }>;
 
-  /** @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
-  @Event({
-    eventName: 'internalTdsSortChange',
-    composed: true,
-    cancelable: false,
-    bubbles: true,
-  })
-  internalTdsSortChange: EventEmitter<{
-    tableId: string;
-    columnKey: string;
-    sortingDirection: 'asc' | 'desc';
-  }>;
-
   /** @internal Sends unique Table identifier,column key and text align value so the body cells with a same key take the same text alignment as header cell */
   @Event({
     eventName: 'internalTdsTextAlign',
