@@ -97,7 +97,6 @@
 
     .subheader,
     slot[name='subheader']::slotted(*) {
-      margin-top: 4px;
       color: var(--tds-toast-subheadline-color);
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
@@ -114,13 +113,7 @@
     }
 
     .toast-bottom {
-      &.subheader {
-        margin-top: 16px;
-      }
-
-      &.no-subheader {
-        margin-top: 4px;
-      }
+      margin-top: 12px;
     }
   }
 
