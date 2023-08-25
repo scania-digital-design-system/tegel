@@ -21,19 +21,6 @@
 | `"<default>"` | <b>Unnamed slot.</b> For the cell contents. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-table-body](../table-body)
-
-### Graph
-```mermaid
-graph TD;
-  tds-table-body --> tds-body-cell
-  style tds-body-cell fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

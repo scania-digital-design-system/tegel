@@ -211,115 +211,63 @@ const SortingTemplate = ({
   }></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
           </tds-table-body>
   </tds-table>
+  <!-- Note: Code below is just for demo purposes -->
+  <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
+  <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
+    <h5 class="tds-u-mt0 tds-u-mb0">Event test box</h5>
+    <h6 class="tds-u-mt1 tds-u-mb0">Event name:</h6>
+    <textarea id="event-name-textarea" rows="1" cols="50" readonly></textarea>
+    <h6 class="tds-u-mt0 tds-u-mb0">Events value (aka detail)</h6>
+    <br>
+    <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
+  </div>
   
   
   <script>    
-    /* DEMO CODE ONLY WORKS IN THE CANVAS TAB. */
     
-    // Get the table body
-    tableBody = document.querySelector('tds-table-body');
     
-    // Get ID of current table. Recommended in case of multiple tables in the same page
-    currentTableId = tableBody.closest('tds-table').getAttribute('table-id');
-    
-    // Data example
-    testData = [
-      {
-        "truck": "L-series",
-        "driver": "Sonya Bruce",
-        "country": "Brazil",
-        "mileage": 123987
-      },
-      {
-        "truck": "P-series",
-        "driver": "Guerra Bowman",
-        "country": "Sweden",
-        "mileage": 2000852
-      },
-      {
-        "truck": "G-series",
-        "driver": "Ferrell Wallace",
-        "country": "Germany",
-        "mileage": 564
-      },
-      {
-        "truck": "R-series",
-        "driver": "Cox Burris",
-        "country": "Spain",
-        "mileage": 1789357
-      },
-      {
-        "truck": "S-series",
-        "driver": "Montgomery Cervantes",
-        "country": "Croatia",
-        "mileage": 65
-      },
-      {
-        "truck": "L-series",
-        "driver": "Sheryl Nielsen",
-        "country": "Greece",
-        "mileage": 365784
-      },
-      {
-        "truck": "G-series",
-        "driver": "Benton Gomez",
-        "country": "France",
-        "mileage": 80957
-      }
-    ]
-    
-    // Connect example fo data to bodyData prop
-    tableBody.bodyData = testData;
-    
-    // Example of sorting function
-    function sortData(data, key, sortOrder = 'asc') {
-      if (!Array.isArray(data)) {
-        console.error('Input data is not an array.');
-        return [];
-      }
-    
-      if (!data.length) {
-        console.warn('Input data is empty.');
-        return [];
-      }
-    
-      if (typeof key !== 'string') {
-        console.error('Key should be a valid string.');
-        return data.slice(); // Return a copy of the original array
-      }
-    
-      sortedData = data.slice(); // Create a copy of the original array
-    
-      sortedData.sort((a, b) => {
-        const valueA = a[key];
-        const valueB = b[key];
-    
-        if (typeof valueA === 'undefined' || typeof valueB === 'undefined') {
-          console.warn(\`Key not found in some items. Sorting may be inconsistent.\`);
-          return 0;
-        }
-    
-        const comparison = valueA.toString().localeCompare(valueB.toString(), undefined, { numeric: true });
-    
-        return sortOrder === 'desc' ? -comparison : comparison;
-      });
-    
-      return sortedData;
-    }
-    
-    // Triggering sorting on custom event
-    document.addEventListener('tdsSortChange', (event) => {
-      emmitedID = event.detail.tableId;
-      emmitedKey = event.detail.columnKey;
-      emmitedDirection = event.detail.sortingDirection;      
-      
-      // Recommend check of table ID in case of multiple table components on the same page
-      if (currentTableId === emmitedID) {
-        tableBody.bodyData = sortData(testData, emmitedKey, emmitedDirection);      
-      } 
-    })
+  window.addEventListener('tdsSortChange', e => {
+    document.getElementById('event-name-textarea').value = 'tdsSortChange';
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+  });
   </script>`);
 
 export const Sorting = SortingTemplate.bind({});

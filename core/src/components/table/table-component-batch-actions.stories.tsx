@@ -180,56 +180,44 @@ const BatchActionTemplate = ({
               } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
-          </tds-table-body>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+      </tds-table-body>
   </tds-table>
-  <script>
-      /* ONLY WORKS IN THE CANVAS TAB. */
-      tableBody = document.querySelector('tds-table-body');
-      tableBody.bodyData = [
-        {
-          "truck": "L-series",
-          "driver": "Sonya Bruce",
-          "country": "Brazil",
-          "mileage": 123987
-        },
-        {
-          "truck": "P-series",
-          "driver": "Guerra Bowman",
-          "country": "Sweden",
-          "mileage": 2000852
-        },
-        {
-          "truck": "G-series",
-          "driver": "Ferrell Wallace",
-          "country": "Germany",
-          "mileage": 564
-        },
-        {
-          "truck": "R-series",
-          "driver": "Cox Burris",
-          "country": "Spain",
-          "mileage": 1789357
-        },
-        {
-          "truck": "S-series",
-          "driver": "Montgomery Cervantes",
-          "country": "Croatia",
-          "mileage": 65
-        },
-        {
-          "truck": "L-series",
-          "driver": "Sheryl Nielsen",
-          "country": "Greece",
-          "mileage": 365784
-        },
-        {
-          "truck": "G-series",
-          "driver": "Benton Gomez",
-          "country": "France",
-          "mileage": 80957
-        }
-      ]
-  </script>
   `);
 
 export const BatchAction = BatchActionTemplate.bind({});
