@@ -8,7 +8,6 @@ import {
   Listen,
   Prop,
   State,
-  Watch,
 } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
@@ -25,9 +24,6 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['multiselect'
   shadow: false,
 })
 export class TdsTableBody {
-  /** Prop to pass JSON string which enables automatic rendering of Table rows and cells  */
-  @Prop({ mutable: true }) bodyData: any;
-
   /** Prop for no result message when using filtering */
   @Prop() noResultMessage: string = 'Unfortunately, no data match search criteria.';
 
@@ -42,10 +38,6 @@ export class TdsTableBody {
 
   @State() expandableRows: boolean = false;
 
-  @State() innerBodyData = [];
-
-  @State() bodyDataManipulated = [];
-
   @State() multiselectArray = [];
 
   @State() multiselectArrayJSON: string;
@@ -57,16 +49,6 @@ export class TdsTableBody {
   @State() tableId: string = '';
 
   tableEl: HTMLTdsTableElement;
-
-  @Watch('bodyData')
-  arrayDataWatcher(newValue: string) {
-    if (typeof newValue === 'string') {
-      this.innerBodyData = JSON.parse(newValue);
-    } else {
-      this.innerBodyData = newValue;
-    }
-    this.bodyDataManipulated = [...this.innerBodyData];
-  }
 
   /** @internal Sends unique Table identifier and mainCheckbox status to all rows when multiselect feature is enabled */
   @Event({
@@ -116,10 +98,6 @@ export class TdsTableBody {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl[tablePropName];
     });
-
-    if (this.bodyData) {
-      this.arrayDataWatcher(this.bodyData);
-    }
   }
 
   componentWillRender() {
@@ -137,13 +115,6 @@ export class TdsTableBody {
   render() {
     return (
       <Host data-selected-rows={this.multiselectArrayJSON}>
-        {this.bodyDataManipulated.map((row) => (
-          <tds-table-body-row>
-            {Object.keys(row).map((cellData) => (
-              <tds-body-cell cell-key={cellData} cell-value={row[cellData]}></tds-body-cell>
-            ))}
-          </tds-table-body-row>
-        ))}
         <tr hidden={!this.showNoResultsMessage}>
           <td class="tds-table__info-message" colSpan={this.columnsNumber}>
             <slot name="no-result" />
