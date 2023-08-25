@@ -43,10 +43,6 @@
     slot[name='close-button']::slotted(tds-side-menu-close-button) {
       opacity: 1;
     }
-
-    .tds-side-menu-wrapper {
-      transform: scaleY(1);
-    }
   }
 
   .state-upper-slot-empty {
@@ -87,10 +83,6 @@
 
       slot[name='close-button']::slotted(tds-side-menu-close-button) {
         display: none;
-      }
-
-      .tds-side-menu-wrapper {
-        transform: none;
       }
     }
 
@@ -145,10 +137,6 @@ aside {
     flex-direction: column;
     flex-grow: 1;
     background-color: var(--tds-sidebar-side-menu-background-cover);
-    transition: transform 250ms ease;
-    transform-origin: top;
-    transform: scaleY(0);
-
     @include tds-scrollbar;
 
     overflow-y: auto;
