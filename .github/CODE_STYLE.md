@@ -11,6 +11,8 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
  - Use single quotes (') for strings.
 
 ## Branching
+- Branch out of `develop` branch for day-to-day work
+- Branch named `main` is updated once release is done by merging develop to it
 - Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
 - Start the name of the branch with Jira ticket number followed by short description of task
 - example: `fix/CDEP-1369-banner-color-correction`
