@@ -108,7 +108,7 @@ export class TdsTableBodyRow {
       <Host
         class={{
           'tds-table__row': true,
-          'selected': this.selected,
+          'tds-table__row--selected': this.selected,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
         }}
