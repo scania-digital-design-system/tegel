@@ -26,7 +26,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableBodyRow {
-  /** Marks the row as selected, used for multiselect.s */
+  /** Marks the row as selected, used for multiselect table. */
   @Prop({ reflect: true }) selected: boolean = false;
 
   @State() multiselect: boolean = false;
