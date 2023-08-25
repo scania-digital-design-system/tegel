@@ -153,7 +153,6 @@ const BatchActionTemplate = ({
 }) =>
   formatHtmlPreview(`
    <tds-table
-        multiselect
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
         responsive="${responsiveDesign}"
