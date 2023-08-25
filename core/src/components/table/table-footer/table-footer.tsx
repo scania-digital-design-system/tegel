@@ -138,7 +138,6 @@ export class TdsTableFooter {
   };
 
   private paginationInputChange(event) {
-    /* TODO: Inform colleagues, seems like the event.target.value is always considered a string */
     const insertedValue = Number(event.target.value);
 
     if (insertedValue > event.target.max || insertedValue < event.target.min) {

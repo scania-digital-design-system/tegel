@@ -126,7 +126,6 @@ export default {
     column4Width: '',
   },
 };
-//TODO: Check with Marting regarding tableId which goes to table-id, should we use attribute ID instead?
 
 const PaginationTemplate = ({
   modeVariant,
