@@ -10,7 +10,6 @@ import {
   State,
   Watch,
 } from '@stencil/core';
-import { dfs, isFocusable } from '../../utils/utils';
 
 export type CollapseEvent = {
   collapsed: boolean;
@@ -25,9 +24,6 @@ export type InternalTdsSideMenuPropChange = {
 } & Partial<Props>;
 
 const GRID_LG_BREAKPOINT = '992px';
-const OPENING_ANIMATION_DURATION = 400;
-const INITIALIZE_ANIMATION_DELAY = 500;
-
 /**
  * @slot overlay - Used of injection of tds-side-menu-overlay
  * @slot close-button - Used for injection of tds-side-menu-close-button that is show when in mobile view
@@ -57,15 +53,7 @@ export class TdsSideMenu {
 
   @State() isUpperSlotEmpty: boolean = false;
 
-  @State() isClosed: boolean = true;
-
-  @State() isOpen: boolean = false;
-
-  @State() isClosing: boolean = false;
-
   @State() isCollapsed: boolean = false;
-
-  @State() isOpening: boolean = false;
 
   private matchesLgBreakpointMq: MediaQueryList;
 
@@ -83,8 +71,6 @@ export class TdsSideMenu {
   }
 
   componentDidLoad() {
-    setTimeout(() => this.onOpenChange(this.open), INITIALIZE_ANIMATION_DELAY);
-
     const upperSlot = this.host.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
     const upperSlotElements = upperSlot.assignedElements();
     const hasUpperSlotElements = upperSlotElements?.length > 0;
@@ -98,16 +84,6 @@ export class TdsSideMenu {
     this.matchesLgBreakpointMq.removeEventListener('change', this.handleMatchesLgBreakpointChange);
   }
 
-  @Watch('open')
-  async onOpenChange(newVal: boolean, oldVal?: boolean) {
-    if (newVal && !oldVal) {
-      await this.setOpening();
-    }
-    if (!newVal && oldVal) {
-      await this.setClosing();
-    }
-  }
-
   @Watch('collapsed')
   onCollapsedChange(newVal: boolean) {
     /** Emits the internal collapse event when the prop has changed. */
@@ -117,14 +93,6 @@ export class TdsSideMenu {
     });
 
     this.isCollapsed = newVal;
-  }
-
-  @Watch('isOpening')
-  onIsOpenChange(newVal: boolean) {
-    if (newVal) {
-      const firstFocusableElement = dfs(this.host, isFocusable, true);
-      firstFocusableElement.focus();
-    }
   }
 
   /** Event that is emitted when the Side Menu is collapsed. */
@@ -159,32 +127,6 @@ export class TdsSideMenu {
     this.collapsed = event.detail.collapsed;
   }
 
-  async setOpening() {
-    this.isClosed = false;
-
-    await new Promise((resolve) => {
-      setTimeout(resolve, 0);
-    });
-    this.isOpening = true;
-
-    await new Promise((resolve) => {
-      setTimeout(resolve, OPENING_ANIMATION_DURATION);
-    });
-    this.isOpening = false;
-    this.isOpen = true;
-  }
-
-  async setClosing() {
-    this.isOpen = false;
-    this.isClosing = true;
-
-    await new Promise((resolve) => {
-      setTimeout(resolve, OPENING_ANIMATION_DURATION);
-    });
-    this.isClosing = false;
-    this.isClosed = true;
-  }
-
   render() {
     return (
       <Host
@@ -199,8 +141,8 @@ export class TdsSideMenu {
           class={{
             'wrapper': true,
             'state-upper-slot-empty': this.isUpperSlotEmpty,
-            'state-open': this.isOpen || this.isOpening,
-            'state-closed': this.isClosed,
+            'state-open': this.open,
+            'state-closed': !this.open,
           }}
         >
           <slot name="overlay"></slot>
