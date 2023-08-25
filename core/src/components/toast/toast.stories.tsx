@@ -61,9 +61,9 @@ export default {
     header: 'Header',
     subheader: 'Subheader',
     bottom:
-      '<tds-link slot="bottom">\n' +
-      '    <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>\n' +
-      '</tds-link>',
+      `<tds-link slot="bottom">
+          <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>
+      </tds-link>`,
   },
 };
 
