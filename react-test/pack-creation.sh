@@ -8,22 +8,25 @@ echo "Going to core"
 npm run build
 echo "Build done!"
 
+# Make a link
+npm run build
+echo "Link done!"
+
 # Make a pack
-npm pack --pack-destination "../react-test"
-echo "Packing done!"
+#npm pack --pack-destination "../react-test"
+#echo "Packing done!"
 
 cd ../react-test
 echo "Back to react-test!"
 
 # Rename a pack
-mv "$(ls *.tgz | head -n 1)" scania-tegel.tgz
-echo "Renaming done!"
+#mv "$(ls *.tgz | head -n 1)" scania-tegel.tgz
+#echo "Renaming done!"
 
-# Installing
-npm install scania-tegel.tgz
-echo "Installation of Tegel done!"
+# Linking
+npm link @scania/tegel
+echo "Linking done!"
 
 # Building
 npm run build
 echo "Building done!"
-
