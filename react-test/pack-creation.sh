@@ -9,7 +9,7 @@ npm run build
 echo "Build done!"
 
 # Make a link
-npm run build
+npm link
 echo "Link done!"
 
 # Make a pack
