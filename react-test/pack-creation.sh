@@ -5,7 +5,7 @@ cd ../core
 echo "Going to core"
 
 # Make a build
-npm build
+npm run build
 echo "Build done!"
 
 # Make a pack
