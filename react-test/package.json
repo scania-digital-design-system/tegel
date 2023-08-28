@@ -1,6 +1,6 @@
 {
   "name": "react-test",
-  "version": "0.1.0",
+  "version": "0.1.1-johnny",
   "private": true,
   "dependencies": {
     "@scania/tegel": "^0.0.12",
