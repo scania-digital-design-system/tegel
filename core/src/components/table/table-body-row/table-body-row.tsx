@@ -45,7 +45,7 @@ export class TdsTableBodyRow {
 
   tableEl: HTMLTdsTableElement;
 
-  /**  Send status of single row to the parent, tds-table component that hold logic for data export and main checkbox control */
+  /** Event emitted when a row is selected/deselected. */
   @Event({
     eventName: 'tdsSelect',
     composed: true,
@@ -54,14 +54,16 @@ export class TdsTableBodyRow {
   })
   tdsSelect: EventEmitter<{
     tableId: string;
-    checked: boolean;
+    selected: boolean;
+    selectedRows: any[];
   }>;
 
-  handleCheckboxChange(event) {
+  async handleCheckboxChange(event) {
     this.selected = event.detail.checked;
     this.tdsSelect.emit({
       tableId: this.tableId,
-      checked: this.selected,
+      selected: this.selected,
+      selectedRows: await this.tableEl.getSelectedRows(),
     });
   }
 
