@@ -377,11 +377,3 @@ input[type='time']::-webkit-inner-spin-button,
 input[type='time']::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
-
-.tds-mode-variant-primary {
-  --tds-datetime-background: var(--tds-datetime-background-primary);
-}
-
-.tds-mode-variant-secondary {
-  --tds-datetime-background: var(--tds-datetime-background-secondary);
-}
