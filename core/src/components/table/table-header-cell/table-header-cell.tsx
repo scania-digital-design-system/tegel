@@ -66,12 +66,12 @@ export class TdsTableHeaderCell {
 
   /** Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
   @Event({
-    eventName: 'tdsSortChange',
+    eventName: 'tdsSort',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  tdsSortChange: EventEmitter<{
+  tdsSort: EventEmitter<{
     tableId: string;
     columnKey: string;
     sortingDirection: 'asc' | 'desc';
@@ -179,7 +179,7 @@ export class TdsTableHeaderCell {
     this.sortedByMyKey = true;
 
     /* Emit sort event */
-    this.tdsSortChange.emit({
+    this.tdsSort.emit({
       tableId: this.tableId,
       columnKey: this.columnKey,
       sortingDirection: this.sortingDirection,

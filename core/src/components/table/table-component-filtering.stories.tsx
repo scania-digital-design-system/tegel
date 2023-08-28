@@ -221,7 +221,7 @@ const FilteringTemplate = ({
   
   <script>  
   
-  window.addEventListener('tdsFilterChange', e => {
+  window.addEventListener('tdsFilter', e => {
     document.getElementById('event-name-textarea').value = e.type;
     document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
   });

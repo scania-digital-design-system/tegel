@@ -212,7 +212,7 @@ const PaginationTemplate = ({
   
 
   <script>
-    window.addEventListener('tdsPageChange', e => {
+    window.addEventListener('tdsPagination', e => {
       document.getElementById('event-name-textarea').value = e.type;
       document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
     });

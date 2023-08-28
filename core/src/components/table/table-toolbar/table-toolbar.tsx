@@ -49,12 +49,12 @@ export class TdsTableToolbar {
   /** Used for sending users' input to the main parent tds-table the component,
    * can also be listened to in order to implement custom sorting logic. */
   @Event({
-    eventName: 'tdsFilterChange',
+    eventName: 'tdsFilter',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  tdsFilterChange: EventEmitter<{
+  tdsFilter: EventEmitter<{
     tableId: string;
     query: string;
   }>;
@@ -88,7 +88,7 @@ export class TdsTableToolbar {
     const searchTerm = event.currentTarget.value.toLowerCase();
     const tdsTableSearchBar = event.currentTarget.parentElement;
 
-    this.tdsFilterChange.emit({
+    this.tdsFilter.emit({
       tableId: this.tableId,
       query: searchTerm,
     });

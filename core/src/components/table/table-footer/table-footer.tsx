@@ -55,12 +55,12 @@ export class TdsTableFooter {
 
   /** Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic. */
   @Event({
-    eventName: 'tdsPageChange',
+    eventName: 'tdsPagination',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  tdsPageChange: EventEmitter<{
+  tdsPagination: EventEmitter<{
     tableId: string;
     paginationValue: number;
   }>;
@@ -114,7 +114,7 @@ export class TdsTableFooter {
     }
 
     /* Emits pagination event. */
-    this.tdsPageChange.emit({
+    this.tdsPagination.emit({
       tableId: this.tableId,
       paginationValue: Number(this.paginationValue),
     });
@@ -129,7 +129,7 @@ export class TdsTableFooter {
       this.paginationValue++;
     }
 
-    this.tdsPageChange.emit({
+    this.tdsPagination.emit({
       tableId: this.tableId,
       paginationValue: Number(this.paginationValue),
     });
@@ -147,7 +147,7 @@ export class TdsTableFooter {
     } else {
       this.paginationValue = insertedValue;
     }
-    this.tdsPageChange.emit({
+    this.tdsPagination.emit({
       tableId: this.tableId,
       paginationValue: Number(this.paginationValue),
     });

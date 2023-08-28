@@ -18,9 +18,9 @@
 
 ## Events
 
-| Event           | Description                                                                                                                                                          | Type                                                                                      |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `tdsSortChange` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "asc" \| "desc"; }>` |
+| Event     | Description                                                                                                                                                          | Type                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `tdsSort` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "desc" \| "asc"; }>` |
 
 
 ----------------------------------------------
