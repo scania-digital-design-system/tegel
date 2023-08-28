@@ -4,6 +4,10 @@
 cd ../core
 echo "Going to core"
 
+# General installation
+npm install
+echo "Installation of code done!"
+
 # Make a build
 npm run build
 echo "Build done!"
