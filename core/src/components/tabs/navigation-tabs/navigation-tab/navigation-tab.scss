@@ -21,11 +21,17 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    margin: 26px 4px;
+    padding: 26px 4px;
   }
 
-  ::slotted(*:focus-visible) {
-    @include tds-focus-state;
+  ::slotted(*:focus-visible)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 26px;
+    bottom: 26px;
+    outline: 2px solid var(--tds-blue-400);
   }
 
   .navigation-tab-item:not(.selected)::after {
@@ -49,7 +55,7 @@
   .navigation-tab-item::after {
     content: ' ';
     position: absolute;
-    bottom: -26px;
+    bottom: 0;
     right: 0;
     left: 0;
     margin-left: auto;
