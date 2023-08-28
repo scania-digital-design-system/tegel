@@ -265,8 +265,8 @@ const SortingTemplate = ({
     
     
   window.addEventListener('tdsSortChange', e => {
-    document.getElementById('event-name-textarea').value = 'tdsSortChange';
-    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+    document.getElementById('event-name-textarea').value = e.type;
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
   });
   </script>`);
 

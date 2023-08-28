@@ -213,8 +213,8 @@ const PaginationTemplate = ({
 
   <script>
     window.addEventListener('tdsPageChange', e => {
-      document.getElementById('event-name-textarea').value = 'tdsPageChange';
-      document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
+      document.getElementById('event-name-textarea').value = e.type;
+      document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
     });
   </script>
   

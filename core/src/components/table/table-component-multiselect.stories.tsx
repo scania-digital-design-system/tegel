@@ -208,25 +208,18 @@ const MultiselectTemplate = ({
   <script>
   // Note: Script here is only for demo purposes
 
-  async function getSelectedRows() {
-    return await document.querySelector('tds-table').getSelectedRows().then((value) => value);
-  }
-
   window.addEventListener('tdsSelectAll', e => {
-    document.getElementById('event-name-textarea').value = 'tdsSelectAll';
-    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
-    getSelectedRows().then(selectedRows => {
-      document.getElementById('selected-rows-textarea').value = JSON.stringify(selectedRows,null, 2);
-    });
+    console.log(e)
+    document.getElementById('event-name-textarea').value = e.type;
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
+    document.getElementById('selected-rows-textarea').value = JSON.stringify(e.detail.selectedRows,null, 2);
   });
 
   window.addEventListener('tdsSelect', e => {
-    document.getElementById('event-name-textarea').value = 'tdsSelect';
-    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail);
-
-    getSelectedRows().then(selectedRows => {
-      document.getElementById('selected-rows-textarea').value = JSON.stringify(selectedRows,null, 2);
-    });
+    console.log(e)
+    document.getElementById('event-name-textarea').value = e.type;
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
+    document.getElementById('selected-rows-textarea').value = JSON.stringify(e.detail.selectedRows,null, 2);
   });
 </script>
   `);
