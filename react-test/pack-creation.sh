@@ -24,6 +24,6 @@ npm install
 echo "Installation done!"
 
 # Building
-npm build
+npm run build
 echo "Building done!"
 
