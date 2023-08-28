@@ -20,8 +20,8 @@ mv "$(ls *.tgz | head -n 1)" scania-tegel.tgz
 echo "Renaming done!"
 
 # Installing
-npm install
-echo "Installation done!"
+npm install scania-tegel.tgz
+echo "Installation of Tegel done!"
 
 # Building
 npm run build
