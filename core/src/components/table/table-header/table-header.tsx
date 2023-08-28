@@ -63,7 +63,8 @@ export class TdsTableHeaderRow {
   })
   tdsSelectAll: EventEmitter<{
     tableId: string;
-    checked: boolean;
+    allSelected: boolean;
+    selectedRows: any[];
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -121,11 +122,12 @@ export class TdsTableHeaderRow {
       this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
   }
 
-  handleCheckboxChange(event) {
+  async handleCheckboxChange(event) {
     this.allSelected = event.detail.checked;
     this.tdsSelectAll.emit({
       tableId: this.tableId,
-      checked: event.detail.checked,
+      allSelected: event.detail.checked,
+      selectedRows: await this.tableEl.getSelectedRows(),
     });
   }
 
