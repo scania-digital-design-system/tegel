@@ -165,8 +165,7 @@ export class TdsDatetime {
             ? `tds-form-datetime-${this.state}`
             : ''
         }
-        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
-        `}
+        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
       >
         {this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
