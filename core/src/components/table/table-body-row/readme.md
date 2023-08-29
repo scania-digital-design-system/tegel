@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event       | Description                                      | Type                                                                        |
-| ----------- | ------------------------------------------------ | --------------------------------------------------------------------------- |
-| `tdsSelect` | Event emitted when a row is selected/deselected. | `CustomEvent<{ tableId: string; selected: boolean; selectedRows: any[]; }>` |
+| Event       | Description                                      | Type                                                                       |
+| ----------- | ------------------------------------------------ | -------------------------------------------------------------------------- |
+| `tdsSelect` | Event emitted when a row is selected/deselected. | `CustomEvent<{ tableId: string; checked: boolean; selectedRows: any[]; }>` |
 
 
 ## Slots

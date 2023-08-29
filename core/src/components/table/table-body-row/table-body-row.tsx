@@ -54,7 +54,7 @@ export class TdsTableBodyRow {
   })
   tdsSelect: EventEmitter<{
     tableId: string;
-    selected: boolean;
+    checked: boolean;
     selectedRows: any[];
   }>;
 
@@ -62,7 +62,7 @@ export class TdsTableBodyRow {
     this.selected = event.detail.checked;
     this.tdsSelect.emit({
       tableId: this.tableId,
-      selected: this.selected,
+      checked: this.selected,
       selectedRows: await this.tableEl.getSelectedRows(),
     });
   }

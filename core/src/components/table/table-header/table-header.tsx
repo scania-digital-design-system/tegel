@@ -63,7 +63,7 @@ export class TdsTableHeaderRow {
   })
   tdsSelectAll: EventEmitter<{
     tableId: string;
-    allSelected: boolean;
+    checked: boolean;
     selectedRows: any[];
   }>;
 
@@ -126,7 +126,7 @@ export class TdsTableHeaderRow {
     this.allSelected = event.detail.checked;
     this.tdsSelectAll.emit({
       tableId: this.tableId,
-      allSelected: event.detail.checked,
+      checked: event.detail.checked,
       selectedRows: await this.tableEl.getSelectedRows(),
     });
   }
