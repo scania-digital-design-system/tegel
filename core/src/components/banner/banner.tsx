@@ -33,9 +33,6 @@ export class TdsBanner {
    */
   @Prop() bannerId: string = generateUniqueId();
 
-  /** Removes the close button on the Banner. */
-  @Prop() persistent: boolean = false;
-
   /** Hides the Banner */
   @Prop({ reflect: true }) hidden = false;
 
@@ -128,17 +125,16 @@ export class TdsBanner {
           </div>
           {usesBottomSlot && <slot name="bottom"></slot>}
         </div>
-        {!this.persistent && (
-          <div class={`banner-close`}>
-            <button
-              onClick={() => {
-                this.handleClose();
-              }}
-            >
-              <tds-icon name="cross" size="20px"></tds-icon>
-            </button>
-          </div>
-        )}
+
+        <div class={`banner-close`}>
+          <button
+            onClick={() => {
+              this.handleClose();
+            }}
+          >
+            <tds-icon name="cross" size="20px"></tds-icon>
+          </button>
+        </div>
       </Host>
     );
   }
