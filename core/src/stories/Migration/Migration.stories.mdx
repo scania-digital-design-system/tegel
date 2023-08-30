@@ -707,28 +707,28 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 [Story](/docs/components-data-table--default)
 
-#### Renamed `enablePagination` prop to `pagination`.
+#### Renamed `enablePagination`, `enableMultiselect` and `enableFilter` props to `pagination`, `multiselect` and `filter`.
 
 ##### What action is required?
 
 ```jsx
 // Old ❌
-<sdds-table >
-  <sdds-table-header>
+<sdds-table enable-multiselect>
+  <sdds-table-header enable-filter>
     //
   </sdds-table-header>
   <sdds-table-body enable-dummy-data>
     //
   </sdds-table-body>
-  <sdds-table-footer enable-pagination ></sdds-table-footer>
+  <sdds-table-footer enable-pagination></sdds-table-footer>
 </sdds-table>
 
 // New ✅
-<tds-table >
-  <tds-table-header>
+<tds-table multiselect>
+  <tds-table-header filter>
     //
   </tds-table-header>
-  <tds-table-body enable-dummy-data>
+  <tds-table-body>
     //
   </tds-table-body>
   <tds-table-footer pagination ></tds-table-footer>
