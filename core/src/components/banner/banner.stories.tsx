@@ -66,16 +66,6 @@ export default {
       options: [...iconsNames, 'none'],
       if: { arg: 'variant', eq: 'Default' },
     },
-    persistent: {
-      name: 'Disable closing',
-      description: `Removes the 'close button' in the Banner.`,
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
   },
   args: {
     variant: 'Default',
@@ -83,18 +73,16 @@ export default {
     subheader: 'This is the subheader text area',
     bottom: '<tds-link slot="bottom" ><a href="/">Link example</a></tds-link>',
     icon: 'truck',
-    persistent: false,
   },
 };
 
-const Template = ({ variant, icon, header, subheader, persistent, bottom }) =>
+const Template = ({ variant, icon, header, subheader, bottom }) =>
   formatHtmlPreview(`
       <tds-banner
           ${variant !== 'Default' ? `variant="${variant.toLowerCase()}"` : ''}
           ${icon !== 'none' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
-          ${subheader ? `subheader="${subheader}"` : ''}
-          ${persistent ? `persistent` : ''}
+          ${subheader ? `subheader="${subheader}"` : ''}       
           >
           ${bottom ? `${bottom}` : ''}
       </tds-banner>
