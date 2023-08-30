@@ -50,15 +50,14 @@
     }
 
     .multiselect {
-      padding: 0 16px;
       width: 100%;
+      height: 100%;
 
-      // This is to make the entire button clickable
-      tds-checkbox,
-      .tds-checkbox-webcomponent,
-      label {
+      tds-checkbox {
+        display: flex;
         height: 100%;
         width: 100%;
+        padding: 0 16px;
       }
     }
 
