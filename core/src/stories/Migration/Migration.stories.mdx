@@ -296,6 +296,25 @@ Change all `<sdds-datetime>` that are using slots to use the prop instead.
 ></tds-datetime>
 ```
 
+#### Renamed prop 'nominwidth' to 'no-min-width'
+
+The prop `nominwidth` was changed to `no-min-width` to conform with other prop names.
+
+
+##### What action is required?
+
+Change all uses `nominwidth` to `no-min-width`.
+
+```jsx
+// Old ❌
+<sdds-datetime type="datetime-local" nominwidth>
+</sdds-datetime>
+
+// New ✅
+<tds-datetime type="datetime-local" no-min-width>
+</tds-datetime>
+```
+
 ## Dropdown
 
 [Story](/docs/components--dropdown)
