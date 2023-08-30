@@ -166,8 +166,8 @@ const Template = ({ persistent, collapsible }) =>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown default-open selected>
-          <tds-icon slot="button-icon" name="profile" size="24px"></tds-icon>
-          <span slot="button-label">
+          <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+          <span slot="label">
             Wheel types
           </span>
           <tds-side-menu-dropdown-list>
