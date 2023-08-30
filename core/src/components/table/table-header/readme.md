@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type      | Default |
-| ------------- | -------------- | ----------- | --------- | ------- |
-| `allSelected` | `all-selected` |             | `boolean` | `false` |
+| Property      | Attribute      | Description                                                                     | Type      | Default |
+| ------------- | -------------- | ------------------------------------------------------------------------------- | --------- | ------- |
+| `allSelected` | `all-selected` | Prop for controling the checked/unchecked state of the "all selected"-checkbox. | `boolean` | `false` |
 
 
 ## Events
