@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Listen, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
 
@@ -14,12 +14,6 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['multiselect'
   shadow: false,
 })
 export class TdsTableBody {
-  /** Prop for no result message when using filtering */
-  @Prop() noResultMessage: string = 'Unfortunately, no data match search criteria.';
-
-  /** Prop for a show or hide result message when using filtering */
-  @Prop() showNoResultsMessage: boolean = false;
-
   @Element() host: HTMLElement;
 
   @State() multiselect: boolean = false;
@@ -96,12 +90,6 @@ export class TdsTableBody {
   render() {
     return (
       <Host data-selected-rows={this.multiselectArrayJSON}>
-        <tr hidden={!this.showNoResultsMessage}>
-          <td class="tds-table__info-message" colSpan={this.columnsNumber}>
-            <slot name="no-result" />
-            {this.noResultMessage}
-          </td>
-        </tr>
         <slot></slot>
       </Host>
     );

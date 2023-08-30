@@ -5,14 +5,6 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
-
-| Property               | Attribute                 | Description                                                 | Type      | Default                                           |
-| ---------------------- | ------------------------- | ----------------------------------------------------------- | --------- | ------------------------------------------------- |
-| `noResultMessage`      | `no-result-message`       | Prop for no result message when using filtering             | `string`  | `'Unfortunately, no data match search criteria.'` |
-| `showNoResultsMessage` | `show-no-results-message` | Prop for a show or hide result message when using filtering | `boolean` | `false`                                           |
-
-
 ## Slots
 
 | Slot          | Description                                      |
