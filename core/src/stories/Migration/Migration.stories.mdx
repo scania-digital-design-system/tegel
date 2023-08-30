@@ -362,9 +362,9 @@ In order to establish a clear differentiation between them, we have renamed `<sd
 Our three tabs (inline, folder, and navigation) are designed to function with both buttons and links. To achieve this, we have introduced a single child element for each tab, which is intended to wrap the underlying element.
 
 ```jsx
-<tds-inline-tab>,
-<tds-folder-tab> &
-<tds-navigation-tab>
+<tds-inline-tab></tds-inline-tab>
+<tds-folder-tab></tds-folder-tab>
+<tds-navigation-tab></tds-navigation-tab>
 ```
 
 The component no longer manages the content displayed under each tab. Therefore, it is now up to you, as a component user to implement it yourself. We will provide examples of how this can be done, and if you have any questions, we are always here to assist you.
