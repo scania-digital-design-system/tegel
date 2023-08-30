@@ -477,27 +477,6 @@ Rename all instances of `readonly` to `read-only`.
 
 ```
 
-#### Changed prop name 'autofocus'
-
-The prop `autofocus` was changed to `auto-focus` to conform with other prop names.
-
-##### What action is required?
-
-Rename all instances of `autofocus` to `auto-focus`.
-
-```jsx
-// Old ❌
-<sdds-textarea
-    autofocus
-></sdds-textarea>
-
-// New ✅
-<tds-textarea
-    auto-focus
-></tds-textarea>
-
-```
-
 #### Added prop for mode-variant and removed class `sdds-on-white-bg` on container element
 
 Previously the class `sdds-on-white-bg` was used to determine the mode variant. We have now introduced the prop `mode-variant` with values `primary` or
