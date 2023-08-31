@@ -50,7 +50,7 @@ export class TdsTextarea {
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Control of autofocus */
-  @Prop() autoFocus: boolean = false;
+  @Prop() autofocus: boolean = false;
 
   /** Unset minimum width of 208px. */
   @Prop() noMinWidth: boolean = false;
@@ -141,7 +141,7 @@ export class TdsTextarea {
             placeholder={this.placeholder}
             value={this.value}
             name={this.name}
-            autofocus={this.autoFocus}
+            autofocus={this.autofocus}
             maxlength={this.maxLength}
             cols={this.cols}
             rows={this.rows}
