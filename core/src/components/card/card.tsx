@@ -7,7 +7,7 @@ import { generateUniqueId, hasSlot } from '../../utils/utils';
  * @slot thumbnail - Slot for the Card thumbnail.
  * @slot body - Slot for the body section of the Card.
  * @slot body-image - Slot for the body section of the Card, used for image.
- * @slot bottom - Slot for the bottom section of the Card.
+ * @slot actions - Slot for the bottom section of the Card, used for buttons .
  */
 @Component({
   tag: 'tds-card',
