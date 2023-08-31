@@ -1,5 +1,18 @@
 @import '../../mixins/box-sizing';
 
+:host {
+  // If the user sets a custom height on the checkbox
+  // (height 100%, to fill a list item in a dropdown, for example)
+  // The default behavior is to center the label and checkbox vertically.
+  align-items: center;
+
+  // Limit the clickable area to the bounds of the host element.
+  position: relative;
+
+  // If the user adds paddings to the host element, we it to stay the same size.
+  box-sizing: border-box;
+}
+
 .tds-checkbox {
   @include tds-box-sizing;
 
@@ -31,6 +44,16 @@
       cursor: pointer;
       display: flex;
       align-items: center;
+
+      // This makes the whole of <tds-checkbox> clickable, even if its :host element is resized by the user.
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
     }
 
     &::before,
