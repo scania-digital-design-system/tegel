@@ -177,6 +177,7 @@ const defaultOptionLookUp = {
   'Option 1': 'option-1',
   'Option 2': 'option-2',
   'Option 3': 'option-3',
+  'Option 4': 'option-4',
 };
 
 const getMultiselectDefaultValue = (multiDefaultOption: string[]) =>
