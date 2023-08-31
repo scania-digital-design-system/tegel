@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property      | Attribute  | Description                                                                                                                                                 | Type                           | Default     |
-| ------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------- |
-| `actions`     | `actions`  | Sticky or Static Actions                                                                                                                                    | `"static" \| "sticky"`         | `'static'`  |
-| `header`      | `header`   | Sets the header of the Modal.                                                                                                                               | `string`                       | `undefined` |
-| `prevent`     | `prevent`  | Disables closing Modal on clicking on overlay area.                                                                                                         | `boolean`                      | `false`     |
-| `referenceEl` | --         | Element that will show the Modal (takes priority over selector)                                                                                             | `HTMLElement`                  | `undefined` |
-| `selector`    | `selector` | CSS selector for the element that will show the Modal.                                                                                                      | `string`                       | `undefined` |
-| `show`        | `show`     | Controls whether the Modal is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                      | `undefined` |
-| `size`        | `size`     | Size of Modal                                                                                                                                               | `"lg" \| "md" \| "sm" \| "xs"` | `'md'`      |
+| Property         | Attribute         | Description                                                                                                                                                 | Type                           | Default     |
+| ---------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------- |
+| `actionsPostion` | `actions-postion` | Changes the position behaviour of the actions slot.                                                                                                         | `"static" \| "sticky"`         | `'static'`  |
+| `header`         | `header`          | Sets the header of the Modal.                                                                                                                               | `string`                       | `undefined` |
+| `prevent`        | `prevent`         | Disables closing Modal on clicking on overlay area.                                                                                                         | `boolean`                      | `false`     |
+| `referenceEl`    | --                | Element that will show the Modal (takes priority over selector)                                                                                             | `HTMLElement`                  | `undefined` |
+| `selector`       | `selector`        | CSS selector for the element that will show the Modal.                                                                                                      | `string`                       | `undefined` |
+| `show`           | `show`            | Controls whether the Modal is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                      | `undefined` |
+| `size`           | `size`            | Size of Modal                                                                                                                                               | `"lg" \| "md" \| "sm" \| "xs"` | `'md'`      |
 
 
 ## Events
