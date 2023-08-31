@@ -31,12 +31,10 @@ export class TdsDropdownOption {
 
   private label: string;
 
-  /** Method to select/deselect an option if the option is not disabled. */
+  /** Method to select/deselect an option if the option. */
   @Method()
   async setSelected(selected: boolean) {
-    if (!this.disabled) {
-      this.selected = selected;
-    }
+    this.selected = selected;
   }
 
   /** Click event for the Dropdown option. */
