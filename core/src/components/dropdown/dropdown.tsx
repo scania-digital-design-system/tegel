@@ -250,9 +250,8 @@ export class TdsDropdown {
       .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
       .map((element: HTMLTdsDropdownOptionElement) => {
         if (this.multiselect) {
-          this.defaultValue.split(',').forEach(async (value) => {
+          this.defaultValue.split(',').forEach((value) => {
             if (value === element.value) {
-              console.log(element);
               element.setSelected(true);
               this.selection = this.selection
                 ? [...this.selection, { value: element.value, label: element.textContent }]
