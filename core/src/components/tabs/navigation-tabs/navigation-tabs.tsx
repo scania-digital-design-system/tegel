@@ -8,6 +8,7 @@ import {
   Event,
   EventEmitter,
   Method,
+  Watch,
 } from '@stencil/core';
 
 /**
@@ -73,6 +74,18 @@ export class TdsNavigationTabs {
   tdsChange: EventEmitter<{
     selectedTabIndex: number;
   }>;
+
+  @Watch('defaultSelectedIndex')
+  handleDefaultSelectedIndexUpdate() {
+    this.children = Array.from(this.host.children).map(
+      (tabElement: HTMLTdsNavigationTabElement) => {
+        tabElement.setSelected(false);
+        return tabElement;
+      },
+    );
+    this.children[this.defaultSelectedIndex].setSelected(true);
+    this.selectedIndex = this.defaultSelectedIndex;
+  }
 
   scrollRight() {
     const scroll = this.navWrapperElement.scrollLeft;
