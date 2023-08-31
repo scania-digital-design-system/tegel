@@ -14,7 +14,7 @@ import { hasSlot } from '../../utils/utils';
 /**
  * @slot header - Slot for header text
  * @slot body - Slot for main content of modal
- * @slot actions - Slot for extra buttons
+ * @slot bottom - Slot for extra buttons
  * */
 @Component({
   tag: 'tds-modal',
@@ -33,7 +33,7 @@ export class TdsModal {
   /** Size of Modal  */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
 
-  /** Sticky or Static Actions  */
+  /** Sticky or Static Actions (bottom slot)  */
   @Prop() actions: 'sticky' | 'static' = 'static';
 
   /** CSS selector for the element that will show the Modal. */
@@ -141,7 +141,7 @@ export class TdsModal {
 
   render() {
     const usesHeaderSlot = hasSlot('header', this.host);
-    const usesActionsSlot = hasSlot('actions', this.host);
+    const usesActionsSlot = hasSlot('bottom', this.host);
     return (
       <Host
         onClick={(event) => {
@@ -172,7 +172,7 @@ export class TdsModal {
             <slot name="body"></slot>
           </div>
 
-          {usesActionsSlot && <slot name="actions"></slot>}
+          {usesActionsSlot && <slot name="bottom"></slot>}
         </div>
       </Host>
     );

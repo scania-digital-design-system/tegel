@@ -99,7 +99,7 @@ const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
       <span slot="body">
           ${bodyContent}
       </span>      
-      <span slot='actions'>
+      <span slot='bottom' class="tds-u-flex tds-u-gap2">
         <tds-button data-dismiss-modal size="md" text="Delete" type="danger"></tds-button>
         <tds-button data-dismiss-modal size="md" text="Cancel"></tds-button>
       </span>      

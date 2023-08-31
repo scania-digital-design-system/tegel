@@ -180,23 +180,19 @@ $modals: (
       overflow-y: auto;
     }
 
-    slot[name='actions'] {
+    slot[name='bottom'] {
       position: absolute;
       bottom: -1px;
       left: 0;
       right: 0;
       background-color: var(--tds-modal-background);
       padding: var(--tds-spacing-element-16);
-      display: flex;
-      gap: 16px;
     }
   }
 
   &__actions-static {
-    slot[name='actions'] {
+    slot[name='bottom'] {
       background-color: var(--tds-modal-background);
-      display: flex;
-      gap: 16px;
     }
   }
 }
@@ -217,10 +213,6 @@ $modals: (
   .tds-modal-lg,
   .tds-modal-sm {
     height: 100%;
-
-    slot[name='actions']::slotted(*) {
-      display: flex;
-    }
   }
 }
 
