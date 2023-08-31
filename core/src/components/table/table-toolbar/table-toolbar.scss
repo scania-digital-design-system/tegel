@@ -26,13 +26,6 @@
     text-align: left;
   }
 
-  .tds-table__actionbar,
-  slot[name='end']::slotted(*) {
-    display: flex;
-    align-self: center;
-    gap: 8px;
-  }
-
   .tds-table__searchbar {
     display: flex;
     align-self: center;

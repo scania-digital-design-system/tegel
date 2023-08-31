@@ -126,7 +126,7 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      `<div slot="end"><tds-button type="ghost" size="sm">
+      `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
       <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
     </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
     ),
