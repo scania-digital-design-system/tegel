@@ -21,10 +21,10 @@ export default {
     ],
   },
   argTypes: {
-    actions: {
-      name: 'Actions',
+    actionsPosition: {
+      name: 'Actions position',
       description:
-        "Defines the behaviour of Modal action's slot - if slot scrolls or stays on top of the content.",
+        "Defines the postion of Modal action's slot - if slot scrolls or stays on top of the content.",
       control: {
         type: 'radio',
       },
@@ -95,7 +95,7 @@ const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
   selector="#my-modal-button"   
    ${showModal ? 'show' : ''} 
    id="my-modal" size="${sizeLookUp[size]}" 
-   actions="${actions.toLowerCase()}">          
+   actions-position="${actions.toLowerCase()}">          
       <span slot="body">
           ${bodyContent}
       </span>      
