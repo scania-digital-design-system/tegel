@@ -15,7 +15,7 @@ export class TdsHeaderDropdown {
   @Element() host: HTMLElement;
 
   /** The label of the button that opens the dropdown.
-   * This is an alternative to the button-label slot. */
+   * This is an alternative to the label slot. */
   @Prop() label: string;
 
   /** If the dropdown icon (downwards chevron) should be hidden. */

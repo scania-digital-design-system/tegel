@@ -33,7 +33,7 @@ export class TdsSideMenuDropdownListItem {
   componentDidLoad() {
     const dropdownEl = this.host.closest('tds-side-menu-dropdown');
     const dropdownBtnIconSlotEl = dropdownEl.shadowRoot.querySelector(
-      'slot[name="button-icon"]',
+      'slot[name="icon"]',
     ) as HTMLSlotElement;
     const btnIconSlottedEls = dropdownBtnIconSlotEl.assignedElements();
     const hasBtnIcon = btnIconSlottedEls?.length > 0;
