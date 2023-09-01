@@ -77,6 +77,15 @@ export class TdsFolderTabs {
     };
   }
 
+  @Watch('selectedIndex')
+  handleSelectedIndexUpdate() {
+    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsFolderTabElement) => {
+      tabElement.setSelected(false);
+      return tabElement;
+    });
+    this.children[this.selectedIndex].setSelected(true);
+  }
+
   @Watch('defaultSelectedIndex')
   handleDefaultSelectedIndexUpdate() {
     this.children = Array.from(this.host.children).map((tabElement: HTMLTdsFolderTabElement) => {

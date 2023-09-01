@@ -75,6 +75,17 @@ export class TdsNavigationTabs {
     selectedTabIndex: number;
   }>;
 
+  @Watch('selectedIndex')
+  handleSelectedIndexUpdate() {
+    this.children = Array.from(this.host.children).map(
+      (tabElement: HTMLTdsNavigationTabElement) => {
+        tabElement.setSelected(false);
+        return tabElement;
+      },
+    );
+    this.children[this.selectedIndex].setSelected(true);
+  }
+
   @Watch('defaultSelectedIndex')
   handleDefaultSelectedIndexUpdate() {
     this.children = Array.from(this.host.children).map(
