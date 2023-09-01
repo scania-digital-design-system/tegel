@@ -34,7 +34,7 @@ export class TdsModal {
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'md';
 
   /** Changes the position behaviour of the actions slot.  */
-  @Prop() actionsPostion: 'sticky' | 'static' = 'static';
+  @Prop() actionsPosition: 'sticky' | 'static' = 'static';
 
   /** CSS selector for the element that will show the Modal. */
   @Prop() selector: string;
@@ -149,11 +149,7 @@ export class TdsModal {
         }}
         class={`tds-modal-backdrop ${this.isShown ? 'show' : 'hide'}`}
       >
-        <div
-          class={`tds-modal ${
-            this.actionsPostion ? `tds-modal__actions-${this.actionsPostion}` : ''
-          } ${this.size ? `tds-modal-${this.size}` : ''} `}
-        >
+        <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
           <div class="header">
             {this.header && <div class="header">{this.header}</div>}
             {usesHeaderSlot && <slot name="header"></slot>}
