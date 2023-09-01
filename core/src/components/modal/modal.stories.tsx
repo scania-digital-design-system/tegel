@@ -67,7 +67,7 @@ export default {
     },
   },
   args: {
-    actions: 'Static',
+    actionsPosition: 'Static',
     size: 'Large',
     headerText: 'The buttons for the Modal only works in the canvas tab',
     bodyContent:
@@ -83,7 +83,7 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
+const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal }) =>
   formatHtmlPreview(
     `
  <!-- The button below is just for demo purposes -->
@@ -95,7 +95,7 @@ const ModalTemplate = ({ actions, size, headerText, bodyContent, showModal }) =>
   selector="#my-modal-button"   
    ${showModal ? 'show' : ''} 
    id="my-modal" size="${sizeLookUp[size]}" 
-   actions-position="${actions.toLowerCase()}">          
+   actions-position="${actionsPosition.toLowerCase()}">          
       <span slot="body">
           ${bodyContent}
       </span>      
