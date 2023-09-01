@@ -31,7 +31,7 @@ export class TdsDropdownOption {
 
   private label: string;
 
-  /** Method to select/deselect an option if the option. */
+  /** Method to select/deselect an option. */
   @Method()
   async setSelected(selected: boolean) {
     this.selected = selected;
