@@ -93,7 +93,7 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    cardBottom: {
+    cardActions: {
       name: 'Content of the bottom of the Card',
       description: 'Slot to add custom HTML elements to the bottom of the Card.',
       control: {
@@ -120,7 +120,7 @@ export default {
     bodyImg: false,
     bodyContent: '',
     bodyDivider: false,
-    cardBottom: `<tds-icon slot="bottom" size="20px" name="arrow_right"></tds-icon>`,
+    cardActions: `<tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>`,
     clickable: false,
   },
 };
@@ -134,7 +134,7 @@ const Template = ({
   bodyImg,
   bodyContent,
   bodyDivider,
-  cardBottom,
+  cardActions,
   clickable,
 }) =>
   formatHtmlPreview(
@@ -167,7 +167,7 @@ const Template = ({
     </div>`
       : ''
   }
-    ${cardBottom ? `${cardBottom}` : ''}
+    ${cardActions ? `${cardActions}` : ''}
     </tds-card>
     </div>
     ${
