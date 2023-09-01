@@ -773,3 +773,11 @@ The events are: 'tdsPageChange', 'tdsSortChange', 'tdsFilterChange'
 
 </script>
 ```
+
+#### Removed the `bodyData` prop.
+
+Previously the table could populate it's rows/columns based on a bodyData property. This has now been removed due to performance reasons.
+
+##### What action is required?
+
+Instead of populating the table via bodyData you as a user will have to render the rows/columns you want to display.
