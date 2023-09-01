@@ -85,7 +85,7 @@ export class TdsCard {
   getCardContent = () => {
     const usesBodySlot = hasSlot('body', this.host);
     const usesBodyImageSlot = hasSlot('body-image', this.host);
-    const usesBottomSlot = hasSlot('bottom', this.host);
+    const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <div>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
@@ -96,7 +96,7 @@ export class TdsCard {
           {this.bodyDivider && <tds-divider></tds-divider>}
           {usesBodySlot && <slot name="body"></slot>}
         </div>
-        {usesBottomSlot && <slot name={`bottom`}></slot>}
+        {usesActionsSlot && <slot name={`actions`}></slot>}
       </div>
     );
   };
