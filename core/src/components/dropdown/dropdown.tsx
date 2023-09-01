@@ -1,7 +1,6 @@
 import { Component, Host, h, Element, State } from '@stencil/core';
 import { Event, EventEmitter, Listen, Method, Prop, Watch } from '@stencil/core/internal';
 import {
-  appendChildElement,
   appendHiddenInput,
   findNextFocusableItem,
   findPreviousFocusableItem,
@@ -59,9 +58,6 @@ export class TdsDropdown {
 
   /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
-
-  /** Populate the Dropdown via a JSON array */
-  @Prop() options: Array<{ value: string; label: string; disabled: boolean }>;
 
   @State() open: boolean = false;
 
@@ -227,18 +223,6 @@ export class TdsDropdown {
     }
   }
 
-  connectedCallback = () => {
-    if (!this.options) {
-      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionElement>;
-    }
-  };
-
-  componentWillRender = () => {
-    if (!this.options) {
-      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionElement>;
-    }
-  };
-
   componentDidLoad() {
     if (this.defaultValue) {
       this.setDefaultOption();
@@ -334,25 +318,6 @@ export class TdsDropdown {
   };
 
   render() {
-    if (this.options) {
-      let id = 0;
-      this.options.forEach((option) => {
-        appendChildElement(
-          this.host,
-          'tds-dropdown-option',
-          [
-            { key: 'value', value: option.value },
-            { key: 'disabled', value: option.disabled.toString() },
-          ],
-          option.label,
-          `id${id++}`,
-        );
-      });
-      this.children = Array.from(this.host.children).filter(
-        (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-      ) as HTMLTdsDropdownOptionElement[];
-    }
-
     appendHiddenInput(
       this.host,
       this.name,

@@ -124,13 +124,6 @@ export default {
         },
       },
     },
-    optionType: {
-      name: 'Option type',
-      description:
-        'Render the options either via the options prop, or passing them as children to the Dropdown.',
-      control: 'radio',
-      options: ['Children', 'Property'],
-    },
     defaultOption: {
       name: 'Default options',
       description: 'Sets a pre-selected option.',
@@ -163,7 +156,6 @@ export default {
     disabled: false,
     openDirection: 'Auto',
     defaultOption: 'No default',
-    optionType: 'Children',
   },
 };
 
@@ -195,7 +187,6 @@ const Template = ({
   openDirection,
   modeVariant,
   disabled,
-  optionType,
   defaultOption,
   multiDefaultOption,
 }) =>
@@ -239,32 +230,27 @@ const Template = ({
           ${disabled ? 'disabled' : ''}
           open-direction="${openDirection.toLowerCase()}"
           >
-          ${
-            optionType === 'Children'
-              ? `
-              <tds-dropdown-option value="option-1">
-                Option 1
-              </tds-dropdown-option>
-              <tds-dropdown-option disabled value="option-2">
-                Option 2
-              </tds-dropdown-option>
-              <tds-dropdown-option value="option-3">
-                Option 3
-              </tds-dropdown-option>
-              <tds-dropdown-option value="option-4">
-                Option 4
-              </tds-dropdown-option>
-              <tds-dropdown-option value="option-5">
-                Option 5
-              </tds-dropdown-option>
-              <tds-dropdown-option value="option-6">
-                Option 6
-              </tds-dropdown-option>
-              <tds-dropdown-option value="option-7">
-                Option 7
-              </tds-dropdown-option>`
-              : ''
-          }
+            <tds-dropdown-option value="option-1">
+              Option 1
+            </tds-dropdown-option>
+            <tds-dropdown-option disabled value="option-2">
+              Option 2
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-3">
+              Option 3
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-4">
+              Option 4
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-5">
+              Option 5
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-6">
+              Option 6
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-7">
+              Option 7
+            </tds-dropdown-option>
         </tds-dropdown>
     </div>
 
@@ -273,31 +259,6 @@ const Template = ({
     dropdown.addEventListener('tdsChange', (event) => {
       console.log(event)
     })
-
-    ${
-      optionType === 'Property'
-        ? `
-        dropdown.options = [
-            {
-              label: 'Option 1',
-              value: 'option-1',
-              disabled: 'false',
-            },
-            {
-              label: 'Option 2',
-              value: 'option-2',
-              disabled: 'false',
-            },
-            {
-              label: 'Option 3',
-              value: 'option-3',
-              disabled: 'false',
-            },
-          ]
-        
-    `
-        : ''
-    }
     </script>
         
   `);
