@@ -140,3 +140,9 @@ they might change without notice. Their payload might also be changed based on r
 with 'internal'. This is to make it as clear as possible to a user that this is an internal event that the components are using,
 but the user should not interact with it. E.g. `internalTdsPropsChange`.
 
+### Development version of Storybook
+https://develop--tegel-storybook.netlify.app/ is a Storybook version connected to the develop branch.
+It offers the possibility to check out the version of code that is merged to develop branch.
+It can be used to see a version of code that is about to be released or to do a regression test. 
+
+
