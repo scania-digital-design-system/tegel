@@ -17,11 +17,11 @@
 | `min`             | `min`               | Minimum value                                                                    | `string`       | `'0'`                |
 | `name`            | `name`              | Name property (will be inherited by the native slider component)                 | `string`       | `''`                 |
 | `readOnly`        | `read-only`         | Sets the read only state for the whole component                                 | `boolean`      | `false`              |
-| `scrubberSize`    | `scrubber-size`     | Sets the size of the scrubber                                                    | `"lg" \| "sm"` | `'lg'`               |
 | `showTickNumbers` | `show-tick-numbers` | Decide to show numbers above the tick markers or not                             | `boolean`      | `false`              |
 | `sliderId`        | `slider-id`         | ID for the Slider's input element, randomly generated if not specified.          | `string`       | `generateUniqueId()` |
 | `snap`            | `snap`              | Snap to the tick's grid                                                          | `boolean`      | `false`              |
 | `step`            | `step`              | Defines how much to increment/decrement the value when using controls            | `string`       | `'1'`                |
+| `thumbSize`       | `thumb-size`        | Sets the size of the thumb                                                       | `"lg" \| "sm"` | `'lg'`               |
 | `ticks`           | `ticks`             | Number of tick markers (tick for min- and max-value will be added automatically) | `string`       | `'0'`                |
 | `tooltip`         | `tooltip`           | Decide to show the tooltip or not                                                | `boolean`      | `false`              |
 | `value`           | `value`             | Initial value                                                                    | `string`       | `'0'`                |
