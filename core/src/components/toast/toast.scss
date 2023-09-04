@@ -117,7 +117,7 @@
     }
   }
 
-  slot[name='bottom']::slotted(*) {
+  slot[name='actions']::slotted(*) {
     color: var(--tds-toast-link-color);
   }
 
