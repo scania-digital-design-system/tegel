@@ -1,7 +1,6 @@
 import { Component, Host, h, Element, State } from '@stencil/core';
 import { Event, EventEmitter, Listen, Method, Prop, Watch } from '@stencil/core/internal';
 import {
-  appendChildElement,
   appendHiddenInput,
   findNextFocusableItem,
   findPreviousFocusableItem,
@@ -60,9 +59,6 @@ export class TdsDropdown {
   /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
 
-  /** Populate the Dropdown via a JSON array */
-  @Prop() options: Array<{ value: string; label: string; disabled: boolean }>;
-
   @State() open: boolean = false;
 
   @State() selection: Array<{ value: string; label: string }>;
@@ -80,12 +76,10 @@ export class TdsDropdown {
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.children = Array.from(this.host.children)
-      .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
-      .map((element: HTMLTdsDropdownOptionElement) => {
-        element.setSelected(false);
-        return element;
-      });
+    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      element.setSelected(false);
+      return element;
+    });
     this.selection = null;
     this.host.setAttribute('value', null);
     this.handleChange();
@@ -100,14 +94,12 @@ export class TdsDropdown {
         : [{ value: newValue, label: newValueLabel }];
     } else {
       this.selection = [{ value: newValue, label: newValueLabel }];
-      this.children = Array.from(this.host.children)
-        .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
-        .map((element: HTMLTdsDropdownOptionElement) => {
-          if (element.value !== newValue) {
-            element.setSelected(false);
-          }
-          return element;
-        });
+      this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+        if (element.value !== newValue) {
+          element.setSelected(false);
+        }
+        return element;
+      });
     }
     this.handleChange();
     this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
@@ -118,15 +110,13 @@ export class TdsDropdown {
   @Method()
   async removeValue(oldValue: string) {
     if (this.multiselect) {
-      this.children = Array.from(this.host.children)
-        .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
-        .map((element: HTMLTdsDropdownOptionElement) => {
-          if (element.value === oldValue) {
-            this.selection = this.selection.filter((item) => item.value !== element.value);
-            element.setSelected(false);
-          }
-          return element;
-        });
+      this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+        if (element.value === oldValue) {
+          this.selection = this.selection.filter((item) => item.value !== element.value);
+          element.setSelected(false);
+        }
+        return element;
+      });
     } else {
       this.reset();
     }
@@ -233,18 +223,6 @@ export class TdsDropdown {
     }
   }
 
-  connectedCallback = () => {
-    if (!this.options) {
-      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionElement>;
-    }
-  };
-
-  componentWillRender = () => {
-    if (!this.options) {
-      this.children = Array.from(this.host.children) as Array<HTMLTdsDropdownOptionElement>;
-    }
-  };
-
   componentDidLoad() {
     if (this.defaultValue) {
       this.setDefaultOption();
@@ -252,29 +230,33 @@ export class TdsDropdown {
   }
 
   setDefaultOption = () => {
-    this.children = this.children.map((element: HTMLTdsDropdownOptionElement) => {
-      if (this.multiselect) {
-        this.defaultValue.split(',').forEach((value) => {
-          if (value === element.value) {
+    this.children = Array.from(this.host.children)
+      .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
+      .map((element: HTMLTdsDropdownOptionElement) => {
+        if (this.multiselect) {
+          this.defaultValue.split(',').forEach((value) => {
+            if (value === element.value) {
+              element.setSelected(true);
+              this.selection = this.selection
+                ? [...this.selection, { value: element.value, label: element.textContent }]
+                : [{ value: element.value, label: element.textContent }];
+            }
+          });
+        } else {
+          if (this.defaultValue === element.value) {
             element.setSelected(true);
-            this.selection = this.selection
-              ? [...this.selection, { value: element.value, label: element.textContent }]
-              : [{ value: element.value, label: element.textContent }];
+            this.selection = [{ value: element.value, label: element.textContent }];
           } else {
             element.setSelected(false);
           }
-        });
-      } else {
-        if (this.defaultValue === element.value) {
-          element.setSelected(true);
-          this.selection = [{ value: element.value, label: element.textContent }];
-        } else {
-          element.setSelected(false);
         }
-      }
-      return element;
-    });
+        return element;
+      });
   };
+
+  /* Returns a list of all children that are are tds-dropdown-option elements */
+  private getChildren = () =>
+    Array.from(this.host.children).filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION');
 
   getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
@@ -336,25 +318,6 @@ export class TdsDropdown {
   };
 
   render() {
-    if (this.options) {
-      let id = 0;
-      this.options.forEach((option) => {
-        appendChildElement(
-          this.host,
-          'tds-dropdown-option',
-          [
-            { key: 'value', value: option.value },
-            { key: 'disabled', value: option.disabled.toString() },
-          ],
-          option.label,
-          `id${id++}`,
-        );
-      });
-      this.children = Array.from(this.host.children).filter(
-        (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-      ) as HTMLTdsDropdownOptionElement[];
-    }
-
     appendHiddenInput(
       this.host,
       this.name,
