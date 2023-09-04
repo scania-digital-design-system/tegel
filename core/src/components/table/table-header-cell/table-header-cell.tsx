@@ -31,7 +31,7 @@ export class TdsTableHeaderCell {
   /** Text that displays in column cell */
   @Prop({ reflect: true }) cellValue: string;
 
-  /**  */
+  /** In case noMinWidth is set, the user has to specify width value for each column */
   @Prop({ reflect: true }) customWidth: string;
 
   /** Enables sorting on that column */
