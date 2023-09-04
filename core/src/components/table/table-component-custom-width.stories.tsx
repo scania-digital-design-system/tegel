@@ -147,16 +147,16 @@ const BasicTemplate = ({
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
   >
       <tds-table-header>
-          <tds-header-cell column-key='truck' column-title='Truck type' ${
+          <tds-header-cell cell-key='truck' cell-value='Truck type' ${
             column1Width ? `custom-width="${column1Width}"` : ''
           } ></tds-header-cell>
-          <tds-header-cell column-key='driver' column-title='Driver name' ${
+          <tds-header-cell cell-key='driver' cell-value='Driver name' ${
             column2Width ? `custom-width="${column2Width}"` : ''
           }></tds-header-cell>
-          <tds-header-cell column-key='country' column-title='Country' ${
+          <tds-header-cell cell-key='country' cell-value='Country' ${
             column3Width ? `custom-width="${column3Width}"` : ''
           }></tds-header-cell>
-          <tds-header-cell column-key='mileage' column-title='Mileage' ${
+          <tds-header-cell cell-key='mileage' cell-value='Mileage' ${
             column4Width ? `custom-width="${column4Width}"` : ''
           } text-align='right'></tds-header-cell>
       </tds-table-header>

@@ -26,18 +26,18 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 })
 export class TdsTableHeaderCell {
   /** The value of column key, usually comes from JSON, needed for sorting */
-  @Prop({ reflect: true }) columnKey: string;
+  @Prop({ reflect: true }) cellKey: string;
 
   /** Text that displays in column cell */
-  @Prop({ reflect: true }) columnTitle: string;
+  @Prop({ reflect: true }) cellValue: string;
 
-  /** In case noMinWidth setting, user has to specify width value for each column, for example, "150px" */
+  /**  */
   @Prop({ reflect: true }) customWidth: string;
 
-  /** If passed as prop, enables sorting on that column */
+  /** Enables sorting on that column */
   @Prop() sortable: boolean = false;
 
-  /** Setting for text align, default is left, but user can pass "right" as string - useful for numeric values */
+  /** Setting for text align, default is left. Other accepted values are "right" or "end". */
   @Prop({ reflect: true }) textAlign: string;
 
   @State() textAlignState: string;
@@ -133,7 +133,7 @@ export class TdsTableHeaderCell {
   ) {
     const { tableId, key } = event.detail;
     if (this.tableId === tableId) {
-      if (this.columnKey !== key) {
+      if (this.cellKey !== key) {
         this.sortedByMyKey = false;
         // To sync with CSS transition timing
         setTimeout(() => {
@@ -162,7 +162,7 @@ export class TdsTableHeaderCell {
       this.textAlignState = 'left';
     }
     // To enable body cells text align per rules set in head cell
-    this.internalTdsTextAlign.emit([this.tableId, this.columnKey, this.textAlignState]);
+    this.internalTdsTextAlign.emit([this.tableId, this.cellKey, this.textAlignState]);
 
     this.enableToolbarDesign =
       this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
@@ -181,7 +181,7 @@ export class TdsTableHeaderCell {
     /* Emit sort event */
     this.tdsSort.emit({
       tableId: this.tableId,
-      columnKey: this.columnKey,
+      columnKey: this.cellKey,
       sortingDirection: this.sortingDirection,
     });
 
@@ -191,7 +191,7 @@ export class TdsTableHeaderCell {
      */
     this.internalSortButtonClicked.emit({
       tableId: this.tableId,
-      key: this.columnKey,
+      key: this.cellKey,
     });
   };
 
@@ -200,7 +200,7 @@ export class TdsTableHeaderCell {
       return (
         <button class="tds-table__header-button" onClick={() => this.sortButtonClick()}>
           <span class="tds-table__header-button-text" style={{ textAlign: this.textAlignState }}>
-            {this.columnTitle}
+            {this.cellValue}
           </span>
 
           {this.sortingDirection === null && (
@@ -249,7 +249,7 @@ export class TdsTableHeaderCell {
     }
     return (
       <p class="tds-table__header-text" style={{ textAlign: this.textAlignState }}>
-        {this.columnTitle}
+        {this.cellValue}
       </p>
     );
   };
@@ -278,7 +278,7 @@ export class TdsTableHeaderCell {
         }}
         style={{ width: this.customWidth }}
         // Calling actions from here to enable hover functionality for both sortable and unsortable Tables
-        onMouseOver={() => this.onHeadCellHover(this.columnKey)}
+        onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
       >
         {this.headerCellContent()}

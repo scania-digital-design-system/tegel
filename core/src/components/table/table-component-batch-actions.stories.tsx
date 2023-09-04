@@ -167,16 +167,16 @@ const BatchActionTemplate = ({
           <tds-table-header>
               <tds-header-cell ${
                 column1Width ? `style="width: ${column1Width};"` : ''
-              } column-key='truck' column-title='Truck type'></tds-header-cell>
+              } cell-key='truck' cell-value='Truck type'></tds-header-cell>
               <tds-header-cell ${
                 column2Width ? `style="width: ${column2Width};"` : ''
-              } column-key='driver' column-title='Driver name'></tds-header-cell>
+              } cell-key='driver' cell-value='Driver name'></tds-header-cell>
               <tds-header-cell ${
                 column3Width ? `style="width: ${column3Width};"` : ''
-              } column-key='country' column-title='Country'></tds-header-cell>
+              } cell-key='country' cell-value='Country'></tds-header-cell>
               <tds-header-cell ${
                 column4Width ? `style="width: ${column4Width};"` : ''
-              } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
+              } cell-key='mileage' cell-value='Mileage' text-align='right'></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
           <tds-table-body-row>

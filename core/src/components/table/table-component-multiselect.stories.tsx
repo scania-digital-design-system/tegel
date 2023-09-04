@@ -152,16 +152,16 @@ const MultiselectTemplate = ({
         }
     >
           <tds-table-header>
-              <tds-header-cell column-key='truck' column-title='Truck type' ${
+              <tds-header-cell cell-key='truck' cell-value='Truck type' ${
                 column1Width ? `custom-width="${column1Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='driver' column-title='Driver name' ${
+              <tds-header-cell cell-key='driver' cell-value='Driver name' ${
                 column2Width ? `custom-width="${column2Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='country' column-title='Country' ${
+              <tds-header-cell cell-key='country' cell-value='Country' ${
                 column3Width ? `custom-width="${column3Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='mileage' column-title='Mileage' text-align='right' ${
+              <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align='right' ${
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>

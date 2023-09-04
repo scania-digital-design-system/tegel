@@ -16,10 +16,10 @@ describe('tds-table filtering', () => {
         <tds-table table-id="unique-test-id">
           <tds-table-toolbar table-title="Filter me" filter />
           <tds-table-header>
-            <tds-header-cell column-key="truck" />
-            <tds-header-cell column-key="driver" />
-            <tds-header-cell column-key="country" />
-            <tds-header-cell column-key="mileage" />
+            <tds-header-cell cell-key="truck" />
+            <tds-header-cell cell-key="driver" />
+            <tds-header-cell cell-key="country" />
+            <tds-header-cell cell-key="mileage" />
           </tds-table-header>
           <tds-table-body>
             <tds-table-body-row>
