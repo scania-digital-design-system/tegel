@@ -32,7 +32,7 @@ export class TdsTableFooter {
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = null;
 
-  /** <b>Client override</b> Used to set the number of columns, use as fallback if the automatic count of columns fails. */
+  /** <b>Client override</b> Used to set the column span of the footer. Use as fallback if the automatic count of columns fails. */
   @Prop() cols: number = null;
 
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
