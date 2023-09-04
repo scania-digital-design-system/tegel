@@ -29,7 +29,7 @@ export class TdsChip {
   @Prop() chipId: string = generateUniqueId();
 
   /** Controls component's checked attribute. Valid only for type checkbox and radio. */
-  @Prop() checked: boolean = false;
+  @Prop({ reflect: true }) checked: boolean = false;
 
   /** Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio. */
   @Prop() name: string;
@@ -50,11 +50,14 @@ export class TdsChip {
   tdsChange: EventEmitter<{
     chipId: string;
     value: string;
+    checked?: boolean;
   }>;
 
   private handleChange = () => {
+    this.checked = !this.checked;
     this.tdsChange.emit({
       chipId: this.chipId,
+      checked: this.checked,
       value: this.value,
     });
   };
