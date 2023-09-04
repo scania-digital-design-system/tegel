@@ -26,6 +26,12 @@
     text-align: left;
   }
 
+  .tds-table__actionbar,
+  slot[name='end']::slotted(*) {
+    display: flex;
+    align-self: center;
+  }
+
   .tds-table__searchbar {
     display: flex;
     align-self: center;
