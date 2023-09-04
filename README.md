@@ -14,7 +14,9 @@
 
 # Tegel Design System
 
-https://tegel.scania.com/
+Official website: https://tegel.scania.com/
+
+Storybook: https://tegel-storybook.netlify.app/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
