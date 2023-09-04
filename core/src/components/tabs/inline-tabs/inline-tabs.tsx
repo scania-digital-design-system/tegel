@@ -78,16 +78,6 @@ export class TdsInlineTabs {
     this.children[this.selectedIndex].setSelected(true);
   }
 
-  @Watch('defaultSelectedIndex')
-  handleDefaultSelectedIndexUpdate() {
-    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsInlineTabElement) => {
-      tabElement.setSelected(false);
-      return tabElement;
-    });
-    this.children[this.defaultSelectedIndex].setSelected(true);
-    this.selectedIndex = this.defaultSelectedIndex;
-  }
-
   scrollRight() {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;

@@ -86,16 +86,6 @@ export class TdsFolderTabs {
     this.children[this.selectedIndex].setSelected(true);
   }
 
-  @Watch('defaultSelectedIndex')
-  handleDefaultSelectedIndexUpdate() {
-    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsFolderTabElement) => {
-      tabElement.setSelected(false);
-      return tabElement;
-    });
-    this.children[this.defaultSelectedIndex].setSelected(true);
-    this.selectedIndex = this.defaultSelectedIndex;
-  }
-
   calculateButtonWidth() {
     this.children = this.children.map((tab: HTMLTdsFolderTabElement) => {
       if (tab.offsetWidth > this.buttonWidth) {
