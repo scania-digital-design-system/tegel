@@ -52,7 +52,7 @@ Type: `Promise<void>`
 
 | Slot          | Description                                             |
 | ------------- | ------------------------------------------------------- |
-| `"bottom"`    | Slot for the bottom part of the Banner, used for links. |
+| `"actions"`   | Slot for the bottom part of the Banner, used for links. |
 | `"header"`    | Slot for the Header of the Banner                       |
 | `"subheader"` | Slot for the Subheader of the Banner                    |
 

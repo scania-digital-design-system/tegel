@@ -4,7 +4,7 @@ import { generateUniqueId, hasSlot } from '../../utils/utils';
 /**
  * @slot header - Slot for the Header of the Banner
  * @slot subheader - Slot for the Subheader of the Banner
- * @slot bottom - Slot for the bottom part of the Banner, used for links.
+ * @slot actions - Slot for the bottom part of the Banner, used for links.
  */
 @Component({
   tag: 'tds-banner',
@@ -99,7 +99,7 @@ export class TdsBanner {
   render() {
     const usesHeaderSlot = hasSlot('subheader', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
-    const usesBottomSlot = hasSlot('bottom', this.host);
+    const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <Host
         role="banner"
@@ -123,7 +123,7 @@ export class TdsBanner {
             {this.subheader && <div class="subheader">{this.subheader}</div>}
             {usesSubheaderSlot && <slot name="subheader"></slot>}
           </div>
-          {usesBottomSlot && <slot name="bottom"></slot>}
+          {usesActionsSlot && <slot name="actions"></slot>}
         </div>
 
         <div class={`banner-close`}>
