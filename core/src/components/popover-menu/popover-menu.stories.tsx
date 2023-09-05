@@ -53,14 +53,22 @@ export default {
         type: 'boolean',
       },
     },
+    fluid: {
+      name: 'Fluid',
+      description: 'Unsets the width of the Popover Menu.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     menuPosition: 'Auto',
     icons: false,
+    fluid: false,
   },
 };
 
-const Template = ({ menuPosition, icons }) => {
+const Template = ({ menuPosition, icons, fluid }) => {
   const menuPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -90,7 +98,9 @@ const Template = ({ menuPosition, icons }) => {
 
     <tds-popover-menu
       id="my-popover-menu"
-      placement="${menuPosLookup[menuPosition]}">
+      placement="${menuPosLookup[menuPosition]}"
+      ${fluid ? 'fluid' : ''}
+      >
       <ul class="tds-popover-menu-wrapper">
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
@@ -107,7 +117,7 @@ const Template = ({ menuPosition, icons }) => {
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
             ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Menu item 3
+            ${fluid ? 'The menu width adjusts to the widest word' : 'Menu item 3'}
           </a>
         </li>
         <li class="divider"></li>
