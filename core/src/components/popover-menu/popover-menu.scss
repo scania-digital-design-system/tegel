@@ -1,5 +1,4 @@
 @import '../../mixins/box-sizing';
-
 @import '../../mixins/z-index';
 
 .tds-popover-menu {
@@ -19,5 +18,10 @@
 }
 
 tds-popover-core {
-  padding: 6px 0 !important;
+  padding: 6px !important;
+}
+
+::slotted(tds-divider) {
+  display: block;
+  padding: 6px !important;
 }

@@ -102,15 +102,14 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
       placement="${menuPosLookup[menuPosition]}"
       ${fluidWidth ? 'fluid-width' : ''}
       >
-      <ul class="tds-popover-menu-wrapper">
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-divider></tds-divider>
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
-            fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
-          } </a>
+      fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
+    } </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
@@ -135,8 +134,6 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         <tds-popover-menu-item>
           <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
         </tds-popover-menu-item>
-      </ul>
-
     </tds-popover-menu>
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
