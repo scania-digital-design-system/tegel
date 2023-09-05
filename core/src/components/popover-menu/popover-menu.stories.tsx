@@ -105,34 +105,57 @@ const Template = ({ menuPosition, icons, fluid }) => {
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
             ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-          Menu item 1
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Menu item 2
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            ${fluid ? 'The menu width adjusts to the widest word' : 'Menu item 3'}
+          Action
           </a>
         </li>
         <li class="divider"></li>
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
             ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Menu item 4
+            ${fluid ? 'The menu width adjusts to the widest word' : 'Action'}
           </a>
         </li>
         <li>
           <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}  
-            Menu item 5
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
+            Action
           </a>
         </li>
+        <li class="divider"></li>
+        <li>
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
+            Action
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
+            Action
+          </a>
+        </li>
+        <li>
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
+            Action
+          </a>
+        </li>
+        <li>
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
+            Action
+          </a>
+        </li>
+        <li class="divider"></li>
+        <li>
+          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
+            Action
+          </a>
+        </li>
+
+        
       </ul>
     </tds-popover-menu>
 
