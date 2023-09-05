@@ -28,6 +28,15 @@
         background-color: var(--tds-popover-menu-background-hover);
       }
     }
+
+    &.disabled {
+      pointer-events: none;
+      color: var(--tds-popover-menu-divider-disabled-color);
+
+      ::slotted(tds-icon) {
+        color: var(--tds-popover-menu-divider-disabled-icon-color);
+      }
+    }
   }
 
   ::slotted(*:not(tds-icon)) {
