@@ -13,6 +13,23 @@ ul.tds-popover-menu-wrapper {
   margin-block: 0;
   padding: 0;
 
+  tds-popover-menu-item {
+    padding: 10px 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  tds-divider {
+    display: block;
+    padding: 6px;
+  }
+
   li {
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);

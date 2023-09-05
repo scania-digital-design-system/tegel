@@ -102,61 +102,40 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
       ${fluidWidth ? 'fluid-width' : ''}
       >
       <ul class="tds-popover-menu-wrapper">
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-          Action
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            ${fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'}
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Action
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Action
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Action
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Action
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Action
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Action
-          </a>
-        </li>
-
-        
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-divider></tds-divider>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
+            fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
+    } </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
+        </tds-popover-menu-item>
+        <tds-divider></tds-divider>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-divider></tds-divider>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
+        </tds-popover-menu-item>
       </ul>
+
     </tds-popover-menu>
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
