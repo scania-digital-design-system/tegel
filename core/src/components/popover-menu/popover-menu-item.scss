@@ -17,6 +17,14 @@ ul.tds-popover-menu-wrapper {
     position: relative;
     width: 100%;
 
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
     a {
       text-decoration: none;
       position: relative;
