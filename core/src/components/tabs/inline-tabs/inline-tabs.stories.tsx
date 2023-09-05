@@ -7,8 +7,8 @@ export default {
   title: `${ComponentsFolder}/Tabs`,
   parameters: {
     notes: {
-      'Inline tabs': readme,
-      'Inline tab': readmeTab,
+      'Inline Tabs': readme,
+      'Inline Tab': readmeTab,
     },
     design: [
       {
