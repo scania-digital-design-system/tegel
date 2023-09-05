@@ -110,7 +110,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
             fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
-    } </a>
+          } </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
