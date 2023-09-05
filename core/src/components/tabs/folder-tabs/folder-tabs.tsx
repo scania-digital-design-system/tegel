@@ -8,6 +8,7 @@ import {
   Event,
   EventEmitter,
   Method,
+  Watch,
 } from '@stencil/core';
 
 /**
@@ -74,6 +75,15 @@ export class TdsFolderTabs {
     return {
       selectedTabIndex: this.selectedIndex,
     };
+  }
+
+  @Watch('selectedIndex')
+  handleSelectedIndexUpdate() {
+    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsFolderTabElement) => {
+      tabElement.setSelected(false);
+      return tabElement;
+    });
+    this.children[this.selectedIndex].setSelected(true);
   }
 
   calculateButtonWidth() {
