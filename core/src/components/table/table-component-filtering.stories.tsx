@@ -8,7 +8,6 @@ import tdsBodyRow from './table-body-row/readme.md';
 import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
-import dummyData from './table-body/dummy-data.json';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
@@ -140,7 +139,6 @@ const FilteringTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
-  useDataProp,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -158,95 +156,75 @@ const FilteringTemplate = ({
   >
           <tds-table-toolbar table-title="Filter" filter></tds-table-toolbar>
           <tds-table-header>
-              <tds-header-cell column-key='truck' column-title='Truck type' ${
+              <tds-header-cell cell-key='truck' cell-value='Truck type' ${
                 column1Width ? `custom-width="${column1Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='driver' column-title='Driver name' ${
+              <tds-header-cell cell-key='driver' cell-value='Driver name' ${
                 column2Width ? `custom-width="${column2Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='country' column-title='Country' ${
+              <tds-header-cell cell-key='country' cell-value='Country' ${
                 column3Width ? `custom-width="${column3Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='mileage' column-title='Mileage' text-align='right' ${
+              <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align='right' ${
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
-          <tds-table-body no-result-message="The query did not match any data.">
-            ${
-              !useDataProp
-                ? dummyData
-                    .map(
-                      (row) =>
-                        `<tds-table-body-row>
-                        ${Object.entries(row)
-                          .map(
-                            (cell) =>
-                              `<tds-body-cell cell-key="${cell[0]}" cell-value="${cell[1]}"></tds-body-cell>`,
-                          )
-                          .join(' ')}
-                      </tds-table-body-row>`,
-                    )
-                    .join(' ')
-                : ''
-            }
-          </tds-table-body>
+            <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+            <tds-table-body-row>
+                <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+                <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+            </tds-table-body-row>
+          <tds-table-footer>              
+          </tds-table-footer>
   </tds-table>
+  <!-- Note: Code below is just for demo purposes -->
+  <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
+  <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
+    <h5 class="tds-u-mt0 tds-u-mb0">Event test box</h5>
+    <h6 class="tds-u-mt1 tds-u-mb0">Event name:</h6>
+    <textarea id="event-name-textarea" rows="1" cols="50" readonly></textarea>
+    <h6 class="tds-u-mt0 tds-u-mb0">Events value (aka detail)</h6>
+    <br>
+    <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
+  </div>
   
-  <script>
-    document.addEventListener('tdsFilterChange', (event) => {
-      console.log(event)
-    })
-    ${
-      useDataProp
-        ? `
-    /* ONLY WORKS IN THE CANVAS TAB. */
-    tableBody = document.querySelector('tds-table-body');
-    tableBody.bodyData = [
-      {
-        "truck": "L-series",
-        "driver": "Sonya Bruce",
-        "country": "Brazil",
-        "mileage": 123987
-      },
-      {
-        "truck": "P-series",
-        "driver": "Guerra Bowman",
-        "country": "Sweden",
-        "mileage": 2000852
-      },
-      {
-        "truck": "G-series",
-        "driver": "Ferrell Wallace",
-        "country": "Germany",
-        "mileage": 564
-      },
-      {
-        "truck": "R-series",
-        "driver": "Cox Burris",
-        "country": "Spain",
-        "mileage": 1789357
-      },
-      {
-        "truck": "S-series",
-        "driver": "Montgomery Cervantes",
-        "country": "Croatia",
-        "mileage": 65
-      },
-      {
-        "truck": "L-series",
-        "driver": "Sheryl Nielsen",
-        "country": "Greece",
-        "mileage": 365784
-      },
-      {
-        "truck": "G-series",
-        "driver": "Benton Gomez",
-        "country": "France",
-        "mileage": 80957
-      }
-    ]`
-        : ''
-    }
-  </script>`);
+  <script>  
+  
+  window.addEventListener('tdsFilter', e => {
+    document.getElementById('event-name-textarea').value = e.type;
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
+  });
+</script>`);
 
 export const Filtering = FilteringTemplate.bind({});

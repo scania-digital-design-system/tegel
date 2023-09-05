@@ -5,6 +5,20 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property      | Attribute      | Description                                                                     | Type      | Default |
+| ------------- | -------------- | ------------------------------------------------------------------------------- | --------- | ------- |
+| `allSelected` | `all-selected` | Prop for controling the checked/unchecked state of the "all selected"-checkbox. | `boolean` | `false` |
+
+
+## Events
+
+| Event          | Description                                                       | Type                                                                       |
+| -------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `tdsSelectAll` | Event emitted when the status of the select all checkbox changes. | `CustomEvent<{ tableId: string; checked: boolean; selectedRows: any[]; }>` |
+
+
 ## Slots
 
 | Slot          | Description                                |

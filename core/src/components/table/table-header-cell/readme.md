@@ -7,20 +7,20 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                              | Type      | Default     |
-| ------------- | -------------- | -------------------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `columnKey`   | `column-key`   | The value of column key, usually comes from JSON, needed for sorting                                     | `string`  | `undefined` |
-| `columnTitle` | `column-title` | Text that displays in column cell                                                                        | `string`  | `undefined` |
-| `customWidth` | `custom-width` | In case noMinWidth setting, user has to specify width value for each column, for example, "150px"        | `string`  | `undefined` |
-| `sortable`    | `sortable`     | If passed as prop, enables sorting on that column                                                        | `boolean` | `false`     |
-| `textAlign`   | `text-align`   | Setting for text align, default is left, but user can pass "right" as string - useful for numeric values | `string`  | `undefined` |
+| Property      | Attribute      | Description                                                                          | Type      | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------ | --------- | ----------- |
+| `cellKey`     | `cell-key`     | The value of column key, usually comes from JSON, needed for sorting                 | `string`  | `undefined` |
+| `cellValue`   | `cell-value`   | Text that displays in column cell                                                    | `string`  | `undefined` |
+| `customWidth` | `custom-width` | In case noMinWidth is set, the user has to specify width value for each column.      | `string`  | `undefined` |
+| `sortable`    | `sortable`     | Enables sorting on that column                                                       | `boolean` | `false`     |
+| `textAlign`   | `text-align`   | Setting for text align, default is left. Other accepted values are "right" or "end". | `string`  | `undefined` |
 
 
 ## Events
 
-| Event           | Description                                                                                                                                                          | Type                                                                                      |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `tdsSortChange` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "desc" \| "asc"; }>` |
+| Event     | Description                                                                                                                                                          | Type                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `tdsSort` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "asc" \| "desc"; }>` |
 
 
 ----------------------------------------------

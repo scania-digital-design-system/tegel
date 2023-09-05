@@ -126,7 +126,7 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      `<div slot="end"><tds-button type="ghost" size="sm">
+      `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
       <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
     </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
     ),
@@ -153,7 +153,6 @@ const BatchActionTemplate = ({
 }) =>
   formatHtmlPreview(`
    <tds-table
-        multiselect
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
         responsive="${responsiveDesign}"
@@ -168,68 +167,56 @@ const BatchActionTemplate = ({
           <tds-table-header>
               <tds-header-cell ${
                 column1Width ? `style="width: ${column1Width};"` : ''
-              } column-key='truck' column-title='Truck type'></tds-header-cell>
+              } cell-key='truck' cell-value='Truck type'></tds-header-cell>
               <tds-header-cell ${
                 column2Width ? `style="width: ${column2Width};"` : ''
-              } column-key='driver' column-title='Driver name'></tds-header-cell>
+              } cell-key='driver' cell-value='Driver name'></tds-header-cell>
               <tds-header-cell ${
                 column3Width ? `style="width: ${column3Width};"` : ''
-              } column-key='country' column-title='Country'></tds-header-cell>
+              } cell-key='country' cell-value='Country'></tds-header-cell>
               <tds-header-cell ${
                 column4Width ? `style="width: ${column4Width};"` : ''
-              } column-key='mileage' column-title='Mileage' text-align='right'></tds-header-cell>
+              } cell-key='mileage' cell-value='Mileage' text-align='right'></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
-          </tds-table-body>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+          <tds-table-body-row>
+              <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
+          </tds-table-body-row>
+      </tds-table-body>
   </tds-table>
-  <script>
-      /* ONLY WORKS IN THE CANVAS TAB. */
-      tableBody = document.querySelector('tds-table-body');
-      tableBody.bodyData = [
-        {
-          "truck": "L-series",
-          "driver": "Sonya Bruce",
-          "country": "Brazil",
-          "mileage": 123987
-        },
-        {
-          "truck": "P-series",
-          "driver": "Guerra Bowman",
-          "country": "Sweden",
-          "mileage": 2000852
-        },
-        {
-          "truck": "G-series",
-          "driver": "Ferrell Wallace",
-          "country": "Germany",
-          "mileage": 564
-        },
-        {
-          "truck": "R-series",
-          "driver": "Cox Burris",
-          "country": "Spain",
-          "mileage": 1789357
-        },
-        {
-          "truck": "S-series",
-          "driver": "Montgomery Cervantes",
-          "country": "Croatia",
-          "mileage": 65
-        },
-        {
-          "truck": "L-series",
-          "driver": "Sheryl Nielsen",
-          "country": "Greece",
-          "mileage": 365784
-        },
-        {
-          "truck": "G-series",
-          "driver": "Benton Gomez",
-          "country": "France",
-          "mileage": 80957
-        }
-      ]
-  </script>
   `);
 
 export const BatchAction = BatchActionTemplate.bind({});
