@@ -18,45 +18,45 @@ Previously we have not had a set naming convention for our events. This has led 
 components where some events has had a `custom` prefix, and others have had other ways of indicating whether
 or not it is a custom event. We have now settled on a naming convention for all events.
 Both **external**, events we expect you as a user to interact with, and **internal**, events that are used within
-our components to update state/react to changes. 
+our components to update state/react to changes.
 
 ## Slot name convention
 
 For @scania/tegel we have taken another look at the naming convention of our slot names. With this we discovered
-a number on inconsistencies. To align on this we have now decided on a naming convention that goes for all of our 
-named slot. 
+a number on inconsistencies. To align on this we have now decided on a naming convention that goes for all of our
+named slot.
 
-The slot should always be named to represent its position/use case. This could for example be 'bottom', 'label' or 
+The slot should always be named to represent its position/use case. This could for example be 'bottom', 'label' or
 'suffix'.
 
 These components have been updated:
 
- - Accordion
- - Button
- - Card
- - Checkbox
- - Chip
- - Dropdown
- - Footer
- - Footer
- - Header
- - Message
- - Modal
- - Radio Button
- - Side Menu
- - Stepper
- - Table
- - Text Field
- - Toast
- - Toggle
+- Accordion
+- Button
+- Card
+- Checkbox
+- Chip
+- Dropdown
+- Footer
+- Footer
+- Header
+- Message
+- Modal
+- Radio Button
+- Side Menu
+- Stepper
+- Table
+- Text Field
+- Toast
+- Toggle
 
- #### What action is required?
+#### What action is required?
 
-Make sure all slots that are being used follow the convention. 
-
+Make sure all slots that are being used follow the convention.
 
 ## Prefix change
-Furthermore we decided to rename the previously used 'sdds'-prefix to 'tds'. 
+
+Furthermore we decided to rename the previously used 'sdds'-prefix to 'tds'.
 This occurred as a result of a deliberate choice to facilitate the transition to the new Tegel package and prevent conflicts with previously used components.
 
 In short, before the prefix change:
@@ -309,12 +309,36 @@ and features. Please have a look at the component and do the updates that affect
 
 Please have a look at the component and do the updates that affect you.
 
+## Slider
+
+[Story](/docs/components-slider--default)
+
+#### Changed prop name 'scrubberSize'
+
+The prop `scrubberSize` was changed to `thumbSize` to align with design.
+
+##### What action is required?
+
+Rename all instances of `scrubber-size` to `thumb-size`.
+
+```jsx
+// Old ❌
+<sdds-slider
+    scrubber-size="lg"
+></sdds-slider>
+
+// New ✅
+<tds-slider
+    thumb-size="lg"
+></tds-slider>
+
+```
 
 ## Inline, Folder & Navigation Tabs
 
 ### Updated `<sdds-inline-tabs>` and `<sdds-navigation-tabs>` and introduced `<sdds-folder-tabs>`. Introduced child components for all Tabs.
 
-Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These had little resemblance to each other in appearance, thus it was more logical to consider them as completely distinct components. 
+Previously we had the `<sdds-inline-tabs>` and `<sdds-inline-tabs-fullbleed>`. These had little resemblance to each other in appearance, thus it was more logical to consider them as completely distinct components.
 In order to establish a clear differentiation between them, we have renamed `<sdds-inline-tabs>` to `<sdds-folder-tabs>` so as to better reflect its visual appearance.
 Our three tabs (inline, folder, and navigation) are designed to function with both buttons and links. To achieve this, we have introduced a single child element for each tab, which is intended to wrap the underlying element.
 
