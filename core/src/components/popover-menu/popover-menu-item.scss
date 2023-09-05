@@ -1,6 +1,10 @@
 // TODO - Investigate whether or not this should instead be a Web Component.
 @import '../../mixins/box-sizing';
 
+tds-popover-core {
+  padding: 16px 6px !important;
+}
+
 ul.tds-popover-menu-wrapper {
   @include tds-box-sizing;
 
@@ -13,16 +17,10 @@ ul.tds-popover-menu-wrapper {
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
     color: var(--tds-popover-menu-color);
-    padding: 10px 0;
     position: relative;
-    width: 100%;
 
-    &:first-child {
-      padding-top: 0;
-    }
-
-    &:last-child {
-      padding-bottom: 0;
+    &:hover {
+      background-color: var(--tds-popover-menu-background-hover);
     }
 
     a {
@@ -32,6 +30,7 @@ ul.tds-popover-menu-wrapper {
       color: var(--tds-popover-menu-color);
       display: flex;
       flex-wrap: nowrap;
+      padding: 10px 16px;
 
       tds-icon {
         position: relative;
@@ -45,20 +44,6 @@ ul.tds-popover-menu-wrapper {
         svg {
           width: auto;
           height: auto;
-        }
-      }
-
-      &:hover {
-        &::before {
-          z-index: -1;
-          content: ' ';
-          display: block;
-          position: absolute;
-          width: calc(100% + 32px);
-          height: calc(100% + 16px);
-          top: -8px;
-          left: -16px;
-          background-color: var(--tds-popover-menu-background-hover);
         }
       }
     }
