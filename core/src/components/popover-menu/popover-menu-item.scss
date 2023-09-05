@@ -13,73 +13,8 @@ ul.tds-popover-menu-wrapper {
   margin-block: 0;
   padding: 0;
 
-  tds-popover-menu-item {
-    padding: 10px 0;
-
-    &:first-child {
-      padding-top: 0;
-    }
-
-    &:last-child {
-      padding-bottom: 0;
-    }
-  }
-
   tds-divider {
     display: block;
     padding: 6px;
-  }
-
-  li {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
-    color: var(--tds-popover-menu-color);
-    position: relative;
-
-    &:hover {
-      background-color: var(--tds-popover-menu-background-hover);
-    }
-
-    a {
-      text-decoration: none;
-      position: relative;
-      width: 100%;
-      color: var(--tds-popover-menu-color);
-      display: flex;
-      flex-wrap: nowrap;
-      padding: 10px 16px;
-
-      tds-icon {
-        position: relative;
-        top: -1px;
-        display: block;
-        margin-right: 10px;
-        width: 12px;
-        height: 12px;
-        object-fit: contain;
-
-        svg {
-          width: auto;
-          height: auto;
-        }
-      }
-    }
-
-    &.divider {
-      display: block;
-      height: 1px;
-      width: 100%;
-      padding: 6px;
-
-      &::before {
-        position: relative;
-        content: ' ';
-        display: block;
-        background-color: var(--tds-popover-menu-divider-color);
-        height: 1px;
-        left: -16px;
-        width: calc(100% + 32px);
-      }
-    }
   }
 }

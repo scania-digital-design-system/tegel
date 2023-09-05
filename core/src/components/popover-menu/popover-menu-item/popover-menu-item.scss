@@ -1,8 +1,9 @@
 @import '../../../mixins/box-sizing';
 
 :host {
-  display: block;
   @include tds-box-sizing;
+
+  display: block;
 
   .wrapper {
     font: var(--tds-detail-02);
@@ -10,23 +11,14 @@
     color: var(--tds-popover-menu-color);
     position: relative;
     width: 100%;
-    height: 100%;
     padding: 0 16px;
+    height: 36px;
+    display: flex;
+    align-items: center;
 
     &:hover {
       cursor: pointer;
-
-      &::before {
-        z-index: -1;
-        content: ' ';
-        display: block;
-        position: absolute;
-        width: calc(100% + 32px);
-        height: calc(100% + 16px);
-        top: -8px;
-        left: -16px;
-        background-color: var(--tds-popover-menu-background-hover);
-      }
+      background-color: var(--tds-popover-menu-background-hover);
     }
 
     &.disabled {
@@ -49,13 +41,13 @@
   ::slotted(*:focus-visible) {
     &::before {
       z-index: -1;
-      content: ' ';
+      content: '';
       display: block;
       position: absolute;
-      width: calc(100% + 8px);
-      height: calc(100% + 16px);
-      top: -8px;
-      left: -4px;
+      width: calc(100% - 4px);
+      height: 100%;
+      top: 0;
+      left: 2px;
       outline: 1px solid var(--tds-blue-400);
       outline-offset: 1px;
     }
