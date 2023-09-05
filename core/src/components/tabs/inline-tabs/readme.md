@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event       | Description | Type                                         |
-| ----------- | ----------- | -------------------------------------------- |
-| `tdsChange` |             | `CustomEvent<{ selectedTabIndex: number; }>` |
+| Event       | Description                                     | Type                                         |
+| ----------- | ----------------------------------------------- | -------------------------------------------- |
+| `tdsChange` | Event emitted when the selected Tab is changed. | `CustomEvent<{ selectedTabIndex: number; }>` |
 
 
 ## Methods
