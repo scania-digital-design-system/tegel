@@ -11,7 +11,7 @@ export class TdsPopoverMenuItem {
 
   render() {
     return (
-      <Host role="listItem">
+      <Host role="listitem">
         <div
           class={{
             wrapper: true,
