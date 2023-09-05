@@ -46,8 +46,8 @@ export class TdsSlider {
   /** Name property (will be inherited by the native slider component) */
   @Prop() name: string = '';
 
-  /** Sets the size of the scrubber */
-  @Prop() scrubberSize: 'sm' | 'lg' = 'lg';
+  /** Sets the size of the thumb */
+  @Prop() thumbSize: 'sm' | 'lg' = 'lg';
 
   /** Snap to the tick's grid */
   @Prop() snap: boolean = false;
@@ -57,9 +57,9 @@ export class TdsSlider {
 
   private wrapperElement: HTMLElement = null;
 
-  private scrubberElement: HTMLElement = null;
+  private thumbElement: HTMLElement = null;
 
-  private scrubberInnerElement: HTMLElement = null;
+  private thumbInnerElement: HTMLElement = null;
 
   private trackElement: HTMLElement = null;
 
@@ -71,9 +71,9 @@ export class TdsSlider {
 
   private inputElement: HTMLInputElement = null;
 
-  private scrubberGrabbed: boolean = false;
+  private thumbGrabbed: boolean = false;
 
-  private scrubberLeft: number = 0;
+  private thumbLeft: number = 0;
 
   private tickValues: Array<number> = [];
 
@@ -133,12 +133,12 @@ export class TdsSlider {
 
   @Listen('mouseup', { target: 'window' })
   handleMouseUp() {
-    if (!this.scrubberGrabbed) {
+    if (!this.thumbGrabbed) {
       return;
     }
 
-    this.scrubberGrabbed = false;
-    this.scrubberInnerElement.classList.remove('pressed');
+    this.thumbGrabbed = false;
+    this.thumbInnerElement.classList.remove('pressed');
     this.updateValue();
 
     this.trackElement.focus();
@@ -146,12 +146,12 @@ export class TdsSlider {
 
   @Listen('touchend', { target: 'window' })
   handleTouchEnd() {
-    if (!this.scrubberGrabbed) {
+    if (!this.thumbGrabbed) {
       return;
     }
 
-    this.scrubberGrabbed = false;
-    this.scrubberInnerElement.classList.remove('pressed');
+    this.thumbGrabbed = false;
+    this.thumbInnerElement.classList.remove('pressed');
     this.updateValue();
 
     this.trackElement.focus();
@@ -159,22 +159,22 @@ export class TdsSlider {
 
   @Listen('mousemove', { target: 'window' })
   handleMouseMove(event) {
-    if (!this.scrubberGrabbed) {
+    if (!this.thumbGrabbed) {
       return;
     }
 
-    this.scrubberCore(event);
+    this.thumbCore(event);
   }
 
   @Listen('touchmove', { target: 'window' })
   handleTouchMove(event) {
     event.preventDefault();
 
-    if (!this.scrubberGrabbed) {
+    if (!this.thumbGrabbed) {
       return;
     }
 
-    this.scrubberCore(event);
+    this.thumbCore(event);
   }
 
   updateSupposedValueSlot(localLeft) {
@@ -183,21 +183,21 @@ export class TdsSlider {
     const distanceBetweenTicks = Math.round(trackWidth / (numTicks + 1));
     const snappedLocalLeft = Math.round(localLeft / distanceBetweenTicks) * distanceBetweenTicks;
 
-    let scrubberPositionPX = 0;
+    let thumbPositionPX = 0;
     if (snappedLocalLeft >= 0 && snappedLocalLeft <= trackWidth) {
-      scrubberPositionPX = snappedLocalLeft;
+      thumbPositionPX = snappedLocalLeft;
     } else if (snappedLocalLeft > trackWidth) {
-      scrubberPositionPX = trackWidth;
+      thumbPositionPX = trackWidth;
     } else if (snappedLocalLeft < 0) {
-      scrubberPositionPX = 0;
+      thumbPositionPX = 0;
     }
 
-    this.supposedValueSlot = Math.round(scrubberPositionPX / distanceBetweenTicks);
+    this.supposedValueSlot = Math.round(thumbPositionPX / distanceBetweenTicks);
 
     return snappedLocalLeft;
   }
 
-  scrubberCore(event) {
+  thumbCore(event) {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement.getBoundingClientRect();
     let localLeft = 0;
@@ -213,15 +213,15 @@ export class TdsSlider {
       localLeft = this.updateSupposedValueSlot(localLeft);
     }
 
-    this.scrubberLeft = this.constrainScrubber(localLeft);
-    this.scrubberElement.style.left = `${this.scrubberLeft}px`;
+    this.thumbLeft = this.constrainThumb(localLeft);
+    this.thumbElement.style.left = `${this.thumbLeft}px`;
 
     this.updateValue();
   }
 
   updateTrack() {
     const trackWidth = this.getTrackWidth();
-    const percentageFilled = (this.scrubberLeft / trackWidth) * 100;
+    const percentageFilled = (this.thumbLeft / trackWidth) * 100;
     this.trackFillElement.style.width = `${percentageFilled}%`;
   }
 
@@ -237,9 +237,9 @@ export class TdsSlider {
     if (this.useSnapping && numTicks) {
       const supposedValue = this.tickValues[this.supposedValueSlot];
       this.value = `${supposedValue}`;
-      this.calculateScrubberLeftFromValue(supposedValue);
+      this.calculateThumbLeftFromValue(supposedValue);
     } else {
-      const percentage = this.scrubberLeft / trackWidth;
+      const percentage = this.thumbLeft / trackWidth;
       this.value = `${Math.trunc(this.getMin() + percentage * (this.getMax() - this.getMin()))}`;
     }
     this.updateTrack();
@@ -259,7 +259,7 @@ export class TdsSlider {
     return parseFloat(this.max);
   }
 
-  constrainScrubber(x) {
+  constrainThumb(x) {
     const width = this.getTrackWidth();
 
     if (x < 0) {
@@ -278,7 +278,7 @@ export class TdsSlider {
     return trackRect.right - trackRect.left;
   }
 
-  calculateScrubberLeftFromValue(value) {
+  calculateThumbLeftFromValue(value) {
     const initValue = value;
     const trackWidth = this.getTrackWidth();
 
@@ -287,10 +287,10 @@ export class TdsSlider {
 
     const calculatedLeft = (normalizedValue / normalizedMax) * trackWidth;
 
-    this.scrubberLeft = calculatedLeft;
-    this.updateSupposedValueSlot(this.scrubberLeft);
+    this.thumbLeft = calculatedLeft;
+    this.updateSupposedValueSlot(this.thumbLeft);
 
-    this.scrubberElement.style.left = `${this.scrubberLeft}px`;
+    this.thumbElement.style.left = `${this.thumbLeft}px`;
   }
 
   componentDidLoad() {
@@ -298,7 +298,7 @@ export class TdsSlider {
       this.resizeObserverAdded = true;
 
       const resizeObserver = new ResizeObserver((/* entries */) => {
-        this.calculateScrubberLeftFromValue(this.value);
+        this.calculateThumbLeftFromValue(this.value);
         this.updateTrack();
       });
 
@@ -308,13 +308,13 @@ export class TdsSlider {
     if (!this.eventListenersAdded) {
       this.eventListenersAdded = true;
 
-      this.scrubberElement.addEventListener('mousedown', (event) => {
+      this.thumbElement.addEventListener('mousedown', (event) => {
         event.preventDefault();
-        this.grabScrubber();
+        this.grabThumb();
       });
 
-      this.scrubberElement.addEventListener('touchstart', () => {
-        this.grabScrubber();
+      this.thumbElement.addEventListener('touchstart', () => {
+        this.grabThumb();
       });
 
       if (this.useControls) {
@@ -340,7 +340,7 @@ export class TdsSlider {
               newValue = this.getMax();
             }
 
-            this.calculateScrubberLeftFromValue(newValue);
+            this.calculateThumbLeftFromValue(newValue);
             this.updateValueForced(newValue);
             this.updateTrack();
 
@@ -351,16 +351,16 @@ export class TdsSlider {
       }
     }
 
-    this.calculateScrubberLeftFromValue(this.value);
+    this.calculateThumbLeftFromValue(this.value);
     this.updateTrack();
   }
 
-  grabScrubber() {
+  grabThumb() {
     if (this.readonlyState) {
       return;
     }
-    this.scrubberGrabbed = true;
-    this.scrubberInnerElement.classList.add('pressed');
+    this.thumbGrabbed = true;
+    this.thumbInnerElement.classList.add('pressed');
   }
 
   calculateInputSizeFromMax() {
@@ -387,7 +387,7 @@ export class TdsSlider {
       this.updateValue();
     } else {
       const trackWidth = this.getTrackWidth();
-      const percentage = this.scrubberLeft / trackWidth;
+      const percentage = this.thumbLeft / trackWidth;
 
       let currentValue = this.getMin() + percentage * (this.getMax() - this.getMin());
 
@@ -401,7 +401,7 @@ export class TdsSlider {
       }
 
       this.value = `${currentValue}`;
-      this.calculateScrubberLeftFromValue(this.value);
+      this.calculateThumbLeftFromValue(this.value);
       this.updateValueForced(currentValue);
       this.updateTrack();
     }
@@ -441,7 +441,7 @@ export class TdsSlider {
       this.useInput = true;
     }
 
-    this.useSmall = this.scrubberSize === 'sm';
+    this.useSmall = this.thumbSize === 'sm';
     this.useSnapping = this.snap;
 
     const min = this.getMin();
@@ -534,9 +534,9 @@ export class TdsSlider {
               ></div>
 
               <div
-                class="tds-slider__scrubber"
+                class="tds-slider__thumb"
                 ref={(el) => {
-                  this.scrubberElement = el as HTMLElement;
+                  this.thumbElement = el as HTMLElement;
                 }}
               >
                 {this.tooltip && (
@@ -558,9 +558,9 @@ export class TdsSlider {
                 )}
 
                 <div
-                  class="tds-slider__scrubber-inner"
+                  class="tds-slider__thumb-inner"
                   ref={(el) => {
-                    this.scrubberInnerElement = el as HTMLElement;
+                    this.thumbInnerElement = el as HTMLElement;
                   }}
                 ></div>
               </div>

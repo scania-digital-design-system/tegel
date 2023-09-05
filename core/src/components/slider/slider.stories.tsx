@@ -82,7 +82,7 @@ export default {
     },
     snapToTicks: {
       name: 'Snap to ticks',
-      description: 'Snaps the scrubber to the closest tick when dragging.',
+      description: 'Snaps the thumb to the closest tick when dragging.',
       control: {
         type: 'boolean',
       },
@@ -133,9 +133,9 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    scrubberSize: {
-      name: 'Scrubber size',
-      description: 'Switches between the large and small version of the scrubber.',
+    thumbSize: {
+      name: 'Thumb size',
+      description: 'Switches between the large and small version of the thumb.',
       control: {
         type: 'radio',
       },
@@ -194,7 +194,7 @@ export default {
     showControls: false,
     step: '1',
     showInput: false,
-    scrubberSize: 'Large',
+    thumbSize: 'Large',
     readonly: false,
     disabled: false,
   },
@@ -219,7 +219,7 @@ const Template = ({
   showControls,
   step,
   showInput,
-  scrubberSize,
+  thumbSize,
   readonly,
   disabled,
 }) =>
@@ -246,7 +246,7 @@ const Template = ({
         ${showControls ? 'controls' : ''}
         ${showInput ? 'input' : ''}
         ${disabled ? 'disabled' : ''}
-        scrubber-size="${sizeLookUp[scrubberSize]}"
+        thumb-size="${sizeLookUp[thumbSize]}"
         ${readonly ? 'read-only' : ''}
         >
       </tds-slider>
