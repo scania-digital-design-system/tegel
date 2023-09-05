@@ -38,6 +38,7 @@ export class TdsInlineTabs {
 
   private children: Array<HTMLTdsInlineTabElement>;
 
+  /** Event emitted when the selected Tab is changed. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
