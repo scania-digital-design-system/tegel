@@ -19,6 +19,19 @@
 | `verticalDividers` | `vertical-dividers` | Enables style with vertical dividers between columns                                                                                                                                                                                        | `boolean`                  | `false`              |
 
 
+## Methods
+
+### `getSelectedRows() => Promise<any[]>`
+
+Returns all selected rows data.
+
+#### Returns
+
+Type: `Promise<any[]>`
+
+
+
+
 ## Slots
 
 | Slot          | Description                                  |
