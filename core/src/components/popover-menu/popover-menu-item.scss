@@ -13,13 +13,9 @@ ul.tds-popover-menu-wrapper {
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
     color: var(--tds-popover-menu-color);
-    margin-bottom: 16px;
+    padding: 10px 0;
     position: relative;
     width: 100%;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
 
     a {
       text-decoration: none;
@@ -63,6 +59,7 @@ ul.tds-popover-menu-wrapper {
       display: block;
       height: 1px;
       width: 100%;
+      padding: 6px;
 
       &::before {
         position: relative;

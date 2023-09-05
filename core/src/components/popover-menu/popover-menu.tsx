@@ -35,6 +35,9 @@ export class TdsPopoverMenu {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
+  /** If true this unsets the width (160px) of the Popover Menu */
+  @Prop() fluid: boolean = false;
+
   inheritedAttributes: Attributes = [];
 
   componentWillLoad() {
@@ -48,6 +51,7 @@ export class TdsPopoverMenu {
           class={{
             'tds-popover-menu': true,
             [this.inheritedAttributes.class ?? '']: true,
+            'fluid': this.fluid,
           }}
           selector={this.selector}
           referenceEl={this.referenceEl}
