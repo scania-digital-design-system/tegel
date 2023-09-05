@@ -1,12 +1,13 @@
 import { formatHtmlPreview } from '../../utils/utils';
-import readme from './readme.md';
+import popoverMenuReadme from './readme.md';
+import popoverMenuItemReadme from './popover-menu-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
   title: `${ComponentsFolder}/Popover Menu`,
   parameters: {
     layout: 'centered',
-    notes: readme,
+    notes: { 'Popover Menu': popoverMenuReadme, 'Popover Menu Item': popoverMenuItemReadme },
     design: [
       {
         name: 'Figma',
