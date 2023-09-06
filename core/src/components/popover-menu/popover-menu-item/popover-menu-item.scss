@@ -13,8 +13,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    height: 36px;
-    padding: 0 16px;
 
     &:hover {
       cursor: pointer;
@@ -33,12 +31,12 @@
 
   ::slotted(*:not(tds-icon)) {
     all: unset;
-    padding: 10px 0;
     width: 100%;
     display: inline-flex;
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 10px 16px;
   }
 
   ::slotted(*:focus-visible) {
