@@ -1,0 +1,56 @@
+@import '../../../mixins/box-sizing';
+
+:host {
+  @include tds-box-sizing;
+
+  display: block;
+
+  .wrapper {
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
+    color: var(--tds-popover-menu-color);
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--tds-popover-menu-background-hover);
+    }
+
+    &.disabled {
+      pointer-events: none;
+      color: var(--tds-popover-menu-divider-disabled-color);
+
+      ::slotted(tds-icon) {
+        color: var(--tds-popover-menu-divider-disabled-icon-color);
+      }
+    }
+  }
+
+  ::slotted(*:not(tds-icon)) {
+    all: unset;
+    width: 100%;
+    display: inline-flex;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+  }
+
+  ::slotted(*:focus-visible) {
+    &::before {
+      z-index: -1;
+      content: '';
+      display: block;
+      position: absolute;
+      width: calc(100% - 4px);
+      height: 100%;
+      top: 0;
+      left: 2px;
+      outline: 1px solid var(--tds-blue-400);
+      outline-offset: 1px;
+    }
+  }
+}
