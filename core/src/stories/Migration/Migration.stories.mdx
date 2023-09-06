@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs';
 
 # Migration Docs
 
-This document includes all the breaking changes when migrating from @scania/components version 4 to @scania/tegel.
+This document aims to include all the breaking changes when migrating from @scania/components version 4 to @scania/tegel.
 
 ## Deprecation of Native Components
 
@@ -38,7 +38,6 @@ These components have been updated:
 - Chip
 - Dropdown
 - Footer
-- Footer
 - Header
 - Message
 - Modal
@@ -71,7 +70,7 @@ Now, after prefix change:
 - External events are named: 'tds' + native event name. ('tdsClick', 'tdsChange')
 - Internal events are named: 'internaltds' + event name. ('internaltdsTablePropsChange', 'internaltdsCheckboxChange')
 
-You can read more about naming in our code conventions [here].(https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md)
+You can read more about naming in our code conventions [here](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md).
 
 ## Removed base font-size and moved to `px` instead of `rem`.
 
@@ -135,7 +134,7 @@ These changes are also planned for the UI kit in Figma.
 
 ## Accordion
 
-[Story](/docs/components--accordion)
+[Story](/docs/components-accordion--default)
 
 #### Replaced `affix` with `expand-icon-position`
 
@@ -188,7 +187,7 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 ## Badge
 
-[Story](/docs/components--badge)
+[Story](/docs/components-badge--default)
 
 #### Component name updated to adhere to convention
 
@@ -236,12 +235,12 @@ Rename component.
 <sdds-badges value="1" is-visible="true" size="default"></sdds-badges>
 
 // New ✅
-<tds-badge value="1" is-visible="true" size="lg"></tds-badge>
+<tds-badge value="1" size="lg"></tds-badge>
 ```
 
 ## Button
 
-[Story](/docs/components--button)
+[Story](/docs/components-button--default)
 
 #### Changed prop `variant` to `mode-variant` in web component
 
@@ -265,7 +264,7 @@ Rename `variant` to `mode-variant` and change type name.
 
 ## Datetime
 
-[Story](/docs/components--datetime)
+[Story](/docs/components-datetime--default)
 
 #### Aligned props for ´label´ and 'helper'
 
@@ -296,13 +295,32 @@ Change all `<sdds-datetime>` that are using slots to use the prop instead.
 ></tds-datetime>
 ```
 
+#### Renamed prop 'nominwidth' to 'no-min-width'
+
+The prop `nominwidth` was changed to `no-min-width` to conform with other prop names.
+
+
+##### What action is required?
+
+Change all uses `nominwidth` to `no-min-width`.
+
+```jsx
+// Old ❌
+<sdds-datetime type="datetime-local" nominwidth>
+</sdds-datetime>
+
+// New ✅
+<tds-datetime type="datetime-local" no-min-width>
+</tds-datetime>
+```
+
 ## Dropdown
 
-[Story](/docs/components--dropdown)
+[Story](/docs/components-dropdown--default)
 
 #### Refactored component
 
-The dropdown has been completely overhauled and redone. This leads to a number of props/event/etc changing names
+The Dropdown has been completely overhauled and redone. This leads to a number of props/events/etc changing names
 and features. Please have a look at the component and do the updates that affect you.
 
 ##### What action is required?
@@ -323,18 +341,14 @@ Rename all instances of `scrubber-size` to `thumb-size`.
 
 ```jsx
 // Old ❌
-<sdds-slider
-    scrubber-size="lg"
-></sdds-slider>
+<sdds-slider scrubber-size="lg"></sdds-slider>
 
 // New ✅
-<tds-slider
-    thumb-size="lg"
-></tds-slider>
+<tds-slider thumb-size="lg"></tds-slider>
 
 ```
 
-## Inline, Folder & Navigation Tabs
+## Tabs (Inline, Folder & Navigation)
 
 ### Updated `<sdds-inline-tabs>` and `<sdds-navigation-tabs>` and introduced `<sdds-folder-tabs>`. Introduced child components for all Tabs.
 
@@ -343,18 +357,18 @@ In order to establish a clear differentiation between them, we have renamed `<sd
 Our three tabs (inline, folder, and navigation) are designed to function with both buttons and links. To achieve this, we have introduced a single child element for each tab, which is intended to wrap the underlying element.
 
 ```jsx
-<tds-inline-tab>,
-<tds-folder-tab> &
-<tds-navigation-tab>
+<tds-inline-tab></tds-inline-tab>
+<tds-folder-tab></tds-folder-tab>
+<tds-navigation-tab></tds-navigation-tab>
 ```
 
 The component no longer manages the content displayed under each tab. Therefore, it is now up to you, as a component user to implement it yourself. We will provide examples of how this can be done, and if you have any questions, we are always here to assist you.
 
 The new components are available here in storybook:
 
-- [Inline Tabs](/docs/components--inline-tabs)
-- [Folder Tabs](/docs/components--folder-tabs)
-- [Navigation Tabs](/docs/components--navigation-tabs)
+- [Inline Tabs](/docs/components-tabs--inline-tabs)
+- [Folder Tabs](/docs/components-tabs--folder-tabs)
+- [Navigation Tabs](/docs/components-tabs--navigation-tabs)
 
 ```jsx
 // New tds-inline-tabs with buttons 🆕
@@ -457,7 +471,7 @@ The new components are available here in storybook:
 
 ## Textarea
 
-[Story](/docs/components--textarea)
+[Story](/docs/components-textarea--default)
 
 #### Changed prop name 'max-length'
 
@@ -523,7 +537,7 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 ## Text Field
 
-[Story](/docs/components--textarea)
+[Story](/docs/components-text-field--default)
 
 #### Changed component name to conform with convention.
 
@@ -684,32 +698,32 @@ If the component is used on a background with a color of grey-50, mode-variant p
  </tds-text-field>
 ```
 
-## Data table
+## Table
 
-[Story](/docs/components-data-table--default)
+[Story](/docs/components-table--basic)
 
-#### Renamed `enablePagination` prop to `pagination`.
+#### Renamed `enablePagination`, `enableMultiselect` and `enableFilter` props to `pagination`, `multiselect` and `filter`.
 
 ##### What action is required?
 
 ```jsx
 // Old ❌
-<sdds-table >
-  <sdds-table-header>
+<sdds-table enable-multiselect>
+  <sdds-table-header enable-filter>
     //
   </sdds-table-header>
   <sdds-table-body enable-dummy-data>
     //
   </sdds-table-body>
-  <sdds-table-footer enable-pagination ></sdds-table-footer>
+  <sdds-table-footer enable-pagination></sdds-table-footer>
 </sdds-table>
 
 // New ✅
-<tds-table >
-  <tds-table-header>
+<tds-table multiselect>
+  <tds-table-header filter>
     //
   </tds-table-header>
-  <tds-table-body enable-dummy-data>
+  <tds-table-body>
     //
   </tds-table-body>
   <tds-table-footer pagination ></tds-table-footer>
@@ -718,9 +732,9 @@ If the component is used on a background with a color of grey-50, mode-variant p
 
 #### Removed `disableFilteringFunction`, `disableSortingFunction` and `enableClientPagination`.
 
-Previously, the data table component provided these props to enable users to implement their own filter, sort, and pagination logic. However, we have now removed these props and replaced them with cancellable events emitted by the component.
+Previously, the Table component provided these props to enable users to implement their own filter, sort, and pagination logic. However, we have now removed these props and replaced them with cancellable events emitted by the component.
 
-The events are: 'tdsPageChange', 'tdsSortChange', 'tdsFilterChange'
+The events are: 'tdsPagination', 'tdsSort', 'tdsFilter'
 
 ##### What action is required?
 
@@ -754,3 +768,11 @@ The events are: 'tdsPageChange', 'tdsSortChange', 'tdsFilterChange'
 
 </script>
 ```
+
+#### Removed the `bodyData` prop.
+
+Previously the Table could populate its rows/columns based on a bodyData property. This has now been removed due to performance reasons.
+
+##### What action is required?
+
+Instead of populating the Table via bodyData you as a user will have to render the rows/columns you want to display.
