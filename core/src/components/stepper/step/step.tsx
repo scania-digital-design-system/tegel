@@ -59,7 +59,7 @@ export class TdsStep {
     return (
       <Host>
         <div
-          role="listItem"
+          role="listitem"
           class={`${this.size} ${this.orientation} text-${this.labelPosition} ${
             this.hideLabel ? 'hide-labels' : ''
           }`}
