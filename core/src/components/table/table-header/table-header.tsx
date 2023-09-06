@@ -29,7 +29,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 })
 export class TdsTableHeaderRow {
   /** Prop for controling the checked/unchecked state of the "all selected"-checkbox. */
-  @Prop({ mutable: true }) allSelected: boolean = false;
+  @Prop({ reflect: true, mutable: true }) allSelected: boolean = false;
 
   @State() multiselect: boolean = false;
 
