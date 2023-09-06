@@ -327,6 +327,53 @@ and features. Please have a look at the component and do the updates that affect
 
 Please have a look at the component and do the updates that affect you.
 
+
+## Popover Menu
+
+[Story](/docs/components--popover-menu--default)
+
+#### Introduced `<tds-popover-menu-item>`
+
+The Popover Menu has previously expected a predefined html structure as its child in 
+order to render a correct menu. This structure was native html elemenent which we then styled.
+We have not removed this native styling and instead introduced a new element for the 
+Popover Menus children.
+
+##### What action is required?
+
+Update the Popover Menu to use `<tds-popover-menu-item>` instead of native elements.
+
+```jsx
+// Old ❌
+<tds-popover-menu id="my-popover-menu" placement="auto">
+  <ul class="tds-popover-menu-wrapper">
+    <li>
+      <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+        Menu item 1
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
+        Menu item 2
+      </a>
+    </li>
+  </ul>
+</tds-popover-menu>
+
+// New ✅
+<tds-popover-menu id="my-popover-menu" placement="auto">
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+  <tds-divider></tds-divider>
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+</tds-popover-menu>
+
+```
+
 ## Slider
 
 [Story](/docs/components-slider--default)

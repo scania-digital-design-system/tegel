@@ -4,6 +4,8 @@
   --tds-popover-menu-background: var(--tds-white);
   --tds-popover-menu-background-hover: var(--tds-grey-100);
   --tds-popover-menu-divider-color: var(--tds-grey-300);
+  --tds-popover-menu-divider-disabled-color: var(--tds-grey-400);
+  --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-958);
 }
 
 .tds-mode-dark {
@@ -11,4 +13,6 @@
   --tds-popover-menu-background: var(--tds-grey-958);
   --tds-popover-menu-background-hover: var(--tds-grey-800);
   --tds-popover-menu-divider-color: var(--tds-grey-800);
+  --tds-popover-menu-divider-disabled-color: var(--tds-grey-600);
+  --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-50);
 }

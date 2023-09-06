@@ -1,12 +1,13 @@
 import { formatHtmlPreview } from '../../utils/utils';
-import readme from './readme.md';
+import popoverMenuReadme from './readme.md';
+import popoverMenuItemReadme from './popover-menu-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {
   title: `${ComponentsFolder}/Popover Menu`,
   parameters: {
     layout: 'centered',
-    notes: readme,
+    notes: { 'Popover Menu': popoverMenuReadme, 'Popover Menu Item': popoverMenuItemReadme },
     design: [
       {
         name: 'Figma',
@@ -53,14 +54,22 @@ export default {
         type: 'boolean',
       },
     },
+    fluidWidth: {
+      name: 'Fluid width',
+      description: 'Unsets the width of the Popover Menu.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     menuPosition: 'Auto',
     icons: false,
+    fluidWidth: false,
   },
 };
 
-const Template = ({ menuPosition, icons }) => {
+const Template = ({ menuPosition, icons, fluidWidth }) => {
   const menuPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -90,40 +99,41 @@ const Template = ({ menuPosition, icons }) => {
 
     <tds-popover-menu
       id="my-popover-menu"
-      placement="${menuPosLookup[menuPosition]}">
-      <ul class="tds-popover-menu-wrapper">
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-          Menu item 1
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Menu item 2
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Menu item 3
-          </a>
-        </li>
-        <li class="divider"></li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}
-            Menu item 4
-          </a>
-        </li>
-        <li>
-          <a target="_blank" rel="noopener noreferrer" href="https://digitaldesign.scania.com">
-            ${icons ? `<tds-icon name="save" size="16px"></tds-icon>` : ''}  
-            Menu item 5
-          </a>
-        </li>
-      </ul>
+      placement="${menuPosLookup[menuPosition]}"
+      ${fluidWidth ? 'fluid-width' : ''}
+      >
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-divider></tds-divider>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
+      fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
+    } </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item disabled>
+          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
+        </tds-popover-menu-item>
+        <tds-divider></tds-divider>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-divider></tds-divider>
+        <tds-popover-menu-item>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+        </tds-popover-menu-item>
+        <tds-popover-menu-item>
+          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
+        </tds-popover-menu-item>
     </tds-popover-menu>
 
     <!-- demo-wrapper code below is for demonstration purposes only -->

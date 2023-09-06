@@ -1,5 +1,4 @@
 @import '../../mixins/box-sizing';
-
 @import '../../mixins/z-index';
 
 .tds-popover-menu {
@@ -8,8 +7,21 @@
   overflow: hidden;
   width: 160px;
   background-color: var(--tds-popover-menu-background);
-  padding: 16px;
+  padding: 16px 6px;
   box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
   border-radius: 4px;
   z-index: tds-z-index(tooltip);
+
+  &.fluid-width {
+    width: unset;
+  }
+}
+
+tds-popover-core {
+  padding: 6px 0 !important;
+}
+
+::slotted(tds-divider) {
+  display: block;
+  padding: 6px !important;
 }
