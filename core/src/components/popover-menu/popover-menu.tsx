@@ -59,10 +59,9 @@ export class TdsPopoverMenu {
           placement={this.placement}
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
+          role="list"
         >
-          <div role="list">
-            <slot></slot>
-          </div>
+          <slot></slot>
         </tds-popover-core>
       </Host>
     );
