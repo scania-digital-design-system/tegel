@@ -6,6 +6,7 @@ export const config: Config = {
   globalStyle: 'src/global/global.scss',
   extras: {
     enableImportInjection: true,
+    tagNameTransform: true,
   },
   plugins: [sass()],
   sourceMap: false,

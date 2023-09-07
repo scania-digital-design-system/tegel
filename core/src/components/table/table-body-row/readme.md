@@ -5,6 +5,20 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property   | Attribute  | Description                                            | Type      | Default |
+| ---------- | ---------- | ------------------------------------------------------ | --------- | ------- |
+| `selected` | `selected` | Marks the row as selected, used for multiselect table. | `boolean` | `false` |
+
+
+## Events
+
+| Event       | Description                                      | Type                                                                       |
+| ----------- | ------------------------------------------------ | -------------------------------------------------------------------------- |
+| `tdsSelect` | Event emitted when a row is selected/deselected. | `CustomEvent<{ tableId: string; checked: boolean; selectedRows: any[]; }>` |
+
+
 ## Slots
 
 | Slot          | Description                         |
@@ -14,10 +28,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [tds-table-body](../table-body)
-
 ### Depends on
 
 - [tds-checkbox](../../checkbox)
@@ -26,7 +36,6 @@
 ```mermaid
 graph TD;
   tds-table-body-row --> tds-checkbox
-  tds-table-body --> tds-table-body-row
   style tds-table-body-row fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

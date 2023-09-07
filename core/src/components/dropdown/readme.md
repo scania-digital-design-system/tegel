@@ -8,23 +8,22 @@
 
 ## Properties
 
-| Property        | Attribute        | Description                                                                                | Type                                                     | Default       |
-| --------------- | ---------------- | ------------------------------------------------------------------------------------------ | -------------------------------------------------------- | ------------- |
-| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                    | `string`                                                 | `undefined`   |
-| `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                      | `boolean`                                                | `false`       |
-| `error`         | `error`          | Sets the Dropdown in an error state                                                        | `boolean`                                                | `false`       |
-| `filter`        | `filter`         | Enables filtration in the Dropdown.                                                        | `boolean`                                                | `false`       |
-| `helper`        | `helper`         | Helper text for the Dropdown.                                                              | `string`                                                 | `undefined`   |
-| `label`         | `label`          | Label text for the Dropdown.                                                               | `string`                                                 | `undefined`   |
-| `labelPosition` | `label-position` | Label text position                                                                        | `"inside" \| "outside"`                                  | `undefined`   |
-| `modeVariant`   | `mode-variant`   | Mode variant of the component, based on current mode.                                      | `"primary" \| "secondary"`                               | `null`        |
-| `multiselect`   | `multiselect`    | Enables multiselect in the Dropdown.                                                       | `boolean`                                                | `false`       |
-| `name`          | `name`           | Name for the Dropdowns input element.                                                      | `string`                                                 | `undefined`   |
-| `noResultText`  | `no-result-text` | Text that is displayed if filter is used and there are no options that matches the search. | `string`                                                 | `'No result'` |
-| `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                             | `"auto" \| "down" \| "up"`                               | `'auto'`      |
-| `options`       | --               | Populate the Dropdown via a JSON array                                                     | `{ value: string; label: string; disabled: boolean; }[]` | `undefined`   |
-| `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                         | `string`                                                 | `undefined`   |
-| `size`          | `size`           | The size of the Dropdown.                                                                  | `"lg" \| "md" \| "sm"`                                   | `'lg'`        |
+| Property        | Attribute        | Description                                                                                | Type                       | Default       |
+| --------------- | ---------------- | ------------------------------------------------------------------------------------------ | -------------------------- | ------------- |
+| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                    | `string`                   | `undefined`   |
+| `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                      | `boolean`                  | `false`       |
+| `error`         | `error`          | Sets the Dropdown in an error state                                                        | `boolean`                  | `false`       |
+| `filter`        | `filter`         | Enables filtration in the Dropdown.                                                        | `boolean`                  | `false`       |
+| `helper`        | `helper`         | Helper text for the Dropdown.                                                              | `string`                   | `undefined`   |
+| `label`         | `label`          | Label text for the Dropdown.                                                               | `string`                   | `undefined`   |
+| `labelPosition` | `label-position` | Label text position                                                                        | `"inside" \| "outside"`    | `undefined`   |
+| `modeVariant`   | `mode-variant`   | Mode variant of the component, based on current mode.                                      | `"primary" \| "secondary"` | `null`        |
+| `multiselect`   | `multiselect`    | Enables multiselect in the Dropdown.                                                       | `boolean`                  | `false`       |
+| `name`          | `name`           | Name for the Dropdowns input element.                                                      | `string`                   | `undefined`   |
+| `noResultText`  | `no-result-text` | Text that is displayed if filter is used and there are no options that matches the search. | `string`                   | `'No result'` |
+| `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                             | `"auto" \| "down" \| "up"` | `'auto'`      |
+| `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                         | `string`                   | `undefined`   |
+| `size`          | `size`           | The size of the Dropdown.                                                                  | `"lg" \| "md" \| "sm"`     | `'lg'`        |
 
 
 ## Events

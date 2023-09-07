@@ -7,6 +7,7 @@
 
   z-index: tds-z-index(tab);
   display: block;
+  position: relative;
 
   ::slotted(*) {
     all: unset;
@@ -21,11 +22,17 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    margin: 20px 4px;
+    padding: 20px 4px;
   }
 
-  ::slotted(*:focus-visible) {
-    @include tds-focus-state;
+  ::slotted(*:focus-visible)::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 20px;
+    bottom: 20px;
+    outline: 2px solid var(--tds-blue-400);
   }
 
   .inline-tab-item:not(.selected)::after {
@@ -49,7 +56,7 @@
   .inline-tab-item::after {
     content: ' ';
     position: absolute;
-    bottom: -20px;
+    bottom: 0;
     right: 0;
     left: 0;
     margin-left: auto;

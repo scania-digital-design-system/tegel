@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "0.0.12",
+  "version": "1.0.0",
   "description": "Tegel Design System",
   "keywords": [
     "tegel",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@stencil/core": "3.3.0",
+    "@stencil/core": "^4.1.0",
     "dotenv": "^16.0.3",
     "prettier": "^2.7.1"
   },

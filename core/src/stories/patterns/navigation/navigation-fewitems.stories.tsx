@@ -210,8 +210,8 @@ const Template = () =>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown>
-          <tds-icon slot="button-icon" name="tool" size="24"></tds-icon>
-          <span slot="button-label">
+          <tds-icon slot="icon" name="tool" size="24"></tds-icon>
+          <span slot="label">
             Wheel types
           </span>
           <tds-side-menu-dropdown-list>
@@ -233,7 +233,7 @@ const Template = () =>
         
         <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
           <tds-side-menu-user 
-            slot="button-label" 
+            slot="label" 
             heading="Name Namesson" 
             subheading="Company name" 
             img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 

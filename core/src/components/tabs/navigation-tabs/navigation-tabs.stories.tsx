@@ -74,16 +74,16 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
       ${modeVariant !== 'Inherit from parent' ? ` mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
       <tds-navigation-tab>
-        <a href="#">First tab</a>
+        <button>First tab</button>
       </tds-navigation-tab>
       <tds-navigation-tab>
-        <a href="#">Second tab is much longer</a>
+        <button>Second tab is much longer</button>
       </tds-navigation-tab>
       <tds-navigation-tab>
-        <a href="#">Third tab</a>
+        <button>Third tab</button>
       </tds-navigation-tab>
       <tds-navigation-tab disabled>
-        <a href="javascript:void(0)">Fourth tab</a>
+        <button>Fourth tab</button>
       </tds-navigation-tab>
     </tds-navigation-tabs>
 

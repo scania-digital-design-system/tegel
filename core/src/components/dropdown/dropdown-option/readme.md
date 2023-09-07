@@ -26,7 +26,7 @@
 
 ### `setSelected(selected: boolean) => Promise<void>`
 
-Method to select/deselect an option if the option is not disabled.
+Method to select/deselect an option.
 
 #### Returns
 

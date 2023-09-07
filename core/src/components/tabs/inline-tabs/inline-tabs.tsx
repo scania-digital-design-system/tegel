@@ -1,5 +1,5 @@
 import { Component, Host, State, Element, h, Prop, Event, EventEmitter } from '@stencil/core';
-import { Method } from '@stencil/core/internal';
+import { Method, Watch } from '@stencil/core/internal';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the tab elements.
@@ -38,6 +38,7 @@ export class TdsInlineTabs {
 
   private children: Array<HTMLTdsInlineTabElement>;
 
+  /** Event emitted when the selected Tab is changed. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
@@ -67,6 +68,15 @@ export class TdsInlineTabs {
     return {
       selectedTabIndex: this.selectedIndex,
     };
+  }
+
+  @Watch('selectedIndex')
+  handleSelectedIndexUpdate() {
+    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsInlineTabElement) => {
+      tabElement.setSelected(false);
+      return tabElement;
+    });
+    this.children[this.selectedIndex].setSelected(true);
   }
 
   scrollRight() {

@@ -8,7 +8,7 @@ export default {
   parameters: {
     notes: {
       'Folder Tabs': readme,
-      'Folder Tabs item': readmeItem,
+      'Folder Tab': readmeItem,
     },
     backgrounds: { default: 'white' },
     design: [

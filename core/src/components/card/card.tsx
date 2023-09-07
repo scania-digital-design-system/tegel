@@ -7,7 +7,7 @@ import { generateUniqueId, hasSlot } from '../../utils/utils';
  * @slot thumbnail - Slot for the Card thumbnail.
  * @slot body - Slot for the body section of the Card.
  * @slot body-image - Slot for the body section of the Card, used for image.
- * @slot bottom - Slot for the bottom section of the Card.
+ * @slot actions - Slot for the bottom section of the Card, used for buttons .
  */
 @Component({
   tag: 'tds-card',
@@ -85,7 +85,7 @@ export class TdsCard {
   getCardContent = () => {
     const usesBodySlot = hasSlot('body', this.host);
     const usesBodyImageSlot = hasSlot('body-image', this.host);
-    const usesBottomSlot = hasSlot('bottom', this.host);
+    const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <div>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
@@ -96,7 +96,7 @@ export class TdsCard {
           {this.bodyDivider && <tds-divider></tds-divider>}
           {usesBodySlot && <slot name="body"></slot>}
         </div>
-        {usesBottomSlot && <slot name={`bottom`}></slot>}
+        {usesActionsSlot && <slot name={`actions`}></slot>}
       </div>
     );
   };

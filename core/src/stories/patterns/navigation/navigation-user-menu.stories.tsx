@@ -115,7 +115,7 @@ const Template = () =>
 
         <tds-side-menu-dropdown slot="end" class="demo-xs-hide" selected default-open>
           <tds-side-menu-user 
-            slot="button-label" 
+            slot="label" 
             heading="Name Namesson" 
             subheading="Company name" 
             img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 

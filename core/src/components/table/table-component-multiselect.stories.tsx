@@ -59,16 +59,6 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    multiselect: {
-      name: 'Enable multiselect',
-      description: 'Enables row selection.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -142,7 +132,6 @@ const MultiselectTemplate = ({
   modeVariant,
   compactDesign,
   responsiveDesign,
-  multiselect,
   verticalDivider,
   noMinWidth,
   column1Width,
@@ -151,31 +140,9 @@ const MultiselectTemplate = ({
   column4Width,
 }) =>
   formatHtmlPreview(`
-<script>
-// Note: Script here is only for demo purposes
-  function getValue() {
-    const element = document.querySelector('#multiselect-table > tds-table-body');
-    const textArea = document.getElementById('selected-rows-value-textarea');
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        if (mutation.type === 'attributes') {
-          textArea.value = element.getAttribute('data-selected-rows');
-        }
-      });
-    });
-    observer.observe(element, {
-      attributes: true,
-    });
-  }
-  window.addEventListener('click', () => {
-    getValue();
-  });
-
-</script>
-
     <tds-table
-        id="multiselect-table"
-        ${multiselect ? 'multiselect' : ''}
+        table-id="multiselect-table"
+        multiselect
         vertical-dividers="${verticalDivider}"
         compact-design="${compactDesign}"
         responsive="${responsiveDesign}"
@@ -185,78 +152,76 @@ const MultiselectTemplate = ({
         }
     >
           <tds-table-header>
-              <tds-header-cell column-key='truck' column-title='Truck type' ${
+              <tds-header-cell cell-key='truck' cell-value='Truck type' ${
                 column1Width ? `custom-width="${column1Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='driver' column-title='Driver name' ${
+              <tds-header-cell cell-key='driver' cell-value='Driver name' ${
                 column2Width ? `custom-width="${column2Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='country' column-title='Country' ${
+              <tds-header-cell cell-key='country' cell-value='Country' ${
                 column3Width ? `custom-width="${column3Width}"` : ''
               }></tds-header-cell>
-              <tds-header-cell column-key='mileage' column-title='Mileage' text-align='right' ${
+              <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align='right' ${
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
+          <tds-table-body-row>
+          <tds-body-cell cell-key="truck" cell-value="L-series"> </tds-body-cell
+          ><tds-body-cell cell-key="driver" cell-value="Sonya Bruce"></tds-body-cell
+          ><tds-body-cell cell-key="country" cell-value="Brazil"></tds-body-cell
+          ><tds-body-cell cell-key="mileage" cell-value="123987"></tds-body-cell>
+        </tds-table-body-row>
+        <tds-table-body-row 
+          ><tds-body-cell cell-key="truck" cell-value="P-series"></tds-body-cell
+          ><tds-body-cell cell-key="driver" cell-value="Guerra Bowman"></tds-body-cell
+          ><tds-body-cell cell-key="country" cell-value="Sweden"></tds-body-cell
+          ><tds-body-cell cell-key="mileage" cell-value="2000852"></tds-body-cell>
+        </tds-table-body-row>
+        <tds-table-body-row
+          ><tds-body-cell cell-key="truck" cell-value="G-series"></tds-body-cell
+          ><tds-body-cell cell-key="driver" cell-value="Ferrell Wallace"></tds-body-cell
+          ><tds-body-cell cell-key="country" cell-value="Germany"></tds-body-cell
+          ><tds-body-cell cell-key="mileage" cell-value="564"></tds-body-cell>
+        </tds-table-body-row>
+        <tds-table-body-row
+          ><tds-body-cell cell-key="truck" cell-value="R-series"></tds-body-cell
+          ><tds-body-cell cell-key="driver" cell-value="Cox Burris"></tds-body-cell
+          ><tds-body-cell cell-key="country" cell-value="Spain"></tds-body-cell
+          ><tds-body-cell cell-key="mileage" cell-value="1789357"></tds-body-cell>
+        </tds-table-body-row>
           </tds-table-body>
   </tds-table>
-  <script>
-  /* ONLY WORKS IN THE CANVAS TAB. */
-  tableBody = document.querySelector('tds-table-body');
-  tableBody.bodyData = [
-    {
-      "truck": "L-series",
-      "driver": "Sonya Bruce",
-      "country": "Brazil",
-      "mileage": 123987
-    },
-    {
-      "truck": "P-series",
-      "driver": "Guerra Bowman",
-      "country": "Sweden",
-      "mileage": 2000852
-    },
-    {
-      "truck": "G-series",
-      "driver": "Ferrell Wallace",
-      "country": "Germany",
-      "mileage": 564
-    },
-    {
-      "truck": "R-series",
-      "driver": "Cox Burris",
-      "country": "Spain",
-      "mileage": 1789357
-    },
-    {
-      "truck": "S-series",
-      "driver": "Montgomery Cervantes",
-      "country": "Croatia",
-      "mileage": 65
-    },
-    {
-      "truck": "L-series",
-      "driver": "Sheryl Nielsen",
-      "country": "Greece",
-      "mileage": 365784
-    },
-    {
-      "truck": "G-series",
-      "driver": "Benton Gomez",
-      "country": "France",
-      "mileage": 80957
-    }
-  ]
-</script>
-
   <!-- Note: Code below is just for demo purposes -->
-  <div class="tds-u-mt1" style="width: 450px; background-color: lightblue; padding: 16px;">
-    <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
-    <h6 class="tds-u-pb0 tds-u-mb0 tds-u-mt0">Selected rows data</h6>
-    <small>Values here are values found in data-selected-rows attribute of tds-table-body element. They are shown here just for presentation purposes.</small>
-    <textarea id="selected-rows-value-textarea" rows="5" cols="50" readonly></textarea>
-  </div>
+  <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
+  <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
+    <h5 class="tds-u-mt0 tds-u-mb0">Event test box</h5>
+    <h6 class="tds-u-mt1 tds-u-mb0">Event name:</h6>
+    <textarea id="event-name-textarea" rows="1" cols="50" readonly></textarea>
+    <br><br>
+    <h6 class="tds-u-mt0 tds-u-mb0">Events value (aka detail)</h6>
+    <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
+    <br><br>
+    <h6 class="tds-u-mt0 tds-u-mb0">Selected rows</h6>
+    <textarea  id="selected-rows-textarea" rows="4" cols="50" readonly></textarea>
+  </div>  
+  <script>
+  // Note: Script here is only for demo purposes
+
+  window.addEventListener('tdsSelectAll', e => {
+    console.log(e)
+    document.getElementById('event-name-textarea').value = e.type;
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
+    document.getElementById('selected-rows-textarea').value = JSON.stringify(e.detail.selectedRows,null, 2);
+  });
+
+  window.addEventListener('tdsSelect', e => {
+    console.log(e)
+    document.getElementById('event-name-textarea').value = e.type;
+    document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);
+    document.getElementById('selected-rows-textarea').value = JSON.stringify(e.detail.selectedRows,null, 2);
+  });
+</script>
   `);
 
 export const Multiselect = MultiselectTemplate.bind({});
