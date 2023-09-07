@@ -43,6 +43,8 @@ export class Icon {
             aria-labelledby={`icon ${element.name}`}
             role="img"
             style={{ fontSize: this.size }}
+            height={this.size}
+            width={this.size}
           >
             <title>{`icon ${element.name}`}</title>
             <path fill="currentColor" d={element.definition} />

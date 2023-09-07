@@ -86,7 +86,7 @@
     max-width: 336px;
   }
 
-  slot[name='bottom']::slotted(*) {
+  slot[name='actions']::slotted(*) {
     display: flex;
     padding: 16px;
     color: var(--tds-card-icon-color);

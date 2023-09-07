@@ -1,4 +1,14 @@
-import { Component, h, Host, State, Event, EventEmitter, Listen, Element } from '@stencil/core';
+import {
+  Component,
+  h,
+  Host,
+  State,
+  Event,
+  EventEmitter,
+  Listen,
+  Element,
+  Prop,
+} from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
@@ -18,6 +28,9 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: true,
 })
 export class TdsTableHeaderRow {
+  /** Prop for controling the checked/unchecked state of the "all selected"-checkbox. */
+  @Prop({ reflect: true, mutable: true }) allSelected: boolean = false;
+
   @State() multiselect: boolean = false;
 
   @State() expandableRows: boolean = false;
@@ -42,14 +55,18 @@ export class TdsTableHeaderRow {
 
   tableEl: HTMLTdsTableElement;
 
-  /** @internal Send status of the main checkbox in header to the parent, tds-table component */
+  /** Event emitted when the status of the select all checkbox changes. */
   @Event({
-    eventName: 'internalTdsMainCheckboxSelect',
+    eventName: 'tdsSelectAll',
     composed: true,
     cancelable: false,
     bubbles: true,
   })
-  internalTdsMainCheckboxSelect: EventEmitter<any>;
+  tdsSelectAll: EventEmitter<{
+    tableId: string;
+    checked: boolean;
+    selectedRows: any[];
+  }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -62,14 +79,6 @@ export class TdsTableHeaderRow {
           }
           this[changedProp] = event.detail[changedProp];
         });
-    }
-  }
-
-  @Listen('internalTdsMainCheckboxChange', { target: 'body' })
-  internalTdsMainCheckboxChangeListener(event: CustomEvent<any>) {
-    const [receivedID, receivedMainCheckboxStatus] = event.detail;
-    if (this.tableId === receivedID) {
-      this.mainCheckboxSelected = receivedMainCheckboxStatus;
     }
   }
 
@@ -114,9 +123,13 @@ export class TdsTableHeaderRow {
       this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
   }
 
-  headCheckBoxClicked(event) {
-    this.mainCheckboxSelected = event.currentTarget.checked;
-    this.internalTdsMainCheckboxSelect.emit([this.tableId, this.mainCheckboxSelected]);
+  async handleCheckboxChange(event) {
+    this.allSelected = event.detail.checked;
+    this.tdsSelectAll.emit({
+      tableId: this.tableId,
+      checked: event.detail.checked,
+      selectedRows: await this.tableEl.getSelectedRows(),
+    });
   }
 
   render() {
@@ -133,8 +146,8 @@ export class TdsTableHeaderRow {
             <th class="tds-table__header-cell tds-table__header-cell--checkbox">
               <div class="tds-form-label tds-form-label--table">
                 <tds-checkbox
-                  checked={this.mainCheckboxSelected}
-                  onTdsChange={(event) => this.headCheckBoxClicked(event)}
+                  checked={this.allSelected}
+                  onTdsChange={(event) => this.handleCheckboxChange(event)}
                 ></tds-checkbox>
               </div>
             </th>

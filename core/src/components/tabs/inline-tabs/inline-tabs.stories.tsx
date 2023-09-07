@@ -7,8 +7,8 @@ export default {
   title: `${ComponentsFolder}/Tabs`,
   parameters: {
     notes: {
-      'Inline tabs': readme,
-      'Inline tab': readmeTab,
+      'Inline Tabs': readme,
+      'Inline Tab': readmeTab,
     },
     design: [
       {
@@ -72,18 +72,18 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
     ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
     ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
-      <tds-inline-tab>
-        <button>First tab</button>
-      </tds-inline-tab>
-      <tds-inline-tab>
-        <button>Second tab is much longer</button>
-      </tds-inline-tab>
-      <tds-inline-tab>
-        <button>Third tab</button>
-      </tds-inline-tab>
-      <tds-inline-tab disabled>
-        <button>Fourth tab</button>
-      </tds-inline-tab>
+    <tds-inline-tab>
+      <button>First tab</button>
+    </tds-inline-tab>
+    <tds-inline-tab>
+      <button>Second tab is much longer</button>
+    </tds-inline-tab>
+    <tds-inline-tab>
+      <button>Third tab</button>
+    </tds-inline-tab>
+    <tds-inline-tab disabled>
+      <button>Fourth tab</button>
+    </tds-inline-tab>
    </tds-inline-tabs>
 
    <!-- Demo container. -->

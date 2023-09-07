@@ -9,7 +9,7 @@
 
 | Property        | Attribute        | Description                             | Type                                  | Default      |
 | --------------- | ---------------- | --------------------------------------- | ------------------------------------- | ------------ |
-| `autoFocus`     | `auto-focus`     | Control of autofocus                    | `boolean`                             | `false`      |
+| `autofocus`     | `autofocus`      | Control of autofocus                    | `boolean`                             | `false`      |
 | `cols`          | `cols`           | Textarea cols attribute                 | `number`                              | `undefined`  |
 | `disabled`      | `disabled`       | Set input in disabled state             | `boolean`                             | `false`      |
 | `helper`        | `helper`         | Helper text                             | `string`                              | `undefined`  |

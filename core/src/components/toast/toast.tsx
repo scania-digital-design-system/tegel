@@ -5,7 +5,7 @@ import { generateUniqueId, hasSlot } from '../../utils/utils';
 /**
  * @slot header - Slot for the Toast header.
  * @slot subheader - Slot for the Toast subheader.
- * @slot bottom - Slot for the Toast bottom section, used for links.
+ * @slot actions - Slot for the Toast bottom section, used for links.
  */
 @Component({
   tag: 'tds-toast',
@@ -92,7 +92,7 @@ export class TdsToast {
   render() {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
-    const usesBottomSlot = hasSlot('bottom', this.host);
+    const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <Host
         toastRole={this.toastRole}
@@ -112,13 +112,13 @@ export class TdsToast {
               {this.subheader && <div class="subheader">{this.subheader}</div>}
               {usesSubheaderSlot && <slot name="subheader"></slot>}
             </div>
-            {usesBottomSlot && (
+            {usesActionsSlot && (
               <div
                 class={`toast-bottom ${
                   usesSubheaderSlot || this.subheader ? 'subheader' : 'no-subheader'
                 }`}
               >
-                <slot name="bottom"></slot>
+                <slot name="actions"></slot>
               </div>
             )}
           </div>

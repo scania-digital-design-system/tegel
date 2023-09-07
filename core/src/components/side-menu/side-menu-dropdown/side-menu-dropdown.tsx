@@ -2,8 +2,8 @@ import { Component, Element, Fragment, h, Host, Listen, Prop, State } from '@ste
 import { CollapseEvent } from '../side-menu';
 
 /**
- * @slot button-icon - Used for injecting the icon that compliments the dropdown title
- * @slot button-label - Used for injecting the text, aka dropdown title
+ * @slot icon - Used for injecting the icon that compliments the dropdown title
+ * @slot label - Used for injecting the text, aka dropdown title
  * @slot <default> - <b>Unnamed slot.</b> For injection of the <code>tds-side-menu-dropdown-list</code> subcomponent.
  * */
 @Component({
@@ -18,7 +18,7 @@ export class TdsSideMenuDropdown {
   @Prop() defaultOpen: boolean = false;
 
   /** The label of the button that opens the dropdown.
-   * This is an alternative to the button-label slot. */
+   * This is an alternative to the label slot. */
   @Prop() buttonLabel: string;
 
   /** If the button that opens the dropdown should appear selected. */
@@ -99,11 +99,11 @@ export class TdsSideMenuDropdown {
             }}
           >
             <button>
-              <slot name="button-icon"></slot>
+              <slot name="icon"></slot>
               {!this.collapsed && (
                 <Fragment>
                   {this.buttonLabel}
-                  <slot name="button-label"></slot>
+                  <slot name="label"></slot>
                   <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
                 </Fragment>
               )}
@@ -113,7 +113,7 @@ export class TdsSideMenuDropdown {
             {this.collapsed && (
               <h3 class="heading-collapsed">
                 {this.buttonLabel}
-                <slot name="button-label"></slot>
+                <slot name="label"></slot>
               </h3>
             )}
             <slot></slot>

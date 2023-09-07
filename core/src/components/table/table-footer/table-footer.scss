@@ -31,13 +31,13 @@
         letter-spacing: var(--tds-detail-02-ls);
         background-color: var(--tds-table-footer-page-selector-input-background);
         color: var(--tds-table-color);
-        width: 36px;
+        width: 54px;
         height: 30px;
         border: none;
         border-radius: 4px;
         transition: background-color 250ms ease;
         margin-right: 4px;
-        padding-right: 8px;
+        padding-left: 16px;
 
         &:hover {
           background-color: var(--tds-table-footer-page-selector-input-background-hover);
@@ -112,5 +112,28 @@
         width: 28px;
       }
     }
+  }
+}
+
+@keyframes tds-shake-animation {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
   }
 }

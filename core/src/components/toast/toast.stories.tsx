@@ -48,8 +48,8 @@ export default {
         type: 'text',
       },
     },
-    bottom: {
-      name: 'Bottom slot',
+    actions: {
+      name: 'Actions slot',
       description: 'Slot for the bottom part of the Toast, used for links.',
       control: {
         type: 'text',
@@ -60,18 +60,20 @@ export default {
     variant: 'Information',
     header: 'Header',
     subheader: 'Subheader',
-    bottom: '<a slot="bottom" href="#">This is a link.</a>',
+    actions: `<tds-link slot="actions">
+          <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>
+      </tds-link>`,
   },
 };
 
-const Template = ({ variant, header, subheader, bottom }) =>
+const Template = ({ variant, header, subheader, actions }) =>
   formatHtmlPreview(
     `<tds-toast
         variant="${variant.toLowerCase()}"
         header="${header}"
         ${subheader ? `subheader="${subheader}"` : ''}
     >
-    ${bottom || ''}
+    ${actions || ''}
     </tds-toast>
     
     <script>

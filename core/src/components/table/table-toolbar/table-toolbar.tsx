@@ -18,7 +18,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 ];
 
 /**
- * @slot end  - Slot for the end (right side) of the Table Toolbar.
+ * @slot end - Slot for the end (right side) of the Table Toolbar.
  */
 @Component({
   tag: 'tds-table-toolbar',
@@ -49,24 +49,12 @@ export class TdsTableToolbar {
   /** Used for sending users' input to the main parent tds-table the component,
    * can also be listened to in order to implement custom sorting logic. */
   @Event({
-    eventName: 'tdsFilterChange',
+    eventName: 'tdsFilter',
     composed: true,
     cancelable: true,
     bubbles: true,
   })
-  tdsFilterChange: EventEmitter<{
-    tableId: string;
-    query: string;
-  }>;
-
-  /** @internal Internal event to notify tds-table-body that a filter/search has been made. */
-  @Event({
-    eventName: 'internalTdsFilter',
-    composed: true,
-    cancelable: true,
-    bubbles: true,
-  })
-  internalTdsFilter: EventEmitter<{
+  tdsFilter: EventEmitter<{
     tableId: string;
     query: string;
   }>;
@@ -96,22 +84,16 @@ export class TdsTableToolbar {
     });
   }
 
-  searchFunction(event) {
+  handleSearch(event) {
     const searchTerm = event.currentTarget.value.toLowerCase();
     const tdsTableSearchBar = event.currentTarget.parentElement;
 
-    const tdsFilterEvent = this.tdsFilterChange.emit({
+    this.tdsFilter.emit({
       tableId: this.tableId,
       query: searchTerm,
     });
 
-    if (!tdsFilterEvent.defaultPrevented) {
-      this.internalTdsFilter.emit({
-        tableId: this.tableId,
-        query: searchTerm,
-      });
-    }
-
+    /** NOTE: Could these be handles in pure CSS? */
     if (searchTerm.length > 0) {
       tdsTableSearchBar.classList.add('tds-table__searchbar--active');
     } else {
@@ -130,7 +112,7 @@ export class TdsTableToolbar {
                 <input
                   class="tds-table__searchbar-input"
                   type="text"
-                  onKeyUp={(event) => this.searchFunction(event)}
+                  onKeyUp={(event) => this.handleSearch(event)}
                 />
                 <span class="tds-table__searchbar-icon">
                   <tds-icon name="search" size="20px"></tds-icon>

@@ -67,7 +67,7 @@
     letter-spacing: var(--tds-detail-02-ls);
   }
 
-  slot[name='bottom'] {
+  slot[name='actions'] {
     &::slotted(*) {
       display: block;
       width: fit-content;

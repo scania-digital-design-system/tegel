@@ -25,6 +25,10 @@
     border-left-color: transparent;
   }
 
+  ::slotted(*:focus-visible) {
+    @include tds-focus-state;
+  }
+
   div:not(.selected) {
     background-color: var(--tds-folder-tab-background);
 

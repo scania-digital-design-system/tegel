@@ -11,6 +11,8 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
  - Use single quotes (') for strings.
 
 ## Branching
+- Branch out of `develop` branch for day-to-day work
+- Branch named `main` is updated once release is done by merging develop to it
 - Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
 - Start the name of the branch with Jira ticket number followed by short description of task
 - example: `fix/CDEP-1369-banner-color-correction`
@@ -137,4 +139,10 @@ Some of the component are using event to communicate with its parent/child. Thes
 they might change without notice. Their payload might also be changed based on refactoring of components. These events are prefixed
 with 'internal'. This is to make it as clear as possible to a user that this is an internal event that the components are using,
 but the user should not interact with it. E.g. `internalTdsPropsChange`.
+
+### Development version of Storybook
+https://develop--tegel-storybook.netlify.app/ is a Storybook version connected to the develop branch.
+It offers the possibility to check out the version of code that is merged to develop branch.
+It can be used to see a version of code that is about to be released or to do a regression test. 
+
 
