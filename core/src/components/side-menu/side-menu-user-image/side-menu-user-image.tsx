@@ -5,9 +5,8 @@ import { Component, h, Host, Prop } from '@stencil/core';
 // FIXME: Can the logic for it be directly integrated in side-menu-user instead?
 
 /**
- * @slot <default> -
- * <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.
- * */
+ * @slot <default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.
+ */
 
 @Component({
   tag: 'tds-side-menu-user-image',
