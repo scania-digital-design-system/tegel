@@ -132,7 +132,6 @@ export class TdsAccordionItem {
   }
 }
 
-
 export declare interface TdsAccordionItem extends Components.TdsAccordionItem {
   /**
    * Fires when the Accordion Item is clicked, but before it is closed or opened.
@@ -336,7 +335,6 @@ export class TdsCard {
   }
 }
 
-
 export declare interface TdsCard extends Components.TdsCard {
   /**
    * Sends unique Card identifier when the Card is clicked, if clickable=true
@@ -366,7 +364,6 @@ export class TdsCheckbox {
     proxyOutputs(this, this.el, ['tdsChange', 'tdsFocus', 'tdsBlur']);
   }
 }
-
 
 export declare interface TdsCheckbox extends Components.TdsCheckbox {
   /**
@@ -404,7 +401,6 @@ export class TdsChip {
     proxyOutputs(this, this.el, ['tdsChange', 'tdsClick']);
   }
 }
-
 
 export declare interface TdsChip extends Components.TdsChip {
   /**
@@ -468,7 +464,6 @@ export class TdsDatetime {
   }
 }
 
-
 export declare interface TdsDatetime extends Components.TdsDatetime {
   /**
    * Change event for the Datetime
@@ -531,7 +526,6 @@ export class TdsDropdown {
   }
 }
 
-
 export declare interface TdsDropdown extends Components.TdsDropdown {
   /**
    * Change event for the Dropdown.
@@ -573,7 +567,6 @@ export class TdsDropdownOption {
     proxyOutputs(this, this.el, ['tdsSelect', 'tdsFocus', 'tdsBlur']);
   }
 }
-
 
 export declare interface TdsDropdownOption extends Components.TdsDropdownOption {
   /**
@@ -636,7 +629,6 @@ export class TdsFolderTabs {
     proxyOutputs(this, this.el, ['tdsChange']);
   }
 }
-
 
 export declare interface TdsFolderTabs extends Components.TdsFolderTabs {
   /**
@@ -783,7 +775,6 @@ export class TdsHeaderCell {
     proxyOutputs(this, this.el, ['tdsSort']);
   }
 }
-
 
 export declare interface TdsHeaderCell extends Components.TdsHeaderCell {
   /**
@@ -1214,7 +1205,6 @@ export class TdsInlineTabs {
   }
 }
 
-
 export declare interface TdsInlineTabs extends Components.TdsInlineTabs {
   /**
    * Event emitted when the selected Tab is changed.
@@ -1293,7 +1283,6 @@ export class TdsModal {
   }
 }
 
-
 export declare interface TdsModal extends Components.TdsModal {
   /**
    * Emits when the Modal is closed.
@@ -1347,7 +1336,6 @@ export class TdsNavigationTabs {
     proxyOutputs(this, this.el, ['tdsChange']);
   }
 }
-
 
 export declare interface TdsNavigationTabs extends Components.TdsNavigationTabs {
   /**
@@ -1473,7 +1461,6 @@ export class TdsRadioButton {
     proxyOutputs(this, this.el, ['tdsChange']);
   }
 }
-
 
 export declare interface TdsRadioButton extends Components.TdsRadioButton {
   /**
@@ -1784,7 +1771,6 @@ export class TdsSlider {
   }
 }
 
-
 export declare interface TdsSlider extends Components.TdsSlider {
   /**
    * Sends the value of the slider when changed.
@@ -1940,7 +1926,6 @@ export class TdsTableBodyRow {
   }
 }
 
-
 export declare interface TdsTableBodyRow extends Components.TdsTableBodyRow {
   /**
    * Event emitted when a row is selected/deselected.
@@ -1994,7 +1979,6 @@ export class TdsTableFooter {
   }
 }
 
-
 export declare interface TdsTableFooter extends Components.TdsTableFooter {
   /**
    * Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic.
@@ -2023,7 +2007,6 @@ export class TdsTableHeader {
     proxyOutputs(this, this.el, ['tdsSelectAll']);
   }
 }
-
 
 export declare interface TdsTableHeader extends Components.TdsTableHeader {
   /**
@@ -2054,7 +2037,6 @@ export class TdsTableToolbar {
   }
 }
 
-
 export declare interface TdsTableToolbar extends Components.TdsTableToolbar {
   /**
    * Used for sending users' input to the main parent tds-table the component,
@@ -2084,7 +2066,6 @@ export class TdsTextField {
     proxyOutputs(this, this.el, ['tdsChange', 'tdsInput', 'tdsFocus', 'tdsBlur']);
   }
 }
-
 
 export declare interface TdsTextField extends Components.TdsTextField {
   /**
@@ -2126,7 +2107,6 @@ export class TdsTextarea {
     proxyOutputs(this, this.el, ['tdsChange', 'tdsBlur', 'tdsInput', 'tdsFocus']);
   }
 }
-
 
 export declare interface TdsTextarea extends Components.TdsTextarea {
   /**
@@ -2170,7 +2150,6 @@ export class TdsToast {
   }
 }
 
-
 export declare interface TdsToast extends Components.TdsToast {
   /**
    * Sends unique Toast identifier when component is closed.
@@ -2200,7 +2179,6 @@ export class TdsToggle {
     proxyOutputs(this, this.el, ['tdsToggle']);
   }
 }
-
 
 export declare interface TdsToggle extends Components.TdsToggle {
   /**
