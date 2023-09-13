@@ -27,7 +27,7 @@
   "files": [
     "dist/",
     "loader/",
-    "components"
+    "components/"
   ],
   "publishConfig": {
     "access": "public"
