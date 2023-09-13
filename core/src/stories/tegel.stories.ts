@@ -65,7 +65,7 @@ export const TegelDesignSystem = {
                         <h4 class="tds-u-mb2">Status</h4>
 
                         <p>
-                            This package is currently in a <b>pre-beta</b> stage. We are now working hard towards a 1.0-beta release,
+                            This package is currently in a <b>beta</b> stage. We are now working hard towards a 1.0-beta release,
                             but if
                             you
                             want to try out the package today you can! It's available via <tds-link><a href="https://www.npmjs.com/package/@scania/tegel">NPM</a></tds-link> and can be installed using the
