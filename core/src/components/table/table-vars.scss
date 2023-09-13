@@ -27,10 +27,9 @@
   --tds-table-footer-background: var(--tds-grey-100);
   --tds-table-footer-page-selector-input-background: var(--tds-grey-50);
   --tds-table-footer-page-selector-input-background-hover: var(--tds-white);
-  --tds-table-footer-page-selector-input-background-disabled: var(
-    --tds-grey-600
-  ); //Should this be 400?
-
+  --tds-table-footer-page-selector-input-background-disabled: var(--tds-grey-600);
+  --tds-table-footer-page-selector-icon: var(--tds-grey-958);
+  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-600);
   --tds-table-footer-btn-hover: var(--tds-grey-300);
 
   /* Table-header */
@@ -82,6 +81,8 @@
   --tds-table-footer-page-selector-input-background-hover: var(--tds-grey-958);
   --tds-table-footer-page-selector-input-background-disabled: var(--tds-grey-700);
   --tds-table-footer-btn-hover: var(--tds-grey-900);
+  --tds-table-footer-page-selector-icon: var(--tds-grey-50);
+  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-600);
 
   /* Table-header */
   --tds-table-header-background: var(--tds-grey-800);
