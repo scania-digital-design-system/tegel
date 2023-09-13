@@ -1493,7 +1493,6 @@ export class TdsSideMenu {
   }
 }
 
-
 import type { CollapseEvent as ITdsSideMenuCollapseEvent } from '@scania/tegel/components';
 
 export declare interface TdsSideMenu extends Components.TdsSideMenu {
@@ -1546,7 +1545,6 @@ export class TdsSideMenuCollapseButton {
     proxyOutputs(this, this.el, ['tdsCollapse']);
   }
 }
-
 
 import type { CollapseEvent as ITdsSideMenuCollapseButtonCollapseEvent } from '@scania/tegel/components';
 
@@ -1847,7 +1845,6 @@ export class TdsStepper {
     proxyOutputs(this, this.el, ['internalTdsPropsChange']);
   }
 }
-
 
 import type { InternalTdsStepperPropChange as ITdsStepperInternalTdsStepperPropChange } from '@scania/tegel/components';
 
