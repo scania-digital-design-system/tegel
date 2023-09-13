@@ -17,7 +17,7 @@
 | `maxLength`     | `max-length`     | Max length of input                         | `number`                              | `undefined`  |
 | `modeVariant`   | `mode-variant`   | Mode variant of the Text Field              | `"primary" \| "secondary"`            | `null`       |
 | `name`          | `name`           | Name property                               | `string`                              | `''`         |
-| `noMinWidth`    | `no-min-width`   | With setting                                | `boolean`                             | `false`      |
+| `noMinWidth`    | `no-min-width`   | Unset minimum width of 208px.               | `boolean`                             | `false`      |
 | `placeholder`   | `placeholder`    | Placeholder text                            | `string`                              | `''`         |
 | `readOnly`      | `read-only`      | Set input in readonly state                 | `boolean`                             | `false`      |
 | `size`          | `size`           | Size of the input                           | `"lg" \| "md" \| "sm"`                | `'lg'`       |

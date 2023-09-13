@@ -47,7 +47,7 @@ export class TdsTextField {
   /** Mode variant of the Text Field */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** With setting */
+  /** Unset minimum width of 208px. */
   @Prop() noMinWidth: boolean = false;
 
   /** Name property */
