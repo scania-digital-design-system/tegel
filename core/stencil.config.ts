@@ -18,6 +18,8 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       generateTypeDeclarations: true,
+      dir: 'components',
+      customElementsExportBehavior: 'auto-define-custom-elements',
     },
     {
       type: 'docs-readme',
