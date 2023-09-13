@@ -47,17 +47,6 @@ export class TdsBanner {
     bannerId: string;
   }>;
 
-  /** Sends the unique Banner identifier when the close button is pressed. */
-  @Event({
-    eventName: 'tdsShow',
-    composed: true,
-    cancelable: true,
-    bubbles: true,
-  })
-  tdsShow: EventEmitter<{
-    bannerId: string;
-  }>;
-
   /** Hides the Banner. */
   @Method()
   async hideBanner() {
@@ -84,15 +73,6 @@ export class TdsBanner {
     });
     if (!tdsCloseEvent.defaultPrevented) {
       this.hidden = true;
-    }
-  };
-
-  handleShow = () => {
-    const tdsCloseEvent = this.tdsShow.emit({
-      bannerId: this.bannerId,
-    });
-    if (!tdsCloseEvent.defaultPrevented) {
-      this.hidden = false;
     }
   };
 
