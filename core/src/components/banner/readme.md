@@ -19,10 +19,9 @@
 
 ## Events
 
-| Event      | Description                                                          | Type                                 |
-| ---------- | -------------------------------------------------------------------- | ------------------------------------ |
-| `tdsClose` | Sends a unique Banner identifier when the close button is pressed.   | `CustomEvent<{ bannerId: string; }>` |
-| `tdsShow`  | Sends the unique Banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
+| Event      | Description                                                        | Type                                 |
+| ---------- | ------------------------------------------------------------------ | ------------------------------------ |
+| `tdsClose` | Sends a unique Banner identifier when the close button is pressed. | `CustomEvent<{ bannerId: string; }>` |
 
 
 ## Methods
