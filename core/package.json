@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tegel Design System",
   "keywords": [
     "tegel",
@@ -26,7 +26,8 @@
   },
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "components/"
   ],
   "publishConfig": {
     "access": "public"

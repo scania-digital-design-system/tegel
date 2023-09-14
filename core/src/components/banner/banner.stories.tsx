@@ -92,9 +92,6 @@ const Template = ({ variant, icon, header, subheader, actions }) =>
         document.addEventListener('tdsClose', (event) => {
           console.log(event)
         })
-        document.addEventListener('tdsShow', (event) => {
-          console.log(event)
-        })
       </script>
     `);
 export const Default = Template.bind({});
