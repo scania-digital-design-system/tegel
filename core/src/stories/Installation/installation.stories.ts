@@ -194,7 +194,7 @@ export class AppModule {}</code>
     <section>
         <ol>
             <li><p>Run <code>npm init</code> to generate a package.json</p></li>
-            <li><p>Run <code>npm istall @scania/tegel</code></p></li>
+            <li><p>Run <code>npm install @scania/tegel</code></p></li>
             <li><p>Import the package and stylesheet in your <code>&lt;head&gt;</code></p>
                 <pre>
                     <code>&lt;script type="module"&gt;
