@@ -38,15 +38,6 @@ export const TegelDesignSystem = {
                         margin-bottom: 72px;
                     }
                 </style>
-
-                <tds-banner type="information" icon="information" header="We are moving away from the sdds prefix!">
-                <tds-link slot="bottom">
-                    <a target="_self" href="?path=/story/intro-announcements--prefix-change">
-                        Read more here!
-                    </a>
-                </tds-link>
-                </tds-banner>
-
                 <article class="tds-body-01">
                     <section>
                         <h1 class="tds-headline-02 mb-72">Tegel Design System</h1>
