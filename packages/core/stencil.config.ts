@@ -71,8 +71,7 @@ export const config: Config = {
     {
       type: 'dist-custom-elements',
       generateTypeDeclarations: true,
-      dir: 'components',
-      customElementsExportBehavior: 'single-export-module',
+      customElementsExportBehavior: 'auto-define-custom-elements',
     },
     {
       type: 'docs-readme',
