@@ -5,8 +5,9 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "cd core && npm run storybook",
-    "build": "cd core && npm run build",
+    "start": "cd packages/core && npm run storybook",
+    "build": "cd packages/core && npm run build",
+    "build-angular": "npm run build && cd .. && cd angular && npm i && npm run build ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
     "prepare": "husky install"
