@@ -3,24 +3,24 @@
 // https://stenciljs.com/docs/config#globalstyle
 
 // Colors
-@import '../../../color/color';
+@import '../../../../color/color';
 
 // Grid
-@import '../../../grid/grid';
+@import '../../../../grid/grid';
 
 // Typography
-@import '../../../typography/scania-fonts';
-@import '../../../typography/scania-fonts-vars';
-@import '../../../typography/scania-fonts-selectors';
+@import '../../../../typography/scania-fonts';
+@import '../../../../typography/scania-fonts-vars';
+@import '../../../../typography/scania-fonts-selectors';
 
 // Logos
-@import '../../../logotype/logotype';
+@import '../../../../logotype/logotype';
 
 // Vars
 @import '_variables';
 
 // Utility classes
-@import 'utility-classes';
+@import '_utility-classes';
 
 //Web component theme variables
 @import '../components/accordion/accordion-vars';
