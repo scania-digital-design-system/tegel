@@ -8,9 +8,10 @@
 **/.www
 
 
-core/components
-core/loader
-core/stencil.config.ts
+packages/core/components
+packages/core/loader
+packages/core/stencil.config.ts
+packages/angular
 
 **/www
 

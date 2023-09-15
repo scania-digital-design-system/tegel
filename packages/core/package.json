@@ -26,8 +26,7 @@
   },
   "files": [
     "dist/",
-    "loader/",
-    "components/"
+    "loader/"
   ],
   "publishConfig": {
     "access": "public"
@@ -54,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
+    "@stencil/angular-output-target": "^0.8.2",
     "@stencil/sass": "^3.0.4",
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",

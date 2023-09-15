@@ -11,7 +11,7 @@ const iconfontCss = require('gulp-iconfont-css'); // to create css from webfont
 const outputFolder = 'dist';
 const iconFolder = './src/svg/*.svg';
 const tempFolder = 'temp';
-const iconComponentFolder = '../core/src/components/icon/';
+const iconComponentFolder = '../packages/core/src/components/icon/';
 
 const runTimestamp = Math.round(Date.now() / 1000);
 const fontName = 'tds-icons';

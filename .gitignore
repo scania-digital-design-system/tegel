@@ -1,7 +1,13 @@
-dist/
-www/
-loader/
-core/components
+packages/core/dist
+packages/core/www
+packages/core/loader
+packages/core/components
+
+packages/angular/dist
+stencil-generated
+
+icons/dist
+
 
 *~
 *.sw[mnpcod]
