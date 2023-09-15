@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-angular",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist",
   "files": [
     "dist"
