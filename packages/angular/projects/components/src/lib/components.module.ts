@@ -3,7 +3,8 @@ import { DIRECTIVES } from './stencil-generated';
 import { defineCustomElements } from '@scania/tegel/loader';
 
 @NgModule({
-  imports: [...DIRECTIVES],
+  declarations: [...DIRECTIVES],
+  exports: [...DIRECTIVES],
   providers: [
     {
       provide: APP_INITIALIZER,
