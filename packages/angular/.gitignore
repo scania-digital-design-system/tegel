@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+/.angular
 
 # Node
 /node_modules
@@ -29,7 +30,6 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
