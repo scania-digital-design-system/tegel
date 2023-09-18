@@ -9,7 +9,6 @@
     "ng": "ng",
     "build": "npx -p @angular/cli ng build components"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
     "@angular/common": "^16.2.0",
