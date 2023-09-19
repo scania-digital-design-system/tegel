@@ -24,6 +24,12 @@
 
     &.value {
       color: var(--tds-dropdown-value-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+
+      /** Needed to not get be affected by overflow:hidden 
+      The original line-height is 1.14 */
+      line-height: 1.2;
     }
 
     &:focus {
