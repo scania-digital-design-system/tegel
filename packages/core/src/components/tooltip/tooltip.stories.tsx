@@ -117,8 +117,6 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
     </style>
 
    <div class="demo-wrapper">
-   <!-- The 'referenceEl' prop can be used instead of 'selector',
-    which might be preferable in frameworks like React -->
    <tds-tooltip
       placement="${positionLookup[tooltipPosition]}"
       text="${text}"
