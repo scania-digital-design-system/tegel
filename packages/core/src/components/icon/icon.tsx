@@ -46,7 +46,7 @@ export class Icon {
             height={this.size}
             width={this.size}
           >
-            <title>{`icon ${element.name}`}</title>
+            <text>{`${element.name} icon`}</text>
             <path fill="currentColor" d={element.definition} />
           </svg>
         );
