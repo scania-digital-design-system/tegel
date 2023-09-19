@@ -101,6 +101,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
       id="my-popover-menu"
       placement="${menuPosLookup[menuPosition]}"
       ${fluidWidth ? 'fluid-width' : ''}
+      selector="#my-popover-button"
       >
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
@@ -145,10 +146,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
       </tds-button>
     </div>
     
-    <script>
-      // The 'selector' prop on Popover-Menu can be used instead, but it might be less ideal in frameworks like React 
-      document.getElementById('my-popover-menu').referenceEl = document.getElementById('my-popover-button');
-    </script>
+    
     `,
   );
 };
