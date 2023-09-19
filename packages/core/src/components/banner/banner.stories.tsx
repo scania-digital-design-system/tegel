@@ -80,7 +80,7 @@ const Template = ({ variant, icon, header, subheader, actions }) =>
   formatHtmlPreview(`
       <tds-banner
           ${variant !== 'Default' ? `variant="${variant.toLowerCase()}"` : ''}
-          ${icon !== 'none' ? `icon="${icon}"` : ''}
+          ${icon !== 'none' && variant === 'Default' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
           ${subheader ? `subheader="${subheader}"` : ''}       
           >
