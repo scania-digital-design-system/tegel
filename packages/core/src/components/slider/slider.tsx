@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen, EventEmitter, Event, Method } from '@stencil/core';
+import { Component, h, Prop, Listen, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import { generateUniqueId } from '../../utils/utils';
 
 @Component({
@@ -175,6 +175,13 @@ export class TdsSlider {
     }
 
     this.thumbCore(event);
+  }
+
+  @Watch('value')
+  handleValueUpdate(newVal) {
+    this.calculateThumbLeftFromValue(newVal);
+    this.updateValueForced(newVal);
+    this.updateTrack();
   }
 
   updateSupposedValueSlot(localLeft) {
