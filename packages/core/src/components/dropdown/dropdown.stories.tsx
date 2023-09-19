@@ -197,9 +197,15 @@ const Template = ({
     width: 300px;
     height:200px;
   }
+  .hej {
+    margin-top: 79px;
+  }
   </style>
 
-    <div class="demo-wrapper">
+    <div class="demo-wrapper tds-u-flex">
+        <div class="hej" style="width: 150px;">
+         <tds-divider orientation="horizontal"></tds-divider>
+        </div>
         <tds-dropdown
         ${
           defaultOption && defaultOption !== 'No default'
