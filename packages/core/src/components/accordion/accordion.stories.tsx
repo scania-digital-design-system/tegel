@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
 import readmeItem from './accordion-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';

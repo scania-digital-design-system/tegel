@@ -1,4 +1,3 @@
-import { formatHtmlPreview } from '../../utils/utils';
 import tdsTable from './table/readme.md';
 import tdsTableToolbar from './table-toolbar/readme.md';
 import tdsHeader from './table-header/readme.md';
@@ -9,6 +8,7 @@ import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
   title: `${ComponentsFolder}/Table`,

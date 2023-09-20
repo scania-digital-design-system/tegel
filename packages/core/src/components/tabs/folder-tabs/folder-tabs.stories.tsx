@@ -1,7 +1,7 @@
-import { formatHtmlPreview } from '../../../utils/utils';
 import readme from './readme.md';
 import readmeItem from './folder-tab/readme.md';
 import { ComponentsFolder } from '../../../utils/constants';
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: `${ComponentsFolder}/Tabs`,
