@@ -251,9 +251,15 @@ const Template = ({
         >
       </tds-slider>
     </div>
+    <button id="test">button</button>
      <!-- Script tag for demo purposes -->
     <script>
       slider = document.querySelector('tds-slider')
+      button = document.querySelector('#test')
+
+      button.addEventListener('click', () => {
+        slider.readOnly = !slider.readOnly
+      })
       
       slider.removeEventListener('tdsChange', null)
       slider.addEventListener('tdsChange', (event) => {
