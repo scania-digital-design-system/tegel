@@ -190,7 +190,7 @@ const WebComponentTemplate = ({
         ${
           onlyIcon || (icon && icon !== 'none')
             ? `
-            <tds-icon slot="icon" class='tds-btn-icon ' size='${
+            <tds-icon slot="icon" size='${
               sizeLookUp[size] === 'sm' ? '16px' : '20px'
             }' name='${icon}'></tds-icon>
             `
