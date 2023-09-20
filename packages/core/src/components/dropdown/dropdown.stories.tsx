@@ -202,10 +202,7 @@ const Template = ({
   }
   </style>
 
-    <div class="demo-wrapper tds-u-flex">
-        <div class="hej" style="width: 150px;">
-         <tds-divider orientation="horizontal"></tds-divider>
-        </div>
+    <div class="demo-wrapper">
         <tds-dropdown
         ${
           defaultOption && defaultOption !== 'No default'
@@ -237,7 +234,7 @@ const Template = ({
           open-direction="${openDirection.toLowerCase()}"
           >
             <tds-dropdown-option value="option-1">
-              Option 1
+              Övergripande Ålder Är En MYCKET LÄNGRE SAK
             </tds-dropdown-option>
             <tds-dropdown-option disabled value="option-2">
               Option 2
