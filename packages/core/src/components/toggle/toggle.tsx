@@ -1,5 +1,5 @@
 import { Component, h, Prop, Event, Element, EventEmitter, Method } from '@stencil/core';
-import { generateUniqueId } from '../../utils/utils';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
  * @slot label - Slot for the label text.

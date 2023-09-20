@@ -1,6 +1,6 @@
 import { Component, h, Host, Element, Listen, Prop, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
-import { dfs } from '../../../utils/utils';
+import dfs from '../../../utils/dfs';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For injecting a native <code>&lt;button</code> and <code>&lt;a></code> element.

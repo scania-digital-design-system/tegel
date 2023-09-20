@@ -1,10 +1,8 @@
 import { Component, Host, h, Element, State } from '@stencil/core';
 import { Event, EventEmitter, Listen, Method, Prop, Watch } from '@stencil/core/internal';
-import {
-  appendHiddenInput,
-  findNextFocusableItem,
-  findPreviousFocusableItem,
-} from '../../utils/utils';
+import findNextFocusableElement from '../../utils/findNextFocusableElement';
+import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
+import appendHiddenInput from '../../utils/appendHiddenInput';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
@@ -196,7 +194,7 @@ export class TdsDropdown {
         ? this.children.findIndex((element) => element === activeElement.nextElementSibling)
         : 0;
 
-      const elementIndex = findNextFocusableItem(this.children, startingIndex);
+      const elementIndex = findNextFocusableElement(this.children, startingIndex);
       this.children[elementIndex].focus();
     } else if (event.key === 'ArrowUp') {
       /* Get the index of the current focus index, if there is no
@@ -205,7 +203,7 @@ export class TdsDropdown {
         ? this.children.findIndex((element) => element === activeElement.previousElementSibling)
         : 0;
 
-      const elementIndex = findPreviousFocusableItem(this.children, startingIndex);
+      const elementIndex = findPreviousFocusableElement(this.children, startingIndex);
       this.children[elementIndex].focus();
     } else if (event.key === 'Escape') {
       this.open = false;

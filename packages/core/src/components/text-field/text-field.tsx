@@ -1,5 +1,5 @@
 import { Component, h, State, Prop, Event, EventEmitter, Element } from '@stencil/core';
-import { hasSlot } from '../../utils/utils';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot prefix - Slot for the prefix in the Text Field

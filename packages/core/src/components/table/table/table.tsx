@@ -12,7 +12,7 @@ import {
   Watch,
   Method,
 } from '@stencil/core';
-import { generateUniqueId } from '../../../utils/utils';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 type Props = {
   verticalDividers: boolean;

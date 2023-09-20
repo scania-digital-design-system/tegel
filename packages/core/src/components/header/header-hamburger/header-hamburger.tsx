@@ -1,5 +1,5 @@
 import { Component, Element, h, Host } from '@stencil/core';
-import { inheritAriaAttributes } from '../../../utils/utils';
+import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 
 @Component({
   tag: 'tds-header-hamburger',

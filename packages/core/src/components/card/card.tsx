@@ -1,5 +1,6 @@
 import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
-import { generateUniqueId, hasSlot } from '../../utils/utils';
+import generateUniqueId from '../../utils/generateUniqueId';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot header - Slot for the Card header.

@@ -1,5 +1,5 @@
 import { Component, Host, h } from '@stencil/core';
-import { generateUniqueId } from '../../../utils/utils';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For list items.
