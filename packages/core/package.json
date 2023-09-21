@@ -49,7 +49,9 @@
     "@popperjs/core": "^2.11.8",
     "@stencil/core": "^4.1.0",
     "dotenv": "^16.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "chromatic": "^7.2.0"
+
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
