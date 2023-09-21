@@ -251,11 +251,11 @@ const Template = ({
         >
       </tds-slider>
     </div>
-
+    
      <!-- Script tag for demo purposes -->
     <script>
       slider = document.querySelector('tds-slider')
-
+      
       slider.removeEventListener('tdsChange', null)
       slider.addEventListener('tdsChange', (event) => {
         console.log(event);

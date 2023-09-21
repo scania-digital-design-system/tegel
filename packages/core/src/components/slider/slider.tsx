@@ -1,4 +1,4 @@
-import { Component, h, Prop, Listen, EventEmitter, Event, Method } from '@stencil/core';
+import { Component, h, Prop, Listen, EventEmitter, Event, Method, Watch } from '@stencil/core';
 import { generateUniqueId } from '../../utils/utils';
 
 @Component({
@@ -76,8 +76,6 @@ export class TdsSlider {
   private thumbLeft: number = 0;
 
   private tickValues: Array<number> = [];
-
-  private readonlyState: boolean = false;
 
   private useControls: boolean = false;
 
@@ -175,6 +173,13 @@ export class TdsSlider {
     }
 
     this.thumbCore(event);
+  }
+
+  @Watch('value')
+  handleValueUpdate(newVal) {
+    this.calculateThumbLeftFromValue(newVal);
+    this.updateValueForced(newVal);
+    this.updateTrack();
   }
 
   updateSupposedValueSlot(localLeft) {
@@ -356,7 +361,7 @@ export class TdsSlider {
   }
 
   grabThumb() {
-    if (this.readonlyState) {
+    if (this.readOnly) {
       return;
     }
     this.thumbGrabbed = true;
@@ -368,7 +373,7 @@ export class TdsSlider {
   }
 
   controlsStep(delta) {
-    if (this.readonlyState || this.disabled) {
+    if (this.readOnly || this.disabled) {
       return;
     }
 
@@ -430,8 +435,6 @@ export class TdsSlider {
       this.tickValues.push(this.getMax());
     }
 
-    this.readonlyState = this.readOnly;
-
     this.useInput = false;
     this.useControls = false;
 
@@ -457,7 +460,7 @@ export class TdsSlider {
 
   render() {
     return (
-      <div class={`tds-slider-wrapper ${this.readonlyState ? 'read-only' : ''}`}>
+      <div class={`tds-slider-wrapper ${this.readOnly ? 'read-only' : ''}`}>
         <input
           class="tds-slider-native-element"
           type="range"
@@ -580,7 +583,7 @@ export class TdsSlider {
               <div class="tds-slider__input-field-wrapper">
                 <input
                   onFocus={(e) => {
-                    if (this.readonlyState) {
+                    if (this.readOnly) {
                       e.preventDefault();
                       this.inputElement.blur();
                     }
