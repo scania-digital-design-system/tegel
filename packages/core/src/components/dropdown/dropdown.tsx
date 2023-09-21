@@ -88,21 +88,24 @@ export class TdsDropdown {
   /** Method for setting the value of the Dropdown. */
   @Method()
   async setValue(newValue: string, newValueLabel: string) {
-    if (this.multiselect) {
-      this.selection = this.selection
-        ? [...this.selection, { value: newValue, label: newValueLabel }]
-        : [{ value: newValue, label: newValueLabel }];
-    } else {
-      this.selection = [{ value: newValue, label: newValueLabel }];
-      this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value !== newValue) {
-          element.setSelected(false);
-        }
-        return element;
-      });
+    // Check if any of the dropdown options has the value that is passed to the method.
+    if (
+      this.getChildren().some((element: HTMLTdsDropdownOptionElement) => element.value === newValue)
+    ) {
+      if (this.multiselect) {
+        this.selection = this.selection
+          ? [...this.selection, { value: newValue, label: newValueLabel }]
+          : [{ value: newValue, label: newValueLabel }];
+      } else {
+        this.selection = [{ value: newValue, label: newValueLabel }];
+      }
+      this.host.setAttribute(
+        'value',
+        this.selection.map((selection) => selection.value).toString(),
+      );
+      this.selectChildrenAsSelectedBasedOnSelectionProp();
+      this.handleChange();
     }
-    this.handleChange();
-    this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
     return this.selection;
   }
 
@@ -253,6 +256,19 @@ export class TdsDropdown {
         return element;
       });
   };
+
+  selectChildrenAsSelectedBasedOnSelectionProp() {
+    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.selection.forEach((selection) => {
+        if (element.value !== selection.value) {
+          element.setSelected(false);
+        } else {
+          element.setSelected(true);
+        }
+      });
+      return element;
+    });
+  }
 
   /* Returns a list of all children that are are tds-dropdown-option elements */
   private getChildren = () =>
