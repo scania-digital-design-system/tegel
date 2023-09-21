@@ -7,6 +7,7 @@
   "scripts": {
     "start": "cd packages/core && npm run storybook",
     "build": "cd packages/core && npm run build",
+    "build-storybook": "cd packages/core && npm run build-storybook",
     "build-angular": "npm run build && cd .. && cd angular && npm i && npm run build ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
