@@ -7,7 +7,7 @@ jobs:
     steps:
         - uses: actions/checkout@v1
         - name: Install dependencies
-          run: npm install
+          run: npm
         - name: Publish to Chromatic
         - uses: chromaui/action@v1
           with:
