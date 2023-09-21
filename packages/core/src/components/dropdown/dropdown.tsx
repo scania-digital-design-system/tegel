@@ -97,8 +97,6 @@ export class TdsDropdown {
         return element;
       });
     }
-    this.handleChange();
-    this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
     return this.selection;
   }
 
@@ -252,6 +250,19 @@ export class TdsDropdown {
         return element;
       });
   };
+
+  selectChildrenAsSelectedBasedOnSelectionProp() {
+    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.selection.forEach((selection) => {
+        if (element.value !== selection.value) {
+          element.setSelected(false);
+        } else {
+          element.setSelected(true);
+        }
+      });
+      return element;
+    });
+  }
 
   /* Returns a list of all children that are are tds-dropdown-option elements */
   private getChildren = () =>

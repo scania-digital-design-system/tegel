@@ -68,9 +68,24 @@ Type: `Promise<void>`
 
 
 
-### `setValue(newValue: string, newValueLabel: string) => Promise<{ value: string; label: string; }[]>`
+### `setValue(value: string | { value: string; label: string; } | { value: string; label: string; }[], label?: string) => Promise<{ value: string; label: string; }[]>`
 
 Method for setting the value of the Dropdown.
+
+Single selection example:
+
+<code>
+dropdown.setValue('option-1', 'Option 1');
+</code>
+
+Multiselect example:
+
+<code>
+dropdown.setValue([<br />
+&nbsp;{ value: 'option-4', label: 'Option 4' },<br />
+&nbsp;{ value: 'option-1', label: 'Option 1' }<br />
+]);
+</code>
 
 #### Returns
 
