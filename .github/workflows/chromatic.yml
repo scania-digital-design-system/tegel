@@ -11,7 +11,7 @@ jobs:
         - name: Installing dependencies in core
           working-directory: packages/core 
           run: npm install
-        - name: Building @scania/tegl
+        - name: Building @scania/tegel
           working-directory: packages/core 
           run: npm run build
         - name: Publish to Chromatic
