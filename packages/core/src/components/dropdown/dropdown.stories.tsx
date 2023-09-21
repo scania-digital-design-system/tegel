@@ -246,7 +246,6 @@ const Template = ({
               Option 4
             </tds-dropdown-option>
         </tds-dropdown>
-        <button id="test">Do it!</button>
     </div>
 
     <script>
