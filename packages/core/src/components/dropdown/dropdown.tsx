@@ -88,10 +88,11 @@ export class TdsDropdown {
   /** Method for setting the value of the Dropdown. */
   @Method()
   async setValue(newValue: string, newValueLabel: string) {
+    const optionExist = this.getChildren().some(
+      (element: HTMLTdsDropdownOptionElement) => element.value === newValue,
+    );
     // Check if any of the dropdown options has the value that is passed to the method.
-    if (
-      this.getChildren().some((element: HTMLTdsDropdownOptionElement) => element.value === newValue)
-    ) {
+    if (optionExist) {
       if (this.multiselect) {
         this.selection = this.selection
           ? [...this.selection, { value: newValue, label: newValueLabel }]
