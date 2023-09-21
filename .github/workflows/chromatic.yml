@@ -14,5 +14,5 @@ jobs:
             npm install
             npm run build
             npm run build-storybook
-            npx cromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}} 
+            npx chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}} 
           
