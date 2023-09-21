@@ -261,7 +261,10 @@ export class TdsDropdown {
     this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
       this.selection.forEach((selection) => {
         if (element.value !== selection.value) {
-          element.setSelected(false);
+          // If it not multiselect we need to unselect all other options.
+          if (!this.multiselect) {
+            element.setSelected(false);
+          }
         } else {
           element.setSelected(true);
         }
