@@ -84,18 +84,24 @@ export class TdsDropdown {
   /** Method for setting the value of the Dropdown. */
   @Method()
   async setValue(newValue: string, newValueLabel: string) {
-    if (this.multiselect) {
-      this.selection = this.selection
-        ? [...this.selection, { value: newValue, label: newValueLabel }]
-        : [{ value: newValue, label: newValueLabel }];
-    } else {
-      this.selection = [{ value: newValue, label: newValueLabel }];
-      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value !== newValue) {
-          element.setSelected(false);
-        }
-        return element;
-      });
+    const optionExist = this.getChildren().some(
+      (element: HTMLTdsDropdownOptionElement) => element.value === newValue,
+    );
+    // Check if any of the dropdown options has the value that is passed to the method.
+    if (optionExist) {
+      if (this.multiselect) {
+        this.selection = this.selection
+          ? [...this.selection, { value: newValue, label: newValueLabel }]
+          : [{ value: newValue, label: newValueLabel }];
+      } else {
+        this.selection = [{ value: newValue, label: newValueLabel }];
+      }
+      this.host.setAttribute(
+        'value',
+        this.selection.map((selection) => selection.value).toString(),
+      );
+      this.selectChildrenAsSelectedBasedOnSelectionProp();
+      this.handleChange();
     }
     return this.selection;
   }
