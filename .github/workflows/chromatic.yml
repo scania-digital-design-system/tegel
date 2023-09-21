@@ -11,25 +11,9 @@ jobs:
         - name: Installing dependencies in core
           working-directory: packages/core 
           run: npm install
-        - name: Building @scania/tegl
+        - name: Building @scania/tegel
           working-directory: packages/core 
           run: npm run build
         - name: Publish to Chromatic
           working-directory: packages/core 
           run: npx chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}}
-        - name: Post status comment in PR
-          uses: actions/github-script@v6
-          if: always()
-          with:
-            script: |
-              const name = '${{ github.workflow   }}';
-              const url = '${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}';
-              const success = '${{ job.status }}' === 'success';
-              const body = `${name}: ${success ? 'succeeded ✅' : 'failed ❌'}\n${url}`;
-
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: body
-              })
