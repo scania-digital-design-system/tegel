@@ -234,7 +234,7 @@ const Template = ({
           open-direction="${openDirection.toLowerCase()}"
           >
             <tds-dropdown-option value="option-1">
-              Övergripande Ålder Är En MYCKET LÄNGRE SAK
+              Option 1
             </tds-dropdown-option>
             <tds-dropdown-option disabled value="option-2">
               Option 2
@@ -255,10 +255,12 @@ const Template = ({
               Option 7
             </tds-dropdown-option>
         </tds-dropdown>
+        <button id="test">Do it!</button>
     </div>
 
     <script>
     dropdown = document.querySelector('tds-dropdown')
+
     dropdown.addEventListener('tdsChange', (event) => {
       console.log(event)
     })
