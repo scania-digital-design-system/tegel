@@ -17,13 +17,3 @@ jobs:
         - name: Publish to Chromatic
           working-directory: packages/core 
           run: npx chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}}
-        - name: Post status comment in PR
-          uses: actions/github-script@v6
-          if: always()
-          with:
-            script: |
-              github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                repo: context.repo.repo,
-                body: 'Chromatic action completed ✅'
-              })
