@@ -9,6 +9,10 @@ jobs:
         - name: Install dependencies
           run: npm install
         - name: Publish to Chromatic
-          uses: chromaui/action@v1
-          with:
-            projectToken: ${{secrets.CHROMATIC_PROJECT_TOKEN}}  
+          working-directory: packages/core 
+          run: |
+            npm install
+            npm run build
+            npm run build-storybook
+            npx cromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}} 
+          
