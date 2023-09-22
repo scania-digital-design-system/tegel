@@ -16,7 +16,7 @@ export class TdsBlock {
 
   children: Array<HTMLTdsBlockElement>;
 
-  connectedCallback() {
+  componentDidRender() {
     this.children = Array.from(this.host.children).filter(
       (item) => item.tagName === 'TDS-BLOCK',
     ) as HTMLTdsBlockElement[];
