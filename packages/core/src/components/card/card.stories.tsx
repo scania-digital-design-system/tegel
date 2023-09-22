@@ -1,7 +1,7 @@
 import readme from './readme.md';
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import CardBodyImage from '../../stories/assets/image/card-img.png';
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {

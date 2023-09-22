@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
-import { dfs } from '../../../utils/utils';
+import dfs from '../../../utils/dfs';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a link or button element.

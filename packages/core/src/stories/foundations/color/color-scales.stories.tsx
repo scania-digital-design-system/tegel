@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../../utils/utils';
+import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Foundations/Color',

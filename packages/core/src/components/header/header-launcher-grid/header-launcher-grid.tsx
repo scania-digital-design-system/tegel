@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, State } from '@stencil/core';
-import { getPreviousNestedChildOfSiblingsMatching, isHeadingElement } from '../../../utils/utils';
+import getPreviousNestedChildOfSiblingsMatching from '../../../utils/getPreviousNestedChildOfSiblingsMatching';
+import isHeadingElement from '../../../utils/isHeadingElement';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a grid item element.

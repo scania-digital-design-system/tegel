@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
 import readmeHamburger from './header-hamburger/readme.md';
 import readmeTitle from './header-title/readme.md';

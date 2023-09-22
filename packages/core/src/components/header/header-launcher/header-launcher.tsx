@@ -1,5 +1,7 @@
 import { Component, Host, h, Element, Listen, State } from '@stencil/core';
-import { Attributes, generateUniqueId, inheritAriaAttributes } from '../../../utils/utils';
+import { Attributes } from '../../../types/Attributes';
+import generateUniqueId from '../../../utils/generateUniqueId';
+import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a launcher list (or grid) element.
