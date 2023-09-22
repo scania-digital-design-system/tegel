@@ -16,11 +16,12 @@ export class TdsBlock {
 
   children: Array<HTMLTdsBlockElement>;
 
-  componentDidRender() {
+  setModeVariantOnChildBlocks() {
     this.children = Array.from(this.host.children).filter(
       (item) => item.tagName === 'TDS-BLOCK',
     ) as HTMLTdsBlockElement[];
-    this.children.forEach((item) => {
+
+    this.children?.forEach((item) => {
       if (!this.modeVariant) {
         item.setAttribute('mode-variant', 'secondary');
       } else {
@@ -30,6 +31,7 @@ export class TdsBlock {
   }
 
   render() {
+    this.setModeVariantOnChildBlocks();
     return (
       <div
         class={`tds-block ${
