@@ -249,11 +249,12 @@ const Template = ({
     </div>
 
     <script>
-    dropdown = document.querySelector('tds-dropdown')
+      dropdown = document.querySelector('tds-dropdown')
 
-    dropdown.addEventListener('tdsChange', (event) => {
-      console.log(event)
-    })
+      dropdown.addEventListener('tdsChange', (event) => {
+        console.log(event)
+      })
+
     </script>
         
   `);
