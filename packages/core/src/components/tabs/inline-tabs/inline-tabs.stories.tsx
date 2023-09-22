@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../../utils/utils';
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import readme from './readme.md';
 import readmeTab from './inline-tab/readme.md';
 import { ComponentsFolder } from '../../../utils/constants';

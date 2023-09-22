@@ -1,6 +1,6 @@
 import readme from './readme.md';
 import readmeDropdownOption from './dropdown-option/readme.md';
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {

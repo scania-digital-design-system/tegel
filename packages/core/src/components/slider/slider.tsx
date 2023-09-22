@@ -1,5 +1,5 @@
 import { Component, h, Prop, Listen, EventEmitter, Event, Method, Watch } from '@stencil/core';
-import { generateUniqueId } from '../../utils/utils';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-slider',

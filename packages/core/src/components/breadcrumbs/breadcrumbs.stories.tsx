@@ -1,6 +1,6 @@
 import itemReadme from './breadcrumb/readme.md';
 import readme from './readme.md';
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { ComponentsFolder } from '../../utils/constants';
 
 export default {

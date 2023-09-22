@@ -9,7 +9,7 @@ import {
   Event,
   EventEmitter,
 } from '@stencil/core';
-import { hasSlot } from '../../utils/utils';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot header - Slot for header text

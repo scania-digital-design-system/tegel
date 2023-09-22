@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readmeStepper from './readme.md';
 import readmeStep from './step/readme.md';
 import { ComponentsFolder } from '../../utils/constants';

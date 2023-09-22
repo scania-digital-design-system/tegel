@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
-import { Attributes, inheritAriaAttributes } from '../../../utils/utils';
+import { Attributes } from '../../../types/Attributes';
+import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 
 @Component({
   tag: 'tds-header-launcher-button',

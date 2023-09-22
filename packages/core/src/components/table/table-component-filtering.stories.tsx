@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import tdsTable from './table/readme.md';
 import tdsTableToolbar from './table-toolbar/readme.md';
 import tdsHeader from './table-header/readme.md';
