@@ -59,13 +59,6 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    useDataProp: {
-      name: 'Use data prop',
-      description: 'Loads Table data from property.',
-      control: {
-        type: 'boolean',
-      },
-    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -125,7 +118,6 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: true,
-    useDataProp: true,
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
