@@ -191,20 +191,22 @@ export class TdsDropdown {
       nextElementSibling return the index for the first child in our Dropdown.  */
 
       const startingIndex = activeElement.nextElementSibling
-        ? this.children.findIndex((element) => element === activeElement.nextElementSibling)
+        ? this.getChildren().findIndex((element) => element === activeElement.nextElementSibling)
         : 0;
 
-      const elementIndex = findNextFocusableElement(this.children, startingIndex);
-      this.children[elementIndex].focus();
+      const elementIndex = findNextFocusableElement(this.getChildren(), startingIndex);
+      this.getChildren()[elementIndex].focus();
     } else if (event.key === 'ArrowUp') {
       /* Get the index of the current focus index, if there is no
       previousElementSibling return the index for the first last in our Dropdown.  */
       const startingIndex = activeElement.nextElementSibling
-        ? this.children.findIndex((element) => element === activeElement.previousElementSibling)
+        ? this.getChildren().findIndex(
+            (element) => element === activeElement.previousElementSibling,
+          )
         : 0;
 
-      const elementIndex = findPreviousFocusableElement(this.children, startingIndex);
-      this.children[elementIndex].focus();
+      const elementIndex = findPreviousFocusableElement(this.getChildren(), startingIndex);
+      this.getChildren()[elementIndex].focus();
     } else if (event.key === 'Escape') {
       this.open = false;
     }
@@ -254,7 +256,9 @@ export class TdsDropdown {
 
   /* Returns a list of all children that are are tds-dropdown-option elements */
   private getChildren = () =>
-    Array.from(this.host.children).filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION');
+    Array.from(this.host.children).filter(
+      (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
+    ) as Array<HTMLTdsDropdownOptionElement>;
 
   getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
@@ -282,14 +286,14 @@ export class TdsDropdown {
     const query = event.target.value.toLowerCase();
     /* Check if the query is empty, and if so, show all options */
     if (query === '') {
-      this.children = this.children.map((element) => {
+      this.children = this.getChildren().map((element) => {
         element.removeAttribute('hidden');
         return element;
       });
       this.filterResult = null;
       /* Hide the options that do not match the query */
     } else {
-      this.filterResult = this.children.filter((element) => {
+      this.filterResult = this.getChildren().filter((element) => {
         if (!element.textContent.toLowerCase().includes(query.toLowerCase())) {
           element.setAttribute('hidden', '');
         } else {
