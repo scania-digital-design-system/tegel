@@ -158,9 +158,6 @@ export class TdsNavigationTabs {
             this.children.forEach((element) => element.setSelected(false));
             item.setSelected(true);
             this.selectedIndex = index;
-            this.tdsChange.emit({
-              selectedTabIndex: this.selectedIndex,
-            });
           }
         }
       });

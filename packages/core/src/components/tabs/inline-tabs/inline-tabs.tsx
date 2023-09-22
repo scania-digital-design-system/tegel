@@ -58,9 +58,6 @@ export class TdsInlineTabs {
         if (index === tabIndex) {
           element.setSelected(true);
           this.selectedIndex = tabIndex;
-          this.tdsChange.emit({
-            selectedTabIndex: this.selectedIndex,
-          });
         }
         return element;
       });
@@ -147,9 +144,6 @@ export class TdsInlineTabs {
             this.children.forEach((element) => element.setSelected(false));
             item.setSelected(true);
             this.selectedIndex = index;
-            this.tdsChange.emit({
-              selectedTabIndex: this.selectedIndex,
-            });
           }
         }
       });
