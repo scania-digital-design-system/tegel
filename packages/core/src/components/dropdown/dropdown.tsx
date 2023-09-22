@@ -81,28 +81,56 @@ export class TdsDropdown {
     this.handleChange();
   }
 
-  /** Method for setting the value of the Dropdown. */
+  /** Method for setting the value of the Dropdown.
+   *
+   * Single selection example:
+   *
+   * <code>
+   *  dropdown.setValue('option-1', 'Option 1');
+   * </code>
+   *
+   * Multiselect example:
+   *
+   * <code>
+   *  dropdown.setValue([<br />
+   *  &nbsp;{ value: 'option-4', label: 'Option 4' },<br />
+   *  &nbsp;{ value: 'option-1', label: 'Option 1' }<br />
+   *  ]);
+   * </code>
+   */
   @Method()
-  async setValue(newValue: string, newValueLabel: string) {
-    const optionExist = this.getChildren().some(
-      (element: HTMLTdsDropdownOptionElement) => element.value === newValue,
-    );
-    // Check if any of the dropdown options has the value that is passed to the method.
-    if (optionExist) {
-      if (this.multiselect) {
-        this.selection = this.selection
-          ? [...this.selection, { value: newValue, label: newValueLabel }]
-          : [{ value: newValue, label: newValueLabel }];
-      } else {
-        this.selection = [{ value: newValue, label: newValueLabel }];
-      }
-      this.host.setAttribute(
-        'value',
-        this.selection.map((selection) => selection.value).toString(),
-      );
-      this.selectChildrenAsSelectedBasedOnSelectionProp();
-      this.handleChange();
+  async setValue(
+    value: string | { value: string; label: string } | { value: string; label: string }[],
+    label?: string,
+  ) {
+    let nextValue: Array<{ value: string; label: string }>;
+    if (typeof value === 'string') nextValue = [{ value, label }];
+    else if (!Array.isArray(value)) nextValue = [value];
+    else nextValue = value;
+
+    if (!this.multiselect && nextValue.length > 1) {
+      console.warn('Tried to select multiple items, but multiselect is not enabled.');
+      nextValue = [nextValue[0]];
     }
+
+    this.reset();
+
+    for (let i = 0; i < nextValue.length; i++) {
+      const optionExist = this.getChildren().some(
+        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i].value,
+      );
+      if (!optionExist) {
+        nextValue.splice(i, 1);
+      }
+    }
+
+    this.selection = nextValue;
+
+    this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
+
+    this.selectChildrenAsSelectedBasedOnSelectionProp();
+    this.handleChange();
+
     return this.selection;
   }
 
