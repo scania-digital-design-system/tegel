@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from './iconsArray';
 import readme from './readme.md';
 

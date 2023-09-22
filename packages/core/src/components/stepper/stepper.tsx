@@ -1,6 +1,6 @@
 import { Component, Host, h, Prop, Element, Event } from '@stencil/core';
 import { EventEmitter, Watch } from '@stencil/core/internal';
-import { generateUniqueId } from '../../utils/utils';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 type TdsStepperProps = {
   orientation: 'horizontal' | 'vertical';

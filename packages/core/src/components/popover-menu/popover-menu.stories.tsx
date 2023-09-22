@@ -1,4 +1,4 @@
-import { formatHtmlPreview } from '../../utils/utils';
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import popoverMenuReadme from './readme.md';
 import popoverMenuItemReadme from './popover-menu-item/readme.md';
 import { ComponentsFolder } from '../../utils/constants';

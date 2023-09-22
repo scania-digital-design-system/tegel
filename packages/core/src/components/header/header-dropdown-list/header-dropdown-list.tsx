@@ -1,5 +1,6 @@
 import { Component, Element, Host, h, Prop, State } from '@stencil/core';
-import { getPreviousNestedChildOfSiblingsMatching, isHeadingElement } from '../../../utils/utils';
+import isHeadingElement from '../../../utils/isHeadingElement';
+import getPreviousNestedChildOfSiblingsMatching from '../../../utils/getPreviousNestedChildOfSiblingsMatching';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a dropdown list item.

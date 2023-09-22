@@ -1,5 +1,6 @@
 import { Component, h, Host, Element } from '@stencil/core';
-import { inheritAriaAttributes, updateListChildrenRoles } from '../../utils/utils';
+import updateListChildrenRoles from '../../utils/updateListChildrenRoles';
+import inheritAriaAttributes from '../../utils/inheritAriaAttributes';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> Slot for the left-aligned content consisting of buttons, dropdowns, links, etc.

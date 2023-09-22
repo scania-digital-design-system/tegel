@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Element } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
-import { Attributes, inheritAttributes } from '../../utils/utils';
+import { Attributes } from '../../types/Attributes';
+import inheritAttributes from '../../utils/inheritAttributes';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the contents of the popover.

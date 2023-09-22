@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
-import { hasSlot } from '../../utils/utils';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot label - Slot for the text injection. Serves as alternative to text prop.

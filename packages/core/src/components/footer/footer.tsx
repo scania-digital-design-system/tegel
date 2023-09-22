@@ -1,6 +1,6 @@
 import { Component, h, Element } from '@stencil/core';
 import { Host, Prop } from '@stencil/core/internal';
-import { hasSlot } from '../../utils/utils';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot top - Slot for the top part of the Footer.
