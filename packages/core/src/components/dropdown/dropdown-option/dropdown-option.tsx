@@ -80,7 +80,7 @@ export class TdsDropdownOption {
   handleSingleSelect = () => {
     if (!this.disabled) {
       this.selected = true;
-      this.parentElement.setValue(this.value, this.label);
+      this.parentElement.appendValue({ value: this.value, label: this.label });
       this.parentElement.close();
       this.tdsSelect.emit({
         value: this.value,
@@ -94,7 +94,7 @@ export class TdsDropdownOption {
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
-        this.parentElement.setValue(this.value, this.label);
+        this.parentElement.appendValue({ value: this.value, label: this.label });
         this.selected = true;
         this.tdsSelect.emit({
           value: this.value,

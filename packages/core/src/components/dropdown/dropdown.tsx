@@ -134,6 +134,14 @@ export class TdsDropdown {
     return this.selection;
   }
 
+  /**
+   * @internal
+   */
+  @Method()
+  async appendValue(value: { value: string; label: string }) {
+    this.setValue([...this.selection, value]);
+  }
+
   /** Method for removing a selected value in the Dropdown. */
   @Method()
   async removeValue(oldValue: string) {
