@@ -100,7 +100,6 @@ export class TdsDropdownOption {
           value: this.value,
           selected: this.selected,
         });
-        event.stopPropagation();
       } else {
         this.parentElement.removeValue(this.value);
         this.selected = false;
@@ -109,6 +108,7 @@ export class TdsDropdownOption {
           selected: this.selected,
         });
       }
+      event.stopPropagation();
     }
   };
 
