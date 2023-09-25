@@ -72,12 +72,7 @@ export class TdsDropdown {
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-      element.setSelected(false);
-      return element;
-    });
-    this.selection = null;
-    this.host.setAttribute('value', null);
+    this.internalReset();
     this.handleChange();
   }
 
@@ -109,11 +104,13 @@ export class TdsDropdown {
     else nextValue = value;
 
     if (!this.multiselect && nextValue.length > 1) {
+      console.log(nextValue);
+      console.log(nextValue.length);
       console.warn('Tried to select multiple items, but multiselect is not enabled.');
       nextValue = [nextValue[0]];
     }
 
-    this.reset();
+    this.internalReset();
 
     for (let i = 0; i < nextValue.length; i++) {
       const optionExist = this.getChildren().some(
@@ -139,7 +136,11 @@ export class TdsDropdown {
    */
   @Method()
   async appendValue(value: { value: string; label: string }) {
-    this.setValue([...this.selection, value]);
+    if (this.multiselect && this.selection) {
+      this.setValue([...this.selection, value]);
+    } else {
+      this.setValue(value);
+    }
   }
 
   /** Method for removing a selected value in the Dropdown. */
@@ -266,6 +267,15 @@ export class TdsDropdown {
     if (this.defaultValue) {
       this.setDefaultOption();
     }
+  }
+
+  private internalReset() {
+    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      element.setSelected(false);
+      return element;
+    });
+    this.selection = null;
+    this.host.setAttribute('value', null);
   }
 
   setDefaultOption = () => {
