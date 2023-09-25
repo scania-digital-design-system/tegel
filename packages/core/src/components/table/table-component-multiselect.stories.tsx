@@ -118,7 +118,6 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     responsiveDesign: false,
-    multiselect: true,
     verticalDivider: false,
     noMinWidth: false,
     column1Width: '',
