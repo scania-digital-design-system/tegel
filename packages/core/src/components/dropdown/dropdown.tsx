@@ -104,8 +104,6 @@ export class TdsDropdown {
     else nextValue = value;
 
     if (!this.multiselect && nextValue.length > 1) {
-      console.log(nextValue);
-      console.log(nextValue.length);
       console.warn('Tried to select multiple items, but multiselect is not enabled.');
       nextValue = [nextValue[0]];
     }
