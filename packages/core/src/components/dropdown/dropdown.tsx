@@ -69,12 +69,10 @@ export class TdsDropdown {
 
   private inputElement: HTMLInputElement;
 
-  private children: Array<HTMLTdsDropdownOptionElement>;
-
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       element.setSelected(false);
       return element;
     });
@@ -92,7 +90,7 @@ export class TdsDropdown {
         : [{ value: newValue, label: newValueLabel }];
     } else {
       this.selection = [{ value: newValue, label: newValueLabel }];
-      this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
         if (element.value !== newValue) {
           element.setSelected(false);
         }
@@ -108,7 +106,7 @@ export class TdsDropdown {
   @Method()
   async removeValue(oldValue: string) {
     if (this.multiselect) {
-      this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
         if (element.value === oldValue) {
           this.selection = this.selection.filter((item) => item.value !== element.value);
           element.setSelected(false);
@@ -186,25 +184,28 @@ export class TdsDropdown {
       return;
     }
 
+    const children = this.getChildren();
     if (event.key === 'ArrowDown') {
       /* Get the index of the current focus index, if there is no
       nextElementSibling return the index for the first child in our Dropdown.  */
 
       const startingIndex = activeElement.nextElementSibling
-        ? this.children.findIndex((element) => element === activeElement.nextElementSibling)
+        ? children.findIndex((element) => element === activeElement.nextElementSibling)
         : 0;
 
-      const elementIndex = findNextFocusableElement(this.children, startingIndex);
-      this.children[elementIndex].focus();
+      const elementIndex = findNextFocusableElement(children, startingIndex);
+      children[elementIndex].focus();
     } else if (event.key === 'ArrowUp') {
       /* Get the index of the current focus index, if there is no
       previousElementSibling return the index for the first last in our Dropdown.  */
       const startingIndex = activeElement.nextElementSibling
-        ? this.children.findIndex((element) => element === activeElement.previousElementSibling)
+        ? this.getChildren().findIndex(
+            (element) => element === activeElement.previousElementSibling,
+          )
         : 0;
 
-      const elementIndex = findPreviousFocusableElement(this.children, startingIndex);
-      this.children[elementIndex].focus();
+      const elementIndex = findPreviousFocusableElement(children, startingIndex);
+      children[elementIndex].focus();
     } else if (event.key === 'Escape') {
       this.open = false;
     }
@@ -228,9 +229,9 @@ export class TdsDropdown {
   }
 
   setDefaultOption = () => {
-    this.children = Array.from(this.host.children)
+    Array.from(this.host.children)
       .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
-      .map((element: HTMLTdsDropdownOptionElement) => {
+      .forEach((element: HTMLTdsDropdownOptionElement) => {
         if (this.multiselect) {
           this.defaultValue.split(',').forEach((value) => {
             if (value === element.value) {
@@ -254,7 +255,9 @@ export class TdsDropdown {
 
   /* Returns a list of all children that are are tds-dropdown-option elements */
   private getChildren = () =>
-    Array.from(this.host.children).filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION');
+    Array.from(this.host.children).filter(
+      (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
+    ) as Array<HTMLTdsDropdownOptionElement>;
 
   getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
@@ -281,15 +284,16 @@ export class TdsDropdown {
     this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
     /* Check if the query is empty, and if so, show all options */
+    const children = this.getChildren();
     if (query === '') {
-      this.children = this.children.map((element) => {
+      children.forEach((element) => {
         element.removeAttribute('hidden');
         return element;
       });
       this.filterResult = null;
       /* Hide the options that do not match the query */
     } else {
-      this.filterResult = this.children.filter((element) => {
+      this.filterResult = children.filter((element) => {
         if (!element.textContent.toLowerCase().includes(query.toLowerCase())) {
           element.setAttribute('hidden', '');
         } else {
