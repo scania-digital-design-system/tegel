@@ -268,7 +268,7 @@ export class TdsDropdown {
   }
 
   private internalReset() {
-    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       element.setSelected(false);
       return element;
     });
@@ -302,7 +302,7 @@ export class TdsDropdown {
   };
 
   selectChildrenAsSelectedBasedOnSelectionProp() {
-    this.children = this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       this.selection.forEach((selection) => {
         if (element.value !== selection.value) {
           // If not multiselect, we need to unselect all other options.
