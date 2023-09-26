@@ -41,4 +41,4 @@ const Template = () =>
     <span>--tds-information</span>
   </div>`);
 
-export const Sematic = Template.bind({});
+export const Semantic = Template.bind({});
