@@ -16,7 +16,7 @@ export class Icon {
   /** Pass a size of icon as a string, for example: 32px, 1rem, 4em... */
   @Prop({ reflect: true }) size: string = '16px';
 
-  /** Override the defualt title for the svg. */
+  /** Override the default title for the svg. */
   @Prop() title: string;
 
   @State() icons_object: string = iconsCollection;
