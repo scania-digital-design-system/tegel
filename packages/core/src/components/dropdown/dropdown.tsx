@@ -72,7 +72,7 @@ export class TdsDropdown {
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       element.setSelected(false);
       return element;
     });
@@ -90,7 +90,7 @@ export class TdsDropdown {
         : [{ value: newValue, label: newValueLabel }];
     } else {
       this.selection = [{ value: newValue, label: newValueLabel }];
-      this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
         if (element.value !== newValue) {
           element.setSelected(false);
         }
@@ -106,7 +106,7 @@ export class TdsDropdown {
   @Method()
   async removeValue(oldValue: string) {
     if (this.multiselect) {
-      this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
         if (element.value === oldValue) {
           this.selection = this.selection.filter((item) => item.value !== element.value);
           element.setSelected(false);
@@ -231,7 +231,7 @@ export class TdsDropdown {
   setDefaultOption = () => {
     Array.from(this.host.children)
       .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
-      .map((element: HTMLTdsDropdownOptionElement) => {
+      .forEach((element: HTMLTdsDropdownOptionElement) => {
         if (this.multiselect) {
           this.defaultValue.split(',').forEach((value) => {
             if (value === element.value) {
@@ -286,7 +286,7 @@ export class TdsDropdown {
     /* Check if the query is empty, and if so, show all options */
     const children = this.getChildren();
     if (query === '') {
-      children.map((element) => {
+      children.forEach((element) => {
         element.removeAttribute('hidden');
         return element;
       });
