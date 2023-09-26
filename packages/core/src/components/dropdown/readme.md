@@ -68,7 +68,7 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | { value: string; label: string; } | { value: string; label: string; }[], label?: string) => Promise<{ value: string; label: string; }[]>`
+### `setValue(value: string | string[], label?: string) => Promise<{ value: string; label: string; }[]>`
 
 Method for setting the value of the Dropdown.
 

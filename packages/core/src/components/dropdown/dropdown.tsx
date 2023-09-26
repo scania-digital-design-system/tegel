@@ -59,7 +59,7 @@ export class TdsDropdown {
 
   @State() open: boolean = false;
 
-  @State() selection: Array<{ value: string; label: string }>;
+  @State() value: string[];
 
   @State() filterResult: number;
 
@@ -94,13 +94,11 @@ export class TdsDropdown {
    * </code>
    */
   @Method()
-  async setValue(
-    value: string | { value: string; label: string } | { value: string; label: string }[],
-    label?: string,
-  ) {
-    let nextValue: Array<{ value: string; label: string }>;
-    if (typeof value === 'string') nextValue = [{ value, label }];
-    else if (!Array.isArray(value)) nextValue = [value];
+  //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  async setValue(value: string | string[], label?: string) {
+    let nextValue: string[];
+    if (typeof value === 'string') nextValue = [value];
     else nextValue = value;
 
     if (!this.multiselect && nextValue.length > 1) {
@@ -112,30 +110,39 @@ export class TdsDropdown {
 
     for (let i = 0; i < nextValue.length; i++) {
       const optionExist = this.getChildren().some(
-        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i].value,
+        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i],
       );
       if (!optionExist) {
         nextValue.splice(i, 1);
       }
     }
 
-    this.selection = nextValue;
-
-    this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
-
+    this.value = nextValue;
+    this.host.setAttribute('value', this.value.map((val) => val).toString());
     this.selectChildrenAsSelectedBasedOnSelectionProp();
     this.handleChange();
 
-    return this.selection;
+    /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
+    // TODO - Clean up and just return this.value for 2.0
+    const selection = this.value?.flatMap((stringValue) => {
+      const matchingElement = this.getChildren().filter(
+        (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
+      );
+      return matchingElement.map((element: HTMLTdsDropdownOptionElement) => ({
+        value: element.value,
+        label: element.textContent.trim(),
+      }));
+    });
+    return selection;
   }
 
   /**
    * @internal
    */
   @Method()
-  async appendValue(value: { value: string; label: string }) {
-    if (this.multiselect && this.selection) {
-      this.setValue([...this.selection, value]);
+  async appendValue(value: string) {
+    if (this.multiselect && this.value) {
+      this.setValue([...this.value, value]);
     } else {
       this.setValue(value);
     }
@@ -144,10 +151,12 @@ export class TdsDropdown {
   /** Method for removing a selected value in the Dropdown. */
   @Method()
   async removeValue(oldValue: string) {
+    let label: string;
     if (this.multiselect) {
       this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
         if (element.value === oldValue) {
-          this.selection = this.selection.filter((item) => item.value !== element.value);
+          this.value = this.value.filter((value) => value !== element.value);
+          label = element.textContent.trim();
           element.setSelected(false);
         }
         return element;
@@ -156,7 +165,9 @@ export class TdsDropdown {
       this.reset();
     }
     this.handleChange();
-    return this.selection;
+    /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
+    // TODO - Clean up and just return this.value for 2.0
+    return this.value.map((value) => ({ value, label }));
   }
 
   /** Method for closing the Dropdown. */
@@ -256,7 +267,7 @@ export class TdsDropdown {
   handleOpenState() {
     if (this.filter && this.multiselect) {
       if (!this.open) {
-        this.inputElement.value = this.selection?.map((item) => item.label).toString() ?? null;
+        this.inputElement.value = this.value?.map((value) => value).toString() ?? null;
       }
     }
   }
@@ -272,7 +283,7 @@ export class TdsDropdown {
       element.setSelected(false);
       return element;
     });
-    this.selection = null;
+    this.value = null;
     this.host.setAttribute('value', null);
   }
 
@@ -284,15 +295,13 @@ export class TdsDropdown {
           this.defaultValue.split(',').forEach((value) => {
             if (value === element.value) {
               element.setSelected(true);
-              this.selection = this.selection
-                ? [...this.selection, { value: element.value, label: element.textContent }]
-                : [{ value: element.value, label: element.textContent }];
+              this.value = this.value ? [...this.value, element.value] : [element.value];
             }
           });
         } else {
           if (this.defaultValue === element.value) {
             element.setSelected(true);
-            this.selection = [{ value: element.value, label: element.textContent }];
+            this.value = [element.value];
           } else {
             element.setSelected(false);
           }
@@ -302,9 +311,9 @@ export class TdsDropdown {
   };
 
   selectChildrenAsSelectedBasedOnSelectionProp() {
-    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-      this.selection.forEach((selection) => {
-        if (element.value !== selection.value) {
+    this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+      this.value.forEach((selection) => {
+        if (element.value !== selection) {
           // If not multiselect, we need to unselect all other options.
           if (!this.multiselect) {
             element.setSelected(false);
@@ -338,10 +347,16 @@ export class TdsDropdown {
   };
 
   getValue = () => {
-    if (this.filter) {
-      return this.selection?.map((item) => item.label).toString();
-    }
-    return this.selection?.map((item) => item.label).join(', ');
+    const labels = this.value
+      ?.map((stringValue) => {
+        const matchingElement = this.getChildren().find(
+          (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
+        );
+        return matchingElement ? matchingElement.textContent.trim() : null;
+      })
+      .filter(Boolean);
+
+    return this.filter ? labels?.join(', ') : labels?.toString();
   };
 
   handleFilter = (event) => {
@@ -379,7 +394,7 @@ export class TdsDropdown {
   handleChange = () => {
     this.tdsChange.emit({
       name: this.name,
-      value: this.selection?.map((item) => item.value).toString() ?? null,
+      value: this.value?.map((value) => value).toString() ?? null,
     });
   };
 
@@ -387,7 +402,7 @@ export class TdsDropdown {
     appendHiddenInput(
       this.host,
       this.name,
-      this.selection?.map((item) => item.value).toString(),
+      this.value?.map((value) => value).toString(),
       this.disabled,
     );
     return (
@@ -413,7 +428,7 @@ export class TdsDropdown {
                     class={`
                     label-inside-as-placeholder
                     ${this.size}
-                    ${this.selection?.length ? 'selected' : ''}
+                    ${this.value?.length ? 'selected' : ''}
                     `}
                   >
                     {this.label}
@@ -464,7 +479,7 @@ export class TdsDropdown {
                 }
               }}
               class={`
-                ${this.selection ? 'value' : 'placeholder'}
+                ${this.value ? 'value' : 'placeholder'}
                 ${this.open ? 'open' : 'closed'}
                 ${this.error ? 'error' : ''}
                 `}
@@ -479,14 +494,14 @@ export class TdsDropdown {
                     class={`
                     label-inside-as-placeholder
                     ${this.size}
-                    ${this.selection?.length ? 'selected' : ''}
+                    ${this.value?.length ? 'selected' : ''}
                     `}
                   >
                     {this.label}
                   </div>
                 )}
                 <div class={`placeholder ${this.size}`}>
-                  {this.selection?.length ? this.getValue() : this.placeholder}
+                  {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
                   class={`${this.open ? 'open' : 'closed'}`}
