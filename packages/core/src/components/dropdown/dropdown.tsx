@@ -72,34 +72,73 @@ export class TdsDropdown {
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
-    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-      element.setSelected(false);
-      return element;
-    });
-    this.selection = null;
-    this.host.setAttribute('value', null);
+    this.internalReset();
     this.handleChange();
   }
 
-  /** Method for setting the value of the Dropdown. */
+  /** Method for setting the value of the Dropdown.
+   *
+   * Single selection example:
+   *
+   * <code>
+   *  dropdown.setValue('option-1', 'Option 1');
+   * </code>
+   *
+   * Multiselect example:
+   *
+   * <code>
+   *  dropdown.setValue([<br />
+   *  &nbsp;{ value: 'option-4', label: 'Option 4' },<br />
+   *  &nbsp;{ value: 'option-1', label: 'Option 1' }<br />
+   *  ]);
+   * </code>
+   */
   @Method()
-  async setValue(newValue: string, newValueLabel: string) {
-    if (this.multiselect) {
-      this.selection = this.selection
-        ? [...this.selection, { value: newValue, label: newValueLabel }]
-        : [{ value: newValue, label: newValueLabel }];
-    } else {
-      this.selection = [{ value: newValue, label: newValueLabel }];
-      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value !== newValue) {
-          element.setSelected(false);
-        }
-        return element;
-      });
+  async setValue(
+    value: string | { value: string; label: string } | { value: string; label: string }[],
+    label?: string,
+  ) {
+    let nextValue: Array<{ value: string; label: string }>;
+    if (typeof value === 'string') nextValue = [{ value, label }];
+    else if (!Array.isArray(value)) nextValue = [value];
+    else nextValue = value;
+
+    if (!this.multiselect && nextValue.length > 1) {
+      console.warn('Tried to select multiple items, but multiselect is not enabled.');
+      nextValue = [nextValue[0]];
     }
-    this.handleChange();
+
+    this.internalReset();
+
+    for (let i = 0; i < nextValue.length; i++) {
+      const optionExist = this.getChildren().some(
+        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i].value,
+      );
+      if (!optionExist) {
+        nextValue.splice(i, 1);
+      }
+    }
+
+    this.selection = nextValue;
+
     this.host.setAttribute('value', this.selection.map((selection) => selection.value).toString());
+
+    this.selectChildrenAsSelectedBasedOnSelectionProp();
+    this.handleChange();
+
     return this.selection;
+  }
+
+  /**
+   * @internal
+   */
+  @Method()
+  async appendValue(value: { value: string; label: string }) {
+    if (this.multiselect && this.selection) {
+      this.setValue([...this.selection, value]);
+    } else {
+      this.setValue(value);
+    }
   }
 
   /** Method for removing a selected value in the Dropdown. */
@@ -228,6 +267,15 @@ export class TdsDropdown {
     }
   }
 
+  private internalReset() {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+      element.setSelected(false);
+      return element;
+    });
+    this.selection = null;
+    this.host.setAttribute('value', null);
+  }
+
   setDefaultOption = () => {
     Array.from(this.host.children)
       .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
@@ -252,6 +300,22 @@ export class TdsDropdown {
         return element;
       });
   };
+
+  selectChildrenAsSelectedBasedOnSelectionProp() {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+      this.selection.forEach((selection) => {
+        if (element.value !== selection.value) {
+          // If not multiselect, we need to unselect all other options.
+          if (!this.multiselect) {
+            element.setSelected(false);
+          }
+        } else {
+          element.setSelected(true);
+        }
+      });
+      return element;
+    });
+  }
 
   /* Returns a list of all children that are are tds-dropdown-option elements */
   private getChildren = () =>
