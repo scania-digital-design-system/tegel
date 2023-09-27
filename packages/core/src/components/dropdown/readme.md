@@ -81,10 +81,7 @@ dropdown.setValue('option-1', 'Option 1');
 Multiselect example:
 
 <code>
-dropdown.setValue([<br />
-&nbsp;{ value: 'option-4', label: 'Option 4' },<br />
-&nbsp;{ value: 'option-1', label: 'Option 1' }<br />
-]);
+dropdown.setValue(['option-1', 'option-2']);
 </code>
 
 #### Returns
