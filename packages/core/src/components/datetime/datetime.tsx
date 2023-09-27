@@ -200,14 +200,14 @@ export class TdsDatetime {
           <div class="tds-datetime-bar"></div>
         </div>
 
-        <div class="tds-datetime-helper">
-          {this.helper && (
+        {this.helper && (
+          <div class="tds-datetime-helper">
             <div class="tds-helper">
               {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
               {this.helper}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
