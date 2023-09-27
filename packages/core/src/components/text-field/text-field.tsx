@@ -205,23 +205,25 @@ export class TdsTextField {
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
-        <div class="text-field-helper">
-          {this.state === 'error' && (
-            <div class="text-field-helper-error-state">
-              <tds-icon name="error" size="16px"></tds-icon>
-              {this.helper}
-            </div>
-          )}
-          {this.state !== 'error' && this.helper}
+        {(this.helper || this.maxLength > 0) && (
+          <div class="text-field-helper">
+            {this.state === 'error' && (
+              <div class="text-field-helper-error-state">
+                <tds-icon name="error" size="16px"></tds-icon>
+                {this.helper}
+              </div>
+            )}
+            {this.state !== 'error' && this.helper}
 
-          {this.maxLength > 0 && (
-            <div class="text-field-textcounter">
-              {this.value === null ? 0 : this.value?.length}
-              <span class="text-field-textcounter-divider"> / </span>
-              {this.maxLength}
-            </div>
-          )}
-        </div>
+            {this.maxLength > 0 && (
+              <div class="text-field-textcounter">
+                {this.value === null ? 0 : this.value?.length}
+                <span class="text-field-textcounter-divider"> / </span>
+                {this.maxLength}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     );
   }
