@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist",
   "files": [
     "dist"
@@ -10,7 +10,7 @@
     "build": "npx -p @angular/cli ng build components"
   },
   "dependencies": {
-    "@scania/tegel": "1.0.1",
+    "@scania/tegel": "1.0.3",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
