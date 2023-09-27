@@ -148,9 +148,9 @@ export class TdsDropdown {
   async removeValue(oldValue: string) {
     let label: string;
     if (this.multiselect) {
-      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+      this.getChildren()?.forEach((element: HTMLTdsDropdownOptionElement) => {
         if (element.value === oldValue) {
-          this.value = this.value.filter((value) => value !== element.value);
+          this.value = this.value?.filter((value) => value !== element.value);
           label = element.textContent.trim();
           element.setSelected(false);
         }
@@ -162,7 +162,7 @@ export class TdsDropdown {
     this.handleChange();
     /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
     // TODO - Clean up and just return this.value for 2.0
-    return this.value.map((value) => ({ value, label }));
+    return this.value?.map((value) => ({ value, label }));
   }
 
   /** Method for closing the Dropdown. */
