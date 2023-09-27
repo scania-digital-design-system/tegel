@@ -118,7 +118,7 @@ export class TdsDropdown {
     }
 
     this.value = nextValue;
-    this.host.setAttribute('value', this.value.map((val) => val).toString());
+    this.host.setAttribute('value', this.value?.map((val) => val).toString());
     this.selectChildrenAsSelectedBasedOnSelectionProp();
     this.handleChange();
 
