@@ -312,7 +312,7 @@ export class TdsDropdown {
   };
 
   selectChildrenAsSelectedBasedOnSelectionProp() {
-    this.getChildren().map((element: HTMLTdsDropdownOptionElement) => {
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       this.value.forEach((selection) => {
         if (element.value !== selection) {
           // If not multiselect, we need to unselect all other options.
@@ -323,7 +323,6 @@ export class TdsDropdown {
           element.setSelected(true);
         }
       });
-      return element;
     });
   }
 
