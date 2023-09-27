@@ -1,0 +1,58 @@
+:host {
+  button {
+    all: unset;
+    height: 100%;
+    width: 100%;
+    background-color: var(--tds-dropdown-bg);
+    border-bottom: 1px solid var(--tds-dropdown-border-bottom);
+    border-radius: 4px 4px 0 0;
+
+    &:hover {
+      border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
+    }
+
+    .value-wrapper {
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &.placeholder {
+      color: var(--tds-dropdown-placeholder-color);
+    }
+
+    &.value {
+      color: var(--tds-dropdown-value-color);
+      font: var(--tds-detail-02);
+      letter-spacing: var(--tds-detail-02-ls);
+
+      /** Needed to not get be affected by overflow:hidden 
+      The original line-height is 1.14 */
+      line-height: 1.3;
+    }
+
+    &:focus {
+      border-bottom-color: var(--tds-dropdown-border-bottom-open);
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: var(--tds-dropdown-border-bottom-open);
+      }
+    }
+
+    &.error {
+      border-bottom: 1px solid var(--tds-negative);
+    }
+
+    &:disabled {
+      color: var(--tds-dropdown-disabled-color);
+      border-bottom: 1px solid transparent;
+    }
+  }
+}
