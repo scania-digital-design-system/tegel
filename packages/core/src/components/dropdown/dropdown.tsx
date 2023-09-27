@@ -278,6 +278,7 @@ export class TdsDropdown {
     }
   }
 
+  /** Method that resets the dropdown without emitting an event. */
   private internalReset() {
     this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       element.setSelected(false);
