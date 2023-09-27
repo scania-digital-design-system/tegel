@@ -17,7 +17,7 @@ export class Icon {
   @Prop({ reflect: true }) size: string = '16px';
 
   /** Override the default title for the svg. */
-  @Prop() title: string;
+  @Prop() svgTitle: string;
 
   @State() icons_object: string = iconsCollection;
 
@@ -49,7 +49,7 @@ export class Icon {
             height={this.size}
             width={this.size}
           >
-            <title>{this.title ?? `${element.name} icon`}</title>
+            <title>{this.svgTitle ?? `${element.name} icon`}</title>
             <path fill="currentColor" d={element.definition} />
           </svg>
         );
