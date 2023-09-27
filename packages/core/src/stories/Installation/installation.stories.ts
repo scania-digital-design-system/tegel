@@ -48,8 +48,7 @@ export const Installation = {
             <li>
                 <p>Paste the following into that file:</p>
                 <pre>
-<code>import &#123; defineCustomElements, JSX as LocalJSX &#125; from
-    '@scania/tegel/loader';
+<code>import &#123; defineCustomElements, JSX as LocalJSX &#125; from '@scania/tegel/loader';
 import &#123; DetailedHTMLProps, HTMLAttributes &#125; from 'react';
 
 type StencilProps&lt;T&gt; = &#123;
@@ -83,8 +82,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './register-webcomponents';
 
-const root = ReactDOM.createRoot(document.
-    getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 &lt;React.StrictMode&gt;
     &lt;App /&gt;
@@ -119,8 +117,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { defineCustomElements } from '@scania/tegel/loader';
 
-const root = ReactDOM.createRoot(document.
-    getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
 &lt;React.StrictMode&gt;
     &lt;App /&gt;
@@ -149,8 +146,7 @@ defineCustomElements();</code>
             <li>
                 <p>In your main.ts import and call the function <code>defineCustomElements()</code></p>
                 <pre>
-                    <code>import { platformBrowserDynamic } from
-                        '@angular/platform-browser-dynamic';
+                    <code>import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { defineCustomElements } from '@scania/tegel/loader';
 import { AppModule } from './app/app.module';
 
