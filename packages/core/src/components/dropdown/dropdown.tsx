@@ -124,15 +124,10 @@ export class TdsDropdown {
 
     /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
     // TODO - Clean up and just return this.value for 2.0
-    const selection = this.value?.flatMap((stringValue) => {
-      const matchingElement = this.getChildren().filter(
-        (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
-      );
-      return matchingElement.map((element: HTMLTdsDropdownOptionElement) => ({
-        value: element.value,
-        label: element.textContent.trim(),
-      }));
-    });
+    const selection = this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
+      value: element.value,
+      label: element.textContent.trim(),
+    }));
     return selection;
   }
 
@@ -267,7 +262,7 @@ export class TdsDropdown {
   handleOpenState() {
     if (this.filter && this.multiselect) {
       if (!this.open) {
-        this.inputElement.value = this.value?.map((value) => value).toString() ?? null;
+        this.inputElement.value = this.getValue();
       }
     }
   }
@@ -288,7 +283,7 @@ export class TdsDropdown {
     this.host.setAttribute('value', null);
   }
 
-  setDefaultOption = () => {
+  private setDefaultOption = () => {
     Array.from(this.host.children)
       .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
       .forEach((element: HTMLTdsDropdownOptionElement) => {
@@ -311,7 +306,7 @@ export class TdsDropdown {
       });
   };
 
-  selectChildrenAsSelectedBasedOnSelectionProp() {
+  private selectChildrenAsSelectedBasedOnSelectionProp() {
     this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
       this.value.forEach((selection) => {
         if (element.value !== selection) {
@@ -346,16 +341,23 @@ export class TdsDropdown {
     return this.openDirection;
   };
 
-  getValue = () => {
-    const labels = this.value
+  private getSelectedChildren = () =>
+    this.value
       ?.map((stringValue) => {
         const matchingElement = this.getChildren().find(
           (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
         );
-        return matchingElement ? matchingElement.textContent.trim() : null;
+        return matchingElement;
       })
       .filter(Boolean);
 
+  private getSelectedChildrenLabels = () =>
+    this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
+      element.textContent.trim(),
+    );
+
+  getValue = () => {
+    const labels = this.getSelectedChildrenLabels();
     return this.filter ? labels?.join(', ') : labels?.toString();
   };
 
@@ -383,15 +385,15 @@ export class TdsDropdown {
     }
   };
 
-  handleFocus = (event) => {
+  private handleFocus = (event) => {
     this.tdsFocus.emit(event);
   };
 
-  handleBlur = (event) => {
+  private handleBlur = (event) => {
     this.tdsBlur.emit(event);
   };
 
-  handleChange = () => {
+  private handleChange = () => {
     this.tdsChange.emit({
       name: this.name,
       value: this.value?.map((value) => value).toString() ?? null,
