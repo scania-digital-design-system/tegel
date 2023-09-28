@@ -90,16 +90,16 @@
 
     .header,
     slot[name='header']::slotted(*) {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+      font: var(--tds-headline-07) !important;
+      letter-spacing: var(--tds-headline-07-ls) !important;
       color: var(--tds-toast-headline-color);
     }
 
     .subheader,
     slot[name='subheader']::slotted(*) {
       color: var(--tds-toast-subheadline-color);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      font: var(--tds-detail-02) !important;
+      letter-spacing: var(--tds-detail-02-ls) !important;
       max-width: 252px;
       white-space: nowrap;
       overflow: hidden;

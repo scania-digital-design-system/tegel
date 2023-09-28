@@ -11,8 +11,8 @@
   ::slotted(*) {
     all: unset;
     font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
-    color: var(--tds-navigation-tabs-tab-color);
+    letter-spacing: var(--tds-headline-07-ls) !important;
+    color: var(--tds-navigation-tabs-tab-color) !important;
     text-decoration: none;
     display: block;
     position: relative;

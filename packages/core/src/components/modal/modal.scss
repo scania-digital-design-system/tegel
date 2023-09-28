@@ -133,8 +133,8 @@ $modals: (
 
 @mixin modal-header-title {
   color: var(--tds-modal-text);
-  font: var(--tds-headline-05);
-  letter-spacing: var(--tds-headline-05-ls);
+  font: var(--tds-headline-05) !important;
+  letter-spacing: var(--tds-headline-05-ls) !important;
   margin: 0;
   flex: 1;
 }
