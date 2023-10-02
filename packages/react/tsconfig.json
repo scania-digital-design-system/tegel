@@ -1,0 +1,23 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+			"baseUrl": "./",
+   	 	"paths": {
+      "components": [
+        "dist/components"
+				]
+			},
+      "outDir": "./dist",
+      "lib": ["dom", "es2017"],
+			"module": "esnext",
+      "moduleResolution": "node",
+      "target": "es2017",
+      "skipLibCheck": true,
+      "jsx": "react",
+			"jsxFactory": "h",
+      "allowSyntheticDefaultImports": true,
+			"declaration": false,
+    },
+    "include": ["lib"],
+    "exclude": ["node_modules"]
+  }
