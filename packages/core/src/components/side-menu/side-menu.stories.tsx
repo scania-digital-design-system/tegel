@@ -74,6 +74,7 @@ export default {
   args: {
     persistent: true,
     collapsible: false,
+    collapsed: false,
   },
 };
 
