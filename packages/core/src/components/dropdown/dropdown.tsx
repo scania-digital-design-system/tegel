@@ -120,7 +120,7 @@ export class TdsDropdown {
     this.handleChange();
 
     /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
-    // TODO - Clean up and just return this.value for 2.0
+    /* https://tegel.atlassian.net/browse/CDEP-2703 */
     const selection = this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
       label: element.textContent.trim(),
@@ -158,7 +158,7 @@ export class TdsDropdown {
     }
     this.handleChange();
     /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
-    // TODO - Clean up and just return this.value for 2.0
+    /* https://tegel.atlassian.net/browse/CDEP-2703 */
     return this.value?.map((value) => ({ value, label }));
   }
 
