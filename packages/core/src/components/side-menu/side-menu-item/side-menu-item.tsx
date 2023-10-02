@@ -63,6 +63,7 @@ export class TdsSideMenuItem {
     // closest() will return null if side-menu-item is inside a shadowRoot that
     // does not contain a side-menu. This is the case for the side-menu-dropdown.
     this.sideMenuEl = this.host.closest('tds-side-menu');
+    this.collapsed = this.sideMenuEl.collapsed;
   }
 
   componentDidLoad() {
