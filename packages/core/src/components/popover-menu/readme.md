@@ -1,7 +1,21 @@
 # tds-popover-menu
 
 
+### Usage in Angular
+If you are using the `<popover-menu>` in an Angular environment and want to
+use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
 
+```html
+<div #myReference>
+  <tds-button text="Button"></tds-button>
+</div>
+<tds-popover-menu [referenceEl]="myReference">
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+</tds-popover-menu>
+
+```
 <!-- Auto Generated Below -->
 
 
