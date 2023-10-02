@@ -23,7 +23,7 @@ export class TdsSideMenuDropdownList {
 
   connectedCallback() {
     this.sideMenuEl = this.host.closest('tds-side-menu');
-    this.collapsed = this.sideMenuEl.collapsed;
+    this.collapsed = this.sideMenuEl?.collapsed;
   }
 
   render() {
