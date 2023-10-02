@@ -1,5 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
-import { State } from '@stencil/core/internal';
+import { Component, Host, h, Prop, Element, State } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For footer items.
