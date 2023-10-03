@@ -9,6 +9,7 @@
     "build": "cd packages/core && npm run build",
     "build-angular": "npm run build && cd packages/angular && npm i && npm run build ",
     "build-react": "npm run build && cd packages/react && npm i && npm run build ",
+    "build-all": "npm run build && (cd packages/angular && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
     "prepare": "husky install"
