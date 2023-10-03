@@ -1,5 +1,4 @@
-import { Component, h, Element } from '@stencil/core';
-import { Host, Prop } from '@stencil/core/internal';
+import { Component, h, Element, Host, Prop } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 
 /**

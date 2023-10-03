@@ -1,5 +1,4 @@
-import { Component, Host, h, Prop, Element, Event, EventEmitter } from '@stencil/core';
-import { Method } from '@stencil/core/internal';
+import { Component, Host, h, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
 

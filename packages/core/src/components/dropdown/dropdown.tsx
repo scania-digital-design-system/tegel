@@ -1,5 +1,16 @@
-import { Component, Host, h, Element, State } from '@stencil/core';
-import { Event, EventEmitter, Listen, Method, Prop, Watch } from '@stencil/core/internal';
+import {
+  Component,
+  Host,
+  h,
+  Element,
+  State,
+  Event,
+  EventEmitter,
+  Listen,
+  Method,
+  Prop,
+  Watch,
+} from '@stencil/core';
 import findNextFocusableElement from '../../utils/findNextFocusableElement';
 import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
 import appendHiddenInput from '../../utils/appendHiddenInput';
