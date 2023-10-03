@@ -1,3 +1,2 @@
 export * from './components/stencil-generated';
-import { defineCustomElements } from '@scania/tegel/loader';
-defineCustomElements();
+export { defineCustomElements } from '@scania/tegel/loader';
