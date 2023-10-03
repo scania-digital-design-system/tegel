@@ -1,5 +1,14 @@
-import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
-import { EventEmitter, Method } from '@stencil/core/internal';
+import {
+  Component,
+  Host,
+  h,
+  Prop,
+  State,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+} from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
 
 /**
