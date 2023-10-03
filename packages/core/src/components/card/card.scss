@@ -77,6 +77,7 @@
   }
 
   slot[name='body']::slotted(*) {
+    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
     font: var(--tds-detail-03) !important;
     letter-spacing: var(--tds-detail-03-ls) !important;
     color: var(--tds-card-body-color);

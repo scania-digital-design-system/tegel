@@ -133,6 +133,8 @@ $modals: (
 
 @mixin modal-header-title {
   color: var(--tds-modal-text);
+
+  /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
   font: var(--tds-headline-05) !important;
   letter-spacing: var(--tds-headline-05-ls) !important;
   margin: 0;
