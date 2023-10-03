@@ -24,10 +24,6 @@
       position: absolute;
       left: 50%;
     }
-
-    ::slotted(*) {
-      background-color: red;
-    }
   }
 }
 
