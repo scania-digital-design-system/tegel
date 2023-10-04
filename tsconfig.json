@@ -12,7 +12,6 @@
     "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "jsx": "react-jsx"
   },
   "include": ["packages/core/src"]
 }
