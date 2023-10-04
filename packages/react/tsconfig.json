@@ -11,10 +11,10 @@
       "moduleResolution": "node",
       "target": "es2017",
       "skipLibCheck": true,
-      "jsx": "react",
+      "jsx": "react-jsx",
       "allowSyntheticDefaultImports": true,
       "declaration": true,
-      "declarationDir": "./dist/types"
+      "declarationDir": "./dist/types",
     },
     "include": ["lib"],
     "exclude": ["node_modules"]
