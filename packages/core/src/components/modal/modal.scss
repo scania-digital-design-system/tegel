@@ -300,6 +300,7 @@ button.tds-modal-close {
 /* WEB COMPONENT STUFF */
 
 :host {
+  @include tds-box-sizing;
   @include modal-host;
 
   .tds-modal-close {
