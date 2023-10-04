@@ -90,29 +90,6 @@ $modals: (
   }
 }
 
-@mixin modal-host {
-  left: 0;
-  top: 0;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: tds-z-index(modal);
-  background-color: var(--tds-modal-backdrop);
-  padding: 0 16px;
-
-  @media (max-width: $screen-s) {
-    padding: 0;
-  }
-
-  &.show {
-    display: flex;
-  }
-
-  &.hide {
-    display: none;
-  }
-}
-
 @mixin modal-header {
   display: flex;
   padding-bottom: var(--tds-spacing-element-8);
@@ -155,6 +132,14 @@ $modals: (
   }
 }
 
+@mixin modal-position {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 /* MODAL STYLING */
 
 .tds-modal {
@@ -167,6 +152,7 @@ $modals: (
   padding: 16px;
   max-height: 85vh;
   overflow-y: auto;
+  pointer-events: auto;
 
   @include modal-scroll-outer;
 
@@ -243,7 +229,10 @@ slot[name='header']::slotted(*) {
 
 .tds-modal-backdrop {
   @include tds-box-sizing;
-  @include modal-host;
+  @include modal-position;
+
+  background-color: var(--tds-modal-backdrop);
+  pointer-events: auto;
 }
 
 button.tds-modal-close {
@@ -300,8 +289,11 @@ button.tds-modal-close {
 /* WEB COMPONENT STUFF */
 
 :host {
-  @include tds-box-sizing;
-  @include modal-host;
+  @include modal-position;
+
+  padding: 0 16px;
+  z-index: tds-z-index(modal);
+  pointer-events: none;
 
   .tds-modal-close {
     border: none;
@@ -311,6 +303,18 @@ button.tds-modal-close {
   .tds-modal-close-btn {
     border: none;
     background-color: transparent;
+  }
+
+  @media (max-width: $screen-s) {
+    padding: 0;
+  }
+
+  &.show {
+    display: flex;
+  }
+
+  &.hide {
+    display: none;
   }
 }
 
