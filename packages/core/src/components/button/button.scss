@@ -130,7 +130,7 @@ button {
         #{$prop}: var(--tds-btn-#{$type}-#{$prop});
       }
 
-      .icon {
+      &.icon {
         @each $prop in $iconProps {
           fill: var(--tds-btn-icon-#{$type}-#{$prop});
           color: var(--tds-btn-icon-#{$type}-#{$prop});
