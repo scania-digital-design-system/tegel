@@ -103,6 +103,7 @@ export class TdsDropdown {
    */
   @Method()
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
+  // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   async setValue(value: string | string[], label?: string) {
     let nextValue: string[];
