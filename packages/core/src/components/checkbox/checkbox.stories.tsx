@@ -71,8 +71,8 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
   formatHtmlPreview(`
     <tds-checkbox
         ${checked ? 'checked' : ''}
-        ${indeterminate ? 'indeterminate' : ''}
         ${disabled ? 'disabled' : ''}
+        ${indeterminate ? 'indeterminate' : ''}
         value="allSelected"
         checkbox-id="all-selected-checkbox"
         >
@@ -81,6 +81,7 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
     <tds-checkbox
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
+        ${indeterminate ? 'indeterminate' : ''}
         value="checkbox-1"
         checkbox-id="first-checkbox"
         >
@@ -89,6 +90,7 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
     <tds-checkbox
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
+        ${indeterminate ? 'indeterminate' : ''}
         value="checkbox-2"
         checkbox-id="second-checkbox"
         >
@@ -104,10 +106,12 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
       allSelectedCheckbox.addEventListener('tdsChange', (event) => {
           firstCheckbox.checked = event.detail.checked;
           secondCheckbox.checked = event.detail.checked;
+          handleCheckboxChange(secondCheckbox, firstCheckbox);
+
       });
       
       function handleCheckboxChange(checkbox, otherCheckbox) {
-          if (!checkbox.checked && otherCheckbox.checked) {
+          if (checkbox.checked !== otherCheckbox.checked) {
               allSelectedCheckbox.checked = false;
               allSelectedCheckbox.indeterminate = true;
           } else if (checkbox.checked && otherCheckbox.checked) {
@@ -126,6 +130,7 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
       secondCheckbox.addEventListener('tdsChange', (event) => {
           handleCheckboxChange(secondCheckbox, firstCheckbox);
       });
+
     </script>
   `);
 
