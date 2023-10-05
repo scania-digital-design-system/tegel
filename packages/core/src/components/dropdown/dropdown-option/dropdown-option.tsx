@@ -38,6 +38,8 @@ export class TdsDropdownOption {
 
   private parentElement: HTMLTdsDropdownElement;
 
+  // @ts-ignore
+  // eslint-disable-next-line no-unused-vars,
   private label: string;
 
   /** Method to select/deselect an option. */
