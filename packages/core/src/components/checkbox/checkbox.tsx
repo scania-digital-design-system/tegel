@@ -28,9 +28,6 @@ export class TdsCheckbox {
   /** Sets the Checkbox as checked */
   @Prop({ reflect: true }) checked: boolean = false;
 
-  /** Sets the Checkbox as indeterminate */
-  @Prop() indeterminate: boolean = false;
-
   /** Value for the Checkbox */
   @Prop() value: string;
 
@@ -54,7 +51,6 @@ export class TdsCheckbox {
   tdsChange: EventEmitter<{
     checkboxId: string;
     checked: boolean;
-    indeterminate: boolean;
     value?: string;
   }>;
 
@@ -63,7 +59,6 @@ export class TdsCheckbox {
     this.tdsChange.emit({
       checkboxId: this.checkboxId,
       checked: this.checked,
-      indeterminate: this.indeterminate,
       value: this.value,
     });
   };
@@ -100,9 +95,6 @@ export class TdsCheckbox {
     return (
       <div class="tds-checkbox">
         <input
-          class={{
-            'indeterminate': this.indeterminate
-          }}
           aria-checked={this.checked}
           aria-required={this.required}
           aria-describedby={this.host.getAttribute('aria-describedby')}
