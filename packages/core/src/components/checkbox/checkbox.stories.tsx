@@ -38,16 +38,6 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    indeterminate: {
-      name: 'Indeterminate',
-      description: 'Sets the checkbox in a intederminte state.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the Checkbox.',
@@ -63,15 +53,13 @@ export default {
     label: 'Label',
     checked: false,
     disabled: false,
-    indeterminate: false,
   },
 };
 
-const Template = ({ label, checked, disabled, indeterminate }) =>
+const Template = ({ label, checked, disabled }) =>
   formatHtmlPreview(`
     <tds-checkbox
         ${checked ? 'checked' : ''}
-        ${indeterminate ? 'indeterminate' : ''}
         ${disabled ? 'disabled' : ''}
         value="checkbox-value"
         >
