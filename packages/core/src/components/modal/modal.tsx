@@ -71,7 +71,7 @@ export class TdsModal {
   tdsClose: EventEmitter<any>;
 
   connectedCallback() {
-    if (this.show !== null) {
+    if (this.show !== undefined) {
       this.isShown = this.show;
     }
     this.setDismissButtons();
@@ -96,19 +96,19 @@ export class TdsModal {
   };
 
   /** Checks if click on Modal is on overlay, if so it closes the Modal if prevent is not true. */
-  handleOverlayClick(event) {
+  handleOverlayClick = (event: PointerEvent) => {
     const targetList = event.composedPath();
-    const target = targetList[0];
+    const target = targetList[0] as HTMLElement;
     if (
       target.classList[0] === 'tds-modal-close' ||
       (target.classList[0] === 'tds-modal-backdrop' && this.prevent === false)
     ) {
       this.handleClose(event);
     }
-  }
+  };
 
   /** Adds an event listener to the reference element that shows/closes the Modal. */
-  initializeReferenceElement = (referenceEl) => {
+  initializeReferenceElement = (referenceEl: HTMLElement) => {
     if (referenceEl) {
       referenceEl.addEventListener('click', (event) => {
         if (this.isShown) {
@@ -142,33 +142,31 @@ export class TdsModal {
   render() {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
+
     return (
       <Host
-        onClick={(event) => {
-          this.handleOverlayClick(event);
-        }}
-        class={`tds-modal-backdrop ${this.isShown ? 'show' : 'hide'}`}
+        class={`${this.isShown ? 'show' : 'hide'}`}
+        onClick={(event) => this.handleOverlayClick(event)}
       >
+        <div class="tds-modal-backdrop" />
         <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
           <div class="header">
             {this.header && <div class="header">{this.header}</div>}
-            {usesHeaderSlot && <slot name="header"></slot>}
+            {usesHeaderSlot && <slot name="header" />}
             <button
               class="tds-modal-close"
               aria-label="close"
-              onClick={(event) => {
-                this.handleClose(event);
-              }}
+              onClick={(event) => this.handleClose(event)}
             >
-              <tds-icon name="cross" size="20px"></tds-icon>
+              <tds-icon name="cross" size="20px" />
             </button>
           </div>
 
           <div class="body">
-            <slot name="body"></slot>
+            <slot name="body" />
           </div>
 
-          {usesActionsSlot && <slot name="actions"></slot>}
+          {usesActionsSlot && <slot name="actions" />}
         </div>
       </Host>
     );
