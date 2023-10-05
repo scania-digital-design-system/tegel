@@ -84,11 +84,5 @@ describe('tds-table filtering', () => {
     inputEl.dispatchEvent(new Event('keydown'));
     inputEl.dispatchEvent(new Event('input'));
     inputEl.dispatchEvent(new Event('keyup'));
-
-    // eslint-disable-next-line
-    const mismatchingCellEl = (await page.doc.querySelector(
-      'tds-body-cell[cell-value^=Ferrell]',
-    )) as HTMLElement;
-    // TODO: assert that mismatchingCellEl is not visible, not sure how to do it..
   });
 });
