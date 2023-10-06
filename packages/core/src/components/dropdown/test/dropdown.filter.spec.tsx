@@ -20,54 +20,35 @@ const options = [
     disabled: true,
   },
 ];
+
+const getTemplate = (defaultValue?: string) => ({
+  components: [TdsDropdown, TdsDropdownOption],
+  template: () => (
+    <tds-dropdown filter defaultValue={defaultValue}>
+      {options.map((option) => (
+        <tds-dropdown-option value={option.value} disabled={option.disabled}>
+          {option.label}
+        </tds-dropdown-option>
+      ))}
+    </tds-dropdown>
+  ),
+});
+
 describe('filter dropdown', () => {
   it('should render children correctly', async () => {
-    const page = await newSpecPage({
-      components: [TdsDropdown, TdsDropdownOption],
-      template: () => (
-        <tds-dropdown filter>
-          {options.map((option) => (
-            <tds-dropdown-option value={option.value} disabled={option.disabled}>
-              {option.label}
-            </tds-dropdown-option>
-          ))}
-        </tds-dropdown>
-      ),
-    });
+    const page = await newSpecPage(getTemplate());
 
     const children = await page.doc.querySelectorAll('tds-dropdown-option');
     expect(children.length).toBe(3);
   });
   it('should set defaultValue correctly', async () => {
-    const page = await newSpecPage({
-      components: [TdsDropdown, TdsDropdownOption],
-      template: () => (
-        <tds-dropdown filter defaultValue="option-1">
-          {options.map((option) => (
-            <tds-dropdown-option value={option.value} disabled={option.disabled}>
-              {option.label}
-            </tds-dropdown-option>
-          ))}
-        </tds-dropdown>
-      ),
-    });
+    const page = await newSpecPage(getTemplate('option-1'));
 
     const dropdown = await page.doc.querySelector('tds-dropdown');
     expect(dropdown.getAttribute('value')).toBe('option-1');
   });
   it('should set value using setValue() correctly', async () => {
-    const page = await newSpecPage({
-      components: [TdsDropdown, TdsDropdownOption],
-      template: () => (
-        <tds-dropdown filter defaultValue="option-3">
-          {options.map((option) => (
-            <tds-dropdown-option value={option.value} disabled={option.disabled}>
-              {option.label}
-            </tds-dropdown-option>
-          ))}
-        </tds-dropdown>
-      ),
-    });
+    const page = await newSpecPage(getTemplate('option-3'));
 
     const dropdown = await page.doc.querySelector('tds-dropdown');
     await dropdown.setValue('option-1');
@@ -75,18 +56,7 @@ describe('filter dropdown', () => {
   });
 
   it('should remove value using removeValue() correctly', async () => {
-    const page = await newSpecPage({
-      components: [TdsDropdown, TdsDropdownOption],
-      template: () => (
-        <tds-dropdown filter defaultValue="option-3">
-          {options.map((option) => (
-            <tds-dropdown-option value={option.value} disabled={option.disabled}>
-              {option.label}
-            </tds-dropdown-option>
-          ))}
-        </tds-dropdown>
-      ),
-    });
+    const page = await newSpecPage(getTemplate('option-3'));
 
     const dropdown = await page.doc.querySelector('tds-dropdown');
     await dropdown.removeValue('option-3');
