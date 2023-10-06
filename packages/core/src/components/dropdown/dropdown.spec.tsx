@@ -109,6 +109,42 @@ describe('singleselect dropdown', () => {
     expect(dropdown.getAttribute('value')).toBe('option-1');
     expect(dropdown.getAttribute('value')).not.toBe('option-3');
   });
+
+  it('should remove value using removeValue() correctly', async () => {
+    const options = [
+      {
+        value: 'option-1',
+        label: 'Option 1',
+        disabled: false,
+      },
+      {
+        value: 'option-2',
+        label: 'Option 2',
+        disabled: false,
+      },
+      {
+        value: 'option-3',
+        label: 'Option 3',
+        disabled: true,
+      },
+    ];
+    const page = await newSpecPage({
+      components: [TdsDropdown, TdsDropdownOption],
+      template: () => (
+        <tds-dropdown defaultValue="option-3">
+          {options.map((option) => (
+            <tds-dropdown-option value={option.value} disabled={option.disabled}>
+              {option.label}
+            </tds-dropdown-option>
+          ))}
+        </tds-dropdown>
+      ),
+    });
+
+    const dropdown = await page.doc.querySelector('tds-dropdown');
+    await dropdown.removeValue('option-3');
+    expect(dropdown.getAttribute('value')).toBe('undefined' || 'null');
+  });
 });
 describe('multiselect dropdown', () => {
   it('should render children correctly', async () => {
@@ -213,6 +249,44 @@ describe('multiselect dropdown', () => {
     const dropdown = await page.doc.querySelector('tds-dropdown');
     await dropdown.setValue(['option-1', 'option-3']);
     expect(dropdown.getAttribute('value')).toBe('option-1,option-3');
+  });
+
+  it('should remove value using removeValue() correctly', async () => {
+    const options = [
+      {
+        value: 'option-1',
+        label: 'Option 1',
+        disabled: false,
+      },
+      {
+        value: 'option-2',
+        label: 'Option 2',
+        disabled: false,
+      },
+      {
+        value: 'option-3',
+        label: 'Option 3',
+        disabled: true,
+      },
+    ];
+    const page = await newSpecPage({
+      components: [TdsDropdown, TdsDropdownOption],
+      template: () => (
+        <tds-dropdown multiselect defaultValue="option-3,option-1">
+          {options.map((option) => (
+            <tds-dropdown-option value={option.value} disabled={option.disabled}>
+              {option.label}
+            </tds-dropdown-option>
+          ))}
+        </tds-dropdown>
+      ),
+    });
+
+    const dropdown = await page.doc.querySelector('tds-dropdown');
+    await dropdown.removeValue('option-3');
+    expect(dropdown.getAttribute('value')).toBe('option-1');
+    await dropdown.removeValue('option-1');
+    expect(dropdown.getAttribute('value')).toBe('');
   });
 });
 
@@ -319,5 +393,41 @@ describe('filter dropdown', () => {
     const dropdown = await page.doc.querySelector('tds-dropdown');
     await dropdown.setValue('option-1');
     expect(dropdown.getAttribute('value')).toBe('option-1');
+  });
+
+  it('should remove value using removeValue() correctly', async () => {
+    const options = [
+      {
+        value: 'option-1',
+        label: 'Option 1',
+        disabled: false,
+      },
+      {
+        value: 'option-2',
+        label: 'Option 2',
+        disabled: false,
+      },
+      {
+        value: 'option-3',
+        label: 'Option 3',
+        disabled: true,
+      },
+    ];
+    const page = await newSpecPage({
+      components: [TdsDropdown, TdsDropdownOption],
+      template: () => (
+        <tds-dropdown filter defaultValue="option-3">
+          {options.map((option) => (
+            <tds-dropdown-option value={option.value} disabled={option.disabled}>
+              {option.label}
+            </tds-dropdown-option>
+          ))}
+        </tds-dropdown>
+      ),
+    });
+
+    const dropdown = await page.doc.querySelector('tds-dropdown');
+    await dropdown.removeValue('option-3');
+    expect(dropdown.getAttribute('value')).toBe('undefined' || 'null');
   });
 });

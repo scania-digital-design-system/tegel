@@ -169,6 +169,7 @@ export class TdsDropdown {
       this.reset();
     }
     this.handleChange();
+    this.host.setAttribute('value', this.value?.toString());
     /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
     /* https://tegel.atlassian.net/browse/CDEP-2703 */
     return this.value?.map((value) => ({ value, label }));
