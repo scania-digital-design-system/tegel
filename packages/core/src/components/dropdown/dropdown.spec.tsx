@@ -3,25 +3,25 @@ import { h } from '@stencil/core';
 import { TdsDropdown } from './dropdown';
 import { TdsDropdownOption } from './dropdown-option/dropdown-option';
 
+const options = [
+  {
+    value: 'option-1',
+    label: 'Option 1',
+    disabled: false,
+  },
+  {
+    value: 'option-2',
+    label: 'Option 2',
+    disabled: false,
+  },
+  {
+    value: 'option-3',
+    label: 'Option 3',
+    disabled: true,
+  },
+];
 describe('singleselect dropdown', () => {
   it('should render children correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -39,23 +39,6 @@ describe('singleselect dropdown', () => {
     expect(children.length).toBe(3);
   });
   it('should set defaultValue correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -74,23 +57,6 @@ describe('singleselect dropdown', () => {
     expect(dropdown.getAttribute('value')).not.toBe('option-2');
   });
   it('should set value using setValue() correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -111,23 +77,6 @@ describe('singleselect dropdown', () => {
   });
 
   it('should remove value using removeValue() correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -148,23 +97,6 @@ describe('singleselect dropdown', () => {
 });
 describe('multiselect dropdown', () => {
   it('should render children correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -182,23 +114,6 @@ describe('multiselect dropdown', () => {
     expect(children.length).toBe(3);
   });
   it('should set defaultValue correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -216,23 +131,6 @@ describe('multiselect dropdown', () => {
     expect(dropdown.getAttribute('value')).toBe('option-1,option-2');
   });
   it('should set value using setValue() correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -252,23 +150,6 @@ describe('multiselect dropdown', () => {
   });
 
   it('should remove value using removeValue() correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -292,23 +173,6 @@ describe('multiselect dropdown', () => {
 
 describe('filter dropdown', () => {
   it('should render children correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -326,23 +190,6 @@ describe('filter dropdown', () => {
     expect(children.length).toBe(3);
   });
   it('should set defaultValue correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -360,23 +207,6 @@ describe('filter dropdown', () => {
     expect(dropdown.getAttribute('value')).toBe('option-1');
   });
   it('should set value using setValue() correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
@@ -396,23 +226,6 @@ describe('filter dropdown', () => {
   });
 
   it('should remove value using removeValue() correctly', async () => {
-    const options = [
-      {
-        value: 'option-1',
-        label: 'Option 1',
-        disabled: false,
-      },
-      {
-        value: 'option-2',
-        label: 'Option 2',
-        disabled: false,
-      },
-      {
-        value: 'option-3',
-        label: 'Option 3',
-        disabled: true,
-      },
-    ];
     const page = await newSpecPage({
       components: [TdsDropdown, TdsDropdownOption],
       template: () => (
