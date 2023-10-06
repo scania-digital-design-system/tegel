@@ -276,7 +276,7 @@ export class TdsDropdown {
     }
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     if (this.defaultValue) {
       this.setDefaultOption();
     }
@@ -311,6 +311,7 @@ export class TdsDropdown {
             element.setSelected(false);
           }
         }
+        this.host.setAttribute('value', this.value?.toString());
         return element;
       });
   };
