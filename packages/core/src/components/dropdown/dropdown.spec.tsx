@@ -143,7 +143,7 @@ describe('singleselect dropdown', () => {
 
     const dropdown = await page.doc.querySelector('tds-dropdown');
     await dropdown.removeValue('option-3');
-    expect(dropdown.getAttribute('value')).toBe('undefined' || 'null');
+    expect(dropdown.getAttribute('value')).toBe('null');
   });
 });
 describe('multiselect dropdown', () => {
@@ -286,7 +286,7 @@ describe('multiselect dropdown', () => {
     await dropdown.removeValue('option-3');
     expect(dropdown.getAttribute('value')).toBe('option-1');
     await dropdown.removeValue('option-1');
-    expect(dropdown.getAttribute('value')).toBe('');
+    expect(dropdown.getAttribute('value')).toBe('null');
   });
 });
 
@@ -428,6 +428,6 @@ describe('filter dropdown', () => {
 
     const dropdown = await page.doc.querySelector('tds-dropdown');
     await dropdown.removeValue('option-3');
-    expect(dropdown.getAttribute('value')).toBe('undefined' || 'null');
+    expect(dropdown.getAttribute('value')).toBe('null');
   });
 });
