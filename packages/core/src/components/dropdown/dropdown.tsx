@@ -465,7 +465,6 @@ export class TdsDropdown {
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onBlur={(event) => {
-                    console.log('blurrr');
                     this.filterFocus = false;
                     this.handleBlur(event);
                   }}
