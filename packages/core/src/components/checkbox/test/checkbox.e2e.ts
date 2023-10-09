@@ -1,6 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('tds-checbox', () => {
+describe('tds-checkbox', () => {
   it('should toggle checked state when clicked', async () => {
     const page = await newE2EPage();
     await page.setContent(`
