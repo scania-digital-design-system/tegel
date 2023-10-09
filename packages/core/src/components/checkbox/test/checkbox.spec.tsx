@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { h } from '@stencil/core';
-import { TdsCheckbox } from './checkbox';
+import { TdsCheckbox } from '../checkbox';
 
 describe('tds-checkbox', () => {
   it('should render with correct default values', async () => {
