@@ -143,7 +143,10 @@ export class TdsDropdownOption {
         >
           {this.multiselect ? (
             <div
-              class="multiselect"
+              class={{
+                multiselect: true,
+                [this.size]: true,
+              }}
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
                   this.parentElement.close();
@@ -170,6 +173,7 @@ export class TdsDropdownOption {
               onFocus={(event) => this.handleFocus(event)}
               onBlur={(event) => this.handleBlur(event)}
               disabled={this.disabled}
+              class={this.size}
             >
               <div class="single-select">
                 <slot></slot>

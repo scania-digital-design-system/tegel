@@ -19,22 +19,25 @@
       color: var(--tds-dropdown-option-color-disabled);
     }
 
-    &.lg {
-      padding: 20px 0;
-    }
-
-    &.md {
-      padding: 16px 0;
-    }
-
-    &.sm {
-      padding: 12px 0;
+    & button:focus {
+      @include tds-focus-state;
     }
 
     button {
       all: unset;
       width: 100%;
-      height: 100%;
+
+      &.lg {
+        padding: 19px 0 20px;
+      }
+
+      &.md {
+        padding: 15px 0 16px;
+      }
+
+      &.sm {
+        padding: 11px 0 12px;
+      }
 
       .single-select {
         display: flex;
@@ -42,15 +45,23 @@
         justify-content: space-between;
         padding: 0 16px;
       }
-
-      &:focus {
-        @include tds-focus-state;
-      }
     }
 
     .multiselect {
       width: 100%;
       height: 100%;
+
+      &.lg {
+        padding: 15px 0 16px;
+      }
+
+      &.md {
+        padding: 11px 0 12px;
+      }
+
+      &.sm {
+        padding: 7px 0 8px;
+      }
 
       tds-checkbox {
         display: flex;
