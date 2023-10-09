@@ -10,9 +10,11 @@
 
   ::slotted(*) {
     all: unset;
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
-    color: var(--tds-navigation-tabs-tab-color);
+
+    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
+    font: var(--tds-headline-07) !important;
+    letter-spacing: var(--tds-headline-07-ls) !important;
+    color: var(--tds-navigation-tabs-tab-color) !important;
     text-decoration: none;
     display: block;
     position: relative;

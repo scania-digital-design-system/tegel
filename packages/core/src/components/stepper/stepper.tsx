@@ -1,5 +1,4 @@
-import { Component, Host, h, Prop, Element, Event } from '@stencil/core';
-import { EventEmitter, Watch } from '@stencil/core/internal';
+import { Component, Host, h, Prop, Element, Event, EventEmitter, Watch } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 type TdsStepperProps = {
@@ -52,6 +51,7 @@ export class TdsStepper {
     }
   }
 
+  /** @internal Broadcasts changes in props to the Stepper children */
   @Event({
     eventName: 'internalTdsPropsChange',
     composed: true,

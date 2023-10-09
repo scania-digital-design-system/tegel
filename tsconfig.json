@@ -15,5 +15,4 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
-  "include": ["packages/core/src"]
 }

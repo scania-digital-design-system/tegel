@@ -77,6 +77,7 @@ export class TdsSideMenuDropdown {
 
   connectedCallback() {
     this.sideMenuEl = this.host.closest('tds-side-menu');
+    this.collapsed = this.sideMenuEl.collapsed;
     this.open = this.defaultOpen;
   }
 

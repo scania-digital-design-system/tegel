@@ -48,16 +48,16 @@
   --tds-btn-icon-secondary-fill-active: var(--tds-black);
 
   /* ICON */ //not used
-  --tds-btn-icon-secondary-fill: var(--tds-black);
-  --tds-btn-icon-secondary-color: var(--tds-black);
+  --tds-btn-icon-secondary-fill: var(--tds-grey-958);
+  --tds-btn-icon-secondary-color: var(--tds-grey-958);
 
   /* ICON HOVER */ //not used
   --tds-btn-icon-secondary-fill-hover: var(--tds-grey-50);
   --tds-btn-icon-secondary-color-hover: var(--tds-grey-50);
 
   /* ICON HOVER */ //not used
-  --tds-btn-icon-secondary-fill-active: var(--tds-black);
-  --tds-btn-icon-secondary-color-active: var(--tds-black);
+  --tds-btn-icon-secondary-fill-active: var(--tds-grey-958);
+  --tds-btn-icon-secondary-color-active: var(--tds-grey-958);
 
   //Ghost
   --tds-btn-ghost-background: transparent;
@@ -79,8 +79,8 @@
   --tds-btn-ghost-border-color-disabled: transparent;
 
   /* ICON */
-  --tds-btn-icon-ghost-fill: var(--tds-black);
-  --tds-btn-icon-ghost-color: var(--tds-black);
+  --tds-btn-icon-ghost-fill: var(--tds-grey-958);
+  --tds-btn-icon-ghost-color: var(--tds-grey-958);
 
   //Danger
   --tds-btn-danger-background: var(--tds-negative);
@@ -103,8 +103,8 @@
   --tds-btn-danger-border-color-disabled: transparent;
 
   /* ICON */
-  --tds-btn-icon-danger-fill: var(--tds-white);
-  --tds-btn-icon-danger-color: var(--tds-white);
+  --tds-btn-icon-danger-fill: var(--tds-grey-50);
+  --tds-btn-icon-danger-color: var(--tds-grey-50);
 
   .tds-mode-variant-primary {
     --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);

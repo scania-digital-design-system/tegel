@@ -97,7 +97,7 @@ export class TdsSideMenuCollapseButton {
                   fill="currentColor"
                 />
               </svg>
-              <slot></slot>
+              {!this.collapsed && <slot></slot>}
             </a>
           </tds-side-menu-item>
         </div>

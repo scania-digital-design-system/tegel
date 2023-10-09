@@ -1,5 +1,14 @@
-import { Component, Host, h, Prop, State, Element, Event } from '@stencil/core';
-import { EventEmitter, Method } from '@stencil/core/internal';
+import {
+  Component,
+  Host,
+  h,
+  Prop,
+  State,
+  Element,
+  Event,
+  EventEmitter,
+  Method,
+} from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
 
 /**
@@ -29,6 +38,8 @@ export class TdsDropdownOption {
 
   private parentElement: HTMLTdsDropdownElement;
 
+  // @ts-ignore
+  // eslint-disable-next-line no-unused-vars,
   private label: string;
 
   /** Method to select/deselect an option. */

@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
+import { reactOutputTarget } from '@stencil/react-output-target';
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
@@ -56,6 +57,9 @@ export const config: Config = {
   },
   plugins: [sass()],
   sourceMap: false,
+  testing: {
+    browserArgs: ['--headless=new'],
+  },
   outputTargets: [
     {
       type: 'dist',
@@ -67,6 +71,10 @@ export const config: Config = {
       directivesProxyFile: '../angular/projects/components/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular/projects/components/src/lib/stencil-generated/index.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
+    }),
+    reactOutputTarget({
+      componentCorePackage: '@scania/tegel',
+      proxiesFile: '../react/lib/components/stencil-generated/index.ts',
     }),
     {
       type: 'dist-custom-elements',

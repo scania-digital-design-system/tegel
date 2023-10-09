@@ -62,14 +62,23 @@ export default {
       },
       if: { arg: 'persistent', truthy: true },
     },
+    collapsed: {
+      name: 'Collapsed',
+      description: 'Collapsed Side Menu',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'collapsible', truthy: true },
+    },
   },
   args: {
     persistent: true,
     collapsible: false,
+    collapsed: false,
   },
 };
 
-const Template = ({ persistent, collapsible }) =>
+const Template = ({ persistent, collapsible, collapsed }) =>
   formatHtmlPreview(
     `
     <script>
@@ -146,7 +155,9 @@ const Template = ({ persistent, collapsible }) =>
 
     <div class="demo-wrap-side-menu-and-main">
       <!-- Note: the "persistent" property keeps the menu open on desktop -->
-      <tds-side-menu aria-label="Side menu" id="demo-side-menu" ${persistent ? 'persistent' : ''}>
+      <tds-side-menu ${collapsed ? 'collapsed' : ''} aria-label="Side menu" id="demo-side-menu" ${
+      persistent ? 'persistent' : ''
+    }>
         <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;"></tds-side-menu-overlay>
 
         <tds-side-menu-close-button slot="close-button" aria-label="Close drawer menu" onclick="demoSideMenu.open = false;"></tds-side-menu-close-button>

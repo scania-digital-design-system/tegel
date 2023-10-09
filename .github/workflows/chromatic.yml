@@ -1,0 +1,22 @@
+name: "Chromatic"
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v1
+        - name: Install dependencies
+          run: npm install
+        - name: Installing dependencies in core
+          working-directory: packages/core 
+          run: npm install
+        - name: Building @scania/tegel
+          working-directory: packages/core 
+          run: npm run build
+        - name: Publish to Chromatic
+          working-directory: packages/core 
+          run: npx chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}} --exit-once-uploaded
