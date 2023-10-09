@@ -4,6 +4,7 @@ packages/core/loader
 packages/core/components
 
 packages/angular/dist
+packages/react/dist
 stencil-generated
 
 icons/dist

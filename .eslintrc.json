@@ -66,6 +66,12 @@
     "no-restricted-syntax": "warn", // TODO: check this - disables for-in related error
     "default-case-last": "warn",
     "no-restricted-exports": "warn",
+    "no-restricted-imports": ["error",
+      {
+        "name": "@stencil/core/internal",
+        "message": "Use @stencil/core instead."
+      }
+    ],
     "radix": ["error", "as-needed"],
     "no-use-before-define": "off",
     "no-console": "off",

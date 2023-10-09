@@ -65,6 +65,13 @@ export default {
         type: 'boolean',
       },
     },
+    prevent: {
+      name: 'Prevent',
+      description: 'Disables closing Modal on clicking on overlay area.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     actionsPosition: 'Static',
@@ -73,6 +80,7 @@ export default {
     bodyContent:
       'The steps fell lightly and oddly, with a certain swing, for all they went so slowly; it was different indeed from the heavy creaking tread of Henry Jekyll. Utterson sighed. “Is there never anything else?” he asked.',
     showModal: true,
+    prevent: false,
   },
 };
 
@@ -83,7 +91,7 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal }) =>
+const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) =>
   formatHtmlPreview(
     `
  <!-- The button below is just for demo purposes -->
@@ -91,11 +99,13 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
   
   
   <tds-modal 
-  header="${headerText}"
-  selector="#my-modal-button"   
-   ${showModal ? 'show' : ''} 
-   id="my-modal" size="${sizeLookUp[size]}" 
-   actions-position="${actionsPosition.toLowerCase()}">          
+    header="${headerText}"
+    selector="#my-modal-button"   
+    ${showModal ? 'show' : ''} 
+    id="my-modal" size="${sizeLookUp[size]}" 
+    actions-position="${actionsPosition.toLowerCase()}"
+    prevent="${prevent}"
+  >          
       <span slot="body">
           ${bodyContent}
       </span>      

@@ -12,8 +12,10 @@
     min-width: 142px;
     display: block;
     width: calc(100% - 32px);
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
+
+    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
+    font: var(--tds-headline-07) !important;
+    letter-spacing: var(--tds-headline-07-ls) !important;
     cursor: pointer;
     padding: 16px;
     white-space: nowrap;

@@ -7,7 +7,9 @@
   "scripts": {
     "start": "cd packages/core && npm run storybook",
     "build": "cd packages/core && npm run build",
-    "build-angular": "npm run build && cd .. && cd angular && npm i && npm run build ",
+    "build-angular": "npm run build && cd packages/angular && npm i && npm run build ",
+    "build-react": "npm run build && cd packages/react && npm i && npm run build ",
+    "build-all": "npm run build && (cd packages/angular && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
     "test": "echo \"Error: no test specified\" && exit 1",
     "commit": "cz",
     "prepare": "husky install"
@@ -23,6 +25,11 @@
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "devDependencies": {
+    "@commitlint/config-conventional": "^16.2.1",
+    "@types/node": "^20.8.0",
+    "commitizen": "^4.3.0",
+    "commitlint": "^15.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.12.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -30,17 +37,13 @@
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-storybook": "^0.5.7",
-    "prettier": "^2.7.1",
-    "cz-conventional-changelog": "^3.3.0",
-    "commitizen": "^4.3.0",
-    "lint-staged": "^12.3.7",
     "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "prettier": "^2.7.1",
     "stylelint": "^14.6.1",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard": "^25.0.0",
-    "stylelint-config-standard-scss": "^3.0.0",
-    "commitlint": "^15.0.0",
-    "@commitlint/config-conventional": "^16.2.1"
+    "stylelint-config-standard-scss": "^3.0.0"
   },
   "config": {
     "commitizen": {
