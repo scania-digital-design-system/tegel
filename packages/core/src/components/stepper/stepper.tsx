@@ -51,6 +51,7 @@ export class TdsStepper {
     }
   }
 
+  /** @internal Broadcasts changes in props to the Stepper children */
   @Event({
     eventName: 'internalTdsPropsChange',
     composed: true,
