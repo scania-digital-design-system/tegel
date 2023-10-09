@@ -11,6 +11,7 @@
     border-bottom: 1px solid var(--tds-dropdown-option-border);
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
+    overflow-wrap: anywhere;
 
     &.selected {
       background-color: var(--tds-dropdown-option-background-selected);
@@ -21,15 +22,15 @@
     }
 
     &.lg {
-      height: 47px;
+      padding: 20px 0;
     }
 
     &.md {
-      height: 47px;
+      padding: 16px 0;
     }
 
     &.sm {
-      height: 39px;
+      padding: 12px 0;
     }
 
     button {
