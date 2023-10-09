@@ -127,7 +127,7 @@ export class TdsDropdown {
     }
 
     this.value = nextValue;
-    this.host.setAttribute('value', this.value?.map((val) => val).toString());
+    this.setValueAttribute();
     this.selectChildrenAsSelectedBasedOnSelectionProp();
     this.handleChange();
 
@@ -169,6 +169,7 @@ export class TdsDropdown {
       this.reset();
     }
     this.handleChange();
+    this.setValueAttribute();
     /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
     /* https://tegel.atlassian.net/browse/CDEP-2703 */
     return this.value?.map((value) => ({ value, label }));
@@ -276,7 +277,7 @@ export class TdsDropdown {
     }
   }
 
-  componentDidLoad() {
+  componentWillLoad() {
     if (this.defaultValue) {
       this.setDefaultOption();
     }
@@ -289,7 +290,7 @@ export class TdsDropdown {
       return element;
     });
     this.value = null;
-    this.host.setAttribute('value', null);
+    this.setValueAttribute();
   }
 
   private setDefaultOption = () => {
@@ -311,6 +312,7 @@ export class TdsDropdown {
             element.setSelected(false);
           }
         }
+        this.setValueAttribute();
         return element;
       });
   };
@@ -365,12 +367,17 @@ export class TdsDropdown {
       element.textContent.trim(),
     );
 
-  getValue = () => {
+  private getValue = () => {
     const labels = this.getSelectedChildrenLabels();
     return this.filter ? labels?.join(', ') : labels?.toString();
   };
 
-  handleFilter = (event) => {
+  private setValueAttribute = () => {
+    if (this.value?.toString() === '') this.value = null;
+    this.host.setAttribute('value', this.value?.map((val) => val).toString() ?? null);
+  };
+
+  private handleFilter = (event) => {
     this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
     /* Check if the query is empty, and if so, show all options */
