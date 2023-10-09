@@ -57,6 +57,9 @@ export const config: Config = {
   },
   plugins: [sass()],
   sourceMap: false,
+  testing: {
+    browserArgs: ['--headless=new'],
+  },
   outputTargets: [
     {
       type: 'dist',
