@@ -16,13 +16,6 @@
 | `stepperId`     | `stepper-id`     | ID used for internal Stepper functionality and events, must be unique.  **NOTE**: If you're listening for Stepper events, you need to set this ID yourself to identify the Stepper, as the default ID is random and will be different every time. | `string`                     | `generateUniqueId()` |
 
 
-## Events
-
-| Event                    | Description | Type                                                                                                 |
-| ------------------------ | ----------- | ---------------------------------------------------------------------------------------------------- |
-| `internalTdsPropsChange` |             | `CustomEvent<{ stepperId: string; changed: (keyof TdsStepperProps)[]; } & Partial<TdsStepperProps>>` |
-
-
 ## Slots
 
 | Slot          | Description                                 |
