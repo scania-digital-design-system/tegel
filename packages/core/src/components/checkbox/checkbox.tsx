@@ -26,7 +26,7 @@ export class TdsCheckbox {
   @Prop() required: boolean = false;
 
   /** Sets the Checkbox as checked */
-  @Prop({ reflect: true }) checked: boolean = false;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /** Sets the Checkbox as indeterminate */
   @Prop({ mutable: true }) indeterminate: boolean = false;
