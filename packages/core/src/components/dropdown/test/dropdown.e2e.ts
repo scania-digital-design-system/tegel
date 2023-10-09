@@ -16,6 +16,7 @@ describe('tds-dropdown', () => {
         </tds-dropdown-option>
     </tds-drodpown>
     `);
+
     const dropdown = await page.find('tds-dropdown');
     expect(dropdown).not.toBeNull();
 
