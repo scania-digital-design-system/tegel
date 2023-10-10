@@ -1,7 +1,7 @@
 # tds-popover-menu
 
 
-### Usage in Angular
+### Usage with @scania/tegel-angular
 If you are using the `<tds-popover-menu>` in an Angular environment and want to
 use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
 
