@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Method, Element, Watch } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
@@ -26,19 +26,30 @@ export class TdsCheckbox {
   @Prop() required: boolean = false;
 
   /** Sets the Checkbox as checked */
-  @Prop({ reflect: true }) checked: boolean = false;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = false;
+
+  /** Sets the Checkbox as indeterminate */
+  @Prop({ mutable: true }) indeterminate: boolean = false;
 
   /** Value for the Checkbox */
   @Prop() value: string;
+
+  private inputElement: HTMLInputElement;
 
   /** Toggles the checked value of the component. */
   @Method()
   async toggleCheckbox() {
     this.checked = !this.checked;
+    this.indeterminate = false;
     return {
       checkboxId: this.checkboxId,
       checked: this.checked,
     };
+  }
+
+  @Watch('indeterminate')
+  handleIndeterminateState() {
+    this.inputElement.indeterminate = this.indeterminate;
   }
 
   /** Sends unique Checkbox identifier and checked status when it is checked/unchecked. */
@@ -51,14 +62,17 @@ export class TdsCheckbox {
   tdsChange: EventEmitter<{
     checkboxId: string;
     checked: boolean;
+    indeterminate: boolean;
     value?: string;
   }>;
 
   handleChange = () => {
     this.checked = !this.checked;
+    this.indeterminate = false;
     this.tdsChange.emit({
       checkboxId: this.checkboxId,
       checked: this.checked,
+      indeterminate: this.indeterminate,
       value: this.value,
     });
   };
@@ -95,6 +109,9 @@ export class TdsCheckbox {
     return (
       <div class="tds-checkbox">
         <input
+          // eslint-disable-next-line no-return-assign
+          ref={(inputElement) => (this.inputElement = inputElement)}
+          indeterminate={this.indeterminate}
           aria-checked={this.checked}
           aria-required={this.required}
           aria-describedby={this.host.getAttribute('aria-describedby')}

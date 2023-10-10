@@ -38,6 +38,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    indeterminate: {
+      name: 'Indeterminate',
+      description: 'Sets the checkbox in a intederminte state.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the Checkbox.',
@@ -53,31 +63,74 @@ export default {
     label: 'Label',
     checked: false,
     disabled: false,
+    indeterminate: false,
   },
 };
 
-const Template = ({ label, checked, disabled }) =>
+const Template = ({ label, checked, disabled, indeterminate }) =>
   formatHtmlPreview(`
     <tds-checkbox
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
-        value="checkbox-value"
+        ${indeterminate ? 'indeterminate' : ''}
+        value="allSelected"
+        checkbox-id="all-selected-checkbox"
+        >
+        <div slot="label">Select all</div>
+    </tds-checkbox>
+    <tds-checkbox
+        ${checked ? 'checked' : ''}
+        ${disabled ? 'disabled' : ''}
+        ${indeterminate ? 'indeterminate' : ''}
+        value="checkbox-1"
+        checkbox-id="first-checkbox"
+        >
+        <div slot="label">${label}</div>
+    </tds-checkbox>
+    <tds-checkbox
+        ${checked ? 'checked' : ''}
+        ${disabled ? 'disabled' : ''}
+        ${indeterminate ? 'indeterminate' : ''}
+        value="checkbox-2"
+        checkbox-id="second-checkbox"
         >
         <div slot="label">${label}</div>
     </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
     <script>
-        checkboxElement = document.querySelector('tds-checkbox')
-        checkboxElement.addEventListener('tdsChange', (event) => {
-            console.log('Checkbox with id: ', event.detail.checkboxId, ' is ', event.detail.checked)
-        })
-        checkboxElement.addEventListener('tdsFocus',(event) => {
-          console.log(event)
-        })
-        checkboxElement.addEventListener('tdsBlur',(event) => {
-          console.log(event)
-        })
+      allSelectedCheckbox = document.querySelector('[checkbox-id="all-selected-checkbox"]');
+      firstCheckbox = document.querySelector('[checkbox-id="first-checkbox"]');
+      secondCheckbox = document.querySelector('[checkbox-id="second-checkbox"]');
+      
+      allSelectedCheckbox.addEventListener('tdsChange', (event) => {
+          firstCheckbox.checked = event.detail.checked;
+          secondCheckbox.checked = event.detail.checked;
+          handleCheckboxChange(secondCheckbox, firstCheckbox);
+
+      });
+      
+      function handleCheckboxChange(checkbox, otherCheckbox) {
+          if (checkbox.checked !== otherCheckbox.checked) {
+              allSelectedCheckbox.checked = false;
+              allSelectedCheckbox.indeterminate = true;
+          } else if (checkbox.checked && otherCheckbox.checked) {
+              allSelectedCheckbox.checked = true;
+              allSelectedCheckbox.indeterminate = false;
+          } else {
+              allSelectedCheckbox.checked = false;
+              allSelectedCheckbox.indeterminate = false;
+          }
+      }
+      
+      firstCheckbox.addEventListener('tdsChange', (event) => {
+          handleCheckboxChange(firstCheckbox, secondCheckbox);
+      });
+      
+      secondCheckbox.addEventListener('tdsChange', (event) => {
+          handleCheckboxChange(secondCheckbox, firstCheckbox);
+      });
+
     </script>
   `);
 
