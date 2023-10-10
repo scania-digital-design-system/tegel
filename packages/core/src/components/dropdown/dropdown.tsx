@@ -369,6 +369,9 @@ export class TdsDropdown {
 
   private getValue = () => {
     const labels = this.getSelectedChildrenLabels();
+    if (!labels) {
+      return '';
+    }
     return this.filter ? labels?.join(', ') : labels?.toString();
   };
 
