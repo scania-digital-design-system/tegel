@@ -1,0 +1,92 @@
+name: Release @scania/tegel
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '18.16.0'
+        type: string
+
+      tags:
+        description: 'Tag'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - latest
+          - beta
+          - dev
+
+      dryRun:
+        description: 'Dry run'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        # Setup .npmrc file to publish to npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.0'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - CD into correct folder
+        run: echo "cd packages/core"
+
+      - name: Core - Bump version
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: Core - Read Package.json Version
+        id: version
+        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Core - Create git tag
+        run: git tag @scania/tegel@${{ steps.version.outputs.version }}
+
+      - name: Core - Push git tag
+        run: git push origin @scania/tegel@${{ steps.version.outputs.version }}
+
+      - name: Core - npm install
+        run: npm install
+
+      - name: Core - Run build
+        run: npm run build
+
+      - name: Core - Publish
+        run: |
+          if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
+            npm publish --tag ${{ github.event.inputs.tags }} --dry-run
+          else
+            npm publish --tag ${{ github.event.inputs.tags }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Core - Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: release/@scania/tegel@${{ steps.version.outputs.version }}
+          commit-message: Release of @scania/tegel@${{ steps.version.outputs.version }}
+          branch: release/${{ steps.version.outputs.version }}
+          delete-branch: true
