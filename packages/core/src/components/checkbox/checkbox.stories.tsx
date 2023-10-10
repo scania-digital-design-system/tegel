@@ -73,64 +73,24 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
         ${indeterminate ? 'indeterminate' : ''}
-        value="allSelected"
-        checkbox-id="all-selected-checkbox"
-        >
-        <div slot="label">Select all</div>
-    </tds-checkbox>
-    <tds-checkbox
-        ${checked ? 'checked' : ''}
-        ${disabled ? 'disabled' : ''}
-        ${indeterminate ? 'indeterminate' : ''}
         value="checkbox-1"
         checkbox-id="first-checkbox"
-        >
-        <div slot="label">${label}</div>
-    </tds-checkbox>
-    <tds-checkbox
-        ${checked ? 'checked' : ''}
-        ${disabled ? 'disabled' : ''}
-        ${indeterminate ? 'indeterminate' : ''}
-        value="checkbox-2"
-        checkbox-id="second-checkbox"
         >
         <div slot="label">${label}</div>
     </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
     <script>
-      allSelectedCheckbox = document.querySelector('[checkbox-id="all-selected-checkbox"]');
-      firstCheckbox = document.querySelector('[checkbox-id="first-checkbox"]');
-      secondCheckbox = document.querySelector('[checkbox-id="second-checkbox"]');
-      
-      allSelectedCheckbox.addEventListener('tdsChange', (event) => {
-          firstCheckbox.checked = event.detail.checked;
-          secondCheckbox.checked = event.detail.checked;
-          handleCheckboxChange(secondCheckbox, firstCheckbox);
-
+      checkboxElement = document.querySelector("tds-checkbox");
+      checkboxElement.addEventListener("tdsChange", (event) => {
+        console.log("Checkbox with id: ", event.detail.checkboxId, " is ", event.detail.checked);
       });
-      
-      function handleCheckboxChange(checkbox, otherCheckbox) {
-          if (checkbox.checked !== otherCheckbox.checked) {
-              allSelectedCheckbox.checked = false;
-              allSelectedCheckbox.indeterminate = true;
-          } else if (checkbox.checked && otherCheckbox.checked) {
-              allSelectedCheckbox.checked = true;
-              allSelectedCheckbox.indeterminate = false;
-          } else {
-              allSelectedCheckbox.checked = false;
-              allSelectedCheckbox.indeterminate = false;
-          }
-      }
-      
-      firstCheckbox.addEventListener('tdsChange', (event) => {
-          handleCheckboxChange(firstCheckbox, secondCheckbox);
+      checkboxElement.addEventListener("tdsFocus", (event) => {
+        console.log(event);
       });
-      
-      secondCheckbox.addEventListener('tdsChange', (event) => {
-          handleCheckboxChange(secondCheckbox, firstCheckbox);
+      checkboxElement.addEventListener("tdsBlur", (event) => {
+        console.log(event);
       });
-
     </script>
   `);
 
