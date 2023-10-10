@@ -16,7 +16,7 @@ If you are using the `<tds-modal>` in an Angular environment and want to use the
 ```
 
 
-### Usage in React
+### Usage with @scania/tegel-react
 If you are using the `<TdsModal>` in an React environment and want to
 use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
 
