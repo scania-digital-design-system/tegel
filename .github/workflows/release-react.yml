@@ -40,7 +40,7 @@ jobs:
         # Setup .npmrc file to publish to npm
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.tegelVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - CD into correct folder
