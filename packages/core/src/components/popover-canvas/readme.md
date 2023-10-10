@@ -13,6 +13,20 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </tds-popover-canvas>
 
 ```
+
+### Usage in React
+If you are using the `<TdsPopoverCanvas>` in an React environment and want to
+use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
+
+```jsx
+<div ref={myReference.current}>
+  <TdsButton text="Button"></TdsButton>
+</div>
+<TdsPopoverCanvas referenceEl={myReference}>
+  <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
+</TdsPopoverCanvas>
+
+```
 <!-- Auto Generated Below -->
 
 

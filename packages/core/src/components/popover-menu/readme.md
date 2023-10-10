@@ -16,6 +16,22 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </tds-popover-menu>
 
 ```
+
+### Usage in React
+If you are using the `<TdsPopoverMenu>` in an React environment and want to
+use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
+
+```jsx
+<div ref={myReference.current}>
+  <TdsButton text="Button"></TdsButton>
+</div>
+<TdsPopoverMenu referenceEl={myReference}>
+  <TdsPopoverMenuItem>
+    <a href="#">Action</a>
+  </TdsPopoverMenuItem>
+</TdsPopoverMenu>
+
+```
 <!-- Auto Generated Below -->
 
 
