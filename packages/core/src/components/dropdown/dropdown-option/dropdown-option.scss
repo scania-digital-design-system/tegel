@@ -1,6 +1,9 @@
 @import '../../../mixins/focus-state';
+@import '../../../mixins/box-sizing';
 
 :host {
+  @include tds-box-sizing;
+
   display: block;
   background-color: var(--tds-dropdown-option-background);
 
@@ -51,23 +54,22 @@
       width: 100%;
       height: 100%;
 
-      &.lg {
-        padding: 15px 0 16px;
-      }
-
-      &.md {
-        padding: 11px 0 12px;
-      }
-
-      &.sm {
-        padding: 7px 0 8px;
-      }
-
       tds-checkbox {
         display: flex;
         height: 100%;
         width: 100%;
-        padding: 0 16px;
+
+        &.lg {
+          padding: 15px 16px 16px;
+        }
+
+        &.md {
+          padding: 11px 16px 12px;
+        }
+
+        &.sm {
+          padding: 7px 16px 8px;
+        }
       }
     }
 

@@ -143,10 +143,7 @@ export class TdsDropdownOption {
         >
           {this.multiselect ? (
             <div
-              class={{
-                multiselect: true,
-                [this.size]: true,
-              }}
+              class="multiselect"
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
                   this.parentElement.close();
@@ -159,6 +156,9 @@ export class TdsDropdownOption {
                 }}
                 disabled={this.disabled}
                 checked={this.selected}
+                class={{
+                  [this.size]: true,
+                }}
               >
                 <div slot="label">
                   <slot></slot>
