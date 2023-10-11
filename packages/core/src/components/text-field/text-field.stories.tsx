@@ -225,7 +225,7 @@ const Template = ({
 
   <div class="demo-wrapper">
     <tds-text-field
-      type="${type}"
+      type="${type.toLowerCase()}"
       size="${sizeLookUp[size]}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       state="${stateValue}"
