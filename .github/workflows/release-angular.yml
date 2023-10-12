@@ -44,10 +44,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular - CD into correct folder
-        run: echo "cd packages/angular"
+        run: cd packages/angular
 
       - name: Angular - Remove package-lock
-        run: echo "rm -rf package-lock.json"
+        run: rm -rf package-lock.json
 
       - name: Angular - Install latest tegel package
         run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
