@@ -90,3 +90,18 @@ jobs:
           commit-message: Release of @scania/tegel@${{ steps.version.outputs.version }}
           branch: release/${{ steps.version.outputs.version }}
           delete-branch: true
+  on-failure:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify on Failure
+        env:
+          npm_version: ${{ needs.release.outputs.version }}
+        run: |
+          if [ "${{ job.status }}" == "failure" ]; then
+            tagname="@scania/tegel@$npm_version"
+            git push --delete origin $tagname
+            branchname="release/@scania/tegel@$npm_version"
+            git push origin --delete branch_name
+          fi
