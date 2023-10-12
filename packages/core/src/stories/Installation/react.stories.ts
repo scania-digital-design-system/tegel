@@ -47,7 +47,7 @@ export const React = {
                         <h1 class="tds-headline-02">Using Tegel in React</h1>
                         <p class="tds-body-01">
                             Tegel offers React wrappers for all Web Components. While the rendered components still maintain
-                            their core as Web Components, these wrappers significantly enhance the developer's experience by
+                            their core as Web Components, these wrappers significantly enhance the developers experience by
                             providing a more intuitive API and seamless integration with React. You can find these wrappers
                             in a separate package called <code>@scania/tegel-react</code>, which is the recommended approach for integrating
                             Tegel into a React application.
@@ -105,11 +105,11 @@ export default App;
                         </h4>
                         <p class="tds-body-01">
                         Since the components exported from the @scania/tegel-react package
-                        are React component these have a differnet look than our vanilla webcomponents.
+                        are React components these have a different look than our vanilla webcomponents.
                         They are for one, PascalCased. This means that instead of being called
                         <code>&lt;tds-button&gt;</code> the Button component from @scania/tegel-react is called
                         <code>&lt;TdsButton&gt;</code>. The same goes for the props passed to the components.
-                        Instead of using a hyphin, the props use PascalCase. For example:
+                        Instead of using a hyphen, the props use PascalCase. For example:
                         <code>&lt;tds-button mode-variant="secondary"&gt;&lt;/tds-button&gt;</code>
                         would instead be 
                         <code>&lt;TdsButton modeVariant="secondary"&gt;&lt;/TdsButton&gt;</code>.

@@ -100,7 +100,7 @@ import { TegelModule } from '@scania/tegel-angular';
 export class AppModule { }
                             </code>
                         </pre>
-                        <p class="tds-body-01">After this, all TDS component will be available in your template files. Example:</p>
+                        <p class="tds-body-01">After this, all TDS components will be available in your template files. Example:</p>
                         <pre>
                             <code>
  &lt;tds-button text="Click me!" variant="primary" size="sm"&gt;

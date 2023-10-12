@@ -40,7 +40,7 @@ export const Javascript = {
         <h1 class="tds-headline-02">Installing Tegel</h1>
         <p>This is a getting started guide aimed at developers that want to install and use the @scania/tegel library (TDS).
             This library consists of web-components built using Stencil, which means that they are framework agnostic and follow
-            the browser standards. The library is installed and updated via NPM (node package manager). For further installation
+           browser standards. The library is installed and updated via NPM (node package manager). For further installation
             information please see the framework specific installation guides below.
         </p>
     </section>
@@ -58,11 +58,11 @@ export const Javascript = {
         <p>TDS is, like previously mentioned, a collection of web components. This enables them to work within any frontend
         framework since they are built on web standards. However, achieving a seamless integration can be challenging because
         different frameworks offer varying levels of support for vanilla web components. To still allow for a premium developer
-        experience we have leveraged  Stencils (the complier used to build the TDS web components) output targets to build
+        experience we leverage Stencils (the complier used to build the TDS web components) output targets to build
         “framework-wrappers”. These are separate npm packages consisting of framework specific counterparts for all of the
         components in @scania/tegel. The currently available packages are built for Angular (@scania/tegel-angular) and
-        React (@scania/tegel-react).If you are planning to use TDS in a Angular or React application we recommend you follow the
-        installation guides for respective framework.
+        React (@scania/tegel-react). If you are planning to use TDS in an Angular or React application we recommend you follow the
+        installation guide for the respective framework.
         
         <div><tds-link><a href="?path=/story/intro-installation--angular">Angular installation guide</a></tds-link></div>
         <div><tds-link><a href="?path=/story/intro-installation--react">React installation guide</a></tds-link></div>
@@ -71,7 +71,7 @@ export const Javascript = {
     </section>
     <section>
         <h4>Javascript</h4>
-        <p>This guide is aimed at developers that want to use TDS in a application without any framework.</p>
+        <p>This guide is aimed at developers that want to use TDS in an application without any framework.</p>
         <p>Run npm init to generate a package.json, and then install @scania/tegel.</p>
         <pre>
         <code>
