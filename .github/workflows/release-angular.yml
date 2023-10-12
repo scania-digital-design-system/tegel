@@ -30,7 +30,7 @@ on:
         type: boolean
 
 jobs:
-  Release:
+  release-angular:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -43,8 +43,14 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
       - name: Angular - CD into correct folder
         run: cd packages/angular
+
+      - name: Angular - Bump version
+        run: npm version ${{ github.event.inputs.tegelVersion }}
 
       - name: Angular - Remove package-lock
         run: rm -rf package-lock.json
@@ -52,18 +58,8 @@ jobs:
       - name: Angular - Install latest tegel package
         run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
 
-      - name: Set user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
-
-      - name: Angular - Bump version
-        run: npm version ${{ github.event.inputs.tegelVersion }}
-
-      - name: Angular - Read Package.json Version
-        id: version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-
       - name: Check out new branch
-        run: git checkout -b "release/${{ steps.version.outputs.version }}"
+        run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}
 
       - name: Angular - Run build
         run: npm run build
@@ -78,10 +74,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Core - Create PR
+      - name: Angular - Create PR
         uses: peter-evans/create-pull-request@v3
         with:
-          title: release/@scania/tegel-react@${{ steps.version.outputs.version }}
-          commit-message: Release of @scania/tegel@${{ steps.version.outputs.version }}
-          branch: release/${{ steps.version.outputs.version }}
+          title: release/@scania/tegel-react@${{ github.event.inputs.tegelVersion }}
+          commit-message: Release of @scania/tegel@${{ github.event.inputs.tegelVersion }}
+          branch: release/${{ github.event.inputs.tegelVersion }}
           delete-branch: true
+  on-failure:
+    needs: release-angular
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify on Failure
+        env:
+          npm_version: ${{ github.event.inputs.tegelVersion }}
+        run: |
+          if [ "${{ job.status }}" == "failure" ]; then
+            git push origin --delete @scania/tegel@${{ github.event.inputs.tegelVersion }}
+          fi

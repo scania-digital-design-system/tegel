@@ -35,7 +35,7 @@ on:
         type: boolean
 
 jobs:
-  release:
+  release-core:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -52,7 +52,7 @@ jobs:
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Core - CD into correct folder
-        run: echo "cd packages/core"
+        run: cd packages/core
 
       - name: Core - Bump version
         run: npm version ${{ github.event.inputs.version }}
@@ -91,7 +91,7 @@ jobs:
           branch: release/${{ steps.version.outputs.version }}
           delete-branch: true
   on-failure:
-    needs: release
+    needs: release-core
     runs-on: ubuntu-latest
 
     steps:
