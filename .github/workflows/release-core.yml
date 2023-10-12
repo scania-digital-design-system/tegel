@@ -103,5 +103,5 @@ jobs:
             tagname="@scania/tegel@$npm_version"
             git push --delete origin $tagname
             branchname="release/@scania/tegel@$npm_version"
-            git push origin --delete branch_name
+            git push origin --delete $branchname
           fi
