@@ -48,7 +48,7 @@ export const Javascript = {
     <section>
         <h4>Migration from SDDS</h4>
         <p>TDS and @scania/components (SDDS) share a lot of design, but the tech implementation have two different approaches.
-        Therefore there is some migration work needed when going from SDDS to TDS, we have outlined all the differences in this
+        Therefore there is some migration work needed when going from SDDS to TDS. We have outlined all the differences in this
         <tds-link><a href="?path=/story/intro-migrating-from-components-v4--page">migration document</a></tds-link>. However, since they exist in different namespaces (SDDS is prefixed with ‘sdds’ and TDS with ‘tds’)
         the two solutions can exist alongside each other, enabling a soft migration that can be done over time.</p>
     </section>
