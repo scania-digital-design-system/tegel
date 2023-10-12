@@ -49,7 +49,7 @@ export const Javascript = {
         <h4>Migration from SDDS</h4>
         <p>TDS and @scania/components (SDDS) share a lot of design, but the tech implementation have two different approaches.
         Therefore there is some migration work needed when going from SDDS to TDS, we have outlined all the differences in this
-        <tds-link><a href="http://localhost:6006/?path=/story/intro-migrating-from-components-v4--page">migration document</a></tds-link>. However, since they exist in different namespaces (SDDS is prefixed with ‘sdds’ and TDS with ‘tds’)
+        <tds-link><a href="?path=/story/intro-migrating-from-components-v4--page">migration document</a></tds-link>. However, since they exist in different namespaces (SDDS is prefixed with ‘sdds’ and TDS with ‘tds’)
         the two solutions can exist alongside each other, enabling a soft migration that can be done over time.</p>
     </section>
 
@@ -64,8 +64,8 @@ export const Javascript = {
         React (@scania/tegel-react).If you are planning to use TDS in a Angular or React application we recommend you follow the
         installation guides for respective framework.
         
-        <div><tds-link><a href="http://localhost:6006/?path=/story/intro-installation--angular">Angular installation guide</a></tds-link></div>
-        <div><tds-link><a href="http://localhost:6006/?path=/story/intro-installation--react">React installation guide</a></tds-link></div>
+        <div><tds-link><a href="?path=/story/intro-installation--angular">Angular installation guide</a></tds-link></div>
+        <div><tds-link><a href="?path=/story/intro-installation--react">React installation guide</a></tds-link></div>
         
         </p>
     </section>
