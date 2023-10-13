@@ -105,7 +105,7 @@ export default App;
                         </h4>
                         <p class="tds-body-01">
                         Since the components exported from the @scania/tegel-react package
-                        are React components these have a different look than our vanilla webcomponents.
+                        are React components these have a different look than our vanilla web components.
                         They are for one, PascalCased. This means that instead of being called
                         <code>&lt;tds-button&gt;</code> the Button component from @scania/tegel-react is called
                         <code>&lt;TdsButton&gt;</code>. The same goes for the props passed to the components.
