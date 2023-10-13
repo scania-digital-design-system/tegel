@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Notify on Failure
+      - name: Remove branch and git tag on failure
         env:
           npm_version: ${{ github.event.inputs.tegelVersion }}
         run: |
