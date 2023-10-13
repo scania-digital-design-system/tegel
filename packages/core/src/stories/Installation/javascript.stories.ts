@@ -39,7 +39,7 @@ export const Javascript = {
         <p class="tds-body-01"><strong>Published: 2023-10-11</strong></p>
         <h1 class="tds-headline-02">Installing Tegel</h1>
         <p>This is a getting started guide aimed at developers that want to install and use the @scania/tegel library (TDS).
-            This library consists of web-components built using Stencil, which means that they are framework agnostic and follow
+            This library consists of web components built using Stencil, which means that they are framework agnostic and follow
            browser standards. The library is installed and updated via NPM (node package manager). For further installation
             information please see the framework specific installation guides below.
         </p>
