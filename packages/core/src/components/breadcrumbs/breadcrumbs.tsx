@@ -9,9 +9,10 @@ import { Component, h, Element } from '@stencil/core';
   shadow: true,
 })
 export class TdsBreadcrumbs {
-  @Element() el: HTMLElement;
+  @Element() host: HTMLElement;
 
   render() {
+    this.host.children[this.host.children.length - 1]?.classList.add('last');
     return (
       <nav>
         <div role="list" class={'tds-breadcrumb'}>

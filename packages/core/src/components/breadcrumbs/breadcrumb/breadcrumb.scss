@@ -36,7 +36,7 @@
     }
   }
 
-  ::slotted(*)::after {
+  &::after {
     content: '\203A';
     color: var(--tds-breadcrumb-separator-color);
     margin-right: 4px;
@@ -47,8 +47,8 @@
   }
 }
 
-:host(:last-of-type) {
-  ::slotted(*)::after {
+:host(.last) [role='listitem'] {
+  &::after {
     display: none;
   }
 }
