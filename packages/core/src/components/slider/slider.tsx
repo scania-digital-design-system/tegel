@@ -81,8 +81,6 @@ export class TdsSlider {
 
   private supposedValueSlot: number = -1;
 
-  private eventListenersAdded: boolean = false;
-
   private resizeObserverAdded: boolean = false;
 
   /** Sends the value of the slider when changed. */
@@ -98,7 +96,6 @@ export class TdsSlider {
 
   /** Public method to re-initialise the slider if some configuration props are changed */
   @Method() async reset() {
-    // @TODO: maybe refactor to use watch-decorators instead
     this.componentWillLoad();
     this.componentDidLoad();
   }
@@ -170,10 +167,8 @@ export class TdsSlider {
   }
 
   @Watch('value')
-  handleValueUpdate(newVal) {
-    this.calculateThumbLeftFromValue(newVal);
-    this.updateValueForced(newVal);
-    this.updateTrack();
+  handleValueUpdate(newValue: string) {
+    this.forceValueUpdate(newValue);
   }
 
   private updateSupposedValueSlot(localLeft) {
@@ -235,26 +230,23 @@ export class TdsSlider {
       this.calculateThumbLeftFromValue(supposedValue);
     } else {
       const percentage = this.thumbLeft / trackWidth;
-      this.value = `${Math.trunc(this.getMin() + percentage * (this.getMax() - this.getMin()))}`;
+      this.value = `${Math.trunc(
+        parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min)),
+      )}`;
     }
     this.updateTrack();
     this.tdsChange.emit({ value: this.value });
   }
 
-  private updateValueForced(value) {
-    this.value = value;
+  private forceValueUpdate(newValue: string) {
+    this.calculateThumbLeftFromValue(newValue);
+    this.value = newValue;
     this.tdsChange.emit({ value: this.value });
+    this.tdsChange.emit({ value: this.value });
+    this.updateTrack();
   }
 
-  private getMin() {
-    return parseFloat(this.min);
-  }
-
-  private getMax() {
-    return parseFloat(this.max);
-  }
-
-  private constrainThumb(x) {
+  private constrainThumb(x: number) {
     const width = this.getTrackWidth();
 
     if (x < 0) {
@@ -277,8 +269,8 @@ export class TdsSlider {
     const initValue = value;
     const trackWidth = this.getTrackWidth();
 
-    const normalizedValue = initValue - this.getMin();
-    const normalizedMax = this.getMax() - this.getMin();
+    const normalizedValue = initValue - parseFloat(this.min);
+    const normalizedMax = parseFloat(this.max) - parseFloat(this.min);
 
     const calculatedLeft = (normalizedValue / normalizedMax) * trackWidth;
 
@@ -293,15 +285,13 @@ export class TdsSlider {
     const inputElement = event.target as HTMLInputElement;
     let newValue = parseInt(inputElement.value);
 
-    if (newValue < this.getMin()) {
-      newValue = this.getMin();
-    } else if (newValue > this.getMax()) {
-      newValue = this.getMax();
+    if (newValue < parseFloat(this.min)) {
+      newValue = parseFloat(this.min);
+    } else if (newValue > parseFloat(this.max)) {
+      newValue = parseFloat(this.max);
     }
 
-    this.calculateThumbLeftFromValue(newValue);
-    this.updateValueForced(newValue);
-    this.updateTrack();
+    this.forceValueUpdate(String(newValue));
   }
 
   /** Updates the slider value based on the current input value when enter is pressed */
@@ -322,7 +312,7 @@ export class TdsSlider {
     this.thumbInnerElement.classList.add('pressed');
   }
 
-  calculateInputSizeFromMax() {
+  private calculateInputSizeFromMax() {
     return this.max.length;
   }
 
@@ -348,29 +338,28 @@ export class TdsSlider {
       const trackWidth = this.getTrackWidth();
       const percentage = this.thumbLeft / trackWidth;
 
-      let currentValue = this.getMin() + percentage * (this.getMax() - this.getMin());
+      let currentValue =
+        parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min));
 
       currentValue += delta;
       currentValue = Math.round(currentValue);
 
-      if (currentValue < this.getMin()) {
-        currentValue = this.getMin();
-      } else if (currentValue > this.getMax()) {
-        currentValue = this.getMax();
+      if (currentValue < parseFloat(this.min)) {
+        currentValue = parseFloat(this.min);
+      } else if (currentValue > parseFloat(this.max)) {
+        currentValue = parseFloat(this.max);
       }
 
       this.value = `${currentValue}`;
-      this.calculateThumbLeftFromValue(this.value);
-      this.updateValueForced(currentValue);
-      this.updateTrack();
+      this.forceValueUpdate(this.value);
     }
   }
 
-  stepLeft() {
+  private stepLeft() {
     this.controlsStep(-parseInt(this.step));
   }
 
-  stepRight() {
+  private stepRight() {
     this.controlsStep(parseInt(this.step));
   }
 
@@ -378,15 +367,15 @@ export class TdsSlider {
     const numTicks = parseInt(this.ticks);
 
     if (numTicks > 0) {
-      this.tickValues = [this.getMin()];
+      this.tickValues = [parseFloat(this.min)];
 
-      const step = (this.getMax() - this.getMin()) / (numTicks + 1);
+      const step = (parseFloat(this.max) - parseFloat(this.min)) / (numTicks + 1);
 
       for (let i = 1; i < numTicks + 1; i++) {
-        this.tickValues.push(this.getMin() + Math.round(step * i));
+        this.tickValues.push(parseFloat(this.min) + Math.round(step * i));
       }
 
-      this.tickValues.push(this.getMax());
+      this.tickValues.push(parseFloat(this.max));
     }
 
     this.useInput = false;
@@ -401,8 +390,8 @@ export class TdsSlider {
     this.useSmall = this.thumbSize === 'sm';
     this.useSnapping = this.snap;
 
-    const min = this.getMin();
-    const max = this.getMax();
+    const min = parseFloat(this.min);
+    const max = parseFloat(this.max);
 
     if (min > max) {
       console.warn(
@@ -422,19 +411,6 @@ export class TdsSlider {
       });
 
       resizeObserver.observe(this.wrapperElement);
-    }
-
-    if (!this.eventListenersAdded) {
-      this.eventListenersAdded = true;
-
-      this.thumbElement.addEventListener('mousedown', (event) => {
-        event.preventDefault();
-        this.grabThumb();
-      });
-
-      this.thumbElement.addEventListener('touchstart', () => {
-        this.grabThumb();
-      });
     }
 
     this.calculateThumbLeftFromValue(this.value);
@@ -515,6 +491,8 @@ export class TdsSlider {
                 ref={(el) => {
                   this.thumbElement = el as HTMLElement;
                 }}
+                onMouseDown={() => this.grabThumb()}
+                onTouchStart={() => this.grabThumb()}
               >
                 {this.tooltip && (
                   <div class="tds-slider__value">
