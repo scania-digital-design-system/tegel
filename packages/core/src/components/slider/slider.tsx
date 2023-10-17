@@ -419,7 +419,12 @@ export class TdsSlider {
 
   render() {
     return (
-      <div class={`tds-slider-wrapper ${this.readOnly ? 'read-only' : ''}`}>
+      <div
+        class={{
+          'tds-slider-wrapper': true,
+          'read-only': this.readOnly,
+        }}
+      >
         <input
           class="tds-slider-native-element"
           type="range"
