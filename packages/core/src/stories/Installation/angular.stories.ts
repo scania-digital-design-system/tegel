@@ -46,8 +46,8 @@ export const Angular = {
                         <p class="tds-body-01"><strong>Published: 2023-10-11</strong></p>
                         <h1 class="tds-headline-02">Using Tegel in Angular</h1>
                         <p>
-                            Tegel offers Angular wrappers for all Web Components. While the rendered components still maintain
-                            their core as Web Components, these wrappers significantly enhance the developer's experience by
+                            Tegel offers Angular wrappers for all web components. While the rendered components still maintain
+                            their core as web components, these wrappers significantly enhance the developer's experience by
                             providing a more intuitive API and seamless integration with Angular. You can find these wrappers
                             in a separate package called <code>@scania/tegel-angular</code>, which is the recommended approach for integrating
                             Tegel into a Angular application.

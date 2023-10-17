@@ -46,8 +46,8 @@ export const React = {
                         <p class="tds-body-01"><strong>Published: 2023-10-11</strong></p>
                         <h1 class="tds-headline-02">Using Tegel in React</h1>
                         <p class="tds-body-01">
-                            Tegel offers React wrappers for all Web Components. While the rendered components still maintain
-                            their core as Web Components, these wrappers significantly enhance the developers experience by
+                            Tegel offers React wrappers for all web components. While the rendered components still maintain
+                            their core as web components, these wrappers significantly enhance the developers experience by
                             providing a more intuitive API and seamless integration with React. You can find these wrappers
                             in a separate package called <code>@scania/tegel-react</code>, which is the recommended approach for integrating
                             Tegel into a React application.
