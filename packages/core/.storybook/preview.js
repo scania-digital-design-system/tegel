@@ -141,6 +141,7 @@ export const parameters = {
         [
           'Tegel Design System',
           'Installation',
+          ['Javascript'],
           'Migrating from components v4',
           'Events',
           'Announcements',
