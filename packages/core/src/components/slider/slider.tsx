@@ -361,8 +361,6 @@ export class TdsSlider {
     this.calculateThumbLeftFromValue(newValue);
     this.updateValueForced(newValue);
     this.updateTrack();
-
-    console.log(this.value);
   }
 
   grabThumb() {
@@ -469,10 +467,10 @@ export class TdsSlider {
         <input
           class="tds-slider-native-element"
           type="range"
-          value={this.value}
           name={this.name}
           min={this.min}
           max={this.max}
+          value={this.value}
           disabled={this.disabled}
         ></input>
 
