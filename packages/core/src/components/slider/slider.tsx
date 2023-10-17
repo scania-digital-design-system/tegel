@@ -11,7 +11,7 @@ export class TdsSlider {
   @Prop() label: string = '';
 
   /** Initial value */
-  @Prop() value: string = '0';
+  @Prop({ mutable: true }) value: string = '0';
 
   /** Minimum value */
   @Prop() min: string = '0';
@@ -337,20 +337,8 @@ export class TdsSlider {
           event.stopPropagation();
 
           if (event.key === 'Enter') {
-            let newValue = parseInt(this.inputElement.value);
-
-            if (newValue < this.getMin()) {
-              newValue = this.getMin();
-            } else if (newValue > this.getMax()) {
-              newValue = this.getMax();
-            }
-
-            this.calculateThumbLeftFromValue(newValue);
-            this.updateValueForced(newValue);
-            this.updateTrack();
-
+            this.updateSliderValueOnInputChange();
             this.inputElement.blur();
-            this.wrapperElement.focus();
           }
         });
       }
@@ -358,6 +346,23 @@ export class TdsSlider {
 
     this.calculateThumbLeftFromValue(this.value);
     this.updateTrack();
+  }
+
+  /** Updates the slider value based on the current input value */
+  private updateSliderValueOnInputChange() {
+    let newValue = parseInt(this.inputElement.value);
+
+    if (newValue < this.getMin()) {
+      newValue = this.getMin();
+    } else if (newValue > this.getMax()) {
+      newValue = this.getMax();
+    }
+
+    this.calculateThumbLeftFromValue(newValue);
+    this.updateValueForced(newValue);
+    this.updateTrack();
+
+    console.log(this.value);
   }
 
   grabThumb() {
@@ -594,6 +599,7 @@ export class TdsSlider {
                   ref={(el) => {
                     this.inputElement = el as HTMLInputElement;
                   }}
+                  onBlur={() => this.updateSliderValueOnInputChange()}
                 />
               </div>
             </div>
