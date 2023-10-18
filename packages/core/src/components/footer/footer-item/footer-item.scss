@@ -23,12 +23,9 @@
   &.top-part-child {
     ::slotted(a),
     ::slotted(button) {
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
       color: var(--tds-footer-top-links);
-      font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', arial, helvetica,
-        sans-serif;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 18px;
     }
 
     ::slotted(a:focus-visible),
