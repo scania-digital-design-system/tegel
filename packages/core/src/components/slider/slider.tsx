@@ -405,7 +405,7 @@ export class TdsSlider {
     if (!this.resizeObserverAdded) {
       this.resizeObserverAdded = true;
 
-      const resizeObserver = new ResizeObserver((/* entries */) => {
+      const resizeObserver = new ResizeObserver(() => {
         this.calculateThumbLeftFromValue(this.value);
         this.updateTrack();
       });
