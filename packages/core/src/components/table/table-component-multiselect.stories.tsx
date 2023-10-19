@@ -46,7 +46,7 @@ export default {
       },
     },
     allIndeterminate: {
-      name: 'All selected',
+      name: 'All indeterminate',
       description: `Controls the indeterminate state of the "all-selected"-checkbox.`,
       control: {
         type: 'boolean',
