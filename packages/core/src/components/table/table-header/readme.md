@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                     | Type      | Default |
-| ------------- | -------------- | ------------------------------------------------------------------------------- | --------- | ------- |
-| `allSelected` | `all-selected` | Prop for controling the checked/unchecked state of the "all selected"-checkbox. | `boolean` | `false` |
+| Property           | Attribute           | Description                                                                     | Type      | Default |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------- | --------- | ------- |
+| `allIndeterminate` | `all-indeterminate` | Prop for controling the interdeminate state of the "all selected"-checkbox      | `boolean` | `false` |
+| `allSelected`      | `all-selected`      | Prop for controling the checked/unchecked state of the "all selected"-checkbox. | `boolean` | `false` |
 
 
 ## Events

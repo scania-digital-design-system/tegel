@@ -29,7 +29,10 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 })
 export class TdsTableHeaderRow {
   /** Prop for controling the checked/unchecked state of the "all selected"-checkbox. */
-  @Prop({ reflect: true, mutable: true }) allSelected: boolean = false;
+  @Prop({ reflect: true }) allSelected: boolean = false;
+
+  /** Prop for controling the interdeminate state of the "all selected"-checkbox */
+  @Prop() allIndeterminate: boolean = false;
 
   @State() multiselect: boolean = false;
 
@@ -147,6 +150,7 @@ export class TdsTableHeaderRow {
               <div class="tds-form-label tds-form-label--table">
                 <tds-checkbox
                   checked={this.allSelected}
+                  indeterminate={this.allIndeterminate}
                   onTdsChange={(event) => this.handleCheckboxChange(event)}
                 ></tds-checkbox>
               </div>
