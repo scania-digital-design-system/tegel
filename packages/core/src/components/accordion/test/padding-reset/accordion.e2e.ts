@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 test.describe('tds-accordiong', () => {
   test('renders padding-reset accordion correctly', async ({ page }) => {
-    await page.goto('src/components/accordion/test/expanded/index.html');
+    await page.goto('src/components/accordion/test/padding-reset/index.html');
     const accordion = page.locator('tds-accordion');
     await expect(accordion).toHaveClass(/hydrated/);
     await expect(accordion).toContainText('First item');
@@ -11,7 +11,7 @@ test.describe('tds-accordiong', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
   });
   test('does fire tdsToggle event on click on accordion', async ({ page }) => {
-    await page.goto('src/components/accordion/test/expanded/index.html');
+    await page.goto('src/components/accordion/test/padding-reset/index.html');
     const accordionFirstItem = page.locator('tds-accordion-item[header="First item"]');
     const myEventSpy = await page.spyOnEvent('tdsToggle');
     await accordionFirstItem.click({
