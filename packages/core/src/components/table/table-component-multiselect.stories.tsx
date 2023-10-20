@@ -168,7 +168,7 @@ const MultiselectTemplate = ({
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         }
     >
-          <tds-table-header ${allSelected ? 'checked' : ''} ${
+          <tds-table-header ${allSelected ? 'selected' : ''} ${
     allIndeterminate ? 'indeterminate' : ''
   }>
               <tds-header-cell cell-key='truck' cell-value='Truck type' ${
