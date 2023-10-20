@@ -6,6 +6,6 @@ test.describe('tds-badge', () => {
     await page.goto('src/components/badge/test/basic/index.html');
     const accordion = page.locator('tds-badge');
     await expect(accordion).toHaveClass('hydrated');
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
