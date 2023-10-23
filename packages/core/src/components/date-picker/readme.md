@@ -7,11 +7,20 @@
 
 ## Properties
 
-| Property       | Attribute       | Description                         | Type                         | Default                                    |
-| -------------- | --------------- | ----------------------------------- | ---------------------------- | ------------------------------------------ |
-| `modeVariant`  | `mode-variant`  | Set the variant of the Datepicker.  | `"primary" \| "secondary"`   | `undefined`                                |
-| `selectedDate` | `selected-date` | The selected date of the Datepicker | `string`                     | `format(startOfToday(), this.getFormat())` |
-| `variant`      | `variant`       | The variant of the Datepicker       | `"day" \| "month" \| "year"` | `'year'`                                   |
+| Property        | Attribute         | Description                                                                                                                                                                                       | Type                         | Default                                    |
+| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ------------------------------------------ |
+| `datePickerId`  | `date-picker-id`  | ID used for internal Date Picker functionality and events, must be unique.                                                                                                                        | `string`                     | `generateUniqueId()`                       |
+| `modeVariant`   | `mode-variant`    | Set the variant of the Datepicker.                                                                                                                                                                | `"primary" \| "secondary"`   | `undefined`                                |
+| `selectedDate`  | `selected-date`   | The selected date of the Datepicker                                                                                                                                                               | `string`                     | `format(startOfToday(), this.getFormat())` |
+| `variant`       | `variant`         | The variant of the Datepicker                                                                                                                                                                     | `"day" \| "month" \| "year"` | `'day'`                                    |
+| `weekDayLabels` | `week-day-labels` | Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. | `string`                     | `'MTWTFSS'`                                |
+
+
+## Events
+
+| Event       | Description                                                                  | Type                                         |
+| ----------- | ---------------------------------------------------------------------------- | -------------------------------------------- |
+| `tdsSelect` | Fires when the Accordion Item is clicked, but before it is closed or opened. | `CustomEvent<{ date: string; id: string; }>` |
 
 
 ## Dependencies

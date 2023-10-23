@@ -1,8 +1,12 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { ComponentsFolder } from '../../utils/constants';
+import readme from './readme.md';
 
 export default {
   title: `${ComponentsFolder}/Date Picker`,
+  parameters: {
+    notes: readme,
+  },
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
@@ -45,6 +49,13 @@ const datePickerTemplate = ({ variant, modeVariant }) =>
       placement="bottom"
     >
     </tds-date-picker>
+    <!-- Script tag for demo purposes -->
+    <script>
+      datePicker = document.querySelector('tds-date-picker')
+      datePicker.addEventListener('tdsSelect', (event) => {
+        console.log(event.detail)
+      })
+    </script>
     `,
   );
 

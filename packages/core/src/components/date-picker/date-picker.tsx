@@ -1,5 +1,5 @@
 import { Placement } from '@popperjs/core';
-import { Component, Element, Fragment, Prop, State, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import {
   add,
   addYears,
@@ -20,6 +20,7 @@ import {
   startOfYear,
 } from 'date-fns';
 import { TdsTextFieldCustomEvent } from '../..';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-date-picker',
@@ -46,10 +47,16 @@ export class TdsDatePicker {
   @Prop({ mutable: true }) selectedDate: string = format(startOfToday(), this.getFormat());
 
   /** The variant of the Datepicker */
-  @Prop() variant: 'day' | 'month' | 'year' = 'year';
+  @Prop() variant: 'day' | 'month' | 'year' = 'day';
 
   /** Set the variant of the Datepicker. */
   @Prop() modeVariant: 'primary' | 'secondary';
+
+  /** ID used for internal Date Picker functionality and events, must be unique. */
+  @Prop() datePickerId: string = generateUniqueId();
+
+  /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
+  @Prop() weekDayLabels: string = 'MTWTFSS';
 
   @State() currentMonth = format(startOfToday(), 'MMM-yyyy');
 
@@ -74,11 +81,27 @@ export class TdsDatePicker {
     end: endOfYear(addYears(this.firstMonthCurrentYear, 11)),
   });
 
+  /** Fires when the Accordion Item is clicked, but before it is closed or opened. */
+  @Event({
+    eventName: 'tdsSelect',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  })
+  tdsSelect: EventEmitter<{
+    date: string;
+    id: string;
+  }>;
+
   /** The placement of the Datepicker */
   private placement: Placement = 'auto';
 
-  private handleSelection = (day: any) => {
-    this.selectedDate = format(day, this.getFormat());
+  private handleSelection = (date: Date) => {
+    this.selectedDate = format(date, this.getFormat());
+    this.tdsSelect.emit({
+      date: this.selectedDate,
+      id: this.datePickerId,
+    });
   };
 
   private getNext = () => {
@@ -101,7 +124,7 @@ export class TdsDatePicker {
     }
   };
 
-  handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
+  private handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
     const newSelectedDate = parse(event.target.value, 'yyyy-MM-dd', new Date());
     const oldSelectedDate = parse(this.selectedDate, 'yyyy-MM-dd', new Date());
 
@@ -168,8 +191,9 @@ export class TdsDatePicker {
   }
 
   private getDayHTML() {
-    return this.days.map((day: any) => (
+    return this.days.map((day: Date) => (
       <date-picker-day
+        key={day.getDate()}
         onClick={() => {
           this.handleSelection(day);
         }}
@@ -181,8 +205,9 @@ export class TdsDatePicker {
   }
 
   private getMonthHTML() {
-    return this.months.map((month: any) => (
+    return this.months.map((month: Date) => (
       <date-picker-month
+        key={month.getDate()}
         onClick={() => {
           console.log(month);
           this.handleSelection(month);
@@ -194,8 +219,9 @@ export class TdsDatePicker {
   }
 
   private getYearHTML() {
-    return this.years.map((year: any) => (
+    return this.years.map((year: Date) => (
       <date-picker-year
+        key={year.getDate()}
         onClick={() => {
           this.handleSelection(year);
         }}
@@ -247,17 +273,8 @@ export class TdsDatePicker {
               [this.variant]: true,
             }}
           >
-            {this.variant === 'day' && (
-              <Fragment>
-                <div class="day-indicator">M</div>
-                <div class="day-indicator">T</div>
-                <div class="day-indicator">O</div>
-                <div class="day-indicator">T</div>
-                <div class="day-indicator">F</div>
-                <div class="day-indicator">S</div>
-                <div class="day-indicator">S</div>
-              </Fragment>
-            )}
+            {this.variant === 'day' &&
+              [...this.weekDayLabels].map((label) => <div class="day-indicator">{label}</div>)}
             {this.variant === 'day' && this.getDayHTML()}
             {this.variant === 'month' && this.getMonthHTML()}
             {this.variant === 'year' && this.getYearHTML()}
