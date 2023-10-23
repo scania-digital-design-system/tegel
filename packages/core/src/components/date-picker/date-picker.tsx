@@ -274,7 +274,11 @@ export class TdsDatePicker {
             }}
           >
             {this.variant === 'day' &&
-              [...this.weekDayLabels].map((label) => <div class="day-indicator">{label}</div>)}
+              [...this.weekDayLabels].map((label) => (
+                <div key={label} class="day-indicator">
+                  {label}
+                </div>
+              ))}
             {this.variant === 'day' && this.getDayHTML()}
             {this.variant === 'month' && this.getMonthHTML()}
             {this.variant === 'year' && this.getYearHTML()}
