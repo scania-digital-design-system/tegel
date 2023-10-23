@@ -242,7 +242,6 @@ export class TdsSlider {
     this.calculateThumbLeftFromValue(newValue);
     this.value = newValue;
     this.tdsChange.emit({ value: this.value });
-    this.tdsChange.emit({ value: this.value });
     this.updateTrack();
   }
 
