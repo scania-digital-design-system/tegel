@@ -33,13 +33,13 @@ export class TdsDatePicker {
   private getFormat = (): string => {
     switch (this.variant) {
       case 'day':
-        return 'yyy-MM-dd';
+        return 'yyyy-MM-dd';
       case 'month':
         return 'yyyy-MM';
       case 'year':
-        return 'yyy';
+        return 'yyyy';
       default:
-        return 'yyy-MM-dd';
+        return 'yyyy-MM-dd';
     }
   };
 
@@ -58,13 +58,20 @@ export class TdsDatePicker {
   /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
   @Prop() weekDayLabels: string = 'MTWTFSS';
 
-  @State() currentMonth = format(startOfToday(), 'MMM-yyyy');
+  @State() currentMonth = format(
+    parse(this.selectedDate, this.getFormat(), new Date()),
+    this.getFormat(),
+  );
 
-  @State() firstDayCurrentMonth = parse(this.currentMonth, 'MMM-yyyy', new Date());
+  @State() firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
 
-  @State() firstMonthCurrentYear = startOfYear(startOfToday());
+  @State() firstMonthCurrentYear = startOfYear(
+    parse(this.selectedDate, this.getFormat(), new Date()),
+  );
 
-  @State() firstYearCurrentSpan = startOfYear(startOfToday());
+  @State() firstYearCurrentSpan = startOfYear(
+    parse(this.selectedDate, this.getFormat(), new Date()),
+  );
 
   @State() days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
@@ -197,7 +204,7 @@ export class TdsDatePicker {
         onClick={() => {
           this.handleSelection(day);
         }}
-        isCurrentMonth={isSameMonth(day, parse(this.currentMonth, 'MMM-yyyy', new Date()))}
+        isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
         date={format(day, 'd')}
         selected={format(day, this.getFormat()) === this.selectedDate}
       ></date-picker-day>
@@ -209,7 +216,6 @@ export class TdsDatePicker {
       <date-picker-month
         key={month.getDate()}
         onClick={() => {
-          console.log(month);
           this.handleSelection(month);
         }}
         month={format(month, 'MMM')}

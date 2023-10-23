@@ -27,25 +27,32 @@ export default {
       },
       options: ['Day', 'Month', 'Year'],
     },
-    selectedDate: {
-      name: 'Selected date',
+    customDate: {
+      name: 'Use a custom selected date.',
       control: {
-        type: 'text',
+        type: 'boolean',
       },
     },
   },
   args: {
     modeVariant: 'Inherit from parent',
     variant: 'Day',
+    customDate: true,
   },
 };
 
-const datePickerTemplate = ({ variant, modeVariant }) =>
+const customDateLookUp = {
+  Day: '2023-12-24',
+  Month: '2023-12',
+  Year: '2023',
+};
+const datePickerTemplate = ({ variant, modeVariant, customDate }) =>
   formatHtmlPreview(
     `
     <tds-date-picker
       variant="${variant.toLowerCase()}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${customDate ? `selected-date="${customDateLookUp[variant]}"` : ''}
       placement="bottom"
     >
     </tds-date-picker>
