@@ -1,0 +1,43 @@
+.tds-date-picker {
+  width: 208px;
+
+  tds-popover-core {
+    .calendar-container {
+      box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 4px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 8px;
+
+      &.tds-mode-variant-primary {
+        background-color: red;
+      }
+
+      &.month,
+      &.year {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 48px;
+      }
+
+      .day-indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .controls {
+      color: var(--tds-date-picker-calendar-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .calendar-display {
+        font: var(--tds-detail-02);
+        letter-spacing: var(--tds-detail-02-ls);
+      }
+    }
+  }
+}
