@@ -76,7 +76,7 @@ export const TegelDesignSystem = {
                         </p>
                         <p>
                             The new
-                            package includes all components as web components, removes the old "native" components and makes the
+                            package includes all components as web-components, removes the old CSS class components and makes the
                             installation and updates easier. The current prefix for components, CSS variables, and utility classes -
                             "sdds",
                             will be changed. We have also created a new Storybook for @scania/tegel, which allows developers and
@@ -112,14 +112,13 @@ export const TegelDesignSystem = {
                             latest major.
                         </p>
                         <p>
-                            And we have saved the best for last, @scania/tegel is 100% web component. Previous packages
+                            And we have saved the best for last, @scania/tegel is 100% web-components. Previous packages
                             had
                             some
-                            web components, but also "native" components, these were utility classes that could be added to a predefined
+                            web-components, but also CSS class components, these were utility classes that could be added to a predefined
                             HTML
                             structure to create the look and feel of Tegel. Now we are making a big effort to provide all components as
-                            web
-                            components.
+                            web-components.
                         </p>
                     </section>
                     <section>
@@ -156,14 +155,14 @@ export const TegelDesignSystem = {
                     </section>
                     <section>
                         <h4 class="tds-u-mb2">
-                            Removing "native" components ❌
+                            Removing CSS class components ❌
                         </h4>
 
 
                         <p>
-                            With this new package we are also removing our "native" components and instead introducing web component
-                            counterparts to these. This means that every component that was available as a "native" component in
-                            @scania/components will have a web component alternative in @scania/tegel. This removal will be done in our
+                            With this new package we are also removing our CSS components and instead introducing web-component
+                            counterparts to these. This means that every component that was available as a CSS component in
+                            @scania/components will have a web-component alternative in @scania/tegel. This removal will be done in our
                             next
                             release of @scania/tegel. This change does not change the current @scania/components package.
 
