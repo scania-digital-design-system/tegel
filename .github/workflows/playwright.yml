@@ -22,7 +22,7 @@ jobs:
 
 
     - name: Run Playwright tests
-      run: npx playwright test --headless
+      run: npx playwright test --headed
       working-directory: packages/core 
 
     - uses: actions/upload-artifact@v3
