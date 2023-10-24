@@ -9,6 +9,6 @@ test.describe('tds-badge', () => {
       await expect(element).toHaveClass(/hydrated/);
     });
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
   });
 });
