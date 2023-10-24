@@ -38,6 +38,20 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
+    allSelected: {
+      name: 'All selected',
+      description: `Controls the checked state of the "all-selected"-checkbox.`,
+      control: {
+        type: 'boolean',
+      },
+    },
+    allIndeterminate: {
+      name: 'All indeterminate',
+      description: `Controls the indeterminate state of the "all-selected"-checkbox.`,
+      control: {
+        type: 'boolean',
+      },
+    },
     compactDesign: {
       name: 'Compact design',
       description: 'Enables compact design of the Table, rows with less height.',
@@ -116,6 +130,8 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
+    allSelected: false,
+    allIndeterminate: false,
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
@@ -129,6 +145,8 @@ export default {
 
 const MultiselectTemplate = ({
   modeVariant,
+  allSelected,
+  allIndeterminate,
   compactDesign,
   responsiveDesign,
   verticalDivider,
@@ -150,7 +168,9 @@ const MultiselectTemplate = ({
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         }
     >
-          <tds-table-header>
+          <tds-table-header ${allSelected ? 'selected' : ''} ${
+    allIndeterminate ? 'indeterminate' : ''
+  }>
               <tds-header-cell cell-key='truck' cell-value='Truck type' ${
                 column1Width ? `custom-width="${column1Width}"` : ''
               }></tds-header-cell>
