@@ -1,10 +1,10 @@
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
-![npm](https://img.shields.io/npm/v/%40scania%2Ftegel-angular)
+![npm](https://img.shields.io/npm/v/%40scania%2Ftegel-react)
 
 # @scania/tegel-react
-This is a ongoing project with the purpose to simplify the integration of Tegel in React apps.
+This is an ongoing project with the purpose to simplify the integration of Tegel in React apps.
 
 This guide [here](https://stenciljs.com/docs/react) has served as base for the configuration.
 
@@ -25,22 +25,23 @@ This package is currently in a **beta** stage. We are now working hard towards a
 2. In your App.tsx:
 
 ```ts
-import { MyComponent, defineCustomElements } from '@scania/tegel-react';
+import { defineCustomElements, TdsButton } '@scania/tegel-react';
 
-defineCustomElements();
+defineCustomElements(); // Needs to be run in the browser once, before any elements are used.
 
 function App() {
-  return (
-    <div className="App">
-      <MyComponent first="Your" last="Name" />
-    </div>
-  );
+return (
+<div className="App">
+  <TdsButton text="Click me!">
+  </TdsButton>
+</div>
+);
 }
 
 export default App;
 ```
 
-3. In your global css file (`styles.css`) import the tegel stylesheet.
+1. In your global css file import the tegel stylesheet.
 
 ```css
 @import url('@scania/tegel/dist/tegel/tegel.css');
