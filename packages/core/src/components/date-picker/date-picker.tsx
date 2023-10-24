@@ -58,6 +58,18 @@ export class TdsDatePicker {
   /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
   @Prop() weekDayLabels: string = 'MTWTFSS';
 
+  /** State of the Date Picker */
+  @Prop() state: 'error' | 'success' | 'default' = 'default';
+
+  /** Helper text for the Date Picker */
+  @Prop() helper: string;
+
+  /** Label text */
+  @Prop() label: string;
+
+  /** Position of the label for the Text Field. */
+  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+
   @State() currentMonth = format(
     parse(this.selectedDate, this.getFormat(), new Date()),
     this.getFormat(),
@@ -248,6 +260,10 @@ export class TdsDatePicker {
       >
         <div id="haha">
           <tds-text-field
+            state={this.state}
+            label={this.label}
+            labelPosition={this.labelPosition}
+            helper={this.helper}
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleInput(event)}
             placeholder="YYYY/MM/DD"

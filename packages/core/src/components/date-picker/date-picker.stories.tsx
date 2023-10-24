@@ -33,10 +33,50 @@ export default {
         type: 'boolean',
       },
     },
+    state: {
+      name: 'State',
+      description: 'Switches between success and error state.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Default', 'Success', 'Error'],
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
+    helper: {
+      name: 'Helper text',
+      description: 'Sets the helper text.',
+      control: {
+        type: 'text',
+      },
+    },
+    label: {
+      name: 'Label text',
+      description: 'Sets the label text.',
+      control: {
+        type: 'text',
+      },
+    },
+    labelPosition: {
+      name: 'Label position',
+      description: 'Sets the label text position.',
+      control: {
+        type: 'radio',
+      },
+      options: ['No label', 'Inside', 'Outside'],
+      table: {
+        defaultValue: { summary: 'no-label' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     variant: 'Day',
+    state: 'Default',
+    label: null,
+    labelPosition: 'No label',
+    helper: '',
     customDate: true,
   },
 };
@@ -46,13 +86,31 @@ const customDateLookUp = {
   Month: '2023-12',
   Year: '2023',
 };
-const datePickerTemplate = ({ variant, modeVariant, customDate }) =>
-  formatHtmlPreview(
+const datePickerTemplate = ({
+  variant,
+  modeVariant,
+  customDate,
+  state,
+  helper,
+  label,
+  labelPosition,
+}) => {
+  const getLabelPosition = () => {
+    if (labelPosition === 'No label') {
+      return 'no-label';
+    }
+    return labelPosition.toLowerCase();
+  };
+  return formatHtmlPreview(
     `
     <tds-date-picker
       variant="${variant.toLowerCase()}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${customDate ? `selected-date="${customDateLookUp[variant]}"` : ''}
+      state="${state.toLowerCase()}"
+      ${label ? `label="${label}"` : ''}
+      label-position="${getLabelPosition()}"
+      ${helper ? `helper="${helper}"` : ''}
       placement="bottom"
     >
     </tds-date-picker>
@@ -65,5 +123,6 @@ const datePickerTemplate = ({ variant, modeVariant, customDate }) =>
     </script>
     `,
   );
+};
 
 export const Default = datePickerTemplate.bind({});
