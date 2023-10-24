@@ -14,6 +14,7 @@ import {
   format,
   isSameMonth,
   isValid,
+  isBefore,
   parse,
   startOfMonth,
   startOfToday,
@@ -134,11 +135,25 @@ export class TdsDatePicker {
   };
 
   private handleSelection = (date: Date) => {
+    const oldSelectedDate = this.selectedDate;
     this.selectedDate = format(date, this.getFormat());
     this.tdsSelect.emit({
       date: this.selectedDate,
       id: this.datePickerId,
     });
+
+    if (this.variant === 'day') {
+      if (
+        isBefore(
+          parse(oldSelectedDate, this.getFormat(), new Date()),
+          parse(this.selectedDate, this.getFormat(), new Date()),
+        )
+      ) {
+        this.updateDays(1);
+      } else {
+        this.updateDays(-1);
+      }
+    }
   };
 
   private getNext = () => {
@@ -162,11 +177,11 @@ export class TdsDatePicker {
   };
 
   private handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
-    const newSelectedDate = parse(event.target.value, 'yyyy-MM-dd', new Date());
-    const oldSelectedDate = parse(this.selectedDate, 'yyyy-MM-dd', new Date());
+    const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
+    const oldSelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
 
     if (isValid(newSelectedDate) && isValid(oldSelectedDate)) {
-      this.selectedDate = format(newSelectedDate, 'yyyy-MM-dd');
+      this.selectedDate = format(newSelectedDate, this.getFormat());
       const diff = differenceInCalendarMonths(newSelectedDate, oldSelectedDate);
 
       this.updateDays(diff);
