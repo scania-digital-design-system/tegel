@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 import { Placement } from '@popperjs/core';
 import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import {
@@ -19,6 +20,8 @@ import {
   startOfWeek,
   startOfYear,
 } from 'date-fns';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { enGB, sv, de } from 'date-fns/locale';
 import { TdsTextFieldCustomEvent } from '../..';
 import generateUniqueId from '../../utils/generateUniqueId';
 
@@ -70,6 +73,8 @@ export class TdsDatePicker {
   /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
+  @Prop() locale: 'en' | 'sv' | 'de' = 'en';
+
   @State() currentMonth = format(
     parse(this.selectedDate, this.getFormat(), new Date()),
     this.getFormat(),
@@ -114,6 +119,19 @@ export class TdsDatePicker {
 
   /** The placement of the Datepicker */
   private placement: Placement = 'auto';
+
+  private getLocale = () => {
+    switch (this.locale) {
+      case 'en':
+        return enGB;
+      case 'sv':
+        return sv;
+      case 'de':
+        return de;
+      default:
+        return enGB;
+    }
+  };
 
   private handleSelection = (date: Date) => {
     this.selectedDate = format(date, this.getFormat());
@@ -230,7 +248,9 @@ export class TdsDatePicker {
         onClick={() => {
           this.handleSelection(month);
         }}
-        month={format(month, 'MMM')}
+        month={format(month, 'MMM', {
+          locale: this.getLocale(),
+        })}
         selected={format(month, this.getFormat()) === this.selectedDate}
       ></date-picker-month>
     ));

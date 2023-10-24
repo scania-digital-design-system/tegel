@@ -69,6 +69,17 @@ export default {
         defaultValue: { summary: 'no-label' },
       },
     },
+    lang: {
+      name: 'Language',
+      description: 'Language used in the Date Picker',
+      control: {
+        type: 'radio',
+      },
+      options: ['en', 'sv', 'de'],
+      table: {
+        defaultValue: { summary: 'en' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -78,6 +89,7 @@ export default {
     labelPosition: 'No label',
     helper: '',
     customDate: true,
+    lang: 'en',
   },
 };
 
@@ -94,6 +106,7 @@ const datePickerTemplate = ({
   helper,
   label,
   labelPosition,
+  lang,
 }) => {
   const getLabelPosition = () => {
     if (labelPosition === 'No label') {
@@ -112,6 +125,7 @@ const datePickerTemplate = ({
       label-position="${getLabelPosition()}"
       ${helper ? `helper="${helper}"` : ''}
       placement="bottom"
+      locale="${lang}"
     >
     </tds-date-picker>
     <!-- Script tag for demo purposes -->
