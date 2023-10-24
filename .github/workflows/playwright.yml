@@ -4,7 +4,6 @@ on:
     branches: [ main, develop, test/playwright-setup ]
 jobs:
   test:
-    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -23,7 +22,7 @@ jobs:
 
 
     - name: Run Playwright tests
-      run: npx playwright test
+      run: npx playwright test --headless
       working-directory: packages/core 
 
     - uses: actions/upload-artifact@v3
