@@ -54,7 +54,7 @@ export const Tegel = {
                         <h4 class="tds-u-mb2">@scania/tegel 🧱</h4>
                         <p>
                             The new
-                            package includes all components as web-components, removes the old CSS class components and makes the
+                            package includes all components as web components, removes the old CSS class components and makes the
                             installation and updates easier. The current prefix for components, CSS variables, and utility classes -
                             "sdds",
                             will be changed. We have also created a new Storybook for @scania/tegel, which allows developers and
@@ -93,7 +93,7 @@ export const Tegel = {
                             And we have saved the best for last, @scania/tegel is 100% web component. Previous packages
                             had
                             some
-                            web-components, but also CSS components, these were utility classes that could be added to a predefined
+                            web components, but also CSS components, these were utility classes that could be added to a predefined
                             HTML
                             structure to create the look and feel of Tegel. Now we are making a big effort to provide all components as
                             web
