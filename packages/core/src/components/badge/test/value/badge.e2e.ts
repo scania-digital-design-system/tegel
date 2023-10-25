@@ -1,8 +1,5 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
-import { configureSnapshotPath } from '../../../../utils/configureSnapshotPath';
-
-test.beforeEach(configureSnapshotPath());
 
 test.describe('tds-badge', () => {
   test('renders value badge correctly', async ({ page }) => {
