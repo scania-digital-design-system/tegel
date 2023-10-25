@@ -1,8 +1,5 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
-import { configureSnapshotPath } from '../../../../utils/configureSnapshotPath';
-
-test.beforeEach(configureSnapshotPath());
 
 test.describe('tds-banner', () => {
   test('renders basic banner correctly', async ({ page }) => {
