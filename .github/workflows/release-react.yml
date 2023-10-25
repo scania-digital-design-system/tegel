@@ -52,9 +52,6 @@ jobs:
       - name: React - Bump version
         run: npm version ${{ github.event.inputs.tegelVersion }}
 
-      - name: React - Install latest tegel package
-        run: npm @scania/tegel@${{ github.event.inputs.tegelVersion }}
-
       - name: React - Remove package-lock
         run: rm -rf package-lock.json
 
