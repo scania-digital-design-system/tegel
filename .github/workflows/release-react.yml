@@ -58,9 +58,6 @@ jobs:
         run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
         working-directory: packages/react
 
-      - name: Check out new branch
-        run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}"
-
       - name: Core - Install Tegel
         run: npm install
         working-directory: packages/core
@@ -86,6 +83,7 @@ jobs:
           commit-message: Release of @scania/tegel@${{ github.event.inputs.tegelVersion }}
           branch: release/${{ github.event.inputs.tegelVersion }}
           delete-branch: true
+          
   on-failure:
     needs: release-react
     runs-on: ubuntu-latest
