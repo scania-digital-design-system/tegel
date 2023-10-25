@@ -54,7 +54,6 @@ jobs:
         run: rm -rf package-lock.json
         working-directory: packages/react
 
-
       - name: React - Install with latest tegel package
         run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
         working-directory: packages/react
@@ -63,8 +62,7 @@ jobs:
         run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}"
 
       - name: React - Run build
-        run: npm run build
-        working-directory: packages/react
+        run: npm run build-react
 
       - name: React - Publish
         run: |
