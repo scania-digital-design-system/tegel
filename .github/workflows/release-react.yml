@@ -61,7 +61,11 @@ jobs:
       - name: Check out new branch
         run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}"
 
-      - name: React - Run build
+      - name: Core - Install Tegel
+        run: npm run install
+        working-directory: packages/core
+
+      - name: React - Build
         run: npm run build-react
 
       - name: React - Publish
