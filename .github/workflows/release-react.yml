@@ -62,7 +62,7 @@ jobs:
         run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}"
 
       - name: Core - Install Tegel
-        run: npm run install
+        run: npm install
         working-directory: packages/core
 
       - name: React - Build
