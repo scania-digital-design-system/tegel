@@ -11,7 +11,7 @@ test.describe('tds-accordiong', () => {
     await expect(accordion).toHaveClass(/hydrated/);
     await expect(accordion).toContainText('First item');
     await expect(accordion).toContainText('Second item');
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 100 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
   test('does fire tdsToggle event on click on accordion', async ({ page }) => {
     await page.goto('src/components/accordion/test/padding-reset/index.html');
