@@ -46,23 +46,25 @@ jobs:
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
-      - name: React - CD into correct folder
-        run: cd packages/react
-
       - name: React - Bump version
         run: npm version ${{ github.event.inputs.tegelVersion }}
+        working-directory: packages/react
 
       - name: React - Remove package-lock
         run: rm -rf package-lock.json
+        working-directory: packages/react
+
 
       - name: React - Install with latest tegel package
         run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
+        working-directory: packages/react
 
       - name: Check out new branch
         run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}"
 
       - name: React - Run build
         run: npm run build
+        working-directory: packages/react
 
       - name: React - Publish
         run: |
@@ -71,6 +73,7 @@ jobs:
           else
             npm publish --tag ${{ github.event.inputs.tags }}
           fi
+        working-directory: packages/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
