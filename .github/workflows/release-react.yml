@@ -1,0 +1,98 @@
+name: Release @scania/tegel-react
+on:
+  workflow_dispatch:
+    inputs:
+      tegelVersion:
+        description: 'Tegel version'
+        required: true
+        type: string
+
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '18.16.0'
+        type: string
+
+      tags:
+        description: 'Tag'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - latest
+          - beta
+          - dev
+
+      dryRun:
+        description: 'Dry run'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  release-react:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up node
+        # Setup .npmrc file to publish to npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: React - CD into correct folder
+        run: cd packages/react
+
+      - name: React - Bump version
+        run: npm version ${{ github.event.inputs.tegelVersion }}
+
+      - name: React - Install latest tegel package
+        run: npm @scania/tegel@${{ github.event.inputs.tegelVersion }}
+
+      - name: React - Remove package-lock
+        run: rm -rf package-lock.json
+
+      - name: React - Install with latest tegel package
+        run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
+
+      - name: Check out new branch
+        run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}"
+
+      - name: React - Run build
+        run: npm run build
+
+      - name: React - Publish
+        run: |
+          if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
+            npm publish --tag ${{ github.event.inputs.tags }} --dry-run
+          else
+            npm publish --tag ${{ github.event.inputs.tags }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: React - Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: release/@scania/tegel-react@${{ github.event.inputs.tegelVersion }}
+          commit-message: Release of @scania/tegel@${{ github.event.inputs.tegelVersion }}
+          branch: release/${{ github.event.inputs.tegelVersion }}
+          delete-branch: true
+  on-failure:
+    needs: release-react
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Remove branch and git tag on failure
+        env:
+          npm_version: ${{ github.event.inputs.tegelVersion }}
+        run: |
+          if [ "${{ job.status }}" == "failure" ]; then
+            git push origin --delete @scania/tegel@${{ github.event.inputs.tegelVersion }}
+          fi
