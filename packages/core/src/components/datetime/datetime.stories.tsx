@@ -202,14 +202,14 @@ const datetimeTemplate = ({
     </style>
 
   <div class="demo-wrapper">
-
+        
     <tds-datetime
       id="datetime"
       ${defaultValue !== 'None' ? `default-value="${getDefaultValue(defaultValue, type)}"` : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       type="${typeLookup[type]}"      
       ${minValue ? `min=${minValue}` : ''}
-      ${maxValue ? `min=${maxValue}` : ''}
+      ${maxValue ? `max=${maxValue}` : ''}
       size="${sizeLookup[size]}"
       state="${stateLookup[state]}"
       ${disabled ? 'disabled' : ''}
