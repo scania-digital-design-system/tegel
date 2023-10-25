@@ -14,7 +14,6 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: !process.env.CI,
   },
   workers: 4,
-  snapshotPathTemplate: 'snapshots/{arg}{ext}',
 };
 
 export default config;
