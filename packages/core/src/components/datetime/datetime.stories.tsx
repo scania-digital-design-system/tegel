@@ -202,7 +202,7 @@ const datetimeTemplate = ({
     </style>
 
   <div class="demo-wrapper">
-        hahah
+        
     <tds-datetime
       id="datetime"
       ${defaultValue !== 'None' ? `default-value="${getDefaultValue(defaultValue, type)}"` : ''}
