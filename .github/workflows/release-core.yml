@@ -88,7 +88,7 @@ jobs:
         with:
           title: release/@scania/tegel@${{ steps.version.outputs.version }}
           commit-message: Release of @scania/tegel@${{ steps.version.outputs.version }}
-          branch: release/${{ steps.version.outputs.version }}
+          branch: release/tegel@${{ steps.version.outputs.version }}
           delete-branch: true
   on-failure:
     needs: release-core

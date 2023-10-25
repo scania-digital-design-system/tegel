@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       tegelVersion:
-        description: 'Tegel version'
+        description: 'Tegel version - this should represent the latest @scania-tegel version.'
         required: true
         type: string
 
@@ -46,23 +46,24 @@ jobs:
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
-      - name: Angular - CD into correct folder
-        run: cd packages/angular
-
       - name: Angular - Bump version
         run: npm version ${{ github.event.inputs.tegelVersion }}
+        working-directory: packages/angular
 
       - name: Angular - Remove package-lock
         run: rm -rf package-lock.json
+        working-directory: packages/angular
 
       - name: Angular - Install latest tegel package
         run: npm install @scania/tegel@${{ github.event.inputs.tegelVersion }}
+        working-directory: packages/angular
 
-      - name: Check out new branch
-        run: git checkout -b "release/${{ github.event.inputs.tegelVersion }}
+      - name: Core - Install Tegel
+        run: npm install
+        working-directory: packages/core
 
       - name: Angular - Run build
-        run: npm run build
+        run: npm run build-angular
 
       - name: Angular - Publish
         run: |
@@ -79,7 +80,7 @@ jobs:
         with:
           title: release/@scania/tegel-react@${{ github.event.inputs.tegelVersion }}
           commit-message: Release of @scania/tegel@${{ github.event.inputs.tegelVersion }}
-          branch: release/${{ github.event.inputs.tegelVersion }}
+          branch: release/tegel-react@${{ github.event.inputs.tegelVersion }}
           delete-branch: true
   on-failure:
     needs: release-angular

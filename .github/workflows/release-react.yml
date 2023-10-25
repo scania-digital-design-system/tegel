@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       tegelVersion:
-        description: 'Tegel version'
+        description: 'Tegel version - this should represent the latest @scania-tegel version.'
         required: true
         type: string
 
@@ -81,7 +81,7 @@ jobs:
         with:
           title: release/@scania/tegel-react@${{ github.event.inputs.tegelVersion }}
           commit-message: Release of @scania/tegel@${{ github.event.inputs.tegelVersion }}
-          branch: release/${{ github.event.inputs.tegelVersion }}
+          branch: release/tegel-react@${{ github.event.inputs.tegelVersion }}
           delete-branch: true
           
   on-failure:
