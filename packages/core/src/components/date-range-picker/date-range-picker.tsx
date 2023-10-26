@@ -243,6 +243,10 @@ export class TdsDateRangePicker {
   }
 
   private handleMouseOver = (day: Date) => {
+    // if day that is being hovered is the same as the start date
+    if (isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))) {
+      console.log(true);
+    }
     this.internalTdsInRange.emit({
       datePickerId: this.datePickerId,
       startDate: parse(this.startDate, this.getFormat(), new Date()),
@@ -334,22 +338,25 @@ export class TdsDateRangePicker {
               </div>
             ))}
             {this.days.map((day: Date) => (
-              <date-picker-day
+              <date-range-picker-day
                 key={day.getDate()}
                 onClick={() => {
                   this.handleSelection(day);
                 }}
                 isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
                 date={day}
-                fullDate={day}
                 selected={
                   format(day, this.getFormat()) === this.startDate ||
                   format(day, this.getFormat()) === this.endDate
                 }
                 disabled={this.isDateDisabled(day)}
-                fallsInRange={this.isInRange(day)}
+                inRange={this.isInRange(day)}
                 onMouseOver={() => {
-                  if (this.startDate && !this.endDate) {
+                  if (
+                    this.startDate &&
+                    !this.endDate &&
+                    !isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))
+                  ) {
                     this.handleMouseOver(day);
                   }
                 }}
@@ -358,9 +365,9 @@ export class TdsDateRangePicker {
                     this.handleFocus(day);
                   }
                 }}
-                firstDate={isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))}
-                lastDate={isSameDay(day, parse(this.endDate, this.getFormat(), new Date()))}
-              ></date-picker-day>
+                firstInRange={isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))}
+                lastInRange={isSameDay(day, parse(this.endDate, this.getFormat(), new Date()))}
+              ></date-range-picker-day>
             ))}
           </div>
         </tds-popover-core>

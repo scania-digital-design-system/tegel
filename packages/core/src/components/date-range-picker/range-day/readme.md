@@ -11,7 +11,10 @@
 | ---------------- | ------------------ | ----------- | --------- | ----------- |
 | `date`           | --                 |             | `Date`    | `undefined` |
 | `disabled`       | `disabled`         |             | `boolean` | `false`     |
+| `firstInRange`   | `first-in-range`   |             | `boolean` | `false`     |
+| `inRange`        | `in-range`         |             | `boolean` | `false`     |
 | `isCurrentMonth` | `is-current-month` |             | `boolean` | `true`      |
+| `lastInRange`    | `last-in-range`    |             | `boolean` | `false`     |
 | `selected`       | `selected`         |             | `boolean` | `false`     |
 
 
@@ -19,13 +22,13 @@
 
 ### Used by
 
- - [tds-date-picker](..)
+ - [tds-date-range-picker](..)
 
 ### Graph
 ```mermaid
 graph TD;
-  tds-date-picker --> date-picker-day
-  style date-picker-day fill:#f9f,stroke:#333,stroke-width:4px
+  tds-date-range-picker --> date-range-picker-day
+  style date-range-picker-day fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

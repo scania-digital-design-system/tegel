@@ -1,9 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
 import readme from './readme.md';
 
 export default {
-  title: `${ComponentsFolder}/Date Picker`,
+  title: `Beta/Date Picker`,
   parameters: {
     notes: readme,
   },

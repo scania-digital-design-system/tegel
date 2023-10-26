@@ -1,0 +1,132 @@
+@import '../../../mixins/focus-state';
+
+:host {
+  display: block;
+
+  button {
+    all: unset;
+    color: var(--tds-date-picker-date-color);
+    height: 24px;
+    width: 24px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
+
+    &:focus-visible {
+      @include tds-focus-state;
+    }
+
+    &.not-current-month {
+      color: var(--tds-date-picker-date-color-not-current-month);
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--tds-date-picker-date-bg-hover);
+    }
+
+    &.falls-in-range {
+      background-color: var(--tds-date-picker-date-bg-in-range);
+      color: var(--tds-date-picker-date-color-in-range);
+      border-radius: 0%;
+      position: relative;
+
+      &::before {
+        content: ' ';
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 23px;
+        height: 100%;
+        width: 12.5px;
+        background-color: var(--tds-date-picker-date-bg-in-range);
+      }
+
+      &::after {
+        content: ' ';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 23px;
+        height: 100%;
+        width: 12.5px;
+        background-color: var(--tds-date-picker-date-bg-in-range);
+      }
+
+      &.last-date {
+        background-color: var(--tds-date-picker-date-bg-selected);
+        color: var(--tds-date-picker-date-color-selected);
+        border-radius: 100%;
+
+        &::before {
+          left: -12px;
+        }
+
+        &::after {
+          left: 0;
+        }
+      }
+
+      &.first-date {
+        background-color: var(--tds-date-picker-date-bg-selected);
+        color: var(--tds-date-picker-date-color-selected);
+        border-radius: 100%;
+
+        &::before {
+          left: 12px;
+        }
+
+        &::after {
+          right: 0;
+        }
+      }
+    }
+
+    &.reverse.falls-in-range {
+      &.last-date {
+        background-color: var(--tds-date-picker-date-bg-selected);
+        color: var(--tds-date-picker-date-color-selected);
+        border-radius: 100%;
+
+        &::before {
+          left: 23px;
+        }
+
+        &::after {
+          left: 12px;
+        }
+      }
+
+      &.first-date {
+        color: var(--tds-date-picker-date-color-selected);
+        border-radius: 100%;
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          left: -12px;
+        }
+      }
+    }
+
+    &.today {
+      font-weight: 700;
+    }
+
+    &.selected {
+      background-color: var(--tds-date-picker-date-bg-selected);
+      color: var(--tds-date-picker-date-color-selected);
+      border-radius: 100%;
+    }
+
+    &.disabled {
+      background-color: var(--tds-date-picker-date-bg-disabled);
+      color: var(--tds-date-picker-date-color-disabled);
+    }
+  }
+}
