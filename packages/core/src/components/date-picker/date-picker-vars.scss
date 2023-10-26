@@ -4,12 +4,12 @@
   --tds-date-picker-calendar-color: var(--tds-grey-958);
   --tds-date-picker-date-color: var(--tds-grey-800);
   --tds-date-picker-date-color-not-current-month: var(--tds-grey-500);
-  --tds-date-picker-date-bg-hover: var(--tds-grey-50);
+  --tds-date-picker-date-bg-hover: var(--tds-blue-200);
   --tds-date-picker-date-bg-selected: var(--tds-blue-400);
   --tds-date-picker-date-color-selected: var(--tds-white);
   --tds-date-picker-date-bg-in-range: var(--tds-blue-100);
   --tds-date-picker-date-color-in-range: var(--tds-grey-700);
-  --tds-date-picker-date-bg-disabled: var(--tds-grey-400);
+  --tds-date-picker-date-bg-disabled: var(--tds-date-picker-calendar-bg);
   --tds-date-picker-date-color-disabled: var(--tds-grey-600);
   --tds-date-picker-month-color: var(--tds-grey-800);
   --tds-date-picker-month-bg-hover: var(--tds-grey-50);
@@ -25,7 +25,7 @@
   --tds-date-picker-year-color-disabled: var(--tds-grey-600);
 
   .tds-mode-variant-primary {
-    --tds-date-picker-calendar-bg: var(--tds-grey-50);
+    --tds-date-picker-calendar-bg: var(--tds-blue-200);
   }
 
   .tds-mode-variant-secondary {

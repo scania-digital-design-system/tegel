@@ -265,7 +265,7 @@ export class TdsDatePicker {
           this.handleSelection(day);
         }}
         isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
-        date={format(day, 'd')}
+        date={day}
         selected={format(day, this.getFormat()) === this.selectedDate}
         disabled={this.isDateDisabled(day)}
       ></date-picker-day>

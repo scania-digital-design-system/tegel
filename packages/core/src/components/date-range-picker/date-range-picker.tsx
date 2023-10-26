@@ -340,7 +340,7 @@ export class TdsDateRangePicker {
                   this.handleSelection(day);
                 }}
                 isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
-                date={format(day, 'd')}
+                date={day}
                 fullDate={day}
                 selected={
                   format(day, this.getFormat()) === this.startDate ||

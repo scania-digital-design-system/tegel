@@ -114,6 +114,10 @@
       }
     }
 
+    &.today {
+      font-weight: 700;
+    }
+
     &.selected {
       background-color: var(--tds-date-picker-date-bg-selected);
       color: var(--tds-date-picker-date-color-selected);

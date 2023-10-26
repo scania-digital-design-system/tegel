@@ -9,7 +9,7 @@
 
 | Property         | Attribute          | Description | Type      | Default     |
 | ---------------- | ------------------ | ----------- | --------- | ----------- |
-| `date`           | `date`             |             | `string`  | `undefined` |
+| `date`           | --                 |             | `Date`    | `undefined` |
 | `disabled`       | `disabled`         |             | `boolean` | `false`     |
 | `fallsInRange`   | `falls-in-range`   |             | `boolean` | `false`     |
 | `firstDate`      | `first-date`       |             | `boolean` | `false`     |

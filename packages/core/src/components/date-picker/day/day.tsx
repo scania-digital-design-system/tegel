@@ -1,5 +1,5 @@
 import { Component, Element, Host, Listen, Prop, State, h } from '@stencil/core';
-import { isBefore, isSameDay, isWithinInterval } from 'date-fns';
+import { isBefore, isSameDay, isWithinInterval, isToday, format } from 'date-fns';
 
 @Component({
   tag: 'date-picker-day',
@@ -11,7 +11,7 @@ export class DatepickerDate {
 
   @Prop() isCurrentMonth: boolean = true;
 
-  @Prop() date: string;
+  @Prop() date: Date;
 
   @Prop() fullDate: Date;
 
@@ -78,6 +78,7 @@ export class DatepickerDate {
           disabled={this.disabled}
           class={{
             'selected': this.selected,
+            'today': isToday(this.date),
             'not-current-month': !this.isCurrentMonth,
             'disabled': this.disabled,
             'falls-in-range': this.fallsInRange,
@@ -86,7 +87,7 @@ export class DatepickerDate {
             'reverse': this.reverse,
           }}
         >
-          <time>{this.date}</time>
+          <time>{format(this.date, 'd')}</time>
         </button>
       </Host>
     );
