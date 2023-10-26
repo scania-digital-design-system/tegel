@@ -51,6 +51,7 @@
 ### Used by
 
  - [tds-date-picker](../date-picker)
+ - [tds-date-range-picker](../date-range-picker)
 
 ### Depends on
 
@@ -61,6 +62,7 @@
 graph TD;
   tds-text-field --> tds-icon
   tds-date-picker --> tds-text-field
+  tds-date-range-picker --> tds-text-field
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

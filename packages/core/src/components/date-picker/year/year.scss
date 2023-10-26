@@ -28,5 +28,10 @@
       background-color: var(--tds-date-picker-year-bg-selected);
       color: var(--tds-date-picker-year-color-selected);
     }
+
+    &.disabled {
+      background-color: var(--tds-date-picker-year-bg-disabled);
+      color: var(--tds-date-picker-year-color-disabled);
+    }
   }
 }

@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-return-assign */
 /* eslint-disable import/no-duplicates */
 import { Placement } from '@popperjs/core';
 import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import {
   add,
   addYears,
-  differenceInCalendarMonths,
   eachDayOfInterval,
   eachMonthOfInterval,
   eachYearOfInterval,
@@ -13,9 +16,10 @@ import {
   endOfYear,
   format,
   isSameMonth,
-  isValid,
   isBefore,
   isAfter,
+  isWithinInterval,
+  isSameDay,
   parse,
   startOfMonth,
   startOfToday,
@@ -28,8 +32,8 @@ import { TdsTextFieldCustomEvent } from '../..';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
-  tag: 'tds-date-picker',
-  styleUrl: 'date-picker.scss',
+  tag: 'tds-date-range-picker',
+  styleUrl: 'date-range-picker.scss',
   shadow: false,
 })
 export class TdsDatePicker {
@@ -51,8 +55,11 @@ export class TdsDatePicker {
   /** Set the variant of the Datepicker. */
   @Prop() modeVariant: 'primary' | 'secondary';
 
-  /** The selected date of the Datepicker */
-  @Prop({ mutable: true }) selectedDate: string = format(startOfToday(), this.getFormat());
+  @Prop({ mutable: true }) startDate: string = format(startOfToday(), this.getFormat());
+
+  @Prop({ mutable: true }) endDate: string;
+
+  @Prop() range: boolean;
 
   /** Minimum selectable date. */
   @Prop() min: string;
@@ -84,19 +91,15 @@ export class TdsDatePicker {
   @Prop() locale: 'en' | 'sv' | 'de' = 'en';
 
   @State() currentMonth = format(
-    parse(this.selectedDate, this.getFormat(), new Date()),
+    parse(this.startDate, this.getFormat(), new Date()),
     this.getFormat(),
   );
 
   @State() firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
 
-  @State() firstMonthCurrentYear = startOfYear(
-    parse(this.selectedDate, this.getFormat(), new Date()),
-  );
+  @State() firstMonthCurrentYear = startOfYear(parse(this.startDate, this.getFormat(), new Date()));
 
-  @State() firstYearCurrentSpan = startOfYear(
-    parse(this.selectedDate, this.getFormat(), new Date()),
-  );
+  @State() firstYearCurrentSpan = startOfYear(parse(this.startDate, this.getFormat(), new Date()));
 
   @State() days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
@@ -125,8 +128,39 @@ export class TdsDatePicker {
     id: string;
   }>;
 
+  /** @internal */
+  @Event({
+    eventName: 'internalTdsInRange',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  })
+  internalTdsInRange: EventEmitter<{
+    datePickerId: string;
+    startDate: Date;
+    endDate: Date;
+  }>;
+
+  /** @internal */
+  @Event({
+    eventName: 'internalTdsSelection',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  })
+  internalTdsSelection: EventEmitter<{
+    datePickerId: string;
+    selectionIsMade: boolean;
+  }>;
+
   /** TODO: Should this be editable by the user? The placement of the Datepicker */
   private placement: Placement = 'auto';
+
+  // @ts-ignore This is used in render
+  private startRangeInput: HTMLTdsTextFieldElement;
+
+  // @ts-ignore This is used in render
+  private endRangeInput: HTMLTdsTextFieldElement;
 
   private getLocale = () => {
     switch (this.locale) {
@@ -142,19 +176,33 @@ export class TdsDatePicker {
   };
 
   private handleSelection = (date: Date) => {
-    const newSelectedDate = date;
-    const oldSelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
+    const oldStartDate = parse(this.startDate, this.getFormat(), new Date());
 
-    this.selectedDate = format(date, this.getFormat());
-    this.tdsSelect.emit({
-      date: this.selectedDate,
-      id: this.datePickerId,
-    });
-
-    if (this.variant === 'day') {
-      if (!isSameMonth(newSelectedDate, oldSelectedDate)) {
-        this.updateDays(differenceInCalendarMonths(newSelectedDate, oldSelectedDate));
+    // Selecting an end date
+    if (this.startDate && !this.endDate) {
+      if (isBefore(date, parse(this.startDate, this.getFormat(), new Date()))) {
+        this.startDate = format(date, this.getFormat());
+        this.endDate = format(oldStartDate, this.getFormat());
+        this.internalTdsSelection.emit({
+          datePickerId: this.datePickerId,
+          selectionIsMade: true,
+        });
+      } else {
+        this.endDate = format(date, this.getFormat());
       }
+    }
+    // Selecting start date
+    else if (!this.startDate) {
+      this.startDate = format(date, this.getFormat());
+    }
+    // Selecting new range (start date)
+    else if (this.startDate && this.endDate) {
+      this.startDate = format(date, this.getFormat());
+      this.endDate = null;
+      this.internalTdsSelection.emit({
+        datePickerId: this.datePickerId,
+        selectionIsMade: false,
+      });
     }
   };
 
@@ -178,18 +226,32 @@ export class TdsDatePicker {
     }
   };
 
-  private handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
-    const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
-    const oldSelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
+  private handleStartDateInput(_event: TdsTextFieldCustomEvent<InputEvent>) {
+    /* const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
+    const oldSelectedDate = parse(this.startDate, this.getFormat(), new Date());
 
     if (isValid(newSelectedDate) && isValid(oldSelectedDate)) {
       if (!isSameMonth(oldSelectedDate, newSelectedDate)) {
-        this.selectedDate = format(newSelectedDate, this.getFormat());
+        this.endDate = format(newSelectedDate, this.getFormat());
         const diff = differenceInCalendarMonths(newSelectedDate, oldSelectedDate);
 
         this.updateDays(diff);
       }
-    }
+    } */
+  }
+
+  private handleEndDateInput(_event: TdsTextFieldCustomEvent<InputEvent>) {
+    /* const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
+    const oldSelectedDate = parse(this.endDate, this.getFormat(), new Date());
+
+    if (isValid(newSelectedDate) && isValid(oldSelectedDate)) {
+      if (!isSameMonth(oldSelectedDate, newSelectedDate)) {
+        this.endDate = format(newSelectedDate, this.getFormat());
+        const diff = differenceInCalendarMonths(newSelectedDate, oldSelectedDate);
+
+        this.updateDays(diff);
+      }
+    } */
   }
 
   private updateDays = (monthToJumpTo: number) => {
@@ -250,6 +312,33 @@ export class TdsDatePicker {
     isBefore(date, parse(this.min, this.getFormat(), new Date())) ||
     isAfter(date, parse(this.max, this.getFormat(), new Date()));
 
+  private isInRange(day: Date) {
+    return (
+      this.startDate &&
+      this.endDate &&
+      isWithinInterval(day, {
+        start: parse(this.startDate, this.getFormat(), new Date()),
+        end: parse(this.endDate, this.getFormat(), new Date()),
+      })
+    );
+  }
+
+  private handleMouseOver = (day: Date) => {
+    this.internalTdsInRange.emit({
+      datePickerId: this.datePickerId,
+      startDate: parse(this.startDate, this.getFormat(), new Date()),
+      endDate: day,
+    });
+  };
+
+  private handleFocus = (day: Date) => {
+    this.internalTdsInRange.emit({
+      datePickerId: this.datePickerId,
+      startDate: parse(this.startDate, this.getFormat(), new Date()),
+      endDate: day,
+    });
+  };
+
   private getDayHTML() {
     return this.days.map((day: Date) => (
       <date-picker-day
@@ -259,8 +348,25 @@ export class TdsDatePicker {
         }}
         isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
         date={format(day, 'd')}
-        selected={format(day, this.getFormat()) === this.selectedDate}
+        fullDate={day}
+        selected={
+          format(day, this.getFormat()) === this.startDate ||
+          format(day, this.getFormat()) === this.endDate
+        }
         disabled={this.isDateDisabled(day)}
+        fallsInRange={this.isInRange(day)}
+        onMouseOver={() => {
+          if (this.startDate && !this.endDate) {
+            this.handleMouseOver(day);
+          }
+        }}
+        onFocus={() => {
+          if (this.startDate && !this.endDate) {
+            this.handleFocus(day);
+          }
+        }}
+        firstDate={isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))}
+        lastDate={isSameDay(day, parse(this.endDate, this.getFormat(), new Date()))}
       ></date-picker-day>
     ));
   }
@@ -269,13 +375,13 @@ export class TdsDatePicker {
     return this.months.map((month: Date) => (
       <date-picker-month
         key={month.getDate()}
-        onClick={() => {
+        /*         onClick={() => {
           this.handleSelection(month);
-        }}
+        }} */
         month={format(month, 'MMM', {
           locale: this.getLocale(),
         })}
-        selected={format(month, this.getFormat()) === this.selectedDate}
+        /*         selected={format(month, this.getFormat()) === this.selectedDate} */
         disabled={this.isDateDisabled(month)}
       ></date-picker-month>
     ));
@@ -285,11 +391,11 @@ export class TdsDatePicker {
     return this.years.map((year: Date) => (
       <date-picker-year
         key={year.getDate()}
-        onClick={() => {
+        /*         onClick={() => {
           this.handleSelection(year);
-        }}
+        }} */
         year={format(year, this.getFormat())}
-        selected={format(year, this.getFormat()) === this.selectedDate}
+        /*         selected={format(year, this.getFormat()) === this.selectedDate} */
         disabled={this.isDateDisabled(year)}
       ></date-picker-year>
     ));
@@ -300,20 +406,43 @@ export class TdsDatePicker {
       <div
         class={{
           'tds-date-picker': true,
+          'range': this.range,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
-        <div id="haha">
+        <div
+          id="haha"
+          class={{
+            'tds-u-flex': this.range,
+            'range-picker': this.range,
+          }}
+        >
           <tds-text-field
+            ref={(element) => (this.startRangeInput = element)}
+            noMinWidth={this.range}
             state={this.state}
             label={this.label}
             labelPosition={this.labelPosition}
             helper={this.helper}
             modeVariant={this.modeVariant}
-            onTdsChange={(event) => this.handleInput(event)}
+            onTdsChange={(event) => this.handleStartDateInput(event)}
             placeholder="YYYY/MM/DD"
-            value={this.selectedDate}
+            value={this.startDate}
+          >
+            <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
+          </tds-text-field>
+          <tds-text-field
+            ref={(element) => (this.endRangeInput = element)}
+            noMinWidth={this.range}
+            state={this.state}
+            label={this.label}
+            labelPosition={this.labelPosition}
+            helper={this.helper}
+            modeVariant={this.modeVariant}
+            onTdsChange={(event) => this.handleEndDateInput(event)}
+            placeholder="YYYY/MM/DD"
+            value={this.endDate}
           >
             <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
           </tds-text-field>
@@ -338,6 +467,7 @@ export class TdsDatePicker {
           <div
             class={{
               'calendar-container': true,
+              'range-picker': this.range,
               [this.variant]: true,
             }}
           >

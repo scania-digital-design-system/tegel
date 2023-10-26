@@ -2,6 +2,14 @@
   width: 208px;
   display: inline-block;
 
+  &.range {
+    width: 324px;
+  }
+
+  .range-picker {
+    gap: 4px;
+  }
+
   tds-popover-core {
     .calendar-container {
       box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
@@ -11,11 +19,16 @@
       max-width: 100%;
       margin: 0 auto;
       padding: 8px;
+      overflow: hidden;
 
       &.month,
       &.year {
         grid-template-columns: repeat(3, 1fr);
         column-gap: 48px;
+      }
+
+      &.range-picker {
+        column-gap: 23px;
       }
 
       .day-indicator {

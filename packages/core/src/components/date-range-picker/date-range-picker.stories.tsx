@@ -3,7 +3,7 @@ import { ComponentsFolder } from '../../utils/constants';
 import readme from './readme.md';
 
 export default {
-  title: `${ComponentsFolder}/Date Picker`,
+  title: `${ComponentsFolder}/Date Range Picker`,
   parameters: {
     notes: readme,
   },
@@ -109,15 +109,9 @@ export default {
   },
 };
 
-const customDateLookUp = {
-  Day: '2023-12-24',
-  Month: '2023-12',
-  Year: '2023',
-};
 const datePickerTemplate = ({
   variant,
   modeVariant,
-  customDate,
   state,
   helper,
   label,
@@ -148,10 +142,11 @@ const datePickerTemplate = ({
 
   return formatHtmlPreview(
     `
-    <tds-date-picker
+    <tds-date-range-picker
       variant="${variant.toLowerCase()}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
-      ${customDate ? `selected-date="${customDateLookUp[variant]}"` : ''}
+      start-date="2023-10-01"
+      end-date="2023-10-07"
       ${range ? 'range' : ''}
       state="${state.toLowerCase()}"
       ${label ? `label="${label}"` : ''}
@@ -162,7 +157,7 @@ const datePickerTemplate = ({
       ${min ? `min="${minLookUp[variant]}"` : ''}
       ${max ? `max="${maxLookUp[variant]}"` : ''}
     >
-    </tds-date-picker>
+    </tds-date-range-picker>
     <!-- Script tag for demo purposes -->
     <script>
       datePicker = document.querySelector('tds-date-picker')

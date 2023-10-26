@@ -20,6 +20,7 @@
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
  - [tds-date-picker](../date-picker)
+ - [tds-date-range-picker](../date-range-picker)
  - [tds-datetime](../datetime)
  - [tds-dropdown](../dropdown)
  - [tds-dropdown-option](../dropdown/dropdown-option)
@@ -48,6 +49,7 @@ graph TD;
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
   tds-date-picker --> tds-icon
+  tds-date-range-picker --> tds-icon
   tds-datetime --> tds-icon
   tds-dropdown --> tds-icon
   tds-dropdown-option --> tds-icon

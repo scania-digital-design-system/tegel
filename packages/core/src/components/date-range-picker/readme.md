@@ -1,4 +1,4 @@
-# tds-date-picker
+# tds-date-range-picker
 
 
 
@@ -10,6 +10,7 @@
 | Property        | Attribute         | Description                                                                                                                                                                                       | Type                                  | Default                                    |
 | --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------ |
 | `datePickerId`  | `date-picker-id`  | ID used for internal Date Picker functionality and events, must be unique.                                                                                                                        | `string`                              | `generateUniqueId()`                       |
+| `endDate`       | `end-date`        |                                                                                                                                                                                                   | `string`                              | `undefined`                                |
 | `helper`        | `helper`          | Helper text for the Date Picker                                                                                                                                                                   | `string`                              | `undefined`                                |
 | `label`         | `label`           | Label text                                                                                                                                                                                        | `string`                              | `undefined`                                |
 | `labelPosition` | `label-position`  | Position of the label for the Text Field.                                                                                                                                                         | `"inside" \| "no-label" \| "outside"` | `'no-label'`                               |
@@ -17,7 +18,8 @@
 | `max`           | `max`             | Maximim selectable date.                                                                                                                                                                          | `string`                              | `undefined`                                |
 | `min`           | `min`             | Minimum selectable date.                                                                                                                                                                          | `string`                              | `undefined`                                |
 | `modeVariant`   | `mode-variant`    | Set the variant of the Datepicker.                                                                                                                                                                | `"primary" \| "secondary"`            | `undefined`                                |
-| `selectedDate`  | `selected-date`   | The selected date of the Datepicker                                                                                                                                                               | `string`                              | `format(startOfToday(), this.getFormat())` |
+| `range`         | `range`           |                                                                                                                                                                                                   | `boolean`                             | `undefined`                                |
+| `startDate`     | `start-date`      |                                                                                                                                                                                                   | `string`                              | `format(startOfToday(), this.getFormat())` |
 | `state`         | `state`           | State of the Date Picker                                                                                                                                                                          | `"default" \| "error" \| "success"`   | `'default'`                                |
 | `variant`       | `variant`         | The variant of the Datepicker                                                                                                                                                                     | `"day" \| "month" \| "year"`          | `'day'`                                    |
 | `weekDayLabels` | `week-day-labels` | Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. | `string`                              | `'MTWTFSS'`                                |
@@ -34,9 +36,9 @@
 
 ### Depends on
 
-- [date-picker-day](day)
-- [date-picker-month](month)
-- [date-picker-year](year)
+- [date-picker-day](../date-picker/day)
+- [date-picker-month](../date-picker/month)
+- [date-picker-year](../date-picker/year)
 - [tds-text-field](../text-field)
 - [tds-icon](../icon)
 - [tds-popover-core](../popover-core)
@@ -45,15 +47,15 @@
 ### Graph
 ```mermaid
 graph TD;
-  tds-date-picker --> date-picker-day
-  tds-date-picker --> date-picker-month
-  tds-date-picker --> date-picker-year
-  tds-date-picker --> tds-text-field
-  tds-date-picker --> tds-icon
-  tds-date-picker --> tds-popover-core
-  tds-date-picker --> tds-button
+  tds-date-range-picker --> date-picker-day
+  tds-date-range-picker --> date-picker-month
+  tds-date-range-picker --> date-picker-year
+  tds-date-range-picker --> tds-text-field
+  tds-date-range-picker --> tds-icon
+  tds-date-range-picker --> tds-popover-core
+  tds-date-range-picker --> tds-button
   tds-text-field --> tds-icon
-  style tds-date-picker fill:#f9f,stroke:#333,stroke-width:4px
+  style tds-date-range-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

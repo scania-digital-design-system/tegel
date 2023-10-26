@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description | Type      | Default |
 | ---------- | ---------- | ----------- | --------- | ------- |
+| `disabled` | `disabled` |             | `boolean` | `false` |
 | `selected` | `selected` |             | `boolean` | `false` |
 | `year`     | `year`     |             | `string`  | `''`    |
 
@@ -18,11 +19,13 @@
 ### Used by
 
  - [tds-date-picker](..)
+ - [tds-date-range-picker](../../date-range-picker)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-date-picker --> date-picker-year
+  tds-date-range-picker --> date-picker-year
   style date-picker-year fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
