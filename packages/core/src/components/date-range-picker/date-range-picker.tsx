@@ -46,8 +46,6 @@ export class TdsDateRangePicker {
 
   @Prop({ mutable: true }) endDate: string;
 
-  @Prop() range: boolean;
-
   /** Minimum selectable date. */
   @Prop() min: string;
 
@@ -149,6 +147,11 @@ export class TdsDateRangePicker {
   private handleSelection = (date: Date) => {
     const oldStartDate = parse(this.startDate, this.getFormat(), new Date());
 
+    if (isSameDay(date, parse(this.startDate, this.getFormat(), new Date()))) {
+      this.endDate = null;
+      return;
+    }
+
     // Selecting an end date
     if (this.startDate && !this.endDate) {
       if (isBefore(date, parse(this.startDate, this.getFormat(), new Date()))) {
@@ -161,13 +164,15 @@ export class TdsDateRangePicker {
       } else {
         this.endDate = format(date, this.getFormat());
       }
+      return;
     }
     // Selecting start date
-    else if (!this.startDate) {
+    if (!this.startDate) {
       this.startDate = format(date, this.getFormat());
+      return;
     }
     // Selecting new range (start date)
-    else if (this.startDate && this.endDate) {
+    if (this.startDate && this.endDate) {
       this.startDate = format(date, this.getFormat());
       this.endDate = null;
       this.internalTdsSelection.emit({
@@ -266,22 +271,15 @@ export class TdsDateRangePicker {
     return (
       <div
         class={{
-          'tds-date-picker': true,
-          'range': this.range,
+          'tds-date-range-picker': true,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
         }}
       >
-        <div
-          id="haha"
-          class={{
-            'tds-u-flex': this.range,
-            'range-picker': this.range,
-          }}
-        >
+        <div id="haha" class="controls-container">
           <tds-text-field
             ref={(element) => (this.startRangeInput = element)}
-            noMinWidth={this.range}
+            noMinWidth
             state={this.state}
             label={this.label}
             labelPosition={this.labelPosition}
@@ -295,7 +293,7 @@ export class TdsDateRangePicker {
           </tds-text-field>
           <tds-text-field
             ref={(element) => (this.endRangeInput = element)}
-            noMinWidth={this.range}
+            noMinWidth
             state={this.state}
             label={this.label}
             labelPosition={this.labelPosition}
@@ -328,7 +326,7 @@ export class TdsDateRangePicker {
           <div
             class={{
               'calendar-container': true,
-              'range-picker': this.range,
+              'range-picker': true,
               'day': true,
             }}
           >

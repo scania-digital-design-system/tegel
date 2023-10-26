@@ -19,21 +19,14 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
-    variant: {
-      name: 'Variant',
-      control: {
-        type: 'radio',
-      },
-      options: ['Day', 'Month', 'Year'],
-    },
-    range: {
-      name: 'Range',
+    startDate: {
+      name: 'Use a custom start date.',
       control: {
         type: 'boolean',
       },
     },
-    customDate: {
-      name: 'Use a custom selected date.',
+    endDate: {
+      name: 'Use a custom end date.',
       control: {
         type: 'boolean',
       },
@@ -109,7 +102,6 @@ export default {
 };
 
 const datePickerTemplate = ({
-  variant,
   modeVariant,
   state,
   helper,
@@ -118,7 +110,6 @@ const datePickerTemplate = ({
   min,
   max,
   lang,
-  range,
 }) => {
   const getLabelPosition = () => {
     if (labelPosition === 'No label') {
@@ -127,34 +118,20 @@ const datePickerTemplate = ({
     return labelPosition.toLowerCase();
   };
 
-  const minLookUp = {
-    Day: '2023-10-01',
-    Month: '2023-10',
-    Year: '2023',
-  };
-
-  const maxLookUp = {
-    Day: '2023-11-29',
-    Month: '2023-11',
-    Year: '2030',
-  };
-
   return formatHtmlPreview(
     `
     <tds-date-range-picker
-      variant="${variant.toLowerCase()}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       start-date="2023-10-01"
       end-date="2023-10-07"
-      ${range ? 'range' : ''}
       state="${state.toLowerCase()}"
       ${label ? `label="${label}"` : ''}
       label-position="${getLabelPosition()}"
       ${helper ? `helper="${helper}"` : ''}
       placement="bottom"
       locale="${lang}"
-      ${min ? `min="${minLookUp[variant]}"` : ''}
-      ${max ? `max="${maxLookUp[variant]}"` : ''}
+      ${min ? `min="2023-10-01"` : ''}
+      ${max ? `max="2023-11-29"` : ''}
     >
     </tds-date-range-picker>
     <!-- Script tag for demo purposes -->

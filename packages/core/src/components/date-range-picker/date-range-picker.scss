@@ -1,13 +1,11 @@
-.tds-date-picker {
-  width: 208px;
+.tds-date-range-picker {
   display: inline-block;
+  width: 324px;
 
-  &.range {
-    width: 324px;
-  }
-
-  .range-picker {
-    gap: 4px;
+  .controls-container {
+    display: flex;
+    column-gap: 4px;
+    width: 100%;
   }
 
   tds-popover-core {

@@ -6,14 +6,20 @@
   button {
     all: unset;
     color: var(--tds-date-picker-date-color);
-    height: 24px;
-    width: 24px;
     border-radius: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     font: var(--tds-detail-05);
     letter-spacing: var(--tds-detail-05-ls);
+
+    time {
+      height: 24px;
+      width: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     &:focus-visible {
       @include tds-focus-state;
@@ -23,7 +29,7 @@
       color: var(--tds-date-picker-date-color-not-current-month);
     }
 
-    &:hover {
+    &:hover:not(.disabled) {
       cursor: pointer;
       background-color: var(--tds-date-picker-date-bg-hover);
     }
@@ -33,6 +39,18 @@
       color: var(--tds-date-picker-date-color-in-range);
       border-radius: 0%;
       position: relative;
+
+      &:hover {
+        background-color: var(--tds-date-picker-date-bg-in-range);
+
+        time {
+          height: 24px;
+          width: 24px;
+          background-color: var(--tds-date-picker-date-bg-in-range-hover);
+          color: var(--tds-date-picker-date-color-in-range);
+          border-radius: 100%;
+        }
+      }
 
       &::before {
         content: ' ';
@@ -125,7 +143,6 @@
     }
 
     &.disabled {
-      background-color: var(--tds-date-picker-date-bg-disabled);
       color: var(--tds-date-picker-date-color-disabled);
     }
   }

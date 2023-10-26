@@ -1,15 +1,30 @@
 :root,
 .tds-mode-light {
+  // Calendar - Default
   --tds-date-picker-calendar-bg: var(--tds-grey-50);
   --tds-date-picker-calendar-color: var(--tds-grey-958);
+
+  // Date - Default
   --tds-date-picker-date-color: var(--tds-grey-800);
-  --tds-date-picker-date-color-not-current-month: var(--tds-grey-500);
+
+  // Date - Hover
   --tds-date-picker-date-bg-hover: var(--tds-blue-200);
+
+  // Date - Selected
   --tds-date-picker-date-bg-selected: var(--tds-blue-400);
   --tds-date-picker-date-color-selected: var(--tds-white);
+
+  // Date - In range
   --tds-date-picker-date-bg-in-range: var(--tds-blue-100);
   --tds-date-picker-date-color-in-range: var(--tds-grey-700);
-  --tds-date-picker-date-bg-disabled: var(--tds-date-picker-calendar-bg);
+
+  // Date - In range Hover
+  --tds-date-picker-date-bg-in-range-hover: var(--tds-blue-200);
+
+  // Date - Not in current month
+  --tds-date-picker-date-color-not-current-month: var(--tds-grey-500);
+
+  // Date - Disabled
   --tds-date-picker-date-color-disabled: var(--tds-grey-600);
 
   .tds-mode-variant-primary {
@@ -22,18 +37,35 @@
 }
 
 .tds-mode-dark {
-  --tds-date-picker-calendar-bg: var(--tds-grey-900);
+  // Calendar - Default
+  --tds-date-picker-calendar-bg: var(--tds-grey-868);
   --tds-date-picker-calendar-color: var(--tds-grey-50);
-  --tds-date-picker-date-bg-hover: var(--tds-grey-50);
+
+  // Date - Default
+  --tds-date-picker-date-color: var(--tds-grey-300);
+
+  // Date - Hover
+  --tds-date-picker-date-bg-hover: var(--tds-grey-800);
+
+  // Date - Selected
   --tds-date-picker-date-bg-selected: var(--tds-blue-400);
   --tds-date-picker-date-color-selected: var(--tds-white);
-  --tds-date-picker-date-color: var(--tds-grey-300);
+
+  // Date - In range
+  --tds-date-picker-date-bg-in-range: var(--tds-blue-600);
+  --tds-date-picker-date-color-in-range: var(--tds-grey-300);
+
+  // Date - In range Hover
+  --tds-date-picker-date-bg-in-range-hover: var(--tds-blue-500);
+
+  // Date - Not in current month
   --tds-date-picker-date-color-not-current-month: var(--tds-grey-700);
-  --tds-date-picker-date-bg-disabled: var(--tds-grey-400);
-  --tds-date-picker-date-color-disabled: var(--tds-grey-600);
+
+  // Date - Disabled
+  --tds-date-picker-date-color-disabled: var(--tds-grey-700);
 
   .tds-mode-variant-primary {
-    --tds-date-picker-calendar-bg: var(--tds-grey-900);
+    --tds-date-picker-calendar-bg: var(--tds-grey-868);
   }
 
   .tds-mode-variant-secondary {
