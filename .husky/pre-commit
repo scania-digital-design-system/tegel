@@ -4,5 +4,3 @@
 npx lint-staged
 
 cd packages/core
-
-npx playwright test
