@@ -34,7 +34,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
   styleUrl: 'date-range-picker.scss',
   shadow: false,
 })
-export class TdsDatePicker {
+export class TdsDateRangePicker {
   @Element() host: HTMLTdsDatePickerElement;
 
   private getFormat = (): string => 'yyyy-MM-dd';

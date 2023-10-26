@@ -19,13 +19,11 @@
 ### Used by
 
  - [tds-date-picker](..)
- - [tds-date-range-picker](../../date-range-picker)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-date-picker --> date-picker-month
-  tds-date-range-picker --> date-picker-month
   style date-picker-month fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

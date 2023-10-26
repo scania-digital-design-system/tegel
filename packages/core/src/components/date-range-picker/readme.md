@@ -21,7 +21,6 @@
 | `range`         | `range`           |                                                                                                                                                                                                   | `boolean`                             | `undefined`                                |
 | `startDate`     | `start-date`      |                                                                                                                                                                                                   | `string`                              | `format(startOfToday(), this.getFormat())` |
 | `state`         | `state`           | State of the Date Picker                                                                                                                                                                          | `"default" \| "error" \| "success"`   | `'default'`                                |
-| `variant`       | `variant`         | The variant of the Datepicker                                                                                                                                                                     | `"day" \| "month" \| "year"`          | `'day'`                                    |
 | `weekDayLabels` | `week-day-labels` | Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. | `string`                              | `'MTWTFSS'`                                |
 
 
@@ -36,24 +35,20 @@
 
 ### Depends on
 
-- [date-picker-day](../date-picker/day)
-- [date-picker-month](../date-picker/month)
-- [date-picker-year](../date-picker/year)
 - [tds-text-field](../text-field)
 - [tds-icon](../icon)
 - [tds-popover-core](../popover-core)
 - [tds-button](../button)
+- [date-picker-day](../date-picker/day)
 
 ### Graph
 ```mermaid
 graph TD;
-  tds-date-range-picker --> date-picker-day
-  tds-date-range-picker --> date-picker-month
-  tds-date-range-picker --> date-picker-year
   tds-date-range-picker --> tds-text-field
   tds-date-range-picker --> tds-icon
   tds-date-range-picker --> tds-popover-core
   tds-date-range-picker --> tds-button
+  tds-date-range-picker --> date-picker-day
   tds-text-field --> tds-icon
   style tds-date-range-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```

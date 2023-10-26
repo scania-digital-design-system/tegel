@@ -155,6 +155,7 @@ export class TdsDatePicker {
       if (!isSameMonth(newSelectedDate, oldSelectedDate)) {
         this.updateDays(differenceInCalendarMonths(newSelectedDate, oldSelectedDate));
       }
+      console.log(differenceInCalendarMonths(newSelectedDate, oldSelectedDate));
     }
   };
 
@@ -186,7 +187,6 @@ export class TdsDatePicker {
       if (!isSameMonth(oldSelectedDate, newSelectedDate)) {
         this.selectedDate = format(newSelectedDate, this.getFormat());
         const diff = differenceInCalendarMonths(newSelectedDate, oldSelectedDate);
-
         this.updateDays(diff);
       }
     }
@@ -194,8 +194,10 @@ export class TdsDatePicker {
 
   private updateDays = (monthToJumpTo: number) => {
     const firstDayNextMonth = add(this.firstDayCurrentMonth, { months: monthToJumpTo });
+    console.log(firstDayNextMonth);
     this.currentMonth = format(firstDayNextMonth, 'MMM-yyyy');
     this.firstDayCurrentMonth = parse(this.currentMonth, 'MMM-yyyy', new Date());
+    console.log(this.firstDayCurrentMonth);
     this.days = eachDayOfInterval({
       start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
       end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
