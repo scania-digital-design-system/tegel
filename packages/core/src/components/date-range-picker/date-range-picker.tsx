@@ -26,8 +26,6 @@ import {
   startOfWeek,
   startOfYear,
 } from 'date-fns';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { enGB, sv, de } from 'date-fns/locale';
 import { TdsTextFieldCustomEvent } from '../..';
 import generateUniqueId from '../../utils/generateUniqueId';
 
@@ -39,18 +37,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
 export class TdsDatePicker {
   @Element() host: HTMLTdsDatePickerElement;
 
-  private getFormat = (): string => {
-    switch (this.variant) {
-      case 'day':
-        return 'yyyy-MM-dd';
-      case 'month':
-        return 'yyyy-MM';
-      case 'year':
-        return 'yyyy';
-      default:
-        return 'yyyy-MM-dd';
-    }
-  };
+  private getFormat = (): string => 'yyyy-MM-dd';
 
   /** Set the variant of the Datepicker. */
   @Prop() modeVariant: 'primary' | 'secondary';
@@ -66,9 +53,6 @@ export class TdsDatePicker {
 
   /** Maximim selectable date. */
   @Prop() max: string;
-
-  /** The variant of the Datepicker */
-  @Prop() variant: 'day' | 'month' | 'year' = 'day';
 
   /** ID used for internal Date Picker functionality and events, must be unique. */
   @Prop() datePickerId: string = generateUniqueId();
@@ -162,19 +146,6 @@ export class TdsDatePicker {
   // @ts-ignore This is used in render
   private endRangeInput: HTMLTdsTextFieldElement;
 
-  private getLocale = () => {
-    switch (this.locale) {
-      case 'en':
-        return enGB;
-      case 'sv':
-        return sv;
-      case 'de':
-        return de;
-      default:
-        return enGB;
-    }
-  };
-
   private handleSelection = (date: Date) => {
     const oldStartDate = parse(this.startDate, this.getFormat(), new Date());
 
@@ -207,23 +178,11 @@ export class TdsDatePicker {
   };
 
   private getNext = () => {
-    if (this.variant === 'day') {
-      this.updateDays(1);
-    } else if (this.variant === 'month') {
-      this.updateYear(1);
-    } else {
-      this.updateYearSpan(11);
-    }
+    this.updateDays(1);
   };
 
   private getPrevious = () => {
-    if (this.variant === 'day') {
-      this.updateDays(-1);
-    } else if (this.variant === 'month') {
-      this.updateYear(-1);
-    } else {
-      this.updateYearSpan(-11);
-    }
+    this.updateDays(-1);
   };
 
   private handleStartDateInput(_event: TdsTextFieldCustomEvent<InputEvent>) {
@@ -264,48 +223,8 @@ export class TdsDatePicker {
     });
   };
 
-  private updateYear = (yearsToJumpTo: number) => {
-    const firstMonthNextYear = add(this.firstMonthCurrentYear, {
-      years: yearsToJumpTo,
-    });
-    this.firstMonthCurrentYear = firstMonthNextYear;
-
-    this.months = eachMonthOfInterval({
-      start: startOfYear(this.firstMonthCurrentYear),
-      end: endOfYear(this.firstMonthCurrentYear),
-    });
-  };
-
-  private updateYearSpan = (yearsToJumpTo: number) => {
-    const firstYearNextSpan = add(this.firstYearCurrentSpan, { years: yearsToJumpTo });
-    this.firstYearCurrentSpan = firstYearNextSpan;
-    if (yearsToJumpTo < 0) {
-      this.years = eachYearOfInterval({
-        start: startOfYear(this.firstYearCurrentSpan),
-        end: endOfYear(add(this.firstYearCurrentSpan, { years: Math.abs(yearsToJumpTo) })),
-      });
-    } else {
-      this.years = eachYearOfInterval({
-        start: startOfYear(this.firstYearCurrentSpan),
-        end: endOfYear(add(this.firstYearCurrentSpan, { years: yearsToJumpTo })),
-      });
-    }
-  };
-
   private getControlsDisplayText() {
-    switch (this.variant) {
-      case 'day':
-        return format(this.firstDayCurrentMonth, 'MMM yyy');
-      case 'month':
-        return format(this.firstMonthCurrentYear, 'Y');
-      case 'year':
-        return `${format(this.firstYearCurrentSpan, 'Y')} - ${format(
-          add(this.firstYearCurrentSpan, { years: 11 }),
-          'Y',
-        )}`;
-      default:
-        return format(this.firstDayCurrentMonth, this.getFormat());
-    }
+    return format(this.firstDayCurrentMonth, 'MMM yyy');
   }
 
   private isDateDisabled = (date: Date) =>
@@ -338,68 +257,6 @@ export class TdsDatePicker {
       endDate: day,
     });
   };
-
-  private getDayHTML() {
-    return this.days.map((day: Date) => (
-      <date-picker-day
-        key={day.getDate()}
-        onClick={() => {
-          this.handleSelection(day);
-        }}
-        isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
-        date={format(day, 'd')}
-        fullDate={day}
-        selected={
-          format(day, this.getFormat()) === this.startDate ||
-          format(day, this.getFormat()) === this.endDate
-        }
-        disabled={this.isDateDisabled(day)}
-        fallsInRange={this.isInRange(day)}
-        onMouseOver={() => {
-          if (this.startDate && !this.endDate) {
-            this.handleMouseOver(day);
-          }
-        }}
-        onFocus={() => {
-          if (this.startDate && !this.endDate) {
-            this.handleFocus(day);
-          }
-        }}
-        firstDate={isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))}
-        lastDate={isSameDay(day, parse(this.endDate, this.getFormat(), new Date()))}
-      ></date-picker-day>
-    ));
-  }
-
-  private getMonthHTML() {
-    return this.months.map((month: Date) => (
-      <date-picker-month
-        key={month.getDate()}
-        /*         onClick={() => {
-          this.handleSelection(month);
-        }} */
-        month={format(month, 'MMM', {
-          locale: this.getLocale(),
-        })}
-        /*         selected={format(month, this.getFormat()) === this.selectedDate} */
-        disabled={this.isDateDisabled(month)}
-      ></date-picker-month>
-    ));
-  }
-
-  private getYearHTML() {
-    return this.years.map((year: Date) => (
-      <date-picker-year
-        key={year.getDate()}
-        /*         onClick={() => {
-          this.handleSelection(year);
-        }} */
-        year={format(year, this.getFormat())}
-        /*         selected={format(year, this.getFormat()) === this.selectedDate} */
-        disabled={this.isDateDisabled(year)}
-      ></date-picker-year>
-    ));
-  }
 
   render() {
     return (
@@ -468,18 +325,43 @@ export class TdsDatePicker {
             class={{
               'calendar-container': true,
               'range-picker': this.range,
-              [this.variant]: true,
+              'day': true,
             }}
           >
-            {this.variant === 'day' &&
-              [...this.weekDayLabels].map((label) => (
-                <div key={label} class="day-indicator">
-                  {label}
-                </div>
-              ))}
-            {this.variant === 'day' && this.getDayHTML()}
-            {this.variant === 'month' && this.getMonthHTML()}
-            {this.variant === 'year' && this.getYearHTML()}
+            {[...this.weekDayLabels].map((label) => (
+              <div key={label} class="day-indicator">
+                {label}
+              </div>
+            ))}
+            {this.days.map((day: Date) => (
+              <date-picker-day
+                key={day.getDate()}
+                onClick={() => {
+                  this.handleSelection(day);
+                }}
+                isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
+                date={format(day, 'd')}
+                fullDate={day}
+                selected={
+                  format(day, this.getFormat()) === this.startDate ||
+                  format(day, this.getFormat()) === this.endDate
+                }
+                disabled={this.isDateDisabled(day)}
+                fallsInRange={this.isInRange(day)}
+                onMouseOver={() => {
+                  if (this.startDate && !this.endDate) {
+                    this.handleMouseOver(day);
+                  }
+                }}
+                onFocus={() => {
+                  if (this.startDate && !this.endDate) {
+                    this.handleFocus(day);
+                  }
+                }}
+                firstDate={isSameDay(day, parse(this.startDate, this.getFormat(), new Date()))}
+                lastDate={isSameDay(day, parse(this.endDate, this.getFormat(), new Date()))}
+              ></date-picker-day>
+            ))}
           </div>
         </tds-popover-core>
       </div>
