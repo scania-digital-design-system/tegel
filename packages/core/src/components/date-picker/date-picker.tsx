@@ -4,7 +4,6 @@ import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stenci
 import {
   add,
   addYears,
-  differenceInCalendarMonths,
   eachDayOfInterval,
   eachMonthOfInterval,
   eachYearOfInterval,
@@ -81,43 +80,51 @@ export class TdsDatePicker {
   /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
+  /** Locale for displaying months in a differnet language than enlish. Currently available: English, Swedish, German. */
   @Prop() locale: 'en' | 'sv' | 'de' = 'en';
 
+  /** The currently displayed month. */
   @State() currentMonth = format(
     parse(this.selectedDate, this.getFormat(), new Date()),
     this.getFormat(),
   );
 
+  /** The first Day of the currently displayed month. */
   @State() firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
 
+  /** The first Month of the currently displayed year. */
   @State() firstMonthCurrentYear = startOfYear(
     parse(this.selectedDate, this.getFormat(), new Date()),
   );
 
+  /** The first Year of the currently displayed year span (used for variant="year"). */
   @State() firstYearCurrentSpan = startOfYear(
     parse(this.selectedDate, this.getFormat(), new Date()),
   );
 
+  /** The currently displayed Days */
   @State() days = eachDayOfInterval({
     start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
     end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
   });
 
+  /** The currently displayed Months */
   @State() months = eachMonthOfInterval({
     start: startOfYear(this.firstMonthCurrentYear),
     end: endOfYear(this.firstMonthCurrentYear),
   });
 
+  /** The currently displayed Years */
   @State() years = eachYearOfInterval({
     start: startOfYear(this.firstMonthCurrentYear),
     end: endOfYear(addYears(this.firstMonthCurrentYear, 11)),
   });
 
-  /** Fires when the Accordion Item is clicked, but before it is closed or opened. */
+  /** Fires when a Date/Month/Year is selected. */
   @Event({
     eventName: 'tdsSelect',
     composed: true,
-    cancelable: true,
+    cancelable: false,
     bubbles: true,
   })
   tdsSelect: EventEmitter<{
@@ -128,7 +135,8 @@ export class TdsDatePicker {
   /** TODO: Should this be editable by the user? The placement of the Datepicker */
   private placement: Placement = 'auto';
 
-  private getLocale = () => {
+  /** Returns a Locale object based on this.locale. */
+  private getLocale = (): Locale => {
     switch (this.locale) {
       case 'en':
         return enGB;
@@ -141,31 +149,68 @@ export class TdsDatePicker {
     }
   };
 
+  /** Handle the selection of a Date/Month/Year when pressed. */
   private handleSelection = (date: Date) => {
     const newSelectedDate = date;
-    const oldSelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
+    /** The previously selected Date/Month/Year */
+    const previouslySelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
 
+    /** Sets the selected Date/Month/Year */
     this.selectedDate = format(date, this.getFormat());
+    /** Emits a tdsSelect event with the new selected date and the ID of the date picker */
     this.tdsSelect.emit({
       date: this.selectedDate,
       id: this.datePickerId,
     });
 
-    if (this.variant === 'day') {
-      if (!isSameMonth(newSelectedDate, oldSelectedDate)) {
-        this.currentMonth = format(
-          parse(this.selectedDate, this.getFormat(), new Date()),
-          this.getFormat(),
-        );
-        this.firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
-        this.days = eachDayOfInterval({
-          start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
-          end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
-        });
-      }
+    /** If the selected selected date is not is the currently displayed month
+     * we need to update the calendar container to show the month of
+     * the new selected date. Only applicale for variant='day'
+     * */
+    if (this.variant === 'day' && !isSameMonth(newSelectedDate, previouslySelectedDate)) {
+      this.updateDisplayedDays();
     }
   };
 
+  /** Handles input from the Text Field, selects a Date/Month/Year based on input. */
+  private handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
+    const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
+    const previouslySelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
+
+    /** Checks that the input is in a valid Date/Month/Year format */
+    if (isValid(newSelectedDate) && isValid(previouslySelectedDate)) {
+      /** Sets the selected Date/Month/Year */
+      this.selectedDate = format(newSelectedDate, this.getFormat());
+      /** Emits a tdsSelect event with the new selected date and the ID of the date picker */
+      this.tdsSelect.emit({
+        date: this.selectedDate,
+        id: this.datePickerId,
+      });
+
+      /** If the selected selected date is not is the currently displayed month
+       * we need to update the calendar container to show the month of
+       * the new selected date. Only applicale for variant='day'
+       * */
+      if (this.variant === 'day' && !isSameMonth(previouslySelectedDate, newSelectedDate)) {
+        this.updateDisplayedDays();
+      }
+    }
+  }
+
+  /** Updates the days currently displayed in the Date Picker */
+  private updateDisplayedDays = () => {
+    this.currentMonth = format(
+      parse(this.selectedDate, this.getFormat(), new Date()),
+      this.getFormat(),
+    );
+    this.firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
+    this.days = eachDayOfInterval({
+      start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
+      end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
+    });
+  };
+
+  /** Gets the next Date/Month/Year - that should be displayed. */
   private getNext = () => {
     if (this.variant === 'day') {
       this.updateDays(1);
@@ -176,6 +221,7 @@ export class TdsDatePicker {
     }
   };
 
+  /** Gets the previous Date/Month/Year - that should be displayed. */
   private getPrevious = () => {
     if (this.variant === 'day') {
       this.updateDays(-1);
@@ -186,19 +232,8 @@ export class TdsDatePicker {
     }
   };
 
-  private handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
-    const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
-    const oldSelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
-
-    if (isValid(newSelectedDate) && isValid(oldSelectedDate)) {
-      if (!isSameMonth(oldSelectedDate, newSelectedDate)) {
-        this.selectedDate = format(newSelectedDate, this.getFormat());
-        const diff = differenceInCalendarMonths(newSelectedDate, oldSelectedDate);
-        this.updateDays(diff);
-      }
-    }
-  }
-
+  /** Updates the currenly displayed Days basen on an X amount of months to jump
+   * forwards/backwards */
   private updateDays = (monthToJumpTo: number) => {
     const firstDayNextMonth = add(this.firstDayCurrentMonth, { months: monthToJumpTo });
     this.currentMonth = format(firstDayNextMonth, 'MMM-yyyy');
@@ -209,6 +244,8 @@ export class TdsDatePicker {
     });
   };
 
+  /** Updates the currenly displayed Year (used for variant="month") basen on an X
+   * amount of months to jump forwards/backwards */
   private updateYear = (yearsToJumpTo: number) => {
     const firstMonthNextYear = add(this.firstMonthCurrentYear, {
       years: yearsToJumpTo,
@@ -221,6 +258,8 @@ export class TdsDatePicker {
     });
   };
 
+  /** Updates the currenly displayed Years basen on an X amount of months to jump
+   * forwards/backwards */
   private updateYearSpan = (yearsToJumpTo: number) => {
     const firstYearNextSpan = add(this.firstYearCurrentSpan, { years: yearsToJumpTo });
     this.firstYearCurrentSpan = firstYearNextSpan;
@@ -237,6 +276,7 @@ export class TdsDatePicker {
     }
   };
 
+  /** Returns the text to be displayed in the controls. */
   private getControlsDisplayText() {
     switch (this.variant) {
       case 'day':
@@ -253,10 +293,12 @@ export class TdsDatePicker {
     }
   }
 
-  private isDateDisabled = (date: Date) =>
+  /** Util - checks if the Date/Month/Year should be disabled. */
+  private shouldDateBeDisabled = (date: Date) =>
     isBefore(date, parse(this.min, this.getFormat(), new Date())) ||
     isAfter(date, parse(this.max, this.getFormat(), new Date()));
 
+  /** Returns the HTML structure for Days */
   private getDayHTML() {
     return this.days.map((day: Date) => (
       <date-picker-day
@@ -267,11 +309,12 @@ export class TdsDatePicker {
         isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
         date={day}
         selected={format(day, this.getFormat()) === this.selectedDate}
-        disabled={this.isDateDisabled(day)}
+        disabled={this.shouldDateBeDisabled(day)}
       ></date-picker-day>
     ));
   }
 
+  /** Returns the HTML structure for Months */
   private getMonthHTML() {
     return this.months.map((month: Date) => (
       <date-picker-month
@@ -283,11 +326,12 @@ export class TdsDatePicker {
           locale: this.getLocale(),
         })}
         selected={format(month, this.getFormat()) === this.selectedDate}
-        disabled={this.isDateDisabled(month)}
+        disabled={this.shouldDateBeDisabled(month)}
       ></date-picker-month>
     ));
   }
 
+  /** Returns the HTML structure for Years */
   private getYearHTML() {
     return this.years.map((year: Date) => (
       <date-picker-year
@@ -297,7 +341,7 @@ export class TdsDatePicker {
         }}
         year={format(year, this.getFormat())}
         selected={format(year, this.getFormat()) === this.selectedDate}
-        disabled={this.isDateDisabled(year)}
+        disabled={this.shouldDateBeDisabled(year)}
       ></date-picker-year>
     ));
   }
@@ -322,7 +366,14 @@ export class TdsDatePicker {
             placeholder="YYYY/MM/DD"
             value={this.selectedDate}
           >
-            <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
+            <tds-icon
+              style={{
+                color: 'var(--tds-date-picker-input-icon)',
+              }}
+              name="calendar"
+              size="16px"
+              slot="suffix"
+            ></tds-icon>
           </tds-text-field>
         </div>
         <tds-popover-core

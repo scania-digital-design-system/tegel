@@ -13,7 +13,7 @@
 | `helper`        | `helper`          | Helper text for the Date Picker                                                                                                                                                                   | `string`                              | `undefined`                                |
 | `label`         | `label`           | Label text                                                                                                                                                                                        | `string`                              | `undefined`                                |
 | `labelPosition` | `label-position`  | Position of the label for the Text Field.                                                                                                                                                         | `"inside" \| "no-label" \| "outside"` | `'no-label'`                               |
-| `locale`        | `locale`          |                                                                                                                                                                                                   | `"de" \| "en" \| "sv"`                | `'en'`                                     |
+| `locale`        | `locale`          | Locale for displaying months in a differnet language than enlish. Currently available: English, Swedish, German.                                                                                  | `"de" \| "en" \| "sv"`                | `'en'`                                     |
 | `max`           | `max`             | Maximim selectable date.                                                                                                                                                                          | `string`                              | `undefined`                                |
 | `min`           | `min`             | Minimum selectable date.                                                                                                                                                                          | `string`                              | `undefined`                                |
 | `modeVariant`   | `mode-variant`    | Set the variant of the Datepicker.                                                                                                                                                                | `"primary" \| "secondary"`            | `undefined`                                |
@@ -25,9 +25,9 @@
 
 ## Events
 
-| Event       | Description                                                                  | Type                                         |
-| ----------- | ---------------------------------------------------------------------------- | -------------------------------------------- |
-| `tdsSelect` | Fires when the Accordion Item is clicked, but before it is closed or opened. | `CustomEvent<{ date: string; id: string; }>` |
+| Event       | Description                               | Type                                         |
+| ----------- | ----------------------------------------- | -------------------------------------------- |
+| `tdsSelect` | Fires when a Date/Month/Year is selected. | `CustomEvent<{ date: string; id: string; }>` |
 
 
 ## Dependencies
