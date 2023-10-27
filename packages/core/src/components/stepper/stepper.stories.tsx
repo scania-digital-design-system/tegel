@@ -98,15 +98,6 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
       <div slot="label">Upcoming step</div>
     </tds-step>
   </tds-stepper>
-  <button id="tester">Hide labels i runtime</button>
-
-  <script>
-    stepper = document.querySelector('tds-stepper')
-    button = document.querySelector('#tester')
-    button.addEventListener('click', () => {
-      stepper.hideLabels = !stepper.hideLabels
-    })
-  </script>
         `,
   );
 export const Default = Template.bind({});
