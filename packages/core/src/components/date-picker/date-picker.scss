@@ -4,7 +4,7 @@
 
   tds-popover-core {
     .calendar-container {
-      box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+      box-shadow: var(--tds-date-picker-calendar-box-shadow);
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       grid-gap: 4px;
