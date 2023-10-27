@@ -35,19 +35,19 @@
     }
 
     &.falls-in-range {
-      background-color: var(--tds-date-picker-date-bg-in-range);
-      color: var(--tds-date-picker-date-color-in-range);
+      background-color: var(--tds-date-range-picker-date-bg-in-range);
+      color: var(--tds-date-range-picker-date-color-in-range);
       border-radius: 0%;
       position: relative;
 
-      &:hover {
-        background-color: var(--tds-date-picker-date-bg-in-range);
+      &:hover:not(.last-date) {
+        background-color: var(--tds-date-range-picker-date-bg-in-range);
 
         time {
           height: 24px;
           width: 24px;
-          background-color: var(--tds-date-picker-date-bg-in-range-hover);
-          color: var(--tds-date-picker-date-color-in-range);
+          background-color: var(--tds-date-range-picker-date-bg-in-range-hover);
+          color: var(--tds-date-range-picker-date-color-in-range);
           border-radius: 100%;
         }
       }
@@ -60,7 +60,7 @@
         right: 23px;
         height: 100%;
         width: 12.5px;
-        background-color: var(--tds-date-picker-date-bg-in-range);
+        background-color: var(--tds-date-range-picker-date-bg-in-range);
       }
 
       &::after {
@@ -71,7 +71,7 @@
         left: 23px;
         height: 100%;
         width: 12.5px;
-        background-color: var(--tds-date-picker-date-bg-in-range);
+        background-color: var(--tds-date-range-picker-date-bg-in-range);
       }
 
       &.last-date {
