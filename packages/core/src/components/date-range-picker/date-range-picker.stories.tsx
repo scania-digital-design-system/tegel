@@ -49,6 +49,13 @@ export default {
         type: 'boolean',
       },
     },
+    max: {
+      name: 'Max date',
+      description: 'Sets a maximum selectable date.',
+      control: {
+        type: 'boolean',
+      },
+    },
     helper: {
       name: 'Helper text',
       description: 'Sets the helper text.',
