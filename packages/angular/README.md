@@ -45,7 +45,7 @@ import {
 export class AppModule {}
 ```
 
-3. In your global css file (`styles.css`) import the tegel stylesheet.
+1. In your global css file import the tegel stylesheet.
 
 ```css
 @import url('@scania/tegel/dist/tegel/tegel.css');
