@@ -56,16 +56,30 @@ export default {
         type: 'boolean',
       },
     },
-    helper: {
-      name: 'Helper text',
-      description: 'Sets the helper text.',
+    startDateHelper: {
+      name: 'Helper text - Start Date',
+      description: 'Sets the helper text for the Start Date.',
       control: {
         type: 'text',
       },
     },
-    label: {
-      name: 'Label text',
-      description: 'Sets the label text.',
+    endDateHelper: {
+      name: 'Helper text - End Date',
+      description: 'Sets the helper text for the End Date.',
+      control: {
+        type: 'text',
+      },
+    },
+    startDateLabel: {
+      name: 'Label text - Start Date',
+      description: 'Sets the label text for the Start Date.',
+      control: {
+        type: 'text',
+      },
+    },
+    endDateLabel: {
+      name: 'Label text - End Date',
+      description: 'Sets the label text for the End Date.',
       control: {
         type: 'text',
       },
@@ -96,15 +110,16 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     variant: 'Day',
-    range: true,
     state: 'Default',
-    label: null,
+    startDate: false,
+    endDate: false,
+    startDateLabel: null,
+    endDateLabel: null,
     labelPosition: 'No label',
     min: false,
     max: false,
-    helper: '',
-    startDate: false,
-    endDate: false,
+    startDateHelper: '',
+    endDateHelper: '',
     lang: 'en',
   },
 };
@@ -112,8 +127,10 @@ export default {
 const datePickerTemplate = ({
   modeVariant,
   state,
-  helper,
-  label,
+  startDateHelper,
+  endDateHelper,
+  startDateLabel,
+  endDateLabel,
   labelPosition,
   min,
   max,
@@ -135,9 +152,11 @@ const datePickerTemplate = ({
       ${startDate ? 'start-date="2023-10-01"' : ''}
       ${endDate ? 'end-date="2023-10-07"' : ''}
       state="${state.toLowerCase()}"
-      ${label ? `label="${label}"` : ''}
+      ${startDateLabel ? `start-date-label="${startDateLabel}"` : ''}
+      ${endDateLabel ? `end-date-label="${endDateLabel}"` : ''}
       label-position="${getLabelPosition()}"
-      ${helper ? `helper="${helper}"` : ''}
+      ${startDateHelper ? `start-date-helper="${startDateHelper}"` : ''}
+      ${endDateHelper ? `end-date-helper="${endDateHelper}"` : ''}
       placement="bottom"
       locale="${lang}"
       ${min ? `min="2023-10-01"` : ''}

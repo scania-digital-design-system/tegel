@@ -167,6 +167,7 @@ const datePickerTemplate = ({
       locale="${lang}"
       ${min ? `min="${minLookUp[variant]}"` : ''}
       ${max ? `max="${maxLookUp[variant]}"` : ''}
+
     >
     </tds-date-picker>
     <!-- Script tag for demo purposes -->

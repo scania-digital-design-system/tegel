@@ -40,6 +40,21 @@ export class TdsDateRangePicker {
   /** The selected end date for the Date Range Picker */
   @Prop({ mutable: true }) endDate: string;
 
+  /** Label text for the Start Date */
+  @Prop() startDateLabel: string = format(startOfToday(), this.format);
+
+  /** Label text for the End Date */
+  @Prop() endDateLabel: string;
+
+  /** Position of the label for the Text Fields. TODO: Should it be granular enough to chose differnet for each Text Field */
+  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
+
+  /** Helper text for the Start Date */
+  @Prop() startDateHelper: string;
+
+  /** Helper text for the End Date */
+  @Prop() endDateHelper: string;
+
   /** Minimum selectable date. */
   @Prop() min: string;
 
@@ -54,15 +69,6 @@ export class TdsDateRangePicker {
 
   /** State of the Date Range Picker */
   @Prop() state: 'error' | 'success' | 'default' = 'default';
-
-  /** Helper text for the Date Range Picker */
-  @Prop() helper: string;
-
-  /** Label text */
-  @Prop() label: string;
-
-  /** Position of the label for the Text Fields. TODO: Should it be granular enough to chose differnet for each Text Field */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** The currently displayed month. */
   @State() currentMonth = format(parse(this.startDate, this.format, new Date()), this.format);
@@ -286,9 +292,9 @@ export class TdsDateRangePicker {
             }}
             noMinWidth
             state={this.state}
-            label={this.label}
+            label={this.startDateLabel}
             labelPosition={this.labelPosition}
-            helper={this.helper}
+            helper={this.startDateHelper}
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleStartDateInput(event)}
             placeholder="YYYY/MM/DD"
@@ -302,9 +308,9 @@ export class TdsDateRangePicker {
             }}
             noMinWidth
             state={this.state}
-            label={this.label}
+            label={this.endDateLabel}
             labelPosition={this.labelPosition}
-            helper={this.helper}
+            helper={this.endDateHelper}
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleEndDateInput(event)}
             placeholder="YYYY/MM/DD"
