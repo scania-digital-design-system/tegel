@@ -157,7 +157,7 @@ const datePickerTemplate = ({
     <tds-date-picker
       variant="${variant.toLowerCase()}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
-      ${customDate ? `selected-date="${customDateLookUp[variant]}"` : ''}
+      ${customDate ? `value="${customDateLookUp[variant]}"` : ''}
       ${range ? 'range' : ''}
       state="${state.toLowerCase()}"
       ${label ? `label="${label}"` : ''}

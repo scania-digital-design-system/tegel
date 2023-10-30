@@ -12,10 +12,13 @@ export class DatepickerYear {
 
   @Prop() disabled: boolean = false;
 
+  @Prop() onSelect: (event: MouseEvent) => void;
+
   render() {
     return (
       <Host>
         <button
+          onClick={this.onSelect}
           disabled={this.disabled}
           class={{
             selected: this.selected,

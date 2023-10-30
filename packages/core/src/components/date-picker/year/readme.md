@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type      | Default |
-| ---------- | ---------- | ----------- | --------- | ------- |
-| `disabled` | `disabled` |             | `boolean` | `false` |
-| `selected` | `selected` |             | `boolean` | `false` |
-| `year`     | `year`     |             | `string`  | `''`    |
+| Property   | Attribute  | Description | Type                          | Default     |
+| ---------- | ---------- | ----------- | ----------------------------- | ----------- |
+| `disabled` | `disabled` |             | `boolean`                     | `false`     |
+| `onSelect` | --         |             | `(event: MouseEvent) => void` | `undefined` |
+| `selected` | `selected` |             | `boolean`                     | `false`     |
+| `year`     | `year`     |             | `string`                      | `''`        |
 
 
 ## Dependencies

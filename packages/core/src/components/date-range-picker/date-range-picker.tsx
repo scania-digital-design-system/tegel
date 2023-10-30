@@ -35,10 +35,10 @@ export class TdsDateRangePicker {
   @Prop() modeVariant: 'primary' | 'secondary';
 
   /** The selected start date for the Date Range Picker */
-  @Prop({ mutable: true }) startDate: string = format(startOfToday(), this.format);
+  @Prop({ mutable: true }) startValue: string = null;
 
   /** The selected end date for the Date Range Picker */
-  @Prop({ mutable: true }) endDate: string;
+  @Prop({ mutable: true }) endValue: string;
 
   /** Label text for the Start Date */
   @Prop() startDateLabel: string = format(startOfToday(), this.format);
@@ -71,7 +71,10 @@ export class TdsDateRangePicker {
   @Prop() state: 'error' | 'success' | 'default' = 'default';
 
   /** The currently displayed month. */
-  @State() currentMonth = format(parse(this.startDate, this.format, new Date()), this.format);
+  @State() currentMonth = format(
+    parse(this.startValue ?? format(startOfToday(), this.format), this.format, new Date()),
+    this.format,
+  );
 
   /** The first Day of the currently displayed month. */
   @State() firstDayCurrentMonth = parse(this.currentMonth, this.format, new Date());
@@ -103,8 +106,8 @@ export class TdsDateRangePicker {
   })
   internalTdsInRange: EventEmitter<{
     datePickerId: string;
-    startDate: Date;
-    endDate: Date;
+    startValue: Date;
+    endValue: Date;
   }>;
 
   /** @internal */
@@ -130,47 +133,47 @@ export class TdsDateRangePicker {
 
   /** Handle the selection of a Date when pressed. */
   private handleSelection = (date: Date) => {
-    const oldStartDate = parse(this.startDate, this.format, new Date());
+    const oldStartDate = parse(this.startValue, this.format, new Date());
 
     /** If the selected Date is the same as the the Start Date */
-    if (isSameDay(date, parse(this.startDate, this.format, new Date()))) {
-      this.endDate = null;
+    if (isSameDay(date, parse(this.startValue, this.format, new Date()))) {
+      this.endValue = null;
       return;
     }
 
     /** Selecting an End Date */
-    if (this.startDate && !this.endDate) {
+    if (this.startValue && !this.endValue) {
       /** If the selected Date is before the old Start Date
        * we need to set the old Start Date to be the new
        * End Date, and the selected Date to be the new
        * Start Date.
        */
-      if (isBefore(date, parse(this.startDate, this.format, new Date()))) {
+      if (isBefore(date, parse(this.startValue, this.format, new Date()))) {
         this.setStartAndEndDate(date, oldStartDate);
       } else {
         /** If the selected Date is after the old Start Date
          * we need to set the selected Date to be the new
          * End Date.
          */
-        this.endDate = format(date, this.format);
+        this.endValue = format(date, this.format);
       }
       return;
     }
     /** Selecting an Start Date */
-    if (!this.startDate) {
+    if (!this.startValue) {
       this.setStartDate(date);
       return;
     }
     /** Selecting a new Range (Start & End Date) */
-    if (this.startDate && this.endDate) {
+    if (this.startValue && this.endValue) {
       this.setStartDate(date);
     }
   };
 
   /** Set a new Start Date and emit internalTdsSelection event */
   private setStartDate = (date: Date) => {
-    this.startDate = format(date, this.format);
-    this.endDate = null;
+    this.startValue = format(date, this.format);
+    this.endValue = null;
     this.internalTdsSelection.emit({
       datePickerId: this.datePickerId,
       selectionIsMade: false,
@@ -178,9 +181,9 @@ export class TdsDateRangePicker {
   };
 
   /** Set a new Start Date and End Date and emit internalTdsSelection event */
-  private setStartAndEndDate = (startDate: Date, endDate: Date) => {
-    this.startDate = format(startDate, this.format);
-    this.endDate = format(endDate, this.format);
+  private setStartAndEndDate = (startValue: Date, endValue: Date) => {
+    this.startValue = format(startValue, this.format);
+    this.endValue = format(endValue, this.format);
     this.internalTdsSelection.emit({
       datePickerId: this.datePickerId,
       selectionIsMade: true,
@@ -200,10 +203,10 @@ export class TdsDateRangePicker {
   /** Handles input from the Start Date Text Field, selects a Date based on input. */
   private handleStartDateInput(event: TdsTextFieldCustomEvent<InputEvent>) {
     const newSelectedStartDate = parse(event.target.value, this.format, new Date());
-    const oldSelecteStartdDate = parse(this.startDate, this.format, new Date());
+    const oldSelecteStartdDate = parse(this.startValue, this.format, new Date());
 
     if (isValid(newSelectedStartDate) && isValid(oldSelecteStartdDate)) {
-      this.startDate = format(newSelectedStartDate, this.format);
+      this.startValue = format(newSelectedStartDate, this.format);
       if (!isSameMonth(oldSelecteStartdDate, newSelectedStartDate)) {
         const diff = differenceInCalendarMonths(newSelectedStartDate, oldSelecteStartdDate);
         this.updateDays(diff);
@@ -214,10 +217,10 @@ export class TdsDateRangePicker {
   /** Handles input from the End Date Text Field, selects a Date based on input. */
   private handleEndDateInput(event: TdsTextFieldCustomEvent<InputEvent>) {
     const newSelectedEndDate = parse(event.target.value, this.format, new Date());
-    const oldSelecteEndDate = parse(this.endDate, this.format, new Date());
+    const oldSelecteEndDate = parse(this.endValue, this.format, new Date());
 
     if (isValid(newSelectedEndDate) && isValid(oldSelecteEndDate)) {
-      this.endDate = format(newSelectedEndDate, this.format);
+      this.endValue = format(newSelectedEndDate, this.format);
       if (!isSameMonth(oldSelecteEndDate, newSelectedEndDate)) {
         const diff = differenceInCalendarMonths(newSelectedEndDate, oldSelecteEndDate);
         this.updateDays(diff);
@@ -249,11 +252,11 @@ export class TdsDateRangePicker {
   /** Util - checks if the Date is in range. */
   private isInRange(day: Date) {
     return (
-      this.startDate &&
-      this.endDate &&
+      this.startValue &&
+      this.endValue &&
       isWithinInterval(day, {
-        start: parse(this.startDate, this.format, new Date()),
-        end: parse(this.endDate, this.format, new Date()),
+        start: parse(this.startValue, this.format, new Date()),
+        end: parse(this.endValue, this.format, new Date()),
       })
     );
   }
@@ -262,8 +265,8 @@ export class TdsDateRangePicker {
   private handleMouseOver = (day: Date) => {
     this.internalTdsInRange.emit({
       datePickerId: this.datePickerId,
-      startDate: parse(this.startDate, this.format, new Date()),
-      endDate: day,
+      startValue: parse(this.startValue, this.format, new Date()),
+      endValue: day,
     });
   };
 
@@ -271,8 +274,8 @@ export class TdsDateRangePicker {
   private handleFocus = (day: Date) => {
     this.internalTdsInRange.emit({
       datePickerId: this.datePickerId,
-      startDate: parse(this.startDate, this.format, new Date()),
-      endDate: day,
+      startValue: parse(this.startValue, this.format, new Date()),
+      endValue: day,
     });
   };
 
@@ -298,7 +301,7 @@ export class TdsDateRangePicker {
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleStartDateInput(event)}
             placeholder="YYYY/MM/DD"
-            value={this.startDate}
+            value={this.startValue}
           >
             <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
           </tds-text-field>
@@ -314,7 +317,7 @@ export class TdsDateRangePicker {
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleEndDateInput(event)}
             placeholder="YYYY/MM/DD"
-            value={this.endDate}
+            value={this.endValue}
           >
             <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
           </tds-text-field>
@@ -357,27 +360,27 @@ export class TdsDateRangePicker {
                 isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
                 date={day}
                 selected={
-                  format(day, this.format) === this.startDate ||
-                  format(day, this.format) === this.endDate
+                  format(day, this.format) === this.startValue ||
+                  format(day, this.format) === this.endValue
                 }
                 disabled={this.shouldDateBeDisabled(day)}
                 inRange={this.isInRange(day)}
                 onMouseOver={() => {
                   if (
-                    this.startDate &&
-                    !this.endDate &&
-                    !isSameDay(day, parse(this.startDate, this.format, new Date()))
+                    this.startValue &&
+                    !this.endValue &&
+                    !isSameDay(day, parse(this.startValue, this.format, new Date()))
                   ) {
                     this.handleMouseOver(day);
                   }
                 }}
                 onFocus={() => {
-                  if (this.startDate && !this.endDate) {
+                  if (this.startValue && !this.endValue) {
                     this.handleFocus(day);
                   }
                 }}
-                firstInRange={isSameDay(day, parse(this.startDate, this.format, new Date()))}
-                lastInRange={isSameDay(day, parse(this.endDate, this.format, new Date()))}
+                firstInRange={isSameDay(day, parse(this.startValue, this.format, new Date()))}
+                lastInRange={isSameDay(day, parse(this.endValue, this.format, new Date()))}
               ></date-range-picker-day>
             ))}
           </div>

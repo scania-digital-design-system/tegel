@@ -149,8 +149,8 @@ const datePickerTemplate = ({
     `
     <tds-date-range-picker
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
-      ${startDate ? 'start-date="2023-10-01"' : ''}
-      ${endDate ? 'end-date="2023-10-07"' : ''}
+      ${startDate ? 'start-value="2023-10-01"' : ''}
+      ${endDate ? 'end-value="2023-10-07"' : ''}
       state="${state.toLowerCase()}"
       ${startDateLabel ? `start-date-label="${startDateLabel}"` : ''}
       ${endDateLabel ? `end-date-label="${endDateLabel}"` : ''}

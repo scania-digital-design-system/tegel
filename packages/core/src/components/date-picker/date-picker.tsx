@@ -51,7 +51,7 @@ export class TdsDatePicker {
   @Prop() modeVariant: 'primary' | 'secondary';
 
   /** The selected date of the Datepicker */
-  @Prop({ mutable: true }) selectedDate: string = format(startOfToday(), this.getFormat());
+  @Prop({ mutable: true }) value: string = null;
 
   /** Minimum selectable date. */
   @Prop() min: string;
@@ -85,7 +85,7 @@ export class TdsDatePicker {
 
   /** The currently displayed month. */
   @State() currentMonth = format(
-    parse(this.selectedDate, this.getFormat(), new Date()),
+    parse(this.value ?? format(startOfToday(), this.getFormat()), this.getFormat(), new Date()),
     this.getFormat(),
   );
 
@@ -94,12 +94,12 @@ export class TdsDatePicker {
 
   /** The first Month of the currently displayed year. */
   @State() firstMonthCurrentYear = startOfYear(
-    parse(this.selectedDate, this.getFormat(), new Date()),
+    parse(this.value ?? format(startOfToday(), this.getFormat()), this.getFormat(), new Date()),
   );
 
   /** The first Year of the currently displayed year span (used for variant="year"). */
   @State() firstYearCurrentSpan = startOfYear(
-    parse(this.selectedDate, this.getFormat(), new Date()),
+    parse(this.value ?? format(startOfToday(), this.getFormat()), this.getFormat(), new Date()),
   );
 
   /** The currently displayed Days */
@@ -128,7 +128,7 @@ export class TdsDatePicker {
     bubbles: true,
   })
   tdsSelect: EventEmitter<{
-    date: string;
+    value: string;
     id: string;
   }>;
 
@@ -153,13 +153,13 @@ export class TdsDatePicker {
   private handleSelection = (date: Date) => {
     const newSelectedDate = date;
     /** The previously selected Date/Month/Year */
-    const previouslySelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
+    const previouslySelectedDate = parse(this.value, this.getFormat(), new Date());
 
     /** Sets the selected Date/Month/Year */
-    this.selectedDate = format(date, this.getFormat());
+    this.value = format(date, this.getFormat());
     /** Emits a tdsSelect event with the new selected date and the ID of the date picker */
     this.tdsSelect.emit({
-      date: this.selectedDate,
+      value: this.value,
       id: this.datePickerId,
     });
 
@@ -175,15 +175,15 @@ export class TdsDatePicker {
   /** Handles input from the Text Field, selects a Date/Month/Year based on input. */
   private handleInput(event: TdsTextFieldCustomEvent<InputEvent>) {
     const newSelectedDate = parse(event.target.value, this.getFormat(), new Date());
-    const previouslySelectedDate = parse(this.selectedDate, this.getFormat(), new Date());
+    const previouslySelectedDate = parse(this.value, this.getFormat(), new Date());
 
     /** Checks that the input is in a valid Date/Month/Year format */
     if (isValid(newSelectedDate) && isValid(previouslySelectedDate)) {
       /** Sets the selected Date/Month/Year */
-      this.selectedDate = format(newSelectedDate, this.getFormat());
+      this.value = format(newSelectedDate, this.getFormat());
       /** Emits a tdsSelect event with the new selected date and the ID of the date picker */
       this.tdsSelect.emit({
-        date: this.selectedDate,
+        value: this.value,
         id: this.datePickerId,
       });
 
@@ -199,10 +199,7 @@ export class TdsDatePicker {
 
   /** Updates the days currently displayed in the Date Picker */
   private updateDisplayedDays = () => {
-    this.currentMonth = format(
-      parse(this.selectedDate, this.getFormat(), new Date()),
-      this.getFormat(),
-    );
+    this.currentMonth = format(parse(this.value, this.getFormat(), new Date()), this.getFormat());
     this.firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
     this.days = eachDayOfInterval({
       start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
@@ -304,11 +301,13 @@ export class TdsDatePicker {
       <date-picker-day
         key={day.getDate()}
         onClick={() => {
-          this.handleSelection(day);
+          if (!this.shouldDateBeDisabled(day)) {
+            this.handleSelection(day);
+          }
         }}
         isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
         date={day}
-        selected={format(day, this.getFormat()) === this.selectedDate}
+        selected={format(day, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(day)}
       ></date-picker-day>
     ));
@@ -320,12 +319,14 @@ export class TdsDatePicker {
       <date-picker-month
         key={month.getDate()}
         onClick={() => {
-          this.handleSelection(month);
+          if (!this.shouldDateBeDisabled(month)) {
+            this.handleSelection(month);
+          }
         }}
         month={format(month, 'MMM', {
           locale: this.getLocale(),
         })}
-        selected={format(month, this.getFormat()) === this.selectedDate}
+        selected={format(month, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(month)}
       ></date-picker-month>
     ));
@@ -337,10 +338,12 @@ export class TdsDatePicker {
       <date-picker-year
         key={year.getDate()}
         onClick={() => {
-          this.handleSelection(year);
+          if (!this.shouldDateBeDisabled(year)) {
+            this.handleSelection(year);
+          }
         }}
         year={format(year, this.getFormat())}
-        selected={format(year, this.getFormat()) === this.selectedDate}
+        selected={format(year, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(year)}
       ></date-picker-year>
     ));
@@ -364,7 +367,7 @@ export class TdsDatePicker {
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleInput(event)}
             placeholder="YYYY/MM/DD"
-            value={this.selectedDate}
+            value={this.value}
           >
             <tds-icon
               style={{

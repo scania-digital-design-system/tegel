@@ -42,29 +42,29 @@ export class DatepickerDate {
   handleInternalTdsInRange(
     event: CustomEvent<{
       datePickerId: string;
-      startDate: Date;
-      endDate: Date;
+      startValue: Date;
+      endValue: Date;
     }>,
   ) {
-    const { startDate, endDate, datePickerId } = event.detail;
+    const { startValue, endValue, datePickerId } = event.detail;
     if (this.host.closest('tds-date-range-picker').datePickerId === datePickerId) {
-      if (isBefore(endDate, startDate)) {
-        this.inRange = isWithinInterval(this.date, { start: endDate, end: startDate });
+      if (isBefore(endValue, startValue)) {
+        this.inRange = isWithinInterval(this.date, { start: endValue, end: startValue });
         this.lastInRange = false;
         this.reverse = true;
       } else {
-        this.inRange = isWithinInterval(this.date, { start: startDate, end: endDate });
+        this.inRange = isWithinInterval(this.date, { start: startValue, end: endValue });
         this.lastInRange = false;
         this.reverse = false;
       }
 
       // If date is end date
-      if (isSameDay(this.date, endDate)) {
+      if (isSameDay(this.date, endValue)) {
         this.lastInRange = true;
         this.firstInRange = false;
       }
       // If date is start date
-      if (isSameDay(this.date, startDate)) {
+      if (isSameDay(this.date, startValue)) {
         this.firstInRange = true;
         this.lastInRange = false;
       }
