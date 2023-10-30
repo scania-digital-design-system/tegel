@@ -135,8 +135,6 @@ button {
           fill: var(--tds-btn-icon-#{$type}-#{$prop});
           color: var(--tds-btn-icon-#{$type}-#{$prop});
         }
-
-        font-size: 16px; //16px
       }
 
       &:hover {
