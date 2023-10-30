@@ -437,8 +437,12 @@ export class TdsDropdown {
         <div class={`dropdown-select ${this.size} ${this.disabled ? 'disabled' : ''}`}>
           {this.filter ? (
             <div
-              class={`filter ${this.filterFocus ? 'focus' : ''}
-            ${this.disabled ? 'disabled' : ''}`}
+              class={{
+                filter: true,
+                focus: this.filterFocus,
+                disabled: this.disabled,
+                error: this.error,
+              }}
             >
               <div class="value-wrapper">
                 {this.label && this.labelPosition === 'inside' && this.placeholder && (
