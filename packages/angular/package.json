@@ -1,6 +1,7 @@
 {
   "name": "@scania/tegel-angular",
   "version": "1.1.0",
+  "description": "Angular wrappers for Tegel package",
   "main": "dist",
   "files": [
     "dist"
