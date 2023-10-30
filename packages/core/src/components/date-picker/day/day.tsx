@@ -1,4 +1,4 @@
-import { Component, Element, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 import { isToday, format } from 'date-fns';
 
 @Component({
@@ -7,14 +7,16 @@ import { isToday, format } from 'date-fns';
   shadow: true,
 })
 export class DatepickerDate {
-  @Element() host: HTMLDatePickerDayElement;
+  /** Marks the date as not part of the currently displayed month. */
+  @Prop() notCurrentMonth: boolean;
 
-  @Prop() isCurrentMonth: boolean = true;
-
+  /** The Date. */
   @Prop() date: Date;
 
+  /** Marks the Date as selected. */
   @Prop() selected: boolean = false;
 
+  /** Marks the Date as disabled. */
   @Prop() disabled: boolean = false;
 
   render() {
@@ -24,7 +26,7 @@ export class DatepickerDate {
         class={{
           'selected': this.selected,
           'today': isToday(this.date),
-          'not-current-month': !this.isCurrentMonth,
+          'not-current-month': this.notCurrentMonth,
           'disabled': this.disabled,
         }}
       >

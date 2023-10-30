@@ -7,12 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                          | Default     |
-| ---------- | ---------- | ----------- | ----------------------------- | ----------- |
-| `disabled` | `disabled` |             | `boolean`                     | `false`     |
-| `onSelect` | --         |             | `(event: MouseEvent) => void` | `undefined` |
-| `selected` | `selected` |             | `boolean`                     | `false`     |
-| `year`     | `year`     |             | `string`                      | `''`        |
+| Property   | Attribute  | Description                        | Type      | Default     |
+| ---------- | ---------- | ---------------------------------- | --------- | ----------- |
+| `disabled` | `disabled` | Marks the Year as selected.        | `boolean` | `false`     |
+| `selected` | `selected` | Marks the Year as selected.        | `boolean` | `false`     |
+| `year`     | `year`     | The Year that should be displayed. | `string`  | `undefined` |
 
 
 ## Dependencies

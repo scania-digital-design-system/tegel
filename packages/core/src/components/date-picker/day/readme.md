@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property         | Attribute          | Description | Type      | Default     |
-| ---------------- | ------------------ | ----------- | --------- | ----------- |
-| `date`           | --                 |             | `Date`    | `undefined` |
-| `disabled`       | `disabled`         |             | `boolean` | `false`     |
-| `isCurrentMonth` | `is-current-month` |             | `boolean` | `true`      |
-| `selected`       | `selected`         |             | `boolean` | `false`     |
+| Property          | Attribute           | Description                                                  | Type      | Default     |
+| ----------------- | ------------------- | ------------------------------------------------------------ | --------- | ----------- |
+| `date`            | --                  | The Date.                                                    | `Date`    | `undefined` |
+| `disabled`        | `disabled`          | Marks the Date as disabled.                                  | `boolean` | `false`     |
+| `notCurrentMonth` | `not-current-month` | Marks the date as not part of the currently displayed month. | `boolean` | `undefined` |
+| `selected`        | `selected`          | Marks the Date as selected.                                  | `boolean` | `false`     |
 
 
 ## Dependencies

@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                          | Default     |
-| ---------- | ---------- | ----------- | ----------------------------- | ----------- |
-| `disabled` | `disabled` |             | `boolean`                     | `false`     |
-| `month`    | `month`    |             | `string`                      | `''`        |
-| `onSelect` | --         |             | `(event: MouseEvent) => void` | `undefined` |
-| `selected` | `selected` |             | `boolean`                     | `false`     |
+| Property   | Attribute  | Description                         | Type                          | Default     |
+| ---------- | ---------- | ----------------------------------- | ----------------------------- | ----------- |
+| `disabled` | `disabled` | Marks the Month as disabled.        | `boolean`                     | `false`     |
+| `month`    | `month`    | The Month that should be displayed. | `string`                      | `undefined` |
+| `onSelect` | --         |                                     | `(event: MouseEvent) => void` | `undefined` |
+| `selected` | `selected` | Marks the Month as selected.        | `boolean`                     | `false`     |
 
 
 ## Dependencies

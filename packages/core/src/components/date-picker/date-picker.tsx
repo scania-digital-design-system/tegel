@@ -305,7 +305,7 @@ export class TdsDatePicker {
             this.handleSelection(day);
           }
         }}
-        isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
+        notCurrentMonth={!isSameMonth(day, this.firstDayCurrentMonth)}
         date={day}
         selected={format(day, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(day)}
@@ -323,9 +323,7 @@ export class TdsDatePicker {
             this.handleSelection(month);
           }
         }}
-        month={format(month, 'MMM', {
-          locale: this.getLocale(),
-        })}
+        month={month}
         selected={format(month, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(month)}
       ></date-picker-month>
@@ -342,7 +340,7 @@ export class TdsDatePicker {
             this.handleSelection(year);
           }
         }}
-        year={format(year, this.getFormat())}
+        year={year}
         selected={format(year, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(year)}
       ></date-picker-year>

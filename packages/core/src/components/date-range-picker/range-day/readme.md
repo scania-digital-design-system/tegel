@@ -7,15 +7,15 @@
 
 ## Properties
 
-| Property         | Attribute          | Description | Type      | Default     |
-| ---------------- | ------------------ | ----------- | --------- | ----------- |
-| `date`           | --                 |             | `Date`    | `undefined` |
-| `disabled`       | `disabled`         |             | `boolean` | `false`     |
-| `firstInRange`   | `first-in-range`   |             | `boolean` | `false`     |
-| `inRange`        | `in-range`         |             | `boolean` | `false`     |
-| `isCurrentMonth` | `is-current-month` |             | `boolean` | `true`      |
-| `lastInRange`    | `last-in-range`    |             | `boolean` | `false`     |
-| `selected`       | `selected`         |             | `boolean` | `false`     |
+| Property          | Attribute           | Description                                                  | Type      | Default     |
+| ----------------- | ------------------- | ------------------------------------------------------------ | --------- | ----------- |
+| `date`            | --                  | The Date.                                                    | `Date`    | `undefined` |
+| `disabled`        | `disabled`          | Marks the Date as disabled.                                  | `boolean` | `false`     |
+| `firstInRange`    | `first-in-range`    | Marks the Date as the first date in range.                   | `boolean` | `false`     |
+| `inRange`         | `in-range`          | Marks the Date as in range.                                  | `boolean` | `false`     |
+| `lastInRange`     | `last-in-range`     | Marks the Date as the last date in range.                    | `boolean` | `false`     |
+| `notCurrentMonth` | `not-current-month` | Marks the date as not part of the currently displayed month. | `boolean` | `undefined` |
+| `selected`        | `selected`          | Marks the Date as selected.                                  | `boolean` | `false`     |
 
 
 ## Dependencies

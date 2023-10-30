@@ -357,7 +357,7 @@ export class TdsDateRangePicker {
                 onClick={() => {
                   this.handleSelection(day);
                 }}
-                isCurrentMonth={isSameMonth(day, this.firstDayCurrentMonth)}
+                notCurrentMonth={!isSameMonth(day, this.firstDayCurrentMonth)}
                 date={day}
                 selected={
                   format(day, this.format) === this.startValue ||
