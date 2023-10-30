@@ -103,7 +103,8 @@ export default {
     min: false,
     max: false,
     helper: '',
-    customDate: false,
+    startDate: false,
+    endDate: false,
     lang: 'en',
   },
 };
@@ -116,6 +117,8 @@ const datePickerTemplate = ({
   labelPosition,
   min,
   max,
+  startDate,
+  endDate,
   lang,
 }) => {
   const getLabelPosition = () => {
@@ -129,8 +132,8 @@ const datePickerTemplate = ({
     `
     <tds-date-range-picker
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
-      start-date="2023-10-01"
-      end-date="2023-10-07"
+      ${startDate ? 'start-date="2023-10-01"' : ''}
+      ${endDate ? 'end-date="2023-10-07"' : ''}
       state="${state.toLowerCase()}"
       ${label ? `label="${label}"` : ''}
       label-position="${getLabelPosition()}"

@@ -114,7 +114,7 @@ export class TdsDateRangePicker {
   }>;
 
   /** TODO: Should this be editable by the user? The placement of the Datepicker */
-  private placement: Placement = 'auto';
+  placement: Placement = 'auto';
 
   // Referene to the Text Field for the Start Date
   startRangeInput: HTMLTdsTextFieldElement;
@@ -134,9 +134,18 @@ export class TdsDateRangePicker {
 
     /** Selecting an End Date */
     if (this.startDate && !this.endDate) {
+      /** If the selected Date is before the old Start Date
+       * we need to set the old Start Date to be the new
+       * End Date, and the selected Date to be the new
+       * Start Date.
+       */
       if (isBefore(date, parse(this.startDate, this.format, new Date()))) {
-        this.setStartAndEndDate(parse(this.startDate, this.format, new Date()), oldStartDate);
+        this.setStartAndEndDate(date, oldStartDate);
       } else {
+        /** If the selected Date is after the old Start Date
+         * we need to set the selected Date to be the new
+         * End Date.
+         */
         this.endDate = format(date, this.format);
       }
       return;
