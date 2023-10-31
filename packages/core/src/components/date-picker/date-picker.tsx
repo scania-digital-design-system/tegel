@@ -11,10 +11,10 @@ import {
   endOfWeek,
   endOfYear,
   format,
+  isAfter,
+  isBefore,
   isSameMonth,
   isValid,
-  isBefore,
-  isAfter,
   parse,
   startOfMonth,
   startOfToday,
@@ -88,16 +88,16 @@ export class TdsDatePicker {
   /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
   @Prop() weekDayLabels: string = 'MTWTFSS';
 
-  /** The currently displayed month. */
+  /** The currently displayed month (used for variant="day"). */
   @State() currentMonth = format(
     parse(this.value ?? format(startOfToday(), this.getFormat()), this.getFormat(), new Date()),
     this.getFormat(),
   );
 
-  /** The first Day of the currently displayed month. */
+  /** The first Day of the currently displayed month (used for variant="day"). */
   @State() firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
 
-  /** The first Month of the currently displayed year. */
+  /** The first Month of the currently displayed year (used for variant="month"). */
   @State() firstMonthCurrentYear = startOfYear(
     parse(this.value ?? format(startOfToday(), this.getFormat()), this.getFormat(), new Date()),
   );
@@ -112,7 +112,9 @@ export class TdsDatePicker {
     start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), {
       weekStartsOn: this.weekStartsOn,
     }),
-    end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
+    end: endOfWeek(endOfMonth(this.firstDayCurrentMonth), {
+      weekStartsOn: this.weekStartsOn,
+    }),
   });
 
   /** The currently displayed Months */
@@ -158,7 +160,7 @@ export class TdsDatePicker {
 
     /** If the selected selected date is not is the currently displayed month
      * we need to update the calendar container to show the month of
-     * the new selected date. Only applicale for variant='day'
+     * the new selected date. Only applicable for variant='day'
      * */
     if (this.variant === 'day' && !isSameMonth(newSelectedDate, previouslySelectedDate)) {
       this.updateDisplayedDays();
@@ -198,7 +200,9 @@ export class TdsDatePicker {
       start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), {
         weekStartsOn: this.weekStartsOn,
       }),
-      end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
+      end: endOfWeek(endOfMonth(this.firstDayCurrentMonth), {
+        weekStartsOn: this.weekStartsOn,
+      }),
     });
   };
 

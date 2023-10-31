@@ -64,6 +64,13 @@ export class TdsDateRangePicker {
   /** ID used for internal Date Range Picker functionality and events, must be unique. */
   @Prop() datePickerId: string = generateUniqueId();
 
+  /** Sets which day the week starts on,  1 = Monday.
+   * If this is used, you will also need to set a custom
+   * weekDayLabels prop to correspond with this this
+   * update.
+   */
+  @Prop() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 1;
+
   /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
   @Prop() weekDayLabels: string = 'MTWTFSS';
 
@@ -81,8 +88,10 @@ export class TdsDateRangePicker {
 
   /** The currently displayed Days */
   @State() days = eachDayOfInterval({
-    start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
-    end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
+    start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), {
+      weekStartsOn: this.weekStartsOn,
+    }),
+    end: endOfWeek(endOfMonth(this.firstDayCurrentMonth), { weekStartsOn: this.weekStartsOn }),
   });
 
   /** Fires when a Date is selected in the Date Range Picker */
@@ -234,8 +243,10 @@ export class TdsDateRangePicker {
     this.currentMonth = format(firstDayNextMonth, 'MMM-yyyy');
     this.firstDayCurrentMonth = parse(this.currentMonth, 'MMM-yyyy', new Date());
     this.days = eachDayOfInterval({
-      start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
-      end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
+      start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), {
+        weekStartsOn: this.weekStartsOn,
+      }),
+      end: endOfWeek(endOfMonth(this.firstDayCurrentMonth), { weekStartsOn: this.weekStartsOn }),
     });
   };
 

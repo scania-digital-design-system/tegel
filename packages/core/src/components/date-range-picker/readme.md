@@ -22,6 +22,7 @@
 | `startValue`      | `start-value`       | The selected start date for the Date Range Picker                                                                                                                                                 | `string`                              | `null`                                |
 | `state`           | `state`             | State of the Date Range Picker                                                                                                                                                                    | `"default" \| "error" \| "success"`   | `'default'`                           |
 | `weekDayLabels`   | `week-day-labels`   | Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. | `string`                              | `'MTWTFSS'`                           |
+| `weekStartsOn`    | `week-starts-on`    | Sets which day the week starts on,  1 = Monday. If this is used, you will also need to set a custom weekDayLabels prop to correspond with this this update.                                       | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`     | `1`                                   |
 
 
 ## Events

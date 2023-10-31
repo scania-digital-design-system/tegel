@@ -84,6 +84,7 @@ export default {
         type: 'text',
       },
     },
+
     labelPosition: {
       name: 'Label position',
       description: 'Sets the label text position.',
@@ -93,6 +94,16 @@ export default {
       options: ['No label', 'Inside', 'Outside'],
       table: {
         defaultValue: { summary: 'no-label' },
+      },
+    },
+    weekStartOn: {
+      name: 'Start week on Sunday.',
+      description: 'Uses the weekStartOn property to customize which day the week starts on.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: '1' },
       },
     },
     lang: {
@@ -120,6 +131,7 @@ export default {
     max: false,
     startDateHelper: '',
     endDateHelper: '',
+    weekStartOn: false,
     lang: 'en',
   },
 };
@@ -134,6 +146,7 @@ const datePickerTemplate = ({
   labelPosition,
   min,
   max,
+  weekStartOn,
   startDate,
   endDate,
   lang,
@@ -157,10 +170,11 @@ const datePickerTemplate = ({
       label-position="${getLabelPosition()}"
       ${startDateHelper ? `start-date-helper="${startDateHelper}"` : ''}
       ${endDateHelper ? `end-date-helper="${endDateHelper}"` : ''}
-      placement="bottom"
       locale="${lang}"
       ${min ? `min="2023-10-01"` : ''}
       ${max ? `max="2023-11-29"` : ''}
+      ${weekStartOn ? 'week-starts-on="0"' : ''}
+      ${weekStartOn ? 'week-day-labels="SMTWTFS"' : ''}
     >
     </tds-date-range-picker>
     <!-- Script tag for demo purposes -->
