@@ -46,7 +46,7 @@ export class DatepickerMonth {
           }}
         >
           <time>
-            {format(this.month, 'MM', {
+            {format(this.month, 'MMM', {
               locale: this.getLocale(),
             })}
           </time>
