@@ -16,10 +16,10 @@ jobs:
   release-angular:
     runs-on: ubuntu-latest
     steps:
-      - name: Fail if branch is not main
-        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+      - name: Fail if branch is not develop
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/develop'
         run: |
-          echo "This workflow should not be triggered on a branch other than main"
+          echo "This workflow should not be triggered on a branch other than develop"
           exit 1
 
       - name: Check out code
@@ -46,6 +46,7 @@ jobs:
           title: release/@scania/tegel@${{ github.event.inputs.version }}
           commit-message: Release of @scania/tegel@${{ github.event.inputs.version }}
           branch: release/tegel@${{ github.event.inputs.version }}
+          base: main
           delete-branch: true
 
   on-failure:
