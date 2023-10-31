@@ -5,4 +5,4 @@ npx lint-staged
 
 cd packages/core
 
-npm run playwright
+npm run test
