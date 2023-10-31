@@ -2,16 +2,6 @@ name: Release @scania/tegel
 on:
   workflow_dispatch:
     inputs:
-      version:
-        description: 'Release type'
-        required: true
-        default: 'patch'
-        type: choice
-        options:
-          - major
-          - minor
-          - patch
-
       nodeVersion:
         description: 'Node version'
         required: true
@@ -38,6 +28,13 @@ jobs:
   release-core:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Fail if branch is not main
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+        run: |
+          echo "This workflow should not be triggered on a branch other than main"
+          exit 1
+
       - name: Check out code
         uses: actions/checkout@v2
 
@@ -51,27 +48,18 @@ jobs:
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
-      - name: Core - CD into correct folder
-        run: cd packages/core
-
-      - name: Core - Bump version
-        run: npm version ${{ github.event.inputs.version }}
-
       - name: Core - Read Package.json Version
         id: version
         run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-
-      - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ steps.version.outputs.version }}
-
-      - name: Core - Push git tag
-        run: git push origin @scania/tegel@${{ steps.version.outputs.version }}
+        working-directory: packages/core
 
       - name: Core - npm install
         run: npm install
+        working-directory: packages/core
 
       - name: Core - Run build
         run: npm run build
+        working-directory: packages/core
 
       - name: Core - Publish
         run: |
@@ -80,16 +68,17 @@ jobs:
           else
             npm publish --tag ${{ github.event.inputs.tags }}
           fi
+        working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Core - Create PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: release/@scania/tegel@${{ steps.version.outputs.version }}
-          commit-message: Release of @scania/tegel@${{ steps.version.outputs.version }}
-          branch: release/${{ steps.version.outputs.version }}
-          delete-branch: true
+      - name: Core - Create git tag
+        run: git tag @scania/tegel@${{ steps.version.outputs.version }}
+
+      - name: Core - Push git tag
+        run: git push origin @scania/tegel@${{ steps.version.outputs.version }}
+
+
   on-failure:
     needs: release-core
     runs-on: ubuntu-latest
@@ -97,11 +86,9 @@ jobs:
     steps:
       - name: Remove branch and git tag on failure
         env:
-          npm_version: ${{ needs.release.outputs.version }}
+          npm_version: ${{ needs.release-core.outputs.version }}
         run: |
           if [ "${{ job.status }}" == "failure" ]; then
             tagname="@scania/tegel@$npm_version"
             git push --delete origin $tagname
-            branchname="release/@scania/tegel@$npm_version"
-            git push origin --delete $branchname
           fi

@@ -1,0 +1,60 @@
+name: Bump NPM version (core/angular/react)
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+jobs:
+  release-angular:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if branch is not develop
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/develop'
+        run: |
+          echo "This workflow should not be triggered on a branch other than develop"
+          exit 1
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - Bump version
+        run: npm version ${{ github.event.inputs.version }}
+        working-directory: packages/core
+
+      - name: Angular - Bump version
+        run: npm version ${{ github.event.inputs.version }}
+        working-directory: packages/angular
+
+      - name: React - Bump version
+        run: npm version ${{ github.event.inputs.version }}
+        working-directory: packages/react
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: release/@scania/tegel@${{ github.event.inputs.version }}
+          commit-message: Release of @scania/tegel@${{ github.event.inputs.version }}
+          branch: release/tegel@${{ github.event.inputs.version }}
+          base: main
+
+  on-failure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove branch on failure
+        env:
+          npm_version: ${{ github.event.inputs.version }}
+        run: |
+          if [ "${{ job.status }}" == "failure" ]; then
+            git push origin --delete @scania/tegel@${{ github.event.inputs.version }}
+          fi
