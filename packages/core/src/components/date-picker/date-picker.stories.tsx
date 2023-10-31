@@ -21,16 +21,11 @@ export default {
     },
     variant: {
       name: 'Variant',
+      description: 'The variant of the Date Picker',
       control: {
         type: 'radio',
       },
       options: ['Day', 'Month', 'Year'],
-    },
-    range: {
-      name: 'Range',
-      control: {
-        type: 'boolean',
-      },
     },
     customDate: {
       name: 'Use a custom selected date.',

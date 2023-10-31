@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                         | Type                          | Default     |
-| ---------- | ---------- | ----------------------------------- | ----------------------------- | ----------- |
-| `disabled` | `disabled` | Marks the Month as disabled.        | `boolean`                     | `false`     |
-| `month`    | `month`    | The Month that should be displayed. | `string`                      | `undefined` |
-| `onSelect` | --         |                                     | `(event: MouseEvent) => void` | `undefined` |
-| `selected` | `selected` | Marks the Month as selected.        | `boolean`                     | `false`     |
+| Property   | Attribute  | Description                                                                                                      | Type                   | Default     |
+| ---------- | ---------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------- | ----------- |
+| `disabled` | `disabled` | Marks the Month as disabled.                                                                                     | `boolean`              | `false`     |
+| `locale`   | `locale`   | Locale for displaying months in a differnet language than enlish. Currently available: English, Swedish, German. | `"de" \| "en" \| "sv"` | `'en'`      |
+| `month`    | --         | The Month that should be displayed.                                                                              | `Date`                 | `undefined` |
+| `selected` | `selected` | Marks the Month as selected.                                                                                     | `boolean`              | `false`     |
 
 
 ## Dependencies

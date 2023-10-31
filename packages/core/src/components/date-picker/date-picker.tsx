@@ -21,8 +21,6 @@ import {
   startOfWeek,
   startOfYear,
 } from 'date-fns';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { enGB, sv, de } from 'date-fns/locale';
 import { TdsTextFieldCustomEvent } from '../..';
 import generateUniqueId from '../../utils/generateUniqueId';
 
@@ -134,20 +132,6 @@ export class TdsDatePicker {
 
   /** TODO: Should this be editable by the user? The placement of the Datepicker */
   private placement: Placement = 'auto';
-
-  /** Returns a Locale object based on this.locale. */
-  private getLocale = (): Locale => {
-    switch (this.locale) {
-      case 'en':
-        return enGB;
-      case 'sv':
-        return sv;
-      case 'de':
-        return de;
-      default:
-        return enGB;
-    }
-  };
 
   /** Handle the selection of a Date/Month/Year when pressed. */
   private handleSelection = (date: Date) => {

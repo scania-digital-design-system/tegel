@@ -11,7 +11,7 @@
 | ---------- | ---------- | ---------------------------------- | --------- | ----------- |
 | `disabled` | `disabled` | Marks the Year as selected.        | `boolean` | `false`     |
 | `selected` | `selected` | Marks the Year as selected.        | `boolean` | `false`     |
-| `year`     | `year`     | The Year that should be displayed. | `string`  | `undefined` |
+| `year`     | --         | The Year that should be displayed. | `Date`    | `undefined` |
 
 
 ## Dependencies
