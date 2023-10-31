@@ -437,8 +437,12 @@ export class TdsDropdown {
         <div class={`dropdown-select ${this.size} ${this.disabled ? 'disabled' : ''}`}>
           {this.filter ? (
             <div
-              class={`filter ${this.filterFocus ? 'focus' : ''}
-            ${this.disabled ? 'disabled' : ''}`}
+              class={{
+                filter: true,
+                focus: this.filterFocus,
+                disabled: this.disabled,
+                error: this.error,
+              }}
             >
               <div class="value-wrapper">
                 {this.label && this.labelPosition === 'inside' && this.placeholder && (
@@ -483,6 +487,9 @@ export class TdsDropdown {
               <tds-icon
                 onClick={() => {
                   this.open = !this.open;
+                  if (this.open) {
+                    this.inputElement.focus();
+                  }
                 }}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
