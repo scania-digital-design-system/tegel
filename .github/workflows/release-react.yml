@@ -58,7 +58,7 @@ jobs:
         working-directory: packages/react
 
       - name: React - Install with latest tegel package
-        run: npm install @scania/tegel@${{ steps.version.outputs }}
+        run: npm install @scania/tegel@${{ steps.version.outputs.version }}
         working-directory: packages/react
 
       - name: Core - Install Tegel

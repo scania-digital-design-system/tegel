@@ -58,7 +58,7 @@ jobs:
         working-directory: packages/angular
 
       - name: Angular - Install latest tegel package
-        run: npm install @scania/tegel@${{ steps.version.outputs }}
+        run: npm install @scania/tegel@${{ steps.version.outputs.version }}
         working-directory: packages/angular
 
       - name: Core - Install Tegel
