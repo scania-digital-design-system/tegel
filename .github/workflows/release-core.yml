@@ -5,7 +5,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '18.16.0'
+        default: '20.9.0'
         type: string
 
       tags:
