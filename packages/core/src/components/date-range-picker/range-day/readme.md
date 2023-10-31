@@ -1,4 +1,4 @@
-# datepicker-date
+# date-range-picker-day
 
 
 
