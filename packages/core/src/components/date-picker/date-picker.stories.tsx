@@ -26,6 +26,9 @@ export default {
         type: 'radio',
       },
       options: ['Day', 'Month', 'Year'],
+      table: {
+        defaultValue: { summary: 'day' },
+      },
     },
     customDate: {
       name: 'Use a custom selected date.',
@@ -83,6 +86,16 @@ export default {
         defaultValue: { summary: 'no-label' },
       },
     },
+    weekStartOn: {
+      name: 'Start week on Sunday.',
+      description: 'Uses the weekStartOn property to customize which day the week starts on.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: '1' },
+      },
+    },
     lang: {
       name: 'Language',
       description: 'Language used in the Date Picker',
@@ -106,6 +119,7 @@ export default {
     max: false,
     helper: '',
     customDate: false,
+    weekStartOn: false,
     lang: 'en',
   },
 };
@@ -125,8 +139,8 @@ const datePickerTemplate = ({
   labelPosition,
   min,
   max,
+  weekStartOn,
   lang,
-  range,
 }) => {
   const getLabelPosition = () => {
     if (labelPosition === 'No label') {
@@ -153,7 +167,6 @@ const datePickerTemplate = ({
       variant="${variant.toLowerCase()}"
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       ${customDate ? `value="${customDateLookUp[variant]}"` : ''}
-      ${range ? 'range' : ''}
       state="${state.toLowerCase()}"
       ${label ? `label="${label}"` : ''}
       label-position="${getLabelPosition()}"
@@ -162,6 +175,9 @@ const datePickerTemplate = ({
       locale="${lang}"
       ${min ? `min="${minLookUp[variant]}"` : ''}
       ${max ? `max="${maxLookUp[variant]}"` : ''}
+      ${weekStartOn ? 'week-starts-on="0"' : ''}
+      ${weekStartOn ? 'week-day-labels="SMTWTFS"' : ''}
+      
 
     >
     </tds-date-picker>

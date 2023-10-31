@@ -63,9 +63,6 @@ export class TdsDatePicker {
   /** ID used for internal Date Picker functionality and events, must be unique. */
   @Prop() datePickerId: string = generateUniqueId();
 
-  /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
-  @Prop() weekDayLabels: string = 'MTWTFSS';
-
   /** State of the Date Picker */
   @Prop() state: 'error' | 'success' | 'default' = 'default';
 
@@ -78,8 +75,18 @@ export class TdsDatePicker {
   /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
-  /** Locale for displaying months in a differnet language than enlish. Currently available: English, Swedish, German. */
+  /** Locale for displaying Months in a differnet language than enlish. Currently available: English, Swedish, German. */
   @Prop() locale: 'en' | 'sv' | 'de' = 'en';
+
+  /** Sets which day the week starts on,  1 = Monday.
+   * If this is used, you will also need to set a custom
+   * weekDayLabels prop to correspond with this this
+   * update.
+   */
+  @Prop() weekStartsOn: 0 | 1 | 2 | 3 | 4 | 5 | 6 = 1;
+
+  /** Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. */
+  @Prop() weekDayLabels: string = 'MTWTFSS';
 
   /** The currently displayed month. */
   @State() currentMonth = format(
@@ -102,7 +109,9 @@ export class TdsDatePicker {
 
   /** The currently displayed Days */
   @State() days = eachDayOfInterval({
-    start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
+    start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), {
+      weekStartsOn: this.weekStartsOn,
+    }),
     end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
   });
 
@@ -186,7 +195,9 @@ export class TdsDatePicker {
     this.currentMonth = format(parse(this.value, this.getFormat(), new Date()), this.getFormat());
     this.firstDayCurrentMonth = parse(this.currentMonth, this.getFormat(), new Date());
     this.days = eachDayOfInterval({
-      start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), { weekStartsOn: 1 }),
+      start: startOfWeek(startOfMonth(this.firstDayCurrentMonth), {
+        weekStartsOn: this.weekStartsOn,
+      }),
       end: endOfWeek(endOfMonth(this.firstDayCurrentMonth)),
     });
   };
@@ -310,6 +321,7 @@ export class TdsDatePicker {
         month={month}
         selected={format(month, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(month)}
+        locale={this.locale}
       ></date-picker-month>
     ));
   }
