@@ -47,7 +47,6 @@ jobs:
           commit-message: Release of @scania/tegel@${{ github.event.inputs.version }}
           branch: release/tegel@${{ github.event.inputs.version }}
           base: main
-          delete-branch: true
 
   on-failure:
     runs-on: ubuntu-latest
