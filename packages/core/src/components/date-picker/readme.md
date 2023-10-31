@@ -21,7 +21,7 @@
 | `value`         | `value`           | The selected date of the Datepicker                                                                                                                                                               | `string`                              | `null`               |
 | `variant`       | `variant`         | The variant of the Datepicker                                                                                                                                                                     | `"day" \| "month" \| "year"`          | `'day'`              |
 | `weekDayLabels` | `week-day-labels` | Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. | `string`                              | `'MTWTFSS'`          |
-| `weekStartsOn`  | `week-starts-on`  | Sets which day the week starts on,  1 = Monday. If this is used, you will also need to set a custom weekDayLabels prop to correspond with this this  update.                                      | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`     | `1`                  |
+| `weekStartsOn`  | `week-starts-on`  | Sets which day the week starts on,  1 = Monday. If this is used, you will also need to set a custom weekDayLabels prop to correspond with this this update.                                       | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`     | `1`                  |
 
 
 ## Events
