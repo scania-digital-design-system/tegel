@@ -487,6 +487,9 @@ export class TdsDropdown {
               <tds-icon
                 onClick={() => {
                   this.open = !this.open;
+                  if (this.open) {
+                    this.inputElement.focus();
+                  }
                 }}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
