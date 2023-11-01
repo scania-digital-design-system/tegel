@@ -10,7 +10,7 @@ This guide [here](https://stenciljs.com/docs/react) has served as base for the c
 
 Official website: https://tegel.scania.com/
 
-Storybook: https://tegel-storybook.netlify.app/
+Storybook: https://tds-storybook.tegel.scania.com/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
