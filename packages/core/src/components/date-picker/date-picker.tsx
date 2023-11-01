@@ -289,6 +289,20 @@ export class TdsDatePicker {
     }
   }
 
+  /** Returns the placeholder that should be displayed for whatever variant the Date Picker is. */
+  private getPlaceHolder() {
+    switch (this.variant) {
+      case 'day':
+        return 'YYYY-MM-DD';
+      case 'month':
+        return 'YYYY-MM';
+      case 'year':
+        return 'YYYY';
+      default:
+        return 'YYYY-MM-DD';
+    }
+  }
+
   /** Util - checks if the Date/Month/Year should be disabled. */
   private shouldDateBeDisabled = (date: Date) =>
     isBefore(date, parse(this.min, this.getFormat(), new Date())) ||
@@ -364,7 +378,7 @@ export class TdsDatePicker {
             helper={this.helper}
             modeVariant={this.modeVariant}
             onTdsChange={(event) => this.handleInput(event)}
-            placeholder="YYYY/MM/DD"
+            placeholder={this.getPlaceHolder()}
             value={this.value}
           >
             <tds-icon
