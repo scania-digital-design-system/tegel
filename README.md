@@ -38,16 +38,17 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 
 ### Setting up the development environment
 
-1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 18 at the time of writing).
+1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 20 at the time of writing).
 2. Run `npm install` in the root directory.
-3. Run `npm install` in the core directory.
-3. Create a `.env` file in the /tegel directory with the following contents:
+3. Run `npm install` in the `packages/core` directory.
+4. Create a `.env` file in the root directory with the following contents:
 
 ```
 STORYBOOK_ENV=development
 ```
 
-4. Make sure you are in the root directory, and start the dev server with `npm run storybook`.
+5. Make sure you are in the root directory, and start the dev server with `npm run start`.
+ - *Alternatively navigate to `packages/core` and start the dev server with `npm run storybook`*
 
 ## Community
 
