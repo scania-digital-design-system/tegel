@@ -386,13 +386,18 @@ export class TdsDatePicker {
           selector="#haha"
         >
           <div class="controls">
-            <tds-button size="sm" variant="ghost" class="previous-month" onClick={this.getPrevious}>
-              <tds-icon slot="icon" name="chevron_left" size="20px"></tds-icon>
-            </tds-button>
+            <button class="previous" onClick={this.getPrevious}>
+              <tds-icon
+                onClick={this.getPrevious}
+                slot="icon"
+                name="chevron_left"
+                size="20px"
+              ></tds-icon>
+            </button>
             <div class="calendar-display">{this.getControlsDisplayText()}</div>
-            <tds-button size="sm" variant="ghost" class="previous-month" onClick={this.getNext}>
+            <button class="next" onClick={this.getNext}>
               <tds-icon slot="icon" name="chevron_right" size="20px"></tds-icon>
-            </tds-button>{' '}
+            </button>{' '}
           </div>
           <div
             class={{

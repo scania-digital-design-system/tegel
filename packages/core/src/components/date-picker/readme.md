@@ -41,7 +41,6 @@
 - [tds-text-field](../text-field)
 - [tds-icon](../icon)
 - [tds-popover-core](../popover-core)
-- [tds-button](../button)
 
 ### Graph
 ```mermaid
@@ -52,7 +51,6 @@ graph TD;
   tds-date-picker --> tds-text-field
   tds-date-picker --> tds-icon
   tds-date-picker --> tds-popover-core
-  tds-date-picker --> tds-button
   tds-text-field --> tds-icon
   style tds-date-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```
