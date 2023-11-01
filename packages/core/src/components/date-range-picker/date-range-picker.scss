@@ -1,3 +1,5 @@
+@import '../../mixins/focus-state';
+
 .tds-date-range-picker {
   display: inline-block;
   width: 324px;
@@ -41,6 +43,28 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      button {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        &.previous {
+          padding-left: 8px;
+        }
+
+        &.next {
+          padding-right: 8px;
+        }
+
+        &:focus {
+          @include tds-focus-state;
+        }
+      }
 
       .calendar-display {
         font: var(--tds-detail-02);

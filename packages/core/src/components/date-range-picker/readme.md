@@ -39,7 +39,6 @@
 - [tds-text-field](../text-field)
 - [tds-icon](../icon)
 - [tds-popover-core](../popover-core)
-- [tds-button](../button)
 - [date-range-picker-day](range-day)
 
 ### Graph
@@ -48,7 +47,6 @@ graph TD;
   tds-date-range-picker --> tds-text-field
   tds-date-range-picker --> tds-icon
   tds-date-range-picker --> tds-popover-core
-  tds-date-range-picker --> tds-button
   tds-date-range-picker --> date-range-picker-day
   tds-text-field --> tds-icon
   style tds-date-range-picker fill:#f9f,stroke:#333,stroke-width:4px

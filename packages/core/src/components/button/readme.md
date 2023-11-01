@@ -26,19 +26,6 @@
 | `"label"` | Slot for the text injection. Serves as alternative to text prop. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-date-range-picker](../date-range-picker)
-
-### Graph
-```mermaid
-graph TD;
-  tds-date-range-picker --> tds-button
-  style tds-button fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
