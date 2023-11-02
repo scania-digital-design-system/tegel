@@ -14,7 +14,7 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: !process.env.CI,
   },
   workers: 4,
-  reporter: 'github',
+  reporter: 'line',
 };
 
 export default config;
