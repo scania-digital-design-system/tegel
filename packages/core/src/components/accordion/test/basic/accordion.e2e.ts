@@ -8,6 +8,7 @@ test.describe('tds-accordion', () => {
     await expect(accordion).toHaveClass(/hydrated/);
     await expect(accordion).toContainText('First item');
     await expect(accordion).toContainText('Second item');
+
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
   test('fires tdsToggle event on click', async ({ page }) => {
