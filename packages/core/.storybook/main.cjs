@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 let addons = [
   '@storybook/addon-links',
   '@storybook/addon-essentials',
@@ -7,10 +5,6 @@ let addons = [
   '@storybook/addon-notes/register',
   'storybook-version',
 ];
-
-if (process.env.STORYBOOK_ENV === 'development') {
-  addons = [...addons, 'storybook-addon-designs', '@storybook/addon-a11y', 'addon-screen-reader'];
-}
 
 module.exports = {
   addons: addons,
