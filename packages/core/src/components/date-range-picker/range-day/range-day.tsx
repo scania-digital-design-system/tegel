@@ -84,6 +84,7 @@ export class DatepickerDate {
   }
 
   render() {
+    const date = format(this.date, 'd');
     return (
       <Host>
         <button
@@ -99,7 +100,7 @@ export class DatepickerDate {
             'reverse': this.reverse,
           }}
         >
-          <time>{format(this.date, 'd')}</time>
+          <time dateTime={date}>{date}</time>
         </button>
       </Host>
     );
