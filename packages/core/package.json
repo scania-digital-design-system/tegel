@@ -39,7 +39,6 @@
     "generate": "stencil generate",
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
-    "tegel-release": "./tegel-release.sh",
     "build-storybook": "build-storybook --quiet",
     "build-stencil-storybook": "npm run build && npm run build-storybook",
     "start-storybook": "start-storybook -p 6006",
