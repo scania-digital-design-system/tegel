@@ -36,6 +36,10 @@ export class DatepickerMonth {
   };
 
   render() {
+    const date = format(this.month, 'MMM', {
+      locale: this.getLocale(),
+    });
+
     return (
       <Host>
         <button
@@ -45,11 +49,7 @@ export class DatepickerMonth {
             disabled: this.disabled,
           }}
         >
-          <time>
-            {format(this.month, 'MMM', {
-              locale: this.getLocale(),
-            })}
-          </time>
+          <time dateTime={date}>{date}</time>
         </button>
       </Host>
     );

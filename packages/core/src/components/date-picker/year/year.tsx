@@ -17,6 +17,7 @@ export class DatepickerYear {
   @Prop() disabled: boolean = false;
 
   render() {
+    const date = format(this.year, 'yyyy');
     return (
       <Host>
         <button
@@ -26,7 +27,7 @@ export class DatepickerYear {
             disabled: this.disabled,
           }}
         >
-          <time>{format(this.year, 'yyyy')}</time>
+          <time dateTime={date}>{date}</time>
         </button>
       </Host>
     );

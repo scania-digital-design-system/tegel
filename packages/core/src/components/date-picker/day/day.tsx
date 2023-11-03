@@ -20,6 +20,7 @@ export class DatepickerDate {
   @Prop() disabled: boolean = false;
 
   render() {
+    const date = format(this.date, 'd');
     return (
       <button
         disabled={this.disabled}
@@ -30,7 +31,7 @@ export class DatepickerDate {
           'disabled': this.disabled,
         }}
       >
-        <time>{format(this.date, 'd')}</time>
+        <time dateTime={date}>{date}</time>
       </button>
     );
   }
