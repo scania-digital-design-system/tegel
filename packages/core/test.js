@@ -1,4 +1,4 @@
-import { execSync } from 'child_process';
+import { execFile } from 'child_process';
 import path from 'path';
 
 function toUnixPath(p) {
@@ -18,6 +18,27 @@ function toUnixPath(p) {
 }
 
 const pwd = toUnixPath(path.resolve(process.cwd()));
-const command = `docker run --rm --network host -v ${pwd}:/work/ -w /work/ mcr.microsoft.com/playwright:v1.39.0-jammy /bin/bash -c "npm install && npx playwright test && exit"`;
+const command = 'docker';
+const args = [
+  'run',
+  '--rm',
+  '--network',
+  'host',
+  '-v',
+  `${pwd}:/work/`,
+  '-w',
+  '/work/',
+  'mcr.microsoft.com/playwright:v1.39.0-jammy',
+  '/bin/bash',
+  '-c',
+  'npx playwright test && exit',
+];
 
-execSync(command, { stdio: 'inherit' });
+// eslint-disable-next-line no-unused-vars
+execFile(command, args, (error, stdout) => {
+  if (error) {
+    console.error(stdout);
+    process.exit(1);
+  }
+  console.log(stdout);
+});
