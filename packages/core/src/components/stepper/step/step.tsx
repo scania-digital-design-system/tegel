@@ -1,6 +1,13 @@
 import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
 import { InternalTdsStepperPropChange } from '../stepper';
 
+const propToStateMap = {
+  orientation: 'orientation',
+  labelPosition: 'labelPosition',
+  size: 'size',
+  hideLabels: 'hideLabels',
+};
+
 /**
  * @slot label - Slot for the label text.
  */
@@ -16,7 +23,7 @@ export class TdsStep {
   /** State of the Step */
   @Prop() state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
 
-  @State() hideLabel: boolean;
+  @State() hideLabels: boolean;
 
   @State() size: 'sm' | 'lg';
 
@@ -36,7 +43,7 @@ export class TdsStep {
     this.orientation = this.stepperEl.orientation;
     this.labelPosition = this.stepperEl.labelPosition;
     this.size = this.stepperEl.size;
-    this.hideLabel = this.stepperEl.hideLabels;
+    this.hideLabels = this.stepperEl.hideLabels;
     this.stepperId = this.stepperEl.stepperId;
   }
 
@@ -45,12 +52,10 @@ export class TdsStep {
     if (this.stepperId === event.detail.stepperId) {
       event.detail.changed.forEach((changedProp) => {
         if (typeof this[changedProp] === 'undefined') {
-          throw new Error(`Table prop is not supported: ${changedProp}`);
+          throw new Error(`Stepper prop is not supported: ${changedProp}`);
+        } else if (changedProp in propToStateMap) {
+          this[propToStateMap[changedProp]] = event.detail[changedProp];
         }
-        if (this[changedProp] === this.orientation && event.detail[changedProp] === 'vertical') {
-          this.labelPosition = 'aside';
-        }
-        this[changedProp] = event.detail[changedProp];
       });
     }
   }
@@ -61,7 +66,7 @@ export class TdsStep {
         <div
           role="listitem"
           class={`${this.size} ${this.orientation} text-${this.labelPosition} ${
-            this.hideLabel ? 'hide-labels' : ''
+            this.hideLabels ? 'hide-labels' : ''
           }`}
         >
           <div class={`${this.state} content-container`}>
@@ -74,7 +79,7 @@ export class TdsStep {
               this.index
             )}
           </div>
-          {!this.hideLabel && (
+          {!this.hideLabels && (
             <div class={`label ${this.size} ${this.state}`}>
               <slot name="label"></slot>
             </div>

@@ -10,7 +10,7 @@ This guide [here](https://stenciljs.com/docs/angular) has served as base for the
 
 Official website: https://tegel.scania.com/
 
-Storybook: https://tegel-storybook.netlify.app/
+Storybook: https://tds-storybook.tegel.scania.com/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
@@ -45,7 +45,7 @@ import {
 export class AppModule {}
 ```
 
-3. In your global css file (`styles.css`) import the tegel stylesheet.
+1. In your global css file import the tegel stylesheet.
 
 ```css
 @import url('@scania/tegel/dist/tegel/tegel.css');

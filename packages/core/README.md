@@ -10,13 +10,14 @@
 
 Official website: https://tegel.scania.com/
 
-Storybook: https://tegel-storybook.netlify.app/
+Storybook: https://tds-storybook.tegel.scania.com/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
 ## Status
 
-This package is currently in a **beta** stage. We are now working hard towards a 1.0 release, but if you want to try out the package today you can!
+This package is currently considered a **beta**. 
+Version 1.0.0 and later are released, and we see no braking changes coming in near future. 
 
 ## Installation
 

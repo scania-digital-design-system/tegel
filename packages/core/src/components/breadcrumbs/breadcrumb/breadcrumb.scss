@@ -13,8 +13,11 @@
     }
   }
 
-  &:focus-visible {
+  ::slotted(*:focus-visible) {
     @include tds-focus-state;
+
+    // Overrides the offset of the tds-focus-state to align with design.
+    outline-offset: -0;
   }
 
   &.current,
@@ -33,7 +36,7 @@
     }
   }
 
-  ::slotted(*)::after {
+  &::after {
     content: '\203A';
     color: var(--tds-breadcrumb-separator-color);
     margin-right: 4px;
@@ -44,8 +47,8 @@
   }
 }
 
-:host(:last-of-type) {
-  ::slotted(*)::after {
+:host(.last) [role='listitem'] {
+  &::after {
     display: none;
   }
 }

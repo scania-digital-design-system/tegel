@@ -55,6 +55,13 @@ export default {
         type: 'text',
       },
     },
+    hidden: {
+      name: 'Hidden',
+      description: 'Hides the Toast.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     variant: 'Information',
@@ -63,15 +70,17 @@ export default {
     actions: `<tds-link slot="actions">
           <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>
       </tds-link>`,
+    hidden: false,
   },
 };
 
-const Template = ({ variant, header, subheader, actions }) =>
+const Template = ({ variant, header, subheader, actions, hidden }) =>
   formatHtmlPreview(
     `<tds-toast
         variant="${variant.toLowerCase()}"
         header="${header}"
         ${subheader ? `subheader="${subheader}"` : ''}
+        ${hidden ? 'hidden' : ''}
     >
     ${actions || ''}
     </tds-toast>

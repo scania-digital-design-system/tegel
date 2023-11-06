@@ -97,7 +97,10 @@ export class TdsToast {
       <Host
         toastRole={this.toastRole}
         aria-describedby={this.host.getAttribute('aria-describedby')}
-        class={`${this.hidden ? 'hide' : 'show'}`}
+        class={{
+          hide: this.hidden,
+          show: !this.hidden,
+        }}
       >
         <div
           class={`
