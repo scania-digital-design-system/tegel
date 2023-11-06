@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Accordion - Disabled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-accordion>
+        <tds-accordion-item disabled header="First item">
+          This is the panel, which contains associated information with the header. Usually it contains
+          text, set in the same size as the header. Lorem ipsum doler sit amet.
+        </tds-accordion-item>
+        <tds-accordion-item disabled>
+          <div slot="header">Second item</div>
+          This is the panel, which contains associated information with the header. Usually it contains
+          text, set in the same size as the header. Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit. Duis laoreet vestibulum fermentum.
+        </tds-accordion-item>
+      </tds-accordion>
+  </body>
+</html>

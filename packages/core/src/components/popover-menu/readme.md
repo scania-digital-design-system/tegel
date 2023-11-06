@@ -1,7 +1,7 @@
 # tds-popover-menu
 
 
-### Usage in Angular
+### Usage with @scania/tegel-angular
 If you are using the `<tds-popover-menu>` in an Angular environment and want to
 use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
 
@@ -14,6 +14,22 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
     <a href="#">Action</a>
   </tds-popover-menu-item>
 </tds-popover-menu>
+
+```
+
+### Usage with @scania/tegel-react
+If you are using the `<TdsPopoverMenu>` in an React environment and want to
+use the `referenceEl` prop rather than the `selector` the referenced element can't be a Tegel component. We recommend wrapping the element in a native HTMLElement and using that as the `referenceEl`. See example below:
+
+```jsx
+<div ref={myReference.current}>
+  <TdsButton text="Button"></TdsButton>
+</div>
+<TdsPopoverMenu referenceEl={myReference}>
+  <TdsPopoverMenuItem>
+    <a href="#">Action</a>
+  </TdsPopoverMenuItem>
+</TdsPopoverMenu>
 
 ```
 <!-- Auto Generated Below -->

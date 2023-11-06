@@ -38,6 +38,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    indeterminate: {
+      name: 'Indeterminate',
+      description: 'Sets the checkbox in a intederminte state.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the Checkbox.',
@@ -53,31 +63,34 @@ export default {
     label: 'Label',
     checked: false,
     disabled: false,
+    indeterminate: false,
   },
 };
 
-const Template = ({ label, checked, disabled }) =>
+const Template = ({ label, checked, disabled, indeterminate }) =>
   formatHtmlPreview(`
     <tds-checkbox
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
-        value="checkbox-value"
+        ${indeterminate ? 'indeterminate' : ''}
+        value="checkbox-1"
+        checkbox-id="first-checkbox"
         >
         <div slot="label">${label}</div>
     </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
     <script>
-        checkboxElement = document.querySelector('tds-checkbox')
-        checkboxElement.addEventListener('tdsChange', (event) => {
-            console.log('Checkbox with id: ', event.detail.checkboxId, ' is ', event.detail.checked)
-        })
-        checkboxElement.addEventListener('tdsFocus',(event) => {
-          console.log(event)
-        })
-        checkboxElement.addEventListener('tdsBlur',(event) => {
-          console.log(event)
-        })
+      checkboxElement = document.querySelector("tds-checkbox");
+      checkboxElement.addEventListener("tdsChange", (event) => {
+        console.log("Checkbox with id: ", event.detail.checkboxId, " is ", event.detail.checked);
+      });
+      checkboxElement.addEventListener("tdsFocus", (event) => {
+        console.log(event);
+      });
+      checkboxElement.addEventListener("tdsBlur", (event) => {
+        console.log(event);
+      });
     </script>
   `);
 

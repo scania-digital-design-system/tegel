@@ -67,7 +67,7 @@ export default {
     defaultValue: {
       name: 'Default value',
       description:
-        'Sets max value. Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM.',
+        'Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM.',
       control: {
         type: 'radio',
       },
@@ -89,7 +89,7 @@ export default {
     },
     maxValue: {
       description:
-        'Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
+        'Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00"',
       name: 'Max value',
       control: {
         type: 'text',

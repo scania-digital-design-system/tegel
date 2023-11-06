@@ -10,7 +10,7 @@
     "build-angular": "npm run build && cd packages/angular && npm i && npm run build ",
     "build-react": "npm run build && cd packages/react && npm i && npm run build ",
     "build-all": "npm run build && (cd packages/angular && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cd packages/core && npx playwright test",
     "commit": "cz",
     "prepare": "husky install"
   },
@@ -99,6 +99,6 @@
   },
   "engines": {
     "npm": ">=9.0.0",
-    "node": ">=18.16.0"
+    "node": ">=20.9.0"
   }
 }
