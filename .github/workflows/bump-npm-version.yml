@@ -43,6 +43,12 @@ jobs:
         working-directory: packages/react
         id: react-version
 
+      - name: Save version as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version
+          path: packages/core/package.json  # assuming the version is saved here
+
       - name: Check versions
         run: |
           if [ "${{ steps.core-version.outputs.version }}" != "${{ steps.angular-version.outputs.version }}" ] || [ "${{ steps.core-version.outputs.version }}" != "${{ steps.react-version.outputs.version }}" ]; then
@@ -62,10 +68,15 @@ jobs:
     runs-on: ubuntu-latest
     if: always() && needs.create-release-pr.result == 'failure'
     steps:
+      - name: Download version
+        uses: actions/download-artifact@v2
+        with:
+          name: version
+          path: packages/core
+
       - name: Remove branch on failure
-        env:
-          npm_version: ${{ github.event.inputs.version }}
         run: |
-          if [ "${{ job.status }}" == "failure" ]; then
-            git push origin --delete @scania/tegel@${{ steps.core-version.outputs.version }}
+          version=$(jq -r .version packages/core/package.json)  # extract version from package.json
+          if [ "${{ job.status }}" == "failure" ] && [ -n "$version" ]; then
+            git push origin --delete @scania/tegel@$version
           fi
