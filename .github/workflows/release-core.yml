@@ -27,6 +27,8 @@ on:
 jobs:
   release-core:
     runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/core
     steps:
 
       - name: Fail if branch is not main
@@ -50,16 +52,16 @@ jobs:
 
       - name: Core - Read Package.json Version
         id: version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-        working-directory: packages/core
+        run: echo "::set-output name=version::$(jq -r .version package.json)"
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Core - npm install
         run: npm install
-        working-directory: packages/core
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Core - Run build
         run: npm run build
-        working-directory: packages/core
+        working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Core - Publish
         run: |
@@ -68,7 +70,7 @@ jobs:
           else
             npm publish --tag ${{ github.event.inputs.tags }}
           fi
-        working-directory: packages/core
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -77,18 +79,18 @@ jobs:
 
       - name: Core - Push git tag
         run: git push origin @scania/tegel@${{ steps.version.outputs.version }}
+        
+    outputs:
+      version: ${{ steps.version.outputs.version }}
 
 
   on-failure:
     needs: release-core
     runs-on: ubuntu-latest
+    if: always() && needs.release-core.result == 'failure'
 
     steps:
       - name: Remove branch and git tag on failure
-        env:
-          npm_version: ${{ needs.release-core.outputs.version }}
         run: |
-          if [ "${{ job.status }}" == "failure" ]; then
-            tagname="@scania/tegel@$npm_version"
-            git push --delete origin $tagname
-          fi
+          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
+          git push --delete origin $tagname
