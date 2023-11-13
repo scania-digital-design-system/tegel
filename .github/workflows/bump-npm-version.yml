@@ -13,7 +13,7 @@ on:
           - patch
 
 jobs:
-  release-angular:
+  create-release-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Fail if branch is not develop
@@ -31,30 +31,41 @@ jobs:
       - name: Core - Bump version
         run: npm version ${{ github.event.inputs.version }}
         working-directory: packages/core
+        id: core-version
 
       - name: Angular - Bump version
         run: npm version ${{ github.event.inputs.version }}
         working-directory: packages/angular
+        id: angular-version
 
       - name: React - Bump version
         run: npm version ${{ github.event.inputs.version }}
         working-directory: packages/react
+        id: react-version
+
+      - name: Check versions
+        run: |
+          if [ "${{ steps.core-version.outputs.version }}" != "${{ steps.angular-version.outputs.version }}" ] || [ "${{ steps.core-version.outputs.version }}" != "${{ steps.react-version.outputs.version }}" ]; then
+            echo "Versions of core, angular, and react are not the same"
+            exit 1
+          fi
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v3
         with:
-          title: release/@scania/tegel@${{ github.event.inputs.version }}
-          commit-message: Release of @scania/tegel@${{ github.event.inputs.version }}
-          branch: release/tegel@${{ github.event.inputs.version }}
-          base: main
+          title: release/@scania/tegel@${{ steps.core-version.outputs.version }}
+          commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.version }}
+          branch: release/tegel@${{ steps.core-version.outputs.version }}
 
   on-failure:
+    needs: create-release-pr
     runs-on: ubuntu-latest
+    if: always() && needs.create-release-pr.result == 'failure'
     steps:
       - name: Remove branch on failure
         env:
           npm_version: ${{ github.event.inputs.version }}
         run: |
           if [ "${{ job.status }}" == "failure" ]; then
-            git push origin --delete @scania/tegel@${{ github.event.inputs.version }}
+            git push origin --delete @scania/tegel@${{ steps.core-version.outputs.version }}
           fi
