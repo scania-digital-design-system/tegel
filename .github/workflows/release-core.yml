@@ -52,7 +52,7 @@ jobs:
 
       - name: Core - Read Package.json Version
         id: version
-        run: echo "::set-output name=version::$(jq -r .version package.json)"
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
         working-directory: ${{ env.WORKING_DIRECTORY }}
 
       - name: Core - npm install
@@ -75,13 +75,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ steps.version.outputs.version }}
-
+        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        
       - name: Core - Push git tag
-        run: git push origin @scania/tegel@${{ steps.version.outputs.version }}
+        run: git push origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
         
     outputs:
-      version: ${{ steps.version.outputs.version }}
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
 
   on-failure:
