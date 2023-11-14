@@ -1,4 +1,4 @@
-name: Release @scania/tegel-angular
+name: Manual Release @scania/tegel-angular
 on:
   workflow_dispatch:
     inputs:
@@ -27,6 +27,8 @@ on:
 jobs:
   release-angular:
     runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular
     steps:
 
       - name: Fail if branch is not main
@@ -50,15 +52,11 @@ jobs:
 
       - name: Angular - Read package.json Version
         id: version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-        working-directory: packages/angular
-
-      - name: Angular - Remove package-lock
-        run: rm -rf package-lock.json
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
         working-directory: packages/angular
 
       - name: Angular - Install latest tegel package
-        run: npm install @scania/tegel@${{ steps.version.outputs.version }}
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
         working-directory: packages/angular
 
       - name: Core - Install Tegel
@@ -77,16 +75,21 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   on-failure:
     needs: release-angular
     runs-on: ubuntu-latest
+    if: always() && needs.release-angular.result == 'failure'
 
     steps:
-      - name: Remove branch and git tag on failure
-        env:
-          npm_version: ${{ needs.release-angular.outputs.version }}
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Remove git tag on failure
         run: |
-          if [ "${{ job.status }}" == "failure" ]; then
-            git push origin --delete @scania/tegel@${{ needs.release-angular.outputs.version }}
+          tagname="@scania/tegel@${{ needs.release-angular.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push origin --delete $tagname
           fi

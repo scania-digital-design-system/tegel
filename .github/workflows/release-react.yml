@@ -1,4 +1,4 @@
-name: Release @scania/tegel-react
+name: Manual Release @scania/tegel-react
 on:
   workflow_dispatch:
     inputs:
@@ -50,11 +50,7 @@ jobs:
 
       - name: React - Read package.json Version
         id: version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-        working-directory: packages/react
-
-      - name: React - Remove package-lock
-        run: rm -rf package-lock.json
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
         working-directory: packages/react
 
       - name: React - Install with latest tegel package
@@ -78,16 +74,20 @@ jobs:
         working-directory: packages/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
           
   on-failure:
     needs: release-react
     runs-on: ubuntu-latest
-
+    if: always() && needs.release-react.result == 'failure'
     steps:
-      - name: Remove branch and git tag on failure
-        env:
-          npm_version: ${{ needs.release-react.outputs.version }}
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Remove git tag on failure
         run: |
-          if [ "${{ job.status }}" == "failure" ]; then
-            git push origin --delete @scania/tegel@${{ needs.release-react.outputs.version }}
+          tagname="@scania/tegel@${{ needs.release-react.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --delete origin $tagname
           fi

@@ -1,4 +1,4 @@
-name: Bump NPM version (core/angular/react)
+name: Manual Create Release PR
 on:
   workflow_dispatch:
     inputs:
