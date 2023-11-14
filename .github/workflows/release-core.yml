@@ -31,11 +31,11 @@ jobs:
       WORKING_DIRECTORY: packages/core
     steps:
 
-      - name: Fail if branch is not main
-        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
-        run: |
-          echo "This workflow should not be triggered on a branch other than main"
-          exit 1
+      # - name: Fail if branch is not main
+      #   if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+      #   run: |
+      #     echo "This workflow should not be triggered on a branch other than main"
+      #     exit 1
 
       - name: Check out code
         uses: actions/checkout@v2
@@ -88,9 +88,13 @@ jobs:
     needs: release-core
     runs-on: ubuntu-latest
     if: always() && needs.release-core.result == 'failure'
-
     steps:
-      - name: Remove branch and git tag on failure
+      - name: Check out code
+        uses: actions/checkout@v2
+  
+      - name: Remove git tag on failure
         run: |
           tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
-          git push --delete origin $tagname
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --delete origin $tagname
+          fi
