@@ -15,11 +15,11 @@ jobs:
   create-release-pr:
     runs-on: ubuntu-latest
     steps:
-      # - name: Fail if branch is not develop
-      #   if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/develop'
-      #   run: |
-      #     echo "This workflow should not be triggered on a branch other than develop"
-      #     exit 1
+      - name: Fail if branch is not develop
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/develop'
+        run: |
+          echo "This workflow should not be triggered on a branch other than develop"
+          exit 1
 
       - name: Check out code
         uses: actions/checkout@v2
