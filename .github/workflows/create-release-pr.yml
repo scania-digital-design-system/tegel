@@ -23,6 +23,8 @@ jobs:
 
       - name: Check out code
         uses: actions/checkout@v2
+        with:
+          ref: develop
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -63,6 +65,7 @@ jobs:
           title: release/@scania/tegel@${{ steps.core-version.outputs.version }}
           commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.version }}
           branch: release/tegel@${{ steps.core-version.outputs.version }}
+          base: main
 
   on-failure:
     needs: create-release-pr
