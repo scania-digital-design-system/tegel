@@ -32,23 +32,22 @@ jobs:
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: |
-          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
-          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Angular - Bump version
         id: angular-version
         working-directory: packages/angular
-        run: |
-          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
-          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: |
-          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
-          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: Core - Read package.json Version
+        id: version
+        working-directory: packages/core
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Save version as artifact
         uses: actions/upload-artifact@v2
@@ -56,19 +55,12 @@ jobs:
           name: version
           path: packages/core/package.json # assuming the version is saved here
 
-      - name: Check versions
-        run: |
-          if [ "${{ steps.core-version.outputs.VERSION }}" != "${{ steps.angular-version.outputs.VERSION }}" ] || [ "${{ steps.core-version.outputs.VERSION }}" != "${{ steps.react-version.outputs.VERSION }}" ]; then
-            echo "Versions of core, angular, and react are not the same"
-            exit 1
-          fi
-
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
         with:
-          title: release/@scania/tegel@${{ steps.core-version.outputs.VERSION }}
-          commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.VERSION }}
-          branch: release/tegel@${{ steps.core-version.outputs.VERSION }}
+          title: release/@scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          commit-message: Release of @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          branch: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
   on-failure:
     needs: create-release-pr
