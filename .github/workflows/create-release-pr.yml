@@ -28,25 +28,25 @@ jobs:
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Core - Bump version
-        run: npm version ${{ github.event.inputs.version }}
-        working-directory: packages/core
         id: core-version
+        working-directory: packages/core
+        run: npm version ${{ github.event.inputs.version }}
 
       - name: Angular - Bump version
-        run: npm version ${{ github.event.inputs.version }}
-        working-directory: packages/angular
         id: angular-version
+        working-directory: packages/angular
+        run: npm version ${{ github.event.inputs.version }}
 
       - name: React - Bump version
-        run: npm version ${{ github.event.inputs.version }}
-        working-directory: packages/react
         id: react-version
+        working-directory: packages/react
+        run: npm version ${{ github.event.inputs.version }}
 
       - name: Save version as artifact
         uses: actions/upload-artifact@v2
         with:
           name: version
-          path: packages/core/package.json  # assuming the version is saved here
+          path: packages/core/package.json # assuming the version is saved here
 
       - name: Check versions
         run: |

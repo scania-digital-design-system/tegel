@@ -28,7 +28,6 @@ jobs:
   release-react:
     runs-on: ubuntu-latest
     steps:
-
       - name: Fail if branch is not main
         if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
         run: |
@@ -39,7 +38,6 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up node
-        # Setup .npmrc file to publish to npm
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion }}
@@ -50,16 +48,16 @@ jobs:
 
       - name: React - Read package.json Version
         id: version
-        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
         working-directory: packages/react
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: React - Install with latest tegel package
-        run: npm install @scania/tegel@${{ steps.version.outputs.version }}
         working-directory: packages/react
+        run: npm install @scania/tegel@${{ steps.version.outputs.version }}
 
       - name: Core - Install Tegel
-        run: npm install
         working-directory: packages/core
+        run: npm install
 
       - name: React - Build
         run: npm run build-react
@@ -76,7 +74,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
-          
+
   on-failure:
     needs: release-react
     runs-on: ubuntu-latest
