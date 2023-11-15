@@ -30,14 +30,10 @@ jobs:
     env:
       WORKING_DIRECTORY: packages/angular
     steps:
-      - name: Fail if branch is not main
-        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
-        run: |
-          echo "This workflow should not be triggered on a branch other than main"
-          exit 1
-
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up node
         # Setup .npmrc file to publish to npm
@@ -84,7 +80,9 @@ jobs:
 
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Remove git tag on failure
         run: |
