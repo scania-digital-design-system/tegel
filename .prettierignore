@@ -12,9 +12,6 @@
 **/.build
 **/.www
 
-# Root level
-.github
-
 # Component package
 core/storybook-static
 
