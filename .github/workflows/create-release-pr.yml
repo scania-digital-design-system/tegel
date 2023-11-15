@@ -23,6 +23,8 @@ jobs:
 
       - name: Check out code
         uses: actions/checkout@v2
+        with:
+          ref: develop
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -30,17 +32,19 @@ jobs:
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: npm version ${{ github.event.inputs.version }}
+        run: |
+          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
+          echo "CORE_VERSION=$(cat version.txt)" >> $GITHUB_ENV
 
       - name: Angular - Bump version
         id: angular-version
         working-directory: packages/angular
-        run: npm version ${{ github.event.inputs.version }}
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: npm version ${{ github.event.inputs.version }}
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Save version as artifact
         uses: actions/upload-artifact@v2
@@ -61,6 +65,7 @@ jobs:
           title: release/@scania/tegel@${{ steps.core-version.outputs.version }}
           commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.version }}
           branch: release/tegel@${{ steps.core-version.outputs.version }}
+          base: main
 
   on-failure:
     needs: create-release-pr
