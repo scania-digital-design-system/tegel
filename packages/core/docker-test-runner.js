@@ -34,11 +34,19 @@ const args = [
   'npx playwright test && exit',
 ];
 
-// eslint-disable-next-line no-unused-vars
-execFile(command, args, (error, stdout) => {
-  if (error) {
-    console.error(stdout);
+// Check if Docker is running
+execFile('docker', ['info'], (infoError) => {
+  if (infoError) {
+    console.error('It looks like Docker is not running. Please start Docker and try again.');
     process.exit(1);
+  } else {
+    // Docker is running, proceed with the original command
+    execFile(command, args, (runError, stdout) => {
+      if (runError) {
+        console.error(stdout);
+        process.exit(1);
+      }
+      console.log(stdout);
+    });
   }
-  console.log(stdout);
 });

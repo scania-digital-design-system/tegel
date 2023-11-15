@@ -1,4 +1,4 @@
-name: Release @scania/tegel
+name: Manual Release @scania/tegel
 on:
   workflow_dispatch:
     inputs:
@@ -27,19 +27,15 @@ on:
 jobs:
   release-core:
     runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/core
     steps:
-
-      - name: Fail if branch is not main
-        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
-        run: |
-          echo "This workflow should not be triggered on a branch other than main"
-          exit 1
-
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Set up node
-        # Setup .npmrc file to publish to npm
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion }}
@@ -50,45 +46,50 @@ jobs:
 
       - name: Core - Read Package.json Version
         id: version
-        run: echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-        working-directory: packages/core
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Core - npm install
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm install
-        working-directory: packages/core
 
       - name: Core - Run build
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
-        working-directory: packages/core
 
       - name: Core - Publish
+        working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
           if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
             npm publish --tag ${{ github.event.inputs.tags }} --dry-run
           else
             npm publish --tag ${{ github.event.inputs.tags }}
           fi
-        working-directory: packages/core
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ steps.version.outputs.version }}
+        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Core - Push git tag
-        run: git push origin @scania/tegel@${{ steps.version.outputs.version }}
+        run: git push origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   on-failure:
     needs: release-core
     runs-on: ubuntu-latest
-
+    if: always() && needs.release-core.result == 'failure'
     steps:
-      - name: Remove branch and git tag on failure
-        env:
-          npm_version: ${{ needs.release-core.outputs.version }}
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Remove git tag on failure
         run: |
-          if [ "${{ job.status }}" == "failure" ]; then
-            tagname="@scania/tegel@$npm_version"
+          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
             git push --delete origin $tagname
           fi
