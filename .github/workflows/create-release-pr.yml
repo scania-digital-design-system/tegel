@@ -15,16 +15,16 @@ jobs:
   create-release-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Fail if branch is not develop
-        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/develop'
-        run: |
-          echo "This workflow should not be triggered on a branch other than develop"
-          exit 1
-
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: main
+
+      # Reference for this pattern: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
+      - name: Reset promotion branch
+        run: |
+          git fetch origin develop:develop
+          git reset --hard develop
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -34,17 +34,21 @@ jobs:
         working-directory: packages/core
         run: |
           npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
-          echo "CORE_VERSION=$(cat version.txt)" >> $GITHUB_ENV
+          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
 
       - name: Angular - Bump version
         id: angular-version
         working-directory: packages/angular
-        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+        run: |
+          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
+          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+        run: |
+          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
+          echo "VERSION=$(cat version.txt)" >> $GITHUB_ENV
 
       - name: Save version as artifact
         uses: actions/upload-artifact@v2
@@ -54,18 +58,17 @@ jobs:
 
       - name: Check versions
         run: |
-          if [ "${{ steps.core-version.outputs.version }}" != "${{ steps.angular-version.outputs.version }}" ] || [ "${{ steps.core-version.outputs.version }}" != "${{ steps.react-version.outputs.version }}" ]; then
+          if [ "${{ steps.core-version.outputs.VERSION }}" != "${{ steps.angular-version.outputs.VERSION }}" ] || [ "${{ steps.core-version.outputs.VERSION }}" != "${{ steps.react-version.outputs.VERSION }}" ]; then
             echo "Versions of core, angular, and react are not the same"
             exit 1
           fi
 
       - name: Create PR
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v5
         with:
-          title: release/@scania/tegel@${{ steps.core-version.outputs.version }}
-          commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.version }}
-          branch: release/tegel@${{ steps.core-version.outputs.version }}
-          base: main
+          title: release/@scania/tegel@${{ steps.core-version.outputs.VERSION }}
+          commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.VERSION }}
+          branch: release/tegel@${{ steps.core-version.outputs.VERSION }}
 
   on-failure:
     needs: create-release-pr
