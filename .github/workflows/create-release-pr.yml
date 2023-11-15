@@ -30,17 +30,19 @@ jobs:
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: npm version ${{ github.event.inputs.version }}
+        run: |
+          npm version ${{ github.event.inputs.version }} --no-git-tag-version > version.txt
+          echo "CORE_VERSION=$(cat version.txt)" >> $GITHUB_ENV
 
       - name: Angular - Bump version
         id: angular-version
         working-directory: packages/angular
-        run: npm version ${{ github.event.inputs.version }}
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: npm version ${{ github.event.inputs.version }}
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
       - name: Save version as artifact
         uses: actions/upload-artifact@v2
