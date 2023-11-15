@@ -1,0 +1,81 @@
+name: Manual Create Release PR
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - minor
+          - patch
+
+jobs:
+  create-release-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if branch is not develop
+        if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/develop'
+        run: |
+          echo "This workflow should not be triggered on a branch other than develop"
+          exit 1
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - Bump version
+        id: core-version
+        working-directory: packages/core
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: Angular - Bump version
+        id: angular-version
+        working-directory: packages/angular
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: React - Bump version
+        id: react-version
+        working-directory: packages/react
+        run: npm version ${{ github.event.inputs.version }}
+
+      - name: Save version as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: version
+          path: packages/core/package.json # assuming the version is saved here
+
+      - name: Check versions
+        run: |
+          if [ "${{ steps.core-version.outputs.version }}" != "${{ steps.angular-version.outputs.version }}" ] || [ "${{ steps.core-version.outputs.version }}" != "${{ steps.react-version.outputs.version }}" ]; then
+            echo "Versions of core, angular, and react are not the same"
+            exit 1
+          fi
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: release/@scania/tegel@${{ steps.core-version.outputs.version }}
+          commit-message: Release of @scania/tegel@${{ steps.core-version.outputs.version }}
+          branch: release/tegel@${{ steps.core-version.outputs.version }}
+
+  on-failure:
+    needs: create-release-pr
+    runs-on: ubuntu-latest
+    if: always() && needs.create-release-pr.result == 'failure'
+    steps:
+      - name: Download version
+        uses: actions/download-artifact@v2
+        with:
+          name: version
+          path: packages/core
+
+      - name: Remove branch on failure
+        run: |
+          version=$(jq -r .version packages/core/package.json)  # extract version from package.json
+          if [ "${{ job.status }}" == "failure" ] && [ -n "$version" ]; then
+            git push origin --delete @scania/tegel@$version
+          fi
