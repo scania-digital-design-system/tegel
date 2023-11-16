@@ -1,15 +1,17 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
+const componentName = 'danger';
+
 test.describe('tds-button', () => {
   test('renders danger button correctly', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     await expect(button).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('component receives click event', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const myEventSpy = await page.spyOnEvent('click');
     await button.click();
@@ -17,7 +19,7 @@ test.describe('tds-button', () => {
   });
 
   test('component should have correct background color on hovering', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     await innerButton.hover();
@@ -28,7 +30,7 @@ test.describe('tds-button', () => {
   });
 
   test('component should have correct background color on pressed', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     await innerButton.hover();
@@ -40,7 +42,7 @@ test.describe('tds-button', () => {
   });
 
   test('component should have correct border when active', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     await innerButton.focus();
@@ -59,7 +61,7 @@ test.describe('tds-button', () => {
   });
 
   test('Type = Button', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     const type = await innerButton.getAttribute('type');
@@ -69,7 +71,7 @@ test.describe('tds-button', () => {
   test('check if the inner button contain classes primary lg and sc-tds-button', async ({
     page,
   }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     const classAttribute = await innerButton.getAttribute('class');
@@ -80,7 +82,7 @@ test.describe('tds-button', () => {
   });
 
   test('Text is displayed, style is aligned to default(primary) state', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     await expect(button).toHaveCSS('color', 'rgb(13, 15, 19)');
     const textAttribute = await button.textContent();
@@ -88,7 +90,7 @@ test.describe('tds-button', () => {
   });
 
   test('Check so that height is correct to sm measurements', async ({ page }) => {
-    await page.goto('src/components/button/test/danger/index.html');
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     const buttonHeight = await innerButton.evaluate((button2) => getComputedStyle(button2).height);
