@@ -1,6 +1,5 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/box-sizing';
-@import '../../../mixins/z-index';
 
 :host {
   @include tds-box-sizing;
@@ -20,12 +19,12 @@
   }
 
   .scroll-right-button {
-    z-index: calc(tds-z-index(tab) + 1);
+    z-index: 1;
     right: 0;
   }
 
   .scroll-left-button {
-    z-index: calc(tds-z-index(tab) + 1);
+    z-index: 1;
     left: 0;
   }
 
