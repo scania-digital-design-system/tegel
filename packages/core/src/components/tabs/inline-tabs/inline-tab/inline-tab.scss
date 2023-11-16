@@ -1,11 +1,9 @@
 @import '../../../../mixins/focus-state';
-@import '../../../../mixins/z-index';
 @import '../../../../mixins/box-sizing';
 
 :host {
   @include tds-box-sizing;
 
-  z-index: tds-z-index(tab);
   display: block;
   position: relative;
 
