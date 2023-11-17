@@ -78,9 +78,20 @@ export class TdsChip {
   }>;
 
   private handleClick = () => {
-    this.tdsClick.emit({
-      chipId: this.chipId,
-    });
+    if (this.type === 'radio') {
+      // For "radio" type, toggle checked state directly
+      this.checked = !this.checked;
+      this.tdsChange.emit({
+        chipId: this.chipId,
+        checked: this.checked,
+        value: this.value,
+      });
+    } else if (this.type === 'button') {
+      // For "button" type, emit the click event
+      this.tdsClick.emit({
+        chipId: this.chipId,
+      });
+    }
   };
 
   private renderInputAttributes() {
@@ -116,7 +127,13 @@ export class TdsChip {
             }}
           >
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
-            <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
+            <label
+              onClick={(event) => {
+                event.stopPropagation();
+                this.handleClick();
+              }}
+              htmlFor={this.chipId}
+            >
               {hasPrefixSlot && <slot name="prefix" />}
               {hasLabelSlot && <slot name="label" />}
               {hasSuffixSlot && <slot name="suffix" />}
