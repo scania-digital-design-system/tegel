@@ -95,7 +95,7 @@
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": "eslint",
     "**/*.scss": "stylelint --fix",
-    "**/*.{js,jsx,ts,tsx,scss,md}": "prettier --write"
+    "**/*.{js,jsx,ts,tsx,scss,md,yml,yaml}": "prettier --write"
   },
   "engines": {
     "npm": ">=9.0.0",
