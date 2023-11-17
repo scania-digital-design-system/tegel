@@ -22,11 +22,11 @@ test.describe('tds-button', () => {
   test('Button color is aligned to disabled state', async ({ page }) => {
     await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
-    await expect(button).toHaveCSS(
-      'background',
-      'rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box',
+    const innerButton = button.locator('button');
+    const buttonBackgroundColor = await innerButton.evaluate(
+      (button2) => getComputedStyle(button2).backgroundColor,
     );
-    await expect(button).toHaveCSS('border-color', 'rgb(13, 15, 19)');
+    expect(buttonBackgroundColor).toBe('rgb(249, 250, 251)');
   });
 
   test('Text is displayed, style is aligned to disabled state', async ({ page }) => {
@@ -35,5 +35,15 @@ test.describe('tds-button', () => {
     const textAttribute = await button.textContent();
     await expect(button).toHaveCSS('color', 'rgb(13, 15, 19)');
     expect(textAttribute).toBe('Button');
+  });
+
+  test('the cursor should be not-allowed', async ({ page }) => {
+    await page.goto(`src/components/button/test/${componentName}/index.html`);
+    const button = page.locator('tds-button');
+    const innerButton = button.locator('button');
+    const buttonCursorState = await innerButton.evaluate(
+      (button2) => getComputedStyle(button2).cursor,
+    );
+    expect(buttonCursorState).toBe('not-allowed');
   });
 });
