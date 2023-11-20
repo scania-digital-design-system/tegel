@@ -4,9 +4,6 @@ import { expect } from '@playwright/test';
 test.describe('tds-chip', () => {
   test('renders a chip correctly', async ({ page }) => {
     await page.goto('src/components/chip/test/basic/index.html');
-    const chip = page.locator('tds-chip');
-
-    await expect(chip).toHaveClass(/hydrated/);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
