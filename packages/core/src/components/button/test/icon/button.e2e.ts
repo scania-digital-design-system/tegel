@@ -88,11 +88,15 @@ test.describe('tds-button', () => {
     expect(icon).not.toBeNull();
   });
 
-  test('Check so that height is correct to lg/default measurements', async ({ page }) => {
+  test('Check so that height and width is correct to lg/default measurements with a single button', async ({
+    page,
+  }) => {
     await page.goto(`src/components/button/test/${componentName}/index.html`);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     const buttonHeight = await innerButton.evaluate((button2) => getComputedStyle(button2).height);
     expect(buttonHeight).toBe('56px');
+    const buttonWidth = await innerButton.evaluate((button2) => getComputedStyle(button2).width);
+    expect(buttonWidth).toBe('56px');
   });
 });
