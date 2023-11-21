@@ -55,12 +55,23 @@ export class TdsChip {
   }>;
 
   private handleChange = () => {
-    this.checked = !this.checked;
-    this.tdsChange.emit({
-      chipId: this.chipId,
-      checked: this.checked,
-      value: this.value,
-    });
+    if (this.type === 'radio' && !this.checked) {
+      // For "radio" type, only toggle checked state if it's currently unchecked
+      this.checked = true;
+      this.tdsChange.emit({
+        chipId: this.chipId,
+        checked: this.checked,
+        value: this.value,
+      });
+    } else if (this.type === 'checkbox') {
+      // For "checkbox" type, toggle checked state
+      this.checked = !this.checked;
+      this.tdsChange.emit({
+        chipId: this.chipId,
+        checked: this.checked,
+        value: this.value,
+      });
+    }
   };
 
   /** Sends unique Chip identifier when Chip is clicked.
@@ -78,7 +89,7 @@ export class TdsChip {
   }>;
 
   private handleClick = () => {
-    if (this.type === 'radio') {
+    if (this.type === 'radio' && !this.checked) {
       // For "radio" type, toggle checked state directly
       this.checked = !this.checked;
       this.tdsChange.emit({
