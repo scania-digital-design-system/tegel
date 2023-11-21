@@ -1,17 +1,17 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentName = 'disabled';
+const componentTestPath = 'src/components/button/test/disabled/index.html';
 
 test.describe('tds-button', () => {
   test('renders disabled button correctly', async ({ page }) => {
-    await page.goto(`src/components/button/test/${componentName}/index.html`);
+    await page.goto(componentTestPath);
     const button = page.locator('tds-button');
     await expect(button).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('that the component is disabled', async ({ page }) => {
-    await page.goto(`src/components/button/test/${componentName}/index.html`);
+    await page.goto(componentTestPath);
     const button = page.locator('tds-button');
     await expect(button).toHaveAttribute('disabled', '');
     const myEventSpy = await page.spyOnEvent('click');
@@ -20,7 +20,7 @@ test.describe('tds-button', () => {
   });
 
   test('Button color is aligned to disabled state', async ({ page }) => {
-    await page.goto(`src/components/button/test/${componentName}/index.html`);
+    await page.goto(componentTestPath);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     const buttonBackgroundColor = await innerButton.evaluate(
@@ -30,7 +30,7 @@ test.describe('tds-button', () => {
   });
 
   test('Text is displayed, style is aligned to disabled state', async ({ page }) => {
-    await page.goto(`src/components/button/test/${componentName}/index.html`);
+    await page.goto(componentTestPath);
     const button = page.locator('tds-button');
     const textAttribute = await button.textContent();
     await expect(button).toHaveCSS('color', 'rgb(13, 15, 19)');
@@ -38,7 +38,7 @@ test.describe('tds-button', () => {
   });
 
   test('the cursor should be not-allowed', async ({ page }) => {
-    await page.goto(`src/components/button/test/${componentName}/index.html`);
+    await page.goto(componentTestPath);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
     const buttonCursorState = await innerButton.evaluate(
