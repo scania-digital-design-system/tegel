@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdown - Filter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-dropdown
+      name="dropdown"
+      label="Label text"
+      label-position="outside"
+      placeholder="Placeholder"
+      helper="Helper text"
+      size="lg"
+      filter
+      open-direction="auto"
+    >
+      <tds-dropdown-option value="option-1">Option 1</tds-dropdown-option>
+      <tds-dropdown-option disabled value="option-2">Option 2</tds-dropdown-option>
+      <tds-dropdown-option value="option-3">Option 3</tds-dropdown-option>
+      <tds-dropdown-option value="option-4">Option 4</tds-dropdown-option>
+    </tds-dropdown>
+  </body>
+</html>
