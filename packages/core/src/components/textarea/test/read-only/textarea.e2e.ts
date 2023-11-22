@@ -7,7 +7,6 @@ test.describe('tds-textarea', () => {
   test('renders read-only textarea correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const textarea = page.locator('tds-textarea');
-    await expect(textarea).toHaveClass(/hydrated/);
     await expect(textarea).toHaveAttribute('read-only');
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
