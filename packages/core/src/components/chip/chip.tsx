@@ -55,23 +55,21 @@ export class TdsChip {
   }>;
 
   private handleChange = () => {
-    if (this.type === 'radio' && !this.checked) {
-      // For "radio" type, only toggle checked state if it's currently unchecked
-      this.checked = true;
-      this.tdsChange.emit({
-        chipId: this.chipId,
-        checked: this.checked,
-        value: this.value,
-      });
-    } else if (this.type === 'checkbox') {
-      // For "checkbox" type, toggle checked state
+    if (this.type === 'checkbox') {
+      // Toggle the prop on click
       this.checked = !this.checked;
-      this.tdsChange.emit({
-        chipId: this.chipId,
-        checked: this.checked,
-        value: this.value,
-      });
+    } else if (this.type === 'radio') {
+      // Always set it to true to enforce visual update for selected state
+      this.checked = true;
+    } else {
+      console.warn('Unsupported type in Chip component!');
     }
+
+    this.tdsChange.emit({
+      chipId: this.chipId,
+      checked: this.checked,
+      value: this.value,
+    });
   };
 
   /** Sends unique Chip identifier when Chip is clicked.
@@ -89,20 +87,9 @@ export class TdsChip {
   }>;
 
   private handleClick = () => {
-    if (this.type === 'radio' && !this.checked) {
-      // For "radio" type, toggle checked state directly
-      this.checked = !this.checked;
-      this.tdsChange.emit({
-        chipId: this.chipId,
-        checked: this.checked,
-        value: this.value,
-      });
-    } else if (this.type === 'button') {
-      // For "button" type, emit the click event
-      this.tdsClick.emit({
-        chipId: this.chipId,
-      });
-    }
+    this.tdsClick.emit({
+      chipId: this.chipId,
+    });
   };
 
   private renderInputAttributes() {
