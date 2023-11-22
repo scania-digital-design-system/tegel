@@ -55,7 +55,16 @@ export class TdsChip {
   }>;
 
   private handleChange = () => {
-    this.checked = !this.checked;
+    if (this.type === 'checkbox') {
+      // Toggle the prop on click
+      this.checked = !this.checked;
+    } else if (this.type === 'radio') {
+      // Always set it to true to enforce visual update for selected state
+      this.checked = true;
+    } else {
+      console.warn('Unsupported type in Chip component!');
+    }
+
     this.tdsChange.emit({
       chipId: this.chipId,
       checked: this.checked,
