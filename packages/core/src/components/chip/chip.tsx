@@ -138,13 +138,7 @@ export class TdsChip {
             }}
           >
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
-            <label
-              onClick={(event) => {
-                event.stopPropagation();
-                this.handleClick();
-              }}
-              htmlFor={this.chipId}
-            >
+            <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
               {hasPrefixSlot && <slot name="prefix" />}
               {hasLabelSlot && <slot name="label" />}
               {hasSuffixSlot && <slot name="suffix" />}
