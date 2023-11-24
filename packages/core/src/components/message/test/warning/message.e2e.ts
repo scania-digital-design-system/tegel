@@ -23,14 +23,16 @@ test.describe('tds-message', () => {
 
   test('has header text', async ({ page }) => {
     await page.goto(componentTestPath);
-    const messageComponent = page.locator('tds-message');
-    await expect(messageComponent).not.toBeEmpty();
+    const messageComponentHeader = page.locator('tds-message .header');
+    await expect(messageComponentHeader).not.toBeEmpty();
   });
 
   test('has subheader text', async ({ page }) => {
     await page.goto(componentTestPath);
     const messageComponent = page.locator('tds-message');
-    await expect(messageComponent).not.toBeEmpty();
+    await expect(messageComponent).toHaveText(
+      /Longer Message text can be placed here. Longer Message text can be placed here./,
+    );
   });
 
   test('has error icon', async ({ page }) => {
