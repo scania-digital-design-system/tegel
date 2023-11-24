@@ -6,6 +6,8 @@ const componentTestPath = 'src/components/textarea/test/default/index.html';
 test.describe('tds-textarea', () => {
   test('renders default textarea correctly', async ({ page }) => {
     await page.goto(componentTestPath);
+    const tdsTextarea = page.locator('tds-textarea');
+    expect(tdsTextarea).toBeTruthy();
     /* Expect no difference in screenshot  */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });

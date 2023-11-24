@@ -6,9 +6,11 @@ const componentTestPath = 'src/components/textarea/test/read-only/index.html';
 test.describe('tds-textarea', () => {
   test('renders read-only textarea correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const textarea = page.locator('tds-textarea');
+    const tdsTextarea = page.locator('tds-textarea');
+    expect(tdsTextarea).toBeTruthy();
+
     /* Expect the tds-textarea to have the read-only attribute */
-    await expect(textarea).toHaveAttribute('read-only');
+    await expect(tdsTextarea).toHaveAttribute('read-only');
     /* Expect no diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
