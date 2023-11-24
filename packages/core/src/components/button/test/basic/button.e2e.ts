@@ -60,7 +60,7 @@ test.describe('tds-button', () => {
     expect(buttonOutlineColor).toBe('rgb(22, 65, 127)');
   });
 
-  test('Type = Button', async ({ page }) => {
+  test('have Type = Button', async ({ page }) => {
     await page.goto(componentTestPath);
     const button = page.locator('tds-button');
     const innerButton = button.locator('button');
