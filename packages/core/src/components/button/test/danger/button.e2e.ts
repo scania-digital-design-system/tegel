@@ -68,7 +68,7 @@ test.describe('tds-button', () => {
     expect(type).toBe('button');
   });
 
-  test('check if the inner button contain classes primary lg and sc-tds-button', async ({
+  test('check if the inner button contain classes danger sm and sc-tds-button', async ({
     page,
   }) => {
     await page.goto(componentTestPath);
