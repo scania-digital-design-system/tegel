@@ -19,9 +19,7 @@ test.describe('tds-textarea', () => {
     await textarea.click();
     /* Expect to have received an event from clicking on the textarea */
     expect(myEventSpy).toHaveReceivedEvent();
-    const textareaCursorState = await textarea.evaluate(
-      (button2) => getComputedStyle(button2).cursor,
-    );
+    const textareaCursorState = await textarea.evaluate((style) => getComputedStyle(style).cursor);
     /* Expect the textbox to have the cursor text style */
     expect(textareaCursorState).toBe('text');
   });
