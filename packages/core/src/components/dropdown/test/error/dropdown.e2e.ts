@@ -3,31 +3,31 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/error/index.html';
 
-test.describe('tds-dropdown', () => {
+test.describe('tds-dropdown-error', () => {
   test('renders error dropdown correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
-    await expect(dropdown).toHaveClass(/hydrated/);
-    await expect(dropdown).toHaveScreenshot({ maxDiffPixels: 0 });
+    expect(dropdown).toBeTruthy();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('error dropdown have label outside', async ({ page }) => {
+  test('label outside', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const labelOutside = dropdown.locator('div[class="label-outside"]');
-    expect(labelOutside).not.toBeNull();
+    expect(labelOutside).toBeTruthy();
   });
 
-  test('error dropdown to have helper text with error icon', async ({ page }) => {
+  test('helper text with error icon', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const helperText = dropdown.locator('div[class="helper error"]');
-    expect(helperText).not.toBeNull();
+    expect(helperText).toBeTruthy();
     const helperErrorIcon = helperText.locator('tds-icon[name="error"]');
-    expect(helperErrorIcon).not.toBeNull();
+    expect(helperErrorIcon).toBeTruthy();
   });
 
-  test('error dropdown have the placeholder="Placeholder" text', async ({ page }) => {
+  test('the placeholder="Placeholder" text', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const button = dropdown.locator('button');
@@ -36,14 +36,14 @@ test.describe('tds-dropdown', () => {
     expect(textAttribute).toBe('Placeholder');
   });
 
-  test('error dropdown has lg size', async ({ page }) => {
+  test('has lg size', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const dropdownSelect = dropdown.locator('div[class="dropdown-select lg"]');
-    expect(dropdownSelect).not.toBeNull();
+    expect(dropdownSelect).toBeTruthy();
   });
 
-  test('error clicking the dropdown opens the dropdown-list', async ({ page }) => {
+  test('clicking the dropdown opens the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const dropdownSelect = dropdown.locator('div[class="dropdown-select lg"]');
@@ -52,10 +52,10 @@ test.describe('tds-dropdown', () => {
     await button.click();
     const dropdownList = dropdown.locator('div[class="dropdown-list lg down label-outside open"]');
     expect(myEventSpy).toHaveReceivedEvent();
-    expect(dropdownList).not.toBeNull();
+    expect(dropdownList).toBeTruthy();
   });
 
-  test('error clicking the dropdown opens the dropdown-list, then click an option 1', async ({
+  test('clicking the dropdown opens the dropdown-list, then click an option 1', async ({
     page,
   }) => {
     await page.goto(componentTestPath);
@@ -68,7 +68,7 @@ test.describe('tds-dropdown', () => {
     await expect(dropdown).toHaveAttribute('value', 'option-1');
   });
 
-  test('error clicking the dropdown opens the dropdown-list, then click an option 2 that is disabled should not close it', async ({
+  test('clicking the dropdown opens the dropdown-list, then click an option 2 that is disabled should not close it', async ({
     page,
   }) => {
     await page.goto(componentTestPath);

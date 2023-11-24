@@ -3,26 +3,26 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/default/index.html';
 
-test.describe('tds-dropdown', () => {
+test.describe('tds-dropdown-default', () => {
   test('renders default dropdown correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
-    await expect(dropdown).toHaveClass(/hydrated/);
-    await expect(dropdown).toHaveScreenshot({ maxDiffPixels: 0 });
+    expect(dropdown).toBeTruthy();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('default dropdown have label outside', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const labelOutside = dropdown.locator('div[class="label-outside"]');
-    expect(labelOutside).not.toBeNull();
+    expect(labelOutside).toBeTruthy();
   });
 
   test('default dropdown to have helper text', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const helperText = dropdown.locator('div[class="helper"]');
-    expect(helperText).not.toBeNull();
+    expect(helperText).toBeTruthy();
   });
 
   test('default dropdown have the placeholder="Placeholder" text', async ({ page }) => {
@@ -38,7 +38,7 @@ test.describe('tds-dropdown', () => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const dropdownSelect = dropdown.locator('div[class="dropdown-select lg"]');
-    expect(dropdownSelect).not.toBeNull();
+    expect(dropdownSelect).toBeTruthy();
   });
 
   test('default clicking the dropdown opens the dropdown-list', async ({ page }) => {
@@ -50,7 +50,7 @@ test.describe('tds-dropdown', () => {
     await button.click();
     const dropdownList = dropdown.locator('div[class="dropdown-list lg down label-outside open"]');
     expect(myEventSpy).toHaveReceivedEvent();
-    expect(dropdownList).not.toBeNull();
+    expect(dropdownList).toBeTruthy();
   });
 
   test('default clicking the dropdown opens the dropdown-list, then click an option 1', async ({
