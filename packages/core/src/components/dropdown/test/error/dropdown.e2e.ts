@@ -11,11 +11,10 @@ test.describe('tds-dropdown-error', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('label outside', async ({ page }) => {
+  test('should have a label outside with text', async ({ page }) => {
     await page.goto(componentTestPath);
-    const dropdown = page.locator('tds-dropdown');
-    const labelOutside = dropdown.locator('div[class="label-outside"]');
-    expect(labelOutside).toBeTruthy();
+    const labelOutside = page.locator('tds-dropdown > div[class="label-outside"]');
+    await expect(labelOutside).toHaveText(/Label text/);
   });
 
   test('helper text with error icon', async ({ page }) => {

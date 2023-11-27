@@ -11,18 +11,16 @@ test.describe('tds-dropdown-default', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('default dropdown have label outside', async ({ page }) => {
+  test('default dropdown should have a label outside with text', async ({ page }) => {
     await page.goto(componentTestPath);
-    const dropdown = page.locator('tds-dropdown');
-    const labelOutside = dropdown.locator('div[class="label-outside"]');
-    expect(labelOutside).toBeTruthy();
+    const labelOutside = page.locator('tds-dropdown > div[class="label-outside"]');
+    await expect(labelOutside).toHaveText(/Label text/);
   });
 
-  test('default dropdown to have helper text', async ({ page }) => {
+  test('default dropdown to have helper text with correct text', async ({ page }) => {
     await page.goto(componentTestPath);
-    const dropdown = page.locator('tds-dropdown');
-    const helperText = dropdown.locator('div[class="helper"]');
-    expect(helperText).toBeTruthy();
+    const helperText = page.locator('tds-dropdown > div[class="helper"]');
+    await expect(helperText).toHaveText(/Helper text/);
   });
 
   test('default dropdown have the placeholder="Placeholder" text', async ({ page }) => {
