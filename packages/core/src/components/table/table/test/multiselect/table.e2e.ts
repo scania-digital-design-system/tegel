@@ -6,6 +6,8 @@ const componentTestPath = 'src/components/table/table/test/multiselect/index.htm
 test.describe('tds-table-multiselect', () => {
   test('renders multiselect table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
+    const tableComponent = page.locator('tds-table');
+    expect(tableComponent).toBeTruthy();
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 

@@ -6,6 +6,8 @@ const componentTestPath = 'src/components/table/table/test/sorting/index.html';
 test.describe('tds-table-sorting', () => {
   test('renders sorting table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
+    const tableComponent = page.locator('tds-table');
+    expect(tableComponent).toBeTruthy();
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -44,6 +46,7 @@ test.describe('tds-table-sorting', () => {
     const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
     await tableHeaderCellMilage.click();
     expect(myEventSpy).toHaveReceivedEventTimes(4);
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('Columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {

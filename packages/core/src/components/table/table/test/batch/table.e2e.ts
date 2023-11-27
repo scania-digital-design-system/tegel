@@ -6,6 +6,8 @@ const componentTestPath = 'src/components/table/table/test/batch/index.html';
 test.describe('tds-table-batch', () => {
   test('renders batch table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
+    const tableComponent = page.locator('tds-table');
+    expect(tableComponent).toBeTruthy();
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 

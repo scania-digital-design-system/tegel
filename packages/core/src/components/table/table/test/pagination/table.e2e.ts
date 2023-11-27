@@ -6,6 +6,8 @@ const componentTestPath = 'src/components/table/table/test/pagination/index.html
 test.describe('tds-table-pagination', () => {
   test('renders pagination table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
+    const tableComponent = page.locator('tds-table');
+    expect(tableComponent).toBeTruthy();
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -56,29 +58,42 @@ test.describe('tds-table-pagination', () => {
   test('table has footer', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableFooter = page.locator('tds-table-footer');
-    expect(tableFooter).not.toBeNull();
+    expect(tableFooter).toBeTruthy();
   });
 
   test('footer has field for number of page, value = 1', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableFooterWithValue = page.locator('tds-table-footer[pagination-value="1"]');
-    expect(tableFooterWithValue).not.toBeNull();
+    expect(tableFooterWithValue).toBeTruthy();
   });
 
-  /* TODO: Make sure this one works */
+  /* TODO: Make sure this one works, not sure about this test */
   test.skip('footer contains text "of 4 pages"', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableFooterOfPagesText = page
-      .locator('tds-table-footer')
-      .locator('p[class="tds-table__footer-text]');
-    expect(tableFooterOfPagesText).not.toBeNull();
+    const tableFooterOfPagesText = page.locator('.tds-table__footer-text').locator('span');
+    await expect(tableFooterOfPagesText).toHaveText('4');
   });
 
-  test.skip('Footer contains left chevron button, it is disabled', async ({ page }) => {
+  test('Footer contains left chevron button, it is disabled', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableFooterLeftChevronButton = page
-      .locator('tds-table-footer')
-      .locator('button:above(tds-icon[name="chevron_left"])');
-    await expect(tableFooterLeftChevronButton).toBeDisabled();
+    const tableFooterLeftChevronButton = page.locator('tds-table-footer').locator('button').first();
+    await expect(tableFooterLeftChevronButton).toHaveAttribute('disabled');
+  });
+  test('Footer contains right chevron button, it is not disabled', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const tableFooterRightChevronButton = page.locator('tds-table-footer').locator('button').last();
+    await expect(tableFooterRightChevronButton).not.toHaveAttribute('disabled');
+  });
+
+  test('footer contains buttons that are clickable and change value in input', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const footer = page.locator('tds-table-footer');
+    await expect(footer).toHaveAttribute('pagination-value', '1');
+    const tableFooterRightChevronButton = page.locator('tds-table-footer').locator('button').last();
+    await tableFooterRightChevronButton.click();
+    await expect(footer).toHaveAttribute('pagination-value', '2');
+    const tableFooterLeftChevronButton = page.locator('tds-table-footer').locator('button').first();
+    await tableFooterLeftChevronButton.click();
+    await expect(footer).toHaveAttribute('pagination-value', '1');
   });
 });

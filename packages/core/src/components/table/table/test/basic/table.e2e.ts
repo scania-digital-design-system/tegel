@@ -6,6 +6,8 @@ const componentTestPath = 'src/components/table/table/test/basic/index.html';
 test.describe('tds-table-basic', () => {
   test('renders basic table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
+    const tableComponent = page.locator('tds-table');
+    expect(tableComponent).toBeTruthy();
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
