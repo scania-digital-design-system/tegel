@@ -7,7 +7,7 @@ test.describe('tds-table-sorting', () => {
   test('renders sorting table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.locator('tds-table');
-    expect(tableComponent).toBeTruthy();
+    await expect(tableComponent).toHaveCount(1);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -49,21 +49,25 @@ test.describe('tds-table-sorting', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('Columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
+  test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTableHeader = page.locator('tds-table-header');
     /* Expect each header to have the correct cell-value */
     const tableHeaderCellTruckType = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Truck type"]',
     );
+    await expect(tableHeaderCellTruckType).toHaveCount(1);
     await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
     const tableHeaderCellDriverName = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Driver name"]',
     );
+    await expect(tableHeaderCellDriverName).toHaveCount(1);
     await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
     const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
+    await expect(tableHeaderCellCountry).toHaveCount(1);
     await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
     const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
+    await expect(tableHeaderCellMilage).toHaveCount(1);
     await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
   });
 

@@ -7,7 +7,7 @@ test.describe('tds-table-pagination', () => {
   test('renders pagination table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.locator('tds-table');
-    expect(tableComponent).toBeTruthy();
+    await expect(tableComponent).toHaveCount(1);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -17,21 +17,25 @@ test.describe('tds-table-pagination', () => {
     await expect(tableHeaderCells).toHaveCount(4);
   });
 
-  test('Columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
+  test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTableHeader = page.locator('tds-table-header');
     /* Expect each header to have the correct cell-value */
     const tableHeaderCellTruckType = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Truck type"]',
     );
+    await expect(tableHeaderCellTruckType).toHaveCount(1);
     await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
     const tableHeaderCellDriverName = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Driver name"]',
     );
+    await expect(tableHeaderCellDriverName).toHaveCount(1);
     await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
     const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
+    await expect(tableHeaderCellCountry).toHaveCount(1);
     await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
     const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
+    await expect(tableHeaderCellMilage).toHaveCount(1);
     await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
   });
 
@@ -58,19 +62,21 @@ test.describe('tds-table-pagination', () => {
   test('table has footer', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableFooter = page.locator('tds-table-footer');
-    expect(tableFooter).toBeTruthy();
+    await expect(tableFooter).toHaveCount(1);
   });
 
   test('footer has field for number of page, value = 1', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableFooterWithValue = page.locator('tds-table-footer[pagination-value="1"]');
-    expect(tableFooterWithValue).toBeTruthy();
+    const tableFooterWithPaginationValue = page.locator('tds-table-footer[pagination-value="1"]');
+    await expect(tableFooterWithPaginationValue).toHaveCount(1);
   });
 
   /* TODO: Make sure this one works, not sure about this test */
   test.skip('footer contains text "of 4 pages"', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableFooterOfPagesText = page.locator('.tds-table__footer-text').locator('span');
+    const tableFooterOfPagesText = page
+      .locator('div[class="tds-table__footer-text"')
+      .locator('span');
     await expect(tableFooterOfPagesText).toHaveText('4');
   });
 

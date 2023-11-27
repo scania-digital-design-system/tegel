@@ -4,10 +4,10 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 
 test.describe('tds-table-expandable-row', () => {
-  test('expandable-row basic table correctly', async ({ page }) => {
+  test('render expandable-row table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.locator('tds-table');
-    expect(tableComponent).toBeTruthy();
+    await expect(tableComponent).toHaveCount(1);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -24,15 +24,18 @@ test.describe('tds-table-expandable-row', () => {
     const tableHeaderCellTruckType = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Truck type"]',
     );
-    expect(tableHeaderCellTruckType).not.toBeNull();
+    await expect(tableHeaderCellTruckType).toHaveCount(1);
     await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
     const tableHeaderCellDriverName = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Driver name"]',
     );
+    await expect(tableHeaderCellDriverName).toHaveCount(1);
     await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
     const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
+    await expect(tableHeaderCellCountry).toHaveCount(1);
     await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
     const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
+    await expect(tableHeaderCellMilage).toHaveCount(1);
     await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
   });
 
@@ -113,5 +116,24 @@ test.describe('tds-table-expandable-row', () => {
       .locator('div[slot="expand-row"]')
       .locator('button');
     await expect(tableBodyExpandableRowSlot).toContainText('Call to action');
+  });
+
+  test('Double click on expand button in first row -> expanded row should be closed', async ({
+    page,
+  }) => {
+    await page.goto(componentTestPath);
+    const tableBodyRowsExpandInput = page
+      .locator('tds-table-body')
+      .locator('tds-table-body-row-expandable')
+      .locator('td[class="tds-table__cell tds-table__cell--expand"]')
+      .first();
+    await expect(tableBodyRowsExpandInput).toHaveCount(1);
+    await tableBodyRowsExpandInput.dblclick();
+    const tableBodyExpandableActive = page
+      .locator('tds-table-body')
+      .locator(
+        'tds-table-body-row-expandable[class="tds-table__row hydrated tds-table__row-expand--active"]',
+      );
+    await expect(tableBodyExpandableActive).toHaveCount(0);
   });
 });

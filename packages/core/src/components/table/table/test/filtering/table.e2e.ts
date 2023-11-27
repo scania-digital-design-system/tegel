@@ -7,7 +7,7 @@ test.describe('tds-table-filtering', () => {
   test('renders filtering table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.locator('tds-table');
-    expect(tableComponent).toBeTruthy();
+    await expect(tableComponent).toHaveCount(1);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -17,21 +17,25 @@ test.describe('tds-table-filtering', () => {
     await expect(tableHeaderCells).toHaveCount(4);
   });
 
-  test('Columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
+  test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTableHeader = page.locator('tds-table-header');
     /* Expect each header to have the correct cell-value */
     const tableHeaderCellTruckType = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Truck type"]',
     );
+    await expect(tableHeaderCellTruckType).toHaveCount(1);
     await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
     const tableHeaderCellDriverName = tdsTableHeader.locator(
       'tds-header-cell[cell-value="Driver name"]',
     );
+    await expect(tableHeaderCellDriverName).toHaveCount(1);
     await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
     const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
+    await expect(tableHeaderCellCountry).toHaveCount(1);
     await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
     const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
+    await expect(tableHeaderCellMilage).toHaveCount(1);
     await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
   });
 
@@ -48,7 +52,7 @@ test.describe('tds-table-filtering', () => {
     const tdsTableToolbarSearchIcon = page
       .locator('tds-table-toolbar[table-title="Filter"]')
       .locator('tds-icon[name="search"]');
-    expect(tdsTableToolbarSearchIcon).not.toBeNull();
+    await expect(tdsTableToolbarSearchIcon).toHaveCount(1);
   });
 
   /** Having problems here and skipping it for now. Can not get Playwright to check for the event when entering data */
@@ -57,7 +61,7 @@ test.describe('tds-table-filtering', () => {
     const tdsTableToolbarSearchInput = page
       .locator('tds-table-toolbar[table-title="Filter"]')
       .locator('input[class="tds-table__searchbar-input"]');
-    expect(tdsTableToolbarSearchInput).not.toBeNull();
+    await expect(tdsTableToolbarSearchInput).toHaveCount(1);
     const myEventSpy = await page.spyOnEvent('tdsFilter');
     await tdsTableToolbarSearchInput.click();
     expect(myEventSpy).toHaveReceivedEvent();
