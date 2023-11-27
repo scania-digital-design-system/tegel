@@ -94,5 +94,6 @@ test.describe('tds-dropdown-filter', () => {
     await expect(dropdownOptionThree).toHaveAttribute('hidden');
     const dropdownOptionFour = dropdown.locator('tds-dropdown-option[value="option-4"]');
     await expect(dropdownOptionFour).toHaveAttribute('hidden');
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });

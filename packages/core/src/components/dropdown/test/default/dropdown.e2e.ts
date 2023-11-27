@@ -11,19 +11,19 @@ test.describe('tds-dropdown-default', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('default dropdown should have a label outside with text', async ({ page }) => {
+  test('should have a label outside with text', async ({ page }) => {
     await page.goto(componentTestPath);
     const labelOutside = page.locator('tds-dropdown > div[class="label-outside"]');
     await expect(labelOutside).toHaveText(/Label text/);
   });
 
-  test('default dropdown to have helper text with correct text', async ({ page }) => {
+  test('to have helper text with correct text', async ({ page }) => {
     await page.goto(componentTestPath);
     const helperText = page.locator('tds-dropdown > div[class="helper"]');
     await expect(helperText).toHaveText(/Helper text/);
   });
 
-  test('default dropdown have the placeholder="Placeholder" text', async ({ page }) => {
+  test('have the placeholder="Placeholder" text', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const button = dropdown.locator('button');
@@ -32,14 +32,14 @@ test.describe('tds-dropdown-default', () => {
     expect(textAttribute).toBe('Placeholder');
   });
 
-  test('default dropdown has lg size', async ({ page }) => {
+  test('has lg size', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const dropdownSelect = dropdown.locator('div[class="dropdown-select lg"]');
     expect(dropdownSelect).toBeTruthy();
   });
 
-  test('default clicking the dropdown opens the dropdown-list', async ({ page }) => {
+  test('clicking the dropdown opens the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.locator('tds-dropdown');
     const dropdownSelect = dropdown.locator('div[class="dropdown-select lg"]');
@@ -49,9 +49,10 @@ test.describe('tds-dropdown-default', () => {
     const dropdownList = dropdown.locator('div[class="dropdown-list lg down label-outside open"]');
     expect(myEventSpy).toHaveReceivedEvent();
     expect(dropdownList).toBeTruthy();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('default clicking the dropdown opens the dropdown-list, then click an option 1', async ({
+  test('clicking the dropdown opens the dropdown-list, then click an option 1', async ({
     page,
   }) => {
     await page.goto(componentTestPath);
@@ -62,9 +63,10 @@ test.describe('tds-dropdown-default', () => {
     const dropdownOptionOne = dropdown.locator('tds-dropdown-option[value="option-1"]');
     await dropdownOptionOne.click();
     await expect(dropdown).toHaveAttribute('value', 'option-1');
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('default clicking the dropdown opens the dropdown-list, then click an option 2 that is disabled should not close it', async ({
+  test('clicking the dropdown opens the dropdown-list, then click an option 2 that is disabled should not close it', async ({
     page,
   }) => {
     await page.goto(componentTestPath);

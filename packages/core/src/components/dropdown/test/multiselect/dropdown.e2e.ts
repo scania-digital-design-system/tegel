@@ -49,6 +49,7 @@ test.describe('tds-dropdown-multiselect', () => {
     const dropdownList = dropdown.locator('div[class="dropdown-list lg down label-outside open"]');
     expect(myEventSpy).toHaveReceivedEvent();
     expect(dropdownList).toBeTruthy();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('clicking the dropdown opens the dropdown-list, then click on option 1', async ({
