@@ -22,18 +22,6 @@ test.describe('tds-textarea', () => {
     await expect(textarea).toHaveAttribute('readonly');
     const readonlyIcon = page.locator('tds-icon[name="edit_inactive"]');
     /* Expect a tds-icon to be present when readonly mode is active */
-    expect(readonlyIcon).not.toBeNull();
-  });
-
-  // Error: locator.fill: Target closed
-  // Not able to update the since we get Playwright error here when trying to input a readonly input.
-  // Skipping for now.
-  test.skip('Type text in textarea - no possibility to click textarea', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const textarea = page.locator('tds-textarea').locator('textarea');
-    const myEventSpy = await page.spyOnEvent('click');
-    await textarea.click();
-    /* Expect the inputValue of textarea to not have the text "Adding some text" since its readonly */
-    expect(myEventSpy).not.toHaveReceivedEvent();
+    expect(readonlyIcon).toBeTruthy();
   });
 });
