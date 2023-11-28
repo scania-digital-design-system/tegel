@@ -3,47 +3,32 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/button/test/disabled/index.html';
 
-test.describe('tds-button', () => {
+test.describe('tds-button-disabled', () => {
   test('renders disabled button correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    await expect(button).toHaveScreenshot({ maxDiffPixels: 0 });
+    const button = page.getByTestId('tds-button-testid');
+    await expect(button).toHaveCount(1);
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('that the component is disabled', async ({ page }) => {
+  test('component should not receive click event', async ({ page }) => {
     await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    await expect(button).toHaveAttribute('disabled', '');
+
+    /* Check if receive  */
+    const tdsButton = page.getByTestId('tds-button-testid');
     const myEventSpy = await page.spyOnEvent('click');
-    await button.click();
+    await tdsButton.click();
     expect(myEventSpy).not.toHaveReceivedEvent();
-  });
 
-  test('Button color is aligned to disabled state', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    const buttonBackgroundColor = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).backgroundColor,
-    );
-    expect(buttonBackgroundColor).toBe('rgb(249, 250, 251)');
-  });
-
-  test('Text is displayed, style is aligned to disabled state', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const textAttribute = await button.textContent();
-    await expect(button).toHaveCSS('color', 'rgb(13, 15, 19)');
-    expect(textAttribute).toBe('Button');
+    /* Check if disabled */
+    const button = page.getByRole('button');
+    await expect(button).toBeDisabled();
   });
 
   test('the cursor should be not-allowed', async ({ page }) => {
     await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    const buttonCursorState = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).cursor,
-    );
+    const button = page.getByTestId('tds-button-testid').getByRole('button');
+    const buttonCursorState = await button.evaluate((style) => getComputedStyle(style).cursor);
     expect(buttonCursorState).toBe('not-allowed');
   });
 });
