@@ -20,9 +20,14 @@
       helper="Helper text"
       size="lg"
       open-direction="auto"
+      data-testid="tds-dropdown-testid"
     >
-      <tds-dropdown-option value="option-1">Option 1</tds-dropdown-option>
-      <tds-dropdown-option disabled value="option-2">Option 2</tds-dropdown-option>
+      <tds-dropdown-option value="option-1" data-testid="tds-dropdown-option-1"
+        >Option 1</tds-dropdown-option
+      >
+      <tds-dropdown-option disabled value="option-2" data-testid="tds-dropdown-option-2"
+        >Option 2</tds-dropdown-option
+      >
       <tds-dropdown-option value="option-3">Option 3</tds-dropdown-option>
       <tds-dropdown-option value="option-4">Option 4</tds-dropdown-option>
     </tds-dropdown>
