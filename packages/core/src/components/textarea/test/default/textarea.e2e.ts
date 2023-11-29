@@ -29,5 +29,8 @@ test.describe('tds-textarea', () => {
     /* Expect the inputValue of textarea to have "Adding some text" after it has been typed */
     await textarea.fill('Adding some text');
     expect(await textarea.inputValue()).toBe('Adding some text');
+
+    /* Expect no difference in screenshot  */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
