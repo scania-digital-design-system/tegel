@@ -6,84 +6,46 @@ const componentTestPath = 'src/components/table/table/test/filtering/index.html'
 test.describe('tds-table-filtering', () => {
   test('renders filtering table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableComponent = page.locator('tds-table');
+    const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
+
+    /* Check diff of screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
-
-  test('table has four columns', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const tableHeaderCells = page.locator('tds-table-header').locator('tds-header-cell');
-    await expect(tableHeaderCells).toHaveCount(4);
-  });
-
-  test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const tdsTableHeader = page.locator('tds-table-header');
-    /* Expect each header to have the correct cell-value */
-    const tableHeaderCellTruckType = tdsTableHeader.locator(
-      'tds-header-cell[cell-value="Truck type"]',
-    );
-    await expect(tableHeaderCellTruckType).toHaveCount(1);
-    await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
-    const tableHeaderCellDriverName = tdsTableHeader.locator(
-      'tds-header-cell[cell-value="Driver name"]',
-    );
-    await expect(tableHeaderCellDriverName).toHaveCount(1);
-    await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
-    const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
-    await expect(tableHeaderCellCountry).toHaveCount(1);
-    await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
-    const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
-    await expect(tableHeaderCellMilage).toHaveCount(1);
-    await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
   });
 
   test('table has header "Filter"', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsTableToolbarCaption = page
-      .locator('tds-table-toolbar[table-title="Filter"]')
-      .locator('caption');
-    await expect(tdsTableToolbarCaption).toContainText('Filter');
+
+    /* Search for header by text and see if it exists */
+    const tdsTableToolbarCaption = page.getByText('Filter');
+    await expect(tdsTableToolbarCaption).toHaveCount(1);
+    await expect(tdsTableToolbarCaption).toBeVisible();
   });
 
   test('search button inside the header exists', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsTableToolbarSearchIcon = page
-      .locator('tds-table-toolbar[table-title="Filter"]')
-      .locator('tds-icon[name="search"]');
+    const tdsTableToolbarSearchIcon = page.getByRole('img');
     await expect(tdsTableToolbarSearchIcon).toHaveCount(1);
+    await expect(tdsTableToolbarSearchIcon).toBeVisible();
   });
 
-  /** Having problems here and skipping it for now. Can not get Playwright to check for the event when entering data */
-  test.skip('clicking on search button opens field for entering data', async ({ page }) => {
+  test('look for textbox and click it', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsTableToolbarSearchInput = page
-      .locator('tds-table-toolbar[table-title="Filter"]')
-      .locator('input[class="tds-table__searchbar-input"]');
-    await expect(tdsTableToolbarSearchInput).toHaveCount(1);
-    const myEventSpy = await page.spyOnEvent('tdsFilter');
+    const tdsTableToolbarSearchInput = page.getByRole('textbox');
     await tdsTableToolbarSearchInput.click();
-    expect(myEventSpy).toHaveReceivedEvent();
+
+    /* Check diff of screenshot after click */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('Row should contain the correct number of rows with the correct text inside each cell', async ({
-    page,
-  }) => {
+  test('clicking on search button opens field for entering data', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableBodyRows = page.locator('tds-table-body').locator('tds-table-body-row');
-    /* Expect number of rows to be correct amount */
-    await expect(tableBodyRows).toHaveCount(6);
-    const promises = [];
+    const tdsTableToolbarSearchInput = page.getByRole('textbox');
+    await expect(tdsTableToolbarSearchInput).toHaveCount(1);
+    await expect(tdsTableToolbarSearchInput).toBeVisible();
+    await tdsTableToolbarSearchInput.fill('Some test text');
 
-    /* Checks all rows to see that they have the correct amount of tds-body-cells with values provided */
-    for (let i = 1; i <= 8; i++) {
-      const tableRow1 = tableBodyRows.locator(`tds-body-cell[cell-value="Test value ${i}"]`);
-      promises.push(expect(tableRow1).toHaveCount(3));
-      promises.push(expect(tableRow1.first()).toContainText(`Test value ${i}`));
-      promises.push(expect(tableRow1.last()).toContainText(`Test value ${i}`));
-    }
-
-    await Promise.all(promises);
+    /* Check diff of screenshot after filled */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });

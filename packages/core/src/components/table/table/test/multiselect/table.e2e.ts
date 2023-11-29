@@ -6,58 +6,53 @@ const componentTestPath = 'src/components/table/table/test/multiselect/index.htm
 test.describe('tds-table-multiselect', () => {
   test('renders multiselect table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableComponent = page.locator('tds-table');
+    const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
+
+    /* Check diff on screenshot for component */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('table has four columns', async ({ page }) => {
+  test('table header contains checkbox', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableHeaderCells = page.locator('tds-table-header').locator('tds-header-cell');
-    await expect(tableHeaderCells).toHaveCount(4);
-  });
-
-  test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const tdsTableHeader = page.locator('tds-table-header');
-    /* Expect each header to have the correct cell-value */
-    const tableHeaderCellTruckType = tdsTableHeader.locator(
-      'tds-header-cell[cell-value="Truck type"]',
-    );
-    await expect(tableHeaderCellTruckType).toHaveCount(1);
-    await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
-    const tableHeaderCellDriverName = tdsTableHeader.locator(
-      'tds-header-cell[cell-value="Driver name"]',
-    );
-    await expect(tableHeaderCellDriverName).toHaveCount(1);
-    await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
-    const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
-    await expect(tableHeaderCellCountry).toHaveCount(1);
-    await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
-    const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
-    await expect(tableHeaderCellMilage).toHaveCount(1);
-    await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
-  });
-
-  test('Table header contains checkbox', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const tableHeaderCheckbox = page.locator('tds-table-header').locator('tds-checkbox');
+    const tableHeaderCheckbox = page.getByRole('checkbox').first();
     await expect(tableHeaderCheckbox).toHaveCount(1);
+    await expect(tableHeaderCheckbox).toBeVisible();
   });
 
-  test('Row should contain the correct number of rows', async ({ page }) => {
+  test('row should contain the correct number of checkboxes in each row', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableBodyRows = page.locator('tds-table-body').locator('tds-table-body-row');
-    /* Expect number of rows to be correct amount */
-    await expect(tableBodyRows).toHaveCount(4);
+    const tableBodyRowCheckboxes = page.getByRole('checkbox');
+    await expect(tableBodyRowCheckboxes).toHaveCount(5);
+
+    /* Check if each checkbox is visible */
+    const promises = [];
+    for (let i = 0; i < 5; i++) {
+      promises.push(expect(tableBodyRowCheckboxes.nth(i)).toBeVisible());
+    }
+    await Promise.all(promises);
   });
 
-  test('Row should contain the correct number of checkboxes in each row', async ({ page }) => {
+  test('check each checkbox and take screenshot', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableBodyRowCheckboxes = page
-      .locator('tds-table-body')
-      .locator('tds-table-body-row')
-      .locator('tds-checkbox');
-    await expect(tableBodyRowCheckboxes).toHaveCount(4);
+    const tableCheckboxes = page.getByRole('cell');
+    await expect(tableCheckboxes).toHaveCount(5);
+
+    const myEventSpyAll = await page.spyOnEvent('tdsSelectAll');
+    const myEventSpy = await page.spyOnEvent('tdsSelect');
+
+    /* Click each one */
+    await tableCheckboxes.first().click();
+    await tableCheckboxes.nth(1).click();
+    await tableCheckboxes.nth(2).click();
+    await tableCheckboxes.nth(3).click();
+    await tableCheckboxes.last().click();
+
+    /* check so correct events have been called */
+    expect(myEventSpyAll).toHaveReceivedEventTimes(1);
+    expect(myEventSpy).toHaveReceivedEventTimes(4);
+
+    /* Check diff on screenshot for component */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });

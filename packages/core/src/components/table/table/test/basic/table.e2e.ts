@@ -6,54 +6,50 @@ const componentTestPath = 'src/components/table/table/test/basic/index.html';
 test.describe('tds-table-basic', () => {
   test('renders basic table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableComponent = page.locator('tds-table');
+    const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
+
+    /** Check screenshot diff */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('table has four columns', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableHeaderCells = page.locator('tds-table-header').locator('tds-header-cell');
+    const tableHeaderCells = page.locator('tds-header-cell');
     await expect(tableHeaderCells).toHaveCount(4);
   });
 
   test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsTableHeader = page.locator('tds-table-header');
-    /* Expect each header to have the correct cell-value */
-    const tableHeaderCellTruckType = tdsTableHeader.locator(
-      'tds-header-cell[cell-value="Truck type"]',
-    );
-    await expect(tableHeaderCellTruckType).toHaveCount(1);
-    await expect(tableHeaderCellTruckType).toHaveAttribute('cell-value', 'Truck type');
-    const tableHeaderCellDriverName = tdsTableHeader.locator(
-      'tds-header-cell[cell-value="Driver name"]',
-    );
-    await expect(tableHeaderCellDriverName).toHaveCount(1);
-    await expect(tableHeaderCellDriverName).toHaveAttribute('cell-value', 'Driver name');
-    const tableHeaderCellCountry = tdsTableHeader.locator('tds-header-cell[cell-value="Country"]');
-    await expect(tableHeaderCellCountry).toHaveCount(1);
-    await expect(tableHeaderCellCountry).toHaveAttribute('cell-value', 'Country');
-    const tableHeaderCellMilage = tdsTableHeader.locator('tds-header-cell[cell-value="Mileage"]');
-    await expect(tableHeaderCellMilage).toHaveCount(1);
-    await expect(tableHeaderCellMilage).toHaveAttribute('cell-value', 'Mileage');
+
+    /* Expect each header to be visible */
+    await expect(page.getByText('Truck type')).toBeVisible();
+    await expect(page.getByText('Driver name')).toBeVisible();
+    await expect(page.getByText('Country')).toBeVisible();
+    await expect(page.getByText('Mileage')).toBeVisible();
   });
 
-  test('Row should contain the correct number of rows with the correct text inside each cell', async ({
-    page,
-  }) => {
+  test('Row should contain the correct number of rows with', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableBodyRows = page.locator('tds-table-body').locator('tds-table-body-row');
+
     /* Expect number of rows to be correct amount */
+    const tableBodyRows = page.locator('tds-table-body-row');
     await expect(tableBodyRows).toHaveCount(6);
-    const promises = [];
+  });
+
+  test('table the correct text inside each cell', async ({ page }) => {
+    await page.goto(componentTestPath);
 
     /* Checks all rows to see that they have the correct amount of tds-body-cells with values provided */
+    const promises = [];
     for (let i = 1; i <= 8; i++) {
-      const tableRow1 = tableBodyRows.locator(`tds-body-cell[cell-value="Test value ${i}"]`);
-      promises.push(expect(tableRow1).toHaveCount(3));
-      promises.push(expect(tableRow1.first()).toContainText(`Test value ${i}`));
-      promises.push(expect(tableRow1.last()).toContainText(`Test value ${i}`));
+      const tableBodyCellHasText = page
+        .locator('tds-body-cell')
+        .filter({ hasText: `Test value ${i}` });
+      promises.push(expect(tableBodyCellHasText).toHaveCount(3));
+      promises.push(expect(tableBodyCellHasText.first()).toBeVisible());
+      promises.push(expect(tableBodyCellHasText.nth(1)).toBeVisible());
+      promises.push(expect(tableBodyCellHasText.nth(2)).toBeVisible());
     }
 
     await Promise.all(promises);
