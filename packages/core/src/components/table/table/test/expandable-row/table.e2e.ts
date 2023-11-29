@@ -25,7 +25,7 @@ test.describe('tds-table-expandable-row', () => {
     const tableBodyExpandableRowSlot = page.getByText(/Hello world 1/);
     await expect(tableBodyRowFirstInput).toHaveCount(1);
     await expect(tableBodyExpandableRowSlot).toHaveCount(1);
-    await expect(tableBodyExpandableRowSlot).not.toBeVisible();
+    await expect(tableBodyExpandableRowSlot).toBeHidden();
 
     await tableBodyRowFirstInput.click();
     await expect(tableBodyExpandableRowSlot).toBeVisible();
@@ -40,7 +40,7 @@ test.describe('tds-table-expandable-row', () => {
     const tableBodyExpandableRowSlot = page.getByText(/Hello to you too/);
     await expect(tableBodyRowSecondInput).toHaveCount(1);
     await expect(tableBodyExpandableRowSlot).toHaveCount(1);
-    await expect(tableBodyExpandableRowSlot).not.toBeVisible();
+    await expect(tableBodyExpandableRowSlot).toBeHidden();
 
     await tableBodyRowSecondInput.click();
     await expect(tableBodyExpandableRowSlot).toBeVisible();
@@ -57,7 +57,7 @@ test.describe('tds-table-expandable-row', () => {
     const tableBodyRowButton = page.getByText(/Call to action/);
     await expect(tableBodyRowThirdInput).toHaveCount(1);
     await expect(tableBodyRowButton).toHaveCount(1);
-    await expect(tableBodyRowButton).not.toBeVisible();
+    await expect(tableBodyRowButton).toBeHidden();
 
     await tableBodyRowThirdInput.click();
     await expect(tableBodyRowButton).toBeVisible();
@@ -77,8 +77,8 @@ test.describe('tds-table-expandable-row', () => {
     const tableBodySecondExpandableRowSlot = page.getByText(/Hello to you too/);
     const tableBodyThirdExpandableRowSlot = page.getByText(/Call to action/);
 
-    await expect(tableBodyFirstExpandableRowSlot).not.toBeVisible();
-    await expect(tableBodySecondExpandableRowSlot).not.toBeVisible();
-    await expect(tableBodyThirdExpandableRowSlot).not.toBeVisible();
+    await expect(tableBodyFirstExpandableRowSlot).toBeHidden();
+    await expect(tableBodySecondExpandableRowSlot).toBeHidden();
+    await expect(tableBodyThirdExpandableRowSlot).toBeHidden();
   });
 });

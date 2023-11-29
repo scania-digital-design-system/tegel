@@ -22,7 +22,7 @@ test.describe('tds-table-batch', () => {
 
   test('table has a [Download] button', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsTableToolbarDownloadButton = page.getByRole('button').getByText('Download');
+    const tdsTableToolbarDownloadButton = page.getByRole('button', { name: /Download/ });
     await expect(tdsTableToolbarDownloadButton).toHaveCount(1);
     await expect(tdsTableToolbarDownloadButton).toBeVisible();
   });
