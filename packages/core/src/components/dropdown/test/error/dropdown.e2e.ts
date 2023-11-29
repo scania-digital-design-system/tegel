@@ -23,17 +23,22 @@ test.describe('tds-dropdown-error', () => {
 
   test('clicking the dropdown opens the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
-    const dropdownOptionOne = page.getByTestId(/tds-dropdown-option-1/);
-    const placeholderElement = page.getByText(/Placeholder/);
+    const dropdownListElementOneButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 1/ })
+      .getByRole('button');
+    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
 
     /* before clicking dropdownlist should not be visible, the button should be */
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionOne).not.toBeVisible();
-    await placeholderElement.click();
+    await expect(dropdownButton).toBeVisible();
+    await expect(dropdownListElementOneButton).not.toBeVisible();
+    await dropdownButton.click();
 
     /* after clicking dropdownlist should be visible, the button should also be */
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionOne).toBeVisible();
+    await expect(dropdownButton).toBeVisible();
+    await expect(dropdownListElementOneButton).toBeVisible();
+
+    /* check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });

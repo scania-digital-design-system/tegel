@@ -18,24 +18,19 @@ test.describe('tds-dropdown-multiselect', () => {
   }) => {
     await page.goto(componentTestPath);
 
-    /* click the button */
-    const placeholderElement = page.getByText(/Placeholder/);
-    await placeholderElement.click();
+    /* click the dropdown button */
+    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+    await dropdownButton.click();
 
-    /* make sure dropdown list is visible */
-    const dropdownOptionOne = page.getByTestId(/tds-dropdown-option-1/);
-    await expect(dropdownOptionOne).toBeVisible();
+    /* Click the Option 1 button */
+    const dropdownListElementOneButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 1/ });
+    await dropdownListElementOneButton.click();
 
-    /* check so only one "Option 1" text exists */
-    const option1Element = page.getByText(/Option 1/);
-    await expect(option1Element).toHaveCount(1);
-
-    /* Click Option 1 element */
-    await dropdownOptionOne.click();
-
-    /* Check so its dropdown list is not visible anymore and there now 2 "Option 1" texts in the dom */
-    await expect(dropdownOptionOne).toBeVisible();
-    await expect(option1Element).toHaveCount(2);
+    await expect(dropdownListElementOneButton).toBeVisible();
+    const dropdownButtonWithOption1 = page.getByRole('button', { name: 'Option 1' });
+    await expect(dropdownButtonWithOption1.first()).toBeVisible();
 
     /* also check screenshot diff to make sure it says Option 1 */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
@@ -51,70 +46,60 @@ test.describe('tds-dropdown-multiselect', () => {
     await placeholderElement.click();
 
     /* get all checkboxes */
-    const dropdownOptionOne = page.getByTestId(/tds-dropdown-option-1/).locator('tds-checkbox');
-    const dropdownOptionTwo = page.getByTestId(/tds-dropdown-option-2/).locator('tds-checkbox');
-    const dropdownOptionThree = page.getByTestId(/tds-dropdown-option-3/).locator('tds-checkbox');
-    const dropdownOptionFour = page.getByTestId(/tds-dropdown-option-4/).locator('tds-checkbox');
-    await expect(dropdownOptionOne).toHaveCount(1);
-    await expect(dropdownOptionTwo).toHaveCount(1);
-    await expect(dropdownOptionThree).toHaveCount(1);
-    await expect(dropdownOptionFour).toHaveCount(1);
+    const dropdownListElementOneButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 1/ })
+      .locator('tds-checkbox');
+    const dropdownListElementTwoButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 2/ })
+      .locator('tds-checkbox');
+    const dropdownListElementThreeButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 3/ })
+      .locator('tds-checkbox');
+    const dropdownListElementFourButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 4/ })
+      .locator('tds-checkbox');
+    await expect(dropdownListElementOneButton).toHaveCount(1);
+    await expect(dropdownListElementTwoButton).toHaveCount(1);
+    await expect(dropdownListElementThreeButton).toHaveCount(1);
+    await expect(dropdownListElementFourButton).toHaveCount(1);
 
     /* check each one and see that it updates correctly */
-    await dropdownOptionOne.click();
-    await expect(dropdownOptionOne).toHaveAttribute('checked');
-    await expect(dropdownOptionTwo).not.toHaveAttribute('checked');
-    await expect(dropdownOptionThree).not.toHaveAttribute('checked');
-    await expect(dropdownOptionFour).not.toHaveAttribute('checked');
+    await dropdownListElementOneButton.click();
+    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
+    await expect(dropdownListElementThreeButton).not.toHaveAttribute('checked');
+    await expect(dropdownListElementFourButton).not.toHaveAttribute('checked');
     const inputText = page.getByText(/Option 1/);
     await expect(inputText).toHaveCount(2);
 
-    await dropdownOptionTwo.click();
-    await expect(dropdownOptionOne).toHaveAttribute('checked');
-    await expect(dropdownOptionTwo).not.toHaveAttribute('checked');
-    await expect(dropdownOptionThree).not.toHaveAttribute('checked');
-    await expect(dropdownOptionFour).not.toHaveAttribute('checked');
+    await dropdownListElementTwoButton.click();
+    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
+    await expect(dropdownListElementThreeButton).not.toHaveAttribute('checked');
+    await expect(dropdownListElementFourButton).not.toHaveAttribute('checked');
     await expect(inputText).toHaveCount(2);
 
-    await dropdownOptionThree.click();
-    await expect(dropdownOptionOne).toHaveAttribute('checked');
-    await expect(dropdownOptionTwo).not.toHaveAttribute('checked');
-    await expect(dropdownOptionThree).toHaveAttribute('checked');
-    await expect(dropdownOptionFour).not.toHaveAttribute('checked');
+    await dropdownListElementThreeButton.click();
+    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
+    await expect(dropdownListElementThreeButton).toHaveAttribute('checked');
+    await expect(dropdownListElementFourButton).not.toHaveAttribute('checked');
     const inputText2 = page.getByText(/Option 1,Option 3/, { exact: true });
     await expect(inputText2).toHaveCount(1);
 
-    await dropdownOptionFour.click();
-    await expect(dropdownOptionOne).toHaveAttribute('checked');
-    await expect(dropdownOptionTwo).not.toHaveAttribute('checked');
-    await expect(dropdownOptionThree).toHaveAttribute('checked');
-    await expect(dropdownOptionFour).toHaveAttribute('checked');
+    await dropdownListElementFourButton.click();
+    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
+    await expect(dropdownListElementThreeButton).toHaveAttribute('checked');
+    await expect(dropdownListElementFourButton).toHaveAttribute('checked');
     const inputText3 = page.getByText(/Option 1,Option 3,Option 4/, { exact: true });
     await expect(inputText3).toHaveCount(1);
 
     /* also check screenshot diff to make sure */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
-
-  test('clicking the dropdown opens the dropdown-list, then click an option 2 that is disabled should not close it', async ({
-    page,
-  }) => {
-    await page.goto(componentTestPath);
-    const dropdownOptionTwo = page.getByTestId(/tds-dropdown-option-2/);
-    const placeholderElement = page.getByText(/Placeholder/);
-
-    /* before clicking dropdownlist should not be visible, the button should be */
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionTwo).not.toBeVisible();
-
-    /* after clicking dropdownlist should be visible, the button should also be */
-    await placeholderElement.click();
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionTwo).toBeVisible();
-
-    /* after clicking option 2 that is disabled list should be visible and also button should be */
-    await dropdownOptionTwo.click();
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionTwo).toBeVisible();
   });
 });

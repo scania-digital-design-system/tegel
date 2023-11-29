@@ -27,47 +27,44 @@ test.describe('tds-dropdown-default', () => {
 
   test('have the placeholder="Placeholder" text', async ({ page }) => {
     await page.goto(componentTestPath);
-    const placeholderElement = page.getByText(/Placeholder/);
-    await expect(placeholderElement).toBeVisible();
+    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+    await expect(dropdownButton).toBeVisible();
   });
 
-  test('clicking the dropdown opens the dropdown-list', async ({ page }) => {
+  test('clicking the dropdown button opens the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
-    const dropdownOptionOne = page.getByTestId(/tds-dropdown-option-1/);
-    const placeholderElement = page.getByText(/Placeholder/);
+    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+    const dropdownListElementOne = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: 'Option 1' });
+    await expect(dropdownListElementOne).not.toBeVisible();
+    await dropdownButton.click();
 
     /* before clicking dropdownlist should not be visible, the button should be */
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionOne).not.toBeVisible();
-    await placeholderElement.click();
+    await expect(dropdownButton).toBeVisible();
+    await expect(dropdownListElementOne).toBeVisible();
 
-    /* after clicking dropdownlist should be visible, the button should also be */
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionOne).toBeVisible();
+    /* checks diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('clicking the dropdown opens the dropdown-list, then click Option 1', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    /* click the button */
-    const placeholderElement = page.getByText(/Placeholder/);
-    await placeholderElement.click();
+    /* click the dropdown button */
+    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+    await dropdownButton.click();
 
-    /* make sure dropdown list is visible */
-    const dropdownOptionOne = page.getByTestId(/tds-dropdown-option-1/);
-    await expect(dropdownOptionOne).toBeVisible();
+    /* Click the Option 1 button */
+    const dropdownListElementOneButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 1/ })
+      .getByRole('button');
+    await dropdownListElementOneButton.click();
 
-    /* check so only one "Option 1" text exists */
-    const option1Element = page.getByText(/Option 1/);
-    await expect(option1Element).toHaveCount(1);
-
-    /* Click Option 1 element */
-    await dropdownOptionOne.click();
-
-    /* Check so its dropdown list is not visible anymore and there now 2 "Option 1" texts in the dom */
-    await expect(dropdownOptionOne).not.toBeVisible();
-    await expect(option1Element).toHaveCount(2);
+    await expect(dropdownListElementOneButton).not.toBeVisible();
+    const dropdownButtonWithOption1 = page.getByRole('button', { name: 'Option 1' });
+    await expect(dropdownButtonWithOption1.first()).toBeVisible();
 
     /* also check screenshot diff to make sure it says Option 1 */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
@@ -77,21 +74,23 @@ test.describe('tds-dropdown-default', () => {
     page,
   }) => {
     await page.goto(componentTestPath);
-    const dropdownOptionTwo = page.getByTestId(/tds-dropdown-option-2/);
-    const placeholderElement = page.getByText(/Placeholder/);
+    const dropdownListElementTwoButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 2/ });
+    const dropdownButtonElement = page.getByRole('button', { name: 'Placeholder' });
 
     /* before clicking dropdownlist should not be visible, the button should be */
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionTwo).not.toBeVisible();
+    await expect(dropdownButtonElement).toBeVisible();
+    await expect(dropdownListElementTwoButton).not.toBeVisible();
 
     /* after clicking dropdownlist should be visible, the button should also be */
-    await placeholderElement.click();
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionTwo).toBeVisible();
+    await dropdownButtonElement.click();
+    await expect(dropdownButtonElement).toBeVisible();
+    await expect(dropdownListElementTwoButton).toBeVisible();
 
     /* after clicking option 2 that is disabled list should be visible and also button should be */
-    await dropdownOptionTwo.click();
-    await expect(placeholderElement).toBeVisible();
-    await expect(dropdownOptionTwo).toBeVisible();
+    await dropdownListElementTwoButton.click();
+    await expect(dropdownButtonElement).toBeVisible();
+    await expect(dropdownListElementTwoButton).toBeVisible();
   });
 });

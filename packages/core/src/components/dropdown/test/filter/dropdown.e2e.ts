@@ -19,33 +19,41 @@ test.describe('tds-dropdown-filter', () => {
     await page.goto(componentTestPath);
 
     const inputElement = page.getByRole('textbox');
-    const dropdownOptionOne = page.getByTestId(/tds-dropdown-option-1/);
-    const dropdownOptionTwo = page.getByTestId(/tds-dropdown-option-2/);
-    const dropdownOptionThree = page.getByTestId(/tds-dropdown-option-3/);
-    const dropdownOptionFour = page.getByTestId(/tds-dropdown-option-4/);
+    const dropdownListElementOneButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 1/ });
+    const dropdownListElementTwoButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 2/ });
+    const dropdownListElementThreeButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 3/ });
+    const dropdownListElementFourButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 4/ });
 
     /* before clicking dropdownlist should not be visible, the button should be */
     await expect(inputElement).toBeVisible();
-    await expect(dropdownOptionOne).not.toBeVisible();
-    await expect(dropdownOptionTwo).not.toBeVisible();
-    await expect(dropdownOptionThree).not.toBeVisible();
-    await expect(dropdownOptionFour).not.toBeVisible();
+    await expect(dropdownListElementOneButton).not.toBeVisible();
+    await expect(dropdownListElementTwoButton).not.toBeVisible();
+    await expect(dropdownListElementThreeButton).not.toBeVisible();
+    await expect(dropdownListElementFourButton).not.toBeVisible();
 
     /* Clicking the input element should show the dropdown list and all its content */
     await inputElement.click();
     await expect(inputElement).toBeVisible();
-    await expect(dropdownOptionOne).toBeVisible();
-    await expect(dropdownOptionTwo).toBeVisible();
-    await expect(dropdownOptionThree).toBeVisible();
-    await expect(dropdownOptionFour).toBeVisible();
+    await expect(dropdownListElementOneButton).toBeVisible();
+    await expect(dropdownListElementTwoButton).toBeVisible();
+    await expect(dropdownListElementThreeButton).toBeVisible();
+    await expect(dropdownListElementFourButton).toBeVisible();
 
     /* Add text and only Option 1 should be visible */
     await inputElement.fill('Option 1');
     await expect(inputElement).toBeVisible();
-    await expect(dropdownOptionOne).toBeVisible();
-    await expect(dropdownOptionTwo).not.toBeVisible();
-    await expect(dropdownOptionThree).not.toBeVisible();
-    await expect(dropdownOptionFour).not.toBeVisible();
+    await expect(dropdownListElementOneButton).toBeVisible();
+    await expect(dropdownListElementTwoButton).not.toBeVisible();
+    await expect(dropdownListElementThreeButton).not.toBeVisible();
+    await expect(dropdownListElementFourButton).not.toBeVisible();
 
     /* Check diff on screenshot after adding text */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
