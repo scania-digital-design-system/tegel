@@ -32,7 +32,7 @@ test.describe('tds-table-basic', () => {
   test('Row should contain the correct number of rows with', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    /* Expect number of rows to be correct amount */
+    /* Expect the number of rows to be correct amount */
     const tableBodyRows = page.locator('tds-table-body-row');
     await expect(tableBodyRows).toHaveCount(6);
   });
