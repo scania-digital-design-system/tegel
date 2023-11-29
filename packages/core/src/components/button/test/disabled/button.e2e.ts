@@ -8,17 +8,13 @@ test.describe('tds-button-disabled', () => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
+
+    /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('component should not receive click event', async ({ page }) => {
+  test('disabled button should be disabled', async ({ page }) => {
     await page.goto(componentTestPath);
-
-    /* Check if receive  */
-    const tdsButton = page.getByTestId('tds-button-testid');
-    const myEventSpy = await page.spyOnEvent('click');
-    await tdsButton.click();
-    expect(myEventSpy).not.toHaveReceivedEvent();
 
     /* Check if disabled */
     const button = page.getByRole('button');

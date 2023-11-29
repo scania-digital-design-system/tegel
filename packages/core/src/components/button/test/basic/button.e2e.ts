@@ -8,12 +8,14 @@ test.describe('tds-button-basic', () => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
+
+    /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('component receives click event', async ({ page }) => {
     await page.goto(componentTestPath);
-    const button = page.getByTestId('tds-button-testid');
+    const button = page.getByRole('button');
     const myEventSpy = await page.spyOnEvent('click');
     await button.click();
     expect(myEventSpy).toHaveReceivedEvent();

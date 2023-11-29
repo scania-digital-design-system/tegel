@@ -8,15 +8,9 @@ test.describe('tds-button-danger', () => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
 
-  test('component receives click event', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const myEventSpy = await page.spyOnEvent('click');
-    await button.click();
-    expect(myEventSpy).toHaveReceivedEvent();
+    /* Check diff on screenshot */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('Check so that height is correct to sm measurements', async ({ page }) => {

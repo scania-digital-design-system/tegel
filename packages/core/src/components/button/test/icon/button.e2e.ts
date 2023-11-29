@@ -8,12 +8,14 @@ test.describe('tds-button-icon', () => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
+
+    /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('icon should exist', async ({ page }) => {
     await page.goto(componentTestPath);
-    const icon = page.getByRole('button').locator('tds-icon');
+    const icon = page.getByRole('img');
     await expect(icon).toBeVisible();
   });
 
@@ -21,10 +23,27 @@ test.describe('tds-button-icon', () => {
     page,
   }) => {
     await page.goto(componentTestPath);
-    const button = page.getByTestId('tds-button-testid');
+    const button = page.getByRole('button');
     const buttonHeight = await button.evaluate((style) => getComputedStyle(style).height);
-    expect(buttonHeight).toBe('20px');
+    expect(buttonHeight).toBe('56px');
     const buttonWidth = await button.evaluate((style) => getComputedStyle(style).width);
-    expect(buttonWidth).toBe('20px');
+    expect(buttonWidth).toBe('56px');
+
+    const icon = page.getByRole('img');
+    const iconHeight = await icon.evaluate((style) => getComputedStyle(style).height);
+    expect(iconHeight).toBe('20px');
+    const iconWidth = await icon.evaluate((style) => getComputedStyle(style).width);
+    expect(iconWidth).toBe('20px');
+  });
+
+  test('Check so that height and width is correct to lg/default measurements with a single button for the icon', async ({
+    page,
+  }) => {
+    await page.goto(componentTestPath);
+    const icon = page.getByRole('img');
+    const iconHeight = await icon.evaluate((style) => getComputedStyle(style).height);
+    expect(iconHeight).toBe('20px');
+    const iconWidth = await icon.evaluate((style) => getComputedStyle(style).width);
+    expect(iconWidth).toBe('20px');
   });
 });

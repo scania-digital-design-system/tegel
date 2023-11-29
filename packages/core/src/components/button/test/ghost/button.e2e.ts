@@ -8,6 +8,8 @@ test.describe('tds-button-ghost', () => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
+
+    /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
