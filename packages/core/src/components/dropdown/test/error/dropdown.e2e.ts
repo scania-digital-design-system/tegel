@@ -17,7 +17,7 @@ test.describe('tds-dropdown-error', () => {
     await page.goto(componentTestPath);
     const helperText = page.getByText(/Helper text/);
     await expect(helperText).toBeVisible();
-    const helperTextIcon = helperText.locator('tds-icon');
+    const helperTextIcon = helperText.getByRole('img');
     await expect(helperTextIcon).toHaveCount(1);
   });
 
@@ -31,7 +31,7 @@ test.describe('tds-dropdown-error', () => {
 
     /* before clicking dropdownlist should not be visible, the button should be */
     await expect(dropdownButton).toBeVisible();
-    await expect(dropdownListElementOneButton).not.toBeVisible();
+    await expect(dropdownListElementOneButton).toBeHidden();
     await dropdownButton.click();
 
     /* after clicking dropdownlist should be visible, the button should also be */

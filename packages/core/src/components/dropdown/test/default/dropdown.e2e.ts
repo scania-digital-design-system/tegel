@@ -37,7 +37,7 @@ test.describe('tds-dropdown-default', () => {
     const dropdownListElementOne = page
       .locator('tds-dropdown-option')
       .filter({ hasText: 'Option 1' });
-    await expect(dropdownListElementOne).not.toBeVisible();
+    await expect(dropdownListElementOne).toBeHidden();
     await dropdownButton.click();
 
     /* before clicking dropdownlist should not be visible, the button should be */
@@ -62,7 +62,7 @@ test.describe('tds-dropdown-default', () => {
       .getByRole('button');
     await dropdownListElementOneButton.click();
 
-    await expect(dropdownListElementOneButton).not.toBeVisible();
+    await expect(dropdownListElementOneButton).toBeHidden();
     const dropdownButtonWithOption1 = page.getByRole('button', { name: 'Option 1' });
     await expect(dropdownButtonWithOption1.first()).toBeVisible();
 
@@ -81,7 +81,7 @@ test.describe('tds-dropdown-default', () => {
 
     /* before clicking dropdownlist should not be visible, the button should be */
     await expect(dropdownButtonElement).toBeVisible();
-    await expect(dropdownListElementTwoButton).not.toBeVisible();
+    await expect(dropdownListElementTwoButton).toBeHidden();
 
     /* after clicking dropdownlist should be visible, the button should also be */
     await dropdownButtonElement.click();

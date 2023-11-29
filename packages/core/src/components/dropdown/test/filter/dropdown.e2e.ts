@@ -34,10 +34,10 @@ test.describe('tds-dropdown-filter', () => {
 
     /* before clicking dropdownlist should not be visible, the button should be */
     await expect(inputElement).toBeVisible();
-    await expect(dropdownListElementOneButton).not.toBeVisible();
-    await expect(dropdownListElementTwoButton).not.toBeVisible();
-    await expect(dropdownListElementThreeButton).not.toBeVisible();
-    await expect(dropdownListElementFourButton).not.toBeVisible();
+    await expect(dropdownListElementOneButton).toBeHidden();
+    await expect(dropdownListElementTwoButton).toBeHidden();
+    await expect(dropdownListElementThreeButton).toBeHidden();
+    await expect(dropdownListElementFourButton).toBeHidden();
 
     /* Clicking the input element should show the dropdown list and all its content */
     await inputElement.click();
@@ -51,9 +51,9 @@ test.describe('tds-dropdown-filter', () => {
     await inputElement.fill('Option 1');
     await expect(inputElement).toBeVisible();
     await expect(dropdownListElementOneButton).toBeVisible();
-    await expect(dropdownListElementTwoButton).not.toBeVisible();
-    await expect(dropdownListElementThreeButton).not.toBeVisible();
-    await expect(dropdownListElementFourButton).not.toBeVisible();
+    await expect(dropdownListElementTwoButton).toBeHidden();
+    await expect(dropdownListElementThreeButton).toBeHidden();
+    await expect(dropdownListElementFourButton).toBeHidden();
 
     /* Check diff on screenshot after adding text */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
