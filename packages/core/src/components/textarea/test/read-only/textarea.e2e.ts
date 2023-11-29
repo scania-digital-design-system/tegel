@@ -18,7 +18,7 @@ test.describe('tds-textarea', () => {
 
   test('read-only textarea - native textarea should have readonly attribute', async ({ page }) => {
     await page.goto(componentTestPath);
-    const textarea = page.getByTestId('tds-textarea-testid').locator('textarea');
+    const textarea = page.getByRole('textbox');
 
     /* Expect the textarea within tds-textarea to have the readonly attribute */
     await expect(textarea).toHaveAttribute('readonly');

@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/textarea/test/default/index.html';
+const componentTestPath = 'src/components/textarea/test/basic/index.html';
 
 test.describe('tds-textarea', () => {
   test('renders default textarea correctly', async ({ page }) => {
