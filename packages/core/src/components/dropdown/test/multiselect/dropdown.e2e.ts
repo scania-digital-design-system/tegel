@@ -42,26 +42,22 @@ test.describe('tds-dropdown-multiselect', () => {
     await page.goto(componentTestPath);
 
     /* click the button */
-    const placeholderElement = page.getByText(/Placeholder/);
-    await placeholderElement.click();
+    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+    await dropdownButton.click();
 
     /* get all checkboxes */
     const dropdownListElementOneButton = page
-      .locator('tds-dropdown-option')
-      .filter({ hasText: /Option 1/ })
-      .locator('tds-checkbox');
+      .getByText(/Option 1/)
+      .filter({ has: page.getByRole('checkbox') });
     const dropdownListElementTwoButton = page
-      .locator('tds-dropdown-option')
-      .filter({ hasText: /Option 2/ })
-      .locator('tds-checkbox');
+      .getByText(/Option 2/)
+      .filter({ has: page.getByRole('checkbox') });
     const dropdownListElementThreeButton = page
-      .locator('tds-dropdown-option')
-      .filter({ hasText: /Option 3/ })
-      .locator('tds-checkbox');
+      .getByText(/Option 3/)
+      .filter({ has: page.getByRole('checkbox') });
     const dropdownListElementFourButton = page
-      .locator('tds-dropdown-option')
-      .filter({ hasText: /Option 4/ })
-      .locator('tds-checkbox');
+      .getByText(/Option 4/)
+      .filter({ has: page.getByRole('checkbox') });
     await expect(dropdownListElementOneButton).toHaveCount(1);
     await expect(dropdownListElementTwoButton).toHaveCount(1);
     await expect(dropdownListElementThreeButton).toHaveCount(1);
@@ -69,34 +65,34 @@ test.describe('tds-dropdown-multiselect', () => {
 
     /* check each one and see that it updates correctly */
     await dropdownListElementOneButton.click();
-    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
-    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
-    await expect(dropdownListElementThreeButton).not.toHaveAttribute('checked');
-    await expect(dropdownListElementFourButton).not.toHaveAttribute('checked');
-    const inputText = page.getByText(/Option 1/);
-    await expect(inputText).toHaveCount(2);
+    await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
+    await expect(dropdownListElementThreeButton).not.toHaveAttribute('aria-selected');
+    await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
+    const inputText = page.getByRole('button', { name: /Option 1/ });
+    await expect(inputText).toHaveCount(1);
 
     await dropdownListElementTwoButton.click();
-    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
-    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
-    await expect(dropdownListElementThreeButton).not.toHaveAttribute('checked');
-    await expect(dropdownListElementFourButton).not.toHaveAttribute('checked');
-    await expect(inputText).toHaveCount(2);
+    await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
+    await expect(dropdownListElementThreeButton).not.toHaveAttribute('aria-selected');
+    await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
+    await expect(inputText).toHaveCount(1);
 
     await dropdownListElementThreeButton.click();
-    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
-    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
-    await expect(dropdownListElementThreeButton).toHaveAttribute('checked');
-    await expect(dropdownListElementFourButton).not.toHaveAttribute('checked');
-    const inputText2 = page.getByText(/Option 1,Option 3/, { exact: true });
+    await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
+    await expect(dropdownListElementThreeButton).toHaveAttribute('aria-selected');
+    await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
+    const inputText2 = page.getByRole('button', { name: /Option 1,Option 3/ });
     await expect(inputText2).toHaveCount(1);
 
     await dropdownListElementFourButton.click();
-    await expect(dropdownListElementOneButton).toHaveAttribute('checked');
-    await expect(dropdownListElementTwoButton).not.toHaveAttribute('checked');
-    await expect(dropdownListElementThreeButton).toHaveAttribute('checked');
-    await expect(dropdownListElementFourButton).toHaveAttribute('checked');
-    const inputText3 = page.getByText(/Option 1,Option 3,Option 4/, { exact: true });
+    await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
+    await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
+    await expect(dropdownListElementThreeButton).toHaveAttribute('aria-selected');
+    await expect(dropdownListElementFourButton).toHaveAttribute('aria-selected');
+    const inputText3 = page.getByRole('button', { name: /Option 1,Option 3,Option 4/ });
     await expect(inputText3).toHaveCount(1);
 
     /* also check screenshot diff to make sure */
