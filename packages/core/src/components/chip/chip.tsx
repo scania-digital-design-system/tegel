@@ -30,7 +30,7 @@ export class TdsChip {
   @Prop() chipId: string = generateUniqueId();
 
   /** Controls component's checked attribute. Valid only for type checkbox and radio. */
-  @Prop({ reflect: true }) checked: boolean = false;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /** Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio. */
   @Prop() name: string;
