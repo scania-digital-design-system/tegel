@@ -62,7 +62,7 @@ export class TdsChip {
       // Always set it to true to enforce visual update for selected state
       this.checked = true;
     } else {
-      console.warn('Unsupported type in Chip component!');
+      console.error('Unsupported type in Chip component!');
     }
 
     this.tdsChange.emit({
