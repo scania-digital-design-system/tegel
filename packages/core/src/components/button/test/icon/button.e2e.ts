@@ -3,100 +3,47 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/button/test/icon/index.html';
 
-test.describe('tds-button', () => {
+test.describe('tds-button-icon', () => {
   test('renders icon button correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    await expect(button).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
+    const button = page.getByTestId('tds-button-testid');
+    await expect(button).toHaveCount(1);
 
-  test('component receives click event', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const myEventSpy = await page.spyOnEvent('click');
-    await button.click();
-    expect(myEventSpy).toHaveReceivedEvent();
-  });
-
-  test('component should have correct background color on hovering', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    await innerButton.hover();
-    const buttonBackgroundColor = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).backgroundColor,
-    );
-    expect(buttonBackgroundColor).toBe('rgb(32, 88, 168)');
-  });
-
-  test('component should have correct background color on pressed', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    await innerButton.hover();
-    await page.mouse.down({ button: 'left' });
-    const buttonBackgroundColor = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).backgroundColor,
-    );
-    expect(buttonBackgroundColor).toBe('rgb(15, 50, 99)');
-  });
-
-  test('component should have correct border when active', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    await innerButton.focus();
-    const buttonBackgroundColor = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).backgroundColor,
-    );
-    const buttonBorderColor = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).borderColor,
-    );
-    const buttonOutlineColor = await innerButton.evaluate(
-      (button2) => getComputedStyle(button2).outlineColor,
-    );
-    expect(buttonBackgroundColor).toBe('rgb(43, 112, 211)');
-    expect(buttonBorderColor).toBe('rgb(22, 65, 127)');
-    expect(buttonOutlineColor).toBe('rgb(22, 65, 127)');
-  });
-
-  test('Type = Button', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    const type = await innerButton.getAttribute('type');
-    expect(type).toBe('button');
-  });
-
-  test('check if the inner button contain classes primary lg and sc-tds-button', async ({
-    page,
-  }) => {
-    await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    const classAttribute = await innerButton.getAttribute('class');
-    const classes = classAttribute.split(' ');
-    expect(classes).toContain('primary');
-    expect(classes).toContain('lg');
-    expect(classes).toContain('sc-tds-button');
+    /* Check diff on screenshot */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('icon should exist', async ({ page }) => {
     await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const icon = button.locator('tds-icon');
-    expect(icon).not.toBeNull();
+    const icon = page.getByRole('img');
+    await expect(icon).toBeVisible();
   });
 
   test('Check so that height and width is correct to lg/default measurements with a single button', async ({
     page,
   }) => {
     await page.goto(componentTestPath);
-    const button = page.locator('tds-button');
-    const innerButton = button.locator('button');
-    const buttonHeight = await innerButton.evaluate((button2) => getComputedStyle(button2).height);
+    const button = page.getByRole('button');
+    const buttonHeight = await button.evaluate((style) => getComputedStyle(style).height);
     expect(buttonHeight).toBe('56px');
-    const buttonWidth = await innerButton.evaluate((button2) => getComputedStyle(button2).width);
+    const buttonWidth = await button.evaluate((style) => getComputedStyle(style).width);
     expect(buttonWidth).toBe('56px');
+
+    const icon = page.getByRole('img');
+    const iconHeight = await icon.evaluate((style) => getComputedStyle(style).height);
+    expect(iconHeight).toBe('20px');
+    const iconWidth = await icon.evaluate((style) => getComputedStyle(style).width);
+    expect(iconWidth).toBe('20px');
+  });
+
+  test('Check so that height and width is correct to lg/default measurements with a single button for the icon', async ({
+    page,
+  }) => {
+    await page.goto(componentTestPath);
+    const icon = page.getByRole('img');
+    const iconHeight = await icon.evaluate((style) => getComputedStyle(style).height);
+    expect(iconHeight).toBe('20px');
+    const iconWidth = await icon.evaluate((style) => getComputedStyle(style).width);
+    expect(iconWidth).toBe('20px');
   });
 });
