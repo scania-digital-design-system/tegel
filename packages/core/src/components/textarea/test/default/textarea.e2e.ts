@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/textarea/test/default/index.html';
 
-test.describe('tds-textarea', () => {
+test.describe('tds-textarea-default', () => {
   test('renders default textarea correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTextarea = page.getByTestId('tds-textarea-testid');
@@ -32,5 +32,12 @@ test.describe('tds-textarea', () => {
 
     /* Expect no difference in screenshot  */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
+
+  test('not able to find label if "no-label" is set', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const textareaLabel = page.getByText('Label');
+    await expect(textareaLabel).toHaveCount(0);
+    await expect(textareaLabel).toBeHidden();
   });
 });
