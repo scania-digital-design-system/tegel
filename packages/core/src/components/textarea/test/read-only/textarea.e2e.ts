@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/textarea/test/read-only/index.html';
 
-test.describe.only('tds-textarea-read-only', () => {
+test.describe('tds-textarea-read-only', () => {
   test('renders read-only textarea correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTextarea = page.getByTestId('tds-textarea-testid');
