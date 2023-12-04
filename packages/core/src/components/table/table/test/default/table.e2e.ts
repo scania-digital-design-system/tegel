@@ -1,10 +1,10 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/table/table/test/basic/index.html';
+const componentTestPath = 'src/components/table/table/test/default/index.html';
 
-test.describe('tds-table-basic', () => {
-  test('renders basic table correctly', async ({ page }) => {
+test.describe('tds-table-default', () => {
+  test('renders default table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
@@ -37,7 +37,7 @@ test.describe('tds-table-basic', () => {
     await expect(tableBodyRows).toHaveCount(6);
   });
 
-  test('table the correct text inside each cell', async ({ page }) => {
+  test('table has the correct text inside each cell', async ({ page }) => {
     await page.goto(componentTestPath);
 
     /* Checks all rows to see that they have the correct amount of tds-body-cells with values provided */
