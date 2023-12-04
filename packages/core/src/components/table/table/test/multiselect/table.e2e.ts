@@ -33,7 +33,7 @@ test.describe('tds-table-multiselect', () => {
     await Promise.all(promises);
   });
 
-  test('check each checkbox and take screenshot', async ({ page }) => {
+  test('can check every checkbox in the table', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableCheckboxes = page.getByRole('cell');
     await expect(tableCheckboxes).toHaveCount(5);
