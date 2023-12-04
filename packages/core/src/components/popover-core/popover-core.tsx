@@ -86,6 +86,12 @@ export class TdsPopoverCore {
     }
   }
 
+  /* To enable initial loading of a component if user controls show prop*/
+  componentWillLoad() {
+    this.setIsShown(this.show);
+  }
+
+  /* To observe any change of show prop after an initial load */
   @Watch('show')
   onShowChange(newValue: boolean) {
     this.setIsShown(newValue);
