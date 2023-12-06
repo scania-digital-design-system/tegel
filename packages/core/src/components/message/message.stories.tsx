@@ -104,7 +104,6 @@ const Template = ({ modeVariant, messageVariant, header, extendedMessage, minima
           header="${header}"
           ${noIcon ? 'no-icon' : ''}
           ${minimal ? 'minimal' : ''}
-          mode-variant="${modeVariant.toLowerCase()}"
           ${
             modeVariant !== 'Inherit from parent'
               ? `mode-variant="${modeVariant.toLowerCase()}"`
