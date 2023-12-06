@@ -53,6 +53,16 @@ export default {
         defaultValue: { summary: 'false' },
       },
     },
+    normalizeText: {
+      name: 'Normalize text',
+      description: 'Should search be normalized',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: 'true' },
+      },
+    },
     multiselect: {
       name: 'Multiselect',
       description: 'Adds multiselect functionality to the Dropdown.',
@@ -147,6 +157,7 @@ export default {
     modeVariant: 'Inherit from parent',
     error: false,
     filter: false,
+    normalizeText: true,
     multiselect: false,
     size: 'Large',
     labelText: 'Label text',
@@ -170,6 +181,7 @@ const defaultOptionLookUp = {
   'Option 2': 'option-2',
   'Option 3': 'option-3',
   'Option 4': 'option-4',
+  'îles Åland': 'iles-aland',
 };
 
 const getMultiselectDefaultValue = (multiDefaultOption: string[]) =>
@@ -183,6 +195,7 @@ const Template = ({
   size,
   error,
   filter,
+  normalizeText,
   multiselect,
   openDirection,
   modeVariant,
@@ -229,6 +242,7 @@ const Template = ({
           size="${sizeLookUp[size]}"
           ${error ? 'error' : ''}
           ${filter ? 'filter' : ''}
+          ${normalizeText ? '' : `normalize-text="false"`}
           ${multiselect ? 'multiselect' : ''}
           ${disabled ? 'disabled' : ''}
           open-direction="${openDirection.toLowerCase()}"
@@ -244,6 +258,9 @@ const Template = ({
             </tds-dropdown-option>
             <tds-dropdown-option value="option-4">
               Option 4
+            </tds-dropdown-option>
+            <tds-dropdown-option value="iles-aland">
+              îles Åland
             </tds-dropdown-option>
         </tds-dropdown>
     </div>
