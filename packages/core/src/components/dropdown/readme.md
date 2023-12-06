@@ -21,6 +21,7 @@
 | `multiselect`   | `multiselect`    | Enables multiselect in the Dropdown.                                                       | `boolean`                  | `false`       |
 | `name`          | `name`           | Name for the Dropdowns input element.                                                      | `string`                   | `undefined`   |
 | `noResultText`  | `no-result-text` | Text that is displayed if filter is used and there are no options that matches the search. | `string`                   | `'No result'` |
+| `normalizeText` | `normalize-text` | Normalizes input text for fuzzier search                                                   | `boolean`                  | `true`        |
 | `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                             | `"auto" \| "down" \| "up"` | `'auto'`      |
 | `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                         | `string`                   | `undefined`   |
 | `size`          | `size`           | The size of the Dropdown.                                                                  | `"lg" \| "md" \| "sm"`     | `'lg'`        |
