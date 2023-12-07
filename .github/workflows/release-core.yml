@@ -49,7 +49,10 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
-      - name: Core - npm install
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm install
 
