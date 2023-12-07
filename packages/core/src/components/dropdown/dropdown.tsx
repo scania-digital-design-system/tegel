@@ -62,6 +62,9 @@ export class TdsDropdown {
   /** Enables filtration in the Dropdown. */
   @Prop() filter: boolean = false;
 
+  /** Normalizes input text for fuzzier search */
+  @Prop() normalizeText: boolean = true;
+
   /** Text that is displayed if filter is used and there are no options that matches the search. */
   @Prop() noResultText: string = 'No result';
 
@@ -283,6 +286,11 @@ export class TdsDropdown {
     }
   }
 
+  /** Method to check if we should normalize text */
+  private normalizeString(text: string): string {
+    return this.normalizeText ? text.normalize('NFD').replace(/\p{Diacritic}/gu, '') : text;
+  }
+
   /** Method that resets the dropdown without emitting an event. */
   private internalReset() {
     this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
@@ -394,7 +402,11 @@ export class TdsDropdown {
       /* Hide the options that do not match the query */
     } else {
       this.filterResult = children.filter((element) => {
-        if (!element.textContent.toLowerCase().includes(query.toLowerCase())) {
+        if (
+          !this.normalizeString(element.textContent)
+            .toLowerCase()
+            .includes(this.normalizeString(query).toLowerCase())
+        ) {
           element.setAttribute('hidden', '');
         } else {
           element.removeAttribute('hidden');

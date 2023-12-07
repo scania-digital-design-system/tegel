@@ -30,7 +30,7 @@ export class TdsChip {
   @Prop() chipId: string = generateUniqueId();
 
   /** Controls component's checked attribute. Valid only for type checkbox and radio. */
-  @Prop({ reflect: true }) checked: boolean = false;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /** Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio. */
   @Prop() name: string;
@@ -55,7 +55,16 @@ export class TdsChip {
   }>;
 
   private handleChange = () => {
-    this.checked = !this.checked;
+    if (this.type === 'checkbox') {
+      // Toggle the prop on click
+      this.checked = !this.checked;
+    } else if (this.type === 'radio') {
+      // Always set it to true to enforce visual update for selected state
+      this.checked = true;
+    } else {
+      console.error('Unsupported type in Chip component!');
+    }
+
     this.tdsChange.emit({
       chipId: this.chipId,
       checked: this.checked,
