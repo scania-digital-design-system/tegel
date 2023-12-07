@@ -50,13 +50,20 @@ jobs:
         working-directory: packages/angular
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular - Install
+        working-directory: packages/angular
+        run: npm install
+
       - name: Angular - Install latest tegel package
         working-directory: packages/angular
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
-
-      - name: Core - Install Tegel
-        working-directory: packages/core
-        run: npm install
 
       - name: Angular - Run build
         run: npm run build-angular
