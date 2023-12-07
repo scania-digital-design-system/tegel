@@ -161,6 +161,7 @@ const PaginationTemplate = ({
                 column4Width ? `custom-width="${column4Width}"` : ''
               }></tds-header-cell>
           </tds-table-header>
+          <tds-table-body>
             <tds-table-body-row>
                 <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
@@ -197,6 +198,7 @@ const PaginationTemplate = ({
                 <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
+          </tds-table-body>
           <tds-table-footer pages="4" pagination></tds-table-footer>
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->
