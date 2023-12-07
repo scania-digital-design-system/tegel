@@ -47,13 +47,20 @@ jobs:
         working-directory: packages/react
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
-      - name: React - Install with latest tegel package
-        working-directory: packages/react
-        run: npm install @scania/tegel@${{ steps.version.outputs.version }}
+      - name: Install dependencies in root
+        run: npm install
 
-      - name: Core - Install Tegel
+      - name: Core - Install
         working-directory: packages/core
         run: npm install
+
+      - name: React - Install
+        working-directory: packages/react
+        run: npm install
+
+      - name: React - Install with latest tegel package
+        working-directory: packages/react
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: React - Build
         run: npm run build-react
