@@ -33,7 +33,8 @@
     "access": "public"
   },
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "stencil build --docs && stencil build --docs",
+    "_comment": "Due to stencil bug with types creation, we need to run build two times!",
     "start": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
     "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.39.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",

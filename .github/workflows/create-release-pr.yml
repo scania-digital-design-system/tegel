@@ -58,7 +58,7 @@ jobs:
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
         with:
-          title: release/@scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          title: 'release: @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}'
           commit-message: Release of @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           branch: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
