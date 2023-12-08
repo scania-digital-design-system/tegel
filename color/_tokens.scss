@@ -1,5 +1,17 @@
 @import './mixins';
 
+$black: (
+  black-100: rgb(0 0 0 / 100%),
+  black-87: rgb(0 0 0 / 87%),
+  black-48: rgb(0 0 0 / 48%),
+  black-38: rgb(0 0 0 / 38%),
+);
+$white: (
+  white-100: rgb(255 255 255 / 100%),
+  white-87: rgb(255 255 255 / 87%),
+  white-48: rgb(255 255 255 / 48%),
+  white-38: rgb(255 255 255 / 38%),
+);
 $grey: (
   grey-958: #0d0f13,
   grey-900: #1d2229,
@@ -15,7 +27,6 @@ $grey: (
   grey-100: #edeff3,
   grey-50: #f9fafb,
 );
-
 $blue: (
   blue-900: #001533,
   blue-800: #041e42,
@@ -28,7 +39,6 @@ $blue: (
   blue-100: #bacde8,
   blue-50: #e4e9f1,
 );
-
 $red: (
   red-900: #450307,
   red-800: #6a080f,
@@ -69,8 +79,8 @@ $orange: (
   orange-100: #fbe3df,
   orange-50: #fdf5f3,
 );
+$original-colors: map-collect($black, $white, $grey, $blue, $red, $green, $orange);
 
-$original-colors: map-collect($grey, $blue, $red, $green, $orange);
 //TODO: Should we keep brand pallete?
 $brand-pallete: (
   black: #000,
@@ -88,5 +98,4 @@ $semantic: (
   positive: #1dab8b,
   information: get-color-original(blue-400),
 );
-
 $all-colors: map-collect($original-colors, $semantic, $brand-pallete);
