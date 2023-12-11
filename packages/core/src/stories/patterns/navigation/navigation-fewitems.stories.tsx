@@ -102,7 +102,7 @@ const Template = () =>
           <span slot="label">Wheel types</span>
           <tds-header-dropdown-list>
             <tds-header-dropdown-list-item>
-              <a href="https://tegel.scania.com">Hub-centric wheel</a>
+              <button onclick="alert('clicked');">Hub-centric wheel</button>
             </tds-header-dropdown-list-item>
             <tds-header-dropdown-list-item>
               <a href="https://tegel.scania.com">Rim wheel</a>
