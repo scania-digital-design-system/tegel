@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property         | Attribute          | Description                                                                                | Type      | Default     |
-| ---------------- | ------------------ | ------------------------------------------------------------------------------------------ | --------- | ----------- |
-| `label`          | `label`            | The label of the button that opens the dropdown. This is an alternative to the label slot. | `string`  | `undefined` |
-| `noDropdownIcon` | `no-dropdown-icon` | If the dropdown icon (downwards chevron) should be hidden.                                 | `boolean` | `false`     |
-| `selected`       | `selected`         | If the button that opens the dropdown should appear selected.                              | `boolean` | `false`     |
+| Property         | Attribute          | Description                                                                                                                                                                                                                                                            | Type      | Default     |
+| ---------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `label`          | `label`            | The label of the button that opens the dropdown. This is an alternative to the label slot.                                                                                                                                                                             | `string`  | `undefined` |
+| `noDropdownIcon` | `no-dropdown-icon` | If the dropdown icon (downwards chevron) should be hidden.                                                                                                                                                                                                             | `boolean` | `false`     |
+| `open`           | `open`             | This controls whether the Dropdown is open or not. If this is set, the hiding and showing of the dropdown will be decided by this prop and will need to be controlled externally. This also implies that clicking outside of the popover won't automatically close it. | `boolean` | `null`      |
+| `selected`       | `selected`         | If the button that opens the dropdown should appear selected.                                                                                                                                                                                                          | `boolean` | `false`     |
 
 
 ## Slots

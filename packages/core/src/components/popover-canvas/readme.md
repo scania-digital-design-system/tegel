@@ -43,6 +43,14 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 | `show`           | `show`            | Controls whether the Popover is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                                                                                                                                                                                                    | `null`      |
 
 
+## Events
+
+| Event     | Description | Type                |
+| --------- | ----------- | ------------------- |
+| `tdsHide` | Hide event. | `CustomEvent<void>` |
+| `tdsShow` | Show event. | `CustomEvent<void>` |
+
+
 ## Slots
 
 | Slot          | Description                                           |

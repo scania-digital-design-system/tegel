@@ -24,44 +24,44 @@ export class TdsHeaderDropdown {
   /** If the button that opens the dropdown should appear selected. */
   @Prop() selected: boolean = false;
 
-  @State() open: boolean = false;
+  /** This controls whether the Dropdown is open or not. If this is set, the hiding and showing
+   * of the dropdown will be decided by this prop and will need to be controlled externally. This
+   * also implies that clicking outside of the popover won't automatically close it.
+   */
+  @Prop() open: boolean = null;
+
+  @State() internalOpen: boolean = false;
 
   @State() buttonEl?: HTMLButtonElement;
 
+  @Listen('tdsShow')
+  handleTdsShow() {
+    this.internalOpen = true;
+  }
+
+  @Listen('tdsHide')
+  handleTdsHide() {
+    this.internalOpen = false;
+  }
+
   private uuid: string = generateUniqueId();
-
-  @Listen('click', { target: 'document' })
-  onAnyClick(event: MouseEvent) {
-    // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-    const isClickOutside = !event.composedPath().includes(this.host as any);
-    if (isClickOutside) {
-      this.open = false;
-    }
-  }
-
-  toggleDropdown() {
-    this.open = !this.open;
-  }
 
   render() {
     return (
       <Host>
         <div
           class={{
-            'state-open': this.open,
+            'state-open': this.internalOpen,
           }}
         >
-          <tds-header-item class="button" active={this.open} selected={this.selected}>
+          <tds-header-item class="button" active={this.internalOpen} selected={this.selected}>
             <button
               ref={(el) => {
                 this.buttonEl = el;
               }}
-              aria-expanded={`${this.open}`}
+              aria-expanded={`${this.internalOpen}`}
               aria-controls={`launcher-${this.uuid}`}
               aria-current={this.selected ? 'location' : 'false'}
-              onClick={() => {
-                this.toggleDropdown();
-              }}
             >
               <slot name="icon"></slot>
               {this.label}
@@ -76,8 +76,8 @@ export class TdsHeaderDropdown {
               id={`tds-dropdown-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
-              placement="bottom-start"
               show={this.open}
+              placement="bottom-start"
               offsetDistance={0}
               modifiers={[
                 {

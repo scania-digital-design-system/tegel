@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -38,6 +38,20 @@ export class TdsTooltip {
 
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
+
+  // eslint-disable-next-line class-methods-use-this
+  @Listen('internalTdsShow')
+  handleInternalTdsShow(e: CustomEvent<void>) {
+    e.stopPropagation();
+    this.show = true;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  @Listen('internalTdsHide')
+  handleInternalTdsHide(e: CustomEvent<void>) {
+    e.stopPropagation();
+    this.show = false;
+  }
 
   border: string;
 
@@ -89,12 +103,6 @@ export class TdsTooltip {
           show={this.show}
           placement={this.placement}
           autoHide={false}
-          onInternalTdsShow={() => {
-            this.show = true;
-          }}
-          onInternalTdsClose={() => {
-            this.show = false;
-          }}
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}

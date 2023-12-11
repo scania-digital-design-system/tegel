@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Listen } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -38,6 +38,18 @@ export class TdsPopoverMenu {
 
   /** If true this unsets the width (160px) of the Popover Menu */
   @Prop() fluidWidth: boolean = false;
+
+  // eslint-disable-next-line class-methods-use-this
+  @Listen('internalTdsShow')
+  handleInternalTdsShow(e: CustomEvent<void>) {
+    e.stopPropagation();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  @Listen('internalTdsHide')
+  handleInternalTdsHide(e: CustomEvent<void>) {
+    e.stopPropagation();
+  }
 
   inheritedAttributes: Attributes = [];
 

@@ -20,6 +20,14 @@
 | `trigger`        | `trigger`         | What triggers the popover to show                                                                                   | `"click" \| "hover" \| "hover-popover"`                                                                                                                                                                      | `'click'`   |
 
 
+## Events
+
+| Event             | Description | Type                |
+| ----------------- | ----------- | ------------------- |
+| `internalTdsHide` | Hide event. | `CustomEvent<void>` |
+| `internalTdsShow` | Show event. | `CustomEvent<void>` |
+
+
 ## Dependencies
 
 ### Used by
