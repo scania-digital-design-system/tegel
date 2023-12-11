@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Listen, Event, EventEmitter } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -37,6 +37,34 @@ export class TdsPopoverCanvas {
 
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: Object[] = [];
+
+  /** Show event. */
+  @Event({
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsShow: EventEmitter<void>;
+
+  /** Hide event. */
+  @Event({
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsHide: EventEmitter<void>;
+
+  @Listen('internalTdsShow')
+  handleInternalTdsShow(e: CustomEvent<void>) {
+    e.stopPropagation();
+    this.tdsShow.emit();
+  }
+
+  @Listen('internalTdsHide')
+  handleInternalTdsHide(e: CustomEvent<void>) {
+    e.stopPropagation();
+    this.tdsHide.emit();
+  }
 
   inheritedAttributes: Attributes = [];
 

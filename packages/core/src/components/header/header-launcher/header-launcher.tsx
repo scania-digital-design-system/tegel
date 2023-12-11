@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Listen, State } from '@stencil/core';
+import { Component, Host, h, Element, State, Prop, Listen } from '@stencil/core';
 import { Attributes } from '../../../types/Attributes';
 import generateUniqueId from '../../../utils/generateUniqueId';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
@@ -14,24 +14,27 @@ import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 export class TdsHeaderLauncher {
   @Element() host: HTMLElement;
 
-  @State() open: boolean = false;
+  @Prop() open?: boolean;
+
+  @State() internalOpen: boolean = false;
 
   @State() buttonEl?: HTMLTdsHeaderLauncherButtonElement;
 
   @State() hasListTypeMenu = false;
 
+  @Listen('tdsShow')
+  handleTdsShow() {
+    this.internalOpen = true;
+  }
+
+  @Listen('tdsHide')
+  handleTdsHide() {
+    this.internalOpen = false;
+  }
+
   private uuid: string = generateUniqueId();
 
   private ariaAttributes: Attributes;
-
-  @Listen('click', { target: 'window' })
-  onAnyClick(event: MouseEvent) {
-    // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-    const isClickOutside = !event.composedPath().includes(this.host as any);
-    if (isClickOutside) {
-      this.open = false;
-    }
-  }
 
   componentDidLoad() {
     const slotElement = this.host.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
@@ -45,22 +48,15 @@ export class TdsHeaderLauncher {
     }
   }
 
-  toggleLauncher() {
-    this.open = !this.open;
-  }
-
   render() {
     this.ariaAttributes = { ...this.ariaAttributes, ...inheritAriaAttributes(this.host, ['role']) };
 
     const buttonAttributes = {
       ...this.ariaAttributes,
-      'aria-expanded': `${this.open}`,
+      'aria-expanded': `${this.internalOpen}`,
       'aria-controls': `launcher-${this.uuid}`,
       'class': 'button',
-      'active': this.open,
-      'onClick': () => {
-        this.toggleLauncher();
-      },
+      'active': this.internalOpen,
       'ref': (el: HTMLTdsHeaderLauncherButtonElement) => {
         this.buttonEl = el;
       },
@@ -71,7 +67,7 @@ export class TdsHeaderLauncher {
         <div
           class={{
             'wrapper': true,
-            'state-open': this.open,
+            'state-open': this.internalOpen,
             'state-list-type-menu': this.hasListTypeMenu,
           }}
         >
