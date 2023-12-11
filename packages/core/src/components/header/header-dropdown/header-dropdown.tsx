@@ -28,7 +28,9 @@ export class TdsHeaderDropdown {
    * of the dropdown will be decided by this prop and will need to be controlled externally. This
    * also implies that clicking outside of the popover won't automatically close it.
    */
-  @Prop() open: boolean = null;
+  @Prop() open?: boolean = null;
+
+  @Prop() closeWhenClicked?: boolean = false;
 
   @State() internalOpen: boolean = false;
 
@@ -78,6 +80,7 @@ export class TdsHeaderDropdown {
               referenceEl={this.buttonEl}
               show={this.open}
               placement="bottom-start"
+              closeWhenClicked={this.closeWhenClicked}
               offsetDistance={0}
               modifiers={[
                 {

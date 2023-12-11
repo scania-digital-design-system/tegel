@@ -49,6 +49,8 @@ export class TdsPopoverCore {
    * Alternatevly it can be hidden externally based on emitted events. */
   @Prop() autoHide: boolean = true;
 
+  @Prop() closeWhenClicked?: boolean = false;
+
   @State() renderedShowValue: boolean = false;
 
   @State() popperInstance: Instance | null;
@@ -190,6 +192,10 @@ export class TdsPopoverCore {
         this.host.addEventListener('mouseleave', this.handleHide);
       }
     }
+
+    if (this.closeWhenClicked) {
+      this.host.addEventListener('click', this.handleHide);
+    }
   }
 
   private cleanUp() {
@@ -200,6 +206,7 @@ export class TdsPopoverCore {
     this.target?.removeEventListener('mouseleave', this.handleHide);
     this.host?.removeEventListener('mouseenter', this.handleShow);
     this.host?.removeEventListener('mouseleave', this.handleHide);
+    this.host?.removeEventListener('click', this.handleHide);
 
     this.popperInstance?.destroy();
   }

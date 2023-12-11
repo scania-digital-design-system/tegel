@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `open`   | `open`    |             | `boolean` | `undefined` |
+| Property           | Attribute            | Description | Type      | Default     |
+| ------------------ | -------------------- | ----------- | --------- | ----------- |
+| `closeWhenClicked` | `close-when-clicked` |             | `boolean` | `false`     |
+| `open`             | `open`               |             | `boolean` | `undefined` |
 
 
 ## Slots

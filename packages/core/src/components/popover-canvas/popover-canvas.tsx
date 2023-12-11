@@ -38,6 +38,8 @@ export class TdsPopoverCanvas {
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: Object[] = [];
 
+  @Prop() closeWhenClicked?: boolean = false;
+
   /** Show event. */
   @Event({
     composed: true,
@@ -89,6 +91,7 @@ export class TdsPopoverCanvas {
           offsetDistance={this.offsetDistance}
           modifiers={this.modifiers}
           trigger={'click'}
+          closeWhenClicked={this.closeWhenClicked}
         >
           <div>
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}

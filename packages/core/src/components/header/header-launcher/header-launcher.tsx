@@ -16,6 +16,8 @@ export class TdsHeaderLauncher {
 
   @Prop() open?: boolean;
 
+  @Prop() closeWhenClicked?: boolean = false;
+
   @State() internalOpen: boolean = false;
 
   @State() buttonEl?: HTMLTdsHeaderLauncherButtonElement;
@@ -81,6 +83,7 @@ export class TdsHeaderLauncher {
               placement="bottom-start"
               show={this.open}
               offsetDistance={0}
+              closeWhenClicked={this.closeWhenClicked}
               modifiers={[
                 {
                   name: 'flip',

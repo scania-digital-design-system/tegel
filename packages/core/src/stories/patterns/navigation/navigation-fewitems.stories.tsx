@@ -98,11 +98,11 @@ const Template = () =>
           </a>
         </tds-header-item>
 
-        <tds-header-dropdown>
+        <tds-header-dropdown close-when-clicked>
           <span slot="label">Wheel types</span>
           <tds-header-dropdown-list>
             <tds-header-dropdown-list-item>
-              <button onclick="alert('clicked');">Hub-centric wheel</button>
+              <button onclick="console.log('clicked');">Hub-centric wheel</button>
             </tds-header-dropdown-list-item>
             <tds-header-dropdown-list-item>
               <a href="https://tegel.scania.com">Rim wheel</a>
