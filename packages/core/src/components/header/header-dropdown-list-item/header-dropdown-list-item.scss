@@ -25,7 +25,8 @@
       color: var(--tds-header-nav-item-dropdown-opened-color);
     }
 
-    ::slotted(a:hover) {
+    ::slotted(a:hover),
+    ::slotted(button:hover) {
       background-color: var(--tds-nav-item-background-hover);
       cursor: pointer;
     }
