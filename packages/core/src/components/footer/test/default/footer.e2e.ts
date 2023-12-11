@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/footer/test/default/index.html';
 
-test.describe.only('tds-footer-default', () => {
+test.describe('tds-footer-default', () => {
   test('renders default footer correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const footerComponent = page.locator('footer');
