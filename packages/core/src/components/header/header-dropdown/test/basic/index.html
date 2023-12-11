@@ -150,6 +150,8 @@
           no-dropdown-icon
           class="demo-hide demo-lg-show"
           selected
+          data-testid="header-dropdown-2"
+          close-when-clicked
         >
           <img
             slot="icon"
@@ -157,7 +159,7 @@
             alt="User menu."
           />
           <tds-header-dropdown-list size="lg">
-            <tds-header-dropdown-list-user header="Name Nameson" subheader="Company name">
+            <tds-header-dropdown-list-user data-testid="header-dropdown-list-user" header="Name Nameson" subheader="Company name">
             </tds-header-dropdown-list-user>
             <tds-header-dropdown-list-item selected>
               <a href="https://www.scania.com">My Instructions</a>
