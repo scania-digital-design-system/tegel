@@ -15,21 +15,21 @@ test.describe('tds-header-default', () => {
 
   test('Header title exists and is "Example: default"', async ({ page }) => {
     await page.goto(componentTestPath);
-    const headerComponent = page.getByText('Example: default');
-    await expect(headerComponent).toBeVisible();
+    const headerComponentHeaderText = page.getByText('Example: default');
+    await expect(headerComponentHeaderText).toBeVisible();
   });
 
-  test('Header icon exists', async ({ page }) => {
+  test('Header luncher icon exists', async ({ page }) => {
     await page.goto(componentTestPath);
-    const headerComponent = page.getByRole('img');
-    await expect(headerComponent).toBeVisible();
-    await expect(headerComponent).toHaveCount(1);
+    const headerComponentLuncherIcon = page.getByRole('img');
+    await expect(headerComponentLuncherIcon).toBeVisible();
+    await expect(headerComponentLuncherIcon).toHaveCount(1);
   });
 
-  test('Header brand label exists', async ({ page }) => {
+  test('Header brand label with link exists', async ({ page }) => {
     await page.goto(componentTestPath);
-    const headerComponent = page.getByRole('link');
-    await expect(headerComponent).toBeVisible();
-    await expect(headerComponent).toHaveCount(1);
+    const headerComponentBrandLink = page.getByRole('link');
+    await expect(headerComponentBrandLink).toBeVisible();
+    await expect(headerComponentBrandLink).toHaveCount(1);
   });
 });
