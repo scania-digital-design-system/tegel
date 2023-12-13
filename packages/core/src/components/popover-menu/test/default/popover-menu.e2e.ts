@@ -3,10 +3,10 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/popover-menu/test/default/index.html';
 
-test.describe.only('tds-popover-menu-default', () => {
+test.describe('tds-popover-menu-default', () => {
   test('renders default popover-menu correctly', async ({ page }) => {
     await page.goto(componentTestPath);
-    const triggerButton = page.getByRole('button');
+    const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await triggerButton.click();
 
     /* Check diff on screenshot */
