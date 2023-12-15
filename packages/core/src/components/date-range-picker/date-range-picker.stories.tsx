@@ -120,7 +120,6 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    variant: 'Day',
     state: 'Default',
     startDate: false,
     endDate: false,
