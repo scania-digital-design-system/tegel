@@ -13,7 +13,7 @@ test.describe('tds-popover-canvas-show-false', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('make sure popover canvas shows after trigger button is pressed and content is not displayed before or after button click', async ({
+  test('make sure popover canvas does not show after trigger button is pressed and content is not displayed before or after button click', async ({
     page,
   }) => {
     await page.goto(componentTestPath);
