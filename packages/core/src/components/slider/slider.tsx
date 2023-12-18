@@ -168,7 +168,9 @@ export class TdsSlider {
 
   @Watch('value')
   handleValueUpdate(newValue: string) {
-    this.forceValueUpdate(newValue);
+    this.calculateThumbLeftFromValue(newValue);
+    this.value = newValue;
+    this.updateTrack();
   }
 
   private updateSupposedValueSlot(localLeft) {
