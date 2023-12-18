@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Banner - Basic</title>
+    <title>Card - clickable</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
     <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
     <script type="module">
@@ -12,6 +12,8 @@
   </head>
 
   <body>
-    <tds-banner></tds-banner>
+    <tds-card header="Header text" subheader="Subheader text" clickable>
+      <tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>
+    </tds-card>
   </body>
 </html>
