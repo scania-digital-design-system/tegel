@@ -27,7 +27,7 @@ test.describe('tds-footer-default', () => {
 
   test('Footer contains copyright text', async ({ page }) => {
     await page.goto(componentTestPath);
-    const footerCopyrightText = page.getByText(`Copyright © ${new Date().getFullYear()} Scania`);
+    const footerCopyrightText = page.getByText('Copyright © 2023 Scania');
     await expect(footerCopyrightText).toHaveCount(1);
     await expect(footerCopyrightText).toBeVisible();
   });
