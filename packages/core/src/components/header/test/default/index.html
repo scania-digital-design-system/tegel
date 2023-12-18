@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Header - Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-header>
+      <tds-header-title>Example: default</tds-header-title>
+
+      <tds-header-launcher slot="end">
+        <tds-header-launcher-list-title>Cool apps</tds-header-launcher-list-title>
+        <tds-header-launcher-list>
+          <tds-header-launcher-list-item>
+            <a href="https://tegel.scania.com">Trucklyfe</a>
+          </tds-header-launcher-list-item>
+          <tds-header-launcher-list-item>
+            <a href="https://tegel.scania.com">HaulHub</a>
+          </tds-header-launcher-list-item>
+          <tds-header-launcher-list-item>
+            <a href="https://tegel.scania.com">WheelWizz</a>
+          </tds-header-launcher-list-item>
+        </tds-header-launcher-list>
+      </tds-header-launcher>
+
+      <tds-header-brand-symbol slot="end">
+        <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
+      </tds-header-brand-symbol>
+    </tds-header>
+  </body>
+</html>
