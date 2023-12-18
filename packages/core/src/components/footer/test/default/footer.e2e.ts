@@ -15,25 +15,27 @@ test.describe('tds-footer-default', () => {
 
   test('Footer contains four links "Link text"', async ({ page }) => {
     await page.goto(componentTestPath);
-    const footerLinks = page.getByText('Link text');
+    const footerLinks = page.getByRole('link').filter({ hasText: /Link text/ });
     await expect(footerLinks).toHaveCount(4);
   });
 
   test('Footer contains three truck icons', async ({ page }) => {
     await page.goto(componentTestPath);
-    const footerTruckIcons = page.getByRole('img');
+    const footerTruckIcons = page.getByRole('link').filter({ has: page.getByRole('img') });
     await expect(footerTruckIcons).toHaveCount(3);
   });
 
   test('Footer contains copyright text', async ({ page }) => {
     await page.goto(componentTestPath);
     const footerCopyrightText = page.getByText('Copyright © 2023 Scania');
+    await expect(footerCopyrightText).toHaveCount(1);
     await expect(footerCopyrightText).toBeVisible();
   });
 
   test('Footer contains brand label (Scania)', async ({ page }) => {
     await page.goto(componentTestPath);
     const footerBrandText = page.getByText('Scania', { exact: true });
+    await expect(footerBrandText).toHaveCount(1);
     await expect(footerBrandText).toBeHidden();
   });
 });
