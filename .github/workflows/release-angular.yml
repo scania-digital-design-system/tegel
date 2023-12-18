@@ -69,6 +69,7 @@ jobs:
         run: npm run build-angular
 
       - name: Angular - Publish
+        working-directory: packages/angular
         run: |
           if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
             npm publish --tag ${{ github.event.inputs.tags }} --dry-run
