@@ -18,7 +18,7 @@ test.describe('tds-modal-open', () => {
   });
 
   test('Clicking [Delete] button closes the modal', async ({ page }) => {
-    const deleteButton = page.getByText('Delete');
+    const deleteButton = page.getByRole('button').filter({ hasText: /Delete/ });
     await deleteButton.click(); // Click [Delete] button
     const tdsModal = page.locator('tds-modal');
     await expect(tdsModal).toBeHidden(); // Modal is closed
