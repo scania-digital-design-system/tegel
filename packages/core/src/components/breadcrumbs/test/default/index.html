@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Breadcrumbs - Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-breadcrumbs>
+      <tds-breadcrumb>
+        <a href="#">Page 1</a>
+      </tds-breadcrumb>
+      <tds-breadcrumb>
+        <a href="#">Page 2</a>
+      </tds-breadcrumb>
+      <tds-breadcrumb current>
+        <a href="#">Page 3</a>
+      </tds-breadcrumb>
+    </tds-breadcrumbs>
+  </body>
+</html>
