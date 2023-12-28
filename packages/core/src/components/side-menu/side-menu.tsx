@@ -48,7 +48,7 @@ export class TdsSideMenu {
   @Prop() persistent: boolean = false;
 
   /** If the Side Menu is collapsed. Only a persistent desktop menu can be collapsed.
-   * NOTE: Only use this if you have prevented the automatic collapsing with preventDefault on the tds-Collapse event. */
+   * NOTE: Only use this if you have prevented the automatic collapsing with preventDefault on the tdsCollapse event. */
   @Prop({ mutable: true }) collapsed: boolean = false;
 
   @State() isUpperSlotEmpty: boolean = false;
