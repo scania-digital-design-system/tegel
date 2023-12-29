@@ -4,7 +4,7 @@ import hasSlot from '../../utils/hasSlot';
 /**
  * @slot top - Slot for the top part of the Footer.
  * @slot start - Slot for start (left side) of the Footers main part.
- * @slot end - Slot for an end (right side) of the Footers main part.
+ * @slot end - Slot for the end (right side) of the Footers main part.
  * @slot copyright - Slot for copyright area (bottom left) of the Footer.
  */
 @Component({
