@@ -99,3 +99,20 @@ body {
     background-color: var(--tds-grey-900);
   }
 }
+
+//FIXME: In Tegel 2.0 reconsider usage of lines 68 - 100 in this file.
+
+/* Overwrite of global rules that bleed in some components */
+:root,
+.tds-mode-light {
+  tds-dropdown,
+  tds-textarea,
+  tds-text-field {
+    &.tds-mode-variant-primary,
+    & .tds-mode-variant-primary,
+    &.tds-mode-variant-secondary,
+    & .tds-mode-variant-secondary {
+      background: transparent;
+    }
+  }
+}
