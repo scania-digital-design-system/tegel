@@ -18,7 +18,7 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  const copyrightText = 'Copyright © ' + new Date().getFullYear() + ' Scania';
+  const copyrightText = `Copyright © ${new Date().getFullYear()} Scania`;
 
   render() {
     const usesTopSlot = hasSlot('top', this.host);
