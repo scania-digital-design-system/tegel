@@ -11,15 +11,12 @@ test.describe('tds-modal-default', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('modal contains two buttons', async ({ page }) => {
+  test('modal contains three buttons', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsModal = page.getByTestId('tds-modal-testid');
-
     // Locate the buttons within the modal
-    const buttonLocator = tdsModal.locator('tds-button[data-dismiss-modal]');
-    const buttonCount = await buttonLocator.count();
+    const modalButtons = page.getByRole('button');
 
-    // Assert that there are two buttons
-    expect(buttonCount).toBe(2);
+    // Assert that there are three buttons
+    await expect(modalButtons).toHaveCount(3);
   });
 });

@@ -12,8 +12,8 @@
   </head>
 
   <body>
-    <tds-button id="my-modal-button" data-testid="tds-modal-button-testid" text="Open Modal"></tds-button>
-    <tds-modal header="This is a header" data-testid="tds-modal-testid" size="lg" id="my-modal-button" show>
+    <tds-button text="Open Modal" id="my-modal-button"></tds-button>
+    <tds-modal header="This is a header" size="lg" selector="#my-modal-button">
       <span slot="body">
         'Where you can put anything you want!'
         </span>
