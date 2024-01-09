@@ -37,16 +37,39 @@ export default {
       },
       options: [16, 20, 24, 32],
     },
+    svgTitle: {
+      name: 'SVG title',
+      description:
+        'Text that displays while hovering on icon. If not specified goes to default icon name.',
+      control: {
+        type: 'text',
+      },
+    },
+    svgDescription: {
+      name: 'SVG description',
+      description: 'Optional description text for icon.',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     size: 32,
     icon: 'truck',
+    svgTitle: '',
+    svgDescription: '',
   },
 };
 
 const IconTemplate = (args) =>
   formatHtmlPreview(`
-  <tds-icon name="${args.icon}" size="${`${args.size.toString()}px`}"></tds-icon> 
+  <tds-icon 
+    name="${args.icon}" 
+    size="${`${args.size.toString()}px`}" 
+    ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
+    ${args.svgDescription ? `svg-desc='${args.svgDescription}'` : ''}
+    >   
+  </tds-icon> 
   `);
 
 export const Icons = IconTemplate.bind({});
