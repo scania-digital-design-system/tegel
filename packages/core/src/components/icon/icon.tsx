@@ -21,7 +21,7 @@ export class Icon {
   @Prop() svgTitle: string;
 
   /** Set description for the svg. */
-  @Prop() svgDesc: string;
+  @Prop() svgDesc?: string;
 
   @State() icons_object: string = iconsCollection;
 
