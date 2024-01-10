@@ -18,7 +18,7 @@ export class Icon {
   @Prop({ reflect: true }) size: string = '16px';
 
   /** Override the default title for the svg. */
-  @Prop() svgTitle: string;
+  @Prop() svgTitle?: string;
 
   /** Set description for the svg. */
   @Prop() svgDesc?: string;
