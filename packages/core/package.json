@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -33,7 +33,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "stencil build --docs && stencil build --docs",
+    "build": "stencil build && stencil build --docs",
     "_comment": "Due to stencil bug with types creation, we need to run build two times!",
     "start": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@stencil/core": "^4.7.1",
+    "@stencil/core": "^4.9.0",
     "prettier": "^2.7.1"
   },
   "devDependencies": {

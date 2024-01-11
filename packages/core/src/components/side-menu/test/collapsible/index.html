@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Side Menu - Collapsible</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-side-menu aria-label="Side menu" id="demo-side-menu" persistent>
+      <tds-side-menu-item>
+        <button>
+          <tds-icon name="timer" size="24px"></tds-icon>
+          About us
+        </button>
+      </tds-side-menu-item>
+
+      <tds-side-menu-item>
+        <button>
+          <tds-icon name="truck" size="24px"></tds-icon>
+          Trucks
+        </button>
+      </tds-side-menu-item>
+
+      <tds-side-menu-dropdown default-open selected>
+        <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+        <span slot="label">Wheel types</span>
+        <tds-side-menu-dropdown-list>
+          <tds-side-menu-dropdown-list-item>
+            <a href="https://www.scania.com">Hub-centric wheel</a>
+          </tds-side-menu-dropdown-list-item>
+          <tds-side-menu-dropdown-list-item selected>
+            <a href="https://www.scania.com" aria-current="page">Rim wheel</a>
+          </tds-side-menu-dropdown-list-item>
+        </tds-side-menu-dropdown-list>
+      </tds-side-menu-dropdown>
+
+      <tds-side-menu-item>
+        <button>
+          <tds-icon name="star" size="24px"></tds-icon>
+          Values
+        </button>
+      </tds-side-menu-item>
+
+      <tds-side-menu-collapse-button slot="sticky-end">Collapse</tds-side-menu-collapse-button>
+    </tds-side-menu>
+  </body>
+</html>
