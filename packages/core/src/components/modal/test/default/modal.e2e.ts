@@ -19,4 +19,17 @@ test.describe('tds-modal-default', () => {
     // Assert that there are three buttons
     await expect(modalButtons).toHaveCount(3);
   });
+
+  test('modal contains a header and a body', async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    const modalHeader = page.getByText('This is a header', { exact: true });
+    const modalBody = page.getByText('Where you can put anything you want!', {
+      exact: true,
+    });
+
+    // Assert that there are three buttons
+    await expect(modalHeader).toBeVisible();
+    await expect(modalBody).toBeVisible();
+  });
 });
