@@ -47,7 +47,7 @@ export class Icon {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
-            aria-labelledby={`icon ${element.name}`}
+            aria-labelledby={this.svgTitle ?? `${element.name} icon`}
             role="img"
             style={{ fontSize: this.size }}
             height={this.size}
