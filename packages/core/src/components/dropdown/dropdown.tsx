@@ -65,8 +65,9 @@ export class TdsDropdown {
   /** Normalizes input text for fuzzier search */
   @Prop() normalizeText: boolean = true;
 
-  /** Text that is displayed if filter is used and there are no options that matches the search. */
-  @Prop() noResultText: string = 'No result';
+  /** Text that is displayed if filter is used and there are no options that matches the search.
+   * Setting it to an empty string disables message from showing up. */
+  @Prop() noResultText?: string = 'No result';
 
   /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
@@ -140,6 +141,13 @@ export class TdsDropdown {
       value: element.value,
       label: element.textContent.trim(),
     }));
+
+    // Update inputElement value and placeholder text
+    if (this.filter) {
+      this.inputElement.value = this.getValue();
+    } else {
+      this.inputElement.value = selection.length > 0 ? selection[0].label : '';
+    }
     return selection;
   }
 
@@ -340,11 +348,15 @@ export class TdsDropdown {
     });
   }
 
-  /* Returns a list of all children that are are tds-dropdown-option elements */
-  private getChildren = () =>
-    Array.from(this.host.children).filter(
+  /* Returns a list of all children that are tds-dropdown-option elements */
+  private getChildren = () => {
+    const tdsDropdownOptions = Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
+    if (tdsDropdownOptions.length === 0) {
+      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
+    } else return tdsDropdownOptions;
+  };
 
   getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
@@ -393,6 +405,7 @@ export class TdsDropdown {
     const query = event.target.value.toLowerCase();
     /* Check if the query is empty, and if so, show all options */
     const children = this.getChildren();
+
     if (query === '') {
       children.forEach((element) => {
         element.removeAttribute('hidden');
@@ -562,7 +575,7 @@ export class TdsDropdown {
             ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}`}
         >
           <slot></slot>
-          {this.filterResult === 0 && (
+          {this.filterResult === 0 && this.noResultText !== '' && (
             <div class={`no-result ${this.size}`}>{this.noResultText}</div>
           )}
         </div>

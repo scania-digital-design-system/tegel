@@ -23,7 +23,7 @@ export type InternalTdsSideMenuPropChange = {
   changed: Array<keyof Props>;
 } & Partial<Props>;
 
-const GRID_LG_BREAKPOINT = '992px';
+const GRID_LG_BREAKPOINT: number = 992;
 /**
  * @slot overlay - Used of injection of tds-side-menu-overlay
  * @slot close-button - Used for injection of tds-side-menu-close-button that is show when in mobile view
@@ -48,12 +48,15 @@ export class TdsSideMenu {
   @Prop() persistent: boolean = false;
 
   /** If the Side Menu is collapsed. Only a persistent desktop menu can be collapsed.
-   * NOTE: Only use this if you have prevented the automatic collapsing with preventDefault on the tds-Collapse event. */
-  @Prop() collapsed: boolean = false;
+   * NOTE: Only use this if you have prevented the automatic collapsing with preventDefault on the tdsCollapse event. */
+  @Prop({ mutable: true }) collapsed: boolean = false;
 
   @State() isUpperSlotEmpty: boolean = false;
 
   @State() isCollapsed: boolean = false;
+
+  /* To preserved initial state of collapsed prop as it is changed in runtime */
+  @State() initialCollapsedState: boolean = false;
 
   private matchesLgBreakpointMq: MediaQueryList;
 
@@ -61,13 +64,16 @@ export class TdsSideMenu {
     const isBelowLg = !e.matches;
     if (isBelowLg) {
       this.collapsed = false;
+    } else {
+      this.collapsed = this.initialCollapsedState;
     }
   };
 
   connectedCallback() {
-    this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT})`);
+    this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT}px)`);
     this.matchesLgBreakpointMq.addEventListener('change', this.handleMatchesLgBreakpointChange);
     this.isCollapsed = this.collapsed;
+    this.initialCollapsedState = this.collapsed;
   }
 
   componentDidLoad() {
@@ -77,6 +83,9 @@ export class TdsSideMenu {
 
     if (!hasUpperSlotElements) {
       this.isUpperSlotEmpty = true;
+    }
+    if (window.innerWidth < GRID_LG_BREAKPOINT) {
+      this.collapsed = false;
     }
   }
 

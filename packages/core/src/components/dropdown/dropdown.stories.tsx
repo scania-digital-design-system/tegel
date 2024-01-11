@@ -111,6 +111,16 @@ export default {
       type: 'string',
       description: 'Placeholder text when no option is selected',
     },
+    noResultText: {
+      name: 'No result message',
+      type: 'string',
+      description: 'Message that appears when no results match criteria in filter feature',
+      table: {
+        defaultValue: { summary: 'No result' },
+      },
+      control: 'text',
+      if: { arg: 'filter', eq: true },
+    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the component',
@@ -157,6 +167,7 @@ export default {
     modeVariant: 'Inherit from parent',
     error: false,
     filter: false,
+    noResultText: 'No result',
     normalizeText: true,
     multiselect: false,
     size: 'Large',
@@ -202,6 +213,7 @@ const Template = ({
   disabled,
   defaultOption,
   multiDefaultOption,
+  noResultText,
 }) =>
   formatHtmlPreview(`
   <style>
@@ -242,10 +254,11 @@ const Template = ({
           size="${sizeLookUp[size]}"
           ${error ? 'error' : ''}
           ${filter ? 'filter' : ''}
+          ${filter ? `no-result-text="${noResultText}"` : ''}
           ${normalizeText ? '' : `normalize-text="false"`}
           ${multiselect ? 'multiselect' : ''}
           ${disabled ? 'disabled' : ''}
-          open-direction="${openDirection.toLowerCase()}"
+          open-direction="${openDirection.toLowerCase()}"          
           >
             <tds-dropdown-option value="option-1">
               Option 1

@@ -4,7 +4,8 @@ import hasSlot from '../../utils/hasSlot';
 /**
  * @slot top - Slot for the top part of the Footer.
  * @slot start - Slot for start (left side) of the Footers main part.
- * @slot end - Slot for end (right side) of the Footers main part.
+ * @slot end - Slot for the end (right side) of the Footers main part.
+ * @slot copyright - Slot for copyright area (bottom left) of the Footer.
  */
 @Component({
   tag: 'tds-footer',
@@ -17,10 +18,13 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
+  copyrightText: string = `Copyright © ${new Date().getFullYear()} Scania`;
+
   render() {
     const usesTopSlot = hasSlot('top', this.host);
     const usesStartSlot = hasSlot('start', this.host);
     const usesEndSlot = hasSlot('end', this.host);
+    const usesCopyrightSlot = hasSlot('copyright', this.host);
     return (
       <Host class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <footer>
@@ -31,7 +35,9 @@ export class TdsFooter {
               {usesEndSlot && <slot name="end"></slot>}
             </div>
             <div class="footer-main-bottom">
-              <small class="copyright">Copyright &#169; {new Date().getFullYear()} Scania</small>
+              <small class="copyright">
+                {usesCopyrightSlot ? <slot name="copyright"></slot> : this.copyrightText}
+              </small>
               <div class="brand">
                 <p>Scania</p>
               </div>
