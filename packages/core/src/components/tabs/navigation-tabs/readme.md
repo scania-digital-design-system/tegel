@@ -27,6 +27,12 @@
 
 Sets the passed tabindex as the selected Tab.
 
+#### Parameters
+
+| Name       | Type     | Description |
+| ---------- | -------- | ----------- |
+| `tabIndex` | `number` |             |
+
 #### Returns
 
 Type: `Promise<{ selectedTabIndex: number; }>`

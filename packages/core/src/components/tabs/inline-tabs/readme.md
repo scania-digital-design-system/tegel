@@ -27,6 +27,12 @@
 
 Selects a Tab based on tabindex, will not select a disabled Tab.
 
+#### Parameters
+
+| Name       | Type     | Description |
+| ---------- | -------- | ----------- |
+| `tabIndex` | `number` |             |
+
 #### Returns
 
 Type: `Promise<{ selectedTabIndex: number; }>`
