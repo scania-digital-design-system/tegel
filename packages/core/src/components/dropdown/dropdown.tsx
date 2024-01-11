@@ -145,6 +145,8 @@ export class TdsDropdown {
     // Update inputElement value and placeholder text
     if (this.filter) {
       this.inputElement.value = this.getValue();
+    } else {
+      this.inputElement.value = selection.length > 0 ? selection[0].label : '';
     }
     return selection;
   }
@@ -370,21 +372,6 @@ export class TdsDropdown {
     return this.openDirection;
   };
 
-  /* Toggles the open state of the Dropdown and sets focus to the input element */
-  private handleToggleOpen = () => {
-    if (!this.disabled) {
-      this.open = !this.open;
-      if (this.open) {
-        this.focusInputElement();
-      }
-    }
-  };
-
-  /* Focuses the input element in the Dropdown, if the reference is present. */
-  private focusInputElement = () => {
-    if (this.inputElement) this.inputElement.focus();
-  };
-
   private getSelectedChildren = () =>
     this.value
       ?.map((stringValue) => {
@@ -499,7 +486,7 @@ export class TdsDropdown {
                 )}
                 <input
                   // eslint-disable-next-line no-return-assign
-                  ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
+                  ref={(element) => (this.inputElement = element)}
                   class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
                   type="text"
                   placeholder={this.placeholder}
@@ -523,7 +510,12 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
-                onClick={this.handleToggleOpen}
+                onClick={() => {
+                  this.open = !this.open;
+                  if (this.open) {
+                    this.inputElement.focus();
+                  }
+                }}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
@@ -531,7 +523,9 @@ export class TdsDropdown {
             </div>
           ) : (
             <button
-              onClick={() => this.handleToggleOpen()}
+              onClick={() => {
+                this.open = !this.open;
+              }}
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
                   this.open = false;
