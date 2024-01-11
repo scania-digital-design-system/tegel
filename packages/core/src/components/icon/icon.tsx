@@ -21,7 +21,7 @@ export class Icon {
   @Prop() svgTitle?: string;
 
   /** Set description for the svg. */
-  @Prop() svgDesc?: string;
+  @Prop() svgDescription?: string;
 
   @State() icons_object: string = iconsCollection;
 
@@ -54,7 +54,7 @@ export class Icon {
             width={this.size}
           >
             <title>{this.svgTitle ?? `${element.name} icon`}</title>
-            {this.svgDesc && <desc>{this.svgDesc}</desc>}
+            {this.svgDescription && <desc>{this.svgDescription}</desc>}
             <path fill="currentColor" d={element.definition} />
           </svg>
         );
