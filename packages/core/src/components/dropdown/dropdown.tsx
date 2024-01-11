@@ -140,6 +140,13 @@ export class TdsDropdown {
       value: element.value,
       label: element.textContent.trim(),
     }));
+
+    // Update inputElement value and placeholder text
+    if (this.filter) {
+      this.inputElement.value = this.getValue();
+    } else {
+      this.inputElement.value = selection.length > 0 ? selection[0].label : '';
+    }
     return selection;
   }
 
