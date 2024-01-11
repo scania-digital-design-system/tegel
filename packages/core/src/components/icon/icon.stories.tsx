@@ -40,14 +40,17 @@ export default {
     svgTitle: {
       name: 'SVG title',
       description:
-        'Text that displays while hovering on icon. If not specified goes to default icon name.',
+        'Text that displays while hovering on icon. If not specified it goes to default icon name.',
       control: {
         type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'icon-name' },
       },
     },
     svgDescription: {
       name: 'SVG description',
-      description: 'Optional description text for icon.',
+      description: 'Optional long-text description of SVG icon.',
       control: {
         type: 'text',
       },
@@ -67,7 +70,7 @@ const IconTemplate = (args) =>
     name="${args.icon}" 
     size="${`${args.size.toString()}px`}" 
     ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
-    ${args.svgDescription ? `svg-desc='${args.svgDescription}'` : ''}
+    ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
     >   
   </tds-icon> 
   `);
