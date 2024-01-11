@@ -347,9 +347,7 @@ export class TdsDropdown {
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
     if (tdsDropdownOptions.length === 0) {
-      console.error(
-        'TDS DROPDOWN: Data is missing! Please check if you have <tds-dropddown-option> elements!',
-      );
+      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
     } else return tdsDropdownOptions;
   };
 
