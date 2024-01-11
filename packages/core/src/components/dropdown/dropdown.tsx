@@ -67,7 +67,7 @@ export class TdsDropdown {
 
   /** Text that is displayed if filter is used and there are no options that matches the search.
    * Setting it to an empty string disables message from showing up. */
-  @Prop() noResultText: string = 'No result';
+  @Prop() noResultText?: string = 'No result';
 
   /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
