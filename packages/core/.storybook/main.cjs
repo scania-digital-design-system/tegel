@@ -6,7 +6,7 @@ let addons = [
   'storybook-version',
 ];
 
-if (process.env.STORYBOOK_ENV === 'development') {
+if (process.env.STORYBOOK_ENV === 'dev') {
   addons = [...addons, 'storybook-addon-designs', '@storybook/addon-a11y', 'addon-screen-reader'];
 }
 

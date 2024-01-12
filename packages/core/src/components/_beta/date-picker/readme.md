@@ -38,9 +38,9 @@
 - [date-picker-day](day)
 - [date-picker-month](month)
 - [date-picker-year](year)
-- [tds-text-field](../text-field)
-- [tds-icon](../icon)
-- [tds-popover-core](../popover-core)
+- [tds-text-field](../../text-field)
+- [tds-icon](../../icon)
+- [tds-popover-core](../../popover-core)
 
 ### Graph
 ```mermaid

@@ -49,6 +49,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 ];
 
 export const config: Config = {
+  tsconfig: 'tsconfig.dev.json',
   namespace: 'tegel',
   globalStyle: 'src/global/global.scss',
   extras: {

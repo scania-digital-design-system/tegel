@@ -19,8 +19,8 @@
 
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
- - [tds-date-picker](../date-picker)
- - [tds-date-range-picker](../date-range-picker)
+ - [tds-date-picker](../_beta/date-picker)
+ - [tds-date-range-picker](../_beta/date-range-picker)
  - [tds-datetime](../datetime)
  - [tds-dropdown](../dropdown)
  - [tds-dropdown-option](../dropdown/dropdown-option)

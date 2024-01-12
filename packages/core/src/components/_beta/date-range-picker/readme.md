@@ -36,9 +36,9 @@
 
 ### Depends on
 
-- [tds-text-field](../text-field)
-- [tds-icon](../icon)
-- [tds-popover-core](../popover-core)
+- [tds-text-field](../../text-field)
+- [tds-icon](../../icon)
+- [tds-popover-core](../../popover-core)
 - [date-range-picker-day](range-day)
 
 ### Graph

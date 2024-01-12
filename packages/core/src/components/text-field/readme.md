@@ -50,8 +50,8 @@
 
 ### Used by
 
- - [tds-date-picker](../date-picker)
- - [tds-date-range-picker](../date-range-picker)
+ - [tds-date-picker](../_beta/date-picker)
+ - [tds-date-range-picker](../_beta/date-range-picker)
 
 ### Depends on
 

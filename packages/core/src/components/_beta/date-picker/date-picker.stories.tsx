@@ -1,8 +1,9 @@
-import formatHtmlPreview from '../../stories/formatHtmlPreview';
+//@ts-nocheck
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import readme from './readme.md';
 
 export default {
-  title: `Beta/Date Picker`,
+  title: `${process.env.STORYBOOK_ENV === 'dev' ? 'Beta/Date Picker' : null}`,
   parameters: {
     notes: readme,
   },

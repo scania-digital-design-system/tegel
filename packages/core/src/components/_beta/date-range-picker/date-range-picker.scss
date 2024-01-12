@@ -1,24 +1,34 @@
-@import '../../mixins/focus-state';
+@import '../../../mixins/focus-state';
 
-.tds-date-picker {
-  width: 208px;
+.tds-date-range-picker {
   display: inline-block;
+  width: 324px;
+
+  .controls-container {
+    display: flex;
+    column-gap: 4px;
+    width: 100%;
+  }
 
   tds-popover-core {
-    box-shadow: var(--tds-date-picker-calendar-box-shadow);
-
     .calendar-container {
+      box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       grid-gap: 4px;
       max-width: 100%;
       margin: 0 auto;
       padding: 8px;
+      overflow: hidden;
 
       &.month,
       &.year {
         grid-template-columns: repeat(3, 1fr);
         column-gap: 48px;
+      }
+
+      &.range-picker {
+        column-gap: 23px;
       }
 
       .day-indicator {

@@ -18,8 +18,8 @@ import {
   startOfToday,
   startOfWeek,
 } from 'date-fns';
-import { TdsTextFieldCustomEvent } from '../..';
-import generateUniqueId from '../../utils/generateUniqueId';
+import { TdsTextFieldCustomEvent } from '../../../index';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-date-range-picker',
