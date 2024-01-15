@@ -10,14 +10,18 @@ import { iconsCollection } from './iconsArray';
   shadow: true,
 })
 export class Icon {
-  /** Pass a name of the icon. For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
+  /** Pass the name of the icon.
+   * For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
   @Prop({ reflect: true }) name: string = 'truck';
 
-  /** Pass a size of icon as a string, for example: 32px, 1rem, 4em... */
+  /** Pass a size of icon as a string, for example, 32px, 1rem, 4em... */
   @Prop({ reflect: true }) size: string = '16px';
 
   /** Override the default title for the svg. */
-  @Prop() svgTitle: string;
+  @Prop() svgTitle?: string;
+
+  /** Set description for the svg. */
+  @Prop() svgDescription?: string;
 
   @State() icons_object: string = iconsCollection;
 
@@ -43,13 +47,14 @@ export class Icon {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
-            aria-labelledby={`icon ${element.name}`}
+            aria-labelledby={this.svgTitle ?? `${element.name} icon`}
             role="img"
             style={{ fontSize: this.size }}
             height={this.size}
             width={this.size}
           >
             <title>{this.svgTitle ?? `${element.name} icon`}</title>
+            {this.svgDescription && <desc>{this.svgDescription}</desc>}
             <path fill="currentColor" d={element.definition} />
           </svg>
         );
