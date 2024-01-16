@@ -52,7 +52,7 @@ test.describe('tds-dropdown-filter', () => {
     await expect(dropdownListElementFourButton).toBeVisible();
     await expect(dropdownListElementFiveButton).toBeVisible();
 
-    /* Add text and only Option 1 should be visible */
+    /* Add text "iles" and only Option 1 should be visible */
     await inputElement.fill('iles');
     await expect(inputElement).toBeVisible();
     await expect(dropdownListElementOneButton).toBeHidden();
@@ -61,7 +61,16 @@ test.describe('tds-dropdown-filter', () => {
     await expect(dropdownListElementFourButton).toBeHidden();
     await expect(dropdownListElementFiveButton).toBeVisible();
 
-    /* Check diff on screenshot after adding text */
+    await dropdownListElementFiveButton.click();
+
+    await expect(inputElement).toHaveValue('îles Åland');
+
+    /* Erase some letters from the input */
+    await inputElement.press('Backspace');
+
+    await dropdownListElementFiveButton.click();
+    await expect(inputElement).toHaveValue('îles Åland');
+
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
