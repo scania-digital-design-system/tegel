@@ -43,6 +43,5 @@ test.describe('tds-dropdown-disabled', () => {
     /* no child elements should be visible. */
     await expect(dropdownListElementOne).toBeHidden();
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });

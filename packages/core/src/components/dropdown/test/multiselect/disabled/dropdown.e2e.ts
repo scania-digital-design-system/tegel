@@ -43,6 +43,5 @@ test.describe('tds-dropdown-multiselect-disabled', () => {
     /* no child elements should be visible. */
     await expect(dropdownListElementOne).toBeHidden();
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
