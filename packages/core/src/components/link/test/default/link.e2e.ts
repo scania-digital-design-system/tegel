@@ -45,9 +45,7 @@ test.describe('tds-link-default', () => {
 
   test('component is not disabled', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsLink = page.getByTestId('tds-link-testid');
-    const myEventSpy = await page.spyOnEvent('click');
-    await tdsLink.click();
-    expect(myEventSpy).toHaveReceivedEvent();
+    await page.locator('tds-link').click();
+    await expect(page).toHaveURL('https://tegel.scania.com/home');
   });
 });
