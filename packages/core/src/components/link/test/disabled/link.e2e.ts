@@ -3,8 +3,8 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/link/test/disabled/index.html';
 
-test.describe('tds-link-default', () => {
-  test('is disabled link rendered correctly', async ({ page }) => {
+test.describe('tds-link-disabled', () => {
+  test('disabled link is rendered correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsLink = page.getByTestId('tds-link-testid');
     await expect(tdsLink).toHaveCount(1);
@@ -39,5 +39,9 @@ test.describe('tds-link-default', () => {
       (style) => getComputedStyle(style).pointerEvents,
     );
     expect(linkUnderlineState).toBe('none');
+
+    /* click on a link does not change URL */
+    await page.locator('tds-link').click();
+    await expect(page).toHaveURL(/.*localhost/);
   });
 });
