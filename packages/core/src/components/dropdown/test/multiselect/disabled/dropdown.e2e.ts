@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/multiselect/disabled/index.html';
 
 test.describe('tds-dropdown-multiselect-disabled', () => {
-  test('clicking the dropdown icon does not opens the dropdown-list', async ({ page }) => {
+  test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdownButtonIcon = page.locator('tds-icon');
 
@@ -23,7 +23,7 @@ test.describe('tds-dropdown-multiselect-disabled', () => {
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
-  test('clicking the dropdown button does not opens the dropdown-list', async ({ page }) => {
+  test('clicking the dropdown button does not open the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdownButton = page.getByRole('button').first();
 
@@ -42,6 +42,5 @@ test.describe('tds-dropdown-multiselect-disabled', () => {
 
     /* no child elements should be visible. */
     await expect(dropdownListElementOne).toBeHidden();
-
   });
 });
