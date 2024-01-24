@@ -372,6 +372,21 @@ export class TdsDropdown {
     return this.openDirection;
   };
 
+  /* Toggles the open state of the Dropdown and sets focus to the input element */
+  private handleToggleOpen = () => {
+    if (!this.disabled) {
+      this.open = !this.open;
+      if (this.open) {
+        this.focusInputElement();
+      }
+    }
+  };
+
+  /* Focuses the input element in the Dropdown, if the reference is present. */
+  private focusInputElement = () => {
+    if (this.inputElement) this.inputElement.focus();
+  };
+
   private getSelectedChildren = () =>
     this.value
       ?.map((stringValue) => {
@@ -510,12 +525,7 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
-                onClick={() => {
-                  this.open = !this.open;
-                  if (this.open) {
-                    this.inputElement.focus();
-                  }
-                }}
+                onClick={this.handleToggleOpen}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
@@ -557,6 +567,7 @@ export class TdsDropdown {
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
+                  onClick={this.handleToggleOpen}
                   class={`${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
