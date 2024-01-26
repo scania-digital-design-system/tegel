@@ -146,7 +146,9 @@ export class TdsDropdown {
     if (this.filter) {
       this.inputElement.value = this.getValue();
     } else {
-      this.inputElement.value = selection.length > 0 ? selection[0].label : '';
+      if (this.inputElement) {
+        this.inputElement.value = selection.length > 0 ? selection[0].label : '';
+      }
     }
     return selection;
   }
