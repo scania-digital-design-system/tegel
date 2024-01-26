@@ -15,23 +15,34 @@ test.describe('tds-slider-default', () => {
 
   test('value is set to 50', async ({ page }) => {
     await page.goto(componentTestPath);
-    const slider = page.locator('tds-slider');
-    const sliderValue = await slider.getAttribute('value');
-    expect(sliderValue).toBe('50');
+    const sliderValue = page.locator('.tds-slider__value');
+    await expect(sliderValue).toHaveText('50');
   });
 
   test('min value is set to 0', async ({ page }) => {
     await page.goto(componentTestPath);
-    const slider = page.locator('tds-slider');
-    const sliderMinValue = await slider.getAttribute('min');
-    expect(sliderMinValue).toBe('0');
+    /* Find thumb and pull it towards a left and check if min value is 0 */
+    await page.locator('.tds-slider__thumb-inner').hover();
+    await page.mouse.down();
+    await page.mouse.move(0, 0);
+    await page.mouse.up();
+
+    /* Compare value with initial one */
+    const thumbValue = page.locator('.tds-slider__value');
+    await expect(thumbValue).toHaveText('0');
   });
 
   test('max value is set to 100', async ({ page }) => {
     await page.goto(componentTestPath);
-    const slider = page.locator('tds-slider');
-    const sliderMaxValue = await slider.getAttribute('max');
-    expect(sliderMaxValue).toBe('100');
+    /* Find thumb and pull it towards a right and check if min value is 0 */
+    await page.locator('.tds-slider__thumb-inner').hover();
+    await page.mouse.down();
+    await page.mouse.move(2000, 0);
+    await page.mouse.up();
+
+    /* Compare value with initial one */
+    const thumbValue = page.locator('.tds-slider__value');
+    await expect(thumbValue).toHaveText('100');
   });
 
   test('label is hidden', async ({ page }) => {
@@ -57,8 +68,10 @@ test.describe('tds-slider-default', () => {
 
   test('thumb is size large', async ({ page }) => {
     await page.goto(componentTestPath);
-    const slider = page.locator('tds-slider');
-    const sliderMaxValue = await slider.getAttribute('thumb-size');
-    expect(sliderMaxValue).toBe('lg');
+    const sliderThumb = page.locator('.tds-slider__thumb-inner');
+    const sliderThumbWidth = await sliderThumb.evaluate((style) => getComputedStyle(style).width);
+    const sliderThumbHeight = await sliderThumb.evaluate((style) => getComputedStyle(style).height);
+    expect(sliderThumbWidth).toBe('20px');
+    expect(sliderThumbHeight).toBe('20px');
   });
 });
