@@ -523,7 +523,6 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
-                onClick={this.handleToggleOpen}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
