@@ -145,10 +145,6 @@ export class TdsDropdown {
     // Update inputElement value and placeholder text
     if (this.filter) {
       this.inputElement.value = this.getValue();
-    } else {
-      if (this.inputElement) {
-        this.inputElement.value = selection.length > 0 ? selection[0].label : '';
-      }
     }
     return selection;
   }
@@ -503,7 +499,7 @@ export class TdsDropdown {
                 )}
                 <input
                   // eslint-disable-next-line no-return-assign
-                  ref={(element) => (this.inputElement = element)}
+                  ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
                   class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
                   type="text"
                   placeholder={this.placeholder}
