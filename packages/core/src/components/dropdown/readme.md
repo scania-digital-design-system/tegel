@@ -53,12 +53,6 @@ Type: `Promise<void>`
 
 Method for removing a selected value in the Dropdown.
 
-#### Parameters
-
-| Name       | Type     | Description |
-| ---------- | -------- | ----------- |
-| `oldValue` | `string` |             |
-
 #### Returns
 
 Type: `Promise<{ value: string; label: string; }[]>`
@@ -90,13 +84,6 @@ Multiselect example:
 <code>
 dropdown.setValue(['option-1', 'option-2']);
 </code>
-
-#### Parameters
-
-| Name    | Type                 | Description |
-| ------- | -------------------- | ----------- |
-| `value` | `string \| string[]` |             |
-| `label` | `string`             |             |
 
 #### Returns
 
