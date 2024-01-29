@@ -28,6 +28,12 @@
 
 Method to select/deselect an option.
 
+#### Parameters
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| `selected` | `boolean` |             |
+
 #### Returns
 
 Type: `Promise<void>`
