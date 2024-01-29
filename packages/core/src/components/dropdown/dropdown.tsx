@@ -523,6 +523,7 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
+                onClick={this.handleToggleOpen}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
@@ -530,9 +531,7 @@ export class TdsDropdown {
             </div>
           ) : (
             <button
-              onClick={() => {
-                this.open = !this.open;
-              }}
+              onClick={() => this.handleToggleOpen()}
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
                   this.open = false;
@@ -564,7 +563,6 @@ export class TdsDropdown {
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
-                  onClick={this.handleToggleOpen}
                   class={`${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
