@@ -19,6 +19,10 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
 ];
 
+/**
+ * @slot <default> - <b>Unnamed slot.</b> For the cell contents.
+ */
+
 @Component({
   tag: 'tds-header-cell',
   styleUrl: 'table-header-cell.scss',
@@ -26,19 +30,19 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 })
 export class TdsTableHeaderCell {
   /** The value of column key, usually comes from JSON, needed for sorting */
-  @Prop({ reflect: true }) cellKey: string;
+  @Prop({ reflect: true }) cellKey?: string;
 
   /** Text that displays in column cell */
-  @Prop({ reflect: true }) cellValue: string;
+  @Prop({ reflect: true }) cellValue?: string;
 
-  /** In case noMinWidth is set, the user has to specify width value for each column. */
-  @Prop({ reflect: true }) customWidth: string;
+  /** In case noMinWidth is set, the user has to specify the width value for each column. */
+  @Prop({ reflect: true }) customWidth?: string;
 
   /** Enables sorting on that column */
   @Prop() sortable: boolean = false;
 
   /** Setting for text align, default is left. Other accepted values are "right" or "end". */
-  @Prop({ reflect: true }) textAlign: string;
+  @Prop({ reflect: true }) textAlign?: string;
 
   @State() textAlignState: string;
 
@@ -64,7 +68,8 @@ export class TdsTableHeaderCell {
 
   tableEl: HTMLTdsTableElement;
 
-  /** Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /** Sends unique Table identifier, column key and sorting direction to the tds-table-body component,
+   * can also be listened to implement custom-sorting logic. */
   @Event({
     eventName: 'tdsSort',
     composed: true,
@@ -77,7 +82,8 @@ export class TdsTableHeaderCell {
     sortingDirection: 'asc' | 'desc';
   }>;
 
-  /**  @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to in order to implement custom-sorting logic. */
+  /**  @internal Sends unique Table identifier, column key and sorting direction to the tds-table-body component,
+   * can also be listened to implement custom-sorting logic. */
   @Event({
     eventName: 'internalSortButtonClicked',
     composed: true,
@@ -89,7 +95,8 @@ export class TdsTableHeaderCell {
     key: string;
   }>;
 
-  /** @internal Sends unique Table identifier,column key and text align value so the body cells with a same key take the same text alignment as header cell */
+  /** @internal Sends unique Table identifier,
+   * column key and text align value so the body cells with a same key take the same text alignment as header cell */
   @Event({
     eventName: 'internalTdsTextAlign',
     composed: true,
@@ -201,6 +208,7 @@ export class TdsTableHeaderCell {
         <button class="tds-table__header-button" onClick={() => this.sortButtonClick()}>
           <span class="tds-table__header-button-text" style={{ textAlign: this.textAlignState }}>
             {this.cellValue}
+            <slot />
           </span>
 
           {this.sortingDirection === null && (
@@ -250,6 +258,7 @@ export class TdsTableHeaderCell {
     return (
       <p class="tds-table__header-text" style={{ textAlign: this.textAlignState }}>
         {this.cellValue}
+        <slot />
       </p>
     );
   };
