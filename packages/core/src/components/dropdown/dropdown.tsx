@@ -145,8 +145,6 @@ export class TdsDropdown {
     // Update inputElement value and placeholder text
     if (this.filter) {
       this.inputElement.value = this.getValue();
-    } else {
-      this.inputElement.value = selection.length > 0 ? selection[0].label : '';
     }
     return selection;
   }
@@ -501,7 +499,7 @@ export class TdsDropdown {
                 )}
                 <input
                   // eslint-disable-next-line no-return-assign
-                  ref={(element) => (this.inputElement = element)}
+                  ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
                   class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
                   type="text"
                   placeholder={this.placeholder}
@@ -533,9 +531,7 @@ export class TdsDropdown {
             </div>
           ) : (
             <button
-              onClick={() => {
-                this.open = !this.open;
-              }}
+              onClick={() => this.handleToggleOpen()}
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
                   this.open = false;
@@ -567,7 +563,6 @@ export class TdsDropdown {
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
-                  onClick={this.handleToggleOpen}
                   class={`${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
