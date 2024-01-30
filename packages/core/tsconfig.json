@@ -12,5 +12,6 @@
     "jsx": "react",
     "jsxFactory": "h"
   },
-  "include": ["src/**/*"]
+  "exclude": ["src/components/**/test/*", "**/**.stories.*", "src/stories/**"],
+  "include": ["src/**/*"],
 }
