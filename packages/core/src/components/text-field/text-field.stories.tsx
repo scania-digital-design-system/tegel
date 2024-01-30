@@ -50,9 +50,31 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Text', 'Password'],
+      options: ['Text', 'Password', 'Number'],
       table: {
         defaultValue: { summary: 'text' },
+      },
+    },
+    min: {
+      name: 'Min',
+      description: 'Minumum acceptable value when input type is number',
+      control: {
+        type: 'number',
+      },
+      if: {
+        arg: 'type',
+        eq: 'Number',
+      },
+    },
+    max: {
+      name: 'Max',
+      description: 'Maximum acceptable value when input type is number',
+      control: {
+        type: 'number',
+      },
+      if: {
+        arg: 'type',
+        eq: 'Number', 
       },
     },
     size: {
@@ -181,6 +203,8 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
+    min: "0",
+    max: "10",
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
@@ -192,6 +216,8 @@ const Template = ({
   modeVariant,
   state,
   type,
+  min,
+  max,
   size,
   label,
   labelPosition,
@@ -207,6 +233,8 @@ const Template = ({
   disabled,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
+  min = min  ? `min="${min}"` : '';
+  max = max  ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -233,6 +261,8 @@ const Template = ({
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}"` : ''}
       ${maxlength}
+      ${min}
+      ${max}
       ${disabled ? 'disabled' : ''}
       ${readonly ? 'read-only' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
