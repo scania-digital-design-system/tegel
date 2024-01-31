@@ -57,7 +57,7 @@ export default {
     },
     min: {
       name: 'Min',
-      description: 'Minumum acceptable value when input type is number',
+      description: 'Minimum acceptable value when input type is number',
       control: {
         type: 'number',
       },
