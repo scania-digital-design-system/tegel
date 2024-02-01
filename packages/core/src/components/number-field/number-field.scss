@@ -1,0 +1,395 @@
+@mixin number-field-base {
+  all: unset;
+  border-radius: 4px 4px 0 0;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  color: var(--tds-number-field-color);
+  background-color: var(--tds-number-field-background);
+
+  &::placeholder {
+    color: var(--tds-number-field-color);
+  }
+
+  &:focus::placeholder {
+    color: var(--tds-number-field-placeholder-focus-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: var(--tds-number-field-background-disabled);
+    color: var(--tds-number-field-color-disabled);
+
+    &::placeholder {
+      color: var(--tds-number-field-placeholder-disabled);
+    }
+
+    ~ .number-field-label-inside {
+      color: var(--tds-number-field-label-disabled);
+    }
+  }
+}
+
+//Sizes
+.number-field-input-lg {
+  @include number-field-base;
+
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+}
+
+.number-field-input-md {
+  @include number-field-base;
+
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-16);
+}
+
+.number-field-input-sm {
+  @include number-field-base;
+
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding: var(--tds-spacing-element-16);
+}
+
+//Container for input field and prefix/suffix
+.number-field-container {
+  border-radius: 4px 4px 0 0;
+  display: flex;
+  position: relative;
+  height: 56px;
+  box-sizing: border-box;
+  background-color: var(--tds-number-field-background);
+  border-bottom: 1px solid var(--tds-number-field-border-bottom);
+  transition: border-bottom-color 200ms ease;
+
+  &:hover {
+    border-bottom-color: var(--tds-number-field-border-bottom-hover);
+  }
+
+  .form-number-field-md & {
+    height: 48px;
+  }
+
+  .form-number-field-sm & {
+    height: 40px;
+  }
+}
+
+.number-field-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.number-field-data,
+.number-field-input {
+  color: var(--tds-number-field-data-color);
+}
+
+//number-field label
+
+.number-field-label-outside > * {
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
+  display: block;
+  margin-bottom: var(--tds-spacing-element-8);
+  color: var(--tds-number-field-label-color);
+}
+
+.number-field-label-inside {
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  position: absolute;
+  pointer-events: none;
+  color: var(--tds-number-field-label-inside-color);
+  left: 16px;
+}
+
+@mixin placeholder-label {
+  &::placeholder {
+    color: transparent;
+  }
+
+  ::placeholder {
+    color: transparent;
+  }
+
+  //Input field in focus
+  &:focus::placeholder {
+    transition: color 0.35s ease;
+    color: var(--tds-number-field-placeholder-focus-color);
+  }
+}
+
+@mixin label-inside-transition {
+  transition: 0.1s ease all;
+}
+
+//Form control
+.form-number-field {
+  display: block;
+  min-width: 208px;
+
+  &-nomin {
+    min-width: auto;
+  }
+}
+
+//number-field container with label inside
+//Handling position, focus and transition for label inside
+.form-number-field.number-field-container-label-inside {
+  .number-field-input-lg {
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+
+    ~ .number-field-label-inside {
+      top: 20px;
+    }
+
+    @include placeholder-label;
+  }
+
+  .number-field-input-md {
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+
+    ~ .number-field-label-inside {
+      top: 16px;
+    }
+
+    @include placeholder-label;
+  }
+
+  .number-field-input-sm {
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+
+    ~ .number-field-label-inside {
+      top: 16px;
+    }
+
+    @include placeholder-label;
+  }
+
+  &.number-field-focus,
+  &.number-field-data {
+    .number-field-input-sm ~ .number-field-label-inside {
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
+
+      @include label-inside-transition;
+
+      top: 8px;
+    }
+
+    .number-field-input-md ~ .number-field-label-inside {
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
+
+      @include label-inside-transition;
+
+      top: 8px;
+    }
+
+    .number-field-input-lg ~ .number-field-label-inside {
+      font: var(--tds-detail-07);
+      letter-spacing: var(--tds-detail-07-ls);
+
+      @include label-inside-transition;
+
+      top: 12px;
+    }
+  }
+}
+
+//number-field bottom bar when in focus
+.number-field-bar {
+  position: absolute;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    height: 2px;
+    top: 54px;
+    width: 0;
+    position: absolute;
+    background: var(--tds-number-field-bar);
+    transition: 0.35s ease all;
+
+    .form-number-field-md & {
+      top: 46px;
+    }
+
+    .form-number-field-sm & {
+      top: 40px;
+    }
+  }
+
+  &::before {
+    left: 50%;
+  }
+
+  &::after {
+    right: 50%;
+  }
+
+  .number-field-focus &::before,
+  .number-field-focus &::after {
+    width: 50%;
+  }
+}
+
+//Helper text
+.number-field-helper {
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+
+  & .number-field-textcounter {
+    margin-left: auto;
+  }
+
+  flex-basis: 100%;
+  padding-top: var(--tds-spacing-element-4);
+  color: var(--tds-number-field-helper);
+}
+
+//Disabled state
+.form-number-field-disabled {
+  .number-field-container {
+    border-bottom-color: transparent;
+  }
+
+  .number-field-slot-wrap-prefix,
+  .number-field-slot-wrap-suffix {
+    > * {
+      color: var(--tds-number-field-ps-color-disabled);
+    }
+  }
+
+  .number-field-label-outside {
+    > * {
+      color: var(--tds-number-field-label-disabled);
+    }
+  }
+}
+
+//Read only state
+
+.number-field-icon__readonly {
+  display: none;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  color: var(--tds-number-field-icon-read-only-label-color);
+
+  &-label {
+    display: none;
+    position: absolute;
+    right: 18px;
+    top: 48px;
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
+    padding: 8px;
+    white-space: nowrap;
+    border-radius: 4px 0 4px 4px;
+    background-color: var(--tds-number-field-icon-read-only-label-background);
+  }
+}
+
+.form-number-field-readonly {
+  pointer-events: none;
+
+  .number-field-icon__readonly {
+    display: block;
+
+    &:hover {
+      ~ .number-field-icon__readonly-label {
+        display: block;
+      }
+    }
+  }
+
+  .number-field-input {
+    padding-right: 54px;
+    background-color: transparent;
+  }
+}
+
+//Success state
+.form-number-field-success {
+  .number-field-container {
+    border-bottom-color: var(--tds-number-field-border-bottom-success);
+  }
+}
+
+//Error State
+.form-number-field-error {
+  .number-field-helper {
+    color: var(--tds-number-field-helper-error);
+  }
+
+  .number-field-container {
+    border-bottom-color: var(--tds-number-field-border-bottom-error);
+  }
+
+  .number-field-bar {
+    &::before,
+    &::after {
+      background: var(--tds-number-field-bar-error);
+    }
+  }
+}
+
+// .number-field-textcounter {
+.number-field-helper-error-state {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.number-field-textcounter {
+  font: var(--tds-detail-05);
+  letter-spacing: var(--tds-detail-05-ls);
+  color: var(--tds-number-field-textcounter);
+  float: right;
+
+  & .number-field-textcounter-divider {
+    // @include type-style('detail-05');
+    color: var(--tds-number-field-textcounter-divider);
+  }
+}
+
+.number-field-slot-wrap-prefix,
+.number-field-slot-wrap-suffix {
+  align-self: center;
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  margin: 0 0 0 14px;
+  color: var(--tds-number-field-ps-color);
+
+  &::slotted(:not(tds-icon)) {
+    margin: 0 0 0 2px;
+  }
+
+  &.number-field-error {
+    color: var(--tds-number-field-ps-color-error);
+  }
+}
+
+.number-field-slot-wrap-suffix {
+  margin: 0 14px 0 0;
+
+  &::slotted(:not(tds-icon)) {
+    margin: 0 2px 0 0;
+  }
+}

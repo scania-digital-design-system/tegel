@@ -31,6 +31,7 @@
  - [tds-message](../message)
  - [tds-modal](../modal)
  - [tds-navigation-tabs](../tabs/navigation-tabs)
+ - [tds-number-field](../number-field)
  - [tds-side-menu-close-button](../side-menu/side-menu-close-button)
  - [tds-side-menu-dropdown](../side-menu/side-menu-dropdown)
  - [tds-slider](../slider)
@@ -58,6 +59,7 @@ graph TD;
   tds-message --> tds-icon
   tds-modal --> tds-icon
   tds-navigation-tabs --> tds-icon
+  tds-number-field --> tds-icon
   tds-side-menu-close-button --> tds-icon
   tds-side-menu-dropdown --> tds-icon
   tds-slider --> tds-icon

@@ -1,0 +1,129 @@
+:root,
+.tds-mode-light {
+  --tds-number-field-background-primary: var(--tds-grey-50);
+  --tds-number-field-background-secondary: var(--tds-white);
+  --tds-number-field-background: var(--tds-number-field-background-primary);
+  --tds-number-field-color: var(--tds-grey-600);
+  --tds-number-field-placeholder: var(--tds-grey-500);
+  --tds-number-field-data-color: var(--tds-grey-868);
+
+  //Disabled
+  --tds-number-field-background-disabled-primary: var(--tds-grey-50);
+  --tds-number-field-background-disabled-secondary: var(--tds-white);
+  --tds-number-field-background-disabled: var(--tds-number-field-background-disabled-primary);
+  --tds-number-field-color-disabled: var(--tds-grey-400);
+  --tds-number-field-placeholder-disabled: var(--tds-grey-400);
+  --tds-number-field-label-disabled: var(--tds-grey-400);
+  --tds-number-field-ps-color-disabled: var(--tds-grey-400);
+
+  //Label
+  --tds-number-field-label-color: var(--tds-grey-700);
+  --tds-number-field-label-inside-color: var(--tds-grey-700);
+  --tds-number-field-placeholder-focus-color: var(--tds-grey-500);
+
+  //Highlight bar
+  --tds-number-field-bar: var(--tds-blue-400);
+
+  //helper
+  --tds-number-field-helper: var(--tds-grey-600);
+
+  //error
+  --tds-number-field-border-bottom-error: var(--tds-negative);
+  --tds-number-field-helper-error: var(--tds-negative);
+  --tds-number-field-bar-error: var(--tds-negative);
+  --tds-number-field-icon-error: var(--tds-negative);
+
+  //Textcounter
+  --tds-number-field-textcounter: var(--tds-grey-700);
+  --tds-number-field-textcounter-divider: var(--tds-grey-500);
+
+  //Prefix and Suffix
+  --tds-number-field-ps-color: var(--tds-grey-600);
+  --tds-number-field-ps-color-error: var(--tds-negative);
+
+  // number-field resize icon
+  --tds-number-field-resize-icon: var(--tds-grey-500);
+
+  // Border bottom
+  --tds-number-field-border-bottom: var(--tds-grey-600);
+  --tds-number-field-border-bottom-hover: var(--tds-grey-800);
+  --tds-number-field-border-bottom-success: var(--tds-grey-958);
+
+  // Read only
+  --tds-number-field-icon-read-only-color: var(--tds-grey-958);
+  --tds-number-field-icon-read-only-label-color: var(--tds-grey-958);
+
+  .tds-mode-variant-primary {
+    --tds-number-field-background: var(--tds-number-field-background-primary);
+    --tds-number-field-background-disabled: var(--tds-number-field-background-disabled-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-number-field-background: var(--tds-number-field-background-secondary);
+    --tds-number-field-background-disabled: var(--tds-number-field-background-disabled-secondary);
+  }
+}
+
+.tds-mode-dark {
+  --tds-number-field-background-primary: var(--tds-grey-900);
+  --tds-number-field-background: var(--tds-number-field-background-primary);
+  --tds-number-field-background-secondary: var(--tds-grey-868);
+  --tds-number-field-color: var(--tds-grey-600);
+  --tds-number-field-placeholder: var(--tds-grey-600);
+  --tds-number-field-data-color: var(--tds-grey-100);
+
+  //Disabled
+  --tds-number-field-ps-color-disabled: var(--tds-grey-700);
+  --tds-number-field-color-disabled: var(--tds-grey-800);
+  --tds-number-field-background-disabled-primary: var(--tds-grey-900);
+  --tds-number-field-background-disabled-secondary: var(--tds-grey-868);
+  --tds-number-field-background-disabled: var(--tds-number-field-background-disabled-primary);
+  --tds-number-field-placeholder-disabled: var(--tds-grey-800);
+  --tds-number-field-label-disabled: var(--tds-grey-700);
+
+  // Label
+  --tds-number-field-label-color: var(--tds-grey-100);
+  --tds-number-field-label-inside-color: var(--tds-grey-700);
+  --tds-number-field-placeholder-focus-color: var(--tds-grey-700);
+
+  //Highlight bar
+  --tds-number-field-bar: var(--tds-blue-400);
+
+  //helper
+  --tds-number-field-helper: var(--tds-grey-600);
+
+  //error
+  --tds-number-field-helper-error: var(--tds-negative);
+  --tds-number-field-bar-error: var(--tds-negative);
+  --tds-number-field-icon-error: var(--tds-negative);
+
+  //Textcounter
+  --tds-number-field-textcounter: var(--tds-grey-600);
+  --tds-number-field-textcounter-divider: var(--tds-grey-700);
+
+  //Prefix and Suffix
+  --tds-number-field-ps-color: var(--tds-grey-100);
+
+  // Textarea resize icon
+  --tds-number-field-resize-icon: var(--tds-grey-500);
+
+  // Border bottom
+  --tds-number-field-border-bottom: var(--tds-grey-600);
+  --tds-number-field-border-bottom-hover: var(--tds-grey-400);
+  --tds-number-field-border-bottom-success: var(--tds-grey-50);
+  --tds-number-field-border-bottom-error: var(--tds-negative);
+
+  // Read only
+  --tds-number-field-icon-read-only-color: var(--tds-grey-100);
+  --tds-number-field-icon-read-only-label-color: var(--tds-grey-50);
+
+  .tds-mode-variant-primary {
+    --tds-number-field-background: var(--tds-number-field-background-primary);
+    --tds-number-field-background-disabled: var(--tds-number-field-background-disabled-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-number-field-background: var(--tds-number-field-background-secondary);
+    --tds-number-field-background-disabled: var(--tds-number-field-background-disabled-secondary);
+  }
+}
