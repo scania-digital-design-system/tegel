@@ -1,4 +1,4 @@
-import { Component, State, h, Prop, Listen, Event, EventEmitter } from '@stencil/core';
+import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '@stencil/core';
 
 @Component({
   tag: 'tds-datetime',
@@ -10,11 +10,11 @@ export class TdsDatetime {
   /** Text-input for focus state */
   textInput?: HTMLInputElement;
 
-  /** Sets input type */
+  /** Sets an input type */
   @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'time' = 'datetime-local';
 
   /** Value of the input text */
-  @Prop({ reflect: true }) value = '';
+  @Prop({ reflect: true, mutable: true }) value = '';
 
   /** Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
   @Prop() min: string;
@@ -81,6 +81,12 @@ export class TdsDatetime {
     cancelable: false,
   })
   tdsFocus: EventEmitter<FocusEvent>;
+
+  /** Setting a new value of the datetime element */
+  @Method()
+  async setValue(newValue: string) {
+    this.value = newValue;
+  }
 
   getDefaultValue = () => {
     const dateTimeObj = {
