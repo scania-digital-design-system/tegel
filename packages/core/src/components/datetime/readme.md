@@ -21,7 +21,7 @@
 | `noMinWidth`   | `no-min-width`  | Resets min width rule                                                                                                   | `boolean`                              | `false`            |
 | `size`         | `size`          | Size of the input                                                                                                       | `"lg" \| "md" \| "sm"`                 | `'lg'`             |
 | `state`        | `state`         | Error state of input                                                                                                    | `string`                               | `undefined`        |
-| `type`         | `type`          | Sets input type                                                                                                         | `"date" \| "datetime-local" \| "time"` | `'datetime-local'` |
+| `type`         | `type`          | Sets an input type                                                                                                      | `"date" \| "datetime-local" \| "time"` | `'datetime-local'` |
 | `value`        | `value`         | Value of the input text                                                                                                 | `string`                               | `''`               |
 
 
@@ -32,6 +32,25 @@
 | `tdsBlur`   | Blur event for the Datetime   | `CustomEvent<FocusEvent>` |
 | `tdsChange` | Change event for the Datetime | `CustomEvent<any>`        |
 | `tdsFocus`  | Focus event for the Datetime  | `CustomEvent<FocusEvent>` |
+
+
+## Methods
+
+### `setValue(newValue: string) => Promise<void>`
+
+Setting a new value of the datetime element
+
+#### Parameters
+
+| Name       | Type     | Description |
+| ---------- | -------- | ----------- |
+| `newValue` | `string` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 
 ## Dependencies
