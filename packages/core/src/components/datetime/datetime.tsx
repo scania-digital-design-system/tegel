@@ -82,7 +82,7 @@ export class TdsDatetime {
   })
   tdsFocus: EventEmitter<FocusEvent>;
 
-  /** Setting a new value of the datetime element */
+  /** Method that sets the value of the datetime element */
   @Method()
   async setValue(newValue: string) {
     this.value = newValue;
