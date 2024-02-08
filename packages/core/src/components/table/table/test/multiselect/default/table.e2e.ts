@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/table/table/test/multiselect/index.html';
+const componentTestPath = 'src/components/table/table/test/multiselect/default/index.html';
 
 test.describe('tds-table-multiselect', () => {
   test('renders multiselect table correctly', async ({ page }) => {

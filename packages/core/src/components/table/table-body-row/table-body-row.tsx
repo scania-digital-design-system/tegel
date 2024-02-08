@@ -29,6 +29,9 @@ export class TdsTableBodyRow {
   /** Marks the row as selected, used for multiselect table. */
   @Prop({ reflect: true }) selected: boolean = false;
 
+  /** Marks the row as disabled, used for multiselect table. */
+  @Prop({ reflect: true }) disabled?: boolean = false;
+
   @State() multiselect: boolean = false;
 
   @State() mainCheckBoxStatus: boolean = false;
@@ -107,6 +110,7 @@ export class TdsTableBodyRow {
             <tds-checkbox
               onTdsChange={(event) => this.handleCheckboxChange(event)}
               checked={this.selected}
+              disabled={this.disabled}
             ></tds-checkbox>
           </td>
         )}
