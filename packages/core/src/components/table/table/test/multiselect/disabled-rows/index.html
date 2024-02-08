@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Table - Multiselect</title>
+    <title>Table - Multiselect with disabled rows </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <link rel="stylesheet" href='../../../../../../../dist/tegel/tegel.css' />
     <script type="module">
-      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      import { defineCustomElements } from '../../../../../../../loader/index.es2017.js';
       defineCustomElements();
     </script>
   </head>
@@ -19,7 +19,7 @@
       compact-design="false"
       responsive="false"
     >
-      <tds-table-header>
+      <tds-table-header disabled>
         <tds-header-cell cell-key="truck" cell-value="Truck type"></tds-header-cell>
         <tds-header-cell cell-key="driver" cell-value="Driver name"></tds-header-cell>
         <tds-header-cell cell-key="country" cell-value="Country"></tds-header-cell>
@@ -36,13 +36,13 @@
           <tds-body-cell cell-key="country" cell-value="Brazil"></tds-body-cell>
           <tds-body-cell cell-key="mileage" cell-value="123987"></tds-body-cell>
         </tds-table-body-row>
-        <tds-table-body-row>
+        <tds-table-body-row disabled>
           <tds-body-cell cell-key="truck" cell-value="P-series"></tds-body-cell>
           <tds-body-cell cell-key="driver" cell-value="Guerra Bowman"></tds-body-cell>
           <tds-body-cell cell-key="country" cell-value="Sweden"></tds-body-cell>
           <tds-body-cell cell-key="mileage" cell-value="2000852"></tds-body-cell>
         </tds-table-body-row>
-        <tds-table-body-row>
+        <tds-table-body-row disabled selected>
           <tds-body-cell cell-key="truck" cell-value="G-series"></tds-body-cell>
           <tds-body-cell cell-key="driver" cell-value="Ferrell Wallace"></tds-body-cell>
           <tds-body-cell cell-key="country" cell-value="Germany"></tds-body-cell>

@@ -18,13 +18,19 @@ export class TdsTextField {
   textInput?: HTMLInputElement;
 
   /** Which input type, text, password or similar */
-  @Prop({ reflect: true }) type: 'text' | 'password' = 'text';
+  @Prop({ reflect: true }) type: 'text' | 'password' | 'number' = 'text';
 
   /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Label text */
   @Prop() label: string = '';
+
+   /** Min allowed value for input type number */
+  @Prop() min: string | number;
+
+   /** Max allowed value for input type number */
+  @Prop() max: string | number;
 
   /** Helper text */
   @Prop() helper: string;
@@ -174,6 +180,8 @@ export class TdsTextField {
               autofocus={this.autofocus}
               maxlength={this.maxLength}
               name={this.name}
+              min={this.min}
+              max={this.max}
               onInput={(event) => this.handleInput(event)}
               onChange={(event) => this.handleChange(event)}
               onFocus={(event) => {
