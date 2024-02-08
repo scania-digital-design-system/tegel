@@ -9,6 +9,7 @@
 
 | Property   | Attribute  | Description                                            | Type      | Default |
 | ---------- | ---------- | ------------------------------------------------------ | --------- | ------- |
+| `disabled` | `disabled` | Marks the row as disabled, used for multiselect table. | `boolean` | `false` |
 | `selected` | `selected` | Marks the row as selected, used for multiselect table. | `boolean` | `false` |
 
 

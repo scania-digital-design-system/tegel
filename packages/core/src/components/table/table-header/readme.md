@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property        | Attribute       | Description                                                                                  | Type      | Default     |
-| --------------- | --------------- | -------------------------------------------------------------------------------------------- | --------- | ----------- |
-| `allSelected`   | `all-selected`  | <span style="color:red">**[DEPRECATED]**</span> Deprecated, use selected instead..<br/><br/> | `boolean` | `false`     |
-| `indeterminate` | `indeterminate` | Prop for controling the indeterminate state of the "All selected"-checkbox.                  | `boolean` | `false`     |
-| `selected`      | `selected`      | Prop for controling the checked/unchecked state of the "All selected"-checkbox.              | `boolean` | `undefined` |
+| Property        | Attribute       | Description                                                                                 | Type      | Default     |
+| --------------- | --------------- | ------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `allSelected`   | `all-selected`  | <span style="color:red">**[DEPRECATED]**</span> Deprecated, use selected instead.<br/><br/> | `boolean` | `false`     |
+| `disabled`      | `disabled`      | Prop for controlling the enabled/disabled state of the "All selected"-checkbox.             | `boolean` | `false`     |
+| `indeterminate` | `indeterminate` | Prop for controlling the indeterminate state of the "All selected"-checkbox.                | `boolean` | `false`     |
+| `selected`      | `selected`      | Prop for controlling the checked/unchecked state of the "All selected"-checkbox.            | `boolean` | `undefined` |
 
 
 ## Events
