@@ -38,7 +38,7 @@
 
 ### `setValue(newValue: string) => Promise<void>`
 
-Setting a new value of the datetime element
+Method that sets the value of the datetime element
 
 #### Parameters
 
