@@ -3,7 +3,7 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import readme from './readme.md';
 
 export default {
-  title: `${process.env.STORYBOOK_ENV === 'dev' ? 'Beta/Date Range Picker' : null}`,
+  title: 'Beta/Date Range Picker',
   parameters: {
     notes: readme,
   },

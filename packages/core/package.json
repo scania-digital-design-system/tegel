@@ -33,8 +33,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "stencil build --config stencil.config.prod.ts && stencil build --config stencil.config.prod.ts --docs",
-    "build:dev": "stencil build --config stencil.config.dev.ts && stencil build --config stencil.config.dev.ts --docs",
+    "build": "stencil build && stencil build --docs",
     "_comment": "Due to stencil bug with types creation, we need to run build two times!",
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
@@ -42,7 +41,7 @@
     "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.39.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "build-stencil:watch": "stencil build --config stencil.config.dev.ts --docs-readme --watch",
+    "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
     "build-storybook": "build-storybook --quiet",
     "build-stencil-storybook": "npm run build && npm run build-storybook",
