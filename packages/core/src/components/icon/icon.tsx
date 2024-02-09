@@ -17,10 +17,10 @@ export class Icon {
   /** Pass a size of icon as a string, for example, 32px, 1rem, 4em... */
   @Prop({ reflect: true }) size: string = '16px';
 
-  /** Override the default title for the svg. */
+  /** Override the default title for the svg. Text used for aria-labelledby too. */
   @Prop() svgTitle?: string;
 
-  /** Set description for the svg. */
+  /** Set description for the svg. Text used for aria-describedby too. */
   @Prop() svgDescription?: string;
 
   @State() icons_object: string = iconsCollection;
