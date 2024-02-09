@@ -499,7 +499,7 @@ export class TdsDropdown {
                 )}
                 <input
                   // eslint-disable-next-line no-return-assign
-                  ref={(element) => (this.inputElement = element)}
+                  ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
                   class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
                   type="text"
                   placeholder={this.placeholder}
