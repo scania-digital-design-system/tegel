@@ -17,7 +17,7 @@ export class Icon {
   /** Pass a size of icon as a string, for example, 32px, 1rem, 4em... */
   @Prop({ reflect: true }) size: string = '16px';
 
-  /** Override the default title for the svg. Text used for aria-labelledby too. */
+  /** Override the default title for the svg. Also used by aria-labelledby. */
   @Prop() svgTitle?: string;
 
   /** Set description for the svg. Text used for aria-describedby too. */
