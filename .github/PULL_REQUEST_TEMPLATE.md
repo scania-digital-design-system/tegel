@@ -2,14 +2,19 @@
 _Describe what the pull-request is about_
 
 **Solving issue**  
-_In case of GitHub issue add # plus the number of the issue (for example #123) OR if it is Azure then AB# and number of ticket_
+_Please link to the issue this pull request is solving, using # for GitHub issues or AB# for Azure tickets._
 Fixes: [CDEP-](https://tegel.atlassian.net/browse/CDEP-)
 
 **How to test**  
-_Add description how to test if possible_
+_Provide detailed steps for testing, including any necessary setup._
 1. Go to...
 2. Check in...
 3. Run ...
+
+**Checklist before submission**
+- [ ] I have added unit tests for my changes (if applicable)
+- [ ] All existing tests pass
+- [ ] I have updated the documentation (if applicable)
 
 **Suggested test steps**
 - [ ] Browser testing (Chrome, Safari, Firefox) 
@@ -22,7 +27,7 @@ _Add description how to test if possible_
 - [ ] Events
 
 **Screenshots**  
-_If applicable, add screenshots to help explain_
+_Include before/after screenshots for UI changes._
 
 **Additional context**  
-_Add any other context about the pull-request here._
+_Add any other context or feedback request about the pull-request here._
