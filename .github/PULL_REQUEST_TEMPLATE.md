@@ -30,4 +30,4 @@ _Provide detailed steps for testing, including any necessary setup._
 _Include before/after screenshots for UI changes._
 
 **Additional context**  
-_Add any other context or feedback request about the pull-request here._
+_Add any other context or feedback requests about the pull-request here._
