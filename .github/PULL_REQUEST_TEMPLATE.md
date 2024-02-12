@@ -2,7 +2,7 @@
 _Describe what the pull-request is about_
 
 **Solving issue**  
-_Please link to the issue this pull request is solving, using # for GitHub issues or AB# for Azure tickets._
+_Please link to the issue this pull request is solving by adding ticket number after CDEP-_
 Fixes: [CDEP-](https://tegel.atlassian.net/browse/CDEP-)
 
 **How to test**  
