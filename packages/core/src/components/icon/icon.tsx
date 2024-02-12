@@ -20,7 +20,7 @@ export class Icon {
   /** Override the default title for the svg. Also used by aria-labelledby. */
   @Prop() svgTitle?: string;
 
-  /** Set description for the svg. Text used for aria-describedby too. */
+  /** Set description for the svg. Also used by aria-describedby. */
   @Prop() svgDescription?: string;
 
   @State() icons_object: string = iconsCollection;
