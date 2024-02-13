@@ -39,13 +39,9 @@ export default {
     },
     svgTitle: {
       name: 'SVG title',
-      description:
-        'Text that displays while hovering on icon. If not specified it goes to default icon name.',
+      description: 'Text that displays while hovering on icon.',
       control: {
         type: 'text',
-      },
-      table: {
-        defaultValue: { summary: 'icon-name' },
       },
     },
     svgDescription: {
