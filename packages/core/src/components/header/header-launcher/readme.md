@@ -5,6 +5,14 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property           | Attribute            | Description | Type      | Default     |
+| ------------------ | -------------------- | ----------- | --------- | ----------- |
+| `closeWhenClicked` | `close-when-clicked` |             | `boolean` | `false`     |
+| `open`             | `open`               |             | `boolean` | `undefined` |
+
+
 ## Slots
 
 | Slot          | Description                                                 |

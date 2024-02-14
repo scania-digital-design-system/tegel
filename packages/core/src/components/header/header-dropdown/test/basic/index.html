@@ -1,46 +1,23 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Header Dropdown - Basic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
 
-import readme from './readme.md';
-
-export default {
-  title: 'Patterns/Navigation',
-  parameters: {
-    notes: {
-      Readme: readme,
-    },
-    layout: 'fullscreen',
-    docs: {
-      source: {
-        state: 'closed',
-      },
-    },
-    design: [
-      {
-        name: 'Figma',
-        type: 'figma',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
-      },
-      {
-        name: 'Link',
-        type: 'link',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11142%3A42941&t=Ne6myqwca5m00de7-1',
-      },
-    ],
-  },
-  argTypes: {},
-  args: {},
-};
-
-const Template = () =>
-  formatHtmlPreview(
-    `
+  <body>
     <script>
       /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
       window.demoSideMenu = document.querySelector('#demo-side-menu');
       window.demoHamburger = document.querySelector('#demo-hamburger');
     </script>
     <style>
-
       /* Note: to make the layout fill the entire viewport height you'll need to set the */
       /* height of the parent element and all of its ancestors to 100%. */
       /* Please note that using 'vh' for this can cause issues on some mobile browsers. */
@@ -53,7 +30,7 @@ const Template = () =>
       .demo-main {
         flex-grow: 1;
       }
-    
+
       /* If an extra button in the Header is required except on 
       very narrow screens, you can use classes like these: */
       .demo-hide {
@@ -75,37 +52,37 @@ const Template = () =>
       }
     </style>
 
-
     <div class="demo-layout">
+      <div data-testid="test-div"></div>
       <tds-header>
         <!-- TODO setting aria-expanded="true" on the hamburger button does not work, as it is not
           copied to the button element -->
-        <tds-header-hamburger id="demo-hamburger" onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></tds-header-hamburger>
+        <tds-header-hamburger
+          id="demo-hamburger"
+          onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);"
+          aria-label="Open application drawer"
+          aria-haspopup="true"
+          aria-expanded="false"
+        ></tds-header-hamburger>
 
-        <tds-header-title>
-          Example: Few items
-        </tds-header-title>
+        <tds-header-title data-testid="header-title"> Example: Few items </tds-header-title>
 
         <tds-header-item selected>
-          <button onclick="alert('About us clicked');">
-            About us
-          </button>
+          <button onclick="alert('About us clicked');">About us</button>
         </tds-header-item>
 
         <tds-header-item>
-          <a href="https://www.google.se">
-            Truck types
-          </a>
+          <a href="https://www.google.se"> Truck types </a>
         </tds-header-item>
 
-        <tds-header-dropdown close-when-clicked>
-          <span slot="label">Wheel types</span>
+        <tds-header-dropdown data-testid="header-dropdown">
+          <span slot="label">Dropdown A</span>
           <tds-header-dropdown-list>
             <tds-header-dropdown-list-item>
-              <button onclick="console.log('clicked');">Hub-centric wheel</button>
+              <button onclick="console.log('clicked');">First item</button>
             </tds-header-dropdown-list-item>
             <tds-header-dropdown-list-item>
-              <a href="https://tegel.scania.com">Rim wheel</a>
+              <a href="https://tegel.scania.com">Second item</a>
             </tds-header-dropdown-list-item>
           </tds-header-dropdown-list>
         </tds-header-dropdown>
@@ -165,15 +142,24 @@ const Template = () =>
               </a>
             </tds-header-launcher-grid-item>
           </tds-header-launcher-grid>
-
         </tds-header-launcher>
 
-        <tds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-lg-show" selected>
-          <img slot="icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
+        <tds-header-dropdown
+          slot="end"
+          placement="end"
+          no-dropdown-icon
+          class="demo-hide demo-lg-show"
+          selected
+          data-testid="header-dropdown-2"
+          close-when-clicked
+        >
+          <img
+            slot="icon"
+            src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+            alt="User menu."
+          />
           <tds-header-dropdown-list size="lg">
-            <tds-header-dropdown-list-user
-              header="Name Nameson"
-              subheader="Company name">
+            <tds-header-dropdown-list-user data-testid="header-dropdown-list-user" header="Name Nameson" subheader="Company name">
             </tds-header-dropdown-list-user>
             <tds-header-dropdown-list-item selected>
               <a href="https://www.scania.com">My Instructions</a>
@@ -187,14 +173,18 @@ const Template = () =>
         <tds-header-brand-symbol slot="end">
           <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
         </tds-header-brand-symbol>
-
       </tds-header>
 
-
       <tds-side-menu id="demo-side-menu" aria-label="Side menu">
-        <tds-side-menu-overlay slot="overlay" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-overlay>
+        <tds-side-menu-overlay
+          slot="overlay"
+          onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"
+        ></tds-side-menu-overlay>
 
-        <tds-side-menu-close-button slot="close-button" onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"></tds-side-menu-close-button>
+        <tds-side-menu-close-button
+          slot="close-button"
+          onclick="demoSideMenu.open = false;demoHamburger.setAttribute('aria-expanded', false);"
+        ></tds-side-menu-close-button>
 
         <tds-side-menu-item>
           <button>
@@ -212,9 +202,7 @@ const Template = () =>
 
         <tds-side-menu-dropdown>
           <tds-icon slot="icon" name="tool" size="24"></tds-icon>
-          <span slot="label">
-            Wheel types
-          </span>
+          <span slot="label"> Wheel types </span>
           <tds-side-menu-dropdown-list>
             <tds-side-menu-dropdown-list-item>
               <a href="https://design.scania.com">Hub-centric wheel</a>
@@ -231,14 +219,15 @@ const Template = () =>
             Calendar
           </button>
         </tds-side-menu-item>
-        
+
         <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
-          <tds-side-menu-user 
-            slot="label" 
-            heading="Name Namesson" 
-            subheading="Company name" 
-            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
-            img-alt="">
+          <tds-side-menu-user
+            slot="label"
+            heading="Name Namesson"
+            subheading="Company name"
+            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"
+            img-alt=""
+          >
           </tds-side-menu-user>
           <tds-side-menu-dropdown-list>
             <tds-side-menu-dropdown-list-item selected>
@@ -249,18 +238,17 @@ const Template = () =>
             </tds-side-menu-dropdown-list-item>
           </tds-side-menu-dropdown-list>
         </tds-side-menu-dropdown>
-      
-
       </tds-side-menu>
 
-      <main class="demo-main tds-u-p3" style="box-sizing: border-box;">
-        <p>If the Header contains navigational items like links or buttons, a side menu is needed for small screens.</p>
-        <br/>
+      <main class="demo-main tds-u-p3" style="box-sizing: border-box">
+        <p>
+          If the Header contains navigational items like links or buttons, a side menu is needed for
+          small screens.
+        </p>
+        <br />
         <p><i>Tip: Resize the window to see the buttons move in to the side menu drawer.</i></p>
         <p><i>Note: This example has an alterate launcher menu with a grid layout.</i></p>
       </main>
     </div>
-  `,
-  );
-
-export const FewNavigationItems = Template.bind({});
+  </body>
+</html>

@@ -28,7 +28,7 @@ export class TdsPopoverCore {
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the Popover Menu should be visible from the start */
-  @Prop() show: boolean = null;
+  @Prop() show?: boolean = null;
 
   /** Decides the placement of the Popover Menu */
   @Prop() placement: Placement = 'auto';
@@ -49,6 +49,8 @@ export class TdsPopoverCore {
    * Alternatevly it can be hidden externally based on emitted events. */
   @Prop() autoHide: boolean = true;
 
+  @Prop() closeWhenClicked?: boolean = false;
+
   @State() renderedShowValue: boolean = false;
 
   @State() popperInstance: Instance | null;
@@ -57,23 +59,21 @@ export class TdsPopoverCore {
 
   @State() isShown: boolean = false;
 
-  /** @internal Show event. */
+  /** Show event. */
   @Event({
-    eventName: 'internalTdsShow',
-    composed: false,
+    composed: true,
     cancelable: false,
-    bubbles: false,
+    bubbles: true,
   })
-  tdsShow: EventEmitter<{}>;
+  internalTdsShow: EventEmitter<void>;
 
-  /** @internal Close event. */
+  /** Hide event. */
   @Event({
-    eventName: 'internalTdsClose',
-    composed: false,
+    composed: true,
     cancelable: false,
-    bubbles: false,
+    bubbles: true,
   })
-  tdsClose: EventEmitter<{}>;
+  internalTdsHide: EventEmitter<void>;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
@@ -86,7 +86,7 @@ export class TdsPopoverCore {
     }
   }
 
-  /* To enable initial loading of a component if user controls show prop*/
+  /* To enable initial loading of a component if user controls show prop */
   componentWillLoad() {
     this.setIsShown(this.show);
   }
@@ -117,9 +117,9 @@ export class TdsPopoverCore {
       this.isShown = isShown;
     }
     if (this.isShown) {
-      this.tdsShow.emit();
+      this.internalTdsShow.emit();
     } else {
-      this.tdsClose.emit();
+      this.internalTdsHide.emit();
     }
   }.bind(this);
 
@@ -192,6 +192,10 @@ export class TdsPopoverCore {
         this.host.addEventListener('mouseleave', this.handleHide);
       }
     }
+
+    if (this.closeWhenClicked) {
+      this.host.addEventListener('click', this.handleHide);
+    }
   }
 
   private cleanUp() {
@@ -202,6 +206,7 @@ export class TdsPopoverCore {
     this.target?.removeEventListener('mouseleave', this.handleHide);
     this.host?.removeEventListener('mouseenter', this.handleShow);
     this.host?.removeEventListener('mouseleave', this.handleHide);
+    this.host?.removeEventListener('click', this.handleHide);
 
     this.popperInstance?.destroy();
   }

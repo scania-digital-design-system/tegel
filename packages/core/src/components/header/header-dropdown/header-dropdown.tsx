@@ -43,6 +43,11 @@ export class TdsHeaderDropdown {
     this.open = !this.open;
   }
 
+  @Listen('closeDropdown', { target: 'body' })
+  handleCloseDropdown() {
+    this.open = false;
+  }
+
   render() {
     return (
       <Host>
