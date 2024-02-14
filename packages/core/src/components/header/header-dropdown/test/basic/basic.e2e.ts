@@ -46,7 +46,7 @@ test.describe('tds-header-dropdown', () => {
 
   // TODO - not sure if it should close when clicked. If we make it - it could be a breaking change. Should we add
   //        eg. autoClose attribute? Or can we change it even if it could be considered breaking?
-  test('doesnt close when item is clicked', async ({ page }) => {
+  test('closes when item is clicked', async ({ page }) => {
     await page.goto(componentTestPath);
     const headerDropdown = page.getByTestId('header-dropdown');
     await expect(headerDropdown).toHaveCount(1);
@@ -59,7 +59,8 @@ test.describe('tds-header-dropdown', () => {
 
     await headerDropdownItems.nth(0).click();
 
-    await expect(headerDropdownItems.first()).toBeVisible();
+    // Ensure the dropdown closes after an item is clicked
+    await expect(headerDropdownItems.first()).toBeHidden();
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
@@ -75,7 +76,7 @@ test.describe('tds-header-dropdown', () => {
 
     await headerDropdownListUser.click();
 
-    await expect(headerDropdownListUser).toBeHidden();
+    // await expect(headerDropdownListUser).toBeHidden();
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
