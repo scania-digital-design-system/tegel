@@ -88,7 +88,7 @@ export class TdsHeaderDropdown {
                 },
               ]}
             >
-              <slot></slot>
+              {this.open ? <slot></slot> : null}
             </tds-popover-canvas>
           )}
         </div>
