@@ -94,7 +94,7 @@ export class TdsHeaderLauncher {
                 },
               ]}
             >
-              <slot></slot>
+              {this.open ? <slot></slot> : null}
             </tds-popover-canvas>
           )}
         </div>
