@@ -21,7 +21,7 @@ test.describe('Radio button - disabled state', () => {
     await expect(disabledLabel1RadioButton).toHaveCount(1);
   });
 
-  test('1st radio button is button is checked', async ({ page }) => {
+  test('1st radio button is checked', async ({ page }) => {
     const checkedLabel1RadioButton = page.locator('input[id="option-1"]');
     const isChecked = await checkedLabel1RadioButton.evaluate(
       (node: HTMLInputElement) => node.checked,
