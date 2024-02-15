@@ -48,7 +48,7 @@ test.describe('Radio button - disabled state', () => {
     await inputElement.hover();
     await expect(inputElement).toHaveCSS('cursor', 'not-allowed');
 
-    const labelElement = page.locator('text=Label text 1');
+    const labelElement = page.locator('text=Label text 2');
     await labelElement.hover();
     await expect(labelElement).toHaveCSS('cursor', 'not-allowed');
   });
