@@ -6,7 +6,7 @@ test.describe('Radio button - disabled state', () => {
     await page.goto('src/components/radio-button/test/disabled/index.html');
   });
 
-  test('Radio buttons with Label text = "Label text 1" and "Label text 2" render on the page', async ({
+  test('Radio buttons with Label text = "Label text 1" and "Label text 2" renders on the page', async ({
     page,
   }) => {
     const radioButton1 = page.locator('tds-radio-button', { hasText: 'Label text 1' });
