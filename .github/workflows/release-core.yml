@@ -11,7 +11,7 @@ on:
       tags:
         description: 'Tag'
         required: true
-        default: 'beta'
+        default: 'latest'
         type: choice
         options:
           - latest
@@ -21,7 +21,7 @@ on:
       dryRun:
         description: 'Dry run'
         required: false
-        default: true
+        default: false
         type: boolean
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: develop
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -88,7 +88,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: develop
 
       - name: Remove git tag on failure
         run: |
