@@ -14,17 +14,14 @@ if (process.env.STORYBOOK_ENV === 'dev') {
 }
 
 function loadStories() {
-  // Synchronously gather all story files
+  // Gather all story files synchronously
   const storyFiles = glob.sync(path.resolve(__dirname, '../src/**/*.stories.@(js|jsx|ts|tsx)'));
 
-  if (process.env.STORYBOOK_ENV === 'dev') {
-    // Return all for development environment
-    return storyFiles
-  } else {
-    // Filter out stories from _beta folder if environment is not development
-    const filteredStories = storyFiles.filter(file => !file.includes('/_beta/'));
-    return filteredStories;
-  }
+  // If in development environment, return all story files
+  // Otherwise, exclude stories from the _beta folder
+  return process.env.STORYBOOK_ENV === 'dev' 
+    ? storyFiles 
+    : storyFiles.filter(file => !file.includes('/_beta/'));
 }
 
 module.exports = {

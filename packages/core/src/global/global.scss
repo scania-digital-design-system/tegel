@@ -33,7 +33,6 @@
 @import '../components/chip/chip-vars';
 @import '../components/table/table-vars';
 @import '../components/datetime/datetime-vars';
-@import '../components/_beta/date-picker/date-picker-vars';
 @import '../components/divider/divider-vars';
 @import '../components/dropdown/dropdown-vars';
 @import '../components/dropdown/dropdown-option/dropdown-option-vars';
@@ -58,6 +57,9 @@
 @import '../components/toast/toast-vars';
 @import '../components/toggle/toggle-vars';
 @import '../components/tooltip/tooltip-vars';
+
+// Beta components
+@import '../components/_beta/date-picker/date-picker-single/date-picker-vars';
 
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;

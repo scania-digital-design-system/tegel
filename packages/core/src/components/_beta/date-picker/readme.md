@@ -1,60 +1,30 @@
-# tds-date-picker
+# Date Picker Component
 
+This document outlines the current status and development roadmap for the Date Picker component. The component is under development, and the following items are categorized into "To Do" and "Done" to provide clarity on the progress.
 
+## To Do
 
-<!-- Auto Generated Below -->
+- Review and align design.
+- UX questions: What happens when I click a date in the next month, should the dates be updated to reflect the selected date month?
+- Locales - date-fns have support for locales, we need to see which are available and expose the available options as a prop on the component.
+- Can the start/selected date be null?
+- Make sure all available props in Date Picker are available in Date Range Picker.
+- Enable slots?
+- What data should be submitted in a form?
+- The focus state of the next/previous buttons?
+- When should the Date Picker close? Only on click outside? What if you click the Date Picker and then click the input field.
+- The Date Picker needs further control of the popover, it should open when you click the input field. But it should not close when the input field is clicked if the Date Picker is opened. I do not think this is possible with the implementation of the popover we have today.
 
+## Done
 
-## Properties
+- Error state - prop to set the error state to true and slot to allow for users to pass in an error message.
+- Success state - prop to set the error state to true and slot to allow for users to pass in a success message.
+- Label & label position props.
+- Min/Max props.
+- Disable same date selection.
+- Something buggy with choosing a date a couple of months ahead.
 
-| Property        | Attribute         | Description                                                                                                                                                                                       | Type                                  | Default              |
-| --------------- | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | -------------------- |
-| `datePickerId`  | `date-picker-id`  | ID used for internal Date Picker functionality and events, must be unique.                                                                                                                        | `string`                              | `generateUniqueId()` |
-| `helper`        | `helper`          | Helper text for the Date Picker                                                                                                                                                                   | `string`                              | `undefined`          |
-| `label`         | `label`           | Label text                                                                                                                                                                                        | `string`                              | `undefined`          |
-| `labelPosition` | `label-position`  | Position of the label for the Text Field.                                                                                                                                                         | `"inside" \| "no-label" \| "outside"` | `'no-label'`         |
-| `locale`        | `locale`          | Locale for displaying Months in a differnet language than enlish. Currently available: English, Swedish, German.                                                                                  | `"de" \| "en" \| "sv"`                | `'en'`               |
-| `max`           | `max`             | Maximim selectable date.                                                                                                                                                                          | `string`                              | `undefined`          |
-| `min`           | `min`             | Minimum selectable date.                                                                                                                                                                          | `string`                              | `undefined`          |
-| `modeVariant`   | `mode-variant`    | Set the variant of the Datepicker.                                                                                                                                                                | `"primary" \| "secondary"`            | `undefined`          |
-| `state`         | `state`           | State of the Date Picker                                                                                                                                                                          | `"default" \| "error" \| "success"`   | `'default'`          |
-| `value`         | `value`           | The selected date of the Datepicker                                                                                                                                                               | `string`                              | `null`               |
-| `variant`       | `variant`         | The variant of the Datepicker                                                                                                                                                                     | `"day" \| "month" \| "year"`          | `'day'`              |
-| `weekDayLabels` | `week-day-labels` | Labels for the week days, should be a single string containing the first letter of each day of the week. For example: MTWTFSS -> Monday, Thursday, Wednesday, Thursday, Friday, Saturday, Sunday. | `string`                              | `'MTWTFSS'`          |
-| `weekStartsOn`  | `week-starts-on`  | Sets which day the week starts on,  1 = Monday. If this is used, you will also need to set a custom weekDayLabels prop to correspond with this this update.                                       | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`     | `1`                  |
+Please note that this component is currently under development, and the features or functionalities listed above are subject to change as we progress.
 
-
-## Events
-
-| Event       | Description                               | Type                                          |
-| ----------- | ----------------------------------------- | --------------------------------------------- |
-| `tdsSelect` | Fires when a Date/Month/Year is selected. | `CustomEvent<{ value: string; id: string; }>` |
-
-
-## Dependencies
-
-### Depends on
-
-- [date-picker-day](day)
-- [date-picker-month](month)
-- [date-picker-year](year)
-- [tds-text-field](../../text-field)
-- [tds-icon](../../icon)
-- [tds-popover-core](../../popover-core)
-
-### Graph
-```mermaid
-graph TD;
-  tds-date-picker --> date-picker-day
-  tds-date-picker --> date-picker-month
-  tds-date-picker --> date-picker-year
-  tds-date-picker --> tds-text-field
-  tds-date-picker --> tds-icon
-  tds-date-picker --> tds-popover-core
-  tds-text-field --> tds-icon
-  style tds-date-picker fill:#f9f,stroke:#333,stroke-width:4px
-```
-
-----------------------------------------------
-
-*Built with [StencilJS](https://stenciljs.com/)*
+## Important
+- Evaluate if we would like to add this component as it uses 3rd party package that adds 1MB extra on bundle size.

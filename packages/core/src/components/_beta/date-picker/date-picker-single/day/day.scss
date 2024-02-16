@@ -1,4 +1,4 @@
-@import '../../../../mixins/focus-state';
+@import '../../../../../mixins/focus-state';
 
 :host {
   display: block;
@@ -6,8 +6,8 @@
   button {
     all: unset;
     color: var(--tds-date-picker-date-color);
-    height: 32px;
-    width: 32px;
+    height: 24px;
+    width: 24px;
     border-radius: 100%;
     display: flex;
     align-items: center;
@@ -19,14 +19,23 @@
       @include tds-focus-state;
     }
 
+    &.not-current-month {
+      color: var(--tds-date-picker-date-color-not-current-month);
+    }
+
     &:hover {
       cursor: pointer;
       background-color: var(--tds-date-picker-date-bg-hover);
     }
 
+    &.today {
+      font-weight: 700;
+    }
+
     &.selected {
       background-color: var(--tds-date-picker-date-bg-selected);
       color: var(--tds-date-picker-date-color-selected);
+      border-radius: 100%;
     }
 
     &.disabled {

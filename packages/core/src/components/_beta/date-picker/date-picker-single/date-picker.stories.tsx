@@ -1,5 +1,5 @@
 //@ts-nocheck
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
 import readme from './readme.md';
 
 export default {
