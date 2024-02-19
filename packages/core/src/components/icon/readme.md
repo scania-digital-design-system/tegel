@@ -9,8 +9,8 @@
 | ---------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
 | `name`           | `name`            | Pass the name of the icon. For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library | `string` | `'truck'`   |
 | `size`           | `size`            | Pass a size of icon as a string, for example, 32px, 1rem, 4em...                                                                                | `string` | `'16px'`    |
-| `svgDescription` | `svg-description` | Set description for the svg.                                                                                                                    | `string` | `undefined` |
-| `svgTitle`       | `svg-title`       | Override the default title for the svg.                                                                                                         | `string` | `undefined` |
+| `svgDescription` | `svg-description` | Set description for the svg. Also used by aria-describedby.                                                                                     | `string` | `undefined` |
+| `svgTitle`       | `svg-title`       | Override the default title for the svg. Also used by aria-labelledby.                                                                           | `string` | `undefined` |
 
 
 ## Dependencies
