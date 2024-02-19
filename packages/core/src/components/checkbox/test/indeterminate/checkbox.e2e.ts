@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/checkbox/test/indeterminate/index.html';
 
 test.describe('tds-checkbox', () => {
-  test('Hover over checkbox and label -> cursor should become inactive', async ({ page }) => {
+  test('Checkbox indeterminate state', async ({ page }) => {
     await page.goto(componentTestPath);
 
     // Find the checkbox and label elements
