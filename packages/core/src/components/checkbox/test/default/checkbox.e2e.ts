@@ -1,0 +1,27 @@
+import { test } from 'stencil-playwright';
+import { expect } from '@playwright/test';
+
+const componentTestPath = 'src/components/checkbox/test/default/index.html';
+
+test.describe('tds-checkbox', () => {
+  test('renders basic checkbox correctly', async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    /* Check diff on screenshot */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
+
+  test('Hover and click on checkbox -> should become checked', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const checkbox = page.locator('tds-checkbox');
+    // Hover over the checkbox
+    await checkbox.hover();
+
+    // Click the checkbox
+    await checkbox.click();
+
+    // Check if the checkbox is now checked
+    const isChecked = await checkbox.evaluate((element: HTMLInputElement) => element.checked);
+    expect(isChecked).toBe(true);
+  });
+});
