@@ -106,13 +106,13 @@ export class TdsSlider {
       case 'ArrowLeft':
       case 'ArrowDown':
       case '-':
-        this.stepLeft();
+        this.stepLeft(event);
         break;
 
       case 'ArrowRight':
       case 'ArrowUp':
       case '+':
-        this.stepRight();
+        this.stepRight(event);
         break;
 
       default:
@@ -121,33 +121,33 @@ export class TdsSlider {
   }
 
   @Listen('mouseup', { target: 'window' })
-  handleMouseUp() {
+  handleMouseUp(event: MouseEvent) {
     if (!this.thumbGrabbed) {
       return;
     }
 
     this.thumbGrabbed = false;
     this.thumbInnerElement.classList.remove('pressed');
-    this.updateValue();
+    this.updateValue(event);
 
     this.trackElement.focus();
   }
 
   @Listen('touchend', { target: 'window' })
-  handleTouchEnd() {
+  handleTouchEnd(event: TouchEvent) {
     if (!this.thumbGrabbed) {
       return;
     }
 
     this.thumbGrabbed = false;
     this.thumbInnerElement.classList.remove('pressed');
-    this.updateValue();
+    this.updateValue(event);
 
     this.trackElement.focus();
   }
 
   @Listen('mousemove', { target: 'window' })
-  handleMouseMove(event) {
+  handleMouseMove(event: MouseEvent) {
     if (!this.thumbGrabbed) {
       return;
     }
@@ -156,7 +156,7 @@ export class TdsSlider {
   }
 
   @Listen('touchmove', { target: 'window' })
-  handleTouchMove(event) {
+  handleTouchMove(event: TouchEvent) {
     event.preventDefault();
 
     if (!this.thumbGrabbed) {
@@ -212,7 +212,7 @@ export class TdsSlider {
     this.thumbLeft = this.constrainThumb(localLeft);
     this.thumbElement.style.left = `${this.thumbLeft}px`;
 
-    this.updateValue();
+    this.updateValue(event);
   }
 
   private updateTrack() {
@@ -221,7 +221,7 @@ export class TdsSlider {
     this.trackFillElement.style.width = `${percentageFilled}%`;
   }
 
-  private updateValue() {
+  private updateValue(event) {
     const trackWidth = this.getTrackWidth();
     const numTicks = parseInt(this.ticks);
 
@@ -237,7 +237,10 @@ export class TdsSlider {
       )}`;
     }
     this.updateTrack();
-    this.tdsChange.emit({ value: this.value });
+    /* Emit event after user has finished dragging the thumb */
+    if (event.type === 'touchend' || event.type === 'mouseup') {
+      this.tdsChange.emit({ value: this.value });
+    }
   }
 
   private forceValueUpdate(newValue: string) {
@@ -317,7 +320,7 @@ export class TdsSlider {
     return this.max.length;
   }
 
-  private controlsStep(delta) {
+  private controlsStep(delta: number, event: KeyboardEvent) {
     if (this.readOnly || this.disabled) {
       return;
     }
@@ -334,7 +337,7 @@ export class TdsSlider {
       } else if (this.supposedValueSlot > numTicks + 1) {
         this.supposedValueSlot = numTicks + 1;
       }
-      this.updateValue();
+      this.updateValue(event);
     } else {
       const trackWidth = this.getTrackWidth();
       const percentage = this.thumbLeft / trackWidth;
@@ -356,12 +359,12 @@ export class TdsSlider {
     }
   }
 
-  private stepLeft() {
-    this.controlsStep(-parseInt(this.step));
+  private stepLeft(event) {
+    this.controlsStep(-parseInt(this.step), event);
   }
 
-  private stepRight() {
-    this.controlsStep(parseInt(this.step));
+  private stepRight(event) {
+    this.controlsStep(parseInt(this.step), event);
   }
 
   componentWillLoad() {
@@ -458,7 +461,7 @@ export class TdsSlider {
             <div class="tds-slider__controls">
               <div
                 class="tds-slider__control tds-slider__control-minus"
-                onClick={() => this.stepLeft()}
+                onClick={(event) => this.stepLeft(event)}
               >
                 <tds-icon name="minus" size="16px"></tds-icon>
               </div>
@@ -530,7 +533,7 @@ export class TdsSlider {
 
           {this.useInput && (
             <div class="tds-slider__input-values">
-              <div class="tds-slider__input-value" onClick={() => this.stepLeft()}>
+              <div class="tds-slider__input-value" onClick={(event) => this.stepLeft(event)}>
                 {this.max}
               </div>
               <div class="tds-slider__input-field-wrapper">
@@ -550,7 +553,7 @@ export class TdsSlider {
             <div class="tds-slider__controls">
               <div
                 class="tds-slider__control tds-slider__control-plus"
-                onClick={() => this.stepRight()}
+                onClick={(event) => this.stepRight(event)}
               >
                 <tds-icon name="plus" size="16px"></tds-icon>
               </div>
