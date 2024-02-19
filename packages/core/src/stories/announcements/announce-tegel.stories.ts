@@ -191,7 +191,7 @@ export const Tegel = {
                             will
                             continue to be updated until we release 1.0 and is available
                             <tds-link><a
-                                    href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a></tds-link>
+                                    href="https://tds-storybook.tegel.scania.com/?path=/story/intro-migrating-from-components-v4--page">here.</a></tds-link>
                         </p>
                     </section>
                     <section>
