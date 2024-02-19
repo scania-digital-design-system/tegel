@@ -1,6 +1,6 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
+import readme from './readme.md';
 
 export default {
   title: `${ComponentsFolder}/Tooltip`,
@@ -79,12 +79,26 @@ export default {
         },
       },
     },
+    offsetDistance: {
+      name: 'Offset Distance',
+      control: {
+        type: 'number',
+      },
+    },
+    offsetSkidding: {
+      name: 'Offset Skidding',
+      control: {
+        type: 'number',
+      },
+    },
   },
   args: {
     tooltipPosition: 'Bottom',
     text: 'Text inside Tooltip',
     slot: '<p class="tds-detail-05 tds-u-m0"> Paragraph tag inside Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
     mouseOverTooltip: true,
+    offsetDistance: 8,
+    offsetSkidding: 0,
   },
 };
 
@@ -103,7 +117,7 @@ const positionLookup = {
   'Right-end': 'right-end',
 };
 
-const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
+const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot, offsetDistance, offsetSkidding }) =>
   formatHtmlPreview(
     `
     <style>
@@ -121,6 +135,8 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot }) =>
       placement="${positionLookup[tooltipPosition]}"
       text="${text}"
       selector="#my-tooltip-button"
+      ${offsetDistance !== undefined ? `offset-distance="${offsetDistance}"`: ''}
+      ${offsetSkidding !== undefined ? `offset-skidding="${offsetSkidding}"`: ''}
       mouse-over-tooltip="${mouseOverTooltip}">
       ${slot}
     </tds-tooltip>

@@ -33,17 +33,20 @@ export class TdsTooltip {
   /** Placement of Tooltip. */
   @Prop() placement: Placement = 'bottom';
 
+  /** Sets the offset skidding */
+  @Prop() offsetSkidding: number = 0;
+
+  /** Sets the offset distance */
+  @Prop() offsetDistance: number = 8;
+
   border: string;
-
-  offsetSkidding: number = 0;
-
-  offsetDistance: number = 8;
 
   popperjsExtraModifiers = [
     {
       name: 'positionCalc',
       enabled: true,
       phase: 'main',
+
       fn: ({ state }) => {
         if (state.placement === 'bottom-start' || state.placement === 'right-start') {
           this.border = 'top-left';
@@ -81,6 +84,8 @@ export class TdsTooltip {
           referenceEl={this.referenceEl}
           trigger={this.mouseOverTooltip ? 'hover-popover' : 'hover'}
           modifiers={this.popperjsExtraModifiers}
+          offsetSkidding={this.offsetSkidding}
+          offsetDistance={this.offsetDistance}
           show={this.show}
           placement={this.placement}
           autoHide={false}
