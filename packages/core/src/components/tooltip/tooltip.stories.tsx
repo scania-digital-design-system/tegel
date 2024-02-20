@@ -81,12 +81,14 @@ export default {
     },
     offsetDistance: {
       name: 'Offset Distance',
+      description: 'Sets the distance between the wrapped component and Tooltip',
       control: {
         type: 'number',
       },
     },
     offsetSkidding: {
       name: 'Offset Skidding',
+      description: 'Sets offset to Tooltip position, moving Tooltip left-right or top-down - depending on the placement prop.'
       control: {
         type: 'number',
       },
