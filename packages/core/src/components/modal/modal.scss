@@ -92,20 +92,12 @@ $modals: (
 
 @mixin modal-header {
   display: flex;
-  padding-bottom: var(--tds-spacing-element-8);
+  padding: var(--tds-spacing-element-8);
+  padding: 16px;
   position: sticky;
   top: 0;
   background-color: var(--tds-modal-background);
   z-index: 1;
-
-  &::before {
-    content: ' ';
-    position: absolute;
-    height: 16px;
-    top: -16px;
-    width: 100%;
-    background-color: var(--tds-modal-background);
-  }
 }
 
 @mixin modal-header-title {
@@ -124,12 +116,8 @@ $modals: (
   letter-spacing: var(--tds-body-01-ls);
   padding-bottom: 40px;
   overflow-y: visible;
-  padding-right: 16px;
+  padding: 0 16px 16px;
   @include modal-scroll-inner;
-
-  @media (min-width: $screen-l) {
-    padding-right: 64px;
-  }
 }
 
 @mixin modal-position {
@@ -149,7 +137,6 @@ $modals: (
   margin: auto;
   position: relative;
   border-radius: 4px;
-  padding: 16px;
   max-height: 85vh;
   overflow-y: auto;
   pointer-events: auto;
@@ -163,7 +150,6 @@ $modals: (
       font: var(--tds-body-01);
       letter-spacing: var(--tds-body-01-ls);
       padding-bottom: 96px;
-      margin: 0 -16px 0 0;
       max-height: calc(85vh - 36px);
       overflow-y: auto;
     }
@@ -185,6 +171,7 @@ $modals: (
       background-color: var(--tds-modal-background);
       display: flex;
       gap: 16px;
+      padding: 24px 16px 16px;
     }
   }
 }
@@ -199,7 +186,6 @@ $modals: (
     }
   }
 }
-
 @media (max-width: $screen-s) {
   .tds-modal-md,
   .tds-modal-lg,
@@ -259,6 +245,12 @@ button.tds-modal-close {
 
   @media (min-width: $screen-l) {
     margin-left: var(--tds-spacing-element-48);
+  }
+}
+@media (min-width: 736px) {
+  .tds-modal-lg .body,
+  .tds-modal-md .body {
+    padding-right: 80px;
   }
 }
 
