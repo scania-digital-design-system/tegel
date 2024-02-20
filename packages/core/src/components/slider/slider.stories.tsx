@@ -254,12 +254,21 @@ const Template = ({
     
      <!-- Script tag for demo purposes -->
     <script>
-      slider = document.querySelector('tds-slider')
+      const slider = document.querySelector('tds-slider');
       
-      slider.removeEventListener('tdsChange', null)
-      slider.addEventListener('tdsChange', (event) => {
-        console.log(event);
-      });
+      function handleTdsChange(event) {
+        console.log('tdsChange event:', event);
+      }
+      
+      slider.removeEventListener('tdsChange', handleTdsChange);
+      slider.addEventListener('tdsChange', handleTdsChange);
+
+      function handleTdsInput(event) {
+        console.log('tdsInput event:', event);
+      }
+
+      slider.removeEventListener('tdsInput', handleTdsInput);
+      slider.addEventListener('tdsInput', handleTdsInput);
     </script>
   `);
 

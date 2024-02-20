@@ -83,7 +83,7 @@ export class TdsSlider {
 
   private resizeObserverAdded: boolean = false;
 
-  /** Sends the value of the slider when changed. */
+  /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
@@ -91,6 +91,17 @@ export class TdsSlider {
     bubbles: true,
   })
   tdsChange: EventEmitter<{
+    value: string;
+  }>;
+
+  /** Sends the value of the slider while moving the thumb. Fires on mouse move and touch move events. */
+  @Event({
+    eventName: 'tdsInput',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsInput: EventEmitter<{
     value: string;
   }>;
 
@@ -237,6 +248,9 @@ export class TdsSlider {
       )}`;
     }
     this.updateTrack();
+
+    this.tdsInput.emit({ value: this.value });
+
     /* Emit event after user has finished dragging the thumb */
     if (event.type === 'touchend' || event.type === 'mouseup') {
       this.tdsChange.emit({ value: this.value });

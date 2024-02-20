@@ -29,9 +29,10 @@
 
 ## Events
 
-| Event       | Description                                 | Type                              |
-| ----------- | ------------------------------------------- | --------------------------------- |
-| `tdsChange` | Sends the value of the slider when changed. | `CustomEvent<{ value: string; }>` |
+| Event       | Description                                                                                      | Type                              |
+| ----------- | ------------------------------------------------------------------------------------------------ | --------------------------------- |
+| `tdsChange` | Sends the value of the slider when changed. Fires after mouse up and touch end events.           | `CustomEvent<{ value: string; }>` |
+| `tdsInput`  | Sends the value of the slider while moving the thumb. Fires on mouse move and touch move events. | `CustomEvent<{ value: string; }>` |
 
 
 ## Methods
