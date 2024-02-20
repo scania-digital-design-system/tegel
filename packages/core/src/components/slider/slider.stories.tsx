@@ -254,7 +254,7 @@ const Template = ({
     
      <!-- Script tag for demo purposes -->
     <script>
-      const slider = document.querySelector('tds-slider');
+      slider = document.querySelector('tds-slider');
       
       function handleTdsChange(event) {
         console.log('tdsChange event:', event);
