@@ -9,23 +9,21 @@ test.describe('tds-checkbox', () => {
 
     // Find the checkbox and label elements
     const checkbox = page.locator('tds-checkbox');
-    const labelElement = page.locator('tds-checkbox', { hasText: 'Label' });
+    const input = page.locator('tds-checkbox input');
+    const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox
+
+    await expect(input).toBeDisabled();
 
     // Hover over checkbox and label
     await checkbox.hover();
     await labelElement.hover();
-
-    // Get cursor styles for checkbox and label
-    const checkboxCursorStyle = await checkbox.evaluate(
-      (element) => getComputedStyle(element).cursor,
+    const labelElementCursorStyle = await labelElement.evaluate(
+      (style) => getComputedStyle(style).cursor,
     );
-    const labelCursorStyle = await labelElement.evaluate(
-      (element) => getComputedStyle(element).cursor,
-    );
+    const inputCursorStyle = await input.evaluate((style) => getComputedStyle(style).cursor);
 
-    // Check if cursor styles are 'auto' indicating inactive cursor
-    expect(checkboxCursorStyle).toBe('auto');
-    expect(labelCursorStyle).toBe('auto');
+    expect(labelElementCursorStyle).toBe('not-allowed');
+    expect(inputCursorStyle).toBe('not-allowed');
 
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
