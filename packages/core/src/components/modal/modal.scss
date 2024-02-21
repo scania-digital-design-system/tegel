@@ -114,7 +114,6 @@ $modals: (
   color: var(--tds-modal-text);
   font: var(--tds-body-01);
   letter-spacing: var(--tds-body-01-ls);
-  padding-bottom: 40px;
   overflow-y: visible;
   padding: 0 16px 16px;
   @include modal-scroll-inner;
