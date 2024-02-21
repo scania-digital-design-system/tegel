@@ -9,7 +9,7 @@ test.describe('tds-checkbox', () => {
 
     // Find the checkbox and label elements
     const checkbox = page.locator('tds-checkbox');
-    const labelElement = page.locator('tds-checkbox', { hasText: 'Label' });
+    const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox
 
     // Hover over checkbox and label
     await checkbox.hover();
