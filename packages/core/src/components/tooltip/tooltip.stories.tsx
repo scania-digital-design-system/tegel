@@ -88,7 +88,8 @@ export default {
     },
     offsetSkidding: {
       name: 'Offset Skidding',
-      description: 'Sets offset to Tooltip position, moving Tooltip left-right or top-down - depending on the placement prop.'
+      description:
+        'Sets offset to Tooltip position, moving Tooltip left-right or top-down - depending on the placement prop.',
       control: {
         type: 'number',
       },
@@ -119,7 +120,14 @@ const positionLookup = {
   'Right-end': 'right-end',
 };
 
-const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot, offsetDistance, offsetSkidding }) =>
+const ComponentTooltip = ({
+  tooltipPosition,
+  mouseOverTooltip,
+  text,
+  slot,
+  offsetDistance,
+  offsetSkidding,
+}) =>
   formatHtmlPreview(
     `
     <style>
@@ -137,8 +145,8 @@ const ComponentTooltip = ({ tooltipPosition, mouseOverTooltip, text, slot, offse
       placement="${positionLookup[tooltipPosition]}"
       text="${text}"
       selector="#my-tooltip-button"
-      ${offsetDistance !== undefined ? `offset-distance="${offsetDistance}"`: ''}
-      ${offsetSkidding !== undefined ? `offset-skidding="${offsetSkidding}"`: ''}
+      ${offsetDistance !== undefined ? `offset-distance="${offsetDistance}"` : ''}
+      ${offsetSkidding !== undefined ? `offset-skidding="${offsetSkidding}"` : ''}
       mouse-over-tooltip="${mouseOverTooltip}">
       ${slot}
     </tds-tooltip>
