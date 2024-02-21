@@ -232,6 +232,9 @@ const datetimeTemplate = ({
       datetimeElement.addEventListener('tdsBlur', (event) => {
         console.log(event);
       });
+      datetimeElement.addEventListener('tdsInput', (event) => {
+        console.log(event);
+      });
     </script>
 `,
   );

@@ -82,6 +82,15 @@ export class TdsDatetime {
   })
   tdsFocus: EventEmitter<FocusEvent>;
 
+  /** Input event for the Datetime */
+  @Event({
+    eventName: 'tdsInput',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsInput: EventEmitter<InputEvent>;
+
   /** Method that sets the value of the datetime element */
   @Method()
   async setValue(newValue: string) {
@@ -127,9 +136,9 @@ export class TdsDatetime {
   }
 
   // Data input event in value prop
-  handleInput(e): void {
-    this.value = e.target.value;
-    this.tdsChange.emit(e);
+  handleInput(e: InputEvent): void {
+    this.value = (e.target as HTMLInputElement).value;
+    this.tdsInput.emit(e);
   }
 
   // Change event isn't a composed:true by default in for input
@@ -138,13 +147,13 @@ export class TdsDatetime {
   }
 
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
-  handleFocusClick(e): void {
+  handleFocusClick(e: FocusEvent): void {
     this.textInput.focus();
     this.tdsFocus.emit(e);
   }
 
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
-  handleBlur(e): void {
+  handleBlur(e: FocusEvent): void {
     this.textInput.blur();
     this.tdsBlur.emit(e);
   }
