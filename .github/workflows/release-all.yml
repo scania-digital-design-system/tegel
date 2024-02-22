@@ -1,0 +1,87 @@
+name: Release All Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '20.9.0'
+        type: string
+      tags:
+        description: 'Tag'
+        required: true
+        default: 'latest'
+        type: choice
+        options:
+          - latest
+          - beta
+          - dev
+      dryRun:
+        description: 'Dry run'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  release-core:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.core-release.outputs.version }}
+    steps:
+      - name: Trigger Core Release
+        id: core-release
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: release-core.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          inputs: '{"nodeVersion": "${{ github.event.inputs.nodeVersion }}", "tags": "${{ github.event.inputs.tags }}", "dryRun": "${{ github.event.inputs.dryRun }}"}'
+
+  release-angular:
+    needs: release-core
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Angular Release
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: release-angular.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          inputs: '{"nodeVersion": "${{ github.event.inputs.nodeVersion }}", "tags": "${{ github.event.inputs.tags }}", "dryRun": "${{ github.event.inputs.dryRun }}"}'
+
+  release-react:
+    needs: release-core
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger React Release
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: release-react.yml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          inputs: '{"nodeVersion": "${{ github.event.inputs.nodeVersion }}", "tags": "${{ github.event.inputs.tags }}", "dryRun": "${{ github.event.inputs.dryRun }}"}'
+
+  create-pr:
+    needs: [release-core, release-angular, release-react]
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Core - Read Package.json Version
+        id: version
+        working-directory: packages/core
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        id: create-pr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: 'release: ${{ env.PACKAGE_VERSION }}'
+          title: 'release: ${{ env.PACKAGE_VERSION }}'
+          body: |
+            This PR is to sync the develop branch with the main branch after the successful release of the core package.
+            Version: ${{ env.PACKAGE_VERSION }}
+          base: main
+          branch: develop

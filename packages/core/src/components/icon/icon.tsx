@@ -17,10 +17,10 @@ export class Icon {
   /** Pass a size of icon as a string, for example, 32px, 1rem, 4em... */
   @Prop({ reflect: true }) size: string = '16px';
 
-  /** Override the default title for the svg. */
+  /** Override the default title for the svg. Also used by aria-labelledby. */
   @Prop() svgTitle?: string;
 
-  /** Set description for the svg. */
+  /** Set description for the svg. Also used by aria-describedby. */
   @Prop() svgDescription?: string;
 
   @State() icons_object: string = iconsCollection;
@@ -47,14 +47,15 @@ export class Icon {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
-            aria-labelledby={this.svgTitle ?? `${element.name} icon`}
+            aria-labelledby={this.svgTitle ? `title-${this.name}` : undefined}
+            aria-describedby={this.svgDescription ? `desc-${this.name}` : undefined}
             role="img"
             style={{ fontSize: this.size }}
             height={this.size}
             width={this.size}
           >
-            <title>{this.svgTitle ?? `${element.name} icon`}</title>
-            {this.svgDescription && <desc>{this.svgDescription}</desc>}
+            {this.svgTitle && <title id={`title-${this.name}`}>{this.svgTitle}</title>}
+            {this.svgDescription && <desc id={`desc-${this.name}`}>{this.svgDescription}</desc>}
             <path fill="currentColor" d={element.definition} />
           </svg>
         );

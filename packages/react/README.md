@@ -1,4 +1,4 @@
-[![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
+[![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tds-storybook.tegel.scania.com/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
 ![npm](https://img.shields.io/npm/v/%40scania%2Ftegel-react)
