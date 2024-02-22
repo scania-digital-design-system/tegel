@@ -11,7 +11,7 @@ on:
       tags:
         description: 'Tag'
         required: true
-        default: 'beta'
+        default: 'latest'
         type: choice
         options:
           - latest
@@ -21,7 +21,7 @@ on:
       dryRun:
         description: 'Dry run'
         required: false
-        default: true
+        default: false
         type: boolean
 
 jobs:
@@ -33,7 +33,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: develop
 
       - name: Set up node
         # Setup .npmrc file to publish to npm
@@ -43,7 +43,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"r
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Angular - Read package.json Version
         id: version
@@ -90,7 +90,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: develop
 
       - name: Remove git tag on failure
         run: |
