@@ -16,6 +16,8 @@ test.describe('tds-checkbox', () => {
     await labelElement.hover();
 
     const indeterminateValue = await checkbox.getAttribute('indeterminate');
+
+    expect(labelElement).toHaveText('Label'); // Check label text
     expect(indeterminateValue).not.toBeNull();
 
     /* Check diff on screenshot */

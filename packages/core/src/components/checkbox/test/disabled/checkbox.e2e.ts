@@ -12,6 +12,7 @@ test.describe('tds-checkbox', () => {
     const input = page.locator('tds-checkbox input');
     const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox
 
+    expect(labelElement).toHaveText('Label'); // Check label text
     await expect(input).toBeDisabled();
 
     // Hover over checkbox and label
@@ -24,7 +25,6 @@ test.describe('tds-checkbox', () => {
 
     expect(labelElementCursorStyle).toBe('not-allowed');
     expect(inputCursorStyle).toBe('not-allowed');
-
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
