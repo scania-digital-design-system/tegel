@@ -42,7 +42,7 @@ export const Tegel = {
             <article class="tds-u-p2 tds-body-01">
             <section>
                         <p class="tds-body-01"><strong>Published: 2022-04-25</strong></p>
-                        <h1 class="tds-headline-02">Annoucing @scania</h1>
+                        <h1 class="tds-headline-02">Annoucing @scania/tegel</h1>
                         <p>
                             <b>TLDR;</b> The new @scania/tegel package is an improvement and continuation of the previous
                             @scania/components,
@@ -191,7 +191,7 @@ export const Tegel = {
                             will
                             continue to be updated until we release 1.0 and is available
                             <tds-link><a
-                                    href="https://tegel-storybook.netlify.app/?path=/story/intro-migrating-from-components%C2%A0v4--page">here.</a></tds-link>
+                                    href="https://tds-storybook.tegel.scania.com/?path=/story/intro-migrating-from-components-v4--page">here.</a></tds-link>
                         </p>
                     </section>
                     <section>

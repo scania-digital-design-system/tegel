@@ -1,6 +1,6 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
-[![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tegel-storybook.netlify.app/)
+[![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tds-storybook.tegel.scania.com/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 ![node-current](https://img.shields.io/badge/Node.js-18-orange)
@@ -8,7 +8,6 @@
 [![Downloads](https://img.shields.io/npm/dw/@scania/tegel?color=76a4ed)](https://www.npmjs.com/package/@scania/tegel)
 [![Last Commit](https://img.shields.io/github/last-commit/scania-digital-design-system/tegel)](https://github.com/scania-digital-design-system/tegel/commits/main)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/scania-digital-design-system/tegel/pulls)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8070a4bb-ed31-4125-86aa-0c6140c55e73/deploy-status)](https://app.netlify.com/sites/tegel-storybook/deploys)
 
 
 
@@ -16,7 +15,7 @@
 
 Official website: https://tegel.scania.com/
 
-Storybook: https://tegel-storybook.netlify.app/
+Storybook: https://tds-storybook.tegel.scania.com/
 
 The design system supports the design and development of digital solutions at Scania. The purpose is to secure a coherent, premium brand and user experience across all of Scania's digital touchpoints.
 
