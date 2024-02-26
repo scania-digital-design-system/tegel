@@ -1,0 +1,75 @@
+@import '../../../../mixins/focus-state';
+
+.tds-date-range-picker {
+  display: inline-block;
+  width: 324px;
+
+  .controls-container {
+    display: flex;
+    column-gap: 4px;
+    width: 100%;
+  }
+
+  tds-popover-core {
+    .calendar-container {
+      box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-gap: 4px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 8px;
+      overflow: hidden;
+
+      &.month,
+      &.year {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 48px;
+      }
+
+      &.range-picker {
+        column-gap: 23px;
+      }
+
+      .day-indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .controls {
+      color: var(--tds-date-picker-calendar-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      button {
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        &.previous {
+          padding-left: 8px;
+        }
+
+        &.next {
+          padding-right: 8px;
+        }
+
+        &:focus {
+          @include tds-focus-state;
+        }
+      }
+
+      .calendar-display {
+        font: var(--tds-detail-02);
+        letter-spacing: var(--tds-detail-02-ls);
+      }
+    }
+  }
+}
