@@ -1,0 +1,37 @@
+@import '../../../../../mixins/focus-state';
+
+:host {
+  display: block;
+
+  button {
+    all: unset;
+    color: var(--tds-date-picker-date-color);
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--tds-detail-05);
+    letter-spacing: var(--tds-detail-05-ls);
+
+    &:focus-visible {
+      @include tds-focus-state;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--tds-date-picker-date-bg-hover);
+    }
+
+    &.selected {
+      background-color: var(--tds-date-picker-date-bg-selected);
+      color: var(--tds-date-picker-date-color-selected);
+    }
+
+    &.disabled {
+      background-color: var(--tds-date-picker-date-bg-disabled);
+      color: var(--tds-date-picker-date-color-disabled);
+    }
+  }
+}

@@ -43,7 +43,7 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 4. Create a `.env` file in the root directory with the following contents:
 
 ```
-STORYBOOK_ENV=development
+STORYBOOK_ENV=dev
 ```
 
 5. Make sure you are in the root directory, and start the dev server with `npm run start`.
