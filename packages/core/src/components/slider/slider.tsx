@@ -303,6 +303,11 @@ export class TdsSlider {
     const inputElement = event.target as HTMLInputElement;
     let newValue = parseInt(inputElement.value);
 
+    // Check if the new value is different from the current value
+    if (newValue === parseInt(this.value)) {
+      return; // Exit the function if the new value is the same as the current value
+    }
+
     if (newValue < parseFloat(this.min)) {
       newValue = parseFloat(this.min);
     } else if (newValue > parseFloat(this.max)) {
@@ -558,6 +563,9 @@ export class TdsSlider {
                   readOnly={this.readOnly}
                   onBlur={(event) => this.updateSliderValueOnInputChange(event)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
+                  type="number"
+                  min={this.min}
+                  max={this.max}
                 />
               </div>
             </div>
