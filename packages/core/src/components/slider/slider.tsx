@@ -132,20 +132,8 @@ export class TdsSlider {
   }
 
   @Listen('mouseup', { target: 'window' })
-  handleMouseUp(event: MouseEvent) {
-    if (!this.thumbGrabbed) {
-      return;
-    }
-
-    this.thumbGrabbed = false;
-    this.thumbInnerElement.classList.remove('pressed');
-    this.updateValue(event);
-
-    this.trackElement.focus();
-  }
-
   @Listen('touchend', { target: 'window' })
-  handleTouchEnd(event: TouchEvent) {
+  handleRelease(event: MouseEvent | TouchEvent) {
     if (!this.thumbGrabbed) {
       return;
     }
@@ -158,17 +146,11 @@ export class TdsSlider {
   }
 
   @Listen('mousemove', { target: 'window' })
-  handleMouseMove(event: MouseEvent) {
-    if (!this.thumbGrabbed) {
-      return;
-    }
-
-    this.thumbCore(event);
-  }
-
   @Listen('touchmove', { target: 'window' })
-  handleTouchMove(event: TouchEvent) {
-    event.preventDefault();
+  handleMove(event: MouseEvent | TouchEvent) {
+    if (event.type === 'touchmove') {
+      event.preventDefault();
+    }
 
     if (!this.thumbGrabbed) {
       return;
