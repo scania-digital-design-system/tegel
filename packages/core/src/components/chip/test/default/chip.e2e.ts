@@ -28,4 +28,16 @@ test.describe('tds-chip-default', () => {
     const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
     expect(chipHeight).toBe('32px');
   });
+
+  test('Chip is clickable', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const chip = page.locator('tds-chip label');
+    chip.hover();
+    const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
+    expect(chipCursorStyle).toBe('pointer');
+
+    const myEventSpy = await page.spyOnEvent('click');
+    await chip.click();
+    expect(myEventSpy).toHaveReceivedEvent();
+  });
 });
