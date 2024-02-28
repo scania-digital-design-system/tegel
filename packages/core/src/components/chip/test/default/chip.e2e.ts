@@ -22,9 +22,10 @@ test.describe('tds-chip-default', () => {
     await expect(chipRole).toHaveCount(1);
   });
 
-  //   test('Check so that height is correct to lg/default measurements', async ({ page }) => {
-  //     const chip = page.getByText('Label', { exact: true });
-  //     const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
-  //     expect(chipHeight).toBe('32px');
-  //   });
+  test('Check so that height is correct to lg/default measurements', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const chip = page.locator('tds-chip label');
+    const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
+    expect(chipHeight).toBe('32px');
+  });
 });
