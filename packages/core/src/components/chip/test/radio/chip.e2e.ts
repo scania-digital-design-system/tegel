@@ -18,4 +18,10 @@ test.describe('tds-chip-default', () => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
+
+  test('expect chips to be of the role radio', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const chipRole = page.getByRole('radio');
+    await expect(chipRole).toHaveCount(3);
+  });
 });
