@@ -31,7 +31,7 @@ The website also includes information on browser support.
 
 ## Contributing
 
-We warmly welcome contributions from the community! Whether you're fixing bugs, adding new features, or improving documentation, your help is invaluable to us. If you're interested in contributing to the code, have a look at the code conventions listed below to get started.
+We warmly welcome [contributions](https://github.com/scania-digital-design-system/tegel/issues) from the community! Whether you're fixing bugs, adding new features, or improving documentation, your help is invaluable to us. If you're interested in contributing to the code, have a look at the code conventions listed below to get started.
 
 ### Code conventions
 

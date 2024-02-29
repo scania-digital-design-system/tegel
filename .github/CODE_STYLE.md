@@ -17,7 +17,7 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
 - Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
 - Start the name of the branch with Jira ticket number followed by short description of task
 - example: `fix/CDEP-1369-banner-color-correction`
-- If Jira ticket number is not available to you, use Github ticket number as prefix instead
+- If Jira ticket number is not available to you, use Github ticket number as prefix instead. If no issue exists, create that first before creating the branch.
 
 ## Unit testing approach
 
