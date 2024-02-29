@@ -141,7 +141,7 @@ from a tegel component.
 The events are named according to our naming convention: 'tds' + event. For a click event this would result in the event being called `tdsClick`. 
 
 ### Internal events
-Some of the components are using events to communicate with its parent/child. These events are not recommended to use in any way since
+Some of our components are using events to communicate with its parent/child. These events are not recommended to use in any way since
 they might change without notice. Their payload might also be changed based on refactoring of components. These events are prefixed
 with 'internal'. This is to make it as clear as possible to a user that this is an internal event that the components are using,
 but the user should not interact with it. E.g. `internalTdsPropsChange`.
