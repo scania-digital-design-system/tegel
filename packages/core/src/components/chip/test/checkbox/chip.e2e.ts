@@ -1,10 +1,10 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/chip/test/radio/index.html';
+const componentTestPath = 'src/components/chip/test/checkbox/index.html';
 
-test.describe('tds-chip-radio', () => {
-  test('renders radio chips correctly', async ({ page }) => {
+test.describe('tds-chip-checkbox', () => {
+  test('renders checkbox chips correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const chip1 = page.getByText('Label 1', { exact: true });
     await expect(chip1).toHaveCount(1);
@@ -19,9 +19,9 @@ test.describe('tds-chip-radio', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('expect chips to be of the role radio', async ({ page }) => {
+  test('expect chips to be of the role checkbox', async ({ page }) => {
     await page.goto(componentTestPath);
-    const chipRole = page.getByRole('radio');
+    const chipRole = page.getByRole('checkbox');
     await expect(chipRole).toHaveCount(3);
   });
 
@@ -76,36 +76,67 @@ test.describe('tds-chip-radio', () => {
     expect(myEventSpy).toHaveReceivedEvent();
   });
 
-  test('2nd chip is checked', async ({ page }) => {
+  test('1st chip is checked', async ({ page }) => {
     await page.goto(componentTestPath);
-    const checkedLabel2Chip = page.locator('input[id="option-2"]');
-    const isChecked = await checkedLabel2Chip.evaluate((node: HTMLInputElement) => node.checked);
+    const checkedLabel1Chip = page.locator('input[id="option-1"]');
+    const isChecked = await checkedLabel1Chip.evaluate((node: HTMLInputElement) => node.checked);
     expect(isChecked).toBeTruthy();
   });
 
-  test('Clicking "Label 1" chip changes checked state appropriately', async ({ page }) => {
+  test('Clicking "Label 2" chip changes checked state appropriately', async ({ page }) => {
     await page.goto(componentTestPath);
-    const labelText1 = page.locator('text=Label 1');
-    await labelText1.click();
+    const labelText2 = page.locator('text=Label 2');
+    await labelText2.click();
     const chip1 = page.locator('input[id="option-1"]');
     const chip2 = page.locator('input[id="option-2"]');
     const chip3 = page.locator('input[id="option-3"]');
 
-    // "Label 1" becomes checked
+    // "Label 1" is checked
     const chip1checkedStatus = await chip1.evaluate((node: HTMLInputElement) => node.checked);
     expect(chip1checkedStatus).toBeTruthy();
 
-    // "Label 2" becomes unchecked
+    // "Label 2" becomes checked
     const chip2checkedStatus = await chip2.evaluate((node: HTMLInputElement) => node.checked);
-    expect(chip2checkedStatus).toBeFalsy();
+    expect(chip2checkedStatus).toBeTruthy();
 
     // "Label 3" becomes unchecked
     const chip3checkedStatus = await chip3.evaluate((node: HTMLInputElement) => node.checked);
     expect(chip3checkedStatus).toBeFalsy();
   });
 
-  test('Clicking "Label 3" chip changes checked state appropriately', async ({ page }) => {
+  test('Clicking "Label 2" and "Label 3" chips changes checked state appropriately', async ({
+    page,
+  }) => {
     await page.goto(componentTestPath);
+    const labelText2 = page.locator('text=Label 2');
+    await labelText2.click();
+    const labelText3 = page.locator('text=Label 3');
+    await labelText3.click();
+    const chip1 = page.locator('input[id="option-1"]');
+    const chip2 = page.locator('input[id="option-2"]');
+    const chip3 = page.locator('input[id="option-3"]');
+
+    // "Label 1" is checked
+    const chip1checkedStatus = await chip1.evaluate((node: HTMLInputElement) => node.checked);
+    expect(chip1checkedStatus).toBeTruthy();
+
+    // "Label 2" becomes checked
+    const chip2checkedStatus = await chip2.evaluate((node: HTMLInputElement) => node.checked);
+    expect(chip2checkedStatus).toBeTruthy();
+
+    // "Label 3" becomes checked
+    const chip3checkedStatus = await chip3.evaluate((node: HTMLInputElement) => node.checked);
+    expect(chip3checkedStatus).toBeTruthy();
+  });
+
+  test('Clicking "Label 1", "Label 2" and "Label 3" chips changes checked state appropriately', async ({
+    page,
+  }) => {
+    await page.goto(componentTestPath);
+    const labelText1 = page.locator('text=Label 1');
+    await labelText1.click();
+    const labelText2 = page.locator('text=Label 2');
+    await labelText2.click();
     const labelText3 = page.locator('text=Label 3');
     await labelText3.click();
     const chip1 = page.locator('input[id="option-1"]');
@@ -116,11 +147,11 @@ test.describe('tds-chip-radio', () => {
     const chip1checkedStatus = await chip1.evaluate((node: HTMLInputElement) => node.checked);
     expect(chip1checkedStatus).toBeFalsy();
 
-    // "Label 2" becomes unchecked
+    // "Label 2" becomes checked
     const chip2checkedStatus = await chip2.evaluate((node: HTMLInputElement) => node.checked);
-    expect(chip2checkedStatus).toBeFalsy();
+    expect(chip2checkedStatus).toBeTruthy();
 
-    // "Label 3" becomes unchecked
+    // "Label 3" becomes checked
     const chip3checkedStatus = await chip3.evaluate((node: HTMLInputElement) => node.checked);
     expect(chip3checkedStatus).toBeTruthy();
   });
