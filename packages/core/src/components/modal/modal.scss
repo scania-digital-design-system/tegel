@@ -92,8 +92,7 @@ $modals: (
 
 @mixin modal-header {
   display: flex;
-  padding: var(--tds-spacing-element-8);
-  padding: 16px;
+  padding: var(--tds-spacing-element-16);
   position: sticky;
   top: 0;
   background-color: var(--tds-modal-background);
@@ -246,7 +245,7 @@ button.tds-modal-close {
     margin-left: var(--tds-spacing-element-48);
   }
 }
-@media (min-width: 736px) {
+@media (min-width: $screen-md) {
   .tds-modal-lg .body,
   .tds-modal-md .body {
     padding-right: 80px;
