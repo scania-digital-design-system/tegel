@@ -24,7 +24,8 @@ test.describe('tds-chip-default', () => {
 
   test('Check so that the chip contains an icon', async ({ page }) => {
     await page.goto(componentTestPath);
-    const icon = page.getByRole('img');
+    const icon = page.locator('tds-icon');
     await expect(icon).toBeVisible();
+    await expect(icon).toHaveAttribute('name', 'star');
   });
 });
