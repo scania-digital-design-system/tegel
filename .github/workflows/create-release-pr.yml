@@ -21,10 +21,10 @@ jobs:
           ref: develop
 
       # Reference for this pattern: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
-      - name: Reset promotion branch
+      - name: Create release branch
         run: |
-          git fetch origin develop:develop
-          git reset --hard develop
+          git checkout -b release/tegel@${{ github.event.inputs.version }}
+          git push -u origin release/tegel@${{ github.event.inputs.version }}
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -61,6 +61,7 @@ jobs:
           title: 'release: @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}'
           commit-message: Release of @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           branch: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          base: develop
 
   on-failure:
     needs: create-release-pr
