@@ -21,7 +21,7 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--tds-dropdown-scrollbar-background);
+    background: var(--tds-dropdown-scrollbar-track-color);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -40,6 +40,8 @@
 }
 
 :host {
+  // Only used by Firefox yet..
+  --tds-dropdown-scrollbar-width-standard: thin;
   --tds-dropdown-scrollbar-width: 10px;
   --tds-dropdown-scrollbar-thumb-border-width: 3px; // => thumb thickness: 4px(10-2*3)
   --tds-dropdown-scrollbar-thumb-border-hover-width: 2px; // => thumb thickness: 6px(10-2*2)
@@ -172,6 +174,16 @@
     border-radius: 0 0 4px 4px;
     overflow-y: auto;
     @include tds-dropdown-scrollbar;
+
+    // TODO: Why cant we put this block in the mixin tds-dropdown-scrollbar? Can not get that to work.
+    // Standard version, not webkit (Firefox only for now)
+    @supports not selector(::-webkit-scrollbar) {
+      scrollbar-color: var(--tds-dropdown-scrollbar-thumb-color)
+        var(--tds-dropdown-scrollbar-track-color);
+
+      // Yes, there is no way to set a specific width
+      scrollbar-width: var(--tds-dropdown-scrollbar-width-standard);
+    }
 
     &.lg {
       max-height: 312px;
