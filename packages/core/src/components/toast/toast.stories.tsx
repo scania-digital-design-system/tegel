@@ -62,6 +62,13 @@ export default {
         type: 'boolean',
       },
     },
+    closable: {
+      name: 'Closable',
+      description: 'Controls visibility of the close button.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     variant: 'Information',
@@ -71,25 +78,26 @@ export default {
           <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>
       </tds-link>`,
     hidden: false,
+    closable: true,
   },
 };
 
-const Template = ({ variant, header, subheader, actions, hidden }) =>
+const Template = ({ variant, header, subheader, actions, hidden, closable }) =>
   formatHtmlPreview(
     `<tds-toast
         variant="${variant.toLowerCase()}"
         header="${header}"
         ${subheader ? `subheader="${subheader}"` : ''}
         ${hidden ? 'hidden' : ''}
+        closable="${closable ? 'true' : 'false'}"
     >
     ${actions || ''}
     </tds-toast>
-    
     <script>
-      document.addEventListener('tdsClose', (event) => {
-          console.log(event)
-      })
+        document.addEventListener('tdsClose', (event) => {
+            console.log(event)
+        })
     </script>
-  `,
+    `,
   );
 export const Default = Template.bind({});

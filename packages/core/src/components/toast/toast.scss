@@ -82,6 +82,7 @@
     flex-direction: column;
     flex: 1;
     max-width: 250px;
+    word-break: break-all;
 
     .header-subheader {
       display: flex;
