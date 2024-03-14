@@ -7,11 +7,8 @@
 @mixin tds-dropdown-scrollbar {
   &:hover {
     &::-webkit-scrollbar-thumb {
-      // Make the thumb darker
-      background: var(--tds-dropdown-scrollbar-thumb-hover-color);
-
       // Decrease the transparent border to widen the thumb
-      border: var(tds-dropdown-scrollbar-thumb-border-hover-width) solid rgb(0 0 0 / 0%);
+      border: var(--tds-dropdown-scrollbar-thumb-border-hover-width) solid rgb(0 0 0 / 0%);
       background-clip: padding-box;
     }
   }
