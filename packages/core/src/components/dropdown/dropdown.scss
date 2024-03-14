@@ -175,7 +175,6 @@
     overflow-y: auto;
     @include tds-dropdown-scrollbar;
 
-    // TODO: Why cant we put this block in the mixin tds-dropdown-scrollbar? Can not get that to work.
     // Standard version, not webkit (Firefox only for now)
     @supports not selector(::-webkit-scrollbar) {
       scrollbar-color: var(--tds-dropdown-scrollbar-thumb-color)
