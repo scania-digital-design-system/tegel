@@ -12,31 +12,19 @@ function getTsConfigFile() {
 
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
-    elementSelectors: ['tds-radio-button'],
+    elementSelectors: ['tds-radio-button', 'tds-chip'],
     event: 'tdsChange',
     targetAttr: 'value',
     type: 'radio',
   },
   {
-    elementSelectors: ['tds-checkbox'],
+    elementSelectors: ['tds-checkbox', 'tds-chip'],
     event: 'tdsChange',
     targetAttr: 'value',
     type: 'boolean',
   },
   {
-    elementSelectors: ['tds-text-field', 'tds-textarea'],
-    event: 'tdsChange',
-    targetAttr: 'value',
-    type: 'text',
-  },
-  {
-    elementSelectors: ['tds-dropdown'],
-    event: 'tdsChange',
-    targetAttr: 'value',
-    type: 'text',
-  },
-  {
-    elementSelectors: ['tds-datetime'],
+    elementSelectors: ['tds-text-field', 'tds-textarea', 'tds-dropdown', 'tds-datetime'],
     event: 'tdsChange',
     targetAttr: 'value',
     type: 'text',
@@ -46,18 +34,6 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     event: 'tdsChange',
     targetAttr: 'value',
     type: 'number',
-  },
-  {
-    elementSelectors: ['tds-chip'],
-    event: 'tdsChange',
-    targetAttr: 'value',
-    type: 'radio',
-  },
-  {
-    elementSelectors: ['tds-chip'],
-    event: 'tdsChange',
-    targetAttr: 'value',
-    type: 'boolean',
   },
 ];
 
