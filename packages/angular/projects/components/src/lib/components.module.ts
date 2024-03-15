@@ -5,6 +5,7 @@ import { TextValueAccessor } from './stencil-generated/text-value-accessor';
 import { BooleanValueAccessor } from './stencil-generated/boolean-value-accessor';
 import { NumericValueAccessor } from './stencil-generated/number-value-accessor';
 import { RadioValueAccessor } from './stencil-generated/radio-value-accessor';
+import { TdsDropdownValueAccessor } from './directives/tds-dropdown-value-accessor';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { RadioValueAccessor } from './stencil-generated/radio-value-accessor';
     NumericValueAccessor,
     RadioValueAccessor,
     TextValueAccessor,
+    TdsDropdownValueAccessor,
   ],
   exports: [
     ...DIRECTIVES,
@@ -20,6 +22,7 @@ import { RadioValueAccessor } from './stencil-generated/radio-value-accessor';
     NumericValueAccessor,
     RadioValueAccessor,
     TextValueAccessor,
+    TdsDropdownValueAccessor,
   ],
   providers: [
     {

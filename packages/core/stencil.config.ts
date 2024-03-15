@@ -24,7 +24,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'boolean',
   },
   {
-    elementSelectors: ['tds-text-field', 'tds-textarea', 'tds-dropdown', 'tds-datetime'],
+    elementSelectors: ['tds-text-field', 'tds-textarea', 'tds-datetime'],
     event: 'tdsChange',
     targetAttr: 'value',
     type: 'text',
@@ -35,6 +35,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     targetAttr: 'value',
     type: 'number',
   },
+  // tds-dropdown does not need to be configured in this array, since it has to use a custom directive that is defined in the angular package
 ];
 
 export const config: Config = {
