@@ -9,6 +9,7 @@
 
 | Property    | Attribute    | Description                                            | Type                                                 | Default              |
 | ----------- | ------------ | ------------------------------------------------------ | ---------------------------------------------------- | -------------------- |
+| `closable`  | `closable`   | Enables the close button.                              | `boolean`                                            | `true`               |
 | `header`    | `header`     | Header text for the component.                         | `string`                                             | `undefined`          |
 | `hidden`    | `hidden`     | Hides the Toast.                                       | `boolean`                                            | `false`              |
 | `subheader` | `subheader`  | Subheader text for the component.                      | `string`                                             | `undefined`          |
