@@ -37,8 +37,9 @@
 }
 
 :host {
-  // Only used by Firefox yet..
-  --tds-dropdown-scrollbar-width-standard: thin;
+  // Firefox variables
+  --tds-dropdown-scrollbar-width-standard: thin; //  auto | thin | none
+  // Webkit values
   --tds-dropdown-scrollbar-width: 10px;
   --tds-dropdown-scrollbar-thumb-border-width: 3px; // => thumb thickness: 4px(10-2*3)
   --tds-dropdown-scrollbar-thumb-border-hover-width: 2px; // => thumb thickness: 6px(10-2*2)
