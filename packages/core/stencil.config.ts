@@ -36,6 +36,12 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'text',
   },
   {
+    elementSelectors: ['tds-datetime'],
+    event: 'tdsChange',
+    targetAttr: 'value',
+    type: 'text',
+  },
+  {
     elementSelectors: ['tds-slider'],
     event: 'tdsChange',
     targetAttr: 'value',
