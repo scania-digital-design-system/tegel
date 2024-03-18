@@ -91,38 +91,36 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) =>
-  formatHtmlPreview(
-    `
- <!-- The button below is just for demo purposes -->
-  <tds-button id="my-modal-button" text="Open Modal"></tds-button>
-  
-  
-  <tds-modal 
-    header="${headerText}"
-    selector="#my-modal-button"   
-    ${showModal ? 'show' : ''} 
-    id="my-modal" size="${sizeLookUp[size]}" 
-    actions-position="${actionsPosition.toLowerCase()}"
-    prevent="${prevent}"
-  >          
+const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) => {
+  return formatHtmlPreview(`
+    <!-- The button below is just for demo purposes -->
+    <tds-button id="my-modal-button" text="Open Modal"></tds-button>
+    
+    <tds-modal 
+      header="${headerText}"
+      selector="#my-modal-button"
+      ${showModal ? 'show' : ''} 
+      id="my-modal" size="${sizeLookUp[size]}" 
+      actions-position="${actionsPosition.toLowerCase()}"
+      prevent="${prevent}"
+    >
       <span slot="body">
-          ${bodyContent}
-      </span>      
+        ${bodyContent}
+      </span>
       <span slot='actions' class='tds-u-flex tds-u-gap2'>
         <tds-button data-dismiss-modal size="md" text="Delete" variant="danger"></tds-button>
         <tds-button data-dismiss-modal size="md" text="Cancel" variant="secondary"></tds-button>
-      </span>      
-  </tds-modal>
-  
-  <!-- The script below is just for demo purposes -->
-  <script>
-    modal = document.querySelector('tds-modal')
-    modal.addEventListener('tdsClose', (event) => {
-      console.log(event)
-    })
-  </script>
-  `,
-  );
+      </span>
+    </tds-modal>
+    
+    <!-- The script below is for demo purposes -->
+    <script>
+      modal = document.querySelector('tds-modal')
+      modal.addEventListener('tdsClose', (event) => {
+        console.log(event)
+      })
+    </script>
+  `);
+};
 
 export const Default = ModalTemplate.bind({});
