@@ -26,10 +26,10 @@ export class TdsTextField {
   /** Label text */
   @Prop() label: string = '';
 
-   /** Min allowed value for input type number */
+  /** Min allowed value for input type number */
   @Prop() min: string | number;
 
-   /** Max allowed value for input type number */
+  /** Max allowed value for input type number */
   @Prop() max: string | number;
 
   /** Helper text */
@@ -135,26 +135,22 @@ export class TdsTextField {
     const usesSuffixSlot = hasSlot('suffix', this.host);
     return (
       <div
-        class={`
-        ${this.noMinWidth ? 'form-text-field-nomin' : ''}
-        ${
-          this.focusInput && !this.disabled
-            ? 'form-text-field text-field-focus'
-            : ' form-text-field'
-        }
-        ${this.value ? 'text-field-data' : ''}
-        ${
-          this.labelPosition === 'inside' && this.size !== 'sm'
-            ? 'text-field-container-label-inside'
-            : ''
-        }
-        ${this.disabled ? 'form-text-field-disabled' : ''}
-        ${this.readOnly ? 'form-text-field-readonly' : ''}
-        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
-        ${this.size === 'md' ? 'form-text-field-md' : ''}
-        ${this.size === 'sm' ? 'form-text-field-sm' : ''}
-        ${this.state === 'error' || this.state === 'success' ? `form-text-field-${this.state}` : ''}
-        `}
+        class={{
+          'form-text-field-nomin': this.noMinWidth,
+          'form-text-field': !this.focusInput || this.disabled,
+          'text-field-focus': this.focusInput && !this.disabled,
+          'text-field-data': this.value !== '' && this.value !== null,
+          'text-field-container-label-inside':
+            this.labelPosition === 'inside' && this.size !== 'sm',
+          'form-text-field-disabled': this.disabled,
+          'form-text-field-readonly': this.readOnly,
+          'tds-mode-variant-primary': this.modeVariant === 'primary',
+          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
+          'form-text-field-md': this.size === 'md',
+          'form-text-field-sm': this.size === 'sm',
+          'form-text-field-error': this.state === 'error',
+          'form-text-field-success': this.state === 'success',
+        }}
       >
         {this.labelPosition === 'outside' && (
           <div class="text-field-label-outside">
@@ -163,7 +159,14 @@ export class TdsTextField {
         )}
         <div onClick={() => this.textInput.focus()} class="text-field-container">
           {usesPrefixSlot && (
-            <div class={`text-field-slot-wrap-prefix text-field-${this.state}`}>
+            <div
+              class={{
+                'text-field-slot-wrap-prefix': true,
+                'text-field-error': this.state === 'error',
+                'text-field-success': this.state === 'success',
+                'text-field-default': this.state === 'default',
+              }}
+            >
               <slot name="prefix" />
             </div>
           )}
@@ -171,7 +174,12 @@ export class TdsTextField {
           <div class="text-field-input-container">
             <input
               ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
-              class={`text-field-input text-field-input-${this.size}`}
+              class={{
+                'text-field-input': true,
+                'text-field-input-sm': this.size === 'sm',
+                'text-field-input-md': this.size === 'md',
+                'text-field-input-lg': this.size === 'lg',
+              }}
               type={this.type}
               disabled={this.disabled}
               readonly={this.readOnly}
@@ -203,7 +211,15 @@ export class TdsTextField {
           <div class="text-field-bar"></div>
 
           {usesSuffixSlot && (
-            <div class={`text-field-slot-wrap-suffix text-field-${this.state}`}>
+            <div
+              class={{
+                'text-field-slot-wrap-suffix': true,
+                'text-field-error': this.state === 'error',
+                'text-field-success': this.state === 'success',
+                'text-field-default': this.state === 'default',
+                'tds-u-display-none': this.readOnly,
+              }}
+            >
               <slot name="suffix" />
             </div>
           )}
