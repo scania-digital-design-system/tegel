@@ -189,19 +189,19 @@ const BasicTemplate = ({
               <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}"></tds-body-cell>
               <tds-body-cell cell-value="Test value 2" cell-key="driver" disable-padding="${disablePadding}"></tds-body-cell>
               <tds-body-cell cell-value="Test value 3" cell-key="country" disable-padding="${disablePadding}"></tds-body-cell>
-              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}" text-align="center"></tds-body-cell>
           </tds-table-body-row>
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 5" cell-key="truck" disable-padding="${disablePadding}"></tds-body-cell>
               <tds-body-cell cell-value="Test value 6" cell-key="driver" disable-padding="${disablePadding}"></tds-body-cell>
               <tds-body-cell cell-value="Test value 7" cell-key="country" disable-padding="${disablePadding}"></tds-body-cell>
-              <tds-body-cell cell-value="Test value 8" cell-key="mileage" disable-padding="${disablePadding}"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 8" cell-key="mileage" disable-padding="${disablePadding}" text-align="left"></tds-body-cell>
           </tds-table-body-row>
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}"></tds-body-cell>
               <tds-body-cell cell-value="Test value 2" cell-key="driver" disable-padding="${disablePadding}"></tds-body-cell>
               <tds-body-cell cell-value="Test value 3" cell-key="country" disable-padding="${disablePadding}"></tds-body-cell>
-              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}"></tds-body-cell>
+              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}" text-align="center"></tds-body-cell>
           </tds-table-body-row>
           <tds-table-body-row>
               <tds-body-cell cell-value="Test value 5" cell-key="truck" disable-padding="${disablePadding}"></tds-body-cell>
