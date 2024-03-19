@@ -24,6 +24,9 @@ export class TdsTableBodyCell {
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
 
+  /** Setting for text align, default is "left". Other accepted values are "start", "right" or "end". */
+  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' = 'left';
+
   @State() textAlignState: string;
 
   @State() activeSorting: boolean = false;
@@ -73,7 +76,9 @@ export class TdsTableBodyCell {
 
     if (this.tableId === receivedID) {
       if (this.cellKey === receivedKey) {
-        this.textAlignState = receivedTextAlign;
+        this.textAlignState = ['left', 'start', 'right', 'end'].includes(receivedTextAlign)
+          ? receivedTextAlign
+          : 'left';
       }
     }
   }

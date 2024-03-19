@@ -165,7 +165,7 @@ const BasicTemplate = ({
           <tds-header-cell cell-key='driver' cell-value='Driver name' ${
             column2Width ? `custom-width="${column2Width}"` : ''
           }></tds-header-cell>
-          <tds-header-cell cell-key='country' cell-value='Country' ${
+          <tds-header-cell cell-key='country' cell-value='Country' text-align='center' ${
             column3Width ? `custom-width="${column3Width}"` : ''
           }></tds-header-cell>
           <tds-header-cell cell-key='mileage' cell-value='Mileage' text-align='right' ${

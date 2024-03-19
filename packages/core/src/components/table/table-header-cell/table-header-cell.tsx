@@ -41,8 +41,8 @@ export class TdsTableHeaderCell {
   /** Enables sorting on that column */
   @Prop() sortable: boolean = false;
 
-  /** Setting for text align, default is left. Other accepted values are "right" or "end". */
-  @Prop({ reflect: true }) textAlign?: string;
+  /** Setting for text align, default is "center". Other accepted values are "left", "start", "right" or "end". */
+  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center' = 'center';
 
   @State() textAlignState: string;
 
@@ -162,12 +162,11 @@ export class TdsTableHeaderCell {
   }
 
   componentWillRender() {
-    // enable only right or left text align
-    if (this.textAlign === 'right' || this.textAlign === 'end') {
-      this.textAlignState = 'right';
-    } else {
-      this.textAlignState = 'left';
-    }
+    // if text alignment matches any of the acceptable values, use it. Otherwise, set "left" as default
+    this.textAlignState = ['left', 'start', 'right', 'end', 'center'].includes(this.textAlign)
+      ? this.textAlign
+      : 'left';
+
     // To enable body cells text align per rules set in head cell
     this.internalTdsTextAlign.emit([this.tableId, this.cellKey, this.textAlignState]);
 
