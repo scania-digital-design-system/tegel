@@ -2,8 +2,8 @@ import { Component, h, State, Prop, Event, EventEmitter, Element } from '@stenci
 import hasSlot from '../../utils/hasSlot';
 
 /**
- * @slot prefix - Slot for the prefix in the Text Field
- * @slot suffix - Slot for the suffix in the Text Field
+ * @slot prefix - Slot for the prefix in the component.
+ * @slot suffix - Slot for the suffix in the component. Suffix is hidden when the input is in readonly state.
  */
 @Component({
   tag: 'tds-text-field',
@@ -44,7 +44,7 @@ export class TdsTextField {
   /** Set input in disabled state */
   @Prop() disabled: boolean = false;
 
-  /** Set input in readonly state */
+  /** Set input in readonly state. Hides the suffix slot if true. */
   @Prop() readOnly: boolean = false;
 
   /** Size of the input */
