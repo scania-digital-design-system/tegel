@@ -7,25 +7,25 @@
 
 ## Properties
 
-| Property        | Attribute        | Description                                 | Type                                  | Default      |
-| --------------- | ---------------- | ------------------------------------------- | ------------------------------------- | ------------ |
-| `autofocus`     | `autofocus`      | Autofocus for input                         | `boolean`                             | `false`      |
-| `disabled`      | `disabled`       | Set input in disabled state                 | `boolean`                             | `false`      |
-| `helper`        | `helper`         | Helper text                                 | `string`                              | `undefined`  |
-| `label`         | `label`          | Label text                                  | `string`                              | `''`         |
-| `labelPosition` | `label-position` | Position of the label for the Text Field.   | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
-| `max`           | `max`            | Max allowed value for input type number     | `number \| string`                    | `undefined`  |
-| `maxLength`     | `max-length`     | Max length of input                         | `number`                              | `undefined`  |
-| `min`           | `min`            | Min allowed value for input type number     | `number \| string`                    | `undefined`  |
-| `modeVariant`   | `mode-variant`   | Mode variant of the Text Field              | `"primary" \| "secondary"`            | `null`       |
-| `name`          | `name`           | Name property                               | `string`                              | `''`         |
-| `noMinWidth`    | `no-min-width`   | Unset minimum width of 208px.               | `boolean`                             | `false`      |
-| `placeholder`   | `placeholder`    | Placeholder text                            | `string`                              | `''`         |
-| `readOnly`      | `read-only`      | Set input in readonly state                 | `boolean`                             | `false`      |
-| `size`          | `size`           | Size of the input                           | `"lg" \| "md" \| "sm"`                | `'lg'`       |
-| `state`         | `state`          | Error state of input                        | `"default" \| "error" \| "success"`   | `'default'`  |
-| `type`          | `type`           | Which input type, text, password or similar | `"number" \| "password" \| "text"`    | `'text'`     |
-| `value`         | `value`          | Value of the input text                     | `string`                              | `''`         |
+| Property        | Attribute        | Description                                                 | Type                                  | Default      |
+| --------------- | ---------------- | ----------------------------------------------------------- | ------------------------------------- | ------------ |
+| `autofocus`     | `autofocus`      | Autofocus for input                                         | `boolean`                             | `false`      |
+| `disabled`      | `disabled`       | Set input in disabled state                                 | `boolean`                             | `false`      |
+| `helper`        | `helper`         | Helper text                                                 | `string`                              | `undefined`  |
+| `label`         | `label`          | Label text                                                  | `string`                              | `''`         |
+| `labelPosition` | `label-position` | Position of the label for the Text Field.                   | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
+| `max`           | `max`            | Max allowed value for input type number                     | `number \| string`                    | `undefined`  |
+| `maxLength`     | `max-length`     | Max length of input                                         | `number`                              | `undefined`  |
+| `min`           | `min`            | Min allowed value for input type number                     | `number \| string`                    | `undefined`  |
+| `modeVariant`   | `mode-variant`   | Mode variant of the Text Field                              | `"primary" \| "secondary"`            | `null`       |
+| `name`          | `name`           | Name property                                               | `string`                              | `''`         |
+| `noMinWidth`    | `no-min-width`   | Unset minimum width of 208px.                               | `boolean`                             | `false`      |
+| `placeholder`   | `placeholder`    | Placeholder text                                            | `string`                              | `''`         |
+| `readOnly`      | `read-only`      | Set input in readonly state. Hides the suffix slot if true. | `boolean`                             | `false`      |
+| `size`          | `size`           | Size of the input                                           | `"lg" \| "md" \| "sm"`                | `'lg'`       |
+| `state`         | `state`          | Error state of input                                        | `"default" \| "error" \| "success"`   | `'default'`  |
+| `type`          | `type`           | Which input type, text, password or similar                 | `"number" \| "password" \| "text"`    | `'text'`     |
+| `value`         | `value`          | Value of the input text                                     | `string`                              | `''`         |
 
 
 ## Events
@@ -40,10 +40,10 @@
 
 ## Slots
 
-| Slot       | Description                           |
-| ---------- | ------------------------------------- |
-| `"prefix"` | Slot for the prefix in the Text Field |
-| `"suffix"` | Slot for the suffix in the Text Field |
+| Slot       | Description                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------- |
+| `"prefix"` | Slot for the prefix in the component.                                                       |
+| `"suffix"` | Slot for the suffix in the component. Suffix is hidden when the input is in readonly state. |
 
 
 ## Dependencies
