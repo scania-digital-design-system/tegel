@@ -41,7 +41,7 @@ export class TdsTableHeaderCell {
   /** Enables sorting on that column */
   @Prop() sortable: boolean = false;
 
-  /** Setting for text align, default is "center". Other accepted values are "left", "start", "right" or "end". */
+  /** Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". */
   @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center' = 'left';
 
   @State() textAlignState: string;

@@ -46,7 +46,7 @@ export default {
       },
       options: ['left', 'start', 'right', 'end', 'center'],
       table: {
-        defaultValue: { summary: 'center' },
+        defaultValue: { summary: 'left' },
       },
     },
     cellTextAlignment: {

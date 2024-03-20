@@ -79,7 +79,9 @@ export class TdsTableBodyCell {
         if (this.textAlign) {
           this.textAlignState = this.textAlign;
         } else {
-          this.textAlignState = ['left', 'start', 'right', 'end'].includes(receivedTextAlign)
+          this.textAlignState = ['left', 'start', 'center', 'right', 'end'].includes(
+            receivedTextAlign,
+          )
             ? receivedTextAlign
             : 'left';
         }

@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                               | Type                                                | Default     |
-| ------------- | -------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `cellKey`     | `cell-key`     | The value of column key, usually comes from JSON, needed for sorting                                      | `string`                                            | `undefined` |
-| `cellValue`   | `cell-value`   | Text that displays in column cell                                                                         | `string`                                            | `undefined` |
-| `customWidth` | `custom-width` | In case noMinWidth is set, the user has to specify the width value for each column.                       | `string`                                            | `undefined` |
-| `sortable`    | `sortable`     | Enables sorting on that column                                                                            | `boolean`                                           | `false`     |
-| `textAlign`   | `text-align`   | Setting for text align, default is "center". Other accepted values are "left", "start", "right" or "end". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'center'`  |
+| Property      | Attribute      | Description                                                                                             | Type                                                | Default     |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `cellKey`     | `cell-key`     | The value of column key, usually comes from JSON, needed for sorting                                    | `string`                                            | `undefined` |
+| `cellValue`   | `cell-value`   | Text that displays in column cell                                                                       | `string`                                            | `undefined` |
+| `customWidth` | `custom-width` | In case noMinWidth is set, the user has to specify the width value for each column.                     | `string`                                            | `undefined` |
+| `sortable`    | `sortable`     | Enables sorting on that column                                                                          | `boolean`                                           | `false`     |
+| `textAlign`   | `text-align`   | Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'left'`    |
 
 
 ## Events
