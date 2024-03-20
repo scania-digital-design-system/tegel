@@ -149,7 +149,7 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    headerTextAlignment: 'center',
+    headerTextAlignment: 'left',
     cellTextAlignment: 'left',
     compactDesign: false,
     responsiveDesign: false,
