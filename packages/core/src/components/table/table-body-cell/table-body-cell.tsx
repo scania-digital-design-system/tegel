@@ -24,8 +24,8 @@ export class TdsTableBodyCell {
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
 
-  /** Setting for text align, no default value. Other accepted values are "left", "start", "right", "end" or "center". */
-  @Prop({ reflect: true }) textAlign?: 'left' | 'start' | 'right' | 'end' | 'center';
+  /** Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". */
+  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center' = 'left';
 
   @State() textAlignState: string;
 

@@ -44,7 +44,10 @@ export default {
       control: {
         type: 'radio',
       },
-      options: [null, 'left', 'start', 'right', 'end', 'center'],
+      options: ['left', 'start', 'right', 'end', 'center'],
+      table: {
+        defaultValue: { summary: 'center' },
+      },
     },
     cellTextAlignment: {
       name: 'Text alignment in cells',
@@ -52,7 +55,10 @@ export default {
       control: {
         type: 'radio',
       },
-      options: [null, 'left', 'start', 'right', 'end', 'center'],
+      options: ['left', 'start', 'right', 'end', 'center'],
+      table: {
+        defaultValue: { summary: 'left' },
+      },
     },
     compactDesign: {
       name: 'Compact design',
@@ -143,8 +149,8 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    headerTextAlignment: null,
-    cellTextAlignment: null,
+    headerTextAlignment: 'center',
+    cellTextAlignment: 'left',
     compactDesign: false,
     responsiveDesign: false,
     disablePadding: false,
