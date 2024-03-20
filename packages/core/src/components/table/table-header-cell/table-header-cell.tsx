@@ -204,8 +204,12 @@ export class TdsTableHeaderCell {
   headerCellContent = () => {
     if (this.sortable) {
       return (
-        <button class="tds-table__header-button" onClick={() => this.sortButtonClick()}>
-          <span class="tds-table__header-button-text" style={{ textAlign: this.textAlignState }}>
+        <button
+          class="tds-table__header-button"
+          onClick={() => this.sortButtonClick()}
+          style={{ justifyContent: this.textAlignState }}
+        >
+          <span class="tds-table__header-button-text">
             {this.cellValue}
             <slot />
           </span>
@@ -277,7 +281,6 @@ export class TdsTableHeaderCell {
           'tds-table__header-cell--sortable': this.sortable,
           'tds-table__header-cell--is-sorted': this.sortedByMyKey,
           'tds-table__header-cell--custom-width': this.customWidth !== '',
-          'tds-table__header-cell--right-align': this.textAlignState === 'right',
           'tds-table--compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--no-min-width': this.noMinWidth,
