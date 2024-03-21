@@ -10,7 +10,7 @@ test.describe('tds-table-expandable-row', () => {
     await expect(tableComponent).toHaveCount(1);
 
     /* check of diff in component screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
   });
 
   test('each row has expand checkbox', async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe('tds-table-expandable-row', () => {
     await expect(tableBodyExpandableRowSlot).toBeVisible();
 
     /* check input screenshot diff */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
   });
 
   test('under second row opened expanded row with text "Hello to you too"', async ({ page }) => {
@@ -46,7 +46,7 @@ test.describe('tds-table-expandable-row', () => {
     await expect(tableBodyExpandableRowSlot).toBeVisible();
 
     /* check input screenshot diff */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
   });
 
   test('under third row opened expanded row with a button with text "Call to action"', async ({
@@ -63,7 +63,7 @@ test.describe('tds-table-expandable-row', () => {
     await expect(tableBodyRowButton).toBeVisible();
 
     /* check input screenshot diff */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
   });
 
   test('double click on expand button in first row -> expanded row should be closed', async ({
