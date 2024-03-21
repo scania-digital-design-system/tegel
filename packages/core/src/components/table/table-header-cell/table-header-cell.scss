@@ -74,14 +74,6 @@
   }
 }
 
-:host(.tds-table__header-cell--right-align) {
-  .tds-table__header-button {
-    text-align: right;
-    justify-content: end;
-    flex-direction: row-reverse;
-  }
-}
-
 :host(.tds-table__header-cell--is-sorted) {
   .tds-table__header-button {
     background-color: var(--tds-table-header-btn-background);

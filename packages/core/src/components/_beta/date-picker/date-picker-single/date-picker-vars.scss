@@ -1,0 +1,92 @@
+:root,
+.tds-mode-light {
+  // Input Icon - Default
+  --tds-date-picker-input-icon: var(--tds-grey-700);
+
+  // Input Icon - Disabled
+  --tds-date-picker-input-icon-disabled: var(--tds-grey-400);
+
+  // Calendar - Default
+  --tds-date-picker-calendar-color: var(--tds-grey-958);
+  --tds-date-picker-calendar-bg: var(--tds-grey-50);
+  --tds-date-picker-calendar-box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+
+  // Date - Default
+  --tds-date-picker-date-color: var(--tds-grey-800);
+
+  // Date - Hover
+  --tds-date-picker-date-bg-hover: rgb(0 0 0 / 8%);
+
+  // Date - Selected
+  --tds-date-picker-date-color-selected: var(--tds-white);
+  --tds-date-picker-date-bg-selected: var(--tds-blue-400);
+
+  // Date - Disabeled
+  --tds-date-picker-date-color-disabled: var(--tds-grey-600);
+  --tds-date-picker-date-bg-disabled: var(--tds-date-picker-calendar-bg);
+
+  // Date - Not in current month
+  --tds-date-picker-date-color-not-current-month: var(--tds-grey-500);
+
+  // Date Range Picker
+  // Date - In range
+  --tds-date-range-picker-date-bg-in-range: var(--tds-blue-100);
+  --tds-date-range-picker-date-color-in-range: var(--tds-grey-700);
+
+  // Date - In range Hover
+  --tds-date-range-picker-date-bg-in-range-hover: var(--tds-blue-200);
+
+  .tds-mode-variant-primary {
+    --tds-date-picker-calendar-bg: var(--tds-blue-200);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-date-picker-calendar-bg: var(--tds-white);
+  }
+}
+
+.tds-mode-dark {
+  // Input Icon - Default
+  --tds-date-picker-input-icon: var(--tds-grey-50);
+
+  // Input Icon - Disabled
+  --tds-date-picker-input-icon-disabled: var(--tds-grey-800);
+
+  // Calendar - Default
+  --tds-date-picker-calendar-bg: var(--tds-grey-900);
+  --tds-date-picker-calendar-color: var(--tds-grey-50);
+  --tds-date-picker-calendar-box-shadow: 0 2px 3px 0 rgb(0 0 0 / 10%);
+
+  // Date - Default
+  --tds-date-picker-date-color: var(--tds-grey-300);
+
+  // Date - Hover
+  --tds-date-picker-date-bg-hover: rgb(0 0 0 / 8%);
+
+  // Date - Selected
+  --tds-date-picker-date-bg-selected: var(--tds-blue-400);
+  --tds-date-picker-date-color-selected: var(--tds-white);
+
+  // Date - Disabled
+  --tds-date-picker-date-bg-disabled: var(--tds-grey-400);
+  --tds-date-picker-date-color-disabled: var(--tds-grey-600);
+
+  // Date - Not in current month
+  --tds-date-picker-date-color-not-current-month: var(--tds-grey-700);
+
+  // Date Range Picker
+  // Date - In range
+  --tds-date-picker-date-bg-in-range: var(--tds-blue-600);
+  --tds-date-picker-date-color-in-range: var(--tds-grey-300);
+
+  // Date - In range Hover
+  --tds-date-picker-date-bg-in-range-hover: var(--tds-blue-500);
+
+  .tds-mode-variant-primary {
+    --tds-date-picker-calendar-bg: var(--tds-grey-900);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-date-picker-calendar-bg: var(--tds-grey-868);
+  }
+}

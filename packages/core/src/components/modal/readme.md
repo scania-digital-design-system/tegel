@@ -54,9 +54,29 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 
 ## Methods
 
+### `cleanupModal() => Promise<void>`
+
+Cleans up event listeners and other resources.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `closeModal() => Promise<void>`
 
 Closes the Modal.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `initializeModal() => Promise<void>`
+
+Initializes or re-initializes the modal, setting up event listeners.
 
 #### Returns
 

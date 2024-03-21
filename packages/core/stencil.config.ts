@@ -3,6 +3,13 @@ import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 
+function getTsConfigFile() {
+  if (process.env.STORYBOOK_ENV === 'dev') {
+    return 'tsconfig.dev.json';
+  }
+  return 'tsconfig.prod.json';
+}
+
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['tds-radio-button'],
@@ -49,6 +56,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 ];
 
 export const config: Config = {
+  tsconfig: getTsConfigFile(),
   namespace: 'tegel',
   globalStyle: 'src/global/global.scss',
   extras: {
