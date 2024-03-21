@@ -289,7 +289,8 @@
   display: none;
   position: absolute;
   right: 18px;
-  top: 18px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--tds-text-field-icon-read-only-label-color);
 
   &-label {

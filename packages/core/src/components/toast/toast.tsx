@@ -30,6 +30,9 @@ export class TdsToast {
   /** Hides the Toast. */
   @Prop({ reflect: true }) hidden: boolean = false;
 
+  /** Enables the close button. */
+  @Prop() closable: boolean = true;
+
   /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
 
@@ -125,14 +128,12 @@ export class TdsToast {
               </div>
             )}
           </div>
-          <button
-            onClick={() => {
-              this.handleClose();
-            }}
-            class={`close`}
-          >
-            <tds-icon name="cross" size="20px"></tds-icon>
-          </button>
+
+          {this.closable && (
+            <button onClick={this.handleClose} class="close">
+              <tds-icon name="cross" size="20px"></tds-icon>
+            </button>
+          )}
         </div>
       </Host>
     );

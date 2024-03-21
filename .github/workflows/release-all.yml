@@ -26,38 +26,219 @@ on:
 jobs:
   release-core:
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.core-release.outputs.version }}
+    env:
+      WORKING_DIRECTORY: packages/core
     steps:
-      - name: Trigger Core Release
-        id: core-release
-        uses: benc-uk/workflow-dispatch@v1
+      - name: Check out code
+        uses: actions/checkout@v4
         with:
-          workflow: release-core.yml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          inputs: '{"nodeVersion": "${{ github.event.inputs.nodeVersion }}", "tags": "${{ github.event.inputs.tags }}", "dryRun": "${{ github.event.inputs.dryRun }}"}'
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - Read Package.json Version
+        id: version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm install
+
+      - name: Core - Run build
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run build
+
+      - name: Core - Publish
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
+            npm publish --tag ${{ github.event.inputs.tags }} --dry-run
+          else
+            npm publish --tag ${{ github.event.inputs.tags }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Core - Create git tag
+        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Core - Push git tag
+        run: git push origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  on-failure-core:
+    needs: release-core
+    runs-on: ubuntu-latest
+    if: always() && needs.release-core.result == 'failure'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Remove git tag on failure
+        run: |
+          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --delete origin $tagname
+            fi
 
   release-angular:
-    needs: release-core
     runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular
     steps:
-      - name: Trigger Angular Release
-        uses: benc-uk/workflow-dispatch@v1
+      - name: Check out code
+        uses: actions/checkout@v4
         with:
-          workflow: release-angular.yml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          inputs: '{"nodeVersion": "${{ github.event.inputs.nodeVersion }}", "tags": "${{ github.event.inputs.tags }}", "dryRun": "${{ github.event.inputs.dryRun }}"}'
+          ref: develop
+
+      - name: Set up node
+        # Setup .npmrc file to publish to npm
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Angular - Read package.json Version
+        id: version
+        working-directory: packages/angular
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular - Install
+        working-directory: packages/angular
+        run: npm install
+
+      - name: Angular - Install latest tegel package
+        working-directory: packages/angular
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Angular - Run build
+        run: npm run build-angular
+
+      - name: Angular - Publish
+        working-directory: packages/angular
+        run: |
+          if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
+            npm publish --tag ${{ github.event.inputs.tags }} --dry-run
+          else
+            npm publish --tag ${{ github.event.inputs.tags }}
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  on-failure-angular:
+    needs: release-angular
+    runs-on: ubuntu-latest
+    if: always() && needs.release-angular.result == 'failure'
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Remove git tag on failure
+        run: |
+          tagname="@scania/tegel@${{ needs.release-angular.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push origin --delete $tagname
+          fi
 
   release-react:
-    needs: release-core
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger React Release
-        uses: benc-uk/workflow-dispatch@v1
+      - name: Check out code
+        uses: actions/checkout@v4
         with:
-          workflow: release-react.yml
-          token: ${{ secrets.GITHUB_TOKEN }}
-          inputs: '{"nodeVersion": "${{ github.event.inputs.nodeVersion }}", "tags": "${{ github.event.inputs.tags }}", "dryRun": "${{ github.event.inputs.dryRun }}"}'
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: React - Read package.json Version
+        id: version
+        working-directory: packages/react
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: React - Install
+        working-directory: packages/react
+        run: npm install
+
+      - name: React - Install with latest tegel package
+        working-directory: packages/react
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: React - Build
+        run: npm run build-react
+
+      - name: React - Publish
+        run: |
+          if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
+            npm publish --tag ${{ github.event.inputs.tags }} --dry-run
+          else
+            npm publish --tag ${{ github.event.inputs.tags }}
+          fi
+        working-directory: packages/react
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  on-failure-react:
+    needs: release-react
+    runs-on: ubuntu-latest
+    if: always() && needs.release-react.result == 'failure'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Remove git tag on failure
+        run: |
+          tagname="@scania/tegel@${{ needs.release-react.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --delete origin $tagname
+          fi
 
   create-pr:
     needs: [release-core, release-angular, release-react]
@@ -68,20 +249,17 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: develop
-
       - name: Core - Read Package.json Version
         id: version
         working-directory: packages/core
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
-
       - name: Create Pull Request
-        id: create-pr
         uses: peter-evans/create-pull-request@v5
         with:
-          commit-message: 'release: ${{ env.PACKAGE_VERSION }}'
-          title: 'release: ${{ env.PACKAGE_VERSION }}'
+          commit-message: 'release: ${{ steps.version.outputs.PACKAGE_VERSION }}'
+          title: 'release: ${{ steps.version.outputs.PACKAGE_VERSION }}'
           body: |
             This PR is to sync the develop branch with the main branch after the successful release of the core package.
-            Version: ${{ env.PACKAGE_VERSION }}
+            Version: ${{ steps.version.outputs.PACKAGE_VERSION }}
           base: main
           branch: develop

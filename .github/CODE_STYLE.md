@@ -9,6 +9,7 @@ Welcome to the code conventions section of Tegel, a comprehensive design system 
  - Use meaningful variable and function names: Name your variables and functions in a way that clearly communicates their purpose.
 Avoid using single-letter variable names, instead of `i` for index, be descriptive and name the variable `index`.
  - Use single quotes (') for strings.
+ - If applicable, add unit test. 
 
 ## Branching
 - Branch out of `develop` branch for day-to-day work
@@ -16,12 +17,17 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
 - Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
 - Start the name of the branch with Jira ticket number followed by short description of task
 - example: `fix/CDEP-1369-banner-color-correction`
+- If Jira ticket number is not available to you, use Github ticket number as prefix instead. If no issue exists, create that first before creating the branch.
+
+## Unit testing approach
+
+For our unit testing, we've adopted Playwright. Within our project structure, any component subject to testing is accompanied by a dedicated test folder located within its specific component directory. For instance, you'll find this under `src/components/button/test/disabled/` for testing the disabled state of a button component. Within this folder, you should create a test file named `button.e2e.ts` alongside an `index.html` file that outlines the structure of the component being tested.
 
 
 ## Folder structure
 
 All components are located in the `src/components` directory. Each component in this folder has a dedicated folder named as the
-component minus the `tds`-prefix. For our Button the file path is `src/components/button`. The components tsx/sccs files are 
+component minus the `tds`-prefix. For our Button the file path is `src/components/button`. The components tsx/scss files are 
 all named without the `tds`-prefix. E.g. `button.tsx`, `button.scss`, `button-vars.scss`.
 
 ### Example - folder structure for Button
@@ -135,7 +141,7 @@ from a tegel component.
 The events are named according to our naming convention: 'tds' + event. For a click event this would result in the event being called `tdsClick`. 
 
 ### Internal events
-Some of the component are using event to communicate with its parent/child. These events are not recommended to use in any way since
+Some of our components are using events to communicate with its parent/child. These events are not recommended to use in any way since
 they might change without notice. Their payload might also be changed based on refactoring of components. These events are prefixed
 with 'internal'. This is to make it as clear as possible to a user that this is an internal event that the components are using,
 but the user should not interact with it. E.g. `internalTdsPropsChange`.

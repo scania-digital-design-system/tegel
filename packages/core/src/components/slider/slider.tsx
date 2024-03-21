@@ -83,7 +83,7 @@ export class TdsSlider {
 
   private resizeObserverAdded: boolean = false;
 
-  /** Sends the value of the slider when changed. */
+  /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
@@ -91,6 +91,17 @@ export class TdsSlider {
     bubbles: true,
   })
   tdsChange: EventEmitter<{
+    value: string;
+  }>;
+
+  /** Sends the value of the slider while moving the thumb. Fires on mouse move and touch move events. */
+  @Event({
+    eventName: 'tdsInput',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsInput: EventEmitter<{
     value: string;
   }>;
 
@@ -106,13 +117,13 @@ export class TdsSlider {
       case 'ArrowLeft':
       case 'ArrowDown':
       case '-':
-        this.stepLeft();
+        this.stepLeft(event);
         break;
 
       case 'ArrowRight':
       case 'ArrowUp':
       case '+':
-        this.stepRight();
+        this.stepRight(event);
         break;
 
       default:
@@ -121,43 +132,25 @@ export class TdsSlider {
   }
 
   @Listen('mouseup', { target: 'window' })
-  handleMouseUp() {
-    if (!this.thumbGrabbed) {
-      return;
-    }
-
-    this.thumbGrabbed = false;
-    this.thumbInnerElement.classList.remove('pressed');
-    this.updateValue();
-
-    this.trackElement.focus();
-  }
-
   @Listen('touchend', { target: 'window' })
-  handleTouchEnd() {
+  handleRelease(event: MouseEvent | TouchEvent) {
     if (!this.thumbGrabbed) {
       return;
     }
 
     this.thumbGrabbed = false;
     this.thumbInnerElement.classList.remove('pressed');
-    this.updateValue();
+    this.updateValue(event);
 
     this.trackElement.focus();
   }
 
   @Listen('mousemove', { target: 'window' })
-  handleMouseMove(event) {
-    if (!this.thumbGrabbed) {
-      return;
-    }
-
-    this.thumbCore(event);
-  }
-
   @Listen('touchmove', { target: 'window' })
-  handleTouchMove(event) {
-    event.preventDefault();
+  handleMove(event: MouseEvent | TouchEvent) {
+    if (event.type === 'touchmove') {
+      event.preventDefault();
+    }
 
     if (!this.thumbGrabbed) {
       return;
@@ -212,7 +205,7 @@ export class TdsSlider {
     this.thumbLeft = this.constrainThumb(localLeft);
     this.thumbElement.style.left = `${this.thumbLeft}px`;
 
-    this.updateValue();
+    this.updateValue(event);
   }
 
   private updateTrack() {
@@ -221,7 +214,7 @@ export class TdsSlider {
     this.trackFillElement.style.width = `${percentageFilled}%`;
   }
 
-  private updateValue() {
+  private updateValue(event) {
     const trackWidth = this.getTrackWidth();
     const numTicks = parseInt(this.ticks);
 
@@ -237,7 +230,13 @@ export class TdsSlider {
       )}`;
     }
     this.updateTrack();
-    this.tdsChange.emit({ value: this.value });
+
+    this.tdsInput.emit({ value: this.value });
+
+    /* Emit event after user has finished dragging the thumb */
+    if (event.type === 'touchend' || event.type === 'mouseup') {
+      this.tdsChange.emit({ value: this.value });
+    }
   }
 
   private forceValueUpdate(newValue: string) {
@@ -286,6 +285,11 @@ export class TdsSlider {
     const inputElement = event.target as HTMLInputElement;
     let newValue = parseInt(inputElement.value);
 
+    // Check if the new value is different from the current value
+    if (newValue === parseInt(this.value)) {
+      return; // Exit the function if the new value is the same as the current value
+    }
+
     if (newValue < parseFloat(this.min)) {
       newValue = parseFloat(this.min);
     } else if (newValue > parseFloat(this.max)) {
@@ -317,7 +321,7 @@ export class TdsSlider {
     return this.max.length;
   }
 
-  private controlsStep(delta) {
+  private controlsStep(delta: number, event: KeyboardEvent) {
     if (this.readOnly || this.disabled) {
       return;
     }
@@ -334,7 +338,7 @@ export class TdsSlider {
       } else if (this.supposedValueSlot > numTicks + 1) {
         this.supposedValueSlot = numTicks + 1;
       }
-      this.updateValue();
+      this.updateValue(event);
     } else {
       const trackWidth = this.getTrackWidth();
       const percentage = this.thumbLeft / trackWidth;
@@ -356,12 +360,12 @@ export class TdsSlider {
     }
   }
 
-  private stepLeft() {
-    this.controlsStep(-parseInt(this.step));
+  private stepLeft(event) {
+    this.controlsStep(-parseInt(this.step), event);
   }
 
-  private stepRight() {
-    this.controlsStep(parseInt(this.step));
+  private stepRight(event) {
+    this.controlsStep(parseInt(this.step), event);
   }
 
   componentWillLoad() {
@@ -458,7 +462,7 @@ export class TdsSlider {
             <div class="tds-slider__controls">
               <div
                 class="tds-slider__control tds-slider__control-minus"
-                onClick={() => this.stepLeft()}
+                onClick={(event) => this.stepLeft(event)}
               >
                 <tds-icon name="minus" size="16px"></tds-icon>
               </div>
@@ -530,7 +534,7 @@ export class TdsSlider {
 
           {this.useInput && (
             <div class="tds-slider__input-values">
-              <div class="tds-slider__input-value" onClick={() => this.stepLeft()}>
+              <div class="tds-slider__input-value" onClick={(event) => this.stepLeft(event)}>
                 {this.max}
               </div>
               <div class="tds-slider__input-field-wrapper">
@@ -541,6 +545,9 @@ export class TdsSlider {
                   readOnly={this.readOnly}
                   onBlur={(event) => this.updateSliderValueOnInputChange(event)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
+                  type="number"
+                  min={this.min}
+                  max={this.max}
                 />
               </div>
             </div>
@@ -550,7 +557,7 @@ export class TdsSlider {
             <div class="tds-slider__controls">
               <div
                 class="tds-slider__control tds-slider__control-plus"
-                onClick={() => this.stepRight()}
+                onClick={(event) => this.stepRight(event)}
               >
                 <tds-icon name="plus" size="16px"></tds-icon>
               </div>

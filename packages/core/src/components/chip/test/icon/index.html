@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chip - Icon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-chip type="button" size="lg">
+        <tds-icon slot="prefix" name="star" size="16px"></tds-icon>
+        <span slot="label">Label</span>
+  </tds-chip>
+  </body>
+</html>

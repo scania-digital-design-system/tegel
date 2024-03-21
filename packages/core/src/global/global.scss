@@ -58,6 +58,9 @@
 @import '../components/toggle/toggle-vars';
 @import '../components/tooltip/tooltip-vars';
 
+// Beta components
+@import '../components/_beta/date-picker/date-picker-single/date-picker-vars';
+
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
   font-size: 14px;
