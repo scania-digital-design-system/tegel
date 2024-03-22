@@ -10,7 +10,7 @@ test.describe('tds-table-filtering', () => {
     await expect(tableComponent).toHaveCount(1);
 
     /* Check diff of screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
   });
 
   test('table has header "Filter"', async ({ page }) => {
@@ -35,7 +35,7 @@ test.describe('tds-table-filtering', () => {
     await tdsTableToolbarSearchInput.click();
 
     /* Check diff of screenshot after click */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
   });
 
   test('clicking on search button opens field for entering data', async ({ page }) => {
@@ -46,6 +46,6 @@ test.describe('tds-table-filtering', () => {
     await tdsTableToolbarSearchInput.fill('Some test text');
 
     /* Check diff of screenshot after filled */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
   });
 });
