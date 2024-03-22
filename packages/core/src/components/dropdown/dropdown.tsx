@@ -523,6 +523,12 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
+                onClick={this.handleFilterReset}
+                class={`${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                name="cross"
+                size="16px"
+              ></tds-icon>
+              <tds-icon
                 onClick={this.handleToggleOpen}
                 class={`${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
@@ -595,4 +601,9 @@ export class TdsDropdown {
       </Host>
     );
   }
+
+  private handleFilterReset = () => {
+    this.inputElement.value = '';
+    this.inputElement.focus();
+  };
 }
