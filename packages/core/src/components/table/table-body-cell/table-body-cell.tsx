@@ -25,7 +25,7 @@ export class TdsTableBodyCell {
   @Prop({ reflect: true }) disablePadding: boolean = false;
 
   /** Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". */
-  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center' = 'left';
+  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center';
 
   @State() textAlignState: string;
 
@@ -98,6 +98,9 @@ export class TdsTableBodyCell {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl[tablePropName];
     });
+    if (this.textAlign) {
+      this.textAlignState = this.textAlign;
+    }
   }
 
   render() {
