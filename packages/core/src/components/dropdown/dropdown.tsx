@@ -604,6 +604,7 @@ export class TdsDropdown {
 
   private handleFilterReset = () => {
     this.inputElement.value = '';
+    this.handleFilter({ target: { value: this.inputElement.value } });
     this.inputElement.focus();
   };
 }
