@@ -20,28 +20,23 @@ jobs:
         with:
           ref: develop
 
-      # Delete 'minor' branch on remote if it exists
-      - name: Delete 'minor' branch on remote
-        run: |
-          if git ls-remote --heads origin minor; then
-            git push origin --delete minor
-          else
-            echo "Minor branch does not exist on remote, skipping deletion."
-          fi
+      # Extract the current version
+      - name: Extract current version
+        id: current_version
+        run: echo "CURRENT_VERSION=$(jq -r .version packages/core/package.json)" >> $GITHUB_ENV
 
-      # Delete 'patch' branch on remote if it exists
-      - name: Delete 'patch' branch on remote
+        # Bump version without committing
+      - name: Bump version
+        id: bump_version
         run: |
-          if git ls-remote --heads origin patch; then
-            git push origin --delete patch
-          else
-            echo "Patch branch does not exist on remote, skipping deletion."
-          fi
+          NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version --prefix packages/core)
+          echo "NEW_VERSION=${NEW_VERSION:1}" >> $GITHUB_ENV  # Remove the 'v' prefix
 
+      # Reference for this pattern: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
       - name: Create release branch
         run: |
-          git checkout -b release/tegel@${{ github.event.inputs.version }}
-          git push -u origin release/tegel@${{ github.event.inputs.version }}
+          git checkout -b release/tegel@$NEW_VERSION
+          git push -u origin release/tegel@$NEW_VERSION
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -64,20 +59,20 @@ jobs:
       - name: Core - Read package.json Version
         id: version
         working-directory: packages/core
-        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Save version as artifact
         uses: actions/upload-artifact@v2
         with:
           name: version
-          path: packages/core/package.json
+          path: packages/core/package.json # assuming the version is saved here
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
         with:
-          title: 'release: @scania/tegel@${{ env.PACKAGE_VERSION }}'
-          commit-message: Release of @scania/tegel@${{ env.PACKAGE_VERSION }}
-          branch: release/tegel@${{ env.PACKAGE_VERSION }}
+          title: 'release: @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}'
+          commit-message: Release of @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          branch: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           base: develop
 
   on-failure:
@@ -95,5 +90,5 @@ jobs:
         run: |
           version=$(jq -r .version packages/core/package.json)  # extract version from package.json
           if [ "${{ job.status }}" == "failure" ] && [ -n "$version" ]; then
-            git push origin --delete release/tegel@$version
+            git push origin --delete @scania/tegel@$version
           fi
