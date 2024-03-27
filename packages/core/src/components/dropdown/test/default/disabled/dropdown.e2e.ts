@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/default/disabled/index.html';
 
-test.describe('tds-dropdown-disabled', () => {
+test.describe.parallel('tds-dropdown-disabled', () => {
   test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdownButtonIcon = page.locator('tds-icon');

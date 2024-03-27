@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/popover-menu/test/icons-fluid/index.html';
 
-test.describe('tds-popover-menu-icons-fluid', () => {
+test.describe.parallel('tds-popover-menu-icons-fluid', () => {
   test('renders icons-fluid popover-menu correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });

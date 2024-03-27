@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/chip/test/icon/index.html';
 
-test.describe('tds-chip-default', () => {
+test.describe.parallel('tds-chip-default', () => {
   test('renders default chip correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const chip = page.locator('tds-chip');

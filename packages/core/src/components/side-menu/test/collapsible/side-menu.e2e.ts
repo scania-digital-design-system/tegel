@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/side-menu/test/collapsible/index.html';
 
-test.describe('tds-side-menu-collapsible', () => {
+test.describe.parallel('tds-side-menu-collapsible', () => {
   test('renders collapsible side-menu correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const sideMenuNavigation = page.getByRole('navigation');

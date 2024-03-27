@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from 'stencil-playwright';
 
-test.describe('TdsRadioButton component tests', () => {
+test.describe.parallel('TdsRadioButton component tests', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the index.html page where your component is rendered
     // Adjust the path to the index.html as necessary based on your project structure

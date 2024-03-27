@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/textarea/test/default/index.html';
 
-test.describe('tds-textarea-default', () => {
+test.describe.parallel('tds-textarea-default', () => {
   test('renders default textarea correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTextarea = page.getByTestId('tds-textarea-testid');

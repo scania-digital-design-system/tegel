@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/card/test/clickable/index.html';
 
-test.describe('tds-card-clickable', () => {
+test.describe.parallel('tds-card-clickable', () => {
   test('renders clickable card correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const cardButton = page.getByRole('button');

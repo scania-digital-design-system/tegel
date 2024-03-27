@@ -7,13 +7,14 @@ const config: PlaywrightTestConfig = {
   testMatch: '*.e2e.ts',
   use: {
     baseURL: 'http://localhost:3333',
+    browserName: 'chromium',
   },
   webServer: {
     command: 'serve -p 3333',
     port: 3333,
     reuseExistingServer: !process.env.CI,
   },
-  workers: 4,
+  workers: 8,
   reporter: 'line',
 };
 

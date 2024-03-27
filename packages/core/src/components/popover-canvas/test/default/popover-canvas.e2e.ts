@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/popover-canvas/test/default/index.html';
 
-test.describe('tds-popover-canvas-default', () => {
+test.describe.parallel('tds-popover-canvas-default', () => {
   test('renders default popover-canvas correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
