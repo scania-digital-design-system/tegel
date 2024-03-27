@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/modal/test/open-close/index.html';
 
-test.describe('tds-modal-open', () => {
+test.describe.parallel('tds-modal-open', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });

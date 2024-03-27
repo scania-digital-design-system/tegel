@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/filtering/index.html';
 
-test.describe('tds-table-search', () => {
+test.describe.parallel('tds-table-search', () => {
   test('look for textbox and click it', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsTableToolbarSearchInput = page.getByRole('textbox');

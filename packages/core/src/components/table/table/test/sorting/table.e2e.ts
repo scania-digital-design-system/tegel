@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/sorting/index.html';
 
-test.describe('tds-table-sorting', () => {
+test.describe.parallel('tds-table-sorting', () => {
   test('renders sorting table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');
