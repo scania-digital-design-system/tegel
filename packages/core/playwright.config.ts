@@ -14,7 +14,7 @@ const config: PlaywrightTestConfig = {
     port: 3333,
     reuseExistingServer: !process.env.CI,
   },
-  workers: 4,
+  workers: 8,
   reporter: 'line',
 };
 
