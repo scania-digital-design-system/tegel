@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/batch/index.html';
 
-test.describe('tds-table-batch', () => {
+test.describe.parallel('tds-table-batch', () => {
   test('renders batch table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');

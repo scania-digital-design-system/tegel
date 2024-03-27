@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/slider/test/default/index.html';
 
-test.describe('tds-slider-default', () => {
+test.describe.parallel('tds-slider-default', () => {
   test('renders default slider correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const slider = page.locator('tds-slider');

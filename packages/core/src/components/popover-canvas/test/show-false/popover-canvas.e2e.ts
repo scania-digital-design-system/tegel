@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/popover-canvas/test/show-false/index.html';
 
-test.describe('tds-popover-canvas-show-false', () => {
+test.describe.parallel('tds-popover-canvas-show-false', () => {
   test('renders show=false popover-canvas correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');

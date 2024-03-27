@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-test.describe('tds-accordion', () => {
+test.describe.parallel('tds-accordion', () => {
   test('renders disabled accordion correctly', async ({ page }) => {
     await page.goto('src/components/accordion/test/disabled/index.html');
     const accordion = page.locator('tds-accordion');

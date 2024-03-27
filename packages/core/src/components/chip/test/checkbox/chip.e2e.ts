@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/chip/test/checkbox/index.html';
 
-test.describe('tds-chip-checkbox', () => {
+test.describe.parallel('tds-chip-checkbox', () => {
   test('renders checkbox chips correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const chip1 = page.getByText('Label 1', { exact: true });

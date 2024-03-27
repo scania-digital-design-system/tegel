@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 
-test.describe('tds-table-expandable-row', () => {
+test.describe.parallel('tds-table-expandable-row', () => {
   // Inject beforeEach hook here
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);

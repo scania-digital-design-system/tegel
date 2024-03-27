@@ -2,7 +2,7 @@ import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/slider/test/disabled/index.html';
-test.describe('tds-slider-disabled', () => {
+test.describe.parallel('tds-slider-disabled', () => {
   test('read-only is false', async ({ page }) => {
     await page.goto(componentTestPath);
     const slider = page.locator('tds-slider');

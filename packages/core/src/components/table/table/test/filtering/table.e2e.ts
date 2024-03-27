@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/filtering/index.html';
 
-test.describe('tds-table-filtering', () => {
+test.describe.parallel('tds-table-filtering', () => {
   test('renders filtering table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');

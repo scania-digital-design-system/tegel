@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/multiselect/index.html';
 
-test.describe('tds-dropdown-multiselect', () => {
+test.describe.parallel('tds-dropdown-multiselect', () => {
   test('renders multiselect dropdown correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.getByTestId('tds-dropdown-testid');

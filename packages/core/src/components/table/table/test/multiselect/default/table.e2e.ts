@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/multiselect/default/index.html';
 
-test.describe('tds-table-multiselect', () => {
+test.describe.parallel('tds-table-multiselect', () => {
   test('renders multiselect table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');

@@ -1,7 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from 'stencil-playwright';
 
-test.describe('Radio button - disabled state', () => {
+test.describe.parallel('Radio button - disabled state', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('src/components/radio-button/test/disabled/index.html');
   });

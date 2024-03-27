@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/checkbox/test/default/index.html';
 
-test.describe('tds-checkbox', () => {
+test.describe.parallel('tds-checkbox', () => {
   test('renders basic checkbox correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox

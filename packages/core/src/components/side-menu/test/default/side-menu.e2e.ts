@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/side-menu/test/default/index.html';
 
-test.describe('tds-side-menu-default', () => {
+test.describe.parallel('tds-side-menu-default', () => {
   test('renders default side-menu correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const sideMenuNavigation = page.getByRole('navigation');

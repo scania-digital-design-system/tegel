@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/button/test/icon/index.html';
 
-test.describe('tds-button-icon', () => {
+test.describe.parallel('tds-button-icon', () => {
   test('renders icon button correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid');
