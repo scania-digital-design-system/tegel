@@ -180,7 +180,7 @@ export class TdsModal {
         <div class="tds-modal-backdrop" />
         <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
           <div class="header">
-            {this.header && <div class="header">{this.header}</div>}
+            {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
             <button
               class="tds-modal-close"

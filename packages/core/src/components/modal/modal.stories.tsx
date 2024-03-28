@@ -76,9 +76,9 @@ export default {
   args: {
     actionsPosition: 'Static',
     size: 'Large',
-    headerText: 'The buttons for the Modal only works in the canvas tab',
+    headerText: 'Header text',
     bodyContent:
-      'The steps fell lightly and oddly, with a certain swing, for all they went so slowly; it was different indeed from the heavy creaking tread of Henry Jekyll. Utterson sighed. “Is there never anything else?” he asked.',
+      '“I beg your pardon, Dr. Lanyon,” he replied civilly enough. “What you say is very well founded; and my impatience has shown its heels to my politeness. I come here at the instance of your colleague, Dr. Henry Jekyll, on a piece of business of some moment; and I understood...”',
     showModal: true,
     prevent: false,
   },
@@ -91,8 +91,8 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) => {
-  return formatHtmlPreview(`
+const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) => 
+  formatHtmlPreview(`
     <!-- The button below is just for demo purposes -->
     <tds-button id="my-modal-button" text="Open Modal"></tds-button>
     
@@ -108,19 +108,19 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
         ${bodyContent}
       </span>
       <span slot='actions' class='tds-u-flex tds-u-gap2'>
-        <tds-button data-dismiss-modal size="md" text="Delete" variant="danger"></tds-button>
-        <tds-button data-dismiss-modal size="md" text="Cancel" variant="secondary"></tds-button>
-      </span>
-    </tds-modal>
-    
-    <!-- The script below is for demo purposes -->
-    <script>
-      modal = document.querySelector('tds-modal')
-      modal.addEventListener('tdsClose', (event) => {
-        console.log(event)
-      })
-    </script>
-  `);
-};
+        <tds-button data-dismiss-modal size="md" text="Button Text" variant="primary"></tds-button>
+        <tds-button data-dismiss-modal size="md" text="Button Text" variant="secondary"></tds-button>
+      </span>      
+  </tds-modal>
+  
+  <!-- The script below is just for demo purposes -->
+  <script>
+    modal = document.querySelector('tds-modal')
+    modal.addEventListener('tdsClose', (event) => {
+      console.log(event)
+    })
+  </script>
+  `,
+  );
 
 export const Default = ModalTemplate.bind({});
