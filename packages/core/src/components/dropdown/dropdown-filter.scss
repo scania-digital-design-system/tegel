@@ -121,6 +121,12 @@
 
     tds-icon {
       margin-right: 16px;
+      cursor: pointer;
+
+      &.hide {
+        display: none;
+        visibility: hidden;
+      }
     }
   }
 }

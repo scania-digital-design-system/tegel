@@ -442,6 +442,12 @@ export class TdsDropdown {
     }
   };
 
+  private handleFilterReset = () => {
+    this.inputElement.value = '';
+    this.handleFilter({ target: { value: this.inputElement.value } });
+    this.inputElement.focus();
+  };
+
   private handleFocus = (event) => {
     this.tdsFocus.emit(event);
   };
@@ -522,6 +528,12 @@ export class TdsDropdown {
                   }}
                 />
               </div>
+              <tds-icon
+                onClick={this.handleFilterReset}
+                class={`${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                name="cross"
+                size="16px"
+              ></tds-icon>
               <tds-icon
                 onClick={this.handleToggleOpen}
                 class={`${this.open ? 'open' : 'closed'}`}
