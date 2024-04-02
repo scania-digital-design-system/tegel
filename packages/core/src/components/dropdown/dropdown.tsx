@@ -594,16 +594,8 @@ export class TdsDropdown {
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
-                  tabIndex={0}
-                  role="button"
                   aria-label="Open/Close dropdown"
                   svgTitle="Open/Close dropdown"
-                  onClick={this.handleToggleOpen}
-                  onKeyDown={(event) => {
-                    if (event.key === 'Enter') {
-                      this.handleToggleOpen();
-                    }
-                  }}
                   class={`menu-icon ${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
