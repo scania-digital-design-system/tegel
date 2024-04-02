@@ -443,6 +443,7 @@ export class TdsDropdown {
   };
 
   private handleFilterReset = () => {
+    this.reset();
     this.inputElement.value = '';
     this.handleFilter({ target: { value: this.inputElement.value } });
     this.inputElement.focus();
@@ -531,6 +532,11 @@ export class TdsDropdown {
               <tds-icon
                 onClick={this.handleFilterReset}
                 class={`${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                /*
+                class={{
+                  hide: !this.open,
+                }}
+                */
                 name="cross"
                 size="16px"
               ></tds-icon>
