@@ -12,7 +12,7 @@
 | `cellKey`        | `cell-key`        | Passing the same cell key for all body cells which is used in head cell enables features of text align and hovering  | `any`                                               | `undefined` |
 | `cellValue`      | `cell-value`      | Value that will be presented as text inside a cell                                                                   | `number \| string`                                  | `undefined` |
 | `disablePadding` | `disable-padding` | Disables internal padding. Useful when passing other components to cell.                                             | `boolean`                                           | `false`     |
-| `textAlign`      | `text-align`      | Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'left'`    |
+| `textAlign`      | `text-align`      | Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". | `"center" \| "end" \| "left" \| "right" \| "start"` | `undefined` |
 
 
 ## Slots
