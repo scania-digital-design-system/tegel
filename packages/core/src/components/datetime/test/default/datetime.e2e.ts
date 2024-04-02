@@ -11,25 +11,23 @@ test.describe('tds-datetime-default', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('verifies label, helper text, and calendar icon for datetime-local component', async ({
+  test('verifies label, helper text, size, and calendar icon for datetime-local component', async ({
     page,
   }) => {
     await page.goto(componentTestPath);
 
     // Check for the label text
-    const label = await page.locator('.tds-datetime-label');
+    const label = page.locator('.tds-datetime-label');
+    const dateTime = page.locator('tds-datetime');
+    const helperText = page.locator('.tds-datetime-helper .tds-helper');
+    const calendarIcon = page.locator('tds-icon[name="calendar"]');
+
+    await expect(dateTime).toHaveAttribute('size', 'lg');
     await expect(label).toBeVisible();
     await expect(label).toHaveText('Label text');
-
-    // Check for the helper text
-    const helperText = await page.locator('.tds-datetime-helper .tds-helper');
     await expect(helperText).toBeVisible();
     await expect(helperText).toHaveText('Helper text');
 
-    // Check for the calendar icon
-    // Assuming the icon can be identified by an aria-label or similar attribute
-    // Update the selector as necessary to target the calendar icon specifically
-    const calendarIcon = await page.locator('tds-icon[name="calendar"]');
     await expect(calendarIcon).toBeVisible();
   });
 
@@ -37,19 +35,16 @@ test.describe('tds-datetime-default', () => {
     await page.goto(componentTestPath);
 
     // Assuming the calendar icon can be clicked to open the datetime picker
-    // Note: Adjust the selector to accurately target the calendar icon within your component
-    await page.click('input[type="datetime-local"]'); // Adjust the type accordingly if testing 'date' or 'time'
+    await page.click('input[type="datetime-local"]');
 
-    // await page.click('input[type="datetime-local"]'); // Adjust the type accordingly if testing 'date' or 'time'
     // Verify the input is indeed focused. This is an indirect test to ensure
     // that actions leading up to the display of the native picker are correctly initiated.
     const inputIsFocused = await page.evaluate(
       () => document.activeElement.type === 'datetime-local',
-    ); // Adjust the type accordingly
+    );
     expect(inputIsFocused).toBeTruthy();
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-    // Note: Direct assertions about the native picker's visibility or UI state cannot be made here.
   });
 
   test('setting input to current date and time programmatically', async ({ page }) => {
