@@ -530,13 +530,27 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
+                tabIndex={0}
+                role="button"
                 onClick={this.handleFilterReset}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    this.handleFilterReset();
+                  }
+                }}
                 class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
                 name="cross"
                 size="16px"
               ></tds-icon>
               <tds-icon
+                tabIndex={0}
+                role="button"
                 onClick={this.handleToggleOpen}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    this.handleToggleOpen();
+                  }
+                }}
                 class={`menu-icon ${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
