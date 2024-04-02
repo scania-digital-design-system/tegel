@@ -30,7 +30,7 @@ test.describe('tds-datetime-error', () => {
     await expect(clockIcon).toBeVisible();
   });
 
-  test('helper text in error state has is red and has an warning icon', async ({ page }) => {
+  test('helper text in error state has is red and has an error icon', async ({ page }) => {
     await page.goto(componentTestPath);
 
     // Check helper text color for specific shade of red
@@ -39,8 +39,8 @@ test.describe('tds-datetime-error', () => {
       'rgb(255, 35, 64)',
     );
 
-    const warningIcon = page.locator('tds-icon[name="clock"]');
-    await expect(warningIcon).toBeVisible();
+    const errorIcon = page.locator('tds-icon[name="error"]');
+    await expect(errorIcon).toBeVisible();
   });
 
   test('Clock icon focuses the time input', async ({ page }) => {
