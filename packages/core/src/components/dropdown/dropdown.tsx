@@ -532,6 +532,7 @@ export class TdsDropdown {
               <tds-icon
                 tabIndex={0}
                 role="button"
+                aria-label="Clear filter"
                 onClick={this.handleFilterReset}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
@@ -545,6 +546,7 @@ export class TdsDropdown {
               <tds-icon
                 tabIndex={0}
                 role="button"
+                aria-label="Toggle dropdown"
                 onClick={this.handleToggleOpen}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
