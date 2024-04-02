@@ -114,7 +114,7 @@ $modals: (
   font: var(--tds-body-01);
   letter-spacing: var(--tds-body-01-ls);
   overflow-y: visible;
-  padding: 0 16px 16px;
+  padding: 0 var(--tds-spacing-element-16) var(--tds-spacing-element-16);
   @include modal-scroll-inner;
 }
 
@@ -243,12 +243,6 @@ button.tds-modal-close {
 
   @media (min-width: $screen-l) {
     margin-left: var(--tds-spacing-element-48);
-  }
-}
-@media (min-width: $screen-md) {
-  .tds-modal-lg .body,
-  .tds-modal-md .body {
-    padding-right: 80px;
   }
 }
 
