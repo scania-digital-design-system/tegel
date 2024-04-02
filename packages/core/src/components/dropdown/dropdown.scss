@@ -191,6 +191,14 @@
     }
   }
 
+  .menu-icon {
+    margin-right: 16px;
+    color: var(--tds-dropdown-menu-icon-color);
+    &:hover {
+      color: var(--tds-dropdown-menu-icon-hover-color);
+    }
+  }
+
   tds-icon {
     transition: transform 0.2s ease-in-out;
 
