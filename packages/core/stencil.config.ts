@@ -25,7 +25,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
   },
   {
     elementSelectors: ['tds-text-field', 'tds-textarea', 'tds-datetime'],
-    event: 'tdsChange',
+    event: 'tdsInput',
     targetAttr: 'value',
     type: 'text',
   },
