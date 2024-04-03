@@ -15,6 +15,10 @@
     color: var(--tds-table-color);
   }
 
+  .tds-table__row--expanded {
+    border-bottom: none;
+  }
+
   .tds-table__row:hover,
   .tds-table__row-extend:hover {
     background-color: var(--tds-table-body-row-background-hover);
@@ -54,6 +58,10 @@
   .tds-table__row-expand {
     display: none;
     transition: background-color 200ms ease;
+
+    &--expanded {
+      border-bottom: 1px solid var(--tds-table-divider);
+    }
 
     .tds-table__cell-expand {
       padding: 16px 16px 16px 66px;
