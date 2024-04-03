@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/message/test/error/index.html';
 
-test.describe('tds-message-error', () => {
+test.describe.parallel('tds-message-error', () => {
   test('is error message rendered correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 

@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/popover-menu/test/show-false/index.html';
 
-test.describe('tds-popover-menu-show-false', () => {
+test.describe.parallel('tds-popover-menu-show-false', () => {
   test('renders show=false popover-menu correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
