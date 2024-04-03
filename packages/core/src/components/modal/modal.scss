@@ -143,22 +143,23 @@ $modals: (
 
   &__actions-sticky {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     .body {
       font: var(--tds-body-01);
       letter-spacing: var(--tds-body-01-ls);
-      padding-bottom: 35vh;
       max-height: calc(85vh - 36px);
       overflow-y: auto;
     }
 
     slot[name='actions'] {
-      position: absolute;
       bottom: -1px;
       left: 0;
       right: 0;
       background-color: var(--tds-modal-background);
-      padding: var(--tds-spacing-element-16);
+      padding: var(--tds-spacing-element-24) var(--tds-spacing-element-16)
+        var(--tds-spacing-element-16);
       display: flex;
       gap: 16px;
     }
