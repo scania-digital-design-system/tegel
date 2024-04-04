@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tooltip - Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-tooltip placement="bottom" selector="#button-2" text="Text inside Tooltip" mouse-over-tooltip="false">
+      <p class="tds-detail-05 tds-u-m0 tooltip-paragraph">
+        Paragraph tag inside of Tooltip with
+        <b>bold</b>
+        and
+        <i>italic</i>
+        tags too.
+      </p>
+    </tds-tooltip>
+    <tds-button size="sm" id="button-2" text="Hover me"></tds-button>
+  </body>
+</html>
