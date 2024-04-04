@@ -32,6 +32,6 @@ test.describe('tds-tooltip', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
     // Verify the tooltip is no longer visible
-    await expect(tooltip).toBeHidden({ timeout: 3000 });
+    await expect(tooltip).toBeHidden();
   });
 });
