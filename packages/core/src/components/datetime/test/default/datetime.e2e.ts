@@ -37,14 +37,14 @@ test.describe('tds-datetime-default', () => {
     // Assuming the calendar icon can be clicked to open the datetime picker
     await page.click('input[type="datetime-local"]');
 
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
     // Verify the input is indeed focused. This is an indirect test to ensure
     // that actions leading up to the display of the native picker are correctly initiated.
     const inputIsFocused = await page.evaluate(
       () => document.activeElement.type === 'datetime-local',
     );
     expect(inputIsFocused).toBeTruthy();
-
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('setting input to current date and time programmatically', async ({ page }) => {
