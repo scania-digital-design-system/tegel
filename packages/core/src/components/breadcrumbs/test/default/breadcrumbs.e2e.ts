@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/breadcrumbs/test/default/index.html';
 
-test.describe('tds-breadcrumbs-default', () => {
+test.describe.parallel('tds-breadcrumbs-default', () => {
   test('renders default breadcrumbs correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
