@@ -442,6 +442,13 @@ export class TdsDropdown {
     }
   };
 
+  private handleFilterReset = () => {
+    this.reset();
+    this.inputElement.value = '';
+    this.handleFilter({ target: { value: this.inputElement.value } });
+    this.inputElement.focus();
+  };
+
   private handleFocus = (event) => {
     this.tdsFocus.emit(event);
   };
@@ -523,8 +530,32 @@ export class TdsDropdown {
                 />
               </div>
               <tds-icon
+                tabIndex={0}
+                role="button"
+                aria-label="Clear filter"
+                svgTitle="Clear filter"
+                onClick={this.handleFilterReset}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    this.handleFilterReset();
+                  }
+                }}
+                class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                name="cross"
+                size="16px"
+              ></tds-icon>
+              <tds-icon
+                tabIndex={0}
+                role="button"
+                aria-label="Open/Close dropdown"
+                svgTitle="Open/Close dropdown"
                 onClick={this.handleToggleOpen}
-                class={`${this.open ? 'open' : 'closed'}`}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter') {
+                    this.handleToggleOpen();
+                  }
+                }}
+                class={`menu-icon ${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
               ></tds-icon>
@@ -563,7 +594,9 @@ export class TdsDropdown {
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
-                  class={`${this.open ? 'open' : 'closed'}`}
+                  aria-label="Open/Close dropdown"
+                  svgTitle="Open/Close dropdown"
+                  class={`menu-icon ${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
                 ></tds-icon>

@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/modal/test/default/index.html';
 
-test.describe('tds-modal-default', () => {
+test.describe.parallel('tds-modal-default', () => {
   test('renders modal correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsModal = page.getByTestId('tds-modal-testid');

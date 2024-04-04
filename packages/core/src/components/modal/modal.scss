@@ -92,20 +92,11 @@ $modals: (
 
 @mixin modal-header {
   display: flex;
-  padding-bottom: var(--tds-spacing-element-8);
+  padding: var(--tds-spacing-element-16);
   position: sticky;
   top: 0;
   background-color: var(--tds-modal-background);
   z-index: 1;
-
-  &::before {
-    content: ' ';
-    position: absolute;
-    height: 16px;
-    top: -16px;
-    width: 100%;
-    background-color: var(--tds-modal-background);
-  }
 }
 
 @mixin modal-header-title {
@@ -122,14 +113,9 @@ $modals: (
   color: var(--tds-modal-text);
   font: var(--tds-body-01);
   letter-spacing: var(--tds-body-01-ls);
-  padding-bottom: 40px;
   overflow-y: visible;
-  padding-right: 16px;
+  padding: 0 var(--tds-spacing-element-16) var(--tds-spacing-element-16);
   @include modal-scroll-inner;
-
-  @media (min-width: $screen-l) {
-    padding-right: 64px;
-  }
 }
 
 @mixin modal-position {
@@ -149,7 +135,6 @@ $modals: (
   margin: auto;
   position: relative;
   border-radius: 4px;
-  padding: 16px;
   max-height: 85vh;
   overflow-y: auto;
   pointer-events: auto;
@@ -158,23 +143,23 @@ $modals: (
 
   &__actions-sticky {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 
     .body {
       font: var(--tds-body-01);
       letter-spacing: var(--tds-body-01-ls);
-      padding-bottom: 96px;
-      margin: 0 -16px 0 0;
       max-height: calc(85vh - 36px);
       overflow-y: auto;
     }
 
     slot[name='actions'] {
-      position: absolute;
       bottom: -1px;
       left: 0;
       right: 0;
       background-color: var(--tds-modal-background);
-      padding: var(--tds-spacing-element-16);
+      padding: var(--tds-spacing-element-24) var(--tds-spacing-element-16)
+        var(--tds-spacing-element-16);
       display: flex;
       gap: 16px;
     }
@@ -185,6 +170,7 @@ $modals: (
       background-color: var(--tds-modal-background);
       display: flex;
       gap: 16px;
+      padding: 24px 16px 16px;
     }
   }
 }
@@ -199,7 +185,6 @@ $modals: (
     }
   }
 }
-
 @media (max-width: $screen-s) {
   .tds-modal-md,
   .tds-modal-lg,

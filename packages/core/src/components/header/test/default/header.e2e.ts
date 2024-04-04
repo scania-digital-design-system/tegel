@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/header/test/default/index.html';
 
-test.describe('tds-header-default', () => {
+test.describe.parallel('tds-header-default', () => {
   test('renders default header correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const headerComponent = page.getByRole('navigation');

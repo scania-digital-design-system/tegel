@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/default/index.html';
 
-test.describe('tds-dropdown-default', () => {
+test.describe.parallel('tds-dropdown-default', () => {
   test('renders default dropdown correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.getByTestId('tds-dropdown-testid');
