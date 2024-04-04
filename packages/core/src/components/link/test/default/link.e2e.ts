@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/link/test/default/index.html';
 
-test.describe('tds-link-default', () => {
+test.describe.parallel('tds-link-default', () => {
   test('is default link rendered correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 

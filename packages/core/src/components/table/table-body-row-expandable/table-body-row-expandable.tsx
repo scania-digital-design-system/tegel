@@ -111,7 +111,12 @@ export class TdsTableBodyRowExpandable {
           'tds-table--divider': this.verticalDividers,
         }}
       >
-        <tr class="tds-table__row">
+        <tr
+          class={{
+            'tds-table__row': true,
+            'tds-table__row--expanded': this.isExpanded,
+          }}
+        >
           <td class="tds-table__cell tds-table__cell--expand">
             <label class="tds-table__expand-control-container">
               <input
@@ -135,7 +140,12 @@ export class TdsTableBodyRowExpandable {
           <slot />
         </tr>
 
-        <tr class="tds-table__row-expand">
+        <tr
+          class={{
+            'tds-table__row-expand': true,
+            'tds-table__row-expand--expanded': this.isExpanded,
+          }}
+        >
           <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
             <slot name="expand-row" />
           </td>

@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/pagination/index.html';
 
-test.describe('tds-table-pagination', () => {
+test.describe.parallel('tds-table-pagination', () => {
   test('renders pagination table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');

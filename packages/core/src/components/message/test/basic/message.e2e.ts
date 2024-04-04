@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/message/test/basic/index.html';
 
-test.describe('tds-message-basic', () => {
+test.describe.parallel('tds-message-basic', () => {
   test('is basic message rendered correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
