@@ -34,20 +34,8 @@ export class TdsHeaderLauncher {
   }
 
   componentDidLoad() {
-    const slotElement = this.host.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
-
-    if (slotElement) {
-      const slottedElements = slotElement.assignedElements();
-      const hasListTypeMenu = slottedElements.some(
-        (element) => element.tagName.toLowerCase() === 'tds-header-launcher-list',
-      );
-
-      if (hasListTypeMenu) {
-        this.hasListTypeMenu = true;
-      }
-    } else {
-      console.warn('Slot element not found or assigned elements.');
-    }
+    const hasListTypeMenu = !!this.host.querySelector('tds-header-launcher-list');
+    this.hasListTypeMenu = hasListTypeMenu;
   }
 
   toggleLauncher() {
