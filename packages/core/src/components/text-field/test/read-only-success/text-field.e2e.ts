@@ -5,7 +5,7 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/text-field/test/read-only-success/index.html';
 const textFieldSelector = 'tds-text-field';
 
-test.describe('TdsTextField - read-only success state', () => {
+test.describe.parallel('TdsTextField - read-only success state', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the component test page before each test
     await page.goto(componentTestPath);
