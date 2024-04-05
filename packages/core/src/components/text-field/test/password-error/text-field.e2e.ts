@@ -5,7 +5,7 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/text-field/test/password-error/index.html';
 const textFieldSelector = 'tds-text-field';
 
-test.describe('TdsTextField - password type with error state', () => {
+test.describe.parallel('TdsTextField - password type with error state', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the component test page before each test
     await page.goto(componentTestPath);
