@@ -3,14 +3,14 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/sorting/index.html';
 
-test.describe('tds-table-sorting', () => {
+test.describe.parallel('tds-table-sorting', () => {
   test('renders sorting table correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
 
     /* Check for diffs in screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
   });
 
   test('table has header "Sorting"', async ({ page }) => {
@@ -38,6 +38,6 @@ test.describe('tds-table-sorting', () => {
     await mileageHeader.click();
     expect(myEventSpy).toHaveReceivedEventTimes(4);
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
   });
 });

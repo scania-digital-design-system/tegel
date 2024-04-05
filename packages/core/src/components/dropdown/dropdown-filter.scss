@@ -120,7 +120,27 @@
     }
 
     tds-icon {
+      cursor: pointer;
+    }
+
+    .menu-icon {
       margin-right: 16px;
+    }
+
+    .clear-icon {
+      margin: 0 8px;
+      color: var(--tds-dropdown-clear-icon-color);
+      padding-right: 8px;
+      border-right: 1px solid var(--tds-dropdown-clear-icon-color);
+
+      &:hover {
+        color: var(--tds-dropdown-clear-icon-hover-color);
+      }
+
+      &.hide {
+        display: none;
+        visibility: hidden;
+      }
     }
   }
 }

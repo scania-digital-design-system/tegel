@@ -6,7 +6,7 @@ const componentTestPath = 'src/components/dropdown/test/filter/disabled/index.ht
 test.describe('tds-dropdown-filter-disabled', () => {
   test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
     await page.goto(componentTestPath);
-    const dropdownButtonIcon = page.locator('tds-icon');
+    const dropdownButtonIcon = page.locator('.menu-icon');
 
     const dropdownListElementOne = page
       .locator('tds-dropdown-option')

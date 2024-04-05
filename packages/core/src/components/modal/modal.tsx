@@ -74,14 +74,43 @@ export class TdsModal {
     if (this.show !== undefined) {
       this.isShown = this.show;
     }
-    this.setDismissButtons();
-    this.setShowButton();
+    this.initializeModal();
 
     if (this.header && hasSlot('header', this.host)) {
       console.warn(
         "Tegel Modal component: Using both header prop and header slot might break modal's design. Please use just one of them. ",
       );
     }
+  }
+
+  componentWillLoad() {
+    this.initializeModal();
+  }
+
+  disconnectedCallback() {
+    this.cleanupModal();
+  }
+
+  /** Initializes or re-initializes the modal, setting up event listeners. */
+  @Method()
+  async initializeModal() {
+    this.setDismissButtons();
+    this.setShowButton();
+  }
+
+  /** Cleans up event listeners and other resources. */
+  @Method()
+  async cleanupModal() {
+    if (this.selector || this.referenceEl) {
+      const referenceEl = this.referenceEl ?? document.querySelector(this.selector);
+      if (referenceEl) {
+        referenceEl.removeEventListener('click', this.handleReferenceElementClick);
+      }
+    }
+
+    this.host.querySelectorAll('[data-dismiss-modal]').forEach((dismissButton) => {
+      dismissButton.removeEventListener('click', this.handleClose);
+    });
   }
 
   handleClose = (event) => {
@@ -107,16 +136,11 @@ export class TdsModal {
     }
   };
 
-  /** Adds an event listener to the reference element that shows/closes the Modal. */
-  initializeReferenceElement = (referenceEl: HTMLElement) => {
-    if (referenceEl) {
-      referenceEl.addEventListener('click', (event) => {
-        if (this.isShown) {
-          this.handleClose(event);
-        } else {
-          this.handleShow();
-        }
-      });
+  handleReferenceElementClick = (event) => {
+    if (this.isShown) {
+      this.handleClose(event);
+    } else {
+      this.handleShow();
     }
   };
 
@@ -130,12 +154,17 @@ export class TdsModal {
     }
   };
 
+  /** Adds an event listener to the reference element that shows/closes the Modal. */
+  initializeReferenceElement = (referenceEl: HTMLElement) => {
+    if (referenceEl) {
+      referenceEl.addEventListener('click', this.handleReferenceElementClick);
+    }
+  };
+
   /** Adds an event listener to the dismiss buttons that closes the Modal. */
   setDismissButtons() {
     this.host.querySelectorAll('[data-dismiss-modal]').forEach((dismissButton) => {
-      dismissButton.addEventListener('click', (event) => {
-        this.handleClose(event);
-      });
+      dismissButton.addEventListener('click', this.handleClose);
     });
   }
 
@@ -151,7 +180,7 @@ export class TdsModal {
         <div class="tds-modal-backdrop" />
         <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
           <div class="header">
-            {this.header && <div class="header">{this.header}</div>}
+            {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
             <button
               class="tds-modal-close"

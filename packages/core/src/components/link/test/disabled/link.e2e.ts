@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/link/test/disabled/index.html';
 
-test.describe('tds-link-disabled', () => {
+test.describe.parallel('tds-link-disabled', () => {
   test('disabled link is rendered correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const tdsLink = page.getByTestId('tds-link-testid');

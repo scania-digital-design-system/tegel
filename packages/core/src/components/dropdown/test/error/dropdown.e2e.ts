@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/error/index.html';
 
-test.describe('tds-dropdown-error', () => {
+test.describe.parallel('tds-dropdown-error', () => {
   test('renders error dropdown correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const dropdown = page.getByTestId('tds-dropdown-testid');
