@@ -59,10 +59,15 @@ test.describe('tds-datetime-error', () => {
 
     await page.click('input[type="time"]');
 
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
     // Programmatically set the input value to simulate picking a time
     // Note: This value should be in the format the browser expects ('HH:MM'), even though your component will format it differently
     const currentTime = new Date();
-    const formattedTimeValue = `${currentTime.getHours()}:${currentTime.getMinutes()}`;
+    const formattedTimeValue = [
+      currentTime.getHours().toString().padStart(2, '0'),
+      currentTime.getMinutes().toString().padStart(2, '0'),
+    ].join(':');
     await page.locator('input[type="time"]').fill(formattedTimeValue);
 
     const displayedTime = await page.locator('input[type="time"]').inputValue();
