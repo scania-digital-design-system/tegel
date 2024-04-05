@@ -42,8 +42,8 @@ test.describe('tds-datetime-default', () => {
     // Verify the input is indeed focused. This is an indirect test to ensure
     // that actions leading up to the display of the native picker are correctly initiated.
     const inputIsFocused = await page.evaluate(
-      () => document.activeElement.type === 'datetime-local',
-    );
+  () => (document.activeElement as HTMLInputElement).type === 'datetime-local',
+);
     expect(inputIsFocused).toBeTruthy();
   });
 
