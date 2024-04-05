@@ -20,24 +20,6 @@ jobs:
         with:
           ref: develop
 
-      # Extract the current version
-      - name: Extract current version
-        id: current_version
-        run: echo "CURRENT_VERSION=$(jq -r .version packages/core/package.json)" >> $GITHUB_ENV
-
-        # Bump version without committing
-      - name: Bump version
-        id: bump_version
-        run: |
-          NEW_VERSION=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version --prefix packages/core)
-          echo "NEW_VERSION=${NEW_VERSION:1}" >> $GITHUB_ENV  # Remove the 'v' prefix
-
-      # Reference for this pattern: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
-      - name: Create release branch
-        run: |
-          git checkout -b release/tegel@$NEW_VERSION
-          git push -u origin release/tegel@$NEW_VERSION
-
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
@@ -66,6 +48,12 @@ jobs:
         with:
           name: version
           path: packages/core/package.json # assuming the version is saved here
+
+      # Reference for this pattern: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
+      - name: Create release branch
+        run: |
+          git checkout -b release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          git push -u origin release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
