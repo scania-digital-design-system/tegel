@@ -43,6 +43,33 @@ export class TdsHeaderDropdown {
     this.open = !this.open;
   }
 
+  connectedCallback() {
+    // Listen for click events on the default slot's assigned nodes
+    this.host.shadowRoot.addEventListener('slotchange', (event) => {
+      const slot = event.target as HTMLSlotElement;
+      if (slot.name === '') {
+        const slottedElements = slot.assignedElements();
+        slottedElements.forEach((element) => {
+          element.addEventListener('click', this.handleSlottedItemClick);
+        });
+      }
+    });
+  }
+
+  disconnectedCallback() {
+    // Cleanup: Remove event listeners from slotted elements
+    const slot = this.host.shadowRoot.querySelector('slot');
+    const slottedElements = slot.assignedElements();
+    slottedElements.forEach((element) => {
+      element.removeEventListener('click', this.handleSlottedItemClick);
+    });
+  }
+
+  handleSlottedItemClick = () => {
+    // Close the dropdown when a slotted item is clicked
+    this.open = false;
+  };
+
   render() {
     return (
       <Host>
