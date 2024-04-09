@@ -50,7 +50,9 @@ test.describe('tds-datetime-error', () => {
 
     // Check if the time input is focused after clicking the icon
     // This assumes the time input has a specific ID or class you can target
-    const isTimeInputFocused = await page.evaluate(() => document.activeElement.type === 'time');
+     const isTimeInputFocused = await page.evaluate(
+      () => (document.activeElement as HTMLInputElement).type === 'time',
+    );
     expect(isTimeInputFocused).toBeTruthy();
   });
 
