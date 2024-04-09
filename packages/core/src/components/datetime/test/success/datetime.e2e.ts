@@ -14,6 +14,8 @@ test.describe('tds-datetime-success', () => {
   test('component should have size "md"', async ({ page }) => {
     await page.goto(componentTestPath);
     const dateTime = page.locator('tds-datetime');
+    const dateTimeContainer = page.locator('.tds-datetime-container');
+
     // Check for the label text
     const label = page.locator('.tds-datetime-label');
     await expect(label).toBeVisible();
@@ -26,6 +28,9 @@ test.describe('tds-datetime-success', () => {
 
     // For example, checking for the "state" attribute to be "success"
     await expect(dateTime).toHaveAttribute('state', 'success');
+    await expect(dateTimeContainer).toHaveCSS('height', '48px');
     await expect(dateTime).toHaveAttribute('size', 'md');
+    await expect(dateTime).not.toHaveAttribute('min');
+    await expect(dateTime).not.toHaveAttribute('max');
   });
 });

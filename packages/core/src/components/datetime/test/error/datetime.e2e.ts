@@ -19,6 +19,7 @@ test.describe('tds-datetime-error', () => {
     const helperText = page.locator('.tds-datetime-helper .tds-helper');
     const clockIcon = page.locator('tds-icon[name="clock"]');
     const dateTime = page.locator('tds-datetime');
+    const dateTimeContainer = page.locator('.tds-datetime-container');
 
     await expect(label).toBeVisible();
     await expect(label).toHaveText('Label text');
@@ -27,6 +28,9 @@ test.describe('tds-datetime-error', () => {
     await expect(helperText).toHaveText('Helper text');
 
     await expect(dateTime).toHaveAttribute('size', 'md');
+    await expect(dateTimeContainer).toHaveCSS('height', '48px');
+    await expect(dateTime).not.toHaveAttribute('min');
+    await expect(dateTime).not.toHaveAttribute('max');
     await expect(clockIcon).toBeVisible();
   });
 
@@ -50,7 +54,7 @@ test.describe('tds-datetime-error', () => {
 
     // Check if the time input is focused after clicking the icon
     // This assumes the time input has a specific ID or class you can target
-     const isTimeInputFocused = await page.evaluate(
+    const isTimeInputFocused = await page.evaluate(
       () => (document.activeElement as HTMLInputElement).type === 'time',
     );
     expect(isTimeInputFocused).toBeTruthy();

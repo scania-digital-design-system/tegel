@@ -19,10 +19,14 @@ test.describe('tds-datetime-default', () => {
     // Check for the label text
     const label = page.locator('.tds-datetime-label');
     const dateTime = page.locator('tds-datetime');
+    const dateTimeContainer = page.locator('.tds-datetime-container');
     const helperText = page.locator('.tds-datetime-helper .tds-helper');
     const calendarIcon = page.locator('tds-icon[name="calendar"]');
 
     await expect(dateTime).toHaveAttribute('size', 'lg');
+    await expect(dateTimeContainer).toHaveCSS('height', '56px');
+    await expect(dateTime).not.toHaveAttribute('min');
+    await expect(dateTime).not.toHaveAttribute('max');
     await expect(label).toBeVisible();
     await expect(label).toHaveText('Label text');
     await expect(helperText).toBeVisible();
@@ -42,8 +46,8 @@ test.describe('tds-datetime-default', () => {
     // Verify the input is indeed focused. This is an indirect test to ensure
     // that actions leading up to the display of the native picker are correctly initiated.
     const inputIsFocused = await page.evaluate(
-  () => (document.activeElement as HTMLInputElement).type === 'datetime-local',
-);
+      () => (document.activeElement as HTMLInputElement).type === 'datetime-local',
+    );
     expect(inputIsFocused).toBeTruthy();
   });
 
