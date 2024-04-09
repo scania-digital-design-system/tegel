@@ -44,25 +44,25 @@ export class TdsHeaderDropdown {
   }
 
   connectedCallback() {
-    // Listen for click events on the default slot's assigned nodes
-    this.host.shadowRoot.addEventListener('slotchange', (event) => {
-      const slot = event.target as HTMLSlotElement;
-      if (slot.name === '') {
-        const slottedElements = slot.assignedElements();
-        slottedElements.forEach((element) => {
-          element.addEventListener('click', this.handleSlottedItemClick);
-        });
-      }
-    });
+    this.handleSlotChange = this.handleSlotChange.bind(this); // Bind the method to keep the correct context
+    this.host.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
   }
 
   disconnectedCallback() {
-    // Cleanup: Remove event listeners from slotted elements
-    const slot = this.host.shadowRoot.querySelector('slot');
-    const slottedElements = slot.assignedElements();
-    slottedElements.forEach((element) => {
-      element.removeEventListener('click', this.handleSlottedItemClick);
-    });
+    // Ensure to remove the event listener when the component disconnects
+    this.host.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
+  }
+
+  handleSlotChange(event) {
+    const slot = event.target as HTMLSlotElement;
+    if (slot.name === '') {
+      const slottedElements = slot.assignedElements();
+      slottedElements.forEach((element) => {
+        if (element.tagName.toLowerCase() === 'tds-header-dropdown-list') {
+          element.addEventListener('click', this.handleSlottedItemClick);
+        }
+      });
+    }
   }
 
   handleSlottedItemClick = () => {
