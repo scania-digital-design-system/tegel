@@ -73,4 +73,27 @@ test.describe.parallel('tds-dropdown-filter', () => {
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
+
+  test('reset button icon appears when typing in the filter input', async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    const inputElement = page.getByRole('textbox');
+    const resetButton = page.locator('tds-icon[name="cross"]');
+
+    // Ensure the reset button is initially not visible
+    expect(resetButton).toBeHidden();
+
+    // Focus on the input element and start typing
+    await inputElement.click();
+    await inputElement.fill('iles'); // Type something to trigger filter functionality
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+    // Verify that the reset button is now visible
+    await expect(resetButton).toBeVisible();
+
+    // Optionally, click the reset button and assert the input is cleared and the reset button hides again
+    await resetButton.click();
+    await expect(inputElement).toHaveValue(''); // Ensure input is cleared
+    await expect(resetButton).toBeHidden(); // Reset button should hide again after clearing the input
+  });
 });
