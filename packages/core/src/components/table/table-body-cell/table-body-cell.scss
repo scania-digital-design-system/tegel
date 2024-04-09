@@ -16,7 +16,7 @@
 }
 
 :host(.tds-table__body-cell--no-padding) {
-  padding: 0;
+  padding: 0 !important;
 }
 
 :host(.tds-table__body-cell--hover) {
