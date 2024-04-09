@@ -23,7 +23,7 @@ test.describe('tds-tooltip', () => {
 
     await expect(tooltip).toBeVisible();
     // Make sure tooltip is visible first
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.5 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
     const buttonBox = await button.boundingBox();
     // Move the mouse to a position slightly outside the button's bounding box
