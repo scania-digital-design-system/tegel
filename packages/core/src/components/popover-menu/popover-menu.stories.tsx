@@ -94,6 +94,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
+        gap: 200px;
       }
     </style>
 
