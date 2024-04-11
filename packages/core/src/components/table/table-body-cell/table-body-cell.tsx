@@ -104,6 +104,19 @@ export class TdsTableBodyCell {
   }
 
   render() {
+    let paddingStyle = 'var(--tds-spacing-element-16)'; // Default padding
+
+    if (this.disablePadding) {
+      paddingStyle = '0';
+    } else if (this.compactDesign) {
+      paddingStyle = 'var(--tds-spacing-element-8) var(--tds-spacing-element-16)';
+    }
+
+    const dynamicStyles = {
+      textAlign: this.textAlignState,
+      // Conditionally set padding style
+      padding: paddingStyle,
+    };
     return (
       <Host
         class={{
@@ -112,9 +125,8 @@ export class TdsTableBodyCell {
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--no-min-width': this.noMinWidth,
-          'tds-table__body-cell--no-padding': this.disablePadding,
         }}
-        style={{ textAlign: this.textAlignState }}
+        style={dynamicStyles}
       >
         {this.cellValue}
         <slot />
