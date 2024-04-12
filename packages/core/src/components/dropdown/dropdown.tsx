@@ -287,16 +287,12 @@ export class TdsDropdown {
   }
 
   componentWillLoad() {
-    if (this.defaultValue) {
-      this.setDefaultOption();
-    }
+    this.setDefaultOption();
   }
 
   /** Method to handle slot changes */
   private handleSlotChange() {
-    if (this.defaultValue) {
-      this.setDefaultOption();
-    }
+    this.setDefaultOption();
   }
 
   /** Method to check if we should normalize text */
@@ -321,20 +317,26 @@ export class TdsDropdown {
       return;
     }
 
-    Array.from(this.host.children)
-      .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
-      .forEach((element: HTMLTdsDropdownOptionElement) => {
+    if (this.defaultValue) {
+      const children = Array.from(this.host.children).filter(
+        (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
+      );
+      let matched = false;
+
+      children.forEach((element: HTMLTdsDropdownOptionElement) => {
         if (this.multiselect) {
           this.defaultValue.split(',').forEach((value) => {
             if (value === element.value) {
               element.setSelected(true);
               this.value = this.value ? [...this.value, element.value] : [element.value];
+              matched = true;
             }
           });
         } else {
           if (this.defaultValue === element.value) {
             element.setSelected(true);
             this.value = [element.value];
+            matched = true;
           } else {
             element.setSelected(false);
           }
@@ -342,6 +344,13 @@ export class TdsDropdown {
         this.setValueAttribute();
         return element;
       });
+
+      if (!matched) {
+        console.warn(
+          `TDS DROPDOWN: No matching option found for defaultValue "${this.defaultValue}"`,
+        );
+      }
+    }
   };
 
   private selectChildrenAsSelectedBasedOnSelectionProp() {
