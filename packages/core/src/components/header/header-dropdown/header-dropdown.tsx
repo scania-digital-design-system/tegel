@@ -43,31 +43,12 @@ export class TdsHeaderDropdown {
     this.open = !this.open;
   }
 
-  connectedCallback() {
-    this.handleSlotChange = this.handleSlotChange.bind(this); // Bind the method to keep the correct context
-    this.host.shadowRoot.addEventListener('slotchange', this.handleSlotChange);
-  }
-
-  disconnectedCallback() {
-    // Ensure to remove the event listener when the component disconnects
-    this.host.shadowRoot.removeEventListener('slotchange', this.handleSlotChange);
-  }
-
-  handleSlotChange(event) {
-    const slot = event.target as HTMLSlotElement;
-    if (slot.name === '') {
-      const slottedElements = slot.assignedElements();
-      slottedElements.forEach((element) => {
-        if (element.tagName.toLowerCase() === 'tds-header-dropdown-list') {
-          element.addEventListener('click', this.handleSlottedItemClick);
-        }
-      });
+  handleSlottedItemClick = (event: MouseEvent) => {
+    const eventSource = (event.target as HTMLElement).tagName.toLowerCase();
+    if (eventSource === 'a' || eventSource === 'button') {
+      console.log('It is either button or anchor');
+      this.open = false;
     }
-  }
-
-  handleSlottedItemClick = () => {
-    // Close the dropdown when a slotted item is clicked
-    this.open = false;
   };
 
   render() {
@@ -115,7 +96,11 @@ export class TdsHeaderDropdown {
                 },
               ]}
             >
-              {this.open ? <slot></slot> : null}
+              {this.open ? (
+                <span onClick={(e) => this.handleSlottedItemClick(e)}>
+                  <slot></slot>
+                </span>
+              ) : null}
             </tds-popover-canvas>
           )}
         </div>
