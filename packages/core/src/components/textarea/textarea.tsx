@@ -96,8 +96,8 @@ export class TdsTextarea {
 
   // Data input event in value prop
   handleInput(event): void {
-    this.tdsInput.emit(event);
     this.value = event.target.value;
+    this.tdsInput.emit(event);
   }
 
   /** Focus event for the Textarea */
