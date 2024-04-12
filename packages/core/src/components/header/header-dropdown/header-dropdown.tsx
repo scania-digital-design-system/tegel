@@ -46,7 +46,6 @@ export class TdsHeaderDropdown {
   handleSlottedItemClick = (event: MouseEvent) => {
     const eventSource = (event.target as HTMLElement).tagName.toLowerCase();
     if (eventSource === 'a' || eventSource === 'button') {
-      console.log('It is either button or anchor');
       this.open = false;
     }
   };
