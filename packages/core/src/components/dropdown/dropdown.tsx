@@ -315,6 +315,12 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
+    // Ensure this.host.children is not empty
+    if (this.host.children.length === 0) {
+      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
+      return;
+    }
+
     Array.from(this.host.children)
       .filter((element) => element.tagName === 'TDS-DROPDOWN-OPTION')
       .forEach((element: HTMLTdsDropdownOptionElement) => {
