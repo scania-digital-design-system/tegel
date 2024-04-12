@@ -12,6 +12,7 @@ import {
 } from '@stencil/core';
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-popover-core',
@@ -57,14 +58,16 @@ export class TdsPopoverCore {
 
   @State() isShown: boolean = false;
 
+  private uuid: string = generateUniqueId();
+
   /** @internal Show event. */
   @Event({
     eventName: 'internalTdsShow',
     composed: false,
     cancelable: false,
-    bubbles: false,
+    bubbles: true,
   })
-  tdsShow: EventEmitter<{}>;
+  internalTdsShow: EventEmitter<{}>;
 
   /** @internal Close event. */
   @Event({
@@ -73,7 +76,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: false,
   })
-  tdsClose: EventEmitter<{}>;
+  internalTdsClose: EventEmitter<{}>;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
@@ -83,6 +86,14 @@ export class TdsPopoverCore {
       if (isClickOutside) {
         this.setIsShown(false);
       }
+    }
+  }
+
+  @Listen('internalTdsShow', { target: 'window' })
+  onTdsShow(event: Event) {
+    const target = event.target as HTMLElement;
+    if (target.id !== `tds-popover-core-${this.uuid}`) {
+      this.setIsShown(false);
     }
   }
 
@@ -117,9 +128,9 @@ export class TdsPopoverCore {
       this.isShown = isShown;
     }
     if (this.isShown) {
-      this.tdsShow.emit();
+      this.internalTdsShow.emit();
     } else {
-      this.tdsClose.emit();
+      this.internalTdsClose.emit();
     }
   }.bind(this);
 
@@ -233,7 +244,7 @@ export class TdsPopoverCore {
     }
 
     return (
-      <Host style={hostStyle}>
+      <Host style={hostStyle} id={`tds-popover-core-${this.uuid}`}>
         <slot></slot>
       </Host>
     );
