@@ -292,6 +292,13 @@ export class TdsDropdown {
     }
   }
 
+  /** Method to handle slot changes */
+  private handleSlotChange() {
+    if (this.defaultValue) {
+      this.setDefaultOption();
+    }
+  }
+
   /** Method to check if we should normalize text */
   private normalizeString(text: string): string {
     return this.normalizeText ? text.normalize('NFD').replace(/\p{Diacritic}/gu, '') : text;
@@ -613,7 +620,7 @@ export class TdsDropdown {
             ${this.getOpenDirection()}
             ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}`}
         >
-          <slot></slot>
+          <slot onSlotchange={() => this.handleSlotChange()}></slot>
           {this.filterResult === 0 && this.noResultText !== '' && (
             <div class={`no-result ${this.size}`}>{this.noResultText}</div>
           )}
