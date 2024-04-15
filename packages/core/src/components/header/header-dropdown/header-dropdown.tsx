@@ -45,7 +45,7 @@ export class TdsHeaderDropdown {
 
   handleSlottedItemClick = (event: MouseEvent) => {
     const eventSource = (event.target as HTMLElement).tagName.toLowerCase();
-    if (eventSource === 'a' || eventSource === 'button') {
+    if (['a', 'button'].includes(eventSource)) {
       this.open = false;
     }
   };
