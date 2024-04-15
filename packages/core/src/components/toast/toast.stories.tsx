@@ -72,10 +72,10 @@ export default {
   },
   args: {
     variant: 'Information',
-    header: 'Header',
-    subheader: 'Subheader',
+    header: 'Message header',
+    subheader: 'Short subheader',
     actions: `<tds-link slot="actions">
-          <a href="https://tegel.scania.com/home" target="_blank">Tegel</a>
+          <a href="https://tegel.scania.com/home" target="_blank">Link example</a>
       </tds-link>`,
     hidden: false,
     closable: true,
