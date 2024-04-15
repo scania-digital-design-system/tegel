@@ -43,7 +43,7 @@ export class TdsHeaderDropdown {
     this.open = !this.open;
   }
 
-  handleSlottedItemClick = (event: MouseEvent) => {
+  handleSlottedItemClick = (event: MouseEvent | KeyboardEvent) => {
     const eventSource = (event.target as HTMLElement).tagName.toLowerCase();
     if (['a', 'button'].includes(eventSource)) {
       this.open = false;
@@ -96,7 +96,10 @@ export class TdsHeaderDropdown {
               ]}
             >
               {this.open ? (
-                <span onClick={(e) => this.handleSlottedItemClick(e)}>
+                <span
+                  onClick={(e) => this.handleSlottedItemClick(e)}
+                  onKeyDown={(e) => e.key === 'Enter' && this.handleSlottedItemClick(e)}
+                >
                   <slot></slot>
                 </span>
               ) : null}
