@@ -91,9 +91,11 @@ export class TdsPopoverCore {
 
   @Listen('internalTdsShow', { target: 'window' })
   onTdsShow(event: Event) {
-    const target = event.target as HTMLElement;
-    if (target.id !== `tds-popover-core-${this.uuid}`) {
-      this.setIsShown(false);
+    if (this.show === null) {
+      const target = event.target as HTMLElement;
+      if (target.id !== `tds-popover-core-${this.uuid}`) {
+        this.setIsShown(false);
+      }
     }
   }
 
