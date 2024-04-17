@@ -146,6 +146,25 @@ export class TdsDatetime {
     this.tdsChange.emit(e);
   }
 
+  @Listen('keydown')
+  handleKeyDown(e: KeyboardEvent) {
+    const inputElement = e.target as HTMLInputElement;
+    const { type } = inputElement;
+    if (type === 'date' || type === 'datetime-local') {
+      const currentValue = new Date(inputElement.value);
+      const minValue = new Date(this.min);
+      const maxValue = new Date(this.max);
+
+      // Check if the key pressed is an arrow key and prevent the default action if it would result in an invalid date
+      if (
+        (e.key === 'ArrowDown' && currentValue <= minValue) ||
+        (e.key === 'ArrowUp' && currentValue >= maxValue)
+      ) {
+        e.preventDefault();
+      }
+    }
+  }
+
   /** Set the input as focus when clicking the whole Datetime with suffix/prefix */
   handleFocusClick(e: FocusEvent): void {
     this.textInput.focus();
