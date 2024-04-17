@@ -137,46 +137,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
           <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
         </tds-popover-menu-item>
     </tds-popover-menu>
-
-    <tds-popover-menu
-      id="my-popover-menu2"
-      placement="${menuPosLookup[menuPosition]}"
-      ${fluidWidth ? 'fluid-width' : ''}
-      selector="#my-popover-button2"
-      >
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-divider></tds-divider>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
-      fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
-    } </a>
-        </tds-popover-menu-item>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-popover-menu-item disabled>
-          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
-        </tds-popover-menu-item>
-        <tds-divider></tds-divider>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-divider></tds-divider>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-popover-menu-item>
-          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
-        </tds-popover-menu-item>
-    </tds-popover-menu>
+ 
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
     <div class="demo-wrapper">
@@ -185,13 +146,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
       <tds-button aria-label="menu" only-icon id="my-popover-button" type="ghost" size="sm">
         <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
       </tds-button>
-
-         <tds-button aria-label="menu" only-icon id="my-popover-button2" type="ghost" size="sm">
-        <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
-      </tds-button>
     </div>
-    
-    
     `,
   );
 };
