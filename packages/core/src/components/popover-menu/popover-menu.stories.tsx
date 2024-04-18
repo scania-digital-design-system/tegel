@@ -94,6 +94,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         display: flex;
         flex-wrap: nowrap;
         align-items: center;
+        gap: 200px;
       }
     </style>
 
@@ -136,6 +137,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
           <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
         </tds-popover-menu-item>
     </tds-popover-menu>
+ 
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
     <div class="demo-wrapper">
@@ -145,8 +147,6 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
       </tds-button>
     </div>
-    
-    
     `,
   );
 };
