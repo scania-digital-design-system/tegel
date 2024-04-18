@@ -6,11 +6,15 @@ const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion', () => {
   test('renders basic accordion correctly', async ({ page }) => {
+    // Define selector for accordion
     await page.goto(componentTestPath);
     const accordion = page.locator(accordionSelector);
+
+    // Check if accordion contains the correct text
     await expect(accordion).toContainText('First item');
     await expect(accordion).toContainText('Second item');
 
+    // Check screenshot diff to make sure the accordion is rendered correctly
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
@@ -49,10 +53,25 @@ test.describe.parallel('tds-accordion', () => {
   });
 
   test('fires tdsToggle event on click', async ({ page }) => {
+    // Define selector for first accordion item
     await page.goto(componentTestPath);
-    const accordionFirstItem = page.locator('tds-accordion-item[header="First item"]');
+    const accordionFirstItem = page.getByText('First item');
+
+    // Define selector for second accordion item
+    await page.goto(componentTestPath);
+    const accordionSecondItem = page.getByText('Second item');
+
+    // Click first accordion item
     const myEventSpy = await page.spyOnEvent('tdsToggle');
     await accordionFirstItem.click();
+
+    // Expect event to be fired
+    expect(myEventSpy).toHaveReceivedEvent();
+
+    // Click second accordion item
+    await accordionSecondItem.click();
+
+    // Expect event to be fired
     expect(myEventSpy).toHaveReceivedEvent();
   });
 });
