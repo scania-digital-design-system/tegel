@@ -24,7 +24,7 @@
 - **Code Style**: Please read our [Code Style](https://github.com/scania-digital-design-system/tegel/blob/main/CODE_STYLE.md) before contributing.
 
 ## Testing
-- **Running Tests**: Run `npm run test` to run the test suite. It will run a lot of Playwright tests. It might take 15-20 seconds to run all the tests. Test run on commit at the moment. Successful test will enable commiting.
+- **Running Tests**: Run `npm run test` to run the test suite. It will execute numerous Playwright tests and might take 15-20 seconds to complete all the tests. Tests run on commit at the moment. A successful test will enable committing.
 - **Writing Tests**: In case component has been changed or new feature added, please update or write tests for it. We use [Playwright](https://playwright.dev/docs/writing-tests) for writing tests. Also, take a look at existing tests in our components and see how they are written.
 
 
