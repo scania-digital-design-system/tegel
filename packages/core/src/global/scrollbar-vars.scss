@@ -1,0 +1,11 @@
+:root,
+.tds-mode-light {
+  --tds-scrollbar-track-color: var(--tds-grey-50);
+  --tds-scrollbar-thumb-color: var(--tds-grey-500);
+  --tds-scrollbar-hover-thumb-color: var(--tds-grey-600);
+}
+
+.tds-mode-dark {
+  --tds-scrollbar-track-color: var(--tds-grey-868);
+  --tds-scrollbar-thumb-color: var(--tds-grey-700);
+}

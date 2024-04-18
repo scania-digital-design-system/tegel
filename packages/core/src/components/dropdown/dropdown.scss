@@ -3,47 +3,9 @@
 @import './dropdown-filter';
 
 // TODO: Use specific scrollbar styling to begin with instead of common mixin
-// @import '../../mixins/scrollbar';
-@mixin tds-dropdown-scrollbar {
-  &:hover {
-    &::-webkit-scrollbar-thumb {
-      // Decrease the transparent border to widen the thumb
-      border: var(--tds-dropdown-scrollbar-thumb-border-hover-width) solid rgb(0 0 0 / 0%);
-      background-clip: padding-box;
-    }
-  }
-
-  &::-webkit-scrollbar {
-    width: var(--tds-dropdown-scrollbar-width);
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--tds-dropdown-scrollbar-track-color);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 40px;
-    background: var(--tds-dropdown-scrollbar-thumb-color);
-
-    // Since padding does not seem to work we create a transparent border on the thumb
-    border: var(--tds-dropdown-scrollbar-thumb-border-width) solid rgb(0 0 0 / 0%);
-    background-clip: padding-box;
-  }
-
-  &::-webkit-scrollbar-button {
-    height: 0;
-    width: 0;
-  }
-}
+@import '../../mixins/scrollbar';
 
 :host {
-  // Firefox variables
-  --tds-dropdown-scrollbar-width-standard: thin; //  auto | thin | none
-  // Webkit values
-  --tds-dropdown-scrollbar-width: 10px;
-  --tds-dropdown-scrollbar-thumb-border-width: 3px; // => thumb thickness: 4px(10-2*3)
-  --tds-dropdown-scrollbar-thumb-border-hover-width: 2px; // => thumb thickness: 6px(10-2*2)
-
   display: block;
   position: relative;
   font: var(--tds-detail-02);
@@ -171,16 +133,7 @@
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
     border-radius: 0 0 4px 4px;
     overflow-y: auto;
-    @include tds-dropdown-scrollbar;
-
-    // Standard version, not webkit (Firefox only for now)
-    @supports not selector(::-webkit-scrollbar) {
-      scrollbar-color: var(--tds-dropdown-scrollbar-thumb-color)
-        var(--tds-dropdown-scrollbar-track-color);
-
-      // Yes, there is no way to set a specific width
-      scrollbar-width: var(--tds-dropdown-scrollbar-width-standard);
-    }
+    @include tds-scrollbar;
 
     &.lg {
       max-height: 312px;
