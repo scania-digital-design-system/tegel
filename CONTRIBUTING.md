@@ -10,7 +10,7 @@
 - **First-Time Contributors**: We recommend taking a look on the reported [issues](https://github.com/scania-digital-design-system/tegel/issues) here on GitHub. We consider a small bug or improvement a best candidate for first contribution. 
 
 ## Before You Start
-- **Typoe of Contribution**: If contribution is new component or bigger change on existing one, please get in touch with Tegel's designers and developers before to align on the direction.
+- **Type of Contribution**: If the contribution is a new component or a significant change to an existing one, please get in touch with Tegel's designers and developers beforehand to align on the direction.
 - **Check Existing Issues/PRs**: Take a look on the [issues](https://github.com/scania-digital-design-system/tegel/issues) and [pull requests](https://github.com/scania-digital-design-system/tegel/pulls) to see if someone has already started on the same thing.
 
 ## Contribution Process
