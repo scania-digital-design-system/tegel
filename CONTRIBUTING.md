@@ -7,7 +7,7 @@
 
 ## How to Contribute
 - **Types of Contributions**: There are different ways to contribute to the project. You can contribute by writing code, writing documentation, reporting bugs, requesting new features, or providing community support in our [Development support channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support%2520-%2520Tegel?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac).
-- **First-Time Contributors**: We recommend taking a look on the reported [issues](https://github.com/scania-digital-design-system/tegel/issues) here in GitHub. We consider a small bug or improvement a best candidate for first contribution. 
+- **First-Time Contributors**: We recommend taking a look on the reported [issues](https://github.com/scania-digital-design-system/tegel/issues) here on GitHub. We consider a small bug or improvement a best candidate for first contribution. 
 
 ## Before You Start
 - **Typoe of Contribution**: If contribution is new component or bigger change on existing one, please get in touch with Tegel's designers and developers before to align on the direction.
