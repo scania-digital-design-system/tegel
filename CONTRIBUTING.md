@@ -3,7 +3,7 @@
 ## Welcome Section
 - **Introduction**: Welcome dear contributors to the Tegel Design system project. We are very thankful for your interest in contributing.
 
-- **Project Overview**: Aim of Tegel Design system is to provide a set of reusable components that can be used in any project. The project is open-sourced and we welcome contributions from the community.
+- **Project Overview**: The aim of Tegel Design system is to provide a set of reusable components that can be used in any project. The project is open source and we welcome contributions from the community.
 
 ## How to Contribute
 - **Types of Contributions**: There are different ways to contribute to the project. You can contribute by writing code, writing documentation, reporting bugs, requesting new features, or providing community support in our [Development support channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support%2520-%2520Tegel?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac).
