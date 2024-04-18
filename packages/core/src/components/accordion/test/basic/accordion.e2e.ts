@@ -36,6 +36,18 @@ test.describe.parallel('tds-accordion', () => {
     await expect(accordionSecondItem).toHaveCSS('cursor', 'pointer');
   });
 
+  test('second accordion item opens on click', async ({ page }) => {
+    // Define selector for second accordion item
+    await page.goto(componentTestPath);
+    const accordionSecondItem = page.getByText('Second item');
+
+    // Hover second accordion item
+    await accordionSecondItem.click();
+
+    // Check screenshot diff to make sure the second accordion item is open
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
+
   test('fires tdsToggle event on click', async ({ page }) => {
     await page.goto(componentTestPath);
     const accordionFirstItem = page.locator('tds-accordion-item[header="First item"]');
