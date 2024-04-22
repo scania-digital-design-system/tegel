@@ -1,7 +1,7 @@
 # Contribution Guide
 
 ## Welcome Section
-- **Introduction**: Welcome dear contributors to the Tegel Design system project. We are very thankful for your interest in contributing.
+- **Introduction**: Welcome, dear contributors, to the Tegel Design system. We are very thankful for your interest in contributing.
 
 - **Project Overview**: The aim of Tegel Design system is to provide a set of reusable components that can be used in any project. The project is open source and we welcome contributions from the community.
 
