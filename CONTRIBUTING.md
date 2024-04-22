@@ -14,7 +14,7 @@
 - **Check Existing Issues/PRs**: Take a look on the [issues](https://github.com/scania-digital-design-system/tegel/issues) and [pull requests](https://github.com/scania-digital-design-system/tegel/pulls) to see if someone has already started on the same thing.
 
 ## Contribution Process
-- **Repo access**: You can either fork the repo or in case you are Scania employee you can ask for access to the repo as external contributor.
+- **Repo access**: You can either fork the repo or in case you are a Scania employee you can ask for access to the repo as an external contributor.
 - **Setting Up Your Environment**: Check main [README.md](https://github.com/scania-digital-design-system/tegel/blob/main/README.md) for instructions on how to setup the development environment.
 - **Commit Messages**: We use [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/). In case you have not used it so far, type `npm run commit` in your terminal, and an interactive guide will help you formulate the correct message. There is a pre-commit hook that lints the message. We may have strong opinions about commit messages, but they help make our release notes short, informative, and neat.
 - **Pull Request Process**: Please follow the [Pull Request Template](https://github.com/scania-digital-design-system/tegel/blob/main/.github/pull_request_template.md) and fill out all the sections. Provide title of PR according to conventional commits, add reviewers, assign yourself as assignee and add eventual appropriate label that describes the PR.
