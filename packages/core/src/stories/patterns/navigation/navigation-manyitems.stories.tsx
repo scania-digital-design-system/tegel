@@ -122,6 +122,18 @@ const Template = ({ dummyHtml }) =>
           <tds-header-launcher-list-item>
             <a href="https://tegel.scania.com">Groot</a>
           </tds-header-launcher-list-item>
+          <tds-header-launcher-list-item>
+          <a href="https://tegel.scania.com">Groot</a>
+        </tds-header-launcher-list-item>
+        <tds-header-launcher-list-item>
+        <a href="https://tegel.scania.com">Groot</a>
+      </tds-header-launcher-list-item>
+      <tds-header-launcher-list-item>
+      <a href="https://tegel.scania.com">Groot</a>
+    </tds-header-launcher-list-item>
+    <tds-header-launcher-list-item>
+    <a href="https://tegel.scania.com">Groot</a>
+  </tds-header-launcher-list-item>
         </tds-header-launcher-list>
         <tds-header-launcher-list-title>Evil</tds-header-launcher-list-title>
         <tds-header-launcher-list>
@@ -173,6 +185,34 @@ const Template = ({ dummyHtml }) =>
             About us
           </button>
         </tds-side-menu-item>
+
+        <tds-side-menu-item>
+          <button>
+            <tds-icon name="timer" size="24"></tds-icon>
+            Contact
+          </button>
+        </tds-side-menu-item>
+
+        <tds-side-menu-item>
+          <button>
+            <tds-icon name="timer" size="24"></tds-icon>
+            Blog
+          </button>
+        </tds-side-menu-item>
+
+        <tds-side-menu-item>
+        <button>
+          <tds-icon name="timer" size="24"></tds-icon>
+          About us
+        </button>
+      </tds-side-menu-item>
+
+      <tds-side-menu-item>
+        <button>
+          <tds-icon name="timer" size="24"></tds-icon>
+          About us
+        </button>
+      </tds-side-menu-item>
 
         <tds-side-menu-item>
           <a href="https://www.scania.com">
