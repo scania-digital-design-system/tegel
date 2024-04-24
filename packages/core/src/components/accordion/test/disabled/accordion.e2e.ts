@@ -50,7 +50,8 @@ test.describe.parallel('tds-accordion', () => {
     );
 
     // Expect cursor to be pointer
-    await expect(accordionCursorFirstItem).toBe('not-allowed');
+    // Check if selector has "not-allowed" cursor
+    await expect(accordionCursorFirstItem).toHaveCSS('cursor', 'not-allowed');
 
     // Define selector for second accordion item
     await page.goto(componentTestPath);
