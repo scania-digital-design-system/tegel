@@ -49,9 +49,8 @@ test.describe.parallel('tds-accordion', () => {
       (style) => getComputedStyle(style).cursor,
     );
 
-  
     // Check if selector has "not-allowed" cursor
-    await expect(accordionCursorFirstItem).toHaveCSS('cursor', 'not-allowed');
+    await expect(accordionCursorFirstItem).toBe('not-allowed');
 
     // Define selector for second accordion item
     await page.goto(componentTestPath);
@@ -64,7 +63,6 @@ test.describe.parallel('tds-accordion', () => {
     );
 
     // Check if selector has "not-allowed" cursor
-    await expect(accordionCursorSecondItem).toHaveCSS('cursor', 'not-allowed');
     await expect(accordionCursorSecondItem).toBe('not-allowed');
   });
 
