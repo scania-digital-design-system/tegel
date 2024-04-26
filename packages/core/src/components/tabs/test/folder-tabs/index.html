@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Folder tabs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-folder-tabs>
+      <tds-folder-tab>
+        <button>First tab</button>
+      </tds-folder-tab>
+      <tds-folder-tab>
+        <button>Second tab is much longer</button>
+      </tds-folder-tab>
+      <tds-folder-tab>
+        <button>Third tab</button>
+      </tds-folder-tab>
+      <tds-folder-tab disabled>
+        <button>Fourth tab</button>
+      </tds-folder-tab>
+    </tds-folder-tabs>
+  </body>
+</html>
