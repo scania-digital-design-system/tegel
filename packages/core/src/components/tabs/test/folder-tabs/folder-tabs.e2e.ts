@@ -102,7 +102,7 @@ test.describe.parallel('tds-folder-tabs', () => {
     await expect(folderTabs).toHaveAttribute('selected-index', '2', { timeout: 5000 });
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
-    // Check if the second tab now has the 'selected' class
+    // Check if the third tab now has the 'selected' class
     await expect(secondTab).not.toHaveClass(/selected/);
     await expect(thirdTab).toHaveClass(/selected/);
   });
