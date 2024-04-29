@@ -62,7 +62,7 @@ test.describe.parallel('tds-inline-tabs', () => {
     await expect(thirdTab).toHaveCSS('cursor', 'pointer');
   });
 
-  test('Hover over Fourth tab changes cursor to pointer', async ({ page }) => {
+  test('Hover over Fourth tab changes cursor to not-allowed', async ({ page }) => {
     const fourthTab = page.locator('button', { hasText: 'Fourth Tab' });
     await fourthTab.hover();
     await expect(fourthTab).toHaveCSS('cursor', 'not-allowed');
