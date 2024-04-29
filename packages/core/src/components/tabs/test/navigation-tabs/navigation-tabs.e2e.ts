@@ -94,7 +94,7 @@ test.describe.parallel('tds-navigation-tabs', () => {
   test('Click on Third tab selects it and updates selected-index', async ({ page }) => {
     const navigationTabs = page.locator('tds-navigation-tabs');
 
-    // Locate the second tab and the div inside it
+    // Locate the third tab and the div inside it
     const secondTab = page.locator(
       'tds-navigation-tab:has-text("Second tab is much longer") >> div',
     );
