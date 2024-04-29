@@ -98,7 +98,7 @@ test.describe.parallel('tds-folder-tabs', () => {
     // Click on the second tab
     await thirdTab.click({ force: true });
 
-    // Assert that the 'selected-index' is now '1'
+    // Assert that the 'selected-index' is now '2'
     await expect(folderTabs).toHaveAttribute('selected-index', '2', { timeout: 5000 });
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
