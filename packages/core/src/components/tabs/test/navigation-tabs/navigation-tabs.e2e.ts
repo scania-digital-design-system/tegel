@@ -99,7 +99,7 @@ test.describe.parallel('tds-navigation-tabs', () => {
       'tds-navigation-tab:has-text("Second tab is much longer") >> div',
     );
     const thirdTab = page.locator('tds-navigation-tab:has-text("Third tab") >> div');
-    // Click on the second tab
+    // Click on the third tab
     await thirdTab.click({ force: true });
 
     // Assert that the 'selected-index' is now '1'
