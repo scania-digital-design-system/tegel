@@ -98,7 +98,7 @@ test.describe.parallel('tds-inline-tabs', () => {
     // Click on the third tab
     await thirdTab.click({ force: true });
 
-    // Assert that the 'selected-index' is now '1'
+    // Assert that the 'selected-index' is now '2'
     await expect(inlineTabs).toHaveAttribute('selected-index', '2', { timeout: 5000 });
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
