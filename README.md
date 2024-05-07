@@ -31,7 +31,16 @@ The website also includes information on browser support.
 
 ## Contributing
 
-We warmly welcome [contributions](https://github.com/scania-digital-design-system/tegel/issues) from the community! Whether you're fixing bugs, adding new features, or improving documentation, your help is invaluable to us. If you're interested in contributing to the code, have a look at the code conventions listed below to get started.
+We warmly welcome contributions from the community! Whether you're fixing bugs, adding new features, improving documentation, or just have questions, your help and questions are invaluable to us. Here's how you can get involved:
+
+- **Report Bugs or Request Features**: Use the [Issues](https://github.com/scania-digital-design-system/tegel/issues) page to report bugs or request new features.
+- **Submit Pull Requests**: Feel free to submit PRs for bug fixes, feature implementations, or documentation updates. Please refer to our [Contribution Guidelines](https://github.com/scania-digital-design-system/tegel/blob/main/CONTRIBUTING.md) for more details on submitting PRs.
+- **Code Conventions**: Our code conventions are documented [here](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md). Please make sure your contributions adhere to these guidelines.
+- **Setting Up Development Environment**: Follow the steps outlined above to set up your development environment. If you're contributing code, make sure to run tests and adhere to the coding standards mentioned.
+- **First-Time Contributors**: If you're new to open source, have a look at the reported [issues](https://github.com/scania-digital-design-system/tegel/issues) and see if there is something you can help out with. If you find something, assign your name to it and add a comment to keep everyone updated on its status. 
+- **Questions or Discussions**: Join our [Teams](https://teams.microsoft.com/l/team/19%3a1257007a64d44c64954acca27a9d4b46%40thread.skype/conversations?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac) channel for discussions, questions, or getting in touch with the team and community.
+
+Your contributions, big or small, make a significant impact on the project. Thank you for your support!
 
 ### Code conventions
 
@@ -40,15 +49,16 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 ### Setting up the development environment
 
 1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 20 at the time of writing).
-2. Run `npm install` in the root directory.
-3. Run `npm install` in the `packages/core` directory.
-4. Create a `.env` file in the root directory with the following contents:
+2. Make sure you have Docker installed. It is needed for running unit tests.
+3. Run `npm install` in the root directory.
+4. Run `npm install` in the `packages/core` directory.
+5. Development version of Storybook with additional plugins and beta components can be activated by setting the environment variable `STORYBOOK_ENV` to `dev` in the same terminal where you run rest of the commands.
 
 ```
-STORYBOOK_ENV=dev
+export STORYBOOK_ENV=dev
 ```
 
-5. Make sure you are in the root directory, and start the dev server with `npm run start`.
+6. Make sure you are in the root directory, and start the dev server with `npm run start`.
  - *Alternatively navigate to `packages/core` and start the dev server with `npm run storybook`*
 
 ## Community
@@ -60,3 +70,4 @@ Get in touch with the team and the community:
 ## License
 
 All CSS, HTML and JS code are available under the MIT license. The Scania brand identity, logos and photographs found in this repository are copyrighted Scania CV AB and are not available on an open source basis or to be used as examples or in any other way, if not specifically ordered by Scania CV AB.
+

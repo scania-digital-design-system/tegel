@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Navigation tabs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-navigation-tabs>
+      <tds-navigation-tab>
+        <button>First tab</button>
+      </tds-navigation-tab>
+      <tds-navigation-tab>
+        <button>Second tab is much longer</button>
+      </tds-navigation-tab>
+      <tds-navigation-tab>
+        <button>Third tab</button>
+      </tds-navigation-tab>
+      <tds-navigation-tab disabled>
+        <button>Fourth tab</button>
+      </tds-navigation-tab>
+    </tds-navigation-tabs>
+  </body>
+</html>
