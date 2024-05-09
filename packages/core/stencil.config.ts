@@ -18,6 +18,12 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
     type: 'boolean',
   },
   {
+    elementSelectors: ['tds-toggle'],
+    event: 'tdsToggle',
+    targetAttr: 'checked',
+    type: 'boolean',
+  },
+  {
     elementSelectors: ['tds-text-field', 'tds-textarea', 'tds-datetime'],
     event: 'tdsInput',
     targetAttr: 'value',
