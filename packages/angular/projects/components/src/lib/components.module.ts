@@ -4,7 +4,7 @@ import { defineCustomElements } from '@scania/tegel/loader';
 import { TextValueAccessor } from './stencil-generated/text-value-accessor';
 import { BooleanValueAccessor } from './stencil-generated/boolean-value-accessor';
 import { NumericValueAccessor } from './stencil-generated/number-value-accessor';
-import { RadioValueAccessor } from './stencil-generated/radio-value-accessor';
+import { TdsRadioValueAccessor } from './directives/tds-radio-value-accessor';
 import { TdsDropdownValueAccessor } from './directives/tds-dropdown-value-accessor';
 
 @NgModule({
@@ -12,16 +12,16 @@ import { TdsDropdownValueAccessor } from './directives/tds-dropdown-value-access
     ...DIRECTIVES,
     BooleanValueAccessor,
     NumericValueAccessor,
-    RadioValueAccessor,
     TextValueAccessor,
+    TdsRadioValueAccessor,
     TdsDropdownValueAccessor,
   ],
   exports: [
     ...DIRECTIVES,
     BooleanValueAccessor,
     NumericValueAccessor,
-    RadioValueAccessor,
     TextValueAccessor,
+    TdsRadioValueAccessor,
     TdsDropdownValueAccessor,
   ],
   providers: [
