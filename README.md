@@ -34,7 +34,7 @@ The website also includes information on browser support.
 We warmly welcome contributions from the community! Whether you're fixing bugs, adding new features, improving documentation, or just have questions, your help and questions are invaluable to us. Here's how you can get involved:
 
 - **Report Bugs or Request Features**: Use the [Issues](https://github.com/scania-digital-design-system/tegel/issues) page to report bugs or request new features.
-- **Submit Pull Requests**: Feel free to submit PRs for bug fixes, feature implementations, or documentation updates. Please refer to our [Contribution Guidelines](https://github.com/scania-digital-design-system/tegel/blob/main/CONTRIBUTING.md) for more details on submitting PRs.
+- **Submit Pull Requests**: Feel free to submit PRs for bug fixes, feature implementations, or documentation updates. Please refer to our [Contribution Guidelines](https://github.com/scania-digital-design-system/tegel/blob/develop/CONTRIBUTING.md) for more details on submitting PRs.
 - **Code Conventions**: Our code conventions are documented [here](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md). Please make sure your contributions adhere to these guidelines.
 - **Setting Up Development Environment**: Follow the steps outlined above to set up your development environment. If you're contributing code, make sure to run tests and adhere to the coding standards mentioned.
 - **First-Time Contributors**: If you're new to open source, have a look at the reported [issues](https://github.com/scania-digital-design-system/tegel/issues) and see if there is something you can help out with. If you find something, assign your name to it and add a comment to keep everyone updated on its status. 
