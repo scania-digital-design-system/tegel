@@ -32,7 +32,8 @@ export class TdsTableBodyRowExpandable {
    *  Take in mind that expandable control is column too */
   @Prop() colSpan: number = null;
 
-  @State() isExpanded: boolean = false;
+  /** Sets isExpanded state to true or false */
+  @Prop({ mutable: true }) isExpanded: boolean = false;
 
   @State() tableId: string = '';
 

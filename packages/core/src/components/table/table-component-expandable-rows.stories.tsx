@@ -48,6 +48,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    expandRow: {
+      name: 'Expand row',
+      description: 'Expands row by default. For demo purpose expand first row.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     responsiveDesign: {
       name: 'Responsive Table',
       description:
@@ -117,6 +127,7 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
+    expandRow: false,
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -130,6 +141,7 @@ export default {
 const ExpandableRowTemplate = ({
   modeVariant,
   compactDesign,
+  expandRow,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -162,7 +174,9 @@ const ExpandableRowTemplate = ({
           }></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-        <tds-table-body-row-expandable>
+        <tds-table-body-row-expandable isExpanded=${expandRow} class="${
+    expandRow && 'tds-table__row-expand--active'
+  }">
           <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>

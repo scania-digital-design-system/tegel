@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property  | Attribute  | Description                                                                                                                               | Type     | Default |
-| --------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| `colSpan` | `col-span` | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number` | `null`  |
+| Property     | Attribute     | Description                                                                                                                               | Type      | Default |
+| ------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
+| `colSpan`    | `col-span`    | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number`  | `null`  |
+| `isExpanded` | `is-expanded` | Sets isExpanded state to true or false                                                                                                    | `boolean` | `false` |
 
 
 ## Slots
