@@ -1,15 +1,50 @@
 @mixin tds-scrollbar {
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      border: var(--tds-scrollbar-thumb-border-hover-width) solid transparent;
+      background: var(--tds-scrollbar-hover-thumb-color);
+      background-clip: padding-box;
+    }
+  }
+
   &::-webkit-scrollbar {
-    width: 4px;
-    background-color: inherit;
+    width: var(--tds-scrollbar-width);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--tds-grey-300);
+    border-radius: 40px;
+    background: var(--tds-scrollbar-thumb-color);
+    border: var(--tds-scrollbar-thumb-border-width) solid transparent;
+    background-clip: padding-box;
   }
 
-  ::-webkit-scrollbar-button {
+  &::-webkit-scrollbar-button {
     height: 0;
     width: 0;
   }
+
+  // Standard version, not webkit (Firefox only for now)
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-color: var(--tds-scrollbar-thumb-color) var(--tds-scrollbar-track-color);
+
+    // Yes, there is no way to set a specific width
+    scrollbar-width: var(--tds-scrollbar-width-standard);
+  }
+}
+
+:host {
+  // Firefox variables
+  --tds-scrollbar-width-standard: thin; //  auto | thin | none
+  // Webkit values
+  --tds-scrollbar-width: 10px;
+  --tds-scrollbar-thumb-border-width: 3px; // => thumb thickness: 4px(10-2*3)
+  --tds-scrollbar-thumb-border-hover-width: 2px; // => thumb thickness: 6px(10-2*2)
+}
+
+body {
+  scrollbar-width: thin;
 }
