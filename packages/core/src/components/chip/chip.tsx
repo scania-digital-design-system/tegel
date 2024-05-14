@@ -38,6 +38,9 @@ export class TdsChip {
   /** Value of input. Valid only for type checkbox and radio. */
   @Prop() value: string;
 
+  /** Sets the Chiop in a disabled state */
+  @Prop() disabled: boolean = false;
+
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked).
    * Valid only for type checkbox and radio.
    * If no ID is specified, a random one will be generated.
@@ -55,21 +58,22 @@ export class TdsChip {
   }>;
 
   private handleChange = () => {
-    if (this.type === 'checkbox') {
-      // Toggle the prop on click
-      this.checked = !this.checked;
-    } else if (this.type === 'radio') {
-      // Always set it to true to enforce visual update for selected state
-      this.checked = true;
-    } else {
-      console.error('Unsupported type in Chip component!');
-    }
+    if (!this.disabled) {
+      // Only proceed if not disabled
+      if (this.type === 'checkbox') {
+        this.checked = !this.checked;
+      } else if (this.type === 'radio') {
+        this.checked = true;
+      } else {
+        console.error('Unsupported type in Chip component!');
+      }
 
-    this.tdsChange.emit({
-      chipId: this.chipId,
-      checked: this.checked,
-      value: this.value,
-    });
+      this.tdsChange.emit({
+        chipId: this.chipId,
+        checked: this.checked,
+        value: this.value,
+      });
+    }
   };
 
   /** Sends unique Chip identifier when Chip is clicked.
@@ -87,14 +91,22 @@ export class TdsChip {
   }>;
 
   private handleClick = () => {
-    this.tdsClick.emit({
-      chipId: this.chipId,
-    });
+    if (!this.disabled) {
+      // Only proceed if not disabled
+      this.tdsClick.emit({
+        chipId: this.chipId,
+      });
+    }
   };
 
   private renderInputAttributes() {
+    const commonAttributes = {
+      disabled: this.disabled, // Adding disabled attribute
+    };
+
     if (this.type !== 'button') {
       return {
+        ...commonAttributes,
         value: this.value,
         checked: this.checked,
         name: this.name,
@@ -102,6 +114,7 @@ export class TdsChip {
       };
     }
     return {
+      ...commonAttributes,
       onClick: () => this.handleClick(),
     };
   }
@@ -122,6 +135,7 @@ export class TdsChip {
               'lg': this.size === 'lg',
               'prefix': hasPrefixSlot,
               'suffix': hasSuffixSlot,
+              'disabled': this.disabled, // Apply the disabled class conditionally
             }}
           >
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>

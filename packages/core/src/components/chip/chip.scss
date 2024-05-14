@@ -34,6 +34,19 @@
       }
     }
 
+    &.disabled {
+      label {
+        background-color: var(--tds-chips-background-disabled);
+        color: var(--tds-chips-text-disabled);
+        cursor: default;
+        pointer-events: none;
+      }
+
+      input {
+        pointer-events: none; // Ensure input does not respond to interactions
+      }
+    }
+
     &.lg {
       label {
         height: 32px;
@@ -106,5 +119,37 @@
         background-color: var(--tds-chips-background-active-hover);
       }
     }
+
+    &.radio {
+      &.disabled {
+        input:checked + label {
+          background-color: var(--tds-blue-500); /* Differentiate color for disabled and checked */
+          color: var(--tds-white);
+        }
+      }
+    }
+
+    input:checked.disabled + label {
+      background-color: var(--tds-blue-500);
+      color: var(--tds-white-38);
+    }
+
+    input[type='checkbox']:checked:disabled + label {
+      background-color: var(--tds-blue-500);
+      color: var(--tds-white-38);
+    }
+
+    input[type='radio']:checked:disabled + label {
+      background-color: var(--tds-blue-500);
+      color: var(--tds-white-38);
+
+      &.tds-chip-component.disabled + label {
+        background-color: var(--tds-blue-500) !important;
+      }
+    }
+  }
+
+  &.tds-chip-component:disabled input[type='radio']:checked:disabled + label {
+    background-color: var(--tds-blue-500) !important;
   }
 }

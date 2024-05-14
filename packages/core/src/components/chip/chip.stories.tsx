@@ -80,7 +80,6 @@ export default {
       },
       table: {
         // TODO: Remove line below after we make design for disabled state, it hides control
-        disable: true,
         defaultValue: { summary: false },
       },
     },
@@ -95,16 +94,18 @@ export default {
   },
 };
 
-const Template = ({ inputType, size, label, icon, iconPosition }) => {
+const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
   const sizeLookUp = {
     Large: 'lg',
     Small: 'sm',
   };
 
+  const disabledAttribute = disabled ? ' disabled' : '';
+
   return formatHtmlPreview(`
   ${
     inputType === 'Button'
-      ? `<tds-chip type="button" size="${sizeLookUp[size]}">        
+      ? `<tds-chip type="button" size="${sizeLookUp[size]}"${disabledAttribute}>        
             ${
               icon && iconPosition === 'Prefix'
                 ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
@@ -139,7 +140,9 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
     </style>
 
     <div class="demo-wrapper">
-      <tds-chip type="checkbox" size="${sizeLookUp[size]}" checked value="checkbox-1-value">        
+      <tds-chip type="checkbox" size="${
+        sizeLookUp[size]
+      }" checked ${disabledAttribute} value="checkbox-1-value">        
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="heart" size="16px"></tds-icon>'
@@ -205,7 +208,9 @@ const Template = ({ inputType, size, label, icon, iconPosition }) => {
     </style>
 
     <div class="demo-wrapper">
-      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-1-value">
+      <tds-chip name="test" type="radio" size="${
+        sizeLookUp[size]
+      }" value="radio-1-value"${disabledAttribute}>
         ${
           icon && iconPosition === 'Prefix'
             ? '<tds-icon slot="prefix" name="sorting" size="16px"></tds-icon>'
