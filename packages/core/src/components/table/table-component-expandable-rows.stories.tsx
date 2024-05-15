@@ -48,9 +48,9 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    expandRow: {
-      name: 'Expand row',
-      description: 'Expands row by default. For demo purpose expand first row.',
+    defaultExpanded: {
+      name: 'Default expanded',
+      description: 'Expands row by default. For demo purpose expand first row only.',
       control: {
         type: 'boolean',
       },
@@ -127,7 +127,7 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
-    expandRow: false,
+    defaultExpanded: false,
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -141,7 +141,7 @@ export default {
 const ExpandableRowTemplate = ({
   modeVariant,
   compactDesign,
-  expandRow,
+  defaultExpanded,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -174,16 +174,14 @@ const ExpandableRowTemplate = ({
           }></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-        <tds-table-body-row-expandable isExpanded=${expandRow} class="${
-    expandRow && 'tds-table__row-expand--active'
-  }">
+        <tds-table-body-row-expandable default-expanded=${defaultExpanded} row-id="1">
           <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row">Hello world 1</div>
         </tds-table-body-row-expandable>
-         <tds-table-body-row-expandable>
+         <tds-table-body-row-expandable row-id="2">
           <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
@@ -198,6 +196,20 @@ const ExpandableRowTemplate = ({
           <div slot="expand-row"><tds-button type="primary" text="Call to action"></tds-button></div>
         </tds-table-body-row-expandable>
       </tds-table-body>
-  </tds-table>`);
+  </tds-table>
+
+  <!-- Script for demo purposes. -->
+  <script>
+
+  tableRowElementAll = document.querySelectorAll("tds-table-body-row-expandable");
+ 
+  for (let i = 0; i < tableRowElementAll.length; i++) {
+    tableRowElementAll[i].addEventListener("tdsChange", (event) => {
+      console.log("Row with id: ", event.detail.rowId, " is ", event.detail.checked);
+    });
+  }
+
+</script>
+  `);
 
 export const ExpandableRows = ExpandableRowTemplate.bind({});
