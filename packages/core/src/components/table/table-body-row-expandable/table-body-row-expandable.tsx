@@ -89,7 +89,7 @@ export class TdsTableBodyRowExpandable {
   })
   tdsChange: EventEmitter<{
     rowId: string;
-    checked: boolean;
+    isExpanded: boolean;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -132,7 +132,7 @@ export class TdsTableBodyRowExpandable {
 
   sendValue() {
     this.internalTdsRowExpanded.emit([this.tableId, this.isExpanded]);
-    this.tdsChange.emit({ rowId: this.rowId, checked: this.isExpanded });
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
   }
 
   onChangeHandler(event) {

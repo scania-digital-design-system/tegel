@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event       | Description                                                                        | Type                                                |
-| ----------- | ---------------------------------------------------------------------------------- | --------------------------------------------------- |
-| `tdsChange` | Sends unique table row identifier and checked status when it is checked/unchecked. | `CustomEvent<{ rowId: string; checked: boolean; }>` |
+| Event       | Description                                                                        | Type                                                   |
+| ----------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| `tdsChange` | Sends unique table row identifier and checked status when it is checked/unchecked. | `CustomEvent<{ rowId: string; isExpanded: boolean; }>` |
 
 
 ## Methods
