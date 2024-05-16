@@ -192,6 +192,11 @@ const defaultOptionLookUp = {
   'Option 2': 'option-2',
   'Option 3': 'option-3',
   'Option 4': 'option-4',
+  'Option 5': 'option-5',
+  'Option 6': 'option-6',
+  'Option 7': 'option-7',
+  'Option 8': 'option-8',
+  'Option 9': 'option-9',
   'îles Åland': 'iles-aland',
 };
 
@@ -271,6 +276,18 @@ const Template = ({
             </tds-dropdown-option>
             <tds-dropdown-option value="option-4">
               Option 4
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-5">
+              Option 5
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-6">
+              Option 6
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-7">
+              Option 7
+            </tds-dropdown-option>
+            <tds-dropdown-option value="option-8">
+              Option 8
             </tds-dropdown-option>
             <tds-dropdown-option value="iles-aland">
               îles Åland

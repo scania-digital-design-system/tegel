@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inline tabs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-inline-tabs>
+      <tds-inline-tab>
+        <button>First tab</button>
+      </tds-inline-tab>
+      <tds-inline-tab>
+        <button>Second tab is much longer</button>
+      </tds-inline-tab>
+      <tds-inline-tab>
+        <button>Third tab</button>
+      </tds-inline-tab>
+      <tds-inline-tab disabled>
+        <button>Fourth tab</button>
+      </tds-inline-tab>
+    </tds-inline-tabs>
+  </body>
+</html>
