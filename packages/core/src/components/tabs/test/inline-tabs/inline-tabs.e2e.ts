@@ -33,9 +33,7 @@ test.describe.parallel('tds-inline-tabs', () => {
     await expect(inlineTabs.page()).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('selected tab index should be 0', async ({ page }) => {
-    await page.waitForChanges();
-
+  test('selected tab index should be 0', async () => {
     const selectedIndex = await inlineTabs.getAttribute('selected-index');
     expect(selectedIndex).toBe('0');
   });

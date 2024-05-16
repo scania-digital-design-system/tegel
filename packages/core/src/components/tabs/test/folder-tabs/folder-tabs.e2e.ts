@@ -33,9 +33,7 @@ test.describe.parallel('tds-folder-tabs', () => {
     await expect(folderTabs.page()).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('selected tab index should be 0', async ({ page }) => {
-    await page.waitForChanges();
-
+  test('selected tab index should be 0', async () => {
     const selectedIndex = await folderTabs.getAttribute('selected-index');
     expect(selectedIndex).toBe('0');
   });
