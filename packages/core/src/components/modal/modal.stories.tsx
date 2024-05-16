@@ -91,7 +91,7 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) => 
+const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) =>
   formatHtmlPreview(`
     <!-- The button below is just for demo purposes -->
     <tds-button id="my-modal-button" text="Open Modal"></tds-button>
@@ -120,7 +120,6 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       console.log(event)
     })
   </script>
-  `,
-  );
+  `);
 
 export const Default = ModalTemplate.bind({});

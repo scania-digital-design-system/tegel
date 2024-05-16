@@ -1,7 +1,7 @@
 @import '../../mixins/z-index';
-@import '../../mixins/scrollbar';
 @import './dropdown-button';
 @import './dropdown-filter';
+@import '../../mixins/scrollbar';
 
 :host {
   display: block;
