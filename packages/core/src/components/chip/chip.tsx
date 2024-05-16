@@ -125,19 +125,19 @@ export class TdsChip {
     const hasLabelSlot = hasSlot('label', this.host);
     const hasSuffixSlot = hasSlot('suffix', this.host);
 
+    const chipClasses = {
+      'tds-chip-component': true,
+      'sm': this.size === 'sm',
+      'lg': this.size === 'lg',
+      'prefix': hasPrefixSlot,
+      'suffix': hasSuffixSlot,
+      'disabled': this.disabled,
+    };
+
     return (
       <Host>
         <div class="component">
-          <div
-            class={{
-              'tds-chip-component': true,
-              'sm': this.size === 'sm',
-              'lg': this.size === 'lg',
-              'prefix': hasPrefixSlot,
-              'suffix': hasSuffixSlot,
-              'disabled': this.disabled, // Apply the disabled class conditionally
-            }}
-          >
+          <div class={chipClasses}>
             <input type={this.type} id={this.chipId} {...inputAttributes}></input>
             <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
               {hasPrefixSlot && <slot name="prefix" />}
