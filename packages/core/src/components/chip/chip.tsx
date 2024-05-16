@@ -38,7 +38,7 @@ export class TdsChip {
   /** Value of input. Valid only for type checkbox and radio. */
   @Prop() value: string;
 
-  /** Sets the Chiop in a disabled state */
+  /** Sets the Chip in a disabled state */
   @Prop() disabled: boolean = false;
 
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked).
