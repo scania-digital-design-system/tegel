@@ -1,7 +1,6 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
 @import '../../mixins/focus-state';
-@import '../link/link-vars';
 
 :host(.hide) {
   display: none;

@@ -1,22 +1,24 @@
-**Describe pull-request**  
+## **Describe pull-request**  
 _Describe what the pull-request is about_
 
-**Solving issue**  
-_Please link to the issue this pull request is solving by adding ticket number after CDEP-_
-Fixes: [CDEP-](https://tegel.atlassian.net/browse/CDEP-)
+## **Issue Linking:**  
+_Choose one of the following options_
+- **Jira:** Add ticket number after `CDEP-`: [CDEP-](https://tegel.atlassian.net/browse/CDEP-)    
+- **GitHub:** Include issue link  
+- **No issue:** Describe the problem being solved.  
 
-**How to test**  
+## **How to test**  
 _Provide detailed steps for testing, including any necessary setup._
 1. Go to...
 2. Check in...
 3. Run ...
 
-**Checklist before submission**
+## **Checklist before submission**
 - [ ] I have added unit tests for my changes (if applicable)
 - [ ] All existing tests pass
 - [ ] I have updated the documentation (if applicable)
 
-**Suggested test steps**
+## **Suggested test steps**
 - [ ] Browser testing (Chrome, Safari, Firefox) 
 - [ ] Keyboard operability
 - [ ] Interactive elements have labels.
@@ -26,8 +28,8 @@ _Provide detailed steps for testing, including any necessary setup._
 - [ ] Input fields – values should be displayed properly 
 - [ ] Events
 
-**Screenshots**  
+## **Screenshots**  
 _Include before/after screenshots for UI changes._
 
-**Additional context**  
+## **Additional context**  
 _Add any other context or feedback requests about the pull-request here._
