@@ -11,7 +11,7 @@
 | ------------- | -------------- | ------------------------------------------------------------------------------------------ | --------- | ----------- |
 | `buttonLabel` | `button-label` | The label of the button that opens the dropdown. This is an alternative to the label slot. | `string`  | `undefined` |
 | `defaultOpen` | `default-open` | If the dropdown should be open from the start.                                             | `boolean` | `false`     |
-| `open`        | `open`         | Used to programatically toggle dropdown.                                                   | `boolean` | `false`     |
+| `open`        | `open`         | Toggle open state programmatically                                                         | `boolean` | `false`     |
 | `selected`    | `selected`     | If the button that opens the dropdown should appear selected.                              | `boolean` | `false`     |
 
 
