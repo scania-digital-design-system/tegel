@@ -38,7 +38,7 @@ export class TdsTableBodyRowExpandable {
   @Prop() defaultExpanded: boolean;
 
   /** ID for the table row. Randomly generated if not specified. */
-  @Prop() rowId: string = generateUniqueId();
+  @Prop({ reflect: true }) rowId: string = generateUniqueId();
 
   /** Sets isExpanded state to true or false */
   @State() isExpanded: boolean = false;
