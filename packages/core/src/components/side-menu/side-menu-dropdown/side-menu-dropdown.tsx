@@ -24,7 +24,8 @@ export class TdsSideMenuDropdown {
   /** If the button that opens the dropdown should appear selected. */
   @Prop() selected: boolean = false;
 
-  @State() open: boolean = false;
+  /** Toggle open state programmatically */
+  @Prop() open: boolean = false;
 
   @State() hoverState: { isHovered: boolean; updatedAt: number };
 
