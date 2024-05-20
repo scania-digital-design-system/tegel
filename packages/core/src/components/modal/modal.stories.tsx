@@ -72,6 +72,13 @@ export default {
         type: 'boolean',
       },
     },
+    closable: {
+      name: 'Closable',
+      description: 'Controls visibility of the close button.',
+      control: {
+        type: 'boolean',
+      },
+    },
   },
   args: {
     actionsPosition: 'Static',
@@ -81,6 +88,7 @@ export default {
       '“I beg your pardon, Dr. Lanyon,” he replied civilly enough. “What you say is very well founded; and my impatience has shown its heels to my politeness. I come here at the instance of your colleague, Dr. Henry Jekyll, on a piece of business of some moment; and I understood...”',
     showModal: true,
     prevent: false,
+    closable: true,
   },
 };
 
@@ -91,7 +99,15 @@ const sizeLookUp = {
   'Extra small': 'xs',
 };
 
-const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, prevent }) =>
+const ModalTemplate = ({
+  actionsPosition,
+  size,
+  headerText,
+  bodyContent,
+  showModal,
+  prevent,
+  closable,
+}) =>
   formatHtmlPreview(`
     <!-- The button below is just for demo purposes -->
     <tds-button id="my-modal-button" text="Open Modal"></tds-button>
@@ -103,6 +119,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       id="my-modal" size="${sizeLookUp[size]}" 
       actions-position="${actionsPosition.toLowerCase()}"
       prevent="${prevent}"
+      closable="${closable ? 'true' : 'false'}"
     >
       <span slot="body">
         ${bodyContent}

@@ -46,6 +46,9 @@ export class TdsModal {
    * will be decided by this prop and will need to be controlled from the outside. */
   @Prop() show: boolean;
 
+  /** Enables the close button. */
+  @Prop() closable: boolean = true;
+
   // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
 
@@ -182,13 +185,16 @@ export class TdsModal {
           <div class="header">
             {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
-            <button
-              class="tds-modal-close"
-              aria-label="close"
-              onClick={(event) => this.handleClose(event)}
-            >
-              <tds-icon name="cross" size="20px" />
-            </button>
+
+            {this.closable && (
+              <button
+                class="tds-modal-close"
+                aria-label="close"
+                onClick={(event) => this.handleClose(event)}
+              >
+                <tds-icon name="cross" size="20px" />
+              </button>
+            )}
           </div>
 
           <div class="body">
