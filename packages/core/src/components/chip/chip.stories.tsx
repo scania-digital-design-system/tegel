@@ -94,14 +94,14 @@ export default {
   },
 };
 
-const Template = ({ inputType, size, label, icon, iconPosition, disabled, checked }) => {
+const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
   const sizeLookUp = {
     Large: 'lg',
     Small: 'sm',
   };
 
   const disabledAttribute = disabled ? ' disabled' : '';
-  const checkedAttribute = checked ? ' checked' : '';
+
   return formatHtmlPreview(`
   ${
     inputType === 'Button'
@@ -210,7 +210,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled, checke
     <div class="demo-wrapper">
       <tds-chip name="test" type="radio" size="${
         sizeLookUp[size]
-      }" value="radio-1-value"${disabledAttribute}${checkedAttribute}>
+      }" checked ${disabledAttribute} value="radio-1-value">
         ${
           icon && iconPosition === 'Prefix'
             ? '<tds-icon slot="prefix" name="sorting" size="16px"></tds-icon>'
@@ -225,7 +225,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled, checke
               : ''
           } 
       </tds-chip>
-      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" checked value="radio-2-value">
+      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-2-value">
         ${
           icon && iconPosition === 'Prefix'
             ? '<tds-icon slot="prefix" name="cart" size="16px"></tds-icon>'
