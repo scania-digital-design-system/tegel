@@ -34,6 +34,29 @@
       }
     }
 
+    &.disabled {
+      label {
+        background-color: var(--tds-chips-background-disabled);
+        color: var(--tds-chips-text-disabled);
+        cursor: default;
+        pointer-events: none;
+      }
+
+      input {
+        pointer-events: none; // Ensure input does not respond to interactions
+      }
+
+      input[type='radio']:checked:disabled + label {
+        background-color: var(--tds-chips-background-active);
+        color: var(--tds-chips-text-checked-disabled);
+      }
+
+      input[type='checkbox']:checked:disabled + label {
+        background-color: var(--tds-chips-background-active);
+        color: var(--tds-chips-text-checked-disabled);
+      }
+    }
+
     &.lg {
       label {
         height: 32px;
