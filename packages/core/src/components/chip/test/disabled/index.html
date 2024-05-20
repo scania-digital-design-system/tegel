@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chip - Disabled</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-chip name="test" type="checkbox" size="lg" checked disabled value="checkbox-1-value" chip-id="option-1">
+        <span slot="label">Label 1</span>
+    </tds-chip>
+    <tds-chip name="test" type="checkbox" size="lg" value="checkbox-2-value" chip-id="option-2">
+        <span slot="label">Label 2</span>
+    </tds-chip>
+    <tds-chip name="test" type="checkbox" size="lg" value="checkbox-3-value" chip-id="option-3">
+        <span slot="label">Label 3</span>
+    </tds-chip>
+
+    <tds-chip name="test" type="radio" size="lg" checked disabled value="radio-1-value" chip-id="radio-option-1">
+      <span slot="label">Label 1 for radio</span>
+    </tds-chip>
+    <tds-chip name="test" type="radio" size="lg" value="radio-2-value" chip-id="radio-option-2">
+      <span slot="label">Label 2 for radio</span>
+    </tds-chip>
+    <tds-chip name="test" type="radio" size="lg" value="radio-3-value" chip-id="radio-option-3">
+      <span slot="label">Label 3 for radio</span>
+     </tds-chip>
+
+     <tds-chip name="test" type="button" size="lg" checked disabled value="button-1-value" chip-id="button-option-1">
+      <span slot="label">Label 1 for button</span>
+    </tds-chip>
+    <tds-chip name="test" type="button" size="lg" value="button-2-value" chip-id="button-option-2">
+      <span slot="label">Label 2 for button</span>
+    </tds-chip>
+    <tds-chip name="test" type="button" size="lg" value="button-3-value" chip-id="button-option-3">
+      <span slot="label">Label 3 for button</span>
+    </tds-chip>
+  </body>
+</html>
