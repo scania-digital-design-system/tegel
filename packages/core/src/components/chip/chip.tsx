@@ -101,7 +101,7 @@ export class TdsChip {
 
   private renderInputAttributes() {
     const commonAttributes = {
-      disabled: this.disabled, // Adding disabled attribute
+      disabled: this.disabled
     };
 
     if (this.type !== 'button') {
