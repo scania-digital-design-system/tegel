@@ -7,9 +7,10 @@
   "scripts": {
     "start": "cd packages/core && npm run storybook",
     "build": "cd packages/core && npm run build",
-    "build-angular": "npm run build && cd packages/angular && npm i && npm run build ",
+    "build-angular": "npm run build && cd packages/angular && npm i && npm run build",
+    "build-angular-17": "npm run build && cd packages/angular-17 && npm i && npm run build",
     "build-react": "npm run build && cd packages/react && npm i && npm run build ",
-    "build-all": "npm run build && (cd packages/angular && npm i && npm run build) && (cd packages/react && npm i && npm run build) && (cd packages/angular-17 && npm i && npm run build)",
+    "build-all": "npm run build && (cd packages/angular && npm i && npm run build) && (cd packages/angular-17 && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
     "test": "cd packages/core && npm run test",
     "commit": "cz",
     "prepare": "husky install"
