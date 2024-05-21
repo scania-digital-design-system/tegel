@@ -1,6 +1,7 @@
 {
-  "name": "components",
-  "version": "0.0.1",
+  "name": "@scania/tegel-angular-17",
+  "version": "1.8.2",
+  "description": "Angular wrappers for Tegel package using Angular 17 and above",
   "peerDependencies": {
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",

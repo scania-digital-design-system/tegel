@@ -1,15 +1,16 @@
 {
-  "name": "@scania/tegel-angular-17",
-  "version": "1.8.2",
-  "description": "Angular wrappers for Tegel package using Angular 17 and above",
-  "main": "dist/components",
+  "name": "angular-17",
+  "version": "0.0.0",
+  "main": "dist",
   "files": [
-    "dist/components"
+    "dist"
   ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build components",
+    "npm_pack": "cd dist/components && npm pack",
+    "package": "npm run build && npm run npm_pack",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
