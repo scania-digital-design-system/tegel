@@ -205,7 +205,7 @@ const ExpandableRowTemplate = ({
  
   for (let i = 0; i < tableRowElementAll.length; i++) {
     tableRowElementAll[i].addEventListener("tdsChange", (event) => {
-      console.log("Row with id: ", event.detail.rowId, " is ", event.detail.checked);
+      console.log("Row with id: ", event.detail.rowId, " is ", event.detail.isExpanded);
     });
   }
 

@@ -80,7 +80,7 @@ export class TdsTableBodyRowExpandable {
   })
   internalTdsRowExpanded: EventEmitter<any>;
 
-  /** Sends unique table row identifier and checked status when it is checked/unchecked. */
+  /** Sends unique table row identifier and isExpanded status when it is expanded/collapsed. */
   @Event({
     eventName: 'tdsChange',
     composed: true,
