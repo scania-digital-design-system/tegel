@@ -1,7 +1,7 @@
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tds-storybook.tegel.scania.com/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 ![Status: Beta](https://img.shields.io/badge/status-beta-red)
-![npm](https://img.shields.io/npm/v/%40scania%2Ftegel-angular)
+![npm](https://img.shields.io/npm/v/%40scania%2Ftegel-angular-17)
 
 # @scania/tegel-angular-17
 This is a ongoing project with the purpose to simplify the integration of Tegel in Angular apps.
