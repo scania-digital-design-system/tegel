@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/table/table/test/expandable-row-default/index.html';
+const componentTestPath = 'src/components/table/table/test/expandable-row-expanded/index.html';
 
-test.describe.parallel('tds-table-expandable-row-default', () => {
+test.describe.parallel('tds-table-expandable-row-expanded', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');
@@ -11,7 +11,7 @@ test.describe.parallel('tds-table-expandable-row-default', () => {
     await tableComponent.waitFor({ state: 'visible' });
   });
 
-  test('first row is expanded by default', async ({ page }) => {
+  test('first row is expanded', async ({ page }) => {
     const tableBodyRowFirstInput = page.getByRole('cell').nth(1);
     const tableBodyExpandableRowSlot = page.getByText(/Hello world 1/);
     await expect(tableBodyRowFirstInput).toHaveCount(1);

@@ -9,6 +9,7 @@ import {
   Method,
   Prop,
   State,
+  Watch,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 import generateUniqueId from '../../../utils/generateUniqueId';
@@ -35,12 +36,14 @@ export class TdsTableBodyRowExpandable {
   @Prop() colSpan: number = null;
 
   /** Sets default expanded value of row */
-  @Prop() defaultExpanded: boolean;
 
   /** ID for the table row. Randomly generated if not specified. */
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
 
-  /** Sets isExpanded state to true or false */
+  /** Sets isExpanded state to true or false externally */
+  @Prop({ reflect: true }) expanded: boolean = false;
+
+  /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
   @State() tableId: string = '';
@@ -54,18 +57,6 @@ export class TdsTableBodyRowExpandable {
   @State() noMinWidth: boolean = false;
 
   @State() modeVariant: 'primary' | 'secondary' = null;
-
-  /** method to expand table row */
-  @Method()
-  async expand() {
-    this.isExpanded = true;
-  }
-
-  /** method to collapse table row */
-  @Method()
-  async collapse() {
-    this.isExpanded = false;
-  }
 
   @Element() host: HTMLElement;
 
@@ -106,10 +97,33 @@ export class TdsTableBodyRowExpandable {
     }
   }
 
+  @Watch('expanded')
+  watchExpanded(newValue: boolean) {
+    console.log('watch');
+    if (newValue !== this.isExpanded) {
+      this.isExpanded = newValue;
+      this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+    }
+  }
+
+  /** method to expand table row */
+  @Method()
+  async expand() {
+    this.isExpanded = true;
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+  }
+
+  /** method to collapse table row */
+  @Method()
+  async collapse() {
+    this.isExpanded = false;
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+  }
+
   connectedCallback() {
     /* if user did set a prop we use that as default behaviour */
-    if (this.defaultExpanded !== undefined) {
-      this.isExpanded = this.defaultExpanded;
+    if (this.expanded !== undefined) {
+      this.isExpanded = this.expanded;
     }
 
     this.tableEl = this.host.closest('tds-table');

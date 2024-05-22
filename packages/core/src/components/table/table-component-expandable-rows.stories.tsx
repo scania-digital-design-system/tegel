@@ -48,9 +48,9 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    defaultExpanded: {
-      name: 'Default expanded',
-      description: 'Expands row by default. For demo purpose expand first row only.',
+    expanded: {
+      name: 'Expanded',
+      description: 'Expands row when set to true. This is set on row level.',
       control: {
         type: 'boolean',
       },
@@ -127,7 +127,7 @@ export default {
   args: {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
-    defaultExpanded: false,
+    expanded: false,
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -141,7 +141,7 @@ export default {
 const ExpandableRowTemplate = ({
   modeVariant,
   compactDesign,
-  defaultExpanded,
+  expanded,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -174,7 +174,7 @@ const ExpandableRowTemplate = ({
           }></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-        <tds-table-body-row-expandable default-expanded=${defaultExpanded} row-id="1">
+        <tds-table-body-row-expandable expanded=${expanded} row-id="1">
           <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
