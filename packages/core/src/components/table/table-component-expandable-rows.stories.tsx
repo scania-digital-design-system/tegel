@@ -54,9 +54,6 @@ export default {
       control: {
         type: 'boolean',
       },
-      table: {
-        defaultValue: { summary: false },
-      },
     },
     responsiveDesign: {
       name: 'Responsive Table',

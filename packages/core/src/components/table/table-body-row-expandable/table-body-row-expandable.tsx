@@ -41,7 +41,7 @@ export class TdsTableBodyRowExpandable {
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
 
   /** Sets isExpanded state to true or false externally */
-  @Prop({ reflect: true }) expanded: boolean = false;
+  @Prop({ reflect: true }) expanded: boolean;
 
   /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
@@ -99,7 +99,6 @@ export class TdsTableBodyRowExpandable {
 
   @Watch('expanded')
   watchExpanded(newValue: boolean) {
-    console.log('watch');
     if (newValue !== this.isExpanded) {
       this.isExpanded = newValue;
       this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
