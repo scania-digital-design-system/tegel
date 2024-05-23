@@ -96,6 +96,7 @@
 
     &:host(.menu-collapsed) {
       width: 69px; // 68 + 1px for border
+      box-sizing: border-box;
 
       .menu {
         width: 68px;
