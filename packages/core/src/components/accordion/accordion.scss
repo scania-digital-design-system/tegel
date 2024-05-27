@@ -48,6 +48,6 @@
   border-bottom: 1px solid var(--tds-accordion-border);
 }
 
-:host(.no-last-border:last-child) {
+:host(.hide-last-border:last-child) {
   border-bottom: none;
 }

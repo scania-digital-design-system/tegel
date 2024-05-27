@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property       | Attribute        | Description                                           | Type                       | Default |
-| -------------- | ---------------- | ----------------------------------------------------- | -------------------------- | ------- |
-| `modeVariant`  | `mode-variant`   | Set the variant of the Accordion.                     | `"primary" \| "secondary"` | `null`  |
-| `noLastBorder` | `no-last-border` | Removes the bottom border of the last Accordion item. | `boolean`                  | `false` |
+| Property         | Attribute          | Description                                           | Type                       | Default |
+| ---------------- | ------------------ | ----------------------------------------------------- | -------------------------- | ------- |
+| `hideLastBorder` | `hide-last-border` | Removes the bottom border of the last Accordion item. | `boolean`                  | `false` |
+| `modeVariant`    | `mode-variant`     | Set the variant of the Accordion.                     | `"primary" \| "secondary"` | `null`  |
 
 
 ## Slots

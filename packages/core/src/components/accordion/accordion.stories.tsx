@@ -49,8 +49,8 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    noLastBorder: {
-      name: 'No last border',
+    hideLastBorder: {
+      name: 'Hide last border',
       description: 'Removes the bottom border of the last Accordion item.',
       control: {
         type: 'boolean',
@@ -80,20 +80,20 @@ export default {
     iconPosition: 'end',
     paddingReset: false,
     disabled: false,
-    noLastBorder: false,
+    hideLastBorder: false,
   },
 };
 
-const Template = ({ disabled, iconPosition, paddingReset, modeVariant, noLastBorder }) => {
+const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastBorder }) => {
   const affixAttr = iconPosition === 'start' ? 'expand-icon-position="start"' : '';
   const disabledAttr = disabled ? 'disabled' : '';
   const paddingResetAttr = paddingReset ? 'padding-reset' : '';
-  const noLastBorderAttr = noLastBorder ? 'no-last-border' : '';
+  const hideLastBorderAttr = hideLastBorder ? 'hide-last-border' : '';
 
   return formatHtmlPreview(`
     <tds-accordion ${
       modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-    } ${noLastBorderAttr}>
+    } ${hideLastBorderAttr}>
       <tds-accordion-item header="First item" ${affixAttr} ${disabledAttr} ${paddingResetAttr}>
         This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
         Lorem ipsum doler sit amet.

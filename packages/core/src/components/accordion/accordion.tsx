@@ -13,7 +13,7 @@ export class TdsAccordion {
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Removes the bottom border of the last Accordion item. */
-  @Prop() noLastBorder: boolean = false;
+  @Prop() hideLastBorder: boolean = false;
 
   render() {
     return (
@@ -21,7 +21,7 @@ export class TdsAccordion {
         class={{
           'tds-accordion': true,
           [`tds-mode-variant-${this.modeVariant || ''}`]: Boolean(this.modeVariant),
-          'no-last-border': this.noLastBorder,
+          'hide-last-border': this.hideLastBorder,
         }}
       >
         <slot></slot>
