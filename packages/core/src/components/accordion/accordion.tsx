@@ -18,9 +18,11 @@ export class TdsAccordion {
   render() {
     return (
       <Host
-        class={`tds-accordion ${
-          this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
-        } ${this.noLastBorder ? `tds-accordion-no-last-border` : ''}`}
+        class={{
+          'tds-accordion': true,
+          [`tds-mode-variant-${this.modeVariant || ''}`]: Boolean(this.modeVariant),
+          'tds-accordion-no-last-border': this.noLastBorder,
+        }}
       >
         <slot></slot>
       </Host>
