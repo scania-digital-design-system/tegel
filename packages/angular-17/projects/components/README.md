@@ -17,13 +17,13 @@ The design system supports the design and development of digital solutions at Sc
 ## Installation
 
 
-1. Run `npm install @scania/tegel-angular`
+1. Run `npm install @scania/tegel-angular-17`
 2. In your root module (app.component.ts) import the `TegelModule`:
 
 ```ts
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TegelModule } from '@scania/tegel-angular';
+import { TegelModule } from '@scania/tegel-angular-17';
 
 @Component({
   selector: 'app-root',
