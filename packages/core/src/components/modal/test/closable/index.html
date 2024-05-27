@@ -12,7 +12,20 @@
   </head>
 
   <body>
-    <tds-modal header="This is a header" data-testid="tds-modal-testid" size="lg" show>
+    <tds-modal
+      closable="true"
+      header="This is a header"
+      data-testid="tds-modal-testid-0"
+      size="lg"
+      show
+    >
+      <span slot="body"> Where you can put anything you want! </span>
+      <span slot="actions" class="tds-u-flex tds-u-gap2">
+        <tds-button data-dismiss-modal size="md" text="Delete" variant="danger"></tds-button>
+        <tds-button data-dismiss-modal size="md" text="Cancel" variant="secondary"></tds-button>
+      </span>
+    </tds-modal>
+    <tds-modal header="This is a header" data-testid="tds-modal-testid-1" size="lg" show>
       <span slot="body"> Where you can put anything you want! </span>
       <span slot="actions" class="tds-u-flex tds-u-gap2">
         <tds-button data-dismiss-modal size="md" text="Delete" variant="danger"></tds-button>
