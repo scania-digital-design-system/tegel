@@ -21,7 +21,7 @@ export class TdsAccordion {
         class={{
           'tds-accordion': true,
           [`tds-mode-variant-${this.modeVariant || ''}`]: Boolean(this.modeVariant),
-          'tds-accordion-no-last-border': this.noLastBorder,
+          'no-last-border': this.noLastBorder,
         }}
       >
         <slot></slot>
