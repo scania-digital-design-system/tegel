@@ -34,7 +34,9 @@ test.describe.parallel('tds-navigation-tabs', () => {
     await expect(navigationTabs.page()).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  test('selected tab index should be 0', async () => {
+  test('selected tab index should be 0', async ({ page }) => {
+    await page.waitForChanges();
+
     const selectedIndex = await navigationTabs.getAttribute('selected-index');
     expect(selectedIndex).toBe('0');
   });

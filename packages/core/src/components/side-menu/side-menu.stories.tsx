@@ -176,7 +176,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
           </button>
         </tds-side-menu-item>
 
-        <tds-side-menu-dropdown default-open selected>
+        <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
           <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
           <span slot="label">
             Wheel types
@@ -219,7 +219,8 @@ const Template = ({ persistent, collapsible, collapsed }) =>
         <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
-        <button id="test">Toggle the collapsed state programatically</button>
+        <button id="test">Toggle the collapsed state programmatically</button>
+        <button id="toggleExpandedTest">Toggle wheel types expanded programmatically</button>
       </main>
     </div>
   </div>
@@ -227,6 +228,11 @@ const Template = ({ persistent, collapsible, collapsed }) =>
     sideMenu = document.querySelector('tds-side-menu')
     document.querySelector('#test')?.addEventListener('click', ()=> {
       sideMenu.collapsed = !sideMenu.collapsed;
+    })
+
+    wheelTypesDropdown = document.querySelector('#wheel-types-dropdown')
+    document.querySelector('#toggleExpandedTest')?.addEventListener('click', ()=> {
+      wheelTypesDropdown.open = !wheelTypesDropdown.open;
     })
 
     document.querySelector('tds-side-menu-collapse-button')?.addEventListener('tdsCollapse', (event) => {
