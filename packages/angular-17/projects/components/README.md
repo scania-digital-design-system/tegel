@@ -4,7 +4,7 @@
 ![npm](https://img.shields.io/npm/v/%40scania%2Ftegel-angular-17)
 
 # @scania/tegel-angular-17
-This is a ongoing project with the purpose to simplify the integration of Tegel in Angular apps.
+This is an ongoing project with the purpose to simplify the integration of Tegel in Angular apps.
 
 This guide [here](https://stenciljs.com/docs/angular) has served as base for the configuration.
 
