@@ -74,6 +74,10 @@ export class TdsModal {
   tdsClose: EventEmitter<any>;
 
   connectedCallback() {
+    if (this.closable === undefined) {
+      this.closable = true;
+    }
+
     if (this.show !== undefined) {
       this.isShown = this.show;
     }
