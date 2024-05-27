@@ -47,7 +47,7 @@ export class TdsModal {
   @Prop() show: boolean;
 
   /** Shows or hides the close [X] button. */
-  @Prop() closable: boolean;
+  @Prop() closable: boolean = true;
 
   // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
@@ -74,10 +74,6 @@ export class TdsModal {
   tdsClose: EventEmitter<any>;
 
   connectedCallback() {
-    if (this.closable === undefined) {
-      this.closable = true;
-    }
-
     if (this.show !== undefined) {
       this.isShown = this.show;
     }
