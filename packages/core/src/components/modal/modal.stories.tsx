@@ -78,6 +78,9 @@ export default {
       control: {
         type: 'boolean',
       },
+      table: {
+        defaultValue: { summary: true },
+      },
     },
   },
   args: {
