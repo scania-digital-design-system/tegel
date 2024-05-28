@@ -102,7 +102,7 @@ jobs:
 
       - name: Remove git tag on failure
         run: |
-          tagname="@scania/tegel@${{ needs.release-angular.outputs.version }}"
+          tagname="@scania/tegel@${{ needs.release-angular-17.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
             git push origin --delete $tagname
           fi
