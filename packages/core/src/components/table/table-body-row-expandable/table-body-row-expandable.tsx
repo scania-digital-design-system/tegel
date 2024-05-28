@@ -6,10 +6,13 @@ import {
   h,
   Host,
   Listen,
+  Method,
   Prop,
   State,
+  Watch,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
@@ -32,6 +35,15 @@ export class TdsTableBodyRowExpandable {
    *  Take in mind that expandable control is column too */
   @Prop() colSpan: number = null;
 
+  /** Sets default expanded value of row */
+
+  /** ID for the table row. Randomly generated if not specified. */
+  @Prop({ reflect: true }) rowId: string = generateUniqueId();
+
+  /** Sets isExpanded state to true or false externally */
+  @Prop({ reflect: true }) expanded: boolean;
+
+  /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
   @State() tableId: string = '';
@@ -59,6 +71,18 @@ export class TdsTableBodyRowExpandable {
   })
   internalTdsRowExpanded: EventEmitter<any>;
 
+  /** Sends unique table row identifier and isExpanded status when it is expanded/collapsed. */
+  @Event({
+    eventName: 'tdsChange',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsChange: EventEmitter<{
+    rowId: string;
+    isExpanded: boolean;
+  }>;
+
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
@@ -73,7 +97,34 @@ export class TdsTableBodyRowExpandable {
     }
   }
 
+  @Watch('expanded')
+  watchExpanded(newValue: boolean) {
+    if (newValue !== this.isExpanded) {
+      this.isExpanded = newValue;
+      this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+    }
+  }
+
+  /** method to expand table row */
+  @Method()
+  async expand() {
+    this.isExpanded = true;
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+  }
+
+  /** method to collapse table row */
+  @Method()
+  async collapse() {
+    this.isExpanded = false;
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+  }
+
   connectedCallback() {
+    /* if user did set a prop we use that as default behaviour */
+    if (this.expanded !== undefined) {
+      this.isExpanded = this.expanded;
+    }
+
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
   }
@@ -94,6 +145,7 @@ export class TdsTableBodyRowExpandable {
 
   sendValue() {
     this.internalTdsRowExpanded.emit([this.tableId, this.isExpanded]);
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
   }
 
   onChangeHandler(event) {
