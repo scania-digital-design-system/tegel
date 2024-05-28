@@ -13,13 +13,15 @@ test.describe.parallel('tds-table-expandable-row-methods', () => {
 
   test('click expand button', async ({ page }) => {
     page.locator('#expand-button').click();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+    page.waitForChanges();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('click collapse button', async ({ page }) => {
     page.locator('#collapse-button').click();
+    page.waitForChanges();
     const tableRow = page.locator('tds-table-body-row-expandable').last();
     expect(tableRow).toBeVisible();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
