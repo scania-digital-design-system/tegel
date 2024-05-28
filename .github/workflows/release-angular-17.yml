@@ -25,7 +25,7 @@ on:
         type: boolean
 
 jobs:
-  release-angular:
+  release-angular-17:
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular-17
