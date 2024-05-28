@@ -17,10 +17,337 @@
   "module": "dist/index.js",
   "es2015": "dist/esm/index.mjs",
   "es2017": "dist/esm/index.mjs",
-  "types": "dist/types/components.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/components/components.esm.js",
+  "exports": {
+    "./tds-accordion-item": {
+      "import": "./dist/components/tds-accordion-item.js",
+      "types": "./dist/components/tds-accordion-item.d.ts"
+    },
+    "./tds-accordion": {
+      "import": "./dist/components/tds-accordion.js",
+      "types": "./dist/components/tds-accordion.d.ts"
+    },
+    "./tds-badge": {
+      "import": "./dist/components/tds-badge.js",
+      "types": "./dist/components/tds-badge.d.ts"
+    },
+    "./tds-banner": {
+      "import": "./dist/components/tds-banner.js",
+      "types": "./dist/components/tds-banner.d.ts"
+    },
+    "./tds-block": {
+      "import": "./dist/components/tds-block.js",
+      "types": "./dist/components/tds-block.d.ts"
+    },
+    "./tds-body-cell": {
+      "import": "./dist/components/tds-body-cell.js",
+      "types": "./dist/components/tds-body-cell.d.ts"
+    },
+    "./tds-breadcrumb": {
+      "import": "./dist/components/tds-breadcrumb.js",
+      "types": "./dist/components/tds-breadcrumb.d.ts"
+    },
+    "./tds-breadcrumbs": {
+      "import": "./dist/components/tds-breadcrumbs.js",
+      "types": "./dist/components/tds-breadcrumbs.d.ts"
+    },
+    "./tds-button": {
+      "import": "./dist/components/tds-button.js",
+      "types": "./dist/components/tds-button.d.ts"
+    },
+    "./tds-card": {
+      "import": "./dist/components/tds-card.js",
+      "types": "./dist/components/tds-card.d.ts"
+    },
+    "./tds-checkbox": {
+      "import": "./dist/components/tds-checkbox.js",
+      "types": "./dist/components/tds-checkbox.d.ts"
+    },
+    "./tds-chip": {
+      "import": "./dist/components/tds-chip.js",
+      "types": "./dist/components/tds-chip.d.ts"
+    },
+    "./tds-core-header-item": {
+      "import": "./dist/components/tds-core-header-item.js",
+      "types": "./dist/components/tds-core-header-item.d.ts"
+    },
+    "./tds-datetime": {
+      "import": "./dist/components/tds-datetime.js",
+      "types": "./dist/components/tds-datetime.d.ts"
+    },
+    "./tds-divider": {
+      "import": "./dist/components/tds-divider.js",
+      "types": "./dist/components/tds-divider.d.ts"
+    },
+    "./tds-dropdown-option": {
+      "import": "./dist/components/tds-dropdown-option.js",
+      "types": "./dist/components/tds-dropdown-option.d.ts"
+    },
+    "./tds-dropdown": {
+      "import": "./dist/components/tds-dropdown.js",
+      "types": "./dist/components/tds-dropdown.d.ts"
+    },
+    "./tds-folder-tab": {
+      "import": "./dist/components/tds-folder-tab.js",
+      "types": "./dist/components/tds-folder-tab.d.ts"
+    },
+    "./tds-folder-tabs": {
+      "import": "./dist/components/tds-folder-tabs.js",
+      "types": "./dist/components/tds-folder-tabs.d.ts"
+    },
+    "./tds-footer-group": {
+      "import": "./dist/components/tds-footer-group.js",
+      "types": "./dist/components/tds-footer-group.d.ts"
+    },
+    "./tds-footer-item": {
+      "import": "./dist/components/tds-footer-item.js",
+      "types": "./dist/components/tds-footer-item.d.ts"
+    },
+    "./tds-footer": {
+      "import": "./dist/components/tds-footer.js",
+      "types": "./dist/components/tds-footer.d.ts"
+    },
+    "./tds-header-brand-symbol": {
+      "import": "./dist/components/tds-header-brand-symbol.js",
+      "types": "./dist/components/tds-header-brand-symbol.d.ts"
+    },
+    "./tds-header-cell": {
+      "import": "./dist/components/tds-header-cell.js",
+      "types": "./dist/components/tds-header-cell.d.ts"
+    },
+    "./tds-header-dropdown-list-item": {
+      "import": "./dist/components/tds-header-dropdown-list-item.js",
+      "types": "./dist/components/tds-header-dropdown-list-item.d.ts"
+    },
+    "./tds-header-dropdown-list-user": {
+      "import": "./dist/components/tds-header-dropdown-list-user.js",
+      "types": "./dist/components/tds-header-dropdown-list-user.d.ts"
+    },
+    "./tds-header-dropdown-list": {
+      "import": "./dist/components/tds-header-dropdown-list.js",
+      "types": "./dist/components/tds-header-dropdown-list.d.ts"
+    },
+    "./tds-header-dropdown": {
+      "import": "./dist/components/tds-header-dropdown.js",
+      "types": "./dist/components/tds-header-dropdown.d.ts"
+    },
+    "./tds-header-hamburger": {
+      "import": "./dist/components/tds-header-hamburger.js",
+      "types": "./dist/components/tds-header-hamburger.d.ts"
+    },
+    "./tds-header-item": {
+      "import": "./dist/components/tds-header-item.js",
+      "types": "./dist/components/tds-header-item.d.ts"
+    },
+    "./tds-header-launcher-button": {
+      "import": "./dist/components/tds-header-launcher-button.js",
+      "types": "./dist/components/tds-header-launcher-button.d.ts"
+    },
+    "./tds-header-launcher-grid-item": {
+      "import": "./dist/components/tds-header-launcher-grid-item.js",
+      "types": "./dist/components/tds-header-launcher-grid-item.d.ts"
+    },
+    "./tds-header-launcher-grid-title": {
+      "import": "./dist/components/tds-header-launcher-grid-title.js",
+      "types": "./dist/components/tds-header-launcher-grid-title.d.ts"
+    },
+    "./tds-header-launcher-grid": {
+      "import": "./dist/components/tds-header-launcher-grid.js",
+      "types": "./dist/components/tds-header-launcher-grid.d.ts"
+    },
+    "./tds-header-launcher-list-item": {
+      "import": "./dist/components/tds-header-launcher-list-item.js",
+      "types": "./dist/components/tds-header-launcher-list-item.d.ts"
+    },
+    "./tds-header-launcher-list-title": {
+      "import": "./dist/components/tds-header-launcher-list-title.js",
+      "types": "./dist/components/tds-header-launcher-list-title.d.ts"
+    },
+    "./tds-header-launcher-list": {
+      "import": "./dist/components/tds-header-launcher-list.js",
+      "types": "./dist/components/tds-header-launcher-list.d.ts"
+    },
+    "./tds-header-launcher": {
+      "import": "./dist/components/tds-header-launcher.js",
+      "types": "./dist/components/tds-header-launcher.d.ts"
+    },
+    "./tds-header-title": {
+      "import": "./dist/components/tds-header-title.js",
+      "types": "./dist/components/tds-header-title.d.ts"
+    },
+    "./tds-header": {
+      "import": "./dist/components/tds-header.js",
+      "types": "./dist/components/tds-header.d.ts"
+    },
+    "./tds-icon": {
+      "import": "./dist/components/tds-icon.js",
+      "types": "./dist/components/tds-icon.d.ts"
+    },
+    "./tds-inline-tab": {
+      "import": "./dist/components/tds-inline-tab.js",
+      "types": "./dist/components/tds-inline-tab.d.ts"
+    },
+    "./tds-inline-tabs": {
+      "import": "./dist/components/tds-inline-tabs.js",
+      "types": "./dist/components/tds-inline-tabs.d.ts"
+    },
+    "./tds-link": {
+      "import": "./dist/components/tds-link.js",
+      "types": "./dist/components/tds-link.d.ts"
+    },
+    "./tds-message": {
+      "import": "./dist/components/tds-message.js",
+      "types": "./dist/components/tds-message.d.ts"
+    },
+    "./tds-modal": {
+      "import": "./dist/components/tds-modal.js",
+      "types": "./dist/components/tds-modal.d.ts"
+    },
+    "./tds-navigation-tab": {
+      "import": "./dist/components/tds-navigation-tab.js",
+      "types": "./dist/components/tds-navigation-tab.d.ts"
+    },
+    "./tds-navigation-tabs": {
+      "import": "./dist/components/tds-navigation-tabs.js",
+      "types": "./dist/components/tds-navigation-tabs.d.ts"
+    },
+    "./tds-popover-canvas": {
+      "import": "./dist/components/tds-popover-canvas.js",
+      "types": "./dist/components/tds-popover-canvas.d.ts"
+    },
+    "./tds-popover-core": {
+      "import": "./dist/components/tds-popover-core.js",
+      "types": "./dist/components/tds-popover-core.d.ts"
+    },
+    "./tds-popover-menu-item": {
+      "import": "./dist/components/tds-popover-menu-item.js",
+      "types": "./dist/components/tds-popover-menu-item.d.ts"
+    },
+    "./tds-popover-menu": {
+      "import": "./dist/components/tds-popover-menu.js",
+      "types": "./dist/components/tds-popover-menu.d.ts"
+    },
+    "./tds-radio-button": {
+      "import": "./dist/components/tds-radio-button.js",
+      "types": "./dist/components/tds-radio-button.d.ts"
+    },
+    "./tds-side-menu-close-button": {
+      "import": "./dist/components/tds-side-menu-close-button.js",
+      "types": "./dist/components/tds-side-menu-close-button.d.ts"
+    },
+    "./tds-side-menu-collapse-button": {
+      "import": "./dist/components/tds-side-menu-collapse-button.js",
+      "types": "./dist/components/tds-side-menu-collapse-button.d.ts"
+    },
+    "./tds-side-menu-dropdown-list-item": {
+      "import": "./dist/components/tds-side-menu-dropdown-list-item.js",
+      "types": "./dist/components/tds-side-menu-dropdown-list-item.d.ts"
+    },
+    "./tds-side-menu-dropdown-list": {
+      "import": "./dist/components/tds-side-menu-dropdown-list.js",
+      "types": "./dist/components/tds-side-menu-dropdown-list.d.ts"
+    },
+    "./tds-side-menu-dropdown": {
+      "import": "./dist/components/tds-side-menu-dropdown.js",
+      "types": "./dist/components/tds-side-menu-dropdown.d.ts"
+    },
+    "./tds-side-menu-item": {
+      "import": "./dist/components/tds-side-menu-item.js",
+      "types": "./dist/components/tds-side-menu-item.d.ts"
+    },
+    "./tds-side-menu-overlay": {
+      "import": "./dist/components/tds-side-menu-overlay.js",
+      "types": "./dist/components/tds-side-menu-overlay.d.ts"
+    },
+    "./tds-side-menu-user-image": {
+      "import": "./dist/components/tds-side-menu-user-image.js",
+      "types": "./dist/components/tds-side-menu-user-image.d.ts"
+    },
+    "./tds-side-menu-user-label": {
+      "import": "./dist/components/tds-side-menu-user-label.js",
+      "types": "./dist/components/tds-side-menu-user-label.d.ts"
+    },
+    "./tds-side-menu-user": {
+      "import": "./dist/components/tds-side-menu-user.js",
+      "types": "./dist/components/tds-side-menu-user.d.ts"
+    },
+    "./tds-side-menu": {
+      "import": "./dist/components/tds-side-menu.js",
+      "types": "./dist/components/tds-side-menu.d.ts"
+    },
+    "./tds-slider": {
+      "import": "./dist/components/tds-slider.js",
+      "types": "./dist/components/tds-slider.d.ts"
+    },
+    "./tds-spinner": {
+      "import": "./dist/components/tds-spinner.js",
+      "types": "./dist/components/tds-spinner.d.ts"
+    },
+    "./tds-step": {
+      "import": "./dist/components/tds-step.js",
+      "types": "./dist/components/tds-step.d.ts"
+    },
+    "./tds-stepper": {
+      "import": "./dist/components/tds-stepper.js",
+      "types": "./dist/components/tds-stepper.d.ts"
+    },
+    "./tds-table-body-row-expandable": {
+      "import": "./dist/components/tds-table-body-row-expandable.js",
+      "types": "./dist/components/tds-table-body-row-expandable.d.ts"
+    },
+    "./tds-table-body-row": {
+      "import": "./dist/components/tds-table-body-row.js",
+      "types": "./dist/components/tds-table-body-row.d.ts"
+    },
+    "./tds-table-body": {
+      "import": "./dist/components/tds-table-body.js",
+      "types": "./dist/components/tds-table-body.d.ts"
+    },
+    "./tds-table-footer": {
+      "import": "./dist/components/tds-table-footer.js",
+      "types": "./dist/components/tds-table-footer.d.ts"
+    },
+    "./tds-table-header": {
+      "import": "./dist/components/tds-table-header.js",
+      "types": "./dist/components/tds-table-header.d.ts"
+    },
+    "./tds-table-toolbar": {
+      "import": "./dist/components/tds-table-toolbar.js",
+      "types": "./dist/components/tds-table-toolbar.d.ts"
+    },
+    "./tds-table": {
+      "import": "./dist/components/tds-table.js",
+      "types": "./dist/components/tds-table.d.ts"
+    },
+    "./tds-text-field": {
+      "import": "./dist/components/tds-text-field.js",
+      "types": "./dist/components/tds-text-field.d.ts"
+    },
+    "./tds-textarea": {
+      "import": "./dist/components/tds-textarea.js",
+      "types": "./dist/components/tds-textarea.d.ts"
+    },
+    "./tds-toast": {
+      "import": "./dist/components/tds-toast.js",
+      "types": "./dist/components/tds-toast.d.ts"
+    },
+    "./tds-toggle": {
+      "import": "./dist/components/tds-toggle.js",
+      "types": "./dist/components/tds-toggle.d.ts"
+    },
+    "./tds-tooltip": {
+      "import": "./dist/components/tds-tooltip.js",
+      "types": "./dist/components/tds-tooltip.d.ts"
+    },
+    "./loader": {
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs",
+      "types": "./loader/index.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/scania-digital-design-system/tegel.git"
@@ -50,14 +377,14 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@stencil/core": "^4.12.6",
+    "@stencil/core": "^4.18.1",
     "date-fns": "^2.30.0",
     "prettier": "^2.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@playwright/test": "^1.39.0",
-    "@stencil/angular-output-target": "^0.8.2",
+    "@stencil/angular-output-target": "^0.8.4",
     "@stencil/react-output-target": "^0.5.3",
     "@stencil/sass": "^3.0.4",
     "@storybook/addon-a11y": "^6.5.16",

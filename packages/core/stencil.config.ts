@@ -84,10 +84,19 @@ export const config: Config = {
       componentCorePackage: '@scania/tegel',
       proxiesFile: '../react/lib/components/stencil-generated/index.ts',
     }),
+    angularOutputTarget({
+      componentCorePackage: '@scania/tegel',
+      outputType: 'component',
+      directivesProxyFile:
+        '../angular-17/projects/components/src/lib/stencil-generated/components.ts',
+      directivesArrayFile: '../angular-17/projects/components/src/lib/stencil-generated/index.ts',
+      valueAccessorConfigs: angularValueAccessorBindings,
+    }),
     {
       type: 'dist-custom-elements',
       generateTypeDeclarations: true,
       customElementsExportBehavior: 'auto-define-custom-elements',
+      externalRuntime: false,
     },
     {
       type: 'docs-readme',
