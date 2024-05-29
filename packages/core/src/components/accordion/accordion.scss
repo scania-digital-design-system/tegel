@@ -47,3 +47,7 @@
 :host(:last-child) {
   border-bottom: 1px solid var(--tds-accordion-border);
 }
+
+:host(.hide-last-border:last-child) {
+  border-bottom: none;
+}
