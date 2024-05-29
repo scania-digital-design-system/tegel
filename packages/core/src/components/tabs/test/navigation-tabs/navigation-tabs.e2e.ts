@@ -36,7 +36,6 @@ test.describe.parallel('tds-navigation-tabs', () => {
 
   test('selected tab index should be 0', async ({ page }) => {
     await page.waitForChanges();
-
     const selectedIndex = await navigationTabs.getAttribute('selected-index');
     expect(selectedIndex).toBe('0');
   });

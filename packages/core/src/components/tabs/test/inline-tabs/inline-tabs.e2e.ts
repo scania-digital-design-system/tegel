@@ -35,7 +35,6 @@ test.describe.parallel('tds-inline-tabs', () => {
 
   test('selected tab index should be 0', async ({ page }) => {
     await page.waitForChanges();
-
     const selectedIndex = await inlineTabs.getAttribute('selected-index');
     expect(selectedIndex).toBe('0');
   });
