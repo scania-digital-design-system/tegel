@@ -213,7 +213,7 @@
   }
 }
 
-:host(.last) {
+:host(:last-of-type) {
   [role='listitem'] {
     &.sm,
     &.lg {
@@ -234,7 +234,7 @@
   }
 }
 
-:host(.first) {
+:host(:first-of-type) {
   [role='listitem'] {
     &.sm,
     &.lg {
