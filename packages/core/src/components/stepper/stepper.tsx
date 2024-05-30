@@ -44,8 +44,6 @@ export class TdsStepper {
   @Prop() stepperId: string = generateUniqueId();
 
   componentWillLoad() {
-    this.host.children[0].classList.add('first');
-    this.host.children[this.host.children.length - 1].classList.add('last');
     if (this.orientation === 'vertical') {
       this.labelPosition = 'aside';
     }
