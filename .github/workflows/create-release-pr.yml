@@ -33,6 +33,11 @@ jobs:
         working-directory: packages/angular
         run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
 
+      - name: Angular 17 - Bump version
+        id: angular-17-version
+        working-directory: packages/angular-17/projects/components
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
