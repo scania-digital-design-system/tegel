@@ -213,7 +213,11 @@
   }
 }
 
-:host(.last) {
+:host(:last-of-type) {
+  [role='listitem'].horizontal {
+    padding-right: 0;
+  }
+
   [role='listitem'] {
     &.sm,
     &.lg {
@@ -234,8 +238,12 @@
   }
 }
 
-:host(.first) {
+:host(:first-of-type) {
   [role='listitem'] {
+    &.horizontal {
+      padding-left: 0;
+    }
+
     &.sm,
     &.lg {
       &::before {
