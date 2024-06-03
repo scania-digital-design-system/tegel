@@ -50,7 +50,7 @@ After developing your component, you need to build and run your local environmen
 npm run build
 npm start
 ```
-This will compile your code and start a local server with storybook where you can test your new component.
+This will compile your code and start a local server with Storybook where you can test your new component.
 
 ### 6. Write Tests
 Write tests using Playwright for your new component to ensure it works as expected and adheres to the design system's standards.
