@@ -2,7 +2,7 @@
 
 ## Component example
 
-Documentation is a crucial part of the development process. It helps developers understand how to use the components, its props, methods, slots and custom events. To ease the process of updating the documentation, consider the following scenario where the dropdown component is used as an example:
+Documentation is a crucial part of the development process. It helps developers understand how to use the components, its props, methods, slots and custom events. To ease the process of updating the documentation, consider the following scenario where the Dropdown component is used as an example:
 
 When working with the `dropdown.tsx` and `dropdown.stories.tsx` files, developers should consider updating or writing documentation in the following scenarios:
 
