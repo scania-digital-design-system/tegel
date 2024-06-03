@@ -8,7 +8,7 @@ When working with the `dropdown.tsx` and `dropdown.stories.tsx` files, developer
 
 1. **Adding New Features or Props**: Whenever new properties (like `multiselect`, `filter`, etc.) are added or existing ones are modified in `dropdown.tsx`, it's crucial to update the documentation to explain these properties, their purpose, and how to use them. This includes updating the comments in the code to reflect the changes and ensuring that the Storybook (`dropdown.stories.tsx`) examples demonstrate the new features effectively.
 
-2. **Behavioral Changes**: If changes are made to how the dropdown behaves (e.g., how it handles opening directions, multiselect logic, etc.), this should be clearly documented. The Storybook stories should be updated or new ones added to showcase these changes.
+2. **Behavioral Changes**: If changes are made to how the Dropdown behaves (e.g., how it handles opening directions, multiselect logic, etc.), this should be clearly documented. The Storybook stories should be updated or new ones added to showcase these changes.
 
 3. **Bug Fixes**: After fixing a bug, the documentation should be reviewed to ensure that it didn't previously contain incorrect information that led to misuse of the component. If the bug fix changes how users should interact with the dropdown, this should be reflected in the documentation.
 
