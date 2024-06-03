@@ -40,7 +40,7 @@ touch packages/core/src/components/button/button.stories.tsx
 ```
 Develop your component in `button.tsx`.
 Use `button.scss` for styles and `button-vars.scss` for CSS variables.
-Use `button.stories.tsx` for storybook stories.
+Use `button.stories.tsx` for Storybook stories.
 Import `button-vars.scss` in `global.scss`.
 Refer to the existing components for examples.
 
