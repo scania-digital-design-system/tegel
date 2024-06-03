@@ -73,6 +73,12 @@ git add .
 git commit -m "feat(button): added new component"
 ```
 
+In case you find it tricky, there is possibility to use conventional commit script by running:
+```bash
+npm run commit 
+```
+It will be a set of questions in terminal that will help you formulate correct commit message in couple of steps.
+
 ### 10. Push Your Branch
 Push your branch to the GitHub repository:
 ```bash
@@ -83,7 +89,7 @@ git push origin add-new-component
 Go to the GitHub repository in your web browser. You should see a prompt to create a pull request based on your newly pushed branch. Click on "Compare & pull request", provide a description of your changes, and then submit the pull request.
 
 ### 12. Review and Merge
-Wait for feedback or approval from Tegel team. Make any necessary changes based on the feedback. Once approved, merge your pull request into the main branch.
+Wait for feedback or approval from Tegel team. Make any necessary changes based on the feedback. Once approved, Tegel team member will merge your pull request into the main branch as contributors may have limited access in GitHub.
 
 By following these steps, you can effectively contribute a new component to the Tegel design system.
 
