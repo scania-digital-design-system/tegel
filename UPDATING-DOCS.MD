@@ -10,7 +10,7 @@ When working with the `dropdown.tsx` and `dropdown.stories.tsx` files, developer
 
 2. **Behavioral Changes**: If changes are made to how the Dropdown behaves (e.g., how it handles opening directions, multiselect logic, etc.), this should be clearly documented. The Storybook stories should be updated or new ones added to showcase these changes.
 
-3. **Bug Fixes**: After fixing a bug, the documentation should be reviewed to ensure that it didn't previously contain incorrect information that led to misuse of the component. If the bug fix changes how users should interact with the dropdown, this should be reflected in the documentation.
+3. **Bug Fixes**: After fixing a bug, the documentation should be reviewed to ensure that it didn't previously contain incorrect information that led to misuse of the component. If the bug fix changes how users should interact with the Dropdown, this should be reflected in the documentation.
 
 4. **Refactoring**: Even if the external API doesn't change, significant refactoring should be accompanied by a review of the documentation to ensure it still accurately represents the code's functionality. Comments within the code (`dropdown.tsx`) should also be updated to reflect any new logic or changes in how the component works.
 
