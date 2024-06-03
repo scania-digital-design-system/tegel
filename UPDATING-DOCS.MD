@@ -16,7 +16,7 @@ When working with the `dropdown.tsx` and `dropdown.stories.tsx` files, developer
 
 5. **Visual Changes**: Updates to styles or visual adjustments should be reflected in the Storybook (`dropdown.stories.tsx`) to provide a visual reference for the users of the design system. This helps in maintaining a reliable and up-to-date style guide.
 
-6. **Accessibility Changes**: If changes are made to improve accessibility (like ARIA attributes, keyboard navigation, etc.), these should be documented both in the code and in the Storybook examples to guide developers on how to maintain accessibility standards when using the dropdown.
+6. **Accessibility Changes**: If changes are made to improve accessibility (like ARIA attributes, keyboard navigation, etc.), these should be documented both in the code and in the Storybook examples to guide developers on how to maintain accessibility standards when using the Dropdown.
 
 In summary, documentation should be considered a living document that evolves alongside the codebase. It's essential for maintaining the usability and understandability of the components within the design system.
 
