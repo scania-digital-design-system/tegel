@@ -122,10 +122,10 @@ async function generateIcons() {
     fs.writeFileSync(`${tempFolder}/${icon.name}.svg`, response.data);
   }
 
-  // convert iconsNamesArray to string separated by pipe
   const icons = `export const iconsCollection = '${JSON.stringify(iconsArray)}';
   export const iconsNames = ${JSON.stringify(iconsNamesArray)};`;
 
+  // convert iconsNamesArray to enum
   const iconNameType = `export type IconNames = ${iconsNamesArray
     .map((name) => `'${name}'`)
     .join(' | ')};`;
@@ -136,7 +136,7 @@ async function generateIcons() {
   // write icons into /component/icons folder for component and story usage
   fs.writeFileSync(`${iconComponentFolder}/iconsArray.js`, icons);
 
-  // appent type IconName to core global.d.ts
+  // write type IconNames to core types/Icons.ts
   fs.writeFileSync(`${typesFolder}/Icons.ts`, iconNameType);
 }
 
