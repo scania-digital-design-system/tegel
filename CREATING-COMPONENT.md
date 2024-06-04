@@ -5,6 +5,7 @@ To create a new component in the Tegel design system, follow these step-by-step 
 Tegel design system is built as a collection of WebComponents made with Stencil.
 We recommend reading [WebComponents](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Stencil](https://stenciljs.com/docs/introduction) documentation.
 Every component has a test file in the `test` folder which uses [Playwright](https://playwright.dev/docs/intro).
+We recommend reading [CODE_STYLE.md](.github/CODE_STYLE.md) to understand the coding standards and best practices.
 
 ### 1. Clone the Repository
 First, you need to clone the repository from GitHub. Open your terminal and run the following command:
@@ -24,7 +25,7 @@ cd ../..
 
 ### 3. Create a New Branch
 Create a new branch from develop branch to keep your changes separate from the main codebase.
-Use prefix `feat/` for feature branches and `fix/` for bug fixes.
+Use prefix `feat/` for feature branches and `fix/` for bug fixes. More details about the branch naming can be found in [CODE_STYLE.md](.github/CODE_STYLE.md).
 ```bash
 git checkout -b feat/new-button
 ```
