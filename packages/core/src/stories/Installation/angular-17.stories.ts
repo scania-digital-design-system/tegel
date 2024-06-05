@@ -46,7 +46,7 @@ export const Angular17 = {
                         <p class="tds-body-01"><strong>Published: 2024-06-04</strong></p>
                         <h1 class="tds-headline-02">Using Tegel in Angular 17 and above</h1>
                         <p>
-                            Tegel offers 2 versions of Angular wrappers for all web components. <br> <code>@scania/tegel-angular</code> and <code>@scania/tegel-angular-17</code>.
+                            Tegel offers two versions of Angular wrappers for all web components. <br> <code>@scania/tegel-angular</code> and <code>@scania/tegel-angular-17</code>.
                             <br>
                             <ul>
                             <li><code>@scania/tegel-angular</code> is the older version and is compatible up to Angular 16.</li>
