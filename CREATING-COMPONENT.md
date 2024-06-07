@@ -2,7 +2,7 @@
 
 To create a new component in the Tegel design system, follow these step-by-step instructions:
 
-Tegel design system is built as a collection of WebComponents made with Stencil.
+Tegel design system is built as a collection of Web Components made with Stencil.
 We recommend reading [WebComponents](https://developer.mozilla.org/en-US/docs/Web/Web_Components) and [Stencil](https://stenciljs.com/docs/introduction) documentation.
 Every component has a test file in the `test` folder which uses [Playwright](https://playwright.dev/docs/intro).
 We recommend reading [CODE_STYLE.md](.github/CODE_STYLE.md) to understand the coding standards and best practices.
