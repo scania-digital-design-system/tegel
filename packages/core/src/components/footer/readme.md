@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                           | Type                       | Default |
-| ------------- | -------------- | ----------------------------------------------------- | -------------------------- | ------- |
-| `modeVariant` | `mode-variant` | Mode variant of the component, based on current mode. | `"primary" \| "secondary"` | `null`  |
+| Property        | Attribute        | Description                                           | Type                       | Default |
+| --------------- | ---------------- | ----------------------------------------------------- | -------------------------- | ------- |
+| `compactDesign` | `compact-design` | Compact design of the component.                      | `boolean`                  | `false` |
+| `modeVariant`   | `mode-variant`   | Mode variant of the component, based on current mode. | `"primary" \| "secondary"` | `null`  |
 
 
 ## Slots

@@ -18,6 +18,9 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
+  /** Compact design of the component. */
+  @Prop() compactDesign: boolean = false;
+
   copyrightText: string = `Copyright © ${new Date().getFullYear()} Scania`;
 
   render() {
@@ -30,10 +33,15 @@ export class TdsFooter {
         <footer>
           {usesTopSlot && <slot name="top"></slot>}
           <div class="footer-main">
-            <div class="footer-main-top">
-              {usesStartSlot && <slot name="start"></slot>}
-              {usesEndSlot && <slot name="end"></slot>}
-            </div>
+            {!this.compactDesign ? (
+              <div class="footer-main-top">
+                {usesStartSlot && <slot name="start"></slot>}
+                {usesEndSlot && <slot name="end"></slot>}
+              </div>
+            ) : (
+              ''
+            )}
+
             <div class="footer-main-bottom">
               <small class="copyright">
                 {usesCopyrightSlot ? <slot name="copyright"></slot> : this.copyrightText}
