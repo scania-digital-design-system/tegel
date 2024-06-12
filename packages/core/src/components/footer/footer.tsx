@@ -33,14 +33,12 @@ export class TdsFooter {
         <footer>
           {usesTopSlot && <slot name="top"></slot>}
           <div class="footer-main">
-            {!this.compactDesign ? (
+            {!this.compactDesign && (
               <div class="footer-main-top">
                 {usesStartSlot && <slot name="start"></slot>}
                 {usesEndSlot && <slot name="end"></slot>}
               </div>
-            ) : (
-              ''
-            )}
+            )
 
             <div class="footer-main-bottom">
               <small class="copyright">
