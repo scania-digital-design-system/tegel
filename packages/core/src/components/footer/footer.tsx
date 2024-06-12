@@ -38,8 +38,7 @@ export class TdsFooter {
                 {usesStartSlot && <slot name="start"></slot>}
                 {usesEndSlot && <slot name="end"></slot>}
               </div>
-            )
-
+            )}
             <div class="footer-main-bottom">
               <small class="copyright">
                 {usesCopyrightSlot ? <slot name="copyright"></slot> : this.copyrightText}
