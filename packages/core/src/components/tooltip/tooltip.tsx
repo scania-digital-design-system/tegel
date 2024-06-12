@@ -27,8 +27,11 @@ export class TdsTooltip {
   /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
   @Prop() mouseOverTooltip: boolean = false;
 
+  /** What triggers the popover to show */
+  @Prop() trigger: 'click' | 'hover' = 'hover';
+
   /** Prop in control of showing and hiding prop */
-  @Prop({ mutable: true }) show: boolean = false;
+  @Prop({ mutable: true }) show: boolean = null;
 
   /** Placement of Tooltip. */
   @Prop() placement: Placement = 'bottom';
@@ -82,7 +85,13 @@ export class TdsTooltip {
           }}
           selector={this.selector}
           referenceEl={this.referenceEl}
-          trigger={this.mouseOverTooltip ? 'hover-popover' : 'hover'}
+          trigger={
+            this.trigger === 'hover'
+              ? this.mouseOverTooltip
+                ? 'hover-popover'
+                : 'hover'
+              : this.trigger
+          }
           modifiers={this.popperjsExtraModifiers}
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
