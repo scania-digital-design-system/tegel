@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
+import { IconNames } from '../../types/Icons';
 
 /**
  * @slot header - Slot for the Header of the Banner
@@ -16,7 +17,7 @@ export class TdsBanner {
   @Element() host: HTMLElement;
 
   /** Name of the icon for the component. For error and information variant, the icon is predefined. */
-  @Prop() icon: string;
+  @Prop() icon: IconNames;
 
   /** Header text. */
   @Prop() header: string;

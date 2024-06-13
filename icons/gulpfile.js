@@ -12,6 +12,7 @@ const outputFolder = 'dist';
 const iconFolder = './src/svg/*.svg';
 const tempFolder = 'temp';
 const iconComponentFolder = '../packages/core/src/components/icon/';
+const typesFolder = '../packages/core/src/types/';
 
 const runTimestamp = Math.round(Date.now() / 1000);
 const fontName = 'tds-icons';
@@ -124,11 +125,19 @@ async function generateIcons() {
   const icons = `export const iconsCollection = '${JSON.stringify(iconsArray)}';
   export const iconsNames = ${JSON.stringify(iconsNamesArray)};`;
 
+  // convert iconsNamesArray to enum
+  const iconNameType = `export type IconNames = ${iconsNamesArray
+    .map((name) => `'${name}'`)
+    .join(' | ')};`;
+
   // write file into dist folder for testing/debugging purposes
   fs.writeFileSync(`${outputFolder}/iconsArrays.js`, icons);
 
   // write icons into /component/icons folder for component and story usage
   fs.writeFileSync(`${iconComponentFolder}/iconsArray.js`, icons);
+
+  // write type IconNames to core types/Icons.ts
+  fs.writeFileSync(`${typesFolder}/Icons.ts`, iconNameType);
 }
 
 // create icon fonts from cleaned svgs
