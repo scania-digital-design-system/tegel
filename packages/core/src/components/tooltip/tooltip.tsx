@@ -72,6 +72,13 @@ export class TdsTooltip {
     this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
   }
 
+  determineTrigger() {
+    if (this.trigger === 'hover') {
+      return this.mouseOverTooltip ? 'hover-popover' : 'hover';
+    }
+    return this.trigger;
+  }
+
   render() {
     return (
       <Host>
@@ -85,13 +92,7 @@ export class TdsTooltip {
           }}
           selector={this.selector}
           referenceEl={this.referenceEl}
-          trigger={
-            this.trigger === 'hover'
-              ? this.mouseOverTooltip
-                ? 'hover-popover'
-                : 'hover'
-              : this.trigger
-          }
+          trigger={this.determineTrigger()}
           modifiers={this.popperjsExtraModifiers}
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
