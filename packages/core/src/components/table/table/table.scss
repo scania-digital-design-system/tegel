@@ -11,3 +11,19 @@
 .tds-table--responsive {
   width: 100%;
 }
+
+.tds-table--horizontall-scroll {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  height: 4px;
+  width: 4px;
+  background: var(--tds-grey-200);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--tds-grey-500);
+}

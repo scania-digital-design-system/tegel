@@ -63,6 +63,12 @@ export class TdsTable {
   /** Variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = null;
 
+  /** Enabling horizontal scroll */
+  @Prop() horizontalScroll: boolean = false;
+
+  /** Width of the used as the constraint width in conjunction with horizontal scrolling  */
+  @Prop() width?: string = '300px';
+
   /** ID used for internal Table functionality and events, must be unique.
    *
    * **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table,
@@ -159,12 +165,14 @@ export class TdsTable {
         }}
       >
         <table
+          style={this.horizontalScroll ? { width: this.width } : {}}
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
             'tds-table--divider': this.verticalDividers,
             'tds-table--no-min-width': this.noMinWidth,
             'tds-table--responsive': this.responsive,
+            'tds-table--horizontall-scroll': this.horizontalScroll,
           }}
         >
           <slot />
