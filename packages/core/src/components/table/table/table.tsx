@@ -66,7 +66,7 @@ export class TdsTable {
   /** Enabling horizontal scroll */
   @Prop() horizontalScroll: boolean = false;
 
-  /** Width of the used as the constraint width in conjunction with horizontal scrolling  */
+  /** Width of the table, used as the constraint for horizontal scrolling. */
   @Prop() width?: string = '300px';
 
   /** ID used for internal Table functionality and events, must be unique.
