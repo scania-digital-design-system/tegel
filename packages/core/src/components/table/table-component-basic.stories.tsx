@@ -114,7 +114,7 @@ export default {
       },
     },
     horizontalScroll: {
-      name: 'Horizontall scrolling',
+      name: 'Horizontal scrolling',
       description:
         'By enabling horizontal scrolling you can specify the width of the table in which it should be scrollable on the x-axis',
       control: {
