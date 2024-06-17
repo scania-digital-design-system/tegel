@@ -1,4 +1,5 @@
 @import '../../../mixins/box-sizing';
+@import '../../../mixins/scrollbar';
 
 :host,
 .tds-table {
@@ -16,14 +17,5 @@
   display: block;
   overflow-x: scroll;
   white-space: nowrap;
-}
-
-::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
-  background: var(--tds-grey-200);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--tds-grey-500);
+  @include tds-scrollbar(horizontal);
 }

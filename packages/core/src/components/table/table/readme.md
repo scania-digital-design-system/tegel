@@ -18,7 +18,7 @@
 | `responsive`       | `responsive`        | Enables Table to take 100% available width with equal spacing of columns                                                                                                                                                                    | `boolean`                  | `false`              |
 | `tableId`          | `table-id`          | ID used for internal Table functionality and events, must be unique.  **NOTE**: If you're listening for Table events, you need to set this ID yourself to identify the Table, as the default ID is random and will be different every time. | `string`                   | `generateUniqueId()` |
 | `verticalDividers` | `vertical-dividers` | Enables style with vertical dividers between columns                                                                                                                                                                                        | `boolean`                  | `false`              |
-| `width`            | `width`             | Width of the used as the constraint width in conjunction with horizontal scrolling                                                                                                                                                          | `string`                   | `'300px'`            |
+| `width`            | `width`             | Width of the table, used as the constraint for horizontal scrolling.                                                                                                                                                                        | `string`                   | `'300px'`            |
 
 
 ## Methods
