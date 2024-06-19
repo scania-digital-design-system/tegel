@@ -1,17 +1,17 @@
 import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
-  title: 'Foundations/Gridnew',
+  title: 'Foundations/GridNew',
   parameters: {
     layout: 'fullscreen',
   },
   args: {
-    fluidContainer: false,
+    fixedGrid: false,
   },
   argTypes: {
-    fluidContainer: {
-      name: 'Fluid container',
-      description: 'Set container to fluid or not',
+    fixedGrid: {
+      name: 'Fixed grid',
+      description: 'Set grid to fixed',
       control: {
         type: 'boolean',
       },
@@ -37,12 +37,12 @@ const style = formatHtmlPreview(`
   </style>
 `);
 
-const GridFluidTemplate = ({ fluidContainer }) =>
+const GridFluidTemplate = ({ fixedGrid }) =>
   formatHtmlPreview(`
-    <h4>Grid fluid New</h4>
+    <h4>Grid New</h4>
     
     <div class="tds-grid-container">
-      <div class="${fluidContainer === true ? 'tds-grid-fluid' : 'tds-grid-fixed'}">
+      <div class="${fixedGrid ? 'tds-grid-fixed' : 'tds-grid-fluid'}">
         <div class="tds-grid-item">1</div>
         <div class="tds-grid-item">2</div>
         <div class="tds-grid-item">3</div>
