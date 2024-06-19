@@ -33,46 +33,28 @@ const style = formatHtmlPreview(`
       justify-content: center;
     }
   
-    .tds-grid-fixed {
+    .tds-grid-fixed, .tds-grid-fluid {
       outline: 1px solid red;
       background: #fbc5c5;
       display: grid;
-      height: 100vh;
       width: calc(100% - 32px);
       padding: 0 16px;
       grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      grid-column-gap: 16px;
-    }
-
-    .tds-grid-fluid {
-      outline: 1px solid red;
-      background: #fbc5c5;
-      display: grid;
-      height: 100vh;
-      width: calc(100% - 32px);
-      padding: 0 16px;
-      grid-template-columns: repeat(6, 1fr);
-      grid-template-rows: repeat(6, 1fr);
-      grid-column-gap: 16px;
+      grid-template-rows: repeat(2,1fr);
+      grid-gap: 16px;
     }
 
     .tds-grid-item {
-      grid-row-start: 1;
-      grid-row-end: 7;
+      height: 200px;
       background: #ef9191;
       border: 1px solid #ccc;
       text-align: center;
     }
     
     @media screen and (min-width: 416px) {
-        .tds-grid-item {
-        grid-row-end: 13;
-      }
-
       .tds-grid-fluid {
         grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(12, 1fr);
+        grid-template-rows: 1fr;
       }
 
       .tds-grid-fixed {
@@ -84,7 +66,7 @@ const style = formatHtmlPreview(`
     .tds-grid-fixed {
       width: calc(604px - 32px);
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: repeat(12, 1fr);
+      grid-template-rows: 1fr;
     }
   }
 
@@ -126,44 +108,7 @@ const style = formatHtmlPreview(`
   }
   </style>
   
-  <script>
-    /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
-    let width = window.innerWidth;
-
-    window.onresize = () => {
-      const gridContainer = document.querySelector(".tds-grid-container");
-
-      const children = Array.from(gridContainer.children[0].children);
-      const className = gridContainer.children[0].className;
-
-      const lastSixChildren = children.slice(-6);
-
-      if (className === "tds-grid-fluid") {
-        if (width <= 415) {
-          lastSixChildren.forEach((child) => {
-            child.classList.add("hide-on-small-screen");
-          });
-        } else {
-          lastSixChildren.forEach((child) => {
-            child.classList.remove("hide-on-small-screen");
-          });
-        }
-      }
-
-      if (className === "tds-grid-fixed") {
-        if (width <= 604) {
-          lastSixChildren.forEach((child) => {
-            child.classList.add("hide-on-small-screen");
-          });
-        } else {
-          lastSixChildren.forEach((child) => {
-            child.classList.remove("hide-on-small-screen");
-          });
-        }
-      }
-      width = window.innerWidth;
-    };
-  </script>
+  
 `);
 
 const GridFluidTemplate = ({ fluidContainer }) =>
