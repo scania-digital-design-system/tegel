@@ -18,9 +18,6 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Compact design of the component. */
-  @Prop() compactDesign: boolean = false;
-
   copyrightText: string = `Copyright © ${new Date().getFullYear()} Scania`;
 
   render() {
