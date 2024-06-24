@@ -42,22 +42,14 @@ export default {
         type: 'boolean',
       },
     },
-    compactDesign: {
-      name: 'Compact Design',
-      description: 'Makes footer compact',
-      control: {
-        type: 'boolean',
-      },
-    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     topPart: false,
-    compactDesign: false,
   },
 };
 
-const Template = ({ topPart, modeVariant, compactDesign }) =>
+const Template = ({ topPart, modeVariant }) =>
   formatHtmlPreview(
     `
     <main>
@@ -68,7 +60,6 @@ const Template = ({ topPart, modeVariant, compactDesign }) =>
       </div>
     </main>
     <tds-footer 
-    ${`compact-design="${compactDesign}"`}
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
       ${
