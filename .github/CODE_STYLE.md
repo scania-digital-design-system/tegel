@@ -15,9 +15,16 @@ Avoid using single-letter variable names, instead of `i` for index, be descripti
 - Branch out of `develop` branch for day-to-day work
 - Branch named `main` is updated once release is done by merging develop to it
 - Use task type as to separate branches in different categories (fix, feat, chore, build, docs, release...)
-- Start the name of the branch with Jira ticket number followed by short description of task
+- In case you are IXIB team member, start the name of the branch with Jira ticket number followed by short description of task
 - example: `fix/CDEP-1369-banner-color-correction`
 - If Jira ticket number is not available to you, use Github ticket number as prefix instead. If no issue exists, create that first before creating the branch.
+
+## Commit messages
+- Tegel is using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to manage commit messages.
+- Use the commit message to explain what the commit does and which component it affects.
+- example: `fix(banner): correct color`
+- There is commit lint configured to enforce conventional commit format. If you are not following the format, the commit will be rejected.
+- In case you need help, there is a script that will generate a conventional commit message for you. You can use it by running `npm run commit` and following the prompts.
 
 ## Unit testing approach
 
