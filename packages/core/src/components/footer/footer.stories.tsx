@@ -35,9 +35,23 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
-    topPart: {
-      name: 'Top part',
-      description: 'Adds the top part of the Footer with more links.',
+    topSlot: {
+      name: 'Top slot',
+      description: 'Adds content to the top slot of the Footer (page links).',
+      control: {
+        type: 'boolean',
+      },
+    },
+    startSlot: {
+      name: 'Start slot',
+      description: 'Adds content to the start slot of the Footer (legal links).',
+      control: {
+        type: 'boolean',
+      },
+    },
+    endSlot: {
+      name: 'End slot',
+      description: 'Adds content to the end slot of the Footer (social media links).',
       control: {
         type: 'boolean',
       },
@@ -45,11 +59,13 @@ export default {
   },
   args: {
     modeVariant: 'Inherit from parent',
-    topPart: false,
+    topSlot: true,
+    startSlot: true,
+    endSlot: true,
   },
 };
 
-const Template = ({ topPart, modeVariant }) =>
+const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
   formatHtmlPreview(
     `
     <main>
@@ -59,11 +75,11 @@ const Template = ({ topPart, modeVariant }) =>
         </div>
       </div>
     </main>
-    <tds-footer
+    <tds-footer 
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     >
       ${
-        topPart
+        topSlot
           ? `
       <div slot="top">
         <tds-footer-group title-text="Title">
@@ -117,6 +133,9 @@ const Template = ({ topPart, modeVariant }) =>
       `
           : ''
       }
+      ${
+        startSlot
+          ? `
       <div slot="start">
         <tds-footer-group>
           <tds-footer-item >
@@ -131,8 +150,14 @@ const Template = ({ topPart, modeVariant }) =>
           <tds-footer-item >
             <a href="#"> Link text</a>
           </tds-footer-item>
-        </tds-footer-group>
-      </div>
+          </tds-footer-group>
+        </div>
+      `
+          : ''
+      } 
+      ${
+        endSlot
+          ? `
       <div slot="end">
         <tds-footer-group>
           <tds-footer-item >
@@ -146,8 +171,10 @@ const Template = ({ topPart, modeVariant }) =>
           </tds-footer-item>
         </tds-footer-group>
       </div>
+        `
+          : ''
+      }
     </tds-footer>
-  
   `,
   );
 
