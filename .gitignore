@@ -9,6 +9,7 @@ stencil-generated
 
 icons/dist
 
+grid/dist
 
 *~
 *.sw[mnpcod]

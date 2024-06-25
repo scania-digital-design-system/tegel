@@ -5,11 +5,11 @@
 // Colors
 @import '../../../../color/color';
 
-// Grid
-@import '../../../../grid/grid';
+// Grid (Deprecated - will be removed in version 2.0)
+@import '../../../../grid/grid-deprecated';
 
 // Grid new
-@import './grid-new';
+@import './grid';
 
 // Typography
 @import '../../../../typography/scania-fonts';
