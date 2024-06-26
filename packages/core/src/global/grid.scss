@@ -9,7 +9,6 @@
   width: calc(100% - 32px);
   padding: 0 16px;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
   grid-gap: 16px;
 }
 
@@ -20,7 +19,6 @@
 
   .tds-grid-fluid {
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 1fr;
   }
 }
 
@@ -28,7 +26,6 @@
   .tds-grid-fixed {
     width: calc(604px - 32px);
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 1fr;
   }
 }
 
