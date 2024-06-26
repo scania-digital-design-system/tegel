@@ -113,27 +113,15 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    horizontalScroll: {
-      name: 'Horizontal scrolling',
-      description:
-        'By enabling horizontal scrolling you can specify the width of the table in which it should be scrollable on the x-axis',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
-    width: {
-      name: 'Table width',
-      description: 'Used in conjunction with horizontal scrolling flag',
+    horizontalScrollWidth: {
+      name: 'Horizontal scrolling table width',
+      description: 'Used to set the boundary with of horizontal scrolling',
       control: {
         type: 'text',
       },
       table: {
         defaultValue: { summary: '300px' },
       },
-      if: { arg: 'horizontalScroll', eq: true },
     },
     column1Width: {
       name: 'Column 1 width',
@@ -180,8 +168,7 @@ export default {
     responsiveDesign: false,
     disablePadding: false,
     verticalDivider: false,
-    horizontalScroll: false,
-    width: '300px',
+    horizontalScrollWidth: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -198,8 +185,7 @@ const BasicTemplate = ({
   responsiveDesign,
   disablePadding,
   verticalDivider,
-  horizontalScroll,
-  width,
+  horizontalScrollWidth,
   noMinWidth,
   column1Width,
   column2Width,
@@ -213,8 +199,7 @@ const BasicTemplate = ({
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
-      ${horizontalScroll ? 'horizontal-scroll' : ''}
-      ${horizontalScroll ? `width="${width}"` : ''}
+      ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
     >
       <tds-table-header>
           <tds-header-cell cell-key='truck' cell-value='Truck type' ${

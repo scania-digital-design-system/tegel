@@ -11,6 +11,7 @@ import {
   Element,
   Watch,
   Method,
+  State,
 } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
 
@@ -23,6 +24,7 @@ type Props = {
   responsive: boolean;
   modeVariant: 'primary' | 'secondary' | null;
   textAlign: string;
+  horizontalScrollWidth?: string;
 };
 
 export type InternalTdsTablePropChange = {
@@ -63,11 +65,10 @@ export class TdsTable {
   /** Variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = null;
 
-  /** Enabling horizontal scroll */
-  @Prop() horizontalScroll: boolean = false;
-
-  /** Width of the table, used as the constraint for horizontal scrolling. */
-  @Prop() width?: string = '300px';
+  /** Width of the table, used as the constraint for horizontal scrolling.
+   * **NOTE**: this will disable usage of the responsive flag
+   * */
+  @Prop() horizontalScrollWidth?: string = null;
 
   /** ID used for internal Table functionality and events, must be unique.
    *
@@ -75,6 +76,10 @@ export class TdsTable {
    * as the default ID is random and will be different every time.
    */
   @Prop() tableId: string = generateUniqueId();
+
+  @State() enableHorizontalScrollToolbarDesign: boolean = false;
+
+  @State() enableHorizontalScrollFooterDesign: boolean = false;
 
   @Element() host: HTMLElement;
 
@@ -155,6 +160,21 @@ export class TdsTable {
     this.emitInternalTdsPropChange('modeVariant', newValue);
   }
 
+  @Watch('horizontalScrollWidth')
+  widthChanged(newValue: string) {
+    this.emitInternalTdsPropChange('horizontalScrollWidth', newValue);
+  }
+
+  componentWillRender() {
+    if (this.horizontalScrollWidth) {
+      this.enableHorizontalScrollToolbarDesign =
+        this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+
+      this.enableHorizontalScrollFooterDesign =
+        this.host.closest('tds-table').getElementsByTagName('tds-table-footer').length >= 1;
+    }
+  }
+
   render() {
     return (
       <Host
@@ -165,14 +185,22 @@ export class TdsTable {
         }}
       >
         <table
-          style={this.horizontalScroll ? { width: this.width } : {}}
+          style={this.horizontalScrollWidth ? { width: this.horizontalScrollWidth } : {}}
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
             'tds-table--divider': this.verticalDividers,
             'tds-table--no-min-width': this.noMinWidth,
             'tds-table--responsive': this.responsive,
-            'tds-table--horizontall-scroll': this.horizontalScroll,
+            'tds-table--horizontal-scroll': !!this.horizontalScrollWidth,
+            'tds-table--horizontal-scroll-toolbar':
+              this.enableHorizontalScrollToolbarDesign && !this.compactDesign,
+            'tds-table--horizontal-scroll-toolbar-compact':
+              this.enableHorizontalScrollToolbarDesign && this.compactDesign,
+            'tds-table--horizontal-scroll-footer':
+              this.enableHorizontalScrollFooterDesign && !this.compactDesign,
+            'tds-table--horizontal-scroll-footer-compact':
+              this.enableHorizontalScrollFooterDesign && this.compactDesign,
           }}
         >
           <slot />

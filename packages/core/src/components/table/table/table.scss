@@ -13,9 +13,25 @@
   width: 100%;
 }
 
-.tds-table--horizontall-scroll {
+.tds-table--horizontal-scroll {
   display: block;
   overflow-x: scroll;
   white-space: nowrap;
   @include tds-scrollbar(horizontal);
+}
+
+.tds-table--horizontal-scroll-toolbar {
+  margin-top: 64px;
+}
+
+.tds-table--horizontal-scroll-toolbar-compact {
+  margin-top: 56px;
+}
+
+.tds-table--horizontal-scroll-footer {
+  margin-bottom: 49px;
+}
+
+.tds-table--horizontal-scroll-footer-compact {
+  margin-bottom: 33px;
 }

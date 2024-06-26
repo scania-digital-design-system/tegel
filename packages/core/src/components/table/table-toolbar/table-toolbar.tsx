@@ -15,6 +15,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
   'noMinWidth',
   'verticalDividers',
+  'horizontalScrollWidth',
 ];
 
 /**
@@ -41,6 +42,8 @@ export class TdsTableToolbar {
   @State() whiteBackground: boolean = false;
 
   @State() tableId: string = '';
+
+  @State() horizontalScrollWidth: string = null;
 
   @Element() host: HTMLElement;
 
@@ -103,7 +106,13 @@ export class TdsTableToolbar {
 
   render() {
     return (
-      <Host class={this.compactDesign ? 'tds-table--compact' : ''}>
+      <Host
+        class={{
+          'tds-table--compact': this.compactDesign,
+          'toolbar__horizontal-scroll': !!this.horizontalScrollWidth,
+        }}
+        style={this.horizontalScrollWidth ? { width: this.horizontalScrollWidth } : {}}
+      >
         <div class="tds-table__upper-bar-flex">
           <caption class="tds-table__title">{this.tableTitle}</caption>
           <div class="tds-table__actionbar">

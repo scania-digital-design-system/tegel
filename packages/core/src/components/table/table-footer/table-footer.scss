@@ -116,6 +116,12 @@
   }
 }
 
+:host(.footer__horizontal-scroll) {
+  display: inline-table;
+  position: absolute;
+  margin-top: 10px; // height of the scrollbar
+}
+
 @keyframes tds-shake-animation {
   10%,
   90% {
