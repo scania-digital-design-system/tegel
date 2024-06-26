@@ -1,3 +1,4 @@
+// mobile first styling
 .tds-grid-container {
   display: flex;
   justify-content: center;
@@ -12,6 +13,7 @@
   grid-gap: 16px;
 }
 
+// mobile
 @media screen and (min-width: 416px) {
   .tds-grid-fixed {
     width: calc(416px - 32px);
@@ -22,13 +24,15 @@
   }
 }
 
-@media screen and (min-width: 604px) {
+// tablet-sm
+@media screen and (min-width: 608px) {
   .tds-grid-fixed {
-    width: calc(604px - 32px);
+    width: calc(608px - 32px);
     grid-template-columns: repeat(12, 1fr);
   }
 }
 
+// tablet-md
 @media screen and (min-width: 796px) {
   .tds-grid-fixed {
     width: calc(796px - 32px);
@@ -40,6 +44,7 @@
   }
 }
 
+// tablet-lg
 @media screen and (min-width: 976px) {
   .tds-grid-fixed {
     width: calc(976px - 32px);
@@ -54,12 +59,14 @@
   }
 }
 
+// desktop-md
 @media screen and (min-width: 1440px) {
   .tds-grid-fixed {
     width: calc(1440px - 64px);
   }
 }
 
+// desktop-lg
 @media screen and (min-width: 1920px) {
   .tds-grid-fixed {
     width: calc(1920px - 64px);
