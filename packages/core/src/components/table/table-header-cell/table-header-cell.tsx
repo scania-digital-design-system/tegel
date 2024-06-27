@@ -46,7 +46,7 @@ export class TdsTableHeaderCell {
 
   @State() textAlignState: string;
 
-  @State() sortingDirection: 'asc' | 'desc' = 'asc';
+  @State() sortingDirection: 'asc' | 'desc' | undefined;
 
   @State() sortedByMyKey: boolean = false;
 
@@ -144,7 +144,7 @@ export class TdsTableHeaderCell {
         this.sortedByMyKey = false;
         // To sync with CSS transition timing
         setTimeout(() => {
-          this.sortingDirection = null;
+          this.sortingDirection = undefined;
         }, 200);
       }
     }
@@ -175,26 +175,19 @@ export class TdsTableHeaderCell {
   }
 
   sortButtonClick = () => {
-    // Toggling direction of sorting as we only use one button for sorting
-    if (this.sortingDirection !== 'asc') {
+    if (this.sortingDirection !== 'asc' && this.sortingDirection !== 'desc') {
       this.sortingDirection = 'asc';
     } else {
-      this.sortingDirection = 'desc';
+      this.sortingDirection = this.sortingDirection === 'asc' ? 'desc' : 'asc';
     }
-    // Settings to true we can set enable CSS class for "active" state of column
     this.sortedByMyKey = true;
 
-    /* Emit sort event */
     this.tdsSort.emit({
       tableId: this.tableId,
       columnKey: this.cellKey,
       sortingDirection: this.sortingDirection,
     });
 
-    /**
-     * Emits sortButtonClicked event which is listened to by all the header-cells.
-     * This resets the sorting button in the header-cell that was not clicked.
-     */
     this.internalSortButtonClicked.emit({
       tableId: this.tableId,
       key: this.cellKey,
@@ -214,7 +207,7 @@ export class TdsTableHeaderCell {
             <slot />
           </span>
 
-          {this.sortingDirection === null && (
+          {this.sortingDirection === undefined && (
             <svg
               class="tds-table__header-button-icon"
               fill="currentColor"
@@ -238,11 +231,10 @@ export class TdsTableHeaderCell {
               />
             </svg>
           )}
-          {/* The First icon is arrow down as the first-set direction is ascending, clicking it again rotates the icon as we set descending order */}
-          {this.sortingDirection && (
+          {this.sortingDirection && ['asc', 'desc'].includes(this.sortingDirection) && (
             <svg
               class={`tds-table__header-button-icon ${
-                this.sortingDirection === 'desc' ? 'tds-table__header-button-icon--rotate' : ''
+                this.sortingDirection === 'asc' ? 'tds-table__header-button-icon--rotate' : ''
               }`}
               fill="currentColor"
               xmlns="http://www.w3.org/2000/svg"
@@ -288,7 +280,6 @@ export class TdsTableHeaderCell {
           'tds-table--toolbar-available': this.enableToolbarDesign,
         }}
         style={{ width: this.customWidth }}
-        // Calling actions from here to enable hover functionality for both sortable and unsortable Tables
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
       >
