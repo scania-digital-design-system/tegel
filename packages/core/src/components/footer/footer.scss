@@ -26,10 +26,16 @@
 
   slot[name='start'],
   slot[name='end'] {
+    display: flex;
+
     &::slotted(*) {
       display: flex;
       column-gap: 24px;
     }
+  }
+
+  slot[name='end'] {
+    margin-left: auto;
   }
 
   .footer-main-bottom {
@@ -85,6 +91,10 @@
         flex-direction: row;
         gap: 8px;
       }
+    }
+
+    slot[name='end'] {
+      margin-left: unset;
     }
 
     .footer-main-bottom {
