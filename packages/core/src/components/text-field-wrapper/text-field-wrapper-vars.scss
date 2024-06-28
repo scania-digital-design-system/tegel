@@ -1,0 +1,129 @@
+:root,
+.tds-mode-light {
+  --tds-text-field-background-primary: var(--tds-grey-50);
+  --tds-text-field-background-secondary: var(--tds-white);
+  --tds-text-field-background: var(--tds-text-field-background-primary);
+  --tds-text-field-color: var(--tds-grey-600);
+  --tds-text-field-placeholder: var(--tds-grey-500);
+  --tds-text-field-data-color: var(--tds-grey-868);
+
+  //Disabled
+  --tds-text-field-background-disabled-primary: var(--tds-grey-50);
+  --tds-text-field-background-disabled-secondary: var(--tds-white);
+  --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+  --tds-text-field-color-disabled: var(--tds-grey-400);
+  --tds-text-field-placeholder-disabled: var(--tds-grey-400);
+  --tds-text-field-label-disabled: var(--tds-grey-400);
+  --tds-text-field-ps-color-disabled: var(--tds-grey-400);
+
+  //Label
+  --tds-text-field-label-color: var(--tds-grey-700);
+  --tds-text-field-label-inside-color: var(--tds-grey-700);
+  --tds-text-field-placeholder-focus-color: var(--tds-grey-500);
+
+  //Highlight bar
+  --tds-text-field-bar: var(--tds-blue-400);
+
+  //helper
+  --tds-text-field-helper: var(--tds-grey-600);
+
+  //error
+  --tds-text-field-border-bottom-error: var(--tds-negative);
+  --tds-text-field-helper-error: var(--tds-negative);
+  --tds-text-field-bar-error: var(--tds-negative);
+  --tds-text-field-icon-error: var(--tds-negative);
+
+  //Textcounter
+  --tds-text-field-textcounter: var(--tds-grey-700);
+  --tds-text-field-textcounter-divider: var(--tds-grey-500);
+
+  //Prefix and Suffix
+  --tds-text-field-ps-color: var(--tds-grey-600);
+  --tds-text-field-ps-color-error: var(--tds-negative);
+
+  // text-field resize icon
+  --tds-text-field-resize-icon: var(--tds-grey-500);
+
+  // Border bottom
+  --tds-text-field-border-bottom: var(--tds-grey-600);
+  --tds-text-field-border-bottom-hover: var(--tds-grey-800);
+  --tds-text-field-border-bottom-success: var(--tds-grey-958);
+
+  // Read only
+  --tds-text-field-icon-read-only-color: var(--tds-grey-958);
+  --tds-text-field-icon-read-only-label-color: var(--tds-grey-958);
+
+  .tds-mode-variant-primary {
+    --tds-text-field-background: var(--tds-text-field-background-primary);
+    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-text-field-background: var(--tds-text-field-background-secondary);
+    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
+  }
+}
+
+.tds-mode-dark {
+  --tds-text-field-background-primary: var(--tds-grey-900);
+  --tds-text-field-background: var(--tds-text-field-background-primary);
+  --tds-text-field-background-secondary: var(--tds-grey-868);
+  --tds-text-field-color: var(--tds-grey-600);
+  --tds-text-field-placeholder: var(--tds-grey-600);
+  --tds-text-field-data-color: var(--tds-grey-100);
+
+  //Disabled
+  --tds-text-field-ps-color-disabled: var(--tds-grey-700);
+  --tds-text-field-color-disabled: var(--tds-grey-800);
+  --tds-text-field-background-disabled-primary: var(--tds-grey-900);
+  --tds-text-field-background-disabled-secondary: var(--tds-grey-868);
+  --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+  --tds-text-field-placeholder-disabled: var(--tds-grey-800);
+  --tds-text-field-label-disabled: var(--tds-grey-700);
+
+  // Label
+  --tds-text-field-label-color: var(--tds-grey-100);
+  --tds-text-field-label-inside-color: var(--tds-grey-700);
+  --tds-text-field-placeholder-focus-color: var(--tds-grey-700);
+
+  //Highlight bar
+  --tds-text-field-bar: var(--tds-blue-400);
+
+  //helper
+  --tds-text-field-helper: var(--tds-grey-600);
+
+  //error
+  --tds-text-field-helper-error: var(--tds-negative);
+  --tds-text-field-bar-error: var(--tds-negative);
+  --tds-text-field-icon-error: var(--tds-negative);
+
+  //Textcounter
+  --tds-text-field-textcounter: var(--tds-grey-600);
+  --tds-text-field-textcounter-divider: var(--tds-grey-700);
+
+  //Prefix and Suffix
+  --tds-text-field-ps-color: var(--tds-grey-100);
+
+  // Textarea resize icon
+  --tds-text-field-resize-icon: var(--tds-grey-500);
+
+  // Border bottom
+  --tds-text-field-border-bottom: var(--tds-grey-600);
+  --tds-text-field-border-bottom-hover: var(--tds-grey-400);
+  --tds-text-field-border-bottom-success: var(--tds-grey-50);
+  --tds-text-field-border-bottom-error: var(--tds-negative);
+
+  // Read only
+  --tds-text-field-icon-read-only-color: var(--tds-grey-100);
+  --tds-text-field-icon-read-only-label-color: var(--tds-grey-50);
+
+  .tds-mode-variant-primary {
+    --tds-text-field-background: var(--tds-text-field-background-primary);
+    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-text-field-background: var(--tds-text-field-background-secondary);
+    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
+  }
+}
