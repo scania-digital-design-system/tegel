@@ -56,6 +56,29 @@ export class TdsTextFieldWrapper {
 
   private input: HTMLInputElement;
 
+  private observeAttributes = (): void => {
+    observeAttributes(this.input, ['disabled', 'readonly', 'required', 'maxlength'], () => {
+      forceUpdate(this.host);
+    });
+  };
+
+  private setInputStyles = (): void => {
+    this.input.classList.add('text-field-input');
+    this.input.classList.add(`text-field-input-${this.size}`);
+  };
+
+  private addInputElementEventListeners = (): void => {
+    this.input.addEventListener('input', (event: any) => {
+      this.inputValue = event.target.value;
+    });
+    this.input.addEventListener('focus', () => {
+      this.focusInput = true;
+    });
+    this.input.addEventListener('blur', () => {
+      this.focusInput = false;
+    });
+  };
+
   public connectedCallback(): void {
     this.observeAttributes(); // on every reconnect
   }
@@ -176,27 +199,4 @@ export class TdsTextFieldWrapper {
       </div>
     );
   }
-
-  private observeAttributes = (): void => {
-    observeAttributes(this.input, ['disabled', 'readonly', 'required', 'maxlength'], () => {
-      forceUpdate(this.host);
-    });
-  };
-
-  private setInputStyles = (): void => {
-    this.input.classList.add('text-field-input');
-    this.input.classList.add(`text-field-input-${this.size}`);
-  };
-
-  private addInputElementEventListeners = (): void => {
-    this.input.addEventListener('input', (event: any) => {
-      this.inputValue = event.target.value;
-    });
-    this.input.addEventListener('focus', () => {
-      this.focusInput = true;
-    });
-    this.input.addEventListener('blur', () => {
-      this.focusInput = false;
-    });
-  };
 }
