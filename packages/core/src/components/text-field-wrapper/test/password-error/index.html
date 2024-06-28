@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Text Field - Password type with error state</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-text-field-wrapper
+      size="lg"
+      state="error"
+      label="Label"
+      label-position="outside"
+      no-min-width
+    >
+      <input type="password" placeholder="Placeholder" />
+    </tds-text-field-wrapper>
+  </body>
+</html>
