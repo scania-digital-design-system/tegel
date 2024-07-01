@@ -24,6 +24,7 @@
  - [tds-dropdown-option](../dropdown/dropdown-option)
  - [tds-folder-tabs](../tabs/folder-tabs)
  - [tds-footer-group](../footer/footer-group)
+ - [tds-header-cell](../table/table-header-cell)
  - [tds-header-dropdown](../header/header-dropdown)
  - [tds-header-hamburger](../header/header-hamburger)
  - [tds-header-launcher-button](../header/header-launcher-button)
@@ -51,6 +52,7 @@ graph TD;
   tds-dropdown-option --> tds-icon
   tds-folder-tabs --> tds-icon
   tds-footer-group --> tds-icon
+  tds-header-cell --> tds-icon
   tds-header-dropdown --> tds-icon
   tds-header-hamburger --> tds-icon
   tds-header-launcher-button --> tds-icon
