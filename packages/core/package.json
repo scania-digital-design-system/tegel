@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.9.1",
+  "version": "1.11.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -22,6 +22,9 @@
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/components/components.esm.js",
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts"
+    },
     "./dist/tegel/tegel.css": "./dist/tegel/tegel.css",
     "./tds-accordion-item": {
       "import": "./dist/components/tds-accordion-item.js",
