@@ -79,6 +79,17 @@ export default {
         },
       },
     },
+    trigger: {
+      name: 'Type of trigger event',
+      description: 'Set if tooltip should show on click or on hover',
+      control: {
+        type: 'radio',
+      },
+      options: ['Hover', 'Click'],
+      table: {
+        defaultValue: { summary: 'hover' },
+      },
+    },
     offsetDistance: {
       name: 'Offset Distance',
       description: 'Sets the distance between the wrapped component and Tooltip',
@@ -100,6 +111,7 @@ export default {
     text: 'Text inside Tooltip',
     slot: '<p class="tds-detail-05 tds-u-m0"> Paragraph tag inside Tooltip with <b>bold</b> and <i>italic</i> tags too. </p>',
     mouseOverTooltip: true,
+    trigger: 'Hover',
     offsetDistance: 8,
     offsetSkidding: 0,
   },
@@ -123,6 +135,7 @@ const positionLookup = {
 const ComponentTooltip = ({
   tooltipPosition,
   mouseOverTooltip,
+  trigger,
   text,
   slot,
   offsetDistance,
@@ -147,7 +160,8 @@ const ComponentTooltip = ({
       selector="#my-tooltip-button"
       ${offsetDistance !== undefined ? `offset-distance="${offsetDistance}"` : ''}
       ${offsetSkidding !== undefined ? `offset-skidding="${offsetSkidding}"` : ''}
-      mouse-over-tooltip="${mouseOverTooltip}">
+      mouse-over-tooltip="${mouseOverTooltip}"
+      trigger="${trigger.toLowerCase()}">
       ${slot}
     </tds-tooltip>
 
