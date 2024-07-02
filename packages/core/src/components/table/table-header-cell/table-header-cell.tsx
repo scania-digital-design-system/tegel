@@ -287,7 +287,7 @@ export class TdsTableHeaderCell {
           'tds-table--extra-column': this.multiselect || this.expandableRows,
           'tds-table--toolbar-available': this.enableToolbarDesign,
         }}
-        style={{ width: this.customWidth }}
+        style={{ minWidth: this.customWidth }}
         // Calling actions from here to enable hover functionality for both sortable and unsortable Tables
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}

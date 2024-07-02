@@ -11,7 +11,10 @@ import {
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesign'];
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
+  'compactDesign',
+  'horizontalScrollWidth',
+];
 
 function removeShakeAnimation(e: AnimationEvent & { target: HTMLElement }) {
   e.target.classList.remove('tds-table__page-selector-input--shake');
@@ -44,6 +47,8 @@ export class TdsTableFooter {
   @State() lastCorrectValue: number;
 
   @State() tableId: string = '';
+
+  @State() horizontalScrollWidth: string = null;
 
   @Element() host: HTMLElement;
 
@@ -157,7 +162,13 @@ export class TdsTableFooter {
 
   render() {
     return (
-      <Host class={this.compactDesign ? 'tds-table--compact' : ''}>
+      <Host
+        class={{
+          'tds-table--compact': this.compactDesign,
+          'footer__horizontal-scroll': !!this.horizontalScrollWidth,
+        }}
+        style={this.horizontalScrollWidth ? { width: this.horizontalScrollWidth } : {}}
+      >
         <tr class="tds-table__footer-row">
           <td class="tds-table__footer-cell" colSpan={this.columnsNumber}>
             {this.pagination && (
