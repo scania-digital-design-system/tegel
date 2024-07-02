@@ -103,6 +103,11 @@
   }
 }
 
+:host(.toolbar__horizontal-scroll) {
+  position: absolute;
+  top: var(--tds-spacing-element-16);
+}
+
 :host(.tds-table--compact) {
   height: 56px;
 }

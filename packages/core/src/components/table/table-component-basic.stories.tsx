@@ -109,6 +109,19 @@ export default {
       control: {
         type: 'boolean',
       },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    horizontalScrollWidth: {
+      name: 'Horizontal scrolling table width',
+      description: 'Used to set the boundary with of horizontal scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '300px' },
+      },
     },
     column1Width: {
       name: 'Column 1 width',
@@ -155,6 +168,7 @@ export default {
     responsiveDesign: false,
     disablePadding: false,
     verticalDivider: false,
+    horizontalScrollWidth: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -171,6 +185,7 @@ const BasicTemplate = ({
   responsiveDesign,
   disablePadding,
   verticalDivider,
+  horizontalScrollWidth,
   noMinWidth,
   column1Width,
   column2Width,
@@ -183,7 +198,9 @@ const BasicTemplate = ({
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
-      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
+      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
+    >
       <tds-table-header>
           <tds-header-cell cell-key='truck' cell-value='Truck type' ${
             column1Width ? `custom-width="${column1Width}"` : ''
