@@ -123,7 +123,10 @@ export class TdsModal {
   handleClose = (event) => {
     const closeEvent = this.tdsClose.emit(event);
     if (!closeEvent.defaultPrevented) {
-      this.isShown = false;
+      // respecting passed show prop
+      if (this.show === undefined) {
+        this.isShown = false;
+      }
     }
   };
 
