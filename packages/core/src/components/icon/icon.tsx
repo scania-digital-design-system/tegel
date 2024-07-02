@@ -3,6 +3,7 @@
 import { Component, h, Prop, State, Host } from '@stencil/core';
 
 import { iconsCollection } from './iconsArray';
+import { IconNames } from '../../types/Icons';
 
 @Component({
   tag: 'tds-icon',
@@ -12,7 +13,7 @@ import { iconsCollection } from './iconsArray';
 export class Icon {
   /** Pass the name of the icon.
    * For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
-  @Prop({ reflect: true }) name: string = 'truck';
+  @Prop({ reflect: true }) name: IconNames = 'truck';
 
   /** Pass a size of icon as a string, for example, 32px, 1rem, 4em... */
   @Prop({ reflect: true }) size: string = '16px';
