@@ -330,6 +330,10 @@
       "import": "./dist/components/tds-text-field.js",
       "types": "./dist/components/tds-text-field.d.ts"
     },
+    "./tds-text-field-wrapper": {
+      "import": "./dist/components/tds-text-field-wrapper.js",
+      "types": "./dist/components/tds-text-field-wrapper.d.ts"
+    },
     "./tds-textarea": {
       "import": "./dist/components/tds-textarea.js",
       "types": "./dist/components/tds-textarea.d.ts"
