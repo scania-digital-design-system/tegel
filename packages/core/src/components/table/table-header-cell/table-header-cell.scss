@@ -22,6 +22,10 @@
     padding: 8px 16px;
     margin: 0;
   }
+
+  .tds-table__header-text-no-padding {
+    padding: 0;
+  }
 }
 
 :host(.tds-table__header-cell--sortable) {
@@ -106,6 +110,10 @@
 
 :host(.tds-table--no-min-width) {
   min-width: unset;
+}
+
+:host(.tds-table--no-padding) {
+  height: unset;
 }
 
 // border-radius style control
