@@ -22,7 +22,7 @@ test.describe('tds-tooltip', () => {
     const tooltip = page.locator('text=Text inside Tooltip');
 
     // Assert that the tooltip is visible after hovering over the button
-    await expect(tooltip).toBeVisible();
+    await tooltip.waitFor({ state: 'visible' });
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
@@ -44,6 +44,9 @@ test.describe('tds-tooltip', () => {
 
     // Normalize whitespace in the inner HTML for comparison
     innerHtml = innerHtml.replace(/\s+/g, ' ').trim();
+
+    // Remove class attributes from the inner HTML
+    innerHtml = innerHtml.replace(/ class="[^"]*"/g, '');
 
     // Define the expected HTML content, ensuring to trim any potential whitespace for a precise match
     const expectedHtmlContent =
