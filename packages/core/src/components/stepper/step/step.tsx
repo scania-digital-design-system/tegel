@@ -69,16 +69,16 @@ export class TdsStep {
             this.hideLabels ? 'hide-labels' : ''
           }`}
         >
-          <div class={`${this.state} content-container`}>
+          <span class={`${this.state} content-container`}>
             {this.state === 'success' || this.state === 'error' ? (
               <tds-icon
                 name={this.state === 'success' ? 'tick' : 'warning'}
                 size={this.size === 'lg' ? '20px' : '16px'}
               ></tds-icon>
             ) : (
-              this.index
+              <span class="index-container">{this.index}</span>
             )}
-          </div>
+          </span>
           {!this.hideLabels && (
             <div class={`label ${this.size} ${this.state}`}>
               <slot name="label"></slot>
