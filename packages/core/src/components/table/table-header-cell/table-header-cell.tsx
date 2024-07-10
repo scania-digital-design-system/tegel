@@ -44,6 +44,9 @@ export class TdsTableHeaderCell {
   /** Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". */
   @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center' = 'left';
 
+  /** Disables internal padding. Useful when passing other components to cell. */
+  @Prop({ reflect: true }) disablePadding: boolean = false;
+
   @State() textAlignState: string;
 
   @State() sortingDirection: 'asc' | 'desc' | undefined;
@@ -223,7 +226,13 @@ export class TdsTableHeaderCell {
       );
     }
     return (
-      <p class="tds-table__header-text" style={{ textAlign: this.textAlignState }}>
+      <p
+        class={{
+          'tds-table__header-text': true,
+          'tds-table__header-text-no-padding': this.disablePadding,
+        }}
+        style={{ textAlign: this.textAlignState }}
+      >
         {this.cellValue}
         <slot />
       </p>
@@ -250,6 +259,7 @@ export class TdsTableHeaderCell {
           'tds-table--no-min-width': this.noMinWidth,
           'tds-table--extra-column': this.multiselect || this.expandableRows,
           'tds-table--toolbar-available': this.enableToolbarDesign,
+          'tds-table--no-padding': this.disablePadding,
         }}
         style={{ minWidth: this.customWidth }}
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
