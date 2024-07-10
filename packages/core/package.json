@@ -369,7 +369,7 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
-    "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.39.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
+    "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.45.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "build-stencil:watch": "stencil build --docs-readme --watch",
