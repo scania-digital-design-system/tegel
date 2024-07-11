@@ -99,9 +99,20 @@
       font: var(--tds-detail-05);
       letter-spacing: var(--tds-detail-05-ls);
 
+      .index-container {
+        vertical-align: -webkit-baseline-middle;
+        vertical-align: -moz-middle-with-baseline;
+      }
+
       .content-container {
         height: 24px;
         min-width: 24px;
+      }
+
+      .tds-step-icon {
+        vertical-align: -webkit-baseline-middle;
+        vertical-align: -moz-middle-with-baseline;
+        margin-top: -2px;
       }
 
       &.vertical {

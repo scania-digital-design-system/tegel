@@ -72,6 +72,7 @@ export class TdsStep {
           <span class={`${this.state} content-container`}>
             {this.state === 'success' || this.state === 'error' ? (
               <tds-icon
+                class={'tds-step-icon'}
                 name={this.state === 'success' ? 'tick' : 'warning'}
                 size={this.size === 'lg' ? '20px' : '16px'}
               ></tds-icon>
