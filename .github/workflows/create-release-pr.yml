@@ -58,7 +58,7 @@ jobs:
       - name: Create release branch
         run: |
           git checkout -b release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
-          git push -u origin release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          git push -u --no-verify origin release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v5
@@ -83,5 +83,5 @@ jobs:
         run: |
           version=$(jq -r .version packages/core/package.json)  # extract version from package.json
           if [ "${{ job.status }}" == "failure" ] && [ -n "$version" ]; then
-            git push origin --delete @scania/tegel@$version
+            git push --no-verify origin --delete @scania/tegel@$version
           fi
