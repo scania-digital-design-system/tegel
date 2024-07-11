@@ -75,7 +75,7 @@ jobs:
         run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Core - Push git tag
-        run: git push origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
@@ -94,5 +94,5 @@ jobs:
         run: |
           tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --delete origin $tagname
+            git push --no-verify --delete origin $tagname
           fi

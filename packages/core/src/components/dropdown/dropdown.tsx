@@ -87,6 +87,7 @@ export class TdsDropdown {
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
+    this.dropdownList.scrollTop = 0;
     this.internalReset();
     this.handleChange();
   }

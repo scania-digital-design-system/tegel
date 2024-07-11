@@ -4,9 +4,15 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/sorting/index.html';
 
 test.describe.parallel('tds-table-sorting', () => {
-  test('renders sorting table correctly', async ({ page }) => {
+  let tableComponent;
+
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableComponent = page.getByRole('table');
+    tableComponent = page.getByRole('table');
+    await tableComponent.waitFor({ state: 'visible' });
+  });
+
+  test('renders sorting table correctly', async ({ page }) => {
     await expect(tableComponent).toHaveCount(1);
 
     /* Check for diffs in screenshot */
@@ -14,8 +20,6 @@ test.describe.parallel('tds-table-sorting', () => {
   });
 
   test('table has header "Sorting"', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* Search for header by text and see if it exists */
     const tdsTableToolbarCaption = page.getByText('Sorting');
     await expect(tdsTableToolbarCaption).toHaveCount(1);
@@ -23,7 +27,6 @@ test.describe.parallel('tds-table-sorting', () => {
   });
 
   test('column headers are clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const myEventSpy = await page.spyOnEvent('tdsSort');
     const truckTypeHeader = page.getByText('Truck type');
     await truckTypeHeader.click();
