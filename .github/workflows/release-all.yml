@@ -1,5 +1,4 @@
-name: Release All Packages
-
+name: Manual Release @scania/tegel-all
 on:
   workflow_dispatch:
     inputs:
@@ -8,6 +7,7 @@ on:
         required: true
         default: '20.9.0'
         type: string
+
       tags:
         description: 'Tag'
         required: true
@@ -17,6 +17,7 @@ on:
           - latest
           - beta
           - dev
+
       dryRun:
         description: 'Dry run'
         required: false
@@ -74,29 +75,13 @@ jobs:
         run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Core - Push git tag
-        run: git push origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
-  on-failure-core:
-    needs: release-core
-    runs-on: ubuntu-latest
-    if: always() && needs.release-core.result == 'failure'
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-
-      - name: Remove git tag on failure
-        run: |
-          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
-          if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --delete origin $tagname
-            fi
-
   release-angular:
+    needs: release-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular
@@ -107,7 +92,6 @@ jobs:
           ref: develop
 
       - name: Set up node
-        # Setup .npmrc file to publish to npm
         uses: actions/setup-node@v3
         with:
           node-version: ${{ github.event.inputs.nodeVersion }}
@@ -152,26 +136,73 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
-  on-failure-angular:
-    needs: release-angular
+  release-angular-17:
+    needs: release-core
     runs-on: ubuntu-latest
-    if: always() && needs.release-angular.result == 'failure'
-
+    env:
+      WORKING_DIRECTORY: packages/angular-17
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
           ref: develop
 
-      - name: Remove git tag on failure
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Angular-17 - Read package.json Version
+        id: version
+        working-directory: packages/angular-17/projects/components
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular-17 workspace - Install
+        working-directory: packages/angular-17
+        run: npm install
+
+      - name: Angular-17 wrapper - Install
+        working-directory: packages/angular-17/projects/components
+        run: npm install
+
+      - name: Angular-17 workspace - Install latest tegel package
+        working-directory: packages/angular-17
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Angular-17 wrapper - Install latest tegel package
+        working-directory: packages/angular-17/projects/components
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Angular-17 - Run build
+        run: npm run build-angular-17
+
+      - name: Angular-17 - Publish
+        working-directory: packages/angular-17/dist/components
         run: |
-          tagname="@scania/tegel@${{ needs.release-angular.outputs.version }}"
-          if git rev-parse $tagname >/dev/null 2>&1; then
-            git push origin --delete $tagname
+          if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
+            npm publish --tag ${{ github.event.inputs.tags }} --dry-run
+          else
+            npm publish --tag ${{ github.event.inputs.tags }}
           fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   release-react:
+    needs: release-core
     runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/react
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -203,7 +234,7 @@ jobs:
         working-directory: packages/react
         run: npm install
 
-      - name: React - Install with latest tegel package
+      - name: React - Install latest tegel package
         working-directory: packages/react
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
@@ -211,22 +242,22 @@ jobs:
         run: npm run build-react
 
       - name: React - Publish
+        working-directory: packages/react
         run: |
           if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
             npm publish --tag ${{ github.event.inputs.tags }} --dry-run
           else
             npm publish --tag ${{ github.event.inputs.tags }}
           fi
-        working-directory: packages/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
-  on-failure-react:
-    needs: release-react
+  on-failure:
+    needs: [release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: always() && needs.release-react.result == 'failure'
+    if: always() && (needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -235,31 +266,51 @@ jobs:
 
       - name: Remove git tag on failure
         run: |
-          tagname="@scania/tegel@${{ needs.release-react.outputs.version }}"
+          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --delete origin $tagname
+            git push --no-verify --delete origin $tagname
+          fi
+          tagname="@scania/tegel-angular@${{ needs.release-angular.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --no-verify --delete origin $tagname
+          fi
+          tagname="@scania/tegel-angular-17@${{ needs.release-angular-17.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --no-verify --delete origin $tagname
+          fi
+          tagname="@scania/tegel-react@${{ needs.release-react.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --no-verify --delete origin $tagname
           fi
 
-  create-pr:
-    needs: [release-core, release-angular, release-react]
+  commit-changes-in-develop:
+    needs: [release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: success()
+    if: always()
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-      - name: Core - Read Package.json Version
-        id: version
-        working-directory: packages/core
-        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          commit-message: 'release: ${{ steps.version.outputs.PACKAGE_VERSION }}'
-          title: 'release: ${{ steps.version.outputs.PACKAGE_VERSION }}'
-          body: |
-            This PR is to sync the develop branch with the main branch after the successful release of the core package.
-            Version: ${{ steps.version.outputs.PACKAGE_VERSION }}
-          base: main
-          branch: develop
+      - name: Commit changes in develop
+        run: |
+          git add .
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "chore: bump version of @scania/tegel"
+            git push --no-verify origin develop
+          else
+            echo "No changes to commit in develop"
+          fi
+
+  merge-develop-into-main:
+    needs: commit-changes-in-develop
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Merge develop into main
+        run: |
+          git checkout main
+          git merge --squash -X theirs develop
+          git add .
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "release: tegel ${{ steps.version.outputs.PACKAGE_VERSION }}"
+            git push --no-verify origin main
+          else
+            echo "No changes to commit in main"
+          fi

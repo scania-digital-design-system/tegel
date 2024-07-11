@@ -92,5 +92,5 @@ jobs:
         run: |
           tagname="@scania/tegel@${{ needs.release-react.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --delete origin $tagname
+            git push --no-verify --delete origin $tagname
           fi
