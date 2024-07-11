@@ -58,9 +58,6 @@ test.describe('tds-tooltip', () => {
     // Normalize whitespace in the inner HTML for comparison
     innerHtml = innerHtml.replace(/\s+/g, ' ').trim();
 
-    // Remove class attributes from the inner HTML
-    innerHtml = innerHtml.replace(/ class="[^"]*"/g, '');
-
     // Define the expected HTML content, ensuring to trim any potential whitespace for a precise match
     const expectedHtmlContent =
       'Paragraph tag inside of Tooltip with <b>bold</b> and <i>italic</i> tags too.';
