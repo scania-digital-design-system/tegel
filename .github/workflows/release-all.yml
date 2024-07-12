@@ -302,8 +302,6 @@ jobs:
           else
             echo "No changes to commit in develop"
           fi
-    outputs:
-      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   merge-develop-into-main:
     needs: commit-changes-in-develop
@@ -321,7 +319,7 @@ jobs:
           git merge --squash -X theirs develop
           git add .
           if ! git diff-index --quiet HEAD; then
-            git commit -m "release: tegel ${{ needs.commit-changes-in-develop.outputs.version }}"
+            git commit -m "release: tegel ${{ steps.version.outputs.PACKAGE_VERSION  }}"
             git push --no-verify origin main
           else
             echo "No changes to commit in main"
