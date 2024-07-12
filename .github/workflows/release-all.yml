@@ -288,28 +288,40 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
       - name: Commit changes in develop
         run: |
           git add .
           if ! git diff-index --quiet HEAD; then
-            git commit -m "chore: bump version of @scania/tegel"
+            git commit -m "feat: new version of @scania/tegel in wrapper packages"
             git push --no-verify origin develop
           else
             echo "No changes to commit in develop"
           fi
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   merge-develop-into-main:
     needs: commit-changes-in-develop
     runs-on: ubuntu-latest
     if: always()
     steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
       - name: Merge develop into main
         run: |
           git checkout main
           git merge --squash -X theirs develop
           git add .
           if ! git diff-index --quiet HEAD; then
-            git commit -m "release: tegel ${{ steps.version.outputs.PACKAGE_VERSION }}"
+            git commit -m "release: tegel ${{ needs.commit-changes-in-develop.outputs.version }}"
             git push --no-verify origin main
           else
             echo "No changes to commit in main"
