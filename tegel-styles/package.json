@@ -1,0 +1,40 @@
+{
+  "name": "tegel-styles",
+  "version": "1.0.0",
+  "description": "CSS and SCSS styling package for Tegel Design System.",
+  "main": "dist/css/tegel-styles.css",
+  "style": "scss/main.scss",
+  "files": [
+    "scss/",
+    "dist/css/"
+  ],
+  "scripts": {
+    "build:scss": "sass scss/main.scss dist/css/tegel-styles.css --style compressed",
+    "build:autoprefix": "postcss dist/css/tegel-styles.css --use autoprefixer -o dist/css/tegel-styles.css",
+    "build:ag-grid": "sass scss/ag-grid/overrides.scss dist/css/ag-grid-overrides.css --style compressed",
+    "build": "npm run build:scss && npm run build:autoprefix && npm run build:ag-grid",
+    "watch:scss": "sass --watch scss/main.scss dist/css/tegel-styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourrepo/tegel-styles.git"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "design system",
+    "tegel",
+    "web components"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourrepo/tegel-styles/issues"
+  },
+  "homepage": "https://github.com/yourrepo/tegel-styles#readme",
+  "devDependencies": {
+    "sass": "^1.32.8",
+    "autoprefixer": "^10.2.5",
+    "postcss-cli": "^8.3.1"
+  }
+}
