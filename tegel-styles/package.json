@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "CSS and SCSS styling package for Tegel Design System.",
   "main": "dist/css/tegel-styles.css",
-  "style": "scss/main.scss",
+  "style": "main.scss",
   "files": [
     "scss/",
     "dist/css/"
   ],
   "scripts": {
-    "build:scss": "sass scss/main.scss dist/css/tegel-styles.css --style compressed",
+    "build:scss": "sass main.scss dist/css/tegel-styles.css --style compressed",
     "build:autoprefix": "postcss dist/css/tegel-styles.css --use autoprefixer -o dist/css/tegel-styles.css",
     "build:ag-grid": "sass scss/ag-grid/overrides.scss dist/css/ag-grid-overrides.css --style compressed",
     "build": "npm run build:scss && npm run build:autoprefix && npm run build:ag-grid",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourrepo/tegel-styles.git"
+    "url": "git+https://github.com/scania-digital-design-system/tegel.git"
   },
   "keywords": [
     "css",
@@ -29,9 +29,9 @@
   "author": "Your Name",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yourrepo/tegel-styles/issues"
+    "url": "https://github.com/scania-digital-design-system/tegel/issues"
   },
-  "homepage": "https://github.com/yourrepo/tegel-styles#readme",
+  "homepage": "https://tegel.scania.com/home",
   "devDependencies": {
     "sass": "^1.32.8",
     "autoprefixer": "^10.2.5",
