@@ -1,4 +1,8 @@
 .tds-toggle {
+  .disabled {
+    cursor: not-allowed;
+  }
+
   .toggle-headline {
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
@@ -67,6 +71,8 @@
     }
 
     &:disabled {
+      cursor: not-allowed;
+
       &::before {
         background-color: var(--tds-toggle-slider-disabled);
         border: 1px solid var(--tds-toggle-slider-disabled);
