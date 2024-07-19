@@ -58,3 +58,4 @@ components.d.ts
 # Playwright
 playwright-report/
 test-results/
+results.json
