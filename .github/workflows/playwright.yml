@@ -1,9 +1,9 @@
 name: Playwright
 on:
   push:
-    branches: [main, develop, test/playwright-setup]
+    branches: [main, develop]
   pull_request:
-    branches: [main, develop, test/playwright-setup]
+    branches: [main, develop]
 jobs:
   test:
     runs-on: ubuntu-latest
