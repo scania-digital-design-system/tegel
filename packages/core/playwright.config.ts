@@ -15,7 +15,7 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: !process.env.CI,
   },
   workers: 8,
-  reporter: 'line',
+  reporter: [['json', { outputFile: 'results.json' }]],
 };
 
 export default config;
