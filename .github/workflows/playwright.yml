@@ -26,3 +26,8 @@ jobs:
       - name: Run Playwright tests
         working-directory: packages/core
         run: npx playwright test
+
+      - uses: daun/playwright-report-summary@v3
+        if: always()
+        with:
+          report-file: ./packages/core/results.json
