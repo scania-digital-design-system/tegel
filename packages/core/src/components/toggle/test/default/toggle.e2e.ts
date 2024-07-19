@@ -30,5 +30,7 @@ test.describe.parallel('tds-toggle', () => {
     // Expect toggle input to be checked after click
     isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
     expect(isChecked).toBe(true);
+
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
