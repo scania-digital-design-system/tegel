@@ -1,6 +1,6 @@
-@use "sass:math";
-@import "../globals";
-@import "breakpoints";
+@use 'sass:math';
+@import '../globals';
+@import 'breakpoints';
 
 // Container
 @mixin grid-container($prefix) {
@@ -20,9 +20,9 @@
 // Grid breakpoints
 @mixin grid-container-breakpoints($prefix, $breakpoints) {
   @each $key, $values in $breakpoints {
-    $container-margin: map-get($values, "margin");
-    $container-width: map-get($values, "container");
-    $breakpoint: map-get($values, "breakpoint");
+    $container-margin: map-get($values, 'margin');
+    $container-width: map-get($values, 'container');
+    $breakpoint: map-get($values, 'breakpoint');
 
     @media (min-width: $breakpoint) {
       .#{$prefix}-container,
@@ -63,9 +63,9 @@
 
 @mixin grid-make-col($grid) {
   @each $size, $values in $grid {
-    $breakpoint: map-get($values, "breakpoint");
-    $columns: map-get($values, "columns");
-    $padding: map-get($values, "padding");
+    $breakpoint: map-get($values, 'breakpoint');
+    $columns: map-get($values, 'columns');
+    $padding: map-get($values, 'padding');
 
     @media (min-width: $breakpoint) {
       @for $i from 1 through $columns {
@@ -122,9 +122,9 @@
   // Column offset for every breakpoint
 
   @each $sizes, $values in $breakpoints {
-    $columns: map-get($values, "columns");
-    $padding: map-get($values, "padding");
-    $breakpoint: map-get($values, "breakpoint");
+    $columns: map-get($values, 'columns');
+    $padding: map-get($values, 'padding');
+    $breakpoint: map-get($values, 'breakpoint');
 
     //  Each column for everysize
     @media (min-width: $breakpoint) {
@@ -161,10 +161,10 @@
 
 @mixin grid-push-container($breakpoints) {
   @each $key, $values in $breakpoints {
-    $breakpoint: map-get($values, "breakpoint");
-    $container-margin: map-get($values, "margin");
-    $container-width: map-get($values, "container");
-    $display-sidebar: map-get($values, "sidebar");
+    $breakpoint: map-get($values, 'breakpoint');
+    $container-margin: map-get($values, 'margin');
+    $container-width: map-get($values, 'container');
+    $display-sidebar: map-get($values, 'sidebar');
 
     @media (min-width: $breakpoint) {
       .#{$prefix}-sidebar {

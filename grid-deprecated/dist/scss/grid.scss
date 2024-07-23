@@ -1,0 +1,632 @@
+$prefix: 'tds' !default;
+$cdn: 'https://cdn.digitaldesign.scania.com';
+$base-unit: 4px;
+
+/*
+  Contains spacing variables for the layout
+*/
+
+// 1 rem = 4px;
+// Layout scale
+$spacing-layout-8: 8px;
+$spacing-layout-16: 16px;
+$spacing-layout-24: 24px;
+$spacing-layout-32: 32px;
+$spacing-layout-48: 48px;
+$spacing-layout-64: 64px;
+$spacing-layout-72: 72px;
+$spacing-layout-96: 96px;
+$spacing-layout-128: 128px;
+$spacing-layout-160: 160px;
+
+// Element scale
+$spacing-element-2: 2px;
+$spacing-element-4: 4px;
+$spacing-element-8: 8px;
+$spacing-element-12: 12px;
+$spacing-element-16: 16px;
+$spacing-element-20: 20px;
+$spacing-element-24: 24px;
+$spacing-element-32: 32px;
+$spacing-element-40: 40px;
+$spacing-element-48: 48px;
+
+// Screen breakpoints (TODO remove these, the $grid- is the one to use)
+$screen-s: 320px;
+$screen-md: 672px;
+$screen-l: 1056px;
+$screen-xl: 1312px;
+$screen-xxl: 1584px;
+$grid-xs: 0;
+$grid-sm: 608px;
+$grid-md: 800px;
+$grid-lg: 992px;
+$grid-xlg: 1184px;
+$grid-xxlg: 1376px;
+$grid-max: 1584px;
+
+
+/* Grid breakpoints used for setting up every grid in different sizes
+ - All values most be added
+ - Contains gutterless grid breakpoints also
+*/
+
+//TODO: Add rem instead of px, map doesn't give correct rem value, need a converter
+
+//container width
+$grid-container-xs: 100%;
+$grid-container-sm: 576px;
+$grid-container-md: 768px;
+$grid-container-lg: 960px;
+$grid-container-xlg: 1152px;
+$grid-container-xxlg: 1344px;
+$grid-container-max: 1536px;
+$grid-push-container-xs: 100%;
+$grid-push-container-sm: 576px;
+$grid-push-container-md: 768px;
+$grid-push-container-lg: 673px;
+$grid-push-container-xlg: 864px;
+$grid-push-container-xxlg: 1056px;
+$grid-push-container-max: 1248px;
+$tds-grid-breakpoints: (
+  xs: (
+    breakpoint: $grid-xs,
+    container: $grid-container-xs,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+  ),
+  sm: (
+    breakpoint: $grid-sm,
+    container: $grid-container-sm,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+  ),
+  md: (
+    breakpoint: $grid-md,
+    container: $grid-container-md,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  lg: (
+    breakpoint: $grid-lg,
+    container: $grid-container-lg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  xlg: (
+    breakpoint: $grid-xlg,
+    container: $grid-container-xlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  xxlg: (
+    breakpoint: $grid-xxlg,
+    container: $grid-container-xxlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  max: (
+    breakpoint: $grid-max,
+    container: $grid-container-max,
+    margin: $spacing-layout-24,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+) !default;
+$tds-grid-breakpoints-push: (
+  xs: (
+    breakpoint: $grid-xs,
+    container: $grid-push-container-xs,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+    sidebar: none,
+  ),
+  sm: (
+    breakpoint: $grid-sm,
+    container: $grid-push-container-sm,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+    sidebar: none,
+  ),
+  md: (
+    breakpoint: $grid-md,
+    container: $grid-push-container-md,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: none,
+  ),
+  lg: (
+    breakpoint: $grid-lg,
+    container: $grid-push-container-lg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+  xlg: (
+    breakpoint: $grid-xlg,
+    container: $grid-push-container-xlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+  xxlg: (
+    breakpoint: $grid-xxlg,
+    container: $grid-push-container-xxlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+  max: (
+    breakpoint: $grid-max,
+    container: $grid-push-container-max,
+    margin: $spacing-layout-24,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+) !default;
+
+@use "sass:math";
+$prefix: 'tds' !default;
+$cdn: 'https://cdn.digitaldesign.scania.com';
+$base-unit: 4px;
+
+/*
+  Contains spacing variables for the layout
+*/
+
+// 1 rem = 4px;
+// Layout scale
+$spacing-layout-8: 8px;
+$spacing-layout-16: 16px;
+$spacing-layout-24: 24px;
+$spacing-layout-32: 32px;
+$spacing-layout-48: 48px;
+$spacing-layout-64: 64px;
+$spacing-layout-72: 72px;
+$spacing-layout-96: 96px;
+$spacing-layout-128: 128px;
+$spacing-layout-160: 160px;
+
+// Element scale
+$spacing-element-2: 2px;
+$spacing-element-4: 4px;
+$spacing-element-8: 8px;
+$spacing-element-12: 12px;
+$spacing-element-16: 16px;
+$spacing-element-20: 20px;
+$spacing-element-24: 24px;
+$spacing-element-32: 32px;
+$spacing-element-40: 40px;
+$spacing-element-48: 48px;
+
+// Screen breakpoints (TODO remove these, the $grid- is the one to use)
+$screen-s: 320px;
+$screen-md: 672px;
+$screen-l: 1056px;
+$screen-xl: 1312px;
+$screen-xxl: 1584px;
+$grid-xs: 0;
+$grid-sm: 608px;
+$grid-md: 800px;
+$grid-lg: 992px;
+$grid-xlg: 1184px;
+$grid-xxlg: 1376px;
+$grid-max: 1584px;
+
+
+/* Grid breakpoints used for setting up every grid in different sizes
+ - All values most be added
+ - Contains gutterless grid breakpoints also
+*/
+
+//TODO: Add rem instead of px, map doesn't give correct rem value, need a converter
+
+//container width
+$grid-container-xs: 100%;
+$grid-container-sm: 576px;
+$grid-container-md: 768px;
+$grid-container-lg: 960px;
+$grid-container-xlg: 1152px;
+$grid-container-xxlg: 1344px;
+$grid-container-max: 1536px;
+$grid-push-container-xs: 100%;
+$grid-push-container-sm: 576px;
+$grid-push-container-md: 768px;
+$grid-push-container-lg: 673px;
+$grid-push-container-xlg: 864px;
+$grid-push-container-xxlg: 1056px;
+$grid-push-container-max: 1248px;
+$tds-grid-breakpoints: (
+  xs: (
+    breakpoint: $grid-xs,
+    container: $grid-container-xs,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+  ),
+  sm: (
+    breakpoint: $grid-sm,
+    container: $grid-container-sm,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+  ),
+  md: (
+    breakpoint: $grid-md,
+    container: $grid-container-md,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  lg: (
+    breakpoint: $grid-lg,
+    container: $grid-container-lg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  xlg: (
+    breakpoint: $grid-xlg,
+    container: $grid-container-xlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  xxlg: (
+    breakpoint: $grid-xxlg,
+    container: $grid-container-xxlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+  max: (
+    breakpoint: $grid-max,
+    container: $grid-container-max,
+    margin: $spacing-layout-24,
+    columns: 12,
+    padding: $spacing-layout-16,
+  ),
+) !default;
+$tds-grid-breakpoints-push: (
+  xs: (
+    breakpoint: $grid-xs,
+    container: $grid-push-container-xs,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+    sidebar: none,
+  ),
+  sm: (
+    breakpoint: $grid-sm,
+    container: $grid-push-container-sm,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-8,
+    sidebar: none,
+  ),
+  md: (
+    breakpoint: $grid-md,
+    container: $grid-push-container-md,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: none,
+  ),
+  lg: (
+    breakpoint: $grid-lg,
+    container: $grid-push-container-lg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+  xlg: (
+    breakpoint: $grid-xlg,
+    container: $grid-push-container-xlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+  xxlg: (
+    breakpoint: $grid-xxlg,
+    container: $grid-push-container-xxlg,
+    margin: $spacing-layout-16,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+  max: (
+    breakpoint: $grid-max,
+    container: $grid-push-container-max,
+    margin: $spacing-layout-24,
+    columns: 12,
+    padding: $spacing-layout-16,
+    sidebar: block,
+  ),
+) !default;
+
+
+// Container
+@mixin grid-container($prefix) {
+  .#{$prefix}-container,
+  .#{$prefix}-container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .#{$prefix}-container-fluid {
+    max-width: 2560px;
+  }
+}
+
+// Grid breakpoints
+@mixin grid-container-breakpoints($prefix, $breakpoints) {
+  @each $key, $values in $breakpoints {
+    $container-margin: map-get($values, "margin");
+    $container-width: map-get($values, "container");
+    $breakpoint: map-get($values, "breakpoint");
+
+    @media (min-width: $breakpoint) {
+      .#{$prefix}-container,
+      .#{$prefix}-container-fluid {
+        padding-right: $container-margin;
+        padding-left: $container-margin;
+      }
+      .#{$prefix}-container {
+        max-width: $container-width;
+      }
+    }
+
+    @include display-hidden($prefix, $breakpoint, $key);
+  }
+}
+
+@mixin grid-row($prefix) {
+  .#{$prefix}-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+// Display hidden and show
+
+@mixin display-hidden($prefix, $breakpoint, $key) {
+  @media (min-width: $breakpoint) {
+    .tds-hide-#{$key} {
+      display: none !important;
+    }
+    .tds-show-#{$key} {
+      display: block !important;
+    }
+  }
+}
+
+// Columns
+
+@mixin grid-make-col($grid) {
+  @each $size, $values in $grid {
+    $breakpoint: map-get($values, "breakpoint");
+    $columns: map-get($values, "columns");
+    $padding: map-get($values, "padding");
+
+    @media (min-width: $breakpoint) {
+      @for $i from 1 through $columns {
+        .#{$prefix}-col-#{$size}-#{$i} {
+          @include grid-col-size($columns, $i, $padding);
+
+          &.#{$prefix}-no-padding {
+            padding: 0;
+          }
+        }
+      }
+    }
+
+    @include grid-col-auto($prefix, $size, $breakpoint, $padding);
+  }
+
+  .#{$prefix}-no-padding [class|='#{$prefix}-col'] {
+    padding: 0 !important;
+  }
+}
+
+// Column size calculation
+@mixin grid-col-size($columns, $i, $padding) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding-left: $padding;
+  padding-right: $padding;
+  box-sizing: border-box;
+
+  // Index divided by amount of the columns
+  flex-basis: calc(percentage(math.div($i, $columns)));
+  max-width: percentage(math.div($i, $columns));
+}
+
+//Column auto size
+@mixin grid-col-auto($prefix, $size, $breakpoint, $padding) {
+  @media (min-width: $breakpoint) {
+    .tds-col,
+    .#{$prefix}-col-#{$size} {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+      min-width: 8.3333%;
+      padding-left: $padding;
+      padding-right: $padding;
+    }
+  }
+}
+
+//Offset
+
+@mixin grid-offset-col($breakpoints) {
+  // Column offset for every breakpoint
+
+  @each $sizes, $values in $breakpoints {
+    $columns: map-get($values, "columns");
+    $padding: map-get($values, "padding");
+    $breakpoint: map-get($values, "breakpoint");
+
+    //  Each column for everysize
+    @media (min-width: $breakpoint) {
+      @for $i from 1 through $columns {
+        .#{$prefix}-col-#{$sizes}-#{$i}-offset {
+          margin-left: percentage(math.div($i, $columns));
+        }
+      }
+    }
+  }
+}
+
+// Push grid
+
+@mixin grid-push($breakpoints) {
+  @include grid-push-container($breakpoints);
+
+  .#{$prefix}-push {
+    display: flex;
+
+    @include grid-make-col($breakpoints);
+
+    @media (min-width: 992px) {
+      .#{$prefix}-container {
+        margin: 0;
+      }
+    }
+  }
+
+  .#{$prefix}-content-push {
+    flex-grow: 1;
+  }
+}
+
+@mixin grid-push-container($breakpoints) {
+  @each $key, $values in $breakpoints {
+    $breakpoint: map-get($values, "breakpoint");
+    $container-margin: map-get($values, "margin");
+    $container-width: map-get($values, "container");
+    $display-sidebar: map-get($values, "sidebar");
+
+    @media (min-width: $breakpoint) {
+      .#{$prefix}-sidebar {
+        flex-basis: 288px;
+        min-width: 288px;
+        display: $display-sidebar;
+
+        &.#{$prefix}-sidebar-collapse {
+          flex-basis: 17rem;
+          min-width: 17rem;
+        }
+      }
+
+      .#{$prefix}-container-push {
+        padding-right: $container-margin;
+        padding-left: $container-margin;
+        max-width: $container-width;
+      }
+
+      .#{$prefix}-container-push-fluid {
+        padding-right: $container-margin;
+        padding-left: $container-margin;
+      }
+    }
+  }
+}
+
+
+// DO NOT EDIT THIS FILE
+
+// This file is auto-generated
+
+
+:root, html {
+  /*
+  Contains spacing variables for the layout
+*/
+
+  // 1 rem = 4px;
+  // Layout scale
+  --tds-spacing-layout-8: 8px;
+  --tds-spacing-layout-16: 16px;
+  --tds-spacing-layout-24: 24px;
+  --tds-spacing-layout-32: 32px;
+  --tds-spacing-layout-48: 48px;
+  --tds-spacing-layout-64: 64px;
+  --tds-spacing-layout-72: 72px;
+  --tds-spacing-layout-96: 96px;
+  --tds-spacing-layout-128: 128px;
+  --tds-spacing-layout-160: 160px;
+
+  // Element scale
+  --tds-spacing-element-2: 2px;
+  --tds-spacing-element-4: 4px;
+  --tds-spacing-element-8: 8px;
+  --tds-spacing-element-12: 12px;
+  --tds-spacing-element-16: 16px;
+  --tds-spacing-element-20: 20px;
+  --tds-spacing-element-24: 24px;
+  --tds-spacing-element-32: 32px;
+  --tds-spacing-element-40: 40px;
+  --tds-spacing-element-48: 48px;
+
+  // Screen breakpoints
+  --tds-screen-s: 320px;
+  --tds-screen-md: 672px;
+  --tds-screen-l: 1056px;
+  --tds-screen-xl: 1312px;
+  --tds-screen-xxl: 1584px;
+
+  //Screen breakpoints
+  //Remove old breakpoints
+  //TODO: Fix rem on media queries
+  --tds-grid-xs: 0;
+  --tds-grid-sm: 608px;
+  --tds-grid-md: 800px;
+  --tds-grid-lg: 992px;
+  --tds-grid-xlg: 1184px;
+  --tds-grid-xxlg: 1376px;
+  --tds-grid-max: 1584px;
+}
+
+
+//
+
+/*
+  Mixin file for create grid layout, container, rows and columns
+  Setting up grid layout based on breakpoint mapping
+*/
+
+// Container for the gridsystem
+@include grid-container($prefix);
+
+//Setup breakpoints for the container
+@include grid-container-breakpoints($prefix, $tds-grid-breakpoints);
+
+// Row which columns are places
+@include grid-row($prefix);
+
+// Create columns
+@include grid-make-col($tds-grid-breakpoints);
+
+// Adding offset classes for the grid
+@include grid-offset-col($tds-grid-breakpoints);
+
+//Pushed grid
+@include grid-push($tds-grid-breakpoints-push);
