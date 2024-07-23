@@ -1,7 +1,7 @@
 {
   "name": "tegel-styles",
   "version": "1.0.0",
-  "description": "CSS and SCSS styling package for Tegel Design System.",
+  "description": "CSS styling package for Tegel Design System.",
   "main": "dist/css/tegel-styles.css",
   "style": "main.scss",
   "files": [
@@ -9,11 +9,7 @@
     "dist/css/"
   ],
   "scripts": {
-    "build:scss": "sass main.scss dist/css/tegel-styles.css --style compressed",
-    "build:autoprefix": "postcss dist/css/tegel-styles.css --use autoprefixer -o dist/css/tegel-styles.css",
-    "build:ag-grid": "sass scss/ag-grid/overrides.scss dist/css/ag-grid-overrides.css --style compressed",
-    "build": "npm run build:scss && npm run build:autoprefix && npm run build:ag-grid",
-    "watch:scss": "sass --watch scss/main.scss dist/css/tegel-styles.css"
+    "build": "node build-css.js"
   },
   "repository": {
     "type": "git",
@@ -24,17 +20,22 @@
     "scss",
     "design system",
     "tegel",
-    "web components"
+    "styles",
+    "ag-grid",
+    "foundations"
   ],
-  "author": "Your Name",
+  "author": "IXIB team @ Scania",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/scania-digital-design-system/tegel/issues"
   },
   "homepage": "https://tegel.scania.com/home",
   "devDependencies": {
-    "sass": "^1.32.8",
-    "autoprefixer": "^10.2.5",
-    "postcss-cli": "^8.3.1"
+    "autoprefixer": "^10.4.19",
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "postcss": "^8.4.39",
+    "glob": "^8.1.0"
   }
 }
