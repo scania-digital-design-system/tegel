@@ -330,8 +330,9 @@ export class TdsDropdown {
           if (value === element.value) {
             element.setSelected(true);
             this.value = this.value
-              ? [...new Set([...this.value, element.value])]
+              ? new Set([...this.value, element.value])
               : [element.value];
+              
             matched = true;
           }
         });
