@@ -608,7 +608,6 @@ export class TdsDropdown {
                   </div>
                 )}
                 <div class={`placeholder ${this.size}`}>
-                  {console.log(this.getValue())}
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
