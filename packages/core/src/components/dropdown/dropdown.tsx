@@ -120,6 +120,8 @@ export class TdsDropdown {
       nextValue = [nextValue[0]];
     }
 
+    nextValue = [...new Set(nextValue)];
+
     this.internalReset();
 
     for (let i = 0; i < nextValue.length; i++) {
@@ -312,38 +314,27 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
-    // Ensure this.host.children is not empty
-    if (this.host.children.length === 0) {
-      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
-      return;
-    }
-
     if (this.defaultValue) {
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       );
       let matched = false;
 
-      children.forEach((element: HTMLTdsDropdownOptionElement) => {
-        if (this.multiselect) {
-          this.defaultValue.split(',').forEach((value) => {
-            if (value === element.value) {
-              element.setSelected(true);
-              this.value = this.value ? [...this.value, element.value] : [element.value];
-              matched = true;
-            }
-          });
-        } else {
-          if (this.defaultValue === element.value) {
+      const defaultValues = this.multiselect ? this.defaultValue.split(',') : [this.defaultValue];
+
+      // Ensure unique default values
+      const uniqueDefaultValues = [...new Set(defaultValues)];
+
+      uniqueDefaultValues.forEach((value) => {
+        children.forEach((element: HTMLTdsDropdownOptionElement) => {
+          if (value === element.value) {
             element.setSelected(true);
-            this.value = [element.value];
+            this.value = this.value
+              ? [...new Set([...this.value, element.value])]
+              : [element.value];
             matched = true;
-          } else {
-            element.setSelected(false);
           }
-        }
-        this.setValueAttribute();
-        return element;
+        });
       });
 
       if (!matched) {
@@ -351,6 +342,8 @@ export class TdsDropdown {
           `TDS DROPDOWN: No matching option found for defaultValue "${this.defaultValue}"`,
         );
       }
+
+      this.setValueAttribute();
     }
   };
 
@@ -614,6 +607,7 @@ export class TdsDropdown {
                   </div>
                 )}
                 <div class={`placeholder ${this.size}`}>
+                  {console.log(this.getValue())}
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
