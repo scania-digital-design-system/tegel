@@ -320,12 +320,11 @@ export class TdsDropdown {
       );
       let matched = false;
 
-      const defaultValues = this.multiselect ? this.defaultValue.split(',') : [this.defaultValue];
+      const defaultValues = this.multiselect
+        ? new Set(this.defaultValue.split(','))
+        : [this.defaultValue];
 
-      // Ensure unique default values
-      const uniqueDefaultValues = [...new Set(defaultValues)];
-
-      uniqueDefaultValues.forEach((value) => {
+      defaultValues.forEach((value) => {
         children.forEach((element: HTMLTdsDropdownOptionElement) => {
           if (value === element.value) {
             element.setSelected(true);
