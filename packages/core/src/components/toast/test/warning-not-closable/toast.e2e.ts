@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/toast/test/success-empty-action-slot/index.html';
+const componentTestPath = 'src/components/toast/test/warning-not-closable/index.html';
 
 test.describe('Toast Component Tests', () => {
   test.beforeEach(async ({ page }) => {
@@ -18,9 +18,11 @@ test.describe('Toast Component Tests', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
-  // Test if component has no action slot
-  test('should not have action slot', async ({ page }) => {
+  // Test if component does not have close button
+  test('should not have close button', async ({ page }) => {
     const tdsToast = page.getByTestId('tds-toast-testid');
-    expect(tdsToast).not.toHaveText('Link example');
+    const closeButton = tdsToast.locator('button.close');
+    expect(closeButton).not.toBeVisible();
+    expect(closeButton).toBeNull();
   });
 });
