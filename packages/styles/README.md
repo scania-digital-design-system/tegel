@@ -22,8 +22,8 @@ import '@tegel-styles/tegel-styles.css';
 
 ## Contributing
 
-We welcome contributions to improve the package. Please follow the guidelines in the [CONTRIBUTING.md](../CONTRIBUTING.md) file.
+We welcome contributions to improve the package. Please follow the guidelines in the [CONTRIBUTING.md](../../CONTRIBUTING.md) file.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](../../LICENSE) file for details.

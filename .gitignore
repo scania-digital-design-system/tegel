@@ -61,4 +61,4 @@ test-results/
 packages/core/results.json
 
 # tegel-styles
-tegel-styles/dist/
+packages/styles/dist/
