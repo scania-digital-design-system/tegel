@@ -55,11 +55,11 @@ test.describe('tds-tooltip', () => {
     // Fetch the inner HTML of the tooltip paragraph
     let innerHtml = await tooltipParagraph.innerHTML();
 
+    // Remove class attributes from the inner HTML for comparison
+    innerHtml = innerHtml.replace(/ class="[^"]*"/g, '').trim();
+
     // Normalize whitespace in the inner HTML for comparison
     innerHtml = innerHtml.replace(/\s+/g, ' ').trim();
-
-    // Remove class attributes from the inner HTML
-    innerHtml = innerHtml.replace(/ class="[^"]*"/g, '');
 
     // Define the expected HTML content, ensuring to trim any potential whitespace for a precise match
     const expectedHtmlContent =
