@@ -69,6 +69,13 @@ export default {
         type: 'text',
       },
     },
+    textValue: {
+      name: 'Text value',
+      description: 'Sets the text value.',
+      control: {
+        type: 'text',
+      },
+    },
     helper: {
       name: 'Helper text',
       description: 'Sets the helper text.',
@@ -127,6 +134,7 @@ export default {
     label: 'Label',
     labelPosition: 'No label',
     placeholder: 'Placeholder',
+    textValue: '',
     helper: '',
     rows: 5,
     maxLength: 0,
@@ -143,6 +151,7 @@ const Template = ({
   labelPosition,
   placeholder,
   helper,
+  textValue,
   rows,
   maxLength,
   noMinWidth,
@@ -180,7 +189,8 @@ const Template = ({
           ${readonly ? 'read-only' : ''}
           ${noMinWidth ? 'no-min-width' : ''}
           placeholder="${placeholder}"
-          ${maxlength}>
+          ${maxlength}
+          value="${textValue}">
         </tds-textarea>
   </div>
   <!-- Script tag for demo purposes -->
