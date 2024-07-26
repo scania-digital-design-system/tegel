@@ -13,5 +13,8 @@
     "jsxFactory": "h"
   },
   "exclude": ["src/components/**/test/*", "**/**.stories.*", "src/stories/**"],
-  "include": ["src/**/*"],
+  "include": [
+    "src/**/*",
+    "stencil-plugin-generate-tag-names.ts"
+  ],
 }

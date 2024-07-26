@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd packages/core && npm run storybook",
+    "prebuild": "ts-node packages/shared/scripts/generateTagNames.mjs",
     "build": "cd packages/core && npm run build",
     "build-angular": "npm run build && cd packages/angular && npm i && npm run build",
     "build-angular-17": "npm run build && cd packages/angular-17 && npm i && npm run build",
@@ -38,13 +39,16 @@
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-storybook": "^0.5.7",
+    "globby": "^14.0.2",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "^2.7.1",
     "stylelint": "^14.6.1",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard": "^25.0.0",
-    "stylelint-config-standard-scss": "^3.0.0"
+    "stylelint-config-standard-scss": "^3.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   },
   "config": {
     "commitizen": {

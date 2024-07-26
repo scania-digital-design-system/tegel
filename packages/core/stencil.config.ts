@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { generateTagNamesPlugin } from './stencil-plugin-generate-tag-names';
 
 function getTsConfigFile() {
   if (process.env.STORYBOOK_ENV === 'dev') {
@@ -52,7 +53,7 @@ export const config: Config = {
     enableImportInjection: true,
     tagNameTransform: true,
   },
-  plugins: [sass()],
+  plugins: [sass(), generateTagNamesPlugin()],
   sourceMap: false,
   testing: {
     browserArgs: ['--headless=new'],
@@ -95,4 +96,5 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  globalScript: 'scripts/shared/generate-tag-names-script.ts',
 };
