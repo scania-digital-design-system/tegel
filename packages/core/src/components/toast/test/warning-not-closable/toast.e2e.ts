@@ -22,7 +22,6 @@ test.describe('Toast Component Tests', () => {
   test('should not have close button', async ({ page }) => {
     const tdsToast = page.getByTestId('tds-toast-testid');
     const closeButton = tdsToast.locator('button.close');
-    expect(closeButton).not.toBeVisible();
-    expect(closeButton).toBeNull();
+    await expect(closeButton).toHaveCount(0);
   });
 });

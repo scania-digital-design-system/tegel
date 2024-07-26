@@ -21,6 +21,6 @@ test.describe('Toast Component Tests', () => {
   // Test if component has no action slot
   test('should not have action slot', async ({ page }) => {
     const tdsToast = page.getByTestId('tds-toast-testid');
-    expect(tdsToast).not.toHaveText('Link example');
+    await expect(tdsToast).not.toHaveText(/Link example/);
   });
 });
