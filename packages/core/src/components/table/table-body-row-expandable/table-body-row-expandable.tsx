@@ -197,6 +197,7 @@ export class TdsTableBodyRowExpandable {
             'tds-table__row-expand': true,
             'tds-table__row-expand--expanded': this.isExpanded,
           }}
+          part="expand-row"
         >
           <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
             <slot name="expand-row" />
