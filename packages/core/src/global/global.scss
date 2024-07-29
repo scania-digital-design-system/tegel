@@ -6,10 +6,10 @@
 @import '../../../../color/color';
 
 // Grid (Deprecated - will be removed in version 2.0)
-@import '../../../../grid/grid-deprecated';
+@import '../../../../grid-deprecated/grid-deprecated';
 
 // Grid new
-@import './grid';
+@import '../../../../grid/grid';
 
 // Typography
 @import '../../../../typography/scania-fonts';
@@ -21,7 +21,6 @@
 
 // Vars
 @import '_variables';
-
 @import 'scrollbar-vars';
 
 // Utility classes
