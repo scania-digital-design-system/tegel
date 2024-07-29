@@ -24,6 +24,8 @@
 
 ### Used by
 
+ - [tds-date-picker](../_beta/date-picker/date-picker-single)
+ - [tds-date-range-picker](../_beta/date-picker/date-range-picker)
  - [tds-popover-canvas](../popover-canvas)
  - [tds-popover-menu](../popover-menu)
  - [tds-tooltip](../tooltip)
@@ -31,6 +33,8 @@
 ### Graph
 ```mermaid
 graph TD;
+  tds-date-picker --> tds-popover-core
+  tds-date-range-picker --> tds-popover-core
   tds-popover-canvas --> tds-popover-core
   tds-popover-menu --> tds-popover-core
   tds-tooltip --> tds-popover-core
