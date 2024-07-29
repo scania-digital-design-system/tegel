@@ -30,7 +30,7 @@ test.describe.parallel('tds-popover-canvas-default', () => {
 
     await triggerButton.click();
 
-    await expect(triggerButton).toBeVisible();
+    await popoverCanvasHeader.waitFor({ state: 'visible' });
     await expect(popoverCanvasHeader).toBeVisible();
     await expect(popoverCanvasBody).toBeVisible();
     await expect(popoverCanvasLink).toBeVisible();
