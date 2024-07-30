@@ -168,6 +168,7 @@ export class TdsTableBodyRowExpandable {
             'tds-table__row': true,
             'tds-table__row--expanded': this.isExpanded,
           }}
+          part="row"
         >
           <td class="tds-table__cell tds-table__cell--expand">
             <label class="tds-table__expand-control-container">

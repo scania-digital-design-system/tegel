@@ -4,9 +4,20 @@
 
 The `:part` selector allows you to style elements inside a shadow DOM that have been exposed via the `part` attribute. This is particularly useful for customizing the appearance of web components.
 
-In the `tds-table-body-row-expandable` component, the expandable row is exposed using the `part` attribute:
+In the `tds-table-body-row-expandable` component, the expandable row is exposed using the `part` attribute on two elements:
 
 ```typescript:packages/core/src/components/table/table-body-row-expandable/table-body-row-expandable.tsx
+
+<tr
+    class={{
+      'tds-table__row': true,
+      'tds-table__row--expanded': this.isExpanded,
+    }}
+    part="row"
+  >
+  .
+  .
+  .
 <tr
   class={{
     'tds-table__row-expand': true,
@@ -23,13 +34,16 @@ In the `tds-table-body-row-expandable` component, the expandable row is exposed 
 To style this part from outside the shadow DOM, you can use the `::part` pseudo-element in your CSS:
 
 ```css
-tds-table-body-row-expandable::part(expand-row) {
+
+tds-table-body-row-expandable::part(row) {
   background-color: var(--tds-red-100);
-  border: 1px solid var(--tds-red-200);
+}
+tds-table-body-row-expandable::part(expand-row) {
+  background-color: var(--tds-red-200);
 }
 ```
 
-This CSS will apply a background color and border to the expandable row part of the `tds-table-body-row-expandable` component.
+This CSS will apply a background color to the main row and expandable row part of the `tds-table-body-row-expandable` component.
 
 <hr>
 <br>
@@ -89,6 +103,7 @@ Type: `Promise<void>`
 | Part           | Description |
 | -------------- | ----------- |
 | `"expand-row"` |             |
+| `"row"`        |             |
 
 
 ----------------------------------------------
