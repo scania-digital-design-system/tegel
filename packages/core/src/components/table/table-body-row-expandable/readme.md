@@ -76,6 +76,14 @@ Type: `Promise<void>`
 
 
 
+## Slots
+
+| Slot           | Description                         |
+| -------------- | ----------------------------------- |
+| `"<default>"`  | <b>Unnamed slot.</b> For the cells. |
+| `"expand-row"` | Slot for the expanded row.          |
+
+
 ## Shadow Parts
 
 | Part           | Description                                 |
