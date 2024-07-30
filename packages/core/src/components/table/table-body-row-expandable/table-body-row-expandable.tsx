@@ -25,6 +25,12 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
  * @slot <default> - <b>Unnamed slot.</b> For the cells.
  * @slot expand-row - Slot for the expanded row.
  */
+
+/**
+ * @part row - Selector for the main row of the table.
+ * @part expand-row - Selector for the expanded row of the table.
+ */
+
 @Component({
   tag: 'tds-table-body-row-expandable',
   styleUrl: 'table-body-row-expandable.scss',
