@@ -24,7 +24,11 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the cells.
  * @slot expand-row - Slot for the expanded row.
+
+ * @part row - Selector for the main row of the table.
+ * @part expand-row - Selector for the expanded row of the table.
  */
+
 @Component({
   tag: 'tds-table-body-row-expandable',
   styleUrl: 'table-body-row-expandable.scss',
@@ -168,6 +172,7 @@ export class TdsTableBodyRowExpandable {
             'tds-table__row': true,
             'tds-table__row--expanded': this.isExpanded,
           }}
+          part="row"
         >
           <td class="tds-table__cell tds-table__cell--expand">
             <label class="tds-table__expand-control-container">
@@ -197,6 +202,7 @@ export class TdsTableBodyRowExpandable {
             'tds-table__row-expand': true,
             'tds-table__row-expand--expanded': this.isExpanded,
           }}
+          part="expand-row"
         >
           <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
             <slot name="expand-row" />
