@@ -41,6 +41,9 @@ test.describe.parallel('tds-table-sorting', () => {
     await mileageHeader.click();
     expect(myEventSpy).toHaveReceivedEventTimes(4);
 
+    await mileageHeader.waitFor({ state: 'visible' });
+    await page.waitForTimeout(250);
+
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
   });
 });
