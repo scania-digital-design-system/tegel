@@ -125,7 +125,9 @@ export class TdsChip {
     const hasPrefixSlot = hasSlot('prefix', this.host);
     const hasLabelSlot = hasSlot('label', this.host);
     const hasSuffixSlot = hasSlot('suffix', this.host);
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
+    const PrefixedTagNames = getPrefixedTagNames(this.host) || { input: 'input', icon: 'i' };
+
+    console.log('PrefixedTagNames:', getPrefixedTagNames(this.host));
 
     const chipClasses = {
       'tds-chip-component': true,
@@ -136,19 +138,18 @@ export class TdsChip {
       'disabled': this.disabled,
     };
 
+    const InputComponent = PrefixedTagNames.input || 'input';
+    const IconComponent = PrefixedTagNames.icon || 'i';
+
     return (
       <Host>
         <div class="component">
           <div class={chipClasses}>
-            <PrefixedTagNames.input
-              type={this.type}
-              id={this.chipId}
-              {...inputAttributes}
-            ></PrefixedTagNames.input>
+            <InputComponent type={this.type} id={this.chipId} {...inputAttributes} />
             <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
-              {hasPrefixSlot && <PrefixedTagNames.icon name="prefix" />}
+              {hasPrefixSlot && <IconComponent name="prefix" />}
               {hasLabelSlot && <slot name="label" />}
-              {hasSuffixSlot && <PrefixedTagNames.icon name="suffix" />}
+              {hasSuffixSlot && <IconComponent name="suffix" />}
             </label>
           </div>
         </div>

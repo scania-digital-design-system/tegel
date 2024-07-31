@@ -7,7 +7,7 @@
   "scripts": {
     "start": "cd packages/core && npm run storybook",
     "prebuild": "ts-node packages/shared/scripts/generateTagNames.mjs",
-    "build": "cd packages/core && npm run build",
+    "build": "npm run prebuild && cd packages/core && npm run build",
     "build-angular": "npm run build && cd packages/angular && npm i && npm run build",
     "build-angular-17": "npm run build && cd packages/angular-17 && npm i && npm run build",
     "build-react": "npm run build && cd packages/react && npm i && npm run build ",
