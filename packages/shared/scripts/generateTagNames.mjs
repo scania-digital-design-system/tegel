@@ -1,7 +1,7 @@
 // Import URL from the 'url' module
 import { fileURLToPath } from 'url';
 
-const { globbySync } = await import('globby');
+import globby from 'globby';
 
 const fs = await import('fs');
 const path = await import('path');
@@ -12,7 +12,7 @@ const camelCase = (str) =>
   str
     .toLowerCase()
     .replace(/[^a-zA-Z0-9]+(.)/g, (_m, chr) => chr.toUpperCase());
-const generateTagNames = () => {
+const generateTagNames = async () => {
   // Calculate currentDir based on the current module's URL
   const currentDir = path.dirname(fileURLToPath(import.meta.url));
   const componentsSourceDirectory = path.resolve(currentDir, '../../core/src/components');
@@ -21,7 +21,7 @@ const generateTagNames = () => {
   const files = fs.readdirSync(componentsSourceDirectory);  // Check directory contents
   console.log("Files found:", files);
 
-  const componentFiles = globbySync(`${componentsSourceDirectory}/**/*.tsx`);
+  const componentFiles = await globby(`${componentsSourceDirectory}/**/*.tsx`);
 
   const tags = componentFiles
     .filter((file) => !file.includes('-utils'))  // Skip utility files
