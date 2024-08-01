@@ -1,7 +1,6 @@
 import { Component, Host, h, Event, EventEmitter, Prop, Element } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
-import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot prefix - Slot for the prefix icon.
@@ -125,9 +124,6 @@ export class TdsChip {
     const hasPrefixSlot = hasSlot('prefix', this.host);
     const hasLabelSlot = hasSlot('label', this.host);
     const hasSuffixSlot = hasSlot('suffix', this.host);
-    const PrefixedTagNames = getPrefixedTagNames(this.host) || { input: 'input', icon: 'i' };
-
-    console.log('PrefixedTagNames:', getPrefixedTagNames(this.host));
 
     const chipClasses = {
       'tds-chip-component': true,
@@ -138,18 +134,15 @@ export class TdsChip {
       'disabled': this.disabled,
     };
 
-    const InputComponent = PrefixedTagNames.input || 'input';
-    const IconComponent = PrefixedTagNames.icon || 'i';
-
     return (
       <Host>
         <div class="component">
           <div class={chipClasses}>
-            <InputComponent type={this.type} id={this.chipId} {...inputAttributes} />
+            <input type={this.type} id={this.chipId} {...inputAttributes}></input>
             <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
-              {hasPrefixSlot && <IconComponent name="prefix" />}
+              {hasPrefixSlot && <slot name="prefix" />}
               {hasLabelSlot && <slot name="label" />}
-              {hasSuffixSlot && <IconComponent name="suffix" />}
+              {hasSuffixSlot && <slot name="suffix" />}
             </label>
           </div>
         </div>

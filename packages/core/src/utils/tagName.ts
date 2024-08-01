@@ -22,30 +22,26 @@ const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const tagName = getTagName(host);
-  const prefix = (window as any).customElementPrefix;
+  const defaultPrefix = 'tds';
+  const prefix = (window as any).customElementPrefix || defaultPrefix;
 
-  // Use a fallback to the original tag names if no prefix is set
-  if (!prefix) {
-    return TAG_NAMES.reduce(
-      (result, tag) => ({
+  // Generate a unique cache key based on both the tag name and the prefix
+  const cacheKey = `${prefix}-${tagName}`;
+
+  if (!PREFIXED_TAG_NAMES_CACHE.has(cacheKey)) {
+    const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce((result, tag) => {
+      // Check if the tag already includes the prefix
+      const hasPrefix = tag.startsWith(`${prefix}-`);
+      const prefixedTag = hasPrefix ? tag : `${prefix}-${tag}`;
+
+      return {
         ...result,
-        [tag]: tag, // Keep the 'tds-' prefix in the mapping
-      }),
-      {} as PrefixedTagNames,
-    );
+        [prefixedTag]: tag, // Store the original tag name as the value
+      };
+    }, {} as PrefixedTagNames);
+
+    PREFIXED_TAG_NAMES_CACHE.set(cacheKey, prefixedTagNames);
   }
 
-  if (!PREFIXED_TAG_NAMES_CACHE.has(tagName)) {
-    const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce(
-      (result, tag) => ({
-        ...result,
-        [`${prefix}-${tag}`]: tag, // Apply the prefix and map to the clean tag
-      }),
-      {} as PrefixedTagNames,
-    );
-
-    PREFIXED_TAG_NAMES_CACHE.set(tagName, prefixedTagNames);
-  }
-
-  return PREFIXED_TAG_NAMES_CACHE.get(tagName) || {};
+  return PREFIXED_TAG_NAMES_CACHE.get(cacheKey) || {};
 };
