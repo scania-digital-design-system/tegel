@@ -6,7 +6,6 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['multiselect'
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For table rows.
- * @slot no-result - Slot for no result message when using filtering.
  */
 @Component({
   tag: 'tds-table-body',
