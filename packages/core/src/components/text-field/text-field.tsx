@@ -1,6 +1,5 @@
 import { Component, h, State, Prop, Event, EventEmitter, Element } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
-import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -134,7 +133,6 @@ export class TdsTextField {
   render() {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
-    const PrefixedTagNames = getPrefixedTagNames(this.host);
 
     return (
       <div
@@ -175,7 +173,7 @@ export class TdsTextField {
           )}
 
           <div class="text-field-input-container">
-            <PrefixedTagNames.input
+            <input
               ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
               class={{
                 'text-field-input': true,
@@ -227,7 +225,7 @@ export class TdsTextField {
             </div>
           )}
           <span class="text-field-icon__readonly">
-            <PrefixedTagNames.icon name="edit_inactive" size="20px"></PrefixedTagNames.icon>
+            <tds-icon name="edit_inactive" size="20px"></tds-icon>
           </span>
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
