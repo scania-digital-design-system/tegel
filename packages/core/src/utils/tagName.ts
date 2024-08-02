@@ -12,13 +12,18 @@ export const getTagName = (el: HTMLElement): string => {
 
 export const getTagNameWithoutPrefix = (host: HTMLElement): string => {
   const tagName = getTagName(host);
-  const [, , tagNameWithoutPrefix = ''] = /^((?:[a-z0-9]+-)?tds-)([a-z0-9-]+)$/.exec(tagName) || [];
+  // Ensure the regex correctly captures the tag name after the prefix
+  const [, , tagNameWithoutPrefix = ''] = /^((?:[a-z0-9]+-)+)([a-z0-9-]+)$/.exec(tagName) || [];
   return tagNameWithoutPrefix;
 };
 
 export type PrefixedTagNames = Record<string, string>;
 
-const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
+class PrefixedTagNamesCache extends Map<string, PrefixedTagNames> {
+  lastPrefix?: string;
+}
+
+const PREFIXED_TAG_NAMES_CACHE = new PrefixedTagNamesCache();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const tagName = getTagName(host);
@@ -28,12 +33,18 @@ export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
     : '';
   const fullPrefix = `${externalPrefix}${defaultPrefix}`;
 
+  // Generate a unique cache key based on the full prefix and the tag name
   const cacheKey = `${fullPrefix}-${tagName}`;
+
+  // Check if the prefix has changed and invalidate the cache if necessary
+  if (PREFIXED_TAG_NAMES_CACHE.lastPrefix !== fullPrefix) {
+    PREFIXED_TAG_NAMES_CACHE.clear();
+    PREFIXED_TAG_NAMES_CACHE.lastPrefix = fullPrefix; // Store the new prefix
+  }
 
   if (!PREFIXED_TAG_NAMES_CACHE.has(cacheKey)) {
     const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce((result, tag) => {
       const prefixedTag = `${fullPrefix}-${tag}`;
-
       return {
         ...result,
         [prefixedTag]: tag,
