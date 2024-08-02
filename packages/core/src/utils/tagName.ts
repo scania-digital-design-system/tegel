@@ -12,7 +12,7 @@ export const getTagName = (el: HTMLElement): string => {
 
 export const getTagNameWithoutPrefix = (host: HTMLElement): string => {
   const tagName = getTagName(host);
-  const [, tagNameWithoutPrefix = ''] = /^(tds-)([a-z0-9-]+)$/.exec(tagName) || [];
+  const [, , tagNameWithoutPrefix = ''] = /^((?:[a-z0-9]+-)?tds-)([a-z0-9-]+)$/.exec(tagName) || [];
   return tagNameWithoutPrefix;
 };
 
@@ -23,20 +23,20 @@ const PREFIXED_TAG_NAMES_CACHE = new Map<string, PrefixedTagNames>();
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const tagName = getTagName(host);
   const defaultPrefix = 'tds';
-  const prefix = (window as any).customElementPrefix || defaultPrefix;
+  const externalPrefix = (window as any).customElementPrefix
+    ? `${(window as any).customElementPrefix}-`
+    : '';
+  const fullPrefix = `${externalPrefix}${defaultPrefix}`;
 
-  // Generate a unique cache key based on both the tag name and the prefix
-  const cacheKey = `${prefix}-${tagName}`;
+  const cacheKey = `${fullPrefix}-${tagName}`;
 
   if (!PREFIXED_TAG_NAMES_CACHE.has(cacheKey)) {
     const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce((result, tag) => {
-      // Check if the tag already includes the prefix
-      const hasPrefix = tag.startsWith(`${prefix}-`);
-      const prefixedTag = hasPrefix ? tag : `${prefix}-${tag}`;
+      const prefixedTag = `${fullPrefix}-${tag}`;
 
       return {
         ...result,
-        [prefixedTag]: tag, // Store the original tag name as the value
+        [prefixedTag]: tag,
       };
     }, {} as PrefixedTagNames);
 
