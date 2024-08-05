@@ -46,6 +46,17 @@ export class TdsNavigationTabs {
 
   private children: Array<HTMLTdsNavigationTabElement>;
 
+  /** Event emitted when the selected Tab is changed. */
+  @Event({
+    eventName: 'tdsChange',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  })
+  tdsChange: EventEmitter<{
+    selectedTabIndex: number;
+  }>;
+
   /** Sets the passed tabindex as the selected Tab. */
   @Method()
   async selectTab(tabIndex: number) {
@@ -64,17 +75,6 @@ export class TdsNavigationTabs {
     };
   }
 
-  /** Event emitted when the selected Tab is changed. */
-  @Event({
-    eventName: 'tdsChange',
-    composed: true,
-    cancelable: true,
-    bubbles: true,
-  })
-  tdsChange: EventEmitter<{
-    selectedTabIndex: number;
-  }>;
-
   @Watch('selectedIndex')
   handleSelectedIndexUpdate() {
     this.children = Array.from(this.host.children).map(
@@ -86,21 +86,21 @@ export class TdsNavigationTabs {
     this.children[this.selectedIndex].setSelected(true);
   }
 
-  scrollRight() {
+  private scrollRight() {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
 
     this.evaluateScrollButtons();
   }
 
-  scrollLeft() {
+  private scrollLeft() {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
 
     this.evaluateScrollButtons();
   }
 
-  evaluateScrollButtons() {
+  private evaluateScrollButtons() {
     const scroll = this.navWrapperElement.scrollLeft;
 
     if (scroll >= this.scrollWidth) {
@@ -116,7 +116,7 @@ export class TdsNavigationTabs {
     }
   }
 
-  addResizeObserver = () => {
+  private addResizeObserver = () => {
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         const componentWidth = entry.contentRect.width;
@@ -146,7 +146,7 @@ export class TdsNavigationTabs {
     resizeObserver.observe(this.navWrapperElement);
   };
 
-  addEventListenerToTabs = () => {
+  private addEventListenerToTabs = () => {
     this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
     this.children = this.children.map((item, index) => {
       item.addEventListener('click', () => {
@@ -165,29 +165,51 @@ export class TdsNavigationTabs {
     });
   };
 
-  connectedCallback() {
-    this.children = Array.from(this.host.children) as Array<any>;
+  private initializeTabs() {
+    this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
   }
 
-  componentDidLoad = () => {
+  private initializeSelectedTab() {
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
-      this.tdsChange.emit({
-        selectedTabIndex: this.selectedIndex,
-      });
     } else {
       this.children[this.selectedIndex].setSelected(true);
-      this.tdsChange.emit({
-        selectedTabIndex: this.selectedIndex,
-      });
     }
-  };
+    this.tdsChange.emit({
+      selectedTabIndex: this.selectedIndex,
+    });
+  }
+
+  private updateScrollButtons() {
+    if (this.buttonsWidth > this.componentWidth) {
+      this.evaluateScrollButtons();
+    } else {
+      this.showLeftScroll = false;
+      this.showRightScroll = false;
+    }
+  }
+
+  connectedCallback() {
+    this.initializeTabs();
+  }
+
+  componentDidLoad() {
+    this.initializeSelectedTab();
+  }
 
   componentDidRender() {
+    this.updateScrollButtons();
+    this.addResizeObserver();
+  }
+
+  private handleSlotChange() {
+    this.initializeTabs();
+    this.initializeSelectedTab();
+    this.updateScrollButtons();
     this.addResizeObserver();
   }
 
@@ -207,7 +229,7 @@ export class TdsNavigationTabs {
           >
             <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
-          <slot />
+          <slot onSlotchange={this.handleSlotChange} />
           <button
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             onClick={() => this.scrollRight()}
