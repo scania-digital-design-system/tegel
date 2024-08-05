@@ -86,47 +86,26 @@ export class TdsFolderTabs {
     this.children[this.selectedIndex].setSelected(true);
   }
 
-  calculateButtonWidth() {
-    this.children = this.children.map((tab: HTMLTdsFolderTabElement) => {
-      if (tab.offsetWidth > this.buttonWidth) {
-        this.buttonWidth = tab.offsetWidth;
-      }
-      return tab;
-    });
-    this.children.forEach((tab) => {
-      tab.setTabWidth(this.buttonWidth);
-    });
-  }
-
-  scrollRight() {
+  private scrollRight(): void {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonWidth;
     this.evaluateScrollButtons();
   }
 
-  scrollLeft() {
+  private scrollLeft(): void {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonWidth;
     this.evaluateScrollButtons();
   }
 
-  evaluateScrollButtons() {
+  private evaluateScrollButtons(): void {
     const scroll = this.navWrapperElement.scrollLeft;
 
-    if (scroll >= this.scrollWidth) {
-      this.showRightScroll = false;
-    } else {
-      this.showRightScroll = true;
-    }
-
-    if (scroll <= 0) {
-      this.showLeftScroll = false;
-    } else {
-      this.showLeftScroll = true;
-    }
+    this.showRightScroll = scroll < this.scrollWidth;
+    this.showLeftScroll = scroll > 0;
   }
 
-  addResizeObserver = () => {
+  private addResizeObserver = (): void => {
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         const componentWidth = entry.contentRect.width;
@@ -143,20 +122,14 @@ export class TdsFolderTabs {
         this.buttonsWidth = buttonsWidth;
         this.scrollWidth = buttonsWidth - componentWidth;
 
-        if (this.buttonsWidth > this.componentWidth) {
-          this.evaluateScrollButtons();
-        } else {
-          this.showLeftScroll = false;
-          this.showRightScroll = false;
-        }
+        this.updateScrollButtons();
       });
     });
 
     resizeObserver.observe(this.navWrapperElement);
   };
 
-  addEventListenerToTabs = () => {
-    this.children = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
+  private addEventListenerToTabs = (): void => {
     this.children = this.children.map((item, index) => {
       item.addEventListener('click', () => {
         if (!item.disabled) {
@@ -174,40 +147,51 @@ export class TdsFolderTabs {
     });
   };
 
-  connectedCallback() {
+  private initializeTabs(): void {
     this.children = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
   }
 
-  componentDidLoad() {
+  private initializeSelectedTab(): void {
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
-      this.tdsChange.emit({
-        selectedTabIndex: this.selectedIndex,
-      });
     } else {
       this.children[this.selectedIndex].setSelected(true);
-      this.tdsChange.emit({
-        selectedTabIndex: this.selectedIndex,
-      });
     }
-    this.calculateButtonWidth();
+    this.tdsChange.emit({
+      selectedTabIndex: this.selectedIndex,
+    });
   }
 
-  componentDidUpdate() {
-    this.calculateButtonWidth();
-  }
-
-  componentDidRender() {
+  private updateScrollButtons(): void {
     if (this.buttonsWidth > this.componentWidth) {
       this.evaluateScrollButtons();
     } else {
       this.showLeftScroll = false;
       this.showRightScroll = false;
     }
+  }
+
+  connectedCallback(): void {
+    this.initializeTabs();
+  }
+
+  componentDidLoad(): void {
+    this.initializeSelectedTab();
+  }
+
+  componentDidRender(): void {
+    this.updateScrollButtons();
+    this.addResizeObserver();
+  }
+
+  private handleSlotChange(): void {
+    this.initializeTabs();
+    this.initializeSelectedTab();
+    this.updateScrollButtons();
     this.addResizeObserver();
   }
 
@@ -227,7 +211,7 @@ export class TdsFolderTabs {
           >
             <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
-          <slot></slot>
+          <slot onSlotchange={this.handleSlotChange} />
           <button
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             disabled={!this.showRightScroll}
