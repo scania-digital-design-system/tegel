@@ -229,7 +229,7 @@ export class TdsNavigationTabs {
           >
             <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
-          <slot onSlotchange={this.handleSlotChange} />
+          <slot onSlotchange={() => this.handleSlotChange()} />
           <button
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             onClick={() => this.scrollRight()}

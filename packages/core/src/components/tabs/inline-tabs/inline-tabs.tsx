@@ -36,8 +36,6 @@ export class TdsInlineTabs {
 
   @State() showRightScroll: boolean = false;
 
-  @State() buttonWidth: number = 0; // current calculated width of the largest nav button
-
   private navWrapperElement: HTMLElement = null; // reference to container with nav buttons
 
   private componentWidth: number = 0; // visible width of this component
@@ -103,7 +101,7 @@ export class TdsInlineTabs {
   private evaluateScrollButtons(): void {
     const scroll = this.navWrapperElement.scrollLeft;
 
-    this.showRightScroll = scroll < this.scrollWidth;
+    this.showRightScroll = scroll <= this.scrollWidth;
     this.showLeftScroll = scroll > 0;
   }
 
@@ -213,7 +211,7 @@ export class TdsInlineTabs {
           >
             <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
-          <slot onSlotchange={this.handleSlotChange} />
+          <slot onSlotchange={() => this.handleSlotChange()} />
           <button
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             onClick={() => this.scrollRight()}

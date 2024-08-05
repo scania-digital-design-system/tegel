@@ -61,7 +61,11 @@ export class TdsFolderTabs {
 
   /** Sets the passed tabindex as the selected Tab. */
   @Method()
-  async selectTab(tabIndex: number) {
+  async selectTab(tabIndex: number): Promise<{ selectedTabIndex: number }> {
+    if (tabIndex < 0 || tabIndex >= this.children.length) {
+      throw new Error('Tab index out of bounds');
+    }
+
     if (!this.children[tabIndex].disabled) {
       this.children.forEach((element) => element.setSelected(false));
       this.children = this.children.map((element, index) => {
@@ -72,13 +76,11 @@ export class TdsFolderTabs {
         return element;
       });
     }
-    return {
-      selectedTabIndex: this.selectedIndex,
-    };
+    return { selectedTabIndex: this.selectedIndex };
   }
 
   @Watch('selectedIndex')
-  handleSelectedIndexUpdate() {
+  handleSelectedIndexUpdate(): void {
     this.children = Array.from(this.host.children).map((tabElement: HTMLTdsFolderTabElement) => {
       tabElement.setSelected(false);
       return tabElement;
@@ -88,20 +90,20 @@ export class TdsFolderTabs {
 
   private scrollRight(): void {
     const scroll = this.navWrapperElement.scrollLeft;
-    this.navWrapperElement.scrollLeft = scroll + this.buttonWidth;
+    this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
     this.evaluateScrollButtons();
   }
 
   private scrollLeft(): void {
     const scroll = this.navWrapperElement.scrollLeft;
-    this.navWrapperElement.scrollLeft = scroll - this.buttonWidth;
+    this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
     this.evaluateScrollButtons();
   }
 
   private evaluateScrollButtons(): void {
     const scroll = this.navWrapperElement.scrollLeft;
 
-    this.showRightScroll = scroll < this.scrollWidth;
+    this.showRightScroll = scroll <= this.scrollWidth;
     this.showLeftScroll = scroll > 0;
   }
 
@@ -211,7 +213,7 @@ export class TdsFolderTabs {
           >
             <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
-          <slot onSlotchange={this.handleSlotChange} />
+          <slot onSlotchange={() => this.handleSlotChange()} />
           <button
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             disabled={!this.showRightScroll}
