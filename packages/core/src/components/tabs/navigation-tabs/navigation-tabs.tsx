@@ -46,6 +46,8 @@ export class TdsNavigationTabs {
 
   private children: Array<HTMLTdsNavigationTabElement>;
 
+  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
+
   /** Event emitted when the selected Tab is changed. */
   @Event({
     eventName: 'tdsChange',
@@ -75,6 +77,12 @@ export class TdsNavigationTabs {
     };
   }
 
+  /** Reinitializes the component. */
+  @Method()
+  async reinitialize(): Promise<void> {
+    this.handleSlotChange();
+  }
+
   @Watch('selectedIndex')
   handleSelectedIndexUpdate() {
     this.children = Array.from(this.host.children).map(
@@ -86,37 +94,26 @@ export class TdsNavigationTabs {
     this.children[this.selectedIndex].setSelected(true);
   }
 
-  private scrollRight() {
+  private scrollRight(): void {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
-
     this.evaluateScrollButtons();
   }
 
-  private scrollLeft() {
+  private scrollLeft(): void {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
-
     this.evaluateScrollButtons();
   }
 
-  private evaluateScrollButtons() {
+  private evaluateScrollButtons(): void {
     const scroll = this.navWrapperElement.scrollLeft;
 
-    if (scroll >= this.scrollWidth) {
-      this.showRightScroll = false;
-    } else {
-      this.showRightScroll = true;
-    }
-
-    if (scroll <= 0) {
-      this.showLeftScroll = false;
-    } else {
-      this.showLeftScroll = true;
-    }
+    this.showRightScroll = scroll <= this.scrollWidth;
+    this.showLeftScroll = scroll > 0;
   }
 
-  private addResizeObserver = () => {
+  private addResizeObserver = (): void => {
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         const componentWidth = entry.contentRect.width;
@@ -127,29 +124,23 @@ export class TdsNavigationTabs {
           const style = window.getComputedStyle(navButton);
           buttonsWidth +=
             navButton.clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-
-          navButton.classList.add('tds-navigation-tabs-tab');
         });
 
         this.componentWidth = componentWidth;
         this.buttonsWidth = buttonsWidth;
         this.scrollWidth = buttonsWidth - componentWidth;
 
-        if (this.buttonsWidth > this.componentWidth) {
-          this.evaluateScrollButtons();
-        } else {
-          this.showLeftScroll = false;
-          this.showRightScroll = false;
-        }
+        this.updateScrollButtons();
       });
     });
+
     resizeObserver.observe(this.navWrapperElement);
   };
 
-  private addEventListenerToTabs = () => {
+  private addEventListenerToTabs = (): void => {
     this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
-    this.children = this.children.map((item, index) => {
-      item.addEventListener('click', () => {
+    this.children.map((item, index) => {
+      const clickHandler = () => {
         if (!item.disabled) {
           const tdsChangeEvent = this.tdsChange.emit({
             selectedTabIndex: this.children.indexOf(item),
@@ -160,18 +151,35 @@ export class TdsNavigationTabs {
             this.selectedIndex = index;
           }
         }
-      });
+      };
+      item.addEventListener('click', clickHandler);
+      this.clickHandlers.set(item, clickHandler); // Store the handler in WeakMap
       return item;
     });
   };
 
-  private initializeTabs() {
+  private removeEventListenerFromTabs = (): void => {
+    this.children.forEach((item) => {
+      const clickHandler = this.clickHandlers.get(item);
+      if (clickHandler) {
+        item.removeEventListener('click', clickHandler);
+        this.clickHandlers.delete(item);
+      }
+    });
+  };
+
+  private initializeTabs(): void {
     this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
+    // remove first and last class from other tabs in case of initialization
+    this.children.forEach((child) => {
+      child.classList.remove('last');
+      child.classList.remove('first');
+    });
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
   }
 
-  private initializeSelectedTab() {
+  private initializeSelectedTab(): void {
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
@@ -184,7 +192,7 @@ export class TdsNavigationTabs {
     });
   }
 
-  private updateScrollButtons() {
+  private updateScrollButtons(): void {
     if (this.buttonsWidth > this.componentWidth) {
       this.evaluateScrollButtons();
     } else {
@@ -193,24 +201,29 @@ export class TdsNavigationTabs {
     }
   }
 
-  private handleSlotChange() {
+  private handleSlotChange(): void {
     this.initializeTabs();
+    this.addEventListenerToTabs();
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     this.initializeTabs();
   }
 
-  componentDidLoad() {
+  componentDidLoad(): void {
     this.initializeSelectedTab();
   }
 
-  componentDidRender() {
+  componentDidRender(): void {
     this.updateScrollButtons();
     this.addResizeObserver();
+  }
+
+  disconnectedCallback(): void {
+    this.removeEventListenerFromTabs();
   }
 
   render() {

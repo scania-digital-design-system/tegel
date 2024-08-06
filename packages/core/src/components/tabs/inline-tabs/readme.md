@@ -23,6 +23,16 @@
 
 ## Methods
 
+### `reinitialize() => Promise<void>`
+
+Reinitializes the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number; }>`
 
 Selects a Tab based on tabindex, will not select a disabled Tab.

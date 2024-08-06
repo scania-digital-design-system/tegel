@@ -48,6 +48,8 @@ export class TdsFolderTabs {
 
   private children: Array<HTMLTdsFolderTabElement>;
 
+  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
+
   /** Event emitted when the selected Tab is changed. */
   @Event({
     eventName: 'tdsChange',
@@ -77,6 +79,12 @@ export class TdsFolderTabs {
       });
     }
     return { selectedTabIndex: this.selectedIndex };
+  }
+
+  /** Reinitializes the component. */
+  @Method()
+  async reinitialize(): Promise<void> {
+    this.handleSlotChange();
   }
 
   @Watch('selectedIndex')
@@ -132,8 +140,9 @@ export class TdsFolderTabs {
   };
 
   private addEventListenerToTabs = (): void => {
-    this.children = this.children.map((item, index) => {
-      item.addEventListener('click', () => {
+    this.children = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
+    this.children.map((item, index) => {
+      const clickHandler = () => {
         if (!item.disabled) {
           const tdsChangeEvent = this.tdsChange.emit({
             selectedTabIndex: this.children.indexOf(item),
@@ -144,13 +153,30 @@ export class TdsFolderTabs {
             this.selectedIndex = index;
           }
         }
-      });
+      };
+      item.addEventListener('click', clickHandler);
+      this.clickHandlers.set(item, clickHandler); // Store the handler in WeakMap
       return item;
+    });
+  };
+
+  private removeEventListenerFromTabs = (): void => {
+    this.children.forEach((item) => {
+      const clickHandler = this.clickHandlers.get(item);
+      if (clickHandler) {
+        item.removeEventListener('click', clickHandler);
+        this.clickHandlers.delete(item);
+      }
     });
   };
 
   private initializeTabs(): void {
     this.children = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
+    // remove first and last class from other tabs in case of initialization
+    this.children.forEach((child) => {
+      child.classList.remove('last');
+      child.classList.remove('first');
+    });
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
   }
@@ -179,6 +205,7 @@ export class TdsFolderTabs {
 
   private handleSlotChange(): void {
     this.initializeTabs();
+    this.addEventListenerToTabs();
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
@@ -195,6 +222,10 @@ export class TdsFolderTabs {
   componentDidRender(): void {
     this.updateScrollButtons();
     this.addResizeObserver();
+  }
+
+  disconnectedCallback(): void {
+    this.removeEventListenerFromTabs();
   }
 
   render() {
