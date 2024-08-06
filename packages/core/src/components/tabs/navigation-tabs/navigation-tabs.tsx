@@ -193,6 +193,13 @@ export class TdsNavigationTabs {
     }
   }
 
+  private handleSlotChange() {
+    this.initializeTabs();
+    this.initializeSelectedTab();
+    this.updateScrollButtons();
+    this.addResizeObserver();
+  }
+
   connectedCallback() {
     this.initializeTabs();
   }
@@ -202,13 +209,6 @@ export class TdsNavigationTabs {
   }
 
   componentDidRender() {
-    this.updateScrollButtons();
-    this.addResizeObserver();
-  }
-
-  private handleSlotChange() {
-    this.initializeTabs();
-    this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
   }

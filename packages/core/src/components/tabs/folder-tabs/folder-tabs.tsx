@@ -177,6 +177,13 @@ export class TdsFolderTabs {
     }
   }
 
+  private handleSlotChange(): void {
+    this.initializeTabs();
+    this.initializeSelectedTab();
+    this.updateScrollButtons();
+    this.addResizeObserver();
+  }
+
   connectedCallback(): void {
     this.initializeTabs();
   }
@@ -186,13 +193,6 @@ export class TdsFolderTabs {
   }
 
   componentDidRender(): void {
-    this.updateScrollButtons();
-    this.addResizeObserver();
-  }
-
-  private handleSlotChange(): void {
-    this.initializeTabs();
-    this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
   }

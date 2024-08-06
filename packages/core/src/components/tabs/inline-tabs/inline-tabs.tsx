@@ -175,6 +175,13 @@ export class TdsInlineTabs {
     }
   }
 
+  private handleSlotChange(): void {
+    this.initializeTabs();
+    this.initializeSelectedTab();
+    this.updateScrollButtons();
+    this.addResizeObserver();
+  }
+
   connectedCallback(): void {
     this.initializeTabs();
   }
@@ -184,13 +191,6 @@ export class TdsInlineTabs {
   }
 
   componentDidRender(): void {
-    this.updateScrollButtons();
-    this.addResizeObserver();
-  }
-
-  private handleSlotChange(): void {
-    this.initializeTabs();
-    this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
   }
