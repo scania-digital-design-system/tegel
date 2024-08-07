@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the header title text.
@@ -11,11 +11,9 @@ import { Component, h, Host } from '@stencil/core';
 export class TdsHeaderTitle {
   render() {
     return (
-      <Host>
-        <div class="component">
-          <slot></slot>
-        </div>
-      </Host>
+      <h4>
+        <slot></slot>
+      </h4>
     );
   }
 }
