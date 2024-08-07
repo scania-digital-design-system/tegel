@@ -211,7 +211,9 @@ export class TdsSlider {
   private updateTrack() {
     const trackWidth = this.getTrackWidth();
     const percentageFilled = (this.thumbLeft / trackWidth) * 100;
-    this.trackFillElement.style.width = `${percentageFilled}%`;
+    if (this.trackFillElement) {
+      this.trackFillElement.style.width = `${percentageFilled}%`;
+    }
   }
 
   private updateValue(event) {
@@ -261,6 +263,9 @@ export class TdsSlider {
   }
 
   private getTrackWidth() {
+    if (!this.trackElement) {
+      return 0;
+    }
     const trackRect = this.trackElement.getBoundingClientRect();
     return trackRect.right - trackRect.left;
   }
@@ -277,7 +282,9 @@ export class TdsSlider {
     this.thumbLeft = calculatedLeft;
     this.updateSupposedValueSlot(this.thumbLeft);
 
-    this.thumbElement.style.left = `${this.thumbLeft}px`;
+    if (this.thumbElement) {
+      this.thumbElement.style.left = `${this.thumbLeft}px`;
+    }
   }
 
   /** Updates the slider value based on the current input value */
