@@ -23,6 +23,16 @@
 
 ## Methods
 
+### `reinitialize() => Promise<void>`
+
+Reinitializes the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number; }>`
 
 Sets the passed tabindex as the selected Tab.
