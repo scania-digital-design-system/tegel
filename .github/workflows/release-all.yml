@@ -317,6 +317,9 @@ jobs:
       - name: Fetch all branches
         run: git fetch --all
 
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
       - name: Merge develop into main
         run: |
           git checkout main
