@@ -133,6 +133,7 @@ export class TdsTextField {
   render() {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
+
     return (
       <div
         class={{
