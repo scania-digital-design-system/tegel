@@ -1,5 +1,5 @@
 //@import '../theme/core/spacing/vars';
-@import '../../../../../grid/vars';
+@import '../../../../../grid-deprecated/vars';
 @import '../../mixins/box-sizing';
 @import '../../mixins/flex-center';
 @import '../../mixins/scrollbar';
@@ -30,9 +30,7 @@ nav {
   .tds-header-component-list {
     height: var(--tds-header-height);
     all: unset;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+    @include tds-flex-center;
   }
 
   tds-header-dropdown,

@@ -1,0 +1,41 @@
+{
+  "name": "tegel-styles",
+  "version": "1.0.0",
+  "description": "CSS styling package for Tegel Design System.",
+  "main": "dist/css/tegel-styles.css",
+  "style": "main.scss",
+  "files": [
+    "scss/",
+    "dist/css/"
+  ],
+  "scripts": {
+    "build": "node build-css.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scania-digital-design-system/tegel.git"
+  },
+  "keywords": [
+    "css",
+    "scss",
+    "design system",
+    "tegel",
+    "styles",
+    "ag-grid",
+    "foundations"
+  ],
+  "author": "IXIB team @ Scania",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scania-digital-design-system/tegel/issues"
+  },
+  "homepage": "https://tegel.scania.com/home",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "sass": "^1.32.8"
+  },
+  "dependencies": {
+    "postcss": "^8.4.39",
+    "glob": "^8.1.0"
+  }
+}

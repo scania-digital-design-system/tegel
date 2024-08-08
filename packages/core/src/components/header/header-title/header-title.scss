@@ -1,8 +1,4 @@
-@import '../../../mixins/flex-center';
-
-:host {
-  display: block;
-  flex-shrink: 1;
+h4 {
   box-sizing: border-box;
   color: var(--tds-header-nav-item-color);
   font-weight: normal;
@@ -15,7 +11,6 @@
 
   slot {
     display: block;
-    align-items: center;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
