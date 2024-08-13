@@ -92,6 +92,7 @@
 .ag-popup {
   font: var(--tds-ag-grid-table-cell-font);
   letter-spacing: var(--tds-ag-grid-table-cell-text-ls);
+  line-height: min(var(--ag-internal-calculated-line-height), var(--ag-internal-padded-row-height));
 }
 
 .ag-header-cell-resize::after {
