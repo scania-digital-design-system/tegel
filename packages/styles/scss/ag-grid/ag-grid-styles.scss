@@ -3,12 +3,12 @@
 /* Light mode variables */
 :root,
 .tds-mode-light {
-  --tds-ag-grid-table-header-bg: var(--grey-300); /* #dbdfe6 */
-  --tds-ag-grid-table-header-cell-bg-hover: var(--grey-400); /* #cdd1db */
-  --tds-ag-grid-table-row-border-color: var(--grey-400); /* #cdd1db */
-  --tds-ag-grid-table-row-color: var(--grey-958); /* #0d0f13 */
+  --tds-ag-grid-table-header-bg: var(--tds-grey-300); /* #dbdfe6 */
+  --tds-ag-grid-table-header-cell-bg-hover: var(--tds-grey-400); /* #cdd1db */
+  --tds-ag-grid-table-row-border-color: var(--tds-grey-400); /* #cdd1db */
+  --tds-ag-grid-table-row-color: var(--tds-grey-958); /* #0d0f13 */
   --tds-ag-grid-table-filter-icon-invert: invert(0%);
-  --tds-ag-grid-table-cell-focus-border-color: var(--blue-400); /* #2b70d3 */
+  --tds-ag-grid-table-cell-focus-border-color: var(--tds-blue-400); /* #2b70d3 */
   --tds-ag-grid-table-bottom-border-focus: 2px solid
     var(--tds-ag-grid-table-cell-focus-border-color);
   --tds-ag-grid-table-header-cell-text-font: var(
@@ -28,25 +28,25 @@
 
   /* Primary mode variant variables, light mode */
   .tds-mode-variant-primary {
-    --tds-ag-grid-table-row-bg: var(--grey-50); /* #f9fafb */
-    --tds-ag-grid-table-row-hover-bg-color: var(--grey-200); /* #e7e9ee */
+    --tds-ag-grid-table-row-bg: var(--tds-grey-50); /* #f9fafb */
+    --tds-ag-grid-table-row-hover-bg-color: var(--tds-grey-200); /* #e7e9ee */
   }
 
   /* Secondary mode variant variables, light mode */
   .tds-mode-variant-secondary {
-    --tds-ag-grid-table-row-bg: var(--white); /* #fff */
-    --tds-ag-grid-table-row-hover-bg-color: var(--grey-100); /* #edeff3 */
+    --tds-ag-grid-table-row-bg: var(--tds-white); /* #fff */
+    --tds-ag-grid-table-row-hover-bg-color: var(--tds-grey-100); /* #edeff3 */
   }
 }
 
 /* Dark mode variables */
 .tds-mode-dark {
-  --tds-ag-grid-table-header-bg: var(--grey-800); /* #37414f */
-  --tds-ag-grid-table-header-cell-bg-hover: var(--grey-700); /* #56657a */
-  --tds-ag-grid-table-row-border-color: var(--grey-700); /* #56657a */
-  --tds-ag-grid-table-row-color: var(--grey-50); /* #f9fafb */
+  --tds-ag-grid-table-header-bg: var(--tds-grey-800); /* #37414f */
+  --tds-ag-grid-table-header-cell-bg-hover: var(--tds-grey-700); /* #56657a */
+  --tds-ag-grid-table-row-border-color: var(--tds-grey-700); /* #56657a */
+  --tds-ag-grid-table-row-color: var(--tds-grey-50); /* #f9fafb */
   --tds-ag-grid-table-filter-icon-invert: invert(100%);
-  --tds-ag-grid-table-cell-focus-border-color: var(--blue-400); /* #2b70d3 */
+  --tds-ag-grid-table-cell-focus-border-color: var(--tds-blue-400); /* #2b70d3 */
   --tds-ag-grid-table-bottom-border-focus: 2px solid
     var(--tds-ag-grid-table-cell-focus-border-color);
   --tds-ag-grid-table-header-cell-text-font: var(
@@ -66,14 +66,14 @@
 
   /* Primary mode variant variables, dark mode */
   .tds-mode-variant-primary {
-    --tds-ag-grid-table-row-bg: var(--grey-868); /* #242a33 */
-    --tds-ag-grid-table-row-hover-bg-color: var(--grey-846); /* #2b323d */
+    --tds-ag-grid-table-row-bg: var(--tds-grey-868); /* #242a33 */
+    --tds-ag-grid-table-row-hover-bg-color: var(--tds-grey-846); /* #2b323d */
   }
 
   /* Secondary mode variant variables, dark mode */
   .tds-mode-variant-secondary {
-    --tds-ag-grid-table-row-bg: var(--grey-900); /* #1d2229 */
-    --tds-ag-grid-table-row-hover-bg-color: var(--grey-846); /* #2b323d */
+    --tds-ag-grid-table-row-bg: var(--tds-grey-900); /* #1d2229 */
+    --tds-ag-grid-table-row-hover-bg-color: var(--tds-grey-846); /* #2b323d */
   }
 }
 
