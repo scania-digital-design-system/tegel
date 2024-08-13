@@ -1,6 +1,14 @@
 /* AG-Grid General Overrides using Tegel Design System Variables */
 
 /* Light mode variables */
+:root {
+  --tds-ag-grid-table-header-cell-font: var(--tds-headline-07);
+  --tds-ag-grid-table-header-cell-text-ls: var(--tds-headline-07-ls); /* -0.01em */
+  --tds-ag-grid-table-cell-font: var(--tds-detail-02);
+  --tds-ag-grid-table-cell-text-ls: var(--tds-detail-02-ls); /* -0.01em */
+  --tds-ag-grid-table-border-radius-top: 4px 4px 0 0;
+}
+
 :root,
 .tds-mode-light {
   --tds-ag-grid-table-header-bg: var(--tds-grey-300); /* #dbdfe6 */
@@ -11,20 +19,6 @@
   --tds-ag-grid-table-cell-focus-border-color: var(--tds-blue-400); /* #2b70d3 */
   --tds-ag-grid-table-bottom-border-focus: 2px solid
     var(--tds-ag-grid-table-cell-focus-border-color);
-  --tds-ag-grid-table-header-cell-text-font: var(
-    --tds-headline-07-font
-  ); /* 'Scania Sans Semi Condensed', Arial, Helvetica, sans-serif */
-
-  --tds-ag-grid-table-header-cell-text-size: var(--tds-headline-07-size); /* 14px */
-  --tds-ag-grid-table-header-cell-text-weight: var(--tds-headline-07-weight); /* bold */
-  --tds-ag-grid-table-header-cell-text-ls: var(--tds-headline-07-ls); /* -0.01em */
-  --tds-ag-grid-table-cell-text-font: var(
-    --tds-detail-02-font
-  ); /* 'Scania Sans Condensed', Arial, Helvetica, sans-serif */
-
-  --tds-ag-grid-table-cell-text-size: var(--tds-detail-02-size); /* 14px */
-  --tds-ag-grid-table-cell-text-ls: var(--tds-detail-02-ls); /* -0.01em */
-  --tds-ag-grid-table-border-radius-top: 4px 4px 0 0;
 
   /* Primary mode variant variables, light mode */
   .tds-mode-variant-primary {
@@ -49,20 +43,6 @@
   --tds-ag-grid-table-cell-focus-border-color: var(--tds-blue-400); /* #2b70d3 */
   --tds-ag-grid-table-bottom-border-focus: 2px solid
     var(--tds-ag-grid-table-cell-focus-border-color);
-  --tds-ag-grid-table-header-cell-text-font: var(
-    --tds-headline-07-font
-  ); /* 'Scania Sans Semi Condensed', Arial, Helvetica, sans-serif */
-
-  --tds-ag-grid-table-header-cell-text-size: var(--tds-headline-07-size); /* 14px */
-  --tds-ag-grid-table-header-cell-text-weight: var(--tds-headline-07-weight); /* bold */
-  --tds-ag-grid-table-header-cell-text-ls: var(--tds-headline-07-ls); /* -0.01em */
-  --tds-ag-grid-table-cell-text-font: var(
-    --tds-detail-02-font
-  ); /* 'Scania Sans Condensed', Arial, Helvetica, sans-serif */
-
-  --tds-ag-grid-table-cell-text-size: var(--tds-detail-02-size); /* 14px */
-  --tds-ag-grid-table-cell-text-ls: var(--tds-detail-02-ls); /* -0.01em */
-  --tds-ag-grid-table-border-radius-top: 4px 4px 0 0;
 
   /* Primary mode variant variables, dark mode */
   .tds-mode-variant-primary {
@@ -104,16 +84,13 @@
 }
 
 .ag-header-cell {
-  font-family: var(--tds-ag-grid-table-header-cell-text-font);
-  font-size: var(--tds-ag-grid-table-header-cell-text-size);
-  font-weight: var(--tds-ag-grid-table-header-cell-text-weight);
+  font: var(--tds-ag-grid-table-header-cell-font);
   letter-spacing: var(--tds-ag-grid-table-header-cell-text-ls);
 }
 
 .ag-cell-value,
 .ag-popup {
-  font-family: var(--tds-ag-grid-table-cell-text-font);
-  font-size: var(--tds-ag-grid-table-cell-text-size);
+  font: var(--tds-ag-grid-table-cell-font);
   letter-spacing: var(--tds-ag-grid-table-cell-text-ls);
 }
 
