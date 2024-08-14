@@ -1,0 +1,52 @@
+:host {
+  position: relative;
+}
+
+:host(:hover) {
+  tds-icon {
+    display: inline-block;
+  }
+}
+
+:host(.focused-input-wrapper) {
+  tds-icon {
+    display: inline-block;
+  }
+}
+
+:host(.show-icon) {
+  ::slotted(input) {
+    padding-right: var(--tds-spacing-element-24);
+  }
+}
+
+tds-icon.edit-icon {
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 1px;
+}
+
+::slotted(input) {
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  padding-left: var(--tds-spacing-element-16);
+  padding-right: var(--tds-spacing-element-16);
+  height: 48px;
+  border-radius: none;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  width: 100%;
+}
+
+::slotted(input:focus) {
+  outline: none;
+  background-color: white;
+  border-bottom: 2px solid var(--tds-text-field-bar);
+}
+
+::slotted(input:hover:not(:focus)) {
+  background-color: var(--tds-table-body-input-hover-bg);
+  opacity: 0.05;
+}
