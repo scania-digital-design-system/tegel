@@ -49,6 +49,9 @@
   --tds-table-divider: var(
     --tds-grey-400
   ); // light divider is grey-300 but expandable row is the same color when selected
+
+  /* Table-input-wrapper */
+  --tds-table-input-hover-bg: var(--tds-blue-900);
 }
 
 .tds-mode-dark {
@@ -99,4 +102,7 @@
 
   /* Divider */
   --tds-table-divider: var(--tds-grey-700);
+
+  /* Table-input-wrapper */
+  --tds-table-input-hover-bg: var(--tds-white);
 }
