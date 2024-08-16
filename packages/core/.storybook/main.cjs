@@ -6,6 +6,7 @@ let addons = [
   '@storybook/addon-essentials',
   'storybook-dark-mode',
   '@storybook/addon-notes/register',
+   '@storybook/addon-docs',
   'storybook-version',
 ];
 

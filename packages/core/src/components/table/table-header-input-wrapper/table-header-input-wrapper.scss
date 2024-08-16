@@ -11,38 +11,52 @@
 :host(.focused-input-wrapper) {
   tds-icon {
     display: inline-block;
-    color: var(--tds-black);
+  }
+
+  ::slotted(input:not(:focus)) {
+    background-color: var(--tds-table-input-background-hover);
   }
 }
 
 :host(.show-icon) {
   ::slotted(input) {
-    padding-left: 28px;
+    padding-left: 35px;
   }
 }
 
 tds-icon.search-icon {
-  color: var(--tds-table-input-search-icon);
+  color: var(--tds-table-input-header-icon);
   position: absolute;
-  left: 8px;
+  left: 15px;
   top: 1px;
 }
 
 ::slotted(input) {
-  font: var(--tds-headline-07);
-  letter-spacing: var(--tds-headline-07-ls);
+  box-sizing: border-box;
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
   color: var(--tds-table-color);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
   height: 48px;
-  border-radius: none;
+  border-radius: 0;
   background-color: transparent;
   border: 0;
   border-bottom: 2px solid transparent;
 }
 
+::slotted(input)::placeholder {
+  color: var(--tds-table-input-header-placeholder);
+}
+
 ::slotted(input:focus) {
   outline: none;
-  background-color: white;
+  background-color: var(--tds-table-input-header-background-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
+}
+
+:host(.tds-table__compact) {
+  ::slotted(input) {
+    height: 32px; /* Reduced height for compact design */
+  }
 }
