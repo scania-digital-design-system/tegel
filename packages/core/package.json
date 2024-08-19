@@ -387,6 +387,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
+    "@mdx-js/react": "^3.0.1",
     "@playwright/test": "^1.39.0",
     "@stencil/angular-output-target": "^0.8.4",
     "@stencil/react-output-target": "^0.5.3",
@@ -401,6 +402,7 @@
     "@storybook/addons": "^6.5.16",
     "@storybook/builder-webpack4": "^6.5.16",
     "@storybook/html": "^6.5.16",
+    "@storybook/mdx2-csf": "^0.0.3",
     "addon-screen-reader": "^1.8.6",
     "babel-loader": "^8.2.5",
     "concurrently": "^8.0.1",

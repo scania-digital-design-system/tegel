@@ -28,6 +28,7 @@ module.exports = {
   addons: addons,
   features: {
     postcss: false,
+    previewMdx2: true,
   },
   stories: loadStories(),
   framework: '@storybook/html',
