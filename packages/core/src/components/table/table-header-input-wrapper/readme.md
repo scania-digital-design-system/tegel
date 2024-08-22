@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute   | Description                          | Type      | Default |
-| ---------- | ----------- | ------------------------------------ | --------- | ------- |
-| `showIcon` | `show-icon` | Controls if the search icon is shown | `boolean` | `true`  |
+| Property        | Attribute        | Description                          | Type      | Default |
+| --------------- | ---------------- | ------------------------------------ | --------- | ------- |
+| `compactDesign` | `compact-design` |                                      | `boolean` | `false` |
+| `showIcon`      | `show-icon`      | Controls if the search icon is shown | `boolean` | `true`  |
 
 
 ## Dependencies
