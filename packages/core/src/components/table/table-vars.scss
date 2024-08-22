@@ -23,6 +23,15 @@
   --tds-table-body-row-background-selected: var(--tds-grey-300);
   --tds-table-body-row-background-selected-hover: var(--tds-grey-400);
 
+  /* Table input */
+  --tds-table-input-background: var(--tds-grey-50);
+  --tds-table-input-background-focus: var(--tds-white);
+  --tds-table-input-background-hover: rgb(13 15 19 / 5%);
+  --tds-table-input-background-disabled: var(--tds-grey-600);
+  --tds-table-input-header-icon: var(--tds-grey-700);
+  --tds-table-input-header-placeholder: var(--tds-grey-700);
+  --tds-table-input-header-background-focus: var(--tds-white);
+
   /* Table-footer */
   --tds-table-footer-background: var(--tds-grey-100);
   --tds-table-footer-page-selector-input-background: var(--tds-grey-50);
@@ -80,6 +89,15 @@
 
   --tds-table-body-row-background-selected: var(--tds-grey-800);
   --tds-table-body-row-background-selected-hover: var(--tds-grey-700);
+
+  /* Table input */
+  --tds-table-input-background: var(--tds-grey-900);
+  --tds-table-input-background-focus: var(--tds-grey-800);
+  --tds-table-input-background-hover: var(--tds-grey-958);
+  --tds-table-input-background-disabled: var(--tds-grey-700);
+  --tds-table-input-header-icon: var(--tds-grey-600);
+  --tds-table-input-header-placeholder: var(--tds-grey-600);
+  --tds-table-input-header-background-focus: var(--tds-grey-900);
 
   /* Table-footer */
   --tds-table-footer-background: var(--tds-grey-846);

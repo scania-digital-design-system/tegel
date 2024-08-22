@@ -2,12 +2,6 @@
   position: relative;
 }
 
-:host(:hover) {
-  tds-icon {
-    display: inline-block;
-  }
-}
-
 :host(.focused-input-wrapper) {
   tds-icon {
     display: inline-block;
@@ -20,33 +14,58 @@
   }
 }
 
+:host(:hover) {
+  tds-icon {
+    display: inline-block;
+  }
+
+  ::slotted(input:not(:focus)) {
+    background-color: var(--tds-table-input-background-hover);
+  }
+}
+
 tds-icon.edit-icon {
   display: none;
   position: absolute;
-  right: 4px;
+  right: 10px;
   top: 1px;
+  pointer-events: none;
+  cursor: pointer;
 }
 
 ::slotted(input) {
+  box-sizing: border-box;
   font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
-  height: 48px;
-  border-radius: none;
+  color: var(--tds-table-color);
   background-color: transparent;
+  height: 48px;
+  border-radius: 0;
   border: 0;
   border-bottom: 2px solid transparent;
   width: 100%;
+  cursor: pointer;
+}
+
+::slotted(input)::placeholder {
+  color: var(--tds-table-color);
+}
+
+::slotted(input:disabled) {
+  background-color: var(--tds-table-input-background-disabled);
 }
 
 ::slotted(input:focus) {
   outline: none;
-  background-color: white;
+  background-color: var(--tds-table-input-background-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
 }
 
-::slotted(input:hover:not(:focus)) {
-  background-color: var(--tds-table-body-input-hover-bg);
-  opacity: 0.05;
+/* Add compact-design specific styles here */
+:host(.tds-table__compact) {
+  ::slotted(input) {
+    height: 32px; /* Reduced height for compact design */
+  }
 }
