@@ -78,4 +78,19 @@ test.describe.parallel('tds-popover-menu-default', () => {
       .filter({ has: page.getByRole('img') });
     await expect(tdsMenuItemListItemIcons).toHaveCount(0);
   });
+
+  test('activating close method should close the dialog', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+    const dropDownList = page.getByRole('list');
+
+    await triggerButton.click();
+
+    const actionButton = page.getByTestId('action-button');
+    expect(actionButton).toBeVisible();
+    await actionButton.click();
+
+    await expect(dropDownList).not.toBeVisible();
+    await expect(actionButton).not.toBeVisible();
+  });
 });
