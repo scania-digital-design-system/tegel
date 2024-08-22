@@ -1,4 +1,7 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
+import { InternalTdsTablePropChange } from '../table/table';
+
+const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesign'];
 
 @Component({
   tag: 'tds-table-body-input-wrapper',
@@ -14,6 +17,45 @@ export class TdsTableBodyInputWrapper {
   @State() renderSlot: boolean = true;
 
   @State() inputFocused: boolean = false;
+
+  @State() compactDesign: boolean = false;
+
+  @State() tableId: string = '';
+
+  @Listen('internalTdsTablePropChange', { target: 'body' })
+  internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
+    if (this.tableId === event.detail.tableId) {
+      event.detail.changed
+        .filter((changedProp) => relevantTableProps.includes(changedProp))
+        .forEach((changedProp) => {
+          if (typeof this[changedProp] === 'undefined') {
+            console.error(`Table prop is not supported: ${changedProp}`); // More informative error
+            throw new Error(`Table prop is not supported: ${changedProp}`);
+          }
+          this[changedProp] = event.detail[changedProp];
+        });
+    }
+  }
+
+  connectedCallback() {
+    const tableEl = this.host.closest('tds-table');
+    if (tableEl) {
+      this.tableId = tableEl.getAttribute('table-id');
+    } else {
+      console.error('Failed to find parent tds-table element.');
+    }
+  }
+
+  componentWillLoad() {
+    const tableEl = this.host.closest('tds-table');
+    if (tableEl) {
+      relevantTableProps.forEach((tablePropName) => {
+        this[tablePropName] = tableEl[tablePropName];
+      });
+    } else {
+      console.error('Failed to find parent tds-table element.');
+    }
+  }
 
   private handleSlotChange() {
     this.validateSlot();
@@ -46,6 +88,7 @@ export class TdsTableBodyInputWrapper {
         class={{
           'focused-input-wrapper': this.inputFocused,
           'show-icon': this.showIcon,
+          'tds-table__compact': this.compactDesign,
         }}
       >
         {this.renderSlot ? <slot onSlotchange={() => this.handleSlotChange()} /> : null}
