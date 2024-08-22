@@ -49,6 +49,12 @@
   --tds-table-divider: var(
     --tds-grey-400
   ); // light divider is grey-300 but expandable row is the same color when selected
+
+  /* Table-body-input-wrapper */
+  --tds-table-body-input-hover-bg: var(--tds-blue-900);
+
+  /* Table-header-input-wrapper */
+  --tds-table-input-search-icon: var(--tds-grey-700);
 }
 
 .tds-mode-dark {
@@ -99,4 +105,10 @@
 
   /* Divider */
   --tds-table-divider: var(--tds-grey-700);
+
+  /* Table-body-input-wrapper */
+  --tds-table-body-input-hover-bg: var(--tds-white);
+
+  /* Table-header-input-wrapper */
+  --tds-table-input-search-icon: var(--tds-grey-600);
 }
