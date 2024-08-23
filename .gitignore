@@ -8,7 +8,7 @@ packages/react/dist
 stencil-generated
 
 icons/dist
-
+color/dist
 grid/dist
 
 *~

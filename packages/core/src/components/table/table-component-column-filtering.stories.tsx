@@ -189,7 +189,7 @@ export default {
   },
 };
 
-const FilteringColumnTemplate = ({
+const ColumnFilteringTemplate = ({
   modeVariant,
   headerTextAlignment,
   cellTextAlignment,
@@ -359,4 +359,4 @@ const FilteringColumnTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const FilteringColumn = FilteringColumnTemplate.bind({});
+export const ColumnFiltering = ColumnFilteringTemplate.bind({});
