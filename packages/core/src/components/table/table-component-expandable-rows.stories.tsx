@@ -180,13 +180,7 @@ const ExpandableRowTemplate = ({
           <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
-          <!-- Demo block: Overflow solution for Expanded Rows (Not Recommended). -->
-          <div slot="expand-row">
-            <div style="overflow:auto; width:100%; display:table-caption;">
-              <div style="background-color: red; width: 900px; height: 100px;">Not Recommended</div>
-            </div>
-          </div>
-          <!-- end of demo block -->
+          <div slot="expand-row">Hello world 1</div>
         </tds-table-body-row-expandable>
          <tds-table-body-row-expandable row-id="2">
           <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
@@ -201,6 +195,21 @@ const ExpandableRowTemplate = ({
           <tds-body-cell cell-value="Test value 11" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 12" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row"><tds-button type="primary" text="Call to action"></tds-button></div>
+        </tds-table-body-row-expandable>
+        <tds-table-body-row-expandable>
+          <tds-body-cell cell-value="Demo overflow 1" cell-key="truck"></tds-body-cell>
+          <tds-body-cell cell-value="Demo overflow 2" cell-key="driver"></tds-body-cell>
+          <tds-body-cell cell-value="Demo overflow 3" cell-key="country"></tds-body-cell>
+          <tds-body-cell cell-value="Demo overflow 4" cell-key="mileage"></tds-body-cell>
+          <div slot="expand-row">
+            <!-- Demo block: Overflow solution for Expanded Rows (Not Recommended). -->
+              <div slot="expand-row">
+                <div style="overflow:auto; width:100%; display:table-caption;">
+                  <div style="background-color: red; width: 900px; height: 100px;">Not Recommended</div>
+                </div>
+              </div>
+            <!-- end of demo block -->
+          </div>
         </tds-table-body-row-expandable>
       </tds-table-body>
   </tds-table>
