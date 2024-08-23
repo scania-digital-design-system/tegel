@@ -31,6 +31,20 @@ tds-table-body-row-expandable::part(expand-row) {
 
 This CSS will apply a background color and border to the expandable row part of the `tds-table-body-row-expandable` component.
 
+### Overflow solution for Expanded Rows (Use with Caution)
+
+If you need to control overflow in a table, you can wrap the table content using a div with the following styles:
+
+```html
+<div style="overflow:auto; width:100%; display:table-caption;">
+    // Your table content here
+</div>
+```
+
+This approach forces the content to scroll within the table. However, it leverages unconventional CSS (display: table-caption) to work across Firefox, Chrome, and Safari. This might lead to unexpected issues in complex layouts or future browser updates. While effective, use this method with caution and consider other layout strategies.
+
+We recommend fitting your content within the table’s natural size whenever possible.
+
 <hr>
 <br>
 
