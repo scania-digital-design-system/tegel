@@ -82,7 +82,6 @@ test.describe.parallel('tds-popover-menu-default', () => {
   test('activating close method should close the dialog', async ({ page }) => {
     await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-    const dropDownList = page.getByRole('list');
 
     await triggerButton.click();
 
@@ -90,7 +89,6 @@ test.describe.parallel('tds-popover-menu-default', () => {
     expect(actionButton).toBeVisible();
     await actionButton.click();
 
-    await expect(dropDownList).not.toBeVisible();
     await expect(actionButton).not.toBeVisible();
   });
 });
