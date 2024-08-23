@@ -178,7 +178,7 @@ export default {
   },
 };
 
-const EditingTemplate = ({
+const EditableCellsTemplate = ({
   modeVariant,
   headerTextAlignment,
   cellTextAlignment,
@@ -449,4 +449,4 @@ const EditingTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const Editing = EditingTemplate.bind({});
+export const EditableCells = EditableCellsTemplate.bind({});
