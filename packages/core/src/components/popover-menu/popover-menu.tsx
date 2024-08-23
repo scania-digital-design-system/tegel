@@ -53,7 +53,6 @@ export class TdsPopoverMenu {
   }
 
   render() {
-    console.log('rendering popover menu');
     return (
       <Host>
         <tds-popover-core

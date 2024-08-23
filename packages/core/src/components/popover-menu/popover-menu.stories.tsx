@@ -114,7 +114,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
     } </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Link Action </a>
+          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item disabled>
           <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Disabled action </button>
@@ -148,7 +148,6 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
       const actionButton = document.getElementById('action-button');
       const popoverMenu = document.getElementById('my-popover-menu');
       actionButton.addEventListener('click', () => {
-        console.log('Button action clicked');
         popoverMenu.close();
       });
     </script>
