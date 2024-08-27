@@ -11,9 +11,9 @@
     </script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
-        const actionButton = document.getElementById('action-button');
+        const closeButton = document.getElementById('menu-close-button');
         const popoverMenu = document.getElementById('my-popover-menu');
-        actionButton.addEventListener('click', function () {
+        closeButton.addEventListener('click', function () {
           popoverMenu.close();
         });
       });
@@ -50,7 +50,7 @@
         <a href="#">Action</a>
       </tds-popover-menu-item>
       <tds-popover-menu-item>
-        <button id="action-button" data-testid="action-button">Action</button>
+        <button id="menu-close-button" data-testid="menu-close-button">Action</button>
       </tds-popover-menu-item>
     </tds-popover-menu>
 

@@ -67,7 +67,9 @@ export class TdsPopoverMenu {
           placement={this.placement}
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
-          ref={(el) => (this.childRef = el)}
+          ref={(el) => {
+            this.childRef = el;
+          }}
         >
           <div role="list">
             <slot></slot>

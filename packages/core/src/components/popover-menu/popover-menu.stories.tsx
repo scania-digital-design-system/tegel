@@ -130,7 +130,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         <tds-popover-menu-item>
           <button id="action-button"> ${
             icons ? '<tds-icon name="share"></tds-icon>' : ''
-          } Button action </button>
+          } Close </button>
         </tds-popover-menu-item>
     </tds-popover-menu>
  
