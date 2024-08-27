@@ -64,7 +64,7 @@ export const TableLibraries = {
                     <h2 class="tds-headline-02">Tegel & Tanstack</h2>
                     <p> Tanstack is a headless library for building powerful tables in various frameworks or plain JavaScript. On our demo pages, we have provided examples of how to combine the Tegel Table component with Tanstack. Check out the column filtering and data editing features. </p>
                     <p> Tanstack is <b>free to use</b> and is available on npm. Its documentation, supported frameworks, and features examples can be found here: <a href="https://tanstack.com/table/latest">Tanstack Table Documentation</a>. </p>
-                    <p> The Tegel team recommends reading the Tanstack Table documentation to get started and understand how to use the library. Inspiration on how to use Tegel with Tanstack can be found in the demo pages linked below. </p>
+                    <p> We recommend reading the Tanstack Table documentation to get started and understand how to use the library. Inspiration on how to use Tegel with Tanstack can be found in the demo pages linked below. </p>
                     <h5>Highlights of Tegel & Tanstack:</h5>
                     <ul>
                         <li>Tanstack is free to use and available on npm.</li>
