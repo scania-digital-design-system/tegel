@@ -51,7 +51,7 @@ export const TableLibraries = {
                     </ul>
                     <h5>What do I need to install to use Tegel Table?</h5>
                     <ul>
-                        <li>Tegel Table is part of the Tegel Design System, so no additional installation is needed.</li>
+                        <li>As the Table component is included in the Tegel Design System, no extra installation is required.</li>
                         <li>Check the "Installation" section in the side menu to get started.</li>
                     </ul>
                     <h5>Tegel demo page examples:</h5>
