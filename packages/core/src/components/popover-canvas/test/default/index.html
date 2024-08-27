@@ -9,15 +9,30 @@
       import { defineCustomElements } from '../../../../../loader/index.es2017.js';
       defineCustomElements();
     </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const closeButton = document.getElementById('canvas-close-button');
+        const popoverCanvas = document.getElementById('my-popover-canvas');
+        closeButton.addEventListener('click', function () {
+          popoverCanvas.close();
+        });
+      });
+    </script>
   </head>
 
   <body>
-    <tds-popover-canvas placement="auto" selector="#trigger" class="tds-u-p2">
+    <tds-popover-canvas
+      id="my-popover-canvas"
+      placement="auto"
+      selector="#trigger"
+      class="tds-u-p2"
+    >
       <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
       <p class="tds-body-01">Where you can put anything you want!</p>
       <tds-link>
         <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">Even links!</a>
       </tds-link>
+      <button id="canvas-close-button" data-testid="canvas-close-button">Action</button>
     </tds-popover-canvas>
 
     <!-- demo-wrapper code below is for demonstration purposes only -->
