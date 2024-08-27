@@ -12,19 +12,4 @@ test.describe.parallel('tds-table-editable-cells', () => {
     /* Check diff of screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
   });
-  // test('table has header "Filter"', async ({ page }) => {
-  //   await page.goto(componentTestPath);
-
-  //   /* Search for header by text and see if it exists */
-  //   const tdsTableToolbarCaption = page.getByText('Filter');
-  //   await expect(tdsTableToolbarCaption).toHaveCount(1);
-  //   await expect(tdsTableToolbarCaption).toBeVisible();
-  // });
-
-  // test('search button inside the header exists', async ({ page }) => {
-  //   await page.goto(componentTestPath);
-  //   const tdsTableToolbarSearchIcon = page.getByRole('img');
-  //   await expect(tdsTableToolbarSearchIcon).toHaveCount(1);
-  //   await expect(tdsTableToolbarSearchIcon).toBeVisible();
-  // });
 });
