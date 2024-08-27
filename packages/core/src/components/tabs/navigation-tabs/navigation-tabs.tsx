@@ -182,9 +182,7 @@ export class TdsNavigationTabs {
     this.children[this.children.length - 1].classList.add('last');
 
     // Apply initial padding state
-    this.children.forEach((tab) => {
-      tab.style.paddingLeft = this.padding !== false ? `${this.padding}px` : '0';
-    });
+    this.applyCustomPadding(); // Use the refactored method to apply custom padding
   }
 
   private initializeSelectedTab(): void {
@@ -209,23 +207,19 @@ export class TdsNavigationTabs {
     }
   }
 
+  private applyCustomPadding(): void {
+    this.children.forEach((tab) => {
+      tab.style.paddingLeft = this.padding !== false ? `${this.padding}px` : '';
+    });
+  }
+
   private handleSlotChange(): void {
     this.initializeTabs();
     this.addEventListenerToTabs();
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
-
-    // Apply custom padding if specified
-    if (this.padding !== false) {
-      this.children.forEach((tab) => {
-        tab.style.paddingLeft = `${this.padding}px`; // Apply custom left padding
-      });
-    } else {
-      this.children.forEach((tab) => {
-        tab.style.paddingLeft = ''; // Reset padding if padding prop is false
-      });
-    }
+    this.applyCustomPadding(); // Use the refactored method to apply custom padding
   }
 
   connectedCallback(): void {
