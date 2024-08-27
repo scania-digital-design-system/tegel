@@ -26,9 +26,16 @@
     width: 100%;
     overflow-x: scroll;
     scrollbar-width: none;
+    gap: 16px; // Adds a gap between the tab items
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    > * {
+      // Targeting direct children (tab items)
+      padding-left: 0; // Default padding to 0, will be overridden by JavaScript if needed
+      flex-shrink: 0; // Prevent shrinking of tab items
     }
   }
 

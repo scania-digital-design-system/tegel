@@ -32,6 +32,9 @@ export class TdsNavigationTabs {
    * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
+  /** Custom padding value for tab items. If false, no custom padding is applied. */
+  @Prop() padding: number | false = false;
+
   @State() showLeftScroll: boolean = false;
 
   @State() showRightScroll: boolean = false;
@@ -177,6 +180,11 @@ export class TdsNavigationTabs {
     });
     this.children[0].classList.add('first');
     this.children[this.children.length - 1].classList.add('last');
+
+    // Apply initial padding state
+    this.children.forEach((tab) => {
+      tab.style.paddingLeft = this.padding !== false ? `${this.padding}px` : '0';
+    });
   }
 
   private initializeSelectedTab(): void {
@@ -207,6 +215,17 @@ export class TdsNavigationTabs {
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
+
+    // Apply custom padding if specified
+    if (this.padding !== false) {
+      this.children.forEach((tab) => {
+        tab.style.paddingLeft = `${this.padding}px`; // Apply custom left padding
+      });
+    } else {
+      this.children.forEach((tab) => {
+        tab.style.paddingLeft = ''; // Reset padding if padding prop is false
+      });
+    }
   }
 
   connectedCallback(): void {

@@ -58,20 +58,44 @@ export default {
       options: ['None', 0, 1, 2, 3],
       if: { arg: 'defaultSelectedIndex', eq: 'None' },
     },
+    showPadding: {
+      name: 'Show Padding',
+      description: 'Toggles if custom padding should be applied.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    padding: {
+      name: 'Padding',
+      description: 'Sets the custom left padding for each tab item. Accepts a numeric value.',
+      control: {
+        type: 'number',
+      },
+      if: { arg: 'showPadding', eq: true },
+      table: {
+        defaultValue: { summary: '0' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     defaultSelectedIndex: 'None',
     selectedIndex: 'None',
+    showPadding: false,
+    padding: '0',
   },
 };
 
-const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
+const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, padding }) =>
   formatHtmlPreview(`
   <tds-inline-tabs
     ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
     ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
-    ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
+    ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+    ${padding !== 'false' ? `padding="${padding}"` : ''} >
     <tds-inline-tab>
       <button>First tab</button>
     </tds-inline-tab>
