@@ -42,7 +42,7 @@ export const TableLibraries = {
             <article class="tds-u-p2 tds-body-01">
                 <section>
                     <h2 class="tds-headline-02">Tegel Table</h2>
-                    <p> The Tegel Table component is designed to be a flexible and customizable table solution. It does not include built-in logic but instead relies on events and user-defined custom logic. On our demo pages, we have provided examples of how to implement basic logic for the Tegel Table. </p>
+                    <p> The Table component is designed to be a flexible and customizable table solution. It does not include built-in logic but instead relies on events and user-defined custom logic. On our demo pages, we have provided examples of how to implement basic logic for the Tegel Table. </p>
                     <h5>Highlights of Tegel Table:</h5>
                     <ul>
                         <li>Part of the Tegel Design System, free to use.</li>
