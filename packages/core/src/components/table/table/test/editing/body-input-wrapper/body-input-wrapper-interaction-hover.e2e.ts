@@ -7,7 +7,7 @@ test.describe.parallel('tds-table-editable-cells hover', () => {
   test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    const inputfield = page.locator('input#firstInput');
+    const inputfield = page.getByTestId('firstInput');
 
     await inputfield.hover();
 
@@ -24,12 +24,12 @@ test.describe.parallel('tds-table-editable-cells hover', () => {
   test('expect slotted input to show pen icon on hover', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    const inputfield = page.locator('input#firstInput');
+    const inputfield = page.getByTestId('firstInput');
 
     await inputfield.hover();
 
     // finding wrapper component after hover over slotted input
-    const icon = page.locator('tds-table-body-input-wrapper#firstWrapper tds-icon');
+    const icon = page.getByTestId('firstWrapper').locator('tds-icon');
     let iconClass = await icon.evaluate((element: HTMLInputElement) => element.className);
 
     expect(iconClass).toContain('edit-icon');

@@ -7,7 +7,7 @@ test.describe.parallel('tds-table-editable-header-cell hover', () => {
   test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    const inputfield = page.locator('input#firstHeaderInput');
+    const inputfield = page.getByTestId('firstHeaderInput');
 
     await inputfield.hover();
 
@@ -24,12 +24,12 @@ test.describe.parallel('tds-table-editable-header-cell hover', () => {
   test('expect slotted input to show search icon on hover', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    const inputfield = page.locator('input#firstHeaderInput');
+    const inputfield = page.getByTestId('firstHeaderInput');
 
     await inputfield.hover();
 
     // finding wrapper component after hover over slotted input
-    const icon = page.locator('tds-table-header-input-wrapper#firstHeaderWrapper tds-icon');
+    const icon = page.getByTestId('firstHeaderWrapper').locator('tds-icon');
     let iconClass = await icon.evaluate((element: HTMLInputElement) => element.className);
 
     expect(iconClass).toContain('search-icon');

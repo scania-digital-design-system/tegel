@@ -7,7 +7,7 @@ test.describe.parallel('tds-table-editable-cells focus', () => {
   test('expect wrapper to effect slotted inputs style on focus', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    const inputfield = page.locator('input#firstHeaderInput');
+    const inputfield = page.getByTestId('firstHeaderInput');
 
     await inputfield.focus();
 
