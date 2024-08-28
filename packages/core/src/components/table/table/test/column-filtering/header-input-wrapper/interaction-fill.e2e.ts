@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
-test.describe.parallel('tds-table-editable-cells fill', () => {
+test.describe.parallel('tds-table-column-filtering fill', () => {
   test('expect slotted inputs to persist inputed value', async ({ page }) => {
     await page.goto(componentTestPath);
 

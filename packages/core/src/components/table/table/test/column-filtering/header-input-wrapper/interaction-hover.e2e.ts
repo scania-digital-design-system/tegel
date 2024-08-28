@@ -4,7 +4,7 @@ import { expect } from '@playwright/test';
 const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
-test.describe.parallel('tds-table-editable-header-cell hover', () => {
+test.describe.parallel('tds-table-column-filtering hover', () => {
   test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
     await page.goto(componentTestPath);
 
