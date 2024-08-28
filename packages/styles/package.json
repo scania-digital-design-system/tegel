@@ -1,6 +1,6 @@
 {
   "name": "tegel-styles",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.0",
   "description": "CSS styling package for Tegel Design System.",
   "main": "dist/css/tegel-styles.css",
   "style": "main.scss",
