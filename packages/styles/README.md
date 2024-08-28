@@ -10,11 +10,12 @@ Beside the styles, it also includes a `ag-grid-styles.css` file that serves as T
 ```
 @tegel-styles/
     ├── dist/
-        ├── ag-grid/
-        │   └── ag-grid-styles.css
+        ├── customization/
+        │   └── ag-grid/
+        │       └── quartz-theme-override.css
         └── foundations/
             ├── colors.css
-            ├── foundation.css
+            ├── main.css
             ├── grid.css
             ├── logotype.css
             ├── spacing.css
@@ -35,10 +36,10 @@ npm install @tegel-styles
 ## Usage
 
 To use the styles in your project, simply import the CSS file in your main stylesheet.
-Here is an exmaple of importing the foundation styles file:
+Here is an exmaple of importing the main foundation file:
 
 ```css
-import '@tegel-styles/dist/foundations/foundation.css';
+import '@tegel-styles/dist/foundations/main.css';
 ```
 
 ## Contributing
