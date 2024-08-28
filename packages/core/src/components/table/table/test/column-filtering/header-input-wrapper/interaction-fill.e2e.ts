@@ -1,7 +1,8 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/table/table/test/editing/header-input-wrapper/index.html';
+const componentTestPath =
+  'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-editable-cells fill', () => {
   test('expect slotted inputs to persist inputed value', async ({ page }) => {
