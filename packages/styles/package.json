@@ -1,12 +1,9 @@
 {
-  "name": "tegel-styles",
-  "version": "1.0.0-beta.0",
+  "name": "@scania/tegel-styles",
+  "version": "1.0.1",
   "description": "CSS styling package for Tegel Design System.",
-  "main": "dist/css/tegel-styles.css",
-  "style": "main.scss",
   "files": [
-    "scss/",
-    "dist/css/"
+    "dist/"
   ],
   "scripts": {
     "build": "node build-css.js"
@@ -37,5 +34,8 @@
   "dependencies": {
     "postcss": "^8.4.39",
     "glob": "^8.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
