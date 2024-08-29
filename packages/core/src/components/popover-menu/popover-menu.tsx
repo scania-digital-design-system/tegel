@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, State, Method } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -39,6 +39,13 @@ export class TdsPopoverMenu {
   /** If true this unsets the width (160px) of the Popover Menu */
   @Prop() fluidWidth: boolean = false;
 
+  /** Property for closing popover programmatically */
+  @Method() async close() {
+    this.childRef?.close();
+  }
+
+  @State() childRef?: HTMLTdsPopoverCoreElement;
+
   inheritedAttributes: Attributes = [];
 
   componentWillLoad() {
@@ -60,6 +67,9 @@ export class TdsPopoverMenu {
           placement={this.placement}
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
+          ref={(el) => {
+            this.childRef = el;
+          }}
         >
           <div role="list">
             <slot></slot>

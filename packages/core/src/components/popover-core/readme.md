@@ -20,6 +20,19 @@
 | `trigger`        | `trigger`         | What triggers the popover to show                                                                                   | `"click" \| "hover" \| "hover-popover"`                                                                                                                                                                      | `'click'`   |
 
 
+## Methods
+
+### `close() => Promise<void>`
+
+Property for closing popover programmatically
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Used by
