@@ -117,15 +117,9 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item disabled>
-          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
+          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Disabled action </button>
         </tds-popover-menu-item>
         <tds-divider></tds-divider>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
-        <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
-        </tds-popover-menu-item>
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
         </tds-popover-menu-item>
@@ -134,7 +128,9 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
           <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
-          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </button>
+          <button id="action-button"> ${
+            icons ? '<tds-icon name="share"></tds-icon>' : ''
+          } Close </button>
         </tds-popover-menu-item>
     </tds-popover-menu>
  
@@ -147,6 +143,14 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
         <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
       </tds-button>
     </div>
+
+    <script>
+      const actionButton = document.getElementById('action-button');
+      const popoverMenu = document.getElementById('my-popover-menu');
+      actionButton.addEventListener('click', () => {
+        popoverMenu.close();
+      });
+    </script>
     `,
   );
 };
