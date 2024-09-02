@@ -9,6 +9,7 @@ import {
   Watch,
   EventEmitter,
   Event,
+  Method,
 } from '@stencil/core';
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
@@ -57,6 +58,11 @@ export class TdsPopoverCore {
   @State() target?: HTMLElement | null;
 
   @State() isShown: boolean = false;
+
+  /** Property for closing popover programmatically */
+  @Method() async close() {
+    this.setIsShown(false);
+  }
 
   private uuid: string = generateUniqueId();
 
