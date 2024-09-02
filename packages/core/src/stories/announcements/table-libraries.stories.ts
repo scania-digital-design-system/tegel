@@ -41,6 +41,7 @@ export const TableLibraries = {
 
             <article class="tds-u-p2 tds-body-01">
                 <section>
+                    <p class="tds-body-01"><strong>Published: 2024-09-05</strong></p>
                     <h2 class="tds-headline-02">Tegel Table</h2>
                     <p> The Table component is designed to be a flexible and customizable table solution. It does not include built-in logic but instead relies on events and user-defined custom logic. On our demo pages, we have provided examples of how to implement basic logic for the Tegel Table. </p>
                     <h5>Highlights of Tegel Table:</h5>
@@ -56,8 +57,8 @@ export const TableLibraries = {
                     </ul>
                     <h5>Tegel demo page examples:</h5>
                     <ul>
-                        <li><a href="https://github.com/scania-digital-design-system/tegel-angular-17-demo">Tegel Angular Demo</a></li>
-                        <li><a href="https://github.com/scania-digital-design-system/tegel-react-demo">Tegel React Demo</a></li>
+                        <li><a href="https://angular-17-demo.tegel.scania.com/table" target="_blank">Tegel Angular Demo</a></li>
+                        <li><a href="https://react-demo.tegel.scania.com/table" target="_blank">Tegel React Demo</a></li>
                     </ul>
                     </section>
                     <section>
@@ -79,8 +80,8 @@ export const TableLibraries = {
                     </ul>
                     <h5>Tegel demo page examples:</h5>
                     <ul>
-                        <li><a href="https://github.com/scania-digital-design-system/tegel-angular-17-demo/pull/14">Tegel Angular Tanstack Demo</a></li>
-                        <li><a href="https://github.com/scania-digital-design-system/tegel-react-demo/pull/193">Tegel React Tanstack Demo</a></li>
+                        <li><a href="https://angular-17-demo.tegel.scania.com/tanstack" target="_blank">Tegel Angular Tanstack Demo</a></li>
+                        <li><a href="https://react-demo.tegel.scania.com/tanstack" target="_blank">Tegel React Tanstack Demo</a></li>
                     </ul>
                     </section>
                     <section>
@@ -97,17 +98,18 @@ export const TableLibraries = {
                     <h5>What do I need to install to use Tegel & AG-Grid?</h5>
                     <ul>
                         <li>The AG-Grid library for the framework you are using.</li>
-                        <li>The @scania/tegel-styles package, which provides the Tegel theme for AG-Grid.</li>
+                        <li>Import the AG-Grid styling files (ag-grid.css and ag-theme-quartz.css) to get started.</li>
+                        <li>The <a href="https://www.npmjs.com/package/@scania/tegel-styles" target="_blank">@scania/tegel-styles</a> package, which provides Tegel overrides for the AG-Grid quartz theme.</li>
                     </ul>
                     <h5>Tegel demo page examples:</h5>
                     <ul>
-                        <li><a href="https://github.com/scania-digital-design-system/tegel-angular-17-demo/pull/14">Tegel Angular AG-Grid Demo</a></li>
-                        <li><a href="https://github.com/scania-digital-design-system/tegel-react-demo/pull/193">Tegel React AG-Grid Demo</a></li>
+                        <li><a href="https://angular-17-demo.tegel.scania.com/ag-grid" target="_blank">Tegel Angular AG-Grid Demo</a></li>
+                        <li><a href="https://react-demo.tegel.scania.com/ag-grid" target="_blank">Tegel React AG-Grid Demo</a></li>
                     </ul>
                     <h5>How to use the @scania/tegel-styles package with AG-Grid:</h5>
                     <ul>
                         <li>Install the @scania/tegel-styles package.</li>
-                        <li>Import the ag-grid-styles.css file from the @scania/tegel-styles package into your main styles file.</li>
+                        <li>Import the quartz-theme-override.css file from the @scania/tegel-styles package into your main styles file.</li>
                         <li>This will apply the Tegel theme to your AG-Grid.</li>
                     </ul>
                     </section>
