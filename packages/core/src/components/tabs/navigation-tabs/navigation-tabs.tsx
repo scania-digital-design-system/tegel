@@ -32,8 +32,8 @@ export class TdsNavigationTabs {
    * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
-  /** Custom padding value for tab items. If false, no custom padding is applied. */
-  @Prop() padding: number | false = false;
+  /** Custom left padding value for the wrapper element. */
+  @Prop({ reflect: true }) leftPadding: number = 0;
 
   @State() showLeftScroll: boolean = false;
 
@@ -178,11 +178,11 @@ export class TdsNavigationTabs {
       child.classList.remove('last');
       child.classList.remove('first');
     });
-    this.children[0].classList.add('first');
-    this.children[this.children.length - 1].classList.add('last');
 
-    // Apply initial padding state
-    this.applyCustomPadding(); // Use the refactored method to apply custom padding
+    if (this.children.length > 0) {
+      this.children[0].classList.add('first');
+      this.children[this.children.length - 1].classList.add('last');
+    }
   }
 
   private initializeSelectedTab(): void {
@@ -207,10 +207,10 @@ export class TdsNavigationTabs {
     }
   }
 
-  private applyCustomPadding(): void {
-    this.children.forEach((tab) => {
-      tab.style.paddingLeft = this.padding !== false ? `${this.padding}px` : '';
-    });
+  private applyCustomLeftPadding(): void {
+    if (this.navWrapperElement) {
+      this.navWrapperElement.style.paddingLeft = `${this.leftPadding}px`;
+    }
   }
 
   private handleSlotChange(): void {
@@ -219,7 +219,7 @@ export class TdsNavigationTabs {
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
-    this.applyCustomPadding(); // Use the refactored method to apply custom padding
+    this.applyCustomLeftPadding(); // Apply custom left padding to the wrapper
   }
 
   connectedCallback(): void {
@@ -247,6 +247,7 @@ export class TdsNavigationTabs {
           ref={(el) => {
             this.navWrapperElement = el as HTMLElement;
           }}
+          style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
             class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
