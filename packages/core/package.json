@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.13.0",
+  "version": "1.13.0-table-beta.7",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
