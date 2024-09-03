@@ -74,7 +74,7 @@ jobs:
     if: always() && needs.create-release-pr.result == 'failure'
     steps:
       - name: Download version
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: version
           path: packages/core
