@@ -130,7 +130,7 @@ export class TdsTable {
     return selectedRowsData;
   }
 
-  private getTableStyle(): Record<string, string> {
+  private getStyles(): Record<string, string> {
     const styles: Record<string, string> = {};
     if (this.horizontalScrollWidth) {
       styles.width = `${this.horizontalScrollWidth}px`;
@@ -193,7 +193,7 @@ export class TdsTable {
         }}
       >
         <table
-          style={this.getTableStyle()}
+          style={this.getStyles()}
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
