@@ -310,6 +310,10 @@
       "import": "./dist/components/tds-table-body.js",
       "types": "./dist/components/tds-table-body.d.ts"
     },
+    "./tds-table-body-input-wrapper": {
+      "import": "./dist/components/tds-table-body-input-wrapper.js",
+      "types": "./dist/components/tds-table-body-input-wrapper.d.ts"
+    },
     "./tds-table-footer": {
       "import": "./dist/components/tds-table-footer.js",
       "types": "./dist/components/tds-table-footer.d.ts"
@@ -317,6 +321,10 @@
     "./tds-table-header": {
       "import": "./dist/components/tds-table-header.js",
       "types": "./dist/components/tds-table-header.d.ts"
+    },
+    "./tds-table-header-input-wrapper": {
+      "import": "./dist/components/tds-table-header-input-wrapper.js",
+      "types": "./dist/components/tds-table-header-input-wrapper.d.ts"
     },
     "./tds-table-toolbar": {
       "import": "./dist/components/tds-table-toolbar.js",

@@ -1,9 +1,11 @@
 {
-  "name": "angular-17",
-  "version": "0.0.0",
+  "name": "@scania/tegel-angular-17",
+  "version": "1.13.0",
+  "description": "Angular wrappers for Tegel package using Angular 17 and above",
   "main": "dist",
   "files": [
-    "dist"
+    "dist",
+    "dist/package.json"
   ],
   "scripts": {
     "ng": "ng",
@@ -16,6 +18,10 @@
   },
   "private": false,
   "dependencies": {
+    "tslib": "^2.3.0",
+    "@scania/tegel": "1.13.0"
+  },
+  "devDependencies": {
     "@angular/animations": "^17.0.0",
     "@angular/common": "^17.0.0",
     "@angular/compiler": "^17.0.0",
@@ -25,11 +31,7 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
     "zone.js": "~0.14.3",
-    "@scania/tegel": "1.8.2"
-  },
-  "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.0",
     "@angular/cli": "^17.0.0",
     "@angular/compiler-cli": "^17.0.0",
