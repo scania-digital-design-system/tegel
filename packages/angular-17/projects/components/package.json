@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": ">=17.0.0",
     "@angular/core": ">=17.0.0",
-    "@scania/tegel": "1.13.0-table-beta.7"
+    "@scania/tegel": "1.13.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
