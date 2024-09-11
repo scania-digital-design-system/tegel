@@ -39,7 +39,7 @@ export default {
     defaultSelectedIndex: {
       name: 'Default selected index',
       description:
-        'Sets the default selected Tab, if this is used the Tab changes will be done automatically.',
+        'Sets the default selected Tab. If this is used, the Tab changes will be done automatically.',
       control: {
         type: 'radio',
       },
@@ -51,27 +51,39 @@ export default {
     selectedIndex: {
       name: 'Selected index',
       description:
-        'Sets the selected Tab, if this is used the Tab changes has to be handled by the user.',
+        'Sets the selected Tab. If this is used, the Tab changes have to be handled by the user.',
       control: {
         type: 'radio',
       },
       options: ['None', 0, 1, 2, 3],
       if: { arg: 'defaultSelectedIndex', eq: 'None' },
     },
+    leftPadding: {
+      name: 'Left Padding',
+      description: 'Sets the custom left padding for the wrapper element. Accepts a numeric value.',
+      control: {
+        type: 'number',
+      },
+      table: {
+        defaultValue: { summary: 32 },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     defaultSelectedIndex: 'None',
     selectedIndex: 'None',
+    leftPadding: 32, // Default value for left padding
   },
 };
 
-const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
+const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPadding }) =>
   formatHtmlPreview(`
     <tds-navigation-tabs
       ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
       ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
-      ${modeVariant !== 'Inherit from parent' ? ` mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      left-padding="${leftPadding}"
     >
       <tds-navigation-tab>
         <button>First tab</button>
@@ -94,15 +106,14 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
  
     <!-- Script tag with eventlistener for demo purposes. -->
     <script>
-    selectedTab = document.getElementsByClassName('selectedTab')[0]
-    selectedTabIndex = document.getElementsByClassName('selectedTabIndex')[0]
-    tabs = document.querySelector('tds-navigation-tabs');
+    const selectedTabIndex = document.getElementsByClassName('selectedTabIndex')[0];
+    const tabs = document.querySelector('tds-navigation-tabs');
     
     tabs.addEventListener('tdsChange', (event) => {
-      selectedTabIndex.innerHTML = event.detail.selectedTabIndex
-      console.log(event)
-    })
+      selectedTabIndex.innerHTML = event.detail.selectedTabIndex;
+      console.log(event);
+    });
     </script>
-    `);
+  `);
 
 export const NavigationTabs = Template.bind({});
