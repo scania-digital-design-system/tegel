@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -325,6 +325,14 @@
     "./tds-table": {
       "import": "./dist/components/tds-table.js",
       "types": "./dist/components/tds-table.d.ts"
+    },
+    "./tds-table-body-input-wrapper": {
+      "import": "./dist/components/tds-table-body-input-wrapper.js",
+      "types": "./dist/components/tds-table-body-input-wrapper.d.ts"
+    },
+    "./tds-table-header-input-wrapper": {
+      "import": "./dist/components/tds-table-header-input-wrapper.js",
+      "types": "./dist/components/tds-table-header-input-wrapper.d.ts"
     },
     "./tds-text-field": {
       "import": "./dist/components/tds-text-field.js",

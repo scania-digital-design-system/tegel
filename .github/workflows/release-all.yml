@@ -298,7 +298,7 @@ jobs:
           git add .
           if ! git diff-index --quiet HEAD; then
             git commit -m "feat: new version of @scania/tegel in wrapper packages"
-            git push --no-verify origin develop
+            git push --force --no-verify origin develop
           else
             echo "No changes to commit in develop"
           fi
@@ -327,7 +327,7 @@ jobs:
           git add .
           if ! git diff-index --quiet HEAD; then
             git commit -m "release: tegel ${{ steps.version.outputs.PACKAGE_VERSION  }}"
-            git push --no-verify origin main
+            git push --force --no-verify origin main
           else
             echo "No changes to commit in main"
           fi
