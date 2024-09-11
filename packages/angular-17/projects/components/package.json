@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-angular-17",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "description": "Angular wrappers for Tegel package using Angular 17 and above",
   "peerDependencies": {
     "@angular/common": ">=17.0.0",
