@@ -49,7 +49,7 @@ jobs:
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Save version as artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: version
           path: packages/core/package.json # assuming the version is saved here
