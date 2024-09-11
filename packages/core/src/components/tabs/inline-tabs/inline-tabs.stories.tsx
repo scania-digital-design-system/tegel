@@ -73,7 +73,7 @@ export default {
     modeVariant: 'Inherit from parent',
     defaultSelectedIndex: 'None',
     selectedIndex: 'None',
-    leftPadding: 0, // Default value for left padding
+    leftPadding: 32, // Default value for left padding
   },
 };
 
