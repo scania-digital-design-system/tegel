@@ -65,7 +65,7 @@ export default {
         type: 'number',
       },
       table: {
-        defaultValue: { summary: 0 },
+        defaultValue: { summary: 32 },
       },
     },
   },
