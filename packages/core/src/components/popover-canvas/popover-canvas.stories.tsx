@@ -66,21 +66,30 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
           flex-wrap; nowrap;
           align-items: center;
         }
+        .actions-container {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
       </style>
 
       <!-- The 'referenceEl' prop can be used instead of 'selector', 
-      wich might be preferable in frameworks like React -->
+      which might be preferable in frameworks like React -->
       <tds-popover-canvas
+        id="my-popover-canvas"
         placement="${canvasPosLookup[canvasPosition]}"
         selector="#trigger"
         class="tds-u-p2">
         <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
         <p class="tds-body-01">
           Where you can put anything you want!
-        </p>  
+        </p> 
+        <div class="actions-container"> 
         <tds-link>
           <a target="_blank" rel="noopener noreferrer" href="https://tegel.scania.com">Even links!</a>
         </tds-link>
+         <button id="action-button"> Close </button>
+        </div>
       </tds-popover-canvas>
 
       <!-- demo-wrapper code below is for demonstration purposes only -->
@@ -91,6 +100,14 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
           <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
         </tds-button>
       </div>
+
+      <script>
+        const actionButton = document.getElementById('action-button');
+        const popoverCanvas = document.getElementById('my-popover-canvas');
+        actionButton.addEventListener('click', () => {
+          popoverCanvas.close();
+        });
+      </script>
     `,
   );
 };

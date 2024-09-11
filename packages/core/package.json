@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -326,6 +326,14 @@
       "import": "./dist/components/tds-table.js",
       "types": "./dist/components/tds-table.d.ts"
     },
+    "./tds-table-body-input-wrapper": {
+      "import": "./dist/components/tds-table-body-input-wrapper.js",
+      "types": "./dist/components/tds-table-body-input-wrapper.d.ts"
+    },
+    "./tds-table-header-input-wrapper": {
+      "import": "./dist/components/tds-table-header-input-wrapper.js",
+      "types": "./dist/components/tds-table-header-input-wrapper.d.ts"
+    },
     "./tds-text-field": {
       "import": "./dist/components/tds-text-field.js",
       "types": "./dist/components/tds-text-field.d.ts"
@@ -369,7 +377,7 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
-    "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.45.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
+    "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "build-stencil:watch": "stencil build --docs-readme --watch",
@@ -380,36 +388,38 @@
     "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "@stencil/core": "^4.19.2",
-    "date-fns": "^2.30.0",
-    "prettier": "^2.7.1"
+    "@popperjs/core": "2.11.8",
+    "@stencil/core": "4.19.2",
+    "date-fns": "2.30.0",
+    "prettier": "2.7.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.1",
-    "@playwright/test": "^1.39.0",
-    "@stencil/angular-output-target": "^0.8.4",
-    "@stencil/react-output-target": "^0.5.3",
-    "@stencil/sass": "^3.0.4",
-    "@storybook/addon-a11y": "^6.5.16",
-    "@storybook/addon-actions": "^6.5.16",
-    "@storybook/addon-docs": "^6.5.16",
-    "@storybook/addon-essentials": "^6.5.16",
-    "@storybook/addon-interactions": "^6.5.16",
-    "@storybook/addon-links": "^6.5.16",
-    "@storybook/addon-notes": "^5.3.21",
-    "@storybook/addons": "^6.5.16",
-    "@storybook/builder-webpack4": "^6.5.16",
-    "@storybook/html": "^6.5.16",
-    "addon-screen-reader": "^1.8.6",
-    "babel-loader": "^8.2.5",
-    "concurrently": "^8.0.1",
-    "highlight.js": "^11.8.0",
-    "serve": "^14.2.1",
-    "stencil-playwright": "^0.3.0",
-    "storybook-addon-designs": "^6.3.1",
+    "@babel/core": "7.19.1",
+    "@mdx-js/react": "3.0.1",
+    "@playwright/test": "1.46.1",
+    "@stencil/angular-output-target": "0.8.4",
+    "@stencil/react-output-target": "0.5.3",
+    "@stencil/sass": "3.0.4",
+    "@storybook/addon-a11y": "6.5.16",
+    "@storybook/addon-actions": "6.5.16",
+    "@storybook/addon-docs": "6.5.16",
+    "@storybook/addon-essentials": "6.5.16",
+    "@storybook/addon-interactions": "6.5.16",
+    "@storybook/addon-links": "6.5.16",
+    "@storybook/addon-notes": "5.3.21",
+    "@storybook/addons": "6.5.15",
+    "@storybook/builder-webpack4": "6.5.16",
+    "@storybook/html": "6.5.15",
+    "@storybook/mdx2-csf": "0.0.3",
+    "addon-screen-reader": "1.8.6",
+    "babel-loader": "8.2.5",
+    "concurrently": "8.0.1",
+    "highlight.js": "11.8.0",
+    "serve": "14.2.1",
+    "stencil-playwright": "0.3.0",
+    "storybook-addon-designs": "6.3.1",
     "storybook-dark-mode": "3.0.0",
-    "storybook-version": "^0.1.1"
+    "storybook-version": "0.1.1"
   },
   "license": "MIT"
 }
