@@ -109,3 +109,28 @@ button {
     box-shadow: var(--tds-card-box-pressed);
   }
 }
+
+.below-header-stretch,
+.above-header-stretch {
+  display: flex;
+  flex-direction: column;
+
+  .stretch {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    slot[name='body']::slotted(*) {
+      /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
+      max-width: unset;
+      flex-grow: 1;
+    }
+  }
+}

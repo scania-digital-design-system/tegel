@@ -42,6 +42,8 @@ export class TdsCard {
   /** Makes the Card clickable. */
   @Prop() clickable: boolean = false;
 
+  @Prop() stretch: boolean = false;
+
   /** ID for the Card, must be unique.
    *
    * **NOTE**: If you're listening for Card events, you need to set this ID yourself to identify the Card,
@@ -88,7 +90,7 @@ export class TdsCard {
     const usesBodyImageSlot = hasSlot('body-image', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
     return (
-      <div>
+      <div class={this.stretch && 'stretch'}>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
         <div class={`card-body`}>
           {usesBodyImageSlot && <slot name="body-image"></slot>}
@@ -107,7 +109,9 @@ export class TdsCard {
       <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (
           <button
-            class={`card ${this.clickable ? 'clickable' : ''} ${this.imagePlacement}`}
+            class={`card ${this.clickable ? 'clickable' : ''} ${
+              this.stretch ? `${this.imagePlacement}-stretch` : this.imagePlacement
+            }`}
             onClick={() => {
               if (this.clickable) {
                 this.handleClick();
@@ -117,7 +121,11 @@ export class TdsCard {
             {this.getCardContent()}
           </button>
         ) : (
-          <div class={`card ${this.clickable ? 'clickable' : ''} ${this.imagePlacement}`}>
+          <div
+            class={`card ${this.clickable ? 'clickable' : ''} ${
+              this.stretch ? `${this.imagePlacement}-stretch` : this.imagePlacement
+            }`}
+          >
             {this.getCardContent()}
           </div>
         )}

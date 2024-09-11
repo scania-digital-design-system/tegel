@@ -110,7 +110,18 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    stretch: {
+      name: 'Stretch card body',
+      description: 'Toggles if the card body to take scale with the card.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
+
   args: {
     modeVariant: 'Inherit from parent',
     header: 'Header text',
@@ -118,10 +129,11 @@ export default {
     thumbnail: true,
     imagePlacement: 'Below',
     bodyImg: false,
-    bodyContent: '',
+    bodyContent: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
     bodyDivider: false,
     cardActions: `<tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>`,
     clickable: false,
+    stretch: true,
   },
 };
 
@@ -136,12 +148,13 @@ const Template = ({
   bodyDivider,
   cardActions,
   clickable,
+  stretch,
 }) =>
   formatHtmlPreview(
     `<style>
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
-        width: 368px;
+        width: 600px;
     }
     </style>
     <div class="demo-wrapper">
@@ -153,6 +166,7 @@ const Template = ({
     ${bodyImg ? `body-img="${CardBodyImage}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
+    ${stretch ? 'stretch' : ''}
     >
     ${
       thumbnail
