@@ -33,7 +33,7 @@ export class TdsInlineTabs {
   @Prop({ reflect: true }) selectedIndex: number;
 
   /** Custom left padding value for the wrapper element. */
-  @Prop({ reflect: true }) leftPadding: number = 0;
+  @Prop({ reflect: true }) leftPadding: number = 32;
 
   @State() showLeftScroll: boolean = false;
 
