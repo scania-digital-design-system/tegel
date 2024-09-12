@@ -5,8 +5,6 @@ import globby from 'globby';
 const fs = await import('fs');
 const path = await import('path');
 
-const prefix = 'v1-'; // Centralized prefix definition
-
 const generateTagNames = async () => {
   const currentDir = path.dirname(fileURLToPath(import.meta.url));
   const componentsSourceDirectory = path.resolve(currentDir, '../../core/src/components');
@@ -27,10 +25,9 @@ const generateTagNames = async () => {
   .map((file) => {
     const fileContent = fs.readFileSync(file, 'utf8');
     const [, tag] = /tag: '([a-z-]*)'/.exec(fileContent) || [];
-    if (!tag) return null;
-    return `${prefix}${tag}`; // Prepend the new prefix directly
+    return tag; // Remove prefix application here
   })
-  .filter((tag) => tag) // Filter out null values
+  .filter((tag) => tag) // Continue filtering out null values
 
   const content = `export const TAG_NAMES = [${tags.map((x) => `'${x}'`).join(', ')}] as const;
 export type TagName = typeof TAG_NAMES[number];
