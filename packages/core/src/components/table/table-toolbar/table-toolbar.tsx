@@ -104,6 +104,14 @@ export class TdsTableToolbar {
     }
   }
 
+  private getStyles(): Record<string, string> {
+    const styles: Record<string, string> = {};
+    if (this.horizontalScrollWidth) {
+      styles.width = `${this.horizontalScrollWidth}px`;
+    }
+    return styles;
+  }
+
   render() {
     return (
       <Host
@@ -111,7 +119,7 @@ export class TdsTableToolbar {
           'tds-table--compact': this.compactDesign,
           'toolbar__horizontal-scroll': !!this.horizontalScrollWidth,
         }}
-        style={this.horizontalScrollWidth ? { width: this.horizontalScrollWidth } : {}}
+        style={this.getStyles()}
       >
         <div class="tds-table__upper-bar-flex">
           <caption class="tds-table__title">{this.tableTitle}</caption>
