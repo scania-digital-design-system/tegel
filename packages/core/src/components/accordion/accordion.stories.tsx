@@ -59,6 +59,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    autoClose: {
+      name: 'Auto Close',
+      description: 'Closes other items when one item is opened.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   parameters: {
     notes: { 'Accordion': readme, 'Accordion Item': readmeItem },
@@ -81,19 +91,28 @@ export default {
     paddingReset: false,
     disabled: false,
     hideLastBorder: false,
+    autoClose: false,
   },
 };
 
-const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastBorder }) => {
+const Template = ({
+  disabled,
+  iconPosition,
+  paddingReset,
+  modeVariant,
+  hideLastBorder,
+  autoClose,
+}) => {
   const affixAttr = iconPosition === 'start' ? 'expand-icon-position="start"' : '';
   const disabledAttr = disabled ? 'disabled' : '';
   const paddingResetAttr = paddingReset ? 'padding-reset' : '';
   const hideLastBorderAttr = hideLastBorder ? 'hide-last-border' : '';
+  const autoCloseAttr = autoClose ? 'auto-close' : '';
 
   return formatHtmlPreview(`
     <tds-accordion ${
       modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-    } ${hideLastBorderAttr}>
+    } ${hideLastBorderAttr} ${autoCloseAttr}>
       <tds-accordion-item header="First item" ${affixAttr} ${disabledAttr} ${paddingResetAttr}>
         This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
         Lorem ipsum doler sit amet.
@@ -109,11 +128,19 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
   <script>
     accordionItems = document.querySelectorAll('tds-accordion-item');
     for (let i = 0; i < accordionItems.length; i++) {
-      accordionItems[i].addEventListener('tdsToggle',(event) => {
+      accordionItems[i].addEventListener('tdsToggle', (event) => {
         console.log(event)
-      })
+      });
     }
   </script>`);
 };
 
 export const Default = Template.bind({});
+Default.args = {
+  modeVariant: 'Inherit from parent',
+  iconPosition: 'end',
+  paddingReset: false,
+  disabled: false,
+  hideLastBorder: false,
+  autoClose: false,
+};

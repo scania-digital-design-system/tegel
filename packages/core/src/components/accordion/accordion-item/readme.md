@@ -18,12 +18,28 @@
 
 ## Events
 
-| Event       | Description                                                                  | Type                                  |
-| ----------- | ---------------------------------------------------------------------------- | ------------------------------------- |
-| `tdsToggle` | Fires when the Accordion Item is clicked, but before it is closed or opened. | `CustomEvent<{ expanded: boolean; }>` |
+| Event       | Description                                                                  | Type                                                  |
+| ----------- | ---------------------------------------------------------------------------- | ----------------------------------------------------- |
+| `tdsToggle` | Fires when the Accordion Item is clicked, but before it is closed or opened. | `CustomEvent<{ expanded: boolean; header: string; }>` |
 
 
 ## Methods
+
+### `setExpanded(expanded: boolean) => Promise<void>`
+
+Method to explicitly set expanded state
+
+#### Parameters
+
+| Name       | Type      | Description |
+| ---------- | --------- | ----------- |
+| `expanded` | `boolean` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 ### `toggleAccordionItem() => Promise<void>`
 

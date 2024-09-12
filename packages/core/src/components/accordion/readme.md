@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute          | Description                                           | Type                       | Default |
-| ---------------- | ------------------ | ----------------------------------------------------- | -------------------------- | ------- |
-| `hideLastBorder` | `hide-last-border` | Removes the bottom border of the last Accordion item. | `boolean`                  | `false` |
-| `modeVariant`    | `mode-variant`     | Set the variant of the Accordion.                     | `"primary" \| "secondary"` | `null`  |
+| Property         | Attribute          | Description                                                            | Type                       | Default |
+| ---------------- | ------------------ | ---------------------------------------------------------------------- | -------------------------- | ------- |
+| `autoClose`      | `auto-close`       | Possibility to auto close other accordion items when opening a new one | `boolean`                  | `false` |
+| `hideLastBorder` | `hide-last-border` | Removes the bottom border of the last Accordion item.                  | `boolean`                  | `false` |
+| `modeVariant`    | `mode-variant`     | Set the variant of the Accordion.                                      | `"primary" \| "secondary"` | `null`  |
 
 
 ## Slots
