@@ -128,7 +128,6 @@ button {
     flex-grow: 1;
 
     slot[name='body']::slotted(*) {
-      /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
       max-width: unset;
       flex-grow: 1;
     }
