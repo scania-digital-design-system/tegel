@@ -1,5 +1,6 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, Element, h } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For list items.
@@ -11,12 +12,16 @@ import generateUniqueId from '../../../utils/generateUniqueId';
 export class TdsHeaderLauncherList {
   uuid: string = generateUniqueId();
 
+  @Element() host: HTMLElement;
+
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+    const DynamicHeaderDropdownList = prefixedTagNames['tds-header-dropdown-list'];
     return (
       <Host>
-        <tds-header-dropdown-list size="lg">
+        <DynamicHeaderDropdownList size="lg">
           <slot></slot>
-        </tds-header-dropdown-list>
+        </DynamicHeaderDropdownList>
       </Host>
     );
   }

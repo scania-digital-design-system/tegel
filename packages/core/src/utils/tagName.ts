@@ -27,29 +27,19 @@ const PREFIXED_TAG_NAMES_CACHE = new PrefixedTagNamesCache();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
   const tagName = getTagName(host);
-  const defaultPrefix = 'tds';
-  const externalPrefix = (window as any).customElementPrefix
-    ? `${(window as any).customElementPrefix}-`
-    : '';
-  const fullPrefix = `${externalPrefix}${defaultPrefix}`;
 
-  // Generate a unique cache key based on the full prefix and the tag name
-  const cacheKey = `${fullPrefix}-${tagName}`;
+  // Generate a unique cache key based on the tag name
+  const cacheKey = tagName;
 
-  // Check if the prefix has changed and invalidate the cache if necessary
-  if (PREFIXED_TAG_NAMES_CACHE.lastPrefix !== fullPrefix) {
-    PREFIXED_TAG_NAMES_CACHE.clear();
-    PREFIXED_TAG_NAMES_CACHE.lastPrefix = fullPrefix; // Store the new prefix
-  }
-
+  // Check if the cache needs to be updated
   if (!PREFIXED_TAG_NAMES_CACHE.has(cacheKey)) {
-    const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce((result, tag) => {
-      const prefixedTag = `${fullPrefix}-${tag}`;
-      return {
+    const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce(
+      (result, tag) => ({
         ...result,
-        [prefixedTag]: tag,
-      };
-    }, {} as PrefixedTagNames);
+        [tag]: tag, // Use the tag name directly without adding a prefix
+      }),
+      {} as PrefixedTagNames,
+    );
 
     PREFIXED_TAG_NAMES_CACHE.set(cacheKey, prefixedTagNames);
   }

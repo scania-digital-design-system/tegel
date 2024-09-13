@@ -1,81 +1,81 @@
 export const TAG_NAMES = [
-  'tds-badge',
   'tds-accordion',
   'tds-banner',
+  'tds-badge',
   'tds-block',
   'tds-breadcrumbs',
-  'tds-card',
-  'tds-button',
   'tds-checkbox',
+  'tds-button',
+  'tds-card',
   'tds-chip',
   'tds-datetime',
+  'tds-footer',
   'tds-divider',
   'tds-dropdown',
-  'tds-footer',
   'tds-header',
   'tds-icon',
   'tds-link',
   'tds-message',
-  'tds-modal',
-  'tds-popover-canvas',
   'tds-popover-core',
   'tds-popover-menu',
-  'tds-radio-button',
-  'tds-side-menu',
-  'tds-slider',
+  'tds-modal',
+  'tds-popover-canvas',
   'tds-spinner',
+  'tds-side-menu',
+  'tds-radio-button',
+  'tds-slider',
   'tds-stepper',
   'tds-text-field',
-  'tds-textarea',
   'tds-toast',
-  'tds-toggle',
-  'tds-tooltip',
+  'tds-textarea',
   'tds-accordion-item',
+  'tds-tooltip',
+  'tds-toggle',
   'tds-breadcrumb',
-  'tds-dropdown-option',
   'tds-footer-group',
   'tds-footer-item',
+  'tds-dropdown-option',
   'tds-core-header-item',
   'tds-header-brand-symbol',
-  'tds-header-dropdown',
-  'tds-header-dropdown-list',
   'tds-header-dropdown-list-item',
   'tds-header-dropdown-list-user',
+  'tds-header-dropdown-list',
   'tds-header-hamburger',
+  'tds-header-dropdown',
   'tds-header-item',
-  'tds-header-launcher',
   'tds-header-launcher-button',
-  'tds-header-launcher-grid',
   'tds-header-launcher-grid-item',
   'tds-header-launcher-grid-title',
+  'tds-header-launcher',
+  'tds-header-launcher-grid',
   'tds-header-launcher-list',
+  'tds-header-launcher-list-title',
   'tds-header-launcher-list-item',
   'tds-header-title',
-  'tds-header-launcher-list-title',
   'tds-popover-menu-item',
   'tds-side-menu-close-button',
+  'tds-side-menu-dropdown-list',
   'tds-side-menu-collapse-button',
   'tds-side-menu-dropdown',
-  'tds-side-menu-dropdown-list',
   'tds-side-menu-dropdown-list-item',
   'tds-side-menu-item',
+  'tds-side-menu-user-image',
   'tds-side-menu-overlay',
   'tds-side-menu-user',
-  'tds-side-menu-user-image',
   'tds-side-menu-user-label',
   'tds-step',
+  'tds-body-cell',
+  'tds-table',
+  'tds-table-footer',
+  'tds-table-body',
+  'tds-table-body-row',
+  'tds-table-header',
+  'tds-table-body-row-expandable',
+  'tds-table-toolbar',
+  'tds-header-cell',
   'tds-folder-tabs',
   'tds-inline-tabs',
   'tds-navigation-tabs',
-  'tds-table-body',
-  'tds-table',
-  'tds-body-cell',
-  'tds-table-body-row',
-  'tds-table-body-row-expandable',
-  'tds-table-footer',
-  'tds-table-header',
-  'tds-header-cell',
-  'tds-table-toolbar',
   'tds-date-picker',
   'tds-date-range-picker',
   'tds-folder-tab',
@@ -88,83 +88,83 @@ export const TAG_NAMES = [
 ] as const;
 export type TagName = (typeof TAG_NAMES)[number];
 export type TagNameCamelCase =
-  | 'tdsBadge'
   | 'tdsAccordion'
   | 'tdsBanner'
+  | 'tdsBadge'
   | 'tdsBlock'
   | 'tdsBreadcrumbs'
-  | 'tdsCard'
-  | 'tdsButton'
   | 'tdsCheckbox'
+  | 'tdsButton'
+  | 'tdsCard'
   | 'tdsChip'
   | 'tdsDatetime'
+  | 'tdsFooter'
   | 'tdsDivider'
   | 'tdsDropdown'
-  | 'tdsFooter'
   | 'tdsHeader'
   | 'tdsIcon'
   | 'tdsLink'
   | 'tdsMessage'
-  | 'tdsModal'
-  | 'tdsPopoverCanvas'
   | 'tdsPopoverCore'
   | 'tdsPopoverMenu'
-  | 'tdsRadioButton'
-  | 'tdsSideMenu'
-  | 'tdsSlider'
+  | 'tdsModal'
+  | 'tdsPopoverCanvas'
   | 'tdsSpinner'
+  | 'tdsSideMenu'
+  | 'tdsRadioButton'
+  | 'tdsSlider'
   | 'tdsStepper'
   | 'tdsTextField'
-  | 'tdsTextarea'
   | 'tdsToast'
-  | 'tdsToggle'
-  | 'tdsTooltip'
+  | 'tdsTextarea'
   | 'tdsAccordionItem'
+  | 'tdsTooltip'
+  | 'tdsToggle'
   | 'tdsBreadcrumb'
-  | 'tdsDropdownOption'
   | 'tdsFooterGroup'
   | 'tdsFooterItem'
+  | 'tdsDropdownOption'
   | 'tdsCoreHeaderItem'
   | 'tdsHeaderBrandSymbol'
-  | 'tdsHeaderDropdown'
-  | 'tdsHeaderDropdownList'
   | 'tdsHeaderDropdownListItem'
   | 'tdsHeaderDropdownListUser'
+  | 'tdsHeaderDropdownList'
   | 'tdsHeaderHamburger'
+  | 'tdsHeaderDropdown'
   | 'tdsHeaderItem'
-  | 'tdsHeaderLauncher'
   | 'tdsHeaderLauncherButton'
-  | 'tdsHeaderLauncherGrid'
   | 'tdsHeaderLauncherGridItem'
   | 'tdsHeaderLauncherGridTitle'
+  | 'tdsHeaderLauncher'
+  | 'tdsHeaderLauncherGrid'
   | 'tdsHeaderLauncherList'
+  | 'tdsHeaderLauncherListTitle'
   | 'tdsHeaderLauncherListItem'
   | 'tdsHeaderTitle'
-  | 'tdsHeaderLauncherListTitle'
   | 'tdsPopoverMenuItem'
   | 'tdsSideMenuCloseButton'
+  | 'tdsSideMenuDropdownList'
   | 'tdsSideMenuCollapseButton'
   | 'tdsSideMenuDropdown'
-  | 'tdsSideMenuDropdownList'
   | 'tdsSideMenuDropdownListItem'
   | 'tdsSideMenuItem'
+  | 'tdsSideMenuUserImage'
   | 'tdsSideMenuOverlay'
   | 'tdsSideMenuUser'
-  | 'tdsSideMenuUserImage'
   | 'tdsSideMenuUserLabel'
   | 'tdsStep'
+  | 'tdsBodyCell'
+  | 'tdsTable'
+  | 'tdsTableFooter'
+  | 'tdsTableBody'
+  | 'tdsTableBodyRow'
+  | 'tdsTableHeader'
+  | 'tdsTableBodyRowExpandable'
+  | 'tdsTableToolbar'
+  | 'tdsHeaderCell'
   | 'tdsFolderTabs'
   | 'tdsInlineTabs'
   | 'tdsNavigationTabs'
-  | 'tdsTableBody'
-  | 'tdsTable'
-  | 'tdsBodyCell'
-  | 'tdsTableBodyRow'
-  | 'tdsTableBodyRowExpandable'
-  | 'tdsTableFooter'
-  | 'tdsTableHeader'
-  | 'tdsHeaderCell'
-  | 'tdsTableToolbar'
   | 'tdsDatePicker'
   | 'tdsDateRangePicker'
   | 'tdsFolderTab'
