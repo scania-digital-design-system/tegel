@@ -133,7 +133,7 @@ export default {
     bodyDivider: false,
     cardActions: `<tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>`,
     clickable: false,
-    stretch: true,
+    stretch: false,
   },
 };
 
