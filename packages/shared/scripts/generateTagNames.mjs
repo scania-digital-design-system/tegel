@@ -13,7 +13,7 @@ const generateTagNames = async () => {
   const camelCase = (str) =>
     str
       .toLowerCase()
-      .replace(/[^a-zA-Z0-9]+(.)/g, (_m, chr) => chr.toUpperCase());
+      .replace(/(?:[^a-zA-Z0-9]+)(.)/g, (_m, chr) => chr.toUpperCase());
 
   const files = fs.readdirSync(componentsSourceDirectory);
   console.log("Files found:", files);
