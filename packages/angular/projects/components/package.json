@@ -3,7 +3,8 @@
   "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": "14",
-    "@angular/core": "14"
+    "@angular/core": "14",
+    "@scania/tegel": "1.13.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
