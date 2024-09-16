@@ -12,8 +12,13 @@ export const getTagName = (el: HTMLElement): string => {
 
 export const getTagNameWithoutPrefix = (host: HTMLElement): string => {
   const tagName = getTagName(host);
+  const maxLength = 100; // Maximum length of the input string
+
   // Ensure the regex correctly captures the tag name after the prefix
-  const [, , tagNameWithoutPrefix = ''] = /^((?:[a-z0-9]+-)+)([a-z0-9-]+)$/.exec(tagName) || [];
+  const match =
+    /^((?:[a-z0-9]+-){0,maxLength})([a-z0-9-]+)$/.exec(tagName.slice(0, maxLength)) || [];
+  const [, , tagNameWithoutPrefix = ''] = match;
+
   return tagNameWithoutPrefix;
 };
 
