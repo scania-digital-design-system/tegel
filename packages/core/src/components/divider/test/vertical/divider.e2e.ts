@@ -7,7 +7,7 @@ test.describe.parallel('tds-divider', () => {
   test('expect to render a vertical divider', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    // expect height to be greater then width
+    // expect height to be greater than width
     const divider = page.getByTestId('divider').locator('div.divider').first();
     const box = await divider.boundingBox();
     expect(box.height).toBeGreaterThan(box.width);
