@@ -61,12 +61,33 @@ export class TdsTableBodyRow {
     selectedRows: any[];
   }>;
 
+  /** Event emitted when a row is clicked. */
+  @Event({
+    eventName: 'tdsClick',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsClick: EventEmitter<{
+    tableId: string;
+    rowIndex: number;
+  }>;
+
   async handleCheckboxChange(event) {
     this.selected = event.detail.checked;
     this.tdsSelect.emit({
       tableId: this.tableId,
       checked: this.selected,
       selectedRows: await this.tableEl.getSelectedRows(),
+    });
+  }
+
+  handleRowClick() {
+    const rowIndex = Array.from(this.host.parentElement.children).indexOf(this.host);
+
+    this.tdsClick.emit({
+      tableId: this.tableId,
+      rowIndex: rowIndex,
     });
   }
 
@@ -104,6 +125,7 @@ export class TdsTableBodyRow {
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
         }}
+        onClick={() => this.handleRowClick()}
       >
         {this.multiselect && (
           <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">

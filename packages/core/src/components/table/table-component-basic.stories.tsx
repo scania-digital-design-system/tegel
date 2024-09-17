@@ -318,6 +318,24 @@ const BasicTemplate = ({
   }></tds-body-cell>
           </tds-table-body-row>
       </tds-table-body>
-  </tds-table>`);
+  </tds-table>
+
+  <!-- The script below is just for demo purposes -->
+  <script>
+
+    // Select all rows
+
+    rows = document.querySelectorAll('tds-table-body-row');
+
+    // Add event listener to all rows
+    rows.forEach(row => {
+      row.addEventListener('tdsClick', () => {
+        console.log('Row clicked', event);
+      });
+    });
+  </script>
+
+  
+  `);
 
 export const Basic = BasicTemplate.bind({});

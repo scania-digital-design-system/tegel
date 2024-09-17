@@ -17,6 +17,7 @@
 
 | Event       | Description                                      | Type                                                                       |
 | ----------- | ------------------------------------------------ | -------------------------------------------------------------------------- |
+| `tdsClick`  | Event emitted when a row is clicked.             | `CustomEvent<{ tableId: string; rowIndex: number; }>`                      |
 | `tdsSelect` | Event emitted when a row is selected/deselected. | `CustomEvent<{ tableId: string; checked: boolean; selectedRows: any[]; }>` |
 
 
