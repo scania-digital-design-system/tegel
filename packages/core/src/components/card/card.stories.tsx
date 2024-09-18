@@ -112,7 +112,7 @@ export default {
     },
     stretch: {
       name: 'Stretch card body',
-      description: 'Toggles if the card body to take scale with the card.',
+      description: 'Toggles if the card body should scale with the card.',
       control: {
         type: 'boolean',
       },
