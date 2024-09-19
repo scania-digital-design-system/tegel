@@ -63,7 +63,7 @@ jobs:
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: React - Build
-        run: npm run build:react
+        run: npm run build-react
 
       - name: React - Publish
         run: |

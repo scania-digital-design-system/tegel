@@ -130,14 +130,6 @@ export class TdsTable {
     return selectedRowsData;
   }
 
-  private getStyles(): Record<string, string> {
-    const styles: Record<string, string> = {};
-    if (this.horizontalScrollWidth) {
-      styles.width = `${this.horizontalScrollWidth}px`;
-    }
-    return styles;
-  }
-
   @Watch('multiselect')
   multiselectChanged(newValue: boolean) {
     this.emitInternalTdsPropChange('multiselect', newValue);
@@ -193,7 +185,7 @@ export class TdsTable {
         }}
       >
         <table
-          style={this.getStyles()}
+          style={this.horizontalScrollWidth ? { width: this.horizontalScrollWidth } : {}}
           class={{
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
