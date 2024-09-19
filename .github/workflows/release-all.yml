@@ -120,12 +120,8 @@ jobs:
         working-directory: packages/angular
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
-      - name: Angular - Install latest tegel package in components project
-        working-directory: packages/angular/projects/components
-        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
-
       - name: Angular - Run build
-        run: npm run build:angular
+        run: npm run build-angular
 
       - name: Angular - Publish
         working-directory: packages/angular
@@ -162,7 +158,7 @@ jobs:
 
       - name: Angular-17 - Read package.json Version
         id: version
-        working-directory: packages/angular-17
+        working-directory: packages/angular-17/projects/components
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
@@ -189,10 +185,10 @@ jobs:
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Angular-17 - Run build
-        run: npm run build:angular-17
+        run: npm run build-angular-17
 
       - name: Angular-17 - Publish
-        working-directory: packages/angular-17
+        working-directory: packages/angular-17/dist/components
         run: |
           if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
             npm publish --tag ${{ github.event.inputs.tags }} --dry-run
@@ -243,7 +239,7 @@ jobs:
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: React - Build
-        run: npm run build:react
+        run: npm run build-react
 
       - name: React - Publish
         working-directory: packages/react
