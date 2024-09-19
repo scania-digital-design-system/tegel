@@ -66,7 +66,7 @@ jobs:
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Angular - Run build
-        run: npm run build:angular
+        run: npm run build-angular
 
       - name: Angular - Publish
         working-directory: packages/angular

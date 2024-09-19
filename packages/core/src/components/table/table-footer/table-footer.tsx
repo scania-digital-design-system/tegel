@@ -160,14 +160,6 @@ export class TdsTableFooter {
     this.storeLastCorrectValue(this.paginationValue);
   }
 
-  private getStyles(): Record<string, string> {
-    const styles: Record<string, string> = {};
-    if (this.horizontalScrollWidth) {
-      styles.width = `${this.horizontalScrollWidth}px`;
-    }
-    return styles;
-  }
-
   render() {
     return (
       <Host
@@ -175,7 +167,7 @@ export class TdsTableFooter {
           'tds-table--compact': this.compactDesign,
           'footer__horizontal-scroll': !!this.horizontalScrollWidth,
         }}
-        style={this.getStyles()}
+        style={this.horizontalScrollWidth ? { width: this.horizontalScrollWidth } : {}}
       >
         <tr class="tds-table__footer-row">
           <td class="tds-table__footer-cell" colSpan={this.columnsNumber}>
