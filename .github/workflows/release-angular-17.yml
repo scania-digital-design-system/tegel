@@ -74,10 +74,10 @@ jobs:
         run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Angular-17 - Run build
-        run: npm run build:angular-17
+        run: npm run build-angular-17
 
       - name: Angular-17 - Publish
-        working-directory: packages/angular-17
+        working-directory: packages/angular-17/dist/components
         run: |
           if [ "${{ github.event.inputs.dryRun }}" == "true" ]; then
             npm publish --tag ${{ github.event.inputs.tags }} --dry-run
