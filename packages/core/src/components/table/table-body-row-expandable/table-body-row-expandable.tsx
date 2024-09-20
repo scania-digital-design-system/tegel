@@ -47,6 +47,24 @@ export class TdsTableBodyRowExpandable {
   /** Sets isExpanded state to true or false externally */
   @Prop({ reflect: true }) expanded: boolean;
 
+  @Prop({ reflect: true }) flexDisplay: boolean = false;
+
+  @Prop({ reflect: true }) flexDirection: 'row' | 'column' = 'row';
+
+  @Prop({ reflect: true }) justifyContent:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around' = 'flex-start';
+
+  @Prop({ reflect: true }) alignItems:
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'baseline'
+    | 'stretch' = 'flex-start';
+
   /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
@@ -158,6 +176,11 @@ export class TdsTableBodyRowExpandable {
   }
 
   render() {
+    const isFlex = this.flexDisplay;
+    const cellStyle = {
+      overflow: isFlex ? 'hidden' : 'scroll',
+      width: isFlex ? '100%' : undefined,
+    };
     return (
       <Host
         class={{
@@ -204,8 +227,25 @@ export class TdsTableBodyRowExpandable {
           }}
           part="expand-row"
         >
-          <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
-            <slot name="expand-row" />
+          <td
+            class={isFlex ? 'tds-table__cell-expandflex' : 'tds-table__cell-expand'}
+            colSpan={this.columnsNumber}
+            style={cellStyle}
+          >
+            <div
+              class={{
+                'flex-container': isFlex,
+              }}
+              style={{
+                'flex-direction': isFlex ? this.flexDirection : '',
+                'flex-wrap': isFlex ? 'wrap' : '',
+                'width': isFlex ? '100%' : '',
+                'justify-content': isFlex ? this.justifyContent : '',
+                'align-items': isFlex ? this.alignItems : '',
+              }}
+            >
+              <slot name="expand-row" />
+            </div>
           </td>
         </tr>
       </Host>

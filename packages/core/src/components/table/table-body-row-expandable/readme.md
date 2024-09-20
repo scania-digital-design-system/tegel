@@ -53,11 +53,15 @@ We recommend fitting your content within the table’s natural size whenever pos
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                               | Type      | Default              |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------- |
-| `colSpan`  | `col-span` | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number`  | `null`               |
-| `expanded` | `expanded` | Sets isExpanded state to true or false externally                                                                                         | `boolean` | `undefined`          |
-| `rowId`    | `row-id`   | ID for the table row. Randomly generated if not specified.                                                                                | `string`  | `generateUniqueId()` |
+| Property         | Attribute         | Description                                                                                                                               | Type                                                                          | Default              |
+| ---------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | -------------------- |
+| `alignItems`     | `align-items`     |                                                                                                                                           | `"baseline" \| "center" \| "flex-end" \| "flex-start" \| "stretch"`           | `'flex-start'`       |
+| `colSpan`        | `col-span`        | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number`                                                                      | `null`               |
+| `expanded`       | `expanded`        | Sets isExpanded state to true or false externally                                                                                         | `boolean`                                                                     | `undefined`          |
+| `flexDirection`  | `flex-direction`  |                                                                                                                                           | `"column" \| "row"`                                                           | `'row'`              |
+| `flexDisplay`    | `flex-display`    |                                                                                                                                           | `boolean`                                                                     | `false`              |
+| `justifyContent` | `justify-content` |                                                                                                                                           | `"center" \| "flex-end" \| "flex-start" \| "space-around" \| "space-between"` | `'flex-start'`       |
+| `rowId`          | `row-id`          | ID for the table row. Randomly generated if not specified.                                                                                | `string`                                                                      | `generateUniqueId()` |
 
 
 ## Events
