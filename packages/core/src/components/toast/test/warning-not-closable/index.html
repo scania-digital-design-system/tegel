@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Toast - Warning Not Closable</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-toast
+      data-testid="tds-toast-testid"
+      variant="warning"
+      header="Message header"
+      subheader="Short subheader"
+      closable="false"
+    >
+      <tds-link slot="actions">
+        <a href="https://tegel.scania.com/home" target="_blank" rel="noopener noreferrer"
+          >Link example</a
+        >
+      </tds-link>
+    </tds-toast>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-@mixin tds-scrollbar {
+@mixin tds-scrollbar($orientation: vertical) {
   &:hover {
     &::-webkit-scrollbar-thumb {
       border: var(--tds-scrollbar-thumb-border-hover-width) solid transparent;
@@ -8,11 +8,15 @@
   }
 
   &::-webkit-scrollbar {
-    width: var(--tds-scrollbar-width);
+    @if $orientation == vertical {
+      width: var(--tds-scrollbar-width);
+    } @else {
+      height: var(--tds-scrollbar-height);
+    }
   }
 
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--tds-scrollbar-track-color);
   }
 
   &::-webkit-scrollbar-thumb {
@@ -41,6 +45,7 @@
   --tds-scrollbar-width-standard: thin; //  auto | thin | none
   // Webkit values
   --tds-scrollbar-width: 10px;
+  --tds-scrollbar-height: 10px;
   --tds-scrollbar-thumb-border-width: 3px; // => thumb thickness: 4px(10-2*3)
   --tds-scrollbar-thumb-border-hover-width: 2px; // => thumb thickness: 6px(10-2*2)
 }

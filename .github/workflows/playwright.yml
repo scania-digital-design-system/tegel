@@ -1,7 +1,9 @@
 name: Playwright
 on:
   push:
-    branches: [main, develop, test/playwright-setup]
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -26,3 +28,8 @@ jobs:
       - name: Run Playwright tests
         working-directory: packages/core
         run: npx playwright test
+
+      - uses: daun/playwright-report-summary@v3
+        if: always()
+        with:
+          report-file: ./packages/core/results.json

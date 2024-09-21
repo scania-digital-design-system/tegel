@@ -30,7 +30,7 @@ export class TdsFooter {
         <footer>
           {usesTopSlot && <slot name="top"></slot>}
           <div class="footer-main">
-            { (usesStartSlot || usesEndSlot) && (
+            {(usesStartSlot || usesEndSlot) && (
               <div class="footer-main-top">
                 {usesStartSlot && <slot name="start"></slot>}
                 {usesEndSlot && <slot name="end"></slot>}

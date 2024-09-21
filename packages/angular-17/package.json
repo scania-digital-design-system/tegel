@@ -27,7 +27,7 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3",
-    "@scania/tegel": "1.8.2"
+    "@scania/tegel": "1.14.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.0",

@@ -32,6 +32,9 @@ export class TdsNavigationTabs {
    * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
+  /** Custom left padding value for the wrapper element. */
+  @Prop({ reflect: true }) leftPadding: number = 32;
+
   @State() showLeftScroll: boolean = false;
 
   @State() showRightScroll: boolean = false;
@@ -45,6 +48,19 @@ export class TdsNavigationTabs {
   private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
   private children: Array<HTMLTdsNavigationTabElement>;
+
+  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
+
+  /** Event emitted when the selected Tab is changed. */
+  @Event({
+    eventName: 'tdsChange',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  })
+  tdsChange: EventEmitter<{
+    selectedTabIndex: number;
+  }>;
 
   /** Sets the passed tabindex as the selected Tab. */
   @Method()
@@ -64,16 +80,11 @@ export class TdsNavigationTabs {
     };
   }
 
-  /** Event emitted when the selected Tab is changed. */
-  @Event({
-    eventName: 'tdsChange',
-    composed: true,
-    cancelable: true,
-    bubbles: true,
-  })
-  tdsChange: EventEmitter<{
-    selectedTabIndex: number;
-  }>;
+  /** Reinitializes the component. */
+  @Method()
+  async reinitialize(): Promise<void> {
+    this.handleSlotChange();
+  }
 
   @Watch('selectedIndex')
   handleSelectedIndexUpdate() {
@@ -86,37 +97,26 @@ export class TdsNavigationTabs {
     this.children[this.selectedIndex].setSelected(true);
   }
 
-  scrollRight() {
+  private scrollRight(): void {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
-
     this.evaluateScrollButtons();
   }
 
-  scrollLeft() {
+  private scrollLeft(): void {
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
-
     this.evaluateScrollButtons();
   }
 
-  evaluateScrollButtons() {
+  private evaluateScrollButtons(): void {
     const scroll = this.navWrapperElement.scrollLeft;
 
-    if (scroll >= this.scrollWidth) {
-      this.showRightScroll = false;
-    } else {
-      this.showRightScroll = true;
-    }
-
-    if (scroll <= 0) {
-      this.showLeftScroll = false;
-    } else {
-      this.showLeftScroll = true;
-    }
+    this.showRightScroll = scroll <= this.scrollWidth;
+    this.showLeftScroll = scroll > 0;
   }
 
-  addResizeObserver = () => {
+  private addResizeObserver = (): void => {
     const resizeObserver = new ResizeObserver((entries) => {
       entries.forEach((entry) => {
         const componentWidth = entry.contentRect.width;
@@ -127,29 +127,23 @@ export class TdsNavigationTabs {
           const style = window.getComputedStyle(navButton);
           buttonsWidth +=
             navButton.clientWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight);
-
-          navButton.classList.add('tds-navigation-tabs-tab');
         });
 
         this.componentWidth = componentWidth;
         this.buttonsWidth = buttonsWidth;
         this.scrollWidth = buttonsWidth - componentWidth;
 
-        if (this.buttonsWidth > this.componentWidth) {
-          this.evaluateScrollButtons();
-        } else {
-          this.showLeftScroll = false;
-          this.showRightScroll = false;
-        }
+        this.updateScrollButtons();
       });
     });
+
     resizeObserver.observe(this.navWrapperElement);
   };
 
-  addEventListenerToTabs = () => {
+  private addEventListenerToTabs = (): void => {
     this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
-    this.children = this.children.map((item, index) => {
-      item.addEventListener('click', () => {
+    this.children.map((item, index) => {
+      const clickHandler = () => {
         if (!item.disabled) {
           const tdsChangeEvent = this.tdsChange.emit({
             selectedTabIndex: this.children.indexOf(item),
@@ -160,35 +154,89 @@ export class TdsNavigationTabs {
             this.selectedIndex = index;
           }
         }
-      });
+      };
+      item.addEventListener('click', clickHandler);
+      this.clickHandlers.set(item, clickHandler); // Store the handler in WeakMap
       return item;
     });
   };
 
-  connectedCallback() {
-    this.children = Array.from(this.host.children) as Array<any>;
-    this.children[0].classList.add('first');
-    this.children[this.children.length - 1].classList.add('last');
+  private removeEventListenerFromTabs = (): void => {
+    this.children.forEach((item) => {
+      const clickHandler = this.clickHandlers.get(item);
+      if (clickHandler) {
+        item.removeEventListener('click', clickHandler);
+        this.clickHandlers.delete(item);
+      }
+    });
+  };
+
+  private initializeTabs(): void {
+    this.children = Array.from(this.host.children) as Array<HTMLTdsNavigationTabElement>;
+    // remove first and last class from other tabs in case of initialization
+    this.children.forEach((child) => {
+      child.classList.remove('last');
+      child.classList.remove('first');
+    });
+
+    if (this.children.length > 0) {
+      this.children[0].classList.add('first');
+      this.children[this.children.length - 1].classList.add('last');
+    }
   }
 
-  componentDidLoad = () => {
+  private initializeSelectedTab(): void {
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
       this.selectedIndex = this.defaultSelectedIndex;
-      this.tdsChange.emit({
-        selectedTabIndex: this.selectedIndex,
-      });
     } else {
       this.children[this.selectedIndex].setSelected(true);
-      this.tdsChange.emit({
-        selectedTabIndex: this.selectedIndex,
-      });
     }
-  };
+    this.tdsChange.emit({
+      selectedTabIndex: this.selectedIndex,
+    });
+  }
 
-  componentDidRender() {
+  private updateScrollButtons(): void {
+    if (this.buttonsWidth > this.componentWidth) {
+      this.evaluateScrollButtons();
+    } else {
+      this.showLeftScroll = false;
+      this.showRightScroll = false;
+    }
+  }
+
+  private applyCustomLeftPadding(): void {
+    if (this.navWrapperElement) {
+      this.navWrapperElement.style.paddingLeft = `${this.leftPadding}px`;
+    }
+  }
+
+  private handleSlotChange(): void {
+    this.initializeTabs();
+    this.addEventListenerToTabs();
+    this.initializeSelectedTab();
+    this.updateScrollButtons();
     this.addResizeObserver();
+    this.applyCustomLeftPadding(); // Apply custom left padding to the wrapper
+  }
+
+  connectedCallback(): void {
+    this.initializeTabs();
+  }
+
+  componentDidLoad(): void {
+    this.initializeSelectedTab();
+  }
+
+  componentDidRender(): void {
+    this.updateScrollButtons();
+    this.addResizeObserver();
+  }
+
+  disconnectedCallback(): void {
+    this.removeEventListenerFromTabs();
   }
 
   render() {
@@ -199,6 +247,7 @@ export class TdsNavigationTabs {
           ref={(el) => {
             this.navWrapperElement = el as HTMLElement;
           }}
+          style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
             class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
@@ -207,7 +256,7 @@ export class TdsNavigationTabs {
           >
             <tds-icon name="chevron_left" size="20px"></tds-icon>
           </button>
-          <slot />
+          <slot onSlotchange={() => this.handleSlotChange()} />
           <button
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             onClick={() => this.scrollRight()}

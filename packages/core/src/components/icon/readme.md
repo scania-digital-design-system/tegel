@@ -26,6 +26,7 @@
  - [tds-dropdown-option](../dropdown/dropdown-option)
  - [tds-folder-tabs](../tabs/folder-tabs)
  - [tds-footer-group](../footer/footer-group)
+ - [tds-header-cell](../table/table-header-cell)
  - [tds-header-dropdown](../header/header-dropdown)
  - [tds-header-hamburger](../header/header-hamburger)
  - [tds-header-launcher-button](../header/header-launcher-button)
@@ -37,7 +38,9 @@
  - [tds-side-menu-dropdown](../side-menu/side-menu-dropdown)
  - [tds-slider](../slider)
  - [tds-step](../stepper/step)
+ - [tds-table-body-input-wrapper](../table/table-body-input-wrapper)
  - [tds-table-footer](../table/table-footer)
+ - [tds-table-header-input-wrapper](../table/table-header-input-wrapper)
  - [tds-table-toolbar](../table/table-toolbar)
  - [tds-text-field](../text-field)
  - [tds-text-field-wrapper](../text-field-wrapper)
@@ -56,6 +59,7 @@ graph TD;
   tds-dropdown-option --> tds-icon
   tds-folder-tabs --> tds-icon
   tds-footer-group --> tds-icon
+  tds-header-cell --> tds-icon
   tds-header-dropdown --> tds-icon
   tds-header-hamburger --> tds-icon
   tds-header-launcher-button --> tds-icon
@@ -67,7 +71,9 @@ graph TD;
   tds-side-menu-dropdown --> tds-icon
   tds-slider --> tds-icon
   tds-step --> tds-icon
+  tds-table-body-input-wrapper --> tds-icon
   tds-table-footer --> tds-icon
+  tds-table-header-input-wrapper --> tds-icon
   tds-table-toolbar --> tds-icon
   tds-text-field --> tds-icon
   tds-text-field-wrapper --> tds-icon

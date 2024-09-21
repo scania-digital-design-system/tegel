@@ -9,6 +9,15 @@
       import { defineCustomElements } from '../../../../../loader/index.es2017.js';
       defineCustomElements();
     </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const closeButton = document.getElementById('menu-close-button');
+        const popoverMenu = document.getElementById('my-popover-menu');
+        closeButton.addEventListener('click', function () {
+          popoverMenu.close();
+        });
+      });
+    </script>
   </head>
 
   <body>
@@ -41,7 +50,7 @@
         <a href="#">Action</a>
       </tds-popover-menu-item>
       <tds-popover-menu-item>
-        <button>Action</button>
+        <button id="menu-close-button" data-testid="menu-close-button">Action</button>
       </tds-popover-menu-item>
     </tds-popover-menu>
 

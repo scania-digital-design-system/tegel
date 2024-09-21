@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Prop, Element, Method, State } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -38,6 +38,13 @@ export class TdsPopoverCanvas {
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: Object[] = [];
 
+  /** Property for closing popover programmatically */
+  @Method() async close() {
+    this.childRef?.close();
+  }
+
+  @State() childRef?: HTMLTdsPopoverCoreElement;
+
   inheritedAttributes: Attributes = [];
 
   componentWillLoad() {
@@ -61,6 +68,9 @@ export class TdsPopoverCanvas {
           offsetDistance={this.offsetDistance}
           modifiers={this.modifiers}
           trigger={'click'}
+          ref={(el) => {
+            this.childRef = el;
+          }}
         >
           <div>
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}

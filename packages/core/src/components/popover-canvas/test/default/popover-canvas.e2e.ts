@@ -30,9 +30,21 @@ test.describe.parallel('tds-popover-canvas-default', () => {
 
     await triggerButton.click();
 
-    await expect(triggerButton).toBeVisible();
+    await popoverCanvasHeader.waitFor({ state: 'visible' });
     await expect(popoverCanvasHeader).toBeVisible();
     await expect(popoverCanvasBody).toBeVisible();
     await expect(popoverCanvasLink).toBeVisible();
+  });
+
+  test('activating close method should close the dialog', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const triggerButton = page.getByRole('button');
+    await triggerButton.click();
+
+    const closeButton = page.getByTestId('canvas-close-button');
+    await expect(closeButton).toBeVisible();
+    await closeButton.click();
+
+    await expect(closeButton).not.toBeVisible();
   });
 });

@@ -87,6 +87,7 @@ export class TdsDropdown {
   /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
   @Method()
   async reset() {
+    this.dropdownList.scrollTop = 0;
     this.internalReset();
     this.handleChange();
   }
@@ -118,6 +119,8 @@ export class TdsDropdown {
       console.warn('Tried to select multiple items, but multiselect is not enabled.');
       nextValue = [nextValue[0]];
     }
+
+    nextValue = [...new Set(nextValue)];
 
     this.internalReset();
 
@@ -311,41 +314,35 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
-    // Ensure this.host.children is not empty
-    if (this.host.children.length === 0) {
-      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
-      return;
-    }
-
     if (this.defaultValue) {
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-      );
-      let matched = false;
+      ) as HTMLTdsDropdownOptionElement[];
 
-      children.forEach((element: HTMLTdsDropdownOptionElement) => {
-        if (this.multiselect) {
-          this.defaultValue.split(',').forEach((value) => {
-            if (value === element.value) {
-              element.setSelected(true);
-              this.value = this.value ? [...this.value, element.value] : [element.value];
-              matched = true;
-            }
-          });
-        } else {
-          if (this.defaultValue === element.value) {
-            element.setSelected(true);
-            this.value = [element.value];
-            matched = true;
-          } else {
-            element.setSelected(false);
-          }
+      if (children.length === 0) {
+        console.warn('TDS DROPDOWN: No options found. Disregard if loading data asynchronously.');
+        return;
+      }
+
+      const defaultValues = this.multiselect
+        ? new Set(this.defaultValue.split(','))
+        : [this.defaultValue];
+
+      const childrenMap = new Map(children.map((element) => [element.value, element]));
+
+      const matchedValues = Array.from(defaultValues).filter((value) => {
+        const element = childrenMap.get(value);
+        if (element) {
+          element.setSelected(true);
+          return true;
         }
-        this.setValueAttribute();
-        return element;
+        return false;
       });
 
-      if (!matched) {
+      if (matchedValues.length > 0) {
+        this.value = [...new Set(this.value ? [...this.value, ...matchedValues] : matchedValues)];
+        this.setValueAttribute();
+      } else {
         console.warn(
           `TDS DROPDOWN: No matching option found for defaultValue "${this.defaultValue}"`,
         );

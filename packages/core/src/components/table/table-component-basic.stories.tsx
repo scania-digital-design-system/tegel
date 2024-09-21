@@ -7,6 +7,8 @@ import tdsBodyRow from './table-body-row/readme.md';
 import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
 import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
+import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
+import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 import { ComponentsFolder } from '../../utils/constants';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
@@ -18,10 +20,12 @@ export default {
       'tds-table-toolbar': tdsTableToolbar,
       'tds-header': tdsHeader,
       'tds-header-cell': tdsHeaderCell,
+      'tds-header-input-wrapper': tdsTableHeaderInputWrapper,
       'tds-table-body': tdsTableBody,
       'tds-body-row': tdsBodyRow,
       'tds-body-row-expandable': tdsBodyRowExpandable,
       'tds-body-cell': tdsBodyCell,
+      'tds-body-input-wrapper': tdsTableBodyInputWrapper,
       'tds-table-footer': tdsTableFooter,
     },
   },
@@ -92,6 +96,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    disableHeaderPadding: {
+      name: 'Disable header cell padding',
+      description:
+        'By default each header cell comes with padding. Disabling padding rule can be useful when a users want to insert another HTML element in a header cell, eg. input.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     verticalDivider: {
       name: 'Vertical dividers',
       description: 'Enables vertical dividers between Table columns.',
@@ -108,6 +123,19 @@ export default {
         'Resets min-width rule and enables setting column width value to less than 192px which is the default. When enabled, controls for column width will show here.',
       control: {
         type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    horizontalScrollWidth: {
+      name: 'Horizontal scrolling table width',
+      description: 'Used to set the boundary with of horizontal scrolling',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '300px' },
       },
     },
     column1Width: {
@@ -154,7 +182,9 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     disablePadding: false,
+    disableHeaderPadding: false,
     verticalDivider: false,
+    horizontalScrollWidth: '',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -170,7 +200,9 @@ const BasicTemplate = ({
   compactDesign,
   responsiveDesign,
   disablePadding,
+  disableHeaderPadding,
   verticalDivider,
+  horizontalScrollWidth,
   noMinWidth,
   column1Width,
   column2Width,
@@ -183,20 +215,22 @@ const BasicTemplate = ({
       compact-design="${compactDesign}"
       responsive="${responsiveDesign}"
       ${noMinWidth ? 'no-min-width' : ''}
-      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
-      <tds-table-header>
-          <tds-header-cell cell-key='truck' cell-value='Truck type' ${
-            column1Width ? `custom-width="${column1Width}"` : ''
-          } text-align="${headerTextAlignment}"></tds-header-cell>
-          <tds-header-cell cell-key='driver' cell-value='Driver name' ${
-            column2Width ? `custom-width="${column2Width}"` : ''
-          } text-align="${headerTextAlignment}"></tds-header-cell>
-          <tds-header-cell cell-key='country' cell-value='Country' ${
-            column3Width ? `custom-width="${column3Width}"` : ''
-          } text-align="${headerTextAlignment}"></tds-header-cell>
-          <tds-header-cell cell-key='mileage' cell-value='Mileage' ${
-            column4Width ? `custom-width="${column4Width}"` : ''
-          } text-align="${headerTextAlignment}"></tds-header-cell>
+      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      ${horizontalScrollWidth ? `horizontal-scroll-width="${horizontalScrollWidth}"` : ''}
+    >
+      <tds-table-header >
+          <tds-header-cell cell-key='truck' cell-value='Truck type' disable-padding="${disableHeaderPadding}" ${
+    column1Width ? `custom-width="${column1Width}"` : ''
+  } text-align="${headerTextAlignment}"></tds-header-cell>
+          <tds-header-cell cell-key='driver' cell-value='Driver name' disable-padding="${disableHeaderPadding}" ${
+    column2Width ? `custom-width="${column2Width}"` : ''
+  } text-align="${headerTextAlignment}"></tds-header-cell>
+          <tds-header-cell cell-key='country' cell-value='Country' disable-padding="${disableHeaderPadding}" ${
+    column3Width ? `custom-width="${column3Width}"` : ''
+  } text-align="${headerTextAlignment}"></tds-header-cell>
+          <tds-header-cell cell-key='mileage' cell-value='Mileage' disable-padding="${disableHeaderPadding}" ${
+    column4Width ? `custom-width="${column4Width}"` : ''
+  } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
           <tds-table-body-row>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Stepper - Small vertical text aside</title>
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+  <body>
+    <tds-stepper data-testid="tds-stepper-testid" size="sm" orientation="vertical">
+      <tds-step state="success" index="1">
+        <div slot="label">Success step</div>
+      </tds-step>
+      <tds-step state="error" index="2">
+        <div slot="label">Error step</div>
+      </tds-step>
+      <tds-step state="current" index="3">
+        <div slot="label">Current step</div>
+      </tds-step>
+      <tds-step index="4">
+        <div slot="label">Upcoming step</div>
+      </tds-step>
+    </tds-stepper>
+  </body>
+</html>

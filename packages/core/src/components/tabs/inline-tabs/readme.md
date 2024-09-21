@@ -10,6 +10,7 @@
 | Property               | Attribute                | Description                                                                            | Type                       | Default     |
 | ---------------------- | ------------------------ | -------------------------------------------------------------------------------------- | -------------------------- | ----------- |
 | `defaultSelectedIndex` | `default-selected-index` | Sets the default selected Tab.                                                         | `number`                   | `0`         |
+| `leftPadding`          | `left-padding`           | Custom left padding value for the wrapper element.                                     | `number`                   | `32`        |
 | `modeVariant`          | `mode-variant`           | Variant of the Tabs, primary= on white, secondary= on grey50                           | `"primary" \| "secondary"` | `'primary'` |
 | `selectedIndex`        | `selected-index`         | Sets the selected Tab. If this is set, all Tab changes need to be handled by the user. | `number`                   | `undefined` |
 
@@ -22,6 +23,16 @@
 
 
 ## Methods
+
+### `reinitialize() => Promise<void>`
+
+Reinitializes the component.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 ### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number; }>`
 

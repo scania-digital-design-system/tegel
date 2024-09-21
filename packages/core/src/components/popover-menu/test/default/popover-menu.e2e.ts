@@ -78,4 +78,16 @@ test.describe.parallel('tds-popover-menu-default', () => {
       .filter({ has: page.getByRole('img') });
     await expect(tdsMenuItemListItemIcons).toHaveCount(0);
   });
+
+  test('activating close method should close the dialog', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+    await triggerButton.click();
+
+    const closeButton = page.getByTestId('menu-close-button');
+    await expect(closeButton).toBeVisible();
+    await closeButton.click();
+
+    await expect(closeButton).not.toBeVisible();
+  });
 });

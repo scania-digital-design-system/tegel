@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property      | Attribute      | Description                                                                                             | Type                                                | Default     |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
-| `cellKey`     | `cell-key`     | The value of column key, usually comes from JSON, needed for sorting                                    | `string`                                            | `undefined` |
-| `cellValue`   | `cell-value`   | Text that displays in column cell                                                                       | `string`                                            | `undefined` |
-| `customWidth` | `custom-width` | In case noMinWidth is set, the user has to specify the width value for each column.                     | `string`                                            | `undefined` |
-| `sortable`    | `sortable`     | Enables sorting on that column                                                                          | `boolean`                                           | `false`     |
-| `textAlign`   | `text-align`   | Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'left'`    |
+| Property         | Attribute         | Description                                                                                             | Type                                                | Default     |
+| ---------------- | ----------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ----------- |
+| `cellKey`        | `cell-key`        | The value of column key, usually comes from JSON, needed for sorting                                    | `string`                                            | `undefined` |
+| `cellValue`      | `cell-value`      | Text that displays in column cell                                                                       | `string`                                            | `undefined` |
+| `customWidth`    | `custom-width`    | In case noMinWidth is set, the user has to specify the width value for each column.                     | `string`                                            | `undefined` |
+| `disablePadding` | `disable-padding` | Disables internal padding. Useful when passing other components to cell.                                | `boolean`                                           | `false`     |
+| `sortable`       | `sortable`        | Enables sorting on that column                                                                          | `boolean`                                           | `false`     |
+| `textAlign`      | `text-align`      | Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'left'`    |
 
 
 ## Events
@@ -29,6 +30,19 @@
 | ------------- | ------------------------------------------- |
 | `"<default>"` | <b>Unnamed slot.</b> For the cell contents. |
 
+
+## Dependencies
+
+### Depends on
+
+- [tds-icon](../../icon)
+
+### Graph
+```mermaid
+graph TD;
+  tds-header-cell --> tds-icon
+  style tds-header-cell fill:#f9f,stroke:#333,stroke-width:4px
+```
 
 ----------------------------------------------
 

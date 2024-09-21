@@ -104,5 +104,5 @@ jobs:
         run: |
           tagname="@scania/tegel@${{ needs.release-angular-17.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push origin --delete $tagname
+            git push --no-verify --delete origin $tagname
           fi
