@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-react",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "description": "React wrappers for Tegel package",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
-    "@scania/tegel": "1.9.1"
+    "@scania/tegel": "1.14.0"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",

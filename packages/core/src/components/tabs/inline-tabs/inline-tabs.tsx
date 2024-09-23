@@ -32,6 +32,9 @@ export class TdsInlineTabs {
    * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
+  /** Custom left padding value for the wrapper element. */
+  @Prop({ reflect: true }) leftPadding: number = 32;
+
   @State() showLeftScroll: boolean = false;
 
   @State() showRightScroll: boolean = false;
@@ -203,12 +206,19 @@ export class TdsInlineTabs {
     }
   }
 
+  private applyCustomLeftPadding(): void {
+    if (this.navWrapperElement) {
+      this.navWrapperElement.style.paddingLeft = `${this.leftPadding}px`;
+    }
+  }
+
   private handleSlotChange(): void {
     this.initializeTabs();
     this.addEventListenerToTabs();
     this.initializeSelectedTab();
     this.updateScrollButtons();
     this.addResizeObserver();
+    this.applyCustomLeftPadding(); // Apply custom left padding to the wrapper
   }
 
   connectedCallback(): void {
@@ -236,6 +246,7 @@ export class TdsInlineTabs {
           ref={(el) => {
             this.navWrapperElement = el as HTMLElement;
           }}
+          style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
             class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
