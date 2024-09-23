@@ -39,33 +39,16 @@ export class TdsTableBodyRowExpandable {
    *  Take in mind that expandable control is column too */
   @Prop() colSpan: number = null;
 
-  /** Sets default expanded value of row */
-
   /** ID for the table row. Randomly generated if not specified. */
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
 
   /** Sets isExpanded state to true or false externally */
   @Prop({ reflect: true }) expanded: boolean;
 
-  @Prop({ reflect: true }) flexDisplay: boolean = false;
+  /** Controls the overflow behavior of the expandable row content */
+  @Prop({ reflect: true }) overflow: 'scroll' | 'hidden' = 'scroll';
 
-  @Prop({ reflect: true }) flexDirection: 'row' | 'column' = 'row';
-
-  @Prop({ reflect: true }) justifyContent:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'space-between'
-    | 'space-around' = 'flex-start';
-
-  @Prop({ reflect: true }) alignItems:
-    | 'flex-start'
-    | 'flex-end'
-    | 'center'
-    | 'baseline'
-    | 'stretch' = 'flex-start';
-
-  /** Sets isExpanded state to true or fals internally */
+  /** Sets isExpanded state to true or false internally */
   @State() isExpanded: boolean = false;
 
   @State() tableId: string = '';
@@ -127,14 +110,14 @@ export class TdsTableBodyRowExpandable {
     }
   }
 
-  /** method to expand table row */
+  /** Method to expand table row */
   @Method()
   async expand() {
     this.isExpanded = true;
     this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
   }
 
-  /** method to collapse table row */
+  /** Method to collapse table row */
   @Method()
   async collapse() {
     this.isExpanded = false;
@@ -176,11 +159,6 @@ export class TdsTableBodyRowExpandable {
   }
 
   render() {
-    const isFlex = this.flexDisplay;
-    const cellStyle = {
-      overflow: isFlex ? 'hidden' : 'scroll',
-      width: isFlex ? '100%' : undefined,
-    };
     return (
       <Host
         class={{
@@ -227,21 +205,12 @@ export class TdsTableBodyRowExpandable {
           }}
           part="expand-row"
         >
-          <td
-            class={isFlex ? 'tds-table__cell-expandflex' : 'tds-table__cell-expand'}
-            colSpan={this.columnsNumber}
-            style={cellStyle}
-          >
+          {this.overflow}
+          <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
             <div
-              class={{
-                'flex-container': isFlex,
-              }}
               style={{
-                'flex-direction': isFlex ? this.flexDirection : '',
-                'flex-wrap': isFlex ? 'wrap' : '',
-                'width': isFlex ? '100%' : '',
-                'justify-content': isFlex ? this.justifyContent : '',
-                'align-items': isFlex ? this.alignItems : '',
+                overflow: this.overflow,
+                BackgroundColor: 'pink',
               }}
             >
               <slot name="expand-row" />

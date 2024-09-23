@@ -69,21 +69,6 @@
       padding: 16px 16px 16px 66px;
       color: var(--tds-table-color);
     }
-
-    .tds-table__cell-expandflex {
-      width: 100%;
-      max-width: 1px;
-      overflow: hidden;
-      padding: 16px 16px 16px 66px;
-      color: var(--tds-table-color);
-    }
-
-    .flex-container {
-      display: flex !important;
-      flex-wrap: wrap;
-      overflow: hidden;
-      width: 100%;
-    }
   }
 }
 

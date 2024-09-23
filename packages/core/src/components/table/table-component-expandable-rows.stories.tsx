@@ -124,35 +124,13 @@ export default {
       },
       if: { arg: 'noMinWidth', eq: true },
     },
-    flexDisplay: {
-      name: 'Flex display',
-      description: 'Enable flex layout for the expanded row.',
-      control: { type: 'boolean' },
-      table: { defaultValue: { summary: false } },
-    },
-    flexDirection: {
-      name: 'Flex direction',
-      description: 'Direction of the flex layout.',
-      control: { type: 'radio' },
-      options: ['row', 'column'],
-      table: { defaultValue: { summary: 'row' } },
-      if: { arg: 'flexDisplay', eq: true },
-    },
-    justifyContent: {
-      name: 'Justify content',
-      description: 'Justify content of the flex layout.',
-      control: { type: 'radio' },
-      options: ['flex-start', 'flex-end', 'center', 'space-between', 'space-around'],
-      table: { defaultValue: { summary: 'flex-start' } },
-      if: { arg: 'flexDisplay', eq: true },
-    },
-    alignItems: {
-      name: 'Align items',
-      description: 'Align items of the flex layout.',
-      control: { type: 'radio' },
-      options: ['flex-start', 'flex-end', 'center', 'baseline', 'stretch'],
-      table: { defaultValue: { summary: 'flex-start' } },
-      if: { arg: 'flexDisplay', eq: true },
+    overflow: {
+      name: 'Overflow',
+      description: 'Controls the overflow behavior of the expandable row content',
+      control: {
+        type: 'radio',
+      },
+      options: ['scroll', 'hidden'],
     },
   },
   args: {
@@ -166,10 +144,7 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
-    flexDisplay: false,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    overflow: 'scroll',
   },
 };
 
@@ -184,10 +159,7 @@ const ExpandableRowTemplate = ({
   column2Width,
   column3Width,
   column4Width,
-  flexDisplay,
-  flexDirection,
-  justifyContent,
-  alignItems,
+  overflow,
 }) =>
   formatHtmlPreview(`
   <tds-table
@@ -234,19 +206,12 @@ const ExpandableRowTemplate = ({
           <tds-body-cell cell-value="Test value 12" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row"><tds-button type="primary" text="Call to action"></tds-button></div>
         </tds-table-body-row-expandable>
-        <tds-table-body-row-expandable expanded="${expanded}" row-id="1"
-          ${flexDisplay ? 'flex-display' : ''}
-        >
+        <tds-table-body-row-expandable expanded="${expanded}" overflow="${overflow}" row-id="1">
           <tds-body-cell cell-value="Demo overflow 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 3" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 4" cell-key="mileage"></tds-body-cell>
-          <div slot="expand-row" style="${
-            flexDisplay ? `display: flex; flex-direction: ${flexDirection};` : ''
-          }
-          justify-content: ${justifyContent}; align-items: ${alignItems};
-          align-content: ${alignItems}; flex-wrap: wrap; width: 100%;
-          ">
+          <div slot="expand-row">
             <!-- Demo block: Overflow solution for Expanded Rows (Not Recommended). -->
               <div style="background-color: red; width: 1300px; height: 100px;">Not Recommended</div>
               <div style="background-color: red; width: 300px; height: 100px;">Not Recommended</div>
