@@ -205,7 +205,6 @@ export class TdsTableBodyRowExpandable {
           }}
           part="expand-row"
         >
-          {this.overflow}
           <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
             <div
               style={{
