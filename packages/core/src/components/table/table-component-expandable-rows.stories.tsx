@@ -213,9 +213,7 @@ const ExpandableRowTemplate = ({
           <tds-body-cell cell-value="Demo overflow 4" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row">
             <!-- Demo block: Overflow solution for Expanded Rows (Not Recommended). -->
-              <div style="background-color: red; width: 1300px; height: 100px;">Not Recommended</div>
-              <div style="background-color: red; width: 300px; height: 100px;">Not Recommended</div>
-              <div style="background-color: red; width: 300px; height: 100px;">Not Recommended</div>
+              <div style="background-color: red; width: 900px; height: 100px;">Not Recommended</div>
             <!-- end of demo block -->
           </div>
         </tds-table-body-row-expandable>
