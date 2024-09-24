@@ -95,8 +95,6 @@ export class TdsTableBodyRow {
   }
 
   handleKeyDown(e) {
-    console.log('handleKeyDown', e);
-
     if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
       this.handleRowClick();
