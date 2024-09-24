@@ -65,6 +65,6 @@
   cursor: pointer;
 }
 
-:host(.tds-table__row--clickable:focus) {
+:host(.tds-table__row--clickable:focus-visible) {
   outline: var(--focus-outline, 2px solid blue);
 }
