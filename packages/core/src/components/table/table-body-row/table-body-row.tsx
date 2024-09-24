@@ -32,6 +32,9 @@ export class TdsTableBodyRow {
   /** Marks the row as disabled, used for multiselect table. */
   @Prop({ reflect: true }) disabled?: boolean = false;
 
+  /** Makes the row clickable and tabbable for accessibility purposes. */
+  @Prop({ reflect: true }) clickable: boolean = false;
+
   @State() multiselect: boolean = false;
 
   @State() mainCheckBoxStatus: boolean = false;
@@ -91,6 +94,15 @@ export class TdsTableBodyRow {
     });
   }
 
+  handleKeyDown(e) {
+    console.log('handleKeyDown', e);
+
+    if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      this.handleRowClick();
+    }
+  }
+
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
     if (this.tableId === event.detail.tableId) {
@@ -119,13 +131,16 @@ export class TdsTableBodyRow {
   render() {
     return (
       <Host
+        tabindex={this.clickable ? '0' : null}
         class={{
           'tds-table__row': true,
           'tds-table__row--selected': this.selected,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
+          'tds-table__row--clickable': this.clickable,
         }}
         onClick={() => this.handleRowClick()}
+        onKeyDown={(e) => this.handleKeyDown(e)}
       >
         {this.multiselect && (
           <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">

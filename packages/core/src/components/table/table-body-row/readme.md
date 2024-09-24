@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                            | Type      | Default |
-| ---------- | ---------- | ------------------------------------------------------ | --------- | ------- |
-| `disabled` | `disabled` | Marks the row as disabled, used for multiselect table. | `boolean` | `false` |
-| `selected` | `selected` | Marks the row as selected, used for multiselect table. | `boolean` | `false` |
+| Property    | Attribute   | Description                                                      | Type      | Default |
+| ----------- | ----------- | ---------------------------------------------------------------- | --------- | ------- |
+| `clickable` | `clickable` | Makes the row clickable and tabbable for accessibility purposes. | `boolean` | `false` |
+| `disabled`  | `disabled`  | Marks the row as disabled, used for multiselect table.           | `boolean` | `false` |
+| `selected`  | `selected`  | Marks the row as selected, used for multiselect table.           | `boolean` | `false` |
 
 
 ## Events

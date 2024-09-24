@@ -174,6 +174,16 @@ export default {
       },
       if: { arg: 'noMinWidth', eq: true },
     },
+    clickable: {
+      name: 'Clickable rows',
+      description: 'Enables rows to be clickable and emit `tdsClick` events.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -190,6 +200,7 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
+    clickable: false,
   },
 };
 
@@ -208,6 +219,7 @@ const BasicTemplate = ({
   column2Width,
   column3Width,
   column4Width,
+  clickable,
 }) =>
   formatHtmlPreview(`
   <tds-table
@@ -233,109 +245,49 @@ const BasicTemplate = ({
   } text-align="${headerTextAlignment}"></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-          <tds-table-body-row>
-              <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 2" cell-key="driver" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 3" cell-key="country" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row>
-              <tds-body-cell cell-value="Test value 5" cell-key="truck" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 6" cell-key="driver" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 7" cell-key="country" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 8" cell-key="mileage" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row>
-              <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 2" cell-key="driver" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 3" cell-key="country" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row>
-              <tds-body-cell cell-value="Test value 5" cell-key="truck" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 6" cell-key="driver" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 7" cell-key="country" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 8" cell-key="mileage" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row>
-              <tds-body-cell cell-value="Test value 1" cell-key="truck" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 2" cell-key="driver" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 3" cell-key="country" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 4" cell-key="mileage" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-          </tds-table-body-row>
-          <tds-table-body-row>
-              <tds-body-cell cell-value="Test value 5" cell-key="truck" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 6" cell-key="driver" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 7" cell-key="country" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-              <tds-body-cell cell-value="Test value 8" cell-key="mileage" disable-padding="${disablePadding}" ${
-    cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
-  }></tds-body-cell>
-          </tds-table-body-row>
+          ${[...Array(6)]
+            .map(
+              (_, index) => `
+            <tds-table-body-row ${clickable ? 'clickable' : ''}>
+              <tds-body-cell cell-value="Test value ${
+                index % 2 === 0 ? '1' : '5'
+              }" cell-key="truck" disable-padding="${disablePadding}" ${
+                cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
+              }></tds-body-cell>
+              <tds-body-cell cell-value="Test value ${
+                index % 2 === 0 ? '2' : '6'
+              }" cell-key="driver" disable-padding="${disablePadding}" ${
+                cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
+              }></tds-body-cell>
+              <tds-body-cell cell-value="Test value ${
+                index % 2 === 0 ? '3' : '7'
+              }" cell-key="country" disable-padding="${disablePadding}" ${
+                cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
+              }></tds-body-cell>
+              <tds-body-cell cell-value="Test value ${
+                index % 2 === 0 ? '4' : '8'
+              }" cell-key="mileage" disable-padding="${disablePadding}" ${
+                cellTextAlignment ? `text-align="${cellTextAlignment}"` : ''
+              }></tds-body-cell>
+            </tds-table-body-row>
+          `,
+            )
+            .join('')}
       </tds-table-body>
   </tds-table>
 
   <!-- The script below is just for demo purposes -->
   <script>
-
     // Select all rows
-
-    rows = document.querySelectorAll('tds-table-body-row');
+    const rows = document.querySelectorAll('tds-table-body-row');
 
     // Add event listener to all rows
     rows.forEach(row => {
-      row.addEventListener('tdsClick', () => {
-        console.log('Row clicked', event);
+      row.addEventListener('tdsClick', (event) => {
+        console.log('Row clicked:', event.detail);
       });
     });
   </script>
-
-  
-  `);
+`);
 
 export const Basic = BasicTemplate.bind({});
