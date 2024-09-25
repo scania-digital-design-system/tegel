@@ -54,10 +54,6 @@ export class TdsHeaderDropdown {
   render() {
     const prefixedTagNames = getPrefixedTagNames(this.host);
 
-    const DynamicHeaderItem = prefixedTagNames['tds-header-item'];
-    const DynamicIcon = prefixedTagNames['tds-icon'];
-    const DynamicPopover = prefixedTagNames['tds-popover-canvas'];
-
     return (
       <Host>
         <div
@@ -65,7 +61,11 @@ export class TdsHeaderDropdown {
             'state-open': this.open,
           }}
         >
-          <DynamicHeaderItem class="button" active={this.open} selected={this.selected}>
+          <prefixedTagNames.tdsHeaderItem
+            class="button"
+            active={this.open}
+            selected={this.selected}
+          >
             <button
               ref={(el) => {
                 this.buttonEl = el;
@@ -81,12 +81,16 @@ export class TdsHeaderDropdown {
               {this.label}
               <slot name="label"></slot>
               {!this.noDropdownIcon && (
-                <DynamicIcon class="dropdown-icon" name="chevron_down" size="16px"></DynamicIcon>
+                <prefixedTagNames.tdsIcon
+                  class="dropdown-icon"
+                  name="chevron_down"
+                  size="16px"
+                ></prefixedTagNames.tdsIcon>
               )}
             </button>
-          </DynamicHeaderItem>
+          </prefixedTagNames.tdsHeaderItem>
           {this.buttonEl && (
-            <DynamicPopover
+            <prefixedTagNames.tdsPopoverCanvas
               id={`tds-dropdown-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
@@ -110,7 +114,7 @@ export class TdsHeaderDropdown {
                   <slot></slot>
                 </span>
               ) : null}
-            </DynamicPopover>
+            </prefixedTagNames.tdsPopoverCanvas>
           )}
         </div>
       </Host>

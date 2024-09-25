@@ -60,17 +60,17 @@ export class TdsHeaderItem {
 
   render() {
     const prefixedTagNames = getPrefixedTagNames(this.host);
-    const DynamicHeaderItem = prefixedTagNames['tds-core-header-item'];
+
     return (
       <Host>
-        <DynamicHeaderItem
+        <prefixedTagNames.tdsCoreHeaderItem
           class={{
-            'component-active': this.active,
+            'component-active and-other': this.active,
             'component-selected': this.selected,
           }}
         >
           <slot></slot>
-        </DynamicHeaderItem>
+        </prefixedTagNames.tdsCoreHeaderItem>
       </Host>
     );
   }

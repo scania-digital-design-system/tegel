@@ -45,8 +45,6 @@ export class TdsHeaderLauncher {
 
   render() {
     const prefixedTagNames = getPrefixedTagNames(this.host);
-    const DynamicHeaderLauncher = prefixedTagNames['tds-header-launcher-button'];
-    const DynamicPopover = prefixedTagNames['tds-popover-canvas'];
 
     this.ariaAttributes = { ...this.ariaAttributes, ...inheritAriaAttributes(this.host, ['role']) };
 
@@ -73,10 +71,12 @@ export class TdsHeaderLauncher {
             'state-list-type-menu': this.hasListTypeMenu,
           }}
         >
-          <DynamicHeaderLauncher {...buttonAttributes}></DynamicHeaderLauncher>
+          <prefixedTagNames.tdsHeaderLauncherButton
+            {...buttonAttributes}
+          ></prefixedTagNames.tdsHeaderLauncherButton>
 
           {this.buttonEl && (
-            <DynamicPopover
+            <prefixedTagNames.tdsPopoverCanvas
               id={`tds-launcher-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
@@ -93,7 +93,7 @@ export class TdsHeaderLauncher {
               ]}
             >
               {this.open ? <slot></slot> : null}
-            </DynamicPopover>
+            </prefixedTagNames.tdsPopoverCanvas>
           )}
         </div>
       </Host>

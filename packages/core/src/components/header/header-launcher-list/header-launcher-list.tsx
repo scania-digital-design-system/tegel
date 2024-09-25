@@ -16,12 +16,11 @@ export class TdsHeaderLauncherList {
 
   render() {
     const prefixedTagNames = getPrefixedTagNames(this.host);
-    const DynamicHeaderDropdownList = prefixedTagNames['tds-header-dropdown-list'];
     return (
       <Host>
-        <DynamicHeaderDropdownList size="lg">
+        <prefixedTagNames.tdsHeaderDropdownList size="lg">
           <slot></slot>
-        </DynamicHeaderDropdownList>
+        </prefixedTagNames.tdsHeaderDropdownList>
       </Host>
     );
   }

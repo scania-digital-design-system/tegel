@@ -19,7 +19,6 @@ export class TdsHeaderLauncherButton {
 
   render() {
     const prefixedTagNames = getPrefixedTagNames(this.host);
-    const DynamicHeaderItem = prefixedTagNames['tds-header-item'];
 
     this.ariaAttributes = { ...this.ariaAttributes, ...inheritAriaAttributes(this.host) };
     const buttonProps = {
@@ -28,11 +27,15 @@ export class TdsHeaderLauncherButton {
 
     return (
       <Host>
-        <DynamicHeaderItem active={this.active}>
+        <prefixedTagNames.tdsHeaderItem active={this.active}>
           <button {...buttonProps}>
-            <tds-icon class="icon" name="bento" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon
+              class="icon"
+              name="bento"
+              size="20px"
+            ></prefixedTagNames.tdsIcon>
           </button>
-        </DynamicHeaderItem>
+        </prefixedTagNames.tdsHeaderItem>
       </Host>
     );
   }

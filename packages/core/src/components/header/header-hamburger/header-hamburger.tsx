@@ -12,7 +12,6 @@ export class TdsHeaderHamburger {
 
   render() {
     const prefixedTagNames = getPrefixedTagNames(this.host);
-    const DynamicHeaderItem = prefixedTagNames['tds-header-item'];
 
     const inheritedButtonProps = {
       ...inheritAriaAttributes(this.host),
@@ -20,11 +19,11 @@ export class TdsHeaderHamburger {
 
     return (
       <Host>
-        <DynamicHeaderItem>
+        <prefixedTagNames.tdsHeaderItem>
           <button {...inheritedButtonProps}>
             <tds-icon class="icon" name="burger" size="20px"></tds-icon>
           </button>
-        </DynamicHeaderItem>
+        </prefixedTagNames.tdsHeaderItem>
       </Host>
     );
   }

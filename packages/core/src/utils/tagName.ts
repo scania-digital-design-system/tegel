@@ -10,6 +10,9 @@ export const getTagName = (el: HTMLElement): string => {
   return el.tagName.toLowerCase();
 };
 
+export const paramCaseToCamelCase = (str: string): string =>
+  str.replace(/-(\w)/g, (_, group) => group.toUpperCase());
+
 export const getTagNameWithoutPrefix = (host: HTMLElement): string => {
   const tagName = getTagName(host);
   const maxLength = 100; // Maximum length of the input string
@@ -41,7 +44,7 @@ export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
     const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce(
       (result, tag) => ({
         ...result,
-        [tag]: tag, // Use the tag name directly without adding a prefix
+        [paramCaseToCamelCase(tag)]: tag, // Use the tag name directly without adding a prefix
       }),
       {} as PrefixedTagNames,
     );
