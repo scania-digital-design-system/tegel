@@ -156,6 +156,16 @@ export default {
       overflow: 'scroll',
       autoCollapse: false,
     },
+    autoCollapse: {
+      name: 'Auto Collapse',
+      description: 'Automatically collapses other rows when one is expanded.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
 };
 

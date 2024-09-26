@@ -61,7 +61,6 @@ We recommend fitting your content within the table’s natural size whenever pos
 | `rowId`        | `row-id`        | ID for the table row. Randomly generated if not specified.                                                                                | `string`             | `generateUniqueId()` |
 | `autoCollapse` | `auto-collapse` | Enables auto-collapse of other expandable rows when one row is expanded                                                                   | `boolean`            | `false`              |
 
-
 ## Events
 
 | Event       | Description                                                                            | Type                                                                    |
