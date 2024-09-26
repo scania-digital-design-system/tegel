@@ -47,6 +47,9 @@ export class TdsTableBodyRowExpandable {
   /** Sets isExpanded state to true or false externally */
   @Prop({ reflect: true }) expanded: boolean;
 
+  /** Enables auto-collapse of other expandable rows when one row is expanded */
+  @Prop() autoCollapse: boolean = false;
+
   /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
@@ -98,6 +101,14 @@ export class TdsTableBodyRowExpandable {
           }
           this[changedProp] = event.detail[changedProp];
         });
+    }
+  }
+
+  @Listen('tdsChange', { target: 'body' })
+  handleRowExpand(event: CustomEvent<{ rowId: string; isExpanded: boolean }>) {
+    /** Collapse all other rows when autoCollapse is true and a row is expanded */
+    if (this.autoCollapse && event.detail.isExpanded && event.detail.rowId !== this.rowId) {
+      this.collapse();
     }
   }
 
