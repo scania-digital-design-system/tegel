@@ -52,6 +52,10 @@
         display: none;
       }
 
+      &.xs {
+        display: none;
+      }
+      
       & + .placeholder:not(.sm) {
         margin-top: 8px;
       }
@@ -101,6 +105,10 @@
     &.sm {
       height: 39px;
     }
+
+    &.xs {
+      height: 29px;
+    }
   }
 
   .helper {
@@ -145,6 +153,10 @@
       max-height: 260px;
     }
 
+    &.xs {
+      max-height: 260px;
+    }
+
     &.up {
       bottom: 100%;
       margin-top: 0;
@@ -186,6 +198,10 @@
       }
 
       &.sm {
+        height: 40px;
+      }
+
+      &.xs {
         height: 40px;
       }
     }
