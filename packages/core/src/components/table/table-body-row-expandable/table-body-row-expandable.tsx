@@ -46,7 +46,7 @@ export class TdsTableBodyRowExpandable {
   @Prop({ reflect: true }) expanded: boolean;
 
   /** Controls the overflow behavior of the expandable row content */
-  @Prop({ reflect: true }) overflow: 'scroll' | 'hidden' = 'scroll';
+  @Prop({ reflect: true }) overflow: 'auto' | 'hidden' = 'auto';
 
   /** Sets isExpanded state to true or false internally */
   @State() isExpanded: boolean = false;
