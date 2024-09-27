@@ -130,7 +130,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['scroll', 'hidden'],
+      options: ['auto', 'hidden'],
     },
   },
   args: {
