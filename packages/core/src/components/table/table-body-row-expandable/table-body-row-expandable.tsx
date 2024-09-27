@@ -90,6 +90,7 @@ export class TdsTableBodyRowExpandable {
   tdsChange: EventEmitter<{
     rowId: string;
     isExpanded: boolean;
+    tableId: string;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -107,9 +108,14 @@ export class TdsTableBodyRowExpandable {
   }
 
   @Listen('tdsChange', { target: 'body' })
-  handleRowExpand(event: CustomEvent<{ rowId: string; isExpanded: boolean }>) {
+  handleRowExpand(event: CustomEvent<{ rowId: string; isExpanded: boolean; tableId: string }>) {
     /** Collapse all other rows when autoCollapse is true and a row is expanded */
-    if (this.autoCollapse && event.detail.isExpanded && event.detail.rowId !== this.rowId) {
+    if (
+      this.autoCollapse &&
+      event.detail.isExpanded &&
+      event.detail.rowId !== this.rowId &&
+      event.detail.tableId === this.tableId
+    ) {
       this.collapse();
     }
   }
@@ -118,7 +124,11 @@ export class TdsTableBodyRowExpandable {
   watchExpanded(newValue: boolean) {
     if (newValue !== this.isExpanded) {
       this.isExpanded = newValue;
-      this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+      this.tdsChange.emit({
+        rowId: this.rowId,
+        isExpanded: this.isExpanded,
+        tableId: this.tableId,
+      });
     }
   }
 
@@ -126,14 +136,14 @@ export class TdsTableBodyRowExpandable {
   @Method()
   async expand() {
     this.isExpanded = true;
-    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 
   /** Method to collapse table row */
   @Method()
   async collapse() {
     this.isExpanded = false;
-    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 
   connectedCallback() {
@@ -162,7 +172,7 @@ export class TdsTableBodyRowExpandable {
 
   sendValue() {
     this.internalTdsRowExpanded.emit([this.tableId, this.isExpanded]);
-    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
+    this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded, tableId: this.tableId });
   }
 
   onChangeHandler(event) {
