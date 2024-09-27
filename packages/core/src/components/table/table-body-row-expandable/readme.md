@@ -64,9 +64,9 @@ We recommend fitting your content within the table’s natural size whenever pos
 
 ## Events
 
-| Event       | Description                                                                            | Type                                                   |
-| ----------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------ |
-| `tdsChange` | Sends unique table row identifier and isExpanded status when it is expanded/collapsed. | `CustomEvent<{ rowId: string; isExpanded: boolean; }>` |
+| Event       | Description                                                                            | Type                                                                    |
+| ----------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `tdsChange` | Sends unique table row identifier and isExpanded status when it is expanded/collapsed. | `CustomEvent<{ rowId: string; isExpanded: boolean; tableId: string; }>` |
 
 
 ## Methods
