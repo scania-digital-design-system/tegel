@@ -209,7 +209,6 @@ export class TdsTableBodyRowExpandable {
             <div
               style={{
                 overflow: this.overflow,
-                BackgroundColor: 'pink',
               }}
             >
               <slot name="expand-row" />
