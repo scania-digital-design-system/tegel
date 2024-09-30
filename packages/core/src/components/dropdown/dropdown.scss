@@ -55,7 +55,7 @@
       &.xs {
         display: none;
       }
-      
+
       & + .placeholder:not(.sm) {
         margin-top: 8px;
       }
@@ -65,6 +65,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      margin-right: var(--tds-placeholder-margin);
     }
 
     .label-inside-as-placeholder {
