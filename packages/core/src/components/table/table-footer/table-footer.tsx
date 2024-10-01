@@ -54,7 +54,7 @@ export class TdsTableFooter {
 
   @State() horizontalScrollWidth: string = null;
 
-  @State() rowsPerPageValue: number = 10;
+  @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
 
   @Element() host: HTMLElement;
 
@@ -210,7 +210,7 @@ export class TdsTableFooter {
               <div class="tds-table__pagination">
                 <div class="tds-table__row-selector"></div>
                 <div class="tds-table__page-selector">
-                  {this.rowsperpage && (
+                  {this.rowsperpage && this.rowsPerPageValues?.length > 0 && (
                     <div class="rows-per-page">
                       <p>Rows per page</p>
                       <tds-dropdown
