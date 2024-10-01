@@ -9,18 +9,18 @@
   /* Table-body-row */
   --tds-table-body-row-background: var(--tds-grey-50);
   --tds-table-body-row-background-hover: var(--tds-grey-200);
-  --tds-table-body-row-background-zebra-mode: var(--tds-white);
+  --tds-table-zebra-mode: var(--tds-white);
 
   .tds-mode-variant-primary {
     --tds-table-body-row-background: var(--tds-grey-50);
     --tds-table-body-row-background-hover: var(--tds-grey-200);
-    --tds-table-body-row-background-zebra-mode: var(--tds-white);
+    --tds-table-zebra-mode: var(--tds-white);
   }
 
   .tds-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-white);
     --tds-table-body-row-background-hover: var(--tds-grey-100);
-    --tds-table-body-row-background-zebra-mode: var(--tds-grey-50);
+    --tds-table-zebra-mode: var(--tds-grey-50);
   }
 
   --tds-table-body-row-background-selected: var(--tds-grey-300);
@@ -76,18 +76,18 @@
   /* Table-body-row */
   --tds-table-body-row-background: var(--tds-grey-868);
   --tds-table-body-row-background-hover: var(--tds-grey-846);
-  --tds-table-body-row-background-zebra-mode: var(--tds-black);
+  --tds-table-zebra-mode: var(--tds-grey-900);
 
   .tds-mode-variant-primary {
     --tds-table-body-row-background: var(--tds-grey-868);
     --tds-table-body-row-background-hover: var(--tds-grey-846);
-    --tds-table-body-row-background-zebra-mode: var(--tds-black);
+    --tds-table-zebra-mode: var(--tds-grey-900);
   }
 
   .tds-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-grey-900);
     --tds-table-body-row-background-hover: var(--tds-grey-846);
-    --tds-table-body-row-background-zebra-mode: var(--tds-black);
+    --tds-table-zebra-mode: var(--tds-grey-900);
   }
 
   --tds-table-body-row-background-selected: var(--tds-grey-800);

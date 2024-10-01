@@ -60,19 +60,3 @@
     border-right: 1px solid var(--tds-table-divider);
   }
 }
-
-:host(.tds-table--zebra-mode-rows-odd:nth-child(odd)) {
-  background-color: var(--tds-table-body-row-background-zebra-mode);
-}
-
-:host(.tds-table--zebra-mode-rows-odd:nth-child(odd):hover) {
-  background-color: var(--tds-table-body-row-background-hover);
-}
-
-:host(.tds-table--zebra-mode-rows-even:nth-child(even)) {
-  background-color: var(--tds-table-body-row-background-zebra-mode);
-}
-
-:host(.tds-table--zebra-mode-rows-even:nth-child(even):hover) {
-  background-color: var(--tds-table-body-row-background-hover);
-}

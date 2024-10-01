@@ -15,7 +15,6 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
   'verticalDividers',
   'compactDesign',
-  'zebraMode',
 ];
 
 /**
@@ -42,8 +41,6 @@ export class TdsTableBodyRow {
   @State() compactDesign: boolean = false;
 
   @State() noMinWidth: boolean = false;
-
-  @State() zebraMode: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none' = 'none';
 
   @State() tableId: string = '';
 
@@ -106,8 +103,6 @@ export class TdsTableBodyRow {
           'tds-table__row--selected': this.selected,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
-          'tds-table--zebra-mode-rows-odd': this.zebraMode === 'rows-odd',
-          'tds-table--zebra-mode-rows-even': this.zebraMode === 'rows-even',
         }}
       >
         {this.multiselect && (

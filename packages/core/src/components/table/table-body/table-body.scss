@@ -19,3 +19,43 @@ tds-table-body {
     transition: background-color 200ms ease;
   }
 }
+
+// Zebra mode: rows
+
+tds-table-body.tds-table--zebra-mode-rows-odd {
+  tds-table-body-row:nth-child(odd) {
+    background-color: var(--tds-table-zebra-mode);
+  }
+}
+
+tds-table-body.tds-table--zebra-mode-rows-odd {
+  tds-table-body-row:nth-child(odd):hover {
+    background-color: var(--tds-table-body-row-background-hover);
+  }
+}
+
+tds-table-body.tds-table--zebra-mode-rows-even {
+  tds-table-body-row:nth-child(even) {
+    background-color: var(--tds-table-zebra-mode);
+  }
+}
+
+tds-table-body.tds-table--zebra-mode-rows-even {
+  tds-table-body-row:nth-child(even):hover {
+    background-color: var(--tds-table-body-row-background-hover);
+  }
+}
+
+// Zebra mode: columns
+
+tds-table-body.tds-table--zebra-mode-columns-odd {
+  tds-body-cell:nth-child(odd) {
+    background-color: var(--tds-table-zebra-mode);
+  }
+}
+
+tds-table-body.tds-table--zebra-mode-columns-even {
+  tds-body-cell:nth-child(even) {
+    background-color: var(--tds-table-zebra-mode);
+  }
+}
