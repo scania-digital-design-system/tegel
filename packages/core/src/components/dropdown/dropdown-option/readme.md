@@ -50,6 +50,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [tds-table-footer](../../table/table-footer)
+
 ### Depends on
 
 - [tds-checkbox](../../checkbox)
@@ -60,6 +64,7 @@ Type: `Promise<void>`
 graph TD;
   tds-dropdown-option --> tds-checkbox
   tds-dropdown-option --> tds-icon
+  tds-table-footer --> tds-dropdown-option
   style tds-dropdown-option fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
