@@ -1,9 +1,9 @@
 export const TAG_NAMES = [
   'tds-accordion',
-  'tds-banner',
   'tds-badge',
-  'tds-breadcrumbs',
+  'tds-banner',
   'tds-block',
+  'tds-breadcrumbs',
   'tds-button',
   'tds-card',
   'tds-checkbox',
@@ -22,11 +22,11 @@ export const TAG_NAMES = [
   'tds-popover-menu',
   'tds-radio-button',
   'tds-side-menu',
-  'tds-spinner',
   'tds-slider',
+  'tds-spinner',
   'tds-stepper',
-  'tds-textarea',
   'tds-text-field',
+  'tds-textarea',
   'tds-toast',
   'tds-toggle',
   'tds-tooltip',
@@ -37,27 +37,27 @@ export const TAG_NAMES = [
   'tds-footer-item',
   'tds-core-header-item',
   'tds-header-brand-symbol',
-  'tds-header-dropdown',
   'tds-header-dropdown-list',
   'tds-header-dropdown-list-item',
   'tds-header-dropdown-list-user',
   'tds-header-hamburger',
-  'tds-header-item',
+  'tds-header-dropdown',
   'tds-header-launcher',
   'tds-header-launcher-button',
-  'tds-header-launcher-grid-item',
   'tds-header-launcher-grid',
-  'tds-header-launcher-list',
+  'tds-header-launcher-grid-item',
   'tds-header-launcher-grid-title',
+  'tds-header-launcher-list',
   'tds-header-launcher-list-item',
-  'tds-header-launcher-list-title',
+  'tds-header-item',
   'tds-header-title',
+  'tds-header-launcher-list-title',
   'tds-popover-menu-item',
   'tds-side-menu-close-button',
   'tds-side-menu-collapse-button',
   'tds-side-menu-dropdown',
-  'tds-side-menu-dropdown-list-item',
   'tds-side-menu-dropdown-list',
+  'tds-side-menu-dropdown-list-item',
   'tds-side-menu-item',
   'tds-side-menu-overlay',
   'tds-side-menu-user',
@@ -70,9 +70,9 @@ export const TAG_NAMES = [
   'tds-table-body-input-wrapper',
   'tds-table-body-row',
   'tds-table-body-row-expandable',
+  'tds-table-footer',
   'tds-table-header',
   'tds-header-cell',
-  'tds-table-footer',
   'tds-table-header-input-wrapper',
   'tds-table-toolbar',
   'tds-folder-tabs',
@@ -91,10 +91,10 @@ export const TAG_NAMES = [
 export type TagName = (typeof TAG_NAMES)[number];
 export type TagNameCamelCase =
   | 'tdsAccordion'
-  | 'tdsBanner'
   | 'tdsBadge'
-  | 'tdsBreadcrumbs'
+  | 'tdsBanner'
   | 'tdsBlock'
+  | 'tdsBreadcrumbs'
   | 'tdsButton'
   | 'tdsCard'
   | 'tdsCheckbox'
@@ -113,11 +113,11 @@ export type TagNameCamelCase =
   | 'tdsPopoverMenu'
   | 'tdsRadioButton'
   | 'tdsSideMenu'
-  | 'tdsSpinner'
   | 'tdsSlider'
+  | 'tdsSpinner'
   | 'tdsStepper'
-  | 'tdsTextarea'
   | 'tdsTextField'
+  | 'tdsTextarea'
   | 'tdsToast'
   | 'tdsToggle'
   | 'tdsTooltip'
@@ -128,27 +128,27 @@ export type TagNameCamelCase =
   | 'tdsFooterItem'
   | 'tdsCoreHeaderItem'
   | 'tdsHeaderBrandSymbol'
-  | 'tdsHeaderDropdown'
   | 'tdsHeaderDropdownList'
   | 'tdsHeaderDropdownListItem'
   | 'tdsHeaderDropdownListUser'
   | 'tdsHeaderHamburger'
-  | 'tdsHeaderItem'
+  | 'tdsHeaderDropdown'
   | 'tdsHeaderLauncher'
   | 'tdsHeaderLauncherButton'
-  | 'tdsHeaderLauncherGridItem'
   | 'tdsHeaderLauncherGrid'
-  | 'tdsHeaderLauncherList'
+  | 'tdsHeaderLauncherGridItem'
   | 'tdsHeaderLauncherGridTitle'
+  | 'tdsHeaderLauncherList'
   | 'tdsHeaderLauncherListItem'
-  | 'tdsHeaderLauncherListTitle'
+  | 'tdsHeaderItem'
   | 'tdsHeaderTitle'
+  | 'tdsHeaderLauncherListTitle'
   | 'tdsPopoverMenuItem'
   | 'tdsSideMenuCloseButton'
   | 'tdsSideMenuCollapseButton'
   | 'tdsSideMenuDropdown'
-  | 'tdsSideMenuDropdownListItem'
   | 'tdsSideMenuDropdownList'
+  | 'tdsSideMenuDropdownListItem'
   | 'tdsSideMenuItem'
   | 'tdsSideMenuOverlay'
   | 'tdsSideMenuUser'
@@ -161,9 +161,9 @@ export type TagNameCamelCase =
   | 'tdsTableBodyInputWrapper'
   | 'tdsTableBodyRow'
   | 'tdsTableBodyRowExpandable'
+  | 'tdsTableFooter'
   | 'tdsTableHeader'
   | 'tdsHeaderCell'
-  | 'tdsTableFooter'
   | 'tdsTableHeaderInputWrapper'
   | 'tdsTableToolbar'
   | 'tdsFolderTabs'
