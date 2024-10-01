@@ -528,17 +528,19 @@ export class TdsDropdown {
                   ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
                   class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
                   type="text"
-                  placeholder={this.placeholder}
-                  value={this.getValue()}
+                  placeholder={this.filterFocus ? '' : this.placeholder} // New logic
+                  value={this.filterFocus ? '' : this.getValue()} // New logic
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onBlur={(event) => {
                     this.filterFocus = false;
+                    this.inputElement.value = this.getValue(); // New logic
                     this.handleBlur(event);
                   }}
                   onFocus={(event) => {
                     this.open = true;
                     this.filterFocus = true;
+                    this.inputElement.value = ''; // New logic
                     this.handleFocus(event);
                   }}
                   onKeyDown={(event) => {
