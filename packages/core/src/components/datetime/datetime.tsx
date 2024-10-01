@@ -1,4 +1,15 @@
-import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '@stencil/core';
+import {
+  Component,
+  State,
+  h,
+  Prop,
+  Listen,
+  Event,
+  EventEmitter,
+  Method,
+  Element,
+} from '@stencil/core';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 @Component({
   tag: 'tds-datetime',
@@ -7,6 +18,8 @@ import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '
   scoped: true,
 })
 export class TdsDatetime {
+  @Element() host: HTMLElement;
+
   /** Text-input for focus state */
   textInput?: HTMLInputElement;
 
@@ -159,6 +172,8 @@ export class TdsDatetime {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
       className += `${className}-md`;
@@ -205,11 +220,11 @@ export class TdsDatetime {
             />
 
             <div class="datetime-icon icon-datetime-local">
-              <tds-icon size="20px" name="calendar"></tds-icon>
+              <prefixedTagNames.tdsIcon size="20px" name="calendar"></prefixedTagNames.tdsIcon>
             </div>
 
             <div class="datetime-icon icon-time">
-              <tds-icon size="20px" name="clock"></tds-icon>
+              <prefixedTagNames.tdsIcon size="20px" name="clock"></prefixedTagNames.tdsIcon>
             </div>
           </div>
           <div class="tds-datetime-bar"></div>
@@ -218,7 +233,9 @@ export class TdsDatetime {
         {this.helper && (
           <div class="tds-datetime-helper">
             <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
+              {this.state === 'error' && (
+                <prefixedTagNames.tdsIcon name="error" size="16px"></prefixedTagNames.tdsIcon>
+              )}
               {this.helper}
             </div>
           </div>

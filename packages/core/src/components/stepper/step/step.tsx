@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
 import { InternalTdsStepperPropChange } from '../stepper';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 const propToStateMap = {
   orientation: 'orientation',
@@ -17,6 +18,8 @@ const propToStateMap = {
   shadow: true,
 })
 export class TdsStep {
+  @Element() host: HTMLElement;
+
   /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
   @Prop() index: string;
 
@@ -61,6 +64,8 @@ export class TdsStep {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <div
@@ -71,11 +76,11 @@ export class TdsStep {
         >
           <span class={`${this.state} content-container`}>
             {this.state === 'success' || this.state === 'error' ? (
-              <tds-icon
+              <prefixedTagNames.tdsIcon
                 class={'tds-step-icon'}
                 name={this.state === 'success' ? 'tick' : 'warning'}
                 size={this.size === 'lg' ? '20px' : '16px'}
-              ></tds-icon>
+              ></prefixedTagNames.tdsIcon>
             ) : (
               <span class="index-container">{this.index}</span>
             )}

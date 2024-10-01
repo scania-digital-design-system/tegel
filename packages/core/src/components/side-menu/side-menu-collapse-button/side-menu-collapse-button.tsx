@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Listen, State, Event, EventEmitter } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default>  - <b>Unnamed slot.</b> For the text label of the button.
@@ -63,6 +64,8 @@ export class TdsSideMenuCollapseButton {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host
         role="button"
@@ -77,7 +80,7 @@ export class TdsSideMenuCollapseButton {
             'state-collapsed': this.collapsed,
           }}
         >
-          <tds-side-menu-item
+          <prefixedTagNames.tdsSideMenuItem
             class={{
               button: true,
             }}
@@ -99,7 +102,7 @@ export class TdsSideMenuCollapseButton {
               </svg>
               {!this.collapsed && <slot></slot>}
             </a>
-          </tds-side-menu-item>
+          </prefixedTagNames.tdsSideMenuItem>
         </div>
       </Host>
     );
