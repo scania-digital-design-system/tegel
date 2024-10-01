@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot header - Slot for the Toast header.
@@ -93,6 +94,7 @@ export class TdsToast {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
@@ -110,7 +112,10 @@ export class TdsToast {
             wrapper
             ${this.variant}`}
         >
-          <tds-icon name={this.getIconName()} size="20px"></tds-icon>
+          <prefixedTagNames.tdsIcon
+            name={this.getIconName()}
+            size="20px"
+          ></prefixedTagNames.tdsIcon>
           <div class={`content`}>
             <div class="header-subheader">
               {this.header && <div class="header">{this.header}</div>}
@@ -131,7 +136,7 @@ export class TdsToast {
 
           {this.closable && (
             <button onClick={this.handleClose} class="close">
-              <tds-icon name="cross" size="20px"></tds-icon>
+              <prefixedTagNames.tdsIcon name="cross" size="20px"></prefixedTagNames.tdsIcon>
             </button>
           )}
         </div>

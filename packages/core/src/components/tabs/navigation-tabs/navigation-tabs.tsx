@@ -10,6 +10,7 @@ import {
   Method,
   Watch,
 } from '@stencil/core';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the tab elements.
@@ -240,6 +241,8 @@ export class TdsNavigationTabs {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host role="list" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <div
@@ -254,7 +257,7 @@ export class TdsNavigationTabs {
             onClick={() => this.scrollLeft()}
             disabled={!this.showLeftScroll}
           >
-            <tds-icon name="chevron_left" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon name="chevron_left" size="20px"></prefixedTagNames.tdsIcon>
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
@@ -262,7 +265,7 @@ export class TdsNavigationTabs {
             onClick={() => this.scrollRight()}
             disabled={!this.showRightScroll}
           >
-            <tds-icon name="chevron_right" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon name="chevron_right" size="20px"></prefixedTagNames.tdsIcon>
           </button>
         </div>
       </Host>

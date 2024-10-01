@@ -20,6 +20,7 @@ import {
 } from 'date-fns';
 import { TdsTextFieldCustomEvent } from '../../../../index';
 import generateUniqueId from '../../../../utils/generateUniqueId';
+import { getPrefixedTagNames } from '../../../../utils/tagName';
 
 @Component({
   tag: 'tds-date-range-picker',
@@ -291,6 +292,8 @@ export class TdsDateRangePicker {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <div
         class={{
@@ -300,7 +303,7 @@ export class TdsDateRangePicker {
         }}
       >
         <div id="haha" class="controls-container">
-          <tds-text-field
+          <prefixedTagNames.tdsTextField
             ref={(element) => {
               this.startRangeInput = element;
             }}
@@ -314,9 +317,13 @@ export class TdsDateRangePicker {
             placeholder="YYYY/MM/DD"
             value={this.startValue}
           >
-            <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
-          </tds-text-field>
-          <tds-text-field
+            <prefixedTagNames.tdsIcon
+              name="calendar"
+              size="16px"
+              slot="suffix"
+            ></prefixedTagNames.tdsIcon>
+          </prefixedTagNames.tdsTextField>
+          <prefixedTagNames.tdsTextField
             ref={(element) => {
               this.endRangeInput = element;
             }}
@@ -330,10 +337,14 @@ export class TdsDateRangePicker {
             placeholder="YYYY/MM/DD"
             value={this.endValue}
           >
-            <tds-icon name="calendar" size="16px" slot="suffix"></tds-icon>
-          </tds-text-field>
+            <prefixedTagNames.tdsIcon
+              name="calendar"
+              size="16px"
+              slot="suffix"
+            ></prefixedTagNames.tdsIcon>
+          </prefixedTagNames.tdsTextField>
         </div>
-        <tds-popover-core
+        <prefixedTagNames.tdsPopoverCore
           style={{
             backgroundColor: 'var(--tds-date-picker-calendar-bg)',
           }}
@@ -343,11 +354,19 @@ export class TdsDateRangePicker {
         >
           <div class="controls">
             <button class="previous" onClick={this.getPrevious}>
-              <tds-icon slot="icon" name="chevron_left" size="20px"></tds-icon>
+              <prefixedTagNames.tdsIcon
+                slot="icon"
+                name="chevron_left"
+                size="20px"
+              ></prefixedTagNames.tdsIcon>
             </button>
             <div class="calendar-display">{this.getControlsDisplayText()}</div>
             <button class="next" onClick={this.getNext}>
-              <tds-icon slot="icon" name="chevron_right" size="20px"></tds-icon>
+              <prefixedTagNames.tdsIcon
+                slot="icon"
+                name="chevron_right"
+                size="20px"
+              ></prefixedTagNames.tdsIcon>
             </button>{' '}
           </div>
           <div
@@ -363,7 +382,7 @@ export class TdsDateRangePicker {
               </div>
             ))}
             {this.days.map((day: Date) => (
-              <date-range-picker-day
+              <prefixedTagNames.tdsDatePickerDay
                 key={day.getDate()}
                 onClick={() => {
                   this.handleSelection(day);
@@ -392,10 +411,10 @@ export class TdsDateRangePicker {
                 }}
                 firstInRange={isSameDay(day, parse(this.startValue, this.format, new Date()))}
                 lastInRange={isSameDay(day, parse(this.endValue, this.format, new Date()))}
-              ></date-range-picker-day>
+              ></prefixedTagNames.tdsDatePickerDay>
             ))}
           </div>
-        </tds-popover-core>
+        </prefixedTagNames.tdsPopoverCore>
       </div>
     );
   }

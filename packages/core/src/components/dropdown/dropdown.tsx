@@ -14,6 +14,7 @@ import {
 import findNextFocusableElement from '../../utils/findNextFocusableElement';
 import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
 import appendHiddenInput from '../../utils/appendHiddenInput';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
@@ -484,6 +485,8 @@ export class TdsDropdown {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     appendHiddenInput(
       this.host,
       this.name,
@@ -548,7 +551,7 @@ export class TdsDropdown {
                   }}
                 />
               </div>
-              <tds-icon
+              <prefixedTagNames.tdsIcon
                 tabIndex={0}
                 role="button"
                 aria-label="Clear filter"
@@ -562,8 +565,8 @@ export class TdsDropdown {
                 class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
                 name="cross"
                 size="16px"
-              ></tds-icon>
-              <tds-icon
+              ></prefixedTagNames.tdsIcon>
+              <prefixedTagNames.tdsIcon
                 tabIndex={0}
                 role="button"
                 aria-label="Open/Close dropdown"
@@ -577,7 +580,7 @@ export class TdsDropdown {
                 class={`menu-icon ${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
-              ></tds-icon>
+              ></prefixedTagNames.tdsIcon>
             </div>
           ) : (
             <button
@@ -612,13 +615,13 @@ export class TdsDropdown {
                 <div class={`placeholder ${this.size}`}>
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
-                <tds-icon
+                <prefixedTagNames.tdsIcon
                   aria-label="Open/Close dropdown"
                   svgTitle="Open/Close dropdown"
                   class={`menu-icon ${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
-                ></tds-icon>
+                ></prefixedTagNames.tdsIcon>
               </div>
             </button>
           )}
@@ -640,7 +643,9 @@ export class TdsDropdown {
         {/* DROPDOWN LIST */}
         {this.helper && (
           <div class={`helper ${this.error ? 'error' : ''} ${this.disabled ? 'disabled' : ''}`}>
-            {this.error && <tds-icon name="error" size="16px"></tds-icon>}
+            {this.error && (
+              <prefixedTagNames.tdsIcon name="error" size="16px"></prefixedTagNames.tdsIcon>
+            )}
             {this.helper}
           </div>
         )}

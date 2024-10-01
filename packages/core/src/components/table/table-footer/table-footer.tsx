@@ -10,6 +10,7 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
@@ -169,6 +170,8 @@ export class TdsTableFooter {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host
         class={{
@@ -204,7 +207,10 @@ export class TdsTableFooter {
                     disabled={this.paginationValue <= 1}
                     onClick={() => this.previousPage()}
                   >
-                    <tds-icon name="chevron_left" size="20px"></tds-icon>
+                    <prefixedTagNames.tdsIcon
+                      name="chevron_left"
+                      size="20px"
+                    ></prefixedTagNames.tdsIcon>
                   </button>
                   <button
                     type="button"
@@ -212,7 +218,10 @@ export class TdsTableFooter {
                     disabled={this.paginationValue >= this.pages}
                     onClick={() => this.nextPage()}
                   >
-                    <tds-icon name="chevron_right" size="20px"></tds-icon>
+                    <prefixedTagNames.tdsIcon
+                      name="chevron_right"
+                      size="20px"
+                    ></prefixedTagNames.tdsIcon>
                   </button>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { Component, Element, h, Host, Prop } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the tooltip contents.
@@ -80,9 +81,11 @@ export class TdsTooltip {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
-        <tds-popover-core
+        <prefixedTagNames.tdsPopoverCore
           {...this.inheritedAttributes}
           class={{
             'tds-tooltip': true,
@@ -109,7 +112,7 @@ export class TdsTooltip {
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}
           <slot></slot>
-        </tds-popover-core>
+        </prefixedTagNames.tdsPopoverCore>
       </Host>
     );
   }

@@ -1,4 +1,5 @@
 import { Component, Element, h, Host } from '@stencil/core';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a link.
@@ -12,11 +13,13 @@ export class TdsHeaderBrandSymbol {
   @Element() host: HTMLElement;
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
-        <tds-header-item>
+        <prefixedTagNames.tdsHeaderItem>
           <slot></slot>
-        </tds-header-item>
+        </prefixedTagNames.tdsHeaderItem>
       </Host>
     );
   }

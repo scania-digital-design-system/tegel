@@ -21,7 +21,11 @@ export class TdsHeaderHamburger {
       <Host>
         <prefixedTagNames.tdsHeaderItem>
           <button {...inheritedButtonProps}>
-            <tds-icon class="icon" name="burger" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon
+              class="icon"
+              name="burger"
+              size="20px"
+            ></prefixedTagNames.tdsIcon>
           </button>
         </prefixedTagNames.tdsHeaderItem>
       </Host>
