@@ -18,8 +18,6 @@ const propToStateMap = {
   shadow: true,
 })
 export class TdsStep {
-  @Element() host: HTMLElement;
-
   /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
   @Prop() index: string;
 
@@ -64,7 +62,7 @@ export class TdsStep {
   }
 
   render() {
-    const prefixedTagNames = getPrefixedTagNames(this.host);
+    const prefixedTagNames = getPrefixedTagNames(this.el);
 
     return (
       <Host>
