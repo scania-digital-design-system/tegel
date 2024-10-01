@@ -1,10 +1,10 @@
 export const TAG_NAMES = [
   'tds-accordion',
   'tds-badge',
-  'tds-banner',
   'tds-block',
   'tds-breadcrumbs',
   'tds-button',
+  'tds-banner',
   'tds-card',
   'tds-checkbox',
   'tds-chip',
@@ -36,12 +36,13 @@ export const TAG_NAMES = [
   'tds-footer-group',
   'tds-footer-item',
   'tds-core-header-item',
+  'tds-header-dropdown',
   'tds-header-brand-symbol',
   'tds-header-dropdown-list',
   'tds-header-dropdown-list-item',
-  'tds-header-dropdown-list-user',
   'tds-header-hamburger',
-  'tds-header-dropdown',
+  'tds-header-dropdown-list-user',
+  'tds-header-item',
   'tds-header-launcher',
   'tds-header-launcher-button',
   'tds-header-launcher-grid',
@@ -49,16 +50,15 @@ export const TAG_NAMES = [
   'tds-header-launcher-grid-title',
   'tds-header-launcher-list',
   'tds-header-launcher-list-item',
-  'tds-header-item',
-  'tds-header-title',
   'tds-header-launcher-list-title',
+  'tds-header-title',
   'tds-popover-menu-item',
-  'tds-side-menu-close-button',
-  'tds-side-menu-collapse-button',
   'tds-side-menu-dropdown',
+  'tds-side-menu-collapse-button',
+  'tds-side-menu-close-button',
   'tds-side-menu-dropdown-list',
-  'tds-side-menu-dropdown-list-item',
   'tds-side-menu-item',
+  'tds-side-menu-dropdown-list-item',
   'tds-side-menu-overlay',
   'tds-side-menu-user',
   'tds-side-menu-user-image',
@@ -92,10 +92,10 @@ export type TagName = (typeof TAG_NAMES)[number];
 export type TagNameCamelCase =
   | 'tdsAccordion'
   | 'tdsBadge'
-  | 'tdsBanner'
   | 'tdsBlock'
   | 'tdsBreadcrumbs'
   | 'tdsButton'
+  | 'tdsBanner'
   | 'tdsCard'
   | 'tdsCheckbox'
   | 'tdsChip'
@@ -127,12 +127,13 @@ export type TagNameCamelCase =
   | 'tdsFooterGroup'
   | 'tdsFooterItem'
   | 'tdsCoreHeaderItem'
+  | 'tdsHeaderDropdown'
   | 'tdsHeaderBrandSymbol'
   | 'tdsHeaderDropdownList'
   | 'tdsHeaderDropdownListItem'
-  | 'tdsHeaderDropdownListUser'
   | 'tdsHeaderHamburger'
-  | 'tdsHeaderDropdown'
+  | 'tdsHeaderDropdownListUser'
+  | 'tdsHeaderItem'
   | 'tdsHeaderLauncher'
   | 'tdsHeaderLauncherButton'
   | 'tdsHeaderLauncherGrid'
@@ -140,16 +141,15 @@ export type TagNameCamelCase =
   | 'tdsHeaderLauncherGridTitle'
   | 'tdsHeaderLauncherList'
   | 'tdsHeaderLauncherListItem'
-  | 'tdsHeaderItem'
-  | 'tdsHeaderTitle'
   | 'tdsHeaderLauncherListTitle'
+  | 'tdsHeaderTitle'
   | 'tdsPopoverMenuItem'
-  | 'tdsSideMenuCloseButton'
-  | 'tdsSideMenuCollapseButton'
   | 'tdsSideMenuDropdown'
+  | 'tdsSideMenuCollapseButton'
+  | 'tdsSideMenuCloseButton'
   | 'tdsSideMenuDropdownList'
-  | 'tdsSideMenuDropdownListItem'
   | 'tdsSideMenuItem'
+  | 'tdsSideMenuDropdownListItem'
   | 'tdsSideMenuOverlay'
   | 'tdsSideMenuUser'
   | 'tdsSideMenuUserImage'
