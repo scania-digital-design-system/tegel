@@ -32,9 +32,11 @@ export class TdsTableFooter {
   /** Sets the pagination number. */
   @Prop({ reflect: true, mutable: true }) paginationValue: number = 1;
 
+  /** Enable rows per page dropdown */
   @Prop({ reflect: true }) rowsperpage: boolean = true;
 
-  @Prop({ reflect: true }) rowsPerPageValues: number[] = [10, 25, 50];
+  /** Set available rows per page values */
+  @Prop() rowsPerPageValues: number[] = [10, 25, 50];
 
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = null;
@@ -208,8 +210,7 @@ export class TdsTableFooter {
           <td class="tds-table__footer-cell" colSpan={this.columnsNumber}>
             {this.pagination && (
               <div class="tds-table__pagination">
-                <div class="tds-table__row-selector"></div>
-                <div class="tds-table__page-selector">
+                <div class="tds-table__row-selector">
                   {this.rowsperpage && this.rowsPerPageValues?.length > 0 && (
                     <div class="rows-per-page">
                       <p>Rows per page</p>
@@ -229,6 +230,8 @@ export class TdsTableFooter {
                       </tds-dropdown>
                     </div>
                   )}
+                </div>
+                <div class="tds-table__page-selector">
                   <input
                     ref={(element) => (this.inputElement = element)}
                     class="tds-table__page-selector-input"
