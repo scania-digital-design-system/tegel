@@ -19,6 +19,7 @@ _Provide detailed steps for testing, including any necessary setup._
 - [ ] I have updated the documentation (if applicable)
 - [ ] Not breaking production behavior
 - [ ] Behavior available in storybook with documented descriptions (if applicable)
+- [ ] `npm run build-all` without errors
 
 ## **Suggested test steps**
 - [ ] Browser testing (Chrome, Safari, Firefox) 
