@@ -25,7 +25,7 @@ tds-table-body {
 // ODD rows
 tds-table-body.tds-table--zebra-mode-rows-odd {
   tds-table-body-row:nth-child(odd) {
-    background-color: var(--tds-table-zebra-mode);
+    background-color: var(--tds-table-zebra-mode-backround);
   }
 }
 
@@ -38,7 +38,7 @@ tds-table-body.tds-table--zebra-mode-rows-odd {
 // EVEN rows
 tds-table-body.tds-table--zebra-mode-rows-even {
   tds-table-body-row:nth-child(even) {
-    background-color: var(--tds-table-zebra-mode);
+    background-color: var(--tds-table-zebra-mode-backround);
   }
 }
 
@@ -53,14 +53,14 @@ tds-table-body.tds-table--zebra-mode-rows-even {
 // ODD columns
 tds-table-body.tds-table--zebra-mode-columns-odd {
   tds-body-cell:nth-child(odd) {
-    background-color: var(--tds-table-zebra-mode);
+    background-color: var(--tds-table-zebra-mode-backround);
   }
 }
 
 // EVEN columns
 tds-table-body.tds-table--zebra-mode-columns-even {
   tds-body-cell:nth-child(even) {
-    background-color: var(--tds-table-zebra-mode);
+    background-color: var(--tds-table-zebra-mode-backround);
   }
 }
 
