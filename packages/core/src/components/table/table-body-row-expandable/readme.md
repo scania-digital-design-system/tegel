@@ -53,11 +53,12 @@ We recommend fitting your content within the table’s natural size whenever pos
 
 ## Properties
 
-| Property   | Attribute  | Description                                                                                                                               | Type      | Default              |
-| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | --------- | -------------------- |
-| `colSpan`  | `col-span` | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number`  | `null`               |
-| `expanded` | `expanded` | Sets isExpanded state to true or false externally                                                                                         | `boolean` | `undefined`          |
-| `rowId`    | `row-id`   | ID for the table row. Randomly generated if not specified.                                                                                | `string`  | `generateUniqueId()` |
+| Property   | Attribute  | Description                                                                                                                               | Type                 | Default              |
+| ---------- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
+| `colSpan`  | `col-span` | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number`             | `null`               |
+| `expanded` | `expanded` | Sets isExpanded state to true or false externally                                                                                         | `boolean`            | `undefined`          |
+| `overflow` | `overflow` | Controls the overflow behavior of the expandable row content                                                                              | `"auto" \| "hidden"` | `'auto'`             |
+| `rowId`    | `row-id`   | ID for the table row. Randomly generated if not specified.                                                                                | `string`             | `generateUniqueId()` |
 
 
 ## Events
@@ -71,7 +72,7 @@ We recommend fitting your content within the table’s natural size whenever pos
 
 ### `collapse() => Promise<void>`
 
-method to collapse table row
+Method to collapse table row
 
 #### Returns
 
@@ -81,7 +82,7 @@ Type: `Promise<void>`
 
 ### `expand() => Promise<void>`
 
-method to expand table row
+Method to expand table row
 
 #### Returns
 
