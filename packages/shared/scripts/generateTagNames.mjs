@@ -1,6 +1,6 @@
 // Import URL from the 'url' module
 import { fileURLToPath } from 'url';
-import { globby } from 'globby';
+import globby from 'globby';
 
 const fs = await import('fs');
 const path = await import('path');
