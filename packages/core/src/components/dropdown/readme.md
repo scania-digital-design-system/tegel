@@ -112,19 +112,6 @@ Type: `Promise<{ value: string; label: string; }[]>`
 | `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-dropdown --> tds-icon
-  style tds-dropdown fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

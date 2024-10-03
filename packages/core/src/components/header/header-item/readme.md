@@ -20,19 +20,6 @@
 | `"<default>"` | <b>Unnamed slot.</b> For a link or button element. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-header-brand-symbol](../header-brand-symbol)
-
-### Graph
-```mermaid
-graph TD;
-  tds-header-brand-symbol --> tds-header-item
-  style tds-header-item fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

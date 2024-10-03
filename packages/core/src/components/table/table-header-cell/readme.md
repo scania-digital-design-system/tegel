@@ -21,7 +21,7 @@
 
 | Event     | Description                                                                                                                                              | Type                                                                                      |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `tdsSort` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "asc" \| "desc"; }>` |
+| `tdsSort` | Sends unique Table identifier, column key and sorting direction to the tds-table-body component, can also be listened to implement custom-sorting logic. | `CustomEvent<{ tableId: string; columnKey: string; sortingDirection: "desc" \| "asc"; }>` |
 
 
 ## Slots
@@ -30,19 +30,6 @@
 | ------------- | ------------------------------------------- |
 | `"<default>"` | <b>Unnamed slot.</b> For the cell contents. |
 
-
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-header-cell --> tds-icon
-  style tds-header-cell fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

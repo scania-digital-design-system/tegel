@@ -20,19 +20,6 @@
 | `"<default>"` | <b>Unnamed slot.</b> For a link or button element. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-header-launcher-list-item](../header-launcher-list-item)
-
-### Graph
-```mermaid
-graph TD;
-  tds-header-launcher-list-item --> tds-header-dropdown-list-item
-  style tds-header-dropdown-list-item fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
