@@ -13,8 +13,8 @@
 | `pages`             | `pages`            | Sets the number of pages.                                                                                                  | `number`   | `null`         |
 | `pagination`        | `pagination`       | Enable pagination and show pagination controls                                                                             | `boolean`  | `false`        |
 | `paginationValue`   | `pagination-value` | Sets the pagination number.                                                                                                | `number`   | `1`            |
-| `rowsPerPageValues` | --                 |                                                                                                                            | `number[]` | `[10, 25, 50]` |
-| `rowsperpage`       | `rowsperpage`      |                                                                                                                            | `boolean`  | `true`         |
+| `rowsPerPageValues` | --                 | Set available rows per page values                                                                                         | `number[]` | `[10, 25, 50]` |
+| `rowsperpage`       | `rowsperpage`      | Enable rows per page dropdown                                                                                              | `boolean`  | `true`         |
 
 
 ## Events
