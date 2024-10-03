@@ -79,7 +79,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Large', 'Medium', 'Small'],
+      options: ['Large', 'Medium', 'Small', 'Xsmall'],
       table: {
         defaultValue: { summary: 'lg' },
       },
@@ -185,6 +185,7 @@ const sizeLookUp = {
   Large: 'lg',
   Medium: 'md',
   Small: 'sm',
+  Xsmall: 'xs',
 };
 
 const defaultOptionLookUp = {

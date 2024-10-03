@@ -51,7 +51,7 @@ export class TdsDropdown {
   @Prop() placeholder: string;
 
   /** The size of the Dropdown. */
-  @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
+  @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
   /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;

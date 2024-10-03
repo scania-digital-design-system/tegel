@@ -73,6 +73,24 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    rowsPerPageValues: {
+      name: 'Rows per page values',
+      description: 'List of rows per page values',
+      control: {
+        type: 'select',
+        options: ['[5,10,15]', '[20,30,40]', '[100, 220, 303]'],
+      },
+    },
+    rowsPerPage: {
+      name: 'Rows per page',
+      description: 'Show/hide rows per page dropdown in footer',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: true },
+      },
+    },
     noMinWidth: {
       name: 'No minimum width',
       description:
@@ -123,6 +141,8 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
+    rowsPerPage: true,
+    rowsPerPageValues: '[10,25,50]',
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -136,6 +156,8 @@ const PaginationTemplate = ({
   compactDesign,
   responsiveDesign,
   verticalDivider,
+  rowsPerPage,
+  rowsPerPageValues,
   noMinWidth,
   column1Width,
   column2Width,
@@ -203,7 +225,7 @@ const PaginationTemplate = ({
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
           </tds-table-body>
-          <tds-table-footer pages="4" pagination></tds-table-footer>
+          <tds-table-footer pages="4" pagination rowsperpage="${rowsPerPage}"></tds-table-footer>
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->
   <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
@@ -218,6 +240,7 @@ const PaginationTemplate = ({
   
 
   <script>
+    document.querySelector("tds-table-footer").rowsPerPageValues = ${rowsPerPageValues}
     window.addEventListener('tdsPagination', e => {
       document.getElementById('event-name-textarea').value = e.type;
       document.getElementById('event-value-textarea').value = JSON.stringify(e.detail, null, 2);

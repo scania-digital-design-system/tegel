@@ -32,6 +32,12 @@ export class TdsTableFooter {
   /** Sets the pagination number. */
   @Prop({ reflect: true, mutable: true }) paginationValue: number = 1;
 
+  /** Enable rows per page dropdown */
+  @Prop({ reflect: true }) rowsperpage: boolean = true;
+
+  /** Set available rows per page values */
+  @Prop() rowsPerPageValues: number[] = [10, 25, 50];
+
   /** Sets the number of pages. */
   @Prop({ reflect: true }) pages: number = null;
 
@@ -49,6 +55,8 @@ export class TdsTableFooter {
   @State() tableId: string = '';
 
   @State() horizontalScrollWidth: string = null;
+
+  @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
 
   @Element() host: HTMLElement;
 
@@ -68,6 +76,7 @@ export class TdsTableFooter {
   tdsPagination: EventEmitter<{
     tableId: string;
     paginationValue: number;
+    rowsPerPage?: number;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -106,6 +115,21 @@ export class TdsTableFooter {
     }
   }
 
+  private emitTdsPagination = () => {
+    if (this.rowsperpage) {
+      this.tdsPagination.emit({
+        tableId: this.tableId,
+        paginationValue: Number(this.paginationValue),
+        rowsPerPage: this.rowsPerPageValue,
+      });
+    } else {
+      this.tdsPagination.emit({
+        tableId: this.tableId,
+        paginationValue: Number(this.paginationValue),
+      });
+    }
+  };
+
   /* Function to store last valid input */
   private storeLastCorrectValue(value) {
     this.lastCorrectValue = value;
@@ -118,11 +142,7 @@ export class TdsTableFooter {
       this.paginationValue--;
     }
 
-    /* Emits pagination event. */
-    this.tdsPagination.emit({
-      tableId: this.tableId,
-      paginationValue: Number(this.paginationValue),
-    });
+    this.emitTdsPagination();
 
     this.storeLastCorrectValue(this.paginationValue);
   };
@@ -133,12 +153,19 @@ export class TdsTableFooter {
     if (this.paginationValue <= this.pages) {
       this.paginationValue++;
     }
+    this.emitTdsPagination();
+    this.storeLastCorrectValue(this.paginationValue);
+  };
 
-    this.tdsPagination.emit({
-      tableId: this.tableId,
-      paginationValue: Number(this.paginationValue),
-    });
+  private lastPage = () => {
+    this.paginationValue = this.pages;
+    this.emitTdsPagination();
+    this.storeLastCorrectValue(this.paginationValue);
+  };
 
+  private firstPage = () => {
+    this.paginationValue = 1;
+    this.emitTdsPagination();
     this.storeLastCorrectValue(this.paginationValue);
   };
 
@@ -152,12 +179,14 @@ export class TdsTableFooter {
     } else {
       this.paginationValue = insertedValue;
     }
-    this.tdsPagination.emit({
-      tableId: this.tableId,
-      paginationValue: Number(this.paginationValue),
-    });
 
+    this.emitTdsPagination();
     this.storeLastCorrectValue(this.paginationValue);
+  }
+
+  private rowsPerPageChange(event) {
+    this.rowsPerPageValue = parseInt(event.detail.value);
+    this.emitTdsPagination();
   }
 
   private getStyles(): Record<string, string> {
@@ -181,7 +210,27 @@ export class TdsTableFooter {
           <td class="tds-table__footer-cell" colSpan={this.columnsNumber}>
             {this.pagination && (
               <div class="tds-table__pagination">
-                <div class="tds-table__row-selector"></div>
+                <div class="tds-table__row-selector">
+                  {this.rowsperpage && this.rowsPerPageValues?.length > 0 && (
+                    <div class="rows-per-page">
+                      <p>Rows per page</p>
+                      <tds-dropdown
+                        modeVariant="secondary"
+                        id="rows-dropdown"
+                        class="page-dropdown"
+                        size="xs"
+                        defaultValue={`${this.rowsPerPageValues[0]}`}
+                        onTdsChange={(event) => this.rowsPerPageChange(event)}
+                      >
+                        {this.rowsPerPageValues.map((value) => {
+                          return (
+                            <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
+                          );
+                        })}
+                      </tds-dropdown>
+                    </div>
+                  )}
+                </div>
                 <div class="tds-table__page-selector">
                   <input
                     ref={(element) => (this.inputElement = element)}
@@ -202,6 +251,14 @@ export class TdsTableFooter {
                     type="button"
                     class="tds-table__footer-btn"
                     disabled={this.paginationValue <= 1}
+                    onClick={() => this.firstPage()}
+                  >
+                    <tds-icon name="skip_backwards" size="20px"></tds-icon>
+                  </button>
+                  <button
+                    type="button"
+                    class="tds-table__footer-btn"
+                    disabled={this.paginationValue <= 1}
                     onClick={() => this.previousPage()}
                   >
                     <tds-icon name="chevron_left" size="20px"></tds-icon>
@@ -213,6 +270,14 @@ export class TdsTableFooter {
                     onClick={() => this.nextPage()}
                   >
                     <tds-icon name="chevron_right" size="20px"></tds-icon>
+                  </button>
+                  <button
+                    type="button"
+                    class="tds-table__footer-btn"
+                    disabled={this.paginationValue >= this.pages}
+                    onClick={() => this.lastPage()}
+                  >
+                    <tds-icon name="skip_forward" size="20px"></tds-icon>
                   </button>
                 </div>
               </div>

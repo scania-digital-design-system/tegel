@@ -42,6 +42,10 @@
         padding: 11px 0 12px;
       }
 
+      &.xs {
+        padding: 7px 0 8px;
+      }
+
       .single-select {
         display: flex;
         align-items: center;
@@ -70,6 +74,11 @@
         &.sm {
           padding: 7px 16px 8px;
         }
+
+        &.xs {
+          padding: 7px 16px 8px;
+        }
+
       }
     }
 
