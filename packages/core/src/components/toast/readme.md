@@ -57,19 +57,6 @@ Type: `Promise<void>`
 | `"subheader"` | Slot for the Toast subheader.                      |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-toast --> tds-icon
-  style tds-toast fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

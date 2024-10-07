@@ -23,6 +23,7 @@ import {
 } from 'date-fns';
 import { TdsTextFieldCustomEvent } from '../../../../index';
 import generateUniqueId from '../../../../utils/generateUniqueId';
+import { getPrefixedTagNames } from '../../../../utils/tagName';
 
 @Component({
   tag: 'tds-date-picker',
@@ -309,9 +310,9 @@ export class TdsDatePicker {
     isAfter(date, parse(this.max, this.getFormat(), new Date()));
 
   /** Returns the HTML structure for Days */
-  private getDayHTML() {
+  private getDayHTML(prefixedTagNames) {
     return this.days.map((day: Date) => (
-      <date-picker-day
+      <prefixedTagNames.tdsDatePickerDay
         key={day.getDate()}
         onClick={() => {
           if (!this.shouldDateBeDisabled(day)) {
@@ -322,14 +323,14 @@ export class TdsDatePicker {
         date={day}
         selected={format(day, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(day)}
-      ></date-picker-day>
+      ></prefixedTagNames.tdsDatePickerDay>
     ));
   }
 
   /** Returns the HTML structure for Months */
-  private getMonthHTML() {
+  private getMonthHTML(prefixedTagNames) {
     return this.months.map((month: Date) => (
-      <date-picker-month
+      <prefixedTagNames.tdsDatePickerMonth
         key={month.getDate()}
         onClick={() => {
           if (!this.shouldDateBeDisabled(month)) {
@@ -340,14 +341,14 @@ export class TdsDatePicker {
         selected={format(month, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(month)}
         locale={this.locale}
-      ></date-picker-month>
+      ></prefixedTagNames.tdsDatePickerMonth>
     ));
   }
 
   /** Returns the HTML structure for Years */
-  private getYearHTML() {
+  private getYearHTML(prefixedTagNames) {
     return this.years.map((year: Date) => (
-      <date-picker-year
+      <prefixedTagNames.tdsDatePickerYear
         key={year.getDate()}
         onClick={() => {
           if (!this.shouldDateBeDisabled(year)) {
@@ -357,11 +358,13 @@ export class TdsDatePicker {
         year={year}
         selected={format(year, this.getFormat()) === this.value}
         disabled={this.shouldDateBeDisabled(year)}
-      ></date-picker-year>
+      ></prefixedTagNames.tdsDatePickerYear>
     ));
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <div
         class={{
@@ -371,7 +374,7 @@ export class TdsDatePicker {
         }}
       >
         <div id="haha">
-          <tds-text-field
+          <prefixedTagNames.tdsTextField
             state={this.state}
             label={this.label}
             labelPosition={this.labelPosition}
@@ -381,17 +384,17 @@ export class TdsDatePicker {
             placeholder={this.getPlaceHolder()}
             value={this.value}
           >
-            <tds-icon
+            <prefixedTagNames.tdsIcon
               style={{
                 color: 'var(--tds-date-picker-input-icon)',
               }}
               name="calendar"
               size="16px"
               slot="suffix"
-            ></tds-icon>
-          </tds-text-field>
+            ></prefixedTagNames.tdsIcon>
+          </prefixedTagNames.tdsTextField>
         </div>
-        <tds-popover-core
+        <prefixedTagNames.tdsPopoverCore
           style={{
             backgroundColor: 'var(--tds-date-picker-calendar-bg)',
           }}
@@ -401,16 +404,20 @@ export class TdsDatePicker {
         >
           <div class="controls">
             <button class="previous" onClick={this.getPrevious}>
-              <tds-icon
+              <prefixedTagNames.tdsIcon
                 onClick={this.getPrevious}
                 slot="icon"
                 name="chevron_left"
                 size="20px"
-              ></tds-icon>
+              ></prefixedTagNames.tdsIcon>
             </button>
             <div class="calendar-display">{this.getControlsDisplayText()}</div>
             <button class="next" onClick={this.getNext}>
-              <tds-icon slot="icon" name="chevron_right" size="20px"></tds-icon>
+              <prefixedTagNames.tdsIcon
+                slot="icon"
+                name="chevron_right"
+                size="20px"
+              ></prefixedTagNames.tdsIcon>
             </button>{' '}
           </div>
           <div
@@ -425,11 +432,11 @@ export class TdsDatePicker {
                   {label}
                 </div>
               ))}
-            {this.variant === 'day' && this.getDayHTML()}
-            {this.variant === 'month' && this.getMonthHTML()}
-            {this.variant === 'year' && this.getYearHTML()}
+            {this.variant === 'day' && this.getDayHTML(prefixedTagNames)}
+            {this.variant === 'month' && this.getMonthHTML(prefixedTagNames)}
+            {this.variant === 'year' && this.getYearHTML(prefixedTagNames)}
           </div>
-        </tds-popover-core>
+        </prefixedTagNames.tdsPopoverCore>
       </div>
     );
   }

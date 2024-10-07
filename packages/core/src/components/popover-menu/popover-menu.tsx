@@ -2,6 +2,7 @@ import { Component, Host, h, Prop, Element, State, Method } from '@stencil/core'
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the list of menu items.
@@ -53,9 +54,10 @@ export class TdsPopoverMenu {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host>
-        <tds-popover-core
+        <prefixedTagNames.tdsPopoverCore
           class={{
             'tds-popover-menu': true,
             [this.inheritedAttributes.class ?? '']: true,
@@ -74,7 +76,7 @@ export class TdsPopoverMenu {
           <div role="list">
             <slot></slot>
           </div>
-        </tds-popover-core>
+        </prefixedTagNames.tdsPopoverCore>
       </Host>
     );
   }

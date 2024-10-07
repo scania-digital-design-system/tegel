@@ -44,19 +44,6 @@ Type: `Promise<void>`
 | `"header"`    | Slot for the Accordion Item header.                        |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-accordion-item --> tds-icon
-  style tds-accordion-item fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

@@ -22,21 +22,6 @@
 | `"<default>"` | <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-side-menu-user-image](../side-menu-user-image)
-- [tds-side-menu-user-label](../side-menu-user-label)
-
-### Graph
-```mermaid
-graph TD;
-  tds-side-menu-user --> tds-side-menu-user-image
-  tds-side-menu-user --> tds-side-menu-user-label
-  style tds-side-menu-user fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

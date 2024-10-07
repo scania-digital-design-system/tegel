@@ -1,4 +1,5 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Method, Prop, Element } from '@stencil/core';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For content of an expanded accordion.
@@ -11,6 +12,8 @@ import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/
   shadow: true,
 })
 export class TdsAccordionItem {
+  @Element() host: HTMLElement;
+
   /** The header gives users the context about the additional information available inside the panel */
   @Prop() header: string = '';
 
@@ -50,6 +53,8 @@ export class TdsAccordionItem {
   }>;
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <div
@@ -70,7 +75,7 @@ export class TdsAccordionItem {
               <slot name="header"></slot>
             </div>
             <div class="tds-accordion-icon">
-              <tds-icon name="chevron_down" size="16px"></tds-icon>
+              <prefixedTagNames.tdsIcon name="chevron_down" size="16px"></prefixedTagNames.tdsIcon>
             </div>
           </button>
           <div

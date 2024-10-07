@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 import { Attributes } from '../../../types/Attributes';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 @Component({
   tag: 'tds-header-launcher-button',
@@ -17,6 +18,8 @@ export class TdsHeaderLauncherButton {
   private ariaAttributes: Attributes;
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     this.ariaAttributes = { ...this.ariaAttributes, ...inheritAriaAttributes(this.host) };
     const buttonProps = {
       ...this.ariaAttributes,
@@ -24,11 +27,15 @@ export class TdsHeaderLauncherButton {
 
     return (
       <Host>
-        <tds-header-item active={this.active}>
+        <prefixedTagNames.tdsHeaderItem active={this.active}>
           <button {...buttonProps}>
-            <tds-icon class="icon" name="bento" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon
+              class="icon"
+              name="bento"
+              size="20px"
+            ></prefixedTagNames.tdsIcon>
           </button>
-        </tds-header-item>
+        </prefixedTagNames.tdsHeaderItem>
       </Host>
     );
   }

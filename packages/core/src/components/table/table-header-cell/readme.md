@@ -31,19 +31,6 @@
 | `"<default>"` | <b>Unnamed slot.</b> For the cell contents. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-header-cell --> tds-icon
-  style tds-header-cell fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
