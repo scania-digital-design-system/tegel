@@ -66,8 +66,11 @@
     .tds-table__cell-expand {
       max-width: 1px;
       overflow: auto;
-      padding: 16px 16px 16px 66px;
       color: var(--tds-table-color);
+
+      &--padding-enabled {
+        padding: 16px 16px 16px 66px;
+      }
     }
   }
 }
