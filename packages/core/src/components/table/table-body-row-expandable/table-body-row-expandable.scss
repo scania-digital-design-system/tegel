@@ -100,7 +100,9 @@
 
   .tds-table__row-expand {
     .tds-table__cell-expand {
-      padding: 8px 16px 8px 66px;
+      &--padding-enabled {
+        padding: 8px 16px 8px 66px;
+      }
     }
   }
 }
