@@ -2,7 +2,11 @@ import { Component, Element, h, Host, Listen, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
 
-const relevantTableProps: InternalTdsTablePropChange['changed'] = ['multiselect', 'expandableRows'];
+const relevantTableProps: InternalTdsTablePropChange['changed'] = [
+  'multiselect',
+  'expandableRows',
+  'zebraMode',
+];
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For table rows.
@@ -28,6 +32,8 @@ export class TdsTableBody {
   @State() mainCheckboxStatus: boolean = false;
 
   @State() columnsNumber: number = 0;
+
+  @State() zebraMode: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none' = 'none';
 
   @State() tableId: string = '';
 
@@ -88,7 +94,15 @@ export class TdsTableBody {
 
   render() {
     return (
-      <Host data-selected-rows={this.multiselectArrayJSON}>
+      <Host
+        data-selected-rows={this.multiselectArrayJSON}
+        class={{
+          'tds-table--zebra-mode-rows-odd': this.zebraMode === 'rows-odd',
+          'tds-table--zebra-mode-rows-even': this.zebraMode === 'rows-even',
+          'tds-table--zebra-mode-columns-odd': this.zebraMode === 'columns-odd',
+          'tds-table--zebra-mode-columns-even': this.zebraMode === 'columns-even',
+        }}
+      >
         <slot></slot>
       </Host>
     );

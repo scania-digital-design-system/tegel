@@ -39,15 +39,16 @@ export class TdsTableBodyRowExpandable {
    *  Take in mind that expandable control is column too */
   @Prop() colSpan: number = null;
 
-  /** Sets default expanded value of row */
-
   /** ID for the table row. Randomly generated if not specified. */
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
 
   /** Sets isExpanded state to true or false externally */
   @Prop({ reflect: true }) expanded: boolean;
 
-  /** Sets isExpanded state to true or fals internally */
+  /** Controls the overflow behavior of the expandable row content */
+  @Prop({ reflect: true }) overflow: 'auto' | 'hidden' = 'auto';
+
+  /** Sets isExpanded state to true or false internally */
   @State() isExpanded: boolean = false;
 
   @State() tableId: string = '';
@@ -109,14 +110,14 @@ export class TdsTableBodyRowExpandable {
     }
   }
 
-  /** method to expand table row */
+  /** Method to expand table row */
   @Method()
   async expand() {
     this.isExpanded = true;
     this.tdsChange.emit({ rowId: this.rowId, isExpanded: this.isExpanded });
   }
 
-  /** method to collapse table row */
+  /** Method to collapse table row */
   @Method()
   async collapse() {
     this.isExpanded = false;
@@ -205,7 +206,13 @@ export class TdsTableBodyRowExpandable {
           part="expand-row"
         >
           <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
-            <slot name="expand-row" />
+            <div
+              style={{
+                overflow: this.overflow,
+              }}
+            >
+              <slot name="expand-row" />
+            </div>
           </td>
         </tr>
       </Host>

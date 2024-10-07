@@ -18,6 +18,11 @@
   .tds-mode-variant-secondary {
     --tds-dropdown-bg: var(--tds-white);
   }
+
+  tds-table-footer {
+    --tds-dropdown-bg: transparent;
+    --tds-placeholder-margin: var(--tds-spacing-element-8);
+  }
 }
 
 .tds-mode-dark {
@@ -38,5 +43,10 @@
 
   .tds-mode-variant-secondary {
     --tds-dropdown-bg: var(--tds-grey-900);
+  }
+
+  tds-table-footer {
+    --tds-dropdown-bg: transparent;
+    --tds-placeholder-margin: var(--tds-spacing-element-8);
   }
 }

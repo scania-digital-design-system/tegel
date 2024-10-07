@@ -52,6 +52,10 @@
         display: none;
       }
 
+      &.xs {
+        display: none;
+      }
+
       & + .placeholder:not(.sm) {
         margin-top: 8px;
       }
@@ -61,6 +65,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      margin-right: var(--tds-placeholder-margin);
     }
 
     .label-inside-as-placeholder {
@@ -100,6 +105,10 @@
 
     &.sm {
       height: 39px;
+    }
+
+    &.xs {
+      height: 29px;
     }
   }
 
@@ -145,6 +154,10 @@
       max-height: 260px;
     }
 
+    &.xs {
+      max-height: 260px;
+    }
+
     &.up {
       bottom: 100%;
       margin-top: 0;
@@ -186,6 +199,10 @@
       }
 
       &.sm {
+        height: 40px;
+      }
+
+      &.xs {
         height: 40px;
       }
     }

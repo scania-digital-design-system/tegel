@@ -25,6 +25,7 @@ type Props = {
   modeVariant: 'primary' | 'secondary' | null;
   textAlign: string;
   horizontalScrollWidth?: string;
+  zebraMode: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none';
 };
 
 export type InternalTdsTablePropChange = {
@@ -64,6 +65,14 @@ export class TdsTable {
 
   /** Variant of the component, based on current mode. */
   @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = null;
+
+  /** Enables zebra stripe mode on the table rows or columns. */
+  @Prop({ reflect: true }) zebraMode:
+    | 'rows-odd'
+    | 'rows-even'
+    | 'columns-odd'
+    | 'columns-even'
+    | 'none' = 'none';
 
   /** Width of the table, used as the constraint for horizontal scrolling.
    * **NOTE**: this will disable usage of the responsive flag
@@ -161,6 +170,11 @@ export class TdsTable {
   @Watch('noMinWidth')
   noMinWidthChanged(newValue: boolean) {
     this.emitInternalTdsPropChange('noMinWidth', newValue);
+  }
+
+  @Watch('zebraMode')
+  zebraModeChanged(newValue: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none') {
+    this.emitInternalTdsPropChange('zebraMode', newValue);
   }
 
   @Watch('modeVariant')
