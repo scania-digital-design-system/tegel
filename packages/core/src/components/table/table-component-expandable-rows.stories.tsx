@@ -59,6 +59,16 @@ export default {
         type: 'boolean',
       },
     },
+    expandedPaddingEnabled: {
+      name: 'Expanded padding enabled',
+      description: 'Determines whether padding is enabled for the expanded area.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: true },
+      },
+    },
     responsiveDesign: {
       name: 'Responsive Table',
       description:
@@ -137,6 +147,7 @@ export default {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
     expanded: false,
+    expandedPaddingEnabled: true,
     responsiveDesign: false,
     verticalDivider: false,
     noMinWidth: false,
@@ -152,6 +163,7 @@ const ExpandableRowTemplate = ({
   modeVariant,
   compactDesign,
   expanded,
+  expandedPaddingEnabled,
   responsiveDesign,
   verticalDivider,
   noMinWidth,
@@ -185,28 +197,28 @@ const ExpandableRowTemplate = ({
           }></tds-header-cell>
       </tds-table-header>
       <tds-table-body>
-        <tds-table-body-row-expandable expanded=${expanded} row-id="1">
+        <tds-table-body-row-expandable expanded=${expanded} expanded-padding-enabled=${expandedPaddingEnabled} row-id="1">
           <tds-body-cell cell-value="Test value 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 3" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 4" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row">Hello world 1</div>
         </tds-table-body-row-expandable>
-         <tds-table-body-row-expandable row-id="2">
+         <tds-table-body-row-expandable expanded-padding-enabled=${expandedPaddingEnabled} row-id="2">
           <tds-body-cell cell-value="Test value 5" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 6" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 7" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row">Hello to you too</div>
         </tds-table-body-row-expandable>
-        <tds-table-body-row-expandable>
+        <tds-table-body-row-expandable expanded-padding-enabled=${expandedPaddingEnabled}>
           <tds-body-cell cell-value="Test value 9" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 10" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 11" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 12" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row"><tds-button type="primary" text="Call to action"></tds-button></div>
         </tds-table-body-row-expandable>
-        <tds-table-body-row-expandable expanded="${expanded}" overflow="${overflow}" row-id="1">
+        <tds-table-body-row-expandable expanded="${expanded}" expanded-padding-enabled=${expandedPaddingEnabled} overflow="${overflow}" row-id="1">
           <tds-body-cell cell-value="Demo overflow 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 3" cell-key="country"></tds-body-cell>
@@ -224,7 +236,7 @@ const ExpandableRowTemplate = ({
   <script>
 
   tableRowElementAll = document.querySelectorAll("tds-table-body-row-expandable");
- 
+
   for (let i = 0; i < tableRowElementAll.length; i++) {
     tableRowElementAll[i].addEventListener("tdsChange", (event) => {
       console.log("Row with id: ", event.detail.rowId, " is ", event.detail.isExpanded);
