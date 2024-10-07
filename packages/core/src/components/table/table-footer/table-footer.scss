@@ -24,6 +24,16 @@
       .tds-table__page-selector {
         display: flex;
         align-items: center;
+
+        .rows-per-page {
+          display: flex;
+          align-items: center;
+          margin-right: 16px;
+
+          p {
+            margin-right: 8px;
+          }
+        }
       }
 
       .tds-table__page-selector-input {

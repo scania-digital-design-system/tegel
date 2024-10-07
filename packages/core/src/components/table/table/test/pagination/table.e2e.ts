@@ -48,15 +48,40 @@ test.describe.parallel('tds-table-pagination', () => {
     await expect(tableFooterRightChevronButton).not.toHaveAttribute('disabled');
   });
 
-  test('footer contains buttons that are clickable and change value in input', async ({ page }) => {
+  test('Footer contains buttons that are clickable and change value in input', async ({ page }) => {
     await page.goto(componentTestPath);
     const tableFooterPaginationSpinbutton = page.getByRole('spinbutton');
     await expect(tableFooterPaginationSpinbutton).toHaveValue('1');
-    const tableFooterRightChevronButton = page.getByRole('button').last();
+    const tableFooterRightChevronButton = page.getByRole('button').nth(2);
     await tableFooterRightChevronButton.click();
     await expect(tableFooterPaginationSpinbutton).toHaveValue('2');
-    const tableFooterLeftChevronButton = page.getByRole('button').first();
+    const tableFooterLeftChevronButton = page.getByRole('button').nth(1);
     await tableFooterLeftChevronButton.click();
     await expect(tableFooterPaginationSpinbutton).toHaveValue('1');
+  });
+
+  test('Footer contains skip to last and first page buttons that are clickable', async ({
+    page,
+  }) => {
+    await page.goto(componentTestPath);
+    const tableFooterPaginationSpinbutton = page.getByRole('spinbutton');
+    await expect(tableFooterPaginationSpinbutton).toHaveValue('1');
+    const tableFooterRightSkipForwardButton = page.getByRole('button').nth(3);
+    await tableFooterRightSkipForwardButton.click();
+    await expect(tableFooterPaginationSpinbutton).toHaveValue('4');
+    const tableFooterLeftSkitBackwardsButton = page.getByRole('button').first();
+    await tableFooterLeftSkitBackwardsButton.click();
+    await expect(tableFooterPaginationSpinbutton).toHaveValue('1');
+  });
+
+  test('Footer contains rowsperpage dropdown and text', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const tableFooterOfPagesText = page.getByText(/Rows per page/);
+    await expect(tableFooterOfPagesText).toHaveCount(1);
+    await expect(tableFooterOfPagesText).toBeVisible();
+
+    const dropdown = page.locator('tds-dropdown');
+    await expect(dropdown).toHaveCount(1);
+    await expect(dropdown).toBeVisible();
   });
 });

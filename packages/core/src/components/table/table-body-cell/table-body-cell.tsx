@@ -37,8 +37,6 @@ export class TdsTableBodyCell {
 
   @State() noMinWidth: boolean = false;
 
-  @State() whiteBackground: boolean = false;
-
   @State() tableId: string = '';
 
   @Element() host: HTMLElement;

@@ -35,7 +35,7 @@ export class TdsDropdownOption {
 
   @State() multiselect: boolean;
 
-  @State() size: 'sm' | 'md' | 'lg' = 'lg';
+  @State() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
   private parentElement: HTMLTdsDropdownElement;
 

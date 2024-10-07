@@ -48,6 +48,26 @@ Type: `Promise<void>`
 | `"<default>"` | <b>Unnamed slot.</b> For the option label text. |
 
 
+## Dependencies
+
+### Used by
+
+ - [tds-table-footer](../../table/table-footer)
+
+### Depends on
+
+- [tds-checkbox](../../checkbox)
+- [tds-icon](../../icon)
+
+### Graph
+```mermaid
+graph TD;
+  tds-dropdown-option --> tds-checkbox
+  tds-dropdown-option --> tds-icon
+  tds-table-footer --> tds-dropdown-option
+  style tds-dropdown-option fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
