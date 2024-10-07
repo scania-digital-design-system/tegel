@@ -45,6 +45,9 @@ export class TdsTableBodyRowExpandable {
   /** Sets isExpanded state to true or false externally */
   @Prop({ reflect: true }) expanded: boolean;
 
+  /** Determines whether padding is enabled for the expanded area */
+  @Prop({ reflect: true }) expandedPaddingEnabled: boolean = true;
+
   /** Controls the overflow behavior of the expandable row content */
   @Prop({ reflect: true }) overflow: 'auto' | 'hidden' = 'auto';
 
@@ -205,7 +208,13 @@ export class TdsTableBodyRowExpandable {
           }}
           part="expand-row"
         >
-          <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
+          <td
+            class={{
+              'tds-table__cell-expand': true,
+              'tds-table__cell-expand--padding-enabled': this.expandedPaddingEnabled,
+            }}
+            colSpan={this.columnsNumber}
+          >
             <div
               style={{
                 overflow: this.overflow,
