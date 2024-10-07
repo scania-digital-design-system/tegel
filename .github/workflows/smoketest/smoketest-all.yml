@@ -1,0 +1,214 @@
+name: Manual Release (All packages)
+on:
+  workflow_dispatch:
+    inputs:
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '20.9.0'
+        type: string
+
+      tags:
+        description: 'Tag'
+        required: true
+        default: 'latest'
+        type: choice
+        options:
+          - latest
+          - beta
+          - dev
+
+      dryRun:
+        description: 'Dry run'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  smoketest-core:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/core
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - Read Package.json Version
+        id: version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm install
+
+      - name: Core - Run build
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run build
+
+  smoketest-angular:
+    needs: smoketest-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Angular - Read package.json Version
+        id: version
+        working-directory: packages/angular
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular - Install
+        working-directory: packages/angular
+        run: npm install
+
+      - name: Angular - Install latest tegel package
+        working-directory: packages/angular
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Angular - Run build
+        run: npm run build-angular
+
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  smoketest-angular-17:
+    needs: smoketest-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular-17
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Angular-17 - Read package.json Version
+        id: version
+        working-directory: packages/angular-17/projects/components
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular-17 workspace - Install
+        working-directory: packages/angular-17
+        run: npm install
+
+      - name: Angular-17 wrapper - Install
+        working-directory: packages/angular-17/projects/components
+        run: npm install
+
+      - name: Angular-17 workspace - Install latest tegel package
+        working-directory: packages/angular-17
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Angular-17 wrapper - Install latest tegel package
+        working-directory: packages/angular-17/projects/components
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Angular-17 - Run build
+        run: npm run build-angular-17
+
+  smoketest-react:
+    needs: smoketest-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/react
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: React - Read package.json Version
+        id: version
+        working-directory: packages/react
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: React - Install
+        working-directory: packages/react
+        run: npm install
+
+      - name: React - Install latest tegel package
+        working-directory: packages/react
+        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: React - Build
+        run: npm run build-react
+
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  on-failure:
+    needs: [smoketest-core, smoketest-angular, smoketest-angular-17, smoketest-react]
+    runs-on: ubuntu-latest
+    if: always() && (needs.smoketest-core.result == 'failure' || needs.smoketest-angular.result == 'failure' || needs.smoketest-angular-17.result == 'failure' || needs.smoketest-react.result == 'failure')
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
