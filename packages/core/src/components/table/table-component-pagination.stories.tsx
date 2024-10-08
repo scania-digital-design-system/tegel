@@ -88,10 +88,9 @@ export default {
         type: 'number',
         min: 1,
         max: 1000,
+
       },
-      table: {
-        defaultValue: { summary: 4 },
-      },
+
     },
     rowsPerPage: {
       name: 'Rows per page',
@@ -155,6 +154,7 @@ export default {
     verticalDivider: false,
     rowsPerPage: true,
     rowsPerPageValues: '[10,25,50]',
+    pages: 4,
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
