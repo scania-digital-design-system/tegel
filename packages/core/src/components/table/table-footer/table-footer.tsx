@@ -8,7 +8,6 @@ import {
   EventEmitter,
   Prop,
   Element,
-  Watch,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 
@@ -92,12 +91,6 @@ export class TdsTableFooter {
           this[changedProp] = event.detail[changedProp];
         });
     }
-  }
-
-  @Watch('pages')
-  onPagesChanged() {
-    this.paginationValue = 1;
-    this.emitTdsPagination();
   }
 
   connectedCallback() {
@@ -193,6 +186,9 @@ export class TdsTableFooter {
 
   private rowsPerPageChange(event) {
     this.rowsPerPageValue = parseInt(event.detail.value);
+    if (this.paginationValue > this.pages) {
+      this.paginationValue = this.pages;
+    }
     this.emitTdsPagination();
   }
 

@@ -88,9 +88,7 @@ export default {
         type: 'number',
         min: 1,
         max: 1000,
-
       },
-
     },
     rowsPerPage: {
       name: 'Rows per page',
