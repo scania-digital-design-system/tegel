@@ -1,10 +1,12 @@
-name: Smoke test (all)
+name: Scheduled Release Smoke Test
+
 on:
   schedule:
-    - cron: '0 0 * * *' # Runs daily at 00:00 UTC
+    # Runs every other Monday at 9:00 AM UTC
+    - cron: '0 9 */14 * *'
 
 jobs:
-  smoketest-core:
+  release-core:
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/core
@@ -17,7 +19,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: '20.9.0' # You can change this to any fixed version if needed
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
@@ -39,8 +41,14 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
 
-  smoketest-angular:
-    needs: smoketest-core
+      - name: Core - Publish (dry-run)
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm publish --tag latest --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release-angular:
+    needs: release-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular
@@ -53,7 +61,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: '20.9.0'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
@@ -67,10 +75,6 @@ jobs:
       - name: Install dependencies in root
         run: npm install
 
-      - name: Core - Install
-        working-directory: packages/core
-        run: npm install
-
       - name: Angular - Install
         working-directory: packages/angular
         run: npm install
@@ -82,11 +86,14 @@ jobs:
       - name: Angular - Run build
         run: npm run build-angular
 
-    outputs:
-      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+      - name: Angular - Publish (dry-run)
+        working-directory: packages/angular
+        run: npm publish --tag latest --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  smoketest-angular-17:
-    needs: smoketest-core
+  release-angular-17:
+    needs: release-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular-17
@@ -99,7 +106,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: '20.9.0'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
@@ -111,10 +118,6 @@ jobs:
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
-        run: npm install
-
-      - name: Core - Install
-        working-directory: packages/core
         run: npm install
 
       - name: Angular-17 workspace - Install
@@ -136,8 +139,14 @@ jobs:
       - name: Angular-17 - Run build
         run: npm run build-angular-17
 
-  smoketest-react:
-    needs: smoketest-core
+      - name: Angular-17 - Publish (dry-run)
+        working-directory: packages/angular-17/dist/components
+        run: npm publish --tag latest --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release-react:
+    needs: release-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/react
@@ -150,7 +159,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: '20.9.0'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
@@ -164,10 +173,6 @@ jobs:
       - name: Install dependencies in root
         run: npm install
 
-      - name: Core - Install
-        working-directory: packages/core
-        run: npm install
-
       - name: React - Install
         working-directory: packages/react
         run: npm install
@@ -179,15 +184,17 @@ jobs:
       - name: React - Build
         run: npm run build-react
 
-    outputs:
-      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+      - name: React - Publish (dry-run)
+        working-directory: packages/react
+        run: npm publish --tag latest --dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-  on-failure:
-    needs: [smoketest-core, smoketest-angular, smoketest-angular-17, smoketest-react]
+  # Check that all jobs pass
+  check-results:
+    needs: [release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: always() && (needs.smoketest-core.result == 'failure' || needs.smoketest-angular.result == 'failure' || needs.smoketest-angular-17.result == 'failure' || needs.smoketest-react.result == 'failure')
     steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          ref: develop
+      - name: Check results
+        run: |
+          echo "All previous jobs have completed successfully!"
