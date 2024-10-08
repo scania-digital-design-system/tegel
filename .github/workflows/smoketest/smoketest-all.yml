@@ -1,28 +1,7 @@
-name: Manual Release (All packages)
+name: Smoke test (all)
 on:
-  workflow_dispatch:
-    inputs:
-      nodeVersion:
-        description: 'Node version'
-        required: true
-        default: '20.9.0'
-        type: string
-
-      tags:
-        description: 'Tag'
-        required: true
-        default: 'latest'
-        type: choice
-        options:
-          - latest
-          - beta
-          - dev
-
-      dryRun:
-        description: 'Dry run'
-        required: false
-        default: false
-        type: boolean
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at 00:00 UTC
 
 jobs:
   smoketest-core:
