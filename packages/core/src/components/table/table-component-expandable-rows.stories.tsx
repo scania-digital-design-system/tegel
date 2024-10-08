@@ -130,7 +130,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['auto', 'hidden'],
+      options: ['auto', 'hidden', 'visible'],
     },
   },
   args: {
@@ -224,7 +224,7 @@ const ExpandableRowTemplate = ({
   <script>
 
   tableRowElementAll = document.querySelectorAll("tds-table-body-row-expandable");
- 
+
   for (let i = 0; i < tableRowElementAll.length; i++) {
     tableRowElementAll[i].addEventListener("tdsChange", (event) => {
       console.log("Row with id: ", event.detail.rowId, " is ", event.detail.isExpanded);
