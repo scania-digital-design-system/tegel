@@ -279,7 +279,7 @@ const BasicTemplate = ({
   <!-- The script below is just for demo purposes -->
   <script>
     // Select all rows
-    const rows = document.querySelectorAll('tds-table-body-row');
+    let rows = document.querySelectorAll('tds-table-body-row');
 
     // Add event listener to all rows
     rows.forEach(row => {
