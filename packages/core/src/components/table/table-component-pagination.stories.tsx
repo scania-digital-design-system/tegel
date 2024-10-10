@@ -81,6 +81,15 @@ export default {
         options: ['[5,10,15]', '[20,30,40]', '[100, 220, 303]'],
       },
     },
+    pages: {
+      name: 'Pages',
+      description: 'Number of pages',
+      control: {
+        type: 'number',
+        min: 1,
+        max: 1000,
+      },
+    },
     rowsPerPage: {
       name: 'Rows per page',
       description: 'Show/hide rows per page dropdown in footer',
@@ -143,6 +152,7 @@ export default {
     verticalDivider: false,
     rowsPerPage: true,
     rowsPerPageValues: '[10,25,50]',
+    pages: 4,
     noMinWidth: false,
     column1Width: '',
     column2Width: '',
@@ -158,6 +168,7 @@ const PaginationTemplate = ({
   verticalDivider,
   rowsPerPage,
   rowsPerPageValues,
+  pages,
   noMinWidth,
   column1Width,
   column2Width,
@@ -225,7 +236,7 @@ const PaginationTemplate = ({
                 <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
             </tds-table-body-row>
           </tds-table-body>
-          <tds-table-footer pages="4" pagination rowsperpage="${rowsPerPage}"></tds-table-footer>
+          <tds-table-footer pages="${pages}" pagination rowsperpage="${rowsPerPage}"></tds-table-footer>
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->
   <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
