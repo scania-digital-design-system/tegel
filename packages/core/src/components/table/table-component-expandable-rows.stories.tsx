@@ -190,7 +190,7 @@ const ExpandableRowTemplate = ({
     compact-design="${compactDesign}"
     responsive="${responsiveDesign}"
     ${noMinWidth ? 'no-min-width' : ''}
-    ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+    ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant?.toLowerCase()}"` : ''}
     >
       <tds-table-header>
           <tds-header-cell cell-key='truck' cell-value='Truck type' ${
