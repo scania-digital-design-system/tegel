@@ -24,7 +24,7 @@ test.describe.parallel('tds-table-expandable-row-autoCollapse', () => {
     await expect(firstRow.locator('div[slot="expand-row"]')).toBeVisible();
     await expect(secondRow.locator('div[slot="expand-row"]')).toBeHidden();
     await expect(thirdRow.locator('div[slot="expand-row"]')).toBeHidden();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
     // Expand the second row by clicking on the label
     const secondExpandLabel = secondRow.locator('td > label');
@@ -43,6 +43,6 @@ test.describe.parallel('tds-table-expandable-row-autoCollapse', () => {
     await expect(secondRow.locator('div[slot="expand-row"]')).toBeHidden();
     // The third row should be expanded
     await expect(thirdRow.locator('div[slot="expand-row"]')).toBeVisible();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
