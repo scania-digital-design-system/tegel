@@ -72,6 +72,8 @@ export class TdsTableBodyRow {
     bubbles: true,
   })
   tdsClick: EventEmitter<{
+    // return clickevent
+    event: MouseEvent;
     tableId: string;
     rowIndex: number;
   }>;
@@ -85,10 +87,11 @@ export class TdsTableBodyRow {
     });
   }
 
-  handleRowClick() {
+  handleRowClick(e) {
     const rowIndex = Array.from(this.host.parentElement.children).indexOf(this.host);
 
     this.tdsClick.emit({
+      event: e,
       tableId: this.tableId,
       rowIndex: rowIndex,
     });
@@ -97,7 +100,7 @@ export class TdsTableBodyRow {
   handleKeyDown(e) {
     if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      this.handleRowClick();
+      this.handleRowClick(e);
     }
   }
 
@@ -137,7 +140,7 @@ export class TdsTableBodyRow {
           'tds-table--divider': this.verticalDividers,
           'tds-table__row--clickable': this.clickable,
         }}
-        onClick={() => this.handleRowClick()}
+        onClick={(e) => this.handleRowClick(e)}
         onKeyDown={(e) => this.handleKeyDown(e)}
       >
         {this.multiselect && (
