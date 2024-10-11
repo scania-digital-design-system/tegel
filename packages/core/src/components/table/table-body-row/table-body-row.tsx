@@ -88,7 +88,8 @@ export class TdsTableBodyRow {
   }
 
   handleRowClick(e) {
-    const rowIndex = Array.from(this.host.parentElement.children).indexOf(this.host);
+    if (!this.clickable) return;
+    let rowIndex = Array.from(this.host.parentElement.children).indexOf(this.host);
 
     this.tdsClick.emit({
       event: e,

@@ -277,7 +277,8 @@ const BasicTemplate = ({
   </tds-table>
 
   <!-- The script below is just for demo purposes -->
-  <script>
+<script>
+  (function() {
     // Select all rows
     let rows = document.querySelectorAll('tds-table-body-row');
 
@@ -287,7 +288,8 @@ const BasicTemplate = ({
         console.log('Row clicked:', event.detail);
       });
     });
-  </script>
+  })();
+</script>
 `);
 
 export const Basic = BasicTemplate.bind({});
