@@ -298,7 +298,7 @@ const Template = ({
     </div>
 
     <script>
-      const dropdown = document.querySelector('tds-dropdown');
+      let dropdown = document.querySelector('tds-dropdown');
 
       function resetDropdown() {
         dropdown.reset();
