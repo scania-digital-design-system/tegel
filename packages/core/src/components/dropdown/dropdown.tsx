@@ -432,7 +432,7 @@ export class TdsDropdown {
     if (this.value === null) {
       this.host.removeAttribute('value');
     } else {
-      this.host.setAttribute('value', this.value?.map((val) => val).toString());
+      this.host.setAttribute('value', this.value.map((val) => val).toString());
     }
   };
 
