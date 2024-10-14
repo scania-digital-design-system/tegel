@@ -294,15 +294,19 @@ const Template = ({
               îles Åland
             </tds-dropdown-option>
         </tds-dropdown>
+        <button onClick="resetDropdown()">Reset Dropdown</button>
     </div>
 
     <script>
-      dropdown = document.querySelector('tds-dropdown')
+      const dropdown = document.querySelector('tds-dropdown');
+
+      function resetDropdown() {
+        dropdown.reset();
+      }
 
       dropdown.addEventListener('tdsChange', (event) => {
-        console.log(event)
-      })
-
+        console.log(event);
+      });
     </script>
         
   `);
