@@ -69,9 +69,9 @@ export class TdsHeader {
         <slot name="title"></slot>
         <nav {...navAttributes}>
           <ul class="tds-header-component-list">
-            <slot></slot>
+            <slot onSlotchange={() => this.handleSlotChange()}></slot>
             <li class="tds-header-middle-spacer"></li>
-            <slot name="end" onSlotchange={() => this.handleSlotChange()}></slot>
+            <slot name="end"></slot>
           </ul>
         </nav>
       </Host>
