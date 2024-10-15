@@ -179,7 +179,6 @@ export class TdsTableBodyRowExpandable {
           <td
             class={{
               'tds-table__cell-expand': true,
-              'tds-table__cell-expand-visible': this.overflow === 'visible',
             }}
           >
             <label class="tds-table__expand-control-container">
@@ -211,7 +210,15 @@ export class TdsTableBodyRowExpandable {
           }}
           part="expand-row"
         >
-          <td class="tds-table__cell-expand" part="expand-row-cell" colSpan={this.columnsNumber}>
+          <td
+            class={{
+              'tds-table__cell-expand': true,
+              'tds-table__cell-expand--overflow-hidden': this.overflow === 'hidden',
+              'tds-table__cell-expand--overflow-visible': this.overflow === 'visible',
+            }}
+            part="expand-row-cell"
+            colSpan={this.columnsNumber}
+          >
             <div
               style={{
                 overflow: this.overflow,
