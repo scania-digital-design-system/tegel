@@ -176,7 +176,12 @@ export class TdsTableBodyRowExpandable {
           }}
           part="row"
         >
-          <td class="tds-table__cell tds-table__cell--expand">
+          <td
+            class={{
+              'tds-table__cell-expand': true,
+              'tds-table__cell-expand-visible': this.overflow === 'visible',
+            }}
+          >
             <label class="tds-table__expand-control-container">
               <input
                 class="tds-table__expand-input"
