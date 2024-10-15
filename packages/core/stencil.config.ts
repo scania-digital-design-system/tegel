@@ -61,6 +61,13 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: '../../../typography/fonts',
+          dest: 'assets/fonts',
+          warn: true,
+        },
+      ],
     },
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
