@@ -30,6 +30,18 @@ export class TdsHeader {
     this.observer = new MutationObserver(callback);
   }
 
+  private updateRoles() {
+    const navElement = this.host.querySelector('.tds-header-component-list');
+
+    if (navElement) {
+      updateListChildrenRoles(navElement);
+    }
+  }
+
+  private handleSlotChange() {
+    this.updateRoles();
+  }
+
   componentDidLoad() {
     const hostElement = this.host;
     const navElement = hostElement.querySelector('.tds-header-component-list');
@@ -59,7 +71,7 @@ export class TdsHeader {
           <ul class="tds-header-component-list">
             <slot></slot>
             <li class="tds-header-middle-spacer"></li>
-            <slot name="end"></slot>
+            <slot name="end" onSlotchange={() => this.handleSlotChange()}></slot>
           </ul>
         </nav>
       </Host>
