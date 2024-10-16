@@ -69,6 +69,14 @@
       padding: 16px 16px 16px 66px;
       color: var(--tds-table-color);
     }
+
+    .tds-table__cell-expand--overflow-visible {
+      overflow: visible;
+    }
+
+    .tds-table__cell-expand--overflow-hidden {
+      overflow: hidden;
+    }
   }
 }
 
