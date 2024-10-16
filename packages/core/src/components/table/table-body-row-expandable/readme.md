@@ -61,7 +61,6 @@ We recommend fitting your content within the table’s natural size whenever pos
 | `overflow`     | `overflow`      | Controls the overflow behavior of the expandable row content                                                                              | `"auto" \| "hidden"` | `'auto'`             |
 | `rowId`        | `row-id`        | ID for the table row. Randomly generated if not specified.                                                                                | `string`             | `generateUniqueId()` |
 
-
 ## Events
 
 | Event       | Description                                                                            | Type                                                                    |

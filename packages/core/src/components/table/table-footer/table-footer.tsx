@@ -186,6 +186,9 @@ export class TdsTableFooter {
 
   private rowsPerPageChange(event) {
     this.rowsPerPageValue = parseInt(event.detail.value);
+    if (this.paginationValue > this.pages) {
+      this.paginationValue = this.pages;
+    }
     this.emitTdsPagination();
   }
 
