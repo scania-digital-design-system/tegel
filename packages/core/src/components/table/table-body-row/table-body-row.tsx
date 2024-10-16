@@ -32,6 +32,9 @@ export class TdsTableBodyRow {
   /** Marks the row as disabled, used for multiselect table. */
   @Prop({ reflect: true }) disabled?: boolean = false;
 
+  /** Makes the row clickable and tabbable for accessibility purposes. */
+  @Prop({ reflect: true }) clickable: boolean = false;
+
   @State() multiselect: boolean = false;
 
   @State() mainCheckBoxStatus: boolean = false;
@@ -61,6 +64,20 @@ export class TdsTableBodyRow {
     selectedRows: any[];
   }>;
 
+  /** Event emitted when a row is clicked. */
+  @Event({
+    eventName: 'tdsClick',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  tdsClick: EventEmitter<{
+    // return clickevent
+    event: MouseEvent;
+    tableId: string;
+    rowIndex: number;
+  }>;
+
   async handleCheckboxChange(event) {
     this.selected = event.detail.checked;
     this.tdsSelect.emit({
@@ -68,6 +85,24 @@ export class TdsTableBodyRow {
       checked: this.selected,
       selectedRows: await this.tableEl.getSelectedRows(),
     });
+  }
+
+  handleRowClick(e) {
+    if (!this.clickable) return;
+    let rowIndex = Array.from(this.host.parentElement.children).indexOf(this.host);
+
+    this.tdsClick.emit({
+      event: e,
+      tableId: this.tableId,
+      rowIndex: rowIndex,
+    });
+  }
+
+  handleKeyDown(e) {
+    if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      this.handleRowClick(e);
+    }
   }
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -98,12 +133,16 @@ export class TdsTableBodyRow {
   render() {
     return (
       <Host
+        tabindex={this.clickable ? '0' : null}
         class={{
           'tds-table__row': true,
           'tds-table__row--selected': this.selected,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
+          'tds-table__row--clickable': this.clickable,
         }}
+        onClick={(e) => this.handleRowClick(e)}
+        onKeyDown={(e) => this.handleKeyDown(e)}
       >
         {this.multiselect && (
           <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">
