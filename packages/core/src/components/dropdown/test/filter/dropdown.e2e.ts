@@ -96,4 +96,30 @@ test.describe.parallel('tds-dropdown-filter', () => {
     await expect(inputElement).toHaveValue(''); // Ensure input is cleared
     await expect(resetButton).toBeHidden(); // Reset button should hide again after clearing the input
   });
+
+  test('toggle dropdown visibility and select option two', async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    const inputElement = page.getByRole('textbox');
+    const dropdownListElementTwoButton = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: /Option 2/ });
+
+    const dropdownButton = page.locator('tds-icon[aria-label="Open/Close dropdown"]');
+
+    // Focus on the input element and start typing
+    await expect(dropdownListElementTwoButton).toBeHidden();
+    await inputElement.click();
+    await expect(inputElement).toBeVisible();
+
+    // Click the dropdown button to open the dropdown list
+    await dropdownListElementTwoButton.click();
+    await inputElement.click();
+    // Click the dropdown button to close the dropdown list
+    await dropdownButton.click();
+    // Click the dropdown button to open the dropdown list
+    await dropdownButton.click();
+
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
 });
