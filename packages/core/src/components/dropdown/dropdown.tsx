@@ -428,7 +428,7 @@ export class TdsDropdown {
   };
 
   private setValueAttribute = () => {
-    if (this.value === null || this.value.toString() === '') {
+    if (!this.value || this.value?.toString() === '') {
       this.host.removeAttribute('value');
     } else {
       this.host.setAttribute('value', this.value.map((val) => val).toString());
