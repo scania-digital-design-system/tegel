@@ -1,5 +1,6 @@
 import { Component, Element, Fragment, h, Host, Listen, Prop, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot icon - Used for injecting the icon that compliments the dropdown title
@@ -83,6 +84,8 @@ export class TdsSideMenuDropdown {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <div
@@ -92,7 +95,7 @@ export class TdsSideMenuDropdown {
             'state-collapsed': this.collapsed,
           }}
         >
-          <tds-side-menu-item
+          <prefixedTagNames.tdsSideMenuItem
             class="button"
             active={this.getIsOpenState()}
             selected={this.selected}
@@ -106,11 +109,15 @@ export class TdsSideMenuDropdown {
                 <Fragment>
                   {this.buttonLabel}
                   <slot name="label"></slot>
-                  <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
+                  <prefixedTagNames.tdsIcon
+                    class="dropdown-icon"
+                    name="chevron_down"
+                    size="16px"
+                  ></prefixedTagNames.tdsIcon>
                 </Fragment>
               )}
             </button>
-          </tds-side-menu-item>
+          </prefixedTagNames.tdsSideMenuItem>
           <div class="menu">
             {this.collapsed && (
               <h3 class="heading-collapsed">

@@ -10,6 +10,7 @@ import {
   EventEmitter,
 } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot header - Slot for header text
@@ -176,6 +177,7 @@ export class TdsModal {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
 
@@ -196,7 +198,7 @@ export class TdsModal {
                 aria-label="close"
                 onClick={(event) => this.handleClose(event)}
               >
-                <tds-icon name="cross" size="20px" />
+                <prefixedTagNames.tdsIcon name="cross" size="20px" />
               </button>
             )}
           </div>

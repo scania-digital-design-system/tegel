@@ -1,4 +1,5 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Host, Prop, Element } from '@stencil/core';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> Used as alternative to props to inject <code><img...</code> element directly into the DOM.
@@ -10,6 +11,8 @@ import { Component, h, Host, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsSideMenuUser {
+  @Element() host: HTMLElement;
+
   /** The heading text. */
   @Prop() heading!: string;
 
@@ -23,15 +26,17 @@ export class TdsSideMenuUser {
   @Prop() imgAlt: string;
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
-        <tds-side-menu-user-image src={this.imgSrc} alt={this.imgAlt}>
+        <prefixedTagNames.tdsSideMenuUserImage src={this.imgSrc} alt={this.imgAlt}>
           <slot name="image"></slot>
-        </tds-side-menu-user-image>
-        <tds-side-menu-user-label
+        </prefixedTagNames.tdsSideMenuUserImage>
+        <prefixedTagNames.tdsSideMenuUserLabel
           heading={this.heading}
           subheading={this.subheading}
-        ></tds-side-menu-user-label>
+        ></prefixedTagNames.tdsSideMenuUserLabel>
       </Host>
     );
   }

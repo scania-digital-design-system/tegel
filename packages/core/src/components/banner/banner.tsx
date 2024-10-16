@@ -2,6 +2,7 @@ import { Component, Host, h, Prop, Event, EventEmitter, Method, Element } from '
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
 import { IconNames } from '../../types/Icons';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot header - Slot for the Header of the Banner
@@ -79,6 +80,8 @@ export class TdsBanner {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     const usesHeaderSlot = hasSlot('subheader', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
@@ -94,7 +97,7 @@ export class TdsBanner {
       >
         {this.icon && (
           <div class={`banner-icon ${this.variant}`}>
-            <tds-icon name={this.icon} size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon name={this.icon} size="20px"></prefixedTagNames.tdsIcon>
           </div>
         )}
 
@@ -114,7 +117,7 @@ export class TdsBanner {
               this.handleClose();
             }}
           >
-            <tds-icon name="cross" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon name="cross" size="20px"></prefixedTagNames.tdsIcon>
           </button>
         </div>
       </Host>

@@ -1,6 +1,7 @@
 import { Component, Element, Listen, h, Host, Prop, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesign'];
 
@@ -84,6 +85,8 @@ export class TdsTableHeaderInputWrapper {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host
         class={{
@@ -94,7 +97,12 @@ export class TdsTableHeaderInputWrapper {
       >
         {this.renderSlot ? <slot onSlotchange={() => this.handleSlotChange()} /> : null}
         {this.showIcon ? (
-          <tds-icon class="search-icon" slot="icon" size="16px" name="search"></tds-icon>
+          <prefixedTagNames.tdsIcon
+            class="search-icon"
+            slot="icon"
+            size="16px"
+            name="search"
+          ></prefixedTagNames.tdsIcon>
         ) : null}
       </Host>
     );

@@ -57,19 +57,6 @@ Type: `Promise<{ selectedTabIndex: number; }>`
 | `"<default>"` | <b>Unnamed slot.</b> For the tab elements. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-folder-tabs --> tds-icon
-  style tds-folder-tabs fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

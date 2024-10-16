@@ -33,23 +33,6 @@ Type: `Promise<void>`
 
 
 
-## Dependencies
-
-### Used by
-
- - [tds-popover-canvas](../popover-canvas)
- - [tds-popover-menu](../popover-menu)
- - [tds-tooltip](../tooltip)
-
-### Graph
-```mermaid
-graph TD;
-  tds-popover-canvas --> tds-popover-core
-  tds-popover-menu --> tds-popover-core
-  tds-tooltip --> tds-popover-core
-  style tds-popover-core fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

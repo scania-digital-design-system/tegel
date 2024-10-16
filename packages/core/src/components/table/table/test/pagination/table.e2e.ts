@@ -60,7 +60,9 @@ test.describe.parallel('tds-table-pagination', () => {
     await expect(tableFooterPaginationSpinbutton).toHaveValue('1');
   });
 
-  test('Footer contains skip to last and first page buttons that are clickable', async ({ page }) => {
+  test('Footer contains skip to last and first page buttons that are clickable', async ({
+    page,
+  }) => {
     await page.goto(componentTestPath);
     const tableFooterPaginationSpinbutton = page.getByRole('spinbutton');
     await expect(tableFooterPaginationSpinbutton).toHaveValue('1');
@@ -81,5 +83,5 @@ test.describe.parallel('tds-table-pagination', () => {
     const dropdown = page.locator('tds-dropdown');
     await expect(dropdown).toHaveCount(1);
     await expect(dropdown).toBeVisible();
-  }) 
+  });
 });

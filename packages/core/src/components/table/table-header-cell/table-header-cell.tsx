@@ -10,6 +10,7 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -197,7 +198,7 @@ export class TdsTableHeaderCell {
     });
   };
 
-  headerCellContent = () => {
+  headerCellContent = (prefixedTagNames) => {
     if (this.sortable) {
       return (
         <button
@@ -211,16 +212,20 @@ export class TdsTableHeaderCell {
           </span>
 
           {this.sortingDirection === undefined && (
-            <tds-icon class="tds-table__header-button-icon" name="sorting" size="16px"></tds-icon>
+            <prefixedTagNames.tdsIcon
+              class="tds-table__header-button-icon"
+              name="sorting"
+              size="16px"
+            ></prefixedTagNames.tdsIcon>
           )}
           {this.sortingDirection && ['asc', 'desc'].includes(this.sortingDirection) && (
-            <tds-icon
+            <prefixedTagNames.tdsIcon
               class={`tds-table__header-button-icon ${
                 this.sortingDirection === 'asc' ? 'tds-table__header-button-icon--rotate' : ''
               }`}
               name="arrow_down"
               size="16px"
-            ></tds-icon>
+            ></prefixedTagNames.tdsIcon>
           )}
         </button>
       );
@@ -247,6 +252,8 @@ export class TdsTableHeaderCell {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host
         class={{
@@ -265,7 +272,7 @@ export class TdsTableHeaderCell {
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
       >
-        {this.headerCellContent()}
+        {this.headerCellContent(prefixedTagNames)}
       </Host>
     );
   }
