@@ -47,7 +47,7 @@
   }
 }
 
-:host(.last) [role='listitem'] {
+.current {
   &::after {
     display: none;
   }
