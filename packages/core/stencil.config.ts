@@ -63,8 +63,8 @@ export const config: Config = {
       esmLoaderPath: '../loader',
       copy: [
         {
-          src: '../../../typography/fonts',
-          dest: 'assets/fonts',
+          src: '../../../assets',
+          dest: 'assets',
           warn: true,
         },
       ],
