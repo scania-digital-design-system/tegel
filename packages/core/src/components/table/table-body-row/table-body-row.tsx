@@ -71,8 +71,8 @@ export class TdsTableBodyRow {
     cancelable: false,
     bubbles: true,
   })
+  // return clickevent
   tdsClick: EventEmitter<{
-    // return clickevent
     event: MouseEvent;
     tableId: string;
     rowIndex: number;
