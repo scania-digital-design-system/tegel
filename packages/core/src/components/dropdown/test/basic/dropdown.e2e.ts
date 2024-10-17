@@ -77,5 +77,6 @@ test.describe.parallel('tds-dropdown-basic', () => {
     // Verify that the dropdown has been reset to its initial state
     await expect(placeholder).toHaveText(initialPlaceholderText);
     await expect(dropdown).not.toHaveAttribute('value');
+    await expect(dropdown).toHaveJSProperty('value', undefined);
   });
 });
