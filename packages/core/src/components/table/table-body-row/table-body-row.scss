@@ -60,3 +60,11 @@
     border-right: 1px solid var(--tds-table-divider);
   }
 }
+
+:host(.tds-table__row--clickable) {
+  cursor: pointer;
+}
+
+:host(.tds-table__row--clickable:focus-visible) {
+  outline: var(--focus-outline, 2px solid blue);
+}

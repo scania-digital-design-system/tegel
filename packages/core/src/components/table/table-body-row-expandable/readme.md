@@ -53,6 +53,7 @@ We recommend fitting your content within the table’s natural size whenever pos
 
 ## Properties
 
+
 | Property       | Attribute       | Description                                                                                                                               | Type                 | Default              |
 | -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | -------------------- |
 | `autoCollapse` | `auto-collapse` | Enables auto-collapse of other expandable rows when one row is expanded                                                                   | `boolean`            | `false`              |
@@ -60,6 +61,7 @@ We recommend fitting your content within the table’s natural size whenever pos
 | `expanded`     | `expanded`      | Sets isExpanded state to true or false externally                                                                                         | `boolean`            | `undefined`          |
 | `overflow`     | `overflow`      | Controls the overflow behavior of the expandable row content                                                                              | `"auto" \| "hidden"` | `'auto'`             |
 | `rowId`        | `row-id`        | ID for the table row. Randomly generated if not specified.                                                                                | `string`             | `generateUniqueId()` |
+
 
 ## Events
 
@@ -101,10 +103,11 @@ Type: `Promise<void>`
 
 ## Shadow Parts
 
-| Part           | Description                                 |
-| -------------- | ------------------------------------------- |
-| `"expand-row"` | Selector for the expanded row of the table. |
-| `"row"`        | Selector for the main row of the table.     |
+| Part                | Description                                             |
+| ------------------- | ------------------------------------------------------- |
+| `"expand-row"`      | Selector for the expanded row of the table.             |
+| `"expand-row-cell"` | Selector for the cell in the expanded row of the table. |
+| `"row"`             | Selector for the main row of the table.                 |
 
 
 ----------------------------------------------

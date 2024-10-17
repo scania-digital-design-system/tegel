@@ -130,6 +130,7 @@ export default {
       control: {
         type: 'radio',
       },
+
       options: ['auto', 'hidden'],
       autoCollapse: {
         name: 'Auto Collapse',
@@ -156,6 +157,7 @@ export default {
       overflow: 'scroll',
       autoCollapse: false,
     },
+
   },
 };
 
@@ -225,7 +227,9 @@ const ExpandableRowTemplate = ({
           <tds-body-cell cell-value="Demo overflow 4" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row">
             <!-- Demo block: Overflow solution for Expanded Rows (Not Recommended). -->
-              <div style="background-color: red; width: 900px; height: 100px;">Not Recommended</div>
+              <div style="background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); width: 900px; height: 100px; color: white; text-shadow: 1px 1px 2px black;">
+                This is an example of a long sentence that demonstrates how content can overflow the boundaries of its container, especially when the container has a fixed width and the content is too large to fit within it.
+              </div>
             <!-- end of demo block -->
           </div>
         </tds-table-body-row-expandable>
@@ -236,7 +240,7 @@ const ExpandableRowTemplate = ({
   <script>
 
   tableRowElementAll = document.querySelectorAll("tds-table-body-row-expandable");
- 
+
   for (let i = 0; i < tableRowElementAll.length; i++) {
     tableRowElementAll[i].addEventListener("tdsChange", (event) => {
       console.log("Row with id: ", event.detail.rowId, " is ", event.detail.isExpanded);

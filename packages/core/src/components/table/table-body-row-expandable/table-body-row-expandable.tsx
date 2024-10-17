@@ -27,6 +27,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 
  * @part row - Selector for the main row of the table.
  * @part expand-row - Selector for the expanded row of the table.
+ * @part expand-row-cell - Selector for the cell in the expanded row of the table.
  */
 
 @Component({
@@ -46,7 +47,7 @@ export class TdsTableBodyRowExpandable {
   @Prop({ reflect: true }) expanded: boolean;
 
   /** Controls the overflow behavior of the expandable row content */
-  @Prop({ reflect: true }) overflow: 'auto' | 'hidden' = 'auto';
+  @Prop({ reflect: true }) overflow: 'auto' | 'hidden' | 'visible' = 'auto';
 
   /** Sets isExpanded state to true or false internally */
   /** Enables auto-collapse of other expandable rows when one row is expanded */
@@ -197,7 +198,11 @@ export class TdsTableBodyRowExpandable {
           }}
           part="row"
         >
-          <td class="tds-table__cell tds-table__cell--expand">
+          <td
+            class={{
+              'tds-table__cell-expand': true,
+            }}
+          >
             <label class="tds-table__expand-control-container">
               <input
                 class="tds-table__expand-input"
@@ -227,7 +232,15 @@ export class TdsTableBodyRowExpandable {
           }}
           part="expand-row"
         >
-          <td class="tds-table__cell-expand" colSpan={this.columnsNumber}>
+          <td
+            class={{
+              'tds-table__cell-expand': true,
+              'tds-table__cell-expand--overflow-hidden': this.overflow === 'hidden',
+              'tds-table__cell-expand--overflow-visible': this.overflow === 'visible',
+            }}
+            part="expand-row-cell"
+            colSpan={this.columnsNumber}
+          >
             <div
               style={{
                 overflow: this.overflow,
