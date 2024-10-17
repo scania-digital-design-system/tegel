@@ -47,4 +47,36 @@ test.describe.parallel('tds-dropdown-basic', () => {
     /* checks diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
+  test('reset() method resets the dropdown', async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    const dropdown = page.getByTestId('tds-dropdown-testid');
+
+    const dropdownButton = dropdown.getByRole('button').first();
+
+    // Get the initial placeholder text before any selection
+    const initialPlaceholderText = await dropdownButton.locator('.placeholder').innerText();
+
+    // Open the dropdown
+    await dropdownButton.click();
+
+    // Select an option from the dropdown
+    const dropdownOption = dropdown.locator('tds-dropdown-option').filter({ hasText: 'Option 1' });
+    await dropdownOption.click();
+
+    // Verify that the selected option is displayed
+    const placeholder = dropdownButton.locator('.placeholder');
+    await expect(placeholder).toHaveText('Option 1');
+
+    // Call the reset() method on the dropdown component
+    await page.evaluate(() => {
+      const dropdownnew = document.querySelector('tds-dropdown');
+      dropdownnew.reset();
+    });
+
+    // Verify that the dropdown has been reset to its initial state
+    await expect(placeholder).toHaveText(initialPlaceholderText);
+    await expect(dropdown).not.toHaveAttribute('value');
+    await expect(dropdown).toHaveJSProperty('value', undefined);
+  });
 });
