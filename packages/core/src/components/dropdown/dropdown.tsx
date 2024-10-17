@@ -531,18 +531,25 @@ export class TdsDropdown {
                   ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
                   class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
                   type="text"
-                  placeholder={this.placeholder}
-                  value={this.getValue()}
+                  placeholder={this.filterFocus ? '' : this.placeholder}
+                  value={this.multiselect && this.filterFocus ? '' : this.getValue()}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onBlur={(event) => {
                     this.filterFocus = false;
+                    if (this.multiselect) {
+                      this.inputElement.value = this.getValue();
+                    }
                     this.handleBlur(event);
                   }}
                   onFocus={(event) => {
                     this.open = true;
                     this.filterFocus = true;
+                    if (this.multiselect) {
+                      this.inputElement.value = '';
+                    }
                     this.handleFocus(event);
+                    this.handleFilter({ target: { value: '' } });
                   }}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
