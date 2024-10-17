@@ -428,8 +428,11 @@ export class TdsDropdown {
   };
 
   private setValueAttribute = () => {
-    if (this.value?.toString() === '') this.value = null;
-    this.host.setAttribute('value', this.value?.map((val) => val).toString() ?? null);
+    if (!this.value || this.value?.toString() === '') {
+      this.host.removeAttribute('value');
+    } else {
+      this.host.setAttribute('value', this.value.map((val) => val).toString());
+    }
   };
 
   private handleFilter = (event) => {
