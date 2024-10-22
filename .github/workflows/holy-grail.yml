@@ -1,7 +1,18 @@
-name: Manual Release (All packages)
+# Holy Grail: all release steps in one workflow
+
+name: Holy Grail
 on:
   workflow_dispatch:
     inputs:
+      version:
+        description: 'Release type'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - minor
+          - patch
+
       nodeVersion:
         description: 'Node version'
         required: true
@@ -25,6 +36,55 @@ on:
         type: boolean
 
 jobs:
+  #CREATE RELEASE BRANCH
+  create-release-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - Bump version
+        id: core-version
+        working-directory: packages/core
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: Angular - Bump version
+        id: angular-version
+        working-directory: packages/angular
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: Angular 17 - Bump version
+        id: angular-17-version
+        working-directory: packages/angular-17/projects/components
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: React - Bump version
+        id: react-version
+        working-directory: packages/react
+        run: npm version ${{ github.event.inputs.version }} --no-git-tag-version
+
+      - name: Core - Read package.json Version
+        id: version
+        working-directory: packages/core
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Save version as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: version
+          path: packages/core/package.json # assuming the version is saved here
+
+      - name: Create release branch
+        run: |
+          git checkout -b release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          git push -u --no-verify origin release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  #RELEASE CORE
   release-core:
     runs-on: ubuntu-latest
     env:
@@ -33,9 +93,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_TOKEN }} # Use the token for authentication
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -76,15 +136,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
-
-      - name: Core - Push git tag
-        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+      - name: Commit and push
+        run: |
+          git add .
+          git commit -m "ci(release-core-step): added bumped version files"
+          git push --force --no-verify
 
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
+  #RELEASE ANGULAR
   release-angular:
     needs: release-core
     runs-on: ubuntu-latest
@@ -94,9 +155,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_TOKEN }} # Use the token for authentication
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -143,6 +204,13 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit and push
+        run: |
+          git add .
+          git commit -m "ci(release-angular-step): added bumped version files"
+          git push --force --no-verify
+
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
@@ -155,9 +223,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_TOKEN }} # Use the token for authentication
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -213,6 +281,16 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      - name: Commit and push
+        run: |
+          git add .
+          git commit -m "ci(release-angular-17-step): added bumped version files"
+          git push --force --no-verify
+
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  #RELEASE REACT
   release-react:
     needs: release-core
     runs-on: ubuntu-latest
@@ -222,9 +300,9 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_TOKEN }} # Use the token for authentication
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -271,14 +349,35 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit and push
+        run: |
+          git add .
+          git commit -m "ci(release-react-step): added bumped version files"
+          git push --force --no-verify
+
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
+  #ON FAILURE
   on-failure:
-    needs: [release-core, release-angular, release-angular-17, release-react]
+    needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: always() && (needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    if: always() && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     steps:
+      - name: Download version
+        uses: actions/download-artifact@v4
+        with:
+          name: version
+          path: packages/core
+
+      - name: Remove branch on failure
+        run: |
+          version=$(jq -r .version packages/core/package.json)  # extract version from package.json
+          if [ "${{ job.status }}" == "failure" ] && [ -n "$version" ]; then
+            git push --no-verify origin --delete @scania/tegel@$version
+          fi
+
       - name: Check out code
         uses: actions/checkout@v4
         with:
@@ -301,30 +400,75 @@ jobs:
           tagname="@scania/tegel-react@${{ needs.release-react.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
             git push --no-verify --delete origin $tagname
-          fi
 
-  commit-changes-in-develop:
-    needs: [release-core, release-angular, release-angular-17, release-react]
+  #CREATE GIT TAG
+  create-git-tag:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/core
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0 # Fetch all branches
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set up Git for authentication
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Core - Create git tag
+        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Core - Push git tag
+        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  #MERGE RELEASE BRANCH TO DEVELOP
+  merge-release-branch-into-develop:
+    needs: create-git-tag
     runs-on: ubuntu-latest
     if: always()
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          fetch-depth: 0 # Fetch all branches
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
-      - name: Commit changes in develop
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Set up Git for authentication
         run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Merge release branch into develop
+        run: |
+          git checkout develop
+          git merge --squash -X theirs release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           git add .
           if ! git diff-index --quiet HEAD; then
-            git commit -m "feat: new version of @scania/tegel in wrapper packages"
+            git commit -m "release: tegel ${{ steps.version.outputs.PACKAGE_VERSION  }}"
             git push --force --no-verify origin develop
           else
             echo "No changes to commit in develop"
           fi
 
+  #MERGE DEVELOP INTO MAIN
   merge-develop-into-main:
-    needs: commit-changes-in-develop
+    needs: merge-release-branch-into-develop
     runs-on: ubuntu-latest
     if: always()
     steps:
