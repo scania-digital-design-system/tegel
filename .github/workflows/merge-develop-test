@@ -1,0 +1,35 @@
+name: Merge develop into test
+on:
+  workflow_dispatch:
+jobs:
+  merge-develop-into-test:
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+
+      - name: Fetch all branches
+        run: git fetch --all
+
+      - name: Set up Git for authentication
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Merge develop into test
+        run: |
+          git checkout test
+          git merge --squash -X theirs develop
+          git add .
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "test: test works"
+            git push --force --no-verify origin test
+          else
+            echo "No changes to commit in test"
+          fi
