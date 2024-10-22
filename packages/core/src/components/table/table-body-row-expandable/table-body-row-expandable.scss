@@ -60,6 +60,7 @@
     transition: background-color 200ms ease;
 
     &--expanded {
+      display: flex;
       border-bottom: 1px solid var(--tds-table-divider);
     }
 
