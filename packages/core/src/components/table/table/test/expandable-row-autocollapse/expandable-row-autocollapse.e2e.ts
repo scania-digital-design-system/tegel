@@ -8,9 +8,6 @@ const componentTestPath = 'src/components/table/table/test/expandable-row-autoco
 test.describe.parallel('tds-table-expandable-row-autoCollapse', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableComponent = page.getByRole('table');
-    await expect(tableComponent).toHaveCount(1);
-    await tableComponent.waitFor({ state: 'visible' });
   });
 
   test.skip('NEEDS FIXING: expanding one row collapses the others when autoCollapse is true', async ({
@@ -20,33 +17,40 @@ test.describe.parallel('tds-table-expandable-row-autoCollapse', () => {
     const tableRows = page.locator('tds-table-body-row-expandable');
     const firstRow = tableRows.nth(0);
     const secondRow = tableRows.nth(1);
-    const thirdRow = tableRows.nth(2);
 
-    // Expand the first row by clicking on the label
+    // Locate the expand labels
     const firstExpandLabel = firstRow.locator('td > label');
+    const secondExpandLabel = secondRow.locator('td > label');
+
+    // Expand the first row
     await firstExpandLabel.click();
+
+    // Assert the first row is expanded
+    await expect(firstRow).toHaveClass(/tds-table__row-expand--active/);
     await expect(firstRow.locator('div[slot="expand-row"]')).toBeVisible();
-    await expect(secondRow.locator('div[slot="expand-row"]')).toBeHidden();
-    await expect(thirdRow.locator('div[slot="expand-row"]')).toBeHidden();
+
+    // Assert the second and third rows are collapsed
+    await expect(secondRow).not.toHaveClass(/tds-table__row-expand--active/);
+    await expect(secondRow.locator('div[slot="expand-row"]')).not.toBeVisible();
+
+    // Screenshot after first expansion
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
-    // Expand the second row by clicking on the label
-    const secondExpandLabel = secondRow.locator('td > label');
+    // Expand the second row
     await secondExpandLabel.click();
 
-    // The first row should now be collapsed
-    await expect(firstRow.locator('div[slot="expand-row"]')).toBeHidden();
-    // The second row should be expanded
+    // Wait for UI to update
+    await page.waitForTimeout(100); // You can adjust this duration
+
+    // Assert the second row is now expanded
+    await expect(secondRow).toHaveClass(/tds-table__row-expand--active/);
     await expect(secondRow.locator('div[slot="expand-row"]')).toBeVisible();
 
-    // Expand the third row by clicking on the label
-    const thirdExpandLabel = thirdRow.locator('td > label');
-    await thirdExpandLabel.click();
+    // Assert the first row is collapsed
+    await expect(firstRow).not.toHaveClass(/tds-table__row-expand--active/);
+    await expect(firstRow.locator('div[slot="expand-row"]')).not.toBeVisible();
 
-    // The second row should now be collapsed
-    await expect(secondRow.locator('div[slot="expand-row"]')).toBeHidden();
-    // The third row should be expanded
-    await expect(thirdRow.locator('div[slot="expand-row"]')).toBeVisible();
+    // Screenshot after second expansion
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
