@@ -64,7 +64,7 @@ export const config: Config = {
       copy: [
         {
           src: '../../../assets',
-          dest: 'assets',
+          dest: 'assets/',
           warn: true,
         },
       ],
