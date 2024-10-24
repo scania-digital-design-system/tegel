@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -15,8 +16,15 @@ const config = {
 // Get custom path from command line argument, if provided
 const targetDir = path.resolve(process.cwd(), process.argv[2] || config.defaultTargetDir);
 
-// Define the source directory for fonts in the package
-const sourceDir = path.join(currentDirPath, '..', '..', '..', 'assets', 'fonts');
+console.log(`Using target directory: ${targetDir}`);
+
+// Determine if we're running from the installed package or from the monorepo
+const isInstalledPackage = currentDirPath.includes('node_modules');
+
+// Define the source directory for fonts based on the environment
+const sourceDir = isInstalledPackage
+  ? path.join(currentDirPath, '..', 'dist', 'tegel', 'assets', 'fonts')
+  : path.join(currentDirPath, '..', '..', '..', 'assets', 'fonts');
 
 function copyFonts(src, dest) {
   if (config.verbose) console.log(`Checking directory: ${src}`);
