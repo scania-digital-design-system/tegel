@@ -137,7 +137,7 @@ export default {
         type: 'radio',
       },
       table: {
-        defaultValue: { summary: 'scroll' },
+        defaultValue: { summary: 'auto' },
       },
       options: ['auto', 'hidden', 'visible'],
     },
