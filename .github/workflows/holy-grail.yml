@@ -136,12 +136,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      #TODO: check if there is anything to commit
       - name: Commit and push
         run: |
           git add .
           git commit -m "ci(release-core-step): added bumped version files"
           git push --force --no-verify
-
+      #TODO: chekc if one below is extra, do we need it?
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
@@ -360,10 +361,11 @@ jobs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   #ON FAILURE
+  #TODO: come back to this, maybe move it all the way down
   on-failure:
     needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: always() && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    if: (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     steps:
       - name: Download version
         uses: actions/download-artifact@v4
@@ -372,71 +374,13 @@ jobs:
           path: packages/core
 
       - name: Remove branch on failure
-        run: |
-          version=$(jq -r .version packages/core/package.json)  # extract version from package.json
-          if [ "${{ job.status }}" == "failure" ] && [ -n "$version" ]; then
-            git push --no-verify origin --delete @scania/tegel@$version
-          fi
-
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-
-      - name: Remove git tag on failure
-        run: |
-          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
-          if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
-          fi
-          tagname="@scania/tegel-angular@${{ needs.release-angular.outputs.version }}"
-          if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
-          fi
-          tagname="@scania/tegel-angular-17@${{ needs.release-angular-17.outputs.version }}"
-          if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
-          fi
-          tagname="@scania/tegel-react@${{ needs.release-react.outputs.version }}"
-          if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
-
-  #CREATE GIT TAG
-  create-git-tag:
-    runs-on: ubuntu-latest
-    env:
-      WORKING_DIRECTORY: packages/core
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          ref: develop
-          fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
-
-      - name: Set up node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Set up Git for authentication
-        run: |
-          git config --global user.name "Tegel - Scania"
-          git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
-
-      - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
-
-      - name: Core - Push git tag
-        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: git push --no-verify origin --delete release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
   #MERGE RELEASE BRANCH TO DEVELOP
   merge-release-branch-into-develop:
-    needs: create-git-tag
+    needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: always()
+    if: (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -466,11 +410,44 @@ jobs:
             echo "No changes to commit in develop"
           fi
 
-  #MERGE DEVELOP INTO MAIN
-  merge-develop-into-main:
+  #CREATE GIT TAG
+  create-git-tag:
     needs: merge-release-branch-into-develop
     runs-on: ubuntu-latest
-    if: always()
+    if: (needs.merge-release-branch-into-develop.result == 'success')
+    env:
+      WORKING_DIRECTORY: packages/core
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0 # Fetch all branches
+          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set up Git for authentication
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
+
+      - name: Core - Create git tag
+        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Core - Push git tag
+        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  #MERGE DEVELOP INTO MAIN
+  merge-develop-into-main:
+    needs: [create-git-tag, merge-release-branch-into-develop]
+    runs-on: ubuntu-latest
+    if: (needs.create-git-tag.result == 'success' && needs.merge-release-branch-into-develop.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
