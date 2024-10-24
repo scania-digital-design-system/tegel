@@ -19,6 +19,8 @@
 
  - [tds-accordion-item](../accordion/accordion-item)
  - [tds-banner](../banner)
+ - [tds-date-picker](../_beta/date-picker/date-picker-single)
+ - [tds-date-range-picker](../_beta/date-picker/date-range-picker)
  - [tds-datetime](../datetime)
  - [tds-dropdown](../dropdown)
  - [tds-dropdown-option](../dropdown/dropdown-option)
@@ -41,6 +43,7 @@
  - [tds-table-header-input-wrapper](../table/table-header-input-wrapper)
  - [tds-table-toolbar](../table/table-toolbar)
  - [tds-text-field](../text-field)
+ - [tds-text-field-wrapper](../text-field-wrapper)
  - [tds-textarea](../textarea)
  - [tds-toast](../toast)
 
@@ -49,6 +52,8 @@
 graph TD;
   tds-accordion-item --> tds-icon
   tds-banner --> tds-icon
+  tds-date-picker --> tds-icon
+  tds-date-range-picker --> tds-icon
   tds-datetime --> tds-icon
   tds-dropdown --> tds-icon
   tds-dropdown-option --> tds-icon
@@ -71,6 +76,7 @@ graph TD;
   tds-table-header-input-wrapper --> tds-icon
   tds-table-toolbar --> tds-icon
   tds-text-field --> tds-icon
+  tds-text-field-wrapper --> tds-icon
   tds-textarea --> tds-icon
   tds-toast --> tds-icon
   style tds-icon fill:#f9f,stroke:#333,stroke-width:4px
