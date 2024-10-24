@@ -58,6 +58,9 @@ export default {
       control: {
         type: 'boolean',
       },
+      table: {
+        defaultValue: { summary: false },
+      },
     },
     responsiveDesign: {
       name: 'Responsive Table',
@@ -86,6 +89,9 @@ export default {
         'Resets min-width rule and enables setting column width value to less than 192px which is the default. When enabled, controls for column width will show here.',
       control: {
         type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
       },
     },
     column1Width: {
@@ -130,17 +136,19 @@ export default {
       control: {
         type: 'radio',
       },
-
-      options: ['auto', 'hidden'],
-      autoCollapse: {
-        name: 'Auto Collapse',
-        description: 'Automatically collapses other rows when one is expanded.',
-        control: {
-          type: 'boolean',
-        },
-        table: {
-          defaultValue: { summary: false },
-        },
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
+      options: ['auto', 'hidden', 'visible'],
+    },
+    autoCollapse: {
+      name: 'Auto Collapse',
+      description: 'Automatically collapses other rows when one is expanded.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
       },
     },
   },
@@ -212,14 +220,14 @@ const ExpandableRowTemplate = ({
           <tds-body-cell cell-value="Test value 8" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row">Hello to you too</div>
         </tds-table-body-row-expandable>
-        <tds-table-body-row-expandable auto-collapse="${autoCollapse}">
+        <tds-table-body-row-expandable auto-collapse="${autoCollapse}" row-id="3">
           <tds-body-cell cell-value="Test value 9" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Test value 10" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Test value 11" cell-key="country"></tds-body-cell>
           <tds-body-cell cell-value="Test value 12" cell-key="mileage"></tds-body-cell>
           <div slot="expand-row"><tds-button type="primary" text="Call to action"></tds-button></div>
         </tds-table-body-row-expandable>
-        <tds-table-body-row-expandable expanded="${expanded}" overflow="${overflow}" auto-collapse="${autoCollapse}" row-id="1">
+        <tds-table-body-row-expandable expanded="${expanded}" overflow="${overflow}" auto-collapse="${autoCollapse}" row-id="4">
           <tds-body-cell cell-value="Demo overflow 1" cell-key="truck"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 2" cell-key="driver"></tds-body-cell>
           <tds-body-cell cell-value="Demo overflow 3" cell-key="country"></tds-body-cell>
@@ -237,16 +245,18 @@ const ExpandableRowTemplate = ({
 
   <!-- Script for demo purposes. -->
   <script>
+      (function(){
+        let tableRowElements = document.querySelectorAll("tds-table-body-row-expandable");
 
-  tableRowElementAll = document.querySelectorAll("tds-table-body-row-expandable");
-
-  for (let i = 0; i < tableRowElementAll.length; i++) {
-    tableRowElementAll[i].addEventListener("tdsChange", (event) => {
-      console.log("Row with id: ", event.detail.rowId, " is ", event.detail.isExpanded);
-    });
-  }
-
-</script>
+        for (let i = 0; i < tableRowElements.length; i++) {
+          tableRowElements[i].addEventListener("tdsChange", (event) => {
+            if (event.detail.isExpanded) {
+              console.log("Row with id:", event.detail.rowId, "is", event.detail.isExpanded);
+            }
+          });
+        }
+      })();
+    </script>
 `);
 
 export const ExpandableRows = ExpandableRowTemplate.bind({});
