@@ -58,6 +58,9 @@ export default {
       control: {
         type: 'boolean',
       },
+      table: {
+        defaultValue: { summary: false },
+      },
     },
     responsiveDesign: {
       name: 'Responsive Table',
@@ -86,6 +89,9 @@ export default {
         'Resets min-width rule and enables setting column width value to less than 192px which is the default. When enabled, controls for column width will show here.',
       control: {
         type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
       },
     },
     column1Width: {
@@ -130,7 +136,10 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['auto', 'hidden'],
+      table: {
+        defaultValue: { summary: 'scroll' },
+      },
+      options: ['auto', 'hidden', 'visible'],
     },
     autoCollapse: {
       name: 'Auto Collapse',
