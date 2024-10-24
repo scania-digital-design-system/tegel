@@ -61,6 +61,13 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [
+        {
+          src: '../../../assets',
+          dest: 'assets/',
+          warn: true,
+        },
+      ],
     },
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
