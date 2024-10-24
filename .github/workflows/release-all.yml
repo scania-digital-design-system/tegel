@@ -306,7 +306,7 @@ jobs:
   commit-changes-in-develop:
     needs: [release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: always()
+    if: (needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -326,7 +326,7 @@ jobs:
   merge-develop-into-main:
     needs: commit-changes-in-develop
     runs-on: ubuntu-latest
-    if: always()
+    if: (needs.commit-changes-in-develop.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
