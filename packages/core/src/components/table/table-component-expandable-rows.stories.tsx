@@ -236,16 +236,18 @@ const ExpandableRowTemplate = ({
 
   <!-- Script for demo purposes. -->
   <script>
-    let tableRowElements = document.querySelectorAll("tds-table-body-row-expandable");
+      (function(){
+        let tableRowElements = document.querySelectorAll("tds-table-body-row-expandable");
 
-    for (let i = 0; i < tableRowElements.length; i++) {
-      tableRowElements[i].addEventListener("tdsChange", (event) => {
-        if (event.detail.isExpanded) {
-          console.log("Row with id:", event.detail.rowId, "is", event.detail.isExpanded);
+        for (let i = 0; i < tableRowElements.length; i++) {
+          tableRowElements[i].addEventListener("tdsChange", (event) => {
+            if (event.detail.isExpanded) {
+              console.log("Row with id:", event.detail.rowId, "is", event.detail.isExpanded);
+            }
+          });
         }
-      });
-    }
-  </script>
+      })();
+    </script>
 `);
 
 export const ExpandableRows = ExpandableRowTemplate.bind({});
