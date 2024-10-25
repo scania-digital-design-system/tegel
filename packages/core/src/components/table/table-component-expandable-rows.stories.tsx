@@ -163,7 +163,7 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
-    overflow: 'scroll',
+    overflow: 'auto',
     autoCollapse: false,
   },
 };
