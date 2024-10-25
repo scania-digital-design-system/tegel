@@ -34,6 +34,10 @@
       border-bottom-color: var(--tds-negative);
     }
 
+    button.error:focus {
+      border-bottom-color: transparent;
+    }
+
     &.disabled {
       .label-inside,
       .placeholder,
