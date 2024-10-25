@@ -130,20 +130,23 @@ export default {
       control: {
         type: 'radio',
       },
-
-      options: ['auto', 'hidden'],
-      autoCollapse: {
-        name: 'Auto Collapse',
-        description: 'Automatically collapses other rows when one is expanded.',
-        control: {
-          type: 'boolean',
-        },
-        table: {
-          defaultValue: { summary: false },
-        },
+      options: ['auto', 'hidden', 'visible'],
+      table: {
+        defaultValue: { summary: 'auto' },
+      },
+    },
+    autoCollapse: {
+      name: 'Auto Collapse',
+      description: 'Automatically collapses other rows when one is expanded.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
       },
     },
   },
+
   args: {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
@@ -155,7 +158,7 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
-    overflow: 'scroll',
+    overflow: 'auto',
     autoCollapse: false,
   },
 };
