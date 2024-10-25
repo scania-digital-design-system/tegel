@@ -23,6 +23,13 @@
   .dropdown-select {
     position: relative;
 
+    button:focus {
+      border-bottom-color: var(--tds-dropdown-border-bottom);
+    }
+    button {
+      border-bottom-color: var(--tds-dropdown-border-bottom);
+    }
+
     &.disabled {
       .label-inside,
       .placeholder,
