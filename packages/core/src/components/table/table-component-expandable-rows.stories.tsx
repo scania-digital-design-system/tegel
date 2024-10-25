@@ -151,6 +151,7 @@ export default {
         defaultValue: { summary: false },
       },
     },
+
   },
   args: {
     modeVariant: 'Inherit from parent',
