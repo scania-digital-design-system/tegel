@@ -30,12 +30,20 @@
       border-bottom-color: var(--tds-dropdown-border-bottom);
     }
 
+    button.error {
+      border-bottom-color: var(--tds-negative);
+    }
+
     &.disabled {
       .label-inside,
       .placeholder,
       .label-inside-as-placeholder,
       .value-wrapper {
         color: var(--tds-dropdown-disabled-color);
+      }
+
+      button {
+        border: none;
       }
     }
 
