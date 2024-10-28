@@ -1,0 +1,94 @@
+name: Beta Release @scania/tegel
+on:
+  workflow_dispatch:
+    inputs:
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '20.9.0'
+        type: string
+      betaReleaseName:
+        description: 'Beta release name'
+        required: true
+        default: 'beta'
+        type: string
+
+jobs:
+  release-core:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/core
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Core - Update version with beta name
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          current_version=$(jq -r '.version' package.json)
+          beta_release_name="${{ github.event.inputs.betaReleaseName }}"
+          new_version="${current_version}-${beta_release_name}"
+          echo "Updating package.json version to $new_version"
+          jq ".version = \"$new_version\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
+
+      - name: Core - Read Package.json Version
+        id: version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm install
+
+      - name: Core - Run build
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run build
+
+      - name: Core - Publish
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm publish --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Core - Create git tag
+        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+      - name: Core - Push git tag
+        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+
+    outputs:
+      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+
+  on-failure:
+    needs: release-core
+    runs-on: ubuntu-latest
+    if: always() && needs.release-core.result == 'failure'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Remove git tag on failure
+        run: |
+          tagname="@scania/tegel@${{ needs.release-core.outputs.version }}"
+          if git rev-parse $tagname >/dev/null 2>&1; then
+            git push --no-verify --delete origin $tagname
+          fi
