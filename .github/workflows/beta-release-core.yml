@@ -7,10 +7,11 @@ on:
         required: true
         default: '20.9.0'
         type: string
-      betaReleaseName:
-        description: 'Beta release name'
+
+      betaVersionSuffix:
+        description: 'Beta version suffix (e.g., beta.0, beta.1)'
         required: true
-        default: 'beta'
+        default: 'beta.0'
         type: string
 
 jobs:
@@ -27,8 +28,8 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
-          registry-url: 'https://registry.npmjs.org'
+          node-version: ${{ inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org/'
 
       - name: Set Tegel user
         run: |
@@ -39,8 +40,8 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
           current_version=$(jq -r '.version' package.json)
-          beta_release_name="${{ github.event.inputs.betaReleaseName }}"
-          new_version="${current_version}-${beta_release_name}"
+          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          new_version="${current_version}-${beta_version_suffix}"
           echo "Updating package.json version to $new_version"
           jq ".version = \"$new_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
@@ -63,9 +64,9 @@ jobs:
 
       - name: Core - Publish
         working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm publish --tag beta
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --tag beta
 
       - name: Core - Create git tag
         run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
