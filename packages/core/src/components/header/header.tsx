@@ -30,8 +30,8 @@ export class TdsHeader {
     this.observer = new MutationObserver(callback);
   }
 
-  private handleSlotChange(e) {
-    this.updateRoles(e);
+  private handleSlotChange(): void {
+    this.applyNameEnd();
   }
 
   componentDidLoad() {
@@ -46,12 +46,14 @@ export class TdsHeader {
     updateListChildrenRoles(navElement);
   }
 
-  updateRoles(e) {
-    e.target.assignedElements().forEach((el) => {
-      if (el.tagName.toLowerCase() === 'tds-header-item') {
-        el.slot = 'end';
-      }
-    });
+  private applyNameEnd() {
+    // Apply name attribute to slot end
+    const slotEnd = this.host.querySelector('[slot="end"]');
+    console.log('slotEnd', slotEnd);
+
+    if (slotEnd) {
+      slotEnd.setAttribute('name', 'end');
+    }
   }
 
   disconnectedCallback() {
@@ -71,7 +73,7 @@ export class TdsHeader {
           <ul class="tds-header-component-list">
             <slot></slot>
             <li class="tds-header-middle-spacer"></li>
-            <slot onSlotchange={(e) => this.handleSlotChange(e)} name="end"></slot>
+            <slot onSlotchange={() => this.handleSlotChange()} name="end"></slot>
           </ul>
         </nav>
       </Host>
