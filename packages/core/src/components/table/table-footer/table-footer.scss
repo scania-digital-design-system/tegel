@@ -5,7 +5,7 @@
   @include tds-box-sizing;
 
   display: table-footer-group;
-  height: 48px;
+  height: var(--tds-spacing-element-48);
 
   .tds-table__footer-row {
     background-color: var(--tds-table-footer-background);
@@ -13,10 +13,10 @@
   }
 
   .tds-table__footer-cell {
-    padding: 0 16px;
+    padding: 0 var(--tds-spacing-element-16);
 
     .tds-table__pagination {
-      height: 48px;
+      height: var(--tds-spacing-element-48);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -29,10 +29,10 @@
         .rows-per-page {
           display: flex;
           align-items: center;
-          margin-right: 16px;
+          margin-right: var(--tds-spacing-element-16);
 
           p {
-            margin-right: 8px;
+            margin-right: var(--tds-spacing-element-8);
           }
         }
       }
@@ -45,10 +45,10 @@
         width: 54px;
         height: 30px;
         border: none;
-        border-radius: 4px;
+        border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
-        margin-right: 4px;
-        padding-left: 16px;
+        margin-right: var(--tds-spacing-element-4);
+        padding-left: var(--tds-spacing-element-16);
 
         &:hover {
           background-color: var(--tds-table-footer-page-selector-input-background-hover);
@@ -79,9 +79,9 @@
         border: none;
         background-color: transparent;
         cursor: pointer;
-        height: 32px;
-        width: 32px;
-        border-radius: 4px;
+        height: var(--tds-spacing-element-32);
+        width: var(--tds-spacing-element-32);
+        border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
         color: var(--tds-table-footer-page-selector-icon);
 
@@ -100,8 +100,8 @@
       }
 
       .tds-table__footer-btn-svg {
-        height: 20px;
-        width: 20px;
+        height: var(--tds-spacing-element-20);
+        width: var(--tds-spacing-element-20);
         fill: var(--tds-table-color);
       }
     }
@@ -109,14 +109,14 @@
 }
 
 :host(.tds-table--compact) {
-  height: 32px;
+  height: var(--tds-spacing-element-32);
 
   .tds-table__footer-cell {
     .tds-table__pagination {
-      height: 32px;
+      height: var(--tds-spacing-element-32);
 
       .tds-table__page-selector-input {
-        height: 24px;
+        height: var(--tds-spacing-element-24);
       }
 
       .tds-table__footer-btn {
@@ -166,7 +166,7 @@ tds-dropdown:focus-within {
     height: 100%;
     width: 100%;
     background-color: transparent;
-    border-radius: 4px;
+    border-radius: var(--tds-spacing-element-4);
     pointer-events: none;
     @include tds-focus-state;
   }
