@@ -136,10 +136,11 @@ export default {
       control: {
         type: 'radio',
       },
+      options: ['auto', 'hidden', 'visible'],
       table: {
         defaultValue: { summary: 'auto' },
       },
-      options: ['auto', 'hidden', 'visible'],
+
     },
     autoCollapse: {
       name: 'Auto Collapse',
@@ -153,6 +154,7 @@ export default {
     },
 
   },
+
   args: {
     modeVariant: 'Inherit from parent',
     compactDesign: false,
