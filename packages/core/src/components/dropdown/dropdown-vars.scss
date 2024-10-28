@@ -57,6 +57,6 @@
     --tds-dropdown-border-bottom: transparent;
     --tds-dropdown-border-bottom-hover: transparent;
     --tds-dropdown-border-bottom-open: transparent;
-    --tds-dropdown-border-radius: 4px;
+    --tds-dropdown-border-radius: var(--tds-spacing-element-4);
   }
 }
