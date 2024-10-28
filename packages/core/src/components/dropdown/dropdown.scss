@@ -26,6 +26,7 @@
     button:focus {
       border-bottom-color: var(--tds-dropdown-border-bottom);
     }
+
     button {
       border-bottom-color: var(--tds-dropdown-border-bottom);
     }
@@ -85,6 +86,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       margin-right: var(--tds-placeholder-margin);
+
+      /* To center the text vertically */
+      &.xs {
+        line-height: 1;
+      }
     }
 
     .label-inside-as-placeholder {
