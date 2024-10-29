@@ -15,11 +15,6 @@ on:
         default: 'beta.0'
         type: string
 
-      tegelVersion:
-        description: 'Version of @scania/tegel to use (e.g., 1.16.0-beta.0)'
-        required: true
-        type: string
-
 jobs:
   release-angular-17:
     runs-on: ubuntu-latest
@@ -31,19 +26,21 @@ jobs:
         with:
           ref: develop
 
-      - name: Set up node
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
 
-      - name: Angular-17 - Read package.json Version
-        id: version
-        working-directory: packages/angular-17/projects/components
-        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+      - name: Read @scania/tegel version
+        id: tegel-version
+        working-directory: packages/core
+        run: echo "TEGEL_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
         run: npm install
@@ -59,8 +56,8 @@ jobs:
       - name: Update @scania/tegel peerDependency in Angular-17 workspace
         working-directory: packages/angular-17
         run: |
-          echo "Updating @scania/tegel to version ${{ inputs.tegelVersion }} in package.json"
-          jq ".peerDependencies[\"@scania/tegel\"] = \"${{ inputs.tegelVersion }}\"" package.json > package.tmp.json
+          echo "Updating @scania/tegel to version ${{ steps.tegel-version.outputs.TEGEL_VERSION }} in package.json"
+          jq ".peerDependencies[\"@scania/tegel\"] = \"${{ steps.tegel-version.outputs.TEGEL_VERSION }}\"" package.json > package.tmp.json
           mv package.tmp.json package.json
 
       - name: Angular-17 wrapper - Install
@@ -70,13 +67,13 @@ jobs:
       - name: Update @scania/tegel peerDependency and version in Angular-17 wrapper
         working-directory: packages/angular-17/projects/components
         run: |
-          echo "Updating @scania/tegel to version ${{ inputs.tegelVersion }} and setting package version"
-          jq ".peerDependencies[\"@scania/tegel\"] = \"${{ inputs.tegelVersion }}\" | .version = \"${{ inputs.tegelVersion }}-${{ inputs.betaVersionSuffix }}\"" package.json > package.tmp.json
+          echo "Updating @scania/tegel to version ${{ steps.tegel-version.outputs.TEGEL_VERSION }} and setting package version"
+          jq ".peerDependencies[\"@scania/tegel\"] = \"${{ steps.tegel-version.outputs.TEGEL_VERSION }}\" | .version = \"${{ steps.tegel-version.outputs.TEGEL_VERSION }}-${{ github.event.inputs.betaVersionSuffix }}\"" package.json > package.tmp.json
           mv package.tmp.json package.json
 
       - name: Install @scania/tegel as dev dependency for build
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ inputs.tegelVersion }} --save-dev
+        run: npm install @scania/tegel@${{ steps.tegel-version.outputs.TEGEL_VERSION }} --save-dev
 
       - name: Angular-17 - Run build
         run: npm run build-angular-17
@@ -89,13 +86,13 @@ jobs:
           npm publish --access public --tag beta
 
       - name: Create git tag
-        run: git tag @scania/tegel-angular-17@${{ inputs.tegelVersion }}-${{ inputs.betaVersionSuffix }}
+        run: git tag @scania/tegel-angular-17@${{ steps.tegel-version.outputs.TEGEL_VERSION }}-${{ github.event.inputs.betaVersionSuffix }}
 
       - name: Push git tag
-        run: git push --no-verify origin @scania/tegel-angular-17@${{ inputs.tegelVersion }}-${{ inputs.betaVersionSuffix }}
+        run: git push --no-verify origin @scania/tegel-angular-17@${{ steps.tegel-version.outputs.TEGEL_VERSION }}-${{ github.event.inputs.betaVersionSuffix }}
 
     outputs:
-      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+      version: ${{ steps.tegel-version.outputs.TEGEL_VERSION }}-${{ github.event.inputs.betaVersionSuffix }}
 
   on-failure:
     needs: release-angular-17
