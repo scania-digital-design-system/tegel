@@ -4,12 +4,13 @@
   --tds-dropdown-border-bottom: var(--tds-grey-600);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-800);
   --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-value-color: var(--tds-grey-868);
+  --tds-dropdown-value-color: var(--tds-grey-958);
   --tds-dropdown-label-color: var(--tds-grey-958);
   --tds-dropdown-label-inside-color: var(--tds-grey-958);
   --tds-dropdown-helper-color: var(--tds-grey-700);
   --tds-dropdown-placeholder-color: var(--tds-grey-700);
   --tds-dropdown-disabled-color: var(--tds-grey-400);
+  --tds-dropdown-filter-input-color: var(--tds-grey-958);
   --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
 
   .tds-mode-variant-primary {
@@ -35,12 +36,13 @@
   --tds-dropdown-border-bottom: var(--tds-grey-600);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-400);
   --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-value-color: var(--tds-white);
+  --tds-dropdown-value-color: var(--tds-grey-50);
   --tds-dropdown-label-color: var(--tds-grey-50);
   --tds-dropdown-label-inside-color: var(--tds-grey-50);
   --tds-dropdown-helper-color: var(--tds-grey-500);
   --tds-dropdown-placeholder-color: var(--tds-grey-400);
   --tds-dropdown-disabled-color: var(--tds-grey-800);
+  --tds-dropdown-filter-input-color: var(--tds-grey-50);
 
   .tds-mode-variant-primary {
     --tds-dropdown-bg: var(--tds-grey-868);
