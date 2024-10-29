@@ -1,0 +1,85 @@
+name: Beta Release @scania/tegel-angular
+
+on:
+  workflow_dispatch:
+    inputs:
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '20.9.0'
+        type: string
+
+      betaVersionSuffix:
+        description: 'Beta version suffix (e.g., beta.0, beta.1)'
+        required: true
+        default: 'beta.0'
+        type: string
+
+jobs:
+  beta-release-angular:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Ensure full history is fetched for versioning
+          ref: develop
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Configure Git user
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Install root dependencies
+        run: npm install
+
+      - name: Install Core dependencies
+        working-directory: packages/core
+        run: npm install
+
+      - name: Read Core package version
+        id: core-version
+        working-directory: packages/core
+        run: echo "CORE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Update Angular package version and dependency
+        working-directory: packages/angular
+        run: |
+          # Update package version to match Core version with beta suffix
+          NEW_VERSION="${{ steps.core-version.outputs.CORE_VERSION }}-${{ github.event.inputs.betaVersionSuffix }}"
+          jq ".version = \"$NEW_VERSION\" | .dependencies[\"@scania/tegel\"] = \"${{ steps.core-version.outputs.CORE_VERSION }}\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
+          echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Install Angular dependencies
+        working-directory: packages/angular
+        run: npm install
+
+      - name: Build Angular package
+        run: npm run build-angular
+
+      - name: Publish Angular package to NPM
+        working-directory: packages/angular
+        run: npm publish --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit and Push changes
+        run: |
+          git add packages/angular/package.json
+          git commit -m "chore(release): ${{ steps.core-version.outputs.CORE_VERSION }}-${{ github.event.inputs.betaVersionSuffix }} [skip ci]"
+          git tag @scania/tegel-angular@${{ steps.core-version.outputs.CORE_VERSION }}-${{ github.event.inputs.betaVersionSuffix }}
+          git push origin develop --tags
+        env:
+          GIT_AUTHOR_NAME: 'Tegel - Scania'
+          GIT_AUTHOR_EMAIL: 'tegel.design.system@gmail.com'
+          GIT_COMMITTER_NAME: 'Tegel - Scania'
+          GIT_COMMITTER_EMAIL: 'tegel.design.system@gmail.com'
