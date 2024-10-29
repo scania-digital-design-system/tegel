@@ -16,18 +16,27 @@ on:
       includeAngular17:
         description: 'Include Angular 17 package?'
         required: false
-        default: true
-        type: boolean
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
       includeAngular:
         description: 'Include Angular package?'
         required: false
-        default: true
-        type: boolean
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
       includeReact:
         description: 'Include React package?'
         required: false
-        default: true
-        type: boolean
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
 
 jobs:
   beta-release-core:
