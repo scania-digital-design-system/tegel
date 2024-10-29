@@ -15,7 +15,7 @@ on:
         type: string
 
 jobs:
-  release-core:
+  beta-release-core:
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/core
@@ -78,7 +78,7 @@ jobs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   on-failure:
-    needs: release-core
+    needs: beta-release-core
     runs-on: ubuntu-latest
     if: always() && needs.release-core.result == 'failure'
     steps:
