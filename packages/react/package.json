@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-react",
-  "version": "1.17.0-betaworkflow.2",
+  "version": "1.17.0-betaworkflow.3",
   "description": "React wrappers for Tegel package",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
-    "@scania/tegel": "1.17.0-betaworkflow.2"
+    "@scania/tegel": "1.17.0-betaworkflow.3"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
