@@ -8,11 +8,13 @@ on:
         required: true
         default: '20.9.0'
         type: string
+
       betaVersionSuffix:
         description: 'Beta version suffix (e.g., beta.0, beta.1)'
         required: true
         default: 'beta.0'
         type: string
+
       includeAngular17:
         description: 'Include Angular 17 package?'
         required: false
@@ -21,6 +23,7 @@ on:
         options:
           - 'true'
           - 'false'
+
       includeAngular:
         description: 'Include Angular package?'
         required: false
@@ -29,6 +32,7 @@ on:
         options:
           - 'true'
           - 'false'
+
       includeReact:
         description: 'Include React package?'
         required: false
@@ -70,11 +74,6 @@ jobs:
           jq ".version = \"$new_version\"" package.json > package.tmp.json
           mv package.tmp.json package.json
 
-      - name: Core - Read Package.json Version
-        id: version
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-
       - name: Install dependencies in root
         run: npm install
 
@@ -87,24 +86,21 @@ jobs:
         run: npm run build
 
       - name: Core - Publish
-        if: steps.check_version.outputs.publish == 'true'
         working-directory: ${{ env.WORKING_DIRECTORY }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --tag beta
 
       - name: Core - Create git tag
-        if: steps.check_version.outputs.publish == 'true'
         run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
       - name: Core - Push git tag
-        if: steps.check_version.outputs.publish == 'true'
         run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
-  release-angular-17:
+  beta-release-angular-17:
     needs: beta-release-core
     runs-on: ubuntu-latest
     env:
@@ -158,7 +154,7 @@ jobs:
         working-directory: packages/angular-17/projects/components
         run: |
           echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} and setting package version"
-          NEW_VERSION="${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}"
+          NEW_VERSION="${{ inputs.betaVersionSuffix }}"
           jq ".peerDependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\" | .version = \"$NEW_VERSION\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -187,7 +183,7 @@ jobs:
 
   on-failure-angular-17:
     if: always() && needs.release-angular-17.result == 'failure' && inputs.includeAngular17 == 'true'
-    needs: release-angular-17
+    needs: beta-release-angular-17
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -241,7 +237,7 @@ jobs:
       - name: Update Angular package version and dependency
         working-directory: packages/angular
         run: |
-          NEW_VERSION="${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}"
+          NEW_VERSION="${{ inputs.betaVersionSuffix }}"
           jq ".version = \"$NEW_VERSION\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -262,8 +258,7 @@ jobs:
       - name: Commit and Push changes
         run: |
           git add packages/angular/package.json
-          git commit -m "chore(release): ${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }} [skip ci]"
-          git tag @scania/tegel-angular@${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}
+          git tag @scania/tegel-angular@${{ inputs.betaVersionSuffix }}
           git push origin develop --tags
         env:
           GIT_AUTHOR_NAME: 'Tegel - Scania'
@@ -272,7 +267,7 @@ jobs:
           GIT_COMMITTER_EMAIL: 'tegel.design.system@gmail.com'
 
     outputs:
-      version: ${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}
+      version: ${{ inputs.betaVersionSuffix }}
 
   on-failure-angular:
     if: always() && needs.beta-release-angular.result == 'failure' && inputs.includeAngular == 'true'
@@ -329,7 +324,7 @@ jobs:
       - name: Update React package version and dependency
         working-directory: packages/react
         run: |
-          NEW_VERSION="${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}"
+          NEW_VERSION="${{ inputs.betaVersionSuffix }}"
           jq ".version = \"$NEW_VERSION\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -350,8 +345,8 @@ jobs:
       - name: Commit and Push changes
         run: |
           git add packages/react/package.json
-          git commit -m "chore(release): ${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }} [skip ci]"
-          git tag @scania/tegel-react@${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}
+          git commit -m "chore(release): ${{ inputs.betaVersionSuffix }} [skip ci]"
+          git tag @scania/tegel-react@${{ inputs.betaVersionSuffix }}
           git push origin develop --tags
         env:
           GIT_AUTHOR_NAME: 'Tegel - Scania'
@@ -360,7 +355,7 @@ jobs:
           GIT_COMMITTER_EMAIL: 'tegel.design.system@gmail.com'
 
     outputs:
-      version: ${{ needs.beta-release-core.outputs.version }}-${{ inputs.betaVersionSuffix }}
+      version: ${{ inputs.betaVersionSuffix }}
 
   on-failure-react:
     if: always() && needs.beta-release-react.result == 'failure' && inputs.includeReact == 'true'
