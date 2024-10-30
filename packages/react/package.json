@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-react",
-  "version": "1.17.0-betaworkflow.3",
+  "version": "1.17.0",
   "description": "React wrappers for Tegel package",
   "main": "dist/index.js",
   "module": "dist/index.js",
