@@ -85,20 +85,44 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
 
+      - name: Check if version already exists
+        id: check-version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          PACKAGE_VERSION=$(jq -r '.version' package.json)
+          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+            echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+            echo "VERSION_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "VERSION_EXISTS=false" >> $GITHUB_ENV
+          fi
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
       - name: Core - Publish
+        if: env.VERSION_EXISTS != 'true'
         working-directory: ${{ env.WORKING_DIRECTORY }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public --tag beta
 
       - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        if: env.VERSION_EXISTS != 'true'
+        run: |
+          TAG_NAME="@scania/tegel@${{ steps.check-version.outputs.PACKAGE_VERSION }}"
+          if git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists. Skipping tag creation."
+          else
+            git tag "$TAG_NAME"
+          fi
 
       - name: Core - Push git tag
-        run: git push --no-verify origin @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        if: env.VERSION_EXISTS != 'true'
+        run: git push --no-verify origin "@scania/tegel@${{ steps.check-version.outputs.PACKAGE_VERSION }}"
 
     outputs:
-      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+      version: ${{ steps.check-version.outputs.PACKAGE_VERSION }}
+      version_exists: ${{ env.VERSION_EXISTS }}
 
   beta-release-angular-17:
     needs: beta-release-core
@@ -151,10 +175,13 @@ jobs:
         run: npm install
 
       - name: Update @scania/tegel peerDependency and version in Angular-17 wrapper
+        id: set-version
         working-directory: packages/angular-17/projects/components
         run: |
           echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} and setting package version"
-          NEW_VERSION="${{ inputs.betaVersionSuffix }}"
+          current_version=$(jq -r '.version' package.json)
+          NEW_VERSION="${current_version}-${{ inputs.betaVersionSuffix }}"
+          echo "Setting new version: $NEW_VERSION"
           jq ".peerDependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\" | .version = \"$NEW_VERSION\"" package.json > package.tmp.json
           mv package.tmp.json package.json
           echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
@@ -173,13 +200,13 @@ jobs:
         run: npm publish --access public --tag beta
 
       - name: Create git tag
-        run: git tag @scania/tegel-angular-17@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: git tag @scania/tegel-angular-17@${{ steps.set-version.outputs.PACKAGE_VERSION }}
 
       - name: Push git tag
-        run: git push --no-verify origin @scania/tegel-angular-17@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: git push --no-verify origin @scania/tegel-angular-17@${{ steps.set-version.outputs.PACKAGE_VERSION }}
 
     outputs:
-      version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+      version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
 
   on-failure-angular-17:
     if: always() && needs.release-angular-17.result == 'failure' && inputs.includeAngular17 == 'true'
@@ -193,9 +220,9 @@ jobs:
 
       - name: Remove git tag on failure
         run: |
-          tagname="@scania/tegel-angular-17@${{ needs.release-angular-17.outputs.version }}"
+          tagname="@scania/tegel-angular-17@${{ needs.beta-release-angular-17.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
+          git push --no-verify --delete origin $tagname
           fi
 
   beta-release-angular:
@@ -235,12 +262,18 @@ jobs:
         run: npm install
 
       - name: Update Angular package version and dependency
+        id: set-version
         working-directory: packages/angular
         run: |
-          NEW_VERSION="${{ inputs.betaVersionSuffix }}"
-          jq ".version = \"$NEW_VERSION\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
+          echo "Updating Angular package version and dependency"
+          # Extract the current version without any pre-release suffixes
+          current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          new_version="${current_version}-${beta_version_suffix}"
+          echo "Setting new version: $new_version"
+          jq ".version = \"$new_version\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
           mv package.tmp.json package.json
-          echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
 
       - name: Install Angular dependencies
         working-directory: packages/angular
@@ -249,7 +282,22 @@ jobs:
       - name: Build Angular package
         run: npm run build-angular
 
+      - name: Check if Angular version already exists
+        id: check-version
+        working-directory: packages/angular
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
+          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+          echo "VERSION_EXISTS=true" >> $GITHUB_ENV
+          else
+          echo "VERSION_EXISTS=false" >> $GITHUB_ENV
+          fi
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
       - name: Publish Angular package to NPM
+        if: env.VERSION_EXISTS != 'true'
         working-directory: packages/angular
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -258,7 +306,8 @@ jobs:
       - name: Commit and Push changes
         run: |
           git add packages/angular/package.json
-          git tag @scania/tegel-angular@${{ inputs.betaVersionSuffix }}
+          git commit -m "chore(release): ${{ steps.set-version.outputs.PACKAGE_VERSION }} [skip ci]"
+          git tag @scania/tegel-angular@${{ steps.set-version.outputs.PACKAGE_VERSION }}
           git push origin develop --tags
         env:
           GIT_AUTHOR_NAME: 'Tegel - Scania'
@@ -267,10 +316,11 @@ jobs:
           GIT_COMMITTER_EMAIL: 'tegel.design.system@gmail.com'
 
     outputs:
-      version: ${{ inputs.betaVersionSuffix }}
+      version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
+      version_exists: ${{ env.VERSION_EXISTS }}
 
   on-failure-angular:
-    if: always() && needs.beta-release-angular.result == 'failure' && inputs.includeAngular == 'true'
+    if: always() && needs.beta-release-angular.result == 'failure' && github.event.inputs.includeAngular == 'true'
     needs: beta-release-angular
     runs-on: ubuntu-latest
     steps:
@@ -283,7 +333,7 @@ jobs:
         run: |
           tagname="@scania/tegel-angular@${{ needs.beta-release-angular.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
+          git push --no-verify --delete origin $tagname
           fi
 
   beta-release-react:
@@ -322,12 +372,18 @@ jobs:
         run: npm install
 
       - name: Update React package version and dependency
+        id: set-version
         working-directory: packages/react
         run: |
-          NEW_VERSION="${{ inputs.betaVersionSuffix }}"
-          jq ".version = \"$NEW_VERSION\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
+          echo "Updating React package version and dependency"
+          # Extract the current version without any pre-release suffixes
+          current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          new_version="${current_version}-${beta_version_suffix}"
+          echo "Setting new version: $new_version"
+          jq ".version = \"$new_version\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
           mv package.tmp.json package.json
-          echo "PACKAGE_VERSION=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
 
       - name: Install React dependencies
         working-directory: packages/react
@@ -336,7 +392,22 @@ jobs:
       - name: Build React package
         run: npm run build-react
 
+      - name: Check if React version already exists
+        id: check-version
+        working-directory: packages/react
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          PACKAGE_VERSION=${{ steps.set-version.outputs.PACKAGE_VERSION }}
+          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+          echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+          echo "VERSION_EXISTS=true" >> $GITHUB_ENV
+          else
+          echo "VERSION_EXISTS=false" >> $GITHUB_ENV
+          fi
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
       - name: Publish React package to NPM
+        if: env.VERSION_EXISTS != 'true'
         working-directory: packages/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -345,8 +416,8 @@ jobs:
       - name: Commit and Push changes
         run: |
           git add packages/react/package.json
-          git commit -m "chore(release): ${{ inputs.betaVersionSuffix }} [skip ci]"
-          git tag @scania/tegel-react@${{ inputs.betaVersionSuffix }}
+          git commit -m "chore(release): ${{ steps.set-version.outputs.PACKAGE_VERSION }} [skip ci]"
+          git tag @scania/tegel-react@${{ steps.set-version.outputs.PACKAGE_VERSION }}
           git push origin develop --tags
         env:
           GIT_AUTHOR_NAME: 'Tegel - Scania'
@@ -355,10 +426,11 @@ jobs:
           GIT_COMMITTER_EMAIL: 'tegel.design.system@gmail.com'
 
     outputs:
-      version: ${{ inputs.betaVersionSuffix }}
+      version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
+      version_exists: ${{ env.VERSION_EXISTS }}
 
   on-failure-react:
-    if: always() && needs.beta-release-react.result == 'failure' && inputs.includeReact == 'true'
+    if: always() && needs.beta-release-react.result == 'failure' && github.event.inputs.includeReact == 'true'
     needs: beta-release-react
     runs-on: ubuntu-latest
     steps:
@@ -371,5 +443,5 @@ jobs:
         run: |
           tagname="@scania/tegel-react@${{ needs.beta-release-react.outputs.version }}"
           if git rev-parse $tagname >/dev/null 2>&1; then
-            git push --no-verify --delete origin $tagname
+          git push --no-verify --delete origin $tagname
           fi
