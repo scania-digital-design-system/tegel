@@ -32,29 +32,40 @@ jobs:
             "type": "message",
             "attachments": [
               {
-                "contentType": "application/vnd.microsoft.card.hero",
+                "contentType": "application/vnd.microsoft.card.adaptive",
                 "content": {
-                  "title": "Build Failure Notification",
-                  "text": "The build has failed. Please check the details.",
-                  "facts": [
+                  "type": "AdaptiveCard",
+                  "version": "1.0",
+                  "body": [
                     {
-                      "name": "Repository",
-                      "value": "'"${REPO_NAME}"'"
+                      "type": "TextBlock",
+                      "size": "Medium",
+                      "weight": "Bolder",
+                      "text": "Build Failure Notification"
                     },
                     {
-                      "name": "Branch",
-                      "value": "'"${BRANCH_NAME}"'"
-                    },
-                    {
-                      "name": "Commit",
-                      "value": "'"${COMMIT_SHA}"'"
+                      "type": "FactSet",
+                      "facts": [
+                        {
+                          "title": "Repository",
+                          "value": "'"${REPO_NAME}"'"
+                        },
+                        {
+                          "title": "Branch",
+                          "value": "'"${BRANCH_NAME}"'"
+                        },
+                        {
+                          "title": "Commit",
+                          "value": "'"${COMMIT_SHA}"'"
+                        }
+                      ]
                     }
                   ],
-                  "buttons": [
+                  "actions": [
                     {
-                      "type": "openUrl",
+                      "type": "Action.OpenUrl",
                       "title": "View Logs",
-                      "value": "'"${RUN_URL}"'"
+                      "url": "'"${RUN_URL}"'"
                     }
                   ]
                 }
