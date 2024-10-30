@@ -358,7 +358,8 @@
   },
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "hydrate/"
   ],
   "publishConfig": {
     "access": "public"

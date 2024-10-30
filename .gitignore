@@ -44,6 +44,7 @@ UserInterfaceState.xcuserstate
 .www/
 .data/
 # src/**/**.md
+packages/core/hydrate
 
 # Compiled theme
 src/themes.built/
