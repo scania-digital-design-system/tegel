@@ -1,9 +1,11 @@
-name: Scheduled Release Smoke Test
+name: Smoke test - Release
 
 on:
   schedule:
     # Runs every morning at 05:00
     - cron: '0 5 * * *'
+  #Manually trigger smoke test
+  workflow_dispatch:
 
 jobs:
   release-core:
