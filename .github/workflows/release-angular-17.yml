@@ -25,7 +25,7 @@ on:
         type: boolean
 
 jobs:
-  beta-release-angular-17:
+  release-angular-17:
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular-17
@@ -90,7 +90,7 @@ jobs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
 
   on-failure:
-    needs: beta-release-angular-17
+    needs: release-angular-17
     runs-on: ubuntu-latest
     if: always() && needs.release-angular-17.result == 'failure'
 
