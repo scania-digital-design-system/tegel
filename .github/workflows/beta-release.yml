@@ -23,7 +23,7 @@ on:
       includeAngular17:
         description: 'Include Angular 17 package?'
         required: false
-        default: 'true'
+        default: 'false'
         type: choice
         options:
           - 'true'
