@@ -64,7 +64,7 @@ jobs:
                   "actions": [
                     {
                       "type": "Action.OpenUrl",
-                      "title": "View Logs",
+                      "title": "View failed jobs",
                       "url": "'"${RUN_URL}"'"
                     }
                   ]
