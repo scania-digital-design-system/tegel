@@ -76,6 +76,8 @@ jobs:
       - name: Create release branch
         run: |
           git checkout -b release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          git add .
+          git commit -m "chore: bump versions to ${{ steps.version.outputs.PACKAGE_VERSION }}"
           git push -u --no-verify origin release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
 
     #Need to output the version to use it in the next jobs
