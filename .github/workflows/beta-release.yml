@@ -41,7 +41,7 @@ on:
       includeReact:
         description: 'Include React package?'
         required: false
-        default: 'true'
+        default: 'false'
         type: choice
         options:
           - 'true'
