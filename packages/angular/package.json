@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-angular",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "description": "Angular wrappers for Tegel package",
   "main": "dist",
   "files": [
@@ -11,28 +11,28 @@
     "build": "npx -p @angular/cli ng build components"
   },
   "dependencies": {
-    "@scania/tegel": "1.17.0-betaworkflow.1",
+    "@scania/tegel": "^1.18.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^14",
     "@angular/animations": "^14",
+    "@angular/cli": "~14",
     "@angular/common": "^14",
     "@angular/compiler": "^14",
+    "@angular/compiler-cli": "^14",
     "@angular/core": "^14",
     "@angular/forms": "^14",
     "@angular/platform-browser": "^14",
     "@angular/platform-browser-dynamic": "^14",
     "@angular/router": "^14",
-    "@angular-devkit/build-angular": "^14",
-    "@angular/cli": "~14",
-    "@angular/compiler-cli": "^14",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^14",
-    "zone.js": "~0.12.0",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "zone.js": "~0.12.0"
   }
 }
