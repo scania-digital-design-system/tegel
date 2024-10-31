@@ -11,11 +11,7 @@
   background-color: var(--tds-text-field-background);
 
   &::placeholder {
-    color: var(--tds-text-field-color);
-  }
-
-  &:focus::placeholder {
-    color: var(--tds-text-field-placeholder-focus-color);
+    color: var(--tds-text-field-placeholder);
   }
 
   &:disabled {
@@ -123,7 +119,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--tds-text-field-placeholder-focus-color);
+    color: var(--tds-text-field-placeholder-color);
   }
 }
 
