@@ -169,15 +169,15 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
 
       - name: Install dependencies in root
-        run: npm ci
+        run: npm i
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm ci
+        run: npm i
 
       - name: Angular - Install
         working-directory: packages/angular
-        run: npm ci
+        run: npm i
 
       - name: Angular - Install latest tegel package
         working-directory: packages/angular
@@ -228,19 +228,19 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
 
       - name: Install dependencies in root
-        run: npm ci
+        run: npm i
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm ci
+        run: npm i
 
       - name: Angular-17 workspace - Install
         working-directory: packages/angular-17
-        run: npm ci
+        run: npm i
 
       - name: Angular-17 wrapper - Install
         working-directory: packages/angular-17/projects/components
-        run: npm ci
+        run: npm i
 
       - name: Angular-17 workspace - Install latest tegel package
         working-directory: packages/angular-17
@@ -301,15 +301,15 @@ jobs:
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
-        run: npm ci
+        run: npm i
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm ci
+        run: npm i
 
       - name: React - Install
         working-directory: packages/react
-        run: npm ci
+        run: npm i
 
       - name: React - Install latest tegel package
         working-directory: packages/react
