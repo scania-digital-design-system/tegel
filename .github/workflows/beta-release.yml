@@ -32,7 +32,7 @@ on:
       includeAngular:
         description: 'Include Angular package?'
         required: false
-        default: 'true'
+        default: 'false'
         type: choice
         options:
           - 'true'
