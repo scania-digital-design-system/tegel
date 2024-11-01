@@ -1,6 +1,7 @@
 packages/core/dist
 packages/core/www
 packages/core/loader
+packages/core/hydrate
 packages/core/components
 
 packages/angular/dist
@@ -44,7 +45,7 @@ UserInterfaceState.xcuserstate
 .www/
 .data/
 # src/**/**.md
-packages/core/hydrate
+
 
 # Compiled theme
 src/themes.built/
