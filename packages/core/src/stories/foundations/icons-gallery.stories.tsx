@@ -25,9 +25,9 @@ const Template = () =>
   formatHtmlPreview(
     `
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(144px, 1fr)); gap: 16px; padding: 16px;">
-        ${icons.join('')} 
+        ${icons.join('')}
     </div>
-  `,
+    `,
   );
 
 export const Gallery = Template.bind({});
