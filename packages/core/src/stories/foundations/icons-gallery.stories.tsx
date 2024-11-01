@@ -14,7 +14,7 @@ export default {
 
 const icons = iconsNames.map(
   (icon) => `
-        <tds-block>  
+        <tds-block mode-variant="primary">  
             <tds-icon name="${icon}" size="48"></tds-icon>  
             <p class="tds-detail-05">${icon}</p>  
         </tds-block>
