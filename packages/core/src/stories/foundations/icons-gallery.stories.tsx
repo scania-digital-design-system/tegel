@@ -7,7 +7,7 @@ export default {
     layout: 'fullscreen',
     options: {
       showPanel: false,
-      showToolbar: false,
+      showToolbar: true,
     },
   },
 };
@@ -24,7 +24,7 @@ const icons = iconsNames.map(
 const Template = () =>
   formatHtmlPreview(
     `
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; padding: 16px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(144px, 1fr)); gap: 16px; padding: 16px;">
         ${icons.join('')} 
     </div>
   `,
