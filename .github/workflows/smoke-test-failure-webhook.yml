@@ -1,4 +1,4 @@
-name: Smoke test webhook
+name: 'ci: smoke test failure webhook'
 
 on:
   push:
@@ -8,19 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Run your build or tests
-        run: |
-          echo "Running build/test..."
-          # Replace this with your actual build/test command
-          exit 1 # Simulate failure
-
-      - name: Notify Teams on failure
-        if: failure()
+      - name: Post failure in Teams channel
         env:
           TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
           REPO_NAME: ${{ github.repository }}
@@ -64,7 +53,7 @@ jobs:
                   "actions": [
                     {
                       "type": "Action.OpenUrl",
-                      "title": "View failed jobs",
+                      "title": "View failed run",
                       "url": "'"${RUN_URL}"'"
                     }
                   ]

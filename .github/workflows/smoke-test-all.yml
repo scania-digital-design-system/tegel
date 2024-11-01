@@ -213,3 +213,6 @@ jobs:
       - name: Check results
         run: |
           echo "All previous jobs have completed successfully!"
+      - name: Notify in Teams on failure
+        if: failure()
+        uses: ./.github/workflows/smoke-test-webhook.yml
