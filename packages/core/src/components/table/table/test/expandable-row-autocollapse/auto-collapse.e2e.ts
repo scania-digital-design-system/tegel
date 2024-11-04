@@ -28,8 +28,12 @@ test.describe.serial('Expandable Table Rows', () => {
     const secondRowContent = page.getByText(/Hello to you too/);
     await expect(secondRowContent).toBeVisible();
 
-    // Assert that the first row is now collapsed (this should fail with auto-collapse="false")
+    // Wait for the first row to be hidden using waitFor instead of expect
+    await firstRowContent.waitFor({ state: 'hidden', timeout: 5000 });
+
+    // Double-check the state
     await expect(firstRowContent).toBeHidden();
+    await expect(secondRowContent).toBeVisible();
 
     /* check input screenshot diff */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
