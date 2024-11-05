@@ -33,11 +33,6 @@ export class TdsHeader {
     this.observer = new MutationObserver(callback);
   }
 
-  private handleSlotChange(): void {
-    console.log('TdsHeader: handleSlotChange called');
-    this.applyNameEnd();
-  }
-
   componentDidLoad() {
     console.log('TdsHeader: componentDidLoad');
 
@@ -50,11 +45,6 @@ export class TdsHeader {
     });
 
     updateListChildrenRoles(navElement);
-  }
-
-  private applyNameEnd() {
-    console.log('TdsHeader: applyNameEnd called');
-    // Any additional code for `applyNameEnd` can go here
   }
 
   disconnectedCallback() {
@@ -77,7 +67,7 @@ export class TdsHeader {
           <ul class="tds-header-component-list">
             <slot></slot>
             <li class="tds-header-middle-spacer"></li>
-            <slot onSlotchange={() => this.handleSlotChange()} name="end"></slot>
+            <slot name="end"></slot>
           </ul>
         </nav>
       </Host>
