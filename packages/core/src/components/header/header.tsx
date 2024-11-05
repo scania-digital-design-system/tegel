@@ -19,9 +19,12 @@ export class TdsHeader {
   private observer: MutationObserver;
 
   constructor() {
+    console.log('TdsHeader: constructor');
+
     const callback: MutationCallback = (mutationsList) => {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
+          console.log('TdsHeader: Mutation observed - childList changed');
           updateListChildrenRoles(mutation.target);
         }
       });
@@ -31,10 +34,13 @@ export class TdsHeader {
   }
 
   private handleSlotChange(): void {
+    console.log('TdsHeader: handleSlotChange called');
     this.applyNameEnd();
   }
 
   componentDidLoad() {
+    console.log('TdsHeader: componentDidLoad');
+
     const hostElement = this.host;
     const navElement = hostElement.querySelector('.tds-header-component-list');
 
@@ -47,20 +53,18 @@ export class TdsHeader {
   }
 
   private applyNameEnd() {
-    // Apply name attribute to slot end
-    const slotEnd = this.host.querySelector('[slot="end"]');
-    console.log('slotEnd', slotEnd);
-
-    if (slotEnd) {
-      slotEnd.setAttribute('name', 'end');
-    }
+    console.log('TdsHeader: applyNameEnd called');
+    // Any additional code for `applyNameEnd` can go here
   }
 
   disconnectedCallback() {
+    console.log('TdsHeader: disconnectedCallback');
     this.observer.disconnect();
   }
 
   render() {
+    console.log('TdsHeader: render');
+
     const navAttributes = {
       ...inheritAriaAttributes(this.host),
     };
@@ -71,7 +75,7 @@ export class TdsHeader {
         <slot name="title"></slot>
         <nav {...navAttributes}>
           <ul class="tds-header-component-list">
-            <slot></slot>
+            <slot name="start"></slot>
             <li class="tds-header-middle-spacer"></li>
             <slot onSlotchange={() => this.handleSlotChange()} name="end"></slot>
           </ul>
