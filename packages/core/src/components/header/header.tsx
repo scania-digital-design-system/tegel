@@ -35,16 +35,12 @@ export class TdsHeader {
 
   componentDidLoad() {
     console.log('TdsHeader: componentDidLoad');
-
-    const hostElement = this.host;
-    const navElement = hostElement.querySelector('.tds-header-component-list');
-
-    this.observer.observe(navElement, {
+    const defaultSlot = this.host.shadowRoot.querySelector('slot:not([name])');
+    this.observer.observe(defaultSlot, {
       childList: true,
-      subtree: false,
+      subtree: true,
     });
-
-    updateListChildrenRoles(navElement);
+    updateListChildrenRoles(defaultSlot);
   }
 
   disconnectedCallback() {
