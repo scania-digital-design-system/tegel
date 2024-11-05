@@ -112,7 +112,7 @@ export type IconNames =
   | 'timer'
   | 'tool_inactive'
   | 'tool'
-  | 'trailer-united-optimized'
+  | 'trailer'
   | 'trash_inactive'
   | 'trash'
   | 'truck'
