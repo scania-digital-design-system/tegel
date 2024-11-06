@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#0D0F13;}
-</style>
-<path class="st0" d="M14.8,16.5V13h2.4v3.5l-0.4,4.3h-1.7L14.8,16.5z M14.8,22.1h2.5v2.4h-2.5V22.1z M16,2c0.4,0,0.7,0.2,0.9,0.5
-	l13,25c0.2,0.3,0.1,0.7,0,1C29.7,28.8,29.3,29,29,29H3c-0.3,0-0.7-0.2-0.9-0.5c-0.2-0.3-0.2-0.7,0-1l13-25C15.3,2.2,15.6,2,16,2z
-	 M4.6,27h22.7L16,5.2L4.6,27z"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.8028 16.4704V13H17.1788V16.4704L16.8268 20.7648H15.1548L14.8028 16.4704ZM14.75 22.1024H17.2492V24.496H14.75V22.1024Z" fill="#0D0F13"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M16 2C16.3731 2 16.7151 2.20766 16.8872 2.53865L29.8872 27.5386C30.0484 27.8486 30.0361 28.2203 29.8548 28.519C29.6735 28.8176 29.3494 29 29 29H3C2.6506 29 2.32653 28.8176 2.1452 28.519C1.96388 28.2203 1.95159 27.8486 2.11278 27.5386L15.1128 2.53865C15.2849 2.20766 15.6269 2 16 2ZM4.64712 27H27.3529L16 5.16754L4.64712 27Z" fill="#0D0F13"/>
 </svg>

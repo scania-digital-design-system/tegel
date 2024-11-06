@@ -1,4 +1,3 @@
-<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M4 6a2 2 0 0 1 2-2h15.586A2 2 0 0 1 23 4.586L27.414 9A2 2 0 0 1 28 10.414V26a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Zm17.586 0H6v20h20V10.414L21.586 6Z" fill="currentColor"/>
-  <path fill-rule="evenodd" clip-rule="evenodd" d="M10 9.5V5h2v4h8V5h2v4.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 10 9.5ZM22 19.5V27h-2v-7h-8v7h-2v-7.5a1.5 1.5 0 0 1 1.5-1.5h9a1.5 1.5 0 0 1 1.5 1.5Z" fill="currentColor"/>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M4 6C4 4.89543 4.89543 4 6 4H21.5858C22.1162 4 22.6249 4.21071 23 4.58579L27.4142 9C27.7893 9.37507 28 9.88378 28 10.4142V26C28 27.1046 27.1046 28 26 28H6C4.89543 28 4 27.1046 4 26V6ZM10 6H6V26H10L10 19.5C10 18.6716 10.6716 18 11.5 18L20.5 18C21.3284 18 22 18.6716 22 19.5V26H26V10.4142L22 6.41421V9.5C22 10.3284 21.3284 11 20.5 11H11.5C10.6716 11 10 10.3284 10 9.5V6ZM12 6V9H20V6H12ZM20 26V20H12L12 26H20Z" fill="#0D0F13"/>
 </svg>
