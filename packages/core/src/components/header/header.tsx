@@ -19,12 +19,9 @@ export class TdsHeader {
   private observer: MutationObserver;
 
   constructor() {
-    console.log('TdsHeader: constructor');
-
     const callback: MutationCallback = (mutationsList) => {
       mutationsList.forEach((mutation) => {
         if (mutation.type === 'childList') {
-          console.log('TdsHeader: Mutation observed - childList changed');
           updateListChildrenRoles(mutation.target);
         }
       });
@@ -34,7 +31,6 @@ export class TdsHeader {
   }
 
   componentDidLoad() {
-    console.log('TdsHeader: componentDidLoad');
     const defaultSlot = this.host.shadowRoot.querySelector('slot:not([name])');
     this.observer.observe(defaultSlot, {
       childList: true,
@@ -44,13 +40,10 @@ export class TdsHeader {
   }
 
   disconnectedCallback() {
-    console.log('TdsHeader: disconnectedCallback');
     this.observer.disconnect();
   }
 
   render() {
-    console.log('TdsHeader: render');
-
     const navAttributes = {
       ...inheritAriaAttributes(this.host),
     };
