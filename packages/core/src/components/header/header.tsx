@@ -11,7 +11,7 @@ import inheritAriaAttributes from '../../utils/inheritAriaAttributes';
 @Component({
   tag: 'tds-header',
   styleUrl: 'header.scss',
-  shadow: false,
+  shadow: true,
 })
 export class TdsHeader {
   @Element() host: HTMLElement;
