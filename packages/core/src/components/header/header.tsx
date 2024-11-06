@@ -31,12 +31,19 @@ export class TdsHeader {
   }
 
   componentDidLoad() {
-    const defaultSlot = this.host.shadowRoot.querySelector('slot:not([name])');
-    this.observer.observe(defaultSlot, {
-      childList: true,
-      subtree: true,
-    });
-    updateListChildrenRoles(defaultSlot);
+    // Access the default slot from the light DOM
+    const defaultSlot = this.host.querySelector('slot:not([name])');
+
+    // Ensure the defaultSlot exists
+    if (defaultSlot) {
+      this.observer.observe(defaultSlot, {
+        childList: true,
+        subtree: true,
+      });
+      updateListChildrenRoles(defaultSlot);
+    } else {
+      console.warn('Default slot not found in tds-header component.');
+    }
   }
 
   disconnectedCallback() {
