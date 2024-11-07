@@ -163,7 +163,7 @@
     transform-origin: top;
     transition: transform 0.2s ease-in-out;
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
-    border-radius: 0 0 4px 4px;
+    border-radius: var(--tds-dropdown-list-border-radius);
     overflow-y: auto;
     @include tds-scrollbar;
 
