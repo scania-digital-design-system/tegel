@@ -62,6 +62,8 @@ export class TdsPopoverCore {
 
   @State() isShown: boolean = false;
 
+  @State() disableLogicState: boolean = false;
+
   /** Property for closing popover programmatically */
   @Method() async close() {
     this.setIsShown(false);
@@ -232,6 +234,7 @@ export class TdsPopoverCore {
 
   connectedCallback() {
     if ((this.selector === undefined && this.referenceEl === undefined) || this.disableLogic) {
+      this.disableLogicState = true;
       console.warn('TDS-POPOVER-CORE: Popover internal logic disabled.');
       return;
     }
@@ -243,7 +246,7 @@ export class TdsPopoverCore {
   }
 
   componentDidRender() {
-    if (this.isShown && !this.renderedShowValue) {
+    if (this.isShown && !this.renderedShowValue && !this.disableLogicState) {
       // Here we update the popper position since its position is wrong
       // before it is rendered.
       this.popperInstance.update();
