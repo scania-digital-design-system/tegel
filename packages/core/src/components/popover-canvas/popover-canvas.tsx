@@ -16,7 +16,7 @@ export class TdsPopoverCanvas {
   @Element() host: HTMLTdsPopoverCanvasElement;
 
   /** The CSS-selector for an element that will trigger the Popover */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the Popover (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -37,6 +37,9 @@ export class TdsPopoverCanvas {
 
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
   @Prop() modifiers: Object[] = [];
+
+  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
+  @Prop() disableLogic: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -71,6 +74,7 @@ export class TdsPopoverCanvas {
           ref={(el) => {
             this.childRef = el;
           }}
+          disableLogic={this.disableLogic}
         >
           <div>
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}

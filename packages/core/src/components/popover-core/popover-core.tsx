@@ -24,7 +24,7 @@ export class TdsPopoverCore {
   @Element() host!: HTMLTdsPopoverCoreElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -50,6 +50,9 @@ export class TdsPopoverCore {
   /** Decides if the popover should hide automatically.
    * Alternatevly it can be hidden externally based on emitted events. */
   @Prop() autoHide: boolean = true;
+
+  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
+  @Prop() disableLogic: boolean = false;
 
   @State() renderedShowValue: boolean = false;
 
@@ -118,7 +121,9 @@ export class TdsPopoverCore {
 
   @Watch('referenceEl')
   onReferenceElChanged(newValue: HTMLElement, oldValue: HTMLElement) {
-    if (newValue !== oldValue) this.initialize({ referenceEl: newValue, trigger: this.trigger });
+    if (newValue !== oldValue) {
+      this.initialize({ referenceEl: newValue, trigger: this.trigger });
+    }
   }
 
   @Watch('trigger')
@@ -225,7 +230,12 @@ export class TdsPopoverCore {
     this.popperInstance?.destroy();
   }
 
-  componentDidLoad() {
+  connectedCallback() {
+    if ((this.selector === undefined && this.referenceEl === undefined) || this.disableLogic) {
+      console.warn('TDS-POPOVER-CORE: Popover internal logic disabled.');
+      return;
+    }
+
     this.initialize({
       referenceEl: this.referenceEl,
       trigger: this.trigger,

@@ -19,7 +19,7 @@ export class TdsTooltip {
   @Prop() text: string = '';
 
   /** The CSS-selector for an element that will trigger the Tooltip */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the Tooltip (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -41,6 +41,9 @@ export class TdsTooltip {
 
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
+
+  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
+  @Prop() disableLogic: boolean = false;
 
   border: string;
 
@@ -105,6 +108,7 @@ export class TdsTooltip {
           onInternalTdsClose={() => {
             this.show = false;
           }}
+          disableLogic={this.disableLogic}
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}

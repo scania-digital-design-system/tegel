@@ -16,7 +16,7 @@ export class TdsPopoverMenu {
   @Element() host: HTMLTdsPopoverMenuElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -38,6 +38,9 @@ export class TdsPopoverMenu {
 
   /** If true this unsets the width (160px) of the Popover Menu */
   @Prop() fluidWidth: boolean = false;
+
+  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
+  @Prop() disableLogic: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -70,6 +73,7 @@ export class TdsPopoverMenu {
           ref={(el) => {
             this.childRef = el;
           }}
+          disableLogic={this.disableLogic}
         >
           <div role="list">
             <slot></slot>
