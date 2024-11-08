@@ -21,7 +21,10 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen.
 
 Code Example
-Please create a minimal, reproducible example in an online sandbox (e.g., CodeSandbox, StackBlitz, etc.). Providing code in a sandbox helps us understand and troubleshoot the issue faster.
+Please create a minimal, reproducible example in an online sandbox and paste a link to it here. We strongly recommend the usage of [Stackblitz](https://stackblitz.com/) as it offers ready-made templates for different frameworks and works great with Tegel. Providing code in a sandbox helps us understand and troubleshoot the issue faster.
+
+Other sandbox tools: CodePen, CodeSandbox
+
 
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
