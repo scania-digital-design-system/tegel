@@ -1,4 +1,14 @@
-import { Component, h, Prop, Listen, EventEmitter, Event, Method, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Listen,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  Host,
+} from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
@@ -431,147 +441,149 @@ export class TdsSlider {
 
   render() {
     return (
-      <div
-        class={{
-          'tds-slider-wrapper': true,
-          'read-only': this.readOnly,
-        }}
-      >
-        <input
-          class="tds-slider-native-element"
-          type="range"
-          name={this.name}
-          min={this.min}
-          max={this.max}
-          value={this.value}
-          disabled={this.disabled}
-        ></input>
-
+      <Host class="tds-slider__slider">
         <div
           class={{
-            'tds-slider': true,
-            'disabled': this.disabled,
-            'tds-slider-small': this.useSmall,
-          }}
-          ref={(el) => {
-            this.wrapperElement = el as HTMLElement;
+            'tds-slider-wrapper': true,
+            'read-only': this.readOnly,
           }}
         >
-          <label class={this.showTickNumbers && 'offset'}>{this.label}</label>
+          <input
+            class="tds-slider-native-element"
+            type="range"
+            name={this.name}
+            min={this.min}
+            max={this.max}
+            value={this.value}
+            disabled={this.disabled}
+          ></input>
 
-          {this.useInput && (
-            <div class="tds-slider__input-values">
-              <div class="tds-slider__input-value min-value">{this.min}</div>
-            </div>
-          )}
+          <div
+            class={{
+              'tds-slider': true,
+              'disabled': this.disabled,
+              'tds-slider-small': this.useSmall,
+            }}
+            ref={(el) => {
+              this.wrapperElement = el as HTMLElement;
+            }}
+          >
+            <label class={this.showTickNumbers && 'offset'}>{this.label}</label>
 
-          {this.useControls && (
-            <div class="tds-slider__controls">
-              <div
-                class="tds-slider__control tds-slider__control-minus"
-                onClick={(event) => this.stepLeft(event)}
-              >
-                <tds-icon name="minus" size="16px"></tds-icon>
+            {this.useInput && (
+              <div class="tds-slider__input-values">
+                <div class="tds-slider__input-value min-value">{this.min}</div>
               </div>
-            </div>
-          )}
+            )}
 
-          <div class="tds-slider-inner">
-            {this.tickValues.length > 0 && (
-              <div class="tds-slider__value-dividers-wrapper">
-                <div class="tds-slider__value-dividers">
-                  {this.tickValues.map((value) => (
-                    <div class="tds-slider__value-divider">
-                      {this.showTickNumbers && <span>{value}</span>}
-                    </div>
-                  ))}
+            {this.useControls && (
+              <div class="tds-slider__controls">
+                <div
+                  class="tds-slider__control tds-slider__control-minus"
+                  onClick={(event) => this.stepLeft(event)}
+                >
+                  <tds-icon name="minus" size="16px"></tds-icon>
                 </div>
               </div>
             )}
 
-            <div
-              class="tds-slider__track"
-              ref={(el) => {
-                this.trackElement = el as HTMLElement;
-              }}
-              tabindex={this.disabled ? '-1' : '0'}
-            >
-              <div
-                class="tds-slider__track-fill"
-                ref={(el) => {
-                  this.trackFillElement = el as HTMLElement;
-                }}
-              ></div>
-
-              <div
-                class="tds-slider__thumb"
-                ref={(el) => {
-                  this.thumbElement = el as HTMLElement;
-                }}
-                onMouseDown={() => this.grabThumb()}
-                onTouchStart={() => this.grabThumb()}
-              >
-                {this.tooltip && (
-                  <div class="tds-slider__value">
-                    {this.value}
-                    <svg
-                      width="18"
-                      height="14"
-                      viewBox="0 0 18 14"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.15882 12.6915L0.990487 1.54076C0.562658 0.875246 1.0405 0 1.83167 0H16.1683C16.9595 0 17.4373 0.875246 17.0095 1.54076L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
-                        fill="currentColor"
-                      />
-                    </svg>
+            <div class="tds-slider-inner">
+              {this.tickValues.length > 0 && (
+                <div class="tds-slider__value-dividers-wrapper">
+                  <div class="tds-slider__value-dividers">
+                    {this.tickValues.map((value) => (
+                      <div class="tds-slider__value-divider">
+                        {this.showTickNumbers && <span>{value}</span>}
+                      </div>
+                    ))}
                   </div>
-                )}
+                </div>
+              )}
 
+              <div
+                class="tds-slider__track"
+                ref={(el) => {
+                  this.trackElement = el as HTMLElement;
+                }}
+                tabindex={this.disabled ? '-1' : '0'}
+              >
                 <div
-                  class="tds-slider__thumb-inner"
+                  class="tds-slider__track-fill"
                   ref={(el) => {
-                    this.thumbInnerElement = el as HTMLElement;
+                    this.trackFillElement = el as HTMLElement;
                   }}
                 ></div>
+
+                <div
+                  class="tds-slider__thumb"
+                  ref={(el) => {
+                    this.thumbElement = el as HTMLElement;
+                  }}
+                  onMouseDown={() => this.grabThumb()}
+                  onTouchStart={() => this.grabThumb()}
+                >
+                  {this.tooltip && (
+                    <div class="tds-slider__value">
+                      {this.value}
+                      <svg
+                        width="18"
+                        height="14"
+                        viewBox="0 0 18 14"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.15882 12.6915L0.990487 1.54076C0.562658 0.875246 1.0405 0 1.83167 0H16.1683C16.9595 0 17.4373 0.875246 17.0095 1.54076L9.84118 12.6915C9.44754 13.3038 8.55246 13.3038 8.15882 12.6915Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  )}
+
+                  <div
+                    class="tds-slider__thumb-inner"
+                    ref={(el) => {
+                      this.thumbInnerElement = el as HTMLElement;
+                    }}
+                  ></div>
+                </div>
               </div>
             </div>
+
+            {this.useInput && (
+              <div class="tds-slider__input-values">
+                <div class="tds-slider__input-value" onClick={(event) => this.stepLeft(event)}>
+                  {this.max}
+                </div>
+                <div class="tds-slider__input-field-wrapper">
+                  <input
+                    size={this.calculateInputSizeFromMax()}
+                    class="tds-slider__input-field"
+                    value={this.value}
+                    readOnly={this.readOnly}
+                    onBlur={(event) => this.updateSliderValueOnInputChange(event)}
+                    onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
+                    type="number"
+                    min={this.min}
+                    max={this.max}
+                  />
+                </div>
+              </div>
+            )}
+
+            {this.useControls && (
+              <div class="tds-slider__controls">
+                <div
+                  class="tds-slider__control tds-slider__control-plus"
+                  onClick={(event) => this.stepRight(event)}
+                >
+                  <tds-icon name="plus" size="16px"></tds-icon>
+                </div>
+              </div>
+            )}
           </div>
-
-          {this.useInput && (
-            <div class="tds-slider__input-values">
-              <div class="tds-slider__input-value" onClick={(event) => this.stepLeft(event)}>
-                {this.max}
-              </div>
-              <div class="tds-slider__input-field-wrapper">
-                <input
-                  size={this.calculateInputSizeFromMax()}
-                  class="tds-slider__input-field"
-                  value={this.value}
-                  readOnly={this.readOnly}
-                  onBlur={(event) => this.updateSliderValueOnInputChange(event)}
-                  onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
-                  type="number"
-                  min={this.min}
-                  max={this.max}
-                />
-              </div>
-            </div>
-          )}
-
-          {this.useControls && (
-            <div class="tds-slider__controls">
-              <div
-                class="tds-slider__control tds-slider__control-plus"
-                onClick={(event) => this.stepRight(event)}
-              >
-                <tds-icon name="plus" size="16px"></tds-icon>
-              </div>
-            </div>
-          )}
         </div>
-      </div>
+      </Host>
     );
   }
 }

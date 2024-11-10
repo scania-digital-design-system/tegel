@@ -69,9 +69,7 @@ export class TdsAccordionItem {
               {this.header}
               <slot name="header"></slot>
             </div>
-            <div class="tds-accordion-icon">
-              <tds-icon name="chevron_down" size="16px"></tds-icon>
-            </div>
+            <tds-icon class="tds-accordion-icon" name="chevron_down" size="16px"></tds-icon>
           </button>
           <div
             class={`tds-accordion-panel

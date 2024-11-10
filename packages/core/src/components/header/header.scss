@@ -12,7 +12,7 @@ html,
   --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
 }
 
-tds-header {
+.tds-header__header {
   display: block;
   height: var(--tds-header-height);
   background-color: var(--tds-header-background);
@@ -33,8 +33,8 @@ nav {
     @include tds-flex-center;
   }
 
-  tds-header-dropdown,
-  tds-header-item {
+  .tds-header__dropdown,
+  .tds-header__item {
     display: none;
   }
 
@@ -47,14 +47,14 @@ nav {
   }
 
   @media screen and (min-width: $grid-lg) {
-    tds-header-dropdown,
-    tds-header-item {
+    .tds-header__dropdown,
+    .tds-header__item {
       display: block;
     }
   }
 
-  tds-header-item:nth-child(3),
-  tds-header-dropdown:nth-child(3) {
+  .tds-header__item:nth-child(3),
+  .tds-header__dropdown:nth-child(3) {
     /* Adds a left border to the button after the title, if any */
     border-left: 1px solid var(--tds-header--basic-element-border);
   }

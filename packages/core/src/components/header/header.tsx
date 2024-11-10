@@ -52,7 +52,7 @@ export class TdsHeader {
     };
 
     return (
-      <Host>
+      <Host class="tds-header__header">
         <slot name="hamburger"></slot>
         <slot name="title"></slot>
         <nav {...navAttributes}>

@@ -52,7 +52,7 @@ export class TdsHeaderDropdown {
 
   render() {
     return (
-      <Host>
+      <Host class="tds-header__dropdown">
         <div
           class={{
             'state-open': this.open,

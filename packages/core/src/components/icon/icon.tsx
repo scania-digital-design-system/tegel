@@ -64,6 +64,6 @@ export class Icon {
     });
 
   render() {
-    return <Host>{this.setIcons()}</Host>;
+    return <Host class="tds-icon__icon">{this.setIcons()}</Host>;
   }
 }

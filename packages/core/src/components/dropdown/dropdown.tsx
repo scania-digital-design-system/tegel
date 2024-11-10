@@ -569,7 +569,9 @@ export class TdsDropdown {
                     this.handleFilterReset();
                   }
                 }}
-                class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                class={`icon clear-icon ${
+                  this.open && this.inputElement.value !== '' ? '' : 'hide'
+                }`}
                 name="cross"
                 size="16px"
               ></tds-icon>
@@ -584,7 +586,7 @@ export class TdsDropdown {
                     this.handleToggleOpen();
                   }
                 }}
-                class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                class={`icon menu-icon ${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
               ></tds-icon>
@@ -625,7 +627,7 @@ export class TdsDropdown {
                 <tds-icon
                   aria-label="Open/Close dropdown"
                   svgTitle="Open/Close dropdown"
-                  class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                  class={`icon menu-icon ${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
                 ></tds-icon>

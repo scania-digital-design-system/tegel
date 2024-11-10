@@ -1,7 +1,7 @@
 :host {
   display: block;
 
-  tds-header-item {
+  .tds-header__item {
     display: block; // launcher button is always visible, regular Header buttons are not.
   }
 

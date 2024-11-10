@@ -92,7 +92,7 @@
       &:focus-visible {
         outline: none;
 
-        tds-icon {
+        .close-icon {
           @include tds-focus-state;
         }
       }

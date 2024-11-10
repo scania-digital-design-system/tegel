@@ -8,7 +8,7 @@
     &.information {
       border-left: 4px solid var(--tds-information);
 
-      tds-icon {
+      .icon {
         color: var(--tds-information);
       }
     }
@@ -16,7 +16,7 @@
     &.success {
       border-left: 4px solid var(--tds-positive);
 
-      tds-icon {
+      .icon {
         color: var(--tds-positive);
       }
     }
@@ -25,7 +25,7 @@
       background-color: var(--tds-message-type-error-background);
       border-left: 4px solid var(--tds-negative);
 
-      tds-icon {
+      .icon {
         color: var(--tds-negative);
       }
     }
@@ -33,7 +33,7 @@
     &.warning {
       border-left: 4px solid var(--tds-warning);
 
-      tds-icon {
+      .icon {
         color: var(--tds-warning);
       }
     }
@@ -58,7 +58,7 @@
     }
   }
 
-  tds-icon {
+  .icon {
     padding-right: 16px;
   }
 

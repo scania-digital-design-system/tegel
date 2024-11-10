@@ -59,7 +59,7 @@ export class TdsHeaderItem {
 
   render() {
     return (
-      <Host>
+      <Host class="tds-header__item">
         <tds-core-header-item
           class={{
             'component-active': this.active,

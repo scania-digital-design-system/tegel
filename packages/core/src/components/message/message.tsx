@@ -49,7 +49,7 @@ export class TdsMessage {
         ${this.minimal ? 'minimal' : ''}
         ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
         >
-          {!this.noIcon && <tds-icon name={this.getIconName()} size="20px"></tds-icon>}
+          {!this.noIcon && <tds-icon class="icon" name={this.getIconName()} size="20px"></tds-icon>}
           <div class={`content`}>
             {this.header && <div class="header">{this.header}</div>}
             {!this.minimal && (

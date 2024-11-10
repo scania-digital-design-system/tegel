@@ -237,7 +237,7 @@
     color: var(--tds-dropdown-menu-icon-color);
   }
 
-  tds-icon {
+  .icon {
     transition: transform 0.2s ease-in-out;
 
     &.open {

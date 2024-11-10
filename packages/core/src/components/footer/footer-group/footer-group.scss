@@ -27,7 +27,7 @@
     &.expanded {
       border-bottom: none;
 
-      tds-icon {
+      .icon {
         transform: rotateZ(180deg);
       }
     }
@@ -44,7 +44,7 @@
       @include tds-focus-state;
     }
 
-    tds-icon {
+    .icon {
       transition: transform 0.2s ease-in-out;
     }
   }

@@ -114,7 +114,7 @@ export class TdsBanner {
               this.handleClose();
             }}
           >
-            <tds-icon name="cross" size="20px"></tds-icon>
+            <tds-icon class="close-icon" name="cross" size="20px"></tds-icon>
           </button>
         </div>
       </Host>
