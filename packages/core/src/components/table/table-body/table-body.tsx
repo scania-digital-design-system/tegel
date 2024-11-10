@@ -97,6 +97,7 @@ export class TdsTableBody {
       <Host
         data-selected-rows={this.multiselectArrayJSON}
         class={{
+          'tds-table__body': true,
           'tds-table--zebra-mode-rows-odd': this.zebraMode === 'rows-odd',
           'tds-table--zebra-mode-rows-even': this.zebraMode === 'rows-even',
           'tds-table--zebra-mode-columns-odd': this.zebraMode === 'columns-odd',

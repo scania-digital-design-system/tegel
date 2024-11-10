@@ -156,8 +156,23 @@
   }
 }
 
+.page-dropdown {
+  --tds-dropdown-bg: white;
+  --tds-placeholder-margin: var(--tds-spacing-element-8);
+  --tds-dropdown-border-bottom: transparent;
+  --tds-dropdown-border-bottom-hover: transparent;
+  --tds-dropdown-border-bottom-open: transparent;
+  --tds-dropdown-border-radius: var(--tds-spacing-element-4);
+}
+
+:host-context(body.tds-mode-dark) {
+  .page-dropdown {
+    --tds-dropdown-bg: var(--tds-grey-868);
+  }
+}
+
 // trick to get the focus state on the dropdown button
-tds-dropdown:focus-within {
+.page-dropdown:focus-within {
   &::after {
     content: '';
     position: absolute;

@@ -3,13 +3,13 @@
 }
 
 :host(:hover) {
-  tds-icon {
+  .search-icon {
     display: inline-block;
   }
 }
 
 :host(.focused-input-wrapper) {
-  tds-icon {
+  .search-icon {
     display: inline-block;
   }
 
@@ -24,7 +24,7 @@
   }
 }
 
-tds-icon.search-icon {
+.search-icon {
   color: var(--tds-table-input-header-icon);
   position: absolute;
   left: 15px;
