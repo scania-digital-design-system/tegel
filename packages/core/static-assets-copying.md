@@ -20,6 +20,11 @@ By default, this will copy assets to `./public/assets` in your project root.
 To copy assets to a different directory, provide the path as an argument:
 npx copy-assets custom/assets/path
 
+### Windows
+The script script handles path separators correctly because it uses Node.js's path module, which automatically handles path separators for the current operating system. But if Windows users experience problems they can use backward slashes when specifying paths:
+npx copy-assets custom/assets/path ❌  
+npx copy-assets custom\assets\path ✅
+
 ## What Gets Copied
 
 The script will copy:
