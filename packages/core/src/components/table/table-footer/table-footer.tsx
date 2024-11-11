@@ -109,7 +109,7 @@ export class TdsTableFooter {
 
     /** Get the number of columns. */
     const numberOfColumns =
-      this.host.parentElement.querySelector('tds-table-header').childElementCount;
+      this.host.parentElement.querySelector('.tds-table__header').childElementCount;
     if (this.cols) {
       this.columnsNumber = this.cols;
     } else {

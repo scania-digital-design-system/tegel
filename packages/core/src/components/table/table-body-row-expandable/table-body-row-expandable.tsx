@@ -168,7 +168,7 @@ export class TdsTableBodyRowExpandable {
     if (this.colSpan !== null) {
       this.columnsNumber = this.colSpan;
     } else {
-      this.columnsNumber = this.tableEl.querySelector('tds-table-header').childElementCount + 1;
+      this.columnsNumber = this.tableEl.querySelector('.tds-table__header').childElementCount + 1;
     }
   }
 
@@ -187,6 +187,7 @@ export class TdsTableBodyRowExpandable {
       <Host
         class={{
           'tds-table__row': true,
+          'tds-table__row-expandable': true,
           'tds-table__row-expand--active': this.isExpanded,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,

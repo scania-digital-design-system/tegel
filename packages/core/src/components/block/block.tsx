@@ -17,8 +17,8 @@ export class TdsBlock {
   children: Array<HTMLTdsBlockElement>;
 
   setModeVariantOnChildBlocks() {
-    this.children = Array.from(this.host.children).filter(
-      (item) => item.tagName === 'TDS-BLOCK',
+    this.children = Array.from(this.host.children).filter((item) =>
+      item.tagName.toLowerCase().endsWith('tds-block'),
     ) as HTMLTdsBlockElement[];
 
     this.children?.forEach((item) => {

@@ -15,6 +15,7 @@ import findNextFocusableElement from '../../utils/findNextFocusableElement';
 import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
 import appendHiddenInput from '../../utils/appendHiddenInput';
 import { getPrefixedTagNames } from '../../utils/tagName';
+import { getDirectChildHTMLElementOfKind } from '../../utils/getDirectChildHTMLElementOfKind';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
@@ -316,8 +317,9 @@ export class TdsDropdown {
 
   private setDefaultOption = () => {
     if (this.defaultValue) {
-      const children = Array.from(this.host.children).filter(
-        (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
+      const children = getDirectChildHTMLElementOfKind(
+        this.host,
+        'tds-dropdown-option',
       ) as HTMLTdsDropdownOptionElement[];
 
       if (children.length === 0) {
@@ -368,9 +370,10 @@ export class TdsDropdown {
 
   /* Returns a list of all children that are tds-dropdown-option elements */
   private getChildren = () => {
-    const tdsDropdownOptions = Array.from(this.host.children).filter(
-      (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-    ) as Array<HTMLTdsDropdownOptionElement>;
+    const tdsDropdownOptions = getDirectChildHTMLElementOfKind(
+      this.host,
+      'tds-dropdown-option',
+    ) as HTMLTdsDropdownOptionElement[];
     if (tdsDropdownOptions.length === 0) {
       console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
     } else return tdsDropdownOptions;

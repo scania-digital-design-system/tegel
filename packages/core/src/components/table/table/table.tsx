@@ -115,14 +115,16 @@ export class TdsTable {
   @Method()
   async getSelectedRows() {
     let selectedRowsData = [];
-    const tableBody = this.host.querySelector('tds-table-body');
-    const selectedRows = Array.from(tableBody.querySelectorAll('tds-table-body-row')).filter(
-      (element) => element.selected,
-    );
+    const tableBody = this.host.querySelector('.tds-table__body');
+    const selectedRows = (
+      Array.from(tableBody.querySelectorAll('tds-table__row')) as HTMLTdsTableBodyRowElement[]
+    ).filter((element) => element.selected);
 
     selectedRows.forEach((row) => {
       let selectedRow = [];
-      const rowCells = Array.from(row.getElementsByTagName('tds-body-cell'));
+      const rowCells = Array.from(
+        row.querySelectorAll('.tds-table__body-cell'),
+      ) as HTMLTdsBodyCellElement[];
 
       rowCells.forEach((cell) => {
         const cellObject = {

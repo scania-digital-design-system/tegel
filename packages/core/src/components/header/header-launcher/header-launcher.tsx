@@ -3,6 +3,7 @@ import { Attributes } from '../../../types/Attributes';
 import generateUniqueId from '../../../utils/generateUniqueId';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 import { getPrefixedTagNames } from '../../../utils/tagName';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a launcher list (or grid) element.
@@ -35,7 +36,8 @@ export class TdsHeaderLauncher {
   }
 
   componentDidLoad() {
-    const hasListTypeMenu = !!this.host.querySelector('tds-header-launcher-list');
+    const hasListTypeMenu =
+      getDirectChildHTMLElementOfKind(this.host, 'tds-header-launcher-list').length >= 1;
     this.hasListTypeMenu = hasListTypeMenu;
   }
 

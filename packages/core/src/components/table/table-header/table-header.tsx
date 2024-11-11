@@ -106,11 +106,11 @@ export class TdsTableHeaderRow {
 
   bodyExpandClicked() {
     const numberOfExtendRowsActive = this.host.parentElement
-      .querySelector('tds-table-body')
+      .querySelector('.tds-table__body')
       .getElementsByClassName('tds-table__row-extend--active').length;
     const numberOfExtendRows = this.host.parentElement
-      .querySelector('tds-table-body')
-      .getElementsByTagName('tds-table-body-row-expendable').length;
+      .querySelector('.tds-table__body')
+      .getElementsByClassName('.tds-table__row-expandable').length;
 
     if (numberOfExtendRows === numberOfExtendRowsActive) {
       this.mainExpendSelected = true;
@@ -151,6 +151,7 @@ export class TdsTableHeaderRow {
     return (
       <Host
         class={{
+          'tds-table__header': true,
           'tds-table--compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--toolbar-available': this.enableToolbarDesign,
