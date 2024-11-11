@@ -100,7 +100,7 @@ export class TdsTableFooter {
     this.tableId = this.tableEl.tableId;
   }
 
-  componentWillLoad() {
+  componentDidLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl[tablePropName];
     });
