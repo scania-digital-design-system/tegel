@@ -68,19 +68,6 @@ Type: `Promise<void>`
 | `"<default>"` | <b>Unnamed slot.</b> For the list of menu items. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-popover-core](../popover-core)
-
-### Graph
-```mermaid
-graph TD;
-  tds-popover-menu --> tds-popover-core
-  style tds-popover-menu fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

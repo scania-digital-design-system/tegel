@@ -46,19 +46,6 @@
 | `"suffix"` | Slot for the suffix in the component. Suffix is hidden when the input is in readonly state. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-text-field --> tds-icon
-  style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

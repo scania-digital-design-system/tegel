@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For injecting a dropdown list.
@@ -51,6 +52,8 @@ export class TdsHeaderDropdown {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host class="tds-header__dropdown">
         <div
@@ -58,7 +61,11 @@ export class TdsHeaderDropdown {
             'state-open': this.open,
           }}
         >
-          <tds-header-item class="button" active={this.open} selected={this.selected}>
+          <prefixedTagNames.tdsHeaderItem
+            class="button"
+            active={this.open}
+            selected={this.selected}
+          >
             <button
               ref={(el) => {
                 this.buttonEl = el;
@@ -74,12 +81,12 @@ export class TdsHeaderDropdown {
               {this.label}
               <slot name="label"></slot>
               {!this.noDropdownIcon && (
-                <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
+                <prefixedTagNames.tdsIcon class="dropdown-icon" name="chevron_down" size="16px" />
               )}
             </button>
-          </tds-header-item>
+          </prefixedTagNames.tdsHeaderItem>
           {this.buttonEl && (
-            <tds-popover-canvas
+            <prefixedTagNames.tdsPopoverCore
               id={`tds-dropdown-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
@@ -103,7 +110,7 @@ export class TdsHeaderDropdown {
                   <slot></slot>
                 </span>
               ) : null}
-            </tds-popover-canvas>
+            </prefixedTagNames.tdsPopoverCore>
           )}
         </div>
       </Host>

@@ -47,23 +47,6 @@ Type: `Promise<{ checkboxId: string; checked: boolean; }>`
 | `"label"` | Slot for the label text. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-dropdown-option](../dropdown/dropdown-option)
- - [tds-table-body-row](../table/table-body-row)
- - [tds-table-header](../table/table-header)
-
-### Graph
-```mermaid
-graph TD;
-  tds-dropdown-option --> tds-checkbox
-  tds-table-body-row --> tds-checkbox
-  tds-table-header --> tds-checkbox
-  style tds-checkbox fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

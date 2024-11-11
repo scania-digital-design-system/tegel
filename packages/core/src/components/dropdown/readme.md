@@ -112,24 +112,6 @@ Type: `Promise<{ value: string; label: string; }[]>`
 | `"<default>"` | <b>Unnamed slot.</b> For dropdown option elements. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-table-footer](../table/table-footer)
-
-### Depends on
-
-- [tds-icon](../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-dropdown --> tds-icon
-  tds-table-footer --> tds-dropdown
-  style tds-dropdown fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

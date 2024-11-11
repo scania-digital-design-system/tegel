@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop, Element, State } from '@stencil/core';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For footer items.
@@ -32,6 +33,8 @@ export class TdsFooterGroup {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         {this.titleText && this.topPartGroup && (
@@ -46,7 +49,7 @@ export class TdsFooterGroup {
             class={`footer-top-title-button  ${this.open ? 'expanded' : 'closed'}`}
           >
             {this.titleText}
-            <tds-icon class="icon" name="chevron_down" size="20px"></tds-icon>
+            <prefixedTagNames.tdsIcon class="icon" name="chevron_down" size="20px" />
           </button>
         )}
         <div

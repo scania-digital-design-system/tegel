@@ -10,6 +10,7 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -199,6 +200,7 @@ export class TdsTableHeaderCell {
 
   headerCellContent = () => {
     if (this.sortable) {
+      const prefixedTagNames = getPrefixedTagNames(this.host);
       return (
         <button
           class="tds-table__header-button"
@@ -211,16 +213,20 @@ export class TdsTableHeaderCell {
           </span>
 
           {this.sortingDirection === undefined && (
-            <tds-icon class="tds-table__header-button-icon" name="sorting" size="16px"></tds-icon>
+            <prefixedTagNames.tdsIcon
+              class="tds-table__header-button-icon"
+              name="sorting"
+              size="16px"
+            />
           )}
           {this.sortingDirection && ['asc', 'desc'].includes(this.sortingDirection) && (
-            <tds-icon
+            <prefixedTagNames.tdsIcon
               class={`tds-table__header-button-icon ${
                 this.sortingDirection === 'asc' ? 'tds-table__header-button-icon--rotate' : ''
               }`}
               name="arrow_down"
               size="16px"
-            ></tds-icon>
+            />
           )}
         </button>
       );

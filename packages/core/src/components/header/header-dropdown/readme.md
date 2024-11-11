@@ -23,25 +23,6 @@
 | `"label"`     | Slot for a label text in the dropdown button.       |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-header-item](../header-item)
-- [tds-icon](../../icon)
-- [tds-popover-canvas](../../popover-canvas)
-
-### Graph
-```mermaid
-graph TD;
-  tds-header-dropdown --> tds-header-item
-  tds-header-dropdown --> tds-icon
-  tds-header-dropdown --> tds-popover-canvas
-  tds-header-item --> tds-core-header-item
-  tds-popover-canvas --> tds-popover-core
-  style tds-header-dropdown fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

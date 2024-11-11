@@ -40,19 +40,6 @@
 | `"thumbnail"`  | Slot for the Card thumbnail.                                |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-divider](../divider)
-
-### Graph
-```mermaid
-graph TD;
-  tds-card --> tds-divider
-  style tds-card fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

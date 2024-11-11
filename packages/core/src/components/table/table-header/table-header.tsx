@@ -10,6 +10,7 @@ import {
   Prop,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -142,6 +143,7 @@ export class TdsTableHeaderRow {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         class={{
@@ -154,12 +156,12 @@ export class TdsTableHeaderRow {
           {this.multiselect && (
             <th class="tds-table__header-cell tds-table__header-cell--checkbox">
               <div class="tds-form-label tds-form-label--table">
-                <tds-checkbox
+                <prefixedTagNames.tdsCheckbox
                   checked={this.allSelected || this.selected}
                   disabled={this.disabled}
                   indeterminate={this.indeterminate}
                   onTdsChange={(event) => this.handleCheckboxChange(event)}
-                ></tds-checkbox>
+                />
               </div>
             </th>
           )}

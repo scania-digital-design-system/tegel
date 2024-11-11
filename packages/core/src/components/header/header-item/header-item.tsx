@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 import dfs from '../../../utils/dfs';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a link or button element.
@@ -58,16 +59,17 @@ export class TdsHeaderItem {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host class="tds-header__item">
-        <tds-core-header-item
+        <prefixedTagNames.tdsCoreHeaderItem
           class={{
             'component-active': this.active,
             'component-selected': this.selected,
           }}
         >
           <slot></slot>
-        </tds-core-header-item>
+        </prefixedTagNames.tdsCoreHeaderItem>
       </Host>
     );
   }

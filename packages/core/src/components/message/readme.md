@@ -23,19 +23,6 @@
 | `"<default>"` | <b>Unnamed slot.</b> For the extended message. Not visible on minimal messages. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-message --> tds-icon
-  style tds-message fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

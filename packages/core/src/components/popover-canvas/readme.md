@@ -63,26 +63,6 @@ Type: `Promise<void>`
 | `"<default>"` | <b>Unnamed slot.</b> For the contents of the popover. |
 
 
-## Dependencies
-
-### Used by
-
- - [tds-header-dropdown](../header/header-dropdown)
- - [tds-header-launcher](../header/header-launcher)
-
-### Depends on
-
-- [tds-popover-core](../popover-core)
-
-### Graph
-```mermaid
-graph TD;
-  tds-popover-canvas --> tds-popover-core
-  tds-header-dropdown --> tds-popover-canvas
-  tds-header-launcher --> tds-popover-canvas
-  style tds-popover-canvas fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

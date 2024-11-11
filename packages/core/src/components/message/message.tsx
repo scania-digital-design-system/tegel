@@ -1,4 +1,5 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop, Element } from '@stencil/core';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the extended message. Not visible on minimal messages.
@@ -10,6 +11,8 @@ import { Component, Host, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsMessage {
+  @Element() host: HTMLElement;
+
   /** Header text for the component. */
   @Prop() header: string;
 
@@ -41,6 +44,8 @@ export class TdsMessage {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <div
@@ -49,7 +54,9 @@ export class TdsMessage {
         ${this.minimal ? 'minimal' : ''}
         ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
         >
-          {!this.noIcon && <tds-icon class="icon" name={this.getIconName()} size="20px"></tds-icon>}
+          {!this.noIcon && (
+            <prefixedTagNames.tdsIcon class="icon" name={this.getIconName()} size="20px" />
+          )}
           <div class={`content`}>
             {this.header && <div class="header">{this.header}</div>}
             {!this.minimal && (

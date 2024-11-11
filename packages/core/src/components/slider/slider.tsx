@@ -8,8 +8,10 @@ import {
   Method,
   Watch,
   Host,
+  Element,
 } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 @Component({
   tag: 'tds-slider',
@@ -17,6 +19,8 @@ import generateUniqueId from '../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsSlider {
+  @Element() host: HTMLElement;
+
   /** Text for label */
   @Prop() label: string = '';
 
@@ -440,6 +444,7 @@ export class TdsSlider {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host class="tds-slider__slider">
         <div
@@ -482,7 +487,7 @@ export class TdsSlider {
                   class="tds-slider__control tds-slider__control-minus"
                   onClick={(event) => this.stepLeft(event)}
                 >
-                  <tds-icon name="minus" size="16px"></tds-icon>
+                  <prefixedTagNames.tdsIcon name="minus" size="16px" />
                 </div>
               </div>
             )}
@@ -577,7 +582,7 @@ export class TdsSlider {
                   class="tds-slider__control tds-slider__control-plus"
                   onClick={(event) => this.stepRight(event)}
                 >
-                  <tds-icon name="plus" size="16px"></tds-icon>
+                  <prefixedTagNames.tdsIcon name="plus" size="16px" />
                 </div>
               </div>
             )}
