@@ -81,9 +81,10 @@ export class TdsTableBody {
     });
   }
 
-  componentWillRender() {
-    const headerColumnsNo =
-      this.host.parentElement.querySelector('.tds-table__header').children.length;
+  componentDidRender() {
+    const headerColumnsNo = findClosestComponent(this.host, 'tdsTable').querySelector(
+      '.tds-table__header',
+    ).children.length;
 
     // multiselect and expended features requires one extra column for controls...
     if (this.multiselect || this.expandableRows) {

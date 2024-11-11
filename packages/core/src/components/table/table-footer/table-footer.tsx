@@ -207,6 +207,7 @@ export class TdsTableFooter {
     return (
       <Host
         class={{
+          'tds-table__footer': true,
           'tds-table--compact': this.compactDesign,
           'footer__horizontal-scroll': !!this.horizontalScrollWidth,
         }}

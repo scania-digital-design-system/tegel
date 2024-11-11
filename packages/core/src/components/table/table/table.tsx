@@ -117,7 +117,7 @@ export class TdsTable {
     let selectedRowsData = [];
     const tableBody = this.host.querySelector('.tds-table__body');
     const selectedRows = (
-      Array.from(tableBody.querySelectorAll('tds-table__row')) as HTMLTdsTableBodyRowElement[]
+      Array.from(tableBody.querySelectorAll('.tds-table__row')) as HTMLTdsTableBodyRowElement[]
     ).filter((element) => element.selected);
 
     selectedRows.forEach((row) => {
@@ -191,7 +191,7 @@ export class TdsTable {
     this.emitInternalTdsPropChange('horizontalScrollWidth', newValue);
   }
 
-  componentWillRender() {
+  componentDidRender() {
     if (this.horizontalScrollWidth) {
       const tdsTableElement = findClosestComponent(this.host, 'tdsTable');
 
