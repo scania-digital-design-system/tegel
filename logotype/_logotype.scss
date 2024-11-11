@@ -1,12 +1,18 @@
-@import '../globals';
-
+$prefix: 'tds';
+$cdn: 'https://cdn.digitaldesign.scania.com';
 $folder: '/logotype/1.0.0';
 $logotypes: ('wordmark', 'wordmark-white', 'symbol', 'logotype');
 
 :root,
 html {
+  // Primary CDN-based variables
   @each $key in $logotypes {
     --#{$prefix}-background-image-scania-#{$key}-png: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.png);
     --#{$prefix}-background-image-scania-#{$key}-svg: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.svg);
   }
+
+  // Fallback local assets - only for specific logotypes that need local fallbacks
+  --#{$prefix}-background-image-scania-wordmark-white-svg: url('./assets/logos/scania-wordmark-white.svg');
+  --#{$prefix}-background-image-scania-symbol-svg: url('./assets/logos/scania-symbol.svg');
+  --#{$prefix}-background-image-scania-symbol-png: url('./assets/logos/scania-symbol.png');
 }
