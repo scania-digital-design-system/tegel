@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Listen, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -70,7 +71,7 @@ export class TdsTableBody {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 

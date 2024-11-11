@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Element, State, Listen } from '@stencil/core';
 import { InternalTdsStepperPropChange } from '../stepper';
 import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const propToStateMap = {
   orientation: 'orientation',
@@ -40,7 +41,7 @@ export class TdsStep {
 
   /* Needs to be onload to do this on any updates. */
   componentWillLoad() {
-    this.stepperEl = this.host.closest('tds-stepper');
+    this.stepperEl = findClosestComponent(this.host, 'tdsStepper') as HTMLTdsStepperElement;
     this.orientation = this.stepperEl.orientation;
     this.labelPosition = this.stepperEl.labelPosition;
     this.size = this.stepperEl.size;

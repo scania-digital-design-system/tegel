@@ -11,6 +11,7 @@ import {
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
@@ -78,7 +79,7 @@ export class TdsTableToolbar {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 

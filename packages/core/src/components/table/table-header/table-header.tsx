@@ -11,6 +11,8 @@ import {
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -118,7 +120,7 @@ export class TdsTableHeaderRow {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -129,8 +131,10 @@ export class TdsTableHeaderRow {
   }
 
   componentWillRender() {
+    const tdsTableElement = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
+
     this.enableToolbarDesign =
-      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+      getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-toolbar').length >= 1;
   }
 
   async handleCheckboxChange(event) {

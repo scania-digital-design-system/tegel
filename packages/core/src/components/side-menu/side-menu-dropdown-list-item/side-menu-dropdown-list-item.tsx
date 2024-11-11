@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For injecting a native <code>&lt;button></code> or <code>&lt;a></code> element.
@@ -27,19 +28,20 @@ export class TdsSideMenuDropdownListItem {
   }
 
   connectedCallback() {
-    this.sideMenuEl = this.host.closest('tds-side-menu');
+    this.sideMenuEl = findClosestComponent(this.host, 'tdsSideMenu') as HTMLTdsSideMenuElement;
     this.collapsed = this.sideMenuEl?.collapsed;
   }
 
   componentDidLoad() {
-    const dropdownEl = this.host.closest('tds-side-menu-dropdown');
+    const dropdownEl = findClosestComponent(this.host, 'tdsSideMenuDropdown');
     const dropdownBtnIconSlotEl = dropdownEl.shadowRoot.querySelector(
       'slot[name="icon"]',
     ) as HTMLSlotElement;
     const btnIconSlottedEls = dropdownBtnIconSlotEl.assignedElements();
     const hasBtnIcon = btnIconSlottedEls?.length > 0;
-    const btnIconIsUserImage =
-      btnIconSlottedEls?.[0]?.tagName.toLowerCase() === 'tds-side-menu-user-image';
+    const btnIconIsUserImage = btnIconSlottedEls?.[0]?.tagName
+      .toLowerCase()
+      .endsWith('tds-side-menu-user-image');
 
     if (hasBtnIcon && !btnIconIsUserImage) {
       this.dropdownHasIcon = true;

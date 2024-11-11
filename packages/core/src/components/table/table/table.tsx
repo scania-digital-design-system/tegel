@@ -14,6 +14,8 @@ import {
   State,
 } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 type Props = {
   verticalDividers: boolean;
@@ -189,11 +191,13 @@ export class TdsTable {
 
   componentWillRender() {
     if (this.horizontalScrollWidth) {
+      const tdsTableElement = findClosestComponent(this.host, 'tdsTable');
+
       this.enableHorizontalScrollToolbarDesign =
-        this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+        getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-toolbar').length >= 1;
 
       this.enableHorizontalScrollFooterDesign =
-        this.host.closest('tds-table').getElementsByTagName('tds-table-footer').length >= 1;
+        getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-footer').length >= 1;
     }
   }
 

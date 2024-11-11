@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Listen, State, Event, EventEmitter } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 /**
  * @slot <default>  - <b>Unnamed slot.</b> For the text label of the button.
@@ -59,7 +60,7 @@ export class TdsSideMenuCollapseButton {
   }
 
   connectedCallback() {
-    this.sideMenuEl = this.host.closest('tds-side-menu');
+    this.sideMenuEl = findClosestComponent(this.host, 'tdsSideMenu') as HTMLTdsSideMenuElement;
     this.collapsed = this.sideMenuEl.collapsed;
   }
 

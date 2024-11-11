@@ -13,6 +13,7 @@ import {
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
@@ -153,7 +154,7 @@ export class TdsTableBodyRowExpandable {
       this.isExpanded = this.expanded;
     }
 
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 

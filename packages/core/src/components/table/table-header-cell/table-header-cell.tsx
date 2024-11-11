@@ -11,6 +11,8 @@ import {
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 import { getPrefixedTagNames } from '../../../utils/tagName';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -155,7 +157,7 @@ export class TdsTableHeaderCell {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -174,8 +176,10 @@ export class TdsTableHeaderCell {
     // To enable body cells text align per rules set in head cell
     this.internalTdsTextAlign.emit([this.tableId, this.cellKey, this.textAlignState]);
 
+    const tdsTableElement = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
+
     this.enableToolbarDesign =
-      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+      getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-toolbar').length >= 1;
   }
 
   sortButtonClick = () => {
