@@ -358,10 +358,14 @@
   },
   "files": [
     "dist/",
-    "loader/"
+    "loader/",
+    "scripts/copy-assets.mjs"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "copy-assets": "./scripts/copy-assets.mjs"
   },
   "scripts": {
     "build": "stencil build && stencil build --docs",
@@ -372,6 +376,7 @@
     "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
+    "copy-assets": "node scripts/copy-assets.mjs",
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
     "build-storybook": "build-storybook --quiet",
