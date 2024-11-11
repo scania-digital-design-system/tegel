@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-relative-packages
-import { TAG_NAMES } from './tagNames';
+import { TAG_NAMES, TagName, TagNameCamelCase } from './tagNames';
 
 // Utils to handle tag names for 'tds-' prefixed components
 export const getTagName = (el: HTMLElement): string => {
@@ -13,19 +13,13 @@ export const getTagName = (el: HTMLElement): string => {
 export const paramCaseToCamelCase = (str: string): string =>
   str.replace(/-(\w)/g, (_, group) => group.toUpperCase());
 
-export const getTagNameWithoutPrefix = (host: HTMLElement): string => {
+export const getTagNameWithoutPrefix = (host: HTMLElement): TagName => {
   const tagName = getTagName(host);
-  const maxLength = 100; // Maximum length of the input string
-
-  // Ensure the regex correctly captures the tag name after the prefix
-  const match =
-    /^((?:[a-z0-9]+-){0,maxLength})([a-z0-9-]+)$/.exec(tagName.slice(0, maxLength)) || [];
-  const [, , tagNameWithoutPrefix = ''] = match;
-
-  return tagNameWithoutPrefix;
+  const [, tagNameWithoutPrefix = ''] = /^(?:[a-z-]+-)?(tds-[a-z-]+)$/.exec(tagName) || [];
+  return (tagNameWithoutPrefix || tagName) as TagName; // return tagName as fallback for default tags
 };
 
-export type PrefixedTagNames = Record<string, string>;
+export type PrefixedTagNames = Record<TagNameCamelCase, string>;
 
 class PrefixedTagNamesCache extends Map<string, PrefixedTagNames> {
   lastPrefix?: string;
@@ -34,23 +28,24 @@ class PrefixedTagNamesCache extends Map<string, PrefixedTagNames> {
 const PREFIXED_TAG_NAMES_CACHE = new PrefixedTagNamesCache();
 
 export const getPrefixedTagNames = (host: HTMLElement): PrefixedTagNames => {
-  const tagName = getTagName(host);
+  const [, prefix = ''] = /^([a-z-]+)-tds-[a-z-]+$/.exec(getTagName(host)) || [];
 
-  // Generate a unique cache key based on the tag name
-  const cacheKey = tagName;
-
-  // Check if the cache needs to be updated
-  if (!PREFIXED_TAG_NAMES_CACHE.has(cacheKey)) {
-    const prefixedTagNames: PrefixedTagNames = TAG_NAMES.reduce(
-      (result, tag) => ({
-        ...result,
-        [paramCaseToCamelCase(tag)]: tag, // Use the tag name directly without adding a prefix
-      }),
+  if (!PREFIXED_TAG_NAMES_CACHE.has(prefix)) {
+    const tagNames: PrefixedTagNames = TAG_NAMES.reduce(
+      prefix
+        ? (result, tag) => ({
+            ...result,
+            [paramCaseToCamelCase(tag)]: `${prefix}-${tag}`,
+          })
+        : (result, tag) => ({
+            ...result,
+            [paramCaseToCamelCase(tag)]: tag,
+          }),
       {} as PrefixedTagNames,
     );
 
-    PREFIXED_TAG_NAMES_CACHE.set(cacheKey, prefixedTagNames);
+    PREFIXED_TAG_NAMES_CACHE.set(prefix, tagNames);
   }
 
-  return PREFIXED_TAG_NAMES_CACHE.get(cacheKey) || {};
+  return PREFIXED_TAG_NAMES_CACHE.get(prefix);
 };
