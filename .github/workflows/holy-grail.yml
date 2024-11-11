@@ -142,9 +142,55 @@ jobs:
             echo "No changes to commit"
           fi
 
+  #BUMP WRAPPERS TO NEW VERSION
+  bump-wrappers-to-new-version:
+    needs: release-core
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          fetch-depth: 1 # Fetch just the release branch
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Set Tegel user
+        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Angular - Install latest tegel package
+        working-directory: packages/angular
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+
+      - name: Angular 17 - Install latest tegel package
+        working-directory: packages/angular-17
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+
+      - name: Angular 17 components - Install latest tegel package
+        working-directory: packages/angular-17/projects/components
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+
+      - name: React - Install latest tegel package
+        working-directory: packages/react
+        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+
+      - name: Wrappers Core increase - Commit and push changes
+        run: |
+          git add .
+          if ! git diff-index --quiet HEAD; then
+            git commit -m "ci(wrappers-increase-step): files changed in release"
+            git push --force --no-verify
+          else
+            echo "No changes to commit"
+          fi
+
   #RELEASE ANGULAR
   release-angular:
-    needs: [create-release-branch, release-core]
+    needs: [create-release-branch, release-core, bump-wrappers-to-new-version]
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular
@@ -153,8 +199,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
-          fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
+          fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -162,26 +207,16 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Set up Git for authentication
-        run: |
-          git config --global user.name "Tegel - Scania"
-          git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
-
       - name: Install dependencies in root
-        run: npm i
+        run: npm ci
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm i
+        run: npm ci
 
       - name: Angular - Install
         working-directory: packages/angular
-        run: npm i
-
-      - name: Angular - Install latest tegel package
-        working-directory: packages/angular
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+        run: npm ci
 
       - name: Angular - Run build
         run: npm run build-angular
@@ -192,18 +227,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Angular - Commit and push changes
-        run: |
-          git add .
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "ci(release-angular-step): files changed in release"
-            git push --force --no-verify
-          else
-            echo "No changes to commit"
-          fi
-
+  #RELEASE ANGULAR 17
   release-angular-17:
-    needs: [create-release-branch, release-core]
+    needs: [create-release-branch, release-core, bump-wrappers-to-new-version]
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular-17
@@ -212,8 +238,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
-          fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
+          fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -221,34 +246,20 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Set up Git for authentication
-        run: |
-          git config --global user.name "Tegel - Scania"
-          git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
-
       - name: Install dependencies in root
-        run: npm i
+        run: npm ci
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm i
+        run: npm ci
 
       - name: Angular-17 workspace - Install
         working-directory: packages/angular-17
-        run: npm i
+        run: npm ci
 
       - name: Angular-17 wrapper - Install
         working-directory: packages/angular-17/projects/components
-        run: npm i
-
-      - name: Angular-17 workspace - Install latest tegel package
-        working-directory: packages/angular-17
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
-
-      - name: Angular-17 wrapper - Install latest tegel package
-        working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+        run: npm ci
 
       - name: Angular-17 - Run build
         run: npm run build-angular-17
@@ -259,19 +270,9 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Angular-17 - Commit and push changes
-        run: |
-          git add .
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "ci(release-angular-17-step): files changed in release"
-            git push --force --no-verify
-          else
-            echo "No changes to commit"
-          fi
-
   #RELEASE REACT
   release-react:
-    needs: [create-release-branch, release-core]
+    needs: [create-release-branch, release-core, bump-wrappers-to-new-version]
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/react
@@ -280,8 +281,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
-          fetch-depth: 0 # Fetch all branches
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
+          fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -289,31 +289,21 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Set up Git for authentication
-        run: |
-          git config --global user.name "Tegel - Scania"
-          git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
-
       - name: React - Read package.json Version
         id: version
         working-directory: packages/react
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
-        run: npm i
+        run: npm ci
 
       - name: Core - Install
         working-directory: packages/core
-        run: npm i
+        run: npm ci
 
       - name: React - Install
         working-directory: packages/react
-        run: npm i
-
-      - name: React - Install latest tegel package
-        working-directory: packages/react
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+        run: npm ci
 
       - name: React - Build
         run: npm run build-react
@@ -323,16 +313,6 @@ jobs:
         run: npm publish --tag ${{ github.event.inputs.tags }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: React - Commit and push changes
-        run: |
-          git add .
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "ci(release-react-step): files changed in release"
-            git push --force --no-verify
-          else
-            echo "No changes to commit"
-          fi
 
   #ON FAILURE
   on-failure:
