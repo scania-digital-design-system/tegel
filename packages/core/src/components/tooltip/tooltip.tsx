@@ -33,7 +33,7 @@ export class TdsTooltip {
   /** What triggers the popover to show */
   @Prop() trigger: 'click' | 'hover' = 'hover';
 
-  /** Prop in control of showing and hiding prop */
+  /** Prop in control of showing and hiding prop. Takes precedence over `defaultOpen` prop. */
   @Prop({ mutable: true }) show: boolean = null;
 
   /** Placement of Tooltip. */

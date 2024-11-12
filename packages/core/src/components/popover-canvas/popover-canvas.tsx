@@ -25,7 +25,8 @@ export class TdsPopoverCanvas {
   @Prop() defaultOpen: boolean = false;
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
-   * will be decided by this prop and will need to be controlled from the outside.
+   * will be decided by this prop and will need to be controlled from the outside. This
+   * also means that clicking outside of the popover won't close it. Takes precedence over `defaultOpen` prop.
    */
   @Prop() show: boolean = null;
 

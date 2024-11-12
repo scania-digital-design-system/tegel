@@ -32,7 +32,10 @@ export class TdsPopoverCore {
   /** Decides if the component should be visible from the start. */
   @Prop() defaultOpen: boolean = false;
 
-  /** Toggles the visibility of the component and sets component to controlled state. */
+  /** Controls whether the Popover is shown or not. If this is set hiding and showing
+   * will be decided by this prop and will need to be controlled from the outside. This
+   * also means that clicking outside of the popover won't close it. Takes precedence over `defaultOpen` prop.
+   */
   @Prop() show: boolean = null;
 
   /** Decides the placement of the Popover Menu */
@@ -242,7 +245,9 @@ export class TdsPopoverCore {
 
   /* To enable initial loading of a component if user controls show prop*/
   componentWillLoad() {
-    this.setIsShown(this.defaultOpen);
+    if (this.show === true || this.defaultOpen === true) {
+      this.setIsShown(true);
+    }
   }
 
   componentDidRender() {
