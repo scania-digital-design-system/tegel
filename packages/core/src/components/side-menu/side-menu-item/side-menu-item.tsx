@@ -1,6 +1,7 @@
 import { Component, h, Host, Element, Listen, Prop, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
 import dfs from '../../../utils/dfs';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For injecting a native <code>&lt;button</code> and <code>&lt;a></code> element.
@@ -45,8 +46,9 @@ export class TdsSideMenuItem {
    */
   updateSlottedElements() {
     if (this.slotEl) {
-      const isIconOrSvg = (element) =>
-        element.tagName.toLowerCase() === 'tds-icon' || element.tagName.toLowerCase() === 'svg';
+      const isIconOrSvg = (element: HTMLElement) =>
+        element.tagName.toLowerCase().endsWith('tds-icon') ||
+        element.tagName.toLowerCase() === 'svg';
       const addIconClass = (element) => {
         element.classList.add('__tds-side-menu-item-icon');
         if (this.collapsed) {
@@ -62,7 +64,7 @@ export class TdsSideMenuItem {
   connectedCallback() {
     // closest() will return null if side-menu-item is inside a shadowRoot that
     // does not contain a side-menu. This is the case for the side-menu-dropdown.
-    this.sideMenuEl = this.host.closest('tds-side-menu');
+    this.sideMenuEl = findClosestComponent(this.host, 'tdsSideMenu') as HTMLTdsSideMenuElement;
     this.collapsed = this.sideMenuEl?.collapsed;
   }
 

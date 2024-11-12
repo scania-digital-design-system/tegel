@@ -10,6 +10,8 @@ import {
   Method,
 } from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the option label text.
@@ -79,10 +81,7 @@ export class TdsDropdownOption {
   tdsBlur: EventEmitter<FocusEvent>;
 
   componentWillRender = () => {
-    this.parentElement =
-      this.host.parentElement.tagName === 'TDS-DROPDOWN'
-        ? (this.host.parentElement as HTMLTdsDropdownElement)
-        : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
+    this.parentElement = findClosestComponent(this.host, 'tdsDropdown') as HTMLTdsDropdownElement;
     this.multiselect = this.parentElement.multiselect;
     this.size = this.parentElement.size;
     this.label = this.host.textContent.trim();
@@ -132,6 +131,7 @@ export class TdsDropdownOption {
   };
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host role="option" aria-disabled={this.disabled} aria-selected={this.selected}>
         <div
@@ -150,7 +150,7 @@ export class TdsDropdownOption {
                 }
               }}
             >
-              <tds-checkbox
+              <prefixedTagNames.tdsCheckbox
                 onTdsChange={(event) => {
                   this.handleMultiselect(event);
                 }}
@@ -163,7 +163,7 @@ export class TdsDropdownOption {
                 <div slot="label">
                   <slot></slot>
                 </div>
-              </tds-checkbox>
+              </prefixedTagNames.tdsCheckbox>
             </div>
           ) : (
             <button
@@ -177,7 +177,7 @@ export class TdsDropdownOption {
             >
               <div class="single-select">
                 <slot></slot>
-                {this.selected && <tds-icon name="tick" size="16px"></tds-icon>}
+                {this.selected && <prefixedTagNames.tdsIcon name="tick" size="16px" />}
               </div>
             </button>
           )}

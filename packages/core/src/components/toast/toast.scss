@@ -18,7 +18,7 @@
     &.information {
       border-left: 4px solid var(--tds-information);
 
-      tds-icon {
+      .icon {
         color: var(--tds-information);
       }
     }
@@ -26,7 +26,7 @@
     &.success {
       border-left: 4px solid var(--tds-positive);
 
-      tds-icon {
+      .icon {
         color: var(--tds-positive);
       }
     }
@@ -34,7 +34,7 @@
     &.error {
       border-left: 4px solid var(--tds-negative);
 
-      tds-icon {
+      .icon {
         color: var(--tds-negative);
       }
     }
@@ -42,7 +42,7 @@
     &.warning {
       border-left: 4px solid var(--tds-warning);
 
-      tds-icon {
+      .icon {
         color: var(--tds-warning);
       }
     }
@@ -65,14 +65,14 @@
         @include tds-focus-state;
       }
 
-      tds-icon {
+      .icon {
         color: var(--tds-toast-dissmiss-color);
         padding: 0;
       }
     }
   }
 
-  tds-icon {
+  .icon {
     padding: 14px 0 0 12px;
   }
 

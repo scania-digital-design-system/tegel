@@ -1,6 +1,7 @@
 import { Component, Host, h, Prop, Element, Event, EventEmitter, Method } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot header - Slot for the Toast header.
@@ -96,13 +97,16 @@ export class TdsToast {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
+
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         toastRole={this.toastRole}
         aria-describedby={this.host.getAttribute('aria-describedby')}
         class={{
-          hide: this.hidden,
-          show: !this.hidden,
+          'tds-toast__toast': true,
+          'hide': this.hidden,
+          'show': !this.hidden,
         }}
       >
         <div
@@ -110,7 +114,7 @@ export class TdsToast {
             wrapper
             ${this.variant}`}
         >
-          <tds-icon name={this.getIconName()} size="20px"></tds-icon>
+          <prefixedTagNames.tdsIcon class="icon" name={this.getIconName()} size="20px" />
           <div class={`content`}>
             <div class="header-subheader">
               {this.header && <div class="header">{this.header}</div>}
@@ -131,7 +135,7 @@ export class TdsToast {
 
           {this.closable && (
             <button onClick={this.handleClose} class="close">
-              <tds-icon name="cross" size="20px"></tds-icon>
+              <prefixedTagNames.tdsIcon class="icon" name="cross" size="20px" />
             </button>
           )}
         </div>

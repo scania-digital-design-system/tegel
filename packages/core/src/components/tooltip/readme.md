@@ -53,19 +53,6 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 | `"<default>"` | <b>Unnamed slot.</b> For the tooltip contents. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-popover-core](../popover-core)
-
-### Graph
-```mermaid
-graph TD;
-  tds-tooltip --> tds-popover-core
-  style tds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

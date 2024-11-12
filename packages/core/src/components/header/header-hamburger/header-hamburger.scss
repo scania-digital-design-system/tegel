@@ -3,7 +3,7 @@
 :host {
   color: var(--tds-white);
 
-  tds-header-item {
+  .tds-header__item {
     display: block;
   }
 
@@ -16,11 +16,11 @@
 }
 
 @media screen and (min-width: $grid-lg) {
-  :host tds-header-item {
+  :host .tds-header__item {
     display: none;
   }
 
-  :host([persistent]) tds-header-item {
+  :host([persistent]) .tds-header__item {
     display: block;
   }
 }

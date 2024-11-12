@@ -34,7 +34,7 @@ export class TdsHeaderDropdownList {
     }
 
     let listRoot = this.host;
-    if (this.host.parentElement.tagName.toLowerCase() === 'tds-header-launcher-list') {
+    if (this.host.parentElement.tagName.toLowerCase().endsWith('tds-header-launcher-list')) {
       listRoot = this.host.parentElement;
     }
 

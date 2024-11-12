@@ -1,6 +1,7 @@
 import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot header - Slot for the Card header.
@@ -89,6 +90,7 @@ export class TdsCard {
     const usesBodySlot = hasSlot('body', this.host);
     const usesBodyImageSlot = hasSlot('body-image', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <div class={this.stretch && 'stretch'}>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
@@ -96,7 +98,7 @@ export class TdsCard {
           {usesBodyImageSlot && <slot name="body-image"></slot>}
           {this.bodyImg && <img class="card-body-img" src={this.bodyImg} alt={this.bodyImgAlt} />}
           {this.imagePlacement === 'above-header' && this.getCardHeader()}
-          {this.bodyDivider && <tds-divider></tds-divider>}
+          {this.bodyDivider && <prefixedTagNames.tdsDivider />}
           {usesBodySlot && <slot name="body"></slot>}
         </div>
         {usesActionsSlot && <slot name={`actions`}></slot>}

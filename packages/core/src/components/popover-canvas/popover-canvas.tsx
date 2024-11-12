@@ -2,6 +2,7 @@ import { Component, Host, h, Prop, Element, Method, State } from '@stencil/core'
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the contents of the popover.
@@ -52,9 +53,11 @@ export class TdsPopoverCanvas {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
-        <tds-popover-core
+        <prefixedTagNames.tdsPopoverCore
           {...this.inheritedAttributes}
           class={{
             'tds-popover-canvas': true,
@@ -76,7 +79,7 @@ export class TdsPopoverCanvas {
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}
             <slot></slot>
           </div>
-        </tds-popover-core>
+        </prefixedTagNames.tdsPopoverCore>
       </Host>
     );
   }

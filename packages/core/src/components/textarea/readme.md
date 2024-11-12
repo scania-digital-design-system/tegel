@@ -36,19 +36,6 @@
 | `tdsInput`  | Input event for the Textarea  | `CustomEvent<InputEvent>` |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-textarea --> tds-icon
-  style tds-textarea fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

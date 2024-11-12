@@ -3,7 +3,7 @@
 }
 
 :host(.focused-input-wrapper) {
-  tds-icon {
+  .edit-icon {
     display: inline-block;
   }
 }
@@ -15,7 +15,7 @@
 }
 
 :host(:hover) {
-  tds-icon {
+  .edit-icon {
     display: inline-block;
   }
 
@@ -24,7 +24,7 @@
   }
 }
 
-tds-icon.edit-icon {
+.edit-icon {
   display: none;
   position: absolute;
   right: 10px;

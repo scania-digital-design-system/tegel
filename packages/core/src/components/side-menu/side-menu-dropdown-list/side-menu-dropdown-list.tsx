@@ -1,5 +1,6 @@
 import { Component, Host, h, Listen, Element, State } from '@stencil/core';
 import { CollapseEvent } from '../side-menu';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 /**
  * @slot <default>  - <b>Unnamed slot.</b> For injection of <code>tds-side-menu-dropdown-list-item</code> subcomponents.
@@ -22,7 +23,7 @@ export class TdsSideMenuDropdownList {
   }
 
   connectedCallback() {
-    this.sideMenuEl = this.host.closest('tds-side-menu');
+    this.sideMenuEl = findClosestComponent(this.host, 'tdsSideMenu') as HTMLTdsSideMenuElement;
     this.collapsed = this.sideMenuEl?.collapsed;
   }
 

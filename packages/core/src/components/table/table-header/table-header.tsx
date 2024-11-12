@@ -10,6 +10,9 @@ import {
   Prop,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -103,11 +106,11 @@ export class TdsTableHeaderRow {
 
   bodyExpandClicked() {
     const numberOfExtendRowsActive = this.host.parentElement
-      .querySelector('tds-table-body')
+      .querySelector('.tds-table__body')
       .getElementsByClassName('tds-table__row-extend--active').length;
     const numberOfExtendRows = this.host.parentElement
-      .querySelector('tds-table-body')
-      .getElementsByTagName('tds-table-body-row-expendable').length;
+      .querySelector('.tds-table__body')
+      .getElementsByClassName('.tds-table__row-expandable').length;
 
     if (numberOfExtendRows === numberOfExtendRowsActive) {
       this.mainExpendSelected = true;
@@ -117,7 +120,7 @@ export class TdsTableHeaderRow {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -128,8 +131,10 @@ export class TdsTableHeaderRow {
   }
 
   componentWillRender() {
+    const tdsTableElement = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
+
     this.enableToolbarDesign =
-      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+      getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-toolbar').length >= 1;
   }
 
   async handleCheckboxChange(event) {
@@ -142,9 +147,11 @@ export class TdsTableHeaderRow {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         class={{
+          'tds-table__header': true,
           'tds-table--compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,
           'tds-table--toolbar-available': this.enableToolbarDesign,
@@ -154,12 +161,12 @@ export class TdsTableHeaderRow {
           {this.multiselect && (
             <th class="tds-table__header-cell tds-table__header-cell--checkbox">
               <div class="tds-form-label tds-form-label--table">
-                <tds-checkbox
+                <prefixedTagNames.tdsCheckbox
                   checked={this.allSelected || this.selected}
                   disabled={this.disabled}
                   indeterminate={this.indeterminate}
                   onTdsChange={(event) => this.handleCheckboxChange(event)}
-                ></tds-checkbox>
+                />
               </div>
             </th>
           )}

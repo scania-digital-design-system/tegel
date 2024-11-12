@@ -10,6 +10,8 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
@@ -77,7 +79,7 @@ export class TdsTableToolbar {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -113,6 +115,7 @@ export class TdsTableToolbar {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         class={{
@@ -132,7 +135,7 @@ export class TdsTableToolbar {
                   onKeyUp={(event) => this.handleSearch(event)}
                 />
                 <span class="tds-table__searchbar-icon">
-                  <tds-icon name="search" size="20px"></tds-icon>
+                  <prefixedTagNames.tdsIcon name="search" size="20px" />
                 </span>
               </div>
             )}

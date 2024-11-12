@@ -20,14 +20,14 @@
     --tds-dropdown-bg: var(--tds-white);
   }
 
-  tds-table-footer {
-    --tds-dropdown-bg: white;
-    --tds-placeholder-margin: var(--tds-spacing-element-8);
-    --tds-dropdown-border-bottom: transparent;
-    --tds-dropdown-border-bottom-hover: transparent;
-    --tds-dropdown-border-bottom-open: transparent;
-    --tds-dropdown-border-radius: var(--tds-spacing-element-4);
-  }
+  // tds-table-footer {
+  //   --tds-dropdown-bg: white;
+  //   --tds-placeholder-margin: var(--tds-spacing-element-8);
+  //   --tds-dropdown-border-bottom: transparent;
+  //   --tds-dropdown-border-bottom-hover: transparent;
+  //   --tds-dropdown-border-bottom-open: transparent;
+  //   --tds-dropdown-border-radius: var(--tds-spacing-element-4);
+  // }
 }
 
 .tds-mode-dark {
@@ -50,7 +50,7 @@
     --tds-dropdown-bg: var(--tds-grey-900);
   }
 
-  tds-table-footer {
-    --tds-dropdown-bg: var(--tds-grey-868);
-  }
+  // tds-table-footer {
+  //   --tds-dropdown-bg: var(--tds-grey-868);
+  // }
 }

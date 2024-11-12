@@ -24,26 +24,6 @@
 | `tdsPagination` | Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic. | `CustomEvent<{ tableId: string; paginationValue: number; rowsPerPage?: number; }>` |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-dropdown](../../dropdown)
-- [tds-dropdown-option](../../dropdown/dropdown-option)
-- [tds-icon](../../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-table-footer --> tds-dropdown
-  tds-table-footer --> tds-dropdown-option
-  tds-table-footer --> tds-icon
-  tds-dropdown --> tds-icon
-  tds-dropdown-option --> tds-checkbox
-  tds-dropdown-option --> tds-icon
-  style tds-table-footer fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

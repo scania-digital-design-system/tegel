@@ -10,6 +10,9 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -154,7 +157,7 @@ export class TdsTableHeaderCell {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -173,8 +176,10 @@ export class TdsTableHeaderCell {
     // To enable body cells text align per rules set in head cell
     this.internalTdsTextAlign.emit([this.tableId, this.cellKey, this.textAlignState]);
 
+    const tdsTableElement = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
+
     this.enableToolbarDesign =
-      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+      getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-toolbar').length >= 1;
   }
 
   sortButtonClick = () => {
@@ -199,6 +204,7 @@ export class TdsTableHeaderCell {
 
   headerCellContent = () => {
     if (this.sortable) {
+      const prefixedTagNames = getPrefixedTagNames(this.host);
       return (
         <button
           class="tds-table__header-button"
@@ -211,16 +217,20 @@ export class TdsTableHeaderCell {
           </span>
 
           {this.sortingDirection === undefined && (
-            <tds-icon class="tds-table__header-button-icon" name="sorting" size="16px"></tds-icon>
+            <prefixedTagNames.tdsIcon
+              class="tds-table__header-button-icon"
+              name="sorting"
+              size="16px"
+            />
           )}
           {this.sortingDirection && ['asc', 'desc'].includes(this.sortingDirection) && (
-            <tds-icon
+            <prefixedTagNames.tdsIcon
               class={`tds-table__header-button-icon ${
                 this.sortingDirection === 'asc' ? 'tds-table__header-button-icon--rotate' : ''
               }`}
               name="arrow_down"
               size="16px"
-            ></tds-icon>
+            />
           )}
         </button>
       );

@@ -1,6 +1,6 @@
 @import '../../mixins/box-sizing';
 
-tds-slider {
+.tds-slider__slider {
   @include tds-box-sizing;
 
   width: 100%;
@@ -348,7 +348,7 @@ tds-slider {
 
       &.tds-slider__control-minus,
       &.tds-slider__control-plus {
-        tds-icon {
+        .tds-icon__icon {
           color: var(--tds-slider-controls-color);
         }
       }
@@ -362,7 +362,7 @@ tds-slider {
 
         &.tds-slider__control-minus,
         &.tds-slider__control-plus {
-          tds-icon {
+          .tds-icon__icon {
             color: var(--tds-slider-disabled);
           }
         }

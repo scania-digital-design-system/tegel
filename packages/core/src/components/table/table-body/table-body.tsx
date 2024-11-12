@@ -1,6 +1,7 @@
 import { Component, Element, h, Host, Listen, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -70,7 +71,7 @@ export class TdsTableBody {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -80,9 +81,10 @@ export class TdsTableBody {
     });
   }
 
-  componentWillRender() {
-    const headerColumnsNo =
-      this.host.parentElement.querySelector('tds-table-header').children.length;
+  componentDidRender() {
+    const headerColumnsNo = findClosestComponent(this.host, 'tdsTable').querySelector(
+      '.tds-table__header',
+    ).children.length;
 
     // multiselect and expended features requires one extra column for controls...
     if (this.multiselect || this.expandableRows) {
@@ -97,6 +99,7 @@ export class TdsTableBody {
       <Host
         data-selected-rows={this.multiselectArrayJSON}
         class={{
+          'tds-table__body': true,
           'tds-table--zebra-mode-rows-odd': this.zebraMode === 'rows-odd',
           'tds-table--zebra-mode-rows-even': this.zebraMode === 'rows-even',
           'tds-table--zebra-mode-columns-odd': this.zebraMode === 'columns-odd',

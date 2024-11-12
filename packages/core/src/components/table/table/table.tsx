@@ -14,6 +14,8 @@ import {
   State,
 } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 type Props = {
   verticalDividers: boolean;
@@ -113,14 +115,16 @@ export class TdsTable {
   @Method()
   async getSelectedRows() {
     let selectedRowsData = [];
-    const tableBody = this.host.querySelector('tds-table-body');
-    const selectedRows = Array.from(tableBody.querySelectorAll('tds-table-body-row')).filter(
-      (element) => element.selected,
-    );
+    const tableBody = this.host.querySelector('.tds-table__body');
+    const selectedRows = (
+      Array.from(tableBody.querySelectorAll('.tds-table__row')) as HTMLTdsTableBodyRowElement[]
+    ).filter((element) => element.selected);
 
     selectedRows.forEach((row) => {
       let selectedRow = [];
-      const rowCells = Array.from(row.getElementsByTagName('tds-body-cell'));
+      const rowCells = Array.from(
+        row.querySelectorAll('.tds-table__body-cell'),
+      ) as HTMLTdsBodyCellElement[];
 
       rowCells.forEach((cell) => {
         const cellObject = {
@@ -187,13 +191,15 @@ export class TdsTable {
     this.emitInternalTdsPropChange('horizontalScrollWidth', newValue);
   }
 
-  componentWillRender() {
+  componentDidRender() {
     if (this.horizontalScrollWidth) {
+      const tdsTableElement = findClosestComponent(this.host, 'tdsTable');
+
       this.enableHorizontalScrollToolbarDesign =
-        this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+        getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-toolbar').length >= 1;
 
       this.enableHorizontalScrollFooterDesign =
-        this.host.closest('tds-table').getElementsByTagName('tds-table-footer').length >= 1;
+        getDirectChildHTMLElementOfKind(tdsTableElement, 'tds-table-footer').length >= 1;
     }
   }
 

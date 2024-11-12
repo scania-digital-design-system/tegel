@@ -1,5 +1,6 @@
 import { Component, Element, h, Host } from '@stencil/core';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 @Component({
   tag: 'tds-side-menu-close-button',
@@ -14,10 +15,11 @@ export class TdsSideMenuCloseButton {
       'aria-label': 'Close',
       ...inheritAriaAttributes(this.host),
     };
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host>
         <button {...buttonProps}>
-          <tds-icon name="cross" size="20px"></tds-icon>
+          <prefixedTagNames.tdsIcon name="cross" size="20px" />
         </button>
       </Host>
     );

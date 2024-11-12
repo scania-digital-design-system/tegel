@@ -2,6 +2,8 @@ import { Component, Host, h, Element, Listen, State } from '@stencil/core';
 import { Attributes } from '../../../types/Attributes';
 import generateUniqueId from '../../../utils/generateUniqueId';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a launcher list (or grid) element.
@@ -34,7 +36,8 @@ export class TdsHeaderLauncher {
   }
 
   componentDidLoad() {
-    const hasListTypeMenu = !!this.host.querySelector('tds-header-launcher-list');
+    const hasListTypeMenu =
+      getDirectChildHTMLElementOfKind(this.host, 'tds-header-launcher-list').length >= 1;
     this.hasListTypeMenu = hasListTypeMenu;
   }
 
@@ -59,6 +62,8 @@ export class TdsHeaderLauncher {
       },
     };
 
+    const prefixedTagNames = getPrefixedTagNames(this.host);
+
     return (
       <Host>
         <div
@@ -68,10 +73,10 @@ export class TdsHeaderLauncher {
             'state-list-type-menu': this.hasListTypeMenu,
           }}
         >
-          <tds-header-launcher-button {...buttonAttributes}></tds-header-launcher-button>
+          <prefixedTagNames.tdsHeaderLauncherButton {...buttonAttributes} />
 
           {this.buttonEl && (
-            <tds-popover-canvas
+            <prefixedTagNames.tdsPopoverCanvas
               id={`tds-launcher-${this.uuid}`}
               class="menu"
               referenceEl={this.buttonEl}
@@ -88,7 +93,7 @@ export class TdsHeaderLauncher {
               ]}
             >
               {this.open ? <slot></slot> : null}
-            </tds-popover-canvas>
+            </prefixedTagNames.tdsPopoverCanvas>
           )}
         </div>
       </Host>

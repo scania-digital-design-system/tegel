@@ -27,19 +27,6 @@
 | `"end"` | Slot for the end (right side) of the Table Toolbar. |
 
 
-## Dependencies
-
-### Depends on
-
-- [tds-icon](../../icon)
-
-### Graph
-```mermaid
-graph TD;
-  tds-table-toolbar --> tds-icon
-  style tds-table-toolbar fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

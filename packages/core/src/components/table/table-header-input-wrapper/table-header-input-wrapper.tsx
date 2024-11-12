@@ -1,6 +1,8 @@
 import { Component, Element, Listen, h, Host, Prop, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesign'];
 
@@ -39,7 +41,7 @@ export class TdsTableHeaderInputWrapper {
   }
 
   connectedCallback() {
-    const tableEl = this.host.closest('tds-table');
+    const tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     if (tableEl) {
       this.tableId = tableEl.getAttribute('table-id');
     } else {
@@ -48,7 +50,7 @@ export class TdsTableHeaderInputWrapper {
   }
 
   componentWillLoad() {
-    const tableEl = this.host.closest('tds-table');
+    const tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     if (tableEl) {
       relevantTableProps.forEach((tablePropName) => {
         this[tablePropName] = tableEl[tablePropName];
@@ -84,6 +86,7 @@ export class TdsTableHeaderInputWrapper {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         class={{
@@ -94,7 +97,7 @@ export class TdsTableHeaderInputWrapper {
       >
         {this.renderSlot ? <slot onSlotchange={() => this.handleSlotChange()} /> : null}
         {this.showIcon ? (
-          <tds-icon class="search-icon" slot="icon" size="16px" name="search"></tds-icon>
+          <prefixedTagNames.tdsIcon class="search-icon" slot="icon" size="16px" name="search" />
         ) : null}
       </Host>
     );

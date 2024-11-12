@@ -14,6 +14,8 @@ import {
 import findNextFocusableElement from '../../utils/findNextFocusableElement';
 import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
 import appendHiddenInput from '../../utils/appendHiddenInput';
+import { getPrefixedTagNames } from '../../utils/tagName';
+import { getDirectChildHTMLElementOfKind } from '../../utils/getDirectChildHTMLElementOfKind';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
@@ -315,8 +317,9 @@ export class TdsDropdown {
 
   private setDefaultOption = () => {
     if (this.defaultValue) {
-      const children = Array.from(this.host.children).filter(
-        (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
+      const children = getDirectChildHTMLElementOfKind(
+        this.host,
+        'tds-dropdown-option',
       ) as HTMLTdsDropdownOptionElement[];
 
       if (children.length === 0) {
@@ -367,9 +370,10 @@ export class TdsDropdown {
 
   /* Returns a list of all children that are tds-dropdown-option elements */
   private getChildren = () => {
-    const tdsDropdownOptions = Array.from(this.host.children).filter(
-      (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-    ) as Array<HTMLTdsDropdownOptionElement>;
+    const tdsDropdownOptions = getDirectChildHTMLElementOfKind(
+      this.host,
+      'tds-dropdown-option',
+    ) as HTMLTdsDropdownOptionElement[];
     if (tdsDropdownOptions.length === 0) {
       console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
     } else return tdsDropdownOptions;
@@ -493,6 +497,7 @@ export class TdsDropdown {
       this.value?.map((value) => value).toString(),
       this.disabled,
     );
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         role="select"
@@ -558,7 +563,7 @@ export class TdsDropdown {
                   }}
                 />
               </div>
-              <tds-icon
+              <prefixedTagNames.tdsIcon
                 tabIndex={0}
                 role="button"
                 aria-label="Clear filter"
@@ -569,11 +574,13 @@ export class TdsDropdown {
                     this.handleFilterReset();
                   }
                 }}
-                class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                class={`icon clear-icon ${
+                  this.open && this.inputElement.value !== '' ? '' : 'hide'
+                }`}
                 name="cross"
                 size="16px"
-              ></tds-icon>
-              <tds-icon
+              />
+              <prefixedTagNames.tdsIcon
                 tabIndex={0}
                 role="button"
                 aria-label="Open/Close dropdown"
@@ -584,10 +591,10 @@ export class TdsDropdown {
                     this.handleToggleOpen();
                   }
                 }}
-                class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                class={`icon menu-icon ${this.open ? 'open' : 'closed'}`}
                 name="chevron_down"
                 size="16px"
-              ></tds-icon>
+              />
             </div>
           ) : (
             <button
@@ -622,13 +629,13 @@ export class TdsDropdown {
                 <div class={`placeholder ${this.size}`}>
                   {this.value?.length ? this.getValue() : this.placeholder}
                 </div>
-                <tds-icon
+                <prefixedTagNames.tdsIcon
                   aria-label="Open/Close dropdown"
                   svgTitle="Open/Close dropdown"
-                  class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                  class={`icon menu-icon ${this.open ? 'open' : 'closed'}`}
                   name="chevron_down"
                   size="16px"
-                ></tds-icon>
+                />
               </div>
             </button>
           )}
@@ -650,7 +657,7 @@ export class TdsDropdown {
         {/* DROPDOWN LIST */}
         {this.helper && (
           <div class={`helper ${this.error ? 'error' : ''} ${this.disabled ? 'disabled' : ''}`}>
-            {this.error && <tds-icon name="error" size="16px"></tds-icon>}
+            {this.error && <prefixedTagNames.tdsIcon name="error" size="16px" />}
             {this.helper}
           </div>
         )}

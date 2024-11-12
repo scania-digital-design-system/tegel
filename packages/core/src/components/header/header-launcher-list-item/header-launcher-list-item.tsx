@@ -1,4 +1,5 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, Element, h, Host } from '@stencil/core';
+import { getPrefixedTagNames } from '../../../utils/tagName';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a link or button element.
@@ -9,12 +10,15 @@ import { Component, h, Host } from '@stencil/core';
   shadow: true,
 })
 export class TdsHeaderLauncherListItem {
+  @Element() host: HTMLElement;
+
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host>
-        <tds-header-dropdown-list-item size="lg">
+        <prefixedTagNames.tdsHeaderDropdownListItem size="lg">
           <slot></slot>
-        </tds-header-dropdown-list-item>
+        </prefixedTagNames.tdsHeaderDropdownListItem>
       </Host>
     );
   }

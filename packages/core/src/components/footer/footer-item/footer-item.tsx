@@ -1,4 +1,5 @@
 import { Component, Element, h } from '@stencil/core';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For slotting a link, button, or similar.
@@ -14,7 +15,9 @@ export class TdsFooterItem {
   private parentIsTopPart: boolean = false;
 
   connectedCallback() {
-    this.parentIsTopPart = this.host.closest('tds-footer-group').parentElement.slot === 'top';
+    this.parentIsTopPart =
+      (findClosestComponent(this.host, 'tdsFooterGroup') as HTMLTdsFooterGroupElement).parentElement
+        .slot === 'top';
   }
 
   render() {

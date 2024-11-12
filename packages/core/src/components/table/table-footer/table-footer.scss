@@ -157,7 +157,7 @@
 }
 
 // trick to get the focus state on the dropdown button
-tds-dropdown:focus-within {
+.page-dropdown:focus-within {
   &::after {
     content: '';
     position: absolute;

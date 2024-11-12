@@ -13,6 +13,7 @@ import {
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
@@ -153,7 +154,7 @@ export class TdsTableBodyRowExpandable {
       this.isExpanded = this.expanded;
     }
 
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
@@ -167,7 +168,7 @@ export class TdsTableBodyRowExpandable {
     if (this.colSpan !== null) {
       this.columnsNumber = this.colSpan;
     } else {
-      this.columnsNumber = this.tableEl.querySelector('tds-table-header').childElementCount + 1;
+      this.columnsNumber = this.tableEl.querySelector('.tds-table__header').childElementCount + 1;
     }
   }
 
@@ -186,6 +187,7 @@ export class TdsTableBodyRowExpandable {
       <Host
         class={{
           'tds-table__row': true,
+          'tds-table__row-expandable': true,
           'tds-table__row-expand--active': this.isExpanded,
           'tds-table__compact': this.compactDesign,
           'tds-table--divider': this.verticalDividers,

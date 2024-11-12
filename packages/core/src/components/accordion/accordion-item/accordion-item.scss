@@ -32,13 +32,10 @@
     background-color: var(--tds-accordion-background);
 
     .tds-accordion-icon {
+      display: block;
       transform-origin: center;
       transition: transform 0.15s ease-in-out;
       color: var(--tds-accordion-icon-color);
-
-      & > tds-icon {
-        display: block;
-      }
     }
   }
 

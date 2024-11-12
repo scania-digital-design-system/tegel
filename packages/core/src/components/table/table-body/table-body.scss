@@ -1,7 +1,7 @@
 @import '../../../mixins/box-sizing';
 
 :host,
-tds-table-body {
+.tds-table__body {
   @include tds-box-sizing;
 
   display: table-row-group;
@@ -22,47 +22,47 @@ tds-table-body {
 
 // Zebra mode: rows and columns
 
-tds-table-body {
+.tds-table__body {
   // ODD rows
   &.tds-table--zebra-mode-rows-odd {
-    tds-table-body-row:nth-child(odd) {
+    .tds-table__row:nth-child(odd) {
       background-color: var(--tds-table-zebra-mode-backround);
     }
 
-    tds-table-body-row:nth-child(odd):hover {
+    .tds-table__row:nth-child(odd):hover {
       background-color: var(--tds-table-body-row-background-hover);
     }
   }
 
   // EVEN rows
   &.tds-table--zebra-mode-rows-even {
-    tds-table-body-row:nth-child(even) {
+    .tds-table__row:nth-child(even) {
       background-color: var(--tds-table-zebra-mode-backround);
     }
 
-    tds-table-body-row:nth-child(even):hover {
+    .tds-table__row:nth-child(even):hover {
       background-color: var(--tds-table-body-row-background-hover);
     }
   }
 
   // ODD columns
   &.tds-table--zebra-mode-columns-odd {
-    tds-body-cell:nth-child(odd) {
+    .tds-table__body-cell:nth-child(odd) {
       background-color: var(--tds-table-zebra-mode-backround);
     }
 
-    tds-body-cell.tds-table__body-cell--hover:nth-child(odd) {
+    .tds-table__body-cell.tds-table__body-cell--hover:nth-child(odd) {
       background-color: var(--tds-table-body-cell-background-hover);
     }
   }
 
   // EVEN columns
   &.tds-table--zebra-mode-columns-even {
-    tds-body-cell:nth-child(even) {
+    .tds-table__body-cell:nth-child(even) {
       background-color: var(--tds-table-zebra-mode-backround);
     }
 
-    tds-body-cell.tds-table__body-cell--hover:nth-child(even) {
+    .tds-table__body-cell.tds-table__body-cell--hover:nth-child(even) {
       background-color: var(--tds-table-body-cell-background-hover);
     }
   }
@@ -70,8 +70,8 @@ tds-table-body {
   // Fix for hover on zebra mode columns
   &.tds-table--zebra-mode-columns-even,
   &.tds-table--zebra-mode-columns-odd {
-    tds-table-body-row:hover {
-      tds-body-cell {
+    .tds-table__row:hover {
+      .tds-table__body-cell {
         background-color: transparent;
       }
     }

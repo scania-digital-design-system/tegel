@@ -1,4 +1,5 @@
-import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter, Element } from '@stencil/core';
+import { getPrefixedTagNames } from '../../utils/tagName';
 
 @Component({
   tag: 'tds-textarea',
@@ -7,6 +8,8 @@ import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
   scoped: true,
 })
 export class TdsTextarea {
+  @Element() host: HTMLElement;
+
   /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
 
@@ -117,6 +120,7 @@ export class TdsTextarea {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <div
         class={`
@@ -175,12 +179,12 @@ export class TdsTextarea {
             </svg>
           </span>
           <span class="textarea-icon__readonly">
-            <tds-icon name="edit_inactive"></tds-icon>
+            <prefixedTagNames.tdsIcon name="edit_inactive" />
           </span>
           <span class="textarea-icon__readonly-label">This field is non-editable</span>
         </div>
         <span class={'textarea-helper'}>
-          {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
+          {this.state === 'error' && <prefixedTagNames.tdsIcon name="error" size="16px" />}
           {this.helper}
         </span>
 

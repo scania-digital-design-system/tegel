@@ -10,6 +10,8 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { getPrefixedTagNames } from '../../../utils/tagName';
+import { findClosestComponent } from '../../../utils/findClosestComponent';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
@@ -94,11 +96,11 @@ export class TdsTableFooter {
   }
 
   connectedCallback() {
-    this.tableEl = this.host.closest('tds-table');
+    this.tableEl = findClosestComponent(this.host, 'tdsTable') as HTMLTdsTableElement;
     this.tableId = this.tableEl.tableId;
   }
 
-  componentWillLoad() {
+  componentDidLoad() {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl[tablePropName];
     });
@@ -107,7 +109,7 @@ export class TdsTableFooter {
 
     /** Get the number of columns. */
     const numberOfColumns =
-      this.host.parentElement.querySelector('tds-table-header').childElementCount;
+      this.host.parentElement.querySelector('.tds-table__header').childElementCount;
     if (this.cols) {
       this.columnsNumber = this.cols;
     } else {
@@ -201,9 +203,11 @@ export class TdsTableFooter {
   }
 
   render() {
+    const prefixedTagNames = getPrefixedTagNames(this.host);
     return (
       <Host
         class={{
+          'tds-table__footer': true,
           'tds-table--compact': this.compactDesign,
           'footer__horizontal-scroll': !!this.horizontalScrollWidth,
         }}
@@ -217,7 +221,7 @@ export class TdsTableFooter {
                   {this.rowsperpage && this.rowsPerPageValues?.length > 0 && (
                     <div class="rows-per-page">
                       <p>Rows per page</p>
-                      <tds-dropdown
+                      <prefixedTagNames.tdsDropdown
                         modeVariant="secondary"
                         id="rows-dropdown"
                         class="page-dropdown"
@@ -227,10 +231,12 @@ export class TdsTableFooter {
                       >
                         {this.rowsPerPageValues.map((value) => {
                           return (
-                            <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
+                            <prefixedTagNames.tdsDropdownOption value={`${value}`}>
+                              {value}
+                            </prefixedTagNames.tdsDropdownOption>
                           );
                         })}
-                      </tds-dropdown>
+                      </prefixedTagNames.tdsDropdown>
                     </div>
                   )}
                 </div>
@@ -256,7 +262,7 @@ export class TdsTableFooter {
                     disabled={this.paginationValue <= 1}
                     onClick={() => this.firstPage()}
                   >
-                    <tds-icon name="skip_backwards" size="20px"></tds-icon>
+                    <prefixedTagNames.tdsIcon name="skip_backwards" size="20px" />
                   </button>
                   <button
                     type="button"
@@ -264,7 +270,7 @@ export class TdsTableFooter {
                     disabled={this.paginationValue <= 1}
                     onClick={() => this.previousPage()}
                   >
-                    <tds-icon name="chevron_left" size="20px"></tds-icon>
+                    <prefixedTagNames.tdsIcon name="chevron_left" size="20px" />
                   </button>
                   <button
                     type="button"
@@ -272,7 +278,7 @@ export class TdsTableFooter {
                     disabled={this.paginationValue >= this.pages}
                     onClick={() => this.nextPage()}
                   >
-                    <tds-icon name="chevron_right" size="20px"></tds-icon>
+                    <prefixedTagNames.tdsIcon name="chevron_right" size="20px" />
                   </button>
                   <button
                     type="button"
@@ -280,7 +286,7 @@ export class TdsTableFooter {
                     disabled={this.paginationValue >= this.pages}
                     onClick={() => this.lastPage()}
                   >
-                    <tds-icon name="skip_forward" size="20px"></tds-icon>
+                    <prefixedTagNames.tdsIcon name="skip_forward" size="20px" />
                   </button>
                 </div>
               </div>

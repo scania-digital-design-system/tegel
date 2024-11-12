@@ -298,9 +298,7 @@
   }
 
   .datetime-icon {
-    tds-icon {
-      color: var(--tds-datetime-icon-disabled);
-    }
+    color: var(--tds-datetime-icon-disabled);
   }
 
   .tds-datetime-label {
@@ -342,9 +340,7 @@
   }
 
   .datetime-icon {
-    tds-icon {
-      color: var(--tds-datetime-icon-error);
-    }
+    color: var(--tds-datetime-icon-error);
   }
 }
 
