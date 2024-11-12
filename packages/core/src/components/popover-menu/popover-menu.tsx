@@ -27,6 +27,9 @@ export class TdsPopoverMenu {
    */
   @Prop() show: boolean = null;
 
+  /** Decides if the component should be visible from the start. */
+  @Prop() defaultOpen: boolean = false;
+
   /** Decides the placement of the Popover Menu */
   @Prop() placement: Placement = 'auto';
 
@@ -38,9 +41,6 @@ export class TdsPopoverMenu {
 
   /** If true this unsets the width (160px) of the Popover Menu */
   @Prop() fluidWidth: boolean = false;
-
-  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
-  @Prop() disableLogic: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -73,7 +73,7 @@ export class TdsPopoverMenu {
           ref={(el) => {
             this.childRef = el;
           }}
-          disableLogic={this.disableLogic}
+          defaultOpen={this.defaultOpen}
         >
           <div role="list">
             <slot></slot>

@@ -29,7 +29,10 @@ export class TdsPopoverCore {
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
-  /** Decides if the Popover Menu should be visible from the start */
+  /** Decides if the component should be visible from the start. */
+  @Prop() defaultOpen: boolean = false;
+
+  /** Toggles the visibility of the component and sets component to controlled state. */
   @Prop() show: boolean = null;
 
   /** Decides the placement of the Popover Menu */
@@ -51,9 +54,6 @@ export class TdsPopoverCore {
    * Alternatevly it can be hidden externally based on emitted events. */
   @Prop() autoHide: boolean = true;
 
-  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
-  @Prop() disableLogic: boolean = false;
-
   @State() renderedShowValue: boolean = false;
 
   @State() popperInstance: Instance | null;
@@ -62,7 +62,7 @@ export class TdsPopoverCore {
 
   @State() isShown: boolean = false;
 
-  @State() disableLogicState: boolean = false;
+  @State() disableLogic: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -110,11 +110,6 @@ export class TdsPopoverCore {
     }
   }
 
-  /* To enable initial loading of a component if user controls show prop*/
-  componentWillLoad() {
-    this.setIsShown(this.show);
-  }
-
   /* To observe any change of show prop after an initial load */
   @Watch('show')
   onShowChange(newValue: boolean) {
@@ -159,7 +154,7 @@ export class TdsPopoverCore {
     this.setIsShown(true);
   }.bind(this);
 
-  private handleHide = function handleShow(event) {
+  private handleHide = function handleHide(event) {
     event.stopPropagation();
     this.setIsShown(false);
   }.bind(this);
@@ -233,8 +228,8 @@ export class TdsPopoverCore {
   }
 
   connectedCallback() {
-    if ((this.selector === undefined && this.referenceEl === undefined) || this.disableLogic) {
-      this.disableLogicState = true;
+    if ((this.selector === undefined && this.referenceEl === undefined) || this.show !== null) {
+      this.disableLogic = true;
       console.warn('TDS-POPOVER-CORE: Popover internal logic disabled.');
       return;
     }
@@ -245,8 +240,13 @@ export class TdsPopoverCore {
     });
   }
 
+  /* To enable initial loading of a component if user controls show prop*/
+  componentWillLoad() {
+    this.setIsShown(this.defaultOpen);
+  }
+
   componentDidRender() {
-    if (this.isShown && !this.renderedShowValue && !this.disableLogicState) {
+    if (this.isShown && !this.renderedShowValue && !this.disableLogic) {
       // Here we update the popper position since its position is wrong
       // before it is rendered.
       this.popperInstance.update();

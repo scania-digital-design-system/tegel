@@ -24,6 +24,9 @@ export class TdsTooltip {
   /** Element that will trigger the Tooltip (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
+  /** Decides if the component should be visible from the start. */
+  @Prop() defaultOpen: boolean = false;
+
   /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
   @Prop() mouseOverTooltip: boolean = false;
 
@@ -41,9 +44,6 @@ export class TdsTooltip {
 
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
-
-  /** Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too. */
-  @Prop() disableLogic: boolean = false;
 
   border: string;
 
@@ -108,7 +108,7 @@ export class TdsTooltip {
           onInternalTdsClose={() => {
             this.show = false;
           }}
-          disableLogic={this.disableLogic}
+          defaultOpen={this.defaultOpen}
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}

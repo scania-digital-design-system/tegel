@@ -32,6 +32,32 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsPopoverMenu>
 
 ```
+### Controlled vs Uncontrolled
+
+The component can be controlled or uncontrolled.
+
+- **Controlled**: 
+  How does component enter controlled mode?
+  - Leaving `selector` or `referenceEl` prop empty
+  - Setting the `show` prop to `true` or `false`
+
+  What is the behavior in controlled mode?
+  - The popover will be shown or hidden only based on the `show` prop.
+  - Position might be off due to lack of reference element set in `selector` or `referenceEl` prop.
+  - Clicking outside the popover will not hide it.
+
+
+- **Uncontrolled**: 
+  How does component enter uncontrolled mode?
+  - Setting the `selector` or `referenceEl` prop
+  - Leaving the `show` prop `null` (default)
+
+  What is the behavior in uncontrolled mode?
+  - The popover will be shown or hidden based on mouse interactions.
+  - Position is determined by `selector` or `referenceEl` prop.
+  - Clicking outside the popover will hide it.
+
+
 <!-- Auto Generated Below -->
 
 
@@ -39,7 +65,7 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 
 | Property         | Attribute         | Description                                                                                                                                                                                                                        | Type                                                                                                                                                                                                         | Default     |
 | ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `disableLogic`   | `disable-logic`   | Decides if the popover should disable its internal logic. Leaving selector or referenceEl empty will disable logic too.                                                                                                            | `boolean`                                                                                                                                                                                                    | `false`     |
+| `defaultOpen`    | `default-open`    | Decides if the component should be visible from the start.                                                                                                                                                                         | `boolean`                                                                                                                                                                                                    | `false`     |
 | `fluidWidth`     | `fluid-width`     | If true this unsets the width (160px) of the Popover Menu                                                                                                                                                                          | `boolean`                                                                                                                                                                                                    | `false`     |
 | `offsetDistance` | `offset-distance` | Sets the offset distance                                                                                                                                                                                                           | `number`                                                                                                                                                                                                     | `8`         |
 | `offsetSkidding` | `offset-skidding` | Sets the offset skidding                                                                                                                                                                                                           | `number`                                                                                                                                                                                                     | `0`         |
