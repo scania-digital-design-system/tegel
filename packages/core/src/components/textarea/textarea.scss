@@ -14,10 +14,6 @@
     color: var(--tds-textarea-placeholder);
   }
 
-  &:focus::placeholder {
-    color: var(--tds-textarea-placeholder-focus-color);
-  }
-
   &:disabled {
     background-color: var(--tds-textarea-disabled-background);
     color: var(--tds-textarea-disabled-color);
@@ -45,7 +41,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--tds-textarea-placeholder-focus-color);
+    color: var(--tds-textarea-placeholder);
   }
 }
 
