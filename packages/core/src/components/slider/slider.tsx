@@ -148,10 +148,6 @@ export class TdsSlider {
   @Listen('mousemove', { target: 'window' })
   @Listen('touchmove', { target: 'window' })
   handleMove(event: MouseEvent | TouchEvent) {
-    if (event.type === 'touchmove') {
-      event.preventDefault();
-    }
-
     if (!this.thumbGrabbed) {
       return;
     }
