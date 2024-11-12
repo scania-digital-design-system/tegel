@@ -387,10 +387,12 @@
   "dependencies": {
     "@popperjs/core": "2.11.8",
     "@stencil/core": "4.19.2",
-    "date-fns": "2.30.0",
-    "prettier": "2.7.1"
+    "date-fns": "2.30.0"
   },
   "devDependencies": {
+    "prettier": "2.7.1",
+    "commitlint": "^15.0.0",
+    "@commitlint/config-conventional": "^16.2.1",
     "@babel/core": "7.19.1",
     "@mdx-js/react": "3.0.1",
     "@playwright/test": "1.46.1",
