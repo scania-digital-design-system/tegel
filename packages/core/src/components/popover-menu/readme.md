@@ -32,14 +32,11 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsPopoverMenu>
 
 ```
-### Controlled vs Uncontrolled
-
-The component can be controlled or uncontrolled.
+## Controlled vs Uncontrolled
 
 - **Controlled**: 
   How does component enter controlled mode?
   - Leaving `selector` or `referenceEl` prop empty
-  - Setting the `show` prop to `true` or `false`
 
   What is the behavior in controlled mode?
   - The popover will be shown or hidden only based on the `show` prop.
