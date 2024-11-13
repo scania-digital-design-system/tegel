@@ -32,28 +32,37 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsPopoverMenu>
 
 ```
-## Controlled vs Uncontrolled
+<br>
+### Controlled vs Uncontrolled
 
-- **Controlled**: 
-  How does component enter controlled mode?
-  - Leaving `selector` or `referenceEl` prop empty
+#### Controlled mode
+The popover component will be shown or hidden based on a `trigger` prop and `selector` or `referenceEl` prop.
 
-  What is the behavior in controlled mode?
-  - The popover will be shown or hidden only based on the `show` prop.
-  - Position might be off due to lack of reference element set in `selector` or `referenceEl` prop.
-  - Clicking outside the popover will not hide it.
+Example:
 
+```html
+<button id="trigger">Open Popover</button>
+<tds-popover-menu [selector]="#trigger">
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+</tds-popover-menu>
+```
 
-- **Uncontrolled**: 
-  How does component enter uncontrolled mode?
-  - Setting the `selector` or `referenceEl` prop
-  - Leaving the `show` prop `null` (default)
+#### Uncontrolled mode
+The `open` prop can be used to control the visibility of the popover, meaning that the popover will be shown or hidden based on the `open` prop. Props `selector` or `referenceEl` are still needed in order to determine the position of the popover. 
 
-  What is the behavior in uncontrolled mode?
-  - The popover will be shown or hidden based on mouse interactions.
-  - Position is determined by `selector` or `referenceEl` prop.
-  - Clicking outside the popover will hide it.
+Example:
 
+```html
+<button id="trigger" onClick="{() => showPopover = !showPopover}">Open Popover</button>
+<tds-popover-menu id="popover" selector="#trigger" open="showPopover">
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+</tds-popover-menu>
+
+```
 
 <!-- Auto Generated Below -->
 
