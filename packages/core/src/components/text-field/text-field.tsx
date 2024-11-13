@@ -136,8 +136,8 @@ export class TdsTextField {
     return (
       <div
         class={{
+          'form-text-field': true,
           'form-text-field-nomin': this.noMinWidth,
-          'form-text-field': !this.focusInput || this.disabled,
           'text-field-focus': this.focusInput && !this.disabled,
           'text-field-data': this.value !== '' && this.value !== null,
           'text-field-container-label-inside':
