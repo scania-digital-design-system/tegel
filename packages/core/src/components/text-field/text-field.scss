@@ -354,15 +354,27 @@
   flex-wrap: nowrap;
 }
 
+.text-field-textcounter-disabled {
+  color: var(--tds-text-field-textcounter-disabled);
+}
+
 .text-field-textcounter {
   font: var(--tds-detail-05);
   letter-spacing: var(--tds-detail-05-ls);
   color: var(--tds-text-field-textcounter);
   float: right;
 
-  & .text-field-textcounter-divider {
+  &.text-field-textcounter-disabled {
+    color: var(--tds-text-field-textcounter-disabled);
+  }
+
+  &.text-field-textcounter-divider {
     // @include type-style('detail-05');
     color: var(--tds-text-field-textcounter-divider);
+  }
+
+  &.text-field-textcounter-divider-disabled {
+    color: var(--tds-text-field-textcounter-divider-disabled);
   }
 }
 
