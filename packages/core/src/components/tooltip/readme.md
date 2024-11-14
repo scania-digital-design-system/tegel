@@ -28,6 +28,50 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsTooltip>
 
 ```
+
+<br>
+### Controlled vs Uncontrolled
+
+#### Uncontrolled mode
+The tooltip component will be shown or hidden based on a `trigger` prop and `selector` or `referenceEl` prop.
+
+Example:
+
+```html
+<button id="trigger-button">Open Popover</button>
+<tds-tooltip
+    placement="bottom"
+    selector="#trigger-button"
+    trigger="hover"
+  >
+    <p class="tds-detail-05 tds-u-m0">
+      Paragraph tag inside Tooltip
+    </p>
+  </tds-tooltip>
+```
+
+#### Controlled mode
+The `show` prop can be used to control the visibility of the popover, meaning that the popover will be shown or hidden based on the `show` prop. Props `selector` or `referenceEl` are still needed in order to determine the position of the popover. 
+
+Example:
+
+```html
+<button id="trigger-button" onClick="{() => showTooltip = !showTooltip}">Open Tooltip</button>
+<tds-tooltip
+    placement="bottom"
+    selector="#trigger-button"
+    trigger="hover"
+    show="showTooltip"
+  >
+    <p class="tds-detail-05 tds-u-m0">
+      Paragraph tag inside Tooltip
+    </p>
+  </tds-tooltip>
+
+```
+
+
+
 <!-- Auto Generated Below -->
 
 
@@ -35,13 +79,14 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 
 | Property           | Attribute            | Description                                                                                    | Type                                                                                                                                                                                                         | Default     |
 | ------------------ | -------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `defaultShow`      | `default-show`       | Decides if the component should be visible from the start.                                     | `boolean`                                                                                                                                                                                                    | `false`     |
 | `mouseOverTooltip` | `mouse-over-tooltip` | Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. | `boolean`                                                                                                                                                                                                    | `false`     |
 | `offsetDistance`   | `offset-distance`    | Sets the offset distance                                                                       | `number`                                                                                                                                                                                                     | `8`         |
 | `offsetSkidding`   | `offset-skidding`    | Sets the offset skidding                                                                       | `number`                                                                                                                                                                                                     | `0`         |
 | `placement`        | `placement`          | Placement of Tooltip.                                                                          | `"auto" \| "auto-end" \| "auto-start" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'bottom'`  |
 | `referenceEl`      | --                   | Element that will trigger the Tooltip (takes priority over selector)                           | `HTMLElement`                                                                                                                                                                                                | `undefined` |
-| `selector`         | `selector`           | The CSS-selector for an element that will trigger the Tooltip                                  | `string`                                                                                                                                                                                                     | `''`        |
-| `show`             | `show`               | Prop in control of showing and hiding prop                                                     | `boolean`                                                                                                                                                                                                    | `null`      |
+| `selector`         | `selector`           | The CSS-selector for an element that will trigger the Tooltip                                  | `string`                                                                                                                                                                                                     | `undefined` |
+| `show`             | `show`               | Prop in control of showing and hiding prop. Takes precedence over `defaultOpen` prop.          | `boolean`                                                                                                                                                                                                    | `null`      |
 | `text`             | `text`               | In case Tooltip contains only text, no HTML, a text can be passed by this prop                 | `string`                                                                                                                                                                                                     | `''`        |
 | `trigger`          | `trigger`            | What triggers the popover to show                                                              | `"click" \| "hover"`                                                                                                                                                                                         | `'hover'`   |
 

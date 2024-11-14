@@ -19,10 +19,13 @@ export class TdsTooltip {
   @Prop() text: string = '';
 
   /** The CSS-selector for an element that will trigger the Tooltip */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the Tooltip (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
+
+  /** Decides if the component should be visible from the start. */
+  @Prop() defaultShow: boolean = false;
 
   /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
   @Prop() mouseOverTooltip: boolean = false;
@@ -30,7 +33,7 @@ export class TdsTooltip {
   /** What triggers the popover to show */
   @Prop() trigger: 'click' | 'hover' = 'hover';
 
-  /** Prop in control of showing and hiding prop */
+  /** Prop in control of showing and hiding prop. Takes precedence over `defaultOpen` prop. */
   @Prop({ mutable: true }) show: boolean = null;
 
   /** Placement of Tooltip. */
@@ -105,6 +108,7 @@ export class TdsTooltip {
           onInternalTdsClose={() => {
             this.show = false;
           }}
+          defaultShow={this.defaultShow}
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}

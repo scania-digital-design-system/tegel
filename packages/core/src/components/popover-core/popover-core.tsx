@@ -24,12 +24,18 @@ export class TdsPopoverCore {
   @Element() host!: HTMLTdsPopoverCoreElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
-  /** Decides if the Popover Menu should be visible from the start */
+  /** Decides if the component should be visible from the start. */
+  @Prop() defaultShow: boolean = false;
+
+  /** Controls whether the Popover is shown or not. If this is set hiding and showing
+   * will be decided by this prop and will need to be controlled from the outside. This
+   * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
+   */
   @Prop() show: boolean = null;
 
   /** Decides the placement of the Popover Menu */
@@ -58,6 +64,8 @@ export class TdsPopoverCore {
   @State() target?: HTMLElement | null;
 
   @State() isShown: boolean = false;
+
+  @State() disableLogic: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -105,11 +113,6 @@ export class TdsPopoverCore {
     }
   }
 
-  /* To enable initial loading of a component if user controls show prop*/
-  componentWillLoad() {
-    this.setIsShown(this.show);
-  }
-
   /* To observe any change of show prop after an initial load */
   @Watch('show')
   onShowChange(newValue: boolean) {
@@ -118,7 +121,9 @@ export class TdsPopoverCore {
 
   @Watch('referenceEl')
   onReferenceElChanged(newValue: HTMLElement, oldValue: HTMLElement) {
-    if (newValue !== oldValue) this.initialize({ referenceEl: newValue, trigger: this.trigger });
+    if (newValue !== oldValue) {
+      this.initialize({ referenceEl: newValue, trigger: this.trigger });
+    }
   }
 
   @Watch('trigger')
@@ -152,7 +157,7 @@ export class TdsPopoverCore {
     this.setIsShown(true);
   }.bind(this);
 
-  private handleHide = function handleShow(event) {
+  private handleHide = function handleHide(event) {
     event.stopPropagation();
     this.setIsShown(false);
   }.bind(this);
@@ -225,15 +230,30 @@ export class TdsPopoverCore {
     this.popperInstance?.destroy();
   }
 
-  componentDidLoad() {
+  connectedCallback() {
+    if (this.selector === undefined && this.referenceEl === undefined) {
+      this.disableLogic = true;
+      console.warn(
+        'TDS-POPOVER-CORE: Popover internal logic disabled. Please provide a `selector` or `referenceEl` prop',
+      );
+      return;
+    }
+
     this.initialize({
       referenceEl: this.referenceEl,
       trigger: this.trigger,
     });
   }
 
+  /* To enable initial loading of a component if user controls show prop*/
+  componentWillLoad() {
+    if (this.show === true || this.defaultShow === true) {
+      this.setIsShown(true);
+    }
+  }
+
   componentDidRender() {
-    if (this.isShown && !this.renderedShowValue) {
+    if (this.isShown && !this.renderedShowValue && !this.disableLogic) {
       // Here we update the popper position since its position is wrong
       // before it is rendered.
       this.popperInstance.update();
