@@ -28,27 +28,7 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsTooltip>
 
 ```
-## Controlled vs Uncontrolled
 
-- **Controlled**: 
-  How does component enter controlled mode?
-  - Leaving `selector` or `referenceEl` prop empty
-
-  What is the behavior in controlled mode?
-  - The popover will be shown or hidden only based on the `show` prop.
-  - Position might be off due to lack of reference element set in `selector` or `referenceEl` prop.
-  - Clicking outside the popover will not hide it.
-
-
-- **Uncontrolled**: 
-  How does component enter uncontrolled mode?
-  - Setting the `selector` or `referenceEl` prop
-  - Leaving the `show` prop `null` (default)
-
-  What is the behavior in uncontrolled mode?
-  - The popover will be shown or hidden based on mouse interactions.
-  - Position is determined by `selector` or `referenceEl` prop.
-  - Clicking outside the popover will hide it.
 
 
 <!-- Auto Generated Below -->

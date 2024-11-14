@@ -35,7 +35,7 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 <br>
 ### Controlled vs Uncontrolled
 
-#### Controlled mode
+#### Uncontrolled mode
 The popover component will be shown or hidden based on a `trigger` prop and `selector` or `referenceEl` prop.
 
 Example:
@@ -49,14 +49,14 @@ Example:
 </tds-popover-menu>
 ```
 
-#### Uncontrolled mode
-The `open` prop can be used to control the visibility of the popover, meaning that the popover will be shown or hidden based on the `open` prop. Props `selector` or `referenceEl` are still needed in order to determine the position of the popover. 
+#### Controlled mode
+The `show` prop can be used to control the visibility of the popover, meaning that the popover will be shown or hidden based on the `show` prop. Props `selector` or `referenceEl` are still needed in order to determine the position of the popover. 
 
 Example:
 
 ```html
 <button id="trigger" onClick="{() => showPopover = !showPopover}">Open Popover</button>
-<tds-popover-menu id="popover" selector="#trigger" open="showPopover">
+<tds-popover-menu id="popover" selector="#trigger" show="showPopover">
   <tds-popover-menu-item>
     <a href="#">Action</a>
   </tds-popover-menu-item>
