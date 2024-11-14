@@ -25,7 +25,7 @@ export class TdsTooltip {
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultOpen: boolean = false;
+  @Prop() defaultShow: boolean = false;
 
   /** Allow mouse over Tooltip. Useful when Tooltip contains clickable elements like link or button. */
   @Prop() mouseOverTooltip: boolean = false;
@@ -108,7 +108,7 @@ export class TdsTooltip {
           onInternalTdsClose={() => {
             this.show = false;
           }}
-          defaultOpen={this.defaultOpen}
+          defaultShow={this.defaultShow}
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}

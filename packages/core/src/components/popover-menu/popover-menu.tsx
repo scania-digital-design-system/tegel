@@ -28,7 +28,7 @@ export class TdsPopoverMenu {
   @Prop() show: boolean = null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultOpen: boolean = false;
+  @Prop() defaultShow: boolean = false;
 
   /** Decides the placement of the Popover Menu */
   @Prop() placement: Placement = 'auto';
@@ -73,7 +73,7 @@ export class TdsPopoverMenu {
           ref={(el) => {
             this.childRef = el;
           }}
-          defaultOpen={this.defaultOpen}
+          defaultShow={this.defaultShow}
         >
           <div role="list">
             <slot></slot>

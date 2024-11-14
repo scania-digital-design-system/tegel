@@ -30,11 +30,11 @@ export class TdsPopoverCore {
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultOpen: boolean = false;
+  @Prop() defaultShow: boolean = false;
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
-   * also means that clicking outside of the popover won't close it. Takes precedence over `defaultOpen` prop.
+   * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
   @Prop() show: boolean = null;
 
@@ -233,7 +233,9 @@ export class TdsPopoverCore {
   connectedCallback() {
     if (this.selector === undefined && this.referenceEl === undefined) {
       this.disableLogic = true;
-      console.warn('TDS-POPOVER-CORE: Popover internal logic disabled. Please provide a `selector` or `referenceEl` prop');
+      console.warn(
+        'TDS-POPOVER-CORE: Popover internal logic disabled. Please provide a `selector` or `referenceEl` prop',
+      );
       return;
     }
 
@@ -245,7 +247,7 @@ export class TdsPopoverCore {
 
   /* To enable initial loading of a component if user controls show prop*/
   componentWillLoad() {
-    if (this.show === true || this.defaultOpen === true) {
+    if (this.show === true || this.defaultShow === true) {
       this.setIsShown(true);
     }
   }

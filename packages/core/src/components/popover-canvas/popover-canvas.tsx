@@ -22,7 +22,7 @@ export class TdsPopoverCanvas {
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Decides if the component should be visible from the start. */
-  @Prop() defaultOpen: boolean = false;
+  @Prop() defaultShow: boolean = false;
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
@@ -75,7 +75,7 @@ export class TdsPopoverCanvas {
           ref={(el) => {
             this.childRef = el;
           }}
-          defaultOpen={this.defaultOpen}
+          defaultShow={this.defaultShow}
         >
           <div>
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}
