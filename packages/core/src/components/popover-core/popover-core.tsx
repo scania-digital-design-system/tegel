@@ -233,7 +233,7 @@ export class TdsPopoverCore {
   connectedCallback() {
     if (this.selector === undefined && this.referenceEl === undefined) {
       this.disableLogic = true;
-      console.warn('TDS-POPOVER-CORE: Popover internal logic disabled.');
+      console.warn('TDS-POPOVER-CORE: Popover internal logic disabled. Please provide a `selector` or `referenceEl` prop');
       return;
     }
 
