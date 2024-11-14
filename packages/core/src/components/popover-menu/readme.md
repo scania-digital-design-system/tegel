@@ -32,20 +32,53 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsPopoverMenu>
 
 ```
+<br>
+### Controlled vs Uncontrolled
+
+#### Uncontrolled mode
+The popover component will be shown or hidden based on a `trigger` prop and `selector` or `referenceEl` prop.
+
+Example:
+
+```html
+<button id="trigger">Open Popover</button>
+<tds-popover-menu [selector]="#trigger">
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+</tds-popover-menu>
+```
+
+#### Controlled mode
+The `show` prop can be used to control the visibility of the popover, meaning that the popover will be shown or hidden based on the `show` prop. Props `selector` or `referenceEl` are still needed in order to determine the position of the popover. 
+
+Example:
+
+```html
+<button id="trigger" onClick="{() => showPopover = !showPopover}">Open Popover</button>
+<tds-popover-menu id="popover" selector="#trigger" show="showPopover">
+  <tds-popover-menu-item>
+    <a href="#">Action</a>
+  </tds-popover-menu-item>
+</tds-popover-menu>
+
+```
+
 <!-- Auto Generated Below -->
 
 
 ## Properties
 
-| Property         | Attribute         | Description                                                                                                                                                                                                                        | Type                                                                                                                                                                                                         | Default     |
-| ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| `fluidWidth`     | `fluid-width`     | If true this unsets the width (160px) of the Popover Menu                                                                                                                                                                          | `boolean`                                                                                                                                                                                                    | `false`     |
-| `offsetDistance` | `offset-distance` | Sets the offset distance                                                                                                                                                                                                           | `number`                                                                                                                                                                                                     | `8`         |
-| `offsetSkidding` | `offset-skidding` | Sets the offset skidding                                                                                                                                                                                                           | `number`                                                                                                                                                                                                     | `0`         |
-| `placement`      | `placement`       | Decides the placement of the Popover Menu                                                                                                                                                                                          | `"auto" \| "auto-end" \| "auto-start" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'auto'`    |
-| `referenceEl`    | --                | Element that will trigger the pop-over (takes priority over selector)                                                                                                                                                              | `HTMLElement`                                                                                                                                                                                                | `undefined` |
-| `selector`       | `selector`        | The CSS-selector for an element that will trigger the pop-over                                                                                                                                                                     | `string`                                                                                                                                                                                                     | `''`        |
-| `show`           | `show`            | Controls whether the Popover is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. This also means that clicking outside of the popover won't close it. | `boolean`                                                                                                                                                                                                    | `null`      |
+| Property         | Attribute         | Description                                                                                                                                                                                                                                                                  | Type                                                                                                                                                                                                         | Default     |
+| ---------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| `defaultShow`    | `default-show`    | Decides if the component should be visible from the start.                                                                                                                                                                                                                   | `boolean`                                                                                                                                                                                                    | `false`     |
+| `fluidWidth`     | `fluid-width`     | If true this unsets the width (160px) of the Popover Menu                                                                                                                                                                                                                    | `boolean`                                                                                                                                                                                                    | `false`     |
+| `offsetDistance` | `offset-distance` | Sets the offset distance                                                                                                                                                                                                                                                     | `number`                                                                                                                                                                                                     | `8`         |
+| `offsetSkidding` | `offset-skidding` | Sets the offset skidding                                                                                                                                                                                                                                                     | `number`                                                                                                                                                                                                     | `0`         |
+| `placement`      | `placement`       | Decides the placement of the Popover Menu                                                                                                                                                                                                                                    | `"auto" \| "auto-end" \| "auto-start" \| "bottom" \| "bottom-end" \| "bottom-start" \| "left" \| "left-end" \| "left-start" \| "right" \| "right-end" \| "right-start" \| "top" \| "top-end" \| "top-start"` | `'auto'`    |
+| `referenceEl`    | --                | Element that will trigger the pop-over (takes priority over selector)                                                                                                                                                                                                        | `HTMLElement`                                                                                                                                                                                                | `undefined` |
+| `selector`       | `selector`        | The CSS-selector for an element that will trigger the pop-over                                                                                                                                                                                                               | `string`                                                                                                                                                                                                     | `undefined` |
+| `show`           | `show`            | Controls whether the Popover is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. This also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop. | `boolean`                                                                                                                                                                                                    | `null`      |
 
 
 ## Methods

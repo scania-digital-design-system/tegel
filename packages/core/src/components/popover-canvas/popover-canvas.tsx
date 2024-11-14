@@ -16,13 +16,17 @@ export class TdsPopoverCanvas {
   @Element() host: HTMLTdsPopoverCanvasElement;
 
   /** The CSS-selector for an element that will trigger the Popover */
-  @Prop() selector: string = '';
+  @Prop() selector: string;
 
   /** Element that will trigger the Popover (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
+  /** Decides if the component should be visible from the start. */
+  @Prop() defaultShow: boolean = false;
+
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
-   * will be decided by this prop and will need to be controlled from the outside.
+   * will be decided by this prop and will need to be controlled from the outside. This
+   * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
   @Prop() show: boolean = null;
 
@@ -71,6 +75,7 @@ export class TdsPopoverCanvas {
           ref={(el) => {
             this.childRef = el;
           }}
+          defaultShow={this.defaultShow}
         >
           <div>
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}
