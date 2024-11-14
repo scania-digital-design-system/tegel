@@ -29,6 +29,47 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 
 ```
 
+<br>
+### Controlled vs Uncontrolled
+
+#### Uncontrolled mode
+The tooltip component will be shown or hidden based on a `trigger` prop and `selector` or `referenceEl` prop.
+
+Example:
+
+```html
+<button id="trigger-button">Open Popover</button>
+<tds-tooltip
+    placement="bottom"
+    selector="#trigger-button"
+    trigger="hover"
+  >
+    <p class="tds-detail-05 tds-u-m0">
+      Paragraph tag inside Tooltip
+    </p>
+  </tds-tooltip>
+```
+
+#### Controlled mode
+The `show` prop can be used to control the visibility of the popover, meaning that the popover will be shown or hidden based on the `show` prop. Props `selector` or `referenceEl` are still needed in order to determine the position of the popover. 
+
+Example:
+
+```html
+<button id="trigger-button" onClick="{() => showTooltip = !showTooltip}">Open Tooltip</button>
+<tds-tooltip
+    placement="bottom"
+    selector="#trigger-button"
+    trigger="hover"
+    show="showTooltip"
+  >
+    <p class="tds-detail-05 tds-u-m0">
+      Paragraph tag inside Tooltip
+    </p>
+  </tds-tooltip>
+
+```
+
 
 
 <!-- Auto Generated Below -->
