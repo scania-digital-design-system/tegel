@@ -4,8 +4,7 @@
 
 - **Controlled**: 
   How does component enter controlled mode?
-  - Leaving `selector` or `referenceEl` prop empty
-
+  - Setting the `show` prop to either `true` or `false`
   What is the behavior in controlled mode?
   - The popover will be shown or hidden only based on the `show` prop.
   - Position might be off due to lack of reference element set in `selector` or `referenceEl` prop.
