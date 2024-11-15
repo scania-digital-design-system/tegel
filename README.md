@@ -54,6 +54,7 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 4. Run `npm install` in the `packages/core` directory.
 5. Development version of Storybook with additional plugins and beta components can be activated by setting the environment variable `STORYBOOK_ENV` to `dev` in the same terminal where you run rest of the commands.
 
+
 ```
 export STORYBOOK_ENV=dev
 ```
@@ -66,6 +67,10 @@ export STORYBOOK_ENV=dev
 Get in touch with the team and the community:
 
 - [Teams](https://teams.microsoft.com/l/team/19%3a1257007a64d44c64954acca27a9d4b46%40thread.skype/conversations?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)
+
+## Static assets
+
+For users that can't access our CDN there is a [script](https://github.com/scania-digital-design-system/tegel/blob/develop/packages/core/static-assets-copying.md) for copying over static assets(fonts, logos).
 
 ## License
 
