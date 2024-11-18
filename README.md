@@ -72,6 +72,10 @@ Get in touch with the team and the community:
 
 For users that can't access our CDN there is a [script](https://github.com/scania-digital-design-system/tegel/blob/develop/packages/core/static-assets-copying.md) for copying over static assets(fonts, logos).
 
+## Testing Guide for Tegel
+
+[This](./docs/TESTING_GUIDE.md) guide provides developers with best practices and guidelines on how and when to write unit tests for components within our design system. Our aim is to ensure that each component is reliable, maintainable, and functions as intended.
+
 ## License
 
 All CSS, HTML and JS code are available under the MIT license. The Scania brand identity, logos and photographs found in this repository are copyrighted Scania CV AB and are not available on an open source basis or to be used as examples or in any other way, if not specifically ordered by Scania CV AB.
