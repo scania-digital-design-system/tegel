@@ -64,8 +64,9 @@ export const config: Config = {
       copy: [
         {
           src: '../../../assets',
-          dest: 'assets/',
+          dest: 'dist/tegel/assets',
           warn: true,
+          keepDirStructure: true,
         },
       ],
     },
