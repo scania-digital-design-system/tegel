@@ -21,10 +21,12 @@ test.describe.parallel('tds-button-disabled', () => {
     await expect(button).toBeDisabled();
   });
 
-  test('the cursor should be not-allowed', async ({ page }) => {
+  test('the pointer-events should be none', async ({ page }) => {
     await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid').getByRole('button');
-    const buttonCursorState = await button.evaluate((style) => getComputedStyle(style).cursor);
-    expect(buttonCursorState).toBe('not-allowed');
+    const buttonCursorState = await button.evaluate(
+      (style) => getComputedStyle(style).pointerEvents,
+    );
+    expect(buttonCursorState).toBe('none');
   });
 });
