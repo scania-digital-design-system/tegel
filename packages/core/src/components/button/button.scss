@@ -181,8 +181,12 @@ button {
   }
 }
 
-:host([disabled]) {
+:host([disabled]:active) {
   pointer-events: none;
+}
+
+:host([disabled]) button {
+  cursor: not-allowed;
 }
 
 :host(tds-button[fullbleed]) {
