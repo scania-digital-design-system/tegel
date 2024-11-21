@@ -74,7 +74,7 @@ For users that can't access our CDN there is a [script](https://github.com/scani
 
 ## Testing Guide for Tegel
 
-[This](./docs/TESTING_GUIDE.md) guide provides developers with best practices and guidelines on how and when to write unit tests for components within our design system. Our aim is to ensure that each component is reliable, maintainable, and functions as intended.
+Refer to our [Testing Guide](./docs/TESTING_GUIDE.md) for best practices on writing unit tests for components in our design system.
 
 ## License
 
