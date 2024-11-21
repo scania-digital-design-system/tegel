@@ -1,6 +1,7 @@
-import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
+import { Component, h, Prop, Event, Element, Host } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
+import { CardClickEventEmitter } from './card.types';
 
 /**
  * @slot header - Slot for the Card header.
@@ -58,7 +59,7 @@ export class TdsCard {
     cancelable: false,
     bubbles: true,
   })
-  tdsClick: EventEmitter<{
+  tdsClick: CardClickEventEmitter<{
     cardId: string;
   }>;
 
