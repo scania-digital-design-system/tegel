@@ -23,9 +23,9 @@
 
 ## Events
 
-| Event      | Description                                                              | Type                               |
-| ---------- | ------------------------------------------------------------------------ | ---------------------------------- |
-| `tdsClick` | Sends unique Card identifier when the Card is clicked, if clickable=true | `CustomEvent<{ cardId: string; }>` |
+| Event      | Description                                                              | Type               |
+| ---------- | ------------------------------------------------------------------------ | ------------------ |
+| `tdsClick` | Sends unique Card identifier when the Card is clicked, if clickable=true | `CustomEvent<any>` |
 
 
 ## Slots
