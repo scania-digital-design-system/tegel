@@ -172,11 +172,11 @@ jobs:
   # Check that all jobs pass
   check-results:
     needs: [release-core, release-angular, release-angular-17, release-react]
+    if: (needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     runs-on: ubuntu-latest
     steps:
-      - name: Check results
-        run: |
-          echo "All previous jobs have completed successfully!"
       - name: Notify in Teams on failure
-        if: failure()
         uses: ./.github/workflows/smoke-test-webhook.yml
+  
+    
+      
