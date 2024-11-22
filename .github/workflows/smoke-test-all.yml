@@ -25,9 +25,6 @@ jobs:
           node-version: '20.9.0' # You can change this to any fixed version if needed
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Set Tegel user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
-
       - name: Core - Read Package.json Version
         id: version
         working-directory: ${{ env.WORKING_DIRECTORY }}
@@ -66,9 +63,6 @@ jobs:
         with:
           node-version: '20.9.0'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Set Tegel user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Angular - Read package.json Version
         id: version
@@ -115,9 +109,6 @@ jobs:
         with:
           node-version: '20.9.0'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Set Tegel user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: Angular-17 - Read package.json Version
         id: version
@@ -172,9 +163,6 @@ jobs:
         with:
           node-version: '20.9.0'
           registry-url: 'https://registry.npmjs.org'
-
-      - name: Set Tegel user
-        run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
       - name: React - Read package.json Version
         id: version
