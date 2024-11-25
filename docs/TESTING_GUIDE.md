@@ -27,6 +27,46 @@ This guide provides developers with best practices and guidelines on how and whe
 
 ---
 
+## Updated Guidelines for Complex Components
+
+### Organizing Test Cases
+
+For components with diverse functionalities or states, use **subfolders** to group related test cases. This structure makes it easier to locate and manage tests for specific features or scenarios.
+
+### Folder Structure Example: `Button Component`
+
+/button
+└── test
+    ├── basic
+    │   └── button.e2e.ts
+    ├── danger
+    │   └── danger.e2e.ts
+    ├── disabled
+    │   └── disabled.e2e.ts
+    └── ghost
+        └── ghost.e2e.ts
+
+  
+  
+  - **Subfolder Names**: Each subfolder represents a key functionality or state of the component (e.g., `disabled`, `danger`, `default`).
+
+- **Test Files**: Each test file in the folder focuses on a specific functionality of the component.
+
+### Writing Tests in Organized Folders
+
+**Create Subfolders:**
+
+- For each key state or feature (e.g., `disabled`, `danger`), create a dedicated folder.
+
+**Add Test Files:**
+
+- Inside the folder, create test files specific to that state or feature.
+
+**Add Descriptive Tests:**
+
+- Write tests that clearly document the purpose of the state or feature.
+
+
 ## Guidelines for Writing Effective Tests
 
 - **Small, Isolated Tests**: Keep tests short and focused on one functionality.
