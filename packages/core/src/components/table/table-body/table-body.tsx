@@ -2,6 +2,7 @@ import { Component, Element, h, Host, Listen, State } from '@stencil/core';
 
 import { InternalTdsTablePropChange } from '../table/table';
 import { findClosestComponent } from '../../../utils/findClosestComponent';
+import { getDirectChildHTMLElementOfKind } from '../../../utils/getDirectChildHTMLElementOfKind';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -81,12 +82,15 @@ export class TdsTableBody {
     });
   }
 
-  componentDidRender() {
-    const headerColumnsNo = findClosestComponent(this.host, 'tdsTable').querySelector(
-      '.tds-table__header',
-    ).children.length;
+  componentWillRender() {
+    const table = findClosestComponent(this.host, 'tdsTable');
 
-    // multiselect and expended features requires one extra column for controls...
+    const tableHeader = getDirectChildHTMLElementOfKind(table, 'tds-table-header')[0];
+
+    const headerColumnsNo = tableHeader.children.length;
+    console.log(headerColumnsNo);
+
+    // Adjust column count for controls
     if (this.multiselect || this.expandableRows) {
       this.columnsNumber = headerColumnsNo + 1;
     } else {
