@@ -64,6 +64,14 @@
   &.no-min-width {
     min-width: unset;
   }
+
+  &.textarea-label-inside {
+    &.textarea-disabled {
+      .textarea-label {
+        color: var(--tds-textarea-disabled-label-inside-color);
+      }
+    }
+  }
 }
 
 .textarea-container {
