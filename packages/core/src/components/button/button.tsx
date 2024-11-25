@@ -44,7 +44,10 @@ export class TdsButton {
       this.onlyIcon = true;
     }
     return (
-      <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host
+        class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''} `}
+        disabled={this.disabled}
+      >
         <button
           type={this.type}
           disabled={this.disabled}
