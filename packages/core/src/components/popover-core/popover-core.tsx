@@ -33,6 +33,9 @@ export class TdsPopoverCore {
   /** Decides if the component should be visible from the start. */
   @Prop() defaultShow: boolean = false;
 
+  /** Animation with multiple selection,  */
+  @Prop() animation: 'none' | 'fade' | string = 'none';
+
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
@@ -147,6 +150,10 @@ export class TdsPopoverCore {
       this.internalTdsClose.emit();
     }
   }.bind(this);
+
+  private getAnimationClass(): string {
+    return this.animation === 'none' ? '' : `tds-popover-animation-${this.animation}`;
+  }
 
   private onClickTarget = function onClickTarget(event) {
     event.stopPropagation();
@@ -269,6 +276,7 @@ export class TdsPopoverCore {
   render() {
     const classes = {
       'is-shown': this.isShown,
+      [this.getAnimationClass()]: true,
     };
 
     return (
