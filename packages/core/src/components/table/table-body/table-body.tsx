@@ -88,7 +88,6 @@ export class TdsTableBody {
     const tableHeader = getDirectChildHTMLElementOfKind(table, 'tds-table-header')[0];
 
     const headerColumnsNo = tableHeader.children.length;
-    console.log(headerColumnsNo);
 
     // Adjust column count for controls
     if (this.multiselect || this.expandableRows) {
