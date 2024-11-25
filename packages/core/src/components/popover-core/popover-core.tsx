@@ -17,6 +17,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-popover-core',
+  styleUrl: 'tds-popover-core.scss',
   shadow: false,
   scoped: true,
 })
@@ -266,13 +267,12 @@ export class TdsPopoverCore {
   }
 
   render() {
-    let hostStyle = {};
-    if (this.autoHide) {
-      hostStyle = { display: this.isShown ? 'block' : 'none' };
-    }
+    const classes = {
+      'is-shown': this.isShown,
+    };
 
     return (
-      <Host style={hostStyle} id={`tds-popover-core-${this.uuid}`}>
+      <Host class={classes} id={`tds-popover-core-${this.uuid}`}>
         <slot></slot>
       </Host>
     );

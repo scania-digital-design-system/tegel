@@ -1,0 +1,13 @@
+@import '../../global/motion';
+
+:host {
+  opacity: 0;
+  transition: 
+        opacity $popover-core-transition;
+  pointer-events: none;
+}
+
+:host(.is-shown) {
+  opacity: 1;
+  pointer-events: auto;
+}
