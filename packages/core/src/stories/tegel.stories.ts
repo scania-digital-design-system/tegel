@@ -61,7 +61,7 @@ export const TegelDesignSystem = {
                             you
                             want to try out the package today you can! It's available via <tds-link><a href="https://www.npmjs.com/package/@scania/tegel">NPM</a></tds-link> and can be installed using the
                             installation
-                            guide which you can find <tds-link><a target="_self" href="?path=/story/intro-installation--page">here.</a></tds-link>
+                            guide which you can find <tds-link><a target="_self" href="?path=/story/intro-installation--javascript">here.</a></tds-link>
                         </p>
 
                     </section>
