@@ -1,13 +1,14 @@
 @import '../../global/motion';
 
 :host {
+  visibility: hidden;
   opacity: 0;
-  transition: 
-        opacity $popover-core-transition;
+  transition: opacity $popover-core-transition;
   pointer-events: none;
 }
 
 :host(.is-shown) {
+  visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
