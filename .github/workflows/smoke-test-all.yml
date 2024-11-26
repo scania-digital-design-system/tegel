@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/core
+    outputs:
+      version: ${{ steps.core-version.outputs.PACKAGE_VERSION }}
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -26,10 +28,10 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Core - Read Package.json Version
-        id: version
+        id: core-version
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-
+        
       - name: Install dependencies in root
         run: npm install
 
@@ -76,7 +78,7 @@ jobs:
 
       - name: Angular - Install latest tegel package
         working-directory: packages/angular
-        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
 
       - name: Angular - Run build
         run: npm run build-angular
@@ -120,11 +122,11 @@ jobs:
 
       - name: Angular-17 workspace - Install latest tegel package
         working-directory: packages/angular-17
-        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
 
       - name: Angular-17 wrapper - Install latest tegel package
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
 
       - name: Angular-17 - Run build
         run: npm run build-angular-17
@@ -164,7 +166,7 @@ jobs:
 
       - name: React - Install latest tegel package
         working-directory: packages/react
-        run: npm install @scania/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
 
       - name: React - Build
         run: npm run build-react
