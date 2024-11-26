@@ -91,6 +91,16 @@ export class TdsDatetime {
   })
   tdsInput: EventEmitter<InputEvent>;
 
+  /** Method that resets the value of the Datetime, using defaultValue if is not 'none' */
+  @Method()
+  async reset() {
+    this.internalReset();
+    this.tdsChange.emit({
+      name: this.name,
+      value: this.value,
+    });
+  }
+
   /** Method that sets the value of the datetime element */
   @Method()
   async setValue(newValue: string) {
@@ -156,6 +166,15 @@ export class TdsDatetime {
   handleBlur(e: FocusEvent): void {
     this.textInput.blur();
     this.tdsBlur.emit(e);
+  }
+
+  /** Method that resets the dateteime without emitting an event. */
+  private internalReset() {
+    let value = '';
+    if (this.defaultValue !== 'none') {
+      this.value = this.getDefaultValue();
+    }
+    this.value = value;
   }
 
   render() {
