@@ -255,8 +255,11 @@ export class TdsPopoverCore {
 
   /* To enable initial loading of a component if user controls show prop*/
   componentWillLoad() {
+    // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
       this.setIsShown(true);
+    } else {
+      this.setIsShown(false);
     }
   }
 
@@ -276,7 +279,7 @@ export class TdsPopoverCore {
   render() {
     const classes = {
       'is-shown': this.isShown,
-      [this.getAnimationClass()]: true,
+      [this.getAnimationClass()]: this.isShown && this.animation !== 'none',
     };
 
     return (
