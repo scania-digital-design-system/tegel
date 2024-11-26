@@ -33,7 +33,7 @@ export class TdsPopoverCore {
   /** Decides if the component should be visible from the start. */
   @Prop() defaultShow: boolean = false;
 
-  /** Animation with multiple selection,  */
+  /** Whether the popover should animate when being opened/closed or not */
   @Prop() animation: 'none' | 'fade' | string = 'none';
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
