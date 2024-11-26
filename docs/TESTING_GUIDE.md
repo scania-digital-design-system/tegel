@@ -11,7 +11,7 @@ This guide provides developers with best practices and guidelines on how and whe
 ### Testing Setup
 
 - We use **Playwright** for unit testing.
-- Each component should have its own test file located in the same folder as the component (`componentName.e2e.ts`).
+- Each component should have its own test file located in the same folder as the component (`../components/componentName/test/componentName.e2e.ts`).
 - Use **descriptive test names** to ensure tests are readable and understandable.
 
 ### Writing Tests
