@@ -1,8 +1,8 @@
 :host {
   visibility: hidden;
   opacity: 0;
-  transition: opacity var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out),
-    visibility var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out);
+  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out),
+    visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out);
   pointer-events: none;
 }
 
@@ -10,6 +10,6 @@
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transition: opacity var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out),
-    visibility var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out);
+  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out),
+    visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out);
 }
