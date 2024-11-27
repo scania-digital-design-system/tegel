@@ -36,6 +36,9 @@ export class TdsPopoverCanvas {
   /** Sets the offset skidding */
   @Prop() offsetSkidding: number = 0;
 
+  /** Whether the popover should animate when being opened/closed or not */
+  @Prop() animation: 'none' | 'fade' | string = 'none';
+
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
@@ -76,6 +79,7 @@ export class TdsPopoverCanvas {
             this.childRef = el;
           }}
           defaultShow={this.defaultShow}
+          animation={this.animation}
         >
           <div>
             {/* (@stencil/core@3.3.0): This div is somehow needed to keep the slotted children in a predictable order */}
