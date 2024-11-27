@@ -1,0 +1,19 @@
+:root,
+html {
+  /* Motion Duration Variables */
+  --tds-motion-duration-instant: 0ms;
+  --tds-motion-duration-fast-01: 100ms;
+  --tds-motion-duration-fast-02: 150ms;
+  --tds-motion-duration-moderate-01: 200ms;
+  --tds-motion-duration-moderate-02: 300ms;
+  --tds-motion-duration-slow-01: 400ms;
+  --tds-motion-duration-slow-02: 500ms;
+
+  /* Motion Easing Variables */
+  --tds-motion-easing-scania: cubic-bezier(0.4, 0, 0, 1);
+  --tds-motion-easing-enter: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --tds-motion-easing-exit: cubic-bezier(0.7, 0, 1, 0.5);
+  --tds-motion-easing-easy: cubic-bezier(0.33, 0, 0.67, 1);
+  --tds-motion-easing-linear: cubic-bezier(0, 0, 1, 1);
+  --tds-motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
