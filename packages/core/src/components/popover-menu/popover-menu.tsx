@@ -33,6 +33,9 @@ export class TdsPopoverMenu {
   /** Decides the placement of the Popover Menu */
   @Prop() placement: Placement = 'auto';
 
+  /** Whether the popover should animate when being opened/closed or not */
+  @Prop() animation: 'none' | 'fade' | string = 'none';
+
   /** Sets the offset skidding */
   @Prop() offsetSkidding: number = 0;
 
@@ -74,6 +77,7 @@ export class TdsPopoverMenu {
             this.childRef = el;
           }}
           defaultShow={this.defaultShow}
+          animation={this.animation}
         >
           <div role="list">
             <slot></slot>
