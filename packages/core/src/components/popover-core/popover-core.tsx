@@ -151,10 +151,6 @@ export class TdsPopoverCore {
     }
   }.bind(this);
 
-  private getAnimationClass(): string {
-    return this.animation === 'none' ? '' : `tds-popover-animation-${this.animation}`;
-  }
-
   private onClickTarget = function onClickTarget(event) {
     event.stopPropagation();
     this.setIsShown((isShown) => !isShown);
@@ -253,7 +249,7 @@ export class TdsPopoverCore {
     });
   }
 
-  /* To enable initial loading of a component if user controls show prop*/
+  /* To enable initial loading of a component if user controls show prop */
   componentWillLoad() {
     // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
@@ -277,9 +273,11 @@ export class TdsPopoverCore {
   }
 
   render() {
+    console.log('fade is this---> ', this.animation);
+
     const classes = {
+      'tds-popover-fade-animation': this.animation === 'fade',
       'is-shown': this.isShown,
-      [this.getAnimationClass()]: this.isShown && this.animation !== 'none',
     };
 
     return (
