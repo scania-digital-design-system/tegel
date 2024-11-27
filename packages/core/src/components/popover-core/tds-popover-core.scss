@@ -1,9 +1,8 @@
-@import '../../global/motion';
-
 :host {
   visibility: hidden;
   opacity: 0;
-  transition: opacity $popover-core-transition;
+  transition: opacity var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out),
+    visibility var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out);
   pointer-events: none;
 }
 
@@ -11,4 +10,6 @@
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  transition: opacity var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out),
+    visibility var(--tds-motion-duration-slow-02) var(--tds-motion-ease-in-out);
 }
