@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 26.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#0D0F13;}
-</style>
-<path class="st0" d="M10.6,20.3c0.2,1,1,1.7,2,1.7h11.6c1,0,1.8-0.7,2-1.6l1.8-8.5c0.3-1.2-0.7-2.4-2-2.4H12.1c-0.6,0-1-0.4-1-1
-	c0-0.6,0.5-1,1-1l13.8,0c2.6,0,4.5,2.3,4,4.8l-1.8,8.5c-0.4,1.9-2,3.2-4,3.2H12.6c-2,0-3.6-1.4-4-3.3l-2.7-15c-0.2-1-1-1.7-2-1.7H3
-	C2.5,4,2,3.6,2,3c0-0.6,0.5-1,1-1h0.9c2,0,3.6,1.4,4,3.3L10.6,20.3z M12.6,28c0,1.1,0.9,2,2,2s2-0.9,2-2s-0.9-2-2-2
-	S12.6,26.9,12.6,28z M20.7,28c0,1.1,0.9,2,2,2s2-0.9,2-2s-0.9-2-2-2S20.7,26.9,20.7,28z"/>
-</svg>
+<svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.5 5a1 1 0 0 1 1-1h2.22a2 2 0 0 1 1.94 1.515L8.28 8h18.58a1.5 1.5 0 0 1 1.455 1.864l-1.655 6.621A2 2 0 0 1 24.72 18H10.78l.5 2H24.5a1 1 0 1 1 0 2H11.28a2 2 0 0 1-1.94-1.515l-.805-3.22a.973.973 0 0 1-.01-.043L5.719 6H3.5a1 1 0 0 1-1-1Zm7.78 11h14.44l1.5-6H8.78l1.5 6ZM8.5 26a2 2 0 1 1 4 0 2 2 0 0 1-4 0Zm14 0a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z" fill="#0D0F13"/></svg>
