@@ -1,15 +1,17 @@
 :host {
   visibility: hidden;
   opacity: 0;
-  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out),
-    visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out);
   pointer-events: none;
 }
 
+/* Fade animation rules when animation is 'fade' */
+:host(.tds-popover-fade-animation) {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Show the popover when it’s visible */
 :host(.is-shown) {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
-  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out),
-    visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-ease-in-out);
 }
