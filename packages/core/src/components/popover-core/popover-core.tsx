@@ -273,8 +273,6 @@ export class TdsPopoverCore {
   }
 
   render() {
-    console.log('fade is this---> ', this.animation);
-
     const classes = {
       'tds-popover-fade-animation': this.animation === 'fade',
       'is-shown': this.isShown,
