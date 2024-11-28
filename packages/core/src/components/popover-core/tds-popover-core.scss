@@ -5,11 +5,9 @@
 }
 
 :host(.tds-popover-animation-fade) {
-  animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-linear)
-    forwards;
+  animation: var(--tds-motion-fade-in);
 }
 
-/* Show the popover when it’s visible */
 :host(.is-shown) {
   visibility: visible;
   opacity: 1;
