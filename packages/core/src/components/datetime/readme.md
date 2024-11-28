@@ -37,6 +37,16 @@
 
 ## Methods
 
+### `reset() => Promise<void>`
+
+Method that resets the value of the Datetime, using defaultValue if is not 'none'
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `setValue(newValue: string) => Promise<void>`
 
 Method that sets the value of the datetime element

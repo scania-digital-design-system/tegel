@@ -144,7 +144,7 @@ jobs:
 
   #BUMP WRAPPERS TO NEW VERSION
   bump-wrappers-to-new-version:
-    needs: release-core
+    needs: [release-core, create-release-branch]
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -424,7 +424,7 @@ jobs:
           git merge --squash -X theirs develop
           git add .
           if ! git diff-index --quiet HEAD; then
-            git commit -m "release: tegel ${{ needs.create-release-branch.outputs.version  }}"
+            git commit -m "release: tegel@${{ needs.create-release-branch.outputs.version  }}"
             git push --force --no-verify origin main
           else
             echo "No changes to commit in main"

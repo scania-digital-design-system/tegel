@@ -37,19 +37,12 @@ button {
   padding: var(--tds-spacing-element-20);
   border: 1px solid;
 
-  &:disabled,
-  &.disabled {
-    cursor: unset;
-  }
-
   &:focus {
     outline: none;
   }
 
   &:focus-visible {
-    // TODO: decide on what tod o with these @include tds-focus-state;
-    outline: 2px solid var(--tds-blue-400);
-    outline-offset: -2px;
+    @include tds-focus-state;
   }
 
   &.xs {
@@ -57,12 +50,6 @@ button {
     height: $btn-xs-height;
     font-size: 12px;
     border-radius: 2px;
-
-    &:focus-visible {
-      // TODO: decide on what tod o with these @include tds-focus-state;
-      outline: 2px solid var(--tds-blue-400);
-      outline-offset: -2px;
-    }
   }
 
   &.sm {
@@ -75,12 +62,6 @@ button {
 
     &.only-icon {
       padding: $btn-sm-only-icon-padding;
-    }
-
-    &:focus-visible {
-      // TODO: decide on what tod o with these @include tds-focus-state;
-      outline: 2px solid var(--tds-blue-400);
-      outline-offset: -2px;
     }
   }
 
@@ -95,10 +76,6 @@ button {
     &.only-icon {
       padding: $btn-md-only-icon-padding;
     }
-
-    &:focus-visible {
-      @include tds-focus-state;
-    }
   }
 
   &.lg {
@@ -111,10 +88,6 @@ button {
 
     &.only-icon {
       padding: $btn-lg-only-icon-padding;
-    }
-
-    &:focus-visible {
-      @include tds-focus-state;
     }
   }
 
@@ -184,7 +157,6 @@ button {
       &.disabled,
       &:disabled {
         @each $prop in $props {
-          cursor: not-allowed;
           #{$prop}: var(--tds-btn-#{$type}-#{$prop}-disabled);
         }
       }
@@ -209,12 +181,12 @@ button {
   }
 }
 
-:host(tds-button[disabled='true']) {
+:host([disabled]:active) {
   pointer-events: none;
+}
 
-  ::slotted([slot='icon']) {
-    pointer-events: none;
-  }
+:host([disabled]) button {
+  cursor: not-allowed;
 }
 
 :host(tds-button[fullbleed]) {
