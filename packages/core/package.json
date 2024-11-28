@@ -382,7 +382,7 @@
     "build:storybook": "build-storybook --quiet",
     "build-stencil:storybook": "npm run build && npm run build-storybook",
     "start:storybook": "start-storybook -p 6006",
-    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
+    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start:storybook'"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
