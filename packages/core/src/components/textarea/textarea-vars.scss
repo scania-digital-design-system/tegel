@@ -12,6 +12,8 @@
   --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   --tds-textarea-disabled-placeholder: var(--tds-grey-400);
   --tds-textarea-disabled-label: var(--tds-grey-400);
+  --tds-textarea-helper-disabled: var(--tds-grey-400);
+  --tds-textarea-textcounter-disabled: var(--tds-grey-400);
 
   // Label
   --tds-textarea-label-color: var(--tds-grey-958);
@@ -68,7 +70,9 @@
   --tds-textarea-disabled-background-secondary: var(--tds-grey-868);
   --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   --tds-textarea-disabled-placeholder: var(--tds-grey-800);
-  --tds-textarea-disabled-label: var(--tds-grey-700);
+  --tds-textarea-disabled-label: var(--tds-grey-800);
+  --tds-textarea-helper-disabled: var(--tds-grey-800);
+  --tds-textarea-textcounter-disabled: var(--tds-grey-800);
 
   // Label
   --tds-textarea-label-color: var(--tds-grey-50);
