@@ -7,9 +7,20 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name'
+        required: true
+        default: 'develop'
+
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '20.9.0'
+        type: string
 
 jobs:
-  release-core:
+  build-core:
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/core
@@ -43,8 +54,8 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
 
-  release-angular:
-    needs: release-core
+  build-angular:
+    needs: build-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular
@@ -83,8 +94,8 @@ jobs:
       - name: Angular - Run build
         run: npm run build-angular
 
-  release-angular-17:
-    needs: release-core
+  build-angular-17:
+    needs: build-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/angular-17
@@ -131,8 +142,8 @@ jobs:
       - name: Angular-17 - Run build
         run: npm run build-angular-17
 
-  release-react:
-    needs: release-core
+  build-react:
+    needs: build-core
     runs-on: ubuntu-latest
     env:
       WORKING_DIRECTORY: packages/react
@@ -166,15 +177,15 @@ jobs:
 
       - name: React - Install latest tegel package
         working-directory: packages/react
-        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: React - Build
         run: npm run build-react
 
   # Check that all jobs pass
   check-results:
-    needs: [release-core, release-angular, release-angular-17, release-react]
-    if: (needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    needs: [build-core, build-angular, build-angular-17, build-react]
+    if: (needs.build-core.result == 'failure' || needs.build-angular.result == 'failure' || needs.build-angular-17.result == 'failure' || needs.build-react.result == 'failure')
     runs-on: ubuntu-latest
     steps:
       - name: Notify in Teams on failure
