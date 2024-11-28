@@ -68,7 +68,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'
+          node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular - Read package.json Version
@@ -108,7 +108,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'
+          node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular-17 - Read package.json Version
@@ -156,7 +156,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'
+          node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - Read package.json Version
