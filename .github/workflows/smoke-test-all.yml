@@ -42,9 +42,9 @@ jobs:
         id: core-version
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
-        
+
       - name: Install dependencies in root
-        run: npm install
+        run: npm ci
 
       - name: Core - Install
         working-directory: ${{ env.WORKING_DIRECTORY }}
@@ -190,6 +190,3 @@ jobs:
     steps:
       - name: Notify in Teams on failure
         uses: ./.github/workflows/smoke-test-webhook.yml
-  
-    
-      
