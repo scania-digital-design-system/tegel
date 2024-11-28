@@ -4,10 +4,9 @@
   pointer-events: none;
 }
 
-/* Fade animation rules when animation is 'fade' */
 :host(.tds-popover-animation-fade) {
-  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter),
-    visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit);
+  animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-linear)
+    forwards;
 }
 
 /* Show the popover when it’s visible */
