@@ -89,7 +89,7 @@ jobs:
 
       - name: Angular - Install latest tegel package
         working-directory: packages/angular
-        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular - Run build
         run: npm run build-angular
@@ -133,11 +133,11 @@ jobs:
 
       - name: Angular-17 workspace - Install latest tegel package
         working-directory: packages/angular-17
-        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular-17 wrapper - Install latest tegel package
         working-directory: packages/angular-17/projects/components
-        run: npm install @scania/tegel@${{ needs.release-core.outputs.version }}
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular-17 - Run build
         run: npm run build-angular-17
