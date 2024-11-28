@@ -1,0 +1,139 @@
+:root,
+html {
+  /* ========================================================================
+     Motion Duration Variables
+     ======================================================================= */
+
+  /* Instantaneous */
+  --tds-motion-duration-instant: 0ms;
+
+  /* Fast durations */
+  --tds-motion-duration-fast-01: 100ms;
+  --tds-motion-duration-fast-02: 150ms;
+
+  /* Moderate durations */
+  --tds-motion-duration-moderate-01: 200ms;
+  --tds-motion-duration-moderate-02: 300ms;
+
+  /* Slow durations */
+  --tds-motion-duration-slow-01: 400ms;
+  --tds-motion-duration-slow-02: 500ms;
+
+  /* ========================================================================
+     Motion Easing Variables
+     ======================================================================= */
+
+  /* Scania-standard easing */
+  --tds-motion-easing-scania: cubic-bezier(0.4, 0, 0, 1);
+
+  /* Easing for entering elements (e.g., sliding in or zooming in) */
+  --tds-motion-easing-enter: cubic-bezier(0.1, 0.9, 0.2, 1);
+
+  /* Easing for exiting elements (e.g., sliding out or zooming out) */
+  --tds-motion-easing-exit: cubic-bezier(0.7, 0, 1, 0.5);
+
+  /* General-purpose easing for smooth animations */
+  --tds-motion-easing-easy: cubic-bezier(0.33, 0, 0.67, 1);
+
+  /* Linear easing for uniform motion */
+  --tds-motion-easing-linear: cubic-bezier(0, 0, 1, 1);
+
+  /* Ease-in-out easing for combined smooth entrance and exit */
+  --tds-motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ========================================================================
+     Motion Animations
+     ======================================================================= */
+
+  /* ### Fade ### */
+  --tds-motion-fade-in: tds-fade-in var(--tds-motion-duration-moderate-01)
+    var(--tds-motion-easing-linear) forwards;
+  --tds-motion-fade-out: tds-fade-out var(--tds-motion-duration-moderate-01)
+    var(--tds-motion-easing-linear) forwards;
+
+  /* ### Zoom ### */
+  --tds-motion-zoom-in: tds-zoom-in var(--tds-motion-duration-fast-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-zoom-out: tds-zoom-out var(--tds-motion-duration-fast-02)
+    var(--tds-motion-easing-exit) forwards;
+
+  /* ### Slide ### */
+
+  /* Sliding elements into view */
+  --tds-motion-slide-in-top: tds-slide-in-top var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-slide-in-bottom: tds-slide-in-bottom var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-slide-in-left: tds-slide-in-left var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-slide-in-right: tds-slide-in-right var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+
+  /* Sliding elements out of view */
+  --tds-motion-slide-out-top: tds-slide-out-top var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+  --tds-motion-slide-out-bottom: tds-slide-out-bottom var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+  --tds-motion-slide-out-left: tds-slide-out-left var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+  --tds-motion-slide-out-right: tds-slide-out-right var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+
+  /* ### Slide Short ### */
+
+  /* Short sliding animations for subtle movements */
+  --tds-motion-slide-top-short: tds-slide-top-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-slide-bottom-short: tds-slide-bottom-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-slide-left-short: tds-slide-left-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-slide-right-short: tds-slide-right-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+
+  /* ### Collapse ### */
+
+  /* Collapsing elements vertically */
+  --tds-motion-collapse-in: tds-collapse-in var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
+  --tds-motion-collapse-out: tds-collapse-out var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+
+  /* ### Rotate ### */
+
+  /* Rotating animations for dynamic effects */
+  --tds-motion-rotate: tds-rotate var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
+    forwards;
+
+  /* ### Shake ### */
+
+  /* Shaking elements for emphasis */
+  --tds-motion-shake: tds-shake var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
+    forwards;
+
+  /* ### Blink ### */
+
+  /* Blinking effect for attention-grabbing elements */
+  --tds-motion-blink: tds-blink calc(var(--tds-motion-duration-slow-02) * 2)
+    var(--tds-motion-easing-scania) infinite;
+
+  /* ### Pulse ### */
+
+  /* Pulsing effect for dynamic focus */
+  --tds-motion-pulse: tds-pulse calc(var(--tds-motion-duration-slow-02) * 2)
+    var(--tds-motion-easing-scania) infinite;
+
+  /* ### Elevate ### */
+
+  /* Combining fade, slide, and zoom for elevation effects */
+  --tds-motion-elevate-enter: tds-fade-in var(--tds-motion-duration-slow-02)
+      var(--tds-motion-easing-linear) forwards,
+    tds-slide-in-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
+      forwards,
+    tds-zoom-in-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania) forwards;
+  --tds-motion-elevate-exit: tds-fade-out var(--tds-motion-duration-slow-02)
+      var(--tds-motion-easing-exit) forwards,
+    tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards,
+    tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
+}
