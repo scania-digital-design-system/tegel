@@ -6,7 +6,8 @@
 
 /* Fade animation rules when animation is 'fade' */
 :host(.tds-popover-animation-fade) {
-  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter),
+    visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit);
 }
 
 /* Show the popover when it’s visible */
