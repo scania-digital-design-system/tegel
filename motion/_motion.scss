@@ -42,98 +42,158 @@ html {
   --tds-motion-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* ========================================================================
-     Motion Animations
+     Motion Animations Mixins
      ======================================================================= */
 
   /* ### Fade ### */
-  --tds-motion-fade-in: tds-fade-in var(--tds-motion-duration-moderate-01)
-    var(--tds-motion-easing-linear) forwards;
-  --tds-motion-fade-out: tds-fade-out var(--tds-motion-duration-moderate-01)
-    var(--tds-motion-easing-linear) forwards;
+  @mixin fade-in-animation() {
+    animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-linear)
+      forwards;
+  }
+
+  @mixin fade-out-animation() {
+    animation: tds-fade-out var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-linear)
+      forwards;
+  }
 
   /* ### Zoom ### */
-  --tds-motion-zoom-in: tds-zoom-in var(--tds-motion-duration-fast-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-zoom-out: tds-zoom-out var(--tds-motion-duration-fast-02)
-    var(--tds-motion-easing-exit) forwards;
+  @mixin zoom-in-animation() {
+    animation: tds-zoom-in var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
+
+  @mixin zoom-out-animation() {
+    animation: tds-zoom-out var(--tds-motion-duration-fast-02) var(--tds-motion-easing-exit)
+      forwards;
+  }
 
   /* ### Slide ### */
 
   /* Sliding elements into view */
-  --tds-motion-slide-in-top: tds-slide-in-top var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-slide-in-bottom: tds-slide-in-bottom var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-slide-in-left: tds-slide-in-left var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-slide-in-right: tds-slide-in-right var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
+  @mixin slide-in-top-animation() {
+    animation: tds-slide-in-top var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
+
+  @mixin slide-in-bottom-animation() {
+    animation: tds-slide-in-bottom var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
+
+  @mixin slide-in-left-animation() {
+    animation: tds-slide-in-left var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
+
+  @mixin slide-in-right-animation() {
+    animation: tds-slide-in-right var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
 
   /* Sliding elements out of view */
-  --tds-motion-slide-out-top: tds-slide-out-top var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-exit) forwards;
-  --tds-motion-slide-out-bottom: tds-slide-out-bottom var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-exit) forwards;
-  --tds-motion-slide-out-left: tds-slide-out-left var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-exit) forwards;
-  --tds-motion-slide-out-right: tds-slide-out-right var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-exit) forwards;
+  @mixin slide-out-top-animation() {
+    animation: tds-slide-out-top var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards;
+  }
+
+  @mixin slide-out-bottom-animation() {
+    animation: tds-slide-out-bottom var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards;
+  }
+
+  @mixin slide-out-left-animation() {
+    animation: tds-slide-out-left var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards;
+  }
+
+  @mixin slide-out-right-animation() {
+    animation: tds-slide-out-right var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards;
+  }
 
   /* ### Slide Short ### */
 
   /* Short sliding animations for subtle movements */
-  --tds-motion-slide-top-short: tds-slide-top-short var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-slide-bottom-short: tds-slide-bottom-short var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-slide-left-short: tds-slide-left-short var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-slide-right-short: tds-slide-right-short var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
+  @mixin slide-top-short-animation() {
+    animation: tds-slide-top-short var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
+
+  @mixin slide-bottom-short-animation() {
+    animation: tds-slide-bottom-short var(--tds-motion-duration-slow-02)
+      var(--tds-motion-easing-enter) forwards;
+  }
+
+  @mixin slide-left-short-animation() {
+    animation: tds-slide-left-short var(--tds-motion-duration-slow-02)
+      var(--tds-motion-easing-enter) forwards;
+  }
+
+  @mixin slide-right-short-animation() {
+    animation: tds-slide-right-short var(--tds-motion-duration-slow-02)
+      var(--tds-motion-easing-enter) forwards;
+  }
 
   /* ### Collapse ### */
 
   /* Collapsing elements vertically */
-  --tds-motion-collapse-in: tds-collapse-in var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-enter) forwards;
-  --tds-motion-collapse-out: tds-collapse-out var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-exit) forwards;
+  @mixin collapse-in-animation() {
+    animation: tds-collapse-in var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
+      forwards;
+  }
+
+  @mixin collapse-out-animation() {
+    animation: tds-collapse-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards;
+  }
 
   /* ### Rotate ### */
 
   /* Rotating animations for dynamic effects */
-  --tds-motion-rotate: tds-rotate var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
-    forwards;
+  @mixin rotate-animation() {
+    animation: tds-rotate var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
+      forwards;
+  }
 
   /* ### Shake ### */
 
   /* Shaking elements for emphasis */
-  --tds-motion-shake: tds-shake var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
-    forwards;
+  @mixin shake-animation() {
+    animation: tds-shake var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear) forwards;
+  }
 
   /* ### Blink ### */
 
   /* Blinking effect for attention-grabbing elements */
-  --tds-motion-blink: tds-blink calc(var(--tds-motion-duration-slow-02) * 2)
-    var(--tds-motion-easing-scania) infinite;
+  @mixin blink-animation() {
+    animation: tds-blink calc(var(--tds-motion-duration-slow-02) * 2)
+      var(--tds-motion-easing-scania) infinite;
+  }
 
   /* ### Pulse ### */
 
   /* Pulsing effect for dynamic focus */
-  --tds-motion-pulse: tds-pulse calc(var(--tds-motion-duration-slow-02) * 2)
-    var(--tds-motion-easing-scania) infinite;
+  @mixin pulse-animation() {
+    animation: tds-pulse calc(var(--tds-motion-duration-slow-02) * 2)
+      var(--tds-motion-easing-scania) infinite;
+  }
 
   /* ### Elevate ### */
 
   /* Combining fade, slide, and zoom for elevation effects */
-  --tds-motion-elevate-enter: tds-fade-in var(--tds-motion-duration-slow-02)
-      var(--tds-motion-easing-linear) forwards,
-    tds-slide-in-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
+  @mixin elevate-enter-animation() {
+    animation: tds-fade-in var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
       forwards,
-    tds-zoom-in-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania) forwards;
-  --tds-motion-elevate-exit: tds-fade-out var(--tds-motion-duration-slow-02)
-      var(--tds-motion-easing-exit) forwards,
-    tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      tds-slide-in-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
       forwards,
-    tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
+      tds-zoom-in-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania) forwards;
+  }
+
+  @mixin elevate-exit-animation() {
+    animation: tds-fade-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards,
+      tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+      forwards,
+      tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
+  }
 }
