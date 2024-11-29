@@ -22,10 +22,6 @@
     &::placeholder {
       color: var(--tds-textarea-disabled-placeholder);
     }
-
-    ~ .textfield-label-inside {
-      color: var(--tds-textarea-disabled-label);
-    }
   }
 }
 
@@ -163,6 +159,12 @@
       left: var(--tds-spacing-element-16);
     }
 
+    &.textarea-disabled {
+      .textarea-label {
+        color: var(--tds-textarea-disabled-label);
+      }
+    }
+
     .textarea-input {
       @include placeholder-label;
     }
@@ -265,6 +267,18 @@
 
   .textarea-label {
     color: var(--tds-textarea-disabled-label);
+  }
+
+  .textarea-helper {
+    color: var(--tds-textarea-helper-disabled);
+  }
+
+  .textarea-textcounter {
+    color: var(--tds-textarea-textcounter-disabled);
+
+    & .textfield-textcounter-divider {
+      color: var(--tds-textarea-textcounter-disabled);
+    }
   }
 }
 
