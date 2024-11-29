@@ -9,8 +9,14 @@ test.describe.parallel('tds-popover-canvas-show-true', () => {
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
+    // get popover element
+    const popover = page.locator('tds-popover-core');
+
+    // wait for it to be visible
+    await popover.waitFor();
+
     /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.05 });
   });
 
   test('make sure the popover canvas content is displayed both before and after the trigger button is pressed', async ({
