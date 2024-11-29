@@ -16,7 +16,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '20.9.0'
+        default: '22.11.0'
         type: string
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '22.11.0' # You can change this to any fixed version if needed
+          node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Core - Read Package.json Version
@@ -108,7 +108,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'
+          node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular-17 - Read package.json Version
@@ -156,7 +156,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0'
+          node-version: ${{ inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - Read package.json Version
