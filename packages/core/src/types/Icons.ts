@@ -52,6 +52,8 @@ export type IconNames =
   | 'face_dissatisfied'
   | 'face_neutral'
   | 'face_satisfied'
+  | 'factory-7'
+  | 'factory-8'
   | 'factory'
   | 'filters_inactive'
   | 'filters'
