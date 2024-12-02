@@ -24,6 +24,8 @@ export type IconNames =
   | 'clock'
   | 'contact_inactive'
   | 'contact'
+  | 'coolantlevel_icon-1'
+  | 'coolantlevel_icon-2'
   | 'copy'
   | 'cross'
   | 'dashboard'
