@@ -31,6 +31,7 @@ export type IconNames =
   | 'document_doc'
   | 'document_eye'
   | 'document_pdf'
+  | 'document_plus-10'
   | 'document_plus-8'
   | 'document_plus-9'
   | 'document_plus'
