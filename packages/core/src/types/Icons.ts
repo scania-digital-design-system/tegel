@@ -26,6 +26,7 @@ export type IconNames =
   | 'contact'
   | 'coolantlevel_icon-1'
   | 'coolantlevel_icon-2'
+  | 'coolantlevel_icon-3'
   | 'copy'
   | 'cross'
   | 'dashboard'
