@@ -1,0 +1,23 @@
+@import '../../global/global';
+
+:host {
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+}
+
+:host(.tds-popover-animation-show-fade) {
+  animation: var(--fade-in-animation);
+}
+
+:host(.tds-popover-animation-hide-fade) {
+  animation: var(--fade-out-animation);
+}
+
+:host(.is-shown) {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}

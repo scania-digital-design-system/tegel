@@ -61,6 +61,17 @@ export default {
         type: 'boolean',
       },
     },
+    animation: {
+      name: 'Animation',
+      description: 'Sets the animation of the Popover Menu.',
+      control: {
+        type: 'select',
+      },
+      options: ['none', 'fade'],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
   },
   args: {
     menuPosition: 'Auto',
@@ -69,7 +80,7 @@ export default {
   },
 };
 
-const Template = ({ menuPosition, icons, fluidWidth }) => {
+const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
   const menuPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -101,6 +112,7 @@ const Template = ({ menuPosition, icons, fluidWidth }) => {
     <tds-popover-menu
       id="my-popover-menu"
       placement="${menuPosLookup[menuPosition]}"
+      animation="${animation}"
       ${fluidWidth ? 'fluid-width' : ''}
       selector="#my-popover-button"
       >
