@@ -1,4 +1,6 @@
 export type IconNames =
+  | 'acceleration-1'
+  | 'acceleration-inactive-1'
   | 'arrow_diagonal'
   | 'arrow_down'
   | 'arrow_left'
@@ -10,6 +12,8 @@ export type IconNames =
   | 'burger'
   | 'calendar_inactive'
   | 'calendar'
+  | 'camera-1'
+  | 'camera-2'
   | 'card'
   | 'cart'
   | 'chevron_down'
