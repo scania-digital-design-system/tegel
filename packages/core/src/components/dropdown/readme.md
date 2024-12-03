@@ -51,7 +51,7 @@ Type: `Promise<void>`
 
 ### `focusElement() => Promise<void>`
 
-Method that emulates forces focus on the input element.
+Method that forces focus on the input element.
 
 #### Returns
 

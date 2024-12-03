@@ -92,7 +92,7 @@ export class TdsDropdown {
     this.handleChange();
   }
 
-  /** Method that emulates forces focus on the input element. */
+  /** Method that forces focus on the input element. */
   @Method()
   async focusElement() {
     this.focusInputElement();
