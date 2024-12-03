@@ -53,6 +53,8 @@ export class TdsDropdown {
   /** The size of the Dropdown. */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
+  @Prop() animation: 'none' | 'fade' = 'none';
+
   /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;
 
@@ -638,9 +640,11 @@ export class TdsDropdown {
           ref={(element) => (this.dropdownList = element)}
           class={`dropdown-list
             ${this.size}
-            ${this.open ? 'open' : 'closed'}
             ${this.getOpenDirection()}
-            ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}`}
+            ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}
+            ${this.open ? 'open' : 'closed'}
+            ${this.animation !== 'none' ? `animation-${this.animation}` : ''}
+            `}
         >
           <slot onSlotchange={() => this.handleSlotChange()}></slot>
           {this.filterResult === 0 && this.noResultText !== '' && (

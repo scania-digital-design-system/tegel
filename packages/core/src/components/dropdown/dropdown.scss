@@ -161,10 +161,15 @@
     margin-top: 1px;
     width: 100%;
     transform-origin: top;
-    transition: transform 0.2s ease-in-out;
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
     border-radius: var(--tds-dropdown-list-border-radius-down);
     overflow-y: auto;
+    transform: scale(0.9);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter),
+      transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-linear);
     @include tds-scrollbar;
 
     &.lg {
@@ -199,12 +204,23 @@
     }
 
     &.closed {
-      transform: scaleY(0);
+      transform: scale(0.9);
+      opacity: 0;
       visibility: hidden;
+      pointer-events: none;
     }
 
     &.open {
-      transform: scaleY(1);
+      transform: scale(1);
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &.animation-scale {
+      transition: opacity var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter),
+        transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-linear),
+        visibility var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter);
     }
 
     .no-result {
