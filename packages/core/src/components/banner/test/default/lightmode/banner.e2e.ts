@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/banner/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-banner-default', () => {
+test.describe.parallel('tds-banner-default-lightmode', () => {
   test('renders default banner correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
