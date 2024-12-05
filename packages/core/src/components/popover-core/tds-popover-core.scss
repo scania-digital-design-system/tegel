@@ -2,9 +2,10 @@
 
 :host {
   pointer-events: none;
+  display: block;
   visibility: hidden;
   opacity: 0;
-  display: none;
+  transition: opacity 0.5s, visibility 0.5s;
 }
 
 :host(.tds-popover-animation-show-fade) {
@@ -16,8 +17,7 @@
 }
 
 :host(.is-shown) {
+  opacity: 1;
   pointer-events: auto;
   visibility: visible;
-  opacity: 1;
-  display: block;
 }

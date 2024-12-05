@@ -47,9 +47,9 @@ html {
 
   /* ### Fade ### */
   --fade-in-animation: tds-fade-in var(--tds-motion-duration-moderate-01)
-    var(--tds-motion-easing-linear) forwards;
+    var(--tds-motion-easing-enter) forwards;
   --fade-out-animation: tds-fade-out var(--tds-motion-duration-moderate-01)
-    var(--tds-motion-easing-linear) forwards;
+    var(--tds-motion-easing-exit) forwards;
 
   /* ### Zoom ### */
   --zoom-in-animation: tds-zoom-in var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter)

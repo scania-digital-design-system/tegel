@@ -71,6 +71,8 @@ export class TdsPopoverCore {
 
   @State() disableLogic: boolean = false;
 
+  @State() hasShownAtLeastOnce: boolean = false;
+
   /** Property for closing popover programmatically */
   @Method() async close() {
     this.setIsShown(false);
@@ -145,6 +147,7 @@ export class TdsPopoverCore {
       this.isShown = isShown;
     }
     if (this.isShown) {
+      this.hasShownAtLeastOnce = true;
       this.internalTdsShow.emit();
     } else {
       this.internalTdsClose.emit();
@@ -275,8 +278,8 @@ export class TdsPopoverCore {
   render() {
     const classes = {
       [`tds-popover-animation-show-${this.animation}`]: this.animation !== 'none' && this.isShown,
-      [`tds-popover-animation-hide-${this.animation}`]: this.animation !== 'none' && !this.isShown,
-
+      [`tds-popover-animation-hide-${this.animation}`]:
+        this.animation !== 'none' && !this.isShown && this.hasShownAtLeastOnce,
       'is-shown': this.isShown,
     };
 
