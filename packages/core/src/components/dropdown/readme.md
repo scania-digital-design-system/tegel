@@ -49,6 +49,16 @@ Type: `Promise<void>`
 
 
 
+### `focusElement() => Promise<void>`
+
+Method that forces focus on the input element.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `removeValue(oldValue: string) => Promise<{ value: string; label: string; }[]>`
 
 Method for removing a selected value in the Dropdown.
