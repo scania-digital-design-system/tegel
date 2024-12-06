@@ -93,4 +93,24 @@ test.describe.parallel('tds-dropdown-default', () => {
     await expect(dropdownButtonElement).toBeVisible();
     await expect(dropdownListElementTwoButton).toBeVisible();
   });
+  test('focusElement() method focus and opens the dropdown-list', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const dropdownButton = page.getByRole('button').first();
+    const dropdownListElementOne = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: 'Option 1' });
+    await expect(dropdownListElementOne).toBeHidden();
+
+    await page.evaluate(() => {
+      const dropdownnew = document.querySelector('tds-dropdown');
+      dropdownnew.focusElement();
+    });
+
+    /* before clicking dropdownlist should not be visible, the button should be */
+    await expect(dropdownButton).toBeVisible();
+    await expect(dropdownListElementOne).toBeVisible();
+
+    /* checks diff on screenshot */
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
 });

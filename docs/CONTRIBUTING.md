@@ -21,7 +21,7 @@
 - **Code Review Process**: We will review your PR and provide feedback. Once the PR is ready for merge, it will be merged by the maintainers.
 
 ## Style Guides
-- **Code Style**: Please read our [Code Style](https://github.com/scania-digital-design-system/tegel/blob/main/CODE_STYLE.md) before contributing.
+- **Code Style**: Please read our [Code Style](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md) before contributing.
 
 ## Testing your changes locally
 To properly test your changes' behaviors in a project, reference your local Tegel instance instead of the published version on the registry
