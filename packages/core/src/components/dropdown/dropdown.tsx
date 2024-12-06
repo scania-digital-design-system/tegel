@@ -53,7 +53,7 @@ export class TdsDropdown {
   /** The size of the Dropdown. */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
-  @Prop() animation: 'none' | 'fade' = 'none';
+  @Prop() animation: 'none' | 'slide' = 'none';
 
   /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;

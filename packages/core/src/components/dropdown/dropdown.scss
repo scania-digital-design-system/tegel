@@ -164,12 +164,8 @@
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
     border-radius: var(--tds-dropdown-list-border-radius-down);
     overflow-y: auto;
-    transform: scale(0.9);
-    opacity: 0;
-    visibility: hidden;
+    transform: scaleY(0);
     pointer-events: none;
-    transition: opacity var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter),
-      transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-linear);
     @include tds-scrollbar;
 
     &.lg {
@@ -204,23 +200,19 @@
     }
 
     &.closed {
-      transform: scale(0.9);
-      opacity: 0;
-      visibility: hidden;
+      transform: scaleY(0);
       pointer-events: none;
     }
 
     &.open {
-      transform: scale(1);
+      transform: scaleY(1);
       visibility: visible;
       opacity: 1;
       pointer-events: auto;
     }
 
-    &.animation-scale {
-      transition: opacity var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter),
-        transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-linear),
-        visibility var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter);
+    &.animation-slide {
+      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-linear);
     }
 
     .no-result {

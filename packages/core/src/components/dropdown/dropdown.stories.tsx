@@ -49,7 +49,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['none', 'scale'],
+      options: ['none', 'slide'],
       table: {
         defaultValue: { summary: 'None' },
       },
