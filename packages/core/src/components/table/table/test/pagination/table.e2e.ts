@@ -43,7 +43,9 @@ test.describe.parallel('tds-table-pagination', () => {
 
   test('Footer contains right chevron button, it is not disabled', async ({ page }) => {
     await page.goto(componentTestPath);
-    const tableFooterRightChevronButton = page.getByRole('button').last();
+
+    const tableFooterRightChevronButton = page.getByRole('button').nth(2);
+
     await expect(tableFooterRightChevronButton).toBeVisible();
     await expect(tableFooterRightChevronButton).not.toHaveAttribute('disabled');
   });
