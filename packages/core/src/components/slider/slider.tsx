@@ -186,7 +186,7 @@ export class TdsSlider {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement.getBoundingClientRect();
     let localLeft = 0;
-    if (event.type === 'mousemove') {
+    if (event.type === 'mousemove' || event.type === 'click') {
       localLeft = event.clientX - trackRect.left;
     } else if (event.type === 'touchmove') {
       localLeft = event.touches[0].clientX - trackRect.left;
@@ -491,6 +491,7 @@ export class TdsSlider {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
+              onClick={(event) => this.thumbCore(event)}
             >
               <div
                 class="tds-slider__track-fill"
