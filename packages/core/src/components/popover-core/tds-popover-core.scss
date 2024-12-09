@@ -3,17 +3,13 @@
 :host {
   pointer-events: none;
   display: block;
-  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s, visibility 0.5s;
+  visibility: hidden;
 }
 
-:host(.tds-popover-animation-show-fade) {
-  animation: var(--fade-in-animation);
-}
-
-:host(.tds-popover-animation-hide-fade) {
-  animation: var(--fade-out-animation);
+:host(.tds-popover-animation-fade) {
+  transition: opacity var(--tds-motion-duration-fast-01) var(--tds-motion-easing-linear);
+  visibility: visibility var(--tds-motion-duration-fast-01) var(--tds-motion-easing-linear);
 }
 
 :host(.is-shown) {

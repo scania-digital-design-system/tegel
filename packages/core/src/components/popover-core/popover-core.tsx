@@ -277,9 +277,8 @@ export class TdsPopoverCore {
 
   render() {
     const classes = {
-      [`tds-popover-animation-show-${this.animation}`]: this.animation !== 'none' && this.isShown,
-      [`tds-popover-animation-hide-${this.animation}`]:
-        this.animation !== 'none' && !this.isShown && this.hasShownAtLeastOnce,
+      [`tds-popover-animation-${this.animation}`]:
+        this.animation !== 'none' && this.hasShownAtLeastOnce,
       'is-shown': this.isShown,
     };
 
