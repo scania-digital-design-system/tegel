@@ -186,7 +186,7 @@ export class TdsSlider {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement.getBoundingClientRect();
     let localLeft = 0;
-    if (event.type === 'mousemove') {
+    if (event.type === 'mousemove' || event.type === 'click') {
       localLeft = event.clientX - trackRect.left;
     } else if (event.type === 'touchmove') {
       localLeft = event.touches[0].clientX - trackRect.left;
@@ -433,15 +433,47 @@ export class TdsSlider {
           'read-only': this.readOnly,
         }}
       >
-        <input
+        {/* <input
           class="tds-slider-native-element"
           type="range"
           name={this.name}
           min={this.min}
           max={this.max}
           value={this.value}
+          disabled={this.disabled}          
+        ></input> */}
+
+        <input
+          class={{
+            'tds-slider-native-element': true,
+            'disabled': this.disabled,
+          }}
+          ref={(el) => {
+            this.trackElement = el as HTMLInputElement;
+          }}
+          type="range"
+          name={this.name}
+          min={this.min}
+          max={this.max}
+          step={this.step}
+          value={this.value}
           disabled={this.disabled}
-        ></input>
+          aria-label={this.label || 'slider'}
+          aria-readonly={this.readOnly ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+          onInput={(event: Event) => {
+            const newValue = (event.target as HTMLInputElement).value;
+            this.value = newValue;
+            this.tdsInput.emit({ value: newValue });
+            this.updateTrack();
+          }}
+          onChange={(event: Event) => {
+            const newValue = (event.target as HTMLInputElement).value;
+            this.value = newValue;
+            this.tdsChange.emit({ value: newValue });
+            this.updateTrack();
+          }}
+        />
 
         <div
           class={{
@@ -491,6 +523,14 @@ export class TdsSlider {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
+              onClick={(event) => this.thumbCore(event)}
+              onKeyDown={() => {}}
+              role="slider"
+              aria-valuemin={this.min}
+              aria-valuemax={this.max}
+              aria-valuenow={this.value}
+              aria-disabled={this.disabled ? 'true' : 'false'}
+              aria-readonly={this.readOnly ? 'true' : 'false'}
             >
               <div
                 class="tds-slider__track-fill"
@@ -524,7 +564,6 @@ export class TdsSlider {
                     </svg>
                   </div>
                 )}
-
                 <div
                   class="tds-slider__thumb-inner"
                   ref={(el) => {
