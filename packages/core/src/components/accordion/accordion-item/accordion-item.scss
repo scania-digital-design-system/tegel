@@ -36,10 +36,11 @@
     letter-spacing: var(--tds-headline-07-ls);
     padding: var(--tds-spacing-element-16);
     background-color: var(--tds-accordion-background);
+    transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     .tds-accordion-icon {
       transform-origin: center;
-      transition: transform 0.15s ease-in-out;
+      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
       color: var(--tds-accordion-icon-color);
 
       & > tds-icon {
