@@ -26,6 +26,12 @@ export class TdsAccordionItem {
   /** When true, 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
 
+  /**
+   * Animation variant for the accordion item.
+   * Inherits from tds-accordion if not set explicitly.
+   */
+  @Prop() animation: 'none' | 'slide' = 'slide';
+
   /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
@@ -56,6 +62,7 @@ export class TdsAccordionItem {
           class={`tds-accordion-item
         ${this.disabled ? 'disabled' : ''}
         ${this.expanded ? 'expanded' : ''}
+        ${this.animation !== 'none' ? `tds-accordion-item-animation-${this.animation}` : ''}
         `}
         >
           <button

@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property             | Attribute              | Description                                                                                    | Type               | Default |
-| -------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- | ------------------ | ------- |
-| `disabled`           | `disabled`             | Disabled option in `boolean`.                                                                  | `boolean`          | `false` |
-| `expandIconPosition` | `expand-icon-position` | Changes position of the expand icon.                                                           | `"end" \| "start"` | `'end'` |
-| `expanded`           | `expanded`             | Set to true to expand panel open                                                               | `boolean`          | `false` |
-| `header`             | `header`               | The header gives users the context about the additional information available inside the panel | `string`           | `''`    |
-| `paddingReset`       | `padding-reset`        | When true, 16px on right padding instead of 64px                                               | `boolean`          | `false` |
+| Property             | Attribute              | Description                                                                                    | Type                | Default   |
+| -------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- | ------------------- | --------- |
+| `animation`          | `animation`            | Animation variant for the accordion item. Inherits from tds-accordion if not set explicitly.   | `"none" \| "slide"` | `'slide'` |
+| `disabled`           | `disabled`             | Disabled option in `boolean`.                                                                  | `boolean`           | `false`   |
+| `expandIconPosition` | `expand-icon-position` | Changes position of the expand icon.                                                           | `"end" \| "start"`  | `'end'`   |
+| `expanded`           | `expanded`             | Set to true to expand panel open                                                               | `boolean`           | `false`   |
+| `header`             | `header`               | The header gives users the context about the additional information available inside the panel | `string`            | `''`      |
+| `paddingReset`       | `padding-reset`        | When true, 16px on right padding instead of 64px                                               | `boolean`           | `false`   |
 
 
 ## Events

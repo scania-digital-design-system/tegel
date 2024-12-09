@@ -59,6 +59,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    animation: {
+      name: 'Animation',
+      description: 'Sets the animation type for the Accordion.',
+      control: {
+        type: 'radio',
+      },
+      options: { None: 'none', Slide: 'slide' },
+      table: {
+        defaultValue: { summary: 'slide' },
+      },
+    },
   },
   parameters: {
     notes: { 'Accordion': readme, 'Accordion Item': readmeItem },
@@ -81,10 +92,18 @@ export default {
     paddingReset: false,
     disabled: false,
     hideLastBorder: false,
+    animation: 'none',
   },
 };
 
-const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastBorder }) => {
+const Template = ({
+  disabled,
+  iconPosition,
+  paddingReset,
+  modeVariant,
+  hideLastBorder,
+  animation,
+}) => {
   const affixAttr = iconPosition === 'start' ? 'expand-icon-position="start"' : '';
   const disabledAttr = disabled ? 'disabled' : '';
   const paddingResetAttr = paddingReset ? 'padding-reset' : '';
@@ -93,7 +112,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
   return formatHtmlPreview(`
     <tds-accordion ${
       modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-    } ${hideLastBorderAttr}>
+    } ${hideLastBorderAttr} animation="${animation}">
       <tds-accordion-item header="First item" ${affixAttr} ${disabledAttr} ${paddingResetAttr}>
         This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
         Lorem ipsum doler sit amet.

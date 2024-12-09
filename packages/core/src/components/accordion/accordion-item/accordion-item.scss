@@ -9,6 +9,14 @@
   color: var(--tds-accordion-color);
   position: relative;
 
+  &:focus {
+    border-top: 1px solid var(--tds-accordion-border-focus);
+  }
+
+  &[disabled='true']:focus {
+    border-color: var(--tds-accordion-border);
+  }
+
   button.tds-accordion-header-icon-start,
   button.tds-accordion-header-icon-end {
     all: unset;
@@ -24,8 +32,6 @@
     display: flex;
     align-items: center;
     width: 100%;
-
-    // fixme: wrong line-height compared to production
     font: var(--tds-headline-07);
     letter-spacing: var(--tds-headline-07-ls);
     padding: var(--tds-spacing-element-16);
@@ -48,11 +54,13 @@
 
   .tds-accordion-panel {
     cursor: default;
-    padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
-      var(--tds-spacing-element-16);
-    display: none;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 var(--tds-spacing-layout-64) 0 var(--tds-spacing-element-16);
     font: var(--tds-detail-03);
     letter-spacing: var(--tds-detail-03-ls);
+    transition: max-height var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter),
+      padding var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
 
     p {
       margin: 0;
@@ -104,8 +112,11 @@
 
   &.expanded {
     .tds-accordion-panel {
-      display: block;
-      padding-bottom: 31px;
+      max-height: 500px;
+
+      /* Set this to a value larger than the content height */
+      padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) 31px
+        var(--tds-spacing-element-16);
     }
 
     .tds-accordion-icon {
