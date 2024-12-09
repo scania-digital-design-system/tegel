@@ -493,7 +493,7 @@ export class TdsSlider {
               tabindex={this.disabled ? '-1' : '0'}
               onClick={(event) => this.thumbCore(event)}
               onKeyDown={() => {}}
-              role="slider"
+              // role="slider"
               aria-valuemin={this.min}
               aria-valuemax={this.max}
               aria-valuenow={this.value}
