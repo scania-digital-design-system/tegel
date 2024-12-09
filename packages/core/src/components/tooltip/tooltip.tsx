@@ -109,6 +109,7 @@ export class TdsTooltip {
             this.show = false;
           }}
           defaultShow={this.defaultShow}
+          animation="none"
         >
           {this.text}
           {/* Slot is added to support adding HTML elements to component */}
