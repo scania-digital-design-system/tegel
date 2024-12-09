@@ -92,6 +92,13 @@ export class TdsDropdown {
     this.handleChange();
   }
 
+  /** Method that forces focus on the input element. */
+  @Method()
+  async focusElement() {
+    this.focusInputElement();
+    this.handleFocus({});
+  }
+
   /** Method for setting the value of the Dropdown.
    *
    * Single selection example:
@@ -472,7 +479,13 @@ export class TdsDropdown {
   };
 
   private handleFocus = (event) => {
+    this.open = true;
+    this.filterFocus = true;
+    if (this.multiselect) {
+      this.inputElement.value = '';
+    }
     this.tdsFocus.emit(event);
+    this.handleFilter({ target: { value: '' } });
   };
 
   private handleBlur = (event) => {
@@ -542,15 +555,7 @@ export class TdsDropdown {
                     }
                     this.handleBlur(event);
                   }}
-                  onFocus={(event) => {
-                    this.open = true;
-                    this.filterFocus = true;
-                    if (this.multiselect) {
-                      this.inputElement.value = '';
-                    }
-                    this.handleFocus(event);
-                    this.handleFilter({ target: { value: '' } });
-                  }}
+                  onFocus={(event) => this.handleFocus(event)}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
                       this.open = false;

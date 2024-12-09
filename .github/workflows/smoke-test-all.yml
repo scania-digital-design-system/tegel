@@ -30,7 +30,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.branch.name }}
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -63,7 +63,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.branch.name }}
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -103,7 +103,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.branch.name }}
 
       - name: Set up node
         uses: actions/setup-node@v3
@@ -151,7 +151,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ inputs.branch.name }}
 
       - name: Set up node
         uses: actions/setup-node@v3
