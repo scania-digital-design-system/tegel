@@ -492,8 +492,6 @@ export class TdsSlider {
               }}
               tabindex={this.disabled ? '-1' : '0'}
               onClick={(event) => this.thumbCore(event)}
-              onKeyDown={(event) => this.handleKeydown(event)}
-              role="slider"
             >
               <div
                 class="tds-slider__track-fill"
