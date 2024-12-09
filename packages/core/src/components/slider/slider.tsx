@@ -441,7 +441,6 @@ export class TdsSlider {
           max={this.max}
           value={this.value}
           disabled={this.disabled}
-          onClick={(event) => this.thumbCore(event)}
         ></input>
 
         <div
@@ -493,7 +492,7 @@ export class TdsSlider {
               }}
               tabindex={this.disabled ? '-1' : '0'}
               onClick={(event) => this.thumbCore(event)}
-              onKeyDown={() => {}}
+              // onKeyDown={() => {}}
             >
               <div
                 class="tds-slider__track-fill"
