@@ -433,15 +433,47 @@ export class TdsSlider {
           'read-only': this.readOnly,
         }}
       >
-        <input
+        {/* <input
           class="tds-slider-native-element"
           type="range"
           name={this.name}
           min={this.min}
           max={this.max}
           value={this.value}
+          disabled={this.disabled}          
+        ></input> */}
+
+        <input
+          class={{
+            'tds-slider-native-element': true,
+            'disabled': this.disabled,
+          }}
+          ref={(el) => {
+            this.trackElement = el as HTMLInputElement;
+          }}
+          type="range"
+          name={this.name}
+          min={this.min}
+          max={this.max}
+          step={this.step}
+          value={this.value}
           disabled={this.disabled}
-        ></input>
+          aria-label={this.label || 'slider'}
+          aria-readonly={this.readOnly ? 'true' : 'false'}
+          aria-disabled={this.disabled ? 'true' : 'false'}
+          onInput={(event: Event) => {
+            const newValue = (event.target as HTMLInputElement).value;
+            this.value = newValue;
+            this.tdsInput.emit({ value: newValue });
+            this.updateTrack();
+          }}
+          onChange={(event: Event) => {
+            const newValue = (event.target as HTMLInputElement).value;
+            this.value = newValue;
+            this.tdsChange.emit({ value: newValue });
+            this.updateTrack();
+          }}
+        />
 
         <div
           class={{
@@ -493,7 +525,7 @@ export class TdsSlider {
               tabindex={this.disabled ? '-1' : '0'}
               onClick={(event) => this.thumbCore(event)}
               onKeyDown={() => {}}
-              // role="slider"
+              role="slider"
               aria-valuemin={this.min}
               aria-valuemax={this.max}
               aria-valuenow={this.value}
