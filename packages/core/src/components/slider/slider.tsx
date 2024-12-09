@@ -493,6 +493,12 @@ export class TdsSlider {
               tabindex={this.disabled ? '-1' : '0'}
               onClick={(event) => this.thumbCore(event)}
               onKeyDown={() => {}}
+              role="slider"
+              aria-valuemin={this.min}
+              aria-valuemax={this.max}
+              aria-valuenow={this.value}
+              aria-disabled={this.disabled ? 'true' : 'false'}
+              aria-readonly={this.readOnly ? 'true' : 'false'}
             >
               <div
                 class="tds-slider__track-fill"
