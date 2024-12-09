@@ -246,7 +246,7 @@
   }
 
   tds-icon {
-    transition: transform 0.2s ease-in-out;
+    transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &.open {
       transform: rotateZ(180deg);
