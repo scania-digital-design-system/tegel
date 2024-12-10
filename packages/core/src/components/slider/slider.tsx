@@ -491,6 +491,7 @@ export class TdsSlider {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
+              style={{ cursor: 'pointer' }}
               onMouseUp={(event) => this.thumbCore(event)}
             >
               <div
