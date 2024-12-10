@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/side-menu/test/default/index.html';
 
 test.describe.parallel('tds-side-menu-default', () => {
-  test('renders default side-menu correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default side-menu correctly', async ({ page }) => {
     const sideMenuNavigation = page.getByRole('navigation');
     await expect(sideMenuNavigation).toHaveCount(1);
     await expect(sideMenuNavigation).toBeVisible();
@@ -15,7 +18,6 @@ test.describe.parallel('tds-side-menu-default', () => {
   });
 
   test('all side menu buttons to be visible', async ({ page }) => {
-    await page.goto(componentTestPath);
     const sideMenuButtons = page.getByRole('button');
     await expect(sideMenuButtons).toHaveCount(4);
     const promises = [];
@@ -30,8 +32,6 @@ test.describe.parallel('tds-side-menu-default', () => {
   test('wheel type list is open by default and under Wheel types there are two sublink', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     /* Make sure first list item is there and visible */
     const sideMenuWheelTypeListItemOne = page
       .getByRole('listitem')

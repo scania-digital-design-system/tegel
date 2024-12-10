@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/popover-menu/test/show/index.html';
 
 test.describe.parallel('tds-popover-menu-show', () => {
-  test('renders show=true popover-menu correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders show=true popover-menu correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.05 });
   });
@@ -14,7 +16,6 @@ test.describe.parallel('tds-popover-menu-show', () => {
   test('clicking the trigger button should keep the popover menu dialog open when it is open by default', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('list');
 

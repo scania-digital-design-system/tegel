@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/chip/test/radio/index.html';
 
 test.describe.parallel('tds-chip-radio', () => {
-  test('renders radio chips correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders radio chips correctly', async ({ page }) => {
     const chip1 = page.getByText('Label 1', { exact: true });
     await expect(chip1).toHaveCount(1);
 
@@ -20,13 +23,11 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('expect chips to be of the role radio', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chipRole = page.getByRole('radio');
     await expect(chipRole).toHaveCount(3);
   });
 
   test('Check so that height is correct to lg/default measurements', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip1 = page.locator('tds-chip label').filter({ hasText: `Label 1` });
     const chipHeight1 = await chip1.evaluate((style) => getComputedStyle(style).height);
     expect(chipHeight1).toBe('32px');
@@ -41,7 +42,6 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('Chip 1 is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip = page.locator('tds-chip label').filter({ hasText: `Label 1` });
     chip.hover();
     const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
@@ -53,7 +53,6 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('Chip 2 is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip = page.locator('tds-chip label').filter({ hasText: `Label 2` });
     chip.hover();
     const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
@@ -65,7 +64,6 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('Chip 3 is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip = page.locator('tds-chip label').filter({ hasText: `Label 3` });
     chip.hover();
     const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
@@ -77,14 +75,12 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('2nd chip is checked', async ({ page }) => {
-    await page.goto(componentTestPath);
     const checkedLabel2Chip = page.locator('input[id="option-2"]');
     const isChecked = await checkedLabel2Chip.evaluate((node: HTMLInputElement) => node.checked);
     expect(isChecked).toBeTruthy();
   });
 
   test('Clicking "Label 1" chip changes checked state appropriately', async ({ page }) => {
-    await page.goto(componentTestPath);
     const labelText1 = page.locator('text=Label 1');
     await labelText1.click();
     const chip1 = page.locator('input[id="option-1"]');
@@ -105,7 +101,6 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('Clicking "Label 3" chip changes checked state appropriately', async ({ page }) => {
-    await page.goto(componentTestPath);
     const labelText3 = page.locator('text=Label 3');
     await labelText3.click();
     const chip1 = page.locator('input[id="option-1"]');

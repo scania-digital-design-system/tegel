@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/textarea/test/default/index.html';
 
 test.describe.parallel('tds-textarea-default', () => {
-  test('renders default textarea correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default textarea correctly', async ({ page }) => {
     const tdsTextarea = page.getByTestId('tds-textarea-testid');
     await expect(tdsTextarea).toHaveCount(1);
 
@@ -14,7 +17,6 @@ test.describe.parallel('tds-textarea-default', () => {
   });
 
   test('test if able to type in textarea', async ({ page }) => {
-    await page.goto(componentTestPath);
     const textarea = page.getByRole('textbox');
 
     /* Expect to have received an event from clicking on the textarea */
@@ -35,7 +37,6 @@ test.describe.parallel('tds-textarea-default', () => {
   });
 
   test('not able to find label if "no-label" is set', async ({ page }) => {
-    await page.goto(componentTestPath);
     const textareaLabel = page.getByText('Label');
     await expect(textareaLabel).toHaveCount(0);
     await expect(textareaLabel).toBeHidden();

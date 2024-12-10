@@ -4,16 +4,16 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/datetime/test/error/index.html';
 
 test.describe('tds-datetime-error', () => {
-  test('renders disabled datetime component correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders disabled datetime component correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('verifies label, helper text, size, and clock icon for time component', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Check for the label text
     const label = page.locator('.tds-datetime-label');
     const helperText = page.locator('.tds-datetime-helper .tds-helper');
@@ -35,8 +35,6 @@ test.describe('tds-datetime-error', () => {
   });
 
   test('helper text in error state has is red and has an error icon', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Check helper text color for specific shade of red
     await expect(page.locator('.tds-datetime-helper .tds-helper')).toHaveCSS(
       'color',
@@ -48,8 +46,6 @@ test.describe('tds-datetime-error', () => {
   });
 
   test('Clock icon focuses the time input', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     await page.click('input[type="time"]');
 
     // Check if the time input is focused after clicking the icon
@@ -61,8 +57,6 @@ test.describe('tds-datetime-error', () => {
   });
 
   test('Simulate time selection and verify format', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     await page.click('input[type="time"]');
 
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });

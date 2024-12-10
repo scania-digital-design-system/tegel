@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/editing/body-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-editable-cells focus', () => {
-  test('expect wrapper to effect slotted inputs style on focus', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect wrapper to effect slotted inputs style on focus', async ({ page }) => {
     const inputfield = page.getByTestId('firstInput');
 
     await inputfield.focus();

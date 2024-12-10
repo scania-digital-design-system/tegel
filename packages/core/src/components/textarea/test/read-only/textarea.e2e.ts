@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/textarea/test/read-only/index.html';
 
 test.describe.parallel('tds-textarea-read-only', () => {
-  test('renders read-only textarea correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders read-only textarea correctly', async ({ page }) => {
     const tdsTextarea = page.getByTestId('tds-textarea-testid');
     await expect(tdsTextarea).toHaveCount(1);
 
@@ -17,7 +20,6 @@ test.describe.parallel('tds-textarea-read-only', () => {
   });
 
   test('read-only textarea - native textarea should have readonly attribute', async ({ page }) => {
-    await page.goto(componentTestPath);
     const textarea = page.getByRole('textbox');
 
     /* Expect the textarea within tds-textarea to have the readonly attribute */
@@ -25,7 +27,6 @@ test.describe.parallel('tds-textarea-read-only', () => {
   });
 
   test('be able to find label if "outside" is set', async ({ page }) => {
-    await page.goto(componentTestPath);
     const textareaLabel = page.getByText('Label');
     await expect(textareaLabel).toHaveCount(1);
     await expect(textareaLabel).toBeVisible();

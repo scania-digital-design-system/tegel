@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/chip/test/disabled/index.html';
 
 test.describe.parallel('tds-chip-checkbox', () => {
-  test('renders checkbox chips correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders checkbox chips correctly', async ({ page }) => {
     const chip1 = page.getByText('Label 1', { exact: true });
     await expect(chip1).toHaveCount(1);
 
@@ -20,7 +23,6 @@ test.describe.parallel('tds-chip-checkbox', () => {
   });
 
   test('Chip 1 is disabled and not clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip1 = page.locator('tds-chip[chip-id="option-1"]');
 
     const isDisabled = await chip1.evaluate((el) => el.hasAttribute('disabled'));
@@ -35,7 +37,6 @@ test.describe.parallel('tds-chip-checkbox', () => {
   });
 
   test('Chip 2 is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const checkboxLabel2 = page.locator('tds-chip[type="checkbox"] >> text=Label 2');
     checkboxLabel2.hover();
     const chipCursorStyle = await checkboxLabel2.evaluate(
@@ -49,7 +50,6 @@ test.describe.parallel('tds-chip-checkbox', () => {
   });
 
   test('Chip 3 is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const checkboxLabel3 = page.locator('tds-chip[type="checkbox"] >> text=Label 2');
     checkboxLabel3.hover();
     const chipCursorStyle = await checkboxLabel3.evaluate(
@@ -63,8 +63,11 @@ test.describe.parallel('tds-chip-checkbox', () => {
   });
 });
 test.describe.parallel('tds-chip-radio', () => {
-  test('renders radio chips correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders radio chips correctly', async ({ page }) => {
     const chip1 = page.getByText('Label 1 for radio', { exact: true });
     await expect(chip1).toHaveCount(1);
 
@@ -79,7 +82,6 @@ test.describe.parallel('tds-chip-radio', () => {
   });
 
   test('Radio Chip 1 is disabled and not clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const radioChip1 = page.locator('tds-chip[chip-id="radio-option-1"]');
 
     const isDisabled = await radioChip1.evaluate((el) => el.hasAttribute('disabled'));
@@ -95,8 +97,11 @@ test.describe.parallel('tds-chip-radio', () => {
 });
 
 test.describe.parallel('tds-chip-button', () => {
-  test('renders button chips correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders button chips correctly', async ({ page }) => {
     const chip1 = page.getByText('Label 1 for button', { exact: true });
     await expect(chip1).toHaveCount(1);
 
@@ -111,7 +116,6 @@ test.describe.parallel('tds-chip-button', () => {
   });
 
   test('Button Chip 1 is disabled and not clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const buttonChip1 = page.locator('tds-chip[chip-id="button-option-1"]');
 
     const isDisabled = await buttonChip1.evaluate((el) => el.hasAttribute('disabled'));

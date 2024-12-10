@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/multiselect/disabled-rows/index.html';
 
 test.describe.parallel('tds-table-multiselect-disabled', () => {
-  test('renders multiselect table correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders multiselect table correctly', async ({ page }) => {
     const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
 
@@ -14,14 +17,12 @@ test.describe.parallel('tds-table-multiselect-disabled', () => {
   });
 
   test('table header contains checkbox', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tableHeaderCheckbox = page.getByRole('checkbox').first();
     await expect(tableHeaderCheckbox).toHaveCount(1);
     await expect(tableHeaderCheckbox).toBeVisible();
   });
 
   test('row should contain the correct number of checkboxes in each row', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tableBodyRowCheckboxes = page.getByRole('checkbox');
     await expect(tableBodyRowCheckboxes).toHaveCount(5);
 
@@ -34,7 +35,6 @@ test.describe.parallel('tds-table-multiselect-disabled', () => {
   });
 
   test('can check enabled checkbox in the table', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tableCheckboxes = page.getByRole('cell');
     await expect(tableCheckboxes).toHaveCount(5);
 

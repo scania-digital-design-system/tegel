@@ -5,8 +5,11 @@ const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-column-filtering', () => {
-  test('renders table with editable header cell correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders table with editable header cell correctly', async ({ page }) => {
     const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
 

@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/popover-canvas/test/show-false/index.html';
 
 test.describe.parallel('tds-popover-canvas-show-false', () => {
-  test('renders show=false popover-canvas correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders show=false popover-canvas correctly', async ({ page }) => {
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
@@ -16,7 +19,6 @@ test.describe.parallel('tds-popover-canvas-show-false', () => {
   test('make sure popover canvas does not show after trigger button is pressed and content is not displayed before or after button click', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
     const popoverCanvasHeader = page.getByRole('heading');
     const popoverCanvasBody = page.getByText('Where you can put anything you want!', {

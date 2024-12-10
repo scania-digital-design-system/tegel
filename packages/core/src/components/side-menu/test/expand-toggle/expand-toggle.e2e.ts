@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/side-menu/test/expand-toggle/index.html';
 
 test.describe.parallel('tds-side-menu-toggle-expand', () => {
-  test('toggle collapse and expand programmatically', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('toggle collapse and expand programmatically', async ({ page }) => {
     const wrapper = await page.locator('tds-side-menu-dropdown > .wrapper');
     await expect(wrapper).toHaveClass(/state-open/);
 
@@ -25,8 +27,6 @@ test.describe.parallel('tds-side-menu-toggle-expand', () => {
   });
 
   test('collapse programmatically and expand on the UI', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const wrapper = await page.locator('tds-side-menu-dropdown > .wrapper');
 
     const dropdown = await page.locator('tds-side-menu-dropdown');

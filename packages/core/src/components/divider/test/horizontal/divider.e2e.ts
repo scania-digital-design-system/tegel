@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/divider/test/horizontal/index.html';
 
 test.describe.parallel('tds-divider', () => {
-  test('expect to render a horizontal divider', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect to render a horizontal divider', async ({ page }) => {
     // expect width to be greater than height
     const divider = page.getByTestId('divider').locator('div.divider').first();
     const box = await divider.boundingBox();

@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/default/index.html';
 
 test.describe.parallel('tds-table-default', () => {
-  test('renders default table correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default table correctly', async ({ page }) => {
     const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
 
@@ -14,14 +17,11 @@ test.describe.parallel('tds-table-default', () => {
   });
 
   test('table has four columns', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tableHeaderCells = page.locator('tds-header-cell');
     await expect(tableHeaderCells).toHaveCount(4);
   });
 
   test('columns are: Truck type, Driver name, Country, Mileage', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* Expect each header to be visible */
     await expect(page.getByText('Truck type')).toBeVisible();
     await expect(page.getByText('Driver name')).toBeVisible();
@@ -30,16 +30,12 @@ test.describe.parallel('tds-table-default', () => {
   });
 
   test('Row should contain the correct number of rows with', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* Expect the number of rows to be correct amount */
     const tableBodyRows = page.locator('tds-table-body-row');
     await expect(tableBodyRows).toHaveCount(6);
   });
 
   test('table has the correct text inside each cell', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* Checks all rows to see that they have the correct amount of tds-body-cells with values provided */
     const promises = [];
     for (let i = 1; i <= 8; i++) {

@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/button/test/disabled/index.html';
 
 test.describe.parallel('tds-button-disabled', () => {
-  test('renders disabled button correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders disabled button correctly', async ({ page }) => {
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
 
@@ -14,15 +17,12 @@ test.describe.parallel('tds-button-disabled', () => {
   });
 
   test('disabled button should be disabled', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* Check if disabled */
     const button = page.getByRole('button');
     await expect(button).toBeDisabled();
   });
 
   test('the cursor should be not-allowed', async ({ page }) => {
-    await page.goto(componentTestPath);
     const button = page.getByTestId('tds-button-testid').getByRole('button');
     const buttonCursorState = await button.evaluate((style) => getComputedStyle(style).cursor);
     expect(buttonCursorState).toBe('not-allowed');

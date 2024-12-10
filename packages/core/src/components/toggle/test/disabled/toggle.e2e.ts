@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/toggle/test/disabled/index.html';
 
 test.describe.parallel('tds-toggle', () => {
-  test('Should have disabled attribute', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('Should have disabled attribute', async ({ page }) => {
     const toggle = page.locator('tds-toggle input');
 
     const disabled = await toggle.evaluate((element: HTMLInputElement) => element.disabled);
@@ -17,7 +19,6 @@ test.describe.parallel('tds-toggle', () => {
   });
 
   test('Hover over toggle -> should have inactive cursor', async ({ page }) => {
-    await page.goto(componentTestPath);
     const label = page.locator('tds-toggle label');
     const headline = page.locator('tds-toggle .toggle-headline');
     const input = page.locator('tds-toggle input');

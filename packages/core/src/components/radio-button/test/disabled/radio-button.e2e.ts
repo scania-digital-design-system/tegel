@@ -1,9 +1,10 @@
 import { expect } from '@playwright/test';
 import { test } from 'stencil-playwright';
 
+const componentTestPath = 'src/components/radio-button/test/disabled/index.html';
 test.describe.parallel('Radio button - disabled state', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('src/components/radio-button/test/disabled/index.html');
+    await page.goto(componentTestPath);
   });
 
   test('Radio buttons with Label text = "Label text 1" and "Label text 2" renders on the page', async ({

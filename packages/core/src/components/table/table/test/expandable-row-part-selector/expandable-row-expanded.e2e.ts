@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/expandable-row-part-selector/index.html';
 
 test.describe.parallel('tds-table-expandable-row-part-selector', () => {
-  test('part selector is passing on correct background color', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('part selector is passing on correct background color', async ({ page }) => {
     // Find the table and make sure it is visible
     const table = page.locator('tds-table');
     await table.waitFor({ state: 'visible' });

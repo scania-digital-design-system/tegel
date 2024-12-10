@@ -5,9 +5,12 @@ const componentTestPath = 'src/components/accordion/test/hide-last-border/index.
 const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
   test('renders accordion with hidden last border correctly', async ({ page }) => {
     // Define selector for accordion
-    await page.goto(componentTestPath);
     const accordion = page.locator(accordionSelector);
 
     // Check if accordion contains the correct text

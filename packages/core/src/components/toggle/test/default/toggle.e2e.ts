@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/toggle/test/default/index.html';
 
 test.describe.parallel('tds-toggle', () => {
-  test('Renders basic toggle correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('Renders basic toggle correctly', async ({ page }) => {
     const labelElement = page.locator('tds-toggle label');
     const headlineElement = page.locator('tds-toggle .toggle-headline'); // Target label underneath toggle
 
@@ -17,7 +20,6 @@ test.describe.parallel('tds-toggle', () => {
   });
 
   test('Click on toggle -> should become checked', async ({ page }) => {
-    await page.goto(componentTestPath);
     const toggle = page.locator('tds-toggle input');
 
     // Expect not to be checked on render

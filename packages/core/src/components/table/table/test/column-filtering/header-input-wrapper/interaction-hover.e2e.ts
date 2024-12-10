@@ -5,9 +5,11 @@ const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-column-filtering hover', () => {
-  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
     const inputfield = page.getByTestId('firstHeaderInput');
 
     await inputfield.hover();
@@ -23,8 +25,6 @@ test.describe.parallel('tds-table-column-filtering hover', () => {
   });
 
   test('expect slotted input to show search icon on hover', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const inputfield = page.getByTestId('firstHeaderInput');
 
     await inputfield.hover();

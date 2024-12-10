@@ -5,9 +5,12 @@ const componentTestPath = 'src/components/accordion/test/basic/index.html';
 const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
   test('renders basic accordion correctly', async ({ page }) => {
     // Define selector for accordion
-    await page.goto(componentTestPath);
     const accordion = page.locator(accordionSelector);
 
     // Check if accordion contains the correct text
@@ -20,7 +23,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('should handle hover on accordion items', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.getByText('First item');
 
     // Hover first accordion item
@@ -42,7 +44,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('second accordion item opens on click', async ({ page }) => {
     // Define selector for second accordion item
-    await page.goto(componentTestPath);
     const accordionSecondItem = page.getByText('Second item');
 
     // Hover second accordion item
@@ -54,7 +55,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('fires tdsToggle event on click', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.getByText('First item');
 
     // Define selector for second accordion item

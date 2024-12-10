@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/checkbox/test/default/index.html';
 
 test.describe.parallel('tds-checkbox', () => {
-  test('renders basic checkbox correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders basic checkbox correctly', async ({ page }) => {
     const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox
 
     expect(labelElement).toHaveText('Label'); // Check label text
@@ -14,7 +17,6 @@ test.describe.parallel('tds-checkbox', () => {
   });
 
   test('Hover and click on checkbox -> should become checked', async ({ page }) => {
-    await page.goto(componentTestPath);
     const checkbox = page.locator('tds-checkbox');
     // Hover over the checkbox
     await checkbox.hover();

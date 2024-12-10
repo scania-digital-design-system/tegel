@@ -5,9 +5,11 @@ const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-column-filtering focus', () => {
-  test('expect wrapper to effect slotted inputs style on focus', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect wrapper to effect slotted inputs style on focus', async ({ page }) => {
     const inputfield = page.getByTestId('firstHeaderInput');
 
     await inputfield.focus();

@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/popover-canvas/test/show-true/index.html';
 
 test.describe.parallel('tds-popover-canvas-show-true', () => {
-  test('renders show=true popover-canvas correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders show=true popover-canvas correctly', async ({ page }) => {
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
@@ -22,7 +25,6 @@ test.describe.parallel('tds-popover-canvas-show-true', () => {
   test('make sure the popover canvas content is displayed both before and after the trigger button is pressed', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
     const popoverCanvasHeader = page.getByRole('heading');
     const popoverCanvasBody = page.getByText('Where you can put anything you want!', {

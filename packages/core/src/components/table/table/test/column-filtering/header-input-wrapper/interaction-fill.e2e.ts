@@ -5,9 +5,11 @@ const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-column-filtering fill', () => {
-  test('expect slotted inputs to persist inputed value', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect slotted inputs to persist inputed value', async ({ page }) => {
     const inputfield = page.getByTestId('firstHeaderInput');
     await inputfield.fill('Hello World!');
 

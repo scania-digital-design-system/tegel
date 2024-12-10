@@ -5,9 +5,12 @@ const componentTestPath = 'src/components/accordion/test/disabled/index.html';
 const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
   test('renders disabled accordion correctly', async ({ page }) => {
     // Define selector for accordion
-    await page.goto(componentTestPath);
     const accordion = page.locator(accordionSelector);
 
     // Check if accordion contains the correct text
@@ -20,7 +23,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('disabled accordion items should be displayed', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.locator(accordionSelector + '>> text=First item');
 
     // Expect first accordion item to be disabled
@@ -40,7 +42,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('cursor should be not-allowed on disabled accordion items', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.getByTestId('first-item');
     const accordionFirstItemButton = accordionFirstItem.getByRole('button');
 
@@ -68,7 +69,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('does not fire tdsToggle event on click on disabled accordion', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.getByText('First item');
 
     // Click first accordion item
