@@ -135,6 +135,11 @@ export class TdsSlider {
   @Listen('touchend', { target: 'window' })
   handleRelease(event: MouseEvent | TouchEvent) {
     if (!this.thumbGrabbed) {
+      if (event.target === this.trackElement || event.target === this.trackFillElement) {
+        this.updateValue(event);
+        this.thumbCore(event);
+        this.trackElement.focus();
+      }
       return;
     }
 
@@ -190,6 +195,8 @@ export class TdsSlider {
       localLeft = event.clientX - trackRect.left;
     } else if (event.type === 'touchmove') {
       localLeft = event.touches[0].clientX - trackRect.left;
+    } else if (event.type === 'mouseup') {
+      localLeft = event.clientX - trackRect.left;
     } else console.warn('Slider component: Unsupported event!');
 
     this.supposedValueSlot = -1;
@@ -491,6 +498,8 @@ export class TdsSlider {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
+              style={{ cursor: 'pointer' }}
+              onMouseUp={(e) => this.updateValue(e)}
             >
               <div
                 class="tds-slider__track-fill"
