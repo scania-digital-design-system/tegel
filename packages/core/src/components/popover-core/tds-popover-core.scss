@@ -1,0 +1,19 @@
+@import '../../global/global';
+
+:host {
+  pointer-events: none;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+}
+
+:host(.tds-popover-animation-fade) {
+  transition: opacity var(--tds-motion-duration-fast-01) var(--tds-motion-easing-linear);
+  visibility: visibility var(--tds-motion-duration-fast-01) var(--tds-motion-easing-linear);
+}
+
+:host(.is-shown) {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
