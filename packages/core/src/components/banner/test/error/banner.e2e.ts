@@ -1,5 +1,6 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import { screenshotTests } from '../../../_reusable-tests/screenshotTests';
 
 const componentTestPath = 'src/components/banner/test/error/index.html';
 
@@ -17,4 +18,6 @@ test.describe.parallel('tds-banner-error', () => {
     const images = page.getByRole('img');
     await expect(images).toHaveCount(2);
   });
+
+  screenshotTests(componentTestPath);
 });
