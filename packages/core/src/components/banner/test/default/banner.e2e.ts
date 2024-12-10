@@ -1,5 +1,6 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import { screenshotTests } from '../../../_reusable-tests/screenshotTests';
 
 const componentTestPath = 'src/components/banner/test/default/index.html';
 
@@ -47,4 +48,6 @@ test.describe.parallel('tds-banner-default', () => {
     await expect(closeButton).toHaveCount(1);
     await expect(closeButton).toBeVisible();
   });
+
+  screenshotTests(componentTestPath);
 });
