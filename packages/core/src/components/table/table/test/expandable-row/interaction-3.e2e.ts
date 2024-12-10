@@ -4,10 +4,13 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 
 test.describe('tds-table-expandable-row-third', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
   test('under third row opened expanded row with a button with text "Call to action"', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const tableBodyRowThirdInput = page.getByRole('cell').nth(3);
     const tableBodyRowButton = page.getByText(/Call to action/);
     await expect(tableBodyRowThirdInput).toHaveCount(1);

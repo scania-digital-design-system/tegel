@@ -4,15 +4,15 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/tooltip/test/disabled/index.html';
 
 test.describe('tds-tooltip', () => {
-  test('renders the tooltip correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders the tooltip correctly', async ({ page }) => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('tooltip closes when cursor is removed from the button', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Assuming your button and tooltip setup is already appropriate for this test
     const button = page.locator('tds-button#button-2');
 

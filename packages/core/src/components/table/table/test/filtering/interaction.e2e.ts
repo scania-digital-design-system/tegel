@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/filtering/index.html';
 
 test.describe.parallel('tds-table-search', () => {
-  test('look for textbox and click it', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('look for textbox and click it', async ({ page }) => {
     const tdsTableToolbarSearchInput = page.getByRole('textbox');
     await tdsTableToolbarSearchInput.click();
     await expect(tdsTableToolbarSearchInput).toHaveCSS('width', '208px');
@@ -15,7 +18,6 @@ test.describe.parallel('tds-table-search', () => {
   });
 
   test('clicking on search button opens field for entering data', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsTableToolbarSearchInput = page.getByRole('textbox');
     await expect(tdsTableToolbarSearchInput).toHaveCount(1);
 

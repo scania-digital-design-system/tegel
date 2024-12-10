@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/table/table/test/editing/body-input-wrapper/index.html';
 
 test.describe.parallel('tds-table-editable-cells hover', () => {
-  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
     const inputfield = page.getByTestId('firstInput');
 
     await inputfield.hover();
@@ -22,8 +24,6 @@ test.describe.parallel('tds-table-editable-cells hover', () => {
   });
 
   test('expect slotted input to show pen icon on hover', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const inputfield = page.getByTestId('firstInput');
 
     await inputfield.hover();

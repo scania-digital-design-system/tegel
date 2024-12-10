@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/chip/test/default/index.html';
 
 test.describe.parallel('tds-chip-default', () => {
-  test('renders default chip correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default chip correctly', async ({ page }) => {
     const chip = page.locator('tds-chip');
     await expect(chip).toHaveCount(1);
 
@@ -17,20 +20,17 @@ test.describe.parallel('tds-chip-default', () => {
   });
 
   test('expect chip to be of the role button', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chipRole = page.getByRole('button');
     await expect(chipRole).toHaveCount(1);
   });
 
   test('Check so that height is correct to lg/default measurements', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip = page.locator('tds-chip label');
     const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
     expect(chipHeight).toBe('32px');
   });
 
   test('Chip is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip = page.locator('tds-chip label');
     chip.hover();
     const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);

@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/slider/test/default/index.html';
 
 test.describe.parallel('tds-slider-default', () => {
-  test('renders default slider correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default slider correctly', async ({ page }) => {
     const slider = page.locator('tds-slider');
     await expect(slider).toHaveCount(1);
 
@@ -14,13 +17,11 @@ test.describe.parallel('tds-slider-default', () => {
   });
 
   test('value is set to 50', async ({ page }) => {
-    await page.goto(componentTestPath);
     const sliderValue = page.locator('.tds-slider__value');
     await expect(sliderValue).toHaveText('50');
   });
 
   test('min value is set to 0', async ({ page }) => {
-    await page.goto(componentTestPath);
     /* Find thumb and pull it towards a left and check if min value is 0 */
     await page.locator('.tds-slider__thumb-inner').hover();
     await page.mouse.down();
@@ -33,7 +34,6 @@ test.describe.parallel('tds-slider-default', () => {
   });
 
   test('max value is set to 100', async ({ page }) => {
-    await page.goto(componentTestPath);
     /* Find thumb and pull it towards a right and check if min value is 0 */
     await page.locator('.tds-slider__thumb-inner').hover();
     await page.mouse.down();
@@ -46,15 +46,12 @@ test.describe.parallel('tds-slider-default', () => {
   });
 
   test('label is hidden', async ({ page }) => {
-    await page.goto(componentTestPath);
     const slider = page.locator('tds-slider');
     const sliderLabel = slider.locator('label');
     await expect(sliderLabel).toHaveText('');
   });
 
   test('slider is not read only or disabled', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* Find thumb and pull it towards a left and check if value in thumb is changing */
     await page.locator('.tds-slider__thumb-inner').hover();
     await page.mouse.down();
@@ -67,7 +64,6 @@ test.describe.parallel('tds-slider-default', () => {
   });
 
   test('thumb is size large', async ({ page }) => {
-    await page.goto(componentTestPath);
     const sliderThumb = page.locator('.tds-slider__thumb-inner');
     const sliderThumbWidth = await sliderThumb.evaluate((style) => getComputedStyle(style).width);
     const sliderThumbHeight = await sliderThumb.evaluate((style) => getComputedStyle(style).height);

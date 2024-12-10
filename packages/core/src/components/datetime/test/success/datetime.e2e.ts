@@ -4,15 +4,16 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/datetime/test/success/index.html';
 
 test.describe('tds-datetime-success', () => {
-  test('renders success datetime component correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders success datetime component correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('component should have size "md"', async ({ page }) => {
-    await page.goto(componentTestPath);
     const dateTime = page.locator('tds-datetime');
     const dateTimeContainer = page.locator('.tds-datetime-container');
 

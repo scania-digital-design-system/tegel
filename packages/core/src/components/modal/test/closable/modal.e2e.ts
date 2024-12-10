@@ -1,6 +1,8 @@
 import { E2EPage, test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
+const componentTestPath = 'src/components/modal/test/closable/index.html';
+
 test.describe.parallel('tds-modal-closable', () => {
   const isClosable = async (page: E2EPage, id: string) => {
     // get modal by id
@@ -16,7 +18,7 @@ test.describe.parallel('tds-modal-closable', () => {
   };
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('src/components/modal/test/closable/index.html');
+    await page.goto(componentTestPath);
   });
 
   test('x button is visible', async ({ page }) => {

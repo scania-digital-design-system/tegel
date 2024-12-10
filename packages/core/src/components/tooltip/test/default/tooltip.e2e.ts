@@ -4,15 +4,15 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/tooltip/test/default/index.html';
 
 test.describe('tds-tooltip', () => {
-  test('renders the tooltip correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders the tooltip correctly', async ({ page }) => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('tooltip appears on button hover', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Select the button that triggers the tooltip on hover
     const button = page.locator('tds-button#button-1');
 
@@ -28,8 +28,6 @@ test.describe('tds-tooltip', () => {
   });
 
   test('tooltip contains correct HTML content on hover', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-1');
     await button.hover();

@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/datetime/test/disabled/index.html';
 
 test.describe('tds-datetime-disabled', () => {
-  test('renders disabled datetime component correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders disabled datetime component correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
@@ -14,8 +16,6 @@ test.describe('tds-datetime-disabled', () => {
   test('when in disabled state all but helper text should have pointer events none', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     // Check for disabled state of the datetime input
     const datetimeInput = page.locator('input[type="datetime-local"]');
     const label = page.locator('label');
