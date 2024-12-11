@@ -1,10 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
-import { screenshotTests } from '../../../_reusable-tests/screenshotTests';
 
-const componentTestPath = 'src/components/banner/test/error/index.html';
+const componentTestPath = 'src/components/banner/test/error/lightmode/index.html';
 
-test.describe.parallel('tds-banner-error', () => {
+test.describe.parallel('tds-banner-error-lightmode', () => {
   test('renders error banner correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
@@ -18,6 +17,4 @@ test.describe.parallel('tds-banner-error', () => {
     const images = page.getByRole('img');
     await expect(images).toHaveCount(2);
   });
-
-  screenshotTests(componentTestPath);
 });
