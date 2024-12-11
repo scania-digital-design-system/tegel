@@ -157,6 +157,7 @@ export type IconNames =
   | 'upload'
   | 'wallet'
   | 'warning'
+  | 'weight_center_flatten_outline'
   | 'weight-5'
   | 'weight-6'
   | 'weight-7'
