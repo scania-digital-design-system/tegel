@@ -12,6 +12,7 @@ on:
         description: 'Branch name'
         required: true
         default: 'develop'
+        type: string
 
       nodeVersion:
         description: 'Node version'
@@ -30,12 +31,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Core - Read Package.json Version
@@ -63,12 +64,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular - Read package.json Version
@@ -103,12 +104,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular-17 - Read package.json Version
@@ -151,12 +152,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - Read package.json Version
