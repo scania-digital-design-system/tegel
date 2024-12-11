@@ -185,7 +185,7 @@ jobs:
   # Check that all jobs pass
   check-results:
     needs: [build-core, build-angular, build-angular-17, build-react]
-    if: (needs.build-core.result != 'success' || needs.build-angular.result != 'success' || needs.build-angular-17.result != 'success' || needs.build-react.result != 'success')
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: Notify in Teams on failure
