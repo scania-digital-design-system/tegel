@@ -135,6 +135,14 @@ export class TdsSlider {
   @Listen('touchend', { target: 'window' })
   handleRelease(event: MouseEvent | TouchEvent) {
     if (!this.thumbGrabbed) {
+      const clickedOnTrack =
+        event.target === this.trackElement || event.target === this.trackFillElement;
+
+      if (clickedOnTrack) {
+        this.thumbCore(event);
+        this.trackElement.focus();
+      }
+
       return;
     }
 
@@ -491,7 +499,6 @@ export class TdsSlider {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
-              onMouseUp={(event) => this.thumbCore(event)}
             >
               <div
                 class="tds-slider__track-fill"
