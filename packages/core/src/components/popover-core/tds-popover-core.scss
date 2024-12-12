@@ -8,8 +8,8 @@
 }
 
 :host(.tds-popover-animation-fade) {
-  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
-  visibility: visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
+  transition: opacity var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
+  visibility: visibility var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
 }
 
 :host(.is-shown) {
