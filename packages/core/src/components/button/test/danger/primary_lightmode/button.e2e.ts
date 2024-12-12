@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/button/test/danger/primary_lightmode/index.html';
 
 test.describe.parallel('tds-button-danger-primary-lightmode', () => {
-  test('renders danger button correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders danger button correctly', async ({ page }) => {
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
 
