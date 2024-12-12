@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/button/test/secondary/index.html';
+const componentTestPath = 'src/components/button/test/secondary/unspecified/index.html';
 
 test.describe.parallel('tds-button-secondary', () => {
   test('renders secondary button correctly', async ({ page }) => {
