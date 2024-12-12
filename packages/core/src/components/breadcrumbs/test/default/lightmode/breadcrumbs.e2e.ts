@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/breadcrumbs/test/default/index.html';
+const componentTestPath = 'src/components/breadcrumbs/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-breadcrumbs-default', () => {
+test.describe.parallel('tds-breadcrumbs-default-lightmode', () => {
   test('renders default breadcrumbs correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
