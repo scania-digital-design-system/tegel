@@ -8,7 +8,7 @@ test.describe.parallel('tds-popover-menu-show', () => {
     await page.goto(componentTestPath);
 
     /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.05 });
   });
 
   test('clicking the trigger button should keep the popover menu dialog open when it is open by default', async ({

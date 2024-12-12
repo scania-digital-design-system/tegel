@@ -277,6 +277,10 @@
       color: var(--tds-text-field-label-disabled);
     }
   }
+
+  .text-field-helper {
+    color: var(--tds-text-field-helper-disabled);
+  }
 }
 
 //Read only state

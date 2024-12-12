@@ -21,7 +21,23 @@
 - **Code Review Process**: We will review your PR and provide feedback. Once the PR is ready for merge, it will be merged by the maintainers.
 
 ## Style Guides
-- **Code Style**: Please read our [Code Style](https://github.com/scania-digital-design-system/tegel/blob/main/CODE_STYLE.md) before contributing.
+- **Code Style**: Please read our [Code Style](https://github.com/scania-digital-design-system/tegel/blob/main/.github/CODE_STYLE.md) before contributing.
+
+## Testing your changes locally
+To properly test your changes' behaviors in a project, reference your local Tegel instance instead of the published version on the registry
+- **Build Tegel**: Navigate to your current Tegel monorepo directory, and run `npm run build-all`. This will build core Tegel as well as all packages currently supported (Angular, Angular 17 & React).
+- **Linking**: Now building is done, navigate to `packages/core` within Tegel's repository and run `npm link`.
+- **Using linked instance**: We're ready to work now, navigate to your project and run `npm link '@scania/tegel'`. This will create a symlink to the local package, but it won't add Tegel to your dependencies, if it wasn't already. Be sure to install it as dependency before linking, if required.
+
+### (Optional) Testing Packages
+In case you need to test React or Angular packages of Tegel, follow the instructions below replacing `{package}` for **react**, **angular** or **angular-17** respectively.
+- **Building**: Complete the build step for Tegel and verify that the package you plan to test has been built successfully. There are commands available to only build specific packages, i.e., `npm run build-{package}`.
+- **Linking**: After linking core, navigate to `packages/{package}` and execute `npm run link`.
+- **Using linked instances**: In your project run `npm link '@scania/tegel-{package}'` before running `npm link '@scania/tegel'`.
+
+### Unlinking
+- **Removing from Project**: In the project you want the link to be removed execute `npm unlink '@scania/tegel'`. In case any dependency issue arises, delete the `node_modules` folder and run `npm i` to start fresh.
+- **Removing link from npm**: The reference for your local instance is stored globally, to remove it execute `npm uninstall --global '@scania/tegel'`.
 
 ## Testing your changes locally
 To properly test your changes' behaviors in a project, reference your local Tegel instance instead of the published version on the registry

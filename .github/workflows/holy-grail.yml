@@ -219,7 +219,7 @@ jobs:
         run: npm ci
 
       - name: Angular - Run build
-        run: npm run build-angular
+        run: npm run build:angular
 
       - name: Angular - Publish
         working-directory: packages/angular
@@ -262,7 +262,7 @@ jobs:
         run: npm ci
 
       - name: Angular-17 - Run build
-        run: npm run build-angular-17
+        run: npm run build:angular-17
 
       - name: Angular-17 - Publish
         working-directory: packages/angular-17/dist/components
@@ -306,7 +306,7 @@ jobs:
         run: npm ci
 
       - name: React - Build
-        run: npm run build-react
+        run: npm run build:react
 
       - name: React - Publish
         working-directory: packages/react
