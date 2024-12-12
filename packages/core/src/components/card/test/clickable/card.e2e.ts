@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/card/test/clickable/index.html';
 
 test.describe.parallel('tds-card-clickable', () => {
-  test('renders clickable card correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders clickable card correctly', async ({ page }) => {
     const cardButton = page.getByRole('button');
     await cardButton.hover();
 
@@ -14,7 +17,6 @@ test.describe.parallel('tds-card-clickable', () => {
   });
 
   test('card should contain a button that is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const cardButton = page.getByRole('button');
     await expect(cardButton).toHaveCount(1);
     await expect(cardButton).toBeVisible();
