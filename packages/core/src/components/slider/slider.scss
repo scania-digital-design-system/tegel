@@ -226,6 +226,7 @@ tds-slider {
     border-radius: 1px;
     background-color: var(--tds-slider-track-color);
     position: relative;
+    cursor: pointer;
 
     &:focus {
       outline: 0;
@@ -298,6 +299,8 @@ tds-slider {
     }
 
     .tds-slider__track {
+      cursor: not-allowed;
+
       .tds-slider__track-fill {
         background-color: var(--tds-slider-disabled);
       }
