@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/accordion/test/basic/index.html';
+const componentTestPath = 'src/components/accordion/test/basic/unspecified/index.html';
 const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion', () => {
