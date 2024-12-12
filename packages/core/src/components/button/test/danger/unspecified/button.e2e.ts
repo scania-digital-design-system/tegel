@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/button/test/danger/index.html';
+const componentTestPath = 'src/components/button/test/danger/unspecified/index.html';
 
 test.describe.parallel('tds-button-danger', () => {
   test('renders danger button correctly', async ({ page }) => {
