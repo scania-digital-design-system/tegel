@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/button/test/secondary/secondary_darkmode/index.html';
 
 test.describe.parallel('tds-button-secondary-secondary-darkmode', () => {
-  test('renders secondary button correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders secondary button correctly', async ({ page }) => {
     const button = page.getByTestId('tds-button-testid');
     await expect(button).toHaveCount(1);
 
