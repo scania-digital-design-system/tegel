@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/card/test/default/index.html';
+const componentTestPath = 'src/components/card/test/default/unspecified/index.html';
 
 test.describe.parallel('tds-card-default', () => {
   test('renders default card correctly', async ({ page }) => {
