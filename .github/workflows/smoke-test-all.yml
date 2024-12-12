@@ -12,6 +12,7 @@ on:
         description: 'Branch name'
         required: true
         default: 'develop'
+        type: string
 
       nodeVersion:
         description: 'Node version'
@@ -30,12 +31,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: '20.9.0' # You can change this to any fixed version if needed
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Core - Read Package.json Version
@@ -44,7 +45,7 @@ jobs:
         run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
       - name: Install dependencies in root
-        run: npm ci
+        run: npm install
 
       - name: Core - Install
         working-directory: ${{ env.WORKING_DIRECTORY }}
@@ -63,12 +64,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular - Read package.json Version
@@ -92,7 +93,7 @@ jobs:
         run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular - Run build
-        run: npm run build-angular
+        run: npm run build:angular
 
   build-angular-17:
     needs: build-core
@@ -103,12 +104,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular-17 - Read package.json Version
@@ -140,7 +141,7 @@ jobs:
         run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular-17 - Run build
-        run: npm run build-angular-17
+        run: npm run build:angular-17
 
   build-react:
     needs: build-core
@@ -151,12 +152,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.branch.name }}
+          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - Read package.json Version
@@ -180,12 +181,12 @@ jobs:
         run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: React - Build
-        run: npm run build-react
+        run: npm run build:react
 
   # Check that all jobs pass
   check-results:
     needs: [build-core, build-angular, build-angular-17, build-react]
-    if: (needs.build-core.result == 'failure' || needs.build-angular.result == 'failure' || needs.build-angular-17.result == 'failure' || needs.build-react.result == 'failure')
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: Notify in Teams on failure

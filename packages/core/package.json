@@ -373,16 +373,16 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
-    "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
+    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "copy-assets": "node scripts/copy-assets.mjs",
+    "copy:assets": "node scripts/copy-assets.mjs",
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
-    "build-storybook": "build-storybook --quiet",
-    "build-stencil-storybook": "npm run build && npm run build-storybook",
-    "start-storybook": "start-storybook -p 6006",
-    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
+    "build:storybook": "build-storybook --quiet",
+    "build-stencil:storybook": "npm run build && npm run build:storybook",
+    "start:storybook": "start-storybook -p 6006",
+    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start:storybook'"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
