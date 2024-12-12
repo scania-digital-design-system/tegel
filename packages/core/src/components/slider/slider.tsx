@@ -135,6 +135,14 @@ export class TdsSlider {
   @Listen('touchend', { target: 'window' })
   handleRelease(event: MouseEvent | TouchEvent) {
     if (!this.thumbGrabbed) {
+      const clickedOnTrack =
+        event.target === this.trackElement || event.target === this.trackFillElement;
+
+      if (clickedOnTrack) {
+        this.thumbCore(event);
+        this.trackElement.focus();
+      }
+
       return;
     }
 
@@ -186,7 +194,7 @@ export class TdsSlider {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement.getBoundingClientRect();
     let localLeft = 0;
-    if (event.type === 'mousemove') {
+    if (event.type === 'mousemove' || event.type === 'mouseup') {
       localLeft = event.clientX - trackRect.left;
     } else if (event.type === 'touchmove') {
       localLeft = event.touches[0].clientX - trackRect.left;
