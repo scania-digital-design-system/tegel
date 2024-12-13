@@ -1,7 +1,11 @@
 import { Config } from '@stencil/core';
+import { config as loadEnv } from 'dotenv';
+
 import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
+
+loadEnv();
 
 function getTsConfigFile() {
   if (process.env.STORYBOOK_ENV === 'dev') {
@@ -44,15 +48,26 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
    */
 ];
 
+const DEFAULT_FONT_SOURCE = 'https://cdn.digitaldesign.scania.com';
+const FONT_SOURCE = process.env.FONT_SOURCE || DEFAULT_FONT_SOURCE;
+
 export const config: Config = {
   tsconfig: getTsConfigFile(),
   namespace: 'tegel',
+  env: {
+    FONT_SOURCE: FONT_SOURCE,
+  },
   globalStyle: 'src/global/global.scss',
   extras: {
     enableImportInjection: true,
     tagNameTransform: true,
   },
-  plugins: [sass()],
+  plugins: [
+    sass({
+      injectGlobalPaths: ['src/global/_variables.scss'],
+      data: `$font-source: '${FONT_SOURCE}';`,
+    }),
+  ],
   sourceMap: false,
   testing: {
     browserArgs: ['--headless=new'],
