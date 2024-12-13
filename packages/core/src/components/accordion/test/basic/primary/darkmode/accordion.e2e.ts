@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/accordion/test/basic/primary_darkmode/index.html';
+const componentTestPath = 'src/components/accordion/test/basic/primary/darkmode/index.html';
 const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion-primary-darkmode', () => {

@@ -1,15 +1,15 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/accordion/test/basic/secondary_lightmode/index.html';
+const componentTestPath = 'src/components/accordion/test/basic/primary/lightmode/index.html';
 const accordionSelector = 'tds-accordion';
 
-test.describe.parallel('tds-accordion-secondary-lightmode', () => {
+test.describe.parallel('tds-accordion-primary-lightmode', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });
 
-  test('renders basic accordion correctly with secondary mode variant and lightmode', async ({
+  test('renders basic accordion correctly with primary mode variant and lightmode', async ({
     page,
   }) => {
     // Define selector for accordion
