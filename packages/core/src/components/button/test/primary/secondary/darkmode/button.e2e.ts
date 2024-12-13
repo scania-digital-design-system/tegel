@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/button/test/primary/secondary_darkmode/index.html';
+const componentTestPath = 'src/components/button/test/primary/secondary/darkmode/index.html';
 
 test.describe.parallel('tds-button-primary-secondary-darkmode', () => {
   test.beforeEach(async ({ page }) => {
