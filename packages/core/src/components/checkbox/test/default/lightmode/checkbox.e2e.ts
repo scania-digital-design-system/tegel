@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/checkbox/test/default/index.html';
+const componentTestPath = 'src/components/checkbox/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-checkbox', () => {
+test.describe.parallel('tds-checkbox-lightmode', () => {
   test('renders basic checkbox correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox
