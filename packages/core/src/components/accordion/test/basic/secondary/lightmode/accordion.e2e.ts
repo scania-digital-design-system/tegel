@@ -3,7 +3,7 @@ import { expect } from '@playwright/test';
 
 import fs from 'fs/promises'; // Import Node.js 'fs' module for async file operations
 
-const componentTestPath = 'src/components/accordion/test/basic/secondary_lightmode/index.html';
+const componentTestPath = 'src/components/accordion/test/basic/secondary/lightmode/index.html';
 const accordionSelector = 'tds-accordion';
 
 test.describe.parallel('tds-accordion-secondary-lightmode', () => {
