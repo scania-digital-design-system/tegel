@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/card/test/default/primary_darkmode/index.html';
+const componentTestPath = 'src/components/card/test/default/secondary/lightmode/index.html';
 
-test.describe.parallel('tds-card-default-primary-darkmode', () => {
+test.describe.parallel('tds-card-default-secondary-lightmode', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });
