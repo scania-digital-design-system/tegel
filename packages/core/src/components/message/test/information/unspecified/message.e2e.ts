@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/message/test/information/index.html';
+const componentTestPath = 'src/components/message/test/information/unspecified/index.html';
 
 test.describe('tds-message-information', () => {
   test('is information message rendered correctly', async ({ page }) => {
