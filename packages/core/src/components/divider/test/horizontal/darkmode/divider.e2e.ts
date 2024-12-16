@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/divider/test/darkmode/index.html';
+const componentTestPath = 'src/components/divider/test/horizontal/darkmode/index.html';
 
-test.describe.parallel('tds-divider', () => {
+test.describe.parallel('tds-divider-darkmode', () => {
   test('expect to render a divider in darkmode', async ({ page }) => {
     await page.goto(componentTestPath);
 
