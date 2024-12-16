@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Modal - default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body class="tds-mode-dark" style="background-color: var(--tds-grey-958)">
+    <tds-modal header="This is a header" data-testid="tds-modal-testid" size="lg" show>
+      <span slot="body"> Where you can put anything you want! </span>
+      <span slot="actions" class="tds-u-flex tds-u-gap2">
+        <tds-button data-dismiss-modal size="md" text="Delete" variant="danger"></tds-button>
+        <tds-button data-dismiss-modal size="md" text="Cancel" variant="secondary"></tds-button>
+      </span>
+    </tds-modal>
+  </body>
+</html>
