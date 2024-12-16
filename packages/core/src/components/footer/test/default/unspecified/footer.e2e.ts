@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/footer/test/default/index.html';
+const componentTestPath = 'src/components/footer/test/default/unspecified/index.html';
 
 test.describe.parallel('tds-footer-default', () => {
   test('renders default footer correctly', async ({ page }) => {
