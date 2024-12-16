@@ -1,8 +1,10 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
+const componentTestPath = 'src/components/modal/test/closable-false/index.html';
+
 test('x button is hidden', async ({ page }) => {
-  await page.goto('src/components/modal/test/closable-false/index.html');
+  await page.goto(componentTestPath);
 
   const modalComponent = page.getByTestId('tds-modal-testid-1');
   expect(modalComponent).toHaveCount(1);
