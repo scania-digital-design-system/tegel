@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/checkbox/test/disabled/index.html';
 
 test.describe('tds-checkbox', () => {
-  test('Hover over checkbox and label -> cursor should become inactive', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('Hover over checkbox and label -> cursor should become inactive', async ({ page }) => {
     // Find the checkbox and label elements
     const checkbox = page.locator('tds-checkbox');
     const input = page.locator('tds-checkbox input');
