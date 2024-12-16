@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/header/test/default/index.html';
+const componentTestPath = 'src/components/header/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-header-default', () => {
+test.describe.parallel('tds-header-default-lightmode', () => {
   test('renders default header correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const headerComponent = page.getByRole('navigation');
