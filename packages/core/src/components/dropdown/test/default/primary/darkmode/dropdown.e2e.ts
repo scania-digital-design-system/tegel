@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/default/primary/darkmode/index.html';
 
 test.describe.parallel('tds-dropdown-default-primary-darkmode', () => {
-  test('renders default dropdown correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default dropdown correctly', async ({ page }) => {
     const dropdown = page.getByTestId('tds-dropdown-testid');
     await expect(dropdown).toHaveCount(1);
 
@@ -14,7 +17,6 @@ test.describe.parallel('tds-dropdown-default-primary-darkmode', () => {
   });
 
   test('clicking the dropdown button opens the dropdown-list', async ({ page }) => {
-    await page.goto(componentTestPath);
     const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
     const dropdownListElementOne = page
       .locator('tds-dropdown-option')
@@ -31,8 +33,6 @@ test.describe.parallel('tds-dropdown-default-primary-darkmode', () => {
   });
 
   test('clicking the dropdown opens the dropdown-list, then click Option 1', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     /* click the dropdown button */
     const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
     await dropdownButton.click();
@@ -53,7 +53,6 @@ test.describe.parallel('tds-dropdown-default-primary-darkmode', () => {
   });
 
   test('focusElement() method focus and opens the dropdown-list', async ({ page }) => {
-    await page.goto(componentTestPath);
     const dropdownButton = page.getByRole('button').first();
     const dropdownListElementOne = page
       .locator('tds-dropdown-option')
