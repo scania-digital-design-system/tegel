@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/chip/test/default/lightmode/index.html';
 
 test.describe.parallel('tds-chip-default-lightmode', () => {
-  test('renders default chip correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default chip correctly', async ({ page }) => {
     const chip = page.locator('tds-chip');
     await expect(chip).toHaveCount(1);
 
@@ -17,7 +20,6 @@ test.describe.parallel('tds-chip-default-lightmode', () => {
   });
 
   test('expect chip to be of the role button', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chipRole = page.getByRole('button');
     await expect(chipRole).toHaveCount(1);
   });
@@ -30,7 +32,6 @@ test.describe.parallel('tds-chip-default-lightmode', () => {
   });
 
   test('Chip is clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const chip = page.locator('tds-chip label');
     chip.hover();
     const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
