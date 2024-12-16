@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/link/test/default/index.html';
+const componentTestPath = 'src/components/link/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-link-default', () => {
+test.describe.parallel('tds-link-default-lightmode', () => {
   test('is default link rendered correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
