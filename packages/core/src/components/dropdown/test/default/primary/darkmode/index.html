@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <title>Dropdown - Default</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <link rel="stylesheet" href="../../../../../../../dist/tegel/tegel.css" />
     <script type="module">
-      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      import { defineCustomElements } from '../../../../../../../loader/index.es2017.js';
       defineCustomElements();
     </script>
   </head>
 
-  <body>
+  <body class="tds-mode-dark" style="background-color: var(--tds-grey-958); padding: 20px">
     <tds-dropdown
       name="dropdown"
       label="Label text"
@@ -21,6 +21,7 @@
       size="lg"
       open-direction="auto"
       data-testid="tds-dropdown-testid"
+      mode-variant="primary"
     >
       <tds-dropdown-option value="option-1">Option 1</tds-dropdown-option>
       <tds-dropdown-option disabled value="option-2">Option 2</tds-dropdown-option>
