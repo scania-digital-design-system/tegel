@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/dropdown/test/default/index.html';
+const componentTestPath = 'src/components/dropdown/test/default/unspecified/index.html';
 
 test.describe.parallel('tds-dropdown-default', () => {
   test('renders default dropdown correctly', async ({ page }) => {
