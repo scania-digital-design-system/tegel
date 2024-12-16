@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/datetime/test/default/index.html';
+const componentTestPath = 'src/components/datetime/test/default/unspecified/index.html';
 
 test.describe('tds-datetime-default', () => {
   test('renders datetime component correctly', async ({ page }) => {
