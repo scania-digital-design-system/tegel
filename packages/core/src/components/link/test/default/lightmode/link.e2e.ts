@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/link/test/default/lightmode/index.html';
 
 test.describe.parallel('tds-link-default-lightmode', () => {
-  test('is default link rendered correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('is default link rendered correctly', async ({ page }) => {
     const tdsLink = page.getByTestId('tds-link-testid');
 
     await expect(tdsLink).toHaveCount(1);
@@ -16,7 +18,6 @@ test.describe.parallel('tds-link-default-lightmode', () => {
   });
 
   test('text shows on page', async ({ page }) => {
-    await page.goto(componentTestPath);
     const pageText = page.getByText(
       'The Tegel Design System is for digital products and services at Scania. It enables an efficient' +
         "    development process and ensures a premium experience across all of Scania's digital touchpoints.",
@@ -27,7 +28,6 @@ test.describe.parallel('tds-link-default-lightmode', () => {
   });
 
   test('word Tegel is a link', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.locator('tds-link a');
     await expect(tdsLink).toHaveAttribute('href');
     await expect(tdsLink).toHaveText('Tegel');
@@ -35,7 +35,6 @@ test.describe.parallel('tds-link-default-lightmode', () => {
   });
 
   test('link is underlined', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.getByText('Tegel', { exact: true });
     const linkUnderlineState = await tdsLink.evaluate(
       (style) => getComputedStyle(style).textDecorationLine,
@@ -44,7 +43,6 @@ test.describe.parallel('tds-link-default-lightmode', () => {
   });
 
   test('component is not disabled', async ({ page }) => {
-    await page.goto(componentTestPath);
     await page.locator('tds-link').click();
     await expect(page).toHaveURL('https://tegel.scania.com/home');
   });

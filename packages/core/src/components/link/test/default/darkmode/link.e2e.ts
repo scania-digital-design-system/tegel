@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/link/test/default/darkmode/index.html';
 
 test.describe.parallel('tds-link-default-darkmode', () => {
-  test('is default link rendered correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('is default link rendered correctly', async ({ page }) => {
     const tdsLink = page.getByTestId('tds-link-testid');
 
     await expect(tdsLink).toHaveCount(1);
