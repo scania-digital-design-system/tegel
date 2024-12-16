@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/chip/test/default/index.html';
+const componentTestPath = 'src/components/chip/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-chip-default', () => {
+test.describe.parallel('tds-chip-default-lightmode', () => {
   test('renders default chip correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const chip = page.locator('tds-chip');
