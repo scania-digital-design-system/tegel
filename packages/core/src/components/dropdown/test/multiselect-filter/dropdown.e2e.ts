@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/multiselect-filter/index.html';
 
 test.describe.parallel('tds-dropdown-multiselect-filter', () => {
-  test('When focusing on the input it should clear itself', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('When focusing on the input it should clear itself', async ({ page }) => {
     // Click the dropdown button
     const dropdownButton = page.locator('tds-icon[aria-label="Open/Close dropdown"]');
     await dropdownButton.click();
