@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/popover-canvas/test/default/lightmode/index.html';
 
 test.describe.parallel('tds-popover-canvas-default-lightmode', () => {
-  test('renders default popover-canvas correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default popover-canvas correctly', async ({ page }) => {
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
@@ -16,7 +19,6 @@ test.describe.parallel('tds-popover-canvas-default-lightmode', () => {
   test('make sure popover canvas shows after trigger button is pressed and content is displayed', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
     const popoverCanvasHeader = page.getByRole('heading');
     const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
@@ -37,7 +39,6 @@ test.describe.parallel('tds-popover-canvas-default-lightmode', () => {
   });
 
   test('activating close method should close the dialog', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 

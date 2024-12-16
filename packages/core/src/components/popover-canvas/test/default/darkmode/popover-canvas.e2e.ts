@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/popover-canvas/test/default/darkmode/index.html';
 
 test.describe.parallel('tds-popover-canvas-default-darkmode', () => {
-  test('renders default popover-canvas correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default popover-canvas correctly', async ({ page }) => {
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
