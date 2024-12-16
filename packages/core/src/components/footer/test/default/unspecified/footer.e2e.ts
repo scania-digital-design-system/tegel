@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/footer/test/default/unspecified/index.html';
 
 test.describe.parallel('tds-footer-default', () => {
-  test('renders default footer correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default footer correctly', async ({ page }) => {
     const footerComponent = page.locator('footer');
     await expect(footerComponent).toHaveCount(1);
 
@@ -14,26 +17,22 @@ test.describe.parallel('tds-footer-default', () => {
   });
 
   test('Footer contains four links "Link text"', async ({ page }) => {
-    await page.goto(componentTestPath);
     const footerLinks = page.getByRole('link').filter({ hasText: /Link text/ });
     await expect(footerLinks).toHaveCount(4);
   });
 
   test('Footer contains three truck icons', async ({ page }) => {
-    await page.goto(componentTestPath);
     const footerTruckIcons = page.getByRole('link').filter({ has: page.getByRole('img') });
     await expect(footerTruckIcons).toHaveCount(3);
   });
 
   test('Footer contains copyright text', async ({ page }) => {
-    await page.goto(componentTestPath);
     const footerCopyrightText = page.getByText(`Copyright © ${new Date().getFullYear()} Scania`);
     await expect(footerCopyrightText).toHaveCount(1);
     await expect(footerCopyrightText).toBeVisible();
   });
 
   test('Footer contains brand label (Scania)', async ({ page }) => {
-    await page.goto(componentTestPath);
     const footerBrandText = page.getByText('Scania', { exact: true });
     await expect(footerBrandText).toHaveCount(1);
     await expect(footerBrandText).toBeHidden();

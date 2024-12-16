@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/footer/test/default/primary/lightmode/index.html';
 
 test.describe.parallel('tds-footer-default-primary-lightmode', () => {
-  test('renders default footer correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default footer correctly', async ({ page }) => {
     const footerComponent = page.locator('footer');
     await expect(footerComponent).toHaveCount(1);
 
