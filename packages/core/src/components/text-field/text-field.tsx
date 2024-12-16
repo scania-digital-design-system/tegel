@@ -1,5 +1,5 @@
-import { Component, h, State, Prop, Event, EventEmitter, Element } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
+import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -128,6 +128,15 @@ export class TdsTextField {
   handleBlur(event): void {
     this.focusInput = false;
     this.tdsBlur.emit(event);
+  }
+
+  /** Method to handle focus */
+  @Method()
+  async focusTextField() {
+    if (this.textInput) {
+      const event = new FocusEvent('focus');
+      this.textInput.dispatchEvent(event);
+    }
   }
 
   render() {
