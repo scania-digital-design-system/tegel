@@ -102,5 +102,8 @@
   "engines": {
     "npm": ">=9.0.0",
     "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }
