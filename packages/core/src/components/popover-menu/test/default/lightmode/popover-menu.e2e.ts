@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/popover-menu/test/default/index.html';
+const componentTestPath = 'src/components/popover-menu/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-popover-menu-default', () => {
+test.describe.parallel('tds-popover-menu-default-lightmode', () => {
   test('renders default popover-menu correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });

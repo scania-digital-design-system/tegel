@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Popover Menu - Default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const closeButton = document.getElementById('menu-close-button');
+        const popoverMenu = document.getElementById('my-popover-menu');
+        closeButton.addEventListener('click', function () {
+          popoverMenu.close();
+        });
+      });
+    </script>
+  </head>
+
+  <body class="tds-mode-dark" style="background-color: var(--tds-grey-958); padding: 20px">
+    <tds-popover-menu id="my-popover-menu" placement="auto" selector="#my-popover-button">
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-divider></tds-divider>
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-popover-menu-item disabled>
+        <button>Action</button>
+      </tds-popover-menu-item>
+      <tds-divider></tds-divider>
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-divider></tds-divider>
+      <tds-popover-menu-item>
+        <a href="#">Action</a>
+      </tds-popover-menu-item>
+      <tds-popover-menu-item>
+        <button id="menu-close-button" data-testid="menu-close-button">Action</button>
+      </tds-popover-menu-item>
+    </tds-popover-menu>
+
+    <div>
+      <span class="tds-u-mr2">Click icon for Popover Menu</span>
+
+      <tds-button aria-label="menu" only-icon id="my-popover-button" type="ghost" size="sm">
+        <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
+      </tds-button>
+    </div>
+  </body>
+</html>
