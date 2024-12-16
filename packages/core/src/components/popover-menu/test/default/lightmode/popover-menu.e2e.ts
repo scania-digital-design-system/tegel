@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/popover-menu/test/default/lightmode/index.html';
 
 test.describe.parallel('tds-popover-menu-default-lightmode', () => {
-  test('renders default popover-menu correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default popover-menu correctly', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await triggerButton.click();
 
@@ -14,7 +17,6 @@ test.describe.parallel('tds-popover-menu-default-lightmode', () => {
   });
 
   test('clicking the trigger button should open the popover menu dialog', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('list');
 
@@ -37,7 +39,6 @@ test.describe.parallel('tds-popover-menu-default-lightmode', () => {
   });
 
   test('hover active menu item -> active item should be clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('list');
     await triggerButton.click();
@@ -57,7 +58,6 @@ test.describe.parallel('tds-popover-menu-default-lightmode', () => {
   test('hover inactive menu item -> inactive menu item should not be clickable', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await triggerButton.click();
 
@@ -72,7 +72,6 @@ test.describe.parallel('tds-popover-menu-default-lightmode', () => {
   });
 
   test('icons are not existing for menu items', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsMenuItemListItemIcons = page
       .getByRole('listitem')
       .filter({ has: page.getByRole('img') });
@@ -80,7 +79,6 @@ test.describe.parallel('tds-popover-menu-default-lightmode', () => {
   });
 
   test('activating close method should close the dialog', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await triggerButton.click();
 
