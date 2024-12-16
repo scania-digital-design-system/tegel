@@ -1,18 +1,19 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/breadcrumbs/test/default/index.html';
+const componentTestPath = 'src/components/breadcrumbs/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-breadcrumbs-default', () => {
-  test('renders default breadcrumbs correctly', async ({ page }) => {
+test.describe.parallel('tds-breadcrumbs-default-lightmode', () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders default breadcrumbs correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('items Page 1, Page 2, Page 3 exist on the page', async ({ page }) => {
-    await page.goto(componentTestPath);
     const navigation = page.getByRole('navigation');
     await expect(navigation).toHaveCount(1);
     const listItems = page.getByRole('listitem');
@@ -32,8 +33,6 @@ test.describe.parallel('tds-breadcrumbs-default', () => {
   });
 
   test('page 3 item should be able to become focused', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const pageThree = page.getByText(/Page 3/);
     await pageThree.focus();
 
