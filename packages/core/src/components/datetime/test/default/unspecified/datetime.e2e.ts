@@ -4,9 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/datetime/test/default/unspecified/index.html';
 
 test.describe('tds-datetime-default', () => {
-  test('renders datetime component correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders datetime component correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
@@ -14,8 +16,6 @@ test.describe('tds-datetime-default', () => {
   test('verifies label, helper text, size, and calendar icon for datetime-local component', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     // Check for the label text
     const label = page.locator('.tds-datetime-label');
     const dateTime = page.locator('tds-datetime');
@@ -36,8 +36,6 @@ test.describe('tds-datetime-default', () => {
   });
 
   test('icon click triggers native datetime picker', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Assuming the calendar icon can be clicked to open the datetime picker
     await page.click('input[type="datetime-local"]');
 
@@ -52,8 +50,6 @@ test.describe('tds-datetime-default', () => {
   });
 
   test('setting input to current date and time programmatically', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Get the current date and time, formatted as 'YYYY-MM-DDThh:mm', which is the expected format for datetime-local inputs
     const currentDate = new Date().toISOString().slice(0, 16);
 

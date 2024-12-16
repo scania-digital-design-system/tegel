@@ -4,16 +4,16 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/datetime/test/default/primary/darkmode/index.html';
 
 test.describe('tds-datetime-default-primary-darkmode', () => {
-  test('renders datetime component correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('renders datetime component correctly', async ({ page }) => {
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('icon click triggers native datetime picker', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Assuming the calendar icon can be clicked to open the datetime picker
     await page.click('input[type="datetime-local"]');
 
