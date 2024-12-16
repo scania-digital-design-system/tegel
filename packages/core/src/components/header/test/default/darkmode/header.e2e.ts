@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/header/test/default/darkmode/index.html';
 
 test.describe.parallel('tds-header-default-darkmode', () => {
-  test('renders default header correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default header correctly', async ({ page }) => {
     const headerComponent = page.getByRole('navigation');
     await expect(headerComponent).toHaveCount(1);
     await expect(headerComponent).toBeVisible();
@@ -15,7 +18,6 @@ test.describe.parallel('tds-header-default-darkmode', () => {
   });
 
   test('launcher should open on click', async ({ page }) => {
-    await page.goto(componentTestPath);
     const headerComponentLuncherButton = page.getByRole('button');
     await headerComponentLuncherButton.click();
 
