@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Textarea - Basic</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-radio-button
+      name="rb-example"
+      value="option1"
+      radio-id="option-1"
+      required="false"
+      checked
+    >
+      <div slot="label">Label text 1</div>
+    </tds-radio-button>
+
+    <tds-radio-button name="rb-example" value="option2" radio-id="option-2" required="false">
+      <div slot="label">Label text 2</div>
+    </tds-radio-button>
+  </body>
+</html>
