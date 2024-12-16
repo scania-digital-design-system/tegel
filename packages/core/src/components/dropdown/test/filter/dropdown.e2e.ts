@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/filter/index.html';
 
 test.describe.parallel('tds-dropdown-filter', () => {
-  test('renders filter dropdown correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders filter dropdown correctly', async ({ page }) => {
     const dropdown = page.getByTestId('tds-dropdown-testid');
     await expect(dropdown).toHaveCount(1);
 
@@ -16,8 +19,6 @@ test.describe.parallel('tds-dropdown-filter', () => {
   test('clicking the dropdown opens the dropdown-list, then start typing "iles" to only show that option in the dropdown list', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     const inputElement = page.getByRole('textbox');
     const dropdownListElementOneButton = page
       .locator('tds-dropdown-option')
@@ -75,8 +76,6 @@ test.describe.parallel('tds-dropdown-filter', () => {
   });
 
   test('reset button icon appears when typing in the filter input', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const inputElement = page.getByRole('textbox');
     const resetButton = page.locator('tds-icon[name="cross"]');
 
@@ -98,8 +97,6 @@ test.describe.parallel('tds-dropdown-filter', () => {
   });
 
   test('toggle dropdown visibility and select option two', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const inputElement = page.getByRole('textbox');
     const dropdownListElementTwoButton = page
       .locator('tds-dropdown-option')
