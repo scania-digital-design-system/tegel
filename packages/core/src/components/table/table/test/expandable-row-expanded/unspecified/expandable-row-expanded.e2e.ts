@@ -1,7 +1,8 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/table/table/test/expandable-row-expanded/index.html';
+const componentTestPath =
+  'src/components/table/table/test/expandable-row-expanded/unspecified/index.html';
 
 test.describe.parallel('tds-table-expandable-row-expanded', () => {
   test.beforeEach(async ({ page }) => {
