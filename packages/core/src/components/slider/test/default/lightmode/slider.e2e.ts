@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/slider/test/default/index.html';
+const componentTestPath = 'src/components/slider/test/default/lightmode/index.html';
 
-test.describe.parallel('tds-slider-default', () => {
+test.describe.parallel('tds-slider-default-lightmode', () => {
   test('renders default slider correctly', async ({ page }) => {
     await page.goto(componentTestPath);
     const slider = page.locator('tds-slider');
