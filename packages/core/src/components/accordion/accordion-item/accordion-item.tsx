@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Host, Method, Prop, State } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For content of an expanded accordion.
@@ -26,6 +26,18 @@ export class TdsAccordionItem {
   /** When true, 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
 
+  /**
+   * Animation variant for the accordion item.
+   * Inherits from tds-accordion if not set explicitly.
+   */
+  @Prop() animation: 'none' | 'slide' = 'slide';
+
+  /**
+   * Private boolean to track if this is the initial load.
+   * If true, we skip triggering the animation classes on first render.
+   */
+  @State() private initialLoad = true;
+
   /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
@@ -50,13 +62,27 @@ export class TdsAccordionItem {
   }>;
 
   render() {
+    // If initialLoad is true, we do NOT attach the animation classes
+    // so it won't animate on the very first render.
+    const shouldAnimate = this.animation !== 'none' && !this.initialLoad;
+
+    // Build up dynamic classes
+    const classes = {
+      'tds-accordion-item': true,
+      'disabled': this.disabled,
+      'expanded': this.expanded,
+      [`tds-accordion-item-animation-open-${this.animation}`]: shouldAnimate && this.expanded,
+      [`tds-accordion-item-animation-close-${this.animation}`]: shouldAnimate && !this.expanded,
+    };
+
+    this.initialLoad = false;
+
     return (
       <Host>
         <div
-          class={`tds-accordion-item
-        ${this.disabled ? 'disabled' : ''}
-        ${this.expanded ? 'expanded' : ''}
-        `}
+          class={Object.keys(classes)
+            .filter((c) => classes[c])
+            .join(' ')}
         >
           <button
             type="button"
@@ -74,9 +100,9 @@ export class TdsAccordionItem {
             </div>
           </button>
           <div
-            class={`tds-accordion-panel
-            ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
-            `}
+            class={`tds-accordion-panel ${
+              this.paddingReset ? 'tds-accordion-panel--padding-reset' : ''
+            }`}
           >
             <slot></slot>
           </div>
