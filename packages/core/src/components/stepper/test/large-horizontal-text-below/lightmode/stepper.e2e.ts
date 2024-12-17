@@ -1,10 +1,11 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/stepper/test/large-horizontal-text-below/index.html';
+const componentTestPath =
+  'src/components/stepper/test/large-horizontal-text-below/lightmode/index.html';
 
 //Test if component renders and take a screenshot of the component
-test('Stepper - Large horizontal with text below', async ({ page }) => {
+test('Stepper - Large horizontal with text below - lightmode', async ({ page }) => {
   await page.goto(componentTestPath);
   const stepper = page.locator('[data-testid="tds-stepper-testid"]');
   await stepper.waitFor({ state: 'visible' });
