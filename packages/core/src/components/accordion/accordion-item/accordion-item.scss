@@ -9,6 +9,14 @@
   color: var(--tds-accordion-color);
   position: relative;
 
+  &:focus {
+    border-top: 1px solid var(--tds-accordion-border-focus);
+  }
+
+  &[disabled='true']:focus {
+    border-color: var(--tds-accordion-border);
+  }
+
   button.tds-accordion-header-icon-start,
   button.tds-accordion-header-icon-end {
     all: unset;
@@ -24,16 +32,15 @@
     display: flex;
     align-items: center;
     width: 100%;
-
-    // fixme: wrong line-height compared to production
     font: var(--tds-headline-07);
     letter-spacing: var(--tds-headline-07-ls);
     padding: var(--tds-spacing-element-16);
     background-color: var(--tds-accordion-background);
+    transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     .tds-accordion-icon {
       transform-origin: center;
-      transition: transform 0.15s ease-in-out;
+      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
       color: var(--tds-accordion-icon-color);
 
       & > tds-icon {
@@ -46,11 +53,48 @@
     flex-grow: 2;
   }
 
+  &.tds-accordion-item-animation-open-slide .tds-accordion-panel {
+    animation: tds-slide-expand var(--tds-motion-duration-moderate-01)
+      var(--tds-motion-easing-enter) forwards;
+  }
+
+  &.tds-accordion-item-animation-close-slide .tds-accordion-panel {
+    animation: tds-slide-close var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit)
+      forwards;
+  }
+
+  // Becase the component has shadow 'true' we need to define the animation here
+  @keyframes tds-slide-expand {
+    0% {
+      max-height: 0;
+      padding: 0 var(--tds-spacing-layout-64) 0 var(--tds-spacing-element-16);
+    }
+
+    100% {
+      max-height: 500px;
+      padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) 31px
+        var(--tds-spacing-element-16);
+    }
+  }
+
+  @keyframes tds-slide-close {
+    0% {
+      max-height: 500px;
+      padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) 31px
+        var(--tds-spacing-element-16);
+    }
+
+    100% {
+      max-height: 0;
+      padding: 0 var(--tds-spacing-layout-64) 0 var(--tds-spacing-element-16);
+    }
+  }
+
   .tds-accordion-panel {
     cursor: default;
-    padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
-      var(--tds-spacing-element-16);
-    display: none;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 var(--tds-spacing-layout-64) 0 var(--tds-spacing-element-16);
     font: var(--tds-detail-03);
     letter-spacing: var(--tds-detail-03-ls);
 
@@ -104,8 +148,11 @@
 
   &.expanded {
     .tds-accordion-panel {
-      display: block;
-      padding-bottom: 31px;
+      max-height: 500px;
+
+      /* Set this to a value larger than the content height */
+      padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) 31px
+        var(--tds-spacing-element-16);
     }
 
     .tds-accordion-icon {
