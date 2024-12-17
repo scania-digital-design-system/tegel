@@ -62,7 +62,16 @@ export class TdsAccordionItem {
           class={`tds-accordion-item
         ${this.disabled ? 'disabled' : ''}
         ${this.expanded ? 'expanded' : ''}
-        ${this.animation !== 'none' ? `tds-accordion-item-animation-${this.animation}` : ''}
+        ${
+          this.animation !== 'none' && this.expanded
+            ? `tds-accordion-item-animation-open-${this.animation}`
+            : ''
+        }
+         ${
+           this.animation !== 'none' && !this.expanded
+             ? `tds-accordion-item-animation-close-${this.animation}`
+             : ''
+         }
         `}
         >
           <button

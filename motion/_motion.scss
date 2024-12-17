@@ -118,4 +118,10 @@ html {
     tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
     forwards,
     tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
+
+  /* ### Accordion ### */
+  --accordian-slide-expand: tds-slide-expand var(--tds-motion-duration-moderate-01)
+    var(--tds-motion-easing-enter) forwards;
+  --accordian-slide-close: tds-slide-close var(--tds-motion-duration-fast-01)
+    var(--tds-motion-easing-exit) forwards;
 }
