@@ -5,9 +5,11 @@ const componentTestPath =
   'src/components/table/table/test/editing/body-input-wrapper/hover/primary/darkmode/index.html';
 
 test.describe.parallel('tds-table-editable-cells-hover-primary-darkmode', () => {
-  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
 
+  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
     const inputfield = page.getByTestId('firstInput');
 
     await inputfield.hover();
