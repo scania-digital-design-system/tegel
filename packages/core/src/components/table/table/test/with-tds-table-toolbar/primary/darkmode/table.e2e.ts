@@ -5,8 +5,11 @@ const componentTestPath =
   'src/components/table/table/test/with-tds-table-toolbar/primary/darkmode/index.html';
 
 test.describe.parallel('tds-table-with-tds-table-toolbar-primary-darkmode', () => {
-  test('renders default table correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders default table correctly', async ({ page }) => {
     const tableComponent = page.getByRole('table');
     await expect(tableComponent).toHaveCount(1);
 
