@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/spinner/test/standard/index.html';
+const componentTestPath = 'src/components/spinner/test/standard/lightmode/index.html';
 
-test.describe.parallel('tds-spinner-standard', () => {
+test.describe.parallel('tds-spinner-standard-lightmode', () => {
   test('renders basic spinner correctly', async ({ page }) => {
     await page.goto(componentTestPath);
 
