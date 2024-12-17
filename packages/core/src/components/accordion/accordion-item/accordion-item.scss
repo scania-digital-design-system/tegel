@@ -59,8 +59,35 @@
   }
 
   &.tds-accordion-item-animation-close-slide .tds-accordion-panel {
-    animation: tds-slide-expand-hidden var(--tds-motion-duration-moderate-01)
-      var(--tds-motion-easing-exit) forwards;
+    animation: tds-slide-close var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit)
+      forwards;
+  }
+
+  // Becase the component has shadow 'true' we need to define the animation here
+  @keyframes tds-slide-expand {
+    0% {
+      max-height: 0;
+      padding: 0 var(--tds-spacing-layout-64) 0 var(--tds-spacing-element-16);
+    }
+
+    100% {
+      max-height: 500px;
+      padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) 31px
+        var(--tds-spacing-element-16);
+    }
+  }
+
+  @keyframes tds-slide-close {
+    0% {
+      max-height: 500px;
+      padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) 31px
+        var(--tds-spacing-element-16);
+    }
+
+    100% {
+      max-height: 0;
+      padding: 0 var(--tds-spacing-layout-64) 0 var(--tds-spacing-element-16);
+    }
   }
 
   .tds-accordion-panel {
