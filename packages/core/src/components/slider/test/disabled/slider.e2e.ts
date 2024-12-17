@@ -2,15 +2,18 @@ import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/slider/test/disabled/index.html';
+
 test.describe.parallel('tds-slider-disabled', () => {
-  test('read-only is false', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('read-only is false', async ({ page }) => {
     const slider = page.locator('tds-slider');
     await expect(slider).not.toHaveAttribute('read-only');
   });
 
   test('slider is disabled', async ({ page }) => {
-    await page.goto(componentTestPath);
     const slider = page.locator('tds-slider input');
     const sliderThumb = page.locator('.tds-slider__thumb');
     const sliderCursorStyle = await sliderThumb.evaluate((style) => getComputedStyle(style).cursor);
@@ -21,7 +24,6 @@ test.describe.parallel('tds-slider-disabled', () => {
   });
 
   test('slider can not be clicked on', async ({ page }) => {
-    await page.goto(componentTestPath);
     const sliderThumb = page.locator('.tds-slider__thumb-inner');
     const sliderPointerEvents = await sliderThumb.evaluate(
       (style) => getComputedStyle(style).pointerEvents,
