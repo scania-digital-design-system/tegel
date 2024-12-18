@@ -36,7 +36,7 @@ export class TdsAccordionItem {
    * Private boolean to track if this is the initial load.
    * If true, we skip triggering the animation classes on first render.
    */
-  @State() private initialLoad = true;
+  @State() private hasRenderedOnce = false;
 
   /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
@@ -64,7 +64,7 @@ export class TdsAccordionItem {
   render() {
     // If initialLoad is true, we do NOT attach the animation classes
     // so it won't animate on the very first render.
-    const shouldAnimate = this.animation !== 'none' && !this.initialLoad;
+    const shouldAnimate = this.animation !== 'none' && this.hasRenderedOnce;
 
     // Build up dynamic classes
     const classes = {
@@ -75,7 +75,7 @@ export class TdsAccordionItem {
       [`tds-accordion-item-animation-close-${this.animation}`]: shouldAnimate && !this.expanded,
     };
 
-    this.initialLoad = false;
+    this.hasRenderedOnce = true;
 
     return (
       <Host>
