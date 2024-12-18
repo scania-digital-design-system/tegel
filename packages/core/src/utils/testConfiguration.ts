@@ -68,12 +68,12 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
   }
 };
 
-export const getTestDescribeText = (config, componentName) => {
+export const getTestDescribeText = (config, testDescription) => {
   if (config) {
     if (config.modeVariant) {
-      return `${componentName}-${config.modeVariant}-${config.theme}`;
+      return `${testDescription}-${config.modeVariant}-${config.theme}`;
     }
-    return `${componentName}-${config.theme}`;
+    return `${testDescription}-${config.theme}`;
   }
-  return componentName;
+  return testDescription;
 };
