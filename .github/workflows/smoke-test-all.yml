@@ -93,7 +93,7 @@ jobs:
         run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular - Run build
-        run: npm run build-angular
+        run: npm run build:angular
 
   build-angular-17:
     needs: build-core
@@ -141,7 +141,7 @@ jobs:
         run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: Angular-17 - Run build
-        run: npm run build-angular-17
+        run: npm run build:angular-17
 
   build-react:
     needs: build-core
@@ -181,7 +181,7 @@ jobs:
         run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
 
       - name: React - Build
-        run: npm run build-react
+        run: npm run build:react
 
   # Check that all jobs pass
   check-results:
