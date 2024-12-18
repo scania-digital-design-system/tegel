@@ -19,6 +19,7 @@ import { generateClassList } from '../../utils/classList';
 @Component({
   tag: 'tds-popover-core',
   styleUrl: 'tds-popover-core.scss',
+  styleUrl: 'tds-popover-core.scss',
   shadow: false,
   scoped: true,
 })
