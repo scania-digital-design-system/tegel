@@ -35,6 +35,7 @@ export class TdsButton {
   /** Set the mode variant of the Button. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
+  /** Determines if and how the button should animate. */
   @Prop() animation: 'none' | 'fade' = 'none';
 
   @State() onlyIcon: boolean = false;
