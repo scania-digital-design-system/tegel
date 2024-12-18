@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/filter/normalize-text-false/index.html';
 
 test.describe('tds-dropdown-filter', () => {
-  test('renders filter dropdown correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders filter dropdown correctly', async ({ page }) => {
     const dropdown = page.getByTestId('tds-dropdown-testid');
     await expect(dropdown).toHaveCount(1);
 
@@ -16,8 +19,6 @@ test.describe('tds-dropdown-filter', () => {
   test('typing "iles" should not show anything in dropdown with normalize text set to false', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     const inputElement = page.getByRole('textbox');
     const dropdownListElementOneButton = page
       .locator('tds-dropdown-option')
