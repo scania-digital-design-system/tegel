@@ -117,6 +117,17 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    animation: {
+      name: 'Animation',
+      description: 'Sets the animation for the Button.',
+      control: {
+        type: 'radio',
+      },
+      options: ['none', 'fade'],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -141,6 +152,7 @@ const WebComponentTemplate = ({
   onlyIcon,
   icon,
   disabled,
+  animation,
 }) => {
   const variantLookUp = {
     Primary: 'primary',
@@ -186,6 +198,7 @@ const WebComponentTemplate = ({
           ? `mode-variant="${modeVariantLookup[modeVariant]}"`
           : ''
       }
+      animation="${animation}"
     >
         ${
           onlyIcon || (icon && icon !== 'none')
