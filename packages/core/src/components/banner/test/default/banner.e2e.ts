@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/banner/test/default/lightmode/index.html';
+const componentTestPath = 'src/components/banner/test/default/index.html';
 
-test.describe.parallel('tds-banner-default-lightmode', () => {
+test.describe.parallel('tds-banner-default', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });

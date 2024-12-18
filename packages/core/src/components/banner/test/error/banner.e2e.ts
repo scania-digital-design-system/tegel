@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/banner/test/error/lightmode/index.html';
+const componentTestPath = 'src/components/banner/test/error/index.html';
 
-test.describe.parallel('tds-banner-error-lightmode', () => {
+test.describe.parallel('tds-banner-error', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });
