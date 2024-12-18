@@ -3,6 +3,7 @@
 :host {
   pointer-events: none;
   display: block;
+<<<<<<< HEAD
 }
 
 :host(.tds-animation-enter-fade) {
@@ -13,6 +14,14 @@
 :host(.tds-animation-exit-fade) {
   animation: tds-fade-out var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit)
     forwards;
+=======
+  opacity: 0;
+  visibility: hidden;
+}
+
+:host(.tds-popover-animation-enter-fade) {
+  animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
+>>>>>>> c23135bb (feat(popover): add fade-in animation and visibility styles; update popover menu item transition)
 }
 
 :host(.is-shown) {
@@ -20,6 +29,7 @@
   pointer-events: auto;
   visibility: visible;
 }
+<<<<<<< HEAD
 
 :host(.is-hidden) {
   opacity: 0;
@@ -32,3 +42,5 @@
   pointer-events: none;
   visibility: hidden;
 }
+=======
+>>>>>>> c23135bb (feat(popover): add fade-in animation and visibility styles; update popover menu item transition)
