@@ -97,6 +97,8 @@ button {
     justify-content: center;
   }
 
+  transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
+
   @each $type in $types {
     &.#{$type} {
       @each $prop in $props {
