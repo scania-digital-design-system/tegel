@@ -43,6 +43,17 @@ export default {
         defaultValue: { summary: 'false' },
       },
     },
+    animation: {
+      name: 'Animation',
+      description: 'Animation of the Dropdown.',
+      control: {
+        type: 'radio',
+      },
+      options: ['none', 'slide'],
+      table: {
+        defaultValue: { summary: 'None' },
+      },
+    },
     filter: {
       name: 'Filter',
       description: 'Adds filter functionality to the Dropdown.',
@@ -178,6 +189,7 @@ export default {
     disabled: false,
     openDirection: 'Auto',
     defaultOption: 'No default',
+    animation: 'none',
   },
 };
 
@@ -220,6 +232,7 @@ const Template = ({
   defaultOption,
   multiDefaultOption,
   noResultText,
+  animation,
 }) =>
   formatHtmlPreview(`
   <style>
@@ -264,6 +277,7 @@ const Template = ({
           ${normalizeText ? '' : `normalize-text="false"`}
           ${multiselect ? 'multiselect' : ''}
           ${disabled ? 'disabled' : ''}
+          ${animation !== 'None' ? `animation="${animation}"` : ''}
           open-direction="${openDirection.toLowerCase()}"          
           >
             <tds-dropdown-option value="option-1">
