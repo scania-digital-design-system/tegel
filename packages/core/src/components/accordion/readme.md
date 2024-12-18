@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute          | Description                                           | Type                       | Default |
-| ---------------- | ------------------ | ----------------------------------------------------- | -------------------------- | ------- |
-| `hideLastBorder` | `hide-last-border` | Removes the bottom border of the last Accordion item. | `boolean`                  | `false` |
-| `modeVariant`    | `mode-variant`     | Set the variant of the Accordion.                     | `"primary" \| "secondary"` | `null`  |
+| Property         | Attribute          | Description                                           | Type                       | Default   |
+| ---------------- | ------------------ | ----------------------------------------------------- | -------------------------- | --------- |
+| `animation`      | `animation`        |                                                       | `"none" \| "slide"`        | `'slide'` |
+| `hideLastBorder` | `hide-last-border` | Removes the bottom border of the last Accordion item. | `boolean`                  | `false`   |
+| `modeVariant`    | `mode-variant`     | Set the variant of the Accordion.                     | `"primary" \| "secondary"` | `null`    |
 
 
 ## Slots
