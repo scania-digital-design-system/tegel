@@ -17,6 +17,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-popover-core',
+  styleUrl: 'tds-popover-core.scss',
   shadow: false,
   scoped: true,
 })
@@ -31,6 +32,9 @@ export class TdsPopoverCore {
 
   /** Decides if the component should be visible from the start. */
   @Prop() defaultShow: boolean = false;
+
+  /** Whether the popover should animate when being opened/closed or not */
+  @Prop() animation: 'none' | 'fade' | string = 'none';
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
@@ -66,6 +70,8 @@ export class TdsPopoverCore {
   @State() isShown: boolean = false;
 
   @State() disableLogic: boolean = false;
+
+  @State() hasShownAtLeastOnce: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -141,6 +147,7 @@ export class TdsPopoverCore {
       this.isShown = isShown;
     }
     if (this.isShown) {
+      this.hasShownAtLeastOnce = true;
       this.internalTdsShow.emit();
     } else {
       this.internalTdsClose.emit();
@@ -245,10 +252,13 @@ export class TdsPopoverCore {
     });
   }
 
-  /* To enable initial loading of a component if user controls show prop*/
+  /* To enable initial loading of a component if user controls show prop */
   componentWillLoad() {
+    // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
       this.setIsShown(true);
+    } else {
+      this.setIsShown(false);
     }
   }
 
@@ -266,13 +276,14 @@ export class TdsPopoverCore {
   }
 
   render() {
-    let hostStyle = {};
-    if (this.autoHide) {
-      hostStyle = { display: this.isShown ? 'block' : 'none' };
-    }
+    const classes = {
+      [`tds-popover-animation-enter-${this.animation}`]:
+        this.animation !== 'none' && this.hasShownAtLeastOnce && this.isShown,
+      'is-shown': this.isShown,
+    };
 
     return (
-      <Host style={hostStyle} id={`tds-popover-core-${this.uuid}`}>
+      <Host class={classes} id={`tds-popover-core-${this.uuid}`}>
         <slot></slot>
       </Host>
     );
