@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/button/test/secondary/secondary/darkmode/index.html';
+const componentTestPath = 'src/components/button/test/secondary/index.html';
 
-test.describe.parallel('tds-button-secondary-secondary-darkmode', () => {
+test.describe.parallel('tds-button-secondary', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });
@@ -14,5 +14,11 @@ test.describe.parallel('tds-button-secondary-secondary-darkmode', () => {
 
     /* Check diff on screenshot */
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
+
+  test('Check so that height is correct to md measurements', async ({ page }) => {
+    const button = page.getByText('Button', { exact: true });
+    const buttonHeight = await button.evaluate((style) => getComputedStyle(style).height);
+    expect(buttonHeight).toBe('48px');
   });
 });
