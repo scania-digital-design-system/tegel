@@ -6,9 +6,9 @@ import {
   setupPage,
 } from '../../../../utils/testConfiguration';
 
-const componentTestPath = 'src/components/button/test/ghost/index.html';
+const componentTestPath = 'src/components/button/test/secondary/index.html';
 const componentName = 'tds-button';
-const testDescription = 'tds-button-ghost';
+const testDescription = 'tds-button-secondary';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -16,7 +16,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('renders ghost button correctly', async ({ page }) => {
+    test('renders secondary button correctly', async ({ page }) => {
       const button = page.getByTestId('tds-button-testid');
       await expect(button).toHaveCount(1);
 
@@ -27,7 +27,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('Check so that height is correct to md measurements', async ({ page }) => {
       const button = page.getByText('Button', { exact: true });
       const buttonHeight = await button.evaluate((style) => getComputedStyle(style).height);
-      expect(buttonHeight).toBe('24px');
+      expect(buttonHeight).toBe('48px');
     });
   });
 });
