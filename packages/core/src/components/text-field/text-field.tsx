@@ -134,8 +134,7 @@ export class TdsTextField {
   @Method()
   async focusTextField() {
     if (this.textInput) {
-      const event = new FocusEvent('focus');
-      this.textInput.dispatchEvent(event);
+      this.textInput.focus();
     }
   }
 
