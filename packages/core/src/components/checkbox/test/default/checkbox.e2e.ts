@@ -1,9 +1,9 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
-const componentTestPath = 'src/components/checkbox/test/default/lightmode/index.html';
+const componentTestPath = 'src/components/checkbox/test/default/index.html';
 
-test.describe.parallel('tds-checkbox-lightmode', () => {
+test.describe.parallel('tds-checkbox', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
   });
