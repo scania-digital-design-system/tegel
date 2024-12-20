@@ -1,7 +1,11 @@
 import { Config } from '@stencil/core';
+import { config as loadEnv } from 'dotenv';
+
 import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
+
+loadEnv();
 
 function getTsConfigFile() {
   if (process.env.STORYBOOK_ENV === 'dev') {
@@ -47,6 +51,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   tsconfig: getTsConfigFile(),
   namespace: 'tegel',
+  globalScript: 'src/global/assets-loader.ts', // Include runtime override logic
   globalStyle: 'src/global/global.scss',
   extras: {
     enableImportInjection: true,
