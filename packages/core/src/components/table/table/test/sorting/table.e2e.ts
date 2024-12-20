@@ -43,6 +43,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       const driverNameHeader = page.getByText('Driver name');
       await driverNameHeader.click();
       expect(myEventSpy).toHaveReceivedEventTimes(2);
+
       const countryHeader = page.getByText('Country');
       await countryHeader.click();
       expect(myEventSpy).toHaveReceivedEventTimes(3);
@@ -53,6 +54,14 @@ testConfigurations.withModeVariants.forEach((config) => {
       await mileageHeader.waitFor({ state: 'visible' });
       await page.waitForTimeout(250);
 
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+    });
+
+    test('hover on column header', async ({ page }) => {
+      const mileageHeader = page.getByText('Mileage');
+      await mileageHeader.hover();
+
+      /* Check diff of screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
     });
   });
