@@ -1,21 +1,33 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
+const componentName = 'tds-table';
+const testDescription = 'tds-table-expandable-row-second';
 
-test.describe('tds-table-expandable-row-second', () => {
-  test('under second row opened expanded row with text "Hello to you too"', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const tableBodyRowSecondInput = page.getByRole('cell').nth(2);
-    const tableBodyExpandableRowSlot = page.getByText(/Hello to you too/);
-    await expect(tableBodyRowSecondInput).toHaveCount(1);
-    await expect(tableBodyExpandableRowSlot).toHaveCount(1);
-    await expect(tableBodyExpandableRowSlot).toBeHidden();
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
 
-    await tableBodyRowSecondInput.click();
-    await expect(tableBodyExpandableRowSlot).toBeVisible();
+    test('under second row opened expanded row with text "Hello to you too"', async ({ page }) => {
+      const tableBodyRowSecondInput = page.getByRole('cell').nth(2);
+      const tableBodyExpandableRowSlot = page.getByText(/Hello to you too/);
+      await expect(tableBodyRowSecondInput).toHaveCount(1);
+      await expect(tableBodyExpandableRowSlot).toHaveCount(1);
+      await expect(tableBodyExpandableRowSlot).toBeHidden();
 
-    /* check input screenshot diff */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await tableBodyRowSecondInput.click();
+      await expect(tableBodyExpandableRowSlot).toBeVisible();
+
+      /* check input screenshot diff */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+    });
   });
 });
