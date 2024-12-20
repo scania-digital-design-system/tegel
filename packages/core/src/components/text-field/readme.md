@@ -38,6 +38,19 @@
 | `tdsInput`  | Input event for the Text Field  | `CustomEvent<InputEvent>` |
 
 
+## Methods
+
+### `focusTextField() => Promise<void>`
+
+Method to handle focus
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Slots
 
 | Slot       | Description                                                                                 |
