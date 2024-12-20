@@ -1,22 +1,34 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
+const componentName = 'tds-table';
+const testDescription = 'tds-table-expandable-row-double-click-first';
 
-test.describe('tds-table-expandable-row-double-click-first', () => {
-  test('double click on expand button in first row -> expanded row should be closed', async ({
-    page,
-  }) => {
-    await page.goto(componentTestPath);
-    const tableBodyRowFirstInput = page.getByRole('cell').nth(1);
-    await tableBodyRowFirstInput.dblclick();
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
 
-    const tableBodyFirstExpandableRowSlot = page.getByText(/Hello world 1/);
-    const tableBodySecondExpandableRowSlot = page.getByText(/Hello to you too/);
-    const tableBodyThirdExpandableRowSlot = page.getByText(/Call to action/);
+    test('double click on expand button in first row -> expanded row should be closed', async ({
+      page,
+    }) => {
+      const tableBodyRowFirstInput = page.getByRole('cell').nth(1);
+      await tableBodyRowFirstInput.dblclick();
 
-    await expect(tableBodyFirstExpandableRowSlot).toBeHidden();
-    await expect(tableBodySecondExpandableRowSlot).toBeHidden();
-    await expect(tableBodyThirdExpandableRowSlot).toBeHidden();
+      const tableBodyFirstExpandableRowSlot = page.getByText(/Hello world 1/);
+      const tableBodySecondExpandableRowSlot = page.getByText(/Hello to you too/);
+      const tableBodyThirdExpandableRowSlot = page.getByText(/Call to action/);
+
+      await expect(tableBodyFirstExpandableRowSlot).toBeHidden();
+      await expect(tableBodySecondExpandableRowSlot).toBeHidden();
+      await expect(tableBodyThirdExpandableRowSlot).toBeHidden();
+    });
   });
 });

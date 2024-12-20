@@ -1,38 +1,47 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../../../utils/testConfiguration';
 
 const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
+const componentName = 'tds-table';
+const testDescription = 'tds-table-column-filtering hover';
 
-test.describe.parallel('tds-table-column-filtering hover', () => {
-  test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
-    await page.goto(componentTestPath);
-
-    const inputfield = page.getByTestId('firstHeaderInput');
-
-    await inputfield.hover();
-
-    const color = await inputfield.evaluate((el) => {
-      return window.getComputedStyle(el).getPropertyValue('background-color');
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
     });
 
-    expect(color).toBe('rgba(0, 0, 0, 0)');
+    test('expect wrapper to effect slotted inputs style on hover', async ({ page }) => {
+      const inputfield = page.getByTestId('firstHeaderInput');
 
-    /* Check diff of screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
-  });
+      await inputfield.hover();
 
-  test('expect slotted input to show search icon on hover', async ({ page }) => {
-    await page.goto(componentTestPath);
+      const color = await inputfield.evaluate((el) => {
+        return window.getComputedStyle(el).getPropertyValue('background-color');
+      });
 
-    const inputfield = page.getByTestId('firstHeaderInput');
+      expect(color).toBe('rgba(0, 0, 0, 0)');
 
-    await inputfield.hover();
+      /* Check diff of screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+    });
 
-    // finding wrapper component after hover over slotted input
-    const icon = page.getByTestId('firstHeaderWrapper').locator('tds-icon');
-    let iconClass = await icon.evaluate((element: HTMLInputElement) => element.className);
+    test('expect slotted input to show search icon on hover', async ({ page }) => {
+      const inputfield = page.getByTestId('firstHeaderInput');
 
-    expect(iconClass).toContain('search-icon');
+      await inputfield.hover();
+
+      // finding wrapper component after hover over slotted input
+      const icon = page.getByTestId('firstHeaderWrapper').locator('tds-icon');
+      let iconClass = await icon.evaluate((element: HTMLInputElement) => element.className);
+
+      expect(iconClass).toContain('search-icon');
+    });
   });
 });
