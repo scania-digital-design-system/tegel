@@ -6,9 +6,10 @@ import {
   setupPage,
 } from '../../../../utils/testConfiguration';
 
-const componentTestPath = 'src/components/text-field/test/read-only-with-suffix/index.html';
+// Defined once for reuse
+const componentTestPath = 'src/components/text-field/test/with-helper-text/index.html';
 const componentName = 'tds-text-field';
-const testDescription = 'TdsTextField - readOnly prop effect';
+const testDescription = 'TdsTextField - with helper text';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -16,9 +17,9 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('should hide the suffix icon when readOnly is true', async ({ page }) => {
-      const suffixIcon = await page.locator('.text-field-slot-wrap-suffix');
-      await expect(suffixIcon).toBeHidden();
+    test('renders text-field with helper text', async ({ page }) => {
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });
