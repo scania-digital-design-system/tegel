@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/filter/hide-no-result-message/index.html';
 
 test.describe('tds-dropdown-filter', () => {
-  test('renders filter dropdown correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders filter dropdown correctly', async ({ page }) => {
     const dropdown = page.getByTestId('tds-dropdown-testid');
     await expect(dropdown).toHaveCount(1);
 
@@ -14,8 +17,6 @@ test.describe('tds-dropdown-filter', () => {
   });
 
   test('typing non existing value does not show "No results!" message', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     const inputElement = page.getByRole('textbox');
 
     /* Add text and only Option 1 should be visible */

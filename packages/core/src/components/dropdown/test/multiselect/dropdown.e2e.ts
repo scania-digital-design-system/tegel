@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/multiselect/index.html';
 
 test.describe.parallel('tds-dropdown-multiselect', () => {
-  test('renders multiselect dropdown correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders multiselect dropdown correctly', async ({ page }) => {
     const dropdown = page.getByTestId('tds-dropdown-testid');
     await expect(dropdown).toHaveCount(1);
 
@@ -16,8 +19,6 @@ test.describe.parallel('tds-dropdown-multiselect', () => {
   test('clicking the dropdown opens the dropdown-list, then click Option 1, should not close it', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     /* click the dropdown button */
     const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
     await dropdownButton.click();
@@ -39,8 +40,6 @@ test.describe.parallel('tds-dropdown-multiselect', () => {
   test('clicking the dropdown opens the dropdown-list, then click on all the options', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     /* click the button */
     const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
     await dropdownButton.click();
