@@ -1,12 +1,54 @@
-$prefix: 'tds';
-$cdn: 'https://cdn.digitaldesign.scania.com';
-$folder: '/logotype/1.0.0';
-$logotypes: ('wordmark', 'wordmark-white', 'symbol', 'logotype');
+:root {
+  --tds-logo-url-logotype-png: url('https://cdn.digitaldesign.scania.com/logos/scania-logotype.png');
+  --tds-logo-url-logotype-svg: url('https://cdn.digitaldesign.scania.com/logos/scania-logotype.svg');
+  --tds-logo-url-symbol-png: url('https://cdn.digitaldesign.scania.com/logos/scania-symbol.png');
+  --tds-logo-url-symbol-svg: url('https://cdn.digitaldesign.scania.com/logos/scania-symbol.svg');
+  --tds-logo-url-wordmark-png: url('https://cdn.digitaldesign.scania.com/logos/scania-wordmark.png');
+  --tds-logo-url-wordmark-svg: url('https://cdn.digitaldesign.scania.com/logos/scania-wordmark.svg');
+  --tds-logo-url-wordmark-white-png: url('https://cdn.digitaldesign.scania.com/logos/scania-wordmark-white.png');
+  --tds-logo-url-wordmark-white-svg: url('https://cdn.digitaldesign.scania.com/logos/scania-wordmark-white.svg');
+}
 
-:root,
-html {
-  @each $key in $logotypes {
-    --#{$prefix}-background-image-scania-#{$key}-png: url(#{$font-source}#{$folder}/scania_#{$key}/scania-#{$key}.png);
-    --#{$prefix}-background-image-scania-#{$key}-svg: url(#{$font-source}#{$folder}/scania_#{$key}/scania-#{$key}.svg);
+@mixin logotype-rules {
+  .scania-logotype {
+    &--png {
+      background-image: var(--tds-logo-url-logotype-png);
+    }
+
+    &--svg {
+      background-image: var(--tds-logo-url-logotype-svg);
+    }
+  }
+
+  .scania-symbol {
+    &--png {
+      background-image: var(--tds-logo-url-symbol-png);
+    }
+
+    &--svg {
+      background-image: var(--tds-logo-url-symbol-svg);
+    }
+  }
+
+  .scania-wordmark {
+    &--png {
+      background-image: var(--tds-logo-url-wordmark-png);
+    }
+
+    &--svg {
+      background-image: var(--tds-logo-url-wordmark-svg);
+    }
+
+    &-white {
+      &--png {
+        background-image: var(--tds-logo-url-wordmark-white-png);
+      }
+
+      &--svg {
+        background-image: var(--tds-logo-url-wordmark-white-svg);
+      }
+    }
   }
 }
+
+@include logotype-rules;
