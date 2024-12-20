@@ -54,9 +54,7 @@ const FONT_SOURCE = process.env.FONT_SOURCE || DEFAULT_FONT_SOURCE;
 export const config: Config = {
   tsconfig: getTsConfigFile(),
   namespace: 'tegel',
-  env: {
-    FONT_SOURCE: FONT_SOURCE,
-  },
+  globalScript: 'src/global/assets-loader.ts', // Include runtime override logic
   globalStyle: 'src/global/global.scss',
   extras: {
     enableImportInjection: true,
@@ -64,7 +62,6 @@ export const config: Config = {
   },
   plugins: [
     sass({
-      injectGlobalPaths: ['src/global/_variables.scss'],
       data: `$font-source: '${FONT_SOURCE}';`,
     }),
   ],
