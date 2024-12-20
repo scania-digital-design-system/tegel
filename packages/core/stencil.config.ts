@@ -48,9 +48,6 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
    */
 ];
 
-const DEFAULT_FONT_SOURCE = 'https://cdn.digitaldesign.scania.com';
-const FONT_SOURCE = process.env.FONT_SOURCE || DEFAULT_FONT_SOURCE;
-
 export const config: Config = {
   tsconfig: getTsConfigFile(),
   namespace: 'tegel',
@@ -60,11 +57,7 @@ export const config: Config = {
     enableImportInjection: true,
     tagNameTransform: true,
   },
-  plugins: [
-    sass({
-      data: `$font-source: '${FONT_SOURCE}';`,
-    }),
-  ],
+  plugins: [sass()],
   sourceMap: false,
   testing: {
     browserArgs: ['--headless=new'],
