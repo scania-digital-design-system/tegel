@@ -13,6 +13,7 @@
     font: var(--tds-detail-02);
     letter-spacing: var(--tds-detail-02-ls);
     overflow-wrap: anywhere;
+    transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &.selected {
       background-color: var(--tds-dropdown-option-background-selected);
@@ -78,7 +79,6 @@
         &.xs {
           padding: 7px 16px 8px;
         }
-
       }
     }
 
