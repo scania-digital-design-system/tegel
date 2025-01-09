@@ -23,8 +23,19 @@
   .dropdown-select {
     position: relative;
 
+    // Add transition to border-bottom-color
+
+    button {
+      transition: border-bottom-color var(--tds-motion-duration-fast-02)
+        var(--tds-motion-easing-scania);
+    }
+
     button:focus {
       border-bottom-color: var(--tds-dropdown-border-bottom);
+    }
+
+    button:hover {
+      border-bottom-color: var(--tds-dropdown-border-bottom-hover);
     }
 
     button {
@@ -161,10 +172,11 @@
     margin-top: 1px;
     width: 100%;
     transform-origin: top;
-    transition: transform 0.2s ease-in-out;
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
     border-radius: var(--tds-dropdown-list-border-radius-down);
     overflow-y: auto;
+    transform: scaleY(0);
+    pointer-events: none;
     @include tds-scrollbar;
 
     &.lg {
@@ -200,11 +212,18 @@
 
     &.closed {
       transform: scaleY(0);
-      visibility: hidden;
+      pointer-events: none;
     }
 
     &.open {
       transform: scaleY(1);
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &.animation-slide {
+      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
     }
 
     .no-result {
@@ -238,7 +257,7 @@
   }
 
   tds-icon {
-    transition: transform 0.2s ease-in-out;
+    transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &.open {
       transform: rotateZ(180deg);
