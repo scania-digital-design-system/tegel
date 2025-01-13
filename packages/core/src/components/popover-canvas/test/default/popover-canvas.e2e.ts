@@ -23,38 +23,44 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('make sure popover canvas shows after trigger button is pressed and content is displayed', async ({
-      page,
-    }) => {
-      const triggerButton = page.getByRole('button');
-      const popoverCanvasHeader = page.getByRole('heading');
-      const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
-        exact: true,
-      });
-      const popoverCanvasLink = page.getByRole('link');
-      await expect(triggerButton).toBeVisible();
-      await expect(popoverCanvasHeader).toBeHidden();
-      await expect(popoverCanvasBody).toBeHidden();
-      await expect(popoverCanvasLink).toBeHidden();
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      await triggerButton.click();
-
-      await popoverCanvasHeader.waitFor({ state: 'visible' });
-      await expect(popoverCanvasHeader).toBeVisible();
-      await expect(popoverCanvasBody).toBeVisible();
-      await expect(popoverCanvasLink).toBeVisible();
+  test('make sure popover canvas shows after trigger button is pressed and content is displayed', async ({
+    page,
+  }) => {
+    const triggerButton = page.getByRole('button');
+    const popoverCanvasHeader = page.getByRole('heading');
+    const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
+      exact: true,
     });
+    const popoverCanvasLink = page.getByRole('link');
+    await expect(triggerButton).toBeVisible();
+    await expect(popoverCanvasHeader).toBeHidden();
+    await expect(popoverCanvasBody).toBeHidden();
+    await expect(popoverCanvasLink).toBeHidden();
 
-    test('activating close method should close the dialog', async ({ page }) => {
-      const triggerButton = page.getByRole('button');
-      await triggerButton.click();
+    await triggerButton.click();
 
-      const closeButton = page.getByTestId('canvas-close-button');
-      await expect(closeButton).toBeVisible();
-      await closeButton.click();
+    await popoverCanvasHeader.waitFor({ state: 'visible' });
+    await expect(popoverCanvasHeader).toBeVisible();
+    await expect(popoverCanvasBody).toBeVisible();
+    await expect(popoverCanvasLink).toBeVisible();
+  });
 
-      await expect(closeButton).not.toBeVisible();
-    });
+  test('activating close method should close the dialog', async ({ page }) => {
+    const triggerButton = page.getByRole('button');
+    await triggerButton.click();
+
+    const closeButton = page.getByTestId('canvas-close-button');
+    await expect(closeButton).toBeVisible();
+    await closeButton.click();
+
+    await expect(closeButton).not.toBeVisible();
   });
 });

@@ -29,27 +29,33 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.05 });
     });
+  });
+});
 
-    test('make sure the popover canvas content is displayed both before and after the trigger button is pressed', async ({
-      page,
-    }) => {
-      const triggerButton = page.getByRole('button');
-      const popoverCanvasHeader = page.getByRole('heading');
-      const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
-        exact: true,
-      });
-      const popoverCanvasLink = page.getByRole('link');
-      await expect(triggerButton).toBeVisible();
-      await expect(popoverCanvasHeader).toBeVisible();
-      await expect(popoverCanvasBody).toBeVisible();
-      await expect(popoverCanvasLink).toBeVisible();
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      await triggerButton.click();
-
-      await expect(triggerButton).toBeVisible();
-      await expect(popoverCanvasHeader).toBeVisible();
-      await expect(popoverCanvasBody).toBeVisible();
-      await expect(popoverCanvasLink).toBeVisible();
+  test('make sure the popover canvas content is displayed both before and after the trigger button is pressed', async ({
+    page,
+  }) => {
+    const triggerButton = page.getByRole('button');
+    const popoverCanvasHeader = page.getByRole('heading');
+    const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
+      exact: true,
     });
+    const popoverCanvasLink = page.getByRole('link');
+    await expect(triggerButton).toBeVisible();
+    await expect(popoverCanvasHeader).toBeVisible();
+    await expect(popoverCanvasBody).toBeVisible();
+    await expect(popoverCanvasLink).toBeVisible();
+
+    await triggerButton.click();
+
+    await expect(triggerButton).toBeVisible();
+    await expect(popoverCanvasHeader).toBeVisible();
+    await expect(popoverCanvasBody).toBeVisible();
+    await expect(popoverCanvasLink).toBeVisible();
   });
 });
