@@ -25,42 +25,48 @@ testConfigurations.basic.forEach((config) => {
       await expect(radioButton2).toBeVisible();
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0 });
     });
+  });
+});
 
-    test('1st radio button is disabled', async ({ page }) => {
-      const disabledLabel1RadioButton = page.locator('input[id="option-1"]:disabled');
-      await expect(disabledLabel1RadioButton).toHaveCount(1);
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('1st radio button is checked', async ({ page }) => {
-      const checkedLabel1RadioButton = page.locator('input[id="option-1"]');
-      const isChecked = await checkedLabel1RadioButton.evaluate(
-        (node: HTMLInputElement) => node.checked,
-      );
-      expect(isChecked).toBeTruthy();
-    });
+  test('1st radio button is disabled', async ({ page }) => {
+    const disabledLabel1RadioButton = page.locator('input[id="option-1"]:disabled');
+    await expect(disabledLabel1RadioButton).toHaveCount(1);
+  });
 
-    test('Hover cursor over Label text 1 radio button -> cursor should NOT be able to click on it', async ({
-      page,
-    }) => {
-      const inputElement = page.locator('input[id="option-1"]');
-      await inputElement.hover();
-      await expect(inputElement).toHaveCSS('cursor', 'not-allowed');
+  test('1st radio button is checked', async ({ page }) => {
+    const checkedLabel1RadioButton = page.locator('input[id="option-1"]');
+    const isChecked = await checkedLabel1RadioButton.evaluate(
+      (node: HTMLInputElement) => node.checked,
+    );
+    expect(isChecked).toBeTruthy();
+  });
 
-      const labelElement = page.locator('text=Label text 1');
-      await labelElement.hover();
-      await expect(labelElement).toHaveCSS('cursor', 'not-allowed');
-    });
+  test('Hover cursor over Label text 1 radio button -> cursor should NOT be able to click on it', async ({
+    page,
+  }) => {
+    const inputElement = page.locator('input[id="option-1"]');
+    await inputElement.hover();
+    await expect(inputElement).toHaveCSS('cursor', 'not-allowed');
 
-    test('Hover cursor over Label text 2 radio button -> cursor should NOT be able to click on it', async ({
-      page,
-    }) => {
-      const inputElement = page.locator('input[id="option-2"]');
-      await inputElement.hover();
-      await expect(inputElement).toHaveCSS('cursor', 'not-allowed');
+    const labelElement = page.locator('text=Label text 1');
+    await labelElement.hover();
+    await expect(labelElement).toHaveCSS('cursor', 'not-allowed');
+  });
 
-      const labelElement = page.locator('text=Label text 2');
-      await labelElement.hover();
-      await expect(labelElement).toHaveCSS('cursor', 'not-allowed');
-    });
+  test('Hover cursor over Label text 2 radio button -> cursor should NOT be able to click on it', async ({
+    page,
+  }) => {
+    const inputElement = page.locator('input[id="option-2"]');
+    await inputElement.hover();
+    await expect(inputElement).toHaveCSS('cursor', 'not-allowed');
+
+    const labelElement = page.locator('text=Label text 2');
+    await labelElement.hover();
+    await expect(labelElement).toHaveCSS('cursor', 'not-allowed');
   });
 });
