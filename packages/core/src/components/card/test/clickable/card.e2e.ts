@@ -23,15 +23,21 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('card should contain a button that is clickable', async ({ page }) => {
-      const cardButton = page.getByRole('button');
-      await expect(cardButton).toHaveCount(1);
-      await expect(cardButton).toBeVisible();
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      const myEventSpy = await page.spyOnEvent('click');
-      await cardButton.click();
-      expect(myEventSpy).toHaveReceivedEvent();
-    });
+  test('card should contain a button that is clickable', async ({ page }) => {
+    const cardButton = page.getByRole('button');
+    await expect(cardButton).toHaveCount(1);
+    await expect(cardButton).toBeVisible();
+
+    const myEventSpy = await page.spyOnEvent('click');
+    await cardButton.click();
+    expect(myEventSpy).toHaveReceivedEvent();
   });
 });
