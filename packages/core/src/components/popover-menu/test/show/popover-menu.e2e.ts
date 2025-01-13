@@ -20,20 +20,26 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixelRatio: 0.05 });
     });
+  });
+});
 
-    test('clicking the trigger button should keep the popover menu dialog open when it is open by default', async ({
-      page,
-    }) => {
-      const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-      const dropDownList = page.getByRole('list');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      await expect(triggerButton).toBeVisible();
-      await expect(dropDownList).toBeVisible();
+  test('clicking the trigger button should keep the popover menu dialog open when it is open by default', async ({
+    page,
+  }) => {
+    const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+    const dropDownList = page.getByRole('list');
 
-      await triggerButton.click();
+    await expect(triggerButton).toBeVisible();
+    await expect(dropDownList).toBeVisible();
 
-      await expect(triggerButton).toBeVisible();
-      await expect(dropDownList).toBeVisible();
-    });
+    await triggerButton.click();
+
+    await expect(triggerButton).toBeVisible();
+    await expect(dropDownList).toBeVisible();
   });
 });

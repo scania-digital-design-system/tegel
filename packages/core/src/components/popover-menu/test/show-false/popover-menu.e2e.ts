@@ -15,24 +15,31 @@ testConfigurations.basic.forEach((config) => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
+
     test('renders show=false popover-menu correctly', async ({ page }) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('clicking the trigger button should not open the popover menu dialog when show is false', async ({
-      page,
-    }) => {
-      const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-      const dropDownList = page.getByRole('list');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      await expect(triggerButton).toBeVisible();
-      await expect(dropDownList).toBeHidden();
+  test('clicking the trigger button should not open the popover menu dialog when show is false', async ({
+    page,
+  }) => {
+    const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+    const dropDownList = page.getByRole('list');
 
-      await triggerButton.click();
+    await expect(triggerButton).toBeVisible();
+    await expect(dropDownList).toBeHidden();
 
-      await expect(triggerButton).toBeVisible();
-      await expect(dropDownList).toBeHidden();
-    });
+    await triggerButton.click();
+
+    await expect(triggerButton).toBeVisible();
+    await expect(dropDownList).toBeHidden();
   });
 });
