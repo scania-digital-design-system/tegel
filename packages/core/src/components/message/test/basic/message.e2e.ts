@@ -20,11 +20,17 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('has icon', async ({ page }) => {
-      const messageIcon = page.getByRole('img');
-      await expect(messageIcon).toHaveCount(1);
-      await expect(messageIcon).toBeVisible();
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('has icon', async ({ page }) => {
+    const messageIcon = page.getByRole('img');
+    await expect(messageIcon).toHaveCount(1);
+    await expect(messageIcon).toBeVisible();
   });
 });
