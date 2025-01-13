@@ -20,24 +20,30 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('when in disabled state all but helper text should have pointer events none', async ({
-      page,
-    }) => {
-      // Check for disabled state of the datetime input
-      const datetimeInput = page.locator('input[type="datetime-local"]');
-      const label = page.locator('label');
-      const helperText = page.locator('.tds-datetime-helper .tds-helper');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      await expect(datetimeInput).toBeDisabled();
+  test('when in disabled state all but helper text should have pointer events none', async ({
+    page,
+  }) => {
+    // Check for disabled state of the datetime input
+    const datetimeInput = page.locator('input[type="datetime-local"]');
+    const label = page.locator('label');
+    const helperText = page.locator('.tds-datetime-helper .tds-helper');
 
-      await datetimeInput.hover();
-      await expect(datetimeInput).toHaveCSS('cursor', 'not-allowed');
+    await expect(datetimeInput).toBeDisabled();
 
-      await label.hover();
-      await expect(label).toHaveCSS('cursor', 'not-allowed');
+    await datetimeInput.hover();
+    await expect(datetimeInput).toHaveCSS('cursor', 'not-allowed');
 
-      await expect(helperText).not.toHaveCSS('pointer-events', 'none');
-    });
+    await label.hover();
+    await expect(label).toHaveCSS('cursor', 'not-allowed');
+
+    await expect(helperText).not.toHaveCSS('pointer-events', 'none');
   });
 });
