@@ -20,10 +20,16 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('icons exists', async ({ page }) => {
-      const images = page.getByRole('img');
-      await expect(images).toHaveCount(2);
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('icons exists', async ({ page }) => {
+    const images = page.getByRole('img');
+    await expect(images).toHaveCount(2);
   });
 });
