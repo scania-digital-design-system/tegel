@@ -23,17 +23,23 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('table has a settings button', async ({ page }) => {
-      const tdsTableToolbarSettings = page.getByRole('img');
-      await expect(tdsTableToolbarSettings).toHaveCount(1);
-      await expect(tdsTableToolbarSettings).toBeVisible();
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('table has a [Download] button', async ({ page }) => {
-      const tdsTableToolbarDownloadButton = page.getByRole('button', { name: /Download/ });
-      await expect(tdsTableToolbarDownloadButton).toHaveCount(1);
-      await expect(tdsTableToolbarDownloadButton).toBeVisible();
-    });
+  test('table has a settings button', async ({ page }) => {
+    const tdsTableToolbarSettings = page.getByRole('img');
+    await expect(tdsTableToolbarSettings).toHaveCount(1);
+    await expect(tdsTableToolbarSettings).toBeVisible();
+  });
+
+  test('table has a [Download] button', async ({ page }) => {
+    const tdsTableToolbarDownloadButton = page.getByRole('button', { name: /Download/ });
+    await expect(tdsTableToolbarDownloadButton).toHaveCount(1);
+    await expect(tdsTableToolbarDownloadButton).toBeVisible();
   });
 });

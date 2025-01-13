@@ -28,13 +28,6 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
     });
 
-    test('table has header "Sorting"', async ({ page }) => {
-      /* Search for header by text and see if it exists */
-      const tdsTableToolbarCaption = page.getByText('Sorting');
-      await expect(tdsTableToolbarCaption).toHaveCount(1);
-      await expect(tdsTableToolbarCaption).toBeVisible();
-    });
-
     test('column headers are clickable', async ({ page }) => {
       const myEventSpy = await page.spyOnEvent('tdsSort');
       const truckTypeHeader = page.getByText('Truck type');
@@ -64,5 +57,18 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff of screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
     });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('table has header "Sorting"', async ({ page }) => {
+    /* Search for header by text and see if it exists */
+    const tdsTableToolbarCaption = page.getByText('Sorting');
+    await expect(tdsTableToolbarCaption).toHaveCount(1);
+    await expect(tdsTableToolbarCaption).toBeVisible();
   });
 });

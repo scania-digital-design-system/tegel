@@ -33,17 +33,23 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff of screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
     });
+  });
+});
 
-    test('expect slotted input to show pen icon on hover', async ({ page }) => {
-      const inputfield = page.getByTestId('firstInput');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      await inputfield.hover();
+  test('expect slotted input to show pen icon on hover', async ({ page }) => {
+    const inputfield = page.getByTestId('firstInput');
 
-      // finding wrapper component after hover over slotted input
-      const icon = page.getByTestId('firstWrapper').locator('tds-icon');
-      let iconClass = await icon.evaluate((element: HTMLInputElement) => element.className);
+    await inputfield.hover();
 
-      expect(iconClass).toContain('edit-icon');
-    });
+    // finding wrapper component after hover over slotted input
+    const icon = page.getByTestId('firstWrapper').locator('tds-icon');
+    let iconClass = await icon.evaluate((element: HTMLInputElement) => element.className);
+
+    expect(iconClass).toContain('edit-icon');
   });
 });

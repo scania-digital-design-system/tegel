@@ -24,24 +24,6 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('table header contains checkbox', async ({ page }) => {
-      const tableHeaderCheckbox = page.getByRole('checkbox').first();
-      await expect(tableHeaderCheckbox).toHaveCount(1);
-      await expect(tableHeaderCheckbox).toBeVisible();
-    });
-
-    test('row should contain the correct number of checkboxes in each row', async ({ page }) => {
-      const tableBodyRowCheckboxes = page.getByRole('checkbox');
-      await expect(tableBodyRowCheckboxes).toHaveCount(5);
-
-      /* Check if each checkbox is visible */
-      const promises = [];
-      for (let i = 0; i < 5; i++) {
-        promises.push(expect(tableBodyRowCheckboxes.nth(i)).toBeVisible());
-      }
-      await Promise.all(promises);
-    });
-
     test('can check every checkbox in the table', async ({ page }) => {
       const tableCheckboxes = page.getByRole('cell');
       await expect(tableCheckboxes).toHaveCount(5);
@@ -63,5 +45,29 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot for component */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('table header contains checkbox', async ({ page }) => {
+    const tableHeaderCheckbox = page.getByRole('checkbox').first();
+    await expect(tableHeaderCheckbox).toHaveCount(1);
+    await expect(tableHeaderCheckbox).toBeVisible();
+  });
+
+  test('row should contain the correct number of checkboxes in each row', async ({ page }) => {
+    const tableBodyRowCheckboxes = page.getByRole('checkbox');
+    await expect(tableBodyRowCheckboxes).toHaveCount(5);
+
+    /* Check if each checkbox is visible */
+    const promises = [];
+    for (let i = 0; i < 5; i++) {
+      promises.push(expect(tableBodyRowCheckboxes.nth(i)).toBeVisible());
+    }
+    await Promise.all(promises);
   });
 });

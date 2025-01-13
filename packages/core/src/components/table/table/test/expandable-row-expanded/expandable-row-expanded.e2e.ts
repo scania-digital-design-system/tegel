@@ -48,16 +48,26 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(tableBodyExpandableRowSlot).toBeHidden();
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('has a set rowId attribute', async ({ page }) => {
-      const tableRow = page.locator('tds-table-body-row-expandable').first();
-      const rowId = await tableRow.getAttribute('row-id');
-      expect(rowId).toBe('1');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
 
-    test('has a randomly generated rowId attribute', async ({ page }) => {
-      const tableRow = page.locator('tds-table-body-row-expandable').last();
-      await expect(tableRow).toHaveAttribute('row-id');
-    });
+    const tableComponent = page.getByRole('table');
+    await expect(tableComponent).toHaveCount(1);
+    await tableComponent.waitFor({ state: 'visible' });
+  });
+
+  test('has a set rowId attribute', async ({ page }) => {
+    const tableRow = page.locator('tds-table-body-row-expandable').first();
+    const rowId = await tableRow.getAttribute('row-id');
+    expect(rowId).toBe('1');
+  });
+
+  test('has a randomly generated rowId attribute', async ({ page }) => {
+    const tableRow = page.locator('tds-table-body-row-expandable').last();
+    await expect(tableRow).toHaveAttribute('row-id');
   });
 });
