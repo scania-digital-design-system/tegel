@@ -34,24 +34,31 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
-    test('clicking the dropdown button does not open the dropdown-list', async ({ page }) => {
-      const dropdownButton = page.getByRole('textbox').first();
+  });
+});
 
-      /* check that the icon is inside of a disabled element */
-      await expect(dropdownButton).toBeDisabled();
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      const dropdownListElementOne = page
-        .locator('tds-dropdown-option')
-        .filter({ hasText: 'Option 1' });
+  test('clicking the dropdown button does not open the dropdown-list', async ({ page }) => {
+    const dropdownButton = page.getByRole('textbox').first();
 
-      await expect(dropdownListElementOne).toBeHidden();
-      /* force a click on the icon. Since the icon is inside of a disabled button playwright will error if it is not forced */
-      await dropdownButton.click({
-        force: true,
-      });
+    /* check that the icon is inside of a disabled element */
+    await expect(dropdownButton).toBeDisabled();
 
-      /* no child elements should be visible. */
-      await expect(dropdownListElementOne).toBeHidden();
+    const dropdownListElementOne = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: 'Option 1' });
+
+    await expect(dropdownListElementOne).toBeHidden();
+    /* force a click on the icon. Since the icon is inside of a disabled button playwright will error if it is not forced */
+    await dropdownButton.click({
+      force: true,
     });
+
+    /* no child elements should be visible. */
+    await expect(dropdownListElementOne).toBeHidden();
   });
 });

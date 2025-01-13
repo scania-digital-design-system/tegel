@@ -24,13 +24,6 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('find helper text and check if visible and have icon', async ({ page }) => {
-      const helperText = page.getByText(/Helper text/);
-      await expect(helperText).toBeVisible();
-      const helperTextIcon = helperText.getByRole('img');
-      await expect(helperTextIcon).toHaveCount(1);
-    });
-
     test('clicking the dropdown opens the dropdown-list', async ({ page }) => {
       const dropdownListElementOneButton = page
         .locator('tds-dropdown-option')
@@ -50,5 +43,18 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('find helper text and check if visible and have icon', async ({ page }) => {
+    const helperText = page.getByText(/Helper text/);
+    await expect(helperText).toBeVisible();
+    const helperTextIcon = helperText.getByRole('img');
+    await expect(helperTextIcon).toHaveCount(1);
   });
 });
