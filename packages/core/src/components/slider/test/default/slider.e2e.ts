@@ -23,62 +23,66 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('value is set to 50', async ({ page }) => {
-      const sliderValue = page.locator('.tds-slider__value');
-      await expect(sliderValue).toHaveText('50');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('min value is set to 0', async ({ page }) => {
-      /* Find thumb and pull it towards a left and check if min value is 0 */
-      await page.locator('.tds-slider__thumb-inner').hover();
-      await page.mouse.down();
-      await page.mouse.move(0, 0);
-      await page.mouse.up();
+  test('value is set to 50', async ({ page }) => {
+    const sliderValue = page.locator('.tds-slider__value');
+    await expect(sliderValue).toHaveText('50');
+  });
 
-      /* Compare value with initial one */
-      const thumbValue = page.locator('.tds-slider__value');
-      await expect(thumbValue).toHaveText('0');
-    });
+  test('min value is set to 0', async ({ page }) => {
+    /* Find thumb and pull it towards a left and check if min value is 0 */
+    await page.locator('.tds-slider__thumb-inner').hover();
+    await page.mouse.down();
+    await page.mouse.move(0, 0);
+    await page.mouse.up();
 
-    test('max value is set to 100', async ({ page }) => {
-      /* Find thumb and pull it towards a right and check if min value is 0 */
-      await page.locator('.tds-slider__thumb-inner').hover();
-      await page.mouse.down();
-      await page.mouse.move(2000, 0);
-      await page.mouse.up();
+    /* Compare value with initial one */
+    const thumbValue = page.locator('.tds-slider__value');
+    await expect(thumbValue).toHaveText('0');
+  });
 
-      /* Compare value with initial one */
-      const thumbValue = page.locator('.tds-slider__value');
-      await expect(thumbValue).toHaveText('100');
-    });
+  test('max value is set to 100', async ({ page }) => {
+    /* Find thumb and pull it towards a right and check if min value is 0 */
+    await page.locator('.tds-slider__thumb-inner').hover();
+    await page.mouse.down();
+    await page.mouse.move(2000, 0);
+    await page.mouse.up();
 
-    test('label is hidden', async ({ page }) => {
-      const slider = page.locator('tds-slider');
-      const sliderLabel = slider.locator('label');
-      await expect(sliderLabel).toHaveText('');
-    });
+    /* Compare value with initial one */
+    const thumbValue = page.locator('.tds-slider__value');
+    await expect(thumbValue).toHaveText('100');
+  });
 
-    test('slider is not read only or disabled', async ({ page }) => {
-      /* Find thumb and pull it towards a left and check if value in thumb is changing */
-      await page.locator('.tds-slider__thumb-inner').hover();
-      await page.mouse.down();
-      await page.mouse.move(100, 0);
-      await page.mouse.up();
+  test('label is hidden', async ({ page }) => {
+    const slider = page.locator('tds-slider');
+    const sliderLabel = slider.locator('label');
+    await expect(sliderLabel).toHaveText('');
+  });
 
-      /* Compare value with initial one */
-      const thumbValue = page.locator('.tds-slider__value');
-      await expect(thumbValue).not.toHaveText('50');
-    });
+  test('slider is not read only or disabled', async ({ page }) => {
+    /* Find thumb and pull it towards a left and check if value in thumb is changing */
+    await page.locator('.tds-slider__thumb-inner').hover();
+    await page.mouse.down();
+    await page.mouse.move(100, 0);
+    await page.mouse.up();
 
-    test('thumb is size large', async ({ page }) => {
-      const sliderThumb = page.locator('.tds-slider__thumb-inner');
-      const sliderThumbWidth = await sliderThumb.evaluate((style) => getComputedStyle(style).width);
-      const sliderThumbHeight = await sliderThumb.evaluate(
-        (style) => getComputedStyle(style).height,
-      );
-      expect(sliderThumbWidth).toBe('20px');
-      expect(sliderThumbHeight).toBe('20px');
-    });
+    /* Compare value with initial one */
+    const thumbValue = page.locator('.tds-slider__value');
+    await expect(thumbValue).not.toHaveText('50');
+  });
+
+  test('thumb is size large', async ({ page }) => {
+    const sliderThumb = page.locator('.tds-slider__thumb-inner');
+    const sliderThumbWidth = await sliderThumb.evaluate((style) => getComputedStyle(style).width);
+    const sliderThumbHeight = await sliderThumb.evaluate((style) => getComputedStyle(style).height);
+    expect(sliderThumbWidth).toBe('20px');
+    expect(sliderThumbHeight).toBe('20px');
   });
 });

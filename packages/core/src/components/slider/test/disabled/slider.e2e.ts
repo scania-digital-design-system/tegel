@@ -16,11 +16,6 @@ testConfigurations.basic.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('read-only is false', async ({ page }) => {
-      const slider = page.locator('tds-slider');
-      await expect(slider).not.toHaveAttribute('read-only');
-    });
-
     test('slider is disabled', async ({ page }) => {
       const slider = page.locator('tds-slider input');
       const sliderThumb = page.locator('.tds-slider__thumb');
@@ -32,13 +27,24 @@ testConfigurations.basic.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
       await expect(slider).toBeDisabled();
     });
+  });
+});
 
-    test('slider can not be clicked on', async ({ page }) => {
-      const sliderThumb = page.locator('.tds-slider__thumb-inner');
-      const sliderPointerEvents = await sliderThumb.evaluate(
-        (style) => getComputedStyle(style).pointerEvents,
-      );
-      expect(sliderPointerEvents).toBe('none');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('read-only is false', async ({ page }) => {
+    const slider = page.locator('tds-slider');
+    await expect(slider).not.toHaveAttribute('read-only');
+  });
+
+  test('slider can not be clicked on', async ({ page }) => {
+    const sliderThumb = page.locator('.tds-slider__thumb-inner');
+    const sliderPointerEvents = await sliderThumb.evaluate(
+      (style) => getComputedStyle(style).pointerEvents,
+    );
+    expect(sliderPointerEvents).toBe('none');
   });
 });
