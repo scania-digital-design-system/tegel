@@ -23,11 +23,17 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('Check so that height is correct to md measurements', async ({ page }) => {
-      const button = page.getByText('Button', { exact: true });
-      const buttonHeight = await button.evaluate((style) => getComputedStyle(style).height);
-      expect(buttonHeight).toBe('48px');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('Check so that height is correct to md measurements', async ({ page }) => {
+    const button = page.getByText('Button', { exact: true });
+    const buttonHeight = await button.evaluate((style) => getComputedStyle(style).height);
+    expect(buttonHeight).toBe('48px');
   });
 });

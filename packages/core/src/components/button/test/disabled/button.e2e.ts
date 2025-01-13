@@ -23,17 +23,23 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('disabled button should be disabled', async ({ page }) => {
-      /* Check if disabled */
-      const button = page.getByRole('button');
-      await expect(button).toBeDisabled();
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('the cursor should be not-allowed', async ({ page }) => {
-      const button = page.getByTestId('tds-button-testid').getByRole('button');
-      const buttonCursorState = await button.evaluate((style) => getComputedStyle(style).cursor);
-      expect(buttonCursorState).toBe('not-allowed');
-    });
+  test('disabled button should be disabled', async ({ page }) => {
+    /* Check if disabled */
+    const button = page.getByRole('button');
+    await expect(button).toBeDisabled();
+  });
+
+  test('the cursor should be not-allowed', async ({ page }) => {
+    const button = page.getByTestId('tds-button-testid').getByRole('button');
+    const buttonCursorState = await button.evaluate((style) => getComputedStyle(style).cursor);
+    expect(buttonCursorState).toBe('not-allowed');
   });
 });
