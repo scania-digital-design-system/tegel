@@ -26,27 +26,33 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('expect chip to be of the role button', async ({ page }) => {
-      const chipRole = page.getByRole('button');
-      await expect(chipRole).toHaveCount(1);
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('Check so that height is correct to lg/default measurements', async ({ page }) => {
-      const chip = page.locator('tds-chip label');
-      const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
-      expect(chipHeight).toBe('32px');
-    });
+  test('expect chip to be of the role button', async ({ page }) => {
+    const chipRole = page.getByRole('button');
+    await expect(chipRole).toHaveCount(1);
+  });
 
-    test('Chip is clickable', async ({ page }) => {
-      const chip = page.locator('tds-chip label');
-      chip.hover();
-      const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
-      expect(chipCursorStyle).toBe('pointer');
+  test('Check so that height is correct to lg/default measurements', async ({ page }) => {
+    const chip = page.locator('tds-chip label');
+    const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
+    expect(chipHeight).toBe('32px');
+  });
 
-      const myEventSpy = await page.spyOnEvent('click');
-      await chip.click();
-      expect(myEventSpy).toHaveReceivedEvent();
-    });
+  test('Chip is clickable', async ({ page }) => {
+    const chip = page.locator('tds-chip label');
+    chip.hover();
+    const chipCursorStyle = await chip.evaluate((style) => getComputedStyle(style).cursor);
+    expect(chipCursorStyle).toBe('pointer');
+
+    const myEventSpy = await page.spyOnEvent('click');
+    await chip.click();
+    expect(myEventSpy).toHaveReceivedEvent();
   });
 });
