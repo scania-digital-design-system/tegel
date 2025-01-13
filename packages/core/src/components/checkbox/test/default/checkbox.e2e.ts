@@ -22,18 +22,24 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('Hover and click on checkbox -> should become checked', async ({ page }) => {
-      const checkbox = page.locator('tds-checkbox');
-      // Hover over the checkbox
-      await checkbox.hover();
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      // Click the checkbox
-      await checkbox.click();
+  test('Hover and click on checkbox -> should become checked', async ({ page }) => {
+    const checkbox = page.locator('tds-checkbox');
+    // Hover over the checkbox
+    await checkbox.hover();
 
-      // Check if the checkbox is now checked
-      const isChecked = await checkbox.evaluate((element: HTMLInputElement) => element.checked);
-      expect(isChecked).toBe(true);
-    });
+    // Click the checkbox
+    await checkbox.click();
+
+    // Check if the checkbox is now checked
+    const isChecked = await checkbox.evaluate((element: HTMLInputElement) => element.checked);
+    expect(isChecked).toBe(true);
   });
 });
