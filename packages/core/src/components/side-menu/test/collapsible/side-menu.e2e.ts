@@ -25,12 +25,6 @@ testConfigurations.basic.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('collapse button exists on the bottom of side menu', async ({ page }) => {
-      const sideMenuCollapseButton = page.getByRole('button').filter({ hasText: /Collapse/ });
-      await expect(sideMenuCollapseButton).toHaveCount(1);
-      await expect(sideMenuCollapseButton).toBeVisible();
-    });
-
     test('click collapse button to close the menu', async ({ page }) => {
       const sideMenuCollapseButton = page.getByRole('button').filter({ hasText: /Collapse/ });
       await sideMenuCollapseButton.click();
@@ -40,5 +34,17 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('collapse button exists on the bottom of side menu', async ({ page }) => {
+    const sideMenuCollapseButton = page.getByRole('button').filter({ hasText: /Collapse/ });
+    await expect(sideMenuCollapseButton).toHaveCount(1);
+    await expect(sideMenuCollapseButton).toBeVisible();
   });
 });

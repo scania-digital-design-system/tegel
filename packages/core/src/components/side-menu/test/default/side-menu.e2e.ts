@@ -24,35 +24,41 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('all side menu buttons to be visible', async ({ page }) => {
-      const sideMenuButtons = page.getByRole('button');
-      await expect(sideMenuButtons).toHaveCount(4);
-      const promises = [];
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      for (let i = 0; i < 4; i++) {
-        promises.push(expect(sideMenuButtons.nth(i)).toBeVisible());
-      }
+  test('all side menu buttons to be visible', async ({ page }) => {
+    const sideMenuButtons = page.getByRole('button');
+    await expect(sideMenuButtons).toHaveCount(4);
+    const promises = [];
 
-      await Promise.all(promises);
-    });
+    for (let i = 0; i < 4; i++) {
+      promises.push(expect(sideMenuButtons.nth(i)).toBeVisible());
+    }
 
-    test('wheel type list is open by default and under Wheel types there are two sublink', async ({
-      page,
-    }) => {
-      /* Make sure first list item is there and visible */
-      const sideMenuWheelTypeListItemOne = page
-        .getByRole('listitem')
-        .getByRole('link', { name: /Hub-centric wheel/ });
-      await expect(sideMenuWheelTypeListItemOne).toHaveCount(1);
-      await expect(sideMenuWheelTypeListItemOne).toBeVisible();
+    await Promise.all(promises);
+  });
 
-      /* Make sure the second list item is there and visible */
-      const sideMenuWheelTypeListItemTwo = page
-        .getByRole('listitem')
-        .getByRole('link', { name: /Rim wheel/ });
-      await expect(sideMenuWheelTypeListItemTwo).toHaveCount(1);
-      await expect(sideMenuWheelTypeListItemTwo).toBeVisible();
-    });
+  test('wheel type list is open by default and under Wheel types there are two sublink', async ({
+    page,
+  }) => {
+    /* Make sure first list item is there and visible */
+    const sideMenuWheelTypeListItemOne = page
+      .getByRole('listitem')
+      .getByRole('link', { name: /Hub-centric wheel/ });
+    await expect(sideMenuWheelTypeListItemOne).toHaveCount(1);
+    await expect(sideMenuWheelTypeListItemOne).toBeVisible();
+
+    /* Make sure the second list item is there and visible */
+    const sideMenuWheelTypeListItemTwo = page
+      .getByRole('listitem')
+      .getByRole('link', { name: /Rim wheel/ });
+    await expect(sideMenuWheelTypeListItemTwo).toHaveCount(1);
+    await expect(sideMenuWheelTypeListItemTwo).toBeVisible();
   });
 });
