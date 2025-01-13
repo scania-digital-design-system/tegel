@@ -28,27 +28,6 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
-    test('should handle hover on accordion items', async ({ page }) => {
-      // Define selector for first accordion item
-      const accordionFirstItem = page.getByText('First item');
-
-      // Hover first accordion item
-      await accordionFirstItem.hover();
-
-      // Expect cursor to be pointer
-      await expect(accordionFirstItem).toHaveCSS('cursor', 'pointer');
-
-      // Define selector for second accordion item
-      await page.goto(componentTestPath);
-      const accordionSecondItem = page.getByText('Second item');
-
-      // Hover second accordion item
-      await accordionSecondItem.hover();
-
-      // Expect cursor to be pointer
-      await expect(accordionSecondItem).toHaveCSS('cursor', 'pointer');
-    });
-
     test('second accordion item opens on click', async ({ page }) => {
       // Define selector for second accordion item
       const accordionSecondItem = page.getByText('Second item');
@@ -59,26 +38,53 @@ testConfigurations.withModeVariants.forEach((config) => {
       // Check screenshot diff to make sure the second accordion item is open
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('fires tdsToggle event on click', async ({ page }) => {
-      // Define selector for first accordion item
-      const accordionFirstItem = page.getByText('First item');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      // Define selector for second accordion item
-      const accordionSecondItem = page.getByText('Second item');
+  test('should handle hover on accordion items', async ({ page }) => {
+    // Define selector for first accordion item
+    const accordionFirstItem = page.getByText('First item');
 
-      // Click first accordion item
-      const myEventSpy = await page.spyOnEvent('tdsToggle');
-      await accordionFirstItem.click();
+    // Hover first accordion item
+    await accordionFirstItem.hover();
 
-      // Expect event to be fired
-      expect(myEventSpy).toHaveReceivedEvent();
+    // Expect cursor to be pointer
+    await expect(accordionFirstItem).toHaveCSS('cursor', 'pointer');
 
-      // Click second accordion item
-      await accordionSecondItem.click();
+    // Define selector for second accordion item
+    await page.goto(componentTestPath);
+    const accordionSecondItem = page.getByText('Second item');
 
-      // Expect event to be fired
-      expect(myEventSpy).toHaveReceivedEvent();
-    });
+    // Hover second accordion item
+    await accordionSecondItem.hover();
+
+    // Expect cursor to be pointer
+    await expect(accordionSecondItem).toHaveCSS('cursor', 'pointer');
+  });
+
+  test('fires tdsToggle event on click', async ({ page }) => {
+    // Define selector for first accordion item
+    const accordionFirstItem = page.getByText('First item');
+
+    // Define selector for second accordion item
+    const accordionSecondItem = page.getByText('Second item');
+
+    // Click first accordion item
+    const myEventSpy = await page.spyOnEvent('tdsToggle');
+    await accordionFirstItem.click();
+
+    // Expect event to be fired
+    expect(myEventSpy).toHaveReceivedEvent();
+
+    // Click second accordion item
+    await accordionSecondItem.click();
+
+    // Expect event to be fired
+    expect(myEventSpy).toHaveReceivedEvent();
   });
 });
