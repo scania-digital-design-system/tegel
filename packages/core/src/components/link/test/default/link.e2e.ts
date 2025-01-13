@@ -26,39 +26,45 @@ testConfigurations.basic.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('text shows on page', async ({ page }) => {
-      await page.goto(componentTestPath);
-      const pageText = page.getByText(
-        'The Tegel Design System is for digital products and services at Scania. It enables an efficient' +
-          "    development process and ensures a premium experience across all of Scania's digital touchpoints.",
-        { exact: true },
-      );
-      await expect(pageText).toHaveCount(1);
-      await expect(pageText).toBeVisible();
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('word Tegel is a link', async ({ page }) => {
-      await page.goto(componentTestPath);
-      const tdsLink = page.locator('tds-link a');
-      await expect(tdsLink).toHaveAttribute('href');
-      await expect(tdsLink).toHaveText('Tegel');
-      await expect(tdsLink).toHaveCount(1);
-    });
+  test('text shows on page', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const pageText = page.getByText(
+      'The Tegel Design System is for digital products and services at Scania. It enables an efficient' +
+        "    development process and ensures a premium experience across all of Scania's digital touchpoints.",
+      { exact: true },
+    );
+    await expect(pageText).toHaveCount(1);
+    await expect(pageText).toBeVisible();
+  });
 
-    test('link is underlined', async ({ page }) => {
-      await page.goto(componentTestPath);
-      const tdsLink = page.getByText('Tegel', { exact: true });
-      const linkUnderlineState = await tdsLink.evaluate(
-        (style) => getComputedStyle(style).textDecorationLine,
-      );
-      expect(linkUnderlineState).toBe('underline');
-    });
+  test('word Tegel is a link', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const tdsLink = page.locator('tds-link a');
+    await expect(tdsLink).toHaveAttribute('href');
+    await expect(tdsLink).toHaveText('Tegel');
+    await expect(tdsLink).toHaveCount(1);
+  });
 
-    test('component is not disabled', async ({ page }) => {
-      await page.goto(componentTestPath);
-      await page.locator('tds-link').click();
-      await expect(page).toHaveURL('https://tegel.scania.com/home');
-    });
+  test('link is underlined', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const tdsLink = page.getByText('Tegel', { exact: true });
+    const linkUnderlineState = await tdsLink.evaluate(
+      (style) => getComputedStyle(style).textDecorationLine,
+    );
+    expect(linkUnderlineState).toBe('underline');
+  });
+
+  test('component is not disabled', async ({ page }) => {
+    await page.goto(componentTestPath);
+    await page.locator('tds-link').click();
+    await expect(page).toHaveURL('https://tegel.scania.com/home');
   });
 });
