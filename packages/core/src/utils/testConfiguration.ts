@@ -39,21 +39,22 @@ export const testConfigurations = {
     },
   ],
 };
-
 export const setupPage = async (page, config, componentTestPath, componentName) => {
   await page.goto(componentTestPath);
 
-  const themeClass = themeClasses[config.theme];
-  await page.evaluate((className) => {
-    document.body.classList.add(className);
-  }, themeClass);
+  const evaluateData = {
+    className: themeClasses[config.theme],
+    backgroundColor: config.backgroundColor,
+  };
 
-  await page.evaluate((backgroundColor) => {
+  await page.evaluate(({ className, backgroundColor }) => {
+    document.body.classList.add(className);
+
     document.body.setAttribute(
       'style',
       `background-color: ${backgroundColor}; padding-top: 20px; padding-bottom: 20px;`,
     );
-  }, config.backgroundColor);
+  }, evaluateData);
 
   if (config.modeVariant) {
     const elementLocator = page.locator(componentName);
@@ -64,9 +65,7 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
   }
 };
 
-export const getTestDescribeText = (config, testDescription) => {
-  if (config.modeVariant) {
-    return `${testDescription}-${config.modeVariant}-${config.theme}`;
-  }
-  return `${testDescription}-${config.theme}`;
-};
+export const getTestDescribeText = (config, testDescription) =>
+  config.modeVariant
+    ? `${testDescription}-${config.modeVariant}-${config.theme}`
+    : `${testDescription}-${config.theme}`;
