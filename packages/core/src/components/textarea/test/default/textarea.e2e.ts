@@ -45,11 +45,17 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Expect no difference in screenshot  */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('not able to find label if "no-label" is set', async ({ page }) => {
-      const textareaLabel = page.getByText('Label');
-      await expect(textareaLabel).toHaveCount(0);
-      await expect(textareaLabel).toBeHidden();
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('not able to find label if "no-label" is set', async ({ page }) => {
+    const textareaLabel = page.getByText('Label');
+    await expect(textareaLabel).toHaveCount(0);
+    await expect(textareaLabel).toBeHidden();
   });
 });

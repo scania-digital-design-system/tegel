@@ -26,20 +26,24 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Expect no diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('read-only textarea - native textarea should have readonly attribute', async ({
-      page,
-    }) => {
-      const textarea = page.getByRole('textbox');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      /* Expect the textarea within tds-textarea to have the readonly attribute */
-      await expect(textarea).toHaveAttribute('readonly');
-    });
+  test('read-only textarea - native textarea should have readonly attribute', async ({ page }) => {
+    const textarea = page.getByRole('textbox');
 
-    test('be able to find label if "outside" is set', async ({ page }) => {
-      const textareaLabel = page.getByText('Label');
-      await expect(textareaLabel).toHaveCount(1);
-      await expect(textareaLabel).toBeVisible();
-    });
+    /* Expect the textarea within tds-textarea to have the readonly attribute */
+    await expect(textarea).toHaveAttribute('readonly');
+  });
+
+  test('be able to find label if "outside" is set', async ({ page }) => {
+    const textareaLabel = page.getByText('Label');
+    await expect(textareaLabel).toHaveCount(1);
+    await expect(textareaLabel).toBeVisible();
   });
 });

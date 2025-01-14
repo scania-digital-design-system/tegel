@@ -22,24 +22,28 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Expect no difference in screenshot  */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('test if able to type in textarea', async ({ page }) => {
-      const textarea = page.getByRole('textbox');
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      /* Expect to have received an event from clicking on the textarea */
-      const myEventSpy = await page.spyOnEvent('click');
-      await textarea.click();
-      expect(myEventSpy).toHaveReceivedEvent();
+  test('test if able to type in textarea', async ({ page }) => {
+    const textarea = page.getByRole('textbox');
 
-      /* Expect the textbox to have the cursor text style */
-      const textareaCursorState = await textarea.evaluate(
-        (style) => getComputedStyle(style).cursor,
-      );
-      expect(textareaCursorState).toBe('text');
+    /* Expect to have received an event from clicking on the textarea */
+    const myEventSpy = await page.spyOnEvent('click');
+    await textarea.click();
+    expect(myEventSpy).toHaveReceivedEvent();
 
-      /* Expect the inputValue of textarea to have "Adding some text" after it has been typed */
-      await textarea.fill('Adding some text');
-      expect(await textarea.inputValue()).toBe('Adding some text');
-    });
+    /* Expect the textbox to have the cursor text style */
+    const textareaCursorState = await textarea.evaluate((style) => getComputedStyle(style).cursor);
+    expect(textareaCursorState).toBe('text');
+
+    /* Expect the inputValue of textarea to have "Adding some text" after it has been typed */
+    await textarea.fill('Adding some text');
+    expect(await textarea.inputValue()).toBe('Adding some text');
   });
 });
