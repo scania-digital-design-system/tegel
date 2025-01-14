@@ -7,7 +7,6 @@ const themeClasses = {
 
 export const testConfigurations = {
   withModeVariants: [
-    undefined,
     {
       modeVariant: 'primary',
       theme: 'lightmode',
@@ -30,7 +29,6 @@ export const testConfigurations = {
     },
   ],
   basic: [
-    undefined,
     {
       theme: 'lightmode',
       backgroundColor: 'white',
@@ -45,35 +43,30 @@ export const testConfigurations = {
 export const setupPage = async (page, config, componentTestPath, componentName) => {
   await page.goto(componentTestPath);
 
-  if (config) {
-    const themeClass = themeClasses[config.theme];
-    await page.evaluate((className) => {
-      document.body.classList.add(className);
-    }, themeClass);
+  const themeClass = themeClasses[config.theme];
+  await page.evaluate((className) => {
+    document.body.classList.add(className);
+  }, themeClass);
 
-    await page.evaluate((backgroundColor) => {
-      document.body.setAttribute(
-        'style',
-        `background-color: ${backgroundColor}; padding-top: 20px; padding-bottom: 20px;`,
-      );
-    }, config.backgroundColor);
+  await page.evaluate((backgroundColor) => {
+    document.body.setAttribute(
+      'style',
+      `background-color: ${backgroundColor}; padding-top: 20px; padding-bottom: 20px;`,
+    );
+  }, config.backgroundColor);
 
-    if (config.modeVariant) {
-      const elementLocator = page.locator(componentName);
-      await expect(elementLocator).toHaveCount(1);
-      await elementLocator.evaluate((element, modeVariant) => {
-        element.setAttribute('mode-variant', modeVariant);
-      }, config.modeVariant);
-    }
+  if (config.modeVariant) {
+    const elementLocator = page.locator(componentName);
+    await expect(elementLocator).toHaveCount(1);
+    await elementLocator.evaluate((element, modeVariant) => {
+      element.setAttribute('mode-variant', modeVariant);
+    }, config.modeVariant);
   }
 };
 
 export const getTestDescribeText = (config, testDescription) => {
-  if (config) {
-    if (config.modeVariant) {
-      return `${testDescription}-${config.modeVariant}-${config.theme}`;
-    }
-    return `${testDescription}-${config.theme}`;
+  if (config.modeVariant) {
+    return `${testDescription}-${config.modeVariant}-${config.theme}`;
   }
-  return testDescription;
+  return `${testDescription}-${config.theme}`;
 };
