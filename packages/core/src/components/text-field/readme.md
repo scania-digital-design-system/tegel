@@ -40,7 +40,7 @@
 
 ## Methods
 
-### `focusTextField() => Promise<void>`
+### `focusElement() => Promise<void>`
 
 Method to handle focus
 

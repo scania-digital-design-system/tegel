@@ -132,7 +132,7 @@ export class TdsTextField {
 
   /** Method to handle focus */
   @Method()
-  async focusTextField() {
+  async focusElement() {
     if (this.textInput) {
       this.textInput.focus();
     }
