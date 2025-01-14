@@ -33,32 +33,38 @@ testConfigurations.basic.forEach((config) => {
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('tooltip contains correct HTML content on hover', async ({ page }) => {
-      // Hover over the button to trigger the tooltip
-      const button = page.locator('tds-button#button-1');
-      await button.hover();
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-      const tooltipParagraph = page.locator('.tooltip-paragraph');
+  test('tooltip contains correct HTML content on hover', async ({ page }) => {
+    // Hover over the button to trigger the tooltip
+    const button = page.locator('tds-button#button-1');
+    await button.hover();
 
-      // Verify the paragraph is visible as part of the tooltip
-      await expect(tooltipParagraph).toBeVisible();
+    const tooltipParagraph = page.locator('.tooltip-paragraph');
 
-      // Fetch the inner HTML of the tooltip paragraph
-      let innerHtml = await tooltipParagraph.innerHTML();
+    // Verify the paragraph is visible as part of the tooltip
+    await expect(tooltipParagraph).toBeVisible();
 
-      // Normalize whitespace in the inner HTML for comparison
-      innerHtml = innerHtml.replace(/\s+/g, ' ').trim();
+    // Fetch the inner HTML of the tooltip paragraph
+    let innerHtml = await tooltipParagraph.innerHTML();
 
-      // Remove class attributes from the inner HTML
-      innerHtml = innerHtml.replace(/ class="[^"]*"/g, '');
+    // Normalize whitespace in the inner HTML for comparison
+    innerHtml = innerHtml.replace(/\s+/g, ' ').trim();
 
-      // Define the expected HTML content, ensuring to trim any potential whitespace for a precise match
-      const expectedHtmlContent =
-        'Paragraph tag inside of Tooltip with <b>bold</b> and <i>italic</i> tags too.';
+    // Remove class attributes from the inner HTML
+    innerHtml = innerHtml.replace(/ class="[^"]*"/g, '');
 
-      // Perform the comparison to verify the tooltip's content
-      expect(innerHtml).toEqual(expectedHtmlContent);
-    });
+    // Define the expected HTML content, ensuring to trim any potential whitespace for a precise match
+    const expectedHtmlContent =
+      'Paragraph tag inside of Tooltip with <b>bold</b> and <i>italic</i> tags too.';
+
+    // Perform the comparison to verify the tooltip's content
+    expect(innerHtml).toEqual(expectedHtmlContent);
   });
 });
