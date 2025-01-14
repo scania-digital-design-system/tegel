@@ -26,11 +26,20 @@ testConfigurations.basic.forEach((config) => {
       /* Expect no difference in screenshot  */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    // Test if component has no action slot
-    test('should not have action slot', async ({ page }) => {
-      const tdsToast = page.getByTestId('tds-toast-testid');
-      await expect(tdsToast).not.toHaveText(/Link example/);
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    const tdsToast = page.getByTestId('tds-toast-testid');
+    expect(tdsToast).not.toBeNull();
+  });
+
+  // Test if component has no action slot
+  test('should not have action slot', async ({ page }) => {
+    const tdsToast = page.getByTestId('tds-toast-testid');
+    await expect(tdsToast).not.toHaveText(/Link example/);
   });
 });

@@ -26,12 +26,21 @@ testConfigurations.basic.forEach((config) => {
       /* Expect no difference in screenshot  */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    // Test if component does not have close button
-    test('should not have close button', async ({ page }) => {
-      const tdsToast = page.getByTestId('tds-toast-testid');
-      const closeButton = tdsToast.locator('button.close');
-      await expect(closeButton).toHaveCount(0);
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+
+    const tdsToast = page.getByTestId('tds-toast-testid');
+    expect(tdsToast).not.toBeNull();
+  });
+
+  // Test if component does not have close button
+  test('should not have close button', async ({ page }) => {
+    const tdsToast = page.getByTestId('tds-toast-testid');
+    const closeButton = tdsToast.locator('button.close');
+    await expect(closeButton).toHaveCount(0);
   });
 });
