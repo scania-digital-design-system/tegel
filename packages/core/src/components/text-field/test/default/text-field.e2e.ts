@@ -26,84 +26,90 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('should have type "text"', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).toHaveAttribute('type', 'text');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('should have size "lg"', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).toHaveAttribute('size', 'lg');
-    });
+  test('should have type "text"', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).toHaveAttribute('type', 'text');
+  });
 
-    test('should have correct height', async ({ page }) => {
-      const height = await page.evaluate((textField) => {
-        const element = document.querySelector(textField);
-        return element.getBoundingClientRect().height;
-      }, 'tds-text-field');
-      expect(height).toBe(56);
-    });
+  test('should have size "lg"', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).toHaveAttribute('size', 'lg');
+  });
 
-    test('should not render label in "no-label" state', async ({ page }) => {
-      const textFieldLabelSelector = page.locator('tds-text-field label');
-      await expect(textFieldLabelSelector).toHaveCount(0);
-    });
+  test('should have correct height', async ({ page }) => {
+    const height = await page.evaluate((textField) => {
+      const element = document.querySelector(textField);
+      return element.getBoundingClientRect().height;
+    }, 'tds-text-field');
+    expect(height).toBe(56);
+  });
 
-    test('should have correct placeholder', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).toHaveAttribute('placeholder', 'Placeholder');
-    });
+  test('should not render label in "no-label" state', async ({ page }) => {
+    const textFieldLabelSelector = page.locator('tds-text-field label');
+    await expect(textFieldLabelSelector).toHaveCount(0);
+  });
 
-    test('should not have a prefix', async ({ page }) => {
-      const prefixPresence = page.locator('tds-text-field span[slot="prefix"]');
-      await expect(prefixPresence).toHaveCount(0);
-    });
+  test('should have correct placeholder', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).toHaveAttribute('placeholder', 'Placeholder');
+  });
 
-    test('should not have a suffix', async ({ page }) => {
-      const suffixPresence = page.locator('tds-text-field span[slot="suffix"]');
-      await expect(suffixPresence).toHaveCount(0);
-    });
+  test('should not have a prefix', async ({ page }) => {
+    const prefixPresence = page.locator('tds-text-field span[slot="prefix"]');
+    await expect(prefixPresence).toHaveCount(0);
+  });
 
-    test('should not have "no-min-width" attribute', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).not.toHaveAttribute('no-min-width');
-    });
+  test('should not have a suffix', async ({ page }) => {
+    const suffixPresence = page.locator('tds-text-field span[slot="suffix"]');
+    await expect(suffixPresence).toHaveCount(0);
+  });
 
-    test('should have width greater than 200px', async ({ page }) => {
-      const width = await page.evaluate((textField) => {
-        const element = document.querySelector(textField);
-        return element.getBoundingClientRect().width;
-      }, 'tds-text-field');
-      expect(width).toBeGreaterThan(200);
-    });
+  test('should not have "no-min-width" attribute', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).not.toHaveAttribute('no-min-width');
+  });
 
-    test('should not be read-only', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).not.toHaveAttribute('read-only');
-    });
+  test('should have width greater than 200px', async ({ page }) => {
+    const width = await page.evaluate((textField) => {
+      const element = document.querySelector(textField);
+      return element.getBoundingClientRect().width;
+    }, 'tds-text-field');
+    expect(width).toBeGreaterThan(200);
+  });
 
-    test('should not be disabled', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).not.toHaveAttribute('disabled');
-    });
+  test('should not be read-only', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).not.toHaveAttribute('read-only');
+  });
 
-    test('should handle hover, click, and input on text field', async ({ page }) => {
-      // Define the selector for the text field input
-      const textFieldInputSelector = 'tds-text-field input';
+  test('should not be disabled', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).not.toHaveAttribute('disabled');
+  });
 
-      // Hover over the text field
-      await page.hover(textFieldInputSelector);
+  test('should handle hover, click, and input on text field', async ({ page }) => {
+    // Define the selector for the text field input
+    const textFieldInputSelector = 'tds-text-field input';
 
-      // Click on the text field to activate it
-      await page.click(textFieldInputSelector);
+    // Hover over the text field
+    await page.hover(textFieldInputSelector);
 
-      // Type 'Test text' into the text field
-      await page.fill(textFieldInputSelector, 'Test text');
+    // Click on the text field to activate it
+    await page.click(textFieldInputSelector);
 
-      // Verify the text field contains the inputted text
-      const value = await page.inputValue(textFieldInputSelector);
-      expect(value).toBe('Test text');
-    });
+    // Type 'Test text' into the text field
+    await page.fill(textFieldInputSelector, 'Test text');
+
+    // Verify the text field contains the inputted text
+    const value = await page.inputValue(textFieldInputSelector);
+    expect(value).toBe('Test text');
   });
 });

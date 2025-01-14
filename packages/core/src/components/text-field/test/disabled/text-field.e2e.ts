@@ -26,22 +26,28 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('should have disabled attribute', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).toHaveAttribute('disabled', '');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    test('should not allow input', async ({ page }) => {
-      // Define the selector for the text field input
-      const textFieldInputSelector = 'tds-text-field input';
+  test('should have disabled attribute', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).toHaveAttribute('disabled', '');
+  });
 
-      // Check that the input is not editable
-      const input = page.locator(textFieldInputSelector);
-      await expect(input).not.toBeEditable();
+  test('should not allow input', async ({ page }) => {
+    // Define the selector for the text field input
+    const textFieldInputSelector = 'tds-text-field input';
 
-      // Check if selector has "not-allowed" cursor
-      await expect(page.locator(textFieldInputSelector)).toHaveCSS('cursor', 'not-allowed');
-    });
+    // Check that the input is not editable
+    const input = page.locator(textFieldInputSelector);
+    await expect(input).not.toBeEditable();
+
+    // Check if selector has "not-allowed" cursor
+    await expect(page.locator(textFieldInputSelector)).toHaveCSS('cursor', 'not-allowed');
   });
 });

@@ -26,45 +26,48 @@ testConfigurations.withModeVariants.forEach((config) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
 
-    test('should have state "success"', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).toHaveAttribute('state', 'success');
-    });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
 
-    // only check color when no mode variant or mode is set:
-    if (!config) {
-      test('should have correct border-bottom-color using CSS variable', async ({ page }) => {
-        const textFieldContainer = page.locator('tds-text-field .text-field-container');
+  test('should have state "success"', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).toHaveAttribute('state', 'success');
+  });
 
-        const borderBottomColor = await textFieldContainer.evaluate((element) =>
-          getComputedStyle(element).getPropertyValue('border-bottom-color'),
-        );
+  test('should have correct border-bottom-color using CSS variable', async ({ page }) => {
+    const textFieldContainer = page.locator('tds-text-field .text-field-container');
 
-        expect(borderBottomColor).toBe('rgb(13, 15, 19)');
-      });
-    }
+    const borderBottomColor = await textFieldContainer.evaluate((element) =>
+      getComputedStyle(element).getPropertyValue('border-bottom-color'),
+    );
 
-    test('should have read-only attribute', async ({ page }) => {
-      const textField = page.locator(textFieldSelector);
-      await expect(textField).toHaveAttribute('read-only');
-    });
+    expect(borderBottomColor).toBe('rgb(13, 15, 19)');
+  });
 
-    test('should have read-only icon', async ({ page }) => {
-      const textFieldIconSelector = page.locator('tds-text-field tds-icon[name="edit_inactive"]');
-      await expect(textFieldIconSelector).toBeVisible();
-    });
+  test('should have read-only attribute', async ({ page }) => {
+    const textField = page.locator(textFieldSelector);
+    await expect(textField).toHaveAttribute('read-only');
+  });
 
-    test('should not allow input', async ({ page }) => {
-      // Define the selector for the text field input
-      const textFieldInputSelector = 'tds-text-field input';
+  test('should have read-only icon', async ({ page }) => {
+    const textFieldIconSelector = page.locator('tds-text-field tds-icon[name="edit_inactive"]');
+    await expect(textFieldIconSelector).toBeVisible();
+  });
 
-      // Check that the input is not editable
-      const input = page.locator(textFieldInputSelector);
-      await expect(input).not.toBeEditable();
+  test('should not allow input', async ({ page }) => {
+    // Define the selector for the text field input
+    const textFieldInputSelector = 'tds-text-field input';
 
-      // Check if selector has "auto" cursor
-      await expect(page.locator(textFieldInputSelector)).toHaveCSS('cursor', 'auto');
-    });
+    // Check that the input is not editable
+    const input = page.locator(textFieldInputSelector);
+    await expect(input).not.toBeEditable();
+
+    // Check if selector has "auto" cursor
+    await expect(page.locator(textFieldInputSelector)).toHaveCSS('cursor', 'auto');
   });
 });
