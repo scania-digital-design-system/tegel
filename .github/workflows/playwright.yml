@@ -39,4 +39,4 @@ jobs:
         with:
           name: playwright-output
           path: ./packages/core/test-results/output ## Folder used in playwright.config.js `outputDir`
-          retention-days: 3
+          retention-days: 1
