@@ -1,16 +1,31 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  getTestDescribeText,
+  setupPage,
+  testConfigurations,
+} from '../../../../utils/testConfiguration';
 
-const componentTestPath = 'src/components/banner/test/default/lightmode/index.html';
+const componentTestPath = 'src/components/banner/test/default/index.html';
+const componentName = 'tds-banner';
+const testDescription = 'tds-banner-default';
 
-test.describe.parallel('tds-banner-default-lightmode', () => {
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders default banner correctly', async ({ page }) => {
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-  });
-
-  test('renders default banner correctly', async ({ page }) => {
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('header exists', async ({ page }) => {
