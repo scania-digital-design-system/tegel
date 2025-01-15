@@ -76,14 +76,22 @@ html {
     var(--tds-motion-easing-exit) forwards;
 
   /* ### Slide Short ### */
-  --slide-top-short-animation: tds-slide-top-short var(--tds-motion-duration-slow-02)
+  --slide-in-top-short-animation: tds-slide-top-short var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-enter) forwards;
-  --slide-bottom-short-animation: tds-slide-bottom-short var(--tds-motion-duration-slow-02)
+  --slide-in-right-short-animation: tds-slide-right-short var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-enter) forwards;
-  --slide-left-short-animation: tds-slide-left-short var(--tds-motion-duration-slow-02)
+  --slide-in-bottom-short-animation: tds-slide-bottom-short var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-enter) forwards;
-  --slide-right-short-animation: tds-slide-right-short var(--tds-motion-duration-slow-02)
+  --slide-in-left-short-animation: tds-slide-left-short var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-enter) forwards;
+  --slide-out-top-short-animation: tds-slide-out-top-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+  --slide-out-bottom-short-animation: tds-slide-out-bottom-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+  --slide-out-left-short-animation: tds-slide-out-left-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
+  --slide-out-right-short-animation: tds-slide-out-right-short var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-exit) forwards;
 
   /* ### Collapse ### */
   --collapse-in-animation: tds-collapse-in var(--tds-motion-duration-slow-02)
