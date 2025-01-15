@@ -150,6 +150,7 @@ export const parameters = {
         'Foundations',
         'Utilities',
         'Patterns',
+        'Motions',
         'Components',
       ],
     },
