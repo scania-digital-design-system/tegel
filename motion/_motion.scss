@@ -126,4 +126,34 @@ html {
     tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
     forwards,
     tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
+
+  // Animation Classes
+
+  --zoom-enter: tds-fade-in var(--tds-motion-duration-fast-02) var(--tds-motion-easing-linear)
+    forwards,
+    tds-zoom-in-hidden var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania) forwards;
+  --zoom-exit: tds-fade-out var(--tds-motion-duration-fast-02) var(--tds-motion-easing-exit)
+    forwards,
+    tds-zoom-out var(--tds-motion-duration-fast-02) var(--tds-motion-easing-exit) forwards;
+  --collapse-enter: tds-fade-in var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
+    forwards,
+    tds-collapse-in-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
+    forwards;
+  --collapse-exit: tds-fade-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+    forwards,
+    tds-collapse-out var(--tds-motion-duration-slo-w02) var(--tds-motion-easing-exit) forwards;
+  --slide-enter: tds-fade-in var(--tds-motion-duration-slow-02) var(--tds-motion-easing-linear)
+    forwards,
+    tds-slide-bottom-short-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
+    forwards;
+  --slide-exit: tds-fade-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+    forwards,
+    tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+    forwards;
+  --elevate-enter: tds-fade-in 1s var(--tds-motion-easing-linear) forwards,
+    tds-slide-in-bottom-hidden 1s var(--tds-motion-easing-scania) forwards,
+    tds-zoom-in-hidden 1s var(--tds-motion-easing-scania) forwards;
+  --elevate-exit: tds-fade-in 1s var(--tds-motion-easing-exit) forwards,
+    tds-slide-up-bottom 1s var(--tds-motion-easing-exit) forwards,
+    tds-zoom-out 1s var(--tds-motion-easing-exit) forwards;
 }
