@@ -1,43 +1,52 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/side-menu/test/expand-toggle/index.html';
+const componentName = 'tds-side-menu';
+const testDescription = 'tds-side-menu-toggle-expand';
 
-test.describe.parallel('tds-side-menu-toggle-expand', () => {
-  test('toggle collapse and expand programmatically', async ({ page }) => {
-    await page.goto(componentTestPath);
-
-    const wrapper = await page.locator('tds-side-menu-dropdown > .wrapper');
-    await expect(wrapper).toHaveClass(/state-open/);
-
-    const dropdown = await page.locator('tds-side-menu-dropdown');
-    await dropdown.evaluate((element) => {
-      element.setAttribute('open', 'false');
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
     });
-    await expect(wrapper).not.toHaveClass(/state-open/);
 
-    await dropdown.evaluate((element) => {
-      element.setAttribute('open', 'true');
+    test('toggle collapse and expand programmatically', async ({ page }) => {
+      const wrapper = await page.locator('tds-side-menu-dropdown > .wrapper');
+      await expect(wrapper).toHaveClass(/state-open/);
+
+      const dropdown = await page.locator('tds-side-menu-dropdown');
+      await dropdown.evaluate((element) => {
+        element.setAttribute('open', 'false');
+      });
+      await expect(wrapper).not.toHaveClass(/state-open/);
+
+      await dropdown.evaluate((element) => {
+        element.setAttribute('open', 'true');
+      });
+      await expect(wrapper).toHaveClass(/state-open/);
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
-    await expect(wrapper).toHaveClass(/state-open/);
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
+    test('collapse programmatically and expand on the UI', async ({ page }) => {
+      const wrapper = await page.locator('tds-side-menu-dropdown > .wrapper');
 
-  test('collapse programmatically and expand on the UI', async ({ page }) => {
-    await page.goto(componentTestPath);
+      const dropdown = await page.locator('tds-side-menu-dropdown');
+      await dropdown.evaluate((element) => {
+        element.setAttribute('open', 'false');
+      });
+      await expect(wrapper).not.toHaveClass(/state-open/);
 
-    const wrapper = await page.locator('tds-side-menu-dropdown > .wrapper');
+      await await page.getByText('Wheel types').click();
+      await expect(wrapper).toHaveClass(/state-open/);
 
-    const dropdown = await page.locator('tds-side-menu-dropdown');
-    await dropdown.evaluate((element) => {
-      element.setAttribute('open', 'false');
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
-    await expect(wrapper).not.toHaveClass(/state-open/);
-
-    await await page.getByText('Wheel types').click();
-    await expect(wrapper).toHaveClass(/state-open/);
-
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });
