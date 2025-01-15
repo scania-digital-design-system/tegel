@@ -5,11 +5,7 @@ export default {
   parameters: {
     notes: {},
     layout: 'fullscreen',
-    docs: {
-      source: {
-        state: 'closed',
-      },
-    },
+
     design: [
       {
         name: 'Figma',
@@ -30,7 +26,6 @@ export default {
 const Template = () =>
   formatHtmlPreview(
     `
-    <main class="tds-u-w-100 tds-u-p3" style="box-sizing: border-box;">
       <h2>Fade</h2>
       <div class="tds-u-flex-start tds-u-gap4">
         <!-- Fade Animation Box -->
@@ -144,7 +139,6 @@ const Template = () =>
           <p>--slide-out-left-animation</p>
         </div>
       </div>
-
       <h2>Slide Short</h2>
 
       <div class="tds-u-flex-start tds-u-gap4">
@@ -247,21 +241,29 @@ const Template = () =>
         </div>
       </div>
 
-    </main>
-
-
-
-<style>
+  <style>
 
   body, html {
       margin: 0; /* Remove default margins */
       padding: 0; /* Remove default padding */
       height: 100%; /* Ensure body and html take full viewport height */
+      background-color: #121212; /* Set the dark background color */
+      color: #ffffff; /* Adjust text color for dark mode */
+  }
+
+  main {
+      min-height: 100vh; /* Ensure main content takes at least full viewport height */
+      box-sizing: border-box;
+      background-color: #121212; /* Set background color for dark mode compatibility */
   }
 
   main {
       min-height: 100vh; /* Make sure the main content takes at least the full viewport height */
       box-sizing: border-box;
+  }
+
+  p {
+    font-size: 12px;
   }
 
   .grey-box:hover {
@@ -378,7 +380,8 @@ const Template = () =>
 
   /* Slide Animation */
   .slide-in-top-box {
-  transform: translateY(-100%);
+    visibility: hidden;
+    transform: translateY(-100%);
   }
   
   .grey-box:hover .slide-in-top-box {
@@ -386,6 +389,7 @@ const Template = () =>
   }
 
   .slide-in-right-box {
+    visibility: hidden;
     transform: translateX(100%);
   }
   
@@ -394,6 +398,7 @@ const Template = () =>
   }
   
   .slide-in-bottom-box {
+    visibility: hidden;
     transform: translateY(100%);
   }
   
@@ -402,6 +407,7 @@ const Template = () =>
   }
   
   .slide-in-left-box {
+    visibility: hidden;
     transform: translateX(-100%);
   }
   
@@ -410,6 +416,7 @@ const Template = () =>
   }
 
   .slide-out-top-box {
+    visibility: visible;
     transform: translateY(0);
   }
   
@@ -418,6 +425,7 @@ const Template = () =>
   }
   
   .slide-out-right-box {
+    visibility: visible;
     transform: translateX(0);
   }
 
@@ -426,6 +434,7 @@ const Template = () =>
   }
 
   .slide-out-bottom-box {
+    visibility: visible;
     transform: translateY(0);
   }
 
@@ -434,6 +443,7 @@ const Template = () =>
   }
 
   .slide-out-left-box {
+    visibility: visible;
     transform: translateX(0);
   }
 
@@ -443,6 +453,7 @@ const Template = () =>
 
   /* Slide Short Animation */
   .slide-in-top-short-box {
+    visibility: hidden;
     transform: translateY(-16px);
   }
 
@@ -451,6 +462,7 @@ const Template = () =>
   }
 
   .slide-in-right-short-box {
+    visibility: hidden;
     transform: translateX(16px);
   }
   
@@ -459,6 +471,7 @@ const Template = () =>
   }
 
   .slide-in-bottom-short-box {
+    visibility: hidden;
     transform: translateY(16px);
   }
   
@@ -467,6 +480,7 @@ const Template = () =>
   }
 
   .slide-in-left-short-box {
+    visibility: hidden;
     transform: translateX(-16px);
   }
 
@@ -475,6 +489,7 @@ const Template = () =>
   }
 
   .slide-out-top-short-box {
+    visibility: visible;
     transform: translateY(0);
   }
 
@@ -483,6 +498,7 @@ const Template = () =>
   }
 
   .slide-out-right-short-box {
+    visibility: visible;
     transform: translateX(0);
   }
 
@@ -491,6 +507,7 @@ const Template = () =>
   }
 
   .slide-out-bottom-short-box {
+    visibility: visible;
     transform: translateY(0);
   }
 
@@ -499,6 +516,7 @@ const Template = () =>
   }
 
   .slide-out-left-short-box {
+    visibility: visible;
     transform: translateX(0);
   }
 
@@ -549,7 +567,7 @@ const Template = () =>
   }
 
 
-</style>
+  </style>
 
   `,
   );
