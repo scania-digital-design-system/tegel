@@ -2,12 +2,16 @@ import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
+const testDescription = 'tds-table-expandable-row-double-click-first';
 
-test.describe('tds-table-expandable-row-double-click-first', () => {
+test.describe.parallel(testDescription, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
   test('double click on expand button in first row -> expanded row should be closed', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const tableBodyRowFirstInput = page.getByRole('cell').nth(1);
     await tableBodyRowFirstInput.dblclick();
 
