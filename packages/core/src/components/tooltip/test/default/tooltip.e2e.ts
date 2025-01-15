@@ -1,35 +1,47 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/tooltip/test/default/index.html';
+const componentName = 'tds-tooltip';
 
-test.describe('tds-tooltip', () => {
-  test('renders the tooltip correctly', async ({ page }) => {
-    await page.goto(componentTestPath);
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, componentName), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    test('renders the tooltip correctly', async ({ page }) => {
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('tooltip appears on button hover', async ({ page }) => {
+      // Select the button that triggers the tooltip on hover
+      const button = page.locator('tds-button#button-1');
+
+      // Use Playwright's hover method to simulate moving the mouse over the button
+      await button.hover();
+
+      const tooltip = page.locator('text=Text inside Tooltip');
+
+      // Assert that the tooltip is visible after hovering over the button
+      await tooltip.waitFor({ state: 'visible' });
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
   });
+});
 
-  test('tooltip appears on button hover', async ({ page }) => {
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    // Select the button that triggers the tooltip on hover
-    const button = page.locator('tds-button#button-1');
-
-    // Use Playwright's hover method to simulate moving the mouse over the button
-    await button.hover();
-
-    const tooltip = page.locator('text=Text inside Tooltip');
-
-    // Assert that the tooltip is visible after hovering over the button
-    await tooltip.waitFor({ state: 'visible' });
-
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('tooltip contains correct HTML content on hover', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-1');
     await button.hover();
