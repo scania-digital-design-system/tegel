@@ -1,33 +1,48 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  getTestDescribeText,
+  setupPage,
+  testConfigurations,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/accordion/test/disabled/index.html';
 const accordionSelector = 'tds-accordion';
+const componentName = 'tds-accordion';
 
-test.describe.parallel('tds-accordion', () => {
-  test('renders disabled accordion correctly', async ({ page }) => {
-    // Define selector for accordion
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, componentName), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders disabled accordion correctly', async ({ page }) => {
+      // Define selector for accordion
+      const accordion = page.locator(accordionSelector);
+
+      // Check if accordion contains the correct text
+      await expect(accordion).toContainText('First item');
+      await expect(accordion).toContainText('Second item');
+
+      // Check screenshot diff to make sure the accordion is rendered correctly
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-    const accordion = page.locator(accordionSelector);
-
-    // Check if accordion contains the correct text
-    await expect(accordion).toContainText('First item');
-    await expect(accordion).toContainText('Second item');
-
-    // Check screenshot diff to make sure the accordion is rendered correctly
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('disabled accordion items should be displayed', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.locator(accordionSelector + '>> text=First item');
 
     // Expect first accordion item to be disabled
     await expect(accordionFirstItem).toBeDisabled();
 
     // Define selector for second accordion item
-    await page.goto(componentTestPath);
     const accordionSecondItem = page.getByTestId('second-item');
 
     // Define selector for second accordion item button since
@@ -40,7 +55,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('cursor should be not-allowed on disabled accordion items', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.getByTestId('first-item');
     const accordionFirstItemButton = accordionFirstItem.getByRole('button');
 
@@ -53,7 +67,6 @@ test.describe.parallel('tds-accordion', () => {
     await expect(accordionCursorFirstItem).toBe('not-allowed');
 
     // Define selector for second accordion item
-    await page.goto(componentTestPath);
     const accordionSecondItem = page.getByTestId('second-item');
     const accordionSecondItemButton = accordionSecondItem.getByRole('button');
 
@@ -68,7 +81,6 @@ test.describe.parallel('tds-accordion', () => {
 
   test('does not fire tdsToggle event on click on disabled accordion', async ({ page }) => {
     // Define selector for first accordion item
-    await page.goto(componentTestPath);
     const accordionFirstItem = page.getByText('First item');
 
     // Click first accordion item
