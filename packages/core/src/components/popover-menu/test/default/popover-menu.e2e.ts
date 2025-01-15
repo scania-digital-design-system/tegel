@@ -1,20 +1,37 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/popover-menu/test/default/index.html';
+const componentName = 'tds-popover-menu';
+const testDescription = 'tds-popover-menu-default';
 
-test.describe.parallel('tds-popover-menu-default', () => {
-  test('renders default popover-menu correctly', async ({ page }) => {
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders default popover-menu correctly', async ({ page }) => {
+      const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
+      await triggerButton.click();
+
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-    const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-    await triggerButton.click();
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('clicking the trigger button should open the popover menu dialog', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('list');
 
@@ -37,7 +54,6 @@ test.describe.parallel('tds-popover-menu-default', () => {
   });
 
   test('hover active menu item -> active item should be clickable', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     const dropDownList = page.getByRole('list');
     await triggerButton.click();
@@ -57,7 +73,6 @@ test.describe.parallel('tds-popover-menu-default', () => {
   test('hover inactive menu item -> inactive menu item should not be clickable', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await triggerButton.click();
 
@@ -72,7 +87,6 @@ test.describe.parallel('tds-popover-menu-default', () => {
   });
 
   test('icons are not existing for menu items', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsMenuItemListItemIcons = page
       .getByRole('listitem')
       .filter({ has: page.getByRole('img') });
@@ -80,7 +94,6 @@ test.describe.parallel('tds-popover-menu-default', () => {
   });
 
   test('activating close method should close the dialog', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
     await triggerButton.click();
 
