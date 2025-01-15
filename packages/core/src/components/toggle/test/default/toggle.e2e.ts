@@ -1,36 +1,46 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/toggle/test/default/index.html';
+const componentName = 'tds-toggle';
 
-test.describe.parallel('tds-toggle', () => {
-  test('Renders basic toggle correctly', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const labelElement = page.locator('tds-toggle label');
-    const headlineElement = page.locator('tds-toggle .toggle-headline'); // Target label underneath toggle
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, componentName), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
 
-    expect(labelElement).toHaveText('Label'); // Check label text
-    expect(headlineElement).toHaveText('switch me');
+    test('Renders basic toggle correctly', async ({ page }) => {
+      const labelElement = page.locator('tds-toggle label');
+      const headlineElement = page.locator('tds-toggle .toggle-headline'); // Target label underneath toggle
 
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
+      expect(labelElement).toHaveText('Label'); // Check label text
+      expect(headlineElement).toHaveText('switch me');
 
-  test('Click on toggle -> should become checked', async ({ page }) => {
-    await page.goto(componentTestPath);
-    const toggle = page.locator('tds-toggle input');
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
 
-    // Expect not to be checked on render
-    let isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
-    expect(isChecked).toBe(false);
+    test('Click on toggle -> should become checked', async ({ page }) => {
+      const toggle = page.locator('tds-toggle input');
 
-    // Click the toggle input
-    await toggle.click();
+      // Expect not to be checked on render
+      let isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
+      expect(isChecked).toBe(false);
 
-    // Expect toggle input to be checked after click
-    isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
-    expect(isChecked).toBe(true);
+      // Click the toggle input
+      await toggle.click();
 
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+      // Expect toggle input to be checked after click
+      isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
+      expect(isChecked).toBe(true);
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
   });
 });
