@@ -38,5 +38,5 @@ jobs:
         if: failure()
         with:
           name: playwright-output
-          path: playwright/output ## Folder used in playwright.config.js `outputDir`
+          path: test-results/output ## Folder used in playwright.config.js `outputDir`
           retention-days: 3
