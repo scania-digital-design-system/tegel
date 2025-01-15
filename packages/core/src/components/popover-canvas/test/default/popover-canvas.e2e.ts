@@ -1,22 +1,39 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/popover-canvas/test/default/index.html';
+const componentName = 'tds-popover-canvas';
+const testDescription = 'tds-popover-canvas-default';
 
-test.describe.parallel('tds-popover-canvas-default', () => {
-  test('renders default popover-canvas correctly', async ({ page }) => {
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders default popover-canvas correctly', async ({ page }) => {
+      const triggerButton = page.getByRole('button');
+      await triggerButton.click();
+
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-    const triggerButton = page.getByRole('button');
-    await triggerButton.click();
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('make sure popover canvas shows after trigger button is pressed and content is displayed', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
     const popoverCanvasHeader = page.getByRole('heading');
     const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
@@ -37,7 +54,6 @@ test.describe.parallel('tds-popover-canvas-default', () => {
   });
 
   test('activating close method should close the dialog', async ({ page }) => {
-    await page.goto(componentTestPath);
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
