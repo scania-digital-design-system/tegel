@@ -6,7 +6,7 @@ import {
   setupPage,
 } from '../../../../utils/testConfiguration';
 
-const componentTestPath = 'src/components/checkbox/test/indeterminate/index.html';
+const componentTestPath = 'src/components/checkbox/test/default/index.html';
 const componentName = 'tds-checkbox';
 
 testConfigurations.basic.forEach((config) => {
@@ -15,22 +15,31 @@ testConfigurations.basic.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('Checkbox indeterminate state', async ({ page }) => {
-      // Find the checkbox and label elements
-      const checkbox = page.locator('tds-checkbox');
+    test('renders basic checkbox correctly', async ({ page }) => {
       const labelElement = page.locator('tds-checkbox label'); // Target label underneath checkbox
 
-      // Hover over checkbox and label
-      await checkbox.hover();
-      await labelElement.hover();
-
-      const indeterminateValue = await checkbox.getAttribute('indeterminate');
-
       expect(labelElement).toHaveText('Label'); // Check label text
-      expect(indeterminateValue).not.toBeNull();
-
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('Hover and click on checkbox -> should become checked', async ({ page }) => {
+    const checkbox = page.locator('tds-checkbox');
+    // Hover over the checkbox
+    await checkbox.hover();
+
+    // Click the checkbox
+    await checkbox.click();
+
+    // Check if the checkbox is now checked
+    const isChecked = await checkbox.evaluate((element: HTMLInputElement) => element.checked);
+    expect(isChecked).toBe(true);
   });
 });
