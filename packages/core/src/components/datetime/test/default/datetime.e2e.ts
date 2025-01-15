@@ -1,21 +1,50 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/datetime/test/default/index.html';
+const componentName = 'tds-datetime';
+const testDescription = 'tds-datetime-default';
 
-test.describe('tds-datetime-default', () => {
-  test('renders datetime component correctly', async ({ page }) => {
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders datetime component correctly', async ({ page }) => {
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('icon click triggers native datetime picker', async ({ page }) => {
+      // Assuming the calendar icon can be clicked to open the datetime picker
+      await page.click('input[type="datetime-local"]');
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+      // Verify the input is indeed focused. This is an indirect test to ensure
+      // that actions leading up to the display of the native picker are correctly initiated.
+      const inputIsFocused = await page.evaluate(
+        () => (document.activeElement as HTMLInputElement).type === 'datetime-local',
+      );
+      expect(inputIsFocused).toBeTruthy();
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('verifies label, helper text, size, and calendar icon for datetime-local component', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     // Check for the label text
     const label = page.locator('.tds-datetime-label');
     const dateTime = page.locator('tds-datetime');
@@ -35,25 +64,7 @@ test.describe('tds-datetime-default', () => {
     await expect(calendarIcon).toBeVisible();
   });
 
-  test('icon click triggers native datetime picker', async ({ page }) => {
-    await page.goto(componentTestPath);
-
-    // Assuming the calendar icon can be clicked to open the datetime picker
-    await page.click('input[type="datetime-local"]');
-
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-
-    // Verify the input is indeed focused. This is an indirect test to ensure
-    // that actions leading up to the display of the native picker are correctly initiated.
-    const inputIsFocused = await page.evaluate(
-      () => (document.activeElement as HTMLInputElement).type === 'datetime-local',
-    );
-    expect(inputIsFocused).toBeTruthy();
-  });
-
   test('setting input to current date and time programmatically', async ({ page }) => {
-    await page.goto(componentTestPath);
-
     // Get the current date and time, formatted as 'YYYY-MM-DDThh:mm', which is the expected format for datetime-local inputs
     const currentDate = new Date().toISOString().slice(0, 16);
 
