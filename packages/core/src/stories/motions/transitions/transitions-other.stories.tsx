@@ -37,7 +37,7 @@ const Template = () =>
           <div class="grey-box">
             <div class="shake-box"></div>
           </div>
-          <p>-tds-motion-shake</p>
+          <p>--tds-motion-shake</p>
         </div>
 
         <!-- Pulse -->
@@ -45,7 +45,7 @@ const Template = () =>
           <div class="grey-box">
             <div class="pulse-box"></div>
           </div>
-          <p>-tds-motion-pulse</p>
+          <p>--tds-motion-pulse</p>
         </div>
 
         <!-- Blink -->
@@ -53,7 +53,7 @@ const Template = () =>
           <div class="grey-box">
             <div class="blink-box"></div>
           </div>
-          <p>-tds-motion-blink</p>
+          <p>--tds-motion-blink</p>
         </div>
 
         <!-- Elevate Exit -->
@@ -61,8 +61,9 @@ const Template = () =>
           <div class="grey-box">
             <div class="elevate-exit-box"></div>
           </div>
-          <p>-tds-motion-elevate</p>
+          <p>--tds-motion-elevate-exit</p>
         </div>
+
       </div>
     </main>
 
@@ -137,6 +138,8 @@ const Template = () =>
       .grey-box:hover .elevate-exit-box {
         animation: var(--tds-motion-elevate-exit);
       }
+
+      
     </style>
     `,
   );

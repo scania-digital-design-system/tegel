@@ -10,6 +10,7 @@
 
   100% {
     opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -20,18 +21,17 @@
 
   100% {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
 /* Scale */
 @keyframes tds-zoom-in {
   0% {
-    opacity: 1;
     transform: scale(0.9);
   }
 
   100% {
-    opacity: 1;
     transform: scale(1);
   }
 }
@@ -59,48 +59,40 @@
 /* Slide */
 @keyframes tds-slide-in-top {
   0% {
-    visibility: visible;
     transform: translateY(-100%);
   }
 
   100% {
-    visibility: visible;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-in-bottom {
   0% {
-    visibility: visible;
     transform: translateY(100%);
   }
 
   100% {
-    visibility: visible;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-in-left {
   0% {
-    visibility: visible;
     transform: translateX(-100%);
   }
 
   100% {
-    visibility: visible;
     transform: translateX(0);
   }
 }
 
 @keyframes tds-slide-in-right {
   0% {
-    visibility: visible;
     transform: translateX(100%);
   }
 
   100% {
-    visibility: visible;
     transform: translateX(0);
   }
 }
@@ -111,7 +103,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateY(-100%);
   }
 }
@@ -122,7 +113,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateY(100%);
   }
 }
@@ -133,7 +123,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateY(100%);
   }
 }
@@ -144,7 +133,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateX(-100%);
   }
 }
@@ -155,7 +143,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateX(100%);
   }
 }
@@ -163,60 +150,40 @@
 /* Slide short */
 @keyframes tds-slide-top-short {
   0% {
-    visibility: visible;
     transform: translateY(-16px);
   }
 
   100% {
-    visibility: visible;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-bottom-short {
   0% {
-    visibility: visible;
     transform: translateY(16px);
   }
 
   100% {
-    visibility: visible;
-    transform: translateY(0);
-  }
-}
-
-@keyframes tds-slide-bottom-short-hidden {
-  0% {
-    visibility: visible;
-    transform: translateY(16px);
-  }
-
-  100% {
-    visibility: visible;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-left-short {
   0% {
-    visibility: visible;
     transform: translateX(-16px);
   }
 
   100% {
-    visibility: visible;
     transform: translateX(0);
   }
 }
 
 @keyframes tds-slide-right-short {
   0% {
-    visibility: visible;
     transform: translateX(16px);
   }
 
   100% {
-    visibility: visible;
     transform: translateX(0);
   }
 }
@@ -227,7 +194,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateY(-16px);
   }
 }
@@ -238,7 +204,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateY(16px);
   }
 }
@@ -249,7 +214,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateX(-16px);
   }
 }
@@ -260,7 +224,6 @@
   }
 
   100% {
-    visibility: hidden;
     transform: translateX(16px);
   }
 }
@@ -391,25 +354,21 @@
   from {
     opacity: 1;
     height: 0%;
-    overflow: hidden;
   }
 
   to {
     opacity: 1;
     height: 100%;
-    overflow: hidden;
   }
 }
 
 @keyframes tds-collapse-in-hidden {
   from {
     height: 0%;
-    overflow: hidden;
   }
 
   to {
     height: 100%;
-    overflow: hidden;
   }
 }
 
@@ -426,24 +385,20 @@
 @keyframes tds-collapse-width-in {
   0% {
     width: 0;
-    overflow: hidden;
   }
 
   to {
     width: 100%;
-    overflow: hidden;
   }
 }
 
 @keyframes tds-collapse-width-out {
   0% {
     width: 100%;
-    overflow: hidden;
   }
 
   to {
     width: 0;
-    overflow: hidden;
   }
 }
 
@@ -531,49 +486,3 @@
     stroke-dasharray: 2230px;
   }
 }
-
-/* =======================================================================
-    Animation keframes
- ========================================================================== */
-
-// // Zoom Scale
-
-// @keyframes zoom-in {
-//   0% {
-//     opacity: 0;
-//     transform: scale(0.9);
-//   }
-
-//   100% {
-//     opacity: 1;
-//     transform: scale(1);
-//   }
-// }
-
-// // Collapse Enter
-
-// @keyframes collapse-enter {
-//   from {
-//     opacity: 0;
-//     height: 0%;
-//   }
-
-//   to {
-//     opacity: 1;
-//     height: 100%;
-//   }
-// }
-
-// // Slide Enter
-
-// @keyframes slide-enter {
-//   0% {
-//     opacity: 0;
-//     transform: translateY(-100%);
-//   }
-
-//   100% {
-//     opacity: 1;
-//     transform: translateY(0);
-//   }
-// }

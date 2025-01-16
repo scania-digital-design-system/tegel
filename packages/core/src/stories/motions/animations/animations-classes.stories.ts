@@ -19,7 +19,6 @@ const Template = () =>
     `
     <main>
 
-    
     <h2>Enter</h2>
     <p>
       Use these variables in the <code>animation</code> property of your elements to 

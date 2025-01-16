@@ -134,7 +134,7 @@ html {
     tds-collapse-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
   --tds-motion-slide-enter: tds-fade-in var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-linear) forwards,
-    tds-slide-bottom-short-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
+    tds-slide-bottom-short var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
     forwards;
   --tds-motion-slide-exit: tds-fade-out var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-exit) forwards,

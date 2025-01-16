@@ -112,7 +112,6 @@ const Template = () =>
 
       /* Slide Short In */
       .slide-in-top-short-box {
-        visibility: hidden;
         transform: translateY(-16px);
       }
 
@@ -121,7 +120,6 @@ const Template = () =>
       }
 
       .slide-in-right-short-box {
-        visibility: hidden;
         transform: translateX(16px);
       }
 
@@ -130,7 +128,6 @@ const Template = () =>
       }
 
       .slide-in-bottom-short-box {
-        visibility: hidden;
         transform: translateY(16px);
       }
 
@@ -139,7 +136,6 @@ const Template = () =>
       }
 
       .slide-in-left-short-box {
-        visibility: hidden;
         transform: translateX(-16px);
       }
 

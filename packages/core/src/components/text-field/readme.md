@@ -48,6 +48,11 @@
 
 ## Dependencies
 
+### Used by
+
+ - [tds-date-picker](../_beta/date-picker/date-picker-single)
+ - [tds-date-range-picker](../_beta/date-picker/date-range-picker)
+
 ### Depends on
 
 - [tds-icon](../icon)
@@ -56,6 +61,8 @@
 ```mermaid
 graph TD;
   tds-text-field --> tds-icon
+  tds-date-picker --> tds-text-field
+  tds-date-range-picker --> tds-text-field
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

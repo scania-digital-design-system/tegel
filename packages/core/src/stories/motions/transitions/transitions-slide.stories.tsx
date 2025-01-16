@@ -112,8 +112,7 @@ const Template = () =>
 
       /* Slide In */
       .slide-in-top-box {
-        visibility: hidden;
-        transform: var(--tds-motion-slide-in-top);
+        transform: translateY(-100%);
       }
 
       .grey-box:hover .slide-in-top-box {
@@ -121,7 +120,6 @@ const Template = () =>
       }
 
       .slide-in-right-box {
-        visibility: hidden;
         transform: translateX(100%);
       }
 
@@ -130,7 +128,6 @@ const Template = () =>
       }
 
       .slide-in-bottom-box {
-        visibility: hidden;
         transform: translateY(100%);
       }
 
@@ -139,7 +136,6 @@ const Template = () =>
       }
 
       .slide-in-left-box {
-        visibility: hidden;
         transform: translateX(-100%);
       }
 
