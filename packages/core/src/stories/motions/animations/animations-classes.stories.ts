@@ -18,7 +18,13 @@ const Template = () =>
   formatHtmlPreview(
     `
     <main>
-      <h2>Enter</h2>
+
+    
+    <h2>Enter</h2>
+    <p>
+      Use these variables in the <code>animation</code> property of your elements to 
+      achieve smooth and uniform animation, as demonstrated below.
+    </p>
       <div class="tds-u-flex-start tds-u-gap4">
         <!-- Zoom Animation Box -->
         <div>
