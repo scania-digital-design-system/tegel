@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
-  title: 'Motions/Animations',
+  title: 'Motions/Animations/All',
   parameters: {
     notes: {},
     layout: 'fullscreen',
@@ -19,13 +19,12 @@ export default {
       },
     ],
   },
-  argTypes: {},
-  args: {},
 };
 
 const Template = () =>
   formatHtmlPreview(
     `
+    <main>
       <h2>Enter</h2>
       <div class="tds-u-flex-start tds-u-gap4">
         <!-- Zoom Animation Box -->
@@ -35,18 +34,6 @@ const Template = () =>
           </div>
           <p>--zoom-enter</p>
         </div>
-        
-        <div>
-          <div class="grey-box">
-            <div class="zoom-exit-box"></div>
-          </div>
-          <p>--zoom-exit</p>
-        </div>
-      </div>
-
-      <div class="tds-u-gap4">
-        <!-- Collapse Animation Box -->
-        <h2>Collapse</h2>
         <div>
           <div class="grey-box">
             <div class="content">
@@ -58,13 +45,51 @@ const Template = () =>
 
         <div>
           <div class="grey-box">
+            <div class="slide-enter"></div>
+          </div>
+          <p>--slide-enter</p>
+        </div>
+
+        <div>
+          <div class="grey-box">
+            <div class="elevate-enter-box"></div>
+          </div>
+          <p>--elevate-enter</p>
+        </div>
+
+      </div>
+
+      <h2>Exit</h2>
+      <!-- Collapse Animation Box -->
+      <div class="tds-u-flex-start tds-u-gap4">
+        <div>
+          <div class="grey-box">
+            <div class="zoom-exit-box"></div>
+          </div>
+          <p>--zoom-exit</p>
+        </div>
+        <div>
+          <div class="grey-box">
             <div class="content">
               <div class="collapse-exit-box"></div>
             </div>
           </div>
           <p>--collapse-exit</p>
         </div>
+        <div>
+          <div class="grey-box">
+            <div class="slide-exit"></div>
+          </div>
+          <p>--slide-exit</p>
+        </div>
+        <div>
+          <div class="grey-box">
+            <div class="elevate-exit-box"></div>
+          </div>
+          <p>--elevate-exit</p>
+        </div>
       </div>
+    </main>
 
 
       <style>
@@ -77,14 +102,7 @@ const Template = () =>
       }
 
       main {
-          min-height: 100vh; /* Ensure main content takes at least full viewport height */
-          box-sizing: border-box;
-          background-color: #121212; /* Set background color for dark mode compatibility */
-      }
-
-      main {
-          min-height: 100vh; /* Make sure the main content takes at least the full viewport height */
-          box-sizing: border-box;
+        padding: 20px;
       }
 
       p {
@@ -116,9 +134,13 @@ const Template = () =>
       .zoom-enter-box,
       .zoom-exit-box,
       .collapse-enter-box,
-      .collapse-exit-box {
-        width: 80px;
-        height: 80px;
+      .collapse-exit-box,
+      .slide-enter,
+      .elevate-enter-box,
+      .elevate-exit-box, 
+      .slide-exit {
+        width: 100px;
+        height: 100px;
         background-color: #041E42;
         border-radius: 5px;
         position: relative;
@@ -129,7 +151,7 @@ const Template = () =>
       }
 
       .grey-box:hover .zoom-enter-box {
-        animation: var(--zoom-enter);
+        animation: var(--tds-motion-zoom-enter);
       }
 
       .zoom-exit-box {
@@ -137,7 +159,7 @@ const Template = () =>
       }
       
       .grey-box:hover .zoom-exit-box {
-        animation: var(--zoom-exit);
+        animation: var(--tds-motion-zoom-exit);
       }
 
       .collapse-enter-box {
@@ -145,19 +167,53 @@ const Template = () =>
       }
       
       .grey-box:hover .collapse-enter-box {
-        animation: var(--collapse-enter);
+        animation: var(--tds-motion-collapse-enter);
       }
       
       .collapse-exit-box {
+        opacity: 1;
         height: 100px;
       }
       
       .grey-box:hover .collapse-exit-box {
-        animation: var(--collapse-exit);
+        animation: var(--tds-motion-collapse-exit);
+      }
+
+      .slide-enter {
+        opacity: 0;
+      }
+
+      .grey-box:hover .slide-enter {
+        animation: var(--tds-motion-slide-enter);
+      }
+
+      .elevate-enter-box {
+        opacity: 0;
+      }
+      
+      .grey-box:hover .elevate-enter-box {
+        animation: var(--tds-motion-elevate-enter);
+      }
+
+      .slide-exit {
+        opacity: 1;
+      }
+      
+      .grey-box:hover .slide-exit {
+        animation: var(--tds-motion-slide-exit);
+      }
+
+      .elevate-exit-box {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .grey-box:hover .elevate-exit-box {
+        animation: var(--tds-motion-elevate-exit);
       }
 
       </style>
   `,
   );
 
-export const Basic = Template.bind({});
+export const All = Template.bind({});
