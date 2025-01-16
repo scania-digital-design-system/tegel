@@ -18,7 +18,11 @@ const Template = () =>
   formatHtmlPreview(
     `
     <main>
-      <h2>Other</h2>
+    <h2>Other</h2>
+    <p>
+      Use these variables in the <code>animation</code> property of your elements to 
+      achieve smooth and uniform transitions, as demonstrated below.
+    </p>
       <div class="tds-u-flex-start tds-u-gap4">
         <!-- Rotate -->
         <div>

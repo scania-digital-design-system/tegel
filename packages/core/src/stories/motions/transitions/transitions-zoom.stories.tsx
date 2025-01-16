@@ -18,6 +18,13 @@ const Template = () =>
     `
     <main>
       <h2>Zoom</h2>
+      <p>
+        Use these variables in the <code>animation</code> property of your elements to 
+        achieve smooth and uniform transitions, as demonstrated below.
+      </p>
+      <code>
+        animation: var(--tds-motion-zoom-out);
+      </code>
       <div class="tds-u-flex-start tds-u-gap4">
         <div>
           <div class="grey-box">

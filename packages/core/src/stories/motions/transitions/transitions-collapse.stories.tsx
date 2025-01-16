@@ -19,6 +19,12 @@ const Template = () =>
     `
     <main>
       <h2>Collapse</h2>
+      
+      <p>
+        Use these variables in the <code>animation</code> property of your elements to 
+        achieve smooth and uniform transitions, as demonstrated below.
+      </p>
+
       <div class="tds-u-flex-start tds-u-gap4">
         <div>
           <div class="grey-box" style="height: 200px;">
