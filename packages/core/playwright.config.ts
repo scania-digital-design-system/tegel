@@ -8,7 +8,9 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: 'http://localhost:3333',
     browserName: 'chromium',
+    screenshot: 'only-on-failure',
   },
+  outputDir: './test-results/output',
   webServer: {
     command: 'serve -p 3333',
     port: 3333,
