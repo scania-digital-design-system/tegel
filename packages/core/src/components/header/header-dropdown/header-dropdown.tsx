@@ -45,6 +45,9 @@ export class TdsHeaderDropdown {
 
   handleSlottedItemClick = (event: MouseEvent | KeyboardEvent) => {
     const eventSource = (event.target as HTMLElement).tagName.toLowerCase();
+
+    console.log('eventSource', eventSource);
+
     if (['a', 'button'].includes(eventSource)) {
       this.open = false;
     }
@@ -57,7 +60,9 @@ export class TdsHeaderDropdown {
           class={{
             'state-open': this.open,
           }}
+          style={{ backgroundColor: 'orange' }}
         >
+          hej 1
           <tds-header-item class="button" active={this.open} selected={this.selected}>
             <button
               ref={(el) => {
@@ -99,8 +104,9 @@ export class TdsHeaderDropdown {
                 <span
                   onClick={(e) => this.handleSlottedItemClick(e)}
                   onKeyDown={(e) => e.key === 'Enter' && this.handleSlottedItemClick(e)}
+                  style={{ backgroundColor: 'green' }}
                 >
-                  <slot></slot>
+                  hej 2<slot></slot>
                 </span>
               ) : null}
             </tds-popover-canvas>
