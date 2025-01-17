@@ -48,7 +48,7 @@ export class TdsHeaderDropdown {
 
     console.log('eventSource', eventSource);
 
-    if (['a', 'button'].includes(eventSource)) {
+    if (['a', 'button', 'div'].includes(eventSource)) {
       this.open = false;
     }
   };
@@ -106,7 +106,7 @@ export class TdsHeaderDropdown {
                   onKeyDown={(e) => e.key === 'Enter' && this.handleSlottedItemClick(e)}
                   style={{ backgroundColor: 'green' }}
                 >
-                  hej 2<slot></slot>
+                  hej 2, hej 3<slot></slot>
                 </span>
               ) : null}
             </tds-popover-canvas>
