@@ -28,7 +28,7 @@
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^16.2.1",
-    "@types/node": "^20.8.0",
+    "@types/node": "^22.10.7",
     "commitizen": "^4.3.0",
     "commitlint": "^15.0.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -101,6 +101,6 @@
   },
   "engines": {
     "npm": ">=9.0.0",
-    "node": ">=20.9.0"
+    "node": ">=22.11.0"
   }
 }
