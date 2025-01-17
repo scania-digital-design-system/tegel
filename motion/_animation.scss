@@ -36,16 +36,6 @@
   }
 }
 
-@keyframes tds-zoom-in-hidden {
-  0% {
-    transform: scale(0.9);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
 @keyframes tds-zoom-out {
   0% {
     transform: scale(1);

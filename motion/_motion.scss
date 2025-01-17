@@ -46,10 +46,10 @@ html {
      ======================================================================= */
 
   /* ### Fade ### */
-  --tds-motion-fade-in: tds-fade-in var(--tds-motion-duration-moderate-01)
-    var(--tds-motion-easing-linear) forwards;
+  --tds-motion-fade-in: tds-fade-in var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards;
   --tds-motion-fade-out: tds-fade-out var(--tds-motion-duration-moderate-01)
-    var(--tds-motion-easing-linear) forwards;
+    var(--tds-motion-easing-exit) forwards;
 
   /* ### Zoom ### */
   --tds-motion-zoom-in: tds-zoom-in var(--tds-motion-duration-fast-02)
@@ -119,9 +119,9 @@ html {
         Motion Animation Variables
        ======================================================================= */
 
-  --tds-motion-zoom-enter: tds-fade-in var(--tds-motion-duration-fast-02)
-    var(--tds-motion-easing-linear) forwards,
-    tds-zoom-in-hidden var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania) forwards;
+  --tds-motion-zoom-enter: tds-fade-in var(--tds-motion-duration-slow-02)
+    var(--tds-motion-easing-enter) forwards,
+    tds-zoom-in var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania) forwards;
   --tds-motion-zoom-exit: tds-fade-out var(--tds-motion-duration-fast-02)
     var(--tds-motion-easing-exit) forwards,
     tds-zoom-out var(--tds-motion-duration-fast-02) var(--tds-motion-easing-exit) forwards;
@@ -133,20 +133,19 @@ html {
     var(--tds-motion-easing-exit) forwards,
     tds-collapse-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
   --tds-motion-slide-enter: tds-fade-in var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-linear) forwards,
-    tds-slide-bottom-short var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
+    var(--tds-motion-easing-enter) forwards,
+    tds-slide-bottom-short var(--tds-motion-duration-slow-02) var(--tds-motion-easing-enter)
     forwards;
   --tds-motion-slide-exit: tds-fade-out var(--tds-motion-duration-slow-02)
     var(--tds-motion-easing-exit) forwards,
-    tds-slide-out-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
+    tds-slide-out-bottom-short var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit)
     forwards;
   --tds-motion-elevate-enter: tds-fade-in var(--tds-motion-duration-slow-02)
-    var(--tds-motion-easing-linear) forwards,
+    var(--tds-motion-easing-enter) forwards,
     tds-slide-in-bottom-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania)
     forwards,
-    tds-zoom-in-hidden var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania) forwards;
-  --tds-motion-elevate-exit: tds-fade-out var(--tds-motion-duration-slow-02)
+    tds-zoom-in var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania) forwards;
+  --tds-motion-elevate-exit: tds-fade-out var(--tds-motion-duration-moderate-01)
     var(--tds-motion-easing-exit) forwards,
-    tds-slide-up-bottom var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards,
-    tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-exit) forwards;
+    tds-zoom-out var(--tds-motion-duration-slow-02) var(--tds-motion-easing-scania) forwards;
 }

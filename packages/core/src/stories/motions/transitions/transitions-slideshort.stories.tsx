@@ -23,6 +23,7 @@ const Template = () =>
         Use these variables in the <code>animation</code> property of your elements to 
         achieve smooth and uniform transitions, as demonstrated below.
       </p>
+      <h3>Slide In</h3>
       <div class="tds-u-flex-start tds-u-gap4">
         <!-- Slide Short In -->
         <div>
@@ -51,6 +52,7 @@ const Template = () =>
         </div>
       </div>
 
+      <h3>Slide Out</h3>
       <div class="tds-u-flex-start tds-u-gap4">
         <!-- Slide Short Out -->
         <div>

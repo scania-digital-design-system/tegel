@@ -30,7 +30,7 @@ const Template = () =>
           <div class="grey-box">
             <div class="zoom-enter-box"></div>
           </div>
-          <p>--zoom-enter</p>
+          <p>--tds-motion-zoom-enter</p>
         </div>
         <div>
           <div class="grey-box">
@@ -38,21 +38,21 @@ const Template = () =>
               <div class="collapse-enter-box"></div>
             </div>
             </div>
-          <p>--collapse-enter</p>
+          <p>--tds-motion-collapse-exit</p>
         </div>
 
         <div>
           <div class="grey-box">
             <div class="slide-enter"></div>
           </div>
-          <p>--slide-enter</p>
+          <p>--tds-motion-slide-enter</p>
         </div>
 
         <div>
           <div class="grey-box">
             <div class="elevate-enter-box"></div>
           </div>
-          <p>--elevate-enter</p>
+          <p>--tds-motion-elevate-enter</p>
         </div>
 
       </div>
@@ -64,7 +64,7 @@ const Template = () =>
           <div class="grey-box">
             <div class="zoom-exit-box"></div>
           </div>
-          <p>--zoom-exit</p>
+          <p>--tds-motion-zoom-exit</p>
         </div>
         <div>
           <div class="grey-box">
@@ -72,25 +72,27 @@ const Template = () =>
               <div class="collapse-exit-box"></div>
             </div>
           </div>
-          <p>--collapse-exit</p>
+          <p>--tds-motion-collapse-exit</p>
         </div>
         <div>
           <div class="grey-box">
             <div class="slide-exit"></div>
           </div>
-          <p>--slide-exit</p>
+          <p>--tds-motion-slide-exit</p>
         </div>
         <div>
-          <div class="grey-box">
+        <div class="grey-box">
+          <div class="content">
             <div class="elevate-exit-box"></div>
           </div>
-          <p>--elevate-exit</p>
+        </div>
+          <p>--tds-motion-elevate-exit</p>
         </div>
       </div>
     </main>
 
 
-      <style>
+    <style>
       body, html {
         margin: 0; /* Remove default margins */
         padding: 0; /* Remove default padding */
@@ -106,7 +108,10 @@ const Template = () =>
       p {
         font-size: 12px;
       }
-
+      .content {
+        width: 100px;
+        height: 100px;
+      }
       .grey-box:hover {
         cursor: pointer;
       }
