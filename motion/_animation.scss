@@ -342,57 +342,59 @@
 
 @keyframes tds-collapse-in {
   from {
-    opacity: 1;
-    height: 0%;
+    transform-origin: top;
+    transform: scaleY(0);
   }
 
   to {
-    opacity: 1;
-    height: 100%;
+    transform-origin: top;
+    transform: scaleY(1);
   }
 }
 
 @keyframes tds-collapse-in-hidden {
   from {
-    height: 0%;
+    transform-origin: top;
+    transform: scaleY(0);
   }
 
   to {
-    height: 100%;
+    transform-origin: top;
+    transform: scaleY(1);
   }
 }
 
 @keyframes tds-collapse-out {
   0% {
-    height: 100%;
+    transform: scaleY(1);
+    transform-origin: top;
   }
 
   100% {
-    height: 0%;
+    transform: scaleY(0);
+    transform-origin: top;
   }
 }
 
 @keyframes tds-collapse-width-in {
   0% {
-    width: 0;
+    transform: scaleX(0);
   }
 
   to {
-    width: 100%;
+    transform: scaleX(1);
   }
 }
 
 @keyframes tds-collapse-width-out {
   0% {
-    width: 100%;
+    transform: scaleX(1);
   }
 
   to {
-    width: 0;
+    transform: scaleX(0);
   }
 }
-
-///
 
 @supports not (
   ((height: 1lh) and (animation-timeline: none)) or ((height: 1lh) and (margin-trim: none))

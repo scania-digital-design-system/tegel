@@ -76,11 +76,11 @@ const Template = () =>
       }
 
       .collapse-in-box {
-        height: 0;
+        transform: scaleY(0);
       }
 
       .collapse-out-box {
-        height: 100px;
+        transform: scaleY(0);
       }
 
       .grey-box:hover .collapse-in-box {

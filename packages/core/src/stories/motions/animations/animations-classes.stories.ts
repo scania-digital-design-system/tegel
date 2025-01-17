@@ -166,7 +166,7 @@ const Template = () =>
       }
 
       .collapse-enter-box {
-        height: 0;
+        transform: scale(0);
       }
       
       .grey-box:hover .collapse-enter-box {
@@ -174,8 +174,7 @@ const Template = () =>
       }
       
       .collapse-exit-box {
-        opacity: 1;
-        height: 100px;
+        transform: scaleY(1);
       }
       
       .grey-box:hover .collapse-exit-box {
