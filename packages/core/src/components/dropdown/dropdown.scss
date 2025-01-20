@@ -23,8 +23,6 @@
   .dropdown-select {
     position: relative;
 
-    // Add transition to border-bottom-color
-
     button {
       transition: border-bottom-color var(--tds-motion-duration-fast-02)
         var(--tds-motion-easing-scania);
@@ -223,11 +221,11 @@
     }
 
     &.animation-enter-slide {
-      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter);
+      transition: transform var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
     }
 
     &.animation-exit-slide {
-      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-exit);
+      transition: transform var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit);
     }
 
     .no-result {
