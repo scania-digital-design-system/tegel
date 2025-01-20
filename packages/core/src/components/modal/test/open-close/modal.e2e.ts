@@ -1,17 +1,60 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/modal/test/open-close/index.html';
+const componentName = 'tds-modal';
+const testDescription = 'tds-modal-open';
+
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('Modal is closed by default', async ({ page }) => {
+      const tdsModal = page.locator('tds-modal');
+      await expect(tdsModal).toBeHidden(); // Modal is initially closed
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('Clicking [Open Modal] button opens the modal', async ({ page }) => {
+      const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
+      const tdsModal = page.locator('tds-modal');
+
+      await openModalButton.dispatchEvent('click');
+
+      // Assert that the modal is visible
+      await expect(tdsModal).toBeVisible();
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('Clicking [Delete] button closes the modal', async ({ page }) => {
+      const deleteButton = page.getByRole('button').filter({ hasText: /Delete/ });
+      const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
+      const tdsModal = page.locator('tds-modal');
+
+      await openModalButton.dispatchEvent('click');
+
+      await expect(tdsModal).toBeVisible();
+      await expect(deleteButton).toBeVisible();
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+      await deleteButton.dispatchEvent('click'); // Click [Delete] button
+
+      await expect(deleteButton).toBeHidden(); // button is removed
+      await expect(tdsModal).toBeHidden();
+    });
+  });
+});
 
 test.describe.parallel('tds-modal-open', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-  });
-
-  test('Modal is closed by default', async ({ page }) => {
-    const tdsModal = page.locator('tds-modal');
-    await expect(tdsModal).toBeHidden(); // Modal is initially closed
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('[Open Modal] button exists', async ({ page }) => {
@@ -28,34 +71,6 @@ test.describe.parallel('tds-modal-open', () => {
     const modal = await page.locator(modalSelector);
 
     await expect(modal).toBeVisible(); // Modal should be open when using selector
-  });
-
-  test('Clicking [Open Modal] button opens the modal', async ({ page }) => {
-    const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
-    const tdsModal = page.locator('tds-modal');
-
-    await openModalButton.dispatchEvent('click');
-
-    // Assert that the modal is visible
-    await expect(tdsModal).toBeVisible();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-  });
-
-  test('Clicking [Delete] button closes the modal', async ({ page }) => {
-    const deleteButton = page.getByRole('button').filter({ hasText: /Delete/ });
-    const openModalButton = page.getByRole('button').filter({ hasText: /Open Modal/ });
-    const tdsModal = page.locator('tds-modal');
-
-    await openModalButton.dispatchEvent('click');
-
-    await expect(tdsModal).toBeVisible();
-    await expect(deleteButton).toBeVisible();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
-
-    await deleteButton.dispatchEvent('click'); // Click [Delete] button
-
-    await expect(deleteButton).toBeHidden(); // button is removed
-    await expect(tdsModal).toBeHidden();
   });
 
   test('Clicking [Close] button closes the modal', async ({ page }) => {
