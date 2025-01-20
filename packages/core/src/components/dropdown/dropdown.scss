@@ -222,8 +222,12 @@
       pointer-events: auto;
     }
 
-    &.animation-slide {
-      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
+    &.animation-enter-slide {
+      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-enter);
+    }
+
+    &.animation-exit-slide {
+      transition: transform var(--tds-motion-duration-fast-02) var(--tds-motion-easing-exit);
     }
 
     .no-result {
