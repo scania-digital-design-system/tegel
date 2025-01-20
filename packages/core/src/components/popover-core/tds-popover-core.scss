@@ -4,6 +4,7 @@
   pointer-events: none;
   display: block;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 :host(.tds-animation-enter-fade) {
@@ -22,6 +23,18 @@
 :host(.tds-popover-animation-enter-fade) {
   animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
 >>>>>>> c23135bb (feat(popover): add fade-in animation and visibility styles; update popover menu item transition)
+=======
+}
+
+:host(.tds-animation-enter-fade) {
+  animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter)
+    forwards;
+}
+
+:host(.tds-animation-exit-fade) {
+  animation: tds-fade-out var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit)
+    forwards;
+>>>>>>> 3c820296 (feat(popover): enhance animation handling and class management for popover visibility)
 }
 
 :host(.is-shown) {
@@ -30,6 +43,9 @@
   visibility: visible;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3c820296 (feat(popover): enhance animation handling and class management for popover visibility)
 
 :host(.is-hidden) {
   opacity: 0;
@@ -42,5 +58,8 @@
   pointer-events: none;
   visibility: hidden;
 }
+<<<<<<< HEAD
 =======
 >>>>>>> c23135bb (feat(popover): add fade-in animation and visibility styles; update popover menu item transition)
+=======
+>>>>>>> 3c820296 (feat(popover): enhance animation handling and class management for popover visibility)
