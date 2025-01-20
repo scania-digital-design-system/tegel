@@ -34,13 +34,24 @@ export default {
         defaultValue: { summary: 'auto' },
       },
     },
+    animation: {
+      name: 'Animation',
+      description: 'Sets the animation of the Popover Canvas.',
+      control: {
+        type: 'select',
+      },
+      options: ['none', 'fade'],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
   },
   args: {
     canvasPosition: 'Auto',
   },
 };
 
-const ComponentPopoverCanvas = ({ canvasPosition }) => {
+const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
   const canvasPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -78,6 +89,7 @@ const ComponentPopoverCanvas = ({ canvasPosition }) => {
       <tds-popover-canvas
         id="my-popover-canvas"
         placement="${canvasPosLookup[canvasPosition]}"
+        animation="${animation}"
         selector="#trigger"
         class="tds-u-p2">
         <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
