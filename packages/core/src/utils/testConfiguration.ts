@@ -39,6 +39,7 @@ export const testConfigurations = {
     },
   ],
 };
+
 export const setupPage = async (page, config, componentTestPath, componentName) => {
   await page.goto(componentTestPath);
 
@@ -50,18 +51,27 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
   await page.evaluate(({ className, backgroundColor }) => {
     document.body.classList.add(className);
 
+    const currentStyle = document.body.getAttribute('style');
+
     document.body.setAttribute(
       'style',
-      `background-color: ${backgroundColor}; padding-top: 20px; padding-bottom: 20px;`,
+      `${currentStyle}; background-color: ${backgroundColor}; padding-top: 20px; padding-bottom: 20px;`,
     );
   }, evaluateData);
 
   if (config.modeVariant) {
     const elementLocator = page.locator(componentName);
-    await expect(elementLocator).toHaveCount(1);
-    await elementLocator.evaluate((element, modeVariant) => {
-      element.setAttribute('mode-variant', modeVariant);
-    }, config.modeVariant);
+
+    const count = await elementLocator.count();
+    await expect(count).toBeGreaterThanOrEqual(1);
+
+    const elements = await elementLocator.all();
+
+    elements.forEach(async (element) => {
+      await element.evaluate((elem, modeVariant) => {
+        elem.setAttribute('mode-variant', modeVariant);
+      }, config.modeVariant);
+    });
   }
 };
 
