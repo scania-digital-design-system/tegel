@@ -147,6 +147,7 @@ export const parameters = {
           'Announcements',
           ['Tegel', 'Prefix change'],
         ],
+        'Motions',
         'Foundations',
         'Utilities',
         'Patterns',
