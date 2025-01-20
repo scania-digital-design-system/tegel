@@ -14,6 +14,7 @@ import {
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { generateClassList } from '../../utils/classList';
 
 @Component({
   tag: 'tds-popover-core',
@@ -277,13 +278,17 @@ export class TdsPopoverCore {
 
   render() {
     const classes = {
-      [`tds-popover-animation-enter-${this.animation}`]:
-        this.animation !== 'none' && this.hasShownAtLeastOnce && this.isShown,
-      'is-shown': this.isShown,
+      'is-shown': (this.isShown && this.animation === 'none') || this.animation === undefined,
+      'is-hidden': (!this.isShown && this.animation === 'none') || this.animation === undefined,
+      'initially-hidden': !this.hasShownAtLeastOnce,
+      'tds-animation-enter-fade': this.isShown && this.animation === 'fade',
+      'tds-animation-exit-fade': !this.isShown && this.animation === 'fade',
     };
 
+    const classList = generateClassList(classes);
+
     return (
-      <Host class={classes} id={`tds-popover-core-${this.uuid}`}>
+      <Host class={classList} id={`tds-popover-core-${this.uuid}`}>
         <slot></slot>
       </Host>
     );
