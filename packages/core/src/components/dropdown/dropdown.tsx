@@ -53,6 +53,8 @@ export class TdsDropdown {
   /** The size of the Dropdown. */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
+  @Prop() animation: 'none' | 'slide' = 'none';
+
   /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;
 
@@ -555,7 +557,15 @@ export class TdsDropdown {
                     }
                     this.handleBlur(event);
                   }}
-                  onFocus={(event) => this.handleFocus(event)}
+                  onFocus={(event) => {
+                    this.open = true;
+                    this.filterFocus = true;
+                    if (this.multiselect) {
+                      this.inputElement.value = '';
+                    }
+                    this.handleFocus(event);
+                    this.handleFilter({ target: { value: '' } });
+                  }}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
                       this.open = false;
@@ -641,11 +651,16 @@ export class TdsDropdown {
         {/* DROPDOWN LIST */}
         <div
           ref={(element) => (this.dropdownList = element)}
-          class={`dropdown-list
-            ${this.size}
-            ${this.open ? 'open' : 'closed'}
-            ${this.getOpenDirection()}
-            ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}`}
+          class={{
+            'dropdown-list': true,
+            [this.size]: true,
+            [this.getOpenDirection()]: true,
+            'label-outside': this.label && this.labelPosition === 'outside',
+            'open': this.open,
+            'closed': !this.open,
+            [`animation-enter-${this.animation}`]: this.animation !== 'none' && this.open,
+            [`animation-exit-${this.animation}`]: this.animation !== 'none' && !this.open,
+          }}
         >
           <slot onSlotchange={() => this.handleSlotChange()}></slot>
           {this.filterResult === 0 && this.noResultText !== '' && (
