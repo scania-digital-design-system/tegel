@@ -3,16 +3,32 @@
 :host {
   pointer-events: none;
   display: block;
-  opacity: 0;
-  visibility: hidden;
 }
 
-:host(.tds-popover-animation-enter-fade) {
-  animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter);
+:host(.tds-animation-enter-fade) {
+  animation: tds-fade-in var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-enter)
+    forwards;
+}
+
+:host(.tds-animation-exit-fade) {
+  animation: tds-fade-out var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-exit)
+    forwards;
 }
 
 :host(.is-shown) {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
+}
+
+:host(.is-hidden) {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+:host(.initially-hidden) {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
