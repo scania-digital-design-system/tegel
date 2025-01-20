@@ -139,6 +139,7 @@ export default {
     onlyIcon: false,
     icon: 'none',
     disabled: false,
+    animation: 'none',
   },
 };
 
