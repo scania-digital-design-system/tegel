@@ -65,7 +65,7 @@ export default {
       name: 'Animation',
       description: 'Sets the animation of the Popover Menu.',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: ['none', 'fade'],
       table: {
@@ -77,6 +77,7 @@ export default {
     menuPosition: 'Auto',
     icons: false,
     fluidWidth: false,
+    animation: 'none',
   },
 };
 

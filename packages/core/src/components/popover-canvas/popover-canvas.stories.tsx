@@ -38,7 +38,7 @@ export default {
       name: 'Animation',
       description: 'Sets the animation of the Popover Canvas.',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: ['none', 'fade'],
       table: {
@@ -48,6 +48,7 @@ export default {
   },
   args: {
     canvasPosition: 'Auto',
+    animation: 'none',
   },
 };
 
