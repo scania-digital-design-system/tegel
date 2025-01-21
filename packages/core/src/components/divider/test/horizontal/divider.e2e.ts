@@ -6,7 +6,7 @@ import {
   setupPage,
 } from '../../../../utils/testConfiguration';
 
-const componentTestPath = 'src/components/divider/test/vertical/index.html';
+const componentTestPath = 'src/components/divider/test/horizontal/index.html';
 const componentName = 'tds-divider';
 
 testConfigurations.basic.forEach((config) => {
@@ -15,12 +15,7 @@ testConfigurations.basic.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('expect to render a vertical divider', async ({ page }) => {
-      // expect height to be greater than width
-      const divider = page.getByTestId('divider').locator('div.divider').first();
-      const box = await divider.boundingBox();
-      expect(box.height).toBeGreaterThan(box.width);
-
+    test('expect to render a divider', async ({ page }) => {
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
