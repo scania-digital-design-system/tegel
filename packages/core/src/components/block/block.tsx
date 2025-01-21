@@ -21,6 +21,7 @@ export class TdsBlock {
       (item) => item.tagName === 'TDS-BLOCK',
     ) as HTMLTdsBlockElement[];
 
+    console.log('===================================================');
     console.log('this.modeVariant', this.modeVariant);
     console.log('this.children', this.children);
 
