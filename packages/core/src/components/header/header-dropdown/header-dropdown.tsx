@@ -43,12 +43,10 @@ export class TdsHeaderDropdown {
     this.open = !this.open;
   }
 
-  handleSlottedItemClick = (event: MouseEvent | KeyboardEvent) => {
-    const eventSource = (event.target as HTMLElement).tagName.toLowerCase();
-    if (['a', 'button', 'div'].includes(eventSource)) {
-      this.open = false;
-    }
-  };
+  @Listen('closeDropdownFromListItem')
+  handleCloseDropdownFromListItem() {
+    this.open = false;
+  }
 
   render() {
     return (
@@ -95,14 +93,7 @@ export class TdsHeaderDropdown {
                 },
               ]}
             >
-              {this.open ? (
-                <span
-                  onClick={(e) => this.handleSlottedItemClick(e)}
-                  onKeyDown={(e) => e.key === 'Enter' && this.handleSlottedItemClick(e)}
-                >
-                  <slot></slot>
-                </span>
-              ) : null}
+              {this.open ? <slot></slot> : null}
             </tds-popover-canvas>
           )}
         </div>
