@@ -21,10 +21,18 @@ export class TdsBlock {
       (item) => item.tagName === 'TDS-BLOCK',
     ) as HTMLTdsBlockElement[];
 
+    console.log('this.modeVariant', this.modeVariant);
+    console.log('this.children', this.children);
+
     this.children?.forEach((item) => {
+      console.log('-----------------');
+      console.log('in forEach - item', item);
+
       if (!this.modeVariant) {
+        console.log('IF');
         item.setAttribute('mode-variant', 'secondary');
       } else {
+        console.log('ELSE');
         item.setAttribute('mode-variant', this.modeVariant === 'primary' ? 'secondary' : 'primary');
       }
     });
