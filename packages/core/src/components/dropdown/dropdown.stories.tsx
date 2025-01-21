@@ -51,7 +51,7 @@ export default {
       },
       options: ['none', 'slide'],
       table: {
-        defaultValue: { summary: 'None' },
+        defaultValue: { summary: 'Slide' },
       },
     },
     filter: {
@@ -189,7 +189,7 @@ export default {
     disabled: false,
     openDirection: 'Auto',
     defaultOption: 'No default',
-    animation: 'none',
+    animation: 'slide',
   },
 };
 
