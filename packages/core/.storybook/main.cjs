@@ -8,6 +8,7 @@ let addons = [
   '@storybook/addon-notes/register',
    '@storybook/addon-docs',
   'storybook-version',
+  '@storybook/addon-a11y',
 ];
 
 if (process.env.STORYBOOK_ENV === 'dev') {
