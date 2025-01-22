@@ -30,6 +30,8 @@ export class TdsBlock {
       console.log('in forEach - item', item);
 
       if (!this.modeVariant) {
+        // this is always the case (this.modeVariant is undefined) in the
+        // demo pages for the parent tds-block
         console.log('IF');
         item.setAttribute('mode-variant', 'secondary');
       } else {
@@ -43,9 +45,9 @@ export class TdsBlock {
     this.setModeVariantOnChildBlocks();
     return (
       <div
-        class={`tds-block ${
-          this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
-        }`}
+        class="tds-block"
+
+        // ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
       >
         <slot></slot>
       </div>
