@@ -21,6 +21,30 @@ export class TdsBlock {
       (item) => item.tagName === 'TDS-BLOCK',
     ) as HTMLTdsBlockElement[];
 
+    // this.host.parentElement.querySelector('tds-table-header').childElementCount;
+
+    const elemz = this.host.querySelectorAll('tds-block');
+
+    console.log('elemz', elemz);
+
+    const pizza = this.host.parentElement.querySelectorAll('tds-block')[0];
+
+    const stl = getComputedStyle(pizza);
+
+    console.log('stl', stl);
+
+    // Select the element
+    const tdsBlock = document.querySelectorAll('tds-block')[0];
+
+    // Get the computed style of the element
+    const computedStyle = window.getComputedStyle(tdsBlock);
+
+    // Get the background-color property
+    const { backgroundColor } = computedStyle;
+
+    // Log the value
+    console.log('Background color:', backgroundColor);
+
     console.log('===================================================');
     console.log('this.modeVariant', this.modeVariant);
     console.log('this.children', this.children);
@@ -33,10 +57,10 @@ export class TdsBlock {
         // this is always the case (this.modeVariant is undefined) in the
         // demo pages for the parent tds-block
         console.log('IF');
-        item.setAttribute('mode-variant', 'secondary');
+        // item.setAttribute('mode-variant', 'secondary');
       } else {
         console.log('ELSE');
-        item.setAttribute('mode-variant', this.modeVariant === 'primary' ? 'secondary' : 'primary');
+        // item.setAttribute('mode-variant', this.modeVariant === 'primary' ? 'secondary' : 'primary');
       }
     });
   }
@@ -45,12 +69,16 @@ export class TdsBlock {
     this.setModeVariantOnChildBlocks();
     return (
       <div
-        class="tds-block"
+        class={`tds-block`}
 
-        // ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
+        // ${
+        //   this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
+        // }
       >
         <slot></slot>
       </div>
     );
   }
 }
+
+// ====================================================

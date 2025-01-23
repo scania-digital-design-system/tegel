@@ -39,14 +39,14 @@
   }
 }
 
-tds-block,
-.tds-mode-variant-primary tds-block {
-  --tds-block-background: lightgreen;
-}
+// tds-block,
+// .tds-mode-variant-primary tds-block {
+//   --tds-block-background: lightgreen;
+// }
 
-tds-block[mode-variant='secondary'] {
-  --tds-block-background: lightblue;
-}
+// tds-block[mode-variant='secondary'] {
+//   --tds-block-background: lightblue;
+// }
 
 // backup:
 
@@ -58,3 +58,28 @@ tds-block[mode-variant='secondary'] {
 // tds-block[mode-variant='secondary'] {
 //   --tds-block-background: blue;
 // }
+
+tds-block,
+.tds-mode-variant-primary tds-block {
+  --tds-block-background: lightgreen;
+
+  tds-block {
+    --tds-block-background: lightblue;
+
+    tds-block {
+      --tds-block-background: lightgreen;
+    }
+  }
+}
+
+.tds-mode-variant-secondary tds-block {
+  --tds-block-background: lightblue;
+
+  tds-block {
+    --tds-block-background: lightgreen;
+
+    tds-block {
+      --tds-block-background: lightblue;
+    }
+  }
+}
