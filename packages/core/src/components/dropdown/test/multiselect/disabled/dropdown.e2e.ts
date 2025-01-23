@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/multiselect/disabled/index.html';
 
 test.describe('tds-dropdown-multiselect-disabled', () => {
-  test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('clicking the dropdown icon does not open the dropdown-list', async ({ page }) => {
     const dropdownButtonIcon = page.locator('tds-icon');
 
     const dropdownListElementOne = page
@@ -24,7 +27,6 @@ test.describe('tds-dropdown-multiselect-disabled', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
   test('clicking the dropdown button does not open the dropdown-list', async ({ page }) => {
-    await page.goto(componentTestPath);
     const dropdownButton = page.getByRole('button').first();
 
     /* check that the icon is inside of a disabled element */

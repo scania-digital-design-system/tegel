@@ -28,7 +28,7 @@
       content: '';
       position: absolute;
       box-sizing: border-box;
-      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: all var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
     }
 
     &::before {

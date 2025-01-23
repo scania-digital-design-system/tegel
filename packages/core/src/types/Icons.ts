@@ -79,6 +79,7 @@ export type IconNames =
   | 'notification'
   | 'phone_inactive'
   | 'phone'
+  | 'pie_chart'
   | 'pin_inactive'
   | 'pin'
   | 'plus'

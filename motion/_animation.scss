@@ -10,6 +10,7 @@
 
   100% {
     opacity: 1;
+    visibility: visible;
   }
 }
 
@@ -20,23 +21,12 @@
 
   100% {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
 /* Scale */
 @keyframes tds-zoom-in {
-  0% {
-    opacity: 1;
-    transform: scale(0.9);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes tds-zoom-in-hidden {
   0% {
     transform: scale(0.9);
   }
@@ -59,72 +49,60 @@
 /* Slide */
 @keyframes tds-slide-in-top {
   0% {
-    opacity: 1;
     transform: translateY(-100%);
   }
 
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-in-bottom {
   0% {
-    opacity: 1;
     transform: translateY(100%);
   }
 
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-in-left {
   0% {
-    opacity: 1;
     transform: translateX(-100%);
   }
 
   100% {
-    opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes tds-slide-in-right {
   0% {
-    opacity: 1;
     transform: translateX(100%);
   }
 
   100% {
-    opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes tds-slide-out-top {
   0% {
-    opacity: 1;
     transform: translateY(0);
   }
 
   100% {
-    opacity: 1;
     transform: translateY(-100%);
   }
 }
 
 @keyframes tds-slide-out-bottom {
   0% {
-    opacity: 1;
     transform: translateY(0);
   }
 
   100% {
-    opacity: 1;
     transform: translateY(100%);
   }
 }
@@ -141,24 +119,20 @@
 
 @keyframes tds-slide-out-left {
   0% {
-    opacity: 1;
     transform: translateX(0);
   }
 
   100% {
-    opacity: 1;
     transform: translateX(-100%);
   }
 }
 
 @keyframes tds-slide-out-right {
   0% {
-    opacity: 1;
     transform: translateX(0);
   }
 
   100% {
-    opacity: 1;
     transform: translateX(100%);
   }
 }
@@ -166,29 +140,15 @@
 /* Slide short */
 @keyframes tds-slide-top-short {
   0% {
-    opacity: 1;
     transform: translateY(-16px);
   }
 
   100% {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes tds-slide-bottom-short {
-  0% {
-    opacity: 1;
-    transform: translateY(16px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes tds-slide-bottom-short-hidden {
   0% {
     transform: translateY(16px);
   }
@@ -200,25 +160,61 @@
 
 @keyframes tds-slide-left-short {
   0% {
-    opacity: 1;
     transform: translateX(-16px);
   }
 
   100% {
-    opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes tds-slide-right-short {
   0% {
-    opacity: 1;
     transform: translateX(16px);
   }
 
   100% {
-    opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes tds-slide-out-top-short {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes tds-slide-out-bottom-short {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(16px);
+  }
+}
+
+@keyframes tds-slide-out-left-short {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes tds-slide-out-right-short {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(16px);
   }
 }
 
@@ -346,73 +342,59 @@
 
 @keyframes tds-collapse-in {
   from {
-    opacity: 1;
-    height: 0%;
-
-    //overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(0);
   }
 
   to {
-    opacity: 1;
-    height: 100%;
-
-    //overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(1);
   }
 }
 
 @keyframes tds-collapse-in-hidden {
   from {
-    height: 0%;
-
-    //overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(0);
   }
 
   to {
-    height: 100%;
-
-    //overflow: hidden;
+    transform-origin: top;
+    transform: scaleY(1);
   }
 }
 
 @keyframes tds-collapse-out {
   0% {
-    height: 100%;
-
-    //overflow: hidden;
+    transform: scaleY(1);
+    transform-origin: top;
   }
 
   100% {
-    height: 0;
-
-    //overflow: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
   }
 }
 
 @keyframes tds-collapse-width-in {
   0% {
-    width: 0;
-    overflow: hidden;
+    transform: scaleX(0);
   }
 
   to {
-    width: 100%;
-    overflow: hidden;
+    transform: scaleX(1);
   }
 }
 
 @keyframes tds-collapse-width-out {
   0% {
-    width: 100%;
-    overflow: hidden;
+    transform: scaleX(1);
   }
 
   to {
-    width: 0;
-    overflow: hidden;
+    transform: scaleX(0);
   }
 }
-
-///
 
 @supports not (
   ((height: 1lh) and (animation-timeline: none)) or ((height: 1lh) and (margin-trim: none))
@@ -495,12 +477,4 @@
     stroke-dashoffset: 0;
     stroke-dasharray: 2230px;
   }
-}
-
-.star1 {
-  animation: animate-svg-stroke-1 2s cubic-bezier(0.47, 0, 0.745, 0.715) 0s both;
-  fill: #fff;
-  stroke: #000;
-  stroke-width: 20;
-  stroke-miterlimit: 10;
 }

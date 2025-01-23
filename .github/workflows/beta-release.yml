@@ -11,7 +11,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '20.9.0'
+        default: '22.11.0'
         type: string
 
       betaVersionSuffix:
@@ -178,7 +178,7 @@ jobs:
         run: npm install @scania/tegel@${{ needs.beta-release-core.outputs.version }} --save-dev
 
       - name: Angular-17 - Run build
-        run: npm run build-angular-17
+        run: npm run build:angular-17
 
       - name: Check if Angular-17 version already exists
         id: check-version
@@ -254,7 +254,7 @@ jobs:
         run: npm install
 
       - name: Build Angular package
-        run: npm run build-angular
+        run: npm run build:angular
 
       - name: Check if Angular version already exists
         id: check-version
@@ -328,7 +328,7 @@ jobs:
         run: npm install
 
       - name: Build React package
-        run: npm run build-react
+        run: npm run build:react
 
       - name: Check if React version already exists
         id: check-version

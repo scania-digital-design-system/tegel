@@ -4,8 +4,11 @@ import { expect } from '@playwright/test';
 const componentTestPath = 'src/components/dropdown/test/error/index.html';
 
 test.describe.parallel('tds-dropdown-error', () => {
-  test('renders error dropdown correctly', async ({ page }) => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+  });
+
+  test('renders error dropdown correctly', async ({ page }) => {
     const dropdown = page.getByTestId('tds-dropdown-testid');
     await expect(dropdown).toHaveCount(1);
 
@@ -14,7 +17,6 @@ test.describe.parallel('tds-dropdown-error', () => {
   });
 
   test('find helper text and check if visible and have icon', async ({ page }) => {
-    await page.goto(componentTestPath);
     const helperText = page.getByText(/Helper text/);
     await expect(helperText).toBeVisible();
     const helperTextIcon = helperText.getByRole('img');
@@ -22,7 +24,6 @@ test.describe.parallel('tds-dropdown-error', () => {
   });
 
   test('clicking the dropdown opens the dropdown-list', async ({ page }) => {
-    await page.goto(componentTestPath);
     const dropdownListElementOneButton = page
       .locator('tds-dropdown-option')
       .filter({ hasText: /Option 1/ })

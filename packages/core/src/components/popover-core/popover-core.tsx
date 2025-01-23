@@ -14,9 +14,11 @@ import {
 import { createPopper } from '@popperjs/core';
 import type { Placement, Instance } from '@popperjs/core';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { generateClassList } from '../../utils/classList';
 
 @Component({
   tag: 'tds-popover-core',
+  styleUrl: 'tds-popover-core.scss',
   shadow: false,
   scoped: true,
 })
@@ -31,6 +33,9 @@ export class TdsPopoverCore {
 
   /** Decides if the component should be visible from the start. */
   @Prop() defaultShow: boolean = false;
+
+  /** Whether the popover should animate when being opened/closed or not */
+  @Prop() animation: 'none' | 'fade' | string = 'none';
 
   /** Controls whether the Popover is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. This
@@ -66,6 +71,8 @@ export class TdsPopoverCore {
   @State() isShown: boolean = false;
 
   @State() disableLogic: boolean = false;
+
+  @State() hasShownAtLeastOnce: boolean = false;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -141,6 +148,7 @@ export class TdsPopoverCore {
       this.isShown = isShown;
     }
     if (this.isShown) {
+      this.hasShownAtLeastOnce = true;
       this.internalTdsShow.emit();
     } else {
       this.internalTdsClose.emit();
@@ -245,10 +253,13 @@ export class TdsPopoverCore {
     });
   }
 
-  /* To enable initial loading of a component if user controls show prop*/
+  /* To enable initial loading of a component if user controls show prop */
   componentWillLoad() {
+    // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
       this.setIsShown(true);
+    } else {
+      this.setIsShown(false);
     }
   }
 
@@ -266,13 +277,18 @@ export class TdsPopoverCore {
   }
 
   render() {
-    let hostStyle = {};
-    if (this.autoHide) {
-      hostStyle = { display: this.isShown ? 'block' : 'none' };
-    }
+    const classes = {
+      'is-shown': (this.isShown && this.animation === 'none') || this.animation === undefined,
+      'is-hidden': (!this.isShown && this.animation === 'none') || this.animation === undefined,
+      'initially-hidden': !this.hasShownAtLeastOnce,
+      'tds-animation-enter-fade': this.isShown && this.animation === 'fade',
+      'tds-animation-exit-fade': !this.isShown && this.animation === 'fade',
+    };
+
+    const classList = generateClassList(classes);
 
     return (
-      <Host style={hostStyle} id={`tds-popover-core-${this.uuid}`}>
+      <Host class={classList} id={`tds-popover-core-${this.uuid}`}>
         <slot></slot>
       </Host>
     );

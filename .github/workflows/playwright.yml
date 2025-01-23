@@ -6,12 +6,12 @@ on:
     branches: [main, develop]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         working-directory: packages/core
@@ -33,3 +33,10 @@ jobs:
         if: always()
         with:
           report-file: ./packages/core/results.json
+
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-output
+          path: ./packages/core/test-results/output ## Folder used in playwright.config.js `outputDir`
+          retention-days: 1
