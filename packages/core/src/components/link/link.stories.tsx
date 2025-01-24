@@ -1,6 +1,7 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
 import { ComponentsFolder } from '../../utils/constants';
+import { iconsNames } from '../icon/iconsArray';
 
 export default {
   title: `${ComponentsFolder}/Link`,
@@ -41,21 +42,38 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    icon: {
+      name: 'Icon',
+      description: 'Sets icon to be displayed on the Link.',
+      control: {
+        type: 'select',
+      },
+      options: ['none', ...iconsNames],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
   },
   args: {
     underline: true,
     disabled: false,
+    icon: 'none',
   },
 };
 
-const Template = ({ underline, disabled }) =>
+const Template = ({ underline, disabled, icon }) =>
   formatHtmlPreview(
     `
     <p class='tds-body-02'>The <tds-link
         ${disabled ? 'disabled' : ''}
         ${underline ? '' : 'underline="false"'}
+   
         >
-        <a href="https://tegel.scania.com/home" target='_blank'>Tegel</a>
+        <a href="https://tegel.scania.com/home" target='_blank'>Tegel${
+          icon !== 'none' ? `<tds-icon name="${icon}" size="16px"></tds-icon>` : ''
+        }</a>
+       
+        
     </tds-link> Design System is for digital products and services at Scania.
      It enables an efficient development process and ensures a premium experience across all of Scania's digital touchpoints.    
     </p>  
