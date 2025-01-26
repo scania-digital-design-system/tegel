@@ -60,7 +60,8 @@
 // }
 
 tds-block,
-.tds-mode-variant-primary tds-block {
+.tds-mode-variant-primary tds-block,
+tds-block[mode-variant='secondary'] {
   --tds-block-background: lightgreen;
 
   tds-block {
@@ -80,7 +81,8 @@ tds-block,
   }
 }
 
-.tds-mode-variant-secondary tds-block {
+.tds-mode-variant-secondary tds-block,
+tds-block[mode-variant='primary'] {
   --tds-block-background: lightblue;
 
   tds-block {
