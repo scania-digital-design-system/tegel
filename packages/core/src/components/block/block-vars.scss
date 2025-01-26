@@ -2,39 +2,95 @@
 .tds-mode-light {
   --tds-block-color: var(--tds-grey-985);
   --tds-block-background-primary: var(--tds-grey-50);
-  --tds-block-background-nested-primary: var(--tds-white);
   --tds-block-background-secondary: var(--tds-white);
-  --tds-block-background-nested-secondary: var(--tds-grey-50);
-  --tds-block-background: var(--tds-block-background-primary);
-  --tds-block-background-nested: var(--tds-block-background-nested-primary);
-
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-block-background-primary);
-    --tds-block-background-nested: var(--tds-block-background-nested-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-block-background-secondary);
-    --tds-block-background-nested: var(--tds-block-background-nested-secondary);
-  }
 }
 
 .tds-mode-dark {
   --tds-block-color: var(--tds-grey-50);
   --tds-block-background-primary: var(--tds-grey-900);
-  --tds-block-background-nested-primary: var(--tds-grey-868);
   --tds-block-background-secondary: var(--tds-grey-868);
-  --tds-block-background-nested-secondary: var(--tds-grey-900);
+}
+
+// problem with the solution below: it only works for 5 levels of nesting, or
+// however many levels we adjust the code here for
+
+tds-block,
+.tds-mode-variant-primary tds-block {
   --tds-block-background: var(--tds-block-background-primary);
-  --tds-block-background-nested: var(--tds-block-background-nested-primary);
 
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-block-background-primary);
-    --tds-block-background-nested: var(--tds-block-background-nested-primary);
-  }
-
-  .tds-mode-variant-secondary {
+  tds-block {
     --tds-block-background: var(--tds-block-background-secondary);
-    --tds-block-background-nested: var(--tds-block-background-nested-secondary);
+
+    tds-block {
+      --tds-block-background: var(--tds-block-background-primary);
+
+      tds-block {
+        --tds-block-background: var(--tds-block-background-secondary);
+
+        tds-block {
+          --tds-block-background: var(--tds-block-background-primary);
+        }
+      }
+    }
+  }
+}
+
+.tds-mode-variant-secondary tds-block {
+  --tds-block-background: var(--tds-block-background-secondary);
+
+  tds-block {
+    --tds-block-background: var(--tds-block-background-primary);
+
+    tds-block {
+      --tds-block-background: var(--tds-block-background-secondary);
+
+      tds-block {
+        --tds-block-background: var(--tds-block-background-primary);
+
+        tds-block {
+          --tds-block-background: var(--tds-block-background-secondary);
+        }
+      }
+    }
+  }
+}
+
+tds-block[mode-variant='primary'] {
+  --tds-block-background: var(--tds-block-background-primary);
+
+  tds-block {
+    --tds-block-background: var(--tds-block-background-secondary);
+
+    tds-block {
+      --tds-block-background: var(--tds-block-background-primary);
+
+      tds-block {
+        --tds-block-background: var(--tds-block-background-secondary);
+
+        tds-block {
+          --tds-block-background: var(--tds-block-background-primary);
+        }
+      }
+    }
+  }
+}
+
+tds-block[mode-variant='secondary'] {
+  --tds-block-background: var(--tds-block-background-secondary);
+
+  tds-block {
+    --tds-block-background: var(--tds-block-background-primary);
+
+    tds-block {
+      --tds-block-background: var(--tds-block-background-secondary);
+
+      tds-block {
+        --tds-block-background: var(--tds-block-background-primary);
+
+        tds-block {
+          --tds-block-background: var(--tds-block-background-secondary);
+        }
+      }
+    }
   }
 }
