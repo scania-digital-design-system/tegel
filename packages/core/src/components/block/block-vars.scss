@@ -8,15 +8,15 @@
   --tds-block-background: var(--tds-block-background-primary);
   --tds-block-background-nested: var(--tds-block-background-nested-primary);
 
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-block-background-primary);
-    --tds-block-background-nested: var(--tds-block-background-nested-primary);
-  }
+  // .tds-mode-variant-primary {
+  //   --tds-block-background: var(--tds-block-background-primary);
+  //   --tds-block-background-nested: var(--tds-block-background-nested-primary);
+  // }
 
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-block-background-secondary);
-    --tds-block-background-nested: var(--tds-block-background-nested-secondary);
-  }
+  // .tds-mode-variant-secondary {
+  //   --tds-block-background: var(--tds-block-background-secondary);
+  //   --tds-block-background-nested: var(--tds-block-background-nested-secondary);
+  // }
 }
 
 .tds-mode-dark {
@@ -28,15 +28,15 @@
   --tds-block-background: var(--tds-block-background-primary);
   --tds-block-background-nested: var(--tds-block-background-nested-primary);
 
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-block-background-primary);
-    --tds-block-background-nested: var(--tds-block-background-nested-primary);
-  }
+  // .tds-mode-variant-primary {
+  //   --tds-block-background: var(--tds-block-background-primary);
+  //   --tds-block-background-nested: var(--tds-block-background-nested-primary);
+  // }
 
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-block-background-secondary);
-    --tds-block-background-nested: var(--tds-block-background-nested-secondary);
-  }
+  // .tds-mode-variant-secondary {
+  //   --tds-block-background: var(--tds-block-background-secondary);
+  //   --tds-block-background-nested: var(--tds-block-background-nested-secondary);
+  // }
 }
 
 // tds-block,
@@ -59,21 +59,108 @@
 //   --tds-block-background: blue;
 // }
 
+// ========================================
+
+// kind of working:
+
+// tds-block,
+// .tds-mode-variant-primary tds-block {
+//   --tds-block-background: lightgreen;
+
+//   tds-block {
+//     --tds-block-background: lightblue;
+
+//     tds-block {
+//       --tds-block-background: lightgreen;
+
+//       tds-block {
+//         --tds-block-background: lightblue;
+
+//         tds-block {
+//           --tds-block-background: lightgreen;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .tds-mode-variant-secondary tds-block {
+//   --tds-block-background: lightblue;
+
+//   tds-block {
+//     --tds-block-background: lightgreen;
+
+//     tds-block {
+//       --tds-block-background: lightblue;
+
+//       tds-block {
+//         --tds-block-background: lightgreen;
+
+//         tds-block {
+//           --tds-block-background: lightblue;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// tds-block[mode-variant='primary'] {
+//   --tds-block-background: lightgreen;
+
+//   tds-block {
+//     --tds-block-background: lightblue;
+
+//     tds-block {
+//       --tds-block-background: lightgreen;
+
+//       tds-block {
+//         --tds-block-background: lightblue;
+
+//         tds-block {
+//           --tds-block-background: lightgreen;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// tds-block[mode-variant='secondary'] {
+//   --tds-block-background: lightblue;
+
+//   tds-block {
+//     --tds-block-background: lightgreen;
+
+//     tds-block {
+//       --tds-block-background: lightblue;
+
+//       tds-block {
+//         --tds-block-background: lightgreen;
+
+//         tds-block {
+//           --tds-block-background: lightblue;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// ========================================
+
 tds-block,
 .tds-mode-variant-primary tds-block {
-  --tds-block-background: lightgreen;
+  --tds-block-background: var(--tds-block-background-primary);
 
   tds-block {
-    --tds-block-background: lightblue;
+    --tds-block-background: var(--tds-block-background-secondary);
 
     tds-block {
-      --tds-block-background: lightgreen;
+      --tds-block-background: var(--tds-block-background-primary);
 
       tds-block {
-        --tds-block-background: lightblue;
+        --tds-block-background: var(--tds-block-background-secondary);
 
         tds-block {
-          --tds-block-background: lightgreen;
+          --tds-block-background: var(--tds-block-background-primary);
         }
       }
     }
@@ -81,19 +168,19 @@ tds-block,
 }
 
 .tds-mode-variant-secondary tds-block {
-  --tds-block-background: lightblue;
+  --tds-block-background: var(--tds-block-background-secondary);
 
   tds-block {
-    --tds-block-background: lightgreen;
+    --tds-block-background: var(--tds-block-background-primary);
 
     tds-block {
-      --tds-block-background: lightblue;
+      --tds-block-background: var(--tds-block-background-secondary);
 
       tds-block {
-        --tds-block-background: lightgreen;
+        --tds-block-background: var(--tds-block-background-primary);
 
         tds-block {
-          --tds-block-background: lightblue;
+          --tds-block-background: var(--tds-block-background-secondary);
         }
       }
     }
@@ -101,19 +188,19 @@ tds-block,
 }
 
 tds-block[mode-variant='primary'] {
-  --tds-block-background: lightgreen;
+  --tds-block-background: var(--tds-block-background-primary);
 
   tds-block {
-    --tds-block-background: lightblue;
+    --tds-block-background: var(--tds-block-background-secondary);
 
     tds-block {
-      --tds-block-background: lightgreen;
+      --tds-block-background: var(--tds-block-background-primary);
 
       tds-block {
-        --tds-block-background: lightblue;
+        --tds-block-background: var(--tds-block-background-secondary);
 
         tds-block {
-          --tds-block-background: lightgreen;
+          --tds-block-background: var(--tds-block-background-primary);
         }
       }
     }
@@ -121,19 +208,19 @@ tds-block[mode-variant='primary'] {
 }
 
 tds-block[mode-variant='secondary'] {
-  --tds-block-background: lightblue;
+  --tds-block-background: var(--tds-block-background-secondary);
 
   tds-block {
-    --tds-block-background: lightgreen;
+    --tds-block-background: var(--tds-block-background-primary);
 
     tds-block {
-      --tds-block-background: lightblue;
+      --tds-block-background: var(--tds-block-background-secondary);
 
       tds-block {
-        --tds-block-background: lightgreen;
+        --tds-block-background: var(--tds-block-background-primary);
 
         tds-block {
-          --tds-block-background: lightblue;
+          --tds-block-background: var(--tds-block-background-secondary);
         }
       }
     }
