@@ -68,6 +68,14 @@ tds-block,
 
     tds-block {
       --tds-block-background: lightgreen;
+
+      tds-block {
+        --tds-block-background: lightblue;
+
+        tds-block {
+          --tds-block-background: lightgreen;
+        }
+      }
     }
   }
 }
@@ -80,6 +88,14 @@ tds-block,
 
     tds-block {
       --tds-block-background: lightblue;
+
+      tds-block {
+        --tds-block-background: lightgreen;
+
+        tds-block {
+          --tds-block-background: lightblue;
+        }
+      }
     }
   }
 }
