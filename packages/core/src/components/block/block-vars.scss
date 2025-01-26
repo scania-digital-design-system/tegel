@@ -100,10 +100,42 @@ tds-block,
   }
 }
 
-tds-block[mode-variant='secondary'] {
-  --tds-block-background: orange;
+tds-block[mode-variant='primary'] {
+  --tds-block-background: lightgreen;
+
+  tds-block {
+    --tds-block-background: lightblue;
+
+    tds-block {
+      --tds-block-background: lightgreen;
+
+      tds-block {
+        --tds-block-background: lightblue;
+
+        tds-block {
+          --tds-block-background: lightgreen;
+        }
+      }
+    }
+  }
 }
 
-tds-block[mode-variant='primary'] {
-  --tds-block-background: yellow;
+tds-block[mode-variant='secondary'] {
+  --tds-block-background: lightblue;
+
+  tds-block {
+    --tds-block-background: lightgreen;
+
+    tds-block {
+      --tds-block-background: lightblue;
+
+      tds-block {
+        --tds-block-background: lightgreen;
+
+        tds-block {
+          --tds-block-background: lightblue;
+        }
+      }
+    }
+  }
 }
