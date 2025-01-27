@@ -64,7 +64,7 @@ test.describe.parallel(componentName, () => {
   });
 
   test('Footer contains right chevron button, it is not disabled', async ({ page }) => {
-    const tableFooterRightChevronButton = page.getByRole('button').last();
+    const tableFooterRightChevronButton = page.getByRole('button').nth(2);
     await expect(tableFooterRightChevronButton).toBeVisible();
     await expect(tableFooterRightChevronButton).not.toHaveAttribute('disabled');
   });
