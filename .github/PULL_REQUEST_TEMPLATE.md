@@ -14,6 +14,7 @@ _Provide detailed steps for testing, including any necessary setup._
 3. Run ...
 
 ## **Checklist before submission**
+- [ ] No accessibility violations in storybook
 - [ ] I have added unit tests for my changes (if applicable)
 - [ ] All existing tests pass
 - [ ] I have updated the documentation (if applicable)
