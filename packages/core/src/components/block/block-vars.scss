@@ -11,86 +11,71 @@
   --tds-block-background-secondary: var(--tds-grey-868);
 }
 
-// problem with the solution below: it only works for 5 levels of nesting, or
-// however many levels we adjust the code here for
-
 tds-block,
 .tds-mode-variant-primary tds-block {
   --tds-block-background: var(--tds-block-background-primary);
 
-  tds-block {
-    --tds-block-background: var(--tds-block-background-secondary);
-
-    tds-block {
-      --tds-block-background: var(--tds-block-background-primary);
-
-      tds-block {
-        --tds-block-background: var(--tds-block-background-secondary);
-
-        tds-block {
-          --tds-block-background: var(--tds-block-background-primary);
-        }
-      }
+  $selector: 'tds-block';
+  @for $i from 1 through 10 {
+    #{$selector} {
+      --tds-block-background: #{if(
+        $i % 2 == 0,
+        var(--tds-block-background-primary),
+        var(--tds-block-background-secondary)
+      )};
     }
+
+    $selector: '#{$selector} tds-block';
   }
 }
 
 .tds-mode-variant-secondary tds-block {
   --tds-block-background: var(--tds-block-background-secondary);
 
-  tds-block {
-    --tds-block-background: var(--tds-block-background-primary);
-
-    tds-block {
-      --tds-block-background: var(--tds-block-background-secondary);
-
-      tds-block {
-        --tds-block-background: var(--tds-block-background-primary);
-
-        tds-block {
-          --tds-block-background: var(--tds-block-background-secondary);
-        }
-      }
+  $selector: 'tds-block';
+  @for $i from 1 through 10 {
+    #{$selector} {
+      --tds-block-background: #{if(
+        $i % 2 == 0,
+        var(--tds-block-background-secondary),
+        var(--tds-block-background-primary)
+      )};
     }
+
+    $selector: '#{$selector} tds-block';
   }
 }
 
 tds-block[mode-variant='primary'] {
   --tds-block-background: var(--tds-block-background-primary);
 
-  tds-block {
-    --tds-block-background: var(--tds-block-background-secondary);
-
-    tds-block {
-      --tds-block-background: var(--tds-block-background-primary);
-
-      tds-block {
-        --tds-block-background: var(--tds-block-background-secondary);
-
-        tds-block {
-          --tds-block-background: var(--tds-block-background-primary);
-        }
-      }
+  $selector: 'tds-block';
+  @for $i from 1 through 10 {
+    #{$selector} {
+      --tds-block-background: #{if(
+        $i % 2 == 0,
+        var(--tds-block-background-primary),
+        var(--tds-block-background-secondary)
+      )};
     }
+
+    $selector: '#{$selector} tds-block';
   }
 }
 
 tds-block[mode-variant='secondary'] {
   --tds-block-background: var(--tds-block-background-secondary);
 
-  tds-block {
-    --tds-block-background: var(--tds-block-background-primary);
-
-    tds-block {
-      --tds-block-background: var(--tds-block-background-secondary);
-
-      tds-block {
-        --tds-block-background: var(--tds-block-background-primary);
-
-        tds-block {
-          --tds-block-background: var(--tds-block-background-secondary);
-        }
-      }
+  $selector: 'tds-block';
+  @for $i from 1 through 10 {
+    #{$selector} {
+      --tds-block-background: #{if(
+        $i % 2 == 0,
+        var(--tds-block-background-secondary),
+        var(--tds-block-background-primary)
+      )};
     }
+
+    $selector: '#{$selector} tds-block';
   }
 }
