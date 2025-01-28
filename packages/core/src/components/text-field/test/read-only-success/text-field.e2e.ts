@@ -1,22 +1,37 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/read-only-success/index.html';
+const componentName = 'tds-text-field';
+const testDescription = 'TdsTextField - read-only success state';
+
 const textFieldSelector = 'tds-text-field';
 
-test.describe.parallel('TdsTextField - read-only success state', () => {
-  test.beforeEach(async ({ page }) => {
-    // Navigate to the component test page before each test
-    await page.goto(componentTestPath);
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders readonly success state of text-field correctly', async ({ page }) => {
+      const textField = page.locator(textFieldSelector);
+      await expect(textField).toHaveCount(1);
+
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
   });
+});
 
-  test('renders readonly success state of text-field correctly', async ({ page }) => {
-    const textField = page.locator(textFieldSelector);
-    await expect(textField).toHaveCount(1);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
   });
 
   test('should have state "success"', async ({ page }) => {

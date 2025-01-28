@@ -1,22 +1,37 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 // Defined once for reuse
 const componentTestPath = 'src/components/text-field/test/default/index.html';
+const componentName = 'tds-text-field';
+const testDescription = 'TdsTextField - default state';
+
 const textFieldSelector = 'tds-text-field';
 
-test.describe.parallel('TdsTextField - default state', () => {
-  test.beforeEach(async ({ page }) => {
-    // Navigate to the component test page before each test
-    await page.goto(componentTestPath);
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders default text-field correctly', async ({ page }) => {
+      const textField = page.locator(textFieldSelector);
+      await expect(textField).toHaveCount(1);
+
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
   });
+});
 
-  test('renders default text-field correctly', async ({ page }) => {
-    const textField = page.locator(textFieldSelector);
-    await expect(textField).toHaveCount(1);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
   });
 
   test('should have type "text"', async ({ page }) => {

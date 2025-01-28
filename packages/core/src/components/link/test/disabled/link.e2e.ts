@@ -1,15 +1,34 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/link/test/disabled/index.html';
+const componentName = 'tds-link';
+const testDescription = 'tds-link-disabled';
 
-test.describe.parallel('tds-link-disabled', () => {
-  test('disabled link is rendered correctly', async ({ page }) => {
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('disabled link is rendered correctly', async ({ page }) => {
+      await page.goto(componentTestPath);
+      const tdsLink = page.getByTestId('tds-link-testid');
+      await expect(tdsLink).toHaveCount(1);
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-    const tdsLink = page.getByTestId('tds-link-testid');
-    await expect(tdsLink).toHaveCount(1);
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('text shows on page', async ({ page }) => {
