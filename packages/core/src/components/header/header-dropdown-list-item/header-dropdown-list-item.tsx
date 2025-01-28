@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a link or button element.
@@ -10,8 +10,6 @@ import { Component, Element, h, Host, Prop, Event, EventEmitter } from '@stencil
 })
 export class TdsHeaderDropdownListItem {
   @Element() host: HTMLElement;
-
-  @Event() closeDropdownFromListItem: EventEmitter<void>;
 
   /** If the link should appear selected. */
   @Prop() selected: boolean = false;
@@ -27,8 +25,6 @@ export class TdsHeaderDropdownListItem {
             'component': true,
             'component-selected': this.selected,
           }}
-          onClick={() => this.closeDropdownFromListItem.emit()}
-          onKeyDown={(e) => e.key === 'Enter' && this.closeDropdownFromListItem.emit()}
         >
           <slot></slot>
         </div>

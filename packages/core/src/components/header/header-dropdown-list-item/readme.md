@@ -13,13 +13,6 @@
 | `size`     | `size`     | The size of the component.          | `"lg" \| "md"` | `'md'`  |
 
 
-## Events
-
-| Event                       | Description | Type                |
-| --------------------------- | ----------- | ------------------- |
-| `closeDropdownFromListItem` |             | `CustomEvent<void>` |
-
-
 ## Slots
 
 | Slot          | Description                                        |
