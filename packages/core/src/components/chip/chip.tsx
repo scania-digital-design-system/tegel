@@ -1,4 +1,4 @@
-import { Component, Host, h, Event, EventEmitter, Prop, Element } from '@stencil/core';
+import { Component, Host, h, Event, EventEmitter, Prop, Element, Listen } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
 
@@ -57,6 +57,18 @@ export class TdsChip {
     checked?: boolean;
   }>;
 
+  /** @internal Emit checked value if type is radio */
+  @Event({
+    eventName: 'internalRadioOnChange',
+    composed: true,
+    cancelable: false,
+    bubbles: true,
+  })
+  internalRadioOnChange: EventEmitter<{
+    chipId: string;
+    checked: boolean;
+  }>;
+
   private handleChange = () => {
     if (!this.disabled) {
       // Only proceed if not disabled
@@ -64,6 +76,7 @@ export class TdsChip {
         this.checked = !this.checked;
       } else if (this.type === 'radio') {
         this.checked = true;
+        this.internalRadioOnChange.emit({ chipId: this.chipId, checked: this.checked })
       } else {
         console.error('Unsupported type in Chip component!');
       }
@@ -75,6 +88,18 @@ export class TdsChip {
       });
     }
   };
+
+  @Listen('internalRadioOnChange', { target: 'body' })
+  handleInternaRadioChange(event: CustomEvent<{ chipId: string; checked?: boolean; }>) {
+    const { chipId, checked } = event.detail
+
+    // if event comes from different button and both incoming and this is checked
+    if(chipId !== this.chipId) {
+      if(this.checked && checked) {
+        this.checked = false
+      }
+    }
+  }
 
   /** Sends unique Chip identifier when Chip is clicked.
    * Valid only for type button.
