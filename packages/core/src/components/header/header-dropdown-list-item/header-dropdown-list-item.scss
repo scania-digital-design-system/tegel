@@ -23,6 +23,11 @@
       letter-spacing: var(--tds-detail-02-ls);
       background-color: var(--tds-nav-dropdown-item-background);
       color: var(--tds-header-nav-item-dropdown-opened-color);
+
+      tds-icon,
+      div {
+        pointer-events: none;
+      }
     }
 
     ::slotted(a:hover) {
