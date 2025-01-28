@@ -1,21 +1,36 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/datetime/test/disabled/index.html';
+const componentName = 'tds-datetime';
+const testDescription = 'tds-datetime-disabled';
 
-test.describe('tds-datetime-disabled', () => {
-  test('renders disabled datetime component correctly', async ({ page }) => {
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders disabled datetime component correctly', async ({ page }) => {
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('when in disabled state all but helper text should have pointer events none', async ({
     page,
   }) => {
-    await page.goto(componentTestPath);
-
     // Check for disabled state of the datetime input
     const datetimeInput = page.locator('input[type="datetime-local"]');
     const label = page.locator('label');

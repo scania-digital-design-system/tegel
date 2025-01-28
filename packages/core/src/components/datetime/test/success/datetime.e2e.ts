@@ -1,18 +1,34 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/datetime/test/success/index.html';
+const componentName = 'tds-datetime';
+const testDescription = 'tds-datetime-success';
 
-test.describe('tds-datetime-success', () => {
-  test('renders success datetime component correctly', async ({ page }) => {
+testConfigurations.withModeVariants.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders success datetime component correctly', async ({ page }) => {
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('component should have size "md"', async ({ page }) => {
-    await page.goto(componentTestPath);
     const dateTime = page.locator('tds-datetime');
     const dateTimeContainer = page.locator('.tds-datetime-container');
 
