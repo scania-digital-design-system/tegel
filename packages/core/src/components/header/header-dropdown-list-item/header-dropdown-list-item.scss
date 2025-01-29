@@ -24,16 +24,16 @@
       background-color: var(--tds-nav-dropdown-item-background);
       color: var(--tds-header-nav-item-dropdown-opened-color);
 
-      tds-icon,
-      div {
-        pointer-events: none !important;
-      }
+      // tds-icon,
+      // div {
+      //   pointer-events: none !important;
+      // }
     }
 
-    tds-icon,
-    div {
-      pointer-events: none !important;
-    }
+    // tds-icon,
+    // div {
+    //   pointer-events: none !important;
+    // }
 
     ::slotted(a:hover) {
       background-color: var(--tds-nav-item-background-hover);
@@ -70,5 +70,15 @@
   ::slotted(button) {
     padding: 0 16px;
     color: var(--tds-header-app-launcher-item-color);
+  }
+}
+
+tds-header-dropdown-list-item {
+  a,
+  button {
+    tds-icon,
+    div {
+      pointer-events: none;
+    }
   }
 }
