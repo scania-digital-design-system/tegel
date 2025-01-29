@@ -1,6 +1,16 @@
 @import '../../../mixins/focus-state';
 
 :host {
+  tds-header-dropdown-list-item {
+    a,
+    button {
+      tds-icon,
+      div {
+        pointer-events: none;
+      }
+    }
+  }
+
   display: block;
   box-sizing: border-box;
   height: var(--tds-header-list-item-md-height);
@@ -73,12 +83,12 @@
   }
 }
 
-tds-header-dropdown-list-item {
-  a,
-  button {
-    tds-icon,
-    div {
-      pointer-events: none;
-    }
-  }
-}
+// tds-header-dropdown-list-item {
+//   a,
+//   button {
+//     tds-icon,
+//     div {
+//       pointer-events: none;
+//     }
+//   }
+// }
