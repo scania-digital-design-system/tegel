@@ -91,7 +91,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
       await expect(dropdownListElementThreeButton).toHaveAttribute('aria-selected');
       await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
-      const inputText2 = page.getByRole('button', { name: /Option 1,Option 3/ });
+      const inputText2 = page.getByRole('button', { name: /Option 1, Option 3/ });
       await expect(inputText2).toHaveCount(1);
 
       await dropdownListElementFourButton.click();
@@ -99,7 +99,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
       await expect(dropdownListElementThreeButton).toHaveAttribute('aria-selected');
       await expect(dropdownListElementFourButton).toHaveAttribute('aria-selected');
-      const inputText3 = page.getByRole('button', { name: /Option 1,Option 3,Option 4/ });
+      const inputText3 = page.getByRole('button', { name: /Option 1, Option 3, Option 4/ });
       await expect(inputText3).toHaveCount(1);
 
       /* also check screenshot diff to make sure */

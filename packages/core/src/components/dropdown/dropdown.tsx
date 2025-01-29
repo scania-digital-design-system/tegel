@@ -433,7 +433,7 @@ export class TdsDropdown {
     if (!labels) {
       return '';
     }
-    return this.filter ? labels?.join(', ') : labels?.toString();
+    return labels?.join(', ');
   };
 
   private setValueAttribute = () => {
