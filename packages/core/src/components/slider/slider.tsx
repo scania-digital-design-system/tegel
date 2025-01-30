@@ -222,18 +222,21 @@ export class TdsSlider {
 
   private updateValue(event) {
     const trackWidth = this.getTrackWidth();
-    const numTicks = parseInt(this.ticks);
+    const min = parseFloat(this.min);
+    const max = parseFloat(this.max);
 
-    /* if snapping (supposedValueSlot > 0) is enabled, make sure we display the supposed value (instead of maybe getting a -1/+1 depending on rounding)  */
-    if (this.useSnapping && numTicks) {
-      const supposedValue = this.tickValues[this.supposedValueSlot];
-      this.value = `${supposedValue}`;
-      this.calculateThumbLeftFromValue(supposedValue);
+    // If snapping is enabled and a valid supposedValueSlot is available,
+    // snap the value to the closest tick. Use the snapped value to update
+    // the slider's thumb position and internal value.
+    if (this.useSnapping && this.supposedValueSlot >= 0) {
+      const snappedValue = this.tickValues[this.supposedValueSlot];
+      this.value = snappedValue.toString();
+      this.calculateThumbLeftFromValue(snappedValue);
     } else {
       const percentage = this.thumbLeft / trackWidth;
-      this.value = `${Math.trunc(
-        parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min)),
-      )}`;
+      const calculatedValue = min + percentage * (max - min);
+
+      this.value = Math.round(calculatedValue).toString();
     }
     this.updateTrack();
 
