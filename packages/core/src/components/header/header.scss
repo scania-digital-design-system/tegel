@@ -59,3 +59,13 @@ nav {
     border-left: 1px solid var(--tds-header--basic-element-border);
   }
 }
+
+tds-header-dropdown-list-item {
+  a,
+  button {
+    tds-icon,
+    div {
+      pointer-events: none;
+    }
+  }
+}
