@@ -67,6 +67,7 @@ export class TdsChip {
   internalRadioOnChange: EventEmitter<{
     chipId: string;
     checked: boolean;
+    groupName: string
   }>;
 
   private handleChange = () => {
@@ -76,7 +77,7 @@ export class TdsChip {
         this.checked = !this.checked;
       } else if (this.type === 'radio') {
         this.checked = true;
-        this.internalRadioOnChange.emit({ chipId: this.chipId, checked: this.checked })
+        this.internalRadioOnChange.emit({ chipId: this.chipId, checked: this.checked, groupName: this.name })
       } else {
         console.error('Unsupported type in Chip component!');
       }
@@ -90,11 +91,12 @@ export class TdsChip {
   };
 
   @Listen('internalRadioOnChange', { target: 'body' })
-  handleInternaRadioChange(event: CustomEvent<{ chipId: string; checked?: boolean; }>) {
-    const { chipId, checked } = event.detail
+  handleInternaRadioChange(event: CustomEvent<{ chipId: string; checked: boolean; groupName: string }>) {
+    const { chipId, checked, groupName } = event.detail
 
-    // if event comes from different button and both incoming and this is checked
-    if(chipId !== this.chipId) {
+    // if event comes from different button within the group
+    if(chipId !== this.chipId && groupName === this.name) {
+      //  and both incoming and this is checked
       if(this.checked && checked) {
         this.checked = false
       }
