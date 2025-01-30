@@ -111,3 +111,13 @@ body {
 }
 
 @import 'shame';
+
+tds-header-dropdown-list-item {
+  a,
+  button {
+    tds-icon,
+    div {
+      pointer-events: none;
+    }
+  }
+}
