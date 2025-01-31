@@ -39,6 +39,9 @@ jobs:
           node-version: ${{ github.event.inputs.nodeVersion }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Print Node.js version
+        run: node -v
+
       - name: Core - Read Package.json Version
         id: core-version
         working-directory: ${{ env.WORKING_DIRECTORY }}
@@ -190,4 +193,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify in Teams on failure
-        uses: ./.github/workflows/smoke-test-webhook.yml
+        uses: ./.github/workflows/smoke-test-failure-webhook.yml
