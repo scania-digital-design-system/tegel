@@ -62,6 +62,3 @@ packages/core/results.json
 
 # tegel-styles
 packages/styles/dist/
-
-# github actions
-.github/.secrets
