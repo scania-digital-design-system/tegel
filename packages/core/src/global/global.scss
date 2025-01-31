@@ -111,3 +111,13 @@ body {
 }
 
 @import 'shame';
+
+//FIXME: This is a temporary fix to align the icon with the text in the link component.
+//This should be removed in futher development.
+
+.tds-link-component {
+  tds-icon {
+    padding-bottom: 4px;
+    padding-left: 8px;
+  }
+}
