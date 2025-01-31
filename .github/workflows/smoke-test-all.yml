@@ -1,5 +1,8 @@
 name: Smoke test - Release
 
+env:
+  DEFAULT_NODE_VERSION: '22.11.0'
+
 on:
   schedule:
     # Runs every morning at 05:00
@@ -36,7 +39,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Print Node.js version
@@ -72,7 +75,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular - Read package.json Version
@@ -112,7 +115,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Angular-17 - Read package.json Version
@@ -160,7 +163,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - Read package.json Version
