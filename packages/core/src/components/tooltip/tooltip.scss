@@ -1,6 +1,10 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
 
+:host {
+  position: absolute;
+}
+
 .tds-tooltip {
   @include tds-box-sizing;
 
