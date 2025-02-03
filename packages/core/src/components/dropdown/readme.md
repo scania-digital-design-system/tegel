@@ -60,19 +60,19 @@ Type: `Promise<void>`
 
 
 
-### `removeValue(oldValue: string) => Promise<{ value: string; label: string; }[]>`
+### `removeValue(oldValue: string | number) => Promise<{ value: string | number; label: string; }[]>`
 
 Method for removing a selected value in the Dropdown.
 
 #### Parameters
 
-| Name       | Type     | Description |
-| ---------- | -------- | ----------- |
-| `oldValue` | `string` |             |
+| Name       | Type               | Description |
+| ---------- | ------------------ | ----------- |
+| `oldValue` | `string \| number` |             |
 
 #### Returns
 
-Type: `Promise<{ value: string; label: string; }[]>`
+Type: `Promise<{ value: string | number; label: string; }[]>`
 
 
 
@@ -86,7 +86,7 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | string[], label?: string) => Promise<{ value: string; label: string; }[]>`
+### `setValue(value: string | number | (string | number)[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
 
 Method for setting the value of the Dropdown.
 
@@ -104,14 +104,14 @@ dropdown.setValue(['option-1', 'option-2']);
 
 #### Parameters
 
-| Name    | Type                 | Description |
-| ------- | -------------------- | ----------- |
-| `value` | `string \| string[]` |             |
-| `label` | `string`             |             |
+| Name    | Type                                       | Description |
+| ------- | ------------------------------------------ | ----------- |
+| `value` | `string \| number \| (string \| number)[]` |             |
+| `label` | `string`                                   |             |
 
 #### Returns
 
-Type: `Promise<{ value: string; label: string; }[]>`
+Type: `Promise<{ value: string | number; label: string; }[]>`
 
 
 

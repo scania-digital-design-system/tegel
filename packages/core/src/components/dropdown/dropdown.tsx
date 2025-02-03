@@ -76,7 +76,7 @@ export class TdsDropdown {
 
   @State() open: boolean = false;
 
-  @State() value: string[];
+  @State() value: (string | number)[];
 
   @State() filterResult: number;
 
@@ -119,9 +119,9 @@ export class TdsDropdown {
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  async setValue(value: string | string[], label?: string) {
-    let nextValue: string[];
-    if (typeof value === 'string') nextValue = [value];
+  async setValue(value: string | number | (string | number)[], label?: string) {
+    let nextValue: (string | number)[];
+    if (typeof value === 'string' || typeof value === 'number') nextValue = [value];
     else nextValue = value;
 
     if (!this.multiselect && nextValue.length > 1) {
@@ -165,7 +165,7 @@ export class TdsDropdown {
    * @internal
    */
   @Method()
-  async appendValue(value: string) {
+  async appendValue(value: string | number) {
     if (this.multiselect && this.value) {
       this.setValue([...this.value, value]);
     } else {
@@ -175,7 +175,7 @@ export class TdsDropdown {
 
   /** Method for removing a selected value in the Dropdown. */
   @Method()
-  async removeValue(oldValue: string) {
+  async removeValue(oldValue: string | number) {
     let label: string;
     if (this.multiselect) {
       this.getChildren()?.forEach((element: HTMLTdsDropdownOptionElement) => {

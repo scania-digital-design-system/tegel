@@ -307,6 +307,10 @@ const Template = ({
             <tds-dropdown-option value="iles-aland">
               îles Åland
             </tds-dropdown-option>
+
+            <tds-dropdown-option value=10>
+              10th option (number)
+            </tds-dropdown-option>
         </tds-dropdown>
     </div>
 
