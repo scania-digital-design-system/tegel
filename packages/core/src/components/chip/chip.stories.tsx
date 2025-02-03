@@ -205,10 +205,17 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
         display: flex;
         gap: 8px;
       }
+      .demo-wrapper:first-of-type {
+        margin-bottom: 8px;
+      }
+      label {
+        margin: 8px;
+      }
     </style>
 
+    <label>Group 1</label>
     <div class="demo-wrapper">
-      <tds-chip name="test" type="radio" size="${
+      <tds-chip name="group1" type="radio" size="${
         sizeLookUp[size]
       }" checked ${disabledAttribute} value="radio-1-value">
         ${
@@ -225,7 +232,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
               : ''
           } 
       </tds-chip>
-      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-2-value">
+      <tds-chip name="group1" type="radio" size="${sizeLookUp[size]}" value="radio-2-value">
         ${
           icon && iconPosition === 'Prefix'
             ? '<tds-icon slot="prefix" name="cart" size="16px"></tds-icon>'
@@ -240,7 +247,57 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
               : ''
           } 
       </tds-chip>
-      <tds-chip name="test" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
+      <tds-chip name="group1" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 3
+          </span>
+          ${
+            icon && iconPosition === 'Suffix'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
+              : ''
+          } 
+      </tds-chip>
+    </div>
+    <label>Group 2</label>
+    <div class="demo-wrapper">
+      <tds-chip name="group2" type="radio" size="${
+        sizeLookUp[size]
+      }" checked ${disabledAttribute} value="radio-1-value">
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="sorting" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 1
+          </span>
+          ${
+            icon && iconPosition === 'Suffix'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
+              : ''
+          } 
+      </tds-chip>
+      <tds-chip name="group2" type="radio" size="${sizeLookUp[size]}" value="radio-2-value">
+        ${
+          icon && iconPosition === 'Prefix'
+            ? '<tds-icon slot="prefix" name="cart" size="16px"></tds-icon>'
+            : ''
+        }
+          <span slot="label">
+            ${label} 2
+          </span>
+          ${
+            icon && iconPosition === 'Suffix'
+              ? '<tds-icon slot="suffix" name="cross" size="16px"></tds-icon>'
+              : ''
+          } 
+      </tds-chip>
+      <tds-chip name="group2" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
         ${
           icon && iconPosition === 'Prefix'
             ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
