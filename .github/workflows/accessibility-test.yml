@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, develop]
 jobs:
-  test:
+  playwright-axe:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
