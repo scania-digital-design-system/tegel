@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                          | Type      | Default |
-| ----------- | ----------- | ------------------------------------ | --------- | ------- |
-| `disabled`  | `disabled`  | Disables the Link                    | `boolean` | `false` |
-| `underline` | `underline` | Displays the Link with an underline. | `boolean` | `true`  |
+| Property     | Attribute    | Description                                                           | Type      | Default |
+| ------------ | ------------ | --------------------------------------------------------------------- | --------- | ------- |
+| `disabled`   | `disabled`   | Disables the Link                                                     | `boolean` | `false` |
+| `standalone` | `standalone` | Displays the Link as a standalone component. Not part of a paragraph. | `boolean` | `false` |
+| `underline`  | `underline`  | Displays the Link with an underline.                                  | `boolean` | `true`  |
 
 
 ## Slots

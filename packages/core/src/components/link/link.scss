@@ -55,3 +55,10 @@
     }
   }
 }
+
+.standalone {
+  ::slotted(*) {
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
+  }
+}
