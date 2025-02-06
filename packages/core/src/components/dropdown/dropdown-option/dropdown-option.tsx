@@ -25,7 +25,7 @@ export class TdsDropdownOption {
   @Element() host: HTMLElement;
 
   /** Value for the Dropdown option. */
-  @Prop() value: string;
+  @Prop() value: string | number;
 
   /** Sets the option as disabled. */
   @Prop() disabled: boolean = false;
@@ -57,7 +57,7 @@ export class TdsDropdownOption {
   })
   tdsSelect: EventEmitter<{
     selected: boolean;
-    value: string;
+    value: string | number;
   }>;
 
   /** Focus event for the Dropdown option. */
