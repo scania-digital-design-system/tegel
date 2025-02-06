@@ -71,8 +71,8 @@ export class TdsDropdown {
    * Setting it to an empty string disables message from showing up. */
   @Prop() noResultText?: string = 'No result';
 
-  /** Default value selected in the Dropdown. */
-  @Prop() defaultValue: string;
+  /** Default value selected in the Dropdown. Can be string or number. */
+  @Prop() defaultValue: string | number;
 
   @State() open: boolean = false;
 
@@ -81,6 +81,8 @@ export class TdsDropdown {
   @State() filterResult: number;
 
   @State() filterFocus: boolean;
+
+  @State() internalDefaultValue: string;
 
   private dropdownList: HTMLDivElement;
 
@@ -298,7 +300,18 @@ export class TdsDropdown {
     }
   }
 
+  @Watch('defaultValue')
+  handleDefaultValueChange(newValue: string | number) {
+    if (newValue !== undefined && newValue !== null) {
+      this.internalDefaultValue = newValue.toString();
+      this.setDefaultOption();
+    }
+  }
+
   componentWillLoad() {
+    if (this.defaultValue !== undefined && this.defaultValue !== null) {
+      this.internalDefaultValue = this.defaultValue.toString();
+    }
     this.setDefaultOption();
   }
 
@@ -323,7 +336,7 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
-    if (this.defaultValue) {
+    if (this.internalDefaultValue) {
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       ) as HTMLTdsDropdownOptionElement[];
@@ -334,8 +347,8 @@ export class TdsDropdown {
       }
 
       const defaultValues = this.multiselect
-        ? new Set(this.defaultValue.split(','))
-        : [this.defaultValue];
+        ? new Set(this.internalDefaultValue.split(','))
+        : [this.internalDefaultValue];
 
       const childrenMap = new Map(children.map((element) => [element.value, element]));
 
@@ -353,7 +366,7 @@ export class TdsDropdown {
         this.setValueAttribute();
       } else {
         console.warn(
-          `TDS DROPDOWN: No matching option found for defaultValue "${this.defaultValue}"`,
+          `TDS DROPDOWN: No matching option found for defaultValue "${this.internalDefaultValue}"`,
         );
       }
     }
