@@ -1,0 +1,36 @@
+name: Accessibility Tests
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        working-directory: packages/core
+        run: npm ci
+
+      - name: Build Tegel
+        working-directory: packages/core
+        run: npm run build
+
+      - name: Install Playwright Browsers
+        working-directory: packages/core
+        run: npx playwright install --with-deps
+
+      - name: Run Accessibility Tests
+        working-directory: packages/core
+        run: npx playwright test --config "playwright-axe.config.ts" --reporter=list
+
+      - uses: daun/playwright-report-summary@v3
+        if: always()
+        with:
+          report-file: ./packages/core/accessibility-tests-results.json
+
