@@ -250,7 +250,7 @@ export class TdsDropdown {
   })
   tdsChange: EventEmitter<{
     name: string;
-    value: string;
+    value: string | number;
   }>;
 
   /** Focus event for the Dropdown. */
@@ -536,7 +536,8 @@ export class TdsDropdown {
   private handleChange = () => {
     this.tdsChange.emit({
       name: this.name,
-      value: this.value?.map((value) => value).toString() ?? null,
+      // value: this.value?.map((value) => value).toString() ?? null,
+      value: this.value?.map((value) => value) ?? null,
     });
   };
 
