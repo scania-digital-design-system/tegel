@@ -390,7 +390,7 @@
     "date-fns": "2.30.0"
   },
   "devDependencies": {
-    "prettier": "2.7.1",
+    "@axe-core/playwright": "^4.10.1",
     "@babel/core": "7.19.1",
     "@mdx-js/react": "3.0.1",
     "@playwright/test": "1.46.1",
@@ -412,6 +412,7 @@
     "babel-loader": "8.2.5",
     "concurrently": "8.0.1",
     "highlight.js": "11.8.0",
+    "prettier": "2.7.1",
     "serve": "14.2.1",
     "stencil-playwright": "0.3.0",
     "storybook-addon-designs": "6.3.1",
