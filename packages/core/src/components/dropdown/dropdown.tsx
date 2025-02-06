@@ -120,9 +120,22 @@ export class TdsDropdown {
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
   async setValue(value: string | number | (string | number)[], label?: string) {
+    console.log('inside setValue');
+
+    // if (value === '10') {
+    //   console.log('value is 10, for debugging purposes we will change it to a number');
+    //   value = 10;
+    // }
+
+    console.log('value', value);
+    console.log('typeof value', typeof value);
+
     let nextValue: (string | number)[];
     if (typeof value === 'string' || typeof value === 'number') nextValue = [value];
     else nextValue = value;
+
+    console.log('nextValue', nextValue);
+    console.log('typeof nextValue', typeof nextValue);
 
     if (!this.multiselect && nextValue.length > 1) {
       console.warn('Tried to select multiple items, but multiselect is not enabled.');
@@ -131,18 +144,44 @@ export class TdsDropdown {
 
     nextValue = [...new Set(nextValue)];
 
+    console.log('in the middle, nextValue is', nextValue);
+
     this.internalReset();
 
+    console.log('a ____ nextValue', nextValue);
+    console.log('a __________________________________');
+
     for (let i = 0; i < nextValue.length; i++) {
-      const optionExist = this.getChildren().some(
-        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i],
-      );
+      console.log('i=', i);
+      console.log('nextValue[i]=', nextValue[i]);
+      console.log('this.getChildren()', this.getChildren());
+
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+        console.log('... ', element.value, typeof element.value);
+      });
+
+      const optionExist = this.getChildren().some((element: HTMLTdsDropdownOptionElement) => {
+        console.log('element.value', element.value, typeof element.value);
+        return element.value === nextValue[i];
+      });
+      console.log('optionExist', optionExist);
       if (!optionExist) {
         nextValue.splice(i, 1);
       }
+      console.log('---------------');
     }
 
+    console.log('b __________________________________');
+    console.log('b ____ nextValue', nextValue);
+
+    console.log('this.value', this.value);
+    console.log('at the end of setValue, nextValue is', nextValue);
+
     this.value = nextValue;
+
+    console.log('this.value is updated now');
+    console.log('this.value', this.value);
+
     this.setValueAttribute();
     this.selectChildrenAsSelectedBasedOnSelectionProp();
     this.handleChange();
