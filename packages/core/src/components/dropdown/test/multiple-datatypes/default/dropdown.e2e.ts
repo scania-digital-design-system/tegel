@@ -6,6 +6,9 @@ const componentTestPath = 'src/components/dropdown/test/multiple-datatypes/defau
 let dropdownListElementOneButton;
 let dropdownListElementTwoButton;
 
+let firstMessage;
+let secondMessage;
+
 test.describe.parallel('tds-dropdown-multiple-datatypes-default', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
@@ -31,23 +34,27 @@ test.describe.parallel('tds-dropdown-multiple-datatypes-default', () => {
       const twoButtonInEvaluate = document.getElementsByTagName('tds-dropdown-option')[1];
       twoButtonInEvaluate.value = 2;
     });
+
+    /* set objects for console logs for tdsSelect and tdsChange */
+    firstMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsSelect'));
+    secondMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsChange'));
   });
 
-  test('click dropdown option with string data type value', async ({ page }) => {
-    /* set expected console log message, based on what is defined in index.html */
-    page.on('console', (msg) =>
-      expect(msg.text()).toBe('tdsChange - event.detail.value: [1] (string)'),
-    );
-
+  test('click dropdown option with string data type value', async () => {
+    /* click a string dropdown option button */
     await dropdownListElementOneButton.click();
+
+    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
+    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 1 (string)');
+    expect((await secondMessage).text()).toBe('tdsChange - event.detail.value: [1] (string)');
   });
 
-  test('click dropdown option with number data type value', async ({ page }) => {
-    /* set expected console log message, based on what is defined in index.html */
-    page.on('console', (msg) =>
-      expect(msg.text()).toBe('tdsChange - event.detail.value: [2] (number)'),
-    );
-
+  test('click dropdown option with number data type value', async () => {
+    /* click a string dropdown option button */
     await dropdownListElementTwoButton.click();
+
+    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
+    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 2 (number)');
+    expect((await secondMessage).text()).toBe('tdsChange - event.detail.value: [2] (number)');
   });
 });

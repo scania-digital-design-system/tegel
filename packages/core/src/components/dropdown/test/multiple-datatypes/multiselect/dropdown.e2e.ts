@@ -45,21 +45,29 @@ test.describe.parallel('tds-dropdown-multiple-datatypes-multiselect', () => {
   });
 
   test('click dropdown option with string data type value', async ({ page }) => {
-    /* set expected console log message, based on what is defined in index.html */
-    page.on('console', (msg) =>
-      expect(msg.text()).toBe('tdsChange - event.detail.value: [1] (1: string)'),
-    );
+    /* set objects for console logs for tdsSelect and tdsChange */
+    const firstMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsSelect'));
+    const secondMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsChange'));
 
+    /* click a string dropdown option button */
     await dropdownListElementOneButton.click();
+
+    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
+    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 1 (string)');
+    expect((await secondMessage).text()).toBe('tdsChange - event.detail.value: [1] (1: string)');
   });
 
   test('click dropdown option with number data type value', async ({ page }) => {
-    /* set expected console log message, based on what is defined in index.html */
-    page.on('console', (msg) =>
-      expect(msg.text()).toBe('tdsChange - event.detail.value: [2] (2: number)'),
-    );
+    /* set objects for console logs for tdsSelect and tdsChange */
+    const firstMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsSelect'));
+    const secondMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsChange'));
 
+    /* click a number dropdown option button */
     await dropdownListElementTwoButton.click();
+
+    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
+    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 2 (number)');
+    expect((await secondMessage).text()).toBe('tdsChange - event.detail.value: [2] (2: number)');
   });
 
   test('click dropdown options with mixed data type values', async ({ page }) => {
@@ -68,13 +76,17 @@ test.describe.parallel('tds-dropdown-multiple-datatypes-multiselect', () => {
     await dropdownListElementTwoButton.click();
     await dropdownListElementThreeButton.click();
 
-    /* set expected console log message, based on what is defined in index.html */
-    page.on('console', (msg) =>
-      expect(msg.text()).toBe(
-        'tdsChange - event.detail.value: [1, 2, 3, 4] (1: string, 2: number, 3: string, 4: number)',
-      ),
-    );
+    /* set objects for console logs for tdsSelect and tdsChange */
+    const firstMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsSelect'));
+    const secondMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsChange'));
 
+    /* click the fourth dropdown option button after clicking the other ones */
     await dropdownListElementFourButton.click();
+
+    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
+    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 4 (number)');
+    expect((await secondMessage).text()).toBe(
+      'tdsChange - event.detail.value: [1, 2, 3, 4] (1: string, 2: number, 3: string, 4: number)',
+    );
   });
 });

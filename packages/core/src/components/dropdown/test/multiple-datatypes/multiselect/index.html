@@ -32,6 +32,14 @@
   <script>
     let dropdownElement = document.getElementsByTagName('tds-dropdown')[0];
 
+    dropdownElement.addEventListener('tdsSelect', (event) => {
+      console.log(
+        'tdsSelect - event.detail.value:',
+        event.detail.value,
+        `(${typeof event.detail.value})`,
+      );
+    });
+
     dropdownElement.addEventListener('tdsChange', (event) => {
       console.log(
         'tdsChange - event.detail.value:',
