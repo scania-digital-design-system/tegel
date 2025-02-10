@@ -373,6 +373,7 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
+    "test:axe": "npx playwright test --config 'playwright-axe.config.ts' --reporter=list",
     "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
@@ -390,7 +391,7 @@
     "date-fns": "2.30.0"
   },
   "devDependencies": {
-    "prettier": "2.7.1",
+    "@axe-core/playwright": "^4.10.1",
     "@babel/core": "7.19.1",
     "@mdx-js/react": "3.0.1",
     "@playwright/test": "1.46.1",
@@ -412,6 +413,7 @@
     "babel-loader": "8.2.5",
     "concurrently": "8.0.1",
     "highlight.js": "11.8.0",
+    "prettier": "2.7.1",
     "serve": "14.2.1",
     "stencil-playwright": "0.3.0",
     "storybook-addon-designs": "6.3.1",

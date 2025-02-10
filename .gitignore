@@ -58,6 +58,7 @@ components.d.ts
 # Playwright
 playwright-report/
 test-results/
+accessibility-test-results/
 packages/core/results.json
 
 # tegel-styles
