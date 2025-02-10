@@ -1,4 +1,14 @@
-import { Component, h, Prop, Event, EventEmitter, Method, Element, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Event,
+  EventEmitter,
+  Method,
+  Element,
+  Watch,
+  Listen,
+} from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
@@ -103,6 +113,15 @@ export class TdsCheckbox {
   /** Set the input as blur when clicking outside the component */
   handleBlur(event): void {
     this.tdsBlur.emit(event);
+  }
+
+  /** Listens for a reset event inside a form */
+  @Listen('reset', { target: 'document' })
+  handleFormReset(event: Event) {
+    if (this.host.closest('form') === event.target) {
+      this.checked = false;
+      this.indeterminate = false;
+    }
   }
 
   render() {
