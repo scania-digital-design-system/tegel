@@ -418,14 +418,9 @@ jobs:
           git config --global user.email "tegel.design.system@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
 
-      - name: Merge develop into main
+      # Sync develop and main is done with reset to avoid merge conflicts
+      - name: Sync develop and main
         run: |
           git checkout main
-          git merge --squash -X theirs develop
-          git add .
-          if ! git diff-index --quiet HEAD; then
-            git commit -m "release: tegel@${{ needs.create-release-branch.outputs.version  }}"
-            git push --force --no-verify origin main
-          else
-            echo "No changes to commit in main"
-          fi
+          git reset --hard develop
+          git push --force --no-verify origin main
