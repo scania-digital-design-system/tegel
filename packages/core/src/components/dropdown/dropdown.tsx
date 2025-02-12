@@ -72,7 +72,7 @@ export class TdsDropdown {
   @Prop() noResultText?: string = 'No result';
 
   /** Default value selected in the Dropdown. */
-  @Prop() defaultValue: string;
+  @Prop() initialValue: string | number | (string | number)[];
 
   @State() open: boolean = false;
 
@@ -323,7 +323,7 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
-    if (this.defaultValue) {
+    if (this.initialValue) {
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       ) as HTMLTdsDropdownOptionElement[];
@@ -333,13 +333,12 @@ export class TdsDropdown {
         return;
       }
 
-      const defaultValues = this.multiselect
-        ? new Set(this.defaultValue.split(','))
-        : [this.defaultValue];
+      const initialValues =
+        typeof this.initialValue === 'object' ? this.initialValue : [this.initialValue];
 
       const childrenMap = new Map(children.map((element) => [element.value, element]));
 
-      const matchedValues = Array.from(defaultValues).filter((value) => {
+      const matchedValues = Array.from(initialValues).filter((value) => {
         const element = childrenMap.get(value);
         if (element) {
           element.setSelected(true);
@@ -353,7 +352,7 @@ export class TdsDropdown {
         this.setValueAttribute();
       } else {
         console.warn(
-          `TDS DROPDOWN: No matching option found for defaultValue "${this.defaultValue}"`,
+          `TDS DROPDOWN: No matching option found for initialValue "${this.initialValue}"`,
         );
       }
     }
