@@ -222,7 +222,7 @@ export class TdsTableFooter {
                         id="rows-dropdown"
                         class="page-dropdown"
                         size="xs"
-                        defaultValue={`${this.rowsPerPageValues[0]}`}
+                        initialValue={`${this.rowsPerPageValues[0]}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
                       >
                         {this.rowsPerPageValues.map((value) => {
