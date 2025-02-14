@@ -3,15 +3,15 @@
   --tds-link: var(--tds-blue-400);
   --tds-link-hover: var(--tds-blue-400);
   --tds-link-focus: var(--tds-blue-400);
-  --tds-link-visited: var(--tds-grey-400);
+  --tds-link-visited: var(--tds-blue-700);
   --tds-link-disabled: var(--tds-grey-400);
 
   tds-toast {
     --tds-link: var(--tds-blue-400);
     --tds-link-hover: var(--tds-blue-400);
     --tds-link-focus: var(--tds-blue-400);
-    --tds-link-visited: var(--tds-grey-400);
-    --tds-link-disabled: var(--tds-grey-700);
+    --tds-link-visited: var(--tds-blue-700);
+    --tds-link-disabled: var(--tds-grey-400);
   }
 }
 
