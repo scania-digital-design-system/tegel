@@ -278,7 +278,8 @@ const Template = ({
           ${multiselect ? 'multiselect' : ''}
           ${disabled ? 'disabled' : ''}
           ${animation !== 'None' ? `animation="${animation}"` : ''}
-          open-direction="${openDirection.toLowerCase()}"          
+          open-direction="${openDirection.toLowerCase()}"   
+          initial-value="option-1"       
           >
             <tds-dropdown-option value="option-1">
               Option 1

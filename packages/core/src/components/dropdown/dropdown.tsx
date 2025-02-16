@@ -299,6 +299,11 @@ export class TdsDropdown {
   }
 
   componentWillLoad() {
+    // this.setDefaultOption();
+  }
+
+  componentDidLoad() {
+    console.log('hej1');
     this.setDefaultOption();
   }
 
@@ -324,6 +329,7 @@ export class TdsDropdown {
 
   private setDefaultOption = () => {
     if (this.initialValue) {
+      console.log('heej2');
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       ) as HTMLTdsDropdownOptionElement[];
@@ -347,10 +353,16 @@ export class TdsDropdown {
         return false;
       });
 
+      console.log('aaa');
+
       if (matchedValues.length > 0) {
+        console.log('if');
+        console.log('this.value', this.value);
         this.value = [...new Set(this.value ? [...this.value, ...matchedValues] : matchedValues)];
+        console.log('this.value', this.value);
         this.setValueAttribute();
       } else {
+        console.log('else');
         console.warn(
           `TDS DROPDOWN: No matching option found for initialValue "${this.initialValue}"`,
         );
@@ -436,10 +448,23 @@ export class TdsDropdown {
   };
 
   private setValueAttribute = () => {
+    console.log('this.valuez', this.value);
     if (!this.value || this.value?.toString() === '') {
+      console.log('iff');
       this.host.removeAttribute('value');
     } else {
-      this.host.setAttribute('value', this.value.map((val) => val).toString());
+      console.log('elsee');
+      // console.log('heeeeejjjjjj');
+      // console.log(this.host.getAttribute('value'));
+      // this.host.setAttribute('value', this.value.map((val) => val).toString());
+
+      // console.log('setting to this: ', this.value.map((val) => val).toString());
+
+      this.host.setAttribute('value', 'x');
+
+      // console.log(this.host.getAttribute('value'));
+
+      // console.log('===============================');
     }
   };
 
