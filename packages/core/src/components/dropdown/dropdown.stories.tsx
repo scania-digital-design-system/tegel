@@ -312,6 +312,13 @@ const Template = ({
     </div>
 
     <script>
+
+
+
+      const button1 = document.getElementsByTagName('tds-dropdown-option')[0];
+      button1.value = 1;
+
+
       let dropdown = document.querySelector('tds-dropdown');
 
       dropdown.addEventListener('tdsChange', (event) => {

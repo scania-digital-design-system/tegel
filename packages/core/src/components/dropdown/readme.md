@@ -30,12 +30,13 @@
 
 ## Events
 
-| Event       | Description                    | Type                                                          |
-| ----------- | ------------------------------ | ------------------------------------------------------------- |
-| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                                     |
-| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: (string \| number)[]; }>` |
-| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                                     |
-| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                                     |
+| Event       | Description                          | Type                                                               |
+| ----------- | ------------------------------------ | ------------------------------------------------------------------ |
+| `tdsBlur`   | Blur event for the Dropdown.         | `CustomEvent<FocusEvent>`                                          |
+| `tdsChange` | Change event for the Dropdown.       | `CustomEvent<{ name: string; value: (string \| number)[]; }>`      |
+| `tdsFocus`  | Focus event for the Dropdown.        | `CustomEvent<FocusEvent>`                                          |
+| `tdsInput`  | Input event for the Dropdown.        | `CustomEvent<InputEvent>`                                          |
+| `tdsSelect` | Click event for the Dropdown option. | `CustomEvent<{ selected: boolean; value: (string \| number)[]; }>` |
 
 
 ## Methods

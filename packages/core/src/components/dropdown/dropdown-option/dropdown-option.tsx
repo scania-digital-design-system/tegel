@@ -89,20 +89,22 @@ export class TdsDropdownOption {
   };
 
   handleSingleSelect = () => {
+    console.log('handleSingleSelect');
     if (!this.disabled) {
       this.selected = true;
       this.parentElement.appendValue(this.value);
       this.parentElement.close();
-      this.tdsSelect.emit({
-        value: this.value,
-        selected: this.selected,
-      });
+      // this.tdsSelect.emit({
+      //   value: this.value,
+      //   selected: this.selected,
+      // });
     }
   };
 
   handleMultiselect = (
     event: TdsCheckboxCustomEvent<{ checkboxId: string; checked: boolean; value?: string }>,
   ) => {
+    console.log('handleMultiselect');
     if (!this.disabled) {
       if (event.detail.checked) {
         this.parentElement.appendValue(this.value);

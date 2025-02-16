@@ -202,6 +202,19 @@ export class TdsDropdown {
     this.open = false;
   }
 
+  // testing this one:
+  /** Click event for the Dropdown option. */
+  // @Event({
+  //   eventName: 'tdsSelect',
+  //   composed: true,
+  //   cancelable: false,
+  //   bubbles: true,
+  // })
+  // tdsSelect: EventEmitter<{
+  //   selected: boolean;
+  //   value: (string | number)[];
+  // }>;
+
   /** Change event for the Dropdown. */
   @Event({
     eventName: 'tdsChange',
@@ -304,7 +317,7 @@ export class TdsDropdown {
 
   componentDidLoad() {
     console.log('hej1');
-    this.setDefaultOption();
+    // this.setDefaultOption();
   }
 
   /** Method to handle slot changes */
@@ -328,8 +341,13 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
+    console.log('start of setDefaultOption');
     if (this.initialValue) {
       console.log('heej2');
+      console.log('this.initialValue', this.initialValue, typeof this.initialValue);
+      this.initialValue = 1;
+      console.log('this.initialValue', this.initialValue, typeof this.initialValue);
+
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       ) as HTMLTdsDropdownOptionElement[];
@@ -344,6 +362,8 @@ export class TdsDropdown {
 
       const childrenMap = new Map(children.map((element) => [element.value, element]));
 
+      console.log('childrenMap', childrenMap);
+
       const matchedValues = Array.from(initialValues).filter((value) => {
         const element = childrenMap.get(value);
         if (element) {
@@ -352,6 +372,8 @@ export class TdsDropdown {
         }
         return false;
       });
+
+      console.log('matchedValues', matchedValues);
 
       console.log('aaa');
 
@@ -373,7 +395,14 @@ export class TdsDropdown {
           `TDS DROPDOWN: No matching option found for initialValue "${this.initialValue}"`,
         );
       }
+
+      // this.tdsSelect.emit({
+      //   value: this.value,
+      //   selected: true,
+      // });
     }
+
+    console.log('end of setDefaultOption - this.value: ', this.value, typeof this.value);
   };
 
   private selectChildrenAsSelectedBasedOnSelectionProp() {
