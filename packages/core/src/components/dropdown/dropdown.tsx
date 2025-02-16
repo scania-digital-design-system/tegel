@@ -357,10 +357,16 @@ export class TdsDropdown {
 
       if (matchedValues.length > 0) {
         console.log('if');
+
+        this.internalReset(); // new
+
         console.log('this.value', this.value);
         this.value = [...new Set(this.value ? [...this.value, ...matchedValues] : matchedValues)];
         console.log('this.value', this.value);
         this.setValueAttribute();
+
+        this.selectChildrenAsSelectedBasedOnSelectionProp(); // new
+        this.handleChange(); // new
       } else {
         console.log('else');
         console.warn(
