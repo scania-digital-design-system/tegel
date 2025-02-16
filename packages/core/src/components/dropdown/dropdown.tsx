@@ -316,8 +316,8 @@ export class TdsDropdown {
   }
 
   componentDidLoad() {
-    console.log('hej1');
-    // this.setDefaultOption();
+    console.log('setting thing inside componentDidLoad');
+    this.setDefaultOption();
   }
 
   /** Method to handle slot changes */
