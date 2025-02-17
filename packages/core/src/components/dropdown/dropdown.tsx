@@ -501,20 +501,24 @@ export class TdsDropdown {
     });
   };
 
-  componentDidRender() {
-    const form = this.host.closest('form');
-    if (form) {
-      form.addEventListener('reset', () => {
-        // HANDLE UNTOUCHED...
-        this.resetInput();
-      });
-    }
-  }
-
-  resetInput() {
+  private resetInput = () => {
     const inputEl = this.host.querySelector('input');
     if (inputEl) {
       this.reset();
+    }
+  };
+
+  componentDidRender() {
+    const form = this.host.closest('form');
+    if (form) {
+      form.addEventListener('reset', this.resetInput);
+    }
+  }
+
+  disconnectedCallback() {
+    const form = this.host.closest('form');
+    if (form) {
+      form.removeEventListener('reset', this.resetInput);
     }
   }
 
