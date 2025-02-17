@@ -74,9 +74,12 @@ export class TdsDropdown {
   /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string;
 
+  /** Value of the dropdown. For multiselect, provide array of strings. For single select, provide a string. */
+  @Prop({ mutable: true }) value: string | string[];
+
   @State() open: boolean = false;
 
-  @State() value: string[];
+  @State() internalValue: string;
 
   @State() filterResult: number;
 
@@ -86,12 +89,104 @@ export class TdsDropdown {
 
   private inputElement: HTMLInputElement;
 
-  /** Method that resets the Dropdown, marks all children as non-selected and resets the value to null. */
+  @Watch('value')
+  handleValueChange(newValue: string | string[]) {
+    if (newValue === undefined) return;
+
+    // Ensure consistent internal array representation
+    const valueArray = Array.isArray(newValue) ? newValue : newValue ? [newValue] : null;
+
+    // Handle multiselect validation
+    if (!this.multiselect && Array.isArray(valueArray) && valueArray.length > 1) {
+      console.warn('Tried to select multiple items, but multiselect is not enabled.');
+      // Coerce to single value for non-multiselect
+      this.value = valueArray[0];
+      return;
+    }
+
+    // Ensure value is always array internally for backward compatibility
+    this.updateSelections(valueArray);
+    this.handleChange();
+  }
+
+  private handleChange = () => {
+    const value = Array.isArray(this.value) ? this.value.join(',') : this.value;
+    this.tdsChange.emit({
+      name: this.name,
+      value: value ?? null,
+    });
+  };
+
+  private updateSelections(valueArray: string[] | null) {
+    // Reset current selections
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+      element.setSelected(false);
+    });
+
+    if (valueArray) {
+      // Validate and filter values
+      const validValues = valueArray.filter((val) => {
+        const optionExists = this.getChildren().some(
+          (element: HTMLTdsDropdownOptionElement) => element.value === val,
+        );
+        if (!optionExists) {
+          console.warn(`Option with value "${val}" does not exist`);
+        }
+        return optionExists;
+      });
+
+      // Update internal state and selections
+      this.internalValue = validValues.join(', ');
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+        if (validValues.includes(element.value)) {
+          element.setSelected(true);
+        }
+      });
+
+      // Update value prop with validated values
+      if (this.multiselect) {
+        this.value = validValues;
+      } else {
+        this.value = validValues[0] || null;
+      }
+    } else {
+      // Handle null/undefined case
+      this.internalValue = '';
+      this.value = this.multiselect ? [] : null;
+    }
+
+    // Emit change events
+    this.handleChange();
+
+    // Update filter input if present
+    if (this.filter && this.inputElement) {
+      this.inputElement.value = this.internalValue;
+    }
+
+    this.setValueAttribute();
+  }
+
+  @Method()
+  async setValue(value: string | string[]) {
+    this.value = value;
+    return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
+      value: element.value,
+      label: element.textContent.trim(),
+    }));
+  }
+
   @Method()
   async reset() {
-    this.dropdownList.scrollTop = 0;
-    this.internalReset();
-    this.handleChange();
+    this.value = this.multiselect ? [] : null;
+  }
+
+  @Method()
+  async removeValue(oldValue: string) {
+    if (this.multiselect && Array.isArray(this.value)) {
+      this.value = this.value.filter((v) => v !== oldValue);
+    } else {
+      this.value = null;
+    }
   }
 
   /** Method that forces focus on the input element. */
@@ -99,101 +194,6 @@ export class TdsDropdown {
   async focusElement() {
     this.focusInputElement();
     this.handleFocus({});
-  }
-
-  /** Method for setting the value of the Dropdown.
-   *
-   * Single selection example:
-   *
-   * <code>
-   *  dropdown.setValue('option-1', 'Option 1');
-   * </code>
-   *
-   * Multiselect example:
-   *
-   * <code>
-   *  dropdown.setValue(['option-1', 'option-2']);
-   * </code>
-   */
-  @Method()
-  //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
-  // @ts-ignore
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  async setValue(value: string | string[], label?: string) {
-    let nextValue: string[];
-    if (typeof value === 'string') nextValue = [value];
-    else nextValue = value;
-
-    if (!this.multiselect && nextValue.length > 1) {
-      console.warn('Tried to select multiple items, but multiselect is not enabled.');
-      nextValue = [nextValue[0]];
-    }
-
-    nextValue = [...new Set(nextValue)];
-
-    this.internalReset();
-
-    for (let i = 0; i < nextValue.length; i++) {
-      const optionExist = this.getChildren().some(
-        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i],
-      );
-      if (!optionExist) {
-        nextValue.splice(i, 1);
-      }
-    }
-
-    this.value = nextValue;
-    this.setValueAttribute();
-    this.selectChildrenAsSelectedBasedOnSelectionProp();
-    this.handleChange();
-
-    /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
-    /* https://tegel.atlassian.net/browse/CDEP-2703 */
-    const selection = this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
-      value: element.value,
-      label: element.textContent.trim(),
-    }));
-
-    // Update inputElement value and placeholder text
-    if (this.filter) {
-      this.inputElement.value = this.getValue();
-    }
-    return selection;
-  }
-
-  /**
-   * @internal
-   */
-  @Method()
-  async appendValue(value: string) {
-    if (this.multiselect && this.value) {
-      this.setValue([...this.value, value]);
-    } else {
-      this.setValue(value);
-    }
-  }
-
-  /** Method for removing a selected value in the Dropdown. */
-  @Method()
-  async removeValue(oldValue: string) {
-    let label: string;
-    if (this.multiselect) {
-      this.getChildren()?.forEach((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value === oldValue) {
-          this.value = this.value?.filter((value) => value !== element.value);
-          label = element.textContent.trim();
-          element.setSelected(false);
-        }
-        return element;
-      });
-    } else {
-      this.reset();
-    }
-    this.handleChange();
-    this.setValueAttribute();
-    /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
-    /* https://tegel.atlassian.net/browse/CDEP-2703 */
-    return this.value?.map((value) => ({ value, label }));
   }
 
   /** Method for closing the Dropdown. */
@@ -240,6 +240,18 @@ export class TdsDropdown {
     cancelable: false,
   })
   tdsInput: EventEmitter<InputEvent>;
+
+  /** Value change event for the Dropdown. */
+  @Event({
+    eventName: 'tdsValueChange',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsValueChange: EventEmitter<{
+    name: string;
+    value: string;
+  }>;
 
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
@@ -299,6 +311,9 @@ export class TdsDropdown {
   }
 
   componentWillLoad() {
+    if (this.defaultValue && !this.value) {
+      this.value = this.defaultValue;
+    }
     this.setDefaultOption();
   }
 
@@ -310,16 +325,6 @@ export class TdsDropdown {
   /** Method to check if we should normalize text */
   private normalizeString(text: string): string {
     return this.normalizeText ? text.normalize('NFD').replace(/\p{Diacritic}/gu, '') : text;
-  }
-
-  /** Method that resets the dropdown without emitting an event. */
-  private internalReset() {
-    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-      element.setSelected(false);
-      return element;
-    });
-    this.value = null;
-    this.setValueAttribute();
   }
 
   private setDefaultOption = () => {
@@ -359,22 +364,6 @@ export class TdsDropdown {
     }
   };
 
-  private selectChildrenAsSelectedBasedOnSelectionProp() {
-    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
-      this.value.forEach((selection) => {
-        if (element.value !== selection) {
-          // If not multiselect, we need to unselect all other options.
-          if (!this.multiselect) {
-            element.setSelected(false);
-          }
-        } else {
-          element.setSelected(true);
-        }
-      });
-    });
-  }
-
-  /* Returns a list of all children that are tds-dropdown-option elements */
   private getChildren = () => {
     const tdsDropdownOptions = Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
@@ -384,44 +373,19 @@ export class TdsDropdown {
     } else return tdsDropdownOptions;
   };
 
-  getOpenDirection = () => {
-    if (this.openDirection === 'auto' || !this.openDirection) {
-      const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
-      const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
-      const viewportHeight = window.innerHeight;
-      if (distanceToBottom + dropdownMenuHeight + 57 > viewportHeight) {
-        return 'up';
-      }
-      return 'down';
-    }
+  private getSelectedChildren = () => {
+    if (!this.value) return [];
+    const valueArray = Array.isArray(this.value) ? this.value : [this.value];
 
-    return this.openDirection;
-  };
-
-  /* Toggles the open state of the Dropdown and sets focus to the input element */
-  private handleToggleOpen = () => {
-    if (!this.disabled) {
-      this.open = !this.open;
-      if (this.open) {
-        this.focusInputElement();
-      }
-    }
-  };
-
-  /* Focuses the input element in the Dropdown, if the reference is present. */
-  private focusInputElement = () => {
-    if (this.inputElement) this.inputElement.focus();
-  };
-
-  private getSelectedChildren = () =>
-    this.value
-      ?.map((stringValue) => {
+    return valueArray
+      .map((stringValue) => {
         const matchingElement = this.getChildren().find(
           (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
         );
         return matchingElement;
       })
       .filter(Boolean);
+  };
 
   private getSelectedChildrenLabels = () =>
     this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
@@ -440,8 +404,35 @@ export class TdsDropdown {
     if (!this.value || this.value?.toString() === '') {
       this.host.removeAttribute('value');
     } else {
-      this.host.setAttribute('value', this.value.map((val) => val).toString());
+      const valueArray = Array.isArray(this.value) ? this.value : [this.value];
+      this.host.setAttribute('value', valueArray.map((val) => val).toString());
     }
+  };
+
+  getOpenDirection = () => {
+    if (this.openDirection === 'auto' || !this.openDirection) {
+      const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
+      const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
+      const viewportHeight = window.innerHeight;
+      if (distanceToBottom + dropdownMenuHeight + 57 > viewportHeight) {
+        return 'up';
+      }
+      return 'down';
+    }
+    return this.openDirection;
+  };
+
+  private handleToggleOpen = () => {
+    if (!this.disabled) {
+      this.open = !this.open;
+      if (this.open) {
+        this.focusInputElement();
+      }
+    }
+  };
+
+  private focusInputElement = () => {
+    if (this.inputElement) this.inputElement.focus();
   };
 
   private handleFilter = (event) => {
@@ -494,12 +485,14 @@ export class TdsDropdown {
     this.tdsBlur.emit(event);
   };
 
-  private handleChange = () => {
-    this.tdsChange.emit({
-      name: this.name,
-      value: this.value?.map((value) => value).toString() ?? null,
-    });
-  };
+  @Method()
+  async appendValue(value: string) {
+    if (this.multiselect) {
+      this.value = Array.isArray(this.value) ? [...this.value, value] : [value];
+    } else {
+      this.value = value;
+    }
+  }
 
   private resetInput = () => {
     const inputEl = this.host.querySelector('input');
@@ -523,10 +516,11 @@ export class TdsDropdown {
   }
 
   render() {
+    const valueArray = Array.isArray(this.value) ? this.value : this.value ? [this.value] : [];
     appendHiddenInput(
       this.host,
       this.name,
-      this.value?.map((value) => value).toString(),
+      valueArray.map((value) => value).toString(),
       this.disabled,
     );
     return (
@@ -578,15 +572,7 @@ export class TdsDropdown {
                     }
                     this.handleBlur(event);
                   }}
-                  onFocus={(event) => {
-                    this.open = true;
-                    this.filterFocus = true;
-                    if (this.multiselect) {
-                      this.inputElement.value = '';
-                    }
-                    this.handleFocus(event);
-                    this.handleFilter({ target: { value: '' } });
-                  }}
+                  onFocus={(event) => this.handleFocus(event)}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
                       this.open = false;
