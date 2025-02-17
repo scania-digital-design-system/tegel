@@ -84,8 +84,7 @@ const inputToForm = async (page: Page) => {
   });
 
   await page.evaluate(() => {
-    const value = { 'tds-slider': '75' };
-    document.getElementsByTagName('tds-slider')[0].value = value['tds-slider'];
+    document.getElementsByTagName('tds-slider')[0].value = '75';
   });
 };
 
@@ -106,6 +105,7 @@ test.describe.parallel('form-test', () => {
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
     await resetButton.click();
+    await page.waitForTimeout(500);
     const resetFormData = await getFormData(page);
     // expect form to be reset to default values
     expect(resetFormData).toEqual(defaultFormValues);
