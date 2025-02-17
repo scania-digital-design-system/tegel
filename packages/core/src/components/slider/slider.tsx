@@ -1,4 +1,14 @@
-import { Component, h, Prop, Listen, EventEmitter, Event, Method, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Listen,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  Element,
+} from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
@@ -7,6 +17,8 @@ import generateUniqueId from '../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsSlider {
+  @Element() host: HTMLElement;
+
   /** Text for label */
   @Prop() label: string = '';
 
@@ -82,6 +94,12 @@ export class TdsSlider {
   private supposedValueSlot: number = -1;
 
   private resizeObserverAdded: boolean = false;
+
+  private initialValue: string;
+
+  private resetEventListenerAdded: boolean = false;
+
+  private formElement: HTMLFormElement;
 
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
@@ -382,6 +400,11 @@ export class TdsSlider {
     this.controlsStep(parseInt(this.step), event);
   }
 
+  private resetToInitialValue = () => {
+    this.forceValueUpdate(this.initialValue);
+    this.reset();
+  };
+
   componentWillLoad() {
     const numTicks = parseInt(this.ticks);
 
@@ -434,6 +457,30 @@ export class TdsSlider {
 
     this.calculateThumbLeftFromValue(this.value);
     this.updateTrack();
+
+    // Only set the initial value once:
+    if (!this.initialValue) {
+      this.initialValue = this.value;
+    }
+  }
+
+  componentDidRender() {
+    // Only add the event listener once:
+    if (!this.resetEventListenerAdded) {
+      this.formElement = this.host.closest('form');
+
+      if (this.formElement) {
+        this.formElement.addEventListener('reset', this.resetToInitialValue);
+        this.resetEventListenerAdded = true;
+      }
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.resetEventListenerAdded && this.formElement) {
+      this.formElement.removeEventListener('reset', this.resetToInitialValue);
+      this.resetEventListenerAdded = false;
+    }
   }
 
   render() {
