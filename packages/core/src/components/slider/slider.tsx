@@ -99,6 +99,8 @@ export class TdsSlider {
 
   private resetEventListenerAdded: boolean = false;
 
+  private formElement: HTMLFormElement;
+
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
     eventName: 'tdsChange',
@@ -465,16 +467,18 @@ export class TdsSlider {
   componentDidRender() {
     // Only add the event listener once:
     if (!this.resetEventListenerAdded) {
-      const form = this.host.closest('form');
-      form.addEventListener('reset', this.resetToInitialValue);
-      this.resetEventListenerAdded = true;
+      this.formElement = this.host.closest('form');
+
+      if (this.formElement) {
+        this.formElement.addEventListener('reset', this.resetToInitialValue);
+        this.resetEventListenerAdded = true;
+      }
     }
   }
 
   disconnectedCallback() {
-    if (this.resetEventListenerAdded) {
-      const form = this.host.closest('form');
-      form.removeEventListener('reset', this.resetToInitialValue);
+    if (this.resetEventListenerAdded && this.formElement) {
+      this.formElement.removeEventListener('reset', this.resetToInitialValue);
       this.resetEventListenerAdded = false;
     }
   }
