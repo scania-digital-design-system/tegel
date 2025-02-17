@@ -398,6 +398,11 @@ export class TdsSlider {
     this.controlsStep(parseInt(this.step), event);
   }
 
+  private resetToInitialValue = () => {
+    this.forceValueUpdate(this.initialValue);
+    this.reset();
+  };
+
   componentWillLoad() {
     const numTicks = parseInt(this.ticks);
 
@@ -461,13 +466,16 @@ export class TdsSlider {
     // Only add the event listener once:
     if (!this.resetEventListenerAdded) {
       const form = this.host.closest('form');
-
-      form.addEventListener('reset', () => {
-        this.forceValueUpdate(this.initialValue);
-        this.reset();
-      });
-
+      form.addEventListener('reset', this.resetToInitialValue);
       this.resetEventListenerAdded = true;
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.resetEventListenerAdded) {
+      const form = this.host.closest('form');
+      form.removeEventListener('reset', this.resetToInitialValue);
+      this.resetEventListenerAdded = false;
     }
   }
 
