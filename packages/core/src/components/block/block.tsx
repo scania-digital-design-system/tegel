@@ -14,27 +14,30 @@ export class TdsBlock {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  children: Array<HTMLTdsBlockElement>;
-
-  setModeVariantOnChildBlocks() {
-    this.children = Array.from(this.host.children).filter(
-      (item) => item.tagName === 'TDS-BLOCK',
-    ) as HTMLTdsBlockElement[];
-
-    this.children?.forEach((item) => {
-      if (!this.modeVariant) {
-        item.setAttribute('mode-variant', 'secondary');
-      } else {
-        item.setAttribute('mode-variant', this.modeVariant === 'primary' ? 'secondary' : 'primary');
+  private getNestingLevel(): number {
+    let level = 0;
+    let parent = this.host.parentElement;
+    while (parent) {
+      if (parent.tagName.toLowerCase() === 'tds-block') {
+        level++;
       }
-    });
+      parent = parent.parentElement;
+    }
+    return level;
   }
 
   render() {
-    this.setModeVariantOnChildBlocks();
+    const nestingLevel = this.getNestingLevel();
+    const evenOddClass =
+      this.modeVariant === null
+        ? nestingLevel % 2 === 0
+          ? 'tds-block-even'
+          : 'tds-block-odd'
+        : '';
+
     return (
       <div
-        class={`tds-block ${
+        class={`tds-block ${evenOddClass} ${
           this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
         }`}
       >
