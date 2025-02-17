@@ -5,11 +5,11 @@ import {
   Element,
   State,
   Event,
-  EventEmitter,
   Listen,
   Method,
   Prop,
   Watch,
+  EventEmitter,
 } from '@stencil/core';
 import findNextFocusableElement from '../../utils/findNextFocusableElement';
 import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
@@ -500,6 +500,27 @@ export class TdsDropdown {
       value: this.value?.map((value) => value).toString() ?? null,
     });
   };
+
+  private resetInput = () => {
+    const inputEl = this.host.querySelector('input');
+    if (inputEl) {
+      this.reset();
+    }
+  };
+
+  componentDidRender() {
+    const form = this.host.closest('form');
+    if (form) {
+      form.addEventListener('reset', this.resetInput);
+    }
+  }
+
+  disconnectedCallback() {
+    const form = this.host.closest('form');
+    if (form) {
+      form.removeEventListener('reset', this.resetInput);
+    }
+  }
 
   render() {
     appendHiddenInput(
