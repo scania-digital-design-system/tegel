@@ -76,7 +76,7 @@ export class TdsDropdown {
   @Prop() defaultValue: string | number;
 
   /** Value of the dropdown. For multiselect, provide array of strings. For single select, provide a string. */
-  @Prop({ mutable: true }) value: string | string[] = null;
+  @Prop({ mutable: true }) value: string | string[];
 
   @State() open: boolean = false;
 
@@ -96,91 +96,84 @@ export class TdsDropdown {
 
   @Watch('value')
   handleValueChange(newValue: string | string[]) {
-    // Normalize to array
-    const normalizedValue = this.normalizeValue(newValue);
+    if (newValue === undefined) return;
 
-    // Only update if actually changed
-    if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
-      this.updateDropdownState(normalizedValue);
+    // Ensure consistent internal array representation
+    const valueArray = Array.isArray(newValue) ? newValue : newValue ? [newValue] : null;
+
+    // Handle multiselect validation
+    if (!this.multiselect && Array.isArray(valueArray) && valueArray.length > 1) {
+      console.warn('Tried to select multiple items, but multiselect is not enabled.');
+      // Coerce to single value for non-multiselect
+      this.value = valueArray[0];
+      return;
     }
+
+    // Ensure value is always array internally for backward compatibility
+    this.updateSelections(valueArray);
+    this.handleChange();
   }
 
-  private normalizeValue(value: string | string[] | null): string[] {
-    if (!value || value === '') return []; // Handle both null and empty string
-    // For multiselect, keep array. For single select, wrap in array
-    if (this.multiselect) {
-      return Array.isArray(value) ? value : value.split(',').filter((v) => v !== '');
-    }
-    return Array.isArray(value) ? value : [value];
-  }
-
-  private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
-    if (newValue.length !== currentValue.length) return true;
-    return newValue.some((val) => !currentValue.includes(val));
-  }
-
-  private updateDropdownState(values: string[]) {
-    // Update internal state
-    this.selectedOptions = [...this.validateValues(values)]; // Force new array reference
-
-    // Then update the value prop to match
-    this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
-
-    // Force update of internal value
-    this.internalValue = this.getValue();
-
-    // Update DOM
-    this.updateOptionElements();
-
-    // Update display value
-    this.updateDisplayValue();
-
-    // Emit change event
-    this.emitChange();
-
-    // Update value attribute
-    this.setValueAttribute();
-  }
-
-  private validateValues(values: string[]): string[] {
-    return values.filter((val) => {
-      const isValid = this.getChildren()?.some((element) => element.value === val);
-      if (!isValid) {
-        console.warn(`Option with value "${val}" does not exist`);
-      }
-      return isValid;
-    });
-  }
-
-  private updateOptionElements() {
-    this.getChildren()?.forEach((element) => {
-      element.setSelected(this.selectedOptions.includes(element.value));
-    });
-  }
-
-  private updateDisplayValue() {
-    this.internalValue = this.getSelectedChildrenLabels().join(', ');
-
-    if (this.filter && this.inputElement) {
-      this.inputElement.value = this.internalValue;
-    }
-  }
-
-  private emitChange() {
-    const value = this.multiselect
-      ? this.selectedOptions.join(',')
-      : this.selectedOptions[0] || null;
-
+  private handleChange = () => {
+    const value = Array.isArray(this.value) ? this.value.join(',') : this.value;
     this.tdsChange.emit({
       name: this.name,
       value: value ?? null,
     });
+  };
+
+  private updateSelections(valueArray: string[] | null) {
+    // Reset current selections
+    this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+      element.setSelected(false);
+    });
+
+    if (valueArray) {
+      // Validate and filter values
+      const validValues = valueArray.filter((val) => {
+        const optionExists = this.getChildren().some(
+          (element: HTMLTdsDropdownOptionElement) => element.value === val,
+        );
+        if (!optionExists) {
+          console.warn(`Option with value "${val}" does not exist`);
+        }
+        return optionExists;
+      });
+
+      // Update internal state and selections
+      this.internalValue = validValues.join(', ');
+      this.getChildren().forEach((element: HTMLTdsDropdownOptionElement) => {
+        if (validValues.includes(element.value)) {
+          element.setSelected(true);
+        }
+      });
+
+      // Update value prop with validated values
+      if (this.multiselect) {
+        this.value = validValues;
+      } else {
+        this.value = validValues[0] || null;
+      }
+    } else {
+      // Handle null/undefined case
+      this.internalValue = '';
+      this.value = this.multiselect ? [] : null;
+    }
+
+    // Emit change events
+    this.handleChange();
+
+    // Update filter input if present
+    if (this.filter && this.inputElement) {
+      this.inputElement.value = this.internalValue;
+    }
+
+    this.setValueAttribute();
   }
 
   @Method()
   async setValue(value: string | string[]) {
-    const normalizedValue = this.normalizeValue(value);
-    this.updateDropdownState(normalizedValue);
+    this.value = value;
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
       label: element.textContent.trim(),
@@ -189,13 +182,16 @@ export class TdsDropdown {
 
   @Method()
   async reset() {
-    this.updateDropdownState([]);
+    this.value = this.multiselect ? [] : null;
   }
 
   @Method()
   async removeValue(oldValue: string) {
-    const newValues = this.selectedOptions.filter((v) => v !== oldValue);
-    this.updateDropdownState(newValues);
+    if (this.multiselect && Array.isArray(this.value)) {
+      this.value = this.value.filter((v) => v !== oldValue);
+    } else {
+      this.value = null;
+    }
   }
 
   /** Method that forces focus on the input element. */
@@ -427,9 +423,9 @@ export class TdsDropdown {
 
   componentWillLoad() {
     if (this.defaultValue && !this.value) {
-      const initialValue = this.multiselect ? this.defaultValue.split(',') : [this.defaultValue];
-      this.updateDropdownState(initialValue);
+      this.value = this.defaultValue;
     }
+    this.setDefaultOption();
   }
 
   /** Method to handle slot changes */
@@ -448,34 +444,8 @@ export class TdsDropdown {
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       ) as HTMLTdsDropdownOptionElement[];
 
-      if (children.length === 0) {
-        console.warn('TDS DROPDOWN: No options found. Disregard if loading data asynchronously.');
-        return;
-      }
-
-      const defaultValues = this.multiselect
-        ? new Set(this.internalDefaultValue.split(','))
-        : [this.internalDefaultValue];
-
-      const childrenMap = new Map(children.map((element) => [element.value, element]));
-
-      const matchedValues = Array.from(defaultValues).filter((value) => {
-        const element = childrenMap.get(value);
-        if (element) {
-          element.setSelected(true);
-          return true;
-        }
-        return false;
-      });
-
-      if (matchedValues.length > 0) {
-        this.value = [...new Set(this.value ? [...this.value, ...matchedValues] : matchedValues)];
-        this.setValueAttribute();
-      } else {
-        console.warn(
-          `TDS DROPDOWN: No matching option found for defaultValue "${this.internalDefaultValue}"`,
-        );
-      }
+      const normalizedValues = Array.from(defaultValues);
+      this.updateSelections(normalizedValues);
     }
   };
 
@@ -489,11 +459,12 @@ export class TdsDropdown {
   };
 
   private getSelectedChildren = () => {
-    if (this.selectedOptions.length === 0) return [];
+    if (!this.value) return [];
+    const valueArray = Array.isArray(this.value) ? this.value : [this.value];
 
-    return this.selectedOptions
+    return valueArray
       .map((stringValue) => {
-        const matchingElement = this.getChildren()?.find(
+        const matchingElement = this.getChildren().find(
           (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
         );
         return matchingElement;
@@ -518,7 +489,8 @@ export class TdsDropdown {
     if (this.selectedOptions.length === 0) {
       this.host.removeAttribute('value');
     } else {
-      this.host.setAttribute('value', this.selectedOptions.join(','));
+      const valueArray = Array.isArray(this.value) ? this.value : [this.value];
+      this.host.setAttribute('value', valueArray.map((val) => val).toString());
     }
   };
 
@@ -629,9 +601,9 @@ export class TdsDropdown {
   @Method()
   async appendValue(value: string) {
     if (this.multiselect) {
-      this.updateDropdownState([...this.selectedOptions, value]);
+      this.value = Array.isArray(this.value) ? [...this.value, value] : [value];
     } else {
-      this.updateDropdownState([value]);
+      this.value = value;
     }
   }
   private handleChange = () => {
@@ -663,7 +635,13 @@ export class TdsDropdown {
   }
 
   render() {
-    appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
+    const valueArray = Array.isArray(this.value) ? this.value : this.value ? [this.value] : [];
+    appendHiddenInput(
+      this.host,
+      this.name,
+      valueArray.map((value) => value).toString(),
+      this.disabled,
+    );
     return (
       <Host
         role="select"
