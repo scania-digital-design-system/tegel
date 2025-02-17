@@ -26,19 +26,37 @@
 | `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                                                                                             | `"auto" \| "down" \| "up"`     | `'auto'`      |
 | `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                                                                                         | `string`                       | `undefined`   |
 | `size`          | `size`           | The size of the Dropdown.                                                                                                                                  | `"lg" \| "md" \| "sm" \| "xs"` | `'lg'`        |
+| `value`         | `value`          | Value of the dropdown. For multiselect, provide array of strings. For single select, provide a string.                                                     | `string \| string[]`           | `undefined`   |
 
 
 ## Events
 
-| Event       | Description                    | Type                                            |
-| ----------- | ------------------------------ | ----------------------------------------------- |
-| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                       |
-| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
-| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                       |
-| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                       |
+| Event            | Description                          | Type                                            |
+| ---------------- | ------------------------------------ | ----------------------------------------------- |
+| `tdsBlur`        | Blur event for the Dropdown.         | `CustomEvent<FocusEvent>`                       |
+| `tdsChange`      | Change event for the Dropdown.       | `CustomEvent<{ name: string; value: string; }>` |
+| `tdsFocus`       | Focus event for the Dropdown.        | `CustomEvent<FocusEvent>`                       |
+| `tdsInput`       | Input event for the Dropdown.        | `CustomEvent<InputEvent>`                       |
+| `tdsValueChange` | Value change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
 
 
 ## Methods
+
+### `appendValue(value: string) => Promise<void>`
+
+
+
+#### Parameters
+
+| Name    | Type     | Description |
+| ------- | -------- | ----------- |
+| `value` | `string` |             |
+
+#### Returns
+
+Type: `Promise<void>`
+
+
 
 ### `close() => Promise<void>`
 
@@ -60,9 +78,9 @@ Type: `Promise<void>`
 
 
 
-### `removeValue(oldValue: string) => Promise<{ value: string; label: string; }[]>`
+### `removeValue(oldValue: string) => Promise<void>`
 
-Method for removing a selected value in the Dropdown.
+
 
 #### Parameters
 
@@ -72,13 +90,13 @@ Method for removing a selected value in the Dropdown.
 
 #### Returns
 
-Type: `Promise<{ value: string; label: string; }[]>`
+Type: `Promise<void>`
 
 
 
 ### `reset() => Promise<void>`
 
-Method that resets the Dropdown, marks all children as non-selected and resets the value to null.
+
 
 #### Returns
 
@@ -88,26 +106,13 @@ Type: `Promise<void>`
 
 ### `setValue(value: string | string[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
 
-Method for setting the value of the Dropdown.
 
-Single selection example:
-
-<code>
-dropdown.setValue('option-1', 'Option 1');
-</code>
-
-Multiselect example:
-
-<code>
-dropdown.setValue(['option-1', 'option-2']);
-</code>
 
 #### Parameters
 
 | Name    | Type                 | Description |
 | ------- | -------------------- | ----------- |
 | `value` | `string \| string[]` |             |
-| `label` | `string`             |             |
 
 #### Returns
 
