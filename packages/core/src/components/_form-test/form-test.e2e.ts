@@ -4,16 +4,11 @@ import { expect, Page } from '@playwright/test';
 const componentTestPath = 'src/components/_form-test/index.html';
 
 const defaultFormValues = {
-  'tds-checkbox': undefined,
-  'tds-chip-radio': undefined,
-  'tds-chip-checkbox': undefined,
   'tds-datetime': '',
   'tds-dropdown': '',
-  'tds-radio-button': undefined,
-  'tds-slider': '50',
+  'tds-slider': '0',
   'tds-text-field': '',
   'tds-textarea': '',
-  'tds-toggle': undefined,
 };
 
 const newFormValues = {
@@ -23,7 +18,7 @@ const newFormValues = {
   'tds-datetime': '2025-01-01',
   'tds-dropdown': 'dropdown-1',
   'tds-radio-button': 'radio-button-1',
-  'tds-slider': '75',
+  'tds-slider': '50',
   'tds-text-field': 'Text in text-field',
   'tds-textarea': 'Text in textarea',
   'tds-toggle': 'on',
@@ -84,29 +79,31 @@ const inputToForm = async (page: Page) => {
   });
 
   await page.evaluate(() => {
-    document.getElementsByTagName('tds-slider')[0].value = '75';
+    document.getElementsByTagName('tds-slider')[0].value = '50';
   });
 };
 
 test.describe.parallel('form-test', () => {
-  test('test-form', async ({ page }) => {
+  test('fill-form-and-reset', async ({ page }) => {
     await page.goto(componentTestPath);
-    const buttons = await page.locator('tds-button').all();
-    const submitButton = buttons[0];
-    const resetButton = buttons[1];
+
+    const submitButton = await page.locator('tds-button[type="submit"]');
+    const resetButton = await page.locator('tds-button[type="reset"]');
 
     // input values to the form
     await inputToForm(page);
     await submitButton.click();
-
     const formData = await getFormData(page);
+
     // expect values to have changed
     expect(formData).toEqual(newFormValues);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
+    // reset form
     await resetButton.click();
     await page.waitForTimeout(500);
     const resetFormData = await getFormData(page);
+
     // expect form to be reset to default values
     expect(resetFormData).toEqual(defaultFormValues);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });

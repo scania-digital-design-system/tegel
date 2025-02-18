@@ -11,7 +11,7 @@
     </script>
   </head>
 
-  <body>
+  <body style="padding: 20px">
     <section class="test-section">
       <form id="testForm" onsubmit="handleFormSubmit(event)">
         <div>
@@ -91,7 +91,7 @@
         </div>
 
         <div>
-          <tds-slider name="tds-slider" min="0" max="100" value="50" tooltip></tds-slider>
+          <tds-slider name="tds-slider" min="0" max="100" value="0" tooltip></tds-slider>
         </div>
 
         <div>
@@ -118,19 +118,6 @@
     <script>
       function handleFormSubmit(event) {
         event.preventDefault();
-
-        const form = event.target;
-        if (form) {
-          const formData = new FormData(form);
-
-          let output = '';
-
-          for (let [name, value] of formData.entries()) {
-            output += `${name}: ${value}\n`;
-          }
-
-          console.log(output);
-        }
       }
     </script>
   </body>
