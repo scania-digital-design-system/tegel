@@ -96,22 +96,24 @@ export class TdsDropdown {
 
   @Watch('value')
   handleValueChange(newValue: string | string[]) {
-    if (newValue === undefined) return;
+    // Convert both newValue and this.value to arrays for comparison
+    const newValueArray = Array.isArray(newValue) ? newValue : newValue ? [newValue] : [];
+    const currentValueArray = Array.isArray(this.value)
+      ? this.value
+      : this.value
+      ? [this.value]
+      : [];
 
-    // Ensure consistent internal array representation
-    const valueArray = Array.isArray(newValue) ? newValue : newValue ? [newValue] : null;
+    // Check if the new value is different from the current value
+    const hasChanged =
+      newValueArray.length !== currentValueArray.length ||
+      newValueArray.some((val, index) => val !== currentValueArray[index]);
 
-    // Handle multiselect validation
-    if (!this.multiselect && Array.isArray(valueArray) && valueArray.length > 1) {
-      console.warn('Tried to select multiple items, but multiselect is not enabled.');
-      // Coerce to single value for non-multiselect
-      this.value = valueArray[0];
-      return;
+    if (hasChanged) {
+      // Proceed with updating selections and emitting changes
+      this.updateSelections(newValueArray);
+      this.handleChange();
     }
-
-    // Ensure value is always array internally for backward compatibility
-    this.updateSelections(valueArray);
-    this.handleChange();
   }
 
   private handleChange = () => {
