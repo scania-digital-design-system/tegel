@@ -26,7 +26,7 @@
 | `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                                                                                             | `"auto" \| "down" \| "up"`     | `'auto'`      |
 | `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                                                                                         | `string`                       | `undefined`   |
 | `size`          | `size`           | The size of the Dropdown.                                                                                                                                  | `"lg" \| "md" \| "sm" \| "xs"` | `'lg'`        |
-| `value`         | `value`          | Value of the dropdown. For multiselect, provide array of strings. For single select, provide a string.                                                     | `string \| string[]`           | `undefined`   |
+| `value`         | `value`          | Value of the dropdown. For multiselect, provide array of strings. For single select, provide a string.                                                     | `string \| string[]`           | `null`        |
 
 
 ## Events
