@@ -17,7 +17,6 @@ testConfigurations.basic.forEach((config) => {
     });
 
     test('is default link rendered correctly', async ({ page }) => {
-      await page.goto(componentTestPath);
       const tdsLink = page.getByTestId('tds-link-testid');
       await expect(tdsLink).toHaveCount(1);
 
@@ -33,7 +32,6 @@ test.describe.parallel(componentName, () => {
   });
 
   test('word Tegel is a link', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.locator('tds-link a');
     await expect(tdsLink).toHaveAttribute('href');
     await expect(tdsLink).toHaveText('Tegel');
@@ -41,13 +39,11 @@ test.describe.parallel(componentName, () => {
   });
 
   test('icon is rendered', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.locator('tds-link a tds-icon');
     await expect(tdsLink).toHaveCount(1);
   });
 
   test('link is not underlined', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.getByText('Tegel', { exact: true });
     const linkUnderlineState = await tdsLink.evaluate(
       (style) => getComputedStyle(style).textDecorationLine,
@@ -56,7 +52,6 @@ test.describe.parallel(componentName, () => {
   });
 
   test('component is not disabled', async ({ page }) => {
-    await page.goto(componentTestPath);
     await page.locator('tds-link').click();
     await expect(page).toHaveURL('https://tegel.scania.com/home');
   });
