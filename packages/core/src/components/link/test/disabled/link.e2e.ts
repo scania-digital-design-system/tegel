@@ -17,7 +17,6 @@ testConfigurations.basic.forEach((config) => {
     });
 
     test('disabled link is rendered correctly', async ({ page }) => {
-      await page.goto(componentTestPath);
       const tdsLink = page.getByTestId('tds-link-testid');
       await expect(tdsLink).toHaveCount(1);
       /* Check diff on screenshot */
@@ -32,7 +31,6 @@ test.describe.parallel(componentName, () => {
   });
 
   test('text shows on page', async ({ page }) => {
-    await page.goto(componentTestPath);
     const pageText = page.getByText(
       'The Tegel Design System is for digital products and services at Scania. It enables an efficient' +
         "    development process and ensures a premium experience across all of Scania's digital touchpoints.",
@@ -43,7 +41,6 @@ test.describe.parallel(componentName, () => {
   });
 
   test('link is underlined', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.getByText('Tegel', { exact: true });
     const linkUnderlineState = await tdsLink.evaluate(
       (style) => getComputedStyle(style).textDecorationLine,
@@ -52,7 +49,6 @@ test.describe.parallel(componentName, () => {
   });
 
   test('component is disabled', async ({ page }) => {
-    await page.goto(componentTestPath);
     const tdsLink = page.getByText('Tegel', { exact: true });
     const linkUnderlineState = await tdsLink.evaluate(
       (style) => getComputedStyle(style).pointerEvents,

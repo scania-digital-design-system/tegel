@@ -35,7 +35,8 @@
 }
 
 .disabled {
-  ::slotted(*) {
+  ::slotted(*),
+  ::slotted(*:visited) {
     color: var(--tds-link-disabled);
     text-decoration-color: var(--tds-link-disabled);
     pointer-events: none;
@@ -53,5 +54,12 @@
     ::slotted(*) {
       text-decoration: none;
     }
+  }
+}
+
+.standalone {
+  ::slotted(*) {
+    font: var(--tds-detail-02);
+    letter-spacing: var(--tds-detail-02-ls);
   }
 }

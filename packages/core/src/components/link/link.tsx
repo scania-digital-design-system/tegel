@@ -17,6 +17,9 @@ export class TdsLink {
   /** Displays the Link with an underline. */
   @Prop() underline: boolean = true;
 
+  /** Displays the Link as a standalone component. Not part of a paragraph. */
+  @Prop() standalone: boolean = false;
+
   connectedCallback() {
     this.host.children[0].classList.add('tds-link-component');
   }
@@ -27,6 +30,7 @@ export class TdsLink {
         class={`        
           ${this.disabled ? 'disabled' : ''}
           ${!this.underline ? 'no-underline' : ''}
+          ${this.standalone ? 'standalone' : ''}
           `}
       >
         <slot></slot>
