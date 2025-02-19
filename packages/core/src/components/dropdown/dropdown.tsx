@@ -106,10 +106,10 @@ export class TdsDropdown {
   }
 
   private normalizeValue(value: string | string[] | null): string[] {
-    if (!value) return [];
+    if (!value || value === '') return []; // Handle both null and empty string
     // For multiselect, keep array. For single select, wrap in array
     if (this.multiselect) {
-      return Array.isArray(value) ? value : value.split(',');
+      return Array.isArray(value) ? value : value.split(',').filter((v) => v !== '');
     }
     return Array.isArray(value) ? value : [value];
   }
