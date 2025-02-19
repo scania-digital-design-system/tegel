@@ -107,6 +107,10 @@ export class TdsDropdown {
 
   private normalizeValue(value: string | string[] | null): string[] {
     if (!value) return [];
+    // For multiselect, keep array. For single select, wrap in array
+    if (this.multiselect) {
+      return Array.isArray(value) ? value : value.split(',');
+    }
     return Array.isArray(value) ? value : [value];
   }
 
@@ -118,6 +122,9 @@ export class TdsDropdown {
   private updateDropdownState(values: string[]) {
     // Update internal state
     this.selectedOptions = this.validateValues(values);
+
+    // Then update the value prop to match
+    this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
 
     // Update DOM
     this.updateOptionElements();
@@ -157,9 +164,6 @@ export class TdsDropdown {
   }
 
   private emitChange() {
-    // Update the value prop to match validated state
-    this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
-
     const value = this.multiselect
       ? this.selectedOptions.join(',')
       : this.selectedOptions[0] || null;
@@ -172,7 +176,8 @@ export class TdsDropdown {
 
   @Method()
   async setValue(value: string | string[]) {
-    this.value = value;
+    const normalizedValue = this.normalizeValue(value);
+    this.updateDropdownState(normalizedValue);
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
       label: element.textContent.trim(),
@@ -181,16 +186,13 @@ export class TdsDropdown {
 
   @Method()
   async reset() {
-    this.value = this.multiselect ? [] : null;
+    this.updateDropdownState([]);
   }
 
   @Method()
   async removeValue(oldValue: string) {
-    if (this.multiselect && Array.isArray(this.value)) {
-      this.value = this.value.filter((v) => v !== oldValue);
-    } else {
-      this.value = null;
-    }
+    const newValues = this.selectedOptions.filter((v) => v !== oldValue);
+    this.updateDropdownState(newValues);
   }
 
   /** Method that forces focus on the input element. */
@@ -422,12 +424,9 @@ export class TdsDropdown {
 
   componentWillLoad() {
     if (this.defaultValue && !this.value) {
-      this.value = this.defaultValue;
+      const initialValue = this.multiselect ? this.defaultValue.split(',') : [this.defaultValue];
+      this.updateDropdownState(initialValue);
     }
-    if (this.defaultValue !== undefined && this.defaultValue !== null) {
-      this.internalDefaultValue = convertToString(this.defaultValue);
-    }
-    this.setDefaultOption();
   }
 
   /** Method to handle slot changes */
@@ -487,12 +486,11 @@ export class TdsDropdown {
   };
 
   private getSelectedChildren = () => {
-    if (!this.value) return [];
-    const valueArray = Array.isArray(this.value) ? this.value : [this.value];
+    if (this.selectedOptions.length === 0) return [];
 
-    return valueArray
+    return this.selectedOptions
       .map((stringValue) => {
-        const matchingElement = this.getChildren().find(
+        const matchingElement = this.getChildren()?.find(
           (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
         );
         return matchingElement;
@@ -514,11 +512,10 @@ export class TdsDropdown {
   };
 
   private setValueAttribute = () => {
-    if (!this.value || this.value?.toString() === '') {
+    if (this.selectedOptions.length === 0) {
       this.host.removeAttribute('value');
     } else {
-      const valueArray = Array.isArray(this.value) ? this.value : [this.value];
-      this.host.setAttribute('value', convertArrayToStrings(valueArray).join(','));
+      this.host.setAttribute('value', this.selectedOptions.join(','));
     }
   };
 
@@ -627,9 +624,9 @@ export class TdsDropdown {
   @Method()
   async appendValue(value: string) {
     if (this.multiselect) {
-      this.value = Array.isArray(this.value) ? [...this.value, value] : [value];
+      this.updateDropdownState([...this.selectedOptions, value]);
     } else {
-      this.value = value;
+      this.updateDropdownState([value]);
     }
   }
   private handleChange = () => {
@@ -661,13 +658,7 @@ export class TdsDropdown {
   }
 
   render() {
-    const valueArray = Array.isArray(this.value) ? this.value : this.value ? [this.value] : [];
-    appendHiddenInput(
-      this.host,
-      this.name,
-      this.value ? convertArrayToStrings(this.value).join(',') : null,
-      this.disabled,
-    );
+    appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
     return (
       <Host
         role="select"
@@ -703,7 +694,7 @@ export class TdsDropdown {
                     class={`
                     label-inside-as-placeholder
                     ${this.size}
-                    ${this.value?.length ? 'selected' : ''}
+                    ${this.selectedOptions.length ? 'selected' : ''}
                     `}
                   >
                     {this.label}
@@ -777,13 +768,11 @@ export class TdsDropdown {
                   this.open = false;
                 }
               }}
-              class={{
-                value: Boolean(this.value),
-                placeholder: Boolean(!this.value),
-                open: this.open,
-                closed: !this.open,
-                error: this.error,
-              }}
+              class={`
+                ${this.selectedOptions.length ? 'value' : 'placeholder'}
+                ${this.open ? 'open' : 'closed'}
+                ${this.error ? 'error' : ''}
+                `}
               disabled={this.disabled}
             >
               <div class={`value-wrapper ${this.size}`}>
@@ -792,17 +781,17 @@ export class TdsDropdown {
                 )}
                 {this.label && this.labelPosition === 'inside' && !this.placeholder && (
                   <div
-                    class={{
-                      'label-inside-as-placeholder': true,
-                      [this.size]: true,
-                      'selected': Boolean(this.value?.length),
-                    }}
+                    class={`
+                    label-inside-as-placeholder
+                    ${this.size}
+                    ${this.selectedOptions.length ? 'selected' : ''}
+                    `}
                   >
                     {this.label}
                   </div>
                 )}
                 <div class={`placeholder ${this.size}`}>
-                  {this.value?.length ? this.getValue() : this.placeholder}
+                  {this.selectedOptions.length ? this.getValue() : this.placeholder}
                 </div>
                 <tds-icon
                   aria-label="Open/Close dropdown"
