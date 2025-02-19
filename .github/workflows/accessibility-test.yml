@@ -34,4 +34,3 @@ jobs:
         with:
           report-file: ./packages/core/accessibility-results.json
           comment-title: 'Accessibility Test results'
-
