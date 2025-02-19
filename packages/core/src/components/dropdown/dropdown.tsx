@@ -107,6 +107,10 @@ export class TdsDropdown {
 
   private normalizeValue(value: string | string[] | null): string[] {
     if (!value) return [];
+    // For multiselect, keep array. For single select, wrap in array
+    if (this.multiselect) {
+      return Array.isArray(value) ? value : value.split(',');
+    }
     return Array.isArray(value) ? value : [value];
   }
 
@@ -118,6 +122,9 @@ export class TdsDropdown {
   private updateDropdownState(values: string[]) {
     // Update internal state
     this.selectedOptions = this.validateValues(values);
+
+    // Then update the value prop to match
+    this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
 
     // Update DOM
     this.updateOptionElements();
@@ -157,9 +164,6 @@ export class TdsDropdown {
   }
 
   private emitChange() {
-    // Update the value prop to match validated state
-    this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
-
     const value = this.multiselect
       ? this.selectedOptions.join(',')
       : this.selectedOptions[0] || null;
@@ -172,7 +176,8 @@ export class TdsDropdown {
 
   @Method()
   async setValue(value: string | string[]) {
-    this.value = value;
+    const normalizedValue = this.normalizeValue(value);
+    this.updateDropdownState(normalizedValue);
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
       label: element.textContent.trim(),
@@ -181,16 +186,13 @@ export class TdsDropdown {
 
   @Method()
   async reset() {
-    this.value = this.multiselect ? [] : null;
+    this.updateDropdownState([]);
   }
 
   @Method()
   async removeValue(oldValue: string) {
-    if (this.multiselect && Array.isArray(this.value)) {
-      this.value = this.value.filter((v) => v !== oldValue);
-    } else {
-      this.value = null;
-    }
+    const newValues = this.selectedOptions.filter((v) => v !== oldValue);
+    this.updateDropdownState(newValues);
   }
 
   /** Method that forces focus on the input element. */
@@ -422,9 +424,9 @@ export class TdsDropdown {
 
   componentWillLoad() {
     if (this.defaultValue && !this.value) {
-      this.value = this.defaultValue;
+      const initialValue = this.multiselect ? this.defaultValue.split(',') : [this.defaultValue];
+      this.updateDropdownState(initialValue);
     }
-    this.setDefaultOption();
   }
 
   /** Method to handle slot changes */
@@ -458,12 +460,11 @@ export class TdsDropdown {
   };
 
   private getSelectedChildren = () => {
-    if (!this.value) return [];
-    const valueArray = Array.isArray(this.value) ? this.value : [this.value];
+    if (this.selectedOptions.length === 0) return [];
 
-    return valueArray
+    return this.selectedOptions
       .map((stringValue) => {
-        const matchingElement = this.getChildren().find(
+        const matchingElement = this.getChildren()?.find(
           (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
         );
         return matchingElement;
@@ -488,8 +489,7 @@ export class TdsDropdown {
     if (this.selectedOptions.length === 0) {
       this.host.removeAttribute('value');
     } else {
-      const valueArray = Array.isArray(this.value) ? this.value : [this.value];
-      this.host.setAttribute('value', valueArray.map((val) => val).toString());
+      this.host.setAttribute('value', this.selectedOptions.join(','));
     }
   };
 
@@ -600,9 +600,9 @@ export class TdsDropdown {
   @Method()
   async appendValue(value: string) {
     if (this.multiselect) {
-      this.value = Array.isArray(this.value) ? [...this.value, value] : [value];
+      this.updateDropdownState([...this.selectedOptions, value]);
     } else {
-      this.value = value;
+      this.updateDropdownState([value]);
     }
   }
   private handleChange = () => {
@@ -634,13 +634,7 @@ export class TdsDropdown {
   }
 
   render() {
-    const valueArray = Array.isArray(this.value) ? this.value : this.value ? [this.value] : [];
-    appendHiddenInput(
-      this.host,
-      this.name,
-      valueArray.map((value) => value).toString(),
-      this.disabled,
-    );
+    appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
     return (
       <Host
         role="select"
