@@ -16,10 +16,7 @@ const config: PlaywrightTestConfig = {
     reuseExistingServer: !process.env.CI,
   },
   workers: 8,
-  reporter: [
-    ['list'],
-    ['json', { outputFile: 'accessibility-results.json' }]
-  ],
+  reporter: [['list'], ['json', { outputFile: 'accessibility-results.json' }]],
 };
 
 export default config;
