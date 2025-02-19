@@ -409,7 +409,7 @@ export class TdsDropdown {
   handleOpenState() {
     if (this.filter && this.multiselect) {
       if (!this.open) {
-        this.inputElement.value = this.getValue();
+        this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
       }
     }
   }
@@ -603,8 +603,10 @@ export class TdsDropdown {
   private handleFilterReset = () => {
     this.reset();
     this.inputElement.value = '';
-    this.handleFilter({ target: { value: this.inputElement.value } });
+    this.handleFilter({ target: { value: '' } });
     this.inputElement.focus();
+    // Add this line to ensure internal value is cleared
+    this.internalValue = '';
   };
 
   private handleFocus = (event) => {
