@@ -373,7 +373,7 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
-    "test:axe": "npx playwright test --config 'playwright-axe.config.ts' --reporter=list",
+    "test:axe": "npx playwright test --config 'playwright-axe.config.ts'",
     "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
