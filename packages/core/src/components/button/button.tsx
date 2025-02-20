@@ -49,11 +49,11 @@ export class TdsButton {
     return (
       <Host
         class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''} `}
-        disabled={this.disabled}
+        disabled={this.disabled || undefined}
       >
         <button
           type={this.type}
-          disabled={this.disabled}
+          disabled={this.disabled || undefined}
           class={{
             'primary': this.variant === 'primary',
             'secondary': this.variant === 'secondary',
@@ -63,7 +63,7 @@ export class TdsButton {
             'md': this.size === 'md',
             'sm': this.size === 'sm',
             'xs': this.size === 'xs',
-            'disabled': this.disabled,
+            'disabled': this.disabled || undefined,
             'fullbleed': this.fullbleed,
             'icon': hasIconSlot,
             'only-icon': this.onlyIcon,
