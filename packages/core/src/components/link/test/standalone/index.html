@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Link - Standalone</title>
+    <link rel="stylesheet" href="../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+  <body>
+    <tds-link data-testid="tds-link-testid" underline="false" standalone>
+      <a href="https://tegel.scania.com/home" rel="noopener">
+        Tegel
+        <tds-icon name="redirect" size="16px"></tds-icon>
+      </a>
+    </tds-link>
+  </body>
+</html>
