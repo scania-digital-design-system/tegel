@@ -61,6 +61,7 @@ export class TdsAccordionItem {
           <button
             type="button"
             aria-expanded={this.expanded}
+            aria-disabled={this.disabled}
             class={`tds-accordion-header-icon-${this.expandIconPosition}`}
             onClick={() => this.toggleAccordionItem()}
             disabled={this.disabled}
@@ -70,7 +71,7 @@ export class TdsAccordionItem {
               <slot name="header"></slot>
             </div>
             <div class="tds-accordion-icon">
-              <tds-icon name="chevron_down" size="16px"></tds-icon>
+              <tds-icon svgTitle={`${this.expanded ? 'close' : 'open'} accordion`} name="chevron_down" size="16px"></tds-icon>
             </div>
           </button>
           <div

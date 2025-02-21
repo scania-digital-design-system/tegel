@@ -60,6 +60,7 @@ playwright-report/
 test-results/
 accessibility-test-results/
 packages/core/results.json
+packages/core/accessibility-results.json
 
 # tegel-styles
 packages/styles/dist/
