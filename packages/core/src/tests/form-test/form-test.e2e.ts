@@ -1,7 +1,7 @@
 import { test } from 'stencil-playwright';
 import { expect, Page } from '@playwright/test';
 
-const componentTestPath = 'src/components/_form-test/index.html';
+const componentTestPath = 'src/tests/form-test/index.html';
 
 const defaultFormValues = {
   'tds-datetime': '',
@@ -87,8 +87,8 @@ test.describe.parallel('form-test', () => {
   test('fill-form-and-reset', async ({ page }) => {
     await page.goto(componentTestPath);
 
-    const submitButton = await page.locator('tds-button[type="submit"]');
-    const resetButton = await page.locator('tds-button[type="reset"]');
+    const submitButton = page.locator('tds-button[type="submit"]');
+    const resetButton = page.locator('tds-button[type="reset"]');
 
     // input values to the form
     await inputToForm(page);
