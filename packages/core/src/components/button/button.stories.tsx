@@ -211,12 +211,24 @@ const WebComponentTemplate = ({
             : ''
         }        
     </tds-button>
+
+
+
+    <tds-button
+      fullbleed="true"
+      text="hej"
+    >  
+    </tds-button>
+
+
   </div>
   <script>
         document.querySelector('tds-button').addEventListener('click', (event) => {
           console.log(event)
         })
   </script>
+
+
   `,
   );
 };
