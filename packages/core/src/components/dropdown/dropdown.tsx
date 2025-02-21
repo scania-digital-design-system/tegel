@@ -121,10 +121,13 @@ export class TdsDropdown {
 
   private updateDropdownState(values: string[]) {
     // Update internal state
-    this.selectedOptions = this.validateValues(values);
+    this.selectedOptions = [...this.validateValues(values)]; // Force new array reference
 
     // Then update the value prop to match
     this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
+
+    // Force update of internal value
+    this.internalValue = this.getValue();
 
     // Update DOM
     this.updateOptionElements();
