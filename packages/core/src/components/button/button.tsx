@@ -46,9 +46,14 @@ export class TdsButton {
     if (!this.text && !hasLabelSlot) {
       this.onlyIcon = true;
     }
+
     return (
       <Host
-        class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''} `}
+        class={`
+          ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
+          ${this.disabled ? 'disabled' : ''}
+          ${this.fullbleed ? 'fullbleed' : ''}
+        `}
         disabled={this.disabled}
       >
         <button
