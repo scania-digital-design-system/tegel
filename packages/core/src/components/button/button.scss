@@ -185,11 +185,11 @@ button {
   }
 }
 
-:host([disabled]:active) {
+:host([disabled='true']:active) {
   pointer-events: none;
 }
 
-:host([disabled]) button {
+:host([disabled='true']) button {
   cursor: not-allowed;
 }
 
