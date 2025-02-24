@@ -228,6 +228,17 @@ tds-slider {
     position: relative;
     cursor: pointer;
 
+    // Add invisible clickable area
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      bottom: -10px;
+      cursor: pointer;
+    }
+
     &:focus {
       outline: 0;
 
