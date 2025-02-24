@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For content of an expanded accordion.
@@ -50,6 +51,8 @@ export class TdsAccordionItem {
   }>;
 
   render() {
+    const elementId1 = generateUniqueId();
+    const elementId2 = generateUniqueId();
     return (
       <Host>
         <div
@@ -59,6 +62,9 @@ export class TdsAccordionItem {
         `}
         >
           <button
+            id={elementId2}
+            aria-controls={elementId1}
+            role="heading"
             type="button"
             aria-expanded={this.expanded}
             aria-disabled={this.disabled}
@@ -71,10 +77,14 @@ export class TdsAccordionItem {
               <slot name="header"></slot>
             </div>
             <div class="tds-accordion-icon">
-              <tds-icon svgTitle={`${this.expanded ? 'close' : 'open'} accordion`} name="chevron_down" size="16px"></tds-icon>
+              <tds-icon name="chevron_down" size="16px"></tds-icon>
             </div>
           </button>
           <div
+            role="region"
+            aria-live="polite"
+            aria-labelledby={elementId2}
+            id={elementId1}
             class={`tds-accordion-panel
             ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
             `}
