@@ -10,6 +10,19 @@
   letter-spacing: var(--tds-detail-02-ls);
   color: var(--tds-radio-button-color);
 
+  /* Readonly state for radio button */
+  .tds-form-input-readonly {
+    pointer-events: none; /* Prevent clicking */
+    cursor: default; /* Avoid pointer cursor */
+    opacity: 0.6; /* Slightly faded to differentiate */
+  }
+
+  /* Readonly label */
+  .tds-form-input-readonly + label {
+    // color: var(--tds-radio-button-disabled); /* Match disabled text color */
+    pointer-events: none;
+  }
+
   .tds-form-input[type='radio'] {
     appearance: none;
     outline: none;

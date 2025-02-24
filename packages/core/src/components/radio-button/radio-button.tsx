@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element, Watch } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
@@ -31,6 +31,8 @@ export class TdsRadioButton {
   /** Decides if the Radio Button is disabled or not. */
   @Prop() disabled: boolean = false;
 
+  @Prop() readonly: boolean = false;
+
   /** Sends unique Radio Button identifier and status when it is checked.
    * If no ID is specified, a random one will be generated.
    * To use this listener, don't use the randomized ID, use a specific one of your choosing. */
@@ -52,11 +54,18 @@ export class TdsRadioButton {
     });
   };
 
+  @Watch('disabled')
+  @Watch('readonly')
+  watchReadonly() {
+    console.log('disabled: ', this.disabled);
+    console.log('readonly', this.readonly);
+  }
+
   render() {
     return (
       <div class="tds-radio-button">
         <input
-          class="tds-form-input"
+          class={`${this.readonly ? 'tds-form-input tds-form-input-readonly' : 'tds-form-input'}`}
           type="radio"
           name={this.name}
           id={this.radioId}
@@ -66,6 +75,7 @@ export class TdsRadioButton {
           required={this.required}
           disabled={this.disabled}
           onChange={() => this.handleChange()}
+          onClick={(event) => this.readonly && event.preventDefault()}
         />
         <label htmlFor={this.radioId}>
           <slot name="label"></slot>

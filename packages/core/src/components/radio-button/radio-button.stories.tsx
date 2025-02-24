@@ -38,14 +38,25 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    readonly: {
+      name: 'Read only',
+      desription: 'Puts the control in a read-only state.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   args: {
     label: 'Label text',
     disabled: false,
+    readonly: false,
   },
 };
 
-const Template = ({ label, disabled }) =>
+const Template = ({ label, disabled, readonly }) =>
   formatHtmlPreview(`
   <style>
   .demo-fieldset-reset { 
@@ -63,6 +74,7 @@ const Template = ({ label, disabled }) =>
     radio-id="option-1"
     required=false
     ${disabled ? 'disabled' : ''}
+    ${readonly ? 'readonly' : ''}
     checked="true" 
   >
     <div slot="label">
@@ -76,6 +88,7 @@ const Template = ({ label, disabled }) =>
     radio-id="option-2"
     required=false
     ${disabled ? 'disabled' : ''} 
+    ${readonly ? 'readonly' : ''}
   >
     <div slot="label">
       ${label} 2
