@@ -13,7 +13,7 @@
 | `disabled` | `disabled` | Decides if the Radio Button is disabled or not. | `boolean` | `false`              |
 | `name`     | `name`     | Name of Radio Button, used for reference.       | `string`  | `undefined`          |
 | `radioId`  | `radio-id` | Unique Radio Button identifier.                 | `string`  | `generateUniqueId()` |
-| `readonly` | `readonly` |                                                 | `boolean` | `false`              |
+| `readonly` | `readonly` | Decides if the Radio button is readonly or not  | `boolean` | `false`              |
 | `required` | `required` | Decides if the Radio Button is required or not. | `boolean` | `false`              |
 | `value`    | `value`    | Value of input.                                 | `string`  | `undefined`          |
 

@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Element, Watch } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
@@ -31,6 +31,7 @@ export class TdsRadioButton {
   /** Decides if the Radio Button is disabled or not. */
   @Prop() disabled: boolean = false;
 
+  /** Decides if the Radio button is readonly or not */
   @Prop() readonly: boolean = false;
 
   /** Sends unique Radio Button identifier and status when it is checked.
@@ -47,25 +48,26 @@ export class TdsRadioButton {
     value: string;
   }>;
 
-  handleChange = () => {
-    this.tdsChange.emit({
-      radioId: this.radioId,
-      value: this.value,
-    });
+  handleChange = (event: Event) => {
+    if (this.readonly) {
+      event.preventDefault();
+    } else {
+      this.tdsChange.emit({
+        radioId: this.radioId,
+        value: this.value,
+      });
+    }
   };
 
-  @Watch('disabled')
-  @Watch('readonly')
-  watchReadonly() {
-    console.log('disabled: ', this.disabled);
-    console.log('readonly', this.readonly);
-  }
-
   render() {
+    const isReadonly = this.disabled ? false : this.readonly;
+
+    console.log('readonly:', isReadonly);
+
     return (
       <div class="tds-radio-button">
         <input
-          class={`${this.readonly ? 'tds-form-input tds-form-input-readonly' : 'tds-form-input'}`}
+          class={`tds-form-input ${isReadonly && 'tds-form-input-readonly'}`}
           type="radio"
           name={this.name}
           id={this.radioId}
@@ -74,8 +76,7 @@ export class TdsRadioButton {
           aria-checked={this.checked}
           required={this.required}
           disabled={this.disabled}
-          onChange={() => this.handleChange()}
-          onClick={(event) => this.readonly && event.preventDefault()}
+          onChange={(e) => this.handleChange(e)}
         />
         <label htmlFor={this.radioId}>
           <slot name="label"></slot>
