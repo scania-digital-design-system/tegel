@@ -61,25 +61,26 @@ export class TdsAccordionItem {
         ${this.expanded ? 'expanded' : ''}
         `}
         >
-          <button
-            id={elementId2}
-            aria-controls={elementId1}
-            role="heading"
-            type="button"
-            aria-expanded={this.expanded}
-            aria-disabled={this.disabled}
-            class={`tds-accordion-header-icon-${this.expandIconPosition}`}
-            onClick={() => this.toggleAccordionItem()}
-            disabled={this.disabled}
-          >
-            <div class="tds-accordion-title">
-              {this.header}
-              <slot name="header"></slot>
-            </div>
-            <div class="tds-accordion-icon">
-              <tds-icon name="chevron_down" size="16px"></tds-icon>
-            </div>
-          </button>
+          <div role="heading">
+            <button
+              id={elementId2}
+              aria-controls={elementId1}
+              type="button"
+              aria-expanded={this.expanded}
+              aria-disabled={this.disabled}
+              class={`tds-accordion-header-icon-${this.expandIconPosition}`}
+              onClick={() => this.toggleAccordionItem()}
+              disabled={this.disabled}
+            >
+              <div class="tds-accordion-title">
+                {this.header}
+                <slot name="header"></slot>
+              </div>
+              <div class="tds-accordion-icon">
+                <tds-icon name="chevron_down" size="16px"></tds-icon>
+              </div>
+            </button>
+          </div>
           <div
             role="region"
             aria-live="polite"
