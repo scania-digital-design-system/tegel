@@ -11,7 +11,4 @@ test.describe.parallel('Accordion accessibility test', () => {
 
     expect(violations).toEqual([]);
   });
-  // tab sequence
-  // Esc should close
-  // Other keyboard interaction
 });
