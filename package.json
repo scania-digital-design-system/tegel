@@ -15,7 +15,12 @@
     "test:axe": "cd packages/core && npm run test:axe",
     "commit": "cz",
     "prepare": "husky install",
-    "reinstall": "./reinstall.sh"
+    "reinstall": "./reinstall.sh",
+    "pack:core": "cd packages/core && npm run build && npm pack",
+    "pack:react": "cd packages/react && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",
+    "pack:angular": "cd packages/angular && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",
+    "pack:angular-17": "cd packages/angular-17 && npm install $(ls -t ../core/*.tgz | head -1) && cd dist/components && npm pack",
+    "pack:all": "npm run pack-core && npm run pack-react && npm run pack-angular && npm run pack-angular-17"
   },
   "repository": {
     "type": "git",
