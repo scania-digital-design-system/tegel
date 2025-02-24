@@ -61,7 +61,7 @@ export class TdsAccordionItem {
         ${this.expanded ? 'expanded' : ''}
         `}
         >
-          <div role="heading">
+          <div role="heading" aria-level="3">
             <button
               id={elementId2}
               aria-controls={elementId1}
@@ -77,7 +77,7 @@ export class TdsAccordionItem {
                 <slot name="header"></slot>
               </div>
               <div class="tds-accordion-icon">
-                <tds-icon name="chevron_down" size="16px"></tds-icon>
+                <tds-icon svgTitle="Chevron Down" name="chevron_down" size="16px"></tds-icon>
               </div>
             </button>
           </div>
