@@ -1,5 +1,15 @@
 # tds-datetime
 
+The tds-datetime component currently has the following limitations:
+
+- Users can set an invalid date (e.g., 2025-02-31) using the arrow keys.
+- The arrow keys allow navigation beyond the allowed date range, including dates earlier than the min property. This can cause unintended behavior, such as the year overflowing and becoming the maximum possible value.
+
+These issues stem from the use of the native HTML <code style="font-size: inherit !important">&lt;input&gt;</code> element with type="date", which inherits these limitations.
+
+We are addressing these concerns in the upcoming tds-date-picker component, which will replace tds-datetime with improved validation and user experience.
+
+<br>
 
 
 <!-- Auto Generated Below -->
