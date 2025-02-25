@@ -228,7 +228,7 @@ tds-slider {
     position: relative;
     cursor: pointer;
 
-    // Add invisible clickable area
+    // invisible clickable area
     &::after {
       content: '';
       position: absolute;
@@ -237,6 +237,7 @@ tds-slider {
       top: -10px;
       bottom: -10px;
       cursor: pointer;
+      z-index: 0;
     }
 
     &:focus {
@@ -262,6 +263,10 @@ tds-slider {
       position: absolute;
       left: 0;
       top: -1px;
+    }
+
+    .tds-slider__thumb {
+      z-index: 1; // Ensure thumb stays above the clickable area
     }
   }
 
