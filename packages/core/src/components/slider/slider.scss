@@ -226,6 +226,19 @@ tds-slider {
     border-radius: 1px;
     background-color: var(--tds-slider-track-color);
     position: relative;
+    cursor: pointer;
+
+    // invisible clickable area
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      bottom: -10px;
+      cursor: pointer;
+      z-index: 0;
+    }
 
     &:focus {
       outline: 0;
@@ -250,6 +263,10 @@ tds-slider {
       position: absolute;
       left: 0;
       top: -1px;
+    }
+
+    .tds-slider__thumb {
+      z-index: 1; // Ensure thumb stays above the clickable area
     }
   }
 
@@ -298,6 +315,8 @@ tds-slider {
     }
 
     .tds-slider__track {
+      cursor: not-allowed;
+
       .tds-slider__track-fill {
         background-color: var(--tds-slider-disabled);
       }

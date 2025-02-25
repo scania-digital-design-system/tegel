@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.17.0",
+  "version": "1.24.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -360,9 +360,13 @@
     "dist/",
     "loader/",
     "hydrate/"
+    "scripts/copy-assets.mjs"
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "bin": {
+    "copy-assets": "./scripts/copy-assets.mjs"
   },
   "scripts": {
     "build": "stencil build && stencil build --docs",
@@ -370,23 +374,25 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
-    "update-snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
+    "test:axe": "npx playwright test --config 'playwright-axe.config.ts' --reporter=list",
+    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
+    "copy:assets": "node scripts/copy-assets.mjs",
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
-    "build-storybook": "build-storybook --quiet",
-    "build-stencil-storybook": "npm run build && npm run build-storybook",
-    "start-storybook": "start-storybook -p 6006",
-    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start-storybook'"
+    "build:storybook": "build-storybook --quiet",
+    "build-stencil:storybook": "npm run build && npm run build:storybook",
+    "start:storybook": "start-storybook -p 6006",
+    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start:storybook'"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
     "@stencil/core": "4.19.2",
-    "date-fns": "2.30.0",
-    "prettier": "2.7.1"
+    "date-fns": "2.30.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
     "@babel/core": "7.19.1",
     "@mdx-js/react": "3.0.1",
     "@playwright/test": "1.46.1",
@@ -408,6 +414,7 @@
     "babel-loader": "8.2.5",
     "concurrently": "8.0.1",
     "highlight.js": "11.8.0",
+    "prettier": "2.7.1",
     "serve": "14.2.1",
     "stencil-playwright": "0.3.0",
     "storybook-addon-designs": "6.3.1",

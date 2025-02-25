@@ -14,10 +14,6 @@
     color: var(--tds-textarea-placeholder);
   }
 
-  &:focus::placeholder {
-    color: var(--tds-textarea-placeholder-focus-color);
-  }
-
   &:disabled {
     background-color: var(--tds-textarea-disabled-background);
     color: var(--tds-textarea-disabled-color);
@@ -25,10 +21,6 @@
 
     &::placeholder {
       color: var(--tds-textarea-disabled-placeholder);
-    }
-
-    ~ .textfield-label-inside {
-      color: var(--tds-textarea-disabled-label);
     }
   }
 }
@@ -45,7 +37,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--tds-textarea-placeholder-focus-color);
+    color: var(--tds-textarea-placeholder);
   }
 }
 
@@ -167,6 +159,12 @@
       left: var(--tds-spacing-element-16);
     }
 
+    &.textarea-disabled {
+      .textarea-label {
+        color: var(--tds-textarea-disabled-label);
+      }
+    }
+
     .textarea-input {
       @include placeholder-label;
     }
@@ -269,6 +267,18 @@
 
   .textarea-label {
     color: var(--tds-textarea-disabled-label);
+  }
+
+  .textarea-helper {
+    color: var(--tds-textarea-helper-disabled);
+  }
+
+  .textarea-textcounter {
+    color: var(--tds-textarea-textcounter-disabled);
+
+    & .textfield-textcounter-divider {
+      color: var(--tds-textarea-textcounter-disabled);
+    }
   }
 }
 

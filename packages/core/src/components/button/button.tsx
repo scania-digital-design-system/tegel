@@ -35,6 +35,9 @@ export class TdsButton {
   /** Set the mode variant of the Button. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
+  /** Determines if and how the button should animate. */
+  @Prop() animation: 'none' | 'fade' = 'none';
+
   @State() onlyIcon: boolean = false;
 
   render() {
@@ -44,7 +47,10 @@ export class TdsButton {
       this.onlyIcon = true;
     }
     return (
-      <Host class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host
+        class={`${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''} `}
+        disabled={this.disabled}
+      >
         <button
           type={this.type}
           disabled={this.disabled}
@@ -61,6 +67,7 @@ export class TdsButton {
             'fullbleed': this.fullbleed,
             'icon': hasIconSlot,
             'only-icon': this.onlyIcon,
+            [`animation-${this.animation}`]: this.animation !== 'none',
           }}
         >
           {this.text}

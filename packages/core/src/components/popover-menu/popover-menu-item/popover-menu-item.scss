@@ -13,6 +13,7 @@
     width: 100%;
     display: flex;
     align-items: center;
+    transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-easy);
 
     &:hover {
       cursor: pointer;
@@ -20,11 +21,19 @@
     }
 
     &.disabled {
-      pointer-events: none;
+      cursor: not-allowed;
       color: var(--tds-popover-menu-divider-disabled-color);
+
+      &:hover {
+        background-color: inherit;
+      }
 
       ::slotted(tds-icon) {
         color: var(--tds-popover-menu-divider-disabled-icon-color);
+      }
+
+      ::slotted(*) {
+        pointer-events: none;
       }
     }
   }

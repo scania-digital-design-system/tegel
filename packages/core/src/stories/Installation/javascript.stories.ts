@@ -13,6 +13,7 @@ const meta: Meta = {
   },
 };
 
+hljs.registerAliases('undefined', { languageName: 'javascript' });
 hljs.highlightAll();
 
 export default meta;

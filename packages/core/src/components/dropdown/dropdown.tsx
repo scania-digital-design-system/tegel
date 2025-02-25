@@ -5,11 +5,11 @@ import {
   Element,
   State,
   Event,
-  EventEmitter,
   Listen,
   Method,
   Prop,
   Watch,
+  EventEmitter,
 } from '@stencil/core';
 import findNextFocusableElement from '../../utils/findNextFocusableElement';
 import findPreviousFocusableElement from '../../utils/findPreviousFocusableElement';
@@ -53,6 +53,8 @@ export class TdsDropdown {
   /** The size of the Dropdown. */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
+  @Prop() animation: 'none' | 'slide' = 'slide';
+
   /** Sets the Dropdown in an error state */
   @Prop() error: boolean = false;
 
@@ -90,6 +92,13 @@ export class TdsDropdown {
     this.dropdownList.scrollTop = 0;
     this.internalReset();
     this.handleChange();
+  }
+
+  /** Method that forces focus on the input element. */
+  @Method()
+  async focusElement() {
+    this.focusInputElement();
+    this.handleFocus({});
   }
 
   /** Method for setting the value of the Dropdown.
@@ -424,7 +433,7 @@ export class TdsDropdown {
     if (!labels) {
       return '';
     }
-    return this.filter ? labels?.join(', ') : labels?.toString();
+    return labels?.join(', ');
   };
 
   private setValueAttribute = () => {
@@ -472,7 +481,13 @@ export class TdsDropdown {
   };
 
   private handleFocus = (event) => {
+    this.open = true;
+    this.filterFocus = true;
+    if (this.multiselect) {
+      this.inputElement.value = '';
+    }
     this.tdsFocus.emit(event);
+    this.handleFilter({ target: { value: '' } });
   };
 
   private handleBlur = (event) => {
@@ -485,6 +500,27 @@ export class TdsDropdown {
       value: this.value?.map((value) => value).toString() ?? null,
     });
   };
+
+  private resetInput = () => {
+    const inputEl = this.host.querySelector('input');
+    if (inputEl) {
+      this.reset();
+    }
+  };
+
+  componentDidRender() {
+    const form = this.host.closest('form');
+    if (form) {
+      form.addEventListener('reset', this.resetInput);
+    }
+  }
+
+  disconnectedCallback() {
+    const form = this.host.closest('form');
+    if (form) {
+      form.removeEventListener('reset', this.resetInput);
+    }
+  }
 
   render() {
     appendHiddenInput(
@@ -636,11 +672,16 @@ export class TdsDropdown {
         {/* DROPDOWN LIST */}
         <div
           ref={(element) => (this.dropdownList = element)}
-          class={`dropdown-list
-            ${this.size}
-            ${this.open ? 'open' : 'closed'}
-            ${this.getOpenDirection()}
-            ${this.label && this.labelPosition === 'outside' ? 'label-outside' : ''}`}
+          class={{
+            'dropdown-list': true,
+            [this.size]: true,
+            [this.getOpenDirection()]: true,
+            'label-outside': this.label && this.labelPosition === 'outside',
+            'open': this.open,
+            'closed': !this.open,
+            [`animation-enter-${this.animation}`]: this.animation !== 'none' && this.open,
+            [`animation-exit-${this.animation}`]: this.animation !== 'none' && !this.open,
+          }}
         >
           <slot onSlotchange={() => this.handleSlotChange()}></slot>
           {this.filterResult === 0 && this.noResultText !== '' && (

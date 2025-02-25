@@ -10,6 +10,7 @@
 
 | Property        | Attribute        | Description                                                                                                                                                | Type                           | Default       |
 | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------- |
+| `animation`     | `animation`      |                                                                                                                                                            | `"none" \| "slide"`            | `'slide'`     |
 | `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `string`                       | `undefined`   |
 | `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                                                                                      | `boolean`                      | `false`       |
 | `error`         | `error`          | Sets the Dropdown in an error state                                                                                                                        | `boolean`                      | `false`       |
@@ -42,6 +43,16 @@
 ### `close() => Promise<void>`
 
 Method for closing the Dropdown.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+### `focusElement() => Promise<void>`
+
+Method that forces focus on the input element.
 
 #### Returns
 

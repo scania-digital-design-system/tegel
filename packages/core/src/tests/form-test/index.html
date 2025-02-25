@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body style="padding: 20px">
+    <section class="test-section">
+      <form id="testForm" onsubmit="handleFormSubmit(event)">
+        <div>
+          <tds-checkbox name="tds-checkbox" value="checkbox-1" checkbox-id="checkbox-1">
+            <div slot="label">Checkbox 1</div>
+          </tds-checkbox>
+
+          <tds-checkbox name="tds-checkbox" value="checkbox-2" checkbox-id="checkbox-2">
+            <div slot="label">Checkbox 2</div>
+          </tds-checkbox>
+
+          <tds-checkbox name="tds-checkbox" value="checkbox-3" checkbox-id="checkbox-3">
+            <div slot="label">Checkbox 3</div>
+          </tds-checkbox>
+        </div>
+
+        <div>
+          <tds-chip name="tds-chip-radio" type="radio" value="chip-radio-1">
+            <span slot="label">Chip radio 1</span>
+          </tds-chip>
+          <tds-chip name="tds-chip-radio" type="radio" value="chip-radio-2">
+            <span slot="label">Chip radio 2</span>
+          </tds-chip>
+          <tds-chip name="tds-chip-radio" type="radio" value="chip-radio-3">
+            <span slot="label">Chip radio 3</span>
+          </tds-chip>
+        </div>
+
+        <div>
+          <tds-chip name="tds-chip-checkbox" type="checkbox" value="chip-checkbox-1">
+            <span slot="label">Chip checkbox 1</span>
+          </tds-chip>
+          <tds-chip name="tds-chip-checkbox" type="checkbox" value="chip-checkbox-2">
+            <span slot="label">Chip checkbox 2</span>
+          </tds-chip>
+          <tds-chip name="tds-chip-checkbox" type="checkbox" value="chip-checkbox-3">
+            <span slot="label">Chip checkbox 3</span>
+          </tds-chip>
+        </div>
+
+        <div>
+          <tds-datetime name="tds-datetime" type="date" state="none"></tds-datetime>
+        </div>
+
+        <div>
+          <tds-dropdown name="tds-dropdown">
+            <tds-dropdown-option value="dropdown-1"> Dropdown 1 </tds-dropdown-option>
+            <tds-dropdown-option value="dropdown-2"> Dropdown 2 </tds-dropdown-option>
+            <tds-dropdown-option value="dropdown-3"> Dropdown 3 </tds-dropdown-option>
+          </tds-dropdown>
+        </div>
+
+        <div>
+          <tds-radio-button
+            name="tds-radio-button"
+            value="radio-button-1"
+            radio-id="radio-button-1"
+          >
+            <div slot="label">Radio button 1</div>
+          </tds-radio-button>
+
+          <tds-radio-button
+            name="tds-radio-button"
+            value="radio-button-2"
+            radio-id="radio-button-2"
+          >
+            <div slot="label">Radio button 2</div>
+          </tds-radio-button>
+
+          <tds-radio-button
+            name="tds-radio-button"
+            value="radio-button-3"
+            radio-id="radio-button-3"
+          >
+            <div slot="label">Radio button 3</div>
+          </tds-radio-button>
+        </div>
+
+        <div>
+          <tds-slider name="tds-slider" min="0" max="100" value="0" tooltip></tds-slider>
+        </div>
+
+        <div>
+          <tds-text-field name="tds-text-field" type="text"></tds-text-field>
+        </div>
+
+        <div>
+          <tds-textarea name="tds-textarea" rows="3"></tds-textarea>
+        </div>
+
+        <div>
+          <tds-toggle name="tds-toggle">
+            <div slot="label">Toggle</div>
+          </tds-toggle>
+        </div>
+
+        <div>
+          <tds-button type="submit" variant="primary" text="Submit" animation="none"></tds-button>
+          <tds-button type="reset" variant="secondary" text="Reset" animation="none"></tds-button>
+        </div>
+      </form>
+    </section>
+
+    <script>
+      function handleFormSubmit(event) {
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>

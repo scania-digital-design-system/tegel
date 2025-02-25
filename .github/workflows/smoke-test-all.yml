@@ -1,0 +1,199 @@
+name: Smoke test - Release
+
+env:
+  DEFAULT_NODE_VERSION: '22.11.0'
+
+on:
+  schedule:
+    # Runs every morning at 05:00
+    - cron: '0 5 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name'
+        required: true
+        default: 'develop'
+        type: string
+
+      nodeVersion:
+        description: 'Node version'
+        required: true
+        default: '22.11.0'
+        type: string
+
+jobs:
+  build-core:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/core
+    outputs:
+      version: ${{ steps.core-version.outputs.PACKAGE_VERSION }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Print Node.js version
+        run: node -v
+
+      - name: Core - Read Package.json Version
+        id: core-version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm install
+
+      - name: Core - Run build
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run build
+
+  build-angular:
+    needs: build-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Angular - Read package.json Version
+        id: version
+        working-directory: packages/angular
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular - Install
+        working-directory: packages/angular
+        run: npm install
+
+      - name: Angular - Install latest tegel package
+        working-directory: packages/angular
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
+
+      - name: Angular - Run build
+        run: npm run build:angular
+
+  build-angular-17:
+    needs: build-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/angular-17
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Angular-17 - Read package.json Version
+        id: version
+        working-directory: packages/angular-17/projects/components
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: Angular-17 workspace - Install
+        working-directory: packages/angular-17
+        run: npm install
+
+      - name: Angular-17 wrapper - Install
+        working-directory: packages/angular-17/projects/components
+        run: npm install
+
+      - name: Angular-17 workspace - Install latest tegel package
+        working-directory: packages/angular-17
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
+
+      - name: Angular-17 wrapper - Install latest tegel package
+        working-directory: packages/angular-17/projects/components
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
+
+      - name: Angular-17 - Run build
+        run: npm run build:angular-17
+
+  build-react:
+    needs: build-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/react
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.nodeVersion || env.DEFAULT_NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: React - Read package.json Version
+        id: version
+        working-directory: packages/react
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: React - Install
+        working-directory: packages/react
+        run: npm install
+
+      - name: React - Install latest tegel package
+        working-directory: packages/react
+        run: npm install @scania/tegel@${{ needs.build-core.outputs.version }}
+
+      - name: React - Build
+        run: npm run build:react
+
+  # Check that all jobs pass
+  check-results:
+    needs: [build-core, build-angular, build-angular-17, build-react]
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify in Teams on failure
+        uses: ./.github/workflows/smoke-test-failure-webhook.yml

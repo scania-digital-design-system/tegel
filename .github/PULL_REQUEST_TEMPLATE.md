@@ -3,7 +3,7 @@ _Describe what the pull-request is about_
 
 ## **Issue Linking:**  
 _Choose one of the following options_
-- **Jira:** Add ticket number after `CDEP-`: [CDEP-](https://tegel.atlassian.net/browse/CDEP-)    
+- **Jira:** Add ticket number after `CDEP-`: [CDEP-](https://jira.scania.com/browse/CDEP-)
 - **GitHub:** Include issue link  
 - **No issue:** Describe the problem being solved.  
 
@@ -14,12 +14,13 @@ _Provide detailed steps for testing, including any necessary setup._
 3. Run ...
 
 ## **Checklist before submission**
+- [ ] No accessibility violations in Storybook
 - [ ] I have added unit tests for my changes (if applicable)
 - [ ] All existing tests pass
 - [ ] I have updated the documentation (if applicable)
 - [ ] Not breaking production behavior
-- [ ] Behavior available in storybook with documented descriptions (if applicable)
-- [ ] `npm run build-all` without errors
+- [ ] Behavior available in Storybook with documented descriptions (if applicable)
+- [ ] `npm run build:all` without errors
 
 ## **Suggested test steps**
 - [ ] Browser testing (Chrome, Safari, Firefox) 

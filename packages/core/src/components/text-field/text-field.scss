@@ -11,11 +11,7 @@
   background-color: var(--tds-text-field-background);
 
   &::placeholder {
-    color: var(--tds-text-field-color);
-  }
-
-  &:focus::placeholder {
-    color: var(--tds-text-field-placeholder-focus-color);
+    color: var(--tds-text-field-placeholder);
   }
 
   &:disabled {
@@ -123,7 +119,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--tds-text-field-placeholder-focus-color);
+    color: var(--tds-text-field-placeholder);
   }
 }
 
@@ -281,6 +277,10 @@
       color: var(--tds-text-field-label-disabled);
     }
   }
+
+  .text-field-helper {
+    color: var(--tds-text-field-helper-disabled);
+  }
 }
 
 //Read only state
@@ -358,15 +358,27 @@
   flex-wrap: nowrap;
 }
 
+.text-field-textcounter-disabled {
+  color: var(--tds-text-field-textcounter-disabled);
+}
+
 .text-field-textcounter {
   font: var(--tds-detail-05);
   letter-spacing: var(--tds-detail-05-ls);
   color: var(--tds-text-field-textcounter);
   float: right;
 
-  & .text-field-textcounter-divider {
+  &.text-field-textcounter-disabled {
+    color: var(--tds-text-field-textcounter-disabled);
+  }
+
+  &.text-field-textcounter-divider {
     // @include type-style('detail-05');
     color: var(--tds-text-field-textcounter-divider);
+  }
+
+  &.text-field-textcounter-divider-disabled {
+    color: var(--tds-text-field-textcounter-divider-disabled);
   }
 }
 

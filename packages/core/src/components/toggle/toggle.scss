@@ -22,13 +22,14 @@
     position: relative;
     display: inline-block;
     vertical-align: middle;
+    cursor: pointer;
 
     &::after,
     &::before {
       content: '';
       position: absolute;
       box-sizing: border-box;
-      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+      transition: all var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
     }
 
     &::before {
@@ -50,7 +51,8 @@
       top: 4px;
     }
 
-    &:focus {
+    &:focus,
+    &:hover {
       outline: none;
 
       &::before {
@@ -138,6 +140,7 @@
     letter-spacing: var(--tds-detail-01-ls);
     color: var(--tds-toggle-label-color);
     padding-left: 8px;
+    cursor: pointer;
 
     &.disabled {
       color: var(--tds-toggle-label-color-disabled);

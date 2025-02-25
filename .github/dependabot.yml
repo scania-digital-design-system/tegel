@@ -1,0 +1,10 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    pull_request:
+      labels:
+        - 'dependencies'
+      pull_request_template: 'DEPENDABOT_PULL_REQUEST_TEMPLATE.md'

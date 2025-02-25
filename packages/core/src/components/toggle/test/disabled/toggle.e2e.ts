@@ -1,23 +1,38 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/toggle/test/disabled/index.html';
+const componentName = 'tds-toggle';
 
-test.describe.parallel('tds-toggle', () => {
-  test('Should have disabled attribute', async ({ page }) => {
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, componentName), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('Should have disabled attribute', async ({ page }) => {
+      const toggle = page.locator('tds-toggle input');
+
+      const disabled = await toggle.evaluate((element: HTMLInputElement) => element.disabled);
+      expect(disabled).toBe(true);
+
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    const toggle = page.locator('tds-toggle input');
-
-    const disabled = await toggle.evaluate((element: HTMLInputElement) => element.disabled);
-    expect(disabled).toBe(true);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('Hover over toggle -> should have inactive cursor', async ({ page }) => {
-    await page.goto(componentTestPath);
     const label = page.locator('tds-toggle label');
     const headline = page.locator('tds-toggle .toggle-headline');
     const input = page.locator('tds-toggle input');

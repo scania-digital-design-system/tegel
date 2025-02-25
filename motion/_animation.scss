@@ -1,0 +1,480 @@
+/* =======================================================================
+   Motion keyframes
+ ========================================================================== */
+
+/* ### Fade ### */
+@keyframes tds-fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes tds-fade-out {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Scale */
+@keyframes tds-zoom-in {
+  0% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes tds-zoom-out {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.9);
+  }
+}
+
+/* Slide */
+@keyframes tds-slide-in-top {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes tds-slide-in-bottom {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes tds-slide-in-left {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tds-slide-in-right {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tds-slide-out-top {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes tds-slide-out-bottom {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes tds-slide-out-bottom-hidden {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes tds-slide-out-left {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes tds-slide-out-right {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Slide short */
+@keyframes tds-slide-top-short {
+  0% {
+    transform: translateY(-16px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes tds-slide-bottom-short {
+  0% {
+    transform: translateY(16px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes tds-slide-left-short {
+  0% {
+    transform: translateX(-16px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tds-slide-right-short {
+  0% {
+    transform: translateX(16px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tds-slide-out-top-short {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes tds-slide-out-bottom-short {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(16px);
+  }
+}
+
+@keyframes tds-slide-out-left-short {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes tds-slide-out-right-short {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(16px);
+  }
+}
+
+/* Rotate */
+@keyframes tds-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes tds-rotate-back {
+  0% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Shake */
+@keyframes tds-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10% {
+    transform: translateX(-9px);
+  }
+
+  20% {
+    transform: translateX(8px);
+  }
+
+  30% {
+    transform: translateX(-7px);
+  }
+
+  40% {
+    transform: translateX(6px);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+
+  60% {
+    transform: translateX(4px);
+  }
+
+  70% {
+    transform: translateX(-3px);
+  }
+
+  80% {
+    transform: translateX(2px);
+  }
+
+  90% {
+    transform: translateX(-1px);
+  }
+}
+
+/* ### Blink ### */
+@keyframes tds-blink {
+  0%,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* ### Pulse ### */
+@keyframes tds-pulse {
+  50% {
+    scale: 0.9;
+  }
+}
+
+/*
+* heart pulse animation
+*/
+@keyframes tds-pulse-2 {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(0.9);
+  }
+
+  35% {
+    transform: scale(1);
+  }
+
+  45% {
+    transform: scale(0.9);
+  }
+
+  55% {
+    transform: scale(1);
+  }
+}
+
+/* ### Stroke ### */
+@keyframes tds-stroke {
+  0% {
+    stroke-dashoffset: 2%;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ### Collapse ### */
+
+@keyframes tds-collapse-in {
+  from {
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+
+  to {
+    transform-origin: top;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tds-collapse-in-hidden {
+  from {
+    transform-origin: top;
+    transform: scaleY(0);
+  }
+
+  to {
+    transform-origin: top;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tds-collapse-out {
+  0% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+
+  100% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+}
+
+@keyframes tds-collapse-width-in {
+  0% {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes tds-collapse-width-out {
+  0% {
+    transform: scaleX(1);
+  }
+
+  to {
+    transform: scaleX(0);
+  }
+}
+
+@supports not (
+  ((height: 1lh) and (animation-timeline: none)) or ((height: 1lh) and (margin-trim: none))
+) {
+  * {
+    --collapse-size: unset;
+    --collapse-width-size: unset;
+  }
+}
+
+@property --collapse-size {
+  syntax: '<length-percentage>';
+  inherits: false;
+}
+
+@property --collapse-width-size {
+  syntax: '<length-percentage>';
+  inherits: false;
+}
+
+@keyframes collapse-in {
+  0% {
+    height: var(--collapse-size, 0);
+    overflow: hidden;
+  }
+
+  to {
+    height: var(--ui-transition-height);
+    overflow: hidden;
+  }
+}
+
+@keyframes collapse-out {
+  0% {
+    height: var(--ui-transition-height);
+    overflow: hidden;
+  }
+
+  to {
+    height: var(--collapse-size, 0);
+    overflow: hidden;
+  }
+}
+
+@keyframes collapse-width-in {
+  0% {
+    width: var(--collapse-width-size, 0);
+    overflow: hidden;
+  }
+
+  to {
+    width: var(--ui-transition-width);
+    overflow: hidden;
+  }
+}
+
+@keyframes collapse-width-out {
+  0% {
+    width: var(--ui-transition-width);
+    overflow: hidden;
+  }
+
+  to {
+    width: var(--collapse-width-size, 0);
+    overflow: hidden;
+  }
+}
+
+@keyframes animate-svg-stroke-1 {
+  0% {
+    stroke-dasharray: 2230px;
+    stroke-dashoffset: 2230px;
+  }
+
+  1% {
+    stroke-dashoffset: 2230px;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 2230px;
+  }
+}

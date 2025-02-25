@@ -1,4 +1,14 @@
-import { Component, h, Prop, Listen, EventEmitter, Event, Method, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Prop,
+  Listen,
+  EventEmitter,
+  Event,
+  Method,
+  Watch,
+  Element,
+} from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
@@ -7,6 +17,8 @@ import generateUniqueId from '../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsSlider {
+  @Element() host: HTMLElement;
+
   /** Text for label */
   @Prop() label: string = '';
 
@@ -83,6 +95,12 @@ export class TdsSlider {
 
   private resizeObserverAdded: boolean = false;
 
+  private initialValue: string;
+
+  private resetEventListenerAdded: boolean = false;
+
+  private formElement: HTMLFormElement;
+
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
     eventName: 'tdsChange',
@@ -135,6 +153,14 @@ export class TdsSlider {
   @Listen('touchend', { target: 'window' })
   handleRelease(event: MouseEvent | TouchEvent) {
     if (!this.thumbGrabbed) {
+      const clickedOnTrack =
+        event.target === this.trackElement || event.target === this.trackFillElement;
+
+      if (clickedOnTrack) {
+        this.thumbCore(event);
+        this.trackElement.focus();
+      }
+
       return;
     }
 
@@ -148,10 +174,6 @@ export class TdsSlider {
   @Listen('mousemove', { target: 'window' })
   @Listen('touchmove', { target: 'window' })
   handleMove(event: MouseEvent | TouchEvent) {
-    if (event.type === 'touchmove') {
-      event.preventDefault();
-    }
-
     if (!this.thumbGrabbed) {
       return;
     }
@@ -190,7 +212,7 @@ export class TdsSlider {
     const numTicks = parseInt(this.ticks);
     const trackRect = this.trackElement.getBoundingClientRect();
     let localLeft = 0;
-    if (event.type === 'mousemove') {
+    if (event.type === 'mousemove' || event.type === 'mouseup') {
       localLeft = event.clientX - trackRect.left;
     } else if (event.type === 'touchmove') {
       localLeft = event.touches[0].clientX - trackRect.left;
@@ -218,18 +240,21 @@ export class TdsSlider {
 
   private updateValue(event) {
     const trackWidth = this.getTrackWidth();
-    const numTicks = parseInt(this.ticks);
+    const min = parseFloat(this.min);
+    const max = parseFloat(this.max);
 
-    /* if snapping (supposedValueSlot > 0) is enabled, make sure we display the supposed value (instead of maybe getting a -1/+1 depending on rounding)  */
-    if (this.useSnapping && numTicks) {
-      const supposedValue = this.tickValues[this.supposedValueSlot];
-      this.value = `${supposedValue}`;
-      this.calculateThumbLeftFromValue(supposedValue);
+    // If snapping is enabled and a valid supposedValueSlot is available,
+    // snap the value to the closest tick. Use the snapped value to update
+    // the slider's thumb position and internal value.
+    if (this.useSnapping && this.supposedValueSlot >= 0) {
+      const snappedValue = this.tickValues[this.supposedValueSlot];
+      this.value = snappedValue.toString();
+      this.calculateThumbLeftFromValue(snappedValue);
     } else {
       const percentage = this.thumbLeft / trackWidth;
-      this.value = `${Math.trunc(
-        parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min)),
-      )}`;
+      const calculatedValue = min + percentage * (max - min);
+
+      this.value = Math.round(calculatedValue).toString();
     }
     this.updateTrack();
 
@@ -375,6 +400,11 @@ export class TdsSlider {
     this.controlsStep(parseInt(this.step), event);
   }
 
+  private resetToInitialValue = () => {
+    this.forceValueUpdate(this.initialValue);
+    this.reset();
+  };
+
   componentWillLoad() {
     const numTicks = parseInt(this.ticks);
 
@@ -427,6 +457,30 @@ export class TdsSlider {
 
     this.calculateThumbLeftFromValue(this.value);
     this.updateTrack();
+
+    // Only set the initial value once:
+    if (!this.initialValue) {
+      this.initialValue = this.value;
+    }
+  }
+
+  componentDidRender() {
+    // Only add the event listener once:
+    if (!this.resetEventListenerAdded) {
+      this.formElement = this.host.closest('form');
+
+      if (this.formElement) {
+        this.formElement.addEventListener('reset', this.resetToInitialValue);
+        this.resetEventListenerAdded = true;
+      }
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.resetEventListenerAdded && this.formElement) {
+      this.formElement.removeEventListener('reset', this.resetToInitialValue);
+      this.resetEventListenerAdded = false;
+    }
   }
 
   render() {

@@ -1,18 +1,42 @@
 import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
+import {
+  testConfigurations,
+  getTestDescribeText,
+  setupPage,
+} from '../../../../utils/testConfiguration';
 
 const componentTestPath = 'src/components/breadcrumbs/test/default/index.html';
+const componentName = 'tds-breadcrumbs';
+const testDescription = 'tds-breadcrumbs-default';
 
-test.describe.parallel('tds-breadcrumbs-default', () => {
-  test('renders default breadcrumbs correctly', async ({ page }) => {
+testConfigurations.basic.forEach((config) => {
+  test.describe.parallel(getTestDescribeText(config, testDescription), () => {
+    test.beforeEach(async ({ page }) => {
+      await setupPage(page, config, componentTestPath, componentName);
+    });
+
+    test('renders default breadcrumbs correctly', async ({ page }) => {
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('page 3 item should be able to become focused', async ({ page }) => {
+      const pageThree = page.getByText(/Page 3/);
+      await pageThree.focus();
+
+      /* Check diff on screenshot */
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+  });
+});
+
+test.describe.parallel(componentName, () => {
+  test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 
   test('items Page 1, Page 2, Page 3 exist on the page', async ({ page }) => {
-    await page.goto(componentTestPath);
     const navigation = page.getByRole('navigation');
     await expect(navigation).toHaveCount(1);
     const listItems = page.getByRole('listitem');
@@ -29,15 +53,5 @@ test.describe.parallel('tds-breadcrumbs-default', () => {
 
     await expect(pageThree).toHaveCount(1);
     await expect(pageThree).toBeVisible();
-  });
-
-  test('page 3 item should be able to become focused', async ({ page }) => {
-    await page.goto(componentTestPath);
-
-    const pageThree = page.getByText(/Page 3/);
-    await pageThree.focus();
-
-    /* Check diff on screenshot */
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
 });

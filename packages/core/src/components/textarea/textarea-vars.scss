@@ -3,9 +3,7 @@
   --tds-textarea-background-primary: var(--tds-grey-50);
   --tds-textarea-background-secondary: var(--tds-white);
   --tds-textarea-background: var(--tds-textarea-background-primary);
-  --tds-textarea-color: var(--tds-grey-868);
-  --tds-textarea-placeholder: var(--tds-grey-500);
-  --tds-textarea-placeholder-focus-color: var(--tds-grey-500);
+  --tds-textarea-color: var(--tds-grey-958);
 
   // Disabled
   --tds-textarea-disabled-color: var(--tds-grey-400);
@@ -14,13 +12,15 @@
   --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   --tds-textarea-disabled-placeholder: var(--tds-grey-400);
   --tds-textarea-disabled-label: var(--tds-grey-400);
+  --tds-textarea-helper-disabled: var(--tds-grey-400);
+  --tds-textarea-textcounter-disabled: var(--tds-grey-400);
 
   // Label
   --tds-textarea-label-color: var(--tds-grey-958);
-  --tds-textarea-label-inside-color: var(--tds-grey-700);
+  --tds-textarea-label-inside-color: var(--tds-grey-958);
 
   // Placeholder
-  --tds-textarea-placeholder-focus-color: var(--tds-grey-500);
+  --tds-textarea-placeholder: var(--tds-grey-500);
 
   // Helper
   --tds-textarea-helper: var(--tds-grey-700);
@@ -62,9 +62,7 @@
   --tds-textarea-background-primary: var(--tds-grey-900);
   --tds-textarea-background-secondary: var(--tds-grey-868);
   --tds-textarea-background: var(--tds-textarea-background-primary);
-  --tds-textarea-color: var(--tds-grey-200);
-  --tds-textarea-placeholder: var(--tds-grey-600);
-  --tds-textarea-placeholder-focus-color: var(--tds-grey-700);
+  --tds-textarea-color: var(--tds-grey-50);
 
   // Disabled
   --tds-textarea-disabled-color: var(--tds-grey-800);
@@ -72,14 +70,16 @@
   --tds-textarea-disabled-background-secondary: var(--tds-grey-868);
   --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
   --tds-textarea-disabled-placeholder: var(--tds-grey-800);
-  --tds-textarea-disabled-label: var(--tds-grey-700);
+  --tds-textarea-disabled-label: var(--tds-grey-800);
+  --tds-textarea-helper-disabled: var(--tds-grey-800);
+  --tds-textarea-textcounter-disabled: var(--tds-grey-800);
 
   // Label
-  --tds-textarea-label-color: var(--tds-grey-100);
-  --tds-textarea-label-inside-color: var(--tds-grey-400);
+  --tds-textarea-label-color: var(--tds-grey-50);
+  --tds-textarea-label-inside-color: var(--tds-grey-50);
 
   // Placeholder
-  --tds-textarea-placeholder-focus-color: var(--tds-grey-700);
+  --tds-textarea-placeholder: var(--tds-grey-600);
 
   // Helper
   --tds-textarea-helper: var(--tds-grey-600);

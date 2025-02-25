@@ -1,5 +1,11 @@
 # tds-block
 
+### Nested blocks
+
+The `tds-block` component can be nested to create more complex layouts. When nesting blocks, please refrain from using the `mode-variant` attribute on the nested blocks. The nested blocks will automatically adjust their background color. It is recommended to use the `tds-mode-variant-primary` or `tds-mode-variant-secondary` as class on the parent wrapper or app level to achieve correct color scheme.
+
+
+
 
 
 <!-- Auto Generated Below -->

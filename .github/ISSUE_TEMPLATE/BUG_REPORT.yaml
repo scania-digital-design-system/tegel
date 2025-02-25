@@ -8,22 +8,30 @@ body:
       value: '## Welcome!'
   - type: markdown
     attributes:
-      value: 'Found a bug in the Scania Digital Design System? Fill in this template and we will look into it! Before you report an issue, please read the [FAQ](https://tegel.scania.com/support/faqs) information.'
+      value: 'Found a bug in the Scania Digital Design System? Fill in this template
+        and we will look into it! Before you report an issue, please read the
+        [FAQ](https://tegel.scania.com/support/faqs) information.'
   - type: checkboxes
     attributes:
       label: Requirements before reporting
       options:
-        - label: 'No duplicated [issue](https://github.com/scania-digital-design-system/tegel/issues) reported.'
+        - label: 'No duplicated
+            [issue](https://github.com/scania-digital-design-system/tegel/issues)
+            reported.'
           required: true
-        - label: 'I have checked the latest version if the bug exist there. See all available packages at [npmJS.com](https://www.npmjs.com/package/@scania/tegel)'
+        - label: 'I have checked the latest version if the bug exist there. See all
+            available packages at
+            [npmJS.com](https://www.npmjs.com/package/@scania/tegel)'
           required: true
         - label: 'I have followed the installation guide.'
           required: true
   - type: input
     attributes:
       label: Package versions
-      description: 'What version do you use? You can find it in package.json, see all available versions at [npmJS.com](https://www.npmjs.com/package/@scania/tegel).'
-      placeholder: '@scania/tegel: 0.0.7'
+      description: 'What version do you use? You can find it in package.json, see all
+        available versions at
+        [npmJS.com](https://www.npmjs.com/package/@scania/tegel).'
+      placeholder: '@scania/tegel: 1.19.0'
     validations:
       required: true
   - type: dropdown
@@ -48,6 +56,8 @@ body:
         - 'Vue'
         - '.NET'
         - 'Plain HTML'
+        - 'Next.js'
+        - 'Svelte'
         - 'Other'
     validations:
       required: true
@@ -55,7 +65,15 @@ body:
     attributes:
       label: Version
       description: 'If you use a framework, what version of your framework do you use?'
-      placeholder: 'Angular 15'
+      placeholder: 'Angular 18'
+  - type: textarea
+    attributes:
+      label: 'Code sandbox'
+      description: 'Please create a minimal, reproducible example in an online sandbox
+        and paste a link to it here. We strongly recommend the usage of
+        [Stackblitz](https://stackblitz.com/) as it offers ready-made templates
+        for different frameworks and works great with Tegel. Providing code in a
+        sandbox helps us understand and troubleshoot the issue faster.'
   - type: textarea
     attributes:
       label: Reproduction steps
@@ -69,12 +87,7 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: 'Code example'
-      description: 'Add a simple code example how to replicate the error.'
-      value: '<div>....'
-  - type: textarea
-    attributes:
-      label: Screenshots
+      label: Screenshots / Screen recordings
       description: 'Add one or more screenshots.'
       value: 'Add/Copy screenshot here'
   - type: textarea
@@ -96,4 +109,5 @@ body:
       placeholder: example@example.com
   - type: markdown
     attributes:
-      value: 'Please visit our [Teams channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)'
+      value: 'Please visit our [Teams
+        channel](https://teams.microsoft.com/l/channel/19%3a5e33f67fe502441f914fbcdc6e2548f5%40thread.skype/Development%2520support?groupId=79f9bfeb-73e2-424d-9477-b236191ece5e&tenantId=3bc062e4-ac9d-4c17-b4dd-3aad637ff1ac)'

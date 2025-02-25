@@ -5,7 +5,7 @@
   --tds-text-field-background: var(--tds-text-field-background-primary);
   --tds-text-field-color: var(--tds-grey-600);
   --tds-text-field-placeholder: var(--tds-grey-500);
-  --tds-text-field-data-color: var(--tds-grey-868);
+  --tds-text-field-data-color: var(--tds-grey-958);
 
   //Disabled
   --tds-text-field-background-disabled-primary: var(--tds-grey-50);
@@ -15,17 +15,17 @@
   --tds-text-field-placeholder-disabled: var(--tds-grey-400);
   --tds-text-field-label-disabled: var(--tds-grey-400);
   --tds-text-field-ps-color-disabled: var(--tds-grey-400);
+  --tds-text-field-helper-disabled: var(--tds-grey-400);
 
   //Label
-  --tds-text-field-label-color: var(--tds-grey-700);
-  --tds-text-field-label-inside-color: var(--tds-grey-700);
-  --tds-text-field-placeholder-focus-color: var(--tds-grey-500);
+  --tds-text-field-label-color: var(--tds-grey-958);
+  --tds-text-field-label-inside-color: var(--tds-grey-958);
 
   //Highlight bar
   --tds-text-field-bar: var(--tds-blue-400);
 
   //helper
-  --tds-text-field-helper: var(--tds-grey-600);
+  --tds-text-field-helper: var(--tds-grey-700);
 
   //error
   --tds-text-field-border-bottom-error: var(--tds-negative);
@@ -35,6 +35,7 @@
 
   //Textcounter
   --tds-text-field-textcounter: var(--tds-grey-700);
+  --tds-text-field-textcounter-disabled: var(--tds-grey-400);
   --tds-text-field-textcounter-divider: var(--tds-grey-500);
 
   //Prefix and Suffix
@@ -70,7 +71,7 @@
   --tds-text-field-background-secondary: var(--tds-grey-868);
   --tds-text-field-color: var(--tds-grey-600);
   --tds-text-field-placeholder: var(--tds-grey-600);
-  --tds-text-field-data-color: var(--tds-grey-100);
+  --tds-text-field-data-color: var(--tds-grey-50);
 
   //Disabled
   --tds-text-field-ps-color-disabled: var(--tds-grey-700);
@@ -79,12 +80,12 @@
   --tds-text-field-background-disabled-secondary: var(--tds-grey-868);
   --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
   --tds-text-field-placeholder-disabled: var(--tds-grey-800);
-  --tds-text-field-label-disabled: var(--tds-grey-700);
+  --tds-text-field-label-disabled: var(--tds-grey-800);
+  --tds-text-field-helper-disabled: var(--tds-grey-800);
 
   // Label
-  --tds-text-field-label-color: var(--tds-grey-100);
-  --tds-text-field-label-inside-color: var(--tds-grey-700);
-  --tds-text-field-placeholder-focus-color: var(--tds-grey-700);
+  --tds-text-field-label-color: var(--tds-grey-50);
+  --tds-text-field-label-inside-color: var(--tds-grey-50);
 
   //Highlight bar
   --tds-text-field-bar: var(--tds-blue-400);
@@ -99,7 +100,10 @@
 
   //Textcounter
   --tds-text-field-textcounter: var(--tds-grey-600);
-  --tds-text-field-textcounter-divider: var(--tds-grey-700);
+
+  //when disabled
+  --tds-text-field-textcounter-disabled: var(--tds-grey-800);
+  --tds-text-field-textcounter-divider: var(--tds-grey-800);
 
   //Prefix and Suffix
   --tds-text-field-ps-color: var(--tds-grey-100);
