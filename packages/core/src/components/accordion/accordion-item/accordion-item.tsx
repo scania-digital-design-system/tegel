@@ -51,8 +51,8 @@ export class TdsAccordionItem {
   }>;
 
   render() {
-    const elementId1 = generateUniqueId();
-    const elementId2 = generateUniqueId();
+    const primaryElementId = generateUniqueId();
+    const secondaryElementId = generateUniqueId();
     return (
       <Host>
         <div
@@ -63,8 +63,8 @@ export class TdsAccordionItem {
         >
           <div role="heading" aria-level="6">
             <button
-              id={elementId2}
-              aria-controls={elementId1}
+              id={secondaryElementId}
+              aria-controls={primaryElementId}
               type="button"
               aria-expanded={this.expanded ? 'true' : 'false'}
               aria-disabled={this.disabled}
@@ -84,8 +84,8 @@ export class TdsAccordionItem {
           <div
             role="region"
             aria-live="polite"
-            aria-labelledby={elementId2}
-            id={elementId1}
+            aria-labelledby={secondaryElementId}
+            id={primaryElementId}
             class={`tds-accordion-panel
             ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
             `}
