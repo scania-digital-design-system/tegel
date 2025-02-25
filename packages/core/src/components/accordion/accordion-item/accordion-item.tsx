@@ -61,7 +61,7 @@ export class TdsAccordionItem {
         ${this.expanded ? 'expanded' : ''}
         `}
         >
-          <div role="heading" aria-level="3">
+          <div role="heading" aria-level="6">
             <button
               id={elementId2}
               aria-controls={elementId1}
