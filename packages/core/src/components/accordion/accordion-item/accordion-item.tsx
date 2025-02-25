@@ -66,7 +66,7 @@ export class TdsAccordionItem {
               id={elementId2}
               aria-controls={elementId1}
               type="button"
-              aria-expanded={this.expanded}
+              aria-expanded={this.expanded ? 'true' : 'false'}
               aria-disabled={this.disabled}
               class={`tds-accordion-header-icon-${this.expandIconPosition}`}
               onClick={() => this.toggleAccordionItem()}
