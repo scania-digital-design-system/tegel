@@ -28,7 +28,7 @@ export class TdsAccordionItem {
   @Prop() paddingReset: boolean = false;
 
   /** Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6. */
-  @Prop() ariaLevel: '1' | '2' | '3' | '4' | '5' | '6' = '6';
+  @Prop() ariaLevelValue: '1' | '2' | '3' | '4' | '5' | '6' = '6';
 
   /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
@@ -64,7 +64,7 @@ export class TdsAccordionItem {
         ${this.expanded ? 'expanded' : ''}
         `}
         >
-          <div role="heading" aria-level={this.ariaLevel}>
+          <div role="heading" aria-level={this.ariaLevelValue}>
             <button
               id={secondaryElementId}
               aria-controls={primaryElementId}
