@@ -120,16 +120,32 @@ export class TdsTableBodyRow {
   }
 
   private updateTableProperties() {
-    this.tableEl = this.host.closest('tds-table');
-    if (!this.tableEl) {
-      console.warn('TdsTableBodyRow: No parent table found');
-      return;
-    }
-    this.tableId = this.tableEl.tableId;
-    // Update all relevant properties from the new parent table
+    // Clear previous state
+    this.tableEl = null;
+    this.tableId = '';
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = false;
     });
+
+    // Find new parent table and update properties
+    requestAnimationFrame(() => {
+      this.tableEl = this.host.closest('tds-table');
+      if (!this.tableEl) {
+        console.warn('TdsTableBodyRow: No parent table found');
+        return;
+      }
+      this.tableId = this.tableEl.tableId;
+      relevantTableProps.forEach((tablePropName) => {
+        this[tablePropName] = this.tableEl[tablePropName];
+      });
+    });
+  }
+
+  @Listen('DOMNodeInserted', { target: 'window' })
+  handleDOMChange() {
+    if (this.host.isConnected) {
+      this.updateTableProperties();
+    }
   }
 
   connectedCallback() {
@@ -140,7 +156,6 @@ export class TdsTableBodyRow {
     this.updateTableProperties();
   }
 
-  // Add disconnectedCallback to clean up state when removed
   disconnectedCallback() {
     this.tableEl = null;
     this.tableId = '';
