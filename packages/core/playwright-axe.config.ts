@@ -8,16 +8,15 @@ const config: PlaywrightTestConfig = {
   use: {
     baseURL: 'http://localhost:3333',
     browserName: 'chromium',
-    screenshot: 'only-on-failure',
   },
-  outputDir: './accessibility-test-results/output',
+  outputDir: './test-results/output',
   webServer: {
     command: 'serve -p 3333',
     port: 3333,
     reuseExistingServer: !process.env.CI,
   },
   workers: 8,
-  reporter: [['json', { outputFile: 'results.json' }]],
+  reporter: [['list'], ['json', { outputFile: 'accessibility-results.json' }]],
 };
 
 export default config;
