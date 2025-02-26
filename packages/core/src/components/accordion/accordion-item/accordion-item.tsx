@@ -27,10 +27,12 @@ export class TdsAccordionItem {
   /** When true, 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
 
+  /** Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6. */
+  @Prop() ariaLevel: '1' | '2' | '3' | '4' | '5' | '6' = '6';
+
   /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
-    // This is negated in order to emit the value the Accordion Item will have after it has expanded/redacted.
     const event = this.tdsToggle.emit({
       expanded: !this.expanded,
     });
@@ -53,6 +55,7 @@ export class TdsAccordionItem {
   render() {
     const primaryElementId = generateUniqueId();
     const secondaryElementId = generateUniqueId();
+
     return (
       <Host>
         <div
@@ -61,7 +64,7 @@ export class TdsAccordionItem {
         ${this.expanded ? 'expanded' : ''}
         `}
         >
-          <div role="heading" aria-level="6">
+          <div role="heading" aria-level={this.ariaLevel}>
             <button
               id={secondaryElementId}
               aria-controls={primaryElementId}
