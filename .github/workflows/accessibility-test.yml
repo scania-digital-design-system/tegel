@@ -27,10 +27,10 @@ jobs:
 
       - name: Run Accessibility Tests
         working-directory: packages/core
-        run: npx playwright test --config "playwright-axe.config.ts" --reporter=list
+        run: npx playwright test --config "playwright-axe.config.ts"
 
       - uses: daun/playwright-report-summary@v3
         if: always()
         with:
-          report-file: ./packages/core/accessibility-tests-results.json
-
+          report-file: ./packages/core/accessibility-results.json
+          comment-title: 'Accessibility Test results'
