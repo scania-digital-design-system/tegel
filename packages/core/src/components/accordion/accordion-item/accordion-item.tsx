@@ -1,4 +1,5 @@
 import { Component, Event, EventEmitter, h, Host, Method, Prop } from '@stencil/core';
+import generateUniqueId from '../../../utils/generateUniqueId';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For content of an expanded accordion.
@@ -26,10 +27,12 @@ export class TdsAccordionItem {
   /** When true, 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
 
+  /** Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6. */
+  @Prop() ariaLevel: '1' | '2' | '3' | '4' | '5' | '6' = '6';
+
   /** Method for toggling the expanded state of the Accordion Item. */
   @Method()
   async toggleAccordionItem() {
-    // This is negated in order to emit the value the Accordion Item will have after it has expanded/redacted.
     const event = this.tdsToggle.emit({
       expanded: !this.expanded,
     });
@@ -50,6 +53,9 @@ export class TdsAccordionItem {
   }>;
 
   render() {
+    const primaryElementId = generateUniqueId();
+    const secondaryElementId = generateUniqueId();
+
     return (
       <Host>
         <div
@@ -58,22 +64,31 @@ export class TdsAccordionItem {
         ${this.expanded ? 'expanded' : ''}
         `}
         >
-          <button
-            type="button"
-            aria-expanded={this.expanded}
-            class={`tds-accordion-header-icon-${this.expandIconPosition}`}
-            onClick={() => this.toggleAccordionItem()}
-            disabled={this.disabled}
-          >
-            <div class="tds-accordion-title">
-              {this.header}
-              <slot name="header"></slot>
-            </div>
-            <div class="tds-accordion-icon">
-              <tds-icon name="chevron_down" size="16px"></tds-icon>
-            </div>
-          </button>
+          <div role="heading" aria-level={this.ariaLevel}>
+            <button
+              id={secondaryElementId}
+              aria-controls={primaryElementId}
+              type="button"
+              aria-expanded={this.expanded ? 'true' : 'false'}
+              aria-disabled={this.disabled}
+              class={`tds-accordion-header-icon-${this.expandIconPosition}`}
+              onClick={() => this.toggleAccordionItem()}
+              disabled={this.disabled}
+            >
+              <div class="tds-accordion-title">
+                {this.header}
+                <slot name="header"></slot>
+              </div>
+              <div class="tds-accordion-icon">
+                <tds-icon svgTitle="Chevron Down" name="chevron_down" size="16px"></tds-icon>
+              </div>
+            </button>
+          </div>
           <div
+            role="region"
+            aria-live="polite"
+            aria-labelledby={secondaryElementId}
+            id={primaryElementId}
             class={`tds-accordion-panel
             ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
             `}
