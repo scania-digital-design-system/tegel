@@ -25,6 +25,7 @@
     ".": {
       "types": "./dist/types/index.d.ts"
     },
+    "./hydrate": "./hydrate/index.mjs",
     "./dist/tegel/tegel.css": "./dist/tegel/tegel.css",
     "./tds-accordion-item": {
       "import": "./dist/components/tds-accordion-item.js",
@@ -359,6 +360,7 @@
   "files": [
     "dist/",
     "loader/",
+    "hydrate/",
     "scripts/copy-assets.mjs"
   ],
   "publishConfig": {

@@ -69,6 +69,9 @@ export const config: Config = {
         },
       ],
     },
+    {
+      type: 'dist-hydrate-script',
+    },
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
       outputType: 'component',
