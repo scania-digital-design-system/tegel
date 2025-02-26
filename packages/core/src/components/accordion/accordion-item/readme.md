@@ -9,7 +9,7 @@
 
 | Property             | Attribute              | Description                                                                                      | Type                                     | Default |
 | -------------------- | ---------------------- | ------------------------------------------------------------------------------------------------ | ---------------------------------------- | ------- |
-| `ariaLevel`          | `aria-level`           | Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6. | `"1" \| "2" \| "3" \| "4" \| "5" \| "6"` | `'6'`   |
+| `ariaLevelValue`     | `aria-level-value`     | Specifies the heading level (aria-level) for accessibility. Only accepts values between 1 and 6. | `"1" \| "2" \| "3" \| "4" \| "5" \| "6"` | `'6'`   |
 | `disabled`           | `disabled`             | Disabled option in `boolean`.                                                                    | `boolean`                                | `false` |
 | `expandIconPosition` | `expand-icon-position` | Changes position of the expand icon.                                                             | `"end" \| "start"`                       | `'end'` |
 | `expanded`           | `expanded`             | Set to true to expand panel open                                                                 | `boolean`                                | `false` |

@@ -59,7 +59,7 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    ariaLevel: {
+    ariaLevelValue: {
       name: 'ARIA heading level',
       description: 'Specifies the heading level for accessibility (1-6).',
       control: {
@@ -92,7 +92,7 @@ export default {
     paddingReset: false,
     disabled: false,
     hideLastBorder: false,
-    ariaLevel: '6',
+    ariaLevelValue: '6',
   },
 };
 
@@ -102,23 +102,23 @@ const Template = ({
   paddingReset,
   modeVariant,
   hideLastBorder,
-  ariaLevel,
+  ariaLevelValue,
 }) => {
   const affixAttr = iconPosition === 'start' ? 'expand-icon-position="start"' : '';
   const disabledAttr = disabled ? 'disabled' : '';
   const paddingResetAttr = paddingReset ? 'padding-reset' : '';
   const hideLastBorderAttr = hideLastBorder ? 'hide-last-border' : '';
-  const ariaLevelAttr = `aria-level="${ariaLevel}"`;
+  const ariaLevelValueAttr = `aria-level="${ariaLevelValue}"`;
 
   return formatHtmlPreview(`
     <tds-accordion ${
       modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
     } ${hideLastBorderAttr}>
-      <tds-accordion-item header="First item" ${ariaLevelAttr} ${affixAttr} ${disabledAttr} ${paddingResetAttr}>
+      <tds-accordion-item header="First item" ${ariaLevelValueAttr} ${affixAttr} ${disabledAttr} ${paddingResetAttr}>
         This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
         Lorem ipsum doler sit amet.
       </tds-accordion-item>
-      <tds-accordion-item ${ariaLevelAttr} ${affixAttr} ${disabledAttr} ${paddingResetAttr} expanded>
+      <tds-accordion-item ${ariaLevelValueAttr} ${affixAttr} ${disabledAttr} ${paddingResetAttr} expanded>
         <div slot="header">Second item</div>
         This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet vestibulum fermentum.
