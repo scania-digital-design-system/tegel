@@ -1,6 +1,7 @@
 packages/core/dist
 packages/core/www
 packages/core/loader
+packages/core/hydrate
 packages/core/components
 
 packages/angular/dist
