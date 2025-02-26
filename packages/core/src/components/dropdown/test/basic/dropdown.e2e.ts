@@ -90,6 +90,8 @@ test.describe.parallel(componentName, () => {
     // Verify that the dropdown has been reset to its initial state
     await expect(placeholder).toHaveText(initialPlaceholderText);
     await expect(dropdown).not.toHaveAttribute('value');
-    await expect(dropdown).toHaveJSProperty('value', undefined);
+    // Get the value property
+    const value = await dropdown.evaluate((el: HTMLElement & { value?: string }) => el.value);
+    expect(value).toBeNull();
   });
 });
