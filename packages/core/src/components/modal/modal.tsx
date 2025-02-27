@@ -185,7 +185,7 @@ export class TdsModal {
           show: this.isShown,
           hide: !this.isShown,
         }}
-        onClick={(event) => this.handleOverlayClick(event)}
+        onClick={(event: PointerEvent) => this.handleOverlayClick(event)}
       >
         <div class="tds-modal-backdrop" />
         <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
