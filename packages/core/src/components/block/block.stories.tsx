@@ -57,8 +57,9 @@ Default.argTypes = {
     name: 'Component Tag',
     description: 'Specifies the HTML tag used for the component wrapper.',
     control: {
-      type: 'text',
+      type: 'radio',
     },
+    options: ['section', 'div', 'article', 'aside', 'header', 'footer', 'nav', 'main'],
     table: {
       defaultValue: { summary: 'section' },
     },
@@ -117,8 +118,9 @@ Nested.argTypes = {
     name: 'Component Tag',
     description: 'Specifies the HTML tag used for the component wrapper.',
     control: {
-      type: 'text',
+      type: 'radio',
     },
+    options: ['section', 'div', 'article', 'aside', 'header', 'footer', 'nav', 'main'],
     table: {
       defaultValue: { summary: 'article' },
     },
