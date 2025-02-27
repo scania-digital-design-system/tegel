@@ -24,8 +24,11 @@ export class TdsInlineTab {
     return (
       <Host role="listitem">
         <div
-          class={`inline-tab-item  ${this.selected ? 'selected' : ''}
-           ${this.disabled ? 'disabled' : ''}`}
+          class={{
+            'inline-tab-item': true,
+            'selected': this.selected,
+            'disabled': this.disabled,
+          }}
         >
           <slot></slot>
         </div>

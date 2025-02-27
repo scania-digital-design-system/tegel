@@ -241,7 +241,10 @@ export class TdsNavigationTabs {
 
   render() {
     return (
-      <Host role="list" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host
+        role="list"
+        class={{ [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null }}
+      >
         <div
           class="wrapper"
           ref={(el) => {
@@ -250,7 +253,10 @@ export class TdsNavigationTabs {
           style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
-            class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
+            class={{
+              'scroll-left-button': true,
+              'show': this.showLeftScroll,
+            }}
             onClick={() => this.scrollLeft()}
             disabled={!this.showLeftScroll}
           >
@@ -258,7 +264,10 @@ export class TdsNavigationTabs {
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
-            class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
+            class={{
+              'scroll-right-button': true,
+              'show': this.showRightScroll,
+            }}
             onClick={() => this.scrollRight()}
             disabled={!this.showRightScroll}
           >
