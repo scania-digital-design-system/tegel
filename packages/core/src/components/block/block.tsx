@@ -20,7 +20,15 @@ export class TdsBlock {
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Specifies the HTML tag to be used for the component wrapper. Default is 'section'. */
-  @Prop() componentTag: string = 'section';
+  @Prop() componentTag:
+    | 'section'
+    | 'div'
+    | 'article'
+    | 'aside'
+    | 'header'
+    | 'footer'
+    | 'nav'
+    | 'main' = 'div';
 
   private getNestingLevel(): number {
     let level = 0;
