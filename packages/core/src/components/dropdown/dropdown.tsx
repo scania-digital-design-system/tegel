@@ -532,12 +532,20 @@ export class TdsDropdown {
     return (
       <Host
         role="select"
-        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}
+        class={{
+          [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
+        }}
       >
         {this.label && this.labelPosition === 'outside' && (
           <div class={`label-outside ${this.disabled ? 'disabled' : ''}`}>{this.label}</div>
         )}
-        <div class={`dropdown-select ${this.size} ${this.disabled ? 'disabled' : ''}`}>
+        <div
+          class={{
+            'dropdown-select': true,
+            [this.size]: true,
+            'disabled': this.disabled,
+          }}
+        >
           {this.filter ? (
             <div
               class={{
@@ -565,7 +573,9 @@ export class TdsDropdown {
                 <input
                   // eslint-disable-next-line no-return-assign
                   ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
-                  class={`${this.labelPosition === 'inside' ? 'placeholder' : ''}`}
+                  class={{
+                    placeholder: this.labelPosition === 'inside',
+                  }}
                   type="text"
                   placeholder={this.filterFocus ? '' : this.placeholder}
                   value={this.multiselect && this.filterFocus ? '' : this.getValue()}
@@ -605,7 +615,11 @@ export class TdsDropdown {
                     this.handleFilterReset();
                   }
                 }}
-                class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                // class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
+                class={{
+                  'clear-icon': true,
+                  'hide': !this.open || this.inputElement.value !== '',
+                }}
                 name="cross"
                 size="16px"
               ></tds-icon>
@@ -633,11 +647,13 @@ export class TdsDropdown {
                   this.open = false;
                 }
               }}
-              class={`
-                ${this.value ? 'value' : 'placeholder'}
-                ${this.open ? 'open' : 'closed'}
-                ${this.error ? 'error' : ''}
-                `}
+              class={{
+                value: Boolean(this.value),
+                placeholder: Boolean(!this.value),
+                open: this.open,
+                closed: !this.open,
+                error: this.error,
+              }}
               disabled={this.disabled}
             >
               <div class={`value-wrapper ${this.size}`}>
@@ -646,11 +662,16 @@ export class TdsDropdown {
                 )}
                 {this.label && this.labelPosition === 'inside' && !this.placeholder && (
                   <div
-                    class={`
-                    label-inside-as-placeholder
-                    ${this.size}
-                    ${this.value?.length ? 'selected' : ''}
-                    `}
+                    // class={`
+                    // label-inside-as-placeholder
+                    // ${this.size}
+                    // ${this.value?.length ? 'selected' : ''}
+                    // `}
+                    class={{
+                      'label-inside-as-placeholder': true,
+                      [this.size]: true,
+                      'selected': Boolean(this.value?.length),
+                    }}
                   >
                     {this.label}
                   </div>
@@ -671,7 +692,9 @@ export class TdsDropdown {
         </div>
         {/* DROPDOWN LIST */}
         <div
-          ref={(element) => (this.dropdownList = element)}
+          ref={(element) => {
+            this.dropdownList = element;
+          }}
           class={{
             'dropdown-list': true,
             [this.size]: true,
@@ -690,7 +713,13 @@ export class TdsDropdown {
         </div>
         {/* DROPDOWN LIST */}
         {this.helper && (
-          <div class={`helper ${this.error ? 'error' : ''} ${this.disabled ? 'disabled' : ''}`}>
+          <div
+            class={{
+              helper: true,
+              error: this.error,
+              disabled: this.disabled,
+            }}
+          >
             {this.error && <tds-icon name="error" size="16px"></tds-icon>}
             {this.helper}
           </div>
