@@ -181,7 +181,10 @@ export class TdsModal {
 
     return (
       <Host
-        class={`${this.isShown ? 'show' : 'hide'}`}
+        class={{
+          show: this.isShown,
+          hide: !this.isShown,
+        }}
         onClick={(event) => this.handleOverlayClick(event)}
       >
         <div class="tds-modal-backdrop" />
