@@ -32,8 +32,10 @@ export class TdsFolderTab {
     return (
       <Host role="listitem">
         <div
-          class={`${this.disabled ? 'disabled' : ''}
-                  ${this.selected ? 'selected' : ''}`}
+          class={{
+            'folder-tab-item-selected': this.selected,
+            'folder-tab-item-disabled': this.disabled,
+          }}
           style={{ width: `${this.tabWidth}px` }}
         >
           <slot></slot>
