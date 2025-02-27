@@ -111,7 +111,7 @@ export class TdsCheckbox {
   tdsBlur: EventEmitter<FocusEvent>;
 
   /** Set the input as blur when clicking outside the component */
-  handleBlur(event): void {
+  handleBlur(event: FocusEvent): void {
     this.tdsBlur.emit(event);
   }
 
