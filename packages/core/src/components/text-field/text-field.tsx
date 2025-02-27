@@ -181,7 +181,9 @@ export class TdsTextField {
 
           <div class="text-field-input-container">
             <input
-              ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
+              ref={(inputEl) => {
+                this.textInput = inputEl as HTMLInputElement;
+              }}
               class={{
                 'text-field-input': true,
                 'text-field-input-sm': this.size === 'sm',
