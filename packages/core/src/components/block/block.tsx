@@ -19,6 +19,9 @@ export class TdsBlock {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
+  /** Specifies the HTML tag to be used for the component wrapper. Default is 'section'. */
+  @Prop() componentTag: string = 'section';
+
   private getNestingLevel(): number {
     let level = 0;
     let parent = this.host.parentElement;
@@ -53,6 +56,7 @@ export class TdsBlock {
   }
 
   render() {
+    const TagType = this.componentTag as keyof HTMLElementTagNameMap;
     const nestingLevel = this.getNestingLevel();
 
     let evenOddClass = '';
@@ -65,13 +69,13 @@ export class TdsBlock {
     }
 
     return (
-      <section
+      <TagType
         class={`tds-block ${evenOddClass} ${
           this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
         }`}
       >
         <slot></slot>
-      </section>
+      </TagType>
     );
   }
 }
