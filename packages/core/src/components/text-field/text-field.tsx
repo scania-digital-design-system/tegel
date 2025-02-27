@@ -1,5 +1,5 @@
-import hasSlot from '../../utils/hasSlot';
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
