@@ -122,6 +122,9 @@ export class TdsTableBodyRow {
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
+
+    console.log('1', this.tableEl);
+    console.log('2', this.tableId);
   }
 
   componentWillLoad() {
