@@ -22,17 +22,19 @@ export default {
   },
 };
 
-const SingleTemplate = ({ modeVariant }) =>
+const SingleTemplate = ({ modeVariant, componentTag }) =>
   formatHtmlPreview(
     `
-      <tds-block ${
-        modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-      }>
-        <section>
+      <tds-block 
+        ${
+          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+        } 
+        component-tag="${componentTag}">
+        <${componentTag}>
           <h2 class="tds-headline-02">Semantic Block</h2>
-          <p class="tds-body-01">This block is now structured using a <code>&lt;section&gt;</code> element for better accessibility.</p>
+          <p class="tds-body-01">This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
           <button class="tds-button">Click me</button>
-        </section>
+        </${componentTag}>
       </tds-block>
     `,
   );
@@ -42,7 +44,7 @@ Default.argTypes = {
   modeVariant: {
     name: 'Mode variant',
     description:
-      'Mode variant adjusts component colors to have better visibility depending on global mode and background. ',
+      'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
     control: {
       type: 'radio',
     },
@@ -51,13 +53,24 @@ Default.argTypes = {
       defaultValue: { summary: 'Inherit from parent' },
     },
   },
+  componentTag: {
+    name: 'Component Tag',
+    description: 'Specifies the HTML tag used for the component wrapper.',
+    control: {
+      type: 'text',
+    },
+    table: {
+      defaultValue: { summary: 'section' },
+    },
+  },
 };
 
 Default.args = {
   modeVariant: 'Inherit from parent',
+  componentTag: 'section',
 };
 
-const NestedTemplate = ({ outerModeVariant }) =>
+const NestedTemplate = ({ outerModeVariant, componentTag }) =>
   formatHtmlPreview(
     `
       <div ${
@@ -65,15 +78,15 @@ const NestedTemplate = ({ outerModeVariant }) =>
           ? `class="tds-mode-variant-${outerModeVariant.toLowerCase()}"`
           : ''
       }>
-        <tds-block>
-          <article>
-            <h2 class="tds-headline-02">Outer Block (Article)</h2>
-            <p class="tds-body-01">This block is now structured using an <code>&lt;article&gt;</code>.</p>
-            <tds-block>
+        <tds-block component-tag="${componentTag}">
+          <${componentTag}>
+            <h2 class="tds-headline-02">Outer Block (${componentTag})</h2>
+            <p class="tds-body-01">This block is now structured using a <code>&lt;${componentTag}&gt;</code>.</p>
+            <tds-block component-tag="aside">
               <aside>
                 <h3 class="tds-headline-04">Middle Block (Aside)</h3>
                 <p class="tds-detail-03">Nested content inside an <code>&lt;aside&gt;</code> element.</p>
-                <tds-block>
+                <tds-block component-tag="section">
                   <section>
                     <h4 class="tds-headline-06">Inner Block (Section)</h4>
                     <p class="tds-detail-03">Ensuring meaningful content structure with semantic HTML.</p>
@@ -81,7 +94,7 @@ const NestedTemplate = ({ outerModeVariant }) =>
                 </tds-block>
               </aside>
             </tds-block>
-          </article>
+          </${componentTag}>
         </tds-block>
       </div>
     `,
@@ -100,8 +113,19 @@ Nested.argTypes = {
       defaultValue: { summary: 'Primary' },
     },
   },
+  componentTag: {
+    name: 'Component Tag',
+    description: 'Specifies the HTML tag used for the component wrapper.',
+    control: {
+      type: 'text',
+    },
+    table: {
+      defaultValue: { summary: 'article' },
+    },
+  },
 };
 
 Nested.args = {
   outerModeVariant: 'Primary',
+  componentTag: 'article',
 };
