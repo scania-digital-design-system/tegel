@@ -119,48 +119,14 @@ export class TdsTableBodyRow {
     }
   }
 
-  private updateTableProperties() {
-    // Clear previous state
-    this.tableEl = null;
-    this.tableId = '';
-    relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = false;
-    });
-
-    // Find new parent table and update properties
-    requestAnimationFrame(() => {
-      this.tableEl = this.host.closest('tds-table');
-      if (!this.tableEl) {
-        console.warn('TdsTableBodyRow: No parent table found');
-        return;
-      }
-      this.tableId = this.tableEl.tableId;
-      relevantTableProps.forEach((tablePropName) => {
-        this[tablePropName] = this.tableEl[tablePropName];
-      });
-    });
-  }
-
-  @Listen('DOMNodeInserted', { target: 'window' })
-  handleDOMChange() {
-    if (this.host.isConnected) {
-      this.updateTableProperties();
-    }
-  }
-
   connectedCallback() {
-    this.updateTableProperties();
+    this.tableEl = this.host.closest('tds-table');
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
-    this.updateTableProperties();
-  }
-
-  disconnectedCallback() {
-    this.tableEl = null;
-    this.tableId = '';
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = false;
+      this[tablePropName] = this.tableEl[tablePropName];
     });
   }
 
