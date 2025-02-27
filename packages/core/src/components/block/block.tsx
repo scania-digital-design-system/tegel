@@ -1,7 +1,12 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
 /**
- * @slot <default> - <b>Unnamed slot.</b> For the content.
+ * @slot - Default slot for content inside the block.
+ *
+ * @example
+ * <tds-block>
+ *   <section>Semantic section content</section>
+ * </tds-block>
  */
 @Component({
   tag: 'tds-block',
@@ -26,6 +31,27 @@ export class TdsBlock {
     return level;
   }
 
+  private ensureKeyboardAccessibility() {
+    const childElements = Array.from(this.host.children);
+    childElements.forEach((child) => {
+      const isInteractive =
+        child instanceof HTMLButtonElement ||
+        child instanceof HTMLAnchorElement ||
+        child instanceof HTMLInputElement ||
+        child instanceof HTMLSelectElement ||
+        child instanceof HTMLTextAreaElement ||
+        child.getAttribute('tabindex') !== null;
+
+      if (!isInteractive) {
+        child.setAttribute('tabindex', '0');
+      }
+    });
+  }
+
+  componentDidLoad() {
+    this.ensureKeyboardAccessibility();
+  }
+
   render() {
     const nestingLevel = this.getNestingLevel();
 
@@ -39,13 +65,13 @@ export class TdsBlock {
     }
 
     return (
-      <div
+      <section
         class={`tds-block ${evenOddClass} ${
           this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
         }`}
       >
         <slot></slot>
-      </div>
+      </section>
     );
   }
 }

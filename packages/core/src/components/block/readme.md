@@ -20,9 +20,9 @@ The `tds-block` component can be nested to create more complex layouts. When nes
 
 ## Slots
 
-| Slot          | Description                           |
-| ------------- | ------------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For the content. |
+| Slot | Description                                |
+| ---- | ------------------------------------------ |
+|      | Default slot for content inside the block. |
 
 
 ----------------------------------------------

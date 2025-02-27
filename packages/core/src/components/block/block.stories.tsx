@@ -28,9 +28,11 @@ const SingleTemplate = ({ modeVariant }) =>
       <tds-block ${
         modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
       }>
-        <h2 class="tds-headline-02">Block</h2>
-        <p class="tds-body-01">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi ut eleifend ultrices. Nunc venenatis maximus sapien, ac bibendum nisl aliquam in. Morbi ac velit et ligula consectetur interdum. Vestibulum condimentum, augue vitae lobortis rhoncus, mi est ultricies mi, sed tincidunt magna nibh in lectus. Pellentesque vel vulputate orci, vel lacinia orci. Sed suscipit leo at diam ullamcorper, vitae volutpat neque dapibus. Maecenas sit amet rhoncus arcu. Sed sed molestie elit. Nullam in interdum est, vitae aliquam ipsum. Nunc rutrum nibh ut arcu egestas egestas.</p>
-       
+        <section>
+          <h2 class="tds-headline-02">Semantic Block</h2>
+          <p class="tds-body-01">This block is now structured using a <code>&lt;section&gt;</code> element for better accessibility.</p>
+          <button class="tds-button">Click me</button>
+        </section>
       </tds-block>
     `,
   );
@@ -64,16 +66,22 @@ const NestedTemplate = ({ outerModeVariant }) =>
           : ''
       }>
         <tds-block>
-          <h2 class="tds-headline-02">Outer Block</h2>
-          <p class="tds-body-01">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <tds-block>
-            <h3 class="tds-headline-04">Middle Block</h3>
-            <p class="tds-detail-03">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <article>
+            <h2 class="tds-headline-02">Outer Block (Article)</h2>
+            <p class="tds-body-01">This block is now structured using an <code>&lt;article&gt;</code>.</p>
             <tds-block>
-              <h4 class="tds-headline-06">Inner Block</h4>
-              <p class="tds-detail-03">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <aside>
+                <h3 class="tds-headline-04">Middle Block (Aside)</h3>
+                <p class="tds-detail-03">Nested content inside an <code>&lt;aside&gt;</code> element.</p>
+                <tds-block>
+                  <section>
+                    <h4 class="tds-headline-06">Inner Block (Section)</h4>
+                    <p class="tds-detail-03">Ensuring meaningful content structure with semantic HTML.</p>
+                  </section>
+                </tds-block>
+              </aside>
             </tds-block>
-          </tds-block>
+          </article>
         </tds-block>
       </div>
     `,
