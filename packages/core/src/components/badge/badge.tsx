@@ -48,9 +48,12 @@ export class TdsBadge {
   render() {
     return (
       <host
-        class={`tds-badge tds-badge-${this.size} ${this.shape === 'pill' ? 'tds-badge-pill' : ''} ${
-          this.hidden ? 'tds-badge-hidden' : ''
-        }`}
+        class={{
+          'tds-badge': true,
+          [`tds-badge-${this.size}`]: true,
+          'tds-badge-pill': this.shape === 'pill',
+          'tds-badge-hidden': this.hidden,
+        }}
       >
         <div class="tds-badge-text">{this.text}</div>
       </host>
