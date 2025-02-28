@@ -119,23 +119,25 @@ export class TdsTextarea {
   render() {
     return (
       <div
-        class={`
-        textarea-container
-        ${this.labelPosition === 'inside' ? 'textarea-label-inside' : ''}
-        ${this.focusInput ? 'textarea-focus' : ''}
-        ${this.disabled ? 'textarea-disabled' : ''}
-        ${this.readOnly ? 'textarea-readonly' : ''}
-        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}
-        ${this.value ? 'textarea-data' : ''}
-        ${this.state === 'error' || this.state === 'success' ? `textarea-${this.state}` : ''}
-        ${this.noMinWidth ? 'no-min-width' : ''}
-        `}
+        class={{
+          'textarea-container': true,
+          'textarea-label-inside': this.labelPosition === 'inside',
+          'textarea-focus': this.focusInput,
+          'textarea-disabled': this.disabled,
+          'textarea-readonly': this.readOnly,
+          [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+          'textarea-data': this.value !== '',
+          [`textarea-${this.state}`]: this.state === 'error' || this.state === 'success',
+          'no-min-width': this.noMinWidth,
+        }}
       >
         {this.labelPosition !== 'no-label' && <span class={'textarea-label'}>{this.label}</span>}
         <div class="textarea-wrapper">
           <textarea
             class={'textarea-input'}
-            ref={(inputEl) => (this.textEl = inputEl as HTMLTextAreaElement)}
+            ref={(inputEl) => {
+              this.textEl = inputEl as HTMLTextAreaElement;
+            }}
             disabled={this.disabled}
             readonly={this.readOnly}
             placeholder={this.placeholder}
