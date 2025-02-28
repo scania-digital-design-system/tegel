@@ -1,4 +1,4 @@
-import { Component, h, Prop, Watch, State } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'tds-badge',
@@ -15,39 +15,35 @@ export class TdsBadge {
   /** Sets component size. */
   @Prop() size: 'lg' | 'sm' = 'lg';
 
-  @State() shape: string = '';
-
-  @State() text: string = '';
-
-  @Watch('value')
-  @Watch('size')
-  watchProps() {
-    this.checkProps();
-  }
-
-  componentWillLoad() {
-    this.checkProps();
-  }
-
-  checkProps() {
+  private computeBadgeData() {
     const valueAsNumber = parseInt(this.value);
+    let shape = '';
+    let text = '';
+    let ariaLabel = '';
+
     if (!Number.isNaN(valueAsNumber) && this.size !== 'sm') {
-      this.shape = this.value.toString().length >= 2 ? 'pill' : '';
-      this.size = 'lg';
-      this.text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
+      shape = this.value.length >= 2 ? 'pill' : '';
+      text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
+      ariaLabel = `Notification badge with ${text} new notifications`;
     } else {
-      // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
-      if (this.value !== '' && this.size !== 'sm') {
-        console.warn(
-          'The provided value is either empty or string, please provide value as number.',
-        );
-      }
+      ariaLabel =
+        this.value.trim() === ''
+          ? 'Notification badge with no new notifications'
+          : 'The provided value is either empty or a string, please provide a number.';
+      text = this.value;
     }
+
+    return { shape, text, ariaLabel };
   }
 
   render() {
+    const { shape, text, ariaLabel } = this.computeBadgeData();
+
     return (
       <host
+        role="alert"
+        aria-live="assertive"
+        aria-label={ariaLabel}
         class={{
           'tds-badge': true,
           [`tds-badge-${this.size}`]: true,
@@ -55,7 +51,9 @@ export class TdsBadge {
           'tds-badge-hidden': this.hidden,
         }}
       >
-        <div class="tds-badge-text">{this.text}</div>
+        <div class="tds-badge-text" aria-hidden="true">
+          {text}
+        </div>
       </host>
     );
   }
