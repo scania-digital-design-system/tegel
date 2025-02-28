@@ -68,7 +68,14 @@ export class TdsToggle {
     return (
       <div class="tds-toggle">
         {this.headline && (
-          <div class={`toggle-headline ${this.disabled ? 'disabled' : ''}`}>{this.headline}</div>
+          <div
+            class={{
+              'toggle-headline': true,
+              'disabled': this.disabled,
+            }}
+          >
+            {this.headline}
+          </div>
         )}
         <input
           aria-describedby={this.host.getAttribute('aria-describedby')}
@@ -85,7 +92,7 @@ export class TdsToggle {
           id={this.toggleId}
           role="switch"
         />
-        <label class={`${this.disabled ? 'disabled' : ''}`} htmlFor={this.toggleId}>
+        <label class={{ disabled: this.disabled }} htmlFor={this.toggleId}>
           <slot name="label"></slot>
         </label>
       </div>
