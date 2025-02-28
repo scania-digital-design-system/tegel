@@ -75,17 +75,6 @@ export default {
 const Template = ({ value, size, hidden, demoCode }) =>
   formatHtmlPreview(
     `
-    <script>
-      function updateBadgeValue() {
-        const badge = document.querySelector('tds-badge');
-        if (badge) {
-          // Increase one 
-          let newValue = parseInt(badge.getAttribute('value')) + 1;
-          badge.setAttribute('value', newValue);
-        }
-      }
-    </script>
-
     ${
       demoCode
         ? `<style>
@@ -120,7 +109,6 @@ const Template = ({ value, size, hidden, demoCode }) =>
       </tds-badge>
     </div>
 
-    <button onclick="updateBadgeValue()" style="margin-top: 10px;">Increase Badge Value</button>
     `,
   );
 
