@@ -27,11 +27,11 @@ export class TdsLink {
   render() {
     return (
       <span
-        class={`        
-          ${this.disabled ? 'disabled' : ''}
-          ${!this.underline ? 'no-underline' : ''}
-          ${this.standalone ? 'standalone' : ''}
-          `}
+        class={{
+          'disabled': this.disabled,
+          'no-underline': !this.underline,
+          'standalone': this.standalone,
+        }}
       >
         <slot></slot>
       </span>
