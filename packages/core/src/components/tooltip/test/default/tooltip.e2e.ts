@@ -42,6 +42,9 @@ test.describe.parallel(componentName, () => {
   });
 
   test('tooltip contains correct HTML content on hover', async ({ page }) => {
+    // Trick to reset the cursor position in order to restart hover effect later on
+    await page.mouse.move(500, 500);
+
     // Hover over the button to trigger the tooltip
     const button = page.locator('tds-button#button-1');
     await button.hover();

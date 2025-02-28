@@ -28,12 +28,15 @@ export class TdsBlock {
 
   render() {
     const nestingLevel = this.getNestingLevel();
-    const evenOddClass =
-      this.modeVariant === null
-        ? nestingLevel % 2 === 0
-          ? 'tds-block-even'
-          : 'tds-block-odd'
-        : '';
+
+    let evenOddClass = '';
+    if (this.modeVariant === null) {
+      if (nestingLevel % 2 === 0) {
+        evenOddClass = 'tds-block-even';
+      } else {
+        evenOddClass = 'tds-block-odd';
+      }
+    }
 
     return (
       <div

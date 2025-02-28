@@ -105,29 +105,26 @@ export class TdsCard {
   };
 
   render() {
+    const cardStyle = {
+      card: true,
+      clickable: this.clickable,
+      [this.imagePlacement]: !this.stretch,
+      [`${this.imagePlacement}-stretch`]: this.stretch,
+    };
+
     return (
       <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (
           <button
-            class={`card ${this.clickable ? 'clickable' : ''} ${
-              this.stretch ? `${this.imagePlacement}-stretch` : this.imagePlacement
-            }`}
+            class={cardStyle}
             onClick={() => {
-              if (this.clickable) {
-                this.handleClick();
-              }
+              this.handleClick();
             }}
           >
             {this.getCardContent()}
           </button>
         ) : (
-          <div
-            class={`card ${this.clickable ? 'clickable' : ''} ${
-              this.stretch ? `${this.imagePlacement}-stretch` : this.imagePlacement
-            }`}
-          >
-            {this.getCardContent()}
-          </div>
+          <div class={cardStyle}>{this.getCardContent()}</div>
         )}
       </Host>
     );

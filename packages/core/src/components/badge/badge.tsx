@@ -42,11 +42,14 @@ export class TdsBadge {
     return (
       <host
         role="alert"
-        class={`tds-badge tds-badge-${this.size} ${shape === 'pill' ? 'tds-badge-pill' : ''} ${
-          this.hidden ? 'tds-badge-hidden' : ''
-        }`}
         aria-live="assertive"
         aria-label={ariaLabel}
+        class={{
+          'tds-badge': true,
+          [`tds-badge-${this.size}`]: true,
+          'tds-badge-pill': this.shape === 'pill',
+          'tds-badge-hidden': this.hidden,
+        }}
       >
         <div class="tds-badge-text" aria-hidden="true">
           {text}
