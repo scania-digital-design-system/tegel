@@ -24,6 +24,17 @@ export default {
     ],
   },
   argTypes: {
+    roleType: {
+      name: 'Role Type',
+      description: 'Defines the ARIA role of the banner.',
+      options: ['banner', 'region', 'alert'],
+      control: {
+        type: 'radio',
+      },
+      table: {
+        defaultValue: { summary: 'banner' },
+      },
+    },
     variant: {
       name: 'Variant',
       description: 'Changes the variant of the component.',
@@ -56,7 +67,6 @@ export default {
         type: 'text',
       },
     },
-
     icon: {
       name: 'Icon',
       description: 'Name of icon to display, choose `none` to remove the icon.',
@@ -68,6 +78,7 @@ export default {
     },
   },
   args: {
+    roleType: 'banner',
     variant: 'Default',
     header: 'This is a header text area',
     subheader: 'This is the subheader text area',
@@ -76,9 +87,10 @@ export default {
   },
 };
 
-const Template = ({ variant, icon, header, subheader, actions }) =>
+const Template = ({ roleType, variant, icon, header, subheader, actions }) =>
   formatHtmlPreview(`
       <tds-banner
+          role-type="${roleType}"
           ${variant !== 'Default' ? `variant="${variant.toLowerCase()}"` : ''}
           ${icon !== 'none' && variant === 'Default' ? `icon="${icon}"` : ''}
           ${header !== '' ? `header="${header}"` : ''}
@@ -94,4 +106,5 @@ const Template = ({ variant, icon, header, subheader, actions }) =>
         })
       </script>
     `);
+
 export const Default = Template.bind({});
