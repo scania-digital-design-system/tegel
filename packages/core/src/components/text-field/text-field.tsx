@@ -1,5 +1,5 @@
-import hasSlot from '../../utils/hasSlot';
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
+import hasSlot from '../../utils/hasSlot';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -181,7 +181,9 @@ export class TdsTextField {
 
           <div class="text-field-input-container">
             <input
-              ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
+              ref={(inputEl) => {
+                this.textInput = inputEl as HTMLInputElement;
+              }}
               class={{
                 'text-field-input': true,
                 'text-field-input-sm': this.size === 'sm',
