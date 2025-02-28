@@ -49,7 +49,7 @@ export class TdsButton {
     return (
       <Host
         class={{
-          [`tds-mode-variant${this.modeVariant}`]: Boolean(this.modeVariant),
+          [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
         }}
         disabled={this.disabled}
       >
