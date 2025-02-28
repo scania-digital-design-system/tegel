@@ -26,7 +26,11 @@ export class TdsFooter {
     const usesEndSlot = hasSlot('end', this.host);
     const usesCopyrightSlot = hasSlot('copyright', this.host);
     return (
-      <Host class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host
+        class={{
+          [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+        }}
+      >
         <footer>
           {usesTopSlot && <slot name="top"></slot>}
           <div class="footer-main">
