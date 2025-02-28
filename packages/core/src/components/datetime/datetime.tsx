@@ -222,6 +222,13 @@ export class TdsDatetime {
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
             />
+            <div class="datetime-icon icon-datetime-local">
+              <tds-icon size="20px" name="calendar"></tds-icon>
+            </div>
+
+            <div class="datetime-icon icon-time">
+              <tds-icon size="20px" name="clock"></tds-icon>
+            </div>
           </div>
           <div class="tds-datetime-bar"></div>
         </div>
