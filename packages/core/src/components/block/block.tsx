@@ -1,7 +1,12 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
 /**
- * @slot <default> - <b>Unnamed slot.</b> For the content.
+ * @slot - Default slot for content inside the block.
+ *
+ * @example
+ * <tds-block>
+ *   <section>Semantic section content</section>
+ * </tds-block>
  */
 @Component({
   tag: 'tds-block',
@@ -13,6 +18,17 @@ export class TdsBlock {
 
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
+
+  /** Specifies the HTML tag to be used for the component wrapper. Default is 'section'. */
+  @Prop() componentTag:
+    | 'section'
+    | 'div'
+    | 'article'
+    | 'aside'
+    | 'header'
+    | 'footer'
+    | 'nav'
+    | 'main' = 'div';
 
   private getNestingLevel(): number {
     let level = 0;
@@ -26,7 +42,29 @@ export class TdsBlock {
     return level;
   }
 
+  private ensureKeyboardAccessibility() {
+    const childElements = Array.from(this.host.children);
+    childElements.forEach((child) => {
+      const isInteractive =
+        child instanceof HTMLButtonElement ||
+        child instanceof HTMLAnchorElement ||
+        child instanceof HTMLInputElement ||
+        child instanceof HTMLSelectElement ||
+        child instanceof HTMLTextAreaElement ||
+        child.getAttribute('tabindex') !== null;
+
+      if (!isInteractive) {
+        child.setAttribute('tabindex', '0');
+      }
+    });
+  }
+
+  componentDidLoad() {
+    this.ensureKeyboardAccessibility();
+  }
+
   render() {
+    const TagType = this.componentTag as keyof HTMLElementTagNameMap;
     const nestingLevel = this.getNestingLevel();
 
     let evenOddClass = '';
@@ -39,13 +77,13 @@ export class TdsBlock {
     }
 
     return (
-      <div
+      <TagType
         class={`tds-block ${evenOddClass} ${
           this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
         }`}
       >
         <slot></slot>
-      </div>
+      </TagType>
     );
   }
 }
