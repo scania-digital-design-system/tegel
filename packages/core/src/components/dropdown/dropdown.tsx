@@ -615,10 +615,9 @@ export class TdsDropdown {
                     this.handleFilterReset();
                   }
                 }}
-                // class={`clear-icon ${this.open && this.inputElement.value !== '' ? '' : 'hide'}`}
                 class={{
                   'clear-icon': true,
-                  'hide': !this.open || this.inputElement.value !== '',
+                  'hide': !(this.open && this.inputElement.value !== ''),
                 }}
                 name="cross"
                 size="16px"
@@ -662,11 +661,6 @@ export class TdsDropdown {
                 )}
                 {this.label && this.labelPosition === 'inside' && !this.placeholder && (
                   <div
-                    // class={`
-                    // label-inside-as-placeholder
-                    // ${this.size}
-                    // ${this.value?.length ? 'selected' : ''}
-                    // `}
                     class={{
                       'label-inside-as-placeholder': true,
                       [this.size]: true,
