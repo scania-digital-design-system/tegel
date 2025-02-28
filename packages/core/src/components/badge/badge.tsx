@@ -19,6 +19,8 @@ export class TdsBadge {
 
   @State() text: string = '';
 
+  @State() ariaLabel: string = 'Notification badge';
+
   @Watch('value')
   @Watch('size')
   watchProps() {
@@ -35,24 +37,32 @@ export class TdsBadge {
       this.shape = this.value.toString().length >= 2 ? 'pill' : '';
       this.size = 'lg';
       this.text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
+      this.ariaLabel = `Notification badge with ${this.text} new notifications`;
     } else {
-      // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
-      if (this.value !== '' && this.size !== 'sm') {
+      if (this.value.trim() === '') {
+        this.ariaLabel = 'Notification badge with no new notifications';
+      } else {
         console.warn(
           'The provided value is either empty or string, please provide value as number.',
         );
       }
+      this.text = this.value;
     }
   }
 
   render() {
     return (
       <host
+        role="status"
         class={`tds-badge tds-badge-${this.size} ${this.shape === 'pill' ? 'tds-badge-pill' : ''} ${
           this.hidden ? 'tds-badge-hidden' : ''
         }`}
+        aria-live="assertive"
+        aria-label={this.ariaLabel}
       >
-        <div class="tds-badge-text">{this.text}</div>
+        <div class="tds-badge-text" aria-hidden="true">
+          {this.text}
+        </div>
       </host>
     );
   }
