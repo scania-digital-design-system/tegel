@@ -90,7 +90,11 @@ export class TdsBanner {
           this.host.getAttribute('aria-live') ? this.host.getAttribute('aria-live') : 'polite'
         }
         aria-atomic={this.host.getAttribute('aria-atomic')}
-        class={`${this.variant} ${this.hidden ? 'hide' : 'show'}`}
+        class={{
+          [this.variant]: true,
+          hide: this.hidden,
+          show: !this.hidden,
+        }}
       >
         {this.icon && (
           <div class={`banner-icon ${this.variant}`}>
