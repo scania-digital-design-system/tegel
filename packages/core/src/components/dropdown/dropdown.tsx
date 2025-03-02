@@ -72,11 +72,11 @@ export class TdsDropdown {
   @Prop() noResultText?: string = 'No result';
 
   /** Default value selected in the Dropdown. */
-  @Prop() defaultValue: string;
+  @Prop() initialValue: string | number | (string | number)[];
 
   @State() open: boolean = false;
 
-  @State() value: string[];
+  @State() value: (string | number)[];
 
   @State() filterResult: number;
 
@@ -119,9 +119,9 @@ export class TdsDropdown {
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  async setValue(value: string | string[], label?: string) {
-    let nextValue: string[];
-    if (typeof value === 'string') nextValue = [value];
+  async setValue(value: string | number | (string | number)[], label?: string) {
+    let nextValue: (string | number)[];
+    if (typeof value === 'string' || typeof value === 'number') nextValue = [value];
     else nextValue = value;
 
     if (!this.multiselect && nextValue.length > 1) {
@@ -165,7 +165,7 @@ export class TdsDropdown {
    * @internal
    */
   @Method()
-  async appendValue(value: string) {
+  async appendValue(value: string | number) {
     if (this.multiselect && this.value) {
       this.setValue([...this.value, value]);
     } else {
@@ -175,7 +175,7 @@ export class TdsDropdown {
 
   /** Method for removing a selected value in the Dropdown. */
   @Method()
-  async removeValue(oldValue: string) {
+  async removeValue(oldValue: string | number) {
     let label: string;
     if (this.multiselect) {
       this.getChildren()?.forEach((element: HTMLTdsDropdownOptionElement) => {
@@ -211,7 +211,7 @@ export class TdsDropdown {
   })
   tdsChange: EventEmitter<{
     name: string;
-    value: string;
+    value: (string | number)[];
   }>;
 
   /** Focus event for the Dropdown. */
@@ -323,7 +323,7 @@ export class TdsDropdown {
   }
 
   private setDefaultOption = () => {
-    if (this.defaultValue) {
+    if (this.initialValue) {
       const children = Array.from(this.host.children).filter(
         (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
       ) as HTMLTdsDropdownOptionElement[];
@@ -333,13 +333,12 @@ export class TdsDropdown {
         return;
       }
 
-      const defaultValues = this.multiselect
-        ? new Set(this.defaultValue.split(','))
-        : [this.defaultValue];
+      const initialValues =
+        typeof this.initialValue === 'object' ? this.initialValue : [this.initialValue];
 
       const childrenMap = new Map(children.map((element) => [element.value, element]));
 
-      const matchedValues = Array.from(defaultValues).filter((value) => {
+      const matchedValues = Array.from(initialValues).filter((value) => {
         const element = childrenMap.get(value);
         if (element) {
           element.setSelected(true);
@@ -353,7 +352,7 @@ export class TdsDropdown {
         this.setValueAttribute();
       } else {
         console.warn(
-          `TDS DROPDOWN: No matching option found for defaultValue "${this.defaultValue}"`,
+          `TDS DROPDOWN: No matching option found for initialValue "${this.initialValue}"`,
         );
       }
     }
@@ -497,7 +496,7 @@ export class TdsDropdown {
   private handleChange = () => {
     this.tdsChange.emit({
       name: this.name,
-      value: this.value?.map((value) => value).toString() ?? null,
+      value: this.value?.map((value) => value) ?? null,
     });
   };
 
