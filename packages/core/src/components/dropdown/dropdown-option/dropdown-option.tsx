@@ -25,7 +25,7 @@ import { TdsCheckboxCustomEvent } from '../../../components';
 export class TdsDropdownOption {
   @Element() host: HTMLElement;
 
-  /** Value for the Dropdown option. Can be either string or number. */
+  /** Value of the dropdown option */
   @Prop() value: string | number;
 
   /** Internal value storage that's always a string */

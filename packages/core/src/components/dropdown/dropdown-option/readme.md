@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                                                    | Type               | Default     |
-| ---------- | ---------- | -------------------------------------------------------------- | ------------------ | ----------- |
-| `disabled` | `disabled` | Sets the option as disabled.                                   | `boolean`          | `false`     |
-| `value`    | `value`    | Value for the Dropdown option. Can be either string or number. | `number \| string` | `undefined` |
+| Property   | Attribute  | Description                  | Type               | Default     |
+| ---------- | ---------- | ---------------------------- | ------------------ | ----------- |
+| `disabled` | `disabled` | Sets the option as disabled. | `boolean`          | `false`     |
+| `value`    | `value`    | Value of the dropdown option | `number \| string` | `undefined` |
 
 
 ## Events
