@@ -7,19 +7,19 @@
 
 ## Properties
 
-| Property   | Attribute  | Description                    | Type               | Default     |
-| ---------- | ---------- | ------------------------------ | ------------------ | ----------- |
-| `disabled` | `disabled` | Sets the option as disabled.   | `boolean`          | `false`     |
-| `value`    | `value`    | Value for the Dropdown option. | `number \| string` | `undefined` |
+| Property   | Attribute  | Description                                                    | Type               | Default     |
+| ---------- | ---------- | -------------------------------------------------------------- | ------------------ | ----------- |
+| `disabled` | `disabled` | Sets the option as disabled.                                   | `boolean`          | `false`     |
+| `value`    | `value`    | Value for the Dropdown option. Can be either string or number. | `number \| string` | `undefined` |
 
 
 ## Events
 
-| Event       | Description                          | Type                                                           |
-| ----------- | ------------------------------------ | -------------------------------------------------------------- |
-| `tdsBlur`   | Blur event for the Dropdown option.  | `CustomEvent<FocusEvent>`                                      |
-| `tdsFocus`  | Focus event for the Dropdown option. | `CustomEvent<FocusEvent>`                                      |
-| `tdsSelect` | Click event for the Dropdown option. | `CustomEvent<{ selected: boolean; value: string \| number; }>` |
+| Event       | Description                          | Type                                                 |
+| ----------- | ------------------------------------ | ---------------------------------------------------- |
+| `tdsBlur`   | Blur event for the Dropdown option.  | `CustomEvent<FocusEvent>`                            |
+| `tdsFocus`  | Focus event for the Dropdown option. | `CustomEvent<FocusEvent>`                            |
+| `tdsSelect` | Click event for the Dropdown option. | `CustomEvent<{ selected: boolean; value: string; }>` |
 
 
 ## Methods

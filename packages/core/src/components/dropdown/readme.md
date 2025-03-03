@@ -11,7 +11,7 @@
 | Property        | Attribute        | Description                                                                                                                                                | Type                           | Default       |
 | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------- |
 | `animation`     | `animation`      |                                                                                                                                                            | `"none" \| "slide"`            | `'slide'`     |
-| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `string`                       | `undefined`   |
+| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `number \| string`             | `undefined`   |
 | `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                                                                                      | `boolean`                      | `false`       |
 | `error`         | `error`          | Sets the Dropdown in an error state                                                                                                                        | `boolean`                      | `false`       |
 | `filter`        | `filter`         | Enables filtration in the Dropdown.                                                                                                                        | `boolean`                      | `false`       |
@@ -30,12 +30,12 @@
 
 ## Events
 
-| Event       | Description                    | Type                                                          |
-| ----------- | ------------------------------ | ------------------------------------------------------------- |
-| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                                     |
-| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: (string \| number)[]; }>` |
-| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                                     |
-| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                                     |
+| Event       | Description                    | Type                                            |
+| ----------- | ------------------------------ | ----------------------------------------------- |
+| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                       |
+| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
+| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                       |
+| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                       |
 
 
 ## Methods
@@ -60,19 +60,19 @@ Type: `Promise<void>`
 
 
 
-### `removeValue(oldValue: string | number) => Promise<{ value: string | number; label: string; }[]>`
+### `removeValue(oldValue: string) => Promise<{ value: string; label: string; }[]>`
 
 Method for removing a selected value in the Dropdown.
 
 #### Parameters
 
-| Name       | Type               | Description |
-| ---------- | ------------------ | ----------- |
-| `oldValue` | `string \| number` |             |
+| Name       | Type     | Description |
+| ---------- | -------- | ----------- |
+| `oldValue` | `string` |             |
 
 #### Returns
 
-Type: `Promise<{ value: string | number; label: string; }[]>`
+Type: `Promise<{ value: string; label: string; }[]>`
 
 
 
@@ -86,7 +86,7 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | number | (string | number)[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
+### `setValue(value: string | string[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
 
 Method for setting the value of the Dropdown.
 
@@ -104,10 +104,10 @@ dropdown.setValue(['option-1', 'option-2']);
 
 #### Parameters
 
-| Name    | Type                                       | Description |
-| ------- | ------------------------------------------ | ----------- |
-| `value` | `string \| number \| (string \| number)[]` |             |
-| `label` | `string`                                   |             |
+| Name    | Type                 | Description |
+| ------- | -------------------- | ----------- |
+| `value` | `string \| string[]` |             |
+| `label` | `string`             |             |
 
 #### Returns
 

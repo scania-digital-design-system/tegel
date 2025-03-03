@@ -71,7 +71,7 @@ export class TdsDropdown {
    * Setting it to an empty string disables message from showing up. */
   @Prop() noResultText?: string = 'No result';
 
-  /** Default value selected in the Dropdown. Can be string or number. */
+  /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string | number;
 
   @State() open: boolean = false;
