@@ -3,58 +3,52 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/dropdown/test/multiple-datatypes/default/index.html';
 
-let dropdownListElementOneButton;
-let dropdownListElementTwoButton;
-
-let firstMessage;
-let secondMessage;
-
-test.describe.parallel('tds-dropdown-multiple-datatypes-default', () => {
+test.describe('tds-dropdown-multiple-datatypes', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
-
-    /* click the dropdown button */
-    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
-    await dropdownButton.click();
-
-    /* get all dropdown options */
-    dropdownListElementOneButton = page
-      .locator('tds-dropdown-option')
-      .filter({ hasText: /Option 1 - string/ });
-
-    dropdownListElementTwoButton = page
-      .locator('tds-dropdown-option')
-      .filter({ hasText: /Option 2 - number/ });
-
-    await expect(dropdownListElementOneButton).toHaveCount(1);
-    await expect(dropdownListElementTwoButton).toHaveCount(1);
-
-    /* change the values to numbers for relevant dropdown option */
-    await page.evaluate(() => {
-      const twoButtonInEvaluate = document.getElementsByTagName('tds-dropdown-option')[1];
-      twoButtonInEvaluate.value = 2;
-    });
-
-    /* set objects for console logs for tdsSelect and tdsChange */
-    firstMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsSelect'));
-    secondMessage = page.waitForEvent('console', (msg) => msg.text().includes('tdsChange'));
   });
 
-  test('click dropdown option with string data type value', async () => {
-    /* click a string dropdown option button */
-    await dropdownListElementOneButton.click();
+  test('handles both text and numeric values as strings', async ({ page }) => {
+    // Open dropdown
+    await page.locator('tds-dropdown').click();
 
-    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
-    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 1 (string)');
-    expect((await secondMessage).text()).toBe('tdsChange - event.detail.value: [1] (string)');
-  });
+    // Test text value option
+    const textOption = page.locator('tds-dropdown-option').filter({ hasText: 'Text value option' });
+    const textSelectPromise = page.waitForEvent('console', (msg) =>
+      msg.text().includes('Selected value:'),
+    );
+    const textChangePromise = page.waitForEvent('console', (msg) =>
+      msg.text().includes('Changed value:'),
+    );
 
-  test('click dropdown option with number data type value', async () => {
-    /* click a string dropdown option button */
-    await dropdownListElementTwoButton.click();
+    await textOption.click();
 
-    /* expect specific tdsSelect and tdsChange messages, based on code in index.html */
-    expect((await firstMessage).text()).toBe('tdsSelect - event.detail.value: 2 (number)');
-    expect((await secondMessage).text()).toBe('tdsChange - event.detail.value: [2] (number)');
+    const textSelectMessage = await textSelectPromise;
+    const textChangeMessage = await textChangePromise;
+
+    expect(textSelectMessage.text()).toBe('Selected value: text-value type: string');
+    expect(textChangeMessage.text()).toBe('Changed value: text-value type: string');
+
+    // Open dropdown again
+    await page.locator('tds-dropdown').click();
+
+    // Test numeric value option
+    const numericOption = page
+      .locator('tds-dropdown-option')
+      .filter({ hasText: 'Numeric value option' });
+    const numericSelectPromise = page.waitForEvent('console', (msg) =>
+      msg.text().includes('Selected value:'),
+    );
+    const numericChangePromise = page.waitForEvent('console', (msg) =>
+      msg.text().includes('Changed value:'),
+    );
+
+    await numericOption.click();
+
+    const numericSelectMessage = await numericSelectPromise;
+    const numericChangeMessage = await numericChangePromise;
+
+    expect(numericSelectMessage.text()).toBe('Selected value: 123 type: string');
+    expect(numericChangeMessage.text()).toBe('Changed value: 123 type: string');
   });
 });
