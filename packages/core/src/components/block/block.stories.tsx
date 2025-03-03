@@ -80,7 +80,7 @@ const NestedTemplate = ({ outerModeVariant, componentTag }) =>
           : ''
       }>
         <tds-block component-tag="${componentTag}">
-          <${componentTag}>
+          <tds-block component-tag="${componentTag}">
             <h2 class="tds-headline-02">Outer Block (${componentTag})</h2>
             <p class="tds-body-01">This block is now structured using a <code>&lt;${componentTag}&gt;</code>.</p>
             <tds-block component-tag="aside">
@@ -95,7 +95,7 @@ const NestedTemplate = ({ outerModeVariant, componentTag }) =>
                 </tds-block>
               </aside>
             </tds-block>
-          </${componentTag}>
+          </tds-block> 
         </tds-block>
       </div>
     `,
