@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element, Host, State } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
 
@@ -18,6 +18,8 @@ import hasSlot from '../../utils/hasSlot';
 export class TdsCard {
   @Element() host: HTMLElement;
 
+  @State() fallbackImg: boolean = false;
+
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
@@ -34,7 +36,7 @@ export class TdsCard {
   @Prop() bodyImg: string;
 
   /** Alt text for the body image */
-  @Prop() bodyImgAlt: string;
+  @Prop() bodyImgAlt: string = 'Image unavailable';
 
   /** Divider for the body */
   @Prop() bodyDivider: boolean = false;
@@ -68,6 +70,10 @@ export class TdsCard {
     });
   };
 
+  handleImageError = () => {
+    this.fallbackImg = true;
+  };
+
   getCardHeader = () => {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
@@ -75,7 +81,7 @@ export class TdsCard {
     return (
       <div class="card-header">
         {usesThumbnailSlot && <slot name="thumbnail"></slot>}
-        <div class="header-subheader">
+        <div class="header-subheader" id={`header-${this.cardId}`}>
           {this.header && <span class="header">{this.header}</span>}
           {usesHeaderSlot && <slot name="header"></slot>}
           {this.subheader && <span class="subheader">{this.subheader}</span>}
@@ -89,12 +95,22 @@ export class TdsCard {
     const usesBodySlot = hasSlot('body', this.host);
     const usesBodyImageSlot = hasSlot('body-image', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
+    const bodyId = `body-${this.cardId}`;
     return (
-      <div class={this.stretch && 'stretch'}>
+      <div class={this.stretch && 'stretch'} aria-describedby={usesBodySlot ? bodyId : null}>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
-        <div class={`card-body`}>
+        <div class="card-body" id={bodyId}>
           {usesBodyImageSlot && <slot name="body-image"></slot>}
-          {this.bodyImg && <img class="card-body-img" src={this.bodyImg} alt={this.bodyImgAlt} />}
+          {this.bodyImg && !this.fallbackImg ? (
+            <img
+              class="card-body-img"
+              src={this.bodyImg}
+              alt={this.bodyImgAlt}
+              onError={this.handleImageError}
+            />
+          ) : (
+            <div class="fallback-img">{this.bodyImgAlt}</div>
+          )}
           {this.imagePlacement === 'above-header' && this.getCardHeader()}
           {this.bodyDivider && <tds-divider></tds-divider>}
           {usesBodySlot && <slot name="body"></slot>}
@@ -112,14 +128,16 @@ export class TdsCard {
       [`${this.imagePlacement}-stretch`]: this.stretch,
     };
 
+    const ariaLabel = this.header ? this.header : `Card ${this.cardId}`;
+
     return (
       <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
         {this.clickable ? (
           <button
             class={cardStyle}
-            onClick={() => {
-              this.handleClick();
-            }}
+            onClick={this.handleClick}
+            aria-label={ariaLabel}
+            aria-describedby={`header-${this.cardId}`}
           >
             {this.getCardContent()}
           </button>
