@@ -15,9 +15,17 @@ export class TdsBadge {
   /** Sets component size. */
   @Prop() size: 'lg' | 'sm' = 'lg';
 
+  /** Defines aria-live attribute */
+  @Prop() ariaLive: 'off' | 'polite' | 'assertive' = 'polite';
+
+  /** Defines the template for aria-label, allowing localization */
+  @Prop() ariaLabelTemplate: string = 'Notification badge with {value} new notifications';
+
   @State() shape: string = '';
 
   @State() text: string = '';
+
+  @State() ariaLabel: string = '';
 
   @Watch('value')
   @Watch('size')
@@ -32,16 +40,15 @@ export class TdsBadge {
   checkProps() {
     const valueAsNumber = parseInt(this.value);
     if (!Number.isNaN(valueAsNumber) && this.size !== 'sm') {
-      this.shape = this.value.toString().length >= 2 ? 'pill' : '';
+      this.shape = this.value.length >= 2 ? 'pill' : '';
       this.size = 'lg';
       this.text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
+      this.ariaLabel = this.ariaLabelTemplate.replace('{value}', this.text);
     } else {
-      // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
-      if (this.value !== '' && this.size !== 'sm') {
-        console.warn(
-          'The provided value is either empty or string, please provide value as number.',
-        );
-      }
+      this.ariaLabel =
+        this.value.trim() === ''
+          ? this.ariaLabelTemplate.replace('{value}', 'no')
+          : 'The provided value is either empty or a string, please provide a number.';
     }
   }
 
@@ -54,8 +61,12 @@ export class TdsBadge {
           'tds-badge-pill': this.shape === 'pill',
           'tds-badge-hidden': this.hidden,
         }}
+        aria-label={this.ariaLabel}
+        aria-live={this.ariaLive}
       >
-        <div class="tds-badge-text">{this.text}</div>
+        <div class="tds-badge-text" aria-hidden="true">
+          {this.text}
+        </div>
       </host>
     );
   }

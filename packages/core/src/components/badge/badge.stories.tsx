@@ -78,22 +78,21 @@ const Template = ({ value, size, hidden, demoCode }) =>
     ${
       demoCode
         ? `<style>
-    /* Note: Demo classes used here are just for demo purposes in Storybook */
     .badge-demo-box {
-      margin:5px;
+      margin: 5px;
       height: 32px;
       width: 32px;
       position: relative;
       background-color: #C4C4C4;
     }
 
-    .badge-demo-box tds-badge[size="lg"]{
+    .badge-demo-box tds-badge[size="lg"] {
       position: absolute;
       left: 16px;
       top: -5px;
     }
 
-    .badge-demo-box tds-badge[size="sm"]{
+    .badge-demo-box tds-badge[size="sm"] {
       position: absolute;
       left: 26px;
       top: -2px;
@@ -108,7 +107,9 @@ const Template = ({ value, size, hidden, demoCode }) =>
         ${hidden ? 'hidden' : ''}
         size="${size}">
       </tds-badge>
-    </div>`,
+    </div>
+
+    `,
   );
 
 export const Default = Template.bind({});
