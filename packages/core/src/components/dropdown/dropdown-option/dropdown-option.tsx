@@ -11,6 +11,7 @@ import {
   Watch,
 } from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
+import { convertToString } from '../../../utils/convertToString';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the option label text.
@@ -84,12 +85,11 @@ export class TdsDropdownOption {
 
   @Watch('value')
   valueWatcher(newValue: string | number) {
-    this.internalValue = String(newValue);
+    this.internalValue = convertToString(newValue);
   }
 
   componentWillLoad() {
-    // Initialize the internal value
-    this.internalValue = String(this.value);
+    this.internalValue = convertToString(this.value);
   }
 
   componentWillRender = () => {
