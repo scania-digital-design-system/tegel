@@ -98,6 +98,14 @@ export class TdsTableBodyRow {
     });
   }
 
+  @Listen('click')
+  click(event: MouseEvent) {
+    this.tableEl = this.host.closest('tds-table');
+    console.log('Table Id: ', this.tableEl.tableId);
+
+    console.log('event', event);
+  }
+
   handleKeyDown(e) {
     if (this.clickable && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
@@ -122,15 +130,14 @@ export class TdsTableBodyRow {
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl?.tableId;
-
-    console.log('1', this.tableEl);
-    console.log('2', this.tableId);
   }
 
   componentWillLoad() {
-    relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
-    });
+    if (this.tableEl) {
+      relevantTableProps.forEach((tablePropName) => {
+        this[tablePropName] = this.tableEl[tablePropName];
+      });
+    }
   }
 
   render() {
