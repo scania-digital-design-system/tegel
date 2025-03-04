@@ -101,15 +101,13 @@ export class TdsCard {
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
         <div class="card-body" id={bodyId}>
           {usesBodyImageSlot && <slot name="body-image"></slot>}
-          {this.bodyImg && !this.fallbackImg ? (
+          {this.bodyImg && !this.fallbackImg && (
             <img
               class="card-body-img"
               src={this.bodyImg}
               alt={this.bodyImgAlt}
               onError={this.handleImageError}
             />
-          ) : (
-            <div class="fallback-img">{this.bodyImgAlt}</div>
           )}
           {this.imagePlacement === 'above-header' && this.getCardHeader()}
           {this.bodyDivider && <tds-divider></tds-divider>}
