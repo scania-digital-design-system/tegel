@@ -55,6 +55,7 @@ export class TdsBadge {
   render() {
     return (
       <host
+        role="status"
         class={{
           'tds-badge': true,
           [`tds-badge-${this.size}`]: true,
