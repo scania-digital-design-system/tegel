@@ -63,16 +63,28 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    liveAnnounce: {
+      name: 'Live Announce',
+      description: 'Defines aria-live attribute.',
+      control: {
+        type: 'radio',
+      },
+      options: ['off', 'polite', 'assertive'],
+      table: {
+        defaultValue: { summary: 'polite' },
+      },
+    },
   },
   args: {
     size: 'lg',
     value: 1,
     hidden: false,
     demoCode: false,
+    liveAnnounce: 'polite',
   },
 };
 
-const Template = ({ value, size, hidden, demoCode }) =>
+const Template = ({ value, size, hidden, demoCode, liveAnnounce }) =>
   formatHtmlPreview(
     `
     ${
@@ -103,6 +115,7 @@ const Template = ({ value, size, hidden, demoCode }) =>
 
     <div class="${demoCode ? 'badge-demo-box' : ''}">
       <tds-badge
+        live-announce="${liveAnnounce}"
         ${value ? `value="${value}"` : ''}
         ${hidden ? 'hidden' : ''}
         size="${size}">
