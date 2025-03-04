@@ -121,13 +121,15 @@ export class TdsTableBodyRow {
 
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
-    relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
-    });
+    if (this.tableEl) {
+      relevantTableProps.forEach((tablePropName) => {
+        this[tablePropName] = this.tableEl[tablePropName];
+      });
+    }
   }
 
   render() {
