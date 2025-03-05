@@ -46,6 +46,7 @@ export class TdsBlock {
 
   private ensureKeyboardAccessibility() {
     const childElements = Array.from(this.host.children);
+
     childElements.forEach((child) => {
       const isInteractive =
         child instanceof HTMLButtonElement ||
@@ -53,14 +54,11 @@ export class TdsBlock {
         child instanceof HTMLInputElement ||
         child instanceof HTMLSelectElement ||
         child instanceof HTMLTextAreaElement ||
-        child.getAttribute('tabindex') !== null;
-
-      if (!isInteractive) {
         child.getAttribute('tabindex') !== null ||
         child.getAttribute('role') === 'button' ||
         child.getAttribute('role') === 'link';
 
-      if (!isInteractive && child.getAttribute('role') === null) {
+      if (!isInteractive) {
         child.setAttribute('tabindex', '-1');
       }
     });
