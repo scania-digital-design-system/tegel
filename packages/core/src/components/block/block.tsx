@@ -21,7 +21,7 @@ export class TdsBlock {
 
   /** Specifies the HTML tag to be used for the component wrapper.
    *
-   *  @default 'section'. */
+   *  @default 'div'. */
   @Prop() componentTag:
     | 'section'
     | 'div'
