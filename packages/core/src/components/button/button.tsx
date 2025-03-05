@@ -71,6 +71,7 @@ export class TdsButton {
             'only-icon': this.onlyIcon,
             [`animation-${this.animation}`]: this.animation !== 'none',
           }}
+          {...(this.onlyIcon && { 'aria-label': 'button' })}
         >
           {this.text}
           {hasLabelSlot && !this.onlyIcon && <slot name="label" />}
