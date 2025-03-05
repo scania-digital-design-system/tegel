@@ -30,11 +30,11 @@ const SingleTemplate = ({ modeVariant, componentTag }) =>
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
         } 
         component-tag="${componentTag}">
-        <${componentTag}>
+        <section>
           <h2 class="tds-headline-02">Semantic Block</h2>
-          <p class="tds-body-01">This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
+          <p class="tds-body-01">This block is now structured using a <code>&lt;section&gt;</code> element for better accessibility.</p>
           <button class="tds-button">Click me</button>
-        </${componentTag}>
+        <section>
       </tds-block>
     `,
   );
