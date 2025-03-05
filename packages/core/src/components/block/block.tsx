@@ -56,7 +56,12 @@ export class TdsBlock {
         child.getAttribute('tabindex') !== null;
 
       if (!isInteractive) {
-        child.setAttribute('tabindex', '0');
+        child.getAttribute('tabindex') !== null ||
+        child.getAttribute('role') === 'button' ||
+        child.getAttribute('role') === 'link';
+
+      if (!isInteractive && child.getAttribute('role') === null) {
+        child.setAttribute('tabindex', '-1');
       }
     });
   }
