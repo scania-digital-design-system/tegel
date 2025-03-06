@@ -44,30 +44,6 @@ export class TdsBlock {
     return level;
   }
 
-  private ensureKeyboardAccessibility() {
-    const childElements = Array.from(this.host.children);
-
-    childElements.forEach((child) => {
-      const isInteractive =
-        child instanceof HTMLButtonElement ||
-        child instanceof HTMLAnchorElement ||
-        child instanceof HTMLInputElement ||
-        child instanceof HTMLSelectElement ||
-        child instanceof HTMLTextAreaElement ||
-        child.getAttribute('tabindex') !== null ||
-        child.getAttribute('role') === 'button' ||
-        child.getAttribute('role') === 'link';
-
-      if (!isInteractive) {
-        child.setAttribute('tabindex', '-1');
-      }
-    });
-  }
-
-  componentDidLoad() {
-    this.ensureKeyboardAccessibility();
-  }
-
   render() {
     const TagType = this.componentTag as keyof HTMLElementTagNameMap;
     const nestingLevel = this.getNestingLevel();
