@@ -13,17 +13,17 @@ The `tds-block` component can be nested to create more complex layouts. When nes
 
 ## Properties
 
-| Property       | Attribute       | Description                                                                        | Type                                                                                    | Default |
-| -------------- | --------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------- |
-| `componentTag` | `component-tag` | Specifies the HTML tag to be used for the component wrapper. Default is 'section'. | `"article" \| "aside" \| "div" \| "footer" \| "header" \| "main" \| "nav" \| "section"` | `'div'` |
-| `modeVariant`  | `mode-variant`  | Mode variant of the component, based on current mode.                              | `"primary" \| "secondary"`                                                              | `null`  |
+| Property       | Attribute       | Description                                                  | Type                                                                                    | Default |
+| -------------- | --------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------- |
+| `componentTag` | `component-tag` | Specifies the HTML tag to be used for the component wrapper. | `"article" \| "aside" \| "div" \| "footer" \| "header" \| "main" \| "nav" \| "section"` | `'div'` |
+| `modeVariant`  | `mode-variant`  | Mode variant of the component, based on current mode.        | `"primary" \| "secondary"`                                                              | `null`  |
 
 
 ## Slots
 
-| Slot | Description                                |
-| ---- | ------------------------------------------ |
-|      | Default slot for content inside the block. |
+| Slot | Description                                                   |
+| ---- | ------------------------------------------------------------- |
+|      | <default> - <b>Default</b> slot for content inside the block. |
 
 
 ----------------------------------------------
