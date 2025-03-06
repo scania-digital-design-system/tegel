@@ -8,8 +8,10 @@ import {
   Event,
   EventEmitter,
   Method,
+  Watch,
 } from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
+import { convertToString } from '../../../utils/convertToString';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the option label text.
@@ -24,8 +26,11 @@ import { TdsCheckboxCustomEvent } from '../../../components';
 export class TdsDropdownOption {
   @Element() host: HTMLElement;
 
-  /** Value for the Dropdown option. */
-  @Prop() value: string;
+  /** Value of the dropdown option */
+  @Prop() value: string | number;
+
+  /** Internal value storage that's always a string */
+  @State() internalValue: string;
 
   /** Sets the option as disabled. */
   @Prop() disabled: boolean = false;
@@ -78,6 +83,15 @@ export class TdsDropdownOption {
   })
   tdsBlur: EventEmitter<FocusEvent>;
 
+  @Watch('value')
+  valueWatcher(newValue: string | number) {
+    this.internalValue = convertToString(newValue);
+  }
+
+  componentWillLoad() {
+    this.internalValue = convertToString(this.value);
+  }
+
   componentWillRender = () => {
     this.parentElement =
       this.host.parentElement.tagName === 'TDS-DROPDOWN'
@@ -91,10 +105,10 @@ export class TdsDropdownOption {
   handleSingleSelect = () => {
     if (!this.disabled) {
       this.selected = true;
-      this.parentElement.appendValue(this.value);
+      this.parentElement.appendValue(this.internalValue);
       this.parentElement.close();
       this.tdsSelect.emit({
-        value: this.value,
+        value: this.internalValue,
         selected: this.selected,
       });
     }
@@ -105,17 +119,17 @@ export class TdsDropdownOption {
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
-        this.parentElement.appendValue(this.value);
+        this.parentElement.appendValue(this.internalValue);
         this.selected = true;
         this.tdsSelect.emit({
-          value: this.value,
+          value: this.internalValue,
           selected: this.selected,
         });
       } else {
-        this.parentElement.removeValue(this.value);
+        this.parentElement.removeValue(this.internalValue);
         this.selected = false;
         this.tdsSelect.emit({
-          value: this.value,
+          value: this.internalValue,
           selected: this.selected,
         });
       }

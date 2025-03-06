@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dropdown - Multiple datatypes testing - default</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="../../../../../../dist/tegel/tegel.css" />
+    <script type="module">
+      import { defineCustomElements } from '../../../../../../loader/index.es2017.js';
+      defineCustomElements();
+    </script>
+  </head>
+
+  <body>
+    <tds-dropdown label="Label text" placeholder="Select an option">
+      <tds-dropdown-option value="text-value">Text value option</tds-dropdown-option>
+      <tds-dropdown-option value="123">Numeric value option</tds-dropdown-option>
+    </tds-dropdown>
+  </body>
+
+  <script>
+    const dropdown = document.querySelector('tds-dropdown');
+
+    dropdown.addEventListener('tdsSelect', (event) => {
+      const value = event.detail.value;
+      console.log(`Selected value: ${value} type: ${typeof value}`);
+    });
+
+    dropdown.addEventListener('tdsChange', (event) => {
+      const value = Array.isArray(event.detail.value) ? event.detail.value[0] : event.detail.value;
+      console.log(`Changed value: ${value} type: ${typeof value}`);
+    });
+  </script>
+</html>
