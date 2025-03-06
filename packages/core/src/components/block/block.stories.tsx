@@ -33,7 +33,6 @@ const SingleTemplate = ({ modeVariant, componentTag }) =>
         <section>
           <h2 class="tds-headline-02">Semantic Block</h2>
           <p class="tds-body-01">This block is now structured using a <code>&lt;section&gt;</code> element for better accessibility.</p>
-          <button class="tds-button">Click me</button>
         </section>
       </tds-block>
     `,
