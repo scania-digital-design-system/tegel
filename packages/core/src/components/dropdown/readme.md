@@ -11,7 +11,7 @@
 | Property        | Attribute        | Description                                                                                                                                                | Type                           | Default       |
 | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ------------- |
 | `animation`     | `animation`      |                                                                                                                                                            | `"none" \| "slide"`            | `'slide'`     |
-| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `string`                       | `undefined`   |
+| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `number \| string`             | `undefined`   |
 | `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                                                                                      | `boolean`                      | `false`       |
 | `error`         | `error`          | Sets the Dropdown in an error state                                                                                                                        | `boolean`                      | `false`       |
 | `filter`        | `filter`         | Enables filtration in the Dropdown.                                                                                                                        | `boolean`                      | `false`       |
@@ -86,7 +86,7 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | string[], label?: string) => Promise<{ value: string; label: string; }[]>`
+### `setValue(value: string | string[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
 
 Method for setting the value of the Dropdown.
 
@@ -111,7 +111,7 @@ dropdown.setValue(['option-1', 'option-2']);
 
 #### Returns
 
-Type: `Promise<{ value: string; label: string; }[]>`
+Type: `Promise<{ value: string | number; label: string; }[]>`
 
 
 
