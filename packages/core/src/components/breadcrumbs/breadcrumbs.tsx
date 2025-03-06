@@ -15,7 +15,7 @@ export class TdsBreadcrumbs {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
     return (
       <nav>
-        <div role="list" class={'tds-breadcrumb'}>
+        <div class={'tds-breadcrumb'}>
           <slot></slot>
         </div>
       </nav>
