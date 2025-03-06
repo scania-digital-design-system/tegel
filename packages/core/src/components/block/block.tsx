@@ -19,9 +19,7 @@ export class TdsBlock {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Specifies the HTML tag to be used for the component wrapper.
-   *
-   *  @default 'div'. */
+  /** Specifies the HTML tag to be used for the component wrapper. */
   @Prop() componentTag:
     | 'section'
     | 'div'
