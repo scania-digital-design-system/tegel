@@ -1,7 +1,7 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
 /**
- * @slot - Default slot for content inside the block.
+ * @slot - <default> - <b>Default</b> slot for content inside the block.
  *
  * @example
  * <tds-block>
