@@ -16,16 +16,13 @@ export class TdsBadge {
   @Prop() size: 'lg' | 'sm' = 'lg';
 
   /** Defines aria-live attribute */
-  @Prop() liveAnnounce: 'off' | 'polite' | 'assertive' = 'polite';
+  @Prop() ariaLevelValue: 'off' | 'polite' | 'assertive' = 'polite';
 
-  /** Defines the template for aria-label, allowing localization */
-  @Prop() ariaLabelTemplate: string = 'Notification badge with {value} new notifications';
+  @State() ariaLabelValue: string = '';
 
   @State() shape: string = '';
 
   @State() text: string = '';
-
-  @State() ariaLabel: string = '';
 
   @Watch('value')
   @Watch('size')
@@ -43,12 +40,6 @@ export class TdsBadge {
       this.shape = this.value.length >= 2 ? 'pill' : '';
       this.size = 'lg';
       this.text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
-      this.ariaLabel = this.ariaLabelTemplate.replace('{value}', this.text);
-    } else {
-      this.ariaLabel =
-        this.value.trim() === ''
-          ? this.ariaLabelTemplate.replace('{value}', 'no')
-          : 'The provided value is either empty or a string, please provide a number.';
     }
   }
 
@@ -62,8 +53,8 @@ export class TdsBadge {
           'tds-badge-pill': this.shape === 'pill',
           'tds-badge-hidden': this.hidden,
         }}
-        aria-label={this.ariaLabel}
-        aria-live={this.liveAnnounce}
+        aria-label={this.ariaLabelValue}
+        aria-live={this.ariaLevelValue}
       >
         <div class="tds-badge-text" aria-hidden="true">
           {this.text}
