@@ -125,12 +125,12 @@ export class TdsCheckbox {
   }
 
   componentDidRender() {
-    const labels = this.host.getElementsByTagName('label');
-    const firstLabel = labels[0];
-    const missingText = firstLabel.children.length === 0;
+    const label = this.host.getElementsByTagName('label')[0];
+    const div = label.getElementsByTagName('div')[0];
+    const missingText = div.innerHTML.length === 0;
 
     if (missingText) {
-      firstLabel.innerHTML = '<div>Checkbox</div>';
+      label.innerText = 'Checkbox';
     }
   }
 
