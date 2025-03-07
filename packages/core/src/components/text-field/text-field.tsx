@@ -47,6 +47,9 @@ export class TdsTextField {
   /** Set input in readonly state. Hides the suffix slot if true. */
   @Prop() readOnly: boolean = false;
 
+  /** Adds the read-only icon to the Text Field. Requires Read Only to be enabled. */
+  @Prop() readOnlyIcon: boolean = false;
+
   /** Size of the input */
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
 
@@ -69,7 +72,7 @@ export class TdsTextField {
   @Prop() autofocus: boolean = false;
 
   /** Listen to the focus state of the input */
-  @State() focusInput;
+  @State() focusInput: boolean = false;
 
   /** Change event for the Text Field */
   @Event({
@@ -151,7 +154,7 @@ export class TdsTextField {
           'text-field-container-label-inside':
             this.labelPosition === 'inside' && this.size !== 'sm',
           'form-text-field-disabled': this.disabled,
-          'form-text-field-readonly': this.readOnly,
+          'form-text-field-readonly': this.disabled ? false : this.readOnly,
           'tds-mode-variant-primary': this.modeVariant === 'primary',
           'tds-mode-variant-secondary': this.modeVariant === 'secondary',
           'form-text-field-md': this.size === 'md',
@@ -192,7 +195,7 @@ export class TdsTextField {
               }}
               type={this.type}
               disabled={this.disabled}
-              readonly={this.readOnly}
+              readonly={this.disabled ? false : this.readOnly}
               placeholder={this.placeholder}
               value={this.value}
               autofocus={this.autofocus}
@@ -233,9 +236,12 @@ export class TdsTextField {
               <slot name="suffix" />
             </div>
           )}
-          <span class="text-field-icon__readonly">
-            <tds-icon name="edit_inactive" size="20px"></tds-icon>
-          </span>
+
+          {this.readOnly && this.readOnlyIcon && (
+            <span class="text-field-icon__readonly">
+              <tds-icon name="edit_inactive" size="20px"></tds-icon>
+            </span>
+          )}
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
