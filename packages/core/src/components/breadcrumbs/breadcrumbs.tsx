@@ -14,8 +14,8 @@ export class TdsBreadcrumbs {
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
     return (
-      <nav>
-        <div role="list" class={'tds-breadcrumb'}>
+      <nav aria-label="Breadcrumb">
+        <div role="list" class="tds-breadcrumb">
           <slot></slot>
         </div>
       </nav>

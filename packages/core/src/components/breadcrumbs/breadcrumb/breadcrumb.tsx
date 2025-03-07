@@ -14,7 +14,11 @@ export class TdsBreadcrumb {
 
   render() {
     return (
-      <div role="listitem" class={`${this.current ? 'current' : ''}`}>
+      <div
+        role="listitem"
+        class={{ current: this.current }}
+        {...(this.current ? { 'aria-current': 'page' } : {})}
+      >
         <slot />
       </div>
     );
