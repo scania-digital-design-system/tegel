@@ -36,7 +36,7 @@ export class TdsCard {
   @Prop() bodyImg: string;
 
   /** Alt text for the body image */
-  @Prop() bodyImgAlt: string = 'Image unavailable';
+  @Prop() bodyImgAlt: string;
 
   /** Divider for the body */
   @Prop() bodyDivider: boolean = false;
