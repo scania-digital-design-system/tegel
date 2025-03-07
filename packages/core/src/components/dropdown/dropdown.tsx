@@ -75,8 +75,8 @@ export class TdsDropdown {
   /** Default value selected in the Dropdown. */
   @Prop() defaultValue: string | number;
 
-  /** Value of the dropdown. For multiselect, provide array of strings. For single select, provide a string. */
-  @Prop({ mutable: true }) value: string | string[] = null;
+  /** Value of the dropdown. For multiselect, provide array of strings/numbers. For single select, provide a string/number. */
+  @Prop({ mutable: true }) value: string | number | (string | number)[] = null;
 
   @State() open: boolean = false;
 
@@ -95,7 +95,7 @@ export class TdsDropdown {
   private inputElement: HTMLInputElement;
 
   @Watch('value')
-  handleValueChange(newValue: string | string[]) {
+  handleValueChange(newValue: string | number | (string | number)[]) {
     // Normalize to array
     const normalizedValue = this.normalizeValue(newValue);
 
@@ -105,13 +105,22 @@ export class TdsDropdown {
     }
   }
 
-  private normalizeValue(value: string | string[] | null): string[] {
+  private normalizeValue(value: string | number | (string | number)[] | null): string[] {
     if (!value || value === '') return []; // Handle both null and empty string
+
     // For multiselect, keep array. For single select, wrap in array
     if (this.multiselect) {
-      return Array.isArray(value) ? value : value.split(',').filter((v) => v !== '');
+      if (Array.isArray(value)) {
+        return convertArrayToStrings(value);
+      }
+      return value
+        .toString()
+        .split(',')
+        .filter((v) => v !== '');
     }
-    return Array.isArray(value) ? value : [value];
+
+    // Single select - convert to string array
+    return Array.isArray(value) ? convertArrayToStrings(value) : [convertToString(value)];
   }
 
   private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
@@ -154,7 +163,8 @@ export class TdsDropdown {
 
   private updateOptionElements() {
     this.getChildren()?.forEach((element) => {
-      element.setSelected(this.selectedOptions.includes(element.value));
+      // Convert element.value to string for comparison
+      element.setSelected(this.selectedOptions.includes(convertToString(element.value)));
     });
   }
 
@@ -178,8 +188,13 @@ export class TdsDropdown {
   }
 
   @Method()
-  async setValue(value: string | string[]) {
-    const normalizedValue = this.normalizeValue(value);
+  async setValue(value: string | number | string[] | number[]) {
+    let normalizedValue: string[];
+    if (Array.isArray(value)) {
+      normalizedValue = convertArrayToStrings(value);
+    } else {
+      normalizedValue = [convertToString(value)];
+    }
     this.updateDropdownState(normalizedValue);
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
@@ -223,85 +238,6 @@ export class TdsDropdown {
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-  async setValue(value: string | string[] | number | number[]) {
-    let nextValue: string[];
-    if (Array.isArray(value)) {
-      nextValue = convertArrayToStrings(value);
-    } else {
-      nextValue = [convertToString(value)];
-    }
-
-    if (!this.multiselect && nextValue.length > 1) {
-      console.warn('Tried to select multiple items, but multiselect is not enabled.');
-      nextValue = [nextValue[0]];
-    }
-
-    nextValue = [...new Set(nextValue)];
-
-    this.internalReset();
-
-    for (let i = 0; i < nextValue.length; i++) {
-      const optionExist = this.getChildren().some(
-        (element: HTMLTdsDropdownOptionElement) => element.value === nextValue[i],
-      );
-      if (!optionExist) {
-        nextValue.splice(i, 1);
-      }
-    }
-
-    this.value = nextValue;
-    this.setValueAttribute();
-    this.selectChildrenAsSelectedBasedOnSelectionProp();
-    this.handleChange();
-
-    /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
-    /* https://tegel.atlassian.net/browse/CDEP-2703 */
-    const selection = this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
-      value: element.value,
-      label: element.textContent.trim(),
-    }));
-
-    // Update inputElement value and placeholder text
-    if (this.filter) {
-      this.inputElement.value = this.getValue();
-    }
-    return selection;
-  }
-
-  /**
-   * @internal
-   */
-  @Method()
-  async appendValue(value: string) {
-    if (this.multiselect && this.value) {
-      this.setValue([...this.value, value]);
-    } else {
-      this.setValue(value);
-    }
-  }
-
-  /** Method for removing a selected value in the Dropdown. */
-  @Method()
-  async removeValue(oldValue: string) {
-    let label: string;
-    if (this.multiselect) {
-      this.getChildren()?.forEach((element: HTMLTdsDropdownOptionElement) => {
-        if (element.value === oldValue) {
-          this.value = this.value?.filter((value) => value !== element.value);
-          label = element.textContent.trim();
-          element.setSelected(false);
-        }
-        return element;
-      });
-    } else {
-      this.reset();
-    }
-    this.handleChange();
-    this.setValueAttribute();
-    /* This returns an array of object with a value and label pair. This is ONLY to not break the API. Should be removed for 2.0. */
-    /* https://tegel.atlassian.net/browse/CDEP-2703 */
-    return this.value?.map((value) => ({ value, label }));
-  }
 
   /** Method for closing the Dropdown. */
   @Method()
@@ -427,7 +363,11 @@ export class TdsDropdown {
 
   componentWillLoad() {
     if (this.defaultValue && !this.value) {
-      const initialValue = this.multiselect ? this.defaultValue.split(',') : [this.defaultValue];
+      // Convert defaultValue to string before splitting
+      const defaultValueStr = convertToString(this.defaultValue);
+      const initialValue = this.multiselect
+        ? defaultValueStr.split(',').map(convertToString)
+        : [convertToString(this.defaultValue)];
       this.updateDropdownState(initialValue);
     }
   }
@@ -444,12 +384,12 @@ export class TdsDropdown {
 
   private setDefaultOption = () => {
     if (this.internalDefaultValue) {
-      const children = Array.from(this.host.children).filter(
-        (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
-      ) as HTMLTdsDropdownOptionElement[];
+      // Convert the internal default value to an array if it's not already
+      const defaultValues = this.multiselect
+        ? this.internalDefaultValue.split(',')
+        : [this.internalDefaultValue];
 
-      const normalizedValues = Array.from(defaultValues);
-      this.updateDropdownState(normalizedValues);
+      this.updateDropdownState(defaultValues);
     }
   };
 
@@ -494,32 +434,6 @@ export class TdsDropdown {
     } else {
       this.host.setAttribute('value', this.selectedOptions.join(','));
     }
-  };
-
-  getOpenDirection = () => {
-    if (this.openDirection === 'auto' || !this.openDirection) {
-      const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
-      const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
-      const viewportHeight = window.innerHeight;
-      if (distanceToBottom + dropdownMenuHeight + 57 > viewportHeight) {
-        return 'up';
-      }
-      return 'down';
-    }
-    return this.openDirection;
-  };
-
-  private handleToggleOpen = () => {
-    if (!this.disabled) {
-      this.open = !this.open;
-      if (this.open) {
-        this.focusInputElement();
-      }
-    }
-  };
-
-  private focusInputElement = () => {
-    if (this.inputElement) this.inputElement.focus();
   };
 
   getOpenDirection = () => {
@@ -600,6 +514,9 @@ export class TdsDropdown {
     this.tdsBlur.emit(event);
   };
 
+  /**
+   * @internal
+   */
   @Method()
   async appendValue(value: string) {
     if (this.multiselect) {
@@ -608,12 +525,6 @@ export class TdsDropdown {
       this.updateDropdownState([value]);
     }
   }
-  private handleChange = () => {
-    this.tdsChange.emit({
-      name: this.name,
-      value: this.value ? convertArrayToStrings(this.value).join(',') : null,
-    });
-  };
 
   private resetInput = () => {
     const inputEl = this.host.querySelector('input');
