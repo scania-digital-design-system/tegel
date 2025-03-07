@@ -1,4 +1,4 @@
-import { Component, h, Element } from '@stencil/core';
+import { Component, h, Element, Prop } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the breadcrumb elements.
@@ -11,10 +11,13 @@ import { Component, h, Element } from '@stencil/core';
 export class TdsBreadcrumbs {
   @Element() host: HTMLElement;
 
+  /** Optional label for the breadcrumbs navigation 1 2 3 */
+  @Prop() ariaLabelValue: string = 'Breadcrumbs';
+
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
     return (
-      <nav>
+      <nav aria-label={this.ariaLabelValue}>
         <div role="list" class={'tds-breadcrumb'}>
           <slot></slot>
         </div>
