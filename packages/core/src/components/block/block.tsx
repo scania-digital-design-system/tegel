@@ -1,7 +1,12 @@
 import { Component, h, Prop, Element } from '@stencil/core';
 
 /**
- * @slot <default> - <b>Unnamed slot.</b> For the content.
+ * @slot - <default> - <b>Default</b> slot for content inside the block.
+ *
+ * @example
+ * <tds-block>
+ *   <section>Semantic section content</section>
+ * </tds-block>
  */
 @Component({
   tag: 'tds-block',
@@ -13,6 +18,17 @@ export class TdsBlock {
 
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
+
+  /** Specifies the HTML tag to be used for the component wrapper. */
+  @Prop() componentTag:
+    | 'section'
+    | 'div'
+    | 'article'
+    | 'aside'
+    | 'header'
+    | 'footer'
+    | 'nav'
+    | 'main' = 'div';
 
   private getNestingLevel(): number {
     let level = 0;
@@ -27,6 +43,7 @@ export class TdsBlock {
   }
 
   render() {
+    const TagType = this.componentTag as keyof HTMLElementTagNameMap;
     const nestingLevel = this.getNestingLevel();
 
     let evenOddClass = '';
@@ -39,13 +56,13 @@ export class TdsBlock {
     }
 
     return (
-      <div
+      <TagType
         class={`tds-block ${evenOddClass} ${
           this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
         }`}
       >
         <slot></slot>
-      </div>
+      </TagType>
     );
   }
 }
