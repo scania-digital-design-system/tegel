@@ -70,13 +70,16 @@ export default {
 const Template = ({ label, checked, disabled, indeterminate }) =>
   formatHtmlPreview(`
     <tds-checkbox
-        ${checked ? 'checked' : ''}
-        ${disabled ? 'disabled' : ''}
-        ${indeterminate ? 'indeterminate' : ''}
-        value="checkbox-1"
-        checkbox-id="first-checkbox"
-        >
-        <div slot="label">${label}</div>
+      ${checked ? 'checked' : ''}
+      ${disabled ? 'disabled' : ''}
+      ${indeterminate ? 'indeterminate' : ''}
+      value="checkbox-1"
+      checkbox-id="first-checkbox"
+      aria-label-value="A checkbox component on a demo page in Storybook to showcase how it can be used"
+      aria-describedby="checkbox-1-label"
+      aria-labelledby="checkbox-1-label"
+    >
+      <div slot="label" id="checkbox-1-label">${label}</div>
     </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
