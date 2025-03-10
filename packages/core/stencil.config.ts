@@ -69,6 +69,9 @@ export const config: Config = {
         },
       ],
     },
+    {
+      type: 'dist-hydrate-script',
+    },
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
       outputType: 'component',
@@ -77,8 +80,8 @@ export const config: Config = {
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
     reactOutputTarget({
-      componentCorePackage: '@scania/tegel',
-      proxiesFile: '../react/lib/components/stencil-generated/index.ts',
+      outDir: 'component',
+      hydrateModule: 'component-library/hydrate',
     }),
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
@@ -88,6 +91,10 @@ export const config: Config = {
       directivesArrayFile: '../angular-17/projects/components/src/lib/stencil-generated/index.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
     }),
+    {
+      type: 'dist-hydrate-script',
+      dir: './hydrate',
+    },
     {
       type: 'dist-custom-elements',
       generateTypeDeclarations: true,
