@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Element, Host, State } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element, Host } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 import hasSlot from '../../utils/hasSlot';
 
@@ -17,8 +17,6 @@ import hasSlot from '../../utils/hasSlot';
 })
 export class TdsCard {
   @Element() host: HTMLElement;
-
-  @State() fallbackImg: boolean = false;
 
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
@@ -70,10 +68,6 @@ export class TdsCard {
     });
   };
 
-  handleImageError = () => {
-    this.fallbackImg = true;
-  };
-
   getCardHeader = () => {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
@@ -101,14 +95,7 @@ export class TdsCard {
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
         <div class="card-body" id={bodyId}>
           {usesBodyImageSlot && <slot name="body-image"></slot>}
-          {this.bodyImg && !this.fallbackImg && (
-            <img
-              class="card-body-img"
-              src={this.bodyImg}
-              alt={this.bodyImgAlt}
-              onError={this.handleImageError}
-            />
-          )}
+          {this.bodyImg && <img class="card-body-img" src={this.bodyImg} alt={this.bodyImgAlt} />}
           {this.imagePlacement === 'above-header' && this.getCardHeader()}
           {this.bodyDivider && <tds-divider></tds-divider>}
           {usesBodySlot && <slot name="body"></slot>}
