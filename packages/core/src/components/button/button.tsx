@@ -38,13 +38,23 @@ export class TdsButton {
   /** Determines if and how the button should animate. */
   @Prop() animation: 'none' | 'fade' = 'none';
 
+  /** The value to be used for the aria-label attribute if onlyIcon is set to true */
+  @Prop() ariaLabelValue: string;
+
   @State() onlyIcon: boolean = false;
 
   render() {
     const hasLabelSlot = hasSlot('label', this.host);
     const hasIconSlot = hasSlot('icon', this.host);
+
     if (!this.text && !hasLabelSlot) {
       this.onlyIcon = true;
+    }
+
+    if (this.onlyIcon && !this.ariaLabelValue) {
+      console.warn(
+        'Tegel button component: please specify the ariaLabelValue prop when you have the onlyIcon attribute set to true',
+      );
     }
 
     return (
@@ -74,7 +84,7 @@ export class TdsButton {
             'only-icon': this.onlyIcon,
             [`animation-${this.animation}`]: this.animation !== 'none',
           }}
-          {...(this.onlyIcon && { 'aria-label': 'button' })}
+          {...(this.onlyIcon && this.ariaLabelValue && { 'aria-label': this.ariaLabelValue })}
         >
           {this.text}
           {hasLabelSlot && !this.onlyIcon && <slot name="label" />}
