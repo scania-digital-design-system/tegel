@@ -200,6 +200,7 @@ const WebComponentTemplate = ({
           : ''
       }
       animation="${animation}"
+      aria-label-value="A button component on a demo page in Storybook to showcase how it can be used"
     >
         ${
           onlyIcon || (icon && icon !== 'none')
