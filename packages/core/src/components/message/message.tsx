@@ -44,10 +44,12 @@ export class TdsMessage {
     return (
       <Host>
         <div
-          class={`
-        wrapper ${this.variant}
-        ${this.minimal ? 'minimal' : ''}
-        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
+          class={{
+            wrapper: true,
+            [this.variant]: true,
+            minimal: this.minimal,
+            [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+          }}
         >
           {!this.noIcon && <tds-icon name={this.getIconName()} size="20px"></tds-icon>}
           <div class={`content`}>

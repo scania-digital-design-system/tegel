@@ -155,9 +155,9 @@ export class TdsPopoverCore {
     }
   }.bind(this);
 
-  private onClickTarget = function onClickTarget(event) {
+  private onClickTarget = function onClickTarget(event: Event) {
     event.stopPropagation();
-    this.setIsShown((isShown) => !isShown);
+    this.setIsShown((isShown: boolean) => !isShown);
   }.bind(this);
 
   private handleShow = function handleShow(event) {

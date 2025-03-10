@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "description": "Tegel Design System",
   "type": "module",
   "keywords": [
@@ -373,8 +373,8 @@
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
     "test": "node docker-test-runner.js",
-    "test:axe": "npx playwright test --config 'playwright-axe.config.ts' --reporter=list",
-    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.46.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
+    "test:axe": "npx playwright test --config 'playwright-axe.config.ts'",
+    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.50.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "copy:assets": "node scripts/copy-assets.mjs",
@@ -391,10 +391,10 @@
     "date-fns": "2.30.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.10.1",
+    "@axe-core/playwright": "4.10.1",
     "@babel/core": "7.19.1",
     "@mdx-js/react": "3.0.1",
-    "@playwright/test": "1.46.1",
+    "@playwright/test": "1.50.1",
     "@stencil/angular-output-target": "0.8.4",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.4",
