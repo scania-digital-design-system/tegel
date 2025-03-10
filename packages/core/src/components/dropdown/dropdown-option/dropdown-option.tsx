@@ -37,15 +37,15 @@ export class TdsDropdownOption {
 
   @State() selected: boolean = false;
 
-  @State() multiselect: boolean;
+  @State() multiselect: boolean = false;
 
   @State() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
-  private parentElement: HTMLTdsDropdownElement;
+  private parentElement: HTMLTdsDropdownElement | null = null;
 
-  // @ts-ignore
+// @ts-ignore
   // eslint-disable-next-line no-unused-vars,
-  private label: string;
+  private label: string = '';
 
   /** Method to select/deselect an option. */
   @Method()
@@ -93,13 +93,19 @@ export class TdsDropdownOption {
   }
 
   componentWillRender = () => {
+    if (!this.host.parentElement) {
+      return;
+    }
     this.parentElement =
-      this.host.parentElement.tagName === 'TDS-DROPDOWN'
+      this.host.parentElement?.tagName === 'TDS-DROPDOWN'
         ? (this.host.parentElement as HTMLTdsDropdownElement)
         : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
-    this.multiselect = this.parentElement.multiselect;
-    this.size = this.parentElement.size;
-    this.label = this.host.textContent.trim();
+    
+    if (this.parentElement) {
+      this.multiselect = this.parentElement.multiselect ?? false;
+      this.size = this.parentElement.size || 'lg';
+    }
+    this.label = this.host.textContent?.trim() || '';
   };
 
   handleSingleSelect = () => {
@@ -200,3 +206,4 @@ export class TdsDropdownOption {
     );
   }
 }
+
