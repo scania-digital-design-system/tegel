@@ -38,6 +38,11 @@ export class TdsBanner {
   /** Hides the Banner */
   @Prop({ reflect: true }) hidden = false;
 
+  /** Defines the ARIA role of the banner. Defaults to "banner" for global use,
+   * but can be set to "region" or "alert" if used differently.
+   */
+  @Prop() roleType: 'banner' | 'region' | 'alert' = 'banner';
+
   /** Sends a unique Banner identifier when the close button is pressed. */
   @Event({
     eventName: 'tdsClose',
@@ -82,13 +87,12 @@ export class TdsBanner {
     const usesHeaderSlot = hasSlot('subheader', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
+
     return (
       <Host
-        role="banner"
+        role={this.roleType}
         aria-hidden={`${this.hidden}`}
-        aria-live={
-          this.host.getAttribute('aria-live') ? this.host.getAttribute('aria-live') : 'polite'
-        }
+        aria-live={this.roleType === 'alert' ? 'assertive' : 'polite'}
         aria-atomic={this.host.getAttribute('aria-atomic')}
         class={{
           [this.variant]: true,
@@ -98,7 +102,7 @@ export class TdsBanner {
       >
         {this.icon && (
           <div class={`banner-icon ${this.variant}`}>
-            <tds-icon name={this.icon} size="20px"></tds-icon>
+            <tds-icon name={this.icon} size="20px" svgTitle={this.icon}></tds-icon>
           </div>
         )}
 
@@ -113,12 +117,8 @@ export class TdsBanner {
         </div>
 
         <div class={`banner-close`}>
-          <button
-            onClick={() => {
-              this.handleClose();
-            }}
-          >
-            <tds-icon name="cross" size="20px"></tds-icon>
+          <button aria-label="Close banner" onClick={this.handleClose}>
+            <tds-icon name="cross" size="20px" svgTitle="Close"></tds-icon>
           </button>
         </div>
       </Host>
