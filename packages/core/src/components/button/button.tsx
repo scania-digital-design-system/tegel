@@ -46,10 +46,13 @@ export class TdsButton {
     if (!this.text && !hasLabelSlot) {
       this.onlyIcon = true;
     }
+
     return (
       <Host
         class={{
           [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
+          disabled: Boolean(this.disabled),
+          fullbleed: Boolean(this.fullbleed),
         }}
         disabled={this.disabled}
       >
