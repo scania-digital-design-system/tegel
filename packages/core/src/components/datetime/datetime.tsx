@@ -185,20 +185,20 @@ export class TdsDatetime {
     if (this.size === 'sm') {
       className += `${className}-sm`;
     }
+
+    const classNames = {
+      'tds-form-datetime-nomin': this.noMinWidth,
+      'tds-form-datetime': true,
+      'tds-datetime-focus': this.focusInput,
+      'tds-datetime-data': this.value.length > 0,
+      'tds-form-datetime-disabled': this.disabled,
+      [`tds-form-datetime-${this.size}`]: ['md', 'sm'].includes(this.size),
+      [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(this.state),
+      [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+    };
+
     return (
-      <div
-        class={{
-          'tds-form-datetime-nomin': this.noMinWidth,
-          'tds-form-datetime tds-datetime-focus': this.focusInput,
-          'tds-form-datetime': !this.focusInput,
-          'tds-datetime-data': this.value.length > 0,
-          'tds-form-datetime-disabled': this.disabled,
-          'tds-form-datetime-md': this.size === 'md',
-          'tds-form-datetime-sm': this.size === 'sm',
-          [`tds-form-datetime-${this.state}`]: this.state === 'error' || this.state === 'success',
-          [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
-        }}
-      >
+      <div class={classNames}>
         {this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
