@@ -47,8 +47,8 @@ export class TdsTextField {
   /** Set input in readonly state. Hides the suffix slot if true. */
   @Prop() readOnly: boolean = false;
 
-  /** Adds the read-only icon to the Text Field. Requires Read Only to be enabled. */
-  @Prop() readOnlyIcon: boolean = false;
+  /** Hides the read-only icon in the Text Field. Requires Read Only to be enabled. */
+  @Prop() hideReadOnlyIcon: boolean = false;
 
   /** Size of the input */
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
@@ -112,7 +112,7 @@ export class TdsTextField {
   tdsFocus: EventEmitter<FocusEvent>;
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
-  handleFocus(event): void {
+  handleFocus(event: FocusEvent): void {
     this.textInput.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
@@ -237,9 +237,9 @@ export class TdsTextField {
             </div>
           )}
 
-          {this.readOnly && this.readOnlyIcon && (
+          {this.readOnly && !this.hideReadOnlyIcon && (
             <span class="text-field-icon__readonly">
-              <tds-icon name="edit_inactive" size="20px"></tds-icon>
+              <tds-icon name="edit_inactive" size="20px" />
             </span>
           )}
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
@@ -249,7 +249,7 @@ export class TdsTextField {
           <div class="text-field-helper">
             {this.state === 'error' && (
               <div class="text-field-helper-error-state">
-                <tds-icon name="error" size="16px"></tds-icon>
+                <tds-icon name="error" size="16px" />
                 {this.helper}
               </div>
             )}

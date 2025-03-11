@@ -329,9 +329,13 @@
   }
 
   .text-field-input {
-    padding-right: 54px;
     background-color: var(--tds-text-field-background-secondary);
   }
+}
+
+// Only add padding if the readonly icon is present
+.form-text-field-readonly:has(.text-field-icon__readonly) .text-field-input {
+  padding-right: 54px;
 }
 
 //Success state
