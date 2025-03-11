@@ -16,7 +16,7 @@ export class TdsBadge {
   @Prop() size: 'lg' | 'sm' = 'lg';
 
   /** Defines aria-live attribute */
-  @Prop() ariaLiveAnnounce: 'off' | 'polite' | 'assertive' = 'polite';
+  @Prop() tdsAriaLive: 'off' | 'polite' | 'assertive' = 'polite';
 
   @State() ariaLabelValue: string = '';
 
@@ -54,7 +54,7 @@ export class TdsBadge {
           'tds-badge-hidden': this.hidden,
         }}
         aria-label={this.ariaLabelValue}
-        aria-live={this.ariaLiveAnnounce}
+        aria-live={this.tdsAriaLive}
       >
         <div class="tds-badge-text" aria-hidden="true">
           {this.text}
