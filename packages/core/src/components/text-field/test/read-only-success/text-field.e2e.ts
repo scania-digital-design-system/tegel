@@ -68,6 +68,6 @@ test.describe.parallel(componentName, () => {
     await expect(input).not.toBeEditable();
 
     // Check if selector has "auto" cursor
-    await expect(page.locator(textFieldInputSelector)).toHaveCSS('cursor', 'auto');
+    await expect(page.locator(textFieldInputSelector)).toHaveCSS('cursor', 'default');
   });
 });
