@@ -83,7 +83,7 @@ export class TdsTextField {
   })
   tdsChange: EventEmitter;
 
-  handleChange(event): void {
+  handleChange(event: Event): void {
     this.tdsChange.emit(event);
   }
 
