@@ -189,9 +189,9 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    readonlyIcon: {
-      description: 'Adds the read-only icon to the Text Field. Requires Read Only to be enabled.',
-      name: 'Read Only Icon',
+    hideReadonlyIcon: {
+      description: 'Hides the read-only icon in the Text Field. Requires Read Only to be enabled.',
+      name: 'Hide Read Only Icon',
       control: {
         type: 'boolean',
       },
@@ -225,7 +225,7 @@ export default {
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
-    readonlyIcon: false,
+    hideReadonlyIcon: false,
     disabled: false,
     tdsAriaLabel: 'A text field component',
   },
@@ -249,12 +249,12 @@ const Template = ({
   maxLength,
   noMinWidth,
   readonly,
-  readonlyIcon,
+  hideReadonlyIcon,
   disabled,
   tdsAriaLabel,
 }) => {
-  const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
-  const minAttr = min ? `min="${min}"` : '';
+  const maxlength = maxLength >= 0 ? `max-length="${maxLength}"` : '';
+  const minAttr = min != null ? `min="${min}"` : '';
   const maxAttr = max ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
@@ -286,7 +286,7 @@ const Template = ({
       ${maxAttr}
       ${disabled ? 'disabled' : ''}
       ${readonly ? 'read-only' : ''}
-      ${readonlyIcon ? 'read-only-icon' : ''}
+      ${hideReadonlyIcon ? 'hide-read-only-icon' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       placeholder="${placeholderText}"
       tds-aria-label="${tdsAriaLabel}"
