@@ -176,7 +176,7 @@ export class TdsChip {
             <input
               type={this.type}
               id={this.chipId}
-              aria-checked={this.type === 'button' ? undefined : this.checked}
+              aria-checked={this.type === 'button' ? undefined : String(this.checked)}
               role={this.type}
               aria-label={hasLabelSlot && textInsideLabel ? textInsideLabel : 'Chip'}
               {...inputAttributes}
