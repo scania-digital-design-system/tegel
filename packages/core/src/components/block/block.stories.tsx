@@ -85,12 +85,10 @@ const NestedTemplate = ({ outerModeVariant, componentTag }) =>
             <aside>
               <h3 class="tds-headline-04">Middle Block (Aside)</h3>
               <p class="tds-detail-03">Nested content inside an <code>&lt;aside&gt;</code> element.</p>
-              <button>Test</button>
-              <tds-block component-tag="section">
+              <tds-block component-tag="${componentTag}">
                 <section>
                   <h4 class="tds-headline-06">Inner Block (Section)</h4>
                   <p class="tds-detail-03">Ensuring meaningful content structure with semantic HTML.</p>
-                  <button>Test</button>
                 </section>
               </tds-block>
             </aside>
