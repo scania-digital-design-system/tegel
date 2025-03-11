@@ -57,6 +57,13 @@ export default {
       table: {
         defaultValue: { summary: false },
       },
+      tdsAriaLabel: {
+        name: 'Aria Label',
+        description: 'Value to be used for the aria-label attribute',
+        control: {
+          type: 'text',
+        },
+      },
     },
   },
   args: {
@@ -64,10 +71,11 @@ export default {
     checked: false,
     disabled: false,
     indeterminate: false,
+    tdsAriaLabel: 'A checkbox component',
   },
 };
 
-const Template = ({ label, checked, disabled, indeterminate }) =>
+const Template = ({ label, checked, disabled, indeterminate, tdsAriaLabel }) =>
   formatHtmlPreview(`
     <tds-checkbox
       ${checked ? 'checked' : ''}
@@ -75,7 +83,7 @@ const Template = ({ label, checked, disabled, indeterminate }) =>
       ${indeterminate ? 'indeterminate' : ''}
       value="checkbox-1"
       checkbox-id="first-checkbox"
-      aria-label-value="A checkbox component on a demo page in Storybook to showcase how it can be used"
+      tds-aria-label="${tdsAriaLabel}"
       aria-describedby="checkbox-1-label"
       aria-labelledby="checkbox-1-label"
     >
