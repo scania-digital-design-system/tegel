@@ -138,7 +138,7 @@ export class TdsCheckbox {
     }
 
     if (!this.tdsAriaLabel) {
-      console.warn('Tegel Checkbox component: ariaLabelValue prop is missing');
+      console.warn('Tegel Checkbox component: tdsAriaLabel prop is missing');
     }
 
     return (
