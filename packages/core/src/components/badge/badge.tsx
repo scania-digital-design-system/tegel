@@ -15,6 +15,11 @@ export class TdsBadge {
   /** Sets component size. */
   @Prop() size: 'lg' | 'sm' = 'lg';
 
+  /** Defines aria-live attribute */
+  @Prop() tdsAriaLive: 'off' | 'polite' | 'assertive' = 'polite';
+
+  @State() tdsAriaLabel: string = '';
+
   @State() shape: string = '';
 
   @State() text: string = '';
@@ -32,30 +37,28 @@ export class TdsBadge {
   checkProps() {
     const valueAsNumber = parseInt(this.value);
     if (!Number.isNaN(valueAsNumber) && this.size !== 'sm') {
-      this.shape = this.value.toString().length >= 2 ? 'pill' : '';
+      this.shape = this.value.length >= 2 ? 'pill' : '';
       this.size = 'lg';
       this.text = valueAsNumber.toString().length >= 3 ? '99+' : valueAsNumber.toString();
-    } else {
-      // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
-      if (this.value !== '' && this.size !== 'sm') {
-        console.warn(
-          'The provided value is either empty or string, please provide value as number.',
-        );
-      }
     }
   }
 
   render() {
     return (
       <host
+        role="status"
         class={{
           'tds-badge': true,
           [`tds-badge-${this.size}`]: true,
           'tds-badge-pill': this.shape === 'pill',
           'tds-badge-hidden': this.hidden,
         }}
+        aria-label={this.tdsAriaLabel}
+        aria-live={this.tdsAriaLive}
       >
-        <div class="tds-badge-text">{this.text}</div>
+        <div class="tds-badge-text" aria-hidden="true">
+          {this.text}
+        </div>
       </host>
     );
   }
