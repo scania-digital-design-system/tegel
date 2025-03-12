@@ -18,7 +18,7 @@ export class TdsBreadcrumbs {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
 
     if (!this.tdsAriaLabel) {
-      console.log(
+      console.warn(
         'Tegel Breadcrumbs component: please include tdsAriaLabel prop for improved accessibility',
       );
     }
