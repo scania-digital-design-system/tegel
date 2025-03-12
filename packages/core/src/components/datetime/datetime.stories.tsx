@@ -47,7 +47,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Datetime', 'Date', 'Time'],
+      options: ['Datetime', 'Date', 'Month', 'Week', 'Time'],
       table: {
         defaultValue: { summary: 'datetime-local' },
       },
@@ -164,6 +164,8 @@ const datetimeTemplate = ({
   const typeLookup = {
     Datetime: 'datetime-local',
     Date: 'date',
+    Month: 'month',
+    Week:'week',
     Time: 'time',
   };
   const sizeLookup = {
@@ -184,6 +186,10 @@ const datetimeTemplate = ({
           return '1891-01-01T12:30';
         case 'Date':
           return '1891-01-01';
+        case 'Month':
+          return '1891-01';
+        case 'Week':
+          return '1891-W01';
         case 'Time':
           return '12:30';
         default:
