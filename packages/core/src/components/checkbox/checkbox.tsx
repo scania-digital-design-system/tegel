@@ -127,7 +127,7 @@ export class TdsCheckbox {
     }
   }
 
-  render() {
+  connectedCallback() {
     const hasLabeledAndDescribedBy =
       this.host.getAttribute('aria-describedby') && this.host.getAttribute('aria-labelledby');
 
@@ -140,7 +140,9 @@ export class TdsCheckbox {
     if (!this.tdsAriaLabel) {
       console.warn('Tegel Checkbox component: tdsAriaLabel prop is missing');
     }
+  }
 
+  render() {
     return (
       <div class="tds-checkbox">
         <input
