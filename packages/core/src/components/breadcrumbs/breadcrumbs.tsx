@@ -11,18 +11,20 @@ import { Component, h, Element, Prop } from '@stencil/core';
 export class TdsBreadcrumbs {
   @Element() host: HTMLElement;
 
-  @Prop() ariaLabelValue: string;
+  /** The value to be used for the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
 
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
 
-    if (!this.ariaLabelValue) {
+    if (!this.tdsAriaLabel) {
       console.log(
-        'Tegel Breadcrumbs component: please include ariaLabelValue prop for improved accessibility',
+        'Tegel Breadcrumbs component: please include tdsAriaLabel prop for improved accessibility',
       );
     }
+
     return (
-      <nav aria-label={this.ariaLabelValue}>
+      <nav aria-label={this.tdsAriaLabel}>
         <div role="list" class="tds-breadcrumb">
           <slot></slot>
         </div>
