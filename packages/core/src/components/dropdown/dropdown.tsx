@@ -284,18 +284,6 @@ export class TdsDropdown {
   })
   tdsInput: EventEmitter<InputEvent>;
 
-  /** Value change event for the Dropdown. */
-  @Event({
-    eventName: 'tdsValueChange',
-    composed: true,
-    bubbles: true,
-    cancelable: false,
-  })
-  tdsValueChange: EventEmitter<{
-    name: string;
-    value: string;
-  }>;
-
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     if (this.open) {
