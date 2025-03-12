@@ -128,6 +128,14 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
+
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -140,6 +148,7 @@ export default {
     icon: 'none',
     disabled: false,
     animation: 'none',
+    tdsAriaLabel: 'A button component',
   },
 };
 
@@ -154,6 +163,7 @@ const WebComponentTemplate = ({
   icon,
   disabled,
   animation,
+  tdsAriaLabel,
 }) => {
   const variantLookUp = {
     Primary: 'primary',
@@ -200,7 +210,7 @@ const WebComponentTemplate = ({
           : ''
       }
       animation="${animation}"
-      aria-label-value="A button component on a demo page in Storybook to showcase how it can be used"
+      tds-aria-label="${tdsAriaLabel}"
     >
         ${
           onlyIcon || (icon && icon !== 'none')
