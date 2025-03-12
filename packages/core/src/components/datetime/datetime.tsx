@@ -177,7 +177,7 @@ export class TdsDatetime {
 
   /** Method that resets the dateteime without emitting an event. */
   private internalReset() {
-    let value = '';
+    const value = '';
     if (this.defaultValue !== 'none') {
       this.value = this.getDefaultValue();
     }
@@ -192,22 +192,20 @@ export class TdsDatetime {
     if (this.size === 'sm') {
       className += `${className}-sm`;
     }
+
+    const classNames = {
+      'tds-form-datetime-nomin': this.noMinWidth,
+      'tds-form-datetime': true,
+      'tds-datetime-focus': this.focusInput,
+      'tds-datetime-data': this.value.length > 0,
+      'tds-form-datetime-disabled': this.disabled,
+      [`tds-form-datetime-${this.size}`]: ['md', 'sm'].includes(this.size),
+      [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(this.state),
+      [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+    };
+
     return (
-      <div
-        class={`
-        ${this.noMinWidth ? 'tds-form-datetime-nomin' : ''}
-        ${this.focusInput ? 'tds-form-datetime tds-datetime-focus' : ' tds-form-datetime'}
-        ${this.value.length > 0 ? 'tds-datetime-data' : ''}
-        ${this.disabled ? 'tds-form-datetime-disabled' : ''}
-        ${this.size === 'md' ? 'tds-form-datetime-md' : ''}
-        ${this.size === 'sm' ? 'tds-form-datetime-sm' : ''}
-        ${
-          this.state === 'error' || this.state === 'success'
-            ? `tds-form-datetime-${this.state}`
-            : ''
-        }
-        ${this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''}`}
-      >
+      <div class={classNames}>
         {this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
@@ -216,7 +214,9 @@ export class TdsDatetime {
         <div onClick={(e) => this.handleFocusClick(e)} class="tds-datetime-container">
           <div class="tds-datetime-input-container">
             <input
-              ref={(inputEl) => (this.textInput = inputEl as HTMLInputElement)}
+              ref={(inputEl) => {
+                this.textInput = inputEl as HTMLInputElement;
+              }}
               class={className}
               type={this.type}
               disabled={this.disabled}
@@ -229,7 +229,6 @@ export class TdsDatetime {
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
             />
-
             <div class="datetime-icon icon-datetime-local">
               <tds-icon size="20px" name="calendar"></tds-icon>
             </div>
