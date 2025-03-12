@@ -11,7 +11,8 @@ export class TdsDatetime {
   textInput?: HTMLInputElement;
 
   /** Sets an input type */
-  @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'time' = 'datetime-local';
+  @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'month' | 'week' | 'time' =
+    'datetime-local';
 
   /** Value of the input text */
   @Prop({ reflect: true, mutable: true }) value = '';
@@ -22,7 +23,7 @@ export class TdsDatetime {
   /** Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
   @Prop() max: string;
 
-  /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for date-time: YY-MM-DDTHH-MM */
+  /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for month: YY-MM. Format for week: YY-Www  Format for date-time: YY-MM-DDTHH-MM */
   @Prop() defaultValue: string | 'none' = 'none';
 
   /** Set input in disabled state */
@@ -111,15 +112,21 @@ export class TdsDatetime {
     const dateTimeObj = {
       year: this.defaultValue.slice(0, 4),
       month: this.defaultValue.slice(5, 7),
+      week: this.defaultValue.slice(6, 8),
       day: this.defaultValue.slice(8, 10),
       hours: this.defaultValue.slice(11, 13),
       minutes: this.defaultValue.slice(14, 16),
     };
+
     switch (this.type) {
       case 'datetime-local':
         return `${dateTimeObj.year}-${dateTimeObj.month}-${dateTimeObj.day}T${dateTimeObj.hours}:${dateTimeObj.minutes}`;
       case 'date':
         return `${dateTimeObj.year}-${dateTimeObj.month}-${dateTimeObj.day}`;
+      case 'month':
+        return `${dateTimeObj.year}-${dateTimeObj.month}`;
+      case 'week':
+        return `${dateTimeObj.year}-W${dateTimeObj.week}`;
       case 'time':
         return `${this.defaultValue.slice(0, 2)}:${this.defaultValue.slice(3, 5)}`;
       default:
