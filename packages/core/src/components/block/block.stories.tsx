@@ -119,12 +119,12 @@ Nested.argTypes = {
     },
     options: ['section', 'div', 'article', 'aside', 'header', 'footer', 'nav', 'main'],
     table: {
-      defaultValue: { summary: 'article' },
+      defaultValue: { summary: 'div' },
     },
   },
 };
 
 Nested.args = {
   outerModeVariant: 'Primary',
-  componentTag: 'article',
+  componentTag: 'div',
 };
