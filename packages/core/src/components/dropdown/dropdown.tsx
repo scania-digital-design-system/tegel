@@ -436,7 +436,7 @@ export class TdsDropdown {
     }
   };
 
-  getOpenDirection = () => {
+  private getOpenDirection = () => {
     if (this.openDirection === 'auto' || !this.openDirection) {
       const dropdownMenuHeight = this.dropdownList?.offsetHeight ?? 0;
       const distanceToBottom = this.host.getBoundingClientRect?.().top ?? 0;
