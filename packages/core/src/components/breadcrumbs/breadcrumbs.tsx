@@ -14,14 +14,14 @@ export class TdsBreadcrumbs {
   /** The value to be used for the aria-label attribute */
   @Prop() tdsAriaLabel: string;
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Breadcrumbs component: missing tdsAriaLabel prop');
+    }
+  }
+
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
-
-    if (!this.tdsAriaLabel) {
-      console.warn(
-        'Tegel Breadcrumbs component: please include tdsAriaLabel prop for improved accessibility',
-      );
-    }
 
     return (
       <nav aria-label={this.tdsAriaLabel}>
