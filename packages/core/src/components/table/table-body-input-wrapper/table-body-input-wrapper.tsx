@@ -79,6 +79,30 @@ export class TdsTableBodyInputWrapper {
       input.addEventListener('blur', () => {
         this.inputFocused = false;
       });
+
+      // Handle Enter key event
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          this.moveToNextEditableCell();
+        }
+      });
+    }
+  }
+
+  private moveToNextEditableCell() {
+    const allEditableCells = Array.from(
+      document.querySelectorAll('tds-table-body-input-wrapper'),
+    ) as HTMLTdsTableBodyInputWrapperElement[];
+
+    const currentIndex = allEditableCells.indexOf(this.host as HTMLTdsTableBodyInputWrapperElement);
+
+    if (currentIndex !== -1 && currentIndex < allEditableCells.length - 1) {
+      const nextCell = allEditableCells[currentIndex + 1];
+      const nextInput = nextCell.querySelector('input') as HTMLInputElement;
+      if (nextInput) {
+        nextInput.focus();
+      }
     }
   }
 
