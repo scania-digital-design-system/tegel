@@ -253,7 +253,7 @@ const Template = ({
   disabled,
   tdsAriaLabel,
 }) => {
-  const maxlength = maxLength >= 0 ? `max-length="${maxLength}"` : '';
+  const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
   const minAttr = min != null ? `min="${min}"` : '';
   const maxAttr = max ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
