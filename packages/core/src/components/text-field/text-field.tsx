@@ -142,7 +142,11 @@ export class TdsTextField {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
     return (
+      // <div style={{ backgroundColor: 'orange', padding: '10px' }} contentEditable={true}>
       <div
+        // contentEditable={true}
+        // tabIndex={1}
+
         class={{
           'form-text-field': true,
           'form-text-field-nomin': this.noMinWidth,
@@ -159,6 +163,7 @@ export class TdsTextField {
           'form-text-field-error': this.state === 'error',
           'form-text-field-success': this.state === 'success',
         }}
+        id="teeeest"
       >
         {this.labelPosition === 'outside' && (
           <div class="text-field-label-outside">
@@ -181,6 +186,7 @@ export class TdsTextField {
 
           <div class="text-field-input-container">
             <input
+              id="my-input-1"
               ref={(inputEl) => {
                 this.textInput = inputEl as HTMLInputElement;
               }}
@@ -272,6 +278,7 @@ export class TdsTextField {
           </div>
         )}
       </div>
+      // </div>
     );
   }
 }

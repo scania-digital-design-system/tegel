@@ -1,3 +1,5 @@
+@import '../../mixins/focus-state';
+
 @mixin text-field-base {
   all: unset;
   border-radius: 4px 4px 0 0;
@@ -406,3 +408,15 @@
     margin: 0 2px 0 0;
   }
 }
+
+#my-input-1:focus-visible {
+  @include tds-focus-state;
+
+  // background-color: orange;
+  // padding: 10px;
+}
+
+// #teeeest {
+//   background-color: orange;
+//   padding: 10px;
+// }
