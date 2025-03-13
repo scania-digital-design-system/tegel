@@ -74,7 +74,7 @@ export default {
       },
       if: {
         arg: 'type',
-        eq: 'Number', 
+        eq: 'Number',
       },
     },
     size: {
@@ -203,8 +203,8 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
-    min: "0",
-    max: "10",
+    min: '0',
+    max: '10',
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
@@ -233,8 +233,8 @@ const Template = ({
   disabled,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
-  min = min  ? `min="${min}"` : '';
-  max = max  ? `max="${max}"` : '';
+  min = min ? `min="${min}"` : '';
+  max = max ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -246,7 +246,7 @@ const Template = ({
     <style>
     /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
-    width: 200px;
+    ${noMinWidth ? '' : 'width: 200px;'}
     height: 150px;
   }
     </style>
