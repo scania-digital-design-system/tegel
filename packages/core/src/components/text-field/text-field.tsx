@@ -101,7 +101,10 @@ export class TdsTextField {
 
   // Data input event in value prop
   handleInput(event: InputEvent): void {
+    handleInput(event: InputEvent): void {
     this.value = (event.target as HTMLInputElement).value;
+        this.tdsInput.emit(event);
+  }
     this.tdsInput.emit(event);
   }
 
