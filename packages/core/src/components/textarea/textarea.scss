@@ -315,11 +315,16 @@
   }
 
   .textarea-input {
-    padding-right: 54px;
     border-bottom: 1px solid var(--tds-textarea-border-bottom-read-only-color);
   }
 
   .textfield-container {
     background-color: transparent;
+  }
+}
+
+.textarea-readonly:has(.textarea-icon__readonly) {
+  .textarea-input {
+    padding-right: 54px;
   }
 }
