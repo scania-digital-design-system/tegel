@@ -264,6 +264,7 @@ export class TdsTableHeaderCell {
         style={{ minWidth: this.customWidth }}
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
+        role="columnheader"
       >
         {this.headerCellContent()}
       </Host>
