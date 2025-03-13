@@ -201,6 +201,7 @@ export class TdsTableBodyRowExpandable {
             'tds-table__row--expanded': this.isExpanded,
           }}
           part="row"
+          aria-expanded={this.isExpanded}
         >
           <td
             class={{
