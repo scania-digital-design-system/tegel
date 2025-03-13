@@ -128,13 +128,13 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
-
     tdsAriaLabel: {
       name: 'Aria Label',
       description: 'Value to be used for the aria-label attribute',
       control: {
         type: 'text',
       },
+      if: { arg: 'onlyIcon', truthy: true },
     },
   },
   args: {
@@ -144,10 +144,10 @@ export default {
     size: 'Large',
     text: 'Button',
     fullbleed: false,
-    onlyIcon: false,
     icon: 'none',
     disabled: false,
     animation: 'none',
+    onlyIcon: false,
     tdsAriaLabel: 'A button component',
   },
 };
