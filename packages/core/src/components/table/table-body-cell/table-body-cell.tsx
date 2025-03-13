@@ -125,6 +125,7 @@ export class TdsTableBodyCell {
           'tds-table--no-min-width': this.noMinWidth,
         }}
         style={dynamicStyles}
+        role="cell"
       >
         {this.cellValue}
         <slot />
