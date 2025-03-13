@@ -157,6 +157,18 @@ export default {
       },
       if: { arg: 'noMinWidth', eq: true },
     },
+    tdsAriaSort: {
+      name: 'Aria Sort Value',
+      description:
+        'Aria sort value, default is "none". Other accepted values are "ascending" or "descending".',
+      control: {
+        type: 'select',
+      },
+      options: ['none', 'ascending', 'descending'],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -172,6 +184,7 @@ export default {
     column2Width: '',
     column3Width: '',
     column4Width: '',
+    tdsAriaSort: 'none',
   },
 };
 
@@ -189,6 +202,7 @@ const SortingTemplate = ({
   column2Width,
   column3Width,
   column4Width,
+  tdsAriaSort,
 }) =>
   formatHtmlPreview(`
     <tds-table
@@ -203,16 +217,16 @@ const SortingTemplate = ({
           <tds-table-header>
               <tds-header-cell cell-key='truck' cell-value='Truck type' sortable="${column1sortable}" ${
     column1Width ? `custom-width="${column1Width}"` : ''
-  }></tds-header-cell>
+  } tds-aria-sort="${tdsAriaSort}"></tds-header-cell>
               <tds-header-cell cell-key='driver' cell-value='Driver name' sortable="${column2sortable}" ${
     column2Width ? `custom-width="${column2Width}"` : ''
-  }></tds-header-cell>
+  } tds-aria-sort="${tdsAriaSort}"></tds-header-cell>
               <tds-header-cell cell-key='country' cell-value='Country' sortable="${column3sortable}" ${
     column3Width ? `custom-width="${column3Width}"` : ''
-  }></tds-header-cell>
+  } tds-aria-sort="${tdsAriaSort}"></tds-header-cell>
               <tds-header-cell cell-key='mileage' cell-value='Mileage' sortable="${column4sortable}" text-align='right' ${
     column4Width ? `custom-width="${column4Width}"` : ''
-  }></tds-header-cell>
+  } tds-aria-sort="${tdsAriaSort}"></tds-header-cell>
           </tds-table-header>
           <tds-table-body>
             <tds-table-body-row>
