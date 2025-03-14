@@ -58,10 +58,16 @@ export class TdsHeaderItem {
    * If the attribute "order" has the value "end", the order is set to 1. Otherwise, 0.
    */
   updateOrder() {
-    if (this.host.getAttribute('order') === 'end') {
-      this.host.style.order = '1';
-    } else {
-      this.host.style.order = '0';
+    const orderValue = this.host.getAttribute('order');
+    switch (orderValue) {
+      case 'end':
+        this.host.style.order = '1';
+        break;
+      case 'start':
+      case null:
+      default:
+        this.host.style.order = '0';
+        break;
     }
   }
 
