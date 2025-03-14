@@ -1,0 +1,49 @@
+/* Base Styles */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.tds-accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Hide checkboxes */
+.tds-accordion-input {
+  display: none;
+}
+
+/* Header Styles */
+.tds-accordion-header {
+  display: block;
+  background: #08244c;
+  color: white;
+  padding: 16px;
+  font-size: 18px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  transition: background 0.3s ease-in-out;
+}
+
+.tds-accordion-header:hover {
+  background: #16417f;
+}
+
+/* Content Styling */
+.tds-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  background: #f8f8f8;
+  padding: 0 16px;
+  transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+
+/* Expand Content on Click */
+.tds-accordion-input:checked + .tds-accordion-header + .tds-accordion-content {
+  max-height: 200px; /* Adjust as needed */
+  padding: 16px;
+}
