@@ -74,7 +74,7 @@ export default {
       },
       if: {
         arg: 'type',
-        eq: 'Number', 
+        eq: 'Number',
       },
     },
     size: {
@@ -169,6 +169,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    disabled: {
+      description: 'Disables the Text Field.',
+      name: 'Disabled',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     readonly: {
       description: 'Sets the Text Field to read-only state.',
       name: 'Read Only',
@@ -179,9 +189,9 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    disabled: {
-      description: 'Disables the Text Field.',
-      name: 'Disabled',
+    hideReadonlyIcon: {
+      description: 'Hides the read-only icon in the Text Field. Requires Read Only to be enabled.',
+      name: 'Hide Read Only Icon',
       control: {
         type: 'boolean',
       },
@@ -203,11 +213,12 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
-    min: "0",
-    max: "10",
+    min: '0',
+    max: '10',
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
+    hideReadonlyIcon: false,
     disabled: false,
   },
 };
@@ -230,11 +241,12 @@ const Template = ({
   maxLength,
   noMinWidth,
   readonly,
+  hideReadonlyIcon,
   disabled,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
-  min = min  ? `min="${min}"` : '';
-  max = max  ? `max="${max}"` : '';
+  const minAttr = min != null ? `min="${min}"` : '';
+  const maxAttr = max ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -261,10 +273,11 @@ const Template = ({
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}"` : ''}
       ${maxlength}
-      ${min}
-      ${max}
+      ${minAttr}
+      ${maxAttr}
       ${disabled ? 'disabled' : ''}
       ${readonly ? 'read-only' : ''}
+      ${hideReadonlyIcon ? 'hide-read-only-icon' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       placeholder="${placeholderText}" >
         ${
@@ -298,6 +311,17 @@ const Template = ({
     textElement.addEventListener('tdsChange',(event) => {
       console.log(event)
     })
+
+    isReadonly = textElement.hasAttribute('readonly') || textElement.readOnly;
+    isDisabled = textElement.hasAttribute('disabled') || textElement.disabled;
+    if(isReadonly) {
+      textElement.value = "Read only"
+    }
+      
+    if(isDisabled) {
+      textElement.value = "Disabled"
+    }
+
   </script>
   `,
   );
