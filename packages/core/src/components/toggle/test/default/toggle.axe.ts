@@ -2,7 +2,7 @@ import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 import { tegelAnalyze } from '../../../../utils/axeHelpers';
 
-const componentTestPath = 'src/components/banner/test/default/index.html';
+const componentTestPath = 'src/components/toggle/test/default/index.html';
 
 test.describe.parallel('Toggle accessibility test', () => {
   test('Should render without detected accessibility issues', async ({ page }) => {
