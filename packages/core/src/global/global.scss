@@ -2,6 +2,12 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
+// New Tegel Styles
+
+@import '../../../../color/scania-color-primitives';
+@import '../../../../color/tegel-brand-usage';
+@import '../../../../spacing/units';
+
 // Motion
 @import '../../../../motion/';
 
