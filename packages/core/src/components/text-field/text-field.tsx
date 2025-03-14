@@ -141,6 +141,7 @@ export class TdsTextField {
   render() {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
+
     return (
       // <div style={{ backgroundColor: 'orange', padding: '10px' }} contentEditable={true}>
       <div
@@ -164,10 +165,14 @@ export class TdsTextField {
           'form-text-field-success': this.state === 'success',
         }}
         id="teeeest"
+
+        // style={this.focusInput && {backgroundColor: "orange", padding: "10px"}}
       >
         {this.labelPosition === 'outside' && (
           <div class="text-field-label-outside">
-            <div>{this.label}</div>
+            <div>
+              {this.label} ----- {String(this.focusInput)} ____ {document.activeElement}
+            </div>
           </div>
         )}
         <div onClick={() => this.textInput.focus()} class="text-field-container">
@@ -199,7 +204,7 @@ export class TdsTextField {
               type={this.type}
               disabled={this.disabled}
               readonly={this.readOnly}
-              placeholder={this.placeholder}
+              placeholder={this.readOnly && this.focusInput ? 'undefined' : this.placeholder}
               value={this.value}
               autofocus={this.autofocus}
               maxlength={this.maxLength}
