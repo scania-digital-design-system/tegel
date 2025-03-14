@@ -79,6 +79,7 @@ export default {
 const Template = ({ size, headline, label, checked, disabled }) =>
   formatHtmlPreview(`
       <tds-toggle
+        ${label && `tds-aria-label="${label}"`}
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
         ${headline ? `headline="${headline}"` : ''}
