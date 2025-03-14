@@ -85,7 +85,7 @@ const Template = ({ label, checked, disabled, indeterminate, tdsAriaLabel }) =>
       checkbox-id="first-checkbox"
       tds-aria-label="${tdsAriaLabel}"
       aria-describedby="checkbox-1-label"
-      aria-labelledby="checkbox-1-l abel"
+      aria-labelledby="checkbox-1-label"
     >
       <div slot="label" id="checkbox-1-label">${label}</div>
     </tds-checkbox>
