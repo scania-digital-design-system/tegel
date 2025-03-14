@@ -365,7 +365,8 @@
     "access": "public"
   },
   "bin": {
-    "copy-assets": "./scripts/copy-assets.mjs"
+    "copy-assets": "./scripts/copy-assets.mjs",
+    "fetch-tokens": "./scripts/figma-token-fetcher.mjs"
   },
   "scripts": {
     "build": "stencil build && stencil build --docs",
@@ -378,6 +379,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "copy:assets": "node scripts/copy-assets.mjs",
+    "fetch-tokens": "node scripts/figma-token-fetcher.mjs",
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
     "build:storybook": "build-storybook --quiet",
