@@ -34,6 +34,11 @@ export class TdsToggle {
   /** ID of the Toggle's input element, if not specified, it's randomly generated */
   @Prop() toggleId: string = generateUniqueId();
 
+  /** Defines aria-label attribute for input */
+  @Prop() tdsAriaLabel: string;
+
+  private labelSlot: HTMLElement;
+
   /** Toggles the Toggle. */
   @Method()
   async toggle() {
@@ -64,6 +69,10 @@ export class TdsToggle {
     });
   };
 
+  componentWillLoad() {
+    this.labelSlot = this.host.querySelector("[slot='label']");
+  }
+
   render() {
     return (
       <div class="tds-toggle">
@@ -78,6 +87,7 @@ export class TdsToggle {
           </div>
         )}
         <input
+          aria-label={this.tdsAriaLabel}
           aria-describedby={this.host.getAttribute('aria-describedby')}
           aria-labelledby={this.host.getAttribute('aria-labelledby')}
           aria-checked={this.checked}
@@ -92,9 +102,11 @@ export class TdsToggle {
           id={this.toggleId}
           role="switch"
         />
-        <label class={{ disabled: this.disabled }} htmlFor={this.toggleId}>
-          <slot name="label"></slot>
-        </label>
+        {this.labelSlot && (
+          <label class={{ disabled: this.disabled }} htmlFor={this.toggleId}>
+            <slot name="label"></slot>
+          </label>
+        )}
       </div>
     );
   }
