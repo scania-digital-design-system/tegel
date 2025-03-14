@@ -79,11 +79,12 @@ export default {
 const Template = ({ size, headline, label, checked, disabled }) =>
   formatHtmlPreview(`
       <tds-toggle
+        ${label && `tds-aria-label="${label}"`}
         ${checked ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
         ${headline ? `headline="${headline}"` : ''}
         size="${size === 'Large' ? 'lg' : 'sm'}">
-        <div slot="label">${label}</div>
+        ${label && `<div slot="label">${label}</div>`}
     </tds-toggle>
 
     <!-- Script tag with eventlistener for demo purposes. -->
