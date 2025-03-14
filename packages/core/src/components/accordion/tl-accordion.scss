@@ -7,8 +7,6 @@ body {
   width: 100%;
   max-width: 600px;
   margin: auto;
-  border: 1px solid #ccc;
-  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -20,30 +18,38 @@ body {
 /* Header Styles */
 .tds-accordion-header {
   display: block;
-  background: #08244c;
-  color: white;
-  padding: 16px;
+  background: transparent;
+  color: var(--foreground-text-strong);
+  padding: var(--unit-16);
   font-size: 18px;
   cursor: pointer;
-  border-bottom: 1px solid #ccc;
+  border-top: 1px solid var(--foreground-border-discrete);
   transition: background 0.3s ease-in-out;
 }
 
 .tds-accordion-header:hover {
-  background: #16417f;
+  background: var(--background-elevation-layer-01);
 }
 
 /* Content Styling */
 .tds-accordion-content {
+  color: var(--foreground-text-strong);
   max-height: 0;
   overflow: hidden;
-  background: #f8f8f8;
-  padding: 0 16px;
+  background: var(--background-elevation-layer-01);
+  padding: 0 var(--unit-16);
   transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+
+  &:last-child {
+    border-bottom: 1px solid var(--foreground-border-discrete);
+  }
 }
 
 /* Expand Content on Click */
 .tds-accordion-input:checked + .tds-accordion-header + .tds-accordion-content {
   max-height: 200px; /* Adjust as needed */
-  padding: 16px;
+}
+
+.tds-accordion-input:checked + .tds-accordion-header {
+  background: var(--background-elevation-layer-01);
 }
