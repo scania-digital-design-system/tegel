@@ -58,25 +58,36 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     label: 'Label',
     checked: false,
     disabled: false,
     indeterminate: false,
+    tdsAriaLabel: 'A checkbox component',
   },
 };
 
-const Template = ({ label, checked, disabled, indeterminate }) =>
+const Template = ({ label, checked, disabled, indeterminate, tdsAriaLabel }) =>
   formatHtmlPreview(`
     <tds-checkbox
-        ${checked ? 'checked' : ''}
-        ${disabled ? 'disabled' : ''}
-        ${indeterminate ? 'indeterminate' : ''}
-        value="checkbox-1"
-        checkbox-id="first-checkbox"
-        >
-        <div slot="label">${label}</div>
+      ${checked ? 'checked' : ''}
+      ${disabled ? 'disabled' : ''}
+      ${indeterminate ? 'indeterminate' : ''}
+      value="checkbox-1"
+      checkbox-id="first-checkbox"
+      tds-aria-label="${tdsAriaLabel}"
+      aria-describedby="checkbox-1-label"
+      aria-labelledby="checkbox-1-label"
+    >
+      <div slot="label" id="checkbox-1-label">${label}</div>
     </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
