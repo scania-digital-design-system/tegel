@@ -192,6 +192,7 @@ export class TdsTableBodyRowExpandable {
         }}
       >
         <tr
+          id={`expandable-content-${this.rowId}`}
           class={{
             'tds-table__row': true,
             'tds-table__row--expanded': this.isExpanded,
@@ -209,6 +210,8 @@ export class TdsTableBodyRowExpandable {
                 type="checkbox"
                 onChange={(event) => this.onChangeHandler(event)}
                 checked={this.isExpanded}
+                aria-expanded={this.isExpanded ? 'true' : 'false'}
+                aria-controls={`expandable-content-${this.rowId}`}
               />
               <span class="tds-expendable-row-icon">
                 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
