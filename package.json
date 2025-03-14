@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cd packages/core && npm run storybook",
+    "fetch-tokens": "node packages/core/scripts/figma-token-fetcher.mjs",
     "build": "cd packages/core && npm run build",
     "build:angular": "npm run build && cd packages/angular && npm i && npm run build",
     "build:angular-17": "npm run build && cd packages/angular-17 && npm i && npm run build",
@@ -108,5 +109,8 @@
   "engines": {
     "npm": ">=9.0.0",
     "node": ">=22.11.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
   }
 }

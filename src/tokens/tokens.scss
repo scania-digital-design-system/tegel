@@ -1,0 +1,103 @@
+// Traton color primitives
+
+:root {
+  // Traton blue
+  --traton-blue-1000: rgb(0 18 20 / 100%);
+  --traton-blue-950: rgb(0 29 33 / 100%);
+  --traton-blue-900: rgb(0 36 41 / 100%);
+  --traton-blue-850: rgb(0 49 55 / 100%);
+  --traton-blue-800: rgb(0 72 82 / 100%);
+  --traton-blue-700: rgb(0 99 113 / 100%);
+  --traton-blue-600: rgb(0 130 148 / 100%);
+  --traton-blue-500: rgb(45 158 173 / 100%);
+  --traton-blue-400: rgb(102 184 196 / 100%);
+  --traton-blue-300: rgb(140 202 210 / 100%);
+  --traton-blue-200: rgb(179 220 225 / 100%);
+  --traton-blue-150: rgb(217 237 240 / 100%);
+  --traton-blue-100: rgb(233 245 246 / 100%);
+  --traton-blue-50: rgb(248 252 252 / 100%);
+
+  // Traton yellow
+  --traton-yellow-1000: rgb(26 19 0 / 100%);
+  --traton-yellow-950: rgb(36 27 0 / 100%);
+  --traton-yellow-900: rgb(48 36 3 / 100%);
+  --traton-yellow-850: rgb(67 50 4 / 100%);
+  --traton-yellow-800: rgb(89 67 5 / 100%);
+  --traton-yellow-700: rgb(115 86 6 / 100%);
+  --traton-yellow-600: rgb(153 115 8 / 100%);
+  --traton-yellow-500: rgb(191 144 10 / 100%);
+  --traton-yellow-400: rgb(229 173 12 / 100%);
+  --traton-yellow-300: rgb(255 192 13 / 100%);
+  --traton-yellow-200: rgb(255 208 74 / 100%);
+  --traton-yellow-150: rgb(255 220 122 / 100%);
+  --traton-yellow-100: rgb(255 233 170 / 100%);
+  --traton-yellow-50: rgb(255 246 219 / 100%);
+
+  // Traton warm-grey
+  --traton-warm-grey-1000: rgb(16 15 15 / 100%);
+  --traton-warm-grey-950: rgb(26 26 25 / 100%);
+  --traton-warm-grey-900: rgb(37 36 35 / 100%);
+  --traton-warm-grey-850: rgb(51 50 48 / 100%);
+  --traton-warm-grey-800: rgb(69 68 65 / 100%);
+  --traton-warm-grey-700: rgb(89 88 84 / 100%);
+  --traton-warm-grey-600: rgb(115 113 108 / 100%);
+  --traton-warm-grey-500: rgb(140 138 132 / 100%);
+  --traton-warm-grey-400: rgb(166 164 156 / 100%);
+  --traton-warm-grey-300: rgb(194 191 182 / 100%);
+  --traton-warm-grey-200: rgb(214 212 201 / 100%);
+  --traton-warm-grey-150: rgb(235 231 221 / 100%);
+  --traton-warm-grey-100: rgb(246 243 233 / 100%);
+  --traton-warm-grey-50: rgb(252 251 247 / 100%);
+
+  // Traton transparent
+  --traton-transparent-950: rgb(0 29 33 / 100%);
+  --traton-transparent-700: rgb(26 26 25 / 76%);
+  --traton-transparent-600: rgb(26 26 25 / 62%);
+  --traton-transparent-500: rgb(26 26 25 / 50%);
+  --traton-transparent-400: rgb(26 26 25 / 36%);
+  --traton-transparent-200: rgb(26 26 25 / 15%);
+  --traton-transparent-inverse-950: rgb(255 255 255 / 100%);
+  --traton-transparent-inverse-700: rgb(217 237 240 / 87%);
+  --traton-transparent-inverse-600: rgb(217 237 240 / 75%);
+  --traton-transparent-inverse-500: rgb(217 237 240 / 63%);
+  --traton-transparent-inverse-subtle: rgb(217 237 240 / 60%);
+  --traton-transparent-inverse-400: rgb(217 237 240 / 49%);
+  --traton-transparent-inverse-200: rgb(217 237 240 / 33%);
+
+  // Traton base
+  --traton-base-warm-white: rgb(252 251 247 / 100%);
+  --traton-base-neutral-white: rgb(255 255 255 / 100%);
+  --traton-base-neutral-black: rgb(0 0 0 / 100%);
+
+  // Traton extended-red
+  --traton-extended-red-1000: rgb(20 8 8 / 100%);
+  --traton-extended-red-950: rgb(36 13 13 / 100%);
+  --traton-extended-red-900: rgb(49 17 17 / 100%);
+  --traton-extended-red-850: rgb(65 22 22 / 100%);
+  --traton-extended-red-800: rgb(85 27 27 / 100%);
+  --traton-extended-red-700: rgb(109 35 35 / 100%);
+  --traton-extended-red-600: rgb(133 41 41 / 100%);
+  --traton-extended-red-500: rgb(160 47 46 / 100%);
+  --traton-extended-red-400: rgb(188 48 47 / 100%);
+  --traton-extended-red-300: rgb(216 59 58 / 100%);
+  --traton-extended-red-200: rgb(236 86 85 / 100%);
+  --traton-extended-red-150: rgb(242 134 134 / 100%);
+  --traton-extended-red-100: rgb(247 186 186 / 100%);
+  --traton-extended-red-50: rgb(255 224 224 / 100%);
+
+  // Traton extended-green
+  --traton-extended-green-1000: rgb(8 12 8 / 100%);
+  --traton-extended-green-950: rgb(13 27 14 / 100%);
+  --traton-extended-green-900: rgb(16 35 17 / 100%);
+  --traton-extended-green-850: rgb(21 50 23 / 100%);
+  --traton-extended-green-800: rgb(29 68 31 / 100%);
+  --traton-extended-green-700: rgb(35 87 39 / 100%);
+  --traton-extended-green-600: rgb(43 108 46 / 100%);
+  --traton-extended-green-500: rgb(49 128 53 / 100%);
+  --traton-extended-green-400: rgb(56 148 60 / 100%);
+  --traton-extended-green-300: rgb(59 166 63 / 100%);
+  --traton-extended-green-200: rgb(90 191 92 / 100%);
+  --traton-extended-green-150: rgb(129 213 133 / 100%);
+  --traton-extended-green-100: rgb(173 235 177 / 100%);
+  --traton-extended-green-50: rgb(209 250 209 / 100%);
+}
