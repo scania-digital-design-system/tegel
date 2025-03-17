@@ -25,18 +25,23 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('can check every checkbox in the table', async ({ page }) => {
-      const tableCheckboxes = page.getByRole('cell');
-      await expect(tableCheckboxes).toHaveCount(5);
+      // Target the checkbox cells specifically
+      const tableCheckboxCells = page.locator('tds-table-body-row .tds-table__body-cell--checkbox');
+      await expect(tableCheckboxCells).toHaveCount(4);
+
+      // Also get the header checkbox cell
+      const headerCheckboxCell = page.locator('tds-table-header .tds-table__header-cell--checkbox');
+      await expect(headerCheckboxCell).toHaveCount(1);
 
       const myEventSpyAll = await page.spyOnEvent('tdsSelectAll');
       const myEventSpy = await page.spyOnEvent('tdsSelect');
 
       /* Click each one */
-      await tableCheckboxes.first().click();
-      await tableCheckboxes.nth(1).click();
-      await tableCheckboxes.nth(2).click();
-      await tableCheckboxes.nth(3).click();
-      await tableCheckboxes.last().click();
+      await headerCheckboxCell.click(); // This should trigger tdsSelectAll
+      await tableCheckboxCells.first().click();
+      await tableCheckboxCells.nth(1).click();
+      await tableCheckboxCells.nth(2).click();
+      await tableCheckboxCells.last().click();
 
       /* check so correct events have been called */
       expect(myEventSpyAll).toHaveReceivedEventTimes(1);

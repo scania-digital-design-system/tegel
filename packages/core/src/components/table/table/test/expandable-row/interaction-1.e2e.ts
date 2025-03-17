@@ -17,13 +17,19 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('under first row opened expanded row with text "Hello world 1"', async ({ page }) => {
-      const tableBodyRowFirstInput = page.getByRole('cell').nth(1);
-      const tableBodyExpandableRowSlot = page.getByText(/Hello world 1/);
-      await expect(tableBodyRowFirstInput).toHaveCount(1);
+      const tableBodyRowFirstIcon = page
+        .locator('tds-table-body-row-expandable')
+        .first()
+        .locator('.tds-expendable-row-icon');
+      const tableBodyExpandableRowSlot = page
+        .locator('tds-table-body-row-expandable')
+        .first()
+        .locator('div[slot="expand-row"]');
+      await expect(tableBodyRowFirstIcon).toHaveCount(1);
       await expect(tableBodyExpandableRowSlot).toHaveCount(1);
       await expect(tableBodyExpandableRowSlot).toBeHidden();
 
-      await tableBodyRowFirstInput.click();
+      await tableBodyRowFirstIcon.click();
       await expect(tableBodyExpandableRowSlot).toBeVisible();
 
       /* check input screenshot diff */
