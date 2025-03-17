@@ -21,6 +21,8 @@ export class TdsHeaderItem {
 
   private slotEl: HTMLSlotElement;
 
+  private mutationObserver: MutationObserver;
+
   updateSlotted(
     searchPredicate: (element: HTMLElement) => boolean,
     mutationCallback: (element: HTMLElement) => void,
@@ -51,10 +53,52 @@ export class TdsHeaderItem {
     }
   }
 
+  /**
+   * Read the native "order" attribute on the host and update the CSS order accordingly.
+   * If the attribute "order" has the value "end", the order is set to 1. Otherwise, 0.
+   */
+  updateOrder() {
+    const orderValue = this.host.getAttribute('order');
+    switch (orderValue) {
+      case 'end':
+        this.host.style.order = '1';
+        break;
+      case 'start':
+      case null:
+      default:
+        this.host.style.order = '0';
+        break;
+    }
+  }
+
   componentDidLoad() {
     this.slotEl = this.host.shadowRoot.querySelector('slot');
     this.updateSlottedElements();
     this.slotEl.addEventListener('slotchange', this.updateSlottedElements);
+
+    // Set the order on initial load.
+    this.updateOrder();
+
+    // Create a MutationObserver to listen for changes on the "order" attribute.
+    this.mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'order') {
+          this.updateOrder();
+        }
+      });
+    });
+
+    // Start observing the host element for attribute changes (specifically "order").
+    this.mutationObserver.observe(this.host, {
+      attributes: true,
+      attributeFilter: ['order'],
+    });
+  }
+
+  disconnectedCallback() {
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+    }
   }
 
   render() {
