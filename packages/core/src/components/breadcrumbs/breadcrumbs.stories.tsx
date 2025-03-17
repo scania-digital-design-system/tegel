@@ -20,12 +20,26 @@ export default {
       },
     ],
   },
+
+  argTypes: {
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
+  },
+
+  args: {
+    tdsAriaLabel: 'A breadcrumbs component',
+  },
 };
 
-const Template = () =>
+const Template = ({ tdsAriaLabel }) =>
   formatHtmlPreview(
     `   
-      <tds-breadcrumbs>
+      <tds-breadcrumbs tds-aria-label="${tdsAriaLabel}">
         <tds-breadcrumb>
           <a href="#">Page 1</a>
         </tds-breadcrumb>
