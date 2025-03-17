@@ -19,13 +19,22 @@ testConfigurations.withModeVariants.forEach((config) => {
     test('under third row opened expanded row with a button with text "Call to action"', async ({
       page,
     }) => {
-      const tableBodyRowThirdInput = page.getByRole('cell').nth(3);
+      const tableBodyRowThirdIcon = page
+        .locator('tds-table-body-row-expandable')
+        .nth(2)
+        .locator('.tds-expendable-row-icon');
+
       const tableBodyRowButton = page.getByText(/Call to action/);
-      await expect(tableBodyRowThirdInput).toHaveCount(1);
+
+      await expect(tableBodyRowThirdIcon).toHaveCount(1);
       await expect(tableBodyRowButton).toHaveCount(1);
       await expect(tableBodyRowButton).toBeHidden();
 
-      await tableBodyRowThirdInput.click();
+      // Click on the expand icon for the third row
+      await tableBodyRowThirdIcon.click();
+
+      // Wait for the button to become visible
+      await tableBodyRowButton.waitFor({ state: 'visible' });
       await expect(tableBodyRowButton).toBeVisible();
 
       /* check input screenshot diff */
