@@ -1,9 +1,9 @@
-// Tegel Brand Usage Tokens
+/* Tegel Brand Usage Tokens */
 
-// Light mode tokens (applied to :root and .scania-light)
+/* Light mode tokens (applied to :root and .scania-light) */
 :root,
 .tds-mode-light {
-  // Foreground - Text
+  /* Foreground - Text */
   --foreground-text-strong: var(--scania-neutral-transparent-958);
   --foreground-text-defined: var(--scania-neutral-transparent-700);
   --foreground-text-soft: var(--scania-neutral-transparent-600);
@@ -11,7 +11,7 @@
   --foreground-text-disabled: var(--scania-neutral-transparent-400);
   --foreground-text-supertype: var(--scania-blue-800);
 
-  // Foreground - Text - Inverse
+  /* Foreground - Text - Inverse */
   --foreground-text-inverse-strong: var(--scania-neutral-transparent-inverse-958);
   --foreground-text-inverse-defined: var(--scania-neutral-transparent-inverse-700);
   --foreground-text-inverse-soft: var(--scania-neutral-transparent-inverse-600);
@@ -19,13 +19,13 @@
   --foreground-text-inverse-disabled: var(--scania-neutral-transparent-inverse-400);
   --foreground-text-inverse-supertype: var(--scania-neutral-solid-00);
 
-  // Foreground - Text - Clickable
+  /* Foreground - Text - Clickable */
   --foreground-text-clickable-link: var(--scania-blue-400);
   --foreground-text-clickable-link-visited: var(--scania-blue-700);
   --foreground-text-clickable-link-brand: var(--scania-neutral-solid-00);
   --foreground-text-clickable-link-brand-inverse: var(--scania-neutral-solid-958);
 
-  // Foreground - Border
+  /* Foreground - Border */
   --foreground-border-strong: var(--scania-neutral-transparent-958);
   --foreground-border-defined: var(--scania-neutral-transparent-700);
   --foreground-border-soft: var(--scania-neutral-transparent-600);
@@ -33,7 +33,7 @@
   --foreground-border-disabled: var(--scania-neutral-transparent-400);
   --foreground-border-discrete: var(--scania-neutral-transparent-200);
 
-  // Foreground - Border - Inverse
+  /* Foreground - Border - Inverse */
   --foreground-border-inverse-strong: var(--scania-neutral-transparent-inverse-958);
   --foreground-border-inverse-defined: var(--scania-neutral-transparent-inverse-700);
   --foreground-border-inverse-soft: var(--scania-neutral-transparent-inverse-600);
@@ -41,14 +41,14 @@
   --foreground-border-inverse-disabled: var(--scania-neutral-transparent-inverse-400);
   --foreground-border-inverse-discrete: var(--scania-neutral-transparent-inverse-200);
 
-  // Foreground - Border - Clickable
+  /* Foreground - Border - Clickable */
   --foreground-border-clickable-link: var(--scania-blue-400);
   --foreground-border-clickable-focus: var(--scania-blue-400);
 
-  //TODO: Migrate to unit tokens
+  /* TODO: Migrate to unit tokens */
   --foreground-border-clickable-focus-width: 2px;
 
-  // Foreground - Elements - Transparent
+  /* Foreground - Elements - Transparent */
   --foreground-elements-transparparent-strong: var(--scania-neutral-transparent-958);
   --foreground-elements-transparparent-defined: var(--scania-neutral-transparent-700);
   --foreground-elements-transparparent-soft: var(--scania-neutral-transparent-600);
@@ -72,7 +72,7 @@
     --scania-neutral-transparent-inverse-200
   );
 
-  // Foreground - Elements - Solid
+  /* Foreground - Elements - Solid */
   --foreground-elements-solid-1000: var(--scania-neutral-solid-958);
   --foreground-elements-solid-900: var(--scania-neutral-solid-800);
   --foreground-elements-solid-800: var(--scania-neutral-solid-700);
@@ -84,7 +84,7 @@
   --foreground-elements-solid-200: var(--scania-neutral-solid-100);
   --foreground-elements-solid-100: var(--scania-neutral-solid-50);
 
-  // Background - Elevation
+  /* Background - Elevation */
   --background-elevation-base: var(--scania-neutral-solid-00);
   --background-elevation-layer-01: var(--scania-neutral-solid-50);
   --background-elevation-layer-02: var(--scania-neutral-solid-00);
@@ -97,7 +97,7 @@
   --background-elevation-layer-03-inverse: var(--scania-neutral-solid-900);
   --background-elevation-top-inverse: var(--scania-neutral-solid-900);
 
-  // Background - Elements
+  /* Background - Elements */
   --background-elements-1000: var(--scania-neutral-solid-958);
   --background-elements-900: var(--scania-neutral-solid-900);
   --background-elements-800: var(--scania-neutral-solid-800);
@@ -109,7 +109,7 @@
   --background-elements-200: var(--scania-neutral-solid-200);
   --background-elements-100: var(--scania-neutral-solid-100);
 
-  // Background - Clickable - Primary
+  /* Background - Clickable - Primary */
   --background-clickable-primary-primary: var(--scania-blue-600);
   --background-clickable-primary-primary-hover: var(--scania-blue-500);
   --background-clickable-primary-pressed: var(--scania-blue-700);
@@ -117,7 +117,7 @@
   --background-clickable-primary-disabled: var(--scania-neutral-solid-50);
   --background-clickable-primary-resting: var(--scania-neutral-solid-100);
 
-  // Background - Clickable - Primary-Inverse
+  /* Background - Clickable - Primary-Inverse */
   --background-clickable-primary-inverse-primary: var(--scania-blue-400);
   --background-clickable-primary-inverse-primary-hover: var(--scania-blue-500);
   --background-clickable-primary-inverse-pressed: var(--scania-blue-300);
@@ -125,7 +125,7 @@
   --background-clickable-primary-inverse-disabled: var(--scania-neutral-solid-50);
   --background-clickable-primary-inverse-resting: var(--scania-neutral-solid-100);
 
-  // Background - Clickable - Danger
+  /* Background - Clickable - Danger */
   --background-clickable-danger-danger: var(--scania-extended-red-400);
   --background-clickable-danger-danger-hover: var(--scania-extended-red-600);
   --background-clickable-danger-pressed: var(--scania-extended-red-700);
@@ -133,30 +133,30 @@
   --background-clickable-danger-disabled: var(--scania-neutral-solid-50);
   --background-clickable-danger-resting: var(--scania-neutral-solid-100);
 
-  // Feedback - Info
+  /* Feedback - Info */
   --feedback-info-strong: var(--scania-blue-800);
   --feedback-info-default: var(--scania-blue-400);
   --feedback-info-subtle: var(--scania-blue-50);
 
-  // Feedback - Success
+  /* Feedback - Success */
   --feedback-success-strong: var(--scania-extended-green-700);
   --feedback-success-default: var(--scania-extended-green-200);
   --feedback-success-discrete: var(--scania-extended-green-50);
 
-  // Feedback - Warning
+  /* Feedback - Warning */
   --feedback-warning-strong: var(--scania-extended-yellow-800);
   --feedback-warning-default: var(--scania-extended-yellow-100);
   --feedback-warning-subtle: var(--scania-extended-yellow-50);
 
-  // Feedback - Danger
+  /* Feedback - Danger */
   --feedback-danger-strong: var(--scania-extended-red-800);
   --feedback-danger-default: var(--scania-extended-red-400);
   --feedback-danger-subtle: var(--scania-extended-red-50);
 }
 
-// Dark mode tokens
+/* Dark mode tokens */
 .tds-mode-dark {
-  // Foreground - Text
+  /* Foreground - Text */
   --foreground-text-strong: var(--scania-neutral-transparent-inverse-958);
   --foreground-text-defined: var(--scania-neutral-transparent-inverse-700);
   --foreground-text-soft: var(--scania-neutral-transparent-inverse-600);
@@ -164,7 +164,7 @@
   --foreground-text-disabled: var(--scania-neutral-transparent-inverse-400);
   --foreground-text-supertype: var(--scania-neutral-solid-00);
 
-  // Foreground - Text - Inverse
+  /* Foreground - Text - Inverse */
   --foreground-text-inverse-strong: var(--scania-neutral-transparent-958);
   --foreground-text-inverse-defined: var(--scania-neutral-transparent-700);
   --foreground-text-inverse-soft: var(--scania-neutral-transparent-600);
@@ -172,13 +172,13 @@
   --foreground-text-inverse-disabled: var(--scania-neutral-transparent-400);
   --foreground-text-inverse-supertype: var(--scania-blue-900);
 
-  // Foreground - Text - Clickable
+  /* Foreground - Text - Clickable */
   --foreground-text-clickable-link: var(--scania-blue-300);
   --foreground-text-clickable-link-visited: var(--scania-blue-100);
   --foreground-text-clickable-link-brand: var(--scania-neutral-solid-00);
   --foreground-text-clickable-link-brand-inverse: var(--scania-neutral-solid-00);
 
-  // Foreground - Border
+  /* Foreground - Border */
   --foreground-border-strong: var(--scania-neutral-transparent-inverse-958);
   --foreground-border-defined: var(--scania-neutral-transparent-inverse-700);
   --foreground-border-soft: var(--scania-neutral-transparent-inverse-600);
@@ -186,7 +186,7 @@
   --foreground-border-disabled: var(--scania-neutral-transparent-inverse-400);
   --foreground-border-discrete: var(--scania-neutral-transparent-inverse-200);
 
-  // Foreground - Border - Inverse
+  /* Foreground - Border - Inverse */
   --foreground-border-inverse-strong: var(--scania-neutral-transparent-958);
   --foreground-border-inverse-defined: var(--scania-neutral-transparent-700);
   --foreground-border-inverse-soft: var(--scania-neutral-transparent-600);
@@ -194,14 +194,14 @@
   --foreground-border-inverse-disabled: var(--scania-neutral-transparent-400);
   --foreground-border-inverse-discrete: var(--scania-neutral-transparent-200);
 
-  // Foreground - Border - Clickable
+  /* Foreground - Border - Clickable */
   --foreground-border-clickable-link: var(--scania-blue-300);
   --foreground-border-clickable-focus: var(--scania-blue-300);
 
-  //TODO: Migrate to unit tokens
+  /* TODO: Migrate to unit tokens */
   --foreground-border-clickable-focus-width: 2px;
 
-  // Foreground - Elements - Transparent
+  /* Foreground - Elements - Transparent */
   --foreground-elements-transparparent-strong: var(--scania-neutral-transparent-inverse-958);
   --foreground-elements-transparparent-defined: var(--scania-neutral-transparent-inverse-700);
   --foreground-elements-transparparent-soft: var(--scania-neutral-transparent-inverse-600);
@@ -215,7 +215,7 @@
   --foreground-elements-transparparent-disabled-inverse: var(--scania-neutral-transparent-400);
   --foreground-elements-transparparent-discrete-inverse: var(--scania-neutral-transparent-200);
 
-  // Foreground - Elements - Solid
+  /* Foreground - Elements - Solid */
   --foreground-elements-solid-1000: var(--scania-neutral-solid-50);
   --foreground-elements-solid-900: var(--scania-neutral-solid-300);
   --foreground-elements-solid-800: var(--scania-neutral-solid-500);
@@ -227,7 +227,7 @@
   --foreground-elements-solid-200: var(--scania-neutral-solid-928);
   --foreground-elements-solid-100: var(--scania-neutral-solid-958);
 
-  // Background - Elevation
+  /* Background - Elevation */
   --background-elevation-base: var(--scania-neutral-solid-1000);
   --background-elevation-layer-01: var(--scania-neutral-solid-928);
   --background-elevation-layer-02: var(--scania-neutral-solid-900);
@@ -240,7 +240,7 @@
   --background-elevation-layer-03-inverse: var(--scania-neutral-solid-200);
   --background-elevation-top-inverse: var(--scania-neutral-solid-200);
 
-  // Background - Elements
+  /* Background - Elements */
   --background-elements-1000: var(--scania-neutral-solid-50);
   --background-elements-900: var(--scania-neutral-solid-300);
   --background-elements-800: var(--scania-neutral-solid-500);
@@ -252,7 +252,7 @@
   --background-elements-200: var(--scania-neutral-solid-900);
   --background-elements-100: var(--scania-neutral-solid-928);
 
-  // Background - Clickable - Primary
+  /* Background - Clickable - Primary */
   --background-clickable-primary-primary: var(--scania-blue-400);
   --background-clickable-primary-primary-hover: var(--scania-blue-500);
   --background-clickable-primary-pressed: var(--scania-blue-300);
@@ -260,7 +260,7 @@
   --background-clickable-primary-disabled: var(--scania-neutral-solid-868);
   --background-clickable-primary-resting: var(--scania-neutral-solid-800);
 
-  // Background - Clickable - Primary-Inverse
+  /* Background - Clickable - Primary-Inverse */
   --background-clickable-primary-inverse-primary: var(--scania-blue-600);
   --background-clickable-primary-inverse-primary-hover: var(--scania-blue-500);
   --background-clickable-primary-inverse-pressed: var(--scania-blue-700);
@@ -268,7 +268,7 @@
   --background-clickable-primary-inverse-disabled: var(--scania-neutral-solid-868);
   --background-clickable-primary-inverse-resting: var(--scania-neutral-solid-800);
 
-  // Background - Clickable - Danger
+  /* Background - Clickable - Danger */
   --background-clickable-danger-danger: var(--scania-extended-red-400);
   --background-clickable-danger-danger-hover: var(--scania-extended-red-600);
   --background-clickable-danger-pressed: var(--scania-extended-red-700);
@@ -276,22 +276,22 @@
   --background-clickable-danger-disabled: var(--scania-neutral-solid-900);
   --background-clickable-danger-resting: var(--scania-neutral-solid-900);
 
-  // Feedback - Info
+  /* Feedback - Info */
   --feedback-info-strong: var(--scania-blue-50);
   --feedback-info-default: var(--scania-blue-400);
   --feedback-info-subtle: var(--scania-blue-700);
 
-  // Feedback - Success
+  /* Feedback - Success */
   --feedback-success-strong: var(--scania-extended-green-50);
   --feedback-success-default: var(--scania-extended-green-200);
   --feedback-success-discrete: var(--scania-extended-green-700);
 
-  // Feedback - Warning
+  /* Feedback - Warning */
   --feedback-warning-strong: var(--scania-extended-yellow-50);
   --feedback-warning-default: var(--scania-extended-yellow-100);
   --feedback-warning-subtle: var(--scania-extended-yellow-600);
 
-  // Feedback - Danger
+  /* Feedback - Danger */
   --feedback-danger-strong: var(--scania-extended-red-50);
   --feedback-danger-default: var(--scania-extended-red-400);
   --feedback-danger-subtle: var(--scania-extended-red-800);
