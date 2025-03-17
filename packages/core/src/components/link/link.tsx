@@ -21,7 +21,20 @@ export class TdsLink {
   @Prop() standalone: boolean = false;
 
   connectedCallback() {
-    this.host.children[0].classList.add('tds-link-component');
+    const links = this.host.querySelectorAll('a');
+    if(links.length > 1) {
+      console.warn('tds-link is only intended to wrapp one <a> tag')
+    }
+    const link = links[0]
+    if (link) {
+      if (this.disabled) {
+        link.setAttribute('tabindex', '-1');
+        link.setAttribute('aria-disabled', 'true');
+      } else {
+        link.removeAttribute('tabindex');
+        link.removeAttribute('aria-disabled');
+      }
+    }
   }
 
   render() {
