@@ -2,7 +2,7 @@
 
 @mixin text-field-base {
   all: unset;
-  border-radius: 4px 4px 0 0;
+  // border-radius: 4px 4px 0 0;
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -58,17 +58,21 @@
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  border-radius: 4px 4px 0 0;
+  // border-radius: 4px 4px 0 0;
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
   background-color: var(--tds-text-field-background);
   border-bottom: 1px solid var(--tds-text-field-border-bottom);
-  transition: border-bottom-color 200ms ease;
+  // border-bottom: 1px solid red;
+
+  // transition: border-bottom-color 200ms ease;
 
   &:hover {
     border-bottom-color: var(--tds-text-field-border-bottom-hover);
+
+    transition: border-bottom-color 200ms ease;
   }
 
   .form-text-field-md & {
@@ -77,6 +81,15 @@
 
   .form-text-field-sm & {
     height: 40px;
+  }
+
+  .text-field-focus & {
+    // border-bottom: none;
+    // border-bottom: 1px solid transparent !important;
+
+    transition: none;
+
+    border-bottom-color: transparent;
   }
 }
 
@@ -207,42 +220,43 @@
 }
 
 //text-field bottom bar when in focus
-.text-field-bar {
-  position: absolute;
-  width: 100%;
 
-  &::before,
-  &::after {
-    content: '';
-    height: 2px;
-    top: 54px;
-    width: 0;
-    position: absolute;
-    background: var(--tds-text-field-bar);
-    transition: 0.35s ease all;
+// .text-field-bar {
+//   position: absolute;
+//   width: 100%;
 
-    .form-text-field-md & {
-      top: 46px;
-    }
+//   &::before,
+//   &::after {
+//     content: '';
+//     height: 5px;
+//     top: 54px;
+//     width: 0;
+//     position: absolute;
+//     background: var(--tds-text-field-bar);
+//     transition: 0.35s ease all;
 
-    .form-text-field-sm & {
-      top: 40px;
-    }
-  }
+//     .form-text-field-md & {
+//       top: 46px;
+//     }
 
-  &::before {
-    left: 50%;
-  }
+//     .form-text-field-sm & {
+//       top: 40px;
+//     }
+//   }
 
-  &::after {
-    right: 50%;
-  }
+//   &::before {
+//     left: 50%;
+//   }
 
-  .text-field-focus &::before,
-  .text-field-focus &::after {
-    width: 50%;
-  }
-}
+//   &::after {
+//     right: 50%;
+//   }
+
+//   .text-field-focus &::before,
+//   .text-field-focus &::after {
+//     width: 50%;
+//   }
+// }
 
 //Helper text
 .text-field-helper {
