@@ -17,13 +17,19 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('under second row opened expanded row with text "Hello to you too"', async ({ page }) => {
-      const tableBodyRowSecondInput = page.getByRole('cell').nth(2);
-      const tableBodyExpandableRowSlot = page.getByText(/Hello to you too/);
-      await expect(tableBodyRowSecondInput).toHaveCount(1);
+      const tableBodyRowSecondIcon = page
+        .locator('tds-table-body-row-expandable')
+        .nth(1)
+        .locator('.tds-expendable-row-icon');
+      const tableBodyExpandableRowSlot = page
+        .locator('tds-table-body-row-expandable')
+        .nth(1)
+        .locator('div[slot="expand-row"]');
+      await expect(tableBodyRowSecondIcon).toHaveCount(1);
       await expect(tableBodyExpandableRowSlot).toHaveCount(1);
       await expect(tableBodyExpandableRowSlot).toBeHidden();
 
-      await tableBodyRowSecondInput.click();
+      await tableBodyRowSecondIcon.click();
       await expect(tableBodyExpandableRowSlot).toBeVisible();
 
       /* check input screenshot diff */
