@@ -1,0 +1,270 @@
+/* Scania Typography Usage Tokens */
+
+:root {
+  /* Line height tokens */
+  --super-type-01-line-height: 183px;
+  --super-type-02-line-height: 148px;
+  --super-type-03-line-height: 106px;
+  --expressive-headline-01-line-height: 80px;
+  --expressive-headline-02-line-height: 56px;
+  --headline-01-line-height: 40px;
+  --headline-02-line-height: 32px;
+  --headline-03-line-height: 24px;
+  --headline-04-line-height: 24px;
+  --headline-05-line-height: 24px;
+  --headline-06-line-height: 16px;
+  --headline-07-line-height: 16px;
+  --paragraph-01-line-height: 32px;
+  --paragraph-02-line-height: 24px;
+  --body-01-line-height: 24px;
+  --body-02-line-height: 20px;
+  --detail-01-line-height: 24px;
+  --detail-02-line-height: 16px;
+  --detail-03-line-height: 20px;
+  --detail-04-line-height: 16px;
+  --detail-05-line-height: 16px;
+  --detail-06-line-height: 16px;
+  --detail-07-line-height: 8px;
+
+  /* Font family tokens */
+  --headline-font-family: 'Scania Sans Headline';
+  --body-font-family: 'Scania Sans';
+  --regular-headline-font-family: 'Scania Sans';
+  --body-text-headline-font-family: 'Scania Sans';
+  --condensed-font-family: 'Scania Sans Condensed';
+
+  /* Font weight tokens */
+  --expressive-font-weight: 700; /* Bold */
+  --semi-expressive-font-weight: 600; /* Bold */
+  --paragraph-font-weight: 400; /* Regular */
+  --flowing-font-weight: 400; /* Regular */
+  --expressive-detail-font-weight: 600; /* Bold */
+  --component-links-font-weight: 600; /* Bold */
+  --button-and-small-detail-font-weight: 400; /* regular */
+
+  /* Letter spacing tokens */
+  --super-type-01-letter-spacing: 0;
+  --super-type-02-letter-spacing: 0;
+  --super-type-03-letter-spacing: 0;
+  --expressive-headline-01-letter-spacing: 0;
+  --expressive-headline-02-letter-spacing: 0;
+  --headline-01-letter-spacing: 0;
+  --headline-02-letter-spacing: -1.28px;
+  --headline-03-letter-spacing: -0.72px;
+  --headline-04-letter-spacing: -0.2px;
+  --headline-05-letter-spacing: -0.32px;
+  --headline-06-letter-spacing: -0.28px;
+  --headline-07-letter-spacing: -0.14px;
+  --paragraph-01-letter-spacing: -0.72px;
+  --paragraph-02-letter-spacing: -0.2px;
+  --body-01-letter-spacing: -0.32px;
+  --body-02-letter-spacing: -0.14px;
+  --detail-01-letter-spacing: -0.16px;
+  --detail-02-letter-spacing: -0.14px;
+  --detail-03-letter-spacing: -0.14px;
+  --detail-04-letter-spacing: 0.96px;
+  --detail-05-letter-spacing: 0;
+  --detail-06-letter-spacing: 0.8px;
+  --detail-07-letter-spacing: 0;
+}
+
+/* Typography Usage mixins */
+
+@mixin supertype-01 {
+  font-family: var(--headline-font-family);
+  font-size: var(--super-type-01-font-size);
+  line-height: var(--super-type-01-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--super-type-01-letter-spacing);
+}
+
+@mixin supertype-02 {
+  font-family: var(--headline-font-family);
+  font-size: var(--super-type-02-font-size);
+  line-height: var(--super-type-02-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--super-type-02-letter-spacing);
+}
+
+@mixin supertype-03 {
+  font-family: var(--headline-font-family);
+  font-size: var(--super-type-03-font-size);
+  line-height: var(--super-type-03-line-height);
+  font-weight: var(--expressive-font-weight);
+}
+
+@mixin expressive-headline-01 {
+  font-family: 'Traton Type Display';
+  font-size: 80px;
+  line-height: 84px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0.4px;
+}
+
+@mixin expressive-headline-02 {
+  font-family: 'Traton Type Display';
+  font-size: 56px;
+  line-height: 59px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0.28px;
+}
+
+@mixin headline-01 {
+  font-family: 'Traton Type Display';
+  font-size: 40px;
+  line-height: 42px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin headline-02 {
+  font-family: 'Traton Type Display';
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin headline-03 {
+  font-family: 'Traton Type Display';
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin headline-04 {
+  font-family: 'Traton Type Display';
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin headline-05 {
+  font-family: 'Traton Type Text';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--unknown-value); // SemiBold
+  letter-spacing: 0;
+}
+
+@mixin headline-06 {
+  font-family: 'Traton Type Text';
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--unknown-value); // SemiBold
+  letter-spacing: 0;
+}
+
+@mixin headline-07 {
+  font-family: 'Traton Type Text';
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: var(--unknown-value); // SemiBold
+  letter-spacing: 0;
+}
+
+@mixin paragraph-01 {
+  font-family: 'Traton Type Display';
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin paragraph-02 {
+  font-family: 'Traton Type Display';
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin body-01 {
+  font-family: 'Traton Type Text';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin body-02 {
+  font-family: 'Traton Type Text';
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin body-link-01 {
+  font-family: 'Traton Type Text';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin body-link-02 {
+  font-family: 'Traton Type Text';
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin detail-01 {
+  font-family: 'Traton Type Text';
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin detail-02 {
+  font-family: 'Traton Type Text';
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin detail-03 {
+  font-family: 'Traton Type Text';
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: var(--unknown-value); // Regular
+  letter-spacing: 0;
+}
+
+@mixin detail-04 {
+  font-family: 'Traton Type Text';
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: var(--unknown-value); // SemiBold
+  letter-spacing: 0.48px;
+}
+
+@mixin detail-05 {
+  font-family: 'Traton Type Text';
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
+
+@mixin detail-06 {
+  font-family: 'Traton Type Text';
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: var(--unknown-value); // SemiBold
+  letter-spacing: 0.4px;
+}
+
+@mixin detail-07 {
+  font-family: 'Traton Type Text';
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: var(--unknown-value); // Medium
+  letter-spacing: 0;
+}
