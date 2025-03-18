@@ -105,7 +105,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
   return formatHtmlPreview(`
   ${
     inputType === 'Button'
-      ? `<tds-chip type="button" size="${sizeLookUp[size]}"${disabledAttribute}>        
+      ? `<tds-chip type="button" size="${
+          sizeLookUp[size]
+        }"${disabledAttribute} tds-aria-label="A chip component">        
             ${
               icon && iconPosition === 'Prefix'
                 ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
@@ -147,7 +149,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
       <div role="group" aria-labelledby="group-1">
         <tds-chip type="checkbox" size="${
           sizeLookUp[size]
-        }" checked ${disabledAttribute} value="checkbox-1-value">        
+        }" checked ${disabledAttribute} value="checkbox-1-value" tds-aria-label="A chip component">        
             ${
               icon && iconPosition === 'Prefix'
                 ? '<tds-icon slot="prefix" name="heart" size="16px"></tds-icon>'
@@ -162,7 +164,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
                 : ''
             }        
         </tds-chip>
-        <tds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-2-value">
+        <tds-chip type="checkbox" size="${
+          sizeLookUp[size]
+        }" value="checkbox-2-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="email" size="16px"></tds-icon>'
@@ -177,7 +181,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
                 : ''
             } 
         </tds-chip>
-        <tds-chip type="checkbox" size="${sizeLookUp[size]}" value="checkbox-3-value">
+        <tds-chip type="checkbox" size="${
+          sizeLookUp[size]
+        }" value="checkbox-3-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="smartphone" size="16px"></tds-icon>'
@@ -224,7 +230,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
       <div role="group" aria-labelledby="group-1">
         <tds-chip name="group1" type="radio" size="${
           sizeLookUp[size]
-        }" checked ${disabledAttribute} value="radio-1-value">
+        }" checked ${disabledAttribute} value="radio-1-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="sorting" size="16px"></tds-icon>'
@@ -239,7 +245,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
                 : ''
             } 
         </tds-chip>
-        <tds-chip name="group1" type="radio" size="${sizeLookUp[size]}" value="radio-2-value">
+        <tds-chip name="group1" type="radio" size="${
+          sizeLookUp[size]
+        }" value="radio-2-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="cart" size="16px"></tds-icon>'
@@ -254,7 +262,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
                 : ''
             } 
         </tds-chip>
-        <tds-chip name="group1" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
+        <tds-chip name="group1" type="radio" size="${
+          sizeLookUp[size]
+        }" value="radio-3-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'
@@ -276,7 +286,7 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
       <div role="group" aria-labelledby="group-2">
         <tds-chip name="group2" type="radio" size="${
           sizeLookUp[size]
-        }" checked ${disabledAttribute} value="radio-1-value">
+        }" checked ${disabledAttribute} value="radio-1-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="sorting" size="16px"></tds-icon>'
@@ -291,7 +301,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
                 : ''
             } 
         </tds-chip>
-        <tds-chip name="group2" type="radio" size="${sizeLookUp[size]}" value="radio-2-value">
+        <tds-chip name="group2" type="radio" size="${
+          sizeLookUp[size]
+        }" value="radio-2-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="cart" size="16px"></tds-icon>'
@@ -306,7 +318,9 @@ const Template = ({ inputType, size, label, icon, iconPosition, disabled }) => {
                 : ''
             } 
         </tds-chip>
-        <tds-chip name="group2" type="radio" size="${sizeLookUp[size]}" value="radio-3-value">
+        <tds-chip name="group2" type="radio" size="${
+          sizeLookUp[size]
+        }" value="radio-3-value" tds-aria-label="A chip component">
           ${
             icon && iconPosition === 'Prefix'
               ? '<tds-icon slot="prefix" name="star" size="16px"></tds-icon>'

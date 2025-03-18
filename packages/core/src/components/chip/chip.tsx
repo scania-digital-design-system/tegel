@@ -41,6 +41,9 @@ export class TdsChip {
   /** Sets the Chip in a disabled state */
   @Prop() disabled: boolean = false;
 
+  /** Value to be used for the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked).
    * Valid only for type checkbox and radio.
    * If no ID is specified, a random one will be generated.
@@ -152,13 +155,17 @@ export class TdsChip {
     };
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Chip component: tdsAriaLabel prop is missing');
+    }
+  }
+
   render() {
     const inputAttributes = this.renderInputAttributes();
     const hasPrefixSlot = hasSlot('prefix', this.host);
     const hasLabelSlot = hasSlot('label', this.host);
     const hasSuffixSlot = hasSlot('suffix', this.host);
-
-    const textInsideLabel = this.host.querySelector(`[slot="label"]`).innerHTML;
 
     const chipClasses = {
       'tds-chip-component': true,
@@ -178,7 +185,7 @@ export class TdsChip {
               id={this.chipId}
               aria-checked={this.type === 'button' ? undefined : String(this.checked)}
               role={this.type}
-              aria-label={hasLabelSlot && textInsideLabel ? textInsideLabel : 'Chip'}
+              aria-label={this.tdsAriaLabel}
               {...inputAttributes}
             ></input>
             <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
