@@ -22,10 +22,10 @@ export class TdsLink {
 
   connectedCallback() {
     const links = this.host.querySelectorAll('a');
-    if(links.length > 1) {
-      console.warn('tds-link is only intended to wrapp one <a> tag')
+    if (links.length > 1) {
+      console.warn('tds-link is only intended to wrap one <a> tag');
     }
-    const link = links[0]
+    const link = links[0];
     if (link) {
       if (this.disabled) {
         link.setAttribute('tabindex', '-1');
