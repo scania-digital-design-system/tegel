@@ -1,6 +1,7 @@
 /* Scania Typography Usage Tokens */
 
-:root {
+:root,
+.scania {
   /* Line height tokens */
   --super-type-01-line-height: 183px;
   --super-type-02-line-height: 148px;
@@ -27,11 +28,16 @@
   --detail-07-line-height: 8px;
 
   /* Font family tokens */
+  --super-type-01-font-family: 'Comic Sans';
+  --super-type-02-font-family: 'Scania Sans CY Headline';
+  --super-type-03-font-family: 'Scania Sans CY Headline';
+  --expressive-headline-01-font-family: 'Scania Sans CY Headline';
+  --expressive-headline-02-font-family: 'Scania Sans CY Headline';
   --headline-font-family: 'Scania Sans Headline';
   --body-font-family: 'Scania Sans';
   --regular-headline-font-family: 'Scania Sans';
   --body-text-headline-font-family: 'Scania Sans';
-  --condensed-font-family: 'Scania Sans Condensed';
+  --condensed-font-family: 'Scania Sans Semi Condensed';
 
   /* Font weight tokens */
   --expressive-font-weight: 700; /* Bold */
@@ -91,180 +97,181 @@
   font-size: var(--super-type-03-font-size);
   line-height: var(--super-type-03-line-height);
   font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--super-type-03-letter-spacing);
 }
 
 @mixin expressive-headline-01 {
-  font-family: 'Traton Type Display';
-  font-size: 80px;
-  line-height: 84px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0.4px;
+  font-family: var(--headline-font-family);
+  font-size: var(--expressive-headline-01-font-size);
+  line-height: var(--expressive-headline-01-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--expressive-headline-01-letter-spacing);
 }
 
 @mixin expressive-headline-02 {
-  font-family: 'Traton Type Display';
-  font-size: 56px;
-  line-height: 59px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0.28px;
+  font-family: var(--headline-font-family);
+  font-size: var(--expressive-headline-02-font-size);
+  line-height: var(--expressive-headline-02-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--expressive-headline-02-letter-spacing);
 }
 
 @mixin headline-01 {
-  font-family: 'Traton Type Display';
-  font-size: 40px;
-  line-height: 42px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-01-font-size);
+  line-height: var(--headline-01-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--headline-01-letter-spacing);
 }
 
 @mixin headline-02 {
-  font-family: 'Traton Type Display';
-  font-size: 32px;
-  line-height: 40px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-02-font-size);
+  line-height: var(--headline-02-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--headline-02-letter-spacing);
 }
 
 @mixin headline-03 {
-  font-family: 'Traton Type Display';
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-03-font-size);
+  line-height: var(--headline-03-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--headline-03-letter-spacing);
 }
 
 @mixin headline-04 {
-  font-family: 'Traton Type Display';
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-04-font-size);
+  line-height: var(--headline-04-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--headline-04-letter-spacing);
 }
 
 @mixin headline-05 {
-  font-family: 'Traton Type Text';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: var(--unknown-value); // SemiBold
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-05-font-size);
+  line-height: var(--headline-05-line-height);
+  font-weight: var(--expressive-font-weight);
+  letter-spacing: var(--headline-05-letter-spacing);
 }
 
 @mixin headline-06 {
-  font-family: 'Traton Type Text';
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: var(--unknown-value); // SemiBold
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-06-font-size);
+  line-height: var(--headline-06-line-height);
+  font-weight: var(--semi-expressive-font-weight);
+  letter-spacing: var(--headline-06-letter-spacing);
 }
 
 @mixin headline-07 {
-  font-family: 'Traton Type Text';
-  font-size: 12px;
-  line-height: 18px;
-  font-weight: var(--unknown-value); // SemiBold
-  letter-spacing: 0;
+  font-family: var(--headline-font-family);
+  font-size: var(--headline-07-font-size);
+  line-height: var(--headline-07-line-height);
+  font-weight: var(--semi-expressive-font-weight);
+  letter-spacing: var(--headline-07-letter-spacing);
 }
 
 @mixin paragraph-01 {
-  font-family: 'Traton Type Display';
-  font-size: 24px;
-  line-height: 30px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--paragraph-01-font-size);
+  line-height: var(--paragraph-01-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--paragraph-01-letter-spacing);
 }
 
 @mixin paragraph-02 {
-  font-family: 'Traton Type Display';
-  font-size: 20px;
-  line-height: 25px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--paragraph-02-font-size);
+  line-height: var(--paragraph-02-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--paragraph-02-letter-spacing);
 }
 
 @mixin body-01 {
-  font-family: 'Traton Type Text';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-01-font-size);
+  line-height: var(--body-01-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--body-01-letter-spacing);
 }
 
 @mixin body-02 {
-  font-family: 'Traton Type Text';
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-02-font-size);
+  line-height: var(--body-02-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--body-02-letter-spacing);
 }
 
 @mixin body-link-01 {
-  font-family: 'Traton Type Text';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-link-01-font-size);
+  line-height: var(--body-link-01-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--body-link-01-letter-spacing);
 }
 
 @mixin body-link-02 {
-  font-family: 'Traton Type Text';
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-link-02-font-size);
+  line-height: var(--body-link-02-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--body-link-02-letter-spacing);
 }
 
 @mixin detail-01 {
-  font-family: 'Traton Type Text';
-  font-size: 16px;
-  line-height: 22px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-01-font-size);
+  line-height: var(--detail-01-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--detail-01-letter-spacing);
 }
 
 @mixin detail-02 {
-  font-family: 'Traton Type Text';
-  font-size: 14px;
-  line-height: 16px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-02-font-size);
+  line-height: var(--detail-02-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--detail-02-letter-spacing);
 }
 
 @mixin detail-03 {
-  font-family: 'Traton Type Text';
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: var(--unknown-value); // Regular
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-03-font-size);
+  line-height: var(--detail-03-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--detail-03-letter-spacing);
 }
 
 @mixin detail-04 {
-  font-family: 'Traton Type Text';
-  font-size: 12px;
-  line-height: 17px;
-  font-weight: var(--unknown-value); // SemiBold
-  letter-spacing: 0.48px;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-04-font-size);
+  line-height: var(--detail-04-line-height);
+  font-weight: var(--semi-expressive-font-weight);
+  letter-spacing: var(--detail-04-letter-spacing);
 }
 
 @mixin detail-05 {
-  font-family: 'Traton Type Text';
-  font-size: 12px;
-  line-height: 17px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-05-font-size);
+  line-height: var(--detail-05-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--detail-05-letter-spacing);
 }
 
 @mixin detail-06 {
-  font-family: 'Traton Type Text';
-  font-size: 10px;
-  line-height: 14px;
-  font-weight: var(--unknown-value); // SemiBold
-  letter-spacing: 0.4px;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-06-font-size);
+  line-height: var(--detail-06-line-height);
+  font-weight: var(--semi-expressive-font-weight);
+  letter-spacing: var(--detail-06-letter-spacing);
 }
 
 @mixin detail-07 {
-  font-family: 'Traton Type Text';
-  font-size: 10px;
-  line-height: 14px;
-  font-weight: var(--unknown-value); // Medium
-  letter-spacing: 0;
+  font-family: var(--body-font-family);
+  font-size: var(--detail-07-font-size);
+  line-height: var(--detail-07-line-height);
+  font-weight: var(--paragraph-font-weight);
+  letter-spacing: var(--detail-07-letter-spacing);
 }
