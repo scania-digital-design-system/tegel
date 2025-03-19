@@ -426,7 +426,8 @@
 #my-input-1:focus-visible {
   @include tds-focus-state;
 
-  // background-color: orange;
+  // display: none;
+
   // padding: 10px;
 }
 

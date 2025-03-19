@@ -110,6 +110,7 @@ export class TdsTextField {
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleFocus(event): void {
+    console.log('focuz 1');
     this.textInput.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
@@ -133,6 +134,7 @@ export class TdsTextField {
   /** Method to handle focus */
   @Method()
   async focusElement() {
+    console.log('FOCUZ');
     if (this.textInput) {
       this.textInput.focus();
     }
@@ -141,6 +143,12 @@ export class TdsTextField {
   render() {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
+
+    console.log('----- activeelement is ', document.activeElement);
+
+    const inputElement = document.getElementById('my-input-1');
+
+    console.log(document.activeElement == inputElement);
 
     return (
       // <div style={{ backgroundColor: 'orange', padding: '10px' }} contentEditable={true}>
@@ -204,7 +212,7 @@ export class TdsTextField {
               type={this.type}
               disabled={this.disabled}
               readonly={this.readOnly}
-              placeholder={this.readOnly && this.focusInput ? 'undefined' : this.placeholder}
+              placeholder={this.readOnly && this.focusInput ? undefined : this.placeholder}
               value={this.value}
               autofocus={this.autofocus}
               maxlength={this.maxLength}
@@ -214,14 +222,10 @@ export class TdsTextField {
               onInput={(event) => this.handleInput(event)}
               onChange={(event) => this.handleChange(event)}
               onFocus={(event) => {
-                if (!this.readOnly) {
-                  this.handleFocus(event);
-                }
+                this.handleFocus(event);
               }}
               onBlur={(event) => {
-                if (!this.readOnly) {
-                  this.handleBlur(event);
-                }
+                this.handleBlur(event);
               }}
             />
 
