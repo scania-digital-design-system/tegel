@@ -369,6 +369,10 @@
   },
   "scripts": {
     "build": "stencil build && stencil build --docs",
+    "build:tegel-light": "npm run compile:scss && npm run update:tegel-light-exports && npm run copy:assets-tegel-light",
+    "compile:scss": "npx sass src/global/tegel-light-global.scss ../tegel-light/dist/global.css --no-source-map && node scripts/compile-tegel-light-components.js",
+    "update:tegel-light-exports": "node scripts/update-tegel-light-exports.js",
+    "copy:assets-tegel-light": "node scripts/copy-tegel-light-assets.js",
     "_comment": "Due to stencil bug with types creation, we need to run build two times!",
     "start": "stencil build --dev --watch --serve",
     "start:dev": "stencil build --dev --watch --serve",
