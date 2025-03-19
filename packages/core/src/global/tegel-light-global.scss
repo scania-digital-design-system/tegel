@@ -2,17 +2,11 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
-/* Multibrand tokens: Scania colors */
+// New Tegel Styles
+
 @import '../../../../color/scania-color-primitives';
-@import '../../../../color/scania-brand-usage';
-
-/* Multibrand tokens: Scania typography */
-@import '../../../../typography/tokens/typography-scania';
-
-/* Multibrand tokens: Scania spacing */
+@import '../../../../color/tegel-brand-usage';
 @import '../../../../spacing/units';
-@import '../../../../spacing/radius';
-@import '../../../../spacing/scania-units';
 
 // Motion
 @import '../../../../motion/';
@@ -59,6 +53,8 @@
 @import '../components/header/header-item/header-item-global';
 @import '../components/header/header-vars';
 @import '../components/link/link-vars';
+@import '../components/message/message-vars';
+@import '../components/modal/modal-vars';
 @import '../components/popover-canvas/popover-canvas-vars';
 @import '../components/popover-menu/popover-menu-vars';
 @import '../components/radio-button/radio-button-vars';
@@ -121,6 +117,3 @@ body {
 }
 
 @import 'shame';
-
-// Just for demo purposes, import of this file should be conditional
-@import 'tegel-light-components';
