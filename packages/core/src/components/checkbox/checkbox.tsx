@@ -47,9 +47,6 @@ export class TdsCheckbox {
   /** Value to be used for the aria-label attribute */
   @Prop() tdsAriaLabel: string;
 
-  /** Value to be used for the aria-labelledby attribute */
-  @Prop() tdsAriaLabelledby: string;
-
   /** Value to be used for the aria-describedby attribute */
   @Prop() tdsAriaDescribedby: string;
 
@@ -137,14 +134,6 @@ export class TdsCheckbox {
     if (!this.tdsAriaLabel) {
       console.warn('Tegel Checkbox component: tdsAriaLabel prop is missing');
     }
-
-    if (!this.tdsAriaLabelledby) {
-      console.warn('Tegel Checkbox component: tdsAriaLabelledby prop is missing');
-    }
-
-    if (!this.tdsAriaDescribedby) {
-      console.warn('Tegel Checkbox component: tdsAriaDescribedby prop is missing');
-    }
   }
 
   render() {
@@ -157,7 +146,6 @@ export class TdsCheckbox {
           aria-checked={this.checked}
           aria-required={this.required}
           aria-label={this.tdsAriaLabel}
-          aria-labelledby={this.tdsAriaLabelledby}
           aria-describedby={this.tdsAriaDescribedby}
           required={this.required}
           type="checkbox"

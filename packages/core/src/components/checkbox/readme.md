@@ -17,7 +17,6 @@
 | `required`           | `required`             | Make the Checkbox required                                                | `boolean` | `false`              |
 | `tdsAriaDescribedby` | `tds-aria-describedby` | Value to be used for the aria-describedby attribute                       | `string`  | `undefined`          |
 | `tdsAriaLabel`       | `tds-aria-label`       | Value to be used for the aria-label attribute                             | `string`  | `undefined`          |
-| `tdsAriaLabelledby`  | `tds-aria-labelledby`  | Value to be used for the aria-labelledby attribute                        | `string`  | `undefined`          |
 | `value`              | `value`                | Value for the Checkbox                                                    | `string`  | `undefined`          |
 
 
