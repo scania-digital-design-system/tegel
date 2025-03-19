@@ -84,10 +84,8 @@ const Template = ({ label, checked, disabled, indeterminate, tdsAriaLabel }) =>
       value="checkbox-1"
       checkbox-id="first-checkbox"
       tds-aria-label="${tdsAriaLabel}"
-      tds-aria-describedby="checkbox-1-label"
-      tds-aria-labelledby="checkbox-1-label"
     >
-      <div slot="label" id="checkbox-1-label">${label}</div>
+      <div slot="label">${label}</div>
     </tds-checkbox>
     
     <!-- Script tag with event listener for demo purposes. -->
