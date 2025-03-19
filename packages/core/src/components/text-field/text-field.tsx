@@ -158,11 +158,20 @@ export class TdsTextField {
 
     if (this.value.length === 5) {
       this.state = 'error';
+      this.helper = 'HELPER TEXT FOR THE ERROR';
     } else if (this.value.length < 5) {
       this.state = 'default';
+      this.helper = '';
     } else {
       this.state = 'success';
+      this.helper = '';
     }
+
+    // if (this.state === 'error' || this.value.length === 5) {
+    //   this.helper = 'hiiiiii';
+    // } else {
+    //   this.helper = 'hej';
+    // }
 
     return (
       // <div style={{ backgroundColor: 'orange', padding: '10px' }} contentEditable={true}>
@@ -299,7 +308,7 @@ export class TdsTextField {
               {this.state === 'error' && (
                 <div class="text-field-helper-error-state">
                   <tds-icon name="error" size="16px"></tds-icon>
-                  {this.helper} HERE IS THE ERROR MESSAGE MAN
+                  {this.helper}
                 </div>
               )}
               {this.state !== 'error' && this.helper}
