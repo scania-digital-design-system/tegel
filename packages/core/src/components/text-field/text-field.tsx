@@ -110,7 +110,7 @@ export class TdsTextField {
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleFocus(event): void {
-    console.log('focuz 1');
+    // console.log('focuz 1');
     this.textInput.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
@@ -134,7 +134,7 @@ export class TdsTextField {
   /** Method to handle focus */
   @Method()
   async focusElement() {
-    console.log('FOCUZ');
+    // console.log('FOCUZ');
     if (this.textInput) {
       this.textInput.focus();
     }
@@ -144,14 +144,25 @@ export class TdsTextField {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
 
-    console.log('----- activeelement is ', document.activeElement);
+    // console.log('----- activeelement is ', document.activeElement);
 
-    const inputElement = document.getElementById('my-input-1');
+    // const inputElement = document.getElementById('my-input-1');
 
-    console.log(document.activeElement == inputElement);
+    // console.log(document.activeElement == inputElement);
 
     // console.log('----- HEJ:');
     // console.log(document.getElementById('text-field-label'));
+    console.log('re-render');
+
+    // this.state = this.value.length === 5 ? 'error' : 'success';
+
+    if (this.value.length === 5) {
+      this.state = 'error';
+    } else if (this.value.length < 5) {
+      this.state = 'default';
+    } else {
+      this.state = 'success';
+    }
 
     return (
       // <div style={{ backgroundColor: 'orange', padding: '10px' }} contentEditable={true}>
@@ -159,6 +170,7 @@ export class TdsTextField {
         // contentEditable={true}
         // tabIndex={1}
 
+        // aria-live="polite"
         class={{
           'form-text-field': true,
           'form-text-field-nomin': this.noMinWidth,
@@ -232,6 +244,7 @@ export class TdsTextField {
               }}
               aria-label={this.label}
               // aria-describedby="text-field-label"
+              // aria-live={this.state === 'error' ? 'Errorrrrrrz' : undefined}
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
@@ -261,38 +274,57 @@ export class TdsTextField {
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
-        {(this.helper || this.maxLength > 0) && (
-          <div class="text-field-helper">
-            {this.state === 'error' && (
-              <div class="text-field-helper-error-state">
-                <tds-icon name="error" size="16px"></tds-icon>
-                {this.helper}
-              </div>
-            )}
-            {this.state !== 'error' && this.helper}
+        {/* <div
+          aria-live="assertive"
+          // aria-atomic="true"
 
-            {this.maxLength > 0 && (
-              <div
-                class={{
-                  'text-field-textcounter': true,
-                  'text-field-textcounter-disabled': this.disabled,
-                }}
-              >
-                {this.value === null ? 0 : this.value?.length}
-                <span
+          //
+        >
+          hej hej hej {this.helper} {this.state === 'error' && 'ERROR ALSOOOO'}
+        </div> */}
+
+        <div aria-live="assertive">
+          {this.state === 'error' ? (
+            <span key={Date.now()}>{this.helper} ERROR ALSOOOO</span>
+          ) : (
+            this.helper
+          )}
+        </div>
+
+        <div style={{ backgroundColor: 'yellow' }}>
+          {(this.helper || this.maxLength > 0) && (
+            <div class="text-field-helper">
+              {this.state === 'error' && (
+                <div class="text-field-helper-error-state">
+                  <tds-icon name="error" size="16px"></tds-icon>
+                  {this.helper} HERE IS THE ERROR MESSAGE MAN
+                </div>
+              )}
+              {this.state !== 'error' && this.helper}
+
+              {this.maxLength > 0 && (
+                <div
                   class={{
-                    'text-field-textcounter-divider': true,
+                    'text-field-textcounter': true,
                     'text-field-textcounter-disabled': this.disabled,
                   }}
                 >
-                  {' '}
-                  /{' '}
-                </span>
-                {this.maxLength}
-              </div>
-            )}
-          </div>
-        )}
+                  {this.value === null ? 0 : this.value?.length}
+                  <span
+                    class={{
+                      'text-field-textcounter-divider': true,
+                      'text-field-textcounter-disabled': this.disabled,
+                    }}
+                  >
+                    {' '}
+                    /{' '}
+                  </span>
+                  {this.maxLength}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
       // </div>
     );
