@@ -1,0 +1,95 @@
+@import './tl-header-vars';
+@import '../../../mixins/box-sizing';
+@import '../../../mixins/flex-center';
+@import '../../../mixins/z-index';
+
+html,
+:root {
+  --tds-nav-dropdown-menu-box: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --tds-nav-dropdown-item-border-radius: 0 0 4px 4px;
+  --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
+}
+
+// /* Base Header */
+.tl-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--tds-header-height);
+  background-color: var(--tds-header-background);
+  z-index: var(--tds-z-index-header);
+  @include tds-box-sizing;
+}
+
+// /* Left Section (Hamburger & Logo) */
+// .tl-header__left {
+//   display: flex;
+//   align-items: center;
+//   gap: var(--tds-spacing-element-16);
+//   color: var(--tds-header-nav-item-color);
+// }
+
+// /* Title - Positioned outside the navigation */
+// .tl-header__title {
+//   text-align: left;
+//   font-size: 18px;
+//   font-weight: normal;
+//   font-family: var(--tds-font-family-headline);
+//   color: var(--tds-header-nav-item-color);
+//   padding-left: 16px;
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+// }
+
+// /* Navigation Wrapper */
+// .tl-header__nav {
+//   flex-grow: 1;
+//   display: flex;
+//   width: 100%;
+//   background-color: var(--tds-header-background);
+// }
+
+// /* Navigation List */
+// .tl-header__list {
+//   display: flex;
+//   align-items: center;
+//   height: var(--tds-header-height);
+//   width: 100%;
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+//   @include tds-flex-center;
+// }
+
+// /* Middle Spacer - Pushes content to the right */
+// .tl-header__spacer {
+//   flex-grow: 1;
+//   height: var(--tds-header-height);
+//   border-right: 1px solid var(--tds-header--basic-element-border);
+// }
+
+// /* Right Section */
+// .tl-header__right {
+//   display: flex;
+//   align-items: center;
+//   gap: var(--tds-spacing-element-16);
+//   color: var(--tds-header-nav-item-color);
+// }
+
+// /* Hide dropdown & header items on small screens */
+// .tl-header__item {
+//   display: none;
+// }
+
+// /* Show items on large screens */
+// @media screen and (min-width: var(--tds-header-grid-lg)) {
+//   .tl-header__item {
+//     display: block;
+//   }
+// }
+
+// /* Ensures correct spacing for header items */
+// .tl-header__item:nth-child(3) {
+//   border-left: 1px solid var(--tds-header--basic-element-border);
+// }
