@@ -3,22 +3,22 @@
 :root,
 .scania {
   /* Font size tokens */
-  --super-type-01-font-size: 144px;
-  --super-type-02-font-size: 112px;
-  --super-type-03-font-size: 80px;
-  --expressive-headline-01-font-size: 64px;
-  --expressive-headline-02-font-size: 48px;
-  --headline-01-font-size: 32px;
-  --headline-02-font-size: 28px;
+  --super-type-01-font-size: 216px;
+  --super-type-02-font-size: 156px;
+  --super-type-03-font-size: 112px;
+  --expressive-headline-01-font-size: 80px;
+  --expressive-headline-02-font-size: 56px;
+  --headline-01-font-size: 40px;
+  --headline-02-font-size: 32px;
   --headline-03-font-size: 24px;
   --headline-04-font-size: 20px;
-  --headline-05-font-size: 18px;
-  --headline-06-font-size: 16px;
+  --headline-05-font-size: 16px;
+  --headline-06-font-size: 14px;
   --headline-07-font-size: 14px;
   --paragraph-01-font-size: 24px;
   --paragraph-02-font-size: 20px;
-  --body-01-font-size: 18px;
-  --body-02-font-size: 16px;
+  --body-01-font-size: 16px;
+  --body-02-font-size: 14px;
   --body-link-01-font-size: 18px;
   --body-link-02-font-size: 16px;
   --detail-01-font-size: 16px;
@@ -27,7 +27,7 @@
   --detail-04-font-size: 12px;
   --detail-05-font-size: 12px;
   --detail-06-font-size: 10px;
-  --detail-07-font-size: 8px;
+  --detail-07-font-size: 10px;
 
   /* Line height tokens */
   --super-type-01-line-height: 183px;
@@ -55,31 +55,31 @@
   --detail-07-line-height: 8px;
 
   /* Font family tokens */
-  --super-type-01-font-family: 'Scania Sans CY Headline';
-  --super-type-02-font-family: 'Scania Sans CY Headline';
-  --super-type-03-font-family: 'Scania Sans CY Headline';
-  --expressive-headline-01-font-family: 'Scania Sans CY Headline';
-  --expressive-headline-02-font-family: 'Scania Sans CY Headline';
-  --headline-01-font-family: 'Scania Sans Headline';
-  --headline-02-font-family: 'Scania Sans Headline';
-  --headline-03-font-family: 'Scania Sans Headline';
-  --headline-04-font-family: 'Scania Sans Headline';
-  --headline-05-font-family: 'Scania Sans Headline';
-  --headline-06-font-family: 'Scania Sans Headline';
-  --headline-07-font-family: 'Scania Sans Headline';
-  --paragraph-01-font-family: 'Scania Sans';
-  --paragraph-02-font-family: 'Scania Sans';
-  --body-01-font-family: 'Scania Sans';
-  --body-02-font-family: 'Scania Sans';
+  --super-type-01-font-family: 'Scania Sans Headline Bold';
+  --super-type-02-font-family: 'Scania Sans Headline Bold';
+  --super-type-03-font-family: 'Scania Sans Headline Bold';
+  --expressive-headline-01-font-family: 'Scania Sans Headline Bold';
+  --expressive-headline-02-font-family: 'Scania Sans Headline Bold';
+  --headline-01-font-family: 'Scania Sans Headline Bold';
+  --headline-02-font-family: 'Scania Sans Bold';
+  --headline-03-font-family: 'Scania Sans Bold';
+  --headline-04-font-family: 'Scania Sans Bold';
+  --headline-05-font-family: 'Scania Sans Bold';
+  --headline-06-font-family: 'Scania Sans Bold';
+  --headline-07-font-family: 'Scania Sans Semi Condensed Bold';
+  --paragraph-01-font-family: 'Scania Sans Regular';
+  --paragraph-02-font-family: 'Scania Sans Regular';
+  --body-01-font-family: 'Scania Sans Regular';
+  --body-02-font-family: 'Scania Sans Regular';
   --body-link-01-font-family: 'Scania Sans';
   --body-link-02-font-family: 'Scania Sans';
-  --detail-01-font-family: 'Scania Sans';
-  --detail-02-font-family: 'Scania Sans';
-  --detail-03-font-family: 'Scania Sans';
-  --detail-04-font-family: 'Scania Sans';
-  --detail-05-font-family: 'Scania Sans';
-  --detail-06-font-family: 'Scania Sans';
-  --detail-07-font-family: 'Scania Sans';
+  --detail-01-font-family: 'Scania Sans Semi Condensed';
+  --detail-02-font-family: 'Scania Sans Semi Condensed';
+  --detail-03-font-family: 'Scania Sans Semi Condensed';
+  --detail-04-font-family: 'Scania Sans Bold';
+  --detail-05-font-family: 'Scania Sans Semi Condensed';
+  --detail-06-font-family: 'Scania Sans Bold';
+  --detail-07-font-family: 'Scania Sans Semi Condensed';
 
   /* Font weight tokens */
   --super-type-01-font-weight: 700;
@@ -115,22 +115,22 @@
   --expressive-headline-01-letter-spacing: 0;
   --expressive-headline-02-letter-spacing: 0;
   --headline-01-letter-spacing: 0;
-  --headline-02-letter-spacing: -1.28px;
-  --headline-03-letter-spacing: -0.72px;
-  --headline-04-letter-spacing: -0.2px;
-  --headline-05-letter-spacing: -0.32px;
-  --headline-06-letter-spacing: -0.28px;
-  --headline-07-letter-spacing: -0.14px;
-  --paragraph-01-letter-spacing: -0.72px;
-  --paragraph-02-letter-spacing: -0.2px;
-  --body-01-letter-spacing: -0.32px;
-  --body-02-letter-spacing: -0.14px;
-  --detail-01-letter-spacing: -0.16px;
-  --detail-02-letter-spacing: -0.14px;
-  --detail-03-letter-spacing: -0.14px;
-  --detail-04-letter-spacing: 0.96px;
+  --headline-02-letter-spacing: -0.04em;
+  --headline-03-letter-spacing: -0.03em;
+  --headline-04-letter-spacing: -0.01em;
+  --headline-05-letter-spacing: -0.02em;
+  --headline-06-letter-spacing: -0.02em;
+  --headline-07-letter-spacing: -0.01em;
+  --paragraph-01-letter-spacing: -0.03em;
+  --paragraph-02-letter-spacing: -0.01em;
+  --body-01-letter-spacing: -0.02em;
+  --body-02-letter-spacing: -0.01em;
+  --detail-01-letter-spacing: -0.01em;
+  --detail-02-letter-spacing: -0.01em;
+  --detail-03-letter-spacing: -0.01em;
+  --detail-04-letter-spacing: 0.08em;
   --detail-05-letter-spacing: 0;
-  --detail-06-letter-spacing: 0.8px;
+  --detail-06-letter-spacing: 0.08em;
   --detail-07-letter-spacing: 0;
 }
 
