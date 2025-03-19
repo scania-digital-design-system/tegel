@@ -134,6 +134,33 @@
   --detail-05-letter-spacing: 0;
   --detail-06-letter-spacing: 0.8px;
   --detail-07-letter-spacing: 0;
+
+  /* Text transform tokens */
+  --super-type-01-text-transform: uppercase;
+  --super-type-02-text-transform: uppercase;
+  --super-type-03-text-transform: uppercase;
+  --expressive-headline-01-text-transform: uppercase;
+  --expressive-headline-02-text-transform: uppercase;
+  --headline-01-text-transform: uppercase;
+  --headline-02-text-transform: none;
+  --headline-03-text-transform: none;
+  --headline-04-text-transform: none;
+  --headline-05-text-transform: none;
+  --headline-06-text-transform: none;
+  --headline-07-text-transform: none;
+  --paragraph-01-text-transform: none;
+  --paragraph-02-text-transform: none;
+  --body-01-text-transform: none;
+  --body-02-text-transform: none;
+  --body-link-01-text-transform: none;
+  --body-link-02-text-transform: none;
+  --detail-01-text-transform: none;
+  --detail-02-text-transform: none;
+  --detail-03-text-transform: none;
+  --detail-04-text-transform: uppercase;
+  --detail-05-text-transform: none;
+  --detail-06-text-transform: uppercase;
+  --detail-07-text-transform: none;
 }
 
 /* Typography Usage mixins */
@@ -144,6 +171,7 @@
   line-height: var(--super-type-01-line-height);
   font-weight: var(--super-type-01-font-weight);
   letter-spacing: var(--super-type-01-letter-spacing);
+  text-transform: var(--super-type-01-text-transform);
 }
 
 @mixin supertype-02 {
@@ -152,6 +180,7 @@
   line-height: var(--super-type-02-line-height);
   font-weight: var(--super-type-02-font-weight);
   letter-spacing: var(--super-type-02-letter-spacing);
+  text-transform: var(--super-type-02-text-transform);
 }
 
 @mixin supertype-03 {
@@ -160,6 +189,7 @@
   line-height: var(--super-type-03-line-height);
   font-weight: var(--super-type-03-font-weight);
   letter-spacing: var(--super-type-03-letter-spacing);
+  text-transform: var(--super-type-03-text-transform);
 }
 
 @mixin expressive-headline-01 {
@@ -168,6 +198,7 @@
   line-height: var(--expressive-headline-01-line-height);
   font-weight: var(--expressive-headline-01-font-weight);
   letter-spacing: var(--expressive-headline-01-letter-spacing);
+  text-transform: var(--expressive-headline-01-text-transform);
 }
 
 @mixin expressive-headline-02 {
@@ -176,6 +207,7 @@
   line-height: var(--expressive-headline-02-line-height);
   font-weight: var(--expressive-headline-02-font-weight);
   letter-spacing: var(--expressive-headline-02-letter-spacing);
+  text-transform: var(--expressive-headline-02-text-transform);
 }
 
 @mixin headline-01 {
@@ -184,6 +216,7 @@
   line-height: var(--headline-01-line-height);
   font-weight: var(--headline-01-font-weight);
   letter-spacing: var(--headline-01-letter-spacing);
+  text-transform: var(--headline-01-text-transform);
 }
 
 @mixin headline-02 {
@@ -192,6 +225,7 @@
   line-height: var(--headline-02-line-height);
   font-weight: var(--headline-02-font-weight);
   letter-spacing: var(--headline-02-letter-spacing);
+  text-transform: var(--headline-02-text-transform);
 }
 
 @mixin headline-03 {
@@ -200,6 +234,7 @@
   line-height: var(--headline-03-line-height);
   font-weight: var(--headline-03-font-weight);
   letter-spacing: var(--headline-03-letter-spacing);
+  text-transform: var(--headline-03-text-transform);
 }
 
 @mixin headline-04 {
@@ -208,6 +243,7 @@
   line-height: var(--headline-04-line-height);
   font-weight: var(--headline-04-font-weight);
   letter-spacing: var(--headline-04-letter-spacing);
+  text-transform: var(--headline-04-text-transform);
 }
 
 @mixin headline-05 {
@@ -216,6 +252,7 @@
   line-height: var(--headline-05-line-height);
   font-weight: var(--headline-05-font-weight);
   letter-spacing: var(--headline-05-letter-spacing);
+  text-transform: var(--headline-05-text-transform);
 }
 
 @mixin headline-06 {
@@ -224,6 +261,7 @@
   line-height: var(--headline-06-line-height);
   font-weight: var(--headline-06-font-weight);
   letter-spacing: var(--headline-06-letter-spacing);
+  text-transform: var(--headline-06-text-transform);
 }
 
 @mixin headline-07 {
@@ -232,6 +270,7 @@
   line-height: var(--headline-07-line-height);
   font-weight: var(--headline-07-font-weight);
   letter-spacing: var(--headline-07-letter-spacing);
+  text-transform: var(--headline-07-text-transform);
 }
 
 @mixin paragraph-01 {
@@ -240,6 +279,7 @@
   line-height: var(--paragraph-01-line-height);
   font-weight: var(--paragraph-01-font-weight);
   letter-spacing: var(--paragraph-01-letter-spacing);
+  text-transform: var(--paragraph-01-text-transform);
 }
 
 @mixin paragraph-02 {
@@ -248,6 +288,7 @@
   line-height: var(--paragraph-02-line-height);
   font-weight: var(--paragraph-02-font-weight);
   letter-spacing: var(--paragraph-02-letter-spacing);
+  text-transform: var(--paragraph-02-text-transform);
 }
 
 @mixin body-01 {
@@ -256,6 +297,7 @@
   line-height: var(--body-01-line-height);
   font-weight: var(--body-01-font-weight);
   letter-spacing: var(--body-01-letter-spacing);
+  text-transform: var(--body-01-text-transform);
 }
 
 @mixin body-02 {
@@ -264,6 +306,7 @@
   line-height: var(--body-02-line-height);
   font-weight: var(--body-02-font-weight);
   letter-spacing: var(--body-02-letter-spacing);
+  text-transform: var(--body-02-text-transform);
 }
 
 @mixin body-link-01 {
@@ -272,6 +315,7 @@
   line-height: var(--body-link-01-line-height);
   font-weight: var(--body-link-01-font-weight);
   letter-spacing: var(--body-link-01-letter-spacing);
+  text-transform: var(--body-link-01-text-transform);
 }
 
 @mixin body-link-02 {
@@ -280,6 +324,7 @@
   line-height: var(--body-link-02-line-height);
   font-weight: var(--body-link-02-font-weight);
   letter-spacing: var(--body-link-02-letter-spacing);
+  text-transform: var(--body-link-02-text-transform);
 }
 
 @mixin detail-01 {
@@ -288,6 +333,7 @@
   line-height: var(--detail-01-line-height);
   font-weight: var(--detail-01-font-weight);
   letter-spacing: var(--detail-01-letter-spacing);
+  text-transform: var(--detail-01-text-transform);
 }
 
 @mixin detail-02 {
@@ -296,6 +342,7 @@
   line-height: var(--detail-02-line-height);
   font-weight: var(--detail-02-font-weight);
   letter-spacing: var(--detail-02-letter-spacing);
+  text-transform: var(--detail-02-text-transform);
 }
 
 @mixin detail-03 {
@@ -304,6 +351,7 @@
   line-height: var(--detail-03-line-height);
   font-weight: var(--detail-03-font-weight);
   letter-spacing: var(--detail-03-letter-spacing);
+  text-transform: var(--detail-03-text-transform);
 }
 
 @mixin detail-04 {
@@ -312,6 +360,7 @@
   line-height: var(--detail-04-line-height);
   font-weight: var(--detail-04-font-weight);
   letter-spacing: var(--detail-04-letter-spacing);
+  text-transform: var(--detail-04-text-transform);
 }
 
 @mixin detail-05 {
@@ -320,6 +369,7 @@
   line-height: var(--detail-05-line-height);
   font-weight: var(--detail-05-font-weight);
   letter-spacing: var(--detail-05-letter-spacing);
+  text-transform: var(--detail-05-text-transform);
 }
 
 @mixin detail-06 {
@@ -328,6 +378,7 @@
   line-height: var(--detail-06-line-height);
   font-weight: var(--detail-06-font-weight);
   letter-spacing: var(--detail-06-letter-spacing);
+  text-transform: var(--detail-06-text-transform);
 }
 
 @mixin detail-07 {
@@ -336,4 +387,5 @@
   line-height: var(--detail-07-line-height);
   font-weight: var(--detail-07-font-weight);
   letter-spacing: var(--detail-07-letter-spacing);
+  text-transform: var(--detail-07-text-transform);
 }
