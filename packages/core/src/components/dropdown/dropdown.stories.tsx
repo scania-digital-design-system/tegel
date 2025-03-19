@@ -173,6 +173,16 @@ export default {
       options: ['Option 1', 'Option 2', 'Option 3', 'Option 4'],
       if: { arg: 'multiselect', eq: true },
     },
+    responsive: {
+      name: 'Responsive',
+      description: 'Enables a full width wrapper',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -190,6 +200,7 @@ export default {
     openDirection: 'Auto',
     defaultOption: 'No default',
     animation: 'slide',
+    responsive: false,
   },
 };
 
@@ -233,12 +244,14 @@ const Template = ({
   multiDefaultOption,
   noResultText,
   animation,
+  responsive,
 }) =>
   formatHtmlPreview(`
   <style>
   /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
-    width: 300px;
+    width: ${responsive ? 'calc(100vw - 40px)' : '200px'};
+    max-width: 960px;
     height:200px;
   }
   .hej {

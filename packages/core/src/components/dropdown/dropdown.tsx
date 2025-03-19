@@ -78,6 +78,9 @@ export class TdsDropdown {
   /** Value of the dropdown. For multiselect, provide array of strings/numbers. For single select, provide a string/number. */
   @Prop({ mutable: true }) value: string | number | (string | number)[] = null;
 
+  /** Defines aria-label attribute for input */
+  @Prop() tdsAriaLabel: string;
+
   @State() open: boolean = false;
 
   @State() internalValue: string;
@@ -533,13 +536,15 @@ export class TdsDropdown {
     if (form) {
       form.removeEventListener('reset', this.resetInput);
     }
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Dropdown component: tdsAriaLabel prop is missing');
+    }
   }
 
   render() {
     appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
     return (
       <Host
-        role="select"
         class={{
           [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
         }}
@@ -579,6 +584,8 @@ export class TdsDropdown {
                   </div>
                 )}
                 <input
+                  aria-label={this.tdsAriaLabel}
+                  aria-disabled={this.disabled}
                   // eslint-disable-next-line no-return-assign
                   ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
                   class={{
@@ -640,6 +647,8 @@ export class TdsDropdown {
             </div>
           ) : (
             <button
+              aria-label={this.tdsAriaLabel}
+              aria-disabled={this.disabled}
               onClick={() => this.handleToggleOpen()}
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
@@ -684,6 +693,10 @@ export class TdsDropdown {
         </div>
         {/* DROPDOWN LIST */}
         <div
+          role="listbox"
+          aria-label={this.tdsAriaLabel}
+          aria-orientation="horizontal"
+          aria-multiselectable={this.multiselect}
           ref={(element) => {
             this.dropdownList = element;
           }}
