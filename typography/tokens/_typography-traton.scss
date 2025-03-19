@@ -1,0 +1,75 @@
+:root,
+.traton {
+  /* Font Size tokens */
+  --super-type-01-line-height: 227px;
+  --super-type-02-line-height: 164px;
+  --super-type-03-line-height: 118px;
+  --expressive-headline-01-line-height: 84px;
+  --expressive-headline-02-line-height: 59px;
+  --headline-01-line-height: 42px;
+  --headline-02-line-height: 40px;
+  --headline-03-line-height: 30px;
+  --headline-04-line-height: 25px;
+  --headline-05-line-height: 22px;
+  --headline-06-line-height: 20px;
+  --headline-07-line-height: 18px;
+  --paragraph-01-line-height: 30px;
+  --paragraph-02-line-height: 25px;
+  --body-01-line-height: 22px;
+  --body-02-line-height: 20px;
+  --detail-01-line-height: 22px;
+  --detail-02-line-height: 16px;
+  --detail-03-line-height: 20px;
+  --detail-04-line-height: 17px;
+  --detail-05-line-height: 17px;
+  --detail-06-line-height: 14px;
+  --detail-07-line-height: 14px;
+
+  /* Font Family */
+  --headline-font-family: 'TRATON Type Display';
+  --body-font-family: 'TRATON Type Text';
+  --regular-headline-font-family: 'TRATON Type Display';
+  --body-text-headline-font-family: 'TRATON Type Text';
+  --condensed-font-family: 'TRATON Type Text';
+
+  /* Font Weight */
+  --expressive-font-weight: medium;
+  --semi-expressive-font-weight: semi bold;
+  --paragraph-font-weight: medium;
+  --flowing-font-weight: regular;
+  --expressive-detail-font-weight: regular;
+  --component-links-font-weight: medium;
+  --button-small-detail-font-weight: medium;
+
+  /* Letter-spacing (Kerning) */
+  --super-type-01-letter-spacing: 1.08px;
+  --super-type-02-letter-spacing: 0.78px;
+  --super-type-03-letter-spacing: 0.56px;
+  --expressive-headline-01-letter-spacing: 0.4px;
+  --expressive-headline-02-letter-spacing: 0.28px;
+
+  /* Line Height */
+  --super-type-01-line-height: 227px;
+  --super-type-02-line-height: 164px;
+  --super-type-03-line-height: 118px;
+  --expressive-headline-01-line-height: 84px;
+  --expressive-headline-02-line-height: 59px;
+  --headline-01-line-height: 42px;
+  --headline-02-line-height: 40px;
+  --headline-03-line-height: 30px;
+  --headline-04-line-height: 25px;
+  --headline-05-line-height: 22px;
+  --headline-06-line-height: 20px;
+  --headline-07-line-height: 18px;
+  --paragraph-01-line-height: 30px;
+  --paragraph-02-line-height: 25px;
+  --body-01-line-height: 22px;
+  --body-02-line-height: 20px;
+  --detail-01-line-height: 22px;
+  --detail-02-line-height: 16px;
+  --detail-03-line-height: 20px;
+  --detail-04-line-height: 17px;
+  --detail-05-line-height: 17px;
+  --detail-06-line-height: 14px;
+  --detail-07-line-height: 14px;
+}
