@@ -150,6 +150,9 @@ export class TdsTextField {
 
     console.log(document.activeElement == inputElement);
 
+    // console.log('----- HEJ:');
+    // console.log(document.getElementById('text-field-label'));
+
     return (
       // <div style={{ backgroundColor: 'orange', padding: '10px' }} contentEditable={true}>
       <div
@@ -227,10 +230,14 @@ export class TdsTextField {
               onBlur={(event) => {
                 this.handleBlur(event);
               }}
+              aria-label={this.label}
+              // aria-describedby="text-field-label"
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
-              <label class="text-field-label-inside">{this.label}</label>
+              <label class="text-field-label-inside" id="text-field-label">
+                {this.label}
+              </label>
             )}
           </div>
           <div class="text-field-bar"></div>
