@@ -280,18 +280,20 @@ export class TdsTextField {
 
           //
         >
-          hej hej hej {this.helper} {this.state === 'error' && 'ERROR ALSOOOO'}
+          <div key={Date.now()}>
+            hej hej hej {this.helper} {this.state === 'error' && 'ERROR ALSOOOO'}
+          </div>
         </div> */}
 
-        <div aria-live="assertive">
+        {/* <div aria-live="assertive">
           {this.state === 'error' ? (
             <span key={Date.now()}>{this.helper} ERROR ALSOOOO</span>
           ) : (
             this.helper
           )}
-        </div>
+        </div> */}
 
-        <div style={{ backgroundColor: 'yellow' }}>
+        <div aria-live="assertive" style={{ backgroundColor: 'yellow' }}>
           {(this.helper || this.maxLength > 0) && (
             <div class="text-field-helper">
               {this.state === 'error' && (
