@@ -1,0 +1,272 @@
+/* Traton Brand Usage Tokens */
+
+/* Light mode tokens (applied to :root and .traton-light) */
+:root,
+.traton-mode-light {
+  /* Foreground - Text */
+  --foreground-text-strong: var(--traton-transparent-950);
+  --foreground-text-defined: var(--traton-transparent-700);
+  --foreground-text-soft: var(--traton-transparent-600);
+  --foreground-text-subtle: var(--traton-transparent-500);
+  --foreground-text-disabled: var(--traton-transparent-400);
+  --foreground-text-supertype: var(--traton-blue-950);
+
+  /* Foreground - Text - Inverse */
+  --foreground-text-inverse-strong: var(--traton-transparent-inverse-950);
+  --foreground-text-inverse-defined: var(--traton-transparent-inverse-700);
+  --foreground-text-inverse-soft: var(--traton-transparent-inverse-600);
+  --foreground-text-inverse-subtle: var(--traton-transparent-inverse-500);
+  --foreground-text-inverse-disabled: var(--traton-transparent-inverse-400);
+  --foreground-text-inverse-supertype: var(--ton-base-neutral-white);
+
+  /* Foreground - Text - Clickable */
+  --foreground-text-clickable-link: var(--traton-blue-700);
+  --foreground-text-clickable-link-visited: var(--traton-blue-950);
+  --foreground-text-clickable-link-brand: var(--traton-blue-950);
+  --foreground-text-clickable-link-brand-inverse: var(--traton-blue-700);
+
+  /* Foreground - Border */
+  --foreground-border-strong: var(--traton-transparent-950);
+  --foreground-border-defined: var(--traton-transparent-700);
+  --foreground-border-soft: var(--traton-transparent-600);
+  --foreground-border-subtle: var(--traton-transparent-500);
+  --foreground-border-disabled: var(--traton-transparent-400);
+  --foreground-border-discrete: var(--traton-transparent-200);
+
+  /* Foreground - Border - Inverse */
+  --foreground-border-inverse-strong: var(--traton-transparent-inverse-950);
+  --foreground-border-inverse-defined: var(--traton-transparent-inverse-700);
+  --foreground-border-inverse-soft: var(--traton-transparent-inverse-600);
+  --foreground-border-inverse-subtle: var(--traton-transparent-inverse-500);
+  --foreground-border-inverse-disabled: var(--traton-transparent-inverse-400);
+  --foreground-border-inverse-discrete: var(--traton-transparent-inverse-200);
+
+  /* Foreground - Border - Clickable */
+  --foreground-border-clickable-link: var(--traton-yellow-300);
+  --foreground-border-clickable-focus: var(--traton-blue-500);
+  --foreground-border-clickable-focus-width: 4px;
+
+  /* Foreground - Elements - Transparent */
+  --foreground-elements-transparent-strong: var(--traton-transparent-950);
+  --foreground-elements-transparent-defined: var(--traton-transparent-700);
+  --foreground-elements-transparent-soft: var(--traton-transparent-600);
+  --foreground-elements-transparent-subtle: var(--traton-transparent-500);
+  --foreground-elements-transparent-disabled: var(--traton-transparent-400);
+  --foreground-elements-transparent-discrete: var(--traton-transparent-200);
+  --foreground-elements-transparent-strong-inverse: var(--traton-transparent-inverse-950);
+  --foreground-elements-transparent-defined-inverse: var(--traton-transparent-inverse-700);
+  --foreground-elements-transparent-soft-inverse: var(--traton-transparent-inverse-600);
+  --foreground-elements-transparent-subtle-inverse: var(--traton-transparent-inverse-500);
+  --foreground-elements-transparent-disabled-inverse: var(--traton-transparent-inverse-400);
+  --foreground-elements-transparent-discrete-inverse: var(--traton-transparent-inverse-200);
+
+  /* Foreground - Elements - Solid */
+  --foreground-elements-solid-1000: var(--traton-warm-grey-950);
+  --foreground-elements-solid-900: var(--traton-warm-grey-900);
+  --foreground-elements-solid-800: var(--traton-warm-grey-800);
+  --foreground-elements-solid-700: var(--traton-warm-grey-700);
+  --foreground-elements-solid-600: var(--traton-warm-grey-600);
+  --foreground-elements-solid-500: var(--traton-warm-grey-500);
+  --foreground-elements-solid-400: var(--traton-warm-grey-400);
+  --foreground-elements-solid-300: var(--traton-warm-grey-300);
+  --foreground-elements-solid-200: var(--traton-warm-grey-200);
+  --foreground-elements-solid-100: var(--traton-warm-grey-150);
+
+  /* Background - Elevation */
+  --background-elevation-base: var(--traton-warm-grey-50);
+  --background-elevation-layer-01: var(--traton-warm-grey-100);
+  --background-elevation-layer-02: var(--traton-warm-grey-50);
+  --background-elevation-layer-03: var(--traton-warm-grey-100);
+  --background-elevation-top: var(--traton-warm-grey-50);
+  --background-elevation-scrim: rgb(0 0 0 / 38%);
+  --background-elevation-inverse-base: var(--traton-warm-grey-1000);
+  --background-elevation-inverse-layer-01: var(--traton-warm-grey-950);
+  --background-elevation-inverse-layer-02: var(--traton-warm-grey-900);
+  --background-elevation-inverse-layer-03: var(--traton-warm-grey-850);
+  --background-elevation-inverse-top: var(--traton-warm-grey-900);
+
+  /* Background - Elements */
+  --background-elements-1000: var(--traton-warm-grey-950);
+  --background-elements-900: var(--traton-warm-grey-900);
+  --background-elements-800: var(--traton-warm-grey-800);
+  --background-elements-700: var(--traton-warm-grey-700);
+  --background-elements-600: var(--traton-warm-grey-600);
+  --background-elements-500: var(--traton-warm-grey-500);
+  --background-elements-400: var(--traton-warm-grey-400);
+  --background-elements-300: var(--traton-warm-grey-300);
+  --background-elements-200: var(--traton-warm-grey-200);
+  --background-elements-100: var(--traton-warm-grey-150);
+
+  /* Background - Clickable - Primary */
+  --background-clickable-primary-primary: var(--traton-blue-800);
+  --background-clickable-primary-primary-hover: var(--traton-blue-850);
+  --background-clickable-primary-pressed: var(--traton-blue-900);
+  --background-clickable-primary-focus: var(--traton-blue-850);
+  --background-clickable-primary-disabled: var(--traton-blue-100);
+  --background-clickable-primary-resting: var(--traton-blue-150);
+
+  /* Background - Clickable - Primary-Inverse */
+  --background-clickable-primary-inverse-primary: var(--traton-warm-grey-300);
+  --background-clickable-primary-inverse-primary-hover: var(--traton-warm-grey-200);
+  --background-clickable-primary-inverse-pressed: var(--traton-warm-grey-400);
+  --background-clickable-primary-inverse-focus: var(--traton-warm-grey-100);
+  --background-clickable-primary-inverse-disabled: var(--traton-warm-grey-900);
+  --background-clickable-primary-inverse-resting: var(--traton-warm-grey-900);
+
+  /* Background - Clickable - Danger */
+  --background-clickable-danger-danger: var(--ton-extended-red-300);
+  --background-clickable-danger-danger-hover: var(--ton-extended-red-400);
+  --background-clickable-danger-pressed: var(--ton-extended-red-600);
+  --background-clickable-danger-focus: var(--ton-extended-red-400);
+  --background-clickable-danger-disabled: var(--traton-extended-red-50);
+  --background-clickable-danger-resting: var(--traton-extended-red-100);
+
+  /* System - Status Colors */
+  --system-info-strong: var(--traton-blue-800);
+  --system-info-default: var(--traton-blue-500);
+  --system-info-subtle: var(--traton-blue-150);
+  --system-success-strong: var(--ton-extended-green-850);
+  --system-success-default: var(--ton-extended-green-300);
+  --system-success-discrete: var(--ton-extended-green-50);
+  --system-warning-strong: var(--traton-yellow-800);
+  --system-warning-default: var(--traton-yellow-300);
+  --system-warning-subtle: var(--traton-yellow-100);
+  --system-danger-strong: var(--ton-extended-red-850);
+  --system-danger-default: var(--ton-extended-red-300);
+  --system-danger-subtle: var(--traton-extended-red-50);
+}
+
+/* Dark mode tokens */
+.traton-mode-dark {
+  /* Foreground - Text */
+  --foreground-text-strong: var(--traton-transparent-inverse-950);
+  --foreground-text-defined: var(--traton-transparent-inverse-700);
+  --foreground-text-soft: var(--traton-transparent-inverse-600);
+  --foreground-text-subtle: var(--traton-transparent-inverse-500);
+  --foreground-text-disabled: var(--traton-transparent-inverse-400);
+  --foreground-text-supertype: var(--ton-base-neutral-white);
+
+  /* Foreground - Text - Inverse */
+  --foreground-text-inverse-strong: var(--traton-transparent-950);
+  --foreground-text-inverse-defined: var(--traton-transparent-700);
+  --foreground-text-inverse-soft: var(--traton-transparent-600);
+  --foreground-text-inverse-subtle: var(--traton-transparent-500);
+  --foreground-text-inverse-disabled: var(--traton-transparent-400);
+  --foreground-text-inverse-supertype: var(--traton-transparent-950);
+
+  /* Foreground - Text - Clickable */
+  --foreground-text-clickable-link: var(--traton-blue-400);
+  --foreground-text-clickable-link-visited: var(--traton-blue-150);
+  --foreground-text-clickable-link-brand: var(--traton-blue-50);
+  --foreground-text-clickable-link-brand-inverse: var(--traton-blue-500);
+
+  /* Foreground - Border */
+  --foreground-border-strong: var(--traton-transparent-inverse-950);
+  --foreground-border-defined: var(--traton-transparent-inverse-700);
+  --foreground-border-soft: var(--traton-transparent-inverse-600);
+  --foreground-border-subtle: var(--traton-transparent-inverse-500);
+  --foreground-border-disabled: var(--traton-transparent-inverse-400);
+  --foreground-border-discrete: var(--traton-transparent-inverse-200);
+
+  /* Foreground - Border - Inverse */
+  --foreground-border-inverse-strong: var(--traton-transparent-950);
+  --foreground-border-inverse-defined: var(--traton-transparent-700);
+  --foreground-border-inverse-soft: var(--traton-transparent-600);
+  --foreground-border-inverse-subtle: var(--traton-transparent-500);
+  --foreground-border-inverse-disabled: var(--traton-transparent-400);
+  --foreground-border-inverse-discrete: var(--traton-transparent-200);
+
+  /* Foreground - Border - Clickable */
+  --foreground-border-clickable-link: var(--traton-yellow-300);
+  --foreground-border-clickable-focus: var(--traton-yellow-400);
+  --foreground-border-clickable-focus-width: 4px;
+
+  /* Foreground - Elements - Transparent */
+  --foreground-elements-transparent-strong: var(--traton-transparent-inverse-950);
+  --foreground-elements-transparent-defined: var(--traton-transparent-inverse-700);
+  --foreground-elements-transparent-soft: var(--traton-transparent-inverse-600);
+  --foreground-elements-transparent-subtle: var(--traton-transparent-inverse-500);
+  --foreground-elements-transparent-disabled: var(--traton-transparent-inverse-400);
+  --foreground-elements-transparent-discrete: var(--traton-transparent-inverse-200);
+  --foreground-elements-transparent-strong-inverse: var(--traton-transparent-950);
+  --foreground-elements-transparent-defined-inverse: var(--traton-transparent-700);
+  --foreground-elements-transparent-soft-inverse: var(--traton-transparent-600);
+  --foreground-elements-transparent-subtle-inverse: var(--traton-transparent-500);
+  --foreground-elements-transparent-disabled-inverse: var(--traton-transparent-400);
+  --foreground-elements-transparent-discrete-inverse: var(--traton-transparent-200);
+
+  /* Foreground - Elements - Solid */
+  --foreground-elements-solid-1000: var(--traton-blue-150);
+  --foreground-elements-solid-900: var(--traton-blue-200);
+  --foreground-elements-solid-800: var(--traton-blue-300);
+  --foreground-elements-solid-700: var(--traton-blue-400);
+  --foreground-elements-solid-600: var(--traton-blue-500);
+  --foreground-elements-solid-500: var(--traton-blue-600);
+  --foreground-elements-solid-400: var(--traton-blue-700);
+  --foreground-elements-solid-300: var(--traton-blue-800);
+  --foreground-elements-solid-200: var(--traton-blue-850);
+  --foreground-elements-solid-100: var(--traton-blue-900);
+
+  /* Background - Elevation */
+  --background-elevation-base: var(--traton-blue-1000);
+  --background-elevation-layer-01: var(--traton-blue-950);
+  --background-elevation-layer-02: var(--traton-blue-900);
+  --background-elevation-layer-03: var(--traton-blue-850);
+  --background-elevation-top: var(--traton-blue-900);
+  --background-elevation-scrim: rgb(0 0 0 / 50%);
+  --background-elevation-inverse-base: var(--traton-blue-50);
+  --background-elevation-inverse-layer-01: var(--traton-blue-100);
+  --background-elevation-inverse-layer-02: var(--traton-blue-150);
+  --background-elevation-inverse-layer-03: var(--traton-blue-200);
+  --background-elevation-inverse-top: var(--traton-blue-50);
+
+  /* Background - Elements */
+  --background-elements-1000: var(--traton-blue-150);
+  --background-elements-900: var(--traton-blue-200);
+  --background-elements-800: var(--traton-blue-300);
+  --background-elements-700: var(--traton-blue-400);
+  --background-elements-600: var(--traton-blue-500);
+  --background-elements-500: var(--traton-blue-600);
+  --background-elements-400: var(--traton-blue-700);
+  --background-elements-300: var(--traton-blue-800);
+  --background-elements-200: var(--traton-blue-850);
+  --background-elements-100: var(--traton-blue-900);
+
+  /* Background - Clickable - Primary */
+  --background-clickable-primary-primary: var(--traton-warm-grey-300);
+  --background-clickable-primary-primary-hover: var(--traton-warm-grey-200);
+  --background-clickable-primary-pressed: var(--traton-warm-grey-400);
+  --background-clickable-primary-focus: var(--traton-warm-grey-100);
+  --background-clickable-primary-disabled: var(--traton-warm-grey-900);
+  --background-clickable-primary-resting: var(--traton-warm-grey-900);
+
+  /* Background - Clickable - Primary-Inverse */
+  --background-clickable-primary-inverse-primary: var(--traton-blue-800);
+  --background-clickable-primary-inverse-primary-hover: var(--traton-blue-850);
+  --background-clickable-primary-inverse-pressed: var(--traton-blue-900);
+  --background-clickable-primary-inverse-focus: var(--traton-blue-850);
+  --background-clickable-primary-inverse-disabled: var(--traton-blue-100);
+  --background-clickable-primary-inverse-resting: var(--traton-blue-150);
+
+  /* Background - Clickable - Danger */
+  --background-clickable-danger-danger: var(--ton-extended-red-300);
+  --background-clickable-danger-danger-hover: var(--ton-extended-red-400);
+  --background-clickable-danger-pressed: var(--ton-extended-red-600);
+  --background-clickable-danger-focus: var(--ton-extended-red-400);
+  --background-clickable-danger-disabled: var(--traton-extended-red-900);
+  --background-clickable-danger-resting: var(--traton-extended-red-900);
+
+  /* System - Status Colors */
+  --system-info-strong: var(--traton-blue-100);
+  --system-info-default: var(--traton-blue-500);
+  --system-info-subtle: var(--traton-blue-850);
+  --system-success-strong: var(--ton-extended-green-50);
+  --system-success-default: var(--ton-extended-green-300);
+  --system-success-discrete: var(--ton-extended-green-850);
+  --system-warning-strong: var(--traton-yellow-100);
+  --system-warning-default: var(--traton-yellow-300);
+  --system-warning-subtle: var(--traton-yellow-800);
+  --system-danger-strong: var(--traton-extended-red-50);
+  --system-danger-default: var(--ton-extended-red-300);
+  --system-danger-subtle: var(--ton-extended-red-850);
+}
