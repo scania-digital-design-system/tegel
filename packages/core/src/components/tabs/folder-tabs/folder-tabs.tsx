@@ -230,7 +230,7 @@ export class TdsFolderTabs {
 
   render() {
     return (
-      <Host role="list" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host role="tablist" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <div
           class="wrapper"
           ref={(el) => {
@@ -238,6 +238,7 @@ export class TdsFolderTabs {
           }}
         >
           <button
+            aria-label="Previous tab"
             class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
             disabled={!this.showLeftScroll}
             onClick={() => this.scrollLeft()}
@@ -246,6 +247,7 @@ export class TdsFolderTabs {
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
+            aria-label="Next tab"
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             disabled={!this.showRightScroll}
             onClick={() => this.scrollRight()}

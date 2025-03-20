@@ -240,7 +240,7 @@ export class TdsInlineTabs {
 
   render() {
     return (
-      <Host role="list" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host role="tablist" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
         <div
           class="wrapper"
           ref={(el) => {
@@ -249,6 +249,7 @@ export class TdsInlineTabs {
           style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
+            aria-label="Previous tab"
             class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
             onClick={() => this.scrollLeft()}
             disabled={!this.showLeftScroll}
@@ -257,6 +258,7 @@ export class TdsInlineTabs {
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
+            aria-label="Next tab"
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             onClick={() => this.scrollRight()}
             disabled={!this.showRightScroll}

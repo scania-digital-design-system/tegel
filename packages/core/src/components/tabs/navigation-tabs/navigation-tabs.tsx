@@ -242,7 +242,7 @@ export class TdsNavigationTabs {
   render() {
     return (
       <Host
-        role="list"
+        role="tablist"
         class={{ [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null }}
       >
         <div
@@ -253,6 +253,7 @@ export class TdsNavigationTabs {
           style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
+            aria-label="Previous tab"
             class={{
               'scroll-left-button': true,
               'show': this.showLeftScroll,
@@ -264,6 +265,7 @@ export class TdsNavigationTabs {
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
+            aria-label="Next tab"
             class={{
               'scroll-right-button': true,
               'show': this.showRightScroll,
