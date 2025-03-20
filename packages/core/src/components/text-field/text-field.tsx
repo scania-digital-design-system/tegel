@@ -251,9 +251,13 @@ export class TdsTextField {
               onBlur={(event) => {
                 this.handleBlur(event);
               }}
-              aria-label={this.label}
+              aria-label={`${this.label}${
+                this.readOnly ? ', this text field is not editable.' : ''
+              }`}
               // aria-describedby="text-field-label"
               // aria-live={this.state === 'error' ? 'Errorrrrrrz' : undefined}
+
+              aria-describedby=""
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
