@@ -1,19 +1,15 @@
-@import '../../../mixins/box-sizing';
-
 .tl-header-title {
-  box-sizing: border-box;
-  color: var(--tds-header-nav-item-color);
-  font-weight: normal;
-  font-family: var(--tds-font-family-headline);
-  letter-spacing: normal;
-  position: relative;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
 
-  &__title {
+  box-sizing: border-box;
+
+  &__text {
     font-size: 14px;
-    display: block;
+    color: var(--tds-header-nav-item-color);
+    font-weight: normal;
+    font-family: var(--tds-font-family-headline);
+    letter-spacing: normal;
+    position: relative;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
