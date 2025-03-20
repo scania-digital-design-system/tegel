@@ -1,0 +1,98 @@
+// accordion wrapper
+.tl-accordion {
+  width: 100%;
+
+  // Primary and secondary is not adjusted to dark/light mode
+  &--primary {
+    .tl-accordion__button {
+      background-color: transparent;
+    }
+    .tl-accordion__body {
+      background-color: var(--tds-white);
+    }
+    :hover {
+      .tl-accordion__button {
+        background-color: var(--tds-grey-50);
+      }
+    }
+  }
+
+  &--secondary {
+    .tl-accordion__button {
+      background-color: var(--tds-grey-50);
+    }
+    .tl-accordion__body {
+      background-color: var(--tds-grey-50);
+    }
+    :hover {
+      .tl-accordion__button {
+        background-color: var(--tds-white);
+      }
+    }
+  }
+
+  // Accordion Item
+  &__item {
+    border-top: 1px solid var(--foreground-border-discrete);
+
+    &--bottom-border:last-child {
+      border-bottom: 1px solid var(--foreground-border-discrete);
+    }
+
+    &--open {
+      .tl-accordion__body {
+        max-height: none;
+        padding: var(--unit-16);
+      }
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+  }
+
+  // Button of accordion item
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    // Font variable
+    font: var(--tds-headline-07);
+    align-items: center;
+    background: transparent;
+    color: var(--foreground-text-strong);
+    padding: var(--unit-16);
+    cursor: pointer;
+    border: none;
+    width: 100%;
+
+    &--disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &--icon-start {
+      flex-direction: row-reverse;
+      justify-content: start;
+      gap: var(--unit-16);
+    }
+  }
+
+  // Body of accordion item
+  &__body {
+    color: var(--foreground-text-strong);
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 var(--unit-64) 0 var(--unit-16);
+
+    &--less-padding-right {
+      padding-right: var(--unit-16);
+    }
+
+    &--open {
+      max-height: none;
+      padding-top: var(--tds-spacing-element-8);
+      padding-bottom: var(--tds-spacing-element-32);
+    }
+  }
+}
