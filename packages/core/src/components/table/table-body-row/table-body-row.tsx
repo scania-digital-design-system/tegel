@@ -145,6 +145,7 @@ export class TdsTableBodyRow {
         }}
         onClick={(e) => this.handleRowClick(e)}
         onKeyDown={(e) => this.handleKeyDown(e)}
+        role="row"
       >
         {this.multiselect && (
           <td class="tds-table__body-cell tds-table__body-cell--checkbox tds-form-label tds-form-label--table">

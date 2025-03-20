@@ -14,6 +14,7 @@
 | `customWidth`    | `custom-width`    | In case noMinWidth is set, the user has to specify the width value for each column.                     | `string`                                            | `undefined` |
 | `disablePadding` | `disable-padding` | Disables internal padding. Useful when passing other components to cell.                                | `boolean`                                           | `false`     |
 | `sortable`       | `sortable`        | Enables sorting on that column                                                                          | `boolean`                                           | `false`     |
+| `tdsAriaSort`    | `tds-aria-sort`   | Aria sort value, default is "none". Other accepted values are "ascending" or "descending".              | `"ascending" \| "descending" \| "none"`             | `'none'`    |
 | `textAlign`      | `text-align`      | Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'left'`    |
 
 
