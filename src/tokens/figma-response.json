@@ -3,6 +3,193 @@
   "error": false,
   "meta": {
     "variableCollections": {
+      "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968": {
+        "defaultModeId": "2342:2",
+        "id": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
+        "name": "01. Categorical",
+        "remote": true,
+        "modes": [
+          {
+            "modeId": "2342:2",
+            "name": "Light"
+          },
+          {
+            "modeId": "4204:0",
+            "name": "Dark"
+          }
+        ],
+        "key": "c51db02d027b189d2e9e635e262124df2e74b9c9",
+        "hiddenFromPublishing": true,
+        "variableIds": [
+          "VariableID:7ef4172c44bc549c82aae8d4f19dd41710ceec21/12281:287",
+          "VariableID:31379aeeb4a917ddd19b249c18dd47b7f80820af/12281:199",
+          "VariableID:762d1b8d4a3e380199372118b4af938d67db86e9/12281:163"
+        ]
+      },
+      "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155": {
+        "defaultModeId": "1:0",
+        "id": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "name": "Brand primitives",
+        "remote": true,
+        "modes": [
+          {
+            "modeId": "1:0",
+            "name": "Mode 1"
+          }
+        ],
+        "key": "2e21edd72c067c6320847afe91c8dee5579efe8a",
+        "hiddenFromPublishing": true,
+        "variableIds": [
+          "VariableID:b191a592f7e92c879146a6fbed98f67405f7e6b6/1010:566",
+          "VariableID:f1e346aa024e678898f0a24b19612878ea724260/1010:573",
+          "VariableID:219a46b9fd55c89fdc03f0815ea4375c9576e677/1010:564",
+          "VariableID:9386ce537e575fcea2ed9b799f4ea8563489e336/1010:574",
+          "VariableID:784aadb9dd619a7dcf08698bdf8a748e6bea572a/1010:354",
+          "VariableID:901abed71e436ce46b904c62186cd6bb30622077/1010:509",
+          "VariableID:66e8a0a4c3e5ee634d1ef6836aab44da390c6721/1010:373",
+          "VariableID:b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6/1010:305",
+          "VariableID:a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96/1010:480",
+          "VariableID:040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7/1010:575",
+          "VariableID:70cb7fac0c7ab15a74103a6292780b0379f8931e/1010:578",
+          "VariableID:52fab1914352fa3c100c8adc10aad3abf53b2b0b/1010:368",
+          "VariableID:a2143a5cb16dc11931721085610cd09e2487f64d/1010:538",
+          "VariableID:19266146208698efc6dcf78b073af26963298b3a/1010:579",
+          "VariableID:64367d95ec8e57161434af17f4a9141a3814c591/3047:1261",
+          "VariableID:b13d60829452962aef0b5212834cade6b80b1e7b/3047:1288",
+          "VariableID:93bc212169094e5ff47132b6c36c69db379eddce/3047:1255",
+          "VariableID:7fe02ef4880936a814a27d1b983778c2eff6eb2b/3047:1273",
+          "VariableID:f9a4593b12a97257577c7be7229af032024f49a9/3047:1239",
+          "VariableID:3dac7e657370e77ee49677010264881aa8f92a75/3047:1287",
+          "VariableID:503b33c283c93ff1509821c2041f520cef993a19/3047:1284",
+          "VariableID:72605cc07b4ac90d61738a8519f5525337ad6bde/3047:1291",
+          "VariableID:49051916dfccf0ef1bf5f94c45eca9371dd366f8/3047:1263",
+          "VariableID:3a8157c8a26af1d0eb5b3e7c61893b1463f7d264/3047:1296",
+          "VariableID:a9f926084474d78486b000160cb64a25188a675e/3047:1253",
+          "VariableID:0e0a889d4bb50706b0bde187b0ba7a8875727b11/3047:1275",
+          "VariableID:9e8d2f8b38b756381371c4012f264beb666501ab/3047:1272",
+          "VariableID:c14e533a8784b510710b7209aecc56e803a229d7/3047:1290"
+        ]
+      },
+      "VariableCollectionId:1:823": {
+        "defaultModeId": "1:0",
+        "id": "VariableCollectionId:1:823",
+        "name": "Brand primitives",
+        "remote": false,
+        "modes": [
+          {
+            "modeId": "1:0",
+            "name": "Mode 1"
+          }
+        ],
+        "key": "1099ad0dbee3f3d5f520e944529dc0383a65d86c",
+        "hiddenFromPublishing": false,
+        "variableIds": [
+          "VariableID:3:9",
+          "VariableID:7:973",
+          "VariableID:7:974",
+          "VariableID:3136:55677",
+          "VariableID:7:975",
+          "VariableID:3126:32468",
+          "VariableID:7:976",
+          "VariableID:7:977",
+          "VariableID:7:978",
+          "VariableID:7:979",
+          "VariableID:7:980",
+          "VariableID:7:981",
+          "VariableID:7:982",
+          "VariableID:7:983",
+          "VariableID:7:984",
+          "VariableID:7:922",
+          "VariableID:7:929",
+          "VariableID:7:932",
+          "VariableID:529:21889",
+          "VariableID:68:49681",
+          "VariableID:529:21888",
+          "VariableID:68:49682",
+          "VariableID:68:49683",
+          "VariableID:68:49684",
+          "VariableID:68:49685",
+          "VariableID:68:49686",
+          "VariableID:68:49687",
+          "VariableID:68:49688",
+          "VariableID:68:49689",
+          "VariableID:68:49690",
+          "VariableID:529:21886",
+          "VariableID:699:66052",
+          "VariableID:941:18500",
+          "VariableID:941:18239",
+          "VariableID:941:18238",
+          "VariableID:941:18237",
+          "VariableID:68:14245",
+          "VariableID:68:14236",
+          "VariableID:68:14237",
+          "VariableID:68:14238",
+          "VariableID:68:14239",
+          "VariableID:68:14240",
+          "VariableID:68:14241",
+          "VariableID:68:14242",
+          "VariableID:68:14243",
+          "VariableID:68:14244",
+          "VariableID:529:21883",
+          "VariableID:529:21882",
+          "VariableID:529:21881",
+          "VariableID:68:49691",
+          "VariableID:68:49692",
+          "VariableID:68:49693",
+          "VariableID:68:49694",
+          "VariableID:68:49695",
+          "VariableID:68:49696",
+          "VariableID:68:49697",
+          "VariableID:68:49698",
+          "VariableID:68:49699",
+          "VariableID:529:21885",
+          "VariableID:699:66051",
+          "VariableID:861:49621",
+          "VariableID:3021:141602",
+          "VariableID:3021:141603",
+          "VariableID:3021:141604",
+          "VariableID:3021:141605",
+          "VariableID:3021:141606",
+          "VariableID:861:49617",
+          "VariableID:3021:141607",
+          "VariableID:3021:141608",
+          "VariableID:3021:141609",
+          "VariableID:861:49619",
+          "VariableID:3021:141610",
+          "VariableID:3021:141611",
+          "VariableID:68:49701",
+          "VariableID:68:49702",
+          "VariableID:68:49703",
+          "VariableID:925:14957",
+          "VariableID:925:14958",
+          "VariableID:925:14960",
+          "VariableID:925:14961",
+          "VariableID:925:14962",
+          "VariableID:925:14963",
+          "VariableID:925:14964",
+          "VariableID:925:14965",
+          "VariableID:925:14966",
+          "VariableID:925:14967",
+          "VariableID:925:14968",
+          "VariableID:925:14969",
+          "VariableID:925:14970",
+          "VariableID:925:14971",
+          "VariableID:925:14959",
+          "VariableID:927:14972",
+          "VariableID:927:14973",
+          "VariableID:927:14974",
+          "VariableID:927:14975",
+          "VariableID:927:14976",
+          "VariableID:927:14977",
+          "VariableID:927:14978",
+          "VariableID:927:14979",
+          "VariableID:927:14980",
+          "VariableID:927:14981",
+          "VariableID:927:14982",
+          "VariableID:927:14983",
+          "VariableID:927:14984"
+        ]
+      },
       "VariableCollectionId:3:2": {
         "defaultModeId": "68:0",
         "id": "VariableCollectionId:3:2",
@@ -328,126 +515,6 @@
           "VariableID:10146:98234"
         ]
       },
-      "VariableCollectionId:1:823": {
-        "defaultModeId": "1:0",
-        "id": "VariableCollectionId:1:823",
-        "name": "Brand primitives",
-        "remote": false,
-        "modes": [
-          {
-            "modeId": "1:0",
-            "name": "Mode 1"
-          }
-        ],
-        "key": "1099ad0dbee3f3d5f520e944529dc0383a65d86c",
-        "hiddenFromPublishing": false,
-        "variableIds": [
-          "VariableID:3:9",
-          "VariableID:7:973",
-          "VariableID:7:974",
-          "VariableID:3136:55677",
-          "VariableID:7:975",
-          "VariableID:3126:32468",
-          "VariableID:7:976",
-          "VariableID:7:977",
-          "VariableID:7:978",
-          "VariableID:7:979",
-          "VariableID:7:980",
-          "VariableID:7:981",
-          "VariableID:7:982",
-          "VariableID:7:983",
-          "VariableID:7:984",
-          "VariableID:7:922",
-          "VariableID:7:929",
-          "VariableID:7:932",
-          "VariableID:529:21889",
-          "VariableID:68:49681",
-          "VariableID:529:21888",
-          "VariableID:68:49682",
-          "VariableID:68:49683",
-          "VariableID:68:49684",
-          "VariableID:68:49685",
-          "VariableID:68:49686",
-          "VariableID:68:49687",
-          "VariableID:68:49688",
-          "VariableID:68:49689",
-          "VariableID:68:49690",
-          "VariableID:529:21886",
-          "VariableID:699:66052",
-          "VariableID:941:18500",
-          "VariableID:941:18239",
-          "VariableID:941:18238",
-          "VariableID:941:18237",
-          "VariableID:68:14245",
-          "VariableID:68:14236",
-          "VariableID:68:14237",
-          "VariableID:68:14238",
-          "VariableID:68:14239",
-          "VariableID:68:14240",
-          "VariableID:68:14241",
-          "VariableID:68:14242",
-          "VariableID:68:14243",
-          "VariableID:68:14244",
-          "VariableID:529:21883",
-          "VariableID:529:21882",
-          "VariableID:529:21881",
-          "VariableID:68:49691",
-          "VariableID:68:49692",
-          "VariableID:68:49693",
-          "VariableID:68:49694",
-          "VariableID:68:49695",
-          "VariableID:68:49696",
-          "VariableID:68:49697",
-          "VariableID:68:49698",
-          "VariableID:68:49699",
-          "VariableID:529:21885",
-          "VariableID:699:66051",
-          "VariableID:861:49621",
-          "VariableID:3021:141602",
-          "VariableID:3021:141603",
-          "VariableID:3021:141604",
-          "VariableID:3021:141605",
-          "VariableID:3021:141606",
-          "VariableID:861:49617",
-          "VariableID:3021:141607",
-          "VariableID:3021:141608",
-          "VariableID:3021:141609",
-          "VariableID:861:49619",
-          "VariableID:3021:141610",
-          "VariableID:3021:141611",
-          "VariableID:68:49701",
-          "VariableID:68:49702",
-          "VariableID:68:49703",
-          "VariableID:925:14957",
-          "VariableID:925:14958",
-          "VariableID:925:14960",
-          "VariableID:925:14961",
-          "VariableID:925:14962",
-          "VariableID:925:14963",
-          "VariableID:925:14964",
-          "VariableID:925:14965",
-          "VariableID:925:14966",
-          "VariableID:925:14967",
-          "VariableID:925:14968",
-          "VariableID:925:14969",
-          "VariableID:925:14970",
-          "VariableID:925:14971",
-          "VariableID:925:14959",
-          "VariableID:927:14972",
-          "VariableID:927:14973",
-          "VariableID:927:14974",
-          "VariableID:927:14975",
-          "VariableID:927:14976",
-          "VariableID:927:14977",
-          "VariableID:927:14978",
-          "VariableID:927:14979",
-          "VariableID:927:14980",
-          "VariableID:927:14981",
-          "VariableID:927:14982",
-          "VariableID:927:14983",
-          "VariableID:927:14984"
-        ]
-      },
       "VariableCollectionId:35b80bce61abb4b151d0ffcf58a9dc83540eba68/3047:974": {
         "defaultModeId": "3:0",
         "id": "VariableCollectionId:35b80bce61abb4b151d0ffcf58a9dc83540eba68/3047:974",
@@ -480,76 +547,2696 @@
           "VariableID:27b9c576405805011ce1778c04d91f0d974cf13b/3047:842",
           "VariableID:af35922d405c264cb16c4ea583d7c42b7e2ab02d/3047:835"
         ]
-      },
-      "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155": {
-        "defaultModeId": "1:0",
-        "id": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "name": "Brand primitives",
-        "remote": true,
-        "modes": [
-          {
-            "modeId": "1:0",
-            "name": "Mode 1"
-          }
-        ],
-        "key": "2e21edd72c067c6320847afe91c8dee5579efe8a",
-        "hiddenFromPublishing": true,
-        "variableIds": [
-          "VariableID:b191a592f7e92c879146a6fbed98f67405f7e6b6/1010:566",
-          "VariableID:f1e346aa024e678898f0a24b19612878ea724260/1010:573",
-          "VariableID:219a46b9fd55c89fdc03f0815ea4375c9576e677/1010:564",
-          "VariableID:9386ce537e575fcea2ed9b799f4ea8563489e336/1010:574",
-          "VariableID:784aadb9dd619a7dcf08698bdf8a748e6bea572a/1010:354",
-          "VariableID:901abed71e436ce46b904c62186cd6bb30622077/1010:509",
-          "VariableID:66e8a0a4c3e5ee634d1ef6836aab44da390c6721/1010:373",
-          "VariableID:b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6/1010:305",
-          "VariableID:a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96/1010:480",
-          "VariableID:040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7/1010:575",
-          "VariableID:70cb7fac0c7ab15a74103a6292780b0379f8931e/1010:578",
-          "VariableID:52fab1914352fa3c100c8adc10aad3abf53b2b0b/1010:368",
-          "VariableID:a2143a5cb16dc11931721085610cd09e2487f64d/1010:538",
-          "VariableID:19266146208698efc6dcf78b073af26963298b3a/1010:579",
-          "VariableID:64367d95ec8e57161434af17f4a9141a3814c591/3047:1261",
-          "VariableID:b13d60829452962aef0b5212834cade6b80b1e7b/3047:1288",
-          "VariableID:93bc212169094e5ff47132b6c36c69db379eddce/3047:1255",
-          "VariableID:7fe02ef4880936a814a27d1b983778c2eff6eb2b/3047:1273",
-          "VariableID:f9a4593b12a97257577c7be7229af032024f49a9/3047:1239",
-          "VariableID:3dac7e657370e77ee49677010264881aa8f92a75/3047:1287",
-          "VariableID:503b33c283c93ff1509821c2041f520cef993a19/3047:1284",
-          "VariableID:72605cc07b4ac90d61738a8519f5525337ad6bde/3047:1291",
-          "VariableID:49051916dfccf0ef1bf5f94c45eca9371dd366f8/3047:1263",
-          "VariableID:3a8157c8a26af1d0eb5b3e7c61893b1463f7d264/3047:1296",
-          "VariableID:a9f926084474d78486b000160cb64a25188a675e/3047:1253",
-          "VariableID:0e0a889d4bb50706b0bde187b0ba7a8875727b11/3047:1275",
-          "VariableID:9e8d2f8b38b756381371c4012f264beb666501ab/3047:1272",
-          "VariableID:c14e533a8784b510710b7209aecc56e803a229d7/3047:1290"
-        ]
-      },
-      "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968": {
-        "defaultModeId": "2342:2",
-        "id": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
-        "name": "01. Categorical",
-        "remote": true,
-        "modes": [
-          {
-            "modeId": "2342:2",
-            "name": "Light"
-          },
-          {
-            "modeId": "4204:0",
-            "name": "Dark"
-          }
-        ],
-        "key": "c51db02d027b189d2e9e635e262124df2e74b9c9",
-        "hiddenFromPublishing": true,
-        "variableIds": [
-          "VariableID:7ef4172c44bc549c82aae8d4f19dd41710ceec21/12281:287",
-          "VariableID:31379aeeb4a917ddd19b249c18dd47b7f80820af/12281:199",
-          "VariableID:762d1b8d4a3e380199372118b4af938d67db86e9/12281:163"
-        ]
       }
     },
     "variables": {
+      "VariableID:7ef4172c44bc549c82aae8d4f19dd41710ceec21/12281:287": {
+        "id": "VariableID:7ef4172c44bc549c82aae8d4f19dd41710ceec21/12281:287",
+        "name": "Categorical/Index 00",
+        "remote": true,
+        "key": "7ef4172c44bc549c82aae8d4f19dd41710ceec21",
+        "variableCollectionId": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "2342:2": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:c238103aa3e7d1a602739a2e3efd0c1ffc3c577f/12281:291"
+          },
+          "4204:0": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:a113766b7fd930fd4f08d8ab715579b641d3141c/12281:293"
+          }
+        },
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:31379aeeb4a917ddd19b249c18dd47b7f80820af/12281:199": {
+        "id": "VariableID:31379aeeb4a917ddd19b249c18dd47b7f80820af/12281:199",
+        "name": "Categorical/Index 01",
+        "remote": true,
+        "key": "31379aeeb4a917ddd19b249c18dd47b7f80820af",
+        "variableCollectionId": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "2342:2": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:2e97ddd51eb1c154c9b9cc0b7487cf9a4495b3b1/12281:248"
+          },
+          "4204:0": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:34328ed174ec3ab6224fbc6f953d6feb99d24c73/12281:251"
+          }
+        },
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:762d1b8d4a3e380199372118b4af938d67db86e9/12281:163": {
+        "id": "VariableID:762d1b8d4a3e380199372118b4af938d67db86e9/12281:163",
+        "name": "Categorical/Index 02",
+        "remote": true,
+        "key": "762d1b8d4a3e380199372118b4af938d67db86e9",
+        "variableCollectionId": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "2342:2": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:142a4af33a463d01fd8b9ec680c2e88a271a4222/12281:159"
+          },
+          "4204:0": {
+            "type": "VARIABLE_ALIAS",
+            "id": "VariableID:142a4af33a463d01fd8b9ec680c2e88a271a4222/12281:159"
+          }
+        },
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:b191a592f7e92c879146a6fbed98f67405f7e6b6/1010:566": {
+        "id": "VariableID:b191a592f7e92c879146a6fbed98f67405f7e6b6/1010:566",
+        "name": "tra-brand/1000",
+        "remote": true,
+        "key": "b191a592f7e92c879146a6fbed98f67405f7e6b6",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.07058823853731155,
+            "b": 0.0784313753247261,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:f1e346aa024e678898f0a24b19612878ea724260/1010:573": {
+        "id": "VariableID:f1e346aa024e678898f0a24b19612878ea724260/1010:573",
+        "name": "tra-brand/950",
+        "remote": true,
+        "key": "f1e346aa024e678898f0a24b19612878ea724260",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.11372549086809158,
+            "b": 0.12941177189350128,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:219a46b9fd55c89fdc03f0815ea4375c9576e677/1010:564": {
+        "id": "VariableID:219a46b9fd55c89fdc03f0815ea4375c9576e677/1010:564",
+        "name": "tra-brand/900",
+        "remote": true,
+        "key": "219a46b9fd55c89fdc03f0815ea4375c9576e677",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.1411764770746231,
+            "b": 0.16078431904315948,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:9386ce537e575fcea2ed9b799f4ea8563489e336/1010:574": {
+        "id": "VariableID:9386ce537e575fcea2ed9b799f4ea8563489e336/1010:574",
+        "name": "tra-brand/850",
+        "remote": true,
+        "key": "9386ce537e575fcea2ed9b799f4ea8563489e336",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.1921568661928177,
+            "b": 0.21568627655506134,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:784aadb9dd619a7dcf08698bdf8a748e6bea572a/1010:354": {
+        "id": "VariableID:784aadb9dd619a7dcf08698bdf8a748e6bea572a/1010:354",
+        "name": "tra-brand/800",
+        "remote": true,
+        "key": "784aadb9dd619a7dcf08698bdf8a748e6bea572a",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.2823529541492462,
+            "b": 0.32156863808631897,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:901abed71e436ce46b904c62186cd6bb30622077/1010:509": {
+        "id": "VariableID:901abed71e436ce46b904c62186cd6bb30622077/1010:509",
+        "name": "tra-brand/700",
+        "remote": true,
+        "key": "901abed71e436ce46b904c62186cd6bb30622077",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.38823530077934265,
+            "b": 0.4431372582912445,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:66e8a0a4c3e5ee634d1ef6836aab44da390c6721/1010:373": {
+        "id": "VariableID:66e8a0a4c3e5ee634d1ef6836aab44da390c6721/1010:373",
+        "name": "tra-brand/600",
+        "remote": true,
+        "key": "66e8a0a4c3e5ee634d1ef6836aab44da390c6721",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.5098039507865906,
+            "b": 0.5803921818733215,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6/1010:305": {
+        "id": "VariableID:b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6/1010:305",
+        "name": "tra-brand/500",
+        "remote": true,
+        "key": "b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1764705926179886,
+            "g": 0.6196078658103943,
+            "b": 0.6784313917160034,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96/1010:480": {
+        "id": "VariableID:a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96/1010:480",
+        "name": "tra-brand/400",
+        "remote": true,
+        "key": "a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.4000000059604645,
+            "g": 0.7215686440467834,
+            "b": 0.7686274647712708,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7/1010:575": {
+        "id": "VariableID:040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7/1010:575",
+        "name": "tra-brand/300",
+        "remote": true,
+        "key": "040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.5490196347236633,
+            "g": 0.7921568751335144,
+            "b": 0.8235294222831726,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:70cb7fac0c7ab15a74103a6292780b0379f8931e/1010:578": {
+        "id": "VariableID:70cb7fac0c7ab15a74103a6292780b0379f8931e/1010:578",
+        "name": "tra-brand/200",
+        "remote": true,
+        "key": "70cb7fac0c7ab15a74103a6292780b0379f8931e",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.7019608020782471,
+            "g": 0.8627451062202454,
+            "b": 0.8823529481887817,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:52fab1914352fa3c100c8adc10aad3abf53b2b0b/1010:368": {
+        "id": "VariableID:52fab1914352fa3c100c8adc10aad3abf53b2b0b/1010:368",
+        "name": "tra-brand/150",
+        "remote": true,
+        "key": "52fab1914352fa3c100c8adc10aad3abf53b2b0b",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:a2143a5cb16dc11931721085610cd09e2487f64d/1010:538": {
+        "id": "VariableID:a2143a5cb16dc11931721085610cd09e2487f64d/1010:538",
+        "name": "tra-brand/100",
+        "remote": true,
+        "key": "a2143a5cb16dc11931721085610cd09e2487f64d",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9137254953384399,
+            "g": 0.9607843160629272,
+            "b": 0.9647058844566345,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:19266146208698efc6dcf78b073af26963298b3a/1010:579": {
+        "id": "VariableID:19266146208698efc6dcf78b073af26963298b3a/1010:579",
+        "name": "tra-brand/50",
+        "remote": true,
+        "key": "19266146208698efc6dcf78b073af26963298b3a",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9725490212440491,
+            "g": 0.9882352948188782,
+            "b": 0.9882352948188782,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:64367d95ec8e57161434af17f4a9141a3814c591/3047:1261": {
+        "id": "VariableID:64367d95ec8e57161434af17f4a9141a3814c591/3047:1261",
+        "name": "tra-warm-grey/1000",
+        "remote": true,
+        "key": "64367d95ec8e57161434af17f4a9141a3814c591",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.062745101749897,
+            "g": 0.05882352963089943,
+            "b": 0.05882352963089943,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:b13d60829452962aef0b5212834cade6b80b1e7b/3047:1288": {
+        "id": "VariableID:b13d60829452962aef0b5212834cade6b80b1e7b/3047:1288",
+        "name": "tra-warm-grey/950",
+        "remote": true,
+        "key": "b13d60829452962aef0b5212834cade6b80b1e7b",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:93bc212169094e5ff47132b6c36c69db379eddce/3047:1255": {
+        "id": "VariableID:93bc212169094e5ff47132b6c36c69db379eddce/3047:1255",
+        "name": "tra-warm-grey/900",
+        "remote": true,
+        "key": "93bc212169094e5ff47132b6c36c69db379eddce",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.14509804546833038,
+            "g": 0.1411764770746231,
+            "b": 0.13725490868091583,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:7fe02ef4880936a814a27d1b983778c2eff6eb2b/3047:1273": {
+        "id": "VariableID:7fe02ef4880936a814a27d1b983778c2eff6eb2b/3047:1273",
+        "name": "tra-warm-grey/850*",
+        "remote": true,
+        "key": "7fe02ef4880936a814a27d1b983778c2eff6eb2b",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.20000000298023224,
+            "g": 0.19607843458652496,
+            "b": 0.1882352977991104,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:f9a4593b12a97257577c7be7229af032024f49a9/3047:1239": {
+        "id": "VariableID:f9a4593b12a97257577c7be7229af032024f49a9/3047:1239",
+        "name": "tra-warm-grey/800",
+        "remote": true,
+        "key": "f9a4593b12a97257577c7be7229af032024f49a9",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.2705882489681244,
+            "g": 0.2666666805744171,
+            "b": 0.2549019753932953,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:3dac7e657370e77ee49677010264881aa8f92a75/3047:1287": {
+        "id": "VariableID:3dac7e657370e77ee49677010264881aa8f92a75/3047:1287",
+        "name": "tra-warm-grey/700",
+        "remote": true,
+        "key": "3dac7e657370e77ee49677010264881aa8f92a75",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.3490196168422699,
+            "g": 0.3450980484485626,
+            "b": 0.3294117748737335,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:503b33c283c93ff1509821c2041f520cef993a19/3047:1284": {
+        "id": "VariableID:503b33c283c93ff1509821c2041f520cef993a19/3047:1284",
+        "name": "tra-warm-grey/600",
+        "remote": true,
+        "key": "503b33c283c93ff1509821c2041f520cef993a19",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.45098039507865906,
+            "g": 0.4431372582912445,
+            "b": 0.42352941632270813,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:72605cc07b4ac90d61738a8519f5525337ad6bde/3047:1291": {
+        "id": "VariableID:72605cc07b4ac90d61738a8519f5525337ad6bde/3047:1291",
+        "name": "tra-warm-grey/500",
+        "remote": true,
+        "key": "72605cc07b4ac90d61738a8519f5525337ad6bde",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.5490196347236633,
+            "g": 0.5411764979362488,
+            "b": 0.5176470875740051,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:49051916dfccf0ef1bf5f94c45eca9371dd366f8/3047:1263": {
+        "id": "VariableID:49051916dfccf0ef1bf5f94c45eca9371dd366f8/3047:1263",
+        "name": "tra-warm-grey/400",
+        "remote": true,
+        "key": "49051916dfccf0ef1bf5f94c45eca9371dd366f8",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.6509804129600525,
+            "g": 0.6431372761726379,
+            "b": 0.6117647290229797,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:3a8157c8a26af1d0eb5b3e7c61893b1463f7d264/3047:1296": {
+        "id": "VariableID:3a8157c8a26af1d0eb5b3e7c61893b1463f7d264/3047:1296",
+        "name": "tra-warm-grey/300",
+        "remote": true,
+        "key": "3a8157c8a26af1d0eb5b3e7c61893b1463f7d264",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.7607843279838562,
+            "g": 0.7490196228027344,
+            "b": 0.7137255072593689,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:a9f926084474d78486b000160cb64a25188a675e/3047:1253": {
+        "id": "VariableID:a9f926084474d78486b000160cb64a25188a675e/3047:1253",
+        "name": "tra-warm-grey/200",
+        "remote": true,
+        "key": "a9f926084474d78486b000160cb64a25188a675e",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8392156958580017,
+            "g": 0.8313725590705872,
+            "b": 0.7882353067398071,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:0e0a889d4bb50706b0bde187b0ba7a8875727b11/3047:1275": {
+        "id": "VariableID:0e0a889d4bb50706b0bde187b0ba7a8875727b11/3047:1275",
+        "name": "tra-warm-grey/150",
+        "remote": true,
+        "key": "0e0a889d4bb50706b0bde187b0ba7a8875727b11",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9215686321258545,
+            "g": 0.9058823585510254,
+            "b": 0.8666666746139526,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:9e8d2f8b38b756381371c4012f264beb666501ab/3047:1272": {
+        "id": "VariableID:9e8d2f8b38b756381371c4012f264beb666501ab/3047:1272",
+        "name": "tra-warm-grey/100",
+        "remote": true,
+        "key": "9e8d2f8b38b756381371c4012f264beb666501ab",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9647058844566345,
+            "g": 0.9529411792755127,
+            "b": 0.9137254953384399,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:c14e533a8784b510710b7209aecc56e803a229d7/3047:1290": {
+        "id": "VariableID:c14e533a8784b510710b7209aecc56e803a229d7/3047:1290",
+        "name": "tra-warm-grey/50",
+        "remote": true,
+        "key": "c14e533a8784b510710b7209aecc56e803a229d7",
+        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": true,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9882352948188782,
+            "g": 0.9843137264251709,
+            "b": 0.9686274528503418,
+            "a": 1
+          }
+        },
+        "scopes": [
+          "ALL_FILLS",
+          "STROKE_COLOR"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:3:9": {
+        "id": "VariableID:3:9",
+        "name": "unit/2",
+        "remote": false,
+        "key": "36275cfdf06e8133da22942d675630ebf5bb41eb",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 2
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:973": {
+        "id": "VariableID:7:973",
+        "name": "unit/4",
+        "remote": false,
+        "key": "89021b8e2622a1eb21f734fb8f065d21c0e06fef",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 4
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:974": {
+        "id": "VariableID:7:974",
+        "name": "unit/8",
+        "remote": false,
+        "key": "3f13c5231406adee40bc83881e1af968cdaff2bf",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 8
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3136:55677": {
+        "id": "VariableID:3136:55677",
+        "name": "unit/12",
+        "remote": false,
+        "key": "34f8d2ef8f56fa5edeb5d3d8a584390f05e2bf72",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 12
+        },
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:7:975": {
+        "id": "VariableID:7:975",
+        "name": "unit/16",
+        "remote": false,
+        "key": "113794786abba61d11f3ba458bbf44ee2dd6bb0c",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 16
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3126:32468": {
+        "id": "VariableID:3126:32468",
+        "name": "unit/20",
+        "remote": false,
+        "key": "d0fd0330a6b4d2c1a8e7fe9fbf9b0e78c90ececb",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 20
+        },
+        "scopes": [
+          "ALL_SCOPES"
+        ],
+        "codeSyntax": {}
+      },
+      "VariableID:7:976": {
+        "id": "VariableID:7:976",
+        "name": "unit/24",
+        "remote": false,
+        "key": "053d441f30ca93aea57e8eefaf4fb118f49c0dd0",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 24
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:977": {
+        "id": "VariableID:7:977",
+        "name": "unit/32",
+        "remote": false,
+        "key": "6c1bbb1d54dbd4110c1a6a39d7c1d9efb1785c68",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 32
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:978": {
+        "id": "VariableID:7:978",
+        "name": "unit/40",
+        "remote": false,
+        "key": "b5f92dcbdd46f8746f07811a09780daee6791105",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 40
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:979": {
+        "id": "VariableID:7:979",
+        "name": "unit/48",
+        "remote": false,
+        "key": "278ec2d617dabab457746d998f54c870d530444f",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 48
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:980": {
+        "id": "VariableID:7:980",
+        "name": "unit/56",
+        "remote": false,
+        "key": "eb1c317a91f4205c2906373e7df0eaa919c97d2b",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 56
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:981": {
+        "id": "VariableID:7:981",
+        "name": "unit/64",
+        "remote": false,
+        "key": "eed942067b6e156af2bc8b1c2383c8f7305f34c5",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 64
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:982": {
+        "id": "VariableID:7:982",
+        "name": "unit/80",
+        "remote": false,
+        "key": "35dc5c8dc822d888a962274bc84523a10ae76d80",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 80
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:983": {
+        "id": "VariableID:7:983",
+        "name": "unit/96",
+        "remote": false,
+        "key": "5e07c3b688dc5b47bbb25fb8d29009b886ace176",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 96
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:984": {
+        "id": "VariableID:7:984",
+        "name": "unit/120",
+        "remote": false,
+        "key": "d520d84eada7118b496e4f92180025b2c4d24012",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "FLOAT",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": 120
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:7:922": {
+        "id": "VariableID:7:922",
+        "name": "tds-neutral-solid/868",
+        "remote": false,
+        "key": "e324ce0b380c0000f48f96aad6549e336475c2df",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1411764770746231,
+            "g": 0.1725490242242813,
+            "b": 0.21568627655506134,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {},
+        "deletedButReferenced": true
+      },
+      "VariableID:7:929": {
+        "id": "VariableID:7:929",
+        "name": "tds-neutral-solid/300",
+        "remote": false,
+        "key": "ad035413af487eaa311056b34c48557d8c84e8af",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8078431487083435,
+            "g": 0.8235294222831726,
+            "b": 0.8627451062202454,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {},
+        "deletedButReferenced": true
+      },
+      "VariableID:7:932": {
+        "id": "VariableID:7:932",
+        "name": "tds-neutral-solid/50",
+        "remote": false,
+        "key": "54f7ea27f6ec423c1b956db59a6c2d6fc9ad8629",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9520000219345093,
+            "g": 0.9573333263397217,
+            "b": 0.9679999947547913,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {},
+        "deletedButReferenced": true
+      },
+      "VariableID:529:21889": {
+        "id": "VariableID:529:21889",
+        "name": "TRATON-blue/1000",
+        "remote": false,
+        "key": "61bf5ccde5b942e2a07f774245fcbdde4574d51e",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.07058823853731155,
+            "b": 0.0784313753247261,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49681": {
+        "id": "VariableID:68:49681",
+        "name": "TRATON-blue/950",
+        "remote": false,
+        "key": "d8fb29fad458b8276648333ca9d67d0f419765b3",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.11372549086809158,
+            "b": 0.12941177189350128,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:529:21888": {
+        "id": "VariableID:529:21888",
+        "name": "TRATON-blue/900",
+        "remote": false,
+        "key": "01272bbf89225fb25ccfd32d84c7f908a04feeb6",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.1411764770746231,
+            "b": 0.16078431904315948,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49682": {
+        "id": "VariableID:68:49682",
+        "name": "TRATON-blue/850",
+        "remote": false,
+        "key": "37008732b2b4c3d3b2dad5dda25d7818ce724376",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.1921568661928177,
+            "b": 0.21568627655506134,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49683": {
+        "id": "VariableID:68:49683",
+        "name": "TRATON-blue/800",
+        "remote": false,
+        "key": "f13db15a453b4864a5d2f9e390968da038a45c3a",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.2823529541492462,
+            "b": 0.32156863808631897,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49684": {
+        "id": "VariableID:68:49684",
+        "name": "TRATON-blue/700",
+        "remote": false,
+        "key": "1742e1caa1b1837b6a8a9e7868a7cd3924a777cc",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.38823530077934265,
+            "b": 0.4431372582912445,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49685": {
+        "id": "VariableID:68:49685",
+        "name": "TRATON-blue/600",
+        "remote": false,
+        "key": "16c4a15b65173b45afb0d661a89a466ec64b0ac2",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.5098039507865906,
+            "b": 0.5803921818733215,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49686": {
+        "id": "VariableID:68:49686",
+        "name": "TRATON-blue/500",
+        "remote": false,
+        "key": "bf1b78b2cd100bf0003265fcbd21eef0571c59d0",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1764705926179886,
+            "g": 0.6196078658103943,
+            "b": 0.6784313917160034,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49687": {
+        "id": "VariableID:68:49687",
+        "name": "TRATON-blue/400",
+        "remote": false,
+        "key": "2ac520a132da3a031fc5e671db8a1657c46cf96b",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.4000000059604645,
+            "g": 0.7215686440467834,
+            "b": 0.7686274647712708,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49688": {
+        "id": "VariableID:68:49688",
+        "name": "TRATON-blue/300",
+        "remote": false,
+        "key": "517599f3a1a31f6454928568f4b2e247e240f3c5",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.5490196347236633,
+            "g": 0.7921568751335144,
+            "b": 0.8235294222831726,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49689": {
+        "id": "VariableID:68:49689",
+        "name": "TRATON-blue/200",
+        "remote": false,
+        "key": "a78db446907ed566128ec02204f11263dc9c01df",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.7019608020782471,
+            "g": 0.8627451062202454,
+            "b": 0.8823529481887817,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49690": {
+        "id": "VariableID:68:49690",
+        "name": "TRATON-blue/150",
+        "remote": false,
+        "key": "2518786289e0be834818acb92bbed9af9d847739",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:529:21886": {
+        "id": "VariableID:529:21886",
+        "name": "TRATON-blue/100",
+        "remote": false,
+        "key": "7edb20ce99968b32103ab470a50ca32edd0c30f6",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9137254953384399,
+            "g": 0.9607843160629272,
+            "b": 0.9647058844566345,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:699:66052": {
+        "id": "VariableID:699:66052",
+        "name": "TRATON-blue/50",
+        "remote": false,
+        "key": "220fe3915d70649944d56456cf6b598e542ab2a4",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9725490212440491,
+            "g": 0.9882352948188782,
+            "b": 0.9882352948188782,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:941:18500": {
+        "id": "VariableID:941:18500",
+        "name": "TRATON-yellow/1000",
+        "remote": false,
+        "key": "3102c48005c907c947c86f69323daed7297a6490",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.07450980693101883,
+            "b": 0,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:941:18239": {
+        "id": "VariableID:941:18239",
+        "name": "TRATON-yellow/950",
+        "remote": false,
+        "key": "545466b2d2f8e931b9fadb2536e1e2b7072b5c90",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1411764770746231,
+            "g": 0.10588235408067703,
+            "b": 0,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:941:18238": {
+        "id": "VariableID:941:18238",
+        "name": "TRATON-yellow/900",
+        "remote": false,
+        "key": "7dfe6697e7a41ab826bb9930caa89966bf36c17a",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1882352977991104,
+            "g": 0.1411764770746231,
+            "b": 0.0117647061124444,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:941:18237": {
+        "id": "VariableID:941:18237",
+        "name": "TRATON-yellow/850",
+        "remote": false,
+        "key": "91653e2ee068e6f03fdcdc29f943358c8c31fdec",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.26274511218070984,
+            "g": 0.19607843458652496,
+            "b": 0.01568627543747425,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14245": {
+        "id": "VariableID:68:14245",
+        "name": "TRATON-yellow/800",
+        "remote": false,
+        "key": "a7a17a7739b5ff7cd798ef2bd011278fca7f1186",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.3490196168422699,
+            "g": 0.26274511218070984,
+            "b": 0.019607843831181526,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14236": {
+        "id": "VariableID:68:14236",
+        "name": "TRATON-yellow/700",
+        "remote": false,
+        "key": "8784b1812b524637954b6b06686257ddfdd7a2eb",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.45098039507865906,
+            "g": 0.33725491166114807,
+            "b": 0.0235294122248888,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14237": {
+        "id": "VariableID:68:14237",
+        "name": "TRATON-yellow/600",
+        "remote": false,
+        "key": "32c8a7915cb1d5775c3ea9514462cec6539db129",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.6000000238418579,
+            "g": 0.45098039507865906,
+            "b": 0.0313725508749485,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14238": {
+        "id": "VariableID:68:14238",
+        "name": "TRATON-yellow/500",
+        "remote": false,
+        "key": "7696f33e2df5b24cf9c3bb468d4bca8c095ca364",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.7490196228027344,
+            "g": 0.5647059082984924,
+            "b": 0.03921568766236305,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14239": {
+        "id": "VariableID:68:14239",
+        "name": "TRATON-yellow/400",
+        "remote": false,
+        "key": "40ae8a8836f7ce1a3e81a87e5793fcac57388cd3",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8980392217636108,
+            "g": 0.6784313917160034,
+            "b": 0.0470588244497776,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14240": {
+        "id": "VariableID:68:14240",
+        "name": "TRATON-yellow/300",
+        "remote": false,
+        "key": "2056a458f37b88112a8da1ca02f5b970a247b7e1",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 0.7529411911964417,
+            "b": 0.05098039284348488,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14241": {
+        "id": "VariableID:68:14241",
+        "name": "TRATON-yellow/200",
+        "remote": false,
+        "key": "fc49fdb7c33cc67c32437cc203a8446a51ba117c",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 0.8156862854957581,
+            "b": 0.29019609093666077,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14242": {
+        "id": "VariableID:68:14242",
+        "name": "TRATON-yellow/150",
+        "remote": false,
+        "key": "74dc1de47bc7ef45ae7913ba8e1caba64a85f133",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 0.8627451062202454,
+            "b": 0.47843137383461,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14243": {
+        "id": "VariableID:68:14243",
+        "name": "TRATON-yellow/100",
+        "remote": false,
+        "key": "6530e3c37720e1ee72c0917d140717753bfae106",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 0.9137254953384399,
+            "b": 0.6666666865348816,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:14244": {
+        "id": "VariableID:68:14244",
+        "name": "TRATON-yellow/50",
+        "remote": false,
+        "key": "e940f5e0ef58067249c80884da1b10a2e2cafe44",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 0.9647058844566345,
+            "b": 0.8588235378265381,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:529:21883": {
+        "id": "VariableID:529:21883",
+        "name": "TRATON-warm-grey/1000",
+        "remote": false,
+        "key": "81e879045203b6b1240503b5afe1faf9e7481537",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.062745101749897,
+            "g": 0.05882352963089943,
+            "b": 0.05882352963089943,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:529:21882": {
+        "id": "VariableID:529:21882",
+        "name": "TRATON-warm-grey/950",
+        "remote": false,
+        "key": "ece3a4686fec514bd469e7d3bfece88ad48a2200",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:529:21881": {
+        "id": "VariableID:529:21881",
+        "name": "TRATON-warm-grey/900",
+        "remote": false,
+        "key": "50f5ca2ea40bf4e4e916f9cf9c0defe6dd18e2f9",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.14509804546833038,
+            "g": 0.1411764770746231,
+            "b": 0.13725490868091583,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49691": {
+        "id": "VariableID:68:49691",
+        "name": "TRATON-warm-grey/850",
+        "remote": false,
+        "key": "911c1900f7e4dee285419a793e313f7806e5b8e6",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.20000000298023224,
+            "g": 0.19607843458652496,
+            "b": 0.1882352977991104,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49692": {
+        "id": "VariableID:68:49692",
+        "name": "TRATON-warm-grey/800",
+        "remote": false,
+        "key": "4fea93eb04dcd840aa80f480d03939ccf95dc4e4",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.2705882489681244,
+            "g": 0.2666666805744171,
+            "b": 0.2549019753932953,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49693": {
+        "id": "VariableID:68:49693",
+        "name": "TRATON-warm-grey/700",
+        "remote": false,
+        "key": "dc7b1a1a53ca10f7b469df848f3a60004ac8987f",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.3490196168422699,
+            "g": 0.3450980484485626,
+            "b": 0.3294117748737335,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49694": {
+        "id": "VariableID:68:49694",
+        "name": "TRATON-warm-grey/600",
+        "remote": false,
+        "key": "f59a2312d1a5e5ead13a441bb217a5d6f8b621a2",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.45098039507865906,
+            "g": 0.4431372582912445,
+            "b": 0.42352941632270813,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49695": {
+        "id": "VariableID:68:49695",
+        "name": "TRATON-warm-grey/500",
+        "remote": false,
+        "key": "c2e239e5377c12c1ff8fb22eff1919f44937427e",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.5490196347236633,
+            "g": 0.5411764979362488,
+            "b": 0.5176470875740051,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49696": {
+        "id": "VariableID:68:49696",
+        "name": "TRATON-warm-grey/400",
+        "remote": false,
+        "key": "677b1d7e1458200833346076be69f1cb3908d7fc",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.6509804129600525,
+            "g": 0.6431372761726379,
+            "b": 0.6117647290229797,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49697": {
+        "id": "VariableID:68:49697",
+        "name": "TRATON-warm-grey/300",
+        "remote": false,
+        "key": "e2355b7d8f4dfcb746883b920d5318abcc377aba",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.7607843279838562,
+            "g": 0.7490196228027344,
+            "b": 0.7137255072593689,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49698": {
+        "id": "VariableID:68:49698",
+        "name": "TRATON-warm-grey/200",
+        "remote": false,
+        "key": "0739d85581fb43d4f72822eda65b5c1de0b95afe",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8392156958580017,
+            "g": 0.8313725590705872,
+            "b": 0.7882353067398071,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49699": {
+        "id": "VariableID:68:49699",
+        "name": "TRATON-warm-grey/150",
+        "remote": false,
+        "key": "948190e27ddb081499e3c1fb02e014aadb27e7d8",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9215686321258545,
+            "g": 0.9058823585510254,
+            "b": 0.8666666746139526,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:529:21885": {
+        "id": "VariableID:529:21885",
+        "name": "TRATON-warm-grey/100",
+        "remote": false,
+        "key": "c470ad4330b9456cd04e1ab65bf7956d7a745744",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9647058844566345,
+            "g": 0.9529411792755127,
+            "b": 0.9137254953384399,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:699:66051": {
+        "id": "VariableID:699:66051",
+        "name": "TRATON-warm-grey/50",
+        "remote": false,
+        "key": "ca78c181b4695e7559ccf334ff4fd80e8c959c04",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9882352948188782,
+            "g": 0.9843137264251709,
+            "b": 0.9686274528503418,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:861:49621": {
+        "id": "VariableID:861:49621",
+        "name": "TRATON-transparent/950",
+        "remote": false,
+        "key": "a929c2e5828d9fd0c425367216ec72a5526dcec3",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0.11372549086809158,
+            "b": 0.12941177189350128,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141602": {
+        "id": "VariableID:3021:141602",
+        "name": "TRATON-transparent/700",
+        "remote": false,
+        "key": "62102a471d8c91db9cbae0afa56eb8e270f51141",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 0.7599999904632568
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141603": {
+        "id": "VariableID:3021:141603",
+        "name": "TRATON-transparent/600",
+        "remote": false,
+        "key": "aff11a1f6c6dc8189bc27a1976b50c8a7c261d93",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 0.6200000047683716
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141604": {
+        "id": "VariableID:3021:141604",
+        "name": "TRATON-transparent/500",
+        "remote": false,
+        "key": "f27f2dd1d4e9391394ef4a4e544ddfa145325ab1",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 0.5
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141605": {
+        "id": "VariableID:3021:141605",
+        "name": "TRATON-transparent/400",
+        "remote": false,
+        "key": "7cd1af198a3b2affd0df642c015b2dcc24c5eaa3",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 0.36000001430511475
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141606": {
+        "id": "VariableID:3021:141606",
+        "name": "TRATON-transparent/200",
+        "remote": false,
+        "key": "8d7b67e1ec9bb980e330d45ee9b62a5c174525e6",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.10196078568696976,
+            "g": 0.10196078568696976,
+            "b": 0.09803921729326248,
+            "a": 0.15000000596046448
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:861:49617": {
+        "id": "VariableID:861:49617",
+        "name": "TRATON-transparent-inverse/950",
+        "remote": false,
+        "key": "24839aedaeab84119f0e10ce877f06b5046dcd44",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141607": {
+        "id": "VariableID:3021:141607",
+        "name": "TRATON-transparent-inverse/700",
+        "remote": false,
+        "key": "49e6ab32840305a4389e3654355fdc0949cd16cc",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 0.8700000047683716
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141608": {
+        "id": "VariableID:3021:141608",
+        "name": "TRATON-transparent-inverse/600",
+        "remote": false,
+        "key": "ada57ac7efde1db18aa18900b42eadc51e48e791",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 0.75
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141609": {
+        "id": "VariableID:3021:141609",
+        "name": "TRATON-transparent-inverse/500",
+        "remote": false,
+        "key": "8e7d544d094736997ae9985a648ba3a97c43c0d4",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 0.6299999952316284
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:861:49619": {
+        "id": "VariableID:861:49619",
+        "name": "TRATON-transparent-inverse/subtle",
+        "remote": false,
+        "key": "ebaa9f498009aa2d86dcc45be3061e55f9575a47",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 0.6000000238418579
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {},
+        "deletedButReferenced": true
+      },
+      "VariableID:3021:141610": {
+        "id": "VariableID:3021:141610",
+        "name": "TRATON-transparent-inverse/400",
+        "remote": false,
+        "key": "bd6ee440d613c8df6cf59d829ceb7d8204599f15",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 0.49000000953674316
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:3021:141611": {
+        "id": "VariableID:3021:141611",
+        "name": "TRATON-transparent-inverse/200",
+        "remote": false,
+        "key": "e331b3691b66ef0b1b88a9fbf5ea750678d31d6d",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8509804010391235,
+            "g": 0.929411768913269,
+            "b": 0.9411764740943909,
+            "a": 0.33000001311302185
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49701": {
+        "id": "VariableID:68:49701",
+        "name": "TRATON-base/warm-white",
+        "remote": false,
+        "key": "6b75981e6f425726f5d71e8ad24281a41838df8d",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9882352948188782,
+            "g": 0.9843137264251709,
+            "b": 0.9686274528503418,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49702": {
+        "id": "VariableID:68:49702",
+        "name": "TRATON-base/neutral-white",
+        "remote": false,
+        "key": "f4bfbe1c47750a62c5e56782293d0da48e2cbe86",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 1,
+            "b": 1,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:68:49703": {
+        "id": "VariableID:68:49703",
+        "name": "TRATON-base/neutral-black",
+        "remote": false,
+        "key": "577a940819c8ae1df794201f714564f420cb0563",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14957": {
+        "id": "VariableID:925:14957",
+        "name": "TRATON-extended-red/1000",
+        "remote": false,
+        "key": "dfa1579cb0b68744447653f7bde9bc8e946943b4",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.0784313753247261,
+            "g": 0.0313725508749485,
+            "b": 0.0313725508749485,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14958": {
+        "id": "VariableID:925:14958",
+        "name": "TRATON-extended-red/950",
+        "remote": false,
+        "key": "10e3f8edbf370f944c9a163a4ac7a2a24bb6f78b",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1411764770746231,
+            "g": 0.05098039284348488,
+            "b": 0.05098039284348488,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14960": {
+        "id": "VariableID:925:14960",
+        "name": "TRATON-extended-red/900",
+        "remote": false,
+        "key": "e8995a63c9e9552b432d3efd2d9f4330386872bf",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1921568661928177,
+            "g": 0.06666667014360428,
+            "b": 0.06666667014360428,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14961": {
+        "id": "VariableID:925:14961",
+        "name": "TRATON-extended-red/850",
+        "remote": false,
+        "key": "cd7ac6d522966f3ea94fe5ee8590e44033f27fe9",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.2549019753932953,
+            "g": 0.08627451211214066,
+            "b": 0.08627451211214066,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14962": {
+        "id": "VariableID:925:14962",
+        "name": "TRATON-extended-red/800",
+        "remote": false,
+        "key": "33656c47e0cf556970c0368c334146fea67466f4",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.3333333432674408,
+            "g": 0.10588235408067703,
+            "b": 0.10588235408067703,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14963": {
+        "id": "VariableID:925:14963",
+        "name": "TRATON-extended-red/700",
+        "remote": false,
+        "key": "7af4657be5588b90bbd4e5a85d8b2b36e96830f8",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.4274509847164154,
+            "g": 0.13725490868091583,
+            "b": 0.13725490868091583,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14964": {
+        "id": "VariableID:925:14964",
+        "name": "TRATON-extended-red/600",
+        "remote": false,
+        "key": "5e9d330e25764b22a8f983b801117ca3130e4f9e",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.5215686559677124,
+            "g": 0.16078431904315948,
+            "b": 0.16078431904315948,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14965": {
+        "id": "VariableID:925:14965",
+        "name": "TRATON-extended-red/500",
+        "remote": false,
+        "key": "f378f585f494df57669fb341acd7452b58eba009",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.6274510025978088,
+            "g": 0.18431372940540314,
+            "b": 0.18039216101169586,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14966": {
+        "id": "VariableID:925:14966",
+        "name": "TRATON-extended-red/400",
+        "remote": false,
+        "key": "3842d06567a6aee2d5e013f166f01b0ade1b7b07",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.7372549176216125,
+            "g": 0.1882352977991104,
+            "b": 0.18431372940540314,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14967": {
+        "id": "VariableID:925:14967",
+        "name": "TRATON-extended-red/300",
+        "remote": false,
+        "key": "967cf461b95303583aa21e5b334c3964324962a0",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8470588326454163,
+            "g": 0.23137255012989044,
+            "b": 0.22745098173618317,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14968": {
+        "id": "VariableID:925:14968",
+        "name": "TRATON-extended-red/200",
+        "remote": false,
+        "key": "bf06b3ea0dc5f22b4ea0081a30ad8df5ddc2aad2",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9254902005195618,
+            "g": 0.33725491166114807,
+            "b": 0.3333333432674408,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14969": {
+        "id": "VariableID:925:14969",
+        "name": "TRATON-extended-red/150",
+        "remote": false,
+        "key": "b2452af9ce9b857e63f7bda5b3bcfe69311210b4",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9490196108818054,
+            "g": 0.5254902243614197,
+            "b": 0.5254902243614197,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14970": {
+        "id": "VariableID:925:14970",
+        "name": "TRATON-extended-red/100",
+        "remote": false,
+        "key": "d04b60806872256a591f0fa6bf153dbc7705a6f0",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.9686274528503418,
+            "g": 0.729411780834198,
+            "b": 0.729411780834198,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14971": {
+        "id": "VariableID:925:14971",
+        "name": "TRATON-extended-red/50",
+        "remote": false,
+        "key": "fdaec04f7c3243882b1ac867521fd6b0468fef25",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 1,
+            "g": 0.8784313797950745,
+            "b": 0.8784313797950745,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:925:14959": {
+        "id": "VariableID:925:14959",
+        "name": "TRATON-extended-green/1000",
+        "remote": false,
+        "key": "368fd09874ba074c2777d42076ab3cef856d5e14",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.0313725508749485,
+            "g": 0.0470588244497776,
+            "b": 0.0313725508749485,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14972": {
+        "id": "VariableID:927:14972",
+        "name": "TRATON-extended-green/950",
+        "remote": false,
+        "key": "a6889f8220141a9830d8fd753d45b558b61dde9e",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.05098039284348488,
+            "g": 0.10588235408067703,
+            "b": 0.054901961237192154,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14973": {
+        "id": "VariableID:927:14973",
+        "name": "TRATON-extended-green/900",
+        "remote": false,
+        "key": "df0448522d6a4a6549255b2aae2b7748f28394e3",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.062745101749897,
+            "g": 0.13725490868091583,
+            "b": 0.06666667014360428,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14974": {
+        "id": "VariableID:927:14974",
+        "name": "TRATON-extended-green/850",
+        "remote": false,
+        "key": "0800520e03e919875947a0d9a3c37359fc4f1236",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.08235294371843338,
+            "g": 0.19607843458652496,
+            "b": 0.09019608050584793,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14975": {
+        "id": "VariableID:927:14975",
+        "name": "TRATON-extended-green/800",
+        "remote": false,
+        "key": "96b8bf4cfdc352e3f73191004ff768c6874dc0d1",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.11372549086809158,
+            "g": 0.2666666805744171,
+            "b": 0.12156862765550613,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14976": {
+        "id": "VariableID:927:14976",
+        "name": "TRATON-extended-green/700",
+        "remote": false,
+        "key": "d8acd8e591e4c329e1babb59324abfebfe6d35cd",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.13725490868091583,
+            "g": 0.34117648005485535,
+            "b": 0.15294118225574493,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14977": {
+        "id": "VariableID:927:14977",
+        "name": "TRATON-extended-green/600",
+        "remote": false,
+        "key": "5011ca89d203ae348c59441b886cd3aa92c4e5a5",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.16862745583057404,
+            "g": 0.42352941632270813,
+            "b": 0.18039216101169586,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14978": {
+        "id": "VariableID:927:14978",
+        "name": "TRATON-extended-green/500",
+        "remote": false,
+        "key": "19543659012c3d5e37c0a9a969f624943a7d32fd",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.1921568661928177,
+            "g": 0.501960813999176,
+            "b": 0.2078431397676468,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14979": {
+        "id": "VariableID:927:14979",
+        "name": "TRATON-extended-green/400",
+        "remote": false,
+        "key": "d3b3f9d97ddcabb2d526a3be1ee007288989a0b8",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.21960784494876862,
+            "g": 0.5803921818733215,
+            "b": 0.23529411852359772,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14980": {
+        "id": "VariableID:927:14980",
+        "name": "TRATON-extended-green/300",
+        "remote": false,
+        "key": "4e0c0c4ae13ee5957436c451a3e7c4256eba6238",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.23137255012989044,
+            "g": 0.6509804129600525,
+            "b": 0.24705882370471954,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14981": {
+        "id": "VariableID:927:14981",
+        "name": "TRATON-extended-green/200",
+        "remote": false,
+        "key": "229eda680175df96c748eb480138c4d97d8889cf",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.3529411852359772,
+            "g": 0.7490196228027344,
+            "b": 0.3607843220233917,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14982": {
+        "id": "VariableID:927:14982",
+        "name": "TRATON-extended-green/150",
+        "remote": false,
+        "key": "82f468de8be55f32c3f1b2686c5ff84961079645",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.5058823823928833,
+            "g": 0.8352941274642944,
+            "b": 0.5215686559677124,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14983": {
+        "id": "VariableID:927:14983",
+        "name": "TRATON-extended-green/100",
+        "remote": false,
+        "key": "ef62edc49bf4dda5b7c0ce2afcdd73900f07cc15",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.6784313917160034,
+            "g": 0.9215686321258545,
+            "b": 0.6941176652908325,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
+      "VariableID:927:14984": {
+        "id": "VariableID:927:14984",
+        "name": "TRATON-extended-green/50",
+        "remote": false,
+        "key": "47b7ace07a0ea35736645485b84e29fd84fbb8e0",
+        "variableCollectionId": "VariableCollectionId:1:823",
+        "resolvedType": "COLOR",
+        "description": "",
+        "hiddenFromPublishing": false,
+        "valuesByMode": {
+          "1:0": {
+            "r": 0.8196078538894653,
+            "g": 0.9803921580314636,
+            "b": 0.8196078538894653,
+            "a": 1
+          }
+        },
+        "scopes": [],
+        "codeSyntax": {}
+      },
       "VariableID:3:16": {
         "id": "VariableID:3:16",
         "name": "foreground/text/strong",
@@ -7285,2019 +9972,6 @@
         ],
         "codeSyntax": {}
       },
-      "VariableID:3:9": {
-        "id": "VariableID:3:9",
-        "name": "unit/2",
-        "remote": false,
-        "key": "36275cfdf06e8133da22942d675630ebf5bb41eb",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 2
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:973": {
-        "id": "VariableID:7:973",
-        "name": "unit/4",
-        "remote": false,
-        "key": "89021b8e2622a1eb21f734fb8f065d21c0e06fef",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 4
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:974": {
-        "id": "VariableID:7:974",
-        "name": "unit/8",
-        "remote": false,
-        "key": "3f13c5231406adee40bc83881e1af968cdaff2bf",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 8
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3136:55677": {
-        "id": "VariableID:3136:55677",
-        "name": "unit/12",
-        "remote": false,
-        "key": "34f8d2ef8f56fa5edeb5d3d8a584390f05e2bf72",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 12
-        },
-        "scopes": [
-          "ALL_SCOPES"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:7:975": {
-        "id": "VariableID:7:975",
-        "name": "unit/16",
-        "remote": false,
-        "key": "113794786abba61d11f3ba458bbf44ee2dd6bb0c",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 16
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3126:32468": {
-        "id": "VariableID:3126:32468",
-        "name": "unit/20",
-        "remote": false,
-        "key": "d0fd0330a6b4d2c1a8e7fe9fbf9b0e78c90ececb",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 20
-        },
-        "scopes": [
-          "ALL_SCOPES"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:7:976": {
-        "id": "VariableID:7:976",
-        "name": "unit/24",
-        "remote": false,
-        "key": "053d441f30ca93aea57e8eefaf4fb118f49c0dd0",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 24
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:977": {
-        "id": "VariableID:7:977",
-        "name": "unit/32",
-        "remote": false,
-        "key": "6c1bbb1d54dbd4110c1a6a39d7c1d9efb1785c68",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 32
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:978": {
-        "id": "VariableID:7:978",
-        "name": "unit/40",
-        "remote": false,
-        "key": "b5f92dcbdd46f8746f07811a09780daee6791105",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 40
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:979": {
-        "id": "VariableID:7:979",
-        "name": "unit/48",
-        "remote": false,
-        "key": "278ec2d617dabab457746d998f54c870d530444f",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 48
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:980": {
-        "id": "VariableID:7:980",
-        "name": "unit/56",
-        "remote": false,
-        "key": "eb1c317a91f4205c2906373e7df0eaa919c97d2b",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 56
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:981": {
-        "id": "VariableID:7:981",
-        "name": "unit/64",
-        "remote": false,
-        "key": "eed942067b6e156af2bc8b1c2383c8f7305f34c5",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 64
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:982": {
-        "id": "VariableID:7:982",
-        "name": "unit/80",
-        "remote": false,
-        "key": "35dc5c8dc822d888a962274bc84523a10ae76d80",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 80
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:983": {
-        "id": "VariableID:7:983",
-        "name": "unit/96",
-        "remote": false,
-        "key": "5e07c3b688dc5b47bbb25fb8d29009b886ace176",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 96
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:984": {
-        "id": "VariableID:7:984",
-        "name": "unit/120",
-        "remote": false,
-        "key": "d520d84eada7118b496e4f92180025b2c4d24012",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "FLOAT",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": 120
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:7:922": {
-        "id": "VariableID:7:922",
-        "name": "tds-neutral-solid/868",
-        "remote": false,
-        "key": "e324ce0b380c0000f48f96aad6549e336475c2df",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1411764770746231,
-            "g": 0.1725490242242813,
-            "b": 0.21568627655506134,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {},
-        "deletedButReferenced": true
-      },
-      "VariableID:7:929": {
-        "id": "VariableID:7:929",
-        "name": "tds-neutral-solid/300",
-        "remote": false,
-        "key": "ad035413af487eaa311056b34c48557d8c84e8af",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8078431487083435,
-            "g": 0.8235294222831726,
-            "b": 0.8627451062202454,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {},
-        "deletedButReferenced": true
-      },
-      "VariableID:7:932": {
-        "id": "VariableID:7:932",
-        "name": "tds-neutral-solid/50",
-        "remote": false,
-        "key": "54f7ea27f6ec423c1b956db59a6c2d6fc9ad8629",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9520000219345093,
-            "g": 0.9573333263397217,
-            "b": 0.9679999947547913,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {},
-        "deletedButReferenced": true
-      },
-      "VariableID:529:21889": {
-        "id": "VariableID:529:21889",
-        "name": "TRATON-blue/1000",
-        "remote": false,
-        "key": "61bf5ccde5b942e2a07f774245fcbdde4574d51e",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.07058823853731155,
-            "b": 0.0784313753247261,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49681": {
-        "id": "VariableID:68:49681",
-        "name": "TRATON-blue/950",
-        "remote": false,
-        "key": "d8fb29fad458b8276648333ca9d67d0f419765b3",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.11372549086809158,
-            "b": 0.12941177189350128,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:529:21888": {
-        "id": "VariableID:529:21888",
-        "name": "TRATON-blue/900",
-        "remote": false,
-        "key": "01272bbf89225fb25ccfd32d84c7f908a04feeb6",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.1411764770746231,
-            "b": 0.16078431904315948,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49682": {
-        "id": "VariableID:68:49682",
-        "name": "TRATON-blue/850",
-        "remote": false,
-        "key": "37008732b2b4c3d3b2dad5dda25d7818ce724376",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.1921568661928177,
-            "b": 0.21568627655506134,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49683": {
-        "id": "VariableID:68:49683",
-        "name": "TRATON-blue/800",
-        "remote": false,
-        "key": "f13db15a453b4864a5d2f9e390968da038a45c3a",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.2823529541492462,
-            "b": 0.32156863808631897,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49684": {
-        "id": "VariableID:68:49684",
-        "name": "TRATON-blue/700",
-        "remote": false,
-        "key": "1742e1caa1b1837b6a8a9e7868a7cd3924a777cc",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.38823530077934265,
-            "b": 0.4431372582912445,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49685": {
-        "id": "VariableID:68:49685",
-        "name": "TRATON-blue/600",
-        "remote": false,
-        "key": "16c4a15b65173b45afb0d661a89a466ec64b0ac2",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.5098039507865906,
-            "b": 0.5803921818733215,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49686": {
-        "id": "VariableID:68:49686",
-        "name": "TRATON-blue/500",
-        "remote": false,
-        "key": "bf1b78b2cd100bf0003265fcbd21eef0571c59d0",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1764705926179886,
-            "g": 0.6196078658103943,
-            "b": 0.6784313917160034,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49687": {
-        "id": "VariableID:68:49687",
-        "name": "TRATON-blue/400",
-        "remote": false,
-        "key": "2ac520a132da3a031fc5e671db8a1657c46cf96b",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.4000000059604645,
-            "g": 0.7215686440467834,
-            "b": 0.7686274647712708,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49688": {
-        "id": "VariableID:68:49688",
-        "name": "TRATON-blue/300",
-        "remote": false,
-        "key": "517599f3a1a31f6454928568f4b2e247e240f3c5",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.5490196347236633,
-            "g": 0.7921568751335144,
-            "b": 0.8235294222831726,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49689": {
-        "id": "VariableID:68:49689",
-        "name": "TRATON-blue/200",
-        "remote": false,
-        "key": "a78db446907ed566128ec02204f11263dc9c01df",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.7019608020782471,
-            "g": 0.8627451062202454,
-            "b": 0.8823529481887817,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49690": {
-        "id": "VariableID:68:49690",
-        "name": "TRATON-blue/150",
-        "remote": false,
-        "key": "2518786289e0be834818acb92bbed9af9d847739",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:529:21886": {
-        "id": "VariableID:529:21886",
-        "name": "TRATON-blue/100",
-        "remote": false,
-        "key": "7edb20ce99968b32103ab470a50ca32edd0c30f6",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9137254953384399,
-            "g": 0.9607843160629272,
-            "b": 0.9647058844566345,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:699:66052": {
-        "id": "VariableID:699:66052",
-        "name": "TRATON-blue/50",
-        "remote": false,
-        "key": "220fe3915d70649944d56456cf6b598e542ab2a4",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9725490212440491,
-            "g": 0.9882352948188782,
-            "b": 0.9882352948188782,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:941:18500": {
-        "id": "VariableID:941:18500",
-        "name": "TRATON-yellow/1000",
-        "remote": false,
-        "key": "3102c48005c907c947c86f69323daed7297a6490",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.07450980693101883,
-            "b": 0,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:941:18239": {
-        "id": "VariableID:941:18239",
-        "name": "TRATON-yellow/950",
-        "remote": false,
-        "key": "545466b2d2f8e931b9fadb2536e1e2b7072b5c90",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1411764770746231,
-            "g": 0.10588235408067703,
-            "b": 0,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:941:18238": {
-        "id": "VariableID:941:18238",
-        "name": "TRATON-yellow/900",
-        "remote": false,
-        "key": "7dfe6697e7a41ab826bb9930caa89966bf36c17a",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1882352977991104,
-            "g": 0.1411764770746231,
-            "b": 0.0117647061124444,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:941:18237": {
-        "id": "VariableID:941:18237",
-        "name": "TRATON-yellow/850",
-        "remote": false,
-        "key": "91653e2ee068e6f03fdcdc29f943358c8c31fdec",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.26274511218070984,
-            "g": 0.19607843458652496,
-            "b": 0.01568627543747425,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14245": {
-        "id": "VariableID:68:14245",
-        "name": "TRATON-yellow/800",
-        "remote": false,
-        "key": "a7a17a7739b5ff7cd798ef2bd011278fca7f1186",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.3490196168422699,
-            "g": 0.26274511218070984,
-            "b": 0.019607843831181526,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14236": {
-        "id": "VariableID:68:14236",
-        "name": "TRATON-yellow/700",
-        "remote": false,
-        "key": "8784b1812b524637954b6b06686257ddfdd7a2eb",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.45098039507865906,
-            "g": 0.33725491166114807,
-            "b": 0.0235294122248888,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14237": {
-        "id": "VariableID:68:14237",
-        "name": "TRATON-yellow/600",
-        "remote": false,
-        "key": "32c8a7915cb1d5775c3ea9514462cec6539db129",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.6000000238418579,
-            "g": 0.45098039507865906,
-            "b": 0.0313725508749485,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14238": {
-        "id": "VariableID:68:14238",
-        "name": "TRATON-yellow/500",
-        "remote": false,
-        "key": "7696f33e2df5b24cf9c3bb468d4bca8c095ca364",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.7490196228027344,
-            "g": 0.5647059082984924,
-            "b": 0.03921568766236305,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14239": {
-        "id": "VariableID:68:14239",
-        "name": "TRATON-yellow/400",
-        "remote": false,
-        "key": "40ae8a8836f7ce1a3e81a87e5793fcac57388cd3",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8980392217636108,
-            "g": 0.6784313917160034,
-            "b": 0.0470588244497776,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14240": {
-        "id": "VariableID:68:14240",
-        "name": "TRATON-yellow/300",
-        "remote": false,
-        "key": "2056a458f37b88112a8da1ca02f5b970a247b7e1",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 0.7529411911964417,
-            "b": 0.05098039284348488,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14241": {
-        "id": "VariableID:68:14241",
-        "name": "TRATON-yellow/200",
-        "remote": false,
-        "key": "fc49fdb7c33cc67c32437cc203a8446a51ba117c",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 0.8156862854957581,
-            "b": 0.29019609093666077,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14242": {
-        "id": "VariableID:68:14242",
-        "name": "TRATON-yellow/150",
-        "remote": false,
-        "key": "74dc1de47bc7ef45ae7913ba8e1caba64a85f133",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 0.8627451062202454,
-            "b": 0.47843137383461,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14243": {
-        "id": "VariableID:68:14243",
-        "name": "TRATON-yellow/100",
-        "remote": false,
-        "key": "6530e3c37720e1ee72c0917d140717753bfae106",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 0.9137254953384399,
-            "b": 0.6666666865348816,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:14244": {
-        "id": "VariableID:68:14244",
-        "name": "TRATON-yellow/50",
-        "remote": false,
-        "key": "e940f5e0ef58067249c80884da1b10a2e2cafe44",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 0.9647058844566345,
-            "b": 0.8588235378265381,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:529:21883": {
-        "id": "VariableID:529:21883",
-        "name": "TRATON-warm-grey/1000",
-        "remote": false,
-        "key": "81e879045203b6b1240503b5afe1faf9e7481537",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.062745101749897,
-            "g": 0.05882352963089943,
-            "b": 0.05882352963089943,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:529:21882": {
-        "id": "VariableID:529:21882",
-        "name": "TRATON-warm-grey/950",
-        "remote": false,
-        "key": "ece3a4686fec514bd469e7d3bfece88ad48a2200",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:529:21881": {
-        "id": "VariableID:529:21881",
-        "name": "TRATON-warm-grey/900",
-        "remote": false,
-        "key": "50f5ca2ea40bf4e4e916f9cf9c0defe6dd18e2f9",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.14509804546833038,
-            "g": 0.1411764770746231,
-            "b": 0.13725490868091583,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49691": {
-        "id": "VariableID:68:49691",
-        "name": "TRATON-warm-grey/850",
-        "remote": false,
-        "key": "911c1900f7e4dee285419a793e313f7806e5b8e6",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.20000000298023224,
-            "g": 0.19607843458652496,
-            "b": 0.1882352977991104,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49692": {
-        "id": "VariableID:68:49692",
-        "name": "TRATON-warm-grey/800",
-        "remote": false,
-        "key": "4fea93eb04dcd840aa80f480d03939ccf95dc4e4",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.2705882489681244,
-            "g": 0.2666666805744171,
-            "b": 0.2549019753932953,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49693": {
-        "id": "VariableID:68:49693",
-        "name": "TRATON-warm-grey/700",
-        "remote": false,
-        "key": "dc7b1a1a53ca10f7b469df848f3a60004ac8987f",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.3490196168422699,
-            "g": 0.3450980484485626,
-            "b": 0.3294117748737335,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49694": {
-        "id": "VariableID:68:49694",
-        "name": "TRATON-warm-grey/600",
-        "remote": false,
-        "key": "f59a2312d1a5e5ead13a441bb217a5d6f8b621a2",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.45098039507865906,
-            "g": 0.4431372582912445,
-            "b": 0.42352941632270813,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49695": {
-        "id": "VariableID:68:49695",
-        "name": "TRATON-warm-grey/500",
-        "remote": false,
-        "key": "c2e239e5377c12c1ff8fb22eff1919f44937427e",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.5490196347236633,
-            "g": 0.5411764979362488,
-            "b": 0.5176470875740051,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49696": {
-        "id": "VariableID:68:49696",
-        "name": "TRATON-warm-grey/400",
-        "remote": false,
-        "key": "677b1d7e1458200833346076be69f1cb3908d7fc",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.6509804129600525,
-            "g": 0.6431372761726379,
-            "b": 0.6117647290229797,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49697": {
-        "id": "VariableID:68:49697",
-        "name": "TRATON-warm-grey/300",
-        "remote": false,
-        "key": "e2355b7d8f4dfcb746883b920d5318abcc377aba",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.7607843279838562,
-            "g": 0.7490196228027344,
-            "b": 0.7137255072593689,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49698": {
-        "id": "VariableID:68:49698",
-        "name": "TRATON-warm-grey/200",
-        "remote": false,
-        "key": "0739d85581fb43d4f72822eda65b5c1de0b95afe",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8392156958580017,
-            "g": 0.8313725590705872,
-            "b": 0.7882353067398071,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49699": {
-        "id": "VariableID:68:49699",
-        "name": "TRATON-warm-grey/150",
-        "remote": false,
-        "key": "948190e27ddb081499e3c1fb02e014aadb27e7d8",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9215686321258545,
-            "g": 0.9058823585510254,
-            "b": 0.8666666746139526,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:529:21885": {
-        "id": "VariableID:529:21885",
-        "name": "TRATON-warm-grey/100",
-        "remote": false,
-        "key": "c470ad4330b9456cd04e1ab65bf7956d7a745744",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9647058844566345,
-            "g": 0.9529411792755127,
-            "b": 0.9137254953384399,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:699:66051": {
-        "id": "VariableID:699:66051",
-        "name": "TRATON-warm-grey/50",
-        "remote": false,
-        "key": "ca78c181b4695e7559ccf334ff4fd80e8c959c04",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9882352948188782,
-            "g": 0.9843137264251709,
-            "b": 0.9686274528503418,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:861:49621": {
-        "id": "VariableID:861:49621",
-        "name": "TRATON-transparent/950",
-        "remote": false,
-        "key": "a929c2e5828d9fd0c425367216ec72a5526dcec3",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.11372549086809158,
-            "b": 0.12941177189350128,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141602": {
-        "id": "VariableID:3021:141602",
-        "name": "TRATON-transparent/700",
-        "remote": false,
-        "key": "62102a471d8c91db9cbae0afa56eb8e270f51141",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 0.7599999904632568
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141603": {
-        "id": "VariableID:3021:141603",
-        "name": "TRATON-transparent/600",
-        "remote": false,
-        "key": "aff11a1f6c6dc8189bc27a1976b50c8a7c261d93",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 0.6200000047683716
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141604": {
-        "id": "VariableID:3021:141604",
-        "name": "TRATON-transparent/500",
-        "remote": false,
-        "key": "f27f2dd1d4e9391394ef4a4e544ddfa145325ab1",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 0.5
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141605": {
-        "id": "VariableID:3021:141605",
-        "name": "TRATON-transparent/400",
-        "remote": false,
-        "key": "7cd1af198a3b2affd0df642c015b2dcc24c5eaa3",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 0.36000001430511475
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141606": {
-        "id": "VariableID:3021:141606",
-        "name": "TRATON-transparent/200",
-        "remote": false,
-        "key": "8d7b67e1ec9bb980e330d45ee9b62a5c174525e6",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 0.15000000596046448
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:861:49617": {
-        "id": "VariableID:861:49617",
-        "name": "TRATON-transparent-inverse/950",
-        "remote": false,
-        "key": "24839aedaeab84119f0e10ce877f06b5046dcd44",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141607": {
-        "id": "VariableID:3021:141607",
-        "name": "TRATON-transparent-inverse/700",
-        "remote": false,
-        "key": "49e6ab32840305a4389e3654355fdc0949cd16cc",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 0.8700000047683716
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141608": {
-        "id": "VariableID:3021:141608",
-        "name": "TRATON-transparent-inverse/600",
-        "remote": false,
-        "key": "ada57ac7efde1db18aa18900b42eadc51e48e791",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 0.75
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141609": {
-        "id": "VariableID:3021:141609",
-        "name": "TRATON-transparent-inverse/500",
-        "remote": false,
-        "key": "8e7d544d094736997ae9985a648ba3a97c43c0d4",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 0.6299999952316284
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:861:49619": {
-        "id": "VariableID:861:49619",
-        "name": "TRATON-transparent-inverse/subtle",
-        "remote": false,
-        "key": "ebaa9f498009aa2d86dcc45be3061e55f9575a47",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 0.6000000238418579
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {},
-        "deletedButReferenced": true
-      },
-      "VariableID:3021:141610": {
-        "id": "VariableID:3021:141610",
-        "name": "TRATON-transparent-inverse/400",
-        "remote": false,
-        "key": "bd6ee440d613c8df6cf59d829ceb7d8204599f15",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 0.49000000953674316
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:3021:141611": {
-        "id": "VariableID:3021:141611",
-        "name": "TRATON-transparent-inverse/200",
-        "remote": false,
-        "key": "e331b3691b66ef0b1b88a9fbf5ea750678d31d6d",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 0.33000001311302185
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49701": {
-        "id": "VariableID:68:49701",
-        "name": "TRATON-base/warm-white",
-        "remote": false,
-        "key": "6b75981e6f425726f5d71e8ad24281a41838df8d",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9882352948188782,
-            "g": 0.9843137264251709,
-            "b": 0.9686274528503418,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49702": {
-        "id": "VariableID:68:49702",
-        "name": "TRATON-base/neutral-white",
-        "remote": false,
-        "key": "f4bfbe1c47750a62c5e56782293d0da48e2cbe86",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 1,
-            "b": 1,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:68:49703": {
-        "id": "VariableID:68:49703",
-        "name": "TRATON-base/neutral-black",
-        "remote": false,
-        "key": "577a940819c8ae1df794201f714564f420cb0563",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0,
-            "b": 0,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14957": {
-        "id": "VariableID:925:14957",
-        "name": "TRATON-extended-red/1000",
-        "remote": false,
-        "key": "dfa1579cb0b68744447653f7bde9bc8e946943b4",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.0784313753247261,
-            "g": 0.0313725508749485,
-            "b": 0.0313725508749485,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14958": {
-        "id": "VariableID:925:14958",
-        "name": "TRATON-extended-red/950",
-        "remote": false,
-        "key": "10e3f8edbf370f944c9a163a4ac7a2a24bb6f78b",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1411764770746231,
-            "g": 0.05098039284348488,
-            "b": 0.05098039284348488,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14960": {
-        "id": "VariableID:925:14960",
-        "name": "TRATON-extended-red/900",
-        "remote": false,
-        "key": "e8995a63c9e9552b432d3efd2d9f4330386872bf",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1921568661928177,
-            "g": 0.06666667014360428,
-            "b": 0.06666667014360428,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14961": {
-        "id": "VariableID:925:14961",
-        "name": "TRATON-extended-red/850",
-        "remote": false,
-        "key": "cd7ac6d522966f3ea94fe5ee8590e44033f27fe9",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.2549019753932953,
-            "g": 0.08627451211214066,
-            "b": 0.08627451211214066,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14962": {
-        "id": "VariableID:925:14962",
-        "name": "TRATON-extended-red/800",
-        "remote": false,
-        "key": "33656c47e0cf556970c0368c334146fea67466f4",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.3333333432674408,
-            "g": 0.10588235408067703,
-            "b": 0.10588235408067703,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14963": {
-        "id": "VariableID:925:14963",
-        "name": "TRATON-extended-red/700",
-        "remote": false,
-        "key": "7af4657be5588b90bbd4e5a85d8b2b36e96830f8",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.4274509847164154,
-            "g": 0.13725490868091583,
-            "b": 0.13725490868091583,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14964": {
-        "id": "VariableID:925:14964",
-        "name": "TRATON-extended-red/600",
-        "remote": false,
-        "key": "5e9d330e25764b22a8f983b801117ca3130e4f9e",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.5215686559677124,
-            "g": 0.16078431904315948,
-            "b": 0.16078431904315948,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14965": {
-        "id": "VariableID:925:14965",
-        "name": "TRATON-extended-red/500",
-        "remote": false,
-        "key": "f378f585f494df57669fb341acd7452b58eba009",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.6274510025978088,
-            "g": 0.18431372940540314,
-            "b": 0.18039216101169586,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14966": {
-        "id": "VariableID:925:14966",
-        "name": "TRATON-extended-red/400",
-        "remote": false,
-        "key": "3842d06567a6aee2d5e013f166f01b0ade1b7b07",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.7372549176216125,
-            "g": 0.1882352977991104,
-            "b": 0.18431372940540314,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14967": {
-        "id": "VariableID:925:14967",
-        "name": "TRATON-extended-red/300",
-        "remote": false,
-        "key": "967cf461b95303583aa21e5b334c3964324962a0",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8470588326454163,
-            "g": 0.23137255012989044,
-            "b": 0.22745098173618317,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14968": {
-        "id": "VariableID:925:14968",
-        "name": "TRATON-extended-red/200",
-        "remote": false,
-        "key": "bf06b3ea0dc5f22b4ea0081a30ad8df5ddc2aad2",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9254902005195618,
-            "g": 0.33725491166114807,
-            "b": 0.3333333432674408,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14969": {
-        "id": "VariableID:925:14969",
-        "name": "TRATON-extended-red/150",
-        "remote": false,
-        "key": "b2452af9ce9b857e63f7bda5b3bcfe69311210b4",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9490196108818054,
-            "g": 0.5254902243614197,
-            "b": 0.5254902243614197,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14970": {
-        "id": "VariableID:925:14970",
-        "name": "TRATON-extended-red/100",
-        "remote": false,
-        "key": "d04b60806872256a591f0fa6bf153dbc7705a6f0",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9686274528503418,
-            "g": 0.729411780834198,
-            "b": 0.729411780834198,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14971": {
-        "id": "VariableID:925:14971",
-        "name": "TRATON-extended-red/50",
-        "remote": false,
-        "key": "fdaec04f7c3243882b1ac867521fd6b0468fef25",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 1,
-            "g": 0.8784313797950745,
-            "b": 0.8784313797950745,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:925:14959": {
-        "id": "VariableID:925:14959",
-        "name": "TRATON-extended-green/1000",
-        "remote": false,
-        "key": "368fd09874ba074c2777d42076ab3cef856d5e14",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.0313725508749485,
-            "g": 0.0470588244497776,
-            "b": 0.0313725508749485,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14972": {
-        "id": "VariableID:927:14972",
-        "name": "TRATON-extended-green/950",
-        "remote": false,
-        "key": "a6889f8220141a9830d8fd753d45b558b61dde9e",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.05098039284348488,
-            "g": 0.10588235408067703,
-            "b": 0.054901961237192154,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14973": {
-        "id": "VariableID:927:14973",
-        "name": "TRATON-extended-green/900",
-        "remote": false,
-        "key": "df0448522d6a4a6549255b2aae2b7748f28394e3",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.062745101749897,
-            "g": 0.13725490868091583,
-            "b": 0.06666667014360428,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14974": {
-        "id": "VariableID:927:14974",
-        "name": "TRATON-extended-green/850",
-        "remote": false,
-        "key": "0800520e03e919875947a0d9a3c37359fc4f1236",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.08235294371843338,
-            "g": 0.19607843458652496,
-            "b": 0.09019608050584793,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14975": {
-        "id": "VariableID:927:14975",
-        "name": "TRATON-extended-green/800",
-        "remote": false,
-        "key": "96b8bf4cfdc352e3f73191004ff768c6874dc0d1",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.11372549086809158,
-            "g": 0.2666666805744171,
-            "b": 0.12156862765550613,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14976": {
-        "id": "VariableID:927:14976",
-        "name": "TRATON-extended-green/700",
-        "remote": false,
-        "key": "d8acd8e591e4c329e1babb59324abfebfe6d35cd",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.13725490868091583,
-            "g": 0.34117648005485535,
-            "b": 0.15294118225574493,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14977": {
-        "id": "VariableID:927:14977",
-        "name": "TRATON-extended-green/600",
-        "remote": false,
-        "key": "5011ca89d203ae348c59441b886cd3aa92c4e5a5",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.16862745583057404,
-            "g": 0.42352941632270813,
-            "b": 0.18039216101169586,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14978": {
-        "id": "VariableID:927:14978",
-        "name": "TRATON-extended-green/500",
-        "remote": false,
-        "key": "19543659012c3d5e37c0a9a969f624943a7d32fd",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1921568661928177,
-            "g": 0.501960813999176,
-            "b": 0.2078431397676468,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14979": {
-        "id": "VariableID:927:14979",
-        "name": "TRATON-extended-green/400",
-        "remote": false,
-        "key": "d3b3f9d97ddcabb2d526a3be1ee007288989a0b8",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.21960784494876862,
-            "g": 0.5803921818733215,
-            "b": 0.23529411852359772,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14980": {
-        "id": "VariableID:927:14980",
-        "name": "TRATON-extended-green/300",
-        "remote": false,
-        "key": "4e0c0c4ae13ee5957436c451a3e7c4256eba6238",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.23137255012989044,
-            "g": 0.6509804129600525,
-            "b": 0.24705882370471954,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14981": {
-        "id": "VariableID:927:14981",
-        "name": "TRATON-extended-green/200",
-        "remote": false,
-        "key": "229eda680175df96c748eb480138c4d97d8889cf",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.3529411852359772,
-            "g": 0.7490196228027344,
-            "b": 0.3607843220233917,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14982": {
-        "id": "VariableID:927:14982",
-        "name": "TRATON-extended-green/150",
-        "remote": false,
-        "key": "82f468de8be55f32c3f1b2686c5ff84961079645",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.5058823823928833,
-            "g": 0.8352941274642944,
-            "b": 0.5215686559677124,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14983": {
-        "id": "VariableID:927:14983",
-        "name": "TRATON-extended-green/100",
-        "remote": false,
-        "key": "ef62edc49bf4dda5b7c0ce2afcdd73900f07cc15",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.6784313917160034,
-            "g": 0.9215686321258545,
-            "b": 0.6941176652908325,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:927:14984": {
-        "id": "VariableID:927:14984",
-        "name": "TRATON-extended-green/50",
-        "remote": false,
-        "key": "47b7ace07a0ea35736645485b84e29fd84fbb8e0",
-        "variableCollectionId": "VariableCollectionId:1:823",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": false,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8196078538894653,
-            "g": 0.9803921580314636,
-            "b": 0.8196078538894653,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
       "VariableID:b380fdc8a3f355e52123cb65b479a3396b27bf8a/4023:180": {
         "id": "VariableID:b380fdc8a3f355e52123cb65b479a3396b27bf8a/4023:180",
         "name": "foreground/text/inverse/strong",
@@ -9404,680 +10078,6 @@
           "33:0": "Regular",
           "68:0": "Regular",
           "572:1": "Regular"
-        },
-        "scopes": [
-          "ALL_SCOPES"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:b191a592f7e92c879146a6fbed98f67405f7e6b6/1010:566": {
-        "id": "VariableID:b191a592f7e92c879146a6fbed98f67405f7e6b6/1010:566",
-        "name": "tra-brand/1000",
-        "remote": true,
-        "key": "b191a592f7e92c879146a6fbed98f67405f7e6b6",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.07058823853731155,
-            "b": 0.0784313753247261,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:f1e346aa024e678898f0a24b19612878ea724260/1010:573": {
-        "id": "VariableID:f1e346aa024e678898f0a24b19612878ea724260/1010:573",
-        "name": "tra-brand/950",
-        "remote": true,
-        "key": "f1e346aa024e678898f0a24b19612878ea724260",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.11372549086809158,
-            "b": 0.12941177189350128,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:219a46b9fd55c89fdc03f0815ea4375c9576e677/1010:564": {
-        "id": "VariableID:219a46b9fd55c89fdc03f0815ea4375c9576e677/1010:564",
-        "name": "tra-brand/900",
-        "remote": true,
-        "key": "219a46b9fd55c89fdc03f0815ea4375c9576e677",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.1411764770746231,
-            "b": 0.16078431904315948,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:9386ce537e575fcea2ed9b799f4ea8563489e336/1010:574": {
-        "id": "VariableID:9386ce537e575fcea2ed9b799f4ea8563489e336/1010:574",
-        "name": "tra-brand/850",
-        "remote": true,
-        "key": "9386ce537e575fcea2ed9b799f4ea8563489e336",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.1921568661928177,
-            "b": 0.21568627655506134,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:784aadb9dd619a7dcf08698bdf8a748e6bea572a/1010:354": {
-        "id": "VariableID:784aadb9dd619a7dcf08698bdf8a748e6bea572a/1010:354",
-        "name": "tra-brand/800",
-        "remote": true,
-        "key": "784aadb9dd619a7dcf08698bdf8a748e6bea572a",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.2823529541492462,
-            "b": 0.32156863808631897,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:901abed71e436ce46b904c62186cd6bb30622077/1010:509": {
-        "id": "VariableID:901abed71e436ce46b904c62186cd6bb30622077/1010:509",
-        "name": "tra-brand/700",
-        "remote": true,
-        "key": "901abed71e436ce46b904c62186cd6bb30622077",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.38823530077934265,
-            "b": 0.4431372582912445,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:66e8a0a4c3e5ee634d1ef6836aab44da390c6721/1010:373": {
-        "id": "VariableID:66e8a0a4c3e5ee634d1ef6836aab44da390c6721/1010:373",
-        "name": "tra-brand/600",
-        "remote": true,
-        "key": "66e8a0a4c3e5ee634d1ef6836aab44da390c6721",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0,
-            "g": 0.5098039507865906,
-            "b": 0.5803921818733215,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6/1010:305": {
-        "id": "VariableID:b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6/1010:305",
-        "name": "tra-brand/500",
-        "remote": true,
-        "key": "b38c12f86579c8b98ae4e4f6c10f8ea4e32c8aa6",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.1764705926179886,
-            "g": 0.6196078658103943,
-            "b": 0.6784313917160034,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96/1010:480": {
-        "id": "VariableID:a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96/1010:480",
-        "name": "tra-brand/400",
-        "remote": true,
-        "key": "a65fdf954018a5eac6a7d8a15fedbb7ad0d86e96",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.4000000059604645,
-            "g": 0.7215686440467834,
-            "b": 0.7686274647712708,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7/1010:575": {
-        "id": "VariableID:040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7/1010:575",
-        "name": "tra-brand/300",
-        "remote": true,
-        "key": "040a865d8b22b478eabf4f9d2ab7d9e72a1b7dd7",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.5490196347236633,
-            "g": 0.7921568751335144,
-            "b": 0.8235294222831726,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:70cb7fac0c7ab15a74103a6292780b0379f8931e/1010:578": {
-        "id": "VariableID:70cb7fac0c7ab15a74103a6292780b0379f8931e/1010:578",
-        "name": "tra-brand/200",
-        "remote": true,
-        "key": "70cb7fac0c7ab15a74103a6292780b0379f8931e",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.7019608020782471,
-            "g": 0.8627451062202454,
-            "b": 0.8823529481887817,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:52fab1914352fa3c100c8adc10aad3abf53b2b0b/1010:368": {
-        "id": "VariableID:52fab1914352fa3c100c8adc10aad3abf53b2b0b/1010:368",
-        "name": "tra-brand/150",
-        "remote": true,
-        "key": "52fab1914352fa3c100c8adc10aad3abf53b2b0b",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8509804010391235,
-            "g": 0.929411768913269,
-            "b": 0.9411764740943909,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:a2143a5cb16dc11931721085610cd09e2487f64d/1010:538": {
-        "id": "VariableID:a2143a5cb16dc11931721085610cd09e2487f64d/1010:538",
-        "name": "tra-brand/100",
-        "remote": true,
-        "key": "a2143a5cb16dc11931721085610cd09e2487f64d",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9137254953384399,
-            "g": 0.9607843160629272,
-            "b": 0.9647058844566345,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:19266146208698efc6dcf78b073af26963298b3a/1010:579": {
-        "id": "VariableID:19266146208698efc6dcf78b073af26963298b3a/1010:579",
-        "name": "tra-brand/50",
-        "remote": true,
-        "key": "19266146208698efc6dcf78b073af26963298b3a",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9725490212440491,
-            "g": 0.9882352948188782,
-            "b": 0.9882352948188782,
-            "a": 1
-          }
-        },
-        "scopes": [],
-        "codeSyntax": {}
-      },
-      "VariableID:64367d95ec8e57161434af17f4a9141a3814c591/3047:1261": {
-        "id": "VariableID:64367d95ec8e57161434af17f4a9141a3814c591/3047:1261",
-        "name": "tra-warm-grey/1000",
-        "remote": true,
-        "key": "64367d95ec8e57161434af17f4a9141a3814c591",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.062745101749897,
-            "g": 0.05882352963089943,
-            "b": 0.05882352963089943,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:b13d60829452962aef0b5212834cade6b80b1e7b/3047:1288": {
-        "id": "VariableID:b13d60829452962aef0b5212834cade6b80b1e7b/3047:1288",
-        "name": "tra-warm-grey/950",
-        "remote": true,
-        "key": "b13d60829452962aef0b5212834cade6b80b1e7b",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.10196078568696976,
-            "g": 0.10196078568696976,
-            "b": 0.09803921729326248,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:93bc212169094e5ff47132b6c36c69db379eddce/3047:1255": {
-        "id": "VariableID:93bc212169094e5ff47132b6c36c69db379eddce/3047:1255",
-        "name": "tra-warm-grey/900",
-        "remote": true,
-        "key": "93bc212169094e5ff47132b6c36c69db379eddce",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.14509804546833038,
-            "g": 0.1411764770746231,
-            "b": 0.13725490868091583,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:7fe02ef4880936a814a27d1b983778c2eff6eb2b/3047:1273": {
-        "id": "VariableID:7fe02ef4880936a814a27d1b983778c2eff6eb2b/3047:1273",
-        "name": "tra-warm-grey/850*",
-        "remote": true,
-        "key": "7fe02ef4880936a814a27d1b983778c2eff6eb2b",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.20000000298023224,
-            "g": 0.19607843458652496,
-            "b": 0.1882352977991104,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:f9a4593b12a97257577c7be7229af032024f49a9/3047:1239": {
-        "id": "VariableID:f9a4593b12a97257577c7be7229af032024f49a9/3047:1239",
-        "name": "tra-warm-grey/800",
-        "remote": true,
-        "key": "f9a4593b12a97257577c7be7229af032024f49a9",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.2705882489681244,
-            "g": 0.2666666805744171,
-            "b": 0.2549019753932953,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:3dac7e657370e77ee49677010264881aa8f92a75/3047:1287": {
-        "id": "VariableID:3dac7e657370e77ee49677010264881aa8f92a75/3047:1287",
-        "name": "tra-warm-grey/700",
-        "remote": true,
-        "key": "3dac7e657370e77ee49677010264881aa8f92a75",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.3490196168422699,
-            "g": 0.3450980484485626,
-            "b": 0.3294117748737335,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:503b33c283c93ff1509821c2041f520cef993a19/3047:1284": {
-        "id": "VariableID:503b33c283c93ff1509821c2041f520cef993a19/3047:1284",
-        "name": "tra-warm-grey/600",
-        "remote": true,
-        "key": "503b33c283c93ff1509821c2041f520cef993a19",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.45098039507865906,
-            "g": 0.4431372582912445,
-            "b": 0.42352941632270813,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:72605cc07b4ac90d61738a8519f5525337ad6bde/3047:1291": {
-        "id": "VariableID:72605cc07b4ac90d61738a8519f5525337ad6bde/3047:1291",
-        "name": "tra-warm-grey/500",
-        "remote": true,
-        "key": "72605cc07b4ac90d61738a8519f5525337ad6bde",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.5490196347236633,
-            "g": 0.5411764979362488,
-            "b": 0.5176470875740051,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:49051916dfccf0ef1bf5f94c45eca9371dd366f8/3047:1263": {
-        "id": "VariableID:49051916dfccf0ef1bf5f94c45eca9371dd366f8/3047:1263",
-        "name": "tra-warm-grey/400",
-        "remote": true,
-        "key": "49051916dfccf0ef1bf5f94c45eca9371dd366f8",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.6509804129600525,
-            "g": 0.6431372761726379,
-            "b": 0.6117647290229797,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:3a8157c8a26af1d0eb5b3e7c61893b1463f7d264/3047:1296": {
-        "id": "VariableID:3a8157c8a26af1d0eb5b3e7c61893b1463f7d264/3047:1296",
-        "name": "tra-warm-grey/300",
-        "remote": true,
-        "key": "3a8157c8a26af1d0eb5b3e7c61893b1463f7d264",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.7607843279838562,
-            "g": 0.7490196228027344,
-            "b": 0.7137255072593689,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:a9f926084474d78486b000160cb64a25188a675e/3047:1253": {
-        "id": "VariableID:a9f926084474d78486b000160cb64a25188a675e/3047:1253",
-        "name": "tra-warm-grey/200",
-        "remote": true,
-        "key": "a9f926084474d78486b000160cb64a25188a675e",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.8392156958580017,
-            "g": 0.8313725590705872,
-            "b": 0.7882353067398071,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:0e0a889d4bb50706b0bde187b0ba7a8875727b11/3047:1275": {
-        "id": "VariableID:0e0a889d4bb50706b0bde187b0ba7a8875727b11/3047:1275",
-        "name": "tra-warm-grey/150",
-        "remote": true,
-        "key": "0e0a889d4bb50706b0bde187b0ba7a8875727b11",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9215686321258545,
-            "g": 0.9058823585510254,
-            "b": 0.8666666746139526,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:9e8d2f8b38b756381371c4012f264beb666501ab/3047:1272": {
-        "id": "VariableID:9e8d2f8b38b756381371c4012f264beb666501ab/3047:1272",
-        "name": "tra-warm-grey/100",
-        "remote": true,
-        "key": "9e8d2f8b38b756381371c4012f264beb666501ab",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9647058844566345,
-            "g": 0.9529411792755127,
-            "b": 0.9137254953384399,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:c14e533a8784b510710b7209aecc56e803a229d7/3047:1290": {
-        "id": "VariableID:c14e533a8784b510710b7209aecc56e803a229d7/3047:1290",
-        "name": "tra-warm-grey/50",
-        "remote": true,
-        "key": "c14e533a8784b510710b7209aecc56e803a229d7",
-        "variableCollectionId": "VariableCollectionId:2e21edd72c067c6320847afe91c8dee5579efe8a/52:155",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "1:0": {
-            "r": 0.9882352948188782,
-            "g": 0.9843137264251709,
-            "b": 0.9686274528503418,
-            "a": 1
-          }
-        },
-        "scopes": [
-          "ALL_FILLS",
-          "STROKE_COLOR"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:7ef4172c44bc549c82aae8d4f19dd41710ceec21/12281:287": {
-        "id": "VariableID:7ef4172c44bc549c82aae8d4f19dd41710ceec21/12281:287",
-        "name": "Categorical/Index 00",
-        "remote": true,
-        "key": "7ef4172c44bc549c82aae8d4f19dd41710ceec21",
-        "variableCollectionId": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "2342:2": {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:c238103aa3e7d1a602739a2e3efd0c1ffc3c577f/12281:291"
-          },
-          "4204:0": {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:a113766b7fd930fd4f08d8ab715579b641d3141c/12281:293"
-          }
-        },
-        "scopes": [
-          "ALL_SCOPES"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:31379aeeb4a917ddd19b249c18dd47b7f80820af/12281:199": {
-        "id": "VariableID:31379aeeb4a917ddd19b249c18dd47b7f80820af/12281:199",
-        "name": "Categorical/Index 01",
-        "remote": true,
-        "key": "31379aeeb4a917ddd19b249c18dd47b7f80820af",
-        "variableCollectionId": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "2342:2": {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:2e97ddd51eb1c154c9b9cc0b7487cf9a4495b3b1/12281:248"
-          },
-          "4204:0": {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:34328ed174ec3ab6224fbc6f953d6feb99d24c73/12281:251"
-          }
-        },
-        "scopes": [
-          "ALL_SCOPES"
-        ],
-        "codeSyntax": {}
-      },
-      "VariableID:762d1b8d4a3e380199372118b4af938d67db86e9/12281:163": {
-        "id": "VariableID:762d1b8d4a3e380199372118b4af938d67db86e9/12281:163",
-        "name": "Categorical/Index 02",
-        "remote": true,
-        "key": "762d1b8d4a3e380199372118b4af938d67db86e9",
-        "variableCollectionId": "VariableCollectionId:c51db02d027b189d2e9e635e262124df2e74b9c9/4204:968",
-        "resolvedType": "COLOR",
-        "description": "",
-        "hiddenFromPublishing": true,
-        "valuesByMode": {
-          "2342:2": {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:142a4af33a463d01fd8b9ec680c2e88a271a4222/12281:159"
-          },
-          "4204:0": {
-            "type": "VARIABLE_ALIAS",
-            "id": "VariableID:142a4af33a463d01fd8b9ec680c2e88a271a4222/12281:159"
-          }
         },
         "scopes": [
           "ALL_SCOPES"
