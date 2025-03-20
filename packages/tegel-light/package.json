@@ -21,7 +21,8 @@
     "./global.css": "./dist/global.css",
     "./tl-button.css": "./dist/components/tl-button.css",
     "./tl-header-title.css": "./dist/components/tl-header-title.css",
-    "./tl-header.css": "./dist/components/tl-header.css"
+    "./tl-header.css": "./dist/components/tl-header.css",
+    "./tl-accordion.css": "./dist/components/tl-accordion.css"
   },
   "files": [
     "dist/",
