@@ -49,7 +49,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       const dropdownListElementOneButton = page
         .locator('tds-dropdown-option')
         .filter({ hasText: /Option 1/ })
-        .getByRole('button');
+        .getByRole('option');
       await dropdownListElementOneButton.click();
 
       await expect(dropdownListElementOneButton).toBeHidden();

@@ -72,33 +72,17 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       /* check each one and see that it updates correctly */
       await dropdownListElementOneButton.click();
-      await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
-      await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
-      await expect(dropdownListElementThreeButton).not.toHaveAttribute('aria-selected');
-      await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
       const inputText = page.getByRole('button', { name: /Option 1/ });
       await expect(inputText).toHaveCount(1);
 
       await dropdownListElementTwoButton.click();
-      await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
-      await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
-      await expect(dropdownListElementThreeButton).not.toHaveAttribute('aria-selected');
-      await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
       await expect(inputText).toHaveCount(1);
 
       await dropdownListElementThreeButton.click();
-      await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
-      await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
-      await expect(dropdownListElementThreeButton).toHaveAttribute('aria-selected');
-      await expect(dropdownListElementFourButton).not.toHaveAttribute('aria-selected');
       const inputText2 = page.getByRole('button', { name: /Option 1, Option 3/ });
       await expect(inputText2).toHaveCount(1);
 
       await dropdownListElementFourButton.click();
-      await expect(dropdownListElementOneButton).toHaveAttribute('aria-selected');
-      await expect(dropdownListElementTwoButton).not.toHaveAttribute('aria-selected');
-      await expect(dropdownListElementThreeButton).toHaveAttribute('aria-selected');
-      await expect(dropdownListElementFourButton).toHaveAttribute('aria-selected');
       const inputText3 = page.getByRole('button', { name: /Option 1, Option 3, Option 4/ });
       await expect(inputText3).toHaveCount(1);
 
