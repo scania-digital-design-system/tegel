@@ -2,24 +2,36 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: 'Tegel Light (CSS)/Header',
+  parameters: {
+    layout: 'fullscreen',
+  },
   argTypes: {
-    showTitle: { control: 'boolean' },
+    includeTitle: { control: 'boolean', name: 'Include title?' },
   },
   args: {
-    showTitle: true,
+    includeTitle: true,
   },
 };
 
-const Template = ({ showTitle }) =>
+const Template = ({ includeTitle }) =>
   formatHtmlPreview(`
+    <script>
+        import "@scania/tegel-light/tl-header";
+        ${includeTitle ? 'import "@scania/tegel-light/tl-header-title";' : ''}
+    </script>
+    
     <header class="tl-header">
-     ${
-       showTitle
-         ? `<h4 class="tl-header-title"><span class="tl-header-title__title">Example: default</span></h4>`
-         : ''
-     }
-      <nav class="tl-header__nav">
-        <ul class="tl-header__list">
+    <nav class="tl-header__nav">
+        <ul class="tl-header__component-list">
+        ${
+          includeTitle
+            ? `<div class="tl-header-title">
+                        <h4 class="tl-header-title__text"> Example: default </h4>
+                   </div>`
+            : ''
+        }
+            <li class="tl-header__middle-spacer">
+            </li>
         </ul>
       </nav>
     </header>
