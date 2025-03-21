@@ -4,8 +4,7 @@
 .tl-header-item {
   height: 100%;
 
-  &__link,
-  &__button {
+  &__wrapper {
     all: unset;
     @include tds-box-sizing;
 
@@ -26,20 +25,17 @@
   }
 
   /* Hover state */
-  &__link:hover,
-  &__button:hover {
+  &__wrapper:hover {
     background-color: var(--tds-header-item-hover);
   }
 
   /* Focus-visible state */
-  &__link:focus-visible,
-  &__button:focus-visible {
+  &__wrapper:focus-visible {
     @include tds-focus-state;
   }
 
   &--active {
-    .tl-header-item__link,
-    .tl-header-item__button {
+    .tl-header-item__wrapper {
       background-color: var(--tds-header--basic-element-background-open);
       color: var(--tds-header-nav-item-dropdown-opened-color);
       border-color: var(--tds-header--basic-element-border-open);
@@ -48,8 +44,7 @@
 
   /* Selected state */
   &--selected:not(&--active) {
-    .tl-header-item__link,
-    .tl-header-item__button {
+    .tl-header-item__wrapper {
       background-color: var(--tds-header--basic-element-background-selected);
       padding-top: 4px;
       border-bottom-style: solid;
