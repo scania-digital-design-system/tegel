@@ -96,31 +96,41 @@ export class TdsDropdown {
 
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
+    console.log('Value changed:', newValue); // Debug
+
     // Normalize to array
     const normalizedValue = this.normalizeValue(newValue);
+    console.log('Normalized value:', normalizedValue); // Debug
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
+      console.log('Value has changed, updating state'); // Debug
       this.updateDropdownState(normalizedValue);
     }
   }
 
   private normalizeValue(value: string | number | (string | number)[] | null): string[] {
-    if (!value || value === '') return []; // Handle both null and empty string
+    if (!value || value === '') return [];
 
-    // For multiselect, keep array. For single select, wrap in array
-    if (this.multiselect) {
+    // For single select, ensure we handle both string and array inputs
+    if (!this.multiselect) {
+      // If array is passed to single select, take first value
       if (Array.isArray(value)) {
-        return convertArrayToStrings(value);
+        return [convertToString(value[0])];
       }
-      return value
-        .toString()
-        .split(',')
-        .filter((v) => v !== '');
+      return [convertToString(value)];
     }
 
-    // Single select - convert to string array
-    return Array.isArray(value) ? convertArrayToStrings(value) : [convertToString(value)];
+    // For multiselect
+    if (Array.isArray(value)) {
+      return convertArrayToStrings(value);
+    }
+
+    // Handle comma-separated string for multiselect
+    return value
+      .toString()
+      .split(',')
+      .filter((v) => v !== '');
   }
 
   private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
@@ -129,13 +139,19 @@ export class TdsDropdown {
   }
 
   private updateDropdownState(values: string[]) {
-    // Update internal state
-    this.selectedOptions = [...this.validateValues(values)]; // Force new array reference
+    console.log('Updating dropdown state with values:', values); // Debug
 
-    // Then update the value prop to match
+    // Validate the values first
+    const validValues = this.validateValues(values);
+    console.log('Valid values:', validValues); // Debug
+
+    // Update internal state
+    this.selectedOptions = [...validValues];
+
+    // Update the value prop
     this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
 
-    // Force update of internal value
+    // Update internal value for display
     this.internalValue = this.getValue();
 
     // Update DOM
@@ -152,8 +168,17 @@ export class TdsDropdown {
   }
 
   private validateValues(values: string[]): string[] {
+    // Make sure we have children before validation
+    const children = this.getChildren();
+    if (!children || children.length === 0) {
+      console.warn('No dropdown options found'); // Debug
+      return values; // Return original values if no children yet
+    }
+
     return values.filter((val) => {
-      const isValid = this.getChildren()?.some((element) => element.value === val);
+      const isValid = children.some(
+        (element) => convertToString(element.value) === convertToString(val),
+      );
       if (!isValid) {
         console.warn(`Option with value "${val}" does not exist`);
       }
@@ -350,8 +375,17 @@ export class TdsDropdown {
   }
 
   componentWillLoad() {
-    if (this.defaultValue && !this.value) {
-      // Convert defaultValue to string before splitting
+    // First handle the value prop if it exists
+    if (this.value !== null && this.value !== undefined) {
+      console.log('Initial value:', this.value); // Debug
+      const normalizedValue = this.normalizeValue(this.value);
+      console.log('Normalized value:', normalizedValue); // Debug
+      this.updateDropdownState(normalizedValue);
+      return; // Exit early if we handled the value prop
+    }
+
+    // Only use defaultValue if no value prop was provided
+    if (this.defaultValue !== null && this.defaultValue !== undefined) {
       const defaultValueStr = convertToString(this.defaultValue);
       const initialValue = this.multiselect
         ? defaultValueStr.split(',').map(convertToString)
@@ -385,9 +419,12 @@ export class TdsDropdown {
     const tdsDropdownOptions = Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
+
     if (tdsDropdownOptions.length === 0) {
-      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
-    } else return tdsDropdownOptions;
+      console.warn('TDS DROPDOWN: No options found. Disregard if loading data asynchronously.');
+    }
+
+    return tdsDropdownOptions;
   };
 
   private getSelectedChildren = () => {
