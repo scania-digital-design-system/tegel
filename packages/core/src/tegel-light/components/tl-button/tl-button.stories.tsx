@@ -29,6 +29,10 @@ export default {
 
 const Template = ({ variant, size, fullwidth, disabled }) =>
   formatHtmlPreview(`
+    <script>
+        import "@scania/tegel-light/tl-button.css";
+    </script>
+
       <button class="tl-button tl-button--${variant} tl-button--${size} 
         ${fullwidth ? 'tl-button--fullwidth' : ''} 
         ${disabled ? 'tl-button--disabled' : ''}"
