@@ -29,6 +29,9 @@
   &__component-list {
     all: unset;
     height: var(--tds-header-height);
+    list-style: none;
+    padding: 0;
+    margin: 0;
     @include tds-flex-center;
   }
 

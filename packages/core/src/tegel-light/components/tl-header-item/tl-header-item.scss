@@ -1,0 +1,60 @@
+@import '../../../mixins/box-sizing';
+@import '../../../mixins/focus-state';
+
+.tl-header-item {
+  height: 100%;
+
+  &__link,
+  &__button {
+    all: unset;
+    @include tds-box-sizing;
+
+    background-color: var(--tds-header-background);
+    border-right: 1px solid var(--tds-header--basic-element-border);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--tds-white);
+
+    &:has(.tl-header-brand-symbol) {
+      padding: 0 19px;
+    }
+  }
+
+  /* Hover state */
+  &__link:hover,
+  &__button:hover {
+    background-color: var(--tds-header-item-hover);
+  }
+
+  /* Focus-visible state */
+  &__link:focus-visible,
+  &__button:focus-visible {
+    @include tds-focus-state;
+  }
+
+  &--active {
+    .tl-header-item__link,
+    .tl-header-item__button {
+      background-color: var(--tds-header--basic-element-background-open);
+      color: var(--tds-header-nav-item-dropdown-opened-color);
+      border-color: var(--tds-header--basic-element-border-open);
+    }
+  }
+
+  /* Selected state */
+  &--selected:not(&--active) {
+    .tl-header-item__link,
+    .tl-header-item__button {
+      background-color: var(--tds-header--basic-element-background-selected);
+      padding-top: 4px;
+      border-bottom-style: solid;
+      border-bottom-width: 4px;
+      border-bottom-color: var(--tds-nav-item-border-color-active);
+    }
+  }
+}
