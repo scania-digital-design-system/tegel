@@ -31,7 +31,7 @@
     }
 
     &:disabled,
-    &--disabled {
+    &.tl-button--disabled {
       background-color: var(--tds-btn-primary-background-disabled);
       color: var(--tds-btn-primary-color-disabled);
       border-color: var(--tds-btn-primary-border-color-disabled);
@@ -50,7 +50,7 @@
     }
 
     &:disabled,
-    &--disabled {
+    &.tl-button--disabled {
       background-color: var(--tds-btn-secondary-background-disabled);
       color: var(--tds-btn-secondary-color-disabled);
       border-color: var(--tds-btn-secondary-border-color-disabled);
@@ -69,7 +69,7 @@
     }
 
     &:disabled,
-    &--disabled {
+    &.tl-button--disabled {
       color: var(--tds-btn-ghost-color-disabled);
       cursor: not-allowed;
       opacity: 0.6;
@@ -85,7 +85,7 @@
     }
 
     &:disabled,
-    &--disabled {
+    &.tl-button--disabled {
       background-color: var(--tds-btn-danger-background-disabled);
       color: var(--tds-btn-danger-color-disabled);
       border-color: var(--tds-btn-danger-border-color-disabled);
