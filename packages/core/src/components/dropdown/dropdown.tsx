@@ -536,6 +536,9 @@ export class TdsDropdown {
     if (form) {
       form.removeEventListener('reset', this.resetInput);
     }
+  }
+
+  connectedCallback() {
     if (!this.tdsAriaLabel) {
       console.warn('Tegel Dropdown component: tdsAriaLabel prop is missing');
     }
