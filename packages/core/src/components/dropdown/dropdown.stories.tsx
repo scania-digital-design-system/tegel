@@ -183,6 +183,13 @@ export default {
         defaultValue: { summary: 'false' },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -201,6 +208,7 @@ export default {
     defaultOption: 'No default',
     animation: 'slide',
     responsive: false,
+    tdsAriaLabel: 'dropdown'
   },
 };
 
@@ -245,6 +253,7 @@ const Template = ({
   noResultText,
   animation,
   responsive,
+  tdsAriaLabel,
 }) =>
   formatHtmlPreview(`
   <style>
@@ -292,7 +301,7 @@ const Template = ({
           ${disabled ? 'disabled' : ''}
           ${animation !== 'None' ? `animation="${animation}"` : ''}
           open-direction="${openDirection.toLowerCase()}"
-          tds-aria-label="dropdown"
+          tds-aria-label="${tdsAriaLabel}"
           >
             <tds-dropdown-option value="option-1">
               Option 1
