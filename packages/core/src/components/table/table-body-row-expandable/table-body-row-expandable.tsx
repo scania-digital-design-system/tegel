@@ -53,6 +53,9 @@ export class TdsTableBodyRowExpandable {
   /** Enables auto-collapse of other expandable rows when one row is expanded */
   @Prop() autoCollapse: boolean = false;
 
+  /** Aria label for the expand button, providing an accessible description */
+  @Prop({ reflect: true }) tdsAriaLabelExpandButton: string = '';
+
   /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
@@ -212,6 +215,7 @@ export class TdsTableBodyRowExpandable {
                 checked={this.isExpanded}
                 aria-expanded={this.isExpanded ? 'true' : 'false'}
                 aria-controls={`expandable-content-${this.rowId}`}
+                aria-label={this.tdsAriaLabelExpandButton}
               />
               <span class="tds-expendable-row-icon">
                 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
