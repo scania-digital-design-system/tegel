@@ -104,7 +104,6 @@ export class TdsDropdown {
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
-      console.log('Value has changed, updating state'); // Debug
       this.updateDropdownState(normalizedValue);
     }
   }
@@ -139,8 +138,6 @@ export class TdsDropdown {
   }
 
   private updateDropdownState(values: string[]) {
-    console.log('Updating dropdown state with values:', values); // Debug
-
     // Validate the values first
     const validValues = this.validateValues(values);
     console.log('Valid values:', validValues); // Debug
@@ -171,7 +168,7 @@ export class TdsDropdown {
     // Make sure we have children before validation
     const children = this.getChildren();
     if (!children || children.length === 0) {
-      console.warn('No dropdown options found'); // Debug
+      console.warn('No dropdown options found');
       return values; // Return original values if no children yet
     }
 
@@ -379,7 +376,6 @@ export class TdsDropdown {
     if (this.value !== null && this.value !== undefined) {
       console.log('Initial value:', this.value); // Debug
       const normalizedValue = this.normalizeValue(this.value);
-      console.log('Normalized value:', normalizedValue); // Debug
       this.updateDropdownState(normalizedValue);
       return; // Exit early if we handled the value prop
     }
