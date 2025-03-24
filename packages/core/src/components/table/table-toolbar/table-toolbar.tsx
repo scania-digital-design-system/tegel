@@ -140,7 +140,7 @@ export class TdsTableToolbar {
                   class="tds-table__searchbar-input"
                   type="text"
                   onKeyUp={(event) => this.handleSearch(event)}
-                  aria-label={`Type here to filter table content`}
+                  aria-label={this.tdsSearchAriaLabel}
                 />
                 <span class="tds-table__searchbar-icon">
                   <tds-icon name="search" size="20px"></tds-icon>
