@@ -240,7 +240,10 @@ export class TdsInlineTabs {
 
   render() {
     return (
-      <Host role="tablist" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host
+        role="tablist"
+        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}
+      >
         <div
           class="wrapper"
           ref={(el) => {

@@ -26,17 +26,20 @@ export class TdsInlineTab {
     const elements = this.host.querySelectorAll('button, a');
     for (let index = 0; index < elements.length; index++) {
       const element = elements[index];
-      if(!element.getAttribute('aria-controls')) {
-        console.warn('Tegel inline-tab component: Interactive elements should have aria-controls attribute to link the tab to its corresponding panel')
+      if (!element.getAttribute('aria-controls')) {
+        console.warn(
+          'Tegel inline-tab component: Interactive elements should have aria-controls attribute to link the tab to its corresponding panel',
+        );
       }
-      if(element.getAttribute('role') !== "tab") {
-        console.warn('Tegel inline-tab component: Interactive elements should have attribute role="tab"')
+      if (element.getAttribute('role') !== 'tab') {
+        console.warn(
+          'Tegel inline-tab component: Interactive elements should have attribute role="tab"',
+        );
       }
-      if(this.disabled) {
+      if (this.disabled) {
         element.setAttribute('aria-disabled', 'true');
       } else {
         element.removeAttribute('aria-disabled');
-      
       }
     }
   }

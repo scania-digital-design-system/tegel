@@ -230,7 +230,10 @@ export class TdsFolderTabs {
 
   render() {
     return (
-      <Host role="tablist" class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}>
+      <Host
+        role="tablist"
+        class={`${this.modeVariant ? `tds-mode-variant-${this.modeVariant}` : ''}`}
+      >
         <div
           class="wrapper"
           ref={(el) => {
