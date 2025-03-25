@@ -77,7 +77,10 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
     <tds-folder-tabs
       ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
       ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
-      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
+      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      tds-scroll-left-aria-label="Navigate to previous tab"
+      tds-scroll-right-aria-label="Navigate to next tab"
+      >
       <tds-folder-tab>
         <button role="tab" aria-controls="tab-panel">First tab</button>
       </tds-folder-tab>

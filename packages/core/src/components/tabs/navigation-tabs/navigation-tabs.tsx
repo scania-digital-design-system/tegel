@@ -35,6 +35,12 @@ export class TdsNavigationTabs {
   /** Custom left padding value for the wrapper element. */
   @Prop({ reflect: true }) leftPadding: number = 32;
 
+  /** Defines aria-label on left scroll button */
+  @Prop() tdsScrollLeftAriaLabel: string = 'Scroll left';
+
+  /** Defines aria-label on right scroll button */
+  @Prop() tdsScrollRightAriaLabel: string = 'Scroll right';
+
   @State() showLeftScroll: boolean = false;
 
   @State() showRightScroll: boolean = false;
@@ -253,7 +259,7 @@ export class TdsNavigationTabs {
           style={{ paddingLeft: `${this.leftPadding}px` }} // Set left padding directly here
         >
           <button
-            aria-label="Previous tab"
+            aria-label={this.tdsScrollLeftAriaLabel}
             class={{
               'scroll-left-button': true,
               'show': this.showLeftScroll,
@@ -265,7 +271,7 @@ export class TdsNavigationTabs {
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
-            aria-label="Next tab"
+            aria-label={this.tdsScrollRightAriaLabel}
             class={{
               'scroll-right-button': true,
               'show': this.showRightScroll,

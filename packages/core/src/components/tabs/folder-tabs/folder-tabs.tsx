@@ -32,6 +32,12 @@ export class TdsFolderTabs {
    * If this is set, all Tab changes need to be handled by the user. */
   @Prop({ reflect: true }) selectedIndex: number;
 
+  /** Defines aria-label on left scroll button */
+  @Prop() tdsScrollLeftAriaLabel: string = 'Scroll left';
+
+  /** Defines aria-label on right scroll button */
+  @Prop() tdsScrollRightAriaLabel: string = 'Scroll right';
+
   @State() buttonWidth: number = 0;
 
   @State() showLeftScroll: boolean = false;
@@ -241,7 +247,7 @@ export class TdsFolderTabs {
           }}
         >
           <button
-            aria-label="Previous tab"
+            aria-label={this.tdsScrollLeftAriaLabel}
             class={`scroll-left-button ${this.showLeftScroll ? 'show' : ''}`}
             disabled={!this.showLeftScroll}
             onClick={() => this.scrollLeft()}
@@ -250,7 +256,7 @@ export class TdsFolderTabs {
           </button>
           <slot onSlotchange={() => this.handleSlotChange()} />
           <button
-            aria-label="Next tab"
+            aria-label={this.tdsScrollRightAriaLabel}
             class={`scroll-right-button ${this.showRightScroll ? 'show' : ''}`}
             disabled={!this.showRightScroll}
             onClick={() => this.scrollRight()}
