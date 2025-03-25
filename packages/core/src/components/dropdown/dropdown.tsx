@@ -96,11 +96,8 @@ export class TdsDropdown {
 
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
-    console.log('Value changed:', newValue); // Debug
-
     // Normalize to array
     const normalizedValue = this.normalizeValue(newValue);
-    console.log('Normalized value:', normalizedValue); // Debug
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
@@ -140,7 +137,6 @@ export class TdsDropdown {
   private updateDropdownState(values: string[]) {
     // Validate the values first
     const validValues = this.validateValues(values);
-    console.log('Valid values:', validValues); // Debug
 
     // Update internal state
     this.selectedOptions = [...validValues];
@@ -374,7 +370,6 @@ export class TdsDropdown {
   componentWillLoad() {
     // First handle the value prop if it exists
     if (this.value !== null && this.value !== undefined) {
-      console.log('Initial value:', this.value); // Debug
       const normalizedValue = this.normalizeValue(this.value);
       this.updateDropdownState(normalizedValue);
       return; // Exit early if we handled the value prop
