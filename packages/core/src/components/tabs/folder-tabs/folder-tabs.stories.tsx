@@ -77,23 +77,26 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
     <tds-folder-tabs
       ${defaultSelectedIndex !== 'None' ? `default-selected-index="${defaultSelectedIndex}"` : ''}
       ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
-      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}>
+      ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
+      tds-scroll-left-aria-label="Navigate to previous tab"
+      tds-scroll-right-aria-label="Navigate to next tab"
+      >
       <tds-folder-tab>
-        <button>First tab</button>
+        <button role="tab" aria-controls="tab-panel">First tab</button>
       </tds-folder-tab>
       <tds-folder-tab>
-        <button>Second tab is much longer</button>
+        <button role="tab" aria-controls="tab-panel">Second tab is much longer</button>
       </tds-folder-tab>
       <tds-folder-tab>
-        <button>Third tab</button>
+        <button role="tab" aria-controls="tab-panel">Third tab</button>
       </tds-folder-tab>
       <tds-folder-tab disabled>
-        <button>Fourth tab</button>
+        <button role="tab" aria-controls="tab-panel">Fourth tab</button>
       </tds-folder-tab>
     </tds-folder-tabs>
 
     <!-- Demo container. -->
-    <div class="demo-container">
+    <div id="tab-panel" class="demo-container">
       <h4 class="tds-headline-04">Selected tab index: <span class="selectedTabIndex"></span></h4>
     </div>
     

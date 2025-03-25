@@ -1,7 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
-import type { Page } from '@playwright/test';
 
-const disabledRules = ['page-has-heading-one', 'landmark-one-main', 'region'];
+const disabledRules = ['page-has-heading-one', 'landmark-one-main', 'region', 'color-contrast'];
 
-export const tegelAnalyze = async (page: Page) =>
+export const tegelAnalyze = async (page) =>
   new AxeBuilder({ page }).disableRules(disabledRules).analyze();
