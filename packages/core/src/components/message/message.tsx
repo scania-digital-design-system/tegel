@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the extended message. Not visible on minimal messages.
@@ -25,6 +26,12 @@ export class TdsMessage {
   /** Minimal Message styling. */
   @Prop() minimal: boolean = false;
 
+  /** Role of the message component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
+  @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+
+  /** Provides an accessible name for the message component when no header is present. This ensures proper screen reader support for dialog/alertdialog roles. */
+  @Prop() tdsAriaLabel: string = '';
+
   getIconName = () => {
     switch (this.variant) {
       case 'information':
@@ -40,7 +47,18 @@ export class TdsMessage {
     }
   };
 
+  private getAriaLabel(): string | undefined {
+    if (this.header) {
+      return undefined;
+    }
+    const variantLabel = `${this.variant} message`;
+    return this.tdsAriaLabel || variantLabel;
+  }
+
   render() {
+    const headerId = this.header ? `tds-message-header-${generateUniqueId()}` : undefined;
+    const contentId = !this.minimal ? `tds-message-content-${generateUniqueId()}` : undefined;
+
     return (
       <Host>
         <div
@@ -50,12 +68,27 @@ export class TdsMessage {
             minimal: this.minimal,
             [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
           }}
+          role={this.tdsAlertDialog}
+          aria-labelledby={headerId}
+          aria-describedby={contentId}
+          aria-label={this.getAriaLabel()}
         >
-          {!this.noIcon && <tds-icon name={this.getIconName()} size="20px"></tds-icon>}
+          {!this.noIcon && (
+            <tds-icon
+              aria-label={`${this.variant}`}
+              svgTitle={`${this.variant}`}
+              name={this.getIconName()}
+              size="20px"
+            ></tds-icon>
+          )}
           <div class={`content`}>
-            {this.header && <div class="header">{this.header}</div>}
+            {this.header && (
+              <div class="header" id={headerId}>
+                {this.header}
+              </div>
+            )}
             {!this.minimal && (
-              <div class="extended-message">
+              <div class="extended-message" id={contentId}>
                 <slot></slot>
               </div>
             )}
