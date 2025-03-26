@@ -78,11 +78,11 @@
   --background-elevation-layer-03: var(--traton-warm-grey-100);
   --background-elevation-top: var(--traton-warm-grey-50);
   --background-elevation-scrim: rgb(0 0 0 / 38%);
-  --background-elevation-inverse-base: var(--traton-warm-grey-1000);
-  --background-elevation-inverse-layer-01: var(--traton-warm-grey-950);
-  --background-elevation-inverse-layer-02: var(--traton-warm-grey-900);
-  --background-elevation-inverse-layer-03: var(--traton-warm-grey-850);
-  --background-elevation-inverse-top: var(--traton-warm-grey-900);
+  --background-elevation-inverse: var(--traton-warm-grey-1000);
+  --background-elevation-layer-01-inverse: var(--traton-warm-grey-950);
+  --background-elevation-layer-02-inverse: var(--traton-warm-grey-900);
+  --background-elevation-layer-03-inverse: var(--traton-warm-grey-850);
+  --background-elevation-top-inverse: var(--traton-warm-grey-900);
 
   /* Background - Elements */
   --background-elements-1000: var(--traton-warm-grey-950);
@@ -219,7 +219,7 @@
   --background-elevation-layer-03: var(--traton-blue-850);
   --background-elevation-top: var(--traton-blue-900);
   --background-elevation-scrim: rgb(0 0 0 / 50%);
-  --background-elevation-inverse-base: var(--traton-blue-50);
+  --background-elevation-inverse: var(--traton-blue-50);
   --background-elevation-inverse-layer-01: var(--traton-blue-100);
   --background-elevation-inverse-layer-02: var(--traton-blue-150);
   --background-elevation-inverse-layer-03: var(--traton-blue-200);
