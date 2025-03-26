@@ -111,7 +111,7 @@ export class TdsTooltip {
 
   render() {
     return (
-      <Host role="tooltip">
+      <Host role="tooltip" aria-label={this.text}>
         <tds-popover-core
           {...this.inheritedAttributes}
           class={{
