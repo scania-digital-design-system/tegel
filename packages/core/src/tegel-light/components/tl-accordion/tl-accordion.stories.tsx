@@ -10,9 +10,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Default', 'Primary', 'Secondary'],
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Default (No class)' },
+        defaultValue: { summary: 'Inherit from parent' },
       },
     },
     iconPosition: {
@@ -70,13 +70,13 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
   const disabledClass = disabled ? 'tl-accordion--disabled' : '';
   const iconPositionClass = iconPosition ? 'tl-accordion__button--icon-start' : '';
   const paddingResetClass = paddingReset ? 'tl-accordion__body--less-padding-right' : '';
-  const hideLastBorderClass = hideLastBorder ? '' : 'tl-accordion__item--bottom-border';
-  const modeVariantClass =
-    modeVariant === 'tds-mode-variant-primary'
-      ? 'tl-accordion--primary'
-      : modeVariant === 'Secondary'
-      ? 'tds-mode-variant-secondary'
-      : '';
+  const hideLastBorderClass = hideLastBorder ? '' : 'tl-accordion__item--has-bottom-border';
+  let modeVariantClass = '';
+  if (modeVariant === 'Primary') {
+    modeVariantClass = 'tds-mode-variant-primary';
+  } else if (modeVariant === 'Secondary') {
+    modeVariantClass = 'tds-mode-variant-secondary';
+  }
 
   return formatHtmlPreview(`
 
@@ -85,7 +85,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
     </script>
 
     <div class="tl-accordion ${modeVariantClass} ${disabledClass}">
-      <div class="tl-accordion__item ${hideLastBorderClass}">
+      <div class="tl-accordion__item">
         <button class="tl-accordion__button ${iconPositionClass}">
           <span>
              First item
@@ -99,7 +99,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
         </div>
       </div>
 
-      <div class="tl-accordion__item ${hideLastBorderClass}">
+      <div class="tl-accordion__item ${hideLastBorderClass} ${hideLastBorderClass}">
         <button class="tl-accordion__button ${iconPositionClass} ${disabledClass}">
           <span>
             Second item
