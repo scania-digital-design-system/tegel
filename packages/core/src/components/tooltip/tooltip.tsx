@@ -85,21 +85,26 @@ export class TdsTooltip {
   }
 
   componentDidLoad() {
-    // Find the trigger element
-    this.triggerElement =
-      this.referenceEl || (this.selector ? document.querySelector(this.selector) : null);
+    this.setTriggerElement();
 
-    // Add aria-label to the trigger element
     if (this.triggerElement && this.text) {
       this.triggerElement.setAttribute('aria-label', this.text);
     }
   }
 
   disconnectedCallback() {
-    // Clean up the aria-label when component is removed
-    if (this.triggerElement && this.text) {
+    if (
+      this.triggerElement &&
+      this.text &&
+      this.triggerElement.getAttribute('aria-label') === this.text
+    ) {
       this.triggerElement.removeAttribute('aria-label');
     }
+  }
+
+  private setTriggerElement() {
+    this.triggerElement =
+      this.referenceEl ?? (this.selector ? document.querySelector(this.selector) : null);
   }
 
   determineTrigger() {
