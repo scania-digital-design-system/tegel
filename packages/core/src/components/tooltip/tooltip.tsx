@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -45,6 +45,15 @@ export class TdsTooltip {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
+  private triggerElement: HTMLElement | null = null;
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.show) {
+      this.show = false;
+    }
+  }
+
   border: string;
 
   popperjsExtraModifiers = [
@@ -75,6 +84,24 @@ export class TdsTooltip {
     this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
   }
 
+  componentDidLoad() {
+    // Find the trigger element
+    this.triggerElement =
+      this.referenceEl || (this.selector ? document.querySelector(this.selector) : null);
+
+    // Add aria-label to the trigger element
+    if (this.triggerElement && this.text) {
+      this.triggerElement.setAttribute('aria-label', this.text);
+    }
+  }
+
+  disconnectedCallback() {
+    // Clean up the aria-label when component is removed
+    if (this.triggerElement && this.text) {
+      this.triggerElement.removeAttribute('aria-label');
+    }
+  }
+
   determineTrigger() {
     if (this.trigger === 'hover') {
       return this.mouseOverTooltip ? 'hover-popover' : 'hover';
@@ -84,7 +111,7 @@ export class TdsTooltip {
 
   render() {
     return (
-      <Host>
+      <Host role="tooltip">
         <tds-popover-core
           {...this.inheritedAttributes}
           class={{
@@ -102,9 +129,11 @@ export class TdsTooltip {
           show={this.show}
           placement={this.placement}
           autoHide={false}
+          // @ts-ignore
           onInternalTdsShow={() => {
             this.show = true;
           }}
+          // @ts-ignore
           onInternalTdsClose={() => {
             this.show = false;
           }}
