@@ -120,16 +120,22 @@
   --background-clickable-danger-disabled: var(--traton-extended-red-50);
   --background-clickable-danger-resting: var(--traton-extended-red-100);
 
-  /* System - Status Colors */
+  /* System - Info */
   --system-info-strong: var(--traton-blue-800);
   --system-info-default: var(--traton-blue-500);
   --system-info-subtle: var(--traton-blue-150);
+
+  /* System - Success */
   --system-success-strong: var(--traton-extended-green-850);
   --system-success-default: var(--traton-extended-green-300);
   --system-success-discrete: var(--traton-extended-green-50);
+
+  /* System - Warning */
   --system-warning-strong: var(--traton-yellow-800);
   --system-warning-default: var(--traton-yellow-300);
   --system-warning-subtle: var(--traton-yellow-100);
+
+  /* System - Danger */
   --system-danger-strong: var(--traton-extended-red-850);
   --system-danger-default: var(--traton-extended-red-300);
   --system-danger-subtle: var(--traton-extended-red-50);
@@ -255,16 +261,22 @@
   --background-clickable-danger-disabled: var(--traton-extended-red-900);
   --background-clickable-danger-resting: var(--traton-extended-red-900);
 
-  /* System - Status Colors */
+  /* System - Info */
   --system-info-strong: var(--traton-blue-100);
   --system-info-default: var(--traton-blue-500);
   --system-info-subtle: var(--traton-blue-850);
+
+  /* System - Success */
   --system-success-strong: var(--traton-extended-green-50);
   --system-success-default: var(--traton-extended-green-300);
   --system-success-discrete: var(--traton-extended-green-850);
+
+  /* System - Warning */
   --system-warning-strong: var(--traton-yellow-100);
   --system-warning-default: var(--traton-yellow-300);
   --system-warning-subtle: var(--traton-yellow-800);
+
+  /* System - Danger */
   --system-danger-strong: var(--traton-extended-red-50);
   --system-danger-default: var(--traton-extended-red-300);
   --system-danger-subtle: var(--traton-extended-red-850);
