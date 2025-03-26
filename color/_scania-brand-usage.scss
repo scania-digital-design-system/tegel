@@ -1,8 +1,8 @@
 /* Tegel Brand Usage Tokens */
 
-/* Light mode tokens (applied to :root and .scania-light) */
+/* Light mode tokens (applied to :root and .scania .tds-mode-light) */
 :root,
-.tds-mode-light {
+.scania .tds-mode-light {
   /* Foreground - Text */
   --foreground-text-strong: var(--scania-neutral-transparent-958);
   --foreground-text-defined: var(--scania-neutral-transparent-700);
@@ -154,8 +154,9 @@
   --system-danger-subtle: var(--scania-extended-red-50);
 }
 
-/* Dark mode tokens */
-.tds-mode-dark {
+/* Dark mode tokens (applied to .tds-mode-dark and .scania .tds-mode-dark) */
+.tds-mode-dark,
+.scania .tds-mode-dark {
   /* Foreground - Text */
   --foreground-text-strong: var(--scania-neutral-transparent-inverse-958);
   --foreground-text-defined: var(--scania-neutral-transparent-inverse-700);

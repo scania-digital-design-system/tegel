@@ -1,8 +1,7 @@
 /* Traton Brand Usage Tokens */
 
-/* Light mode tokens (applied to :root and .traton-light) */
-:root,
-.traton-mode-light {
+/* Light mode tokens (applied to .traton .tds-mode-light) */
+.traton .tds-mode-light {
   /* Foreground - Text */
   --foreground-text-strong: var(--traton-transparent-950);
   --foreground-text-defined: var(--traton-transparent-700);
@@ -136,8 +135,8 @@
   --system-danger-subtle: var(--traton-extended-red-50);
 }
 
-/* Dark mode tokens */
-.traton-mode-dark {
+/* Dark mode tokens (applied to .traton .tds-mode-dark) */
+.traton .tds-mode-dark {
   /* Foreground - Text */
   --foreground-text-strong: var(--traton-transparent-inverse-950);
   --foreground-text-defined: var(--traton-transparent-inverse-700);
