@@ -698,7 +698,7 @@ export class TdsDropdown {
         <div
           role="listbox"
           aria-label={this.tdsAriaLabel}
-          aria-orientation="horizontal"
+          aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
           ref={(element) => {
             this.dropdownList = element;

@@ -208,7 +208,7 @@ export default {
     defaultOption: 'No default',
     animation: 'slide',
     responsive: false,
-    tdsAriaLabel: 'dropdown'
+    tdsAriaLabel: 'A dropdown component'
   },
 };
 
