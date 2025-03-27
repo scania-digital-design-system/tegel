@@ -67,6 +67,11 @@ export const config: Config = {
           dest: 'assets/',
           warn: true,
         },
+        {
+          src: 'global/traton.scss',
+          dest: 'traton.css',
+          warn: true,
+        },
       ],
     },
     angularOutputTarget({
