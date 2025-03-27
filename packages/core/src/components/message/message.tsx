@@ -60,7 +60,12 @@ export class TdsMessage {
     const contentId = !this.minimal ? `tds-message-content-${generateUniqueId()}` : undefined;
 
     return (
-      <Host>
+      <Host
+        role={this.tdsAlertDialog}
+        aria-labelledby={headerId}
+        aria-describedby={contentId}
+        aria-label={this.getAriaLabel()}
+      >
         <div
           class={{
             wrapper: true,
@@ -68,10 +73,6 @@ export class TdsMessage {
             minimal: this.minimal,
             [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
           }}
-          role={this.tdsAlertDialog}
-          aria-labelledby={headerId}
-          aria-describedby={contentId}
-          aria-label={this.getAriaLabel()}
         >
           {!this.noIcon && (
             <tds-icon
