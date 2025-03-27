@@ -86,20 +86,6 @@ export class TdsTooltip {
 
   componentDidLoad() {
     this.setTriggerElement();
-
-    if (this.triggerElement && this.text) {
-      this.triggerElement.setAttribute('aria-label', this.text);
-    }
-  }
-
-  disconnectedCallback() {
-    if (
-      this.triggerElement &&
-      this.text &&
-      this.triggerElement.getAttribute('aria-label') === this.text
-    ) {
-      this.triggerElement.removeAttribute('aria-label');
-    }
   }
 
   private setTriggerElement() {
