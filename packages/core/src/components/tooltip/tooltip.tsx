@@ -45,6 +45,9 @@ export class TdsTooltip {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
+  /** Sets the aria-describedby attribute */
+  @Prop() tdsAriaDescribedby: string;
+
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.show) {
@@ -91,7 +94,7 @@ export class TdsTooltip {
 
   render() {
     return (
-      <Host role="tooltip">
+      <Host role="tooltip" aria-describedby={this.tdsAriaDescribedby} aria-label={this.text}>
         <tds-popover-core
           {...this.inheritedAttributes}
           class={{
