@@ -84,6 +84,8 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
     ${selectedIndex && selectedIndex !== 'None' ? `selected-index="${selectedIndex}"` : ''}
     ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
     left-padding="${leftPadding}"
+    tds-scroll-left-aria-label="Navigate to previous tab"
+    tds-scroll-right-aria-label="Navigate to next tab"
   >
     <tds-inline-tab>
       <button>First tab</button>

@@ -44,6 +44,12 @@ export class TdsCheckbox {
   /** Value for the Checkbox */
   @Prop() value: string;
 
+  /** Value to be used for the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
+  /** Value to be used for the aria-describedby attribute */
+  @Prop() tdsAriaDescribedby: string;
+
   private inputElement: HTMLInputElement;
 
   /** Toggles the checked value of the component. */
@@ -124,6 +130,12 @@ export class TdsCheckbox {
     }
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Checkbox component: tdsAriaLabel prop is missing');
+    }
+  }
+
   render() {
     return (
       <div class="tds-checkbox">
@@ -133,8 +145,8 @@ export class TdsCheckbox {
           indeterminate={this.indeterminate}
           aria-checked={this.checked}
           aria-required={this.required}
-          aria-describedby={this.host.getAttribute('aria-describedby')}
-          aria-labelledby={this.host.getAttribute('aria-labelledby')}
+          aria-label={this.tdsAriaLabel}
+          aria-describedby={this.tdsAriaDescribedby}
           required={this.required}
           type="checkbox"
           name={this.name}
