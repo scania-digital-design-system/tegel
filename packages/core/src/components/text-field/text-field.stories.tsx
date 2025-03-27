@@ -74,7 +74,7 @@ export default {
       },
       if: {
         arg: 'type',
-        eq: 'Number', 
+        eq: 'Number',
       },
     },
     size: {
@@ -189,6 +189,13 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -203,12 +210,13 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
-    min: "0",
-    max: "10",
+    min: '0',
+    max: '10',
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
     disabled: false,
+    tdsAriaLabel: 'A text field component',
   },
 };
 
@@ -231,10 +239,11 @@ const Template = ({
   noMinWidth,
   readonly,
   disabled,
+  tdsAriaLabel,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
-  min = min  ? `min="${min}"` : '';
-  max = max  ? `max="${max}"` : '';
+  const minValue = min ? `min="${min}"` : '';
+  const maxValue = max ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -246,7 +255,7 @@ const Template = ({
     <style>
     /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
-    width: 200px;
+    max-width: 200px;
     height: 150px;
   }
     </style>
@@ -261,12 +270,14 @@ const Template = ({
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}"` : ''}
       ${maxlength}
-      ${min}
-      ${max}
+      ${minValue}
+      ${maxValue}
       ${disabled ? 'disabled' : ''}
       ${readonly ? 'read-only' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
-      placeholder="${placeholderText}" >
+      placeholder="${placeholderText}"
+      tds-aria-label="${tdsAriaLabel}"
+    >
         ${
           prefix || suffix
             ? `
