@@ -255,7 +255,7 @@ const Template = ({
     <style>
     /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
-    ${noMinWidth ? '' : 'width: 200px;'}
+    max-width: 200px;
     height: 150px;
   }
     </style>

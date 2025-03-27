@@ -44,7 +44,7 @@ export class TdsTextField {
   /** Set input in disabled state */
   @Prop() disabled: boolean = false;
 
-  /** Set input in readonly state. Hides the suffix slot if true. When readOnly is set to true, please include a short message informing about that in the tdsAriaLabel prop. */
+  /** Set input in readonly state */
   @Prop() readOnly: boolean = false;
 
   /** Size of the input */
@@ -68,7 +68,7 @@ export class TdsTextField {
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
 
-  /** Value to be used for the aria-label attribute. When readOnly is set to true, please include a short message informing about that in the tdsAriaLabel prop. */
+  /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
   @Prop() tdsAriaLabel: string;
 
   /** Listen to the focus state of the input */
