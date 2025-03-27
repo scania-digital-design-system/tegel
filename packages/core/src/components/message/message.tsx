@@ -30,7 +30,7 @@ export class TdsMessage {
   @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
 
   /** Provides an accessible name for the message component when no header is present. This ensures proper screen reader support for dialog/alertdialog roles. */
-  @Prop() tdsAriaLabel: string = '';
+  @Prop() tdsAriaLabel: string;
 
   getIconName = () => {
     switch (this.variant) {

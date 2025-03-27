@@ -110,7 +110,7 @@ export default {
     minimal: false,
     noIcon: false,
     tdsAlertDialog: 'dialog',
-    tdsAriaLabel: '',
+    tdsAriaLabel: 'A Message component',
   },
 };
 
