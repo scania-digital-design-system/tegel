@@ -45,8 +45,6 @@ export class TdsTooltip {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
-  private triggerElement: HTMLElement | null = null;
-
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.show) {
