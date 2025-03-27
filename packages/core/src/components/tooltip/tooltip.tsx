@@ -82,15 +82,6 @@ export class TdsTooltip {
     this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
   }
 
-  componentDidLoad() {
-    this.setTriggerElement();
-  }
-
-  private setTriggerElement() {
-    this.triggerElement =
-      this.referenceEl ?? (this.selector ? document.querySelector(this.selector) : null);
-  }
-
   determineTrigger() {
     if (this.trigger === 'hover') {
       return this.mouseOverTooltip ? 'hover-popover' : 'hover';
@@ -100,7 +91,7 @@ export class TdsTooltip {
 
   render() {
     return (
-      <Host role="tooltip" aria-label={this.text}>
+      <Host role="tooltip">
         <tds-popover-core
           {...this.inheritedAttributes}
           class={{

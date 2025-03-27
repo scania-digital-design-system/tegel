@@ -70,22 +70,4 @@ test.describe.parallel(componentName, () => {
     // Perform the comparison to verify the tooltip's content
     expect(innerHtml).toEqual(expectedHtmlContent);
   });
-
-  test('tooltip trigger has aria-label attribute for accessibility', async ({ page }) => {
-    // Get the button that triggers the tooltip
-    const button = page.locator('tds-button#button-1');
-
-    // Check if the button has aria-label attribute
-    const ariaLabel = await button.getAttribute('aria-label');
-    expect(ariaLabel).not.toBeNull();
-
-    // Get the tooltip element
-    const tooltip = page.locator('tds-tooltip');
-
-    // Get the tooltip text
-    const tooltipText = await tooltip.getAttribute('text');
-
-    // Verify that aria-label matches the tooltip text
-    expect(ariaLabel).toBe(tooltipText);
-  });
 });
