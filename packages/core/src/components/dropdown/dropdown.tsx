@@ -101,7 +101,7 @@ export class TdsDropdown {
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
-      this.updateDropdownState(normalizedValue);
+      this.updateDropdownStateFromUser(normalizedValue);
     }
   }
 
@@ -134,7 +134,15 @@ export class TdsDropdown {
     return newValue.some((val) => !currentValue.includes(val));
   }
 
-  private updateDropdownState(values: string[]) {
+  private updateDropdownStateInternal(values: string[]) {
+    this.updateDropdownState(values, false);
+  }
+
+  private updateDropdownStateFromUser(values: string[]) {
+    this.updateDropdownState(values, true);
+  }
+
+  private updateDropdownState(values: string[], emitChange: boolean = true) {
     // Validate the values first
     const validValues = this.validateValues(values);
 
@@ -153,8 +161,8 @@ export class TdsDropdown {
     // Update display value
     this.updateDisplayValue();
 
-    // Emit change event
-    this.emitChange();
+    // Emit change event only if value has changed by user
+    if (emitChange) this.emitChange();
 
     // Update value attribute
     this.setValueAttribute();
@@ -213,7 +221,7 @@ export class TdsDropdown {
     } else {
       normalizedValue = [convertToString(value)];
     }
-    this.updateDropdownState(normalizedValue);
+    this.updateDropdownStateFromUser(normalizedValue);
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
       label: element.textContent.trim(),
@@ -222,13 +230,13 @@ export class TdsDropdown {
 
   @Method()
   async reset() {
-    this.updateDropdownState([]);
+    this.updateDropdownStateFromUser([]);
   }
 
   @Method()
   async removeValue(oldValue: string) {
     const newValues = this.selectedOptions.filter((v) => v !== oldValue);
-    this.updateDropdownState(newValues);
+    this.updateDropdownStateFromUser(newValues);
   }
 
   /** Method that forces focus on the input element. */
@@ -371,7 +379,7 @@ export class TdsDropdown {
     // First handle the value prop if it exists
     if (this.value !== null && this.value !== undefined) {
       const normalizedValue = this.normalizeValue(this.value);
-      this.updateDropdownState(normalizedValue);
+      this.updateDropdownStateInternal(normalizedValue);
       return; // Exit early if we handled the value prop
     }
 
@@ -381,7 +389,7 @@ export class TdsDropdown {
       const initialValue = this.multiselect
         ? defaultValueStr.split(',').map(convertToString)
         : [convertToString(this.defaultValue)];
-      this.updateDropdownState(initialValue);
+      this.updateDropdownStateInternal(initialValue);
     }
   }
 
@@ -402,7 +410,7 @@ export class TdsDropdown {
         ? this.internalDefaultValue.split(',')
         : [this.internalDefaultValue];
 
-      this.updateDropdownState(defaultValues);
+      this.updateDropdownStateInternal(defaultValues);
     }
   };
 
@@ -536,9 +544,9 @@ export class TdsDropdown {
   @Method()
   async appendValue(value: string) {
     if (this.multiselect) {
-      this.updateDropdownState([...this.selectedOptions, value]);
+      this.updateDropdownStateFromUser([...this.selectedOptions, value]);
     } else {
-      this.updateDropdownState([value]);
+      this.updateDropdownStateFromUser([value]);
     }
   }
 
