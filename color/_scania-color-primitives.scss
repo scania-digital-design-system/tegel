@@ -1,0 +1,86 @@
+/* Tegel Color Primitives palette */
+
+:root {
+  /* Neutral Solid */
+  --scania-neutral-solid-1000: rgba(0, 0, 0, 1);
+  --scania-neutral-solid-958: rgba(14, 16, 19, 1);
+  --scania-neutral-solid-928: rgba(21, 24, 29, 1);
+  --scania-neutral-solid-900: rgba(28, 34, 43, 1);
+  --scania-neutral-solid-868: rgba(36, 44, 55, 1);
+  --scania-neutral-solid-846: rgba(45, 54, 67, 1);
+  --scania-neutral-solid-800: rgba(58, 69, 84, 1);
+  --scania-neutral-solid-700: rgba(83, 95, 112, 1);
+  --scania-neutral-solid-600: rgba(117, 131, 152, 1);
+  --scania-neutral-solid-500: rgba(147, 161, 183, 1);
+  --scania-neutral-solid-400: rgba(181, 189, 204, 1);
+  --scania-neutral-solid-300: rgba(206, 210, 220, 1);
+  --scania-neutral-solid-200: rgba(222, 224, 230, 1);
+  --scania-neutral-solid-100: rgba(235, 236, 238, 1);
+  --scania-neutral-solid-50: rgba(243, 244, 247, 1);
+  --scania-neutral-solid-00: rgba(255, 255, 255, 1);
+
+  /* Neutral Transparent */
+  --scania-neutral-transparent-958: var(--scania-neutral-solid-958);
+  --scania-neutral-transparent-826: rgba(28, 39, 57, 0.86);
+  --scania-neutral-transparent-700: rgba(6, 23, 49, 0.69);
+  --scania-neutral-transparent-600: rgba(23, 50, 87, 0.6);
+  --scania-neutral-transparent-500: rgba(41, 68, 110, 0.5);
+  --scania-neutral-transparent-400: rgba(41, 65, 110, 0.35);
+  --scania-neutral-transparent-200: rgba(51, 64, 102, 0.17);
+
+  /* Neutral Transparent Inverse */
+  --scania-neutral-transparent-inverse-958: var(--scania-neutral-solid-50);
+  --scania-neutral-transparent-inverse-700: rgba(226, 235, 253, 0.8);
+  --scania-neutral-transparent-inverse-600: rgba(195, 213, 242, 0.75);
+  --scania-neutral-transparent-inverse-500: rgba(194, 218, 252, 0.6);
+  --scania-neutral-transparent-inverse-400: rgba(184, 212, 250, 0.45);
+  --scania-neutral-transparent-inverse-200: rgba(172, 204, 246, 0.34);
+
+  /* Blue Solid */
+  --scania-blue-900: rgba(0, 21, 51, 1);
+  --scania-blue-800: rgba(4, 30, 66, 1);
+  --scania-blue-700: rgba(15, 50, 99, 1);
+  --scania-blue-600: rgba(22, 65, 127, 1);
+  --scania-blue-500: rgba(32, 88, 168, 1);
+  --scania-blue-400: rgba(43, 112, 211, 1);
+  --scania-blue-300: rgba(74, 137, 243, 1);
+  --scania-blue-200: rgba(135, 175, 232, 1);
+  --scania-blue-100: rgba(186, 205, 232, 1);
+  --scania-blue-50: rgba(216, 221, 229, 1);
+
+  /* Extended Red Solid */
+  --scania-extended-red-900: rgba(53, 0, 4, 1);
+  --scania-extended-red-800: rgba(72, 0, 8, 1);
+  --scania-extended-red-700: rgba(108, 0, 17, 1);
+  --scania-extended-red-600: rgba(138, 0, 25, 1);
+  --scania-extended-red-500: rgba(182, 0, 36, 1);
+  --scania-extended-red-400: rgba(227, 3, 48, 1);
+  --scania-extended-red-300: rgba(255, 68, 79, 1);
+  --scania-extended-red-200: rgba(255, 141, 139, 1);
+  --scania-extended-red-100: rgba(255, 211, 210, 1);
+  --scania-extended-red-50: rgba(255, 223, 227, 1);
+
+  /* Extended Green Solid */
+  --scania-extended-green-900: rgba(0, 26, 18, 1);
+  --scania-extended-green-800: rgba(0, 37, 27, 1);
+  --scania-extended-green-700: rgba(0, 58, 45, 1);
+  --scania-extended-green-600: rgba(0, 76, 59, 1);
+  --scania-extended-green-500: rgba(0, 102, 80, 1);
+  --scania-extended-green-400: rgba(0, 129, 102, 1);
+  --scania-extended-green-300: rgba(0, 158, 126, 1);
+  --scania-extended-green-200: rgba(65, 194, 159, 1);
+  --scania-extended-green-100: rgba(164, 215, 196, 1);
+  --scania-extended-green-50: rgba(209, 224, 217, 1);
+
+  /* Extended Yellow Solid */
+  --scania-extended-yellow-900: rgba(29, 21, 0, 1);
+  --scania-extended-yellow-800: rgba(40, 30, 0, 1);
+  --scania-extended-yellow-700: rgba(63, 49, 0, 1);
+  --scania-extended-yellow-600: rgba(82, 64, 0, 1);
+  --scania-extended-yellow-500: rgba(110, 87, 0, 1);
+  --scania-extended-yellow-400: rgba(139, 110, 0, 1);
+  --scania-extended-yellow-300: rgba(169, 135, 0, 1);
+  --scania-extended-yellow-200: rgba(211, 169, 0, 1);
+  --scania-extended-yellow-100: rgba(241, 194, 27, 1);
+  --scania-extended-yellow-50: rgba(244, 219, 153, 1);
+}

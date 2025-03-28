@@ -164,9 +164,9 @@ const ComponentTooltip = ({
       trigger="${trigger.toLowerCase()}">
       ${slot}
     </tds-tooltip>
-
+    
     <!-- Demo button for presentation purposes -->
-    <tds-button size= 'sm' id="my-tooltip-button" text='Hover me'></tds-button>
+    <tds-button tds-aria-label="${text}" size= 'sm' id="my-tooltip-button" text='Hover me'></tds-button>
    </div>
   `,
   );

@@ -41,6 +41,9 @@ export class TdsChip {
   /** Sets the Chip in a disabled state */
   @Prop() disabled: boolean = false;
 
+  /** Value to be used for the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked).
    * Valid only for type checkbox and radio.
    * If no ID is specified, a random one will be generated.
@@ -67,7 +70,7 @@ export class TdsChip {
   internalRadioOnChange: EventEmitter<{
     chipId: string;
     checked: boolean;
-    groupName: string
+    groupName: string;
   }>;
 
   private handleChange = () => {
@@ -77,7 +80,11 @@ export class TdsChip {
         this.checked = !this.checked;
       } else if (this.type === 'radio') {
         this.checked = true;
-        this.internalRadioOnChange.emit({ chipId: this.chipId, checked: this.checked, groupName: this.name })
+        this.internalRadioOnChange.emit({
+          chipId: this.chipId,
+          checked: this.checked,
+          groupName: this.name,
+        });
       } else {
         console.error('Unsupported type in Chip component!');
       }
@@ -91,14 +98,16 @@ export class TdsChip {
   };
 
   @Listen('internalRadioOnChange', { target: 'body' })
-  handleInternaRadioChange(event: CustomEvent<{ chipId: string; checked: boolean; groupName: string }>) {
-    const { chipId, checked, groupName } = event.detail
+  handleInternaRadioChange(
+    event: CustomEvent<{ chipId: string; checked: boolean; groupName: string }>,
+  ) {
+    const { chipId, checked, groupName } = event.detail;
 
     // if event comes from different button within the group
-    if(chipId !== this.chipId && groupName === this.name) {
+    if (chipId !== this.chipId && groupName === this.name) {
       //  and both incoming and this is checked
-      if(this.checked && checked) {
-        this.checked = false
+      if (this.checked && checked) {
+        this.checked = false;
       }
     }
   }
@@ -146,6 +155,12 @@ export class TdsChip {
     };
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Chip component: tdsAriaLabel prop is missing');
+    }
+  }
+
   render() {
     const inputAttributes = this.renderInputAttributes();
     const hasPrefixSlot = hasSlot('prefix', this.host);
@@ -165,7 +180,14 @@ export class TdsChip {
       <Host>
         <div class="component">
           <div class={chipClasses}>
-            <input type={this.type} id={this.chipId} {...inputAttributes}></input>
+            <input
+              type={this.type}
+              id={this.chipId}
+              aria-checked={this.type === 'button' ? undefined : String(this.checked)}
+              role={this.type}
+              aria-label={this.tdsAriaLabel}
+              {...inputAttributes}
+            ></input>
             <label onClick={(event) => event.stopPropagation()} htmlFor={this.chipId}>
               {hasPrefixSlot && <slot name="prefix" />}
               {hasLabelSlot && <slot name="label" />}

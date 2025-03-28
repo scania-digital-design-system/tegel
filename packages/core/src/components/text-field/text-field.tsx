@@ -44,7 +44,7 @@ export class TdsTextField {
   /** Set input in disabled state */
   @Prop() disabled: boolean = false;
 
-  /** Set input in readonly state. Hides the suffix slot if true. */
+  /** Set input in readonly state */
   @Prop() readOnly: boolean = false;
 
   /** Hides the read-only icon in the Text Field. Requires Read Only to be enabled. */
@@ -70,6 +70,9 @@ export class TdsTextField {
 
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
+
+  /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
+  @Prop() tdsAriaLabel: string;
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
@@ -144,9 +147,16 @@ export class TdsTextField {
     }
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Text Field component: prop tdsAriaLabel is missing');
+    }
+  }
+
   render() {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
+
     return (
       <div
         class={{
@@ -168,7 +178,7 @@ export class TdsTextField {
       >
         {this.labelPosition === 'outside' && (
           <div class="text-field-label-outside">
-            <div>{this.label}</div>
+            <label htmlFor="text-field-input-element">{this.label}</label>
           </div>
         )}
         <div onClick={() => this.textInput.focus()} class="text-field-container">
@@ -218,12 +228,19 @@ export class TdsTextField {
                   this.handleBlur(event);
                 }
               }}
+              aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
+              aria-describedby="text-field-helper-element"
+              aria-readonly={this.readOnly}
+              id="text-field-input-element"
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
-              <label class="text-field-label-inside">{this.label}</label>
+              <label class="text-field-label-inside" htmlFor="text-field-input-element">
+                {this.label}
+              </label>
             )}
           </div>
+
           <div class="text-field-bar"></div>
 
           {usesSuffixSlot && (
@@ -248,6 +265,7 @@ export class TdsTextField {
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
+      <div aria-live="assertive">
         {(this.helper || this.maxLength > 0) && (
           <div class="text-field-helper">
             {this.state === 'error' && (
@@ -268,18 +286,26 @@ export class TdsTextField {
                 {this.value === null ? 0 : this.value?.length}
                 <span
                   class={{
-                    'text-field-textcounter-divider': true,
+                    'text-field-textcounter': true,
                     'text-field-textcounter-disabled': this.disabled,
                   }}
                 >
-                  {' '}
-                  /{' '}
-                </span>
-                {this.maxLength}
-              </div>
-            )}
-          </div>
-        )}
+                  {this.value === null ? 0 : this.value?.length}
+                  <span
+                    class={{
+                      'text-field-textcounter-divider': true,
+                      'text-field-textcounter-disabled': this.disabled,
+                    }}
+                  >
+                    {' '}
+                    /{' '}
+                  </span>
+                  {this.maxLength}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     );
   }

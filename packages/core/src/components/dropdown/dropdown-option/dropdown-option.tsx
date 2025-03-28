@@ -8,8 +8,10 @@ import {
   Event,
   EventEmitter,
   Method,
+  Watch,
 } from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
+import { convertToString } from '../../../utils/convertToString';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the option label text.
@@ -24,23 +26,26 @@ import { TdsCheckboxCustomEvent } from '../../../components';
 export class TdsDropdownOption {
   @Element() host: HTMLElement;
 
-  /** Value for the Dropdown option. */
-  @Prop() value: string;
+  /** Value of the dropdown option */
+  @Prop() value: string | number;
+
+  /** Internal value storage that's always a string */
+  @State() internalValue: string;
 
   /** Sets the option as disabled. */
   @Prop() disabled: boolean = false;
 
   @State() selected: boolean = false;
 
-  @State() multiselect: boolean;
+  @State() multiselect: boolean = false;
 
   @State() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
 
-  private parentElement: HTMLTdsDropdownElement;
+  private parentElement: HTMLTdsDropdownElement | null = null;
 
   // @ts-ignore
   // eslint-disable-next-line no-unused-vars,
-  private label: string;
+  private label: string = '';
 
   /** Method to select/deselect an option. */
   @Method()
@@ -78,23 +83,38 @@ export class TdsDropdownOption {
   })
   tdsBlur: EventEmitter<FocusEvent>;
 
+  @Watch('value')
+  valueWatcher(newValue: string | number) {
+    this.internalValue = convertToString(newValue);
+  }
+
+  componentWillLoad() {
+    this.internalValue = convertToString(this.value);
+  }
+
   componentWillRender = () => {
+    if (!this.host.parentElement) {
+      return;
+    }
     this.parentElement =
-      this.host.parentElement.tagName === 'TDS-DROPDOWN'
+      this.host.parentElement?.tagName === 'TDS-DROPDOWN'
         ? (this.host.parentElement as HTMLTdsDropdownElement)
         : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
-    this.multiselect = this.parentElement.multiselect;
-    this.size = this.parentElement.size;
-    this.label = this.host.textContent.trim();
+
+    if (this.parentElement) {
+      this.multiselect = this.parentElement.multiselect ?? false;
+      this.size = this.parentElement.size || 'lg';
+    }
+    this.label = this.host.textContent?.trim() || '';
   };
 
   handleSingleSelect = () => {
     if (!this.disabled) {
       this.selected = true;
-      this.parentElement.appendValue(this.value);
+      this.parentElement.appendValue(this.internalValue);
       this.parentElement.close();
       this.tdsSelect.emit({
-        value: this.value,
+        value: this.internalValue,
         selected: this.selected,
       });
     }
@@ -105,17 +125,17 @@ export class TdsDropdownOption {
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
-        this.parentElement.appendValue(this.value);
+        this.parentElement.appendValue(this.internalValue);
         this.selected = true;
         this.tdsSelect.emit({
-          value: this.value,
+          value: this.internalValue,
           selected: this.selected,
         });
       } else {
-        this.parentElement.removeValue(this.value);
+        this.parentElement.removeValue(this.internalValue);
         this.selected = false;
         this.tdsSelect.emit({
-          value: this.value,
+          value: this.internalValue,
           selected: this.selected,
         });
       }
@@ -133,7 +153,7 @@ export class TdsDropdownOption {
 
   render() {
     return (
-      <Host role="option" aria-disabled={this.disabled} aria-selected={this.selected}>
+      <Host>
         <div
           class={`dropdown-option 
           ${this.size}
@@ -167,6 +187,9 @@ export class TdsDropdownOption {
             </div>
           ) : (
             <button
+              role="option"
+              aria-disabled={this.disabled}
+              aria-selected={this.selected}
               onClick={() => {
                 this.handleSingleSelect();
               }}

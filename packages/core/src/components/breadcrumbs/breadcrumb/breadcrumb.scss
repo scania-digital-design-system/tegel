@@ -1,54 +1,56 @@
 @import '../../../mixins/focus-state';
 
-[role='listitem'] {
-  ::slotted(*) {
-    color: var(--tds-breadcrumb-color);
-    text-decoration: none;
-  }
-
-  &:hover {
+:host([role='listitem']) {
+  div {
     ::slotted(*) {
-      color: var(--tds-breadcrumb-color-hover);
-      text-decoration: underline;
-    }
-  }
-
-  ::slotted(*:focus-visible) {
-    @include tds-focus-state;
-
-    // Overrides the offset of the tds-focus-state to align with design.
-    outline-offset: -0;
-  }
-
-  &.current,
-  [aria-current='page'] {
-    ::slotted(*) {
-      pointer-events: none;
-      cursor: default;
-      color: var(--tds-breadcrumb-color-current);
+      color: var(--tds-breadcrumb-color);
+      text-decoration: none;
     }
 
     &:hover {
       ::slotted(*) {
-        text-decoration: none;
-        cursor: not-allowed;
+        color: var(--tds-breadcrumb-color-hover);
+        text-decoration: underline;
       }
+    }
+
+    ::slotted(*:focus-visible) {
+      @include tds-focus-state;
+
+      // Overrides the offset of the tds-focus-state to align with design.
+      outline-offset: -0;
+    }
+
+    &.current,
+    [aria-current='page'] {
+      ::slotted(*) {
+        pointer-events: none;
+        cursor: default;
+        color: var(--tds-breadcrumb-color-current);
+      }
+
+      &:hover {
+        ::slotted(*) {
+          text-decoration: none;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    &::after {
+      content: '\203A';
+      color: var(--tds-breadcrumb-separator-color);
+      margin-right: 4px;
+      margin-left: 4px;
+      display: inline-block;
+      width: 4px;
+      height: 8px;
     }
   }
 
-  &::after {
-    content: '\203A';
-    color: var(--tds-breadcrumb-separator-color);
-    margin-right: 4px;
-    margin-left: 4px;
-    display: inline-block;
-    width: 4px;
-    height: 8px;
-  }
-}
-
-.current {
-  &::after {
-    display: none;
+  .current {
+    &::after {
+      display: none;
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
 import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
@@ -45,6 +45,16 @@ export class TdsTooltip {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
+  /** Sets the aria-describedby attribute */
+  @Prop() tdsAriaDescribedby: string;
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.show) {
+      this.show = false;
+    }
+  }
+
   border: string;
 
   popperjsExtraModifiers = [
@@ -84,7 +94,7 @@ export class TdsTooltip {
 
   render() {
     return (
-      <Host>
+      <Host role="tooltip" aria-describedby={this.tdsAriaDescribedby} aria-label={this.text}>
         <tds-popover-core
           {...this.inheritedAttributes}
           class={{
@@ -102,9 +112,11 @@ export class TdsTooltip {
           show={this.show}
           placement={this.placement}
           autoHide={false}
+          // @ts-ignore
           onInternalTdsShow={() => {
             this.show = true;
           }}
+          // @ts-ignore
           onInternalTdsClose={() => {
             this.show = false;
           }}

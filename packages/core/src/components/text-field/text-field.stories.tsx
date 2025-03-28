@@ -199,6 +199,13 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -220,6 +227,7 @@ export default {
     readonly: false,
     hideReadonlyIcon: false,
     disabled: false,
+    tdsAriaLabel: 'A text field component',
   },
 };
 
@@ -243,10 +251,11 @@ const Template = ({
   readonly,
   hideReadonlyIcon,
   disabled,
+  tdsAriaLabel,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
-  const minAttr = min != null ? `min="${min}"` : '';
-  const maxAttr = max ? `max="${max}"` : '';
+  const minAttr = min !== null ? `min="${min}"` : '';
+  const maxAttr = max !== null ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -258,7 +267,7 @@ const Template = ({
     <style>
     /* demo-wrapper is for demonstration purposes only*/
   .demo-wrapper {
-    width: 200px;
+    max-width: 200px;
     height: 150px;
   }
     </style>
@@ -279,7 +288,9 @@ const Template = ({
       ${readonly ? 'read-only' : ''}
       ${hideReadonlyIcon ? 'hide-read-only-icon' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
-      placeholder="${placeholderText}" >
+      placeholder="${placeholderText}"
+      tds-aria-label="${tdsAriaLabel}"
+    >
         ${
           prefix || suffix
             ? `

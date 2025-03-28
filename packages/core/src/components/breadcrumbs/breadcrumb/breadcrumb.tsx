@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For a native <code>&lt;a></code> element.
@@ -14,9 +14,14 @@ export class TdsBreadcrumb {
 
   render() {
     return (
-      <div role="listitem" class={`${this.current ? 'current' : ''}`}>
-        <slot />
-      </div>
+      <Host role="listitem">
+        <div
+          class={{ current: this.current }}
+          {...(this.current ? { 'aria-current': 'page' } : {})}
+        >
+          <slot />
+        </div>
+      </Host>
     );
   }
 }

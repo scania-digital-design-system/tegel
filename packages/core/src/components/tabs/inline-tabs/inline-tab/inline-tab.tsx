@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, Method, State } from '@stencil/core';
+import { Component, Host, h, Prop, Method, State, Element } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the tab link or button.
@@ -9,6 +9,8 @@ import { Component, Host, h, Prop, Method, State } from '@stencil/core';
   shadow: true,
 })
 export class TdsInlineTab {
+  @Element() host: HTMLElement;
+
   /** Disables the Tab. */
   @Prop() disabled: boolean = false;
 
@@ -20,9 +22,31 @@ export class TdsInlineTab {
     this.selected = selected;
   }
 
+  connectedCallback() {
+    const elements = this.host.querySelectorAll('button, a');
+    for (let index = 0; index < elements.length; index++) {
+      const element = elements[index];
+      if (!element.getAttribute('aria-controls')) {
+        console.warn(
+          'Tegel inline-tab component: Interactive elements should have aria-controls attribute to link the tab to its corresponding panel',
+        );
+      }
+      if (element.getAttribute('role') !== 'tab') {
+        console.warn(
+          'Tegel inline-tab component: Interactive elements should have attribute role="tab"',
+        );
+      }
+      if (this.disabled) {
+        element.setAttribute('aria-disabled', 'true');
+      } else {
+        element.removeAttribute('aria-disabled');
+      }
+    }
+  }
+
   render() {
     return (
-      <Host role="listitem">
+      <Host aria-selected={this.selected}>
         <div
           class={{
             'inline-tab-item': true,
