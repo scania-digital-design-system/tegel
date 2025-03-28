@@ -240,14 +240,18 @@ const PaginationTemplate = ({
   </tds-table>
   <!-- Note: Code below is just for demo purposes -->
   <div class="tds-u-mt1" style="width: 500px; background-color: lightblue; padding: 16px;">
-  <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
+    <p class="tds-u-mt0">Note: This box works only in "Canvas" tab.</p>
     <h5 class="tds-u-mt0 tds-u-mb0">Event test box</h5>
+
     <h6 class="tds-u-mt1 tds-u-mb0">Event name:</h6>
+    <label for="event-name-textarea" class="sr-only">Event Name</label>
     <textarea id="event-name-textarea" rows="1" cols="50" readonly></textarea>
+
     <h6 class="tds-u-mt0 tds-u-mb0">Events value (aka detail)</h6>
-    <br>
+    <label for="event-value-textarea" class="sr-only">Event Value</label>
     <textarea id="event-value-textarea" rows="4" cols="50" readonly></textarea>
   </div>
+
   
 
   <script>

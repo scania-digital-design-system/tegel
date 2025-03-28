@@ -33,6 +33,9 @@ export class TdsTableToolbar {
   /** Enables preview of searchbar */
   @Prop({ reflect: true }) filter: boolean = false;
 
+  /** Aria label for the search input, providing an accessible description */
+  @Prop() tdsSearchAriaLabel: string = '';
+
   @State() verticalDividers: boolean = false;
 
   @State() compactDesign: boolean = false;
@@ -79,6 +82,10 @@ export class TdsTableToolbar {
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
     this.tableId = this.tableEl.tableId;
+
+    if (!this.tdsSearchAriaLabel) {
+      console.warn('tds-table-toolbar: tdsSearchAriaLabel is highly recommended for accessibility');
+    }
   }
 
   componentWillLoad() {
@@ -120,9 +127,12 @@ export class TdsTableToolbar {
           'toolbar__horizontal-scroll': !!this.horizontalScrollWidth,
         }}
         style={this.getStyles()}
+        aria-labelledby="table-toolbar-title"
       >
         <div class="tds-table__upper-bar-flex">
-          <caption class="tds-table__title">{this.tableTitle}</caption>
+          <caption id="table-toolbar-title" class="tds-table__title">
+            {this.tableTitle}
+          </caption>
           <div class="tds-table__actionbar">
             {this.filter && (
               <div class="tds-table__searchbar">
@@ -130,6 +140,7 @@ export class TdsTableToolbar {
                   class="tds-table__searchbar-input"
                   type="text"
                   onKeyUp={(event) => this.handleSearch(event)}
+                  aria-label={this.tdsSearchAriaLabel}
                 />
                 <span class="tds-table__searchbar-icon">
                   <tds-icon name="search" size="20px"></tds-icon>

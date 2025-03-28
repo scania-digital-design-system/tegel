@@ -94,7 +94,13 @@ export class TdsTableHeaderInputWrapper {
       >
         {this.renderSlot ? <slot onSlotchange={() => this.handleSlotChange()} /> : null}
         {this.showIcon ? (
-          <tds-icon class="search-icon" slot="icon" size="16px" name="search"></tds-icon>
+          <tds-icon
+            svgTitle="search"
+            class="search-icon"
+            slot="icon"
+            size="16px"
+            name="search"
+          ></tds-icon>
         ) : null}
       </Host>
     );
