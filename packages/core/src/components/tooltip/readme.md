@@ -101,6 +101,10 @@ Example:
 
 ## Dependencies
 
+### Used by
+
+ - [tds-textarea](../textarea)
+
 ### Depends on
 
 - [tds-popover-core](../popover-core)
@@ -109,6 +113,7 @@ Example:
 ```mermaid
 graph TD;
   tds-tooltip --> tds-popover-core
+  tds-textarea --> tds-tooltip
   style tds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

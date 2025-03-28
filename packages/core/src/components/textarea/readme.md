@@ -7,23 +7,24 @@
 
 ## Properties
 
-| Property        | Attribute        | Description                             | Type                                  | Default      |
-| --------------- | ---------------- | --------------------------------------- | ------------------------------------- | ------------ |
-| `autofocus`     | `autofocus`      | Control of autofocus                    | `boolean`                             | `false`      |
-| `cols`          | `cols`           | Textarea cols attribute                 | `number`                              | `undefined`  |
-| `disabled`      | `disabled`       | Set input in disabled state             | `boolean`                             | `false`      |
-| `helper`        | `helper`         | Helper text                             | `string`                              | `undefined`  |
-| `label`         | `label`          | Label text                              | `string`                              | `''`         |
-| `labelPosition` | `label-position` | Position of the label for the Textarea. | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
-| `maxLength`     | `max-length`     | Max length of input                     | `number`                              | `undefined`  |
-| `modeVariant`   | `mode-variant`   | Mode variant of the Textarea            | `"primary" \| "secondary"`            | `null`       |
-| `name`          | `name`           | Name attribute                          | `string`                              | `''`         |
-| `noMinWidth`    | `no-min-width`   | Unset minimum width of 208px.           | `boolean`                             | `false`      |
-| `placeholder`   | `placeholder`    | Placeholder text                        | `string`                              | `''`         |
-| `readOnly`      | `read-only`      | Set input in readonly state             | `boolean`                             | `false`      |
-| `rows`          | `rows`           | Textarea rows attribute                 | `number`                              | `undefined`  |
-| `state`         | `state`          | Error state of input                    | `"default" \| "error" \| "success"`   | `'default'`  |
-| `value`         | `value`          | Value of the input text                 | `string`                              | `''`         |
+| Property           | Attribute             | Description                             | Type                                  | Default      |
+| ------------------ | --------------------- | --------------------------------------- | ------------------------------------- | ------------ |
+| `autofocus`        | `autofocus`           | Control of autofocus                    | `boolean`                             | `false`      |
+| `cols`             | `cols`                | Textarea cols attribute                 | `number`                              | `undefined`  |
+| `disabled`         | `disabled`            | Set input in disabled state             | `boolean`                             | `false`      |
+| `helper`           | `helper`              | Helper text                             | `string`                              | `undefined`  |
+| `hideReadOnlyIcon` | `hide-read-only-icon` | Hide the readonly icon                  | `boolean`                             | `false`      |
+| `label`            | `label`               | Label text                              | `string`                              | `''`         |
+| `labelPosition`    | `label-position`      | Position of the label for the Textarea. | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
+| `maxLength`        | `max-length`          | Max length of input                     | `number`                              | `undefined`  |
+| `modeVariant`      | `mode-variant`        | Mode variant of the Textarea            | `"primary" \| "secondary"`            | `null`       |
+| `name`             | `name`                | Name attribute                          | `string`                              | `''`         |
+| `noMinWidth`       | `no-min-width`        | Unset minimum width of 208px.           | `boolean`                             | `false`      |
+| `placeholder`      | `placeholder`         | Placeholder text                        | `string`                              | `''`         |
+| `readOnly`         | `read-only`           | Set input in readonly state             | `boolean`                             | `false`      |
+| `rows`             | `rows`                | Textarea rows attribute                 | `number`                              | `undefined`  |
+| `state`            | `state`               | Error state of input                    | `"default" \| "error" \| "success"`   | `'default'`  |
+| `value`            | `value`               | Value of the input text                 | `string`                              | `''`         |
 
 
 ## Events
@@ -40,12 +41,15 @@
 
 ### Depends on
 
+- [tds-tooltip](../tooltip)
 - [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  tds-textarea --> tds-tooltip
   tds-textarea --> tds-icon
+  tds-tooltip --> tds-popover-core
   style tds-textarea fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
