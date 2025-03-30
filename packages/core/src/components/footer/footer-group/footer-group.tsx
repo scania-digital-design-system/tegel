@@ -33,10 +33,14 @@ export class TdsFooterGroup {
 
   render() {
     return (
-      <Host>
-        {this.titleText && this.topPartGroup && (
-          <div class="footer-top-title">{this.titleText}</div>
-        )}
+      <Host
+      // aria-expanded={this.open}
+      >
+        {this.titleText && this.topPartGroup && <h4 class="footer-top-title">{this.titleText}</h4>}
+
+        {/* <div>
+              <h1>h1</h1> <h2>h2</h2> <h3>h3</h3> <h4>h4</h4> <h5>h5</h5> <h6>h6</h6>
+            </div> */}
 
         {this.titleText && this.topPartGroup && (
           <button
@@ -46,17 +50,20 @@ export class TdsFooterGroup {
             class={`footer-top-title-button  ${this.open ? 'expanded' : 'closed'}`}
           >
             {this.titleText}
-            <tds-icon name="chevron_down" size="20px"></tds-icon>
+            <tds-icon name="chevron_down" size="20px" aria-hidden="true"></tds-icon>
           </button>
         )}
-        <div
-          role="list"
-          class={`${this.slotPosition ? this.slotPosition : ''}
+
+        <nav>
+          <ul
+            // role="list"
+            class={`${this.slotPosition ? this.slotPosition : ''}
             ${this.topPartGroup ? 'top-part-child' : ''}
             ${this.open ? 'expanded' : 'closed'}`}
-        >
-          <slot></slot>
-        </div>
+          >
+            <slot></slot>
+          </ul>
+        </nav>
       </Host>
     );
   }

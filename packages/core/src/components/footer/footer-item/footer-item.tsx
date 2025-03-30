@@ -19,9 +19,12 @@ export class TdsFooterItem {
 
   render() {
     return (
-      <div role="listitem" class={`${this.parentIsTopPart ? 'top-part-child' : ''}`}>
+      <li
+        // role="listitem"
+        class={`${this.parentIsTopPart ? 'top-part-child' : ''}`}
+      >
         <slot></slot>
-      </div>
+      </li>
     );
   }
 }
