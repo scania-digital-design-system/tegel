@@ -1,6 +1,6 @@
 @import '../../../mixins/focus-state';
 
-[role='listitem'] {
+:host([role='listitem']) div {
   ::slotted(a),
   ::slotted(button) {
     font: var(--tds-headline-07);
@@ -36,7 +36,7 @@
 }
 
 @media all and (max-width: 992px) {
-  [role='listitem'].top-part-child {
+  :host([role='listitem']) div.top-part-child {
     border-bottom: 1px solid var(--tds-footer-top-divider);
 
     ::slotted(a),
