@@ -101,10 +101,7 @@ export class TdsTextField {
 
   // Data input event in value prop
   handleInput(event: InputEvent): void {
-    handleInput(event: InputEvent): void {
     this.value = (event.target as HTMLInputElement).value;
-        this.tdsInput.emit(event);
-  }
     this.tdsInput.emit(event);
   }
 
@@ -265,38 +262,30 @@ export class TdsTextField {
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
-        {(this.helper || this.maxLength > 0) && (
-          <div class="text-field-helper">
-            {this.state === 'error' && (
-              <div class="text-field-helper-error-state">
-                <tds-icon name="error" size="16px" />
-                {this.helper}
-              </div>
-            )}
-            {this.state !== 'error' && this.helper}
+        <div aria-live="assertive">
+          {(this.helper || this.maxLength > 0) && (
+            <div class="text-field-helper">
+              {this.state === 'error' && (
+                <div class="text-field-helper-error-state">
+                  {!this.readOnly && <tds-icon name="error" size="16px" />}
+                  {this.helper}
+                </div>
+              )}
+              {this.state !== 'error' && this.helper}
 
-            {this.maxLength > 0 && (
-              <div
-                class={{
-                  'text-field-textcounter': true,
-                  'text-field-textcounter-disabled': this.disabled,
-                }}
-              >
-                {this.value === null ? 0 : this.value?.length}
+              {!this.readOnly && this.maxLength > 0 && (
                 <span
                   class={{
                     'text-field-textcounter-divider': true,
                     'text-field-textcounter-disabled': this.disabled,
                   }}
                 >
-                  {' '}
-                  /{' '}
+                  {this.value === null ? 0 : this.value?.length} / {this.maxLength}
                 </span>
-                {this.maxLength}
-              </div>
-            )}
-          </div>
-        )}
+              )}
+            </div>
+          )}
+        </div>
       </div>
     );
   }
