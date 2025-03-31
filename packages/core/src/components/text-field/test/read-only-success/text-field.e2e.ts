@@ -46,7 +46,7 @@ test.describe.parallel(componentName, () => {
       getComputedStyle(element).getPropertyValue('border-bottom-color'),
     );
 
-    expect(borderBottomColor).toBe('rgb(13, 15, 19)');
+    expect(borderBottomColor).toBe('#b0b7c4');
   });
 
   test('should have read-only attribute', async ({ page }) => {
