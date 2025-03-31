@@ -9,15 +9,23 @@ import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 export class TdsSideMenuCloseButton {
   @Element() host: HTMLElement;
 
+  private static handleClick() {
+    const hamburgerButton = document.querySelector('tds-header-hamburger');
+    if (hamburgerButton) {
+      hamburgerButton.setAttribute('aria-expanded', 'false');
+    }
+  }
+
   render() {
     const buttonProps = {
       'aria-label': 'Close',
       ...inheritAriaAttributes(this.host),
+      'onClick': TdsSideMenuCloseButton.handleClick,
     };
     return (
       <Host>
         <button {...buttonProps}>
-          <tds-icon name="cross" size="20px"></tds-icon>
+          <tds-icon name="cross" size="20px" svgTitle="Cross"></tds-icon>
         </button>
       </Host>
     );

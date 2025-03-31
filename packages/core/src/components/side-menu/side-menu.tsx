@@ -42,7 +42,7 @@ export class TdsSideMenu {
   @Element() host: HTMLTdsSideMenuElement;
 
   /** Applicable only for mobile. If the Side Menu is open or not. */
-  @Prop() open: boolean = false;
+  @Prop({ mutable: true }) open: boolean = false;
 
   /** Applicable only for desktop. If the Side Menu should always be shown. */
   @Prop() persistent: boolean = false;
@@ -68,6 +68,13 @@ export class TdsSideMenu {
       this.collapsed = this.initialCollapsedState;
     }
   };
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.open) {
+      this.open = false;
+    }
+  }
 
   connectedCallback() {
     this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT}px)`);
@@ -102,6 +109,22 @@ export class TdsSideMenu {
     });
 
     this.isCollapsed = newVal;
+  }
+
+  @Watch('open')
+  onOpenChange(newVal: boolean) {
+    if (newVal) {
+      // When menu opens, focus the first interactive element
+      setTimeout(() => {
+        const firstInteractiveElement =
+          this.host.shadowRoot.querySelector('a, button, [tabindex="0"]') ||
+          this.host.querySelector('a, button, [tabindex="0"]');
+
+        if (firstInteractiveElement instanceof HTMLElement) {
+          firstInteractiveElement.focus();
+        }
+      }, 100);
+    }
   }
 
   /** Event that is emitted when the Side Menu is collapsed. */
@@ -139,7 +162,6 @@ export class TdsSideMenu {
   render() {
     return (
       <Host
-        role="navigation"
         class={{
           'menu-opened': this.open,
           'menu-persistent': this.persistent,
@@ -156,16 +178,22 @@ export class TdsSideMenu {
         >
           <slot name="overlay"></slot>
           <aside class={`menu`}>
-            <slot name="close-button"></slot>
-            <div class="tds-side-menu-wrapper">
-              <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
-                <slot></slot>
-              </ul>
-              <ul class={`tds-side-menu-list tds-side-menu-list-end`}>
-                <slot name="end"></slot>
-              </ul>
+            <div role="navigation">
+              <slot name="close-button"></slot>
+              <div class="tds-side-menu-wrapper">
+                <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
+                  <li>
+                    <slot></slot>
+                  </li>
+                </ul>
+                <ul class={`tds-side-menu-list tds-side-menu-list-end`}>
+                  <li>
+                    <slot name="end"></slot>
+                  </li>
+                </ul>
+              </div>
+              <slot name="sticky-end"></slot>
             </div>
-            <slot name="sticky-end"></slot>
           </aside>
         </div>
       </Host>

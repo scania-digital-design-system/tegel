@@ -106,7 +106,12 @@ export class TdsSideMenuDropdown {
                 <Fragment>
                   {this.buttonLabel}
                   <slot name="label"></slot>
-                  <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
+                  <tds-icon
+                    class="dropdown-icon"
+                    name="chevron_down"
+                    size="16px"
+                    svgTitle="Chevron Down"
+                  ></tds-icon>
                 </Fragment>
               )}
             </button>

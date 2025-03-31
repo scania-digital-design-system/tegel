@@ -164,20 +164,20 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24px"></tds-icon>
+            <tds-icon name="timer" size="24px" svgTitle="Timer"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="truck" size="24px"></tds-icon>
+            <tds-icon name="truck" size="24px" svgTitle="Truck"></tds-icon>
             Trucks
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
-          <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+          <tds-icon slot="icon" name="profile" size="24px" svgTitle="Profile"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -197,7 +197,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24px"></tds-icon>
+            <tds-icon name="star" size="24px" svgTitle="Star"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>
@@ -219,6 +219,9 @@ const Template = ({ persistent, collapsible, collapsed }) =>
         <p><i>Note: The Side Menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
+        
+        <p><i>Note: When the side menu is open in mobile view, pressing the Escape key will close it.</i></p>
+        
         <button id="test">Toggle the collapsed state programmatically</button>
         <button id="toggleExpandedTest">Toggle wheel types expanded programmatically</button>
       </main>
