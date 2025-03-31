@@ -150,7 +150,7 @@ const FilteringTemplate = ({
       ${noMinWidth ? 'no-min-width' : ''}
       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
   >
-          <tds-table-toolbar table-title="Filter" filter></tds-table-toolbar>
+          <tds-table-toolbar table-title="Filter" tds-search-aria-label="Input for filtering" filter></tds-table-toolbar>
           <tds-table-header>
               <tds-header-cell cell-key='truck' cell-value='Truck type' ${
                 column1Width ? `custom-width="${column1Width}"` : ''
