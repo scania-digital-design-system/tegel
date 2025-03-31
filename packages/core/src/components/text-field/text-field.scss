@@ -339,14 +339,14 @@
 }
 
 //Success state
-.form-text-field-success {
+.form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
     border-bottom-color: var(--tds-text-field-border-bottom-success);
   }
 }
 
 //Error State
-.form-text-field-error {
+.form-text-field-error:not(.form-text-field-readonly) {
   .text-field-helper {
     color: var(--tds-text-field-helper-error);
   }
