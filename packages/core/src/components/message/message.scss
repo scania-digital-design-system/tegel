@@ -1,3 +1,5 @@
+@import '../../../../../typography/utilities/typography-utility';
+
 :host {
   /* Default values */
   --tds-message-background: var(--background-elevation-layer-03);
@@ -58,8 +60,7 @@
       background-color: transparent;
 
       .header {
-        font: var(--tds-detail-02);
-        letter-spacing: var(--tds-detail-02-ls);
+        @include detail-02;
       }
 
       &.error {
@@ -82,14 +83,20 @@
     padding: 2px 0;
 
     .header {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+      @include headline-07;
+
+      /*
+      font-family: 'Scania Sans CY Semi Condensed', arial, helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 1.14;
+      letter-spacing: -0.01em;
+      */
     }
 
     .extended-message {
       color: var(--foreground-text-strong);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
     }
   }
 }
