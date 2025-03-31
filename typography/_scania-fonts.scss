@@ -2,7 +2,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 
 /* TODO: Add CY to all cyrilic fonts */
 @font-face {
-  font-family: 'Scania Sans CY';
+  font-family: 'Scania Sans';
   font-weight: bold;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Bold.woff') format('woff'),
@@ -10,7 +10,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY';
+  font-family: 'Scania Sans';
   font-style: italic;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Italic.woff') format('woff'),
@@ -18,14 +18,14 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY';
+  font-family: 'Scania Sans';
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Regular.woff') format('woff'),
     url('./assets/fonts/cyrillic/ScaniaSansCY-Regular.woff') format('woff');
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Condensed';
+  font-family: 'Scania Sans Condensed';
   font-weight: bold;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Bold.woff')
@@ -34,7 +34,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Condensed';
+  font-family: 'Scania Sans Condensed';
   font-style: italic;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Italic.woff')
@@ -43,7 +43,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Condensed';
+  font-family: 'Scania Sans Condensed';
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Regular.woff')
     format('woff'),
@@ -51,7 +51,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Headline';
+  font-family: 'Scania Sans Headline';
   font-weight: bold;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYHeadline-Bold.woff') format('woff'),
@@ -59,7 +59,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Headline';
+  font-family: 'Scania Sans Headline';
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYHeadline-Regular.woff')
     format('woff'),
@@ -67,7 +67,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Semi Condensed';
+  font-family: 'Scania Sans Semi Condensed';
   font-weight: bold;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Bold.woff')
@@ -76,7 +76,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Semi Condensed';
+  font-family: 'Scania Sans Semi Condensed';
   font-style: italic;
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Italic.woff')
@@ -85,7 +85,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 }
 
 @font-face {
-  font-family: 'Scania Sans CY Semi Condensed';
+  font-family: 'Scania Sans Semi Condensed';
   unicode-range: U+0400-04FF;
   src: url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Regular.woff')
     format('woff'),
