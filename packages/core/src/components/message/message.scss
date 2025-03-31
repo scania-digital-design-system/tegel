@@ -1,4 +1,16 @@
 :host {
+  /* Default values */
+  --tds-message-background: var(--background-elevation-layer-03);
+
+  /* Variant values */
+  .tds-mode-variant-primary {
+    --tds-message-background: var(--background-elevation-layer-03);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--background-elevation-layer-02);
+  }
+
   .wrapper {
     display: flex;
     padding: 16px;
@@ -6,35 +18,35 @@
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--tds-information);
+      border-left: 4px solid var(--system-info-default);
 
       tds-icon {
-        color: var(--tds-information);
+        color: var(--system-info-default);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--tds-positive);
+      border-left: 4px solid var(--system-success-default);
 
       tds-icon {
-        color: var(--tds-positive);
+        color: var(--system-success-default);
       }
     }
 
     &.error {
-      background-color: var(--tds-message-type-error-background);
-      border-left: 4px solid var(--tds-negative);
+      background-color: var(--system-danger-subtle);
+      border-left: 4px solid var(--system-danger-default);
 
       tds-icon {
-        color: var(--tds-negative);
+        color: var(--system-danger-default);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--tds-warning);
+      border-left: 4px solid var(--system-warning-default);
 
       tds-icon {
-        color: var(--tds-warning);
+        color: var(--system-warning-default);
       }
     }
 
@@ -52,7 +64,7 @@
 
       &.error {
         .header {
-          color: var(--tds-negative);
+          color: var(--system-danger-default);
         }
       }
     }
@@ -66,7 +78,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: var(--tds-message-color);
+    color: var(--foreground-text-strong);
     padding: 2px 0;
 
     .header {
@@ -75,17 +87,9 @@
     }
 
     .extended-message {
-      color: var(--tds-message-color);
+      color: var(--foreground-text-strong);
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
     }
-  }
-
-  .tds-mode-variant-primary {
-    --tds-message-background: var(--tds-message-background-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-message-background: var(--tds-message-background-secondary);
   }
 }
