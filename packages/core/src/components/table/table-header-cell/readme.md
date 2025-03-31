@@ -15,7 +15,6 @@
 | `disablePadding`         | `disable-padding`            | Disables internal padding. Useful when passing other components to cell.                                | `boolean`                                           | `false`     |
 | `sortable`               | `sortable`                   | Enables sorting on that column                                                                          | `boolean`                                           | `false`     |
 | `tdsAriaLabelSortButton` | `tds-aria-label-sort-button` | Aria label for the sort button, providing an accessible description                                     | `string`                                            | `''`        |
-| `tdsAriaSort`            | `tds-aria-sort`              | Aria sort value, default is "none". Other accepted values are "ascending" or "descending".              | `"ascending" \| "descending" \| "none"`             | `'none'`    |
 | `textAlign`              | `text-align`                 | Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". | `"center" \| "end" \| "left" \| "right" \| "start"` | `'left'`    |
 
 
