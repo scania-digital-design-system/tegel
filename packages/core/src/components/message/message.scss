@@ -54,8 +54,6 @@
 
     &.minimal {
       border: none;
-      display: flex;
-      align-items: center;
       padding: 0;
       background-color: transparent;
 
@@ -84,14 +82,6 @@
 
     .header {
       @include headline-07;
-
-      /*
-      font-family: 'Scania Sans CY Semi Condensed', arial, helvetica, sans-serif;
-      font-weight: bold;
-      font-size: 14px;
-      line-height: 1.14;
-      letter-spacing: -0.01em;
-      */
     }
 
     .extended-message {
