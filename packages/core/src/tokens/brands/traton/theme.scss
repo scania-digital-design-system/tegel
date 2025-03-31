@@ -1,0 +1,16 @@
+:root,
+.traton {
+  /* Semantic radius overrides */
+  --radius-xs: var(--unit-2); /* same as base */
+  --radius-sm: var(--unit-4); /* same as base */
+  --radius-md: var(--unit-6); /* different from base (base was 8) */
+  --radius-3xl: var(--unit-24); /* smaller rounding */
+  --radius-full: 500px; /* brand-specific override */
+
+  /* Semantic spacing overrides */
+  --space-xs: var(--unit-4); /* same as base */
+  --space-sm: var(--unit-16); /* matches base */
+  --space-md: var(--unit-24); /* matches base */
+  --space-lg: var(--unit-48); /* matches base */
+  --space-xl: var(--unit-80); /* matches base */
+}
