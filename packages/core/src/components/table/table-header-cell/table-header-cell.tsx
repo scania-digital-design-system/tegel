@@ -47,9 +47,6 @@ export class TdsTableHeaderCell {
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
 
-  /** Aria sort value, default is "none". Other accepted values are "ascending" or "descending". */
-  @Prop({ reflect: true }) tdsAriaSort?: 'ascending' | 'descending' | 'none' = 'none';
-
   /** Aria label for the sort button, providing an accessible description */
   @Prop({ reflect: true }) tdsAriaLabelSortButton?: string = '';
 
@@ -259,6 +256,12 @@ export class TdsTableHeaderCell {
     });
   };
 
+  private getAriaSort(): 'ascending' | 'descending' | 'none' {
+    if (this.sortingDirection === 'asc') return 'ascending';
+    if (this.sortingDirection === 'desc') return 'descending';
+    return 'none';
+  }
+
   render() {
     return (
       <Host
@@ -278,7 +281,7 @@ export class TdsTableHeaderCell {
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
         role="columnheader"
-        aria-sort={this.tdsAriaSort}
+        aria-sort={this.getAriaSort()}
       >
         {this.headerCellContent()}
       </Host>
