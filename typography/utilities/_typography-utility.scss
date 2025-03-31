@@ -29,7 +29,7 @@ $typography-map: (
   'detail-07': detail-07,
 );
 
-// Utility mixin
+/* Utility mixin */
 @mixin typography($type) {
   @if map-has-key($typography-map, $type) {
     @include map-get($typography-map, $type);
