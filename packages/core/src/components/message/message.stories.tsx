@@ -78,6 +78,28 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAlertDialog: {
+      name: 'Alert Dialog Role',
+      description: 'Sets the ARIA role of the message component.',
+      control: {
+        type: 'radio',
+      },
+      options: ['dialog', 'alertdialog'],
+      table: {
+        defaultValue: { summary: 'dialog' },
+      },
+    },
+    tdsAriaLabel: {
+      name: 'ARIA Label',
+      description:
+        'Provides an accessible name for the message component when no header is present. This ensures proper screen reader support for dialog/alertdialog roles.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: '' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -87,15 +109,26 @@ export default {
       'Longer Message text can be placed here. Longer Message text can be placed here.',
     minimal: false,
     noIcon: false,
+    tdsAlertDialog: 'dialog',
+    tdsAriaLabel: 'A Message component',
   },
 };
 
-const Template = ({ modeVariant, messageVariant, header, extendedMessage, minimal, noIcon }) =>
+const Template = ({
+  modeVariant,
+  messageVariant,
+  header,
+  extendedMessage,
+  minimal,
+  noIcon,
+  tdsAlertDialog,
+  tdsAriaLabel,
+}) =>
   formatHtmlPreview(
     `
     <style>
       .demo-wrapper {
-        width: 380px;
+        max-width: 380px;
       }
     </style>
     <div class="demo-wrapper">
@@ -104,6 +137,8 @@ const Template = ({ modeVariant, messageVariant, header, extendedMessage, minima
           header="${header}"
           ${noIcon ? 'no-icon' : ''}
           ${minimal ? 'minimal' : ''}
+          tds-alert-dialog="${tdsAlertDialog}"
+          ${tdsAriaLabel ? `tds-aria-label="${tdsAriaLabel}"` : ''}
           ${
             modeVariant !== 'Inherit from parent'
               ? `mode-variant="${modeVariant.toLowerCase()}"`

@@ -43,7 +43,7 @@ export class TdsDropdownOption {
 
   private parentElement: HTMLTdsDropdownElement | null = null;
 
-// @ts-ignore
+  // @ts-ignore
   // eslint-disable-next-line no-unused-vars,
   private label: string = '';
 
@@ -100,7 +100,7 @@ export class TdsDropdownOption {
       this.host.parentElement?.tagName === 'TDS-DROPDOWN'
         ? (this.host.parentElement as HTMLTdsDropdownElement)
         : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
-    
+
     if (this.parentElement) {
       this.multiselect = this.parentElement.multiselect ?? false;
       this.size = this.parentElement.size || 'lg';
@@ -153,7 +153,7 @@ export class TdsDropdownOption {
 
   render() {
     return (
-      <Host role="option" aria-disabled={this.disabled} aria-selected={this.selected}>
+      <Host>
         <div
           class={`dropdown-option 
           ${this.size}
@@ -187,6 +187,9 @@ export class TdsDropdownOption {
             </div>
           ) : (
             <button
+              role="option"
+              aria-disabled={this.disabled}
+              aria-selected={this.selected}
               onClick={() => {
                 this.handleSingleSelect();
               }}
@@ -206,4 +209,3 @@ export class TdsDropdownOption {
     );
   }
 }
-
