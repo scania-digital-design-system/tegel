@@ -2,6 +2,10 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
+/* Multibrand tokens */
+@import '../../../../color/scania-color-primitives';
+@import '../../../../color/scania-brand-usage';
+
 // Motion
 @import '../../../../motion/';
 
