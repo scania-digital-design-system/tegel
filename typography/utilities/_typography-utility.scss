@@ -1,0 +1,39 @@
+@import '../mixins/type-styles';
+
+/* Centralized map of typography types */
+$typography-map: (
+  'supertype-01': supertype-01,
+  'supertype-02': supertype-02,
+  'supertype-03': supertype-03,
+  'expressive-headline-01': expressive-headline-01,
+  'expressive-headline-02': expressive-headline-02,
+  'headline-01': headline-01,
+  'headline-02': headline-02,
+  'headline-03': headline-03,
+  'headline-04': headline-04,
+  'headline-05': headline-05,
+  'headline-06': headline-06,
+  'headline-07': headline-07,
+  'paragraph-01': paragraph-01,
+  'paragraph-02': paragraph-02,
+  'body-01': body-01,
+  'body-02': body-02,
+  'body-link-01': body-link-01,
+  'body-link-02': body-link-02,
+  'detail-01': detail-01,
+  'detail-02': detail-02,
+  'detail-03': detail-03,
+  'detail-04': detail-04,
+  'detail-05': detail-05,
+  'detail-06': detail-06,
+  'detail-07': detail-07,
+);
+
+/* Utility mixin */
+@mixin typography($type) {
+  @if map-has-key($typography-map, $type) {
+    @include map-get($typography-map, $type);
+  } @else {
+    @warn "Unknown typography type: #{$type}";
+  }
+}
