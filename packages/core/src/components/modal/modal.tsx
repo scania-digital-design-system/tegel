@@ -8,8 +8,10 @@ import {
   State,
   Event,
   EventEmitter,
+  Listen,
 } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
  * @slot header - Slot for header text
@@ -49,6 +51,9 @@ export class TdsModal {
   /** Shows or hides the close [X] button. */
   @Prop() closable: boolean = true;
 
+  /** Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
+  @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+
   // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
 
@@ -72,6 +77,13 @@ export class TdsModal {
     bubbles: true,
   })
   tdsClose: EventEmitter<any>;
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isShown && !this.prevent) {
+      this.handleClose(event)
+    }
+  }
 
   connectedCallback() {
     if (this.closable === undefined) {
@@ -179,8 +191,15 @@ export class TdsModal {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
 
+    const headerId = this.header ? `tds-modal-header-${generateUniqueId()}` : undefined
+    const bodyId = `tds-modal-body-${generateUniqueId()}`
+
     return (
       <Host
+        role={this.tdsAlertDialog}
+        aria-modal={this.isShown}
+        aria-describedby={bodyId}
+        aria-labelledby={headerId}
         class={{
           show: this.isShown,
           hide: !this.isShown,
@@ -204,7 +223,7 @@ export class TdsModal {
             )}
           </div>
 
-          <div class="body">
+          <div id={bodyId} class="body">
             <slot name="body" />
           </div>
 
