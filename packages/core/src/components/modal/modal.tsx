@@ -57,10 +57,22 @@ export class TdsModal {
   // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
 
+  // Focus state index in focusable Elements
+  @State() activeElementIndex = 0;
+
   /** Shows the Modal.  */
   @Method()
   async showModal() {
     this.isShown = true;
+
+    // Set focus on first element when opened
+    requestAnimationFrame(() => {
+      const focusableElements = this.getFocusableElements();
+      if (focusableElements.length > 0) {
+        focusableElements[0].focus();
+        this.activeElementIndex = 0;
+      }
+    });
   }
 
   /** Closes the Modal. */
@@ -81,7 +93,7 @@ export class TdsModal {
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.isShown && !this.prevent) {
-      this.handleClose(event)
+      this.handleClose(event);
     }
   }
 
@@ -130,6 +142,61 @@ export class TdsModal {
     this.host.querySelectorAll('[data-dismiss-modal]').forEach((dismissButton) => {
       dismissButton.removeEventListener('click', this.handleClose);
     });
+  }
+
+  private getFocusableElements(): HTMLElement[] {
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const focusableInShadowRoot = Array.from(
+      this.host.shadowRoot.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+    const focusableInSlots = Array.from(
+      this.host.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+
+    /** Focusable elements */
+    return [...focusableInShadowRoot, ...focusableInSlots];
+  }
+
+  @Listen('keydown', { capture: true })
+  handleFocusTrap(event: KeyboardEvent) {
+    event.preventDefault();
+    // Only trap focus if the modal is open
+    if (!this.isShown) return;
+
+    // We care only about the Tab key
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = this.getFocusableElements();
+
+    // If there are no focusable elements
+    if (focusableElements.length === 0) return;
+
+    // Going backwards (Shift + Tab) on the first element => move to last
+    if (event.shiftKey) {
+      this.activeElementIndex -= 1;
+      if (this.activeElementIndex === -1) {
+        this.activeElementIndex = focusableElements.length - 1;
+      }
+    }
+
+    // // Going forwards (Tab) on the last element => move to first
+    if (!event.shiftKey) {
+      this.activeElementIndex += 1;
+      if (this.activeElementIndex === focusableElements.length) {
+        this.activeElementIndex = 0;
+      }
+    }
+
+    const nextElement = focusableElements[this.activeElementIndex];
+    nextElement.focus();
   }
 
   handleClose = (event) => {
@@ -191,8 +258,8 @@ export class TdsModal {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
 
-    const headerId = this.header ? `tds-modal-header-${generateUniqueId()}` : undefined
-    const bodyId = `tds-modal-body-${generateUniqueId()}`
+    const headerId = this.header ? `tds-modal-header-${generateUniqueId()}` : undefined;
+    const bodyId = `tds-modal-body-${generateUniqueId()}`;
 
     return (
       <Host
