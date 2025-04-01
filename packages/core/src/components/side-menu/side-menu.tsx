@@ -167,6 +167,7 @@ export class TdsSideMenu {
           'menu-persistent': this.persistent,
           'menu-collapsed': this.collapsed,
         }}
+        aria-expanded={this.open ? 'true' : 'false'}
       >
         <div
           class={{
