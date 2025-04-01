@@ -1,46 +1,9 @@
-// Motion
-@import '../../../../motion/';
-
-// Colors - TRATON specific
+/* Colors */
 @import '../../../../color/traton-color-primitives';
 @import '../../../../color/_traton-usage-tokens';
 
-// Grid (Deprecated - will be removed in version 2.0)
-@import '../../../../grid-deprecated/grid-deprecated';
+/* Spacing */
+@import '../../../../spacing/traton-units';
 
-// Grid new
-@import '../../../../grid/grid';
-
-// Typography
-@import '../../../../typography/scania-fonts';
-@import '../../../../typography/scania-fonts-vars';
-@import '../../../../typography/scania-fonts-selectors';
-
-// Logos
-@import '../../../../logotype/logotype';
-
-// Vars
-@import '_variables';
-@import 'scrollbar-vars';
-
-// Utility classes
-@import '_utility-classes';
-
-// Web component theme variables
-@import '../components/accordion/accordion-vars';
-@import '../components/banner/banner-vars';
-@import '../components/block/block-vars';
-@import '../components/breadcrumbs/breadcrumbs-vars';
-
-// ... (rest of component imports)
-
-body {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  margin: 0;
-  flex: 1;
-}
-
-// Include the rest of the global styles but with TRATON tokens
-
-@import 'shame';
+/* Typography */
+@import '../../../../typography/tokens/typography-traton';

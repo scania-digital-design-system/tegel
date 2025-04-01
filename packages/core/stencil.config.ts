@@ -10,6 +10,13 @@ function getTsConfigFile() {
   return 'tsconfig.prod.json';
 }
 
+function getGlobalStyleFile() {
+  if (process.env.STORYBOOK_ENV === 'dev') {
+    return 'src/global/multibrand-development.scss';
+  }
+  return 'src/global/global.scss';
+}
+
 const angularValueAccessorBindings: ValueAccessorConfig[] = [
   {
     elementSelectors: ['tds-checkbox', 'tds-chip[type="checkbox"]'],
@@ -47,7 +54,7 @@ const angularValueAccessorBindings: ValueAccessorConfig[] = [
 export const config: Config = {
   tsconfig: getTsConfigFile(),
   namespace: 'tegel',
-  globalStyle: 'src/global/global.scss',
+  globalStyle: getGlobalStyleFile(),
   extras: {
     enableImportInjection: true,
     tagNameTransform: true,
@@ -65,11 +72,6 @@ export const config: Config = {
         {
           src: '../../../assets',
           dest: 'assets/',
-          warn: true,
-        },
-        {
-          src: 'global/traton.scss',
-          dest: 'traton.css',
           warn: true,
         },
       ],
