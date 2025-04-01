@@ -99,6 +99,7 @@ export class TdsSideMenuDropdown {
             onClick={() => {
               this.open = !this.open;
             }}
+            aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
           >
             <button>
               <slot name="icon"></slot>
