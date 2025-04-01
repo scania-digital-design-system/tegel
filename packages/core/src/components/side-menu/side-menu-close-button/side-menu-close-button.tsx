@@ -17,8 +17,13 @@ export class TdsSideMenuCloseButton {
   }
 
   render() {
+    // Find the closest side menu to this close button
+    const sideMenuEl = this.host.closest('tds-side-menu');
+    const sideMenuId = sideMenuEl ? sideMenuEl.id : '';
+
     const buttonProps = {
       'aria-label': 'Close',
+      ...(sideMenuId && { 'aria-controls': sideMenuId }),
       ...inheritAriaAttributes(this.host),
       'onClick': TdsSideMenuCloseButton.handleClick,
     };
