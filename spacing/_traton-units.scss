@@ -1,0 +1,24 @@
+:root,
+.traton {
+  /* Radius tokens */
+  --radius-narrow: var(--unit-4);
+  --radius-soft: var(--unit-8);
+  --radius-rounded: var(--unit-32);
+  --radius-circle: 500px;
+
+  /* Radius for-surface tokens */
+
+  --radius-surface-clickable: var(--radius-full);
+  --radius-surface-field: var(--unit-2);
+
+  /* Radius for-area tokens */
+  --radius-area-large: var(--unit-8);
+  --radius-area-small: var(--unit-4);
+
+  /* Space tokens */
+  --space-tiny: var(--unit-4);
+  --space-small: var(--unit-16);
+  --space-medium: var(--unit-24);
+  --space-large: var(--unit-48);
+  --space-huge: var(--unit-80);
+}
