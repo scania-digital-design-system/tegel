@@ -104,26 +104,32 @@ export class TdsDropdown {
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
-      this.updateDropdownState(normalizedValue);
+      this.updateDropdownStateFromUser(normalizedValue);
     }
   }
 
   private normalizeValue(value: string | number | (string | number)[] | null): string[] {
-    if (!value || value === '') return []; // Handle both null and empty string
+    if (!value || value === '') return [];
 
-    // For multiselect, keep array. For single select, wrap in array
-    if (this.multiselect) {
+    // For single select, ensure we handle both string and array inputs
+    if (!this.multiselect) {
+      // If array is passed to single select, take first value
       if (Array.isArray(value)) {
-        return convertArrayToStrings(value);
+        return [convertToString(value[0])];
       }
-      return value
-        .toString()
-        .split(',')
-        .filter((v) => v !== '');
+      return [convertToString(value)];
     }
 
-    // Single select - convert to string array
-    return Array.isArray(value) ? convertArrayToStrings(value) : [convertToString(value)];
+    // For multiselect
+    if (Array.isArray(value)) {
+      return convertArrayToStrings(value);
+    }
+
+    // Handle comma-separated string for multiselect
+    return value
+      .toString()
+      .split(',')
+      .filter((v) => v !== '');
   }
 
   private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
@@ -131,14 +137,25 @@ export class TdsDropdown {
     return newValue.some((val) => !currentValue.includes(val));
   }
 
-  private updateDropdownState(values: string[]) {
-    // Update internal state
-    this.selectedOptions = [...this.validateValues(values)]; // Force new array reference
+  private updateDropdownStateInternal(values: string[]) {
+    this.updateDropdownState(values, false);
+  }
 
-    // Then update the value prop to match
+  private updateDropdownStateFromUser(values: string[]) {
+    this.updateDropdownState(values, true);
+  }
+
+  private updateDropdownState(values: string[], emitChange: boolean = true) {
+    // Validate the values first
+    const validValues = this.validateValues(values);
+
+    // Update internal state
+    this.selectedOptions = [...validValues];
+
+    // Update the value prop
     this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
 
-    // Force update of internal value
+    // Update internal value for display
     this.internalValue = this.getValue();
 
     // Update DOM
@@ -147,16 +164,25 @@ export class TdsDropdown {
     // Update display value
     this.updateDisplayValue();
 
-    // Emit change event
-    this.emitChange();
+    // Emit change event only if value has changed by user
+    if (emitChange) this.emitChange();
 
     // Update value attribute
     this.setValueAttribute();
   }
 
   private validateValues(values: string[]): string[] {
+    // Make sure we have children before validation
+    const children = this.getChildren();
+    if (!children || children.length === 0) {
+      console.warn('No dropdown options found');
+      return values; // Return original values if no children yet
+    }
+
     return values.filter((val) => {
-      const isValid = this.getChildren()?.some((element) => element.value === val);
+      const isValid = children.some(
+        (element) => convertToString(element.value) === convertToString(val),
+      );
       if (!isValid) {
         console.warn(`Option with value "${val}" does not exist`);
       }
@@ -198,7 +224,7 @@ export class TdsDropdown {
     } else {
       normalizedValue = [convertToString(value)];
     }
-    this.updateDropdownState(normalizedValue);
+    this.updateDropdownStateFromUser(normalizedValue);
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
       label: element.textContent.trim(),
@@ -207,13 +233,13 @@ export class TdsDropdown {
 
   @Method()
   async reset() {
-    this.updateDropdownState([]);
+    this.updateDropdownStateFromUser([]);
   }
 
   @Method()
   async removeValue(oldValue: string) {
     const newValues = this.selectedOptions.filter((v) => v !== oldValue);
-    this.updateDropdownState(newValues);
+    this.updateDropdownStateFromUser(newValues);
   }
 
   /** Method that forces focus on the input element. */
@@ -353,13 +379,20 @@ export class TdsDropdown {
   }
 
   componentWillLoad() {
-    if (this.defaultValue && !this.value) {
-      // Convert defaultValue to string before splitting
+    // First handle the value prop if it exists
+    if (this.value !== null && this.value !== undefined) {
+      const normalizedValue = this.normalizeValue(this.value);
+      this.updateDropdownStateInternal(normalizedValue);
+      return; // Exit early if we handled the value prop
+    }
+
+    // Only use defaultValue if no value prop was provided
+    if (this.defaultValue !== null && this.defaultValue !== undefined) {
       const defaultValueStr = convertToString(this.defaultValue);
       const initialValue = this.multiselect
         ? defaultValueStr.split(',').map(convertToString)
         : [convertToString(this.defaultValue)];
-      this.updateDropdownState(initialValue);
+      this.updateDropdownStateInternal(initialValue);
     }
   }
 
@@ -380,7 +413,7 @@ export class TdsDropdown {
         ? this.internalDefaultValue.split(',')
         : [this.internalDefaultValue];
 
-      this.updateDropdownState(defaultValues);
+      this.updateDropdownStateInternal(defaultValues);
     }
   };
 
@@ -388,9 +421,12 @@ export class TdsDropdown {
     const tdsDropdownOptions = Array.from(this.host.children).filter(
       (element) => element.tagName === 'TDS-DROPDOWN-OPTION',
     ) as Array<HTMLTdsDropdownOptionElement>;
+
     if (tdsDropdownOptions.length === 0) {
-      console.warn('TDS DROPDOWN: Data missing. Disregard if loading data asynchronously.');
-    } else return tdsDropdownOptions;
+      console.warn('TDS DROPDOWN: No options found. Disregard if loading data asynchronously.');
+    }
+
+    return tdsDropdownOptions;
   };
 
   private getSelectedChildren = () => {
@@ -511,9 +547,9 @@ export class TdsDropdown {
   @Method()
   async appendValue(value: string) {
     if (this.multiselect) {
-      this.updateDropdownState([...this.selectedOptions, value]);
+      this.updateDropdownStateFromUser([...this.selectedOptions, value]);
     } else {
-      this.updateDropdownState([value]);
+      this.updateDropdownStateFromUser([value]);
     }
   }
 
