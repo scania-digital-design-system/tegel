@@ -2,26 +2,26 @@
 
 /* Component variables aka overrides */
 :root {
-  --spinner-background-inverted: rgb(255 255 255 / 100%);
+  --spinner-background-inverted: rgba(255, 255, 255, 1);
 }
 
 :root,
 .scania,
 .scania .tds-mode-light {
-  --spinner-background: rgb(43 112 211 / 100%);
+  --spinner-background: rgba(43, 112, 211, 1);
 }
 
 .scania .tds-mode-dark {
-  --spinner-background: rgb(74 137 243 / 100%);
+  --spinner-background: rgba(74, 137, 243, 1);
 }
 
 .traton,
 .traton .tds-mode-light {
-  --spinner-background: rgb(0 72 82 / 100%);
+  --spinner-background: rgba(0, 72, 82, 1);
 }
 
 .traton .tds-mode-dark {
-  --spinner-background: rgb(194 191 182 / 100%);
+  --spinner-background: rgba(194, 191, 182, 1);
 }
 
 /* Component variables */
