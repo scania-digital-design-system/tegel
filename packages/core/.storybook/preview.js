@@ -210,23 +210,25 @@ export const parameters = {
   globals: {
     brand: 'scania',
   },
-  globalTypes: {
-    brand: {
-      name: 'Brand',
-      description: 'Select brand',
-      defaultValue: 'scania',
-      toolbar: {
-        icon: 'circlehollow',
-        items: [
-          { value: 'scania', title: 'Scania', icon: 'circlehollow' },
-          { value: 'traton', title: 'Traton', icon: 'circlehollow' },
-        ],
-        showName: true,
-        dynamicTitle: true,
-        onChange: updateBrandClasses,
+  ...(process.env.STORYBOOK_ENV === 'dev' && {
+    globalTypes: {
+      brand: {
+        name: 'Brand',
+        description: 'Select brand',
+        defaultValue: 'scania',
+        toolbar: {
+          icon: 'circlehollow',
+          items: [
+            { value: 'scania', title: 'Scania', icon: 'circlehollow' },
+            { value: 'traton', title: 'Traton', icon: 'circlehollow' },
+          ],
+          showName: true,
+          dynamicTitle: true,
+          onChange: updateBrandClasses,
+        },
       },
     },
-  },
+  }),
 };
 
 // Below is some hacky code that changes selected background when the theme changes
