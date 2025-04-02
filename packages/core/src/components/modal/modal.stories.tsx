@@ -82,6 +82,17 @@ export default {
         defaultValue: { summary: true },
       },
     },
+    tdsAlertDialog: {
+      name: 'Alert Dialog Role',
+      description: 'Sets the ARIA role of the message component.',
+      control: {
+        type: 'radio',
+      },
+      options: ['dialog', 'alertdialog'],
+      table: {
+        defaultValue: { summary: 'dialog' },
+      },
+    },
   },
   args: {
     actionsPosition: 'Static',
@@ -92,6 +103,7 @@ export default {
     showModal: true,
     prevent: false,
     closable: true,
+    tdsAlertDialog: 'dialog',
   },
 };
 
@@ -110,6 +122,7 @@ const ModalTemplate = ({
   showModal,
   prevent,
   closable,
+  tdsAlertDialog,
 }) =>
   formatHtmlPreview(`
     <!-- The button below is just for demo purposes -->
@@ -123,6 +136,7 @@ const ModalTemplate = ({
       actions-position="${actionsPosition.toLowerCase()}"
       prevent="${prevent}"
       closable="${closable ? 'true' : 'false'}"
+      tds-alert-dialog="${tdsAlertDialog}"
     >
       <span slot="body">
         ${bodyContent}

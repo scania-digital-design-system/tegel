@@ -79,6 +79,7 @@ export class TdsModal {
   @Method()
   async closeModal() {
     this.isShown = false;
+    this.returnFocusOnClose()
   }
 
   /** Emits when the Modal is closed. */
@@ -89,13 +90,6 @@ export class TdsModal {
     bubbles: true,
   })
   tdsClose: EventEmitter<any>;
-
-  @Listen('keydown', { target: 'window' })
-  handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Escape' && this.isShown && !this.prevent) {
-      this.handleClose(event);
-    }
-  }
 
   connectedCallback() {
     if (this.closable === undefined) {
@@ -144,6 +138,17 @@ export class TdsModal {
     });
   }
 
+  private returnFocusOnClose() {
+    let referenceEl = this.referenceEl ?? document.querySelector(this.selector)
+    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT']
+
+    // If referenced element is a custom element eg: tds-button we find the interactive element inside
+    if(potentialReferenceElements.indexOf(referenceEl.tagName) < 0) {
+      referenceEl = referenceEl.querySelectorAll<HTMLElement>(potentialReferenceElements.join(','))[0]
+    }
+    referenceEl.focus()
+  }
+
   private getFocusableElements(): HTMLElement[] {
     const focusableSelectors = [
       'a[href]',
@@ -165,9 +170,13 @@ export class TdsModal {
     return [...focusableInShadowRoot, ...focusableInSlots];
   }
 
-  @Listen('keydown', { capture: true })
+  @Listen('keydown', {target: 'window', capture: true })
   handleFocusTrap(event: KeyboardEvent) {
-    event.preventDefault();
+    if (event.key === 'Escape' && this.isShown && !this.prevent) {
+      this.handleClose(event);
+      return
+    }
+
     // Only trap focus if the modal is open
     if (!this.isShown) return;
 
@@ -179,6 +188,7 @@ export class TdsModal {
     // If there are no focusable elements
     if (focusableElements.length === 0) return;
 
+    event.preventDefault();
     // Going backwards (Shift + Tab) on the first element => move to last
     if (event.shiftKey) {
       this.activeElementIndex -= 1;
@@ -201,6 +211,8 @@ export class TdsModal {
 
   handleClose = (event) => {
     const closeEvent = this.tdsClose.emit(event);
+    this.returnFocusOnClose()
+
     if (!closeEvent.defaultPrevented) {
       this.isShown = false;
     }
