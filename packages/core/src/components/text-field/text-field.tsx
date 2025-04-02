@@ -165,8 +165,12 @@ export class TdsTextField {
             this.labelPosition === 'inside' && this.size !== 'sm',
           'form-text-field-disabled': this.disabled,
           'form-text-field-readonly': this.disabled ? false : this.readOnly,
-          'tds-mode-variant-primary': this.modeVariant === 'primary',
-          'tds-mode-variant-secondary': this.modeVariant === 'secondary',
+          'tds-mode-variant-primary': this.readOnly
+            ? this.modeVariant === 'secondary'
+            : this.modeVariant === 'primary',
+          'tds-mode-variant-secondary': this.readOnly
+            ? this.modeVariant === 'primary'
+            : this.modeVariant === 'secondary',
           'form-text-field-md': this.size === 'md',
           'form-text-field-sm': this.size === 'sm',
           'form-text-field-error': this.state === 'error',
