@@ -276,7 +276,7 @@ export class TdsModal {
     return (
       <Host
         role={this.tdsAlertDialog}
-        aria-modal={this.isShown}
+        aria-modal="true"
         aria-describedby={bodyId}
         aria-labelledby={headerId}
         class={{
@@ -287,7 +287,7 @@ export class TdsModal {
       >
         <div class="tds-modal-backdrop" />
         <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
-          <div class="header">
+          <div id={headerId} class="header">
             {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
 
