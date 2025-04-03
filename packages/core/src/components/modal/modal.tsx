@@ -8,8 +8,10 @@ import {
   State,
   Event,
   EventEmitter,
+  Listen,
 } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
  * @slot header - Slot for header text
@@ -49,19 +51,35 @@ export class TdsModal {
   /** Shows or hides the close [X] button. */
   @Prop() closable: boolean = true;
 
+  /** Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
+  @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+
   // State that keeps track of show/closed state for the Modal.
   @State() isShown: boolean = false;
+
+  // Focus state index in focusable Elements
+  @State() activeElementIndex = 0;
 
   /** Shows the Modal.  */
   @Method()
   async showModal() {
     this.isShown = true;
+
+    // Set focus on first element when opened
+    requestAnimationFrame(() => {
+      const focusableElements = this.getFocusableElements();
+      if (focusableElements.length > 0) {
+        focusableElements[0].focus();
+        this.activeElementIndex = 0;
+      }
+    });
   }
 
   /** Closes the Modal. */
   @Method()
   async closeModal() {
     this.isShown = false;
+    this.returnFocusOnClose()
   }
 
   /** Emits when the Modal is closed. */
@@ -120,8 +138,81 @@ export class TdsModal {
     });
   }
 
+  private returnFocusOnClose() {
+    let referenceEl = this.referenceEl ?? document.querySelector(this.selector)
+    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT']
+
+    // If referenced element is a custom element eg: tds-button we find the interactive element inside
+    if(potentialReferenceElements.indexOf(referenceEl.tagName) < 0) {
+      referenceEl = referenceEl.querySelectorAll<HTMLElement>(potentialReferenceElements.join(','))[0]
+    }
+    referenceEl.focus()
+  }
+
+  private getFocusableElements(): HTMLElement[] {
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const focusableInShadowRoot = Array.from(
+      this.host.shadowRoot.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+    const focusableInSlots = Array.from(
+      this.host.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+
+    /** Focusable elements */
+    return [...focusableInShadowRoot, ...focusableInSlots];
+  }
+
+  @Listen('keydown', {target: 'window', capture: true })
+  handleFocusTrap(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isShown && !this.prevent) {
+      this.handleClose(event);
+      return
+    }
+
+    // Only trap focus if the modal is open
+    if (!this.isShown) return;
+
+    // We care only about the Tab key
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = this.getFocusableElements();
+
+    // If there are no focusable elements
+    if (focusableElements.length === 0) return;
+
+    event.preventDefault();
+    // Going backwards (Shift + Tab) on the first element => move to last
+    if (event.shiftKey) {
+      this.activeElementIndex -= 1;
+      if (this.activeElementIndex === -1) {
+        this.activeElementIndex = focusableElements.length - 1;
+      }
+    }
+
+    // // Going forwards (Tab) on the last element => move to first
+    if (!event.shiftKey) {
+      this.activeElementIndex += 1;
+      if (this.activeElementIndex === focusableElements.length) {
+        this.activeElementIndex = 0;
+      }
+    }
+
+    const nextElement = focusableElements[this.activeElementIndex];
+    nextElement.focus();
+  }
+
   handleClose = (event) => {
     const closeEvent = this.tdsClose.emit(event);
+    this.returnFocusOnClose()
+
     if (!closeEvent.defaultPrevented) {
       this.isShown = false;
     }
@@ -179,8 +270,15 @@ export class TdsModal {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
 
+    const headerId = this.header ? `tds-modal-header-${generateUniqueId()}` : undefined;
+    const bodyId = `tds-modal-body-${generateUniqueId()}`;
+
     return (
       <Host
+        role={this.tdsAlertDialog}
+        aria-modal="true"
+        aria-describedby={bodyId}
+        aria-labelledby={headerId}
         class={{
           show: this.isShown,
           hide: !this.isShown,
@@ -189,7 +287,7 @@ export class TdsModal {
       >
         <div class="tds-modal-backdrop" />
         <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
-          <div class="header">
+          <div id={headerId} class="header">
             {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
 
@@ -204,7 +302,7 @@ export class TdsModal {
             )}
           </div>
 
-          <div class="body">
+          <div id={bodyId} class="body">
             <slot name="body" />
           </div>
 

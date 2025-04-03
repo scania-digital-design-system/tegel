@@ -44,6 +44,7 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 | `selector`        | `selector`         | CSS selector for the element that will show the Modal.                                                                                                      | `string`                       | `undefined` |
 | `show`            | `show`             | Controls whether the Modal is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                      | `undefined` |
 | `size`            | `size`             | Size of Modal                                                                                                                                               | `"lg" \| "md" \| "sm" \| "xs"` | `'md'`      |
+| `tdsAlertDialog`  | `tds-alert-dialog` | Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages.         | `"alertdialog" \| "dialog"`    | `'dialog'`  |
 
 
 ## Events
