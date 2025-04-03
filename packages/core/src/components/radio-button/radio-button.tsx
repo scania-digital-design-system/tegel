@@ -31,6 +31,12 @@ export class TdsRadioButton {
   /** Decides if the Radio Button is disabled or not. */
   @Prop() disabled: boolean = false;
 
+  /** Provides an accessible name for the component */
+  @Prop() tdsAriaLabel: string;
+
+  /** Provides a tabindex used when radio buttons are grouped */
+  @Prop() tdsTabIndex: number;
+
   /** Sends unique Radio Button identifier and status when it is checked.
    * If no ID is specified, a random one will be generated.
    * To use this listener, don't use the randomized ID, use a specific one of your choosing. */
@@ -56,8 +62,10 @@ export class TdsRadioButton {
     return (
       <div class="tds-radio-button">
         <input
+          aria-label={this.tdsAriaLabel}
           class="tds-form-input"
           type="radio"
+          role="radio"
           name={this.name}
           id={this.radioId}
           value={this.value}
@@ -66,6 +74,7 @@ export class TdsRadioButton {
           required={this.required}
           disabled={this.disabled}
           onChange={() => this.handleChange()}
+          tabIndex={this.tdsTabIndex}
         />
         <label htmlFor={this.radioId}>
           <slot name="label"></slot>
