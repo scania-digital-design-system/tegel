@@ -99,8 +99,10 @@ export class TdsTextarea {
 
   // Data input event in value prop
   handleInput(event: InputEvent): void {
-    this.value = (event.target as HTMLInputElement).value;
-    this.tdsInput.emit(event);
+    if (event.target instanceof HTMLInputElement) {
+      this.value = event.target.value;
+      this.tdsInput.emit(event);
+    }
   }
 
   /** Focus event for the Textarea */
@@ -138,8 +140,8 @@ export class TdsTextarea {
         <div class="textarea-wrapper">
           <textarea
             class={'textarea-input'}
-            ref={(inputEl) => {
-              this.textEl = inputEl as HTMLTextAreaElement;
+            ref={(inputEl: HTMLTextAreaElement) => {
+              this.textEl = inputEl;
             }}
             disabled={this.disabled}
             readonly={!this.disabled && this.readOnly}
