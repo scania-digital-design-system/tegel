@@ -121,6 +121,16 @@ export class TdsTextarea {
     this.tdsFocus.emit(event);
   }
 
+  setModeVariant(modeVariant: 'primary' | 'secondary'): string | null {
+    if (this.readOnly && modeVariant === 'primary') {
+      return 'secondary';
+    }
+    if (this.readOnly && modeVariant === 'secondary') {
+      return 'primary';
+    }
+    return modeVariant;
+  }
+
   render() {
     return (
       <div
@@ -130,7 +140,7 @@ export class TdsTextarea {
           'textarea-focus': this.focusInput,
           'textarea-disabled': this.disabled,
           'textarea-readonly': !this.disabled && this.readOnly,
-          [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+          [`tds-mode-variant-${this.setModeVariant(this.modeVariant)}`]: true,
           'textarea-data': this.value !== '',
           [`textarea-${this.state}`]: this.state === 'error' || this.state === 'success',
           'no-min-width': this.noMinWidth,
@@ -193,7 +203,7 @@ export class TdsTextarea {
           )}
         </div>
         <span class={'textarea-helper'}>
-          {this.state === 'error' && <tds-icon name="error" size="16px" />}
+          {this.state === 'error' && !this.readOnly && <tds-icon name="error" size="16px" />}
           {this.helper}
         </span>
 
