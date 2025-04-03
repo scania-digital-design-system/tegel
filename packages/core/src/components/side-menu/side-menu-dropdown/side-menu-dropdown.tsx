@@ -92,12 +92,7 @@ export class TdsSideMenuDropdown {
 
   render() {
     return (
-      <Host
-        tabindex="0"
-        role="button"
-        aria-haspopup="true"
-        aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
-      >
+      <Host tabindex="0" aria-expanded={this.getIsOpenState() ? 'true' : 'false'}>
         <div
           class={{
             'wrapper': true,
