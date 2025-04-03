@@ -109,7 +109,12 @@ export class TdsHeaderDropdown {
               {this.label}
               <slot name="label"></slot>
               {!this.noDropdownIcon && (
-                <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
+                <tds-icon
+                  class="dropdown-icon"
+                  name="chevron_down"
+                  size="16px"
+                  svgTitle="Dropdown icon"
+                ></tds-icon>
               )}
             </button>
           </tds-header-item>
