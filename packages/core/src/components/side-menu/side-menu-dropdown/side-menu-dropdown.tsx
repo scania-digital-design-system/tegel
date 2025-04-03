@@ -58,6 +58,14 @@ export class TdsSideMenuDropdown {
     this.setHoverStateClosed();
   }
 
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.open = !this.open;
+    }
+  }
+
   setHoverStateOpen() {
     this.hoverState = { isHovered: true, updatedAt: Date.now() };
   }
@@ -84,7 +92,12 @@ export class TdsSideMenuDropdown {
 
   render() {
     return (
-      <Host>
+      <Host
+        tabindex="0"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
+      >
         <div
           class={{
             'wrapper': true,
