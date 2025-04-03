@@ -48,22 +48,23 @@ export default {
 const Template = ({ label, disabled }) =>
   formatHtmlPreview(`
   <style>
-  .demo-fieldset-reset { 
-    border: 0;
-    margin: 0;
+  .demo-fieldset {
+    margin-bottom: 20px;
     min-width: 0;
-    padding: 0; 
+    padding: 10px;
   }
 </style>
 
-  <fieldset class="demo-fieldset-reset">
+  <div role="radiogroup" class="demo-fieldset">
+  <label>Group 1</label>
   <tds-radio-button 
     name="rb-example"
-    value="option1"
-    radio-id="option-1"
+    value="option1group1"
+    radio-id="option-1-group-1"
     required=false
     ${disabled ? 'disabled' : ''}
-    checked="true" 
+    checked="true"
+    tds-tab-index="0"
   >
     <div slot="label">
       ${label} 1
@@ -72,17 +73,47 @@ const Template = ({ label, disabled }) =>
 
   <tds-radio-button
     name="rb-example"
-    value="option2"
-    radio-id="option-2"
+    value="option2group1"
+    radio-id="option-2-group-1"
     required=false
-    ${disabled ? 'disabled' : ''} 
+    ${disabled ? 'disabled' : ''}
+    tds-tab-index="-1"
+  >
+    <div slot="label">
+      ${label} 2
+    </div>
+  </tds-radio-button>
+  </div>
+
+  <div role="radiogroup" class="demo-fieldset">
+  <label>Group 2</label>
+  <tds-radio-button 
+    name="rb-example"
+    value="option1-group-2"
+    radio-id="option-1-group-2"
+    required=false
+    ${disabled ? 'disabled' : ''}
+    tds-tab-index="0"
+  >
+    <div slot="label">
+      ${label} 1
+    </div>
+  </tds-radio-button>
+
+  <tds-radio-button
+    name="rb-example"
+    value="option2group2"
+    radio-id="option-2-group-2"
+    required=false
+    ${disabled ? 'disabled' : ''}
+    tds-tab-index="-1"
   >
     <div slot="label">
       ${label} 2
     </div>
   </tds-radio-button>
     
-  </fieldset>
+  </div>
 
   <!-- Script tag with eventlistener for demo purposes. -->
   <script>
