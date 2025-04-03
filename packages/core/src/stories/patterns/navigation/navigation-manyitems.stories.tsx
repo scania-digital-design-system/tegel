@@ -181,55 +181,55 @@ const Template = ({ dummyHtml }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24"></tds-icon>
+            <tds-icon name="timer" size="24" svgTitle="Timer"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24"></tds-icon>
+            <tds-icon name="timer" size="24" svgTitle="Timer"></tds-icon>
             Contact
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24"></tds-icon>
+            <tds-icon name="timer" size="24" svgTitle="Timer"></tds-icon>
             Blog
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
         <button>
-          <tds-icon name="timer" size="24"></tds-icon>
+          <tds-icon name="timer" size="24" svgTitle="Timer"></tds-icon>
           About us
         </button>
       </tds-side-menu-item>
 
       <tds-side-menu-item>
         <button>
-          <tds-icon name="timer" size="24"></tds-icon>
+          <tds-icon name="timer" size="24" svgTitle="Timer"></tds-icon>
           About us
         </button>
       </tds-side-menu-item>
 
         <tds-side-menu-item>
           <a href="https://www.scania.com">
-            <tds-icon name="truck" size="24"></tds-icon>
+            <tds-icon name="truck" size="24" svgTitle="Truck"></tds-icon>
             Trucks
           </a>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="wifi" size="24"></tds-icon>
+            <tds-icon name="wifi" size="24" svgTitle="WiFi"></tds-icon>
             Our services
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown default-open selected>
-          <tds-icon slot="icon" name="profile" size="24"></tds-icon>
+          <tds-icon slot="icon" name="profile" size="24" svgTitle="Profile"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -245,7 +245,7 @@ const Template = ({ dummyHtml }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24"></tds-icon>
+            <tds-icon name="star" size="24" svgTitle="Star"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>
@@ -253,7 +253,7 @@ const Template = ({ dummyHtml }) =>
 
         <tds-side-menu-item slot="end">
           <button>
-            <tds-icon name="calendar" size="24"></tds-icon>
+            <tds-icon name="calendar" size="24" svgTitle="Calendar"></tds-icon>
             My Calendar
           </button>
         </tds-side-menu-item>
@@ -282,6 +282,8 @@ const Template = ({ dummyHtml }) =>
         <p><i>Note: The side menu is sticky, and should not scroll with the main content of the page.</i></p>
 
         <p><i>Note: The collapse button is optional.</i></p>
+        
+        <p><i>Note: When the side menu is open in mobile view, pressing the Escape key will close it.</i></p>
 
         ${dummyHtml}
       </main>
