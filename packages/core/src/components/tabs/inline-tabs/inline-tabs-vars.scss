@@ -1,8 +1,7 @@
 :root,
 .tds-mode-light {
   /* Horizontal divider */
-  --tds-inline-tabs-horizontal-divider-background: var(--tds-blue-900);
-  --tds-inline-tabs-horizontal-divider-opacity: 0.16;
+  --tds-inline-tabs-horizontal-divider-background: var(--tds-grey-300);
   --tds-inline-tabs-tab-background-primary: var(--tds-white);
   --tds-inline-tabs-tab-background-secondary: var(--tds-grey-50);
   --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
@@ -38,8 +37,7 @@
 }
 
 .tds-mode-dark {
-  --tds-inline-tabs-horizontal-divider-background: var(--tds-blue-100);
-  --tds-inline-tabs-horizontal-divider-opacity: 0.24;
+  --tds-inline-tabs-horizontal-divider-background: var(--tds-grey-800);
   --tds-inline-tabs-tab-background-primary: var(--tds-grey-900);
   --tds-inline-tabs-tab-background-secondary: var(--tds-grey-868);
   --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
