@@ -7,9 +7,9 @@
 
 ## Slots
 
-| Slot          | Description                      |
-| ------------- | -------------------------------- |
-| `"<default>"` | <b>Unnamed slot.</b> For a link. |
+| Slot          | Description                                                                                             |
+| ------------- | ------------------------------------------------------------------------------------------------------- |
+| `"<default>"` | <b>Unnamed slot.</b> For a link. When using an <a> tag, use the aria-label attribute for accessibility. |
 
 
 ## Dependencies

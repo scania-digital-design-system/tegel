@@ -1,4 +1,4 @@
-import { Component, Element, h, Host } from '@stencil/core';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 
 @Component({
@@ -9,6 +9,15 @@ import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
 export class TdsHeaderHamburger {
   @Element() host: HTMLElement;
 
+  /** Value to be used by the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Header Hamburger component: missing tdsAriaLabel prop');
+    }
+  }
+
   render() {
     const inheritedButtonProps = {
       ...inheritAriaAttributes(this.host),
@@ -17,7 +26,7 @@ export class TdsHeaderHamburger {
     return (
       <Host>
         <tds-header-item>
-          <button {...inheritedButtonProps}>
+          <button {...inheritedButtonProps} aria-label={this.tdsAriaLabel}>
             <tds-icon class="icon" name="burger" size="20px"></tds-icon>
           </button>
         </tds-header-item>

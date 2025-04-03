@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                                                                      | Type      | Default |
-| -------- | --------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- | ------- |
-| `active` | `active`  | If the button should appear active. Can be used when the button is triggering a dropdown, and the dropdown is open, for example. | `boolean` | `false` |
+| Property       | Attribute        | Description                                                                                                                      | Type      | Default     |
+| -------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------- |
+| `active`       | `active`         | If the button should appear active. Can be used when the button is triggering a dropdown, and the dropdown is open, for example. | `boolean` | `false`     |
+| `tdsAriaLabel` | `tds-aria-label` | Value to be used by the aria-label attribute                                                                                     | `string`  | `undefined` |
 
 
 ## Dependencies

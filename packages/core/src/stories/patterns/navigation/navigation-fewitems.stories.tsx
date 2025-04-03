@@ -80,7 +80,7 @@ const Template = () =>
       <tds-header>
         <!-- TODO setting aria-expanded="true" on the hamburger button does not work, as it is not
           copied to the button element -->
-        <tds-header-hamburger id="demo-hamburger" onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></tds-header-hamburger>
+        <tds-header-hamburger id="demo-hamburger" onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" tds-aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></tds-header-hamburger>
 
         <tds-header-title>
           Example: Few items
@@ -112,11 +112,11 @@ const Template = () =>
 
         <tds-header-item slot="end">
           <button onclick="alert('Calendar button clicked')">
-            <tds-icon name="calendar" size="20px"></tds-icon>
+            <tds-icon name="calendar" size="20px" svg-title="Calendar"></tds-icon>
           </button>
         </tds-header-item>
 
-        <tds-header-launcher slot="end" aria-label="Application launcher">
+        <tds-header-launcher slot="end" tds-aria-label="Example launcher menu">
           <tds-header-launcher-grid-title>Operations and Logistics</tds-header-launcher-grid-title>
           <tds-header-launcher-grid>
             <tds-header-launcher-grid-item>
@@ -168,7 +168,7 @@ const Template = () =>
 
         </tds-header-launcher>
 
-        <tds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-lg-show" selected>
+        <tds-header-dropdown tds-aria-label="Example dropdown menu" slot="end" placement="end" no-dropdown-icon class="demo-hide demo-lg-show" selected>
           <img slot="icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
           <tds-header-dropdown-list size="lg">
             <tds-header-dropdown-list-user
@@ -185,7 +185,7 @@ const Template = () =>
         </tds-header-dropdown>
 
         <tds-header-brand-symbol slot="end">
-          <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
+          <a href="https://scania.com" aria-label="Scania website"></a>
         </tds-header-brand-symbol>
 
       </tds-header>

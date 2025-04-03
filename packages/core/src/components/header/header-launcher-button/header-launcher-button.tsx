@@ -14,6 +14,9 @@ export class TdsHeaderLauncherButton {
    * triggering a dropdown, and the dropdown is open, for example. */
   @Prop() active = false;
 
+  /** Value to be used by the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
   private ariaAttributes: Attributes;
 
   render() {
@@ -25,8 +28,13 @@ export class TdsHeaderLauncherButton {
     return (
       <Host>
         <tds-header-item active={this.active}>
-          <button {...buttonProps}>
-            <tds-icon class="icon" name="bento" size="20px"></tds-icon>
+          <button {...buttonProps} aria-label={this.tdsAriaLabel}>
+            <tds-icon
+              class="icon"
+              name="bento"
+              size="20px"
+              svg-title={this.tdsAriaLabel}
+            ></tds-icon>
           </button>
         </tds-header-item>
       </Host>
