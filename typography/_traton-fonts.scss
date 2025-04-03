@@ -4,7 +4,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 @font-face {
   font-family: 'TRATON Type Display';
   src: url('#{$cdn}/fonts/traton-type/1.0.0/traton-type-display-medium.woff2') format('woff2'),
-    url('traton-type-display-medium.woff') format('woff');
+    url('#{$cdn}/fonts/traton-type/1.0.0/traton-type-display-medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
