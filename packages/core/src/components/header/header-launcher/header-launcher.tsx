@@ -1,4 +1,4 @@
-import { Component, Host, h, Element, Listen, State } from '@stencil/core';
+import { Component, Host, h, Element, Listen, State, Prop } from '@stencil/core';
 import { Attributes } from '../../../types/Attributes';
 import generateUniqueId from '../../../utils/generateUniqueId';
 import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
@@ -20,6 +20,9 @@ export class TdsHeaderLauncher {
 
   @State() hasListTypeMenu = false;
 
+  /** Value to be used by the aria-label attribute of the launcher button */
+  @Prop() tdsAriaLabel: string;
+
   private uuid: string = generateUniqueId();
 
   private ariaAttributes: Attributes;
@@ -33,6 +36,14 @@ export class TdsHeaderLauncher {
     }
   }
 
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.open) {
+      this.open = false;
+      this.buttonEl.shadowRoot.querySelector('button').focus();
+    }
+  }
+
   componentDidLoad() {
     const hasListTypeMenu = !!this.host.querySelector('tds-header-launcher-list');
     this.hasListTypeMenu = hasListTypeMenu;
@@ -40,6 +51,25 @@ export class TdsHeaderLauncher {
 
   toggleLauncher() {
     this.open = !this.open;
+
+    if (this.open) {
+      requestAnimationFrame(() => {
+        const selectors = "a, [tabindex='0']";
+
+        const firstFocusableElement =
+          this.host.shadowRoot.querySelector(selectors) || this.host.querySelector(selectors);
+
+        if (firstFocusableElement instanceof HTMLElement) {
+          firstFocusableElement.focus();
+        }
+      });
+    }
+  }
+
+  connectedCallback() {
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Header Launcher component: missing tdsAriaLabel prop');
+    }
   }
 
   render() {
@@ -68,7 +98,10 @@ export class TdsHeaderLauncher {
             'state-list-type-menu': this.hasListTypeMenu,
           }}
         >
-          <tds-header-launcher-button {...buttonAttributes}></tds-header-launcher-button>
+          <tds-header-launcher-button
+            {...buttonAttributes}
+            tds-aria-label={this.tdsAriaLabel}
+          ></tds-header-launcher-button>
 
           {this.buttonEl && (
             <tds-popover-canvas

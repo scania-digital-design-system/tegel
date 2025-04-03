@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property       | Attribute        | Description                                  | Type     | Default     |
+| -------------- | ---------------- | -------------------------------------------- | -------- | ----------- |
+| `tdsAriaLabel` | `tds-aria-label` | Value to be used by the aria-label attribute | `string` | `undefined` |
+
+
 ## Dependencies
 
 ### Depends on

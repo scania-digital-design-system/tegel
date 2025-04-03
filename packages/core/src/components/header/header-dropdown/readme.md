@@ -12,6 +12,7 @@
 | `label`          | `label`            | The label of the button that opens the dropdown. This is an alternative to the label slot. | `string`  | `undefined` |
 | `noDropdownIcon` | `no-dropdown-icon` | If the dropdown icon (downwards chevron) should be hidden.                                 | `boolean` | `false`     |
 | `selected`       | `selected`         | If the button that opens the dropdown should appear selected.                              | `boolean` | `false`     |
+| `tdsAriaLabel`   | `tds-aria-label`   | Value to be used by the aria-label attribute                                               | `string`  | `undefined` |
 
 
 ## Slots

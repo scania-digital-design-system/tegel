@@ -140,7 +140,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
   <div class="demo-layout">
     <tds-header class="demo-header">
-      <tds-header-hamburger onclick="demoSideMenu.open = true;" aria-expanded="false" aria-label="Open application drawer" aria-haspopup="true"></tds-header-hamburger>
+      <tds-header-hamburger onclick="demoSideMenu.open = true;" aria-expanded="false" tds-aria-label="Open application drawer" aria-haspopup="true"></tds-header-hamburger>
 
       <tds-header-title>
         My Application
@@ -149,7 +149,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
       <i style="color:white">Header items omitted for brevity. See patterns/navigation</i>
 
       <tds-header-brand-symbol slot="end">
-        <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
+        <a href="https://scania.com" aria-label="Scania website"></a>
       </tds-header-brand-symbol>
     </tds-header>
 

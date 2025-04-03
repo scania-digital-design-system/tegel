@@ -1,5 +1,6 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
+import hasSlot from '../../../utils/hasSlot';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For injecting a dropdown list.
@@ -24,6 +25,9 @@ export class TdsHeaderDropdown {
   /** If the button that opens the dropdown should appear selected. */
   @Prop() selected: boolean = false;
 
+  /** Value to be used by the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
   @State() open: boolean = false;
 
   @State() buttonEl?: HTMLButtonElement;
@@ -39,8 +43,30 @@ export class TdsHeaderDropdown {
     }
   }
 
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.open) {
+      this.open = false;
+      this.buttonEl.focus();
+    }
+  }
+
   toggleDropdown() {
     this.open = !this.open;
+    console.log('toglleDropdown');
+
+    if (this.open) {
+      requestAnimationFrame(() => {
+        const selectors = "a, [tabindex='0']";
+
+        const firstFocusableElement =
+          this.host.shadowRoot.querySelector(selectors) || this.host.querySelector(selectors);
+
+        if (firstFocusableElement instanceof HTMLElement) {
+          firstFocusableElement.focus();
+        }
+      });
+    }
   }
 
   handleSlottedItemClick = (event: MouseEvent | KeyboardEvent) => {
@@ -49,6 +75,14 @@ export class TdsHeaderDropdown {
       this.open = false;
     }
   };
+
+  connectedCallback() {
+    const hasLabelSlot = hasSlot('label', this.host);
+
+    if (!this.tdsAriaLabel && !hasLabelSlot) {
+      console.warn('Tegel Header Dropdown component: use label slot or specify tdsAriaLabel prop');
+    }
+  }
 
   render() {
     return (
@@ -69,6 +103,7 @@ export class TdsHeaderDropdown {
               onClick={() => {
                 this.toggleDropdown();
               }}
+              aria-label={this.tdsAriaLabel}
             >
               <slot name="icon"></slot>
               {this.label}
