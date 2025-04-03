@@ -1,6 +1,7 @@
 /* Traton Brand Usage Tokens */
 
 /* Light mode tokens (applied to .traton .tds-mode-light) */
+.traton,
 .traton .tds-mode-light {
   /* Foreground - Text */
   --foreground-text-strong: var(--traton-transparent-950);
