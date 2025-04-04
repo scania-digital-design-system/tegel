@@ -117,6 +117,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    hideReadonlyIcon: {
+      name: 'Hide Read Only Icon',
+      description: 'Hides the read-only icon in the Text Field. Requires Read Only to be enabled.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     disabled: {
       name: 'Disabled',
       description: 'Disables the Textarea.',
@@ -140,6 +150,7 @@ export default {
     maxLength: 0,
     noMinWidth: false,
     readonly: false,
+    hideReadonlyIcon: false,
     disabled: false,
   },
 };
@@ -156,6 +167,7 @@ const Template = ({
   maxLength,
   noMinWidth,
   readonly,
+  hideReadonlyIcon,
   disabled,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
@@ -187,6 +199,7 @@ const Template = ({
           label-position="${labelPosLookup[labelPosition]}"
           ${disabled ? 'disabled' : ''}
           ${readonly ? 'read-only' : ''}
+          ${hideReadonlyIcon ? 'hide-read-only-icon' : ''}
           ${noMinWidth ? 'no-min-width' : ''}
           placeholder="${placeholder}"
           ${maxlength}
@@ -209,6 +222,13 @@ const Template = ({
     textElement.addEventListener('tdsChange',(event) => {
       console.log(event)
     })
+
+    isReadOnly = textElement.hasAttribute('read-only') || textElement.readOnly === true || false
+    isDisabled = textElement.hasAttribute('disabled') || textElement.disabled === true || false
+
+    if(isReadOnly || isDisabled) {
+      textElement.value = 'Lorem ipsum odor amet, consectetuer adipiscing elit. Quis nunc facilisi ante, proin eros morbi.'
+    }
   </script>
   `);
 };

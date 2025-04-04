@@ -40,6 +40,9 @@ export class TdsTextarea {
   /** Set input in readonly state */
   @Prop() readOnly: boolean = false;
 
+  /** Hide the readonly icon */
+  @Prop() hideReadOnlyIcon: boolean = false;
+
   /** Error state of input */
   @Prop() state: 'error' | 'success' | 'default' = 'default';
 
@@ -56,7 +59,7 @@ export class TdsTextarea {
   @Prop() noMinWidth: boolean = false;
 
   /** Listen to the focus state of the input */
-  @State() focusInput;
+  @State() focusInput: boolean;
 
   /** Change event for the Textarea */
   @Event({
@@ -80,7 +83,7 @@ export class TdsTextarea {
   })
   tdsBlur: EventEmitter<FocusEvent>;
 
-  handleBlur(event): void {
+  handleBlur(event: FocusEvent): void {
     this.tdsBlur.emit(event);
     this.focusInput = false;
   }
@@ -95,9 +98,11 @@ export class TdsTextarea {
   tdsInput: EventEmitter<InputEvent>;
 
   // Data input event in value prop
-  handleInput(event): void {
-    this.value = event.target.value;
-    this.tdsInput.emit(event);
+  handleInput(event: InputEvent): void {
+    if (event.target instanceof HTMLInputElement) {
+      this.value = event.target.value;
+      this.tdsInput.emit(event);
+    }
   }
 
   /** Focus event for the Textarea */
@@ -110,10 +115,20 @@ export class TdsTextarea {
   tdsFocus: EventEmitter<FocusEvent>;
 
   /* Set the input as focus when clicking the whole textarea with suffix/prefix */
-  handleFocus(event): void {
+  handleFocus(event: FocusEvent): void {
     this.textEl.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
+  }
+
+  setModeVariant(modeVariant: 'primary' | 'secondary'): string | null {
+    if (this.readOnly && modeVariant === 'primary') {
+      return 'secondary';
+    }
+    if (this.readOnly && modeVariant === 'secondary') {
+      return 'primary';
+    }
+    return modeVariant;
   }
 
   render() {
@@ -124,8 +139,8 @@ export class TdsTextarea {
           'textarea-label-inside': this.labelPosition === 'inside',
           'textarea-focus': this.focusInput,
           'textarea-disabled': this.disabled,
-          'textarea-readonly': this.readOnly,
-          [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+          'textarea-readonly': !this.disabled && this.readOnly,
+          [`tds-mode-variant-${this.setModeVariant(this.modeVariant)}`]: true,
           'textarea-data': this.value !== '',
           [`textarea-${this.state}`]: this.state === 'error' || this.state === 'success',
           'no-min-width': this.noMinWidth,
@@ -135,11 +150,11 @@ export class TdsTextarea {
         <div class="textarea-wrapper">
           <textarea
             class={'textarea-input'}
-            ref={(inputEl) => {
-              this.textEl = inputEl as HTMLTextAreaElement;
+            ref={(inputEl: HTMLTextAreaElement) => {
+              this.textEl = inputEl;
             }}
             disabled={this.disabled}
-            readonly={this.readOnly}
+            readonly={!this.disabled && this.readOnly}
             placeholder={this.placeholder}
             value={this.value}
             name={this.name}
@@ -159,7 +174,7 @@ export class TdsTextarea {
             }}
             onInput={(event) => this.handleInput(event)}
             onChange={(event) => this.handleChange(event)}
-          ></textarea>
+          />
           <span class="textarea-resizer-icon">
             <svg
               width="12"
@@ -176,13 +191,19 @@ export class TdsTextarea {
               />
             </svg>
           </span>
-          <span class="textarea-icon__readonly">
-            <tds-icon name="edit_inactive"></tds-icon>
-          </span>
-          <span class="textarea-icon__readonly-label">This field is non-editable</span>
+          {!this.disabled && !this.hideReadOnlyIcon && this.readOnly && (
+            <span class="textarea-icon__readonly">
+              <tds-tooltip
+                placement="top-end"
+                text="This field is non-editable"
+                selector="#readonly-tooltip"
+              />
+              <tds-icon id="readonly-tooltip" name="edit_inactive" />
+            </span>
+          )}
         </div>
         <span class={'textarea-helper'}>
-          {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
+          {this.state === 'error' && !this.readOnly && <tds-icon name="error" size="16px" />}
           {this.helper}
         </span>
 
