@@ -1,10 +1,10 @@
 /* Colors */
-@import '../../../../color/traton-color-primitives';
-@import '../../../../color/_traton-usage-tokens';
+@import '../../../../color/traton/color-primitives';
+@import '../../../../color/traton/usage-tokens';
 
 /* Spacing */
-@import '../../../../spacing/traton-units';
+@import '../../../../spacing/traton/unit-tokens';
 
 /* Typography */
-@import '../../../../typography/traton-fonts';
-@import '../../../../typography/tokens/typography-traton';
+@import '../../../../typography/traton/font-faces';
+@import '../../../../typography/traton/typography-tokens';
