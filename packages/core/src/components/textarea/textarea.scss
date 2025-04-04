@@ -261,8 +261,12 @@
 
 //Disabled state
 .textarea-disabled {
+  cursor: not-allowed;
+
   .textarea-input {
     border-bottom-color: transparent;
+    pointer-events: none;
+    user-select: none;
   }
 
   .textarea-label {
@@ -283,7 +287,6 @@
 }
 
 //Read only state
-
 .textarea-icon__readonly {
   display: none;
   position: absolute;
@@ -309,20 +312,19 @@
 .textarea-readonly {
   .textarea-icon__readonly {
     display: block;
-
-    &:hover {
-      ~ .textarea-icon__readonly-label {
-        display: block;
-      }
-    }
   }
 
-  .textfield-input {
-    padding-right: 54px;
-    background-color: transparent;
+  .textarea-input {
+    border: 1px solid var(--tds-textarea-border-bottom-read-only-color);
   }
 
   .textfield-container {
     background-color: transparent;
+  }
+}
+
+.textarea-readonly:has(.textarea-icon__readonly) {
+  .textarea-input {
+    padding-right: 54px;
   }
 }
