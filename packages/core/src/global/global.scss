@@ -2,23 +2,16 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
-/* Multibrand tokens: Scania colors */
-@import '../../../../color/scania-color-primitives';
-@import '../../../../color/scania-brand-usage';
+/* Multibrand shared tokens */
 
-/* Multibrand tokens: Scania typography */
-@import '../../../../typography/tokens/typography-scania';
+/* Shared spacing */
+@import '../../../../spacing/shared/units';
+@import '../../../../spacing/shared/radius';
 
-/* Multibrand tokens: Scania spacing */
-@import '../../../../spacing/units';
-@import '../../../../spacing/radius';
-@import '../../../../spacing/scania-units';
-
-// Motion
+/* Shared motion */
 @import '../../../../motion/';
 
-// Colors
-@import '../../../../color/color';
+/* Shared grid */
 
 // Grid (Deprecated - will be removed in version 2.0)
 @import '../../../../grid-deprecated/grid-deprecated';
@@ -26,8 +19,22 @@
 // Grid new
 @import '../../../../grid/grid';
 
+/* Scania colors */
+@import '../../../../color/scania/color-primitives';
+@import '../../../../color/scania/usage-tokens';
+
+/* Scania typography */
+@import '../../../../typography/scania/typography-tokens';
+
+/* Scania spacing */
+@import '../../../../spacing/scania/unit-tokens';
+
+/* Old tokens(current) below */
+
+// Colors
+@import '../../../../color/color';
+
 // Typography
-@import '../../../../typography/scania-fonts';
 @import '../../../../typography/scania-fonts-vars';
 @import '../../../../typography/scania-fonts-selectors';
 
