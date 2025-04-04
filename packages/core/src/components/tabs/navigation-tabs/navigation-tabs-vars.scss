@@ -2,7 +2,9 @@
 .tds-mode-light {
   /* Horizontal divider */
   --tds-navigation-tabs-horizontal-divider-background: var(--tds-grey-300);
-  --tds-navigation-tabs-background: var(--tds-white);
+  --tds-navigation-tabs-tab-background-primary: var(--tds-white);
+  --tds-navigation-tabs-tab-background-secondary: var(--tds-grey-50);
+  --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
 
   /* Scroll button */
   --tds-navigation-tabs-scroll-btn-background: var(--tds-grey-50);
@@ -20,11 +22,19 @@
   --tds-navigation-tabs-tab-color-active: var(--tds-grey-958);
   --tds-navigation-tabs-tab-indicator-background-active: var(--tds-blue-400);
   --tds-navigation-tabs-tab-indicator-background-hover: #d1d5db;
+
+  .tds-mode-variant-primary {
+    --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-secondary);
+  }
 }
 
 .tds-mode-dark {
   --tds-navigation-tabs-horizontal-divider-background: var(--tds-grey-800);
-  --tds-navigation-tabs-background: var(--tds-grey-900);
+  --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
 
   /* Scroll button */
   --tds-navigation-tabs-scroll-btn-background: var(--tds-grey-800);
@@ -42,4 +52,12 @@
   --tds-navigation-tabs-tab-color-active: var(--tds-grey-50);
   --tds-navigation-tabs-tab-indicator-background-active: var(--tds-blue-300);
   --tds-navigation-tabs-tab-indicator-background-hover: #373d46;
+
+  .tds-mode-variant-primary {
+    --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-secondary);
+  }
 }
