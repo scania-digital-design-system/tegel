@@ -12,7 +12,7 @@ html {
   }
 
   // Fallback local assets - only for specific logotypes that need local fallbacks
-  --#{$prefix}-background-image-scania-wordmark-white-svg: url('./assets/logos/scania-wordmark-white.svg');
-  --#{$prefix}-background-image-scania-symbol-svg: url('./assets/logos/scania-symbol.svg');
-  --#{$prefix}-background-image-scania-symbol-png: url('./assets/logos/scania-symbol.png');
+  --#{$prefix}-background-image-scania-wordmark-white-svg-local: url('./assets/logos/scania-wordmark-white.svg');
+  --#{$prefix}-background-image-scania-symbol-svg-local: url('./assets/logos/scania-symbol.svg');
+  --#{$prefix}-background-image-scania-symbol-png-local: url('./assets/logos/scania-symbol.png');
 }
