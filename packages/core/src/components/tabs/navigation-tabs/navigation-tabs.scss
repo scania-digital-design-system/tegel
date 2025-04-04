@@ -5,7 +5,7 @@
   @include tds-box-sizing;
 
   display: flex;
-  background-color: var(--tds-inline-tabs-background);
+  background-color: var(--tds-navigation-tabs-background);
   position: relative;
 
   &::after {
