@@ -5,14 +5,13 @@
   @include tds-box-sizing;
 
   display: flex;
-  background-color: var(--tds-inline-tabs-background);
+  background-color: var(--tds-navigation-tabs-background);
   position: relative;
 
   &::after {
     content: ' ';
     display: block;
-    border-bottom: 1px solid var(--tds-inline-tabs-horizontal-divider-background);
-    opacity: var(--tds-inline-tabs-horizontal-divider-opacity);
+    border-bottom: 1px solid var(--tds-navigation-tabs-horizontal-divider-background);
     left: 0;
     right: 0;
     bottom: 0;
