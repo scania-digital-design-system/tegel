@@ -1,0 +1,15 @@
+:root {
+  /* Radius tokens */
+  --radius-narrow: var(--radius-s);
+  --radius-soft: var(--radius-md);
+  --radius-rounded: var(--radius-3xl);
+  --radius-circle: (--radius-full);
+
+  /* Radius for-surface tokens */
+  --radius-surface-clickable: var(--radius-full);
+  --radius-surface-field: var(--radius-xs);
+
+  /* Radius for-area tokens */
+  --radius-area-large: var(--radius-md);
+  --radius-area-small: var(--radius-sm);
+}
