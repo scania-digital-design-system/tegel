@@ -82,7 +82,7 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
         topSlot
           ? `
       <div slot="top">
-        <tds-footer-group title-text="Title">
+        <tds-footer-group title-text="Title" tds-aria-label="Links 1">
           <tds-footer-item >
             <a href="#"> Link text</a>
           </tds-footer-item>
@@ -94,7 +94,7 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
           </tds-footer-item>
         </tds-footer-group>
 
-        <tds-footer-group title-text="Title">
+        <tds-footer-group title-text="Title" tds-aria-label="Links 2">
           <tds-footer-item >
             <a href="#"> Link text</a>
           </tds-footer-item>
@@ -106,7 +106,7 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
           </tds-footer-item>
         </tds-footer-group>
 
-        <tds-footer-group title-text="Title">
+        <tds-footer-group title-text="Title" tds-aria-label="Links 3">
           <tds-footer-item >
             <a href="#"> Link text</a>
           </tds-footer-item>
@@ -118,7 +118,7 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
           </tds-footer-item>
         </tds-footer-group>
 
-        <tds-footer-group title-text="Title">
+        <tds-footer-group title-text="Title" tds-aria-label="Links 4">
           <tds-footer-item >
             <a href="#"> Link text</a>
           </tds-footer-item>
@@ -137,7 +137,7 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
         startSlot
           ? `
       <div slot="start">
-        <tds-footer-group>
+        <tds-footer-group tds-aria-label="Start slot links">
           <tds-footer-item >
             <a href="#"> Link text</a>
           </tds-footer-item>
@@ -159,15 +159,15 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
         endSlot
           ? `
       <div slot="end">
-        <tds-footer-group>
+        <tds-footer-group tds-aria-label="End slot links">
           <tds-footer-item >
-            <a href="#"> <tds-icon name="truck"></tds-icon></a>
+            <a href="#"> <tds-icon name="truck" svg-title="Truck"></tds-icon></a>
           </tds-footer-item>
           <tds-footer-item >
-            <a href="#"> <tds-icon name="truck"></tds-icon></a>
+            <a href="#"> <tds-icon name="truck" svg-title="Truck"></tds-icon></a>
           </tds-footer-item>
           <tds-footer-item >
-            <a href="#"> <tds-icon name="truck"></tds-icon></a>
+            <a href="#"> <tds-icon name="truck" svg-title="Truck"></tds-icon></a>
           </tds-footer-item>
         </tds-footer-group>
       </div>

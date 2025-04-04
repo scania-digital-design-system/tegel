@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property    | Attribute    | Description                                                      | Type     | Default     |
-| ----------- | ------------ | ---------------------------------------------------------------- | -------- | ----------- |
-| `titleText` | `title-text` | Title text for the link group, only valid on top part of Footer. | `string` | `undefined` |
+| Property       | Attribute        | Description                                                                                                     | Type     | Default     |
+| -------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
+| `tdsAriaLabel` | `tds-aria-label` | Value to be used for the aria-label attribute for the nav element. Should be unique for improved accessibility. | `string` | `undefined` |
+| `titleText`    | `title-text`     | Title text for the link group, only valid on top part of Footer.                                                | `string` | `undefined` |
 
 
 ## Slots

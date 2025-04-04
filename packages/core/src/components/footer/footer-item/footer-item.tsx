@@ -1,4 +1,4 @@
-import { Component, Element, h } from '@stencil/core';
+import { Component, Element, h, Host } from '@stencil/core';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For slotting a link, button, or similar.
@@ -19,9 +19,11 @@ export class TdsFooterItem {
 
   render() {
     return (
-      <div role="listitem" class={`${this.parentIsTopPart ? 'top-part-child' : ''}`}>
-        <slot></slot>
-      </div>
+      <Host role="listitem">
+        <div class={`${this.parentIsTopPart ? 'top-part-child' : ''}`}>
+          <slot></slot>
+        </div>
+      </Host>
     );
   }
 }

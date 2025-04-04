@@ -14,6 +14,9 @@ export class TdsFooterGroup {
   /** Title text for the link group, only valid on top part of Footer. */
   @Prop() titleText: string;
 
+  /** Value to be used for the aria-label attribute for the nav element. Should be unique for improved accessibility. */
+  @Prop() tdsAriaLabel: string;
+
   /** In mobile, this indicates when the group (if it's in the top part) is opened/closed. */
   @State() open: boolean = false;
 
@@ -29,14 +32,16 @@ export class TdsFooterGroup {
     if (!this.topPartGroup) {
       this.slotPosition = this.host.parentElement.slot === 'end' ? 'end' : 'start';
     }
+
+    if (!this.tdsAriaLabel) {
+      console.warn('Tegel Footer Group component: missing tdsAriaLabel prop');
+    }
   }
 
   render() {
     return (
-      <Host>
-        {this.titleText && this.topPartGroup && (
-          <div class="footer-top-title">{this.titleText}</div>
-        )}
+      <Host aria-expanded={this.open}>
+        {this.titleText && this.topPartGroup && <h4 class="footer-top-title">{this.titleText}</h4>}
 
         {this.titleText && this.topPartGroup && (
           <button
@@ -46,17 +51,20 @@ export class TdsFooterGroup {
             class={`footer-top-title-button  ${this.open ? 'expanded' : 'closed'}`}
           >
             {this.titleText}
-            <tds-icon name="chevron_down" size="20px"></tds-icon>
+            <tds-icon name="chevron_down" size="20px" aria-hidden="true"></tds-icon>
           </button>
         )}
-        <div
-          role="list"
-          class={`${this.slotPosition ? this.slotPosition : ''}
+
+        <nav aria-label={this.tdsAriaLabel}>
+          <div
+            role="list"
+            class={`${this.slotPosition ? this.slotPosition : ''}
             ${this.topPartGroup ? 'top-part-child' : ''}
             ${this.open ? 'expanded' : 'closed'}`}
-        >
-          <slot></slot>
-        </div>
+          >
+            <slot></slot>
+          </div>
+        </nav>
       </Host>
     );
   }
