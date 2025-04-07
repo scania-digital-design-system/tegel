@@ -227,8 +227,8 @@ const Template = ({
  <!-- Style code below is just for demo purposes -->
     <style>
       .demo-wrapper {
-          width: 500px;
-          margin-left: 150px;
+          max-width: 500px;
+          margin-left: 25px;
       }
     </style>
 
