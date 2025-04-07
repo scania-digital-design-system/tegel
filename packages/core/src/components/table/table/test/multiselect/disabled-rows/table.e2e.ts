@@ -25,18 +25,18 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('can check enabled checkbox in the table', async ({ page }) => {
-      const tableCheckboxes = page.getByRole('cell');
-      await expect(tableCheckboxes).toHaveCount(5);
+      const tableCheckboxLabels = page.locator(
+        'tds-table-body-row:not([disabled]) tds-checkbox label',
+      );
+      await expect(tableCheckboxLabels).toHaveCount(2);
 
       const myEventSpyAll = await page.spyOnEvent('tdsSelectAll');
       const myEventSpy = await page.spyOnEvent('tdsSelect');
 
       /* Click each one */
-      await tableCheckboxes.first().click();
-      await tableCheckboxes.nth(1).click();
-      await tableCheckboxes.nth(2).click();
-      await tableCheckboxes.nth(3).click();
-      await tableCheckboxes.last().click();
+      for (let i = 0; i < 2; i++) {
+        await tableCheckboxLabels.nth(i).click();
+      }
 
       /* check so correct events have been called */
       expect(myEventSpyAll).toHaveReceivedEventTimes(0);

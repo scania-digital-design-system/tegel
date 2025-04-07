@@ -47,6 +47,9 @@ export class TdsTableHeaderCell {
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
 
+  /** Aria label for the sort button, providing an accessible description */
+  @Prop({ reflect: true }) tdsAriaLabelSortButton?: string = '';
+
   @State() textAlignState: string;
 
   @State() sortingDirection: 'asc' | 'desc' | undefined;
@@ -204,6 +207,7 @@ export class TdsTableHeaderCell {
           class="tds-table__header-button"
           onClick={() => this.sortButtonClick()}
           style={{ justifyContent: this.textAlignState }}
+          aria-label={this.tdsAriaLabelSortButton}
         >
           <span class="tds-table__header-button-text">
             {this.cellValue}
@@ -211,10 +215,16 @@ export class TdsTableHeaderCell {
           </span>
 
           {this.sortingDirection === undefined && (
-            <tds-icon class="tds-table__header-button-icon" name="sorting" size="16px"></tds-icon>
+            <tds-icon
+              svgTitle="sorting"
+              class="tds-table__header-button-icon"
+              name="sorting"
+              size="16px"
+            ></tds-icon>
           )}
           {this.sortingDirection && ['asc', 'desc'].includes(this.sortingDirection) && (
             <tds-icon
+              svgTitle="arrow down"
               class={`tds-table__header-button-icon ${
                 this.sortingDirection === 'asc' ? 'tds-table__header-button-icon--rotate' : ''
               }`}
@@ -246,6 +256,12 @@ export class TdsTableHeaderCell {
     });
   };
 
+  private getAriaSort(): 'ascending' | 'descending' | 'none' {
+    if (this.sortingDirection === 'asc') return 'ascending';
+    if (this.sortingDirection === 'desc') return 'descending';
+    return 'none';
+  }
+
   render() {
     return (
       <Host
@@ -264,6 +280,8 @@ export class TdsTableHeaderCell {
         style={{ minWidth: this.customWidth }}
         onMouseOver={() => this.onHeadCellHover(this.cellKey)}
         onMouseLeave={() => this.onHeadCellHover('')}
+        role="columnheader"
+        aria-sort={this.getAriaSort()}
       >
         {this.headerCellContent()}
       </Host>
