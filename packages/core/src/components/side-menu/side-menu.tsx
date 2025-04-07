@@ -42,7 +42,7 @@ export class TdsSideMenu {
   @Element() host: HTMLTdsSideMenuElement;
 
   /** Applicable only for mobile. If the Side Menu is open or not. */
-  @Prop() open: boolean = false;
+  @Prop({ mutable: true }) open: boolean = false;
 
   /** Applicable only for desktop. If the Side Menu should always be shown. */
   @Prop() persistent: boolean = false;
@@ -58,6 +58,9 @@ export class TdsSideMenu {
   /* To preserved initial state of collapsed prop as it is changed in runtime */
   @State() initialCollapsedState: boolean = false;
 
+  /** @internal Tracks the currently focused element index for keyboard navigation */
+  @State() activeElementIndex: number = 0;
+
   private matchesLgBreakpointMq: MediaQueryList;
 
   handleMatchesLgBreakpointChange: (e: MediaQueryListEvent) => void = (e) => {
@@ -68,6 +71,13 @@ export class TdsSideMenu {
       this.collapsed = this.initialCollapsedState;
     }
   };
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.open) {
+      this.open = false;
+    }
+  }
 
   connectedCallback() {
     this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT}px)`);
@@ -102,6 +112,77 @@ export class TdsSideMenu {
     });
 
     this.isCollapsed = newVal;
+  }
+
+  @Watch('open')
+  onOpenChange(newVal: boolean) {
+    if (newVal) {
+      // When menu opens, focus the first interactive element
+      setTimeout(() => {
+        const focusableElements = this.getFocusableElements();
+        if (focusableElements.length > 0) {
+          this.activeElementIndex = 0;
+          focusableElements[0].focus();
+        }
+      }, 100);
+    }
+  }
+
+  private getFocusableElements(): HTMLElement[] {
+    const focusableSelectors = [
+      'a[href]',
+      'button:not([disabled])',
+      'textarea:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])',
+    ].join(',');
+
+    const focusableInShadowRoot = Array.from(
+      this.host.shadowRoot.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+    const focusableInSlots = Array.from(
+      this.host.querySelectorAll<HTMLElement>(focusableSelectors),
+    );
+
+    /** Focusable elements */
+    return [...focusableInShadowRoot, ...focusableInSlots];
+  }
+
+  @Listen('keydown', { target: 'window', capture: true })
+  handleFocusTrap(event: KeyboardEvent) {
+    // Only trap focus if the menu is open
+    if (!this.open) return;
+
+    // We care only about the Tab key
+    if (event.key !== 'Tab') return;
+
+    const focusableElements = this.getFocusableElements();
+
+    // If there are no focusable elements
+    if (focusableElements.length === 0) return;
+
+    // Prevent default tab behavior
+    event.preventDefault();
+
+    // Going backwards (Shift + Tab) on the first element => move to last
+    if (event.shiftKey) {
+      this.activeElementIndex -= 1;
+      if (this.activeElementIndex < 0) {
+        this.activeElementIndex = focusableElements.length - 1;
+      }
+    }
+    // Going forwards (Tab) on the last element => move to first
+    else {
+      this.activeElementIndex += 1;
+      if (this.activeElementIndex >= focusableElements.length) {
+        this.activeElementIndex = 0;
+      }
+    }
+
+    // Focus the next element
+    const nextElement = focusableElements[this.activeElementIndex];
+    nextElement.focus();
   }
 
   /** Event that is emitted when the Side Menu is collapsed. */
@@ -139,12 +220,12 @@ export class TdsSideMenu {
   render() {
     return (
       <Host
-        role="navigation"
         class={{
           'menu-opened': this.open,
           'menu-persistent': this.persistent,
           'menu-collapsed': this.collapsed,
         }}
+        aria-expanded={!this.collapsed ? 'true' : 'false'}
       >
         <div
           class={{
@@ -156,16 +237,22 @@ export class TdsSideMenu {
         >
           <slot name="overlay"></slot>
           <aside class={`menu`}>
-            <slot name="close-button"></slot>
-            <div class="tds-side-menu-wrapper">
-              <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
-                <slot></slot>
-              </ul>
-              <ul class={`tds-side-menu-list tds-side-menu-list-end`}>
-                <slot name="end"></slot>
-              </ul>
+            <div role="navigation">
+              <slot name="close-button"></slot>
+              <div class="tds-side-menu-wrapper">
+                <ul class={`tds-side-menu-list tds-side-menu-list-upper`}>
+                  <li>
+                    <slot></slot>
+                  </li>
+                </ul>
+                <ul class={`tds-side-menu-list tds-side-menu-list-end`}>
+                  <li>
+                    <slot name="end"></slot>
+                  </li>
+                </ul>
+              </div>
+              <slot name="sticky-end"></slot>
             </div>
-            <slot name="sticky-end"></slot>
           </aside>
         </div>
       </Host>
