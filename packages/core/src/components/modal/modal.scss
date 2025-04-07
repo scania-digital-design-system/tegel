@@ -91,7 +91,7 @@ $modals: (
 
 @mixin modal-header {
   display: flex;
-  padding: var(--space-small);
+  padding: 16px;
   position: sticky;
   top: 0;
   background-color: var(--background-elevation-layer-02);
@@ -111,7 +111,7 @@ $modals: (
 
   color: var(--foreground-text-strong);
   overflow-y: visible;
-  padding: 0 var(--space-small) var(--space-small);
+  padding: 0 16px 16px;
   @include modal-scroll-inner;
 }
 
@@ -155,9 +155,9 @@ $modals: (
       left: 0;
       right: 0;
       background-color: var(--background-elevation-layer-02);
-      padding: var(--space-medium) var(--space-small) var(--space-small);
+      padding: 24px 16px 16px;
       display: flex;
-      gap: var(--space-small);
+      gap: 16px;
     }
   }
 
@@ -165,8 +165,8 @@ $modals: (
     slot[name='actions'] {
       background-color: var(--background-elevation-layer-02);
       display: flex;
-      gap: var(--space-small);
-      padding: var(--space-medium) var(--space-small) var(--space-small);
+      gap: 16px;
+      padding: 24px 16px 16px;
     }
   }
 }
@@ -235,11 +235,11 @@ button.tds-modal-close {
   }
 
   @media (min-width: $screen-s) {
-    margin-left: var(--space-small);
+    margin-left: 16px;
   }
 
   @media (min-width: $screen-l) {
-    margin-left: var(--space-large);
+    margin-left: 48px;
   }
 }
 
@@ -251,11 +251,11 @@ button.tds-modal-close {
   cursor: pointer;
 
   @media (min-width: $screen-s) {
-    margin-left: var(--space-small);
+    margin-left: 16px;
   }
 
   @media (min-width: $screen-l) {
-    margin-left: var(--space-large);
+    margin-left: 48px;
   }
 
   svg {
@@ -273,7 +273,7 @@ button.tds-modal-close {
   @include tds-box-sizing;
   @include modal-position;
 
-  padding: 0 var(--space-small);
+  padding: 0 16px;
   z-index: tds-z-index(modal);
   pointer-events: none;
 
