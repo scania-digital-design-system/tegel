@@ -36,6 +36,9 @@ export class TdsToast {
   /** ARIA role for the Toast. */
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
 
+  /** Provides an accessible name for the components close button */
+  @Prop() tdsCloseAriaLabel: string;
+
   /** Hides the Toast. */
   @Method()
   async hideToast() {
@@ -98,6 +101,7 @@ export class TdsToast {
     const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <Host
+        aria-live="polite"
         toastRole={this.toastRole}
         aria-describedby={this.host.getAttribute('aria-describedby')}
         class={{
@@ -130,7 +134,7 @@ export class TdsToast {
           </div>
 
           {this.closable && (
-            <button onClick={this.handleClose} class="close">
+            <button id="my-button" aria-label={this.tdsCloseAriaLabel} onClick={this.handleClose} class="close">
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           )}
