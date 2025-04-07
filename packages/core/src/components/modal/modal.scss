@@ -3,15 +3,18 @@
 @import '../../mixins/focus-state';
 @import '../../../../../typography/utilities/typography-utility';
 
-//TODO: Find a way to create a mixin in spacings that can be used for screen size in rem
-//Media rules doesn't calculate correct with using rem
 // Screen breakpoints
-$screen-s: 320px; //320px
-$screen-md: 672px; // 672px
-$screen-l: 1056px; //1056px
-$screen-xl: 1312px; //1312px
-$screen-xxl: 1584px; //1584px
+$screen-s: 320px;
+$screen-md: 672px;
+$screen-l: 1056px;
+$screen-xl: 1312px;
+$screen-xxl: 1584px;
 
+// Modal dimensions
+$modal-max-height: 85vh;
+$modal-actions-height: 36px;
+$scrollbar-width: 6px;
+$scrollbar-radius: 3px;
 $modals: (
   $screen-s: (
     xs: 100%,
@@ -47,45 +50,19 @@ $modals: (
 
 /* MIXINS */
 
-@mixin modal-scroll-inner {
-  /* SCROLL STUFF */
-
-  /* width */
+@mixin modal-scrollbar {
   &::-webkit-scrollbar {
-    width: 6px;
+    width: $scrollbar-width;
     background-color: transparent;
   }
 
-  /* Track */
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
 
-  /* Handle */
   &::-webkit-scrollbar-thumb {
-    background-color: var(--units-radius-transparparent-discrete, deeppink);
-    border-radius: 3px;
-  }
-}
-
-@mixin modal-scroll-outer {
-  /* SCROLL STUFF */
-
-  /* width */
-  &::-webkit-scrollbar {
-    width: 6px;
-    background-color: transparent;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--units-radius-transparparent-discrete, deeppink);
-    border-radius: 3px;
+    background-color: var(--foreground-elements-transparparent-discrete);
+    border-radius: $scrollbar-radius;
   }
 }
 
@@ -112,7 +89,7 @@ $modals: (
   color: var(--foreground-text-strong);
   overflow-y: visible;
   padding: 0 16px 16px;
-  @include modal-scroll-inner;
+  @include modal-scrollbar;
 }
 
 @mixin modal-position {
@@ -132,11 +109,10 @@ $modals: (
   margin: auto;
   position: relative;
   border-radius: var(--radius-narrow);
-  max-height: 85vh;
+  max-height: $modal-max-height;
   overflow-y: auto;
   pointer-events: auto;
-
-  @include modal-scroll-outer;
+  @include modal-scrollbar;
 
   &__actions-sticky {
     overflow: hidden;
@@ -146,7 +122,7 @@ $modals: (
     .body {
       @include body-01;
 
-      max-height: calc(85vh - 36px);
+      max-height: calc(#{$modal-max-height} - #{$modal-actions-height});
       overflow-y: auto;
     }
 
@@ -181,6 +157,7 @@ $modals: (
     }
   }
 }
+
 @media (max-width: $screen-s) {
   .tds-modal-md,
   .tds-modal-lg,
@@ -243,7 +220,6 @@ button.tds-modal-close {
   }
 }
 
-//web component with nested svg
 .tds-modal-close-btn {
   display: inline-block;
   height: auto;
