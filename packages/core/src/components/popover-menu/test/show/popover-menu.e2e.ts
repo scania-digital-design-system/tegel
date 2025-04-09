@@ -32,7 +32,7 @@ test.describe.parallel(componentName, () => {
     page,
   }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-    const dropDownList = page.getByRole('list');
+    const dropDownList = page.getByRole('menu');
 
     await expect(triggerButton).toBeVisible();
     await expect(dropDownList).toBeVisible();
