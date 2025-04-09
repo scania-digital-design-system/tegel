@@ -91,7 +91,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) =>
     <tds-step state="error" index="2">
       <div slot="label">Error step</div>
     </tds-step>
-    <tds-step state="current" index="3">
+    <tds-step state="current" index="3" tds-aria-current="step">
       <div slot="label">Current step</div>
     </tds-step>
     <tds-step index="4">

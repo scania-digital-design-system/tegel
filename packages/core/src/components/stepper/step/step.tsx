@@ -23,6 +23,8 @@ export class TdsStep {
   /** State of the Step */
   @Prop() state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
 
+  @Prop() tdsAriaCurrent: string;
+
   @State() hideLabels: boolean;
 
   @State() size: 'sm' | 'lg';
@@ -65,6 +67,7 @@ export class TdsStep {
       <Host>
         <div
           role="listitem"
+          aria-current={this.tdsAriaCurrent}
           class={`${this.size} ${this.orientation} text-${this.labelPosition} ${
             this.hideLabels ? 'hide-labels' : ''
           }`}
@@ -72,6 +75,7 @@ export class TdsStep {
           <span class={`${this.state} content-container`}>
             {this.state === 'success' || this.state === 'error' ? (
               <tds-icon
+                svgTitle={`tds-step-icon-${this.stepperId}`}
                 class={'tds-step-icon'}
                 name={this.state === 'success' ? 'tick' : 'warning'}
                 size={this.size === 'lg' ? '20px' : '16px'}
