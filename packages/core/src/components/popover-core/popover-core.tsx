@@ -120,6 +120,13 @@ export class TdsPopoverCore {
     }
   }
 
+  @Listen('keydown', { target: 'window' })
+  handleFocusTrap(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isShown) {
+      this.setIsShown(false);
+    }
+  }
+
   /* To observe any change of show prop after an initial load */
   @Watch('show')
   onShowChange(newValue: boolean) {
@@ -288,7 +295,11 @@ export class TdsPopoverCore {
     const classList = generateClassList(classes);
 
     return (
-      <Host class={classList} id={`tds-popover-core-${this.uuid}`}>
+      <Host
+        role={this.host.getAttribute('role')}
+        class={classList}
+        id={`tds-popover-core-${this.uuid}`}
+      >
         <slot></slot>
       </Host>
     );

@@ -11,7 +11,7 @@ export class TdsPopoverMenuItem {
 
   render() {
     return (
-      <Host role="listitem">
+      <Host role="menuitem" aria-disabled={this.disabled}>
         <div
           class={{
             wrapper: true,

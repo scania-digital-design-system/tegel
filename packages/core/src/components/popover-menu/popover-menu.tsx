@@ -79,7 +79,7 @@ export class TdsPopoverMenu {
           defaultShow={this.defaultShow}
           animation={this.animation}
         >
-          <div role="list">
+          <div role="menu">
             <slot></slot>
           </div>
         </tds-popover-core>
