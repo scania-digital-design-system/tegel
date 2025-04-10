@@ -21,6 +21,7 @@ export class Icon {
   /** Override the default title for the svg. Also used by aria-labelledby. */
   @Prop() svgTitle?: string;
 
+  /** Set aria-hidden attribute on svg */
   @Prop() tdsAriaHidden: boolean = false;
 
   /** Set description for the svg. Also used by aria-describedby. */
