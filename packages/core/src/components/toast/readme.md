@@ -13,6 +13,7 @@
 | `header`            | `header`               | Header text for the component.                              | `string`                                             | `undefined`          |
 | `hidden`            | `hidden`               | Hides the Toast.                                            | `boolean`                                            | `false`              |
 | `subheader`         | `subheader`            | Subheader text for the component.                           | `string`                                             | `undefined`          |
+| `tdsAriaLive`       | `tds-aria-live`        | ARIA live for the Toast.                                    | `"assertive" \| "polite"`                            | `'polite'`           |
 | `tdsCloseAriaLabel` | `tds-close-aria-label` | Provides an accessible name for the components close button | `string`                                             | `undefined`          |
 | `toastId`           | `toast-id`             | ID for the Toast. Randomly generated if not specified.      | `string`                                             | `generateUniqueId()` |
 | `toastRole`         | `toast-role`           | ARIA role for the Toast.                                    | `"alert" \| "log" \| "status"`                       | `'alert'`            |

@@ -39,6 +39,9 @@ export class TdsToast {
   /** Provides an accessible name for the components close button */
   @Prop() tdsCloseAriaLabel: string;
 
+  /** ARIA live for the Toast. */
+  @Prop() tdsAriaLive: 'polite' | 'assertive' = 'polite';
+
   /** Hides the Toast. */
   @Method()
   async hideToast() {
@@ -95,13 +98,19 @@ export class TdsToast {
     }
   };
 
+  connectedCallback() {
+    if (!this.tdsCloseAriaLabel) {
+      console.warn('tds-toast: tdsCloseAriaLabel is required');
+    }
+  }
+
   render() {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
     return (
       <Host
-        aria-live="polite"
+        aria-live={this.tdsAriaLive}
         toastRole={this.toastRole}
         aria-describedby={this.host.getAttribute('aria-describedby')}
         class={{
@@ -134,7 +143,12 @@ export class TdsToast {
           </div>
 
           {this.closable && (
-            <button id="my-button" aria-label={this.tdsCloseAriaLabel} onClick={this.handleClose} class="close">
+            <button
+              id="my-button"
+              aria-label={this.tdsCloseAriaLabel}
+              onClick={this.handleClose}
+              class="close"
+            >
               <tds-icon name="cross" size="20px"></tds-icon>
             </button>
           )}
