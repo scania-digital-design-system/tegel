@@ -53,7 +53,6 @@ export class TdsHeaderDropdown {
 
   toggleDropdown() {
     this.open = !this.open;
-    console.log('toglleDropdown');
 
     if (this.open) {
       requestAnimationFrame(() => {
