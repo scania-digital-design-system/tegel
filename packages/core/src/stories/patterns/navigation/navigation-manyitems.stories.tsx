@@ -101,7 +101,7 @@ const Template = ({ dummyHtml }) =>
 
   <div class="demo-layout">
     <tds-header class="demo-header">
-      <tds-header-hamburger onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></tds-header-hamburger>
+      <tds-header-hamburger onclick="demoSideMenu.open = true;demoHamburger.setAttribute('aria-expanded', true);" tds-aria-label="Open application drawer" aria-haspopup="true" aria-expanded="false"></tds-header-hamburger>
 
       <tds-header-title>
         Example: Many items
@@ -109,11 +109,11 @@ const Template = ({ dummyHtml }) =>
 
       <tds-header-item slot="end">
         <button onclick="alert('clicked')">
-          <tds-icon name="calendar" size="20px"></tds-icon>
+          <tds-icon name="calendar" size="20px" svg-title="Calendar"></tds-icon>
         </button>
       </tds-header-item>
 
-      <tds-header-launcher slot="end">
+      <tds-header-launcher slot="end" tds-aria-label="Example launcher menu">
         <tds-header-launcher-list-title>Good</tds-header-launcher-list-title>
         <tds-header-launcher-list>
           <tds-header-launcher-list-item>
@@ -149,7 +149,7 @@ const Template = ({ dummyHtml }) =>
         </tds-header-launcher-list>
       </tds-header-launcher>
       
-      <tds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-xs-show">
+      <tds-header-dropdown slot="end" placement="end" no-dropdown-icon class="demo-hide demo-xs-show" tds-aria-label="Example dropdown menu">
         <img slot="icon" src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User menu."/>
         <tds-header-dropdown-list size="lg">
           <tds-header-dropdown-list-user
@@ -167,7 +167,7 @@ const Template = ({ dummyHtml }) =>
       
       
       <tds-header-brand-symbol slot="end">
-        <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
+        <a href="https://scania.com" aria-label="Scania website"></a>
       </tds-header-brand-symbol>
 
     </tds-header>

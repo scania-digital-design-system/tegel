@@ -57,7 +57,7 @@ const Template = () =>
       Example: default
     </tds-header-title>
 
-    <tds-header-launcher slot="end">
+    <tds-header-launcher slot="end" tds-aria-label="Example launcher menu">
       <tds-header-launcher-list-title>Cool apps</tds-header-launcher-list-title>
       <tds-header-launcher-list>
         <tds-header-launcher-list-item>
@@ -74,7 +74,7 @@ const Template = () =>
 
 
     <tds-header-brand-symbol slot="end">
-      <a aria-label="Scania - red gryphon on blue shield" href="https://scania.com"></a>
+      <a href="https://scania.com" aria-label="Scania website"></a>
     </tds-header-brand-symbol>
 
   </tds-header>
