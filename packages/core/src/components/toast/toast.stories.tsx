@@ -90,6 +90,7 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) =>
         ${subheader ? `subheader="${subheader}"` : ''}
         ${hidden ? 'hidden' : ''}
         closable="${closable ? 'true' : 'false'}"
+        tds-close-aria-label="Toast close button"
     >
     ${actions || ''}
     </tds-toast>
