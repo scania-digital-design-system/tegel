@@ -43,6 +43,9 @@ export class TdsStepper {
    */
   @Prop() stepperId: string = generateUniqueId();
 
+  /** Label for the stepper component, for screen reader users */
+  @Prop() ariaLabel: string = 'Progress steps';
+
   componentWillLoad() {
     if (this.orientation === 'vertical') {
       this.labelPosition = 'aside';
@@ -99,6 +102,7 @@ export class TdsStepper {
       <Host>
         <div
           role="list"
+          aria-label={this.ariaLabel}
           class={`${this.orientation} text-position-${this.labelPosition} ${this.size}`}
         >
           <slot></slot>

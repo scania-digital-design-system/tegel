@@ -68,6 +68,8 @@ export class TdsStep {
         <div
           role="listitem"
           aria-current={this.tdsAriaCurrent}
+          tabIndex={-1}
+          aria-label={`Step ${this.index}: ${this.state}`}
           class={`${this.size} ${this.orientation} text-${this.labelPosition} ${
             this.hideLabels ? 'hide-labels' : ''
           }`}
@@ -75,6 +77,7 @@ export class TdsStep {
           <span class={`${this.state} content-container`}>
             {this.state === 'success' || this.state === 'error' ? (
               <tds-icon
+                aria-hidden="true"
                 svgTitle={`tds-step-icon-${this.stepperId}`}
                 class={'tds-step-icon'}
                 name={this.state === 'success' ? 'tick' : 'warning'}
@@ -85,7 +88,7 @@ export class TdsStep {
             )}
           </span>
           {!this.hideLabels && (
-            <div class={`label ${this.size} ${this.state}`}>
+            <div aria-hidden="true" class={`label ${this.size} ${this.state}`}>
               <slot name="label"></slot>
             </div>
           )}
