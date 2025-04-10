@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description                                                                        | Type                                              | Default      |
-| -------- | --------- | ---------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
-| `index`  | `index`   | Index of the step. Will be displayed in the step if the state is current/upcoming. | `string`                                          | `undefined`  |
-| `state`  | `state`   | State of the Step                                                                  | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
+| Property         | Attribute          | Description                                                                        | Type                                              | Default      |
+| ---------------- | ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------- | ------------ |
+| `index`          | `index`            | Index of the step. Will be displayed in the step if the state is current/upcoming. | `string`                                          | `undefined`  |
+| `state`          | `state`            | State of the Step                                                                  | `"current" \| "error" \| "success" \| "upcoming"` | `'upcoming'` |
+| `tdsAriaCurrent` | `tds-aria-current` |                                                                                    | `string`                                          | `undefined`  |
 
 
 ## Slots
