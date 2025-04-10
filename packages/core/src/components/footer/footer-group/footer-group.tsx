@@ -81,12 +81,12 @@ export class TdsFooterGroup {
                 }}
                 class={`footer-top-title-button ${this.open ? 'expanded' : 'closed'}`}
               >
-                {hasTitleSlot ? <slot name="title" /> : <h4>{this.titleText}</h4>}
+                {hasTitleSlot ? <slot name="title" /> : this.titleText}
                 <tds-icon name="chevron_down" size="20px" aria-hidden="true"></tds-icon>
               </button>
             ) : (
               <div class="footer-top-title">
-                {hasTitleSlot ? <slot name="title" /> : <h4>{this.titleText}</h4>}
+                {hasTitleSlot ? <slot name="title" /> : this.titleText}
               </div>
             ))}
 
