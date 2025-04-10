@@ -121,7 +121,7 @@ export class TdsPopoverCore {
   }
 
   @Listen('keydown', { target: 'window' })
-  handleFocusTrap(event: KeyboardEvent) {
+  handleKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.isShown) {
       this.setIsShown(false);
     }
