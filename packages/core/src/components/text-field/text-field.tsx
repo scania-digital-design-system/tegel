@@ -103,29 +103,26 @@ export class TdsTextField {
   handleInput(event: InputEvent): void {
     const inputEl = event.target as HTMLInputElement;
     let { value } = inputEl;
-    
-    // Custom handling of number inputs when min is set
-    if (this.type === 'number' && this.min !== undefined) {
+
+    // Custom handling of number inputs when min/max are set
+    if (this.type === 'number') {
       const numericValue = Number(value);
-      if (numericValue < Number(this.min)) {
+
+      if (this.min !== undefined && numericValue < Number(this.min)) {
         value = String(this.min);
-        inputEl.value = value;
       }
-    }
-  
-    // Custom handling of number inputs when max is set
-    if (this.type === 'number' && this.max !== undefined) {
-      const numericValue = Number(value);
-      if (numericValue > Number(this.max)) {
+
+      if (this.max !== undefined && numericValue > Number(this.max)) {
         value = String(this.max);
-        inputEl.value = value;
       }
+
+      inputEl.value = value;
     }
-  
+
     this.value = value;
     this.tdsInput.emit(event);
   }
-    
+
   /** Focus event for the Text Field */
   @Event({
     eventName: 'tdsFocus',
