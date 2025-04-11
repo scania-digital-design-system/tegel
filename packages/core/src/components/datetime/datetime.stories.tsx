@@ -165,7 +165,7 @@ const datetimeTemplate = ({
     Datetime: 'datetime-local',
     Date: 'date',
     Month: 'month',
-    Week:'week',
+    Week: 'week',
     Time: 'time',
   };
   const sizeLookup = {
@@ -203,7 +203,8 @@ const datetimeTemplate = ({
     <style>
         /* Note: Demo classes used here are just for demo purposes in Storybook */
         .demo-wrapper {
-            width: 180px;
+          width: calc(100vw - 40px);
+          max-width: 400px;
         }
     </style>
 
