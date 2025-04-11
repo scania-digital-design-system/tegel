@@ -169,6 +169,16 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    disabled: {
+      description: 'Disables the Text Field.',
+      name: 'Disabled',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     readonly: {
       description: 'Sets the Text Field to read-only state.',
       name: 'Read Only',
@@ -179,9 +189,9 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    disabled: {
-      description: 'Disables the Text Field.',
-      name: 'Disabled',
+    hideReadonlyIcon: {
+      description: 'Hides the read-only icon in the Text Field. Requires Read Only to be enabled.',
+      name: 'Hide Read Only Icon',
       control: {
         type: 'boolean',
       },
@@ -215,6 +225,7 @@ export default {
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
+    hideReadonlyIcon: false,
     disabled: false,
     tdsAriaLabel: 'A text field component',
   },
@@ -238,12 +249,13 @@ const Template = ({
   maxLength,
   noMinWidth,
   readonly,
+  hideReadonlyIcon,
   disabled,
   tdsAriaLabel,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
-  const minValue = min ? `min="${min}"` : '';
-  const maxValue = max ? `max="${max}"` : '';
+  const minAttr = min != null ? `min="${min}"` : '';
+  const maxAttr = max ? `max="${max}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -270,10 +282,11 @@ const Template = ({
       label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}"` : ''}
       ${maxlength}
-      ${minValue}
-      ${maxValue}
+      ${minAttr}
+      ${maxAttr}
       ${disabled ? 'disabled' : ''}
       ${readonly ? 'read-only' : ''}
+      ${hideReadonlyIcon ? 'hide-read-only-icon' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       placeholder="${placeholderText}"
       tds-aria-label="${tdsAriaLabel}"
@@ -309,6 +322,17 @@ const Template = ({
     textElement.addEventListener('tdsChange',(event) => {
       console.log(event)
     })
+
+    isReadonly = textElement.hasAttribute('readonly') || textElement.readOnly;
+    isDisabled = textElement.hasAttribute('disabled') || textElement.disabled;
+    if(isReadonly) {
+      textElement.value = "Read only"
+    }
+      
+    if(isDisabled) {
+      textElement.value = "Disabled"
+    }
+
   </script>
   `,
   );

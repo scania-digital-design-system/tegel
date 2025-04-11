@@ -15,7 +15,8 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    user-select: none;
+    pointer-events: none;
     background-color: var(--tds-text-field-background-disabled);
     color: var(--tds-text-field-color-disabled);
 
@@ -262,6 +263,7 @@
 //Disabled state
 .form-text-field-disabled {
   .text-field-container {
+    cursor: not-allowed;
     border-bottom-color: transparent;
   }
 
@@ -308,7 +310,13 @@
 }
 
 .form-text-field-readonly {
-  pointer-events: none;
+  user-select: auto; /* Allow text selection */
+  caret-color: transparent; /* Hide blinking cursor */
+  cursor: default;
+
+  .text-field-container {
+    border-bottom-color: var(--tds-text-field-border-bottom-readonly);
+  }
 
   .text-field-icon__readonly {
     display: block;
@@ -321,20 +329,24 @@
   }
 
   .text-field-input {
-    padding-right: 54px;
     background-color: transparent;
   }
 }
 
+// Only add padding if the readonly icon is present
+.form-text-field-readonly:has(.text-field-icon__readonly) .text-field-input {
+  padding-right: 54px;
+}
+
 //Success state
-.form-text-field-success {
+.form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
     border-bottom-color: var(--tds-text-field-border-bottom-success);
   }
 }
 
 //Error State
-.form-text-field-error {
+.form-text-field-error:not(.form-text-field-readonly) {
   .text-field-helper {
     color: var(--tds-text-field-helper-error);
   }
