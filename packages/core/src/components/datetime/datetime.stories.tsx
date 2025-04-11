@@ -132,6 +132,13 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -145,6 +152,7 @@ export default {
     label: 'Label text',
     helper: 'Helper text',
     disabled: false,
+    tdsAriaLabel: 'A datetime component',
   },
 };
 
@@ -160,6 +168,7 @@ const datetimeTemplate = ({
   label,
   helper,
   disabled,
+  tdsAriaLabel,
 }) => {
   const typeLookup = {
     Datetime: 'datetime-local',
@@ -223,6 +232,7 @@ const datetimeTemplate = ({
       ${noMinWidth ? 'no-min-width' : ''}
       ${label ? `label="${label}" ` : ''}
       ${helper ? `helper="${helper}" ` : ''}
+      tds-aria-label="${tdsAriaLabel}"
       >
     </tds-datetime>
   </div>
