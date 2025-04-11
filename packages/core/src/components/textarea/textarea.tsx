@@ -58,6 +58,9 @@ export class TdsTextarea {
   /** Unset minimum width of 208px. */
   @Prop() noMinWidth: boolean = false;
 
+  /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
+  @Prop() tdsAriaLabel: string;
+
   /** Listen to the focus state of the input */
   @State() focusInput: boolean;
 
@@ -131,6 +134,14 @@ export class TdsTextarea {
     return modeVariant;
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel && !this.label) {
+      console.warn(
+        'Tegel Textarea component: specify label or tdsAriaLabel prop for accessibility',
+      );
+    }
+  }
+
   render() {
     return (
       <div
@@ -146,9 +157,14 @@ export class TdsTextarea {
           'no-min-width': this.noMinWidth,
         }}
       >
-        {this.labelPosition !== 'no-label' && <span class={'textarea-label'}>{this.label}</span>}
+        {this.labelPosition !== 'no-label' && (
+          <label htmlFor="textarea-element" class={'textarea-label'}>
+            {this.label}
+          </label>
+        )}
         <div class="textarea-wrapper">
           <textarea
+            id="textarea-element"
             class={'textarea-input'}
             ref={(inputEl: HTMLTextAreaElement) => {
               this.textEl = inputEl;
@@ -174,6 +190,10 @@ export class TdsTextarea {
             }}
             onInput={(event) => this.handleInput(event)}
             onChange={(event) => this.handleChange(event)}
+            aria-invalid={this.state === 'error' ? 'true' : 'false'}
+            aria-readonly={this.readOnly ? 'true' : 'false'}
+            aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
+            aria-describedby="textarea-helper-element"
           />
           <span class="textarea-resizer-icon">
             <svg
@@ -202,7 +222,8 @@ export class TdsTextarea {
             </span>
           )}
         </div>
-        <span class={'textarea-helper'}>
+
+        <span class={'textarea-helper'} aria-live="assertive" id="textarea-helper-element">
           {this.state === 'error' && !this.readOnly && <tds-icon name="error" size="16px" />}
           {this.helper}
         </span>
