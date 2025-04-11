@@ -576,7 +576,7 @@ export class TdsSlider {
           value={this.value}
           disabled={this.disabled}
         ></input>
-
+        {/* Hidden element for screen reader announcement */}
         <div
           class="sr-only"
           aria-live="polite"
@@ -584,7 +584,6 @@ export class TdsSlider {
             this.ariaLiveElement = el as HTMLElement;
           }}
         ></div>
-
         <div
           class={{
             'tds-slider': true,
