@@ -64,6 +64,9 @@ export class TdsSlider {
   /** Snap to the tick's grid */
   @Prop() snap: boolean = false;
 
+  /** Sets the aria-label for the slider control. */
+  @Prop() tdsAriaLabel: string = '';
+
   /** ID for the Slider's input element, randomly generated if not specified. */
   @Prop() sliderId: string = generateUniqueId();
 
@@ -76,8 +79,6 @@ export class TdsSlider {
   private trackElement: HTMLElement = null;
 
   private trackFillElement: HTMLElement = null;
-
-  private ariaLiveElement: HTMLElement = null;
 
   private thumbGrabbed: boolean = false;
 
@@ -102,6 +103,8 @@ export class TdsSlider {
   private resetEventListenerAdded: boolean = false;
 
   private formElement: HTMLFormElement;
+
+  private ariaLiveElement: HTMLElement = null;
 
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
@@ -138,20 +141,24 @@ export class TdsSlider {
       case 'ArrowDown':
       case '-':
         this.stepLeft(event);
+        this.announceValueChange();
         break;
 
       case 'ArrowRight':
       case 'ArrowUp':
       case '+':
         this.stepRight(event);
+        this.announceValueChange();
         break;
 
       case 'Home':
         this.setToMinValue();
+        this.announceValueChange();
         break;
 
       case 'End':
         this.setToMaxValue();
+        this.announceValueChange();
         break;
 
       default:
@@ -199,17 +206,6 @@ export class TdsSlider {
     this.calculateThumbLeftFromValue(newValue);
     this.value = newValue;
     this.updateTrack();
-    this.updateAriaLive();
-  }
-
-  private updateAriaLive() {
-    if (this.ariaLiveElement) {
-      setTimeout(() => {
-        if (this.ariaLiveElement) {
-          this.ariaLiveElement.textContent = `Current value: ${this.value}`;
-        }
-      }, 100);
-    }
   }
 
   private setToMinValue() {
@@ -276,6 +272,20 @@ export class TdsSlider {
     }
   }
 
+  private announcementDebounceTimeout: any = null;
+
+  private announceValueChange() {
+    if (!this.ariaLiveElement) return;
+
+    // Debounce announcements to prevent too many rapid announcements
+    clearTimeout(this.announcementDebounceTimeout);
+    this.announcementDebounceTimeout = setTimeout(() => {
+      this.ariaLiveElement.textContent = `${this.label ? this.label + ' ' : ''}${this.value} of ${
+        this.max
+      }`;
+    }, 50);
+  }
+
   private updateValue(event) {
     const trackWidth = this.getTrackWidth();
     const min = parseFloat(this.min);
@@ -299,14 +309,15 @@ export class TdsSlider {
     // Update ARIA attributes
     if (this.thumbElement) {
       this.thumbElement.setAttribute('aria-valuenow', this.value);
+      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
     }
 
     this.tdsInput.emit({ value: this.value });
-    this.updateAriaLive();
 
     /* Emit event after user has finished dragging the thumb */
     if (event.type === 'touchend' || event.type === 'mouseup') {
       this.tdsChange.emit({ value: this.value });
+      this.announceValueChange();
     }
   }
 
@@ -317,11 +328,12 @@ export class TdsSlider {
     // Update ARIA attributes
     if (this.thumbElement) {
       this.thumbElement.setAttribute('aria-valuenow', this.value);
+      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
     }
 
     this.tdsChange.emit({ value: this.value });
     this.updateTrack();
-    this.updateAriaLive();
+    this.announceValueChange();
   }
 
   private constrainThumb(x: number) {
@@ -512,11 +524,19 @@ export class TdsSlider {
 
     this.calculateThumbLeftFromValue(this.value);
     this.updateTrack();
-    this.updateAriaLive();
 
     // Only set the initial value once:
     if (!this.initialValue) {
       this.initialValue = this.value;
+    }
+
+    // Set initial aria attributes
+    if (this.thumbElement) {
+      this.thumbElement.setAttribute('aria-valuenow', this.value);
+      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+
+      // Ensure the thumb can receive focus via keyboard
+      this.thumbElement.tabIndex = this.disabled ? -1 : 0;
     }
   }
 
@@ -558,6 +578,14 @@ export class TdsSlider {
         ></input>
 
         <div
+          class="sr-only"
+          aria-live="polite"
+          ref={(el) => {
+            this.ariaLiveElement = el as HTMLElement;
+          }}
+        ></div>
+
+        <div
           class={{
             'tds-slider': true,
             'disabled': this.disabled,
@@ -567,7 +595,6 @@ export class TdsSlider {
             this.wrapperElement = el as HTMLElement;
           }}
           aria-disabled={this.disabled ? 'true' : 'false'}
-          aria-readonly={this.readOnly ? 'true' : 'false'}
         >
           <label id={`${this.sliderId}-label`} class={this.showTickNumbers && 'offset'}>
             {this.label}
@@ -593,7 +620,7 @@ export class TdsSlider {
             </div>
           )}
 
-          <div class="tds-slider-inner">
+          <div class="tds-slider-inner" tabIndex={-1}>
             {this.tickValues.length > 0 && (
               <div class="tds-slider__value-dividers-wrapper">
                 <div class="tds-slider__value-dividers">
@@ -613,7 +640,11 @@ export class TdsSlider {
               }}
               tabindex={this.disabled ? '-1' : '0'}
               role="presentation"
-              aria-label={`${this.label} slider track`}
+              onFocus={() => {
+                if (this.thumbElement) {
+                  this.thumbElement.focus();
+                }
+              }}
             >
               <div
                 class="tds-slider__track-fill"
@@ -633,8 +664,10 @@ export class TdsSlider {
                 aria-valuemin={this.min}
                 aria-valuemax={this.max}
                 aria-valuenow={this.value}
+                aria-valuetext={`${this.value} of ${this.max}`}
                 aria-labelledby={`${this.sliderId}-label`}
                 aria-grabbed={this.thumbGrabbed ? 'true' : 'false'}
+                aria-label={this.label || this.tdsAriaLabel}
                 tabindex={this.disabled ? '-1' : '0'}
               >
                 {this.tooltip && (
@@ -681,7 +714,6 @@ export class TdsSlider {
                   type="number"
                   min={this.min}
                   max={this.max}
-                  aria-label={`${this.label} value input`}
                 />
               </div>
             </div>
