@@ -181,7 +181,8 @@ const Template = ({
   <style>
   /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
-      width: 400px;
+      width: calc(100vw - 40px);
+      max-width: 400px;
     }
   </style>
 
