@@ -152,8 +152,8 @@ const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
     <div class="demo-wrapper">
       <span class="tds-u-mr2">Click icon for Popover Menu</span>
       
-      <tds-button aria-label="menu" only-icon id="my-popover-button" type="ghost" size="sm">
-        <tds-icon slot="icon" size="16px" name="kebab"></tds-icon>
+      <tds-button aria-label="menu button" only-icon id="my-popover-button" type="ghost" size="sm">
+        <tds-icon tds-aria-hidden="true" svg-title="menu icon" slot="icon" size="16px" name="kebab"></tds-icon>
       </tds-button>
     </div>
 

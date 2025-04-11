@@ -33,7 +33,7 @@ test.describe.parallel(componentName, () => {
 
   test('clicking the trigger button should open the popover menu dialog', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-    const dropDownList = page.getByRole('list');
+    const dropDownList = page.getByRole('menu');
 
     await expect(triggerButton).toBeVisible();
     await expect(dropDownList).toBeHidden();
@@ -43,7 +43,7 @@ test.describe.parallel(componentName, () => {
     await expect(triggerButton).toBeVisible();
     await expect(dropDownList).toBeVisible();
 
-    const tdsMenuItemListItems = dropDownList.getByRole('listitem');
+    const tdsMenuItemListItems = dropDownList.getByRole('menuitem');
     await expect(tdsMenuItemListItems).toHaveCount(9);
 
     const tdsMenuItemListItemLinks = tdsMenuItemListItems.getByRole('link');
@@ -55,11 +55,11 @@ test.describe.parallel(componentName, () => {
 
   test('hover active menu item -> active item should be clickable', async ({ page }) => {
     const triggerButton = page.getByRole('button').filter({ has: page.getByRole('img') });
-    const dropDownList = page.getByRole('list');
+    const dropDownList = page.getByRole('menu');
     await triggerButton.click();
 
     const tdsMenuItemListItemLinks = page
-      .getByRole('listitem')
+      .getByRole('menuitem')
       .filter({ has: page.getByRole('link') });
 
     const myEventSpy = await page.spyOnEvent('click');
@@ -77,7 +77,7 @@ test.describe.parallel(componentName, () => {
     await triggerButton.click();
 
     const tdsMenuItemListItemButtons = page
-      .getByRole('listitem')
+      .getByRole('menuitem')
       .filter({ has: page.getByRole('button') });
 
     await expect(tdsMenuItemListItemButtons).toHaveCount(2);
@@ -88,7 +88,7 @@ test.describe.parallel(componentName, () => {
 
   test('icons are not existing for menu items', async ({ page }) => {
     const tdsMenuItemListItemIcons = page
-      .getByRole('listitem')
+      .getByRole('menuitem')
       .filter({ has: page.getByRole('img') });
     await expect(tdsMenuItemListItemIcons).toHaveCount(0);
   });
