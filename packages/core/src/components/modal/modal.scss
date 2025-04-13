@@ -1,16 +1,20 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
 @import '../../mixins/focus-state';
+@import '../../../../../typography/utilities/typography-utility';
 
-//TODO: Find a way to create a mixin in spacings that can be used for screen size in rem
-//Media rules doesn't calculate correct with using rem
 // Screen breakpoints
-$screen-s: 320px; //320px
-$screen-md: 672px; // 672px
-$screen-l: 1056px; //1056px
-$screen-xl: 1312px; //1312px
-$screen-xxl: 1584px; //1584px
+$screen-s: 320px;
+$screen-md: 672px;
+$screen-l: 1056px;
+$screen-xl: 1312px;
+$screen-xxl: 1584px;
 
+// Modal dimensions
+$modal-max-height: 85vh;
+$modal-actions-height: 36px;
+$scrollbar-width: 6px;
+$scrollbar-radius: 3px;
 $modals: (
   $screen-s: (
     xs: 100%,
@@ -46,75 +50,46 @@ $modals: (
 
 /* MIXINS */
 
-@mixin modal-scroll-inner {
-  /* SCROLL STUFF */
-
-  /* width */
+@mixin modal-scrollbar {
   &::-webkit-scrollbar {
-    width: 5px;
-    background-color: var(--tds-grey-300);
+    width: $scrollbar-width;
+    background-color: transparent;
   }
 
-  /* Track */
   &::-webkit-scrollbar-track {
-    background-color: var(--tds-grey-300);
+    background-color: transparent;
   }
 
-  /* Handle */
   &::-webkit-scrollbar-thumb {
-    background-color: var(--tds-grey-500);
-  }
-}
-
-@mixin modal-scroll-outer {
-  /* SCROLL STUFF */
-
-  /* width */
-  &::-webkit-scrollbar {
-    width: 5px;
-    background-color: var(--tds-grey-300);
-    border-radius: 0 1em 1em 0;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background-color: var(--tds-grey-300);
-    border-radius: 0 1em 1em 0;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--tds-grey-500);
-    border-radius: 0 1em 1em 0;
+    background-color: var(--foreground-elements-transparparent-discrete);
+    border-radius: $scrollbar-radius;
   }
 }
 
 @mixin modal-header {
   display: flex;
-  padding: var(--tds-spacing-element-16);
+  padding: 16px;
   position: sticky;
   top: 0;
-  background-color: var(--tds-modal-background);
+  background-color: var(--background-elevation-layer-02);
   z-index: 1;
 }
 
 @mixin modal-header-title {
-  color: var(--tds-modal-text);
+  @include headline-05;
 
-  /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-  font: var(--tds-headline-05) !important;
-  letter-spacing: var(--tds-headline-05-ls) !important;
+  color: var(--foreground-text-strong);
   margin: 0;
   flex: 1;
 }
 
 @mixin modal-body {
-  color: var(--tds-modal-text);
-  font: var(--tds-body-01);
-  letter-spacing: var(--tds-body-01-ls);
+  @include body-01;
+
+  color: var(--foreground-text-strong);
   overflow-y: visible;
-  padding: 0 var(--tds-spacing-element-16) var(--tds-spacing-element-16);
-  @include modal-scroll-inner;
+  padding: 0 16px 16px;
+  @include modal-scrollbar;
 }
 
 @mixin modal-position {
@@ -130,15 +105,14 @@ $modals: (
 .tds-modal {
   @include tds-box-sizing;
 
-  background-color: var(--tds-modal-background);
+  background-color: var(--background-elevation-layer-02);
   margin: auto;
   position: relative;
-  border-radius: 4px;
-  max-height: 85vh;
+  border-radius: var(--radius-narrow);
+  max-height: $modal-max-height;
   overflow-y: auto;
   pointer-events: auto;
-
-  @include modal-scroll-outer;
+  @include modal-scrollbar;
 
   &__actions-sticky {
     overflow: hidden;
@@ -146,9 +120,9 @@ $modals: (
     flex-direction: column;
 
     .body {
-      font: var(--tds-body-01);
-      letter-spacing: var(--tds-body-01-ls);
-      max-height: calc(85vh - 36px);
+      @include body-01;
+
+      max-height: calc(#{$modal-max-height} - #{$modal-actions-height});
       overflow-y: auto;
     }
 
@@ -156,9 +130,8 @@ $modals: (
       bottom: -1px;
       left: 0;
       right: 0;
-      background-color: var(--tds-modal-background);
-      padding: var(--tds-spacing-element-24) var(--tds-spacing-element-16)
-        var(--tds-spacing-element-16);
+      background-color: var(--background-elevation-layer-02);
+      padding: 24px 16px 16px;
       display: flex;
       gap: 16px;
     }
@@ -166,7 +139,7 @@ $modals: (
 
   &__actions-static {
     slot[name='actions'] {
-      background-color: var(--tds-modal-background);
+      background-color: var(--background-elevation-layer-02);
       display: flex;
       gap: 16px;
       padding: 24px 16px 16px;
@@ -184,6 +157,7 @@ $modals: (
     }
   }
 }
+
 @media (max-width: $screen-s) {
   .tds-modal-md,
   .tds-modal-lg,
@@ -215,7 +189,7 @@ slot[name='header']::slotted(*) {
   @include tds-box-sizing;
   @include modal-position;
 
-  background-color: var(--tds-modal-backdrop);
+  background-color: var(--background-elevation-scrim);
   pointer-events: auto;
 }
 
@@ -230,7 +204,7 @@ button.tds-modal-close {
 .tds-modal-close {
   display: inline-block;
   height: auto;
-  color: var(--tds-modal-icon);
+  color: var(--foreground-text-strong);
   cursor: pointer;
 
   &:focus {
@@ -238,15 +212,14 @@ button.tds-modal-close {
   }
 
   @media (min-width: $screen-s) {
-    margin-left: var(--tds-spacing-element-16);
+    margin-left: 16px;
   }
 
   @media (min-width: $screen-l) {
-    margin-left: var(--tds-spacing-element-48);
+    margin-left: 48px;
   }
 }
 
-//web component with nested svg
 .tds-modal-close-btn {
   display: inline-block;
   height: auto;
@@ -254,15 +227,15 @@ button.tds-modal-close {
   cursor: pointer;
 
   @media (min-width: $screen-s) {
-    margin-left: var(--tds-spacing-element-16);
+    margin-left: 16px;
   }
 
   @media (min-width: $screen-l) {
-    margin-left: var(--tds-spacing-element-48);
+    margin-left: 48px;
   }
 
   svg {
-    fill: var(--tds-modal-icon);
+    fill: var(--foreground-text-strong);
   }
 }
 
