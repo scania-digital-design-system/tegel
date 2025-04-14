@@ -1,5 +1,5 @@
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/scania-digital-design-system/tegel)
-![Status: Beta](https://img.shields.io/badge/status-beta-red)
+![Status: Production](https://img.shields.io/badge/status-production-green)
 [![Storybook](https://img.shields.io/badge/docs-storybook-ff69b4)](https://tds-storybook.tegel.scania.com/)
 ![](https://img.shields.io/github/license/scania-digital-design-system/tegel)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -21,7 +21,7 @@ The design system supports the design and development of digital solutions at Sc
 
 ## Status
 
-This package is currently in a **beta** stage. We are now working hard towards a 1.0 release, but if you want to try out the package today you can! It's available via NPM and can be installed using the installation guide below.
+This package is in production and ready for use. It's available via NPM and can be installed using the installation guide below.
 
 ## Getting started
 
