@@ -556,6 +556,10 @@ export class TdsSlider {
   }
 
   disconnectedCallback() {
+    if (this.readOnly && !this.tdsAriaLabel) {
+      console.warn('tds-slider: tdsAriaLabel is reccomended when readonly is true');
+    }
+
     if (this.resetEventListenerAdded && this.formElement) {
       this.formElement.removeEventListener('reset', this.resetToInitialValue);
       this.resetEventListenerAdded = false;
