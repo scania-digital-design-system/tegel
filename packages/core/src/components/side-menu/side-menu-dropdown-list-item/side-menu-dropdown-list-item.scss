@@ -47,11 +47,9 @@
   .component.component-selected {
     ::slotted(a),
     ::slotted(button) {
-      border-left: 4px solid var(--tds-nav-item-border-color-active);
+      box-shadow: inset 4px 0 0 var(--tds-nav-item-border-color-active);
       padding-left: 20px;
-      background-color: var(
-        --tds-header-nav-item-dropdown-opened-background-selected
-      ); //var(--tds-grey-868);
+      background-color: var(--tds-header-nav-item-dropdown-opened-background-selected);
     }
   }
 
@@ -59,7 +57,10 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding-left: 56px;
+        padding-left: 22px;
+        padding-top: 16px;
+        padding-right: 48px;
+        padding-bottom: 16px;
       }
     }
   }
