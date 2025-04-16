@@ -70,6 +70,9 @@ export class TdsSlider {
   /** ID for the Slider's input element, randomly generated if not specified. */
   @Prop() sliderId: string = generateUniqueId();
 
+  /** Sets the read only aria label for the input field */
+  @Prop() tdsReadOnlyAriaLabel: string = '';
+
   private wrapperElement: HTMLElement = null;
 
   private thumbElement: HTMLElement = null;
@@ -560,6 +563,7 @@ export class TdsSlider {
   }
 
   render() {
+    const ariaLabel = this.readOnly ? this.tdsReadOnlyAriaLabel : this.label || this.tdsAriaLabel;
     return (
       <div
         class={{
@@ -666,7 +670,7 @@ export class TdsSlider {
                 aria-valuetext={`${this.value} of ${this.max}`}
                 aria-labelledby={`${this.sliderId}-label`}
                 aria-grabbed={this.thumbGrabbed ? 'true' : 'false'}
-                aria-label={this.label || this.tdsAriaLabel}
+                aria-label={ariaLabel}
                 tabindex={this.disabled ? '-1' : '0'}
               >
                 {this.tooltip && (
@@ -707,7 +711,7 @@ export class TdsSlider {
                   size={this.calculateInputSizeFromMax()}
                   class="tds-slider__input-field"
                   value={this.value}
-                  readonly={this.readOnly}
+                  aria-label={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
                   onBlur={(event) => this.updateSliderValueOnInputChange(event)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
                   type="number"

@@ -248,6 +248,7 @@ const Template = ({
         ${disabled ? 'disabled' : ''}
         thumb-size="${sizeLookUp[thumbSize]}"
         ${readonly ? 'read-only' : ''}
+        tds-read-only-aria-label="Read only"
         >
       </tds-slider>
     </div>
