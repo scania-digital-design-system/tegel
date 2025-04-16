@@ -372,30 +372,3 @@
     color: var(--tds-datetime-textcounter-divider);
   }
 }
-
-/* Datetime picker icon remove testing */
-
-input[type='datetime-local']::-webkit-inner-spin-button,
-input[type='datetime-local']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='date']::-webkit-inner-spin-button,
-input[type='date']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='month']::-webkit-inner-spin-button,
-input[type='month']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='week']::-webkit-inner-spin-button,
-input[type='week']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='time']::-webkit-inner-spin-button,
-input[type='time']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
