@@ -579,7 +579,7 @@ export class TdsSlider {
         {/* Hidden element for screen reader announcement */}
         <div
           class="sr-only"
-          aria-live="polite"
+          aria-live="assertive"
           ref={(el) => {
             this.ariaLiveElement = el as HTMLElement;
           }}
