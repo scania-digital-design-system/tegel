@@ -555,8 +555,8 @@ export class TdsSlider {
     }
   }
 
-  disconnectedCallback() {
-    if (this.readOnly && !this.tdsAriaLabel) {
+  connectedCallback() {
+    if (this.readOnly && !this.tdsReadOnlyAriaLabel) {
       console.warn('tds-slider: tdsAriaLabel is reccomended when readonly is true');
     }
 
