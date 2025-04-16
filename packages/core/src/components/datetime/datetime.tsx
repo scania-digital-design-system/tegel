@@ -215,17 +215,12 @@ export class TdsDatetime {
       [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
     };
 
-    const browserIsFirefox = navigator.userAgent.toLowerCase().includes('firefox');
-    const browserIsChrome = navigator.userAgent.toLowerCase().includes('chrome');
-
-    // Don't show the date icon for Firefox when type is datetime-local or date (because a similar icon is already shown by default):
-    const showDateIcon = !(browserIsFirefox && ['datetime-local', 'date'].includes(this.type));
-
     return (
       <div
         class={classNames}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
+            const browserIsChrome = navigator.userAgent.toLowerCase().includes('chrome');
             if (browserIsChrome) {
               // showPicker currently only works reliably for date inputs in Chrome and Chromium-based browsers:
               this.textInput.showPicker();
@@ -258,11 +253,9 @@ export class TdsDatetime {
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
             />
 
-            {showDateIcon && (
-              <div class="datetime-icon icon-datetime-local">
-                <tds-icon size="20px" name="calendar" svgTitle="Calendar"></tds-icon>
-              </div>
-            )}
+            <div class="datetime-icon icon-datetime-local">
+              <tds-icon size="20px" name="calendar" svgTitle="Calendar"></tds-icon>
+            </div>
 
             <div class="datetime-icon icon-time">
               <tds-icon size="20px" name="clock" svgTitle="Clock"></tds-icon>
