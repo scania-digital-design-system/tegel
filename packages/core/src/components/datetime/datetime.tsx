@@ -185,9 +185,6 @@ export class TdsDatetime {
   }
 
   render() {
-    const { userAgent } = navigator;
-    const isFirefox = userAgent.includes('Firefox');
-
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
       className += `${className}-md`;
@@ -233,17 +230,13 @@ export class TdsDatetime {
               onChange={(e) => this.handleChange(e)}
             />
 
-            {!isFirefox && (
-              <div class="datetime-icon icon-datetime-local">
-                <tds-icon size="20px" name="calendar" />
-              </div>
-            )}
+            <div class="datetime-icon icon-datetime-local">
+              <tds-icon size="20px" name="calendar" />
+            </div>
 
-            {!isFirefox && (
-              <div class="datetime-icon icon-time">
-                <tds-icon size="20px" name="clock" />
-              </div>
-            )}
+            <div class="datetime-icon icon-time">
+              <tds-icon size="20px" name="clock" />
+            </div>
           </div>
           <div class="tds-datetime-bar" />
         </div>
