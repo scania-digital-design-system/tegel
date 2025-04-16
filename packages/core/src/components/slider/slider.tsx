@@ -707,7 +707,7 @@ export class TdsSlider {
                   size={this.calculateInputSizeFromMax()}
                   class="tds-slider__input-field"
                   value={this.value}
-                  readOnly={this.readOnly}
+                  readonly={this.readOnly}
                   onBlur={(event) => this.updateSliderValueOnInputChange(event)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
                   type="number"
