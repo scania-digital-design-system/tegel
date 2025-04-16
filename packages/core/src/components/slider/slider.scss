@@ -30,6 +30,12 @@ tds-slider {
   }
 }
 
+.tds-slider-wrapper:focus-within {
+  outline: 2px solid var(--tds-blue-400);
+  outline-offset: 2px;
+  border-radius: var(--tds-spacing-element-4);
+}
+
 .tds-slider {
   width: 100%;
   display: flex;
