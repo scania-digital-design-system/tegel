@@ -58,6 +58,14 @@ export class TdsSideMenuDropdown {
     this.setHoverStateClosed();
   }
 
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.open = !this.open;
+    }
+  }
+
   setHoverStateOpen() {
     this.hoverState = { isHovered: true, updatedAt: Date.now() };
   }
@@ -99,6 +107,7 @@ export class TdsSideMenuDropdown {
             onClick={() => {
               this.open = !this.open;
             }}
+            aria-expanded={this.getIsOpenState() ? 'true' : 'false'}
           >
             <button>
               <slot name="icon"></slot>
@@ -106,12 +115,17 @@ export class TdsSideMenuDropdown {
                 <Fragment>
                   {this.buttonLabel}
                   <slot name="label"></slot>
-                  <tds-icon class="dropdown-icon" name="chevron_down" size="16px"></tds-icon>
+                  <tds-icon
+                    class="dropdown-icon"
+                    name="chevron_down"
+                    size="16px"
+                    svgTitle="Chevron Down"
+                  ></tds-icon>
                 </Fragment>
               )}
             </button>
           </tds-side-menu-item>
-          <div class="menu">
+          <div class="menu" tabindex={this.collapsed ? '0' : null}>
             {this.collapsed && (
               <h3 class="heading-collapsed">
                 {this.buttonLabel}
