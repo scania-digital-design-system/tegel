@@ -28,7 +28,7 @@ export class TdsSideMenuDropdownList {
 
   render() {
     return (
-      <Host role="list">
+      <Host role="list" aria-expanded={!this.collapsed ? 'true' : 'false'}>
         <div
           class={{
             'state-collapsed': this.collapsed,

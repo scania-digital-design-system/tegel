@@ -142,4 +142,16 @@ aside {
 
     overflow-y: auto;
   }
+
+  [role='navigation'] {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 }
