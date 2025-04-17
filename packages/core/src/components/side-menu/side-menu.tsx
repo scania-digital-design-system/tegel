@@ -125,6 +125,15 @@ export class TdsSideMenu {
           focusableElements[0].focus();
         }
       }, 100);
+    } else {
+      // When menu closes, focus the hamburger button
+      const hamburgerComponent = document.querySelector('tds-header-hamburger');
+      if (hamburgerComponent && hamburgerComponent.shadowRoot) {
+        const hamburgerButton = hamburgerComponent.shadowRoot.querySelector('button');
+        if (hamburgerButton) {
+          (hamburgerButton as HTMLElement).focus();
+        }
+      }
     }
   }
 
