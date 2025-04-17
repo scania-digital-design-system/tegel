@@ -399,3 +399,10 @@ input[type='time']::-webkit-inner-spin-button,
 input[type='time']::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
+
+@supports (-moz-appearance: none) {
+  .icon-datetime-local,
+  .icon-time {
+    display: none;
+  }
+}
