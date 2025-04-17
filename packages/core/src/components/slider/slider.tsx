@@ -64,8 +64,14 @@ export class TdsSlider {
   /** Snap to the tick's grid */
   @Prop() snap: boolean = false;
 
+  /** Sets the aria-label for the slider control. */
+  @Prop() tdsAriaLabel: string = '';
+
   /** ID for the Slider's input element, randomly generated if not specified. */
   @Prop() sliderId: string = generateUniqueId();
+
+  /** Sets the read only aria label for the input field */
+  @Prop() tdsReadOnlyAriaLabel: string = '';
 
   private wrapperElement: HTMLElement = null;
 
@@ -100,6 +106,8 @@ export class TdsSlider {
   private resetEventListenerAdded: boolean = false;
 
   private formElement: HTMLFormElement;
+
+  private ariaLiveElement: HTMLElement = null;
 
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
@@ -136,12 +144,24 @@ export class TdsSlider {
       case 'ArrowDown':
       case '-':
         this.stepLeft(event);
+        this.announceValueChange();
         break;
 
       case 'ArrowRight':
       case 'ArrowUp':
       case '+':
         this.stepRight(event);
+        this.announceValueChange();
+        break;
+
+      case 'Home':
+        this.setToMinValue();
+        this.announceValueChange();
+        break;
+
+      case 'End':
+        this.setToMaxValue();
+        this.announceValueChange();
         break;
 
       default:
@@ -166,6 +186,9 @@ export class TdsSlider {
 
     this.thumbGrabbed = false;
     this.thumbInnerElement.classList.remove('pressed');
+    if (this.thumbElement) {
+      this.thumbElement.setAttribute('aria-grabbed', 'false');
+    }
     this.updateValue(event);
 
     this.trackElement.focus();
@@ -186,6 +209,20 @@ export class TdsSlider {
     this.calculateThumbLeftFromValue(newValue);
     this.value = newValue;
     this.updateTrack();
+  }
+
+  private setToMinValue() {
+    if (this.readOnly || this.disabled) {
+      return;
+    }
+    this.forceValueUpdate(this.min);
+  }
+
+  private setToMaxValue() {
+    if (this.readOnly || this.disabled) {
+      return;
+    }
+    this.forceValueUpdate(this.max);
   }
 
   private updateSupposedValueSlot(localLeft) {
@@ -238,6 +275,20 @@ export class TdsSlider {
     }
   }
 
+  private announcementDebounceTimeout: any = null;
+
+  private announceValueChange() {
+    if (!this.ariaLiveElement) return;
+
+    // Debounce announcements to prevent too many rapid announcements
+    clearTimeout(this.announcementDebounceTimeout);
+    this.announcementDebounceTimeout = setTimeout(() => {
+      this.ariaLiveElement.textContent = `${this.label ? this.label + ' ' : ''}${this.value} of ${
+        this.max
+      }`;
+    }, 50);
+  }
+
   private updateValue(event) {
     const trackWidth = this.getTrackWidth();
     const min = parseFloat(this.min);
@@ -258,19 +309,34 @@ export class TdsSlider {
     }
     this.updateTrack();
 
+    // Update ARIA attributes
+    if (this.thumbElement) {
+      this.thumbElement.setAttribute('aria-valuenow', this.value);
+      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+    }
+
     this.tdsInput.emit({ value: this.value });
 
     /* Emit event after user has finished dragging the thumb */
     if (event.type === 'touchend' || event.type === 'mouseup') {
       this.tdsChange.emit({ value: this.value });
+      this.announceValueChange();
     }
   }
 
   private forceValueUpdate(newValue: string) {
     this.calculateThumbLeftFromValue(newValue);
     this.value = newValue;
+
+    // Update ARIA attributes
+    if (this.thumbElement) {
+      this.thumbElement.setAttribute('aria-valuenow', this.value);
+      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+    }
+
     this.tdsChange.emit({ value: this.value });
     this.updateTrack();
+    this.announceValueChange();
   }
 
   private constrainThumb(x: number) {
@@ -309,6 +375,7 @@ export class TdsSlider {
 
     if (this.thumbElement) {
       this.thumbElement.style.left = `${this.thumbLeft}px`;
+      this.thumbElement.setAttribute('aria-valuenow', this.value);
     }
   }
 
@@ -347,6 +414,9 @@ export class TdsSlider {
     }
     this.thumbGrabbed = true;
     this.thumbInnerElement.classList.add('pressed');
+    if (this.thumbElement) {
+      this.thumbElement.setAttribute('aria-grabbed', 'true');
+    }
   }
 
   private calculateInputSizeFromMax() {
@@ -462,6 +532,15 @@ export class TdsSlider {
     if (!this.initialValue) {
       this.initialValue = this.value;
     }
+
+    // Set initial aria attributes
+    if (this.thumbElement) {
+      this.thumbElement.setAttribute('aria-valuenow', this.value);
+      this.thumbElement.setAttribute('aria-valuetext', `${this.value} of ${this.max}`);
+
+      // Ensure the thumb can receive focus via keyboard
+      this.thumbElement.tabIndex = this.disabled ? -1 : 0;
+    }
   }
 
   componentDidRender() {
@@ -476,7 +555,11 @@ export class TdsSlider {
     }
   }
 
-  disconnectedCallback() {
+  connectedCallback() {
+    if (this.readOnly && !this.tdsReadOnlyAriaLabel) {
+      console.warn('tds-slider: tdsAriaLabel is reccomended when readonly is true');
+    }
+
     if (this.resetEventListenerAdded && this.formElement) {
       this.formElement.removeEventListener('reset', this.resetToInitialValue);
       this.resetEventListenerAdded = false;
@@ -484,6 +567,7 @@ export class TdsSlider {
   }
 
   render() {
+    const ariaLabel = this.readOnly ? this.tdsReadOnlyAriaLabel : this.label || this.tdsAriaLabel;
     return (
       <div
         class={{
@@ -500,7 +584,14 @@ export class TdsSlider {
           value={this.value}
           disabled={this.disabled}
         ></input>
-
+        {/* Hidden element for screen reader announcement */}
+        <div
+          class="sr-only"
+          aria-live="assertive"
+          ref={(el) => {
+            this.ariaLiveElement = el as HTMLElement;
+          }}
+        ></div>
         <div
           class={{
             'tds-slider': true,
@@ -510,8 +601,11 @@ export class TdsSlider {
           ref={(el) => {
             this.wrapperElement = el as HTMLElement;
           }}
+          aria-disabled={this.disabled ? 'true' : 'false'}
         >
-          <label class={this.showTickNumbers && 'offset'}>{this.label}</label>
+          <label id={`${this.sliderId}-label`} class={this.showTickNumbers && 'offset'}>
+            {this.label}
+          </label>
 
           {this.useInput && (
             <div class="tds-slider__input-values">
@@ -524,13 +618,16 @@ export class TdsSlider {
               <div
                 class="tds-slider__control tds-slider__control-minus"
                 onClick={(event) => this.stepLeft(event)}
+                role="button"
+                aria-label="Decrease value"
+                tabindex={this.disabled || this.readOnly ? '-1' : '0'}
               >
                 <tds-icon name="minus" size="16px"></tds-icon>
               </div>
             </div>
           )}
 
-          <div class="tds-slider-inner">
+          <div class="tds-slider-inner" tabIndex={-1}>
             {this.tickValues.length > 0 && (
               <div class="tds-slider__value-dividers-wrapper">
                 <div class="tds-slider__value-dividers">
@@ -549,6 +646,12 @@ export class TdsSlider {
                 this.trackElement = el as HTMLElement;
               }}
               tabindex={this.disabled ? '-1' : '0'}
+              role="presentation"
+              onFocus={() => {
+                if (this.thumbElement) {
+                  this.thumbElement.focus();
+                }
+              }}
             >
               <div
                 class="tds-slider__track-fill"
@@ -564,6 +667,15 @@ export class TdsSlider {
                 }}
                 onMouseDown={() => this.grabThumb()}
                 onTouchStart={() => this.grabThumb()}
+                role="slider"
+                aria-valuemin={this.min}
+                aria-valuemax={this.max}
+                aria-valuenow={this.value}
+                aria-valuetext={`${this.value} of ${this.max}`}
+                aria-labelledby={`${this.sliderId}-label`}
+                aria-grabbed={this.thumbGrabbed ? 'true' : 'false'}
+                aria-label={ariaLabel}
+                tabindex={this.disabled ? '-1' : '0'}
               >
                 {this.tooltip && (
                   <div class="tds-slider__value">
@@ -603,7 +715,7 @@ export class TdsSlider {
                   size={this.calculateInputSizeFromMax()}
                   class="tds-slider__input-field"
                   value={this.value}
-                  readOnly={this.readOnly}
+                  aria-label={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
                   onBlur={(event) => this.updateSliderValueOnInputChange(event)}
                   onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
                   type="number"
@@ -619,6 +731,9 @@ export class TdsSlider {
               <div
                 class="tds-slider__control tds-slider__control-plus"
                 onClick={(event) => this.stepRight(event)}
+                role="button"
+                aria-label="Increase value"
+                tabindex={this.disabled || this.readOnly ? '-1' : '0'}
               >
                 <tds-icon name="plus" size="16px"></tds-icon>
               </div>
