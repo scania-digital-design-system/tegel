@@ -132,6 +132,14 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+      # ✅ Tag immediately after successful publish
+      - name: Core - Tag version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          VERSION=$(jq -r .version package.json)
+          git tag @scania/tegel@$VERSION
+          git push --no-verify origin @scania/tegel@$VERSION
+
       - name: Core - Commit and push changes
         run: |
           git add .
@@ -390,11 +398,17 @@ jobs:
           git config --global user.email "tegel.design.system@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
 
-      - name: Core - Create git tag
-        run: git tag @scania/tegel@${{ needs.create-release-branch.outputs.version }}
-
-      - name: Core - Push git tag
-        run: git push --no-verify origin @scania/tegel@${{ needs.create-release-branch.outputs.version }}
+      # ✅ Conditionally create/push tag only if it's missing
+      - name: Check and create git tag if missing
+        run: |
+          VERSION=${{ needs.create-release-branch.outputs.version }}
+          if git rev-parse "@scania/tegel@$VERSION" >/dev/null 2>&1; then
+            echo "✅ Tag @scania/tegel@$VERSION already exists. Skipping."
+          else
+            echo "🏷️ Creating and pushing tag @scania/tegel@$VERSION..."
+            git tag @scania/tegel@$VERSION
+            git push --no-verify origin @scania/tegel@$VERSION
+          fi
 
   #MERGE DEVELOP INTO MAIN
   merge-develop-into-main:
