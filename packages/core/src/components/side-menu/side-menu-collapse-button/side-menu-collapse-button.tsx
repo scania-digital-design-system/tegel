@@ -67,6 +67,7 @@ export class TdsSideMenuCollapseButton {
       <Host
         role="button"
         tabindex="0"
+        aria-expanded={!this.collapsed ? 'true' : 'false'}
         onClick={() => {
           this.handleClick();
         }}
