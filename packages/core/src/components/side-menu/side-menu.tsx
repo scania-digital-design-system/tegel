@@ -154,8 +154,15 @@ export class TdsSideMenu {
       this.host.querySelectorAll<HTMLElement>(focusableSelectors),
     );
 
+    const closeBtn = this.host
+      .querySelector<HTMLElement>('[slot="close-button"]')
+      ?.shadowRoot.querySelector('button');
+
+    let focusableElements = [...focusableInShadowRoot, ...focusableInSlots];
+    if (closeBtn) focusableElements.push(closeBtn);
+
     /** Focusable elements */
-    return [...focusableInShadowRoot, ...focusableInSlots];
+    return focusableElements;
   }
 
   @Listen('keydown', { target: 'window', capture: true })
