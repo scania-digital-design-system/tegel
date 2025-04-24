@@ -1,5 +1,6 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -13,6 +14,8 @@ import hasSlot from '../../utils/hasSlot';
 })
 export class TdsTextField {
   @Element() host: HTMLElement;
+
+  private uuid: string = generateUniqueId();
 
   /** Text input for focus state */
   textInput?: HTMLInputElement;
@@ -197,7 +200,7 @@ export class TdsTextField {
       >
         {this.labelPosition === 'outside' && (
           <div class="text-field-label-outside">
-            <label htmlFor="text-field-input-element">{this.label}</label>
+            <label htmlFor={`text-field-input-element-${this.uuid}`}>{this.label}</label>
           </div>
         )}
         <div onClick={() => this.textInput.focus()} class="text-field-container">
@@ -250,11 +253,14 @@ export class TdsTextField {
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
               aria-describedby="text-field-helper-element"
               aria-readonly={this.readOnly}
-              id="text-field-input-element"
+              id={`text-field-input-element-${this.uuid}`}
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
-              <label class="text-field-label-inside" htmlFor="text-field-input-element">
+              <label
+                class="text-field-label-inside"
+                htmlFor={`text-field-input-element-${this.uuid}`}
+              >
                 {this.label}
               </label>
             )}
