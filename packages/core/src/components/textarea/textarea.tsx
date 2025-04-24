@@ -1,4 +1,5 @@
 import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-textarea',
@@ -9,6 +10,8 @@ import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
 export class TdsTextarea {
   /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
+
+  private uuid: string = generateUniqueId();
 
   /** Label text */
   @Prop() label: string = '';
@@ -158,13 +161,13 @@ export class TdsTextarea {
         }}
       >
         {this.labelPosition !== 'no-label' && (
-          <label htmlFor="textarea-element" class={'textarea-label'}>
+          <label htmlFor={`textarea-element-${this.uuid}`} class={'textarea-label'}>
             {this.label}
           </label>
         )}
         <div class="textarea-wrapper">
           <textarea
-            id="textarea-element"
+            id={`textarea-element-${this.uuid}`}
             class={'textarea-input'}
             ref={(inputEl: HTMLTextAreaElement) => {
               this.textEl = inputEl;
@@ -193,7 +196,7 @@ export class TdsTextarea {
             aria-invalid={this.state === 'error' ? 'true' : 'false'}
             aria-readonly={this.readOnly ? 'true' : 'false'}
             aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
-            aria-describedby="textarea-helper-element"
+            aria-describedby={`textarea-helper-element-${this.uuid}`}
           />
           <span class="textarea-resizer-icon">
             <svg
@@ -223,7 +226,11 @@ export class TdsTextarea {
           )}
         </div>
 
-        <span class={'textarea-helper'} aria-live="assertive" id="textarea-helper-element">
+        <span
+          class={'textarea-helper'}
+          aria-live="assertive"
+          id={`textarea-helper-element-${this.uuid}`}
+        >
           {this.state === 'error' && !this.readOnly && <tds-icon name="error" size="16px" />}
           {this.helper}
         </span>
