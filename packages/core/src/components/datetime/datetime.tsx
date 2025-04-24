@@ -50,6 +50,9 @@ export class TdsDatetime {
   /** Label text for the component */
   @Prop() label: string = '';
 
+  /** Position of the label */
+  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'outside';
+
   /** Helper text for the component */
   @Prop() helper: string = '';
 
@@ -213,6 +216,8 @@ export class TdsDatetime {
       [`tds-form-datetime-${this.size}`]: ['md', 'sm'].includes(this.size),
       [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(this.state),
       [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+      'tds-datetime-container-label-inside':
+        this.label && this.labelPosition === 'inside' && this.size !== 'sm',
     };
 
     return (
@@ -228,7 +233,7 @@ export class TdsDatetime {
           }
         }}
       >
-        {this.label && (
+        {this.labelPosition === 'outside' && this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
           </label>
@@ -252,6 +257,12 @@ export class TdsDatetime {
               onChange={(e) => this.handleChange(e)}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
             />
+
+            {this.labelPosition === 'inside' && this.size !== 'sm' && this.label && (
+              <label class="tds-datetime-label-inside" htmlFor={this.name}>
+                {this.label}
+              </label>
+            )}
 
             <div class="datetime-icon icon-datetime-local">
               <tds-icon size="20px" name="calendar" svgTitle="Calendar" />
