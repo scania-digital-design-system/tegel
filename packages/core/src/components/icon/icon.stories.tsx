@@ -1,6 +1,26 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { iconsNames } from './iconsArray';
+import { iconsNames as scaniaIconsNames } from './scaniaIconsArray';
+import { iconsNames as tratonIconsNames } from './tratonIconsArray';
 import readme from './readme.md';
+
+// Brand mapping configuration
+const brandIconsMap = {
+  scania: scaniaIconsNames,
+  traton: tratonIconsNames,
+  // Add new brands here as needed
+};
+
+// Get icons based on the closest brand class
+const getIconsObject = () => {
+  // Get all brand classes from the mapping
+  const brandClasses = Object.keys(brandIconsMap);
+
+  // Find the first matching brand class
+  const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
+
+  // Return the corresponding icons or default to scania
+  return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
+};
 
 export default {
   title: 'Foundations/Icons',
@@ -27,7 +47,7 @@ export default {
       control: {
         type: 'select',
       },
-      options: iconsNames,
+      options: getIconsObject(),
     },
     size: {
       name: 'Size in pixels',
