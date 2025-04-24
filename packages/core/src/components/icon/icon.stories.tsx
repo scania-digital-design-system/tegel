@@ -1,6 +1,7 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames as scaniaIconsNames } from './scaniaIconsArray';
 import { iconsNames as tratonIconsNames } from './tratonIconsArray';
+
 import readme from './readme.md';
 
 // Brand mapping configuration
@@ -21,6 +22,15 @@ const getIconsObject = () => {
   // Return the corresponding icons or default to scania
   return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
 };
+
+// Create a closure to maintain the current brand state
+const handleBrandChange = (event: CustomEvent) => {
+  console.log('Brand changed from', event.detail.brand);
+  getIconsObject();
+};
+
+// Listen for brand changes
+document.addEventListener('storybook-brand-changed', handleBrandChange);
 
 export default {
   title: 'Foundations/Icons',

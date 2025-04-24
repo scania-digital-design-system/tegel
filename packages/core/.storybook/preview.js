@@ -79,18 +79,6 @@ if (typeof window !== 'undefined') {
   document.documentElement.classList.add('scania');
 }
 
-// Function to update brand classes
-const updateBrandClasses = (brand) => {
-  if (typeof window !== 'undefined') {
-    document.documentElement.classList.remove('scania', 'traton');
-    document.documentElement.classList.add(brand);
-    window.TDS_BRAND = brand;
-
-    // Emit event for other parts of the application
-    addons.getChannel().emit(BRAND_CHANGED, brand);
-  }
-};
-
 // Add decorator for brand classes
 export const decorators = [
   (Story, context) => {
@@ -98,6 +86,14 @@ export const decorators = [
     if (typeof window !== 'undefined') {
       document.documentElement.classList.remove('scania', 'traton');
       document.documentElement.classList.add(brand);
+
+      // Dispatch custom event
+      const event = new CustomEvent('storybook-brand-changed', {
+        detail: { brand },
+        bubbles: true,
+      });
+
+      document.dispatchEvent(event);
     }
     return Story();
   },
@@ -222,9 +218,8 @@ export const parameters = {
             { value: 'scania', title: 'Scania', icon: 'circlehollow' },
             { value: 'traton', title: 'Traton', icon: 'circlehollow' },
           ],
-          showName: true,
+          title: 'Brand',
           dynamicTitle: true,
-          onChange: updateBrandClasses,
         },
       },
     },
