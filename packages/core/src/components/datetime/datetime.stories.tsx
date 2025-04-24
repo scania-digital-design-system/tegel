@@ -132,6 +132,13 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -145,6 +152,7 @@ export default {
     label: 'Label text',
     helper: 'Helper text',
     disabled: false,
+    tdsAriaLabel: 'A datetime component',
   },
 };
 
@@ -160,12 +168,13 @@ const datetimeTemplate = ({
   label,
   helper,
   disabled,
+  tdsAriaLabel,
 }) => {
   const typeLookup = {
     Datetime: 'datetime-local',
     Date: 'date',
     Month: 'month',
-    Week:'week',
+    Week: 'week',
     Time: 'time',
   };
   const sizeLookup = {
@@ -203,7 +212,8 @@ const datetimeTemplate = ({
     <style>
         /* Note: Demo classes used here are just for demo purposes in Storybook */
         .demo-wrapper {
-            width: 180px;
+          width: calc(100vw - 40px);
+          max-width: 400px;
         }
     </style>
 
@@ -222,6 +232,7 @@ const datetimeTemplate = ({
       ${noMinWidth ? 'no-min-width' : ''}
       ${label ? `label="${label}" ` : ''}
       ${helper ? `helper="${helper}" ` : ''}
+      tds-aria-label="${tdsAriaLabel}"
       >
     </tds-datetime>
   </div>

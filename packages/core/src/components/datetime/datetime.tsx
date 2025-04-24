@@ -53,6 +53,9 @@ export class TdsDatetime {
   /** Helper text for the component */
   @Prop() helper: string = '';
 
+  /** Value for the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
   /** Listen to the focus state of the input */
   @State() focusInput: boolean;
 
@@ -184,6 +187,14 @@ export class TdsDatetime {
     this.value = value;
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel && !this.label) {
+      console.warn(
+        'Tegel Datetime component: provide the label or tdsAriaLabel prop for improved accessibility',
+      );
+    }
+  }
+
   render() {
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
@@ -205,7 +216,18 @@ export class TdsDatetime {
     };
 
     return (
-      <div class={classNames}>
+      <div
+        class={classNames}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            const browserIsChrome = navigator.userAgent.toLowerCase().includes('chrome');
+            if (browserIsChrome) {
+              // showPicker currently only works reliably for date inputs in Chrome and Chromium-based browsers:
+              this.textInput.showPicker();
+            }
+          }
+        }}
+      >
         {this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
@@ -228,6 +250,7 @@ export class TdsDatetime {
               onInput={(e) => this.handleInput(e)}
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
+              aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
             />
 
             <div class="datetime-icon icon-datetime-local">
