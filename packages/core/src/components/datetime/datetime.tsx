@@ -258,7 +258,7 @@ export class TdsDatetime {
             </div>
 
             <div class="datetime-icon icon-time">
-              <tds-icon size="20px" name="clock" />
+              <tds-icon size="20px" name="clock" svgTitle="Clock" />
             </div>
           </div>
           <div class="tds-datetime-bar" />
