@@ -234,10 +234,10 @@ export class TdsDatetime {
           </label>
         )}
         <div onClick={(e) => this.handleFocusClick(e)} class="tds-datetime-container">
-          <div class="tds-datetime-input-container">
+          <div class={`tds-datetime-input-container type-${this.type}`}>
             <input
-              ref={(inputEl) => {
-                this.textInput = inputEl as HTMLInputElement;
+              ref={(inputEl: HTMLInputElement) => {
+                this.textInput = inputEl;
               }}
               class={className}
               type={this.type}
@@ -254,20 +254,20 @@ export class TdsDatetime {
             />
 
             <div class="datetime-icon icon-datetime-local">
-              <tds-icon size="20px" name="calendar" svgTitle="Calendar"></tds-icon>
+              <tds-icon size="20px" name="calendar" svgTitle="Calendar" />
             </div>
 
             <div class="datetime-icon icon-time">
-              <tds-icon size="20px" name="clock" svgTitle="Clock"></tds-icon>
+              <tds-icon size="20px" name="clock" svgTitle="Clock" />
             </div>
           </div>
-          <div class="tds-datetime-bar"></div>
+          <div class="tds-datetime-bar" />
         </div>
 
         {this.helper && (
           <div class="tds-datetime-helper">
             <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
+              {this.state === 'error' && <tds-icon name="error" size="16px" />}
               {this.helper}
             </div>
           </div>
