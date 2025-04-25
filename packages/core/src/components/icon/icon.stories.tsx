@@ -14,18 +14,20 @@ const brandIconsMap = {
 // Get icons based on the closest brand class
 const getIconsObject = () => {
   // Get all brand classes from the mapping
+  console.log('Get icons object');
   const brandClasses = Object.keys(brandIconsMap);
 
   // Find the first matching brand class
   const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
 
-  // Return the corresponding icons or default to scania
-  return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
+  const iconsObject = brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
+  console.log('Icons object', iconsObject);
+  return iconsObject;
 };
 
 // Create a closure to maintain the current brand state
 const handleBrandChange = (event: CustomEvent) => {
-  console.log('Brand changed from', event.detail.brand);
+  console.log('Brand changed to', event.detail.brand);
   getIconsObject();
 };
 
@@ -51,13 +53,34 @@ export default {
     ],
   },
   argTypes: {
-    icon: {
-      name: 'Icon name',
-      description: 'Select icon to display',
+    brand: {
+      name: 'Brand',
+      description: 'Select the brand to display icons from',
+      control: {
+        type: 'radio',
+      },
+      options: ['scania', 'traton'],
+      table: {
+        defaultValue: { summary: 'scania' },
+      },
+    },
+    iconTraton: {
+      name: 'Icon name (Traton)',
+      description: 'Select Traton icon to display',
       control: {
         type: 'select',
       },
-      options: getIconsObject(),
+      options: tratonIconsNames,
+      if: { arg: 'brand', eq: 'traton' },
+    },
+    iconScania: {
+      name: 'Icon name (Scania)',
+      description: 'Select Scania icon to display',
+      control: {
+        type: 'select',
+      },
+      options: scaniaIconsNames,
+      if: { arg: 'brand', eq: 'scania' },
     },
     size: {
       name: 'Size in pixels',
@@ -83,22 +106,26 @@ export default {
     },
   },
   args: {
+    brand: 'scania',
     size: 32,
-    icon: 'truck',
+    iconTraton: 'truck',
+    iconScania: 'truck',
     svgTitle: '',
     svgDescription: '',
   },
 };
 
-const IconTemplate = (args) =>
-  formatHtmlPreview(`
+const IconTemplate = (args) => {
+  const iconName = args.brand === 'traton' ? args.iconTraton : args.iconScania;
+  return formatHtmlPreview(`
   <tds-icon 
-    name="${args.icon}" 
+    name="${iconName}" 
     size="${`${args.size.toString()}px`}" 
     ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
     ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
     >   
   </tds-icon> 
   `);
+};
 
 export const Component = IconTemplate.bind({});
