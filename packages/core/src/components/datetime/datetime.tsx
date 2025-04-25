@@ -254,7 +254,7 @@ export class TdsDatetime {
             />
 
             <div class="datetime-icon icon-datetime-local">
-              <tds-icon size="20px" name="calendar" />
+              <tds-icon size="20px" name="calendar" svgTitle="Calendar" />
             </div>
 
             <div class="datetime-icon icon-time">
