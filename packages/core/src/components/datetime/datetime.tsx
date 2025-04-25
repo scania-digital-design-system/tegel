@@ -234,7 +234,7 @@ export class TdsDatetime {
           </label>
         )}
         <div onClick={(e) => this.handleFocusClick(e)} class="tds-datetime-container">
-          <div class="tds-datetime-input-container">
+          <div class={`tds-datetime-input-container type-${this.type}`}>
             <input
               ref={(inputEl: HTMLInputElement) => {
                 this.textInput = inputEl;

@@ -401,7 +401,8 @@ input[type='time']::-webkit-calendar-picker-indicator {
 }
 
 @supports (-moz-appearance: none) {
-  input:not([type='time']):not([type='month']) {
+  .type-datetime-local .icon-datetime-local,
+  .type-date .icon-datetime-local {
     display: none;
   }
 }
