@@ -99,8 +99,17 @@ export class TdsDropdown {
 
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
+    console.log('---------------------------------');
+    console.log('handleValueChange', newValue);
+
     // Normalize to array
     const normalizedValue = this.normalizeValue(newValue);
+
+    console.log('normalizedValue', normalizedValue);
+
+    console.log('this.selectedOptions', this.selectedOptions);
+
+    console.log('this.value', this.value);
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
