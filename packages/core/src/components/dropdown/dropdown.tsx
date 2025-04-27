@@ -104,6 +104,10 @@ export class TdsDropdown {
 
     // Only update if actually changed
     if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
+      console.log('IF statement');
+      this.updateDropdownStateFromUser(normalizedValue);
+    } else {
+      console.log('ELSE statement');
       this.updateDropdownStateFromUser(normalizedValue);
     }
   }
