@@ -15,7 +15,9 @@ const getIconsObject = () => {
   const brandClasses = Object.keys(brandIconsMap);
 
   // Find the first matching brand class
-  const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
+  const brandClass = brandClasses.find((brand) => {
+    return document.querySelector(`.${brand}`);
+  });
 
   // Return the corresponding icons or default to scania
   return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
@@ -35,17 +37,17 @@ export default {
   },
 };
 
-const icons = getIconsObject().map(
-  (icon) => `
-    <tds-block mode-variant="primary" data-icon="${icon}">
-        <tds-icon name="${icon}" size="48"></tds-icon>
-        <p class="tds-detail-05">${icon}</p>
-    </tds-block>
-`,
-);
+const Template = () => {
+  const icons = getIconsObject().map(
+    (icon) => `
+      <tds-block mode-variant="primary" data-icon="${icon}">
+          <tds-icon name="${icon}" size="48"></tds-icon>
+          <p class="tds-detail-05">${icon}</p>
+      </tds-block>
+  `,
+  );
 
-const Template = () =>
-  formatHtmlPreview(
+  return formatHtmlPreview(
     `
     <style>
         .grid-container {
@@ -113,5 +115,5 @@ const Template = () =>
     </script>
     `,
   );
-
+};
 export const Gallery = Template.bind({});
