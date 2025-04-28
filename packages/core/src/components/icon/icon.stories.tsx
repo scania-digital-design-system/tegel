@@ -24,14 +24,8 @@ const getIconsObject = () => {
   return iconsObject;
 };
 
-// Create a closure to maintain the current brand state
-const handleBrandChange = (event: CustomEvent) => {
-  console.log('Brand changed to', event.detail.brand);
-  getIconsObject();
-};
-
 // Listen for brand changes
-document.addEventListener('storybook-brand-changed', handleBrandChange);
+document.addEventListener('storybook-brand-changed', getIconsObject);
 
 export default {
   title: 'Foundations/Icons',
