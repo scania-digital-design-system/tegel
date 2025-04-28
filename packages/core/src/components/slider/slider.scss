@@ -8,6 +8,18 @@ tds-slider {
   input[type='range'].tds-slider-native-element {
     display: none;
   }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 .tds-slider-wrapper {
@@ -16,6 +28,12 @@ tds-slider {
   &.read-only {
     pointer-events: none;
   }
+}
+
+.tds-slider-wrapper:focus-within {
+  outline: 2px solid var(--tds-blue-400);
+  outline-offset: 2px;
+  border-radius: var(--tds-spacing-element-4);
 }
 
 .tds-slider {

@@ -53,6 +53,9 @@ export class TdsDatetime {
   /** Helper text for the component */
   @Prop() helper: string = '';
 
+  /** Value for the aria-label attribute */
+  @Prop() tdsAriaLabel: string;
+
   /** Listen to the focus state of the input */
   @State() focusInput: boolean;
 
@@ -184,6 +187,14 @@ export class TdsDatetime {
     this.value = value;
   }
 
+  connectedCallback() {
+    if (!this.tdsAriaLabel && !this.label) {
+      console.warn(
+        'Tegel Datetime component: provide the label or tdsAriaLabel prop for improved accessibility',
+      );
+    }
+  }
+
   render() {
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
@@ -205,17 +216,28 @@ export class TdsDatetime {
     };
 
     return (
-      <div class={classNames}>
+      <div
+        class={classNames}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            const browserIsChrome = navigator.userAgent.toLowerCase().includes('chrome');
+            if (browserIsChrome) {
+              // showPicker currently only works reliably for date inputs in Chrome and Chromium-based browsers:
+              this.textInput.showPicker();
+            }
+          }
+        }}
+      >
         {this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
           </label>
         )}
         <div onClick={(e) => this.handleFocusClick(e)} class="tds-datetime-container">
-          <div class="tds-datetime-input-container">
+          <div class={`tds-datetime-input-container type-${this.type}`}>
             <input
-              ref={(inputEl) => {
-                this.textInput = inputEl as HTMLInputElement;
+              ref={(inputEl: HTMLInputElement) => {
+                this.textInput = inputEl;
               }}
               class={className}
               type={this.type}
@@ -228,22 +250,24 @@ export class TdsDatetime {
               onInput={(e) => this.handleInput(e)}
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
+              aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
             />
+
             <div class="datetime-icon icon-datetime-local">
-              <tds-icon size="20px" name="calendar"></tds-icon>
+              <tds-icon size="20px" name="calendar" svgTitle="Calendar" />
             </div>
 
             <div class="datetime-icon icon-time">
-              <tds-icon size="20px" name="clock"></tds-icon>
+              <tds-icon size="20px" name="clock" svgTitle="Clock" />
             </div>
           </div>
-          <div class="tds-datetime-bar"></div>
+          <div class="tds-datetime-bar" />
         </div>
 
         {this.helper && (
           <div class="tds-datetime-helper">
             <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px"></tds-icon>}
+              {this.state === 'error' && <tds-icon name="error" size="16px" />}
               {this.helper}
             </div>
           </div>

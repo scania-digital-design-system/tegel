@@ -74,6 +74,8 @@ export class TdsPopoverCore {
 
   @State() hasShownAtLeastOnce: boolean = false;
 
+  @State() openedByKeyboard: boolean = false;
+
   /** Property for closing popover programmatically */
   @Method() async close() {
     this.setIsShown(false);
@@ -120,6 +122,13 @@ export class TdsPopoverCore {
     }
   }
 
+  @Listen('keydown', { target: 'window' })
+  handleKeydown(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.isShown) {
+      this.setIsShown(false);
+    }
+  }
+
   /* To observe any change of show prop after an initial load */
   @Watch('show')
   onShowChange(newValue: boolean) {
@@ -141,6 +150,31 @@ export class TdsPopoverCore {
     });
   }
 
+  @Watch('isShown')
+  onIsShownChange(newValue: boolean) {
+    if (newValue && this.openedByKeyboard) {
+      // Wait for the next render cycle to ensure the popover is visible
+      setTimeout(() => {
+        this.focusFirstElement();
+      }, 0);
+    }
+  }
+
+  private focusFirstElement() {
+    // Try to find a focusable element inside the popover
+    const focusableElements = this.host.querySelectorAll(
+      'a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])',
+    );
+
+    if (focusableElements.length > 0) {
+      (focusableElements[0] as HTMLElement).focus();
+    } else {
+      // If no focusable elements found, make the popover itself focusable
+      this.host.setAttribute('tabindex', '0');
+      this.host.focus();
+    }
+  }
+
   private setIsShown = function setIsShown(isShown: boolean | ((s: boolean) => void)) {
     if (typeof isShown === 'function') {
       this.isShown = isShown(this.isShown);
@@ -152,16 +186,24 @@ export class TdsPopoverCore {
       this.internalTdsShow.emit();
     } else {
       this.internalTdsClose.emit();
+      this.openedByKeyboard = false;
     }
   }.bind(this);
 
   private onClickTarget = function onClickTarget(event: Event) {
     event.stopPropagation();
+    // Check if event was triggered by keyboard (Enter or Space)
+    this.openedByKeyboard =
+      event.type === 'keydown' ||
+      (event as KeyboardEvent).key === 'Enter' ||
+      (event as KeyboardEvent).key === ' ';
     this.setIsShown((isShown: boolean) => !isShown);
   }.bind(this);
 
   private handleShow = function handleShow(event) {
     event.stopPropagation();
+    // Check if event was triggered by keyboard (tab focus)
+    this.openedByKeyboard = event.type === 'focusin';
     this.setIsShown(true);
   }.bind(this);
 
@@ -207,6 +249,14 @@ export class TdsPopoverCore {
 
     if (trigger === 'click' && this.show === null) {
       this.target.addEventListener('click', this.onClickTarget);
+      // Also handle keyboard activation via Enter and Space
+      this.target.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.openedByKeyboard = true;
+          this.onClickTarget(e);
+        }
+      });
     }
 
     if (trigger === 'hover' || trigger === 'hover-popover') {
@@ -228,6 +278,7 @@ export class TdsPopoverCore {
 
   private cleanUp() {
     this.target?.removeEventListener('click', this.onClickTarget);
+    this.target?.removeEventListener('keydown', this.onClickTarget as any);
     this.target?.removeEventListener('focusin', this.handleShow);
     this.target?.removeEventListener('focusout', this.handleHide);
     this.target?.removeEventListener('mouseenter', this.handleShow);
@@ -288,7 +339,11 @@ export class TdsPopoverCore {
     const classList = generateClassList(classes);
 
     return (
-      <Host class={classList} id={`tds-popover-core-${this.uuid}`}>
+      <Host
+        role={this.host.getAttribute('role')}
+        class={classList}
+        id={`tds-popover-core-${this.uuid}`}
+      >
         <slot></slot>
       </Host>
     );

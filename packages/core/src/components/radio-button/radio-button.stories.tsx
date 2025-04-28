@@ -64,6 +64,7 @@ const Template = ({ label, disabled }) =>
     required=false
     ${disabled ? 'disabled' : ''}
     checked="true" 
+    tds-tab-index="0"
   >
     <div slot="label">
       ${label} 1

@@ -14,6 +14,7 @@
 | `orientation`   | `orientation`    | The orientation the Steps                                                                                                                                                                                                                         | `"horizontal" \| "vertical"` | `'horizontal'`       |
 | `size`          | `size`           | Size of the component and it's children.                                                                                                                                                                                                          | `"lg" \| "sm"`               | `'lg'`               |
 | `stepperId`     | `stepper-id`     | ID used for internal Stepper functionality and events, must be unique.  **NOTE**: If you're listening for Stepper events, you need to set this ID yourself to identify the Stepper, as the default ID is random and will be different every time. | `string`                     | `generateUniqueId()` |
+| `tdsAriaLabel`  | `tds-aria-label` | Label for the stepper component, for screen reader users                                                                                                                                                                                          | `string`                     | `'Progress steps'`   |
 
 
 ## Slots

@@ -42,7 +42,7 @@ test.describe.parallel(componentName, () => {
     await triggerButton.click();
 
     const tdsMenuItemListItemIcons = page
-      .getByRole('listitem')
+      .getByRole('menuitem')
       .filter({ has: page.getByRole('img') });
     await expect(tdsMenuItemListItemIcons).toHaveCount(9);
   });

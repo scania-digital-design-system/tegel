@@ -109,7 +109,7 @@ export class TdsDropdown {
   }
 
   private normalizeValue(value: string | number | (string | number)[] | null): string[] {
-    if (!value || value === '') return [];
+    if (value === null || value === undefined || value === '') return [];
 
     // For single select, ensure we handle both string and array inputs
     if (!this.multiselect) {
@@ -391,7 +391,7 @@ export class TdsDropdown {
       const defaultValueStr = convertToString(this.defaultValue);
       const initialValue = this.multiselect
         ? defaultValueStr.split(',').map(convertToString)
-        : [convertToString(this.defaultValue)];
+        : [defaultValueStr];
       this.updateDropdownStateInternal(initialValue);
     }
   }
@@ -435,7 +435,8 @@ export class TdsDropdown {
     return this.selectedOptions
       .map((stringValue) => {
         const matchingElement = this.getChildren()?.find(
-          (element: HTMLTdsDropdownOptionElement) => element.value === stringValue,
+          (element: HTMLTdsDropdownOptionElement) =>
+            convertToString(element.value) === convertToString(stringValue),
         );
         return matchingElement;
       })

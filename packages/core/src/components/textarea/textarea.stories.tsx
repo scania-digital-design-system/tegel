@@ -137,6 +137,13 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    tdsAriaLabel: {
+      name: 'Aria Label',
+      description: 'Value to be used for the aria-label attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -152,6 +159,7 @@ export default {
     readonly: false,
     hideReadonlyIcon: false,
     disabled: false,
+    tdsAriaLabel: 'A textarea component',
   },
 };
 
@@ -169,6 +177,7 @@ const Template = ({
   readonly,
   hideReadonlyIcon,
   disabled,
+  tdsAriaLabel,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
   const stateValue = state.toLowerCase();
@@ -181,7 +190,8 @@ const Template = ({
   <style>
   /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
-      width: 400px;
+      width: calc(100vw - 40px);
+      max-width: 400px;
     }
   </style>
 
@@ -203,7 +213,9 @@ const Template = ({
           ${noMinWidth ? 'no-min-width' : ''}
           placeholder="${placeholder}"
           ${maxlength}
-          value="${textValue}">
+          value="${textValue}"
+          tds-aria-label="${tdsAriaLabel}"
+          >
         </tds-textarea>
   </div>
   <!-- Script tag for demo purposes -->

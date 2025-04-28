@@ -1,5 +1,45 @@
-@import './spinner-vars';
 @import '../../mixins/box-sizing';
+
+/* Component variables aka overrides */
+:root {
+  --spinner-background-inverted: rgba(255, 255, 255, 1);
+}
+
+:root,
+.scania,
+.scania .tds-mode-light {
+  --spinner-background: rgba(43, 112, 211, 1);
+}
+
+.scania .tds-mode-dark {
+  --spinner-background: rgba(74, 137, 243, 1);
+}
+
+.traton,
+.traton .tds-mode-light {
+  --spinner-background: rgba(0, 72, 82, 1);
+}
+
+.traton .tds-mode-dark {
+  --spinner-background: rgba(194, 191, 182, 1);
+}
+
+/* Component variables */
+:root {
+  --spinner-speed: 1.8s;
+  --spinner-speed-lg: 2s;
+  --spinner-radius-xs: 8px;
+  --spinner-radius-sm: 12px;
+  --spinner-radius-md: 26px;
+  --spinner-radius-lg: 42px;
+  --spinner-radius: var(--spinner-radius-lg);
+  --spinner-stroke-width-xs: 3px;
+  --spinner-stroke-width-sm: 4px;
+  --spinner-stroke-width-md: 6px;
+  --spinner-stroke-width-lg: 8px;
+  --spinner-stroke-width: var(--spinner-stroke-width-lg);
+  --PI: 3.14159265358979;
+}
 
 :host {
   @include tds-box-sizing;
@@ -8,63 +48,63 @@
 }
 
 .tds-spinner-svg {
-  width: calc(var(--tds-spinner-radius) * 2);
-  height: calc(var(--tds-spinner-radius) * 2);
+  width: calc(var(--spinner-radius) * 2);
+  height: calc(var(--spinner-radius) * 2);
   transform: scale(-1, 1) rotate(-90deg);
 
   &-xs {
-    --tds-spinner-radius: var(--tds-spinner-radius-xs);
-    --tds-spinner-stroke-width: var(--tds-spinner-stroke-width-xs);
-    --tds-spinner-animation-speed: var(--tds-spinner-speed);
+    --spinner-radius: var(--spinner-radius-xs);
+    --spinner-stroke-width: var(--spinner-stroke-width-xs);
+    --spinner-animation-speed: var(--spinner-speed);
   }
 
   &-sm {
-    --tds-spinner-radius: var(--tds-spinner-radius-sm);
-    --tds-spinner-stroke-width: var(--tds-spinner-stroke-width-sm);
-    --tds-spinner-animation-speed: var(--tds-spinner-speed);
+    --spinner-radius: var(--spinner-radius-sm);
+    --spinner-stroke-width: var(--spinner-stroke-width-sm);
+    --spinner-animation-speed: var(--spinner-speed);
   }
 
   &-md {
-    --tds-spinner-radius: var(--tds-spinner-radius-md);
-    --tds-spinner-stroke-width: var(--tds-spinner-stroke-width-md);
-    --tds-spinner-animation-speed: var(--tds-spinner-speed);
+    --spinner-radius: var(--spinner-radius-md);
+    --spinner-stroke-width: var(--spinner-stroke-width-md);
+    --spinner-animation-speed: var(--spinner-speed);
   }
 
   &-lg {
-    --tds-spinner-radius: var(--tds-spinner-radius-lg);
-    --tds-spinner-stroke-width: var(--tds-spinner-stroke-width-lg);
-    --tds-spinner-animation-speed: var(--tds-spinner-speed-lg);
+    --spinner-radius: var(--spinner-radius-lg);
+    --spinner-stroke-width: var(--spinner-stroke-width-lg);
+    --spinner-animation-speed: var(--spinner-speed-lg);
   }
 }
 
 .tds-spinner-circle {
-  cx: var(--tds-spinner-radius);
-  cy: var(--tds-spinner-radius);
-  r: calc(var(--tds-spinner-radius) - (var(--tds-spinner-stroke-width) / 2));
+  cx: var(--spinner-radius);
+  cy: var(--spinner-radius);
+  r: calc(var(--spinner-radius) - (var(--spinner-stroke-width) / 2));
   fill: none;
 
   //Calculation for lenght of dash
-  --tds-spinner-stroke-dash: calc((2 * var(--PI)) * var(--tds-spinner-radius));
+  --spinner-stroke-dash: calc((2 * var(--PI)) * var(--spinner-radius));
 
-  stroke-dasharray: var(--tds-spinner-stroke-dash);
-  stroke-width: var(--tds-spinner-stroke-width);
-  animation: dash var(--tds-spinner-animation-speed) cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+  stroke-dasharray: var(--spinner-stroke-dash);
+  stroke-width: var(--spinner-stroke-width);
+  animation: dash var(--spinner-animation-speed) cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
 
   &-standard {
-    stroke: var(--tds-spinner-background);
+    stroke: var(--spinner-background);
   }
 
   &-inverted {
-    stroke: var(--tds-spinner-background-inverted);
+    stroke: var(--spinner-background-inverted);
   }
 }
 
 @keyframes dash {
   from {
-    stroke-dashoffset: calc(-1 * var(--tds-spinner-stroke-dash));
+    stroke-dashoffset: calc(-1 * var(--spinner-stroke-dash));
   }
 
   to {
-    stroke-dashoffset: var(--tds-spinner-stroke-dash);
+    stroke-dashoffset: var(--spinner-stroke-dash);
   }
 }

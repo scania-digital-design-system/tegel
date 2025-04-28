@@ -21,6 +21,9 @@ export class Icon {
   /** Override the default title for the svg. Also used by aria-labelledby. */
   @Prop() svgTitle?: string;
 
+  /** Set aria-hidden attribute on svg */
+  @Prop() tdsAriaHidden: boolean = false;
+
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop() svgDescription?: string;
 
@@ -46,6 +49,7 @@ export class Icon {
       if (element.name === this.name) {
         return (
           <svg
+            aria-hidden={this.tdsAriaHidden}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
             aria-labelledby={this.svgTitle ? `title-${this.name}` : undefined}
