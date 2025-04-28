@@ -3,7 +3,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import { defineCustomElements } from '../loader';
 import { useDarkMode } from 'storybook-dark-mode';
 import { addons } from '@storybook/addons';
-import { UPDATE_GLOBALS } from '@storybook/core-events';
+import { UPDATE_GLOBALS, UPDATE_STORY_ARGS } from '@storybook/core-events';
 import './preview.css';
 import '../dist/tegel/tegel.css';
 
@@ -83,18 +83,31 @@ if (typeof window !== 'undefined') {
 export const decorators = [
   (Story, context) => {
     const brand = context.globals.brand;
+
     if (typeof window !== 'undefined') {
       document.documentElement.classList.remove('scania', 'traton');
       document.documentElement.classList.add(brand);
 
-      // Dispatch custom event
       const event = new CustomEvent('storybook-brand-changed', {
         detail: { brand },
         bubbles: true,
       });
-
       document.dispatchEvent(event);
+
+      const { args } = context;
+      const channel = addons.getChannel();
+
+      // ONLY emit if args.brand is different
+      if (args.brand !== brand) {
+        channel.emit(UPDATE_STORY_ARGS, {
+          storyId: context.id,
+          updatedArgs: {
+            brand: brand,
+          },
+        });
+      }
     }
+
     return Story();
   },
 ];

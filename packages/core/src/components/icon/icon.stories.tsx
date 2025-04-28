@@ -14,14 +14,13 @@ const brandIconsMap = {
 // Get icons based on the closest brand class
 const getIconsObject = () => {
   // Get all brand classes from the mapping
-  console.log('Get icons object');
   const brandClasses = Object.keys(brandIconsMap);
 
   // Find the first matching brand class
   const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
 
+  // Get icons based on the brand class
   const iconsObject = brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
-  console.log('Icons object', iconsObject);
   return iconsObject;
 };
 
@@ -53,17 +52,6 @@ export default {
     ],
   },
   argTypes: {
-    brand: {
-      name: 'Brand',
-      description: 'Select the brand to display icons from',
-      control: {
-        type: 'radio',
-      },
-      options: ['scania', 'traton'],
-      table: {
-        defaultValue: { summary: 'scania' },
-      },
-    },
     iconTraton: {
       name: 'Icon name (Traton)',
       description: 'Select Traton icon to display',
@@ -106,7 +94,6 @@ export default {
     },
   },
   args: {
-    brand: 'scania',
     size: 32,
     iconTraton: 'truck',
     iconScania: 'truck',
