@@ -1,3 +1,6 @@
+import { defineCustomElements } from '../loader';
+import '../dist/tegel/tegel.css';
+
 const preview = {
   parameters: {
     docs: {
@@ -9,3 +12,5 @@ const preview = {
 };
 
 export default preview;
+
+defineCustomElements();
