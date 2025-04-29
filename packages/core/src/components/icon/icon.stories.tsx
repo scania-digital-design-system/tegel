@@ -1,13 +1,10 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { iconsNames as scaniaIconsNames } from './scaniaIconsArray';
-import { iconsNames as tratonIconsNames } from './tratonIconsArray';
-import readme from './readme.md';
+import { iconsNames } from './iconsArray';
 
 export default {
-  title: 'Foundations/Icons',
+  title: 'Components/Icon',
   parameters: {
     layout: 'centered',
-    notes: readme,
     design: [
       {
         name: 'Figma',
@@ -22,23 +19,13 @@ export default {
     ],
   },
   argTypes: {
-    iconTraton: {
+    icon: {
       name: 'Icon name',
       description: 'Select icon to display',
       control: {
         type: 'select',
       },
-      options: tratonIconsNames,
-      if: { arg: 'brand', eq: 'traton' },
-    },
-    iconScania: {
-      name: 'Icon name',
-      description: 'Select icon to display',
-      control: {
-        type: 'select',
-      },
-      options: scaniaIconsNames,
-      if: { arg: 'brand', eq: 'scania' },
+      options: iconsNames,
     },
     size: {
       name: 'Size in pixels',
@@ -65,24 +52,21 @@ export default {
   },
   args: {
     size: 32,
-    iconTraton: 'truck',
-    iconScania: 'truck',
+    icon: 'truck',
     svgTitle: '',
     svgDescription: '',
   },
 };
 
-const IconTemplate = (args) => {
-  const iconName = args.brand === 'traton' ? args.iconTraton : args.iconScania;
-  return formatHtmlPreview(`
+const IconTemplate = (args) =>
+  formatHtmlPreview(`
   <tds-icon 
-    name="${iconName}" 
+    name="${args.icon}" 
     size="${`${args.size.toString()}px`}" 
     ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
     ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
     >   
   </tds-icon> 
   `);
-};
 
-export const Component = IconTemplate.bind({});
+export const Default = IconTemplate.bind({});

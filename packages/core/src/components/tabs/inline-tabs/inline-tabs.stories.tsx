@@ -1,15 +1,8 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeTab from './inline-tab/readme.md';
-import { ComponentsFolder } from '../../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Tabs`,
+  title: 'Components/Tabs/Inline Tabs',
   parameters: {
-    notes: {
-      'Inline Tabs': readme,
-      'Inline Tab': readmeTab,
-    },
     design: [
       {
         name: 'Figma',
@@ -118,4 +111,4 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
   </script>
 `);
 
-export const InlineTabs = Template.bind({});
+export const Default = Template.bind({});

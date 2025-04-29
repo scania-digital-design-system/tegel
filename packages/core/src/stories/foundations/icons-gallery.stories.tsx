@@ -1,53 +1,25 @@
 import formatHtmlPreview from '../formatHtmlPreview';
-import { iconsNames as scaniaIconsNames } from '../../components/icon/scaniaIconsArray';
-import { iconsNames as tratonIconsNames } from '../../components/icon/tratonIconsArray';
-
-// Brand mapping configuration
-const brandIconsMap = {
-  scania: scaniaIconsNames,
-  traton: tratonIconsNames,
-  // Add new brands here as needed
-};
-
-// Get icons based on the closest brand class
-const getIconsObject = () => {
-  // Get all brand classes from the mapping
-  const brandClasses = Object.keys(brandIconsMap);
-
-  // Find the first matching brand class
-  const brandClass = brandClasses.find((brand) => {
-    return document.querySelector(`.${brand}`);
-  });
-
-  // Return the corresponding icons or default to scania
-  return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
-};
+import { iconsNames } from '../../components/icon/iconsArray';
 
 export default {
-  title: 'Foundations/Icons',
+  title: 'Foundations/Icons Gallery',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
-    options: {
-      showPanel: false,
-      showToolbar: true,
-    },
-    previewTabs: {
-      'storybook/docs/panel': { hidden: true },
-    },
   },
 };
 
-const Template = () => {
-  const icons = getIconsObject().map(
-    (icon) => `
-      <tds-block mode-variant="primary" data-icon="${icon}">
-          <tds-icon name="${icon}" size="48"></tds-icon>
-          <p class="tds-detail-05">${icon}</p>
-      </tds-block>
-  `,
-  );
+const icons = iconsNames.map(
+  (icon) => `
+    <tds-block mode-variant="primary" data-icon="${icon}">
+        <tds-icon name="${icon}" size="48"></tds-icon>
+        <p class="tds-detail-05">${icon}</p>
+    </tds-block>
+`,
+);
 
-  return formatHtmlPreview(
+const Template = () =>
+  formatHtmlPreview(
     `
     <style>
         .grid-container {
@@ -115,5 +87,5 @@ const Template = () => {
     </script>
     `,
   );
-};
-export const Gallery = Template.bind({});
+
+export const Default = Template.bind({});

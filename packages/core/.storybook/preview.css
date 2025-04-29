@@ -27,3 +27,19 @@ body,
   height: 0;
   width: 0;
 }
+
+/* Apply dark background when dark mode class is active */
+html.tds-mode-dark,
+body.tds-mode-dark #root,
+body.tds-mode-dark .docs-story,
+body.tds-mode-dark .sbdocs-wrapper,
+body.tds-mode-dark .sb-bar,
+body.tds-mode-dark h1,
+body.tds-mode-dark h2,
+body.tds-mode-dark a,
+body.tds-mode-dark p,
+body.tds-mode-dark ul,
+body.tds-mode-dark li {
+  background-color: var(--color-bg);
+  color: white;
+}
