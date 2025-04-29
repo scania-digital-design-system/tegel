@@ -736,7 +736,6 @@ export class TdsDropdown {
           role="listbox"
           aria-label={this.tdsAriaLabel}
           aria-hidden={this.open ? 'false' : 'true'}
-          tabindex={this.open ? 0 : -1}
           aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
           ref={(element) => {
