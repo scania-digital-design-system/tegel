@@ -70,12 +70,8 @@ const customViewports = {
   },
 };
 
-// Add brand switcher functionality
-const BRAND_CHANGED = 'BRAND_CHANGED';
-
 // Initialize brand state
 if (typeof window !== 'undefined') {
-  window.TDS_BRAND = 'scania';
   document.documentElement.classList.add('scania');
 }
 
@@ -87,12 +83,6 @@ export const decorators = [
     if (typeof window !== 'undefined') {
       document.documentElement.classList.remove('scania', 'traton');
       document.documentElement.classList.add(brand);
-
-      const event = new CustomEvent('storybook-brand-changed', {
-        detail: { brand },
-        bubbles: true,
-      });
-      document.dispatchEvent(event);
 
       const { args } = context;
       const channel = addons.getChannel();

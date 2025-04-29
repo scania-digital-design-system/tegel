@@ -1,31 +1,7 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames as scaniaIconsNames } from './scaniaIconsArray';
 import { iconsNames as tratonIconsNames } from './tratonIconsArray';
-
 import readme from './readme.md';
-
-// Brand mapping configuration
-const brandIconsMap = {
-  scania: scaniaIconsNames,
-  traton: tratonIconsNames,
-  // Add new brands here as needed
-};
-
-// Get icons based on the closest brand class
-const getIconsObject = () => {
-  // Get all brand classes from the mapping
-  const brandClasses = Object.keys(brandIconsMap);
-
-  // Find the first matching brand class
-  const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
-
-  // Get icons based on the brand class
-  const iconsObject = brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
-  return iconsObject;
-};
-
-// Listen for brand changes
-document.addEventListener('storybook-brand-changed', getIconsObject);
 
 export default {
   title: 'Foundations/Icons',
@@ -47,8 +23,8 @@ export default {
   },
   argTypes: {
     iconTraton: {
-      name: 'Icon name (Traton)',
-      description: 'Select Traton icon to display',
+      name: 'Icon name',
+      description: 'Select icon to display',
       control: {
         type: 'select',
       },
@@ -56,8 +32,8 @@ export default {
       if: { arg: 'brand', eq: 'traton' },
     },
     iconScania: {
-      name: 'Icon name (Scania)',
-      description: 'Select Scania icon to display',
+      name: 'Icon name',
+      description: 'Select icon to display',
       control: {
         type: 'select',
       },
