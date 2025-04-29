@@ -1,10 +1,9 @@
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import readme from './readme.md';
 import readmeItem from './folder-tab/readme.md';
-import { ComponentsFolder } from '../../../utils/constants';
-import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: `${ComponentsFolder}/Tabs`,
+  title: 'Components/Tabs/Folder Tabs',
   parameters: {
     notes: {
       'Folder Tabs': readme,

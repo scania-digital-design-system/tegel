@@ -1,10 +1,9 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import readme from './readme.md';
 import readmeTab from './navigation-tab/readme.md';
-import { ComponentsFolder } from '../../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Tabs`,
+  title: 'Components/Tabs/Navigation Tabs',
   parameters: {
     notes: {
       'Navigation Tabs': readme,

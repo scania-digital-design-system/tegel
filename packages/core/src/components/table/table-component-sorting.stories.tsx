@@ -10,23 +10,22 @@ import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Table`,
+  title: 'Components/Table/Sorting',
   parameters: {
     notes: {
-      'tds-table': tdsTable,
-      'tds-table-toolbar': tdsTableToolbar,
-      'tds-header': tdsHeader,
-      'tds-header-cell': tdsHeaderCell,
-      'tds-header-input-wrapper': tdsTableHeaderInputWrapper,
-      'tds-table-body': tdsTableBody,
-      'tds-body-row': tdsBodyRow,
-      'tds-body-row-expandable': tdsBodyRowExpandable,
-      'tds-body-cell': tdsBodyCell,
-      'tds-body-input-wrapper': tdsTableBodyInputWrapper,
-      'tds-table-footer': tdsTableFooter,
+      'Table': tdsTable,
+      'Table Toolbar': tdsTableToolbar,
+      'Table Header': tdsHeader,
+      'Table Header Cell': tdsHeaderCell,
+      'Table Body': tdsTableBody,
+      'Table Body Row': tdsBodyRow,
+      'Table Body Row Expandable': tdsBodyRowExpandable,
+      'Table Body Cell': tdsBodyCell,
+      'Table Footer': tdsTableFooter,
+      'Table Body Input Wrapper': tdsTableBodyInputWrapper,
+      'Table Header Input Wrapper': tdsTableHeaderInputWrapper,
     },
   },
   argTypes: {

@@ -9,10 +9,9 @@ import readmeDropdownListItem from './header-dropdown-list-item/readme.md';
 import readmeDropdownListUser from './header-dropdown-list-user/readme.md';
 import readmeBrandSymbol from './header-brand-symbol/readme.md';
 import readmeLauncher from './header-launcher/readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Header`,
+  title: 'Components/Header',
   parameters: {
     notes: {
       'Header': readme,

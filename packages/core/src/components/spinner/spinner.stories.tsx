@@ -1,9 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Spinner`,
+  title: 'Components/Spinner',
   parameters: {
     layout: 'centered', // Center the component horizontally and vertically in the Canvas
     notes: readme,

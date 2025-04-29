@@ -1,9 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Divider`,
+  title: 'Components/Divider',
   parameters: {
     layout: 'centered',
     notes: { Divider: readme },

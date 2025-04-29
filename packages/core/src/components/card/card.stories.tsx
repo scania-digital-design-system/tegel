@@ -2,10 +2,9 @@ import readme from './readme.md';
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import CardBodyImage from '../../stories/assets/image/card-img.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Card`,
+  title: 'Components/Card',
   parameters: {
     notes: readme,
     layout: 'centered',

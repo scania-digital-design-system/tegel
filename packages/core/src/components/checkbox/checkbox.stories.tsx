@@ -1,9 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Checkbox`,
+  title: 'Components/Checkbox',
   parameters: {
     notes: readme,
     layout: 'centered',

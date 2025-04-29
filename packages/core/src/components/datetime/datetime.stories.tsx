@@ -1,9 +1,8 @@
-import readme from './readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
+import readme from './readme.md';
 
 export default {
-  title: `${ComponentsFolder}/Datetime`,
+  title: 'Components/Datetime',
   parameters: {
     layout: 'centered',
     notes: readme,

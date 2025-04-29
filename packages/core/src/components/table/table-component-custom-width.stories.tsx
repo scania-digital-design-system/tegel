@@ -11,10 +11,8 @@ import tdsTableFooter from './table-footer/readme.md';
 import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 
-import { ComponentsFolder } from '../../utils/constants';
-
 export default {
-  title: `${ComponentsFolder}/Table`,
+  title: 'Components/Table/Custom Width',
   parameters: {
     notes: {
       'tds-table': tdsTable,

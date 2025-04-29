@@ -1,9 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Modal`,
+  title: 'Components/Modal',
   parameters: {
     layout: 'fullscreen',
     notes: readme,

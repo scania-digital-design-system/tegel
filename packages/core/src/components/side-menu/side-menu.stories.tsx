@@ -10,10 +10,8 @@ import readmeSideMenuItem from './side-menu-item/readme.md';
 import readmeSideMenuDropdownList from './side-menu-dropdown-list/readme.md';
 import readmeSideMenuDropdownListItem from './side-menu-dropdown-list-item/readme.md';
 
-import { ComponentsFolder } from '../../utils/constants';
-
 export default {
-  title: `${ComponentsFolder}/Side Menu`,
+  title: 'Components/Side Menu',
   parameters: {
     notes: {
       'Side Menu': readme,

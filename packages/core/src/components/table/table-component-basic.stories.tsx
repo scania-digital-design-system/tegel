@@ -9,11 +9,10 @@ import tdsBodyCell from './table-body-cell/readme.md';
 import tdsTableFooter from './table-footer/readme.md';
 import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
-  title: `${ComponentsFolder}/Table`,
+  title: 'Components/Table',
   parameters: {
     notes: {
       'tds-table': tdsTable,

@@ -1,10 +1,12 @@
-import { Meta } from '@storybook/addon-docs';
-
-<Meta title="Intro/CSS Reset" />
-
+export default {
+  title: 'Intro/CSS Reset',
+  parameters: {
+    docs: {
+      description: {
+        component: `
 ## CSS Reset
 
-While our web components look and work as intended out of the box, basic HTML elements like `html`, `p`, `h1`, etc, still need some CSS tweaks to work predictably across browsers.
+While our web components look and work as intended out of the box, basic HTML elements like \`html\`, \`p\`, \`h1\`, etc, still need some CSS tweaks to work predictably across browsers.
 
 For this reason we recommend the following minimal CSS reset. The included comments explain what each part is for.
 
@@ -13,8 +15,7 @@ Place the reset where you put your other global styles, before other styles are 
 The CSS Reset is based on [Joshua Comeaus reset](https://www.joshwcomeau.com/css/custom-css-reset). 
 For an in-depth explanation of each part we recommend reading the article on his website.
 
-
-```css
+\`\`\`css
 /* BEGIN - CSS Reset */
 
 /*
@@ -64,4 +65,18 @@ h6 {
 }
 
 /* END - CSS Reset */
-```
+\`\`\`
+        `,
+      },
+    },
+  },
+};
+
+export const CSSReset = () => {
+  return `
+    <div>
+      <h2>CSS Reset Documentation</h2>
+      <p>Please refer to the documentation above for detailed information about the CSS Reset.</p>
+    </div>
+  `;
+};

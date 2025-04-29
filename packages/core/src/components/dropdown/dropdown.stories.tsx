@@ -1,10 +1,9 @@
 import readme from './readme.md';
 import readmeDropdownOption from './dropdown-option/readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Dropdown`,
+  title: 'Components/Dropdown',
   parameters: {
     layout: 'centered',
     notes: { 'Dropdown': readme, 'Dropdown option': readmeDropdownOption },
@@ -208,7 +207,7 @@ export default {
     defaultOption: 'No default',
     animation: 'slide',
     responsive: false,
-    tdsAriaLabel: 'A dropdown component'
+    tdsAriaLabel: 'A dropdown component',
   },
 };
 

@@ -1,10 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readmeStepper from './readme.md';
+import readme from './readme.md';
 import readmeStep from './step/readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Stepper`,
+  title: 'Components/Stepper',
   parameters: {
     layout: 'centered',
     design: [
@@ -19,7 +18,7 @@ export default {
         url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=10508%3A32221&t=Ne6myqwca5m00de7-1',
       },
     ],
-    notes: { Stepper: readmeStepper, Step: readmeStep },
+    notes: { Stepper: readme, Step: readmeStep },
   },
   argTypes: {
     size: {

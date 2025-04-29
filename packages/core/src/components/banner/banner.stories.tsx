@@ -1,7 +1,6 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
 import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 // FIXME: CMS: Change state to type in Code tab of component
 
