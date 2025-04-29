@@ -1,11 +1,17 @@
 // Check status of webFont solution
 
 import { Component, h, Prop, State, Host, Element } from '@stencil/core';
-
 import { iconsCollection as scaniaIcons } from './scaniaIconsArray';
 import { iconsCollection as tratonIcons } from './tratonIconsArray';
-
 import { IconNames } from '../../types/Icons';
+
+// Map of brand classes to their respective icon collections
+const brandIconMap = {
+  scania: scaniaIcons,
+  traton: tratonIcons,
+  // Add new brands here in the future
+  // Example: newBrand: newBrandIcons,
+};
 
 @Component({
   tag: 'tds-icon',
@@ -35,21 +41,20 @@ export class Icon {
 
   @State() arrayOfIcons = [];
 
-  connectedCallback() {
-    //check dom for closes .scania or .traton class and set the icons_object to the correct icon collection
-    const closest = this.host.closest('.scania') || this.host.closest('.traton');
-    if (closest) {
-      this.icons_object = closest.classList.contains('scania') ? scaniaIcons : tratonIcons;
-    } else {
-      this.icons_object = scaniaIcons;
-    }
+  componentWillLoad() {
+    this.detectAndSetBrand();
   }
 
-  componentWillLoad() {
+  private detectAndSetBrand() {
+    const brandClasses = Object.keys(brandIconMap);
+    const matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
+
+    // Set the icons_object based on the found brand or default to scania
+    this.icons_object = matchingBrand ? brandIconMap[matchingBrand] : scaniaIcons;
     this.arrayDataWatcher(this.icons_object);
   }
 
-  arrayDataWatcher(newValue: string) {
+  private arrayDataWatcher(newValue: string) {
     if (typeof newValue === 'string') {
       this.arrayOfIcons = JSON.parse(newValue);
     } else {
