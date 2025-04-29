@@ -343,13 +343,13 @@
       "types": "./dist/components/tds-toggle.d.ts"
     },
     "./tds-tooltip": {
-      "types": "./dist/components/tds-tooltip.d.ts",
-      "import": "./dist/components/tds-tooltip.js"
+      "import": "./dist/components/tds-tooltip.js",
+      "types": "./dist/components/tds-tooltip.d.ts"
     },
     "./loader": {
-      "types": "./loader/index.d.ts",
       "import": "./loader/index.js",
-      "require": "./loader/index.cjs"
+      "require": "./loader/index.cjs",
+      "types": "./loader/index.d.ts"
     }
   },
   "repository": {
@@ -380,8 +380,10 @@
     "copy:assets": "node scripts/copy-assets.mjs",
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build:storybook": "build-storybook --quiet",
+    "build-stencil:storybook": "npm run build && npm run build:storybook",
+    "start:storybook": "start-storybook -p 6006",
+    "storybook": "concurrently --raw 'npm:build-stencil:watch' 'npm:start:storybook'"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
@@ -390,23 +392,33 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.1",
+    "@babel/core": "7.19.1",
+    "@mdx-js/react": "3.0.1",
     "@playwright/test": "1.50.1",
     "@stencil/angular-output-target": "0.8.4",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.4",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/html": "^8.6.12",
-    "@storybook/html-vite": "^8.6.12",
-    "@storybook/test": "^8.6.12",
+    "@storybook/addon-a11y": "6.5.16",
+    "@storybook/addon-actions": "6.5.16",
+    "@storybook/addon-docs": "6.5.16",
+    "@storybook/addon-essentials": "6.5.16",
+    "@storybook/addon-interactions": "6.5.16",
+    "@storybook/addon-links": "6.5.16",
+    "@storybook/addon-notes": "5.3.21",
+    "@storybook/addons": "6.5.15",
+    "@storybook/builder-webpack4": "6.5.16",
+    "@storybook/html": "6.5.15",
+    "@storybook/mdx2-csf": "0.0.3",
     "addon-screen-reader": "1.8.6",
+    "babel-loader": "8.2.5",
     "concurrently": "8.0.1",
     "highlight.js": "11.8.0",
     "prettier": "2.7.1",
     "serve": "14.2.1",
     "stencil-playwright": "0.3.0",
-    "storybook": "^8.6.12"
+    "storybook-addon-designs": "6.3.1",
+    "storybook-dark-mode": "3.0.0",
+    "storybook-version": "0.1.1"
   },
   "license": "MIT"
 }
