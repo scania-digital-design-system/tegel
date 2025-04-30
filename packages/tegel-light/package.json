@@ -17,16 +17,7 @@
     "url": "git+https://github.com/scania-digital-design-system/tegel.git"
   },
   "style": "dist/global.css",
-  "exports": {
-    "./global.css": "./dist/global.css",
-    "./tl-accordion.css": "./dist/components/tl-accordion.css",
-    "./tl-button.css": "./dist/components/tl-button.css",
-    "./tl-header-brand-symbol.css": "./dist/components/tl-header-brand-symbol.css",
-    "./tl-header-item.css": "./dist/components/tl-header-item.css",
-    "./tl-header-title.css": "./dist/components/tl-header-title.css",
-    "./tl-header-vars.css": "./dist/components/tl-header-vars.css",
-    "./tl-header.css": "./dist/components/tl-header.css"
-  },
+  "exports": {},
   "files": [
     "dist/"
   ],
