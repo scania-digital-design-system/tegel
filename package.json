@@ -59,43 +59,39 @@
       "path": "./node_modules/cz-conventional-changelog",
       "types": {
         "feat": {
-          "description": "A new feature",
+          "description": "A new feature that adds significant functionality or capability to the codebase.",
           "value": "feat"
         },
         "fix": {
-          "description": "A bug fix or improvement",
+          "description": "A bug fix that addresses a specific issue or improves existing functionality.",
           "value": "fix"
         },
         "docs": {
-          "description": "Documentation changes",
+          "description": "Changes or additions to documentation, such as README updates or inline comments.",
           "value": "docs"
         },
-        "style": {
-          "description": "Code style changes",
-          "value": "style"
-        },
         "refactor": {
-          "description": "Code refactoring",
+          "description": "Code changes that improve structure or readability without altering functionality.",
           "value": "refactor"
         },
         "test": {
-          "description": "Adding or updating tests",
+          "description": "Adding new tests or updating existing ones to ensure code quality and coverage.",
           "value": "test"
         },
         "chore": {
-          "description": "Build process or tooling changes",
+          "description": "Routine tasks or maintenance work, such as dependency updates or build script changes.",
           "value": "chore"
         },
         "build": {
-          "description": "Changes related to the build system",
+          "description": "Modifications to the build system or external dependencies, such as upgrading build tools.",
           "value": "build"
         },
         "ci": {
-          "description": "Changes to your CI configuration or scripts",
+          "description": "Updates to CI configuration files or scripts to improve automation and deployment.",
           "value": "ci"
         },
         "release": {
-          "description": "Release version tag",
+          "description": "Tagging a new release version",
           "value": "release"
         }
       }
