@@ -251,7 +251,7 @@ export class TdsTextField {
                 }
               }}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
-              aria-describedby="text-field-helper-element"
+              aria-describedby={`text-field-helper-element-${this.uuid}`}
               aria-readonly={this.readOnly}
               id={`text-field-input-element-${this.uuid}`}
             />
@@ -292,7 +292,7 @@ export class TdsTextField {
 
         <div aria-live="assertive">
           {(this.helper || this.maxLength > 0) && (
-            <div class="text-field-helper">
+            <div class="text-field-helper" id={`text-field-helper-element-${this.uuid}`}>
               {this.state === 'error' && (
                 <div class="text-field-helper-error-state">
                   {!this.readOnly && <tds-icon name="error" size="16px" />}
