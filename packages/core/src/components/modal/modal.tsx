@@ -44,6 +44,9 @@ export class TdsModal {
   /** Element that will show the Modal (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
+  /** Indicates that there is no reference element used to open the modal, e.g. if it's opened programmatically. Used to disable warning about missing referenceEl or selector prop. */
+  @Prop() noReferenceElement?: boolean = false;
+
   /** Controls whether the Modal is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. */
   @Prop() show: boolean;
@@ -79,7 +82,7 @@ export class TdsModal {
   @Method()
   async closeModal() {
     this.isShown = false;
-    this.returnFocusOnClose()
+    this.returnFocusOnClose();
   }
 
   /** Emits when the Modal is closed. */
@@ -105,6 +108,14 @@ export class TdsModal {
       console.warn(
         "Tegel Modal component: Using both header prop and header slot might break modal's design. Please use just one of them. ",
       );
+    }
+
+    if (!this.selector && !this.referenceEl) {
+      if (this.noReferenceElement !== true) {
+        console.warn(
+          'Tegel Modal component: please provide a selector or referenceEl prop to to reference the element used to show the modal. This warning can be disabled by setting the prop noReferenceElement to true.',
+        );
+      }
     }
   }
 
@@ -139,14 +150,21 @@ export class TdsModal {
   }
 
   private returnFocusOnClose() {
-    let referenceEl = this.referenceEl ?? document.querySelector(this.selector)
-    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT']
+    let referenceElement = this.referenceEl ?? document.querySelector(this.selector);
+
+    if (!referenceElement) {
+      return; // no element to return focus to
+    }
+
+    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
 
     // If referenced element is a custom element eg: tds-button we find the interactive element inside
-    if(potentialReferenceElements.indexOf(referenceEl.tagName) < 0) {
-      referenceEl = referenceEl.querySelectorAll<HTMLElement>(potentialReferenceElements.join(','))[0]
+    if (potentialReferenceElements.indexOf(referenceElement.tagName) < 0) {
+      referenceElement = referenceElement.querySelectorAll<HTMLElement>(
+        potentialReferenceElements.join(','),
+      )[0];
     }
-    referenceEl.focus()
+    referenceElement.focus();
   }
 
   private getFocusableElements(): HTMLElement[] {
@@ -170,11 +188,11 @@ export class TdsModal {
     return [...focusableInShadowRoot, ...focusableInSlots];
   }
 
-  @Listen('keydown', {target: 'window', capture: true })
+  @Listen('keydown', { target: 'window', capture: true })
   handleFocusTrap(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.isShown && !this.prevent) {
       this.handleClose(event);
-      return
+      return;
     }
 
     // Only trap focus if the modal is open
@@ -211,7 +229,7 @@ export class TdsModal {
 
   handleClose = (event) => {
     const closeEvent = this.tdsClose.emit(event);
-    this.returnFocusOnClose()
+    this.returnFocusOnClose();
 
     if (!closeEvent.defaultPrevented) {
       this.isShown = false;
