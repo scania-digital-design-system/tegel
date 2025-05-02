@@ -67,7 +67,10 @@ test.describe.parallel(componentName, () => {
 
   test('table has header "Sorting"', async ({ page }) => {
     /* Search for header by text and see if it exists */
-    const tdsTableToolbarCaption = page.getByText('Sorting');
+    const tdsTableToolbarCaption = page.locator('caption#table-toolbar-title.tds-table__title', {
+      hasText: 'Sorting',
+    });
+
     await expect(tdsTableToolbarCaption).toHaveCount(1);
     await expect(tdsTableToolbarCaption).toBeVisible();
   });
