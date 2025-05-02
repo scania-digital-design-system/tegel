@@ -370,7 +370,7 @@
   "scripts": {
     "build": "stencil build && stencil build --docs",
     "build:tegel-light": "npm run compile:scss && npm run update:tegel-light-exports && npm run copy:assets-tegel-light",
-    "compile:scss": "npx sass src/global/tegel-light-global.scss ../tegel-light/dist/global.css --no-source-map && node scripts/compile-tegel-light-components.js",
+    "compile:scss": "node scripts/compile-tegel-light-components.js",
     "update:tegel-light-exports": "node scripts/update-tegel-light-exports.js",
     "copy:assets-tegel-light": "node scripts/copy-tegel-light-assets.js",
     "_comment": "Due to stencil bug with types creation, we need to run build two times!",
@@ -418,6 +418,7 @@
     "concurrently": "8.0.1",
     "highlight.js": "11.8.0",
     "prettier": "2.7.1",
+    "sass": "^1.87.0",
     "serve": "14.2.1",
     "stencil-playwright": "0.3.0",
     "storybook-addon-designs": "6.3.1",

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { execSync } from 'child_process';
+import sass from 'sass';
 
 // Define __dirname equivalent for ES modules
 const fileName = fileURLToPath(import.meta.url);
@@ -10,7 +10,6 @@ const dirName = path.dirname(fileName);
 // Define paths for component styles and output directories
 const componentsDir = path.resolve(dirName, '../src/tegel-light/components'); // Source SCSS directory
 const outputCssDir = path.resolve(dirName, '../../tegel-light/dist/components'); // Output compiled CSS directory
-
 // Define paths for global styles
 const globalScss = path.resolve(dirName, '../src/global/tegel-light-global.scss'); // Source global SCSS
 const globalCss = path.resolve(dirName, '../../tegel-light/dist/global.css'); // Output compiled global CSS
@@ -22,7 +21,8 @@ if (!fs.existsSync(outputCssDir)) {
 
 // Compile Global Styles
 console.log(`Compiling global styles: ${globalScss} -> ${globalCss}`);
-execSync(`npx sass ${globalScss} ${globalCss} --no-source-map`);
+const globalResult = sass.compile(globalScss, { style: 'expanded' });
+fs.writeFileSync(globalCss, globalResult.css);
 
 // Compile Each Component's SCSS into CSS
 fs.readdirSync(componentsDir).forEach((component) => {
@@ -30,14 +30,16 @@ fs.readdirSync(componentsDir).forEach((component) => {
   const files = fs.readdirSync(componentDir);
 
   files.forEach((file) => {
+    // Ignore partials (_filename.scss)
     if (file.endsWith('.scss') && !file.startsWith('_')) {
-      // Ignore partials (_filename.scss)
       const scssFile = path.join(componentDir, file);
       const cssFileName = file.replace('.scss', '.css'); // Convert filename
       const cssFile = path.join(outputCssDir, cssFileName);
 
       console.log(`Compiling component styles: ${scssFile} -> ${cssFile}`);
-      execSync(`npx sass ${scssFile} ${cssFile} --no-source-map`);
+      // Compile SCSS to CSS (style: 'expanded' for better readability) Could be 'compressed' for minimized output?
+      const result = sass.compile(scssFile, { style: 'expanded' });
+      fs.writeFileSync(cssFile, result.css);
     }
   });
 });
