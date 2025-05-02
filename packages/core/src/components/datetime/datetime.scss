@@ -396,3 +396,8 @@ input[type='time']::-webkit-inner-spin-button,
 input[type='time']::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
+
+input[type='datetime-local'] {
+  padding-left: 15px;
+  // display: none;
+}
