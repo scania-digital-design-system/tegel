@@ -590,7 +590,9 @@ export class TdsDropdown {
         }}
       >
         {this.label && this.labelPosition === 'outside' && (
-          <div class={`label-outside ${this.disabled ? 'disabled' : ''}`}>{this.label}</div>
+          <div id="dropdown-label" class={`label-outside ${this.disabled ? 'disabled' : ''}`}>
+            {this.label}
+          </div>
         )}
         <div
           class={{
@@ -610,10 +612,13 @@ export class TdsDropdown {
             >
               <div class="value-wrapper">
                 {this.label && this.labelPosition === 'inside' && this.placeholder && (
-                  <div class={`label-inside ${this.size}`}>{this.label}</div>
+                  <div id="dropdown-label" class={`label-inside ${this.size}`}>
+                    {this.label}
+                  </div>
                 )}
                 {this.label && this.labelPosition === 'inside' && !this.placeholder && (
                   <div
+                    id="dropdown-label"
                     class={`
                     label-inside-as-placeholder
                     ${this.size}
@@ -624,7 +629,9 @@ export class TdsDropdown {
                   </div>
                 )}
                 <input
-                  aria-label={this.tdsAriaLabel}
+                  aria-label={this.tdsAriaLabel || undefined}
+                  aria-labelledby={this.label ? 'dropdown-label' : undefined}
+                  aria-describedby={this.helper ? 'dropdown-helper' : undefined}
                   aria-disabled={this.disabled}
                   // eslint-disable-next-line no-return-assign
                   ref={(inputEl) => (this.inputElement = inputEl as HTMLInputElement)}
@@ -687,7 +694,9 @@ export class TdsDropdown {
             </div>
           ) : (
             <button
-              aria-label={this.tdsAriaLabel}
+              aria-label={this.tdsAriaLabel || undefined}
+              aria-labelledby={this.label ? 'dropdown-label' : undefined}
+              aria-describedby={this.helper ? 'dropdown-helper' : undefined}
               aria-disabled={this.disabled}
               onClick={() => this.handleToggleOpen()}
               onKeyDown={(event) => {
@@ -704,10 +713,13 @@ export class TdsDropdown {
             >
               <div class={`value-wrapper ${this.size}`}>
                 {this.label && this.labelPosition === 'inside' && this.placeholder && (
-                  <div class={`label-inside ${this.size}`}>{this.label}</div>
+                  <div id="dropdown-label" class={`label-inside ${this.size}`}>
+                    {this.label}
+                  </div>
                 )}
                 {this.label && this.labelPosition === 'inside' && !this.placeholder && (
                   <div
+                    id="dropdown-label"
                     class={`
                     label-inside-as-placeholder
                     ${this.size}
@@ -760,6 +772,7 @@ export class TdsDropdown {
         {/* DROPDOWN LIST */}
         {this.helper && (
           <div
+            id="dropdown-helper"
             class={{
               helper: true,
               error: this.error,
