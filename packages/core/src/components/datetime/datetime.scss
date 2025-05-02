@@ -152,7 +152,9 @@
   position: absolute;
   pointer-events: none;
   color: var(--tds-datetime-label-inside-color);
-  left: 16px;
+  // left: 16px;
+
+  left: 5px;
   // margin-left: 0px;
 }
 
