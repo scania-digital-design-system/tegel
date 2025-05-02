@@ -153,6 +153,17 @@
   pointer-events: none;
   color: var(--tds-datetime-label-inside-color);
   left: 16px;
+  // margin-left: 0px;
+}
+
+@media screen and (max-width: 700px) {
+  .tds-datetime-label-inside {
+    left: 10px;
+  }
+
+  input {
+    padding-left: 50px !important;
+  }
 }
 
 @mixin placeholder-label {
@@ -397,7 +408,7 @@ input[type='time']::-webkit-calendar-picker-indicator {
   opacity: 0;
 }
 
-input[type='datetime-local'] {
-  padding-left: 50px !important;
-  // display: none;
-}
+// input[type='datetime-local'] {
+//   padding-left: 50px !important;
+//   // display: none;
+// }
