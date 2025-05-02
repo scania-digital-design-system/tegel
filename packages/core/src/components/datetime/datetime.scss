@@ -158,15 +158,15 @@
   // margin-left: 0px;
 }
 
-@media screen and (max-width: 700px) {
-  .tds-datetime-label-inside {
-    left: 10px;
-  }
+// @media screen and (max-width: 700px) {
+//   .tds-datetime-label-inside {
+//     left: 10px;
+//   }
 
-  input {
-    padding-left: 50px !important;
-  }
-}
+//   input {
+//     padding-left: 50px !important;
+//   }
+// }
 
 @mixin placeholder-label {
   &::placeholder {
