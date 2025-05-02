@@ -398,6 +398,6 @@ input[type='time']::-webkit-calendar-picker-indicator {
 }
 
 input[type='datetime-local'] {
-  padding-left: 15px;
+  padding-left: 50px !important;
   // display: none;
 }
