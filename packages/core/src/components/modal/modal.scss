@@ -61,7 +61,7 @@ $modals: (
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--foreground-elements-transparparent-discrete);
+    background-color: var(--foreground-elements-transparent-discrete);
     border-radius: $scrollbar-radius;
   }
 }

@@ -26,7 +26,7 @@
     padding-left: 4px;
     padding-top: 14px;
     padding-right: 12px;
-    color: var(--foreground-elements-transparparent-strong);
+    color: var(--foreground-elements-transparent-strong);
 
     &.information {
       color: var(--system-info-default);
@@ -80,7 +80,7 @@
       padding-top: 14px;
       background-color: transparent;
       border: none;
-      color: var(--foreground-elements-transparparent-strong);
+      color: var(--foreground-elements-transparent-strong);
 
       &:hover {
         cursor: pointer;

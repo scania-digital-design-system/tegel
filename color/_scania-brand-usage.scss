@@ -49,28 +49,18 @@
   --foreground-border-clickable-focus-width: 2px;
 
   /* Foreground - Elements - Transparent */
-  --foreground-elements-transparparent-strong: var(--scania-neutral-transparent-958);
-  --foreground-elements-transparparent-defined: var(--scania-neutral-transparent-700);
-  --foreground-elements-transparparent-soft: var(--scania-neutral-transparent-600);
-  --foreground-elements-transparparent-subtle: var(--scania-neutral-transparent-500);
-  --foreground-elements-transparparent-disabled: var(--scania-neutral-transparent-400);
-  --foreground-elements-transparparent-discrete: var(--scania-neutral-transparent-200);
-  --foreground-elements-transparparent-strong-inverse: var(
-    --scania-neutral-transparent-inverse-958
-  );
-  --foreground-elements-transparparent-defined-inverse: var(
-    --scania-neutral-transparent-inverse-700
-  );
-  --foreground-elements-transparparent-soft-inverse: var(--scania-neutral-transparent-inverse-600);
-  --foreground-elements-transparparent-subtle-inverse: var(
-    --scania-neutral-transparent-inverse-500
-  );
-  --foreground-elements-transparparent-disabled-inverse: var(
-    --scania-neutral-transparent-inverse-400
-  );
-  --foreground-elements-transparparent-discrete-inverse: var(
-    --scania-neutral-transparent-inverse-200
-  );
+  --foreground-elements-transparent-strong: var(--scania-neutral-transparent-958);
+  --foreground-elements-transparent-defined: var(--scania-neutral-transparent-700);
+  --foreground-elements-transparent-soft: var(--scania-neutral-transparent-600);
+  --foreground-elements-transparent-subtle: var(--scania-neutral-transparent-500);
+  --foreground-elements-transparent-disabled: var(--scania-neutral-transparent-400);
+  --foreground-elements-transparent-discrete: var(--scania-neutral-transparent-200);
+  --foreground-elements-transparent-strong-inverse: var(--scania-neutral-transparent-inverse-958);
+  --foreground-elements-transparent-defined-inverse: var(--scania-neutral-transparent-inverse-700);
+  --foreground-elements-transparent-soft-inverse: var(--scania-neutral-transparent-inverse-600);
+  --foreground-elements-transparent-subtle-inverse: var(--scania-neutral-transparent-inverse-500);
+  --foreground-elements-transparent-disabled-inverse: var(--scania-neutral-transparent-inverse-400);
+  --foreground-elements-transparent-discrete-inverse: var(--scania-neutral-transparent-inverse-200);
 
   /* Foreground - Elements - Solid */
   --foreground-elements-solid-1000: var(--scania-neutral-solid-958);
@@ -203,18 +193,18 @@
   --foreground-border-clickable-focus-width: 2px;
 
   /* Foreground - Elements - Transparent */
-  --foreground-elements-transparparent-strong: var(--scania-neutral-transparent-inverse-958);
-  --foreground-elements-transparparent-defined: var(--scania-neutral-transparent-inverse-700);
-  --foreground-elements-transparparent-soft: var(--scania-neutral-transparent-inverse-600);
-  --foreground-elements-transparparent-subtle: var(--scania-neutral-transparent-inverse-500);
-  --foreground-elements-transparparent-disabled: var(--scania-neutral-transparent-inverse-400);
-  --foreground-elements-transparparent-discrete: var(--scania-neutral-transparent-inverse-200);
-  --foreground-elements-transparparent-strong-inverse: var(--scania-neutral-transparent-958);
-  --foreground-elements-transparparent-defined-inverse: var(--scania-neutral-transparent-700);
-  --foreground-elements-transparparent-soft-inverse: var(--scania-neutral-transparent-600);
-  --foreground-elements-transparparent-subtle-inverse: var(--scania-neutral-transparent-500);
-  --foreground-elements-transparparent-disabled-inverse: var(--scania-neutral-transparent-400);
-  --foreground-elements-transparparent-discrete-inverse: var(--scania-neutral-transparent-200);
+  --foreground-elements-transparent-strong: var(--scania-neutral-transparent-inverse-958);
+  --foreground-elements-transparent-defined: var(--scania-neutral-transparent-inverse-700);
+  --foreground-elements-transparent-soft: var(--scania-neutral-transparent-inverse-600);
+  --foreground-elements-transparent-subtle: var(--scania-neutral-transparent-inverse-500);
+  --foreground-elements-transparent-disabled: var(--scania-neutral-transparent-inverse-400);
+  --foreground-elements-transparent-discrete: var(--scania-neutral-transparent-inverse-200);
+  --foreground-elements-transparent-strong-inverse: var(--scania-neutral-transparent-958);
+  --foreground-elements-transparent-defined-inverse: var(--scania-neutral-transparent-700);
+  --foreground-elements-transparent-soft-inverse: var(--scania-neutral-transparent-600);
+  --foreground-elements-transparent-subtle-inverse: var(--scania-neutral-transparent-500);
+  --foreground-elements-transparent-disabled-inverse: var(--scania-neutral-transparent-400);
+  --foreground-elements-transparent-discrete-inverse: var(--scania-neutral-transparent-200);
 
   /* Foreground - Elements - Solid */
   --foreground-elements-solid-1000: var(--scania-neutral-solid-50);
