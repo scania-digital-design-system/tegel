@@ -57,10 +57,21 @@ test.describe.parallel(componentName, () => {
     const triggerButton = page.getByRole('button');
     await triggerButton.click();
 
+    const popoverCanvasHeader = page.getByRole('heading');
+    const popoverCanvasBody = page.getByText('Where you can put anything you want!', {
+      exact: true,
+    });
+    const popoverCanvasLink = page.getByRole('link');
+
+    await expect(popoverCanvasHeader).toBeVisible();
+    await expect(popoverCanvasBody).toBeVisible();
+    await expect(popoverCanvasLink).toBeVisible();
+
     const closeButton = page.getByTestId('canvas-close-button');
-    await expect(closeButton).toBeVisible();
     await closeButton.click();
 
-    await expect(closeButton).not.toBeVisible();
+    await expect(popoverCanvasHeader).toBeHidden();
+    await expect(popoverCanvasBody).toBeHidden();
+    await expect(popoverCanvasLink).toBeHidden();
   });
 });
