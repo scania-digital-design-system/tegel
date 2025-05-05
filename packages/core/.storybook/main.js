@@ -25,9 +25,6 @@ const config = {
       },
     },
   },
-  docs: {
-    autodocs: true,
-  },
   managerEntries: [join(__dirname, './manager.jsx')],
 };
 

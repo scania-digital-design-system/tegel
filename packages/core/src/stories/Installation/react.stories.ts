@@ -2,6 +2,7 @@ import type { Meta } from '@storybook/html';
 
 const meta: Meta = {
   title: 'Intro/Installation',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     options: {

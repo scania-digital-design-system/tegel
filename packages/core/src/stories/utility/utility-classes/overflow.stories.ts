@@ -4,6 +4,7 @@ import 'highlight.js/styles/default.css';
 
 const meta: Meta = {
   title: 'Utilities/Utility Classes/Overflow',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     options: {

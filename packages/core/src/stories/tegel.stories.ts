@@ -9,6 +9,7 @@ const meta: Meta = {
       showToolbar: false,
     },
   },
+  tags: ['!autodocs'],
 };
 
 export default meta;

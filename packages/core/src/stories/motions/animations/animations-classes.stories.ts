@@ -2,6 +2,7 @@ import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Motions/Animations/All',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     design: [

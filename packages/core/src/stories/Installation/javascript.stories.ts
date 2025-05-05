@@ -4,6 +4,7 @@ import '../../../.storybook/tegel.syntax.highlighter.css';
 
 const meta: Meta = {
   title: 'Intro/Installation',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     options: {

@@ -2,6 +2,7 @@ import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Utilities/Colors',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'centered',
   },

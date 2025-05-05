@@ -2,6 +2,7 @@ import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Foundations/Color',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {

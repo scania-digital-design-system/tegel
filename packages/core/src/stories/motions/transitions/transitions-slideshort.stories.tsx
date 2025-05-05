@@ -2,6 +2,7 @@ import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Motions/Transitions/Slide Short',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     design: [

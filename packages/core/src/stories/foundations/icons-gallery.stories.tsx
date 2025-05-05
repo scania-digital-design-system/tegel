@@ -3,6 +3,7 @@ import { iconsNames } from '../../components/icon/iconsArray';
 
 export default {
   title: 'Foundations/Icons',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     options: {

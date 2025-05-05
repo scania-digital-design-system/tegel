@@ -1,5 +1,6 @@
 export default {
   title: 'Intro/Events',
+  tags: ['!autodocs'],
   parameters: {
     docs: {
       description: {
@@ -9,8 +10,7 @@ export default {
   },
 };
 
-export const Events = () => {
-  return `
+export const Events = () => `
     <div>
       <h2>Events Documentation</h2>
       <p>The tegel components emit custom events to allow the users to respond to changes/updates in the components. These are all named using the tds-prefix.</p>
@@ -36,4 +36,3 @@ export const Events = () => {
       <p>Some components use internal events prefixed with <strong>internal</strong>. These events are not recommended for use as they might change without notice.</p>
     </div>
   `;
-};
