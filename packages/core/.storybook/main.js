@@ -1,4 +1,6 @@
+import { join } from 'path';
 /** @type { import('@storybook/html-vite').StorybookConfig } */
+
 const config = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-docs'],
@@ -13,5 +15,6 @@ const config = {
   docs: {
     autodocs: true,
   },
+  managerEntries: [join(__dirname, './manager.jsx')],
 };
 export default config;
