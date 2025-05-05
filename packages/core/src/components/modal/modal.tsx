@@ -44,9 +44,6 @@ export class TdsModal {
   /** Element that will show the Modal (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
-  /** Indicates that there is no reference element used to open the modal, e.g. if it's opened programmatically. Used to disable warning about missing referenceEl or selector prop. */
-  @Prop() noReferenceElement?: boolean = false;
-
   /** Controls whether the Modal is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. */
   @Prop() show: boolean;
@@ -111,11 +108,9 @@ export class TdsModal {
     }
 
     if (!this.selector && !this.referenceEl) {
-      if (this.noReferenceElement !== true) {
-        console.warn(
-          'Tegel Modal component: please provide a selector or referenceEl prop to to reference the element used to show the modal. This warning can be disabled by setting the prop noReferenceElement to true.',
-        );
-      }
+      console.warn(
+        'Tegel Modal component: please provide a selector or referenceEl prop to to reference the element used to show the modal',
+      );
     }
   }
 
