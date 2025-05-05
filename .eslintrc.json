@@ -10,7 +10,6 @@
     "plugin:storybook/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["!packages/*/.storybook/**/*"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
