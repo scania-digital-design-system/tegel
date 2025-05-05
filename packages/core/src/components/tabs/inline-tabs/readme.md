@@ -1,5 +1,31 @@
 # tds-inline-tabs
 
+## Usage with Dynamically Loaded Children
+
+The `tds-inline-tabs` component supports an `autoInit` property. This is useful when tab children are rendered asynchronously (e.g., after a fetch or DOM update). If `autoInit` is set to `false`, you must manually call the `reinitialize()` method when children are present.
+
+**Vanilla JS Example:**
+
+```html
+<tds-inline-tabs autoInit="false" id="myTabs">
+  <!-- Children will be added dynamically -->
+</tds-inline-tabs>
+```
+
+```js
+// Dynamically add children
+document.getElementById('myTabs').innerHTML = `
+  <tds-inline-tab>Tab 1</tds-inline-tab>
+  <tds-inline-tab>Tab 2</tds-inline-tab>
+`;
+// Manually initialize when children are present
+setTimeout(() => {
+  document.getElementById('myTabs').reinitialize();
+}, 0);
+```
+
+If you do not call `reinitialize()` and `autoInit` is `false`, the tabs will not function as expected. If `autoInit` is `true` (default), the component will attempt to initialize automatically, but if children are not present at first render, a warning will be logged and you can still call `reinitialize()` later.
+
 
 
 <!-- Auto Generated Below -->
