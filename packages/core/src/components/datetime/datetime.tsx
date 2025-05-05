@@ -235,6 +235,10 @@ export class TdsDatetime {
           }
         }}
       >
+        <div style={{ backgroundColor: 'black', color: 'white' }}>
+          {'user agent is: ' + navigator.userAgent}
+        </div>
+
         {this.labelPosition === 'outside' && this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
