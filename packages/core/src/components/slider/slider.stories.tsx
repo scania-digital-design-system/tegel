@@ -113,11 +113,10 @@ export default {
     },
     step: {
       name: 'Step value',
-      description: 'Sets the value to increment/decrement with when using controls.',
+      description: 'Sets the value to increment/decrement with.',
       control: {
         type: 'number',
       },
-      if: { arg: 'showControls', eq: true },
       table: {
         defaultValue: { summary: 1 },
       },
@@ -236,7 +235,7 @@ const Template = ({
      <tds-slider 
         min="${min}"
         max="${max}"
-        ${showControls && step ? `step="${step}"` : ''}
+        ${step ? `step="${step}"` : ''}
         value="${initialValue}"
         ${showTicks ? `ticks="${numTicks}"` : ''}
         ${showTickNumbers ? 'show-tick-numbers' : ''}
