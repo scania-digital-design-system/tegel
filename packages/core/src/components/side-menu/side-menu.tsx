@@ -61,6 +61,14 @@ export class TdsSideMenu {
   /** @internal Tracks the currently focused element index for keyboard navigation */
   @State() activeElementIndex: number = 0;
 
+  private updateIsMobile() {
+    const isMobile = window.innerWidth <= GRID_LG_BREAKPOINT;
+
+    if (!isMobile) {
+      this.open = false;
+    }
+  }
+
   private matchesLgBreakpointMq: MediaQueryList;
 
   handleMatchesLgBreakpointChange: (e: MediaQueryListEvent) => void = (e) => {
@@ -79,11 +87,18 @@ export class TdsSideMenu {
     }
   }
 
+  @Listen('resize', { target: 'window' })
+  handleResize() {
+    this.updateIsMobile();
+  }
+
   connectedCallback() {
     this.matchesLgBreakpointMq = window.matchMedia(`(min-width: ${GRID_LG_BREAKPOINT}px)`);
     this.matchesLgBreakpointMq.addEventListener('change', this.handleMatchesLgBreakpointChange);
     this.isCollapsed = this.collapsed;
     this.initialCollapsedState = this.collapsed;
+
+    this.updateIsMobile();
   }
 
   componentDidLoad() {
