@@ -196,8 +196,6 @@ export class TdsDatetime {
         'Tegel Datetime component: provide the label or tdsAriaLabel prop for improved accessibility',
       );
     }
-
-    alert('user agent: ' + navigator.userAgent);
   }
 
   render() {
