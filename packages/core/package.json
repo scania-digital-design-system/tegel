@@ -405,7 +405,7 @@
     "@storybook/test": "^8.6.12",
     "@types/jest": "^29.5.12",
     "@types/node": "^22.10.7",
-    "@types/react": "^18.2.55",
+    "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "addon-screen-reader": "1.8.6",
     "concurrently": "8.0.1",
