@@ -6,14 +6,6 @@ export default {
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
-    options: {
-      showPanel: false,
-      showToolbar: true,
-      showControls: false,
-    },
-    previewTabs: {
-      'storybook/docs/panel': { hidden: true },
-    },
   },
 };
 
