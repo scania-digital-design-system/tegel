@@ -8,7 +8,9 @@ const preview = {
         type: 'dynamic',
       },
     },
-
+    controls: {
+      expanded: true,
+    },
     options: {
       showPanel: true,
       showToolbar: true,
