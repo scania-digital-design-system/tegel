@@ -29,7 +29,7 @@ test.describe.parallel(componentName, () => {
   });
 
   test('has icon', async ({ page }) => {
-    const messageIcon = page.getByRole('img');
+    const messageIcon = page.locator('tds-icon');
     await expect(messageIcon).toHaveCount(1);
     await expect(messageIcon).toBeVisible();
   });
