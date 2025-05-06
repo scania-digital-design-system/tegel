@@ -3,7 +3,7 @@ import { iconsNames } from './iconsArray';
 import readme from './readme.md';
 
 export default {
-  title: 'Foundations/Icons',
+  title: 'Foundations/Icon',
   parameters: {
     layout: 'centered',
     notes: readme,
@@ -71,4 +71,4 @@ const IconTemplate = (args) =>
   </tds-icon> 
   `);
 
-export const Component = IconTemplate.bind({});
+export const SingleIcon = IconTemplate.bind({});

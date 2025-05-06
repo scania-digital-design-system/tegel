@@ -2,13 +2,14 @@ import formatHtmlPreview from '../formatHtmlPreview';
 import { iconsNames } from '../../components/icon/iconsArray';
 
 export default {
-  title: 'Foundations/Icons',
+  title: 'Foundations/Icons Gallery',
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
     options: {
       showPanel: false,
       showToolbar: true,
+      showControls: false,
     },
     previewTabs: {
       'storybook/docs/panel': { hidden: true },
