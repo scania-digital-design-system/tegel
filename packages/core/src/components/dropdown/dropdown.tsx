@@ -356,6 +356,13 @@ export class TdsDropdown {
       children[elementIndex].focus();
     } else if (event.key === 'Escape') {
       this.open = false;
+      // Return focus to input/button when Escape key is used
+      if (this.filter) {
+        this.inputElement?.focus();
+      } else {
+        const button = this.host.shadowRoot.querySelector('button');
+        button?.focus();
+      }
     }
   }
 
@@ -670,7 +677,7 @@ export class TdsDropdown {
                 size="16px"
               ></tds-icon>
               <tds-icon
-                tabIndex={0}
+                tdsAriaHidden
                 role="button"
                 aria-label="Open/Close dropdown"
                 svgTitle="Open/Close dropdown"
@@ -735,6 +742,7 @@ export class TdsDropdown {
         <div
           role="listbox"
           aria-label={this.tdsAriaLabel}
+          aria-hidden={this.open ? 'false' : 'true'}
           aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
           ref={(element) => {
