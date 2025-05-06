@@ -1,9 +1,17 @@
 // Check status of webFont solution
 
-import { Component, h, Prop, State, Host } from '@stencil/core';
-
-import { iconsCollection } from './iconsArray';
+import { Component, h, Prop, State, Host, Element } from '@stencil/core';
+import { iconsCollection as scaniaIcons } from './scaniaIconsArray';
+import { iconsCollection as tratonIcons } from './tratonIconsArray';
 import { IconNames } from '../../types/Icons';
+
+// Map of brand classes to their respective icon collections
+const brandIconMap = {
+  scania: scaniaIcons,
+  traton: tratonIcons,
+  // Add new brands here in the future
+  // Example: newBrand: newBrandIcons,
+};
 
 @Component({
   tag: 'tds-icon',
@@ -11,6 +19,8 @@ import { IconNames } from '../../types/Icons';
   shadow: true,
 })
 export class Icon {
+  @Element() host: HTMLTdsIconElement;
+
   /** Pass the name of the icon.
    * For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
   @Prop({ reflect: true }) name: IconNames = 'truck';
@@ -27,15 +37,24 @@ export class Icon {
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop() svgDescription?: string;
 
-  @State() icons_object: string = iconsCollection;
+  @State() icons_object: string;
 
   @State() arrayOfIcons = [];
 
   componentWillLoad() {
+    this.detectAndSetBrand();
+  }
+
+  private detectAndSetBrand() {
+    const brandClasses = Object.keys(brandIconMap);
+    const matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
+
+    // Set the icons_object based on the found brand or default to scania
+    this.icons_object = matchingBrand ? brandIconMap[matchingBrand] : scaniaIcons;
     this.arrayDataWatcher(this.icons_object);
   }
 
-  arrayDataWatcher(newValue: string) {
+  private arrayDataWatcher(newValue: string) {
     if (typeof newValue === 'string') {
       this.arrayOfIcons = JSON.parse(newValue);
     } else {

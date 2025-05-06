@@ -3,7 +3,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import { defineCustomElements } from '../loader';
 import { useDarkMode } from 'storybook-dark-mode';
 import { addons } from '@storybook/addons';
-import { UPDATE_GLOBALS } from '@storybook/core-events';
+import { UPDATE_GLOBALS, UPDATE_STORY_ARGS } from '@storybook/core-events';
 import './preview.css';
 import '../dist/tegel/tegel.css';
 
@@ -70,35 +70,34 @@ const customViewports = {
   },
 };
 
-// Add brand switcher functionality
-const BRAND_CHANGED = 'BRAND_CHANGED';
-
 // Initialize brand state
 if (typeof window !== 'undefined') {
-  window.TDS_BRAND = 'scania';
   document.documentElement.classList.add('scania');
 }
-
-// Function to update brand classes
-const updateBrandClasses = (brand) => {
-  if (typeof window !== 'undefined') {
-    document.documentElement.classList.remove('scania', 'traton');
-    document.documentElement.classList.add(brand);
-    window.TDS_BRAND = brand;
-
-    // Emit event for other parts of the application
-    addons.getChannel().emit(BRAND_CHANGED, brand);
-  }
-};
 
 // Add decorator for brand classes
 export const decorators = [
   (Story, context) => {
     const brand = context.globals.brand;
+
     if (typeof window !== 'undefined') {
       document.documentElement.classList.remove('scania', 'traton');
       document.documentElement.classList.add(brand);
+
+      const { args } = context;
+      const channel = addons.getChannel();
+
+      // ONLY emit if args.brand is different
+      if (args.brand !== brand) {
+        channel.emit(UPDATE_STORY_ARGS, {
+          storyId: context.id,
+          updatedArgs: {
+            brand: brand,
+          },
+        });
+      }
     }
+
     return Story();
   },
 ];
@@ -222,9 +221,8 @@ export const parameters = {
             { value: 'scania', title: 'Scania', icon: 'circlehollow' },
             { value: 'traton', title: 'Traton', icon: 'circlehollow' },
           ],
-          showName: true,
+          title: 'Brand',
           dynamicTitle: true,
-          onChange: updateBrandClasses,
         },
       },
     },
