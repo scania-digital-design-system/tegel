@@ -1,64 +1,42 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+
+const StyleDictionary = require('style-dictionary');
+
 module.exports = {
-  source: ['tokens-json/**/*.json'],
-  parsers: [
-    {
-      pattern: /\.json$/,
-      parse: ({ contents }) => {
-        const tokens = JSON.parse(contents);
-
-        // Keep original tokens structure while also organizing into layers
-        return {
-          ...tokens, // Preserve original structure for backward compatibility
-
-          // Organize tokens into layers
-          primitives: {
-            colors: tokens.permanent || {},
-            // Add other primitive tokens
-          },
-          semantic: {
-            // Map semantic tokens like system colors, text styles
-            system: tokens.system || {},
-            foreground: tokens.foreground || {},
-            background: tokens.background || {},
-          },
-          usage: {
-            // Component-specific tokens
-            overrides: tokens.overrides || {},
-          },
-          brands: {
-            // Brand-specific overrides if any
-          },
-        };
-      },
-    },
+  source: [
+    'tokens/primitives/**/*.json',
+    'tokens/semantic/**/*.json',
+    'tokens/component/**/*.json',
   ],
-  log: {
-    verbosity: 'verbose',
-  },
   platforms: {
     scss: {
       transformGroup: 'scss',
       buildPath: 'build/scss/',
       files: [
         {
-          destination: '_primitives.scss',
+          destination: '_variables.scss',
           format: 'scss/variables',
-          filter: (token) => token.path[0] === 'primitives',
         },
+      ],
+    },
+    scssPublic: {
+      transformGroup: 'scss',
+      buildPath: 'tokens/',
+      files: [
         {
           destination: '_semantic.scss',
           format: 'scss/variables',
           filter: (token) => token.path[0] === 'semantic',
         },
         {
-          destination: '_usage.scss',
+          destination: '_component.scss',
           format: 'scss/variables',
-          filter: (token) => token.path[0] === 'usage',
+          filter: (token) => token.path[0] === 'component',
         },
         {
-          destination: '_brands.scss',
+          destination: '_variables.scss',
           format: 'scss/variables',
-          filter: (token) => token.path[0] === 'brands',
         },
       ],
     },

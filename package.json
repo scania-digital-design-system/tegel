@@ -16,6 +16,7 @@
     "commit": "cz",
     "prepare": "husky install",
     "reinstall": "./reinstall.sh",
+    "build:tokens": "style-dictionary build",
     "pack:core": "cd packages/core && npm run build && npm pack",
     "pack:react": "cd packages/react && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",
     "pack:angular": "cd packages/angular && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",
