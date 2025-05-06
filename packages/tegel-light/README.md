@@ -14,7 +14,12 @@ Tegel Light is:
 
 Tegel Light’s styles reside in the Tegel Core package, ensuring consistency with existing global styles and enabling Storybook documentation. 
 
-To **generate** the `@scania/tegel-light` library, navigate to `packages/core` and run: 
+To **generate** the `@scania/tegel-light` library, first navigate to project root and run: 
+
+```bash
+npm i
+```
+then navigate to `packages/core` and run: 
 
 ```bash
 npm run build:tegel-light
