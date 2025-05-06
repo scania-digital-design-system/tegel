@@ -44,8 +44,7 @@
 :host {
   @include tds-box-sizing;
 
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
 }
 
 .tds-spinner-svg {
