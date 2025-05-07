@@ -3,7 +3,8 @@
   "defaultSeverity": "warning",
   "rules": {
     "indentation": 2,
-    "alpha-value-notation": null
+    "alpha-value-notation": null,
+    "color-function-notation": ["legacy"]
   },
   "ignoreFiles": ["**/build/**", "**/dist/**"]
 }
