@@ -48,7 +48,6 @@
 }
 
 .tds-spinner-svg {
-  display: block;
   width: calc(var(--spinner-radius) * 2);
   height: calc(var(--spinner-radius) * 2);
   transform: scale(-1, 1) rotate(-90deg);
