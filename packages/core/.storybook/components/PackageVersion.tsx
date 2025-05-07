@@ -1,5 +1,10 @@
 import React, { memo } from 'react';
 
+interface PackageVersionProps {
+  packageName: string;
+  version: string;
+}
+
 const style = {
   textTansform: 'unset',
   fontSize: '14px',
@@ -14,7 +19,7 @@ const style = {
   padding: '4px 12px',
 };
 
-export const PackageVersion = memo(({ packageName, version }) => (
+export const PackageVersion: React.FC<PackageVersionProps> = memo(({ packageName, version }) => (
   <p style={style} className={'package-version'}>
     {`${packageName}: ${version}`}
   </p>
