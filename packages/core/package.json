@@ -414,7 +414,8 @@
     "prettier": "2.7.1",
     "serve": "14.2.1",
     "stencil-playwright": "0.3.0",
-    "storybook": "^8.6.12"
+    "storybook": "^8.6.12",
+    "markdown-to-jsx": "^7.7.6"
   },
   "license": "MIT"
 }

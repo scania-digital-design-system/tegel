@@ -5,7 +5,9 @@ import path from 'path';
 
 function loadStories() {
   // Gather all story files synchronously
-  const storyFiles = glob.sync(path.resolve(__dirname, '../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'));
+  const storyFiles = glob.sync(
+    path.resolve(__dirname, '../src/**/*.@(stories.@(js|jsx|ts|tsx|mdx)|notes.mdx)'),
+  );
 
   // If in development environment, return all story files
   // Otherwise, exclude stories from the _beta folder
@@ -16,7 +18,12 @@ function loadStories() {
 
 const config = {
   stories: loadStories(),
-  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-docs'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-docs',
+    '@storybook/blocks',
+  ],
   framework: {
     name: '@storybook/html-vite',
     options: {
