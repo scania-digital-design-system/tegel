@@ -25,7 +25,8 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('clicking the dropdown button opens the dropdown-list', async ({ page }) => {
-      const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+      const dropdown = page.getByTestId('tds-dropdown-testid');
+      const dropdownButton = dropdown.getByRole('button');
       const dropdownListElementOne = page
         .locator('tds-dropdown-option')
         .filter({ hasText: 'Option 1' });
@@ -42,7 +43,8 @@ testConfigurations.withModeVariants.forEach((config) => {
 
     test('clicking the dropdown opens the dropdown-list, then click Option 1', async ({ page }) => {
       /* click the dropdown button */
-      const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+      const dropdown = page.getByTestId('tds-dropdown-testid');
+      const dropdownButton = dropdown.getByRole('button');
       await dropdownButton.click();
 
       /* Click the Option 1 button */
@@ -53,9 +55,8 @@ testConfigurations.withModeVariants.forEach((config) => {
       await dropdownListElementOneButton.click();
 
       await expect(dropdownListElementOneButton).toBeHidden();
-      const dropdownButtonWithOption1 = page.getByRole('button', { name: 'Option 1' });
-      await expect(dropdownButtonWithOption1.first()).toBeVisible();
 
+      await expect(dropdownButton).toHaveText(/Option 1/);
       /* also check screenshot diff to make sure it says Option 1 */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
@@ -98,8 +99,10 @@ test.describe.parallel(componentName, () => {
   });
 
   test('have the placeholder="Placeholder" text', async ({ page }) => {
-    const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
-    await expect(dropdownButton).toBeVisible();
+    // Check that the placeholder text is visible
+    const dropdown = page.getByTestId('tds-dropdown-testid');
+    const dropdownButton = dropdown.getByRole('button');
+    await expect(dropdownButton).toHaveText(/Placeholder/);
   });
 
   test('clicking the dropdown opens the dropdown-list, then click an option 2 that is disabled should not close it', async ({
@@ -108,20 +111,21 @@ test.describe.parallel(componentName, () => {
     const dropdownListElementTwoButton = page
       .locator('tds-dropdown-option')
       .filter({ hasText: /Option 2/ });
-    const dropdownButtonElement = page.getByRole('button', { name: 'Placeholder' });
+    const dropdown = page.getByTestId('tds-dropdown-testid');
+    const dropdownButton = dropdown.getByRole('button');
 
     /* before clicking dropdownlist should not be visible, the button should be */
-    await expect(dropdownButtonElement).toBeVisible();
+    await expect(dropdownButton).toBeVisible();
     await expect(dropdownListElementTwoButton).toBeHidden();
 
     /* after clicking dropdownlist should be visible, the button should also be */
-    await dropdownButtonElement.click();
-    await expect(dropdownButtonElement).toBeVisible();
+    await dropdownButton.click();
+    await expect(dropdownButton).toBeVisible();
     await expect(dropdownListElementTwoButton).toBeVisible();
 
     /* after clicking option 2 that is disabled list should be visible and also button should be */
     await dropdownListElementTwoButton.click();
-    await expect(dropdownButtonElement).toBeVisible();
+    await expect(dropdownButton).toBeVisible();
     await expect(dropdownListElementTwoButton).toBeVisible();
   });
 });
