@@ -21,7 +21,7 @@ const config = {
     name: '@storybook/html-vite',
     options: {
       builder: {
-        viteConfigPath: './vite.config.js',
+        viteConfigPath: './.storybook/vite.config.js',
       },
     },
   },
