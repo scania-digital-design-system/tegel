@@ -1,14 +1,9 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss",
-    "stylelint-config-prettier-scss"
-  ],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier-scss"],
   "defaultSeverity": "warning",
   "rules": {
-    "indentation": 2
+    "indentation": 2,
+    "alpha-value-notation": null
   },
-  "ignoreFiles": [
-    "**/build/**",
-    "**/dist/**"
-  ]
+  "ignoreFiles": ["**/build/**", "**/dist/**"]
 }
