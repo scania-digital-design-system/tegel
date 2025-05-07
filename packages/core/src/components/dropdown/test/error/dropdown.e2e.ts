@@ -29,7 +29,8 @@ testConfigurations.withModeVariants.forEach((config) => {
         .locator('tds-dropdown-option')
         .filter({ hasText: /Option 1/ })
         .getByRole('option');
-      const dropdownButton = page.getByRole('button', { name: 'Placeholder' });
+      const dropdown = page.getByTestId('tds-dropdown-testid');
+      const dropdownButton = dropdown.getByRole('button');
 
       /* before clicking dropdownlist should not be visible, the button should be */
       await expect(dropdownButton).toBeVisible();
