@@ -35,8 +35,8 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^16.2.1",
     "@types/node": "^22.10.7",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "commitizen": "^4.3.0",
     "commitlint": "^15.0.0",
     "cz-conventional-changelog": "^3.3.0",

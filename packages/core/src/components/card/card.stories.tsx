@@ -1,4 +1,4 @@
-import readme from './readme.md';
+import readme from './readme.md?raw';
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import CardBodyImage from '../../stories/assets/image/card-img.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
@@ -6,7 +6,11 @@ import formatHtmlPreview from '../../stories/formatHtmlPreview';
 export default {
   title: 'Components/Card',
   parameters: {
-    notes: readme,
+    docs: {
+      description: {
+        component: readme,
+      },
+    },
     layout: 'centered',
     design: [
       {
