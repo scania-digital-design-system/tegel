@@ -7,9 +7,12 @@ const preview = {
       source: {
         type: 'dynamic',
       },
-    },
-    controls: {
-      expanded: true,
+      canvas: {
+        sourceState: 'shown',
+      },
+      controls: {
+        expanded: true,
+      },
     },
     options: {
       showPanel: true,
@@ -23,11 +26,9 @@ const preview = {
           [
             'Tegel Design System',
             'Installation',
-            ['Javascript'],
             'Migrating from components v4',
             'Events',
             'Announcements',
-            ['Tegel', 'Prefix change'],
           ],
           'Motions',
           'Foundations',
