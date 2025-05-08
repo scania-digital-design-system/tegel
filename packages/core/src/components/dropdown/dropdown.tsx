@@ -658,7 +658,7 @@ export class TdsDropdown {
                   </div>
                 )}
                 <input
-                  aria-label={!labelId ? this.tdsAriaLabel : undefined}
+                  aria-label={this.tdsAriaLabel}
                   aria-labelledby={labelId}
                   aria-describedby={helperId}
                   aria-disabled={this.disabled}
@@ -723,7 +723,7 @@ export class TdsDropdown {
             </div>
           ) : (
             <button
-              aria-label={!labelId ? this.tdsAriaLabel : undefined}
+              aria-label={this.tdsAriaLabel}
               aria-labelledby={labelId}
               aria-describedby={helperId}
               aria-disabled={this.disabled}
