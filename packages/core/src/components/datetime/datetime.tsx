@@ -220,6 +220,8 @@ export class TdsDatetime {
         this.label && this.labelPosition === 'inside' && this.size !== 'sm',
     };
 
+    const iphone = navigator.userAgent.toLowerCase().includes('iphone');
+
     return (
       <div
         class={classNames}
@@ -259,7 +261,7 @@ export class TdsDatetime {
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && this.label && (
-              <label class="tds-datetime-label-inside" htmlFor={this.name}>
+              <label class={`tds-datetime-label-inside ${iphone && 'iphone'}`} htmlFor={this.name}>
                 {this.label}
               </label>
             )}

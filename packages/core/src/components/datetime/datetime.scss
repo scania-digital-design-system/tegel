@@ -153,6 +153,10 @@
   pointer-events: none;
   color: var(--tds-datetime-label-inside-color);
   left: 16px;
+
+  &.iphone {
+    left: 8px !important;
+  }
 }
 
 @mixin placeholder-label {
