@@ -376,6 +376,9 @@ export class TdsDropdown {
         this.inputElement.value = this.selectedOptions.length ? this.getValue() : '';
       }
     }
+
+    // Update the inert state of dropdown list when open state changes
+    this.updateDropdownListInertState();
   }
 
   @Watch('defaultValue')
@@ -574,6 +577,9 @@ export class TdsDropdown {
     if (form) {
       form.addEventListener('reset', this.resetInput);
     }
+
+    // Initialize inert state after rendering
+    this.updateDropdownListInertState();
   }
 
   disconnectedCallback() {
@@ -586,6 +592,16 @@ export class TdsDropdown {
   connectedCallback() {
     if (!this.tdsAriaLabel) {
       console.warn('Tegel Dropdown component: tdsAriaLabel prop is missing');
+    }
+  }
+
+  private updateDropdownListInertState() {
+    if (this.dropdownList) {
+      if (this.open) {
+        this.dropdownList.removeAttribute('inert');
+      } else {
+        this.dropdownList.setAttribute('inert', '');
+      }
     }
   }
 
@@ -761,6 +777,7 @@ export class TdsDropdown {
           role="listbox"
           aria-label={this.tdsAriaLabel}
           aria-hidden={this.open ? 'false' : 'true'}
+          inert={!this.open}
           aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
           ref={(element) => {
