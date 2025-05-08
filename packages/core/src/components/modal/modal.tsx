@@ -79,7 +79,7 @@ export class TdsModal {
   @Method()
   async closeModal() {
     this.isShown = false;
-    this.returnFocusOnClose()
+    this.returnFocusOnClose();
   }
 
   /** Emits when the Modal is closed. */
@@ -104,6 +104,12 @@ export class TdsModal {
     if (this.header && hasSlot('header', this.host)) {
       console.warn(
         "Tegel Modal component: Using both header prop and header slot might break modal's design. Please use just one of them. ",
+      );
+    }
+
+    if (!this.selector && !this.referenceEl) {
+      console.warn(
+        'Tegel Modal: Missing focus origin. Please provide either a "referenceEl" or a "selector" to ensure focus returns to the element that opened the modal. If the modal is opened programmatically, this message can be ignored.',
       );
     }
   }
@@ -139,14 +145,27 @@ export class TdsModal {
   }
 
   private returnFocusOnClose() {
-    let referenceEl = this.referenceEl ?? document.querySelector(this.selector)
-    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT']
+    let referenceElement = this.referenceEl ?? document.querySelector(this.selector);
 
-    // If referenced element is a custom element eg: tds-button we find the interactive element inside
-    if(potentialReferenceElements.indexOf(referenceEl.tagName) < 0) {
-      referenceEl = referenceEl.querySelectorAll<HTMLElement>(potentialReferenceElements.join(','))[0]
+    if (!referenceElement) {
+      return; // no element to return focus to
     }
-    referenceEl.focus()
+
+    const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
+    const isNativeFocusable = potentialReferenceElements.includes(referenceElement.tagName);
+
+    if (isNativeFocusable) {
+      referenceElement.focus();
+    } else {
+      // If referenced element is a custom element eg: tds-button we find the interactive element inside:
+      const interactiveElement = referenceElement.querySelector<HTMLElement>(
+        potentialReferenceElements.join(','),
+      );
+
+      if (interactiveElement) {
+        interactiveElement.focus();
+      }
+    }
   }
 
   private getFocusableElements(): HTMLElement[] {
@@ -170,11 +189,11 @@ export class TdsModal {
     return [...focusableInShadowRoot, ...focusableInSlots];
   }
 
-  @Listen('keydown', {target: 'window', capture: true })
+  @Listen('keydown', { target: 'window', capture: true })
   handleFocusTrap(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.isShown && !this.prevent) {
       this.handleClose(event);
-      return
+      return;
     }
 
     // Only trap focus if the modal is open
@@ -211,7 +230,7 @@ export class TdsModal {
 
   handleClose = (event) => {
     const closeEvent = this.tdsClose.emit(event);
-    this.returnFocusOnClose()
+    this.returnFocusOnClose();
 
     if (!closeEvent.defaultPrevented) {
       this.isShown = false;
