@@ -1,7 +1,13 @@
 import React from 'react';
-import { addons, types } from '@storybook/manager-api';
+import { addons, types, useGlobals } from '@storybook/manager-api';
 import { PackageVersion } from './components/PackageVersion';
 import { version } from '../package.json';
+import theme from './ScaniaThemeLight';
+import '../dist/tegel/tegel.css';
+
+addons.setConfig({
+  theme,
+});
 
 addons.register('package-version', () => {
   addons.add('package-version/tool', {

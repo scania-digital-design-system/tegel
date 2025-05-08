@@ -22,6 +22,7 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     '@storybook/addon-docs',
     '@storybook/blocks',
+    'storybook-dark-mode',
   ],
   framework: {
     name: '@storybook/html-vite',
