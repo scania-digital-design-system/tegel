@@ -267,7 +267,7 @@ export class TdsDatetime {
         {this.helper && (
           <div class="tds-datetime-helper">
             <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px" />}
+              {this.state === 'error' && <tds-icon name="error" size="16px" svgTitle="error" />}
               {this.helper}
             </div>
           </div>
