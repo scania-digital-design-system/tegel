@@ -12,7 +12,7 @@ import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 
 export default {
-  title: 'Components/Table',
+  title: 'Components/Table/Multiselect',
   parameters: {
     notes: {
       'tds-table': tdsTable,
@@ -257,4 +257,4 @@ const MultiselectTemplate = ({
 </script>
   `);
 
-export const Multiselect = MultiselectTemplate.bind({});
+export const Default = MultiselectTemplate.bind({});

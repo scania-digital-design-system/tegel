@@ -12,7 +12,7 @@ import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 
 export default {
-  title: 'Components/Table',
+  title: 'Components/Table/Pagination',
   parameters: {
     notes: {
       'tds-table': tdsTable,
@@ -259,4 +259,4 @@ const PaginationTemplate = ({
   
   `);
 
-export const Pagination = PaginationTemplate.bind({});
+export const Default = PaginationTemplate.bind({});

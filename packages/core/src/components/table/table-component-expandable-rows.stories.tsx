@@ -259,4 +259,4 @@ const ExpandableRowTemplate = ({
     </script>
 `);
 
-export const ExpandableRows = ExpandableRowTemplate.bind({});
+export const Default = ExpandableRowTemplate.bind({});

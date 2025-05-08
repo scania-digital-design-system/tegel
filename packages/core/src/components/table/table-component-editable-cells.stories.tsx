@@ -452,4 +452,4 @@ const EditableCellsTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const EditableCells = EditableCellsTemplate.bind({});
+export const Default = EditableCellsTemplate.bind({});

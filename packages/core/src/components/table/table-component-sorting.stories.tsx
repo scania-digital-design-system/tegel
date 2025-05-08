@@ -273,4 +273,4 @@ const SortingTemplate = ({
   });
   </script>`);
 
-export const Sorting = SortingTemplate.bind({});
+export const Default = SortingTemplate.bind({});

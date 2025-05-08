@@ -203,4 +203,4 @@ const BasicTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const CustomWidth = BasicTemplate.bind({});
+export const Default = BasicTemplate.bind({});

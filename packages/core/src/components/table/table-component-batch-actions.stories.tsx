@@ -12,7 +12,7 @@ import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 
 export default {
-  title: 'Components/Table',
+  title: 'Components/Table/Batch Actions',
   parameters: {
     notes: {
       'tds-table': tdsTable,
@@ -222,4 +222,4 @@ const BatchActionTemplate = ({
   </tds-table>
   `);
 
-export const BatchAction = BatchActionTemplate.bind({});
+export const Default = BatchActionTemplate.bind({});

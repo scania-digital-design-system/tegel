@@ -12,7 +12,7 @@ import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Components/Table',
+  title: 'Components/Table/Basic',
   parameters: {
     notes: {
       'tds-table': tdsTable,
@@ -291,4 +291,4 @@ const BasicTemplate = ({
 </script>
 `);
 
-export const Basic = BasicTemplate.bind({});
+export const Default = BasicTemplate.bind({});

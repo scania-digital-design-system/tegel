@@ -247,4 +247,4 @@ const HorizontalScrollTemplate = ({
   
   `);
 
-export const HorizontalScroll = HorizontalScrollTemplate.bind({});
+export const Default = HorizontalScrollTemplate.bind({});

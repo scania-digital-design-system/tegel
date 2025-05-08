@@ -362,4 +362,4 @@ const ColumnFilteringTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const ColumnFiltering = ColumnFilteringTemplate.bind({});
+export const Default = ColumnFilteringTemplate.bind({});

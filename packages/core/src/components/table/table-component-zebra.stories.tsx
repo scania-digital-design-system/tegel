@@ -330,4 +330,4 @@ const ZebraModeTemplate = ({
       </tds-table-body>
   </tds-table>`);
 
-export const ZebraMode = ZebraModeTemplate.bind({});
+export const Default = ZebraModeTemplate.bind({});

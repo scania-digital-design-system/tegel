@@ -12,7 +12,7 @@ import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
 import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 
 export default {
-  title: 'Components/Table',
+  title: 'Components/Table/Filtering',
   parameters: {
     notes: {
       'tds-table': tdsTable,
@@ -224,4 +224,4 @@ const FilteringTemplate = ({
   });
 </script>`);
 
-export const Filtering = FilteringTemplate.bind({});
+export const Default = FilteringTemplate.bind({});
