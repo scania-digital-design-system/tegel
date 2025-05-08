@@ -1,6 +1,8 @@
-// What is this document for:
-// https://stenciljs.com/docs/styling#global-styles
-// https://stenciljs.com/docs/config#globalstyle
+/*
+* This file is used for generating the global styles for the Tegel Light package.
+* It is a copy of the global.scss file in the core package, buwithout the web component styles.
+* Once the Web Components imports are removed from the global.scss file, that file can be used for Tegel Light as well. 
+*/
 
 /* Multibrand tokens: Scania colors */
 @import '../../../../color/scania-color-primitives';
@@ -87,6 +89,3 @@ body {
 }
 
 @import 'shame';
-
-// Just for demo purposes, import of this file should be conditional
-@import 'tegel-light-components';
