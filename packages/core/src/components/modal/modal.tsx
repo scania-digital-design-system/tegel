@@ -109,7 +109,7 @@ export class TdsModal {
 
     if (!this.selector && !this.referenceEl) {
       console.warn(
-        'Tegel Modal component: please provide a selector or referenceEl prop to to reference the element used to show the modal',
+        'Tegel Modal: Missing focus origin. Please provide either a "referenceEl" or a "selector" to ensure focus returns to the element that opened the modal. If the modal is opened programmatically, this message can be ignored.',
       );
     }
   }
@@ -152,14 +152,20 @@ export class TdsModal {
     }
 
     const potentialReferenceElements = ['BUTTON', 'A', 'INPUT'];
+    const isNativeFocusable = potentialReferenceElements.includes(referenceElement.tagName);
 
-    // If referenced element is a custom element eg: tds-button we find the interactive element inside
-    if (potentialReferenceElements.indexOf(referenceElement.tagName) < 0) {
-      referenceElement = referenceElement.querySelectorAll<HTMLElement>(
+    if (isNativeFocusable) {
+      referenceElement.focus();
+    } else {
+      // If referenced element is a custom element eg: tds-button we find the interactive element inside:
+      const interactiveElement = referenceElement.querySelector<HTMLElement>(
         potentialReferenceElements.join(','),
-      )[0];
+      );
+
+      if (interactiveElement) {
+        interactiveElement.focus();
+      }
     }
-    referenceElement.focus();
   }
 
   private getFocusableElements(): HTMLElement[] {
