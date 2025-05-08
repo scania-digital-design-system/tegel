@@ -109,6 +109,16 @@ export class TdsSlider {
 
   private ariaLiveElement: HTMLElement = null;
 
+  private roundToStep(val: number): number {
+    const stepNum = parseFloat(this.step);
+    if (!stepNum) {
+      return parseFloat(val.toFixed());
+    }
+    const rounded = Math.round(val / stepNum) * stepNum;
+    const precision = (stepNum.toString().split('.')[1] || '').length;
+    return parseFloat(rounded.toFixed(precision));
+  }
+
   /** Sends the value of the slider when changed. Fires after mouse up and touch end events. */
   @Event({
     eventName: 'tdsChange',
@@ -305,7 +315,7 @@ export class TdsSlider {
       const percentage = this.thumbLeft / trackWidth;
       const calculatedValue = min + percentage * (max - min);
 
-      this.value = Math.round(calculatedValue).toString();
+      this.value = this.roundToStep(calculatedValue).toString();
     }
     this.updateTrack();
 
@@ -382,20 +392,25 @@ export class TdsSlider {
   /** Updates the slider value based on the current input value */
   private updateSliderValueOnInputChange(event: FocusEvent | KeyboardEvent) {
     const inputElement = event.target as HTMLInputElement;
-    let newValue = parseInt(inputElement.value);
+
+    let newValue = parseFloat(inputElement.value);
 
     // Check if the new value is different from the current value
-    if (newValue === parseInt(this.value)) {
+    if (newValue === parseFloat(this.value)) {
       return; // Exit the function if the new value is the same as the current value
     }
 
-    if (newValue < parseFloat(this.min)) {
-      newValue = parseFloat(this.min);
-    } else if (newValue > parseFloat(this.max)) {
-      newValue = parseFloat(this.max);
-    }
+    const minNum = parseFloat(this.min);
+    const maxNum = parseFloat(this.max);
 
-    this.forceValueUpdate(String(newValue));
+    if (newValue < minNum) {
+      newValue = minNum;
+    } else if (newValue > maxNum) {
+      newValue = maxNum;
+    }
+    const rounded = this.roundToStep(newValue);
+
+    this.forceValueUpdate(rounded.toString());
   }
 
   /** Updates the slider value based on the current input value when enter is pressed */
@@ -449,7 +464,7 @@ export class TdsSlider {
         parseFloat(this.min) + percentage * (parseFloat(this.max) - parseFloat(this.min));
 
       currentValue += delta;
-      currentValue = Math.round(currentValue);
+      currentValue = this.roundToStep(currentValue);
 
       if (currentValue < parseFloat(this.min)) {
         currentValue = parseFloat(this.min);
@@ -463,11 +478,11 @@ export class TdsSlider {
   }
 
   private stepLeft(event) {
-    this.controlsStep(-parseInt(this.step), event);
+    this.controlsStep(-parseFloat(this.step), event);
   }
 
   private stepRight(event) {
-    this.controlsStep(parseInt(this.step), event);
+    this.controlsStep(parseFloat(this.step), event);
   }
 
   private resetToInitialValue = () => {
@@ -481,10 +496,12 @@ export class TdsSlider {
     if (numTicks > 0) {
       this.tickValues = [parseFloat(this.min)];
 
-      const step = (parseFloat(this.max) - parseFloat(this.min)) / (numTicks + 1);
+      const interval = (parseFloat(this.max) - parseFloat(this.min)) / (numTicks + 1);
+      const precision = (parseFloat(this.step).toString().split('.')[1] || '').length;
 
-      for (let i = 1; i < numTicks + 1; i++) {
-        this.tickValues.push(parseFloat(this.min) + Math.round(step * i));
+      for (let i = 1; i <= numTicks; i++) {
+        const raw = parseFloat(this.min) + interval * i;
+        this.tickValues.push(parseFloat(raw.toFixed(precision)));
       }
 
       this.tickValues.push(parseFloat(this.max));
@@ -581,6 +598,7 @@ export class TdsSlider {
           name={this.name}
           min={this.min}
           max={this.max}
+          step={this.step}
           value={this.value}
           disabled={this.disabled}
         ></input>
@@ -721,6 +739,7 @@ export class TdsSlider {
                   type="number"
                   min={this.min}
                   max={this.max}
+                  step={this.step}
                 />
               </div>
             </div>
