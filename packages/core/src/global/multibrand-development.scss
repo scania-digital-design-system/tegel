@@ -7,3 +7,9 @@
 
 @import 'global';
 @import 'traton';
+
+/*
+* Import the tegel light components style sheets to be bale to use tegel light in Storybook
+*/
+
+@import 'tegel-light-components';
