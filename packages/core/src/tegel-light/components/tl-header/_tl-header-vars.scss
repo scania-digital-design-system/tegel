@@ -1,0 +1,241 @@
+:root {
+  --tds-header-height: 64px;
+  --tds-header-list-item-md-height: 48px;
+}
+
+:root,
+.tds-mode-light {
+  --tds-header-overlay: var(--tds-black);
+  --tds-header-app-name-color: var(--tds-white);
+  --tds-header-background: var(--tds-blue-800);
+  --tds-header-mob-menu-color: var(--tds-white);
+  --tds-header-mob-menu-open-color: var(--tds-grey-958);
+  --tds-header-mob-menu-open-background: var(--tds-white);
+  --tds-header-mob-menu-border: var(--tds-blue-700);
+  --tds-header-mob-menu-open-border: var(--tds-grey-300);
+  --tds-nav-item-background: var(--tds-white);
+  --tds-nav-item-background-active: var(--tds-grey-100);
+  --tds-nav-item-background-hover: var(--tds-grey-100);
+  --tds-nav-item-background-selected: var(--tds-grey-100);
+  --tds-nav-item-border-color: var(--tds-blue-700);
+  --tds-nav-item-border-color-active: var(--tds-blue-400);
+  --tds-nav-item-core-background-hover: var(--tds-grey-100);
+  --tds-nav-item-core-color-active: var(--tds-grey-800);
+  --tds-header-nav-item-color: var(--tds-white);
+  --tds-header-nav-item-background-active: var(--tds-blue-700);
+  --tds-nav-dropdown-item-background: var(--tds-white);
+  --tds-nav-dropdown-item-border-color: var(--tds-grey-300);
+  --tds-header-nav-item-dropdown-opened-background: var(--tds-white);
+  --tds-header-nav-item-dropdown-opened-background-hover: var(--tds-grey-100);
+  --tds-header-nav-item-dropdown-opened-background-selected: var(--tds-grey-100);
+  --tds-header-nav-item-dropdown-opened-background-active: var(--tds-grey-300);
+  --tds-header-nav-item-dropdown-opened-color: var(--tds-grey-958);
+  --tds-header-nav-item-dropdown-hover-color: var(--tds-grey-300);
+  --tds-header-item-hover: var(--tds-blue-700);
+
+  // tds-nav__basic-element-style
+  --tds-header--basic-element-border: var(--tds-blue-700);
+  --tds-header--basic-element-border-open: var(--tds-white);
+  --tds-header--basic-element-background: var(--tds-blue-800);
+  --tds-header--basic-element-background-open: var(--tds-white);
+  --tds-header--basic-element-background-hover: var(--tds-blue-700);
+  --tds-header--basic-element-background-selected: var(--tds-blue-700);
+
+  /* Searchbar */
+  --tds-header-searchbar-input-background: var(--tds-white);
+  --tds-header-searchbar-input-color: var(--tds-black);
+  --tds-header-searchbar-input-placeholder-color: var(--tds-grey-958);
+  --tds-header-searchbar-input-expanded-after-border-bottom: var(--tds-grey-300);
+  --tds-header-searchbar-border-color: var(--tds-blue-700);
+  --tds-header-searchbar-btn-active: var(--tds-white);
+  --tds-header-searchbar-x-btn-background: var(--tds-white);
+  --tds-header-searchbar-x-btn-background-hover: var(--tds-grey-100);
+  --tds-header-searchbar-btn-svg-fill: var(--tds-grey-958);
+
+  /* Searchbar Results */
+  --tds-header-searchbar-result-item-background: var(--tds-white);
+  --tds-header-searchbar-result-item-background-hover: var(--tds-grey-100);
+  --tds-header-searchbar-result-item-background-active: var(--tds-blue-400);
+  --tds-header-searchbar-result-item-background-visited: var(--tds-grey-400);
+  --tds-header-searchbar-result-item-anchor-background-hover: var(--tds-grey-100);
+  --tds-header-searchbar-result-item-top-border-color: var(--tds-grey-300);
+  --tds-header-searchbar-result-item-top-background: var(--tds-white);
+  --tds-header-searchbar-result-item-category-title-background: var(--tds-white);
+  --tds-header-searchbar-result-x-btn: var(--tds-white);
+  --tds-header-searchbar-result-item-core-color: var(--tds-black);
+  --tds-header-searchbar-result-item-core-background: var(--tds-white);
+  --tds-header-searchbar-result-category-border-color: var(--tds-grey-300);
+  --tds-header-searchbar-result-category-background: var(--tds-white);
+
+  /* Searchbar Results All */
+  --tds-header-searchbar-all-result-item-color: var(--tds-black);
+  --tds-header-searchbar-all-result-item-background-hover: var(--tds-grey-100);
+  --tds-header-searchbar-all-result-item-background-active: var(--tds-blue-400);
+  --tds-header-searchbar-all-result-item-background-visited: var(--tds-grey-400);
+
+  /* Avatar */
+  --tds-header-avatar-item-background: var(--tds-white);
+  --tds-header-avatar-item-background-hover: var(--tds-grey-100);
+  --tds-header-avatar-item-border-color: var(--tds-grey-300);
+  --tds-header-avatar-subtitle-color: var(--tds-grey-500);
+  --tds-header-avatar-item-color: var(--tds-grey-700);
+  --tds-header-avatar-item-btn-background: var(--tds-white);
+
+  /* App Launcher */
+  --tds-header-app-launcher-menu-background: var(--tds-white);
+  --tds-header-app-launcher-btn-background: var(--tds-white);
+  --tds-header-app-launcher-btn-color: var(--tds-white);
+  --tds-header-app-launcher-open-btn-color: var(--tds-black);
+  --tds-header-app-launcher-item-border-color: var(--tds-grey-300);
+  --tds-header-app-launcher-category-title-background: var(--tds-white);
+  --tds-header-app-launcher-category-title-color: var(--tds-grey-500);
+  --tds-header-app-launcher-grid-category-title-color: var(--tds-grey-800);
+  --tds-header-app-launcher-item-background: var(--tds-white);
+  --tds-header-app-launcher-item-background-hover: var(--tds-grey-100);
+  --tds-header-app-launcher-item-color: var(--tds-grey-700);
+
+  // App launcher - Grid menu
+  --tds-header-app-launcher-grid--color: var(--tds-grey-800);
+  --tds-header-app-launcher-grid-hover-background: var(--tds-grey-100);
+
+  /* MOBILE AND TABLET */
+  --tds-header-mobile-menu-background: var(--tds-white);
+  --tds-header-mobile-menu-item-background: var(--tds-white);
+  --tds-header-mobile-menu-item-background-hover: var(--tds-grey-300);
+  --tds-header-mobile-menu-item-color: var(--tds-grey-958);
+  --tds-header-mobile-menu-item-border-color: var(--tds-grey-300);
+  --tds-header-mobile-nav-center-background: var(--tds-white);
+  --tds-header-mobile-nav-center-item-border-color: var(--tds-grey-300);
+  --tds-header-mobile-nav-center-item-border-color-active-after: var(--tds-blue-400);
+  --tds-header-mobile-nav-center-dropdown-item--last-border-color: var(--tds-grey-300);
+  --tds-header-mobile-nav-toolbar-border-color: var(--tds-grey-300);
+  --tds-header-mobile-searchbar-container-border-color: var(--tds-grey-300);
+  --tds-header-mobile-searchbar-input-background: var(--tds-white);
+  --tds-header-mobile-searchbar-input-color: var(--tds-black);
+  --tds-header-mobile-searchbar-input-placeholder-color: var(--tds-grey-800);
+  --tds-header-mobile-searchbar-input-expanded-before-background: var(--tds-white);
+  --tds-header-mobile-searchbar-btn-background: var(--tds-white);
+  --tds-header-mobile-searchbar-btn-background-hover: var(--tds-grey-100);
+  --tds-header-mobile-searchbar-open-btn-background: var(--tds-white);
+  --tds-header-mobile-searchbar-open-btn-background-hover: var(--tds-grey-100);
+  --tds-header-mobile-searchbar-btn-svg-fill: var(--tds-grey-958);
+  --tds-header-mobile-searchbar-container-color: var(--tds-grey-958);
+  --tds-header-mobile-avatar--item-btn-background: var(--tds-white);
+  --tds-header-mobile-avatar--item-btn-background-hover: var(--tds-grey-100);
+  --tds-header-mobile-avatar--item-btn-background-selected: var(--tds-grey-100);
+  --tds-header-mobile-avatar--item-btn-background-active: var(--tds-grey-300);
+  --tds-header-mobile-avatar--item-btn-color: var(--tds-grey-958);
+}
+
+.tds-mode-dark {
+  --tds-header-background: var(--tds-blue-900);
+  --tds-header-mob-menu-open-color: var(--tds-white);
+  --tds-header-mob-menu-open-background: var(--tds-grey-958);
+  --tds-header-mob-menu-border: var(--tds-blue-800);
+  --tds-header-mob-menu-open-border: var(--tds-grey-868);
+  --tds-nav-item-background: var(--tds-grey-800);
+  --tds-nav-item-background-hover: var(--tds-grey-700);
+  --tds-nav-item-background-active: var(--tds-grey-700);
+  --tds-nav-item-background-selected: var(--tds-grey-700);
+  --tds-nav-item-border-color: var(--tds-blue-700);
+  --tds-nav-item-border-color-active: var(--tds-blue-300);
+  --tds-nav-item-core-background-hover: var(--tds-grey-700);
+  --tds-nav-item-core-color-active: var(--tds-grey-50);
+  --tds-header-nav-item-color: var(--tds-white);
+  --tds-header-nav-item-background-active: var(--tds-blue-800);
+  --tds-nav-dropdown-item-background: var(--tds-grey-800);
+  --tds-nav-dropdown-item-border-color: var(--tds-grey-700);
+  --tds-header-nav-item-dropdown-opened-background: var(--tds-grey-958);
+  --tds-header-nav-item-dropdown-opened-background-hover: var(--tds-grey-868);
+  --tds-header-nav-item-dropdown-opened-background-selected: var(--tds-grey-868);
+  --tds-header-nav-item-dropdown-opened-background-active: var(--tds-grey-800);
+  --tds-header-nav-item-dropdown-opened-color: var(--tds-white);
+  --tds-header-item-hover: var(--tds-blue-800);
+
+  // tds-nav__basic-element-style
+  --tds-header--basic-element-border: var(--tds-blue-700);
+  --tds-header--basic-element-border-open: var(--tds-blue-700);
+  --tds-header--basic-element-background-open: var(--tds-blue-800);
+  --tds-header--basic-element-background-hover: var(--tds-blue-800);
+  --tds-header--basic-element-background-selected: var(--tds-blue-800);
+
+  // /* Searchbar */
+  --tds-header-searchbar-input-background: var(--tds-grey-958);
+  --tds-header-searchbar-input-color: var(--tds-white);
+  --tds-header-searchbar-input-placeholder-color: var(--tds-grey-400);
+  --tds-header-searchbar-input-expanded-after-border-bottom: var(--tds-grey-700);
+  --tds-header-searchbar-border-color: var(--tds-blue-700);
+  --tds-header-searchbar-x-btn-background: var(--tds-grey-958);
+  --tds-header-searchbar-x-btn-background-hover: var(--tds-grey-868); //400?
+  --tds-header-searchbar-btn-svg-fill: var(--tds-white);
+
+  // /* Searchbar Results */
+  --tds-header-searchbar-result-item-background: var(--tds-grey-958);
+  --tds-header-searchbar-result-item-background-hover: var(--tds-grey-868);
+  --tds-header-searchbar-result-item-background-active: var(--tds-grey-800);
+  --tds-header-searchbar-result-item-background-visited: var(--tds-grey-600);
+  --tds-header-searchbar-result-item-anchor-background-hover: var(--tds-grey-868);
+  --tds-header-searchbar-result-item-top-border-color: var(--tds-grey-700);
+  --tds-header-searchbar-result-item-top-background: var(--tds-grey-958);
+  --tds-header-searchbar-result-item-category-title-background: var(--tds-grey-958);
+  --tds-header-searchbar-result-x-btn: var(--tds-white);
+  --tds-header-searchbar-result-item-core-color: var(--tds-white);
+  --tds-header-searchbar-result-item-core-background: var(--tds-grey-958);
+  --tds-header-searchbar-result-category-border-color: var(--tds-grey-700);
+  --tds-header-searchbar-result-category-background: var(--tds-grey-958);
+
+  // /* Searchbar Results All */
+  --tds-header-searchbar-all-result-item-color: var(--tds-white);
+  --tds-header-searchbar-all-result-item-background-hover: var(--tds-grey-868);
+  --tds-header-searchbar-all-result-item-background-active: var(--tds-grey-868);
+  --tds-header-searchbar-all-result-item-background-visited: var(--tds-grey-600);
+
+  // /* Avatar */
+  --tds-header-avatar-item-background: var(--tds-grey-800);
+  --tds-header-avatar-item-border-color: var(--tds-grey-700);
+  --tds-header-avatar-subtitle-color: var(--tds-grey-500);
+  --tds-header-avatar-title-color: var(--tds-grey-50);
+  --tds-header-avatar-item-background-hover: var(--tds-grey-700);
+  --tds-header-avatar-item-color: var(--tds-grey-500);
+  --tds-header-avatar-item-btn-background: var(--tds-grey-800);
+
+  // /* App Launcher */
+  --tds-header-app-launcher-menu-background: var(--tds-grey-800);
+  --tds-header-app-launcher-btn-background: var(--tds-grey-800);
+  --tds-header-app-launcher-btn-color: var(--tds-white);
+  --tds-header-app-launcher-open-btn-color: var(--tds-white);
+  --tds-header-app-launcher-item-border-color: var(--tds-grey-700);
+  --tds-header-app-launcher-category-title-background: var(--tds-grey-800);
+  --tds-header-app-launcher-category-title-color: var(--tds-grey-500);
+  --tds-header-app-launcher-grid-category-title-color: var(--tds-grey-500);
+  --tds-header-app-launcher-item-background: var(--tds-grey-800);
+  --tds-header-app-launcher-item-background-hover: var(--tds-grey-700);
+  --tds-header-app-launcher-item-color: var(--tds-grey-50);
+
+  // App launcher - Grid menu
+  --tds-header-app-launcher-grid-color: var(--tds-grey-50);
+  --tds-header-app-launcher-grid-hover-background: var(--tds-grey-700);
+
+  // /* MOBILE AND TABLET */
+  --tds-header-mobile-nav-center-background: var(--tds-grey-958);
+  --tds-header-mobile-nav-center-item-border-color: var(--tds-grey-868);
+  --tds-header-mobile-nav-center-item-border-color-active-after: var(--tds-blue-400);
+  --tds-header-mobile-nav-center-dropdown-item--last-border-color: var(--tds-grey-868);
+  --tds-header-mobile-nav-toolbar-border-color: var(--tds-grey-868);
+  --tds-header-mobile-searchbar-container-border-color: var(--tds-grey-868);
+  --tds-header-mobile-searchbar-input-background: var(--tds-grey-958);
+  --tds-header-mobile-searchbar-input-color: var(--tds-white);
+  --tds-header-mobile-searchbar-input-placeholder-color: var(--tds-grey-400);
+  --tds-header-mobile-searchbar-input-expanded-before-background: var(--tds-black);
+  --tds-header-mobile-searchbar-btn-background: var(--tds-grey-958);
+  --tds-header-mobile-searchbar-btn-background-hover: var(--tds-grey-868);
+  --tds-header-mobile-searchbar-open-btn-background: var(--tds-grey-958);
+  --tds-header-mobile-searchbar-open-btn-background-hover: var(--tds-grey-868);
+  --tds-header-mobile-searchbar-btn-svg-fill: var(--tds-white);
+  --tds-header-mobile-searchbar-container-color: var(--tds-white);
+  --tds-header-mobile-avatar--item-btn-background: var(--tds-grey-958);
+  --tds-header-mobile-avatar--item-btn-background-hover: var(--tds-grey-868);
+  --tds-header-mobile-avatar--item-btn-background-selected: var(--tds-grey-868);
+  --tds-header-mobile-avatar--item-btn-background-active: var(--tds-grey-800);
+  --tds-header-mobile-avatar--item-btn-color: var(--tds-white);
+}

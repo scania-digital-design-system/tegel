@@ -184,6 +184,7 @@ export const parameters = {
         'Utilities',
         'Patterns',
         'Components',
+        'Tegel light (CSS)',
       ],
     },
   },
