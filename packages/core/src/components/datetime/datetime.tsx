@@ -1,4 +1,5 @@
 import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '@stencil/core';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-datetime',
@@ -38,8 +39,8 @@ export class TdsDatetime {
   /** Set the variant of the Datetime component. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Name property */
-  @Prop() name = '';
+  /** Name property. Uses a unique ID as fallback if not specified. */
+  @Prop() name = `datetime-${generateUniqueId()}`;
 
   /** Error state of input */
   @Prop() state: string;
@@ -147,7 +148,7 @@ export class TdsDatetime {
   }
 
   // Listener if input enters focus state
-  @Listen('focus')
+  @Listen('focusin')
   handleFocusIn() {
     this.focusInput = true;
   }
@@ -254,6 +255,7 @@ export class TdsDatetime {
               max={this.max}
               autofocus={this.autofocus}
               name={this.name}
+              id={this.name}
               onInput={(e) => this.handleInput(e)}
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
