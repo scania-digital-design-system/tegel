@@ -69,6 +69,7 @@ export class TdsSideMenu {
       this.collapsed = false;
     } else {
       this.collapsed = this.initialCollapsedState;
+      this.open = false;
     }
   };
 
