@@ -2,11 +2,17 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
-// New Tegel Styles
-
+/* Multibrand tokens: Scania colors */
 @import '../../../../color/scania-color-primitives';
-@import '../../../../color/tegel-brand-usage';
+@import '../../../../color/scania-brand-usage';
+
+/* Multibrand tokens: Scania typography */
+@import '../../../../typography/tokens/typography-scania';
+
+/* Multibrand tokens: Scania spacing */
 @import '../../../../spacing/units';
+@import '../../../../spacing/radius';
+@import '../../../../spacing/scania-units';
 
 // Motion
 @import '../../../../motion/';
@@ -81,3 +87,6 @@ body {
 }
 
 @import 'shame';
+
+// Just for demo purposes, import of this file should be conditional
+@import 'tegel-light-components';
