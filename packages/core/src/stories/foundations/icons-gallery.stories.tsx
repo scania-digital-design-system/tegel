@@ -88,4 +88,4 @@ const Template = () =>
     `,
   );
 
-export const Gallery = Template.bind({});
+export const Default = Template.bind({});

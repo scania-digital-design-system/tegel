@@ -1,6 +1,4 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeItem from './accordion-item/readme.md';
 
 export default {
   title: 'Components/Accordion',
@@ -71,7 +69,6 @@ export default {
     },
   },
   parameters: {
-    notes: { 'Accordion': readme, 'Accordion Item': readmeItem },
     design: [
       {
         name: 'Figma',

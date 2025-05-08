@@ -111,4 +111,4 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
     </script>
 `);
 
-export const FolderTabs = Template.bind({});
+export const Default = Template.bind({});

@@ -71,4 +71,4 @@ const IconTemplate = (args) =>
   </tds-icon> 
   `);
 
-export const SingleIcon = IconTemplate.bind({});
+export const Default = IconTemplate.bind({});

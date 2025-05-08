@@ -117,4 +117,4 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
     </script>
   `);
 
-export const NavigationTabs = Template.bind({});
+export const Default = Template.bind({});
