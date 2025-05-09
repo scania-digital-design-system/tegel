@@ -1,0 +1,58 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta
+  title="Installation/JavaScript"
+  tags={['!autodocs']}
+  parameters={{
+    layout: 'fullscreen',
+    options: {
+      showPanel: false,
+      showToolbar: false,
+    },
+  }}
+/>
+
+**Published: 2023-10-11**
+
+# Installing Tegel
+
+This is a getting started guide aimed at developers that want to install and use the @scania/tegel library (TDS). This library consists of web components built using Stencil, which means that they are framework agnostic and follow browser standards. The library is installed and updated via NPM (node package manager). For further installation information please see the framework specific installation guides below.
+
+## Migration from SDDS
+
+TDS and @scania/components (SDDS) share a lot of design, but the tech implementation have two different approaches. Therefore there is some migration work needed when going from SDDS to TDS. We have outlined all the differences in this [migration document](?path=/story/migration-from-components-v4--migration). However, since they exist in different namespaces (SDDS is prefixed with 'sdds' and TDS with 'tds') the two solutions can exist alongside each other, enabling a soft migration that can be done over time.
+
+## Framework integrations
+
+TDS is, like previously mentioned, a collection of web components. This enables them to work within any frontend framework since they are built on web standards. However, achieving a seamless integration can be challenging because different frameworks offer varying levels of support for vanilla web components. To still allow for a premium developer experience we leverage Stencils (the complier used to build the TDS web components) output targets to build "framework-wrappers". These are separate npm packages consisting of framework specific counterparts for all of the components in @scania/tegel. The currently available packages are built for Angular (@scania/tegel-angular) and React (@scania/tegel-react). If you are planning to use TDS in an Angular or React application we recommend you follow the installation guide for the respective framework.
+
+- [Angular installation guide](?path=/story/installation-angular--angular)
+- [React installation guide](?path=/story/installation-react--react)
+
+## Javascript
+
+This guide is aimed at developers that want to use TDS in an application without any framework.
+
+Run npm init to generate a package.json, and then install @scania/tegel.
+
+```bash
+npm install @scania/tegel
+```
+
+The components needs to be registered before they can be used. For example, import and call the `defineCustomElements` function in your `<head>`. You also need to import the Tegel stylesheet.
+
+```html
+<script type="module">
+  import { defineCustomElements } from './node_modules/@scania/tegel/loader/index.es2017.js';
+  defineCustomElements();
+</script>
+<link rel="stylesheet" href="./node_modules/@scania/tegel/dist/tegel/tegel.css" />
+```
+
+After this, all TDS component will be available in your template files. Example:
+
+```html
+<tds-button text="Click me!" variant="primary" size="sm">
+  <tds-icon slot="icon" name="truck"> </tds-icon>
+</tds-button>
+```
