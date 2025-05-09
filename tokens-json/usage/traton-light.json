@@ -58,11 +58,11 @@
             "type": "color"
           },
           "resting": {
-            "value": "{150}",
+            "value": "{_unknown.color.150}",
             "type": "color"
           },
           "primary-hover": {
-            "value": "{850}",
+            "value": "{_unknown.color.850}",
             "type": "color"
           },
           "pressed": {
@@ -70,7 +70,7 @@
             "type": "color"
           },
           "focus": {
-            "value": "{850}",
+            "value": "{_unknown.color.850}",
             "type": "color"
           },
           "inverse": {
@@ -205,7 +205,7 @@
           "type": "color"
         },
         "subtle": {
-          "value": "{150}",
+          "value": "{_unknown.color.150}",
           "type": "color"
         },
         "strong": {
@@ -249,7 +249,7 @@
       },
       "text": {
         "strong": {
-          "value": "{950}",
+          "value": "{_unknown.color.950}",
           "type": "color"
         },
         "defined": {
@@ -282,7 +282,7 @@
             "type": "color"
           },
           "supertype": {
-            "value": "{neutral-white}",
+            "value": "{_unknown.color.neutral-white}",
             "type": "color"
           }
         },
@@ -327,7 +327,7 @@
           }
         },
         "strong": {
-          "value": "{950}",
+          "value": "{_unknown.color.950}",
           "type": "color"
         },
         "soft": {
@@ -368,7 +368,7 @@
       "elements": {
         "transparent": {
           "strong": {
-            "value": "{950}",
+            "value": "{_unknown.color.950}",
             "type": "color",
             "inverse": {
               "value": "{traton.color.transparent.inverse.950}",
@@ -712,7 +712,7 @@
     },
     "logo": {
       "Fill": {
-        "value": "{neutral-black}",
+        "value": "{_unknown.color.neutral-black}",
         "type": "color"
       },
       "TDS Right Logo": {
@@ -766,7 +766,7 @@
     },
     "footer": {
       "subtle": {
-        "value": "{950}",
+        "value": "{_unknown.color.950}",
         "type": "color"
       },
       "soft": {
@@ -1036,7 +1036,7 @@
     },
     "icon-test": {
       "Fill": {
-        "value": "{neutral-black}",
+        "value": "{_unknown.color.neutral-black}",
         "type": "color"
       },
       "Scania Icon": {

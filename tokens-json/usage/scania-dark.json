@@ -3,19 +3,19 @@
     "background": {
       "elevation": {
         "base": {
-          "value": "{1000}",
+          "value": "{_unknown.color.1000}",
           "type": "color"
         },
         "layer-01": {
-          "value": "{928}",
+          "value": "{_unknown.color.928}",
           "type": "color"
         },
         "layer-02": {
-          "value": "{900}",
+          "value": "{_unknown.color.900}",
           "type": "color"
         },
         "layer-03": {
-          "value": "{846}",
+          "value": "{_unknown.color.846}",
           "type": "color"
         },
         "scrim": {
@@ -23,27 +23,27 @@
           "type": "color"
         },
         "background – inverse": {
-          "value": "{00}",
+          "value": "{_unknown.color.00}",
           "type": "color"
         },
         "layer-01  – inverse": {
-          "value": "{50}",
+          "value": "{_unknown.color.50}",
           "type": "color"
         },
         "layer-02 – inverse": {
-          "value": "{100}",
+          "value": "{_unknown.color.100}",
           "type": "color"
         },
         "layer-03 – inverse": {
-          "value": "{200}",
+          "value": "{_unknown.color.200}",
           "type": "color"
         },
         "top": {
-          "value": "{846}",
+          "value": "{_unknown.color.846}",
           "type": "color"
         },
         "top – inverse": {
-          "value": "{200}",
+          "value": "{_unknown.color.200}",
           "type": "color"
         }
       },
@@ -54,11 +54,11 @@
             "type": "color"
           },
           "disabled": {
-            "value": "{868}",
+            "value": "{_unknown.color.868}",
             "type": "color"
           },
           "resting": {
-            "value": "{800}",
+            "value": "{_unknown.color.800}",
             "type": "color"
           },
           "primary-hover": {
@@ -91,11 +91,11 @@
               "type": "color"
             },
             "disabled": {
-              "value": "{868}",
+              "value": "{_unknown.color.868}",
               "type": "color"
             },
             "resting": {
-              "value": "{800}",
+              "value": "{_unknown.color.800}",
               "type": "color"
             }
           }
@@ -118,54 +118,54 @@
             "type": "color"
           },
           "disabled": {
-            "value": "{900}",
+            "value": "{_unknown.color.900}",
             "type": "color"
           },
           "resting": {
-            "value": "{900}",
+            "value": "{_unknown.color.900}",
             "type": "color"
           }
         }
       },
       "elements": {
         "100": {
-          "value": "{928}",
+          "value": "{_unknown.color.928}",
           "type": "color"
         },
         "200": {
-          "value": "{900}",
+          "value": "{_unknown.color.900}",
           "type": "color"
         },
         "300": {
-          "value": "{868}",
+          "value": "{_unknown.color.868}",
           "type": "color"
         },
         "400": {
-          "value": "{846}",
+          "value": "{_unknown.color.846}",
           "type": "color"
         },
         "500": {
-          "value": "{800}",
+          "value": "{_unknown.color.800}",
           "type": "color"
         },
         "600": {
-          "value": "{700}",
+          "value": "{_unknown.color.700}",
           "type": "color"
         },
         "700": {
-          "value": "{600}",
+          "value": "{_unknown.color.600}",
           "type": "color"
         },
         "800": {
-          "value": "{500}",
+          "value": "{_unknown.color.500}",
           "type": "color"
         },
         "900": {
-          "value": "{300}",
+          "value": "{_unknown.color.300}",
           "type": "color"
         },
         "1000": {
-          "value": "{50}",
+          "value": "{_unknown.color.50}",
           "type": "color"
         }
       }
@@ -235,10 +235,10 @@
           "type": "color"
         },
         "link-brand": {
-          "value": "{00}",
+          "value": "{_unknown.color.00}",
           "type": "color",
           "inverse": {
-            "value": "{00}",
+            "value": "{_unknown.color.00}",
             "type": "color"
           }
         },
@@ -287,7 +287,7 @@
           }
         },
         "supertype": {
-          "value": "{00}",
+          "value": "{_unknown.color.00}",
           "type": "color"
         },
         "disabled": {
@@ -418,43 +418,43 @@
         },
         "solid": {
           "100": {
-            "value": "{958}",
+            "value": "{_unknown.color.958}",
             "type": "color"
           },
           "200": {
-            "value": "{928}",
+            "value": "{_unknown.color.928}",
             "type": "color"
           },
           "300": {
-            "value": "{900}",
+            "value": "{_unknown.color.900}",
             "type": "color"
           },
           "400": {
-            "value": "{868}",
+            "value": "{_unknown.color.868}",
             "type": "color"
           },
           "500": {
-            "value": "{800}",
+            "value": "{_unknown.color.800}",
             "type": "color"
           },
           "600": {
-            "value": "{700}",
+            "value": "{_unknown.color.700}",
             "type": "color"
           },
           "700": {
-            "value": "{600}",
+            "value": "{_unknown.color.600}",
             "type": "color"
           },
           "800": {
-            "value": "{500}",
+            "value": "{_unknown.color.500}",
             "type": "color"
           },
           "900": {
-            "value": "{300}",
+            "value": "{_unknown.color.300}",
             "type": "color"
           },
           "1000": {
-            "value": "{50}",
+            "value": "{_unknown.color.50}",
             "type": "color"
           }
         }
@@ -560,23 +560,23 @@
   "_component": {
     "table": {
       "header-fill": {
-        "value": "{800}",
+        "value": "{_unknown.color.800}",
         "type": "color"
       },
       "column-header-fill": {
-        "value": "{868}",
+        "value": "{_unknown.color.868}",
         "type": "color"
       },
       "pagination-fill": {
-        "value": "{868}",
+        "value": "{_unknown.color.868}",
         "type": "color"
       },
       "cell-fill-hover": {
-        "value": "{900}",
+        "value": "{_unknown.color.900}",
         "type": "color"
       },
       "cell-fill": {
-        "value": "{900}",
+        "value": "{_unknown.color.900}",
         "type": "color"
       },
       "border": {
@@ -587,15 +587,15 @@
     "chip": {
       "background": {
         "default": {
-          "value": "{800}",
+          "value": "{_unknown.color.800}",
           "type": "color"
         },
         "primary-hover": {
-          "value": "{900}",
+          "value": "{_unknown.color.900}",
           "type": "color"
         },
         "hover": {
-          "value": "{600}",
+          "value": "{_unknown.color.600}",
           "type": "color"
         },
         "selected": {
@@ -712,7 +712,7 @@
     },
     "logo": {
       "Fill": {
-        "value": "{00}",
+        "value": "{_unknown.color.00}",
         "type": "color"
       },
       "TDS Right Logo": {
@@ -777,23 +777,23 @@
     "side-menu": {
       "states": {
         "default": {
-          "value": "{1000}",
+          "value": "{_unknown.color.1000}",
           "type": "color"
         },
         "hover": {
-          "value": "{928}",
+          "value": "{_unknown.color.928}",
           "type": "color"
         },
         "pressed": {
-          "value": "{900}",
+          "value": "{_unknown.color.900}",
           "type": "color"
         },
         "focus": {
-          "value": "{1000}",
+          "value": "{_unknown.color.1000}",
           "type": "color"
         },
         "selected": {
-          "value": "{928}",
+          "value": "{_unknown.color.928}",
           "type": "color"
         }
       },
@@ -1009,11 +1009,11 @@
     "dropdown": {
       "list-item": {
         "hover": {
-          "value": "{928}",
+          "value": "{_unknown.color.928}",
           "type": "color"
         },
         "focus": {
-          "value": "{1000}",
+          "value": "{_unknown.color.1000}",
           "type": "color"
         }
       }
@@ -1021,22 +1021,22 @@
     "content-switcher": {
       "background": {
         "default": {
-          "value": "{928}",
+          "value": "{_unknown.color.928}",
           "type": "color"
         },
         "selected": {
-          "value": "{846}",
+          "value": "{_unknown.color.846}",
           "type": "color"
         },
         "focus": {
-          "value": "{800}",
+          "value": "{_unknown.color.800}",
           "type": "color"
         }
       }
     },
     "icon-test": {
       "Fill": {
-        "value": "{00}",
+        "value": "{_unknown.color.00}",
         "type": "color"
       },
       "Scania Icon": {

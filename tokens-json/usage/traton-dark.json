@@ -15,7 +15,7 @@
           "type": "color"
         },
         "layer-03": {
-          "value": "{850}",
+          "value": "{_unknown.color.850}",
           "type": "color"
         },
         "scrim": {
@@ -31,7 +31,7 @@
           "type": "color"
         },
         "layer-02 – inverse": {
-          "value": "{150}",
+          "value": "{_unknown.color.150}",
           "type": "color"
         },
         "layer-03 – inverse": {
@@ -79,7 +79,7 @@
               "type": "color"
             },
             "primary-hover": {
-              "value": "{850}",
+              "value": "{_unknown.color.850}",
               "type": "color"
             },
             "pressed": {
@@ -87,7 +87,7 @@
               "type": "color"
             },
             "focus": {
-              "value": "{850}",
+              "value": "{_unknown.color.850}",
               "type": "color"
             },
             "disabled": {
@@ -95,7 +95,7 @@
               "type": "color"
             },
             "resting": {
-              "value": "{150}",
+              "value": "{_unknown.color.150}",
               "type": "color"
             }
           }
@@ -133,7 +133,7 @@
           "type": "color"
         },
         "200": {
-          "value": "{850}",
+          "value": "{_unknown.color.850}",
           "type": "color"
         },
         "300": {
@@ -165,7 +165,7 @@
           "type": "color"
         },
         "1000": {
-          "value": "{150}",
+          "value": "{_unknown.color.150}",
           "type": "color"
         }
       }
@@ -205,7 +205,7 @@
           "type": "color"
         },
         "subtle": {
-          "value": "{850}",
+          "value": "{_unknown.color.850}",
           "type": "color"
         },
         "strong": {
@@ -243,7 +243,7 @@
           }
         },
         "link-visited": {
-          "value": "{150}",
+          "value": "{_unknown.color.150}",
           "type": "color"
         }
       },
@@ -262,7 +262,7 @@
         },
         "inverse": {
           "strong": {
-            "value": "{950}",
+            "value": "{_unknown.color.950}",
             "type": "color"
           },
           "soft": {
@@ -282,12 +282,12 @@
             "type": "color"
           },
           "supertype": {
-            "value": "{950}",
+            "value": "{_unknown.color.950}",
             "type": "color"
           }
         },
         "supertype": {
-          "value": "{neutral-white}",
+          "value": "{_unknown.color.neutral-white}",
           "type": "color"
         },
         "disabled": {
@@ -302,7 +302,7 @@
       "border": {
         "inverse": {
           "strong": {
-            "value": "{950}",
+            "value": "{_unknown.color.950}",
             "type": "color"
           },
           "soft": {
@@ -371,7 +371,7 @@
             "value": "{traton.color.transparent.inverse.950}",
             "type": "color",
             "inverse": {
-              "value": "{950}",
+              "value": "{_unknown.color.950}",
               "type": "color"
             }
           },
@@ -422,7 +422,7 @@
             "type": "color"
           },
           "200": {
-            "value": "{850}",
+            "value": "{_unknown.color.850}",
             "type": "color"
           },
           "300": {
@@ -454,7 +454,7 @@
             "type": "color"
           },
           "1000": {
-            "value": "{150}",
+            "value": "{_unknown.color.150}",
             "type": "color"
           }
         }
@@ -564,11 +564,11 @@
         "type": "color"
       },
       "column-header-fill": {
-        "value": "{850}",
+        "value": "{_unknown.color.850}",
         "type": "color"
       },
       "pagination-fill": {
-        "value": "{850}",
+        "value": "{_unknown.color.850}",
         "type": "color"
       },
       "cell-fill-hover": {
@@ -712,7 +712,7 @@
     },
     "logo": {
       "Fill": {
-        "value": "{neutral-white}",
+        "value": "{_unknown.color.neutral-white}",
         "type": "color"
       },
       "TDS Right Logo": {
@@ -1029,14 +1029,14 @@
           "type": "color"
         },
         "focus": {
-          "value": "{850}",
+          "value": "{_unknown.color.850}",
           "type": "color"
         }
       }
     },
     "icon-test": {
       "Fill": {
-        "value": "{neutral-white}",
+        "value": "{_unknown.color.neutral-white}",
         "type": "color"
       },
       "Scania Icon": {
