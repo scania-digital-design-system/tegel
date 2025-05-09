@@ -5,7 +5,7 @@ import type { StorybookConfig } from '@storybook/html-vite';
 function loadStories() {
   // Gather all story files synchronously
   const storyFiles = glob.sync(
-    path.resolve(__dirname, '../src/**/*.@(stories.@(js|jsx|ts|tsx|mdx)|notes.mdx)'),
+    path.resolve(__dirname, '../src/**/*.@(stories.@(js|jsx|ts|tsx|mdx)|notes.mdx|mdx)'),
   );
 
   // If in development environment, return all story files
