@@ -5,26 +5,6 @@ import ScaniaThemeLight from '../.storybook-old/ScaniaThemeLight';
 import { addons } from 'storybook/internal/preview-api';
 import '../dist/tegel/tegel.css';
 
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: 'light',
-    toolbar: false,
-  },
-};
-
-const withTheme: Decorator = (StoryFn, context) => {
-  const theme = context.globals.theme || 'light';
-
-  document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
-  document.body.classList.add(`tds-mode-${theme}`);
-
-  return StoryFn();
-};
-
-export const decorators = [withTheme];
-
 const preview: Preview = {
   parameters: {
     docs: {
