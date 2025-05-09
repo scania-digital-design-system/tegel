@@ -1,0 +1,10 @@
+{
+  "tokenSetOrder": [
+    "primitives/default",
+    "usage/scania-light",
+    "usage/scania-dark",
+    "usage/traton-light",
+    "usage/traton-dark",
+    "component/default"
+  ]
+}
