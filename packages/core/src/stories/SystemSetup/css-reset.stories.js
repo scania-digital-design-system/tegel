@@ -1,5 +1,5 @@
 export default {
-  title: 'Intro/CSS Reset',
+  title: 'System Setup/CSS Reset',
   parameters: {
     docs: {
       description: {

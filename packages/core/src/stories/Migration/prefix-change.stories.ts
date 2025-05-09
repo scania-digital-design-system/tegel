@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Intro/Announcements',
+  title: 'Migration/Prefix Change',
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',

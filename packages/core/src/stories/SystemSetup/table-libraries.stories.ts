@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Intro/Announcements',
+  title: 'System Setup/Table Libraries',
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -71,7 +71,7 @@ export const TableLibraries = {
                     <ul>
                         <li>Tanstack is free to use and available on npm.</li>
                         <li>Tanstack is great for larger data sets and complex logic.</li>
-                        <li>There are many examples and documentation on how to use Tanstack, though not all features are available as examples in all supported frameworks on Tanstack’s official website at the time of writing this document.</li>
+                        <li>There are many examples and documentation on how to use Tanstack, though not all features are available as examples in all supported frameworks on Tanstack's official website at the time of writing this document.</li>
                         <li>Tanstack implementation requires intermediate programming knowledge.</li>
                     </ul>
                     <h5>What do I need to install to use Tegel & Tanstack?</h5>

@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Intro/Tegel Design System',
+  title: 'Introduction/Tegel Design System',
   parameters: {
     layout: 'fullscreen',
     options: {
@@ -59,7 +59,7 @@ export const TegelDesignSystem = {
                         <p>
                             This package is in <b>production</b> and ready for use. It's available via <tds-link><a href="https://www.npmjs.com/package/@scania/tegel">NPM</a></tds-link> and can be installed using the
                             installation
-                            guide which you can find <tds-link><a target="_self" href="?path=/story/intro-installation--javascript">here.</a></tds-link>
+                            guide which you can find <tds-link><a target="_self" href="?path=/story/installation-javascript--javascript">here.</a></tds-link>
                         </p>
 
                     </section>
@@ -173,7 +173,7 @@ export const TegelDesignSystem = {
 
 
                         <tds-link class="tds-u-mt2 tds-body-01">
-                            <a target="_self" href="?path=/story/intro-announcements--prefix-change">Read more here.</a>
+                            <a target="_self" href="?path=/story/migration-prefix-change--prefixchange">Read more here.</a>
                         </tds-link>
                         <p>
                             We are also working on a prefix change for our new package. Instead of "sdds" the components, CSS variables
@@ -209,8 +209,7 @@ export const TegelDesignSystem = {
                             and @scania/tegel. We hope that this will ease your migration to our new package. The migration document
                             will
                             continue to be updated until we release 1.0 and is available
-                            <tds-link><a target="_self"
-                                    href="?path=/story/intro-migrating-from-components-v4--page">here.</a></tds-link>
+                            <tds-link><a target="_self" href="?path=/story/migration-from-components-v4--migration">here.</a></tds-link>
                         </p>
                     </section>
                     <section>

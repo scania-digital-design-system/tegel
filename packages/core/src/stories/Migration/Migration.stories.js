@@ -1,5 +1,5 @@
 export default {
-  title: 'Intro/Migrating from components v4',
+  title: 'Migration/From Components v4',
   parameters: {
     docs: {
       description: {

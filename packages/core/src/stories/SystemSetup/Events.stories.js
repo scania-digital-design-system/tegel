@@ -1,5 +1,5 @@
 export default {
-  title: 'Intro/Events',
+  title: 'System Setup/Events',
   tags: ['!autodocs'],
   parameters: {
     docs: {

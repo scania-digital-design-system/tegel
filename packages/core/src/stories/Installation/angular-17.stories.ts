@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Intro/Installation',
+  title: 'Installation/Angular 17',
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
