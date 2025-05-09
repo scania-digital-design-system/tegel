@@ -5,9 +5,9 @@ const StyleDictionary = require('style-dictionary');
 
 module.exports = {
   source: [
-    'tokens/primitives/**/*.json',
-    'tokens/semantic/**/*.json',
-    'tokens/component/**/*.json',
+    'tokens-json/primitives/**/*.json',
+    'tokens-json/component/**/*.json',
+    'tokens-json/usage/**/*.json',
   ],
   platforms: {
     scss: {
