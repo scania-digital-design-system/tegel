@@ -15,15 +15,21 @@ function loadStories() {
     : storyFiles.filter((file: string | string[]) => !file.includes('/_beta/'));
 }
 
+let addons = [
+  '@storybook/addon-essentials',
+  '@storybook/addon-interactions',
+  '@storybook/addon-docs',
+  '@storybook/blocks',
+  'storybook-dark-mode',
+];
+
+if (process.env.STORYBOOK_ENV === 'dev') {
+  addons = [...addons, '@storybook/addon-designs'];
+}
+
 const config: StorybookConfig = {
   stories: loadStories(),
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-    '@storybook/addon-docs',
-    '@storybook/blocks',
-    'storybook-dark-mode',
-  ],
+  addons: addons,
   framework: {
     name: '@storybook/html-vite',
     options: {
