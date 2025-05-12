@@ -381,7 +381,8 @@
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build:storybook": "storybook build --quiet",
+    "build-stencil:storybook": "npm run build && npm run build:storybook"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
