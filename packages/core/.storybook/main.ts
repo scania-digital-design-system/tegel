@@ -24,7 +24,7 @@ let addons = [
 ];
 
 if (process.env.STORYBOOK_ENV === 'dev') {
-  addons = [...addons, '@storybook/addon-designs'];
+  addons = [...addons, '@storybook/addon-designs', '@storybook/addon-a11y'];
 }
 
 const config: StorybookConfig = {

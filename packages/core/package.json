@@ -386,7 +386,6 @@
   "dependencies": {
     "@popperjs/core": "2.11.8",
     "@stencil/core": "4.19.2",
-    "@storybook/addon-designs": "^8.2.1",
     "date-fns": "2.30.0",
     "vite": "^6.3.4"
   },
@@ -396,6 +395,10 @@
     "@stencil/angular-output-target": "0.8.4",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.4",
+    "storybook": "^8.6.12",
+    "storybook-dark-mode": "^4.0.2",
+    "@storybook/addon-a11y": "^8.6.12",
+    "@storybook/addon-designs": "^8.2.1",
     "@storybook/addon-docs": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-interactions": "^8.6.12",
@@ -414,9 +417,7 @@
     "markdown-to-jsx": "^7.7.6",
     "prettier": "2.7.1",
     "serve": "^14.2.4",
-    "stencil-playwright": "0.3.0",
-    "storybook": "^8.6.12",
-    "storybook-dark-mode": "^4.0.2"
+    "stencil-playwright": "0.3.0"
   },
   "license": "MIT"
 }
