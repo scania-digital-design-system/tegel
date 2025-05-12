@@ -48,7 +48,7 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 
 ### Setting up the development environment
 
-1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 20 at the time of writing).
+1. Make sure you are using the required node.js version specified in `tegel/package.json` (node 22 at the time of writing).
 2. Make sure you have Docker installed. It is needed for running unit tests.
 3. Run `npm install` in the root directory.
 4. Run `npm install` in the `packages/core` directory.
