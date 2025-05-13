@@ -10,6 +10,7 @@ import {
 } from 'ag-grid-community';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
+
 // Row Data Interface
 interface IRow {
   truckType: string;
@@ -29,7 +30,10 @@ const myTheme = themeQuartz.withParams({
   headerFontWeight: 700,
   headerTextColor: '#0D0F13',
   oddRowBackgroundColor: '#F9FAFB',
-  rowVerticalPaddingScale: 1.25,
+  rowHoverColor: '#E7E9EE',
+  rowVerticalPaddingScale: 1.28,
+  wrapperBorder: false,
+  wrapperBorderRadius: 4,
 });
 
 @Component({
@@ -108,11 +112,11 @@ export class TdsTableAgGrid {
   }
 
   render() {
-    console.log('HEJ 3: ', this.host.querySelector('#myGrid'));
-
     return (
-      <div>
-        <div id="myGrid" style={{ width: '90vw', height: '500px' }}></div>
+      <div
+      //   style={{ borderRadius: '10px 20px 30px 40px !important', backgroundColor: 'green' }}
+      >
+        <div id="myGrid" style={{ width: '90vw', height: '100vh' }}></div>
       </div>
     );
   }
