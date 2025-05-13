@@ -82,6 +82,12 @@ export class TdsModal {
     this.returnFocusOnClose();
   }
 
+  /** Returns the current open state of the Modal. */
+  @Method()
+  async isOpen(): Promise<boolean> {
+    return this.isShown;
+  }
+
   /** Emits when the Modal is closed. */
   @Event({
     eventName: 'tdsClose',
