@@ -400,7 +400,6 @@
     "storybook-dark-mode": "^4.0.2",
     "@storybook/addon-a11y": "^8.6.12",
     "@storybook/addon-designs": "^8.2.1",
-    "@storybook/addon-docs": "^8.6.12",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-interactions": "^8.6.12",
     "@storybook/addon-mdx-gfm": "^8.6.12",

@@ -18,7 +18,6 @@ function loadStories() {
 let addons = [
   '@storybook/addon-essentials',
   '@storybook/addon-interactions',
-  '@storybook/addon-docs',
   '@storybook/blocks',
   'storybook-dark-mode',
 ];
