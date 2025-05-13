@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Spinner',
   parameters: {
     layout: 'centered', // Center the component horizontally and vertically in the Canvas
-    notes: readme,
     design: [
       {
         name: 'Figma',

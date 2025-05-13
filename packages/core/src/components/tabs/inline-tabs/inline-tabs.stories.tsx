@@ -1,14 +1,8 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeTab from './inline-tab/readme.md';
 
 export default {
   title: 'Components/Tabs/Inline Tabs',
   parameters: {
-    notes: {
-      'Inline Tabs': readme,
-      'Inline Tab': readmeTab,
-    },
     design: [
       {
         name: 'Figma',

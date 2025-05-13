@@ -1,14 +1,8 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeItem from './folder-tab/readme.md';
 
 export default {
   title: 'Components/Tabs/Folder Tabs',
   parameters: {
-    notes: {
-      'Folder Tabs': readme,
-      'Folder Tab': readmeItem,
-    },
     backgrounds: { default: 'white' },
     design: [
       {

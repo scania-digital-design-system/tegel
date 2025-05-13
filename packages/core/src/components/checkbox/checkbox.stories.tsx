@@ -1,10 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Checkbox',
   parameters: {
-    notes: readme,
     layout: 'centered',
     design: [
       {

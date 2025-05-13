@@ -1,7 +1,7 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
+import formatHtmlPreview from '../../../formatHtmlPreview';
 
 export default {
-  title: 'Motions/Transitions/Zoom',
+  title: 'Foundations/Motion/Transitions/Zoom',
   tags: ['!autodocs'],
   parameters: {
     design: [

@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Divider',
   parameters: {
     layout: 'centered',
-    notes: { Divider: readme },
     design: [
       {
         name: 'Figma',

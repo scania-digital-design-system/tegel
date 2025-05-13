@@ -1,7 +1,7 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
+import formatHtmlPreview from '../../../formatHtmlPreview';
 
 export default {
-  title: 'Motions/Transitions/Fade',
+  title: 'Foundations/Motion/Transitions/Fade',
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',

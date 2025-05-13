@@ -1,12 +1,10 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from './iconsArray';
-import readme from './readme.md';
 
 export default {
-  title: 'Foundations/Icon',
+  title: 'Components/Icon',
   parameters: {
     layout: 'centered',
-    notes: readme,
     design: [
       {
         name: 'Figma',

@@ -1,7 +1,7 @@
-import formatHtmlPreview from '../../formatHtmlPreview';
+import formatHtmlPreview from '../../../formatHtmlPreview';
 
 export default {
-  title: 'Motions/Transitions/Other',
+  title: 'Foundations/Motion/Transitions/Other',
   tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',

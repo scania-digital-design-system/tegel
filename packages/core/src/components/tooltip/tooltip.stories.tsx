@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Tooltip',
   parameters: {
     layout: 'centered',
-    notes: readme,
     docs: {
       source: {
         state: 'closed',

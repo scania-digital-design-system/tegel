@@ -1,8 +1,22 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Slider',
+  parameters: {
+    layout: 'centered',
+    design: [
+      {
+        name: 'Figma',
+        type: 'figma',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11884%3A47370&t=Ne6myqwca5m00de7-1',
+      },
+      {
+        name: 'Link',
+        type: 'link',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=11884%3A47370&t=Ne6myqwca5m00de7-1',
+      },
+    ],
+  },
   argTypes: {
     min: {
       name: 'Min. value',
@@ -163,21 +177,6 @@ export default {
         defaultValue: { summary: false },
       },
     },
-  },
-  parameters: {
-    notes: readme,
-    design: [
-      {
-        name: 'Figma',
-        type: 'figma',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=9649%3A20759&t=Ne6myqwca5m00de7-1',
-      },
-      {
-        name: 'Link',
-        type: 'link',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=9649%3A20759&t=Ne6myqwca5m00de7-1',
-      },
-    ],
   },
   args: {
     min: '0',

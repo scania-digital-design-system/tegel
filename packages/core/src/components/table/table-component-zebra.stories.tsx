@@ -1,33 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import tdsTable from './table/readme.md';
-import tdsTableToolbar from './table-toolbar/readme.md';
-import tdsHeader from './table-header/readme.md';
-import tdsHeaderCell from './table-header-cell/readme.md';
-import tdsTableBody from './table-body/readme.md';
-import tdsBodyRow from './table-body-row/readme.md';
-import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
-import tdsBodyCell from './table-body-cell/readme.md';
-import tdsTableFooter from './table-footer/readme.md';
-import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
-import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
 
 export default {
   title: 'Components/Table/Zebra',
-  parameters: {
-    notes: {
-      'Table': tdsTable,
-      'Table Toolbar': tdsTableToolbar,
-      'Table Header': tdsHeader,
-      'Table Header Cell': tdsHeaderCell,
-      'Table Body': tdsTableBody,
-      'Table Body Row': tdsBodyRow,
-      'Table Body Row Expandable': tdsBodyRowExpandable,
-      'Table Body Cell': tdsBodyCell,
-      'Table Footer': tdsTableFooter,
-      'Table Body Input Wrapper': tdsTableBodyInputWrapper,
-      'Table Header Input Wrapper': tdsTableHeaderInputWrapper,
-    },
-  },
+
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
