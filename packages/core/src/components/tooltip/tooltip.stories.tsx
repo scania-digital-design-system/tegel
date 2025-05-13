@@ -1,5 +1,6 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { ComponentsFolder } from '../../utils/constants';
+import { processHtmlForScreenReader } from '../../utils/accessibility';
 import readme from './readme.md';
 
 export default {
@@ -140,8 +141,10 @@ const ComponentTooltip = ({
   slot,
   offsetDistance,
   offsetSkidding,
-}) =>
-  formatHtmlPreview(
+}) => {
+  const screenReaderText = processHtmlForScreenReader(slot);
+
+  return formatHtmlPreview(
     `
     <style>
     /* demo-wrapper is for demonstration purposes only*/
@@ -151,6 +154,15 @@ const ComponentTooltip = ({
        justify-content: center;
        align-items: center;
      }
+
+    .visually-hidden {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
     </style>
 
    <div class="demo-wrapper">
@@ -164,11 +176,19 @@ const ComponentTooltip = ({
       trigger="${trigger.toLowerCase()}">
       ${slot}
     </tds-tooltip>
-    
+    <div id="for-screen-reader-text" class="visually-hidden">
+      ${screenReaderText}
+    </div>
     <!-- Demo button for presentation purposes -->
-    <tds-button tds-aria-label="${text}" size= 'sm' id="my-tooltip-button" text='Hover me'></tds-button>
+    <tds-button 
+      aria-labelledby="for-screen-reader-text" 
+      size='sm' 
+      id="my-tooltip-button" 
+      text='Hover me'>
+    </tds-button>
    </div>
   `,
   );
+};
 
 export const Default = ComponentTooltip.bind({});
