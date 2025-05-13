@@ -52,7 +52,7 @@ export class TdsDatetime {
   @Prop() label: string = '';
 
   /** Position of the label */
-  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'outside';
+  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Helper text for the component */
   @Prop() helper: string = '';
