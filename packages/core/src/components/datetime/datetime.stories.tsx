@@ -123,7 +123,7 @@ export default {
       },
       options: ['No label', 'Inside', 'Outside'],
       table: {
-        defaultValue: { summary: 'outside' },
+        defaultValue: { summary: 'no-label' },
       },
     },
     helper: {
