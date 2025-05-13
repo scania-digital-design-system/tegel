@@ -26,12 +26,13 @@ const myTheme = themeQuartz.withParams({
   cellTextColor: '#0D0F13',
   fontFamily: 'inherit',
   headerBackgroundColor: '#DBDFE6',
+  headerFontFamily: ['Scania Sans Semi Condensed'],
   headerFontSize: 14,
   headerFontWeight: 700,
   headerTextColor: '#0D0F13',
   oddRowBackgroundColor: '#F9FAFB',
   rowHoverColor: '#E7E9EE',
-  rowVerticalPaddingScale: 1.28,
+  rowVerticalPaddingScale: 1.29,
   wrapperBorder: false,
   wrapperBorderRadius: 4,
 });
@@ -116,7 +117,7 @@ export class TdsTableAgGrid {
       <div
       //   style={{ borderRadius: '10px 20px 30px 40px !important', backgroundColor: 'green' }}
       >
-        <div id="myGrid" style={{ width: '90vw', height: '100vh' }}></div>
+        <div id="myGrid" style={{ width: '95vw', height: '100vh' }}></div>
       </div>
     );
   }
