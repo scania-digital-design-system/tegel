@@ -41,6 +41,12 @@ export class TdsAccordionItem {
     }
   }
 
+  /** Returns the expanded state of the Accordion Item. */
+  @Method()
+  async isExpanded(): Promise<boolean> {
+    return this.expanded;
+  }
+
   /** Fires when the Accordion Item is clicked, but before it is closed or opened. */
   @Event({
     eventName: 'tdsToggle',
