@@ -67,7 +67,7 @@ This pattern avoids rendering hidden content upfront, improves performance and g
         }
       })();
 
-      // Add event listeners for opening modal
+      // Add event listener for opening modal
       modal.addEventListener("tdsOpen", () => {
         console.log("Modal opened");
 
@@ -75,7 +75,7 @@ This pattern avoids rendering hidden content upfront, improves performance and g
         fetchAndRenderBody();
       });
 
-      // Add event listeners for closing modal
+      // Add event listener for closing modal
       modal.addEventListener("tdsClose", () => {
         console.log("Modal closed");
 
