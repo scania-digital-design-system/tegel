@@ -29,6 +29,99 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 </TdsModal>
 
 ```
+
+## Lazy Rendered Slot Content
+
+If you want to render the modal's content lazily (e.g. only when it is opened), `tds-modal` provides the following:
+
+- `tdsOpen` — an event emitted just before the modal opens
+- `tdsClose` — an event emitted when the modal closes
+- `isOpen()` — a method that returns the current open state as a `Promise<boolean>`
+
+These can be used to insert or remove slot content (e.g. `header`, `body`, or `actions`) on demand.
+This pattern avoids rendering hidden content upfront, improves performance and gives control over when and how modal content is loaded.
+
+### Vanilla JS Example:
+
+```html
+<tds-button id="open-modal" text="Open Modal"></tds-button>
+
+<tds-modal header="Lazy modal" selector="#open-modal" id="lazy-modal">
+  <span slot="actions">
+    <tds-button data-dismiss-modal text="Close" variant="primary"></tds-button>
+  </span>
+</tds-modal>
+
+    <script type="module">
+      import { defineCustomElements } from "@scania/tegel/loader";
+      defineCustomElements();
+
+      const modal = document.querySelector("tds-modal");
+
+      // Use the isOpen method to check if the modal is already open
+      (async () => {
+        await modal.componentOnReady();
+        const isOpen = await modal.isOpen();
+        if (isOpen) {
+          fetchAndRenderBody();
+        }
+      })();
+
+      // Add event listeners for opening modal
+      modal.addEventListener("tdsOpen", () => {
+        console.log("Modal opened");
+
+        // Fetch data and render it in the modal body
+        fetchAndRenderBody();
+      });
+
+      // Add event listeners for closing modal
+      modal.addEventListener("tdsClose", () => {
+        console.log("Modal closed");
+
+        // Remove the body content when the modal is closed
+        removeBodyContent();
+      });
+
+      function removeBodyContent() {
+        const bodyContent = modal.querySelector('[slot="body"]');
+        if (bodyContent) {
+          modal.removeChild(bodyContent);
+        }
+      }
+
+      async function fetchAndRenderBody() {
+        // Prevent multiple fetches if already rendered
+        if (modal.querySelector('[slot="body"]')) return;
+
+        const div = document.createElement("div");
+        div.slot = "body";
+        div.textContent = "Loading data...";
+        console.log("Loading data...");
+        modal.appendChild(div);
+
+        try {
+          const res = await fetch(
+            "https://jsonplaceholder.typicode.com/posts/1"
+            );
+            const data = await res.json();
+
+          // Add delay to simulate loading time
+          setTimeout(async () => {
+            div.innerHTML = `
+            <h3>${data.title}</h3>
+            <p>${data.body}</p>
+          `;
+          }, 1000);
+        } catch (error) {
+          div.textContent = "Failed to load content";
+          console.error("API Error:", error);
+        }
+      }
+    </script>
+```
+
+
 <!-- Auto Generated Below -->
 
 
@@ -49,9 +142,10 @@ use the `referenceEl` prop rather than the `selector` the referenced element can
 
 ## Events
 
-| Event      | Description                     | Type               |
-| ---------- | ------------------------------- | ------------------ |
-| `tdsClose` | Emits when the Modal is closed. | `CustomEvent<any>` |
+| Event      | Description                        | Type                |
+| ---------- | ---------------------------------- | ------------------- |
+| `tdsClose` | Emits when the Modal is closed.    | `CustomEvent<any>`  |
+| `tdsOpen`  | Emits just before Modal is opened. | `CustomEvent<void>` |
 
 
 ## Methods
@@ -83,6 +177,16 @@ Initializes or re-initializes the modal, setting up event listeners.
 #### Returns
 
 Type: `Promise<void>`
+
+
+
+### `isOpen() => Promise<boolean>`
+
+Returns the current open state of the Modal.
+
+#### Returns
+
+Type: `Promise<boolean>`
 
 
 
