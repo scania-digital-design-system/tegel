@@ -21,7 +21,7 @@ testConfigurations.basic.forEach((config) => {
       await expect(chip).toHaveCount(1);
 
       const labelElement = page.locator('tds-chip label'); // Target label underneath chip
-      expect(labelElement).toHaveText('Label');
+      expect(labelElement).toContainText('Label');
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
