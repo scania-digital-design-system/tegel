@@ -80,7 +80,12 @@ export class TdsAccordionItem {
                 <slot name="header"></slot>
               </div>
               <div class="tds-accordion-icon">
-                <tds-icon svgTitle="Chevron Down" name="chevron_down" size="16px"></tds-icon>
+                <tds-icon
+                  tdsAriaHidden
+                  svgTitle="Chevron Down"
+                  name="chevron_down"
+                  size="16px"
+                ></tds-icon>
               </div>
             </button>
           </div>
