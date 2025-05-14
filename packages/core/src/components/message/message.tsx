@@ -75,6 +75,7 @@ export class TdsMessage {
         >
           {!this.noIcon && (
             <tds-icon
+              aria-hidden="true"
               aria-label={`${this.variant}`}
               svgTitle={`${this.variant}`}
               name={this.getIconName()}
