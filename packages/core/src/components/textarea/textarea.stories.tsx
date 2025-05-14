@@ -1,10 +1,8 @@
-import readme from './readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
   title: 'Components/Textarea',
   parameters: {
-    notes: readme,
     layout: 'centered',
     design: [
       {

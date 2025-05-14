@@ -1,13 +1,11 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
-import readme from './readme.md';
 
 // FIXME: CMS: Change state to type in Code tab of component
 
 export default {
   title: 'Components/Banner',
   parameters: {
-    notes: readme,
     layout: 'fullscreen',
     design: [
       {

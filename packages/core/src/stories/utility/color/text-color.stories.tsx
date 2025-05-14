@@ -1,25 +1,30 @@
 import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
-  title: 'Utilities/Colors',
-  tags: ['!autodocs'],
+  title: 'Utilities/Text Color',
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Text color utilities allow you to apply colors from our color system to text elements. These utilities use the same color tokens defined in our color system.',
+      },
+    },
   },
   argTypes: {
     color: {
       name: 'Color',
-      description: 'The color of the text',
+      description: 'The color family to use (blue, red, or grey)',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: { Red: 'red', Blue: 'blue', Grey: 'grey' },
     },
     greyScale: {
-      name: 'Scale',
-      description: 'The color scale used.',
+      name: 'Grey Scale',
+      description: 'The grey color scale value to use',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: [
         '50',
@@ -39,19 +44,19 @@ export default {
       if: { arg: 'color', eq: 'grey' },
     },
     redScale: {
-      name: 'Scale',
-      description: 'The color scale used.',
+      name: 'Red Scale',
+      description: 'The red color scale value to use',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
       if: { arg: 'color', eq: 'red' },
     },
     blueScale: {
-      name: 'Scale',
-      description: 'The color scale used.',
+      name: 'Blue Scale',
+      description: 'The blue color scale value to use',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
       if: { arg: 'color', eq: 'blue' },
@@ -83,18 +88,21 @@ const Template = ({ color, greyScale, blueScale, redScale }) => {
   }
   return formatHtmlPreview(
     `
+    <!-- Style tag for demo purposes -->
   <style>
     .demo-wrapper h1 {
       margin: 0;
       width: 300px;
     }
   </style>
+
+  <!-- Demo code -->
   <div class="demo-wrapper">
-  <h1 class="tds-text-${color}-${scale}">A text ${color} heading</h1>
-  <p class="tds-text-${color}-${scale}">A text ${color} paragraph</p>
+    <h1 class="tds-text-${color}-${scale}">A text ${color} heading</h1>
+    <p class="tds-text-${color}-${scale}">A text ${color} paragraph</p>
   </div>
   `,
   );
 };
 
-export const TextColor = Template.bind({});
+export const Default = Template.bind({});

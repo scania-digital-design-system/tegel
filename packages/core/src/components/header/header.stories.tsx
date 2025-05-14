@@ -1,30 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeHamburger from './header-hamburger/readme.md';
-import readmeTitle from './header-title/readme.md';
-import readmeItem from './header-item/readme.md';
-import readmeDropdown from './header-dropdown/readme.md';
-import readmeDropdownList from './header-dropdown-list/readme.md';
-import readmeDropdownListItem from './header-dropdown-list-item/readme.md';
-import readmeDropdownListUser from './header-dropdown-list-user/readme.md';
-import readmeBrandSymbol from './header-brand-symbol/readme.md';
-import readmeLauncher from './header-launcher/readme.md';
 
 export default {
   title: 'Components/Header',
   parameters: {
-    notes: {
-      'Header': readme,
-      'Header hamburger': readmeHamburger,
-      'Header title': readmeTitle,
-      'Header item': readmeItem,
-      'Header dropdown': readmeDropdown,
-      'Header dropdown list': readmeDropdownList,
-      'Header dropdown list item': readmeDropdownListItem,
-      'Header dropdown list user': readmeDropdownListUser,
-      'Header launcher': readmeLauncher,
-      'Header brand symbol': readmeBrandSymbol,
-    },
     layout: 'fullscreen',
     docs: {
       source: {

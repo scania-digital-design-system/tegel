@@ -1,5 +1,4 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 import { iconsNames } from '../icon/iconsArray';
 
 //Reorder of iconsNames to have download and redirect first for UX reasons
@@ -12,7 +11,6 @@ const orderedIconsNames = [...iconsNames].sort((a, b) => {
 export default {
   title: 'Components/Link',
   parameters: {
-    notes: readme,
     layout: 'centered',
     design: [
       {

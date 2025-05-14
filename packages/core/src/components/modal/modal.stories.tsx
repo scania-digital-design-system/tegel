@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Modal',
   parameters: {
     layout: 'fullscreen',
-    notes: readme,
     design: [
       {
         name: 'Figma',

@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Popover Canvas',
   parameters: {
     layout: 'centered',
-    notes: readme,
   },
   argTypes: {
     canvasPosition: {

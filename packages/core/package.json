@@ -381,7 +381,8 @@
     "build-stencil:watch": "stencil build --docs-readme --watch",
     "commit": "npm run --prefix ../ commit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build:storybook": "storybook build --quiet",
+    "build-stencil:storybook": "npm run build && npm run build:storybook"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
@@ -395,7 +396,10 @@
     "@stencil/angular-output-target": "0.8.4",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.4",
-    "@storybook/addon-docs": "^8.6.12",
+    "storybook": "^8.6.12",
+    "storybook-dark-mode": "^4.0.2",
+    "@storybook/addon-a11y": "^8.6.12",
+    "@storybook/addon-designs": "^8.2.1",
     "@storybook/addon-essentials": "^8.6.12",
     "@storybook/addon-interactions": "^8.6.12",
     "@storybook/addon-mdx-gfm": "^8.6.12",
@@ -413,9 +417,7 @@
     "markdown-to-jsx": "^7.7.6",
     "prettier": "2.7.1",
     "serve": "^14.2.4",
-    "stencil-playwright": "0.3.0",
-    "storybook": "^8.6.12",
-    "storybook-dark-mode": "^4.0.2"
+    "stencil-playwright": "0.3.0"
   },
   "license": "MIT"
 }

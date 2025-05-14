@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Block',
   parameters: {
     layout: 'padded',
-    notes: readme,
     design: [
       {
         name: 'Figma',

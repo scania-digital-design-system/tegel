@@ -1,12 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeItem from './footer-item/readme.md';
-import readmeLinkGroup from './footer-group/readme.md';
 
 export default {
   title: 'Components/Footer',
   parameters: {
-    notes: { 'Footer': readme, 'Footer link group': readmeLinkGroup, 'Footer item': readmeItem },
     layout: 'fullscreen',
     design: [
       {

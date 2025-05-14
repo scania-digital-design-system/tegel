@@ -1,12 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import popoverMenuReadme from './readme.md';
-import popoverMenuItemReadme from './popover-menu-item/readme.md';
 
 export default {
   title: 'Components/Popover Menu',
   parameters: {
     layout: 'centered',
-    notes: { 'Popover Menu': popoverMenuReadme, 'Popover Menu Item': popoverMenuItemReadme },
     design: [
       {
         name: 'Figma',

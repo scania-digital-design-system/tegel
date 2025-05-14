@@ -1,12 +1,8 @@
 import formatHtmlPreview from '../../formatHtmlPreview';
-import readme from './readme.md';
 
 export default {
   title: 'Patterns/Navigation',
   parameters: {
-    notes: {
-      Readme: readme,
-    },
     layout: 'fullscreen',
     docs: {
       source: {

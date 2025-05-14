@@ -1,11 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Button',
   parameters: {
-    notes: readme,
     layout: 'padded',
     design: [
       {

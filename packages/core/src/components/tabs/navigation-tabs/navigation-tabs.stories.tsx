@@ -1,14 +1,8 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeTab from './navigation-tab/readme.md';
 
 export default {
   title: 'Components/Tabs/Navigation Tabs',
   parameters: {
-    notes: {
-      'Navigation Tabs': readme,
-      'Navigation Tab': readmeTab,
-    },
     design: [
       {
         name: 'Figma',

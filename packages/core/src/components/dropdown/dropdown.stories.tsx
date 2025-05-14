@@ -1,12 +1,9 @@
-import readme from './readme.md';
-import readmeDropdownOption from './dropdown-option/readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
   title: 'Components/Dropdown',
   parameters: {
     layout: 'centered',
-    notes: { 'Dropdown': readme, 'Dropdown option': readmeDropdownOption },
     design: [
       {
         name: 'Figma',
