@@ -58,7 +58,7 @@ test.describe.parallel(componentName, () => {
     await expect(label).toHaveText('Label text');
 
     await expect(helperText).toBeVisible();
-    await expect(helperText).toHaveText('Helper text');
+    await expect(helperText).toContainText('Helper text'); // Svg title also registers as text 
 
     await expect(dateTime).toHaveAttribute('size', 'md');
     await expect(dateTimeContainer).toHaveCSS('height', '48px');

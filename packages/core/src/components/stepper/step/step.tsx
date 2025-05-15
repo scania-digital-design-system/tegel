@@ -84,7 +84,9 @@ export class TdsStep {
                 size={this.size === 'lg' ? '20px' : '16px'}
               ></tds-icon>
             ) : (
-              <span class="index-container">{this.index}</span>
+              <span aria-hidden="true" class="index-container">
+                {this.index}
+              </span>
             )}
           </span>
           {!this.hideLabels && (

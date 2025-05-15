@@ -1,4 +1,5 @@
 import { Component, State, h, Prop, Listen, Event, EventEmitter, Method } from '@stencil/core';
+import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
   tag: 'tds-datetime',
@@ -38,8 +39,8 @@ export class TdsDatetime {
   /** Set the variant of the Datetime component. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  /** Name property */
-  @Prop() name = '';
+  /** Name property. Uses a unique ID as fallback if not specified. */
+  @Prop() name = `datetime-${generateUniqueId()}`;
 
   /** Error state of input */
   @Prop() state: string;
@@ -49,6 +50,9 @@ export class TdsDatetime {
 
   /** Label text for the component */
   @Prop() label: string = '';
+
+  /** Position of the label */
+  @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Helper text for the component */
   @Prop() helper: string = '';
@@ -144,7 +148,7 @@ export class TdsDatetime {
   }
 
   // Listener if input enters focus state
-  @Listen('focus')
+  @Listen('focusin')
   handleFocusIn() {
     this.focusInput = true;
   }
@@ -213,7 +217,11 @@ export class TdsDatetime {
       [`tds-form-datetime-${this.size}`]: ['md', 'sm'].includes(this.size),
       [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(this.state),
       [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
+      'tds-datetime-container-label-inside':
+        this.label && this.labelPosition === 'inside' && this.size !== 'sm',
     };
+
+    const iphone = navigator.userAgent.toLowerCase().includes('iphone');
 
     return (
       <div
@@ -228,7 +236,7 @@ export class TdsDatetime {
           }
         }}
       >
-        {this.label && (
+        {this.labelPosition === 'outside' && this.label && (
           <label htmlFor={this.name} class="tds-datetime-label">
             {this.label}
           </label>
@@ -247,11 +255,18 @@ export class TdsDatetime {
               max={this.max}
               autofocus={this.autofocus}
               name={this.name}
+              id={this.name}
               onInput={(e) => this.handleInput(e)}
               onBlur={(e) => this.handleBlur(e)}
               onChange={(e) => this.handleChange(e)}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
             />
+
+            {this.labelPosition === 'inside' && this.size !== 'sm' && this.label && (
+              <label class={`tds-datetime-label-inside ${iphone && 'iphone'}`} htmlFor={this.name}>
+                {this.label}
+              </label>
+            )}
 
             <div class="datetime-icon icon-datetime-local">
               <tds-icon size="20px" name="calendar" svgTitle="Calendar" />
@@ -267,7 +282,7 @@ export class TdsDatetime {
         {this.helper && (
           <div class="tds-datetime-helper">
             <div class="tds-helper">
-              {this.state === 'error' && <tds-icon name="error" size="16px" />}
+              {this.state === 'error' && <tds-icon name="error" size="16px" svgTitle="error" />}
               {this.helper}
             </div>
           </div>

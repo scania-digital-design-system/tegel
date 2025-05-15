@@ -221,7 +221,7 @@ export class TdsTextarea {
                 text="This field is non-editable"
                 selector="#readonly-tooltip"
               />
-              <tds-icon id="readonly-tooltip" name="edit_inactive" />
+              <tds-icon id="readonly-tooltip" name="edit_inactive" svgTitle="inactive" />
             </span>
           )}
         </div>
