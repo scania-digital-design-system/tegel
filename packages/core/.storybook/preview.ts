@@ -12,22 +12,27 @@ channel.on('DARK_MODE', (isDarkMode) => {
   document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
 });
 
+// DEV env for traton styles
+const isDev = import.meta.env.VITE_STORYBOOK_ENV === 'dev';
+
 // Toggle Brand
-const toggleBrandTool = {
-  brand: {
-    name: 'Brand',
-    description: 'Switch between Scania and Traton themes',
-    defaultValue: 'scania',
-    toolbar: {
-      icon: 'globe',
-      items: [
-        { value: 'scania', title: 'Scania' },
-        { value: 'traton', title: 'Traton' },
-      ],
-      showName: true,
-    },
-  },
-};
+const toggleBrandTool = isDev
+  ? {
+      brand: {
+        name: 'Brand',
+        description: 'Switch between Scania and Traton themes',
+        defaultValue: 'scania',
+        toolbar: {
+          icon: 'globe',
+          items: [
+            { value: 'scania', title: 'Scania' },
+            { value: 'traton', title: 'Traton' },
+          ],
+          showName: true,
+        },
+      },
+    }
+  : undefined;
 
 const toggleBrandDecorator: Decorator = (StoryFn, context) => {
   const brand = context.globals.brand || 'scania';
