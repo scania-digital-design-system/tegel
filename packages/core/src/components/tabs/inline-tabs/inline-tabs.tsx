@@ -41,6 +41,9 @@ export class TdsInlineTabs {
   /** Custom left padding value for the wrapper element. */
   @Prop({ reflect: true }) leftPadding: number = 32;
 
+  /** If true, the component will automatically initialize the tabs, otherwise the user needs to call the reinitialize method. */
+  @Prop() autoInit: boolean = true;
+
   @State() showLeftScroll: boolean = false;
 
   @State() showRightScroll: boolean = false;
@@ -191,6 +194,10 @@ export class TdsInlineTabs {
   }
 
   private initializeSelectedTab(): void {
+    if (!this.children || !this.children.length) {
+      console.warn('TdsInlineTabs: No children to select.');
+      return;
+    }
     if (this.selectedIndex === undefined) {
       this.addEventListenerToTabs();
       this.children[this.defaultSelectedIndex].setSelected(true);
@@ -219,16 +226,27 @@ export class TdsInlineTabs {
   }
 
   private handleSlotChange(): void {
-    this.initializeTabs();
-    this.addEventListenerToTabs();
-    this.initializeSelectedTab();
+    this.tryInitializeTabs();
     this.updateScrollButtons();
     this.addResizeObserver();
     this.applyCustomLeftPadding(); // Apply custom left padding to the wrapper
   }
 
-  connectedCallback(): void {
+  private tryInitializeTabs(): void {
+    this.children = Array.from(this.host.children) as Array<HTMLTdsInlineTabElement>;
+    if (!this.children.length) {
+      console.warn(
+        'TdsInlineTabs: No children found during initialization. Initialization delayed.',
+      );
+      return;
+    }
     this.initializeTabs();
+  }
+
+  connectedCallback(): void {
+    if (this.autoInit) {
+      this.tryInitializeTabs();
+    }
   }
 
   componentDidLoad(): void {
