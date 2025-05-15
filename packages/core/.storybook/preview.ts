@@ -1,10 +1,46 @@
 import { defineCustomElements } from '../loader';
-import type { Decorator, Preview } from '@storybook/html';
-import ScaniaThemeDark from '../.storybook-old/ScaniaThemeDark';
-import ScaniaThemeLight from '../.storybook-old/ScaniaThemeLight';
+import type { Preview, Decorator } from '@storybook/html';
 import { addons } from 'storybook/internal/preview-api';
 import '../dist/tegel/tegel.css';
+import './preview.css';
 
+// Dark mode listener
+const channel = addons.getChannel();
+
+channel.on('DARK_MODE', (isDarkMode) => {
+  document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
+  document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+});
+
+// Toggle Brand
+const toggleBrandTool = {
+  brand: {
+    name: 'Brand',
+    description: 'Switch between Scania and Traton themes',
+    defaultValue: 'scania',
+    toolbar: {
+      icon: 'globe',
+      items: [
+        { value: 'scania', title: 'Scania' },
+        { value: 'traton', title: 'Traton' },
+      ],
+      showName: true,
+    },
+  },
+};
+
+const toggleBrandDecorator: Decorator = (StoryFn, context) => {
+  const brand = context.globals.brand || 'scania';
+
+  const html = document.documentElement;
+
+  html.classList.remove('scania', 'traton');
+  html.classList.add(brand);
+
+  return StoryFn();
+};
+
+// Parameters
 const preview: Preview = {
   parameters: {
     docs: {
@@ -20,8 +56,6 @@ const preview: Preview = {
     },
     darkMode: {
       current: 'light',
-      light: ScaniaThemeLight,
-      dark: ScaniaThemeDark,
       darkClass: 'tds-mode-dark',
       lightClass: 'tds-mode-light',
     },
@@ -52,12 +86,8 @@ const preview: Preview = {
   tags: ['autodocs'],
 };
 
-const channel = addons.getChannel();
-
-channel.on('DARK_MODE', (isDarkMode) => {
-  document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
-  document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
-});
-export default preview;
-
 defineCustomElements();
+
+export const globalTypes = toggleBrandTool;
+export const decorators = [toggleBrandDecorator];
+export default preview;
