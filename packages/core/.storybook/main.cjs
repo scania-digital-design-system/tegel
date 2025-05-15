@@ -6,7 +6,7 @@ let addons = [
   '@storybook/addon-essentials',
   'storybook-dark-mode',
   '@storybook/addon-notes/register',
-   '@storybook/addon-docs',
+  '@storybook/addon-docs',
   'storybook-version',
 ];
 
@@ -20,9 +20,10 @@ function loadStories() {
 
   // If in development environment, return all story files
   // Otherwise, exclude stories from the _beta folder
+  // Also exclude all stories in the tegel-light folder
   return process.env.STORYBOOK_ENV === 'dev'
     ? storyFiles
-    : storyFiles.filter(file => !file.includes('/_beta/'));
+    : storyFiles.filter((file) => !file.includes('/_beta/') && !file.includes('/tegel-light/'));
 }
 
 module.exports = {

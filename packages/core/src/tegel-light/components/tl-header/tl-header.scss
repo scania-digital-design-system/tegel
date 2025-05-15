@@ -1,0 +1,45 @@
+@import './tl-header-vars';
+@import '../../../mixins/box-sizing';
+@import '../../../mixins/flex-center';
+@import '../../../mixins/z-index';
+
+// html,
+// :root {
+//   --tds-nav-dropdown-menu-box: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+//   --tds-nav-dropdown-item-border-radius: 0 0 4px 4px;
+//   --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
+// }
+
+// /* Base Header */
+.tl-header {
+  display: block;
+  height: var(--tds-header-height);
+  background-color: var(--tds-header-background);
+  width: 100%;
+  z-index: var(--tds-z-index-header);
+
+  &__nav {
+    @include tds-box-sizing;
+
+    background-color: var(--tds-header-background);
+    width: 100%;
+    display: block;
+  }
+
+  &__component-list {
+    all: unset;
+    height: var(--tds-header-height);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include tds-flex-center;
+  }
+
+  &__middle-spacer {
+    all: unset;
+    display: block;
+    flex-grow: 1;
+    height: var(--tds-header-height);
+    border-right: 1px solid var(--tds-header--basic-element-border);
+  }
+}

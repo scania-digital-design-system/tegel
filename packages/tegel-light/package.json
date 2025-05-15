@@ -1,0 +1,28 @@
+{
+  "name": "@scania/tegel-light",
+  "version": "1.0.0",
+  "description": "Styles-only library for Tegel Design System",
+  "keywords": [
+    "tegel",
+    "scania",
+    "design",
+    "system"
+  ],
+  "homepage": "https://tegel.scania.com",
+  "bugs": {
+    "url": "https://github.com/scania-digital-design-system/tegel/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scania-digital-design-system/tegel.git"
+  },
+  "style": "dist/global.css",
+  "exports": {},
+  "files": [
+    "dist/"
+  ],
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT"
+}
