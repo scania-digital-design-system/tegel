@@ -10,7 +10,7 @@ function loadStories() {
 
   // If in development environment, return all story files
   // Otherwise, exclude stories from the _beta folder
-  return process.env.STORYBOOK_ENV === 'dev'
+  return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
     : storyFiles.filter((file: string | string[]) => !file.includes('/_beta/'));
 }
@@ -22,7 +22,7 @@ let addons = [
   'storybook-dark-mode',
 ];
 
-if (process.env.STORYBOOK_ENV === 'dev') {
+if (process.env.VITE_STORYBOOK_ENV === 'dev') {
   addons = [...addons, '@storybook/addon-designs', '@storybook/addon-a11y'];
 }
 

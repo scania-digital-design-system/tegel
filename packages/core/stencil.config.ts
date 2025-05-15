@@ -4,14 +4,14 @@ import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-outpu
 import { reactOutputTarget } from '@stencil/react-output-target';
 
 function getTsConfigFile() {
-  if (process.env.STORYBOOK_ENV === 'dev') {
+  if (process.env.VITE_STORYBOOK_ENV === 'dev') {
     return 'tsconfig.dev.json';
   }
   return 'tsconfig.prod.json';
 }
 
 function getGlobalStyleFile() {
-  if (process.env.STORYBOOK_ENV === 'dev') {
+  if (process.env.VITE_STORYBOOK_ENV === 'dev') {
     return 'src/global/multibrand-development.scss';
   }
   return 'src/global/global.scss';
