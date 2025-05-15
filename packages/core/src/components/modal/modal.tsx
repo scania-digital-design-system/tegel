@@ -82,6 +82,12 @@ export class TdsModal {
     this.returnFocusOnClose();
   }
 
+  /** Returns the current open state of the Modal. */
+  @Method()
+  async isOpen(): Promise<boolean> {
+    return this.isShown;
+  }
+
   /** Emits when the Modal is closed. */
   @Event({
     eventName: 'tdsClose',
@@ -90,6 +96,15 @@ export class TdsModal {
     bubbles: true,
   })
   tdsClose: EventEmitter<any>;
+
+  /** Emits just before Modal is opened. */
+  @Event({
+    eventName: 'tdsOpen',
+    composed: true,
+    cancelable: true,
+    bubbles: true,
+  })
+  tdsOpen: EventEmitter<void>;
 
   connectedCallback() {
     if (this.closable === undefined) {
@@ -232,12 +247,17 @@ export class TdsModal {
     const closeEvent = this.tdsClose.emit(event);
     this.returnFocusOnClose();
 
-    if (!closeEvent.defaultPrevented) {
-      this.isShown = false;
+    if (closeEvent.defaultPrevented) {
+      return;
     }
+    this.isShown = false;
   };
 
-  handleShow = () => {
+  handleShow = (event) => {
+    const showEvent = this.tdsOpen.emit(event);
+    if (showEvent.defaultPrevented) {
+      return;
+    }
     this.isShown = true;
   };
 
@@ -257,7 +277,7 @@ export class TdsModal {
     if (this.isShown) {
       this.handleClose(event);
     } else {
-      this.handleShow();
+      this.handleShow(event);
     }
   };
 
