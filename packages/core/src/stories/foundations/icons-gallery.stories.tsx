@@ -40,7 +40,7 @@ const Template = () => {
       </tds-block>
   `,
   );
-  formatHtmlPreview(
+  return formatHtmlPreview(
     `
     <style>
         .grid-container {
