@@ -2,15 +2,15 @@
   "button": {
     "inline": {
       "gap": {
-        "value": "{_component.button.inline.gap}",
-        "type": "number"
+        "$type": "number",
+        "$value": "{_component.button.inline.gap}"
       }
     }
   },
   "header": {
     "background-01": {
-      "value": "#bbbbbb",
-      "type": "color"
+      "$type": "color",
+      "$value": "#bbbbbb"
     }
   }
 }
