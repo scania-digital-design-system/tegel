@@ -29,6 +29,7 @@ if (process.env.STORYBOOK_ENV === 'dev') {
 const config: StorybookConfig = {
   stories: loadStories(),
   addons: addons,
+  staticDirs: ['../public'],
   framework: {
     name: '@storybook/html-vite',
     options: {
