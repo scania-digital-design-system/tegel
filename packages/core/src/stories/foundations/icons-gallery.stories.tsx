@@ -1,5 +1,6 @@
 import formatHtmlPreview from '../formatHtmlPreview';
-import { iconsNames } from '../../components/icon/iconsArray';
+import { iconsNames as scaniaIconsNames } from '../../components/icon/scaniaIconsArray';
+import { iconsNames as tratonIconsNames } from '../../components/icon/tratonIconsArray';
 
 export default {
   title: 'Foundations/Icons Gallery',
@@ -9,16 +10,36 @@ export default {
   },
 };
 
-const icons = iconsNames.map(
-  (icon) => `
-    <tds-block mode-variant="primary" data-icon="${icon}">
-        <tds-icon name="${icon}" size="48"></tds-icon>
-        <p class="tds-detail-05">${icon}</p>
-    </tds-block>
-`,
-);
+// Brand mapping configuration
+const brandIconsMap = {
+  scania: scaniaIconsNames,
+  traton: tratonIconsNames,
+  // Add new brands here as needed
+};
 
-const Template = () =>
+// Get icons based on the closest brand class
+const getIconNames = () => {
+  // Get all brand classes from the mapping
+  const brandClasses = Object.keys(brandIconsMap);
+
+  // Find the first matching brand class
+  const brandClass = brandClasses.find((brand) => {
+    return document.querySelector(`.${brand}`);
+  });
+
+  // Return the corresponding icons or default to scania
+  return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
+};
+
+const Template = () => {
+  const icons = getIconNames().map(
+    (icon: string) => `
+      <tds-block mode-variant="primary" data-icon="${icon}">
+          <tds-icon name="${icon}" size="48"></tds-icon>
+          <p class="tds-detail-05">${icon}</p>
+      </tds-block>
+  `,
+  );
   formatHtmlPreview(
     `
     <style>
@@ -87,5 +108,6 @@ const Template = () =>
     </script>
     `,
   );
+};
 
 export const Default = Template.bind({});
