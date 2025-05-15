@@ -23,9 +23,7 @@ const getIconNames = () => {
   const brandClasses = Object.keys(brandIconsMap);
 
   // Find the first matching brand class
-  const brandClass = brandClasses.find((brand) => {
-    return document.querySelector(`.${brand}`);
-  });
+  const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
 
   // Return the corresponding icons or default to scania
   return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
