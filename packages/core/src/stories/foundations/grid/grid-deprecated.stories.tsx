@@ -2,6 +2,7 @@ import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Deprecated/Grid (Deprecated)',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
   },

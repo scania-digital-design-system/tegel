@@ -1,15 +1,8 @@
-import readme from './readme.md';
-import readmeItem from './folder-tab/readme.md';
-import { ComponentsFolder } from '../../../utils/constants';
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: `${ComponentsFolder}/Tabs`,
+  title: 'Components/Tabs/Folder Tabs',
   parameters: {
-    notes: {
-      'Folder Tabs': readme,
-      'Folder Tab': readmeItem,
-    },
     backgrounds: { default: 'white' },
     design: [
       {
@@ -112,4 +105,4 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex }) =>
     </script>
 `);
 
-export const FolderTabs = Template.bind({});
+export const Default = Template.bind({});

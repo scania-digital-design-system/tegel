@@ -1,11 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Toggle`,
+  title: 'Components/Toggle',
   parameters: {
-    notes: readme,
     layout: 'centered',
     design: [
       {
