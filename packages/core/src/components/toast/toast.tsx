@@ -123,7 +123,7 @@ export class TdsToast {
             wrapper
             ${this.variant}`}
         >
-          <tds-icon name={this.getIconName()} size="20px"></tds-icon>
+          <tds-icon name={this.getIconName()} size="20px" svgTitle={this.getIconName()}></tds-icon>
           <div class={`content`}>
             <div class="header-subheader">
               {this.header && <div class="header">{this.header}</div>}
@@ -149,7 +149,7 @@ export class TdsToast {
               onClick={this.handleClose}
               class="close"
             >
-              <tds-icon name="cross" size="20px"></tds-icon>
+              <tds-icon name="cross" size="20px" svgTitle="cross"></tds-icon>
             </button>
           )}
         </div>
