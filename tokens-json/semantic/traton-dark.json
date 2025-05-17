@@ -168,6 +168,166 @@
           "$type": "color",
           "$value": "{_unknown.color.150}"
         }
+      },
+      "base": {
+        "$type": "color",
+        "$value": "{traton.color.blue.1000}"
+      },
+      "accent": {
+        "primary": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.grey.300}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{traton.color.grey.900}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{traton.color.grey.200}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{traton.color.grey.400}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.grey.100}"
+          },
+          "inverse": {
+            "default": {
+              "$type": "color",
+              "$value": "{traton.color.blue.800}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{traton.color.blue.850}"
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{traton.color.blue.900}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{traton.color.blue.850}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{traton.color.blue.100}"
+            }
+          }
+        },
+        "danger": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.red.300}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{traton.color.red.400}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{traton.color.red.600}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.red.400}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{traton.color.red.900}"
+          }
+        }
+      },
+      "layer-01": {
+        "$type": "color",
+        "$value": "{traton.color.blue.950}"
+      },
+      "layer-02": {
+        "$type": "color",
+        "$value": "{traton.color.blue.900}"
+      },
+      "layer-03": {
+        "$type": "color",
+        "$value": "{traton.color.blue.850}"
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.scrim.dark}"
+      },
+      "inverse": {
+        "base": {
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
+        },
+        "layer-01": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
+        },
+        "layer-02": {
+          "$type": "color",
+          "$value": "{traton.color.blue.150}"
+        },
+        "layer-03": {
+          "$type": "color",
+          "$value": "{traton.color.blue.200}"
+        },
+        "top": {
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
+        },
+        "overlay": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.scrim.dark}"
+        }
+      },
+      "surface": {
+        "100": {
+          "$type": "color",
+          "$value": "{traton.color.blue.900}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{traton.color.blue.850}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{traton.color.blue.800}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{traton.color.blue.700}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{traton.color.blue.600}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{traton.color.blue.500}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{traton.color.blue.400}"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{traton.color.blue.300}"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{traton.color.blue.200}"
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "{traton.color.blue.150}"
+        }
+      },
+      "top": {
+        "$type": "color",
+        "$value": "{traton.color.blue.900}"
       }
     },
     "system": {
@@ -178,25 +338,41 @@
         },
         "subtle": {
           "$type": "color",
-          "$value": "{traton.color.yellow.800}"
+          "$value": "{traton.color.yellow.400}"
         },
         "strong": {
           "$type": "color",
           "$value": "{traton.color.yellow.100}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.800}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.200}"
         }
       },
       "success": {
         "default": {
           "$type": "color",
-          "$value": "{traton.color.green.extended.300}"
+          "$value": "{traton.color.green.300}"
         },
         "discrete": {
           "$type": "color",
-          "$value": "{traton.color.green.extended.850}"
+          "$value": "{traton.color.green.850}"
         },
         "strong": {
           "$type": "color",
-          "$value": "{traton.color.green.extended.50}"
+          "$value": "{traton.color.green.50}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.green.200}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.green.400}"
         }
       },
       "information": {
@@ -216,15 +392,45 @@
       "danger": {
         "default": {
           "$type": "color",
-          "$value": "{traton.color.red.extended.300}"
+          "$value": "{traton.color.red.300}"
         },
         "subtle": {
           "$type": "color",
-          "$value": "{traton.color.red.extended.850}"
+          "$value": "{traton.color.red.500}"
         },
         "strong": {
           "$type": "color",
-          "$value": "{traton.color.red.extended.50}"
+          "$value": "{traton.color.red.50}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.red.850}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.red.100}"
+        }
+      },
+      "info": {
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.blue.500}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.blue.850}"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.blue.600}"
         }
       }
     },
@@ -263,7 +469,7 @@
         "inverse": {
           "strong": {
             "$type": "color",
-            "$value": "{_unknown.color.950}"
+            "$value": "{traton.color.transparent.950}"
           },
           "soft": {
             "$type": "color",
@@ -284,6 +490,10 @@
           "supertype": {
             "$type": "color",
             "$value": "{_unknown.color.950}"
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.950}"
           }
         },
         "supertype": {
@@ -297,13 +507,35 @@
         "soft": {
           "$type": "color",
           "$value": "{traton.color.transparent.inverse.600}"
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.blue.400}"
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{traton.color.blue.50}"
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{traton.color.blue.500}"
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{traton.color.blue.150}"
+          }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-white}"
         }
       },
       "border": {
         "inverse": {
           "strong": {
             "$type": "color",
-            "$value": "{_unknown.color.950}"
+            "$value": "{traton.color.transparent.950}"
           },
           "soft": {
             "$type": "color",
@@ -363,6 +595,16 @@
         "disabled": {
           "$type": "color",
           "$value": "{traton.color.transparent.inverse.400}"
+        },
+        "accent": {
+          "link": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.300}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.400}"
+          }
         }
       },
       "elements": {
@@ -458,6 +700,76 @@
             "$value": "{_unknown.color.150}"
           }
         }
+      },
+      "icon": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.950}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.700}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.600}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.500}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.200}"
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.950}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.700}"
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.600}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.500}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.400}"
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.200}"
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.blue.400}"
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{traton.color.blue.150}"
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{traton.color.blue.50}"
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{traton.color.blue.500}"
+          }
+        }
       }
     },
     "brand": {
@@ -516,43 +828,53 @@
       "secondary": {
         "50": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.50}"
+          "$value": "{traton.color.yellow.50}"
         },
         "100": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.100}"
+          "$value": "{traton.color.yellow.100}"
         },
         "200": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.200}"
+          "$value": "{traton.color.yellow.200}"
         },
         "300": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.300}"
+          "$value": "{traton.color.yellow.300}"
         },
         "400": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.400}"
+          "$value": "{traton.color.yellow.400}"
         },
         "500": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.500}"
+          "$value": "{traton.color.yellow.500}"
         },
         "600": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.600}"
+          "$value": "{traton.color.yellow.600}"
         },
         "700": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.700}"
+          "$value": "{traton.color.yellow.700}"
         },
         "800": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.800}"
+          "$value": "{traton.color.yellow.800}"
         },
         "900": {
           "$type": "color",
-          "$value": "{scania.color.yellow.extended.900}"
+          "$value": "{traton.color.yellow.900}"
+        }
+      },
+      "neutral": {
+        "white": {
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-white}"
+        },
+        "black": {
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-black}"
         }
       }
     }
@@ -1394,5 +1716,1235 @@
   "btn-radius": {
     "$type": "number",
     "$value": 200
+  },
+  "overrides": {
+    "🔴  table": {
+      "primary": {
+        "header": {
+          "$type": "color",
+          "$value": "{color.background.surface.400}"
+        },
+        "column-header": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        },
+        "pagination": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        },
+        "cell-hover": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        },
+        "cell": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{color.foreground.border.discrete}"
+        }
+      },
+      "secondary": {
+        "cell": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "header": {
+          "$type": "color",
+          "$value": "{color.background.surface.400}"
+        },
+        "column-header": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        },
+        "pagination": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        },
+        "cell-hover": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        },
+        "border": {
+          "$type": "color",
+          "$value": "{color.foreground.border.discrete}"
+        }
+      }
+    },
+    "chip": {
+      "color": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        },
+        "focused": {
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.surface.500}"
+        },
+        "selected": {
+          "$type": "color",
+          "$value": "{color.background.surface.700}"
+        },
+        "focused on selected": {
+          "$type": "color",
+          "$value": "{color.background.surface.700}"
+        },
+        "hover on seleted": {
+          "$type": "color",
+          "$value": "{color.background.surface.800}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        },
+        "disabled selected": {
+          "$type": "color",
+          "$value": "{color.background.surface.600}"
+        }
+      },
+      "foreground": {
+        "inverse": {
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.strong}"
+        },
+        "foreground disabled selected": {
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.subtle}"
+        }
+      },
+      "border": {
+        "selected focus border": {
+          "$type": "color",
+          "$value": "{color.foreground.border.accent.focus}"
+        }
+      }
+    },
+    "shadow": {
+      "base-modifier": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "dragged": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      }
+    },
+    "🔴🔵 header": {
+      "color": {
+        "expressive mobile menu": {
+          "primary": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}"
+          },
+          "selected expressive": {
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}"
+          }
+        },
+        "background": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.light}",
+          "border": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
+          },
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
+          }
+        },
+        "foreground": {
+          "strong": {
+            "$type": "color",
+            "$value": "{color.foreground.icon.strong}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{color.foreground.icon.strong}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{color.foreground.icon.defined}"
+          }
+        }
+      },
+      "dropdown": {
+        "list item": {
+          "hover": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
+          }
+        }
+      },
+      "typography": {
+        "application name": {
+          "$type": "text",
+          "$value": "medium"
+        },
+        "line height": {
+          "$type": "number",
+          "$value": 16
+        },
+        "kerning": {
+          "$type": "number",
+          "$value": 0
+        },
+        "line height with logo": {
+          "$type": "number",
+          "$value": 10
+        }
+      }
+    },
+    "logo": {
+      "Fill": {
+        "$type": "color",
+        "$value": "{traton.color.base.neutral-white}"
+      },
+      "TDS Right Logo": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "TRA Right Logo": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "TDS Left Logo": {
+        "$type": "boolean",
+        "$value": "false"
+      },
+      "TRA Left Logo": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "Footer Right Logo": {
+        "$type": "boolean",
+        "$value": "true"
+      },
+      "Wordmark": {
+        "$type": "text",
+        "$value": "Traton"
+      }
+    },
+    "button": {
+      "primary-text": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.black}"
+      },
+      "primary-text inverse": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      }
+    },
+    "🔴🔵 side menu": {
+      "states": {
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.blue.1000}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{traton.color.blue.950}"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{traton.color.blue.900}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{traton.color.blue.1000}"
+        },
+        "selected": {
+          "$type": "color",
+          "$value": "{traton.color.blue.950}"
+        }
+      },
+      "dividers": {
+        "default": {
+          "$type": "color",
+          "$value": "#00121400"
+        }
+      },
+      "icons": {
+        "icon size": {
+          "$type": "number",
+          "$value": "{scania.unit.16}"
+        },
+        "close icon size": {
+          "$type": "number",
+          "$value": "{scania.unit.20}"
+        }
+      },
+      "padding": {
+        "sub menu item": {
+          "top and bottom": {
+            "$type": "number",
+            "$value": "{scania.unit.8}"
+          },
+          "left": {
+            "$type": "number",
+            "$value": "{scania.unit.12}"
+          },
+          "chevron right padding": {
+            "$type": "number",
+            "$value": 12
+          },
+          "profile": {
+            "left": {
+              "$type": "number",
+              "$value": "{scania.unit.4}"
+            },
+            "gap": {
+              "$type": "number",
+              "$value": "{scania.unit.12}"
+            },
+            "top + bottom": {
+              "$type": "number",
+              "$value": "{scania.unit.4}"
+            }
+          },
+          "selected marker height": {
+            "$type": "number",
+            "$value": 40
+          }
+        },
+        "top level": {
+          "left": {
+            "$type": "number",
+            "$value": "{scania.unit.16}"
+          },
+          "horizontal gap padding": {
+            "$type": "number",
+            "$value": "{scania.unit.4}"
+          },
+          "top": {
+            "$type": "number",
+            "$value": 14
+          },
+          "bottom collapsible": {
+            "$type": "number",
+            "$value": 16
+          }
+        },
+        "collapsed item": {
+          "left + right inner icon padding": {
+            "$type": "number",
+            "$value": 12
+          },
+          "top + bottom inner icon padding": {
+            "$type": "number",
+            "$value": 12
+          }
+        },
+        "sub page": {
+          "top + bottom": {
+            "$type": "number",
+            "$value": 8
+          },
+          "left with icon": {
+            "$type": "number",
+            "$value": 40
+          },
+          "left no icon": {
+            "$type": "number",
+            "$value": 14
+          },
+          "left profile": {
+            "$type": "number",
+            "$value": 48
+          },
+          "top group": {
+            "$type": "number",
+            "$value": 4
+          },
+          "selected marker height": {
+            "$type": "number",
+            "$value": 34
+          },
+          "selected marker width": {
+            "$type": "number",
+            "$value": 8
+          }
+        }
+      },
+      "radius": {
+        "corner radius": {
+          "$type": "number",
+          "$value": "{scania.unit.8}"
+        }
+      }
+    },
+    "badge": {
+      "background": {
+        "$type": "color",
+        "$value": "{traton.color.yellow.300}"
+      },
+      "text": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.black}"
+      }
+    },
+    "card": {
+      "background": {
+        "primary": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        },
+        "secondary": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
+        }
+      },
+      "padding": {
+        "$type": "number",
+        "$value": "{traton.unit.0}"
+      }
+    },
+    "spinner": {
+      "color": {
+        "$type": "color",
+        "$value": "{traton.color.grey.300}"
+      }
+    },
+    "🔵  input-field": {
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.foreground.border.soft}"
+        },
+        "width": {
+          "top": {
+            "$type": "number",
+            "$value": 1
+          },
+          "right": {
+            "$type": "number",
+            "$value": 1
+          },
+          "bottom": {
+            "$type": "number",
+            "$value": 1
+          },
+          "left": {
+            "$type": "number",
+            "$value": 1
+          }
+        },
+        "focus": {
+          "top": {
+            "$type": "number",
+            "$value": 2
+          },
+          "right": {
+            "$type": "number",
+            "$value": 2
+          },
+          "bottom": {
+            "$type": "number",
+            "$value": 2
+          },
+          "left": {
+            "$type": "number",
+            "$value": 2
+          }
+        }
+      },
+      "radius": {
+        "top-left": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        },
+        "top-right": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        },
+        "bottom-left": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        },
+        "bottom-right": {
+          "$type": "number",
+          "$value": "{scania.unit.4}"
+        }
+      }
+    },
+    "footer": {
+      "copyright": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.inverse.600}"
+      },
+      "link text": {
+        "$type": "color",
+        "$value": "{color.foreground.text.strong}"
+      }
+    },
+    "dropdown": {
+      "list item": {
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        },
+        "secondary": {
+          "hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-03}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
+          }
+        }
+      }
+    },
+    "stepper": {
+      "success": {
+        "$type": "color",
+        "$value": "{color.system.success.default}"
+      }
+    }
+  },
+  "text": {
+    "display": {
+      "01": {
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 1.08
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 216
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 227
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 156
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 164
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.78
+        }
+      },
+      "03": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 112
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 118
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.56
+        }
+      },
+      "04": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 80
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 84
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.4
+        }
+      },
+      "05": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 56
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 59
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0.28
+        }
+      }
+    },
+    "headline": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 40
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 42
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 32
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 40
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "03": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 24
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 30
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "04": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 20
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 25
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "05": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.semi bold}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 16
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 22
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "06": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.semi bold}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 14
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      }
+    },
+    "paragraph": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 24
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 30
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.medium}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 20
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 25
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      }
+    },
+    "body": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 16
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 22
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 14
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      }
+    },
+    "component": {
+      "text": {
+        "01": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 16
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 20
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          }
+        }
+      },
+      "label": {
+        "01": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 12
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 17
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
+          },
+          "transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.medium}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 10
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 14
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          }
+        }
+      },
+      "title": {
+        "01": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.semi bold}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 14
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 18
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "number",
+            "$value": "{traton.font.weight.semi bold}"
+          },
+          "font-size": {
+            "$type": "number",
+            "$value": 10
+          },
+          "line-height": {
+            "$type": "number",
+            "$value": 14
+          },
+          "letter-spacing": {
+            "$type": "number",
+            "$value": 0.4
+          }
+        }
+      }
+    },
+    "link": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 16
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 22
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "number",
+          "$value": "{traton.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "number",
+          "$value": 14
+        },
+        "line-height": {
+          "$type": "number",
+          "$value": 20
+        },
+        "letter-spacing": {
+          "$type": "number",
+          "$value": 0
+        }
+      }
+    }
+  },
+  "dimension": {
+    "space": {
+      "tiny": {
+        "$type": "number",
+        "$value": "{scania.unit.4}"
+      },
+      "small": {
+        "$type": "number",
+        "$value": "{scania.unit.16}"
+      },
+      "medium": {
+        "$type": "number",
+        "$value": "{scania.unit.24}"
+      },
+      "large": {
+        "$type": "number",
+        "$value": "{scania.unit.48}"
+      },
+      "huge": {
+        "$type": "number",
+        "$value": "{scania.unit.80}"
+      }
+    },
+    "radius": {
+      "for-surface": {
+        "clickable": {
+          "$type": "number",
+          "$value": 100
+        },
+        "field": {
+          "$type": "number",
+          "$value": 2
+        },
+        "inverse": {
+          "$type": "number",
+          "$value": 2
+        }
+      },
+      "narrow": {
+        "$type": "number",
+        "$value": "{traton.unit.4}"
+      },
+      "soft": {
+        "$type": "number",
+        "$value": "{traton.unit.8}"
+      },
+      "rounded": {
+        "$type": "number",
+        "$value": "{traton.unit.32}"
+      },
+      "circle": {
+        "$type": "number",
+        "$value": 500
+      },
+      "for-area": {
+        "large area": {
+          "$type": "number",
+          "$value": 8
+        },
+        "small": {
+          "$type": "number",
+          "$value": 4
+        }
+      },
+      "focus-width": {
+        "$type": "number",
+        "$value": 4
+      }
+    }
   }
 }
