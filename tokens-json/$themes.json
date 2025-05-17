@@ -3,7 +3,12 @@
     "id": "usage-traton light",
     "name": "traton light",
     "group": "usage",
-    "selectedTokenSets": {},
+    "selectedTokenSets": {
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
+    },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "background.elevation.base": "e8fc38ee13b752bcbce593baf5342e0562e04e87",
@@ -395,7 +400,12 @@
     "id": "usage-traton dark",
     "name": "traton dark",
     "group": "usage",
-    "selectedTokenSets": {},
+    "selectedTokenSets": {
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
+    },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "background.elevation.base": "e8fc38ee13b752bcbce593baf5342e0562e04e87",
@@ -787,7 +797,12 @@
     "id": "usage-scania dark",
     "name": "scania dark",
     "group": "usage",
-    "selectedTokenSets": {},
+    "selectedTokenSets": {
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
+    },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "background.elevation.base": "e8fc38ee13b752bcbce593baf5342e0562e04e87",
@@ -1180,7 +1195,11 @@
     "name": "default",
     "group": "primitives",
     "selectedTokenSets": {
-      "primitives/default": "enabled"
+      "primitives/default": "enabled",
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -1445,7 +1464,10 @@
     "name": "traton-light",
     "group": "usage",
     "selectedTokenSets": {
-      "usage/traton-light": "enabled"
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "enabled",
+      "semantic/traton-dark": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -1767,7 +1789,10 @@
     "name": "traton-dark",
     "group": "usage",
     "selectedTokenSets": {
-      "usage/traton-dark": "enabled"
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "enabled"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -2089,7 +2114,10 @@
     "name": "scania-light",
     "group": "usage",
     "selectedTokenSets": {
-      "usage/scania-light": "enabled"
+      "semantic/scania-light": "enabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -2411,7 +2439,10 @@
     "name": "scania-dark",
     "group": "usage",
     "selectedTokenSets": {
-      "usage/scania-dark": "enabled"
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "enabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -2733,7 +2764,11 @@
     "name": "default",
     "group": "component",
     "selectedTokenSets": {
-      "component/default": "enabled"
+      "component/default": "enabled",
+      "semantic/scania-light": "disabled",
+      "semantic/scania-dark": "disabled",
+      "semantic/traton-light": "disabled",
+      "semantic/traton-dark": "disabled"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
