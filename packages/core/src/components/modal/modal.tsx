@@ -253,8 +253,8 @@ export class TdsModal {
     this.isShown = false;
   };
 
-  handleShow = (event) => {
-    const showEvent = this.tdsOpen.emit(event);
+  handleShow = () => {
+    const showEvent = this.tdsOpen.emit();
     if (showEvent.defaultPrevented) {
       return;
     }
@@ -277,7 +277,7 @@ export class TdsModal {
     if (this.isShown) {
       this.handleClose(event);
     } else {
-      this.handleShow(event);
+      this.handleShow();
     }
   };
 
