@@ -243,7 +243,7 @@ export class TdsModal {
     nextElement.focus();
   }
 
-  handleClose = (event) => {
+  handleClose = (event: Event) => {
     const closeEvent = this.tdsClose.emit(event);
     this.returnFocusOnClose();
 
@@ -273,7 +273,7 @@ export class TdsModal {
     }
   };
 
-  handleReferenceElementClick = (event) => {
+  handleReferenceElementClick = (event: PointerEvent) => {
     if (this.isShown) {
       this.handleClose(event);
     } else {
@@ -334,7 +334,7 @@ export class TdsModal {
               <button
                 class="tds-modal-close"
                 aria-label="close"
-                onClick={(event) => this.handleClose(event)}
+                onClick={(event: PointerEvent) => this.handleClose(event)}
               >
                 <tds-icon name="cross" size="20px" />
               </button>
