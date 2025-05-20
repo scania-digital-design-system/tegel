@@ -4708,9 +4708,7 @@
     "id": "component-traton-light",
     "name": "traton-light",
     "group": "component",
-    "selectedTokenSets": {
-      "component/traton-light": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
@@ -4732,9 +4730,7 @@
     "id": "component-traton-dark",
     "name": "traton-dark",
     "group": "component",
-    "selectedTokenSets": {
-      "component/traton-dark": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
@@ -4756,9 +4752,7 @@
     "id": "component-scania-light",
     "name": "scania-light",
     "group": "component",
-    "selectedTokenSets": {
-      "component/scania-light": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
@@ -4780,9 +4774,7 @@
     "id": "component-scania-dark",
     "name": "scania-dark",
     "group": "component",
-    "selectedTokenSets": {
-      "component/scania-dark": "enabled"
-    },
+    "selectedTokenSets": {},
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
       "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
