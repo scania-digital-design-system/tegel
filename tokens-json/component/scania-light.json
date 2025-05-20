@@ -1,0 +1,48 @@
+{
+  "shadow": {
+    "dragged": {
+      "$type": "color",
+      "$value": "{scania.color.transparent.shadow.200}"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "{scania.color.transparent.shadow.250}"
+    },
+    "pressed": {
+      "$type": "color",
+      "$value": "{scania.color.transparent.shadow.250}"
+    },
+    "focus": {
+      "$type": "color",
+      "$value": "{scania.color.transparent.shadow.350}"
+    },
+    "default": {
+      "$type": "color",
+      "$value": "{scania.color.transparent.shadow.150}"
+    },
+    "base-modifier": {
+      "$type": "color",
+      "$value": "{scania.color.transparent.shadow.100}"
+    }
+  },
+  "cell 2": {
+    "$type": "color",
+    "$value": "{color.background.layer-02}"
+  },
+  "dropdown": {
+    "$type": "color",
+    "$value": "{color.background.base}"
+  },
+  "base": {
+    "$type": "color",
+    "$value": "{color.background.surface.200}"
+  },
+  "cell-hover": {
+    "$type": "color",
+    "$value": "{color.background.surface.100}"
+  },
+  "cell": {
+    "$type": "color",
+    "$value": "{color.background.layer-01}"
+  }
+}

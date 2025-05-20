@@ -5,6 +5,10 @@
     "semantic/scania-dark",
     "semantic/traton-light",
     "semantic/traton-dark",
-    "component/default"
+    "component/default",
+    "component/traton-light",
+    "component/traton-dark",
+    "component/scania-light",
+    "component/scania-dark"
   ]
 }

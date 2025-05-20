@@ -4703,5 +4703,101 @@
     },
     "$figmaModeId": "13176:2",
     "$figmaCollectionId": "VariableCollectionId:13176:83410"
+  },
+  {
+    "id": "component-traton-light",
+    "name": "traton-light",
+    "group": "component",
+    "selectedTokenSets": {
+      "component/traton-light": "enabled"
+    },
+    "$figmaStyleReferences": {},
+    "$figmaVariableReferences": {
+      "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
+      "shadow.hover": "5d55064534191033868468e14a587434ff34e3f8",
+      "shadow.pressed": "b6485212b31e70b265458460bb290f788aae7503",
+      "shadow.focus": "2d015852853a12c1aeae98fec4608c2848a240b1",
+      "shadow.default": "6dbb6df2cb682cd0ecb98d881db1b870f34eff8d",
+      "shadow.base-modifier": "fd2dadde7ac88cb1556192564be2fe3d0d6a30c1",
+      "cell 2": "e43c42ea8230a7c255d00d26a775ffc8e56f7613",
+      "dropdown": "80e6a0930f0e6cc4287828de530e0c525e64f588",
+      "base": "50ab1382e962ac3eae1f498ed9439a945dcd9caf",
+      "cell-hover": "4fce6d299a9d196333fe766802e9338e39d62a6d",
+      "cell": "2a4454eb1d5aa1e6f61db739a6a6180cb857f542"
+    },
+    "$figmaModeId": "13176:2",
+    "$figmaCollectionId": "VariableCollectionId:13176:83410"
+  },
+  {
+    "id": "component-traton-dark",
+    "name": "traton-dark",
+    "group": "component",
+    "selectedTokenSets": {
+      "component/traton-dark": "enabled"
+    },
+    "$figmaStyleReferences": {},
+    "$figmaVariableReferences": {
+      "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
+      "shadow.hover": "5d55064534191033868468e14a587434ff34e3f8",
+      "shadow.pressed": "b6485212b31e70b265458460bb290f788aae7503",
+      "shadow.focus": "2d015852853a12c1aeae98fec4608c2848a240b1",
+      "shadow.default": "6dbb6df2cb682cd0ecb98d881db1b870f34eff8d",
+      "shadow.base-modifier": "fd2dadde7ac88cb1556192564be2fe3d0d6a30c1",
+      "cell 2": "e43c42ea8230a7c255d00d26a775ffc8e56f7613",
+      "dropdown": "80e6a0930f0e6cc4287828de530e0c525e64f588",
+      "base": "50ab1382e962ac3eae1f498ed9439a945dcd9caf",
+      "cell-hover": "4fce6d299a9d196333fe766802e9338e39d62a6d",
+      "cell": "2a4454eb1d5aa1e6f61db739a6a6180cb857f542"
+    },
+    "$figmaModeId": "14039:0",
+    "$figmaCollectionId": "VariableCollectionId:13176:83410"
+  },
+  {
+    "id": "component-scania-light",
+    "name": "scania-light",
+    "group": "component",
+    "selectedTokenSets": {
+      "component/scania-light": "enabled"
+    },
+    "$figmaStyleReferences": {},
+    "$figmaVariableReferences": {
+      "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
+      "shadow.hover": "5d55064534191033868468e14a587434ff34e3f8",
+      "shadow.pressed": "b6485212b31e70b265458460bb290f788aae7503",
+      "shadow.focus": "2d015852853a12c1aeae98fec4608c2848a240b1",
+      "shadow.default": "6dbb6df2cb682cd0ecb98d881db1b870f34eff8d",
+      "shadow.base-modifier": "fd2dadde7ac88cb1556192564be2fe3d0d6a30c1",
+      "cell 2": "e43c42ea8230a7c255d00d26a775ffc8e56f7613",
+      "dropdown": "80e6a0930f0e6cc4287828de530e0c525e64f588",
+      "base": "50ab1382e962ac3eae1f498ed9439a945dcd9caf",
+      "cell-hover": "4fce6d299a9d196333fe766802e9338e39d62a6d",
+      "cell": "2a4454eb1d5aa1e6f61db739a6a6180cb857f542"
+    },
+    "$figmaModeId": "14039:1",
+    "$figmaCollectionId": "VariableCollectionId:13176:83410"
+  },
+  {
+    "id": "component-scania-dark",
+    "name": "scania-dark",
+    "group": "component",
+    "selectedTokenSets": {
+      "component/scania-dark": "enabled"
+    },
+    "$figmaStyleReferences": {},
+    "$figmaVariableReferences": {
+      "shadow.dragged": "f5223ec6303f9611da77d806037ec0e211cba62c",
+      "shadow.hover": "5d55064534191033868468e14a587434ff34e3f8",
+      "shadow.pressed": "b6485212b31e70b265458460bb290f788aae7503",
+      "shadow.focus": "2d015852853a12c1aeae98fec4608c2848a240b1",
+      "shadow.default": "6dbb6df2cb682cd0ecb98d881db1b870f34eff8d",
+      "shadow.base-modifier": "fd2dadde7ac88cb1556192564be2fe3d0d6a30c1",
+      "cell 2": "e43c42ea8230a7c255d00d26a775ffc8e56f7613",
+      "dropdown": "80e6a0930f0e6cc4287828de530e0c525e64f588",
+      "base": "50ab1382e962ac3eae1f498ed9439a945dcd9caf",
+      "cell-hover": "4fce6d299a9d196333fe766802e9338e39d62a6d",
+      "cell": "2a4454eb1d5aa1e6f61db739a6a6180cb857f542"
+    },
+    "$figmaModeId": "14039:2",
+    "$figmaCollectionId": "VariableCollectionId:13176:83410"
   }
 ]

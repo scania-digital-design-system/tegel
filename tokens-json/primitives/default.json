@@ -502,76 +502,76 @@
     },
     "unit": {
       "0": {
-        "$type": "number",
-        "$value": 0
+        "$type": "dimension",
+        "$value": "0px"
       },
       "1": {
-        "$type": "number",
-        "$value": 1
+        "$type": "dimension",
+        "$value": "1px"
       },
       "2": {
-        "$type": "number",
-        "$value": 2
+        "$type": "dimension",
+        "$value": "2px"
       },
       "4": {
-        "$type": "number",
-        "$value": 4
+        "$type": "dimension",
+        "$value": "4px"
       },
       "8": {
-        "$type": "number",
-        "$value": 8
+        "$type": "dimension",
+        "$value": "8px"
       },
       "12": {
-        "$type": "number",
-        "$value": 12
+        "$type": "dimension",
+        "$value": "12px"
       },
       "16": {
-        "$type": "number",
-        "$value": 16
+        "$type": "dimension",
+        "$value": "16px"
       },
       "20": {
-        "$type": "number",
-        "$value": 20
+        "$type": "dimension",
+        "$value": "20px"
       },
       "24": {
-        "$type": "number",
-        "$value": 24
+        "$type": "dimension",
+        "$value": "24px"
       },
       "32": {
-        "$type": "number",
-        "$value": 32
+        "$type": "dimension",
+        "$value": "32px"
       },
       "40": {
-        "$type": "number",
-        "$value": 40
+        "$type": "dimension",
+        "$value": "40px"
       },
       "48": {
-        "$type": "number",
-        "$value": 48
+        "$type": "dimension",
+        "$value": "48px"
       },
       "56": {
-        "$type": "number",
-        "$value": 56
+        "$type": "dimension",
+        "$value": "56px"
       },
       "64": {
-        "$type": "number",
-        "$value": 64
+        "$type": "dimension",
+        "$value": "64px"
       },
       "80": {
-        "$type": "number",
-        "$value": 80
+        "$type": "dimension",
+        "$value": "80px"
       },
       "96": {
-        "$type": "number",
-        "$value": 96
+        "$type": "dimension",
+        "$value": "96px"
       },
       "120": {
-        "$type": "number",
-        "$value": 120
+        "$type": "dimension",
+        "$value": "120px"
       },
       "9999": {
-        "$type": "number",
-        "$value": 9999
+        "$type": "dimension",
+        "$value": "9999px"
       }
     },
     "font": {
@@ -591,12 +591,12 @@
       },
       "weight": {
         "regular": {
-          "$type": "number",
-          "$value": 400
+          "$type": "dimension",
+          "$value": "400px"
         },
         "bold": {
-          "$type": "number",
-          "$value": 700
+          "$type": "dimension",
+          "$value": "700px"
         }
       }
     }
@@ -1156,76 +1156,76 @@
     },
     "unit": {
       "0": {
-        "$type": "number",
-        "$value": 0
+        "$type": "dimension",
+        "$value": "0px"
       },
       "1": {
-        "$type": "number",
-        "$value": 1
+        "$type": "dimension",
+        "$value": "1px"
       },
       "2": {
-        "$type": "number",
-        "$value": 2
+        "$type": "dimension",
+        "$value": "2px"
       },
       "4": {
-        "$type": "number",
-        "$value": 4
+        "$type": "dimension",
+        "$value": "4px"
       },
       "8": {
-        "$type": "number",
-        "$value": 8
+        "$type": "dimension",
+        "$value": "8px"
       },
       "12": {
-        "$type": "number",
-        "$value": 12
+        "$type": "dimension",
+        "$value": "12px"
       },
       "16": {
-        "$type": "number",
-        "$value": 16
+        "$type": "dimension",
+        "$value": "16px"
       },
       "20": {
-        "$type": "number",
-        "$value": 20
+        "$type": "dimension",
+        "$value": "20px"
       },
       "24": {
-        "$type": "number",
-        "$value": 24
+        "$type": "dimension",
+        "$value": "24px"
       },
       "32": {
-        "$type": "number",
-        "$value": 32
+        "$type": "dimension",
+        "$value": "32px"
       },
       "40": {
-        "$type": "number",
-        "$value": 40
+        "$type": "dimension",
+        "$value": "40px"
       },
       "48": {
-        "$type": "number",
-        "$value": 48
+        "$type": "dimension",
+        "$value": "48px"
       },
       "56": {
-        "$type": "number",
-        "$value": 56
+        "$type": "dimension",
+        "$value": "56px"
       },
       "64": {
-        "$type": "number",
-        "$value": 64
+        "$type": "dimension",
+        "$value": "64px"
       },
       "80": {
-        "$type": "number",
-        "$value": 80
+        "$type": "dimension",
+        "$value": "80px"
       },
       "96": {
-        "$type": "number",
-        "$value": 96
+        "$type": "dimension",
+        "$value": "96px"
       },
       "120": {
-        "$type": "number",
-        "$value": 120
+        "$type": "dimension",
+        "$value": "120px"
       },
       "9999": {
-        "$type": "number",
-        "$value": 9999
+        "$type": "dimension",
+        "$value": "9999px"
       }
     },
     "font": {
@@ -1245,12 +1245,16 @@
           "$value": 600
         },
         "medium": {
-          "$type": "number",
-          "$value": 500
+          "$type": "dimension",
+          "$value": "500px"
         },
         "regular": {
-          "$type": "number",
-          "$value": 400
+          "$type": "dimension",
+          "$value": "400px"
+        },
+        "semi-bold": {
+          "$type": "dimension",
+          "$value": "600px"
         }
       }
     }

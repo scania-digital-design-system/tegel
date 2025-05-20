@@ -1805,6 +1805,10 @@
         "disabled selected": {
           "$type": "color",
           "$value": "{color.background.surface.600}"
+        },
+        "hover on selected": {
+          "$type": "color",
+          "$value": "{color.background.surface.800}"
         }
       },
       "foreground": {
@@ -1875,8 +1879,6 @@
           }
         },
         "background": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.light}",
           "border": {
             "$type": "color",
             "$value": "{traton.color.transparent.invisible.light}"
@@ -1900,7 +1902,9 @@
           "selected": {
             "$type": "color",
             "$value": "{traton.color.blue.1000}"
-          }
+          },
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.light}"
         },
         "foreground": {
           "strong": {
@@ -1914,6 +1918,16 @@
           "defined": {
             "$type": "color",
             "$value": "{color.foreground.icon.defined}"
+          }
+        },
+        "dropdown": {
+          "hover": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
           }
         }
       },
@@ -1935,16 +1949,16 @@
           "$value": "medium"
         },
         "line height": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "kerning": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         },
         "line height with logo": {
-          "$type": "number",
-          "$value": 10
+          "$type": "dimension",
+          "$value": "10px"
         }
       }
     },
@@ -2014,17 +2028,17 @@
       "dividers": {
         "default": {
           "$type": "color",
-          "$value": "#00121400"
+          "$value": "{traton.color.transparent.invisible.dark}"
         }
       },
       "icons": {
         "icon size": {
-          "$type": "number",
-          "$value": "{scania.unit.16}"
+          "$type": "dimension",
+          "$value": "{traton.unit.16}"
         },
         "close icon size": {
-          "$type": "number",
-          "$value": "{scania.unit.20}"
+          "$type": "dimension",
+          "$value": "{traton.unit.20}"
         }
       },
       "padding": {
@@ -2038,8 +2052,8 @@
             "$value": "{scania.unit.12}"
           },
           "chevron right padding": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           },
           "profile": {
             "left": {
@@ -2056,66 +2070,66 @@
             }
           },
           "selected marker height": {
-            "$type": "number",
-            "$value": 40
+            "$type": "dimension",
+            "$value": "{traton.unit.40}"
           }
         },
         "top level": {
           "left": {
-            "$type": "number",
-            "$value": "{scania.unit.16}"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "horizontal gap padding": {
-            "$type": "number",
-            "$value": "{scania.unit.4}"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "top": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "bottom collapsible": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           }
         },
         "collapsed item": {
           "left + right inner icon padding": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           },
           "top + bottom inner icon padding": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           }
         },
         "sub page": {
           "top + bottom": {
-            "$type": "number",
-            "$value": 8
+            "$type": "dimension",
+            "$value": "8px"
           },
           "left with icon": {
-            "$type": "number",
-            "$value": 40
+            "$type": "dimension",
+            "$value": "40px"
           },
           "left no icon": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "left profile": {
-            "$type": "number",
-            "$value": 48
+            "$type": "dimension",
+            "$value": "48px"
           },
           "top group": {
-            "$type": "number",
-            "$value": 4
+            "$type": "dimension",
+            "$value": "4px"
           },
           "selected marker height": {
-            "$type": "number",
-            "$value": 34
+            "$type": "dimension",
+            "$value": "34px"
           },
           "selected marker width": {
-            "$type": "number",
-            "$value": 8
+            "$type": "dimension",
+            "$value": "8px"
           }
         }
       },
@@ -2166,57 +2180,61 @@
         },
         "width": {
           "top": {
-            "$type": "number",
-            "$value": 1
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           },
           "right": {
-            "$type": "number",
-            "$value": 1
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           },
           "bottom": {
-            "$type": "number",
-            "$value": 1
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           },
           "left": {
-            "$type": "number",
-            "$value": 1
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           }
         },
         "focus": {
           "top": {
-            "$type": "number",
-            "$value": 2
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           },
           "right": {
-            "$type": "number",
-            "$value": 2
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           },
           "bottom": {
-            "$type": "number",
-            "$value": 2
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           },
           "left": {
-            "$type": "number",
-            "$value": 2
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           }
         }
       },
       "radius": {
         "top-left": {
-          "$type": "number",
-          "$value": "{scania.unit.4}"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         },
         "top-right": {
-          "$type": "number",
-          "$value": "{scania.unit.4}"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         },
         "bottom-left": {
-          "$type": "number",
-          "$value": "{scania.unit.4}"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         },
         "bottom-right": {
-          "$type": "number",
-          "$value": "{scania.unit.4}"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
+        },
+        "top-left 2": {
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         }
       }
     },
@@ -2228,6 +2246,10 @@
       "link text": {
         "$type": "color",
         "$value": "{color.foreground.text.strong}"
+      },
+      "link-text": {
+        "$type": "color",
+        "$value": "{color.foreground.text.inverse.strong}"
       }
     },
     "dropdown": {
@@ -2250,12 +2272,116 @@
             "$value": "{color.background.layer-02}"
           }
         }
+      },
+      "secondary": {
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.layer-03}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
       }
     },
     "stepper": {
       "success": {
         "$type": "color",
         "$value": "{color.system.success.default}"
+      }
+    },
+    "table": {
+      "secondary": {
+        "cell": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        }
+      },
+      "pagination": {
+        "dropdown": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        }
+      },
+      "cell-hover": {
+        "$type": "color",
+        "$value": "{color.background.surface.200}"
+      },
+      "cell": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      }
+    },
+    "secondary": {
+      "cell": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
+      }
+    },
+    "pagination": {
+      "dropdown": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      },
+      "base": {
+        "$type": "color",
+        "$value": "{color.background.surface.300}"
+      }
+    },
+    "🔵 card": {
+      "secondary": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
+      },
+      "padding": {
+        "padding": {
+          "$type": "dimension",
+          "$value": "{traton.unit.0}"
+        }
+      }
+    },
+    "text": {
+      "detail 01 bold": {
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-family": {
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "17px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{traton.font.weight.semi-bold}"
+        }
       }
     }
   },
@@ -2271,20 +2397,20 @@
           "$value": "{traton.font.family.display}"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 1.08
+          "$type": "dimension",
+          "$value": "1.08px"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 216
+          "$type": "dimension",
+          "$value": "216px"
         },
         "font-weight": {
           "$type": "number",
           "$value": "{traton.font.weight.medium}"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 227
+          "$type": "dimension",
+          "$value": "227px"
         }
       },
       "02": {
@@ -2301,16 +2427,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 156
+          "$type": "dimension",
+          "$value": "156px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 164
+          "$type": "dimension",
+          "$value": "164px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0.78
+          "$type": "dimension",
+          "$value": "0.78px"
         }
       },
       "03": {
@@ -2327,16 +2453,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 112
+          "$type": "dimension",
+          "$value": "112px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 118
+          "$type": "dimension",
+          "$value": "118px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0.56
+          "$type": "dimension",
+          "$value": "0.56px"
         }
       },
       "04": {
@@ -2353,16 +2479,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 80
+          "$type": "dimension",
+          "$value": "80px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 84
+          "$type": "dimension",
+          "$value": "84px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0.4
+          "$type": "dimension",
+          "$value": "0.4px"
         }
       },
       "05": {
@@ -2379,16 +2505,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 56
+          "$type": "dimension",
+          "$value": "56px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 59
+          "$type": "dimension",
+          "$value": "59px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0.28
+          "$type": "dimension",
+          "$value": "0.28px"
         }
       }
     },
@@ -2407,16 +2533,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 40
+          "$type": "dimension",
+          "$value": "40px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 42
+          "$type": "dimension",
+          "$value": "42px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
@@ -2433,16 +2559,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 32
+          "$type": "dimension",
+          "$value": "32px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 40
+          "$type": "dimension",
+          "$value": "40px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "03": {
@@ -2459,16 +2585,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 30
+          "$type": "dimension",
+          "$value": "30px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "04": {
@@ -2485,16 +2611,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 25
+          "$type": "dimension",
+          "$value": "25px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "05": {
@@ -2507,20 +2633,20 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "number",
-          "$value": "{traton.font.weight.semi bold}"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.semi-bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 22
+          "$type": "dimension",
+          "$value": "22px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "06": {
@@ -2533,20 +2659,20 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "number",
-          "$value": "{traton.font.weight.semi bold}"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.semi-bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 14
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
@@ -2565,16 +2691,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 30
+          "$type": "dimension",
+          "$value": "30px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
@@ -2591,16 +2717,16 @@
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 25
+          "$type": "dimension",
+          "$value": "25px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
@@ -2619,16 +2745,16 @@
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 22
+          "$type": "dimension",
+          "$value": "22px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
@@ -2645,16 +2771,16 @@
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 14
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
@@ -2674,16 +2800,16 @@
             "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
@@ -2700,16 +2826,16 @@
             "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 20
+            "$type": "dimension",
+            "$value": "20px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
@@ -2728,16 +2854,16 @@
             "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 17
+            "$type": "dimension",
+            "$value": "17px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
@@ -2754,16 +2880,16 @@
             "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 10
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
@@ -2778,20 +2904,20 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "number",
-            "$value": "{traton.font.weight.semi bold}"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 18
+            "$type": "dimension",
+            "$value": "18px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
@@ -2804,20 +2930,20 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "number",
-            "$value": "{traton.font.weight.semi bold}"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 10
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0.4
+            "$type": "dimension",
+            "$value": "0.4px"
           }
         }
       }
@@ -2837,16 +2963,16 @@
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 22
+          "$type": "dimension",
+          "$value": "22px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
@@ -2863,56 +2989,84 @@
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 14
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
+      }
+    },
+    "$type": "color",
+    "$value": "{color.brand.neutral.black}",
+    "detail 01 bold": {
+      "text-transform": {
+        "$type": "text",
+        "$value": "none"
+      },
+      "font-family": {
+        "$type": "text",
+        "$value": "{traton.font.family.default}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "17px"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "font-weight": {
+        "$type": "dimension",
+        "$value": "{traton.font.weight.semi-bold}"
       }
     }
   },
   "dimension": {
     "space": {
       "tiny": {
-        "$type": "number",
-        "$value": "{scania.unit.4}"
+        "$type": "dimension",
+        "$value": "{traton.unit.4}"
       },
       "small": {
-        "$type": "number",
-        "$value": "{scania.unit.16}"
+        "$type": "dimension",
+        "$value": "{traton.unit.16}"
       },
       "medium": {
-        "$type": "number",
-        "$value": "{scania.unit.24}"
+        "$type": "dimension",
+        "$value": "{traton.unit.24}"
       },
       "large": {
-        "$type": "number",
-        "$value": "{scania.unit.48}"
+        "$type": "dimension",
+        "$value": "{traton.unit.48}"
       },
       "huge": {
-        "$type": "number",
-        "$value": "{scania.unit.80}"
+        "$type": "dimension",
+        "$value": "{traton.unit.80}"
       }
     },
     "radius": {
       "for-surface": {
         "clickable": {
-          "$type": "number",
-          "$value": 100
+          "$type": "dimension",
+          "$value": "{traton.unit.9999}"
         },
         "field": {
-          "$type": "number",
-          "$value": 2
+          "$type": "dimension",
+          "$value": "{traton.unit.2}"
         },
         "inverse": {
-          "$type": "number",
-          "$value": 2
+          "$type": "dimension",
+          "$value": "{traton.unit.2}"
         }
       },
       "narrow": {
@@ -2928,23 +3082,63 @@
         "$value": "{traton.unit.32}"
       },
       "circle": {
-        "$type": "number",
-        "$value": 500
+        "$type": "dimension",
+        "$value": "{traton.unit.9999}"
       },
       "for-area": {
         "large area": {
-          "$type": "number",
-          "$value": 8
+          "$type": "dimension",
+          "$value": "{traton.unit.8}"
         },
         "small": {
-          "$type": "number",
-          "$value": 4
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         }
       },
       "focus-width": {
-        "$type": "number",
-        "$value": 4
+        "$type": "dimension",
+        "$value": "{traton.unit.4}"
       }
     }
+  },
+  "copyright": {
+    "$type": "color",
+    "$value": "{traton.color.transparent.inverse.600}"
+  },
+  "Fill": {
+    "$type": "color",
+    "$value": "{traton.color.base.neutral-white}"
+  },
+  "background": {
+    "$type": "color",
+    "$value": "{traton.color.yellow.300}"
+  },
+  "link-text": {
+    "$type": "color",
+    "$value": "{color.foreground.text.inverse.strong}"
+  },
+  "Footer Right Logo": {
+    "$type": "boolean",
+    "$value": "true"
+  },
+  "TRA Left Logo": {
+    "$type": "boolean",
+    "$value": "true"
+  },
+  "TDS Right Logo": {
+    "$type": "boolean",
+    "$value": "false"
+  },
+  "TRA Right Logo": {
+    "$type": "boolean",
+    "$value": "true"
+  },
+  "TDS Left Logo": {
+    "$type": "boolean",
+    "$value": "false"
+  },
+  "Wordmark": {
+    "$type": "text",
+    "$value": "Traton"
   }
 }

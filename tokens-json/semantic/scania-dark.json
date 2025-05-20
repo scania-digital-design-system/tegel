@@ -1805,6 +1805,10 @@
         "disabled selected": {
           "$type": "color",
           "$value": "{color.brand.primary.400}"
+        },
+        "hover on selected": {
+          "$type": "color",
+          "$value": "{color.system.info.default}"
         }
       },
       "foreground": {
@@ -1875,8 +1879,6 @@
           }
         },
         "background": {
-          "$type": "color",
-          "$value": "{scania.color.blue.900}",
           "border": {
             "$type": "color",
             "$value": "{scania.color.blue.800}"
@@ -1900,7 +1902,9 @@
           "selected": {
             "$type": "color",
             "$value": "{scania.color.blue.800}"
-          }
+          },
+          "$type": "color",
+          "$value": "{scania.color.blue.900}"
         },
         "foreground": {
           "strong": {
@@ -1914,6 +1918,16 @@
           "defined": {
             "$type": "color",
             "$value": "{color.foreground.text.defined}"
+          }
+        },
+        "dropdown": {
+          "hover": {
+            "$type": "color",
+            "$value": "{traton.color.blue.900}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
           }
         }
       },
@@ -1935,16 +1949,16 @@
           "$value": "medium"
         },
         "line height": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "kerning": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         },
         "line height with logo": {
-          "$type": "number",
-          "$value": 10
+          "$type": "dimension",
+          "$value": "10px"
         }
       }
     },
@@ -2038,8 +2052,8 @@
             "$value": "{scania.unit.12}"
           },
           "chevron right padding": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           },
           "profile": {
             "left": {
@@ -2056,8 +2070,8 @@
             }
           },
           "selected marker height": {
-            "$type": "number",
-            "$value": 40
+            "$type": "dimension",
+            "$value": "40px"
           }
         },
         "top level": {
@@ -2070,52 +2084,52 @@
             "$value": "{scania.unit.4}"
           },
           "top": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "bottom collapsible": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
           }
         },
         "collapsed item": {
           "left + right inner icon padding": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           },
           "top + bottom inner icon padding": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           }
         },
         "sub page": {
           "top + bottom": {
-            "$type": "number",
-            "$value": 8
+            "$type": "dimension",
+            "$value": "8px"
           },
           "left with icon": {
-            "$type": "number",
-            "$value": 40
+            "$type": "dimension",
+            "$value": "40px"
           },
           "left no icon": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "left profile": {
-            "$type": "number",
-            "$value": 48
+            "$type": "dimension",
+            "$value": "48px"
           },
           "top group": {
-            "$type": "number",
-            "$value": 4
+            "$type": "dimension",
+            "$value": "4px"
           },
           "selected marker height": {
-            "$type": "number",
-            "$value": 34
+            "$type": "dimension",
+            "$value": "34px"
           },
           "selected marker width": {
-            "$type": "number",
-            "$value": 8
+            "$type": "dimension",
+            "$value": "8px"
           }
         }
       },
@@ -2166,38 +2180,38 @@
         },
         "width": {
           "top": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "right": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "bottom": {
-            "$type": "number",
-            "$value": 1
+            "$type": "dimension",
+            "$value": "{scania.unit.1}"
           },
           "left": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           }
         },
         "focus": {
           "top": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "right": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "bottom": {
-            "$type": "number",
-            "$value": 2
+            "$type": "dimension",
+            "$value": "{scania.unit.2}"
           },
           "left": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           }
         }
       },
@@ -2211,12 +2225,16 @@
           "$value": "{scania.unit.4}"
         },
         "bottom-left": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
         },
         "bottom-right": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
+        },
+        "top-left 2": {
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         }
       }
     },
@@ -2226,6 +2244,10 @@
         "$value": "{color.foreground.text.soft}"
       },
       "link text": {
+        "$type": "color",
+        "$value": "{color.brand.primary.50}"
+      },
+      "link-text": {
         "$type": "color",
         "$value": "{color.brand.primary.50}"
       }
@@ -2250,12 +2272,116 @@
             "$value": "{color.background.layer-03}"
           }
         }
+      },
+      "secondary": {
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.layer-03}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.layer-03}"
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
       }
     },
     "stepper": {
       "success": {
         "$type": "color",
-        "$value": "{color.system.success.subtle}"
+        "$value": "{color.system.success.default}"
+      }
+    },
+    "table": {
+      "secondary": {
+        "cell": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        }
+      },
+      "pagination": {
+        "dropdown": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        }
+      },
+      "cell-hover": {
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
+      },
+      "cell": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      }
+    },
+    "secondary": {
+      "cell": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
+      }
+    },
+    "pagination": {
+      "dropdown": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      },
+      "base": {
+        "$type": "color",
+        "$value": "{color.background.surface.200}"
+      }
+    },
+    "🔵 card": {
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      },
+      "padding": {
+        "padding": {
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
+        }
+      }
+    },
+    "text": {
+      "detail 01 bold": {
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.semi condensed}"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        }
       }
     }
   },
@@ -2271,20 +2397,20 @@
           "$value": "{scania.font.family.display}"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 216
+          "$type": "dimension",
+          "$value": "216px"
         },
         "font-weight": {
           "$type": "number",
           "$value": "{scania.font.weight.bold}"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 183
+          "$type": "dimension",
+          "$value": "183px"
         }
       },
       "02": {
@@ -2301,16 +2427,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 156
+          "$type": "dimension",
+          "$value": "156px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 148
+          "$type": "dimension",
+          "$value": "148px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "03": {
@@ -2327,16 +2453,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 112
+          "$type": "dimension",
+          "$value": "112px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 106
+          "$type": "dimension",
+          "$value": "106px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "04": {
@@ -2353,16 +2479,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 80
+          "$type": "dimension",
+          "$value": "80px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 80
+          "$type": "dimension",
+          "$value": "80px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "05": {
@@ -2379,16 +2505,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 56
+          "$type": "dimension",
+          "$value": "56px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 56
+          "$type": "dimension",
+          "$value": "56px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
@@ -2407,16 +2533,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 40
+          "$type": "dimension",
+          "$value": "40px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 40
+          "$type": "dimension",
+          "$value": "40px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": 0
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
@@ -2433,16 +2559,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 32
+          "$type": "dimension",
+          "$value": "32px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 32
+          "$type": "dimension",
+          "$value": "32px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -1.28
+          "$type": "dimension",
+          "$value": "-1.28px"
         }
       },
       "03": {
@@ -2459,16 +2585,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.72
+          "$type": "dimension",
+          "$value": "-0.72px"
         }
       },
       "04": {
@@ -2485,16 +2611,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.4
+          "$type": "dimension",
+          "$value": "-0.4px"
         }
       },
       "05": {
@@ -2511,16 +2637,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.32
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
       "06": {
@@ -2537,16 +2663,16 @@
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 14
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.28
+          "$type": "dimension",
+          "$value": "-0.28px"
         }
       }
     },
@@ -2565,16 +2691,16 @@
           "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 32
+          "$type": "dimension",
+          "$value": "32px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.72
+          "$type": "dimension",
+          "$value": "-0.72px"
         }
       },
       "02": {
@@ -2591,16 +2717,16 @@
           "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.2
+          "$type": "dimension",
+          "$value": "-0.2px"
         }
       }
     },
@@ -2619,16 +2745,16 @@
           "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.32
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
       "02": {
@@ -2645,16 +2771,16 @@
           "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 14
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.14
+          "$type": "dimension",
+          "$value": "-0.14px"
         }
       }
     },
@@ -2674,16 +2800,16 @@
             "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": -0.14
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "02": {
@@ -2700,16 +2826,16 @@
             "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 20
+            "$type": "dimension",
+            "$value": "20px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": -0.14
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         }
       },
@@ -2728,16 +2854,16 @@
             "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 12
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
@@ -2754,16 +2880,16 @@
             "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 10
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 8
+            "$type": "dimension",
+            "$value": "8px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
@@ -2782,16 +2908,16 @@
             "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 14
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": -0.14
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "02": {
@@ -2808,16 +2934,16 @@
             "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "$type": "number",
-            "$value": 10
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "$type": "number",
-            "$value": 16
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "$type": "number",
-            "$value": 0.8
+            "$type": "dimension",
+            "$value": "0.8px"
           }
         }
       }
@@ -2837,16 +2963,16 @@
           "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 24
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.32
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
       "02": {
@@ -2863,17 +2989,45 @@
           "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "$type": "number",
-          "$value": 14
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "$type": "number",
-          "$value": 20
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "$type": "number",
-          "$value": -0.14
+          "$type": "dimension",
+          "$value": "-0.14px"
         }
+      }
+    },
+    "$type": "color",
+    "$value": "{color.brand.neutral.white}",
+    "detail 01 bold": {
+      "text-transform": {
+        "$type": "text",
+        "$value": "none"
+      },
+      "font-family": {
+        "$type": "text",
+        "$value": "{scania.font.family.semi condensed}"
+      },
+      "line-height": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "letter-spacing": {
+        "$type": "dimension",
+        "$value": "0px"
+      },
+      "font-size": {
+        "$type": "dimension",
+        "$value": "12px"
+      },
+      "font-weight": {
+        "$type": "dimension",
+        "$value": "{scania.font.weight.bold}"
       }
     }
   },
@@ -2903,16 +3057,16 @@
     "radius": {
       "for-surface": {
         "clickable": {
-          "$type": "number",
-          "$value": 4
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         },
         "field": {
-          "$type": "number",
-          "$value": 4
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         },
         "inverse": {
-          "$type": "number",
-          "$value": 100
+          "$type": "dimension",
+          "$value": "{scania.unit.9999}"
         }
       },
       "narrow": {
@@ -2928,23 +3082,63 @@
         "$value": "{scania.unit.32}"
       },
       "circle": {
-        "$type": "number",
-        "$value": 500
+        "$type": "dimension",
+        "$value": "{scania.unit.9999}"
       },
       "for-area": {
         "large area": {
-          "$type": "number",
-          "$value": 16
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
         },
         "small": {
-          "$type": "number",
-          "$value": 2
+          "$type": "dimension",
+          "$value": "{scania.unit.2}"
         }
       },
       "focus-width": {
-        "$type": "number",
-        "$value": 2
+        "$type": "dimension",
+        "$value": "{traton.unit.2}"
       }
     }
+  },
+  "copyright": {
+    "$type": "color",
+    "$value": "{color.foreground.text.soft}"
+  },
+  "Fill": {
+    "$type": "color",
+    "$value": "{color.brand.neutral.white}"
+  },
+  "background": {
+    "$type": "color",
+    "$value": "{color.system.danger.subtle}"
+  },
+  "link-text": {
+    "$type": "color",
+    "$value": "{color.brand.primary.50}"
+  },
+  "Footer Right Logo": {
+    "$type": "boolean",
+    "$value": "true"
+  },
+  "TRA Left Logo": {
+    "$type": "boolean",
+    "$value": "false"
+  },
+  "TDS Right Logo": {
+    "$type": "boolean",
+    "$value": "true"
+  },
+  "TRA Right Logo": {
+    "$type": "boolean",
+    "$value": "false"
+  },
+  "TDS Left Logo": {
+    "$type": "boolean",
+    "$value": "true"
+  },
+  "Wordmark": {
+    "$type": "text",
+    "$value": "Scania"
   }
 }

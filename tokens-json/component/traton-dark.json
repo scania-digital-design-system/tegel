@@ -1,0 +1,48 @@
+{
+  "shadow": {
+    "dragged": {
+      "$type": "color",
+      "$value": "{traton.color.transparent.invisible.dark}"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "{traton.color.transparent.invisible.dark}"
+    },
+    "pressed": {
+      "$type": "color",
+      "$value": "{traton.color.transparent.invisible.dark}"
+    },
+    "focus": {
+      "$type": "color",
+      "$value": "{traton.color.transparent.invisible.dark}"
+    },
+    "default": {
+      "$type": "color",
+      "$value": "{traton.color.transparent.invisible.dark}"
+    },
+    "base-modifier": {
+      "$type": "color",
+      "$value": "{traton.color.transparent.invisible.dark}"
+    }
+  },
+  "cell 2": {
+    "$type": "color",
+    "$value": "{color.background.layer-02}"
+  },
+  "dropdown": {
+    "$type": "color",
+    "$value": "{color.background.layer-01}"
+  },
+  "base": {
+    "$type": "color",
+    "$value": "{color.background.surface.300}"
+  },
+  "cell-hover": {
+    "$type": "color",
+    "$value": "{color.background.surface.200}"
+  },
+  "cell": {
+    "$type": "color",
+    "$value": "{color.background.layer-01}"
+  }
+}
