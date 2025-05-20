@@ -268,7 +268,8 @@
     "id": "semantic-traton-light",
     "name": "traton-light",
     "selectedTokenSets": {
-      "semantic/traton-light": "enabled"
+      "semantic/traton-light": "enabled",
+      "primitives/default": "source"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -673,7 +674,8 @@
     "id": "semantic-traton-dark",
     "name": "traton-dark",
     "selectedTokenSets": {
-      "semantic/traton-dark": "enabled"
+      "semantic/traton-dark": "enabled",
+      "primitives/default": "source"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -1078,7 +1080,8 @@
     "id": "semantic-scania-light",
     "name": "scania-light",
     "selectedTokenSets": {
-      "semantic/scania-light": "enabled"
+      "semantic/scania-light": "enabled",
+      "primitives/default": "source"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -1483,7 +1486,8 @@
     "id": "semantic-scania-dark",
     "name": "scania-dark",
     "selectedTokenSets": {
-      "semantic/scania-dark": "enabled"
+      "semantic/scania-dark": "enabled",
+      "primitives/default": "source"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
@@ -1888,7 +1892,8 @@
     "id": "component-default",
     "name": "default",
     "selectedTokenSets": {
-      "component/default": "enabled"
+      "component/default": "enabled",
+      "primitives/default": "source"
     },
     "$figmaStyleReferences": {},
     "$figmaVariableReferences": {
