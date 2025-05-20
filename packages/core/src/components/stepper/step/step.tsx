@@ -67,6 +67,7 @@ export class TdsStep {
       <Host>
         <div
           role="listitem"
+          aria-disabled={this.state === 'upcoming' ? 'true' : 'false'}
           aria-current={this.tdsAriaCurrent}
           tabIndex={-1}
           aria-label={`Step ${this.index}: ${this.state}`}
