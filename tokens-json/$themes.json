@@ -1,1 +1,51 @@
-[]
+[
+  {
+    "id": "a72816c57026accb849f0bc92d79adb66a88fc61",
+    "name": "default",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitive/default": "enabled"
+    },
+    "group": "primitive"
+  },
+  {
+    "id": "2395861348db3452c8c0b40db0852c5214f7eb89",
+    "name": "scania-light",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitive/default": "source",
+      "semantic/scania-light": "enabled"
+    },
+    "group": "semantic"
+  },
+  {
+    "id": "e067b4f947dc992dc3bd6cd14711f8f5523e38f4",
+    "name": "scania-dark",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitive/default": "source",
+      "semantic/scania-dark": "enabled"
+    },
+    "group": "semantic"
+  },
+  {
+    "id": "2c300a11cabd436ea4034607192101c23be21f97",
+    "name": "traton-light",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitive/default": "source",
+      "semantic/traton-light": "enabled"
+    },
+    "group": "semantic"
+  },
+  {
+    "id": "4acb0be1eb425a637721331f91c9812dc00e4c56",
+    "name": "traton-dark",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "primitive/default": "source",
+      "semantic/traton-dark": "enabled"
+    },
+    "group": "semantic"
+  }
+]
