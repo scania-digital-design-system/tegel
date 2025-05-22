@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Tegel Digital Design System",
   "private": true,
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "cd packages/core && npm run storybook",
@@ -49,7 +50,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "^2.7.1",
-    "style-dictionary": "^4.3.3",
+    "style-dictionary": "^5.0.0",
     "stylelint": "^14.6.1",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-standard": "^25.0.0",
@@ -106,5 +107,8 @@
   "engines": {
     "npm": ">=9.0.0",
     "node": ">=22.11.0"
+  },
+  "dependencies": {
+    "@tokens-studio/sd-transforms": "^1.3.0"
   }
 }
