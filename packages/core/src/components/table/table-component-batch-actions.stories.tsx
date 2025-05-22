@@ -65,7 +65,8 @@ export default {
     },
     batchArea: {
       name: 'Batch code',
-      description: 'Enables code to be injected into the toolbar area.',
+      description:
+        'Enables code to be injected into the toolbar area. Slot start and end make posible to put elements to left and right side of action bar  ',
       control: {
         type: 'text',
       },
@@ -130,7 +131,14 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
+      `<div slot="start">
+         <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide">
+           <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
+           <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
+           <tds-dropdown-option value="option-3">SLA</tds-dropdown-option>
+         </tds-dropdown>
+      </div>
+      <div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
       <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
     </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
     ),

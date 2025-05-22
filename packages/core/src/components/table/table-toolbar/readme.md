@@ -23,9 +23,10 @@
 
 ## Slots
 
-| Slot    | Description                                         |
-| ------- | --------------------------------------------------- |
-| `"end"` | Slot for the end (right side) of the Table Toolbar. |
+| Slot      | Description                                          |
+| --------- | ---------------------------------------------------- |
+| `"end"`   | Slot for the end (right side) of the Table Toolbar.  |
+| `"start"` | Slot for the start (left side) of the Table Toolbar. |
 
 
 ## Dependencies
