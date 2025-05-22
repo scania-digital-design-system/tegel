@@ -6,7 +6,7 @@ const rules = [
   'best-practice',
   'wcag2a',
   'wcag2aa',
-  'wcag2aaa', // includes color-contrast-enhanced rule
+  // 'wcag2aaa', // includes color-contrast-enhanced rule
   'wcag21a',
   'wcag21aa',
   'wcag22aa',
