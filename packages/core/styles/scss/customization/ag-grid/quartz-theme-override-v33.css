@@ -1,0 +1,38 @@
+body {
+  --ag-browser-color-scheme: light !important;
+  --ag-font-family: inherit !important;
+  --ag-header-font-family: "Scania Sans Semi Condensed" !important;
+  --ag-header-font-size: 14px !important;
+  --ag-header-font-weight: 700 !important;
+  --ag-row-vertical-padding-scale: 1.29 !important;
+  --ag-wrapper-border: none !important;
+  --ag-wrapper-border-radius: 4px !important;
+  background-color: green !important;
+}
+
+.sto-159egyp {
+  background-color: orange !important;
+}
+
+:root,
+.tds-mode-light {
+  --ag-cell-text-color: var(--tds-grey-958) !important;
+  --ag-header-background-color: var(--tds-grey-300) !important;
+  --ag-header-text-color: var(--tds-grey-958) !important;
+  --ag-background-color: var(--tds-grey-50) !important;
+  --ag-odd-row-background-color: var(--tds-grey-50) !important;
+  --ag-row-hover-color: var(--tds-grey-200) !important;
+  /* Primary mode variant variables, light mode */
+  /* Secondary mode variant variables, light mode */
+}
+/* Dark mode variables */
+.tds-mode-dark {
+  --ag-cell-text-color: var(--tds-grey-50) !important;
+  --ag-header-background-color: var(--tds-grey-800) !important;
+  --ag-header-text-color: var(--tds-grey-50) !important;
+  --ag-background-color: var(--tds-grey-868) !important;
+  --ag-odd-row-background-color: var(--tds-grey-868) !important;
+  --ag-row-hover-color: var(--tds-grey-846) !important;
+  /* Primary mode variant variables, dark mode */
+  /* Secondary mode variant variables, dark mode */
+}

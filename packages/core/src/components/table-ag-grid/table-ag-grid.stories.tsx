@@ -1,5 +1,6 @@
 import { ComponentsFolder } from '../../utils/constants';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
+import '../../../../styles/scss/customization/ag-grid/quartz-theme-override-v33.scss';
 
 export default {
   title: `${ComponentsFolder}/Table Ag Grid`,

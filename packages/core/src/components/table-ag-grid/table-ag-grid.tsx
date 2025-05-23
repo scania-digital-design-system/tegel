@@ -32,13 +32,16 @@ const myTheme = themeQuartz.withParams({
   headerTextColor: '#0D0F13',
   oddRowBackgroundColor: '#F9FAFB',
   rowHoverColor: '#E7E9EE',
-  rowVerticalPaddingScale: 1.29,
+  // rowVerticalPaddingScale: 1.29,
+  // rowVerticalPaddingScale: 5.123,
+  rowHeight: 100,
   wrapperBorder: false,
   wrapperBorderRadius: 4,
 });
 
 @Component({
   tag: 'tds-table-ag-grid',
+  // styleUrl: '../../../../styles/scss/customization/ag-grid/quartz-theme-override-v33.scss',
   styleUrl: 'table-ag-grid.scss',
   shadow: true,
 })
