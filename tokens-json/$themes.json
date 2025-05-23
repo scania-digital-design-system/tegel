@@ -6,7 +6,8 @@
     "selectedTokenSets": {
       "primitive/default": "enabled"
     },
-    "group": "primitive"
+    "group": "primitive",
+    "$figmaVariableReferences": {}
   },
   {
     "id": "2395861348db3452c8c0b40db0852c5214f7eb89",
@@ -16,7 +17,8 @@
       "primitive/default": "source",
       "semantic/scania-light": "enabled"
     },
-    "group": "semantic"
+    "group": "semantic",
+    "$figmaVariableReferences": {}
   },
   {
     "id": "e067b4f947dc992dc3bd6cd14711f8f5523e38f4",
@@ -26,7 +28,8 @@
       "primitive/default": "source",
       "semantic/scania-dark": "enabled"
     },
-    "group": "semantic"
+    "group": "semantic",
+    "$figmaVariableReferences": {}
   },
   {
     "id": "2c300a11cabd436ea4034607192101c23be21f97",
@@ -36,7 +39,8 @@
       "primitive/default": "source",
       "semantic/traton-light": "enabled"
     },
-    "group": "semantic"
+    "group": "semantic",
+    "$figmaVariableReferences": {}
   },
   {
     "id": "4acb0be1eb425a637721331f91c9812dc00e4c56",
@@ -46,6 +50,7 @@
       "primitive/default": "source",
       "semantic/traton-dark": "enabled"
     },
-    "group": "semantic"
+    "group": "semantic",
+    "$figmaVariableReferences": {}
   }
 ]
