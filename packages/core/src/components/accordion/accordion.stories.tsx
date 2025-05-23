@@ -1,10 +1,7 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeItem from './accordion-item/readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Accordion`,
+  title: 'Components/Accordion',
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
@@ -72,7 +69,6 @@ export default {
     },
   },
   parameters: {
-    notes: { 'Accordion': readme, 'Accordion Item': readmeItem },
     design: [
       {
         name: 'Figma',
