@@ -1105,22 +1105,6 @@
         "font-family": {
           "$type": "text",
           "$value": "{scania.font.family.semi condensed}"
-        },
-        "line-height": {
-          "$type": "dimension",
-          "$value": "16px"
-        },
-        "letter-spacing": {
-          "$type": "dimension",
-          "$value": "0px"
-        },
-        "font-size": {
-          "$type": "dimension",
-          "$value": "12px"
-        },
-        "font-weight": {
-          "$type": "dimension",
-          "$value": "{scania.font.weight.bold}"
         }
       }
     },
@@ -1179,6 +1163,26 @@
             "$type": "dimension",
             "$value": "{scania.unit.0}"
           }
+        }
+      }
+    },
+    "❓ text": {
+      "detail 01 bold": {
+        "line-height": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         }
       }
     }
