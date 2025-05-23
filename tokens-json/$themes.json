@@ -6,13 +6,12 @@
     "selectedTokenSets": {
       "primitive/default": "enabled"
     },
-    "group": "primitive",
-    "$figmaVariableReferences": {}
+    "$figmaVariableReferences": {},
+    "group": "primitive"
   },
   {
     "id": "semantic-traton-light",
     "name": "traton-light",
-    "group": "semantic",
     "selectedTokenSets": {
       "primitive/default": "source",
       "semantic/traton-light": "enabled"
@@ -437,12 +436,12 @@
       "component.footer.border": "c5e40d2d2bc6f950a785a6eec190d839692debfc"
     },
     "$figmaModeId": "68:0",
-    "$figmaCollectionId": "VariableCollectionId:3:2"
+    "$figmaCollectionId": "VariableCollectionId:3:2",
+    "group": "semantic"
   },
   {
     "id": "semantic-traton-dark",
     "name": "traton-dark",
-    "group": "semantic",
     "selectedTokenSets": {
       "primitive/default": "source",
       "semantic/traton-dark": "enabled"
@@ -867,7 +866,8 @@
       "component.footer.border": "c5e40d2d2bc6f950a785a6eec190d839692debfc"
     },
     "$figmaModeId": "572:1",
-    "$figmaCollectionId": "VariableCollectionId:3:2"
+    "$figmaCollectionId": "VariableCollectionId:3:2",
+    "group": "semantic"
   },
   {
     "id": "semantic-scania-light",
