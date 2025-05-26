@@ -38,6 +38,19 @@
 | `tdsInput`  | Input event for the Textarea  | `CustomEvent<InputEvent>` |
 
 
+## Methods
+
+### `focusElement() => Promise<void>`
+
+Method to programmatically focus the textarea element
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
+
 ## Dependencies
 
 ### Depends on
