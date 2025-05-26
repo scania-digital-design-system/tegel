@@ -31,6 +31,16 @@
 
 ## Methods
 
+### `focusElement() => Promise<void>`
+
+Method to programmatically focus the checkbox element
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `toggleCheckbox() => Promise<{ checkboxId: string; checked: boolean; }>`
 
 Toggles the checked value of the component.
