@@ -49,6 +49,16 @@ We are addressing these concerns in the upcoming tds-date-picker component, whic
 
 ## Methods
 
+### `focusElement() => Promise<void>`
+
+Method to programmatically focus the datetime element
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `reset() => Promise<void>`
 
 Method that resets the value of the Datetime, using defaultValue if is not 'none'
