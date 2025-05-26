@@ -1,4 +1,4 @@
-import { Component, h, Prop, Event, EventEmitter, Element } from '@stencil/core';
+import { Component, h, Prop, Event, EventEmitter, Element, Method } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 /**
@@ -37,6 +37,16 @@ export class TdsRadioButton {
   /** Provides a tabindex used when radio buttons are grouped */
   @Prop() tdsTabIndex: number;
 
+  private inputElement: HTMLInputElement;
+
+  /** Method to programmatically focus the radio button element */
+  @Method()
+  async focusElement() {
+    if (this.inputElement) {
+      this.inputElement.focus();
+    }
+  }
+
   /** Sends unique Radio Button identifier and status when it is checked.
    * If no ID is specified, a random one will be generated.
    * To use this listener, don't use the randomized ID, use a specific one of your choosing. */
@@ -62,6 +72,7 @@ export class TdsRadioButton {
     return (
       <div class="tds-radio-button">
         <input
+          ref={(inputEl) => (this.inputElement = inputEl)}
           aria-label={this.tdsAriaLabel}
           class="tds-form-input"
           type="radio"

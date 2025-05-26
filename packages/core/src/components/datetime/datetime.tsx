@@ -115,6 +115,15 @@ export class TdsDatetime {
     this.value = newValue;
   }
 
+  /** Method to programmatically focus the datetime element */
+  @Method()
+  async focusElement() {
+    if (this.textInput) {
+      this.textInput.focus();
+      this.focusInput = true;
+    }
+  }
+
   getDefaultValue = () => {
     const dateTimeObj = {
       year: this.defaultValue.slice(0, 4),
