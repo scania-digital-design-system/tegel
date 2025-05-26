@@ -246,7 +246,17 @@ export class TdsDropdown {
   /** Method that forces focus on the input element. */
   @Method()
   async focusElement() {
-    this.focusInputElement();
+    if (this.filter) {
+      // For filter mode, focus the input element
+      this.focusInputElement();
+    } else {
+      // For non-filter mode, focus the button element
+      const button = this.host.shadowRoot.querySelector('button');
+      if (button) {
+        button.focus();
+      }
+    }
+    // Always trigger the focus event to open the dropdown
     this.handleFocus({});
   }
 
@@ -492,7 +502,14 @@ export class TdsDropdown {
     if (!this.disabled) {
       this.open = !this.open;
       if (this.open) {
-        this.focusInputElement();
+        if (this.filter) {
+          this.focusInputElement();
+        } else {
+          const button = this.host.shadowRoot.querySelector('button');
+          if (button) {
+            button.focus();
+          }
+        }
       }
     }
   };
@@ -542,11 +559,13 @@ export class TdsDropdown {
   private handleFocus = (event) => {
     this.open = true;
     this.filterFocus = true;
-    if (this.multiselect) {
+    if (this.multiselect && this.inputElement) {
       this.inputElement.value = '';
     }
     this.tdsFocus.emit(event);
-    this.handleFilter({ target: { value: '' } });
+    if (this.filter) {
+      this.handleFilter({ target: { value: '' } });
+    }
   };
 
   private handleBlur = (event) => {
