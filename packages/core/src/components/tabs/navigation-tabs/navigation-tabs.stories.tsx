@@ -1,15 +1,8 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
-import readme from './readme.md';
-import readmeTab from './navigation-tab/readme.md';
-import { ComponentsFolder } from '../../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Tabs`,
+  title: 'Components/Tabs/Navigation Tabs',
   parameters: {
-    notes: {
-      'Navigation Tabs': readme,
-      'Navigation Tab': readmeTab,
-    },
     design: [
       {
         name: 'Figma',
@@ -118,4 +111,4 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
     </script>
   `);
 
-export const NavigationTabs = Template.bind({});
+export const Default = Template.bind({});
