@@ -22,7 +22,7 @@ export class TdsAccordionItem {
   @Prop() disabled: boolean = false;
 
   /** Set to true to expand panel open */
-  @Prop() expanded: boolean = false;
+  @Prop({ reflect: true }) expanded: boolean = false;
 
   /** When true, 16px on right padding instead of 64px */
   @Prop() paddingReset: boolean = false;
@@ -39,6 +39,34 @@ export class TdsAccordionItem {
     if (!event.defaultPrevented) {
       this.expanded = !this.expanded;
     }
+  }
+
+  /** Method for expanding the Accordion Item */
+  @Method()
+  async expand() {
+    const event = this.tdsToggle.emit({
+      expanded: true,
+    });
+    if (!event.defaultPrevented) {
+      this.expanded = true;
+    }
+  }
+
+  /** Method for collapsing the Accordion Item */
+  @Method()
+  async collapse() {
+    const event = this.tdsToggle.emit({
+      expanded: false,
+    });
+    if (!event.defaultPrevented) {
+      this.expanded = false;
+    }
+  }
+
+  /** Returns the expanded state of the Accordion Item. */
+  @Method()
+  async isExpanded(): Promise<boolean> {
+    return this.expanded;
   }
 
   /** Fires when the Accordion Item is clicked, but before it is closed or opened. */
