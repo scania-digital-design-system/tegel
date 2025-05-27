@@ -6,6 +6,13 @@ import {
   setupPage,
 } from '../../../../utils/testConfiguration';
 
+declare global {
+  interface Window {
+    openEventFired?: boolean;
+    closeEventFired?: boolean;
+  }
+}
+
 const componentTestPath = 'src/components/modal/test/open-close/index.html';
 const componentName = 'tds-modal';
 const testDescription = 'tds-modal-open';
@@ -94,5 +101,46 @@ test.describe.parallel('tds-modal-open', () => {
     // Now, close the modal by clicking outside
     await tdsModalBackdrop.dispatchEvent('click');
     await expect(tdsModal).toBeHidden(); // Modal should be closed after clicking outside
+  });
+});
+
+test.describe.parallel('tds-modal-events', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(componentTestPath);
+  });
+
+  test('Should emit tdsOpen event when opening the modal', async ({ page }) => {
+    await page.evaluate(() => {
+      window.openEventFired = false;
+      const modal = document.querySelector('tds-modal');
+      modal?.addEventListener('tdsOpen', () => {
+        window.openEventFired = true;
+      });
+    });
+
+    const openModalButton = page.getByRole('button', { name: /Open Modal/ });
+    await openModalButton.click();
+
+    const eventFired = await page.evaluate(() => window.openEventFired);
+    expect(eventFired).toBe(true);
+  });
+
+  test('Should emit tdsClose event when closing the modal', async ({ page }) => {
+    await page.evaluate(() => {
+      window.closeEventFired = false;
+      const modal = document.querySelector('tds-modal');
+      modal?.addEventListener('tdsClose', () => {
+        window.closeEventFired = true;
+      });
+    });
+
+    const openModalButton = page.getByRole('button', { name: /Open Modal/ });
+    const closeModalButton = page.getByRole('button', { name: /Delete/ });
+
+    await openModalButton.click();
+    await closeModalButton.click();
+
+    const eventFired = await page.evaluate(() => window.closeEventFired);
+    expect(eventFired).toBe(true);
   });
 });
