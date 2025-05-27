@@ -99,7 +99,7 @@ These can be used to insert or remove slot content on demand. This avoids render
 
 ## Methods
 
-### `collapseAccordionItem() => Promise<void>`
+### `collapse() => Promise<void>`
 
 Method for collapsing the Accordion Item
 
@@ -109,7 +109,7 @@ Type: `Promise<void>`
 
 
 
-### `expandAccordionItem() => Promise<void>`
+### `expand() => Promise<void>`
 
 Method for expanding the Accordion Item
 

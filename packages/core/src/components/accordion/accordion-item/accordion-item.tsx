@@ -43,7 +43,7 @@ export class TdsAccordionItem {
 
   /** Method for expanding the Accordion Item */
   @Method()
-  async expandAccordionItem() {
+  async expand() {
     const event = this.tdsToggle.emit({
       expanded: true,
     });
@@ -54,7 +54,7 @@ export class TdsAccordionItem {
 
   /** Method for collapsing the Accordion Item */
   @Method()
-  async collapseAccordionItem() {
+  async collapse() {
     const event = this.tdsToggle.emit({
       expanded: false,
     });
