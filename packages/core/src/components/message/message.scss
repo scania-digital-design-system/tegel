@@ -2,15 +2,15 @@
 
 :host {
   /* Default values */
-  --tds-message-background: var(--background-elevation-layer-03);
+  --tds-message-background: var(--color-background-layer-03);
 
   /* Variant values */
   .tds-mode-variant-primary {
-    --tds-message-background: var(--background-elevation-layer-03);
+    --tds-message-background: var(--color-background-layer-03);
   }
 
   .tds-mode-variant-secondary {
-    --tds-message-background: var(--background-elevation-layer-02);
+    --tds-message-background: var(--color-background-layer-02);
   }
 
   .wrapper {
@@ -20,35 +20,35 @@
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--system-info-default);
+      border-left: 4px solid var(--color-system-info-subtle);
 
       tds-icon {
-        color: var(--system-info-default);
+        color: var(--color-system-info-subtle);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--system-success-default);
+      border-left: 4px solid var(--color-system-success-subtle);
 
       tds-icon {
-        color: var(--system-success-default);
+        color: var(--color-system-success-subtle);
       }
     }
 
     &.error {
-      background-color: var(--system-danger-subtle);
-      border-left: 4px solid var(--system-danger-default);
+      background-color: var(--color-system-danger-discrete);
+      border-left: 4px solid var(--color-system-danger-subtle);
 
       tds-icon {
-        color: var(--system-danger-default);
+        color: var(--color-system-danger-subtle);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--system-warning-default);
+      border-left: 4px solid var(--color-system-warning-subtle);
 
       tds-icon {
-        color: var(--system-warning-default);
+        color: var(--color-system-warning-subtle);
       }
     }
 
@@ -63,7 +63,7 @@
 
       &.error {
         .header {
-          color: var(--system-danger-default);
+          color: var(--color-system-danger-default);
         }
       }
     }
@@ -77,7 +77,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: var(--foreground-text-strong);
+    color: var(--color-foreground-text-strong);
     padding: 2px 0;
 
     .header {
@@ -85,7 +85,7 @@
     }
 
     .extended-message {
-      color: var(--foreground-text-strong);
+      color: var(--color-foreground-text-strong);
       @include detail-02;
     }
   }
