@@ -1,4 +1,3 @@
-import { Placement } from '@popperjs/core';
 import { Component, Element, Event, EventEmitter, Prop, State, h } from '@stencil/core';
 import {
   add,
@@ -20,6 +19,23 @@ import {
 } from 'date-fns';
 import { TdsTextFieldCustomEvent } from '../../../../index';
 import generateUniqueId from '../../../../utils/generateUniqueId';
+
+type Placement =
+  | 'auto'
+  | 'auto-end'
+  | 'auto-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left'
+  | 'left-end'
+  | 'left-start'
+  | 'right'
+  | 'right-end'
+  | 'right-start'
+  | 'top'
+  | 'top-end'
+  | 'top-start';
 
 @Component({
   tag: 'tds-date-range-picker',

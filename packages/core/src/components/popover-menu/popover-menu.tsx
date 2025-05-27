@@ -1,7 +1,23 @@
 import { Component, Host, h, Prop, Element, State, Method } from '@stencil/core';
-import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
+
+type Placement =
+  | 'auto'
+  | 'auto-end'
+  | 'auto-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left'
+  | 'left-end'
+  | 'left-start'
+  | 'right'
+  | 'right-end'
+  | 'right-start'
+  | 'top'
+  | 'top-end'
+  | 'top-start';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the list of menu items.
@@ -70,9 +86,6 @@ export class TdsPopoverMenu {
           selector={this.selector}
           referenceEl={this.referenceEl}
           show={this.show}
-          placement={this.placement}
-          offsetSkidding={this.offsetSkidding}
-          offsetDistance={this.offsetDistance}
           ref={(el) => {
             this.childRef = el;
           }}

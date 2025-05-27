@@ -1,8 +1,23 @@
 import { Component, Host, h, Prop, Element, Method, State } from '@stencil/core';
-import type { Placement } from '@popperjs/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
 
+type Placement =
+  | 'auto'
+  | 'auto-end'
+  | 'auto-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left'
+  | 'left-end'
+  | 'left-start'
+  | 'right'
+  | 'right-end'
+  | 'right-start'
+  | 'top'
+  | 'top-end'
+  | 'top-start';
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the contents of the popover.
  */
@@ -30,7 +45,7 @@ export class TdsPopoverCanvas {
    */
   @Prop() show: boolean = null;
 
-  /** Decides the placement of the Popover Canvas. See https://popper.js.org/docs/v2/constructors/#placement */
+  /** Decides the placement of the Popover Canvas */
   @Prop() placement: Placement = 'auto';
 
   /** Sets the offset skidding */
@@ -42,7 +57,7 @@ export class TdsPopoverCanvas {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
-  /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
+  /** Array of modifier objects (legacy prop, not used with native popover) */
   @Prop() modifiers: Object[] = [];
 
   /** Role of the popover canvas component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
@@ -74,10 +89,6 @@ export class TdsPopoverCanvas {
           selector={this.selector}
           referenceEl={this.referenceEl}
           show={this.show}
-          placement={this.placement}
-          offsetSkidding={this.offsetSkidding}
-          offsetDistance={this.offsetDistance}
-          modifiers={this.modifiers}
           trigger={'click'}
           ref={(el) => {
             this.childRef = el;

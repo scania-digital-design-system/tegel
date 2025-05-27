@@ -1,7 +1,23 @@
-import { Component, Element, h, Host, Listen, Prop } from '@stencil/core';
-import type { Placement } from '@popperjs/core';
+import { Component, Element, h, Host, Listen, Prop, Watch } from '@stencil/core';
 import { Attributes } from '../../types/Attributes';
 import inheritAttributes from '../../utils/inheritAttributes';
+
+type Placement =
+  | 'auto'
+  | 'auto-end'
+  | 'auto-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left'
+  | 'left-end'
+  | 'left-start'
+  | 'right'
+  | 'right-end'
+  | 'right-start'
+  | 'top'
+  | 'top-end'
+  | 'top-start';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the tooltip contents.
@@ -57,32 +73,30 @@ export class TdsTooltip {
 
   border: string;
 
-  popperjsExtraModifiers = [
-    {
-      name: 'positionCalc',
-      enabled: true,
-      phase: 'main',
-
-      fn: ({ state }) => {
-        if (state.placement === 'bottom-start' || state.placement === 'right-start') {
-          this.border = 'top-left';
-        } else if (state.placement === 'bottom-end' || state.placement === 'left-start') {
-          this.border = 'top-right';
-        } else if (state.placement === 'top-end' || state.placement === 'left-end') {
-          this.border = 'bottom-right';
-        } else if (state.placement === 'top-start' || state.placement === 'right-end') {
-          this.border = 'bottom-left';
-        } else if (state.placement === 'bottom' || state.placement === 'top') {
-          this.border = 'default';
-        }
-      },
-    },
-  ];
+  private setBorderFromPlacement(p: Placement) {
+    if (p === 'bottom-start' || p === 'right-start') {
+      this.border = 'top-left';
+    } else if (p === 'bottom-end' || p === 'left-start') {
+      this.border = 'top-right';
+    } else if (p === 'top-end' || p === 'left-end') {
+      this.border = 'bottom-right';
+    } else if (p === 'top-start' || p === 'right-end') {
+      this.border = 'bottom-left';
+    } else if (p === 'bottom' || p === 'top') {
+      this.border = 'default';
+    }
+  }
 
   inheritedAttributes: Attributes = [];
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
+    this.setBorderFromPlacement(this.placement);
+  }
+
+  @Watch('placement')
+  onPlacementChange(newValue: Placement) {
+    this.setBorderFromPlacement(newValue);
   }
 
   determineTrigger() {
@@ -106,7 +120,6 @@ export class TdsTooltip {
           selector={this.selector}
           referenceEl={this.referenceEl}
           trigger={this.determineTrigger()}
-          modifiers={this.popperjsExtraModifiers}
           offsetSkidding={this.offsetSkidding}
           offsetDistance={this.offsetDistance}
           show={this.show}

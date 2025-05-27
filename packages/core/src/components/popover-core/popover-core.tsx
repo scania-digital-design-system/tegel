@@ -11,10 +11,24 @@ import {
   Event,
   Method,
 } from '@stencil/core';
-import { createPopper } from '@popperjs/core';
-import type { Placement, Instance } from '@popperjs/core';
-import generateUniqueId from '../../utils/generateUniqueId';
 import { generateClassList } from '../../utils/classList';
+
+type Placement =
+  | 'auto'
+  | 'auto-end'
+  | 'auto-start'
+  | 'bottom'
+  | 'bottom-end'
+  | 'bottom-start'
+  | 'left'
+  | 'left-end'
+  | 'left-start'
+  | 'right'
+  | 'right-end'
+  | 'right-start'
+  | 'top'
+  | 'top-end'
+  | 'top-start';
 
 @Component({
   tag: 'tds-popover-core',
@@ -52,7 +66,7 @@ export class TdsPopoverCore {
   /** Sets the offset distance */
   @Prop() offsetDistance: number = 8;
 
-  /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
+  /** Array of modifier objects (legacy prop, not used with native popover) */
   @Prop() modifiers: Object[] = [];
 
   /** What triggers the popover to show */
@@ -63,8 +77,6 @@ export class TdsPopoverCore {
   @Prop() autoHide: boolean = true;
 
   @State() renderedShowValue: boolean = false;
-
-  @State() popperInstance: Instance | null;
 
   @State() target?: HTMLElement | null;
 
@@ -152,6 +164,11 @@ export class TdsPopoverCore {
 
   @Watch('isShown')
   onIsShownChange(newValue: boolean) {
+    if (newValue) {
+      this.host.showPopover();
+    } else {
+      this.host.hidePopover();
+    }
     if (newValue && this.openedByKeyboard) {
       // Wait for the next render cycle to ensure the popover is visible
       setTimeout(() => {
@@ -227,24 +244,14 @@ export class TdsPopoverCore {
       this.target = this.selector ? document.querySelector(this.selector) : null;
     }
 
-    this.popperInstance = this.target
-      ? createPopper(this.target, this.host, {
-          strategy: 'fixed',
-          placement: this.placement,
-          modifiers: [
-            {
-              name: 'offset',
-              options: {
-                offset: [this.offsetSkidding, this.offsetDistance],
-              },
-            },
-            ...this.modifiers,
-          ],
-        })
-      : null;
-
-    if (!this.popperInstance) {
+    if (!this.target) {
       console.error(`Could not initialize: reference element not found.`);
+    } else {
+      if (!this.target.id) {
+        this.target.id = `tds-popover-anchor-${this.uuid}`;
+      }
+      this.host.setAttribute('anchor', this.target.id);
+      this.host.setAttribute('popover', 'auto');
     }
 
     if (trigger === 'click' && this.show === null) {
@@ -285,8 +292,6 @@ export class TdsPopoverCore {
     this.target?.removeEventListener('mouseleave', this.handleHide);
     this.host?.removeEventListener('mouseenter', this.handleShow);
     this.host?.removeEventListener('mouseleave', this.handleHide);
-
-    this.popperInstance?.destroy();
   }
 
   connectedCallback() {
@@ -306,6 +311,7 @@ export class TdsPopoverCore {
 
   /* To enable initial loading of a component if user controls show prop */
   componentWillLoad() {
+    this.host.setAttribute('popover', 'auto');
     // Ensure initial visibility is handled properly
     if (this.show === true || this.defaultShow === true) {
       this.setIsShown(true);
@@ -315,11 +321,6 @@ export class TdsPopoverCore {
   }
 
   componentDidRender() {
-    if (this.isShown && !this.renderedShowValue && !this.disableLogic) {
-      // Here we update the popper position since its position is wrong
-      // before it is rendered.
-      this.popperInstance.update();
-    }
     this.renderedShowValue = this.isShown;
   }
 
@@ -343,6 +344,7 @@ export class TdsPopoverCore {
         role={this.host.getAttribute('role')}
         class={classList}
         id={`tds-popover-core-${this.uuid}`}
+        popover="auto"
       >
         <slot></slot>
       </Host>
