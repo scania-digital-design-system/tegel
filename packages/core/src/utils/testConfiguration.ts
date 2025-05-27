@@ -67,11 +67,11 @@ export const setupPage = async (page, config, componentTestPath, componentName) 
 
     const elements = await elementLocator.all();
 
-    elements.forEach(async (element) => {
+    for (const element of elements) {
       await element.evaluate((elem, modeVariant) => {
         elem.setAttribute('mode-variant', modeVariant);
       }, config.modeVariant);
-    });
+    }
   }
 };
 
