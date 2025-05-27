@@ -150,6 +150,9 @@ const ModalTemplate = ({
   <!-- The script below is just for demo purposes -->
   <script>
     modal = document.querySelector('tds-modal')
+    modal.addEventListener('tdsOpen', (event) => {
+      console.log(event)
+    })
     modal.addEventListener('tdsClose', (event) => {
       console.log(event)
     })
