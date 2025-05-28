@@ -67,28 +67,32 @@ const primitiveConfig = {
       transformGroup: 'tokens-studio',
       transforms: ["attribute/cti", "name/kebab"],
       buildPath: 'build/scss/',
-      files: [{
-        destination: 'variables-primitive.scss',
-        format: 'css/variables',
-        filter: token => {
-          // Include all primitive tokens
-          if (token.filePath.includes('primitive')) {
-            return true;
+      files: [
+        {
+          destination: 'scania/variables-primitive.scss',
+          format: 'css/variables',
+          filter: token => {
+            // Only include Scania primitive tokens
+            return token.name.startsWith('scania-');
+          },
+          options: {
+            showFileHeader: true,
+            outputReferences: true
           }
-          // Include typography tokens that have direct values (not references)
-          if (token.name.startsWith('text-') && 
-              typeof token.value === 'string' && 
-              !token.value.startsWith('var(--') &&
-              !token.value.startsWith('{')) {
-            return true;
-          }
-          return false;
         },
-        options: {
-          showFileHeader: true,
-          outputReferences: true
+        {
+          destination: 'traton/variables-primitive.scss',
+          format: 'css/variables',
+          filter: token => {
+            // Only include Traton primitive tokens
+            return token.name.startsWith('traton-');
+          },
+          options: {
+            showFileHeader: true,
+            outputReferences: true
+          }
         }
-      }]
+      ]
     }
   }
 };
@@ -101,12 +105,14 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
     ? `.${themeName}, .tds-mode-${themeName.split('-')[1]}`
     : `.${themeName}`;
 
-  // Special selector for light color tokens
-  const colorTokensSelector = themeName.includes('light')
-    ? themeName.startsWith('scania')
+  // Special selector for color tokens
+  const colorTokensSelector = themeName.startsWith('scania')
+    ? themeName.includes('light')
       ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
-      : `.traton .tds-mode-light`
-    : selector;
+      : `.tds-dark-mode,\n.scania .tds-dark-mode`
+    : themeName.includes('light')
+      ? `.traton .tds-mode-light`
+      : `.traton .tds-mode-dark`;
 
   configs[themeName] = {
     source: [
