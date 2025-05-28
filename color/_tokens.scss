@@ -15,7 +15,7 @@ $white: (
 );
 $grey: (
   grey-1000: #000000,
-  grey-950: #0E1013,
+  grey-950: #0B0C0F,
   grey-900: #15181D,
   grey-850: #1C222B,
   grey-800: #242C37,
@@ -87,7 +87,7 @@ $yellow: (
   yellow-50: #F9EEC3,
 );
 
-$original-colors: map-collect($black, $white, $grey, $blue, $red, $green, $orange);
+$original-colors: map-collect($black, $white, $grey, $blue, $red, $green, $yellow);
 
 //TODO: Should we keep brand pallete?
 $brand-pallete: (
