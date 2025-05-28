@@ -5,6 +5,36 @@ import { join } from 'path';
 
 register(StyleDictionary); // Register custom transforms
 
+// Function to clean component names
+function cleanComponentName(name) {
+  return name
+    .replace(/[🔴🔵❓]/g, '') // Remove emojis
+    .trim() // Remove leading/trailing spaces
+    .replace(/\s+/g, '-'); // Replace spaces with hyphens
+}
+
+// Register custom format for component files
+StyleDictionary.registerFormat({
+  name: 'component/variables',
+  format: function(dictionary, config) {
+    const componentName = cleanComponentName(dictionary.allTokens[0]?.path[1] || '');
+    return `/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+.${componentName} {
+${dictionary.allTokens.map(token => {
+  // Clean the variable name by removing emojis and spaces, but keep the component prefix
+  const variableName = ['component', ...token.path.slice(1)]
+    .map(part => part.replace(/[🔴🔵❓]/g, '').trim().replace(/\s+/g, '-'))
+    .join('-');
+  return `  --${variableName}: ${token.value || 'inherit'};`;
+}).join('\n')}
+}
+`;
+  }
+});
+
 // Read themes configuration
 const themesPath = join(process.cwd(), 'tokens-json', '$themes.json');
 const themes = JSON.parse(readFileSync(themesPath, 'utf8'));
@@ -49,29 +79,169 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
         transformGroup: 'tokens-studio',
         transforms: ["attribute/cti", "name/kebab"],
         buildPath: 'build/scss/',
-        files: [{
-          destination: `variables-${themeName}.scss`,
-          format: 'css/variables',
-          filter: token => {
-            // Always include tokens from semantic files
-            if (token.filePath.includes('semantic')) {
-              return true;
+        files: [
+          {
+            destination: `variables-${themeName}.scss`,
+            format: 'css/variables',
+            filter: token => {
+              // Exclude component tokens
+              if (token.path[0] === 'component') {
+                return false;
+              }
+              // Always include tokens from semantic files
+              if (token.filePath.includes('semantic')) {
+                return true;
+              }
+              // For primitive tokens, check if they're referenced by semantic tokens
+              if (token.filePath.includes('primitive')) {
+                // Only include primitive tokens that are referenced by semantic tokens
+                // and match the theme's namespace (scania or traton)
+                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
+                return token.isReferenced && token.name.startsWith(themePrefix);
+              }
+              return false;
+            },
+            options: {
+              showFileHeader: true,
+              outputReferences: true,
+              selector
             }
-            // For primitive tokens, check if they're referenced by semantic tokens
-            if (token.filePath.includes('primitive')) {
-              // Only include primitive tokens that are referenced by semantic tokens
-              // and match the theme's namespace (scania or traton)
-              const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
-              return token.isReferenced && token.name.startsWith(themePrefix);
-            }
-            return false;
-          },
-          options: {
-            showFileHeader: true,
-            outputReferences: true,
-            selector
           }
-        }]
+        ]
+      },
+      component: {
+        transformGroup: 'tokens-studio',
+        buildPath: 'build/scss/',
+        files: [
+          {
+            destination: 'component/header.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1].includes('header'),
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/side-menu.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1].includes('side menu'),
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/table.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'table',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/stepper.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'stepper',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/spinner.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'spinner',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/footer.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'footer',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/dropdown.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'dropdown',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/badge.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'badge',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/button.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'button',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/card.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1].includes('card'),
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/chip.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'chip',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/logo.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'logo',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/shadow.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'shadow',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/cookie.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'cookie',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/text.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1] === 'text',
+            options: {
+              showFileHeader: true
+            }
+          },
+          {
+            destination: 'component/input-field.scss',
+            format: 'component/variables',
+            filter: token => token.path[0] === 'component' && token.path[1].includes('input-field'),
+            options: {
+              showFileHeader: true
+            }
+          }
+        ]
       }
     }
   };

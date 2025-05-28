@@ -2,6 +2,12 @@ import { execSync } from 'child_process';
 import StyleDictionary from 'style-dictionary';
 import { register } from '@tokens-studio/sd-transforms';
 import config from './style-dictionary.config.mjs';
+import { mkdirSync } from 'fs';
+import { join } from 'path';
+
+// Create component directory if it doesn't exist
+const componentDir = join(process.cwd(), 'build', 'scss', 'component');
+mkdirSync(componentDir, { recursive: true });
 
 // Transform tokens to remove 'cy' from font family names
 console.log('Transforming tokens...');
