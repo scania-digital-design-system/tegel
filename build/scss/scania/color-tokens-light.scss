@@ -2,7 +2,9 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.scania-light, .tds-mode-light {
+:root,
+.tds-mode-light,
+.scania .tds-mode-light {
   --color-background-base: var(--scania-color-grey-00);
   --color-background-accent-primary-default: var(--scania-color-blue-600);
   --color-background-accent-primary-disabled: var(--scania-color-grey-50);
