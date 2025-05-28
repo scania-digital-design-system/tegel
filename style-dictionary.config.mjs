@@ -70,6 +70,20 @@ const primitiveConfig = {
       files: [{
         destination: 'variables-primitive.scss',
         format: 'css/variables',
+        filter: token => {
+          // Include all primitive tokens
+          if (token.filePath.includes('primitive')) {
+            return true;
+          }
+          // Include typography tokens that have direct values (not references)
+          if (token.name.startsWith('text-') && 
+              typeof token.value === 'string' && 
+              !token.value.startsWith('var(--') &&
+              !token.value.startsWith('{')) {
+            return true;
+          }
+          return false;
+        },
         options: {
           showFileHeader: true,
           outputReferences: true
@@ -87,6 +101,13 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
     ? `.${themeName}, .tds-mode-${themeName.split('-')[1]}`
     : `.${themeName}`;
 
+  // Special selector for light color tokens
+  const colorTokensSelector = themeName.includes('light')
+    ? themeName.startsWith('scania')
+      ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
+      : `.traton .tds-mode-light`
+    : selector;
+
   configs[themeName] = {
     source: [
       'tokens-json/primitive/default.json',
@@ -102,8 +123,11 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
             destination: `variables-${themeName.split('-')[1]}.scss`,
             format: 'css/variables',
             filter: token => {
-              // Exclude component tokens, color tokens, and dimension tokens
-              if (token.path[0] === 'component' || token.path[0] === 'color' || token.path[0] === 'dimension') {
+              // Exclude component tokens, color tokens, dimension tokens, and typography tokens
+              if (token.path[0] === 'component' || 
+                  token.path[0] === 'color' || 
+                  token.path[0] === 'dimension' ||
+                  token.name.startsWith('text-')) {
                 return false;
               }
               // Always include tokens from semantic files
@@ -149,7 +173,7 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
             options: {
               showFileHeader: true,
               outputReferences: true,
-              selector
+              selector: colorTokensSelector
             }
           },
           {
@@ -158,6 +182,37 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
             filter: token => {
               // Only include dimension tokens
               if (token.path[0] !== 'dimension') {
+                return false;
+              }
+              // Always include tokens from semantic files
+              if (token.filePath.includes('semantic')) {
+                return true;
+              }
+              // For primitive tokens, check if they're referenced by semantic tokens
+              if (token.filePath.includes('primitive')) {
+                // Only include primitive tokens that are referenced by semantic tokens
+                // and match the theme's namespace (scania or traton)
+                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
+                return token.isReferenced && token.name.startsWith(themePrefix);
+              }
+              return false;
+            },
+            options: {
+              showFileHeader: true,
+              outputReferences: true,
+              selector: `.${brand}`
+            }
+          },
+          {
+            destination: `typography.scss`,
+            format: 'css/variables',
+            filter: token => {
+              // Only include typography tokens that reference semantic values
+              if (!token.name.startsWith('text-')) {
+                return false;
+              }
+              // Only include font-family and font-weight tokens
+              if (!token.name.includes('-font-family') && !token.name.includes('-font-weight')) {
                 return false;
               }
               // Always include tokens from semantic files
