@@ -65,6 +65,7 @@ const primitiveConfig = {
 // Create theme configurations dynamically
 const themeConfigs = semanticThemes.reduce((configs, theme) => {
   const themeName = theme.name;
+  const brand = themeName.startsWith('scania') ? 'scania' : 'traton';
   const selector = themeName.startsWith('scania') 
     ? `.${themeName}, .tds-mode-${themeName.split('-')[1]}`
     : `.${themeName}`;
@@ -78,10 +79,10 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
       scss: {
         transformGroup: 'tokens-studio',
         transforms: ["attribute/cti", "name/kebab"],
-        buildPath: 'build/scss/',
+        buildPath: `build/scss/${brand}/`,
         files: [
           {
-            destination: `variables-${themeName}.scss`,
+            destination: `variables-${themeName.split('-')[1]}.scss`,
             format: 'css/variables',
             filter: token => {
               // Exclude component tokens
