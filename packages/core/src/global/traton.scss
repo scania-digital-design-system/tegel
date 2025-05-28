@@ -8,3 +8,64 @@
 /* Typography */
 @import '../../../../typography/traton-fonts';
 @import '../../../../typography/tokens/typography-traton';
+
+/* Traton primitive tokens */
+@import '../../../../build/scss/traton/variables-primitive';
+
+/* Traton color tokens */
+@import '../../../../build/scss/traton/color-tokens-light';
+@import '../../../../build/scss/traton/color-tokens-dark';
+
+/* Traton dimension tokens */
+@import '../../../../build/scss/traton/dimensions';
+
+/* Traton typography tokens */
+@import '../../../../build/scss/traton/typography';
+
+/* Traton variables */
+@import '../../../../build/scss/traton/variables-light';
+@import '../../../../build/scss/traton/variables-dark';
+
+/* Traton specific imports */
+@import '../../../../color/traton-color-primitives';
+@import '../../../../color/traton-brand-usage';
+@import '../../../../typography/tokens/typography-traton';
+@import '../../../../spacing/traton-units';
+@import '../../../../typography/traton-fonts';
+@import '../../../../typography/traton-fonts-vars';
+@import '../../../../typography/traton-fonts-selectors';
+
+/* Component variables */
+@import '../../../../build/scss/component/accordion';
+@import '../../../../build/scss/component/banner';
+@import '../../../../build/scss/component/block';
+@import '../../../../build/scss/component/breadcrumbs';
+@import '../../../../build/scss/component/button';
+@import '../../../../build/scss/component/card';
+@import '../../../../build/scss/component/checkbox';
+@import '../../../../build/scss/component/chip';
+@import '../../../../build/scss/component/table';
+@import '../../../../build/scss/component/datetime';
+@import '../../../../build/scss/component/divider';
+@import '../../../../build/scss/component/dropdown';
+@import '../../../../build/scss/component/dropdown-option';
+@import '../../../../build/scss/component/footer';
+@import '../../../../build/scss/component/header-item';
+@import '../../../../build/scss/component/header';
+@import '../../../../build/scss/component/link';
+@import '../../../../build/scss/component/popover-canvas';
+@import '../../../../build/scss/component/popover-menu';
+@import '../../../../build/scss/component/radio-button';
+@import '../../../../build/scss/component/side-menu-item';
+@import '../../../../build/scss/component/side-menu';
+@import '../../../../build/scss/component/slider';
+@import '../../../../build/scss/component/stepper';
+@import '../../../../build/scss/component/folder-tabs';
+@import '../../../../build/scss/component/inline-tabs';
+@import '../../../../build/scss/component/navigation-tabs';
+@import '../../../../build/scss/component/textarea';
+@import '../../../../build/scss/component/text-field';
+@import '../../../../build/scss/component/toast';
+@import '../../../../build/scss/component/toggle';
+@import '../../../../build/scss/component/tooltip';
+
