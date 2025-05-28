@@ -17,19 +17,36 @@ function cleanComponentName(name) {
 StyleDictionary.registerFormat({
   name: 'component/variables',
   format: function(dictionary, config) {
+    if (!dictionary.allTokens || dictionary.allTokens.length === 0) {
+      return `/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+.text {
+}
+`;
+    }
+
     const componentName = cleanComponentName(dictionary.allTokens[0]?.path[1] || '');
+    
+    // Build the variables string with explicit newlines and indentation
+    const variablesString = dictionary.allTokens
+      .map(token => {
+        const pathParts = token.path.slice(1); // Remove 'component'
+        const variableName = ['component', ...pathParts]
+          .map(part => part.replace(/[🔴🔵❓]/g, '').trim().replace(/\s+/g, '-'))
+          .join('-');
+        return `  --${variableName}: ${token.value || 'inherit'};`;
+      })
+      .join('\n');
+
+    // Build the complete file content as a single string
     return `/**
  * Do not edit directly, this file was auto-generated.
  */
 
 .${componentName} {
-${dictionary.allTokens.map(token => {
-  // Clean the variable name by removing emojis and spaces, but keep the component prefix
-  const variableName = ['component', ...token.path.slice(1)]
-    .map(part => part.replace(/[🔴🔵❓]/g, '').trim().replace(/\s+/g, '-'))
-    .join('-');
-  return `  --${variableName}: ${token.value || 'inherit'};`;
-}).join('\n')}
+${variablesString}
 }
 `;
   }
@@ -85,8 +102,35 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
             destination: `variables-${themeName.split('-')[1]}.scss`,
             format: 'css/variables',
             filter: token => {
-              // Exclude component tokens
-              if (token.path[0] === 'component') {
+              // Exclude component tokens and color tokens
+              if (token.path[0] === 'component' || token.path[0] === 'color') {
+                return false;
+              }
+              // Always include tokens from semantic files
+              if (token.filePath.includes('semantic')) {
+                return true;
+              }
+              // For primitive tokens, check if they're referenced by semantic tokens
+              if (token.filePath.includes('primitive')) {
+                // Only include primitive tokens that are referenced by semantic tokens
+                // and match the theme's namespace (scania or traton)
+                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
+                return token.isReferenced && token.name.startsWith(themePrefix);
+              }
+              return false;
+            },
+            options: {
+              showFileHeader: true,
+              outputReferences: true,
+              selector
+            }
+          },
+          {
+            destination: `color-tokens-${themeName.split('-')[1]}.scss`,
+            format: 'css/variables',
+            filter: token => {
+              // Only include color tokens
+              if (token.path[0] !== 'color') {
                 return false;
               }
               // Always include tokens from semantic files
@@ -229,7 +273,13 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
           {
             destination: 'component/text.scss',
             format: 'component/variables',
-            filter: token => token.path[0] === 'component' && token.path[1] === 'text',
+            filter: token => {
+              const isTextComponent = token.path[0] === 'component' && token.path[1] === 'text';
+              if (isTextComponent) {
+                console.log('Found text component token:', token.path);
+              }
+              return isTextComponent;
+            },
             options: {
               showFileHeader: true
             }
