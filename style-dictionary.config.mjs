@@ -102,8 +102,8 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
             destination: `variables-${themeName.split('-')[1]}.scss`,
             format: 'css/variables',
             filter: token => {
-              // Exclude component tokens and color tokens
-              if (token.path[0] === 'component' || token.path[0] === 'color') {
+              // Exclude component tokens, color tokens, and dimension tokens
+              if (token.path[0] === 'component' || token.path[0] === 'color' || token.path[0] === 'dimension') {
                 return false;
               }
               // Always include tokens from semantic files
@@ -150,6 +150,33 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
               showFileHeader: true,
               outputReferences: true,
               selector
+            }
+          },
+          {
+            destination: `dimensions.scss`,
+            format: 'css/variables',
+            filter: token => {
+              // Only include dimension tokens
+              if (token.path[0] !== 'dimension') {
+                return false;
+              }
+              // Always include tokens from semantic files
+              if (token.filePath.includes('semantic')) {
+                return true;
+              }
+              // For primitive tokens, check if they're referenced by semantic tokens
+              if (token.filePath.includes('primitive')) {
+                // Only include primitive tokens that are referenced by semantic tokens
+                // and match the theme's namespace (scania or traton)
+                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
+                return token.isReferenced && token.name.startsWith(themePrefix);
+              }
+              return false;
+            },
+            options: {
+              showFileHeader: true,
+              outputReferences: true,
+              selector: `.${brand}`
             }
           }
         ]
