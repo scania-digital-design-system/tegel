@@ -1,35 +1,30 @@
 :root,
 .tds-mode-light {
-  --tds-checkbox-color: var(--tds-grey-900);
+  --tds-checkbox-color: var(--tds-grey-950);
   --tds-checkbox-interaction-01: var(--tds-blue-800);
   --tds-checkbox-interaction-02: var(--tds-white);
-  --tds-checkbox-background-hover: var(--tds-blue-800);
-  --tds-checkbox-background-focus: var(--tds-blue-800);
-  --tds-checkbox-background-opacity-hover: 0.12;
-  --tds-checkbox-background-opacity-focus: 0.24;
-  --tds-checkbox-disabled: var(--tds-grey-400);
+  --tds-checkbox-background-hover: var(--tds-grey-350);
+  --tds-checkbox-background-focus: var(--tds-blue-400);
+  --tds-checkbox-disabled: var(--tds-grey-250);
   --tds-checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   --tds-checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23ffffff'/></svg>");
-  --tds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23b0b7c4' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  --tds-checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23b0b7c4'/></svg>");
-  --tds-checkbox-border-color-disabled-after: var(--tds-grey-500);
-  --tds-checkbox-color-disabled-after: var(--tds-grey-500);
+  --tds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%23B4BECD' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  --tds-checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%23B4BECD'/></svg>");
+  --tds-checkbox-border-color-disabled-after: var(--tds-grey-250);
+  --tds-checkbox-color-disabled-after: var(--tds-grey-250);
 
-  // TODO - Add correct colors for dark theme
   .tds-mode-dark {
-    --tds-checkbox-color: var(--tds-white);
+    --tds-checkbox-color: var(--tds-grey-50);
     --tds-checkbox-interaction-01: var(--tds-white);
-    --tds-checkbox-interaction-02: var(--tds-grey-958);
-    --tds-checkbox-background-hover: var(--tds-grey-600);
-    --tds-checkbox-background-focus: var(--tds-grey-600);
-    --tds-checkbox-background-opacity-hover: 0.48;
-    --tds-checkbox-background-opacity-focus: 0.72;
-    --tds-checkbox-disabled: white;
+    --tds-checkbox-interaction-02: var(--tds-grey-950);
+    --tds-checkbox-background-hover: var(--tds-grey-350);
+    --tds-checkbox-background-focus: var(--tds-blue-300);
+    --tds-checkbox-disabled: var(--tds-grey-500);
     --tds-checkbox-background-img: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%230D0F13' stroke-linecap='round' stroke-linejoin='round'/></svg>");
     --tds-checkbox-background-img-indeterminate: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%230D0F13'/></svg>");
-    --tds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%2356657A' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-    --tds-checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%2356657A'/></svg>");
-    --tds-checkbox-border-color-disabled-after: var(--tds-grey-700);
-    --tds-checkbox-color-disabled-after: var(--tds-grey-700);
+    --tds-checkbox-background-img-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'> <path d='M1 2.33333L3.4 5C4.80589 3.4379 5.59411 2.5621 7 1' stroke='%235F728C' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    --tds-checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%235F728C'/></svg>");
+    --tds-checkbox-border-color-disabled-after: var(--tds-grey-500);
+    --tds-checkbox-color-disabled-after: var(--tds-grey-500);
   }
 }
