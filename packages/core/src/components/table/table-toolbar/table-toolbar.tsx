@@ -19,6 +19,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 ];
 
 /**
+ * @slot start - Slot for the start (left side) of the Table Toolbar.
  * @slot end - Slot for the end (right side) of the Table Toolbar.
  */
 @Component({
@@ -130,9 +131,15 @@ export class TdsTableToolbar {
         aria-labelledby="table-toolbar-title"
       >
         <div class="tds-table__upper-bar-flex">
-          <caption id="table-toolbar-title" class="tds-table__title">
-            {this.tableTitle}
-          </caption>
+          <div class="tds-table__actionbar-left">
+            {this.tableTitle && (
+              <caption id="table-toolbar-title" class="tds-table__title">
+                {this.tableTitle}
+              </caption>
+            )}
+            <slot name="start" />
+          </div>
+
           <div class="tds-table__actionbar">
             {this.filter && (
               <div class="tds-table__searchbar">
