@@ -3,27 +3,7 @@
 .divider {
   @include tds-box-sizing;
 
-  background-color: var(--tds-divider-background);
-
-  &.discrete {
-    background-color: var(--tds-divider-background-discrete);
-  }
-
-  &.subtle {
-    background-color: var(--tds-divider-background-subtle);
-  }
-
-  &.soft {
-    background-color: var(--tds-divider-background-soft);
-  }
-
-  &.defined {
-    background-color: var(--tds-divider-background-defined);
-  }
-
-  &.dark-blue {
-    background-color: var(--tds-divider-background-dark-blue);
-  }
+  background-color: var(--divider-color);
 
   &.horizontal {
     width: 100%;

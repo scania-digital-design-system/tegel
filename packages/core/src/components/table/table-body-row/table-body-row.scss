@@ -1,13 +1,14 @@
 @import '../../../mixins/box-sizing';
+@import '../../../mixins/focus-state';
 
 :host(.tds-table__row) {
   @include tds-box-sizing;
 
+  background-color: var(--table-body-row);
+  border-bottom: 1px solid var(--table-divider);
+  color: var(--table-text);
   display: table-row;
-  border-bottom: 1px solid var(--tds-table-divider);
-  background-color: var(--tds-table-body-row-background);
   transition: background-color 200ms ease;
-  color: var(--tds-table-color);
 
   .tds-table__body-cell--checkbox {
     min-width: 48px;
@@ -17,15 +18,15 @@
 }
 
 :host(.tds-table__row:hover) {
-  background-color: var(--tds-table-body-row-background-hover);
+  background-color: var(--table-body-row-hover);
 }
 
 :host(.tds-table__row--selected) {
-  background-color: var(--tds-table-body-row-background-selected);
+  background-color: var(--table-body-row-selected);
 }
 
 :host(.tds-table__row--selected:hover) {
-  background-color: var(--tds-table-body-row-background-selected-hover);
+  background-color: var(--table-body-row-selected-hover);
 }
 
 :host(.tds-table__row--hidden) {
@@ -34,7 +35,6 @@
 
 :host(.tds-table__row--expended) {
   width: 100%;
-  background-color: pink;
 }
 
 :host {
@@ -57,7 +57,7 @@
 
 :host(.tds-table--divider) {
   .tds-table__body-cell--checkbox {
-    border-right: 1px solid var(--tds-table-divider);
+    border-right: 1px solid var(--table-divider);
   }
 }
 
@@ -66,5 +66,5 @@
 }
 
 :host(.tds-table__row--clickable:focus-visible) {
-  outline: var(--focus-outline, 2px solid blue);
+  @include tds-focus-state;
 }

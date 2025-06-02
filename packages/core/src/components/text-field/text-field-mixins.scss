@@ -1,0 +1,55 @@
+@import '../../../../../typography/utilities/typography-utility';
+
+// Mixins
+@mixin text-field-base {
+  all: unset;
+  border-radius: var(--text-field-border-radius);
+  background-color: var(--text-field-background);
+  color: var(--text-field-text);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+
+  &::placeholder {
+    color: var(--text-field-placeholder);
+  }
+
+  &:disabled {
+    background-color: var(--text-field-background-disabled);
+    color: var(--text-field-text-disabled);
+    user-select: none;
+    pointer-events: none;
+
+    &::placeholder {
+      color: var(--text-field-placeholder-disabled);
+    }
+
+    ~ .text-field-label-inside {
+      color: var(--text-field-label-disabled);
+    }
+  }
+}
+
+@mixin placeholder-label {
+  &::placeholder {
+    color: transparent;
+  }
+
+  ::placeholder {
+    color: transparent;
+  }
+
+  &:focus::placeholder {
+    transition: color 0.35s ease;
+    color: var(--text-field-placeholder);
+  }
+}
+
+@mixin box-shadow($state: '') {
+  $suffix: if($state != '', '-#{$state}', '');
+
+  box-shadow: var(--text-field-box-shadow#{$suffix});
+}

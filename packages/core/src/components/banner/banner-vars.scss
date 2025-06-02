@@ -1,40 +1,19 @@
-:root,
-.tds-mode-light {
+tds-banner {
   // Banner text color
-  --tds-banner-text-color: var(--tds-grey-950);
+  --banner-text: var(--color-foreground-text-strong);
 
   // Banner "X" color
-  --tds-banner-x-color: var(--tds-grey-950);
+  --banner-close-icon: var(--color-foreground-icon-strong);
 
   // Type: Default
-  --tds-banner-background-default: var(--tds-grey-150);
-  --tds-banner-prefix-default-color: var(--tds-grey-950);
+  --banner-background-default: var(--color-background-layer-01);
+  --banner-prefix-default: var(--color-foreground-icon-strong);
 
   // Type: Info
-  --tds-banner-background-info: var(--tds-blue-100);
-  --tds-banner-prefix-info-color: var(--tds-blue-400);
+  --banner-background-info: var(--color-system-info-discrete);
+  --banner-prefix-info: var(--color-system-info-default);
 
   // Type: Error
-  --tds-banner-background-error: var(--tds-red-50);
-  --tds-banner-prefix-error-color: var(--tds-red-400);
-}
-
-.tds-mode-dark {
-  // Banner text color
-  --tds-banner-text-color: var(--tds-grey-50);
-
-  // Banner "X" color
-  --tds-banner-x-color: var(--tds-grey-50);
-
-  // Type: Default
-  --tds-banner-background-default: var(--tds-grey-850);
-  --tds-banner-prefix-default-color: var(--tds-grey-50);
-
-  // Type: Info
-  --tds-banner-background-info: var(--tds-blue-700);
-  --tds-banner-prefix-info-color: var(--tds-blue-300);
-
-  // Type: Error
-  --tds-banner-background-error: var(--tds-red-900);
-  --tds-banner-prefix-error-color: var(--tds-red-300);
+  --banner-background-error: var(--color-system-danger-discrete);
+  --banner-prefix-error: var(--color-system-danger-default);
 }

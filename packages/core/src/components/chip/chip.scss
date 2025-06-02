@@ -1,4 +1,5 @@
 @import '../../mixins/focus-state';
+@import '../../../../../typography/utilities/typography-utility';
 
 /* Styling for slotted content */
 ::slotted(*) {
@@ -19,25 +20,25 @@
     display: inline-flex;
 
     label {
-      background-color: var(--tds-chips-background);
-      color: var(--tds-chips-color);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
+
+      background-color: var(--chips-background);
+      color: var(--chips-text);
       display: inline-flex;
       align-items: center;
-      border-radius: 16px;
+      border-radius: var(--chips-border-radius);
       cursor: pointer;
       white-space: nowrap;
 
       &:hover {
-        background-color: var(--tds-chips-background-hover);
+        background-color: var(--chips-background-hover);
       }
     }
 
     &.disabled {
       label {
-        background-color: var(--tds-chips-background-disabled);
-        color: var(--tds-chips-text-disabled);
+        background-color: var(--chips-background-disabled);
+        color: var(--chips-text-disabled);
         cursor: default;
         pointer-events: none;
       }
@@ -47,13 +48,13 @@
       }
 
       input[type='radio']:checked:disabled + label {
-        background-color: var(--tds-chips-background-active-disabled);
-        color: var(--tds-chips-text-checked-disabled);
+        background-color: var(--chips-background-active);
+        color: var(--chips-text-checked-disabled);
       }
 
       input[type='checkbox']:checked:disabled + label {
-        background-color: var(--tds-chips-background-active-disabled);
-        color: var(--tds-chips-text-checked-disabled);
+        background-color: var(--chips-background-active);
+        color: var(--chips-text-checked-disabled);
       }
     }
 
@@ -118,15 +119,21 @@
     input:focus-visible + label {
       @include tds-focus-state;
 
-      background-color: var(--tds-chips-background-focus);
+      background-color: var(--chips-background-focus);
+    }
+
+    input:checked:focus-visible + label {
+      @include tds-focus-state;
+
+      background-color: var(--chip-focused-on-selected);
     }
 
     input:checked + label {
-      background-color: var(--tds-chips-background-active);
-      color: var(--tds-chips-color-active);
+      background-color: var(--chips-background-active);
+      color: var(--chips-text-active);
 
       &:hover {
-        background-color: var(--tds-chips-background-active-hover);
+        background-color: var(--chips-background-active-hover);
       }
     }
   }

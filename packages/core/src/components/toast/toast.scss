@@ -1,5 +1,6 @@
 @import '../../mixins/focus-state';
 @import '../../mixins/z-index';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host(.hide) {
   display: none;
@@ -10,40 +11,40 @@
   z-index: tds-z-index(toast);
 
   .wrapper {
+    background-color: var(--toast-background);
     display: flex;
     width: calc(352px - 4px);
-    background-color: var(--tds-toast-background-color);
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--tds-toast-icon-color-info);
+      border-left: 4px solid var(--toast-icon-info);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-info);
+        color: var(--toast-icon-info);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--tds-toast-icon-color-success);
+      border-left: 4px solid var(--toast-icon-success);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-success);
+        color: var(--toast-icon-success);
       }
     }
 
     &.error {
-      border-left: 4px solid var(--tds-toast-icon-color-error);
+      border-left: 4px solid var(--toast-icon-error);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-error);
+        color: var(--toast-icon-error);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--tds-toast-icon-color-warning);
+      border-left: 4px solid var(--toast-icon-warning);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-warning);
+        color: var(--toast-icon-warning);
       }
     }
 
@@ -66,7 +67,7 @@
       }
 
       tds-icon {
-        color: var(--tds-toast-dissmiss-color);
+        color: var(--toast-dissmiss);
         padding: 0;
       }
     }
@@ -92,18 +93,16 @@
 
     .header,
     slot[name='header']::slotted(*) {
-      /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-      font: var(--tds-headline-07) !important;
-      letter-spacing: var(--tds-headline-07-ls) !important;
-      color: var(--tds-toast-headline-color);
+      @include headline-07;
+
+      color: var(--toast-headline);
     }
 
     .subheader,
     slot[name='subheader']::slotted(*) {
-      /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-      color: var(--tds-toast-subheadline-color);
-      font: var(--tds-detail-02) !important;
-      letter-spacing: var(--tds-detail-02-ls) !important;
+      @include detail-02;
+
+      color: var(--toast-subheadline);
 
       &.no-link {
         slot::slotted(*) {
@@ -118,10 +117,10 @@
   }
 
   .tds-mode-variant-primary {
-    --tds-toast-background: var(--tds-toast-background-primary);
+    --toast-background: var(--toast-background-primary);
   }
 
   .tds-mode-variant-secondary {
-    --tds-toast-background: var(--tds-toast-background-secondary);
+    --toast-background: var(--toast-background-secondary);
   }
 }

@@ -1,15 +1,16 @@
 @import '../../../mixins/box-sizing';
+@import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host(.tds-table__header-cell) {
   @include tds-box-sizing;
+  @include headline-07;
 
-  font: var(--tds-headline-07);
-  letter-spacing: var(--tds-headline-07-ls);
+  background-color: var(--table-header);
+  border-bottom: 1px solid var(--table-divider);
+  color: var(--table-text);
   display: table-cell;
   text-align: left;
-  color: var(--tds-table-color);
-  background-color: var(--tds-table-header-background);
-  border-bottom: 1px solid var(--tds-table-header-background-hover);
   padding: 0;
   height: 48px;
   min-width: 192px;
@@ -30,6 +31,7 @@
 
 :host(.tds-table__header-cell--sortable) {
   .tds-table__header-button {
+    color: var(--table-text);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -44,7 +46,8 @@
     transition: background-color 200ms ease;
 
     &:focus {
-      outline: 2px solid var(--tds-table-header-btn-focus);
+      @include tds-focus-state;
+
       outline-offset: -2px;
 
       .tds-table__header-button-icon {
@@ -53,21 +56,21 @@
     }
 
     .tds-table__header-button-text {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+      @include headline-07;
+
+      color: var(--table-text);
       text-align: left;
-      color: var(--tds-table-header-btn-color);
     }
 
     .tds-table__header-button-icon {
       /* not to shrink on lot of text */
+      fill: var(--table-text);
       flex: 0 0 16px;
       height: 16px;
       width: 16px;
       opacity: 0;
       transform-origin: center;
       transition: opacity 200ms ease-in, transform 200ms ease;
-      color: var(--tds-table-color);
     }
 
     &:hover {
@@ -80,10 +83,10 @@
 
 :host(.tds-table__header-cell--is-sorted) {
   .tds-table__header-button {
-    background-color: var(--tds-table-header-btn-background);
+    background-color: var(--table-header-button);
 
     &:hover {
-      background-color: var(--tds-table-header-btn-background-hover);
+      background-color: var(--table-header-button-hover);
     }
 
     .tds-table__header-button-icon {
@@ -101,7 +104,7 @@
 }
 
 :host(.tds-table--divider) {
-  border-right: 1px solid var(--tds-table-divider);
+  border-right: 1px solid var(--table-divider);
 }
 
 :host(.tds-table--divider:last-of-type) {

@@ -1,3 +1,5 @@
+@import '../../../../../typography/utilities/typography-utility';
+
 :host {
   display: block;
 
@@ -5,7 +7,7 @@
 
   slot[name='top']::slotted(*) {
     box-sizing: border-box;
-    background-color: var(--tds-footer-top-background);
+    background-color: var(--footer-top-background);
     padding: 40px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -14,7 +16,7 @@
   }
 
   .footer-main {
-    background-color: var(--tds-footer-main-background);
+    background-color: var(--footer-main-background);
     padding: 0 40px;
   }
 
@@ -42,18 +44,17 @@
     padding: 40px 0;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid var(--tds-footer-main-divider);
+    border-top: 1px solid var(--footer-main-divider);
 
     small.copyright {
+      @include detail-02;
+
       margin: 0;
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
-      color: var(--tds-footer-main-copyright);
+      color: var(--footer-main-copyright);
     }
 
     .brand {
-      background-image: var(--tds-background-image-scania-wordmark-white-svg-local),
-        var(--tds-background-image-scania-wordmark-white-svg);
+      background-image: var(--component-footer-logotype-cdn), var(--component-footer-logotype-local);
       background-repeat: no-repeat;
       background-size: 117px;
       background-position: right;
@@ -109,6 +110,14 @@
       .brand {
         width: 100%;
       }
+    }
+
+    .copyright-text {
+      display: none;
+    }
+
+    .copyright-last-part {
+      display: inline-block;
     }
   }
 }

@@ -1,65 +1,75 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  /* Default values */
-  --tds-message-background: var(--background-elevation-layer-03);
-  --tds-message-background-error: var(--system-danger-subtle-03);
-  --tds-message-background-warning: var(--background-elevation-layer-03);
-  --tds-message-background-success: var(--background-elevation-layer-03);
-
   /* Variant values */
   .tds-mode-variant-primary {
-    --tds-message-background: var(--background-elevation-layer-03);
-    --tds-message-background-error: var(--system-danger-subtle-03);
-    --tds-message-background-warning: var(--background-elevation-layer-03);
-    --tds-message-background-success: var(--background-elevation-layer-03);
+    --message-main-background: var(--message-mode-primary-background);
   }
 
   .tds-mode-variant-secondary {
-    --tds-message-background: var(--background-elevation-layer-02);
-    --tds-message-background-error: var(--system-danger-subtle-02);
-    --tds-message-background-warning: var(--background-elevation-layer-02);
-    --tds-message-background-success: var(--background-elevation-layer-02);
+    --message-main-background: var(--message-mode-secondary-background);
+  }
+
+  tds-icon {
+    padding-right: 16px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--message-main-text-color);
+    padding: 2px 0;
+
+    .header {
+      @include headline-07;
+    }
+
+    .extended-message {
+      @include detail-02;
+
+      color: var(--message-main-text-color);
+    }
   }
 
   .wrapper {
     display: flex;
     padding: 16px;
-    background-color: var(--tds-message-background);
+    background-color: var(--message-main-background);
     border-radius: 4px;
+    border-left-width: 4px;
+    border-left-style: solid;
 
     &.information {
-      border-left: 4px solid var(--system-info-default);
+      border-left-color: var(--message-info-border-color);
 
       tds-icon {
-        color: var(--system-info-default);
+        color: var(--message-info-icon-color);
       }
     }
 
     &.success {
-      background-color: var(--tds-message-background-success);
-      border-left: 4px solid var(--system-success-default);
+      border-left-color: var(--message-success-border-color);
 
       tds-icon {
-        color: var(--system-success-default);
+        color: var(--message-success-icon-color);
       }
     }
 
     &.error {
-      background-color: var(--tds-message-background-error);
-      border-left: 4px solid var(--system-danger-default);
+      border-left-color: var(--message-error-border-color);
+      background-color: var(--message-error-background);
 
       tds-icon {
-        color: var(--system-danger-default);
+        color: var(--message-error-icon-color);
       }
     }
 
     &.warning {
-      background-color: var(--tds-message-background-warning);
-      border-left: 4px solid var(--system-warning-default);
+      border-left-color: var(--message-warning-border-color);
 
       tds-icon {
-        color: var(--system-warning-default);
+        color: var(--message-warning-icon-color);
       }
     }
 
@@ -74,30 +84,9 @@
 
       &.error {
         .header {
-          color: var(--system-danger-default);
+          color: var(--message-error-header-text-color);
         }
       }
-    }
-  }
-
-  tds-icon {
-    padding-right: 16px;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    color: var(--foreground-text-strong);
-    padding: 2px 0;
-
-    .header {
-      @include headline-07;
-    }
-
-    .extended-message {
-      color: var(--foreground-text-strong);
-      @include detail-02;
     }
   }
 }

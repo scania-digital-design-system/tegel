@@ -293,7 +293,7 @@ const EditableCellsTemplate = ({
       }>
         <tds-table-body-input-wrapper>
           <label for="truck-input-3">Truck type</label>
-          <input id="truck-input-3" type="text" value="Test value 1" />
+          <input disabled id="truck-input-3" type="text" value="Test value 1" />
         </tds-table-body-input-wrapper>
       </tds-body-cell>
 

@@ -113,6 +113,12 @@ export default {
       description: 'Helper text assists the user with additional information about the Dropdown.',
       control: 'text',
     },
+    errorMessage: {
+      name: 'Error Message',
+      description:
+        'Error message assists the user with additional information about the Dropdown error.',
+      control: 'text',
+    },
     placeholder: {
       name: 'Placeholder',
       type: 'string',
@@ -198,6 +204,7 @@ export default {
     labelText: 'Label text',
     labelPosition: 'Outside',
     helperText: 'Helper text',
+    errorMessage: 'Error message',
     placeholder: 'Placeholder',
     disabled: false,
     openDirection: 'Auto',
@@ -236,6 +243,7 @@ const Template = ({
   labelText,
   labelPosition,
   helperText,
+  errorMessage,
   size,
   error,
   filter,
@@ -287,7 +295,7 @@ const Template = ({
               : ''
           }
           placeholder="${placeholder}"
-          helper="${helperText}"
+          helper="${error ? errorMessage : helperText}"
           size="${sizeLookUp[size]}"
           ${error ? 'error' : ''}
           ${filter ? 'filter' : ''}

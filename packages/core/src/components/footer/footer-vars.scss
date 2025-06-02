@@ -1,43 +1,22 @@
-// TODO - Check hover states
-:root,
-.tds-mode-light {
-  --tds-footer-top-background-primary: var(--tds-grey-50);
-  --tds-footer-top-background-secondary: var(--tds-white);
-  --tds-footer-top-background: var(--tds-footer-top-background-primary);
-  --tds-footer-top-divider: var(--tds-grey-200);
-  --tds-footer-top-links: var(--tds-grey-950);
-  --tds-footer-top-links-header: var(--tds-grey-500);
-  --tds-footer-top-links-background-hover: var(--tds-grey-200);
-  --tds-footer-top-button-active: var(--tds-grey-200);
-  --tds-footer-main-background: var(--tds-blue-800);
-  --tds-footer-main-links: var(--tds-white);
-  --tds-footer-main-divider: var(--tds-blue-700);
-  --tds-footer-main-copyright: var(--tds-grey-300);
+tds-footer {
+  --footer-top-background-primary: var(--color-background-layer-01);
+  --footer-top-background-secondary: var(--color-background-base);
+  --footer-top-background: var(--color-background-layer-01);
+  --footer-top-divider: var(--color-foreground-border-discrete);
+  --footer-top-links-desktop: var(--color-foreground-text-subtle);
+  --footer-top-links: var(--component-footer-text-color-link-text);
+  --footer-top-links-background-hover: var(--color-background-surface-300);
+  --footer-top-button-active: var(--color-background-surface-300);
+  --footer-main-background: var(--component-footer-primary);
+  --footer-main-links: var(--color-foreground-text-accent-brand);
+  --footer-main-divider: var(--component-footer-border);
+  --footer-main-copyright: var(--component-footer-text-color-copyright);
 
-  .tds-mode-variant-primary {
-    --tds-footer-top-background: var(--tds-footer-top-background-primary);
+  &.tds-mode-variant-primary {
+    --footer-top-background: var(--footer-top-background-primary);
   }
 
-  .tds-mode-variant-secondary {
-    --tds-footer-top-background: var(--tds-footer-top-background-secondary);
-  }
-}
-
-.tds-mode-dark {
-  --tds-footer-top-background-primary: var(--tds-grey-850);
-  --tds-footer-top-background: var(--tds-footer-top-background-primary);
-  --tds-footer-top-divider: var(--tds-grey-600);
-  --tds-footer-top-links: var(--tds-grey-50);
-  --tds-footer-top-links-header: var(--tds-grey-300);
-  --tds-footer-top-links-background-hover: var(--tds-grey-600);
-  --tds-footer-top-button-active: var(--tds-grey-600);
-  --tds-footer-main-background: var(--tds-blue-900);
-  --tds-footer-main-links: var(--tds-white);
-  --tds-footer-main-divider: var(--tds-blue-700);
-  --tds-footer-main-copyright: var(--tds-grey-300);
-
-  .tds-mode-variant-primary,
-  .tds-mode-variant-secondary {
-    --tds-footer-top-background: var(--tds-footer-top-background-primary);
+  &.tds-mode-variant-secondary {
+    --footer-top-background: var(--footer-top-background-secondary);
   }
 }

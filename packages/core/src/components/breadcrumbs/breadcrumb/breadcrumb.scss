@@ -3,22 +3,19 @@
 :host([role='listitem']) {
   div {
     ::slotted(*) {
-      color: var(--tds-breadcrumb-color);
+      color: var(--breadcrumb-label);
       text-decoration: none;
     }
 
     &:hover {
       ::slotted(*) {
-        color: var(--tds-breadcrumb-color-hover);
+        color: var(--breadcrumb-hover);
         text-decoration: underline;
       }
     }
 
     ::slotted(*:focus-visible) {
       @include tds-focus-state;
-
-      // Overrides the offset of the tds-focus-state to align with design.
-      outline-offset: -0;
     }
 
     &.current,
@@ -26,7 +23,7 @@
       ::slotted(*) {
         pointer-events: none;
         cursor: default;
-        color: var(--tds-breadcrumb-color-current);
+        color: var(--breadcrumb-current);
       }
 
       &:hover {
@@ -39,7 +36,7 @@
 
     &::after {
       content: '\203A';
-      color: var(--tds-breadcrumb-separator-color);
+      color: var(--breadcrumb-separator-color);
       margin-right: 4px;
       margin-left: 4px;
       display: inline-block;

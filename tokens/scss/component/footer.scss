@@ -9,3 +9,53 @@ tds-footer {
   --component-footer-primary: var(--scania-color-blue-900);
   --component-footer-border: var(--scania-color-blue-800);
 }
+
+:root,
+.scania {
+  tds-footer {
+    --component-footer-primary: var(--scania-color-blue-900);
+    --component-footer-border: var(--scania-color-blue-700);
+    --component-footer-text-color-copyright: var(--color-foreground-text-inverse-soft);
+    --component-footer-text-color-link-text: var(--color-foreground-text-brand);
+    --component-footer-logotype-cdn: var(--tds-background-image-scania-wordmark-white-svg);
+    --component-footer-logotype-local: var(--tds-background-image-scania-wordmark-white-svg-local);
+  }
+
+  .tds-mode-light tds-footer {
+    --component-footer-text-color-copyright: var(--color-foreground-text-inverse-soft);
+    --component-footer-text-color-link-text: var(--color-foreground-text-brand);
+    --component-footer-logotype-cdn: var(--tds-background-image-scania-wordmark-white-svg);
+    --component-footer-logotype-local: var(--tds-background-image-scania-wordmark-white-svg-local);
+  }
+
+  .tds-mode-dark tds-footer {
+    --component-footer-text-color-copyright: var(--color-foreground-text-soft);
+    --component-footer-text-color-link-text: var(--color-brand-primary-50);
+    --component-footer-logotype-cdn: var(--tds-background-image-scania-wordmark-white-svg);
+    --component-footer-logotype-local: var(--tds-background-image-scania-wordmark-white-svg-local);
+  }
+}
+
+.traton {
+  tds-footer {
+    --component-footer-primary: var(--traton-color-grey-50);
+    --component-footer-border: var(--traton-color-transparent-invisible-light);
+    --component-footer-text-color-copyright: var(--traton-color-transparent-600);
+    --component-footer-text-color-link-text: var(--color-foreground-text-strong);
+    --component-footer-logotype-cdn: var(--traton-logotype-black-svg);
+    --component-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  }
+
+  .tds-mode-light tds-footer {
+    --component-footer-text-color-copyright: var(--traton-color-transparent-600);
+    --component-footer-logotype-cdn: var(--traton-logotype-black-svg);
+    --component-footer-logotype-local: var(--traton-logotype-black-svg-local);
+  }
+
+  .tds-mode-dark tds-footer {
+    --component-footer-text-color-copyright: var(--traton-color-transparent-inverse-600);
+    --component-footer-primary: var(--traton-color-blue-1000);
+    --component-footer-logotype-cdn: var(--traton-logotype-white-svg);
+    --component-footer-logotype-local: var(--traton-logotype-white-svg-local);
+  }
+}

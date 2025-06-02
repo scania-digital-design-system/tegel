@@ -1,13 +1,13 @@
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host(.tds-table__body-cell) {
   @include tds-box-sizing;
+  @include detail-02;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   display: table-cell;
   box-sizing: border-box;
-  color: var(--tds-table-color);
+  color: var(--table-text);
   padding: var(--tds-spacing-element-16);
   min-width: 192px;
   vertical-align: top;
@@ -16,7 +16,7 @@
 }
 
 :host(.tds-table__body-cell--hover) {
-  background-color: var(--tds-table-body-cell-background-hover);
+  background-color: var(--table-body-cell-hover);
 }
 
 :host(.tds-table__compact) {
@@ -24,7 +24,7 @@
 }
 
 :host(.tds-table--divider) {
-  border-right: 1px solid var(--tds-table-divider);
+  border-right: 1px solid var(--table-divider);
 }
 
 :host(.tds-table--divider:last-of-type) {

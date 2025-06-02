@@ -1,73 +1,37 @@
-@mixin text-field-base {
-  all: unset;
-  border-radius: 4px 4px 0 0;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border: none;
-  outline: none;
-  height: 100%;
-  color: var(--tds-text-field-color);
-  background-color: var(--tds-text-field-background);
+@import './text-field-mixins';
 
-  &::placeholder {
-    color: var(--tds-text-field-placeholder);
-  }
-
-  &:disabled {
-    user-select: none;
-    pointer-events: none;
-    background-color: var(--tds-text-field-background-disabled);
-    color: var(--tds-text-field-color-disabled);
-
-    &::placeholder {
-      color: var(--tds-text-field-placeholder-disabled);
-    }
-
-    ~ .text-field-label-inside {
-      color: var(--tds-text-field-label-disabled);
-    }
-  }
+.text-field-input {
+  @include text-field-base;
+  @include detail-02;
 }
 
 //Sizes
 .text-field-input-lg {
-  @include text-field-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
 }
 
 .text-field-input-md {
-  @include text-field-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
 }
 
 .text-field-input-sm {
-  @include text-field-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
 }
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  border-radius: 4px 4px 0 0;
+  @include box-shadow;
+
+  border-radius: var(--text-field-border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--tds-text-field-background);
-  border-bottom: 1px solid var(--tds-text-field-border-bottom);
-  transition: border-bottom-color 200ms ease;
+  background-color: var(--text-field-background);
+  transition: box-shadow 200ms ease;
 
   &:hover {
-    border-bottom-color: var(--tds-text-field-border-bottom-hover);
+    @include box-shadow('hover');
   }
 
   .form-text-field-md & {
@@ -86,120 +50,72 @@
 
 .text-field-data,
 .text-field-input {
-  color: var(--tds-text-field-data-color);
+  color: var(--text-field-text);
 }
 
 //text-field label
 
 .text-field-label-outside > * {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: block;
   margin-bottom: var(--tds-spacing-element-8);
-  color: var(--tds-text-field-label-color);
+  color: var(--text-field-label);
 }
 
 .text-field-label-inside {
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   position: absolute;
   pointer-events: none;
-  color: var(--tds-text-field-label-inside-color);
+  color: var(--text-field-label-inside);
   left: 16px;
 }
 
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  //Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--tds-text-field-placeholder);
-  }
-}
-
-@mixin label-inside-transition {
-  transition: 0.1s ease all;
-}
-
-//Form control
-.form-text-field {
-  display: block;
-  min-width: 208px;
-
-  &-nomin {
-    min-width: auto;
-  }
+.text-field-label-inside-placeholder {
+  color: var(--text-field-placeholder);
 }
 
 //text-field container with label inside
 //Handling position, focus and transition for label inside
 .form-text-field.text-field-container-label-inside {
   .text-field-input-lg {
+    @include placeholder-label;
+
     padding-top: var(--tds-spacing-element-24);
     padding-bottom: 15px;
 
     ~ .text-field-label-inside {
       top: 20px;
     }
-
-    @include placeholder-label;
   }
 
-  .text-field-input-md {
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-
-    ~ .text-field-label-inside {
-      top: 16px;
-    }
-
-    @include placeholder-label;
-  }
-
+  .text-field-input-md,
   .text-field-input-sm {
+    @include placeholder-label;
+
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
 
     ~ .text-field-label-inside {
       top: 16px;
     }
-
-    @include placeholder-label;
   }
 
   &.text-field-focus,
   &.text-field-data {
-    .text-field-input-sm ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
+    .text-field-label-inside {
+      @include detail-07;
 
-      @include label-inside-transition;
-
-      top: 8px;
+      transition: 0.1s ease all;
     }
 
+    .text-field-input-sm ~ .text-field-label-inside,
     .text-field-input-md ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-
-      @include label-inside-transition;
-
       top: 8px;
     }
 
     .text-field-input-lg ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-
-      @include label-inside-transition;
-
       top: 12px;
     }
   }
@@ -207,81 +123,75 @@
 
 //text-field bottom bar when in focus
 .text-field-bar {
-  position: absolute;
+  position: relative;
   width: 100%;
+  left: 0;
+  z-index: 1;
 
-  &::before,
   &::after {
+    background: var(--text-field-bar-focus);
     content: '';
     height: 2px;
-    top: 54px;
-    width: 0;
+    width: 100%;
+    bottom: 0;
     position: absolute;
-    background: var(--tds-text-field-bar);
-    transition: 0.35s ease all;
+    transform: scaleX(0);
+    transition: 0.35s ease transform;
+  }
+}
 
-    .form-text-field-md & {
-      top: 46px;
+//Focus state
+.form-text-field {
+  &.text-field-focus {
+    .text-field-container {
+      outline: var(--text-field-focus-outline);
+      outline-offset: var(--text-field-focus-outline-offset);
     }
 
-    .form-text-field-sm & {
-      top: 40px;
+    .text-field-bar::after {
+      transform: scaleX(1);
     }
-  }
-
-  &::before {
-    left: 50%;
-  }
-
-  &::after {
-    right: 50%;
-  }
-
-  .text-field-focus &::before,
-  .text-field-focus &::after {
-    width: 50%;
   }
 }
 
 //Helper text
 .text-field-helper {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
+  color: var(--text-field-helper);
+  padding-top: var(--tds-spacing-element-4);
   display: flex;
   gap: 8px;
   justify-content: space-between;
+  flex-basis: 100%;
 
   & .text-field-textcounter {
     margin-left: auto;
   }
-
-  flex-basis: 100%;
-  padding-top: var(--tds-spacing-element-4);
-  color: var(--tds-text-field-helper);
 }
 
 //Disabled state
 .form-text-field-disabled {
   .text-field-container {
     cursor: not-allowed;
-    border-bottom-color: transparent;
+    box-shadow: none;
   }
 
   .text-field-slot-wrap-prefix,
-  .text-field-slot-wrap-suffix {
-    > * {
-      color: var(--tds-text-field-ps-color-disabled);
-    }
-  }
-
+  .text-field-slot-wrap-suffix,
   .text-field-label-outside {
     > * {
-      color: var(--tds-text-field-label-disabled);
+      color: var(--text-field-affix-disabled);
     }
   }
 
+  .text-field-label-inside,
   .text-field-helper {
-    color: var(--tds-text-field-helper-disabled);
+    color: var(--text-field-label-disabled);
+  }
+
+  .text-field-input {
+    background-color: var(--text-field-background-disabled);
   }
 }
 
@@ -293,7 +203,6 @@
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--tds-text-field-icon-read-only-label-color);
 
   & .tds-tooltip {
     min-width: 150px;
@@ -306,7 +215,7 @@
   cursor: default;
 
   .text-field-container {
-    border-bottom-color: var(--tds-text-field-border-bottom-readonly);
+    border-bottom-color: var(--text-field-border-bottom-readonly);
   }
 
   .text-field-icon__readonly {
@@ -332,25 +241,33 @@
 //Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    border-bottom-color: var(--tds-text-field-border-bottom-success);
+    @include box-shadow('success');
   }
 }
 
 //Error State
 .form-text-field-error:not(.form-text-field-readonly) {
   .text-field-helper {
-    color: var(--tds-text-field-helper-error);
+    color: var(--text-field-helper-error);
   }
 
   .text-field-container {
-    border-bottom-color: var(--tds-text-field-border-bottom-error);
+    @include box-shadow('error');
   }
 
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--tds-text-field-bar-error);
+      background: var(--text-field-bar-error);
     }
+  }
+}
+
+// Error state focus
+.text-field-focus.form-text-field-error {
+  .text-field-container {
+    outline: var(--text-field-focus-outline-error);
+    outline-offset: var(--text-field-focus-outline-offset);
   }
 }
 
@@ -362,43 +279,44 @@
 }
 
 .text-field-textcounter-disabled {
-  color: var(--tds-text-field-textcounter-disabled);
+  color: var(--text-field-textcounter-disabled);
 }
 
 .text-field-textcounter {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
-  color: var(--tds-text-field-textcounter);
+  @include detail-02;
+
+  color: var(--text-field-textcounter);
   float: right;
 
   &.text-field-textcounter-disabled {
-    color: var(--tds-text-field-textcounter-disabled);
+    color: var(--text-field-textcounter-disabled);
   }
 
   &.text-field-textcounter-divider {
-    // @include type-style('detail-05');
-    color: var(--tds-text-field-textcounter-divider);
+    @include detail-05;
+
+    color: var(--text-field-textcounter-divider);
   }
 
   &.text-field-textcounter-divider-disabled {
-    color: var(--tds-text-field-textcounter-divider-disabled);
+    color: var(--text-field-textcounter-divider);
   }
 }
 
 .text-field-slot-wrap-prefix,
 .text-field-slot-wrap-suffix {
+  @include detail-02;
+
+  color: var(--text-field-affix);
   align-self: center;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   margin: 0 0 0 14px;
-  color: var(--tds-text-field-ps-color);
 
   &::slotted(:not(tds-icon)) {
     margin: 0 0 0 2px;
   }
 
   &.text-field-error {
-    color: var(--tds-text-field-ps-color-error);
+    color: var(--text-field-affix-error);
   }
 }
 

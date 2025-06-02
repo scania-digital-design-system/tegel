@@ -1,5 +1,7 @@
-import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
-import CardBodyImage from '../../stories/assets/image/card-img.png';
+import CardPlaceholder from '../../stories/assets/image/card-placeholder-scania-light.png';
+import CardBodyImage from '../../stories/assets/image/card-img-scania.png';
+import CardBodyImageTraton from '../../stories/assets/image/card-img-traton.png';
+import CardPlaceholderTraton from '../../stories/assets/image/card-placeholder-traton-light.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
@@ -126,9 +128,9 @@ export default {
     thumbnail: true,
     imagePlacement: 'Below',
     bodyImg: false,
-    bodyContent: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
+    bodyContent: `Lorem ipsum dummy text for printing; standard filler ever since 1500s`,
     bodyDivider: false,
-    cardActions: `<tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>`,
+    cardActions: `<div slot="actions" style="display: flex; gap: 16px;"><tds-button type="button" variant="primary" size="sm" text="Button text" animation="none" tds-aria-label="undefined" name="" value=""></tds-button><tds-button type="button" variant="secondary" size="sm" text="Button text" animation="none" tds-aria-label="undefined" name="" value=""></tds-button></div>`,
     clickable: false,
     stretch: false,
   },
@@ -146,12 +148,18 @@ const Template = ({
   cardActions,
   clickable,
   stretch,
-}) =>
-  formatHtmlPreview(
+}) => {
+  const isTraton =
+    typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
+  const placeholderThumbnail = isTraton ? CardPlaceholderTraton : CardPlaceholder;
+
+  const placeholderBodyImg = isTraton ? CardBodyImageTraton : CardBodyImage;
+
+  return formatHtmlPreview(
     `<style>
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
-        max-width: 600px;
+        max-width: calc(70ch + 32px);
     }
     </style>
     <div class="demo-wrapper">
@@ -160,14 +168,14 @@ const Template = ({
     ${header ? `header="${header}"` : ''}
     image-placement="${imagePlacement.toLowerCase()}-header"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${bodyImg ? `body-img="${CardBodyImage}"` : ''}
+    ${bodyImg ? `body-img="${placeholderBodyImg}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
     ${stretch ? 'stretch' : ''}
     >
     ${
       thumbnail
-        ? `<img slot="thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>`
+        ? `<img slot="thumbnail" src="${placeholderThumbnail}" alt="Thumbnail for the card."/>`
         : ''
     }
   ${
@@ -194,5 +202,6 @@ const Template = ({
     }
   `,
   );
+};
 
 export const Default = Template.bind({});

@@ -1,26 +1,17 @@
-:root,
-.tds-mode-light {
-  --tds-radio-button-color: var(--tds-grey-950);
-  --tds-radio-button-interaction-01: var(--tds-blue-800);
-  --tds-radio-button-interaction-02: var(--tds-white);
-  --tds-radio-button-interaction-outline: var(--tds-white);
-  --tds-radio-button-background-hover: var(--tds-grey-350);
-  --tds-radio-button-background-focus: var(--tds-blue-400);
-  --tds-radio-button-disabled: var(--tds-grey-250);
-  --tds-radio-button-border-color-disabled-after: var(--tds-grey-250);
-  --tds-radio-button-color-disabled-after: var(--tds-grey-250);
-  --tds-radio-button-color-disabled-before: var(--tds-grey-250);
-}
+tds-radio-button {
+  // Default colors
+  --radio-button-background-hover: var(--color-foreground-border-discrete);
+  --radio-button-background-inverse: var(--color-foreground-icon-inverse-strong);
+  --radio-button-background-disabled: var(--color-background-accent-primary-disabled);
+  --radio-button-border: var(--color-foreground-border-strong);
+  --radio-button-label: var(--color-foreground-text-strong);
+  --radio-button-label-disabled: var(--color-foreground-text-disabled);
 
-.tds-mode-dark {
-  --tds-radio-button-color: var(--tds-white);
-  --tds-radio-button-interaction-01: var(--tds-white);
-  --tds-radio-button-interaction-02: var(--tds-grey-950);
-  --tds-radio-button-interaction-outline: var(--tds-white);
-  --tds-radio-button-background-hover: var(--tds-grey-350);
-  --tds-radio-button-background-focus: var(--tds-blue-400);
-  --tds-radio-button-disabled: var(--tds-grey-500);
-  --tds-radio-button-border-color-disabled-after: var(--tds-grey-500);
-  --tds-radio-button-color-disabled-after: var(--tds-grey-500);
-  --tds-radio-button-color-disabled-before: var(--tds-grey-500);
+  // Active (checked)
+  --radio-button-focus: var(--color-foreground-border-accent-focus);
+  --radio-button-checked-disabled: var(--color-foreground-icon-disabled);
+
+  // Units
+  --radio-button-spacing-4: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
+    var(--tds-spacing-element-4);
 }

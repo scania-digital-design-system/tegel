@@ -1,0 +1,19 @@
+@mixin focus-styles($type) {
+  @each $prop in $props {
+    #{$prop}: var(--button-#{$type}-#{$prop}-focus);
+  }
+
+  ::slotted([slot='icon']) {
+    @each $prop in $iconProps {
+      fill: var(--button-icon-#{$type}-#{$prop}-focus);
+      color: var(--button-icon-#{$type}-#{$prop}-focus);
+    }
+  }
+}
+
+@mixin mode-variant($mode, $primary-background-disabled, $danger-background-disabled) {
+  .tds-mode-variant-#{$mode} {
+    --button-primary-background-disabled: var(#{$primary-background-disabled});
+    --button-danger-background-disabled: var(#{$danger-background-disabled});
+  }
+}
