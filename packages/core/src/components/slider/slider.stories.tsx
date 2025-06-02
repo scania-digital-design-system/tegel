@@ -116,6 +116,7 @@ export default {
       description: 'Sets the value to increment/decrement with.',
       control: {
         type: 'number',
+        min: 0,
       },
       table: {
         defaultValue: { summary: 1 },
