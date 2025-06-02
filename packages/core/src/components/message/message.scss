@@ -1,65 +1,65 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  /* Default values */
-  --tds-message-background: var(--background-elevation-layer-03);
-  --tds-message-background-error: var(--system-danger-subtle-03);
-  --tds-message-background-warning: var(--background-elevation-layer-03);
-  --tds-message-background-success: var(--background-elevation-layer-03);
+  /* Component variables for easier maintainance. Can serve as end user API. */
+  --main-background: var(--color-background-layer-03);
+  --main-text-color: var(--color-foreground-text-strong);
+  --info-border-color: var(--color-system-info-subtle);
+  --info-icon-color: var(--color-system-info-subtle);
+  --success-border-color: var(--color-system-success-subtle);
+  --success-icon-color: var(--color-system-success-subtle);
+  --error-background: var(--color-system-danger-discrete);
+  --error-border-color: var(--color-system-danger-subtle);
+  --error-icon-color: var(--color-system-danger-subtle);
+  --error-header-text-color: var(--color-system-danger-default);
+  --warning-border-color: var(--color-system-warning-subtle);
+  --warning-icon-color: var(--color-system-warning-subtle);
 
   /* Variant values */
   .tds-mode-variant-primary {
-    --tds-message-background: var(--background-elevation-layer-03);
-    --tds-message-background-error: var(--system-danger-subtle-03);
-    --tds-message-background-warning: var(--background-elevation-layer-03);
-    --tds-message-background-success: var(--background-elevation-layer-03);
+    --main-background: var(--color-background-layer-03);
   }
 
   .tds-mode-variant-secondary {
-    --tds-message-background: var(--background-elevation-layer-02);
-    --tds-message-background-error: var(--system-danger-subtle-02);
-    --tds-message-background-warning: var(--background-elevation-layer-02);
-    --tds-message-background-success: var(--background-elevation-layer-02);
+    --main-background: var(--color-background-layer-02);
   }
 
   .wrapper {
     display: flex;
     padding: 16px;
-    background-color: var(--tds-message-background);
+    background-color: var(--main-background);
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--system-info-default);
+      border-left: 4px solid var(--info-border-color);
 
       tds-icon {
-        color: var(--system-info-default);
+        color: var(--info-icon-color);
       }
     }
 
     &.success {
-      background-color: var(--tds-message-background-success);
-      border-left: 4px solid var(--system-success-default);
+      border-left: 4px solid var(--success-border-color);
 
       tds-icon {
-        color: var(--system-success-default);
+        color: var(--success-icon-color);
       }
     }
 
     &.error {
-      background-color: var(--tds-message-background-error);
-      border-left: 4px solid var(--system-danger-default);
+      background-color: var(--error-background);
+      border-left: 4px solid var(--error-border-color);
 
       tds-icon {
-        color: var(--system-danger-default);
+        color: var(--error-icon-color);
       }
     }
 
     &.warning {
-      background-color: var(--tds-message-background-warning);
-      border-left: 4px solid var(--system-warning-default);
+      border-left: 4px solid var(--warning-border-color);
 
       tds-icon {
-        color: var(--system-warning-default);
+        color: var(--warning-icon-color);
       }
     }
 
@@ -74,7 +74,7 @@
 
       &.error {
         .header {
-          color: var(--system-danger-default);
+          color: var(--error-header-text-color);
         }
       }
     }
@@ -88,7 +88,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: var(--foreground-text-strong);
+    color: var(--main-text-color);
     padding: 2px 0;
 
     .header {
@@ -96,7 +96,7 @@
     }
 
     .extended-message {
-      color: var(--foreground-text-strong);
+      color: var(--main-text-color);
       @include detail-02;
     }
   }
