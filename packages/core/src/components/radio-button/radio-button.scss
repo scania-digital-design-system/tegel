@@ -1,4 +1,5 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 .tds-radio-button {
   @include tds-box-sizing;
@@ -6,9 +7,9 @@
   display: flex;
   align-items: center;
   margin-left: -4px;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  color: var(--tds-radio-button-color);
+  @include detail-02;
+
+  color: var(--radio-button-label);
 
   .tds-form-input[type='radio'] {
     appearance: none;
@@ -24,8 +25,7 @@
     align-self: flex-start;
 
     + label {
-      padding: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
-        var(--tds-spacing-element-4);
+      padding: var(--radio-button-spacing-4);
       cursor: pointer;
     }
 
@@ -45,8 +45,8 @@
     }
 
     &::after {
-      border: 1px solid var(--tds-radio-button-interaction-01);
-      background-color: var(--tds-radio-button-interaction-02);
+      border: 1px solid var(--radio-button-border);
+      background-color: var(--radio-button-background-inverse);
       width: 16px;
       height: 16px;
       left: 4px;
@@ -54,14 +54,14 @@
     }
 
     &:hover {
-      &::before {
-        background-color: var(--tds-radio-button-background-hover);
+      &::after {
+        outline: 2px solid var(--radio-button-background-hover);
       }
     }
 
     &:focus {
       &::before {
-        background-color: var(--tds-radio-button-background-focus);
+        background-color: var(--radio-button-focus);
         animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
       }
     }
@@ -70,48 +70,57 @@
     &.disabled {
       cursor: not-allowed;
 
+      &::before {
+        outline: 1px solid var(--radio-button-border-disabled);
+        outline-offset: -4px;
+      }
+
       &::after {
-        border-color: var(--tds-radio-button-border-color-disabled-after);
-        background-color: var(--tds-radio-button-interaction-02);
+        border-color: var(--radio-button-background-disabled);
+        background-color: var(--radio-button-background-disabled);
       }
 
       + label {
-        color: var(--tds-radio-button-disabled);
+        color: var(--radio-button-label-disabled);
         cursor: not-allowed;
       }
 
       &:hover {
-        &::before {
-          display: none;
-          opacity: 1;
+        &::after {
+          outline: none;
         }
       }
     }
   }
 
   .tds-form-input[type='radio']:checked {
+    &:focus {
+      &::after {
+        outline: 4px solid var(--radio-button-focus);
+      }
+    }
+
     &::after {
-      border: 4px solid var(--tds-radio-button-interaction-01);
+      border: 4px solid var(--radio-button-border);
     }
 
     &:disabled,
     &.disabled {
-      &:hover::before,
       &::before {
         display: block;
         width: 16px;
         height: 16px;
-        left: 4px;
-        top: 4px;
-        border: 1px solid var(--tds-radio-button-color-disabled-before);
+        left: 3px;
+        top: 3px;
+        border: 1px solid var(--radio-button-border-disabled);
         box-sizing: content-box;
       }
 
       &::after {
-        border: 4px solid var(--tds-radio-button-interaction-02);
-        background-color: var(--tds-radio-button-color-disabled-after);
-        left: calc(4px + 1px);
-        top: calc(4px + 1px);
+        border: 4px solid var(--radio-button-background-disabled);
+        background-color: var(--radio-button-checked-disabled);
+        left: 4px;
+        top: 4px;
       }
     }
   }

@@ -1,103 +1,134 @@
-:root,
-.tds-mode-light {
-  --tds-datetime-color: var(--tds-grey-868);
-  --tds-datetime-background: var(--tds-grey-50);
-  --tds-datetime-icon: var(--tds-grey-868);
-  --tds-datetime-border-bottom: var(--tds-grey-400);
-  --tds-datetime-placeholder: var(--tds-grey-500);
-  --tds-datetime-border-bottom-hover: var(--tds-grey-600);
+tds-datetime {
+  // Colors - Base
+  --datetime-background-primary: var(--color-background-layer-01);
+  --datetime-background-secondary: var(--color-background-layer-02);
+  --datetime-background: var(--datetime-background-primary);
+  --datetime-text: var(--color-foreground-text-strong);
+  --datetime-icon: var(--color-foreground-icon-strong);
+  --datetime-placeholder: var(--color-foreground-text-subtle);
 
   // Disabled
-  --tds-datetime-background-disabled: var(--tds-white);
-  --tds-datetime-color-disabled: var(--tds-grey-400);
-  --tds-datetime-placeholder-disabled: var(--tds-grey-400);
-  --tds-datetime-label-disabled: var(--tds-grey-400);
-  --tds-datetime-icon-disabled: var(--tds-grey-400);
+  --datetime-background-disabled-primary: var(--color-background-layer-01);
+  --datetime-background-disabled-secondary: var(--color-background-layer-02);
+  --datetime-background-disabled: var(--datetime-background-disabled-primary);
+  --datetime-text-disabled: var(--color-foreground-text-subtle);
+  --datetime-placeholder-disabled: var(--color-foreground-text-subtle);
+  --datetime-label-disabled: var(--color-foreground-text-subtle);
+  --datetime-icon-disabled: var(--color-foreground-text-subtle);
 
   // Label
-  --tds-datetime-label-color: var(--tds-grey-958);
-  --tds-datetime-label-inside-color: var(--tds-grey-700);
-  --tds-datetime-placeholder-color-focus: var(--tds-grey-500);
+  --datetime-label: var(--color-foreground-text-strong);
+  --datetime-label-inside: var(--color-foreground-text-strong);
+  --datetime-placeholder-focus: var(--tds-grey-500);
 
   // Highlight bar
-  --tds-datetime-bar: var(--tds-blue-400);
+  --datetime-highlight-bar: var(--color-foreground-border-accent-focus);
 
   // helper
-  --tds-datetime-helper: var(--tds-grey-700);
-
-  // success
-  --tds-datetime-border-bottom-success: var(--tds-grey-800);
+  --datetime-helper: var(--color-foreground-text-defined);
 
   // error
-  --tds-datetime-border-bottom-error: var(--tds-red-400);
-  --tds-datetime-helper-error: var(--tds-red-400);
-  --tds-datetime-bar-error: var(--tds-red-400);
-  --tds-datetime-icon-error: var(--tds-red-400);
-
-  // Textcounter
-  --tds-datetime-textcounter: var(--tds-grey-700);
-  --tds-datetime-textcounter-divider: var(--tds-grey-500);
-
-  // Prefix and Suffix
-  --tds-datetime-ps-color: var(--tds-grey-600);
+  --datetime-helper-error: var(--color-system-danger-default);
+  --datetime-icon-error: var(--color-system-danger-default);
 
   .tds-mode-variant-primary {
-    --tds-datetime-background: var(--tds-grey-50);
+    --datetime-background: var(--datetime-background-primary);
+    --datetime-background-disabled: var(--datetime-background-disabled-primary);
   }
 
   .tds-mode-variant-secondary {
-    --tds-datetime-background: var(--tds-white);
+    --datetime-background: var(--datetime-background-secondary);
+    --datetime-background-disabled: var(--datetime-background-disabled-secondary);
   }
 }
 
-.tds-mode-dark {
-  --tds-datetime-color: var(--tds-grey-600);
-  --tds-datetime-background: var(--tds-grey-900);
-  --tds-datetime-icon: var(--tds-grey-50);
-  --tds-datetime-border-bottom: var(--tds-grey-600);
-  --tds-datetime-placeholder: var(--tds-grey-500);
-  --tds-datetime-border-bottom-hover: var(--tds-grey-600);
+tds-datetime,
+.scania tds-datetime {
+  /* Datetime: units */
+  --datetime-border-radius: 4px 4px 0 0;
+  --datetime-highlight: var(--datetime-highlight-bar);
+  --datetime-highlight-error: var(--color-system-danger-default);
 
-  // Disabled
-  --tds-datetime-background-disabled: var(--tds-grey-900);
-  --tds-datetime-color-disabled: var(--tds-grey-700);
-  --tds-datetime-placeholder-disabled: var(--tds-grey-700);
-  --tds-datetime-label-disabled: var(--tds-grey-700);
-  --tds-datetime-icon-disabled: var(--tds-grey-800);
+  /* Datetime: border colors */
+  --datetime-border-color-left: transparent;
+  --datetime-border-color-right: transparent;
+  --datetime-border-color-bottom: var(--color-foreground-border-soft);
+  --datetime-border-color-top: transparent;
 
-  // Label
-  --tds-datetime-label-color: var(--tds-grey-100);
-  --tds-datetime-label-inside-color: var(--tds-grey-700);
-  --tds-datetime-placeholder-color-focus: var(--tds-grey-500);
+  /* Datetime: border colors on hover */
+  --datetime-border-color-left-hover: transparent;
+  --datetime-border-color-right-hover: transparent;
+  --datetime-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --datetime-border-color-top-hover: transparent;
 
-  // Highlight bar
-  --tds-datetime-bar: var(--tds-blue-400);
+  /* Datetime: border colors on success */
+  --datetime-border-color-left-success: transparent;
+  --datetime-border-color-right-success: transparent;
+  --datetime-border-color-bottom-success: var(--color-foreground-border-strong);
+  --datetime-border-color-top-success: transparent;
 
-  // helper
-  --tds-datetime-helper: var(--tds-grey-500);
+  /* Datetime: border colors on focus */
+  --datetime-border-color-left-focus: transparent;
+  --datetime-border-color-right-focus: transparent;
+  --datetime-border-color-bottom-focus: var(--color-foreground-border-strong);
+  --datetime-border-color-top-focus: transparent;
+  --datetime-outline-color-focus: none;
 
-  // success
-  --tds-datetime-border-bottom-success: var(--tds-grey-50);
-  --tds-datetime-color-success: var(--tds-grey-50);
+  /* Datetime: border colors on error */
+  --datetime-border-color-left-error: transparent;
+  --datetime-border-color-right-error: transparent;
+  --datetime-border-color-bottom-error: var(--color-system-danger-default);
+  --datetime-border-color-top-error: transparent;
 
-  // error
-  --tds-datetime-border-bottom-error: var(--tds-red-300);
-  --tds-datetime-helper-error: var(--tds-red-300);
-  --tds-datetime-bar-error: var(--tds-red-300);
-  --tds-datetime-icon-error: var(--tds-red-300);
+  /* Datetime: bar colors */
+  --datetime-bar-color-focus: var(--color-foreground-border-accent-focus);
+  --datetime-bar-color-error: var(--color-system-danger-default);
 
-  // Textcounter
-  --tds-datetime-textcounter: var(--tds-grey-700);
-  --tds-datetime-textcounter-divider: var(--tds-grey-500);
+  /* Datetime: disabled */
+  --datetime-disabled-bottom-bar: transparent;
+}
 
-  // Prefix and Suffix
-  --tds-datetime-ps-color: var(--tds-grey-600);
+.traton tds-datetime {
+  /* Datetime: units */
+  --datetime-border-radius: 4px 4px 4px 4px;
+  --datetime-highlight: transparent;
+  --datetime-highlight-error: transparent;
 
-  .tds-mode-variant-primary {
-    --tds-datetime-background: var(--tds-grey-900);
-  }
+  /* Datetime: border colors */
+  --datetime-border-color-left: var(--color-foreground-border-soft);
+  --datetime-border-color-right: var(--color-foreground-border-soft);
+  --datetime-border-color-bottom: var(--color-foreground-border-soft);
+  --datetime-border-color-top: var(--color-foreground-border-soft);
 
-  .tds-mode-variant-secondary {
-    --tds-datetime-background: var(--tds-grey-868);
-  }
+  /* Datetime: border colors on hover */
+  --datetime-border-color-left-hover: var(--color-foreground-border-strong);
+  --datetime-border-color-right-hover: var(--color-foreground-border-strong);
+  --datetime-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --datetime-border-color-top-hover: var(--color-foreground-border-strong);
+
+  /* Datetime: border colors on success */
+  --datetime-border-color-left-success: var(--color-foreground-border-strong);
+  --datetime-border-color-right-success: var(--color-foreground-border-strong);
+  --datetime-border-color-bottom-success: var(--color-foreground-border-strong);
+  --datetime-border-color-top-success: var(--color-foreground-border-strong);
+
+  /* Datetime: border colors on focus */
+  --datetime-border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --datetime-border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --datetime-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --datetime-border-color-top-focus: var(--color-foreground-border-accent-focus);
+  --datetime-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  /* Datetime: border colors on error */
+  --datetime-border-color-left-error: var(--color-system-danger-default);
+  --datetime-border-color-right-error: var(--color-system-danger-default);
+  --datetime-border-color-bottom-error: var(--color-system-danger-default);
+  --datetime-border-color-top-error: var(--color-system-danger-default);
+
+  /* Datetime: bar colors */
+  --datetime-bar-color-focus: transparent;
+  --datetime-bar-color-error: transparent;
+
+  /* Datetime: disabled */
+  --datetime-disabled-bottom-bar: none;
 }

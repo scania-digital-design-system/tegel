@@ -1,96 +1,77 @@
 @import '../../mixins/box-sizing';
 
-/* Component variables aka overrides */
-:root {
-  --spinner-background-inverted: var(--tds-white);
-}
-
-:root,
-.scania,
-.scania .tds-mode-light {
-  --spinner-background: var(--tds-blue-400);
-}
-
-.scania .tds-mode-dark {
-  --spinner-background: var(--tds-blue-400);
-}
-
-.traton,
-.traton .tds-mode-light {
-  --spinner-background: rgba(0, 72, 82, 1);
-}
-
-.traton .tds-mode-dark {
-  --spinner-background: rgba(194, 191, 182, 1);
-}
-
-/* Component variables */
-:root {
-  --spinner-speed: 1.8s;
-  --spinner-speed-lg: 2s;
-  --spinner-radius-xs: 8px;
-  --spinner-radius-sm: 12px;
-  --spinner-radius-md: 26px;
-  --spinner-radius-lg: 42px;
-  --spinner-radius: var(--spinner-radius-lg);
-  --spinner-stroke-width-xs: 3px;
-  --spinner-stroke-width-sm: 4px;
-  --spinner-stroke-width-md: 6px;
-  --spinner-stroke-width-lg: 8px;
-  --spinner-stroke-width: var(--spinner-stroke-width-lg);
-  --PI: 3.14159265358979;
-}
-
 :host {
   @include tds-box-sizing;
 
   display: block;
 }
 
+/* Size configuration */
+$spinner-sizes: (
+  xs: (
+    radius: 8px,
+    stroke-width: 3px,
+    speed: 1.8s,
+  ),
+  sm: (
+    radius: 12px,
+    stroke-width: 4px,
+    speed: 1.8s,
+  ),
+  md: (
+    radius: 26px,
+    stroke-width: 6px,
+    speed: 1.8s,
+  ),
+  lg: (
+    radius: 42px,
+    stroke-width: 8px,
+    speed: 2s,
+  ),
+);
+
+/* Animation mixin */
+@mixin spinner-animation($duration) {
+  animation: dash $duration cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+
 .tds-spinner-svg {
+  /* Component variables */
+  --radius: var(--radius-lg);
+  --stroke-width: var(--stroke-width-lg);
+  --animation-speed: var(--speed-lg);
+  --PI: 3.14159265358979;
+
   display: block;
-  width: calc(var(--spinner-radius) * 2);
-  height: calc(var(--spinner-radius) * 2);
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
   transform: scale(-1, 1) rotate(-90deg);
 
-  &-xs {
-    --spinner-radius: var(--spinner-radius-xs);
-    --spinner-stroke-width: var(--spinner-stroke-width-xs);
-    --spinner-animation-speed: var(--spinner-speed);
-  }
-
-  &-sm {
-    --spinner-radius: var(--spinner-radius-sm);
-    --spinner-stroke-width: var(--spinner-stroke-width-sm);
-    --spinner-animation-speed: var(--spinner-speed);
-  }
-
-  &-md {
-    --spinner-radius: var(--spinner-radius-md);
-    --spinner-stroke-width: var(--spinner-stroke-width-md);
-    --spinner-animation-speed: var(--spinner-speed);
-  }
-
-  &-lg {
-    --spinner-radius: var(--spinner-radius-lg);
-    --spinner-stroke-width: var(--spinner-stroke-width-lg);
-    --spinner-animation-speed: var(--spinner-speed-lg);
+  /* Generate size variants */
+  @each $size, $config in $spinner-sizes {
+    &-#{$size} {
+      --radius: #{map-get($config, radius)};
+      --stroke-width: #{map-get($config, stroke-width)};
+      --animation-speed: #{map-get($config, speed)};
+    }
   }
 }
 
 .tds-spinner-circle {
-  cx: var(--spinner-radius);
-  cy: var(--spinner-radius);
-  r: calc(var(--spinner-radius) - (var(--spinner-stroke-width) / 2));
+  /* Circle configuration */
+  cx: var(--radius);
+  cy: var(--radius);
+  r: calc(var(--radius) - (var(--stroke-width) / 2));
   fill: none;
 
-  //Calculation for lenght of dash
-  --spinner-stroke-dash: calc((2 * var(--PI)) * var(--spinner-radius));
+  /* Stroke configuration */
+  --stroke-dash: calc((2 * var(--PI)) * var(--radius));
 
-  stroke-dasharray: var(--spinner-stroke-dash);
-  stroke-width: var(--spinner-stroke-width);
-  animation: dash var(--spinner-animation-speed) cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+  stroke-dasharray: var(--stroke-dash);
+  stroke-width: var(--stroke-width);
+  @include spinner-animation(var(--animation-speed));
 
+  /* Color variants */
   &-standard {
     stroke: var(--spinner-background);
   }
@@ -102,10 +83,10 @@
 
 @keyframes dash {
   from {
-    stroke-dashoffset: calc(-1 * var(--spinner-stroke-dash));
+    stroke-dashoffset: calc(-1 * var(--stroke-dash));
   }
 
   to {
-    stroke-dashoffset: var(--spinner-stroke-dash);
+    stroke-dashoffset: var(--stroke-dash);
   }
 }

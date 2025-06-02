@@ -1,4 +1,5 @@
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host,
 tds-table-body {
@@ -7,11 +8,11 @@ tds-table-body {
   display: table-row-group;
 
   .tds-table__info-message {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include detail-02;
+
     display: table-cell;
     box-sizing: border-box;
-    color: var(--tds-table-color);
+    color: var(--table-text);
     padding: var(--tds-spacing-element-16);
     min-width: 192px;
     vertical-align: top;
@@ -26,44 +27,44 @@ tds-table-body {
   // ODD rows
   &.tds-table--zebra-mode-rows-odd {
     tds-table-body-row:nth-child(odd) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode);
     }
 
     tds-table-body-row:nth-child(odd):hover {
-      background-color: var(--tds-table-body-row-background-hover);
+      background-color: var(--table-body-row-hover);
     }
   }
 
   // EVEN rows
   &.tds-table--zebra-mode-rows-even {
     tds-table-body-row:nth-child(even) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode);
     }
 
     tds-table-body-row:nth-child(even):hover {
-      background-color: var(--tds-table-body-row-background-hover);
+      background-color: var(--table-body-row-hover);
     }
   }
 
   // ODD columns
   &.tds-table--zebra-mode-columns-odd {
     tds-body-cell:nth-child(odd) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode);
     }
 
     tds-body-cell.tds-table__body-cell--hover:nth-child(odd) {
-      background-color: var(--tds-table-body-cell-background-hover);
+      background-color: var(--table-body-cell-hover);
     }
   }
 
   // EVEN columns
   &.tds-table--zebra-mode-columns-even {
     tds-body-cell:nth-child(even) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode);
     }
 
     tds-body-cell.tds-table__body-cell--hover:nth-child(even) {
-      background-color: var(--tds-table-body-cell-background-hover);
+      background-color: var(--table-body-cell-hover);
     }
   }
 

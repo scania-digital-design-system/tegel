@@ -1,40 +1,50 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 @mixin datetime-base {
   @include tds-box-sizing;
 
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--datetime-border-radius);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
   border: none;
   outline: none;
   height: 100%;
-  color: var(--tds-datetime-color);
-  background-color: var(--tds-datetime-background);
+  color: var(--datetime-text);
+  background-color: var(--datetime-background);
 
   &::placeholder {
     opacity: 1;
-    color: var(--tds-datetime-placeholder);
+    color: var(--datetime-placeholder);
   }
 
   &:focus::placeholder {
-    color: var(--tds-datetime-placeholder-color-focus);
+    color: var(--datetime-placeholder-focus);
   }
 
   &:disabled {
-    background-color: var(--tds-datetime-background-disabled);
-    color: var(--tds-datetime-color-disabled);
+    background-color: var(--datetime-background-disabled);
+    color: var(--datetime-text-disabled);
     cursor: not-allowed;
 
     &::placeholder {
-      color: var(--tds-datetime-placeholder-disabled);
+      color: var(--datetime-placeholder-disabled);
     }
 
     ~ .tds-datetime-label-inside {
-      color: var(--tds-datetime-label-disabled);
+      color: var(--datetime-label-disabled);
     }
   }
+}
+
+@mixin border-colors($state: '') {
+  $suffix: if($state != '', '-#{$state}', '');
+
+  border-left: 1px solid var(--datetime-border-color-left#{$suffix});
+  border-right: 1px solid var(--datetime-border-color-right#{$suffix});
+  border-bottom: 1px solid var(--datetime-border-color-bottom#{$suffix});
+  border-top: 1px solid var(--datetime-border-color-top#{$suffix});
 }
 
 // icons
@@ -76,41 +86,38 @@
 //Sizes
 .tds-datetime-input {
   @include datetime-base;
+  @include detail-02;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
 }
 
 .tds-datetime-input-md {
   @include datetime-base;
+  @include detail-02;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
 }
 
 .tds-datetime-input-sm {
   @include datetime-base;
+  @include detail-02;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
 }
 
 //Container for input field and prefix/suffix
 .tds-datetime-container {
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--datetime-border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--tds-datetime-background);
-  border-bottom: 1px solid var(--tds-datetime-border-bottom);
+  background-color: var(--datetime-background);
   transition: border-bottom-color 200ms ease;
+  @include border-colors;
 
   &:hover {
-    border-bottom-color: var(--tds-datetime-border-bottom-hover);
+    @include border-colors('hover');
   }
 
   .tds-form-datetime-md & {
@@ -134,24 +141,24 @@
     transform: translateY(-50%);
     right: 18px;
     pointer-events: none;
-    color: var(--tds-datetime-icon);
+    color: var(--datetime-icon);
   }
 }
 
 .tds-datetime-label {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: block;
   margin-bottom: var(--tds-spacing-element-8);
-  color: var(--tds-datetime-label-color);
+  color: var(--datetime-label);
 }
 
 .tds-datetime-label-inside {
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   position: absolute;
   pointer-events: none;
-  color: var(--tds-datetime-label-inside-color);
+  color: var(--datetime-label-inside);
   left: 16px;
 
   &.iphone {
@@ -171,7 +178,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--tds-datetime-placeholder-color-focus);
+    color: var(--datetime-placeholder-focus);
   }
 }
 
@@ -227,24 +234,24 @@
   }
 
   .tds-datetime-input-sm ~ .tds-datetime-label-inside {
-    font: var(--tds-detail-07);
-    letter-spacing: var(--tds-detail-07-ls);
+    @include detail-07;
+
     @include label-inside-transition;
 
     top: 8px;
   }
 
   .tds-datetime-input-md ~ .tds-datetime-label-inside {
-    font: var(--tds-detail-07);
-    letter-spacing: var(--tds-detail-07-ls);
+    @include detail-07;
+
     @include label-inside-transition;
 
     top: 8px;
   }
 
   .tds-datetime-input ~ .tds-datetime-label-inside {
-    font: var(--tds-detail-07);
-    letter-spacing: var(--tds-detail-07-ls);
+    @include detail-07;
+
     @include label-inside-transition;
 
     top: 12px;
@@ -263,7 +270,7 @@
     top: 54px;
     width: 0;
     position: absolute;
-    background: var(--tds-datetime-bar);
+    background: var(--datetime-highlight);
     transition: 0.35s ease all;
 
     .tds-form-datetime-md & {
@@ -291,12 +298,12 @@
 
 //Helper text
 .tds-datetime-helper {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: block;
   flex-basis: 100%;
   padding-top: var(--tds-spacing-element-4);
-  color: var(--tds-datetime-helper);
+  color: var(--datetime-helper);
 
   .tds-helper {
     display: inline-flex;
@@ -307,17 +314,21 @@
 //Disabled state
 .tds-form-datetime-disabled {
   .tds-datetime-container {
-    border-bottom-color: transparent;
+    cursor: not-allowed;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
   }
 
   .datetime-icon {
     tds-icon {
-      color: var(--tds-datetime-icon-disabled);
+      color: var(--datetime-icon-disabled);
     }
   }
 
   .tds-datetime-label {
-    color: var(--tds-datetime-label-disabled);
+    color: var(--datetime-label-disabled);
     cursor: not-allowed;
   }
 }
@@ -325,7 +336,8 @@
 //Success state
 .tds-form-datetime-success {
   .tds-datetime-container {
-    border-bottom-color: var(--tds-datetime-border-bottom-success);
+    @include border-colors('success');
+
     color: var(--tds-datetime-color-success);
   }
 
@@ -340,37 +352,24 @@
 //Error State
 .tds-form-datetime-error {
   .tds-datetime-helper {
-    color: var(--tds-datetime-helper-error);
+    color: var(--datetime-helper-error);
   }
 
   .tds-datetime-container {
-    border-bottom-color: var(--tds-datetime-border-bottom-error);
+    @include border-colors('error');
   }
 
   .tds-datetime-bar {
     &::before,
     &::after {
-      background: var(--tds-datetime-bar-error);
+      background: var(--datetime-highlight-error);
     }
   }
 
   .datetime-icon {
     tds-icon {
-      color: var(--tds-datetime-icon-error);
+      color: var(--datetime-icon-error);
     }
-  }
-}
-
-.tds-datetime-textcounter {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
-  color: var(--tds-datetime-textcounter);
-  float: right;
-
-  & .tds-datetime-textcounter-divider {
-    // font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
-    color: var(--tds-datetime-textcounter-divider);
   }
 }
 
@@ -406,4 +405,11 @@ input[type='time']::-webkit-calendar-picker-indicator {
   .type-date .icon-datetime-local {
     display: none;
   }
+}
+
+.tds-form-datetime.tds-datetime-focus .tds-datetime-container {
+  @include border-colors('focus');
+
+  outline: 2px solid var(--datetime-outline-color-focus);
+  outline-offset: -1px;
 }

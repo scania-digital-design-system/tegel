@@ -1,4 +1,3 @@
-@import '../../../../mixins/focus-state';
 @import '../../../../mixins/box-sizing';
 
 :host {
@@ -11,9 +10,13 @@
     all: unset;
 
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font: var(--tds-headline-07) !important;
-    letter-spacing: var(--tds-headline-07-ls) !important;
-    color: var(--tds-navigation-tabs-tab-color);
+    font-family: var(--headline-07-font-family) !important;
+    font-size: var(--headline-07-font-size) !important;
+    line-height: var(--headline-07-line-height) !important;
+    font-weight: var(--headline-07-font-weight) !important;
+    letter-spacing: var(--headline-07-letter-spacing) !important;
+    text-transform: var(--headline-07-text-transform) !important;
+    color: var(--inline-tabs-tab);
     text-decoration: none;
     display: block;
     position: relative;
@@ -32,7 +35,11 @@
     right: 0;
     top: 20px;
     bottom: 20px;
-    outline: 2px solid var(--tds-blue-400);
+    outline: 2px solid var(--inline-tabs-tab-focus);
+  }
+
+  ::slotted(*:hover) {
+    color: var(--inline-tabs-tab-hover);
   }
 
   .inline-tab-item:not(.selected)::after {
@@ -63,26 +70,26 @@
     width: 0%;
     margin-right: auto;
     height: 2px;
-    background-color: var(--tds-inline-tabs-tab-indicator-background-hover);
+    background-color: var(--inline-tabs-tab-indicator-hover);
     z-index: 1;
   }
 
   .selected {
     ::slotted(*) {
-      color: var(--tds-inline-tabs-tab-color-selected);
+      color: var(--inline-tabs-tab-selected);
     }
 
     &::after {
       width: 100%;
-      background-color: var(--tds-inline-tabs-tab-indicator-background-active);
+      background-color: var(--inline-tabs-tab-indicator-active);
     }
   }
 
   .disabled {
-    color: var(--tds-inline-tabs-tab-color-disabled);
+    color: var(--inline-tabs-tab-disabled);
 
     ::slotted(*) {
-      opacity: var(--tds-inline-tabs-tab-color-opacity-disabled);
+      color: var(--inline-tabs-tab-disabled);
     }
 
     &::after {
