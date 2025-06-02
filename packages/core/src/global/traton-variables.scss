@@ -26,8 +26,11 @@
 @import '../../../../spacing/traton-units';
 @import '../../../../typography/traton-fonts';
 
+//FIXME: there was an issue with the import of the Traton icons, so we're not importing them for now.
+
 /* Traton primitive icon tokens */
-@import '../../../../tokens/scss/traton/traton-icons-primitive';
+//@import '../../../../tokens/scss/traton/traton-icons-primitive';
 
 /* Traton icon tokens */
-@import '../../../../tokens/scss/traton/traton-icons';
+
+//@import '../../../../tokens/scss/traton/traton-icons';

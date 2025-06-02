@@ -9,10 +9,10 @@
   .tds-table__row,
   .tds-table__row-extend {
     display: table-row;
-    border-bottom: 1px solid var(--tds-table-divider);
-    background-color: var(--tds-table-body-row-background);
+    border-bottom: 1px solid var(--table-divider);
+    background-color: var(--table-body-row);
     transition: background-color 200ms ease;
-    color: var(--tds-table-color);
+    color: var(--table-text);
   }
 
   .tds-table__row--expanded {
@@ -21,7 +21,7 @@
 
   .tds-table__row:hover,
   .tds-table__row-extend:hover {
-    background-color: var(--tds-table-body-row-background-hover);
+    background-color: var(--table-body-row-hover);
   }
 
   .tds-table__expand-control-container {
@@ -60,14 +60,14 @@
     transition: background-color 200ms ease;
 
     &--expanded {
-      border-bottom: 1px solid var(--tds-table-divider);
+      border-bottom: 1px solid var(--table-divider);
     }
 
     .tds-table__cell-expand {
       max-width: 1px;
       overflow: auto;
       padding: 16px 16px 16px 66px;
-      color: var(--tds-table-color);
+      color: var(--table-text);
     }
 
     .tds-table__cell-expand--overflow-visible {
@@ -82,7 +82,7 @@
 
 :host(.tds-table__row-expand--active) {
   .tds-table__row {
-    background-color: var(--tds-table-body-row-background-selected);
+    background-color: var(--table-body-row-selected);
   }
 
   .tds-table__expand-control-container {
@@ -92,7 +92,7 @@
   }
 
   .tds-table__row-expand {
-    background-color: var(--tds-table-body-row-background-selected);
+    background-color: var(--table-body-row-selected);
     display: table-row;
   }
 }
@@ -116,6 +116,6 @@
 
 :host(.tds-table--divider) {
   .tds-table__cell--expand {
-    border-right: 1px solid var(--tds-table-divider);
+    border-right: 1px solid var(--table-divider);
   }
 }

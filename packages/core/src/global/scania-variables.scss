@@ -26,8 +26,11 @@
 @import '../../../../typography/scania-fonts-vars';
 @import '../../../../typography/scania-fonts-selectors';
 
+//FIXME: there was an issue with the import of the Scania icons, so we're not importing them for now.
+
 /* Scania primitive icon tokens */
-@import '../../../../tokens/scss/scania/scania-icons-primitive';
+//@import '../../../../tokens/scss/scania/scania-icons-primitive';
 
 /* Scania icon tokens */
-@import '../../../../tokens/scss/scania/scania-icons';
+
+//@import '../../../../tokens/scss/scania/scania-icons';

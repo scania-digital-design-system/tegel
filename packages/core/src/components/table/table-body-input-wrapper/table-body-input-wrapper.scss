@@ -1,3 +1,5 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
   position: relative;
 }
@@ -20,7 +22,7 @@
   }
 
   ::slotted(input:not(:focus)) {
-    background-color: var(--tds-table-input-background-hover);
+    background-color: var(--table-input-hover);
   }
 }
 
@@ -34,12 +36,12 @@ tds-icon.edit-icon {
 }
 
 ::slotted(input) {
+  @include detail-02;
+
   box-sizing: border-box;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
-  color: var(--tds-table-color);
+  color: var(--table-text);
   background-color: transparent;
   height: 48px;
   border-radius: 0;
@@ -50,16 +52,18 @@ tds-icon.edit-icon {
 }
 
 ::slotted(input)::placeholder {
-  color: var(--tds-table-color);
+  color: var(--table-text);
 }
 
 ::slotted(input:disabled) {
-  background-color: var(--tds-table-input-background-disabled);
+  background-color: var(--table-input-disabled);
+  cursor: not-allowed;
+  color: var(--table-input-text-disabled);
 }
 
 ::slotted(input:focus) {
   outline: none;
-  background-color: var(--tds-table-input-background-focus);
+  background-color: var(--table-input-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
 }
 

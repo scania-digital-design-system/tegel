@@ -1,43 +1,19 @@
-:root,
-.tds-mode-light {
+tds-stepper {
   // Current
-  --tds-stepper-background: var(--tds-grey-950);
-  --tds-stepper-icon-background: var(--tds-grey-50);
-  --tds-stepper-color: var(--tds-grey-50);
+  --stepper-background: var(--tds-grey-950);
+  --stepper-icon-background: var(--tds-grey-50);
+  --stepper-current-number: var(--tds-grey-50);
 
   // Warning
-  --tds-stepper-icon-step-border-color-warning: var(--tds-red-400);
+  --stepper-icon-step-border-warning: var(--color-system-danger-default);
 
   // Success
-  --tds-stepper-icon-step-border-color-success: var(--tds-green-400);
-  --tds-stepper-icon-step-background-success: var(--tds-green-400);
-
-  // Current
-  --tds-stepper-icon-step-border-color-current: var(--tds-grey-950);
+  --stepper-icon-step-border-success: var(--component-stepper-success);
 
   // Upcoming
-  --tds-stepper-label-text-color-upcoming: var(--tds-blue-950);
-  --tds-stepper-label-border-color-upcoming: var(--tds-blue-750);
+  --stepper-label-text-upcoming: var(--color-foreground-text-disabled);
+  --stepper-label-border-upcoming: var(--color-foreground-border-discrete);
 
   // Divider
-  --tds-stepper-divider-line: var(--tds-grey-700);
-}
-
-.tds-mode-dark {
-  // Current
-  --tds-stepper-background: var(--tds-grey-150);
-  --tds-stepper-icon-background: var(--tds-grey-150);
-  --tds-stepper-color: var(--tds-grey-950);
-
-  // Warning
-  --tds-stepper-icon-step-border-color-warning: var(--tds-red-300);
-
-  // Success
-  --tds-stepper-icon-step-border-color-success: var(--tds-green-300);
-  --tds-stepper-icon-step-background-success: var(--tds-green-300);
-
-  // Upcoming
-  --tds-stepper-label-text-color-upcoming: var(--tds-grey-50);
-  --tds-stepper-label-border-color-upcoming: var(--tds-grey-150);
-  --tds-stepper-divider-line: var(--tds-grey-250);
+  --stepper-divider-line: var(--color-foreground-icon-disabled);
 }

@@ -1,10 +1,11 @@
 :host {
   [role='list'] {
     &:not(.text-position-aside) {
-      display: table;
-      table-layout: fixed;
+      // display: table;
+      // table-layout: fixed;
       width: 100%;
-      list-style: none;
+
+      // list-style: none;
     }
 
     display: flex;

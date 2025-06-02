@@ -7,3 +7,11 @@ tds-badge {
   --component-badge-text: var(--color-brand-neutral-white);
   --component-badge-background: var(--color-system-danger-subtle);
 }
+
+.traton {
+  .tl-badge,
+  tds-badge {
+    --component-badge-text: var(--color-brand-neutral-black);
+    --component-badge-background: var(--color-system-warning-subtle);
+  }
+}

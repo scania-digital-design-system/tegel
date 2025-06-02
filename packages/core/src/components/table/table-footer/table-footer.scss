@@ -1,5 +1,6 @@
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
@@ -8,8 +9,8 @@
   height: var(--tds-spacing-element-48);
 
   .tds-table__footer-row {
-    background-color: var(--tds-table-footer-background);
-    color: var(--tds-table-color);
+    background-color: var(--table-footer);
+    color: var(--table-text);
   }
 
   .tds-table__footer-cell {
@@ -38,24 +39,24 @@
       }
 
       .tds-table__page-selector-input {
-        font: var(--tds-detail-02);
-        letter-spacing: var(--tds-detail-02-ls);
-        background-color: var(--tds-table-footer-page-selector-input-background);
-        color: var(--tds-table-color);
+        @include detail-02;
+
+        background-color: var(--table-footer-page-selector-input);
+        color: var(--table-text);
         width: 74px;
         height: 30px;
         border: none;
         border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
         margin-right: var(--tds-spacing-element-4);
-        padding-left: var(--tds-spacing-element-16);
+        padding-right: var(--tds-spacing-element-8);
 
         &:hover {
-          background-color: var(--tds-table-footer-page-selector-input-background-hover);
+          background-color: var(--table-footer-page-selector-input-hover);
         }
 
         &:disabled {
-          color: var(--tds-table-footer-page-selector-input-color-disabled);
+          color: var(--table-footer-page-selector-input-color-disabled);
         }
       }
 
@@ -67,9 +68,9 @@
       }
 
       .tds-table__footer-text {
-        font: var(--tds-detail-02);
-        letter-spacing: var(--tds-detail-02-ls);
-        padding: 1px 8px 0 0;
+        @include detail-02;
+
+        padding: 1px 22px 0 0;
       }
 
       .tds-table__footer-btn {
@@ -83,15 +84,15 @@
         width: var(--tds-spacing-element-32);
         border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
-        color: var(--tds-table-footer-page-selector-icon);
+        color: var(--table-icon);
 
         &:hover {
-          background-color: var(--tds-table-footer-btn-hover);
+          background-color: var(--table-footer-button-hover);
         }
 
         &:disabled {
           cursor: default;
-          color: var(--tds-table-footer-page-selector-icon-disabled);
+          color: var(--table-icon-disabled);
 
           &:hover {
             background-color: transparent;
@@ -102,7 +103,7 @@
       .tds-table__footer-btn-svg {
         height: var(--tds-spacing-element-20);
         width: var(--tds-spacing-element-20);
-        fill: var(--tds-table-color);
+        fill: var(--table-text);
       }
     }
   }

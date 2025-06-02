@@ -26,11 +26,13 @@
   }
 
   &.horizontal {
+    background-color: var(--divider-color);
     width: 100%;
     height: 1px;
   }
 
   &.vertical {
+    background-color: var(--divider-color);
     height: 100%;
     width: 1px;
   }

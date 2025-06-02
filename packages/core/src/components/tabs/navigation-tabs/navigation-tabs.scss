@@ -5,13 +5,13 @@
   @include tds-box-sizing;
 
   display: flex;
-  background-color: var(--tds-navigation-tabs-background);
+  background-color: var(--navigation-tabs);
   position: relative;
 
   &::after {
     content: ' ';
     display: block;
-    border-bottom: 1px solid var(--tds-navigation-tabs-horizontal-divider-background);
+    border-bottom: 1px solid var(--navigation-tabs-horizontal-divider);
     left: 0;
     right: 0;
     bottom: 0;
@@ -44,11 +44,11 @@
 
   .scroll-right-button,
   .scroll-left-button {
-    color: var(--tds-folder-tabs-scroll-btn-color);
+    color: var(--navigation-tabs-scroll-button-icon);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--tds-inline-tabs-scroll-btn-background);
+    background-color: var(--navigation-tabs-scroll-button);
     display: none;
     justify-content: center;
     align-items: center;
@@ -64,11 +64,11 @@
     }
 
     &:hover {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-hover);
+      background-color: var(--navigation-tabs-scroll-button-hover);
     }
 
     &:active {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-active);
+      background-color: var(--navigation-tabs-scroll-button-active);
     }
 
     &:focus {
@@ -76,7 +76,7 @@
     }
 
     svg {
-      fill: var(--tds-folder-tabs-scroll-btn-color);
+      fill: var(--navigation-tabs-scroll-button-color);
     }
   }
 }

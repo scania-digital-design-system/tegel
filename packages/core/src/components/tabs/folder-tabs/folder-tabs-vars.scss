@@ -1,72 +1,39 @@
-:root,
-.tds-mode-light {
-  /* NEW THEME VARS */
-  --tds-folder-tab-background-selected: var(--tds-white);
-  --tds-folder-tab-background: var(--tds-grey-100);
-  --tds-folder-tab-background-hover: var(--tds-grey-200);
-  --tds-folder-tab-color: var(--tds-blue-900);
-  --tds-folder-tab-color-opacity: 0.6;
-  --tds-folder-tab-color-opacity-disabled: 0.16;
-  --tds-folder-tab-color-opacity-selected: 1;
-  --tds-folder-tab-color-opacity-focus: 1;
-  --tds-folder-tab-color-opacity-hover: 1;
-  --tds-folder-tab-border-selected: var(--tds-blue-400);
-  --tds-folder-tabs-scroll-btn-background: var(--tds-folder-tab-background-primary);
-  --tds-folder-tabs-scroll-btn-background-hover: var(--tds-grey-300);
-  --tds-folder-tabs-scroll-btn-background-active: var(--tds-grey-400);
-  --tds-folder-tabs-scroll-btn-color: var(--tds-grey-958);
-  --tds-folder-tab-background-primary: var(--tds-grey-100);
-  --tds-folder-tab-background-secondary: var(--tds-grey-100);
-  --tds-folder-tab-background: var(--tds-folder-tab-background-primary);
-  --tds-folder-tab-background-selected-primary: var(--tds-white);
-  --tds-folder-tab-background-selected-secondary: var(--tds-grey-50);
-  --tds-folder-tab-divider-color: var(--tds-grey-300);
-  --tds-folder-tab-item-color: rgb(0 21 51 / 60%);
-  --tds-folder-tab-item-color-disabled: rgb(0 21 51 / 16%);
-
-  .tds-mode-variant-primary {
-    --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-primary);
-    --tds-folder-tab-background: var(--tds-folder-tab-background-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-secondary);
-    --tds-folder-tab-background: var(--tds-folder-tab-background-secondary);
-  }
+/* Variables used by both tds-folder-tab and tds-folder-tabs */
+.tl-folder-tabs,
+.tl-folder-tab,
+tds-folder-tab,
+tds-folder-tabs {
+  --folder-tab-surface: var(--color-background-surface-200);
+  --folder-tab-surface-selected: var(--color-background-layer-01);
+  --folder-tab-text: var(--color-foreground-text-soft);
 }
 
-.tds-mode-dark {
-  /* NEW THEME VARS */
-  --tds-folder-tab-background-selected: var(--tds-grey-900);
-  --tds-folder-tab-background: var(--tds-grey-846);
-  --tds-folder-tab-background-hover: var(--tds-grey-800);
-  --tds-folder-tab-color: var(--tds-grey-50);
-  --tds-folder-tab-color-opacity: 0.6;
-  --tds-folder-tab-color-opacity-disabled: 0.16;
-  --tds-folder-tab-color-opacity-selected: 1;
-  --tds-folder-tab-color-opacity-focus: 1;
-  --tds-folder-tab-color-opacity-hover: 1;
-  --tds-folder-tab-border-selected: var(--tds-blue-400);
-  --tds-folder-tabs-scroll-btn-color: var(--tds-grey-50);
-  --tds-folder-tabs-scroll-btn-background: var(--tds-folder-tab-background-primary);
-  --tds-folder-tabs-scroll-btn-background-hover: var(--tds-grey-900);
-  --tds-folder-tabs-scroll-btn-background-active: var(--tds-grey-900);
-  --tds-folder-tab-background-primary: var(--tds-grey-846);
-  --tds-folder-tab-background-secondary: var(--tds-grey-846);
-  --tds-folder-tab-background: var(--tds-folder-tab-background-primary);
-  --tds-folder-tab-background-selected-primary: var(--tds-grey-900);
-  --tds-folder-tab-background-selected-secondary: var(--tds-grey-868);
-  --tds-folder-tab-divider-color: var(--tds-grey-800);
-  --tds-folder-tab-item-color: rgb(228 233 241 / 60%);
-  --tds-folder-tab-item-color-disabled: rgb(228 233 241 / 16%);
+/* Variables color change based on mode variant */
+.tl-folder-tabs.tds-mode-variant-primary .tl-folder-tab,
+tds-folder-tabs.tds-mode-variant-primary tds-folder-tab {
+  --folder-tab-surface-selected: var(--color-background-layer-01);
+}
 
-  .tds-mode-variant-primary {
-    --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-primary);
-    --tds-folder-tab-background: var(--tds-folder-tab-background-primary);
-  }
+.tl-folder-tabs.tds-mode-variant-secondary .tl-folder-tab,
+tds-folder-tabs.tds-mode-variant-secondary tds-folder-tab {
+  --folder-tab-surface-selected: var(--color-background-layer-02);
+}
 
-  .tds-mode-variant-secondary {
-    --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-secondary);
-    --tds-folder-tab-background: var(--tds-folder-tab-background-secondary);
-  }
+/* Variables used only by tds-folder-tabs (scroll buttons) */
+.tl-folder-tabs,
+tds-folder-tabs {
+  --folder-tabs-scroll-button-surface: var(--color-background-surface-300);
+  --folder-tabs-scroll-button-surface-hover: var(--color-background-surface-300);
+  --folder-tabs-scroll-button-surface-active: var(--color-background-surface-300);
+  --folder-tabs-scroll-button-text: var(--color-foreground-text-soft);
+}
+
+/* Variables used only by tds-folder-tab */
+.tl-folder-tab,
+tds-folder-tab {
+  --folder-tab-surface-hover: var(--color-background-surface-300);
+  --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
+  --folder-tab-divider-text: var(--color-foreground-icon-discrete);
+  --folder-tab-item-text: var(--color-foreground-text-soft);
+  --folder-tab-item-text-disabled: var(--color-foreground-text-disabled);
 }

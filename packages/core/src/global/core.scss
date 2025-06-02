@@ -79,42 +79,24 @@ body {
 }
 
 :root,
-.tds-mode-light {
-  color: var(--tds-grey-958);
-  background-color: var(--tds-white);
+.traton,
+.scania {
+  .tds-mode-light,
+  .tds-mode-dark {
+    color: var(--color-foreground-text-strong);
+    background-color: var(--color-background-base);
 
-  &.tds-mode-variant-primary,
-  & .tds-mode-variant-primary {
-    color: var(--tds-grey-958);
-    background-color: var(--tds-white);
-  }
+    &.tds-mode-variant-primary,
+    & .tds-mode-variant-primary {
+      color: var(--color-foreground-text-strong);
+      background-color: var(--color-background-base);
+    }
 
-  &.tds-mode-variant-secondary,
-  & .tds-mode-variant-secondary {
-    color: var(--tds-grey-958);
-    background-color: var(--tds-grey-50);
-  }
-
-  & tds-button.tds-mode-variant-primary,
-  & tds-button.tds-mode-variant-secondary {
-    background-color: transparent;
-  }
-}
-
-.tds-mode-dark {
-  color: var(--tds-grey-100);
-  background-color: var(--tds-grey-958);
-
-  &.tds-mode-variant-primary,
-  & .tds-mode-variant-primary {
-    color: var(--tds-grey-100);
-    background-color: var(--tds-grey-958);
-  }
-
-  &.tds-mode-variant-secondary,
-  & .tds-mode-variant-secondary {
-    color: var(--tds-grey-100);
-    background-color: var(--tds-grey-900);
+    &.tds-mode-variant-secondary,
+    & .tds-mode-variant-secondary {
+      color: var(--color-foreground-text-strong);
+      background-color: var(--color-background-layer-01);
+    }
   }
 
   & tds-button.tds-mode-variant-primary,
