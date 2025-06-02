@@ -3,9 +3,6 @@
 // https://stenciljs.com/docs/config#globalstyle
 
 /* Multibrand tokens: Scania colors */
-@import '../../../../color/scania-color-primitives';
-@import '../../../../color/scania-brand-usage';
-
 @import '../../../../build/scss/variables-primitive';
 @import '../../../../build/scss/variables-scania-light';
 @import '../../../../build/scss/variables-scania-dark';
@@ -20,9 +17,6 @@
 
 // Motion
 @import '../../../../motion/';
-
-// Colors
-@import '../../../../color/color';
 
 // Grid (Deprecated - will be removed in version 2.0)
 @import '../../../../grid-deprecated/grid-deprecated';
