@@ -1,8 +1,9 @@
 /**
  * Do not edit directly, this file was auto-generated.
  */
-
- .scania-light, .tds-mode-light {
+:root,
+.tds-mode-light,
+.scania .tds-mode-light {
   --component-header-color-dropdown-text-transform: none;
   --component-header-color-dropdown-letter-spacing: -0.14px;
   --component-header-color-dropdown-font-size: 14px;
@@ -261,7 +262,9 @@
   --component-header-color-dropdown-focus: var(--traton-color-blue-1000);
   --component-header-color-dropdown-font-family: var(--scania-font-family-semi-condensed);
   --component-header-color-dropdown-font-weight: var(--scania-font-weight-bold);
-  --component-header-text-component-title-01-menu-font-family: var(--scania-font-family-semi-condensed);
+  --component-header-text-component-title-01-menu-font-family: var(
+    --scania-font-family-semi-condensed
+  );
   --component-header-text-component-title-01-menu-font-weight: var(--scania-font-weight-regular);
   --component-header-text-application-name-font-family: var(--scania-font-family-display);
   --component-header-text-application-name-font-weight: var(--scania-font-weight-regular);
@@ -409,7 +412,9 @@
   --component-chip-color-hover-on-selected: var(--color-system-info-defined);
   --component-chip-color-default: var(--color-background-surface-200);
   --component-chip-foreground-inverse: var(--color-foreground-text-inverse-strong);
-  --component-chip-foreground-foreground-disabled-selected: var(--color-foreground-text-inverse-subtle);
+  --component-chip-foreground-foreground-disabled-selected: var(
+    --color-foreground-text-inverse-subtle
+  );
   --component-chip-border-selected-focus-border: var(--color-system-info-defined);
   --component-logo-fill: var(--color-brand-neutral-white);
   --component-cookie-primary-text-inverse: var(--color-brand-neutral-white);
