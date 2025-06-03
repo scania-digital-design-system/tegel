@@ -5,166 +5,164 @@ import { ComponentsFolder } from '../../utils/constants';
 export const SliderTitle = `${ComponentsFolder}/Slider`;
 
 export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal' }) => ({
-  argTypes: {
-    min: {
-      name: 'Min. value',
-      description: 'Sets the minimum value for the slider.',
-      control: {
-        type: 'number',
-      },
-      table: {
-        defaultValue: { summary: 0 },
-      },
+  min: {
+    name: 'Min. value',
+    description: 'Sets the minimum value for the slider.',
+    control: {
+      type: 'number',
     },
-    max: {
-      name: 'Max. value',
-      description: 'Sets the maximum value for the slider.',
-      control: {
-        type: 'number',
-      },
-      table: {
-        defaultValue: { summary: 100 },
-      },
+    table: {
+      defaultValue: { summary: 0 },
     },
-    initialValue: {
-      name: 'Initial value',
-      description: 'Sets the initial value for the slider.',
-      control: {
-        type: 'number',
-      },
-      table: {
-        defaultValue: { summary: 0 },
-      },
+  },
+  max: {
+    name: 'Max. value',
+    description: 'Sets the maximum value for the slider.',
+    control: {
+      type: 'number',
     },
-    showLabel: {
-      name: 'Show label',
-      description: 'Toggles if the lable should be shown or hidden.',
-      control: {
-        type: 'boolean',
-      },
+    table: {
+      defaultValue: { summary: 100 },
     },
-    labelText: {
-      name: 'Label text',
-      description: 'Sets the text for the label.',
-      control: {
-        type: 'text',
-      },
-      if: { arg: 'showLabel', eq: true },
+  },
+  initialValue: {
+    name: 'Initial value',
+    description: 'Sets the initial value for the slider.',
+    control: {
+      type: 'number',
     },
-    showTicks: {
-      name: 'Show ticks',
-      description: 'Toggles if ticks should be shown or hidden.',
-      control: {
-        type: 'boolean',
-      },
+    table: {
+      defaultValue: { summary: 0 },
     },
-    numTicks: {
-      name: 'Number of ticks',
-      description: 'Sets the number of ticks to be displayed.',
-      control: {
-        type: 'number',
-      },
-      if: { arg: 'showTicks', eq: true },
+  },
+  showLabel: {
+    name: 'Show label',
+    description: 'Toggles if the lable should be shown or hidden.',
+    control: {
+      type: 'boolean',
+    },
+  },
+  labelText: {
+    name: 'Label text',
+    description: 'Sets the text for the label.',
+    control: {
+      type: 'text',
+    },
+    if: { arg: 'showLabel', eq: true },
+  },
+  showTicks: {
+    name: 'Show ticks',
+    description: 'Toggles if ticks should be shown or hidden.',
+    control: {
+      type: 'boolean',
+    },
+  },
+  numTicks: {
+    name: 'Number of ticks',
+    description: 'Sets the number of ticks to be displayed.',
+    control: {
+      type: 'number',
+    },
+    if: { arg: 'showTicks', eq: true },
 
-      table: {
-        defaultValue: { summary: 0 },
-      },
+    table: {
+      defaultValue: { summary: 0 },
     },
-    showTickNumbers: {
-      name: 'Show tick numbers',
-      description: 'Toggles if tick numbers should be shown or hidden.',
-      control: {
-        type: 'boolean',
-      },
-      if: { arg: 'showTicks', eq: true },
-      table: {
-        defaultValue: { summary: false },
-      },
+  },
+  showTickNumbers: {
+    name: 'Show tick numbers',
+    description: 'Toggles if tick numbers should be shown or hidden.',
+    control: {
+      type: 'boolean',
     },
-    snapToTicks: {
-      name: 'Snap to ticks',
-      description: 'Snaps the thumb to the closest tick when dragging.',
-      control: {
-        type: 'boolean',
-      },
-      if: { arg: 'showTicks', eq: true },
-      table: {
-        defaultValue: { summary: false },
-      },
+    if: { arg: 'showTicks', eq: true },
+    table: {
+      defaultValue: { summary: false },
     },
-    showTooltip: {
-      name: 'Show tooltip',
-      description: 'Toggles if the tooltip should be shown or hidden.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
+  },
+  snapToTicks: {
+    name: 'Snap to ticks',
+    description: 'Snaps the thumb to the closest tick when dragging.',
+    control: {
+      type: 'boolean',
     },
-    showControls: {
-      name: 'Show controls (not compatible with input field)',
-      description: 'Toggles if controls should be shown or hidden.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
+    if: { arg: 'showTicks', eq: true },
+    table: {
+      defaultValue: { summary: false },
     },
-    step: {
-      name: 'Step value',
-      description: 'Sets the value to increment/decrement with.',
-      control: {
-        type: 'number',
-        min: 0,
-        step: storyName === 'Decimal' ? 0.01 : undefined,
-      },
-      table: {
-        defaultValue: { summary: 1 },
-      },
+  },
+  showTooltip: {
+    name: 'Show tooltip',
+    description: 'Toggles if the tooltip should be shown or hidden.',
+    control: {
+      type: 'boolean',
     },
-    showInput: {
-      name: 'Show value input field (not compatible with controls)',
-      description: 'Toggles if the values input field should be shown or hidden.',
-      control: {
-        type: 'boolean',
-      },
-      if: { arg: 'showControls', eq: false },
-      table: {
-        defaultValue: { summary: false },
-      },
+    table: {
+      defaultValue: { summary: false },
     },
-    thumbSize: {
-      name: 'Thumb size',
-      description: 'Switches between the large and small version of the thumb.',
-      control: {
-        type: 'radio',
-      },
-      options: ['Large', 'Small'],
-      table: {
-        defaultValue: { summary: 'lg' },
-      },
+  },
+  showControls: {
+    name: 'Show controls (not compatible with input field)',
+    description: 'Toggles if controls should be shown or hidden.',
+    control: {
+      type: 'boolean',
     },
-    readonly: {
-      name: 'Read Only',
-      description: 'Puts the control in a read-only state.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
+    table: {
+      defaultValue: { summary: false },
     },
-    disabled: {
-      name: 'Disabled',
-      description: 'Disables the slider.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
+  },
+  step: {
+    name: 'Step value',
+    description: 'Sets the value to increment/decrement with.',
+    control: {
+      type: 'number',
+      min: 0,
+      step: storyName === 'Decimal' ? 0.01 : undefined,
+    },
+    table: {
+      defaultValue: { summary: 1 },
+    },
+  },
+  showInput: {
+    name: 'Show value input field (not compatible with controls)',
+    description: 'Toggles if the values input field should be shown or hidden.',
+    control: {
+      type: 'boolean',
+    },
+    if: { arg: 'showControls', eq: false },
+    table: {
+      defaultValue: { summary: false },
+    },
+  },
+  thumbSize: {
+    name: 'Thumb size',
+    description: 'Switches between the large and small version of the thumb.',
+    control: {
+      type: 'radio',
+    },
+    options: ['Large', 'Small'],
+    table: {
+      defaultValue: { summary: 'lg' },
+    },
+  },
+  readonly: {
+    name: 'Read Only',
+    description: 'Puts the control in a read-only state.',
+    control: {
+      type: 'boolean',
+    },
+    table: {
+      defaultValue: { summary: false },
+    },
+  },
+  disabled: {
+    name: 'Disabled',
+    description: 'Disables the slider.',
+    control: {
+      type: 'boolean',
+    },
+    table: {
+      defaultValue: { summary: false },
     },
   },
 });
