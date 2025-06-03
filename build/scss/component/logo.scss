@@ -3,11 +3,11 @@
  */
 
 .logo {
-  --component-logo-fill: inherit;
-  --component-logo-visibility-Footer-Right-Logo: inherit;
-  --component-logo-visibility-TRA-Left-Logo: inherit;
-  --component-logo-visibility-TDS-Right-Logo: inherit;
-  --component-logo-visibility-TRA-Right-Logo: inherit;
-  --component-logo-visibility-TDS-Left-Logo: inherit;
-  --component-logo-string-wordmark: inherit;
+  --component-logo-fill: var(--traton-color-base-neutral-black);
+  --component-logo-visibility-Footer-Right-Logo: true;
+  --component-logo-visibility-TRA-Left-Logo: true;
+  --component-logo-visibility-TDS-Right-Logo: false;
+  --component-logo-visibility-TRA-Right-Logo: true;
+  --component-logo-visibility-TDS-Left-Logo: false;
+  --component-logo-string-wordmark: Traton;
 }

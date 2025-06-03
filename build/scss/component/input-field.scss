@@ -3,16 +3,16 @@
  */
 
 .input-field {
-  --component-input-field-radius-top-left: inherit;
-  --component-input-field-radius-top-right: inherit;
-  --component-input-field-radius-bottom-left: inherit;
-  --component-input-field-radius-bottom-right: inherit;
-  --component-input-field-border-width-top: inherit;
-  --component-input-field-border-width-right: inherit;
-  --component-input-field-border-width-bottom: inherit;
-  --component-input-field-border-width-left: inherit;
-  --component-input-field-border-focus-top: inherit;
-  --component-input-field-border-focus-right: inherit;
-  --component-input-field-border-focus-bottom: inherit;
-  --component-input-field-border-focus-left: inherit;
+  --component-input-field-radius-top-left: var(--traton-unit-4);
+  --component-input-field-radius-top-right: var(--traton-unit-4);
+  --component-input-field-radius-bottom-left: var(--traton-unit-4);
+  --component-input-field-radius-bottom-right: var(--traton-unit-4);
+  --component-input-field-border-width-top: var(--traton-unit-1);
+  --component-input-field-border-width-right: var(--traton-unit-1);
+  --component-input-field-border-width-bottom: var(--traton-unit-1);
+  --component-input-field-border-width-left: var(--traton-unit-1);
+  --component-input-field-border-focus-top: var(--traton-unit-2);
+  --component-input-field-border-focus-right: var(--traton-unit-2);
+  --component-input-field-border-focus-bottom: var(--traton-unit-2);
+  --component-input-field-border-focus-left: var(--traton-unit-2);
 }

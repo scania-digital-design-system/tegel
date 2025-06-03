@@ -3,8 +3,8 @@
  */
 
 .footer {
-  --component-footer-text-color-copyright: inherit;
-  --component-footer-text-color-link-text: inherit;
-  --component-footer-primary: inherit;
-  --component-footer-border: inherit;
+  --component-footer-text-color-copyright: var(--traton-color-transparent-600);
+  --component-footer-text-color-link-text: var(--color-foreground-text-strong);
+  --component-footer-primary: var(--traton-color-grey-50);
+  --component-footer-border: var(--traton-color-transparent-invisible-light);
 }

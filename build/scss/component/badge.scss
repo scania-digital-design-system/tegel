@@ -3,6 +3,6 @@
  */
 
 .badge {
-  --component-badge-text: inherit;
-  --component-badge-background: inherit;
+  --component-badge-text: var(--color-brand-neutral-black);
+  --component-badge-background: var(--traton-color-yellow-300);
 }

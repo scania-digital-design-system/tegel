@@ -3,10 +3,10 @@
  */
 
 .shadow {
-  --component-shadow-hover: inherit;
-  --component-shadow-default: inherit;
-  --component-shadow-pressed: inherit;
-  --component-shadow-dragged: inherit;
-  --component-shadow-base-modifier: inherit;
-  --component-shadow-focus: inherit;
+  --component-shadow-hover: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-default: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-pressed: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-dragged: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-base-modifier: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-focus: var(--traton-color-transparent-invisible-dark);
 }

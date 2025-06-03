@@ -3,5 +3,5 @@
  */
 
 .cookie {
-  --component-cookie-primary-text-inverse: inherit;
+  --component-cookie-primary-text-inverse: var(--color-brand-neutral-black);
 }

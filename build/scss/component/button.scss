@@ -3,5 +3,5 @@
  */
 
 .button {
-  --component-button-primary-text: inherit;
+  --component-button-primary-text: var(--color-brand-neutral-white);
 }

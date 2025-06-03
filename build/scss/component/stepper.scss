@@ -3,5 +3,5 @@
  */
 
 .stepper {
-  --component-stepper-success: inherit;
+  --component-stepper-success: var(--color-system-success-default);
 }

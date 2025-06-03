@@ -3,9 +3,9 @@
  */
 
 .table {
-  --component-table-secondary-cell: inherit;
-  --component-table-pagination-dropdown: inherit;
-  --component-table-pagination-base: inherit;
-  --component-table-cell-hover: inherit;
-  --component-table-cell: inherit;
+  --component-table-secondary-cell: var(--color-background-layer-02);
+  --component-table-pagination-dropdown: var(--color-background-base);
+  --component-table-pagination-base: var(--color-background-surface-200);
+  --component-table-cell-hover: var(--color-background-surface-200);
+  --component-table-cell: var(--color-background-layer-01);
 }

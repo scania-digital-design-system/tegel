@@ -3,7 +3,7 @@
  */
 
 .card {
-  --component-card-secondary: inherit;
-  --component-card-primary: inherit;
-  --component-card-padding-padding: inherit;
+  --component-card-secondary: var(--traton-color-transparent-invisible-light);
+  --component-card-primary: var(--traton-color-transparent-invisible-light);
+  --component-card-padding-padding: var(--traton-unit-0);
 }
