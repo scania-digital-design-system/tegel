@@ -445,31 +445,31 @@ jobs:
           git push --force --no-verify origin main
 
   notify-teams:
-  needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
-  runs-on: ubuntu-latest
-  if: always()
-  steps:
-    - name: Notify Teams
-      run: |
-        version="${{ needs.create-release-branch.outputs.version }}"
-        dry="${{ github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule' }}"
+    needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Notify Teams
+        run: |
+          version="${{ needs.create-release-branch.outputs.version }}"
+          dry="${{ github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule' }}"
 
-        # Detect any failed jobs
-        if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
-           [ "${{ needs.release-core.result }}" == "failure" ] || \
-           [ "${{ needs.release-angular.result }}" == "failure" ] || \
-           [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
-           [ "${{ needs.release-react.result }}" == "failure" ]; then
-          status="🔴 *Tegel Release ${version}* failed"
-        else
-          status="🟢 *Tegel Release ${version}* succeeded"
-        fi
+          # Detect any failed jobs
+          if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
+             [ "${{ needs.release-core.result }}" == "failure" ] || \
+             [ "${{ needs.release-angular.result }}" == "failure" ] || \
+             [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
+             [ "${{ needs.release-react.result }}" == "failure" ]; then
+            status="🔴 *Tegel Release ${version}* failed"
+          else
+            status="🟢 *Tegel Release ${version}* succeeded"
+          fi
 
-        # Append dry-run info
-        if [ "$dry" == "true" ]; then
-          status="$status _(dry run)_"
-        fi
+          # Append dry-run info
+          if [ "$dry" == "true" ]; then
+            status="$status _(dry run)_"
+          fi
 
-        curl -H 'Content-Type: application/json' \
-          -d "{\"text\": \"$status\"}" \
-          ${{ secrets.TEAMS_WEBHOOK }}
+          curl -H 'Content-Type: application/json' \
+            -d "{\"text\": \"$status\"}" \
+            ${{ secrets.TEAMS_WEBHOOK }}
