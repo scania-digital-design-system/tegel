@@ -231,7 +231,9 @@ export class TdsTextarea {
           aria-live="assertive"
           id={`textarea-helper-element-${this.uuid}`}
         >
-          {this.state === 'error' && !this.readOnly && <tds-icon name="error" size="16px" />}
+          {this.state === 'error' && this.helper && !this.readOnly && (
+            <tds-icon name="error" size="16px" />
+          )}
           {this.helper}
         </span>
 
