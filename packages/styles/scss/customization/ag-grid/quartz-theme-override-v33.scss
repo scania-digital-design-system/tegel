@@ -1,0 +1,58 @@
+.ag-theme-quartz {
+  --ag-browser-color-scheme: light; // TODO: check if is this needed
+  --ag-font-family: inherit; // TODO: check if is this needed
+  --ag-header-font-family: 'Scania Sans Semi Condensed'; // TODO: update this
+  --ag-header-font-size: 14px;
+  --ag-header-font-weight: 700;
+  --ag-row-height: 49px;
+  --ag-wrapper-border: none;
+  --ag-wrapper-border-radius: 4px;
+}
+
+.tds-mode-light .ag-theme-quartz //, .ag-theme-quartz
+{
+  /* Light mode variables */
+  --ag-cell-text-color: var(--tds-grey-958);
+  --ag-header-background-color: var(--tds-grey-300);
+  --ag-header-foreground-color: var(--tds-grey-958);
+  --ag-header-text-color: var(--tds-grey-958);
+  --ag-row-hover-color: var(--tds-grey-200);
+  --ag-background-color: var(--tds-grey-50);
+  --ag-odd-row-background-color: var(--tds-grey-50);
+
+  /* Primary mode variant variables, light mode */
+  &.tds-mode-variant-primary {
+    --ag-background-color: var(--tds-grey-50);
+    --ag-odd-row-background-color: var(--tds-grey-50);
+  }
+
+  /* Secondary mode variant variables, light mode */
+  &.tds-mode-variant-secondary {
+    --ag-background-color: var(--tds-white);
+    --ag-odd-row-background-color: var(--tds-white);
+  }
+}
+
+.tds-mode-dark .ag-theme-quartz {
+  /* Dark mode variables */
+  --ag-cell-text-color: var(--tds-grey-50);
+  --ag-foreground-color: var(--tds-grey-50);
+  --ag-header-background-color: var(--tds-grey-800);
+  --ag-header-foreground-color: var(--tds-grey-50);
+  --ag-header-text-color: var(--tds-grey-50);
+  --ag-row-hover-color: var(--tds-grey-846);
+  --ag-background-color: var(--tds-grey-868);
+  --ag-odd-row-background-color: var(--tds-grey-868);
+
+  /* Primary mode variant variables, dark mode */
+  &.tds-mode-variant-primary {
+    --ag-background-color: var(--tds-grey-868);
+    --ag-odd-row-background-color: var(--tds-grey-868);
+  }
+
+  /* Secondary mode variant variables, dark mode */
+  &.tds-mode-variant-secondary {
+    --ag-background-color: var(--tds-grey-900);
+    --ag-odd-row-background-color: var(--tds-grey-900);
+  }
+}
