@@ -1,58 +1,55 @@
+@import '../../../../../typography/utilities/typography-utility';
+
 .form-text-field {
+  // Base colors
   --background-primary: var(--color-background-layer-01);
   --background-secondary: var(--color-background-layer-02);
   --background: var(--background-primary);
-  --color: var(--tds-grey-600);
-  --placeholder: var(--tds-grey-500);
-  --data-color: var(--tds-grey-958);
+  --text-color: var(--color-foreground-text-strong);
+  --placeholder: var(--color-foreground-text-subtle);
+  --affix-color: var(--color-foreground-text-defined);
 
-  //Disabled
-  --background-disabled-primary: var(--tds-grey-50);
-  --background-disabled-secondary: var(--tds-white);
+  // Label colors
+  --label-color: var(--color-foreground-text-strong);
+  --label-inside-color: var(--color-foreground-text-strong);
+
+  // Border colors
+  --border-bottom: var(--color-foreground-border-soft);
+  --border-bottom-hover: var(--color-foreground-border-strong);
+  --border-bottom-success: var(--color-foreground-border-strong);
+  --border-bottom-readonly: var(--color-foreground-border-strong);
+
+  // Focus state
+  --focus-bar: var(--color-foreground-border-accent-focus);
+
+  // Helper text
+  --helper: var(--color-foreground-text-defined);
+
+  // Error state
+  --border-bottom-error: var(--color-system-danger-default);
+  --helper-error: var(--color-system-danger-default);
+  --focus-bar-error: var(--color-system-danger-default);
+  --affix-color-error: var(--color-foreground-text-defined);
+
+  // Disabled state
+  --background-disabled-primary: var(--color-background-layer-01);
+  --background-disabled-secondary: var(--color-background-layer-02);
   --background-disabled: var(--background-disabled-primary);
-  --color-disabled: var(--tds-grey-400);
-  --placeholder-disabled: var(--tds-grey-400);
-  --label-disabled: var(--tds-grey-400);
-  --ps-color-disabled: var(--tds-grey-400);
-  --helper-disabled: var(--tds-grey-400);
+  --text-color-disabled: var(--color-foreground-text-subtle);
+  --placeholder-disabled: var(--color-foreground-text-subtle);
+  --label-disabled: var(--color-foreground-text-subtle);
+  --affix-color-disabled: var(--color-foreground-text-disabled);
+  --helper-disabled: var(--color-foreground-text-disabled);
 
-  //Label
-  --label-color: var(--tds-grey-958);
-  --label-inside-color: var(--tds-grey-958);
+  // Read only state
+  --icon-read-only-color: var(--color-foreground-text-strong);
+  --icon-read-only-label-color: var(--color-foreground-text-strong);
+  --icon-read-only-label-background: var(--color-system-info-subtle);
 
-  //Highlight bar
-  --bar: var(--tds-blue-400);
-
-  //helper
-  --helper: var(--tds-grey-700);
-
-  //error
-  --border-bottom-error: var(--tds-negative);
-  --helper-error: var(--tds-negative);
-  --bar-error: var(--tds-negative);
-  --icon-error: var(--tds-negative);
-
-  //Textcounter
-  --textcounter: var(--tds-grey-700);
-  --textcounter-disabled: var(--tds-grey-400);
-  --textcounter-divider: var(--tds-grey-500);
-
-  //Prefix and Suffix
-  --ps-color: var(--tds-grey-600);
-  --ps-color-error: var(--tds-negative);
-
-  // text-field resize icon
-  --resize-icon: var(--tds-grey-500);
-
-  // Border bottom
-  --border-bottom: var(--tds-grey-600);
-  --border-bottom-hover: var(--tds-grey-800);
-  --border-bottom-success: var(--tds-grey-958);
-  --border-bottom-readonly: var(--tds-grey-500);
-
-  // Read only
-  --icon-read-only-color: var(--tds-grey-958);
-  --icon-read-only-label-color: var(--tds-grey-958);
+  // Text counter
+  --textcounter: var(--color-foreground-text-defined);
+  --textcounter-disabled: var(--color-foreground-text-disabled);
+  --textcounter-divider: var(--color-foreground-text-disabled);
 
   .tds-mode-variant-primary {
     --background: var(--background-primary);
@@ -74,7 +71,7 @@
   border: none;
   outline: none;
   height: 100%;
-  color: var(--color);
+  color: var(--text-color);
   background-color: var(--background);
 
   &::placeholder {
@@ -85,7 +82,7 @@
     user-select: none;
     pointer-events: none;
     background-color: var(--background-disabled);
-    color: var(--color-disabled);
+    color: var(--text-color-disabled);
 
     &::placeholder {
       color: var(--placeholder-disabled);
@@ -101,24 +98,24 @@
 .text-field-input-lg {
   @include text-field-base;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
 }
 
 .text-field-input-md {
   @include text-field-base;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   padding: var(--tds-spacing-element-16);
 }
 
 .text-field-input-sm {
   @include text-field-base;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   padding: var(--tds-spacing-element-16);
 }
 
@@ -153,22 +150,22 @@
 
 .text-field-data,
 .text-field-input {
-  color: var(--data-color);
+  color: var(--text-color);
 }
 
 //text-field label
 
 .text-field-label-outside > * {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: block;
   margin-bottom: var(--tds-spacing-element-8);
   color: var(--label-color);
 }
 
 .text-field-label-inside {
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   position: absolute;
   pointer-events: none;
   color: var(--label-inside-color);
@@ -244,8 +241,7 @@
   &.text-field-focus,
   &.text-field-data {
     .text-field-input-sm ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
+      @include detail-07;
 
       @include label-inside-transition;
 
@@ -253,8 +249,7 @@
     }
 
     .text-field-input-md ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
+      @include detail-07;
 
       @include label-inside-transition;
 
@@ -262,8 +257,7 @@
     }
 
     .text-field-input-lg ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
+      @include detail-07;
 
       @include label-inside-transition;
 
@@ -284,7 +278,7 @@
     top: 54px;
     width: 0;
     position: absolute;
-    background: var(--bar);
+    background: var(--focus-bar);
     transition: 0.35s ease all;
 
     .form-text-field-md & {
@@ -312,8 +306,8 @@
 
 //Helper text
 .text-field-helper {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: flex;
   gap: 8px;
   justify-content: space-between;
@@ -337,7 +331,7 @@
   .text-field-slot-wrap-prefix,
   .text-field-slot-wrap-suffix {
     > * {
-      color: var(--ps-color-disabled);
+      color: var(--affix-color-disabled);
     }
   }
 
@@ -367,8 +361,8 @@
     position: absolute;
     right: 18px;
     top: 48px;
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     padding: 8px;
     white-space: nowrap;
     border-radius: 4px 0 4px 4px;
@@ -425,7 +419,7 @@
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--bar-error);
+      background: var(--focus-bar-error);
     }
   }
 }
@@ -442,8 +436,8 @@
 }
 
 .text-field-textcounter {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-02;
+
   color: var(--textcounter);
   float: right;
 
@@ -452,29 +446,30 @@
   }
 
   &.text-field-textcounter-divider {
-    // @include type-style('detail-05');
+    @include detail-05;
+
     color: var(--textcounter-divider);
   }
 
   &.text-field-textcounter-divider-disabled {
-    color: var(--textcounter-divider-disabled);
+    color: var(--textcounter-divider);
   }
 }
 
 .text-field-slot-wrap-prefix,
 .text-field-slot-wrap-suffix {
   align-self: center;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   margin: 0 0 0 14px;
-  color: var(--ps-color);
+  color: var(--affix-color);
 
   &::slotted(:not(tds-icon)) {
     margin: 0 0 0 2px;
   }
 
   &.text-field-error {
-    color: var(--ps-color-error);
+    color: var(--affix-color-error);
   }
 }
 
