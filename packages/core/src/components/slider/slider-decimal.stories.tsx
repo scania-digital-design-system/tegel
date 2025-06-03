@@ -1,0 +1,277 @@
+import formatHtmlPreview from '../../stories/formatHtmlPreview';
+import readme from './readme.md';
+import { ComponentsFolder } from '../../utils/constants';
+
+export default {
+  title: `${ComponentsFolder}/Slider`,
+  argTypes: {
+    min: {
+      name: 'Min. value',
+      description: 'Sets the minimum value for the slider.',
+      control: {
+        type: 'number',
+      },
+      table: {
+        defaultValue: { summary: 0 },
+      },
+    },
+    max: {
+      name: 'Max. value',
+      description: 'Sets the maximum value for the slider.',
+      control: {
+        type: 'number',
+      },
+      table: {
+        defaultValue: { summary: 100 },
+      },
+    },
+    initialValue: {
+      name: 'Initial value',
+      description: 'Sets the initial value for the slider.',
+      control: {
+        type: 'number',
+      },
+      table: {
+        defaultValue: { summary: 0 },
+      },
+    },
+    showLabel: {
+      name: 'Show label',
+      description: 'Toggles if the lable should be shown or hidden.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    labelText: {
+      name: 'Label text',
+      description: 'Sets the text for the label.',
+      control: {
+        type: 'text',
+      },
+      if: { arg: 'showLabel', eq: true },
+    },
+    showTicks: {
+      name: 'Show ticks',
+      description: 'Toggles if ticks should be shown or hidden.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    numTicks: {
+      name: 'Number of ticks',
+      description: 'Sets the number of ticks to be displayed.',
+      control: {
+        type: 'number',
+      },
+      if: { arg: 'showTicks', eq: true },
+
+      table: {
+        defaultValue: { summary: 0 },
+      },
+    },
+    showTickNumbers: {
+      name: 'Show tick numbers',
+      description: 'Toggles if tick numbers should be shown or hidden.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'showTicks', eq: true },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    snapToTicks: {
+      name: 'Snap to ticks',
+      description: 'Snaps the thumb to the closest tick when dragging.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'showTicks', eq: true },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    showTooltip: {
+      name: 'Show tooltip',
+      description: 'Toggles if the tooltip should be shown or hidden.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    showControls: {
+      name: 'Show controls (not compatible with input field)',
+      description: 'Toggles if controls should be shown or hidden.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    step: {
+      name: 'Step value',
+      description: 'Sets the value to increment/decrement with.',
+      control: {
+        type: 'number',
+        step: 0.01,
+        min: 0,
+      },
+      table: {
+        defaultValue: { summary: 1 },
+      },
+    },
+    showInput: {
+      name: 'Show value input field (not compatible with controls)',
+      description: 'Toggles if the values input field should be shown or hidden.',
+      control: {
+        type: 'boolean',
+      },
+      if: { arg: 'showControls', eq: false },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    thumbSize: {
+      name: 'Thumb size',
+      description: 'Switches between the large and small version of the thumb.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Large', 'Small'],
+      table: {
+        defaultValue: { summary: 'lg' },
+      },
+    },
+    readonly: {
+      name: 'Read Only',
+      description: 'Puts the control in a read-only state.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    disabled: {
+      name: 'Disabled',
+      description: 'Disables the slider.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+  },
+  parameters: {
+    notes: readme,
+    design: [
+      {
+        name: 'Figma',
+        type: 'figma',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=9649%3A20759&t=Ne6myqwca5m00de7-1',
+      },
+      {
+        name: 'Link',
+        type: 'link',
+        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=9649%3A20759&t=Ne6myqwca5m00de7-1',
+      },
+    ],
+  },
+  args: {
+    min: 0,
+    max: 1,
+    initialValue: 0.5,
+    showLabel: true,
+    labelText: 'Label',
+    showTicks: true,
+    numTicks: 3,
+    showTickNumbers: true,
+    snapToTicks: false,
+    showTooltip: true,
+    showControls: true,
+    step: 0.01,
+    showInput: false,
+    thumbSize: 'Large',
+    readonly: false,
+    disabled: false,
+  },
+};
+
+const sizeLookUp = {
+  Large: 'lg',
+  Small: 'sm',
+};
+
+const DecimalTemplate = ({
+  min,
+  max,
+  initialValue,
+  showLabel,
+  labelText,
+  showTicks,
+  numTicks,
+  showTickNumbers,
+  snapToTicks,
+  showTooltip,
+  showControls,
+  step,
+  showInput,
+  thumbSize,
+  readonly,
+  disabled,
+}) =>
+  formatHtmlPreview(`
+ <!-- Style code below is just for demo purposes -->
+    <style>
+      .demo-wrapper {
+          max-width: 500px;
+          margin-left: 25px;
+      }
+    </style>
+
+   <div class="demo-wrapper">
+     <tds-slider 
+        min="${min}"
+        max="${max}"
+        ${step ? `step="${step}"` : ''}
+        value="${initialValue}"
+        ${showTicks ? `ticks="${numTicks}"` : ''}
+        ${showTickNumbers ? 'show-tick-numbers' : ''}
+        ${snapToTicks ? 'snap' : ''}
+        ${showLabel ? `label="${labelText}"` : ''}
+        ${showTooltip ? 'tooltip' : ''}
+        ${showControls ? 'controls' : ''}
+        ${showInput ? 'input' : ''}
+        ${disabled ? 'disabled' : ''}
+        thumb-size="${sizeLookUp[thumbSize]}"
+        ${readonly ? 'read-only' : ''}
+        tds-read-only-aria-label="Read only"
+        >
+      </tds-slider>
+    </div>
+    
+     <!-- Script tag for demo purposes -->
+    <script>
+      slider = document.querySelector('tds-slider');
+      
+      function handleTdsChange(event) {
+        console.log('tdsChange event:', event);
+      }
+      
+      slider.removeEventListener('tdsChange', handleTdsChange);
+      slider.addEventListener('tdsChange', handleTdsChange);
+
+      function handleTdsInput(event) {
+        console.log('tdsInput event:', event);
+      }
+
+      slider.removeEventListener('tdsInput', handleTdsInput);
+      slider.addEventListener('tdsInput', handleTdsInput);
+    </script>
+  `);
+
+export const Decimal = DecimalTemplate.bind({});
