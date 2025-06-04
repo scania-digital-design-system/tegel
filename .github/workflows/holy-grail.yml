@@ -86,7 +86,8 @@ jobs:
         run: |
           BRANCH_NAME=release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           if [[ "${{ github.event.inputs.dryVersion }}" == "true" || "${{ github.event_name }}" == "schedule" ]]; then
-            BRANCH_NAME="$BRANCH_NAME-dry-run"
+            TIMESTAMP=$(date +'%Y%m%d-%H%M')
+            BRANCH_NAME="$BRANCH_NAME-dry-run-$TIMESTAMP"
           fi
           git checkout -b $BRANCH_NAME
           git add .
