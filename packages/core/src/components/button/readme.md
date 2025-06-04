@@ -13,6 +13,7 @@
 | `disabled`     | `disabled`       | Control for disabled state of a component                                    | `boolean`                                         | `false`     |
 | `fullbleed`    | `fullbleed`      | When enabled, the Button takes 100% width                                    | `boolean`                                         | `false`     |
 | `modeVariant`  | `mode-variant`   | Set the mode variant of the Button.                                          | `"primary" \| "secondary"`                        | `null`      |
+| `name`         | `name`           | The name attribute allows for different ways of accessing the button element | `string`                                          | `undefined` |
 | `size`         | `size`           | Size of a Button                                                             | `"lg" \| "md" \| "sm" \| "xs"`                    | `'lg'`      |
 | `tdsAriaLabel` | `tds-aria-label` | The value to be used for the aria-label attribute if onlyIcon is set to true | `string`                                          | `undefined` |
 | `text`         | `text`           | Text displayed inside the Button                                             | `string`                                          | `undefined` |
