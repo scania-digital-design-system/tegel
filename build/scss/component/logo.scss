@@ -3,11 +3,11 @@
  */
 
 .logo {
-  --component-logo-fill: var(--traton-color-base-neutral-black);
+  --component-logo-fill: var(--color-brand-neutral-white);
   --component-logo-visibility-Footer-Right-Logo: true;
-  --component-logo-visibility-TRA-Left-Logo: true;
-  --component-logo-visibility-TDS-Right-Logo: false;
-  --component-logo-visibility-TRA-Right-Logo: true;
-  --component-logo-visibility-TDS-Left-Logo: false;
-  --component-logo-string-wordmark: Traton;
+  --component-logo-visibility-TRA-Left-Logo: false;
+  --component-logo-visibility-TDS-Right-Logo: true;
+  --component-logo-visibility-TRA-Right-Logo: false;
+  --component-logo-visibility-TDS-Left-Logo: true;
+  --component-logo-string-wordmark: Scania;
 }

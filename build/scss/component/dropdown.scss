@@ -3,12 +3,12 @@
  */
 
 .dropdown {
-  --component-dropdown-list-item-secondary-hover: var(--color-background-surface-100);
-  --component-dropdown-list-item-secondary-focus: var(--color-background-layer-02);
-  --component-dropdown-list-item-focus: var(--color-background-layer-01);
-  --component-dropdown-list-item-hover: var(--color-background-surface-100);
-  --component-dropdown-secondary-hover: var(--color-background-surface-100);
-  --component-dropdown-secondary-focus: var(--color-background-layer-02);
-  --component-dropdown-focus: var(--color-background-layer-01);
-  --component-dropdown-hover: var(--color-background-surface-100);
+  --component-dropdown-list-item-secondary-hover: var(--color-background-layer-03);
+  --component-dropdown-list-item-secondary-focus: var(--color-background-layer-03);
+  --component-dropdown-list-item-focus: var(--color-background-layer-02);
+  --component-dropdown-list-item-hover: var(--color-background-layer-02);
+  --component-dropdown-secondary-hover: var(--color-background-layer-03);
+  --component-dropdown-secondary-focus: var(--color-background-layer-03);
+  --component-dropdown-focus: var(--color-background-layer-02);
+  --component-dropdown-hover: var(--color-background-layer-02);
 }

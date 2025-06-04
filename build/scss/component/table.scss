@@ -4,8 +4,8 @@
 
 .table {
   --component-table-secondary-cell: var(--color-background-layer-02);
-  --component-table-pagination-dropdown: var(--color-background-base);
+  --component-table-pagination-dropdown: var(--color-background-layer-01);
   --component-table-pagination-base: var(--color-background-surface-200);
-  --component-table-cell-hover: var(--color-background-surface-200);
+  --component-table-cell-hover: var(--color-background-surface-100);
   --component-table-cell: var(--color-background-layer-01);
 }

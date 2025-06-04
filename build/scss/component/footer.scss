@@ -3,8 +3,8 @@
  */
 
 .footer {
-  --component-footer-text-color-copyright: var(--traton-color-transparent-600);
-  --component-footer-text-color-link-text: var(--color-foreground-text-strong);
-  --component-footer-primary: var(--traton-color-grey-50);
-  --component-footer-border: var(--traton-color-transparent-invisible-light);
+  --component-footer-text-color-copyright: var(--color-foreground-text-soft);
+  --component-footer-text-color-link-text: var(--color-brand-primary-50);
+  --component-footer-primary: var(--scania-color-blue-900);
+  --component-footer-border: var(--scania-color-blue-800);
 }
