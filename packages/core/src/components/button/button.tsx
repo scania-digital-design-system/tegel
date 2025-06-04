@@ -41,6 +41,9 @@ export class TdsButton {
   /** The value to be used for the aria-label attribute if onlyIcon is set to true */
   @Prop() tdsAriaLabel: string;
 
+  /** The name attribute allows for different ways of accessing the button element */
+  @Prop() name: string;
+
   @State() onlyIcon: boolean = false;
 
   connectedCallback() {
