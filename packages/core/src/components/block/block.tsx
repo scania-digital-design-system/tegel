@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, Host } from '@stencil/core';
 
 /**
  * @slot - <default> - <b>Default</b> slot for content inside the block.
@@ -56,13 +56,15 @@ export class TdsBlock {
     }
 
     return (
-      <TagType
-        class={`tds-block ${evenOddClass} ${
-          this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
-        }`}
-      >
-        <slot></slot>
-      </TagType>
+      <Host>
+        <TagType
+          class={`tds-block ${evenOddClass} ${
+            this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
+          }`}
+        >
+          <slot></slot>
+        </TagType>
+      </Host>
     );
   }
 }
