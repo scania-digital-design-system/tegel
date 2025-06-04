@@ -87,12 +87,35 @@ ${variables}
   }
 });
 
+// Function to extract brand information from themes
+function extractBrandInfo(themes) {
+  const brands = new Map();
+  
+  themes.forEach(theme => {
+    if (theme.group === 'semantic') {
+      const brandName = theme.name.split('-')[0];
+      if (!brands.has(brandName)) {
+        brands.set(brandName, {
+          name: brandName,
+          themes: [],
+          selectors: {
+            base: `.${brandName}`,
+            light: `.${brandName} .tds-mode-light`,
+            dark: `.${brandName} .tds-mode-dark`
+          }
+        });
+      }
+      brands.get(brandName).themes.push(theme);
+    }
+  });
+  
+  return brands;
+}
+
 // Read themes configuration
 const themesPath = join(process.cwd(), 'tokens-json', '$themes.json');
 const themes = JSON.parse(readFileSync(themesPath, 'utf8'));
-
-// Filter out the default theme and get only semantic themes
-const semanticThemes = themes.filter(theme => theme.group === 'semantic');
+const brands = extractBrandInfo(themes);
 
 // Create base configuration for primitive tokens
 const primitiveConfig = {
@@ -100,185 +123,136 @@ const primitiveConfig = {
   platforms: {
     scss: {
       transformGroup: 'tokens-studio',
-      transforms: ["attribute/cti", "name/kebab"],
+      transforms: ["attribute/cti", "name/kebab", "color/css"],
       buildPath: 'build/scss/',
-      files: [
-        {
-          destination: 'scania/variables-primitive.scss',
-          format: 'css/variables',
-          filter: token => {
-            // Only include Scania primitive tokens
-            return token.name.startsWith('scania-');
-          },
-          options: {
-            showFileHeader: true,
-            outputReferences: true
-          }
-        },
-        {
-          destination: 'traton/variables-primitive.scss',
-          format: 'css/variables',
-          filter: token => {
-            // Only include Traton primitive tokens
-            return token.name.startsWith('traton-');
-          },
-          options: {
-            showFileHeader: true,
-            outputReferences: true
-          }
+      files: Array.from(brands.values()).map(brand => ({
+        destination: `${brand.name}/variables-primitive.scss`,
+        format: 'css/variables',
+        filter: token => token.name.startsWith(`${brand.name}-`),
+        options: {
+          showFileHeader: true,
+          outputReferences: true
         }
-      ]
+      }))
     }
   }
 };
 
 // Create theme configurations dynamically
-const themeConfigs = semanticThemes.reduce((configs, theme) => {
-  const themeName = theme.name;
-  const brand = themeName.startsWith('scania') ? 'scania' : 'traton';
-  const selector = themeName.startsWith('scania') 
-    ? `.${themeName}, .tds-mode-${themeName.split('-')[1]}`
-    : `.${themeName}`;
+const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
+  brand.themes.forEach(theme => {
+    const themeName = theme.name;
+    const themeType = themeName.split('-')[1]; // light or dark
+    
+    // Special selector for color tokens
+    const colorTokensSelector = brand.name === 'scania'
+      ? themeType === 'light'
+        ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
+        : `.tds-dark-mode,\n.scania .tds-dark-mode`
+      : themeType === 'light'
+        ? `.traton .tds-mode-light`
+        : `.traton .tds-mode-dark`;
 
-  // Special selector for color tokens
-  const colorTokensSelector = themeName.startsWith('scania')
-    ? themeName.includes('light')
-      ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
-      : `.tds-dark-mode,\n.scania .tds-dark-mode`
-    : themeName.includes('light')
-      ? `.traton .tds-mode-light`
-      : `.traton .tds-mode-dark`;
-
-  configs[themeName] = {
-    source: [
-      'tokens-json/primitive/default.json',
-      `tokens-json/semantic/${themeName}.json`
-    ],
-    platforms: {
-      scss: {
-        transformGroup: 'tokens-studio',
-        transforms: ["attribute/cti", "name/kebab"],
-        buildPath: `build/scss/${brand}/`,
-        files: [
-          {
-            destination: `variables-${themeName.split('-')[1]}.scss`,
-            format: 'css/variables',
-            filter: token => {
-              // Exclude component tokens, color tokens, dimension tokens, and typography tokens
-              if (token.path[0] === 'component' || 
-                  token.path[0] === 'color' || 
-                  token.path[0] === 'dimension' ||
-                  token.name.startsWith('text-')) {
+    configs[themeName] = {
+      source: [
+        'tokens-json/primitive/default.json',
+        `tokens-json/semantic/${themeName}.json`
+      ],
+      platforms: {
+        scss: {
+          transformGroup: 'tokens-studio',
+          transforms: ["attribute/cti", "name/kebab", "color/css"],
+          buildPath: `build/scss/${brand.name}/`,
+          files: [
+            {
+              destination: `variables-${themeType}.scss`,
+              format: 'css/variables',
+              filter: token => {
+                if (token.path[0] === 'component' || 
+                    token.path[0] === 'color' || 
+                    token.path[0] === 'dimension' ||
+                    token.name.startsWith('text-')) {
+                  return false;
+                }
+                if (token.filePath.includes('semantic')) {
+                  return true;
+                }
+                if (token.filePath.includes('primitive')) {
+                  return token.isReferenced && token.name.startsWith(`${brand.name}-`);
+                }
                 return false;
+              },
+              options: {
+                showFileHeader: true,
+                outputReferences: true,
+                selector: `.${themeName}`
               }
-              // Always include tokens from semantic files
-              if (token.filePath.includes('semantic')) {
-                return true;
-              }
-              // For primitive tokens, check if they're referenced by semantic tokens
-              if (token.filePath.includes('primitive')) {
-                // Only include primitive tokens that are referenced by semantic tokens
-                // and match the theme's namespace (scania or traton)
-                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
-                return token.isReferenced && token.name.startsWith(themePrefix);
-              }
-              return false;
             },
-            options: {
-              showFileHeader: true,
-              outputReferences: true,
-              selector
-            }
-          },
-          {
-            destination: `color-tokens-${themeName.split('-')[1]}.scss`,
-            format: 'css/variables',
-            filter: token => {
-              // Only include color tokens
-              if (token.path[0] !== 'color') {
+            {
+              destination: `color-tokens-${themeType}.scss`,
+              format: 'css/variables',
+              filter: token => {
+                if (token.path[0] !== 'color') {
+                  return false;
+                }
+                if (token.filePath.includes('semantic')) {
+                  return true;
+                }
+                if (token.filePath.includes('primitive')) {
+                  return token.isReferenced && token.name.startsWith(`${brand.name}-`);
+                }
                 return false;
+              },
+              options: {
+                showFileHeader: true,
+                outputReferences: true,
+                selector: colorTokensSelector
               }
-              // Always include tokens from semantic files
-              if (token.filePath.includes('semantic')) {
-                return true;
-              }
-              // For primitive tokens, check if they're referenced by semantic tokens
-              if (token.filePath.includes('primitive')) {
-                // Only include primitive tokens that are referenced by semantic tokens
-                // and match the theme's namespace (scania or traton)
-                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
-                return token.isReferenced && token.name.startsWith(themePrefix);
-              }
-              return false;
             },
-            options: {
-              showFileHeader: true,
-              outputReferences: true,
-              selector: colorTokensSelector
-            }
-          },
-          {
-            destination: `dimensions.scss`,
-            format: 'css/variables',
-            filter: token => {
-              // Only include dimension tokens
-              if (token.path[0] !== 'dimension') {
+            {
+              destination: `dimensions.scss`,
+              format: 'css/variables',
+              filter: token => {
+                if (token.path[0] !== 'dimension') {
+                  return false;
+                }
+                if (token.filePath.includes('semantic')) {
+                  return true;
+                }
+                if (token.filePath.includes('primitive')) {
+                  return token.isReferenced && token.name.startsWith(`${brand.name}-`);
+                }
                 return false;
+              },
+              options: {
+                showFileHeader: true,
+                outputReferences: true,
+                selector: brand.selectors.base
               }
-              // Always include tokens from semantic files
-              if (token.filePath.includes('semantic')) {
-                return true;
-              }
-              // For primitive tokens, check if they're referenced by semantic tokens
-              if (token.filePath.includes('primitive')) {
-                // Only include primitive tokens that are referenced by semantic tokens
-                // and match the theme's namespace (scania or traton)
-                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
-                return token.isReferenced && token.name.startsWith(themePrefix);
-              }
-              return false;
             },
-            options: {
-              showFileHeader: true,
-              outputReferences: true,
-              selector: `.${brand}`
+            {
+              destination: `typography.scss`,
+              format: 'css/variables',
+              filter: token => {
+                if (!token.name.startsWith('text-')) {
+                  return false;
+                }
+                if (token.filePath.includes('primitive')) {
+                  return token.original && token.original.$value && token.original.$value.startsWith('{');
+                }
+                return token.filePath.includes('semantic');
+              },
+              options: {
+                showFileHeader: true,
+                outputReferences: true,
+                selector: brand.selectors.base
+              }
             }
-          },
-          {
-            destination: `typography.scss`,
-            format: 'css/variables',
-            filter: token => {
-              // Only include typography tokens that reference semantic values
-              if (!token.name.startsWith('text-')) {
-                return false;
-              }
-              // Only include font-family and font-weight tokens
-              if (!token.name.includes('-font-family') && !token.name.includes('-font-weight')) {
-                return false;
-              }
-              // Always include tokens from semantic files
-              if (token.filePath.includes('semantic')) {
-                return true;
-              }
-              // For primitive tokens, check if they're referenced by semantic tokens
-              if (token.filePath.includes('primitive')) {
-                // Only include primitive tokens that are referenced by semantic tokens
-                // and match the theme's namespace (scania or traton)
-                const themePrefix = themeName.startsWith('scania') ? 'scania' : 'traton';
-                return token.isReferenced && token.name.startsWith(themePrefix);
-              }
-              return false;
-            },
-            options: {
-              showFileHeader: true,
-              outputReferences: true,
-              selector: `.${brand}`
-            }
-          }
-        ]
+          ]
+        }
       }
-    }
-  };
+    };
+  });
   return configs;
 }, {});
 
@@ -286,15 +260,14 @@ const themeConfigs = semanticThemes.reduce((configs, theme) => {
 const componentConfig = {
   source: [
     'tokens-json/primitive/default.json',
-    'tokens-json/semantic/scania-dark.json',
-    'tokens-json/semantic/scania-light.json',
-    'tokens-json/semantic/traton-dark.json',
-    'tokens-json/semantic/traton-light.json'
+    ...Array.from(brands.values()).flatMap(brand => 
+      brand.themes.map(theme => `tokens-json/semantic/${theme.name}.json`)
+    )
   ],
   platforms: {
     component: {
       transformGroup: 'tokens-studio',
-      transforms: ["attribute/cti", "name/kebab"],
+      transforms: ["attribute/cti", "name/kebab", "color/css"],
       buildPath: 'build/scss/',
       files: [
         {
