@@ -126,7 +126,7 @@ const primitiveConfig = {
       transforms: ["attribute/cti", "name/kebab", "color/css"],
       buildPath: 'build/scss/',
       files: Array.from(brands.values()).map(brand => ({
-        destination: `${brand.name}/variables-primitive.scss`,
+        destination: `${brand.name}/primitive.scss`,
         format: 'css/variables',
         filter: token => token.name.startsWith(`${brand.name}-`),
         options: {
@@ -165,7 +165,7 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
           buildPath: `build/scss/${brand.name}/`,
           files: [
             {
-              destination: `variables-${themeType}.scss`,
+              destination: `${themeType}.scss`,
               format: 'css/variables',
               filter: token => {
                 if (token.path[0] === 'component' || 
@@ -189,7 +189,7 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
               }
             },
             {
-              destination: `color-tokens-${themeType}.scss`,
+              destination: `color-${themeType}.scss`,
               format: 'css/variables',
               filter: token => {
                 if (token.path[0] !== 'color') {
@@ -210,7 +210,7 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
               }
             },
             {
-              destination: `dimensions.scss`,
+              destination: `dimension.scss`,
               format: 'css/variables',
               filter: token => {
                 if (token.path[0] !== 'dimension') {
