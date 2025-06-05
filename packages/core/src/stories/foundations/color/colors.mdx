@@ -1,0 +1,126 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Foundations/Color System" />
+
+# Color System
+
+The Tegel Design System uses a comprehensive color system that includes brand colors, semantic colors, and color scales. This documentation shows all available colors and how to use them.
+
+## Brand Colors
+
+These are our core brand colors that should be used consistently across the system.
+
+<ColorPalette>
+  <ColorItem title="Black" subtitle="Brand color" colors={{ Black: 'var(--tds-black)' }} />
+  <ColorItem title="White" subtitle="Brand color" colors={{ White: 'var(--tds-white)' }} />
+  <ColorItem title="Blue" subtitle="Brand color" colors={{ Blue: 'var(--tds-blue)' }} />
+</ColorPalette>
+
+## Semantic Colors
+
+These colors convey specific meanings and should be used for their semantic purpose.
+
+<ColorPalette>
+  <ColorItem
+    title="Semantic"
+    subtitle="Semantic colors with tokens"
+    colors={{
+      Positive: 'var(--tds-positive)',
+      Warning: 'var(--tds-warning)',
+      Negative: 'var(--tds-negative)',
+      Information: 'var(--tds-information)',
+    }}
+  />
+</ColorPalette>
+
+## Color Scales
+
+We provide three color scales (Grey, Blue, and Red) with different shades for various use cases.
+
+### Grey Scale
+
+<ColorPalette>
+  <ColorItem
+    title="Grey Scale"
+    subtitle="Grey color tokens"
+    colors={{
+      '50': 'var(--tds-grey-50)',
+      '100': 'var(--tds-grey-100)',
+      '200': 'var(--tds-grey-200)',
+      '300': 'var(--tds-grey-300)',
+      '400': 'var(--tds-grey-400)',
+      '500': 'var(--tds-grey-500)',
+      '600': 'var(--tds-grey-600)',
+      '700': 'var(--tds-grey-700)',
+      '800': 'var(--tds-grey-800)',
+      '846': 'var(--tds-grey-846)',
+      '868': 'var(--tds-grey-868)',
+      '900': 'var(--tds-grey-900)',
+      '958': 'var(--tds-grey-958)',
+    }}
+  />
+</ColorPalette>
+
+### Blue Scale
+
+<ColorPalette>
+  <ColorItem
+    title="Blue Scale"
+    subtitle="Blue color tokens"
+    colors={{
+      '50': 'var(--tds-blue-50)',
+      '100': 'var(--tds-blue-100)',
+      '200': 'var(--tds-blue-200)',
+      '300': 'var(--tds-blue-300)',
+      '400': 'var(--tds-blue-400)',
+      '500': 'var(--tds-blue-500)',
+      '600': 'var(--tds-blue-600)',
+      '700': 'var(--tds-blue-700)',
+      '800': 'var(--tds-blue-800)',
+      '900': 'var(--tds-blue-900)',
+    }}
+  />
+</ColorPalette>
+
+### Red Scale
+
+<ColorPalette>
+  <ColorItem
+    title="Red Scale"
+    subtitle="Red color tokens"
+    colors={{
+      '50': 'var(--tds-red-50)',
+      '100': 'var(--tds-red-100)',
+      '200': 'var(--tds-red-200)',
+      '300': 'var(--tds-red-300)',
+      '400': 'var(--tds-red-400)',
+      '500': 'var(--tds-red-500)',
+      '600': 'var(--tds-red-600)',
+      '700': 'var(--tds-red-700)',
+      '800': 'var(--tds-red-800)',
+      '900': 'var(--tds-red-900)',
+    }}
+  />
+</ColorPalette>
+
+## Usage
+
+To use these colors in your components, you can:
+
+1. Use CSS variables directly:
+
+```css
+.my-element {
+  color: var(--tds-blue-500);
+  background-color: var(--tds-grey-100);
+}
+```
+
+2. Use utility classes:
+
+```html
+<p class="tds-text-blue-500">Blue text</p>
+<div class="tds-background-grey-100">Grey background</div>
+```
+
+For more examples of how to use these colors, see the [Text Color](/docs/utilities-text-color--docs) and [Background Color](/docs/utilities-background-color--docs) utility documentation.
