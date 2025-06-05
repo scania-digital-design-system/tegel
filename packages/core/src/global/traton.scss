@@ -19,44 +19,6 @@
 @import '../../../../tokens/scss/traton/typography';
 
 /* Traton specific imports */
-@import '../../../../color/traton-color-primitives';
-@import '../../../../color/traton-brand-usage';
 @import '../../../../typography/tokens/typography-traton';
 @import '../../../../spacing/traton-units';
 @import '../../../../typography/traton-fonts';
-@import '../../../../typography/traton-fonts-vars';
-@import '../../../../typography/traton-fonts-selectors';
-
-/* Component variables */
-@import '../../../../tokens/scss/component/accordion';
-@import '../../../../tokens/scss/component/banner';
-@import '../../../../tokens/scss/component/block';
-@import '../../../../tokens/scss/component/breadcrumbs';
-@import '../../../../tokens/scss/component/button';
-@import '../../../../tokens/scss/component/card';
-@import '../../../../tokens/scss/component/checkbox';
-@import '../../../../tokens/scss/component/chip';
-@import '../../../../tokens/scss/component/table';
-@import '../../../../tokens/scss/component/datetime';
-@import '../../../../tokens/scss/component/divider';
-@import '../../../../tokens/scss/component/dropdown';
-@import '../../../../tokens/scss/component/dropdown-option';
-@import '../../../../tokens/scss/component/footer';
-@import '../../../../tokens/scss/component/header-item';
-@import '../../../../tokens/scss/component/header';
-@import '../../../../tokens/scss/component/link';
-@import '../../../../tokens/scss/component/popover-canvas';
-@import '../../../../tokens/scss/component/popover-menu';
-@import '../../../../tokens/scss/component/radio-button';
-@import '../../../../tokens/scss/component/side-menu-item';
-@import '../../../../tokens/scss/component/side-menu';
-@import '../../../../tokens/scss/component/slider';
-@import '../../../../tokens/scss/component/stepper';
-@import '../../../../tokens/scss/component/folder-tabs';
-@import '../../../../tokens/scss/component/inline-tabs';
-@import '../../../../tokens/scss/component/navigation-tabs';
-@import '../../../../tokens/scss/component/textarea';
-@import '../../../../tokens/scss/component/text-field';
-@import '../../../../tokens/scss/component/toast';
-@import '../../../../tokens/scss/component/toggle';
-@import '../../../../tokens/scss/component/tooltip';
