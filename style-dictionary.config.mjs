@@ -113,18 +113,18 @@ function extractBrandInfo(themes) {
 }
 
 // Read themes configuration
-const themesPath = join(process.cwd(), 'tokens-json', '$themes.json');
+const themesPath = join(process.cwd(), 'tokens', 'json', '$themes.json');
 const themes = JSON.parse(readFileSync(themesPath, 'utf8'));
 const brands = extractBrandInfo(themes);
 
 // Create base configuration for primitive tokens
 const primitiveConfig = {
-  source: ['tokens-json/primitive/**/*.json'],
+  source: ['tokens/json/primitive/**/*.json'],
   platforms: {
     scss: {
       transformGroup: 'tokens-studio',
       transforms: ["attribute/cti", "name/kebab", "color/css"],
-      buildPath: 'build/scss/',
+      buildPath: 'tokens/scss/',
       files: Array.from(brands.values()).map(brand => ({
         destination: `${brand.name}/primitive.scss`,
         format: 'css/variables',
@@ -155,14 +155,14 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
 
     configs[themeName] = {
       source: [
-        'tokens-json/primitive/default.json',
-        `tokens-json/semantic/${themeName}.json`
+        'tokens/json/primitive/default.json',
+        `tokens/json/semantic/${themeName}.json`
       ],
       platforms: {
         scss: {
           transformGroup: 'tokens-studio',
           transforms: ["attribute/cti", "name/kebab", "color/css"],
-          buildPath: `build/scss/${brand.name}/`,
+          buildPath: `tokens/scss/${brand.name}/`,
           files: [
             {
               destination: `${themeType}.scss`,
@@ -259,16 +259,16 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
 // Create a separate configuration for component tokens
 const componentConfig = {
   source: [
-    'tokens-json/primitive/default.json',
+    'tokens/json/primitive/default.json',
     ...Array.from(brands.values()).flatMap(brand => 
-      brand.themes.map(theme => `tokens-json/semantic/${theme.name}.json`)
+      brand.themes.map(theme => `tokens/json/semantic/${theme.name}.json`)
     )
   ],
   platforms: {
     component: {
       transformGroup: 'tokens-studio',
       transforms: ["attribute/cti", "name/kebab", "color/css"],
-      buildPath: 'build/scss/',
+      buildPath: 'tokens/scss/',
       files: [
         {
           destination: 'component/header.scss',
