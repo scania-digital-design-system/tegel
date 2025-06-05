@@ -105,7 +105,7 @@ export class TdsTextarea {
 
   // Data input event in value prop
   handleInput(event: InputEvent): void {
-    if (event.target instanceof HTMLInputElement) {
+    if (event.target instanceof HTMLTextAreaElement) {
       this.value = event.target.value;
       this.tdsInput.emit(event);
     }
