@@ -28,10 +28,10 @@
   --tds-text-field-helper: var(--tds-grey-500);
 
   //error
-  --tds-text-field-border-bottom-error: var(--tds-negative);
-  --tds-text-field-helper-error: var(--tds-negative);
-  --tds-text-field-bar-error: var(--tds-negative);
-  --tds-text-field-icon-error: var(--tds-negative);
+  --tds-text-field-border-bottom-error: var(--tds-red-400);
+  --tds-text-field-helper-error: var(--tds-red-400);
+  --tds-text-field-bar-error: var(--tds-red-400);
+  --tds-text-field-icon-error: var(--tds-red-400);
 
   //Textcounter
   --tds-text-field-textcounter: var(--tds-grey-500);
@@ -40,7 +40,7 @@
 
   //Prefix and Suffix
   --tds-text-field-ps-color: var(--tds-grey-500);
-  --tds-text-field-ps-color-error: var(--tds-negative);
+  --tds-text-field-ps-color-error: var(--tds-red-400);
 
   // text-field resize icon
   --tds-text-field-resize-icon: var(--tds-grey-500);
@@ -95,9 +95,9 @@
   --tds-text-field-helper: var(--tds-grey-300);
 
   //error
-  --tds-text-field-helper-error: var(--tds-negative);
-  --tds-text-field-bar-error: var(--tds-negative);
-  --tds-text-field-icon-error: var(--tds-negative);
+  --tds-text-field-helper-error: var(--tds-red-300);
+  --tds-text-field-bar-error: var(--tds-red-300);
+  --tds-text-field-icon-error: var(--tds-red-300);
 
   //Textcounter
   --tds-text-field-textcounter: var(--tds-grey-300);
@@ -116,7 +116,7 @@
   --tds-text-field-border-bottom: var(--tds-grey-850);
   --tds-text-field-border-bottom-hover: var(--tds-grey-900);
   --tds-text-field-border-bottom-success: var(--tds-grey-50);
-  --tds-text-field-border-bottom-error: var(--tds-negative);
+  --tds-text-field-border-bottom-error: var(--tds-red-300);
   --tds-text-field-border-bottom-readonly: var(--tds-grey-600);
 
   // Read only
