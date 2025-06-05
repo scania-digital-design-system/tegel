@@ -1,0 +1,11 @@
+.traton {
+  --textfield-border-radius: 4px 4px 4px 4px;
+  --textfield-border-color-left: var(--color-foreground-border-soft);
+  --textfield-border-color-right: var(--color-foreground-border-soft);
+  --textfield-border-color-bottom: var(--color-foreground-border-soft);
+  --textfield-border-color-top: var(--color-foreground-border-soft);
+  --textfield-border-color-left-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-right-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-top-hover: var(--color-foreground-border-strong);
+}

@@ -64,7 +64,7 @@
 
 @mixin text-field-base {
   all: unset;
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--textfield-border-radius);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -121,17 +121,23 @@
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--textfield-border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
   background-color: var(--background);
-  border-bottom: 1px solid var(--border-bottom);
+  border-left: 1px solid var(--textfield-border-color-left);
+  border-right: 1px solid var(--textfield-border-color-right);
+  border-bottom: 1px solid var(--textfield-border-color-bottom);
+  border-top: 1px solid var(--textfield-border-color-top);
   transition: border-bottom-color 200ms ease;
 
   &:hover {
-    border-bottom-color: var(--border-bottom-hover);
+    border-left: 1px solid var(--textfield-border-color-left-hover);
+    border-right: 1px solid var(--textfield-border-color-right-hover);
+    border-bottom: 1px solid var(--textfield-border-color-bottom-hover);
+    border-top: 1px solid var(--textfield-border-color-top-hover);
   }
 
   .form-text-field-md & {

@@ -1,0 +1,13 @@
+/* This is temporary until we have a units token in place */
+:root,
+.scania {
+  --textfield-border-radius: 4px 4px 0 0;
+  --textfield-border-color-left: transparent;
+  --textfield-border-color-right: transparent;
+  --textfield-border-color-bottom: var(--color-foreground-border-soft);
+  --textfield-border-color-top: transparent;
+  --textfield-border-color-left-hover: transparent;
+  --textfield-border-color-right-hover: transparent;
+  --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-top-hover: transparent;
+}
