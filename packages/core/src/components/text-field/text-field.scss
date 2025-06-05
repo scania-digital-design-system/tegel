@@ -19,16 +19,12 @@
   --border-bottom-success: var(--color-foreground-border-strong);
   --border-bottom-readonly: var(--color-foreground-border-strong);
 
-  // Focus state
-  --focus-bar: var(--color-foreground-border-accent-focus);
-
   // Helper text
   --helper: var(--color-foreground-text-defined);
 
   // Error state
   --border-bottom-error: var(--color-system-danger-default);
   --helper-error: var(--color-system-danger-default);
-  --focus-bar-error: var(--color-system-danger-default);
   --affix-color-error: var(--color-foreground-text-defined);
 
   // Disabled state
@@ -222,17 +218,7 @@
     @include placeholder-label;
   }
 
-  .text-field-input-md {
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-
-    ~ .text-field-label-inside {
-      top: 16px;
-    }
-
-    @include placeholder-label;
-  }
-
+  .text-field-input-md,
   .text-field-input-sm {
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
@@ -246,27 +232,24 @@
 
   &.text-field-focus,
   &.text-field-data {
-    .text-field-input-sm ~ .text-field-label-inside {
-      @include detail-07;
-
-      @include label-inside-transition;
-
-      top: 8px;
+    .text-field-container {
+      border-left: 2px solid var(--textfield-border-color-left-focus);
+      border-right: 2px solid var(--textfield-border-color-right-focus);
+      border-bottom: 2px solid var(--textfield-border-color-bottom-focus);
+      border-top: 2px solid var(--textfield-border-color-top-focus);
     }
 
-    .text-field-input-md ~ .text-field-label-inside {
+    .text-field-label-inside {
       @include detail-07;
-
       @include label-inside-transition;
+    }
 
+    .text-field-input-sm ~ .text-field-label-inside,
+    .text-field-input-md ~ .text-field-label-inside {
       top: 8px;
     }
 
     .text-field-input-lg ~ .text-field-label-inside {
-      @include detail-07;
-
-      @include label-inside-transition;
-
       top: 12px;
     }
   }
@@ -284,7 +267,7 @@
     top: 54px;
     width: 0;
     position: absolute;
-    background: var(--focus-bar);
+    background: var(--textfield-bar-color-focus);
     transition: 0.35s ease all;
 
     .form-text-field-md & {
@@ -408,7 +391,10 @@
 //Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    border-bottom-color: var(--border-bottom-success);
+    border-left: 1px solid var(--textfield-border-color-left-success);
+    border-right: 1px solid var(--textfield-border-color-right-success);
+    border-bottom: 1px solid var(--textfield-border-color-bottom-success);
+    border-top: 1px solid var(--textfield-border-color-top-success);
   }
 }
 
@@ -425,7 +411,7 @@
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--focus-bar-error);
+      background: var(--textfield-bar-color-error);
     }
   }
 }

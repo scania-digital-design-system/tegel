@@ -15,4 +15,20 @@
   --textfield-border-color-right-hover: transparent;
   --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
   --textfield-border-color-top-hover: transparent;
+
+  /* Textfield: border colors on success */
+  --textfield-border-color-left-success: transparent;
+  --textfield-border-color-right-success: transparent;
+  --textfield-border-color-bottom-success: var(--color-foreground-border-strong);
+  --textfield-border-color-top-success: transparent;
+
+  /* Textfield: border colors on focus */
+  --textfield-border-color-left-focus: transparent;
+  --textfield-border-color-right-focus: transparent;
+  --textfield-border-color-bottom-focus: var(--color-foreground-border-strong);
+  --textfield-border-color-top-focus: transparent;
+
+  /* Textfield: bar colors */
+  --textfield-bar-color-focus: var(--color-foreground-border-accent-focus);
+  --textfield-bar-color-error: var(--color-system-danger-default);
 }

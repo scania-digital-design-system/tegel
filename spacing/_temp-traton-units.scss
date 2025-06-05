@@ -13,4 +13,20 @@
   --textfield-border-color-right-hover: var(--color-foreground-border-strong);
   --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
   --textfield-border-color-top-hover: var(--color-foreground-border-strong);
+
+  /* Textfield: border colors on success */
+  --textfield-border-color-left-success: var(--color-foreground-border-strong);
+  --textfield-border-color-right-success: var(--color-foreground-border-strong);
+  --textfield-border-color-bottom-success: var(--color-foreground-border-strong);
+  --textfield-border-color-top-success: var(--color-foreground-border-strong);
+
+  /* Textfield: border colors on focus */
+  --textfield-border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --textfield-border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --textfield-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --textfield-border-color-top-focus: var(--color-foreground-border-accent-focus);
+
+  /* Textfield: bar colors */
+  --textfield-bar-color-focus: transparent;
+  --textfield-bar-color-error: transparent;
 }
