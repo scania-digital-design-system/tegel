@@ -1,20 +1,20 @@
 import {
   SliderTitle,
   SliderArgTypes,
-  SliderTemplate,
   SliderParameters,
+  SliderTemplate,
 } from './slider-stories-setup';
 
 export default {
-  title: `${SliderTitle}`,
+  title: SliderTitle,
   argTypes: SliderArgTypes({
-    storyName: 'Default',
+    storyName: 'Decimal',
   }),
   parameters: SliderParameters,
   args: {
     min: 0,
-    max: 100,
-    initialValue: 50,
+    max: 1,
+    initialValue: 0.5,
     showLabel: true,
     labelText: 'Label',
     showTicks: true,
@@ -23,7 +23,7 @@ export default {
     snapToTicks: false,
     showTooltip: true,
     showControls: true,
-    step: 1,
+    step: 0.01,
     showInput: false,
     thumbSize: 'Large',
     readonly: false,
@@ -31,4 +31,4 @@ export default {
   },
 };
 
-export const Default = SliderTemplate.bind({});
+export const Decimal = SliderTemplate.bind({});
