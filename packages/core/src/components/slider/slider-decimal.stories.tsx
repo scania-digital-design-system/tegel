@@ -1,12 +1,7 @@
-import {
-  SliderTitle,
-  SliderArgTypes,
-  SliderParameters,
-  SliderTemplate,
-} from './slider-stories-setup';
+import { SliderArgTypes, SliderParameters, SliderTemplate } from './slider-stories-setup';
 
 export default {
-  title: SliderTitle,
+  title: 'Components/Slider',
   argTypes: SliderArgTypes({
     storyName: 'Decimal',
   }),
