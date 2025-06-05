@@ -2,7 +2,7 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 // import readme from './readme.md';
 
 export default {
-  title: `Tegel Light (CSS)/Button`,
+  title: 'Tegel Light (CSS)/Button',
   argTypes: {
     variant: {
       control: { type: 'select' },

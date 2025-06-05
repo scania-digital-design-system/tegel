@@ -1,12 +1,9 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 import { iconsNames } from '../icon/iconsArray';
-import readme from './readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Button`,
+  title: 'Components/Button',
   parameters: {
-    notes: readme,
     layout: 'padded',
     design: [
       {

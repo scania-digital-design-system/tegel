@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: `Tegel light (CSS)/Accordion`,
+  title: 'Tegel light (CSS)/Accordion',
   argTypes: {
     modeVariant: {
       name: 'Mode variant',

@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Angular" />
+
+**Published: 2023-10-11**
+
+# Using Tegel in Angular
+
+Tegel offers Angular wrappers for all web components. While the rendered components still maintain their core as web components, these wrappers significantly enhance the developer's experience by providing a more intuitive API and seamless integration with Angular. You can find these wrappers in a separate package called `@scania/tegel-angular`, which is the recommended approach for integrating Tegel into a Angular application.
+
+## Prerequisites
+
+- Node version 18+
+- Angular 14+
+
+## Installing `@scania/tegel-angular`
+
+Install the `@scania/tegel-angular` package via npm.
+
+```bash
+npm install @scania/tegel-angular
+```
+
+In your global css file import the tegel stylesheet.
+
+```css
+@import url('@scania/tegel/dist/tegel/tegel.css');
+```
+
+Import the `TegelModule` in your app.module.ts.
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { TegelModule } from '@scania/tegel-angular';
+
+@NgModule({
+  declarations: [AppComponent, TesterComponent],
+  imports: [BrowserModule, TegelModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
+After this, all TDS components will be available in your template files. Example:
+
+```html
+<tds-button text="Click me!" variant="primary" size="sm">
+  <tds-icon slot="icon" name="truck"> </tds-icon>
+</tds-button>
+```

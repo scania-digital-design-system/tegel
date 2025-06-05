@@ -2,6 +2,7 @@ import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
   title: 'Foundations/Typography',
+  tags: ['!autodocs'],
   parameters: {
     layout: 'fullscreen',
   },

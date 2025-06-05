@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "declaration": false,
-    "lib": ["dom", "es2017"],
+    "lib": ["dom", "es2017", "dom.iterable"],
     "moduleResolution": "node",
     "module": "esnext",
     "resolveJsonModule": true,
@@ -10,7 +10,8 @@
     "experimentalDecorators": true,
     "target": "es2017",
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "types": ["node", "jest", "react"]
   },
   "exclude": ["src/components/_beta/**", "src/components/**/test/*", "**/**.stories.*", "src/stories/**"],
   "include": ["src/**/*"]
