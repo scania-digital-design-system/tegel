@@ -39,6 +39,7 @@
       border-radius: 16px;
       background-color: var(--tds-toggle-off-slider);
       left: 0;
+      border: 1px solid transparent;
     }
 
     /* Switch */
@@ -51,12 +52,21 @@
       top: 4px;
     }
 
-    &:focus,
-    &:hover {
+    &:focus {
       outline: none;
+      outline: 2px solid var(--tds-toggle-border-outline);
+      border-radius: 16px;
+      outline-offset: 0;
 
-      &::before {
+       &::before {
         background-color: var(--tds-toggle-off-slider-focus);
+        border: 1px solid var(--tds-toggle-off-border-focus);
+      }
+    }
+
+    &:hover {
+      &::before {
+        background-color: var(--tds-toggle-off-slider-hover);
         border: 1px solid var(--tds-toggle-off-border-focus);
       }
     }
@@ -64,7 +74,20 @@
     &:checked {
       &::before {
         background-color: var(--tds-toggle-on-slider);
-        border: 1px solid var(--tds-toggle-on-border-focus);
+      }
+
+      &:focus {
+        &::before {
+          background-color: var(--tds-toggle-on-slider-focus);
+          border: 1px solid var(--tds-toggle-off-border-focus);
+        }
+      }
+
+      &:hover {
+        &::before {
+          background-color: var(--tds-toggle-on-slider-hover);
+          border: 1px solid var(--tds-toggle-off-border-focus);
+        }
       }
 
       &::after {

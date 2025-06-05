@@ -117,10 +117,6 @@
     }
   }
 
-  slot[name='actions']::slotted(*) {
-    color: var(--tds-toast-link-color);
-  }
-
   .tds-mode-variant-primary {
     --tds-toast-background: var(--tds-toast-background-primary);
   }
