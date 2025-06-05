@@ -1,11 +1,16 @@
 /* This is temporary until we have a units token in place */
 :root,
 .scania {
+  /* Textfield: units */
   --textfield-border-radius: 4px 4px 0 0;
+
+  /* Textfield: border colors */
   --textfield-border-color-left: transparent;
   --textfield-border-color-right: transparent;
   --textfield-border-color-bottom: var(--color-foreground-border-soft);
   --textfield-border-color-top: transparent;
+
+  /* Textfield: border colors on hover */
   --textfield-border-color-left-hover: transparent;
   --textfield-border-color-right-hover: transparent;
   --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
