@@ -2,7 +2,7 @@
  * Do not edit directly, this file was auto-generated.
  */
 
- .traton-dark {
+.traton .tds-mode-dark {
   --component-header-color-dropdown-text-transform: none;
   --component-header-color-dropdown-letter-spacing: 0px;
   --component-header-color-dropdown-font-size: 14px;
@@ -256,7 +256,9 @@
   --component-header-color-expressive-mobile-menu-focus: var(--traton-color-blue-1000);
   --component-header-color-expressive-mobile-menu-pressed: var(--traton-color-blue-900);
   --component-header-color-expressive-mobile-menu-selected: var(--traton-color-base-neutral-white);
-  --component-header-color-expressive-mobile-menu-selected-expressive: var(--traton-color-base-neutral-white);
+  --component-header-color-expressive-mobile-menu-selected-expressive: var(
+    --traton-color-base-neutral-white
+  );
   --component-header-color-background: var(--traton-color-transparent-invisible-light);
   --component-header-color-dropdown-hover: var(--traton-color-blue-900);
   --component-header-color-dropdown-focus: var(--traton-color-blue-1000);
@@ -410,7 +412,9 @@
   --component-chip-color-hover-on-selected: var(--color-background-surface-800);
   --component-chip-color-default: var(--color-background-surface-300);
   --component-chip-foreground-inverse: var(--color-foreground-text-inverse-strong);
-  --component-chip-foreground-foreground-disabled-selected: var(--color-foreground-text-inverse-subtle);
+  --component-chip-foreground-foreground-disabled-selected: var(
+    --color-foreground-text-inverse-subtle
+  );
   --component-chip-border-selected-focus-border: var(--color-foreground-border-accent-focus);
   --component-cookie-primary-text-inverse: var(--color-brand-neutral-white);
 }
