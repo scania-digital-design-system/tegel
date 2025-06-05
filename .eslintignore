@@ -18,4 +18,4 @@ packages/react
 
 icons/gulpfile.js
 
-commitlint.config.js
+commitlint.config.ts
