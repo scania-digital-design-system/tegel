@@ -2,21 +2,17 @@
 // This file imports all Scania-specific tokens and primitives
 
 /* Scania primitive tokens */
-@import '../../../../build/scss/scania/variables-primitive';
+@import '../../../../build/scss/scania/primitive';
 
 /* Scania color tokens */
-@import '../../../../build/scss/scania/color-tokens-light';
-@import '../../../../build/scss/scania/color-tokens-dark';
+@import '../../../../build/scss/scania/color-light';
+@import '../../../../build/scss/scania/color-dark';
 
 /* Scania dimension tokens */
-@import '../../../../build/scss/scania/dimensions';
+@import '../../../../build/scss/scania/dimension';
 
 /* Scania typography tokens */
 @import '../../../../build/scss/scania/typography';
-
-/* Scania variables */
-@import '../../../../build/scss/scania/variables-light';
-@import '../../../../build/scss/scania/variables-dark';
 
 /* Scania specific imports */
 @import '../../../../color/scania-color-primitives';
@@ -104,4 +100,4 @@
       background-color: var(--tds-grey-900);
     }
   }
-} 
+}

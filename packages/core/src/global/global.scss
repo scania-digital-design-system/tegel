@@ -4,10 +4,6 @@
 
 /* Brand specific imports */
 @import './scania';
-/* Multibrand tokens: Scania colors */
-@import '../../../../build/scss/variables-primitive';
-@import '../../../../build/scss/variables-scania-light';
-@import '../../../../build/scss/variables-scania-dark';
 
 /* Multibrand tokens: Scania typography */
 @import '../../../../typography/tokens/typography-scania';

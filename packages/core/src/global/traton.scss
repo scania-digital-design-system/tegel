@@ -1,7 +1,3 @@
-/* Colors */
-@import '../../../../build/scss/variables-traton-light';
-@import '../../../../build/scss/variables-traton-dark';
-
 /* Spacing */
 @import '../../../../spacing/traton-units';
 
@@ -10,21 +6,17 @@
 @import '../../../../typography/tokens/typography-traton';
 
 /* Traton primitive tokens */
-@import '../../../../build/scss/traton/variables-primitive';
+@import '../../../../build/scss/traton/primitive';
 
 /* Traton color tokens */
-@import '../../../../build/scss/traton/color-tokens-light';
-@import '../../../../build/scss/traton/color-tokens-dark';
+@import '../../../../build/scss/traton/color-light';
+@import '../../../../build/scss/traton/color-dark';
 
 /* Traton dimension tokens */
-@import '../../../../build/scss/traton/dimensions';
+@import '../../../../build/scss/traton/dimension';
 
 /* Traton typography tokens */
 @import '../../../../build/scss/traton/typography';
-
-/* Traton variables */
-@import '../../../../build/scss/traton/variables-light';
-@import '../../../../build/scss/traton/variables-dark';
 
 /* Traton specific imports */
 @import '../../../../color/traton-color-primitives';
@@ -68,4 +60,3 @@
 @import '../../../../build/scss/component/toast';
 @import '../../../../build/scss/component/toggle';
 @import '../../../../build/scss/component/tooltip';
-
