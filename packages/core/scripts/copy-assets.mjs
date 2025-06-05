@@ -29,7 +29,7 @@ const sourceDirs = {
 };
 
 function copyFonts(sourceDir, destDir) {
-  // Create target directory if it doesn't exist
+  // Create destination directory if it doesn't exist
   if (!config.dryRun) {
     fs.mkdirSync(destDir, { recursive: true });
   }
