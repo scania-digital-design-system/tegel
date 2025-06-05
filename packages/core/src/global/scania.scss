@@ -2,17 +2,17 @@
 // This file imports all Scania-specific tokens and primitives
 
 /* Scania primitive tokens */
-@import '../../../../build/scss/scania/primitive';
+@import '../../../../tokens/scss/scania/primitive';
 
 /* Scania color tokens */
-@import '../../../../build/scss/scania/color-light';
-@import '../../../../build/scss/scania/color-dark';
+@import '../../../../tokens/scss/scania/color-light';
+@import '../../../../tokens/scss/scania/color-dark';
 
 /* Scania dimension tokens */
-@import '../../../../build/scss/scania/dimension';
+@import '../../../../tokens/scss/scania/dimension';
 
 /* Scania typography tokens */
-@import '../../../../build/scss/scania/typography';
+@import '../../../../tokens/scss/scania/typography';
 
 /* Scania specific imports */
 @import '../../../../color/scania-color-primitives';
