@@ -63,6 +63,14 @@ export class TdsCheckbox {
     };
   }
 
+  /** Method to programmatically focus the checkbox element */
+  @Method()
+  async focusElement() {
+    if (this.inputElement) {
+      this.inputElement.focus();
+    }
+  }
+
   @Watch('indeterminate')
   handleIndeterminateState() {
     this.inputElement.indeterminate = this.indeterminate;
