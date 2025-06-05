@@ -1,9 +1,9 @@
 {
   "tokenSetOrder": [
     "primitive/default",
-    "semantic/traton-light",
-    "semantic/traton-dark",
     "semantic/scania-light",
-    "semantic/scania-dark"
+    "semantic/scania-dark",
+    "semantic/traton-light",
+    "semantic/traton-dark"
   ]
 }
