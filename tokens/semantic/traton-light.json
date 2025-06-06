@@ -582,8 +582,6 @@
             }
           },
           "background": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.invisible.light}",
             "border": {
               "$type": "color",
               "$value": "{traton.color.transparent.invisible.light}"
@@ -607,7 +605,9 @@
             "selected": {
               "$type": "color",
               "$value": "{traton.color.grey.50}"
-            }
+            },
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
           },
           "dropdown": {
             "hover": {
@@ -639,7 +639,7 @@
               "$value": "18px"
             },
             "font-weight": {
-              "$type": "dimension",
+              "$type": "fontWeights",
               "$value": "{traton.font.weight.semi-bold}"
             }
           },
@@ -669,7 +669,7 @@
               "$value": "none"
             },
             "font-weight": {
-              "$type": "dimension",
+              "$type": "fontWeights",
               "$value": "{traton.font.weight.medium}"
             },
             "font-size": {
@@ -695,7 +695,7 @@
               "$value": "none"
             },
             "font-weight": {
-              "$type": "dimension",
+              "$type": "fontWeights",
               "$value": "{traton.font.weight.medium}"
             },
             "font-size": {
@@ -920,7 +920,7 @@
             "$value": "12px"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.semi-bold}"
           }
         }
@@ -1263,7 +1263,7 @@
           "$value": "216px"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "line-height": {
@@ -1281,7 +1281,7 @@
           "$value": "uppercase"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1307,7 +1307,7 @@
           "$value": "uppercase"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1333,7 +1333,7 @@
           "$value": "uppercase"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1359,7 +1359,7 @@
           "$value": "uppercase"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1387,7 +1387,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1413,7 +1413,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1439,7 +1439,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1465,7 +1465,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1491,7 +1491,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.semi-bold}"
         },
         "font-size": {
@@ -1517,7 +1517,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.semi-bold}"
         },
         "font-size": {
@@ -1545,7 +1545,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1571,7 +1571,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
@@ -1599,7 +1599,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
@@ -1625,7 +1625,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
@@ -1654,7 +1654,7 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
@@ -1680,7 +1680,7 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
@@ -1708,7 +1708,7 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
@@ -1734,7 +1734,7 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
@@ -1762,7 +1762,7 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
@@ -1788,7 +1788,7 @@
             "$value": "none"
           },
           "font-weight": {
-            "$type": "dimension",
+            "$type": "fontWeights",
             "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
@@ -1817,7 +1817,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
@@ -1843,7 +1843,7 @@
           "$value": "none"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
