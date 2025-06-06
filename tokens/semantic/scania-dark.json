@@ -1281,7 +1281,7 @@
           "$value": "uppercase"
         },
         "font-weight": {
-          "$type": "dimension",
+          "$type": "fontWeights",
           "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
