@@ -44,6 +44,9 @@ export class TdsButton {
   /** The name attribute allows for different ways of accessing the button element */
   @Prop() name: string;
 
+  /** The value attribute can be used when handling a form submission */
+  @Prop() value: string;
+
   @State() onlyIcon: boolean = false;
 
   connectedCallback() {

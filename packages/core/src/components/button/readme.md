@@ -18,6 +18,7 @@
 | `tdsAriaLabel` | `tds-aria-label` | The value to be used for the aria-label attribute if onlyIcon is set to true | `string`                                          | `undefined` |
 | `text`         | `text`           | Text displayed inside the Button                                             | `string`                                          | `undefined` |
 | `type`         | `type`           | Button's type                                                                | `"button" \| "reset" \| "submit"`                 | `'button'`  |
+| `value`        | `value`          | The value attribute can be used when handling a form submission              | `string`                                          | `undefined` |
 | `variant`      | `variant`        | Variation of Button's design                                                 | `"danger" \| "ghost" \| "primary" \| "secondary"` | `'primary'` |
 
 
