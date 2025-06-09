@@ -19,7 +19,7 @@ register(StyleDictionary);
 // Build primitive tokens
 const primitiveSD = new StyleDictionary({
   ...config.primitive,
-  log: { verbosity: 'verbose' }
+  log: { verbosity: 'verbose' },
 });
 primitiveSD.buildAllPlatforms();
 
@@ -30,7 +30,7 @@ Object.entries(config)
     console.log(`Building ${themeName}...`);
     const themeSD = new StyleDictionary({
       ...themeConfig,
-      log: { verbosity: 'verbose' }
+      log: { verbosity: 'verbose' },
     });
     themeSD.buildAllPlatforms();
-  }); 
+  });

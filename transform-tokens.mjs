@@ -33,4 +33,4 @@ function removeCyFromFontFamilies(obj, path = '') {
 
 // Transform the tokens and write back to file
 const transformedTokens = removeCyFromFontFamilies(primitiveTokens);
-writeFileSync(primitivePath, JSON.stringify(transformedTokens, null, 2)); 
+writeFileSync(primitivePath, JSON.stringify(transformedTokens, null, 2));
