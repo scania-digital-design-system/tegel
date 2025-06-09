@@ -47,7 +47,15 @@ export class Icon {
 
   private detectAndSetBrand() {
     const brandClasses = Object.keys(brandIconMap);
-    const matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
+    // First try to find brand class using closest
+    let matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
+
+    // If closest didn't find anything, check document root
+    if (!matchingBrand) {
+      matchingBrand = brandClasses.find((brand) =>
+        document.documentElement.classList.contains(brand),
+      );
+    }
 
     // Set the icons_object based on the found brand or default to scania
     this.icons_object = matchingBrand ? brandIconMap[matchingBrand] : scaniaIcons;

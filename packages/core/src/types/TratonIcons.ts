@@ -12,6 +12,7 @@ export type TratonIconNames =
   | 'chevron_right'
   | 'chevron_up'
   | 'cross'
+  | 'edit_inactive'
   | 'edit'
   | 'error'
   | 'info'
