@@ -1,73 +1,133 @@
+@import '../../../../../typography/utilities/typography-utility';
+
+.form-text-field {
+  // Base colors
+  --background-primary: var(--color-background-layer-01);
+  --background-secondary: var(--color-background-layer-02);
+  --background: var(--background-primary);
+  --text-color: var(--color-foreground-text-strong);
+  --placeholder: var(--color-foreground-text-subtle);
+  --affix-color: var(--color-foreground-text-defined);
+
+  // Label colors
+  --label-color: var(--color-foreground-text-strong);
+  --label-inside-color: var(--color-foreground-text-strong);
+
+  // Border colors
+  --border-bottom: var(--color-foreground-border-soft);
+  --border-bottom-hover: var(--color-foreground-border-strong);
+  --border-bottom-success: var(--color-foreground-border-strong);
+  --border-bottom-readonly: var(--color-foreground-border-strong);
+
+  // Helper text
+  --helper: var(--color-foreground-text-defined);
+
+  // Error state
+  --border-bottom-error: var(--color-system-danger-default);
+  --helper-error: var(--color-system-danger-default);
+  --affix-color-error: var(--color-foreground-text-defined);
+
+  // Disabled state
+  --background-disabled-primary: var(--color-background-layer-01);
+  --background-disabled-secondary: var(--color-background-layer-02);
+  --background-disabled: var(--background-disabled-primary);
+  --text-color-disabled: var(--color-foreground-text-subtle);
+  --placeholder-disabled: var(--color-foreground-text-subtle);
+  --label-disabled: var(--color-foreground-text-subtle);
+  --affix-color-disabled: var(--color-foreground-text-disabled);
+  --helper-disabled: var(--color-foreground-text-disabled);
+
+  // Read only state
+  --icon-read-only-color: var(--color-foreground-text-strong);
+  --icon-read-only-label-color: var(--color-foreground-text-strong);
+  --icon-read-only-label-background: var(--color-system-info-subtle);
+
+  // Text counter
+  --textcounter: var(--color-foreground-text-defined);
+  --textcounter-disabled: var(--color-foreground-text-disabled);
+  --textcounter-divider: var(--color-foreground-text-disabled);
+
+  .tds-mode-variant-primary {
+    --background: var(--background-primary);
+    --background-disabled: var(--background-disabled-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --background: var(--background-secondary);
+    --background-disabled: var(--background-disabled-secondary);
+  }
+}
+
 @mixin text-field-base {
   all: unset;
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--textfield-border-radius);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
   border: none;
   outline: none;
   height: 100%;
-  color: var(--tds-text-field-color);
-  background-color: var(--tds-text-field-background);
+  color: var(--text-color);
+  background-color: var(--background);
 
   &::placeholder {
-    color: var(--tds-text-field-placeholder);
+    color: var(--placeholder);
   }
 
   &:disabled {
     user-select: none;
     pointer-events: none;
-    background-color: var(--tds-text-field-background-disabled);
-    color: var(--tds-text-field-color-disabled);
+    background-color: var(--background-disabled);
+    color: var(--text-color-disabled);
 
     &::placeholder {
-      color: var(--tds-text-field-placeholder-disabled);
+      color: var(--placeholder-disabled);
     }
 
     ~ .text-field-label-inside {
-      color: var(--tds-text-field-label-disabled);
+      color: var(--label-disabled);
     }
   }
 }
 
+.text-field-input {
+  @include text-field-base;
+  @include detail-02;
+}
+
 //Sizes
 .text-field-input-lg {
-  @include text-field-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
 }
 
 .text-field-input-md {
-  @include text-field-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
 }
 
 .text-field-input-sm {
-  @include text-field-base;
-
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-16);
 }
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--textfield-border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--tds-text-field-background);
-  border-bottom: 1px solid var(--tds-text-field-border-bottom);
-  transition: border-bottom-color 200ms ease;
+  background-color: var(--background);
+  border-left: 1px solid var(--textfield-border-color-left);
+  border-right: 1px solid var(--textfield-border-color-right);
+  border-bottom: 1px solid var(--textfield-border-color-bottom);
+  border-top: 1px solid var(--textfield-border-color-top);
+  transition: border-bottom-color 200ms ease, border-left-color 200ms ease,
+    border-right-color 200ms ease, border-top-color 200ms ease, outline-color 200ms ease;
 
   &:hover {
-    border-bottom-color: var(--tds-text-field-border-bottom-hover);
+    border-left: 1px solid var(--textfield-border-color-left-hover);
+    border-right: 1px solid var(--textfield-border-color-right-hover);
+    border-bottom: 1px solid var(--textfield-border-color-bottom-hover);
+    border-top: 1px solid var(--textfield-border-color-top-hover);
   }
 
   .form-text-field-md & {
@@ -86,25 +146,25 @@
 
 .text-field-data,
 .text-field-input {
-  color: var(--tds-text-field-data-color);
+  color: var(--text-color);
 }
 
 //text-field label
 
 .text-field-label-outside > * {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: block;
   margin-bottom: var(--tds-spacing-element-8);
-  color: var(--tds-text-field-label-color);
+  color: var(--label-color);
 }
 
 .text-field-label-inside {
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   position: absolute;
   pointer-events: none;
-  color: var(--tds-text-field-label-inside-color);
+  color: var(--label-inside-color);
   left: 16px;
 }
 
@@ -120,7 +180,7 @@
   //Input field in focus
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--tds-text-field-placeholder);
+    color: var(--placeholder);
   }
 }
 
@@ -152,17 +212,7 @@
     @include placeholder-label;
   }
 
-  .text-field-input-md {
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-
-    ~ .text-field-label-inside {
-      top: 16px;
-    }
-
-    @include placeholder-label;
-  }
-
+  .text-field-input-md,
   .text-field-input-sm {
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
@@ -176,30 +226,17 @@
 
   &.text-field-focus,
   &.text-field-data {
-    .text-field-input-sm ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-
+    .text-field-label-inside {
+      @include detail-07;
       @include label-inside-transition;
-
-      top: 8px;
     }
 
+    .text-field-input-sm ~ .text-field-label-inside,
     .text-field-input-md ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-
-      @include label-inside-transition;
-
       top: 8px;
     }
 
     .text-field-input-lg ~ .text-field-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-
-      @include label-inside-transition;
-
       top: 12px;
     }
   }
@@ -207,46 +244,45 @@
 
 //text-field bottom bar when in focus
 .text-field-bar {
-  position: absolute;
+  position: relative;
   width: 100%;
+  left: 0;
+  z-index: 1;
 
-  &::before,
   &::after {
     content: '';
     height: 2px;
-    top: 54px;
-    width: 0;
+    width: 100%;
+    bottom: 0;
     position: absolute;
-    background: var(--tds-text-field-bar);
-    transition: 0.35s ease all;
+    background: var(--textfield-bar-color-focus);
+    transform: scaleX(0);
+    transition: 0.35s ease transform;
+  }
+}
 
-    .form-text-field-md & {
-      top: 46px;
+/* General focus state */
+.form-text-field {
+  &.text-field-focus {
+    .text-field-container {
+      border-left: 1px solid var(--textfield-border-color-left-focus);
+      border-right: 1px solid var(--textfield-border-color-right-focus);
+      border-bottom: 1px solid var(--textfield-border-color-bottom-focus);
+      border-top: 1px solid var(--textfield-border-color-top-focus);
+      outline: 2px solid var(--textfield-outline-color-focus);
+      outline-offset: -1px;
     }
 
-    .form-text-field-sm & {
-      top: 40px;
+    .text-field-bar::after {
+      transform: scaleX(1);
     }
-  }
-
-  &::before {
-    left: 50%;
-  }
-
-  &::after {
-    right: 50%;
-  }
-
-  .text-field-focus &::before,
-  .text-field-focus &::after {
-    width: 50%;
   }
 }
 
 //Helper text
 .text-field-helper {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: flex;
   gap: 8px;
   justify-content: space-between;
@@ -257,31 +293,34 @@
 
   flex-basis: 100%;
   padding-top: var(--tds-spacing-element-4);
-  color: var(--tds-text-field-helper);
+  color: var(--helper);
 }
 
 //Disabled state
 .form-text-field-disabled {
   .text-field-container {
     cursor: not-allowed;
-    border-bottom-color: transparent;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
   }
 
   .text-field-slot-wrap-prefix,
   .text-field-slot-wrap-suffix {
     > * {
-      color: var(--tds-text-field-ps-color-disabled);
+      color: var(--affix-color-disabled);
     }
   }
 
   .text-field-label-outside {
     > * {
-      color: var(--tds-text-field-label-disabled);
+      color: var(--label-disabled);
     }
   }
 
   .text-field-helper {
-    color: var(--tds-text-field-helper-disabled);
+    color: var(--helper-disabled);
   }
 }
 
@@ -293,19 +332,19 @@
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--tds-text-field-icon-read-only-label-color);
+  color: var(--icon-read-only-label-color);
 
   &-label {
     display: none;
     position: absolute;
     right: 18px;
     top: 48px;
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     padding: 8px;
     white-space: nowrap;
     border-radius: 4px 0 4px 4px;
-    background-color: var(--tds-text-field-icon-read-only-label-background);
+    background-color: var(--icon-read-only-label-background);
   }
 }
 
@@ -315,7 +354,7 @@
   cursor: default;
 
   .text-field-container {
-    border-bottom-color: var(--tds-text-field-border-bottom-readonly);
+    border-bottom-color: var(--border-bottom-readonly);
   }
 
   .text-field-icon__readonly {
@@ -341,24 +380,30 @@
 //Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    border-bottom-color: var(--tds-text-field-border-bottom-success);
+    border-left: 1px solid var(--textfield-border-color-left-success);
+    border-right: 1px solid var(--textfield-border-color-right-success);
+    border-bottom: 1px solid var(--textfield-border-color-bottom-success);
+    border-top: 1px solid var(--textfield-border-color-top-success);
   }
 }
 
 //Error State
 .form-text-field-error:not(.form-text-field-readonly) {
   .text-field-helper {
-    color: var(--tds-text-field-helper-error);
+    color: var(--helper-error);
   }
 
   .text-field-container {
-    border-bottom-color: var(--tds-text-field-border-bottom-error);
+    border-left: 1px solid var(--textfield-border-color-left-error);
+    border-right: 1px solid var(--textfield-border-color-right-error);
+    border-bottom: 1px solid var(--textfield-border-color-bottom-error);
+    border-top: 1px solid var(--textfield-border-color-top-error);
   }
 
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--tds-text-field-bar-error);
+      background: var(--textfield-bar-color-error);
     }
   }
 }
@@ -371,43 +416,44 @@
 }
 
 .text-field-textcounter-disabled {
-  color: var(--tds-text-field-textcounter-disabled);
+  color: var(--textcounter-disabled);
 }
 
 .text-field-textcounter {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
-  color: var(--tds-text-field-textcounter);
+  @include detail-02;
+
+  color: var(--textcounter);
   float: right;
 
   &.text-field-textcounter-disabled {
-    color: var(--tds-text-field-textcounter-disabled);
+    color: var(--textcounter-disabled);
   }
 
   &.text-field-textcounter-divider {
-    // @include type-style('detail-05');
-    color: var(--tds-text-field-textcounter-divider);
+    @include detail-05;
+
+    color: var(--textcounter-divider);
   }
 
   &.text-field-textcounter-divider-disabled {
-    color: var(--tds-text-field-textcounter-divider-disabled);
+    color: var(--textcounter-divider);
   }
 }
 
 .text-field-slot-wrap-prefix,
 .text-field-slot-wrap-suffix {
   align-self: center;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   margin: 0 0 0 14px;
-  color: var(--tds-text-field-ps-color);
+  color: var(--affix-color);
 
   &::slotted(:not(tds-icon)) {
     margin: 0 0 0 2px;
   }
 
   &.text-field-error {
-    color: var(--tds-text-field-ps-color-error);
+    color: var(--affix-color-error);
   }
 }
 
