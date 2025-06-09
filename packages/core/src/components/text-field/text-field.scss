@@ -1,5 +1,85 @@
 @import '../../../../../typography/utilities/typography-utility';
 
+:host-context(.scania) .form-text-field {
+  /* Textfield: units */
+  --textfield-border-radius: 4px 4px 0 0;
+
+  /* Textfield: border colors */
+  --textfield-border-color-left: transparent;
+  --textfield-border-color-right: transparent;
+  --textfield-border-color-bottom: var(--color-foreground-border-soft);
+  --textfield-border-color-top: transparent;
+
+  /* Textfield: border colors on hover */
+  --textfield-border-color-left-hover: transparent;
+  --textfield-border-color-right-hover: transparent;
+  --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-top-hover: transparent;
+
+  /* Textfield: border colors on success */
+  --textfield-border-color-left-success: transparent;
+  --textfield-border-color-right-success: transparent;
+  --textfield-border-color-bottom-success: var(--color-foreground-border-strong);
+  --textfield-border-color-top-success: transparent;
+
+  /* Textfield: border colors on focus */
+  --textfield-border-color-left-focus: transparent;
+  --textfield-border-color-right-focus: transparent;
+  --textfield-border-color-bottom-focus: var(--color-foreground-border-strong);
+  --textfield-border-color-top-focus: transparent;
+  --textfield-outline-color-focus: none;
+
+  /* Textfield: border colors on error */
+  --textfield-border-color-left-error: transparent;
+  --textfield-border-color-right-error: transparent;
+  --textfield-border-color-bottom-error: var(--color-system-danger-default);
+  --textfield-border-color-top-error: transparent;
+
+  /* Textfield: bar colors */
+  --textfield-bar-color-focus: var(--color-foreground-border-accent-focus);
+  --textfield-bar-color-error: var(--color-system-danger-default);
+}
+
+:host-context(.traton) .form-text-field {
+  /* Textfield: units */
+  --textfield-border-radius: 4px 4px 4px 4px;
+
+  /* Textfield: border colors */
+  --textfield-border-color-left: var(--color-foreground-border-soft);
+  --textfield-border-color-right: var(--color-foreground-border-soft);
+  --textfield-border-color-bottom: var(--color-foreground-border-soft);
+  --textfield-border-color-top: var(--color-foreground-border-soft);
+
+  /* Textfield: border colors on hover */
+  --textfield-border-color-left-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-right-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --textfield-border-color-top-hover: var(--color-foreground-border-strong);
+
+  /* Textfield: border colors on success */
+  --textfield-border-color-left-success: var(--color-foreground-border-strong);
+  --textfield-border-color-right-success: var(--color-foreground-border-strong);
+  --textfield-border-color-bottom-success: var(--color-foreground-border-strong);
+  --textfield-border-color-top-success: var(--color-foreground-border-strong);
+
+  /* Textfield: border colors on focus */
+  --textfield-border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --textfield-border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --textfield-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --textfield-border-color-top-focus: var(--color-foreground-border-accent-focus);
+  --textfield-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  /* Textfield: border colors on error */
+  --textfield-border-color-left-error: var(--color-system-danger-default);
+  --textfield-border-color-right-error: var(--color-system-danger-default);
+  --textfield-border-color-bottom-error: var(--color-system-danger-default);
+  --textfield-border-color-top-error: var(--color-system-danger-default);
+
+  /* Textfield: bar colors */
+  --textfield-bar-color-focus: transparent;
+  --textfield-bar-color-error: transparent;
+}
+
 .form-text-field {
   // Base colors
   --background-primary: var(--color-background-layer-01);
