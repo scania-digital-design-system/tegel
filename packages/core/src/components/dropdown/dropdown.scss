@@ -2,16 +2,16 @@
 @import './dropdown-button';
 @import './dropdown-filter';
 @import '../../mixins/scrollbar';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
   position: relative;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
 
   .label-outside {
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     color: var(--tds-dropdown-label-color);
     margin-bottom: 8px;
 
@@ -63,8 +63,8 @@
 
     .label-inside {
       position: absolute;
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
+      @include detail-07;
+
       color: var(--tds-dropdown-label-inside-color);
 
       &.lg {
@@ -107,8 +107,8 @@
 
       &.selected {
         position: absolute;
-        font: var(--tds-detail-07);
-        letter-spacing: var(--tds-detail-07-ls);
+        @include detail-07;
+
         transition: all 0.2s ease-in-out;
 
         &.lg {
@@ -149,8 +149,8 @@
   .helper {
     margin-top: 4px;
     color: var(--tds-dropdown-helper-color);
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     display: flex;
     align-items: center;
     gap: 8px;
@@ -229,8 +229,8 @@
     }
 
     .no-result {
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
+
       display: flex;
       align-items: center;
       padding: 0 16px;

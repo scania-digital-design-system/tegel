@@ -1,4 +1,5 @@
 @import '../../mixins/z-index';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   .filter {
@@ -45,16 +46,15 @@
         display: none;
       }
 
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
 
       /* Overwrite in order to display ÅÄÖ and similar sign correctly */
       line-height: 1.3;
       color: var(--tds-dropdown-placeholder-color);
 
       &.selected {
-        font: var(--tds-detail-07);
-        letter-spacing: var(--tds-detail-07-ls);
+        @include detail-07;
+
         transition: all 0.2s ease-in-out;
 
         &.lg {
