@@ -1,3 +1,5 @@
+@import '../../../../../typography/utilities/typography-utility';
+
 :host {
   button {
     all: unset;
@@ -25,8 +27,7 @@
 
     &.value {
       color: var(--tds-dropdown-value-color);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
 
       /** Needed to not get be affected by overflow:hidden 
       The original line-height is 1.14 */
