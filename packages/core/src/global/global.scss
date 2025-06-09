@@ -2,13 +2,26 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
-/* Multibrand tokens: Scania colors */
-@import '../../../../color/scania-color-primitives';
-@import '../../../../color/scania-brand-usage';
+/* Brand specific imports */
+@import './scania';
 
-@import '../../../../build/scss/variables-scania-light';
-@import '../../../../build/scss/variables-scania-dark';
-
+/* Component tokens */
+@import '../../../../tokens/scss/component/badge';
+@import '../../../../tokens/scss/component/button';
+@import '../../../../tokens/scss/component/card';
+@import '../../../../tokens/scss/component/chip';
+@import '../../../../tokens/scss/component/cookie';
+@import '../../../../tokens/scss/component/dropdown';
+@import '../../../../tokens/scss/component/footer';
+@import '../../../../tokens/scss/component/header';
+@import '../../../../tokens/scss/component/input-field';
+@import '../../../../tokens/scss/component/logo';
+@import '../../../../tokens/scss/component/shadow';
+@import '../../../../tokens/scss/component/side-menu';
+@import '../../../../tokens/scss/component/spinner';
+@import '../../../../tokens/scss/component/stepper';
+@import '../../../../tokens/scss/component/table';
+@import '../../../../tokens/scss/component/text';
 
 /* Multibrand tokens: Scania typography */
 @import '../../../../typography/tokens/typography-scania';
@@ -20,9 +33,6 @@
 
 // Motion
 @import '../../../../motion/';
-
-// Colors
-@import '../../../../color/color';
 
 // Grid (Deprecated - will be removed in version 2.0)
 @import '../../../../grid-deprecated/grid-deprecated';
