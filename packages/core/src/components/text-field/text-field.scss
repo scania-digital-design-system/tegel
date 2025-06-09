@@ -14,16 +14,12 @@
   --label-inside-color: var(--color-foreground-text-strong);
 
   // Border colors
-  --border-bottom: var(--color-foreground-border-soft);
-  --border-bottom-hover: var(--color-foreground-border-strong);
-  --border-bottom-success: var(--color-foreground-border-strong);
   --border-bottom-readonly: var(--color-foreground-border-strong);
 
   // Helper text
   --helper: var(--color-foreground-text-defined);
 
   // Error state
-  --border-bottom-error: var(--color-system-danger-default);
   --helper-error: var(--color-system-danger-default);
   --affix-color-error: var(--color-foreground-text-defined);
 
@@ -38,7 +34,6 @@
   --helper-disabled: var(--color-foreground-text-disabled);
 
   // Read only state
-  --icon-read-only-color: var(--color-foreground-text-strong);
   --icon-read-only-label-color: var(--color-foreground-text-strong);
   --icon-read-only-label-background: var(--color-system-info-subtle);
 
