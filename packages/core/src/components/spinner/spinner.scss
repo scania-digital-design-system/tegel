@@ -2,17 +2,17 @@
 
 /* Component variables aka overrides */
 :root {
-  --spinner-background-inverted: rgba(255, 255, 255, 1);
+  --spinner-background-inverted: var(--tds-white);
 }
 
 :root,
 .scania,
 .scania .tds-mode-light {
-  --spinner-background: rgba(43, 112, 211, 1);
+  --spinner-background: var(--tds-blue-400);
 }
 
 .scania .tds-mode-dark {
-  --spinner-background: rgba(74, 137, 243, 1);
+  --spinner-background: var(--tds-blue-400);
 }
 
 .traton,
