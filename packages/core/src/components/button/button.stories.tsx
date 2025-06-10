@@ -133,10 +133,16 @@ export default {
       },
       if: { arg: 'onlyIcon', truthy: true },
     },
-
     name: {
       name: 'Name',
       description: 'The name attribute allows for different ways of accessing the button element.',
+      control: {
+        type: 'text',
+      },
+    },
+    value: {
+      name: 'Value',
+      description: 'The value attribute can be used when handling a form submission.',
       control: {
         type: 'text',
       },
@@ -155,6 +161,7 @@ export default {
     onlyIcon: false,
     tdsAriaLabel: 'A button component',
     name: '',
+    value: '',
   },
 };
 
@@ -171,6 +178,7 @@ const WebComponentTemplate = ({
   animation,
   tdsAriaLabel,
   name,
+  value,
 }) => {
   const variantLookUp = {
     Primary: 'primary',
@@ -219,6 +227,7 @@ const WebComponentTemplate = ({
       animation="${animation}"
       tds-aria-label="${tdsAriaLabel}"
       name="${name}"
+      value="${value}"
     >
         ${
           onlyIcon || (icon && icon !== 'none')
