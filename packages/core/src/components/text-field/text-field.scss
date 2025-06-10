@@ -1,141 +1,9 @@
 @import '../../../../../typography/utilities/typography-utility';
 
-:host-context(.scania) .form-text-field {
-  /* Textfield: units */
-  --textfield-border-radius: 4px 4px 0 0;
-
-  /* Textfield: border colors */
-  --textfield-border-color-left: transparent;
-  --textfield-border-color-right: transparent;
-  --textfield-border-color-bottom: var(--color-foreground-border-soft);
-  --textfield-border-color-top: transparent;
-
-  /* Textfield: border colors on hover */
-  --textfield-border-color-left-hover: transparent;
-  --textfield-border-color-right-hover: transparent;
-  --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --textfield-border-color-top-hover: transparent;
-
-  /* Textfield: border colors on success */
-  --textfield-border-color-left-success: transparent;
-  --textfield-border-color-right-success: transparent;
-  --textfield-border-color-bottom-success: var(--color-foreground-border-strong);
-  --textfield-border-color-top-success: transparent;
-
-  /* Textfield: border colors on focus */
-  --textfield-border-color-left-focus: transparent;
-  --textfield-border-color-right-focus: transparent;
-  --textfield-border-color-bottom-focus: var(--color-foreground-border-strong);
-  --textfield-border-color-top-focus: transparent;
-  --textfield-outline-color-focus: none;
-
-  /* Textfield: border colors on error */
-  --textfield-border-color-left-error: transparent;
-  --textfield-border-color-right-error: transparent;
-  --textfield-border-color-bottom-error: var(--color-system-danger-default);
-  --textfield-border-color-top-error: transparent;
-
-  /* Textfield: bar colors */
-  --textfield-bar-color-focus: var(--color-foreground-border-accent-focus);
-  --textfield-bar-color-error: var(--color-system-danger-default);
-}
-
-:host-context(.traton) .form-text-field {
-  /* Textfield: units */
-  --textfield-border-radius: 4px 4px 4px 4px;
-
-  /* Textfield: border colors */
-  --textfield-border-color-left: var(--color-foreground-border-soft);
-  --textfield-border-color-right: var(--color-foreground-border-soft);
-  --textfield-border-color-bottom: var(--color-foreground-border-soft);
-  --textfield-border-color-top: var(--color-foreground-border-soft);
-
-  /* Textfield: border colors on hover */
-  --textfield-border-color-left-hover: var(--color-foreground-border-strong);
-  --textfield-border-color-right-hover: var(--color-foreground-border-strong);
-  --textfield-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --textfield-border-color-top-hover: var(--color-foreground-border-strong);
-
-  /* Textfield: border colors on success */
-  --textfield-border-color-left-success: var(--color-foreground-border-strong);
-  --textfield-border-color-right-success: var(--color-foreground-border-strong);
-  --textfield-border-color-bottom-success: var(--color-foreground-border-strong);
-  --textfield-border-color-top-success: var(--color-foreground-border-strong);
-
-  /* Textfield: border colors on focus */
-  --textfield-border-color-left-focus: var(--color-foreground-border-accent-focus);
-  --textfield-border-color-right-focus: var(--color-foreground-border-accent-focus);
-  --textfield-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
-  --textfield-border-color-top-focus: var(--color-foreground-border-accent-focus);
-  --textfield-outline-color-focus: var(--color-foreground-border-accent-focus);
-
-  /* Textfield: border colors on error */
-  --textfield-border-color-left-error: var(--color-system-danger-default);
-  --textfield-border-color-right-error: var(--color-system-danger-default);
-  --textfield-border-color-bottom-error: var(--color-system-danger-default);
-  --textfield-border-color-top-error: var(--color-system-danger-default);
-
-  /* Textfield: bar colors */
-  --textfield-bar-color-focus: transparent;
-  --textfield-bar-color-error: transparent;
-}
-
-.form-text-field {
-  // Base colors
-  --background-primary: var(--color-background-layer-01);
-  --background-secondary: var(--color-background-layer-02);
-  --background: var(--background-primary);
-  --text-color: var(--color-foreground-text-strong);
-  --placeholder: var(--color-foreground-text-subtle);
-  --affix-color: var(--color-foreground-text-defined);
-
-  // Label colors
-  --label-color: var(--color-foreground-text-strong);
-  --label-inside-color: var(--color-foreground-text-strong);
-
-  // Border colors
-  --border-bottom-readonly: var(--color-foreground-border-strong);
-
-  // Helper text
-  --helper: var(--color-foreground-text-defined);
-
-  // Error state
-  --helper-error: var(--color-system-danger-default);
-  --affix-color-error: var(--color-foreground-text-defined);
-
-  // Disabled state
-  --background-disabled-primary: var(--color-background-layer-01);
-  --background-disabled-secondary: var(--color-background-layer-02);
-  --background-disabled: var(--background-disabled-primary);
-  --text-color-disabled: var(--color-foreground-text-subtle);
-  --placeholder-disabled: var(--color-foreground-text-subtle);
-  --label-disabled: var(--color-foreground-text-subtle);
-  --affix-color-disabled: var(--color-foreground-text-disabled);
-  --helper-disabled: var(--color-foreground-text-disabled);
-
-  // Read only state
-  --icon-read-only-label-color: var(--color-foreground-text-strong);
-  --icon-read-only-label-background: var(--color-system-info-subtle);
-
-  // Text counter
-  --textcounter: var(--color-foreground-text-defined);
-  --textcounter-disabled: var(--color-foreground-text-disabled);
-  --textcounter-divider: var(--color-foreground-text-disabled);
-
-  .tds-mode-variant-primary {
-    --background: var(--background-primary);
-    --background-disabled: var(--background-disabled-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --background: var(--background-secondary);
-    --background-disabled: var(--background-disabled-secondary);
-  }
-}
-
+// Mixins
 @mixin text-field-base {
   all: unset;
-  border-radius: var(--textfield-border-radius);
+  border-radius: var(--border-radius);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
@@ -165,6 +33,207 @@
   }
 }
 
+@mixin placeholder-label {
+  &::placeholder {
+    color: transparent;
+  }
+
+  ::placeholder {
+    color: transparent;
+  }
+
+  &:focus::placeholder {
+    transition: color 0.35s ease;
+    color: var(--placeholder);
+  }
+}
+
+@mixin label-inside-transition {
+  transition: 0.1s ease all;
+}
+
+@mixin border-colors($state: '') {
+  $suffix: if($state != '', '-#{$state}', '');
+
+  border-left: 1px solid var(--border-color-left#{$suffix});
+  border-right: 1px solid var(--border-color-right#{$suffix});
+  border-bottom: 1px solid var(--border-color-bottom#{$suffix});
+  border-top: 1px solid var(--border-color-top#{$suffix});
+}
+
+// Base component styles
+.form-text-field {
+  // Colors - Base
+  --background-primary: var(--color-background-layer-01);
+  --background-secondary: var(--color-background-layer-02);
+  --background: var(--background-primary);
+  --text-color: var(--color-foreground-text-strong);
+  --placeholder: var(--color-foreground-text-subtle);
+  --affix-color: var(--color-foreground-text-defined);
+
+  // Colors - Label
+  --label-color: var(--color-foreground-text-strong);
+  --label-inside-color: var(--color-foreground-text-strong);
+
+  // Colors - Border
+  --border-bottom-readonly: var(--color-foreground-border-strong);
+
+  // Colors - Helper text
+  --helper: var(--color-foreground-text-defined);
+
+  // Colors - Error state
+  --helper-error: var(--color-system-danger-default);
+  --affix-color-error: var(--color-foreground-text-defined);
+
+  // Colors - Disabled state
+  --background-disabled-primary: var(--color-background-layer-01);
+  --background-disabled-secondary: var(--color-background-layer-02);
+  --background-disabled: var(--background-disabled-primary);
+  --text-color-disabled: var(--color-foreground-text-subtle);
+  --placeholder-disabled: var(--color-foreground-text-subtle);
+  --label-disabled: var(--color-foreground-text-subtle);
+  --affix-color-disabled: var(--color-foreground-text-disabled);
+  --helper-disabled: var(--color-foreground-text-disabled);
+
+  // Colors - Read only state
+  --icon-read-only-label-color: var(--color-foreground-text-strong);
+  --icon-read-only-label-background: var(--color-system-info-subtle);
+
+  // Colors - Text counter
+  --textcounter: var(--color-foreground-text-defined);
+  --textcounter-disabled: var(--color-foreground-text-disabled);
+  --textcounter-divider: var(--color-foreground-text-disabled);
+
+  // Border radius
+  --border-radius: 4px 4px 0 0;
+
+  // Border colors - Default
+  --border-color-left: transparent;
+  --border-color-right: transparent;
+  --border-color-bottom: var(--color-foreground-border-soft);
+  --border-color-top: transparent;
+
+  // Border colors - Hover
+  --border-color-left-hover: transparent;
+  --border-color-right-hover: transparent;
+  --border-color-bottom-hover: var(--color-foreground-border-strong);
+  --border-color-top-hover: transparent;
+
+  // Border colors - Success
+  --border-color-left-success: transparent;
+  --border-color-right-success: transparent;
+  --border-color-bottom-success: var(--color-foreground-border-strong);
+  --border-color-top-success: transparent;
+
+  // Border colors - Focus
+  --border-color-left-focus: transparent;
+  --border-color-right-focus: transparent;
+  --border-color-bottom-focus: var(--color-foreground-border-strong);
+  --border-color-top-focus: transparent;
+  --outline-color-focus: none;
+
+  // Border colors - Error
+  --border-color-left-error: transparent;
+  --border-color-right-error: transparent;
+  --border-color-bottom-error: var(--color-system-danger-default);
+  --border-color-top-error: transparent;
+
+  // Bar colors
+  --bar-color-focus: var(--color-foreground-border-accent-focus);
+  --bar-color-error: var(--color-system-danger-default);
+
+  // Mode variants
+  .tds-mode-variant-primary {
+    --background: var(--background-primary);
+    --background-disabled: var(--background-disabled-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --background: var(--background-secondary);
+    --background-disabled: var(--background-disabled-secondary);
+  }
+}
+
+:host-context(.scania) .form-text-field {
+  /* Textfield: units */
+  --border-radius: 4px 4px 0 0;
+
+  /* Textfield: border colors */
+  --border-color-left: transparent;
+  --border-color-right: transparent;
+  --border-color-bottom: var(--color-foreground-border-soft);
+  --border-color-top: transparent;
+
+  /* Textfield: border colors on hover */
+  --border-color-left-hover: transparent;
+  --border-color-right-hover: transparent;
+  --border-color-bottom-hover: var(--color-foreground-border-strong);
+  --border-color-top-hover: transparent;
+
+  /* Textfield: border colors on success */
+  --border-color-left-success: transparent;
+  --border-color-right-success: transparent;
+  --border-color-bottom-success: var(--color-foreground-border-strong);
+  --border-color-top-success: transparent;
+
+  /* Textfield: border colors on focus */
+  --border-color-left-focus: transparent;
+  --border-color-right-focus: transparent;
+  --border-color-bottom-focus: var(--color-foreground-border-strong);
+  --border-color-top-focus: transparent;
+  --outline-color-focus: none;
+
+  /* Textfield: border colors on error */
+  --border-color-left-error: transparent;
+  --border-color-right-error: transparent;
+  --border-color-bottom-error: var(--color-system-danger-default);
+  --border-color-top-error: transparent;
+
+  /* Textfield: bar colors */
+  --bar-color-focus: var(--color-foreground-border-accent-focus);
+  --bar-color-error: var(--color-system-danger-default);
+}
+
+:host-context(.traton) .form-text-field {
+  /* Textfield: units */
+  --border-radius: 4px 4px 4px 4px;
+
+  /* Textfield: border colors */
+  --border-color-left: var(--color-foreground-border-soft);
+  --border-color-right: var(--color-foreground-border-soft);
+  --border-color-bottom: var(--color-foreground-border-soft);
+  --border-color-top: var(--color-foreground-border-soft);
+
+  /* Textfield: border colors on hover */
+  --border-color-left-hover: var(--color-foreground-border-strong);
+  --border-color-right-hover: var(--color-foreground-border-strong);
+  --border-color-bottom-hover: var(--color-foreground-border-strong);
+  --border-color-top-hover: var(--color-foreground-border-strong);
+
+  /* Textfield: border colors on success */
+  --border-color-left-success: var(--color-foreground-border-strong);
+  --border-color-right-success: var(--color-foreground-border-strong);
+  --border-color-bottom-success: var(--color-foreground-border-strong);
+  --border-color-top-success: var(--color-foreground-border-strong);
+
+  /* Textfield: border colors on focus */
+  --border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --border-color-top-focus: var(--color-foreground-border-accent-focus);
+  --outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  /* Textfield: border colors on error */
+  --border-color-left-error: var(--color-system-danger-default);
+  --border-color-right-error: var(--color-system-danger-default);
+  --border-color-bottom-error: var(--color-system-danger-default);
+  --border-color-top-error: var(--color-system-danger-default);
+
+  /* Textfield: bar colors */
+  --bar-color-focus: transparent;
+  --bar-color-error: transparent;
+}
+
 .text-field-input {
   @include text-field-base;
   @include detail-02;
@@ -185,24 +254,19 @@
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  border-radius: var(--textfield-border-radius);
+  border-radius: var(--border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
   background-color: var(--background);
-  border-left: 1px solid var(--textfield-border-color-left);
-  border-right: 1px solid var(--textfield-border-color-right);
-  border-bottom: 1px solid var(--textfield-border-color-bottom);
-  border-top: 1px solid var(--textfield-border-color-top);
+  @include border-colors;
+
   transition: border-bottom-color 200ms ease, border-left-color 200ms ease,
     border-right-color 200ms ease, border-top-color 200ms ease, outline-color 200ms ease;
 
   &:hover {
-    border-left: 1px solid var(--textfield-border-color-left-hover);
-    border-right: 1px solid var(--textfield-border-color-right-hover);
-    border-bottom: 1px solid var(--textfield-border-color-bottom-hover);
-    border-top: 1px solid var(--textfield-border-color-top-hover);
+    @include border-colors('hover');
   }
 
   .form-text-field-md & {
@@ -241,36 +305,6 @@
   pointer-events: none;
   color: var(--label-inside-color);
   left: 16px;
-}
-
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  //Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--placeholder);
-  }
-}
-
-@mixin label-inside-transition {
-  transition: 0.1s ease all;
-}
-
-//Form control
-.form-text-field {
-  display: block;
-  min-width: 208px;
-
-  &-nomin {
-    min-width: auto;
-  }
 }
 
 //text-field container with label inside
@@ -330,21 +364,19 @@
     width: 100%;
     bottom: 0;
     position: absolute;
-    background: var(--textfield-bar-color-focus);
+    background: var(--bar-color-focus);
     transform: scaleX(0);
     transition: 0.35s ease transform;
   }
 }
 
-/* General focus state */
+//Focus state
 .form-text-field {
   &.text-field-focus {
     .text-field-container {
-      border-left: 1px solid var(--textfield-border-color-left-focus);
-      border-right: 1px solid var(--textfield-border-color-right-focus);
-      border-bottom: 1px solid var(--textfield-border-color-bottom-focus);
-      border-top: 1px solid var(--textfield-border-color-top-focus);
-      outline: 2px solid var(--textfield-outline-color-focus);
+      @include border-colors('focus');
+
+      outline: 2px solid var(--outline-color-focus);
       outline-offset: -1px;
     }
 
@@ -455,10 +487,7 @@
 //Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    border-left: 1px solid var(--textfield-border-color-left-success);
-    border-right: 1px solid var(--textfield-border-color-right-success);
-    border-bottom: 1px solid var(--textfield-border-color-bottom-success);
-    border-top: 1px solid var(--textfield-border-color-top-success);
+    @include border-colors('success');
   }
 }
 
@@ -469,16 +498,13 @@
   }
 
   .text-field-container {
-    border-left: 1px solid var(--textfield-border-color-left-error);
-    border-right: 1px solid var(--textfield-border-color-right-error);
-    border-bottom: 1px solid var(--textfield-border-color-bottom-error);
-    border-top: 1px solid var(--textfield-border-color-top-error);
+    @include border-colors('error');
   }
 
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--textfield-bar-color-error);
+      background: var(--bar-color-error);
     }
   }
 }
