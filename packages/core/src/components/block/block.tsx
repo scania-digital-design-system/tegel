@@ -11,7 +11,7 @@ import { Component, h, Prop, Element, Host } from '@stencil/core';
 @Component({
   tag: 'tds-block',
   styleUrl: 'block.scss',
-  shadow: true,
+  shadow: false,
 })
 export class TdsBlock {
   @Element() host: HTMLElement;
