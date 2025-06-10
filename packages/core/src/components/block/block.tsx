@@ -11,7 +11,7 @@ import { Component, h, Prop, Element, Host } from '@stencil/core';
 @Component({
   tag: 'tds-block',
   styleUrl: 'block.scss',
-  shadow: false,
+  shadow: true,
 })
 export class TdsBlock {
   @Element() host: HTMLElement;
@@ -30,28 +30,46 @@ export class TdsBlock {
     | 'nav'
     | 'main' = 'div';
 
-  private getNestingLevel(): number {
+  private getNestingLevel(): { level: number; mode: string } {
     let level = 0;
     let parent = this.host.parentElement;
+    let mode;
+
     while (parent) {
       if (parent.tagName.toLowerCase() === 'tds-block') {
         level++;
       }
+      if (
+        parent.className.includes('tds-mode-variant-primary') ||
+        parent.className.includes('tds-mode-variant-secondary')
+      ) {
+        mode = parent.className.includes('tds-mode-variant-primary') ? 'primary' : 'secondary';
+      }
       parent = parent.parentElement;
     }
-    return level;
+    return { level, mode };
   }
 
   render() {
     const TagType = this.componentTag as keyof HTMLElementTagNameMap;
-    const nestingLevel = this.getNestingLevel();
+    const { level: nestingLevel, mode: parentMode } = this.getNestingLevel();
 
     let evenOddClass = '';
+
     if (this.modeVariant === null) {
-      if (nestingLevel % 2 === 0) {
-        evenOddClass = 'tds-block-even';
-      } else {
-        evenOddClass = 'tds-block-odd';
+      if (parentMode === 'primary') {
+        if (nestingLevel % 2 === 0) {
+          evenOddClass = 'tds-block-even tds-block-primary';
+        } else {
+          evenOddClass = 'tds-block-odd tds-block-secondary';
+        }
+      }
+      if (parentMode === 'secondary') {
+        if (nestingLevel % 2 === 0) {
+          evenOddClass = 'tds-block-even tds-block-secondary';
+        } else {
+          evenOddClass = 'tds-block-odd tds-block-primary';
+        }
       }
     }
 

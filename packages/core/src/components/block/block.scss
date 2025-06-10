@@ -5,7 +5,7 @@
   --primary-block-background-color: var(--color-background-layer-01);
   --secondary-block-background-color: var(--color-background-layer-02);
   --text-color: var(--color-foreground-text-strong);
-  
+
   @include tds-box-sizing;
   @include detail-01;
 
@@ -19,24 +19,27 @@
 .tds-block.tds-mode-variant-primary {
   background-color: var(--primary-block-background-color);
 }
+
 // Secondary
 .tds-block.tds-mode-variant-secondary {
   background-color: var(--secondary-block-background-color);
 }
 
-
 // NESTED BLOCKS
-// Primary
-.tds-mode-variant-primary .tds-block.tds-block-even {
+// Primary modevariant
+.tds-block-even.tds-block-primary {
   background-color: var(--primary-block-background-color);
 }
-.tds-mode-variant-primary .tds-block.tds-block-odd {
+
+.tds-block-odd.tds-block-secondary {
   background-color: var(--secondary-block-background-color);
 }
-// Secondary
-.tds-mode-variant-secondary .tds-block.tds-block-even {
+
+// Secondary modevariant
+.tds-block-even.tds-block-secondary {
   background-color: var(--secondary-block-background-color);
 }
-.tds-mode-variant-secondary .tds-block.tds-block-odd {
+
+.tds-block-odd.tds-block-primary {
   background-color: var(--primary-block-background-color);
 }
