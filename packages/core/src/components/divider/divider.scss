@@ -1,17 +1,21 @@
 @import '../../mixins/box-sizing';
 
-.divider {
-  @include tds-box-sizing;
+:host {
+  --color: var(--color-foreground-border-discrete);
 
-  &.horizontal {
-    background-color: var(--tds-divider-background);
-    width: 100%;
-    height: 1px;
-  }
+  .divider {
+    @include tds-box-sizing;
 
-  &.vertical {
-    background-color: var(--tds-divider-background);
-    height: 100%;
-    width: 1px;
+    &.horizontal {
+      background-color: var(--color);
+      width: 100%;
+      height: 1px;
+    }
+
+    &.vertical {
+      background-color: var(--color);
+      height: 100%;
+      width: 1px;
+    }
   }
 }
