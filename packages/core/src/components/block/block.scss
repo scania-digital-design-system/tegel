@@ -1,13 +1,11 @@
 @import '../../mixins/box-sizing';
 @import '../../../../../typography/utilities/typography-utility';
 
-:host {
+.tds-block {
   --primary-block-background-color: var(--color-background-layer-01);
   --secondary-block-background-color: var(--color-background-layer-02);
   --text-color: var(--color-foreground-text-strong);
-}
-
-.tds-block {
+  
   @include tds-box-sizing;
   @include detail-01;
 
@@ -16,22 +14,29 @@
   padding: 16px;
 }
 
+// SINGLE BLOCK
 // Primary
-.tds-mode-variant-primary,
-.tds-mode-variant-primary.tds-block-even {
+.tds-block.tds-mode-variant-primary {
   background-color: var(--primary-block-background-color);
 }
-
-.tds-mode-variant-primary.tds-block-odd {
-  background-color: var(--secondary-block-background-color);
-}
-
 // Secondary
-.tds-mode-variant-secondary,
-.tds-mode-variant-secondary.tds-block-even {
+.tds-block.tds-mode-variant-secondary {
   background-color: var(--secondary-block-background-color);
 }
 
-.tds-mode-variant-secondary.tds-block-odd {
+
+// NESTED BLOCKS
+// Primary
+.tds-mode-variant-primary .tds-block.tds-block-even {
+  background-color: var(--primary-block-background-color);
+}
+.tds-mode-variant-primary .tds-block.tds-block-odd {
+  background-color: var(--secondary-block-background-color);
+}
+// Secondary
+.tds-mode-variant-secondary .tds-block.tds-block-even {
+  background-color: var(--secondary-block-background-color);
+}
+.tds-mode-variant-secondary .tds-block.tds-block-odd {
   background-color: var(--primary-block-background-color);
 }
