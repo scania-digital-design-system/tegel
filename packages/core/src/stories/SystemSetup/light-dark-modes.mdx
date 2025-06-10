@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="System Setup/Light-Dark modes" />
+
+**Published 2025-05-20**
+
+# 🌓 Theme Mode Toggle
+
+Tegel supports light and dark mode to adapt the user interface to different ambient light
+conditions or user preferences. Light mode is the default styling used across most Scania
+applications, while dark mode offers higher contrast for low-light environments.
+Additionally, dark mode can help reduce energy consumption on OLED and AMOLED displays by
+requiring less power to illuminate darker pixels.
+
+## 📋 Overview
+
+Tegel uses CSS utility classes applied to a wrapper element to toggle visual themes:
+
+- `tds-mode-light` — applies the light visual theme
+- `tds-mode-dark` — applies the dark visual theme
+
+These classes trigger design tokens for background, text, icons, and components, allowing seamless switching between themes.
+
+## 🛠️ Implementation
+
+### 📍 Where to Apply the Class
+
+- **Application-wide**: Apply the class (`tds-mode-light` or `tds-mode-dark`) to the `<body>`, `<html>`, or top-level layout wrapper to theme the entire app.
+- **Scoped to a Component**: You can also apply the class to a specific wrapper if only part of your interface should switch themes — useful for previews, widgets, or context-sensitive styling.
+
+## 💻 Framework Examples
+
+### 🌐 Vanilla JavaScript
+
+```html
+<!-- index.html -->
+<body class="tds-mode-light">
+  <div id="app">
+    <tds-button onclick="toggleTheme()" text="Toggle theme"></tds-button>
+    <tds-banner text="Themed content here!"></tds-banner>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.classList.contains('tds-mode-light')) {
+        body.classList.replace('tds-mode-light', 'tds-mode-dark');
+      } else {
+        body.classList.replace('tds-mode-dark', 'tds-mode-light');
+      }
+    }
+  </script>
+</body>
+```
+
+### ⚡ Angular
+
+```typescript
+// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+})
+export class AppComponent {
+  themeClass = 'tds-mode-light';
+
+  toggleTheme() {
+    this.themeClass = this.themeClass === 'tds-mode-light' ? 'tds-mode-dark' : 'tds-mode-light';
+  }
+}
+```
+
+```html
+<!-- app.component.html -->
+<div [ngClass]="themeClass" class="app-class">
+  <tds-button (click)="toggleTheme()">Toggle theme</tds-button>
+  <tds-banner text="Themed content here!"></tds-banner>
+</div>
+```
+
+### ⚛️ React
+
+```jsx
+// App.jsx
+import React, { useState } from 'react';
+import { TdsButton, TdsBanner } from '@scania/tegel-react';
+
+export default function App() {
+  const [theme, setTheme] = useState('tds-mode-light');
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'tds-mode-light' ? 'tds-mode-dark' : 'tds-mode-light'));
+  };
+
+  return (
+    <div className={`${theme} app-class`}>
+      <TdsButton onClick={toggleTheme}>Toggle theme</TdsButton>
+      <TdsBanner text="Themed content here!" />
+    </div>
+  );
+}
+```
+
+## ✅ Best Practices
+
+1. **Default Theme**: Always set a default theme class (`tds-mode-light`) on your root element
+2. **Persistence**: Consider persisting the user's theme preference in localStorage
+3. **System Preference**: Optionally respect the user's system color scheme preference
