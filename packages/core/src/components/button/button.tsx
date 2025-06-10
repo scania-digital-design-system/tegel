@@ -76,6 +76,8 @@ export class TdsButton {
       >
         <button
           type={this.type}
+          name={this.name}
+          value={this.value}
           disabled={this.disabled}
           class={{
             'primary': this.variant === 'primary',
