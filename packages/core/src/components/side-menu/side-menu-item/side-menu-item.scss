@@ -62,9 +62,18 @@
     &-selected:not(&-active) {
       ::slotted(a),
       ::slotted(button) {
-        border-left: 4px solid var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
-        padding-left: 20px;
+        position: relative;
         background-color: var(--tds-sidebar-item-state-selected);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+        }
       }
     }
   }
