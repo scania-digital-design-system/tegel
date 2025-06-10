@@ -22,3 +22,81 @@
 @import '../../../../typography/scania-fonts';
 @import '../../../../typography/scania-fonts-vars';
 @import '../../../../typography/scania-fonts-selectors';
+
+/* Component variables */
+@import '../components/accordion/accordion-vars';
+@import '../components/banner/banner-vars';
+@import '../components/block/block-vars';
+@import '../components/breadcrumbs/breadcrumbs-vars';
+@import '../components/button/button-vars';
+@import '../components/card/card-vars';
+@import '../components/checkbox/checkbox-vars';
+@import '../components/chip/chip-vars';
+@import '../components/table/table-vars';
+@import '../components/datetime/datetime-vars';
+@import '../components/dropdown/dropdown-vars';
+@import '../components/dropdown/dropdown-option/dropdown-option-vars';
+@import '../components/footer/footer-vars';
+@import '../components/header/header-item/header-item-global';
+@import '../components/header/header-vars';
+@import '../components/link/link-vars';
+@import '../components/popover-canvas/popover-canvas-vars';
+@import '../components/popover-menu/popover-menu-vars';
+@import '../components/radio-button/radio-button-vars';
+@import '../components/side-menu/side-menu-item/side-menu-item-global';
+@import '../components/side-menu/side-menu-vars';
+@import '../components/slider/slider-vars';
+@import '../components/stepper/stepper-vars';
+@import '../components/tabs/folder-tabs/folder-tabs-vars';
+@import '../components/tabs/inline-tabs/inline-tabs-vars';
+@import '../components/tabs/navigation-tabs/navigation-tabs-vars';
+@import '../components/textarea/textarea-vars';
+@import '../components/text-field/text-field-vars';
+@import '../components/toast/toast-vars';
+@import '../components/toggle/toggle-vars';
+@import '../components/tooltip/tooltip-vars';
+
+/* Beta components */
+@import '../components/_beta/date-picker/date-picker-single/date-picker-vars';
+
+/* Scania specific styles */
+.scania {
+  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 0;
+  flex: 1;
+
+  &.tds-mode-light {
+    color: var(--tds-grey-958);
+    background-color: var(--tds-white);
+
+    &.tds-mode-variant-primary,
+    & .tds-mode-variant-primary {
+      color: var(--tds-grey-958);
+      background-color: var(--tds-white);
+    }
+
+    &.tds-mode-variant-secondary,
+    & .tds-mode-variant-secondary {
+      color: var(--tds-grey-958);
+      background-color: var(--tds-grey-50);
+    }
+  }
+
+  &.tds-mode-dark {
+    color: var(--tds-grey-100);
+    background-color: var(--tds-grey-958);
+
+    &.tds-mode-variant-primary,
+    & .tds-mode-variant-primary {
+      color: var(--tds-grey-100);
+      background-color: var(--tds-grey-958);
+    }
+
+    &.tds-mode-variant-secondary,
+    & .tds-mode-variant-secondary {
+      color: var(--tds-grey-100);
+      background-color: var(--tds-grey-900);
+    }
+  }
+}
