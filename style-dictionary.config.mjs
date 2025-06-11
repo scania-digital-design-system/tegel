@@ -148,7 +148,7 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
     const colorTokensSelector = brand.name === 'scania'
       ? themeType === 'light'
         ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
-        : `.tds-dark-mode,\n.scania .tds-dark-mode`
+        : `.tds-mode-dark,\n.scania .tds-mode-dark`
       : themeType === 'light'
         ? `.traton .tds-mode-light`
         : `.traton .tds-mode-dark`;
