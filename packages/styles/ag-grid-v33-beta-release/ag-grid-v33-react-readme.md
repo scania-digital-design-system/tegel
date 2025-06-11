@@ -46,7 +46,7 @@ const TableExampleComponent = () => {
     filter: true,
   };
   return (
-    <div class="ag-theme-quartz tds-mode-variant-primary">
+    <div className="ag-theme-quartz tds-mode-variant-primary">
       <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} />
     <div/>
   );
