@@ -22,7 +22,6 @@
 
     &.disabled {
       user-select: none;
-      user-select: none;
       color: var(--toggle-disabled);
     }
   }
@@ -153,7 +152,6 @@
     @include detail-02;
 
     cursor: pointer;
-    user-select: none;
     user-select: none;
     display: inline-block;
     vertical-align: middle;
