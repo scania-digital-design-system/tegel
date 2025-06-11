@@ -1,16 +1,28 @@
+@import '../../../../../typography/utilities/typography-utility';
+
+:host {
+  --toggle-switch: var(--color-brand-neutral-white);
+  --toggle-text: var(--color-foreground-text-strong);
+  --toggle-disabled: var(--color-foreground-icon-disabled);
+  --toggle-background-on: var(--color-system-success-default);
+  --toggle-background-off: var(--color-foreground-icon-subtle);
+  --toggle-border-focus: var(--color-foreground-border-accent-focus);
+}
+
 .tds-toggle {
   .disabled {
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .toggle-headline {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
-    color: var(--tds-toggle-headline);
+    @include detail-02;
+
+    color: var(--toggle-text);
     margin-bottom: 12px;
 
     &.disabled {
-      color: var(--tds-toggle-headline-disabled);
+      user-select: none;
+      color: var(--toggle-disabled);
     }
   }
 
@@ -37,7 +49,7 @@
       width: 44px;
       height: 24px;
       border-radius: 16px;
-      background-color: var(--tds-toggle-off-slider);
+      background-color: var(--toggle-background-off);
       left: 0;
       border: 1px solid transparent;
     }
@@ -46,7 +58,7 @@
     &::after {
       width: 16px;
       height: 16px;
-      background-color: var(--tds-toggle-switch);
+      background-color: var(--toggle-switch);
       border-radius: 50%;
       left: 4px;
       top: 4px;
@@ -58,15 +70,8 @@
       border-radius: 16px;
       outline-offset: 0;
 
-       &::before {
-        background-color: var(--tds-toggle-off-slider-focus);
-        border: 1px solid var(--tds-toggle-off-border-focus);
-      }
-    }
-
-    &:hover {
       &::before {
-        background-color: var(--tds-toggle-off-slider-hover);
+        background-color: var(--tds-toggle-off-slider-focus);
         border: 1px solid var(--tds-toggle-off-border-focus);
       }
     }
@@ -74,20 +79,7 @@
     &:checked {
       &::before {
         background-color: var(--tds-toggle-on-slider);
-      }
-
-      &:focus {
-        &::before {
-          background-color: var(--tds-toggle-on-slider-focus);
-          border: 1px solid var(--tds-toggle-off-border-focus);
-        }
-      }
-
-      &:hover {
-        &::before {
-          background-color: var(--tds-toggle-on-slider-hover);
-          border: 1px solid var(--tds-toggle-off-border-focus);
-        }
+        border: 1px solid var(--tds-toggle-on-border-focus);
       }
 
       &::after {
@@ -96,26 +88,24 @@
     }
 
     &:disabled {
-      cursor: not-allowed;
+      pointer-events: none;
 
       &::before {
-        background-color: var(--tds-toggle-slider-disabled);
-        border: 1px solid var(--tds-toggle-slider-disabled);
+        background-color: var(--toggle-disabled);
       }
 
       &::after {
-        background-color: var(--tds-toggle-switch-disabled);
+        background-color: var(--toggle-switch);
       }
     }
 
     &:disabled:checked {
       &::before {
-        background-color: var(--tds-toggle-on-slider-disabled);
-        border: 1px solid var(--tds-toggle-on-slider-disabled);
+        background-color: var(--toggle-disabled);
       }
 
       &::after {
-        background-color: var(--tds-toggle-switch-disabled);
+        background-color: var(--toggle-switch);
       }
     }
 
@@ -135,7 +125,7 @@
 
       &:checked {
         &::before {
-          background-color: var(--tds-toggle-on-slider);
+          background-color: var(--toggle-background-on);
         }
 
         &::after {
@@ -145,28 +135,29 @@
 
       &:disabled {
         &::before {
-          background-color: var(--tds-toggle-slider-disabled);
-          border: 1px solid var(--tds-toggle-slider-disabled);
+          background-color: var(--toggle-disabled);
         }
 
         &::after {
-          background-color: var(--tds-toggle-switch-disabled);
+          background-color: var(--toggle-switch);
         }
       }
     }
   }
 
   label {
+    @include detail-02;
+
+    cursor: pointer;
+    user-select: none;
     display: inline-block;
     vertical-align: middle;
-    font: var(--tds-detail-01);
-    letter-spacing: var(--tds-detail-01-ls);
-    color: var(--tds-toggle-label-color);
+    color: var(--toggle-text);
     padding-left: 8px;
-    cursor: pointer;
 
     &.disabled {
-      color: var(--tds-toggle-label-color-disabled);
+      pointer-events: none;
+      color: var(--toggle-disabled);
     }
   }
 }
