@@ -1,24 +1,31 @@
 import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
-  title: 'Utilities/Colors',
+  title: 'Utilities/Background Color',
+
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component:
+          'Background color utilities allow you to apply colors from our color system to elements. These utilities use the same color tokens defined in our color system.',
+      },
+    },
   },
   argTypes: {
     backgroundColor: {
-      name: 'Background color',
-      description: 'The color of the text',
+      name: 'Color',
+      description: 'The color family to use (blue, red, or grey)',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: { Red: 'red', Blue: 'blue', Grey: 'grey' },
     },
     greyScale: {
-      name: 'Scale',
-      description: 'The color scale used.',
+      name: 'Grey Scale',
+      description: 'The grey color scale value to use',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: [
         '50',
@@ -38,19 +45,19 @@ export default {
       if: { arg: 'backgroundColor', eq: 'grey' },
     },
     redScale: {
-      name: 'Scale',
-      description: 'The color scale used.',
+      name: 'Red Scale',
+      description: 'The red color scale value to use',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
       if: { arg: 'backgroundColor', eq: 'red' },
     },
     blueScale: {
-      name: 'Scale',
-      description: 'The color scale used.',
+      name: 'Blue Scale',
+      description: 'The blue color scale value to use',
       control: {
-        type: 'select',
+        type: 'radio',
       },
       options: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
       if: { arg: 'backgroundColor', eq: 'blue' },
@@ -82,6 +89,7 @@ const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
   }
   return formatHtmlPreview(
     `
+        <!-- Style tag for demo purposes -->
         <style>
             .demo-wrapper{
                 height: 400px;
@@ -91,11 +99,13 @@ const Template = ({ backgroundColor, greyScale, blueScale, redScale }) => {
                 align-items: center;
             }
         </style>
+
+        <!-- Demo code -->
         <div class="tds-background-${backgroundColor}-${scale} demo-wrapper">
-            <h1>background-color:${backgroundColor}</h1>
+            <h5>Background color: ${backgroundColor}-${scale}</h5>
         </div>
           `,
   );
 };
 
-export const BackgroundColor = Template.bind({});
+export const Default = Template.bind({});
