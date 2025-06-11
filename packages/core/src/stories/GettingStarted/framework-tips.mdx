@@ -1,0 +1,157 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started/Framework tips" />
+
+**Published: 2025-05-20**
+
+# Framework-Specific Tips
+
+<br />
+<br />
+
+## Angular
+
+<br />
+
+### 🎯 Property vs Attribute Binding
+
+When binding **dynamic** or **translated values** in Angular, this distinction requires **property binding** using the **camelCase** version of the attribute name.
+
+### ✅ Example
+
+Use this syntax when applying a translated value:
+
+```html
+<tds-toast
+  [tdsCloseAriaLabel]="'components.toast.closeAriaLabel' | translate"
+  [header]="title"
+  [closable]="true"
+>
+</tds-toast>
+```
+
+### 🧩 General Rules for Tegel Web Components in Angular
+
+#### ✅ Use camelCase with brackets
+
+For dynamic values or translated strings, always use bracket syntax with camelCase:
+
+```html
+[tdsAriaLabel]="'components.button.ariaLabel' | translate"
+```
+
+#### ⚠️ Understanding Kebab-case vs CamelCase
+
+When working with Tegel components in Angular, there are two ways to set values:
+
+1. **Static Attributes** (kebab-case without brackets):
+
+   - Values are treated as static attributes
+   - Only updated when the page loads
+   - Example: `tds-close-aria-label="Close notification"`
+
+2. **Dynamic Properties** (camelCase with brackets):
+   - Values are treated as properties
+   - Can update during runtime
+   - Example: `[tdsCloseAriaLabel]="dynamicValue"`
+
+For dynamic or translated values that need to update during runtime, always use camelCase with brackets.
+
+#### 🔍 Inspect the correct element
+
+Attributes like `tdsCloseAriaLabel` are applied to internal elements (such as the close button), not directly on the host component. Use browser developer tools to confirm the value is applied.
+
+#### 🧪 Static values work regardless of schema
+
+If not using dynamic data or translation pipes, kebab-case will usually work:
+
+```html
+<tds-toast tds-close-aria-label="Close notification"></tds-toast>
+```
+
+### 🏁 Best Practices
+
+- ✅ Use camelCase property bindings (e.g. `[tdsCloseAriaLabel]`) for dynamic or translated values in Angular
+- ✅ This ensures full compatibility with Tegel Web Components without additional configuration
+- ✅ Always use property binding syntax `[]` for dynamic values
+- ✅ Use browser developer tools to verify attribute application
+
+<br />
+<br />
+
+## React
+
+### 🧠 Improving VS Code Intellisense
+
+If you're using the **Tegel Design System React wrapper** (`@scania/tegel-react`) and notice limited or noisy intellisense in **VS Code**, you're not alone.
+
+This issue is related to how the React components are **auto-generated** using [Stencil's output targets](https://github.com/stenciljs/output-targets), and how TypeScript handles types for custom elements.
+
+### ❓ The Problem
+
+When using `@scania/tegel-react`, VS Code often:
+
+- Does **not** show relevant props for Tegel components in autocomplete
+- Shows a long list of **unrelated HTML attributes**
+- Doesn't offer strong typing support when hovering or navigating props
+
+This happens because the generated wrapper includes generic HTML prop types, and the actual prop definitions from Stencil are not fully inferred by the editor.
+
+### ✅ Workaround: Create Typed Wrapper Components
+
+Until a better solution is available, one practical workaround is to create **typed wrapper components** using the original Stencil types.
+
+#### 🔧 Example: `TdsSpinner` Wrapper
+
+```tsx
+import { TdsSpinner } from '@scania/tegel-react';
+import type { JSX } from '@scania/tegel/loader';
+
+// Create a typed wrapper component
+const TypedSpinner = (props: JSX.TdsSpinner) => {
+  return <TdsSpinner {...props} />;
+};
+
+const SpinnerDemo = () => {
+  return (
+    <>
+      <div className="tds-headline-02 tds-u-pb1">Spinner</div>
+      <div className="tds-headline-03 tds-u-pb1">Standard</div>
+      <TypedSpinner variant="standard" size="lg" />
+      <div className="tds-headline-03 tds-u-pb1">Inverted</div>
+      <TypedSpinner />
+    </>
+  );
+};
+
+export default SpinnerDemo;
+```
+
+### 📉 Why Is This Needed?
+
+The underlying issue is with the Stencil output-targets project, which is responsible for generating the React bindings.
+
+Unfortunately:
+
+- The typings it generates are overly generic
+- The project is only actively maintained for the Ionic Framework
+- Fixes or improvements outside of Ionic use cases are unlikely to be prioritized
+- A GitHub issue can be reported, but expectations for support should be tempered
+
+### 🏁 Summary
+
+#### Default Import
+
+- **Intellisense Support**: ❌ Poor
+- **Maintenance Burden**: ✅ Low
+- **Recommended**: ❌ No
+
+#### Typed Wrapper
+
+- **Intellisense Support**: ✅ Good
+- **Maintenance Burden**: ❌ Slightly higher
+- **Recommended**: ✅ Yes
+
+For the best developer experience today, we recommend creating typed wrappers using `JSX.ComponentName` from `@scania/tegel/loader`.
+
+We'll continue to monitor this and explore ways to improve DX in future versions of the Tegel React wrapper.

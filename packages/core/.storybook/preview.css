@@ -7,6 +7,18 @@ body,
   min-height: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul > li,
+a {
+  font-family: 'Scania Sans', arial, helvetica, sans-serif !important;
+}
+
 *:has(> .docblock-code-toggle) {
   /* This is the "show code" buttons that appears in examples under the docs tab. */
   /* Known issue: :has is not currently supported in firefox */
@@ -26,4 +38,17 @@ body,
 ::-webkit-scrollbar-button {
   height: 0;
   width: 0;
+}
+
+/* TODO: Find a way to apply dark mode to the docs story and notes that will cover all its elements, toolbars and controls*/
+
+:root,
+.tds-mode-light .docs-story {
+  color: var(--tds-grey-958);
+  background-color: var(--tds-white);
+}
+
+.tds-mode-dark .docs-story {
+  color: var(--tds-grey-100);
+  background-color: var(--tds-grey-958);
 }

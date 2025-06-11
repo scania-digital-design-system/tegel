@@ -1,10 +1,24 @@
-/* Colors */
-@import '../../../../build/scss/variables-traton-light';
-@import '../../../../build/scss/variables-traton-dark';
-
 /* Spacing */
 @import '../../../../spacing/traton-units';
 
 /* Typography */
 @import '../../../../typography/traton-fonts';
 @import '../../../../typography/tokens/typography-traton';
+
+/* Traton primitive tokens */
+@import '../../../../tokens/scss/traton/primitive';
+
+/* Traton color tokens */
+@import '../../../../tokens/scss/traton/color-light';
+@import '../../../../tokens/scss/traton/color-dark';
+
+/* Traton dimension tokens */
+@import '../../../../tokens/scss/traton/dimension';
+
+/* Traton typography tokens */
+@import '../../../../tokens/scss/traton/typography';
+
+/* Traton specific imports */
+@import '../../../../typography/tokens/typography-traton';
+@import '../../../../spacing/traton-units';
+@import '../../../../typography/traton-fonts';

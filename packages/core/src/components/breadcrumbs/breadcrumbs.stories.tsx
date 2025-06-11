@@ -1,12 +1,9 @@
-import itemReadme from './breadcrumb/readme.md';
-import readme from './readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Breadcrumbs`,
+  title: 'Components/Breadcrumbs',
   parameters: {
-    notes: { Breadcrumbs: readme, Breadcrumb: itemReadme },
+    layout: 'centered',
     design: [
       {
         name: 'Figma',

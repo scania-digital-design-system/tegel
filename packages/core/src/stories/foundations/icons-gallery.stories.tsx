@@ -2,6 +2,14 @@ import formatHtmlPreview from '../formatHtmlPreview';
 import { iconsNames as scaniaIconsNames } from '../../components/icon/scaniaIconsArray';
 import { iconsNames as tratonIconsNames } from '../../components/icon/tratonIconsArray';
 
+export default {
+  title: 'Foundations/Icons Gallery',
+  tags: ['!autodocs'],
+  parameters: {
+    layout: 'fullscreen',
+  },
+};
+
 // Brand mapping configuration
 const brandIconsMap = {
   scania: scaniaIconsNames,
@@ -10,43 +18,26 @@ const brandIconsMap = {
 };
 
 // Get icons based on the closest brand class
-const getIconsObject = () => {
+const getIconNames = () => {
   // Get all brand classes from the mapping
   const brandClasses = Object.keys(brandIconsMap);
 
   // Find the first matching brand class
-  const brandClass = brandClasses.find((brand) => {
-    return document.querySelector(`.${brand}`);
-  });
+  const brandClass = brandClasses.find((brand) => document.querySelector(`.${brand}`));
 
   // Return the corresponding icons or default to scania
   return brandClass ? brandIconsMap[brandClass] : brandIconsMap.scania;
 };
 
-export default {
-  title: 'Foundations/Icons',
-  parameters: {
-    layout: 'fullscreen',
-    options: {
-      showPanel: false,
-      showToolbar: true,
-    },
-    previewTabs: {
-      'storybook/docs/panel': { hidden: true },
-    },
-  },
-};
-
 const Template = () => {
-  const icons = getIconsObject().map(
-    (icon) => `
+  const icons = getIconNames().map(
+    (icon: string) => `
       <tds-block mode-variant="primary" data-icon="${icon}">
           <tds-icon name="${icon}" size="48"></tds-icon>
           <p class="tds-detail-05">${icon}</p>
       </tds-block>
   `,
   );
-
   return formatHtmlPreview(
     `
     <style>
@@ -63,7 +54,7 @@ const Template = () => {
         <p class="tds-body-01">
             The icons displayed here provide an easy overview of all available icons in the library. 
             Each icon is shown at 48px for presentation purposes only; we do not recommend using this size in the product. 
-            To export a single icon, we suggest using the <a href="/?path=/story/foundations-icons--component">Component</a> story.
+            To export a single icon, we suggest using the <a href="/?path=/story/foundations-icons--default">Component</a> story.
         </p>
         <div style="width: 256px;">
             <tds-text-field
@@ -116,4 +107,5 @@ const Template = () => {
     `,
   );
 };
-export const Gallery = Template.bind({});
+
+export const Default = Template.bind({});
