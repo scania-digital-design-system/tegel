@@ -10,8 +10,9 @@ import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
 const channel = addons.getChannel();
 
 channel.on('DARK_MODE', (isDarkMode) => {
-  document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
-  document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+  const html = document.documentElement;
+  html.classList.remove('tds-mode-light', 'tds-mode-dark');
+  html.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
 });
 
 // DEV env for traton styles
@@ -39,12 +40,9 @@ const toggleBrandTool = isDev
 
 const toggleBrandDecorator: Decorator = (StoryFn, context) => {
   const brand = context.globals.brand || 'scania';
-
   const html = document.documentElement;
-
   html.classList.remove('scania', 'traton');
   html.classList.add(brand);
-
   return StoryFn();
 };
 
