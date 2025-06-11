@@ -8,14 +8,14 @@
   --tds-block-background-odd: var(--tds-block-background-secondary);
 
   .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-block-background-primary);
-    --tds-block-background-even: var(--tds-block-background-primary);
-    --tds-block-background-odd: var(--tds-block-background-secondary);
+    --tds-block-background: var(--color-background-layer-01);
+    --tds-block-background-even: var(--color-background-layer-01);
+    --tds-block-background-odd: var(--color-background-layer-02);
   }
 
   .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-block-background-secondary);
-    --tds-block-background-even: var(--tds-block-background-secondary);
-    --tds-block-background-odd: var(--tds-block-background-primary);
+    --tds-block-background: var(--color-background-layer-02);
+    --tds-block-background-even: var(--color-background-layer-02);
+    --tds-block-background-odd: var(--color-background-layer-01);
   }
 }
