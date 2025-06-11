@@ -1,42 +1,21 @@
 :root,
-.tds-mode-light {
-  --tds-block-color: var(--tds-grey-985);
-  --tds-block-background: var(--tds-grey-50);
-  --tds-block-background-primary: var(--tds-grey-50);
-  --tds-block-background-secondary: var(--tds-white);
-  --tds-block-background-even: var(--tds-grey-50);
-  --tds-block-background-odd: var(--tds-white);
+.tds-block {
+  --tds-block-color: var(--color-foreground-text-strong);
+  --tds-block-background: var(--color-background-layer-01);
+  --tds-block-background-primary: var(--color-background-layer-01);
+  --tds-block-background-secondary: var(--color-background-layer-02);
+  --tds-block-background-even: var(--tds-block-background-primary);
+  --tds-block-background-odd: var(--tds-block-background-secondary);
 
   .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-grey-50);
-    --tds-block-background-even: var(--tds-grey-50);
-    --tds-block-background-odd: var(--tds-white);
+    --tds-block-background: var(--tds-block-background-primary);
+    --tds-block-background-even: var(--tds-block-background-primary);
+    --tds-block-background-odd: var(--tds-block-background-secondary);
   }
 
   .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-white);
-    --tds-block-background-even: var(--tds-white);
-    --tds-block-background-odd: var(--tds-grey-50);
-  }
-}
-
-.tds-mode-dark {
-  --tds-block-color: var(--tds-grey-50);
-  --tds-block-background: var(--tds-grey-900);
-  --tds-block-background-primary: var(--tds-grey-900);
-  --tds-block-background-secondary: var(--tds-grey-868);
-  --tds-block-background-even: var(--tds-grey-900);
-  --tds-block-background-odd: var(--tds-grey-868);
-
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-grey-900);
-    --tds-block-background-even: var(--tds-grey-900);
-    --tds-block-background-odd: var(--tds-grey-868);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-grey-868);
-    --tds-block-background-even: var(--tds-grey-868);
-    --tds-block-background-odd: var(--tds-grey-900);
+    --tds-block-background: var(--tds-block-background-secondary);
+    --tds-block-background-even: var(--tds-block-background-secondary);
+    --tds-block-background-odd: var(--tds-block-background-primary);
   }
 }
