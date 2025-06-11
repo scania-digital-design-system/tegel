@@ -2,7 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 // Read the primitive tokens
-const primitivePath = join(process.cwd(), 'tokens-json', 'primitive', 'default.json');
+const primitivePath = join(process.cwd(), 'tokens', 'json', 'primitive', 'default.json');
 const fileContent = readFileSync(primitivePath, 'utf8');
 const primitiveTokens = JSON.parse(fileContent);
 
