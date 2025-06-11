@@ -48,7 +48,7 @@ const TableExampleComponent = () => {
   return (
     <div className="ag-theme-quartz tds-mode-variant-primary">
       <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} />
-    <div/>
+    </div>
   );
 };
 ```
