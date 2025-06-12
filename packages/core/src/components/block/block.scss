@@ -4,7 +4,7 @@
 .tds-block {
   @include tds-box-sizing;
 
-  color: var(--tds-block-color);
+  color: var(--color-foreground-text-strong);
   background-color: var(--tds-block-background);
   border-radius: 4px;
   padding: 16px;
