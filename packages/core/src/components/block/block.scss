@@ -4,19 +4,19 @@
 .tds-block {
   @include tds-box-sizing;
 
+  background-color: red;
   color: var(--color-foreground-text-strong);
-  background-color: var(--tds-block-background);
   border-radius: 4px;
   padding: 16px;
   @include detail-01;
 }
 
 .tds-mode-variant-primary {
-  background-color: var(--tds-block-background-primary);
+  background-color: var(--color-background-layer-01);
 }
 
 .tds-mode-variant-secondary {
-  background-color: var(--tds-block-background-secondary);
+  background-color: var(--color-background-layer-02);
 }
 
 .tds-block-even {

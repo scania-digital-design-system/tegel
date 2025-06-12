@@ -1,16 +1,10 @@
 :root,
 .tds-mode-variant-primary {
-  --tds-block-background: yellow;
-  --tds-block-background-primary: red;
-  --tds-block-background-secondary: yellow;
-  --tds-block-background-even: red;
-  --tds-block-background-odd: yellow;
+  --tds-block-background-even: var(--color-background-layer-01);
+  --tds-block-background-odd: var(--color-background-layer-02);
 }
 
 .tds-mode-variant-secondary {
-  --tds-block-background: purple;
-  --tds-block-background-primary: blue;
-  --tds-block-background-secondary: purple;
-  --tds-block-background-even: blue;
-  --tds-block-background-odd: purple;
+  --tds-block-background-even: var(--color-background-layer-02);
+  --tds-block-background-odd: var(--color-background-layer-01);
 }
