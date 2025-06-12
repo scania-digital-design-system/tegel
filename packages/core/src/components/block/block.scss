@@ -1,4 +1,5 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 .tds-block {
   @include tds-box-sizing;
@@ -7,8 +8,7 @@
   background-color: var(--tds-block-background);
   border-radius: 4px;
   padding: 16px;
-  font: var(--tds-body-01);
-  letter-spacing: var(--tds-body-01-ls);
+  @include detail-01;
 }
 
 .tds-mode-variant-primary {
