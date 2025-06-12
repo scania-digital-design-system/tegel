@@ -48,7 +48,6 @@
     ::slotted(a),
     ::slotted(button) {
       box-shadow: inset 4px 0 0 var(--tds-nav-item-border-color-active);
-      padding-left: 20px;
       background-color: var(--tds-header-nav-item-dropdown-opened-background-selected);
     }
   }
@@ -57,10 +56,22 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding-left: 22px;
         padding-top: 16px;
         padding-right: 48px;
         padding-bottom: 16px;
+        padding-left: 58px;
+      }
+    }
+  }
+
+  .component.component-dropdown-has-user {
+    &:not(.component-collapsed) {
+      ::slotted(a),
+      ::slotted(button) {
+        padding-top: 16px;
+        padding-right: 48px;
+        padding-bottom: 16px;
+        padding-left: 64px;
       }
     }
   }

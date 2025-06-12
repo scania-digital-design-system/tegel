@@ -22,20 +22,22 @@ export class TdsSideMenuItem {
 
   @State() collapsed: boolean = false;
 
+  @State() hasUserComponent: boolean = false;
+
   private sideMenuEl: HTMLTdsSideMenuElement;
 
   private slotEl: HTMLSlotElement;
 
-  updateSlotted(
+  findSlottedAndExecute(
     searchPredicate: (element: HTMLElement) => boolean,
-    mutationCallback: (element: HTMLElement) => void,
+    callback: (element: HTMLElement) => void,
   ) {
     const assignedElements = this.slotEl.assignedElements({ flatten: true });
     const firstSlottedElement = assignedElements[0] as HTMLElement;
     if (firstSlottedElement) {
       const foundElement = dfs(firstSlottedElement, searchPredicate);
       if (foundElement) {
-        mutationCallback(foundElement);
+        callback(foundElement);
       }
     }
   }
@@ -45,9 +47,10 @@ export class TdsSideMenuItem {
    */
   updateSlottedElements() {
     if (this.slotEl) {
-      const isIconOrSvg = (element) =>
+      const isIconOrSvg = (element: HTMLElement) =>
         element.tagName.toLowerCase() === 'tds-icon' || element.tagName.toLowerCase() === 'svg';
-      const addIconClass = (element) => {
+
+      const addIconClass = (element: HTMLElement) => {
         element.classList.add('__tds-side-menu-item-icon');
         if (this.collapsed) {
           element.classList.add('__tds-side-menu-item-icon-collapsed');
@@ -55,7 +58,19 @@ export class TdsSideMenuItem {
           element.classList.remove('__tds-side-menu-item-icon-collapsed');
         }
       };
-      this.updateSlotted(isIconOrSvg, addIconClass);
+      this.findSlottedAndExecute(isIconOrSvg, addIconClass);
+    }
+  }
+
+  updateHasUserComponent() {
+    if (this.slotEl) {
+      const isUserComponent = (element: HTMLElement) =>
+        element.tagName.toLowerCase() === 'tds-side-menu-user';
+
+      this.hasUserComponent = false;
+      this.findSlottedAndExecute(isUserComponent, () => {
+        this.hasUserComponent = true;
+      });
     }
   }
 
@@ -69,13 +84,19 @@ export class TdsSideMenuItem {
   componentDidLoad() {
     this.slotEl = this.host.shadowRoot.querySelector('slot');
     this.updateSlottedElements();
-    this.slotEl.addEventListener('slotchange', this.updateSlottedElements);
+    this.updateHasUserComponent();
+
+    this.slotEl.addEventListener('slotchange', () => {
+      this.updateSlottedElements();
+      this.updateHasUserComponent();
+    });
   }
 
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })
   collapseSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {
     this.collapsed = event.detail.collapsed;
     this.updateSlottedElements();
+    this.updateHasUserComponent();
   }
 
   render() {
@@ -87,6 +108,7 @@ export class TdsSideMenuItem {
             'component-selected': this.selected,
             'component-active': this.active,
             'component-collapsed': this.collapsed,
+            'component-has-user': this.hasUserComponent,
           }}
         >
           <slot></slot>
