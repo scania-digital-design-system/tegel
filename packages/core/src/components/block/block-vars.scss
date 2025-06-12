@@ -1,3 +1,7 @@
+/* Defines background variables for .block, toggling colors for even/odd states via tds-mode-variant context. 
+Fallback values are provided via :root if no mode is set upstream. */
+
+:root,
 .tds-mode-variant-primary {
   --tds-block-background-even: var(--color-background-layer-01);
   --tds-block-background-odd: var(--color-background-layer-02);
