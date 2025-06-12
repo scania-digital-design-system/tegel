@@ -105,7 +105,7 @@ export class TdsTextarea {
 
   // Data input event in value prop
   handleInput(event: InputEvent): void {
-    if (event.target instanceof HTMLInputElement) {
+    if (event.target instanceof HTMLTextAreaElement) {
       this.value = event.target.value;
       this.tdsInput.emit(event);
     }
@@ -221,7 +221,7 @@ export class TdsTextarea {
                 text="This field is non-editable"
                 selector="#readonly-tooltip"
               />
-              <tds-icon id="readonly-tooltip" name="edit_inactive" />
+              <tds-icon id="readonly-tooltip" name="edit_inactive" svgTitle="inactive" />
             </span>
           )}
         </div>
@@ -231,7 +231,9 @@ export class TdsTextarea {
           aria-live="assertive"
           id={`textarea-helper-element-${this.uuid}`}
         >
-          {this.state === 'error' && !this.readOnly && <tds-icon name="error" size="16px" />}
+          {this.state === 'error' && this.helper && !this.readOnly && (
+            <tds-icon name="error" size="16px" />
+          )}
           {this.helper}
         </span>
 

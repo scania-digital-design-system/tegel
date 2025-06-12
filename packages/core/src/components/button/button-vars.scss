@@ -1,23 +1,28 @@
 :root,
 .tds-mode-light {
   //Primary
-  --tds-btn-primary-background: var(--tds-blue-600);
-  --tds-btn-primary-color: var(--tds-white);
-  --tds-btn-primary-border-color: transparent;
-  --tds-btn-primary-background-hover: var(--tds-blue-500);
-  --tds-btn-primary-color-hover: var(--tds-white);
-  --tds-btn-primary-border-color-hover: transparent;
-  --tds-btn-primary-background-active: var(--tds-blue-700);
-  --tds-btn-primary-color-active: var(--tds-white);
-  --tds-btn-primary-border-color-active: var(--tds-blue-700);
-  --tds-btn-primary-background-focus: var(--tds-blue-400);
-  --tds-btn-primary-color-focus: var(--tds-white);
-  --tds-btn-primary-border-color-focus: var(--tds-blue-600);
-  --tds-btn-primary-outline-color-focus: var(--tds-blue-600);
-  --tds-btn-primary-background-disabled-primary: var(--tds-grey-50);
+
+  // Mapped these to the new variables in _tegel-brand-usage.scss -->
+  --tds-btn-primary-background: var(--background-clickable-primary-primary);
+  --tds-btn-primary-background-hover: var(--background-clickable-primary-primary-hover);
+  --tds-btn-primary-background-active: var(--background-clickable-primary-pressed);
+  --tds-btn-primary-background-focus: var(--background-clickable-primary-focus);
+  --tds-btn-primary-background-disabled-primary: var(--background-clickable-primary-disabled);
+
+  // <-- Mapped these to the new variables
+
   --tds-btn-primary-background-disabled-secondary: var(--tds-white);
   --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
+  --tds-btn-primary-color: var(--tds-white);
+  --tds-btn-primary-color-hover: var(--tds-white);
+  --tds-btn-primary-color-active: var(--tds-white);
+  --tds-btn-primary-color-focus: var(--tds-white);
   --tds-btn-primary-color-disabled: var(--tds-grey-400);
+  --tds-btn-primary-border-color: transparent;
+  --tds-btn-primary-border-color-hover: transparent;
+  --tds-btn-primary-border-color-active: var(--tds-blue-700);
+  --tds-btn-primary-border-color-focus: var(--tds-blue-600);
+  --tds-btn-primary-outline-color-focus: var(--tds-blue-600);
   --tds-btn-primary-border-color-disabled: transparent;
 
   /* ICON */ //not used

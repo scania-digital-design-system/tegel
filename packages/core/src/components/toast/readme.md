@@ -1,5 +1,31 @@
 # tds-toast
 
+## Accessibility Notes
+
+### ARIA Live Announcements
+
+The toast component uses `aria-live` to announce its content to screen readers when it appears or changes. However, there is an important behavior to be aware of:
+
+**Initial Render Behavior**: When a toast is initially rendered on the page load, the content may not be announced automatically. This is because many screen readers only announce `aria-live` regions when their content changes after the initial page load.
+
+**How to Ensure Announcements**:
+
+1. If you need the toast to be announced on initial page load, initially render the toast with the `hidden` attribute set to `true`, then use the `showToast()` method to reveal it after a brief delay.
+
+2. For dynamic toasts that appear based on user actions, use the `showToast()` method to make the toast appear, which will trigger the screen reader announcement.
+
+**Example**:
+
+```js
+// Initial render - toast is hidden
+// Then reveal it after a small delay to trigger announcement
+const toast = document.querySelector('tds-toast');
+setTimeout(() => {
+  toast.showToast();
+}, 100);
+```
+
+For the most reliable announcements, create toasts dynamically when needed rather than having them pre-rendered but hidden on page load.
 
 
 <!-- Auto Generated Below -->

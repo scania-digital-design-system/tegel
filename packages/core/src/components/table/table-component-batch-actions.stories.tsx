@@ -1,34 +1,8 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import tdsTable from './table/readme.md';
-import tdsTableToolbar from './table-toolbar/readme.md';
-import tdsHeader from './table-header/readme.md';
-import tdsHeaderCell from './table-header-cell/readme.md';
-import tdsTableBody from './table-body/readme.md';
-import tdsBodyRow from './table-body-row/readme.md';
-import tdsBodyRowExpandable from './table-body-row-expandable/readme.md';
-import tdsBodyCell from './table-body-cell/readme.md';
-import tdsTableFooter from './table-footer/readme.md';
-import tdsTableBodyInputWrapper from './table-body-input-wrapper/readme.md';
-import tdsTableHeaderInputWrapper from './table-header-input-wrapper/readme.md';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Table`,
-  parameters: {
-    notes: {
-      'tds-table': tdsTable,
-      'tds-table-toolbar': tdsTableToolbar,
-      'tds-header': tdsHeader,
-      'tds-header-cell': tdsHeaderCell,
-      'tds-header-input-wrapper': tdsTableHeaderInputWrapper,
-      'tds-table-body': tdsTableBody,
-      'tds-body-row': tdsBodyRow,
-      'tds-body-row-expandable': tdsBodyRowExpandable,
-      'tds-body-cell': tdsBodyCell,
-      'tds-body-input-wrapper': tdsTableBodyInputWrapper,
-      'tds-table-footer': tdsTableFooter,
-    },
-  },
+  title: 'Components/Table/Batch Actions',
+
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
@@ -65,7 +39,8 @@ export default {
     },
     batchArea: {
       name: 'Batch code',
-      description: 'Enables code to be injected into the toolbar area.',
+      description:
+        'Enables code to be injected into the toolbar area. Slot start and end make posible to put elements to left and right side of action bar  ',
       control: {
         type: 'text',
       },
@@ -130,7 +105,14 @@ export default {
     compactDesign: false,
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
-      `<div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
+      `<div slot="start">
+         <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide">
+           <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
+           <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
+           <tds-dropdown-option value="option-3">SLA</tds-dropdown-option>
+         </tds-dropdown>
+      </div>
+      <div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
       <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
     </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
     ),
@@ -223,4 +205,4 @@ const BatchActionTemplate = ({
   </tds-table>
   `);
 
-export const BatchAction = BatchActionTemplate.bind({});
+export const Default = BatchActionTemplate.bind({});

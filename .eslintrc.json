@@ -8,7 +8,8 @@
     "plugin:import/typescript",
     "airbnb-typescript/base",
     "plugin:storybook/recommended",
-    "prettier"
+    "prettier",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -31,7 +32,8 @@
     "spaced-comment": "warn",
     "camelcase": "warn",
     "no-var": "warn",
-    "lines-between-class-members": "warn",
+    "@typescript-eslint/lines-between-class-members": "warn",
+    "@typescript-eslint/no-throw-literal": "warn",
     "prefer-arrow-callback": "warn",
     "arrow-body-style": "warn",
     "prefer-template": "warn",

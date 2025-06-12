@@ -1,12 +1,9 @@
-import readme from './readme.md';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
 
 export default {
-  title: `${ComponentsFolder}/Datetime`,
+  title: 'Components/Datetime',
   parameters: {
     layout: 'centered',
-    notes: readme,
     design: [
       {
         name: 'Figma',
@@ -115,6 +112,17 @@ export default {
         type: 'text',
       },
     },
+    labelPosition: {
+      name: 'Label position',
+      description: 'Sets the label text position.',
+      control: {
+        type: 'radio',
+      },
+      options: ['No label', 'Inside', 'Outside'],
+      table: {
+        defaultValue: { summary: 'no-label' },
+      },
+    },
     helper: {
       name: 'Helper text',
       description: 'Sets the helper text.',
@@ -150,6 +158,7 @@ export default {
     maxValue: '',
     noMinWidth: false,
     label: 'Label text',
+    labelPosition: 'Outside',
     helper: 'Helper text',
     disabled: false,
     tdsAriaLabel: 'A datetime component',
@@ -166,6 +175,7 @@ const datetimeTemplate = ({
   maxValue,
   noMinWidth,
   label,
+  labelPosition,
   helper,
   disabled,
   tdsAriaLabel,
@@ -231,6 +241,7 @@ const datetimeTemplate = ({
       ${disabled ? 'disabled' : ''}
       ${noMinWidth ? 'no-min-width' : ''}
       ${label ? `label="${label}" ` : ''}
+      label-position="${labelPosition.toLowerCase()}"
       ${helper ? `helper="${helper}" ` : ''}
       tds-aria-label="${tdsAriaLabel}"
       >

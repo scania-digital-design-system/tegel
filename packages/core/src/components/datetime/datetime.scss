@@ -153,6 +153,10 @@
   pointer-events: none;
   color: var(--tds-datetime-label-inside-color);
   left: 16px;
+
+  &.iphone {
+    left: 8px !important;
+  }
 }
 
 @mixin placeholder-label {
@@ -222,31 +226,28 @@
     @include placeholder-label;
   }
 
-  &.tds-datetime-focus,
-  &.tds-datetime-data {
-    .tds-datetime-input-sm ~ .tds-datetime-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-      @include label-inside-transition;
+  .tds-datetime-input-sm ~ .tds-datetime-label-inside {
+    font: var(--tds-detail-07);
+    letter-spacing: var(--tds-detail-07-ls);
+    @include label-inside-transition;
 
-      top: 8px;
-    }
+    top: 8px;
+  }
 
-    .tds-datetime-input-md ~ .tds-datetime-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-      @include label-inside-transition;
+  .tds-datetime-input-md ~ .tds-datetime-label-inside {
+    font: var(--tds-detail-07);
+    letter-spacing: var(--tds-detail-07-ls);
+    @include label-inside-transition;
 
-      top: 8px;
-    }
+    top: 8px;
+  }
 
-    .tds-datetime-input ~ .tds-datetime-label-inside {
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-      @include label-inside-transition;
+  .tds-datetime-input ~ .tds-datetime-label-inside {
+    font: var(--tds-detail-07);
+    letter-spacing: var(--tds-detail-07-ls);
+    @include label-inside-transition;
 
-      top: 12px;
-    }
+    top: 12px;
   }
 }
 

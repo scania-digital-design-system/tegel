@@ -2,7 +2,7 @@ import { test } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 import { tegelAnalyze } from '../../../../utils/axeHelpers';
 
-const componentTestPath = 'src/components/accordion/test/basic/index.html';
+const componentTestPath = 'src/components/toast/test/information/index.html';
 
 test.describe.parallel('Toast accessibility test', () => {
   test('Should render without detected accessibility issues', async ({ page }) => {

@@ -4,10 +4,9 @@ import { processHtmlForScreenReader } from '../../utils/accessibility';
 import readme from './readme.md';
 
 export default {
-  title: `${ComponentsFolder}/Tooltip`,
+  title: 'Components/Tooltip',
   parameters: {
     layout: 'centered',
-    notes: readme,
     docs: {
       source: {
         state: 'closed',
