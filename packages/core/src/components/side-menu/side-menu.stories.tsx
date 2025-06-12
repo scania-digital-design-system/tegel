@@ -179,6 +179,33 @@ const Template = ({ persistent, collapsible, collapsed }) =>
           </button>
         </tds-side-menu-item>
 
+        <tds-side-menu-item slot="end">
+          <tds-side-menu-user 
+            heading="Name Namesson" 
+            subheading="Company name" 
+            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
+            img-alt="">
+          </tds-side-menu-user>
+        </tds-side-menu-item>
+
+        <tds-side-menu-dropdown slot="end" class="demo-lg-hide" selected>
+          <tds-side-menu-user 
+            slot="label" 
+            heading="Name Namesson" 
+            subheading="Company name" 
+            img-src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" 
+            img-alt="">
+          </tds-side-menu-user>
+          <tds-side-menu-dropdown-list>
+            <tds-side-menu-dropdown-list-item selected>
+              <a href="https://design.scania.com">My Instructions</a>
+            </tds-side-menu-dropdown-list-item>
+            <tds-side-menu-dropdown-list-item>
+              <a href="https://design.scania.com">Task List</a>
+            </tds-side-menu-dropdown-list-item>
+          </tds-side-menu-dropdown-list>
+        </tds-side-menu-dropdown>
+
         ${
           collapsible
             ? `<tds-side-menu-collapse-button slot="sticky-end">
