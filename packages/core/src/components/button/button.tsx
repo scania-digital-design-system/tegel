@@ -41,6 +41,12 @@ export class TdsButton {
   /** The value to be used for the aria-label attribute if onlyIcon is set to true */
   @Prop() tdsAriaLabel: string;
 
+  /** The name attribute allows for different ways of accessing the button element */
+  @Prop() name: string;
+
+  /** The value attribute can be used when handling a form submission */
+  @Prop() value: string;
+
   @State() onlyIcon: boolean = false;
 
   connectedCallback() {
@@ -70,6 +76,8 @@ export class TdsButton {
       >
         <button
           type={this.type}
+          name={this.name ? this.name : undefined}
+          value={this.value ? this.value : undefined}
           disabled={this.disabled}
           class={{
             'primary': this.variant === 'primary',
