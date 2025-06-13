@@ -1,28 +1,28 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 .tds-block {
   @include tds-box-sizing;
+  @include detail-01;
 
-  color: var(--tds-block-color);
-  background-color: var(--tds-block-background);
+  background-color: var(--block-background);
+  color: var(--block-text-color);
   border-radius: 4px;
   padding: 16px;
-  font: var(--tds-body-01);
-  letter-spacing: var(--tds-body-01-ls);
 }
 
 .tds-mode-variant-primary {
-  background-color: var(--tds-block-background-primary);
+  background-color: var(--block-background-mode-primary);
 }
 
 .tds-mode-variant-secondary {
-  background-color: var(--tds-block-background-secondary);
+  background-color: var(--block-background-mode-secondary);
 }
 
 .tds-block-even {
-  background-color: var(--tds-block-background-even);
+  background-color: var(--block-background-even);
 }
 
 .tds-block-odd {
-  background-color: var(--tds-block-background-odd);
+  background-color: var(--block-background-odd);
 }
