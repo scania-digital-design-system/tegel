@@ -1,0 +1,19 @@
+/* Component variables */
+tds-block {
+  --block-background: var(--color-background-layer-01);
+  --block-text-color: var(--color-foreground-text-strong);
+  --block-background-mode-primary: var(--color-background-layer-01);
+  --block-background-mode-secondary: var(--color-background-layer-02);
+}
+
+/* Context variables */
+:root,
+.tds-mode-variant-primary {
+  --block-background-even: var(--color-background-layer-01);
+  --block-background-odd: var(--color-background-layer-02);
+}
+
+.tds-mode-variant-secondary {
+  --block-background-even: var(--color-background-layer-02);
+  --block-background-odd: var(--color-background-layer-01);
+}

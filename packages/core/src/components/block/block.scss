@@ -5,26 +5,24 @@
   @include tds-box-sizing;
   @include detail-01;
 
-  background-color: var(--color-background-layer-01);
-  color: var(--color-foreground-text-strong);
+  background-color: var(--block-background);
+  color: var(--block-text-color);
   border-radius: 4px;
   padding: 16px;
 }
 
 .tds-mode-variant-primary {
-  background-color: var(--color-background-layer-01);
+  background-color: var(--block-background-mode-primary);
 }
 
 .tds-mode-variant-secondary {
-  background-color: var(--color-background-layer-02);
+  background-color: var(--block-background-mode-secondary);
 }
 
-/* Enables alternating backgrounds for nested blocks using .even/.odd when mode-variant is unset. */
-
 .tds-block-even {
-  background-color: var(--tds-block-background-even);
+  background-color: var(--block-background-even);
 }
 
 .tds-block-odd {
-  background-color: var(--tds-block-background-odd);
+  background-color: var(--block-background-odd);
 }
