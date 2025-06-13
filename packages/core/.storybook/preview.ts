@@ -140,6 +140,7 @@ const preview: Preview = {
           'Announcements',
           'Motions',
           'Foundations',
+          'Accessibility',
           'Utilities',
           'Components',
           ['*', ['*', 'Docs', 'Notes']],
