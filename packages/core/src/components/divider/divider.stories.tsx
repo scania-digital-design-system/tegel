@@ -23,8 +23,8 @@ export default {
       description: 'Choose Divider orientation.',
       control: {
         type: 'radio',
-        options: ['Horizontal', 'Vertical'],
       },
+      options: ['Horizontal', 'Vertical'],
       table: {
         defaultValue: { summary: 'horizontal' },
       },
