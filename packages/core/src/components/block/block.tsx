@@ -31,14 +31,17 @@ export class TdsBlock {
     | 'main' = 'div';
 
   private getNestingLevel(): number {
+    // Start at 0 for the outermost block
     let level = 0;
     let parent = this.host.parentElement;
+
     while (parent) {
       if (parent.tagName.toLowerCase() === 'tds-block') {
         level++;
       }
       parent = parent.parentElement;
     }
+
     return level;
   }
 
@@ -47,7 +50,12 @@ export class TdsBlock {
     const nestingLevel = this.getNestingLevel();
 
     let evenOddClass = '';
-    if (this.modeVariant === null) {
+
+    // Check if this block has any tds-block children
+    const hasNestedBlocks = Array.from(this.host.querySelectorAll('tds-block')).length > 0;
+
+    // Only apply even/odd classes if this block has nested blocks or is itself nested
+    if (this.modeVariant === null && (nestingLevel > 0 || hasNestedBlocks)) {
       if (nestingLevel % 2 === 0) {
         evenOddClass = 'tds-block-even';
       } else {
