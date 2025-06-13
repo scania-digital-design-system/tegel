@@ -1,42 +1,19 @@
-:root,
-.tds-mode-light {
-  --tds-block-color: var(--tds-grey-985);
-  --tds-block-background: var(--tds-grey-50);
-  --tds-block-background-primary: var(--tds-grey-50);
-  --tds-block-background-secondary: var(--tds-white);
-  --tds-block-background-even: var(--tds-grey-50);
-  --tds-block-background-odd: var(--tds-white);
-
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-grey-50);
-    --tds-block-background-even: var(--tds-grey-50);
-    --tds-block-background-odd: var(--tds-white);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-white);
-    --tds-block-background-even: var(--tds-white);
-    --tds-block-background-odd: var(--tds-grey-50);
-  }
+/* Component variables */
+tds-block {
+  --block-background: var(--color-background-layer-01);
+  --block-text-color: var(--color-foreground-text-strong);
+  --block-background-mode-primary: var(--color-background-layer-01);
+  --block-background-mode-secondary: var(--color-background-layer-02);
 }
 
-.tds-mode-dark {
-  --tds-block-color: var(--tds-grey-50);
-  --tds-block-background: var(--tds-grey-900);
-  --tds-block-background-primary: var(--tds-grey-900);
-  --tds-block-background-secondary: var(--tds-grey-850);
-  --tds-block-background-even: var(--tds-grey-900);
-  --tds-block-background-odd: var(--tds-grey-868);
+/* Context variables */
+:root,
+.tds-mode-variant-primary {
+  --block-background-even: var(--color-background-layer-01);
+  --block-background-odd: var(--color-background-layer-02);
+}
 
-  .tds-mode-variant-primary {
-    --tds-block-background: var(--tds-grey-900);
-    --tds-block-background-even: var(--tds-grey-900);
-    --tds-block-background-odd: var(--tds-grey-850);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-grey-850);
-    --tds-block-background-even: var(--tds-grey-850);
-    --tds-block-background-odd: var(--tds-grey-900);
-  }
+.tds-mode-variant-secondary {
+  --block-background-even: var(--color-background-layer-02);
+  --block-background-odd: var(--color-background-layer-01);
 }
