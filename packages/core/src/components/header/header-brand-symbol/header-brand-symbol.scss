@@ -7,8 +7,8 @@
 
   tds-header-item {
     ::slotted(*) {
-      background-image: var(--tds-background-image-scania-symbol-svg),
-        var(--tds-background-image-scania-symbol-svg-local);
+      background-image: var(--tds-background-image-scania-symbol-svg-local),
+        var(--tds-background-image-scania-symbol-svg);
       background-size: 30px auto;
       background-position: center;
       background-repeat: no-repeat;
