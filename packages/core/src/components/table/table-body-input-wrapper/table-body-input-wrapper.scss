@@ -20,7 +20,7 @@
   }
 
   ::slotted(input:not(:focus)) {
-    background-color: var(--tds-table-input-background-hover);
+    background-color: var(--table-input-background-hover);
   }
 }
 
@@ -39,7 +39,7 @@ tds-icon.edit-icon {
   letter-spacing: var(--tds-detail-02-ls);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
-  color: var(--tds-table-color);
+  color: var(--table-color);
   background-color: transparent;
   height: 48px;
   border-radius: 0;
@@ -50,16 +50,16 @@ tds-icon.edit-icon {
 }
 
 ::slotted(input)::placeholder {
-  color: var(--tds-table-color);
+  color: var(--table-color);
 }
 
 ::slotted(input:disabled) {
-  background-color: var(--tds-table-input-background-disabled);
+  background-color: var(--table-input-background-disabled);
 }
 
 ::slotted(input:focus) {
   outline: none;
-  background-color: var(--tds-table-input-background-focus);
+  background-color: var(--table-input-background-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
 }
 

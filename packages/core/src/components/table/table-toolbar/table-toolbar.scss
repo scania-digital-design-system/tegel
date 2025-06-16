@@ -5,8 +5,8 @@
 
   display: table-caption;
   position: relative;
-  background-color: var(--tds-table-toolbar-background);
-  color: var(--tds-table-color);
+  background-color: var(--table-toolbar-background);
+  color: var(--table-color);
   padding: 0 var(--tds-spacing-element-16);
   height: 64px;
   border-top-left-radius: 4px;
@@ -69,17 +69,17 @@
     &:focus-within,
     &.tds-table__searchbar--active {
       width: 208px;
-      background-color: var(--tds-table-toolbar-searchbar-background);
+      background-color: var(--table-toolbar-searchbar-background);
 
       &:hover {
-        background-color: var(--tds-table-toolbar-searchbar-background);
+        background-color: var(--table-toolbar-searchbar-background);
       }
     }
 
     .tds-table__searchbar-input {
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
-      color: var(--tds-table-color);
+      color: var(--table-color);
       z-index: 1;
       width: 100%;
       height: 100%;
@@ -90,12 +90,12 @@
       cursor: pointer;
 
       :focus {
-        background-color: var(--tds-table-toolbar-searchbar-background);
+        background-color: var(--table-toolbar-searchbar-background);
       }
     }
 
     &:hover {
-      background-color: var(--tds-table-toolbar-searchbar-background-hover);
+      background-color: var(--table-toolbar-searchbar-background-hover);
     }
 
     .tds-table__searchbar-icon {

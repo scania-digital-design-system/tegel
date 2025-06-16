@@ -10,9 +10,9 @@
     letter-spacing: var(--tds-headline-07-ls);
     display: table-cell;
     text-align: left;
-    color: var(--tds-table-color);
-    background-color: var(--tds-table-header-background);
-    border-bottom: 1px solid var(--tds-table-divider);
+    color: var(--table-color);
+    background-color: var(--table-header-background);
+    border-bottom: 1px solid var(--table-divider);
     height: 48px;
     box-sizing: border-box;
 
@@ -59,7 +59,7 @@
   }
 
   ::slotted(tds-header-cell:hover) {
-    background-color: var(--tds-table-header-background-hover);
+    background-color: var(--table-header-background-hover);
   }
 }
 
@@ -76,7 +76,7 @@
 
 :host(.tds-table--divider) {
   .tds-table__header-cell--checkbox {
-    border-right: 1px solid var(--tds-table-divider);
+    border-right: 1px solid var(--table-divider);
   }
 }
 

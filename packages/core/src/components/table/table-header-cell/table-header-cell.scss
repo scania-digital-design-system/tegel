@@ -7,9 +7,9 @@
   letter-spacing: var(--tds-headline-07-ls);
   display: table-cell;
   text-align: left;
-  color: var(--tds-table-color);
-  background-color: var(--tds-table-header-background);
-  border-bottom: 1px solid var(--tds-table-header-background-hover);
+  color: var(--table-color);
+  background-color: var(--table-header-background);
+  border-bottom: 1px solid var(--table-header-background-hover);
   padding: 0;
   height: 48px;
   min-width: 192px;
@@ -44,7 +44,7 @@
     transition: background-color 200ms ease;
 
     &:focus {
-      outline: 2px solid var(--tds-table-header-btn-focus);
+      outline: 2px solid var(--table-header-btn-focus);
       outline-offset: -2px;
 
       .tds-table__header-button-icon {
@@ -56,7 +56,7 @@
       font: var(--tds-headline-07);
       letter-spacing: var(--tds-headline-07-ls);
       text-align: left;
-      color: var(--tds-table-header-btn-color);
+      color: var(--table-header-btn-color);
     }
 
     .tds-table__header-button-icon {
@@ -67,7 +67,7 @@
       opacity: 0;
       transform-origin: center;
       transition: opacity 200ms ease-in, transform 200ms ease;
-      fill: var(--tds-table-color);
+      fill: var(--table-color);
     }
 
     &:hover {
@@ -80,10 +80,10 @@
 
 :host(.tds-table__header-cell--is-sorted) {
   .tds-table__header-button {
-    background-color: var(--tds-table-header-btn-background);
+    background-color: var(--table-header-btn-background);
 
     &:hover {
-      background-color: var(--tds-table-header-btn-background-hover);
+      background-color: var(--table-header-btn-background-hover);
     }
 
     .tds-table__header-button-icon {
@@ -101,7 +101,7 @@
 }
 
 :host(.tds-table--divider) {
-  border-right: 1px solid var(--tds-table-divider);
+  border-right: 1px solid var(--table-divider);
 }
 
 :host(.tds-table--divider:last-of-type) {
