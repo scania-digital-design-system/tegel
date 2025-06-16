@@ -1,6 +1,7 @@
 import glob from 'glob';
 import path from 'path';
 import type { StorybookConfig } from '@storybook/html-vite';
+import { mergeConfig } from 'vite';
 
 function loadStories() {
   // Gather all story files synchronously
@@ -34,9 +35,21 @@ const config: StorybookConfig = {
     name: '@storybook/html-vite',
     options: {
       builder: {
-        viteConfigPath: './.storybook/vite.config.js',
+        viteConfigPath: './.storybook/vite.config.ts',
       },
     },
+  },
+
+  async viteFinal(baseConfig, { configType }) {
+    if (configType !== 'DEVELOPMENT') {
+      return baseConfig;
+    }
+
+    return mergeConfig(baseConfig, {
+      build: {
+        outDir: 'dist-vite',
+      },
+    });
   },
 };
 
