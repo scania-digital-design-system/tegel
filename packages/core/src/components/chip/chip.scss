@@ -47,12 +47,12 @@
       }
 
       input[type='radio']:checked:disabled + label {
-        background-color: var(--tds-chips-background-active);
+        background-color: var(--tds-chips-background-active-disabled);
         color: var(--tds-chips-text-checked-disabled);
       }
 
       input[type='checkbox']:checked:disabled + label {
-        background-color: var(--tds-chips-background-active);
+        background-color: var(--tds-chips-background-active-disabled);
         color: var(--tds-chips-text-checked-disabled);
       }
     }
