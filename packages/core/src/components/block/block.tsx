@@ -1,4 +1,5 @@
-import { Component, h, Prop, Element } from '@stencil/core';
+import { Component, h, Prop, Element, State } from '@stencil/core';
+import { getAdjustedModeVariant } from '../../utils/modeVariantOverride';
 
 /**
  * @slot - <default> - <b>Default</b> slot for content inside the block.
@@ -30,6 +31,12 @@ export class TdsBlock {
     | 'nav'
     | 'main' = 'div';
 
+  private mutationObserver: MutationObserver;
+
+  private insideModal: boolean = false;
+
+  @State() swapModeVariant: boolean = false;
+
   private getNestingLevel(): number {
     let level = 0;
     let parent = this.host.parentElement;
@@ -40,6 +47,37 @@ export class TdsBlock {
       parent = parent.parentElement;
     }
     return level;
+  }
+
+  private checkIfDarkmode() {
+    const darkmode = document.body.classList.contains('tds-mode-dark');
+    this.swapModeVariant = this.insideModal && darkmode;
+  }
+
+  private observeClassChanges() {
+    this.mutationObserver = new MutationObserver(() => {
+      this.checkIfDarkmode();
+    });
+
+    this.mutationObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+
+  componentDidLoad() {
+    this.insideModal = !!this.host.closest('tds-modal');
+
+    if (this.insideModal) {
+      this.observeClassChanges();
+      this.checkIfDarkmode();
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+    }
   }
 
   render() {
@@ -57,9 +95,10 @@ export class TdsBlock {
 
     return (
       <TagType
-        class={`tds-block ${evenOddClass} ${
-          this.modeVariant !== null ? `tds-mode-variant-${this.modeVariant}` : ''
-        }`}
+        class={`tds-block ${evenOddClass} ${getAdjustedModeVariant(
+          this.modeVariant,
+          this.swapModeVariant,
+        )}`}
       >
         <slot></slot>
       </TagType>

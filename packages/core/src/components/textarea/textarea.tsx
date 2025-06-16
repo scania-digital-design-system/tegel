@@ -1,5 +1,6 @@
-import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter, Element } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { getAdjustedModeVariant } from '../../utils/modeVariantOverride';
 
 @Component({
   tag: 'tds-textarea',
@@ -8,6 +9,8 @@ import generateUniqueId from '../../utils/generateUniqueId';
   scoped: true,
 })
 export class TdsTextarea {
+  @Element() host: HTMLElement;
+
   /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
 
@@ -66,6 +69,12 @@ export class TdsTextarea {
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean;
+
+  private mutationObserver: MutationObserver;
+
+  private insideModal: boolean = false;
+
+  @State() swapModeVariant: boolean = false;
 
   /** Change event for the Textarea */
   @Event({
@@ -127,21 +136,52 @@ export class TdsTextarea {
     this.tdsFocus.emit(event);
   }
 
-  setModeVariant(modeVariant: 'primary' | 'secondary'): string | null {
-    if (this.readOnly && modeVariant === 'primary') {
-      return 'secondary';
-    }
-    if (this.readOnly && modeVariant === 'secondary') {
-      return 'primary';
-    }
-    return modeVariant;
-  }
+  // setModeVariant(modeVariant: 'primary' | 'secondary'): string | null {
+  //   if (this.readOnly && modeVariant === 'primary') {
+  //     return 'secondary';
+  //   }
+  //   if (this.readOnly && modeVariant === 'secondary') {
+  //     return 'primary';
+  //   }
+  //   return modeVariant;
+  // }
 
   connectedCallback() {
     if (!this.tdsAriaLabel && !this.label) {
       console.warn(
         'Tegel Textarea component: specify label or tdsAriaLabel prop for accessibility',
       );
+    }
+  }
+
+  private checkIfDarkmode() {
+    const darkmode = document.body.classList.contains('tds-mode-dark');
+    this.swapModeVariant = this.insideModal && darkmode;
+  }
+
+  private observeClassChanges() {
+    this.mutationObserver = new MutationObserver(() => {
+      this.checkIfDarkmode();
+    });
+
+    this.mutationObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+
+  componentDidLoad() {
+    this.insideModal = !!this.host.closest('tds-modal');
+
+    if (this.insideModal) {
+      this.observeClassChanges();
+      this.checkIfDarkmode();
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
     }
   }
 
@@ -154,7 +194,7 @@ export class TdsTextarea {
           'textarea-focus': this.focusInput,
           'textarea-disabled': this.disabled,
           'textarea-readonly': !this.disabled && this.readOnly,
-          [`tds-mode-variant-${this.setModeVariant(this.modeVariant)}`]: true,
+          [getAdjustedModeVariant(this.modeVariant, this.swapModeVariant, this.readOnly)]: true,
           'textarea-data': this.value !== '',
           [`textarea-${this.state}`]: this.state === 'error' || this.state === 'success',
           'no-min-width': this.noMinWidth,

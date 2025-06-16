@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { getAdjustedModeVariant } from '../../utils/modeVariantOverride';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -79,6 +80,13 @@ export class TdsTextField {
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
+
+  private mutationObserver: MutationObserver;
+
+  private insideModal: boolean = false;
+
+  /** The mode variant needs to be swapped if the text-field is inside a modal and darkmode is used, for consistency in design */
+  @State() swapModeVariant: boolean = false;
 
   /** Change event for the Text Field */
   @Event({
@@ -171,6 +179,37 @@ export class TdsTextField {
     }
   }
 
+  private checkIfDarkmode() {
+    const darkmode = document.body.classList.contains('tds-mode-dark');
+    this.swapModeVariant = this.insideModal && darkmode;
+  }
+
+  private observeClassChanges() {
+    this.mutationObserver = new MutationObserver(() => {
+      this.checkIfDarkmode();
+    });
+
+    this.mutationObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+  }
+
+  componentDidLoad() {
+    this.insideModal = !!this.host.closest('tds-modal');
+
+    if (this.insideModal) {
+      this.observeClassChanges();
+      this.checkIfDarkmode();
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.mutationObserver) {
+      this.mutationObserver.disconnect();
+    }
+  }
+
   render() {
     const usesPrefixSlot = hasSlot('prefix', this.host);
     const usesSuffixSlot = hasSlot('suffix', this.host);
@@ -186,12 +225,7 @@ export class TdsTextField {
             this.labelPosition === 'inside' && this.size !== 'sm',
           'form-text-field-disabled': this.disabled,
           'form-text-field-readonly': this.disabled ? false : this.readOnly,
-          'tds-mode-variant-primary': this.readOnly
-            ? this.modeVariant === 'secondary'
-            : this.modeVariant === 'primary',
-          'tds-mode-variant-secondary': this.readOnly
-            ? this.modeVariant === 'primary'
-            : this.modeVariant === 'secondary',
+          [getAdjustedModeVariant(this.modeVariant, this.swapModeVariant, this.readOnly)]: true,
           'form-text-field-md': this.size === 'md',
           'form-text-field-sm': this.size === 'sm',
           'form-text-field-error': this.state === 'error',
