@@ -1,51 +1,42 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  /* Variant values */
-  .tds-mode-variant-primary {
-    --main-background: var(--mode-primary-background);
-  }
-
-  .tds-mode-variant-secondary {
-    --main-background: var(--mode-secondary-background);
-  }
-
   .wrapper {
     display: flex;
     padding: 16px;
-    background-color: var(--main-background);
+    background-color: var(--message-main-background);
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--info-border-color);
+      border-left: 4px solid var(--message-info-border-color);
 
       tds-icon {
-        color: var(--info-icon-color);
+        color: var(--message-info-icon-color);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--success-border-color);
+      border-left: 4px solid var(--message-success-border-color);
 
       tds-icon {
-        color: var(--success-icon-color);
+        color: var(--message-success-icon-color);
       }
     }
 
     &.error {
-      background-color: var(--error-background);
-      border-left: 4px solid var(--error-border-color);
+      background-color: var(--message-error-background);
+      border-left: 4px solid var(--message-error-border-color);
 
       tds-icon {
-        color: var(--error-icon-color);
+        color: var(--message-error-icon-color);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--warning-border-color);
+      border-left: 4px solid var(--message-warning-border-color);
 
       tds-icon {
-        color: var(--warning-icon-color);
+        color: var(--message-warning-icon-color);
       }
     }
 
@@ -60,10 +51,19 @@
 
       &.error {
         .header {
-          color: var(--error-header-text-color);
+          color: var(--message-error-header-text-color);
         }
       }
     }
+  }
+
+  /* Variant values */
+  .tds-mode-variant-primary {
+    --message-main-background: var(--message-mode-primary-background);
+  }
+
+  .tds-mode-variant-secondary {
+    --message-main-background: var(--message-mode-secondary-background);
   }
 
   tds-icon {
@@ -74,7 +74,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    color: var(--main-text-color);
+    color: var(--message-main-text-color);
     padding: 2px 0;
 
     .header {
@@ -82,7 +82,7 @@
     }
 
     .extended-message {
-      color: var(--main-text-color);
+      color: var(--message-main-text-color);
       @include detail-02;
     }
   }
