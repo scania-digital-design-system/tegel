@@ -52,11 +52,11 @@ The code conventions used in (and enforced by) Tegel is documented [here](https:
 2. Make sure you have Docker installed. It is needed for running unit tests.
 3. Run `npm install` in the root directory.
 4. Run `npm install` in the `packages/core` directory.
-5. Development version of Storybook with additional plugins and beta components can be activated by setting the environment variable `STORYBOOK_ENV` to `dev` in the same terminal where you run rest of the commands.
+5. Development version of Storybook with additional plugins and beta components can be activated by setting the environment variable `VITE_STORYBOOK_ENV` to `dev` in the same terminal where you run rest of the commands.
 
 
 ```
-export STORYBOOK_ENV=dev
+export VITE_STORYBOOK_ENV=dev
 ```
 
 6. Make sure you are in the root directory, and start the dev server with `npm run start`.
