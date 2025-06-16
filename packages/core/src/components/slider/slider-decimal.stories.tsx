@@ -1,7 +1,7 @@
 import { SliderArgTypes, SliderParameters, SliderTemplate } from './slider-stories-setup';
 
 export default {
-  title: 'Components/Slider',
+  title: 'Components/Slider/Decimal',
   argTypes: SliderArgTypes({
     storyName: 'Decimal',
   }),
