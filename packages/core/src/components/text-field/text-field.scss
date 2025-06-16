@@ -3,32 +3,32 @@
 // Mixins
 @mixin text-field-base {
   all: unset;
-  border-radius: var(--border-radius);
+  border-radius: var(--text-field-border-radius);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
   border: none;
   outline: none;
   height: 100%;
-  color: var(--text-color);
-  background-color: var(--background);
+  color: var(--text-field-text-color);
+  background-color: var(--text-field-background);
 
   &::placeholder {
-    color: var(--placeholder);
+    color: var(--text-field-placeholder);
   }
 
   &:disabled {
     user-select: none;
     pointer-events: none;
-    background-color: var(--background-disabled);
-    color: var(--text-color-disabled);
+    background-color: var(--text-field-background-disabled);
+    color: var(--text-field-text-color-disabled);
 
     &::placeholder {
-      color: var(--placeholder-disabled);
+      color: var(--text-field-placeholder-disabled);
     }
 
     ~ .text-field-label-inside {
-      color: var(--label-disabled);
+      color: var(--text-field-label-disabled);
     }
   }
 }
@@ -44,7 +44,7 @@
 
   &:focus::placeholder {
     transition: color 0.35s ease;
-    color: var(--placeholder);
+    color: var(--text-field-placeholder);
   }
 }
 
@@ -55,10 +55,10 @@
 @mixin border-colors($state: '') {
   $suffix: if($state != '', '-#{$state}', '');
 
-  border-left: 1px solid var(--border-color-left#{$suffix});
-  border-right: 1px solid var(--border-color-right#{$suffix});
-  border-bottom: 1px solid var(--border-color-bottom#{$suffix});
-  border-top: 1px solid var(--border-color-top#{$suffix});
+  border-left: 1px solid var(--text-field-border-color-left#{$suffix});
+  border-right: 1px solid var(--text-field-border-color-right#{$suffix});
+  border-bottom: 1px solid var(--text-field-border-color-bottom#{$suffix});
+  border-top: 1px solid var(--text-field-border-color-top#{$suffix});
 }
 
 .text-field-input {
@@ -81,12 +81,12 @@
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  border-radius: var(--border-radius);
+  border-radius: var(--text-field-border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--background);
+  background-color: var(--text-field-background);
   @include border-colors;
 
   transition: border-bottom-color 200ms ease, border-left-color 200ms ease,
@@ -112,7 +112,7 @@
 
 .text-field-data,
 .text-field-input {
-  color: var(--text-color);
+  color: var(--text-field-text-color);
 }
 
 //text-field label
@@ -122,7 +122,7 @@
 
   display: block;
   margin-bottom: var(--tds-spacing-element-8);
-  color: var(--label-color);
+  color: var(--text-field-label-color);
 }
 
 .text-field-label-inside {
@@ -130,7 +130,7 @@
 
   position: absolute;
   pointer-events: none;
-  color: var(--label-inside-color);
+  color: var(--text-field-label-inside-color);
   left: 16px;
 }
 
@@ -191,7 +191,7 @@
     width: 100%;
     bottom: 0;
     position: absolute;
-    background: var(--bar-color-focus);
+    background: var(--text-field-bar-color-focus);
     transform: scaleX(0);
     transition: 0.35s ease transform;
   }
@@ -203,7 +203,7 @@
     .text-field-container {
       @include border-colors('focus');
 
-      outline: 2px solid var(--outline-color-focus);
+      outline: 2px solid var(--text-field-outline-color-focus);
       outline-offset: -1px;
     }
 
@@ -227,7 +227,7 @@
 
   flex-basis: 100%;
   padding-top: var(--tds-spacing-element-4);
-  color: var(--helper);
+  color: var(--text-field-helper);
 }
 
 //Disabled state
@@ -243,18 +243,18 @@
   .text-field-slot-wrap-prefix,
   .text-field-slot-wrap-suffix {
     > * {
-      color: var(--affix-color-disabled);
+      color: var(--text-field-affix-color-disabled);
     }
   }
 
   .text-field-label-outside {
     > * {
-      color: var(--label-disabled);
+      color: var(--text-field-label-disabled);
     }
   }
 
   .text-field-helper {
-    color: var(--helper-disabled);
+    color: var(--text-field-helper-disabled);
   }
 }
 
@@ -266,7 +266,7 @@
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--icon-read-only-label-color);
+  color: var(--text-field-icon-read-only-label-color);
 
   &-label {
     display: none;
@@ -278,7 +278,7 @@
     padding: 8px;
     white-space: nowrap;
     border-radius: 4px 0 4px 4px;
-    background-color: var(--icon-read-only-label-background);
+    background-color: var(--text-field-icon-read-only-label-background);
   }
 }
 
@@ -288,7 +288,7 @@
   cursor: default;
 
   .text-field-container {
-    border-bottom-color: var(--border-bottom-readonly);
+    border-bottom-color: var(--text-field-border-bottom-readonly);
   }
 
   .text-field-icon__readonly {
@@ -321,7 +321,7 @@
 //Error State
 .form-text-field-error:not(.form-text-field-readonly) {
   .text-field-helper {
-    color: var(--helper-error);
+    color: var(--text-field-helper-error);
   }
 
   .text-field-container {
@@ -331,7 +331,7 @@
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--bar-color-error);
+      background: var(--text-field-bar-color-error);
     }
   }
 }
@@ -344,27 +344,27 @@
 }
 
 .text-field-textcounter-disabled {
-  color: var(--textcounter-disabled);
+  color: var(--text-field-textcounter-disabled);
 }
 
 .text-field-textcounter {
   @include detail-02;
 
-  color: var(--textcounter);
+  color: var(--text-field-textcounter);
   float: right;
 
   &.text-field-textcounter-disabled {
-    color: var(--textcounter-disabled);
+    color: var(--text-field-textcounter-disabled);
   }
 
   &.text-field-textcounter-divider {
     @include detail-05;
 
-    color: var(--textcounter-divider);
+    color: var(--text-field-textcounter-divider);
   }
 
   &.text-field-textcounter-divider-disabled {
-    color: var(--textcounter-divider);
+    color: var(--text-field-textcounter-divider);
   }
 }
 
@@ -374,14 +374,14 @@
   @include detail-02;
 
   margin: 0 0 0 14px;
-  color: var(--affix-color);
+  color: var(--text-field-affix-color);
 
   &::slotted(:not(tds-icon)) {
     margin: 0 0 0 2px;
   }
 
   &.text-field-error {
-    color: var(--affix-color-error);
+    color: var(--text-field-affix-color-error);
   }
 }
 
