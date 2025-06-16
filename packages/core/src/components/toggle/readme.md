@@ -28,6 +28,16 @@
 
 ## Methods
 
+### `focusElement() => Promise<void>`
+
+Method to programmatically focus the toggle element
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 ### `toggle() => Promise<{ toggleId: string; checked: boolean; }>`
 
 Toggles the Toggle.

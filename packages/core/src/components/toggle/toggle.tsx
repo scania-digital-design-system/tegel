@@ -39,6 +39,8 @@ export class TdsToggle {
 
   private labelSlot: HTMLElement;
 
+  private inputElement: HTMLInputElement;
+
   /** Toggles the Toggle. */
   @Method()
   async toggle() {
@@ -47,6 +49,14 @@ export class TdsToggle {
       toggleId: this.toggleId,
       checked: this.checked,
     };
+  }
+
+  /** Method to programmatically focus the toggle element */
+  @Method()
+  async focusElement() {
+    if (this.inputElement) {
+      this.inputElement.focus();
+    }
   }
 
   /** Sends unique Toggle identifier and status when it is toggled. */
@@ -93,6 +103,7 @@ export class TdsToggle {
           </div>
         )}
         <input
+          ref={(inputEl) => (this.inputElement = inputEl)}
           aria-label={this.tdsAriaLabel}
           aria-describedby={this.host.getAttribute('aria-describedby')}
           aria-labelledby={this.host.getAttribute('aria-labelledby')}
