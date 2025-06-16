@@ -3,7 +3,7 @@
   --tds-text-field-background-primary: var(--tds-grey-50);
   --tds-text-field-background-secondary: var(--tds-white);
   --tds-text-field-background: var(--tds-text-field-background-primary);
-  --tds-text-field-color: var(--tds-grey-600);
+  --tds-text-field-color: var(--tds-grey-950);
   --tds-text-field-placeholder: var(--tds-grey-500);
   --tds-text-field-data-color: var(--tds-grey-958);
 
@@ -11,44 +11,44 @@
   --tds-text-field-background-disabled-primary: var(--tds-grey-50);
   --tds-text-field-background-disabled-secondary: var(--tds-white);
   --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  --tds-text-field-color-disabled: var(--tds-grey-400);
-  --tds-text-field-placeholder-disabled: var(--tds-grey-400);
-  --tds-text-field-label-disabled: var(--tds-grey-400);
-  --tds-text-field-ps-color-disabled: var(--tds-grey-400);
-  --tds-text-field-helper-disabled: var(--tds-grey-400);
+  --tds-text-field-color-disabled: var(--tds-grey-250);
+  --tds-text-field-placeholder-disabled: var(--tds-grey-250);
+  --tds-text-field-label-disabled: var(--tds-grey-250);
+  --tds-text-field-ps-color-disabled: var(--tds-grey-250);
+  --tds-text-field-helper-disabled: var(--tds-grey-250);
 
   //Label
-  --tds-text-field-label-color: var(--tds-grey-958);
-  --tds-text-field-label-inside-color: var(--tds-grey-958);
+  --tds-text-field-label-color: var(--tds-grey-950);
+  --tds-text-field-label-inside-color: var(--tds-grey-950);
 
   //Highlight bar
   --tds-text-field-bar: var(--tds-blue-400);
 
   //helper
-  --tds-text-field-helper: var(--tds-grey-700);
+  --tds-text-field-helper: var(--tds-grey-500);
 
   //error
-  --tds-text-field-border-bottom-error: var(--tds-negative);
-  --tds-text-field-helper-error: var(--tds-negative);
-  --tds-text-field-bar-error: var(--tds-negative);
-  --tds-text-field-icon-error: var(--tds-negative);
+  --tds-text-field-border-bottom-error: var(--tds-red-400);
+  --tds-text-field-helper-error: var(--tds-red-400);
+  --tds-text-field-bar-error: var(--tds-red-400);
+  --tds-text-field-icon-error: var(--tds-red-400);
 
   //Textcounter
-  --tds-text-field-textcounter: var(--tds-grey-700);
-  --tds-text-field-textcounter-disabled: var(--tds-grey-400);
+  --tds-text-field-textcounter: var(--tds-grey-500);
+  --tds-text-field-textcounter-disabled: var(--tds-grey-250);
   --tds-text-field-textcounter-divider: var(--tds-grey-500);
 
   //Prefix and Suffix
-  --tds-text-field-ps-color: var(--tds-grey-600);
-  --tds-text-field-ps-color-error: var(--tds-negative);
+  --tds-text-field-ps-color: var(--tds-grey-500);
+  --tds-text-field-ps-color-error: var(--tds-red-400);
 
   // text-field resize icon
   --tds-text-field-resize-icon: var(--tds-grey-500);
 
   // Border bottom
-  --tds-text-field-border-bottom: var(--tds-grey-600);
-  --tds-text-field-border-bottom-hover: var(--tds-grey-800);
-  --tds-text-field-border-bottom-success: var(--tds-grey-958);
+  --tds-text-field-border-bottom: var(--tds-grey-350);
+  --tds-text-field-border-bottom-hover: var(--tds-grey-250);
+  --tds-text-field-border-bottom-success: var(--tds-grey-850);
   --tds-text-field-border-bottom-readonly: var(--tds-grey-500);
 
   // Read only
@@ -69,54 +69,54 @@
 .tds-mode-dark {
   --tds-text-field-background-primary: var(--tds-grey-900);
   --tds-text-field-background: var(--tds-text-field-background-primary);
-  --tds-text-field-background-secondary: var(--tds-grey-868);
-  --tds-text-field-color: var(--tds-grey-600);
-  --tds-text-field-placeholder: var(--tds-grey-600);
+  --tds-text-field-background-secondary: var(--tds-grey-850);
+  --tds-text-field-color: var(--tds-grey-50);
+  --tds-text-field-placeholder: var(--tds-grey-300);
   --tds-text-field-data-color: var(--tds-grey-50);
 
   //Disabled
-  --tds-text-field-ps-color-disabled: var(--tds-grey-700);
+  --tds-text-field-ps-color-disabled: var(--tds-grey-500);
   --tds-text-field-color-disabled: var(--tds-grey-800);
   --tds-text-field-background-disabled-primary: var(--tds-grey-900);
-  --tds-text-field-background-disabled-secondary: var(--tds-grey-868);
+  --tds-text-field-background-disabled-secondary: var(--tds-grey-850);
   --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  --tds-text-field-placeholder-disabled: var(--tds-grey-800);
-  --tds-text-field-label-disabled: var(--tds-grey-800);
-  --tds-text-field-helper-disabled: var(--tds-grey-800);
+  --tds-text-field-placeholder-disabled: var(--tds-grey-500);
+  --tds-text-field-label-disabled: var(--tds-grey-500);
+  --tds-text-field-helper-disabled: var(--tds-grey-500);
 
   // Label
   --tds-text-field-label-color: var(--tds-grey-50);
   --tds-text-field-label-inside-color: var(--tds-grey-50);
 
   //Highlight bar
-  --tds-text-field-bar: var(--tds-blue-400);
+  --tds-text-field-bar: var(--tds-blue-300);
 
   //helper
-  --tds-text-field-helper: var(--tds-grey-600);
+  --tds-text-field-helper: var(--tds-grey-300);
 
   //error
-  --tds-text-field-helper-error: var(--tds-negative);
-  --tds-text-field-bar-error: var(--tds-negative);
-  --tds-text-field-icon-error: var(--tds-negative);
+  --tds-text-field-helper-error: var(--tds-red-300);
+  --tds-text-field-bar-error: var(--tds-red-300);
+  --tds-text-field-icon-error: var(--tds-red-300);
 
   //Textcounter
-  --tds-text-field-textcounter: var(--tds-grey-600);
+  --tds-text-field-textcounter: var(--tds-grey-300);
 
   //when disabled
-  --tds-text-field-textcounter-disabled: var(--tds-grey-800);
-  --tds-text-field-textcounter-divider: var(--tds-grey-800);
+  --tds-text-field-textcounter-disabled: var(--tds-grey-500);
+  --tds-text-field-textcounter-divider: var(--tds-grey-500);
 
   //Prefix and Suffix
-  --tds-text-field-ps-color: var(--tds-grey-100);
+  --tds-text-field-ps-color: var(--tds-grey-300);
 
   // Textarea resize icon
   --tds-text-field-resize-icon: var(--tds-grey-500);
 
   // Border bottom
-  --tds-text-field-border-bottom: var(--tds-grey-600);
-  --tds-text-field-border-bottom-hover: var(--tds-grey-400);
+  --tds-text-field-border-bottom: var(--tds-grey-850);
+  --tds-text-field-border-bottom-hover: var(--tds-grey-900);
   --tds-text-field-border-bottom-success: var(--tds-grey-50);
-  --tds-text-field-border-bottom-error: var(--tds-negative);
+  --tds-text-field-border-bottom-error: var(--tds-red-300);
   --tds-text-field-border-bottom-readonly: var(--tds-grey-600);
 
   // Read only
