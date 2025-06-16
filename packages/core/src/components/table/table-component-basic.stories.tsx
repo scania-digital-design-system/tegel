@@ -2,7 +2,17 @@ import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
   title: 'Components/Table/Basic',
-
+  parameters: {
+    docs: {
+      description: {
+        component: `
+<div style="border: 1px solid rgba(38, 85, 115, 0.15); padding: 10px; border-radius: 4px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px;">
+🚧 Accessibility - This component is not fully accessible, read more in the <a href="https://tds-storybook.tegel.scania.com/?path=/docs/foundations-accessibility--docs">Accessibility section</a>.
+</div>
+        `,
+      },
+    },
+  },
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
