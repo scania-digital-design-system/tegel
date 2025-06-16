@@ -1,27 +1,13 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  /* Component variables for easier maintainance. Can serve as end user API. */
-  --main-background: var(--color-background-layer-03);
-  --main-text-color: var(--color-foreground-text-strong);
-  --info-border-color: var(--color-system-info-subtle);
-  --info-icon-color: var(--color-system-info-subtle);
-  --success-border-color: var(--color-system-success-subtle);
-  --success-icon-color: var(--color-system-success-subtle);
-  --error-background: var(--color-system-danger-discrete);
-  --error-border-color: var(--color-system-danger-subtle);
-  --error-icon-color: var(--color-system-danger-subtle);
-  --error-header-text-color: var(--color-system-danger-default);
-  --warning-border-color: var(--color-system-warning-subtle);
-  --warning-icon-color: var(--color-system-warning-subtle);
-
   /* Variant values */
   .tds-mode-variant-primary {
-    --main-background: var(--color-background-layer-03);
+    --main-background: var(--mode-primary-background);
   }
 
   .tds-mode-variant-secondary {
-    --main-background: var(--color-background-layer-02);
+    --main-background: var(--mode-secondary-background);
   }
 
   .wrapper {
