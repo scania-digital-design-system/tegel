@@ -1,22 +1,22 @@
 :root,
 .tds-mode-light {
   // Banner text color
-  --tds-banner-text-color: var(--tds-grey-958);
+  --tds-banner-text-color: var(--tds-grey-950);
 
   // Banner "X" color
-  --tds-banner-x-color: var(--tds-black);
+  --tds-banner-x-color: var(--tds-grey-950);
 
   // Type: Default
-  --tds-banner-background-default: var(--tds-grey-50);
-  --tds-banner-prefix-default-color: var(--tds-grey-700);
+  --tds-banner-background-default: var(--tds-grey-150);
+  --tds-banner-prefix-default-color: var(--tds-grey-950);
 
   // Type: Info
-  --tds-banner-background-info: var(--tds-grey-300);
+  --tds-banner-background-info: var(--tds-blue-100);
   --tds-banner-prefix-info-color: var(--tds-blue-400);
 
   // Type: Error
-  --tds-banner-background-error: var(--tds-red-100);
-  --tds-banner-prefix-error-color: var(--tds-red-500);
+  --tds-banner-background-error: var(--tds-red-50);
+  --tds-banner-prefix-error-color: var(--tds-red-400);
 }
 
 .tds-mode-dark {
@@ -24,17 +24,17 @@
   --tds-banner-text-color: var(--tds-grey-50);
 
   // Banner "X" color
-  --tds-banner-x-color: var(--tds-white);
+  --tds-banner-x-color: var(--tds-grey-50);
 
   // Type: Default
-  --tds-banner-background-default: var(--tds-grey-900);
-  --tds-banner-prefix-default-color: var(--tds-grey-400);
+  --tds-banner-background-default: var(--tds-grey-850);
+  --tds-banner-prefix-default-color: var(--tds-grey-50);
 
   // Type: Info
   --tds-banner-background-info: var(--tds-blue-700);
-  --tds-banner-prefix-info-color: var(--tds-information);
+  --tds-banner-prefix-info-color: var(--tds-blue-300);
 
   // Type: Error
   --tds-banner-background-error: var(--tds-red-900);
-  --tds-banner-prefix-error-color: var(--tds-negative);
+  --tds-banner-prefix-error-color: var(--tds-red-300);
 }
