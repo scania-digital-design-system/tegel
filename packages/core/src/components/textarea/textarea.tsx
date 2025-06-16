@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter, Method } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
 
 @Component({
@@ -125,6 +125,15 @@ export class TdsTextarea {
     this.textEl.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
+  }
+
+  /** Method to programmatically focus the textarea element */
+  @Method()
+  async focusElement() {
+    if (this.textEl) {
+      this.textEl.focus();
+      this.focusInput = true;
+    }
   }
 
   setModeVariant(modeVariant: 'primary' | 'secondary'): string | null {
