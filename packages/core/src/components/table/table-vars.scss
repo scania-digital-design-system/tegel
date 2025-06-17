@@ -10,13 +10,13 @@ tds-table {
   --table-body-row-background-hover: var(--component-table-cell-hover);
   --table-zebra-mode-backround: var(--component-table-secondary-cell);
 
-  .tds-mode-variant-primary {
+  &.tds-mode-variant-primary {
     --table-body-row-background: var(--component-table-cell);
     --table-body-row-background-hover: var(--component-table-cell-hover);
     --table-zebra-mode-backround: var(--component-table-secondary-cell);
   }
 
-  .tds-mode-variant-secondary {
+  &.tds-mode-variant-secondary {
     --table-body-row-background: var(--component-table-secondary-cell);
     --table-body-row-background-hover: var(--component-table-cell-hover);
     --table-zebra-mode-backround: var(--component-table-cell);
