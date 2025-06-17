@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    background-color: var(--dropdown-bg);
+    background-color: var(--dropdown-background);
     border-bottom: 1px solid var(--dropdown-border-bottom);
     padding-left: 16px;
     border-radius: 4px 4px 0 0;
@@ -17,7 +17,7 @@
     }
 
     &.disabled {
-      color: var(--dropdown-disabled-color);
+      color: var(--dropdown-disabled);
       border-bottom: 1px solid transparent;
     }
 
@@ -27,7 +27,7 @@
       height: 100%;
 
       input {
-        color: var(--dropdown-filter-input-color);
+        color: var(--dropdown-text);
       }
     }
 
@@ -50,7 +50,7 @@
 
       /* Overwrite in order to display ÅÄÖ and similar sign correctly */
       line-height: 1.3;
-      color: var(--dropdown-placeholder-color);
+      color: var(--dropdown-placeholder);
 
       &.selected {
         @include detail-07;
@@ -113,12 +113,12 @@
       width: 100%;
 
       &::placeholder {
-        color: var(--dropdown-placeholder-color);
+        color: var(--dropdown-placeholder);
       }
 
       &:disabled {
         &::placeholder {
-          color: var(--dropdown-disabled-color);
+          color: var(--dropdown-disabled);
         }
       }
     }
@@ -126,14 +126,14 @@
     tds-icon {
       cursor: pointer;
       &.disabled {
-        color: var(--dropdown-disabled-color);
+        color: var(--dropdown-disabled);
       }
     }
 
     .menu-icon {
       margin-right: 16px;
       &.disabled {
-        color: var(--dropdown-disabled-color);
+        color: var(--dropdown-disabled);
       }
     }
 
@@ -142,10 +142,10 @@
       color: var(--dropdown-icon);
       padding-right: 8px;
       border-right: 1px solid var(--dropdown-icon);
-      color: var(--dropdown-clear-icon-color);
+      color: var(--dropdown-clear-icon);
 
       &:hover {
-        color: var(--dropdown-clear-icon-hover-color);
+        color: var(--dropdown-icon);
       }
 
       &.hide {
@@ -154,7 +154,7 @@
       }
 
       &.disabled {
-        color: var(--dropdown-disabled-color);
+        color: var(--dropdown-disabled);
       }
     }
   }

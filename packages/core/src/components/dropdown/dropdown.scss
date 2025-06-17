@@ -12,11 +12,11 @@
   .label-outside {
     @include detail-05;
 
-    color: var(--dropdown-label-color);
+    color: var(--dropdown-text);
     margin-bottom: 8px;
 
     &.disabled {
-      color: var(--dropdown-disabled-color);
+      color: var(--dropdown-disabled);
     }
   }
 
@@ -53,7 +53,7 @@
       .placeholder,
       .label-inside-as-placeholder,
       .value-wrapper {
-        color: var(--dropdown-disabled-color);
+        color: var(--dropdown-disabled);
       }
 
       button {
@@ -65,7 +65,7 @@
       position: absolute;
       @include detail-07;
 
-      color: var(--dropdown-label-inside-color);
+      color: var(--dropdown-text);
 
       &.lg {
         top: 12px;
@@ -103,7 +103,7 @@
     }
 
     .label-inside-as-placeholder {
-      color: var(--dropdown-placeholder-color);
+      color: var(--dropdown-placeholder);
 
       &.selected {
         position: absolute;
@@ -148,7 +148,7 @@
 
   .helper {
     margin-top: 4px;
-    color: var(--dropdown-helper-color);
+    color: var(--dropdown-helper-text);
     @include detail-05;
 
     display: flex;
@@ -160,7 +160,7 @@
     }
 
     &.disabled {
-      color: var(--dropdown-disabled-color);
+      color: var(--dropdown-disabled);
     }
   }
 
@@ -234,7 +234,7 @@
       display: flex;
       align-items: center;
       padding: 0 16px;
-      background-color: var(--dropdown-bg);
+      background-color: var(--dropdown-background);
 
       &.lg {
         height: 56px;
@@ -257,7 +257,7 @@
   .menu-icon {
     color: var(--dropdown-icon);
     &.disabled {
-      color: var(--dropdown-disabled-color);
+      color: var(--dropdown-disabled);
     }
   }
 
