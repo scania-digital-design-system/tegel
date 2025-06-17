@@ -8,7 +8,7 @@ tds-dropdown-option {
   --tds-dropdown-option-background-selected: var(--component-dropdown-focus);
   --tds-dropdown-option-border: var(--color-foreground-border-discrete);
   --tds-dropdown-label-color: var(--color-foreground-text-strong);
-  --tds-dropdown-helper-color: var(color-foreground-text-soft);
+  --tds-dropdown-helper-color: var(--color-foreground-text-defined);
   --tds-dropdown-placeholder-color: var(--color-foreground-text-subtle);
 
   .tds-mode-variant-primary {
