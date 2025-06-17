@@ -10,10 +10,12 @@ function loadStories() {
   );
 
   // If in development environment, return all story files
-  // Otherwise, exclude stories from the _beta folder
+  // Otherwise, exclude stories from the _beta and tegel-light folders
   return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
-    : storyFiles.filter((file: string | string[]) => !file.includes('/_beta/'));
+    : storyFiles.filter(
+        (file: string | string[]) => !file.includes('/_beta/') && !file.includes('/tegel-light/'),
+      );
 }
 
 let addons = [
