@@ -37,12 +37,14 @@ export const Nested = NestedTemplate.bind({});
 Nested.argTypes = {
   outerModeVariant: {
     name: 'Mode variant',
+    description: 'Mode variant that should be set on the parent/app level.',
     control: { type: 'radio' },
     options: ['Primary', 'Secondary'],
     table: { defaultValue: { summary: 'Primary' } },
   },
   componentTag: {
     name: 'Component Tag',
+    description: 'Specifies the HTML tag utilized for the component wrapper.',
     control: { type: 'radio' },
     options: ['section', 'div', 'article', 'aside', 'header', 'footer', 'nav', 'main'],
     table: { defaultValue: { summary: 'div' } },
