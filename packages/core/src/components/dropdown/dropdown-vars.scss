@@ -10,16 +10,16 @@
 
     // colors
     --tds-dropdown-bg: var(--color-background-layer-01);
-    --tds-dropdown-border-bottom: var(color-foreground-border-soft);
-    --tds-dropdown-border-bottom-hover: var(color-foreground-border-strong);
-    --tds-dropdown-border-bottom-open: var(color-foreground-border-accent-focus);
-    --tds-dropdown-value-color: var(color-foreground-text-strong);
-    --tds-dropdown-label-color: var(color-foreground-text-strong);
-    --tds-dropdown-label-inside-color: var(color-foreground-text-strong);
-    --tds-dropdown-helper-color: var(color-foreground-text-soft);
-    --tds-dropdown-placeholder-color: var(color-foreground-text-subtle);
-    --tds-dropdown-disabled-color: var(color-foreground-text-disabled);
-    --tds-dropdown-filter-input-color: var(color-foreground-text-strong);
+    --tds-dropdown-border-bottom: var(--color-foreground-border-soft);
+    --tds-dropdown-border-bottom-hover: var(--color-foreground-border-strong);
+    --tds-dropdown-border-bottom-open: var(--color-foreground-border-accent-focus);
+    --tds-dropdown-value-color: var(--color-foreground-text-strong);
+    --tds-dropdown-label-color: var(--color-foreground-text-strong);
+    --tds-dropdown-label-inside-color: var(--color-foreground-text-strong);
+    --tds-dropdown-helper-color: var(--color-foreground-text-defined);
+    --tds-dropdown-placeholder-color: var(--color-foreground-text-subtle);
+    --tds-dropdown-disabled-color: var(--color-foreground-text-disabled);
+    --tds-dropdown-filter-input-color: var(--color-foreground-text-strong);
 
     //units
     --spacing-4: 4px; // should be replaced when introducing units tokens
