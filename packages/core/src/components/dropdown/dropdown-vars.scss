@@ -1,71 +1,46 @@
-:root,
-.tds-mode-light {
-  --tds-dropdown-bg: var(--tds-grey-50);
-  --tds-dropdown-border-bottom: var(--tds-grey-600);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-800);
-  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-868);
-  --tds-dropdown-value-color: var(--tds-grey-958);
-  --tds-dropdown-label-color: var(--tds-grey-958);
-  --tds-dropdown-label-inside-color: var(--tds-grey-958);
-  --tds-dropdown-helper-color: var(--tds-grey-700);
-  --tds-dropdown-placeholder-color: var(--tds-grey-500);
-  --tds-dropdown-disabled-color: var(--tds-grey-400);
-  --tds-dropdown-filter-input-color: var(--tds-grey-958);
-  --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
-  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
-    var(--tds-spacing-element-4);
-  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
-    0;
+:root {
+  tds-dropdown {
+    &.tds-mode-variant-primary {
+      --tds-dropdown-bg: var(--color-background-layer-01);
+    }
 
-  .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-50);
-  }
+    &.tds-mode-variant-secondary {
+      --tds-dropdown-bg: var(--color-background-layer-02);
+    }
 
-  .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-white);
-  }
+    // colors
+    --tds-dropdown-bg: var(--color-background-layer-01);
+    --tds-dropdown-border-bottom: var(color-foreground-border-soft);
+    --tds-dropdown-border-bottom-hover: var(color-foreground-border-strong);
+    --tds-dropdown-border-bottom-open: var(color-foreground-border-accent-focus);
+    --tds-dropdown-value-color: var(color-foreground-text-strong);
+    --tds-dropdown-label-color: var(color-foreground-text-strong);
+    --tds-dropdown-label-inside-color: var(color-foreground-text-strong);
+    --tds-dropdown-helper-color: var(color-foreground-text-soft);
+    --tds-dropdown-placeholder-color: var(color-foreground-text-subtle);
+    --tds-dropdown-disabled-color: var(color-foreground-text-disabled);
+    --tds-dropdown-filter-input-color: var(color-foreground-text-strong);
 
-  tds-table-footer {
-    --tds-dropdown-bg: white;
-    --tds-placeholder-margin: var(--tds-spacing-element-8);
-    --tds-dropdown-border-bottom: transparent;
-    --tds-dropdown-border-bottom-hover: transparent;
-    --tds-dropdown-border-bottom-open: transparent;
-    --tds-dropdown-border-radius: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
-  }
-}
+    //units
+    --spacing-4: 4px; // should be replaced when introducing units tokens
+    --tds-dropdown-border-radius: var(--spacing-4) var(--spacing-4) 0 0;
+    --tds-dropdown-list-border-radius-down: 0 0 var(--spacing-4) var(--spacing-4);
+    --tds-dropdown-list-border-radius-up: var(--spacing-4) var(--spacing-4) 0 0;
 
-.tds-mode-dark {
-  --tds-dropdown-bg: var(--tds-grey-868);
-  --tds-dropdown-border-bottom: var(--tds-grey-600);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-400);
-  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-value-color: var(--tds-grey-50);
-  --tds-dropdown-label-color: var(--tds-grey-50);
-  --tds-dropdown-label-inside-color: var(--tds-grey-50);
-  --tds-dropdown-helper-color: var(--tds-grey-500);
-  --tds-dropdown-placeholder-color: var(--tds-grey-600);
-  --tds-dropdown-disabled-color: var(--tds-grey-800);
-  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
-    var(--tds-spacing-element-4);
-  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
-    0;
-  --tds-dropdown-filter-input-color: var(--tds-grey-50);
+    tds-table-footer {
+      //colors
+      --tds-dropdown-bg: white;
+      --tds-dropdown-border-bottom: transparent;
+      --tds-dropdown-border-bottom-hover: transparent;
+      --tds-dropdown-border-bottom-open: transparent;
 
-  .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-868);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-grey-900);
-  }
-
-  tds-table-footer {
-    --tds-dropdown-bg: var(--tds-grey-868);
-    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
+      //units
+      --spacing-4: 4px; // should be replaced when introducing units tokens
+      --spacing-8: 8px; // should be replaced when introducing units tokens
+      --tds-placeholder-margin: var(--spacing-8);
+      --tds-dropdown-border-radius: var(--spacing-4);
+      --tds-dropdown-list-border-radius-down: var(--spacing-4);
+      --tds-dropdown-list-border-radius-up: var(--spacing-4);
+    }
   }
 }
