@@ -49,7 +49,7 @@
     }
 
     &.error {
-      border-bottom: 1px solid var(--tds-negative);
+      border-bottom: 1px solid var(--tds-dropdown-error);
 
       &:focus {
         border-bottom-color: transparent;
@@ -61,7 +61,7 @@
           left: 0;
           width: 100%;
           height: 2px;
-          background: var(--tds-negative);
+          background: var(--tds-dropdown-error);
         }
       }
     }
