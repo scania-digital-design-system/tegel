@@ -1,7 +1,7 @@
 import { SliderArgTypes, SliderTemplate, SliderParameters } from './slider-stories-setup';
 
 export default {
-  title: 'Components/Slider',
+  title: 'Components/Slider/Default',
   argTypes: SliderArgTypes({
     storyName: 'Default',
   }),
