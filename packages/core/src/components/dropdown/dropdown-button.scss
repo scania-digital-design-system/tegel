@@ -5,12 +5,12 @@
     all: unset;
     height: 100%;
     width: 100%;
-    background-color: var(--tds-dropdown-bg);
-    border-bottom: 1px solid var(--tds-dropdown-border-bottom);
-    border-radius: var(--tds-dropdown-border-radius);
+    background-color: var(--dropdown-bg);
+    border-bottom: 1px solid var(--dropdown-border-bottom);
+    border-radius: var(--dropdown-border-radius);
 
     &:hover {
-      border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
+      border-bottom: 1px solid var(--dropdown-border-bottom-hover);
     }
 
     .value-wrapper {
@@ -21,12 +21,12 @@
     }
 
     &.placeholder {
-      color: var(--tds-dropdown-placeholder-color);
+      color: var(--dropdown-placeholder-color);
       line-height: 1.3;
     }
 
     &.value {
-      color: var(--tds-dropdown-value-color);
+      color: var(--dropdown-value-color);
       @include detail-02;
 
       /** Needed to not get be affected by overflow:hidden 
@@ -35,7 +35,7 @@
     }
 
     &:focus {
-      border-bottom-color: var(--tds-dropdown-border-bottom-open);
+      border-bottom-color: var(--dropdown-border-bottom-open);
 
       &::before {
         content: '';
@@ -44,12 +44,12 @@
         left: 0;
         width: 100%;
         height: 1px;
-        background: var(--tds-dropdown-border-bottom-open);
+        background: var(--dropdown-border-bottom-open);
       }
     }
 
     &.error {
-      border-bottom: 1px solid var(--tds-dropdown-error);
+      border-bottom: 1px solid var(--dropdown-error);
 
       &:focus {
         border-bottom-color: transparent;
@@ -61,13 +61,13 @@
           left: 0;
           width: 100%;
           height: 2px;
-          background: var(--tds-dropdown-error);
+          background: var(--dropdown-error);
         }
       }
     }
 
     &:disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled-color);
       border-bottom: 1px solid transparent;
     }
 
