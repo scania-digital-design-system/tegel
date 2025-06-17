@@ -41,7 +41,7 @@
     }
 
     button.error {
-      border-bottom-color: var(--tds-negative);
+      border-bottom-color: var(--tds-dropdown-error);
     }
 
     button.error:focus {
@@ -156,7 +156,7 @@
     gap: 8px;
 
     &.error {
-      color: var(--tds-negative);
+      color: var(--tds-dropdown-error);
     }
 
     &.disabled {
@@ -255,7 +255,10 @@
   }
 
   .menu-icon {
-    color: var(--tds-dropdown-menu-icon-color);
+    color: var(--tds-dropdown-icon);
+    &.disabled {
+      color: var(--tds-dropdown-disabled-color);
+    }
   }
 
   tds-icon {
