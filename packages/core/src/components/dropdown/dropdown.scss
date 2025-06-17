@@ -12,11 +12,11 @@
   .label-outside {
     @include detail-05;
 
-    color: var(--tds-dropdown-label-color);
+    color: var(--dropdown-label-color);
     margin-bottom: 8px;
 
     &.disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled-color);
     }
   }
 
@@ -29,19 +29,19 @@
     }
 
     button:focus {
-      border-bottom-color: var(--tds-dropdown-border-bottom);
+      border-bottom-color: var(--dropdown-border-bottom);
     }
 
     button:hover {
-      border-bottom-color: var(--tds-dropdown-border-bottom-hover);
+      border-bottom-color: var(--dropdown-border-bottom-hover);
     }
 
     button {
-      border-bottom-color: var(--tds-dropdown-border-bottom);
+      border-bottom-color: var(--dropdown-border-bottom);
     }
 
     button.error {
-      border-bottom-color: var(--tds-dropdown-error);
+      border-bottom-color: var(--dropdown-error);
     }
 
     button.error:focus {
@@ -53,7 +53,7 @@
       .placeholder,
       .label-inside-as-placeholder,
       .value-wrapper {
-        color: var(--tds-dropdown-disabled-color);
+        color: var(--dropdown-disabled-color);
       }
 
       button {
@@ -65,7 +65,7 @@
       position: absolute;
       @include detail-07;
 
-      color: var(--tds-dropdown-label-inside-color);
+      color: var(--dropdown-label-inside-color);
 
       &.lg {
         top: 12px;
@@ -103,7 +103,7 @@
     }
 
     .label-inside-as-placeholder {
-      color: var(--tds-dropdown-placeholder-color);
+      color: var(--dropdown-placeholder-color);
 
       &.selected {
         position: absolute;
@@ -148,7 +148,7 @@
 
   .helper {
     margin-top: 4px;
-    color: var(--tds-dropdown-helper-color);
+    color: var(--dropdown-helper-color);
     @include detail-05;
 
     display: flex;
@@ -156,11 +156,11 @@
     gap: 8px;
 
     &.error {
-      color: var(--tds-dropdown-error);
+      color: var(--dropdown-error);
     }
 
     &.disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled-color);
     }
   }
 
@@ -171,7 +171,7 @@
     width: 100%;
     transform-origin: top;
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
-    border-radius: var(--tds-dropdown-list-border-radius-down);
+    border-radius: var(--dropdown-list-border-radius-down);
     overflow-y: auto;
     transform: scaleY(0);
     pointer-events: none;
@@ -201,7 +201,7 @@
       display: flex;
       flex-direction: column-reverse;
       box-shadow: rgb(0 0 0 / 10%) 0 -1px 3px 0;
-      border-radius: var(--tds-dropdown-list-border-radius-up);
+      border-radius: var(--dropdown-list-border-radius-up);
 
       &.label-outside {
         bottom: calc(100% - 24px);
@@ -234,7 +234,7 @@
       display: flex;
       align-items: center;
       padding: 0 16px;
-      background-color: var(--tds-dropdown-bg);
+      background-color: var(--dropdown-bg);
 
       &.lg {
         height: 56px;
@@ -255,9 +255,9 @@
   }
 
   .menu-icon {
-    color: var(--tds-dropdown-icon);
+    color: var(--dropdown-icon);
     &.disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled-color);
     }
   }
 
