@@ -48,15 +48,6 @@ $modals: (
   ),
 );
 
-:host {
-  /* Component variables for easier maintainance. Can serve as end user API. */
-  --scroll-bar-thumb-color: var(--color-foreground-icon-discrete);
-  --background-color: var(--color-background-layer-02);
-  --backdrop-color: var(--color-background-overlay);
-  --text-color: var(--color-foreground-text-strong);
-  --close-x-svg-color: var(--color-foreground-text-strong);
-}
-
 /* MIXINS */
 
 @mixin modal-scrollbar {
