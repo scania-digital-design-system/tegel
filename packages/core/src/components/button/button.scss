@@ -73,10 +73,6 @@ button {
     outline: none;
   }
 
-  &:focus-visible {
-    @include tds-focus-state;
-  }
-
   // Default state
   @include button-states('default');
 
@@ -85,12 +81,10 @@ button {
     @include button-states('hover', '-hover');
   }
 
-  // Focus state
   &:focus-visible {
+    @include tds-focus-state;
     @include button-states('focus', '-focus');
-  }
 
-  &:focus-visible {
     @each $type in $types {
       &.#{$type} {
         @include focus-styles($type);
@@ -108,10 +102,6 @@ button {
   &.disabled,
   &:disabled {
     @include button-states('disabled', '-disabled');
-  }
-
-  button.secondary:focus-visible {
-    border-color: var(--color-foreground-border-accent-focus);
   }
 
   &.xs {
