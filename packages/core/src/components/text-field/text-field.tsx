@@ -287,7 +287,7 @@ export class TdsTextField {
           )}
           <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
-        <div class="text-field-bar"></div>
+        <div class="text-field-bar" />
 
         <div aria-live="assertive">
           {(this.helper || this.maxLength > 0) && (
