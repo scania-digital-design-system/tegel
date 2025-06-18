@@ -368,9 +368,10 @@
     "copy-assets": "./scripts/copy-assets.mjs"
   },
   "scripts": {
-    "build": "stencil build && stencil build --docs",
-    "_comment": "Due to stencil bug with types creation, we need to run build two times!",
-    "start": "stencil build --dev --watch --serve",
+    "build:css": "node scripts/build-css.js",
+    "watch:css": "node scripts/build-css.js --watch",
+    "build": "stencil build && stencil build --docs && npm run build:css",
+    "start": "concurrently --raw \"npm:build-stencil:watch\" \"npm:watch:css\" \"npm:start:storybook\"",
     "test": "node docker-test-runner.js",
     "test:axe": "npx playwright test --config 'playwright-axe.config.ts'",
     "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.50.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
