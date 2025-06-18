@@ -17,6 +17,7 @@
     var(--tds-spacing-element-4);
   --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
     0;
+  --tds-dropdown-error: var(--tds-red-400);
 
   .tds-mode-variant-primary {
     --tds-dropdown-bg: var(--tds-grey-50);
@@ -54,6 +55,7 @@
   --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
     0;
   --tds-dropdown-filter-input-color: var(--tds-grey-50);
+  --tds-dropdown-error: var(--tds-red-300);
 
   .tds-mode-variant-primary {
     --tds-dropdown-bg: var(--tds-grey-868);
