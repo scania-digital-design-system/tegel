@@ -134,6 +134,10 @@
   left: 16px;
 }
 
+.text-field-label-inside-placeholder {
+  color: var(--text-field-placeholder);
+}
+
 //text-field container with label inside
 //Handling position, focus and transition for label inside
 .form-text-field.text-field-container-label-inside {
