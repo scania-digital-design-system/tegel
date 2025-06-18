@@ -1,10 +1,6 @@
 @import '../../mixins/box-sizing';
 
 :host {
-  /* Component variables for easier maintainance. Can serve as end user API. */
-  --background: var(--component-spinner-color);
-  --background-inverted: var(--color-brand-neutral-white);
-
   @include tds-box-sizing;
 
   display: block;
@@ -77,11 +73,11 @@ $spinner-sizes: (
 
   /* Color variants */
   &-standard {
-    stroke: var(--background);
+    stroke: var(--spinner-background);
   }
 
   &-inverted {
-    stroke: var(--background-inverted);
+    stroke: var(--spinner-background-inverted);
   }
 }
 
