@@ -1,8 +1,9 @@
 // TODO: Refactor this code so it is more readable and easy to maintain
 
-@import './button-vars';
 @import '../../mixins/box-sizing';
 @import '../../mixins/focus-state';
+@import '../../../../../typography/utilities/typography-utility';
+@import './button-mixins';
 
 $btn-lg-height: 56px;
 $btn-md-height: 48px;
@@ -18,7 +19,8 @@ $iconProps: (fill, color);
 @mixin button-base {
   @include tds-box-sizing;
 
-  font: var(--tds-detail-02);
+  @include detail-02;
+
   letter-spacing: var(--tds-detail-02-ls);
   display: inline-flex;
   align-items: center;
@@ -28,6 +30,37 @@ $iconProps: (fill, color);
   position: relative;
   text-decoration: none;
   cursor: pointer;
+}
+
+@mixin button-states($state, $suffix: '') {
+  @each $type in $types {
+    &.#{$type} {
+      @each $prop in $props {
+        #{$prop}: var(--btn-#{$type}-#{$prop}#{$suffix});
+      }
+
+      &.icon {
+        @each $prop in $iconProps {
+          fill: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
+          color: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
+        }
+      }
+
+      &:not(.disabled) {
+        ::slotted([slot='icon']) {
+          @each $prop in $iconProps {
+            fill: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
+            color: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin tds-focus-state {
+  outline: 2px solid var(--color-foreground-border-accent-focus);
+  outline-offset: -2px;
 }
 
 button {
@@ -43,6 +76,43 @@ button {
 
   &:focus-visible {
     @include tds-focus-state;
+  }
+
+  // Default state
+  @include button-states('default');
+
+  // Hover state
+  &:hover {
+    @include button-states('hover', '-hover');
+  }
+
+  // Focus state
+  &:focus-visible {
+    @include button-states('focus', '-focus');
+  }
+
+  &:focus-visible {
+    @each $type in $types {
+      &.#{$type} {
+        @include focus-styles($type);
+      }
+    }
+  }
+
+  // Active state
+  &:active,
+  &.active {
+    @include button-states('active', '-active');
+  }
+
+  // Disabled state
+  &.disabled,
+  &:disabled {
+    @include button-states('disabled', '-disabled');
+  }
+
+  button.secondary:focus-visible {
+    border-color: var(--color-foreground-border-accent-focus);
   }
 
   &.xs {
@@ -100,72 +170,6 @@ button {
   &.animation-fade {
     transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
   }
-
-  @each $type in $types {
-    &.#{$type} {
-      @each $prop in $props {
-        #{$prop}: var(--btn-#{$type}-#{$prop});
-      }
-
-      &.icon {
-        @each $prop in $iconProps {
-          fill: var(--tds-btn-icon-#{$type}-#{$prop});
-          color: var(--tds-btn-icon-#{$type}-#{$prop});
-        }
-      }
-
-      &:hover {
-        @each $prop in $props {
-          #{$prop}: var(--btn-#{$type}-#{$prop}-hover);
-        }
-
-        &:not(.disabled) {
-          ::slotted([slot='icon']) {
-            @each $prop in $iconProps {
-              fill: var(--btn-icon-#{$type}-#{$prop}-hover);
-              color: var(--btn-icon-#{$type}-#{$prop}-hover);
-            }
-          }
-        }
-      }
-
-      &:focus-visible {
-        @each $prop in $props {
-          #{$prop}: var(--btn-#{$type}-#{$prop}-focus);
-        }
-
-        ::slotted([slot='icon']) {
-          @each $prop in $iconProps {
-            fill: var(--tds-btn-icon-#{$type}-#{$prop}-focus);
-            color: var(--tds-btn-icon-#{$type}-#{$prop}-focus);
-          }
-        }
-      }
-
-      &:active,
-      &.active {
-        @each $prop in $props {
-          #{$prop}: var(--btn-#{$type}-#{$prop}-active);
-        }
-
-        &:not(.disabled) {
-          ::slotted([slot='icon']) {
-            @each $prop in $iconProps {
-              fill: var(--tds-btn-icon-#{$type}-#{$prop}-active);
-              color: var(--tds-btn-icon-#{$type}-#{$prop}-active);
-            }
-          }
-        }
-      }
-
-      &.disabled,
-      &:disabled {
-        @each $prop in $props {
-          #{$prop}: var(--tds-btn-#{$type}-#{$prop}-disabled);
-        }
-      }
-    }
-  }
 }
 
 :host(tds-button) {
@@ -183,6 +187,16 @@ button {
       height: var(--tds-spacing-element-16);
     }
   }
+}
+
+:host(.tds-mode-variant-primary) {
+  --btn-danger-background-disabled: var(--color-foreground-border-strong);
+  --btn-primary-background-disabled: var(--color-background-accent-danger-disabled);
+}
+
+:host(.tds-mode-variant-secondary) {
+  --btn-danger-background-disabled: var(--color-background-accent-danger-disabled);
+  --btn-primary-background-disabled: var(--color-background-accent-danger-disabled);
 }
 
 :host(.disabled:active) {

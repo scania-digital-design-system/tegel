@@ -1,4 +1,4 @@
 @mixin tds-focus-state {
-  outline: 2px solid var(--color-foreground-border-accent-focus);
+  outline: 2px solid var(--tds-blue-400);
   outline-offset: -2px;
 }

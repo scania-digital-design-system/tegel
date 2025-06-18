@@ -1,225 +1,99 @@
 tds-button {
+  // Base variables
+  --btn-transparent: transparent;
+  --btn-white: var(--color-brand-neutral-white);
+  --btn-black: var(--color-brand-neutral-black);
+
+  // Primary
   --btn-primary-background: var(--color-background-accent-primary-default);
   --btn-primary-background-hover: var(--color-background-accent-primary-hover);
   --btn-primary-background-active: var(--color-background-accent-primary-pressed);
   --btn-primary-background-focus: var(--color-background-accent-primary-focus);
-}
+  --btn-primary-background-disabled-primary: var(--color-background-accent-primary-disabled);
+  --btn-primary-background-disabled-secondary: var(--color-background-base);
+  --btn-primary-background-disabled: var(--color-background-accent-primary-disabled);
+  --btn-primary-color: var(--component-button-primary-text);
+  --btn-primary-color-hover: var(--btn-white);
+  --btn-primary-color-active: var(--btn-white);
+  --btn-primary-color-focus: var(--btn-white);
+  --btn-primary-border-color: var(--btn-transparent);
+  --btn-primary-border-color-hover: var(--btn-transparent);
+  --btn-primary-color-disabled: var(--color-foreground-text-disabled);
+  --btn-primary-border-color-disabled: var(--btn-transparent);
+  --btn-primary-border-color-active: var(--color-background-accent-primary-pressed);
+  --btn-primary-border-color-focus: var(--color-foreground-border-accent-focus);
+  --btn-primary-outline-color-focus: var(--color-foreground-border-accent-focus);
 
-:root,
-.tds-mode-light {
-  //Primary
+  // Secondary
+  --btn-secondary-background: var(--btn-transparent);
+  --btn-secondary-color: var(--btn-black);
+  --btn-secondary-border-color: var(--color-foreground-border-soft);
+  --btn-secondary-color-hover: var(--color-foreground-text-strong);
+  --btn-secondary-border-color-hover: var(--color-foreground-border-subtle);
+  --btn-secondary-background-active: var(--btn-transparent);
+  --btn-secondary-color-active: var(--btn-black);
+  --btn-secondary-border-color-active: var(--color-foreground-border-strong);
+  --btn-secondary-background-focus: var(--btn-transparent);
+  --btn-secondary-color-focus: var(--btn-black);
+  --btn-secondary-border-color-focus: var(--color-foreground-border-accent-focus);
+  --btn-secondary-outline-color: var(--color-foreground-border-discrete);
+  --btn-secondary-background-disabled: var(--btn-transparent);
+  --btn-secondary-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --btn-secondary-color-disabled: var(--color-foreground-text-disabled);
+  --btn-secondary-border-color-disabled: var(--color-foreground-border-discrete);
+  --btn-icon-secondary-color-focus: var(--btn-black);
+  --btn-icon-secondary-fill-focus: var(--btn-black);
+  --btn-danger-background-disabled: var(--color-background-accent-danger-disabled);
+  --btn-icon-secondary-fill-active: var(--tds-grey-958);
 
-  // Mapped these to the new variables in _tegel-brand-usage.scss -->
-
-  --tds-btn-primary-background-disabled-primary: var(--background-clickable-primary-disabled);
-
-  // <-- Mapped these to the new variables
-
-  --tds-btn-primary-background-disabled-secondary: var(--tds-white);
-  --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
-  --tds-btn-primary-color: var(--tds-white);
-  --tds-btn-primary-color-hover: var(--tds-white);
-  --tds-btn-primary-color-active: var(--tds-white);
-  --tds-btn-primary-color-focus: var(--tds-white);
-  --tds-btn-primary-color-disabled: var(--tds-grey-400);
-  --tds-btn-primary-border-color: transparent;
-  --tds-btn-primary-border-color-hover: transparent;
-  --tds-btn-primary-border-color-active: var(--tds-blue-700);
-  --tds-btn-primary-border-color-focus: var(--tds-blue-600);
-  --tds-btn-primary-outline-color-focus: var(--tds-blue-600);
-  --tds-btn-primary-border-color-disabled: transparent;
-
-  /* ICON */ //not used
-  --tds-btn-icon-primary-fill: var(--tds-grey-50);
-  --tds-btn-icon-primary-color: var(--tds-grey-50);
-
-  //Secondary
-  --tds-btn-secondary-background: transparent;
-  --tds-btn-secondary-color: var(--tds-black);
-  --tds-btn-secondary-border-color: var(--tds-black-48);
-  --tds-btn-secondary-background-hover: var(--tds-blue-500);
-  --tds-btn-secondary-color-hover: var(--tds-white);
-  --tds-btn-secondary-border-color-hover: var(--tds-blue-500);
-  --tds-btn-secondary-background-active: transparent;
-  --tds-btn-secondary-color-active: var(--tds-black);
-  --tds-btn-secondary-border-color-active: var(--tds-black-87);
-  --tds-btn-secondary-background-focus: transparent;
-  --tds-btn-secondary-color-focus: var(--tds-black);
-  --tds-btn-secondary-border-color-focus: var(--tds-blue-400);
-  --tds-btn-secondary-outline-color: var(--tds-black-38);
-  --tds-btn-secondary-outline-color-focus: var(--tds-blue-400);
-  --tds-btn-secondary-background-disabled: transparent;
-  --tds-btn-secondary-color-disabled: var(--tds-black-38);
-  --tds-btn-secondary-border-color-disabled: var(--tds-black-38);
-  --tds-btn-icon-secondary-color-focus: var(--tds-black);
-  --tds-btn-icon-secondary-fill-focus: var(--tds-black);
-  --tds-btn-icon-secondary-fill-active: var(--tds-grey-958);
-
-  /* ICON */ //not used
-  --tds-btn-icon-secondary-fill: var(--tds-grey-958);
-  --tds-btn-icon-secondary-color: var(--tds-grey-958);
-
-  /* ICON HOVER */ //not used
-  --tds-btn-icon-secondary-fill-hover: var(--tds-grey-50);
-  --tds-btn-icon-secondary-color-hover: var(--tds-grey-50);
-
-  /* ICON HOVER */ //not used
-  --tds-btn-icon-secondary-color-active: var(--tds-grey-958);
-
-  //Ghost
-  --tds-btn-ghost-background: transparent;
-  --tds-btn-ghost-color: var(--tds-black);
-  --tds-btn-ghost-border-color: transparent;
-  --tds-btn-ghost-background-hover: transparent;
-  --tds-btn-ghost-color-hover: var(--tds-black);
-  --tds-btn-ghost-border-color-hover: var(--tds-black-48);
-  --tds-btn-ghost-outline-color-hover: var(--tds-black-48);
-  --tds-btn-ghost-background-active: transparent;
-  --tds-btn-ghost-color-active: var(--tds-black);
-  --tds-btn-ghost-border-color-active: var(--tds-black-87);
-  --tds-btn-ghost-background-focus: transparent;
-  --tds-btn-ghost-color-focus: var(--tds-black);
-  --tds-btn-ghost-border-color-focus: var(--tds-blue-400);
-  --tds-btn-ghost-outline-color-focus: var(--tds-blue-400);
-  --tds-btn-ghost-background-disabled: transparent;
-  --tds-btn-ghost-color-disabled: var(--tds-black-38);
-  --tds-btn-ghost-border-color-disabled: transparent;
+  // Ghost
+  --btn-ghost-background: var(--btn-transparent);
+  --tds-ghost-color: var(--btn-black);
+  --btn-ghost-border-color: var(--btn-transparent);
+  --btn-ghost-background-hover: var(--btn-transparent);
+  --btn-ghost-color-hover: var(--btn-black);
+  --btn-ghost-border-color-hover: var(--color-foreground-border-subtle);
+  --btn-ghost-outline-color-hover: var(--color-foreground-border-subtle);
+  --btn-ghost-background-active: var(--btn-transparent);
+  --btn-ghost-color-active: var(--btn-black);
+  --btn-ghost-border-color-active: var(--color-foreground-border-strong);
+  --btn-ghost-background-focus: var(--btn-transparent);
+  --tds-btn-ghost-color-focus: var(--btn-black);
+  --btn-ghost-border-color-focus: var(--color-foreground-border-accent-focus);
+  --btn-ghost-outline-color-focus: var(--color-foreground-border-accent-focus);
+  --btn-ghost-background-disabled: var(--btn-transparent);
+  --btn-ghost-color-disabled: var(--color-foreground-text-disabled);
+  --btn-ghost-border-color-disabled: var(--btn-transparent);
 
   /* ICON */
-  --tds-btn-icon-ghost-fill: var(--tds-grey-958);
-  --tds-btn-icon-ghost-color: var(--tds-grey-958);
+  --btn-icon-ghost-fill: var(--color-foreground-icon-strong);
+  --btn-icon-ghost-color: var(--color-foreground-icon-strong);
 
   //Danger
-  --tds-btn-danger-background: var(--tds-negative);
-  --tds-btn-danger-color: var(--tds-white);
-  --tds-btn-danger-border-color: transparent;
-  --tds-btn-danger-background-hover: var(--tds-red-600);
-  --tds-btn-danger-color-hover: var(--tds-white);
-  --tds-btn-danger-border-color-hover: transparent;
-  --tds-btn-danger-background-active: var(--tds-red-700);
-  --tds-btn-danger-color-active: var(--tds-white);
-  --tds-btn-danger-border-color-active: var(--tds-red-700);
-  --tds-btn-danger-background-focus: var(--tds-red-400);
-  --tds-btn-danger-color-focus: var(--tds-white);
-  --tds-btn-danger-border-color-focus: var(--tds-red-400);
-  --tds-btn-danger-outline-color-focus: var(--tds-red-700);
-  --tds-btn-danger-background-disabled-primary: var(--tds-grey-50);
-  --tds-btn-danger-background-disabled-secondary: var(--tds-white);
-  --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);
-  --tds-btn-danger-color-disabled: var(--tds-black-38);
-  --tds-btn-danger-border-color-disabled: transparent;
+  --btn-danger-background: var(--color-background-accent-danger-default);
+  --btn-danger-color: var(--btn-white);
+  --btn-danger-border-color: var(--btn-transparent);
+  --btn-danger-background-hover: var(--color-background-accent-danger-hover);
+  --btn-danger-color-hover: var(--btn-white);
+  --btn-danger-border-color-hover: var(--btn-transparent);
+  --btn-danger-background-active: var(--color-background-accent-danger-pressed);
+  --btn-danger-color-active: var(--btn-white);
+  --btn-danger-border-color-active: var(--color-background-accent-danger-pressed);
+  --btn-danger-background-focus: var(--color-background-accent-danger-focus);
+  --btn-danger-color-focus: var(--btn-white);
+  --btn-danger-border-color-focus: var(--color-foreground-border-accent-focus);
+  --btn-danger-outline-color-focus: var(--color-background-accent-danger-pressed);
+  --btn-danger-background-disabled-primary: var(--color-background-accent-danger-disabled);
+  --btn-danger-background-disabled-secondary: var(--btn-white);
+  --btn-danger-background-disabled: var(--color-background-accent-danger-disabled);
+  --btn-danger-color-disabled: var(--color-foreground-text-disabled);
+  --btn-danger-border-color-disabled: var(--btn-transparent);
 
   /* ICON */
-  --tds-btn-icon-danger-fill: var(--tds-grey-50);
-  --tds-btn-icon-danger-color: var(--tds-grey-50);
-
-  .tds-mode-variant-primary {
-    --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);
-    --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-secondary);
-    --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-secondary);
-  }
+  --tds-btn-icon-danger-fill: var(--btn-white);
+  --tds-btn-icon-danger-color: var(--btn-white);
 }
 
-.tds-mode-dark {
-  //Primary
-  --tds-btn-primary-background: var(--color-background-accent-primary-default);
-  --tds-btn-primary-background-hover: var(--tds-blue-500);
-  --tds-btn-primary-background-active: var(--tds-blue-300);
-  --tds-btn-primary-background-focus: var(--tds-blue-600);
-  --tds-btn-primary-border-color-focus: var(--tds-blue-400);
-  --tds-btn-primary-outline-color-focus: var(--tds-blue-400);
-  --tds-btn-primary-background-disabled-primary: var(--tds-grey-900);
-  --tds-btn-primary-background-disabled-secondary: var(--tds-grey-868);
-  --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
-  --tds-btn-primary-color-disabled: var(--tds-white-38);
-
-  /* ICON */ //not used
-  --tds-btn-icon-primary-fill: var(--tds-grey-50);
-  --tds-btn-icon-primary-color: var(--tds-grey-50);
-
-  //Secondary
-  --tds-btn-secondary-background: transparent;
-  --tds-btn-secondary-color: var(--tds-white);
-  --tds-btn-secondary-border-color: var(--tds-white-48);
-  --tds-btn-secondary-background-hover: var(--tds-blue-500);
-  --tds-btn-secondary-color-hover: var(--tds-white);
-  --tds-btn-secondary-border-color-hover: var(--tds-blue-500);
-  --tds-btn-secondary-background-active: transparent;
-  --tds-btn-secondary-color-active: var(--tds-white);
-  --tds-btn-secondary-border-color-active: var(--tds-white-87);
-  --tds-btn-secondary-background-focus: transparent;
-  --tds-btn-secondary-color-focus: var(--tds-white);
-  --tds-btn-secondary-border-color-focus: var(--tds-blue-400);
-  --tds-btn-secondary-outline-color-focus: var(--tds-blue-400);
-  --tds-btn-secondary-outline-color: var(--tds-white);
-  --tds-btn-secondary-background-disabled: transparent;
-  --tds-btn-secondary-color-disabled: var(--tds-white-38);
-  --tds-btn-secondary-border-color-disabled: var(--tds-white-38);
-  --tds-btn-icon-secondary-color-focus: var(--tds-white);
-  --tds-btn-icon-secondary-fill-focus: var(--tds-white);
-
-  /* ICON */ //not used
-  --tds-btn-icon-secondary-fill: var(--tds-grey-50);
-  --tds-btn-icon-secondary-color: var(--tds-grey-50);
-
-  //Ghost
-  --tds-btn-ghost-background: transparent;
-  --tds-btn-ghost-color: var(--tds-white);
-  --tds-btn-ghost-border-color: transparent;
-  --tds-btn-ghost-background-hover: transparent;
-  --tds-btn-ghost-color-hover: var(--tds-white);
-  --tds-btn-ghost-border-color-hover: var(--tds-white-48);
-  --tds-btn-ghost-outline-color-hover: var(--tds-white-48);
-  --tds-btn-ghost-background-active: transparent;
-  --tds-btn-ghost-color-active: var(--tds-white);
-  --tds-btn-ghost-border-color-active: var(--tds-white-87);
-  --tds-btn-ghost-background-focus: transparent;
-  --tds-btn-ghost-color-focus: var(--tds-white);
-  --tds-btn-ghost-border-color-focus: var(--tds-blue-300);
-  --tds-btn-ghost-outline-color-focus: var(--tds-blue-300);
-  --tds-btn-ghost-background-disabled: transparent;
-  --tds-btn-ghost-color-disabled: var(--tds-white-38);
-  --tds-btn-ghost-border-color-disabled: transparent;
-
-  /* ICON */
-  --tds-btn-icon-ghost-fill: var(--tds-grey-50);
-  --tds-btn-icon-ghost-color: var(--tds-grey-50);
-
-  //Danger
-  --tds-btn-danger-background: var(--tds-negative);
-  --tds-btn-danger-color: var(--tds-white);
-  --tds-btn-danger-border-color: transparent;
-  --tds-btn-danger-background-hover: var(--tds-red-600);
-  --tds-btn-danger-color-hover: var(--tds-white);
-  --tds-btn-danger-border-color-hover: transparent;
-  --tds-btn-danger-background-active: var(--tds-red-700);
-  --tds-btn-danger-color-active: var(--tds-white);
-  --tds-btn-danger-border-color-active: transparent;
-  --tds-btn-danger-background-focus: var(--tds-red-400);
-  --tds-btn-danger-color-focus: var(--tds-white);
-  --tds-btn-danger-border-color-focus: var(--tds-red-400);
-  --tds-btn-danger-outline-color-focus: var(--tds-red-700);
-  --tds-btn-danger-background-disabled-primary: var(--tds-grey-900);
-  --tds-btn-danger-background-disabled-secondary: var(--tds-grey-868);
-  --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);
-  --tds-btn-danger-color-disabled: var(--tds-white-38);
-  --tds-btn-danger-border-color-disabled: transparent;
-
-  /* ICON */
-  --tds-btn-icon-danger-fill: var(--tds-white);
-  --tds-btn-icon-danger-color: var(--tds-white);
-
-  .tds-mode-variant-primary {
-    --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);
-    --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-secondary);
-    --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-secondary);
-  }
+.traton tds-button {
+  --btn-primary-color: var(--brand-neutral-black);
 }
