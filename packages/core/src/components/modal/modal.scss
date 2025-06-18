@@ -48,15 +48,6 @@ $modals: (
   ),
 );
 
-:host {
-  /* Component variables for easier maintainance. Can serve as end user API. */
-  --scroll-bar-thumb-color: var(--color-foreground-icon-discrete);
-  --background-color: var(--color-background-layer-02);
-  --backdrop-color: var(--color-background-overlay);
-  --text-color: var(--color-foreground-text-strong);
-  --close-x-svg-color: var(--color-foreground-text-strong);
-}
-
 /* MIXINS */
 
 @mixin modal-scrollbar {
@@ -70,7 +61,7 @@ $modals: (
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--scroll-bar-thumb-color);
+    background-color: var(--modal-scroll-bar-thumb-color);
     border-radius: $scrollbar-radius;
   }
 }
@@ -80,14 +71,14 @@ $modals: (
   padding: 16px;
   position: sticky;
   top: 0;
-  background-color: var(--background-color);
+  background-color: var(--modal-background-color);
   z-index: 1;
 }
 
 @mixin modal-header-title {
   @include headline-05;
 
-  color: var(--text-color);
+  color: var(--modal-text-color);
   margin: 0;
   flex: 1;
 }
@@ -95,7 +86,7 @@ $modals: (
 @mixin modal-body {
   @include body-01;
 
-  color: var(--text-color);
+  color: var(--modal-text-color);
   overflow-y: visible;
   padding: 0 16px 16px;
   @include modal-scrollbar;
@@ -114,7 +105,7 @@ $modals: (
 .tds-modal {
   @include tds-box-sizing;
 
-  background-color: var(--background-color);
+  background-color: var(--modal-background-color);
   margin: auto;
   position: relative;
   border-radius: 4px;
@@ -139,7 +130,7 @@ $modals: (
       bottom: -1px;
       left: 0;
       right: 0;
-      background-color: var(--background-color);
+      background-color: var(--modal-background-color);
       padding: 24px 16px 16px;
       display: flex;
       gap: 16px;
@@ -148,7 +139,7 @@ $modals: (
 
   &__actions-static {
     slot[name='actions'] {
-      background-color: var(--background-color);
+      background-color: var(--modal-background-color);
       display: flex;
       gap: 16px;
       padding: 24px 16px 16px;
@@ -198,7 +189,7 @@ slot[name='header']::slotted(*) {
   @include tds-box-sizing;
   @include modal-position;
 
-  background-color: var(--backdrop-color);
+  background-color: var(--modal-backdrop-color);
   pointer-events: auto;
 }
 
@@ -213,7 +204,7 @@ button.tds-modal-close {
 .tds-modal-close {
   display: inline-block;
   height: auto;
-  color: var(--text-color);
+  color: var(--modal-text-color);
   cursor: pointer;
 
   &:focus {
@@ -244,7 +235,7 @@ button.tds-modal-close {
   }
 
   svg {
-    fill: var(--close-x-svg-color);
+    fill: var(--modal-close-x-svg-color);
   }
 }
 
