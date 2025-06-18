@@ -1,0 +1,37 @@
+// What is this document for:
+// This file imports all Scania-specific tokens and primitives
+
+/* Scania primitive tokens */
+@import '../../../../tokens/scss/scania/primitive';
+
+/* Scania color tokens */
+@import '../../../../tokens/scss/scania/color-light';
+@import '../../../../tokens/scss/scania/color-dark';
+
+/* Scania dimension tokens */
+@import '../../../../tokens/scss/scania/dimension';
+
+/* Scania typography tokens */
+@import '../../../../tokens/scss/scania/typography';
+
+/* Scania specific imports */
+@import '../../../../color/scania-color-primitives';
+@import '../../../../color/scania-brand-usage';
+@import '../../../../typography/tokens/typography-scania';
+@import '../../../../spacing/scania-units';
+@import '../../../../typography/scania-fonts';
+@import '../../../../typography/scania-fonts-vars';
+@import '../../../../typography/scania-fonts-selectors';
+
+/* Multibrand tokens: Scania typography */
+@import '../../../../typography/tokens/typography-scania';
+
+/* Multibrand tokens: Scania spacing */
+@import '../../../../spacing/units';
+@import '../../../../spacing/radius';
+@import '../../../../spacing/scania-units';
+
+// Typography
+@import '../../../../typography/scania-fonts';
+@import '../../../../typography/scania-fonts-vars';
+@import '../../../../typography/scania-fonts-selectors';
