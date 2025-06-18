@@ -1,135 +1,175 @@
-:root,
-.tds-mode-light {
-  --tds-text-field-background-primary: var(--tds-grey-50);
-  --tds-text-field-background-secondary: var(--tds-white);
-  --tds-text-field-background: var(--tds-text-field-background-primary);
-  --tds-text-field-color: var(--tds-grey-950);
-  --tds-text-field-placeholder: var(--tds-grey-500);
-  --tds-text-field-data-color: var(--tds-grey-958);
+/* Base component styles */
+tds-text-field {
+  // Colors - Base
+  --text-field-background-primary: var(--color-background-layer-01);
+  --text-field-background-secondary: var(--color-background-layer-02);
+  --text-field-background: var(--text-field-background-primary);
+  --text-field-text-color: var(--color-foreground-text-strong);
+  --text-field-placeholder: var(--color-foreground-text-subtle);
+  --text-field-affix-color: var(--color-foreground-text-defined);
 
-  //Disabled
-  --tds-text-field-background-disabled-primary: var(--tds-grey-50);
-  --tds-text-field-background-disabled-secondary: var(--tds-white);
-  --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  --tds-text-field-color-disabled: var(--tds-grey-250);
-  --tds-text-field-placeholder-disabled: var(--tds-grey-250);
-  --tds-text-field-label-disabled: var(--tds-grey-250);
-  --tds-text-field-ps-color-disabled: var(--tds-grey-250);
-  --tds-text-field-helper-disabled: var(--tds-grey-250);
+  // Colors - Label
+  --text-field-label-color: var(--color-foreground-text-strong);
+  --text-field-label-inside-color: var(--color-foreground-text-strong);
 
-  //Label
-  --tds-text-field-label-color: var(--tds-grey-950);
-  --tds-text-field-label-inside-color: var(--tds-grey-950);
+  // Colors - Border
+  --text-field-border-bottom-readonly: var(--color-foreground-border-strong);
 
-  //Highlight bar
-  --tds-text-field-bar: var(--tds-blue-400);
+  // Colors - Helper text
+  --text-field-helper: var(--color-foreground-text-defined);
 
-  //helper
-  --tds-text-field-helper: var(--tds-grey-500);
+  // Colors - Error state
+  --text-field-helper-error: var(--color-system-danger-default);
+  --text-field-affix-color-error: var(--color-foreground-text-defined);
 
-  //error
-  --tds-text-field-border-bottom-error: var(--tds-red-400);
-  --tds-text-field-helper-error: var(--tds-red-400);
-  --tds-text-field-bar-error: var(--tds-red-400);
-  --tds-text-field-icon-error: var(--tds-red-400);
+  // Colors - Disabled state
+  --text-field-background-disabled-primary: var(--color-background-layer-01);
+  --text-field-background-disabled-secondary: var(--color-background-layer-02);
+  --text-field-background-disabled: var(--text-field-background-disabled-primary);
+  --text-field-text-color-disabled: var(--color-foreground-text-subtle);
+  --text-field-placeholder-disabled: var(--color-foreground-text-subtle);
+  --text-field-label-disabled: var(--color-foreground-text-subtle);
+  --text-field-affix-color-disabled: var(--color-foreground-text-disabled);
+  --text-field-helper-disabled: var(--color-foreground-text-disabled);
 
-  //Textcounter
-  --tds-text-field-textcounter: var(--tds-grey-500);
-  --tds-text-field-textcounter-disabled: var(--tds-grey-250);
-  --tds-text-field-textcounter-divider: var(--tds-grey-500);
+  // Colors - Read only state
+  --text-field-icon-read-only-label-color: var(--color-foreground-text-strong);
+  --text-field-icon-read-only-label-background: var(--color-system-info-subtle);
 
-  //Prefix and Suffix
-  --tds-text-field-ps-color: var(--tds-grey-500);
-  --tds-text-field-ps-color-error: var(--tds-red-400);
+  // Colors - Text counter
+  --text-field-textcounter: var(--color-foreground-text-defined);
+  --text-field-textcounter-disabled: var(--color-foreground-text-disabled);
+  --text-field-textcounter-divider: var(--color-foreground-text-disabled);
 
-  // text-field resize icon
-  --tds-text-field-resize-icon: var(--tds-grey-500);
+  // Border radius
+  --text-field-border-radius: 4px 4px 0 0;
 
-  // Border bottom
-  --tds-text-field-border-bottom: var(--tds-grey-350);
-  --tds-text-field-border-bottom-hover: var(--tds-grey-250);
-  --tds-text-field-border-bottom-success: var(--tds-grey-850);
-  --tds-text-field-border-bottom-readonly: var(--tds-grey-500);
+  // Border colors - Default
+  --text-field-border-color-left: transparent;
+  --text-field-border-color-right: transparent;
+  --text-field-border-color-bottom: var(--color-foreground-border-soft);
+  --text-field-border-color-top: transparent;
 
-  // Read only
-  --tds-text-field-icon-read-only-color: var(--tds-grey-958);
-  --tds-text-field-icon-read-only-label-color: var(--tds-grey-958);
+  // Border colors - Hover
+  --text-field-border-color-left-hover: transparent;
+  --text-field-border-color-right-hover: transparent;
+  --text-field-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --text-field-border-color-top-hover: transparent;
 
+  // Border colors - Success
+  --text-field-border-color-left-success: transparent;
+  --text-field-border-color-right-success: transparent;
+  --text-field-border-color-bottom-success: var(--color-foreground-border-strong);
+  --text-field-border-color-top-success: transparent;
+
+  // Border colors - Focus
+  --text-field-border-color-left-focus: transparent;
+  --text-field-border-color-right-focus: transparent;
+  --text-field-border-color-bottom-focus: var(--color-foreground-border-strong);
+  --text-field-border-color-top-focus: transparent;
+  --text-field-outline-color-focus: none;
+
+  // Border colors - Error
+  --text-field-border-color-left-error: transparent;
+  --text-field-border-color-right-error: transparent;
+  --text-field-border-color-bottom-error: var(--color-system-danger-default);
+  --text-field-border-color-top-error: transparent;
+
+  // Bar colors
+  --text-field-bar-color-focus: var(--color-foreground-border-accent-focus);
+  --text-field-bar-color-error: var(--color-system-danger-default);
+
+  // Mode variants
   .tds-mode-variant-primary {
-    --tds-text-field-background: var(--tds-text-field-background-primary);
-    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+    --text-field-background: var(--text-field-background-primary);
+    --text-field-background-disabled: var(--text-field-background-disabled-primary);
   }
 
   .tds-mode-variant-secondary {
-    --tds-text-field-background: var(--tds-text-field-background-secondary);
-    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
+    --text-field-background: var(--text-field-background-secondary);
+    --text-field-background-disabled: var(--text-field-background-disabled-secondary);
   }
 }
 
-.tds-mode-dark {
-  --tds-text-field-background-primary: var(--tds-grey-900);
-  --tds-text-field-background: var(--tds-text-field-background-primary);
-  --tds-text-field-background-secondary: var(--tds-grey-850);
-  --tds-text-field-color: var(--tds-grey-50);
-  --tds-text-field-placeholder: var(--tds-grey-300);
-  --tds-text-field-data-color: var(--tds-grey-50);
+/* Context variables */
 
-  //Disabled
-  --tds-text-field-ps-color-disabled: var(--tds-grey-500);
-  --tds-text-field-color-disabled: var(--tds-grey-800);
-  --tds-text-field-background-disabled-primary: var(--tds-grey-900);
-  --tds-text-field-background-disabled-secondary: var(--tds-grey-850);
-  --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  --tds-text-field-placeholder-disabled: var(--tds-grey-500);
-  --tds-text-field-label-disabled: var(--tds-grey-500);
-  --tds-text-field-helper-disabled: var(--tds-grey-500);
+tds-text-field,
+.scania tds-text-field {
+  /* Textfield: units */
+  --text-field-border-radius: 4px 4px 0 0;
 
-  // Label
-  --tds-text-field-label-color: var(--tds-grey-50);
-  --tds-text-field-label-inside-color: var(--tds-grey-50);
+  /* Textfield: border colors */
+  --text-field-border-color-left: transparent;
+  --text-field-border-color-right: transparent;
+  --text-field-border-color-bottom: var(--color-foreground-border-soft);
+  --text-field-border-color-top: transparent;
 
-  //Highlight bar
-  --tds-text-field-bar: var(--tds-blue-300);
+  /* Textfield: border colors on hover */
+  --text-field-border-color-left-hover: transparent;
+  --text-field-border-color-right-hover: transparent;
+  --text-field-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --text-field-border-color-top-hover: transparent;
 
-  //helper
-  --tds-text-field-helper: var(--tds-grey-300);
+  /* Textfield: border colors on success */
+  --text-field-border-color-left-success: transparent;
+  --text-field-border-color-right-success: transparent;
+  --text-field-border-color-bottom-success: var(--color-foreground-border-strong);
+  --text-field-border-color-top-success: transparent;
 
-  //error
-  --tds-text-field-helper-error: var(--tds-red-300);
-  --tds-text-field-bar-error: var(--tds-red-300);
-  --tds-text-field-icon-error: var(--tds-red-300);
+  /* Textfield: border colors on focus */
+  --text-field-border-color-left-focus: transparent;
+  --text-field-border-color-right-focus: transparent;
+  --text-field-border-color-bottom-focus: var(--color-foreground-border-strong);
+  --text-field-border-color-top-focus: transparent;
+  --text-field-outline-color-focus: none;
 
-  //Textcounter
-  --tds-text-field-textcounter: var(--tds-grey-300);
+  /* Textfield: border colors on error */
+  --text-field-border-color-left-error: transparent;
+  --text-field-border-color-right-error: transparent;
+  --text-field-border-color-bottom-error: var(--color-system-danger-default);
+  --text-field-border-color-top-error: transparent;
 
-  //when disabled
-  --tds-text-field-textcounter-disabled: var(--tds-grey-500);
-  --tds-text-field-textcounter-divider: var(--tds-grey-500);
+  /* Textfield: bar colors */
+  --text-field-bar-color-focus: var(--color-foreground-border-accent-focus);
+  --text-field-bar-color-error: var(--color-system-danger-default);
+}
 
-  //Prefix and Suffix
-  --tds-text-field-ps-color: var(--tds-grey-300);
+.traton tds-text-field {
+  /* Textfield: units */
+  --text-field-border-radius: 4px 4px 4px 4px;
 
-  // Textarea resize icon
-  --tds-text-field-resize-icon: var(--tds-grey-500);
+  /* Textfield: border colors */
+  --text-field-border-color-left: var(--color-foreground-border-soft);
+  --text-field-border-color-right: var(--color-foreground-border-soft);
+  --text-field-border-color-bottom: var(--color-foreground-border-soft);
+  --text-field-border-color-top: var(--color-foreground-border-soft);
 
-  // Border bottom
-  --tds-text-field-border-bottom: var(--tds-grey-850);
-  --tds-text-field-border-bottom-hover: var(--tds-grey-900);
-  --tds-text-field-border-bottom-success: var(--tds-grey-50);
-  --tds-text-field-border-bottom-error: var(--tds-red-300);
-  --tds-text-field-border-bottom-readonly: var(--tds-grey-600);
+  /* Textfield: border colors on hover */
+  --text-field-border-color-left-hover: var(--color-foreground-border-strong);
+  --text-field-border-color-right-hover: var(--color-foreground-border-strong);
+  --text-field-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --text-field-border-color-top-hover: var(--color-foreground-border-strong);
 
-  // Read only
-  --tds-text-field-icon-read-only-color: var(--tds-grey-100);
-  --tds-text-field-icon-read-only-label-color: var(--tds-grey-50);
+  /* Textfield: border colors on success */
+  --text-field-border-color-left-success: var(--color-foreground-border-strong);
+  --text-field-border-color-right-success: var(--color-foreground-border-strong);
+  --text-field-border-color-bottom-success: var(--color-foreground-border-strong);
+  --text-field-border-color-top-success: var(--color-foreground-border-strong);
 
-  .tds-mode-variant-primary {
-    --tds-text-field-background: var(--tds-text-field-background-primary);
-    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
-  }
+  /* Textfield: border colors on focus */
+  --text-field-border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --text-field-border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --text-field-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --text-field-border-color-top-focus: var(--color-foreground-border-accent-focus);
+  --text-field-outline-color-focus: var(--color-foreground-border-accent-focus);
 
-  .tds-mode-variant-secondary {
-    --tds-text-field-background: var(--tds-text-field-background-secondary);
-    --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
-  }
+  /* Textfield: border colors on error */
+  --text-field-border-color-left-error: var(--color-system-danger-default);
+  --text-field-border-color-right-error: var(--color-system-danger-default);
+  --text-field-border-color-bottom-error: var(--color-system-danger-default);
+  --text-field-border-color-top-error: var(--color-system-danger-default);
+
+  /* Textfield: bar colors */
+  --text-field-bar-color-focus: transparent;
+  --text-field-bar-color-error: transparent;
 }
