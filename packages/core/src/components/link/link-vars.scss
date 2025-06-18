@@ -13,6 +13,10 @@
     --tds-link-visited: var(--tds-blue-700);
     --tds-link-disabled: var(--tds-grey-250);
   }
+
+  tds-banner {
+    --tds-link: var(--tds-grey-950);
+  }
 }
 
 .tds-mode-dark {
@@ -28,6 +32,10 @@
     --tds-link-focus: var(--tds-blue-300);
     --tds-link-visited: var(--tds-blue-100);
     --tds-link-disabled: var(--tds-grey-500);
+  }
+
+  tds-banner {
+    --tds-link: var(--tds-grey-50);
   }
 }
 
