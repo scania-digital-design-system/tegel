@@ -21,7 +21,6 @@ $iconProps: (fill, color);
 
   @include detail-02;
 
-  letter-spacing: var(--tds-detail-02-ls);
   display: inline-flex;
   align-items: center;
   border-radius: 4px;
@@ -187,16 +186,6 @@ button {
       height: var(--tds-spacing-element-16);
     }
   }
-}
-
-:host(.tds-mode-variant-primary) {
-  --btn-danger-background-disabled: var(--color-foreground-border-strong);
-  --btn-primary-background-disabled: var(--color-background-accent-danger-disabled);
-}
-
-:host(.tds-mode-variant-secondary) {
-  --btn-danger-background-disabled: var(--color-background-accent-danger-disabled);
-  --btn-primary-background-disabled: var(--color-background-accent-danger-disabled);
 }
 
 :host(.disabled:active) {
