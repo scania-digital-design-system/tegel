@@ -11,7 +11,7 @@ tds-table-body {
     letter-spacing: var(--tds-detail-02-ls);
     display: table-cell;
     box-sizing: border-box;
-    color: var(--tds-table-color);
+    color: var(--table-color);
     padding: var(--tds-spacing-element-16);
     min-width: 192px;
     vertical-align: top;
@@ -26,44 +26,44 @@ tds-table-body {
   // ODD rows
   &.tds-table--zebra-mode-rows-odd {
     tds-table-body-row:nth-child(odd) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode-backround);
     }
 
     tds-table-body-row:nth-child(odd):hover {
-      background-color: var(--tds-table-body-row-background-hover);
+      background-color: var(--table-body-row-background-hover);
     }
   }
 
   // EVEN rows
   &.tds-table--zebra-mode-rows-even {
     tds-table-body-row:nth-child(even) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode-backround);
     }
 
     tds-table-body-row:nth-child(even):hover {
-      background-color: var(--tds-table-body-row-background-hover);
+      background-color: var(--table-body-row-background-hover);
     }
   }
 
   // ODD columns
   &.tds-table--zebra-mode-columns-odd {
     tds-body-cell:nth-child(odd) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode-backround);
     }
 
     tds-body-cell.tds-table__body-cell--hover:nth-child(odd) {
-      background-color: var(--tds-table-body-cell-background-hover);
+      background-color: var(--table-body-cell-background-hover);
     }
   }
 
   // EVEN columns
   &.tds-table--zebra-mode-columns-even {
     tds-body-cell:nth-child(even) {
-      background-color: var(--tds-table-zebra-mode-backround);
+      background-color: var(--table-zebra-mode-backround);
     }
 
     tds-body-cell.tds-table__body-cell--hover:nth-child(even) {
-      background-color: var(--tds-table-body-cell-background-hover);
+      background-color: var(--table-body-cell-background-hover);
     }
   }
 
