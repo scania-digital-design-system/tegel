@@ -1,4 +1,5 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   // If the user sets a custom height on the checkbox
@@ -15,10 +16,9 @@
 
 .tds-checkbox {
   @include tds-box-sizing;
+  @include detail-02;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
-  color: var(--tds-checkbox-text);
+  color: var(--checkbox-label);
   display: flex;
   align-items: center;
   margin-left: -4px;
@@ -37,7 +37,7 @@
     align-self: flex-start;
 
     + label {
-      color: var(--tds-checkbox-color);
+      color: var(--checkbox-label);
       padding-left: var(--tds-spacing-element-4);
       padding-top: var(--tds-spacing-element-4);
       padding-bottom: var(--tds-spacing-element-4);
@@ -72,8 +72,8 @@
     }
 
     &::after {
-      border: 1px solid var(--tds-checkbox-interaction-01);
-      background-color: var(--tds-checkbox-interaction-02);
+      border: 1px solid var(--checkbox-border);
+      background-color: var(--checkbox-fill);
       width: 16px;
       height: 16px;
       left: 4px;
@@ -83,15 +83,15 @@
 
     &:hover {
       &::before {
-        background-color: var(--tds-checkbox-background-hover);
-        opacity: var(--tds-checkbox-background-opacity-hover);
+        background-color: var(--checkbox-border-hover);
+        opacity: var(--checkbox-background-opacity-hover);
       }
     }
 
     &:focus {
       &::before {
-        background-color: var(--tds-checkbox-background-focus);
-        opacity: var(--tds-checkbox-background-opacity-focus);
+        background-color: var(--checkbox-border-focus);
+        opacity: var(--checkbox-background-opacity-focus);
         transition: opacity 0.2s ease-in-out;
       }
     }
@@ -101,11 +101,11 @@
       cursor: not-allowed;
 
       &::after {
-        border-color: var(--tds-checkbox-border-color-disabled-after);
+        border-color: var(--checkbox-border-disabled);
       }
 
       + label {
-        color: var(--tds-grey-600);
+        color: var(--checkbox-label-disabled);
         cursor: not-allowed;
       }
 
@@ -118,16 +118,16 @@
 
     &:checked {
       &::after {
-        background-image: var(--tds-checkbox-background-img);
-        background-color: var(--tds-checkbox-interaction-01);
+        background-image: var(--checkbox-background-img);
+        background-color: var(--checkbox-border);
         background-repeat: no-repeat;
         background-position: center;
       }
 
       &:hover {
         &::before {
-          background-color: var(--tds-checkbox-background-hover);
-          opacity: var(--tds-checkbox-background-opacity-hover);
+          background-color: var(--checkbox-border-hover);
+          opacity: var(--checkbox-background-opacity-hover);
         }
       }
 
@@ -144,17 +144,17 @@
         }
 
         &::after {
-          background-image: var(--tds-checkbox-background-img-disabled);
-          background-color: var(--tds-checkbox-interaction-02);
-          color: var(--tds-checkbox-color-disabled-after);
+          background-image: var(--checkbox-background-img-disabled);
+          background-color: var(--checkbox-fill-disabled);
+          color: var(--checkbox-border-disabled);
         }
       }
     }
 
     &:indeterminate {
       &::after {
-        background-image: var(--tds-checkbox-background-img-indeterminate);
-        background-color: var(--tds-checkbox-interaction-01);
+        background-image: var(--checkbox-background-img-indeterminate);
+        background-color: var(--checkbox-border);
         background-repeat: no-repeat;
         background-position: center;
       }
@@ -171,9 +171,9 @@
         }
 
         &::after {
-          background-image: var(--tds-checkbox-background-img-indeterminate-disabled);
-          background-color: var(--tds-checkbox-interaction-02);
-          color: var(--tds-checkbox-color-disabled-after);
+          background-image: var(--checkbox-background-img-indeterminate-disabled);
+          background-color: var(--checkbox-fill-disabled);
+          color: var(--checkbox-border-disabled);
         }
       }
     }
