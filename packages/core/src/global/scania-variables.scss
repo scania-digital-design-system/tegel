@@ -14,24 +14,11 @@
 /* Scania typography tokens */
 @import '../../../../tokens/scss/scania/typography';
 
-/* Scania specific imports */
-@import '../../../../color/scania-color-primitives';
-@import '../../../../color/scania-brand-usage';
-@import '../../../../typography/tokens/typography-scania';
-@import '../../../../spacing/scania-units';
-@import '../../../../typography/scania-fonts';
-@import '../../../../typography/scania-fonts-vars';
-@import '../../../../typography/scania-fonts-selectors';
-
 /* Multibrand tokens: Scania typography */
 @import '../../../../typography/tokens/typography-scania';
 
-/* Multibrand tokens: Scania spacing */
-@import '../../../../spacing/units';
-@import '../../../../spacing/radius';
-@import '../../../../spacing/scania-units';
-
 // Typography
+@import '../../../../typography/tokens/typography-scania';
 @import '../../../../typography/scania-fonts';
 @import '../../../../typography/scania-fonts-vars';
 @import '../../../../typography/scania-fonts-selectors';
