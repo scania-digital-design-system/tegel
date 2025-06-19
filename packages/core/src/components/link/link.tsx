@@ -21,6 +21,8 @@ export class TdsLink {
   @Prop() standalone: boolean = false;
 
   connectedCallback() {
+    this.host.children[0].classList.add('tds-link-component');
+
     const links = this.host.querySelectorAll('a');
     if (links.length > 1) {
       console.warn('tds-link is only intended to wrap one <a> tag');
