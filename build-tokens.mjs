@@ -11,7 +11,8 @@ mkdirSync(componentDir, { recursive: true });
 
 // Transform tokens to remove 'cy' from font family names
 console.log('Transforming tokens...');
-execSync('node transform-tokens.mjs', { stdio: 'inherit' });
+
+execSync(`${process.execPath} transform-tokens.mjs`, { stdio: 'inherit' });
 
 register(StyleDictionary);
 
