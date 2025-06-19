@@ -150,7 +150,7 @@ const themeConfigs = Array.from(brands.values()).reduce((configs, brand) => {
         ? `:root,\n.tds-mode-light,\n.scania .tds-mode-light`
         : `.tds-mode-dark,\n.scania .tds-mode-dark`
       : themeType === 'light'
-        ? `.traton .tds-mode-light`
+        ? `.traton, .traton .tds-mode-light`
         : `.traton .tds-mode-dark`;
 
     configs[themeName] = {
