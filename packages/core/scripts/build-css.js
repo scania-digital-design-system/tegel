@@ -2,15 +2,15 @@ import { spawn } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 const files = [
-  ['src/global/core.scss', 'dist/tegel/core.css'],
-  ['src/global/scania.scss', 'dist/tegel/scania.css'],
-  ['src/global/scania-variables.scss', 'dist/tegel/scania-variables.css'],
-  ['src/global/traton.scss', 'dist/tegel/traton.css'],
-  ['src/global/traton-variables.scss', 'dist/tegel/traton-variables.css'],
+  ['src/global/core.scss', 'dist-styles/core.css'],
+  ['src/global/scania.scss', 'dist-styles/scania.css'],
+  ['src/global/scania-variables.scss', 'dist-styles/scania-variables.css'],
+  ['src/global/traton.scss', 'dist-styles/traton.css'],
+  ['src/global/traton-variables.scss', 'dist-styles/traton-variables.css'],
 ];
 
 const watch = process.argv.includes('--watch');
@@ -21,7 +21,7 @@ const generateSourceMaps = false; // Toggle for CSS source maps
 const args = [];
 if (!generateSourceMaps) args.push('--no-source-map');
 files.forEach(([src, dest]) => {
-  args.push(path.join(__dirname, '..', src) + ':' + path.join(__dirname, '..', dest));
+  args.push(`${path.join(dirname, '..', src)}:${path.join(dirname, '..', dest)}`);
 });
 if (watch) args.unshift('--watch');
 
@@ -29,4 +29,4 @@ const sass = spawn(sassCmd, args, { stdio: 'inherit' });
 
 sass.on('close', (code) => {
   process.exit(code ?? 0);
-}); 
+});
