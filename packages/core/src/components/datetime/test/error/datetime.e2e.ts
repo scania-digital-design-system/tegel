@@ -58,7 +58,7 @@ test.describe.parallel(componentName, () => {
     await expect(label).toHaveText('Label text');
 
     await expect(helperText).toBeVisible();
-    await expect(helperText).toContainText('Helper text'); // Svg title also registers as text 
+    await expect(helperText).toContainText('Helper text'); // Svg title also registers as text
 
     await expect(dateTime).toHaveAttribute('size', 'md');
     await expect(dateTimeContainer).toHaveCSS('height', '48px');
@@ -71,7 +71,7 @@ test.describe.parallel(componentName, () => {
     // Check helper text color for specific shade of red
     await expect(page.locator('.tds-datetime-helper .tds-helper')).toHaveCSS(
       'color',
-      'rgb(255, 35, 64)',
+      'rgb(209, 0, 27)',
     );
 
     const errorIcon = page.locator('tds-icon[name="error"]');

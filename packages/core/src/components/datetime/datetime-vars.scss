@@ -29,10 +29,10 @@
   --tds-datetime-border-bottom-success: var(--tds-grey-800);
 
   // error
-  --tds-datetime-border-bottom-error: var(--tds-negative);
-  --tds-datetime-helper-error: var(--tds-negative);
-  --tds-datetime-bar-error: var(--tds-negative);
-  --tds-datetime-icon-error: var(--tds-negative);
+  --tds-datetime-border-bottom-error: var(--tds-red-400);
+  --tds-datetime-helper-error: var(--tds-red-400);
+  --tds-datetime-bar-error: var(--tds-red-400);
+  --tds-datetime-icon-error: var(--tds-red-400);
 
   // Textcounter
   --tds-datetime-textcounter: var(--tds-grey-700);
@@ -81,10 +81,10 @@
   --tds-datetime-color-success: var(--tds-grey-50);
 
   // error
-  --tds-datetime-border-bottom-error: var(--tds-negative);
-  --tds-datetime-helper-error: var(--tds-negative);
-  --tds-datetime-bar-error: var(--tds-negative);
-  --tds-datetime-icon-error: var(--tds-negative);
+  --tds-datetime-border-bottom-error: var(--tds-red-300);
+  --tds-datetime-helper-error: var(--tds-red-300);
+  --tds-datetime-bar-error: var(--tds-red-300);
+  --tds-datetime-icon-error: var(--tds-red-300);
 
   // Textcounter
   --tds-datetime-textcounter: var(--tds-grey-700);

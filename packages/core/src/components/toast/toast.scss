@@ -16,34 +16,34 @@
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--tds-information);
+      border-left: 4px solid var(--tds-toast-icon-color-info);
 
       tds-icon {
-        color: var(--tds-information);
+        color: var(--tds-toast-icon-color-info);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--tds-positive);
+      border-left: 4px solid var(--tds-toast-icon-color-success);
 
       tds-icon {
-        color: var(--tds-positive);
+        color: var(--tds-toast-icon-color-success);
       }
     }
 
     &.error {
-      border-left: 4px solid var(--tds-negative);
+      border-left: 4px solid var(--tds-toast-icon-color-error);
 
       tds-icon {
-        color: var(--tds-negative);
+        color: var(--tds-toast-icon-color-error);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--tds-warning);
+      border-left: 4px solid var(--tds-toast-icon-color-warning);
 
       tds-icon {
-        color: var(--tds-warning);
+        color: var(--tds-toast-icon-color-warning);
       }
     }
 
@@ -115,10 +115,6 @@
     .toast-bottom {
       padding-top: 12px;
     }
-  }
-
-  slot[name='actions']::slotted(*) {
-    color: var(--tds-toast-link-color);
   }
 
   .tds-mode-variant-primary {

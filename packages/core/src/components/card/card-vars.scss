@@ -2,15 +2,15 @@
 .tds-mode-light {
   --tds-card-background: var(--tds-white);
   --tds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --tds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
+  --tds-card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
   --tds-card-box: var(--tds-card-box-primary);
   --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
-  --tds-card-headline: var(--tds-grey-958);
-  --tds-card-sub-headline: var(--tds-grey-600);
-  --tds-card-body-color: var(--tds-grey-700);
+  --tds-card-headline: var(--tds-grey-950);
+  --tds-card-sub-headline: var(--tds-grey-500);
+  --tds-card-body-color: var(--tds-grey-500);
   --tds-card-divider: var(--tds-grey-300);
-  --tds-card-icon-color: var(--tds-grey-300);
+  --tds-card-icon-color: var(--tds-grey-950);
 
   .tds-mode-variant-primary {
     --tds-card-box: var(--tds-card-box-primary);
@@ -23,18 +23,18 @@
 
 .tds-mode-dark {
   --tds-card-background-primary: var(--tds-grey-900);
-  --tds-card-background-secondary: var(--tds-grey-868);
+  --tds-card-background-secondary: var(--tds-grey-850);
   --tds-card-background: var(--tds-card-background-primary);
-  --tds-card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --tds-card-box-primary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
   --tds-card-box-secondary: 0 3px 3px rgb(0 0 0 / 10%), 0 -1px 1px rgb(0 0 0 / 5%);
   --tds-card-box: var(--tds-card-box-primary);
   --tds-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --tds-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
-  --tds-card-headline: var(--tds-white);
-  --tds-card-sub-headline: var(--tds-grey-400);
-  --tds-card-body-color: var(--tds-white);
+  --tds-card-headline: var(--tds-grey-50);
+  --tds-card-sub-headline: var(--tds-grey-300);
+  --tds-card-body-color: var(--tds-grey-300);
   --tds-card-divider: var(--tds-grey-700);
-  --tds-card-icon-color: var(--tds-grey-700);
+  --tds-card-icon-color: var(--tds-grey-50);
 
   .tds-mode-variant-primary {
     --tds-card-box: var(--tds-card-box-primary);

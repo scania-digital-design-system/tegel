@@ -24,19 +24,19 @@
   --tds-block-color: var(--tds-grey-50);
   --tds-block-background: var(--tds-grey-900);
   --tds-block-background-primary: var(--tds-grey-900);
-  --tds-block-background-secondary: var(--tds-grey-868);
+  --tds-block-background-secondary: var(--tds-grey-850);
   --tds-block-background-even: var(--tds-grey-900);
   --tds-block-background-odd: var(--tds-grey-868);
 
   .tds-mode-variant-primary {
     --tds-block-background: var(--tds-grey-900);
     --tds-block-background-even: var(--tds-grey-900);
-    --tds-block-background-odd: var(--tds-grey-868);
+    --tds-block-background-odd: var(--tds-grey-850);
   }
 
   .tds-mode-variant-secondary {
-    --tds-block-background: var(--tds-grey-868);
-    --tds-block-background-even: var(--tds-grey-868);
+    --tds-block-background: var(--tds-grey-850);
+    --tds-block-background-even: var(--tds-grey-850);
     --tds-block-background-odd: var(--tds-grey-900);
   }
 }

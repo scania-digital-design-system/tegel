@@ -3,15 +3,19 @@
   --tds-link: var(--tds-blue-400);
   --tds-link-hover: var(--tds-blue-400);
   --tds-link-focus: var(--tds-blue-400);
-  --tds-link-visited: var(--tds-blue-700);
-  --tds-link-disabled: var(--tds-grey-400);
+  --tds-link-visited: var(--tds-blue-600);
+  --tds-link-disabled: var(--tds-grey-250);
 
   tds-toast {
-    --tds-link: var(--tds-blue-400);
+    --tds-link: var(--tds-grey-50);
     --tds-link-hover: var(--tds-blue-400);
     --tds-link-focus: var(--tds-blue-400);
     --tds-link-visited: var(--tds-blue-700);
-    --tds-link-disabled: var(--tds-grey-400);
+    --tds-link-disabled: var(--tds-grey-250);
+  }
+
+  tds-banner {
+    --tds-link: var(--tds-grey-950);
   }
 }
 
@@ -20,14 +24,18 @@
   --tds-link-hover: var(--tds-blue-300);
   --tds-link-focus: var(--tds-blue-300);
   --tds-link-visited: var(--tds-blue-100);
-  --tds-link-disabled: var(--tds-grey-700);
+  --tds-link-disabled: var(--tds-grey-500);
 
   tds-toast {
-    --tds-link: var(--tds-blue-300);
+    --tds-link: var(--tds-grey-950);
     --tds-link-hover: var(--tds-blue-300);
     --tds-link-focus: var(--tds-blue-300);
     --tds-link-visited: var(--tds-blue-100);
-    --tds-link-disabled: var(--tds-grey-700);
+    --tds-link-disabled: var(--tds-grey-500);
+  }
+
+  tds-banner {
+    --tds-link: var(--tds-grey-50);
   }
 }
 

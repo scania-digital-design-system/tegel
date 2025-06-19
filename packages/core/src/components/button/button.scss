@@ -35,10 +35,10 @@ button {
 
   height: $btn-lg-height;
   padding: var(--tds-spacing-element-20);
-  border: 1px solid;
+  border: 1px solid transparent;
 
   &:focus {
-    outline: none;
+    outline: 1px solid var(--scania-blue-400);
   }
 
   &:focus-visible {

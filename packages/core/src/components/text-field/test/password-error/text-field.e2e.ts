@@ -67,7 +67,7 @@ test.describe.parallel(componentName, () => {
       getComputedStyle(element).getPropertyValue('border-bottom-color'),
     );
 
-    expect(borderBottomColor).toBe('rgb(255, 35, 64)');
+    expect(borderBottomColor).toBe('rgb(209, 0, 27)');
   });
 
   test('should have type "password"', async ({ page }) => {

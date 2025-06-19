@@ -24,12 +24,12 @@ testConfigurations.withModeVariants.forEach((config) => {
       // Find the row, make sure it is visible and has the correct background color
       const row = table.locator('tds-table-body-row-expandable:first-child tr:nth-child(1)');
       await row.waitFor({ state: 'visible' });
-      await expect(row).toHaveCSS('background-color', 'rgb(250, 219, 220)');
+      await expect(row).toHaveCSS('background-color', 'rgb(255, 185, 184)');
 
       // Find the expandable row, make sure it is visible and has the correct background color
       const expandRow = table.locator('tds-table-body-row-expandable:first-child tr:nth-child(2)');
       await expandRow.waitFor({ state: 'visible' });
-      await expect(expandRow).toHaveCSS('background-color', 'rgb(202, 235, 208)');
+      await expect(expandRow).toHaveCSS('background-color', 'rgb(155, 217, 194)');
 
       // Take screenshot
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
