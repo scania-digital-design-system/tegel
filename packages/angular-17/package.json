@@ -5,6 +5,7 @@
   "files": [
     "dist"
   ],
+  "types": "dist/types/interfaces.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
