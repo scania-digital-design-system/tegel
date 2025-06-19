@@ -1,4 +1,5 @@
 @import '../../mixins/z-index';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   .filter {
@@ -6,17 +7,17 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    background-color: var(--tds-dropdown-bg);
-    border-bottom: 1px solid var(--tds-dropdown-border-bottom);
+    background-color: var(--dropdown-background);
+    border-bottom: 1px solid var(--dropdown-border-bottom);
     padding-left: 16px;
     border-radius: 4px 4px 0 0;
 
     &:hover {
-      border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
+      border-bottom: 1px solid var(--dropdown-border-bottom-hover);
     }
 
     &.disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled);
       border-bottom: 1px solid transparent;
     }
 
@@ -26,7 +27,7 @@
       height: 100%;
 
       input {
-        color: var(--tds-dropdown-filter-input-color);
+        color: var(--dropdown-text);
       }
     }
 
@@ -45,16 +46,15 @@
         display: none;
       }
 
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
 
       /* Overwrite in order to display ÅÄÖ and similar sign correctly */
       line-height: 1.3;
-      color: var(--tds-dropdown-placeholder-color);
+      color: var(--dropdown-placeholder);
 
       &.selected {
-        font: var(--tds-detail-07);
-        letter-spacing: var(--tds-detail-07-ls);
+        @include detail-07;
+
         transition: all 0.2s ease-in-out;
 
         &.lg {
@@ -85,12 +85,12 @@
         left: 0;
         width: 100%;
         height: 2px;
-        background: var(--tds-dropdown-border-bottom-open);
+        background: var(--dropdown-border-bottom-open);
       }
     }
 
     &.error {
-      border-bottom: 1px solid var(--tds-negative);
+      border-bottom: 1px solid var(--dropdown-error);
 
       &.focus {
         border-bottom-color: transparent;
@@ -102,7 +102,7 @@
           left: 0;
           width: 100%;
           height: 2px;
-          background: var(--tds-negative);
+          background: var(--dropdown-error);
         }
       }
     }
@@ -113,37 +113,48 @@
       width: 100%;
 
       &::placeholder {
-        color: var(--tds-dropdown-placeholder-color);
+        color: var(--dropdown-placeholder);
       }
 
       &:disabled {
         &::placeholder {
-          color: var(--tds-dropdown-disabled-color);
+          color: var(--dropdown-disabled);
         }
       }
     }
 
     tds-icon {
       cursor: pointer;
+      &.disabled {
+        color: var(--dropdown-disabled);
+      }
     }
 
     .menu-icon {
       margin-right: 16px;
+      &.disabled {
+        color: var(--dropdown-disabled);
+      }
     }
 
     .clear-icon {
       margin: 0 8px;
-      color: var(--tds-dropdown-clear-icon-color);
+      color: var(--dropdown-icon);
       padding-right: 8px;
-      border-right: 1px solid var(--tds-dropdown-clear-icon-color);
+      border-right: 1px solid var(--dropdown-icon);
+      color: var(--dropdown-clear-icon);
 
       &:hover {
-        color: var(--tds-dropdown-clear-icon-hover-color);
+        color: var(--dropdown-icon);
       }
 
       &.hide {
         display: none;
         visibility: hidden;
+      }
+
+      &.disabled {
+        color: var(--dropdown-disabled);
       }
     }
   }
