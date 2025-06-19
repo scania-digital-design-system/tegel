@@ -1,0 +1,9 @@
+/* Component variables */
+
+tds-modal {
+  --modal-scroll-bar-thumb-color: var(--color-foreground-icon-discrete);
+  --modal-background-color: var(--color-background-layer-02);
+  --modal-backdrop-color: var(--color-background-overlay);
+  --modal-text-color: var(--color-foreground-text-strong);
+  --modal-close-x-svg-color: var(--color-foreground-text-strong);
+}
