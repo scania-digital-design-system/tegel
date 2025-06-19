@@ -67,7 +67,7 @@
       opacity: 0;
       transform-origin: center;
       transition: opacity 200ms ease-in, transform 200ms ease;
-      fill: var(--tds-table-color);
+      color: var(--tds-table-color);
     }
 
     &:hover {
