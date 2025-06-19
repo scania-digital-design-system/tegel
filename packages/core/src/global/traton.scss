@@ -1,10 +1,2 @@
-/* Colors */
-@import '../../../../build/scss/variables-traton-light';
-@import '../../../../build/scss/variables-traton-dark';
-
-/* Spacing */
-@import '../../../../spacing/traton-units';
-
-/* Typography */
-@import '../../../../typography/traton-fonts';
-@import '../../../../typography/tokens/typography-traton';
+@import 'traton-variables';
+@import 'core';
