@@ -233,7 +233,6 @@ jobs:
           for dir in \
             packages/angular \
             packages/angular-17 \
-            packages/angular-17/projects/components \
             packages/react; do
             echo "Running npm install in $dir to update lockfile"
             npm install --prefix "$dir" --legacy-peer-deps
