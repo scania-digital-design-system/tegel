@@ -189,6 +189,9 @@ jobs:
           ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
+      - name: Log checked-out ref
+        run: echo "Branch ref = ${{ needs.create-release-branch.outputs.branch }}"
+
       - name: Set up node
         uses: actions/setup-node@v3
         with:
