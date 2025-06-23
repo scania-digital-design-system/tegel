@@ -224,7 +224,7 @@ jobs:
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17/projects/components
         run: |
-          npm install ../../core-tarball/*.tgz
+          npm install ../../../../core-tarball/*.tgz
 
       # 4 · React wrapper (packages/react)
       - name: React wrapper – install Core tarball (dry run)
