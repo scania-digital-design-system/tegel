@@ -35,21 +35,21 @@ $iconProps: (fill, color);
   @each $type in $types {
     &.#{$type} {
       @each $prop in $props {
-        #{$prop}: var(--btn-#{$type}-#{$prop}#{$suffix});
+        #{$prop}: var(--button-#{$type}-#{$prop}#{$suffix});
       }
 
       &.icon {
         @each $prop in $iconProps {
-          fill: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
-          color: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
+          fill: var(--button-icon-#{$type}-#{$prop}#{$suffix});
+          color: var(--button-icon-#{$type}-#{$prop}#{$suffix});
         }
       }
 
       &:not(.disabled) {
         ::slotted([slot='icon']) {
           @each $prop in $iconProps {
-            fill: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
-            color: var(--btn-icon-#{$type}-#{$prop}#{$suffix});
+            fill: var(--button-icon-#{$type}-#{$prop}#{$suffix});
+            color: var(--button-icon-#{$type}-#{$prop}#{$suffix});
           }
         }
       }
