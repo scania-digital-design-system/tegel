@@ -29,6 +29,15 @@ on:
           - beta
           - dev
 
+      dryVersion:
+        description: 'Dry version'
+        required: false
+        type: boolean
+        default: false
+
+  schedule:
+    - cron: '0 3 * * 1-5'
+
 jobs:
   #CREATE RELEASE BRANCH
   create-release-branch:
@@ -74,15 +83,24 @@ jobs:
           path: packages/core/package.json # assuming the version is saved here
 
       - name: Create release branch
+        id: create_branch
         run: |
-          git checkout -b release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          BRANCH_NAME=release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          if [[ "${{ github.event.inputs.dryVersion }}" == "true" || "${{ github.event_name }}" == "schedule" ]]; then
+            TIMESTAMP=$(date +'%Y%m%d-%H%M')
+            BRANCH_NAME="$BRANCH_NAME-dry-run-$TIMESTAMP"
+          fi
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          git checkout -b "$BRANCH_NAME"
           git add .
           git commit -m "chore: bump versions to ${{ steps.version.outputs.PACKAGE_VERSION }}"
-          git push -u --no-verify origin release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
+          git push -u --no-verify origin "$BRANCH_NAME"
 
     #Need to output the version to use it in the next jobs
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
+      branch: ${{ steps.create_branch.outputs.branch }}
 
   #RELEASE CORE
   release-core:
@@ -94,7 +112,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
@@ -126,7 +144,23 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
 
+      - name: Core - Pack tarball (dry run only)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        id: pack
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          TARBALL=$(npm pack)
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload Core tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-tarball
+          path: ${{ env.WORKING_DIRECTORY }}/${{ steps.pack.outputs.TARBALL }}
+
       - name: Core - Publish
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm publish --tag ${{ github.event.inputs.tags }}
         env:
@@ -141,6 +175,8 @@ jobs:
           else
             echo "No changes to commit"
           fi
+    outputs:
+      tarball: ${{ steps.pack.outputs.TARBALL }}
 
   #BUMP WRAPPERS TO NEW VERSION
   bump-wrappers-to-new-version:
@@ -150,7 +186,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
@@ -162,23 +198,57 @@ jobs:
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
+      - name: Download Core tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/download-artifact@v4
+        with:
+          name: core-tarball
+          path: core-tarball
+          extract: true
+
+      # 1 · Angular wrapper (packages/angular)
+      - name: Angular wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/angular
+        run: |
+          npm install ../../core-tarball/*.tgz --legacy-peer-deps
+
+      # 2 · Angular 17 wrapper (packages/angular-17)
+      - name: Angular 17 wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/angular-17
+        run: |
+          npm install ../../core-tarball/*.tgz --legacy-peer-deps
+
+      # 4 · React wrapper (packages/react)
+      - name: React wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/react
+        run: |
+          npm install ../../core-tarball/*.tgz --legacy-peer-deps
+
       - name: Angular - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Angular 17 - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Angular 17 components - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/projects/components
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: React - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Wrappers Core increase - Commit and push changes
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         run: |
           git add .
           if ! git diff-index --quiet HEAD; then
@@ -198,7 +268,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
@@ -222,6 +292,7 @@ jobs:
         run: npm run build:angular
 
       - name: Angular - Publish
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular
         run: npm publish --tag ${{ github.event.inputs.tags }}
         env:
@@ -237,7 +308,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
@@ -265,6 +336,7 @@ jobs:
         run: npm run build:angular-17
 
       - name: Angular-17 - Publish
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/dist/components
         run: npm publish --tag ${{ github.event.inputs.tags }}
         env:
@@ -280,7 +352,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
       - name: Set up node
@@ -309,6 +381,7 @@ jobs:
         run: npm run build:react
 
       - name: React - Publish
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
         run: npm publish --tag ${{ github.event.inputs.tags }}
         env:
@@ -318,7 +391,7 @@ jobs:
   on-failure:
     needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     steps:
       - name: Download version
         uses: actions/download-artifact@v4
@@ -333,12 +406,12 @@ jobs:
   merge-release-branch-into-develop:
     needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: release/tegel@${{ needs.create-release-branch.outputs.version }}
+          ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
@@ -365,9 +438,9 @@ jobs:
 
   #CREATE GIT TAG
   create-git-tag:
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && needs.merge-release-branch-into-develop.result == 'success'
     needs: [create-release-branch, merge-release-branch-into-develop]
     runs-on: ubuntu-latest
-    if: (needs.merge-release-branch-into-develop.result == 'success')
     env:
       WORKING_DIRECTORY: packages/core
     steps:
@@ -400,7 +473,7 @@ jobs:
   merge-develop-into-main:
     needs: [create-release-branch, create-git-tag, merge-release-branch-into-develop]
     runs-on: ubuntu-latest
-    if: (needs.create-git-tag.result == 'success' && needs.merge-release-branch-into-develop.result == 'success')
+    if: github.event.inputs.dryVersion != 'true' && needs.create-git-tag.result == 'success' && needs.merge-release-branch-into-develop.result == 'success' && github.event_name != 'schedule'
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -424,3 +497,34 @@ jobs:
           git checkout main
           git reset --hard develop
           git push --force --no-verify origin main
+
+  notify-teams:
+    needs: [create-release-branch, release-core, bump-wrappers-to-new-version, release-angular, release-angular-17, release-react]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Notify Teams
+        run: |
+          version="${{ needs.create-release-branch.outputs.version }}"
+          dry="${{ github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule' }}"
+
+          # Detect any failed jobs
+          if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
+             [ "${{ needs.release-core.result }}" == "failure" ] || \
+             [ "${{ needs.bump-wrappers-to-new-version.result }}" == "failure" ] || \
+             [ "${{ needs.release-angular.result }}" == "failure" ] || \
+             [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
+             [ "${{ needs.release-react.result }}" == "failure" ]; then
+            status="🔴 *Tegel Release ${version}* failed"
+          else
+            status="🟢 *Tegel Release ${version}* succeeded"
+          fi
+
+          # Append dry-run info
+          if [ "$dry" == "true" ]; then
+            status="$status _(dry run)_"
+          fi
+
+          curl -H 'Content-Type: application/json' \
+            -d "{\"text\": \"$status\"}" \
+            ${{ secrets.TEAMS_WEBHOOK }}
