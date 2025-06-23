@@ -2,125 +2,148 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
 
 <Meta title="Foundations/Color System" />
 
+<style>
+{`
+  .color-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+  .color-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    color: white;
+    min-height: 48px;
+  }
+  .color-item.light-text {
+    color: #000;
+  }
+`}
+</style>
+
 # Color System
 
 The Tegel Design System uses a comprehensive color system that includes brand colors, semantic colors, and color scales. This documentation shows all available colors and how to use them.
 
-## Brand Colors
+## Brand Colors (Under Review)
 
-These are our core brand colors that should be used consistently across the system.
+These are our core brand colors. Note: The brand palette is currently under review.
 
-<ColorPalette>
-  <ColorItem title="Black" subtitle="Brand color" colors={{ Black: 'var(--tds-black)' }} />
-  <ColorItem title="White" subtitle="Brand color" colors={{ White: 'var(--tds-white)' }} />
-  <ColorItem title="Blue" subtitle="Brand color" colors={{ Blue: 'var(--tds-blue)' }} />
-</ColorPalette>
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: '#000' }}>Black (#000)</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#fff', border: '1px solid #e5e5e5' }}>White (#fff)</div>
+  <div className="color-item" style={{ backgroundColor: '#041e42' }}>Blue (blue-800)</div>
+  <div className="color-item" style={{ backgroundColor: '#d6001c' }}>Red (red-600)</div>
+</div>
 
-## Semantic Colors
+## Black & White Scales
 
-These colors convey specific meanings and should be used for their semantic purpose.
+### Black Scale
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: 'rgb(0 0 0 / 100%)' }}>black-100</div>
+  <div className="color-item" style={{ backgroundColor: 'rgb(0 0 0 / 87%)' }}>black-87</div>
+  <div className="color-item" style={{ backgroundColor: 'rgb(0 0 0 / 48%)' }}>black-48</div>
+  <div className="color-item" style={{ backgroundColor: 'rgb(0 0 0 / 38%)' }}>black-38</div>
+</div>
 
-<ColorPalette>
-  <ColorItem
-    title="Semantic"
-    subtitle="Semantic colors with tokens"
-    colors={{
-      Positive: 'var(--tds-positive)',
-      Warning: 'var(--tds-warning)',
-      Negative: 'var(--tds-negative)',
-      Information: 'var(--tds-information)',
-    }}
-  />
-</ColorPalette>
+### White Scale
+<div className="color-grid">
+  <div className="color-item light-text" style={{ backgroundColor: 'rgb(255 255 255 / 100%)', border: '1px solid #e5e5e5' }}>white-100</div>
+  <div className="color-item light-text" style={{ backgroundColor: 'rgb(255 255 255 / 87%)', border: '1px solid #e5e5e5' }}>white-87</div>
+  <div className="color-item light-text" style={{ backgroundColor: 'rgb(255 255 255 / 48%)', border: '1px solid #e5e5e5' }}>white-48</div>
+  <div className="color-item light-text" style={{ backgroundColor: 'rgb(255 255 255 / 38%)', border: '1px solid #e5e5e5' }}>white-38</div>
+  <div className="color-item light-text" style={{ backgroundColor: 'rgb(255 255 255 / 5%)', border: '1px solid #e5e5e5' }}>white-05</div>
+</div>
 
 ## Color Scales
 
-We provide three color scales (Grey, Blue, and Red) with different shades for various use cases.
-
 ### Grey Scale
-
-<ColorPalette>
-  <ColorItem
-    title="Grey Scale"
-    subtitle="Grey color tokens"
-    colors={{
-      '50': 'var(--tds-grey-50)',
-      '100': 'var(--tds-grey-100)',
-      '200': 'var(--tds-grey-200)',
-      '300': 'var(--tds-grey-300)',
-      '400': 'var(--tds-grey-400)',
-      '500': 'var(--tds-grey-500)',
-      '600': 'var(--tds-grey-600)',
-      '700': 'var(--tds-grey-700)',
-      '800': 'var(--tds-grey-800)',
-      '846': 'var(--tds-grey-846)',
-      '868': 'var(--tds-grey-868)',
-      '900': 'var(--tds-grey-900)',
-      '958': 'var(--tds-grey-958)',
-    }}
-  />
-</ColorPalette>
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: '#0d0f13' }}>grey-958</div>
+  <div className="color-item" style={{ backgroundColor: '#1d2229' }}>grey-900</div>
+  <div className="color-item" style={{ backgroundColor: '#242a33' }}>grey-868</div>
+  <div className="color-item" style={{ backgroundColor: '#2b323d' }}>grey-846</div>
+  <div className="color-item" style={{ backgroundColor: '#37414f' }}>grey-800</div>
+  <div className="color-item" style={{ backgroundColor: '#56657a' }}>grey-700</div>
+  <div className="color-item" style={{ backgroundColor: '#868fa2' }}>grey-600</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#b0b7c4' }}>grey-500</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#cdd1db' }}>grey-400</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#dbdfe6' }}>grey-300</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#e7e9ee' }}>grey-200</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#edeff3' }}>grey-100</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#f9fafb' }}>grey-50</div>
+</div>
 
 ### Blue Scale
-
-<ColorPalette>
-  <ColorItem
-    title="Blue Scale"
-    subtitle="Blue color tokens"
-    colors={{
-      '50': 'var(--tds-blue-50)',
-      '100': 'var(--tds-blue-100)',
-      '200': 'var(--tds-blue-200)',
-      '300': 'var(--tds-blue-300)',
-      '400': 'var(--tds-blue-400)',
-      '500': 'var(--tds-blue-500)',
-      '600': 'var(--tds-blue-600)',
-      '700': 'var(--tds-blue-700)',
-      '800': 'var(--tds-blue-800)',
-      '900': 'var(--tds-blue-900)',
-    }}
-  />
-</ColorPalette>
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: '#001533' }}>blue-900</div>
+  <div className="color-item" style={{ backgroundColor: '#041e42' }}>blue-800</div>
+  <div className="color-item" style={{ backgroundColor: '#0f3263' }}>blue-700</div>
+  <div className="color-item" style={{ backgroundColor: '#16417f' }}>blue-600</div>
+  <div className="color-item" style={{ backgroundColor: '#2058a8' }}>blue-500</div>
+  <div className="color-item" style={{ backgroundColor: '#2b70d3' }}>blue-400</div>
+  <div className="color-item" style={{ backgroundColor: '#4a89f3' }}>blue-300</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#87afe8' }}>blue-200</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#bacde8' }}>blue-100</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#e4e9f1' }}>blue-50</div>
+</div>
 
 ### Red Scale
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: '#450307' }}>red-900</div>
+  <div className="color-item" style={{ backgroundColor: '#6a080f' }}>red-800</div>
+  <div className="color-item" style={{ backgroundColor: '#950a16' }}>red-700</div>
+  <div className="color-item" style={{ backgroundColor: '#d6001c' }}>red-600</div>
+  <div className="color-item" style={{ backgroundColor: '#de2b36' }}>red-500</div>
+  <div className="color-item" style={{ backgroundColor: '#f35359' }}>red-400</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#f58e90' }}>red-300</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#f8b6b7' }}>red-200</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#fadbdc' }}>red-100</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#fdf4f5' }}>red-50</div>
+</div>
 
-<ColorPalette>
-  <ColorItem
-    title="Red Scale"
-    subtitle="Red color tokens"
-    colors={{
-      '50': 'var(--tds-red-50)',
-      '100': 'var(--tds-red-100)',
-      '200': 'var(--tds-red-200)',
-      '300': 'var(--tds-red-300)',
-      '400': 'var(--tds-red-400)',
-      '500': 'var(--tds-red-500)',
-      '600': 'var(--tds-red-600)',
-      '700': 'var(--tds-red-700)',
-      '800': 'var(--tds-red-800)',
-      '900': 'var(--tds-red-900)',
-    }}
-  />
-</ColorPalette>
+### Green Scale
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: '#112616' }}>green-900</div>
+  <div className="color-item" style={{ backgroundColor: '#1c3822' }}>green-800</div>
+  <div className="color-item" style={{ backgroundColor: '#2c5234' }}>green-700</div>
+  <div className="color-item" style={{ backgroundColor: '#386e44' }}>green-600</div>
+  <div className="color-item" style={{ backgroundColor: '#438151' }}>green-500</div>
+  <div className="color-item" style={{ backgroundColor: '#539e63' }}>green-400</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#89b691' }}>green-300</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#a6d1ad' }}>green-200</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#caebd0' }}>green-100</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#f1f8f2' }}>green-50</div>
+</div>
+
+## Semantic Colors (To Be Removed)
+
+<div className="color-grid">
+  <div className="color-item" style={{ backgroundColor: '#0f3263' }}>CTA (Deprecated)</div>
+  <div className="color-item" style={{ backgroundColor: '#ff2340' }}>Negative</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#f1c21b' }}>Warning</div>
+  <div className="color-item" style={{ backgroundColor: '#1dab8b' }}>Positive</div>
+  <div className="color-item" style={{ backgroundColor: '#2b70d3' }}>Information</div>
+</div>
+
 
 ## Usage
 
-To use these colors in your components, you can:
-
-1. Use CSS variables directly:
+To use these colors in your components, you can use CSS variables:
 
 ```css
 .my-element {
+  /* Using color scales */
   color: var(--tds-blue-500);
   background-color: var(--tds-grey-100);
+
+  /* Using semantic colors */
+  color: var(--tds-negative);
+  background-color: var(--tds-information);
 }
 ```
 
-2. Use utility classes:
-
-```html
-<p class="tds-text-blue-500">Blue text</p>
-<div class="tds-background-grey-100">Grey background</div>
-```
-
-For more examples of how to use these colors, see the [Text Color](/docs/utilities-text-color--docs) and [Background Color](/docs/utilities-background-color--docs) utility documentation.
+Note: The brand palette and some color scales are under review and may be changed or removed in future updates.
