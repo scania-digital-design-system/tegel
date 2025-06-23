@@ -447,7 +447,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: testing-holy-grail-dry-run
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
@@ -478,7 +478,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: testing-holy-grail-dry-run
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
