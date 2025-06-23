@@ -211,32 +211,27 @@ jobs:
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular
         run: |
-          npm install ../../core-tarball/*.tgz --legacy-peer-deps
+          npm install ../../core-tarball/*.tgz
 
       # 2 · Angular 17 wrapper (packages/angular-17)
       - name: Angular 17 wrapper – install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17
         run: |
-          npm install ../../core-tarball/*.tgz --legacy-peer-deps
+          npm install ../../core-tarball/*.tgz
+
+      - name: Angular 17 Components wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/angular-17/projects/components
+        run: |
+          npm install ../../core-tarball/*.tgz
 
       # 4 · React wrapper (packages/react)
       - name: React wrapper – install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/react
         run: |
-          npm install ../../core-tarball/*.tgz --legacy-peer-deps
-
-      - name: Sync wrapper lockfiles (dry run only)
-        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
-        run: |
-          for dir in \
-            packages/angular \
-            packages/angular-17 \
-            packages/react; do
-            echo "Running npm install in $dir to update lockfile"
-            npm install --prefix "$dir" --legacy-peer-deps
-          done
+          npm install ../../core-tarball/*.tgz
 
       - name: Angular - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
