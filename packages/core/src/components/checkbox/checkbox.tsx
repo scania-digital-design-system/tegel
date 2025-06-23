@@ -157,10 +157,10 @@ export class TdsCheckbox {
           aria-describedby={this.tdsAriaDescribedby}
           required={this.required}
           type="checkbox"
-          name={this.name}
-          value={this.value}
-          id={this.checkboxId}
-          checked={this.checked}
+          name={this.names}
+          value={this.values}
+          id={this.checkboxIddd}
+          checked={this.checkedIn}
           disabled={this.disabled}
           onFocus={(event) => this.handleFocus(event)}
           onBlur={(event) => this.handleBlur(event)}
