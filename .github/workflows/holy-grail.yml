@@ -189,9 +189,6 @@ jobs:
           ref: ${{ needs.create-release-branch.outputs.branch }}
           fetch-depth: 1 # Fetch just the release branch
 
-      - name: Log checked-out ref
-        run: echo "Branch ref = ${{ needs.create-release-branch.outputs.branch }}"
-
       - name: Set up node
         uses: actions/setup-node@v3
         with:
@@ -215,7 +212,6 @@ jobs:
         working-directory: packages/angular
         run: |
           npm install ../../core-tarball/*.tgz --legacy-peer-deps
-          npm run build:angular
 
       # 2 · Angular 17 wrapper (packages/angular-17)
       - name: Angular 17 wrapper – install Core tarball (dry run)
@@ -223,7 +219,6 @@ jobs:
         working-directory: packages/angular-17
         run: |
           npm install ../../core-tarball/*.tgz --legacy-peer-deps
-          npm run build:angular-17
 
       # 4 · React wrapper (packages/react)
       - name: React wrapper – install Core tarball (dry run)
@@ -231,7 +226,6 @@ jobs:
         working-directory: packages/react
         run: |
           npm install ../../core-tarball/*.tgz --legacy-peer-deps
-          npm run build:react
 
       - name: Angular - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
@@ -254,7 +248,6 @@ jobs:
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Wrappers Core increase - Commit and push changes
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         run: |
           git add .
           if ! git diff-index --quiet HEAD; then
