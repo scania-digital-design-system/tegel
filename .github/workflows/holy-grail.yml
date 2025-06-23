@@ -46,7 +46,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: testing-holy-grail-dry-run
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -499,7 +499,15 @@ jobs:
           git push --force --no-verify origin main
 
   notify-teams:
-    needs: [create-release-branch, release-core, bump-wrappers-to-new-version, release-angular, release-angular-17, release-react]
+    needs:
+      [
+        create-release-branch,
+        release-core,
+        bump-wrappers-to-new-version,
+        release-angular,
+        release-angular-17,
+        release-react,
+      ]
     runs-on: ubuntu-latest
     if: always()
     steps:
