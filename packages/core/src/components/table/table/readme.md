@@ -1,5 +1,6 @@
 # tds-table
 
+🚧 This component is not yet accessible. Please refer to the [Accessibility Guidelines](https://tds-storybook.tegel.scania.com/?path=/docs/foundations-accessibility--docs) for more information.
 
 
 <!-- Auto Generated Below -->

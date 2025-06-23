@@ -1,5 +1,7 @@
 # tds-datetime
 
+🚧 This component is not yet accessible. Please refer to the [Accessibility Guidelines](https://tds-storybook.tegel.scania.com/?path=/docs/foundations-accessibility--docs) for more information.
+
 The tds-datetime component currently has the following limitations:
 
 - Users can set an invalid date (e.g., 2025-02-31) using the arrow keys.
