@@ -23,41 +23,12 @@
   .dropdown-select {
     position: relative;
 
-    button {
-      transition: border-bottom-color var(--tds-motion-duration-fast-02)
-        var(--tds-motion-easing-scania);
-    }
-
-    button:focus {
-      border-bottom-color: var(--dropdown-border-bottom);
-    }
-
-    button:hover {
-      border-bottom-color: var(--dropdown-border-bottom-hover);
-    }
-
-    button {
-      border-bottom-color: var(--dropdown-border-bottom);
-    }
-
-    button.error {
-      border-bottom-color: var(--dropdown-error);
-    }
-
-    button.error:focus {
-      border-bottom-color: transparent;
-    }
-
     &.disabled {
       .label-inside,
       .placeholder,
       .label-inside-as-placeholder,
       .value-wrapper {
         color: var(--dropdown-disabled);
-      }
-
-      button {
-        border: none;
       }
     }
 
@@ -256,6 +227,7 @@
 
   .menu-icon {
     color: var(--dropdown-icon);
+
     &.disabled {
       color: var(--dropdown-disabled);
     }
