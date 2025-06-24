@@ -1,48 +1,43 @@
 :root,
 .tds-mode-light {
-  --tds-stepper-icon-background: var(--tds-grey-958);
-  --tds-stepper-color: var(--tds-grey-958);
-  --tds-stepper-icon-step-border-color-warning: var(--tds-negative);
-  --tds-stepper-icon-step-border-color-success: var(--tds-positive);
-  --tds-stepper-icon-step-background-success: var(--tds-positive);
-  --tds-stepper-label-text-color-upcoming: var(--tds-blue-900);
-  --tds-stepper-label-border-color-upcoming: var(--tds-blue-900);
-  --tds-stepper-label-text-opacity-upcoming: 0.38;
+  // Current
+  --tds-stepper-background: var(--tds-grey-950);
+  --tds-stepper-icon-background: var(--tds-grey-50);
+  --tds-stepper-color: var(--tds-grey-50);
 
-  /* TODO --tds-blue-900 is not defined */
-  --tds-stepper-icon-sidetext-background-before: var(--tds-blue-900);
-  --tds-stepper-icon-vertical-background-before: var(--tds-blue-900);
-  --tds-stepper-icon-step-background-before: var(--tds-blue-900);
-  --tds-stepper-icon-step-background-after: var(--tds-blue-900);
+  // Warning
+  --tds-stepper-icon-step-border-color-warning: var(--tds-red-400);
 
-  /* INVERTED */
-  --tds-stepper-color--inverted: var(--tds-white);
-  --tds-stepper-border-color--inverted: var(--tds-white);
-  --tds-stepper-background--inverted-before: var(--tds-white);
-  --tds-stepper-background--inverted-after: var(--tds-white);
-  --tds-stepper-icon-border-color-waring--inverted: var(--tds-negative);
-  --tds-stepper-icon-border-color-success-after--inverted: var(--tds-positive);
+  // Success
+  --tds-stepper-icon-step-border-color-success: var(--tds-green-400);
+  --tds-stepper-icon-step-background-success: var(--tds-green-400);
+
+  // Current
+  --tds-stepper-icon-step-border-color-current: var(--tds-grey-950);
+
+  // Upcoming
+  --tds-stepper-label-text-color-upcoming: var(--tds-blue-950);
+  --tds-stepper-label-border-color-upcoming: var(--tds-blue-750);
+
+  // Divider
+  --tds-stepper-divider-line: var(--tds-grey-700);
 }
 
 .tds-mode-dark {
-  --tds-stepper-icon-background: var(--tds-white);
-  --tds-stepper-color: var(--tds-white);
-  --tds-stepper-icon-step-border-color-warning: var(--tds-negative);
-  --tds-stepper-icon-step-border-color-success: var(--tds-positive);
-  --tds-stepper-icon-step-background-success: var(--tds-positive);
-  --tds-stepper-icon-sidetext-background-before: var(--tds-white);
-  --tds-stepper-icon-vertical-background-before: var(--tds-white);
-  --tds-stepper-icon-step-background-before: var(--tds-white);
-  --tds-stepper-icon-step-background-after: var(--tds-white);
-  --tds-stepper-label-text-color-upcoming: var(--tds-blue-50);
-  --tds-stepper-label-border-color-upcoming: var(--tds-blue-50);
-  --tds-stepper-label-text-opacity-upcoming: 0.38;
+  // Current
+  --tds-stepper-background: var(--tds-grey-150);
+  --tds-stepper-icon-background: var(--tds-grey-150);
+  --tds-stepper-color: var(--tds-grey-950);
 
-  /* INVERTED */
-  --tds-stepper-color--inverted: var(--tds-grey-958);
-  --tds-stepper-border-color--inverted: var(--tds-grey-958);
-  --tds-stepper-background--inverted-before: var(--tds-grey-958);
-  --tds-stepper-background--inverted-after: var(--tds-grey-958);
-  --tds-stepper-icon-border-color-waring--inverted: var(--tds-negative);
-  --tds-stepper-icon-border-color-success-after--inverted: var(--tds-positive);
+  // Warning
+  --tds-stepper-icon-step-border-color-warning: var(--tds-red-300);
+
+  // Success
+  --tds-stepper-icon-step-border-color-success: var(--tds-green-300);
+  --tds-stepper-icon-step-background-success: var(--tds-green-300);
+
+  // Upcoming
+  --tds-stepper-label-text-color-upcoming: var(--tds-grey-50);
+  --tds-stepper-label-border-color-upcoming: var(--tds-grey-150);
+  --tds-stepper-divider-line: var(--tds-grey-250);
 }
