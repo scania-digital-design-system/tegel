@@ -1,0 +1,349 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta 
+  title="Foundations/Accessibility" 
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } },
+  }}
+/>
+
+
+**Published on 2025-06-24**
+
+# Accessibility
+
+<div style={{
+  marginTop: '48px',
+  marginBottom: '48px',
+  borderRadius: '8px',
+}}>
+
+**Tegel Design System Accessibility Overview**
+
+Tegel is committed to ensuring that all components are accessible to users of all abilities. This comprehensive guide provides information about accessibility implementation, testing, and compliance status for each component.
+
+</div>
+
+<div style={{
+  border: '1px solid #fff3cd',
+  borderRadius: '8px',
+  paddingLeft: '12px',
+  paddingRight: '12px',
+  paddingTop: '0px',
+  paddingBottom: '0px',
+  marginBottom: '48px',
+  backgroundColor: '#fff3cd',
+  borderLeft: '8px solid rgba(241, 194, 27, 1)'
+}}>
+
+The information in the table below is based on the following versions: **1.33.0**
+
+</div>
+
+## Component Accessibility Compliance Status 📊
+
+<div style={{
+  borderRadius: '8px',
+  marginTop: '48px',
+  marginBottom: '48px',
+  backgroundColor: '#ffffff'
+}}>
+
+The table below shows the detailed accessibility compliance status of each Tegel component:
+
+<table style={{
+  width: '100%',
+  borderCollapse: 'collapse',
+  marginTop: '16px'
+}}>
+  <thead>
+    <tr style={{ backgroundColor: '#f8f9fa' }}>
+      <th style={{ padding: '12px', textAlign: 'left', borderBottom: '2px solid #dee2e6' }}>Component</th>
+      <th style={{ padding: '12px', textAlign: 'left', borderBottom: '2px solid #dee2e6' }}>Screen Reader</th>
+      <th style={{ padding: '12px', textAlign: 'left', borderBottom: '2px solid #dee2e6' }}>Keyboard Navigation</th>
+      <th style={{ padding: '12px', textAlign: 'left', borderBottom: '2px solid #dee2e6' }}>Color Contrast</th>
+    </tr>
+  </thead>
+  <tbody style={{ fontSize: '12px' }}>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Accordion</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Badge</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Banner</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Block</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>N/A</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Breadcrumbs</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Button</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Card</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Checkbox</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Chip</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Datetime</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Divider</td>
+      <td style={{ padding: '12px' }}>N/A</td>
+      <td style={{ padding: '12px' }}>N/A</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Dropdown</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Footer</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Header</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Upcoming</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Icon</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>N/A</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Link</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Message</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Modal</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Popover</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>   
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Radio Button</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Side Menu</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing<a href="#footnote-1" style={{ textDecoration: 'none', color: 'inherit' }}><sup>[1]</sup></a></td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Slider</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>🚧 Upcoming</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Spinner</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>N/A</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Stepper</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>N/A</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Table</td>
+      <td style={{ padding: '12px' }}>🔴 Fails<a href="#footnote-2" style={{ textDecoration: 'none', color: 'inherit' }}><sup>[2]</sup></a></td>
+      <td style={{ padding: '12px' }}>🔴 Fails<a href="#footnote-2" style={{ textDecoration: 'none', color: 'inherit' }}><sup>[2]</sup></a></td>
+      <td style={{ padding: '12px' }}>🟡 Upcoming</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Tabs</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅  Support</td>
+      <td style={{ padding: '12px' }}>🟡 Ongoing</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Text Field</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Textarea</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Toast</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    <tr style={{ borderBottom: '1px solid #dee2e6' }}>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Toggle</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>  
+    </tr>
+    <tr>
+      <td style={{ padding: '12px', fontWeight: '500' }}>Tooltip</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Support</td>
+      <td style={{ padding: '12px' }}>✅ Passes</td>
+    </tr>
+    {/* Make a full row for footnotes */}
+  </tbody>
+</table>
+
+<div style={{
+  marginTop: '24px',
+  padding: '16px',
+  backgroundColor: '#f8f9fa',
+  borderRadius: '8px',
+  fontSize: '14px'
+}}>
+
+### Footnotes
+
+**Status Indicators:**
+- ✅ Support/Passes: Fully implemented and tested
+- 🟡 Ongoing: Implementation or testing in progress
+- 🟡 Upcoming: Planned for future implementation
+- 🔴 Fails: Limited implementation, needs improvement
+- N/A: Not applicable for this component
+
+**Component-Specific Notes:**
+<div id="footnote-1" style={{ marginBottom: '8px' }}><sup>[1]</sup> Side Menu: The dropdown currently lacks full keyboard navigation. Submenus are inaccessible without a pointing device. We plan to fix this in a future update.</div>
+<div id="footnote-2"><sup>[2]</sup> Table: We offer AG-grid as an alternative table component with full accessibility support.</div>
+
+</div>
+
+</div>
+
+## What Was Done in A11y for Tegel 🛠️
+
+<div style={{
+  border: '1px solid #d1ecf1',
+  borderRadius: '8px',
+  padding: '20px',
+  marginTop: '48px',
+  marginBottom: '48px',
+  backgroundColor: '#d1ecf1'
+}}>
+
+### Core Accessibility Features
+- **ARIA Attributes Support**: All components support standard ARIA attributes.
+- **Keyboard Navigation**: Full keyboard support for all interactive components.
+- **Screen Reader Compatibility**: Components are designed to enable seamless interaction with screen readers.
+- **Focus Management**: Proper focus handling and visual focus indicators.
+- **Color Contrast**: All components meet WCAG 2.1 AA color contrast requirements (except for the the ones that are marked in the table above).
+- **Semantic HTML**: Components use appropriate semantic HTML elements.
+
+</div>
+
+## Accessibility Testing 🧪
+
+<div style={{
+  border: '1px solid #d4edda',
+  borderRadius: '8px',
+  padding: '20px',
+  marginTop: '48px',
+  marginBottom: '48px',
+  backgroundColor: '#d4edda'
+}}>
+
+### Automated Testing
+All components undergo comprehensive automated accessibility testing:
+
+- **axe-core Integration**: Tests run using industry-standard axe-core library
+- **Playwright Tests**: Automated browser testing across different scenarios
+- **CI/CD Pipeline**: Tests run on every pull request and deployment
+- **Coverage**: 231 accessibility test files covering all component variations
+
+</div>
+
+## Accessibility Guidelines 📋
+
+<div style={{
+  borderRadius: '8px',
+  marginBottom: '20px',
+  backgroundColor: '#ffffff'
+}}>
+
+Tegel components are designed to meet and exceed the following accessibility standards:
+
+### Reporting Issues
+If you encounter accessibility issues with any Tegel component:
+
+**Create an Issue**: Report problems in the [GitHub repository](https://github.com/scania-digital-design-system/tegel/issues) or in [this form](https://forms.office.com/e/KxfvDyFTWD)
+
+### Best Practices for Implementation
+When using Tegel components:
+
+1. **Provide Labels**: Always include meaningful and descriptive labels for form controls
+2. **Use ARIA Attributes**: Leverage built-in ARIA support for components that support it.
+3. **Test Regularly**: Use both automated and manual testing
+4. **Consider Context**: Ensure components work within your application's accessibility strategy.
+
+</div>
