@@ -4,19 +4,20 @@
   --tds-dropdown-border-bottom: var(--tds-grey-600);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-800);
   --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-868);
-  --tds-dropdown-value-color: var(--tds-grey-958);
-  --tds-dropdown-label-color: var(--tds-grey-958);
-  --tds-dropdown-label-inside-color: var(--tds-grey-958);
+  --tds-dropdown-border-bottom-hover: var(--tds-grey-850);
+  --tds-dropdown-value-color: var(--tds-grey-950);
+  --tds-dropdown-label-color: var(--tds-grey-950);
+  --tds-dropdown-label-inside-color: var(--tds-grey-950);
   --tds-dropdown-helper-color: var(--tds-grey-700);
   --tds-dropdown-placeholder-color: var(--tds-grey-500);
   --tds-dropdown-disabled-color: var(--tds-grey-400);
-  --tds-dropdown-filter-input-color: var(--tds-grey-958);
+  --tds-dropdown-filter-input-color: var(--tds-grey-950);
   --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
   --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
     var(--tds-spacing-element-4);
   --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
     0;
+  --tds-dropdown-error: var(--tds-red-400);
 
   .tds-mode-variant-primary {
     --tds-dropdown-bg: var(--tds-grey-50);
@@ -54,9 +55,10 @@
   --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
     0;
   --tds-dropdown-filter-input-color: var(--tds-grey-50);
+  --tds-dropdown-error: var(--tds-red-300);
 
   .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-868);
+    --tds-dropdown-bg: var(--tds-grey-850);
   }
 
   .tds-mode-variant-secondary {
@@ -64,7 +66,7 @@
   }
 
   tds-table-footer {
-    --tds-dropdown-bg: var(--tds-grey-868);
+    --tds-dropdown-bg: var(--tds-grey-850);
     --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
     --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
   }
