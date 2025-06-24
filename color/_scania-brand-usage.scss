@@ -87,7 +87,7 @@
   /* Background - Elevation */
   --background-elevation-base: var(--scania-neutral-solid-00);
   --background-elevation-layer-01: var(--scania-neutral-solid-50);
-  --background-elevation-layer-02: var(--scania-neutral-solid-00);
+  --background-elevation-layer-02: var(--tds-grey-00);
   --background-elevation-layer-03: var(--scania-neutral-solid-50);
   --background-elevation-top: var(--scania-neutral-solid-00);
   --background-elevation-scrim: rgb(0 0 0 / 38%);
@@ -111,9 +111,9 @@
 
   /* Background - Clickable - Primary */
   --background-clickable-primary-primary: var(--scania-blue-600);
-  --background-clickable-primary-primary-hover: var(--scania-blue-500);
-  --background-clickable-primary-pressed: var(--scania-blue-700);
-  --background-clickable-primary-focus: var(--scania-blue-400);
+  --background-clickable-primary-primary-hover: var(--scania-blue-700);
+  --background-clickable-primary-pressed: var(--scania-blue-800);
+  --background-clickable-primary-focus: var(--scania-blue-700);
   --background-clickable-primary-disabled: var(--scania-neutral-solid-50);
   --background-clickable-primary-resting: var(--scania-neutral-solid-100);
 
@@ -146,12 +146,13 @@
   /* System - Warning */
   --system-warning-strong: var(--scania-extended-yellow-800);
   --system-warning-default: var(--scania-extended-yellow-100);
-  --system-warning-subtle: var(--scania-extended-yellow-50);
+  --system-warning-subtle: var(--tds-grey-00);
 
   /* System - Danger */
   --system-danger-strong: var(--scania-extended-red-800);
   --system-danger-default: var(--scania-extended-red-400);
-  --system-danger-subtle: var(--scania-extended-red-50);
+  --system-danger-subtle-03: var(--scania-extended-red-50);
+  --system-danger-subtle-02: var(--scania-extended-red-50);
 }
 
 /* Dark mode tokens (applied to .tds-mode-dark and .scania .tds-mode-dark) */
@@ -231,8 +232,8 @@
   /* Background - Elevation */
   --background-elevation-base: var(--scania-neutral-solid-1000);
   --background-elevation-layer-01: var(--scania-neutral-solid-928);
-  --background-elevation-layer-02: var(--scania-neutral-solid-900);
-  --background-elevation-layer-03: var(--scania-neutral-solid-846);
+  --background-elevation-layer-02: var(--tds-grey-850);
+  --background-elevation-layer-03: var(--scania-neutral-solid-900);
   --background-elevation-top: var(--scania-neutral-solid-846);
   --background-elevation-scrim: rgb(0 0 0 / 50%);
   --background-elevation-inverse: var(--scania-neutral-solid-00);
@@ -256,8 +257,8 @@
   /* Background - Clickable - Primary */
   --background-clickable-primary-primary: var(--scania-blue-400);
   --background-clickable-primary-primary-hover: var(--scania-blue-500);
-  --background-clickable-primary-pressed: var(--scania-blue-300);
-  --background-clickable-primary-focus: var(--scania-blue-600);
+  --background-clickable-primary-pressed: var(--scania-blue-600);
+  --background-clickable-primary-focus: var(--scania-blue-500);
   --background-clickable-primary-disabled: var(--scania-neutral-solid-868);
   --background-clickable-primary-resting: var(--scania-neutral-solid-800);
 
@@ -290,10 +291,11 @@
   /* System - Warning */
   --system-warning-strong: var(--scania-extended-yellow-50);
   --system-warning-default: var(--scania-extended-yellow-100);
-  --system-warning-subtle: var(--scania-extended-yellow-600);
+  --system-warning-subtle: var(--tds-grey-850);
 
   /* System - Danger */
   --system-danger-strong: var(--scania-extended-red-50);
   --system-danger-default: var(--scania-extended-red-400);
-  --system-danger-subtle: var(--scania-extended-red-800);
+  --system-danger-subtle-03: var(--scania-extended-red-900);
+  --system-danger-subtle-02: var(--scania-extended-red-900);
 }
