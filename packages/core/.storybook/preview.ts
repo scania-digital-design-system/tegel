@@ -9,7 +9,7 @@ import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
 
 import { UPDATE_GLOBALS } from '@storybook/core-events';
 
-const channel = addons.getChannel();
+// const channel = addons.getChannel();
 
 declare global {
   interface Window {
@@ -53,10 +53,10 @@ if (!window.TDS_DID_SUBSCRIBE_DARK_BG) {
   });
 }
 
-channel.on('DARK_MODE', (isDarkMode) => {
-  document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
-  document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
-});
+// channel.on('DARK_MODE', (isDarkMode) => {
+//   document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
+//   document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+// });
 
 // DEV env for traton styles
 const isDev = import.meta.env.VITE_STORYBOOK_ENV === 'dev';
