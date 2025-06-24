@@ -196,5 +196,9 @@ tds-button {
     @include icon-slot('sm', 12, 16);
     @include icon-slot('md', 16, 20);
     @include icon-slot('lg', 20, 20);
+
+    &.only-icon::slotted([slot='icon']) {
+      margin-left: 0;
+    }
   }
 }
