@@ -13,9 +13,9 @@ tds-button {
   --button-primary-background-disabled-secondary: var(--color-background-base);
   --button-primary-background-disabled: var(--color-background-accent-primary-disabled);
   --button-primary-color: var(--component-button-primary-text);
-  --button-primary-color-hover: var(--button-white);
+  --button-primary-color-hover: var(--component-button-primary-text);
   --button-primary-color-active: var(--button-white);
-  --button-primary-color-focus: var(--button-white);
+  --button-primary-color-focus: var(--component-button-primary-text);
   --button-primary-border-color: var(--button-transparent);
   --button-primary-border-color-hover: var(--button-transparent);
   --button-primary-color-disabled: var(--color-foreground-text-disabled);
@@ -34,7 +34,7 @@ tds-button {
   --button-secondary-color-active: var(--button-black);
   --button-secondary-border-color-active: var(--color-foreground-border-strong);
   --button-secondary-background-focus: var(--button-transparent);
-  --button-secondary-color-focus: var(--button-black);
+  --button-secondary-color-focus: var(--color-foreground-text-strong);
   --button-secondary-border-color-focus: var(--color-foreground-border-accent-focus);
   --button-secondary-outline-color: var(--color-foreground-border-discrete);
   --button-secondary-background-disabled: var(--button-transparent);
@@ -44,7 +44,7 @@ tds-button {
   --button-icon-secondary-color-focus: var(--button-black);
   --button-icon-secondary-fill-focus: var(--button-black);
   --button-danger-background-disabled: var(--color-background-accent-danger-disabled);
-  --button-icon-secondary-fill-active: var(--tds-grey-958);
+  --button-icon-secondary-fill-active: var(--color-foreground-icon-strong);
 
   // Ghost
   --button-ghost-background: var(--button-transparent);
@@ -92,4 +92,14 @@ tds-button {
   /* ICON */
   --button-icon-danger-fill: var(--button-white);
   --button-icon-danger-color: var(--button-white);
+
+  .tds-mode-variant-primary {
+    --button-danger-background-disabled: var(--color-background-accent-danger-disabled);
+    --button-primary-background-disabled: var(--color-background-accent-primary-disabled);
+  }
+
+  .tds-mode-variant-secondary {
+    --button-danger-background-disabled: var(--button-white);
+    --button-primary-background-disabled: var(--button-white);
+  }
 }
