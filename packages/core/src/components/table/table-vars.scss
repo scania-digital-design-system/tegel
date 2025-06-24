@@ -75,19 +75,19 @@
 
   /* Table-body-row */
   --tds-table-body-row-background: var(--tds-grey-850);
-  --tds-table-body-row-background-hover: var(--tds-grey-850);
+  --tds-table-body-row-background-hover: var(--tds-grey-800);
   --tds-table-zebra-mode-backround: var(--tds-grey-900);
 
   .tds-mode-variant-primary {
-    --tds-table-body-row-background: var(--tds-grey-868);
-    --tds-table-body-row-background-hover: var(--tds-grey-846);
+    --tds-table-body-row-background: var(--tds-grey-850);
+    --tds-table-body-row-background-hover: var(--tds-grey-800);
     --tds-table-zebra-mode-backround: var(--tds-grey-900);
   }
 
   .tds-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-grey-900);
-    --tds-table-body-row-background-hover: var(--tds-grey-846);
-    --tds-table-zebra-mode-backround: var(--tds-grey-868);
+    --tds-table-body-row-background-hover: var(--tds-grey-850);
+    --tds-table-zebra-mode-backround: var(--tds-grey-850);
   }
 
   --tds-table-body-row-background-selected: var(--tds-grey-800);
