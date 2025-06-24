@@ -9,10 +9,18 @@ const dirName = path.dirname(fileName);
 
 // Define paths for component styles and output directories
 const componentsDir = path.resolve(dirName, '../src/tegel-light/components'); // Source SCSS directory
-const outputCssDir = path.resolve(dirName, '../../tegel-light/dist/components'); // Output compiled CSS directory
+const outputCssDir = path.resolve(dirName, '../../tegel-light/dist'); // Output compiled CSS directory
 // Define paths for global styles
-const globalScss = path.resolve(dirName, '../src/global/tegel-light-global.scss'); // Source global SCSS
+const globalScss = path.resolve(dirName, '../src/global/core.scss'); // Source global SCSS
 const globalCss = path.resolve(dirName, '../../tegel-light/dist/global.css'); // Output compiled global CSS
+
+// Define paths for Scania specific vars
+const scaniaVarsScss = path.resolve(dirName, '../src/global/scania-variables.scss'); // Source Scania vars SCSS
+const scaniaVarsCss = path.resolve(dirName, '../../tegel-light/dist/scania-variables.css'); // Output compiled Scania vars CSS
+
+// Define paths for Traton specific vars
+const tratonVarsScss = path.resolve(dirName, '../src/global/traton-variables.scss'); // Source Traton vars SCSS
+const tratonVarsCss = path.resolve(dirName, '../../tegel-light/dist/traton-variables.css'); // Output compiled Traton vars CSS
 
 // Ensure output directories exist before compilation
 if (!fs.existsSync(outputCssDir)) {
@@ -23,6 +31,16 @@ if (!fs.existsSync(outputCssDir)) {
 console.log(`Compiling global styles: ${globalScss} -> ${globalCss}`);
 const globalResult = sass.compile(globalScss, { style: 'expanded' });
 fs.writeFileSync(globalCss, globalResult.css);
+
+// Compile Scania Variables
+console.log(`Compiling Scania variables: ${scaniaVarsScss} -> ${scaniaVarsCss}`);
+const scaniaVarsResult = sass.compile(scaniaVarsScss, { style: 'expanded' });
+fs.writeFileSync(scaniaVarsCss, scaniaVarsResult.css);
+
+// Compile Traton Variables
+console.log(`Compiling Traton variables: ${tratonVarsScss} -> ${tratonVarsCss}`);
+const tratonVarsResult = sass.compile(tratonVarsScss, { style: 'expanded' });
+fs.writeFileSync(tratonVarsCss, tratonVarsResult.css);
 
 // Compile Each Component's SCSS into CSS
 fs.readdirSync(componentsDir).forEach((component) => {
