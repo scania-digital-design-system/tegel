@@ -1,5 +1,6 @@
 # tds-popover-menu
 
+🚧 This component is not yet accessible. Please refer to the [Accessibility Guidelines](https://tds-storybook.tegel.scania.com/?path=/docs/foundations-accessibility--docs) for more information.
 
 ### Usage with @scania/tegel-angular
 If you are using the `<tds-popover-menu>` in an Angular environment and want to
