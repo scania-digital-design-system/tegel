@@ -1,24 +1,22 @@
-:root {
+tds-dropdown-option {
+  --dropdown-text: var(--color-foreground-text-strong);
+  --dropdown-option-disabled: var(--color-foreground-text-disabled);
+  --dropdown-option-background: var(--color-background-layer-01);
+  --dropdown-option-background-hover: var(--component-dropdown-hover);
+  --dropdown-option-background-selected: var(--component-dropdown-focus);
+  --dropdown-option-border: var(--color-foreground-border-discrete);
+  --dropdown-helper-text: var(--color-foreground-text-defined);
+  --dropdown-placeholder: var(--color-foreground-text-subtle);
+}
+
+.tds-mode-variant-primary {
   tds-dropdown-option {
-    --dropdown-text: var(--color-foreground-text-strong);
-    --dropdown-option-disabled: var(--color-foreground-text-disabled);
     --dropdown-option-background: var(--color-background-layer-01);
-    --dropdown-option-background-hover: var(--component-dropdown-hover);
-    --dropdown-option-background-selected: var(--component-dropdown-focus);
-    --dropdown-option-border: var(--color-foreground-border-discrete);
-    --dropdown-helper-text: var(--color-foreground-text-defined);
-    --dropdown-placeholder: var(--color-foreground-text-subtle);
   }
+}
 
-  .tds-mode-variant-primary {
-    tds-dropdown-option {
-      --dropdown-option-background: var(--color-background-layer-01);
-    }
-  }
-
-  .tds-mode-variant-secondary {
-    tds-dropdown-option {
-      --dropdown-option-background: var(--color-background-layer-02);
-    }
+.tds-mode-variant-secondary {
+  tds-dropdown-option {
+    --dropdown-option-background: var(--color-background-layer-02);
   }
 }
