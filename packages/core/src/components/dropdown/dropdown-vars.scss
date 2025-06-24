@@ -1,4 +1,6 @@
-tds-dropdown {
+tds-dropdow,
+.scania tds-dropdown,
+.traton tds-dropdown {
   &.tds-mode-variant-primary {
     --dropdown-background: var(--color-background-layer-01);
   }
@@ -7,34 +9,72 @@ tds-dropdown {
     --dropdown-background: var(--color-background-layer-02);
   }
 
-  // colors
+  // Colors - Base
   --dropdown-background: var(--color-background-layer-01);
-  --dropdown-border-bottom: var(--color-foreground-border-soft);
-  --dropdown-border-bottom-hover: var(--color-foreground-border-strong);
-  --dropdown-border-bottom-open: var(--color-foreground-border-accent-focus);
+
+  // Colors - Label/Placeholder/Helper
   --dropdown-text: var(--color-foreground-text-strong);
   --dropdown-helper-text: var(--color-foreground-text-defined);
   --dropdown-placeholder: var(--color-foreground-text-subtle);
   --dropdown-disabled: var(--color-foreground-text-disabled);
+
+  // Colors - Error
   --dropdown-error: var(--color-system-danger-default);
+
+  // Colors - Icon
   --dropdown-icon: var(--color-foreground-icon-strong);
   --dropdown-clear-icon: var(--color-foreground-icon-subtle);
 
-  //units
+  // Colors - Border
+  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 1px 0 0 var(--dropdown-error);
+
+  // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
   --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
   --dropdown-list-border-radius-down: 0 0 var(--dropdown-spacing-4) var(--dropdown-spacing-4);
   --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
 }
 
-tds-table-footer {
-  //colors
-  --dropdown-background: white;
-  --dropdown-border-bottom: transparent;
-  --dropdown-border-bottom-hover: transparent;
-  --dropdown-border-bottom-open: transparent;
+.scania tds-dropdown {
+  // Colors - Border
+  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error);
+}
 
-  //units
+.traton tds-dropdown {
+  // Colors - Border
+  --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
+  --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
+  --dropdown-border-error-focus: 0 0 0 2px var(--dropdown-error);
+
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4)
+    var(--dropdown-spacing-4) var(--dropdown-spacing-4);
+}
+
+tds-table-footer {
+  // Colors - Base
+  --dropdown-background: white;
+
+  // Colors - Border
+  --dropdown-border: none;
+  --dropdown-border-hover: none;
+  --dropdown-border-focus: none;
+  --dropdown-border-error: none;
+
+  // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
   --dropdown-spacing-8: 8px; // should be replaced when introducing units tokens
   --placeholder-margin: var(--dropdown-spacing-8);

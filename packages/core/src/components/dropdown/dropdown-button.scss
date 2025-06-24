@@ -1,16 +1,19 @@
 @import '../../../../../typography/utilities/typography-utility';
+@import './box-shadow';
 
 :host {
   button {
     all: unset;
     height: 100%;
     width: 100%;
+    @include box-shadow;
+
     background-color: var(--dropdown-background);
-    border-bottom: 1px solid var(--dropdown-border-bottom);
     border-radius: var(--dropdown-border-radius);
+    transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &:hover {
-      border-bottom: 1px solid var(--dropdown-border-bottom-hover);
+      @include box-shadow('hover');
     }
 
     .value-wrapper {
@@ -26,8 +29,9 @@
     }
 
     &.value {
-      color: var(--dropdown-text);
       @include detail-02;
+
+      color: var(--dropdown-text);
 
       /** Needed to not get be affected by overflow:hidden 
       The original line-height is 1.14 */
@@ -35,40 +39,25 @@
     }
 
     &:focus {
-      border-bottom-color: var(--dropdown-border-bottom-open);
-
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: var(--dropdown-border-bottom-open);
-      }
+      @include box-shadow('focus');
     }
 
     &.error {
-      border-bottom: 1px solid var(--dropdown-error);
+      @include box-shadow('error');
+
+      &:hover {
+        @include box-shadow('error-hover');
+      }
 
       &:focus {
-        border-bottom-color: transparent;
-
-        &::before {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: var(--dropdown-error);
-        }
+        @include box-shadow('error-focus');
       }
     }
 
     &:disabled {
+      @include box-shadow('disabled');
+
       color: var(--dropdown-disabled);
-      border-bottom: 1px solid transparent;
     }
 
     .menu-icon {
