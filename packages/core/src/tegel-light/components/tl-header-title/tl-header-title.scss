@@ -2,17 +2,17 @@
   --tds-font-family-headline: 'Scania Sans Headline', arial, helvetica, sans-serif;
 
   box-sizing: border-box;
+}
 
-  &__text {
-    font-size: 14px;
-    color: var(--tds-header-nav-item-color);
-    font-weight: normal;
-    font-family: var(--tds-font-family-headline);
-    letter-spacing: normal;
-    position: relative;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    padding: 0 32px 0 16px;
-  }
+.tl-header-title__text {
+  font-size: 14px;
+  color: var(--tds-header-nav-item-color);
+  font-weight: normal;
+  font-family: var(--tds-font-family-headline);
+  letter-spacing: normal;
+  position: relative;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0 32px 0 16px;
 }
