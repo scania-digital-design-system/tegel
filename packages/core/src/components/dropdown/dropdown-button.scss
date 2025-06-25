@@ -6,9 +6,9 @@
     all: unset;
     height: 100%;
     width: 100%;
-    background-color: var(--dropdown-background);
     @include box-shadow;
 
+    background-color: var(--dropdown-background);
     border-radius: var(--dropdown-border-radius);
     transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
