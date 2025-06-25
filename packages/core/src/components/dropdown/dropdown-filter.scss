@@ -1,5 +1,6 @@
 @import '../../mixins/z-index';
 @import '../../../../../typography/utilities/typography-utility';
+@import './box-shadow';
 
 :host {
   .filter {
@@ -8,17 +9,19 @@
     justify-content: space-between;
     height: 100%;
     background-color: var(--dropdown-background);
-    border-bottom: 1px solid var(--dropdown-border-bottom);
+    @include box-shadow;
+
     padding-left: 16px;
-    border-radius: 4px 4px 0 0;
+    border-radius: var(--dropdown-border-radius);
+    transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &:hover {
-      border-bottom: 1px solid var(--dropdown-border-bottom-hover);
+      @include box-shadow('hover');
     }
 
     &.disabled {
       color: var(--dropdown-disabled);
-      border-bottom: 1px solid transparent;
+      @include box-shadow('disabled');
     }
 
     .value-wrapper {
@@ -76,34 +79,14 @@
     }
 
     &.focus {
-      border-bottom-color: transparent;
-
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: var(--dropdown-border-bottom-open);
-      }
+      @include box-shadow('focus');
     }
 
     &.error {
-      border-bottom: 1px solid var(--dropdown-error);
+      @include box-shadow('error');
 
       &.focus {
-        border-bottom-color: transparent;
-
-        &::before {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: var(--dropdown-error);
-        }
+        @include box-shadow('error-focus');
       }
     }
 
@@ -125,6 +108,7 @@
 
     tds-icon {
       cursor: pointer;
+
       &.disabled {
         color: var(--dropdown-disabled);
       }
@@ -132,6 +116,7 @@
 
     .menu-icon {
       margin-right: 16px;
+
       &.disabled {
         color: var(--dropdown-disabled);
       }
@@ -139,7 +124,6 @@
 
     .clear-icon {
       margin: 0 8px;
-      color: var(--dropdown-icon);
       padding-right: 8px;
       border-right: 1px solid var(--dropdown-icon);
       color: var(--dropdown-clear-icon);
