@@ -24,7 +24,7 @@ tds-dropdow,
 
   // Colors - Error
   --dropdown-error: var(--color-system-danger-default);
-  --dropdown-error-focus: #ff2340; // needs to have a token
+  --dropdown-error-focus: var(--color-system-danger-subtle);
 
   // Colors - Border - Default
   --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
