@@ -12,7 +12,7 @@
     border-bottom: 1px solid var(--table-divider);
     background-color: var(--table-body-row);
     transition: background-color 200ms ease;
-    color: var(--table-color);
+    color: var(--table-text);
   }
 
   .tds-table__row--expanded {
@@ -67,7 +67,7 @@
       max-width: 1px;
       overflow: auto;
       padding: 16px 16px 16px 66px;
-      color: var(--table-color);
+      color: var(--table-text);
     }
 
     .tds-table__cell-expand--overflow-visible {

@@ -7,7 +7,7 @@
   border-bottom: 1px solid var(--table-divider);
   background-color: var(--table-body-row);
   transition: background-color 200ms ease;
-  color: var(--table-color);
+  color: var(--table-text);
 
   .tds-table__body-cell--checkbox {
     min-width: 48px;

@@ -6,7 +6,7 @@
   display: table-caption;
   position: relative;
   background-color: var(--table-toolbar);
-  color: var(--table-color);
+  color: var(--table-text);
   padding: 0 var(--tds-spacing-element-16);
   height: 64px;
   border-top-left-radius: 4px;
@@ -79,7 +79,7 @@
     .tds-table__searchbar-input {
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
-      color: var(--table-color);
+      color: var(--table-text);
       z-index: 1;
       width: 100%;
       height: 100%;

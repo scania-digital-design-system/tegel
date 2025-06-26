@@ -7,7 +7,7 @@
   letter-spacing: var(--tds-headline-07-ls);
   display: table-cell;
   text-align: left;
-  color: var(--table-color);
+  color: var(--table-text);
   background-color: var(--table-header);
   border-bottom: 1px solid var(--table-header-hover);
   padding: 0;
@@ -39,7 +39,7 @@
     height: 100%;
     padding: 0 16px;
     background-color: transparent;
-    color: var(--table-color);
+    color: var(--table-text);
     border: none;
     cursor: pointer;
     transition: background-color 200ms ease;
@@ -57,7 +57,7 @@
       font: var(--tds-headline-07);
       letter-spacing: var(--tds-headline-07-ls);
       text-align: left;
-      color: var(--table-header-button-color);
+      color: var(--table-header-button-text);
     }
 
     .tds-table__header-button-icon {
@@ -68,7 +68,7 @@
       opacity: 0;
       transform-origin: center;
       transition: opacity 200ms ease-in, transform 200ms ease;
-      fill: var(--table-color);
+      fill: var(--table-text);
     }
 
     &:hover {
