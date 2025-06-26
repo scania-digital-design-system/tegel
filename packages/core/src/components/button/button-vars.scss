@@ -31,12 +31,12 @@ tds-button {
 
   // Secondary
   --button-secondary-background: var(--button-transparent);
-  --button-secondary-color: var(--button-black);
+  --button-secondary-color: var(--color-foreground-text-strong);
   --button-secondary-border-color: var(--color-foreground-border-soft);
   --button-secondary-color-hover: var(--color-foreground-text-strong);
   --button-secondary-border-color-hover: var(--color-foreground-border-subtle);
   --button-secondary-background-active: var(--button-transparent);
-  --button-secondary-color-active: var(--button-black);
+  --button-secondary-color-active: var(--color-foreground-text-strong);
   --button-secondary-border-color-active: var(--color-foreground-border-strong);
   --button-secondary-background-focus: var(--button-transparent);
   --button-secondary-color-focus: var(--color-foreground-text-strong);
@@ -47,6 +47,7 @@ tds-button {
   --button-secondary-color-disabled: var(--color-foreground-text-disabled);
   --button-secondary-border-color-disabled: var(--color-foreground-border-discrete);
   --button-icon-secondary-color-focus: var(--button-black);
+  --button-icon-secondary-color: var(--button-black);
   --button-icon-secondary-fill-focus: var(--button-black);
   --button-danger-background-disabled: var(--color-background-accent-danger-disabled);
   --button-icon-secondary-fill-active: var(--color-foreground-icon-strong);
