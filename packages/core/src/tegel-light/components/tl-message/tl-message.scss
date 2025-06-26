@@ -62,7 +62,7 @@
   }
 
   &--warning {
-    border-left: 4px solid var(--warning-border-color);
+    border-left: 4px solid var(--message-warning-border-color);
 
     &::before {
       mask-image: var(--icon-warning-svg);
