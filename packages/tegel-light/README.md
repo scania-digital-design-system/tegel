@@ -312,3 +312,125 @@ This convention aims to ensure SCSS is maintainable, consistent, and intuitive a
 
 
 Let us know if you find edge cases that challenge these conventions — this is a living document.
+
+## Creating a New Tegel Light Component
+
+Follow these steps to create a new component in Tegel Light.
+
+### 1. Set Up SCSS
+Inside `packages/core/src/tegel-light/components/`, create a folder matching your component name (use kebab-case and prefix with `tl-`). Add the main SCSS file and any optional partials:
+
+<pre>
+packages/core/src/tegel-light/components/ 
+
+└── tl-alert/
+    ├── tl-alert.scss # main entrypoint (includes partials) 
+    ├── _variables.scss # optional: internal tokens or values 
+</pre>
+
+
+All **partial files** (helpers) should be prefixed with an underscore (`_`) and be **imported** into the main SCSS file (`tl-alert.scss`). These partials will **not be compiled individually**.
+
+Example main file:
+
+```scss
+// packages/core/src/tegel-light/components/tl-alert/tl-alert.scss
+
+@import './variables';
+
+.tl-alert {
+  background-color: blue;
+
+  &--success {
+    background-color: green;
+  }
+
+  &--error {
+    background-color: red;
+  }
+}
+```
+
+### 2. Register SCSS to components folder
+Open `core/src/global/tegel-light-components.scss` and import your new SCSS file there to include it in the build and Storybook.
+
+```scss
+@import '../tegel-light/components/tl-alert/tl-alert';
+```
+
+This ensures your component is available in Storybook.
+
+### 3. Create a Storybook Story
+
+To document and test the component, create a `.stories.tsx` file in inside the component’s folder. Match the style of existing stories, like `tl-button` or `tl-message`.
+
+```tsx
+
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+
+export default {
+  title: 'Tegel Light (CSS)/Alert',
+  parameters: {
+    layout: 'centered',
+  },
+  argTypes: {
+    variant: {
+      name: 'Variant',
+      description: 'Visual variant of the alert',
+      control: {
+        type: 'radio',
+      },
+      options: ['info', 'success', 'error'],
+      table: {
+        defaultValue: { summary: 'info' },
+      },
+    },
+    message: {
+      name: 'Message',
+      description: 'Text content of the alert',
+      control: 'text',
+      table: {
+        defaultValue: { summary: 'Hello World' },
+      },
+    },
+  },
+  args: {
+    variant: 'info',
+    message: 'Hello World',
+  },
+};
+
+const Template = ({ variant, message }) =>
+  formatHtmlPreview(`
+      <!-- Required stylesheet 
+    "@scania/tegel-light/tl-alert.css"
+  -->
+
+    <span class="tl-alert tl-alert--${variant}">${message}</span>
+  `);
+
+export const Default = Template.bind({});
+
+```
+
+### 4. Verify the build
+Once your SCSS are in place, verify that the component compiles correctly.
+
+In the `packages/core` directory, run:
+
+```bash
+npm run build:tegel-light
+```
+
+This will:
+
+- Compile all Tegel Light SCSS files.
+
+- Output the compiled .css files into the packages/tegel-light/dist directory.
+
+- Automatically copy required assets and update the exports in `packages/tegel-light/package.json`.
+
+After the build, check `packages/tegel-light/dist/components/`: You should see a CSS file for your new component.
+
+
+
