@@ -36,7 +36,7 @@ on:
         default: false
 
   schedule:
-    - cron: '0 3 * * 1-5'
+    - cron: '0 3 * * 1-5' #3AM every weekday
 
 jobs:
   #CREATE RELEASE BRANCH
@@ -83,21 +83,24 @@ jobs:
           path: packages/core/package.json # assuming the version is saved here
 
       - name: Create release branch
+        id: create_branch
         run: |
           BRANCH_NAME=release/tegel@${{ steps.version.outputs.PACKAGE_VERSION }}
           if [[ "${{ github.event.inputs.dryVersion }}" == "true" || "${{ github.event_name }}" == "schedule" ]]; then
-            TIMESTAMP=$(date +'%Y%m%d-%H%M')
+            TIMESTAMP=$(TZ=Europe/Stockholm date +'%Y%m%d-%H%M')
             BRANCH_NAME="$BRANCH_NAME-dry-run-$TIMESTAMP"
           fi
-          git checkout -b $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+          git checkout -b "$BRANCH_NAME"
           git add .
           git commit -m "chore: bump versions to ${{ steps.version.outputs.PACKAGE_VERSION }}"
-          git push -u --no-verify origin $BRANCH_NAME
+          git push -u --no-verify origin "$BRANCH_NAME"
 
     #Need to output the version to use it in the next jobs
     outputs:
       version: ${{ steps.version.outputs.PACKAGE_VERSION }}
-      branch: ${{ env.BRANCH_NAME }}
+      branch: ${{ steps.create_branch.outputs.branch }}
 
   #RELEASE CORE
   release-core:
@@ -141,6 +144,27 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
 
+        ## Consider to remove this step after bumping stencil
+      - name: Core - Run build 2
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run build
+        ##
+
+      - name: Core - Pack tarball (dry run only)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        id: pack
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          TARBALL=$(npm pack)
+          echo "TARBALL=$TARBALL" >> $GITHUB_OUTPUT
+
+      - name: Upload Core tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-tarball
+          path: ${{ env.WORKING_DIRECTORY }}/${{ steps.pack.outputs.TARBALL }}
+
       - name: Core - Publish
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: ${{ env.WORKING_DIRECTORY }}
@@ -157,6 +181,8 @@ jobs:
           else
             echo "No changes to commit"
           fi
+    outputs:
+      tarball: ${{ steps.pack.outputs.TARBALL }}
 
   #BUMP WRAPPERS TO NEW VERSION
   bump-wrappers-to-new-version:
@@ -178,24 +204,59 @@ jobs:
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
 
+      - name: Download Core tarball
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        uses: actions/download-artifact@v4
+        with:
+          name: core-tarball
+          path: core-tarball
+          extract: true
+
+      - name: Angular wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/angular
+        run: |
+          npm install ../../core-tarball/*.tgz
+
+      - name: Angular 17 wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/angular-17
+        run: |
+          npm install ../../core-tarball/*.tgz
+
+      - name: Angular 17 Components wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/angular-17/projects/components
+        run: |
+          npm install ../../../../core-tarball/*.tgz
+
+      - name: React wrapper – install Core tarball (dry run)
+        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
+        working-directory: packages/react
+        run: |
+          npm install ../../core-tarball/*.tgz
+
       - name: Angular - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Angular 17 - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Angular 17 components - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/angular-17/projects/components
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: React - Install latest tegel package
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         working-directory: packages/react
         run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Wrappers Core increase - Commit and push changes
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
         run: |
           git add .
           if ! git diff-index --quiet HEAD; then
@@ -338,7 +399,7 @@ jobs:
   on-failure:
     needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     steps:
       - name: Download version
         uses: actions/download-artifact@v4
@@ -353,7 +414,7 @@ jobs:
   merge-release-branch-into-develop:
     needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -446,7 +507,15 @@ jobs:
           git push --force --no-verify origin main
 
   notify-teams:
-    needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
+    needs:
+      [
+        create-release-branch,
+        release-core,
+        bump-wrappers-to-new-version,
+        release-angular,
+        release-angular-17,
+        release-react,
+      ]
     runs-on: ubuntu-latest
     if: always()
     steps:
@@ -458,6 +527,7 @@ jobs:
           # Detect any failed jobs
           if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
              [ "${{ needs.release-core.result }}" == "failure" ] || \
+             [ "${{ needs.bump-wrappers-to-new-version.result }}" == "failure" ] || \
              [ "${{ needs.release-angular.result }}" == "failure" ] || \
              [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
              [ "${{ needs.release-react.result }}" == "failure" ]; then
