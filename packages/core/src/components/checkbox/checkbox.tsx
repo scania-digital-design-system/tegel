@@ -104,6 +104,9 @@ export class TdsCheckbox {
   /** Focus event for the Checkbox */
   @Event({
     eventName: 'tdsFocus',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
   })
   tdsFocus: EventEmitter<FocusEvent>;
 
@@ -149,15 +152,16 @@ export class TdsCheckbox {
           ref={(inputElement) => (this.inputElement = inputElement)}
           indeterminate={this.indeterminate}
           aria-checked={this.checked}
-          aria-red={this.required}
+          aria-required={this.required}
           aria-label={this.tdsAriaLabel}
           aria-describedby={this.tdsAriaDescribedby}
-          required={this.rd}
+          required={this.required}
           type="checkbox"
           name={this.name}
           value={this.value}
           id={this.checkboxId}
-          checksabled={this.disabled}
+          checked={this.checked}
+          disabled={this.disabled}
           onFocus={(event) => this.handleFocus(event)}
           onBlur={(event) => this.handleBlur(event)}
           onChange={() => {
