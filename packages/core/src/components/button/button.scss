@@ -23,7 +23,7 @@ $iconProps: (fill, color);
 
   display: inline-flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: var(--button-radius);
   border: none;
   box-shadow: none;
   position: relative;
@@ -40,16 +40,16 @@ $iconProps: (fill, color);
 
       &.icon {
         @each $prop in $iconProps {
-          fill: var(--button-icon-#{$type}-#{$prop}#{$suffix});
-          color: var(--button-icon-#{$type}-#{$prop}#{$suffix});
+          fill: var(--button-icon-#{$type}-#{$prop});
+          color: var(--button-icon-#{$type}-#{$prop});
         }
       }
 
       &:not(.disabled) {
         ::slotted([slot='icon']) {
           @each $prop in $iconProps {
-            fill: var(--button-icon-#{$type}-#{$prop}#{$suffix});
-            color: var(--button-icon-#{$type}-#{$prop}#{$suffix});
+            fill: var(--button-icon-#{$type}-#{$prop});
+            color: var(--button-icon-#{$type}-#{$prop});
           }
         }
       }

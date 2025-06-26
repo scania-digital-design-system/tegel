@@ -6,6 +6,10 @@
   --component-button-primary-text: var(--color-brand-neutral-white);
 }
 
+.scania .tds-mode-dark tds-button {
+  --component-button-primary-text: var(--color-brand-neutral-white);
+}
+
 .tds-mode-dark tds-button {
   --component-button-primary-text: var(--color-brand-neutral-black);
 }

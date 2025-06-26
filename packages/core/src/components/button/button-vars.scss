@@ -3,6 +3,7 @@ tds-button {
   --button-transparent: transparent;
   --button-white: var(--color-brand-neutral-white);
   --button-black: var(--color-brand-neutral-black);
+  --button-radius: var(--dimension-radius-for-surface-clickable);
 
   // Primary
   --button-primary-background: var(--color-background-accent-primary-default);
@@ -23,6 +24,10 @@ tds-button {
   --button-primary-border-color-active: var(--color-background-accent-primary-pressed);
   --button-primary-border-color-focus: var(--color-foreground-border-accent-focus);
   --button-primary-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  /* ICON */ //not used
+  --button-icon-primary-fill: var(--component-button-primary-text);
+  --button-icon-primary-color: var(--component-button-primary-text);
 
   // Secondary
   --button-secondary-background: var(--button-transparent);
