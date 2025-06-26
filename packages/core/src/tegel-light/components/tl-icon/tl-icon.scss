@@ -1,0 +1,37 @@
+@import './icon-list';
+@import './icon-sizes';
+
+.tl-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  flex-shrink: 0;
+  color: inherit;
+
+  // Hide icon by default unless a mask is applied
+  mask-image: none;
+  mask-image: none;
+
+  // Icon variants
+  @each $icon in $icons {
+    &--#{$icon} {
+      mask-image: var(--icon-#{$icon}-svg);
+      mask-image: var(--icon-#{$icon}-svg);
+      background-color: currentcolor; // re-enable coloring only for valid icons
+    }
+  }
+
+  // Dynamic pixel sizes
+  @each $size in $sizes {
+    &--#{$size} {
+      width: #{$size}px;
+      height: #{$size}px;
+    }
+  }
+}
