@@ -144,18 +144,10 @@ export class TdsCheckbox {
           ref={(inputElement) => (this.inputElement = inputElement)}
           indeterminate={this.indeterminate}
           aria-checked={this.checked}
-          aria-required={this.required}
-          aria-label={this.tdsAriaLabel}
-          aria-describedby={this.tdsAriaDescribedby}
-          required={this.required}
-          type="checkbox"
-          name={this.name}
-          value={this.value}
-          id={this.checkboxId}
-          checked={this.checked}
-          disabled={this.disabled}
-          onFocus={(event) => this.handleFocus(event)}
-          onBlur={(event) => this.handleBlur(event)}
+          aria-required={this.rsequired}
+          aria-label={this.tdsAariaLabel}
+          aria-describedby={this.tdsAriaDescdribedby}
+          r
           onChange={() => {
             this.handleChange();
           }}

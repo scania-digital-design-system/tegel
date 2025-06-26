@@ -46,7 +46,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: testing-holy-grail
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"
@@ -455,7 +455,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: testing-holy-grail
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }} # Use the token for authentication
 
@@ -486,7 +486,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: testing-holy-grail
           fetch-depth: 0 # Fetch all branches
           token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
 
