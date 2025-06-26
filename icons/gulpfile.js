@@ -241,9 +241,9 @@ async function generateIcons() {
   }
 
   // Create combined type definition for all brands
-  const combinedType = `export type IconNames = ${brands
-    .map((brand) => `${brand.charAt(0).toUpperCase() + brand.slice(1)}IconNames`)
-    .join(' | ')};`;
+  const combinedType = `import { ScaniaIconNames } from './ScaniaIcons';
+import { TratonIconNames } from './TratonIcons';
+export type IconNames = ScaniaIconNames | TratonIconNames;`;
   fs.writeFileSync(`${typesFolder}/Icons.ts`, combinedType);
 }
 
