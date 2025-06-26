@@ -116,4 +116,18 @@
     --tds-textarea-background: var(--tds-textarea-background-secondary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
   }
+
+  tds-modal {
+    // When used inside a modal with darkmode, swap the mode variants colors:
+
+    .tds-mode-variant-primary {
+      --tds-textarea-background: var(--tds-textarea-background-secondary);
+      --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
+    }
+
+    .tds-mode-variant-secondary {
+      --tds-textarea-background: var(--tds-textarea-background-primary);
+      --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
+    }
+  }
 }

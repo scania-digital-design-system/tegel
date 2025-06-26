@@ -39,4 +39,10 @@
     --tds-block-background-even: var(--tds-grey-868);
     --tds-block-background-odd: var(--tds-grey-900);
   }
+
+  tds-modal {
+    // When used inside a modal with darkmode, swap the mode variants colors:
+    --tds-block-background-primary: var(--tds-grey-868);
+    --tds-block-background-secondary: var(--tds-grey-900);
+  }
 }

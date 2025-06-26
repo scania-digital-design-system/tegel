@@ -132,4 +132,18 @@
     --tds-text-field-background: var(--tds-text-field-background-secondary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
   }
+
+  tds-modal {
+    // When used inside a modal with darkmode, swap the mode variants colors:
+
+    .tds-mode-variant-primary {
+      --tds-text-field-background: var(--tds-text-field-background-secondary);
+      --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
+    }
+
+    .tds-mode-variant-secondary {
+      --tds-text-field-background: var(--tds-text-field-background-primary);
+      --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
+    }
+  }
 }
