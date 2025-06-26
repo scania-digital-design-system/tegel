@@ -14,7 +14,7 @@
   }
 
   ::slotted(input:not(:focus)) {
-    background-color: var(--table-input-background-hover);
+    background-color: var(--table-input-hover);
   }
 }
 
@@ -51,7 +51,7 @@ tds-icon.search-icon {
 
 ::slotted(input:focus) {
   outline: none;
-  background-color: var(--table-input-header-background-focus);
+  background-color: var(--table-input-header-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
 }
 

@@ -3,58 +3,58 @@ tds-table {
   --table-color: var(--color-foreground-text-strong);
 
   /* Table-body-cell */
-  --table-body-cell-background-hover: var(--component-table-cell-hover);
+  --table-body-cell-hover: var(--component-table-cell-hover);
 
   /* Table-body-row */
-  --table-body-row-background: var(--component-table-cell);
-  --table-body-row-background-hover: var(--component-table-cell-hover);
-  --table-zebra-mode-backround: var(--component-table-secondary-cell);
+  --table-body-row: var(--component-table-cell);
+  --table-body-row-hover: var(--component-table-cell-hover);
+  --table-zebra-mode: var(--component-table-secondary-cell);
 
   &.tds-mode-variant-primary {
-    --table-body-row-background: var(--component-table-cell);
-    --table-body-row-background-hover: var(--component-table-cell-hover);
-    --table-zebra-mode-backround: var(--component-table-secondary-cell);
+    --table-body-row: var(--component-table-cell);
+    --table-body-row-hover: var(--component-table-cell-hover);
+    --table-zebra-mode: var(--component-table-secondary-cell);
   }
 
   &.tds-mode-variant-secondary {
-    --table-body-row-background: var(--component-table-secondary-cell);
-    --table-body-row-background-hover: var(--component-table-cell-hover);
-    --table-zebra-mode-backround: var(--component-table-cell);
+    --table-body-row: var(--component-table-secondary-cell);
+    --table-body-row-hover: var(--component-table-cell-hover);
+    --table-zebra-mode: var(--component-table-cell);
   }
 
-  --table-body-row-background-selected: var(--color-background-surface-300);
-  --table-body-row-background-selected-hover: var(--color-background-surface-400);
+  --table-body-row-selected: var(--color-background-surface-300);
+  --table-body-row-selected-hover: var(--color-background-surface-400);
 
   /* Table input */
-  --table-input-background: var(--color-background-layer-02);
-  --table-input-background-focus: blue;
-  --table-input-background-hover: green;
-  --table-input-background-disabled: lightblue;
+  --table-input: var(--color-background-layer-02);
+  --table-input-focus: blue;
+  --table-input-hover: green;
+  --table-input-disabled: lightblue;
   --table-input-header-icon: purple;
   --table-input-header-placeholder: deeppink;
-  --table-input-header-background-focus: gray;
+  --table-input-header-focus: gray;
 
   /* Table-footer */
-  --table-footer-background: var(--component-table-pagination-base);
-  --table-footer-page-selector-input-background: var(--color-background-layer-02);
-  --table-footer-page-selector-input-background-hover: var(--color-background-layer-03);
-  --table-footer-page-selector-input-background-disabled: var(--color-background-layer-01);
+  --table-footer: var(--component-table-pagination-base);
+  --table-footer-page-selector-input: var(--color-background-layer-02);
+  --table-footer-page-selector-input-hover: var(--color-background-layer-03);
+  --table-footer-page-selector-input-disabled: var(--color-background-layer-01);
   --table-footer-page-selector-icon: var(--color-foreground-icon-strong);
   --table-footer-page-selector-icon-disabled: var(--color-foreground-icon-disabled);
   --table-footer-btn-hover: var(--color-background-surface-300);
 
   /* Table-header */
-  --table-header-background: var(--color-background-surface-300);
-  --table-header-background-hover: var(--color-background-surface-400);
+  --table-header: var(--color-background-surface-300);
+  --table-header-hover: var(--color-background-surface-400);
   --table-header-btn-color: var(--color-foreground-text-strong);
-  --table-header-btn-background: var(--color-background-surface-200);
-  --table-header-btn-background-hover: var(--color-background-surface-300);
+  --table-header-btn: var(--color-background-surface-200);
+  --table-header-btn-hover: var(--color-background-surface-300);
   --table-header-btn-focus: var(--color-background-surface-300);
 
   /* Table-toolbar */
-  --table-toolbar-background: var(--color-background-surface-400);
-  --table-toolbar-searchbar-background: var(--component-table-pagination-dropdown);
-  --table-toolbar-searchbar-background-hover: var(--component-table-pagination-base);
+  --table-toolbar: var(--color-background-surface-400);
+  --table-toolbar-searchbar: var(--component-table-pagination-dropdown);
+  --table-toolbar-searchbar-hover: var(--component-table-pagination-base);
 
   /* Divider */
   --table-divider: var(--color-foreground-border-discrete);

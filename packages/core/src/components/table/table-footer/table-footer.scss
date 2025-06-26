@@ -8,7 +8,7 @@
   height: var(--tds-spacing-element-48);
 
   .tds-table__footer-row {
-    background-color: var(--table-footer-background);
+    background-color: var(--table-footer);
     color: var(--table-color);
   }
 
@@ -40,7 +40,7 @@
       .tds-table__page-selector-input {
         font: var(--tds-detail-02);
         letter-spacing: var(--tds-detail-02-ls);
-        background-color: var(--table-footer-page-selector-input-background);
+        background-color: var(--table-footer-page-selector-input);
         color: var(--table-color);
         width: 74px;
         height: 30px;
@@ -51,7 +51,7 @@
         padding-left: var(--tds-spacing-element-16);
 
         &:hover {
-          background-color: var(--table-footer-page-selector-input-background-hover);
+          background-color: var(--table-footer-page-selector-input-hover);
         }
 
         &:disabled {

@@ -10,7 +10,7 @@
   .tds-table__row-extend {
     display: table-row;
     border-bottom: 1px solid var(--table-divider);
-    background-color: var(--table-body-row-background);
+    background-color: var(--table-body-row);
     transition: background-color 200ms ease;
     color: var(--table-color);
   }
@@ -21,7 +21,7 @@
 
   .tds-table__row:hover,
   .tds-table__row-extend:hover {
-    background-color: var(--table-body-row-background-hover);
+    background-color: var(--table-body-row-hover);
   }
 
   .tds-table__expand-control-container {
@@ -82,7 +82,7 @@
 
 :host(.tds-table__row-expand--active) {
   .tds-table__row {
-    background-color: var(--table-body-row-background-selected);
+    background-color: var(--table-body-row-selected);
   }
 
   .tds-table__expand-control-container {
@@ -92,7 +92,7 @@
   }
 
   .tds-table__row-expand {
-    background-color: var(--table-body-row-background-selected);
+    background-color: var(--table-body-row-selected);
     display: table-row;
   }
 }

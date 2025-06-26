@@ -20,7 +20,7 @@
   }
 
   ::slotted(input:not(:focus)) {
-    background-color: var(--table-input-background-hover);
+    background-color: var(--table-input-hover);
   }
 }
 
@@ -54,12 +54,12 @@ tds-icon.edit-icon {
 }
 
 ::slotted(input:disabled) {
-  background-color: var(--table-input-background-disabled);
+  background-color: var(--table-input-disabled);
 }
 
 ::slotted(input:focus) {
   outline: none;
-  background-color: var(--table-input-background-focus);
+  background-color: var(--table-input-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
 }
 
