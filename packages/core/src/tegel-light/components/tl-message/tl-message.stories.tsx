@@ -76,6 +76,9 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
   const noIconClass = noIcon ? 'tl-message__wrapper--no-icon' : '';
 
   return formatHtmlPreview(`
+    <!-- Required stylesheet 
+      "@scania/tegel-light/tl-message.css"
+  -->
     <style>
       .demo-wrapper {
         max-width: 380px;
