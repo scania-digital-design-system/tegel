@@ -9,7 +9,7 @@ const dirName = path.dirname(fileName);
 
 // Define paths for component styles and output directories
 const componentsDir = path.resolve(dirName, '../src/tegel-light/components'); // Source SCSS directory
-const outputCssDir = path.resolve(dirName, '../../tegel-light/dist'); // Output compiled CSS directory
+const outputCssDir = path.resolve(dirName, '../../tegel-light/dist/components'); // Output compiled CSS directory
 // Define paths for global styles
 const globalScss = path.resolve(dirName, '../src/global/core.scss'); // Source global SCSS
 const globalCss = path.resolve(dirName, '../../tegel-light/dist/global.css'); // Output compiled global CSS
