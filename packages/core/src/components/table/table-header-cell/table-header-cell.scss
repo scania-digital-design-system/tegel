@@ -45,7 +45,7 @@
     transition: background-color 200ms ease;
 
     &:focus {
-      outline: 2px solid var(--table-header-btn-focus);
+      outline: 2px solid var(--table-header-button-focus);
       outline-offset: -2px;
 
       .tds-table__header-button-icon {
@@ -57,7 +57,7 @@
       font: var(--tds-headline-07);
       letter-spacing: var(--tds-headline-07-ls);
       text-align: left;
-      color: var(--table-header-btn-color);
+      color: var(--table-header-button-color);
     }
 
     .tds-table__header-button-icon {
@@ -81,10 +81,10 @@
 
 :host(.tds-table__header-cell--is-sorted) {
   .tds-table__header-button {
-    background-color: var(--table-header-btn);
+    background-color: var(--table-header-button);
 
     &:hover {
-      background-color: var(--table-header-btn-hover);
+      background-color: var(--table-header-button-hover);
     }
 
     .tds-table__header-button-icon {

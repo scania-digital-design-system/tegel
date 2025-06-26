@@ -46,10 +46,10 @@ tds-table {
   /* Table-header */
   --table-header: var(--color-background-surface-300);
   --table-header-hover: var(--color-background-surface-400);
-  --table-header-btn-color: var(--color-foreground-text-strong);
-  --table-header-btn: var(--color-background-surface-200);
-  --table-header-btn-hover: var(--color-background-surface-300);
-  --table-header-btn-focus: var(--color-background-surface-300);
+  --table-header-button-color: var(--color-foreground-text-strong);
+  --table-header-button: var(--color-background-surface-200);
+  --table-header-button-hover: var(--color-background-surface-300);
+  --table-header-button-focus: var(--color-background-surface-300);
 
   /* Table-toolbar */
   --table-toolbar: var(--color-background-surface-400);
