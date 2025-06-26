@@ -32,9 +32,9 @@ export default {
 
 const Template = ({ icon, size }) =>
   formatHtmlPreview(`
-    <script>
-      import "@scania/tegel-light/tl-icon.css";
-    </script>
+    <!-- Required stylesheet 
+      "@scania/tegel-light/tl-icon.css"
+  -->
     <span class="tl-icon tl-icon--${icon} tl-icon--${size}" aria-hidden="true"></span>
   `);
 
