@@ -5,7 +5,7 @@
 
   display: table-row;
   border-bottom: 1px solid var(--table-divider);
-  background-color: var(--table-body-row-background);
+  background-color: var(--table-body-row);
   transition: background-color 200ms ease;
   color: var(--table-color);
 
@@ -17,15 +17,15 @@
 }
 
 :host(.tds-table__row:hover) {
-  background-color: var(--table-body-row-background-hover);
+  background-color: var(--table-body-row-hover);
 }
 
 :host(.tds-table__row--selected) {
-  background-color: var(--table-body-row-background-selected);
+  background-color: var(--table-body-row-selected);
 }
 
 :host(.tds-table__row--selected:hover) {
-  background-color: var(--table-body-row-background-selected-hover);
+  background-color: var(--table-body-row-selected-hover);
 }
 
 :host(.tds-table__row--hidden) {

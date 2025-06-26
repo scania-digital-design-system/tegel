@@ -11,7 +11,7 @@
     display: table-cell;
     text-align: left;
     color: var(--table-color);
-    background-color: var(--table-header-background);
+    background-color: var(--table-header);
     border-bottom: 1px solid var(--table-divider);
     height: 48px;
     box-sizing: border-box;
@@ -59,7 +59,7 @@
   }
 
   ::slotted(tds-header-cell:hover) {
-    background-color: var(--table-header-background-hover);
+    background-color: var(--table-header-hover);
   }
 }
 

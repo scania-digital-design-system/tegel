@@ -8,8 +8,8 @@
   display: table-cell;
   text-align: left;
   color: var(--table-color);
-  background-color: var(--table-header-background);
-  border-bottom: 1px solid var(--table-header-background-hover);
+  background-color: var(--table-header);
+  border-bottom: 1px solid var(--table-header-hover);
   padding: 0;
   height: 48px;
   min-width: 192px;
@@ -81,10 +81,10 @@
 
 :host(.tds-table__header-cell--is-sorted) {
   .tds-table__header-button {
-    background-color: var(--table-header-btn-background);
+    background-color: var(--table-header-btn);
 
     &:hover {
-      background-color: var(--table-header-btn-background-hover);
+      background-color: var(--table-header-btn-hover);
     }
 
     .tds-table__header-button-icon {
