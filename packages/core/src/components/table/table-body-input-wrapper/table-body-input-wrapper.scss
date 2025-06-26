@@ -39,7 +39,7 @@ tds-icon.edit-icon {
   letter-spacing: var(--tds-detail-02-ls);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
-  color: var(--table-color);
+  color: var(--table-text);
   background-color: transparent;
   height: 48px;
   border-radius: 0;
@@ -50,7 +50,7 @@ tds-icon.edit-icon {
 }
 
 ::slotted(input)::placeholder {
-  color: var(--table-color);
+  color: var(--table-text);
 }
 
 ::slotted(input:disabled) {

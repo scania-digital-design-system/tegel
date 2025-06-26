@@ -9,7 +9,7 @@
 
   .tds-table__footer-row {
     background-color: var(--table-footer);
-    color: var(--table-color);
+    color: var(--table-text);
   }
 
   .tds-table__footer-cell {
@@ -41,7 +41,7 @@
         font: var(--tds-detail-02);
         letter-spacing: var(--tds-detail-02-ls);
         background-color: var(--table-footer-page-selector-input);
-        color: var(--table-color);
+        color: var(--table-text);
         width: 74px;
         height: 30px;
         border: none;
@@ -102,7 +102,7 @@
       .tds-table__footer-btn-svg {
         height: var(--tds-spacing-element-20);
         width: var(--tds-spacing-element-20);
-        fill: var(--table-color);
+        fill: var(--table-text);
       }
     }
   }
