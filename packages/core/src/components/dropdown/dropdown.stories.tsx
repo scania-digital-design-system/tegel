@@ -113,6 +113,12 @@ export default {
       description: 'Helper text assists the user with additional information about the Dropdown.',
       control: 'text',
     },
+    errorMessage: {
+      name: 'Error Message',
+      description:
+        'Error message assists the user with additional information about the Dropdown error.',
+      control: 'text',
+    },
     placeholder: {
       name: 'Placeholder',
       type: 'string',
