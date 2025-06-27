@@ -42,6 +42,10 @@
       @include box-shadow('focus');
     }
 
+    &:active {
+      @include box-shadow('active');
+    }
+
     &.error {
       @include box-shadow('error');
 
