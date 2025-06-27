@@ -2,6 +2,14 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-tds-button {
+.tds-mode-light tds-button {
   --component-button-primary-text: var(--color-brand-neutral-white);
+}
+
+.scania .tds-mode-dark tds-button {
+  --component-button-primary-text: var(--color-brand-neutral-white);
+}
+
+.tds-mode-dark tds-button {
+  --component-button-primary-text: var(--color-brand-neutral-black);
 }
