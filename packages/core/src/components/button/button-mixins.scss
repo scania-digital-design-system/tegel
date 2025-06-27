@@ -11,9 +11,9 @@
   }
 }
 
-@mixin mode-variant($mode, $primary-background-disabled, $secondary-background-disabled) {
+@mixin mode-variant($mode, $primary-background-disabled, $danger-background-disabled) {
   .tds-mode-variant-#{$mode} {
     --button-primary-background-disabled: var(#{$primary-background-disabled});
-    --button-secondary-background-disabled: var(#{$secondary-background-disabled});
+    --button-danger-background-disabled: var(#{$danger-background-disabled});
   }
 }

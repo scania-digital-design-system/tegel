@@ -1,3 +1,5 @@
+@import './button-mixins';
+
 tds-button {
   // Base variables
   --button-transparent: transparent;
@@ -99,13 +101,10 @@ tds-button {
   --button-icon-danger-fill: var(--button-white);
   --button-icon-danger-color: var(--button-white);
 
-  .tds-mode-variant-primary {
-    --button-danger-background-disabled: var(--color-background-accent-danger-disabled);
-    --button-primary-background-disabled: var(--color-background-accent-primary-disabled);
-  }
-
-  .tds-mode-variant-secondary {
-    --button-danger-background-disabled: var(--button-white);
-    --button-primary-background-disabled: var(--button-white);
-  }
+  @include mode-variant(
+    'primary',
+    --color-background-accent-primary-disabled,
+    --color-background-accent-danger-disabled
+  );
+  @include mode-variant('secondary', --button-white, --button-white);
 }
