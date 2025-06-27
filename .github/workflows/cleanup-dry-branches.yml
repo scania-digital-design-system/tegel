@@ -27,21 +27,32 @@ jobs:
         run: |
           echo "Looking for dry-run branches older than 2 days..."
 
+          git remote -v || git remote add origin https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+
           gh api repos/${{ github.repository }}/branches \
             | jq -r '.[] | select(.name | test("-dry-run-[0-9]{8}-[0-9]{4}$")) | .name' \
             | while read branch; do
+                echo "🔍 Found branch: $branch"
+
                 timestamp=$(echo "$branch" | grep -oE '[0-9]{8}-[0-9]{4}')
+                echo "📆 Extracted timestamp: $timestamp"
+
                 branch_date=$(date -d "${timestamp:0:8} ${timestamp:9:2}:${timestamp:11:2}" +%s || echo 0)
                 now=$(date +%s)
                 age=$(( (now - branch_date) / 3600 ))
+
+                echo "⏱ Branch age: $age hours"
+
                 if [ "$branch_date" -eq 0 ]; then
-                  echo "⚠️ Unable to parse timestamp for $branch — skipping"
+                  echo "⚠️ Failed to parse timestamp for $branch — skipping"
                   continue
                 fi
-                if [ "$age" -gt 0 ]; then
-                  echo "🗑 Deleting branch $branch (age: $age days)"
+
+                # TEMP: lower threshold to test
+                if [ "$age" -ge 0 ]; then
+                  echo "🗑 Deleting $branch..."
                   git push --no-verify origin --delete "$branch"
                 else
-                  echo "✅ Keeping branch $branch (age: $age days)"
+                  echo "✅ Keeping branch $branch"
                 fi
               done
