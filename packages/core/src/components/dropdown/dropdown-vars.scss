@@ -60,7 +60,7 @@ tds-dropdow,
   --dropdown-border-active: 0 0 0 1px var(--color-foreground-border-strong);
   --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
   --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-focus: 0 0 0 2px var(--dropdown-error-focus);
+  --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error-focus);
 
   // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
