@@ -368,9 +368,10 @@
     "copy-assets": "./scripts/copy-assets.mjs"
   },
   "scripts": {
-    "build": "stencil build && stencil build --docs",
-    "_comment": "Due to stencil bug with types creation, we need to run build two times!",
-    "start": "stencil build --dev --watch --serve",
+    "build:css": "node scripts/build-css.js",
+    "watch:css": "node scripts/build-css.js --watch",
+    "build": "stencil build && stencil build --docs && npm run build:css",
+    "start": "concurrently --raw \"npm:build-stencil:watch\" \"npm:watch:css\" \"npm:start:storybook\"",
     "test": "node docker-test-runner.js",
     "test:axe": "npx playwright test --config 'playwright-axe.config.ts'",
     "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.50.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
@@ -382,7 +383,11 @@
     "start:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build --quiet",
     "build-stencil:storybook": "npm run build && npm run build:storybook",
-    "start:core": "concurrently --raw 'npm:build-stencil:watch' 'npm:start:storybook'"
+    "start:core": "concurrently --raw 'npm:build-stencil:watch' 'npm:start:storybook'",
+    "build:tegel-light": "npm run compile:scss && npm run update:tegel-light-exports && npm run copy:assets-tegel-light",
+    "compile:scss": "node scripts/compile-tegel-light-components.js",
+    "update:tegel-light-exports": "node scripts/update-tegel-light-exports.js",
+    "copy:assets-tegel-light": "node scripts/copy-tegel-light-assets.js"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
