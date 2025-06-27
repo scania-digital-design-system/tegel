@@ -198,6 +198,7 @@ export default {
     labelText: 'Label text',
     labelPosition: 'Outside',
     helperText: 'Helper text',
+    errorMessage: 'Error message',
     placeholder: 'Placeholder',
     disabled: false,
     openDirection: 'Auto',
@@ -236,6 +237,7 @@ const Template = ({
   labelText,
   labelPosition,
   helperText,
+  errorMessage,
   size,
   error,
   filter,
@@ -287,7 +289,7 @@ const Template = ({
               : ''
           }
           placeholder="${placeholder}"
-          helper="${helperText}"
+          helper="${error ? errorMessage : helperText}"
           size="${sizeLookUp[size]}"
           ${error ? 'error' : ''}
           ${filter ? 'filter' : ''}
