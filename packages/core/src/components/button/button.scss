@@ -42,6 +42,10 @@ $iconProps: (fill, color);
           fill: var(--button-icon-#{$type}-#{$prop});
           color: var(--button-icon-#{$type}-#{$prop});
         }
+
+        &.disabled {
+          color: var(--button-icon-secondary-color-disabled);
+        }
       }
 
       &:not(.disabled) {
