@@ -121,7 +121,7 @@ In the root of your app, create a `link.config.json` file with the following con
 
 ```json
 {
-  "packages": ["@scania/tegel-light", "../tegel/packages/tegel-light"] // Make sure to add the correct path to the Tegel Light package on your machine
+  "packages": ["../tegel/packages/tegel-light"] // Make sure to add the correct path to the Tegel Light package on your machine
 }
 ```
 
