@@ -108,3 +108,12 @@ tds-button {
   );
   @include mode-variant('secondary', --button-white, --button-white);
 }
+
+tds-button,
+.scania tds-button {
+  --button-outline-width: 2px;
+}
+
+.traton tds-button {
+  --button-outline-width: 4px;
+}

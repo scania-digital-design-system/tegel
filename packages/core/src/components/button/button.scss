@@ -1,7 +1,6 @@
 // TODO: Refactor this code so it is more readable and easy to maintain
 
 @import '../../mixins/box-sizing';
-@import '../../mixins/focus-state';
 @import '../../../../../typography/utilities/typography-utility';
 @import './button-mixins';
 
@@ -58,8 +57,8 @@ $iconProps: (fill, color);
 }
 
 @mixin tds-focus-state {
-  outline: 2px solid var(--color-foreground-border-accent-focus);
-  outline-offset: -2px;
+  outline: var(--button-outline-width) solid var(--color-foreground-border-accent-focus);
+  outline-offset: calc(var(--button-outline-width) * -1);
 }
 
 @mixin icon-slot($size, $margin, $dimension) {
