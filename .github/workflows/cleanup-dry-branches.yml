@@ -4,16 +4,28 @@ on:
   schedule:
     - cron: '0 4 * * 1-5' # Runs every weekday at 06:00 CET/CEST (04:00 UTC)
   workflow_dispatch:
+  push:
+    branches:
+      - feat/CDEP-845-cleanup-dry-branches-workflow
 
 jobs:
   cleanup:
     runs-on: ubuntu-latest
     steps:
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /usr/share/keyrings/githubcli-archive-keyring.gpg >/dev/null
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install -y gh
+
       - name: Remove old dry-run branches
         env:
           GH_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
-          echo "🔍 Looking for dry-run branches older than 2 days..."
+          echo "Looking for dry-run branches older than 2 days..."
 
           gh api repos/${{ github.repository }}/branches \
             | jq -r '.[] | select(.name | test("-dry-run-[0-9]{8}-[0-9]{4}$")) | .name' \
@@ -21,7 +33,7 @@ jobs:
                 timestamp=$(echo "$branch" | grep -oE '[0-9]{8}-[0-9]{4}')
                 branch_date=$(date -d "${timestamp:0:8} ${timestamp:9:2}:${timestamp:11:2}" +%s || echo 0)
                 now=$(date +%s)
-                age=$(( (now - branch_date) / 86400 ))
+                age=$(( (now - branch_date) / 3600 ))
                 if [ "$branch_date" -eq 0 ]; then
                   echo "⚠️ Unable to parse timestamp for $branch — skipping"
                   continue
