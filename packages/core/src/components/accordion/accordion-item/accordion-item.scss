@@ -142,6 +142,8 @@
   .tds-accordion-item {
     @include tds-focus-state;
 
+    background-color: var(--tds-accordion-background-focus);
+
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
       background-color: var(--tds-accordion-background-focus);
@@ -157,10 +159,16 @@
   }
 }
 
-:host(:active) {
-  .tds-accordion-header-icon-start,
-  .tds-accordion-header-icon-end {
-    background-color: var(--tds-accordion-background-active);
-    outline: none;
-  }
+.tds-accordion-item:has(:hover) {
+  background-color: var(--tds-accordion-background-hover);
+}
+
+.tds-accordion-item:has(.tds-accordion-header-icon-start:active),
+.tds-accordion-item:has(.tds-accordion-header-icon-end:active) {
+  background-color: var(--tds-accordion-background-active);
+}
+
+.tds-accordion-header-icon-start:active,
+.tds-accordion-header-icon-end:active {
+  outline: none;
 }
