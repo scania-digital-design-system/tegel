@@ -1,4 +1,5 @@
 packages/core/dist
+packages/core/dist-styles
 packages/core/www
 packages/core/loader
 packages/core/components
