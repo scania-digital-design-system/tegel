@@ -71,7 +71,7 @@ tds-button {
   --button-ghost-outline-color-focus: var(--color-foreground-border-accent-focus);
   --button-ghost-background-disabled: var(--button-transparent);
   --button-ghost-color-disabled: var(--color-foreground-text-disabled);
-  --button-ghost-border-color-disabled: var(--button-transparent);
+  --button-ghost-border-color-disabled: var(--color-foreground-border-discrete);
 
   /* ICON */
   --button-icon-ghost-fill: var(--color-foreground-icon-strong);
