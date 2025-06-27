@@ -38,7 +38,7 @@ jobs:
                   echo "⚠️ Unable to parse timestamp for $branch — skipping"
                   continue
                 fi
-                if [ "$age" -gt 2 ]; then
+                if [ "$age" -gt 0 ]; then
                   echo "🗑 Deleting branch $branch (age: $age days)"
                   git push --no-verify origin --delete "$branch"
                 else
