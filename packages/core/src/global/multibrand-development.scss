@@ -5,11 +5,11 @@
  * It is not used in the production environment.
  */
 
-@import 'scania-variables';
-@import 'traton-variables';
-
 /* global one is needed for now , later one it can be removed, while core should remain */
 @import 'global';
+
+@import 'scania-variables';
+@import 'traton-variables';
 @import 'core';
 
 /*
