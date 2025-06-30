@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../formatHtmlPreview';
 
 export default {
-  title: 'Patterns/Navigation',
+  title: 'Patterns/Navigation/Few Navigation Items',
   parameters: {
     layout: 'fullscreen',
     docs: {
