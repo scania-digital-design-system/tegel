@@ -1,6 +1,6 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/box-sizing';
-@import '../../../../../typography/utilities/typography-utility';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
