@@ -1,5 +1,6 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
@@ -10,8 +11,8 @@
   .dropdown-option {
     color: var(--dropdown-text);
     border-bottom: 1px solid var(--dropdown-option-border);
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include detail-02;
+
     overflow-wrap: anywhere;
     transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
