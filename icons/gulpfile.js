@@ -15,6 +15,7 @@ const iconFolders = brands.map((brand) => `./src/svg/${brand}/*.svg`); // Paths 
 const tempFolder = 'temp'; // Temporary folder for processing SVGs
 const iconComponentFolder = '../packages/core/src/components/icon/'; // Output folder for icon components
 const typesFolder = '../packages/core/src/types/'; // Output folder for TypeScript types
+const tegelLightIconFolder = '../packages/core/src/tegel-light/components/tl-icon/'; // Output folder for Tegel Light icons
 
 const runTimestamp = Math.round(Date.now() / 1000);
 // Brand-specific font names
@@ -172,12 +173,77 @@ async function generateIcons() {
       `${typesFolder}/${brand.charAt(0).toUpperCase() + brand.slice(1)}Icons.ts`,
       iconNameType,
     );
+
+    // Resolve correct output folder for brand SCSS files
+    const tokensBrandFolder = path.resolve(__dirname, '../tokens/scss/', brand);
+    fs.mkdirSync(tokensBrandFolder, { recursive: true });
+
+    // Generate SCSS variable definitions (primitive)
+    const scssVars = [
+      `/**`,
+      ` * Do not edit directly, this file was auto-generated.`,
+      ` */`,
+      '',
+      ':root {',
+      ...iconsNamesArray.map((icon) => {
+        const safeName = icon.replace(/\s+/g, '-');
+        const safeFile = icon.replace(/\s+/g, '%20');
+        return `  --${brand}-icon-${safeName}-svg: url(./assets/icons/${brand}/${safeFile}.svg);`;
+      }),
+      '}',
+      '',
+    ].join('\n');
+
+    // Write primitive SCSS file
+    fs.writeFileSync(`${tokensBrandFolder}/${brand}-icons-primitive.scss`, scssVars);
+
+    // Generate agnostic SCSS file (aliasing root/brand vars)
+    const isDefaultBrand = brand === 'scania';
+    const selector = isDefaultBrand ? ':root,\n.' + brand : '.' + brand;
+
+    const agnosticScss = [
+      `/**`,
+      ` * Do not edit directly, this file was auto-generated.`,
+      ` */`,
+      '',
+      `${selector} {`,
+      ...iconsNamesArray.map((icon) => {
+        const safeName = icon.replace(/\s+/g, '-');
+        return `  --icon-${safeName}-svg: var(--${brand}-icon-${safeName}-svg);`;
+      }),
+      '}',
+      '',
+    ].join('\n');
+
+    // Write agnostic SCSS file
+    fs.writeFileSync(`${tokensBrandFolder}/${brand}-icons.scss`, agnosticScss);
+
+    // Collect all unique icon names from all brands
+    const allUniqueIcons = Array.from(
+      new Set(brands.flatMap((brand) => allIconNames[brand])),
+    ).sort(); // Optional: sort for consistency
+
+    // Generate SCSS variable list for Tegel Light
+    const allIconsScss = [
+      `/**`,
+      ` * Do not edit directly, this file was auto-generated.`,
+      ` */`,
+      '',
+      `$icons: (${allUniqueIcons.join(', ')});`,
+      '',
+    ].join('\n');
+
+    // Ensure the folder exists
+    fs.mkdirSync(tegelLightIconFolder, { recursive: true });
+
+    // Write the SCSS list file
+    fs.writeFileSync(`${tegelLightIconFolder}/_icon-list.scss`, allIconsScss);
   }
 
   // Create combined type definition for all brands
-  const combinedType = `export type IconNames = ${brands
-    .map((brand) => `${brand.charAt(0).toUpperCase() + brand.slice(1)}IconNames`)
-    .join(' | ')};`;
+  const combinedType = `import { ScaniaIconNames } from './ScaniaIcons';
+import { TratonIconNames } from './TratonIcons';
+export type IconNames = ScaniaIconNames | TratonIconNames;`;
   fs.writeFileSync(`${typesFolder}/Icons.ts`, combinedType);
 }
 

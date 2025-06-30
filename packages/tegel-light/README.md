@@ -7,7 +7,7 @@ Tegel Light is a pure CSS alternative to Tegel’s component library, providing 
 Tegel Light is:
 
 - A **styles-only** component system.
-- Built using **SCSS**, compiled to CSS files.
+- Built using **SCSS**, compiled to **CSS** files.
 - Aligned to the same design tokens & variables as the original Tegel.
 
 ### How It Works
@@ -20,6 +20,10 @@ To **generate** the `@scania/tegel-light` library, first navigate to project roo
 npm i
 ```
 then navigate to `packages/core` and run: 
+
+```bash
+npm i
+```
 
 ```bash
 npm run build:tegel-light
@@ -41,12 +45,12 @@ The following scripts are used during build of `Tegel Light`:
 
 - **packages/core/scripts/update-tegel-light-exports.js**: Handling update of exports in `packages/tegel-light/package.json`
 
--**packages/core/scripts/copy-tegel-light-assets.js**: Handling copy and output of assets neccessary for the `Tegel Light` library.
+- **packages/core/scripts/copy-tegel-light-assets.js**: Handling copy and output of assets neccessary for the `Tegel Light` library.
 
 - All global styles, variables etc are compiled into a single `global.css` file.
 - Each component (e.g., tl-button, tl-header) lives in its own folder with `.scss` files and is compiled into a separate CSS file.
 - Components classes are prefixed with `tl-` to avoid conflicts with other styles.
-- Classes follow BEM convention: `tl-button`, `tl-button__label`, `tl-button--primary` etc.
+- Classes follow BEM convention: `tl-button`, `tl-button__label`, `tl-button--primary` etc. [Read more about Tegel Light **Scss** conventions here](#tegel-light-scss-conventions)
 
 
 ### Example usage in consumer app (Examples from Next.js application)
@@ -60,44 +64,44 @@ The following scripts are used during build of `Tegel Light`:
 
 - For components you import only the styles you need:
 
-```tsx
-  // TegelButton.tsx
-import clsx from "clsx"
-import "@scania/tegel-light/tl-button.css"
+  ```tsx
+    // TegelButton.tsx
+  import clsx from "clsx"
+  import "@scania/tegel-light/tl-button.css"
 
-const TegelButton = ({
-  type = "primary",
-  size = "md",
-  fullBleed = false,
-  disabled = false,
-  label = "Label",
-  className,
-  onClick = () => {}
-}: {
-  type: "primary" | "secondary" | "ghost" | "danger"
-  size: "xs" | "sm" | "md" | "lg"
-  fullBleed?: boolean
-  disabled?: boolean
-  label: string
-  onClick?: () => void
-}) => {
-  return (
-    <button
-      disabled={disabled}
-      className={clsx(
-        `tl-button tl-button--${type} tl-button--${size}`,
-        `${fullBleed ? "tl-button--fullbleed" : ""}`,
-        `${disabled ? "tl-button--disabled" : ""}`
-      )}
-      onClick={onClick}
-    >
-      <span className="tl-button__label">{label}</span>
-    </button>
-  )
-}
+  const TegelButton = ({
+    type = "primary",
+    size = "md",
+    fullBleed = false,
+    disabled = false,
+    label = "Label",
+    className,
+    onClick = () => {}
+  }: {
+    type: "primary" | "secondary" | "ghost" | "danger"
+    size: "xs" | "sm" | "md" | "lg"
+    fullBleed?: boolean
+    disabled?: boolean
+    label: string
+    onClick?: () => void
+  }) => {
+    return (
+      <button
+        disabled={disabled}
+        className={clsx(
+          `tl-button tl-button--${type} tl-button--${size}`,
+          `${fullBleed ? "tl-button--fullbleed" : ""}`,
+          `${disabled ? "tl-button--disabled" : ""}`
+        )}
+        onClick={onClick}
+      >
+        <span className="tl-button__label">{label}</span>
+      </button>
+    )
+  }
 
-export default TegelButton
-```
+  export default TegelButton
+  ```
 
 Checkout the Tegel Storybook documentation for more examples and usage.
 
@@ -106,7 +110,7 @@ Checkout the Tegel Storybook documentation for more examples and usage.
 If published to NPM:
 
 ```bash
-pnpm add @scania/tegel-light
+npm install @scania/tegel-light
 ```
 
 Otherwise, symlink the local package directly into your app:
@@ -117,7 +121,7 @@ In the root of your app, create a `link.config.json` file with the following con
 
 ```json
 {
-  "packages": ["@scania/tegel-light", "../tegel/packages/tegel-light"] // Make sure to add the correct path to the Tegel Light package on your machine
+  "packages": ["../tegel/packages/tegel-light"] // Make sure to add the correct path to the Tegel Light package on your machine
 }
 ```
 
@@ -145,4 +149,288 @@ npm link @scania/tegel-light
 
 The above command will symlink the Tegel Light package into your app. Check node_modules to see if the package is linked correctly.
 You will now be able to import Tegel Light components in your app.
+
+---
+
+## Tegel Light SCSS Conventions
+
+These conventions define a clear, maintainable, and scalable SCSS structure for the Tegel Light design system, using BEM principles and Sass features to support consistency and readability.
+
+
+### BEM Structure & Naming
+
+We use strict BEM naming for class structure:
+
+* `.block`
+* `.block__element`
+* `.block--modifier`
+* `.block__element--modifier`
+
+No abbreviations or non-BEM patterns allowed.
+
+---
+
+### Selector Conventions
+
+#### Base Selectors
+
+```scss
+.tl-button {
+  ...
+  }
+.tl-button__icon { 
+  ...
+  }
+```
+
+* Always define base classes as **flat selectors**.
+* Avoid using `&__element` — write elements as top-level selectors for better searchability and clarity.
+
+```scss
+// ❌ Avoid
+.tl-button {
+  &__icon { 
+    ...
+  }
+}
+
+// ✅ Instead
+.tl-button__icon { 
+    ...
+  }
+
+```
+
+#### Class usage
+BEM modifiers like `.tl-button--primary` are not standalone - they must always be used together with the base class (`.tl-button`)
+
+##### ✅ Correct Usage
+
+```html
+<button class="tl-button tl-button--primary">
+  <span class="tl-button__label">Label</span>
+</button>
+
+```
+
+##### ❌ Incorrect Usage
+
+```html
+<button class="tl-button--primary">Label</button>
+```
+
+Always include the base class (.tl-button) when using a modifier like --primary, --disabled, --lg, etc. Modifiers are designed to extend or tweak the base styling, not replace it.
+
+#### Modifiers
+
+Use `&--modifier` **only when the modifier affects the current scope** (block or element itself):
+
+```scss
+.tl-button {
+  &--primary {
+    background-color: var(--primary);
+  }
+}
+
+.tl-button__icon {
+  &--small {
+    font-size: 0.75rem;
+  }
+}
+```
+
+If the modifier affects **other parts** of the component (e.g., an element inside a block), write it in the **affected element's** selector:
+
+```scss
+.tl-button__icon {
+  .tl-button--primary & {
+    fill: currentColor;
+  }
+}
+```
+
+This keeps side effects localized and improves traceability.
+
+##### ❌ Avoid nesting element selectors inside modifiers
+
+```scss
+.tl-button {
+  &--primary {
+    &__icon { // ❌ avoid this
+      ... 
+    } 
+  }
+}
+```
+
+##### ✅ Instead, do this -- place modifier styles in the affected element's selector
+
+```scss
+.tl-button__icon {
+  .tl-button--primary & {
+    ...
+  }
+}
+
+```
+
+---
+
+##  Nesting Rules
+
+
+### ✅ Allowed Uses of `&`
+
+* `&--modifier` (when scoped to self)
+* `&:hover`, `&:focus-visible`, `&:disabled`
+* `&::before`, `&::after`, `&::placeholder`, etc.
+* `&:has(...)` or similar pseudo-classes
+* Media queries (if nested inside a rule)
+
+### ❌ Disallowed
+
+* `&__element` nesting
+* Modifier selectors that affect other scopes
+
+
+
+---
+
+##  TL;DR
+
+| Type                   | Style                         | Example                 |
+| ---------------------- | ----------------------------- | ----------------------- |
+| Block                  | Flat                          | `.tl-button {}`         |
+| Element                | Flat                          | `.tl-button__icon {}`   |
+| Modifier (self-scoped) | `&--mod` inside block/element | `&--primary {}`         |
+| Modifier (cross-scope) | Contextual selector           | `.tl-button--primary &` |
+| Pseudo/state           | Nested with `&`               | `&:hover {}`            |
+
+---
+
+This convention aims to ensure SCSS is maintainable, consistent, and intuitive across all of Tegel Light.
+
+
+Let us know if you find edge cases that challenge these conventions — this is a living document.
+
+## Creating a New Tegel Light Component
+
+Follow these steps to create a new component in Tegel Light.
+
+### 1. Set Up SCSS
+Inside `packages/core/src/tegel-light/components/`, create a folder matching your component name (use kebab-case and prefix with `tl-`). Add the main SCSS file and any optional partials:
+
+<pre>
+packages/core/src/tegel-light/components/ 
+
+└── tl-alert/
+    ├── tl-alert.scss # main entrypoint (includes partials) 
+    ├── _variables.scss # optional: internal tokens or values 
+</pre>
+
+
+All **partial files** (helpers) should be prefixed with an underscore (`_`) and be **imported** into the main SCSS file (`tl-alert.scss`). These partials will **not be compiled individually**.
+
+Example main file:
+
+```scss
+// packages/core/src/tegel-light/components/tl-alert/tl-alert.scss
+
+@import './variables';
+
+.tl-alert {
+  background-color: blue;
+
+  &--success {
+    background-color: green;
+  }
+
+  &--error {
+    background-color: red;
+  }
+}
+```
+
+### 2. Register SCSS to components folder
+Open `core/src/global/tegel-light-components.scss` and import your new SCSS file there to include it in the build and Storybook.
+
+```scss
+@import '../tegel-light/components/tl-alert/tl-alert';
+```
+
+This ensures your component is available in Storybook.
+
+### 3. Create a Storybook Story
+
+To document and test the component, create a `.stories.tsx` file in inside the component’s folder. Match the style of existing stories, like `tl-button` or `tl-message`.
+
+```tsx
+
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+
+export default {
+  title: 'Tegel Light (CSS)/Alert',
+  parameters: {
+    layout: 'centered',
+  },
+  argTypes: {
+    variant: {
+      name: 'Variant',
+      description: 'Visual variant of the alert',
+      control: {
+        type: 'radio',
+      },
+      options: ['info', 'success', 'error'],
+      table: {
+        defaultValue: { summary: 'info' },
+      },
+    },
+    message: {
+      name: 'Message',
+      description: 'Text content of the alert',
+      control: 'text',
+      table: {
+        defaultValue: { summary: 'Hello World' },
+      },
+    },
+  },
+  args: {
+    variant: 'info',
+    message: 'Hello World',
+  },
+};
+
+const Template = ({ variant, message }) =>
+  formatHtmlPreview(`
+      <!-- Required stylesheet 
+    "@scania/tegel-light/tl-alert.css"
+  -->
+
+    <span class="tl-alert tl-alert--${variant}">${message}</span>
+  `);
+
+export const Default = Template.bind({});
+
+```
+
+### 4. Verify the build
+Once your SCSS are in place, verify that the component compiles correctly.
+
+In the `packages/core` directory, run:
+
+```bash
+npm run build:tegel-light
+```
+
+This will:
+
+- Compile all Tegel Light SCSS files.
+
+- Output the compiled .css files into the packages/tegel-light/dist directory.
+
+- Automatically copy required assets and update the exports in `packages/tegel-light/package.json`.
+
+After the build, check `packages/tegel-light/dist/components/`: You should see a CSS file for your new component.
+
+
 

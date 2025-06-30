@@ -22,6 +22,10 @@ function copyDirectory(source, target) {
   fs.mkdirSync(target, { recursive: true });
 
   fs.readdirSync(source).forEach((file) => {
+    // Skip macOS metadata files
+    if (file === '.DS_Store') {
+      return;
+    }
     const srcPath = path.join(source, file);
     const destPath = path.join(target, file);
 

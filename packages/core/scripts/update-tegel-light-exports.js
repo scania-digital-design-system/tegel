@@ -20,6 +20,12 @@ if (!packageJson.exports) packageJson.exports = {};
 //  Add the global CSS export
 packageJson.exports['./global.css'] = './dist/global.css';
 
+// Add the Scania variables CSS export
+packageJson.exports['./scania-variables.css'] = './dist/scania-variables.css';
+
+// Add the Traton variables CSS export
+packageJson.exports['./traton-variables.css'] = './dist/traton-variables.css';
+
 // Iterate over the component CSS files and add them to exports
 fs.readdirSync(componentsCssDir).forEach((file) => {
   if (file.endsWith('.css')) {
