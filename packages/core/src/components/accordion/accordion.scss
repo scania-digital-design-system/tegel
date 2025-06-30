@@ -51,3 +51,8 @@
 :host(.hide-last-border:last-child) {
   border-bottom: none;
 }
+
+// Override global secondary variant background for accordion
+:host(.tds-mode-variant-secondary) {
+  background-color: transparent !important;
+}
