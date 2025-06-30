@@ -38,16 +38,17 @@ const Template = ({
   isBentoSelected,
 }) =>
   formatHtmlPreview(`
-    <script>
-        import "@scania/tegel-light/tl-header.css";
-        ${includeTitle ? 'import "@scania/tegel-light/tl-header-title.css";' : ''}
+
+    <!-- Required stylesheet 
+        "@scania/tegel-light/tl-header.css";
+        ${includeTitle ? '@scania/tegel-light/tl-header-title.css' : ''}
         ${
           includeHamburger || includeBento || includeBrandSymbol
-            ? 'import "@scania/tegel-light/tl-header-item.css";'
+            ? '@scania/tegel-light/tl-header-item.css'
             : ''
         }
-        ${includeBrandSymbol ? 'import "@scania/tegel-light/tl-header-brand-symbol.css";' : ''}
-    </script>
+        ${includeBrandSymbol ? '@scania/tegel-light/tl-header-brand-symbol.css' : ''}
+-->
     
     <header class="tl-header">
       <nav class="tl-header__nav">

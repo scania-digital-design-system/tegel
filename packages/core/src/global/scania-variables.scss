@@ -22,3 +22,9 @@
 @import '../../../../typography/scania-fonts';
 @import '../../../../typography/scania-fonts-vars';
 @import '../../../../typography/scania-fonts-selectors';
+
+/* Scania primitive icon tokens */
+@import '../../../../tokens/scss/scania/scania-icons-primitive';
+
+/* Scania icon tokens */
+@import '../../../../tokens/scss/scania/scania-icons';
