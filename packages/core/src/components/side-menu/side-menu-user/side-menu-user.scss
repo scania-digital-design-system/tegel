@@ -1,10 +1,6 @@
 :host {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   height: 68px;
-
-  tds-side-menu-user-image {
-    margin-left: -4px;
-  }
 }
