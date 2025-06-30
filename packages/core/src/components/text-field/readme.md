@@ -63,7 +63,6 @@ Type: `Promise<void>`
 
 ## Dependencies
 
-
 ### Depends on
 
 - [tds-icon](../icon)
