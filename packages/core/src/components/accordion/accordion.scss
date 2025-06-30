@@ -52,7 +52,10 @@
   border-bottom: none;
 }
 
-// Override global secondary variant background for accordion
 :host(.tds-mode-variant-secondary) {
+  background-color: transparent !important;
+}
+
+:host(.tds-mode-variant-primary) {
   background-color: transparent !important;
 }
