@@ -17,6 +17,8 @@ export class TdsSideMenuDropdownListItem {
 
   @State() dropdownHasIcon: boolean = false;
 
+  @State() dropdownHasUser: boolean = false;
+
   @State() collapsed: boolean = false;
 
   private sideMenuEl: HTMLTdsSideMenuElement;
@@ -33,6 +35,7 @@ export class TdsSideMenuDropdownListItem {
 
   componentDidLoad() {
     const dropdownEl = this.host.closest('tds-side-menu-dropdown');
+    const hasUserMenu = dropdownEl?.querySelector('tds-side-menu-user');
     const dropdownBtnIconSlotEl = dropdownEl.shadowRoot.querySelector(
       'slot[name="icon"]',
     ) as HTMLSlotElement;
@@ -44,6 +47,10 @@ export class TdsSideMenuDropdownListItem {
     if (hasBtnIcon && !btnIconIsUserImage) {
       this.dropdownHasIcon = true;
     }
+
+    if (hasUserMenu) {
+      this.dropdownHasUser = true;
+    }
   }
 
   render() {
@@ -54,6 +61,7 @@ export class TdsSideMenuDropdownListItem {
             'component': true,
             'component-selected': this.selected,
             'component-dropdown-has-icon': this.dropdownHasIcon,
+            'component-dropdown-has-user': this.dropdownHasUser,
             'component-collapsed': this.collapsed,
           }}
         >
