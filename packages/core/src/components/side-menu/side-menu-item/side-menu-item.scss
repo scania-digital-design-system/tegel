@@ -15,8 +15,26 @@
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 0 24px;
+      gap: 10px;
+      padding: 0 22px;
+      border: none;
+      background-color: var(--tds-sidebar-side-menu-background-cover);
+      font: var(--tds-headline-07);
+      letter-spacing: var(--tds-headline-07-ls);
+      color: var(--tds-sidebar-side-menu-single-item-color);
+      cursor: pointer;
+    }
+
+    ::slotted(tds-side-menu-user),
+    &-has-user ::slotted(button) {
+      all: unset;
+      box-sizing: border-box;
+      height: 68px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 22px 0 16px;
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
       font: var(--tds-headline-07);
@@ -61,10 +79,20 @@
 
     &-selected:not(&-active) {
       ::slotted(a),
-      ::slotted(button) {
-        border-left: 4px solid var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
-        padding-left: 20px;
+      ::slotted(button),
+      ::slotted(tds-side-menu-user) {
+        position: relative;
         background-color: var(--tds-sidebar-item-state-selected);
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+        }
       }
     }
   }
