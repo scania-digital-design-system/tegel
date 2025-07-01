@@ -55,6 +55,8 @@ tds-icon.edit-icon {
 
 ::slotted(input:disabled) {
   background-color: var(--table-input-disabled);
+  cursor: not-allowed;
+  color: var(--table-input-text-disabled);
 }
 
 ::slotted(input:focus) {
