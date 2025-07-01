@@ -68,6 +68,7 @@ tds-dropdown {
 
 tds-table-footer {
   // Colors - Base
+  --dropdown-background: var(--component-table-pagination-dropdown);
   --dropdown-option-background: var(--color-brand-neutral-white);
 
   // Colors - Border

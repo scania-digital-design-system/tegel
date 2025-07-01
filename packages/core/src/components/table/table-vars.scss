@@ -38,7 +38,7 @@ tds-table {
 
   /* Table-footer */
   --table-footer: var(--component-table-pagination-base);
-  --table-footer-page-selector-input: var(--color-background-layer-02);
+  --table-footer-page-selector-input: var(--component-table-pagination-dropdown);
   --table-footer-page-selector-input-hover: var(--color-background-layer-03);
   --table-footer-page-selector-input-disabled: var(--color-background-layer-01);
   --table-footer-page-selector-icon: var(--color-foreground-icon-strong);

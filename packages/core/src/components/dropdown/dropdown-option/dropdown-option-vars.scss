@@ -20,3 +20,10 @@ tds-dropdown-option {
     --dropdown-option-background: var(--color-background-layer-02);
   }
 }
+
+tds-table-footer {
+  --dropdown-option-border: var(--color-foreground-border-discrete);
+  --dropdown-option-background: var(--color-background-layer-01);
+  --dropdown-option-background-hover: var(--color-background-surface-500);
+  --dropdown-option-background-selected: var(--color-background-surface-400);
+}
