@@ -115,10 +115,8 @@ export class TdsTableBodyInputWrapper {
           'tds-table__compact': this.compactDesign,
         }}
       >
-        {this.renderSlot ? <slot onSlotchange={() => this.handleSlotChange()} /> : null}
-        {this.showIcon ? (
-          <tds-icon class="edit-icon" slot="icon" size="16px" name="edit"></tds-icon>
-        ) : null}
+        {this.renderSlot && <slot onSlotchange={() => this.handleSlotChange()} />}
+        {this.showIcon && <tds-icon class="edit-icon" slot="icon" size="16px" name="edit" />}
       </Host>
     );
   }
