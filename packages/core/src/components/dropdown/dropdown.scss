@@ -2,70 +2,41 @@
 @import './dropdown-button';
 @import './dropdown-filter';
 @import '../../mixins/scrollbar';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
   position: relative;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
 
   .label-outside {
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
-    color: var(--tds-dropdown-label-color);
+    @include detail-05;
+
+    color: var(--dropdown-text);
     margin-bottom: 8px;
 
     &.disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled);
     }
   }
 
   .dropdown-select {
     position: relative;
 
-    button {
-      transition: border-bottom-color var(--tds-motion-duration-fast-02)
-        var(--tds-motion-easing-scania);
-    }
-
-    button:focus {
-      border-bottom-color: var(--tds-dropdown-border-bottom);
-    }
-
-    button:hover {
-      border-bottom-color: var(--tds-dropdown-border-bottom-hover);
-    }
-
-    button {
-      border-bottom-color: var(--tds-dropdown-border-bottom);
-    }
-
-    button.error {
-      border-bottom-color: var(--tds-dropdown-error);
-    }
-
-    button.error:focus {
-      border-bottom-color: transparent;
-    }
-
     &.disabled {
       .label-inside,
       .placeholder,
       .label-inside-as-placeholder,
       .value-wrapper {
-        color: var(--tds-dropdown-disabled-color);
-      }
-
-      button {
-        border: none;
+        color: var(--dropdown-disabled);
       }
     }
 
     .label-inside {
       position: absolute;
-      font: var(--tds-detail-07);
-      letter-spacing: var(--tds-detail-07-ls);
-      color: var(--tds-dropdown-label-inside-color);
+      @include detail-07;
+
+      color: var(--dropdown-text);
 
       &.lg {
         top: 12px;
@@ -103,12 +74,12 @@
     }
 
     .label-inside-as-placeholder {
-      color: var(--tds-dropdown-placeholder-color);
+      color: var(--dropdown-placeholder);
 
       &.selected {
         position: absolute;
-        font: var(--tds-detail-07);
-        letter-spacing: var(--tds-detail-07-ls);
+        @include detail-07;
+
         transition: all 0.2s ease-in-out;
 
         &.lg {
@@ -148,30 +119,30 @@
 
   .helper {
     margin-top: 4px;
-    color: var(--tds-dropdown-helper-color);
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    color: var(--dropdown-helper-text);
+    @include detail-05;
+
     display: flex;
     align-items: center;
     gap: 8px;
 
     &.error {
-      color: var(--tds-dropdown-error);
+      color: var(--dropdown-error);
     }
 
     &.disabled {
-      color: var(--tds-dropdown-disabled-color);
+      color: var(--dropdown-disabled);
     }
   }
 
   .dropdown-list {
     z-index: tds-z-index(dropdown);
     position: absolute;
-    margin-top: 1px;
+    margin-top: 2px;
     width: 100%;
     transform-origin: top;
     box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
-    border-radius: var(--tds-dropdown-list-border-radius-down);
+    border-radius: var(--dropdown-list-border-radius-down);
     overflow-y: auto;
     transform: scaleY(0);
     pointer-events: none;
@@ -201,7 +172,7 @@
       display: flex;
       flex-direction: column-reverse;
       box-shadow: rgb(0 0 0 / 10%) 0 -1px 3px 0;
-      border-radius: var(--tds-dropdown-list-border-radius-up);
+      border-radius: var(--dropdown-list-border-radius-up);
 
       &.label-outside {
         bottom: calc(100% - 24px);
@@ -229,12 +200,12 @@
     }
 
     .no-result {
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
+
       display: flex;
       align-items: center;
       padding: 0 16px;
-      background-color: var(--tds-dropdown-bg);
+      background-color: var(--dropdown-background);
 
       &.lg {
         height: 56px;
@@ -255,7 +226,11 @@
   }
 
   .menu-icon {
-    color: var(--tds-dropdown-menu-icon-color);
+    color: var(--dropdown-icon);
+
+    &.disabled {
+      color: var(--dropdown-disabled);
+    }
   }
 
   tds-icon {

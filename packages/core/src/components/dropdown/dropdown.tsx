@@ -720,10 +720,11 @@ export class TdsDropdown {
                 class={{
                   'clear-icon': true,
                   'hide': !(this.open && this.inputElement.value !== ''),
+                  'disabled': this.disabled
                 }}
                 name="cross"
                 size="16px"
-              ></tds-icon>
+              />
               <tds-icon
                 tdsAriaHidden
                 role="button"
@@ -735,10 +736,10 @@ export class TdsDropdown {
                     this.handleToggleOpen();
                   }
                 }}
-                class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                class={`menu-icon ${this.open ? 'open' : 'closed'} ${this.disabled ? 'disabled' : ''}`}
                 name="chevron_down"
                 size="16px"
-              ></tds-icon>
+              />
             </div>
           ) : (
             <button
@@ -783,10 +784,10 @@ export class TdsDropdown {
                 <tds-icon
                   aria-label="Open/Close dropdown"
                   svgTitle="Open/Close dropdown"
-                  class={`menu-icon ${this.open ? 'open' : 'closed'}`}
+                  class={`menu-icon ${this.open ? 'open' : 'closed'} ${this.disabled ? 'disabled' : ''}`}
                   name="chevron_down"
                   size="16px"
-                ></tds-icon>
+                />
               </div>
             </button>
           )}
@@ -828,7 +829,7 @@ export class TdsDropdown {
               disabled: this.disabled,
             }}
           >
-            {this.error && <tds-icon name="error" size="16px"></tds-icon>}
+            {this.error && <tds-icon name="error" size="16px"/>}
             {this.helper}
           </div>
         )}

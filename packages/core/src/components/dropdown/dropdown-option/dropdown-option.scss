@@ -1,26 +1,27 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
 
   display: block;
-  background-color: var(--tds-dropdown-option-background);
+  background-color: var(--dropdown-option-background);
 
   .dropdown-option {
-    color: var(--tds-dropdown-option-color);
-    border-bottom: 1px solid var(--tds-dropdown-option-border);
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    color: var(--dropdown-text);
+    border-bottom: 1px solid var(--dropdown-option-border);
+    @include detail-02;
+
     overflow-wrap: anywhere;
     transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &.selected {
-      background-color: var(--tds-dropdown-option-background-selected);
+      background-color: var(--dropdown-option-background-selected);
     }
 
     &.disabled {
-      color: var(--tds-dropdown-option-color-disabled);
+      color: var(--dropdown-option-disabled);
     }
 
     & button:focus {
@@ -83,12 +84,12 @@
     }
 
     &:hover {
-      background-color: var(--tds-dropdown-option-background-hover);
+      background-color: var(--dropdown-option-background-hover);
       cursor: pointer;
     }
 
     &:hover.disabled {
-      background-color: var(--tds-dropdown-option-background);
+      background-color: var(--dropdown-option-background);
       cursor: not-allowed;
     }
   }
