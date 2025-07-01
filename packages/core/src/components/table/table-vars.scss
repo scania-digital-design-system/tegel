@@ -25,14 +25,16 @@ tds-table {
   --table-body-row-selected: var(--color-background-surface-300);
   --table-body-row-selected-hover: var(--color-background-surface-400);
 
-  /* Table input */
+  /* Table input body */
   --table-input: var(--color-background-layer-02);
   --table-input-focus: blue;
   --table-input-hover: green;
   --table-input-disabled: lightblue;
-  --table-input-header-icon: purple;
-  --table-input-header-placeholder: deeppink;
-  --table-input-header-focus: gray;
+
+  /* Table input header */
+  --table-input-header-icon: var(--color-foreground-icon-soft);
+  --table-input-header-placeholder: var(--color-foreground-text-subtle);
+  --table-input-header-focus: var(--color-background-surface-400);
 
   /* Table-footer */
   --table-footer: var(--component-table-pagination-base);
