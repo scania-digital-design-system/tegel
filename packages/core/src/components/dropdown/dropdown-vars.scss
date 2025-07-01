@@ -1,71 +1,86 @@
-:root,
-.tds-mode-light {
-  --tds-dropdown-bg: var(--tds-grey-50);
-  --tds-dropdown-border-bottom: var(--tds-grey-600);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-800);
-  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-868);
-  --tds-dropdown-value-color: var(--tds-grey-958);
-  --tds-dropdown-label-color: var(--tds-grey-958);
-  --tds-dropdown-label-inside-color: var(--tds-grey-958);
-  --tds-dropdown-helper-color: var(--tds-grey-700);
-  --tds-dropdown-placeholder-color: var(--tds-grey-500);
-  --tds-dropdown-disabled-color: var(--tds-grey-400);
-  --tds-dropdown-filter-input-color: var(--tds-grey-958);
-  --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
-  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
-    var(--tds-spacing-element-4);
-  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
-    0;
-
-  .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-50);
+tds-dropdown {
+  &.tds-mode-variant-primary {
+    --dropdown-background: var(--color-background-layer-01);
   }
 
-  .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-white);
+  &.tds-mode-variant-secondary {
+    --dropdown-background: var(--color-background-layer-02);
   }
 
-  tds-table-footer {
-    --tds-dropdown-bg: white;
-    --tds-placeholder-margin: var(--tds-spacing-element-8);
-    --tds-dropdown-border-bottom: transparent;
-    --tds-dropdown-border-bottom-hover: transparent;
-    --tds-dropdown-border-bottom-open: transparent;
-    --tds-dropdown-border-radius: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
-  }
+  // Colors - Base
+  --dropdown-background: var(--color-background-layer-01);
+
+  // Colors - Label/Placeholder/Helper
+  --dropdown-text: var(--color-foreground-text-strong);
+  --dropdown-helper-text: var(--color-foreground-text-defined);
+  --dropdown-placeholder: var(--color-foreground-text-subtle);
+  --dropdown-disabled: var(--color-foreground-text-disabled);
+
+  // Colors - Icon
+  --dropdown-icon: var(--color-foreground-icon-strong);
+  --dropdown-clear-icon: var(--color-foreground-icon-subtle);
+
+  // Colors - Error
+  --dropdown-error: var(--color-system-danger-default);
+  --dropdown-error-focus: var(--color-system-danger-subtle);
+
+  // Colors - Border - Default
+  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 1px 0 0 var(--dropdown-error-focus);
+
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
+  --dropdown-list-border-radius-down: 0 0 var(--dropdown-spacing-4) var(--dropdown-spacing-4);
+  --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
 }
 
-.tds-mode-dark {
-  --tds-dropdown-bg: var(--tds-grey-868);
-  --tds-dropdown-border-bottom: var(--tds-grey-600);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-400);
-  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
-  --tds-dropdown-value-color: var(--tds-grey-50);
-  --tds-dropdown-label-color: var(--tds-grey-50);
-  --tds-dropdown-label-inside-color: var(--tds-grey-50);
-  --tds-dropdown-helper-color: var(--tds-grey-500);
-  --tds-dropdown-placeholder-color: var(--tds-grey-600);
-  --tds-dropdown-disabled-color: var(--tds-grey-800);
-  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
-    var(--tds-spacing-element-4);
-  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
-    0;
-  --tds-dropdown-filter-input-color: var(--tds-grey-50);
+.scania tds-dropdown {
+  // Colors - Border - Scania
+  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
+}
 
-  .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-868);
-  }
+.traton tds-dropdown {
+  // Colors - Border - Traton
+  --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 0 0 1px var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
+  --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
+  --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error-focus);
 
-  .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-grey-900);
-  }
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4)
+    var(--dropdown-spacing-4) var(--dropdown-spacing-4);
+}
 
-  tds-table-footer {
-    --tds-dropdown-bg: var(--tds-grey-868);
-    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
-    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
-  }
+tds-table-footer {
+  // Colors - Base
+  --dropdown-option-background: var(--color-brand-neutral-white);
+
+  // Colors - Border
+  --dropdown-border: none;
+  --dropdown-border-hover: none;
+  --dropdown-border-focus: none;
+  --dropdown-border-error: none;
+
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-spacing-8: 8px; // should be replaced when introducing units tokens
+  --placeholder-margin: var(--dropdown-spacing-8);
+  --dropdown-border-radius: var(--dropdown-spacing-4);
+  --dropdown-list-border-radius-down: var(--dropdown-spacing-4);
+  --dropdown-list-border-radius-up: var(--dropdown-spacing-4);
 }
