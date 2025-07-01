@@ -1,5 +1,6 @@
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
@@ -38,8 +39,8 @@
       }
 
       .tds-table__page-selector-input {
-        font: var(--tds-detail-02);
-        letter-spacing: var(--tds-detail-02-ls);
+        @include detail-02;
+
         background-color: var(--table-footer-page-selector-input);
         color: var(--table-text);
         width: 74px;
@@ -67,8 +68,8 @@
       }
 
       .tds-table__footer-text {
-        font: var(--tds-detail-02);
-        letter-spacing: var(--tds-detail-02-ls);
+        @include detail-02;
+
         padding: 1px 8px 0 0;
       }
 

@@ -1,10 +1,11 @@
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host(.tds-table__body-cell) {
   @include tds-box-sizing;
 
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   display: table-cell;
   box-sizing: border-box;
   color: var(--table-text);

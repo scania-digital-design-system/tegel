@@ -1,10 +1,11 @@
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host(.tds-table__header-cell) {
   @include tds-box-sizing;
 
-  font: var(--tds-headline-07);
-  letter-spacing: var(--tds-headline-07-ls);
+  @include headline-07;
+
   display: table-cell;
   text-align: left;
   color: var(--table-text);
@@ -54,8 +55,8 @@
     }
 
     .tds-table__header-button-text {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+      @include headline-07;
+
       text-align: left;
       color: var(--table-text);
     }

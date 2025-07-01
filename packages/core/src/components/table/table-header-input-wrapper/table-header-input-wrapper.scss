@@ -1,3 +1,5 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
   position: relative;
 }
@@ -32,9 +34,9 @@ tds-icon.search-icon {
 }
 
 ::slotted(input) {
+  @include detail-02;
+
   box-sizing: border-box;
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
   color: var(--table-text);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
