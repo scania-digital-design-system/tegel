@@ -23,6 +23,8 @@ export type TratonIconNames =
   | 'refresh'
   | 'search'
   | 'share'
+  | 'skip_backwards'
+  | 'skip_forward'
   | 'sorting'
   | 'star'
   | 'tick'

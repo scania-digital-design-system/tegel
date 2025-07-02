@@ -106,15 +106,17 @@ export default {
     responsiveDesign: false,
     batchArea: formatHtmlPreview(
       `<div slot="start">
-         <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide">
-           <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
-           <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
-           <tds-dropdown-option value="option-3">SLA</tds-dropdown-option>
-         </tds-dropdown>
+        <span style="width: 140px;">
+          <tds-dropdown mode-variant="primary" name="dropdown" placeholder="Data Source" size="sm" animation="slide" fullbleed>
+            <tds-dropdown-option value="option-1">SE</tds-dropdown-option>
+            <tds-dropdown-option disabled value="option-2">CHN</tds-dropdown-option>
+            <tds-dropdown-option value="option-3">SLA</tds-dropdown-option>
+          </tds-dropdown>
+         </span>
       </div>
       <div slot="end" class="tds-u-flex tds-u-align-items-center tds-u-h-100 tds-u-gap1"><tds-button type="ghost" size="sm">
-      <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="settings"></tds-icon>
-    </tds-button><tds-button  type="primary" size="sm" text="Download"></tds-button></div>`,
+      <tds-icon slot="icon" class="tds-btn-icon" size="16px" name="plus" />
+    </tds-button><tds-button  type="primary" size="sm" text="Download" /></div>`,
     ),
     verticalDivider: false,
     noMinWidth: false,

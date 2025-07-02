@@ -243,7 +243,7 @@ export class TdsTableFooter {
                     max={this.pages}
                     value={this.paginationValue}
                     pattern="[0-9]+"
-                    dir="ltr"
+                    dir="rtl"
                     onChange={(event) => this.paginationInputChange(event)}
                     onAnimationEnd={removeShakeAnimation}
                   />
