@@ -6,6 +6,8 @@
   display: block;
   @include tds-box-sizing;
 
+  background-color: transparent;
+
   .tds-accordion-header-icon-start,
   .tds-accordion-header-icon-end {
     position: relative;
@@ -53,9 +55,9 @@
 }
 
 :host(.tds-mode-variant-secondary) {
-  background-color: transparent !important;
+  background-color: var(--tds-accordion-background);
 }
 
 :host(.tds-mode-variant-primary) {
-  background-color: transparent !important;
+  background-color: var(--tds-accordion-background);
 }
