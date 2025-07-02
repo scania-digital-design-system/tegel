@@ -9,3 +9,7 @@ tds-table {
   --component-table-cell-hover: var(--color-background-surface-100);
   --component-table-cell: var(--color-background-layer-01);
 }
+
+.traton tds-table {
+  --component-table-pagination-base: var(--color-background-surface-300);
+}
