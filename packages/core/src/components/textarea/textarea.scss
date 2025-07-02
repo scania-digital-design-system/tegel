@@ -1,3 +1,5 @@
+@import '../../mixins/focus-state';
+
 @mixin textfield-base {
   border-radius: 4px 4px 0 0;
   width: 100%;
@@ -12,6 +14,7 @@
   &::placeholder {
     opacity: 1;
     color: var(--tds-textarea-placeholder);
+    transition: color 200ms ease;
   }
 
   &:disabled {
@@ -115,6 +118,17 @@
 
   &:hover {
     border-bottom-color: var(--tds-textarea-border-bottom-hover);
+
+    &::placeholder {
+      color: var(--tds-textarea-placeholder-hover);
+    }
+  }
+
+  &:focus {
+    @include tds-focus-state;
+
+    border-radius: 0;
+    border-bottom: 1px solid transparent;
   }
 }
 
@@ -176,13 +190,6 @@
         font: var(--tds-detail-07);
         letter-spacing: var(--tds-detail-07-ls);
         top: var(--tds-spacing-element-8);
-      }
-    }
-
-    .textarea-wrapper {
-      &::before,
-      &::after {
-        width: 50%;
       }
     }
   }
