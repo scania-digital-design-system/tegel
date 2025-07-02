@@ -84,7 +84,7 @@
         width: var(--tds-spacing-element-32);
         border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
-        color: var(--table-footer-page-selector-icon);
+        color: var(--table-icon);
 
         &:hover {
           background-color: var(--table-footer-button-hover);
@@ -92,7 +92,7 @@
 
         &:disabled {
           cursor: default;
-          color: var(--table-footer-page-selector-icon-disabled);
+          color: var(--table-icon-disabled);
 
           &:hover {
             background-color: transparent;

@@ -41,8 +41,6 @@ tds-table {
   --table-footer-page-selector-input: var(--component-table-pagination-dropdown);
   --table-footer-page-selector-input-hover: var(--color-background-layer-03);
   --table-footer-page-selector-input-disabled: var(--color-background-layer-01);
-  --table-footer-page-selector-icon: var(--color-foreground-icon-strong);
-  --table-footer-page-selector-icon-disabled: var(--color-foreground-icon-disabled);
   --table-footer-button-hover: var(--color-background-surface-300);
 
   /* Table-header */
@@ -60,6 +58,7 @@ tds-table {
   /* Divider */
   --table-divider: var(--color-foreground-border-discrete);
 
-  /* Table-header-input-wrapper */
-  --table-input-search-icon: var(--color-foreground-icon-strong);
+  /* Table-icons */
+  --table-icon: var(--color-foreground-icon-strong);
+  --table-icon-disabled: var(--color-foreground-icon-disabled);
 }
