@@ -83,12 +83,12 @@
     }
 
     &:hover {
-      background-color: var(--tds-dropdown-option-background-hover);
+      border-bottom-color: var(--tds-dropdown-option-border-hover);
       cursor: pointer;
     }
 
     &:hover.disabled {
-      background-color: var(--tds-dropdown-option-background);
+      border-bottom-color: var(--tds-dropdown-option-border-hover);
       cursor: not-allowed;
     }
   }

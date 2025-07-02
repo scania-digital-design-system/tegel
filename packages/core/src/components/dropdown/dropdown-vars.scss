@@ -1,16 +1,16 @@
 :root,
 .tds-mode-light {
   --tds-dropdown-bg: var(--tds-grey-50);
-  --tds-dropdown-border-bottom: var(--tds-grey-600);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-800);
-  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
+  --tds-dropdown-hover-outline: var(--tds-blue-400);
+  --tds-dropdown-border-bottom: var(--tds-grey-350);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-850);
+  --tds-dropdown-border-bottom-open: var(--tds-blue-850);
   --tds-dropdown-value-color: var(--tds-grey-950);
   --tds-dropdown-label-color: var(--tds-grey-950);
   --tds-dropdown-label-inside-color: var(--tds-grey-950);
-  --tds-dropdown-helper-color: var(--tds-grey-700);
+  --tds-dropdown-helper-color: var(--tds-grey-500);
   --tds-dropdown-placeholder-color: var(--tds-grey-500);
-  --tds-dropdown-disabled-color: var(--tds-grey-400);
+  --tds-dropdown-disabled-color: var(--tds-grey-250);
   --tds-dropdown-filter-input-color: var(--tds-grey-950);
   --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
   --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
@@ -41,15 +41,16 @@
 
 .tds-mode-dark {
   --tds-dropdown-bg: var(--tds-grey-868);
-  --tds-dropdown-border-bottom: var(--tds-grey-600);
-  --tds-dropdown-border-bottom-hover: var(--tds-grey-400);
-  --tds-dropdown-border-bottom-open: var(--tds-blue-400);
+  --tds-dropdown-hover-outline: var(--tds-blue-400);
+  --tds-dropdown-border-bottom: var(--tds-grey-350);
+  --tds-dropdown-border-bottom-hover: var(--tds-grey-50);
+  --tds-dropdown-border-bottom-open: var(--tds-blue-50);
   --tds-dropdown-value-color: var(--tds-grey-50);
   --tds-dropdown-label-color: var(--tds-grey-50);
   --tds-dropdown-label-inside-color: var(--tds-grey-50);
-  --tds-dropdown-helper-color: var(--tds-grey-500);
-  --tds-dropdown-placeholder-color: var(--tds-grey-600);
-  --tds-dropdown-disabled-color: var(--tds-grey-800);
+  --tds-dropdown-helper-color: var(--tds-grey-300);
+  --tds-dropdown-placeholder-color: var(--tds-grey-300);
+  --tds-dropdown-disabled-color: var(--tds-grey-500);
   --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
     var(--tds-spacing-element-4);
   --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
