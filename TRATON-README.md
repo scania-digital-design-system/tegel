@@ -12,7 +12,7 @@ Traton theme is a brand-specific implementation of the Tegel Design System that 
 
 ## Required Imports for Traton Development
 
-### Traton Variables
+
 
 In your global css file import the Traton specific stylesheets.
 
