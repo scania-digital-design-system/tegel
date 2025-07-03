@@ -95,7 +95,7 @@
     }
 
     &:hover,
-    &:focus,
+    &:focus-within,
     &:active,
     &.active {
       @include tds-disabled-style;
@@ -134,20 +134,24 @@
     border-bottom: 1px solid var(--tds-accordion-border);
   }
 
-  &:focus {
+  // Only apply focus border when focus is on the header buttons, not on panel content
+  &:has(.tds-accordion-header-icon-start:focus),
+  &:has(.tds-accordion-header-icon-end:focus) {
     border-top: 1px solid var(--tds-accordion-border-focus);
   }
 
-  &[disabled='true']:focus {
+  &[disabled='true']:focus-within {
     border-color: var(--tds-accordion-border);
   }
 }
 
-:host(:focus) {
+:host(:focus-within) {
   .tds-accordion-item {
-    @include tds-focus-state;
-
-    background-color: var(--tds-accordion-background-focus);
+    // Only apply focus styles when focus is on the header buttons, not on panel content
+    &:has(.tds-accordion-header-icon-start:focus),
+    &:has(.tds-accordion-header-icon-end:focus) {
+      @include tds-focus-state;
+    }
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
@@ -164,11 +168,13 @@
   }
 }
 
-:host(:focus:hover) {
+:host(:focus-within:hover) {
   .tds-accordion-item {
-    @include tds-focus-state;
-
-    background-color: var(--tds-accordion-background-hover);
+    // Only apply focus styles when focus is on the header buttons, not on panel content
+    &:has(.tds-accordion-header-icon-start:focus),
+    &:has(.tds-accordion-header-icon-end:focus) {
+      @include tds-focus-state;
+    }
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
