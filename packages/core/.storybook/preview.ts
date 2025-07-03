@@ -133,7 +133,7 @@ const preview: Preview = {
         includeNames: true,
         order: [
           'Introduction',
-          ['Tegel Design System', 'Storybook 8'],
+          ['Tegel Design System', 'Storybook 8', 'Traton README'],
           'Getting Started',
           ['*', 'Framework tips'],
           'Migration',
