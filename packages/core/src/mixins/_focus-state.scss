@@ -1,6 +1,5 @@
 @mixin tds-focus-state {
-  outline: 2px solid var(--tds-blue-400);
-  z-index: 1;
+  outline: 2px solid var(--tds-focus-outline-color);
   box-shadow: 0 0 0 1px var(--tds-white);
   outline-offset: 1px;
 }
