@@ -19,6 +19,8 @@ tds-slider {
   --slider-input-focused: var(--color-foreground-border-accent-focus);
   --slider-input-value: var(--color-foreground-text-defined);
   --slider-input-hover: var(--color-foreground-border-subtle);
+  --slider-input-success-border: var(--color-foreground-border-defined);
+  --slider-input-success-text: var(--color-foreground-text-strong);
 
   /* Disabled State */
   --slider-disabled: var(--color-background-surface-300);
