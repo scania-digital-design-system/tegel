@@ -376,7 +376,7 @@
   "scripts": {
     "build:css": "node scripts/build-css.js",
     "watch:css": "node scripts/build-css.js --watch",
-    "build": "stencil build && stencil build --docs && npm run build:css",
+    "build": "npm run build:css && stencil build && stencil build --docs",
     "start": "concurrently --raw \"npm:build-stencil:watch\" \"npm:watch:css\" \"npm:start:storybook\"",
     "test": "node docker-test-runner.js",
     "test:axe": "npx playwright test --config 'playwright-axe.config.ts'",
