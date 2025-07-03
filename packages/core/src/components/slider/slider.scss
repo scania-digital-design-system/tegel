@@ -31,6 +31,17 @@ tds-slider {
   }
 }
 
+.tds-slider-wrapper.slider-success {
+  .tds-slider__input-values {
+    .tds-slider__input-field-wrapper {
+      input.tds-slider__input-field {
+        color: var(--slider-input-success-text);
+        box-shadow: inset 0 -1px 0 var(--slider-input-success-border);
+      }
+    }
+  }
+}
+
 .tds-slider-wrapper:focus-within {
   outline: 2px solid var(--tds-blue-400);
   outline-offset: 2px;

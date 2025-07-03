@@ -31,6 +31,9 @@ export class TdsSlider {
   /** Maximum value */
   @Prop() max: string = '100';
 
+  /** State of input */
+  @Prop() state: 'default' | 'success' = 'default';
+
   /** Number of tick markers (tick for min- and max-value will be added automatically) */
   @Prop() ticks: string = '0';
 
@@ -285,7 +288,7 @@ export class TdsSlider {
     }
   }
 
-  private announcementDebounceTimeout: any = null;
+  private announcementDebounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
   private announceValueChange() {
     if (!this.ariaLiveElement) return;
@@ -590,6 +593,8 @@ export class TdsSlider {
         class={{
           'tds-slider-wrapper': true,
           'read-only': this.readOnly,
+          'slider-default': this.state === 'default',
+          'slider-success': this.state === 'success',
         }}
       >
         <input

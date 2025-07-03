@@ -22,6 +22,17 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
       defaultValue: { summary: 100 },
     },
   },
+  state: {
+    name: 'State',
+    description: 'Controls the validation state of the slider input.',
+    control: {
+      type: 'radio',
+    },
+    options: ['Default', 'Success'],
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+  },
   initialValue: {
     name: 'Initial value',
     description: 'Sets the initial value for the slider.',
@@ -204,6 +215,7 @@ export const SliderTemplate = ({
   thumbSize,
   readonly,
   disabled,
+  state,
 }) =>
   formatHtmlPreview(`
    <!-- Style code below is just for demo purposes -->
@@ -228,6 +240,7 @@ export const SliderTemplate = ({
           ${showControls ? 'controls' : ''}
           ${showInput ? 'input' : ''}
           ${disabled ? 'disabled' : ''}
+          state=${state.toLowerCase()}
           thumb-size="${sizeLookUp[thumbSize]}"
           ${readonly ? 'read-only' : ''}
           tds-read-only-aria-label="Read only"

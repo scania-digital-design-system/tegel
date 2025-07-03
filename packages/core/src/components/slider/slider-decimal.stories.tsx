@@ -12,6 +12,7 @@ export default {
     initialValue: 0.5,
     showLabel: true,
     labelText: 'Label',
+    state: 'Default',
     showTicks: true,
     numTicks: 3,
     showTickNumbers: true,
