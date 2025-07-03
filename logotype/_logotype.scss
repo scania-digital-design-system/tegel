@@ -12,7 +12,11 @@ html {
   }
 
   // Fallback local assets - only for specific logotypes that need local fallbacks
+  //FIXME: Removing the local fallback for now.
+
+  /*
   --#{$prefix}-background-image-scania-wordmark-white-svg-local: url('./assets/logos/scania-wordmark-white.svg');
   --#{$prefix}-background-image-scania-symbol-svg-local: url('./assets/logos/scania-symbol.svg');
   --#{$prefix}-background-image-scania-symbol-png-local: url('./assets/logos/scania-symbol.png');
+  */
 }
