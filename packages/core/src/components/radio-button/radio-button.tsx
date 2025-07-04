@@ -72,7 +72,9 @@ export class TdsRadioButton {
     return (
       <div class="tds-radio-button">
         <input
-          ref={(inputEl) => (this.inputElement = inputEl)}
+          ref={(inputEl) => {
+            this.inputElement = inputEl;
+          }}
           aria-label={this.tdsAriaLabel}
           class="tds-form-input"
           type="radio"
@@ -88,7 +90,7 @@ export class TdsRadioButton {
           tabIndex={this.tdsTabIndex}
         />
         <label htmlFor={this.radioId}>
-          <slot name="label"></slot>
+          <slot name="label" />
         </label>
       </div>
     );
