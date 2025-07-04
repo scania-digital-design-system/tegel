@@ -46,19 +46,7 @@
 
 ### `close() => Promise<void>`
 
-Method for setting the value of the Dropdown.
-
-Single selection example:
-
-<code>
-dropdown.setValue('option-1', 'Option 1');
-</code>
-
-Multiselect example:
-
-<code>
-dropdown.setValue(['option-1', 'option-2']);
-</code>
+Method for closing the Dropdown.
 
 #### Returns
 
@@ -102,15 +90,28 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | number | string[] | number[]) => Promise<{ value: string | number; label: string; }[]>`
+### `setValue(value: string | number | string[] | number[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
 
+Method for setting the selected value of the Dropdown.
 
+Single selection example:
+
+<code>
+dropdown.setValue('option-1', 'Option 1');
+</code>
+
+Multiselect example:
+
+<code>
+dropdown.setValue(['option-1', 'option-2']);
+</code>
 
 #### Parameters
 
 | Name    | Type                                       | Description |
 | ------- | ------------------------------------------ | ----------- |
 | `value` | `string \| number \| string[] \| number[]` |             |
+| `label` | `string`                                   |             |
 
 #### Returns
 
