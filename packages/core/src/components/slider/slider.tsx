@@ -34,6 +34,9 @@ export class TdsSlider {
   /** State of input */
   @Prop() state: 'default' | 'success' = 'default';
 
+  /** Mode variant of the Slider */
+  @Prop() modeVariant: 'primary' | 'secondary' = null;
+
   /** Number of tick markers (tick for min- and max-value will be added automatically) */
   @Prop() ticks: string = '0';
 
@@ -595,6 +598,8 @@ export class TdsSlider {
           'read-only': this.readOnly,
           'slider-default': this.state === 'default',
           'slider-success': this.state === 'success',
+          'slider-primary': this.modeVariant === 'primary',
+          'slider-secondary': this.modeVariant === 'secondary',
         }}
       >
         <input

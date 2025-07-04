@@ -33,6 +33,17 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
       defaultValue: { summary: 'default' },
     },
   },
+  modeVariant: {
+    name: 'Mode variant',
+    description: 'Mode variant adjusts the background color of the slider input field',
+    control: {
+      type: 'radio',
+    },
+    options: ['Inherit from parent', 'Primary', 'Secondary'],
+    table: {
+      defaultValue: { summary: 'Inherit from parent' },
+    },
+  },
   initialValue: {
     name: 'Initial value',
     description: 'Sets the initial value for the slider.',
@@ -216,6 +227,7 @@ export const SliderTemplate = ({
   readonly,
   disabled,
   state,
+  modeVariant,
 }) =>
   formatHtmlPreview(`
    <!-- Style code below is just for demo purposes -->
@@ -241,6 +253,11 @@ export const SliderTemplate = ({
           ${showInput ? 'input' : ''}
           ${disabled ? 'disabled' : ''}
           state=${state.toLowerCase()}
+          ${
+            modeVariant !== 'Inherit from parent'
+              ? `mode-variant="${modeVariant.toLowerCase()}"`
+              : ''
+          }
           thumb-size="${sizeLookUp[thumbSize]}"
           ${readonly ? 'read-only' : ''}
           tds-read-only-aria-label="Read only"

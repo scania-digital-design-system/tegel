@@ -21,6 +21,26 @@ tds-slider {
     white-space: nowrap;
     border: 0;
   }
+
+  .slider-primary {
+    .tds-slider {
+      .tds-slider__input-values {
+        .tds-slider__input-field-wrapper {
+          background-color: var(--slider-inputfield-background);
+        }
+      }
+    }
+  }
+
+  .slider-secondary {
+    .tds-slider {
+      .tds-slider__input-values {
+        .tds-slider__input-field-wrapper {
+          background-color: var(--slider-inputfield-background-secondary);
+        }
+      }
+    }
+  }
 }
 
 .tds-slider-wrapper {
@@ -37,6 +57,10 @@ tds-slider {
       input.tds-slider__input-field {
         color: var(--slider-input-success-text);
         box-shadow: inset 0 -1px 0 var(--slider-input-success-border);
+
+        &:hover {
+          box-shadow: inset 0 -1px 0 var(--slider-input-success-border);
+        }
       }
     }
   }
