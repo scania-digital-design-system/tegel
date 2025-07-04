@@ -12,14 +12,24 @@ Traton theme is a brand-specific implementation of the Tegel Design System that 
 
 ## Required Imports for Traton Development
 
-
-
 In your global css file import the Traton specific stylesheets.
 
 ```scss
 // Import Traton variables
 @import '@scania/tegel/dist-styles/core';
 @import '@scania/tegel/dist-styles/traton-variables';
+```
+
+## DOM Structure Requirements
+
+To properly apply the Traton theme, you need to add specific CSS classes to your DOM structure:
+
+```html
+<div class="traton">
+  <div class="tds-mode-light">
+    <!-- Your application content goes here -->
+  </div>
+</div>
 ```
 
 *This guide helps you develop components that work seamlessly with the Traton theme. Happy coding! 🚛✨* 
