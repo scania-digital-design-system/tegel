@@ -7,6 +7,8 @@ export default {
   }),
   parameters: SliderParameters,
   args: {
+    modeVariant: 'Inherit from parent',
+    state: 'Default',
     min: 0,
     max: 1,
     initialValue: 0.5,
