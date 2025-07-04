@@ -1,6 +1,13 @@
 @import '../../mixins/z-index';
+@import '../../mixins/focus-state';
 
 :host {
+  .dropdown-select {
+    &:focus-within {
+      @include tds-focus-state;
+    }
+  }
+
   .filter {
     display: flex;
     align-items: center;
@@ -82,21 +89,15 @@
     }
 
     &.focus {
-      border-bottom-color: transparent;
+      border-bottom: 0;
 
-      &::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: var(--tds-dropdown-border-bottom-open);
+      &:hover {
+        border-bottom: 0;
       }
     }
 
     &.error {
-      border-bottom: 1px solid var(--tds-negative);
+      border-bottom: 1px solid var(--tds-dropdown-error);
 
       &.focus {
         border-bottom-color: transparent;
@@ -107,8 +108,8 @@
           bottom: 0;
           left: 0;
           width: 100%;
-          height: 2px;
-          background: var(--tds-negative);
+          height: 1px;
+          background: var(--tds-dropdown-error);
         }
       }
     }
