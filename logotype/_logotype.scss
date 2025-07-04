@@ -2,17 +2,19 @@ $prefix: 'tds';
 $cdn: 'https://cdn.digitaldesign.scania.com';
 $folder: '/logotype/1.0.0';
 $logotypes: ('wordmark', 'wordmark-white', 'symbol', 'logotype');
+$local-directory: './assets/logos';
 
 :root,
 html {
-  // Primary CDN-based variables
+  // Primary local variables
+  @each $key in $logotypes {
+    --#{$prefix}-background-image-scania-#{$key}-png-local: url(#{$local-directory}/scania-#{$key}.png);
+    --#{$prefix}-background-image-scania-#{$key}-svg-local: url(#{$local-directory}/scania-#{$key}.svg);
+  }
+
+  // Fallback CDN variables
   @each $key in $logotypes {
     --#{$prefix}-background-image-scania-#{$key}-png: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.png);
     --#{$prefix}-background-image-scania-#{$key}-svg: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.svg);
   }
-
-  // Fallback local assets - only for specific logotypes that need local fallbacks
-  --#{$prefix}-background-image-scania-wordmark-white-svg-local: url('./assets/logos/scania-wordmark-white.svg');
-  --#{$prefix}-background-image-scania-symbol-svg-local: url('./assets/logos/scania-symbol.svg');
-  --#{$prefix}-background-image-scania-symbol-png-local: url('./assets/logos/scania-symbol.png');
 }
