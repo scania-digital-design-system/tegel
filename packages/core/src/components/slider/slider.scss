@@ -1,6 +1,16 @@
 @import '../../mixins/box-sizing';
 @import '../../../../../typography/utilities/typography-utility';
 
+//  Mixins
+@mixin slider-border-colors($state: '') {
+  $suffix: if($state != '', '-#{$state}', '');
+
+  border-left: 1px solid var(--slider-border-color-left#{$suffix});
+  border-right: 1px solid var(--slider-border-color-right#{$suffix});
+  border-bottom: 1px solid var(--slider-border-color-bottom#{$suffix});
+  border-top: 1px solid var(--slider-border-color-top#{$suffix});
+}
+
 tds-slider {
   @include tds-box-sizing;
 
@@ -56,10 +66,11 @@ tds-slider {
     .tds-slider__input-field-wrapper {
       input.tds-slider__input-field {
         color: var(--slider-input-success-text);
-        box-shadow: inset 0 -1px 0 var(--slider-input-success-border);
+        box-shadow: var(--slider-border-success);
+        @include slider-border-colors('success');
 
         &:hover {
-          box-shadow: inset 0 -1px 0 var(--slider-input-success-border);
+          box-shadow: var(--slider-border-success);
         }
       }
     }
@@ -125,7 +136,7 @@ tds-slider {
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 4px 4px 0 0;
+      border-radius: var(--slider-border-radius);
 
       input.tds-slider__input-field {
         @include detail-02;
@@ -135,16 +146,20 @@ tds-slider {
         background-color: transparent;
         text-align: center;
         padding: 12px;
-        box-shadow: inset 0 -1px 0 var(--slider-inputfield-box-shadow);
-        border-radius: 4px 4px 0 0;
+        box-shadow: var(--slider-border-appearance);
+        border-radius: var(--slider-border-radius);
+
+        @include slider-border-colors;
 
         &:hover {
-          box-shadow: inset 0 -1px 0 var(--slider-input-hover);
+          box-shadow: var(--slider-border-hover);
+          @include slider-border-colors('hover');
         }
 
         &:focus {
-          box-shadow: inset 0 -2px 0 var(--slider-input-focused);
-          outline: 0;
+          box-shadow: var(--slider-border-focus);
+          outline: var(--slider-border-outline);
+          @include slider-border-colors('focus');
         }
       }
     }
