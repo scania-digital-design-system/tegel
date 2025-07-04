@@ -1,10 +1,8 @@
 :root,
 .tds-mode-light {
   --tds-dropdown-option-color: var(--tds-grey-850);
-  --tds-dropdown-option-color-selected: var(--tds-grey-850);
   --tds-dropdown-option-color-disabled: var(--tds-grey-250);
   --tds-dropdown-option-background: var(--tds-grey-50);
-  --tds-dropdown-option-background-hover: var(--tds-grey-100);
   --tds-dropdown-option-background-selected: var(--tds-grey-150);
   --tds-dropdown-option-border: var(--tds-grey-200);
   --tds-dropdown-option-border-hover: var(--tds-grey-850);
@@ -24,10 +22,8 @@
 
 .tds-mode-dark {
   --tds-dropdown-option-color: var(--tds-grey-50);
-  --tds-dropdown-option-color-selected: var(--tds-grey-50);
   --tds-dropdown-option-color-disabled: var(--tds-grey-500);
   --tds-dropdown-option-background: var(--tds-grey-850);
-  --tds-dropdown-option-background-hover: var(--tds-grey-800);
   --tds-dropdown-option-background-selected: var(--tds-grey-700);
   --tds-dropdown-option-border: var(--tds-grey-600);
   --tds-dropdown-option-border-hover: var(--tds-grey-50);
