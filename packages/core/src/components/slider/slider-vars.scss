@@ -31,3 +31,48 @@ tds-slider {
   --slider-value-tooltip-background: var(--color-background-surface-300);
   --slider-value-tooltip: var(--color-foreground-text-inverse-strong);
 }
+
+tds-slider,
+.scania tds-slider {
+  /* Slider: Scania Units */
+  --slider-border-radius: 4px 4px 0 0;
+  --slider-border-appearance: inset 0 -1px 0 var(--slider-inputfield-box-shadow);
+  --slider-border-hover: inset 0 -1px 0 var(--slider-input-hover);
+  --slider-border-focus: inset 0 -2px 0 var(--slider-input-focused);
+  --slider-border-success: inset 0 -1px 0 var(--slider-input-success-border);
+  --slider-border-outline: 0;
+}
+
+.traton tds-slider {
+  /* Slider: Traton Units */
+  --slider-border-radius: 4px 4px 4px 4px;
+  --slider-border-appearance: none;
+  --slider-border-hover: none;
+  --slider-border-focus: none;
+  --slider-border-outline: none;
+  --slider-border-success: none;
+
+  /* Slider: border colors */
+  --slider-border-color-left: var(--color-foreground-border-soft);
+  --slider-border-color-right: var(--color-foreground-border-soft);
+  --slider-border-color-bottom: var(--color-foreground-border-soft);
+  --slider-border-color-top: var(--color-foreground-border-soft);
+
+  /* Slider: border colors on hover */
+  --slider-border-color-left-hover: var(--color-foreground-border-strong);
+  --slider-border-color-right-hover: var(--color-foreground-border-strong);
+  --slider-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --slider-border-color-top-hover: var(--color-foreground-border-strong);
+
+  /* Slider: border colors on success */
+  --slider-border-color-left-success: var(--color-foreground-border-defined);
+  --slider-border-color-right-success: var(--color-foreground-border-defined);
+  --slider-border-color-bottom-success: var(--color-foreground-border-defined);
+  --slider-border-color-top-success: var(--color-foreground-border-defined);
+
+  /* Slider: border colors on focus */
+  --slider-border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-color-top-focus: var(--color-foreground-border-accent-focus);
+}
