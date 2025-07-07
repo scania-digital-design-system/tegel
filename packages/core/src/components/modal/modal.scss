@@ -105,6 +105,7 @@ $modals: (
 .tds-modal {
   @include tds-box-sizing;
 
+  box-shadow: var(--tds-modal-box-shadow);
   background-color: var(--background-elevation-layer-02);
   margin: auto;
   position: relative;
@@ -189,7 +190,7 @@ slot[name='header']::slotted(*) {
   @include tds-box-sizing;
   @include modal-position;
 
-  background-color: var(--background-elevation-scrim);
+  background-color: var(--tds-modal-backdrop-background);
   pointer-events: auto;
 }
 
