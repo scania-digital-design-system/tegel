@@ -1,3 +1,5 @@
+@import '../../../../../typography/utilities/typography-utility';
+
 :host {
   display: inline;
 
@@ -59,7 +61,6 @@
 
 .standalone {
   ::slotted(*) {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include detail-02;
   }
 }
