@@ -38,6 +38,11 @@ on:
   schedule:
     - cron: '0 3 * * 1-5' #3AM every weekday
 
+env:
+  VERSION: patch
+  NODE_VERSION: '22.11.0'
+  TAG: latest
+
 jobs:
   #CREATE RELEASE BRANCH
   create-release-branch:
@@ -54,22 +59,22 @@ jobs:
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: Angular - Bump version
         id: angular-version
         working-directory: packages/angular
-        run: npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: Angular 17 - Bump version
         id: angular-17-version
         working-directory: packages/angular-17/projects/components
-        run: npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: React - Bump version
         id: react-version
         working-directory: packages/react
-        run: npm version ${{ github.event.inputs.version || 'patch' }} --no-git-tag-version
+        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: Core - Read package.json Version
         id: version
@@ -119,7 +124,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set up Git for authentication
@@ -198,7 +203,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set Tegel user
@@ -282,7 +287,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies in root
@@ -322,7 +327,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies in root
@@ -366,7 +371,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: React - Read package.json Version
@@ -462,7 +467,7 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ github.event.inputs.nodeVersion }}
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
           registry-url: 'https://registry.npmjs.org'
 
       - name: Set up Git for authentication
