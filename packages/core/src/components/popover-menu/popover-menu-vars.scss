@@ -1,18 +1,8 @@
-:root,
-.tds-mode-light {
-  --tds-popover-menu-color: var(--tds-grey-958);
-  --tds-popover-menu-background: var(--tds-white);
-  --tds-popover-menu-background-hover: var(--tds-grey-100);
-  --tds-popover-menu-divider-color: var(--tds-grey-300);
-  --tds-popover-menu-divider-disabled-color: var(--tds-grey-400);
-  --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-958);
-}
-
-.tds-mode-dark {
-  --tds-popover-menu-color: var(--tds-grey-50);
-  --tds-popover-menu-background: var(--tds-grey-850);
-  --tds-popover-menu-background-hover: var(--tds-grey-800);
-  --tds-popover-menu-divider-color: var(--tds-grey-800);
-  --tds-popover-menu-divider-disabled-color: var(--tds-grey-600);
-  --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-50);
+tds-popover-menu {
+  --tds-popover-menu-color: var(--color-foreground-text-strong);
+  --tds-popover-menu-background: var(--color-foreground-background-inverse-strong);
+  --tds-popover-menu-background-hover: var(--color-background-layer-01);
+  --tds-popover-menu-divider-color: var(--color-foreground-border-discrete);
+  --tds-popover-menu-divider-disabled-color: var(--color-foreground-text-disabled);
+  --tds-popover-menu-divider-disabled-icon-color: var(--color-foreground-border-discrete);
 }
