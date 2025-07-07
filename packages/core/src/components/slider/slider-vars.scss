@@ -1,34 +1,78 @@
-:root,
-.tds-mode-light {
-  --tds-slider-label-color: var(--tds-grey-958);
-  --tds-slider-thumb-color: var(--tds-blue-800);
-  --tds-slider-divider-color: var(--tds-grey-400);
-  --tds-slider-track-color: var(--tds-grey-400);
-  --tds-slider-track-fill-color: var(--tds-blue-800);
-  --tds-slider-input-inputfield-color: var(--tds-grey-700);
-  --tds-slider-inputfield-color: var(--tds-grey-400);
-  --tds-slider-controls-color: var(--tds-grey-958);
-  --tds-slider-inputfield-background: var(--tds-white);
-  --tds-slider-inputfield-box-shadow: var(--tds-grey-400);
-  --tds-slider-divider-values-color: var(--tds-grey-958);
-  --tds-slider-disabled: var(--tds-grey-400);
-  --tds-slider-value-tooltip-background: var(--tds-grey-800);
-  --tds-slider-value-tooltip-color: var(--tds-white);
+tds-slider {
+  /* Label */
+  --slider-label: var(--color-foreground-text-strong);
+
+  /* Thumb and Control */
+  --slider-thumb: var(--color-foreground-icon-strong);
+  --slider-controls: var(--color-foreground-icon-strong);
+
+  /* Track and Divider */
+  --slider-track: var(--color-background-surface-300);
+  --slider-track-fill: var(--color-foreground-icon-strong);
+  --slider-divider: var(--color-background-surface-300);
+  --slider-divider-values: var(--color-foreground-text-defined);
+
+  /* Input Field Styling */
+  --slider-inputfield-background: var(--color-background-layer-01);
+  --slider-inputfield-background-secondary: var(--color-background-layer-02);
+  --slider-inputfield-box-shadow: var(--color-foreground-border-discrete);
+  --slider-input-inputfield: var(--color-foreground-text-soft);
+  --slider-input-focused: var(--color-foreground-border-accent-focus);
+  --slider-input-value: var(--color-foreground-text-defined);
+  --slider-input-hover: var(--color-foreground-border-subtle);
+  --slider-input-success-border: var(--color-foreground-border-defined);
+  --slider-input-success-text: var(--color-foreground-text-strong);
+
+  /* Disabled State */
+  --slider-disabled: var(--color-background-surface-300);
+  --slider-disabled-text: var(--color-foreground-text-disabled);
+
+  /* Tooltip */
+  --slider-value-tooltip-background: var(--color-background-inverse-layer-03);
+  --slider-value-tooltip: var(--color-foreground-text-inverse-strong);
 }
 
-.tds-mode-dark {
-  --tds-slider-label-color: var(--tds-grey-100);
-  --tds-slider-thumb-color: var(--tds-grey-100);
-  --tds-slider-divider-color: var(--tds-grey-700);
-  --tds-slider-track-color: var(--tds-grey-700);
-  --tds-slider-track-fill-color: var(--tds-grey-100);
-  --tds-slider-inputfield-color: var(--tds-grey-700);
-  --tds-slider-input-inputfield-color: var(--tds-grey-400);
-  --tds-slider-controls-color: var(--tds-grey-100);
-  --tds-slider-inputfield-background: var(--tds-grey-900);
-  --tds-slider-inputfield-box-shadow: var(--tds-grey-800);
-  --tds-slider-divider-values-color: var(--tds-grey-100);
-  --tds-slider-disabled: var(--tds-grey-700);
-  --tds-slider-value-tooltip-background: var(--tds-grey-200);
-  --tds-slider-value-tooltip-color: var(--tds-grey-958);
+tds-slider,
+.scania tds-slider {
+  /* Slider: Scania Units */
+  --slider-border-radius: 4px 4px 0 0;
+  --slider-border-appearance: inset 0 -1px 0 var(--slider-inputfield-box-shadow);
+  --slider-border-hover: inset 0 -1px 0 var(--slider-input-hover);
+  --slider-border-focus: inset 0 -2px 0 var(--slider-input-focused);
+  --slider-border-success: inset 0 -1px 0 var(--slider-input-success-border);
+  --slider-border-outline: 0;
+}
+
+.traton tds-slider {
+  /* Slider: Traton Units */
+  --slider-border-radius: 4px 4px 4px 4px;
+  --slider-border-appearance: none;
+  --slider-border-hover: none;
+  --slider-border-focus: none;
+  --slider-border-outline: none;
+  --slider-border-success: none;
+
+  /* Slider: border colors */
+  --slider-border-color-left: var(--color-foreground-border-soft);
+  --slider-border-color-right: var(--color-foreground-border-soft);
+  --slider-border-color-bottom: var(--color-foreground-border-soft);
+  --slider-border-color-top: var(--color-foreground-border-soft);
+
+  /* Slider: border colors on hover */
+  --slider-border-color-left-hover: var(--color-foreground-border-strong);
+  --slider-border-color-right-hover: var(--color-foreground-border-strong);
+  --slider-border-color-bottom-hover: var(--color-foreground-border-strong);
+  --slider-border-color-top-hover: var(--color-foreground-border-strong);
+
+  /* Slider: border colors on success */
+  --slider-border-color-left-success: var(--color-foreground-border-defined);
+  --slider-border-color-right-success: var(--color-foreground-border-defined);
+  --slider-border-color-bottom-success: var(--color-foreground-border-defined);
+  --slider-border-color-top-success: var(--color-foreground-border-defined);
+
+  /* Slider: border colors on focus */
+  --slider-border-color-left-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-color-right-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-color-top-focus: var(--color-foreground-border-accent-focus);
 }
