@@ -10,11 +10,14 @@ function loadStories() {
   );
 
   // If in development environment, return all story files
-  // Otherwise, exclude stories from the _beta and tegel-light folders
+  // Otherwise, exclude stories from the _beta, tegel-light folders, and traton setup
   return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
     : storyFiles.filter(
-        (file: string | string[]) => !file.includes('/_beta/') && !file.includes('/tegel-light/'),
+        (file: string | string[]) =>
+          !file.includes('/_beta/') &&
+          !file.includes('/tegel-light/') &&
+          !file.includes('traton-setup.mdx'),
       );
 }
 
