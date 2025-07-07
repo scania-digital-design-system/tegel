@@ -7,40 +7,40 @@
     all: unset;
     cursor: pointer;
     outline: none;
-    color: var(--tds-link);
+    color: var(--link);
     text-decoration: underline;
   }
 
   ::slotted(*:focus-visible) {
-    color: var(--tds-link-focus);
+    color: var(--link);
     text-decoration: none;
-    outline: 2px solid var(--tds-link-focus);
-    outline-offset: -2px;
+    outline: var(--link-focus-outline);
+    outline-offset: 1px;
   }
 
   ::slotted(*:active) {
-    color: var(--tds-link);
+    color: var(--link);
     text-decoration: underline;
-    text-decoration-color: var(--tds-link);
+    text-decoration-color: var(--link);
   }
 
   ::slotted(*:hover) {
-    color: var(--tds-link-hover);
+    color: var(--link-hover);
     text-decoration: underline;
-    text-decoration-color: var(--tds-link-hover);
+    text-decoration-color: var(--link-hover);
   }
 
   ::slotted(*:visited) {
-    color: var(--tds-link-visited);
-    text-decoration-color: var(--tds-link-visited);
+    color: var(--link-visited);
+    text-decoration-color: var(--link-visited);
   }
 }
 
 .disabled {
   ::slotted(*),
   ::slotted(*:visited) {
-    color: var(--tds-link-disabled);
-    text-decoration-color: var(--tds-link-disabled);
+    color: var(--link-disabled);
+    text-decoration-color: var(--link-disabled);
     pointer-events: none;
   }
 }
