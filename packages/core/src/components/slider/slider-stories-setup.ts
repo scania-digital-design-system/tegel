@@ -22,28 +22,6 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
       defaultValue: { summary: 100 },
     },
   },
-  state: {
-    name: 'State',
-    description: 'Controls the validation state of the slider input.',
-    control: {
-      type: 'radio',
-    },
-    options: ['Default', 'Success'],
-    table: {
-      defaultValue: { summary: 'default' },
-    },
-  },
-  modeVariant: {
-    name: 'Mode variant',
-    description: 'Mode variant adjusts the background color of the slider input field',
-    control: {
-      type: 'radio',
-    },
-    options: ['Inherit from parent', 'Primary', 'Secondary'],
-    table: {
-      defaultValue: { summary: 'Inherit from parent' },
-    },
-  },
   initialValue: {
     name: 'Initial value',
     description: 'Sets the initial value for the slider.',
@@ -153,6 +131,30 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
       defaultValue: { summary: false },
     },
   },
+  modeVariant: {
+    name: 'Mode variant (input field)',
+    description: 'Mode variant adjusts the background color of the slider input field',
+    control: {
+      type: 'radio',
+    },
+    options: ['Inherit from parent', 'Primary', 'Secondary'],
+    if: { arg: 'showInput', eq: true },
+    table: {
+      defaultValue: { summary: 'Inherit from parent' },
+    },
+  },
+  state: {
+    name: 'Input field state',
+    description: 'Controls the validation state of the slider input.',
+    control: {
+      type: 'radio',
+    },
+    options: ['Default', 'Success'],
+    if: { arg: 'showInput', eq: true },
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+  },
   thumbSize: {
     name: 'Thumb size',
     description: 'Switches between the large and small version of the thumb.',
@@ -252,9 +254,9 @@ export const SliderTemplate = ({
           ${showControls ? 'controls' : ''}
           ${showInput ? 'input' : ''}
           ${disabled ? 'disabled' : ''}
-          state=${state.toLowerCase()}
+          state=${(state || 'Default').toLowerCase()}
           ${
-            modeVariant !== 'Inherit from parent'
+            modeVariant && modeVariant !== 'Inherit from parent'
               ? `mode-variant="${modeVariant.toLowerCase()}"`
               : ''
           }

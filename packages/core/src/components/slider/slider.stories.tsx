@@ -7,8 +7,6 @@ export default {
   }),
   parameters: SliderParameters,
   args: {
-    modeVariant: 'Inherit from parent',
-    state: 'Default',
     min: 0,
     max: 100,
     initialValue: 50,
@@ -22,6 +20,8 @@ export default {
     showControls: true,
     step: 1,
     showInput: false,
+    modeVariant: 'Inherit from parent',
+    state: 'Default',
     thumbSize: 'Large',
     readonly: false,
     disabled: false,
