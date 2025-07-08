@@ -133,6 +133,7 @@ export class TdsDropdown {
       .filter((v) => v !== '');
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
     if (newValue.length !== currentValue.length) return true;
     return newValue.some((val) => !currentValue.includes(val));
@@ -276,7 +277,6 @@ export class TdsDropdown {
    */
   @Method()
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
-  // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 
   /** Method for closing the Dropdown. */
@@ -328,7 +328,7 @@ export class TdsDropdown {
   onAnyClick(event: MouseEvent) {
     if (this.open) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-      const isClickOutside = !event.composedPath().includes(this.host as any);
+      const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
       if (isClickOutside) {
         this.open = false;
       }
@@ -795,7 +795,6 @@ export class TdsDropdown {
         <div
           role="listbox"
           aria-label={this.tdsAriaLabel}
-          aria-hidden={this.open ? 'false' : 'true'}
           inert={!this.open}
           aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
