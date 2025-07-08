@@ -46,7 +46,19 @@
 
 ### `close() => Promise<void>`
 
-Method for closing the Dropdown.
+Method for setting the value of the Dropdown.
+
+Single selection example:
+
+<code>
+dropdown.setValue('option-1', 'Option 1');
+</code>
+
+Multiselect example:
+
+<code>
+dropdown.setValue(['option-1', 'option-2']);
+</code>
 
 #### Returns
 

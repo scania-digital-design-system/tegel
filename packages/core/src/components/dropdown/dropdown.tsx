@@ -140,13 +140,6 @@ export class TdsDropdown {
       .filter((v) => v !== '');
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
-    if (newValue.length !== currentValue.length) return true;
-    return newValue.some((val) => !currentValue.includes(val));
-  }
-
-
   private updateDropdownStateInternal(values: string[]) {
     this.updateDropdownState(values, false);
   }
@@ -302,7 +295,6 @@ export class TdsDropdown {
   @Method()
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-
 
   /** Method for closing the Dropdown. */
   @Method()
