@@ -95,7 +95,7 @@
     }
 
     &:hover,
-    &:focus,
+    &:focus-within,
     &:active,
     &.active {
       @include tds-disabled-style;
@@ -129,18 +129,29 @@
 
   border-top: 1px solid var(--tds-accordion-border);
 
-  &:focus {
+  &:first-child {
+    margin-bottom: -1px;
+    border-bottom: 1px solid var(--tds-accordion-border);
+  }
+
+  // Only apply focus border when focus is on the header buttons, not on panel content
+  &:has(.tds-accordion-header-icon-start:focus),
+  &:has(.tds-accordion-header-icon-end:focus) {
     border-top: 1px solid var(--tds-accordion-border-focus);
   }
 
-  &[disabled='true']:focus {
+  &[disabled='true']:focus-within {
     border-color: var(--tds-accordion-border);
   }
 }
 
-:host(:focus) {
+:host(:focus-within) {
   .tds-accordion-item {
-    @include tds-focus-state;
+    // Only apply focus styles when focus is on the header buttons, not on panel content
+    &:has(.tds-accordion-header-icon-start:focus),
+    &:has(.tds-accordion-header-icon-end:focus) {
+      @include tds-focus-state;
+    }
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
@@ -157,10 +168,41 @@
   }
 }
 
-:host(:active) {
-  .tds-accordion-header-icon-start,
-  .tds-accordion-header-icon-end {
-    background-color: var(--tds-accordion-background-active);
-    outline: none;
+:host(:focus-within:hover) {
+  .tds-accordion-item {
+    // Only apply focus styles when focus is on the header buttons, not on panel content
+    &:has(.tds-accordion-header-icon-start:focus),
+    &:has(.tds-accordion-header-icon-end:focus) {
+      @include tds-focus-state;
+    }
+
+    .tds-accordion-header-icon-start,
+    .tds-accordion-header-icon-end {
+      background-color: var(--tds-accordion-background-hover);
+      outline: none;
+    }
   }
+}
+
+.tds-accordion-item:has(:hover) {
+  background-color: var(--tds-accordion-background-hover);
+}
+
+.tds-accordion-item:has(.tds-accordion-header-icon-start:active),
+.tds-accordion-item:has(.tds-accordion-header-icon-end:active) {
+  background-color: var(--tds-accordion-background-active);
+}
+
+:host(:hover)
+  .tds-accordion-item:has(.tds-accordion-header-icon-start:active)
+  .tds-accordion-header-icon-start,
+:host(:hover)
+  .tds-accordion-item:has(.tds-accordion-header-icon-end:active)
+  .tds-accordion-header-icon-end {
+  background-color: var(--tds-accordion-background-active);
+}
+
+.tds-accordion-header-icon-start:active,
+.tds-accordion-header-icon-end:active {
+  outline: none;
 }
