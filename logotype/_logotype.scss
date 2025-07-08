@@ -1,6 +1,6 @@
 $prefix: 'tds';
 $cdn: 'https://cdn.digitaldesign.scania.com';
-$folder: '/logotype/1.0.0';
+$folder: '/logotype/multibrand';
 $logotypes: ('wordmark', 'wordmark-white', 'symbol', 'logotype');
 $local-directory: './assets/logos';
 
@@ -14,7 +14,7 @@ html {
 
   // Fallback CDN variables
   @each $key in $logotypes {
-    --#{$prefix}-background-image-scania-#{$key}-png: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.png);
-    --#{$prefix}-background-image-scania-#{$key}-svg: url(#{$cdn}#{$folder}/scania_#{$key}/scania-#{$key}.svg);
+    --#{$prefix}-background-image-scania-#{$key}-png: url(#{$cdn}#{$folder}/scania/scania_#{$key}/scania-#{$key}.png);
+    --#{$prefix}-background-image-scania-#{$key}-svg: url(#{$cdn}#{$folder}/scania/scania_#{$key}/scania-#{$key}.svg);
   }
 }
