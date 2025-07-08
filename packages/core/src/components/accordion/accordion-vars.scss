@@ -6,10 +6,10 @@
   --tds-accordion-background-hover-secondary: var(--tds-white);
   --tds-accordion-background-hover: var(--tds-accordion-background-hover-primary);
   --tds-accordion-background-focus: transparent;
-  --tds-accordion-background-active: var(--tds-grey-100);
+  --tds-accordion-background-active: var(--tds-grey-150);
   --tds-accordion-color: var(--tds-grey-958);
   --tds-accordion-border-focus: var(--tds-grey-500);
-  --tds-accordion-color-disabled: var(--tds-grey-400);
+  --tds-accordion-color-disabled: var(--tds-grey-250);
   --tds-accordion-icon-color: var(--tds-black);
 
   .tds-mode-variant-primary {
@@ -18,20 +18,21 @@
 
   .tds-mode-variant-secondary {
     --tds-accordion-background-hover: var(--tds-accordion-background-hover-secondary);
+    --tds-accordion-background: transparent;
   }
 }
 
 .tds-mode-dark {
   --tds-accordion-border: var(--tds-grey-700);
   --tds-accordion-background: transparent;
-  --tds-accordion-background-hover-primary: var(--tds-grey-900);
-  --tds-accordion-background-hover-secondary: var(--tds-grey-868);
+  --tds-accordion-background-hover-primary: var(--tds-grey-850);
+  --tds-accordion-background-hover-secondary: var(--tds-grey-800);
   --tds-accordion-background-hover: var(--tds-accordion-background-hover-primary);
   --tds-accordion-background-focus: transparent;
-  --tds-accordion-background-active: var(--tds-grey-900);
+  --tds-accordion-background-active: var(--tds-grey-800);
   --tds-accordion-color: var(--tds-grey-50);
   --tds-accordion-border-focus: var(--tds-grey-500);
-  --tds-accordion-color-disabled: var(--tds-grey-800);
+  --tds-accordion-color-disabled: var(--tds-grey-500);
   --tds-accordion-icon-color: var(--tds-grey-50);
 
   .tds-mode-variant-primary {
@@ -40,5 +41,27 @@
 
   .tds-mode-variant-secondary {
     --tds-accordion-background-hover: var(--tds-accordion-background-hover-secondary);
+    --tds-accordion-background-active: var(--tds-grey-750);
   }
+}
+
+// Override global background colors for accordion specifically with higher specificity
+.tds-mode-light tds-accordion.tds-mode-variant-primary,
+.tds-mode-light tds-accordion .tds-mode-variant-primary {
+  background-color: var(--tds-accordion-background);
+}
+
+.tds-mode-light tds-accordion.tds-mode-variant-secondary,
+.tds-mode-light tds-accordion .tds-mode-variant-secondary {
+  background-color: var(--tds-accordion-background);
+}
+
+.tds-mode-dark tds-accordion.tds-mode-variant-primary,
+.tds-mode-dark tds-accordion .tds-mode-variant-primary {
+  background-color: var(--tds-accordion-background);
+}
+
+.tds-mode-dark tds-accordion.tds-mode-variant-secondary,
+.tds-mode-dark tds-accordion .tds-mode-variant-secondary {
+  background-color: var(--tds-accordion-background);
 }
