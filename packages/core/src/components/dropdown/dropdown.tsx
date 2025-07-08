@@ -98,6 +98,8 @@ export class TdsDropdown {
 
   private inputElement: HTMLInputElement;
 
+  private mutationObserver: MutationObserver;
+
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
     // Normalize to array
@@ -133,6 +135,7 @@ export class TdsDropdown {
       .filter((v) => v !== '');
   }
 
+  // eslint-disable-next-line class-methods-use-this
   private hasValueChanged(newValue: string[], currentValue: string[]): boolean {
     if (newValue.length !== currentValue.length) return true;
     return newValue.some((val) => !currentValue.includes(val));
@@ -276,13 +279,21 @@ export class TdsDropdown {
    */
   @Method()
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
-  // @ts-ignore
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 
   /** Method for closing the Dropdown. */
   @Method()
   async close() {
     this.open = false;
+  }
+
+  /** Method to force update the dropdown display value.
+   * Use this method when you programmatically change the text content of dropdown options
+   * to ensure the selected value display updates immediately.
+   */
+  @Method()
+  async updateDisplay() {
+    this.updateDisplayValue();
   }
 
   /** Change event for the Dropdown. */
@@ -328,7 +339,7 @@ export class TdsDropdown {
   onAnyClick(event: MouseEvent) {
     if (this.open) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-      const isClickOutside = !event.composedPath().includes(this.host as any);
+      const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
       if (isClickOutside) {
         this.open = false;
       }
@@ -415,6 +426,9 @@ export class TdsDropdown {
         : [defaultValueStr];
       this.updateDropdownStateInternal(initialValue);
     }
+
+    // Setup mutation observer to watch for text content changes
+    this.setupMutationObserver();
   }
 
   /** Method to handle slot changes */
@@ -606,6 +620,7 @@ export class TdsDropdown {
     if (form) {
       form.removeEventListener('reset', this.resetInput);
     }
+    this.mutationObserver?.disconnect();
   }
 
   connectedCallback() {
@@ -622,6 +637,41 @@ export class TdsDropdown {
         this.dropdownList.setAttribute('inert', '');
       }
     }
+  }
+
+  private setupMutationObserver() {
+    this.mutationObserver = new MutationObserver((mutations) => {
+      let shouldUpdate = false;
+
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'characterData' || mutation.type === 'childList') {
+          // Check if the mutation affects any of our dropdown options
+          const target = mutation.target as Node;
+          const optionElement =
+            target.nodeType === Node.TEXT_NODE
+              ? target.parentElement?.closest('tds-dropdown-option')
+              : (target as Element)?.closest('tds-dropdown-option');
+
+          if (
+            optionElement &&
+            this.getChildren().includes(optionElement as HTMLTdsDropdownOptionElement)
+          ) {
+            shouldUpdate = true;
+          }
+        }
+      });
+
+      if (shouldUpdate) {
+        this.updateDisplayValue();
+      }
+    });
+
+    // Start observing
+    this.mutationObserver.observe(this.host, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
   }
 
   render() {

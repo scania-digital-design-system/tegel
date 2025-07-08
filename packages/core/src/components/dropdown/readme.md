@@ -118,6 +118,18 @@ Type: `Promise<{ value: string | number; label: string; }[]>`
 
 
 
+### `updateDisplay() => Promise<void>`
+
+Method to force update the dropdown display value.
+Use this method when you programmatically change the text content of dropdown options
+to ensure the selected value display updates immediately.
+
+#### Returns
+
+Type: `Promise<void>`
+
+
+
 
 ## Slots
 
