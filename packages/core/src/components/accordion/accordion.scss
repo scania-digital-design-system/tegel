@@ -6,6 +6,8 @@
   display: block;
   @include tds-box-sizing;
 
+  background-color: transparent;
+
   .tds-accordion-header-icon-start,
   .tds-accordion-header-icon-end {
     position: relative;
@@ -18,12 +20,8 @@
   .tds-accordion-item {
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-focus);
+      background-color: var(--accordion-background-focus);
       outline: none;
-
-      &::after {
-        border-color: var(--tds-accordion-border-focus);
-      }
     }
   }
 
@@ -35,7 +33,7 @@
 :host(:active) {
   .tds-accordion-header-icon-start,
   .tds-accordion-header-icon-end {
-    background-color: var(--tds-accordion-background-active);
+    background-color: var(--accordion-background-active);
     outline: none;
   }
 
@@ -45,9 +43,17 @@
 }
 
 :host(:last-child) {
-  border-bottom: 1px solid var(--tds-accordion-border);
+  border-bottom: 1px solid var(--accordion-border);
 }
 
 :host(.hide-last-border:last-child) {
   border-bottom: none;
+}
+
+:host(.tds-mode-variant-secondary) {
+  background-color: var(--accordion-background);
+}
+
+:host(.tds-mode-variant-primary) {
+  background-color: var(--accordion-background);
 }
