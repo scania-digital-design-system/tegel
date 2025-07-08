@@ -17,6 +17,11 @@ import appendHiddenInput from '../../utils/appendHiddenInput';
 import { convertToString, convertArrayToStrings } from '../../utils/convertToString';
 import generateUniqueId from '../../utils/generateUniqueId';
 
+function hasValueChanged(newValue: string[], currentValue: string[]): boolean {
+  if (newValue.length !== currentValue.length) return true;
+  return newValue.some((val) => !currentValue.includes(val));
+}
+
 /**
  * @slot <default> - <b>Unnamed slot.</b> For dropdown option elements.
  */
@@ -106,7 +111,7 @@ export class TdsDropdown {
     const normalizedValue = this.normalizeValue(newValue);
 
     // Only update if actually changed
-    if (this.hasValueChanged(normalizedValue, this.selectedOptions)) {
+    if (hasValueChanged(normalizedValue, this.selectedOptions)) {
       this.updateDropdownStateFromUser(normalizedValue);
     }
   }
@@ -140,6 +145,7 @@ export class TdsDropdown {
     if (newValue.length !== currentValue.length) return true;
     return newValue.some((val) => !currentValue.includes(val));
   }
+
 
   private updateDropdownStateInternal(values: string[]) {
     this.updateDropdownState(values, false);
@@ -220,8 +226,24 @@ export class TdsDropdown {
     });
   }
 
+  /** Method for setting the selected value of the Dropdown.
+   *
+   * Single selection example:
+   *
+   * <code>
+   *  dropdown.setValue('option-1', 'Option 1');
+   * </code>
+   *
+   * Multiselect example:
+   *
+   * <code>
+   *  dropdown.setValue(['option-1', 'option-2']);
+   * </code>
+   */
   @Method()
-  async setValue(value: string | number | string[] | number[]) {
+  // @ts-expect-error for label: the label is optional here ONLY to not break the API. Should be removed for 2.0.
+  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+  async setValue(value: string | number | string[] | number[], label?: string) {
     let normalizedValue: string[];
     if (Array.isArray(value)) {
       normalizedValue = convertArrayToStrings(value);
@@ -281,6 +303,7 @@ export class TdsDropdown {
   //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
   // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 
+
   /** Method for closing the Dropdown. */
   @Method()
   async close() {
@@ -339,7 +362,9 @@ export class TdsDropdown {
   onAnyClick(event: MouseEvent) {
     if (this.open) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
+
       const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
+
       if (isClickOutside) {
         this.open = false;
       }
