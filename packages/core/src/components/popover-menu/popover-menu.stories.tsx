@@ -68,16 +68,28 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
+    modeVariant: {
+      name: 'Mode variant',
+      description: 'Mode variant of the component.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
   },
   args: {
     menuPosition: 'Auto',
     icons: false,
     fluidWidth: false,
     animation: 'none',
+    modeVariant: 'Inherit from parent',
   },
 };
 
-const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
+const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) => {
   const menuPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -112,6 +124,7 @@ const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
       animation="${animation}"
       ${fluidWidth ? 'fluid-width' : ''}
       selector="#my-popover-button"
+       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       >
         <tds-popover-menu-item>
           <a href="#"> ${icons ? '<tds-icon name="share"/>' : ''} Action </a>

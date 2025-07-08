@@ -1,8 +1,17 @@
 tds-popover-menu {
-  --tds-popover-menu-color: var(--color-foreground-text-strong);
-  --tds-popover-menu-background: var(--color-background-layer-01);
-  --tds-popover-menu-background-hover: var(--color-background-layer-02);
-  --tds-popover-menu-divider-color: var(--color-foreground-border-discrete);
-  --tds-popover-menu-divider-disabled-color: var(--color-foreground-text-disabled);
-  --tds-popover-menu-divider-disabled-icon-color: var(--color-foreground-border-discrete);
+  &.tds-mode-variant-primary {
+    --popover-menu-background: var(--color-background-layer-01);
+    --popover-menu-background-hover: var(--color-background-layer-02);
+  }
+
+  &.tds-mode-variant-secondary {
+    --popover-menu-background: var(--color-background-layer-02);
+    --popover-menu-background-hover: var(--color-background-layer-01);
+  }
+
+  --popover-menu-text: var(--color-foreground-text-strong);
+  --popover-menu-background: var(--color-background-layer-01);
+  --popover-menu-background-hover: var(--color-background-layer-02);
+  --popover-menu-item-disabled: var(--color-foreground-text-disabled);
+  --popover-menu-item-icon-disabled: var(--color-foreground-icon-disabled);
 }
