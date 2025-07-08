@@ -8,8 +8,8 @@ $local-directory: './assets/logos';
 html {
   // Primary local variables
   @each $key in $logotypes {
-    --#{$prefix}-background-image-scania-#{$key}-png-local: url(#{$local-directory}/scania-#{$key}.png);
-    --#{$prefix}-background-image-scania-#{$key}-svg-local: url(#{$local-directory}/scania-#{$key}.svg);
+    --#{$prefix}-background-image-scania-#{$key}-png-local: url(#{$local-directory}/scania/scania-#{$key}.png);
+    --#{$prefix}-background-image-scania-#{$key}-svg-local: url(#{$local-directory}/scania/scania-#{$key}.svg);
   }
 
   // Fallback CDN variables
