@@ -193,6 +193,15 @@
   background-color: var(--tds-accordion-background-active);
 }
 
+:host(:hover)
+  .tds-accordion-item:has(.tds-accordion-header-icon-start:active)
+  .tds-accordion-header-icon-start,
+:host(:hover)
+  .tds-accordion-item:has(.tds-accordion-header-icon-end:active)
+  .tds-accordion-header-icon-end {
+  background-color: var(--tds-accordion-background-active);
+}
+
 .tds-accordion-header-icon-start:active,
 .tds-accordion-header-icon-end:active {
   outline: none;
