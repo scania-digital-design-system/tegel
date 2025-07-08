@@ -9,7 +9,7 @@
   .wrapper {
     @include detail-02;
 
-    color: var(--tds-popover-menu-color);
+    color: var(--popover-menu-text);
     position: relative;
     width: 100%;
     display: flex;
@@ -18,19 +18,19 @@
 
     &:hover {
       cursor: pointer;
-      background-color: var(--tds-popover-menu-background-hover);
+      background-color: var(--popover-menu-background-hover);
     }
 
     &.disabled {
       cursor: not-allowed;
-      color: var(--tds-popover-menu-divider-disabled-color);
+      color: var(--popover-menu-item-disabled);
 
       &:hover {
         background-color: inherit;
       }
 
       ::slotted(tds-icon) {
-        color: var(--tds-popover-menu-divider-disabled-icon-color);
+        color: var(--popover-menu-item-icon-disabled);
       }
 
       ::slotted(*) {
