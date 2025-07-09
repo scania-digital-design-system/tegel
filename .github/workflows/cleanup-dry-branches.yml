@@ -38,7 +38,13 @@ jobs:
         run: |
           echo "🧼 Looking for dry-run branches older than 2 hours..."
 
-          gh api repos/${{ github.repository }}/branches \
+          # Debug: Show all branch names
+          echo "🧪 All branches:"
+          gh api --paginate repos/${{ github.repository }}/branches \
+            | jq -r '.[].name'
+
+          # Fetch and process dry-run branches
+          gh api --paginate repos/${{ github.repository }}/branches \
             | jq -r '.[] | select(.name | test("dry-run-[0-9]{8}-[0-9]{4}")) | .name' \
             | while read branch; do
                 echo "🔍 Found branch: $branch"
@@ -58,9 +64,13 @@ jobs:
                 fi
 
                 if [ "$age" -ge 2 ]; then
-                  echo "🗑 Deleting branch $branch..."
-                  git push --no-verify origin --delete "$branch"
+                  echo "🗑 Deleting $branch (via git)..."
+                  git push --no-verify origin --delete "$branch" || {
+                    echo "⚠️ Git push failed, trying GH API delete..."
+                    gh api -X DELETE repos/${{ github.repository }}/git/refs/heads/"$branch" || \
+                    echo "❌ Failed to delete $branch via GH API"
+                  }
                 else
-                  echo "✅ Keeping branch $branch"
+                  echo "✅ Keeping $branch (age: $age)"
                 fi
               done
