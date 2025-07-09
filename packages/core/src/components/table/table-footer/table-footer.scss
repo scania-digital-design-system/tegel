@@ -155,19 +155,3 @@
     transform: translate3d(4px, 0, 0);
   }
 }
-
-// trick to get the focus state on the dropdown button
-tds-dropdown:focus-within {
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-    border-radius: var(--tds-spacing-element-4);
-    pointer-events: none;
-    @include tds-focus-state;
-  }
-}

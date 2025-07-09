@@ -2,6 +2,7 @@
 @import './dropdown-button';
 @import './dropdown-filter';
 @import '../../mixins/scrollbar';
+@import '../../mixins/focus-state';
 
 :host {
   display: block;
@@ -23,13 +24,15 @@
   .dropdown-select {
     position: relative;
 
+    button:focus {
+      @include tds-focus-state;
+
+      border-radius: 0;
+    }
+
     button {
       transition: border-bottom-color var(--tds-motion-duration-fast-02)
         var(--tds-motion-easing-scania);
-    }
-
-    button:focus {
-      border-bottom-color: var(--tds-dropdown-border-bottom);
     }
 
     button:hover {
@@ -167,10 +170,9 @@
   .dropdown-list {
     z-index: tds-z-index(dropdown);
     position: absolute;
-    margin-top: 1px;
     width: 100%;
     transform-origin: top;
-    box-shadow: rgb(0 0 0 / 10%) 0 2px 3px 0;
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.1);
     border-radius: var(--tds-dropdown-list-border-radius-down);
     overflow-y: auto;
     transform: scaleY(0);
@@ -200,7 +202,6 @@
       transform-origin: bottom;
       display: flex;
       flex-direction: column-reverse;
-      box-shadow: rgb(0 0 0 / 10%) 0 -1px 3px 0;
       border-radius: var(--tds-dropdown-list-border-radius-up);
 
       &.label-outside {
