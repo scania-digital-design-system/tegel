@@ -24,7 +24,9 @@
     }
 
     & button:focus {
-      @include tds-focus-state;
+      outline: 2px solid var(--tds-dropdown-option-focus);
+      box-shadow: inset 0 0 0 3px var(--tds-white);
+      outline-offset: -2px;
     }
 
     button {
@@ -83,12 +85,12 @@
     }
 
     &:hover {
-      background-color: var(--tds-dropdown-option-background-hover);
+      border-bottom-color: var(--tds-dropdown-option-border-hover);
       cursor: pointer;
     }
 
     &:hover.disabled {
-      background-color: var(--tds-dropdown-option-background);
+      border-bottom-color: var(--tds-dropdown-option-border-hover);
       cursor: not-allowed;
     }
   }
