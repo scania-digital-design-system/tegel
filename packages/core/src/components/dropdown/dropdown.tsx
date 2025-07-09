@@ -276,6 +276,7 @@ export class TdsDropdown {
     this.handleFocus({});
   }
 
+
   /** Method for closing the Dropdown. */
   @Method()
   async close() {
@@ -803,7 +804,6 @@ export class TdsDropdown {
         <div
           role="listbox"
           aria-label={this.tdsAriaLabel}
-          aria-hidden={this.open ? 'false' : 'true'}
           inert={!this.open}
           aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
