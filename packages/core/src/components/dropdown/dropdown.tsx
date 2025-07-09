@@ -282,6 +282,15 @@ export class TdsDropdown {
     this.open = false;
   }
 
+  /** Method to force update the dropdown display value.
+   * Use this method when you programmatically change the text content of dropdown options
+   * to ensure the selected value display updates immediately.
+   */
+  @Method()
+  async updateDisplay() {
+    this.updateDisplayValue();
+  }
+
   /** Change event for the Dropdown. */
   @Event({
     eventName: 'tdsChange',
@@ -325,7 +334,9 @@ export class TdsDropdown {
   onAnyClick(event: MouseEvent) {
     if (this.open) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-      const isClickOutside = !event.composedPath().includes(this.host);
+
+      const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
+
       if (isClickOutside) {
         this.open = false;
       }
