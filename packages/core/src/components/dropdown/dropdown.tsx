@@ -276,24 +276,6 @@ export class TdsDropdown {
     this.handleFocus({});
   }
 
-  /** Method for setting the value of the Dropdown.
-   *
-   * Single selection example:
-   *
-   * <code>
-   *  dropdown.setValue('option-1', 'Option 1');
-   * </code>
-   *
-   * Multiselect example:
-   *
-   * <code>
-   *  dropdown.setValue(['option-1', 'option-2']);
-   * </code>
-   */
-  @Method()
-  //  The label is optional here ONLY to not break the API. Should be removed for 2.0.
-  // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-
   /** Method for closing the Dropdown. */
   @Method()
   async close() {
