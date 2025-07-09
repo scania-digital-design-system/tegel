@@ -35,6 +35,9 @@ export class TdsDropdownOption {
   /** Sets the option as disabled. */
   @Prop() disabled: boolean = false;
 
+  /** Defines aria-label attribute for the option */
+  @Prop() tdsAriaLabel: string;
+
   @State() selected: boolean = false;
 
   @State() multiselect: boolean = false;
@@ -43,7 +46,7 @@ export class TdsDropdownOption {
 
   private parentElement: HTMLTdsDropdownElement | null = null;
 
-  // @ts-ignore
+  // @ts-expect-error - label property is used internally for text content tracking
   // eslint-disable-next-line no-unused-vars,
   private label: string = '';
 
@@ -90,6 +93,12 @@ export class TdsDropdownOption {
 
   componentWillLoad() {
     this.internalValue = convertToString(this.value);
+  }
+
+  connectedCallback() {
+    if (!this.tdsAriaLabel && !this.multiselect) {
+      console.warn('Tegel Dropdown component: tdsAriaLabel prop is missing');
+    }
   }
 
   componentWillRender = () => {
@@ -176,6 +185,7 @@ export class TdsDropdownOption {
                 }}
                 disabled={this.disabled}
                 checked={this.selected}
+                tdsAriaLabel={this.tdsAriaLabel}
                 class={{
                   [this.size]: true,
                 }}
@@ -190,6 +200,7 @@ export class TdsDropdownOption {
               role="option"
               aria-disabled={this.disabled}
               aria-selected={this.selected}
+              aria-label={this.tdsAriaLabel}
               onClick={() => {
                 this.handleSingleSelect();
               }}
