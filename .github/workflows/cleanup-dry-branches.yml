@@ -16,23 +16,17 @@ jobs:
 
       - name: Set Git identity
         run: |
-          git config --global user.name "Tegel - Scania"
-          git config --global user.email "tegel.design.system@gmail.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}
-
-      - name: Set Git identity
-        run: |
           git config --global user.name "Tegel - Scania" 
           git config --global user.email "tegel.design.system@gmail.com"
-          env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install GitHub CLI
-        uses: cli/setup-gh@v4
-        with:
-          version: latest
-
-      - name: Install jq
-        run: sudo apt-get install -y jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /usr/share/keyrings/githubcli-archive-keyring.gpg >/dev/null
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install -y gh
 
       - name: Remove old dry-run branches
         env:
@@ -48,7 +42,13 @@ jobs:
                 timestamp=$(echo "$branch" | grep -oE '[0-9]{8}-[0-9]{4}')
                 echo "📆 Extracted timestamp: $timestamp"
 
-                branch_date=$(date -d "${timestamp:0:8} ${timestamp:9:2}:${timestamp:11:2}" +%s || echo 0)
+                if [[ "$timestamp" =~ ^[0-9]{8}-[0-9]{4}$ ]]; then
+                  branch_date=$(date -d "${timestamp:0:8} ${timestamp:9:2}:${timestamp:11:2}" +%s 2>/dev/null || echo 0)
+                else
+                  echo "⚠️ Invalid timestamp format for $branch — skipping"
+                  continue
+                fi
+
                 now=$(date +%s)
                 age=$(( (now - branch_date) / 86400 ))
 
