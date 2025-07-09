@@ -5,6 +5,19 @@
 ### Good to know
  - Setting type='time' together with min and max props will not prevent user from set time outside min-max range. It is known issue for native input element. Here is more about it and how to work with it: [Time validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time#validation)
 
+**Important**: When you programmatically change the text content of dropdown options, you must call the `updateDisplay()` method to update the display. The dropdown does not automatically detect text content changes.
+
+Example usage:
+```javascript
+// After changing option text content
+const optionElement = document.querySelector('tds-dropdown-option[value="option-1"]');
+optionElement.textContent = 'New Option Text';
+
+// Call updateDisplay to refresh the dropdown display
+const dropdown = document.querySelector('tds-dropdown');
+dropdown.updateDisplay();
+```
+
 <!-- Auto Generated Below -->
 
 
