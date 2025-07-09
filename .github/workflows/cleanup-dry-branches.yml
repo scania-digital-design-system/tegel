@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: '0 4 * * 1-5' # Runs every weekday at 06:00 CET/CEST (04:00 UTC)
   workflow_dispatch:
-  push:
-    branches:
-      - feat/CDEP-845-cleanup-dry-branches-workflow
 
 jobs:
   cleanup:
@@ -36,14 +33,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
-          echo "🧼 Looking for dry-run branches older than 2 hours..."
+          echo "Looking for dry-run branches older than 2 days..."
 
-          # Debug: Show all branch names
-          echo "🧪 All branches:"
-          gh api --paginate repos/${{ github.repository }}/branches \
-            | jq -r '.[].name'
-
-          # Fetch and process dry-run branches
           gh api --paginate repos/${{ github.repository }}/branches \
             | jq -r '.[] | select(.name | test("dry-run-[0-9]{8}-[0-9]{4}")) | .name' \
             | while read branch; do
@@ -54,15 +45,16 @@ jobs:
 
                 branch_date=$(date -d "${timestamp:0:8} ${timestamp:9:2}:${timestamp:11:2}" +%s || echo 0)
                 now=$(date +%s)
-                age=$(( (now - branch_date) / 3600 ))
+                age=$(( (now - branch_date) / 86400 ))
 
-                echo "⏱ Branch age: $age hours"
+                echo "📆 Branch age: $age days"
 
                 if [ "$branch_date" -eq 0 ]; then
                   echo "⚠️ Failed to parse timestamp for $branch — skipping"
                   continue
                 fi
 
+                # Only delete branches that are older than or equal to 2 full days.
                 if [ "$age" -ge 2 ]; then
                   echo "🗑 Deleting $branch (via git)..."
                   git push --no-verify origin --delete "$branch" || {
