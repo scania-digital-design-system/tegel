@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/scania-digital-design-system/tegel#readme",
   "dependencies": {
-    "@scania/tegel": "^1.32.2"
+    "@scania/tegel": "^1.33.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
