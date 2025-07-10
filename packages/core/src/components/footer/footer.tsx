@@ -18,8 +18,6 @@ export class TdsFooter {
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' = null;
 
-  copyrightText: string = `Copyright © ${new Date().getFullYear()} Scania`;
-
   render() {
     const usesTopSlot = hasSlot('top', this.host);
     const usesStartSlot = hasSlot('start', this.host);
@@ -42,7 +40,16 @@ export class TdsFooter {
             )}
             <div class="footer-main-bottom">
               <small class="copyright">
-                {usesCopyrightSlot ? <slot name="copyright"></slot> : this.copyrightText}
+                {usesCopyrightSlot ? (
+                  <slot name="copyright"></slot>
+                ) : (
+                  <div>
+                    <div>
+                      © <span class="copyright-text">Copyright</span> {new Date().getFullYear()}
+                    </div>
+                    <div class="copyright-last-part">All rights reserved</div>
+                  </div>
+                )}
               </small>
               <div class="brand">
                 <p>Scania</p>
