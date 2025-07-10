@@ -11,6 +11,10 @@
   color: var(--tds-textarea-color);
   background-color: var(--tds-textarea-background);
 
+  &:read-only {
+    background-color: var(--tds-textarea-read-only-background);
+  }
+
   &::placeholder {
     opacity: 1;
     color: var(--tds-textarea-placeholder);
@@ -322,7 +326,7 @@
   }
 
   .textarea-input {
-    border: 1px solid var(--tds-textarea-border-bottom-read-only-color);
+    border-bottom-color: var(--tds-textarea-border-bottom-read-only-color);
   }
 
   .textfield-container {
