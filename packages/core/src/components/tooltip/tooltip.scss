@@ -1,5 +1,6 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   position: absolute;
@@ -8,10 +9,10 @@
 .tds-tooltip {
   @include tds-box-sizing;
 
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
-  color: var(--tds-tooltip-color);
-  background-color: var(--tds-tooltip-background);
+  @include detail-05;
+
+  color: var(--tooltip-text);
+  background-color: var(--tooltip-background);
   border-radius: 4px;
   padding: 8px;
   word-wrap: break-word;
