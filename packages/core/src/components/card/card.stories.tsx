@@ -157,6 +157,7 @@ const Template = ({
 
   return formatHtmlPreview(
     `<style>
+    /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
         max-width: 600px;
     }
