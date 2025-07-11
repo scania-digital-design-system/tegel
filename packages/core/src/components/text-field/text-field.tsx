@@ -284,10 +284,14 @@ export class TdsTextField {
 
           {this.readOnly && !this.hideReadOnlyIcon && (
             <span class="text-field-icon__readonly">
-              <tds-icon name="edit_inactive" size="20px" />
+              <tds-tooltip
+                placement="top-end"
+                text="This field is non-editable"
+                selector="#readonly-tooltip"
+              />
+              <tds-icon id="readonly-tooltip" name="edit_inactive" size="20px" />
             </span>
           )}
-          <span class="text-field-icon__readonly-label">This field is non-editable</span>
         </div>
 
         <div aria-live="assertive">

@@ -103,6 +103,7 @@ Example:
 
 ### Used by
 
+ - [tds-text-field](../text-field)
  - [tds-textarea](../textarea)
 
 ### Depends on
@@ -113,6 +114,7 @@ Example:
 ```mermaid
 graph TD;
   tds-tooltip --> tds-popover-core
+  tds-text-field --> tds-tooltip
   tds-textarea --> tds-tooltip
   style tds-tooltip fill:#f9f,stroke:#333,stroke-width:4px
 ```
