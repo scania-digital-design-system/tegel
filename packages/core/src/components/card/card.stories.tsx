@@ -1,5 +1,7 @@
-import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
+import CardPlaceholder from '../../stories/assets/image/card-placeholder-scania-light.png';
 import CardBodyImage from '../../stories/assets/image/card-img.png';
+import CardBodyImageTraton from '../../stories/assets/image/card-img-traton.png';
+import CardPlaceholderTraton from '../../stories/assets/image/card-placeholder-traton-light.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
 
 export default {
@@ -146,10 +148,15 @@ const Template = ({
   cardActions,
   clickable,
   stretch,
-}) =>
-  formatHtmlPreview(
+}) => {
+  const isTraton =
+    typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
+  const placeholderThumbnail = isTraton ? CardPlaceholderTraton : CardPlaceholder;
+
+  const placeholderBodyImg = isTraton ? CardBodyImageTraton : CardBodyImage;
+
+  return formatHtmlPreview(
     `<style>
-    /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
         max-width: 600px;
     }
@@ -160,14 +167,14 @@ const Template = ({
     ${header ? `header="${header}"` : ''}
     image-placement="${imagePlacement.toLowerCase()}-header"
     ${subheader ? `subheader="${subheader}"` : ''}
-    ${bodyImg ? `body-img="${CardBodyImage}"` : ''}
+    ${bodyImg ? `body-img="${placeholderBodyImg}"` : ''}
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
     ${stretch ? 'stretch' : ''}
     >
     ${
       thumbnail
-        ? `<img slot="thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>`
+        ? `<img slot="thumbnail" src="${placeholderThumbnail}" alt="Thumbnail for the card."/>`
         : ''
     }
   ${
@@ -194,5 +201,6 @@ const Template = ({
     }
   `,
   );
+};
 
 export const Default = Template.bind({});
