@@ -7,7 +7,7 @@
 
     &:hover {
       ::slotted(*) {
-        color: var(--breadcrumb-color-hover);
+        color: var(--breadcrumb-hover);
         text-decoration: underline;
       }
     }
@@ -26,7 +26,7 @@
       ::slotted(*) {
         pointer-events: none;
         cursor: default;
-        color: var(--breadcrumb-color-current);
+        color: var(--breadcrumb-current);
       }
 
       &:hover {
