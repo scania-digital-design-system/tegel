@@ -65,7 +65,7 @@ const standaloneLinkTemplate = ({ disabled, underline, icon, iconEnabled }) =>
   ${
     iconEnabled && icon
       ? `<a href="https://tegel.scania.com" target='_blank'>Link
-      <tds-icon name="${icon}" size="16px"/>
+      <tds-icon name="${icon}" size="14px"/>
     </a>   `
       : `<a href="https://tegel.scania.com" target='_blank'>Link</a>`
   }
