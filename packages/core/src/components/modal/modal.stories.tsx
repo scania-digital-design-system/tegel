@@ -124,7 +124,7 @@ const ModalTemplate = ({
   formatHtmlPreview(`
     <!-- The button below is just for demo purposes -->
     <tds-button id="my-modal-button" text="Open Modal"></tds-button>
-    
+
     <tds-modal 
       header="${headerText}"
       selector="#my-modal-button"
@@ -136,6 +136,26 @@ const ModalTemplate = ({
       tds-alert-dialog="${tdsAlertDialog}"
     >
       <span slot="body">
+
+        block:
+
+        <tds-block mode-variant="primary">
+          Primary with nesting
+
+          <tds-block>Nested
+
+            <tds-block>Nested again</tds-block>
+
+          </tds-block> 
+
+        </tds-block>
+
+        <tds-divider style="margin:20px"></tds-divider>
+
+        <tds-block mode-variant="secondary">
+          Secondary
+        </tds-block>
+
         ${bodyContent}
       </span>
       <span slot='actions' class='tds-u-flex tds-u-gap2'>
