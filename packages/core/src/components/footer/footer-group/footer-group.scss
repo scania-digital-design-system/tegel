@@ -17,10 +17,10 @@
   }
 
   button.footer-top-title-button {
-    border: none;
-    width: 100%;
     @include headline-07;
 
+    border: none;
+    width: 100%;
     color: var(--footer-top-links);
     background-color: transparent;
     text-align: left;
