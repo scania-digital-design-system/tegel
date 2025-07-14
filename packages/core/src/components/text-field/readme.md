@@ -65,12 +65,15 @@ Type: `Promise<void>`
 
 ### Depends on
 
+- [tds-tooltip](../tooltip)
 - [tds-icon](../icon)
 
 ### Graph
 ```mermaid
 graph TD;
+  tds-text-field --> tds-tooltip
   tds-text-field --> tds-icon
+  tds-tooltip --> tds-popover-core
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
