@@ -1,0 +1,64 @@
+{
+  "name": "@scania/tegel-cli",
+  "version": "0.1.0",
+  "description": "CLI tool for copying and transforming Tegel components with custom prefixes",
+  "type": "module",
+  "bin": {
+    "tegel-cli": "./bin/tegel-cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "bin",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "test:unit": "vitest run --dir tests/unit",
+    "test:integration": "vitest run --dir tests/integration",
+    "lint": "eslint src --ext .ts,.tsx",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "tegel",
+    "scania",
+    "design-system",
+    "cli",
+    "components",
+    "microfrontend"
+  ],
+  "author": "Scania",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.0.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1",
+    "prompts": "^2.4.2",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "typescript": "^5.3.3",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@typescript-eslint/typescript-estree": "^6.21.0",
+    "postcss": "^8.4.33",
+    "postcss-scss": "^4.0.9",
+    "cosmiconfig": "^9.0.0",
+    "zod": "^3.22.4",
+    "execa": "^8.0.1",
+    "semver": "^7.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.5",
+    "@types/fs-extra": "^11.0.4",
+    "@types/prompts": "^2.4.9",
+    "@types/semver": "^7.5.6",
+    "vitest": "^1.2.0",
+    "@vitest/ui": "^1.2.0",
+    "eslint": "^8.56.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
