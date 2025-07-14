@@ -295,17 +295,8 @@
   transform: translateY(-50%);
   color: var(--tds-text-field-icon-read-only-label-color);
 
-  &-label {
-    display: none;
-    position: absolute;
-    right: 18px;
-    top: 48px;
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
-    padding: 8px;
-    white-space: nowrap;
-    border-radius: 4px 0 4px 4px;
-    background-color: var(--tds-text-field-icon-read-only-label-background);
+  & .tds-tooltip {
+    min-width: 150px;
   }
 }
 
