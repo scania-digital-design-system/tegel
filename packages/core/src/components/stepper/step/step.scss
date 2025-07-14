@@ -1,7 +1,9 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 @mixin divider {
   content: ' ';
   position: absolute;
-  background-color: var(--tds-stepper-divider-line);
+  background-color: var(--stepper-divider-line);
 }
 
 :host {
@@ -21,15 +23,16 @@
 
     &.lg {
       padding: 0 20px;
-      font: var(--tds-detail-01);
-      letter-spacing: var(--tds-detail-01-ls);
+      @include detail-01;
 
       .content-container {
         height: 30px;
         min-width: 30px;
 
         tds-icon {
+          position: var(--stepper-icon-position);
           vertical-align: bottom;
+          top: var(--stepper-icon-top);
         }
 
         .index-container {
@@ -95,8 +98,7 @@
 
     &.sm {
       padding: 0 20px;
-      font: var(--tds-detail-05);
-      letter-spacing: var(--tds-detail-05-ls);
+      @include detail-05;
 
       .index-container {
         vertical-align: -webkit-baseline-middle;
@@ -181,30 +183,30 @@
 
     .content-container {
       border-radius: 100px;
-      border: 1px solid var(--tds-stepper-icon-background);
+      border: 1px solid var(--stepper-icon-background);
       text-align: center;
       position: relative;
 
       &.error {
-        border-color: var(--tds-stepper-icon-step-border-color-warning);
-        color: var(--tds-stepper-icon-step-border-color-warning);
+        border-color: var(--stepper-icon-step-border-warning);
+        color: var(--stepper-icon-step-border-warning);
       }
 
       &.success {
-        background-color: var(--tds-stepper-icon-step-border-color-success);
-        border-color: var(--tds-stepper-icon-step-border-color-success);
+        background-color: var(--stepper-icon-step-border-success);
+        border-color: var(--stepper-icon-step-border-success);
         color: var(--tds-white);
       }
 
       &.current {
-        background-color: var(--tds-stepper-background);
-        color: var(--tds-stepper-color);
+        background-color: var(--stepper-background);
+        color: var(--stepper-current-number);
       }
 
       &.upcoming {
         background-color: transparent;
-        border-color: var(--tds-stepper-label-border-color-upcoming);
-        color: var(--tds-stepper-label-text-color-upcoming);
+        border-color: var(--stepper-label-border-upcoming);
+        color: var(--stepper-label-text-upcoming);
       }
     }
 
@@ -212,17 +214,15 @@
       text-align: center;
 
       &.lg {
-        font: var(--tds-detail-01);
-        letter-spacing: var(--tds-detail-01-ls);
+        @include detail-01;
       }
 
       &.sm {
-        font: var(--tds-detail-05);
-        letter-spacing: var(--tds-detail-05-ls);
+        @include detail-05;
       }
 
       &.upcoming {
-        color: var(--tds-stepper-label-text-color-upcoming);
+        color: var(--stepper-label-text-upcoming);
         opacity: var(--tds-stepper-label-text-opacity-upcoming);
       }
     }
