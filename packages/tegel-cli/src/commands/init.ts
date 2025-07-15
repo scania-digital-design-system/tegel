@@ -3,9 +3,32 @@ import prompts from 'prompts';
 import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
-import { configManager } from '../core/config-manager.js';
-import { logger } from '../core/logger.js';
-import { TegelConfig } from '../types/index.js';
+import { configManager } from '../core/config-manager';
+import { logger } from '../core/logger';
+import { TegelConfig } from '../types/index';
+
+async function addGitignoreEntries(): Promise<void> {
+  const gitignorePath = path.join(process.cwd(), '.gitignore');
+  const tegelIgnoreEntries = ['', '# Tegel CLI', 'tegel-cache/', '.tegel-backup/', ''].join('\\n');
+
+  try {
+    if (await fs.pathExists(gitignorePath)) {
+      const content = await fs.readFile(gitignorePath, 'utf-8');
+
+      // Check if entries already exist
+      if (!content.includes('# Tegel CLI')) {
+        await fs.appendFile(gitignorePath, tegelIgnoreEntries);
+        logger.debug('Added Tegel entries to .gitignore');
+      }
+    } else {
+      // Create new .gitignore
+      await fs.writeFile(gitignorePath, `${tegelIgnoreEntries.trim()}\\n`);
+      logger.debug('Created .gitignore with Tegel entries');
+    }
+  } catch (error) {
+    logger.warn('Could not update .gitignore');
+  }
+}
 
 export const initCommand = new Command()
   .name('init')
@@ -19,16 +42,16 @@ export const initCommand = new Command()
   .action(async (options) => {
     try {
       logger.info('Initializing Tegel configuration...');
-      
+
       // Check if config already exists
       const configPath = path.join(process.cwd(), 'tegel.config.json');
-      if (await fs.pathExists(configPath) && !options.force) {
+      if ((await fs.pathExists(configPath)) && !options.force) {
         logger.error('Configuration already exists. Use --force to overwrite.');
         process.exit(1);
       }
-      
+
       let config: Partial<TegelConfig>;
-      
+
       if (options.skipPrompts) {
         // Use command line options or defaults
         config = {
@@ -81,14 +104,14 @@ export const initCommand = new Command()
             initial: true,
           },
         ]);
-        
+
         if (Object.keys(response).length === 0) {
           logger.info('Initialization cancelled');
           process.exit(0);
         }
-        
+
         config = response;
-        
+
         // Create target directory if requested
         if (response.createDir) {
           const targetPath = path.resolve(response.targetDir);
@@ -96,13 +119,13 @@ export const initCommand = new Command()
           logger.success(`Created directory: ${targetPath}`);
         }
       }
-      
+
       // Save configuration
       await configManager.init(process.cwd(), config);
-      
+
       // Create .gitignore entries
       await addGitignoreEntries();
-      
+
       // Show next steps
       logger.newline();
       logger.success('Tegel initialized successfully!');
@@ -113,38 +136,8 @@ export const initCommand = new Command()
         `Example: ${chalk.cyan('tegel-cli add button dropdown')}`,
         `Run ${chalk.cyan('tegel-cli add --help')} for more options`,
       ]);
-      
-    } catch (error: any) {
-      logger.error('Failed to initialize:', error);
+    } catch (error: unknown) {
+      logger.error('Failed to initialize:', error instanceof Error ? error : String(error));
       process.exit(1);
     }
   });
-
-async function addGitignoreEntries(): Promise<void> {
-  const gitignorePath = path.join(process.cwd(), '.gitignore');
-  const tegelIgnoreEntries = [
-    '',
-    '# Tegel CLI',
-    'tegel-cache/',
-    '.tegel-backup/',
-    '',
-  ].join('\\n');
-  
-  try {
-    if (await fs.pathExists(gitignorePath)) {
-      const content = await fs.readFile(gitignorePath, 'utf-8');
-      
-      // Check if entries already exist
-      if (!content.includes('# Tegel CLI')) {
-        await fs.appendFile(gitignorePath, tegelIgnoreEntries);
-        logger.debug('Added Tegel entries to .gitignore');
-      }
-    } else {
-      // Create new .gitignore
-      await fs.writeFile(gitignorePath, tegelIgnoreEntries.trim() + '\\n');
-      logger.debug('Created .gitignore with Tegel entries');
-    }
-  } catch (error) {
-    logger.warn('Could not update .gitignore');
-  }
-}

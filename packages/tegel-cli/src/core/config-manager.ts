@@ -2,17 +2,18 @@ import { cosmiconfig } from 'cosmiconfig';
 import { z } from 'zod';
 import fs from 'fs-extra';
 import path from 'path';
-import { TegelConfig } from '../types/index.js';
-import { logger } from './logger.js';
+import { TegelConfig } from '../types/index';
+import { logger } from './logger';
 
 const CONFIG_FILE_NAME = 'tegel.config.json';
 
 // Zod schema for validation
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TransformRuleSchema: any = z.object({
   pattern: z.union([z.instanceof(RegExp), z.string()]),
   replacement: z.union([
     z.string(),
-    z.any() // Allow any function type for now
+    z.any(), // Allow any function type for now
   ]),
   description: z.string().optional(),
   fileTypes: z.array(z.string()).optional(),
@@ -22,7 +23,8 @@ const TransformRuleSchema: any = z.object({
 const TegelConfigSchema = z.object({
   version: z.string(),
   prefix: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-    message: 'Prefix must start with lowercase letter and contain only lowercase letters, numbers, and hyphens'
+    message:
+      'Prefix must start with lowercase letter and contain only lowercase letters, numbers, and hyphens',
   }),
   targetDir: z.string(),
   style: z.enum(['scss', 'css']),
@@ -32,10 +34,12 @@ const TegelConfigSchema = z.object({
     customRules: z.array(TransformRuleSchema).optional(),
   }),
   aliases: z.record(z.string()),
-  registry: z.object({
-    url: z.string().url().optional(),
-    cache: z.boolean().optional(),
-  }).optional(),
+  registry: z
+    .object({
+      url: z.string().url().optional(),
+      cache: z.boolean().optional(),
+    })
+    .optional(),
 });
 
 // Default configuration
@@ -49,15 +53,19 @@ const DEFAULT_CONFIG: TegelConfig = {
     enabled: true,
   },
   aliases: {
-    '@tegel/utils': '@/lib/tegel/utils',
-    '@tegel/mixins': '@/styles/tegel/mixins',
-    '@tegel/tokens': '@/styles/tegel/tokens',
+    '@tegel/utils': '@/src/components/tegel/utils',
+    '@tegel/mixins': '@/src/components/tegel/mixins',
+    '@tegel/tokens': '@/src/components/tegel/tokens',
+    '@tegel/types': '@/src/components/tegel/types',
+    '@tegel/components': '@/src/components/tegel',
   },
 };
 
 export class ConfigManager {
   private config: TegelConfig | null = null;
+
   private configPath: string | null = null;
+
   private explorer = cosmiconfig('tegel', {
     searchPlaces: [
       'package.json',
@@ -74,27 +82,28 @@ export class ConfigManager {
     try {
       // Try to find existing config
       const result = await this.explorer.search(projectPath);
-      
+
       if (result) {
         logger.debug(`Found config at: ${result.filepath}`);
         this.configPath = result.filepath;
-        
+
         // Validate config
         const validated = TegelConfigSchema.parse(result.config);
         this.config = validated;
-        
+
         return validated;
       }
-      
+
       // No config found, use defaults
       logger.debug('No config found, using defaults');
       this.config = DEFAULT_CONFIG;
       return DEFAULT_CONFIG;
-      
     } catch (error) {
       if (error instanceof z.ZodError) {
         logger.error('Invalid configuration:', error);
-        throw new Error(`Configuration validation failed: ${error.errors.map(e => e.message).join(', ')}`);
+        throw new Error(
+          `Configuration validation failed: ${error.errors.map((e) => e.message).join(', ')}`,
+        );
       }
       throw error;
     }
@@ -102,36 +111,39 @@ export class ConfigManager {
 
   async save(config: Partial<TegelConfig>, projectPath: string = process.cwd()): Promise<void> {
     const configPath = path.join(projectPath, CONFIG_FILE_NAME);
-    
+
     // Merge with defaults
     const fullConfig = { ...DEFAULT_CONFIG, ...config };
-    
+
     // Validate before saving
     const validated = TegelConfigSchema.parse(fullConfig);
-    
+
     // Save to file
     await fs.writeJSON(configPath, validated, { spaces: 2 });
-    
+
     this.config = validated;
     this.configPath = configPath;
-    
+
     logger.success(`Configuration saved to ${configPath}`);
   }
 
-  async init(projectPath: string = process.cwd(), options: Partial<TegelConfig> = {}): Promise<void> {
+  async init(
+    projectPath: string = process.cwd(),
+    options: Partial<TegelConfig> = {},
+  ): Promise<void> {
     const configPath = path.join(projectPath, CONFIG_FILE_NAME);
-    
+
     // Check if config already exists
     if (await fs.pathExists(configPath)) {
       throw new Error(`Configuration already exists at ${configPath}`);
     }
-    
+
     // Create config with options
     const config: TegelConfig = {
       ...DEFAULT_CONFIG,
       ...options,
     };
-    
+
     await this.save(config, projectPath);
   }
 
@@ -150,26 +162,26 @@ export class ConfigManager {
     if (!this.config) {
       throw new Error('Configuration not loaded. Call load() first.');
     }
-    
+
     this.config = {
       ...this.config,
       ...updates,
     };
-    
+
     // Validate updated config
     this.config = TegelConfigSchema.parse(this.config);
-    
+
     return this.config!;
   }
 
-  async validate(config: any): Promise<boolean> {
+  static async validate(config: unknown): Promise<boolean> {
     try {
       TegelConfigSchema.parse(config);
       return true;
     } catch (error) {
       if (error instanceof z.ZodError) {
         logger.error('Configuration validation failed:');
-        error.errors.forEach(err => {
+        error.errors.forEach((err) => {
           logger.error(`  ${err.path.join('.')}: ${err.message}`);
         });
       }
@@ -182,7 +194,7 @@ export class ConfigManager {
     if (!this.configPath) {
       return path.resolve(process.cwd(), relativePath);
     }
-    
+
     const configDir = path.dirname(this.configPath);
     return path.resolve(configDir, relativePath);
   }

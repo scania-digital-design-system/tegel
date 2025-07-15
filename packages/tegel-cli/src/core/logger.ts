@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import ora, { Ora } from 'ora';
 
+// eslint-disable-next-line no-shadow
 export enum LogLevel {
   ERROR = 0,
   WARN = 1,
@@ -10,6 +11,7 @@ export enum LogLevel {
 
 class Logger {
   private level: LogLevel = LogLevel.INFO;
+
   private spinner: Ora | null = null;
 
   setLevel(level: LogLevel): void {
@@ -89,7 +91,7 @@ class Logger {
       if (title) {
         console.log(chalk.bold(title));
       }
-      items.forEach(item => {
+      items.forEach((item) => {
         console.log(chalk.gray('  •'), item);
       });
     }
@@ -98,14 +100,14 @@ class Logger {
   // Pretty print for code blocks
   code(code: string, language?: string): void {
     if (this.level >= LogLevel.INFO) {
-      console.log(chalk.gray('```' + (language || '')));
+      console.log(chalk.gray(`\`\`\`${language || ''}`));
       console.log(chalk.cyan(code));
       console.log(chalk.gray('```'));
     }
   }
 
   // Pretty print for tables
-  table(data: Record<string, any>[]): void {
+  table(data: Record<string, unknown>[]): void {
     if (this.level >= LogLevel.INFO && data.length > 0) {
       console.table(data);
     }
@@ -119,6 +121,7 @@ class Logger {
   }
 
   // Empty line
+  // eslint-disable-next-line class-methods-use-this
   newline(): void {
     console.log();
   }

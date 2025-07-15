@@ -13,6 +13,7 @@ export interface TegelConfig {
     url?: string;
     cache?: boolean;
   };
+  includeTests?: boolean;
 }
 
 export interface TransformRule {
@@ -37,8 +38,9 @@ export interface ComponentEntry {
     internal: string[]; // Other Tegel components
     external?: string[]; // Third-party deps
     utilities: string[]; // Shared utils
-    assets?: string[];  // Icons, fonts
-    mixins?: string[];  // SCSS mixins
+    assets?: string[]; // Icons, fonts
+    mixins?: string[]; // SCSS mixins
+    types?: string[]; // Type dependencies like icons
   };
   exports?: {
     types?: string[];
@@ -49,6 +51,8 @@ export interface ComponentEntry {
     version: string;
     stability?: 'stable' | 'beta' | 'experimental';
     description?: string;
+    isSubComponent?: boolean;
+    parentComponent?: string;
   };
 }
 
