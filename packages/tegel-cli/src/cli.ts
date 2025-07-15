@@ -59,7 +59,7 @@ async function main() {
         process.exit(1);
       }
     } else {
-      logger.error('An unexpected error occurred', error);
+      logger.error('An unexpected error occurred', error instanceof Error ? error : undefined);
       process.exit(1);
     }
   }
@@ -67,6 +67,6 @@ async function main() {
 
 // Run CLI
 main().catch((error) => {
-  logger.error('Fatal error:', error);
+  logger.error('Fatal error:', error instanceof Error ? error : undefined);
   process.exit(1);
 });
