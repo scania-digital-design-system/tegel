@@ -1,5 +1,5 @@
 import CardPlaceholder from '../../stories/assets/image/card-placeholder-scania-light.png';
-import CardBodyImage from '../../stories/assets/image/card-img.png';
+import CardBodyImage from '../../stories/assets/image/card-img-scania.png';
 import CardBodyImageTraton from '../../stories/assets/image/card-img-traton.png';
 import CardPlaceholderTraton from '../../stories/assets/image/card-placeholder-traton-light.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
