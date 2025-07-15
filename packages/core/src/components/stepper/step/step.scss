@@ -28,16 +28,6 @@
       .content-container {
         height: 30px;
         min-width: 30px;
-
-        tds-icon {
-          position: var(--stepper-icon-position);
-          vertical-align: bottom;
-          top: var(--stepper-icon-top);
-        }
-
-        .index-container {
-          vertical-align: sub;
-        }
       }
 
       &.vertical {
@@ -58,7 +48,7 @@
           height: 1px;
           left: calc(50% + 24px);
           right: 0;
-          top: 18px;
+          top: 16px;
         }
 
         &::before {
@@ -67,7 +57,7 @@
           height: 1px;
           right: calc(50% + 24px);
           left: 0;
-          top: 18px;
+          top: 16px;
         }
 
         &.text-aside {
@@ -182,6 +172,9 @@
     }
 
     .content-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
       border-radius: 100px;
       border: 1px solid var(--stepper-icon-background);
       text-align: center;

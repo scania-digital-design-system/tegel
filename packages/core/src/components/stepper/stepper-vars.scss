@@ -17,14 +17,3 @@ tds-stepper {
   // Divider
   --stepper-divider-line: var(--color-foreground-icon-disabled);
 }
-
-tds-stepper,
-.scania tds-stepper {
-  --stepper-icon-position: none;
-  --stepper-icon-top: 0;
-}
-
-.traton tds-stepper {
-  --stepper-icon-position: relative;
-  --stepper-icon-top: 2px;
-}
