@@ -7,7 +7,7 @@
   @include tds-box-sizing;
 
   list-style: none;
-  color: var(---accordion-color);
+  color: var(--accordion-text);
   position: relative;
 
   button.tds-accordion-header-icon-start,
@@ -86,11 +86,11 @@
     .tds-accordion-header-icon-end,
     .tds-accordion-header-icon-start,
     .tds-accordion-panel {
-      color: var(--accordion-color-disabled);
+      color: var(--accordion-text-disabled);
       cursor: not-allowed;
 
       .tds-accordion-icon {
-        color: var(--accordion-color-disabled);
+        color: var(--accordion-text-disabled);
       }
     }
 

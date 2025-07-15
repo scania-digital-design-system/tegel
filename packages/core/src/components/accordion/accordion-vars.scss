@@ -13,12 +13,12 @@ tds-accordion {
   --accordion-background-active: var(--color-background-surface-100);
 
   /* Text & Icon colours */
-  --accordion-color: var(--color-foreground-text-strong);
+  --accordion-text: var(--color-foreground-text-strong);
   --accordion-icon: var(--foreground-elements-transparparent-strong); /* icon */
 
   /* Borders & Disabled */
   --accordion-border-focus: var(--tds-grey-500);
-  --accordion-color-disabled: var(--color-foreground-text-disabled);
+  --accordion-text-disabled: var(--color-foreground-text-disabled);
 }
 
 // Override global background colors for accordion specifically with higher specificity
