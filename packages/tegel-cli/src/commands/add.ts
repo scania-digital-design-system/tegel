@@ -19,15 +19,12 @@ export const addCommand = new Command()
   .option('-f, --force', 'overwrite existing files')
   .action(async (components: string[], options: CLIOptions) => {
     try {
-      // Load configuration
       const config = await configManager.load();
 
-      // Override prefix if provided
       if (options.prefix) {
         config.prefix = options.prefix;
       }
 
-      // Resolve Tegel source location
       const { resolveTegelSource } = await import('../utils/tegel-source-resolver');
       const tegelSource = await resolveTegelSource();
 
@@ -35,7 +32,6 @@ export const addCommand = new Command()
       logger.debug(`Tegel version: ${tegelSource.version}`);
       logger.debug(`Source type: ${tegelSource.isLocal ? 'local development' : 'bundled'}`);
 
-      // Check if CLI version is newer than config version
       if (config.version && semver.gt(tegelSource.version, config.version)) {
         logger.newline();
         logger.warn(
@@ -55,18 +51,14 @@ export const addCommand = new Command()
           logger.info('Running update command...');
           logger.newline();
 
-          // Import and execute update command
           const { updateCommand: updateCmd } = await import('./update');
-          // Run update with --all flag
           await updateCmd.parseAsync(['update', '--all'], { from: 'user' });
           return;
         }
       }
 
-      // Update config version to match source
       config.version = tegelSource.version;
 
-      // Initialize component scanner
       logger.startSpinner('Scanning Tegel components...');
       const scanner = new ComponentScanner(tegelSource.componentsPath);
       const scanResult = await scanner.scanAll();
@@ -76,13 +68,11 @@ export const addCommand = new Command()
         `Found ${allComponents.size} components (${topLevelComponents.size} available to add)`,
       );
 
-      // Initialize dependency analyzer
       logger.startSpinner('Analyzing dependencies...');
       const analyzer = new DependencyAnalyzer(tegelSource.componentsPath, allComponents);
       await analyzer.analyzeAll();
       logger.stopSpinner(true, 'Dependencies analyzed');
 
-      // Determine which components to add
       let componentsToAdd: string[] = [];
 
       if (options.all) {
@@ -112,12 +102,10 @@ export const addCommand = new Command()
 
         componentsToAdd = response.components;
       } else {
-        // Validate component names - only allow top-level components
         const invalidComponents = components.filter((name) => !topLevelComponents.has(name));
         if (invalidComponents.length > 0) {
           logger.error(`Invalid components: ${invalidComponents.join(', ')}`);
 
-          // Check if any are sub-components
           const subComponentNames = invalidComponents.filter((name) => allComponents.has(name));
           if (subComponentNames.length > 0) {
             logger.info(
@@ -140,7 +128,6 @@ export const addCommand = new Command()
         componentsToAdd = components;
       }
 
-      // Resolve all dependencies
       const allComponentsToInstall = new Set<string>();
       componentsToAdd.forEach((comp) => {
         allComponentsToInstall.add(comp);
@@ -150,7 +137,6 @@ export const addCommand = new Command()
         }
       });
 
-      // Show what will be added
       logger.newline();
       logger.info(`Will add ${allComponentsToInstall.size} component(s):`);
 
@@ -164,7 +150,6 @@ export const addCommand = new Command()
         logger.newline();
         logger.info('Dry run mode - no files will be written');
 
-        // Show what files would be created
         Array.from(allComponentsToInstall).forEach((compName) => {
           const component = allComponents.get(compName)!;
           logger.newline();
@@ -179,7 +164,6 @@ export const addCommand = new Command()
         process.exit(0);
       }
 
-      // Confirm before proceeding
       if (!options.force) {
         const { proceed } = await prompts({
           type: 'confirm',
@@ -194,7 +178,6 @@ export const addCommand = new Command()
         }
       }
 
-      // Install components
       logger.newline();
       logger.startSpinner('Installing components...');
 
@@ -225,7 +208,6 @@ export const addCommand = new Command()
           logger.info(`Created ${result.copiedFiles.length} files`);
         }
 
-        // Show usage example
         logger.newline();
         logger.info('Usage example:');
         const exampleComponent = allComponents.get(componentsToAdd[0]);

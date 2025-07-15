@@ -41,7 +41,6 @@ export const initCommand = new Command()
     try {
       logger.info('Initializing Tegel configuration...');
 
-      // Check if config already exists
       const configPath = path.join(process.cwd(), 'tegel.config.json');
       if ((await fs.pathExists(configPath)) && !options.force) {
         logger.error('Configuration already exists. Use --force to overwrite.');
@@ -51,13 +50,11 @@ export const initCommand = new Command()
       let config: Partial<TegelConfig>;
 
       if (options.skipPrompts) {
-        // Use command line options or defaults
         config = {
           prefix: options.prefix,
           targetDir: options.dir,
         };
       } else {
-        // Interactive prompts
         const response = await prompts([
           {
             type: 'text',
@@ -92,7 +89,6 @@ export const initCommand = new Command()
 
         config = response;
 
-        // Create target directory if requested
         if (response.createDir) {
           const targetPath = path.resolve(response.targetDir);
           await fs.ensureDir(targetPath);
@@ -100,13 +96,10 @@ export const initCommand = new Command()
         }
       }
 
-      // Save configuration
       await configManager.init(process.cwd(), config);
 
-      // Create .gitignore entries
       await addGitignoreEntries();
 
-      // Show next steps
       logger.newline();
       logger.success('Tegel initialized successfully!');
       logger.newline();

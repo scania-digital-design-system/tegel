@@ -39,7 +39,6 @@ export class ComponentInstaller {
     const errors: string[] = [];
     const installedComponents: string[] = [];
 
-    // Create transform context
     const context: TransformContext = {
       config,
       component: null!, // Will be set for each component
@@ -47,7 +46,6 @@ export class ComponentInstaller {
       targetRoot: path.resolve(config.targetDir),
     };
 
-    // Initialize file copier with Tegel source info and options
     const copier = new FileCopier(context, tegelSource, {
       force,
       update: options.update,
@@ -55,17 +53,14 @@ export class ComponentInstaller {
     });
 
     try {
-      // Ensure target directory exists
       if (!dryRun) {
         await fs.ensureDir(context.targetRoot);
       }
 
-      // Collect all components to be installed
       const componentsToInstall = components
         .map((name) => componentMap.get(name))
         .filter((c): c is ComponentEntry => c !== undefined);
 
-      // Collect dependencies for all components
       const allUtilities = new Set<string>();
       const allMixins = new Set<string>();
       const allTypes = new Set<string>();
@@ -87,7 +82,6 @@ export class ComponentInstaller {
         assets.forEach((a) => allAssets.set(a, component.files.component));
       }
 
-      // Collect existing files and prompt for overrides before starting
       if (!dryRun && !force && !options.update) {
         await copier.collectExistingFiles(componentsToInstall, {
           utilities: allUtilities,
@@ -109,7 +103,6 @@ export class ComponentInstaller {
 
         logger.info(`Installing ${componentName}...`);
 
-        // Update context with current component
         context.component = component;
 
         if (dryRun) {
@@ -119,7 +112,6 @@ export class ComponentInstaller {
             ...component.files.styles.map((s) => `Style: ${s}`),
           ]);
         } else {
-          // Copy component files
           // eslint-disable-next-line no-await-in-loop
           const result = await copier.copyComponent(component);
           if (result.success && result.copiedFiles.length > 0) {
@@ -133,7 +125,6 @@ export class ComponentInstaller {
       }
 
       if (!dryRun && installedComponents.length > 0) {
-        // Re-collect dependencies only for components that were actually installed
         allUtilities.clear();
         allMixins.clear();
         allTypes.clear();
@@ -203,7 +194,6 @@ export class ComponentInstaller {
           }
         }
 
-        // Copy type dependencies (e.g., icons)
         if (allTypes.has('icons')) {
           logger.debug('Copying icon types...');
           try {
@@ -218,7 +208,6 @@ export class ComponentInstaller {
           }
         }
 
-        // Copy global styles if this is the first installation and we actually installed components
         if (installedComponents.length > 0) {
           // eslint-disable-next-line no-await-in-loop
           const hasExistingComponents = await ComponentInstaller.hasExistingComponents(

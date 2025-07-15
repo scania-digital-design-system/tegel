@@ -19,10 +19,8 @@ export const updateCommand = new Command()
   .option('-f, --force', 'skip confirmation prompts')
   .action(async (components: string[], options: CLIOptions) => {
     try {
-      // Load configuration
       const config = await configManager.load();
 
-      // Resolve Tegel source location
       const { resolveTegelSource } = await import('../utils/tegel-source-resolver');
       const tegelSource = await resolveTegelSource();
 
@@ -30,7 +28,6 @@ export const updateCommand = new Command()
       logger.debug(`Tegel version: ${tegelSource.version}`);
       logger.debug(`Current config version: ${config.version}`);
 
-      // Check if update is needed based on version
       const needsUpdate =
         typeof tegelSource.version === 'string' &&
         typeof config.version === 'string' &&
@@ -47,13 +44,11 @@ export const updateCommand = new Command()
         return;
       }
 
-      // Initialize component scanner
       logger.startSpinner('Scanning for installed components...');
       const scanner = new ComponentScanner(tegelSource.componentsPath);
       const scanResult = await scanner.scanAll();
       const { allComponents } = scanResult;
 
-      // Find installed components
       const installedComponents = new Set<string>();
       const componentDir = path.resolve(config.targetDir);
 
@@ -77,13 +72,11 @@ export const updateCommand = new Command()
         return;
       }
 
-      // Determine which components to update
       let componentsToUpdate: string[] = [];
 
       if (options.all || (needsUpdate && components.length === 0)) {
         componentsToUpdate = Array.from(installedComponents);
       } else if (components.length > 0) {
-        // Validate specified components
         const invalidComponents = components.filter((c) => !installedComponents.has(c));
         if (invalidComponents.length > 0) {
           logger.error(`Components not installed: ${invalidComponents.join(', ')}`);
@@ -93,7 +86,6 @@ export const updateCommand = new Command()
         }
         componentsToUpdate = components;
       } else {
-        // Interactive selection
         const choices = Array.from(installedComponents)
           .sort()
           .map((name) => ({

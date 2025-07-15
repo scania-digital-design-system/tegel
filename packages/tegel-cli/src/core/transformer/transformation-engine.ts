@@ -39,7 +39,6 @@ export class TransformationEngine {
         case '.sass': {
           transformed = this.scssTransformer.transform(content, filePath);
 
-          // Validate SCSS transformation
           const validation = this.scssTransformer.validateTransformation(transformed);
           if (!validation.valid && validation.errors) {
             validation.errors.forEach((error) => {
@@ -54,16 +53,13 @@ export class TransformationEngine {
         }
 
         case '.css':
-          // For plain CSS, we can use a subset of SCSS transformations
           transformed = this.transformCss(content, filePath);
           break;
 
         default:
-          // No transformation for other file types
           logger.debug(`No transformation for file type: ${ext}`);
       }
 
-      // Update import paths based on new location
       transformed = this.updateImportPaths(transformed, filePath, targetPath);
     } catch (error: unknown) {
       errors.push({

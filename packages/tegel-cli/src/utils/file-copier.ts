@@ -50,20 +50,16 @@ export class FileCopier {
       assets?: Map<string, string>;
     },
   ): Promise<void> {
-    // Clear previous collections
     this.filesToCheck.clear();
 
-    // Collect all files that would be copied
     await Promise.all(
       components.map(async (component) => {
-        // Main component file
         const componentPath = path.join(this.context.sourceRoot, component.files.component);
         const targetComponentPath = this.getTargetPath(component.files.component);
         if (await fs.pathExists(targetComponentPath)) {
           this.filesToCheck.set(targetComponentPath, componentPath);
         }
 
-        // Style files
         await Promise.all(
           component.files.styles.map(async (styleFile) => {
             const sourcePath = path.join(this.context.sourceRoot, styleFile);
@@ -74,7 +70,6 @@ export class FileCopier {
           }),
         );
 
-        // Type files
         if (component.files.types) {
           await Promise.all(
             component.files.types.map(async (typeFile) => {
@@ -87,7 +82,6 @@ export class FileCopier {
           );
         }
 
-        // Test files
         if (this.context.config.includeTests && component.files.tests) {
           await Promise.all(
             component.files.tests.map(async (testFile) => {
@@ -102,9 +96,7 @@ export class FileCopier {
       }),
     );
 
-    // Check dependencies if provided
     if (dependencies) {
-      // Utilities
       if (dependencies.utilities) {
         await Promise.all(
           Array.from(dependencies.utilities).map(async (utility) => {
@@ -117,7 +109,6 @@ export class FileCopier {
         );
       }
 
-      // Mixins
       if (dependencies.mixins) {
         await Promise.all(
           Array.from(dependencies.mixins).map(async (mixin) => {
@@ -130,7 +121,6 @@ export class FileCopier {
         );
       }
 
-      // Assets
       if (dependencies.assets) {
         await Promise.all(
           Array.from(dependencies.assets).map(async ([assetName, componentPath]) => {
@@ -214,7 +204,6 @@ export class FileCopier {
         copiedFiles.push(targetComponentPath);
       }
 
-      // Copy style files
       // eslint-disable-next-line no-restricted-syntax
       for (const styleFile of component.files.styles) {
         const sourcePath = path.join(this.context.sourceRoot, styleFile);
@@ -227,7 +216,6 @@ export class FileCopier {
         }
       }
 
-      // Copy type definition files if they exist
       if (component.files.types) {
         // eslint-disable-next-line no-restricted-syntax
         for (const typeFile of component.files.types) {
@@ -242,7 +230,6 @@ export class FileCopier {
         }
       }
 
-      // Handle test files if needed (usually we don't copy tests)
       if (this.context.config.includeTests && component.files.tests) {
         // eslint-disable-next-line no-restricted-syntax
         for (const testFile of component.files.tests) {
@@ -279,7 +266,6 @@ export class FileCopier {
     const sourcePath = path.join(this.tegelSource.utilsPath, utilityPath);
     const targetPath = path.join(this.context.targetRoot, 'utils', utilityPath);
 
-    // Don't copy if already copied
     if (this.copiedFiles.has(targetPath)) {
       return false;
     }
@@ -295,7 +281,6 @@ export class FileCopier {
     const sourcePath = path.join(this.tegelSource.mixinsPath, mixinPath);
     const targetPath = path.join(this.context.targetRoot, 'mixins', mixinPath);
 
-    // Don't copy if already copied
     if (this.copiedFiles.has(targetPath)) {
       return false;
     }
@@ -388,7 +373,6 @@ export class FileCopier {
     const targetComponentDir = path.dirname(this.getTargetPath(componentPath));
     const targetPath = path.join(targetComponentDir, `${assetName}.js`);
 
-    // Don't copy if already copied
     if (this.copiedFiles.has(targetPath)) {
       return false;
     }

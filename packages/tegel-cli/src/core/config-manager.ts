@@ -69,21 +69,18 @@ export class ConfigManager {
 
   async load(projectPath: string = process.cwd()): Promise<TegelConfig> {
     try {
-      // Try to find existing config
       const result = await this.explorer.search(projectPath);
 
       if (result) {
         logger.debug(`Found config at: ${result.filepath}`);
         this.configPath = result.filepath;
 
-        // Validate config
         const validated = TegelConfigSchema.parse(result.config);
         this.config = validated;
 
         return validated;
       }
 
-      // No config found, use defaults
       logger.debug('No config found, using defaults');
       this.config = DEFAULT_CONFIG;
       return DEFAULT_CONFIG;
@@ -101,13 +98,10 @@ export class ConfigManager {
   async save(config: Partial<TegelConfig>, projectPath: string = process.cwd()): Promise<void> {
     const configPath = path.join(projectPath, CONFIG_FILE_NAME);
 
-    // Merge with defaults
     const fullConfig = { ...DEFAULT_CONFIG, ...config };
 
-    // Validate before saving
     const validated = TegelConfigSchema.parse(fullConfig);
 
-    // Save to file
     await fs.writeJSON(configPath, validated, { spaces: 2 });
 
     this.config = validated;
@@ -122,12 +116,10 @@ export class ConfigManager {
   ): Promise<void> {
     const configPath = path.join(projectPath, CONFIG_FILE_NAME);
 
-    // Check if config already exists
     if (await fs.pathExists(configPath)) {
       throw new Error(`Configuration already exists at ${configPath}`);
     }
 
-    // Create config with options
     const config: TegelConfig = {
       ...DEFAULT_CONFIG,
       ...options,
@@ -157,7 +149,6 @@ export class ConfigManager {
       ...updates,
     };
 
-    // Validate updated config
     this.config = TegelConfigSchema.parse(this.config);
 
     return this.config!;
@@ -178,7 +169,6 @@ export class ConfigManager {
     }
   }
 
-  // Helper method to resolve paths relative to config file
   resolvePath(relativePath: string): string {
     if (!this.configPath) {
       return path.resolve(process.cwd(), relativePath);
@@ -188,7 +178,6 @@ export class ConfigManager {
     return path.resolve(configDir, relativePath);
   }
 
-  // Get resolved target directory
   getTargetDir(): string {
     const config = this.get();
     return this.resolvePath(config.targetDir);
