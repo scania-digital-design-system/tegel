@@ -20,6 +20,8 @@ export default {
     showControls: true,
     step: 0.01,
     showInput: false,
+    modeVariant: 'Inherit from parent',
+    state: 'Default',
     thumbSize: 'Large',
     readonly: false,
     disabled: false,

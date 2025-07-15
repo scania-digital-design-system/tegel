@@ -131,6 +131,30 @@ export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal'
       defaultValue: { summary: false },
     },
   },
+  modeVariant: {
+    name: 'Mode variant (input field)',
+    description: 'Mode variant adjusts the background color of the slider input field',
+    control: {
+      type: 'radio',
+    },
+    options: ['Inherit from parent', 'Primary', 'Secondary'],
+    if: { arg: 'showInput', eq: true },
+    table: {
+      defaultValue: { summary: 'Inherit from parent' },
+    },
+  },
+  state: {
+    name: 'Input field state',
+    description: 'Controls the validation state of the slider input.',
+    control: {
+      type: 'radio',
+    },
+    options: ['Default', 'Success'],
+    if: { arg: 'showInput', eq: true },
+    table: {
+      defaultValue: { summary: 'default' },
+    },
+  },
   thumbSize: {
     name: 'Thumb size',
     description: 'Switches between the large and small version of the thumb.',
@@ -204,6 +228,8 @@ export const SliderTemplate = ({
   thumbSize,
   readonly,
   disabled,
+  state,
+  modeVariant,
 }) =>
   formatHtmlPreview(`
    <!-- Style code below is just for demo purposes -->
@@ -228,6 +254,12 @@ export const SliderTemplate = ({
           ${showControls ? 'controls' : ''}
           ${showInput ? 'input' : ''}
           ${disabled ? 'disabled' : ''}
+          state=${(state || 'Default').toLowerCase()}
+          ${
+            modeVariant && modeVariant !== 'Inherit from parent'
+              ? `mode-variant="${modeVariant.toLowerCase()}"`
+              : ''
+          }
           thumb-size="${sizeLookUp[thumbSize]}"
           ${readonly ? 'read-only' : ''}
           tds-read-only-aria-label="Read only"
