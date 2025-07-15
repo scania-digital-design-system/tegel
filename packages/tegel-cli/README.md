@@ -145,9 +145,6 @@ The CLI uses a `.tegelrc.json` file for configuration:
 {
   "prefix": "my",
   "targetDir": "src/lib/tegel",
-  "transforms": {
-    "customRules": []
-  },
   "aliases": {
     "@/lib/tegel": "./lib/tegel"
   },
@@ -160,7 +157,6 @@ The CLI uses a `.tegelrc.json` file for configuration:
 
 - **prefix**: Your custom prefix for components (default: `"tds"`)
 - **targetDir**: Where to copy components (default: `"src/lib/tegel"`)
-- **transforms.customRules**: Custom transformation rules (optional)
 - **aliases**: Path aliases for imports (default: standard Tegel aliases)
 - **includeTests**: Include component test files (default: `false`)
 - **version**: Tegel version (automatically set from bundled source)

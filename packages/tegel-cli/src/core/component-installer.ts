@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs-extra';
-import { ComponentEntry, TransformContext, TegelConfig } from '../types/index';
+import { ComponentEntry, TransformContext } from '../types/index';
+import type { TegelConfig } from './config-manager';
 import { FileCopier } from '../utils/file-copier';
 import { DependencyAnalyzer } from './registry/dependency-analyzer';
 import { logger } from './logger';

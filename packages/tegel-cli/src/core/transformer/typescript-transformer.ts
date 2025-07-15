@@ -1,4 +1,4 @@
-import { TransformContext, TransformRule } from '../../types/index';
+import { TransformContext } from '../../types/index';
 import { logger } from '../logger';
 
 /**
@@ -18,7 +18,6 @@ import { logger } from '../logger';
  *
  * 3. Generic transformations:
  *    - String literals containing component names (lowest priority)
- *    - Custom rules from configuration
  *
  * Transformation contexts:
  * - Component tag definitions (tag: 'tds-button')
@@ -28,6 +27,13 @@ import { logger } from '../logger';
  * - Import statements (from '@/lib/tegel/...')
  * - String comparisons (tagName.toLowerCase() === 'tds-button')
  */
+interface TransformRule {
+  pattern: RegExp;
+  replacement: string | ((match: string, tegelPath: string) => string);
+  description?: string;
+  priority?: number;
+}
+
 export class TypeScriptTransformer {
   private context: TransformContext;
 
@@ -244,16 +250,6 @@ export class TypeScriptTransformer {
           priority: 10, // Lower priority, run last
         },
       );
-    }
-
-    // ===== Custom Rules =====
-    if (config.transforms.customRules) {
-      const customTsRules = config.transforms.customRules.filter((rule) => {
-        // Include rules that don't specify fileTypes or that include ts/tsx/js/jsx
-        if (!rule.fileTypes) return true;
-        return rule.fileTypes.some((type) => ['ts', 'tsx', 'js', 'jsx'].includes(type));
-      });
-      this.rules.push(...customTsRules);
     }
 
     // Sort rules by priority (lower number = higher priority)

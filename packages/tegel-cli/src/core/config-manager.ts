@@ -2,23 +2,9 @@ import { cosmiconfig } from 'cosmiconfig';
 import { z } from 'zod';
 import fs from 'fs-extra';
 import path from 'path';
-import { TegelConfig } from '../types/index';
 import { logger } from './logger';
 
 const CONFIG_FILE_NAME = 'tegel.config.json';
-
-// Zod schema for validation
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const TransformRuleSchema: any = z.object({
-  pattern: z.union([z.instanceof(RegExp), z.string()]),
-  replacement: z.union([
-    z.string(),
-    z.any(), // Allow any function type for now
-  ]),
-  description: z.string().optional(),
-  fileTypes: z.array(z.string()).optional(),
-  priority: z.number().optional(),
-});
 
 const TegelConfigSchema = z.object({
   version: z.string().optional(),
@@ -27,14 +13,11 @@ const TegelConfigSchema = z.object({
       'Prefix must start with lowercase letter and contain only lowercase letters, numbers, and hyphens',
   }),
   targetDir: z.string(),
-  transforms: z
-    .object({
-      customRules: z.array(TransformRuleSchema).optional(),
-    })
-    .optional(),
   aliases: z.record(z.string()),
   includeTests: z.boolean().optional(),
 });
+
+export type TegelConfig = z.infer<typeof TegelConfigSchema>;
 
 // Default configuration (version is set dynamically from the bundled Tegel source)
 const DEFAULT_CONFIG: TegelConfig = {

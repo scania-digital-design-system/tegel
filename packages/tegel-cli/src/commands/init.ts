@@ -3,9 +3,8 @@ import prompts from 'prompts';
 import fs from 'fs-extra';
 import path from 'path';
 import chalk from 'chalk';
-import { configManager } from '../core/config-manager';
+import { configManager, type TegelConfig } from '../core/config-manager';
 import { logger } from '../core/logger';
-import { TegelConfig } from '../types/index';
 
 async function addGitignoreEntries(): Promise<void> {
   const gitignorePath = path.join(process.cwd(), '.gitignore');

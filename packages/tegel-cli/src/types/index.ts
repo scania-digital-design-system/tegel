@@ -1,21 +1,4 @@
-export interface TegelConfig {
-  version?: string;
-  prefix: string;
-  targetDir: string;
-  transforms?: {
-    customRules?: TransformRule[];
-  };
-  aliases: Record<string, string>;
-  includeTests?: boolean;
-}
-
-export interface TransformRule {
-  pattern: RegExp | string;
-  replacement: string | ((match: string, ...args: string[]) => string);
-  description?: string;
-  fileTypes?: string[];
-  priority?: number;
-}
+import type { TegelConfig } from '../core/config-manager';
 
 export interface ComponentEntry {
   name: string;

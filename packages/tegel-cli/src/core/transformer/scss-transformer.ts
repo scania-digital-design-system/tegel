@@ -1,5 +1,5 @@
 import path from 'path';
-import { TransformContext, TransformRule } from '../../types/index';
+import { TransformContext } from '../../types/index';
 import { logger } from '../logger';
 
 /**
@@ -25,6 +25,13 @@ import { logger } from '../logger';
  * - @extend directives
  * - Keyframe names
  */
+interface TransformRule {
+  pattern: RegExp;
+  replacement: string | ((match: string, tegelPath: string) => string);
+  description?: string;
+  priority?: number;
+}
+
 export class ScssTransformer {
   private context: TransformContext;
 
@@ -115,14 +122,6 @@ export class ScssTransformer {
           priority: 3,
         },
       );
-    }
-
-    // Add any custom rules from config
-    if (config.transforms.customRules) {
-      const customScssRules = config.transforms.customRules.filter(
-        (rule) => rule.fileTypes?.includes('scss') ?? true,
-      );
-      this.rules.push(...customScssRules);
     }
 
     // Sort rules by priority (lower number = higher priority)
