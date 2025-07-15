@@ -32,7 +32,7 @@
   .card-header {
     @include headline-06;
 
-    padding: 16px;
+    padding: var(--card-header-padding);
     display: flex;
     align-items: center;
 
@@ -102,7 +102,7 @@
 
   slot[name='actions']::slotted(*) {
     display: flex;
-    padding: 16px;
+    padding: var(--card-slotted-padding);
     color: var(--card-icon-color);
   }
 }
