@@ -16,6 +16,8 @@ tds-card {
 
 tds-card,
 .scania {
+  --card-body-padding: 0 16px;
+
   &.tds-mode-variant-primary {
     --card-box: var(--card-box-primary);
   }
@@ -57,6 +59,7 @@ tds-card,
   --card-background: transparent;
   --card-box-hover: none;
   --card-box-pressed: none;
+  --card-body-padding: 0;
 
   &.tds-mode-variant-primary {
     --card-box: none;
