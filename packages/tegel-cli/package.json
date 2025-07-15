@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-cli",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "CLI tool for copying and transforming Tegel components with custom prefixes",
   "type": "module",
   "bin": "./dist/cli.js",

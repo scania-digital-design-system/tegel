@@ -247,7 +247,7 @@ export class ComponentInstaller {
       return {
         success: false,
         installedComponents,
-        copiedFiles: allCopiedFiles,
+        copiedFiles: copier.getActualCopiedFiles(),
         errors,
       };
     }

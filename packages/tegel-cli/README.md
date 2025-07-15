@@ -1,6 +1,9 @@
 # Tegel CLI
 
-A command-line tool for copying and transforming Tegel components with custom prefixes, enabling version isolation in microfrontend architectures.
+⚠️ **Warning**: This tool is currently in development. Use with caution in production environments. This is only intended for use in microfrontends built with stencil.js
+
+
+A command-line tool for copying and transforming Tegel design system components with custom prefixes. This tool enables microfrontend teams to use Tegel components with their own naming conventions to avoid Web Component registration conflicts.
 
 ## Overview
 
@@ -10,18 +13,23 @@ This solves the Web Components registration conflict when multiple versions of T
 
 ## Features
 
-- 🎯 **Component Copying**: Copy only the components you need
-- 🔄 **Automatic Transformation**: All references are updated with your prefix
-- 🌳 **Dependency Resolution**: Automatically includes component dependencies
-- 🎨 **Style Support**: Full SCSS/CSS transformation
-- 📦 **Version Isolation**: No conflicts between different Tegel versions
-- 🚀 **Tree Shaking**: Only includes what you use
-- 🛡️ **Type Safety**: Full TypeScript support
+- 🎯 **Custom Prefixes**: Transform Tegel components to use your own prefix (e.g., `tds-button` → `my-button`)
+- 📦 **Smart Dependencies**: Automatically includes required utilities, mixins, and assets
+- 🔄 **Version Management**: Keep components up-to-date with automatic version checking
+- 🎨 **Style Support**: Full SCSS support with proper import path transformations
+- 🔍 **Type Safety**: Includes TypeScript definitions with proper transformations
+- ⚡ **Selective Installation**: Choose only the components you need
+- 🔄 **Update Support**: Update existing components to newer versions
+- 📋 **Multi-select File Overrides**: Batch selection for file overrides when adding existing components
 
 ## Installation
 
 ```bash
-npm install -g @scania/tegel-cli
+npm install -D @scania/tegel-cli
+# or
+yarn add -D @scania/tegel-cli
+# or
+pnpm add -D @scania/tegel-cli
 ```
 
 Or use directly with npx:
@@ -34,20 +42,25 @@ npx @scania/tegel-cli init
 
 1. **Initialize Tegel in your project:**
    ```bash
-   tegel-cli init
+   npx @scania/tegel-cli init
    ```
 
 2. **Add components:**
    ```bash
-   tegel-cli add button dropdown
+   # Interactive selection
+   npx @scania/tegel-cli add
+   
+   # Add specific components
+   npx @scania/tegel-cli add button dropdown modal
    ```
 
 3. **Use the components with your prefix:**
    ```html
-   <mf1-button text="Click me"></mf1-button>
-   <mf1-dropdown placeholder="Select option">
-     <mf1-dropdown-option value="1">Option 1</mf1-dropdown-option>
-   </mf1-dropdown>
+   <!-- Assuming prefix is 'my' -->
+   <my-button variant="primary">Click me</my-button>
+   <my-dropdown placeholder="Select option">
+     <my-dropdown-option value="1">Option 1</my-dropdown-option>
+   </my-dropdown>
    ```
 
 ## Commands
@@ -57,80 +70,225 @@ npx @scania/tegel-cli init
 Initialize Tegel configuration in your project.
 
 ```bash
-tegel-cli init [options]
+npx @scania/tegel-cli init [options]
 
 Options:
-  -p, --prefix <prefix>    Component prefix (default: "tds")
-  -d, --dir <path>         Target directory (default: "./src/components/tegel")
-  -s, --style <type>       Style format: scss|css (default: "scss")
-  --no-typescript          Disable TypeScript
   -f, --force              Overwrite existing configuration
-  --skip-prompts           Skip interactive prompts
 ```
+
+Creates a `.tegelrc.json` configuration file with interactive prompts for:
+- Component prefix
+- Target directory
 
 ### `add`
 
 Add Tegel components to your project.
 
 ```bash
-tegel-cli add [components...] [options]
+npx @scania/tegel-cli add [components...] [options]
 
 Options:
   -p, --prefix <prefix>    Override default prefix
-  -v, --version <version>  Tegel version to use
   -a, --all                Add all available components
   --no-deps                Skip dependency installation
   --dry-run                Preview changes without writing files
-  -f, --force              Overwrite existing files
+  -f, --force              Overwrite existing files without prompting
 ```
 
-### `update` (Coming Soon)
-
-Update components to a newer version.
-
+Examples:
 ```bash
-tegel-cli update [components...] [options]
+# Interactive component selection
+npx @scania/tegel-cli add
+
+# Add specific components
+npx @scania/tegel-cli add button card modal
+
+# Add all components
+npx @scania/tegel-cli add --all
+
+# Preview what would be added
+npx @scania/tegel-cli add button --dry-run
 ```
 
-### `remove` (Coming Soon)
+When adding components that already exist, the CLI will show a multi-select prompt allowing you to choose which files to override.
 
-Remove components from your project.
+### `update`
+
+Update existing components to the latest version.
 
 ```bash
-tegel-cli remove [components...] [options]
+npx @scania/tegel-cli update [components...] [options]
+
+Options:
+  -a, --all                Update all installed components
+  --dry-run                Preview changes without writing files
+  -f, --force              Skip confirmation prompts
+```
+
+Examples:
+```bash
+# Update all components
+npx @scania/tegel-cli update --all
+
+# Update specific components
+npx @scania/tegel-cli update button card
+
+# Interactive selection
+npx @scania/tegel-cli update
+```
+
+### `report`
+
+Generate a report of installed components.
+
+```bash
+npx @scania/tegel-cli report [options]
+
+Options:
+  --format <type>          Output format: summary|detailed|json (default: "summary")
+  --output <file>          Save report to file
 ```
 
 ## Configuration
 
-The CLI uses a `tegel.config.json` file for configuration:
+The CLI uses a `.tegelrc.json` file for configuration:
 
 ```json
 {
-  "version": "1.33.0",
-  "prefix": "mf1",
-  "targetDir": "./src/components/tegel",
-  "style": "scss",
-  "typescript": true,
+  "prefix": "my",
+  "targetDir": "src/lib/tegel",
   "transforms": {
-    "enabled": true
+    "customRules": []
   },
   "aliases": {
-    "@tegel/utils": "@/lib/tegel/utils",
-    "@tegel/mixins": "@/styles/tegel/mixins"
-  }
+    "@/lib/tegel": "./lib/tegel"
+  },
+  "includeTests": false,
+  "version": "1.33.0"
 }
 ```
 
+### Configuration Options
+
+- **prefix**: Your custom prefix for components (default: `"tds"`)
+- **targetDir**: Where to copy components (default: `"src/lib/tegel"`)
+- **transforms.customRules**: Custom transformation rules (optional)
+- **aliases**: Path aliases for imports (default: standard Tegel aliases)
+- **includeTests**: Include component test files (default: `false`)
+- **version**: Tegel version (automatically set from bundled source)
+
 ## How It Works
 
-1. **Component Analysis**: The CLI scans the Tegel source to understand component structure and dependencies
-2. **Dependency Resolution**: Automatically identifies and includes required dependencies
-3. **Code Transformation**: Updates all references to use your custom prefix:
-   - Component tags: `tds-button` → `mf1-button`
-   - DOM queries: `querySelector('tds-modal')` → `querySelector('mf1-modal')`
-   - CSS classes: `.tds-button__text` → `.mf1-button__text`
-   - Type definitions: `HTMLTdsButtonElement` → `HTMLMf1ButtonElement`
-4. **File Generation**: Copies transformed files to your project
+1. **Component Scanning**: The CLI scans the Tegel package to find all available components
+2. **Dependency Resolution**: Analyzes component dependencies (utilities, mixins, sub-components)
+3. **Transformation**: Applies prefix changes and updates import paths:
+   - Component tags: `<tds-button>` → `<my-button>`
+   - CSS classes: `.tds-button` → `.my-button`
+   - Event names: `tdsClick` → `myClick`
+   - DOM queries: `querySelector('tds-modal')` → `querySelector('my-modal')`
+   - Type definitions: `HTMLTdsButtonElement` → `HTMLMyButtonElement`
+   - Import paths: Updated to use configured aliases
+4. **File Copying**: Copies transformed files to your project directory
+
+## Component Structure
+
+Components are copied with the following structure:
+
+```
+src/lib/tegel/
+├── components/
+│   ├── button/
+│   │   ├── button.tsx
+│   │   ├── button.scss
+│   │   └── button-vars.scss
+│   └── card/
+│       ├── card.tsx
+│       ├── card.scss
+│       └── card-vars.scss
+├── utils/
+│   └── (shared utilities)
+├── mixins/
+│   └── (SCSS mixins)
+├── types/
+│   └── (TypeScript definitions)
+└── global/
+    └── (global styles)
+```
+
+## Version Management
+
+The CLI tracks the Tegel version used for your components:
+
+1. When running `tegel add`, if a newer version is available, you'll be prompted to update
+2. Use `tegel update` to manually update components
+3. Version information is stored in `.tegelrc.json`
+
+## File Override Handling
+
+When adding components that already exist:
+
+1. The CLI shows a multi-select list of all existing files
+2. Select which files to override (Space to select, Enter to confirm)
+3. Use `--force` to override all files without prompting
+
+## Framework Integration
+
+The transformed components work with any framework that supports Web Components:
+
+### React
+```jsx
+import '@/lib/tegel/components/button/button';
+
+function App() {
+  return <my-button variant="primary">Click me</my-button>;
+}
+```
+
+### Vue
+```vue
+<template>
+  <my-button variant="primary">Click me</my-button>
+</template>
+
+<script>
+import '@/lib/tegel/components/button/button';
+</script>
+```
+
+### Angular
+```typescript
+import '@/lib/tegel/components/button/button';
+
+@Component({
+  template: '<my-button variant="primary">Click me</my-button>'
+})
+export class AppComponent {}
+```
+
+## Troubleshooting
+
+### Components not rendering
+- Ensure you've imported the component file
+- Check that your bundler handles `.tsx` files (StencilJS components)
+- Verify the prefix matches your configuration
+
+### Style issues
+- Global styles are only copied on first component installation
+- Import global styles: `@import '@/lib/tegel/global/global';`
+- Ensure SCSS is properly configured in your build tool
+
+### TypeScript errors
+- Make sure TypeScript is enabled in configuration
+- Add path mapping to `tsconfig.json`:
+  ```json
+  {
+    "compilerOptions": {
+      "paths": {
+        "@/lib/tegel/*": ["./src/lib/tegel/*"]
+      }
+    }
+  }
+  ```
 
 ## Development
 
@@ -139,31 +297,23 @@ This package is part of the Tegel monorepo. To work on the CLI:
 ```bash
 # Install dependencies
 cd packages/tegel-cli
-npm install
+pnpm install
 
 # Build
-npm run build
+pnpm build
 
-# Watch mode
-npm run dev
+# Development mode
+pnpm dev
 
 # Run tests
-npm test
+pnpm test
+
+# Lint
+pnpm lint
 ```
-
-## Roadmap
-
-- [x] Basic project structure
-- [x] Component scanning and analysis
-- [x] Dependency resolution
-- [ ] TypeScript transformation engine
-- [ ] SCSS transformation engine
-- [ ] File copying with transformations
-- [ ] Update command
-- [ ] Remove command
-- [ ] Migration tools
-- [ ] Plugin system
 
 ## License
 
-MIT
+This tool is part of the Tegel Design System by Scania.
+
+MIT License

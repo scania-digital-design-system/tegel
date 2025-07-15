@@ -1,18 +1,11 @@
 export interface TegelConfig {
-  version: string;
+  version?: string;
   prefix: string;
   targetDir: string;
-  style: 'scss' | 'css';
-  typescript: boolean;
-  transforms: {
-    enabled: boolean;
+  transforms?: {
     customRules?: TransformRule[];
   };
   aliases: Record<string, string>;
-  registry?: {
-    url?: string;
-    cache?: boolean;
-  };
   includeTests?: boolean;
 }
 

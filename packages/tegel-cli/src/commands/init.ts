@@ -35,8 +35,6 @@ export const initCommand = new Command()
   .description('Initialize Tegel in your project')
   .option('-p, --prefix <prefix>', 'component prefix', 'tds')
   .option('-d, --dir <path>', 'target directory', './src/components/tegel')
-  .option('-s, --style <type>', 'style format (scss|css)', 'scss')
-  .option('--no-typescript', 'disable TypeScript')
   .option('-f, --force', 'overwrite existing configuration')
   .option('--skip-prompts', 'skip interactive prompts and use defaults')
   .action(async (options) => {
@@ -57,8 +55,6 @@ export const initCommand = new Command()
         config = {
           prefix: options.prefix,
           targetDir: options.dir,
-          style: options.style,
-          typescript: options.typescript,
         };
       } else {
         // Interactive prompts
@@ -80,22 +76,6 @@ export const initCommand = new Command()
             name: 'targetDir',
             message: 'Target directory for components',
             initial: options.dir,
-          },
-          {
-            type: 'select',
-            name: 'style',
-            message: 'Style format',
-            choices: [
-              { title: 'SCSS', value: 'scss' },
-              { title: 'CSS', value: 'css' },
-            ],
-            initial: options.style === 'scss' ? 0 : 1,
-          },
-          {
-            type: 'confirm',
-            name: 'typescript',
-            message: 'Use TypeScript?',
-            initial: options.typescript,
           },
           {
             type: 'confirm',
@@ -132,12 +112,12 @@ export const initCommand = new Command()
       logger.newline();
       logger.info('Next steps:');
       logger.list([
-        `Run ${chalk.cyan('tegel-cli add <component>')} to add components`,
-        `Example: ${chalk.cyan('tegel-cli add button dropdown')}`,
-        `Run ${chalk.cyan('tegel-cli add --help')} for more options`,
+        `Run ${chalk.cyan('npx @scania/tegel-cli add <component>')} to add components`,
+        `Example: ${chalk.cyan('npx @scania/tegel-cli add button dropdown')}`,
+        `Run ${chalk.cyan('npx @scania/tegel-cli add --help')} for more options`,
       ]);
     } catch (error: unknown) {
-      logger.error('Failed to initialize:', error instanceof Error ? error : String(error));
+      logger.error('Failed to initialize:', error instanceof Error ? error : undefined);
       process.exit(1);
     }
   });

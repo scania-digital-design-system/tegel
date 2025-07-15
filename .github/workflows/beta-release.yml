@@ -3,11 +3,6 @@ name: Beta Release
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch to use'
-        required: true
-        default: 'develop'
-
       nodeVersion:
         description: 'Node version'
         required: true
@@ -55,8 +50,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -124,8 +117,6 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -216,7 +207,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.inputs.branch }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -289,7 +279,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.inputs.branch }}
           fetch-depth: 0
 
       - name: Set up Node.js
@@ -353,4 +342,76 @@ jobs:
 
     outputs:
       version: ${{ steps.set-version.outputs.PACKAGE_VERSION }}
+      version_exists: ${{ env.VERSION_EXISTS }}
+
+  beta-release-cli:
+    needs: beta-release-core
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/tegel-cli
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ inputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Set Tegel user
+        run: |
+          git config --global user.name "Tegel - Scania"
+          git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: CLI - Update version with beta name
+        id: set-version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
+          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          new_version="${current_version}-${beta_version_suffix}"
+          echo "Updating package.json version to $new_version"
+          jq ".version = \"$new_version\"" package.json > package.tmp.json
+          mv package.tmp.json package.json
+          echo "PACKAGE_VERSION=$new_version" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm install
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm install
+
+      - name: CLI - Install
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm install
+
+      - name: CLI - Run build
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run build
+
+      - name: Check if version already exists
+        id: check-version
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: |
+          PACKAGE_NAME=$(jq -r '.name' package.json)
+          PACKAGE_VERSION=$(jq -r '.version' package.json)
+          if npm view "$PACKAGE_NAME@$PACKAGE_VERSION" version > /dev/null 2>&1; then
+            echo "Version $PACKAGE_VERSION already exists. Skipping publish."
+            echo "VERSION_EXISTS=true" >> $GITHUB_ENV
+          else
+            echo "VERSION_EXISTS=false" >> $GITHUB_ENV
+          fi
+          echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: CLI - Publish
+        if: env.VERSION_EXISTS != 'true'
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --tag beta
+
+    outputs:
+      version: ${{ steps.check-version.outputs.PACKAGE_VERSION }}
       version_exists: ${{ env.VERSION_EXISTS }}

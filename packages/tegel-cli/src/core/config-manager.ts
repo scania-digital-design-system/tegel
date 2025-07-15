@@ -21,37 +21,25 @@ const TransformRuleSchema: any = z.object({
 });
 
 const TegelConfigSchema = z.object({
-  version: z.string(),
+  version: z.string().optional(),
   prefix: z.string().regex(/^[a-z][a-z0-9-]*$/, {
     message:
       'Prefix must start with lowercase letter and contain only lowercase letters, numbers, and hyphens',
   }),
   targetDir: z.string(),
-  style: z.enum(['scss', 'css']),
-  typescript: z.boolean(),
-  transforms: z.object({
-    enabled: z.boolean(),
-    customRules: z.array(TransformRuleSchema).optional(),
-  }),
-  aliases: z.record(z.string()),
-  registry: z
+  transforms: z
     .object({
-      url: z.string().url().optional(),
-      cache: z.boolean().optional(),
+      customRules: z.array(TransformRuleSchema).optional(),
     })
     .optional(),
+  aliases: z.record(z.string()),
+  includeTests: z.boolean().optional(),
 });
 
-// Default configuration
+// Default configuration (version is set dynamically from the bundled Tegel source)
 const DEFAULT_CONFIG: TegelConfig = {
-  version: '1.33.0',
   prefix: 'tds',
   targetDir: './src/components/tegel',
-  style: 'scss',
-  typescript: true,
-  transforms: {
-    enabled: true,
-  },
   aliases: {
     '@tegel/utils': '@/src/components/tegel/utils',
     '@tegel/mixins': '@/src/components/tegel/mixins',
@@ -59,6 +47,7 @@ const DEFAULT_CONFIG: TegelConfig = {
     '@tegel/types': '@/src/components/tegel/types',
     '@tegel/components': '@/src/components/tegel',
   },
+  includeTests: false,
 };
 
 export class ConfigManager {
