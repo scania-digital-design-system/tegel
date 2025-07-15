@@ -14,6 +14,7 @@ export interface InstallOptions {
   tegelSource: TegelSourceInfo;
   force?: boolean;
   dryRun?: boolean;
+  update?: boolean;
 }
 
 export interface InstallResult {
@@ -37,7 +38,6 @@ export class ComponentInstaller {
 
     const errors: string[] = [];
     const installedComponents: string[] = [];
-    const allCopiedFiles: string[] = [];
 
     // Create transform context
     const context: TransformContext = {
@@ -47,8 +47,12 @@ export class ComponentInstaller {
       targetRoot: path.resolve(config.targetDir),
     };
 
-    // Initialize file copier with Tegel source info
-    const copier = new FileCopier(context, tegelSource);
+    // Initialize file copier with Tegel source info and options
+    const copier = new FileCopier(context, tegelSource, {
+      force,
+      update: options.update,
+      skipPrompts: dryRun,
+    });
 
     try {
       // Ensure target directory exists
@@ -56,52 +60,16 @@ export class ComponentInstaller {
         await fs.ensureDir(context.targetRoot);
       }
 
-      // Copy each component
-      // eslint-disable-next-line no-restricted-syntax
-      for (const componentName of components) {
-        const component = componentMap.get(componentName);
-        if (!component) {
-          errors.push(`Component not found: ${componentName}`);
-          continue; // eslint-disable-line no-continue
-        }
+      // Collect all components to be installed
+      const componentsToInstall = components
+        .map((name) => componentMap.get(name))
+        .filter((c): c is ComponentEntry => c !== undefined);
 
-        logger.info(`Installing ${componentName}...`);
-
-        // Check if component already exists
-        const componentDir = path.join(context.targetRoot, component.name);
-        // eslint-disable-next-line no-await-in-loop
-        if (!force && !dryRun && (await fs.pathExists(componentDir))) {
-          errors.push(`Component ${componentName} already exists. Use --force to overwrite.`);
-          continue; // eslint-disable-line no-continue
-        }
-
-        // Update context with current component
-        context.component = component;
-
-        if (dryRun) {
-          logger.info(`Would copy component: ${componentName}`);
-          logger.list([
-            `Main: ${component.files.component}`,
-            ...component.files.styles.map((s) => `Style: ${s}`),
-          ]);
-        } else {
-          // Copy component files
-          // eslint-disable-next-line no-await-in-loop
-          const result = await copier.copyComponent(component);
-          if (result.success) {
-            installedComponents.push(componentName);
-            allCopiedFiles.push(...result.copiedFiles);
-          } else if (result.errors) {
-            errors.push(...result.errors);
-          }
-        }
-      }
-
-      // Collect all dependencies
+      // Collect dependencies for all components
       const allUtilities = new Set<string>();
       const allMixins = new Set<string>();
       const allTypes = new Set<string>();
-      const allAssets = new Map<string, string>(); // asset name -> component path
+      const allAssets = new Map<string, string>();
 
       // eslint-disable-next-line no-restricted-syntax
       for (const componentName of components) {
@@ -119,7 +87,74 @@ export class ComponentInstaller {
         assets.forEach((a) => allAssets.set(a, component.files.component));
       }
 
-      if (!dryRun) {
+      // Collect existing files and prompt for overrides before starting
+      if (!dryRun && !force && !options.update) {
+        await copier.collectExistingFiles(componentsToInstall, {
+          utilities: allUtilities,
+          mixins: allMixins,
+          types: allTypes,
+          assets: allAssets,
+        });
+        await copier.promptForOverrides();
+      }
+
+      // Copy each component
+      // eslint-disable-next-line no-restricted-syntax
+      for (const componentName of components) {
+        const component = componentMap.get(componentName);
+        if (!component) {
+          errors.push(`Component not found: ${componentName}`);
+          continue; // eslint-disable-line no-continue
+        }
+
+        logger.info(`Installing ${componentName}...`);
+
+        // Update context with current component
+        context.component = component;
+
+        if (dryRun) {
+          logger.info(`Would copy component: ${componentName}`);
+          logger.list([
+            `Main: ${component.files.component}`,
+            ...component.files.styles.map((s) => `Style: ${s}`),
+          ]);
+        } else {
+          // Copy component files
+          // eslint-disable-next-line no-await-in-loop
+          const result = await copier.copyComponent(component);
+          if (result.success && result.copiedFiles.length > 0) {
+            installedComponents.push(componentName);
+          } else if (result.errors) {
+            errors.push(...result.errors);
+          } else if (result.copiedFiles.length === 0) {
+            logger.debug(`No files were copied for ${componentName} (user declined all overrides)`);
+          }
+        }
+      }
+
+      if (!dryRun && installedComponents.length > 0) {
+        // Re-collect dependencies only for components that were actually installed
+        allUtilities.clear();
+        allMixins.clear();
+        allTypes.clear();
+        allAssets.clear();
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const componentName of installedComponents) {
+          const component = componentMap.get(componentName);
+          if (!component) continue; // eslint-disable-line no-continue
+
+          const utils = analyzer.getAllUtilities(componentName);
+          const mixins = analyzer.getAllMixins(componentName);
+          const types = analyzer.getAllTypes(componentName);
+          const assets = component.dependencies.assets || [];
+
+          utils.forEach((u) => allUtilities.add(u));
+          mixins.forEach((m) => allMixins.add(m));
+          types.forEach((t) => allTypes.add(t));
+          assets.forEach((a) => allAssets.set(a, component.files.component));
+        }
+
         // Copy utilities
         // eslint-disable-next-line no-restricted-syntax
         for (const utility of allUtilities) {
@@ -127,7 +162,6 @@ export class ComponentInstaller {
           try {
             // eslint-disable-next-line no-await-in-loop
             await copier.copyUtility(utility, `${utility}.ts`);
-            allCopiedFiles.push(path.join(context.targetRoot, 'utils', `${utility}.ts`));
           } catch (error: unknown) {
             logger.warn(
               `Failed to copy utility ${utility}: ${
@@ -144,7 +178,6 @@ export class ComponentInstaller {
           try {
             // eslint-disable-next-line no-await-in-loop
             await copier.copyMixin(mixin, `_${mixin}.scss`);
-            allCopiedFiles.push(path.join(context.targetRoot, 'mixins', `_${mixin}.scss`));
           } catch (error: unknown) {
             logger.warn(
               `Failed to copy mixin ${mixin}: ${
@@ -161,9 +194,6 @@ export class ComponentInstaller {
           try {
             // eslint-disable-next-line no-await-in-loop
             await copier.copyAsset(assetName, componentPath);
-            // Assets are copied to the component directory, so path includes component structure
-            const targetComponentDir = path.dirname(copier.getTargetPath(componentPath));
-            allCopiedFiles.push(path.join(targetComponentDir, `${assetName}.js`));
           } catch (error: unknown) {
             logger.warn(
               `Failed to copy asset ${assetName}: ${
@@ -179,7 +209,6 @@ export class ComponentInstaller {
           try {
             // eslint-disable-next-line no-await-in-loop
             await copier.copyIconTypes();
-            allCopiedFiles.push(path.join(context.targetRoot, 'types', 'icons.ts'));
           } catch (error: unknown) {
             logger.warn(
               `Failed to copy icon types: ${
@@ -189,31 +218,28 @@ export class ComponentInstaller {
           }
         }
 
-        // Copy global styles if this is the first installation
-        // eslint-disable-next-line no-await-in-loop
-        const hasExistingComponents = await ComponentInstaller.hasExistingComponents(
-          context.targetRoot,
-        );
-        if (!hasExistingComponents) {
-          logger.debug('Copying global styles...');
+        // Copy global styles if this is the first installation and we actually installed components
+        if (installedComponents.length > 0) {
           // eslint-disable-next-line no-await-in-loop
-          await copier.copyGlobalStyles();
+          const hasExistingComponents = await ComponentInstaller.hasExistingComponents(
+            context.targetRoot,
+          );
+          if (!hasExistingComponents) {
+            logger.debug('Copying global styles...');
+            // eslint-disable-next-line no-await-in-loop
+            const globalFilesCopied = await copier.copyGlobalStyles();
+            logger.debug(`Copied ${globalFilesCopied} global style files`);
+          }
         }
-
-        // Create index file
-        const installedComponentEntries = installedComponents
-          .map((name) => componentMap.get(name))
-          .filter((c): c is ComponentEntry => c !== undefined);
-
-        // eslint-disable-next-line no-await-in-loop
-        await copier.createIndexFile(installedComponentEntries);
-        allCopiedFiles.push(path.join(context.targetRoot, 'index.ts'));
       }
+
+      // Get the actual copied files from the copier
+      const finalCopiedFiles = copier.getActualCopiedFiles();
 
       return {
         success: errors.length === 0,
         installedComponents,
-        copiedFiles: allCopiedFiles,
+        copiedFiles: finalCopiedFiles,
         errors: errors.length > 0 ? errors : undefined,
       };
     } catch (error: unknown) {

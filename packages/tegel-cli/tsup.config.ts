@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup';
 import { cpSync } from 'fs';
 
 export default defineConfig({
-  entry: ['src/index.ts', 'src/cli.ts'],
+  entry: ['src/cli.ts'],
   format: ['esm'],
   dts: true,
   sourcemap: true,

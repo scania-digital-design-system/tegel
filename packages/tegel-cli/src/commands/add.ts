@@ -1,6 +1,7 @@
 import { Command } from 'commander';
 import prompts from 'prompts';
 import chalk from 'chalk';
+import semver from 'semver';
 import { configManager } from '../core/config-manager';
 import { logger } from '../core/logger';
 import { ComponentScanner } from '../core/registry/component-scanner';
@@ -33,6 +34,34 @@ export const addCommand = new Command()
       logger.debug(`Using Tegel source from: ${tegelSource.root}`);
       logger.debug(`Tegel version: ${tegelSource.version}`);
       logger.debug(`Source type: ${tegelSource.isLocal ? 'local development' : 'bundled'}`);
+
+      // Check if CLI version is newer than config version
+      if (config.version && semver.gt(tegelSource.version, config.version)) {
+        logger.newline();
+        logger.warn(
+          `New Tegel version available: ${chalk.cyan(config.version)} → ${chalk.green(
+            tegelSource.version,
+          )}`,
+        );
+
+        const { shouldUpdate } = await prompts({
+          type: 'confirm',
+          name: 'shouldUpdate',
+          message: 'Would you like to update all installed components to the new version?',
+          initial: true,
+        });
+
+        if (shouldUpdate) {
+          logger.info('Running update command...');
+          logger.newline();
+
+          // Import and execute update command
+          const { updateCommand: updateCmd } = await import('./update');
+          // Run update with --all flag
+          await updateCmd.parseAsync(['update', '--all'], { from: 'user' });
+          return;
+        }
+      }
 
       // Update config version to match source
       config.version = tegelSource.version;
