@@ -94,7 +94,7 @@
     @include card-detail-03;
 
     color: var(--card-body-color);
-    padding: 0 16px;
+    padding: var(--card-body-padding);
     margin-bottom: 16px;
     margin-top: 16px;
     max-width: 336px;
