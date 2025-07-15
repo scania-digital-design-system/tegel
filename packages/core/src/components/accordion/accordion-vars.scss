@@ -1,16 +1,7 @@
-:root,
-.tds-mode-light {
-  --tds-accordion-border: var(--tds-grey-300);
-  --tds-accordion-background: transparent;
-  --tds-accordion-background-hover-primary: var(--tds-grey-50);
-  --tds-accordion-background-hover-secondary: var(--tds-white);
-  --tds-accordion-background-hover: var(--tds-accordion-background-hover-primary);
-  --tds-accordion-background-focus: transparent;
-  --tds-accordion-background-active: var(--tds-grey-100);
-  --tds-accordion-color: var(--tds-grey-958);
-  --tds-accordion-border-focus: var(--tds-grey-500);
-  --tds-accordion-color-disabled: var(--tds-grey-400);
-  --tds-accordion-icon-color: var(--tds-black);
+tds-accordion {
+  /* Border & Background */
+  --accordion-border: var(--color-foreground-border-discrete);
+  --accordion-background: transparent;
 
   /* Hover backgrounds */
   --accordion-background-hover-primary: var(--color-background-layer-01);
