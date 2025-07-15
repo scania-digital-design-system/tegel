@@ -47,7 +47,7 @@ tds-card,
 .traton {
   .tds-mode-dark tds-card {
     &.tds-mode-variant-primary {
-      --card-background: #001214;
+      --card-background: var(--color-background-base);
     }
   }
 }
@@ -59,10 +59,12 @@ tds-card,
   --card-box-pressed: none;
 
   &.tds-mode-variant-primary {
+    --card-box: none;
     --card-background: var(--card-background-secondary);
   }
 
   &.tds-mode-variant-secondary {
+    --card-box: none;
     --card-background: var(--card-background-primary);
   }
 }
