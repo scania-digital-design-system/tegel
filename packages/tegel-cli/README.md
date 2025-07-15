@@ -137,18 +137,6 @@ npx @scania/tegel-cli update button card
 npx @scania/tegel-cli update
 ```
 
-### `report`
-
-Generate a report of installed components.
-
-```bash
-npx @scania/tegel-cli report [options]
-
-Options:
-  --format <type>          Output format: summary|detailed|json (default: "summary")
-  --output <file>          Save report to file
-```
-
 ## Configuration
 
 The CLI uses a `.tegelrc.json` file for configuration:

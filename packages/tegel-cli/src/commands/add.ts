@@ -241,7 +241,7 @@ export const addCommand = new Command()
         process.exit(1);
       }
     } catch (error: unknown) {
-      logger.error('Failed to add components:', error instanceof Error ? error : String(error));
+      logger.error('Failed to add components:', error instanceof Error ? error : undefined);
       process.exit(1);
     }
   });

@@ -7,7 +7,6 @@ import { logger, LogLevel } from './core/logger';
 import { initCommand } from './commands/init';
 import { addCommand } from './commands/add';
 import { updateCommand } from './commands/update';
-import { reportCommand } from './commands/report';
 
 // Get package.json info
 const filename = fileURLToPath(import.meta.url);
@@ -35,7 +34,6 @@ program
 program.addCommand(initCommand);
 program.addCommand(addCommand);
 program.addCommand(updateCommand);
-program.addCommand(reportCommand);
 
 // Error handling
 program.exitOverride();

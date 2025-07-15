@@ -31,7 +31,10 @@ export const updateCommand = new Command()
       logger.debug(`Current config version: ${config.version}`);
 
       // Check if update is needed based on version
-      const needsUpdate = semver.gt(tegelSource.version, config.version);
+      const needsUpdate =
+        typeof tegelSource.version === 'string' &&
+        typeof config.version === 'string' &&
+        semver.gt(tegelSource.version, config.version);
 
       if (needsUpdate) {
         logger.info(
@@ -205,7 +208,7 @@ export const updateCommand = new Command()
         process.exit(1);
       }
     } catch (error: unknown) {
-      logger.error('Failed to update components:', error instanceof Error ? error : String(error));
+      logger.error('Failed to update components:', error instanceof Error ? error : undefined);
       process.exit(1);
     }
   });
