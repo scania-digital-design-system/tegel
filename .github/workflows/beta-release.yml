@@ -41,6 +41,14 @@ on:
         options:
           - 'true'
           - 'false'
+      includeCli:
+        description: 'Include cli package?'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
 
 jobs:
   beta-release-core:
@@ -345,6 +353,7 @@ jobs:
       version_exists: ${{ env.VERSION_EXISTS }}
 
   beta-release-cli:
+    if: ${{ github.event.inputs.includeCli == 'true' }}
     needs: beta-release-core
     runs-on: ubuntu-latest
     env:
