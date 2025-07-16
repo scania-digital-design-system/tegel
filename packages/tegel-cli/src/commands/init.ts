@@ -127,6 +127,14 @@ async function copyInitialFiles(config: TegelConfig, includeCss: boolean): Promi
       logger.success(`Types copied to: ${typesDestPath}`);
     }
 
+    // Copy global directory
+    const globalSourcePath = path.join(tegelSource.root, 'global');
+    if (await fs.pathExists(globalSourcePath)) {
+      const globalDestPath = path.join(config.targetDir, 'global');
+      await fs.copy(globalSourcePath, globalDestPath);
+      logger.success(`Global copied to: ${globalDestPath}`);
+    }
+
     // Copy mixins directory
     const mixinsSourcePath = path.join(tegelSource.root, 'mixins');
     if (await fs.pathExists(mixinsSourcePath)) {
