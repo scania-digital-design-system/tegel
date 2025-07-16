@@ -51,6 +51,11 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
     types: path.join(sourceRoot, 'src', 'types'),
   };
 
+  // CSS files to copy
+  const cssFiles = {
+    tegel: path.join(sourceRoot, 'dist', 'tegel', 'tegel.css'),
+  };
+
   // Copy each source directory
   await Promise.all(
     Object.entries(sourcePaths).map(async ([name, sourcePath]) => {
@@ -82,6 +87,22 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
         });
       } else {
         console.log(`  ⚠️ Source path not found: ${sourcePath}`);
+      }
+    }),
+  );
+
+  // Copy CSS files
+  const stylesDir = path.join(outputDir, 'styles');
+  await fs.ensureDir(stylesDir);
+
+  await Promise.all(
+    Object.entries(cssFiles).map(async ([name, cssPath]) => {
+      if (await fs.pathExists(cssPath)) {
+        const destPath = path.join(stylesDir, `${name}.css`);
+        console.log(`  🎨 Copying ${name}.css...`);
+        await fs.copy(cssPath, destPath);
+      } else {
+        console.log(`  ⚠️ CSS file not found: ${cssPath}`);
       }
     }),
   );

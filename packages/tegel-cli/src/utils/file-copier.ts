@@ -157,15 +157,16 @@ export class FileCopier {
       return;
     }
 
-    const existingFiles = Array.from(this.filesToCheck.keys()).map((filePath) => {
-      const relativePath = path.relative(this.context.targetRoot, filePath);
-      return {
-        title: relativePath,
-        value: filePath,
-        selected: false, // Default to not overriding
-      };
-    });
-
+    const existingFiles = Array.from(this.filesToCheck.keys())
+      .filter((filePath): filePath is string => typeof filePath === 'string')
+      .map((filePath) => {
+        const relativePath = path.relative(this.context.targetRoot, filePath);
+        return {
+          title: relativePath,
+          value: filePath,
+          selected: false, // Default to not overriding
+        };
+      });
     logger.newline();
     logger.warn(`Found ${existingFiles.length} existing file(s)`);
 

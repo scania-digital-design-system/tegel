@@ -55,6 +55,9 @@ export class ComponentInstaller {
 
     try {
       if (!dryRun) {
+        if (!context.targetRoot) {
+          throw new Error('Target directory is not defined.');
+        }
         await fs.ensureDir(context.targetRoot);
       }
 
@@ -210,9 +213,8 @@ export class ComponentInstaller {
         }
 
         if (installedComponents.length > 0) {
-          // eslint-disable-next-line no-await-in-loop
           const hasExistingComponents = await ComponentInstaller.hasExistingComponents(
-            context.targetRoot,
+            context.targetRoot ?? '',
           );
           if (!hasExistingComponents) {
             logger.debug('Copying global styles...');
@@ -262,8 +264,7 @@ export class ComponentInstaller {
     summary.push('');
     summary.push('Components to install:');
 
-    // eslint-disable-next-line no-restricted-syntax
-    for (const componentName of components) {
+    components.forEach((componentName) => {
       const component = componentMap.get(componentName);
       if (component) {
         summary.push(`  - ${componentName} (${component.tag})`);
@@ -287,7 +288,7 @@ export class ComponentInstaller {
           summary.push(`    Types: ${Array.from(types).join(', ')}`);
         }
       }
-    }
+    });
 
     // Calculate total files
     const totalFiles = components.reduce((total, componentName) => {

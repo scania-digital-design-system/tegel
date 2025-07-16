@@ -140,7 +140,7 @@ export class ComponentScanner {
 
       return entry;
     } catch (error) {
-      logger.warn(`Failed to scan component ${componentName}: ${error}`);
+      logger.warn(`Failed to scan component ${componentName}`);
       return null;
     }
   }
@@ -323,5 +323,62 @@ export class ComponentScanner {
   // Get only top-level component names
   getTopLevelComponentNames(): string[] {
     return Array.from(this.topLevelComponents.keys());
+  }
+
+  // Scan for installed components in a project directory
+  async scanInstalled(): Promise<{
+    components: Map<string, import('../../types/index').InstalledComponentInfo>;
+  }> {
+    logger.debug(`Scanning installed components in: ${this.componentsPath}`);
+
+    const installedComponents = new Map<
+      string,
+      import('../../types/index').InstalledComponentInfo
+    >();
+
+    try {
+      // Check if the components directory exists
+      if (!(await fs.pathExists(this.componentsPath))) {
+        return { components: installedComponents };
+      }
+
+      // Find all component directories (direct subdirectories only)
+      const entries = await fs.readdir(this.componentsPath, { withFileTypes: true });
+      const componentDirs = entries
+        .filter((entry) => entry.isDirectory() && !entry.name.startsWith('.'))
+        .map((entry) => entry.name);
+
+      // Process each component directory
+      await Promise.all(
+        componentDirs.map(async (dirName) => {
+          const componentPath = path.join(this.componentsPath, dirName);
+
+          // Find the main component file (TSX)
+          const componentFiles = await glob(path.join(componentPath, '*.tsx'));
+          const mainComponentFile = componentFiles.find(
+            (file) => path.basename(file, '.tsx') === dirName,
+          );
+
+          // Find all style files
+          const styleFiles = await glob(path.join(componentPath, '*.scss'));
+
+          if (mainComponentFile || styleFiles.length > 0) {
+            installedComponents.set(dirName, {
+              name: dirName,
+              path: componentPath,
+              files: {
+                component: mainComponentFile,
+                styles: styleFiles.map((f) => path.relative(componentPath, f)),
+              },
+            });
+          }
+        }),
+      );
+    } catch (error) {
+      logger.error(`Failed to scan installed components: ${error}`);
+    }
+
+    logger.debug(`Found ${installedComponents.size} installed component(s)`);
+    return { components: installedComponents };
   }
 }

@@ -93,3 +93,12 @@ export interface CLIOptions {
   skipDeps?: boolean;
   all?: boolean;
 }
+
+export interface InstalledComponentInfo {
+  name: string;
+  path: string;
+  files: {
+    styles: string[];
+    component?: string;
+  };
+}

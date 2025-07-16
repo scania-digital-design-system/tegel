@@ -6,6 +6,81 @@ import chalk from 'chalk';
 import { configManager, type TegelConfig } from '../core/config-manager';
 import { logger } from '../core/logger';
 
+function transformCssPrefix(cssContent: string, newPrefix: string): string {
+  if (newPrefix === 'tds') {
+    return cssContent;
+  }
+
+  // For minified CSS, we need to handle everything in one go, not line by line
+  // Strategy:
+  // 1. Protect strings and comments first
+  // 2. Transform only in selector contexts
+  // 3. Restore protected content
+
+  // Temporarily replace content that should not be transformed
+  const protectedStrings: string[] = [];
+  let protectedIndex = 0;
+
+  // Protect quoted strings
+  let protectedContent = cssContent.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, (match) => {
+    const placeholder = `__PROTECTED_STRING_${protectedIndex++}__`;
+    protectedStrings.push(match);
+    return placeholder;
+  });
+
+  // Protect CSS comments
+  protectedContent = protectedContent.replace(/\/\*[\s\S]*?\*\//g, (match) => {
+    const placeholder = `__PROTECTED_STRING_${protectedIndex++}__`;
+    protectedStrings.push(match);
+    return placeholder;
+  });
+
+  // Now we need to identify selector contexts vs declaration contexts
+  // Split by { and } to separate selectors from declarations
+  const parts = protectedContent.split(/([{}])/);
+  let inDeclaration = false;
+
+  const transformedParts = parts.map((part) => {
+    if (part === '{') {
+      inDeclaration = true;
+      return part;
+    }
+    if (part === '}') {
+      inDeclaration = false;
+      return part;
+    }
+
+    if (inDeclaration) {
+      // Inside declarations - don't transform
+      return part;
+    }
+    // In selector context - transform component names
+    // Skip @keyframes rules
+    if (part.trim().startsWith('@keyframes')) {
+      return part;
+    }
+
+    // Transform tds- component selectors
+    // Match patterns:
+    // - tds-component at start of selector or after whitespace/combinators
+    // - But not after . (class) or -- (CSS variable) or @ (at-rules)
+    return part.replace(
+      /(?<![.\-@#])(?:^|(?<=[,\s>+~[]))tds-([a-z]+(?:-[a-z]+)*)\b/g,
+      `${newPrefix}-$1`,
+    );
+  });
+
+  // Join the parts back together
+  let result = transformedParts.join('');
+
+  // Restore protected strings
+  protectedStrings.forEach((str, i) => {
+    result = result.replace(`__PROTECTED_STRING_${i}__`, str);
+  });
+
+  return result;
+}
+
 async function addGitignoreEntries(): Promise<void> {
   const gitignorePath = path.join(process.cwd(), '.gitignore');
   const tegelIgnoreEntries = ['', '# Tegel CLI', 'tegel-cache/', '.tegel-backup/', ''].join('\\n');
@@ -29,6 +104,43 @@ async function addGitignoreEntries(): Promise<void> {
   }
 }
 
+async function copyCssFile(config: TegelConfig): Promise<void> {
+  try {
+    // Import and use resolveTegelSource to find the tegel-source directory
+    const { resolveTegelSource } = await import('../utils/tegel-source-resolver');
+    const tegelSource = await resolveTegelSource();
+
+    // Use the unified tegel.css file
+    const cssFileName = 'tegel.css';
+    const sourcePath = path.join(tegelSource.root, 'styles', cssFileName);
+
+    if (!(await fs.pathExists(sourcePath))) {
+      logger.warn(`CSS file not found: ${sourcePath}`);
+      return;
+    }
+
+    // Read CSS content
+    let cssContent = await fs.readFile(sourcePath, 'utf-8');
+
+    // Apply prefix transformation if needed
+    if (config.prefix && config.prefix !== 'tds') {
+      cssContent = transformCssPrefix(cssContent, config.prefix);
+      logger.info(`Applied CSS prefix transformation: tds → ${config.prefix}`);
+    }
+
+    // Determine output path
+    const stylesDir = path.join(config.targetDir, 'styles');
+    await fs.ensureDir(stylesDir);
+
+    const outputPath = path.join(stylesDir, 'tegel.css');
+    await fs.writeFile(outputPath, cssContent, 'utf-8');
+
+    logger.success(`CSS file copied to: ${outputPath}`);
+  } catch (error) {
+    logger.warn('Could not copy CSS file:');
+  }
+}
+
 export const initCommand = new Command()
   .name('init')
   .description('Initialize Tegel in your project')
@@ -36,6 +148,7 @@ export const initCommand = new Command()
   .option('-d, --dir <path>', 'target directory', './src/components/tegel')
   .option('-f, --force', 'overwrite existing configuration')
   .option('--skip-prompts', 'skip interactive prompts and use defaults')
+  .option('--include-css', 'include pre-built CSS file', true)
   .action(async (options) => {
     try {
       logger.info('Initializing Tegel configuration...');
@@ -99,15 +212,39 @@ export const initCommand = new Command()
 
       await addGitignoreEntries();
 
+      // Copy CSS file if requested
+      if (options.includeCss) {
+        const finalConfig = await configManager.load();
+        await copyCssFile(finalConfig);
+      }
+
       logger.newline();
       logger.success('Tegel initialized successfully!');
       logger.newline();
       logger.info('Next steps:');
-      logger.list([
+      const steps = [
         `Run ${chalk.cyan('npx @scania/tegel-cli add <component>')} to add components`,
         `Example: ${chalk.cyan('npx @scania/tegel-cli add button dropdown')}`,
         `Run ${chalk.cyan('npx @scania/tegel-cli add --help')} for more options`,
-      ]);
+      ];
+
+      if (options.includeCss) {
+        steps.push('', 'To use the CSS file in your project:');
+        steps.push(
+          `Import ${chalk.cyan(
+            `'${config.targetDir}/styles/tegel.css'`,
+          )} in your main CSS/SCSS file`,
+        );
+        if (config.prefix && config.prefix !== 'tds') {
+          steps.push(
+            `Note: Component selectors have been transformed to use your prefix: ${chalk.green(
+              config.prefix,
+            )}`,
+          );
+        }
+      }
+
+      logger.list(steps);
     } catch (error: unknown) {
       logger.error('Failed to initialize:', error instanceof Error ? error : undefined);
       process.exit(1);
