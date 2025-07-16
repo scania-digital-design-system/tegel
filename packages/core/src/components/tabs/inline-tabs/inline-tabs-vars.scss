@@ -1,13 +1,13 @@
 .tl-inline-tabs,
 tds-inline-tabs {
   /* Horizontal divider */
-  --inline-tabs-horizontal-divider-background: var(--color-foreground-icon-discrete);
+  --inline-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
 
   /* Scroll button */
-  --inline-tabs-scroll-btn-color: var(--color-foreground-icon-strong);
-  --inline-tabs-scroll-btn-background: transparent;
-  --inline-tabs-scroll-btn-background-hover: transparent;
-  --inline-tabs-scroll-btn-background-active: transparent;
+  --inline-tabs-scroll-btn-text: var(--color-foreground-icon-strong);
+  --inline-tabs-scroll-btn: transparent;
+  --inline-tabs-scroll-btn-hover: transparent;
+  --inline-tabs-scroll-btn-active: transparent;
 
   /* Tab */
   --inline-tabs-tab-color: var(--color-foreground-text-soft);
@@ -19,10 +19,10 @@ tds-inline-tabs {
   --inline-tabs-tab-indicator-background-hover: var(--color-foreground-border-discrete);
 
   .tds-mode-variant-primary {
-    --inline-tabs-scroll-btn-background: var(--inline-tabs-scroll-btn-primary);
+    --inline-tabs-scroll-btn: var(--inline-tabs-scroll-btn-primary);
   }
 
   .tds-mode-variant-secondary {
-    --inline-tabs-scroll-btn-background: var(--inline-tabs-scroll-btn-secondary);
+    --inline-tabs-scroll-btn: var(--inline-tabs-scroll-btn-secondary);
   }
 }
