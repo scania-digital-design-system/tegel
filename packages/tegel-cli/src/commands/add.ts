@@ -2,6 +2,8 @@ import { Command } from 'commander';
 import prompts from 'prompts';
 import chalk from 'chalk';
 import semver from 'semver';
+import path from 'path';
+import fs from 'fs-extra';
 import { configManager } from '../core/config-manager';
 import { logger } from '../core/logger';
 import { ComponentScanner } from '../core/registry/component-scanner';
@@ -176,6 +178,63 @@ export const addCommand = new Command()
         if (!proceed) {
           logger.info('Installation cancelled');
           process.exit(0);
+        }
+      }
+
+      // Check for npm dependencies
+      const dependenciesPath = path.join(tegelSource.root, 'dependencies.json');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let componentDependencies: any = {};
+
+      if (await fs.pathExists(dependenciesPath)) {
+        const dependenciesData = await fs.readJSON(dependenciesPath);
+        componentDependencies = dependenciesData.componentDependencies || {};
+      }
+
+      // Collect all npm dependencies for components being installed
+      const npmDependencies = new Map<string, string>();
+      const componentNpmDeps: Array<{ component: string; deps: string[] }> = [];
+
+      allComponentsToInstall.forEach((compName) => {
+        const deps = componentDependencies[compName];
+        if (deps && deps.npm && deps.npm.length > 0) {
+          componentNpmDeps.push({ component: compName, deps: deps.npm });
+          deps.npm.forEach((dep: string) => {
+            const [name, version] = dep.split('@').filter(Boolean);
+            npmDependencies.set(`@${name}`, version || 'latest');
+          });
+        }
+      });
+
+      // If there are npm dependencies, inform the user
+      if (npmDependencies.size > 0 && !options.dryRun) {
+        logger.newline();
+        logger.warn('The following components require npm dependencies:');
+
+        componentNpmDeps.forEach(({ component, deps }) => {
+          logger.info(`  ${component}: ${deps.join(', ')}`);
+        });
+
+        logger.newline();
+        logger.info('To install the required dependencies, run:');
+        const depsArray = Array.from(npmDependencies.entries()).map(([name, version]) =>
+          version === 'latest' ? name : `${name}@${version}`,
+        );
+        logger.info(chalk.cyan(`  npm install ${depsArray.join(' ')}`));
+        logger.newline();
+
+        if (!options.force) {
+          const { proceedWithoutDeps } = await prompts({
+            type: 'confirm',
+            name: 'proceedWithoutDeps',
+            message: 'Continue without installing npm dependencies?',
+            initial: true,
+          });
+
+          if (!proceedWithoutDeps) {
+            logger.info('Installation cancelled. Please install the dependencies and try again.');
+            process.exit(0);
+          }
         }
       }
 

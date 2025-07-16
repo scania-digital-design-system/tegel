@@ -535,7 +535,21 @@ export class FileCopier {
   }
 
   public getTargetPath(relativePath: string): string {
-    // Update component path to use new structure
+    // Check if this is a component file (not utils, types, mixins, etc.)
+    // Component files don't start with 'utils/', 'types/', 'mixins/', etc.
+    const isComponentFile =
+      !relativePath.startsWith('utils/') &&
+      !relativePath.startsWith('types/') &&
+      !relativePath.startsWith('mixins/') &&
+      !relativePath.startsWith('global/') &&
+      !relativePath.startsWith('assets/');
+
+    // If it's a component file, add the 'components/' prefix to maintain structure
+    if (isComponentFile) {
+      return path.join(this.context.targetRoot, 'components', relativePath);
+    }
+
+    // For non-component files, use the path as-is
     return path.join(this.context.targetRoot, relativePath);
   }
 }

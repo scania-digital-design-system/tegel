@@ -105,40 +105,82 @@ async function addGitignoreEntries(): Promise<void> {
   }
 }
 
-async function copyCssFile(config: TegelConfig): Promise<void> {
+async function copyInitialFiles(config: TegelConfig, includeCss: boolean): Promise<void> {
   try {
     // Import and use resolveTegelSource to find the tegel-source directory
     const { resolveTegelSource } = await import('../utils/tegel-source-resolver');
     const tegelSource = await resolveTegelSource();
 
-    // Use the unified tegel.css file
-    const cssFileName = 'tegel.css';
-    const sourcePath = path.join(tegelSource.root, 'styles', cssFileName);
-
-    if (!(await fs.pathExists(sourcePath))) {
-      logger.warn(`CSS file not found: ${sourcePath}`);
-      return;
+    // Copy utils directory
+    const utilsSourcePath = path.join(tegelSource.root, 'utils');
+    if (await fs.pathExists(utilsSourcePath)) {
+      const utilsDestPath = path.join(config.targetDir, 'utils');
+      await fs.copy(utilsSourcePath, utilsDestPath);
+      logger.success(`Utils copied to: ${utilsDestPath}`);
     }
 
-    // Read CSS content
-    let cssContent = await fs.readFile(sourcePath, 'utf-8');
-
-    // Apply prefix transformation if needed
-    if (config.prefix && config.prefix !== 'tds') {
-      cssContent = transformCssPrefix(cssContent, config.prefix);
-      logger.info(`Applied CSS prefix transformation: tds → ${config.prefix}`);
+    // Copy types directory
+    const typesSourcePath = path.join(tegelSource.root, 'types');
+    if (await fs.pathExists(typesSourcePath)) {
+      const typesDestPath = path.join(config.targetDir, 'types');
+      await fs.copy(typesSourcePath, typesDestPath);
+      logger.success(`Types copied to: ${typesDestPath}`);
     }
 
-    // Determine output path
-    const stylesDir = path.join(config.targetDir, 'styles');
-    await fs.ensureDir(stylesDir);
+    // Copy mixins directory
+    const mixinsSourcePath = path.join(tegelSource.root, 'mixins');
+    if (await fs.pathExists(mixinsSourcePath)) {
+      const mixinsDestPath = path.join(config.targetDir, 'mixins');
+      await fs.copy(mixinsSourcePath, mixinsDestPath);
+      logger.success(`Mixins copied to: ${mixinsDestPath}`);
+    }
 
-    const outputPath = path.join(stylesDir, 'tegel.css');
-    await fs.writeFile(outputPath, cssContent, 'utf-8');
+    // Copy typography directory
+    const typographySourcePath = path.join(tegelSource.root, 'typography');
+    if (await fs.pathExists(typographySourcePath)) {
+      const typographyDestPath = path.join(config.targetDir, 'typography');
+      await fs.copy(typographySourcePath, typographyDestPath);
+      logger.success(`Typography copied to: ${typographyDestPath}`);
+    }
 
-    logger.success(`CSS file copied to: ${outputPath}`);
+    // Copy grid-deprecated directory
+    const gridSourcePath = path.join(tegelSource.root, 'grid-deprecated');
+    if (await fs.pathExists(gridSourcePath)) {
+      const gridDestPath = path.join(config.targetDir, 'grid-deprecated');
+      await fs.copy(gridSourcePath, gridDestPath);
+      logger.success(`Grid-deprecated copied to: ${gridDestPath}`);
+    }
+
+    // Copy CSS file if requested
+    if (includeCss) {
+      const cssFileName = 'tegel.css';
+      const sourcePath = path.join(tegelSource.root, 'styles', cssFileName);
+
+      if (!(await fs.pathExists(sourcePath))) {
+        logger.warn(`CSS file not found: ${sourcePath}`);
+        return;
+      }
+
+      // Read CSS content
+      let cssContent = await fs.readFile(sourcePath, 'utf-8');
+
+      // Apply prefix transformation if needed
+      if (config.prefix && config.prefix !== 'tds') {
+        cssContent = transformCssPrefix(cssContent, config.prefix);
+        logger.info(`Applied CSS prefix transformation: tds → ${config.prefix}`);
+      }
+
+      // Determine output path
+      const stylesDir = path.join(config.targetDir, 'styles');
+      await fs.ensureDir(stylesDir);
+
+      const outputPath = path.join(stylesDir, 'tegel.css');
+      await fs.writeFile(outputPath, cssContent, 'utf-8');
+
+      logger.success(`CSS file copied to: ${outputPath}`);
+    }
   } catch (error) {
-    logger.warn('Could not copy CSS file:');
+    logger.warn('Could not copy initial files');
   }
 }
 
@@ -217,11 +259,9 @@ export const initCommand = new Command()
 
       await addGitignoreEntries();
 
-      // Copy CSS file if requested
-      if (options.includeCss) {
-        const finalConfig = await configManager.load();
-        await copyCssFile(finalConfig);
-      }
+      // Copy initial files (utils, types, mixins, and optionally CSS)
+      const finalConfig = await configManager.load();
+      await copyInitialFiles(finalConfig, options.includeCss);
 
       logger.newline();
       logger.success('Tegel initialized successfully!');

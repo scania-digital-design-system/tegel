@@ -1,0 +1,39 @@
+{
+  "componentDependencies": {
+    "popover-core": {
+      "npm": ["@popperjs/core@^2.11.8"],
+      "description": "Required for positioning floating elements"
+    },
+    "popover-canvas": {
+      "npm": ["@popperjs/core@^2.11.8"],
+      "description": "Uses popover-core which requires @popperjs/core"
+    },
+    "popover-menu": {
+      "npm": ["@popperjs/core@^2.11.8"],
+      "description": "Uses popover-core which requires @popperjs/core"
+    },
+    "tooltip": {
+      "npm": ["@popperjs/core@^2.11.8"],
+      "description": "Uses popover-core which requires @popperjs/core"
+    },
+    "dropdown": {
+      "npm": ["@popperjs/core@^2.11.8"],
+      "description": "Uses popover-core which requires @popperjs/core"
+    },
+    "date-picker": {
+      "npm": ["date-fns@^2.30.0"],
+      "description": "Required for date manipulation and formatting",
+      "beta": true
+    },
+    "date-picker-single": {
+      "npm": ["date-fns@^2.30.0", "@popperjs/core@^2.11.8"],
+      "description": "Required for date manipulation and positioning",
+      "beta": true
+    },
+    "date-range-picker": {
+      "npm": ["date-fns@^2.30.0", "@popperjs/core@^2.11.8"],
+      "description": "Required for date range manipulation and positioning",
+      "beta": true
+    }
+  }
+}

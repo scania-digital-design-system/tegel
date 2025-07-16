@@ -50,6 +50,35 @@ export class ScssTransformer {
     const newPrefix = config.prefix;
 
     this.rules = [
+      // Fix external typography imports
+      {
+        pattern: /(@import\s+['"])\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/(typography\/[^'"]+)(['"])/g,
+        replacement: '$1../../$2$3',
+        description: 'Fix typography import paths (5 levels up to 2 levels)',
+        priority: 0,
+      },
+      {
+        pattern: /(@import\s+['"])\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/(typography\/[^'"]+)(['"])/g,
+        replacement: '$1../../../$2$3',
+        description: 'Fix typography import paths (6 levels up to 3 levels)',
+        priority: 0,
+      },
+
+      // Fix external grid-deprecated imports
+      {
+        pattern: /(@import\s+['"])\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/(grid-deprecated\/[^'"]+)(['"])/g,
+        replacement: '$1../../$2$3',
+        description: 'Fix grid-deprecated import paths (5 levels up to 2 levels)',
+        priority: 0,
+      },
+      {
+        pattern:
+          /(@import\s+['"])\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/\.\.\/(grid-deprecated\/[^'"]+)(['"])/g,
+        replacement: '$1../../../$2$3',
+        description: 'Fix grid-deprecated import paths (6 levels up to 3 levels)',
+        priority: 0,
+      },
+
       // Convert absolute Tegel @import paths to relative paths
       {
         // eslint-disable-next-line prefer-regex-literals

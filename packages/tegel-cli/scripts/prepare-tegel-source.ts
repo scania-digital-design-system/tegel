@@ -51,6 +51,12 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
     types: path.join(sourceRoot, 'src', 'types'),
   };
 
+  // External dependencies from monorepo root
+  const externalPaths = {
+    'typography': path.join(sourceRoot, '..', '..', 'typography'),
+    'grid-deprecated': path.join(sourceRoot, '..', '..', 'grid-deprecated'),
+  };
+
   // CSS files to copy
   const cssFiles = {
     tegel: path.join(sourceRoot, 'dist', 'tegel', 'tegel.css'),
@@ -91,6 +97,19 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
     }),
   );
 
+  // Copy external dependencies
+  await Promise.all(
+    Object.entries(externalPaths).map(async ([name, sourcePath]) => {
+      if (await fs.pathExists(sourcePath)) {
+        const destPath = path.join(outputDir, name);
+        console.log(`  📁 Copying ${name}...`);
+        await fs.copy(sourcePath, destPath);
+      } else {
+        console.log(`  ⚠️ External dependency not found: ${sourcePath}`);
+      }
+    }),
+  );
+
   // Copy CSS files
   const stylesDir = path.join(outputDir, 'styles');
   await fs.ensureDir(stylesDir);
@@ -106,6 +125,13 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
       }
     }),
   );
+
+  // Copy dependencies.json
+  const dependenciesPath = path.join(dirName, '..', 'src', 'core', 'dependencies.json');
+  if (await fs.pathExists(dependenciesPath)) {
+    console.log('  📋 Copying dependencies.json...');
+    await fs.copy(dependenciesPath, path.join(outputDir, 'dependencies.json'));
+  }
 
   // Create metadata file
   const metadata = {
