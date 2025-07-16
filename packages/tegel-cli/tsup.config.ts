@@ -1,5 +1,10 @@
 import { defineConfig } from 'tsup';
-import { cpSync } from 'fs';
+import { cpSync, readFileSync } from 'fs';
+import { resolve } from 'path';
+
+// Read package.json to get version
+const packageJson = JSON.parse(readFileSync(resolve('./package.json'), 'utf-8'));
+const cliVersion = packageJson.version;
 
 export default defineConfig({
   entry: ['src/cli.ts'],
@@ -10,6 +15,15 @@ export default defineConfig({
   target: 'esnext',
   minify: true,
   treeshake: true,
+  define: {
+    __CLI_VERSION__: JSON.stringify(cliVersion),
+  },
+  esbuildOptions(options) {
+    options.define = {
+      ...options.define,
+      __CLI_VERSION__: JSON.stringify(cliVersion),
+    };
+  },
   onSuccess: async () => {
     // Run prepare:source after build
     const { exec } = await import('child_process');

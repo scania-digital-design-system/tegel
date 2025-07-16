@@ -9,6 +9,7 @@ import { logger } from '../core/logger';
 import { ComponentScanner } from '../core/registry/component-scanner';
 import { DependencyAnalyzer } from '../core/registry/dependency-analyzer';
 import { CLIOptions } from '../types/index';
+import { CLI_VERSION } from '../core/metadata';
 
 export const updateCommand = new Command()
   .name('update')
@@ -25,18 +26,18 @@ export const updateCommand = new Command()
       const tegelSource = await resolveTegelSource();
 
       logger.debug(`Using Tegel source from: ${tegelSource.root}`);
-      logger.debug(`Tegel version: ${tegelSource.version}`);
+      logger.debug(`CLI version: ${CLI_VERSION}`);
       logger.debug(`Current config version: ${config.version}`);
 
       const needsUpdate =
-        typeof tegelSource.version === 'string' &&
+        typeof CLI_VERSION === 'string' &&
         typeof config.version === 'string' &&
-        semver.gt(tegelSource.version, config.version);
+        semver.gt(CLI_VERSION, config.version);
 
       if (needsUpdate) {
         logger.info(
           `New Tegel version available: ${chalk.cyan(config.version)} → ${chalk.green(
-            tegelSource.version,
+            CLI_VERSION,
           )}`,
         );
       } else if (!components.length && !options.all) {
@@ -144,7 +145,7 @@ export const updateCommand = new Command()
           type: 'confirm',
           name: 'proceed',
           message: needsUpdate
-            ? `Update all components to version ${tegelSource.version}?`
+            ? `Update all components to version ${CLI_VERSION}?`
             : 'Continue with update?',
           initial: true,
         });
@@ -162,7 +163,7 @@ export const updateCommand = new Command()
       const { ComponentInstaller } = await import('../core/component-installer');
 
       // Update config version
-      config.version = tegelSource.version;
+      config.version = CLI_VERSION;
 
       const result = await ComponentInstaller.install({
         components: Array.from(allComponentsToUpdate),
@@ -186,7 +187,7 @@ export const updateCommand = new Command()
 
         logger.newline();
         logger.success('Update complete!');
-        logger.info(`Updated to version: ${tegelSource.version}`);
+        logger.info(`Updated to version: ${CLI_VERSION}`);
 
         if (result.copiedFiles.length > 0) {
           logger.newline();

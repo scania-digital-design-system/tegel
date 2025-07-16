@@ -7,6 +7,7 @@ import { logger } from '../core/logger';
 import { ComponentScanner } from '../core/registry/component-scanner';
 import { DependencyAnalyzer } from '../core/registry/dependency-analyzer';
 import { CLIOptions } from '../types/index';
+import { CLI_VERSION } from '../core/metadata';
 
 export const addCommand = new Command()
   .name('add')
@@ -29,14 +30,14 @@ export const addCommand = new Command()
       const tegelSource = await resolveTegelSource();
 
       logger.debug(`Using Tegel source from: ${tegelSource.root}`);
-      logger.debug(`Tegel version: ${tegelSource.version}`);
+      logger.debug(`CLI version: ${CLI_VERSION}`);
       logger.debug(`Source type: ${tegelSource.isLocal ? 'local development' : 'bundled'}`);
 
-      if (config.version && semver.gt(tegelSource.version, config.version)) {
+      if (config.version && semver.gt(CLI_VERSION, config.version)) {
         logger.newline();
         logger.warn(
           `New Tegel version available: ${chalk.cyan(config.version)} → ${chalk.green(
-            tegelSource.version,
+            CLI_VERSION,
           )}`,
         );
 
@@ -57,7 +58,7 @@ export const addCommand = new Command()
         }
       }
 
-      config.version = tegelSource.version;
+      config.version = CLI_VERSION;
 
       logger.startSpinner('Scanning Tegel components...');
       const scanner = new ComponentScanner(tegelSource.componentsPath);

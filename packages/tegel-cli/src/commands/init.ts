@@ -5,6 +5,7 @@ import path from 'path';
 import chalk from 'chalk';
 import { configManager, type TegelConfig } from '../core/config-manager';
 import { logger } from '../core/logger';
+import { CLI_VERSION } from '../core/metadata';
 
 function transformCssPrefix(cssContent: string, newPrefix: string): string {
   if (newPrefix === 'tds') {
@@ -163,6 +164,7 @@ export const initCommand = new Command()
 
       if (options.skipPrompts) {
         config = {
+          version: CLI_VERSION,
           prefix: options.prefix,
           targetDir: options.dir,
         };
@@ -199,7 +201,10 @@ export const initCommand = new Command()
           process.exit(0);
         }
 
-        config = response;
+        config = {
+          version: CLI_VERSION,
+          ...response,
+        };
 
         if (response.createDir) {
           const targetPath = path.resolve(response.targetDir);
