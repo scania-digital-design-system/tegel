@@ -1,33 +1,39 @@
 /* Variables used by both tds-folder-tab and tds-folder-tabs */
+.tl-folder-tabs,
+.tl-folder-tab,
 tds-folder-tab,
 tds-folder-tabs {
-  --tds-folder-tab-background: var(--color-background-surface-200);
-  --tds-folder-tab-background-selected: var(--color-background-layer-01);
-  --tds-folder-tab-color: var(--color-foreground-text-soft);
+  --folder-tab-surface: var(--color-background-surface-200);
+  --folder-tab-surface-selected: var(--color-background-layer-01);
+  --folder-tab-text: var(--color-foreground-text-soft);
 }
 
 /* Variables color change based on mode variant */
+.tl-folder-tabs.tds-mode-variant-primary .tl-folder-tab,
 tds-folder-tabs.tds-mode-variant-primary tds-folder-tab {
-  --tds-folder-tab-background-selected: var(--color-background-layer-01);
+  --folder-tab-surface-selected: var(--color-background-layer-01);
 }
 
+.tl-folder-tabs.tds-mode-variant-secondary .tl-folder-tab,
 tds-folder-tabs.tds-mode-variant-secondary tds-folder-tab {
-  --tds-folder-tab-background-selected: var(--color-background-layer-02);
+  --folder-tab-surface-selected: var(--color-background-layer-02);
 }
 
 /* Variables used only by tds-folder-tabs (scroll buttons) */
+.tl-folder-tabs,
 tds-folder-tabs {
-  --tds-folder-tabs-scroll-btn-background: var(--color-background-surface-300);
-  --tds-folder-tabs-scroll-btn-background-hover: var(--color-background-surface-300);
-  --tds-folder-tabs-scroll-btn-background-active: var(--color-background-surface-300);
-  --tds-folder-tabs-scroll-btn-color: var(--color-foreground-text-soft);
+  --folder-tabs-scroll-button-surface: var(--color-background-surface-300);
+  --folder-tabs-scroll-button-surface-hover: var(--color-background-surface-300);
+  --folder-tabs-scroll-button-surface-active: var(--color-background-surface-300);
+  --folder-tabs-scroll-button-text: var(--color-foreground-text-soft);
 }
 
 /* Variables used only by tds-folder-tab */
+.tl-folder-tab,
 tds-folder-tab {
-  --tds-folder-tab-background-hover: var(--color-background-surface-300);
-  --tds-folder-tab-border-selected: var(--color-foreground-border-accent-focus);
-  --tds-folder-tab-divider-color: var(--color-foreground-icon-discrete);
-  --tds-folder-tab-item-color: var(--color-foreground-text-soft);
-  --tds-folder-tab-item-color-disabled: var(--color-foreground-text-disabled);
+  --folder-tab-surface-hover: var(--color-background-surface-300);
+  --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
+  --folder-tab-divider-text: var(--color-foreground-icon-discrete);
+  --folder-tab-item-text: var(--color-foreground-text-soft);
+  --folder-tab-item-text-disabled: var(--color-foreground-text-disabled);
 }
