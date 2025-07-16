@@ -1,54 +1,9 @@
-@mixin textfield-base {
-  border-radius: 4px 4px 0 0;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border: none;
-  outline: none;
-  height: 100%;
-  color: var(--textarea-text);
-  background-color: var(--textarea-background);
-
-  &::placeholder {
-    opacity: 1;
-    color: var(--textarea-placeholder);
-  }
-
-  &:disabled {
-    background-color: var(--textarea-disabled-background);
-    color: var(--textarea-disabled-text);
-    cursor: not-allowed;
-
-    &::placeholder {
-      color: var(--textarea-disabled-placeholder);
-    }
-  }
-}
-
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  //Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--textarea-placeholder);
-  }
-}
+@import './textarea-mixins';
 
 .textarea-container {
-  //@extend .tds-textfield-container;
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--textarea-border-radius);
   position: relative;
   box-sizing: border-box;
-
-  //@extend end
-
   height: auto;
   width: 100%;
   min-width: 208px;
@@ -70,36 +25,10 @@
   }
 }
 
-.textarea-container:not(.textarea-disabled) {
-  .textarea-wrapper {
-    &::before,
-    &::after {
-      content: '';
-      height: 2px;
-      width: 0;
-      position: absolute;
-      background: var(--textarea-bar);
-      transition: 0.35s ease all;
-    }
-
-    &::before {
-      left: 50%;
-    }
-
-    &::after {
-      right: 50%;
-    }
-
-    &::after,
-    &::before {
-      top: calc(100% - 2px);
-    }
-  }
-}
-
 .textarea-input {
   @include textfield-base;
 
+  border-radius: var(--textarea-border-radius);
   font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
@@ -150,9 +79,6 @@
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
       transition: 0.1s ease all;
-
-      //@include end
-
       color: var(--textarea-label-inside);
       position: absolute;
       top: var(--tds-spacing-element-20);
@@ -296,7 +222,7 @@
   position: absolute;
   right: 18px;
   top: 18px;
-  color: var(--textarea-icon-read-only-text);
+  color: var(--textarea-icon-read-only-color);
 
   &-label {
     display: none;
@@ -306,7 +232,7 @@
     font: var(--tds-detail-05);
     letter-spacing: var(--tds-detail-05-ls);
     padding: 8px;
-    color: var(--textarea-icon-read-only-label);
+    color: var(--textarea-icon-read-only-label-color);
     background-color: var(--textarea-icon-read-only-label-background);
     white-space: nowrap;
     border-radius: 4px 0 4px 4px;
@@ -319,7 +245,7 @@
   }
 
   .textarea-input {
-    border: 1px solid var(--textarea-border-bottom-read-only);
+    border: 1px solid var(--textarea-border-bottom-read-only-text);
   }
 
   .textfield-container {
