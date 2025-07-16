@@ -13,8 +13,12 @@
     width: calc(100% - 32px);
 
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font: var(--tds-headline-07) !important;
-    letter-spacing: var(--tds-headline-07-ls) !important;
+    font-family: var(--headline-07-font-family) !important;
+    font-size: var(--headline-07-font-size) !important;
+    line-height: var(--headline-07-line-height) !important;
+    font-weight: var(--headline-07-font-weight) !important;
+    letter-spacing: var(--headline-07-letter-spacing) !important;
+    text-transform: var(--headline-07-text-transform) !important;
     cursor: pointer;
     padding: 16px;
     white-space: nowrap;
