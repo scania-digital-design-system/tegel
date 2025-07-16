@@ -72,6 +72,7 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
         await fs.copy(sourcePath, destPath, {
           filter: (src) => {
             const relativePath = path.relative(sourcePath, src);
+            const basename = path.basename(src);
 
             // Skip test directories and files
             if (relativePath.includes('/test/') || relativePath.includes('\\test\\')) {
@@ -85,6 +86,20 @@ async function copySourceFiles(options: PrepareSourceOptions): Promise<void> {
 
             // Skip readme files (but keep the top-level one in mixins)
             if (relativePath.toLowerCase().includes('readme') && name !== 'mixins') {
+              return false;
+            }
+
+            // Skip test-related utils files
+            if (
+              name === 'utils' &&
+              (basename === 'testConfiguration.ts' ||
+                basename === 'axeHelpers.ts' ||
+                basename.includes('test') ||
+                basename.includes('Test') ||
+                basename.includes('spec') ||
+                basename.includes('mock') ||
+                basename.includes('fixture'))
+            ) {
               return false;
             }
 

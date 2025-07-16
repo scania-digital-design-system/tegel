@@ -433,8 +433,14 @@ export class FileCopier {
       });
     }
 
+    // Add @ts-nocheck to TypeScript files
+    let outputContent = finalContent;
+    if (targetPath.endsWith('.ts') || targetPath.endsWith('.tsx')) {
+      outputContent = this.addTsNoCheck(finalContent);
+    }
+
     // Write transformed content
-    await fs.writeFile(targetPath, finalContent, 'utf-8');
+    await fs.writeFile(targetPath, outputContent, 'utf-8');
 
     // Track this as an actually copied file
     this.actualCopiedFiles.add(targetPath);
@@ -532,6 +538,17 @@ export class FileCopier {
     );
 
     return transformed;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  private addTsNoCheck(content: string): string {
+    // Check if the file already has @ts-nocheck
+    if (content.includes('@ts-nocheck')) {
+      return content;
+    }
+
+    // Add @ts-nocheck at the beginning of the file
+    return `// @ts-nocheck\n${content}`;
   }
 
   public getTargetPath(relativePath: string): string {
