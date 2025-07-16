@@ -1,3 +1,4 @@
+/* Variables used by tds-inline-tabs component */
 .tl-inline-tabs,
 tds-inline-tabs {
   /* Horizontal divider */
@@ -9,6 +10,18 @@ tds-inline-tabs {
   --inline-tabs-scroll-button-hover: transparent;
   --inline-tabs-scroll-button-active: transparent;
 
+  &.tds-mode-variant-primary {
+    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-primary);
+  }
+
+  &.tds-mode-variant-secondary {
+    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-secondary);
+  }
+}
+
+/* Variables used by tds-inline-tab component */
+.tl-inline-tab,
+tds-inline-tab {
   /* Tab */
   --inline-tabs-tab: var(--color-foreground-text-soft);
   --inline-tabs-tab-selected: var(--color-foreground-text-strong);
@@ -17,12 +30,4 @@ tds-inline-tabs {
   --inline-tabs-tab-focus: var(--color-foreground-border-accent-focus);
   --inline-tabs-tab-indicator-active: var(--color-foreground-border-accent-focus);
   --inline-tabs-tab-indicator-hover: var(--color-foreground-border-discrete);
-
-  .tds-mode-variant-primary {
-    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-secondary);
-  }
 }
