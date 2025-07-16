@@ -437,7 +437,7 @@ jobs:
 
       - name: CLI - Build
         working-directory: packages/tegel-cli
-        run: npm run build
+        run: npm run build:cli
 
       - name: CLI - Pack tarball (dry run only)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'

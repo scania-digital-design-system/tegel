@@ -392,13 +392,8 @@ jobs:
         working-directory: packages/core
         run: npm install
 
-      - name: CLI - Install
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm install
-
       - name: CLI - Run build
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm run build
+        run: npm run build:cli
 
       - name: Check if version already exists
         id: check-version
