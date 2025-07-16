@@ -43,11 +43,11 @@
 
   .scroll-right-button,
   .scroll-left-button {
-    color: var(--inline-tabs-scroll-btn-text);
+    color: var(--inline-tabs-scroll-button-text);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--inline-tabs-scroll-btn);
+    background-color: var(--inline-tabs-scroll-button);
     display: none;
     justify-content: center;
     align-items: center;
@@ -63,11 +63,11 @@
     }
 
     &:hover {
-      background-color: var(--inline-tabs-scroll-btn-hover);
+      background-color: var(--inline-tabs-scroll-button-hover);
     }
 
     &:active {
-      background-color: var(--inline-tabs-scroll-btn-active);
+      background-color: var(--inline-tabs-scroll-button-active);
     }
 
     &:focus {
@@ -75,7 +75,7 @@
     }
 
     svg {
-      fill: var(--inline-tabs-scroll-btn-text);
+      fill: var(--inline-tabs-scroll-button-text);
     }
   }
 }
