@@ -4,6 +4,7 @@ import { glob } from 'glob';
 import { ComponentEntry } from '../../types/index';
 import { logger } from '../logger';
 import { DependencyAnalyzer } from './dependency-analyzer';
+import { CLI_VERSION } from '../metadata';
 
 export interface ComponentScanResult {
   allComponents: Map<string, ComponentEntry>;
@@ -107,7 +108,11 @@ export class ComponentScanner {
       const firstDir = pathParts[0];
       const isTabVariant = firstDir === 'tabs' && dirName.endsWith('-tabs') && pathDepth === 2;
 
-      const isSubComponent = pathDepth > 1 && !isMainComponentInSubdir && !isTabVariant;
+      // 3. Special case for table component which has main component in table/table subdirectory
+      const isTableMainComponent = firstDir === 'table' && dirName === 'table' && pathDepth === 2;
+
+      const isSubComponent =
+        pathDepth > 1 && !isMainComponentInSubdir && !isTabVariant && !isTableMainComponent;
 
       // Find all related files
       const files = await ComponentScanner.findComponentFiles(componentDir);
@@ -130,7 +135,7 @@ export class ComponentScanner {
           types: [], // Will be filled by dependency analyzer
         },
         metadata: {
-          version: '1.33.0', // TODO: Get from package.json
+          version: CLI_VERSION, // TODO: Get from package.json
           stability: ComponentScanner.determineStability(componentDir),
           description: metadata.description,
           isSubComponent,

@@ -307,7 +307,17 @@ export class DependencyAnalyzer {
         'table-body-cell',
       ];
       tableComponents.forEach((comp) => {
-        if (content.includes(`tds-${comp}`) || content.includes(`TDS-${comp.toUpperCase()}`)) {
+        // Handle special case for header-cell and body-cell which use abbreviated tag names
+        let tagName = comp;
+        if (comp === 'table-header-cell') {
+          tagName = 'header-cell';
+        } else if (comp === 'table-body-cell') {
+          tagName = 'body-cell';
+        }
+        if (
+          content.includes(`tds-${tagName}`) ||
+          content.includes(`TDS-${tagName.toUpperCase()}`)
+        ) {
           deps.components.add(comp);
         }
       });
@@ -327,27 +337,35 @@ export class DependencyAnalyzer {
   ): Promise<void> {
     const componentDir = path.dirname(filePath);
 
+    // Special case for table component which has its main component in table/table/
+    // but sub-components in the parent table/ directory
+    const dirsToCheck = [componentDir];
+    if (componentDir.endsWith('/table/table') || componentDir.endsWith('\\table\\table')) {
+      dirsToCheck.push(path.dirname(componentDir)); // Add parent directory
+    }
+
     try {
-      // Check if the component directory exists
-      // eslint-disable-next-line no-await-in-loop
-      if (!(await fs.pathExists(componentDir))) {
-        return;
-      }
-
-      // Read all items in the component directory
-      // eslint-disable-next-line no-await-in-loop
-      const items = await fs.readdir(componentDir, { withFileTypes: true });
-
-      // Find subdirectories (potential sub-components)
-      const subdirs = items.filter((item) => item.isDirectory());
-
       // eslint-disable-next-line no-restricted-syntax
-      for (const subdir of subdirs) {
-        const subdirName = subdir.name;
+      for (const dirToCheck of dirsToCheck) {
+        // Check if the directory exists
+        // eslint-disable-next-line no-await-in-loop
+        if (await fs.pathExists(dirToCheck)) {
+          // Read all items in the directory
+          // eslint-disable-next-line no-await-in-loop
+          const items = await fs.readdir(dirToCheck, { withFileTypes: true });
 
-        // Check if this subdirectory is a known component
-        if (this.componentMap.has(subdirName)) {
-          deps.components.add(subdirName);
+          // Find subdirectories (potential sub-components)
+          const subdirs = items.filter((item) => item.isDirectory());
+
+          // eslint-disable-next-line no-restricted-syntax
+          for (const subdir of subdirs) {
+            const subdirName = subdir.name;
+
+            // Check if this subdirectory is a known component
+            if (this.componentMap.has(subdirName)) {
+              deps.components.add(subdirName);
+            }
+          }
         }
       }
     } catch (error) {
