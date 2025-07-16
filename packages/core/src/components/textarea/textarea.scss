@@ -1,54 +1,9 @@
-@mixin textfield-base {
-  border-radius: 4px 4px 0 0;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border: none;
-  outline: none;
-  height: 100%;
-  color: var(--tds-textarea-color);
-  background-color: var(--tds-textarea-background);
-
-  &::placeholder {
-    opacity: 1;
-    color: var(--tds-textarea-placeholder);
-  }
-
-  &:disabled {
-    background-color: var(--tds-textarea-disabled-background);
-    color: var(--tds-textarea-disabled-color);
-    cursor: not-allowed;
-
-    &::placeholder {
-      color: var(--tds-textarea-disabled-placeholder);
-    }
-  }
-}
-
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  //Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--tds-textarea-placeholder);
-  }
-}
+@import './textarea-mixins';
 
 .textarea-container {
-  //@extend .tds-textfield-container;
-  border-radius: 4px 4px 0 0;
+  border-radius: var(--textarea-border-radius);
   position: relative;
   box-sizing: border-box;
-
-  //@extend end
-
   height: auto;
   width: 100%;
   min-width: 208px;
@@ -70,42 +25,16 @@
   }
 }
 
-.textarea-container:not(.textarea-disabled) {
-  .textarea-wrapper {
-    &::before,
-    &::after {
-      content: '';
-      height: 2px;
-      width: 0;
-      position: absolute;
-      background: var(--tds-textarea-bar);
-      transition: 0.35s ease all;
-    }
-
-    &::before {
-      left: 50%;
-    }
-
-    &::after {
-      right: 50%;
-    }
-
-    &::after,
-    &::before {
-      top: calc(100% - 2px);
-    }
-  }
-}
-
 .textarea-input {
   @include textfield-base;
 
+  border-radius: var(--textarea-border-radius);
   font: var(--tds-detail-02);
   letter-spacing: var(--tds-detail-02-ls);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
-  border-bottom: 1px solid var(--tds-textarea-border-bottom);
+  border-bottom: 1px solid var(--textarea-border-bottom);
   transition: border-bottom-color 200ms ease;
 
   // Display none only works in Chrome
@@ -114,13 +43,13 @@
   }
 
   &:hover {
-    border-bottom-color: var(--tds-textarea-border-bottom-hover);
+    border-bottom-color: var(--textarea-border-bottom-hover);
   }
 }
 
 // Need to override default resizer in FF & Safari
 .textarea-resizer-icon {
-  color: var(--tds-textarea-resize-icon);
+  color: var(--textarea-resize-icon);
   position: absolute;
   display: block;
   bottom: 2px;
@@ -128,7 +57,7 @@
   padding-bottom: 2px;
   padding-right: 2px;
   pointer-events: none;
-  background-color: var(--tds-textarea-background);
+  background-color: var(--textarea-background);
 
   svg {
     display: block;
@@ -141,7 +70,7 @@
   display: block;
   z-index: 1;
   margin-bottom: var(--tds-spacing-element-8);
-  color: var(--tds-textarea-label-color);
+  color: var(--textarea-label);
 }
 
 .textarea-container {
@@ -150,10 +79,7 @@
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
       transition: 0.1s ease all;
-
-      //@include end
-
-      color: var(--tds-textarea-label-inside-color);
+      color: var(--textarea-label-inside);
       position: absolute;
       top: var(--tds-spacing-element-20);
       left: var(--tds-spacing-element-16);
@@ -161,7 +87,7 @@
 
     &.textarea-disabled {
       .textarea-label {
-        color: var(--tds-textarea-disabled-label);
+        color: var(--textarea-disabled-label);
       }
     }
 
@@ -202,13 +128,13 @@
   //@extend .tds-textfield-textcounter;
   font: var(--tds-detail-05);
   letter-spacing: var(--tds-detail-05-ls);
-  color: var(--tds-textarea-textcounter);
+  color: var(--textarea-textcounter);
   float: right;
 
   & .textfield-textcounter-divider {
     font: var(--tds-detail-05);
     letter-spacing: var(--tds-detail-05-ls);
-    color: var(--tds-textarea-textcounter-divider);
+    color: var(--textarea-textcounter-divider);
   }
 
   //@extend end
@@ -225,7 +151,7 @@
   gap: 8px;
   align-items: center;
   padding-top: var(--tds-spacing-element-4);
-  color: var(--tds-textarea-helper);
+  color: var(--textarea-helper);
   flex-grow: 2;
   flex-basis: auto;
 
@@ -238,24 +164,24 @@
 
 .textarea-success {
   .textarea-input {
-    border-bottom-color: var(--tds-textarea-border-bottom-success);
+    border-bottom-color: var(--textarea-border-bottom-success);
   }
 }
 
 .textarea-error {
   .textarea-input {
-    border-bottom-color: var(--tds-textarea-border-bottom-error);
+    border-bottom-color: var(--textarea-border-bottom-error);
   }
 
   .textarea-wrapper {
     &::after,
     &::before {
-      background: var(--tds-textarea-bar-error);
+      background: var(--textarea-bar-error);
     }
   }
 
   .textarea-helper {
-    color: var(--tds-textarea-helper-error);
+    color: var(--textarea-helper-error);
   }
 }
 
@@ -270,19 +196,23 @@
   }
 
   .textarea-label {
-    color: var(--tds-textarea-disabled-label);
+    color: var(--textarea-disabled-label);
   }
 
   .textarea-helper {
-    color: var(--tds-textarea-helper-disabled);
+    color: var(--textarea-helper-disabled);
   }
 
   .textarea-textcounter {
-    color: var(--tds-textarea-textcounter-disabled);
+    color: var(--textarea-textcounter-disabled);
 
     & .textfield-textcounter-divider {
-      color: var(--tds-textarea-textcounter-disabled);
+      color: var(--textarea-textcounter-disabled);
     }
+  }
+
+  .textarea-resizer-icon {
+    background-color: var(--textarea-background-secondary);
   }
 }
 
@@ -292,7 +222,7 @@
   position: absolute;
   right: 18px;
   top: 18px;
-  color: var(--tds-textarea-icon-read-only-color);
+  color: var(--textarea-icon-read-only-color);
 
   &-label {
     display: none;
@@ -302,8 +232,8 @@
     font: var(--tds-detail-05);
     letter-spacing: var(--tds-detail-05-ls);
     padding: 8px;
-    color: var(--tds-textarea-icon-read-only-label-color);
-    background-color: var(--tds-textarea-icon-read-only-label-background);
+    color: var(--textarea-icon-read-only-label-color);
+    background-color: var(--textarea-icon-read-only-label-background);
     white-space: nowrap;
     border-radius: 4px 0 4px 4px;
   }
@@ -315,7 +245,7 @@
   }
 
   .textarea-input {
-    border: 1px solid var(--tds-textarea-border-bottom-read-only-color);
+    border: 1px solid var(--textarea-border-bottom-read-only-text);
   }
 
   .textfield-container {
