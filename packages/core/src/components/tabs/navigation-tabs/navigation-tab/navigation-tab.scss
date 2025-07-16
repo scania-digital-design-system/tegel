@@ -10,15 +10,13 @@
     all: unset;
 
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-
-    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
     font-family: var(--headline-07-font-family) !important;
     font-size: var(--headline-07-font-size) !important;
     line-height: var(--headline-07-line-height) !important;
     font-weight: var(--headline-07-font-weight) !important;
     letter-spacing: var(--headline-07-letter-spacing) !important;
     text-transform: var(--headline-07-text-transform) !important;
-    color: var(--tds-navigation-tabs-tab-color) !important;
+    color: var(--tds-navigation-tabs-tab-color);
     text-decoration: none;
     display: block;
     position: relative;
@@ -37,7 +35,15 @@
     right: 0;
     top: 26px;
     bottom: 26px;
-    outline: 2px solid var(--tds-blue-400);
+    outline: 2px solid var(--color-foreground-border-accent-focus);
+  }
+
+  ::slotted(*:hover) {
+    color: var(--tds-navigation-tabs-tab-color-hover);
+  }
+
+  ::slotted(*:focus-visible) {
+    color: var(--tds-navigation-tabs-tab-color-focus);
   }
 
   .navigation-tab-item:not(.selected)::after {
@@ -87,7 +93,7 @@
     color: var(--tds-navigation-tabs-tab-color-disabled);
 
     ::slotted(*) {
-      opacity: var(--tds-navigation-tabs-tab-color-opacity-disabled);
+      color: var(--tds-navigation-tabs-tab-color-disabled);
     }
 
     &::after {

@@ -1,61 +1,40 @@
-:root,
-.tds-mode-light {
-  /* Horizontal divider */
-  --tds-navigation-tabs-horizontal-divider-background: var(--tds-grey-300);
-  --tds-navigation-tabs-tab-background-primary: var(--tds-white);
-  --tds-navigation-tabs-tab-background-secondary: var(--tds-grey-50);
-  --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
-
-  /* Scroll button */
-  --tds-navigation-tabs-scroll-btn-background: var(--tds-grey-50);
-  --tds-navigation-tabs-scroll-btn-background-hover: var(--tds-grey-300);
-  --tds-navigation-tabs-scroll-btn-background-active: var(--tds-grey-400);
-
-  /* Tab */
-  --tds-navigation-tabs-tab-color: rgba(0 21 51/60%);
-  --tds-navigation-tabs-tab-color-selected: var(--tds-grey-958);
-  --tds-navigation-tabs-tab-color-disabled: var(--tds-blue-900);
-  --tds-navigation-tabs-tab-color-opacity-disabled: 0.38;
-  --tds-navigation-tabs-tab-indicator-background-hover: var(--tds-grey-400);
-  --tds-navigation-tabs-tab-color-hover: var(--tds-grey-958);
-  --tds-navigation-tabs-tab-color-focus: var(--tds-grey-958);
-  --tds-navigation-tabs-tab-color-active: var(--tds-grey-958);
-  --tds-navigation-tabs-tab-indicator-background-active: var(--tds-blue-400);
-
-  .tds-mode-variant-primary {
-    --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-secondary);
-  }
+tds-navigation-tab {
+  /* tds-navigation-tab variables */
+  --tds-navigation-tabs-tab-color: var(--color-foreground-text-soft);
+  --tds-navigation-tabs-tab-color-selected: var(--color-foreground-text-strong);
+  --tds-navigation-tabs-tab-color-hover: var(--color-foreground-text-strong);
+  --tds-navigation-tabs-tab-color-focus: var(--color-foreground-text-strong);
+  --tds-navigation-tabs-tab-color-disabled: var(--color-foreground-text-disabled);
+  --tds-navigation-tabs-tab-indicator-background-hover: var(--color-foreground-border-discrete);
+  --tds-navigation-tabs-tab-indicator-background-active: var(
+    --color-foreground-border-accent-focus
+  );
 }
 
-.tds-mode-dark {
-  --tds-navigation-tabs-horizontal-divider-background: var(--tds-grey-800);
+tds-navigation-tabs {
+  /* tds-navigation-tabs variables */
+  --tds-navigation-tabs-horizontal-divider-background: var(--color-foreground-icon-discrete);
+  --tds-navigation-tabs-tab-background-primary: var(--color-background-base);
+  --tds-navigation-tabs-tab-background-secondary: var(--color-background-layer-01);
   --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
+  --tds-navigation-tabs-scroll-btn-color: var(--color-foreground-icon-discrete);
+  --tds-navigation-tabs-scroll-btn-background: var(--tds-navigation-tabs-tab-background-primary);
+  --tds-navigation-tabs-scroll-btn-background-hover: var(
+    --tds-navigation-tabs-tab-background-primary
+  );
+  --tds-navigation-tabs-scroll-btn-background-active: var(
+    --tds-navigation-tabs-tab-background-primary
+  );
 
-  /* Scroll button */
-  --tds-navigation-tabs-scroll-btn-background: var(--tds-grey-800);
-  --tds-navigation-tabs-scroll-btn-background-hover: var(--tds-grey-900);
-  --tds-navigation-tabs-scroll-btn-background-active: var(--tds-grey-900);
-
-  /* Tab */
-  --tds-navigation-tabs-tab-color: rgba(228 233 241 /60%);
-  --tds-navigation-tabs-tab-color-selected: var(--tds-grey-50);
-  --tds-navigation-tabs-tab-color-disabled: var(--tds-blue-50);
-  --tds-navigation-tabs-tab-color-opacity-disabled: 0.38;
-  --tds-navigation-tabs-tab-indicator-background-hover: #373d46;
-  --tds-navigation-tabs-tab-color-hover: var(--tds-grey-50);
-  --tds-navigation-tabs-tab-color-focus: var(--tds-grey-50);
-  --tds-navigation-tabs-tab-color-active: var(--tds-grey-50);
-  --tds-navigation-tabs-tab-indicator-background-active: var(--tds-blue-300);
-
-  .tds-mode-variant-primary {
+  &.tds-mode-variant-primary {
     --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
+    --tds-navigation-tabs-scroll-btn-background: var(--tds-navigation-tabs-tab-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  &.tds-mode-variant-secondary {
     --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-secondary);
+    --tds-navigation-tabs-scroll-btn-background: var(
+      --tds-navigation-tabs-tab-background-secondary
+    );
   }
 }

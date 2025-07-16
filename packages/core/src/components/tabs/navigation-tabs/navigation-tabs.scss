@@ -44,11 +44,11 @@
 
   .scroll-right-button,
   .scroll-left-button {
-    color: var(--tds-folder-tabs-scroll-btn-color);
+    color: var(--tds-navigation-tabs-scroll-btn-color);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--tds-inline-tabs-scroll-btn-background);
+    background-color: var(--tds-navigation-tabs-scroll-btn-background);
     display: none;
     justify-content: center;
     align-items: center;
@@ -64,11 +64,11 @@
     }
 
     &:hover {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-hover);
+      background-color: var(--tds-navigation-tabs-scroll-btn-background-hover);
     }
 
     &:active {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-active);
+      background-color: var(--tds-navigation-tabs-scroll-btn-background-active);
     }
 
     &:focus {
@@ -76,7 +76,7 @@
     }
 
     svg {
-      fill: var(--tds-folder-tabs-scroll-btn-color);
+      fill: var(--tds-navigation-tabs-scroll-btn-color);
     }
   }
 }
