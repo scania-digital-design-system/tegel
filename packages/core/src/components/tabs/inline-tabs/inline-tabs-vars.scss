@@ -1,28 +1,28 @@
-tl-inline-tabs,
+.tl-inline-tabs,
 tds-inline-tabs {
   /* Horizontal divider */
-  --tds-inline-tabs-horizontal-divider-background: var(--color-foreground-icon-discrete);
+  --inline-tabs-horizontal-divider-background: var(--color-foreground-icon-discrete);
 
   /* Scroll button */
-  --tds-inline-tabs-scroll-btn-color: var(--color-foreground-icon-strong);
-  --tds-inline-tabs-scroll-btn-background: transparent;
-  --tds-inline-tabs-scroll-btn-background-hover: transparent;
-  --tds-inline-tabs-scroll-btn-background-active: transparent;
+  --inline-tabs-scroll-btn-color: var(--color-foreground-icon-strong);
+  --inline-tabs-scroll-btn-background: transparent;
+  --inline-tabs-scroll-btn-background-hover: transparent;
+  --inline-tabs-scroll-btn-background-active: transparent;
 
   /* Tab */
-  --tds-inline-tabs-tab-color: var(--color-foreground-text-soft);
-  --tds-inline-tabs-tab-color-selected: var(--color-foreground-text-strong);
-  --tds-inline-tabs-tab-color-disabled: var(--color-foreground-text-disabled);
-  --tds-inline-tabs-tab-color-hover: var(--color-foreground-text-strong);
-  --tds-inline-tabs-tab-color-focus: var(--color-foreground-border-accent-focus);
-  --tds-inline-tabs-tab-indicator-background-active: var(--color-foreground-border-accent-focus);
-  --tds-inline-tabs-tab-indicator-background-hover: var(--color-foreground-border-discrete);
+  --inline-tabs-tab-color: var(--color-foreground-text-soft);
+  --inline-tabs-tab-color-selected: var(--color-foreground-text-strong);
+  --inline-tabs-tab-color-disabled: var(--color-foreground-text-disabled);
+  --inline-tabs-tab-color-hover: var(--color-foreground-text-strong);
+  --inline-tabs-tab-color-focus: var(--color-foreground-border-accent-focus);
+  --inline-tabs-tab-indicator-background-active: var(--color-foreground-border-accent-focus);
+  --inline-tabs-tab-indicator-background-hover: var(--color-foreground-border-discrete);
 
   .tds-mode-variant-primary {
-    --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-primary);
+    --inline-tabs-scroll-btn-background: var(--inline-tabs-scroll-btn-primary);
   }
 
   .tds-mode-variant-secondary {
-    --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-secondary);
+    --inline-tabs-scroll-btn-background: var(--inline-tabs-scroll-btn-secondary);
   }
 }
