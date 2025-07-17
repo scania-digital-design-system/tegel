@@ -77,10 +77,10 @@ const toggleBrandTool = isDev
 const modeVariantTool = {
   modeVariant: {
     name: 'Mode Variant',
-    description: 'Choose between primary or secondary mode',
+    description: 'Choose primary or secondary background color',
     defaultValue: 'primary',
     toolbar: {
-      icon: 'circlehollow',
+      icon: 'switchalt',
       items: [
         { value: 'primary', title: 'Primary' },
         { value: 'secondary', title: 'Secondary' },
