@@ -94,6 +94,11 @@ body {
     color: var(--tds-grey-958);
     background-color: var(--tds-grey-50);
   }
+
+  & tds-button.tds-mode-variant-primary,
+  & tds-button.tds-mode-variant-secondary {
+    background-color: transparent;
+  }
 }
 
 .tds-mode-dark {
@@ -110,6 +115,11 @@ body {
   & .tds-mode-variant-secondary {
     color: var(--tds-grey-100);
     background-color: var(--tds-grey-900);
+  }
+
+  & tds-button.tds-mode-variant-primary,
+  & tds-button.tds-mode-variant-secondary {
+    background-color: transparent;
   }
 }
 
