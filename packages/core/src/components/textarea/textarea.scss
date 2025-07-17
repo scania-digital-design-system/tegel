@@ -1,4 +1,5 @@
 @import './textarea-mixins';
+@import '../../../../../typography/utilities/typography-utility';
 
 .textarea-container {
   border-radius: var(--textarea-border-radius);
@@ -29,8 +30,8 @@
   @include textfield-base;
 
   border-radius: var(--textarea-border-radius);
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include detail-02;
+
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
@@ -65,8 +66,8 @@
 }
 
 .textarea-label {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: block;
   z-index: 1;
   margin-bottom: var(--tds-spacing-element-8);
@@ -76,8 +77,8 @@
 .textarea-container {
   &.textarea-label-inside {
     .textarea-label {
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
+
       transition: 0.1s ease all;
       color: var(--textarea-label-inside);
       position: absolute;
@@ -99,8 +100,8 @@
   &.textarea-focus {
     &.textarea-label-inside {
       .textarea-label {
-        font: var(--tds-detail-07);
-        letter-spacing: var(--tds-detail-07-ls);
+        @include detail-07;
+
         top: var(--tds-spacing-element-8);
       }
     }
@@ -116,8 +117,8 @@
   &.textarea-data {
     &.textarea-label-inside {
       .textarea-label {
-        font: var(--tds-detail-07);
-        letter-spacing: var(--tds-detail-07-ls);
+        @include detail-07;
+
         top: var(--tds-spacing-element-8);
       }
     }
@@ -126,14 +127,14 @@
 
 .textarea-textcounter {
   //@extend .tds-textfield-textcounter;
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   color: var(--textarea-textcounter);
   float: right;
 
   & .textfield-textcounter-divider {
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     color: var(--textarea-textcounter-divider);
   }
 
@@ -145,8 +146,8 @@
 }
 
 .textarea-helper {
-  font: var(--tds-detail-05);
-  letter-spacing: var(--tds-detail-05-ls);
+  @include detail-05;
+
   display: flex;
   gap: 8px;
   align-items: center;
@@ -229,8 +230,8 @@
     position: absolute;
     right: 18px;
     top: 48px;
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     padding: 8px;
     color: var(--textarea-icon-read-only-label-color);
     background-color: var(--textarea-icon-read-only-label-background);
