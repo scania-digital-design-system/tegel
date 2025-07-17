@@ -7,11 +7,47 @@ import '../dist/tegel/tegel.css';
 import './preview.css';
 import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
 
+const applyBackgroundColor = (brand: string, modeVariant: string, isDarkMode: boolean) => {
+  const body = document.body;
+
+  const backgrounds = {
+    scania: {
+      light: {
+        primary: '#FFFFFF',
+        secondary: '#F6F7F9',
+      },
+      dark: {
+        primary: '#0E1013',
+        secondary: '#15181D',
+      },
+    },
+    traton: {
+      light: {
+        primary: '#FCFBF7',
+        secondary: '#F6F3E9',
+      },
+      dark: {
+        primary: '#001214',
+        secondary: '#001D21',
+      },
+    },
+  };
+
+  const brandColors = backgrounds[brand]?.[isDarkMode ? 'dark' : 'light'];
+  body.style.backgroundColor = brandColors?.[modeVariant] || '';
+};
+
 const channel = addons.getChannel();
 
 channel.on('DARK_MODE', (isDarkMode) => {
-  document.body.classList.remove('tds-mode-light', 'tds-mode-dark');
-  document.body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+  const body = document.body;
+  const brand = document.documentElement.classList.contains('traton') ? 'traton' : 'scania';
+  const modeVariant = body.classList.contains('tds-mode-secondary') ? 'secondary' : 'primary';
+
+  body.classList.remove('tds-mode-light', 'tds-mode-dark');
+  body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+
+  applyBackgroundColor(brand, modeVariant, isDarkMode);
 });
 
 // DEV env for traton styles
@@ -37,13 +73,36 @@ const toggleBrandTool = isDev
     }
   : undefined;
 
-const toggleBrandDecorator: Decorator = (StoryFn, context) => {
-  const brand = context.globals.brand || 'scania';
+// Toggle mode variant
+const modeVariantTool = {
+  modeVariant: {
+    name: 'Mode Variant',
+    description: 'Choose primary or secondary background color',
+    defaultValue: 'primary',
+    toolbar: {
+      icon: 'switchalt',
+      items: [
+        { value: 'primary', title: 'Primary' },
+        { value: 'secondary', title: 'Secondary' },
+      ],
+      showName: true,
+      dynamicTitle: true,
+    },
+  },
+};
 
+const toggleBrandDecorator: Decorator = (StoryFn, context) => {
+  const { brand = context.globals.brand || 'scania', modeVariant = 'primary' } = context.globals;
   const html = document.documentElement;
 
   html.classList.remove('scania', 'traton');
   html.classList.add(brand);
+
+  document.body.classList.remove('tds-mode-primary', 'tds-mode-secondary');
+  document.body.classList.add(`tds-mode-${modeVariant}`);
+
+  const isDarkMode = document.body.classList.contains('tds-mode-dark');
+  applyBackgroundColor(brand, modeVariant, isDarkMode);
 
   return StoryFn();
 };
@@ -155,6 +214,10 @@ const preview: Preview = {
 
 defineCustomElements();
 
-export const globalTypes = toggleBrandTool;
+export const globalTypes = {
+  ...toggleBrandTool,
+  ...modeVariantTool,
+};
+
 export const decorators = [toggleBrandDecorator];
 export default preview;
