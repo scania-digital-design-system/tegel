@@ -54,11 +54,7 @@
     }
 
     .brand {
-      background-image: var(--tds-background-image-scania-wordmark-white-svg);
-
-      // background-image: var(--tds-background-image-scania-wordmark-white-svg),
-      //   var(--tds-background-image-scania-wordmark-white-svg-local);
-
+      background-image: var(--component-footer-logotype-cdn), var(--component-footer-logotype-local);
       background-repeat: no-repeat;
       background-size: 117px;
       background-position: right;
