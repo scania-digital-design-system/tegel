@@ -1,13 +1,12 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/disabled-style';
 @import '../../../mixins/box-sizing';
-@import '../../../../../../typography/utilities/typography-utility';
 
 .tds-accordion-item {
   @include tds-box-sizing;
 
   list-style: none;
-  color: var(--accordion-text);
+  color: var(--tds-accordion-color);
   position: relative;
 
   button.tds-accordion-header-icon-start,
@@ -27,15 +26,15 @@
     width: 100%;
 
     // fixme: wrong line-height compared to production
-    @include headline-07;
-
+    font: var(--tds-headline-07);
+    letter-spacing: var(--tds-headline-07-ls);
     padding: var(--tds-spacing-element-16);
-    background-color: var(--accordion-background);
+    background-color: var(--tds-accordion-background);
 
     .tds-accordion-icon {
       transform-origin: center;
       transition: transform 0.15s ease-in-out;
-      color: var(--accordion-icon);
+      color: var(--tds-accordion-icon-color);
 
       & > tds-icon {
         display: block;
@@ -52,7 +51,8 @@
     padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
       var(--tds-spacing-element-16);
     display: none;
-    @include detail-03;
+    font: var(--tds-detail-03);
+    letter-spacing: var(--tds-detail-03-ls);
 
     p {
       margin: 0;
@@ -86,11 +86,11 @@
     .tds-accordion-header-icon-end,
     .tds-accordion-header-icon-start,
     .tds-accordion-panel {
-      color: var(--accordion-text-disabled);
+      color: var(--tds-accordion-color-disabled);
       cursor: not-allowed;
 
       .tds-accordion-icon {
-        color: var(--accordion-text-disabled);
+        color: var(--tds-accordion-color-disabled);
       }
     }
 
@@ -127,7 +127,7 @@
     }
   }
 
-  border-top: 1px solid var(--accordion-border);
+  border-top: 1px solid var(--tds-accordion-border);
 
   &:first-child {
     margin-bottom: -1px;
@@ -141,7 +141,7 @@
   }
 
   &[disabled='true']:focus-within {
-    border-color: var(--accordion-border);
+    border-color: var(--tds-accordion-border);
   }
 }
 
@@ -164,7 +164,7 @@
 :host(:hover) {
   .tds-accordion-header-icon-start,
   .tds-accordion-header-icon-end {
-    background-color: var(--accordion-background-hover);
+    background-color: var(--tds-accordion-background-hover);
   }
 }
 
@@ -193,14 +193,13 @@
   background-color: var(--tds-accordion-background-active);
 }
 
-:host(:hover) {
-  .tds-accordion-item:has(.tds-accordion-header-icon-start:active),
-  .tds-accordion-item:has(.tds-accordion-header-icon-end:active),
-  .tds-accordion-header-icon-start,
-  .tds-accordion-header-icon-end {
-    background-color: var(--accordion-background-active);
-    outline: none;
-  }
+:host(:hover)
+.tds-accordion-item:has(.tds-accordion-header-icon-start:active)
+.tds-accordion-header-icon-start,
+:host(:hover)
+.tds-accordion-item:has(.tds-accordion-header-icon-end:active)
+.tds-accordion-header-icon-end {
+  background-color: var(--tds-accordion-background-active);
 }
 
 .tds-accordion-header-icon-start:active,
