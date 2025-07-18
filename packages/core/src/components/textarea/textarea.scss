@@ -103,9 +103,6 @@
 
   &:focus {
     @include tds-focus-state;
-
-    border-radius: 0;
-    border-bottom: 1px solid transparent;
   }
 }
 
