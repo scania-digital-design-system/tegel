@@ -1,25 +1,38 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
+@import '../../mixins/focus-state';
+
+//  Mixins
+@mixin card-detail-03 {
+  /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
+  font-family: var(--detail-03-font-family) !important;
+  letter-spacing: var(--detail-03-letter-spacing) !important;
+  font-size: var(--detail-03-font-size);
+  line-height: var(--detail-03-line-height);
+  font-weight: var(--detail-03-font-weight);
+  text-transform: var(--detail-03-text-transform);
+}
 
 .card {
   @include tds-box-sizing;
 
-  box-shadow: var(--tds-card-box);
-  background-color: var(--tds-card-background);
+  box-shadow: var(--card-box);
+  background-color: var(--card-background);
   display: block;
   border-radius: 4px;
   overflow: hidden;
 
   &.clickable {
     &:hover {
-      box-shadow: var(--tds-card-box-hover);
+      box-shadow: var(--card-box-hover);
       cursor: pointer;
     }
   }
 
   .card-header {
-    font: var(--tds-headline-06);
-    letter-spacing: var(--tds-headline-06-ls);
-    padding: 16px;
+    @include headline-06;
+
+    padding: var(--card-header-padding);
     display: flex;
     align-items: center;
 
@@ -53,12 +66,12 @@
 
     .header,
     slot[name='header'] {
-      color: var(--tds-card-headline);
+      color: var(--card-headline);
     }
 
     .subheader,
     slot[name='subheader'] {
-      color: var(--tds-card-sub-headline);
+      color: var(--card-sub-headline);
     }
   }
 
@@ -66,9 +79,10 @@
     width: 100%;
   }
 
-  .tds-divider {
+  tds-divider {
+    display: block;
     margin: 16px 16px 0;
-    background-color: var(--tds-card-divider);
+    background-color: var(--card-divider);
     height: 1px;
   }
 
@@ -78,11 +92,10 @@
   }
 
   slot[name='body']::slotted(*) {
-    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font: var(--tds-detail-03) !important;
-    letter-spacing: var(--tds-detail-03-ls) !important;
-    color: var(--tds-card-body-color);
-    padding: 0 16px;
+    @include card-detail-03;
+
+    color: var(--card-body-color);
+    padding: var(--card-body-padding);
     margin-bottom: 16px;
     margin-top: 16px;
     max-width: 336px;
@@ -90,8 +103,8 @@
 
   slot[name='actions']::slotted(*) {
     display: flex;
-    padding: 16px;
-    color: var(--tds-card-icon-color);
+    padding: var(--card-slotted-padding);
+    color: var(--card-icon-color);
   }
 }
 
@@ -107,7 +120,7 @@ button {
   }
 
   &:active {
-    box-shadow: var(--tds-card-box-pressed);
+    box-shadow: var(--card-box-pressed);
   }
 }
 
