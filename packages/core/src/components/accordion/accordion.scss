@@ -22,6 +22,10 @@
     .tds-accordion-header-icon-end {
       background-color: var(--accordion-background-focus);
       outline: none;
+
+      &::after {
+        border-color: var(--accordion-border-focus);
+      }
     }
   }
 
