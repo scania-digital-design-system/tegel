@@ -128,7 +128,7 @@ export default {
     thumbnail: true,
     imagePlacement: 'Below',
     bodyImg: false,
-    bodyContent: `Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s`,
+    bodyContent: `Lorem ipsum dummy text for printing; standard filler ever since 1500s`,
     bodyDivider: false,
     cardActions: `<div slot="actions" style="display: flex; gap: 16px;"><tds-button type="button" variant="primary" size="sm" text="Button text" animation="none" tds-aria-label="undefined" name="" value=""></tds-button><tds-button type="button" variant="secondary" size="sm" text="Button text" animation="none" tds-aria-label="undefined" name="" value=""></tds-button></div>`,
     clickable: false,
@@ -159,7 +159,7 @@ const Template = ({
     `<style>
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
-        max-width: calc(75ch + 32px);
+        max-width: calc(70ch + 32px);
     }
     </style>
     <div class="demo-wrapper">
