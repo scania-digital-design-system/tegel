@@ -1,16 +1,7 @@
-:root,
-.tds-mode-light {
-  --tds-accordion-border: var(--tds-grey-300);
-  --tds-accordion-background: transparent;
-  --tds-accordion-background-hover-primary: var(--tds-grey-50);
-  --tds-accordion-background-hover-secondary: var(--tds-white);
-  --tds-accordion-background-hover: var(--tds-accordion-background-hover-primary);
-  --tds-accordion-background-focus: transparent;
-  --tds-accordion-background-active: var(--tds-grey-100);
-  --tds-accordion-color: var(--tds-grey-958);
-  --tds-accordion-border-focus: var(--tds-grey-500);
-  --tds-accordion-color-disabled: var(--tds-grey-400);
-  --tds-accordion-icon-color: var(--tds-black);
+tds-accordion {
+  /* Border & Background */
+  --accordion-border: var(--color-foreground-border-discrete);
+  --accordion-background: transparent;
 
   /* Hover backgrounds */
   --accordion-background-hover-primary: var(--color-background-layer-01);
@@ -18,12 +9,12 @@
   --accordion-background-hover: var(--accordion-background-hover-primary);
 
   /* Focus & Active states */
-  --accordion-background-focus: var(--color-background-surface-100);
+  --accordion-background-focus: transparent;
   --accordion-background-active: var(--color-background-surface-100);
 
   /* Text & Icon colours */
   --accordion-text: var(--color-foreground-text-strong);
-  --accordion-icon: var(--foreground-elements-transparparent-strong); /* icon */
+  --accordion-icon: var(--foreground-elements-transparparent-strong);
 
   /* Borders & Disabled */
   --accordion-border-focus: var(--tds-grey-500);
@@ -33,7 +24,7 @@
 // Override global background colors for accordion specifically with higher specificity
 .tds-mode-light tds-accordion.tds-mode-variant-primary,
 .tds-mode-light tds-accordion .tds-mode-variant-primary {
-  background-color: var(---accordion-background-hover-secondary);
+  background-color: var(--accordion-background-hover-secondary);
 
   --accordion-background-hover: var(--accordion-background-hover-primary);
 }
@@ -57,25 +48,4 @@
   background-color: var(--accordion-background-hover-primary);
 
   --accordion-background-hover: var(--accordion-background-hover-secondary);
-}
-
-// Override global background colors for accordion specifically with higher specificity
-.tds-mode-light tds-accordion.tds-mode-variant-primary,
-.tds-mode-light tds-accordion .tds-mode-variant-primary {
-  background-color: var(--tds-accordion-background);
-}
-
-.tds-mode-light tds-accordion.tds-mode-variant-secondary,
-.tds-mode-light tds-accordion .tds-mode-variant-secondary {
-  background-color: var(--tds-accordion-background);
-}
-
-.tds-mode-dark tds-accordion.tds-mode-variant-primary,
-.tds-mode-dark tds-accordion .tds-mode-variant-primary {
-  background-color: var(--tds-accordion-background);
-}
-
-.tds-mode-dark tds-accordion.tds-mode-variant-secondary,
-.tds-mode-dark tds-accordion .tds-mode-variant-secondary {
-  background-color: var(--tds-accordion-background);
 }

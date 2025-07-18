@@ -131,13 +131,13 @@
 
   &:first-child {
     margin-bottom: -1px;
-    border-bottom: 1px solid var(--tds-accordion-border);
+    border-bottom: 1px solid var(--accordion-border);
   }
 
   // Only apply focus border when focus is on the header buttons, not on panel content
   &:has(.tds-accordion-header-icon-start:focus),
   &:has(.tds-accordion-header-icon-end:focus) {
-    border-top: 1px solid var(--tds-accordion-border-focus);
+    border-top: 1px solid var(--accordion-border-focus);
   }
 
   &[disabled='true']:focus-within {
@@ -155,7 +155,7 @@
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-focus);
+      background-color: var(--accordion-background-focus);
       outline: none;
     }
   }
@@ -178,29 +178,28 @@
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-hover);
+      background-color: var(--accordion-background-hover);
       outline: none;
     }
   }
 }
 
 .tds-accordion-item:has(:hover) {
-  background-color: var(--tds-accordion-background-hover);
+  background-color: var(--accordion-background-hover);
 }
 
 .tds-accordion-item:has(.tds-accordion-header-icon-start:active),
 .tds-accordion-item:has(.tds-accordion-header-icon-end:active) {
-  background-color: var(--tds-accordion-background-active);
+  background-color: var(--accordion-background-active);
 }
 
-:host(:hover) {
-  .tds-accordion-item:has(.tds-accordion-header-icon-start:active),
-  .tds-accordion-item:has(.tds-accordion-header-icon-end:active),
-  .tds-accordion-header-icon-start,
-  .tds-accordion-header-icon-end {
-    background-color: var(--accordion-background-active);
-    outline: none;
-  }
+:host(:hover)
+.tds-accordion-item:has(.tds-accordion-header-icon-start:active)
+.tds-accordion-header-icon-start,
+:host(:hover)
+.tds-accordion-item:has(.tds-accordion-header-icon-end:active)
+.tds-accordion-header-icon-end {
+  background-color: var(--accordion-background-active);
 }
 
 .tds-accordion-header-icon-start:active,
