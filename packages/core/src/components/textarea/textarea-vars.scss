@@ -81,15 +81,11 @@
   --tds-textarea-label-inside-color: var(--tds-grey-50);
 
   // Placeholder
-  --tds-textarea-placeholder: var(--tds-grey-50);
+  --tds-textarea-placeholder: var(--tds-grey-300);
 
   // Helper
   --tds-textarea-helper: var(--tds-grey-300);
   --tds-textarea-helper-error: var(--tds-red-300);
-
-  // Highlight bar
-  --tds-textarea-bar: var(--tds-blue-400);
-  --tds-textarea-bar-error: var(--tds-red-300);
 
   // Textcounter
   --tds-textarea-textcounter: var(--tds-grey-300);
@@ -107,7 +103,7 @@
   --tds-textarea-icon-read-only-label-color: var(--tds-grey-50);
 
   // Resize
-  --tds-textarea-resize-icon: var(--tds-grey-500);
+  --tds-textarea-resize-icon: var(--tds-grey-250);
 
   .tds-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
