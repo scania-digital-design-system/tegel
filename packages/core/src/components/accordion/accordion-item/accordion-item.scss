@@ -1,12 +1,13 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/disabled-style';
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 .tds-accordion-item {
   @include tds-box-sizing;
 
   list-style: none;
-  color: var(--tds-accordion-color);
+  color: var(--accordion-text);
   position: relative;
 
   button.tds-accordion-header-icon-start,
@@ -26,15 +27,15 @@
     width: 100%;
 
     // fixme: wrong line-height compared to production
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
+    @include headline-07;
+
     padding: var(--tds-spacing-element-16);
-    background-color: var(--tds-accordion-background);
+    background-color: var(--accordion-background);
 
     .tds-accordion-icon {
       transform-origin: center;
       transition: transform 0.15s ease-in-out;
-      color: var(--tds-accordion-icon-color);
+      color: var(--accordion-icon);
 
       & > tds-icon {
         display: block;
@@ -51,8 +52,7 @@
     padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
       var(--tds-spacing-element-16);
     display: none;
-    font: var(--tds-detail-03);
-    letter-spacing: var(--tds-detail-03-ls);
+    @include detail-03;
 
     p {
       margin: 0;
@@ -86,11 +86,11 @@
     .tds-accordion-header-icon-end,
     .tds-accordion-header-icon-start,
     .tds-accordion-panel {
-      color: var(--tds-accordion-color-disabled);
+      color: var(--accordion-text-disabled);
       cursor: not-allowed;
 
       .tds-accordion-icon {
-        color: var(--tds-accordion-color-disabled);
+        color: var(--accordion-text-disabled);
       }
     }
 
@@ -127,21 +127,21 @@
     }
   }
 
-  border-top: 1px solid var(--tds-accordion-border);
+  border-top: 1px solid var(--accordion-border);
 
   &:first-child {
     margin-bottom: -1px;
-    border-bottom: 1px solid var(--tds-accordion-border);
+    border-bottom: 1px solid var(--accordion-border);
   }
 
   // Only apply focus border when focus is on the header buttons, not on panel content
   &:has(.tds-accordion-header-icon-start:focus),
   &:has(.tds-accordion-header-icon-end:focus) {
-    border-top: 1px solid var(--tds-accordion-border-focus);
+    border-top: 1px solid var(--accordion-border-focus);
   }
 
   &[disabled='true']:focus-within {
-    border-color: var(--tds-accordion-border);
+    border-color: var(--accordion-border);
   }
 }
 
@@ -155,7 +155,7 @@
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-focus);
+      background-color: var(--accordion-background-focus);
       outline: none;
     }
   }
@@ -164,7 +164,7 @@
 :host(:hover) {
   .tds-accordion-header-icon-start,
   .tds-accordion-header-icon-end {
-    background-color: var(--tds-accordion-background-hover);
+    background-color: var(--accordion-background-hover);
   }
 }
 
@@ -178,19 +178,19 @@
 
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-hover);
+      background-color: var(--accordion-background-hover);
       outline: none;
     }
   }
 }
 
 .tds-accordion-item:has(:hover) {
-  background-color: var(--tds-accordion-background-hover);
+  background-color: var(--accordion-background-hover);
 }
 
 .tds-accordion-item:has(.tds-accordion-header-icon-start:active),
 .tds-accordion-item:has(.tds-accordion-header-icon-end:active) {
-  background-color: var(--tds-accordion-background-active);
+  background-color: var(--accordion-background-active);
 }
 
 :host(:hover)
@@ -199,7 +199,7 @@
 :host(:hover)
 .tds-accordion-item:has(.tds-accordion-header-icon-end:active)
 .tds-accordion-header-icon-end {
-  background-color: var(--tds-accordion-background-active);
+  background-color: var(--accordion-background-active);
 }
 
 .tds-accordion-header-icon-start:active,
