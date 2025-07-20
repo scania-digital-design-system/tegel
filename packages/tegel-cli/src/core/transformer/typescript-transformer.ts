@@ -235,20 +235,6 @@ export class TypeScriptTransformer {
           description: 'Transform HTML element type definitions',
           priority: 6,
         },
-
-        // Generic string literals containing component names (lowest priority)
-        {
-          pattern: new RegExp(`['"]${oldPrefix}-([a-z-]+)['"]`, 'g'),
-          replacement: (match: string, componentName: string) => {
-            // Only transform if it looks like a component name
-            if (TypeScriptTransformer.isLikelyComponentName(componentName)) {
-              return match.replace(oldPrefix, newPrefix);
-            }
-            return match;
-          },
-          description: 'Transform component name string literals',
-          priority: 10, // Lower priority, run last
-        },
       );
     }
 
@@ -289,55 +275,6 @@ export class TypeScriptTransformer {
       .split('-')
       .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
       .join('');
-  }
-
-  private static isLikelyComponentName(name: string): boolean {
-    // List of known Tegel component names (without prefix)
-    const knownComponents = [
-      'accordion',
-      'accordion-item',
-      'badge',
-      'banner',
-      'block',
-      'button',
-      'card',
-      'checkbox',
-      'chip',
-      'datetime',
-      'divider',
-      'dropdown',
-      'dropdown-option',
-      'footer',
-      'header',
-      'icon',
-      'link',
-      'message',
-      'modal',
-      'popover',
-      'radio-button',
-      'slider',
-      'spinner',
-      'stepper',
-      'step',
-      'table',
-      'table-header',
-      'table-body',
-      'table-footer',
-      'table-row',
-      'tabs',
-      'tag',
-      'textarea',
-      'text-field',
-      'toast',
-      'toggle',
-      'tooltip',
-      'side-menu',
-      'inline-tabs',
-      'navigation-tabs',
-      'folder-tabs',
-    ];
-
-    return knownComponents.some((comp) => name.startsWith(comp));
   }
 
   // Get a preview of transformations without applying them
