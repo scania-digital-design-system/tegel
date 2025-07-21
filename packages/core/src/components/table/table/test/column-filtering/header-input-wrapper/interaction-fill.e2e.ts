@@ -9,7 +9,7 @@ import {
 const componentTestPath =
   'src/components/table/table/test/column-filtering/header-input-wrapper/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-column-filtering fill';
+const testDescription = 'table-filtering-fill';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -17,7 +17,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('expect slotted inputs to persist inputed value', async ({ page }) => {
+    test('persist input value', async ({ page }) => {
       const inputfield = page.getByTestId('firstHeaderInput');
       await inputfield.fill('Hello World!');
 

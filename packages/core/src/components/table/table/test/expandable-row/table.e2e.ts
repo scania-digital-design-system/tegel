@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-expandable-row';
+const testDescription = 'table-expandable';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {

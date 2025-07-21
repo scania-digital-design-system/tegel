@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/zebra-mode/rows-odd/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-zebra-mode-rows-odd';
+const testDescription = 'table-zebra-rows-odd';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {

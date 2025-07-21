@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/filtering/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-search';
+const testDescription = 'table-search';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -16,7 +16,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('look for textbox and click it', async ({ page }) => {
+    test('click textbox', async ({ page }) => {
       const tdsTableToolbarSearchInput = page.getByRole('textbox');
       await tdsTableToolbarSearchInput.click();
       await expect(tdsTableToolbarSearchInput).toHaveCSS('width', '208px');
@@ -25,13 +25,13 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
     });
 
-    test('clicking on search button opens field for entering data', async ({ page }) => {
+    test('search field opens for data entry', async ({ page }) => {
       const tdsTableToolbarSearchInput = page.getByRole('textbox');
       await expect(tdsTableToolbarSearchInput).toHaveCount(1);
 
-      /* Click on search button, make sure input expands and it is visible. 
-    Input text and make sure it is filled + make sure active class is added to it. 
-    We do all of this to make sure the searchbar is opened and ready to use. 
+      /* Click on search button, make sure input expands and it is visible.
+    Input text and make sure it is filled + make sure active class is added to it.
+    We do all of this to make sure the searchbar is opened and ready to use.
     That increases chances of getting the proper screenshot */
       await tdsTableToolbarSearchInput.click();
       await expect(tdsTableToolbarSearchInput).toHaveCSS('width', '208px');

@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/expandable-row-methods/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-expandable-row-methods';
+const testDescription = 'table-expandable-methods';
 
 const click = async (page: E2EPage, id: string) => {
   const expandButton = page.locator(id);

@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-expandable-row-second';
+const testDescription = 'table-expandable-second';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -16,7 +16,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('under second row opened expanded row with text "Hello to you too"', async ({ page }) => {
+    test('second row expands with text', async ({ page }) => {
       const tableBodyRowSecondIcon = page
         .locator('tds-table-body-row-expandable')
         .nth(1)

@@ -5,7 +5,7 @@ import { expect } from '@playwright/test';
 
 const componentTestPath = 'src/components/table/table/test/expandable-row-autocollapse/index.html';
 
-test.describe.parallel('tds-table-expandable-row-autoCollapse', () => {
+test.describe.parallel('table-expandable-autocollapse', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
     const tableComponent = page.getByRole('table');
@@ -13,9 +13,7 @@ test.describe.parallel('tds-table-expandable-row-autoCollapse', () => {
     await tableComponent.waitFor({ state: 'visible' });
   });
 
-  test.skip('NEEDS FIXING: expanding one row collapses the others when autoCollapse is true', async ({
-    page,
-  }) => {
+  test.skip('auto-collapse when expanding rows', async ({ page }) => {
     // Locate the table rows
     const tableRows = page.locator('tds-table-body-row-expandable');
     const firstRow = tableRows.nth(0);

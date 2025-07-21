@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/zebra-mode/columns-even/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-zebra-mode-columns-even';
+const testDescription = 'table-zebra-columns-even';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {

@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-expandable-row-third';
+const testDescription = 'table-expandable-third';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -16,9 +16,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('under third row opened expanded row with a button with text "Call to action"', async ({
-      page,
-    }) => {
+    test('third row expands with button', async ({ page }) => {
       const tableBodyRowThirdIcon = page
         .locator('tds-table-body-row-expandable')
         .nth(2)

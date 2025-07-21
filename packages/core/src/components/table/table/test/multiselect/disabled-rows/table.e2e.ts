@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/multiselect/disabled-rows/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-multiselect-disabled';
+const testDescription = 'table-multiselect-disabled';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {

@@ -18,6 +18,10 @@ const config: PlaywrightTestConfig = {
   },
   workers: 8,
   reporter: [['json', { outputFile: 'results.json' }]],
+  // Configure snapshot naming to avoid filename length issues
+  snapshotPathTemplate: '{testDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}',
+  // Use shorter test names to avoid filename length issues
+  name: 'tegel',
 };
 
 export default config;

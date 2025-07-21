@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/expandable-row/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-expandable-row-first';
+const testDescription = 'table-expandable-first';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -16,7 +16,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await setupPage(page, config, componentTestPath, componentName);
     });
 
-    test('under first row opened expanded row with text "Hello world 1"', async ({ page }) => {
+    test('first row expands with text', async ({ page }) => {
       const tableBodyRowFirstIcon = page
         .locator('tds-table-body-row-expandable')
         .first()

@@ -8,7 +8,7 @@ import {
 
 const componentTestPath = 'src/components/table/table/test/expandable-row-expanded/index.html';
 const componentName = 'tds-table';
-const testDescription = 'tds-table-expandable-row-expanded';
+const testDescription = 'table-expandable-expanded';
 
 testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
@@ -29,7 +29,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
     });
 
-    test('click on expand-input -> should become unchecked for row-id 1', async ({ page }) => {
+    test('expand input becomes unchecked', async ({ page }) => {
       // Locate the expandable row with row-id="1"
       const tableRow = page.locator('tds-table-body-row-expandable[row-id="1"]');
       const expandInput = tableRow.locator('td > label > input[type="checkbox"]');
