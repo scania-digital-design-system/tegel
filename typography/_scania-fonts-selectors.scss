@@ -1,208 +1,109 @@
+@import 'mixins/type-styles';
+
 .tds-headline-01 {
-  font-family: 'Scania Sans Headline', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 1;
-  letter-spacing: 0;
+  @include headline-01;
 }
 
 .tds-headline-02 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  @include headline-02;
 }
 
 .tds-headline-03 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: -0.03em;
+  @include headline-03;
 }
 
 .tds-headline-04 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  @include headline-04;
 }
 
 .tds-headline-05 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  @include headline-05;
 }
 
 .tds-headline-06 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: -0.02em;
+  @include headline-06;
 }
 
 .tds-headline-07 {
-  font-family: 'Scania Sans Semi Condensed', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: -0.01em;
+  @include headline-07;
 }
 
 .tds-paragraph-01 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-size: 24px;
-  line-height: 1.33;
-  letter-spacing: -0.03em;
+  @include paragraph-01;
 }
 
 .tds-paragraph-02 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  @include paragraph-02;
 }
 
 .tds-body-01 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  @include body-01;
 }
 
 .tds-body-02 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.43;
-  letter-spacing: -0.01em;
+  @include body-02;
 }
 
 .tds-detail-01 {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', arial, helvetica, sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
+  @include detail-01;
 }
 
 .tds-detail-02 {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: -0.01em;
+  @include detail-02;
 }
 
 .tds-detail-03 {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', arial, helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.43;
-  letter-spacing: -0.01em;
+  @include detail-03;
 }
 
 .tds-detail-04 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 12px;
-  line-height: 1.33;
-  letter-spacing: 0.08em;
+  @include detail-04;
 }
 
 .tds-detail-05 {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', arial, helvetica, sans-serif;
-  font-size: 12px;
-  line-height: 1.33;
-  letter-spacing: 0;
+  @include detail-05;
 }
 
 .tds-detail-06 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 10px;
-  line-height: 1.6;
-  letter-spacing: 0.08em;
+  @include detail-06;
 }
 
 .tds-detail-07 {
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', arial, helvetica, sans-serif;
-  font-size: 10px;
-  line-height: 0.8;
-  letter-spacing: 0;
+  @include detail-07;
 }
 
 .tds-expressive-headline-01 {
-  font-family: 'Scania Sans Headline', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 80px;
-  line-height: 1;
-  letter-spacing: 0;
+  @include expressive-headline-01;
 }
 
 .tds-expressive-headline-02 {
-  font-family: 'Scania Sans Headline', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 56px;
-  line-height: 1;
-  letter-spacing: 0;
+  @include expressive-headline-02;
 }
 
 h1 {
-  font-family: 'Scania Sans Headline', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 1;
-  letter-spacing: 0;
+  @include headline-01;
 }
 
 h2 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 32px;
-  line-height: 1;
-  letter-spacing: -0.04em;
+  @include headline-02;
 }
 
 h3 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: -0.03em;
+  @include headline-03;
 }
 
 h4 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  @include headline-04;
 }
 
 h5 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
+  @include headline-05;
 }
 
 h6 {
-  font-family: 'Scania Sans', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: -0.02em;
+  @include headline-06;
 }
 
 .h7 {
-  font-family: 'Scania Sans Semi Condensed', arial, helvetica, sans-serif;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 1.14;
-  letter-spacing: -0.01em;
+  @include headline-07;
 }

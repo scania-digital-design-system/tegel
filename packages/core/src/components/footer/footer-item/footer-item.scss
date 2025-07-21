@@ -1,11 +1,12 @@
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host([role='listitem']) div {
   ::slotted(a),
   ::slotted(button) {
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
-    color: var(--tds-footer-main-links);
+    @include headline-07;
+
+    color: var(--footer-main-links);
     text-decoration: none;
   }
 
@@ -22,9 +23,9 @@
   &.top-part-child {
     ::slotted(a),
     ::slotted(button) {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
-      color: var(--tds-footer-top-links);
+      @include headline-07;
+
+      color: var(--footer-top-links);
     }
 
     ::slotted(a:focus-visible),
@@ -36,7 +37,7 @@
 
 @media all and (max-width: 992px) {
   :host([role='listitem']) div.top-part-child {
-    border-bottom: 1px solid var(--tds-footer-top-divider);
+    border-bottom: 1px solid var(--footer-top-divider);
 
     ::slotted(a),
     ::slotted(button) {
@@ -49,7 +50,7 @@
     ::slotted(a:hover),
     ::slotted(button:hover) {
       text-decoration: underline;
-      background-color: var(--tds-footer-top-links-background-hover);
+      background-color: var(--footer-top-links-background-hover);
     }
 
     ::slotted(a:focus-visible),
