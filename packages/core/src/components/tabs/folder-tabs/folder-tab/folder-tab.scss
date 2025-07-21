@@ -32,6 +32,9 @@
 
   ::slotted(*:focus-visible) {
     @include tds-focus-state;
+
+    box-shadow: none;
+    outline-offset: -4px;
   }
 
   div:not(.selected) {
