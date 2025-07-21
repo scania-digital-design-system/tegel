@@ -51,7 +51,9 @@ graph TD;
   tds-date-picker --> tds-text-field
   tds-date-picker --> tds-icon
   tds-date-picker --> tds-popover-core
+  tds-text-field --> tds-tooltip
   tds-text-field --> tds-icon
+  tds-tooltip --> tds-popover-core
   style tds-date-picker fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
