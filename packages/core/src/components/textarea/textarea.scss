@@ -1,3 +1,5 @@
+@import '../../mixins/focus-state';
+
 @mixin textfield-base {
   border-radius: 4px 4px 0 0;
   width: 100%;
@@ -9,9 +11,14 @@
   color: var(--tds-textarea-color);
   background-color: var(--tds-textarea-background);
 
+  &:read-only {
+    background-color: var(--tds-textarea-read-only-background);
+  }
+
   &::placeholder {
     opacity: 1;
     color: var(--tds-textarea-placeholder);
+    transition: color 200ms ease;
   }
 
   &:disabled {
@@ -70,33 +77,6 @@
   }
 }
 
-.textarea-container:not(.textarea-disabled) {
-  .textarea-wrapper {
-    &::before,
-    &::after {
-      content: '';
-      height: 2px;
-      width: 0;
-      position: absolute;
-      background: var(--tds-textarea-bar);
-      transition: 0.35s ease all;
-    }
-
-    &::before {
-      left: 50%;
-    }
-
-    &::after {
-      right: 50%;
-    }
-
-    &::after,
-    &::before {
-      top: calc(100% - 2px);
-    }
-  }
-}
-
 .textarea-input {
   @include textfield-base;
 
@@ -115,6 +95,17 @@
 
   &:hover {
     border-bottom-color: var(--tds-textarea-border-bottom-hover);
+
+    &::placeholder {
+      color: var(--tds-textarea-placeholder-hover);
+    }
+  }
+
+  &:focus {
+    @include tds-focus-state;
+
+    border-radius: 0;
+    border-bottom: 1px solid transparent;
   }
 }
 
@@ -176,13 +167,6 @@
         font: var(--tds-detail-07);
         letter-spacing: var(--tds-detail-07-ls);
         top: var(--tds-spacing-element-8);
-      }
-    }
-
-    .textarea-wrapper {
-      &::before,
-      &::after {
-        width: 50%;
       }
     }
   }
@@ -247,13 +231,6 @@
     border-bottom-color: var(--tds-textarea-border-bottom-error);
   }
 
-  .textarea-wrapper {
-    &::after,
-    &::before {
-      background: var(--tds-textarea-bar-error);
-    }
-  }
-
   .textarea-helper {
     color: var(--tds-textarea-helper-error);
   }
@@ -315,7 +292,7 @@
   }
 
   .textarea-input {
-    border: 1px solid var(--tds-textarea-border-bottom-read-only-color);
+    border-bottom-color: var(--tds-textarea-border-bottom-read-only-color);
   }
 
   .textfield-container {
