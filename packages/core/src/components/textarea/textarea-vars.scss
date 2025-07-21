@@ -31,10 +31,11 @@ tds-textarea {
   --textarea-textcounter-divider: var(--color-foreground-text-subtle);
 
   // Border bottom
-  --textarea-border-bottom: var(--color-foreground-border-soft);
-  --textarea-border-bottom-hover: var(--color-foreground-border-defined);
-  --textarea-border-bottom-success: var(--color-foreground-border-strong);
-  --textarea-border-bottom-error: var(--color-system-danger-default);
+  --textarea-border-bottom: 1px solid var(--color-foreground-border-soft);
+  --textarea-border-bottom-hover: 1px solid var(--color-foreground-border-defined);
+  --textarea-border-bottom-success: 1px solid var(--color-foreground-border-strong);
+  --textarea-border-bottom-error: 1px solid var(--color-system-danger-default);
+  --textarea-outline: none;
 
   // Border radius
   --textarea-border-radius: 4px 4px 0 0;
@@ -59,7 +60,20 @@ tds-textarea {
 }
 
 .traton tds-textarea {
+  // Radius
   --textarea-border-radius: 4px;
+
+  // Border
+  --textarea-border-bottom: none;
+  --textarea-border-bottom-hover: none;
+  --textarea-border-bottom-success: none;
+  --textarea-border-bottom-error: none;
+
+  // Outline
+  --textarea-outline: 1px solid var(--color-foreground-border-soft);
+  --textarea-outline-hover: 1px solid var(--color-foreground-border-defined);
+  --textarea-outline-success: 1px solid var(--color-foreground-border-strong);
+  --textarea-outline-error: 1px solid var(--color-system-danger-default);
 }
 
 .traton {

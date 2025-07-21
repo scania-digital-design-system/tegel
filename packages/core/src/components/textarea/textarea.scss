@@ -35,7 +35,8 @@
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
-  border-bottom: 1px solid var(--textarea-border-bottom);
+  border-bottom: var(--textarea-border-bottom);
+  outline: var(--textarea-outline);
   transition: border-bottom-color 200ms ease;
 
   // Display none only works in Chrome
@@ -44,7 +45,8 @@
   }
 
   &:hover {
-    border-bottom-color: var(--textarea-border-bottom-hover);
+    border-bottom: var(--textarea-border-bottom-hover);
+    outline: var(--textarea-outline-hover);
   }
 }
 
@@ -165,13 +167,15 @@
 
 .textarea-success {
   .textarea-input {
-    border-bottom-color: var(--textarea-border-bottom-success);
+    border-bottom: var(--textarea-border-bottom-success);
+    outline: var(--textarea-outline-success);
   }
 }
 
 .textarea-error {
   .textarea-input {
-    border-bottom-color: var(--textarea-border-bottom-error);
+    border-bottom: var(--textarea-border-bottom-error);
+    outline: var(--textarea-outline-error);
   }
 
   .textarea-wrapper {
