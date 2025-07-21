@@ -1,0 +1,45 @@
+@mixin textfield-base {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  color: var(--textarea-text);
+  background-color: var(--textarea-background);
+
+  &::placeholder {
+    opacity: 1;
+    color: var(--textarea-placeholder);
+  }
+
+  &:disabled {
+    background-color: var(--textarea-disabled-background);
+    color: var(--textarea-disabled-text);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--textarea-disabled-placeholder);
+    }
+  }
+}
+
+@mixin placeholder-label {
+  &::placeholder {
+    color: transparent;
+  }
+
+  ::placeholder {
+    color: transparent;
+  }
+
+  //Input field in focus
+  &:focus::placeholder {
+    transition: color 0.35s ease;
+    color: var(--textarea-placeholder);
+  }
+}
+
+@mixin textarea-focus {
+  border-bottom: 2px solid var(--textarea-bar);
+}
