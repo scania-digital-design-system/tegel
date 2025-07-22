@@ -63,18 +63,6 @@
       pointer-events: all;
     }
 
-    &:hover {
-      background-color: var(--navigation-tabs-scroll-button-hover);
-    }
-
-    &:active {
-      background-color: var(--navigation-tabs-scroll-button-active);
-    }
-
-    &:focus {
-      @include tds-focus-state;
-    }
-
     svg {
       fill: var(--navigation-tabs-scroll-button-color);
     }
