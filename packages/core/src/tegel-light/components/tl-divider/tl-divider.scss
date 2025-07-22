@@ -4,15 +4,15 @@
 .tl-divider {
   @include tds-box-sizing;
 
+  background-color: var(--divider-color);
+
   &--horizontal {
     width: 100%;
     height: 1px;
-    background-color: var(--divider-color);
   }
 
   &--vertical {
     height: 100%;
     width: 1px;
-    background-color: var(--divider-color);
   }
 }
