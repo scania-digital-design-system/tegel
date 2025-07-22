@@ -6,4 +6,5 @@ tds-modal {
   --modal-backdrop-color: var(--color-background-overlay);
   --modal-text-color: var(--color-foreground-text-strong);
   --modal-close-x-svg-color: var(--color-foreground-text-strong);
+  --modal-shadow: 0 2px 3px 0 var(--component-shadow-base-modifier);
 }
