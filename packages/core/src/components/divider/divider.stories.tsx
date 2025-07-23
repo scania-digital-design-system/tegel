@@ -23,8 +23,8 @@ export default {
       description: 'Choose Divider orientation.',
       control: {
         type: 'radio',
-        options: ['Horizontal', 'Vertical'],
       },
+      options: ['Horizontal', 'Vertical'],
       table: {
         defaultValue: { summary: 'horizontal' },
       },
@@ -45,18 +45,31 @@ export default {
       },
       if: { arg: 'orientation', eq: 'Vertical' },
     },
+    variant: {
+      name: 'Variant',
+      description: 'Choose Divider variant.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Discrete', 'Subtle', 'Soft', 'Defined', 'Dark-Blue'],
+      table: {
+        defaultValue: { summary: 'Subtle' },
+      },
+    },
   },
   args: {
+    variant: 'Subtle',
     orientation: 'Horizontal',
+
     width: 150,
     height: 150,
   },
 };
 
-const Template = ({ orientation, width, height }) =>
+const Template = ({ orientation, variant, width, height }) =>
   formatHtmlPreview(`
   <div style="${orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`}">
-    <tds-divider orientation="${orientation.toLowerCase()}"></tds-divider>
+    <tds-divider orientation="${orientation.toLowerCase()}" variant="${variant.toLowerCase()}"></tds-divider>
   </div>
 `);
 
