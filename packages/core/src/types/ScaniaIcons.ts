@@ -39,6 +39,7 @@ export type ScaniaIconNames =
   | 'chevron_up'
   | 'clock_inactive'
   | 'clock'
+  | 'configurator'
   | 'contact_inactive'
   | 'contact'
   | 'cookie_inactive'
