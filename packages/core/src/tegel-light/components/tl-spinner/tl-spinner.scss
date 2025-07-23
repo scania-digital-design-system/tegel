@@ -62,6 +62,14 @@
     --tl-spinner-stroke-width: var(--tl-spinner-stroke-width-lg);
     --tl-spinner-animation-speed: var(--tl-spinner-speed-lg);
   }
+
+  &--standard {
+    stroke: var(--tl-spinner-background);
+  }
+
+  &--inverted {
+    stroke: var(--tl-spinner-background-inverted);
+  }
 }
 
 .tl-spinner__svg {
@@ -83,14 +91,6 @@
   stroke-width: var(--tl-spinner-stroke-width);
   animation: tl-spinner-dash var(--tl-spinner-animation-speed) cubic-bezier(0.55, 0.15, 0.45, 0.85)
     infinite;
-
-  &--standard {
-    stroke: var(--tl-spinner-background);
-  }
-
-  &--inverted {
-    stroke: var(--tl-spinner-background-inverted);
-  }
 }
 
 @keyframes tl-spinner-dash {

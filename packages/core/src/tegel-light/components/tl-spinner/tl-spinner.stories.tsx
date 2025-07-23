@@ -47,7 +47,7 @@ const Template = ({ size, variant }) => {
     Inverted: 'inverted',
   };
   const sizeClass = size ? `tl-spinner--${sizeMap[size]}` : '';
-  const variantClass = variant ? `tl-spinner__circle--${variantMap[variant]}` : '';
+  const variantClass = variant ? `tl-spinner--${variantMap[variant]}` : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
@@ -59,11 +59,11 @@ const Template = ({ size, variant }) => {
       }
     </style>
     <div class="demo-wrapper">
-        <div class="tl-spinner ${sizeClass}">
-            <svg class="tl-spinner__svg">
-                <circle class="tl-spinner__circle ${variantClass}"></circle>
-            </svg>
-        </div>
+      <div class="tl-spinner ${sizeClass} ${variantClass}">
+        <svg class="tl-spinner__svg">
+          <circle class="tl-spinner__circle"></circle>
+        </svg>
+      </div>
     </div>
   `);
 };
