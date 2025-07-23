@@ -20,15 +20,12 @@
   button.tds-accordion-header-icon-start,
   button.tds-accordion-header-icon-end {
     @include tds-box-sizing;
+    @include headline-07;
 
     cursor: pointer;
     display: flex;
     align-items: center;
     width: 100%;
-
-    // fixme: wrong line-height compared to production
-    @include headline-07;
-
     padding: var(--tds-spacing-element-16);
     background-color: var(--accordion-background);
 
