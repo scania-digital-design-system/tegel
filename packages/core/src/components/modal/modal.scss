@@ -106,7 +106,7 @@ $modals: (
   @include tds-box-sizing;
 
   background-color: var(--modal-background-color);
-  box-shadow: var(--tds-modal-box-shadow);
+  box-shadow: var(--modal-shadow);
   margin: auto;
   position: relative;
   border-radius: 4px;
