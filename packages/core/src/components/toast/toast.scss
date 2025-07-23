@@ -15,7 +15,6 @@
     width: calc(352px - 4px);
     background-color: var(--toast-background);
     border-radius: 4px;
-    align-items: start;
 
     &.information {
       border-left: 4px solid var(--toast-icon-info);
@@ -96,7 +95,6 @@
     slot[name='header']::slotted(*) {
       @include headline-07;
 
-      font-style: normal;
       color: var(--toast-headline);
     }
 
