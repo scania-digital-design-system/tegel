@@ -1,5 +1,19 @@
 /* Component variables  */
 .tl-spinner {
-  --spinner-background: var(--component-spinner-color);
-  --spinner-background-inverted: var(--color-brand-neutral-white);
+  --tl-spinner-background: var(--component-spinner-color);
+  --tl-spinner-background-inverted: var(--color-brand-neutral-white);
+  --tl-spinner-speed: 1.8s;
+  --tl-spinner-speed-lg: 2s;
+  --tl-spinner-radius-xs: 8px;
+  --tl-spinner-radius-sm: 12px;
+  --tl-spinner-radius-md: 26px;
+  --tl-spinner-radius-lg: 42px;
+  --tl-spinner-stroke-width-xs: 3px;
+  --tl-spinner-stroke-width-sm: 4px;
+  --tl-spinner-stroke-width-md: 6px;
+  --tl-spinner-stroke-width-lg: 8px;
+  --tl-spinner-PI: 3.14159265358979;
+  --tl-spinner-radius: var(--tl-spinner-radius-lg);
+  --tl-spinner-stroke-width: var(--tl-spinner-stroke-width-lg);
+  --tl-spinner-animation-speed: var(--tl-spinner-speed-lg);
 }

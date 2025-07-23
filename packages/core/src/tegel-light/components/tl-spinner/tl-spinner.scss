@@ -2,42 +2,9 @@
 @import './tl-spinner-vars';
 
 .tl-spinner {
-  --tl-spinner-background-inverted: var(--tds-white);
-  --tl-spinner-background-scania: var(--tds-blue-400);
-  --tl-spinner-background-traton-light: rgba(0, 72, 82, 1);
-  --tl-spinner-background-traton-dark: rgba(194, 191, 182, 1);
-  --tl-spinner-speed: 1.8s;
-  --tl-spinner-speed-lg: 2s;
-  --tl-spinner-radius-xs: 8px;
-  --tl-spinner-radius-sm: 12px;
-  --tl-spinner-radius-md: 26px;
-  --tl-spinner-radius-lg: 42px;
-  --tl-spinner-stroke-width-xs: 3px;
-  --tl-spinner-stroke-width-sm: 4px;
-  --tl-spinner-stroke-width-md: 6px;
-  --tl-spinner-stroke-width-lg: 8px;
-  --tl-spinner-PI: 3.14159265358979;
-
   @include tds-box-sizing;
 
   display: block;
-
-  --tl-spinner-background: var(--tl-spinner-background-scania);
-  --tl-spinner-radius: var(--tl-spinner-radius-lg);
-  --tl-spinner-stroke-width: var(--tl-spinner-stroke-width-lg);
-  --tl-spinner-animation-speed: var(--tl-spinner-speed-lg);
-
-  &--traton {
-    --tl-spinner-background: var(--tl-spinner-background-traton-light);
-  }
-
-  &--scania {
-    --tl-spinner-background: var(--tl-spinner-background-scania);
-  }
-
-  &--dark {
-    --tl-spinner-background: var(--tl-spinner-background-traton-dark);
-  }
 
   &--xs {
     --tl-spinner-radius: var(--tl-spinner-radius-xs);
