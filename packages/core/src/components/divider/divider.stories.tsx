@@ -51,7 +51,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Discrete', 'Subtle', 'Soft', 'Defined', 'Dark Blue'],
+      options: ['Discrete', 'Subtle', 'Soft', 'Defined', 'Dark-Blue'],
       table: {
         defaultValue: { summary: 'Subtle' },
       },
