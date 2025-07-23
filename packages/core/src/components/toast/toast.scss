@@ -79,7 +79,7 @@
   }
 
   .content {
-    padding: 12px 0 16px 10px;
+    padding: 16px 0 16px 10px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -94,7 +94,7 @@
 
     .header,
     slot[name='header']::slotted(*) {
-      @include detail-01;
+      @include headline-07;
 
       font-style: normal;
       color: var(--toast-headline);
@@ -103,7 +103,7 @@
     .subheader,
     slot[name='subheader']::slotted(*) {
       color: var(--toast-subheadline);
-      @include detail-01;
+      @include detail-02;
 
       &.no-link {
         slot::slotted(*) {
