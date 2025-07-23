@@ -2,27 +2,6 @@
 @import '../../mixins/z-index';
 @import '../../../../../typography/utilities/typography-utility';
 
-// Mixins
-@mixin toast-headline-07 {
-  /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-  font-family: var(--headline-07-font-family) !important;
-  letter-spacing: var(--headline-07-letter-spacing) !important;
-  font-size: var(--headline-07-font-size);
-  line-height: var(--headline-07-line-height);
-  font-weight: var(--headline-07-font-weight);
-  text-transform: var(--headline-07-text-transform);
-}
-
-@mixin toast-detail-02 {
-  /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-  font-family: var(--detail-02-font-family) !important;
-  letter-spacing: var(--detail-02-letter-spacing) !important;
-  font-size: var(--detail-02-font-size);
-  line-height: var(--detail-02-line-height);
-  font-weight: var(--detail-02-font-weight);
-  text-transform: var(--detail-02-text-transform);
-}
-
 :host(.hide) {
   display: none;
   visibility: hidden;
@@ -36,6 +15,7 @@
     width: calc(352px - 4px);
     background-color: var(--toast-background);
     border-radius: 4px;
+    align-items: start;
 
     &.information {
       border-left: 4px solid var(--toast-icon-info);
@@ -99,7 +79,7 @@
   }
 
   .content {
-    padding: 16px 0 16px 10px;
+    padding: 12px 0 16px 10px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -114,15 +94,16 @@
 
     .header,
     slot[name='header']::slotted(*) {
-      @include toast-headline-07;
+      @include detail-01;
 
+      font-style: normal;
       color: var(--toast-headline);
     }
 
     .subheader,
     slot[name='subheader']::slotted(*) {
       color: var(--toast-subheadline);
-      @include toast-detail-02;
+      @include detail-01;
 
       &.no-link {
         slot::slotted(*) {
