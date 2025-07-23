@@ -5,10 +5,10 @@
   @include tds-box-sizing;
 
   [role='list'] {
-    padding: 0;
-    margin: 0;
     @include detail-02;
 
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;
