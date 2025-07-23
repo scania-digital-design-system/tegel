@@ -1,3 +1,5 @@
+@import '../../../mixins/focus-state';
+
 :host([role='listitem']) {
   div {
     ::slotted(*) {
@@ -13,12 +15,7 @@
     }
 
     ::slotted(*:focus-visible) {
-      outline: 2px solid var(--color-foreground-border-accent-focus);
-      box-shadow: 0 0 0 1px var(--tds-white);
-      outline-offset: 1px;
-
-      // Overrides the offset of the tds-focus-state to align with design.
-      outline-offset: -0;
+      @include tds-focus-state;
     }
 
     &.current,
