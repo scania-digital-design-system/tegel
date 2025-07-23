@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property      | Attribute     | Description                                              | Type                         | Default        |
-| ------------- | ------------- | -------------------------------------------------------- | ---------------------------- | -------------- |
-| `orientation` | `orientation` | Orientation of the Divider, horizontal if not specified. | `"horizontal" \| "vertical"` | `'horizontal'` |
+| Property      | Attribute     | Description                                              | Type                                                           | Default        |
+| ------------- | ------------- | -------------------------------------------------------- | -------------------------------------------------------------- | -------------- |
+| `orientation` | `orientation` | Orientation of the Divider, horizontal if not specified. | `"horizontal" \| "vertical"`                                   | `'horizontal'` |
+| `variant`     | `variant`     | Variant of the Divider, subtle if not specified.         | `"dark-blue" \| "defined" \| "discrete" \| "soft" \| "subtle"` | `'subtle'`     |
 
 
 ## Dependencies
