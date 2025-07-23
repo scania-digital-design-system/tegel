@@ -1,5 +1,14 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { iconsNames } from './iconsArray';
+
+import { iconsNames as scaniaIconsNames } from './scaniaIconsArray';
+import { iconsNames as tratonIconsNames } from './tratonIconsArray';
+
+// Brand mapping configuration
+const brandIconsMap = {
+  scania: scaniaIconsNames,
+  traton: tratonIconsNames,
+  // Add new brands here as needed
+};
 
 export default {
   title: 'Components/Icon',
@@ -19,13 +28,34 @@ export default {
     ],
   },
   argTypes: {
-    icon: {
-      name: 'Icon name',
-      description: 'Select icon to display',
+    brand: {
+      name: 'Brand',
+      description: 'Select the brand to use',
+      control: {
+        type: 'radio',
+      },
+      options: ['Scania', 'Traton'],
+      table: {
+        defaultValue: { summary: 'Scania' },
+      },
+    },
+    scaniaIcon: {
+      name: 'Icon name (Scania)',
+      description: `Select icon to display (Scania brand - ${scaniaIconsNames.length} icons available)`,
       control: {
         type: 'select',
       },
-      options: iconsNames,
+      options: scaniaIconsNames,
+      if: { arg: 'brand', eq: 'Scania' },
+    },
+    tratonIcon: {
+      name: 'Icon name (Traton)',
+      description: `Select icon to display (Traton brand - ${tratonIconsNames.length} icons available)`,
+      control: {
+        type: 'select',
+      },
+      options: tratonIconsNames,
+      if: { arg: 'brand', eq: 'Traton' },
     },
     size: {
       name: 'Size in pixels',
@@ -51,22 +81,35 @@ export default {
     },
   },
   args: {
+    brand: 'Scania',
+    scaniaIcon: scaniaIconsNames[0],
+    tratonIcon: tratonIconsNames[0],
     size: 32,
-    icon: 'truck',
     svgTitle: '',
     svgDescription: '',
   },
 };
 
-const IconTemplate = (args) =>
-  formatHtmlPreview(`
-  <tds-icon 
-    name="${args.icon}" 
-    size="${`${args.size.toString()}px`}" 
-    ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
-    ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
-    >   
-  </tds-icon> 
+const IconTemplate = (args) => {
+  // Get the appropriate icon based on the selected brand
+  const selectedIcon = args.brand === 'Traton' ? args.tratonIcon : args.scaniaIcon;
+  const currentBrand = args.brand.toLowerCase();
+
+  return formatHtmlPreview(`
+  <div data-brand="${currentBrand}">
+    <div style="background: #e3f2fd; border: 1px solid #bbdefb; padding: 12px; margin-bottom: 16px; border-radius: 4px; font-size: 14px;">
+      <strong>Selected Brand:</strong> ${args.brand}
+      (${brandIconsMap[currentBrand].length} icons available)
+    </div>
+    <tds-icon
+      name="${selectedIcon}"
+      size="${`${args.size.toString()}px`}"
+      ${args.svgTitle ? `svg-title='${args.svgTitle}'` : ''}
+      ${args.svgDescription ? `svg-description='${args.svgDescription}'` : ''}
+      >
+    </tds-icon>
+  </div>
   `);
+};
 
 export const Default = IconTemplate.bind({});
