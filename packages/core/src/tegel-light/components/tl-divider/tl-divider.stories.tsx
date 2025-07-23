@@ -50,7 +50,7 @@ const Template = ({ orientation, width, height }) => {
       "@scania/tegel-light/tl-divider.css"
     -->
         <div style="${style}"->
-          <div class="tl-divider tl-divider--${orientationClass}"></div>
+          <div class="tl-divider tl-divider--${orientationClass}"/>
         </div>
   `);
 };
