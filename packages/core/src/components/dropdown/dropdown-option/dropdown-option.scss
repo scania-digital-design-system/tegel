@@ -9,10 +9,10 @@
   background-color: var(--dropdown-option-background);
 
   .dropdown-option {
-    color: var(--dropdown-text);
-    border-bottom: 1px solid var(--dropdown-option-border);
     @include detail-02;
 
+    color: var(--dropdown-text);
+    border-bottom: 1px solid var(--dropdown-option-border);
     overflow-wrap: anywhere;
     transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
