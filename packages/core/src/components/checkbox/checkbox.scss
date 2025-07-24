@@ -96,8 +96,7 @@
       }
     }
 
-    &:disabled,
-    &.disabled {
+    &:disabled {
       cursor: not-allowed;
 
       &::after {
@@ -131,8 +130,7 @@
         }
       }
 
-      &:disabled,
-      &.disabled {
+      &:disabled {
         &:hover::before,
         &::before {
           display: block;
