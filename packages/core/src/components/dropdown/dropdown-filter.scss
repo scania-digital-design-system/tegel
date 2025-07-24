@@ -4,13 +4,13 @@
 
 :host {
   .filter {
+    @include box-shadow;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
     background-color: var(--dropdown-background);
-    @include box-shadow;
-
     padding-left: 16px;
     border-radius: var(--dropdown-border-radius);
     transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
@@ -20,8 +20,9 @@
     }
 
     &.disabled {
-      color: var(--dropdown-disabled);
       @include box-shadow('disabled');
+
+      color: var(--dropdown-disabled);
     }
 
     .value-wrapper {
@@ -35,7 +36,13 @@
     }
 
     .label-inside-as-placeholder {
+      @include detail-02;
+
+      color: var(--dropdown-placeholder);
       position: absolute;
+
+      /* Overwrite in order to display ÅÄÖ and similar sign correctly */
+      line-height: 1.3;
 
       &.lg {
         top: 20px;
@@ -48,12 +55,6 @@
       &.sm {
         display: none;
       }
-
-      @include detail-02;
-
-      /* Overwrite in order to display ÅÄÖ and similar sign correctly */
-      line-height: 1.3;
-      color: var(--dropdown-placeholder);
 
       &.selected {
         @include detail-07;

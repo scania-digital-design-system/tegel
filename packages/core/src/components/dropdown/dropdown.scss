@@ -5,9 +5,10 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
+  @include detail-02;
+
   display: block;
   position: relative;
-  @include detail-02;
 
   .label-outside {
     @include detail-05;
@@ -33,9 +34,9 @@
     }
 
     .label-inside {
-      position: absolute;
       @include detail-07;
 
+      position: absolute;
       color: var(--dropdown-text);
 
       &.lg {
@@ -48,10 +49,7 @@
         left: 16px;
       }
 
-      &.sm {
-        display: none;
-      }
-
+      &.sm,
       &.xs {
         display: none;
       }
@@ -77,9 +75,9 @@
       color: var(--dropdown-placeholder);
 
       &.selected {
-        position: absolute;
         @include detail-07;
 
+        position: absolute;
         transition: all 0.2s ease-in-out;
 
         &.lg {
@@ -118,10 +116,10 @@
   }
 
   .helper {
-    margin-top: 4px;
-    color: var(--dropdown-helper-text);
     @include detail-05;
 
+    margin-top: 4px;
+    color: var(--dropdown-helper-text);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -136,6 +134,8 @@
   }
 
   .dropdown-list {
+    @include tds-scrollbar;
+
     z-index: tds-z-index(dropdown);
     position: absolute;
     margin-top: 2px;
@@ -146,7 +146,6 @@
     overflow-y: auto;
     transform: scaleY(0);
     pointer-events: none;
-    @include tds-scrollbar;
 
     &.lg {
       max-height: 312px;
@@ -156,10 +155,7 @@
       max-height: 312px;
     }
 
-    &.sm {
-      max-height: 260px;
-    }
-
+    &.sm,
     &.xs {
       max-height: 260px;
     }
@@ -215,10 +211,7 @@
         height: 48px;
       }
 
-      &.sm {
-        height: 40px;
-      }
-
+      &.sm,
       &.xs {
         height: 40px;
       }
