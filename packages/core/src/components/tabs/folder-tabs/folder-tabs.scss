@@ -29,12 +29,12 @@
 
   .scroll-right-button,
   .scroll-left-button {
-    height: 50px;
+    background-color: var(--folder-tabs-scroll-button-surface);
     color: var(--folder-tabs-scroll-button-text);
+    height: 50px;
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--folder-tabs-scroll-button-surface);
     display: none;
     justify-content: center;
     align-items: center;

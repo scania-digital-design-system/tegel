@@ -1,6 +1,4 @@
 /* Variables used by both tds-folder-tab and tds-folder-tabs */
-.tl-folder-tabs,
-.tl-folder-tab,
 tds-folder-tab,
 tds-folder-tabs {
   --folder-tab-surface: var(--color-background-surface-200);
@@ -9,18 +7,15 @@ tds-folder-tabs {
 }
 
 /* Variables color change based on mode variant */
-.tl-folder-tabs.tds-mode-variant-primary .tl-folder-tab,
 tds-folder-tabs.tds-mode-variant-primary tds-folder-tab {
   --folder-tab-surface-selected: var(--color-background-layer-01);
 }
 
-.tl-folder-tabs.tds-mode-variant-secondary .tl-folder-tab,
 tds-folder-tabs.tds-mode-variant-secondary tds-folder-tab {
   --folder-tab-surface-selected: var(--color-background-layer-02);
 }
 
 /* Variables used only by tds-folder-tabs (scroll buttons) */
-.tl-folder-tabs,
 tds-folder-tabs {
   --folder-tabs-scroll-button-surface: var(--color-background-surface-300);
   --folder-tabs-scroll-button-surface-hover: var(--color-background-surface-300);
@@ -29,7 +24,6 @@ tds-folder-tabs {
 }
 
 /* Variables used only by tds-folder-tab */
-.tl-folder-tab,
 tds-folder-tab {
   --folder-tab-surface-hover: var(--color-background-surface-300);
   --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
