@@ -1,4 +1,11 @@
 tds-popover-menu {
+  --popover-menu-text: var(--color-foreground-text-strong);
+  --popover-menu-background: var(--color-background-layer-01);
+  --popover-menu-background-hover: var(--color-background-layer-02);
+  --popover-menu-item-outline-focus: var(--color-foreground-border-accent-focus);
+  --popover-menu-item-disabled: var(--color-foreground-text-disabled);
+  --popover-menu-item-icon-disabled: var(--color-foreground-icon-disabled);
+
   &.tds-mode-variant-primary {
     --popover-menu-background: var(--color-background-layer-01);
     --popover-menu-background-hover: var(--color-background-layer-02);
@@ -8,11 +15,4 @@ tds-popover-menu {
     --popover-menu-background: var(--color-background-layer-02);
     --popover-menu-background-hover: var(--color-background-layer-01);
   }
-
-  --popover-menu-text: var(--color-foreground-text-strong);
-  --popover-menu-background: var(--color-background-layer-01);
-  --popover-menu-background-hover: var(--color-background-layer-02);
-  --popover-menu-item-outline-focus: var(--color-foreground-border-accent-focus);
-  --popover-menu-item-disabled: var(--color-foreground-text-disabled);
-  --popover-menu-item-icon-disabled: var(--color-foreground-icon-disabled);
 }
