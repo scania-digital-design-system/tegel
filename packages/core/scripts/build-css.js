@@ -21,11 +21,13 @@ const generateSourceMaps = false; // Toggle for CSS source maps
 const args = [];
 if (!generateSourceMaps) args.push('--no-source-map');
 files.forEach(([src, dest]) => {
-  args.push(`${path.join(dirname, '..', src)}:${path.join(dirname, '..', dest)}`);
+  const srcPath = path.join(dirname, '..', src);
+  const destPath = path.join(dirname, '..', dest);
+  args.push(`${srcPath}:${destPath}`);
 });
 if (watch) args.unshift('--watch');
 
-const sass = spawn(sassCmd, args, { stdio: 'inherit' });
+const sass = spawn(sassCmd, args, { stdio: 'inherit', shell: true });
 
 sass.on('close', (code) => {
   process.exit(code ?? 0);
