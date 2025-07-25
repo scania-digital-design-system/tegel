@@ -3,7 +3,6 @@
 
 :host(.tds-table__body-cell) {
   @include tds-box-sizing;
-
   @include detail-02;
 
   display: table-cell;

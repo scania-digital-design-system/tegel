@@ -1,13 +1,14 @@
 @import '../../../mixins/box-sizing';
+@import '../../../mixins/focus-state';
 
 :host(.tds-table__row) {
   @include tds-box-sizing;
 
-  display: table-row;
-  border-bottom: 1px solid var(--table-divider);
   background-color: var(--table-body-row);
-  transition: background-color 200ms ease;
+  border-bottom: 1px solid var(--table-divider);
   color: var(--table-text);
+  display: table-row;
+  transition: background-color 200ms ease;
 
   .tds-table__body-cell--checkbox {
     min-width: 48px;
@@ -65,5 +66,5 @@
 }
 
 :host(.tds-table__row--clickable:focus-visible) {
-  outline: var(--focus-outline, 2px solid blue);
+  @include tds-focus-state;
 }
