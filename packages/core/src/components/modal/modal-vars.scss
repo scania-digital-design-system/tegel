@@ -1,10 +1,10 @@
 /* Component variables */
 
 tds-modal {
-  --modal-scroll-bar-thumb-color: var(--color-foreground-icon-discrete);
-  --modal-background-color: var(--color-background-layer-02);
-  --modal-backdrop-color: var(--color-background-overlay);
-  --modal-text-color: var(--color-foreground-text-strong);
-  --modal-close-x-svg-color: var(--color-foreground-text-strong);
+  --modal-scroll-bar-thumb: var(--color-foreground-icon-discrete);
+  --modal-background: var(--color-background-layer-02);
+  --modal-backdrop: var(--color-background-overlay);
+  --modal-text: var(--color-foreground-text-strong);
+  --modal-cross-svg: var(--color-foreground-text-strong);
   --modal-shadow: 0 2px 3px 0 var(--component-shadow-base-modifier);
 }
