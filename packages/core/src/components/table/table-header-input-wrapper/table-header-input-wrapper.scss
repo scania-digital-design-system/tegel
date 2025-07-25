@@ -36,10 +36,10 @@ tds-icon.search-icon {
 ::slotted(input) {
   @include detail-02;
 
-  box-sizing: border-box;
   color: var(--table-text);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
+  box-sizing: border-box;
   height: 48px;
   border-radius: 0;
   background-color: transparent;
@@ -52,9 +52,9 @@ tds-icon.search-icon {
 }
 
 ::slotted(input:focus) {
-  outline: none;
   background-color: var(--table-input-header-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
+  outline: none;
 }
 
 :host(.tds-table__compact) {

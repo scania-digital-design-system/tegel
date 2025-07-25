@@ -28,9 +28,9 @@
         align-items: center;
 
         .rows-per-page {
+          margin-right: var(--tds-spacing-element-16);
           display: flex;
           align-items: center;
-          margin-right: var(--tds-spacing-element-16);
 
           p {
             margin-right: var(--tds-spacing-element-8);
@@ -42,14 +42,14 @@
         @include detail-02;
 
         background-color: var(--table-footer-page-selector-input);
+        border-radius: var(--tds-spacing-element-4);
         color: var(--table-text);
+        margin-right: var(--tds-spacing-element-4);
+        padding-right: var(--tds-spacing-element-8);
         width: 74px;
         height: 30px;
         border: none;
-        border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
-        margin-right: var(--tds-spacing-element-4);
-        padding-right: var(--tds-spacing-element-8);
 
         &:hover {
           background-color: var(--table-footer-page-selector-input-hover);
@@ -74,25 +74,25 @@
       }
 
       .tds-table__footer-btn {
+        border-radius: var(--tds-spacing-element-4);
+        color: var(--table-icon);
+        height: var(--tds-spacing-element-32);
+        width: var(--tds-spacing-element-32);
         display: flex;
         justify-content: center;
         align-items: center;
         border: none;
         background-color: transparent;
         cursor: pointer;
-        height: var(--tds-spacing-element-32);
-        width: var(--tds-spacing-element-32);
-        border-radius: var(--tds-spacing-element-4);
         transition: background-color 250ms ease;
-        color: var(--table-icon);
 
         &:hover {
           background-color: var(--table-footer-button-hover);
         }
 
         &:disabled {
-          cursor: default;
           color: var(--table-icon-disabled);
+          cursor: default;
 
           &:hover {
             background-color: transparent;
@@ -101,9 +101,9 @@
       }
 
       .tds-table__footer-btn-svg {
+        fill: var(--table-text);
         height: var(--tds-spacing-element-20);
         width: var(--tds-spacing-element-20);
-        fill: var(--table-text);
       }
     }
   }

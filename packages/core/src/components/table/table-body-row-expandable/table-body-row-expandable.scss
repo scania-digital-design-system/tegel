@@ -8,11 +8,11 @@
 
   .tds-table__row,
   .tds-table__row-extend {
-    display: table-row;
-    border-bottom: 1px solid var(--table-divider);
     background-color: var(--table-body-row);
-    transition: background-color 200ms ease;
+    border-bottom: 1px solid var(--table-divider);
     color: var(--table-text);
+    display: table-row;
+    transition: background-color 200ms ease;
   }
 
   .tds-table__row--expanded {
@@ -64,10 +64,10 @@
     }
 
     .tds-table__cell-expand {
+      color: var(--table-text);
       max-width: 1px;
       overflow: auto;
       padding: 16px 16px 16px 66px;
-      color: var(--table-text);
     }
 
     .tds-table__cell-expand--overflow-visible {

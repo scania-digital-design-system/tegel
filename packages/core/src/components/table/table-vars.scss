@@ -41,6 +41,7 @@ tds-table {
   --table-toolbar: var(--color-background-surface-400);
   --table-toolbar-searchbar: var(--component-table-pagination-dropdown);
   --table-toolbar-searchbar-hover: var(--component-table-pagination-base);
+  --table-toolbar-searchbar-border-bottom: var(--color-foreground-border-accent-focus);
 
   /* Divider */
   --table-divider: var(--color-foreground-border-discrete);
