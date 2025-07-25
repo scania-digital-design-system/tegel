@@ -9,19 +9,6 @@ tds-table {
   --table-body-row: var(--component-table-cell);
   --table-body-row-hover: var(--component-table-cell-hover);
   --table-zebra-mode: var(--component-table-secondary-cell);
-
-  &.tds-mode-variant-primary {
-    --table-body-row: var(--component-table-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-secondary-cell);
-  }
-
-  &.tds-mode-variant-secondary {
-    --table-body-row: var(--component-table-secondary-cell);
-    --table-body-row-hover: var(--component-table-cell-hover);
-    --table-zebra-mode: var(--component-table-cell);
-  }
-
   --table-body-row-selected: var(--color-background-surface-300);
   --table-body-row-selected-hover: var(--color-background-surface-400);
 
@@ -61,4 +48,16 @@ tds-table {
   /* Table-icons */
   --table-icon: var(--color-foreground-icon-strong);
   --table-icon-disabled: var(--color-foreground-icon-disabled);
+
+  &.tds-mode-variant-primary {
+    --table-body-row: var(--component-table-cell);
+    --table-body-row-hover: var(--component-table-cell-hover);
+    --table-zebra-mode: var(--component-table-secondary-cell);
+  }
+
+  &.tds-mode-variant-secondary {
+    --table-body-row: var(--component-table-secondary-cell);
+    --table-body-row-hover: var(--component-table-cell-hover);
+    --table-zebra-mode: var(--component-table-cell);
+  }
 }
