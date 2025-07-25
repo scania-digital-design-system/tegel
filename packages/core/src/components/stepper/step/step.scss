@@ -176,7 +176,8 @@
       align-items: center;
       justify-content: space-around;
       border-radius: 100px;
-      border: 1px solid var(--stepper-icon-background);
+      border-width: 1px;
+      border-style: solid;
       text-align: center;
       position: relative;
 
@@ -192,12 +193,10 @@
       }
 
       &.current {
-        background-color: var(--stepper-background);
-        color: var(--stepper-current-number);
+        color: var(--stepper-current-number-with-border);
       }
 
       &.upcoming {
-        background-color: transparent;
         border-color: var(--stepper-label-border-upcoming);
         color: var(--stepper-label-text-upcoming);
       }
