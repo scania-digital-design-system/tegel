@@ -53,26 +53,26 @@ tds-slider,
   --slider-border-success: none;
 
   /* Slider: border colors */
-  --slider-border-color-left: var(--color-foreground-border-soft);
-  --slider-border-color-right: var(--color-foreground-border-soft);
-  --slider-border-color-bottom: var(--color-foreground-border-soft);
-  --slider-border-color-top: var(--color-foreground-border-soft);
+  --slider-border-left: var(--color-foreground-border-soft);
+  --slider-border-right: var(--color-foreground-border-soft);
+  --slider-border-bottom: var(--color-foreground-border-soft);
+  --slider-border-top: var(--color-foreground-border-soft);
 
   /* Slider: border colors on hover */
-  --slider-border-color-left-hover: var(--color-foreground-border-strong);
-  --slider-border-color-right-hover: var(--color-foreground-border-strong);
-  --slider-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --slider-border-color-top-hover: var(--color-foreground-border-strong);
+  --slider-border-left-hover: var(--color-foreground-border-strong);
+  --slider-border-right-hover: var(--color-foreground-border-strong);
+  --slider-border-bottom-hover: var(--color-foreground-border-strong);
+  --slider-border-top-hover: var(--color-foreground-border-strong);
 
   /* Slider: border colors on success */
-  --slider-border-color-left-success: var(--color-foreground-border-defined);
-  --slider-border-color-right-success: var(--color-foreground-border-defined);
-  --slider-border-color-bottom-success: var(--color-foreground-border-defined);
-  --slider-border-color-top-success: var(--color-foreground-border-defined);
+  --slider-border-left-success: var(--color-foreground-border-defined);
+  --slider-border-right-success: var(--color-foreground-border-defined);
+  --slider-border-bottom-success: var(--color-foreground-border-defined);
+  --slider-border-top-success: var(--color-foreground-border-defined);
 
   /* Slider: border colors on focus */
-  --slider-border-color-left-focus: var(--color-foreground-border-accent-focus);
-  --slider-border-color-right-focus: var(--color-foreground-border-accent-focus);
-  --slider-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
-  --slider-border-color-top-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-left-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-right-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-bottom-focus: var(--color-foreground-border-accent-focus);
+  --slider-border-top-focus: var(--color-foreground-border-accent-focus);
 }
