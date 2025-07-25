@@ -28,7 +28,7 @@
   height: 56px;
   box-sizing: border-box;
   background-color: var(--text-field-background);
-  transition: box-shadow 200ms ease, outline-color 200ms ease;
+  transition: box-shadow 200ms ease;
 
   &:hover {
     @include box-shadow('hover');
@@ -145,9 +145,6 @@
   &.text-field-focus {
     .text-field-container {
       @include box-shadow('focus');
-
-      outline: 2px solid var(--text-field-outline-focus);
-      outline-offset: -1px;
     }
 
     .text-field-bar::after {
