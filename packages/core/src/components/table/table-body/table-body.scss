@@ -6,19 +6,6 @@ tds-table-body {
   @include tds-box-sizing;
 
   display: table-row-group;
-
-  .tds-table__info-message {
-    @include detail-02;
-
-    display: table-cell;
-    box-sizing: border-box;
-    color: var(--table-text);
-    padding: var(--tds-spacing-element-16);
-    min-width: 192px;
-    vertical-align: top;
-    background-color: transparent;
-    transition: background-color 200ms ease;
-  }
 }
 
 // Zebra mode: rows and columns
