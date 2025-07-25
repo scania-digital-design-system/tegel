@@ -4,13 +4,13 @@ tds-text-field {
   --text-field-background-primary: var(--color-background-layer-01);
   --text-field-background-secondary: var(--color-background-layer-02);
   --text-field-background: var(--text-field-background-primary);
-  --text-field-text-color: var(--color-foreground-text-strong);
+  --text-field-text: var(--color-foreground-text-strong);
   --text-field-placeholder: var(--color-foreground-text-subtle);
-  --text-field-affix-color: var(--color-foreground-text-defined);
+  --text-field-affix: var(--color-foreground-text-defined);
 
   // Colors - Label
-  --text-field-label-color: var(--color-foreground-text-strong);
-  --text-field-label-inside-color: var(--color-foreground-text-strong);
+  --text-field-label: var(--color-foreground-text-strong);
+  --text-field-label-inside: var(--color-foreground-text-strong);
 
   // Colors - Border
   --text-field-border-bottom-readonly: var(--color-foreground-border-strong);
@@ -20,64 +20,26 @@ tds-text-field {
 
   // Colors - Error state
   --text-field-helper-error: var(--color-system-danger-default);
-  --text-field-affix-color-error: var(--color-foreground-text-defined);
+  --text-field-affix-error: var(--color-foreground-text-defined);
 
   // Colors - Disabled state
   --text-field-background-disabled-primary: var(--color-background-layer-01);
   --text-field-background-disabled-secondary: var(--color-background-layer-02);
   --text-field-background-disabled: var(--text-field-background-disabled-primary);
-  --text-field-text-color-disabled: var(--color-foreground-text-subtle);
+  --text-field-text-disabled: var(--color-foreground-text-subtle);
   --text-field-placeholder-disabled: var(--color-foreground-text-subtle);
   --text-field-label-disabled: var(--color-foreground-text-subtle);
-  --text-field-affix-color-disabled: var(--color-foreground-text-disabled);
+  --text-field-affix-disabled: var(--color-foreground-text-disabled);
   --text-field-helper-disabled: var(--color-foreground-text-disabled);
 
   // Colors - Read only state
-  --text-field-icon-read-only-label-color: var(--color-foreground-text-strong);
+  --text-field-icon-read-only-label: var(--color-foreground-text-strong);
   --text-field-icon-read-only-label-background: var(--color-system-info-subtle);
 
   // Colors - Text counter
   --text-field-textcounter: var(--color-foreground-text-defined);
   --text-field-textcounter-disabled: var(--color-foreground-text-disabled);
   --text-field-textcounter-divider: var(--color-foreground-text-disabled);
-
-  // Border radius
-  --text-field-border-radius: 4px 4px 0 0;
-
-  // Border colors - Default
-  --text-field-border-color-left: transparent;
-  --text-field-border-color-right: transparent;
-  --text-field-border-color-bottom: var(--color-foreground-border-soft);
-  --text-field-border-color-top: transparent;
-
-  // Border colors - Hover
-  --text-field-border-color-left-hover: transparent;
-  --text-field-border-color-right-hover: transparent;
-  --text-field-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --text-field-border-color-top-hover: transparent;
-
-  // Border colors - Success
-  --text-field-border-color-left-success: transparent;
-  --text-field-border-color-right-success: transparent;
-  --text-field-border-color-bottom-success: var(--color-foreground-border-strong);
-  --text-field-border-color-top-success: transparent;
-
-  // Border colors - Focus
-  --text-field-border-color-left-focus: transparent;
-  --text-field-border-color-right-focus: transparent;
-  --text-field-border-color-bottom-focus: var(--color-foreground-border-strong);
-  --text-field-border-color-top-focus: transparent;
-  --text-field-outline-color-focus: none;
-
-  // Border colors - Error
-  --text-field-border-color-left-error: transparent;
-  --text-field-border-color-right-error: transparent;
-  --text-field-border-color-bottom-error: var(--color-system-danger-default);
-  --text-field-border-color-top-error: transparent;
-
-  // Bar colors
-  --text-field-bar-color-focus: var(--color-foreground-border-accent-focus);
-  --text-field-bar-color-error: var(--color-system-danger-default);
 
   // Mode variants
   .tds-mode-variant-primary {
@@ -91,85 +53,35 @@ tds-text-field {
   }
 }
 
-/* Context variables */
-
 tds-text-field,
 .scania tds-text-field {
-  /* Textfield: units */
+  /* Textfield: border radius */
   --text-field-border-radius: 4px 4px 0 0;
 
-  /* Textfield: border colors */
-  --text-field-border-color-left: transparent;
-  --text-field-border-color-right: transparent;
-  --text-field-border-color-bottom: var(--color-foreground-border-soft);
-  --text-field-border-color-top: transparent;
-
-  /* Textfield: border colors on hover */
-  --text-field-border-color-left-hover: transparent;
-  --text-field-border-color-right-hover: transparent;
-  --text-field-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --text-field-border-color-top-hover: transparent;
-
-  /* Textfield: border colors on success */
-  --text-field-border-color-left-success: transparent;
-  --text-field-border-color-right-success: transparent;
-  --text-field-border-color-bottom-success: var(--color-foreground-border-strong);
-  --text-field-border-color-top-success: transparent;
-
-  /* Textfield: border colors on focus */
-  --text-field-border-color-left-focus: transparent;
-  --text-field-border-color-right-focus: transparent;
-  --text-field-border-color-bottom-focus: var(--color-foreground-border-strong);
-  --text-field-border-color-top-focus: transparent;
-  --text-field-outline-color-focus: none;
-
-  /* Textfield: border colors on error */
-  --text-field-border-color-left-error: transparent;
-  --text-field-border-color-right-error: transparent;
-  --text-field-border-color-bottom-error: var(--color-system-danger-default);
-  --text-field-border-color-top-error: transparent;
+  /* Textfield: box shadow */
+  --text-field-box-shadow: 0 1px 0 0 var(--color-foreground-border-soft);
+  --text-field-box-shadow-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --text-field-box-shadow-focus: 0 1px 0 0 var(--color-foreground-border-strong);
+  --text-field-box-shadow-error: 0 1px 0 0 var(--color-system-danger-default);
+  --text-field-box-shadow-success: 0 0 1px 0 var(--color-foreground-border-strong);
 
   /* Textfield: bar colors */
-  --text-field-bar-color-focus: var(--color-foreground-border-accent-focus);
-  --text-field-bar-color-error: var(--color-system-danger-default);
+  --text-field-bar-focus: var(--color-foreground-border-accent-focus);
+  --text-field-bar-error: var(--color-system-danger-default);
 }
 
 .traton tds-text-field {
   /* Textfield: units */
   --text-field-border-radius: 4px 4px 4px 4px;
 
-  /* Textfield: border colors */
-  --text-field-border-color-left: var(--color-foreground-border-soft);
-  --text-field-border-color-right: var(--color-foreground-border-soft);
-  --text-field-border-color-bottom: var(--color-foreground-border-soft);
-  --text-field-border-color-top: var(--color-foreground-border-soft);
-
-  /* Textfield: border colors on hover */
-  --text-field-border-color-left-hover: var(--color-foreground-border-strong);
-  --text-field-border-color-right-hover: var(--color-foreground-border-strong);
-  --text-field-border-color-bottom-hover: var(--color-foreground-border-strong);
-  --text-field-border-color-top-hover: var(--color-foreground-border-strong);
-
-  /* Textfield: border colors on success */
-  --text-field-border-color-left-success: var(--color-foreground-border-strong);
-  --text-field-border-color-right-success: var(--color-foreground-border-strong);
-  --text-field-border-color-bottom-success: var(--color-foreground-border-strong);
-  --text-field-border-color-top-success: var(--color-foreground-border-strong);
-
-  /* Textfield: border colors on focus */
-  --text-field-border-color-left-focus: var(--color-foreground-border-accent-focus);
-  --text-field-border-color-right-focus: var(--color-foreground-border-accent-focus);
-  --text-field-border-color-bottom-focus: var(--color-foreground-border-accent-focus);
-  --text-field-border-color-top-focus: var(--color-foreground-border-accent-focus);
-  --text-field-outline-color-focus: var(--color-foreground-border-accent-focus);
-
-  /* Textfield: border colors on error */
-  --text-field-border-color-left-error: var(--color-system-danger-default);
-  --text-field-border-color-right-error: var(--color-system-danger-default);
-  --text-field-border-color-bottom-error: var(--color-system-danger-default);
-  --text-field-border-color-top-error: var(--color-system-danger-default);
+  /* Textfield: box shadow */
+  --text-field-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --text-field-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --text-field-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --text-field-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+  --text-field-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
 
   /* Textfield: bar colors */
-  --text-field-bar-color-focus: transparent;
-  --text-field-bar-color-error: transparent;
+  --text-field-bar-focus: transparent;
+  --text-field-bar-error: transparent;
 }

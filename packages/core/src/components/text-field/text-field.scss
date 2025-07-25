@@ -1,65 +1,4 @@
-@import '../../../../../typography/utilities/typography-utility';
-
-// Mixins
-@mixin text-field-base {
-  all: unset;
-  border-radius: var(--text-field-border-radius);
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  border: none;
-  outline: none;
-  height: 100%;
-  color: var(--text-field-text-color);
-  background-color: var(--text-field-background);
-
-  &::placeholder {
-    color: var(--text-field-placeholder);
-  }
-
-  &:disabled {
-    user-select: none;
-    pointer-events: none;
-    background-color: var(--text-field-background-disabled);
-    color: var(--text-field-text-color-disabled);
-
-    &::placeholder {
-      color: var(--text-field-placeholder-disabled);
-    }
-
-    ~ .text-field-label-inside {
-      color: var(--text-field-label-disabled);
-    }
-  }
-}
-
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--text-field-placeholder);
-  }
-}
-
-@mixin label-inside-transition {
-  transition: 0.1s ease all;
-}
-
-@mixin border-colors($state: '') {
-  $suffix: if($state != '', '-#{$state}', '');
-
-  border-left: 1px solid var(--text-field-border-color-left#{$suffix});
-  border-right: 1px solid var(--text-field-border-color-right#{$suffix});
-  border-bottom: 1px solid var(--text-field-border-color-bottom#{$suffix});
-  border-top: 1px solid var(--text-field-border-color-top#{$suffix});
-}
+@import './text-field-mixins';
 
 .text-field-input {
   @include text-field-base;
@@ -81,19 +20,18 @@
 
 //Container for input field and prefix/suffix
 .text-field-container {
+  @include box-shadow;
+
   border-radius: var(--text-field-border-radius);
   display: flex;
   position: relative;
   height: 56px;
   box-sizing: border-box;
   background-color: var(--text-field-background);
-  @include border-colors;
-
-  transition: border-bottom-color 200ms ease, border-left-color 200ms ease,
-    border-right-color 200ms ease, border-top-color 200ms ease, outline-color 200ms ease;
+  transition: box-shadow 200ms ease, outline-color 200ms ease;
 
   &:hover {
-    @include border-colors('hover');
+    @include box-shadow('hover');
   }
 
   .form-text-field-md & {
@@ -112,7 +50,7 @@
 
 .text-field-data,
 .text-field-input {
-  color: var(--text-field-text-color);
+  color: var(--text-field-text);
 }
 
 //text-field label
@@ -122,7 +60,7 @@
 
   display: block;
   margin-bottom: var(--tds-spacing-element-8);
-  color: var(--text-field-label-color);
+  color: var(--text-field-label);
 }
 
 .text-field-label-inside {
@@ -130,7 +68,7 @@
 
   position: absolute;
   pointer-events: none;
-  color: var(--text-field-label-inside-color);
+  color: var(--text-field-label-inside);
   left: 16px;
 }
 
@@ -142,33 +80,34 @@
 //Handling position, focus and transition for label inside
 .form-text-field.text-field-container-label-inside {
   .text-field-input-lg {
+    @include placeholder-label;
+
     padding-top: var(--tds-spacing-element-24);
     padding-bottom: 15px;
 
     ~ .text-field-label-inside {
       top: 20px;
     }
-
-    @include placeholder-label;
   }
 
   .text-field-input-md,
   .text-field-input-sm {
+    @include placeholder-label;
+
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
 
     ~ .text-field-label-inside {
       top: 16px;
     }
-
-    @include placeholder-label;
   }
 
   &.text-field-focus,
   &.text-field-data {
     .text-field-label-inside {
       @include detail-07;
-      @include label-inside-transition;
+
+      transition: 0.1s ease all;
     }
 
     .text-field-input-sm ~ .text-field-label-inside,
@@ -190,12 +129,12 @@
   z-index: 1;
 
   &::after {
+    background: var(--text-field-bar-focus);
     content: '';
     height: 2px;
     width: 100%;
     bottom: 0;
     position: absolute;
-    background: var(--text-field-bar-color-focus);
     transform: scaleX(0);
     transition: 0.35s ease transform;
   }
@@ -205,9 +144,9 @@
 .form-text-field {
   &.text-field-focus {
     .text-field-container {
-      @include border-colors('focus');
+      @include box-shadow('focus');
 
-      outline: 2px solid var(--text-field-outline-color-focus);
+      outline: 2px solid var(--text-field-outline-focus);
       outline-offset: -1px;
     }
 
@@ -221,56 +160,52 @@
 .text-field-helper {
   @include detail-05;
 
+  color: var(--text-field-helper);
+  padding-top: var(--tds-spacing-element-4);
   display: flex;
   gap: 8px;
   justify-content: space-between;
+  flex-basis: 100%;
 
   & .text-field-textcounter {
     margin-left: auto;
   }
-
-  flex-basis: 100%;
-  padding-top: var(--tds-spacing-element-4);
-  color: var(--text-field-helper);
 }
 
 //Disabled state
 .form-text-field-disabled {
   .text-field-container {
     cursor: not-allowed;
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
+    box-shadow: none;
   }
 
   .text-field-slot-wrap-prefix,
-  .text-field-slot-wrap-suffix {
-    > * {
-      color: var(--text-field-affix-color-disabled);
-    }
-  }
-
+  .text-field-slot-wrap-suffix,
   .text-field-label-outside {
     > * {
-      color: var(--text-field-label-disabled);
+      color: var(--text-field-affix-disabled);
     }
   }
 
+  .text-field-label-inside,
   .text-field-helper {
-    color: var(--text-field-helper-disabled);
+    color: var(--text-field-label-disabled);
+  }
+
+  .text-field-input {
+    background-color: var(--text-field-background-disabled);
   }
 }
 
 //Read only state
 
 .text-field-icon__readonly {
+  color: var(--text-field-icon-read-only-label);
   display: none;
   position: absolute;
   right: 18px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-field-icon-read-only-label-color);
 
   & .tds-tooltip {
     min-width: 150px;
@@ -309,7 +244,7 @@
 //Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    @include border-colors('success');
+    @include box-shadow('success');
   }
 }
 
@@ -320,13 +255,13 @@
   }
 
   .text-field-container {
-    @include border-colors('error');
+    @include box-shadow('error');
   }
 
   .text-field-bar {
     &::before,
     &::after {
-      background: var(--text-field-bar-color-error);
+      background: var(--text-field-bar-error);
     }
   }
 }
@@ -365,18 +300,18 @@
 
 .text-field-slot-wrap-prefix,
 .text-field-slot-wrap-suffix {
-  align-self: center;
   @include detail-02;
 
+  color: var(--text-field-affix);
+  align-self: center;
   margin: 0 0 0 14px;
-  color: var(--text-field-affix-color);
 
   &::slotted(:not(tds-icon)) {
     margin: 0 0 0 2px;
   }
 
   &.text-field-error {
-    color: var(--text-field-affix-color-error);
+    color: var(--text-field-affix-error);
   }
 }
 
