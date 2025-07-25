@@ -38,10 +38,10 @@ tds-icon.edit-icon {
 ::slotted(input) {
   @include detail-02;
 
-  box-sizing: border-box;
+  color: var(--table-text);
   padding-left: var(--tds-spacing-element-16);
   padding-right: var(--tds-spacing-element-16);
-  color: var(--table-text);
+  box-sizing: border-box;
   background-color: transparent;
   height: 48px;
   border-radius: 0;
@@ -57,14 +57,14 @@ tds-icon.edit-icon {
 
 ::slotted(input:disabled) {
   background-color: var(--table-input-disabled);
-  cursor: not-allowed;
   color: var(--table-input-text-disabled);
+  cursor: not-allowed;
 }
 
 ::slotted(input:focus) {
-  outline: none;
   background-color: var(--table-input-focus);
   border-bottom: 2px solid var(--tds-text-field-bar);
+  outline: none;
 }
 
 /* Add compact-design specific styles here */
