@@ -30,11 +30,9 @@ tds-text-field {
   --text-field-placeholder-disabled: var(--color-foreground-text-subtle);
   --text-field-label-disabled: var(--color-foreground-text-subtle);
   --text-field-affix-disabled: var(--color-foreground-text-disabled);
-  --text-field-helper-disabled: var(--color-foreground-text-disabled);
 
   // Colors - Read only state
   --text-field-icon-read-only-label: var(--color-foreground-text-strong);
-  --text-field-icon-read-only-label-background: var(--color-system-info-subtle);
 
   // Colors - Text counter
   --text-field-textcounter: var(--color-foreground-text-defined);
