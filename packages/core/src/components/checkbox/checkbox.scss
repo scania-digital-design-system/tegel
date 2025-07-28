@@ -88,7 +88,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       &::before {
         background-color: var(--tds-checkbox-background-focus);
         opacity: var(--tds-checkbox-background-opacity-focus);

@@ -59,7 +59,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       &::before {
         background-color: var(--tds-radio-button-background-focus);
         animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;

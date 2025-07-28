@@ -52,13 +52,13 @@
       top: 4px;
     }
 
-    &:focus {
+    &:focus-visible {
       outline: none;
       outline: 2px solid var(--tds-toggle-border-outline);
       border-radius: 16px;
       outline-offset: 0;
 
-       &::before {
+      &::before {
         background-color: var(--tds-toggle-off-slider-focus);
         border: 1px solid var(--tds-toggle-off-border-focus);
       }
@@ -76,7 +76,7 @@
         background-color: var(--tds-toggle-on-slider);
       }
 
-      &:focus {
+      &:focus-visible {
         &::before {
           background-color: var(--tds-toggle-on-slider-focus);
           border: 1px solid var(--tds-toggle-off-border-focus);
