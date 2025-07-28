@@ -144,7 +144,8 @@
 .form-text-field {
   &.text-field-focus {
     .text-field-container {
-      @include box-shadow('focus');
+      outline: var(--text-field-focus-outline);
+      outline-offset: var(--text-field-focus-outline-offset);
     }
 
     .text-field-bar::after {
@@ -260,6 +261,14 @@
     &::after {
       background: var(--text-field-bar-error);
     }
+  }
+}
+
+// Error state focus
+.text-field-focus.form-text-field-error {
+  .text-field-container {
+    outline: var(--text-field-focus-outline-error);
+    outline-offset: var(--text-field-focus-outline-offset);
   }
 }
 

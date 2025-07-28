@@ -63,11 +63,16 @@ tds-text-field,
   --text-field-box-shadow-hover: 0 1px 0 0 var(--color-foreground-border-strong);
   --text-field-box-shadow-focus: 0 1px 0 0 var(--color-foreground-border-strong);
   --text-field-box-shadow-error: 0 1px 0 0 var(--color-system-danger-default);
-  --text-field-box-shadow-success: 0 0 1px 0 var(--color-foreground-border-strong);
+  --text-field-box-shadow-success: 0 1px 0 0 var(--color-foreground-border-strong);
 
   /* Textfield: bar colors */
   --text-field-bar-focus: var(--color-foreground-border-accent-focus);
   --text-field-bar-error: var(--color-system-danger-default);
+
+  /* Textfield: focus outline */
+  --text-field-focus-outline: none;
+  --text-field-focus-outline-error: none;
+  --text-field-focus-outline-offset: 0;
 }
 
 .traton tds-text-field {
@@ -78,9 +83,13 @@ tds-text-field,
   --text-field-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
   --text-field-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
   --text-field-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
-  --text-field-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
-  --text-field-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
   --text-field-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
+  --text-field-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+
+  /* Textfield: focus outline */
+  --text-field-focus-outline: 2px solid var(--color-foreground-border-accent-focus);
+  --text-field-focus-outline-error: 2px solid var(--color-system-danger-default);
+  --text-field-focus-outline-offset: 0;
 
   /* Textfield: bar colors */
   --text-field-bar-focus: transparent;
