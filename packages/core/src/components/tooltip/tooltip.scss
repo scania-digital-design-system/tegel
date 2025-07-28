@@ -8,7 +8,6 @@
 
 .tds-tooltip {
   @include tds-box-sizing;
-
   @include detail-05;
 
   color: var(--tooltip-text);
