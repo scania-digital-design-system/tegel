@@ -11,7 +11,7 @@ $btn-xs-height: 24px;
 $btn-sm-only-icon-padding: 11px;
 $btn-md-only-icon-padding: 13px;
 $btn-lg-only-icon-padding: 17px;
-$types: (primary, secondary, ghost, danger);
+$types: (primary, secondary, ghost, danger, experimental);
 $props: (background, border-color, color, outline-color);
 $iconProps: (fill, color);
 
@@ -38,12 +38,12 @@ button {
   border: 1px solid transparent;
 
   &:focus {
-    outline: 1px solid var(--scania-blue-400);
+    outline: 2px solid var(--scania-blue-400);
   }
 
-  &:focus-visible {
-    @include tds-focus-state;
-  }
+  // &:focus-visible {
+  //   @include tds-focus-state;
+  // }
 
   &.xs {
     padding: var(--tds-spacing-element-4) var(--tds-spacing-element-8);
