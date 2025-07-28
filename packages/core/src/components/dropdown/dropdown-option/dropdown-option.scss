@@ -1,101 +1,181 @@
-@import '../../../mixins/focus-state';
-@import '../../../mixins/box-sizing';
+@import '../../mixins/box-sizing';
 
 :host {
+  // If the user sets a custom height on the checkbox
+  // (height 100%, to fill a list item in a dropdown, for example)
+  // The default behavior is to center the label and checkbox vertically.
+  align-items: center;
+
+  // Limit the clickable area to the bounds of the host element.
+  position: relative;
+
+  // If the user adds paddings to the host element, we it to stay the same size.
+  box-sizing: border-box;
+}
+
+.tds-checkbox {
   @include tds-box-sizing;
 
-  display: block;
-  background-color: var(--tds-dropdown-option-background);
+  font: var(--tds-detail-02);
+  letter-spacing: var(--tds-detail-02-ls);
+  color: var(--tds-checkbox-text);
+  display: flex;
+  align-items: center;
+  margin-left: -4px;
 
-  .dropdown-option {
-    color: var(--tds-dropdown-option-color);
-    border-bottom: 1px solid var(--tds-dropdown-option-border);
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
-    overflow-wrap: anywhere;
-    transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
+  input[type='checkbox'] {
+    appearance: none;
+    outline: none;
+    margin: 0;
+    border: 0;
+    border-radius: 2px;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+    align-self: flex-start;
 
-    &.selected {
-      background-color: var(--tds-dropdown-option-background-selected);
-    }
+    + label {
+      color: var(--tds-checkbox-color);
+      padding-left: var(--tds-spacing-element-4);
+      padding-top: var(--tds-spacing-element-4);
+      padding-bottom: var(--tds-spacing-element-4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
 
-    &.disabled {
-      color: var(--tds-dropdown-option-color-disabled);
-    }
-
-    & button:focus {
-      outline: 2px solid var(--tds-dropdown-option-focus);
-      box-shadow: inset 0 0 0 3px var(--tds-white);
-      outline-offset: -2px;
-    }
-
-    button {
-      all: unset;
-      width: 100%;
-
-      &.lg {
-        padding: 19px 0 20px;
-      }
-
-      &.md {
-        padding: 15px 0 16px;
-      }
-
-      &.sm {
-        padding: 11px 0 12px;
-      }
-
-      &.xs {
-        padding: 7px 0 8px;
-      }
-
-      .single-select {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 16px;
-      }
-    }
-
-    .multiselect {
-      width: 100%;
-      height: 100%;
-
-      tds-checkbox {
-        display: flex;
-        height: 100%;
+      // This makes the whole of <tds-checkbox> clickable, even if its :host element is resized by the user.
+      &::before {
+        content: '';
+        position: absolute;
         width: 100%;
-
-        &.lg {
-          padding: 15px 16px 16px;
-        }
-
-        &.md {
-          padding: 11px 16px 12px;
-        }
-
-        &.sm {
-          padding: 7px 16px 8px;
-        }
-
-        &.xs {
-          padding: 7px 16px 8px;
-        }
+        height: 100%;
+        left: 0;
+        top: 0;
       }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      box-sizing: border-box;
+    }
+
+    &::before {
+      width: 22px;
+      height: 22px;
+      left: 1px;
+      top: 1px;
+      border-radius: 4px;
+    }
+
+    &::after {
+      border: 1px solid var(--tds-checkbox-interaction-01);
+      background-color: var(--tds-checkbox-interaction-02);
+      width: 16px;
+      height: 16px;
+      left: 4px;
+      top: 4px;
+      border-radius: 2px;
     }
 
     &:hover {
-      border-bottom-color: var(--tds-dropdown-option-border-hover);
-      cursor: pointer;
+      &::before {
+        background-color: var(--tds-checkbox-background-hover);
+        opacity: var(--tds-checkbox-background-opacity-hover);
+      }
     }
 
-    &:hover.disabled {
-      border-bottom-color: var(--tds-dropdown-option-border-hover);
+    &:focus-visible {
+      &::before {
+        background-color: var(--tds-checkbox-background-focus);
+        opacity: var(--tds-checkbox-background-opacity-focus);
+        transition: opacity 0.2s ease-in-out;
+      }
+    }
+
+    &:disabled,
+    &.disabled {
       cursor: not-allowed;
+
+      &::after {
+        border-color: var(--tds-checkbox-border-color-disabled-after);
+      }
+
+      + label {
+        color: var(--tds-checkbox-disabled);
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    &:checked {
+      &::after {
+        background-image: var(--tds-checkbox-background-img);
+        background-color: var(--tds-checkbox-interaction-01);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &:hover {
+        &::before {
+          background-color: var(--tds-checkbox-background-hover);
+          opacity: var(--tds-checkbox-background-opacity-hover);
+        }
+      }
+
+      &:disabled,
+      &.disabled {
+        &:hover::before,
+        &::before {
+          display: block;
+          width: 16px;
+          height: 16px;
+          left: 4px;
+          top: 4px;
+          border: 1px solid #b0b7c4;
+        }
+
+        &::after {
+          background-image: var(--tds-checkbox-background-img-disabled);
+          background-color: var(--tds-checkbox-interaction-02);
+          color: var(--tds-checkbox-color-disabled-after);
+        }
+      }
+    }
+
+    &:indeterminate {
+      &::after {
+        background-image: var(--tds-checkbox-background-img-indeterminate);
+        background-color: var(--tds-checkbox-interaction-01);
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &:disabled {
+        &:hover::before,
+        &::before {
+          display: block;
+          width: 16px;
+          height: 16px;
+          left: 4px;
+          top: 4px;
+          border: 1px solid #b0b7c4;
+        }
+
+        &::after {
+          background-image: var(--tds-checkbox-background-img-indeterminate-disabled);
+          background-color: var(--tds-checkbox-interaction-02);
+          color: var(--tds-checkbox-color-disabled-after);
+        }
+      }
     }
   }
-}
-
-:host([hidden]) {
-  display: none;
 }

@@ -33,14 +33,14 @@
       line-height: 1.3;
     }
 
-    &:focus {
+    &:focus-visible {
       border-bottom: 0;
     }
 
     &.error {
       border-bottom: 1px solid var(--tds-dropdown-error);
 
-      &:focus {
+      &:focus-visible {
         border-bottom-color: transparent;
 
         &::before {
