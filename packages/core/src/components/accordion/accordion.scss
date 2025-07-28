@@ -14,31 +14,13 @@
   }
 }
 
-:host(:focus) {
-  @include tds-focus-state;
-
+:host(:active) {
   .tds-accordion-item {
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-focus);
+      background-color: var(--tds-accordion-background-active);
       outline: none;
-
-      &::after {
-        border-color: var(--tds-accordion-border-focus);
-      }
     }
-  }
-
-  .disabled {
-    @include tds-disabled-style;
-  }
-}
-
-:host(:active) {
-  .tds-accordion-header-icon-start,
-  .tds-accordion-header-icon-end {
-    background-color: var(--tds-accordion-background-active);
-    outline: none;
   }
 
   .disabled {
