@@ -24,15 +24,14 @@
   .dropdown-select {
     position: relative;
 
-    button:focus {
+    button:focus-visible {
       @include tds-focus-state;
 
       border-radius: 0;
     }
 
     button {
-      transition: border-bottom-color var(--tds-motion-duration-fast-02)
-        var(--tds-motion-easing-scania);
+      transition: border-bottom-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
     }
 
     button:hover {
@@ -47,7 +46,7 @@
       border-bottom-color: var(--tds-dropdown-error);
     }
 
-    button.error:focus {
+    button.error:focus-visible {
       border-bottom-color: transparent;
     }
 
@@ -88,7 +87,7 @@
         display: none;
       }
 
-      & + .placeholder:not(.sm) {
+      &+.placeholder:not(.sm) {
         margin-top: 8px;
       }
     }
@@ -126,7 +125,7 @@
           display: none;
         }
 
-        & + .placeholder:not(.sm) {
+        &+.placeholder:not(.sm) {
           margin-top: 8px;
         }
       }

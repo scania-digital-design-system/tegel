@@ -23,9 +23,8 @@
     flex-shrink: 0;
     align-self: flex-start;
 
-    + label {
-      padding: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
-        var(--tds-spacing-element-4);
+    +label {
+      padding: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4) var(--tds-spacing-element-4);
       cursor: pointer;
     }
 
@@ -59,7 +58,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       &::before {
         background-color: var(--tds-radio-button-background-focus);
         animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
@@ -79,7 +78,7 @@
         background-color: var(--tds-radio-button-interaction-02);
       }
 
-      + label {
+      +label {
         color: var(--tds-radio-button-disabled);
         cursor: not-allowed;
       }
