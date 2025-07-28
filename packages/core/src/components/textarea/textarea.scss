@@ -248,21 +248,6 @@
   position: absolute;
   right: 18px;
   top: 18px;
-  color: var(--textarea-icon-read-only-color);
-
-  &-label {
-    display: none;
-    position: absolute;
-    right: 18px;
-    top: 48px;
-    @include detail-05;
-
-    padding: 8px;
-    color: var(--textarea-icon-read-only-label-color);
-    background-color: var(--textarea-icon-read-only-label-background);
-    white-space: nowrap;
-    border-radius: 4px 0 4px 4px;
-  }
 }
 
 .textarea-readonly {
