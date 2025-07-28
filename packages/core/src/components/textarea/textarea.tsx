@@ -159,8 +159,8 @@ export class TdsTextarea {
       <div
         class={{
           'textarea-container': true,
-          'textarea-label-inside': this.labelPosition === 'inside',
           'textarea-focus': this.focusInput,
+          'textarea-label-inside': this.labelPosition === 'inside',
           'textarea-disabled': this.disabled,
           'textarea-readonly': !this.disabled && this.readOnly,
           [`tds-mode-variant-${this.setModeVariant(this.modeVariant)}`]: true,
@@ -177,7 +177,7 @@ export class TdsTextarea {
         <div class="textarea-wrapper">
           <textarea
             id={`textarea-element-${this.uuid}`}
-            class={'textarea-input'}
+            class="textarea-input"
             ref={(inputEl: HTMLTextAreaElement) => {
               this.textEl = inputEl;
             }}
