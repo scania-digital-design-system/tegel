@@ -110,17 +110,31 @@
   }
 
   &.textarea-focus {
+    &.textarea-label-inside {
+      .textarea-label {
+        @include detail-07;
+
+        top: var(--tds-spacing-element-8);
+      }
+    }
+
     .textarea-wrapper {
       &::after {
         transform: scaleX(1);
       }
     }
 
-    &.textarea-label-inside {
-      .textarea-label {
-        @include detail-07;
+    /* Focus outline */
+    .textarea-input {
+      outline: var(--textarea-focus-outline);
+      outline-offset: var(--textarea-focus-outline-offset);
+    }
 
-        top: var(--tds-spacing-element-8);
+    /* Focus outline error staet */
+    &.textarea-error {
+      .textarea-input {
+        outline: var(--textarea-focus-outline-error);
+        outline-offset: var(--textarea-focus-outline-offset);
       }
     }
   }
