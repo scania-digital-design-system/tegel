@@ -8,9 +8,9 @@
   position: relative;
 
   &::after {
+    border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
     content: ' ';
     display: block;
-    border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
     left: 0;
     right: 0;
     bottom: 0;
@@ -43,11 +43,11 @@
 
   .scroll-right-button,
   .scroll-left-button {
+    background-color: var(--inline-tabs-scroll-button);
     color: var(--inline-tabs-scroll-button-text);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--inline-tabs-scroll-button);
     display: none;
     justify-content: center;
     align-items: center;

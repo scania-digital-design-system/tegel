@@ -11,9 +11,9 @@
   z-index: tds-z-index(toast);
 
   .wrapper {
+    background-color: var(--toast-background);
     display: flex;
     width: calc(352px - 4px);
-    background-color: var(--toast-background);
     border-radius: 4px;
 
     &.information {
@@ -100,8 +100,9 @@
 
     .subheader,
     slot[name='subheader']::slotted(*) {
-      color: var(--toast-subheadline);
       @include detail-02;
+
+      color: var(--toast-subheadline);
 
       &.no-link {
         slot::slotted(*) {

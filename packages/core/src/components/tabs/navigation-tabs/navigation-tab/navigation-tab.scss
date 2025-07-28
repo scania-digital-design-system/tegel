@@ -1,5 +1,6 @@
 @import '../../../../mixins/focus-state';
 @import '../../../../mixins/box-sizing';
+@import '../../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
@@ -8,14 +9,8 @@
 
   ::slotted(*) {
     all: unset;
+    @include headline-07;
 
-    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font-family: var(--headline-07-font-family) !important;
-    font-size: var(--headline-07-font-size) !important;
-    line-height: var(--headline-07-line-height) !important;
-    font-weight: var(--headline-07-font-weight) !important;
-    letter-spacing: var(--headline-07-letter-spacing) !important;
-    text-transform: var(--headline-07-text-transform) !important;
     color: var(--navigation-tabs-tab);
     text-decoration: none;
     display: block;
@@ -29,13 +24,13 @@
   }
 
   ::slotted(*:focus-visible)::before {
+    outline: 2px solid var(--color-foreground-border-accent-focus);
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     top: 26px;
     bottom: 26px;
-    outline: 2px solid var(--color-foreground-border-accent-focus);
   }
 
   ::slotted(*:hover) {
@@ -65,6 +60,7 @@
   }
 
   .navigation-tab-item::after {
+    background-color: var(--navigation-tabs-tab-indicator-hover);
     content: ' ';
     position: absolute;
     bottom: 0;
@@ -74,7 +70,6 @@
     width: 0%;
     margin-right: auto;
     height: 2px;
-    background-color: var(--navigation-tabs-tab-indicator-hover);
     z-index: 1;
   }
 
@@ -84,8 +79,8 @@
     }
 
     &::after {
-      width: 100%;
       background-color: var(--navigation-tabs-tab-indicator-active);
+      width: 100%;
     }
   }
 

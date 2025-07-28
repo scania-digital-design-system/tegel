@@ -1,62 +1,6 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  .wrapper {
-    display: flex;
-    padding: 16px;
-    background-color: var(--message-main-background);
-    border-radius: 4px;
-
-    &.information {
-      border-left: 4px solid var(--message-info-border-color);
-
-      tds-icon {
-        color: var(--message-info-icon-color);
-      }
-    }
-
-    &.success {
-      border-left: 4px solid var(--message-success-border-color);
-
-      tds-icon {
-        color: var(--message-success-icon-color);
-      }
-    }
-
-    &.error {
-      background-color: var(--message-error-background);
-      border-left: 4px solid var(--message-error-border-color);
-
-      tds-icon {
-        color: var(--message-error-icon-color);
-      }
-    }
-
-    &.warning {
-      border-left: 4px solid var(--message-warning-border-color);
-
-      tds-icon {
-        color: var(--message-warning-icon-color);
-      }
-    }
-
-    &.minimal {
-      border: none;
-      padding: 0;
-      background-color: transparent;
-
-      .header {
-        @include detail-02;
-      }
-
-      &.error {
-        .header {
-          color: var(--message-error-header-text-color);
-        }
-      }
-    }
-  }
-
   /* Variant values */
   .tds-mode-variant-primary {
     --message-main-background: var(--message-mode-primary-background);
@@ -82,8 +26,67 @@
     }
 
     .extended-message {
-      color: var(--message-main-text-color);
       @include detail-02;
+
+      color: var(--message-main-text-color);
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    padding: 16px;
+    background-color: var(--message-main-background);
+    border-radius: 4px;
+    border-left-width: 4px;
+    border-left-style: solid;
+
+    &.information {
+      border-left-color: var(--message-info-border-color);
+
+      tds-icon {
+        color: var(--message-info-icon-color);
+      }
+    }
+
+    &.success {
+      border-left-color: var(--message-success-border-color);
+
+      tds-icon {
+        color: var(--message-success-icon-color);
+      }
+    }
+
+    &.error {
+      border-left-color: var(--message-error-border-color);
+      background-color: var(--message-error-background);
+
+      tds-icon {
+        color: var(--message-error-icon-color);
+      }
+    }
+
+    &.warning {
+      border-left-color: var(--message-warning-border-color);
+
+      tds-icon {
+        color: var(--message-warning-icon-color);
+      }
+    }
+
+    &.minimal {
+      border: none;
+      padding: 0;
+      background-color: transparent;
+
+      .header {
+        @include detail-02;
+      }
+
+      &.error {
+        .header {
+          color: var(--message-error-header-text-color);
+        }
+      }
     }
   }
 }

@@ -5,10 +5,10 @@
 @mixin slider-border-colors($state: '') {
   $suffix: if($state != '', '-#{$state}', '');
 
-  border-left: 1px solid var(--slider-border-color-left#{$suffix});
-  border-right: 1px solid var(--slider-border-color-right#{$suffix});
-  border-bottom: 1px solid var(--slider-border-color-bottom#{$suffix});
-  border-top: 1px solid var(--slider-border-color-top#{$suffix});
+  border-left: 1px solid var(--slider-border-left#{$suffix});
+  border-right: 1px solid var(--slider-border-right#{$suffix});
+  border-bottom: 1px solid var(--slider-border-bottom#{$suffix});
+  border-top: 1px solid var(--slider-border-top#{$suffix});
 }
 
 tds-slider {
@@ -65,9 +65,10 @@ tds-slider {
   .tds-slider__input-values {
     .tds-slider__input-field-wrapper {
       input.tds-slider__input-field {
+        @include slider-border-colors('success');
+
         color: var(--slider-input-success-text);
         box-shadow: var(--slider-border-success);
-        @include slider-border-colors('success');
 
         &:hover {
           box-shadow: var(--slider-border-success);
@@ -78,9 +79,9 @@ tds-slider {
 }
 
 .tds-slider-wrapper:focus-within {
+  border-radius: var(--tds-spacing-element-4);
   outline: 2px solid var(--tds-blue-400);
   outline-offset: 2px;
-  border-radius: var(--tds-spacing-element-4);
 }
 
 .tds-slider {
@@ -120,11 +121,11 @@ tds-slider {
     align-items: center;
 
     .tds-slider__input-value {
-      user-select: none;
-      padding: 18px;
-      color: var(--slider-input-value);
-
       @include detail-02;
+
+      color: var(--slider-input-value);
+      padding: 18px;
+      user-select: none;
 
       &.min-value {
         padding-left: 0;
@@ -133,33 +134,34 @@ tds-slider {
 
     .tds-slider__input-field-wrapper {
       background-color: var(--slider-inputfield-background);
+      border-radius: var(--slider-border-radius);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: var(--slider-border-radius);
 
       input.tds-slider__input-field {
         @include detail-02;
+        @include slider-border-colors;
 
+        border-radius: var(--slider-border-radius);
+        box-shadow: var(--slider-border-appearance);
         color: var(--slider-input-inputfield);
         border: 0;
         background-color: transparent;
         text-align: center;
         padding: 12px;
-        box-shadow: var(--slider-border-appearance);
-        border-radius: var(--slider-border-radius);
-
-        @include slider-border-colors;
 
         &:hover {
-          box-shadow: var(--slider-border-hover);
           @include slider-border-colors('hover');
+
+          box-shadow: var(--slider-border-hover);
         }
 
         &:focus {
+          @include slider-border-colors('focus');
+
           box-shadow: var(--slider-border-focus);
           outline: var(--slider-border-outline);
-          @include slider-border-colors('focus');
         }
       }
     }
@@ -168,9 +170,9 @@ tds-slider {
   label {
     @include detail-05;
 
+    color: var(--slider-label);
     user-select: none;
     position: absolute;
-    color: var(--slider-label);
     padding-bottom: 16px;
     transform: translateY(-100%);
 
@@ -182,6 +184,8 @@ tds-slider {
   .tds-slider__value {
     @include detail-01;
 
+    background-color: var(--slider-value-tooltip-background);
+    color: var(--slider-value-tooltip);
     z-index: 2;
     user-select: none;
     border-radius: 4px;
@@ -189,8 +193,6 @@ tds-slider {
     position: absolute;
     transform: translate(-50%, -100%);
     top: -24px;
-    background-color: var(--slider-value-tooltip-background);
-    color: var(--slider-value-tooltip);
 
     svg {
       color: var(--slider-value-tooltip-background);
@@ -205,10 +207,10 @@ tds-slider {
     position: absolute;
 
     .tds-slider__thumb-inner {
+      background-color: var(--slider-thumb);
       width: 20px;
       height: 20px;
       border-radius: 100%;
-      background-color: var(--slider-thumb);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -216,11 +218,11 @@ tds-slider {
       cursor: pointer;
 
       &::before {
+        background-color: var(--slider-thumb);
         content: ' ';
         display: none;
         width: 48px;
         height: 48px;
-        background-color: var(--slider-thumb);
         position: absolute;
         border-radius: 100%;
         top: 50%;
@@ -261,20 +263,19 @@ tds-slider {
     width: 100%;
 
     .tds-slider__value-divider {
-      transform: translateY(-50%);
-      height: 16px;
       background-color: var(--slider-divider);
       color: var(--slider-divider-values);
+      transform: translateY(-50%);
+      height: 16px;
       width: 1px;
 
       span {
-        display: block;
-        user-select: none;
-        color: var(-tds-grey-700);
-
         @include detail-05;
 
         letter-spacing: var(--tds-detail-05-ls);
+        display: block;
+        user-select: none;
+        color: var(-tds-grey-700);
         position: relative;
         top: -7px;
         left: 50%;
@@ -286,10 +287,10 @@ tds-slider {
   }
 
   .tds-slider__track {
+    background-color: var(--slider-track);
     width: 100%;
     height: 2px;
     border-radius: 1px;
-    background-color: var(--slider-track);
     position: relative;
     cursor: pointer;
 

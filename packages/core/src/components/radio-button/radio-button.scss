@@ -3,13 +3,12 @@
 
 .tds-radio-button {
   @include tds-box-sizing;
-
-  display: flex;
-  align-items: center;
-  margin-left: -4px;
   @include detail-02;
 
   color: var(--radio-button-label);
+  display: flex;
+  align-items: center;
+  margin-left: -4px;
 
   .tds-form-input[type='radio'] {
     appearance: none;
@@ -45,8 +44,8 @@
     }
 
     &::after {
-      border: 1px solid var(--radio-button-border);
       background-color: var(--radio-button-background-inverse);
+      border: 1px solid var(--radio-button-border);
       width: 16px;
       height: 16px;
       left: 4px;
@@ -80,8 +79,8 @@
       }
 
       &::after {
-        border-color: var(--radio-button-background-disabled);
         background-color: var(--radio-button-background-disabled);
+        border-color: var(--radio-button-background-disabled);
       }
 
       + label {
@@ -108,15 +107,14 @@
       border: 4px solid var(--radio-button-border);
     }
 
-    &:disabled,
-    &.disabled {
+    &:disabled {
       &::before {
+        border: 1px solid var(--radio-button-border-disabled);
         display: block;
         width: 16px;
         height: 16px;
         left: 3px;
         top: 3px;
-        border: 1px solid var(--radio-button-border-disabled);
         box-sizing: content-box;
       }
 

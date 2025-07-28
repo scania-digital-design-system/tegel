@@ -36,7 +36,6 @@ $spinner-sizes: (
 }
 
 .tds-spinner-svg {
-  /* Component variables */
   --radius: var(--radius-lg);
   --stroke-width: var(--stroke-width-lg);
   --animation-speed: var(--speed-lg);
@@ -59,6 +58,8 @@ $spinner-sizes: (
 
 .tds-spinner-circle {
   /* Circle configuration */
+  @include spinner-animation(var(--animation-speed));
+
   cx: var(--radius);
   cy: var(--radius);
   r: calc(var(--radius) - (var(--stroke-width) / 2));
@@ -69,7 +70,6 @@ $spinner-sizes: (
 
   stroke-dasharray: var(--stroke-dash);
   stroke-width: var(--stroke-width);
-  @include spinner-animation(var(--animation-speed));
 
   /* Color variants */
   &-standard {

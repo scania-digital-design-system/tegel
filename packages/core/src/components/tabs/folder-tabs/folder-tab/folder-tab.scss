@@ -1,5 +1,6 @@
 @import '../../../../mixins/focus-state';
 @import '../../../../mixins/box-sizing';
+@import '../../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
@@ -8,17 +9,11 @@
 
   ::slotted(*) {
     all: unset;
+    @include headline-07;
+
     min-width: 142px;
     display: block;
     width: calc(100% - 32px);
-
-    /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-    font-family: var(--headline-07-font-family) !important;
-    font-size: var(--headline-07-font-size) !important;
-    line-height: var(--headline-07-line-height) !important;
-    font-weight: var(--headline-07-font-weight) !important;
-    letter-spacing: var(--headline-07-letter-spacing) !important;
-    text-transform: var(--headline-07-text-transform) !important;
     cursor: pointer;
     padding: 16px;
     white-space: nowrap;
@@ -80,8 +75,8 @@
     border-top: 2px solid var(--folder-tab-border-selected);
 
     &::after {
-      content: ' ';
       background-color: var(--folder-tab-surface-selected);
+      content: ' ';
       width: 1px;
       top: 0;
       bottom: 0;

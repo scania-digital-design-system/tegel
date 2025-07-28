@@ -9,11 +9,11 @@
   .tds-table__header-cell--checkbox {
     @include headline-07;
 
-    display: table-cell;
-    text-align: left;
-    color: var(--table-text);
     background-color: var(--table-header);
     border-bottom: 1px solid var(--table-divider);
+    color: var(--table-text);
+    display: table-cell;
+    text-align: left;
     height: 48px;
     box-sizing: border-box;
 

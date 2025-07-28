@@ -4,10 +4,10 @@
 :host {
   button {
     all: unset;
-    height: 100%;
-    width: 100%;
     @include box-shadow;
 
+    height: 100%;
+    width: 100%;
     background-color: var(--dropdown-background);
     border-radius: var(--dropdown-border-radius);
     transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
@@ -33,7 +33,7 @@
 
       color: var(--dropdown-text);
 
-      /** Needed to not get be affected by overflow:hidden 
+      /** Needed to not get be affected by overflow:hidden
       The original line-height is 1.14 */
       line-height: 1.3;
     }

@@ -20,10 +20,10 @@
     display: inline-flex;
 
     label {
-      background-color: var(--chips-background);
-      color: var(--chips-text);
       @include detail-02;
 
+      background-color: var(--chips-background);
+      color: var(--chips-text);
       display: inline-flex;
       align-items: center;
       border-radius: var(--chips-border-radius);

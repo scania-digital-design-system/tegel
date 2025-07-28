@@ -61,7 +61,7 @@ $modals: (
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--modal-scroll-bar-thumb-color);
+    background-color: var(--modal-scroll-bar-thumb);
     border-radius: $scrollbar-radius;
   }
 }
@@ -71,14 +71,14 @@ $modals: (
   padding: 16px;
   position: sticky;
   top: 0;
-  background-color: var(--modal-background-color);
+  background-color: var(--modal-background);
   z-index: 1;
 }
 
 @mixin modal-header-title {
   @include headline-05;
 
-  color: var(--modal-text-color);
+  color: var(--modal-text);
   margin: 0;
   flex: 1;
 }
@@ -86,7 +86,7 @@ $modals: (
 @mixin modal-body {
   @include body-01;
 
-  color: var(--modal-text-color);
+  color: var(--modal-text);
   overflow-y: visible;
   padding: 0 16px 16px;
   @include modal-scrollbar;
@@ -105,7 +105,7 @@ $modals: (
 .tds-modal {
   @include tds-box-sizing;
 
-  background-color: var(--modal-background-color);
+  background-color: var(--modal-background);
   box-shadow: var(--modal-shadow);
   margin: auto;
   position: relative;
@@ -131,7 +131,7 @@ $modals: (
       bottom: -1px;
       left: 0;
       right: 0;
-      background-color: var(--modal-background-color);
+      background-color: var(--modal-background);
       padding: 24px 16px 16px;
       display: flex;
       gap: 16px;
@@ -140,7 +140,7 @@ $modals: (
 
   &__actions-static {
     slot[name='actions'] {
-      background-color: var(--modal-background-color);
+      background-color: var(--modal-background);
       display: flex;
       gap: 16px;
       padding: 24px 16px 16px;
@@ -190,7 +190,7 @@ slot[name='header']::slotted(*) {
   @include tds-box-sizing;
   @include modal-position;
 
-  background-color: var(--modal-backdrop-color);
+  background-color: var(--modal-backdrop);
   pointer-events: auto;
 }
 
@@ -205,7 +205,7 @@ button.tds-modal-close {
 .tds-modal-close {
   display: inline-block;
   height: auto;
-  color: var(--modal-text-color);
+  color: var(--modal-text);
   cursor: pointer;
 
   &:focus {
@@ -236,7 +236,7 @@ button.tds-modal-close {
   }
 
   svg {
-    fill: var(--modal-close-x-svg-color);
+    fill: var(--modal-cross-svg);
   }
 }
 

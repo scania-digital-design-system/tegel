@@ -1,7 +1,7 @@
 tds-link {
   --link: var(--color-foreground-text-accent-default);
   --link-hover: var(--color-foreground-text-accent-default);
-  --link-focus-outline: 2px solid var(--color-foreground-text-accent-default);
+  --link-focus-outline-width: 2px;
   --link-visited: var(--color-foreground-text-accent-default);
   --link-disabled: var(--color-foreground-text-disabled);
 }
@@ -12,13 +12,15 @@ tds-banner {
   }
 }
 
-tds-toast tds-link {
-  --link: var(--color-system-info-default);
-  --link-hover: var(--color-foreground-text-accent-default);
+tds-toast {
+  tds-link {
+    --link: var(--color-system-info-default);
+    --link-hover: var(--color-foreground-text-accent-default);
+  }
 }
 
 .traton {
   tds-link {
-    --link-focus-outline: 4px solid var(--color-foreground-border-accent-focus);
+    --link-focus-outline-width: 4px;
   }
 }

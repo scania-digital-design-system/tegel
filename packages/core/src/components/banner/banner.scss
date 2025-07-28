@@ -75,14 +75,14 @@
   }
 
   .banner-close {
-    color: var(--banner-x);
+    color: var(--banner-close-icon);
 
     button {
       padding-right: 16px;
       padding-top: 14px;
       background-color: transparent;
       border: none;
-      color: var(--banner-x);
+      color: var(--banner-close-icon);
 
       &:hover {
         cursor: pointer;

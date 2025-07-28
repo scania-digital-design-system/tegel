@@ -1,13 +1,6 @@
 @import '../../mixins/box-sizing';
 
-// This component does not have dark version so all css is in this file
-
 :host {
-  // Variables
-  --badge-background-color: var(--component-badge-background);
-  --badge-color-text: var(--component-badge-text);
-
-  // Styling
   @include tds-box-sizing;
 
   display: block;

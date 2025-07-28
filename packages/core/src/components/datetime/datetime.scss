@@ -52,24 +52,9 @@
 .tds-datetime-input,
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
-  &[type='datetime-local'] {
-    ~ .icon-time {
-      display: none;
-    }
-  }
-
-  &[type='date'] {
-    ~ .icon-time {
-      display: none;
-    }
-  }
-
-  &[type='month'] {
-    ~ .icon-time {
-      display: none;
-    }
-  }
-
+  &[type='datetime-local'],
+  &[type='date'],
+  &[type='month'],
   &[type='week'] {
     ~ .icon-time {
       display: none;
@@ -91,17 +76,8 @@
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
 }
 
-.tds-datetime-input-md {
-  @include datetime-base;
-  @include detail-02;
-
-  padding: var(--tds-spacing-element-16);
-}
-
+.tds-datetime-input-md,
 .tds-datetime-input-sm {
-  @include datetime-base;
-  @include detail-02;
-
   padding: var(--tds-spacing-element-16);
 }
 
@@ -166,22 +142,6 @@
   }
 }
 
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  //Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--datetime-placeholder-focus);
-  }
-}
-
 @mixin label-inside-transition {
   transition: 0.1s ease all;
 }
@@ -200,6 +160,15 @@
 //Datetime container with label inside
 //Handling position, focus and transition for label inside
 .tds-form-datetime.tds-datetime-container-label-inside {
+  .tds-datetime-input,
+  .tds-datetime-input-md,
+  .tds-datetime-input-sm {
+    ~ .tds-datetime-label-inside {
+      @include detail-07;
+      @include label-inside-transition;
+    }
+  }
+
   .tds-datetime-input {
     padding-top: var(--tds-spacing-element-24);
     padding-bottom: 15px;
@@ -207,21 +176,9 @@
     ~ .tds-datetime-label-inside {
       top: 20px;
     }
-
-    @include placeholder-label;
   }
 
-  .tds-datetime-input-md {
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-
-    ~ .tds-datetime-label-inside {
-      top: 16px;
-    }
-
-    @include placeholder-label;
-  }
-
+  .tds-datetime-input-md,
   .tds-datetime-input-sm {
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
@@ -229,32 +186,15 @@
     ~ .tds-datetime-label-inside {
       top: 16px;
     }
-
-    @include placeholder-label;
-  }
-
-  .tds-datetime-input-sm ~ .tds-datetime-label-inside {
-    @include detail-07;
-
-    @include label-inside-transition;
-
-    top: 8px;
-  }
-
-  .tds-datetime-input-md ~ .tds-datetime-label-inside {
-    @include detail-07;
-
-    @include label-inside-transition;
-
-    top: 8px;
   }
 
   .tds-datetime-input ~ .tds-datetime-label-inside {
-    @include detail-07;
-
-    @include label-inside-transition;
-
     top: 12px;
+  }
+
+  .tds-datetime-input-md ~ .tds-datetime-label-inside,
+  .tds-datetime-input-sm ~ .tds-datetime-label-inside {
+    top: 8px;
   }
 }
 
@@ -267,11 +207,11 @@
   &::after {
     content: '';
     height: 2px;
-    top: 54px;
     width: 0;
     position: absolute;
     background: var(--datetime-highlight);
     transition: 0.35s ease all;
+    top: 54px;
 
     .tds-form-datetime-md & {
       top: 46px;
@@ -315,10 +255,7 @@
 .tds-form-datetime-disabled {
   .tds-datetime-container {
     cursor: not-allowed;
-    border-left: 1px solid transparent;
-    border-right: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
+    border-color: transparent;
   }
 
   .datetime-icon {
@@ -341,11 +278,9 @@
     color: var(--tds-datetime-color-success);
   }
 
-  .tds-datetime-bar {
-    &::before,
-    &::after {
-      background: var(--tds-datetime-bar-sucess);
-    }
+  .tds-datetime-bar::before,
+  .tds-datetime-bar::after {
+    background: var(--tds-datetime-bar-sucess);
   }
 }
 
@@ -359,45 +294,27 @@
     @include border-colors('error');
   }
 
-  .tds-datetime-bar {
-    &::before,
-    &::after {
-      background: var(--datetime-highlight-error);
-    }
+  .tds-datetime-bar::before,
+  .tds-datetime-bar::after {
+    background: var(--datetime-highlight-error);
   }
 
-  .datetime-icon {
-    tds-icon {
-      color: var(--datetime-icon-error);
-    }
+  .datetime-icon tds-icon {
+    color: var(--datetime-icon-error);
   }
 }
 
 /* Datetime picker icon remove testing */
 
-input[type='datetime-local']::-webkit-inner-spin-button,
-input[type='datetime-local']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='date']::-webkit-inner-spin-button,
-input[type='date']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='month']::-webkit-inner-spin-button,
-input[type='month']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='week']::-webkit-inner-spin-button,
-input[type='week']::-webkit-calendar-picker-indicator {
-  opacity: 0;
-}
-
-input[type='time']::-webkit-inner-spin-button,
-input[type='time']::-webkit-calendar-picker-indicator {
-  opacity: 0;
+input[type='datetime-local'],
+input[type='date'],
+input[type='month'],
+input[type='week'],
+input[type='time'] {
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
 }
 
 @supports (-moz-appearance: none) {

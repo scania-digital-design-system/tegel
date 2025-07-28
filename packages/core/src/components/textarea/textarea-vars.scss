@@ -22,27 +22,16 @@ tds-textarea {
   --textarea-helper: var(--color-foreground-text-defined);
   --textarea-helper-error: var(--color-system-danger-default);
 
-  // Highlight bar
-  --textarea-bar: var(--color-foreground-border-accent-focus);
-  --textarea-bar-error: var(--color-system-danger-default);
-
   // Textcounter
   --textarea-textcounter: var(--color-foreground-text-defined);
   --textarea-textcounter-divider: var(--color-foreground-text-subtle);
 
-  // Border bottom
-  --textarea-border-bottom: 1px solid var(--color-foreground-border-soft);
-  --textarea-border-bottom-hover: 1px solid var(--color-foreground-border-defined);
-  --textarea-border-bottom-success: 1px solid var(--color-foreground-border-strong);
-  --textarea-border-bottom-error: 1px solid var(--color-system-danger-default);
-  --textarea-outline: none;
-
-  // Border radius
-  --textarea-border-radius: 4px 4px 0 0;
+  // Textarea: focus outline
+  --textarea-focus-outline: none;
+  --textarea-focus-outline-error: none;
+  --textarea-focus-outline-offset: 0;
 
   // Read only
-  --textarea-border-bottom-read-only-text: var(--color-foreground-border-subtle);
-  --textarea-icon-read-only-text: var(--color-foreground-text-strong);
   --textarea-icon-read-only-label: var(--color-foreground-text-strong);
 
   // Resize
@@ -59,56 +48,47 @@ tds-textarea {
   }
 }
 
+tds-textarea,
+.scania tds-textarea {
+  // Border radius
+  --textarea-border-radius: 4px 4px 0 0;
+
+  // Textarea: box shadow
+  --textarea-box-shadow: 0 1px 0 0 var(--color-foreground-border-soft);
+  --textarea-box-shadow-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --textarea-box-shadow-error: 0 1px 0 0 var(--color-system-danger-default);
+  --textarea-box-shadow-success: 0 1px 0 0 var(--color-foreground-border-strong);
+  --textarea-box-shadow-read-only: 0 1px 0 0 var(--color-foreground-border-subtle);
+  --textarea-box-shadow-disabled: none;
+
+  // Textarea: focus outline
+  --textarea-focus-outline: none;
+  --textarea-focus-outline-error: none;
+  --textarea-focus-outline-offset: 0;
+
+  // Highlight bar
+  --textarea-bar: var(--color-foreground-border-accent-focus);
+  --textarea-bar-error: var(--color-system-danger-default);
+}
+
 .traton tds-textarea {
-  // Radius
+  // Border radius
   --textarea-border-radius: 4px;
 
-  // Border
-  --textarea-border-bottom: none;
-  --textarea-border-bottom-hover: none;
-  --textarea-border-bottom-success: none;
-  --textarea-border-bottom-error: none;
+  // Textarea: box shadow
+  --textarea-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --textarea-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --textarea-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+  --textarea-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
+  --textarea-box-shadow-read-only: 0 0 0 1px var(--color-foreground-border-subtle);
+  --textarea-box-shadow-disabled: none;
 
-  // Outline
-  --textarea-outline: 1px solid var(--color-foreground-border-soft);
-  --textarea-outline-hover: 1px solid var(--color-foreground-border-defined);
-  --textarea-outline-success: 1px solid var(--color-foreground-border-strong);
-  --textarea-outline-error: 1px solid var(--color-system-danger-default);
-}
+  // Textarea: focus outline
+  --textarea-focus-outline: 2px solid var(--color-foreground-border-accent-focus);
+  --textarea-focus-outline-error: 2px solid var(--color-system-danger-default);
+  --textarea-focus-outline-offset: 0;
 
-.traton {
-  .textarea-container:not(.textarea-disabled) {
-    textarea {
-      &:focus {
-        outline: solid 2px var(--textarea-bar);
-      }
-    }
-  }
-}
-
-.scania .textarea-container:not(.textarea-disabled) {
-  .textarea-wrapper {
-    &::before,
-    &::after {
-      content: '';
-      height: 2px;
-      width: 0;
-      position: absolute;
-      background: var(--textarea-bar);
-      transition: 0.35s ease all;
-    }
-
-    &::before {
-      left: 50%;
-    }
-
-    &::after {
-      right: 50%;
-    }
-
-    &::after,
-    &::before {
-      top: calc(100% - 2px);
-    }
-  }
+  // Highlight bar
+  --textarea-bar: transparent;
+  --textarea-bar-error: transparent;
 }

@@ -47,9 +47,9 @@
     border-top: 1px solid var(--footer-main-divider);
 
     small.copyright {
-      margin: 0;
       @include detail-02;
 
+      margin: 0;
       color: var(--footer-main-copyright);
     }
 

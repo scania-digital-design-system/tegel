@@ -23,6 +23,17 @@
     position: relative;
     width: unset;
     min-width: 100%;
+
+    &::after {
+      background: var(--textarea-bar);
+      content: '';
+      height: 2px;
+      width: 100%;
+      bottom: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transition: 0.35s ease transform;
+    }
   }
 }
 
@@ -35,9 +46,9 @@
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
-  border-bottom: var(--textarea-border-bottom);
-  outline: var(--textarea-outline);
-  transition: border-bottom-color 200ms ease;
+  @include box-shadow;
+
+  transition: box-shadow 200ms ease;
 
   // Display none only works in Chrome
   &::-webkit-resizer {
@@ -45,8 +56,7 @@
   }
 
   &:hover {
-    border-bottom: var(--textarea-border-bottom-hover);
-    outline: var(--textarea-outline-hover);
+    @include box-shadow('hover');
   }
 }
 
@@ -107,6 +117,26 @@
         top: var(--tds-spacing-element-8);
       }
     }
+
+    .textarea-wrapper {
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    /* Focus outline */
+    .textarea-input {
+      outline: var(--textarea-focus-outline);
+      outline-offset: var(--textarea-focus-outline-offset);
+    }
+
+    /* Focus outline error staet */
+    &.textarea-error {
+      .textarea-input {
+        outline: var(--textarea-focus-outline-error);
+        outline-offset: var(--textarea-focus-outline-offset);
+      }
+    }
   }
 
   &.textarea-data {
@@ -160,20 +190,17 @@
 
 .textarea-success {
   .textarea-input {
-    border-bottom: var(--textarea-border-bottom-success);
-    outline: var(--textarea-outline-success);
+    @include box-shadow('success');
   }
 }
 
 .textarea-error {
   .textarea-input {
-    border-bottom: var(--textarea-border-bottom-error);
-    outline: var(--textarea-outline-error);
+    @include box-shadow('error');
   }
 
   .textarea-wrapper {
-    &::after,
-    &::before {
+    &::after {
       background: var(--textarea-bar-error);
     }
   }
@@ -188,7 +215,8 @@
   cursor: not-allowed;
 
   .textarea-input {
-    border-bottom-color: transparent;
+    @include box-shadow('disabled');
+
     pointer-events: none;
     user-select: none;
   }
@@ -220,21 +248,6 @@
   position: absolute;
   right: 18px;
   top: 18px;
-  color: var(--textarea-icon-read-only-color);
-
-  &-label {
-    display: none;
-    position: absolute;
-    right: 18px;
-    top: 48px;
-    @include detail-05;
-
-    padding: 8px;
-    color: var(--textarea-icon-read-only-label-color);
-    background-color: var(--textarea-icon-read-only-label-background);
-    white-space: nowrap;
-    border-radius: 4px 0 4px 4px;
-  }
 }
 
 .textarea-readonly {
@@ -243,7 +256,7 @@
   }
 
   .textarea-input {
-    border: 1px solid var(--textarea-border-bottom-read-only-text);
+    @include box-shadow('read-only');
   }
 
   .textfield-container {

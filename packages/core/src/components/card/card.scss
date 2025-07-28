@@ -2,17 +2,6 @@
 @import '../../../../../typography/utilities/typography-utility';
 @import '../../mixins/focus-state';
 
-//  Mixins
-@mixin card-detail-03 {
-  /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
-  font-family: var(--detail-03-font-family) !important;
-  letter-spacing: var(--detail-03-letter-spacing) !important;
-  font-size: var(--detail-03-font-size);
-  line-height: var(--detail-03-line-height);
-  font-weight: var(--detail-03-font-weight);
-  text-transform: var(--detail-03-text-transform);
-}
-
 .card {
   @include tds-box-sizing;
 
@@ -92,7 +81,7 @@
   }
 
   slot[name='body']::slotted(*) {
-    @include card-detail-03;
+    @include detail-03;
 
     color: var(--card-body-color);
     padding: var(--card-body-padding);
