@@ -1,4 +1,5 @@
 @import '../../../../../typography/utilities/typography-utility';
+@import '../../mixins/focus-state';
 @import './toggle-vars';
 
 .tds-toggle {
@@ -13,8 +14,8 @@
     margin-bottom: 12px;
 
     &.disabled {
-      user-select: none;
       color: var(--toggle-disabled);
+      user-select: none;
     }
   }
 
@@ -30,41 +31,39 @@
 
     &::after,
     &::before {
+      transition: all var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
       content: '';
       position: absolute;
       box-sizing: border-box;
-      transition: all var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
     }
 
     &::before {
       /* Slider */
-      width: 44px;
-      height: 24px;
-      border-radius: 16px;
       background-color: var(--toggle-background-off);
-      left: 0;
       border: 2px solid transparent;
+      border-radius: 16px;
+      left: 0;
+      height: 24px;
+      width: 44px;
     }
 
     /* Switch */
     &::after {
-      width: 16px;
-      height: 16px;
       background-color: var(--toggle-switch);
       border-radius: 50%;
       left: 4px;
       top: 4px;
+      width: 16px;
+      height: 16px;
     }
 
     &:focus {
-      outline: none;
-      outline: 2px solid var(--toggle-border-focus);
+      @include tds-focus-state;
+
       border-radius: 16px;
-      outline-offset: 0;
 
       &::before {
         background-color: var(--toggle-disabled);
-        border: 2px solid var(--toggle-border-focus);
       }
     }
 
@@ -145,16 +144,16 @@
   label {
     @include detail-02;
 
+    color: var(--toggle-text);
     cursor: pointer;
     user-select: none;
     display: inline-block;
     vertical-align: middle;
-    color: var(--toggle-text);
     padding-left: 8px;
 
     &.disabled {
-      pointer-events: none;
       color: var(--toggle-disabled);
+      pointer-events: none;
     }
   }
 }
