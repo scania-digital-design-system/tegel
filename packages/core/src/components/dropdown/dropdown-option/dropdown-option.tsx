@@ -97,7 +97,7 @@ export class TdsDropdownOption {
 
   connectedCallback() {
     if (!this.tdsAriaLabel && !this.multiselect) {
-      console.warn('Tegel Dropdown component: tdsAriaLabel prop is missing');
+      console.warn('Tegel Dropdown option component: tdsAriaLabel prop is missing');
     }
   }
 
@@ -164,7 +164,7 @@ export class TdsDropdownOption {
     return (
       <Host>
         <div
-          class={`dropdown-option 
+          class={`dropdown-option
           ${this.size}
           ${this.selected ? 'selected' : ''}
           ${this.disabled ? 'disabled' : ''}
