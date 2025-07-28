@@ -3,7 +3,7 @@
 
 :host {
   .dropdown-select {
-    &:focus-visible {
+    &:focus-within {
       @include tds-focus-state;
     }
   }
