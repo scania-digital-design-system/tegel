@@ -3,7 +3,7 @@
  */
 
 // Icon base path - can be overridden for different environments
-$icon-base-path: '../dist/tegel/assets' !default;
+$icon-base-path: './assets' !default;
 
 :root {
   --traton-icon-arrow_diagonal-svg: url(#{$icon-base-path}/icons/traton/arrow_diagonal.svg);
