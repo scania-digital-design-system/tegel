@@ -1,4 +1,5 @@
 $cdn: 'https://cdn.digitaldesign.scania.com';
+$font-base-path: '../dist/tegel/assets' !default;
 
 /* TODO: Add CY to all cyrilic fonts */
 @font-face {
@@ -6,7 +7,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-weight: bold;
   font-display: swap;
   unicode-range: U+0400-04FF;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCY-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCY-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Bold.woff') format('woff');
 }
@@ -16,7 +17,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-style: italic;
   font-display: swap;
   unicode-range: U+0400-04FF;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCY-Italic.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCY-Italic.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Italic.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Italic.woff') format('woff');
 }
@@ -25,7 +26,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans';
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCY-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCY-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Regular.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCY-Regular.woff') format('woff');
 }
@@ -35,7 +36,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-weight: bold;
   font-display: swap;
   unicode-range: U+0400-04FF;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYCondensed-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYCondensed-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Bold.woff') format('woff');
 }
@@ -45,7 +46,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-style: italic;
   font-display: swap;
   unicode-range: U+0400-04FF;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYCondensed-Italic.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYCondensed-Italic.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Italic.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Italic.woff') format('woff');
@@ -55,7 +56,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Condensed';
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYCondensed-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYCondensed-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Regular.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYCondensed-Regular.woff')
@@ -67,7 +68,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-weight: bold;
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYHeadline-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYHeadline-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYHeadline-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYHeadline-Bold.woff') format('woff');
 }
@@ -76,7 +77,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Headline';
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYHeadline-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYHeadline-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYHeadline-Regular.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYHeadline-Regular.woff') format('woff');
@@ -87,7 +88,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-weight: bold;
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYSemiCondensed-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYSemiCondensed-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Bold.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Bold.woff')
@@ -99,7 +100,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-style: italic;
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYSemiCondensed-Italic.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYSemiCondensed-Italic.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Italic.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Italic.woff')
@@ -110,7 +111,8 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Semi Condensed';
   unicode-range: U+0400-04FF;
   font-display: swap;
-  src: url('./assets/fonts/cyrillic/ScaniaSansCYSemiCondensed-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/cyrillic/ScaniaSansCYSemiCondensed-Regular.woff')
+    format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Regular.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/cyrillic/ScaniaSansCYSemiCondensed-Regular.woff')
@@ -121,7 +123,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans';
   font-weight: bold;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSans-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSans-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSans-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSans-Bold.woff') format('woff');
 }
@@ -130,7 +132,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans';
   font-style: italic;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSans-Italic.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSans-Italic.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSans-Italic.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSans-Italic.woff') format('woff');
 }
@@ -138,7 +140,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 @font-face {
   font-family: 'Scania Sans';
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSans-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSans-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSans-Regular.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSans-Regular.woff') format('woff');
 }
@@ -147,7 +149,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Condensed';
   font-weight: bold;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansCondensed-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansCondensed-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansCondensed-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansCondensed-Bold.woff') format('woff');
 }
@@ -156,7 +158,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Condensed';
   font-style: italic;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansCondensed-Italic.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansCondensed-Italic.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansCondensed-Italic.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansCondensed-Italic.woff') format('woff');
 }
@@ -164,7 +166,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 @font-face {
   font-family: 'Scania Sans Condensed';
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansCondensed-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansCondensed-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansCondensed-Regular.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansCondensed-Regular.woff') format('woff');
 }
@@ -173,7 +175,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Headline';
   font-weight: bold;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansHeadline-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansHeadline-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansHeadline-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansHeadline-Bold.woff') format('woff');
 }
@@ -181,7 +183,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 @font-face {
   font-family: 'Scania Sans Headline';
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansHeadline-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansHeadline-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansHeadline-Regular.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansHeadline-Regular.woff') format('woff');
 }
@@ -190,7 +192,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Semi Condensed';
   font-weight: bold;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansSemiCondensed-Bold.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansSemiCondensed-Bold.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansSemiCondensed-Bold.woff2') format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansSemiCondensed-Bold.woff') format('woff');
 }
@@ -199,7 +201,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
   font-family: 'Scania Sans Semi Condensed';
   font-style: italic;
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansSemiCondensed-Italic.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansSemiCondensed-Italic.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansSemiCondensed-Italic.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansSemiCondensed-Italic.woff') format('woff');
@@ -208,7 +210,7 @@ $cdn: 'https://cdn.digitaldesign.scania.com';
 @font-face {
   font-family: 'Scania Sans Semi Condensed';
   font-display: swap;
-  src: url('./assets/fonts/latin/ScaniaSansSemiCondensed-Regular.woff') format('woff'),
+  src: url('#{$font-base-path}/fonts/latin/ScaniaSansSemiCondensed-Regular.woff') format('woff'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansSemiCondensed-Regular.woff2')
     format('woff2'),
     url('#{$cdn}/fonts/scania-sans/1.0.0/latin/ScaniaSansSemiCondensed-Regular.woff') format('woff');

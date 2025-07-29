@@ -2,7 +2,7 @@ $prefix: 'tds';
 $cdn: 'https://cdn.digitaldesign.scania.com';
 $folder: '/logotype/multibrand';
 $logotypes: ('wordmark', 'wordmark-white', 'symbol', 'logotype');
-$local-directory: './assets/logos';
+$local-directory: '../dist/tegel/assets/logos';
 
 :root,
 html {
