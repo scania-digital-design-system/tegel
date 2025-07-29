@@ -82,11 +82,11 @@ export default {
     },
   },
   args: {
+    modeVariant: 'Inherit from parent',
     menuPosition: 'Auto',
     icons: false,
     fluidWidth: false,
     animation: 'none',
-    modeVariant: 'Inherit from parent',
   },
 };
 
