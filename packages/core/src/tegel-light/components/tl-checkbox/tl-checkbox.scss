@@ -2,7 +2,6 @@
 @import '../../../../../../typography/utilities/typography-utility';
 @import './tl-checkbox-vars';
 
-// Base block
 .tl-checkbox {
   @include tds-box-sizing;
   @include detail-02;
@@ -12,7 +11,6 @@
   color: var(--checkbox-label);
 }
 
-// Element: input
 .tl-checkbox__input {
   appearance: none;
   outline: none;
@@ -53,16 +51,14 @@
 
   &:hover::before {
     background-color: var(--checkbox-border-hover);
-    opacity: var(--checkbox-background-opacity-hover);
   }
 
   &:focus::before {
     background-color: var(--checkbox-border-focus);
-    opacity: var(--checkbox-background-opacity-focus);
     transition: opacity 0.2s ease-in-out;
   }
 
-  &--disabled {
+  &:disabled {
     cursor: not-allowed;
 
     &::after {
@@ -74,7 +70,25 @@
     }
   }
 
-  &--checked {
+  &:checked {
+    &:disabled {
+      &::after {
+        background-image: var(--checkbox-background-img-disabled);
+        background-color: var(--checkbox-fill-disabled);
+        color: var(--checkbox-border-disabled);
+      }
+    }
+
+    &:hover::before,
+    &::before {
+      display: block;
+      width: 16px;
+      height: 16px;
+      left: 4px;
+      top: 4px;
+      border: 1px solid #b0b7c4;
+    }
+
     &::after {
       background-image: var(--checkbox-background-img);
       background-color: var(--checkbox-border);
@@ -93,7 +107,6 @@
   }
 }
 
-// Element: label
 .tl-checkbox__label {
   color: var(--checkbox-label);
   padding-left: var(--tds-spacing-element-4);
@@ -110,31 +123,14 @@
   }
 }
 
-// Modifier: input checked + disabled
-.tl-checkbox__input--checked.tl-checkbox__input--disabled {
-  &::after {
-    background-image: var(--checkbox-background-img-disabled);
-    background-color: var(--checkbox-fill-disabled);
-    color: var(--checkbox-border-disabled);
-  }
-
-  &:hover::before,
-  &::before {
-    display: block;
-    width: 16px;
-    height: 16px;
-    left: 4px;
-    top: 4px;
-    border: 1px solid #b0b7c4;
-  }
-}
-
 // Modifier: input indeterminate + disabled
-.tl-checkbox__input--indeterminate.tl-checkbox__input--disabled {
-  &::after {
-    background-image: var(--checkbox-background-img-indeterminate-disabled);
-    background-color: var(--checkbox-fill-disabled);
-    color: var(--checkbox-border-disabled);
+.tl-checkbox__input--indeterminate {
+  &:disabled {
+    &::after {
+      background-image: var(--checkbox-background-img-indeterminate-disabled);
+      background-color: var(--checkbox-fill-disabled);
+      color: var(--checkbox-border-disabled);
+    }
   }
 
   &:hover::before,

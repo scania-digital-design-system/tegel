@@ -39,38 +39,22 @@ export default {
 };
 
 const Template = ({ label, checked, disabled, indeterminate }) => {
-  // Compose BEM modifier classes for input
-  const inputMods = [
-    checked ? 'tl-checkbox__input--checked' : '',
-    disabled ? 'tl-checkbox__input--disabled' : '',
-    indeterminate ? 'tl-checkbox__input--indeterminate' : '',
-  ]
-    .filter(Boolean)
-    .join(' ');
-
   return formatHtmlPreview(`
+		<!-- Required stylesheet 
+    	"@scania/tegel-light/tl-checkbox.css";
+		-->
     <div class="tl-checkbox">
       <input
         type="checkbox"
-        class="tl-checkbox__input ${inputMods}"
-        id="checkbox-1"
+        class="tl-checkbox__input ${indeterminate ? 'tl-checkbox__input--indeterminate' : ''}"
+        id="tl-checkbox"
+        ${disabled ? 'disabled' : ''}
+				${checked ? 'checked' : ''}
       />
-      <label class="tl-checkbox__label" for="checkbox-1">${label}</label>
-    </div>
-    
-    <!-- Script tag with event listener for demo purposes. -->
-			<script>
-				checkboxElement = document.querySelector("tds-checkbox");
-				checkboxElement.addEventListener("tdsChange", (event) => {
-						console.log("Checkbox with id: ", event.detail.checkboxId, " is ", event.detail.checked);
-				});
-				checkboxElement.addEventListener("tdsFocus", (event) => {
-						console.log(event);
-				});
-				checkboxElement.addEventListener("tdsBlur", (event) => {
-						console.log(event);
-				});
-			</script>
+      <label class="tl-checkbox__label ${
+        disabled ? 'tl-checkbox__label--disabled' : ''
+      }" for="tl-checkbox">${label}</>
+    </>
   `);
 };
 
