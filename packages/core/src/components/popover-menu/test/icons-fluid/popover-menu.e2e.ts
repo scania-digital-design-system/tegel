@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/popover-menu/test/icons-fluid/index.ht
 const componentName = 'tds-popover-menu';
 const testDescription = 'tds-popover-menu-icons-fluid';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
