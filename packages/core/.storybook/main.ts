@@ -2,6 +2,7 @@ import { type StorybookConfig } from '@stencil/storybook-plugin';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.new.stories.@(js|jsx|ts|tsx)'],
+  staticDirs: ['../public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-docs',
@@ -11,6 +12,9 @@ const config: StorybookConfig = {
   ],
   framework: {
     name: '@stencil/storybook-plugin',
+  },
+  core: {
+    disableTelemetry: true,
   },
 };
 
