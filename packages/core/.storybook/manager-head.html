@@ -1,0 +1,114 @@
+<!-- .storybook/manager-head.html -->
+
+<script
+  defer
+  data-domain="tds-storybook.tegel.scania.com"
+  src="https://plausible.io/js/script.manual.js"
+  data-api="https://plausible.io/api/event"
+></script>
+
+<!-- 1. define the `plausible` function to manually trigger events -->
+<script>
+  window.plausible =
+    window.plausible ||
+    function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+</script>
+
+<!-- 2. script to help trigger Plausible tracking based on url changes -->
+<script>
+  (function () {
+    const pushState = history.pushState;
+    const replaceState = history.replaceState;
+    let lastTrackedTime = 0;
+    const THROTTLE_MS = 1000; // Only track once per second
+
+    function trackPageView() {
+      const now = Date.now();
+      if (now - lastTrackedTime >= THROTTLE_MS) {
+        lastTrackedTime = now;
+        plausible('pageview', { u: prepareUrl(['path', 'args']) });
+      }
+    }
+
+    history.pushState = function () {
+      pushState.apply(history, arguments);
+      window.dispatchEvent(new Event('pushstate'));
+      window.dispatchEvent(new Event('locationchange'));
+      trackPageView();
+    };
+
+    history.replaceState = function () {
+      replaceState.apply(history, arguments);
+      window.dispatchEvent(new Event('replacestate'));
+      window.dispatchEvent(new Event('locationchange'));
+      trackPageView();
+    };
+
+    window.addEventListener('popstate', function () {
+      window.dispatchEvent(new Event('locationchange'));
+      trackPageView();
+    });
+  })();
+</script>
+
+<!-- 3. Plausible manual script -->
+<script>
+  function prepareUrl(params) {
+    const url = new URL(location.href);
+    const queryParams = new URLSearchParams(location.search);
+    let customUrl = url.protocol + '//' + url.hostname + url.pathname.replace(/\/$/, '');
+    for (const paramName of params) {
+      const paramValue = queryParams.get(paramName);
+      if (paramValue) customUrl = customUrl + '/' + paramValue;
+    }
+    return customUrl;
+  }
+  plausible('pageview', { u: prepareUrl(['path', 'args']) });
+
+  /* 4. trigger Plausible script on event */
+  window.addEventListener('locationchange', function () {
+    plausible('pageview', { u: prepareUrl(['path', 'args']) });
+  });
+</script>
+
+<title>Tegel Design System</title>
+<meta
+  name="description"
+  content="Tegel Storybook page - Scania's Digital Design System"
+  key="desc"
+/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<style>
+  /* Custom font styles*/
+  button,
+  a {
+    font-family: 'Scania Sans', arial, helvetica, sans-serif !important;
+  }
+
+  /* Custom docs list icon for "Notes" tab */
+  .sidebar-item[data-item-id*='-notes'] a div svg {
+    display: none !important;
+  }
+
+  .sidebar-item[data-item-id*='-notes'] a div::before {
+    content: '';
+    width: 14px;
+    aspect-ratio: 1 / 1;
+    background-image: url(docs-list.svg);
+    background-size: cover;
+  }
+
+  .sidebar-item[data-item-id*='-notes'][data-selected='true'] a div::before {
+    content: '';
+    width: 14px;
+    aspect-ratio: 1 / 1;
+    background-image: url(docs-list-selected.svg);
+    background-size: cover;
+  }
+</style>
