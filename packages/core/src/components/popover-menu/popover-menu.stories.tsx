@@ -68,16 +68,29 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
+    modeVariant: {
+      name: 'Mode variant',
+      description:
+        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
   },
   args: {
     menuPosition: 'Auto',
     icons: false,
     fluidWidth: false,
     animation: 'none',
+    modeVariant: 'Inherit from parent',
   },
 };
 
-const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
+const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) => {
   const menuPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -93,6 +106,8 @@ const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
     'Right end': 'right-end',
     'Auto': 'auto',
   };
+
+  const modeVariantValue = modeVariant === 'Inherit from parent' ? '' : modeVariant.toLowerCase();
 
   return formatHtmlPreview(
     `
@@ -111,6 +126,7 @@ const Template = ({ menuPosition, icons, fluidWidth, animation }) => {
       placement="${menuPosLookup[menuPosition]}"
       animation="${animation}"
       ${fluidWidth ? 'fluid-width' : ''}
+      ${modeVariantValue ? `mode-variant="${modeVariantValue}"` : ''}
       selector="#my-popover-button"
       >
         <tds-popover-menu-item>

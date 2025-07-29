@@ -15,4 +15,12 @@
   --tds-popover-menu-divider-color: var(--tds-grey-500);
   --tds-popover-menu-divider-disabled-color: var(--tds-grey-500);
   --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-50);
+
+  .tds-mode-variant-primary {
+    --tds-popover-menu-background: var(--tds-grey-850);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-popover-menu-background: var(--tds-grey-800);
+  }
 }
