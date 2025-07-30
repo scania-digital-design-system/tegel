@@ -66,3 +66,6 @@ packages/core/accessibility-results.json
 
 # tegel-styles
 packages/styles/dist/
+
+# Cursor
+.cursor/
