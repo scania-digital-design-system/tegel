@@ -2,6 +2,8 @@
 // https://stenciljs.com/docs/styling#global-styles
 // https://stenciljs.com/docs/config#globalstyle
 
+$local-assets: './assets' !default;
+
 /* Multibrand tokens: Scania colors */
 @import '../../../../color/scania-color-primitives';
 @import '../../../../color/scania-brand-usage';

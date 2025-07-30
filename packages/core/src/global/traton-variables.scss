@@ -1,5 +1,5 @@
 /* Global variables. Needed for local assets path. */
-@import './variables';
+$local-assets: '../dist/tegel/assets' !default;
 
 /* Spacing */
 @import '../../../../spacing/traton-units';

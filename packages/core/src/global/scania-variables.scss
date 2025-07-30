@@ -2,7 +2,7 @@
 // This file imports all Scania-specific tokens and primitives
 
 /* Global variables. Needed for local assets path. */
-@import './variables';
+$local-assets: '../dist/tegel/assets' !default;
 
 /* Scania primitive tokens */
 @import '../../../../tokens/scss/scania/primitive';
