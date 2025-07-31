@@ -200,7 +200,7 @@ $modals: (
   background-color: var(--modal-backdrop);
   pointer-events: auto;
   z-index: 1000;
-  display: none; // Hidden by default
+  display: none;
 
   &.tl-modal--show {
     display: block;
