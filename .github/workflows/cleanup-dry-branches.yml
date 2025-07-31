@@ -1,0 +1,73 @@
+name: Cleanup Old Dry Run Branches
+
+on:
+  schedule:
+    - cron: '0 4 * * 1-5' # Runs every weekday at 06:00 CET/CEST (04:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+
+      - name: Set Git identity
+        run: |
+          git config --global user.name "Tegel - Scania" 
+          git config --global user.email "tegel.design.system@gmail.com"
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl jq
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /usr/share/keyrings/githubcli-archive-keyring.gpg >/dev/null
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+          sudo apt update
+          sudo apt install -y gh
+
+      - name: Remove old dry-run branches
+        env:
+          GH_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          echo "Looking for dry-run branches older than 2 days..."
+
+          gh api --paginate repos/${{ github.repository }}/branches \
+            | jq -r '.[] | select(.name | test("dry-run-[0-9]{8}-[0-9]{4}")) | .name' \
+            | while read branch; do
+                echo "🔍 Found branch: $branch"
+
+                timestamp=$(echo "$branch" | grep -oE '[0-9]{8}-[0-9]{4}')
+                echo "📆 Extracted timestamp: $timestamp"
+
+                if [[ "$timestamp" =~ ^[0-9]{8}-[0-9]{4}$ ]]; then
+                  branch_date=$(date -d "${timestamp:0:8} ${timestamp:9:2}:${timestamp:11:2}" +%s 2>/dev/null || echo 0)
+                else
+                  echo "⚠️ Invalid timestamp format for $branch — skipping"
+                  continue
+                fi
+
+                now=$(date +%s)
+                age=$(( (now - branch_date) / 86400 ))
+
+                echo "📆 Branch age: $age days"
+
+                if [ "$branch_date" -eq 0 ]; then
+                  echo "⚠️ Failed to parse timestamp for $branch — skipping"
+                  continue
+                fi
+
+                # Only delete branches that are older than or equal to 2 full days.
+                if [ "$age" -ge 2 ]; then
+                  echo "🗑 Deleting $branch (via git)..."
+                  git push --no-verify origin --delete "$branch" || {
+                    echo "⚠️ Git push failed, trying GH API delete..."
+                    gh api -X DELETE repos/${{ github.repository }}/git/refs/heads/"$branch" || \
+                    echo "❌ Failed to delete $branch via GH API"
+                  }
+                else
+                  echo "✅ Keeping $branch (age: $age)"
+                fi
+              done
