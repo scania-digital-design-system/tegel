@@ -76,6 +76,11 @@
   color: var(--text-field-placeholder);
 }
 
+.form-text-field {
+  // compensate for box shadow
+  padding-bottom: 1px;
+}
+
 //text-field container with label inside
 //Handling position, focus and transition for label inside
 .form-text-field.text-field-container-label-inside {

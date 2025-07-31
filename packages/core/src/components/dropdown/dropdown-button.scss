@@ -2,6 +2,9 @@
 @import './box-shadow';
 
 :host {
+  // compensate for box shadow
+  padding-bottom: 1px;
+
   button {
     all: unset;
     @include box-shadow;

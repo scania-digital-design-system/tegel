@@ -5,6 +5,8 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
+  // compensate for box shadow
+  padding-bottom: 1px;
   @include detail-02;
 
   display: block;
@@ -118,7 +120,7 @@
   .helper {
     @include detail-05;
 
-    margin-top: 4px;
+    padding-top: var(--tds-spacing-element-4);
     color: var(--dropdown-helper-text);
     display: flex;
     align-items: center;
