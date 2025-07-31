@@ -83,12 +83,10 @@ $modals: (
   z-index: 1001;
   @include modal-scrollbar;
 
+  display: none; // Hidden by default
+
   &--show {
     display: block;
-  }
-
-  &--hide {
-    display: none !important;
   }
 
   &--sticky {
@@ -202,4 +200,9 @@ $modals: (
   background-color: var(--modal-backdrop);
   pointer-events: auto;
   z-index: 1000;
+  display: none; // Hidden by default
+
+  &.tl-modal--show {
+    display: block;
+  }
 }

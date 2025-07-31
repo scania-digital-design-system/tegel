@@ -73,15 +73,15 @@ export default {
 };
 
 const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, closable }) => {
-  const actionsClass = actionsPosition === 'sticky' ? 'sticky' : '';
-  const showClass = showModal ? 'show' : 'hide';
+  const actionsClass = actionsPosition === 'sticky' ? 'tl-modal--sticky' : '';
+  const showClass = showModal ? 'tl-modal--show' : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
       "@scania/tegel-light/tl-modal.css"
     -->
     <div class="demo-wrapper">
-      <div class="tl-modal tl-modal--${size} tl-modal--${actionsClass} tl-modal--${showClass}">
+      <div class="tl-modal ${showClass} tl-modal--${size} ${actionsClass}">
         <div class="tl-modal__header">
           <h2 class="tl-modal__title">${headerText}</>
           ${
@@ -106,7 +106,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
     </>
 
     <!-- Backdrop -->
-    <div class="tl-modal__backdrop"></>
+    <div class="tl-modal__backdrop ${showClass}"></>
 
     <!-- Demo wrapper styles -->
     <style>
@@ -119,7 +119,6 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgba(0, 0, 0, 0.3);
         padding: 0 16px;
         z-index: 1001;
       }
