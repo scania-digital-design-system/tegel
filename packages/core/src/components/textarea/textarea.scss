@@ -36,6 +36,11 @@
       transform: scaleX(0);
       transition: 0.35s ease transform;
     }
+
+    &.texarea-focus {
+      // compensate for box shadow
+      padding-bottom: 2px;
+    }
   }
 }
 

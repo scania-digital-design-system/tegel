@@ -5,8 +5,6 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  // compensate for box shadow
-  padding-bottom: 1px;
   @include detail-02;
 
   display: block;

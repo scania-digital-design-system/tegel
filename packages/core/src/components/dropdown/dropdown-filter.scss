@@ -84,6 +84,9 @@
 
     &.focus {
       @include box-shadow('focus');
+
+      // compensate for box shadow
+      padding-bottom: 2px;
     }
 
     &.error {
