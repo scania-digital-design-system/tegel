@@ -148,9 +148,6 @@
 //Focus state
 .form-text-field {
   &.text-field-focus {
-    // compensate for box shadow
-    padding-bottom: 2px;
-
     .text-field-container {
       outline: var(--text-field-focus-outline);
       outline-offset: var(--text-field-focus-outline-offset);
