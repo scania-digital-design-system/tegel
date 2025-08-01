@@ -20,6 +20,8 @@
 
 .textarea-container {
   .textarea-wrapper {
+    // compensate for box shadow
+    padding-bottom: 1px;
     position: relative;
     width: unset;
     min-width: 100%;

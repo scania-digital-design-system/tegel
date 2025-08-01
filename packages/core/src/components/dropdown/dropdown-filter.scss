@@ -3,6 +3,9 @@
 @import './box-shadow';
 
 :host {
+  // compensate for box shadow
+  padding-bottom: 1px;
+
   .filter {
     @include box-shadow;
 
