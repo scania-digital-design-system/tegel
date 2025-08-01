@@ -1,5 +1,5 @@
 // .storybook/preview.tsx
-import { defineCustomElements } from '../loader/index.js';
+import { defineCustomElements } from '../loader';
 import '../dist/tegel/tegel.css';
 import './preview.css';
 import { Preview } from '@stencil/storybook-plugin';
