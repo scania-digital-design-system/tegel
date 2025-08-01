@@ -3,8 +3,7 @@ import { defineCustomElements } from '../loader/index.js';
 import '../dist/tegel/tegel.css';
 import './preview.css';
 import { Preview } from '@stencil/storybook-plugin';
-import { themes } from 'storybook/internal/theming';
-import { ScaniaDark, ScaniaLight } from './ScaniaLogotype.js';
+import { ScaniaDark, ScaniaLight } from './ScaniaLogotype';
 import { withThemeByClassName } from '@storybook/addon-themes';
 
 /**
@@ -17,9 +16,9 @@ const preview: Preview = {
   parameters: {
     darkMode: {
       // Override the default dark theme
-      dark: { ...themes.dark, ...ScaniaDark },
+      dark: ScaniaDark,
       // Override the default light theme
-      light: { ...themes.normal, ...ScaniaLight },
+      light: ScaniaLight,
     },
     a11y: {
       test: 'todo',
