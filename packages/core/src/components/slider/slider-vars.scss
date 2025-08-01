@@ -1,34 +1,80 @@
 :root,
 .tds-mode-light {
-  --tds-slider-label-color: var(--tds-grey-958);
-  --tds-slider-thumb-color: var(--tds-blue-800);
-  --tds-slider-divider-color: var(--tds-grey-400);
-  --tds-slider-track-color: var(--tds-grey-400);
-  --tds-slider-track-fill-color: var(--tds-blue-800);
-  --tds-slider-input-inputfield-color: var(--tds-grey-700);
-  --tds-slider-inputfield-color: var(--tds-grey-400);
-  --tds-slider-controls-color: var(--tds-grey-958);
+  // Label
+  --tds-slider-label-color: var(--tds-grey-950);
+  --tds-slider-label-disabled: var(--tds-grey-250);
+
+  // Value
+  --tds-slider-input-value-color: var(--tds-grey-950);
+  --tds-slider-input-value-disabled: var(--tds-grey-250);
+
+  // Thumb
+  --tds-slider-thumb-color: var(--tds-grey-950);
+  --tds-slider-thumb-disabled: var(--tds-grey-200);
+
+  // Track
+  --tds-slider-track-color: var(--tds-grey-350);
+  --tds-slider-track-fill-color: var(--tds-grey-950);
+  --tds-slider-track-disabled: var(--tds-grey-200);
+
+  // Divider
+  --tds-slider-divider-color: var(--tds-grey-350);
+  --tds-slider-divider-values-color: var(--tds-grey-650);
+  --tds-slider-divider-disabled: var(--tds-grey-200);
+  --tds-slider-divider-values-disabled: var(--tds-grey-250);
+
+  // Controls
+  --tds-slider-controls-color: var(--tds-grey-650);
+  --tds-slider-controls-disabled: var(--tds-grey-250);
+
+  // Inputfield
+  --tds-slider-inputfield-number-color: var(--tds-grey-950);
   --tds-slider-inputfield-background: var(--tds-white);
-  --tds-slider-inputfield-box-shadow: var(--tds-grey-400);
-  --tds-slider-divider-values-color: var(--tds-grey-958);
-  --tds-slider-disabled: var(--tds-grey-400);
-  --tds-slider-value-tooltip-background: var(--tds-grey-800);
-  --tds-slider-value-tooltip-color: var(--tds-white);
+  --tds-slider-inputfield-box-shadow: var(--tds-grey-800);
+  --tds-slider-inputfield-number-disabled: var(--tds-grey-250);
+  --tds-slider-inputfield-background-disabled: var(--tds-grey-50);
+
+  // Tooltip
+  --tds-slider-value-tooltip-background: var(--tds-grey-700);
+  --tds-slider-value-tooltip-color: var(--tds-grey-50);
 }
 
 .tds-mode-dark {
-  --tds-slider-label-color: var(--tds-grey-100);
-  --tds-slider-thumb-color: var(--tds-grey-100);
-  --tds-slider-divider-color: var(--tds-grey-700);
-  --tds-slider-track-color: var(--tds-grey-700);
-  --tds-slider-track-fill-color: var(--tds-grey-100);
-  --tds-slider-inputfield-color: var(--tds-grey-700);
-  --tds-slider-input-inputfield-color: var(--tds-grey-400);
-  --tds-slider-controls-color: var(--tds-grey-100);
-  --tds-slider-inputfield-background: var(--tds-grey-900);
-  --tds-slider-inputfield-box-shadow: var(--tds-grey-800);
-  --tds-slider-divider-values-color: var(--tds-grey-100);
-  --tds-slider-disabled: var(--tds-grey-700);
-  --tds-slider-value-tooltip-background: var(--tds-grey-200);
-  --tds-slider-value-tooltip-color: var(--tds-grey-958);
+  // Label
+  --tds-slider-label-color: var(--tds-grey-50);
+  --tds-slider-label-disabled: var(--tds-grey-500);
+
+  // Value
+  --tds-slider-input-value-color: var(--tds-grey-200);
+  --tds-slider-input-value-disabled: var(--tds-grey-500);
+
+  // Thumb
+  --tds-slider-thumb-color: var(--tds-grey-50);
+  --tds-slider-thumb-disabled: var(--tds-grey-600);
+
+  // Track
+  --tds-slider-track-color: var(--tds-grey-400);
+  --tds-slider-track-fill-color: var(--tds-grey-50);
+  --tds-slider-track-disabled: var(--tds-grey-600);
+
+  // Divider
+  --tds-slider-divider-color: var(--tds-grey-400);
+  --tds-slider-divider-values-color: var(--tds-grey-200);
+  --tds-slider-divider-disabled: var(--tds-grey-600);
+  --tds-slider-divider-values-disabled: var(--tds-grey-500);
+
+  // Controls
+  --tds-slider-controls-color: var(--tds-grey-200);
+  --tds-slider-controls-disabled: var(--tds-grey-500);
+
+  // Inputfield
+  --tds-slider-inputfield-number-color: var(--tds-grey-300);
+  --tds-slider-inputfield-background: var(--tds-grey-850);
+  --tds-slider-inputfield-box-shadow: var(--tds-grey-400);
+  --tds-slider-inputfield-number-disabled: var(--tds-grey-500);
+  --tds-slider-inputfield-background-disabled: var(--tds-grey-850);
+
+  // Tooltip
+  --tds-slider-value-tooltip-background: var(--tds-grey-150);
+  --tds-slider-value-tooltip-color: var(--tds-grey-950);
 }
