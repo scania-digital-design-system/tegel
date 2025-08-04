@@ -26,13 +26,14 @@
   }
 
   ::slotted(*:focus-visible)::before {
+    @include tds-focus-state;
+
     content: '';
     position: absolute;
     left: 0;
     right: 0;
-    top: 20px;
-    bottom: 20px;
-    outline: 2px solid var(--tds-blue-400);
+    top: 3px;
+    bottom: 3px;
   }
 
   .inline-tab-item:not(.selected)::after {
@@ -45,6 +46,10 @@
     margin-right: 32px;
 
     &:hover {
+      ::slotted(*) {
+        color: var(--tds-inline-tabs-tab-color-hover);
+      }
+
       cursor: pointer;
 
       &::after {
@@ -79,22 +84,22 @@
   }
 
   .disabled {
-    color: var(--tds-inline-tabs-tab-color-disabled);
-
-    ::slotted(*) {
-      opacity: var(--tds-inline-tabs-tab-color-opacity-disabled);
-    }
-
     &::after {
       content: none;
     }
 
+    ::slotted(*) {
+      color: var(--tds-inline-tabs-tab-color-disabled);
+    }
+
     ::slotted(*:hover) {
+      color: var(--tds-inline-tabs-tab-color-disabled);
       cursor: not-allowed;
     }
 
     ::slotted(*:focus-visible) {
       outline: none;
+      box-shadow: none;
     }
   }
 }
