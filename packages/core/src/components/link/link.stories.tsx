@@ -91,7 +91,7 @@ StandaloneLink.args = {
   underline: false,
   disabled: false,
   iconEnabled: true,
-  icon: 'redirect',
+  icon: 'placeholder',
 };
 
 // Additional argTypes for Standalone Link only
