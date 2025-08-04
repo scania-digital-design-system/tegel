@@ -1,80 +1,16 @@
 tds-card {
-  --card-background: var(--tds-white);
-  --card-background-primary: var(--component-card-primary);
-  --card-background-secondary: var(--component-card-secondary);
-  --card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
-  --card-box: var(--card-box-primary); //box shadow
-  --card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
-  --card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
+  --card-background: var(--component-card-background);
+  --card-box: var(--component-card-box); //box shadow
+  --card-box-hover: var(--component-card-box-hover);
+  --card-box-pressed: var(--component-card-box-pressed);
   --card-headline: var(--color-foreground-text-strong);
   --card-sub-headline: var(--color-foreground-text-subtle);
   --card-body-color: var(--color-foreground-text-defined);
   --card-divider: var(--color-foreground-border-discrete);
   --card-icon-color: var(--color-foreground-icon-strong);
-}
-
-tds-card,
-.scania tds-card {
-  /* Paddings */
-  --card-body-padding: 0 16px;
-  --card-header-padding: 16px;
-  --card-slotted-padding: 16px;
-
-  &.tds-mode-variant-primary {
-    --card-box: var(--card-box-primary);
-  }
-
-  &.tds-mode-variant-secondary {
-    --card-box: var(--card-box-secondary);
-  }
-}
-
-.tds-mode-dark {
-  --card-background-primary: var(--tds-grey-900);
-  --card-background-secondary: var(--tds-grey-850);
-
-  tds-card {
-    --card-background: var(--card-background-primary);
-  }
-
-  .tds-mode-variant-primary {
-    --card-box: var(--card-box-primary);
-    --card-background: var(--card-background-primary);
-  }
-
-  .tds-mode-variant-secondary {
-    --card-box: var(--card-box-secondary);
-    --card-background: var(--card-background-secondary);
-  }
-}
-
-.traton {
-  .tds-mode-dark tds-card {
-    &.tds-mode-variant-primary {
-      --card-background: var(--color-background-base);
-    }
-  }
-}
-
-.traton tds-card {
-  --card-box: none;
-  --card-background: transparent;
-  --card-box-hover: none;
-  --card-box-pressed: none;
 
   /* Paddings */
-  --card-body-padding: 0;
-  --card-header-padding: 16px 16px 16px 0;
-  --card-slotted-padding: 16px 16px 16px 0;
-
-  &.tds-mode-variant-primary {
-    --card-box: none;
-    --card-background: var(--card-background-secondary);
-  }
-
-  &.tds-mode-variant-secondary {
-    --card-box: none;
-    --card-background: var(--card-background-primary);
-  }
+  --card-body-padding: var(--component-card-body-padding);
+  --card-header-padding: var(--component-card-header-padding);
+  --card-slotted-padding: var(--component-card-slotted-padding);
 }
