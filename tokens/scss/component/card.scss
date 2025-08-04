@@ -7,4 +7,75 @@ tds-card {
   --component-card-secondary: var(--color-background-layer-02);
   --component-card-primary: var(--color-background-layer-01);
   --component-card-padding-padding: var(--scania-unit-16);
+  --card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
+  --card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
+  --component-card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
+  --component-card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
+  --component-card-background: var(--tds-white);
+}
+
+tds-card,
+.scania tds-card {
+  /* Paddings */
+  --component-card-body-padding: 0 16px;
+  --component-card-header-padding: 16px;
+  --component-card-slotted-padding: 16px;
+  --component-card-box: var(--card-box-primary);
+
+  &.tds-mode-variant-primary {
+    --component-card-box: var(--card-box-primary);
+  }
+
+  &.tds-mode-variant-secondary {
+    --component-card-box: var(--card-box-secondary);
+  }
+}
+
+.tds-mode-dark {
+  --card-background-primary: var(--tds-grey-900);
+  --card-background-secondary: var(--tds-grey-850);
+
+  tds-card {
+    --component-card-background: var(--card-background-primary);
+  }
+
+  .tds-mode-variant-primary {
+    --component-card-box: var(--card-box-primary);
+    --component-card-background: var(--card-background-primary);
+  }
+
+  .tds-mode-variant-secondary {
+    --component-card-box: var(--card-box-secondary);
+    --component-card-background: var(--card-background-secondary);
+  }
+}
+
+.traton {
+  .tds-mode-dark tds-card {
+    &.tds-mode-variant-primary {
+      --component-card-background: var(--color-background-base);
+    }
+  }
+}
+
+.traton tds-card {
+  --component-card-box: none;
+  --component-card-background: transparent;
+  --component-card-box-hover: none;
+  --component-card-box-pressed: none;
+
+  /* Paddings */
+  --component-card-body-padding: 0;
+  --component-card-header-padding: 16px 16px 16px 0;
+  --component-card-slotted-padding: 16px 16px 16px 0;
+
+  &.tds-mode-variant-primary {
+    --component-card-box: none;
+    --component-card-background: var(--component-card-secondary);
+  }
+
+  &.tds-mode-variant-secondary {
+    --component-card-box: none;
+    --component-card-background: var(--component-card-primary);
+  }
 }
