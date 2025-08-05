@@ -1,14 +1,18 @@
 #!/usr/bin/env node
 
-const sass = require('sass');
-const fs = require('fs');
-const path = require('path');
-const glob = require('glob');
-const postcss = require('postcss');
-const autoprefixer = require('autoprefixer');
+import * as sass from 'sass';
+import fs from 'fs';
+import path from 'path';
+import { glob } from 'glob';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import { fileURLToPath } from 'url';
 
-const inputDir = path.join(__dirname, 'scss');
-const outputDir = path.join(__dirname, 'dist');
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+
+const inputDir = path.join(dirname, 'scss');
+const outputDir = path.join(dirname, 'dist');
 
 function clearOutputDir() {
   if (fs.existsSync(outputDir)) {
@@ -23,19 +27,18 @@ function clearOutputDir() {
 }
 
 function ensureDirectoryExistence(filePath) {
-  const dirname = path.dirname(filePath);
-  if (fs.existsSync(dirname)) {
+  const directory = path.dirname(filePath);
+  if (fs.existsSync(directory)) {
     return true;
   }
-  ensureDirectoryExistence(dirname);
-  fs.mkdirSync(dirname);
+  ensureDirectoryExistence(directory);
+  fs.mkdirSync(directory);
+  return true;
 }
 
 async function compileSass(inputPath, outputPath) {
-  const result = sass.renderSync({
-    file: inputPath,
-    outFile: outputPath,
-    outputStyle: 'compressed',
+  const result = sass.compile(inputPath, {
+    style: 'compressed',
   });
 
   const postcssResult = await postcss([autoprefixer]).process(result.css, { from: undefined });
@@ -45,24 +48,26 @@ async function compileSass(inputPath, outputPath) {
   console.log(`Compiled ${inputPath} to ${outputPath}`);
 }
 
-function compileAllSassFiles() {
+async function compileAllSassFiles() {
   clearOutputDir(); // Clear the output directory before compiling
 
-  glob(`${inputDir}/**/*.scss`, (err, files) => {
-    if (err) {
-      console.error('Error finding SCSS files:', err);
-      return;
-    }
+  try {
+    const files = await glob(`${inputDir}/**/*.scss`);
 
-    files.forEach((file) => {
+    const compilePromises = files.map((file) => {
       const inputPath = file;
       const outputPath = path.join(
         outputDir,
         path.relative(inputDir, file).replace('.scss', '.css'),
       );
-      compileSass(inputPath, outputPath);
+      return compileSass(inputPath, outputPath);
     });
-  });
+
+    await Promise.all(compilePromises);
+  } catch (err) {
+    console.error('Error finding SCSS files:', err);
+    process.exit(1);
+  }
 }
 
 compileAllSassFiles();
