@@ -43,10 +43,13 @@ export class TdsPopoverCanvas {
   @Prop() offsetDistance: number = 8;
 
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
-  @Prop() modifiers: Object[] = [];
+  @Prop() modifiers: object[] = [];
 
   /** Role of the popover canvas component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
   @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
+
+  /** Mode variant of the component, based on current mode. */
+  @Prop() modeVariant: 'primary' | 'secondary' = null;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -63,7 +66,11 @@ export class TdsPopoverCanvas {
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
+        }}
+      >
         <tds-popover-core
           role={this.tdsAlertDialog}
           {...this.inheritedAttributes}
