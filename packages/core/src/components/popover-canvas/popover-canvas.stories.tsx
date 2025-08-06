@@ -42,14 +42,26 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
+    modeVariant: {
+      name: 'Mode variant',
+      description: 'Mode variant of the component.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
   },
   args: {
+    modeVariant: 'Inherit from parent',
     canvasPosition: 'Auto',
     animation: 'none',
   },
 };
 
-const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
+const ComponentPopoverCanvas = ({ canvasPosition, animation, modeVariant }) => {
   const canvasPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -72,7 +84,7 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
         /* demo-wrapper and demo-styles is for demonstration purposes only */
         .demo-wrapper {
           display: flex;
-          flex-wrap; nowrap;
+          flex-wrap: nowrap;
           align-items: center;
         }
         .actions-container {
@@ -89,7 +101,11 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
         placement="${canvasPosLookup[canvasPosition]}"
         animation="${animation}"
         selector="#trigger"
-        class="tds-u-p2">
+        class="tds-u-p2"
+        ${
+          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+        }
+      >
         <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
         <p class="tds-body-01">
           Where you can put anything you want!
