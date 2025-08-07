@@ -36,7 +36,7 @@
     flex-shrink: 0;
     align-self: flex-start;
 
-    + label {
+    +label {
       color: var(--tds-checkbox-color);
       padding-left: var(--tds-spacing-element-4);
       padding-top: var(--tds-spacing-element-4);
@@ -88,7 +88,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       &::before {
         background-color: var(--tds-checkbox-background-focus);
         opacity: var(--tds-checkbox-background-opacity-focus);
@@ -104,7 +104,7 @@
         border-color: var(--tds-checkbox-border-color-disabled-after);
       }
 
-      + label {
+      +label {
         color: var(--tds-checkbox-disabled);
         cursor: not-allowed;
       }
