@@ -1,6 +1,8 @@
 import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 
+export type ButtonVariants = 'primary' | 'secondary' | 'ghost' | 'danger' | 'experimental';
+
 /**
  * @slot label - Slot for the text injection. Serves as alternative to text prop.
  * @slot icon - Slot used to display an Icon in the Button.
@@ -21,7 +23,7 @@ export class TdsButton {
   @Prop() type: 'button' | 'submit' | 'reset' = 'button';
 
   /** Variation of Button's design */
-  @Prop() variant: 'primary' | 'secondary' | 'ghost' | 'danger' = 'primary';
+  @Prop() variant: ButtonVariants = 'primary';
 
   /** Size of a Button */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
@@ -84,6 +86,7 @@ export class TdsButton {
             'secondary': this.variant === 'secondary',
             'ghost': this.variant === 'ghost',
             'danger': this.variant === 'danger',
+            'experimental': this.variant === 'experimental',
             'lg': this.size === 'lg',
             'md': this.size === 'md',
             'sm': this.size === 'sm',
