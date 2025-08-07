@@ -17,7 +17,23 @@
     "url": "git+https://github.com/scania-digital-design-system/tegel.git"
   },
   "style": "dist/global.css",
-  "exports": {},
+  "exports": {
+    "./global.css": "./dist/global.css",
+    "./scania-variables.css": "./dist/scania-variables.css",
+    "./traton-variables.css": "./dist/traton-variables.css",
+    "./tl-button.css": "./dist/components/tl-button.css",
+    "./tl-checkbox-vars.css": "./dist/components/tl-checkbox-vars.css",
+    "./tl-checkbox.css": "./dist/components/tl-checkbox.css",
+    "./tl-divider.css": "./dist/components/tl-divider.css",
+    "./tl-header-brand-symbol.css": "./dist/components/tl-header-brand-symbol.css",
+    "./tl-header-item.css": "./dist/components/tl-header-item.css",
+    "./tl-header-title.css": "./dist/components/tl-header-title.css",
+    "./tl-header.css": "./dist/components/tl-header.css",
+    "./tl-icon.css": "./dist/components/tl-icon.css",
+    "./tl-message.css": "./dist/components/tl-message.css",
+    "./tl-spinner-vars.css": "./dist/components/tl-spinner-vars.css",
+    "./tl-spinner.css": "./dist/components/tl-spinner.css"
+  },
   "files": [
     "dist/"
   ],
