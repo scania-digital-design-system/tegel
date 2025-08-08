@@ -8,9 +8,9 @@
 .__tds-header-item-image {
   position: relative;
   margin-left: -20px;
-  left: 10px;
-  width: 34px;
-  height: 34px;
+  left: var(--component-header-item-image-left);
+  width: var(--component-header-item-image-size);
+  height: var(--component-header-item-image-size);
   border-radius: 50%;
   transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
 }

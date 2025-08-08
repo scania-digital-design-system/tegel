@@ -26,8 +26,13 @@ export default {
   args: {},
 };
 
-const Template = () =>
-  formatHtmlPreview(
+const Template = ({}) => {
+  const isTraton =
+    typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
+  const url = isTraton ? 'https://traton.com/en.html' : 'https://www.scania.com/';
+  const brand = isTraton ? 'Traton' : 'Scania';
+
+  return formatHtmlPreview(
     `
     <script>
       /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
@@ -81,7 +86,7 @@ const Template = () =>
           Example: Few items
         </tds-header-title>
 
-        <tds-header-item selected>
+        <tds-header-item>
           <button onclick="alert('About us clicked');">
             About us
           </button>
@@ -93,10 +98,10 @@ const Template = () =>
           </a>
         </tds-header-item>
 
-        <tds-header-dropdown>
+        <tds-header-dropdown selected>
           <span slot="label">Wheel types</span>
           <tds-header-dropdown-list>
-            <tds-header-dropdown-list-item>
+            <tds-header-dropdown-list-item selected>
               <a href="https://tegel.scania.com">Hub-centric wheel</a>
             </tds-header-dropdown-list-item>
             <tds-header-dropdown-list-item>
@@ -180,7 +185,7 @@ const Template = () =>
         </tds-header-dropdown>
 
         <tds-header-brand-symbol slot="end">
-          <a href="https://scania.com" aria-label="Scania website"></a>
+          <a href="${url}" aria-label="${brand} website"></a>
         </tds-header-brand-symbol>
 
       </tds-header>
@@ -257,5 +262,6 @@ const Template = () =>
     </div>
   `,
   );
+};
 
 export const FewNavigationItems = Template.bind({});

@@ -1,8 +1,9 @@
 h4 {
   box-sizing: border-box;
-  color: var(--tds-header-nav-item-color);
-  font-weight: normal;
-  font-family: var(--tds-font-family-headline);
+  color: var(--header-nav-item);
+  font-weight: var(--component-header-font-weight);
+  font-family: var(--component-header-font-family-headline);
+  text-transform: var(--component-header-text-transform);
   letter-spacing: normal;
   position: relative;
   white-space: nowrap;

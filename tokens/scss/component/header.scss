@@ -1,37 +1,106 @@
 /**
  * Do not edit directly, this file was auto-generated.
  */
-.tl-header,
-tds-header {
-  --component-header-color-expressive-mobile-menu-primary: var(--scania-color-blue-900);
-  --component-header-color-expressive-mobile-menu-focus: var(--scania-color-blue-900);
-  --component-header-color-expressive-mobile-menu-pressed: var(--scania-color-blue-800);
-  --component-header-color-expressive-mobile-menu-selected: var(--scania-color-blue-800);
-  --component-header-color-expressive-mobile-menu-selected-expressive: var(--scania-color-blue-900);
-  --component-header-color-background: var(--scania-color-blue-900);
-  --component-header-color-dropdown-hover: var(--traton-color-blue-900);
-  --component-header-color-dropdown-focus: var(--traton-color-blue-1000);
-  --component-header-color-dropdown-text-transform: none;
-  --component-header-color-dropdown-font-family: var(--scania-font-family-semi condensed);
-  --component-header-color-dropdown-letter-spacing: -0.14px;
-  --component-header-color-dropdown-font-size: 14px;
-  --component-header-color-dropdown-line-height: 16px;
-  --component-header-color-dropdown-font-weight: var(--scania-font-weight-bold);
-  --component-header-color-foreground-strong: var(--color-brand-neutral-white);
-  --component-header-color-foreground-selected: var(--color-foreground-icon-strong);
-  --component-header-color-foreground-defined: var(--color-foreground-text-defined);
-  --component-header-text-component-title-01-menu-font-family: var(
-    --scania-font-family-semi condensed
-  );
-  --component-header-text-component-title-01-menu-text-transform: none;
-  --component-header-text-component-title-01-menu-font-weight: var(--scania-font-weight-regular);
-  --component-header-text-component-title-01-menu-font-size: 14px;
-  --component-header-text-component-title-01-menu-line-height: 16px;
-  --component-header-text-component-title-01-menu-letter-spacing: -0.14px;
-  --component-header-text-application-name-font-family: var(--scania-font-family-display);
-  --component-header-text-application-name-text-transform: none;
-  --component-header-text-application-name-font-weight: var(--scania-font-weight-regular);
-  --component-header-text-application-name-font-size: 14px;
-  --component-header-text-application-name-line-height: 16px;
-  --component-header-text-application-name-letter-spacing: 0;
+
+.scania {
+  tds-header,
+  .tl-header {
+    /* Brand imagery */
+    --component-header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
+    --component-header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
+
+    /* State & interaction colors */
+    --component-header-color-background-open: var(--color-foreground-border-accent-focus);
+    --component-header-color-foreground-selected: var(--color-foreground-icon-strong);
+    --component-header-dropdown-item-background: var(--color-background-layer-02);
+    --component-header-avatar-item-background: var(--color-background-layer-02);
+    --component-header-app-launcher-meny-background: var(--color-background-layer-02);
+
+    /* Sizing & spacing */
+    --component-header-brand-logo-size: 30px;
+    --component-header-space-profile-padding: 16px;
+    --component-header-item-image-size: 34px;
+    --component-header-item-image-left: 10px;
+    --component-header-item-width: none;
+
+    /* Borders */
+    --component-header-border: none;
+
+    /* Typography */
+    --component-header-font-family-headline: var(--scania-font-family-display);
+    --component-header-font-weight: var(--scania-font-weight-regular);
+    --component-header-text-transform: none;
+  }
+
+  /* ── Light-mode overrides ───────────────────── */
+  .tds-mode-light tds-header,
+  .tds-mode-light .tl-header {
+    --component-header-color-background: var(--color-brand-primary-800);
+    --component-header-color-foreground-strong: var(--color-foreground-icon-inverse-strong);
+    --component-header-color-background-hover: var(--color-brand-primary-700);
+    --component-header-color-background-border: var(--color-brand-primary-700);
+    --component-header-color-background-pressed: var(--color-brand-neutral-white);
+    --component-header-color-background-selected: var(--color-brand-primary-700);
+  }
+
+  /* ── Dark-mode overrides ───────────────────── */
+  .tds-mode-dark tds-header,
+  .tds-mode-dark .tl-header {
+    --component-header-color-background: var(--color-brand-primary-900);
+    --component-header-color-foreground-strong: var(--color-foreground-icon-strong);
+    --component-header-color-background-hover: var(--color-brand-primary-800);
+    --component-header-color-background-border: var(--color-brand-primary-800);
+    --component-header-color-background-pressed: var(--color-brand-primary-800);
+    --component-header-color-background-selected: var(--color-brand-primary-800);
+  }
+}
+
+.traton {
+  tds-header,
+  .tl-header {
+    /* Base colors */
+    --component-header-color-background: var(--color-background-base);
+    --component-header-color-background-hover: var(--color-background-layer-01);
+    --component-header-color-background-open: transparent;
+    --component-header-color-foreground-strong: var(--color-foreground-icon-strong);
+    --component-header-color-background-border: var(--traton-color-transparent-invisible-light);
+    --component-header-color-background-pressed: var(--color-background-base);
+    --component-header-color-foreground-selected: var(--color-foreground-icon-strong);
+
+    /* Dropdown & launcher */
+    --component-header-dropdown-item-background: var(--color-background-layer-01);
+    --component-header-avatar-item-background: var(--color-background-layer-01);
+    --component-header-app-launcher-meny-background: var(--color-background-layer-01);
+
+    /* Sizing & spacing */
+    --component-header-brand-logo-size: 106px;
+    --component-header-space-profile-padding: 20px;
+    --component-header-item-image-size: 24px;
+    --component-header-item-image-left: 15px;
+    --component-header-item-width: 122px;
+
+    /* Borders */
+    --component-header-border: 2px solid var(--header-nav-item-border-active);
+
+    /* Typography */
+    --component-header-font-family-headline: var(--traton-font-family-display);
+    --component-header-font-weight: var(--traton-font-weight-medium);
+    --component-header-text-transform: uppercase;
+  }
+
+  /* ── Light-mode overrides ───────────────────── */
+  .tds-mode-light tds-header,
+  .tds-mode-light .tl-header {
+    --component-header-color-background-selected: var(--color-background-layer-01);
+    --component-header-logotype-local: var(--traton-logotype-black-svg-local);
+    --component-header-logotype-cdn: var(--traton-logotype-black-svg);
+  }
+
+  /* ── Dark-mode overrides ───────────────────── */
+  .tds-mode-dark tds-header,
+  .tds-mode-dark .tl-header {
+    --component-header-color-background-selected: var(--color-background-surface-100);
+    --component-header-logotype-local: var(--traton-logotype-white-svg-local);
+    --component-header-logotype-cdn: var(--traton-logotype-white-svg);
+  }
 }

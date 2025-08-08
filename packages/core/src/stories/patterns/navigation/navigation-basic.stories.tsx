@@ -26,8 +26,13 @@ export default {
   args: {},
 };
 
-const Template = () =>
-  formatHtmlPreview(
+const Template = ({}) => {
+  const isTraton =
+    typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
+  const url = isTraton ? 'https://traton.com/en.html' : 'https://www.scania.com/';
+  const brand = isTraton ? 'Traton' : 'Scania';
+
+  return formatHtmlPreview(
     `
   <tds-header>
     <tds-header-title>
@@ -73,7 +78,7 @@ const Template = () =>
     </tds-header-launcher>
   
     <tds-header-brand-symbol slot="end">
-      <a href="https://scania.com" aria-label="Scania website"></a>
+      <a href='${url}' aria-label="${brand} website"></a>
     </tds-header-brand-symbol>
 
   </tds-header>
@@ -83,5 +88,6 @@ const Template = () =>
   </main>
   `,
   );
+};
 
 export const Basic = Template.bind({});
