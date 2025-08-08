@@ -1,4 +1,5 @@
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
@@ -20,8 +21,8 @@
     align-items: center;
     flex-direction: column;
     gap: 8px;
-    font: var(--tds-detail-05);
-    letter-spacing: var(--tds-detail-05-ls);
+    @include detail-05;
+
     background-color: var(--tds-header-app-launcher-menu-bg);
     color: var(--tds-header-app-launcher-grid-color);
     border-radius: 4px;
@@ -30,7 +31,7 @@
 
   ::slotted(a:hover),
   ::slotted(button:hover) {
-    background-color: var(--tds-header-app-launcher-grid-hover-background);
+    background-color: var(--header-app-launcher-grid-hover-background);
     cursor: pointer;
   }
 

@@ -23,7 +23,7 @@
       font: var(--tds-detail-02);
       letter-spacing: var(--tds-detail-02-ls);
       background-color: var(--tds-header-nav-item-dropdown-opened-background);
-      color: var(--tds-header-nav-item-dropdown-opened-color);
+      color: var(--header-nav-item-dropdown-opened);
       border: none;
     }
 
@@ -47,7 +47,7 @@
   .component.component-selected {
     ::slotted(a),
     ::slotted(button) {
-      box-shadow: inset 4px 0 0 var(--tds-nav-item-border-color-active);
+      box-shadow: inset 4px 0 0 var(--header-nav-item-border-active);
       background-color: var(--tds-header-nav-item-dropdown-opened-background-selected);
     }
   }

@@ -36,8 +36,13 @@ export default {
   },
 };
 
-const Template = () =>
-  formatHtmlPreview(
+const Template = ({}) => {
+  const isTraton =
+    typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
+  const url = isTraton ? 'https://traton.com/en.html' : 'https://www.scania.com/';
+  const brand = isTraton ? 'Traton' : 'Scania';
+
+  return formatHtmlPreview(
     `
     <script>
       /* For demonstration purposes only. Do this in the preferred way of your framework instead. */
@@ -99,7 +104,7 @@ const Template = () =>
         </tds-header-dropdown>
 
         <tds-header-brand-symbol slot="end">
-          <a href="https://scania.com" aria-label="Scania website"></a>
+          <a href="${url}" aria-label="${brand} website"></a>
         </tds-header-brand-symbol>
 
       </tds-header>
@@ -138,5 +143,6 @@ const Template = () =>
     </div>
   `,
   );
+};
 
 export const UserMenu = Template.bind({});
