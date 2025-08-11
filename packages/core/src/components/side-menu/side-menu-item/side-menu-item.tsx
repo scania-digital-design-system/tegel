@@ -52,6 +52,7 @@ export class TdsSideMenuItem {
 
       const addIconClass = (element: HTMLElement) => {
         element.classList.add('__tds-side-menu-item-icon');
+        element.classList.add('__tds-side-menu-item-icon-size');
         if (this.collapsed) {
           element.classList.add('__tds-side-menu-item-icon-collapsed');
         } else {

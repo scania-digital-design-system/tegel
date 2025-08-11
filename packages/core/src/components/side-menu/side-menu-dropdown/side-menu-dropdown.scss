@@ -1,3 +1,5 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
   display: block;
 
@@ -38,8 +40,7 @@
         display: flex;
         align-items: center;
         border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
-        font: var(--tds-headline-07);
-        letter-spacing: var(--tds-headline-07-ls);
+        @include headline-07;
       }
     }
   }

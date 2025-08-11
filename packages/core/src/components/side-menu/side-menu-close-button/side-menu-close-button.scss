@@ -1,3 +1,5 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
   button {
     height: 64px;
@@ -6,8 +8,7 @@
     padding: 0 22px;
     border: none;
     background-color: var(--tds-sidebar-side-menu-background-cover);
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
+    @include headline-07;
     color: var(--tds-sidebar-side-menu-single-item-color);
     display: flex;
     align-items: center;
@@ -20,7 +21,7 @@
 
     &:focus-visible {
       cursor: pointer;
-      border: 1px solid var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+      border: 1px solid orange; // var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
     }
   }
 }

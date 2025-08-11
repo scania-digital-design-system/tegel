@@ -1,7 +1,8 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
   display: block;
-  font: var(--tds-headline-07);
-  letter-spacing: var(--tds-headline-07-ls);
+  @include headline-07;
   color: var(--tds-sidebar-side-menu-single-item-color);
 
   .subheading {

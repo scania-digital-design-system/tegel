@@ -1,7 +1,7 @@
 //@import '../theme/core/spacing/vars';
 @import '../../../../../../grid-deprecated/vars';
-
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
@@ -11,7 +11,7 @@
     ::slotted(button) {
       all: unset;
       box-sizing: border-box;
-      height: 68px;
+      height: var(--side-menu-single-item-height);
       width: 100%;
       display: flex;
       align-items: center;
@@ -19,10 +19,14 @@
       padding: 0 22px;
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+
+      @include headline-07;
+      font-weight: var(--side-menu-text-items-font-weight) !important;
+
       color: var(--tds-sidebar-side-menu-single-item-color);
       cursor: pointer;
+
+      border-radius: var(--component-side-menu-radius-corner);
     }
 
     ::slotted(tds-side-menu-user),
@@ -37,8 +41,7 @@
       padding: 0 22px 0 16px;
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+      @include headline-07;
       color: var(--tds-sidebar-side-menu-single-item-color);
       cursor: pointer;
     }
@@ -49,7 +52,7 @@
 
     ::slotted(a:focus-visible),
     ::slotted(button:focus-visible) {
-      @include tds-focus-state;
+      @include tds-focus-state-side-menu;
     }
 
     &:hover {
@@ -89,9 +92,10 @@
           position: absolute;
           top: 0;
           left: 0;
-          width: 4px;
+          width: var(--side-menu-selected-left-border); // 4px; 8px för traton
           height: 100%;
           background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+          border-radius: var(--side-menu-radius-corner) 0 0 var(--side-menu-radius-corner);
         }
       }
     }

@@ -1,58 +1,31 @@
-:root,
-.tds-mode-light {
-  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
-  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
-  --tds-sidebar-item-state-focus: var(--tds-grey-50);
-  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-100);
-  --tds-sidebar-item-state-active: var(--tds-grey-300);
-  --tds-sidemenu-item-state-active: var(--tds-grey-300);
-  --tds-sidebar-item-state-selected: var(--tds-grey-100);
+tds-side-menu {
+  --tds-sidebar-item-state-hover: var(--color-background-layer-01); // done
+  --tds-sidemenu-item-state-active: var(--color-background-surface-100);
+  --tds-sidebar-item-state-selected: var(--color-background-layer-01);
+  --tds-sidebar-side-menu-background-cover: var(--color-background-base); // done
+  --tds-sidebar-side-menu-bottom-menu-border-top: var(--component-side-menu-color-divider); // done
+  --tds-sidebar-side-menu-single-item-color: var(
+    --color-foreground-text-strong
+  ); // done, textfärgen
 
-  // TODO - Not sure why this was black before?
-  --tds-sidebar-side-menu: var(--tds-white);
-  --tds-sidebar-side-menu-border-right: var(--tds-grey-300);
-  --tds-sidebar-side-menu-background-cover: var(--tds-white);
-  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-300);
-  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-white);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-300);
-  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-300);
-  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-100);
-  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
-  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-800);
-  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-white);
-  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-300);
-  --tds-sidebar-side-menu-subnav-background: var(--tds-white);
-  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
+  --tds-sidebar-side-menu-subnav-background: yellow;
+
+  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(
+    --color-foreground-border-accent-focus
+  );
+
+  --side-menu-single-item-height: var(--component-side-menu-single-item-height);
+
+  --side-menu-dropdown-list-item-height: var(--component-side-menu-dropdown-list-item-height);
+
+  --side-menu-radius-corner: var(--component-side-menu-radius-corner);
+
+  --side-menu-selected-left-border: var(--component-side-menu-selected-left-border);
+
+  --side-menu-dropdown-list-item: var(--color-background-base);
+
+  --side-menu-text-items-font-weight: var(--component-side-menu-text-items-font-weight);
 }
 
-.tds-mode-dark {
-  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
-  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
-  --tds-sidebar-item-state-focus: var(--tds-grey-958);
-  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-850);
-  --tds-sidebar-item-state-active: var(--tds-grey-800);
-  --tds-sidemenu-item-state-active: var(--tds-grey-800);
-  --tds-sidebar-item-state-selected: var(--tds-grey-868);
-  --tds-sidebar-side-menu: var(--tds-grey-958);
-  --tds-sidebar-side-menu-border-right: var(--tds-grey-850);
-  --tds-sidebar-side-menu-background-cover: var(--tds-grey-958);
-  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-850);
-  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-50);
-  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
-  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-100);
-  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-50);
-  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-700);
-  --tds-sidebar-side-menu-subnav-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
-}
+// width: var(--component-side-menu-size-icon, 16px);
+// height: var(--component-side-menu-size-icon, 16px);
