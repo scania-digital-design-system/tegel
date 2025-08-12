@@ -9,7 +9,7 @@
   @include tds-box-sizing;
 
   background-color: var(--header-background);
-  border-right: 1px solid var(--header--basic-element-border);
+  border-right: 1px solid var(--header-basic-element-border);
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -32,13 +32,13 @@
   }
 
   .tl-header-item--active & {
-    background-color: var(--header--basic-element-background-pressed);
+    background-color: var(--header-basic-element-background-pressed);
     color: var(--header-nav-item-dropdown-opened);
-    border-color: var(--header--basic-element-border-open);
+    border-color: var(--header-basic-element-border-open);
   }
 
   .tl-header-item--selected:not(.tl-header-item--active) & {
-    background-color: var(--header--basic-element-background-selected);
+    background-color: var(--header-basic-element-background-selected);
     padding-top: 4px;
     border-bottom-style: solid;
     border-bottom-width: 4px;

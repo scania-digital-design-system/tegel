@@ -29,10 +29,10 @@ tds-header {
   --header-nav-item-dropdown-opened: var(--component-header-color-foreground-selected);
 
   /* Basic element (“Bento”) separators & backgrounds */
-  --header--basic-element-border: var(--component-header-color-background-border);
-  --header--basic-element-border-open: var(--component-header-color-background-open);
-  --header--basic-element-background-pressed: var(--component-header-color-background-pressed);
-  --header--basic-element-background-selected: var(--component-header-color-background-selected);
+  --header-basic-element-border: var(--component-header-color-background-border);
+  --header-basic-element-border-open: var(--component-header-color-background-open);
+  --header-basic-element-background-pressed: var(--component-header-color-background-pressed);
+  --header-basic-element-background-selected: var(--component-header-color-background-selected);
 
   /* Avatar dropdown */
   --header-avatar-item-background: var(--component-header-avatar-item-background);

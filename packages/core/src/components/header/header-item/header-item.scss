@@ -34,14 +34,14 @@
   ::slotted(a:active) {
     padding-top: 2px;
     padding-bottom: 2px;
-    background-color: var(--header--basic-element-background-selected);
+    background-color: var(--header-basic-element-background-selected);
     border: 2px solid var(--header-nav-item-border-active);
   }
 
   .component-active {
     ::slotted(button),
     ::slotted(a) {
-      background-color: var(--header--basic-element-background-pressed);
+      background-color: var(--header-basic-element-background-pressed);
       color: var(--header-nav-item-dropdown-opened);
     }
   }
