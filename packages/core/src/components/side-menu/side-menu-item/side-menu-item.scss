@@ -6,6 +6,8 @@
 :host {
   display: block;
 
+  margin-bottom: var(--side-menu-space-top-level-vertical-gap-padding);
+
   .component {
     ::slotted(a),
     ::slotted(button) {
@@ -16,7 +18,12 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 0 22px;
+
+      // padding: 0 22px;
+      // padding: 0 12px; // is this correct for scania also?  <--- för traton: totala padding-left ska vara 12+2px, se figma
+      // padding: 0 14px; // is this correct for scania also?  <--- för traton: totala padding-left ska vara 12+2px, se figma
+      padding: 0 var(--side-menu-space-sub-page-left-no-icon);
+
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
 
@@ -28,6 +35,10 @@
 
       border-radius: var(--component-side-menu-radius-corner);
     }
+
+    // ::slotted(tds-icon) {
+    //   margin-right: 10px;
+    // }
 
     ::slotted(tds-side-menu-user),
     &-has-user ::slotted(button) {

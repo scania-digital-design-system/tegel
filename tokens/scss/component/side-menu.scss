@@ -43,6 +43,17 @@ tds-side-menu {
   --component-side-menu-radius-corner: 0px;
   --component-side-menu-selected-left-border: 4px;
   --component-side-menu-text-items-font-weight: 700;
+
+  --component-side-menu-space-sub-page-left-with-icon: 58px;
+  --component-side-menu-space-sub-page-left-no-icon: 24px;
+
+  --component-side-menu-space-top-level-vertical-gap-padding: 0px;
+
+  // --component-side-menu-size-icon: 24px;
+
+  --component-side-menu-space-top-level-left: 0px;
+
+  --component-side-menu-collapsed-button-size: 68px;
 }
 
 .traton {
@@ -52,4 +63,15 @@ tds-side-menu {
   --component-side-menu-radius-corner: var(--scania-unit-8);
   --component-side-menu-selected-left-border: 8px;
   --component-side-menu-text-items-font-weight: 500;
+
+  --component-side-menu-space-sub-page-left-with-icon: 40px;
+  --component-side-menu-space-sub-page-left-no-icon: 14px;
+
+  --component-side-menu-space-top-level-vertical-gap-padding: 16px;
+
+  // --component-side-menu-size-icon: 16px;
+
+  --component-side-menu-space-top-level-left: 16px;
+
+  --component-side-menu-collapsed-button-size: 72px;
 }

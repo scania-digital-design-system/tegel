@@ -7,6 +7,8 @@
   height: var(--side-menu-dropdown-list-item-height);
   width: 100%;
 
+  margin-bottom: var(--side-menu-space-top-level-vertical-gap-padding); // istället för gap
+
   .component {
     height: 100%;
     width: 100%;
@@ -19,13 +21,19 @@
       display: flex;
       align-items: center;
       height: 100%;
-      padding: 0 24px;
+
+      // padding: 0 24px; <---- detta värde kanske gäller för scania? för --component-side-menu-space-sub-page-left-no-icon
+      padding: 0 var(--side-menu-space-sub-page-left-no-icon);
+
       width: 100%;
       @include detail-02;
+
       // background-color: var(--tds-header-nav-item-dropdown-opened-background);
       background-color: var(--side-menu-dropdown-list-item);
 
-      color: var(--tds-header-nav-item-dropdown-opened-color);
+      // color: var(--tds-header-nav-item-dropdown-opened-color);
+      color: var(--side-menu-dropdown-list-item-color);
+
       border: none;
 
       border-radius: var(--side-menu-radius-corner);
@@ -90,7 +98,9 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 58px;
+        // padding: 16px 48px 16px 58px; <---- detta värde (58px) kanske gäller för scania? för --component-side-menu-space-sub-page-left-with-icon
+
+        padding: 16px 48px 16px var(--side-menu-space-sub-page-left-with-icon);
       }
     }
   }

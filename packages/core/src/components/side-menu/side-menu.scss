@@ -95,11 +95,12 @@
     }
 
     &:host(.menu-collapsed) {
-      width: 69px; // 68 + 1px for border
+      width: calc(var(--side-menu-collapsed-button-size) + 1px); // + 1px for border
+
       box-sizing: border-box;
 
       .menu {
-        width: 68px;
+        width: var(--side-menu-collapsed-button-size);
       }
     }
 
@@ -133,6 +134,8 @@
 
 aside {
   .tds-side-menu-wrapper {
+    margin: 0 var(--side-menu-space-top-level-left);
+
     display: flex;
     justify-content: space-between;
     flex-direction: column;

@@ -141,20 +141,20 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24px"></tds-icon>
+            <!-- <tds-icon name="timer" size="24px"></tds-icon> -->
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="truck" size="24px"></tds-icon>
+            <tds-icon name="truck"></tds-icon>
             Trucks
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
-          <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+          <!-- <tds-icon slot="icon" name="profile" size="24px"></tds-icon> -->
           <span slot="label">
             Wheel types
           </span>
@@ -174,7 +174,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24px"></tds-icon>
+            <tds-icon name="star"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>

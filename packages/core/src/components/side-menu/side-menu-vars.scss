@@ -22,10 +22,27 @@ tds-side-menu {
 
   --side-menu-selected-left-border: var(--component-side-menu-selected-left-border);
 
-  --side-menu-dropdown-list-item: var(--color-background-base);
+  --side-menu-dropdown-list-item: var(--color-background-base); // <------- rename to -background?
+  --side-menu-dropdown-list-item-color: var(--color-foreground-text-defined);
 
   --side-menu-text-items-font-weight: var(--component-side-menu-text-items-font-weight);
+
+  //använda dessa två i scss-filerna:
+  --side-menu-space-sub-page-left-with-icon: var(
+    --component-side-menu-space-sub-page-left-with-icon
+  );
+  --side-menu-space-sub-page-left-no-icon: var(--component-side-menu-space-sub-page-left-no-icon);
+
+  --side-menu-space-top-level-vertical-gap-padding: var(
+    --component-side-menu-space-top-level-vertical-gap-padding
+  );
+
+  // --side-menu-size-icon: var(--component-side-menu-size-icon);
+
+  --side-menu-space-top-level-left: var(--component-side-menu-space-top-level-left);
+
+  --side-menu-collapsed-button-size: var(--component-side-menu-collapsed-button-size);
 }
 
-// width: var(--component-side-menu-size-icon, 16px);
+// width: var(--component-side-menu-size-icon, 16px); // 24px för scania
 // height: var(--component-side-menu-size-icon, 16px);
