@@ -1,4 +1,5 @@
-import { E2EPage, test } from 'stencil-playwright';
+import { test } from 'stencil-playwright';
+import type { E2EPage } from 'stencil-playwright';
 import { expect } from '@playwright/test';
 import {
   testConfigurations,
