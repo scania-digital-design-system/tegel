@@ -46,4 +46,22 @@ tds-header {
   /* App launcher (grid) */
   --header-app-launcher-grid-category-title: var(--color-foreground-text-soft);
   --header-app-launcher-grid-hover-background: var(--color-background-surface-200);
+
+  /* Brand symbol */
+  --header-brand-item-width: var(--component-header-item-width);
+
+  /* Brand logo */
+  --header-logotype-local: var(--component-header-logotype-local);
+  --header-logotype-cdn: var(--component-header-logotype-cdn);
+  --header-brand-logo-size: var(--component-header-brand-logo-size);
+
+  /* Header item */
+  --header-item-image-left: var(--component-header-item-image-left);
+  --header-item-image-size: var(--component-header-item-image-size);
+  --header-item-border-right: var(--component-header-item-border-right);
+
+  /* Header title */
+  --header-font-weight: var(--component-header-font-weight);
+  --header-font-family-headline: var(--component-header-font-family-headline);
+  --header-text-transform: var(--component-header-text-transform);
 }

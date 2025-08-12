@@ -22,6 +22,7 @@
     --component-header-item-image-size: 34px;
     --component-header-item-image-left: 10px;
     --component-header-item-width: none;
+    --component-header-item-border-right: 1px solid var(--header--basic-element-border);
 
     /* Borders */
     --component-header-border: none;
@@ -78,6 +79,7 @@
     --component-header-item-image-size: 24px;
     --component-header-item-image-left: 15px;
     --component-header-item-width: 122px;
+    --component-header-item-border-right: none;
 
     /* Borders */
     --component-header-border: 2px solid var(--header-nav-item-border-active);
