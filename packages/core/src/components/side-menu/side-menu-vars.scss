@@ -8,7 +8,7 @@ tds-side-menu {
     --color-foreground-text-strong
   ); // done, textfärgen
 
-  --tds-sidebar-side-menu-subnav-background: yellow;
+  --tds-sidebar-side-menu-subnav-background: var(--color-background-layer-01); // yellow;
 
   --tds-sidebar-side-menu-single-subitem-selected-border-color: var(
     --color-foreground-border-accent-focus
@@ -42,7 +42,11 @@ tds-side-menu {
   --side-menu-space-top-level-left: var(--component-side-menu-space-top-level-left);
 
   --side-menu-collapsed-button-size: var(--component-side-menu-collapsed-button-size);
+
+  --side-menu-space-sub-page-top-group: var(--component-side-menu-space-sub-page-top-group);
 }
 
 // width: var(--component-side-menu-size-icon, 16px); // 24px för scania
 // height: var(--component-side-menu-size-icon, 16px);
+
+// pressed => surface-200

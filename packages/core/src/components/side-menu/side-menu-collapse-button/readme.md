@@ -24,11 +24,13 @@
 ### Depends on
 
 - [tds-side-menu-item](../side-menu-item)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-side-menu-collapse-button --> tds-side-menu-item
+  tds-side-menu-collapse-button --> tds-icon
   style tds-side-menu-collapse-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

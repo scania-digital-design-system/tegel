@@ -2,6 +2,9 @@
   display: block;
   width: 190px;
 
+  margin-top: var(--side-menu-space-sub-page-top-group);
+  margin-bottom: calc(var(--side-menu-space-top-level-vertical-gap-padding) * -1);
+
   [role='list'] {
     padding: 0;
     margin: 0;

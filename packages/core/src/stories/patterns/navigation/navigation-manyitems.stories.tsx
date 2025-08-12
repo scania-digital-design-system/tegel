@@ -267,6 +267,7 @@ const Template = ({ dummyHtml }) =>
         </tds-side-menu-item>
 
         <tds-side-menu-collapse-button slot="sticky-end"></tds-side-menu-collapse-button>
+    
 
       </tds-side-menu>
 

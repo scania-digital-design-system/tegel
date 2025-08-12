@@ -48,7 +48,7 @@
 
     ::slotted(a:active),
     ::slotted(button:active) {
-      background-color: var(--tds-header-nav-item-dropdown-opened-background-active) !important;
+      background-color: var(--tds-sidemenu-item-state-active) !important;
       cursor: pointer;
     }
 

@@ -8,6 +8,7 @@
   display: none;
   height: 68px;
   border-top: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+  margin: 0 var(--side-menu-space-top-level-left);
 
   .icon {
     transform: rotateZ(90deg);

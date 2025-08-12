@@ -6,7 +6,15 @@
 :host {
   display: block;
 
-  margin-bottom: var(--side-menu-space-top-level-vertical-gap-padding);
+  // margin: calc(var(--side-menu-space-top-level-vertical-gap-padding) / 2) 0px; // istället för gap
+  // margin-bottom: var(--side-menu-space-top-level-vertical-gap-padding); // istället för gap
+
+  // margin-top: 10px; // istället för gap
+  // margin-bottom: 10px; // istället för gap
+
+  margin-top: var(--side-menu-space-top-level-vertical-gap-padding); // istället för gap
+
+  // background-color: orange;
 
   .component {
     ::slotted(a),

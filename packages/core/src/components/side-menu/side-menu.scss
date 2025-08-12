@@ -13,6 +13,8 @@
   height: 100%;
   z-index: tds-z-index(side-menu);
 
+  // background-color: green;
+
   .wrapper {
     height: inherit;
 
@@ -133,14 +135,16 @@
 }
 
 aside {
+  background-color: var(--tds-sidebar-side-menu-background-cover);
+
   .tds-side-menu-wrapper {
-    margin: 0 var(--side-menu-space-top-level-left);
+    padding: 0 var(--side-menu-space-top-level-left); // använde margin tidigare, detta verkar funka bättre
 
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     flex-grow: 1;
-    background-color: var(--tds-sidebar-side-menu-background-cover);
+    // background-color: var(--tds-sidebar-side-menu-background-cover);
     @include tds-scrollbar;
 
     overflow-y: auto;

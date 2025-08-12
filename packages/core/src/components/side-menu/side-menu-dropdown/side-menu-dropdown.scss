@@ -3,6 +3,10 @@
 :host {
   display: block;
 
+  // margin-bottom: var(
+  //   --side-menu-space-top-level-vertical-gap-padding
+  // ); // istället för gap // <---- temp test
+
   .wrapper {
     display: flex;
     flex-direction: column;
