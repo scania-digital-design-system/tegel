@@ -26,7 +26,7 @@ export default {
   args: {},
 };
 
-const Template = ({}) => {
+const Template = () => {
   const isTraton =
     typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
   const url = isTraton ? 'https://traton.com/en.html' : 'https://www.scania.com/';
