@@ -1,0 +1,22 @@
+/* Component variables */
+
+.tl-link {
+  --link: var(--color-foreground-text-accent-default);
+  --link-hover: var(--color-foreground-text-accent-default);
+  --link-focus-outline-width: 2px;
+  --link-visited: var(--color-foreground-text-accent-visited);
+  --link-disabled: var(--color-foreground-text-disabled);
+}
+
+.tl-banner .tl-link {
+  --link: var(--color-system-info-default);
+}
+
+.tl-toast .tl-link {
+  --link: var(--color-system-info-default);
+  --link-hover: var(--color-foreground-text-accent-default);
+}
+
+.traton .tl-link {
+  --link-focus-outline-width: 4px;
+}
