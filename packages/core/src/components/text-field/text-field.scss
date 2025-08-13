@@ -1,4 +1,6 @@
 @import './text-field-mixins';
+@import '../../../../../typography/utilities/typography-utility';
+@import '../../mixins/mixins';
 
 .text-field-input {
   @include text-field-base;
@@ -20,7 +22,7 @@
 
 //Container for input field and prefix/suffix
 .text-field-container {
-  @include box-shadow;
+  @include box-shadow('text-field');
 
   border-radius: var(--text-field-border-radius);
   display: flex;
@@ -31,7 +33,7 @@
   transition: box-shadow 200ms ease;
 
   &:hover {
-    @include box-shadow('hover');
+    @include box-shadow('text-field', 'hover');
   }
 
   .form-text-field-md & {
@@ -246,7 +248,7 @@
 //Success state
 .form-text-field-success:not(.form-text-field-readonly) {
   .text-field-container {
-    @include box-shadow('success');
+    @include box-shadow('text-field', 'success');
   }
 }
 
@@ -257,7 +259,7 @@
   }
 
   .text-field-container {
-    @include box-shadow('error');
+    @include box-shadow('text-field', 'error');
   }
 
   .text-field-bar {

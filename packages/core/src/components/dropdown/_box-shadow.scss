@@ -1,5 +1,0 @@
-@mixin box-shadow($state: '') {
-  $suffix: if($state != '', '-#{$state}', '');
-
-  box-shadow: var(--dropdown-border#{$suffix});
-}
