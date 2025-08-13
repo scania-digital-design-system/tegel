@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 
 /**
@@ -48,6 +48,14 @@ export class TdsButton {
   @Prop() value: string;
 
   @State() onlyIcon: boolean = false;
+
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !this.disabled) {
+      event.preventDefault();
+      this.host.querySelector('button').click();
+    }
+  }
 
   connectedCallback() {
     if (this.onlyIcon && !this.tdsAriaLabel) {
