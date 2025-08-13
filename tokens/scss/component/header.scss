@@ -5,10 +5,6 @@
 .scania {
   tds-header,
   .tl-header {
-    /* Brand imagery */
-    --component-header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
-    --component-header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
-
     /* State & interaction colors */
     --component-header-color-background-open: var(--color-foreground-border-accent-focus);
     --component-header-color-foreground-selected: var(--color-foreground-icon-strong);
@@ -94,15 +90,11 @@
   .tds-mode-light tds-header,
   .tds-mode-light .tl-header {
     --component-header-color-background-selected: var(--color-background-layer-01);
-    --component-header-logotype-local: var(--traton-logotype-black-svg-local);
-    --component-header-logotype-cdn: var(--traton-logotype-black-svg);
   }
 
   /* ── Dark-mode overrides ───────────────────── */
   .tds-mode-dark tds-header,
   .tds-mode-dark .tl-header {
     --component-header-color-background-selected: var(--color-background-surface-100);
-    --component-header-logotype-local: var(--traton-logotype-white-svg-local);
-    --component-header-logotype-cdn: var(--traton-logotype-white-svg);
   }
 }

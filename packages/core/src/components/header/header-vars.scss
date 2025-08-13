@@ -51,8 +51,6 @@ tds-header {
   --header-brand-item-width: var(--component-header-item-width);
 
   /* Brand logo */
-  --header-logotype-local: var(--component-header-logotype-local);
-  --header-logotype-cdn: var(--component-header-logotype-cdn);
   --header-brand-logo-size: var(--component-header-brand-logo-size);
 
   /* Header item */
@@ -64,4 +62,25 @@ tds-header {
   --header-font-weight: var(--component-header-font-weight);
   --header-font-family-headline: var(--component-header-font-family-headline);
   --header-text-transform: var(--component-header-text-transform);
+}
+
+tds-header,
+.scania tds-header {
+  /* Brand logo */
+  --header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
+  --header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
+}
+
+.traton {
+  .tds-mode-dark tds-header {
+    /* Brand logo */
+    --header-logotype-local: var(--traton-logotype-white-svg-local);
+    --header-logotype-cdn: var(--traton-logotype-white-svg);
+  }
+
+  .tds-mode-light tds-header {
+    /* Brand logo */
+    --header-logotype-local: var(--traton-logotype-black-svg-local);
+    --header-logotype-cdn: var(--traton-logotype-black-svg);
+  }
 }
