@@ -25,7 +25,9 @@
     &.disabled {
       @include box-shadow('disabled');
 
-      color: var(--dropdown-disabled);
+      .value-wrapper input {
+        color: var(--dropdown-disabled);
+      }
     }
 
     .value-wrapper {
