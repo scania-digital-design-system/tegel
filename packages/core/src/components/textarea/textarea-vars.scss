@@ -5,6 +5,9 @@ tds-textarea {
   --textarea-text: var(--color-foreground-text-strong);
 
   // Disabled
+  --textarea-disabled-background-primary: var(--color-background-layer-01);
+  --textarea-disabled-background-secondary: var(--color-background-layer-02);
+  --textarea-disabled-background: var(--textarea-disabled-background-primary);
   --textarea-disabled-text: var(--color-foreground-text-disabled);
   --textarea-disabled-placeholder: var(--color-foreground-text-disabled);
   --textarea-disabled-label: var(--color-foreground-text-disabled);

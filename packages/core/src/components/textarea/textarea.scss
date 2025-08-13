@@ -215,6 +215,7 @@
 //Disabled state
 .textarea-disabled {
   cursor: not-allowed;
+  background-color: var(--textarea-disabled-background);
 
   .textarea-input {
     @include box-shadow('disabled');
