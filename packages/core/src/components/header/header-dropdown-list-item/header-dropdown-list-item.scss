@@ -1,4 +1,5 @@
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
@@ -19,14 +20,14 @@
       height: 100%;
       padding: 0 24px;
       width: 100%;
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
-      background-color: var(--tds-nav-dropdown-item-background);
-      color: var(--tds-header-nav-item-dropdown-opened-color);
+      @include detail-02;
+
+      background-color: var(--header-nav-dropdown-item-background);
+      color: var(--header-nav-item-dropdown-opened);
     }
 
     ::slotted(a:hover) {
-      background-color: var(--tds-nav-item-background-hover);
+      background-color: var(--header-nav-item-background-hover);
       cursor: pointer;
     }
 
@@ -35,22 +36,22 @@
     }
 
     &-selected {
-      background-color: var(--tds-nav-item-background-selected);
+      background-color: var(--header-nav-item-background-selected);
       padding-right: 4px;
       border-left-width: 4px;
       border-left-style: solid;
-      border-left-color: var(--tds-nav-item-border-color-active);
+      border-left-color: var(--header-nav-item-border-active);
 
       ::slotted(a),
       ::slotted(button) {
-        background-color: var(--tds-nav-item-background-selected);
+        background-color: var(--header-nav-item-background-selected);
       }
     }
   }
 }
 
 :host(:not(:last-child)) {
-  border-bottom: 1px solid var(--tds-nav-dropdown-item-border-color);
+  border-bottom: 1px solid var(--header-nav-dropdown-item-border);
 }
 
 :host([size='lg']) {
@@ -59,6 +60,6 @@
   ::slotted(a),
   ::slotted(button) {
     padding: 0 16px;
-    color: var(--tds-header-app-launcher-item-color);
+    color: var(--header-app-launcher-item);
   }
 }
