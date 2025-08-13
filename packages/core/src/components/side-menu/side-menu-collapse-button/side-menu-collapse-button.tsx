@@ -84,7 +84,19 @@ export class TdsSideMenuCollapseButton {
             }}
           >
             <a>
-              <tds-icon name="arrow_left"></tds-icon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 32 32"
+                class="icon"
+                slot="icon"
+                fill="none"
+              >
+                <path
+                  fill="currentColor"
+                  d="M24.59 16.59 17 24.17V4h-2v20.17L7.41 16.6 6 18l10 10 10-10-1.41-1.41Z"
+                ></path>
+              </svg>
+
               {!this.collapsed && <slot></slot>}
             </a>
           </tds-side-menu-item>

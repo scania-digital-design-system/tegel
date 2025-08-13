@@ -56,6 +56,17 @@ tds-side-menu {
   --component-side-menu-collapsed-button-size: 68px;
 
   --component-side-menu-space-sub-page-top-group: 0px;
+
+  --component-side-menu-size-icon: 24px;
+
+  --component-side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
+
+  --component-side-menu-collapsed-dropdown-background: var(--color-background-base);
+  --component-side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
+  --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
+  --component-side-menu-collapsed-dropdown-background-selected: var(--color-background-layer-01);
+
+  --component-side-menu-collapsed-dropdown-heading-padding-left: 24px;
 }
 
 .traton {
@@ -78,4 +89,15 @@ tds-side-menu {
   --component-side-menu-collapsed-button-size: 72px;
 
   --component-side-menu-space-sub-page-top-group: 4px;
+
+  --component-side-menu-size-icon: 16px;
+
+  --component-side-menu-subnav-box-shadow: none;
+
+  --component-side-menu-collapsed-dropdown-background: var(--color-background-layer-01);
+  --component-side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
+  --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
+  --component-side-menu-collapsed-dropdown-background-selected: var(--color-background-surface-100);
+
+  --component-side-menu-collapsed-dropdown-heading-padding-left: 14px;
 }

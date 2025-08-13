@@ -29,7 +29,7 @@
       @include detail-02;
 
       // background-color: var(--tds-header-nav-item-dropdown-opened-background);
-      background-color: var(--side-menu-dropdown-list-item);
+      background-color: var(--side-menu-dropdown-list-item-custom-background);
 
       // color: var(--tds-header-nav-item-dropdown-opened-color);
       color: var(--side-menu-dropdown-list-item-color);
@@ -42,13 +42,13 @@
     ::slotted(a:hover),
     ::slotted(button:hover) {
       // background-color: var(--tds-header-nav-item-dropdown-opened-background-hover);
-      background-color: var(--tds-sidebar-item-state-hover);
+      background-color: var(--side-menu-dropdown-list-item-custom-background-hover);
       cursor: pointer;
     }
 
     ::slotted(a:active),
     ::slotted(button:active) {
-      background-color: var(--tds-sidemenu-item-state-active) !important;
+      background-color: var(--side-menu-dropdown-list-item-custom-background-active);
       cursor: pointer;
     }
 
@@ -63,7 +63,7 @@
       // box-shadow: inset 4px 0 0 var(--tds-nav-item-border-color-active);
 
       // background-color: var(--tds-header-nav-item-dropdown-opened-background-selected);
-      background-color: var(--tds-sidebar-item-state-selected);
+      background-color: var(--side-menu-dropdown-list-item-custom-background-selected);
     }
   }
 

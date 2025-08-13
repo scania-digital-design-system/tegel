@@ -13,8 +13,8 @@
   .icon {
     transform: rotateZ(90deg);
     transition: all 0.2s ease-in-out;
-    width: 20px;
-    height: 20px;
+    width: var(--side-menu-size-icon);
+    height: var(--side-menu-size-icon);
   }
 
   .state-collapsed {

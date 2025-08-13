@@ -36,7 +36,7 @@
       background-color: var(--tds-sidebar-side-menu-background-cover);
 
       @include headline-07;
-      font-weight: var(--side-menu-text-items-font-weight) !important;
+      // font-weight: var(--side-menu-text-items-font-weight); // !important;
 
       color: var(--tds-sidebar-side-menu-single-item-color);
       cursor: pointer;

@@ -3,9 +3,11 @@
 :host {
   display: block;
 
-  // margin-bottom: var(
-  //   --side-menu-space-top-level-vertical-gap-padding
-  // ); // istället för gap // <---- temp test
+  // Custom variables for dropdown colors when not collapsed:
+  --side-menu-dropdown-list-item-custom-background: var(--side-menu-dropdown-list-item);
+  --side-menu-dropdown-list-item-custom-background-hover: var(--tds-sidebar-item-state-hover);
+  --side-menu-dropdown-list-item-custom-background-active: var(--tds-sidemenu-item-state-active);
+  --side-menu-dropdown-list-item-custom-background-selected: var(--tds-sidebar-item-state-selected);
 
   .wrapper {
     display: flex;
@@ -28,18 +30,35 @@
   }
 
   .state-collapsed {
+    // Custom variables for dropdown colors when collapsed:
+    --side-menu-dropdown-list-item-custom-background: var(
+      --side-menu-collapsed-dropdown-background
+    );
+    --side-menu-dropdown-list-item-custom-background-hover: var(
+      --side-menu-collapsed-dropdown-background-hover
+    );
+    --side-menu-dropdown-list-item-custom-background-active: var(
+      --side-menu-collapsed-dropdown-background-active
+    );
+    --side-menu-dropdown-list-item-custom-background-selected: var(
+      --side-menu-collapsed-dropdown-background-selected
+    );
+
     .menu {
       --side-menu-width: 69px;
 
       position: absolute;
       left: var(--side-menu-width);
-      box-shadow: var(--tds-nav-dropdown-menu-box);
+      box-shadow: var(--side-menu-subnav-box-shadow);
       background-color: var(--tds-sidebar-side-menu-subnav-background);
+
+      padding: var(--side-menu-space-top-level-left);
+      padding-top: 0;
 
       .heading-collapsed {
         all: unset;
         box-sizing: border-box;
-        padding: 16px 24px 15px;
+        padding: 16px var(--side-menu-collapsed-dropdown-heading-padding-left) 15px;
         min-height: 48px;
         display: flex;
         align-items: center;

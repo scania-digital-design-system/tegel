@@ -23,6 +23,7 @@ tds-side-menu {
   --side-menu-selected-left-border: var(--component-side-menu-selected-left-border);
 
   --side-menu-dropdown-list-item: var(--color-background-base); // <------- rename to -background?
+
   --side-menu-dropdown-list-item-color: var(--color-foreground-text-defined);
 
   --side-menu-text-items-font-weight: var(--component-side-menu-text-items-font-weight);
@@ -44,6 +45,27 @@ tds-side-menu {
   --side-menu-collapsed-button-size: var(--component-side-menu-collapsed-button-size);
 
   --side-menu-space-sub-page-top-group: var(--component-side-menu-space-sub-page-top-group);
+
+  --side-menu-size-icon: var(--component-side-menu-size-icon);
+
+  --side-menu-subnav-box-shadow: var(--component-side-menu-subnav-box-shadow);
+
+  --side-menu-collapsed-dropdown-background: var(
+    --component-side-menu-collapsed-dropdown-background
+  );
+  --side-menu-collapsed-dropdown-background-hover: var(
+    --component-side-menu-collapsed-dropdown-background-hover
+  );
+  --side-menu-collapsed-dropdown-background-active: var(
+    --component-side-menu-collapsed-dropdown-background-active
+  );
+  --side-menu-collapsed-dropdown-background-selected: var(
+    --component-side-menu-collapsed-dropdown-background-selected
+  );
+
+  --side-menu-collapsed-dropdown-heading-padding-left: var(
+    --component-side-menu-collapsed-dropdown-heading-padding-left
+  );
 }
 
 // width: var(--component-side-menu-size-icon, 16px); // 24px för scania
