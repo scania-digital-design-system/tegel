@@ -45,6 +45,9 @@ export class TdsPopoverMenu {
   /** If true this unsets the width (160px) of the Popover Menu */
   @Prop() fluidWidth: boolean = false;
 
+  /** Mode variant of the component, based on current mode. */
+  @Prop() modeVariant: 'primary' | 'secondary' = null;
+
   /** Property for closing popover programmatically */
   @Method() async close() {
     this.childRef?.close();
@@ -60,7 +63,11 @@ export class TdsPopoverMenu {
 
   render() {
     return (
-      <Host>
+      <Host
+        class={{
+          [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
+        }}
+      >
         <tds-popover-core
           class={{
             'tds-popover-menu': true,
