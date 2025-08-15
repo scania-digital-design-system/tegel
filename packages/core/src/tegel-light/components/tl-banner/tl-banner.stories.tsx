@@ -70,6 +70,10 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
     : '';
 
   return formatHtmlPreview(`
+    <!-- Required stylesheets:
+      "@scania/tegel-light/global.css"
+      "@scania/tegel-light/tl-banner.css"
+    -->
     <div class="tl-banner ${variantClass}">
       ${iconElement}
       <div class="tl-banner__content">
