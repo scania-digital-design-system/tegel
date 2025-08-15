@@ -1,5 +1,5 @@
 @import '../../../../../typography/utilities/typography-utility';
-@import './box-shadow';
+@import '../../mixins/mixins';
 
 :host {
   // compensate for box shadow
@@ -7,7 +7,7 @@
 
   button {
     all: unset;
-    @include box-shadow;
+    @include box-shadow('dropdown');
 
     height: 100%;
     width: 100%;
@@ -16,7 +16,7 @@
     transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &:hover {
-      @include box-shadow('hover');
+      @include box-shadow('dropdown', 'hover');
     }
 
     .value-wrapper {
@@ -42,27 +42,27 @@
     }
 
     &:focus {
-      @include box-shadow('focus');
+      @include box-shadow('dropdown', 'focus');
     }
 
     &:active {
-      @include box-shadow('active');
+      @include box-shadow('dropdown', 'active');
     }
 
     &.error {
-      @include box-shadow('error');
+      @include box-shadow('dropdown', 'error');
 
       &:hover {
-        @include box-shadow('error-hover');
+        @include box-shadow('dropdown', 'error-hover');
       }
 
       &:focus {
-        @include box-shadow('error-focus');
+        @include box-shadow('dropdown', 'error-focus');
       }
     }
 
     &:disabled {
-      @include box-shadow('disabled');
+      @include box-shadow('dropdown', 'disabled');
 
       color: var(--dropdown-disabled);
     }

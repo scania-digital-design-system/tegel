@@ -47,9 +47,3 @@
     color: var(--text-field-placeholder);
   }
 }
-
-@mixin box-shadow($state: '') {
-  $suffix: if($state != '', '-#{$state}', '');
-
-  box-shadow: var(--text-field-box-shadow#{$suffix});
-}

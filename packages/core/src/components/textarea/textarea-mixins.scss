@@ -43,9 +43,3 @@
 @mixin textarea-focus {
   border-bottom: 2px solid var(--textarea-bar);
 }
-
-@mixin box-shadow($state: '') {
-  $suffix: if($state != '', '-#{$state}', '');
-
-  box-shadow: var(--textarea-box-shadow#{$suffix});
-}

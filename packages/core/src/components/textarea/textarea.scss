@@ -1,5 +1,6 @@
 @import './textarea-mixins';
 @import '../../../../../typography/utilities/typography-utility';
+@import '../../mixins/mixins';
 
 .textarea-container {
   border-radius: var(--textarea-border-radius);
@@ -48,7 +49,7 @@
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   display: block;
   resize: vertical;
-  @include box-shadow;
+  @include box-shadow('textarea');
 
   transition: box-shadow 200ms ease;
 
@@ -58,7 +59,7 @@
   }
 
   &:hover {
-    @include box-shadow('hover');
+    @include box-shadow('textarea', 'hover');
   }
 }
 
@@ -192,13 +193,13 @@
 
 .textarea-success {
   .textarea-input {
-    @include box-shadow('success');
+    @include box-shadow('textarea', 'success');
   }
 }
 
 .textarea-error {
   .textarea-input {
-    @include box-shadow('error');
+    @include box-shadow('textarea', 'error');
   }
 
   .textarea-wrapper {
@@ -217,7 +218,7 @@
   cursor: not-allowed;
 
   .textarea-input {
-    @include box-shadow('disabled');
+    @include box-shadow('textarea', 'disabled');
 
     pointer-events: none;
     user-select: none;
@@ -258,7 +259,7 @@
   }
 
   .textarea-input {
-    @include box-shadow('read-only');
+    @include box-shadow('textarea', 'read-only');
   }
 
   .textfield-container {
