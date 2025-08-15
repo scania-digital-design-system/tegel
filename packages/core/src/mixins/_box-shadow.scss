@@ -1,0 +1,5 @@
+@mixin box-shadow($component, $state: '') {
+  $suffix: if($state != '', '-#{$state}', '');
+
+  box-shadow: var(--#{$component}-box-shadow#{$suffix});
+}

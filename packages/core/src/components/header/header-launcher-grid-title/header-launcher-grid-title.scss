@@ -1,14 +1,16 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 .tds-header-launcher-grid-title {
   all: unset;
   box-sizing: border-box;
-  font: var(--tds-detail-04);
-  letter-spacing: var(--tds-detail-04-ls);
-  color: var(--tds-header-app-launcher-grid-category-title-color);
+  @include detail-04;
+
+  color: var(--header-app-launcher-grid-category-title);
   text-transform: uppercase;
   height: 48px;
   padding: 0 16px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--tds-nav-dropdown-item-border-color);
+  border-bottom: 1px solid var(--header-nav-dropdown-item-border);
   margin: 0;
 }

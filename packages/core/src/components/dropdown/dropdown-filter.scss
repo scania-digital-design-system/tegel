@@ -1,13 +1,13 @@
 @import '../../mixins/z-index';
 @import '../../../../../typography/utilities/typography-utility';
-@import './box-shadow';
+@import '../../mixins/mixins';
 
 :host {
   // compensate for box shadow
   padding-bottom: 1px;
 
   .filter {
-    @include box-shadow;
+    @include box-shadow('dropdown');
 
     display: flex;
     align-items: center;
@@ -19,11 +19,11 @@
     transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &:hover {
-      @include box-shadow('hover');
+      @include box-shadow('dropdown', 'hover');
     }
 
     &.disabled {
-      @include box-shadow('disabled');
+      @include box-shadow('dropdown', 'disabled');
 
       .value-wrapper input {
         color: var(--dropdown-disabled);
@@ -85,14 +85,14 @@
     }
 
     &.focus {
-      @include box-shadow('focus');
+      @include box-shadow('dropdown', 'focus');
     }
 
     &.error {
-      @include box-shadow('error');
+      @include box-shadow('dropdown', 'error');
 
       &.focus {
-        @include box-shadow('error-focus');
+        @include box-shadow('dropdown', 'error-focus');
       }
     }
 
