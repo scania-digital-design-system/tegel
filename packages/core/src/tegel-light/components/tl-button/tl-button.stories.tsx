@@ -53,9 +53,11 @@ const Template = ({ variant, size, fullwidth, disabled, onlyIcon, icon }) => {
   const ariaLabel = !isXs && onlyIcon ? ' aria-label="Button"' : '';
 
   return formatHtmlPreview(`
-<!-- Required stylesheet 
-    "@scania/tegel-light/tl-button.css";
--->
+    <!-- Required stylesheet 
+      "@scania/tegel-light/global.css"
+      "@scania/tegel-light/tl-button.css";
+      "@scania/tegel-light/tl-icon.css";
+    -->
       <button class="tl-button ${onlyIconClass} tl-button--${variant} tl-button--${size} 
         ${fullwidth ? 'tl-button--fullwidth' : ''} 
         ${disabled ? 'tl-button--disabled' : ''}
