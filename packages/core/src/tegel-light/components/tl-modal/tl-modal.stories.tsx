@@ -78,6 +78,7 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
+      "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-modal.css"
     -->
     <div class="demo-wrapper">
