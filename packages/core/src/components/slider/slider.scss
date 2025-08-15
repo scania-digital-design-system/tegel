@@ -65,13 +65,11 @@ tds-slider {
   .tds-slider__input-values {
     .tds-slider__input-field-wrapper {
       input.tds-slider__input-field {
-        @include slider-border-colors('success');
-
+        box-shadow: var(--slider-input-field-box-shadow-success);
         color: var(--slider-input-success-text);
-        box-shadow: var(--slider-border-success);
 
         &:hover {
-          box-shadow: var(--slider-border-success);
+          box-shadow: var(--slider-input-field-box-shadow-success);
         }
       }
     }
@@ -144,23 +142,20 @@ tds-slider {
         @include slider-border-colors;
 
         border-radius: var(--slider-border-radius);
-        box-shadow: var(--slider-border-appearance);
+        box-shadow: var(--slider-input-field-box-shadow);
         color: var(--slider-input-inputfield);
         border: 0;
         background-color: transparent;
         text-align: center;
         padding: 12px;
+        transition: box-shadow 200ms ease;
 
         &:hover {
-          @include slider-border-colors('hover');
-
-          box-shadow: var(--slider-border-hover);
+          box-shadow: var(--slider-input-field-box-shadow-hover);
         }
 
         &:focus {
-          @include slider-border-colors('focus');
-
-          box-shadow: var(--slider-border-focus);
+          box-shadow: var(--slider-input-field-box-shadow-focus);
           outline: var(--slider-border-outline);
         }
       }
