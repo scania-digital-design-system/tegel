@@ -75,6 +75,7 @@ const Template = ({ value, size, hidden, demoCode }) => {
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
+      "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-badge.css"
     -->
     ${
