@@ -33,12 +33,8 @@
       margin: 0;
     }
 
-    &.expanded {
-      border-bottom: none;
-
-      tds-icon {
-        transform: rotateZ(180deg);
-      }
+    &.expanded tds-icon {
+      transform: rotateZ(180deg);
     }
 
     &:hover {
