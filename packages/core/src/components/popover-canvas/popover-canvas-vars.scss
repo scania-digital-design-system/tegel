@@ -1,4 +1,21 @@
 tds-popover-canvas {
   --popover-canvas-text: var(--color-foreground-text-strong);
-  --popover-canvas-background: var(--color-background-base);
+  --popover-canvas-background: var(--color-background-layer-01);
+
+  &.tds-mode-variant-primary {
+    --popover-canvas-background: var(--color-background-layer-01);
+  }
+
+  &.tds-mode-variant-secondary {
+    --popover-canvas-background: var(--color-background-layer-02);
+  }
+}
+
+:root,
+.scania {
+  --popover-canvas-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
+}
+
+.traton {
+  --popover-canvas-box-shadow: none;
 }
