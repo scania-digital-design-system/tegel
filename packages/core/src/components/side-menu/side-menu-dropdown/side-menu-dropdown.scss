@@ -1,5 +1,13 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
   display: block;
+
+  // Custom variables for dropdown colors when not collapsed:
+  --side-menu-dropdown-list-item-custom-background: var(--side-menu-background-cover);
+  --side-menu-dropdown-list-item-custom-background-hover: var(--side-menu-item-state-hover);
+  --side-menu-dropdown-list-item-custom-background-active: var(--side-menu-item-state-active);
+  --side-menu-dropdown-list-item-custom-background-selected: var(--side-menu-item-state-selected);
 
   .wrapper {
     display: flex;
@@ -22,24 +30,39 @@
   }
 
   .state-collapsed {
+    // Custom variables for dropdown colors when collapsed:
+    --side-menu-dropdown-list-item-custom-background: var(
+      --side-menu-collapsed-dropdown-background
+    );
+    --side-menu-dropdown-list-item-custom-background-hover: var(
+      --side-menu-collapsed-dropdown-background-hover
+    );
+    --side-menu-dropdown-list-item-custom-background-active: var(
+      --side-menu-collapsed-dropdown-background-active
+    );
+    --side-menu-dropdown-list-item-custom-background-selected: var(
+      --side-menu-collapsed-dropdown-background-selected
+    );
+
     .menu {
       --side-menu-width: 69px;
 
       position: absolute;
       left: var(--side-menu-width);
-      box-shadow: var(--tds-nav-dropdown-menu-box);
-      background-color: var(--tds-sidebar-side-menu-subnav-background);
+      box-shadow: var(--side-menu-subnav-box-shadow);
+      background-color: var(--side-menu-subnav-background);
+      padding: var(--side-menu-space-top-level-left);
+      padding-top: 0;
 
       .heading-collapsed {
         all: unset;
         box-sizing: border-box;
-        padding: 16px 24px 15px;
+        padding: 16px var(--side-menu-collapsed-dropdown-heading-padding-left) 15px;
         min-height: 48px;
         display: flex;
         align-items: center;
-        border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
-        font: var(--tds-headline-07);
-        letter-spacing: var(--tds-headline-07-ls);
+        border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
+        @include headline-07;
       }
     }
   }

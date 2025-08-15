@@ -1,6 +1,5 @@
 :host {
   display: flex;
   align-items: center;
-  gap: 16px;
-  height: 68px;
+  gap: var(--side-menu-space-sub-menu-item-profile-gap);
 }
