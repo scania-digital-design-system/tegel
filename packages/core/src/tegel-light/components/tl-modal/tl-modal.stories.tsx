@@ -81,6 +81,11 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-modal.css"
     -->
+
+    <!-- Optional stylesheet
+      "@scania/tegel-light/tl-button.css"
+      "@scania/tegel-light/tl-icon.css"
+    -->
     <div class="demo-wrapper">
       <div class="tl-modal ${showClass} tl-modal--${size} ${actionsClass}">
         <div class="tl-modal__header">
@@ -90,8 +95,8 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
               ? `
           <!-- Close button -->
           <button class="tl-modal__close">
-            <span class="tl-modal__close--icon">&times;</>
-          </>
+            <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
+          </button>
           `
               : ''
           }

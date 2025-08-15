@@ -167,25 +167,9 @@ $modals: (
   height: auto;
   color: var(--modal-text);
   cursor: pointer;
-  font-size: 2rem;
-  line-height: 1;
 
   &:focus {
     @include tds-focus-state;
-  }
-
-  &--icon {
-    display: inline-block;
-    height: auto;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    font-size: 2rem;
-
-    svg {
-      fill: var(--modal-cross-svg);
-    }
   }
 }
 
