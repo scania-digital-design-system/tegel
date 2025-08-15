@@ -65,7 +65,9 @@ export class TdsSideMenuDropdownListItem {
             'component-collapsed': this.collapsed,
           }}
         >
-          <slot></slot>
+          <div class="slot-wrapper">
+            <slot></slot>
+          </div>
         </div>
       </Host>
     );

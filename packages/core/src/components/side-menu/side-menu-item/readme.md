@@ -24,12 +24,14 @@
 
 ### Used by
 
+ - [tds-side-menu-close-button](../side-menu-close-button)
  - [tds-side-menu-collapse-button](../side-menu-collapse-button)
  - [tds-side-menu-dropdown](../side-menu-dropdown)
 
 ### Graph
 ```mermaid
 graph TD;
+  tds-side-menu-close-button --> tds-side-menu-item
   tds-side-menu-collapse-button --> tds-side-menu-item
   tds-side-menu-dropdown --> tds-side-menu-item
   style tds-side-menu-item fill:#f9f,stroke:#333,stroke-width:4px
