@@ -182,55 +182,55 @@ const Template = ({ dummyHtml }) => {
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24"></tds-icon>
+            <tds-icon name="info"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24"></tds-icon>
+            <tds-icon name="info"></tds-icon>
             Contact
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24"></tds-icon>
+            <tds-icon name="info"></tds-icon>
             Blog
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
         <button>
-          <tds-icon name="timer" size="24"></tds-icon>
+          <tds-icon name="info"></tds-icon>
           About us
         </button>
       </tds-side-menu-item>
 
       <tds-side-menu-item>
         <button>
-          <tds-icon name="timer" size="24"></tds-icon>
+          <tds-icon name="info"></tds-icon>
           About us
         </button>
       </tds-side-menu-item>
 
         <tds-side-menu-item>
           <a href="https://www.scania.com">
-            <tds-icon name="truck" size="24"></tds-icon>
+            <tds-icon name="truck"></tds-icon>
             Trucks
           </a>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="wifi" size="24"></tds-icon>
+            <tds-icon name="info"></tds-icon>
             Our services
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown default-open selected>
-          <tds-icon slot="icon" name="profile" size="24"></tds-icon>
+          <tds-icon slot="icon" name="info"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -246,7 +246,7 @@ const Template = ({ dummyHtml }) => {
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24"></tds-icon>
+            <tds-icon name="star"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>
@@ -254,7 +254,7 @@ const Template = ({ dummyHtml }) => {
 
         <tds-side-menu-item slot="end">
           <button>
-            <tds-icon name="calendar" size="24"></tds-icon>
+            <tds-icon name="calendar"></tds-icon>
             My Calendar
           </button>
         </tds-side-menu-item>
@@ -272,7 +272,7 @@ const Template = ({ dummyHtml }) => {
         </tds-side-menu-item>
 
         <tds-side-menu-collapse-button slot="sticky-end"></tds-side-menu-collapse-button>
-
+    
       </tds-side-menu>
 
       <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box;">

@@ -1,8 +1,10 @@
 :host {
+  height: var(--side-menu-profile-user-image-size);
+
   img,
   ::slotted(*) {
-    width: 34px;
-    height: 34px;
+    width: var(--side-menu-profile-user-image-size);
+    height: var(--side-menu-profile-user-image-size);
     border-radius: 50%;
   }
 }

@@ -27,11 +27,31 @@ export class TdsSideMenuCloseButton {
       ...inheritAriaAttributes(this.host),
       'onClick': TdsSideMenuCloseButton.handleClick,
     };
+
     return (
       <Host>
-        <button {...buttonProps}>
-          <tds-icon name="cross" size="20px" svgTitle="Cross"></tds-icon>
-        </button>
+        <tds-side-menu-item
+          class={{
+            button: true,
+          }}
+        >
+          <a>
+            <div role="button" {...buttonProps}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  d="M15.625 5.25879L14.7412 4.375L10 9.11621L5.25879 4.375L4.375 5.25879L9.11621 10L4.375 14.7412L5.25879 15.625L10 10.8838L14.7412 15.625L15.625 14.7412L10.8838 10L15.625 5.25879Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </a>
+        </tds-side-menu-item>
       </Host>
     );
   }

@@ -2,35 +2,89 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-side-menu,
-tds-side-menu {
-  --component-side-menu-states-default: var(--scania-color-grey-950);
-  --component-side-menu-states-hover: var(--scania-color-grey-900);
-  --component-side-menu-states-pressed: var(--scania-color-grey-850);
-  --component-side-menu-states-focus: var(--scania-color-grey-950);
-  --component-side-menu-states-selected: var(--scania-color-grey-900);
-  --component-side-menu-dividers-default: var(--color-foreground-border-discrete);
-  --component-side-menu-icons-icon-size: var(--scania-unit-16);
-  --component-side-menu-icons-close-icon-size: var(--scania-unit-20);
-  --component-side-menu-padding-sub-menu-item-top-and-bottom: var(--scania-unit-8);
-  --component-side-menu-padding-sub-menu-item-left: var(--scania-unit-12);
-  --component-side-menu-padding-sub-menu-item-chevron-right-padding: 12px;
-  --component-side-menu-padding-sub-menu-item-profile-left: var(--scania-unit-4);
-  --component-side-menu-padding-sub-menu-item-profile-gap: var(--scania-unit-12);
-  --component-side-menu-padding-sub-menu-item-profile-top--bottom: var(--scania-unit-4);
-  --component-side-menu-padding-sub-menu-item-selected-marker-height: 40px;
-  --component-side-menu-padding-top-level-left: var(--scania-unit-16);
-  --component-side-menu-padding-top-level-horizontal-gap-padding: var(--scania-unit-4);
-  --component-side-menu-padding-top-level-top: 14px;
-  --component-side-menu-padding-top-level-bottom-collapsible: var(--scania-unit-16);
-  --component-side-menu-padding-collapsed-item-left--right-inner-icon-padding: 12px;
-  --component-side-menu-padding-collapsed-item-top--bottom-inner-icon-padding: 12px;
-  --component-side-menu-padding-sub-page-top--bottom: var(--scania-unit-8);
-  --component-side-menu-padding-sub-page-left-with-icon: var(--scania-unit-40);
-  --component-side-menu-padding-sub-page-left-no-icon: 14px;
-  --component-side-menu-padding-sub-page-left-profile: var(--scania-unit-48);
-  --component-side-menu-padding-sub-page-top-group: var(--scania-unit-4);
-  --component-side-menu-padding-sub-page-selected-marker-height: 34px;
-  --component-side-menu-padding-sub-page-selected-marker-width: var(--scania-unit-8);
-  --component-side-menu-radius-corner-radius: var(--scania-unit-8);
+:root,
+.scania {
+  .tl-side-menu,
+  tds-side-menu {
+    --component-side-menu-close-button-wrapper-height: auto;
+    --component-side-menu-collapsed-button-size: 68px;
+    --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
+    --component-side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
+    --component-side-menu-collapsed-dropdown-background-selected: var(--color-background-layer-01);
+    --component-side-menu-collapsed-dropdown-background: var(--color-background-base);
+    --component-side-menu-collapsed-dropdown-heading-padding-left: 24px;
+    --component-side-menu-color-divider: var(--color-foreground-border-discrete);
+    --component-side-menu-dropdown-list-item-height: 48px;
+    --component-side-menu-profile-user-image-size: 34px;
+    --component-side-menu-radius-corner: var(--scania-unit-0);
+    --component-side-menu-selected-left-border: 4px;
+    --component-side-menu-single-item-height: 68px;
+    --component-side-menu-size-close-icon-size: var(--scania-unit-20);
+    --component-side-menu-size-icon: var(--scania-unit-24);
+    --component-side-menu-space-collapsed-item-left-right-inner-icon-padding: 22px;
+    --component-side-menu-space-sub-menu-item-chevron-right-padding: var(--scania-unit-16);
+    --component-side-menu-space-sub-menu-item-left: 22px;
+    --component-side-menu-space-sub-menu-item-profile-gap: var(--scania-unit-16);
+    --component-side-menu-space-sub-menu-item-profile-left: var(--scania-unit-16);
+    --component-side-menu-space-sub-menu-item-profile-top-bottom: 18px;
+    --component-side-menu-space-sub-menu-item-selected-marker-height: 68px;
+    --component-side-menu-space-sub-menu-item-top-and-bottom: 22px;
+    --component-side-menu-space-sub-page-left-no-icon: var(--scania-unit-24);
+    --component-side-menu-space-sub-page-left-profile: var(--scania-unit-64);
+    --component-side-menu-space-sub-page-left-with-icon: 58px;
+    --component-side-menu-space-sub-page-selected-marker-height: var(--scania-unit-48);
+    --component-side-menu-space-sub-page-selected-marker-width: var(--scania-unit-4);
+    --component-side-menu-space-sub-page-top-bottom: var(--scania-unit-16);
+    --component-side-menu-space-sub-page-top-group: var(--scania-unit-0);
+    --component-side-menu-space-top-level-bottom-collapsible: var(--scania-unit-0);
+    --component-side-menu-space-top-level-left: var(--scania-unit-0);
+    --component-side-menu-space-top-level-top: var(--scania-unit-0);
+    --component-side-menu-space-top-level-vertical-gap-padding: var(--scania-unit-0);
+    --component-side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
+    --component-side-menu-text-items-font-weight: var(--scania-font-weight-bold);
+  }
+}
+
+.traton {
+  .tl-side-menu,
+  tds-side-menu {
+    --component-side-menu-close-button-wrapper-height: 64px;
+    --component-side-menu-collapsed-button-size: 72px;
+    --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
+    --component-side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
+    --component-side-menu-collapsed-dropdown-background-selected: var(
+      --color-background-surface-100
+    );
+    --component-side-menu-collapsed-dropdown-background: var(--color-background-layer-01);
+    --component-side-menu-collapsed-dropdown-heading-padding-left: 14px;
+    --component-side-menu-color-divider: var(--traton-color-transparent-invisible-light);
+    --component-side-menu-dropdown-list-item-height: 32px;
+    --component-side-menu-profile-user-image-size: 25.5px;
+    --component-side-menu-radius-corner: var(--traton-unit-8);
+    --component-side-menu-selected-left-border: 8px;
+    --component-side-menu-single-item-height: 40px;
+    --component-side-menu-size-close-icon-size: var(--traton-unit-20);
+    --component-side-menu-size-icon: var(--traton-unit-16);
+    --component-side-menu-space-collapsed-item-left-right-inner-icon-padding: var(--traton-unit-12);
+    --component-side-menu-space-sub-menu-item-chevron-right-padding: var(--traton-unit-12);
+    --component-side-menu-space-sub-menu-item-left: var(--traton-unit-12);
+    --component-side-menu-space-sub-menu-item-profile-gap: var(--traton-unit-8);
+    --component-side-menu-space-sub-menu-item-profile-left: var(--traton-unit-8);
+    --component-side-menu-space-sub-menu-item-profile-top-bottom: var(--traton-unit-4);
+    --component-side-menu-space-sub-menu-item-selected-marker-height: var(--traton-unit-40);
+    --component-side-menu-space-sub-menu-item-top-and-bottom: var(--traton-unit-8);
+    --component-side-menu-space-sub-page-left-no-icon: 14px;
+    --component-side-menu-space-sub-page-left-profile: var(--traton-unit-48);
+    --component-side-menu-space-sub-page-left-with-icon: var(--traton-unit-40);
+    --component-side-menu-space-sub-page-selected-marker-height: 32px; // 34px in Figma file
+    --component-side-menu-space-sub-page-selected-marker-width: var(--traton-unit-8);
+    --component-side-menu-space-sub-page-top-bottom: var(--traton-unit-8);
+    --component-side-menu-space-sub-page-top-group: var(--traton-unit-4);
+    --component-side-menu-space-top-level-bottom-collapsible: var(--traton-unit-16);
+    --component-side-menu-space-top-level-left: var(--traton-unit-16);
+    --component-side-menu-space-top-level-top: var(--traton-unit-14);
+    --component-side-menu-space-top-level-vertical-gap-padding: var(--traton-unit-16);
+    --component-side-menu-subnav-box-shadow: none;
+    --component-side-menu-text-items-font-weight: var(--traton-font-weight-medium);
+  }
 }
