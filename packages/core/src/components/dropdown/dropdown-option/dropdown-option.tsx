@@ -95,9 +95,10 @@ export class TdsDropdownOption {
     this.internalValue = convertToString(this.value);
   }
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel && !this.multiselect) {
-      console.warn('Tegel Dropdown option component: tdsAriaLabel prop is missing');
+  componentDidLoad() {
+    const hasText = !!this.host.textContent?.trim();
+    if (!this.multiselect && !this.tdsAriaLabel?.trim() && !hasText) {
+      console.warn('Tegel Dropdown option component: is missing an accessible name.');
     }
   }
 
