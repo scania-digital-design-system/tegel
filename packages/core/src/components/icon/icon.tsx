@@ -45,20 +45,23 @@ export class Icon {
     const brand = this.detectBrand();
     this.setBrand(brand);
 
+    if (this.size) {
+      return;
+    }
+
+    const insideSideMenu = this.host.closest('tds-side-menu');
+
+    const brandSizeMap: Record<string, string> = {
+      scania: '24px',
+      traton: '16px',
+    };
+
+    if (insideSideMenu && brandSizeMap[brand]) {
+      this.size = brandSizeMap[brand];
+    }
+
     if (!this.size) {
-      const insideSideMenu = this.host.closest('tds-side-menu');
-
-      if (insideSideMenu) {
-        if (brand === 'scania') {
-          this.size = '24px';
-        } else if (brand === 'traton') {
-          this.size = '16px';
-        }
-      }
-
-      if (!this.size) {
-        this.size = '16px';
-      }
+      this.size = '16px';
     }
   }
 

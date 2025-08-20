@@ -6,6 +6,8 @@
 .scania {
   .tl-side-menu,
   tds-side-menu {
+    --component-side-menu-bottom-menu-border-top-collapsed: 1px solid
+      var(--color-foreground-border-discrete);
     --component-side-menu-close-button-wrapper-height: auto;
     --component-side-menu-collapsed-button-size: 68px;
     --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
@@ -49,6 +51,7 @@
 .traton {
   .tl-side-menu,
   tds-side-menu {
+    --component-side-menu-bottom-menu-border-top-collapsed: none;
     --component-side-menu-close-button-wrapper-height: 64px;
     --component-side-menu-collapsed-button-size: 72px;
     --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
@@ -77,7 +80,7 @@
     --component-side-menu-space-sub-page-left-no-icon: 14px;
     --component-side-menu-space-sub-page-left-profile: var(--traton-unit-48);
     --component-side-menu-space-sub-page-left-with-icon: var(--traton-unit-40);
-    --component-side-menu-space-sub-page-selected-marker-height: 32px; // 34px in Figma file
+    --component-side-menu-space-sub-page-selected-marker-height: 32px;
     --component-side-menu-space-sub-page-selected-marker-width: var(--traton-unit-8);
     --component-side-menu-space-sub-page-top-bottom: var(--traton-unit-8);
     --component-side-menu-space-sub-page-top-group: var(--traton-unit-4);

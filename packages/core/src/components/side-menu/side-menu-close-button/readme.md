@@ -10,11 +10,13 @@
 ### Depends on
 
 - [tds-side-menu-item](../side-menu-item)
+- [tds-icon](../../icon)
 
 ### Graph
 ```mermaid
 graph TD;
   tds-side-menu-close-button --> tds-side-menu-item
+  tds-side-menu-close-button --> tds-icon
   style tds-side-menu-close-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

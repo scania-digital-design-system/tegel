@@ -123,7 +123,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
         My Application
       </tds-header-title>
 
-      <i style="color:white">Header items omitted for brevity. See patterns/navigation</i>
+      <i style="color:grey">Header items omitted for brevity. See patterns/navigation</i>
 
       <tds-header-brand-symbol slot="end">
         <a href="https://scania.com" aria-label="Scania website"></a>

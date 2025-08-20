@@ -35,6 +35,9 @@ tds-side-menu {
   Brand specific variables: 
   */
   --side-menu-bottom-menu-border-top: var(--component-side-menu-color-divider);
+  --side-menu-bottom-menu-border-top-collapsed: var(
+    --component-side-menu-bottom-menu-border-top-collapsed
+  );
   --side-menu-close-button-wrapper-height: var(--component-side-menu-close-button-wrapper-height);
   --side-menu-collapsed-button-size: var(--component-side-menu-collapsed-button-size);
   --side-menu-collapsed-dropdown-heading-padding-left: var(

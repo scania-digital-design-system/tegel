@@ -60,10 +60,6 @@
     height: 100%;
   }
 
-  .component.component-selected .slot-wrapper {
-    position: relative;
-  }
-
   .component.component-selected .slot-wrapper::before {
     content: '';
     position: absolute;

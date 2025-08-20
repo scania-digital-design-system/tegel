@@ -19,7 +19,7 @@
 
   .state-collapsed {
     ::slotted(*) {
-      border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
+      border-bottom: var(--side-menu-bottom-menu-border-top-collapsed);
     }
   }
 }
