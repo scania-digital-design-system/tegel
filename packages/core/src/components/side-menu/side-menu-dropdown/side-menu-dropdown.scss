@@ -53,6 +53,7 @@
       background-color: var(--side-menu-subnav-background);
       padding: var(--side-menu-space-top-level-left);
       padding-top: 0;
+      border-radius: var(--side-menu-subnav-border-radius);
 
       .heading-collapsed {
         all: unset;

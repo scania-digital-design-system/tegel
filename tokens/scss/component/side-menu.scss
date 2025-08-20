@@ -40,6 +40,7 @@
     --component-side-menu-space-top-level-left: var(--scania-unit-0);
     --component-side-menu-space-top-level-top: var(--scania-unit-0);
     --component-side-menu-space-top-level-vertical-gap-padding: var(--scania-unit-0);
+    --component-side-menu-subnav-border-radius: 0;
     --component-side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
     --component-side-menu-text-items-font-weight: var(--scania-font-weight-bold);
   }
@@ -84,6 +85,7 @@
     --component-side-menu-space-top-level-left: var(--traton-unit-16);
     --component-side-menu-space-top-level-top: var(--traton-unit-14);
     --component-side-menu-space-top-level-vertical-gap-padding: var(--traton-unit-16);
+    --component-side-menu-subnav-border-radius: 4px;
     --component-side-menu-subnav-box-shadow: none;
     --component-side-menu-text-items-font-weight: var(--traton-font-weight-medium);
   }
