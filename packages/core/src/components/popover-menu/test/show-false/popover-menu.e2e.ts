@@ -10,7 +10,7 @@ const componentTestPath = 'src/components/popover-menu/test/show-false/index.htm
 const componentName = 'tds-popover-menu';
 const testDescription = 'tds-popover-menu-show-false';
 
-testConfigurations.basic.forEach((config) => {
+testConfigurations.withModeVariants.forEach((config) => {
   test.describe.parallel(getTestDescribeText(config, testDescription), () => {
     test.beforeEach(async ({ page }) => {
       await setupPage(page, config, componentTestPath, componentName);
