@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-styles",
-  "version": "1.0.0-ag-grid-design-review-beta.3",
+  "version": "1.0.0-ag-grid-v33-beta.1",
   "description": "CSS styling package for Tegel Design System.",
   "main": "dist/css/tegel-styles.css",
   "style": "main.scss",
@@ -31,10 +31,10 @@
   "homepage": "https://tegel.scania.com/home",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
-    "sass": "^1.32.8"
+    "sass": "^1.90.0"
   },
   "dependencies": {
-    "postcss": "^8.4.39",
-    "glob": "^8.1.0"
+    "glob": "^8.1.0",
+    "postcss": "^8.4.39"
   }
 }
