@@ -8,56 +8,47 @@ Documentation on AG Grid's website, a tutorial using React: https://www.ag-grid.
 ## Getting started
 
 1. Open up your local repository where you want to use AG Grid tables, in a code editor. If you don’t have one you can clone the tegel-react-demo repository: https://github.com/scania-digital-design-system/tegel-react-demo
-2. Go to the file “package.json” in the root directory of your repository
-3. Update the line containing `"@scania/tegel-styles": “1.0.0”` to `"@scania/tegel-styles": "1.0.0-ag-grid-design-review-beta.3"`
-4. Run “npm install”
-5. Run “npm install ag-grid-react@latest” and verify that you have ag grid version 33 or higher.
+2. Run `npm install @scania/tegel-styles@1.0.0-ag-grid-v33-beta.1`
+3. Run `npm install ag-grid-react@latest`
 
 ## React code example
 
-If you're using React (specifically with Typescript), here is an example of code you can use to test it. You'll need to create a new component, here we call it TableExampleComponent. Add the following imports to the component's file:
+If you're using React (specifically with Typescript), here is an example of code you can use to test it. You'll need to create a new component, here we call it TableExampleComponent. 
+
+If you're using a project that has previously used ag grid with Tegel (especially if you're using the tegel-react-demo) make sure that there aren't conflicts with other css files for ag-grid, by verifying that 
+`ag-grid-community/styles/ag-grid.css` and `ag-grid-community/styles/ag-theme-quartz.css` aren't imported anywhere in the project.
+
+Add the following imports to the new component's file:
 ``` typescript
-import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
-import { ColDef, ModuleRegistry, GridReadyEvent } from '@ag-grid-community/core';
-import { AgGridReact } from '@ag-grid-community/react';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-quartz.css';
-import '@scania/tegel-styles/dist/customization/ag-grid/quartz-theme-override-v33.css'
+import { AgGridReact } from 'ag-grid-react';
+import {AllCommunityModule, ModuleRegistry} from 'ag-grid-community';
+import "@scania/tegel/dist/tegel/tegel.css";
+import '@scania/tegel-styles/dist/customization/ag-grid/theme.css';
 ```
 
-add the following lines to the component's file:
+and the following lines:
 ``` typescript
-ModuleRegistry.registerModules([ClientSideRowModelModule]);
-interface IRow {
-  col1: string;
-  col2: string;
-}
+ModuleRegistry.registerModules([AllCommunityModule]);
+
 const TableExampleComponent = () => {
   const rowData = [
-    { col1: 'Row 1', col2: 'Row 1' },
-    { col1: 'Row 2', col2: 'Row 2' },
+    { col1: "Row 1 Column 1", col2: "Row 1 Column 2" },
+    { col1: "Row 2 Column 1", col2: "Row 2 Column 2" },
   ];
   const colDefs = [
-    { field: 'col1', filter: true },
-    { field: 'col2', filter: true },
+    { field: 'column 1', filter: true },
+    { field: 'column 2', filter: true },
   ];
   const defaultColDef: ColDef = {
     flex: 1,
     filter: true,
   };
   return (
-    <div className="ag-theme-quartz tds-mode-variant-primary">
-      <AgGridReact rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} />
+    <div className="tds-mode-light" style={{height: "300px", width: "500px"}}>
+      <AgGridReact style={{height: "100%", width: "100%"}} rowData={rowData} columnDefs={colDefs} defaultColDef={defaultColDef} className="tds-mode-variant-primary" />
     </div>
   );
 };
 ```
- 
-Add exporting of the component, any way you want. If you have this import: `import { createRoot } from 'react-dom/client';` you can export it by adding these lines:
-``` typescript
-const root = createRoot(document.getElementById('root')!);
-root.render(<TableExampleComponent />);
-export default TableExampleComponent;
-```
 
-Then, import your table component in another file, and open it up in a browser.
+Now import this new table example component to a page in your app, and open the browser to preview it.
