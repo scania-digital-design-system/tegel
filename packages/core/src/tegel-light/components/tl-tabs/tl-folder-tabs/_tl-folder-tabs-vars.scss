@@ -13,7 +13,6 @@
   --folder-tab-surface-selected: var(--color-background-layer-02);
 }
 
-/* Variables used only by tds-folder-tabs (scroll buttons) */
 .tl-folder-tabs {
   --folder-tabs-scroll-button-surface: var(--color-background-surface-300);
   --folder-tabs-scroll-button-surface-hover: var(--color-background-surface-300);
@@ -21,7 +20,6 @@
   --folder-tabs-scroll-button-text: var(--color-foreground-text-soft);
 }
 
-/* Variables used only by tds-folder-tab */
 .tl-folder-tab {
   --folder-tab-surface-hover: var(--color-background-surface-300);
   --folder-tab-border-selected: var(--color-foreground-border-accent-focus);

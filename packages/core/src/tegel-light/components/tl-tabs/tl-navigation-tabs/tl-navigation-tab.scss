@@ -9,7 +9,6 @@
   position: relative;
 }
 
-//klar, rör ej
 .tl-navigation-tab-item:not(.tl-navigation-tab-item--selected)::after {
   width: 0%;
   transition: width 0.15s ease-in-out 0s;
@@ -37,10 +36,10 @@
   &:focus-visible::before {
     content: '';
     position: absolute;
-    inset: 18px 0; // top/bottom inåt så du får luft (anpassa)
-    border-radius: 2px; // om du vill ha samma form som Tegel
+    inset: 18px 0;
+    border-radius: 2px;
     box-shadow: 0 0 0 2px var(--navigation-tabs-tab-focus) inset;
-    z-index: 2; // över underlinjen (::after har z-index:1)
+    z-index: 2;
     pointer-events: none;
   }
 
@@ -85,14 +84,12 @@
       content: none;
     }
 
-    //vänta med denna
     &:focus-visible::before {
       box-shadow: none;
     }
   }
 }
 
-//vad göra med denna?
 :host(.last) {
   margin-right: 32px;
 }

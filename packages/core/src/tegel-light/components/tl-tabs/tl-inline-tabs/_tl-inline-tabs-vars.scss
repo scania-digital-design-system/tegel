@@ -1,5 +1,3 @@
-/* Variables used by tds-inline-tabs component */
-
 .tl-inline-tabs {
   /* Horizontal divider */
   --inline-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
@@ -19,7 +17,6 @@
   }
 }
 
-/* Variables used by tds-inline-tab component */
 .tl-inline-tab {
   /* Tab */
   --inline-tabs-tab: var(--color-foreground-text-soft);
