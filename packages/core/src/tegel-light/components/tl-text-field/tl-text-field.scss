@@ -80,10 +80,12 @@
       outline: var(--text-field-focus-outline);
       outline-offset: var(--text-field-focus-outline-offset);
     }
+  }
 
-    .tl-text-field__bar::after {
-      transform: scaleX(1);
-    }
+  // Bar animation on focus
+  .tl-text-field__content:has(.tl-text-field__input:focus):not(.tl-text-field--disabled)
+  ~ .tl-text-field__bar::after {
+    transform: scaleX(1);
   }
 
   // Disabled state
@@ -118,6 +120,11 @@
 
     .tl-text-field__textcounter {
       color: var(--text-field-textcounter-disabled);
+    }
+
+    // Override bar animation when disabled
+    .tl-text-field__bar::after {
+      transform: scaleX(0) !important;
     }
 
     // Label inside behavior when disabled
