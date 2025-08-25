@@ -1,0 +1,80 @@
+@import '../../../../mixins/box-sizing';
+@import '../../../../mixins/focus-state';
+@import './tl-folder-tabs-vars';
+@import '../../../../../../../typography/utilities/typography-utility';
+
+.tl-folder-tab {
+  all: unset;
+  @include headline-07;
+
+  /* sizing & layout */
+  box-sizing: border-box;
+  position: relative; /* for ::after on --selected */
+  display: inline-flex; /* content-driven width, consistent height */
+  align-items: center;
+  min-inline-size: 142px; /* = min-width */
+  inline-size: auto; /* = width: auto */
+  flex: 0 0 auto; /* do not grow/shrink; size to own content */
+  white-space: nowrap;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+
+  /* visuals */
+  border-left: 1px solid transparent;
+  border-top: 2px solid var(--folder-tab-surface);
+  background-color: var(--folder-tab-surface);
+  color: var(--folder-tab-item-text);
+
+  /* remove this – it forced all tabs to be full width */
+
+  /* width: calc(100% - 32px); */
+
+  & + .tl-folder-tab {
+    border-left-color: var(--folder-tab-divider-text);
+  }
+
+  /* focus */
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: -4px;
+    box-shadow: none;
+  }
+
+  /* hover (only when not disabled/selected) */
+  &:hover:not(.tl-folder-tab--disabled):not(.tl-folder-tab--selected) {
+    background-color: var(--folder-tab-surface-hover);
+    border-top-color: var(--folder-tab-surface-hover);
+    color: var(--folder-tab-text);
+  }
+
+  /* Selected modifier */
+  &--selected {
+    background-color: var(--folder-tab-surface-selected);
+    border-top-color: var(--folder-tab-border-selected);
+    color: var(--folder-tab-text);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -1px;
+      bottom: 0;
+      width: 1px;
+      background-color: var(--folder-tab-surface-selected);
+      z-index: 1;
+    }
+  }
+
+  /* Disabled modifier */
+  &--disabled {
+    color: var(--folder-tab-item-text-disabled);
+    cursor: not-allowed;
+    user-select: none;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
