@@ -1,0 +1,32 @@
+/* Variables used by tds-inline-tabs component */
+
+.tl-inline-tabs {
+  /* Horizontal divider */
+  --inline-tabs-horizontal-divider: var(--color-foreground-icon-discrete);
+
+  /* Scroll button */
+  --inline-tabs-scroll-button-text: var(--color-foreground-icon-strong);
+  --inline-tabs-scroll-button: transparent;
+  --inline-tabs-scroll-button-hover: transparent;
+  --inline-tabs-scroll-button-active: transparent;
+
+  &.tds-mode-variant-primary {
+    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-primary);
+  }
+
+  &.tds-mode-variant-secondary {
+    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-secondary);
+  }
+}
+
+/* Variables used by tds-inline-tab component */
+.tl-inline-tab {
+  /* Tab */
+  --inline-tabs-tab: var(--color-foreground-text-soft);
+  --inline-tabs-tab-selected: var(--color-foreground-text-strong);
+  --inline-tabs-tab-disabled: var(--color-foreground-text-disabled);
+  --inline-tabs-tab-hover: var(--color-foreground-text-strong);
+  --inline-tabs-tab-focus: var(--color-foreground-border-accent-focus);
+  --inline-tabs-tab-indicator-active: var(--color-foreground-border-accent-focus);
+  --inline-tabs-tab-indicator-hover: var(--color-foreground-border-discrete);
+}
