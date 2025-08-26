@@ -212,6 +212,7 @@ const Template = ({
       </div>
     </div>
 
+  <!-- Script tag for demo purposes -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const textElement = document.querySelector('.tl-text-field__input');
