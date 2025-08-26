@@ -8,7 +8,7 @@ Documentation on AG Grid's website, a tutorial using React: https://www.ag-grid.
 ## Getting started
 
 1. Open up your local repository where you want to use AG Grid tables, in a code editor. If you don’t have one you can clone the tegel-react-demo repository: https://github.com/scania-digital-design-system/tegel-react-demo
-2. Run `npm install @scania/tegel-styles@1.0.0-ag-grid-v33-beta.1`
+2. Run `npm install @scania/tegel-styles@1.0.0-ag-grid-v33-beta.2`
 3. Run `npm install ag-grid-react@latest`
 
 ## React code example
@@ -23,7 +23,7 @@ Add the following imports to the new component's file:
 import { AgGridReact } from 'ag-grid-react';
 import {AllCommunityModule, ModuleRegistry} from 'ag-grid-community';
 import "@scania/tegel/dist/tegel/tegel.css";
-import '@scania/tegel-styles/dist/customization/ag-grid/theme.css';
+import '@scania/tegel-styles/dist/customization/ag-grid/v33-theme.css';
 ```
 
 and the following lines:

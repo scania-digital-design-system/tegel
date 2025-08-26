@@ -8,7 +8,7 @@ Documentation on AG Grid's website, a tutorial using Angular: https://www.ag-gri
 ## Getting started
 
 1. Open up your local repository where you want to use AG Grid tables, in a code editor. If you don’t have one you can clone the tegel-angular-17-demo repository: https://github.com/scania-digital-design-system/tegel-angular-17-demo
-2. Run `npm install @scania/tegel-styles@1.0.0-ag-grid-v33-beta.1`
+2. Run `npm install @scania/tegel-styles@1.0.0-ag-grid-v33-beta.2`
 3. Run `npm install ag-grid-angular@latest`
 
 ## Angular code example
