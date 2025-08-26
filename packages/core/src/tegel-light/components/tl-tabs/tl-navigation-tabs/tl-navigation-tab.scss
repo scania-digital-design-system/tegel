@@ -2,19 +2,19 @@
 @import '../../../../../../../typography/utilities/typography-utility';
 @import './tl-navigation-tabs-vars';
 
-.tl-navigation-tab {
+.tl-navigation-tabs__tab {
   @include tds-box-sizing;
 
   display: block;
   position: relative;
 }
 
-.tl-navigation-tab-item:not(.tl-navigation-tab-item--selected)::after {
+.tl-navigation-tabs__tab-item:not(.tl-navigation-tabs__tab-item--selected)::after {
   width: 0%;
   transition: width 0.15s ease-in-out 0s;
 }
 
-.tl-navigation-tab-item {
+.tl-navigation-tabs__tab-item {
   all: unset;
   margin-right: 32px;
   @include headline-07;

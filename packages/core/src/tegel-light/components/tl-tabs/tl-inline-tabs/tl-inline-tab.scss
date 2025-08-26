@@ -1,20 +1,19 @@
 @import '../../../../mixins/box-sizing';
 @import '../../../../../../../typography/utilities/typography-utility';
 
-.tl-inline-tab {
+.tl-inline-tabs__tab {
   @include tds-box-sizing;
 
   display: block;
   position: relative;
 }
 
-//klar, rör ej
-.tl-inline-tab-item:not(.tl-inline-tab-item--selected)::after {
+.tl-inline-tabs__tab-item:not(.tl-inline-tabs__tab-item--selected)::after {
   width: 0%;
   transition: width 0.15s ease-in-out 0s;
 }
 
-.tl-inline-tab-item {
+.tl-inline-tabs__tab-item {
   all: unset;
   margin-right: 32px;
   @include headline-07;

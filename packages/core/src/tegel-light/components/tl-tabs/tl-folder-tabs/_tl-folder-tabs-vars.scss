@@ -1,15 +1,15 @@
-.tl-folder-tab,
-.tl-folder-tabs {
+.tl-folder-tabs,
+.tl-folder-tabs__tab {
   --folder-tab-surface: var(--color-background-surface-200);
   --folder-tab-surface-selected: var(--color-background-layer-01);
   --folder-tab-text: var(--color-foreground-text-soft);
 }
 
-.tl-folder-tabs--mode-variant-primary .tl-folder-tab {
+.tl-folder-tabs--mode-variant-primary .tl-folder-tabs__tab {
   --folder-tab-surface-selected: var(--color-background-layer-01);
 }
 
-.tl-folder-tabs--mode-variant-secondary .tl-folder-tab {
+.tl-folder-tabs--mode-variant-secondary .tl-folder-tabs__tab {
   --folder-tab-surface-selected: var(--color-background-layer-02);
 }
 
@@ -20,7 +20,7 @@
   --folder-tabs-scroll-button-text: var(--color-foreground-text-soft);
 }
 
-.tl-folder-tab {
+.tl-folder-tabs__tab {
   --folder-tab-surface-hover: var(--color-background-surface-300);
   --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
   --folder-tab-divider-text: var(--color-foreground-icon-discrete);

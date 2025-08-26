@@ -54,15 +54,15 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
       const isSelected = i === Number(selectedIndex) && !isDisabled;
 
       const btnClasses = [
-        'tl-navigation-tab-item',
-        isSelected ? 'tl-navigation-tab-item--selected' : '',
-        isDisabled ? 'tl-navigation-tab-item--disabled' : '',
+        'tl-navigation-tabs__tab-item',
+        isSelected ? 'tl-navigation-tabs__tab-item--selected' : '',
+        isDisabled ? 'tl-navigation-tabs__tab-item--disabled' : '',
       ]
         .filter(Boolean)
         .join(' ');
 
       return `
-        <div class="tl-navigation-tab">
+        <div class="tl-navigation-tabs__tab">
           <button class="${btnClasses}">${label}</button>
         </div>
       `;
@@ -103,12 +103,12 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
         const container = containers[containers.length - 1];
         if (!container) return;
 
-        const tabs = container.querySelectorAll('.tl-navigation-tab-item');
+        const tabs = container.querySelectorAll('.tl-navigation-tabs__tab-item');
         tabs.forEach(tab => {
           tab.addEventListener('click', () => {
-            if (tab.classList.contains('tl-navigation-tab-item--disabled')) return;
-            tabs.forEach(t => t.classList.remove('tl-navigation-tab-item--selected'));
-            tab.classList.add('tl-navigation-tab-item--selected');
+            if (tab.classList.contains('tl-navigation-tabs__tab-item--disabled')) return;
+            tabs.forEach(t => t.classList.remove('tl-navigation-tabs__tab-item--selected'));
+            tab.classList.add('tl-navigation-tabs__tab-item--selected');
           });
         });
       })();

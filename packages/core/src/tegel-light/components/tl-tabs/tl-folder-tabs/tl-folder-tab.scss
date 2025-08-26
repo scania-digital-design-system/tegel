@@ -3,7 +3,7 @@
 @import './tl-folder-tabs-vars';
 @import '../../../../../../../typography/utilities/typography-utility';
 
-.tl-folder-tab {
+.tl-folder-tabs__tab {
   all: unset;
   @include headline-07;
 
@@ -23,7 +23,7 @@
   background-color: var(--folder-tab-surface);
   color: var(--folder-tab-item-text);
 
-  & + .tl-folder-tab {
+  & + .tl-folder-tabs__tab {
     border-left-color: var(--folder-tab-divider-text);
   }
 
@@ -33,7 +33,7 @@
     box-shadow: none;
   }
 
-  &:hover:not(.tl-folder-tab--disabled):not(.tl-folder-tab--selected) {
+  &:hover:not(.tl-folder-tabs__tab--disabled):not(.tl-folder-tabs__tab--selected) {
     background-color: var(--folder-tab-surface-hover);
     border-top-color: var(--folder-tab-surface-hover);
     color: var(--folder-tab-text);

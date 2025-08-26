@@ -54,15 +54,15 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
       const isSelected = i === Number(selectedIndex) && !isDisabled;
 
       const btnClasses = [
-        'tl-inline-tab-item',
-        isSelected ? 'tl-inline-tab-item--selected' : '',
-        isDisabled ? 'tl-inline-tab-item--disabled' : '',
+        'tl-inline-tabs__tab-item',
+        isSelected ? 'tl-inline-tabs__tab-item--selected' : '',
+        isDisabled ? 'tl-inline-tabs__tab-item--disabled' : '',
       ]
         .filter(Boolean)
         .join(' ');
 
       return `
-        <div class="tl-inline-tab">
+        <div class="tl-inline-tabs__tab">
           <button class="${btnClasses}">${label}</button>
         </div>
       `;
@@ -103,12 +103,12 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
         const container = containers[containers.length - 1];
         if (!container) return;
 
-        const tabs = container.querySelectorAll('.tl-inline-tab-item');
+        const tabs = container.querySelectorAll('.tl-inline-tabs__tab-item');
         tabs.forEach(tab => {
           tab.addEventListener('click', () => {
-            if (tab.classList.contains('tl-inline-tab-item--disabled')) return;
-            tabs.forEach(t => t.classList.remove('tl-inline-tab-item--selected'));
-            tab.classList.add('tl-inline-tab-item--selected');
+            if (tab.classList.contains('tl-inline-tabs__tab-item--disabled')) return;
+            tabs.forEach(t => t.classList.remove('tl-inline-tabs__tab-item--selected'));
+            tab.classList.add('tl-inline-tabs__tab-item--selected');
           });
         });
       })();

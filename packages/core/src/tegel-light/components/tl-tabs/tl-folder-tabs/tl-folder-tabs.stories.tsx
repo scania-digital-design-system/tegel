@@ -49,9 +49,9 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
       const isSelected = i === Number(selectedIndex) && !isDisabled;
 
       const classes = [
-        'tl-folder-tab',
-        isSelected ? 'tl-folder-tab--selected' : '',
-        isDisabled ? 'tl-folder-tab--disabled' : '',
+        'tl-folder-tabs__tab',
+        isSelected ? 'tl-folder-tabs__tab--selected' : '',
+        isDisabled ? 'tl-folder-tabs__tab--disabled' : '',
       ]
         .filter(Boolean)
         .join(' ');
@@ -100,12 +100,12 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
         const container = containers[containers.length - 1];
         if (!container) return;
 
-        const tabs = container.querySelectorAll('.tl-folder-tab');
+        const tabs = container.querySelectorAll('.tl-folder-tabs__tab');
         tabs.forEach(tab => {
           tab.addEventListener('click', () => {
-            if (tab.classList.contains('tl-folder-tab--disabled')) return;
-            tabs.forEach(t => t.classList.remove('tl-folder-tab--selected'));
-            tab.classList.add('tl-folder-tab--selected');
+            if (tab.classList.contains('tl-folder-tabs__tab--disabled')) return;
+            tabs.forEach(t => t.classList.remove('tl-folder-tabs__tab--selected'));
+            tab.classList.add('tl-folder-tabs__tab--selected');
           });
         });
       })();
