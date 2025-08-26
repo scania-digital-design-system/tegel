@@ -1,10 +1,10 @@
 :root,
 .tds-mode-light {
   /* Table-color */
-  --tds-table-color: var(--tds-grey-958);
+  --tds-table-color: var(--tds-grey-950);
 
   /* Table-body-cell */
-  --tds-table-body-cell-background-hover: var(--tds-grey-150);
+  --tds-table-body-cell-background-hover: var(--tds-grey-100);
 
   /* Table-body-row */
   --tds-table-body-row-background: var(--tds-grey-50);
@@ -13,57 +13,54 @@
 
   .tds-mode-variant-primary {
     --tds-table-body-row-background: var(--tds-grey-50);
-    --tds-table-body-row-background-hover: var(--tds-grey-200);
     --tds-table-zebra-mode-backround: var(--tds-white);
+    --tds-table-body-row-background-selected: var(--tds-grey-50);
   }
 
   .tds-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-white);
-    --tds-table-body-row-background-hover: var(--tds-grey-100);
     --tds-table-zebra-mode-backround: var(--tds-grey-50);
+    --tds-table-body-row-background-selected: var(--tds-white);
   }
 
-  --tds-table-body-row-background-selected: var(--tds-grey-200);
-  --tds-table-body-row-background-selected-hover: var(--tds-grey-300);
+  --tds-table-body-row-background-hover: var(--tds-grey-100);
+  --tds-table-body-row-background-selected-hover: var(--tds-grey-100);
 
   /* Table input */
-  --tds-table-input-background: var(--tds-grey-50);
   --tds-table-input-background-focus: var(--tds-white);
-  --tds-table-input-background-hover: rgb(13 15 19 / 5%);
-  --tds-table-input-background-disabled: var(--tds-grey-600);
-  --tds-table-input-header-icon: var(--tds-grey-700);
-  --tds-table-input-header-placeholder: var(--tds-grey-700);
+  --tds-table-input-background-hover: var(--tds-white);
+  --tds-table-input-background-disabled: var(--tds-grey-100);
+  --tds-table-input-header-icon: var(--tds-grey-950);
+  --tds-table-input-header-placeholder: var(--tds-grey-950);
   --tds-table-input-header-background-focus: var(--tds-white);
 
   /* Table-footer */
-  --tds-table-footer-background: var(--tds-grey-100);
-  --tds-table-footer-page-selector-input-background: var(--tds-grey-50);
+  --tds-table-footer-background: var(--tds-grey-150);
+  --tds-table-footer-page-selector-input-background: var(--tds-white);
   --tds-table-footer-page-selector-input-background-hover: var(--tds-white);
-  --tds-table-footer-page-selector-input-background-disabled: var(--tds-grey-600);
-  --tds-table-footer-page-selector-icon: var(--tds-grey-958);
-  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-600);
-  --tds-table-footer-btn-hover: var(--tds-grey-300);
+  --tds-table-footer-page-selector-icon: var(--tds-grey-950);
+  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-500);
+  --tds-table-footer-btn-hover: var(--tds-grey-150);
 
   /* Table-header */
-  --tds-table-header-background: var(--tds-grey-200);
-  --tds-table-header-background-hover: var(--tds-grey-300);
-  --tds-table-header-btn-color: var(--tds-grey-958);
-  --tds-table-header-btn-background: var(--tds-grey-500);
-  --tds-table-header-btn-background-hover: var(--tds-grey-600);
+  --tds-table-header-background: var(--tds-grey-150);
+  --tds-table-header-background-hover: var(--tds-grey-200);
+  --tds-table-header-btn-color: var(--tds-grey-950);
+  --tds-table-header-btn-background: var(--tds-grey-200);
+  --tds-table-header-btn-background-hover: var(--tds-grey-200);
   --tds-table-header-btn-focus: var(--tds-blue-400);
 
   /* Table-toolbar */
-  --tds-table-toolbar-background: var(--tds-grey-400);
+  --tds-table-toolbar-background: var(--tds-grey-200);
   --tds-table-toolbar-searchbar-background: var(--tds-grey-50);
   --tds-table-toolbar-searchbar-background-hover: var(--tds-grey-300);
 
   /* Divider */
   --tds-table-divider: var(
-    --tds-grey-400
+    --tds-grey-150
   ); // light divider is grey-300 but expandable row is the same color when selected
 
-  /* Table-header-input-wrapper */
-  --tds-table-input-search-icon: var(--tds-grey-700);
+  --tds-table-divider-hover: var(--tds-grey-350);
 }
 
 .tds-mode-dark {
@@ -71,62 +68,58 @@
   --tds-table-color: var(--tds-grey-50);
 
   /* Table-body-cell */
-  --tds-table-body-cell-background-hover: var(--tds-grey-800);
+  --tds-table-body-cell-background-hover: var(--tds-grey-750);
 
   /* Table-body-row */
   --tds-table-body-row-background: var(--tds-grey-850);
   --tds-table-body-row-background-hover: var(--tds-grey-800);
   --tds-table-zebra-mode-backround: var(--tds-grey-900);
+  --tds-table-body-row-background-hover: var(--tds-grey-750);
 
   .tds-mode-variant-primary {
     --tds-table-body-row-background: var(--tds-grey-850);
-    --tds-table-body-row-background-hover: var(--tds-grey-800);
     --tds-table-zebra-mode-backround: var(--tds-grey-900);
   }
 
   .tds-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-grey-900);
-    --tds-table-body-row-background-hover: var(--tds-grey-850);
     --tds-table-zebra-mode-backround: var(--tds-grey-850);
   }
 
-  --tds-table-body-row-background-selected: var(--tds-grey-800);
+  --tds-table-body-row-background-selected: var(--tds-grey-700);
   --tds-table-body-row-background-selected-hover: var(--tds-grey-700);
 
   /* Table input */
-  --tds-table-input-background: var(--tds-grey-900);
   --tds-table-input-background-focus: var(--tds-grey-800);
-  --tds-table-input-background-hover: var(--tds-white-05);
-  --tds-table-input-background-disabled: var(--tds-grey-600);
-  --tds-table-input-header-icon: var(--tds-grey-500);
-  --tds-table-input-header-placeholder: var(--tds-grey-500);
+  --tds-table-input-background-hover: var(--tds-white-50);
+  --tds-table-input-background-disabled: var(--tds-grey-800);
+  --tds-table-input-header-icon: var(--tds-grey-50);
+  --tds-table-input-header-placeholder: var(--tds-grey-50);
   --tds-table-input-header-background-focus: var(--tds-grey-900);
 
   /* Table-footer */
-  --tds-table-footer-background: var(--tds-grey-846);
-  --tds-table-footer-page-selector-input-background: var(--tds-grey-900);
-  --tds-table-footer-page-selector-input-background-hover: var(--tds-grey-958);
+  --tds-table-footer-background: var(--tds-grey-700);
+  --tds-table-footer-page-selector-input-background: var(--tds-grey-950);
+  --tds-table-footer-page-selector-input-background-hover: var(--tds-grey-950);
   --tds-table-footer-page-selector-input-background-disabled: var(--tds-grey-700);
-  --tds-table-footer-btn-hover: var(--tds-grey-900);
+  --tds-table-footer-btn-hover: var(--tds-grey-700);
   --tds-table-footer-page-selector-icon: var(--tds-grey-50);
-  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-600);
+  --tds-table-footer-page-selector-icon-disabled: var(--tds-grey-300);
 
   /* Table-header */
-  --tds-table-header-background: var(--tds-grey-800);
-  --tds-table-header-background-hover: var(--tds-grey-750);
+  --tds-table-header-background: var(--tds-grey-700);
+  --tds-table-header-background-hover: var(--tds-grey-650);
   --tds-table-header-btn-color: var(--tds-grey-50);
-  --tds-table-header-btn-background: var(--tds-grey-600);
-  --tds-table-header-btn-background-hover: var(--tds-grey-750);
-  --tds-table-header-btn-focus: var(--tds-blue-400);
+  --tds-table-header-btn-background: var(--tds-grey-650);
+  --tds-table-header-btn-background-hover: var(--tds-grey-650);
+  --tds-table-header-btn-focus: var(--tds-blue-300);
 
   /* Table-toolbar */
-  --tds-table-toolbar-background: var(--tds-grey-700);
-  --tds-table-toolbar-searchbar-background: var(--tds-grey-900);
-  --tds-table-toolbar-searchbar-background-hover: var(--tds-grey-800);
+  --tds-table-toolbar-background: var(--tds-grey-650);
+  --tds-table-toolbar-searchbar-background: var(--tds-grey-950);
+  --tds-table-toolbar-searchbar-background-hover: var(--tds-grey-600);
 
   /* Divider */
-  --tds-table-divider: var(--tds-grey-700);
-
-  /* Table-header-input-wrapper */
-  --tds-table-input-search-icon: var(--tds-grey-600);
+  --tds-table-divider: var(--tds-grey-600);
+  --tds-table-divider-hover: var(--tds-grey-400);
 }
