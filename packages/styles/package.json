@@ -1,6 +1,6 @@
 {
   "name": "@scania/tegel-styles",
-  "version": "1.0.0-ag-grid-v33-beta.1",
+  "version": "1.0.0-ag-grid-v33-beta.2",
   "description": "CSS styling package for Tegel Design System.",
   "main": "dist/css/tegel-styles.css",
   "style": "main.scss",
