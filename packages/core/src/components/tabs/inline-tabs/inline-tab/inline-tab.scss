@@ -79,10 +79,8 @@
   }
 
   .disabled {
-    color: var(--tds-inline-tabs-tab-color-disabled);
-
     ::slotted(*) {
-      opacity: var(--tds-inline-tabs-tab-color-opacity-disabled);
+      color: var(--tds-inline-tabs-tab-color-disabled);
     }
 
     &::after {
