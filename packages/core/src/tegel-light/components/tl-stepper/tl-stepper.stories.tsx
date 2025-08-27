@@ -2,32 +2,64 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: 'Tegel Light (CSS)/Stepper',
-  parameters: { backgrounds: { default: 'white' }, layout: 'centered' },
+  parameters: {
+    backgrounds: {
+      default: 'white',
+    },
+    layout: 'centered',
+  },
   argTypes: {
     size: {
       name: 'Size',
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       options: ['Large', 'Small'],
-      table: { defaultValue: { summary: 'Large' } },
+      table: {
+        defaultValue: {
+          summary: 'Large',
+        },
+      },
     },
     orientation: {
       name: 'Orientation',
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       options: ['Horizontal', 'Vertical'],
-      table: { defaultValue: { summary: 'Horizontal' } },
+      table: {
+        defaultValue: {
+          summary: 'Horizontal',
+        },
+      },
     },
     labelPosition: {
       name: 'Text position',
       description: 'Only for Horizontal',
-      control: { type: 'radio' },
+      control: {
+        type: 'radio',
+      },
       options: ['Below', 'Aside'],
-      if: { arg: 'orientation', neq: 'Vertical' },
-      table: { defaultValue: { summary: 'Below' } },
+      if: {
+        arg: 'orientation',
+        neq: 'Vertical',
+      },
+      table: {
+        defaultValue: {
+          summary: 'Below',
+        },
+      },
     },
     hideLabels: {
       name: 'Hide labels',
-      control: { type: 'boolean' },
-      table: { defaultValue: { summary: false } },
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: {
+          summary: false,
+        },
+      },
     },
   },
   args: {
@@ -39,7 +71,6 @@ export default {
 };
 
 const Template = ({ size, orientation, labelPosition, hideLabels }) => {
-  // Container modifiers (tl-stepper.scss)
   const containerClasses = [
     'tl-stepper',
     orientation === 'Vertical' ? 'tl-stepper--vertical' : 'tl-stepper--horizontal',
@@ -50,28 +81,41 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
     .filter(Boolean)
     .join(' ');
 
-  // Per-step flags (tl-step.scss “close to source”)
-  const sizeFlag =
-    size === 'Large' ? 'tl-stepper__step-content--lg' : 'tl-stepper__step-content--sm';
-  const sizeFlagLabel =
-    size === 'Large' ? 'tl-stepper__step-label--lg' : 'tl-stepper__step-label--sm';
+  const sizeFlag = size === 'Large' ? 'tl-stepper__content--lg' : 'tl-stepper__content--sm';
+  const sizeFlagLabel = size === 'Large' ? 'tl-stepper__label--lg' : 'tl-stepper__label--sm';
   const orientFlag =
     orientation === 'Vertical'
-      ? 'tl-stepper__step-content--vertical'
-      : 'tl-stepper__step-content--horizontal';
+      ? 'tl-stepper__content--vertical'
+      : 'tl-stepper__content--horizontal';
   const textFlag =
     orientation === 'Horizontal'
       ? labelPosition === 'Aside'
-        ? 'tl-stepper__step-content--text-aside'
-        : 'tl-stepper__step-content--text-below'
+        ? 'tl-stepper__content--text-aside'
+        : 'tl-stepper__content--text-below'
       : '';
-  const hideFlag = hideLabels ? 'tl-stepper__step-content--hide-labels' : '';
+  const hideFlag = hideLabels ? 'tl-stepper__content--hide-labels' : '';
 
   const steps = [
-    { label: 'Success step', state: 'tl-stepper__step-node--success', index: 1 },
-    { label: 'Error step', state: 'tl-stepper__step-node--error', index: 2 },
-    { label: 'Current step', state: 'tl-stepper__step-node--current', index: 3 },
-    { label: 'Upcoming step', state: 'tl-stepper__step-node--upcoming', index: 4 },
+    {
+      label: 'Success step',
+      state: 'tl-stepper__node--success',
+      index: 1,
+    },
+    {
+      label: 'Error step',
+      state: 'tl-stepper__node--error',
+      index: 2,
+    },
+    {
+      label: 'Current step',
+      state: 'tl-stepper__node--current',
+      index: 3,
+    },
+    {
+      label: 'Upcoming step',
+      state: 'tl-stepper__node--upcoming',
+      index: 4,
+    },
   ];
 
   const iconSizeClass = size === 'Large' ? 'tl-icon--20' : 'tl-icon--16';
@@ -79,22 +123,22 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
   const items = steps
     .map(({ label, state, index }) => {
       const contentFlags = [sizeFlag, orientFlag, textFlag, hideFlag].filter(Boolean).join(' ');
-      const labelSizeClass = sizeFlagLabel; // .label.lg / .label.sm
+      const labelSizeClass = sizeFlagLabel;
       const labelUpcoming =
-        state === 'tl-stepper__step-node--upcoming' ? 'tl-stepper__step-label--upcoming' : '';
+        state === 'tl-stepper__node--upcoming' ? 'tl-stepper__label--upcoming' : '';
 
       const nodeInner =
-        state === 'tl-stepper__step-node--success' || state === 'tl-stepper__step-node--error'
+        state === 'tl-stepper__node--success' || state === 'tl-stepper__node--error'
           ? `<span class="tl-icon tl-icon--${
-              state === 'tl-stepper__step-node--success' ? 'tick' : 'warning'
+              state === 'tl-stepper__node--success' ? 'tick' : 'warning'
             } ${iconSizeClass}"></span>`
           : String(index);
 
       return `
         <li class="tl-stepper__step">
-          <div class="tl-stepper__step-content ${contentFlags}" role="listitem">
-            <div class="tl-stepper__step-node ${state || ''}" aria-hidden="true">${nodeInner}</div>
-            <div class="tl-stepper__step-label ${labelSizeClass} ${labelUpcoming}">${label}</div>
+          <div class="tl-stepper__content ${contentFlags}">
+            <div class="tl-stepper__node ${state || ''}">${nodeInner}</div>
+            <div class="tl-stepper__label ${labelSizeClass} ${labelUpcoming}">${label}</div>
           </div>
         </li>
     `;
@@ -103,14 +147,16 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
   return formatHtmlPreview(`
     <!-- Required stylesheets
-      "@scania/tegel-light/_tl-stepper-vars.css";
       "@scania/tegel-light/tl-step.css";
       "@scania/tegel-light/tl-stepper.css";
+    -->
+
+    <!-- Optional stylesheet
       "@scania/tegel-light/tl-icon.css"
     -->
 
     <div class="${containerClasses}">
-      <ol class="tl-stepper__list" role="list">
+      <ol class="tl-stepper__list">
         ${items}
       </ol>
     </div>

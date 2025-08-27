@@ -4,26 +4,21 @@
 .tl-stepper {
   @include tds-box-sizing;
 
-  display: block; /* container, not the list */
+  display: block;
 
-  /* If label text is NOT aside, keep full width like the source */
   &:not(.tl-stepper--label-aside) &__list {
     width: 100%;
   }
 
-  /* ---------------- HORIZONTAL ---------------- */
-
-  /* Label BELOW (default): equal slices → long responsive dividers */
   &--horizontal:not(.tl-stepper--label-aside) &__list {
-    justify-content: flex-start; /* avoid outer gaps */
+    justify-content: flex-start;
   }
 
   &--horizontal:not(.tl-stepper--label-aside) &__list > .tl-stepper__step {
     flex: 1 1 0;
-    min-inline-size: 0; /* allow label to wrap */
+    min-inline-size: 0;
   }
 
-  /* Label ASIDE: content width → short connector stubs (like WC) */
   &--horizontal.tl-stepper--label-aside &__list {
     justify-content: flex-start;
   }
@@ -33,29 +28,23 @@
     min-inline-size: auto;
   }
 
-  /* Label ASIDE + HIDE LABELS:
-     Behave like label-below so the divider fills the gap */
   &--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels &__list {
     justify-content: flex-start;
   }
 
   &--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels &__list > .tl-stepper__step {
-    flex: 1 1 0;
     min-inline-size: 0;
   }
-
-  /* ---------------- VERTICAL ---------------- */
 
   &--vertical &__list {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 52px; /* WC: .vertical gap */
+    gap: 52px;
     min-width: 0;
   }
 
-  /* Small size tweak for vertical gap (.vertical.sm) */
   &--vertical.tl-stepper--sm &__list {
     gap: 36px;
   }
@@ -63,7 +52,7 @@
 
 .tl-stepper__list {
   display: flex;
-  justify-content: space-evenly; /* base (WC parity) */
+  justify-content: space-evenly;
   min-width: 100%;
   list-style: none;
   margin: 0;

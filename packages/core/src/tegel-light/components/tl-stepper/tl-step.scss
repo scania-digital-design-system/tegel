@@ -8,28 +8,23 @@
   background-color: var(--stepper-divider-line);
 }
 
-/* :host → .tl-step */
 .tl-stepper__step {
   position: relative;
   display: table-cell;
 
-  /* First/last trimming (unchanged from WC) */
   &:last-of-type {
-    .tl-stepper__step-content--horizontal {
+    .tl-stepper__content--horizontal {
       padding-right: 0;
     }
 
-    .tl-stepper__step-content--sm,
-    .tl-stepper__step-content--lg,
-    [role='listitem'].sm,
-    [role='listitem'].lg {
+    .tl-stepper__content--sm,
+    .tl-stepper__content--lg {
       &::after {
         display: none;
       }
     }
 
-    .tl-stepper__step-content--sm.vertical,
-    [role='listitem'].sm.vertical {
+    .tl-stepper__content--sm.tl-stepper__content--vertical {
       &::before {
         display: none;
       }
@@ -37,14 +32,12 @@
   }
 
   &:first-of-type {
-    .tl-stepper__step-content--horizontal {
+    .tl-stepper__content--horizontal {
       padding-left: 0;
     }
 
-    .tl-stepper__step-content--sm,
-    .tl-stepper__step-content--lg,
-    [role='listitem'].sm,
-    [role='listitem'].lg {
+    .tl-stepper__content--sm,
+    .tl-stepper__content--lg {
       &::before {
         display: none;
       }
@@ -52,30 +45,27 @@
   }
 }
 
-.tl-stepper__step-content {
+.tl-stepper__content {
   display: flex;
   justify-content: start;
   flex-direction: row;
   align-items: center;
   gap: 8px;
 
-  /* text-below → column layout */
   &--text-below {
     flex-direction: column;
   }
 
-  /* === LARGE ========================================================== */
   &--lg {
     padding: 0 20px;
     @include detail-01;
 
-    .tl-stepper__step-node {
+    .tl-stepper__node {
       height: 30px;
       min-width: 30px;
     }
 
-    /* vertical connectors (same element has --lg AND --vertical) */
-    &.tl-stepper__step-content--vertical {
+    &.tl-stepper__content--vertical {
       &::after {
         @include divider;
 
@@ -86,8 +76,7 @@
       }
     }
 
-    /* horizontal connectors (same element has --lg AND --horizontal) */
-    &.tl-stepper__step-content--horizontal {
+    &.tl-stepper__content--horizontal {
       &::after {
         @include divider;
 
@@ -106,9 +95,8 @@
         top: 16px;
       }
 
-      /* short 10px caps only when labels are visible */
-      &.tl-stepper__step-content--text-aside {
-        &:not(.tl-stepper__step-content--hide-labels) {
+      &.tl-stepper__content--text-aside {
+        &:not(.tl-stepper__content--hide-labels) {
           &::after {
             @include divider;
 
@@ -133,7 +121,6 @@
     }
   }
 
-  /* === SMALL ========================================================== */
   &--sm {
     padding: 0 20px;
     @include detail-05;
@@ -143,7 +130,7 @@
       vertical-align: -moz-middle-with-baseline;
     }
 
-    .tl-stepper__step-node {
+    .tl-stepper__node {
       height: 24px;
       min-width: 24px;
     }
@@ -154,8 +141,7 @@
       margin-top: -2px;
     }
 
-    /* vertical connectors (same element has --sm AND --vertical) */
-    &.tl-stepper__step-content--vertical {
+    &.tl-stepper__content--vertical {
       &::after {
         @include divider;
 
@@ -175,8 +161,7 @@
       }
     }
 
-    /* horizontal connectors (same element has --sm AND --horizontal) */
-    &.tl-stepper__step-content--horizontal {
+    &.tl-stepper__content--horizontal {
       &::after {
         @include divider;
 
@@ -195,9 +180,8 @@
         top: 13px;
       }
 
-      /* short caps only when labels are visible */
-      &.tl-stepper__step-content--text-aside {
-        &:not(.tl-stepper__step-content--hide-labels) {
+      &.tl-stepper__content--text-aside {
+        &:not(.tl-stepper__content--hide-labels) {
           &::after {
             @include divider;
 
@@ -222,8 +206,7 @@
     }
   }
 
-  /* === NODE STATES ===================================================== */
-  .tl-stepper__step-node {
+  .tl-stepper__node {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -254,9 +237,8 @@
     }
   }
 
-  /* === LABEL =========================================================== */
   .label,
-  .tl-stepper__step-label {
+  .tl-stepper__label {
     text-align: center;
 
     &--lg {
@@ -274,9 +256,8 @@
   }
 }
 
-/* Container-wide toggle (works for all orientations) */
 .tl-stepper--hide-labels {
-  .tl-stepper__step-label {
+  .tl-stepper__label {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -289,18 +270,16 @@
     white-space: nowrap;
   }
 
-  /* Remove node/label gap when hidden */
-  .tl-stepper__step-content {
+  .tl-stepper__content {
     gap: 0;
   }
 }
 
-/* Per-step flag also supported (your story adds `hide-labels` to content) */
-.tl-stepper__step-content {
-  .tl-stepper__step-content--hide-labels {
+.tl-stepper__content {
+  .tl-stepper__content--hide-labels {
     gap: 0;
 
-    .tl-stepper__step-label {
+    .tl-stepper__label {
       position: absolute;
       inline-size: 1px;
       block-size: 1px;
