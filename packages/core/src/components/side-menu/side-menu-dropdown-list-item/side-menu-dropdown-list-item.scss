@@ -19,14 +19,14 @@
       display: flex;
       align-items: center;
       height: 100%;
-      padding: 0 var(--side-menu-space-sub-page-left-no-icon);
+      padding: 0 var(--component-side-menu-space-sub-page-left-no-icon);
       width: 100%;
       @include detail-02;
 
       background-color: var(--side-menu-dropdown-list-item-custom-background);
       color: var(--side-menu-dropdown-list-item-color);
       border: none;
-      border-radius: var(--side-menu-radius-corner);
+      border-radius: var(--component-side-menu-radius-corner);
     }
 
     ::slotted(a:hover),
@@ -66,18 +66,20 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: var(--side-menu-space-sub-page-selected-marker-width);
-    height: var(--side-menu-space-sub-page-selected-marker-height);
+    width: var(--component-side-menu-space-sub-page-selected-marker-width);
+    height: var(--component-side-menu-space-sub-page-selected-marker-height);
     background-color: var(--side-menu-single-subitem-selected-border-color);
-    border-radius: var(--side-menu-radius-corner) 0 0 var(--side-menu-radius-corner);
+    border-radius: var(--component-side-menu-radius-corner) 0 0
+      var(--component-side-menu-radius-corner);
   }
 
   .component.component-dropdown-has-icon {
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: var(--side-menu-space-sub-page-top-bottom) 48px
-          var(--side-menu-space-sub-page-top-bottom) var(--side-menu-space-sub-page-left-with-icon);
+        padding: var(--component-side-menu-space-sub-page-top-bottom) 48px
+          var(--component-side-menu-space-sub-page-top-bottom)
+          var(--component-side-menu-space-sub-page-left-with-icon);
       }
     }
   }
@@ -86,8 +88,9 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: var(--side-menu-space-sub-page-top-bottom) 48px
-          var(--side-menu-space-sub-page-top-bottom) var(--side-menu-space-sub-page-left-profile);
+        padding: var(--component-side-menu-space-sub-page-top-bottom) 48px
+          var(--component-side-menu-space-sub-page-top-bottom)
+          var(--component-side-menu-space-sub-page-left-profile);
       }
     }
   }

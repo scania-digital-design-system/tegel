@@ -8,14 +8,14 @@
   display: none;
   height: 68px;
   border-top: 1px solid var(--side-menu-bottom-menu-border-top);
-  margin: 0 var(--side-menu-space-top-level-left);
-  margin-bottom: var(--side-menu-space-top-level-bottom-collapsible);
+  margin: 0 var(--component-side-menu-space-top-level-left);
+  margin-bottom: var(--component-side-menu-space-top-level-bottom-collapsible);
 
   .icon {
     transform: rotateZ(90deg);
     transition: all 0.2s ease-in-out;
-    width: var(--side-menu-size-icon);
-    height: var(--side-menu-size-icon);
+    width: var(--component-side-menu-size-icon);
+    height: var(--component-side-menu-size-icon);
   }
 
   .state-collapsed {

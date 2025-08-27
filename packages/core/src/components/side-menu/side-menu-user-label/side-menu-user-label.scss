@@ -4,7 +4,7 @@
   display: block;
   @include headline-07;
 
-  font-weight: var(--side-menu-text-items-font-weight);
+  font-weight: var(--component-side-menu-text-items-font-weight);
   color: var(--side-menu-single-item-color);
 
   .subheading {

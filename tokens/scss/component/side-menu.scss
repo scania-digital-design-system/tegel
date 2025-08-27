@@ -6,21 +6,8 @@
 .scania {
   .tl-side-menu,
   tds-side-menu {
-    --component-side-menu-bottom-menu-border-top-collapsed: 1px solid
-      var(--color-foreground-border-discrete);
-    --component-side-menu-close-button-wrapper-height: auto;
-    --component-side-menu-collapsed-button-size: 68px;
-    --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
-    --component-side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
-    --component-side-menu-collapsed-dropdown-background-selected: var(--color-background-layer-01);
-    --component-side-menu-collapsed-dropdown-background: var(--color-background-base);
-    --component-side-menu-collapsed-dropdown-heading-padding-left: 24px;
     --component-side-menu-color-divider: var(--color-foreground-border-discrete);
-    --component-side-menu-dropdown-list-item-height: 48px;
-    --component-side-menu-profile-user-image-size: 34px;
     --component-side-menu-radius-corner: var(--scania-unit-0);
-    --component-side-menu-selected-left-border: 4px;
-    --component-side-menu-single-item-height: 68px;
     --component-side-menu-size-close-icon-size: var(--scania-unit-20);
     --component-side-menu-size-icon: var(--scania-unit-24);
     --component-side-menu-space-collapsed-item-left-right-inner-icon-padding: 22px;
@@ -42,8 +29,6 @@
     --component-side-menu-space-top-level-left: var(--scania-unit-0);
     --component-side-menu-space-top-level-top: var(--scania-unit-0);
     --component-side-menu-space-top-level-vertical-gap-padding: var(--scania-unit-0);
-    --component-side-menu-subnav-border-radius: 0;
-    --component-side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
     --component-side-menu-text-items-font-weight: var(--scania-font-weight-bold);
   }
 }
@@ -51,22 +36,8 @@
 .traton {
   .tl-side-menu,
   tds-side-menu {
-    --component-side-menu-bottom-menu-border-top-collapsed: none;
-    --component-side-menu-close-button-wrapper-height: 64px;
-    --component-side-menu-collapsed-button-size: 72px;
-    --component-side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
-    --component-side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
-    --component-side-menu-collapsed-dropdown-background-selected: var(
-      --color-background-surface-100
-    );
-    --component-side-menu-collapsed-dropdown-background: var(--color-background-layer-01);
-    --component-side-menu-collapsed-dropdown-heading-padding-left: 14px;
     --component-side-menu-color-divider: var(--traton-color-transparent-invisible-light);
-    --component-side-menu-dropdown-list-item-height: 32px;
-    --component-side-menu-profile-user-image-size: 25.5px;
     --component-side-menu-radius-corner: var(--traton-unit-8);
-    --component-side-menu-selected-left-border: 8px;
-    --component-side-menu-single-item-height: 40px;
     --component-side-menu-size-close-icon-size: var(--traton-unit-20);
     --component-side-menu-size-icon: var(--traton-unit-16);
     --component-side-menu-space-collapsed-item-left-right-inner-icon-padding: var(--traton-unit-12);
@@ -88,8 +59,6 @@
     --component-side-menu-space-top-level-left: var(--traton-unit-16);
     --component-side-menu-space-top-level-top: var(--traton-unit-14);
     --component-side-menu-space-top-level-vertical-gap-padding: var(--traton-unit-16);
-    --component-side-menu-subnav-border-radius: 4px;
-    --component-side-menu-subnav-box-shadow: none;
     --component-side-menu-text-items-font-weight: var(--traton-font-weight-medium);
   }
 }

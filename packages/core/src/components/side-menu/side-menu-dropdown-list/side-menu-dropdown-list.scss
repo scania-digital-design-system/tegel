@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 190px;
-  margin-top: var(--side-menu-space-sub-page-top-group);
+  margin-top: var(--component-side-menu-space-sub-page-top-group);
 
   [role='list'] {
     padding: 0;
@@ -14,7 +14,7 @@
   & > div {
     display: flex;
     flex-direction: column;
-    gap: var(--side-menu-space-top-level-vertical-gap-padding);
+    gap: var(--component-side-menu-space-top-level-vertical-gap-padding);
   }
 
   .state-collapsed {

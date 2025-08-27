@@ -1,7 +1,7 @@
 @import '../../../../../../typography/utilities/typography-utility';
 
 :host {
-  margin: 0 var(--side-menu-space-top-level-left);
+  margin: 0 var(--component-side-menu-space-top-level-left);
   border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
   height: var(--side-menu-close-button-wrapper-height);
 }

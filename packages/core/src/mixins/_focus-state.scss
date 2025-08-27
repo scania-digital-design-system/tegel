@@ -5,8 +5,7 @@
 }
 
 @mixin tds-focus-state-side-menu {
-  outline: var(--dimension-radius-focus-width-side-menu) solid
-    var(--color-foreground-border-accent-focus);
+  outline: 2px solid var(--color-foreground-border-accent-focus);
   box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-  outline-offset: calc(var(--dimension-radius-focus-width-side-menu) * -1);
+  outline-offset: -2px;
 }

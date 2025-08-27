@@ -1,97 +1,50 @@
 tds-side-menu {
-  /*
-  side-menu-item and side-menu-dropdown-list-item background colors:
-  */
   --side-menu-background-cover: var(--color-background-base);
   --side-menu-item-state-hover: var(--color-background-layer-01);
   --side-menu-item-state-active: var(--color-background-surface-100);
   --side-menu-item-state-selected: var(--color-background-layer-01);
-
-  /*
-  side-menu-dropdown-list-item background colors when side-menu is collapsed:
-  */
-  --side-menu-collapsed-dropdown-background: var(
-    --component-side-menu-collapsed-dropdown-background
-  );
-  --side-menu-collapsed-dropdown-background-hover: var(
-    --component-side-menu-collapsed-dropdown-background-hover
-  );
-  --side-menu-collapsed-dropdown-background-active: var(
-    --component-side-menu-collapsed-dropdown-background-active
-  );
-  --side-menu-collapsed-dropdown-background-selected: var(
-    --component-side-menu-collapsed-dropdown-background-selected
-  );
-
-  /* 
-  Non brand specific variables:
-  */
   --side-menu-single-subitem-selected-border-color: var(--color-foreground-border-accent-focus);
   --side-menu-dropdown-list-item-color: var(--color-foreground-text-defined);
   --side-menu-subnav-background: var(--color-background-layer-01);
   --side-menu-single-item-color: var(--color-foreground-text-strong);
-
-  /* 
-  Brand specific variables: 
-  */
   --side-menu-bottom-menu-border-top: var(--component-side-menu-color-divider);
-  --side-menu-bottom-menu-border-top-collapsed: var(
-    --component-side-menu-bottom-menu-border-top-collapsed
-  );
-  --side-menu-close-button-wrapper-height: var(--component-side-menu-close-button-wrapper-height);
-  --side-menu-collapsed-button-size: var(--component-side-menu-collapsed-button-size);
-  --side-menu-collapsed-dropdown-heading-padding-left: var(
-    --component-side-menu-collapsed-dropdown-heading-padding-left
-  );
-  --side-menu-dropdown-list-item-height: var(--component-side-menu-dropdown-list-item-height);
-  --side-menu-profile-user-image-size: var(--component-side-menu-profile-user-image-size);
-  --side-menu-radius-corner: var(--component-side-menu-radius-corner);
-  --side-menu-single-item-height: var(--component-side-menu-single-item-height);
-  --side-menu-size-close-icon-size: var(--component-side-menu-size-close-icon-size);
-  --side-menu-size-icon: var(--component-side-menu-size-icon);
-  --side-menu-space-collapsed-item-left-right-inner-icon-padding: var(
-    --component-side-menu-space-collapsed-item-left-right-inner-icon-padding
-  );
-  --side-menu-space-sub-menu-item-chevron-right-padding: var(
-    --component-side-menu-space-sub-menu-item-chevron-right-padding
-  );
-  --side-menu-space-sub-menu-item-left: var(--component-side-menu-space-sub-menu-item-left);
-  --side-menu-space-sub-menu-item-profile-gap: var(
-    --component-side-menu-space-sub-menu-item-profile-gap
-  );
-  --side-menu-space-sub-menu-item-profile-left: var(
-    --component-side-menu-space-sub-menu-item-profile-left
-  );
-  --side-menu-space-sub-menu-item-profile-top-bottom: var(
-    --component-side-menu-space-sub-menu-item-profile-top-bottom
-  );
-  --side-menu-space-sub-menu-item-selected-marker-height: var(
-    --component-side-menu-space-sub-menu-item-selected-marker-height
-  );
-  --side-menu-space-sub-menu-item-top-and-bottom: var(
-    --component-side-menu-space-sub-menu-item-top-and-bottom
-  );
-  --side-menu-space-sub-page-left-no-icon: var(--component-side-menu-space-sub-page-left-no-icon);
-  --side-menu-space-sub-page-left-profile: var(--component-side-menu-space-sub-page-left-profile);
-  --side-menu-space-sub-page-left-with-icon: var(
-    --component-side-menu-space-sub-page-left-with-icon
-  );
-  --side-menu-space-sub-page-selected-marker-height: var(
-    --component-side-menu-space-sub-page-selected-marker-height
-  );
-  --side-menu-space-sub-page-selected-marker-width: var(
-    --component-side-menu-space-sub-page-selected-marker-width
-  );
-  --side-menu-space-sub-page-top-bottom: var(--component-side-menu-space-sub-page-top-bottom);
-  --side-menu-space-sub-page-top-group: var(--component-side-menu-space-sub-page-top-group);
-  --side-menu-space-top-level-bottom-collapsible: var(
-    --component-side-menu-space-top-level-bottom-collapsible
-  );
-  --side-menu-space-top-level-left: var(--component-side-menu-space-top-level-left);
-  --side-menu-space-top-level-vertical-gap-padding: var(
-    --component-side-menu-space-top-level-vertical-gap-padding
-  );
-  --side-menu-subnav-border-radius: var(--component-side-menu-subnav-border-radius);
-  --side-menu-subnav-box-shadow: var(--component-side-menu-subnav-box-shadow);
-  --side-menu-text-items-font-weight: var(--component-side-menu-text-items-font-weight);
+}
+
+:root,
+.scania {
+  .tl-side-menu,
+  tds-side-menu {
+    --side-menu-bottom-menu-border-top-collapsed: 1px solid var(--color-foreground-border-discrete);
+    --side-menu-close-button-wrapper-height: auto;
+    --side-menu-collapsed-button-size: 68px;
+    --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
+    --side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
+    --side-menu-collapsed-dropdown-background-selected: var(--color-background-layer-01);
+    --side-menu-collapsed-dropdown-background: var(--color-background-base);
+    --side-menu-collapsed-dropdown-heading-padding-left: 24px;
+    --side-menu-dropdown-list-item-height: 48px;
+    --side-menu-profile-user-image-size: 34px;
+    --side-menu-single-item-height: 68px;
+    --side-menu-subnav-border-radius: 0;
+    --side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
+  }
+}
+
+.traton {
+  .tl-side-menu,
+  tds-side-menu {
+    --side-menu-bottom-menu-border-top-collapsed: none;
+    --side-menu-close-button-wrapper-height: 64px;
+    --side-menu-collapsed-button-size: 72px;
+    --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
+    --side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
+    --side-menu-collapsed-dropdown-background-selected: var(--color-background-surface-100);
+    --side-menu-collapsed-dropdown-background: var(--color-background-layer-01);
+    --side-menu-collapsed-dropdown-heading-padding-left: 14px;
+    --side-menu-dropdown-list-item-height: 32px;
+    --side-menu-profile-user-image-size: 25.5px;
+    --side-menu-single-item-height: 40px;
+    --side-menu-subnav-border-radius: 4px;
+    --side-menu-subnav-box-shadow: none;
+  }
 }
