@@ -33,10 +33,10 @@ The Tegel Design System uses a comprehensive color system that includes brand co
 These are our core brand colors. Note: The brand palette is currently under review.
 
 <div className="color-grid">
-  <div className="color-item" style={{ backgroundColor: '#000' }}>var(--tds-brand-black)</div>
-  <div className="color-item light-text" style={{ backgroundColor: '#fff', border: '1px solid #e5e5e5' }}>var(--tds-brand-white)</div>
-  <div className="color-item" style={{ backgroundColor: '#041e42' }}>var(--tds-brand-blue)</div>
-  <div className="color-item" style={{ backgroundColor: '#d6001c' }}>var(--tds-brand-red)</div>
+  <div className="color-item" style={{ backgroundColor: '#000' }}>var(--tds-black)</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#fff', border: '1px solid #e5e5e5' }}>var(--tds-white)</div>
+  <div className="color-item" style={{ backgroundColor: '#041e42' }}>var(--tds-blue)</div>
+  <div className="color-item" style={{ backgroundColor: '#d6001c' }}>var(--tds-red)</div>
 </div>
 
 ## Black & White Scales
@@ -134,13 +134,14 @@ These are our core brand colors. Note: The brand palette is currently under revi
 </div>
 
 ## Semantic Colors (To Be Removed)
+If you use the semantic colors below for icons, text and shapes in both light and dark modes, you will run into accessibility issues. Therefore make sure to always check that the contrasts are acceptable in terms of accessibility, and adjust which colors you use if necessary.
 
 <div className="color-grid">
-  <div className="color-item" style={{ backgroundColor: '#0f3263' }}>var(--tds-semantic-cta)</div>
-  <div className="color-item" style={{ backgroundColor: '#ff2340' }}>var(--tds-semantic-negative)</div>
-  <div className="color-item light-text" style={{ backgroundColor: '#f1c21b' }}>var(--tds-semantic-warning)</div>
-  <div className="color-item" style={{ backgroundColor: '#1dab8b' }}>var(--tds-semantic-positive)</div>
-  <div className="color-item" style={{ backgroundColor: '#2b70d3' }}>var(--tds-semantic-information)</div>
+  <div className="color-item" style={{ backgroundColor: '#0f3263' }}>var(--tds-cta)</div>
+  <div className="color-item" style={{ backgroundColor: '#ff2340' }}>var(--tds-negative)</div>
+  <div className="color-item light-text" style={{ backgroundColor: '#f1c21b' }}>var(--tds-warning)</div>
+  <div className="color-item" style={{ backgroundColor: '#1dab8b' }}>var(--tds-positive)</div>
+  <div className="color-item" style={{ backgroundColor: '#2b70d3' }}>var(--tds-information)</div>
 </div>
 
 ## Usage
@@ -154,8 +155,8 @@ To use these colors in your components, you can use CSS variables:
   background-color: var(--tds-grey-100);
 
   /* Using semantic colors */
-  color: var(--tds-semantic-negative);
-  background-color: var(--tds-semantic-information);
+  color: var(--tds-negative);
+  background-color: var(--tds-information);
 }
 ```
 
