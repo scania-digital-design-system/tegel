@@ -6,6 +6,14 @@
   @include tds-box-sizing;
   @include detail-01;
 
+  h2 {
+    @include headline-02;
+  }
+
+  p {
+    @include body-01;
+  }
+
   background-color: var(--block-background);
   color: var(--block-text-color);
   border-radius: var(--block-border-radius);
@@ -28,24 +36,25 @@
   &--odd {
     background-color: var(--block-background-odd);
   }
-}
 
-.tl-block__headline-02 {
-  @include headline-02;
-}
+  // Nested block modifiers
+  &--nested {
+    h3 {
+      @include headline-04;
+    }
 
-.tl-block__body-01 {
-  @include body-01;
-}
+    p {
+      @include detail-03;
+    }
+  }
 
-.tl-block__headline-04 {
-  @include headline-04;
-}
+  &--nested-inner {
+    h4 {
+      @include headline-06;
+    }
 
-.tl-block__detail-03 {
-  @include detail-03;
-}
-
-.tl-block__headline-06 {
-  @include headline-06;
+    p {
+      @include detail-03;
+    }
+  }
 }

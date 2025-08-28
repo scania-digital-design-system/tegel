@@ -38,16 +38,16 @@ const Template = ({ outerModeVariant, componentTag }) =>
     }">
       <div class="tl-block tl-block--even">
         <${componentTag}>
-          <h2 class="tl-block__headline-02">Outer Block (${componentTag})</h2>
-          <p class="tl-block__body-01">This block is now structured using a <code>&lt;${componentTag}&gt;</code>.</p>
-          <div class="tl-block tl-block--odd">
+          <h2>Outer Block (${componentTag})</h2>
+          <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code>.</p>
+          <div class="tl-block tl-block--odd tl-block--nested">
             <aside>
-              <h3 class="tl-block__headline-04">Middle Block (Aside)</h3>
-              <p class="tl-block__detail-03">Nested content inside an <code>&lt;aside&gt;</code> element.</p>
-              <div class="tl-block tl-block--even">
+              <h3>Middle Block (Aside)</h3>
+              <p>Nested content inside an <code>&lt;aside&gt;</code> element.</p>
+              <div class="tl-block tl-block--even tl-block--nested-inner">
                 <${componentTag}>
-                  <h4 class="tl-block__headline-06">Inner Block (Section)</h4>
-                  <p class="tl-block__detail-03">Ensuring meaningful content structure with semantic HTML.</p>
+                  <h4>Inner Block (Section)</h4>
+                  <p>Ensuring meaningful content structure with semantic HTML.</p>
                 </${componentTag}>
               </div>
             </aside>

@@ -43,8 +43,8 @@ const Template = ({ modeVariant, componentTag }) =>
         modeVariant !== 'Inherit from parent' ? ` tl-block--${modeVariant.toLowerCase()}` : ''
       }">
         <${componentTag}>
-          <h2 class="tl-block__headline-02">Semantic Block</h2>
-          <p class="tl-block__body-01">This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
+          <h2>Semantic Block</h2>
+          <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>
         </${componentTag}>
       </div>
     `,
