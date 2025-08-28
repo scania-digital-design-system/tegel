@@ -91,7 +91,7 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) => 
 
   const iconElement = `<span class="tl-toast__icon"><span class="tl-icon tl-icon--${iconName} tl-icon--20" aria-hidden="true"></span></span>`;
   const closeButton = closable
-    ? `<button class="tl-toast__close"><span class="tl-icon tl-icon--cross tl-icon--12" aria-hidden="true"></span></button>`
+    ? `<button class="tl-toast__close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></button>`
     : '';
 
   return formatHtmlPreview(`
