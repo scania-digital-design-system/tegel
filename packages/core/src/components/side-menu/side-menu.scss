@@ -12,6 +12,11 @@
   width: 100%;
   height: 100%;
   z-index: tds-z-index(side-menu);
+  font-family: var(--component-side-menu-text-items-font-family);
+  font-size: var(--component-side-menu-text-items-font-size);
+  font-weight: var(--component-side-menu-text-items-font-weight);
+  line-height: var(--component-side-menu-text-items-line-height);
+  letter-spacing: var(--component-side-menu-text-items-letter-spacing);
 
   .wrapper {
     height: inherit;

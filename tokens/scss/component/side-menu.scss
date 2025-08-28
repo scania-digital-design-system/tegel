@@ -29,7 +29,12 @@
     --component-side-menu-space-top-level-left: var(--scania-unit-0);
     --component-side-menu-space-top-level-top: var(--scania-unit-0);
     --component-side-menu-space-top-level-vertical-gap-padding: var(--scania-unit-0);
+    --component-side-menu-text-items-font-family: var(--scania-font-family-semi-condensed);
     --component-side-menu-text-items-font-weight: var(--scania-font-weight-bold);
+    --component-side-menu-text-items-font-size: 14px;
+    --component-side-menu-text-items-line-height: 16px;
+    --component-side-menu-text-items-letter-spacing: -0.14px;
+    --component-side-menu-text-items-text-transform: none;
   }
 }
 
@@ -59,6 +64,11 @@
     --component-side-menu-space-top-level-left: var(--traton-unit-16);
     --component-side-menu-space-top-level-top: var(--traton-unit-14);
     --component-side-menu-space-top-level-vertical-gap-padding: var(--traton-unit-16);
+    --component-side-menu-text-items-font-family: var(--traton-font-family-default);
     --component-side-menu-text-items-font-weight: var(--traton-font-weight-medium);
+    --component-side-menu-text-items-font-size: 14px;
+    --component-side-menu-text-items-line-height: 18px;
+    --component-side-menu-text-items-letter-spacing: 0;
+    --component-side-menu-text-items-text-transform: none;
   }
 }

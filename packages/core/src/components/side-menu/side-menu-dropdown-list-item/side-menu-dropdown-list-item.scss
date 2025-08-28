@@ -6,6 +6,11 @@
   box-sizing: border-box;
   height: var(--side-menu-dropdown-list-item-height);
   width: 100%;
+  font-family: var(--text-component-body-01-font-family);
+  font-size: var(--text-component-body-01-font-size);
+  font-weight: var(--text-component-body-01-font-weight);
+  line-height: var(--text-component-body-01-line-height);
+  letter-spacing: var(--text-component-body-01-letter-spacing);
 
   .component {
     height: 100%;
@@ -21,8 +26,6 @@
       height: 100%;
       padding: 0 var(--component-side-menu-space-sub-page-left-no-icon);
       width: 100%;
-      @include detail-02;
-
       background-color: var(--side-menu-dropdown-list-item-custom-background);
       color: var(--side-menu-dropdown-list-item-color);
       border: none;
@@ -50,8 +53,12 @@
     ::slotted(a),
     ::slotted(button) {
       background-color: var(--side-menu-dropdown-list-item-custom-background-selected);
-      font-weight: var(--text-component-title-01-font-weight);
       color: var(--color-foreground-text-strong);
+      font-family: var(--text-component-title-01-font-family);
+      font-size: var(--text-component-title-01-font-size);
+      font-weight: var(--text-component-title-01-font-weight);
+      line-height: var(--text-component-title-01-line-height);
+      letter-spacing: var(--text-component-title-01-letter-spacing);
     }
   }
 

@@ -22,9 +22,6 @@
         var(--component-side-menu-space-sub-menu-item-left);
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
-      @include headline-07;
-
-      font-weight: var(--component-side-menu-text-items-font-weight);
       color: var(--side-menu-single-item-color);
       cursor: pointer;
       border-radius: var(--component-side-menu-radius-corner);
@@ -45,8 +42,6 @@
         var(--component-side-menu-space-sub-menu-item-profile-left);
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
-      @include headline-07;
-
       color: var(--side-menu-single-item-color);
       cursor: pointer;
       border-radius: var(--component-side-menu-radius-corner);
