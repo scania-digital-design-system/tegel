@@ -123,7 +123,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
         My Application
       </tds-header-title>
 
-      <i style="color:white">Header items omitted for brevity. See patterns/navigation</i>
+      <i style="color:grey">Header items omitted for brevity. See patterns/navigation</i>
 
       <tds-header-brand-symbol slot="end">
         <a href="https://scania.com" aria-label="Scania website"></a>
@@ -141,20 +141,20 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="timer" size="24px"></tds-icon>
+            <tds-icon name="info"></tds-icon>
             About us
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="truck" size="24px"></tds-icon>
+            <tds-icon name="truck"></tds-icon>
             Trucks
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown id="wheel-types-dropdown" default-open selected>
-          <tds-icon slot="icon" name="profile" size="24px"></tds-icon>
+          <tds-icon slot="icon" name="info"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -174,7 +174,7 @@ const Template = ({ persistent, collapsible, collapsed }) =>
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="star" size="24px"></tds-icon>
+            <tds-icon name="star"></tds-icon>
             Values
           </button>
         </tds-side-menu-item>

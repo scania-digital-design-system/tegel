@@ -26,7 +26,7 @@ export class Icon {
   @Prop({ reflect: true }) name: IconNames = 'truck';
 
   /** Pass a size of icon as a string, for example, 32px, 1rem, 4em... */
-  @Prop({ reflect: true }) size: string = '16px';
+  @Prop({ reflect: true }) size: string;
 
   /** Override the default title for the svg. Also used by aria-labelledby. */
   @Prop() svgTitle?: string;
@@ -42,10 +42,30 @@ export class Icon {
   @State() arrayOfIcons = [];
 
   componentWillLoad() {
-    this.detectAndSetBrand();
+    const brand = this.detectBrand();
+    this.setBrand(brand);
+
+    if (this.size) {
+      return;
+    }
+
+    const insideSideMenu = this.host.closest('tds-side-menu');
+
+    const brandSizeMap: Record<string, string> = {
+      scania: '24px',
+      traton: '16px',
+    };
+
+    if (insideSideMenu && brandSizeMap[brand]) {
+      this.size = brandSizeMap[brand];
+    }
+
+    if (!this.size) {
+      this.size = '16px';
+    }
   }
 
-  private detectAndSetBrand() {
+  private detectBrand() {
     const brandClasses = Object.keys(brandIconMap);
     // First try to find brand class using closest
     let matchingBrand = brandClasses.find((brand) => this.host.closest(`.${brand}`));
@@ -57,8 +77,12 @@ export class Icon {
       );
     }
 
-    // Set the icons_object based on the found brand or default to scania
-    this.icons_object = matchingBrand ? brandIconMap[matchingBrand] : scaniaIcons;
+    return matchingBrand || 'scania'; // default to Scania if not found
+  }
+
+  private setBrand(brand) {
+    // Set the icons_object based on the brand
+    this.icons_object = brandIconMap[brand];
     this.arrayDataWatcher(this.icons_object);
   }
 

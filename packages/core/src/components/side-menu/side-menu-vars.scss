@@ -1,58 +1,50 @@
-:root,
-.tds-mode-light {
-  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
-  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
-  --tds-sidebar-item-state-focus: var(--tds-grey-50);
-  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-100);
-  --tds-sidebar-item-state-active: var(--tds-grey-300);
-  --tds-sidemenu-item-state-active: var(--tds-grey-300);
-  --tds-sidebar-item-state-selected: var(--tds-grey-100);
-
-  // TODO - Not sure why this was black before?
-  --tds-sidebar-side-menu: var(--tds-white);
-  --tds-sidebar-side-menu-border-right: var(--tds-grey-300);
-  --tds-sidebar-side-menu-background-cover: var(--tds-white);
-  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-300);
-  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-white);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-300);
-  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-300);
-  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-100);
-  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
-  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-800);
-  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-white);
-  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-300);
-  --tds-sidebar-side-menu-subnav-background: var(--tds-white);
-  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
+tds-side-menu {
+  --side-menu-background-cover: var(--color-background-base);
+  --side-menu-item-state-hover: var(--color-background-layer-01);
+  --side-menu-item-state-active: var(--color-background-surface-100);
+  --side-menu-item-state-selected: var(--color-background-layer-01);
+  --side-menu-single-subitem-selected-border-color: var(--color-foreground-border-accent-focus);
+  --side-menu-dropdown-list-item-color: var(--color-foreground-text-defined);
+  --side-menu-subnav-background: var(--color-background-layer-01);
+  --side-menu-single-item-color: var(--color-foreground-text-strong);
+  --side-menu-bottom-menu-border-top: var(--component-side-menu-color-divider);
 }
 
-.tds-mode-dark {
-  --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
-  --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
-  --tds-sidebar-item-state-focus: var(--tds-grey-958);
-  --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-850);
-  --tds-sidebar-item-state-active: var(--tds-grey-800);
-  --tds-sidemenu-item-state-active: var(--tds-grey-800);
-  --tds-sidebar-item-state-selected: var(--tds-grey-868);
-  --tds-sidebar-side-menu: var(--tds-grey-958);
-  --tds-sidebar-side-menu-border-right: var(--tds-grey-850);
-  --tds-sidebar-side-menu-background-cover: var(--tds-grey-958);
-  --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-850);
-  --tds-sidebar-side-menu-bottom-menu-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-color: var(--tds-grey-50);
-  --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-850);
-  --tds-sidebar-side-menu-single-item-border-left-selected: var(--tds-blue-400);
-  --tds-sidebar-side-menu-single-subitem-color: var(--tds-grey-100);
-  --tds-sidebar-side-menu-single-subitem-title-color: var(--tds-grey-50);
-  --tds-sidebar-side-menu-single-subitem-color-active: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-backgrund: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-700);
-  --tds-sidebar-side-menu-subnav-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
+:root,
+.scania {
+  .tl-side-menu,
+  tds-side-menu {
+    --side-menu-bottom-menu-border-top-collapsed: 1px solid var(--color-foreground-border-discrete);
+    --side-menu-close-button-wrapper-height: auto;
+    --side-menu-collapsed-button-size: 68px;
+    --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
+    --side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
+    --side-menu-collapsed-dropdown-background-selected: var(--color-background-layer-01);
+    --side-menu-collapsed-dropdown-background: var(--color-background-base);
+    --side-menu-collapsed-dropdown-heading-padding-left: 24px;
+    --side-menu-dropdown-list-item-height: 48px;
+    --side-menu-profile-user-image-size: 34px;
+    --side-menu-single-item-height: 68px;
+    --side-menu-subnav-border-radius: 0;
+    --side-menu-subnav-box-shadow: var(--tds-nav-dropdown-menu-box);
+  }
+}
+
+.traton {
+  .tl-side-menu,
+  tds-side-menu {
+    --side-menu-bottom-menu-border-top-collapsed: none;
+    --side-menu-close-button-wrapper-height: 64px;
+    --side-menu-collapsed-button-size: 72px;
+    --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
+    --side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
+    --side-menu-collapsed-dropdown-background-selected: var(--color-background-surface-100);
+    --side-menu-collapsed-dropdown-background: var(--color-background-layer-01);
+    --side-menu-collapsed-dropdown-heading-padding-left: 14px;
+    --side-menu-dropdown-list-item-height: 32px;
+    --side-menu-profile-user-image-size: 25.5px;
+    --side-menu-single-item-height: 40px;
+    --side-menu-subnav-border-radius: 4px;
+    --side-menu-subnav-box-shadow: none;
+  }
 }

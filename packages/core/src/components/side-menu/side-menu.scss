@@ -12,18 +12,23 @@
   width: 100%;
   height: 100%;
   z-index: tds-z-index(side-menu);
+  font-family: var(--component-side-menu-text-items-font-family);
+  font-size: var(--component-side-menu-text-items-font-size);
+  font-weight: var(--component-side-menu-text-items-font-weight);
+  line-height: var(--component-side-menu-text-items-line-height);
+  letter-spacing: var(--component-side-menu-text-items-letter-spacing);
 
   .wrapper {
     height: inherit;
 
     /* default slot */
     slot:not([name])::slotted(*) {
-      border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
     }
 
     /* 'end' slot */
     ::slotted([slot='end']) {
-      border-top: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-top: 1px solid var(--side-menu-bottom-menu-border-top);
     }
 
     .tds-side-menu-list-end {
@@ -45,6 +50,12 @@
     }
   }
 
+  .tds-side-menu-list li {
+    display: flex;
+    flex-direction: column;
+    gap: var(--component-side-menu-space-top-level-vertical-gap-padding);
+  }
+
   .state-upper-slot-empty {
     .tds-side-menu-list-upper {
       display: none;
@@ -56,7 +67,7 @@
 
     ::slotted([slot='end']) {
       border-top: none;
-      border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
     }
   }
 }
@@ -74,7 +85,7 @@
     position: static;
     width: 272px;
     height: auto;
-    border-right: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+    border-right: 1px solid var(--side-menu-bottom-menu-border-top);
 
     .wrapper {
       slot[name='overlay']::slotted(tds-side-menu-overlay) {
@@ -95,11 +106,11 @@
     }
 
     &:host(.menu-collapsed) {
-      width: 69px; // 68 + 1px for border
+      width: calc(var(--side-menu-collapsed-button-size) + 1px); // + 1px for border
       box-sizing: border-box;
 
       .menu {
-        width: 68px;
+        width: var(--side-menu-collapsed-button-size);
       }
     }
 
@@ -132,12 +143,15 @@
 }
 
 aside {
+  background-color: var(--side-menu-background-cover);
+
   .tds-side-menu-wrapper {
+    padding: 0 var(--component-side-menu-space-top-level-left);
+    padding-top: var(--component-side-menu-space-top-level-top);
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     flex-grow: 1;
-    background-color: var(--tds-sidebar-side-menu-background-cover);
     @include tds-scrollbar;
 
     overflow-y: auto;

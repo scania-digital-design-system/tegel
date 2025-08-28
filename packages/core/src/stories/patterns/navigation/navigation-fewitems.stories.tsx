@@ -198,20 +198,20 @@ const Template = () => {
 
         <tds-side-menu-item>
           <button>
-            <tds-icon name="info" size="24"></tds-icon>
+            <tds-icon name="info"></tds-icon>
             About
           </button>
         </tds-side-menu-item>
 
         <tds-side-menu-item>
           <a href="https://www.scania.com">
-            <tds-icon name="truck" size="24"></tds-icon>
+            <tds-icon name="truck"></tds-icon>
             Truck types
           </a>
         </tds-side-menu-item>
 
         <tds-side-menu-dropdown>
-          <tds-icon slot="icon" name="tool" size="24"></tds-icon>
+          <tds-icon slot="icon" name="tool"></tds-icon>
           <span slot="label">
             Wheel types
           </span>
@@ -227,7 +227,7 @@ const Template = () => {
 
         <tds-side-menu-item slot="end" onclick="alert('Calendar button clicked')">
           <button>
-            <tds-icon name="calendar" size="24px"></tds-icon>
+            <tds-icon name="calendar"></tds-icon>
             Calendar
           </button>
         </tds-side-menu-item>
