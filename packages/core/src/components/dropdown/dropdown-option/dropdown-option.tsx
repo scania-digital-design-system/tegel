@@ -95,7 +95,7 @@ export class TdsDropdownOption {
     this.internalValue = convertToString(this.value);
   }
 
-  connectedCallback() {
+  componentDidRender() {
     if (!this.tdsAriaLabel && !this.multiselect) {
       console.warn('Tegel Dropdown option component: tdsAriaLabel prop is missing');
     }
