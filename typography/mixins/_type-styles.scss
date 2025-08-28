@@ -1,33 +1,33 @@
 /* Typography Usage mixins */
 
-@mixin supertype-01 {
-  font-family: var(--super-type-01-font-family);
-  font-size: var(--super-type-01-font-size);
-  line-height: var(--super-type-01-line-height);
-  font-weight: var(--super-type-01-font-weight);
-  letter-spacing: var(--super-type-01-letter-spacing);
-  text-transform: var(--super-type-01-text-transform);
+@mixin display-01 {
+  font-family: var(--display-01-font-family);
+  font-size: var(--display-01-font-size);
+  line-height: var(--display-01-line-height);
+  font-weight: var(--display-01-font-weight);
+  letter-spacing: var(--display-01-letter-spacing);
+  text-transform: var(--display-01-text-transform);
 }
 
-@mixin supertype-02 {
-  font-family: var(--super-type-02-font-family);
-  font-size: var(--super-type-02-font-size);
-  line-height: var(--super-type-02-line-height);
-  font-weight: var(--super-type-02-font-weight);
-  letter-spacing: var(--super-type-02-letter-spacing);
-  text-transform: var(--super-type-02-text-transform);
+@mixin display-02 {
+  font-family: var(--display-02-font-family);
+  font-size: var(--display-02-font-size);
+  line-height: var(--display-02-line-height);
+  font-weight: var(--display-02-font-weight);
+  letter-spacing: var(--display-02-letter-spacing);
+  text-transform: var(--display-02-text-transform);
 }
 
-@mixin supertype-03 {
-  font-family: var(--super-type-03-font-family);
-  font-size: var(--super-type-03-font-size);
-  line-height: var(--super-type-03-line-height);
-  font-weight: var(--super-type-03-font-weight);
-  letter-spacing: var(--super-type-03-letter-spacing);
-  text-transform: var(--super-type-03-text-transform);
+@mixin display-03 {
+  font-family: var(--display-03-font-family);
+  font-size: var(--display-03-font-size);
+  line-height: var(--display-03-line-height);
+  font-weight: var(--display-03-font-weight);
+  letter-spacing: var(--display-03-letter-spacing);
+  text-transform: var(--display-03-text-transform);
 }
 
-@mixin expressive-headline-01 {
+@mixin display-04 {
   font-family: var(--expressive-headline-01-font-family);
   font-size: var(--expressive-headline-01-font-size);
   line-height: var(--expressive-headline-01-line-height);
@@ -36,13 +36,13 @@
   text-transform: var(--expressive-headline-01-text-transform);
 }
 
-@mixin expressive-headline-02 {
-  font-family: var(--expressive-headline-02-font-family);
-  font-size: var(--expressive-headline-02-font-size);
-  line-height: var(--expressive-headline-02-line-height);
-  font-weight: var(--expressive-headline-02-font-weight);
-  letter-spacing: var(--expressive-headline-02-letter-spacing);
-  text-transform: var(--expressive-headline-02-text-transform);
+@mixin display-05 {
+  font-family: var(--display-05-font-family);
+  font-size: var(--display-05-font-size);
+  line-height: var(--display-05-line-height);
+  font-weight: var(--display-05-font-weight);
+  letter-spacing: var(--display-05-letter-spacing);
+  text-transform: var(--display-05-text-transform);
 }
 
 @mixin headline-01 {
@@ -99,13 +99,22 @@
   text-transform: var(--headline-06-text-transform);
 }
 
-@mixin headline-07 {
-  font-family: var(--headline-07-font-family);
-  font-size: var(--headline-07-font-size);
-  line-height: var(--headline-07-line-height);
-  font-weight: var(--headline-07-font-weight);
-  letter-spacing: var(--headline-07-letter-spacing);
-  text-transform: var(--headline-07-text-transform);
+@mixin title-01 {
+  font-family: var(--title-01-font-family);
+  font-size: var(--title-01-font-size);
+  line-height: var(--title-01-line-height);
+  font-weight: var(--title-01-font-weight);
+  letter-spacing: var(--title-01-letter-spacing);
+  text-transform: var(--title-01-text-transform);
+}
+
+@mixin title-02 {
+  font-family: var(--detail-06-font-family);
+  font-size: var(--detail-06-font-size);
+  line-height: var(--detail-06-line-height);
+  font-weight: var(--detail-06-font-weight);
+  letter-spacing: var(--detail-06-letter-spacing);
+  text-transform: var(--detail-06-text-transform);
 }
 
 @mixin paragraph-01 {
@@ -162,65 +171,38 @@
   text-transform: var(--body-link-02-text-transform);
 }
 
-@mixin detail-01 {
-  font-family: var(--detail-01-font-family);
-  font-size: var(--detail-01-font-size);
-  line-height: var(--detail-01-line-height);
-  font-weight: var(--detail-01-font-weight);
-  letter-spacing: var(--detail-01-letter-spacing);
-  text-transform: var(--detail-01-text-transform);
+@mixin text-01 {
+  font-family: var(--text-01-font-family);
+  font-size: var(--text-01-font-size);
+  line-height: var(--text-01-line-height);
+  font-weight: var(--text-01-font-weight);
+  letter-spacing: var(--text-01-letter-spacing);
+  text-transform: var(--text-01-text-transform);
 }
 
-@mixin detail-02 {
-  font-family: var(--detail-02-font-family);
-  font-size: var(--detail-02-font-size);
-  line-height: var(--detail-02-line-height);
-  font-weight: var(--detail-02-font-weight);
-  letter-spacing: var(--detail-02-letter-spacing);
-  text-transform: var(--detail-02-text-transform);
+@mixin text-02 {
+  font-family: var(--text-02-font-family);
+  font-size: var(--text-02-font-size);
+  line-height: var(--text-02-line-height);
+  font-weight: var(--text-02-font-weight);
+  letter-spacing: var(--text-02-letter-spacing);
+  text-transform: var(--text-02-text-transform);
 }
 
-@mixin detail-03 {
-  font-family: var(--detail-03-font-family);
-  font-size: var(--detail-03-font-size);
-  line-height: var(--detail-03-line-height);
-  font-weight: var(--detail-03-font-weight);
-  letter-spacing: var(--detail-03-letter-spacing);
-  text-transform: var(--detail-03-text-transform);
+@mixin label-01 {
+  font-family: var(--label-01-font-family);
+  font-size: var(--label-01-font-size);
+  line-height: var(--label-01-line-height);
+  font-weight: var(--label-01-font-weight);
+  letter-spacing: var(--label-01-letter-spacing);
+  text-transform: var(--label-01-text-transform);
 }
 
-@mixin detail-04 {
-  font-family: var(--detail-04-font-family);
-  font-size: var(--detail-04-font-size);
-  line-height: var(--detail-04-line-height);
-  font-weight: var(--detail-04-font-weight);
-  letter-spacing: var(--detail-04-letter-spacing);
-  text-transform: var(--detail-04-text-transform);
-}
-
-@mixin detail-05 {
-  font-family: var(--detail-05-font-family);
-  font-size: var(--detail-05-font-size);
-  line-height: var(--detail-05-line-height);
-  font-weight: var(--detail-05-font-weight);
-  letter-spacing: var(--detail-05-letter-spacing);
-  text-transform: var(--detail-05-text-transform);
-}
-
-@mixin detail-06 {
-  font-family: var(--detail-06-font-family);
-  font-size: var(--detail-06-font-size);
-  line-height: var(--detail-06-line-height);
-  font-weight: var(--detail-06-font-weight);
-  letter-spacing: var(--detail-06-letter-spacing);
-  text-transform: var(--detail-06-text-transform);
-}
-
-@mixin detail-07 {
-  font-family: var(--detail-07-font-family);
-  font-size: var(--detail-07-font-size);
-  line-height: var(--detail-07-line-height);
-  font-weight: var(--detail-07-font-weight);
-  letter-spacing: var(--detail-07-letter-spacing);
-  text-transform: var(--detail-07-text-transform);
+@mixin label-02 {
+  font-family: var(--label-02-font-family);
+  font-size: var(--label-02-font-size);
+  line-height: var(--label-02-line-height);
+  font-weight: var(--label-02-font-weight);
+  letter-spacing: var(--label-02-letter-spacing);
+  text-transform: var(--label-02-text-transform);
 }
