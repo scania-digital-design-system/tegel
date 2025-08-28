@@ -1,0 +1,61 @@
+@import '../../../../mixins/focus-state';
+@import '../../../../mixins/box-sizing';
+@import './tl-inline-tabs-vars';
+
+.tl-inline-tabs {
+  @include tds-box-sizing;
+
+  display: flex;
+  position: relative;
+
+  &::after {
+    border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
+    content: ' ';
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+  }
+}
+
+.tl-inline-tabs__wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  gap: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tl-inline-tabs__scroll-btn {
+    background-color: var(--inline-tabs-scroll-button);
+    color: var(--inline-tabs-scroll-button-text);
+    cursor: pointer;
+    min-width: 48px;
+    border: 0;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    position: sticky;
+
+    svg {
+      fill: var(--inline-tabs-scroll-button-text);
+    }
+  }
+
+  .tl-inline-tabs__scroll-btn--right {
+    right: 0;
+    z-index: 1;
+  }
+
+  .tl-inline-tabs__scroll-btn--left {
+    left: 0;
+    z-index: 1;
+  }
+}

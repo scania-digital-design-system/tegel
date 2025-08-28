@@ -1,108 +1,120 @@
 @import './tl-button-vars'; // Import global variables
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 /* Base button styles */
 .tl-button {
-  font: var(--tds-detail-02);
-  letter-spacing: var(--tds-detail-02-ls);
+  @include tds-box-sizing;
+  @include detail-02;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--tds-spacing-element-16);
   font-weight: 500;
-  border-radius: 4px;
-  border: 1px solid transparent;
+  border-radius: var(--button-radius);
+  border: 1px solid var(--button-secondary-border-color);
+  box-shadow: none;
+  position: relative;
+  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
 
   /* Variants */
   &--primary {
-    background-color: var(--tds-btn-primary-background);
-    color: var(--tds-btn-primary-color);
-    border-color: var(--tds-btn-primary-border-color);
+    background-color: var(--button-primary-background);
+    color: var(--button-primary-color);
+    border-color: var(--button-primary-border-color);
 
     &:hover {
-      background-color: var(--tds-btn-primary-background-hover);
+      background-color: var(--button-primary-background-hover);
     }
 
     &:active {
-      background-color: var(--tds-btn-primary-background-active);
+      background-color: var(--button-primary-background-active);
     }
 
     &:disabled,
     &--disabled {
-      background-color: var(--tds-btn-primary-background-disabled);
-      color: var(--tds-btn-primary-color-disabled);
-      border-color: var(--tds-btn-primary-border-color-disabled);
+      background-color: var(--button-primary-background-disabled);
+      color: var(--button-primary-color-disabled);
+      border-color: var(--button-primary-border-color-disabled);
       cursor: not-allowed;
       opacity: 0.6;
     }
   }
 
   &--secondary {
-    background-color: var(--tds-btn-secondary-background);
-    color: var(--tds-btn-secondary-color);
-    border-color: var(--tds-btn-secondary-border-color);
+    background-color: var(--button-secondary-background);
+    color: var(--button-secondary-color);
+    border-color: var(--button-secondary-border-color);
 
     &:hover {
-      background-color: var(--tds-btn-secondary-background-hover);
+      border-color: var(--button-secondary-border-color-hover);
+    }
+
+    &:active {
+      border-color: var(--button-secondary-border-color-active);
     }
 
     &:disabled,
     &--disabled {
-      background-color: var(--tds-btn-secondary-background-disabled);
-      color: var(--tds-btn-secondary-color-disabled);
-      border-color: var(--tds-btn-secondary-border-color-disabled);
+      background-color: var(--button-secondary-background-disabled);
+      color: var(--button-secondary-color-disabled);
+      border-color: var(--button-secondary-border-color-disabled);
       cursor: not-allowed;
       opacity: 0.6;
     }
   }
 
   &--ghost {
-    background-color: transparent;
-    color: var(--tds-btn-ghost-color);
-    border-color: transparent;
+    background-color: var(--button-ghost-background);
+    color: var(--button-ghost-color);
+    border-color: var(--button-ghost-border-color);
 
     &:hover {
-      border-color: var(--tds-btn-ghost-border-color-hover);
+      border-color: var(--button-ghost-border-color-hover);
+    }
+
+    &:active {
+      border-color: var(--button-ghost-border-color-active);
     }
 
     &:disabled,
     &--disabled {
-      color: var(--tds-btn-ghost-color-disabled);
+      color: var(--button-ghost-color-disabled);
       cursor: not-allowed;
       opacity: 0.6;
     }
   }
 
   &--danger {
-    background-color: var(--tds-btn-danger-background);
-    color: var(--tds-btn-danger-color);
+    background-color: var(--button-danger-background);
+    color: var(--button-danger-color);
+    border-color: var(--button-danger-border-color);
 
     &:hover {
-      background-color: var(--tds-btn-danger-background-hover);
+      background-color: var(--button-danger-background-hover);
+    }
+
+    &:active {
+      background-color: var(--button-danger-background-active);
+      border-color: var(--button-danger-border-color-active);
     }
 
     &:disabled,
     &--disabled {
-      background-color: var(--tds-btn-danger-background-disabled);
-      color: var(--tds-btn-danger-color-disabled);
-      border-color: var(--tds-btn-danger-border-color-disabled);
+      background-color: var(--button-danger-background-disabled);
+      color: var(--button-danger-color-disabled);
+      border-color: var(--button-danger-border-color-disabled);
       cursor: not-allowed;
       opacity: 0.6;
     }
   }
 
   /* Sizes */
-  &--lg {
-    padding: var(--tds-spacing-element-20);
-    height: 56px;
-  }
-
-  &--md {
-    padding: var(--tds-spacing-element-16);
-    height: 48px;
+  &--xs {
+    padding: var(--tds-spacing-element-4) var(--tds-spacing-element-8);
+    height: 24px;
   }
 
   &--sm {
@@ -110,19 +122,72 @@
     height: 40px;
   }
 
-  &--xs {
-    padding: var(--tds-spacing-element-4);
-    height: 24px;
+  &--md {
+    padding: var(--tds-spacing-element-16);
+    height: 48px;
+  }
+
+  &--lg {
+    padding: var(--tds-spacing-element-20);
+    height: 56px;
+  }
+
+  /* Icon specific styles */
+  &--icon {
+    &.tl-button--sm {
+      padding: 10px var(--tds-spacing-element-12);
+
+      .tl-icon {
+        margin-left: var(--tds-spacing-element-12);
+      }
+    }
+
+    &.tl-button--md {
+      padding: 14px var(--tds-spacing-element-16);
+
+      .tl-icon {
+        margin-left: var(--tds-spacing-element-16);
+      }
+    }
+
+    &.tl-button--lg {
+      padding: 18px var(--tds-spacing-element-20);
+
+      .tl-icon {
+        margin-left: var(--tds-spacing-element-20);
+      }
+    }
+  }
+
+  /* Only icon specific styles */
+  &--only-icon {
+    &.tl-button--sm {
+      padding: var(--button-sm-only-icon-padding);
+
+      .tl-icon {
+        margin-left: 0;
+      }
+    }
+
+    &.tl-button--md {
+      padding: var(--button-md-only-icon-padding);
+
+      .tl-icon {
+        margin-left: 0;
+      }
+    }
+
+    &.tl-button--lg {
+      padding: var(--button-lg-only-icon-padding);
+
+      .tl-icon {
+        margin-left: 0;
+      }
+    }
   }
 
   /* Full width */
   &--fullwidth {
     width: 100%;
   }
-}
-
-/* Icon styles */
-.tl-button__icon {
-  display: inline-flex;
-  margin-left: var(--tds-spacing-element-8);
 }
