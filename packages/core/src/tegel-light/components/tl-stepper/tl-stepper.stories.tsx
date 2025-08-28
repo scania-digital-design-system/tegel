@@ -6,7 +6,7 @@ export default {
     backgrounds: {
       default: 'white',
     },
-    layout: 'centered',
+    layout: 'padded',
   },
   argTypes: {
     size: {
