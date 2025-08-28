@@ -66,7 +66,7 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
 
   const iconElement = `<span class="tl-banner__icon"><span class="tl-icon tl-icon--${iconName} tl-icon--20" aria-hidden="true"></span></span>`;
   const closeButton = showClose
-    ? `<div class="tl-banner__close"><span class="tl-icon tl-icon--cross tl-icon--12" aria-hidden="true"></span></div>`
+    ? `<div class="tl-banner__close"><span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span></div>`
     : '';
 
   return formatHtmlPreview(`
