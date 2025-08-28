@@ -17,7 +17,7 @@
   }
 }
 
-.tl-breadcrumbs__item {
+.tl-breadcrumbs__breadcrumb {
   display: inline-block;
 
   &::after {
@@ -31,7 +31,7 @@
   }
 
   &--current {
-    .tl-breadcrumbs__item-link {
+    .tl-breadcrumbs__breadcrumb-link {
       pointer-events: none;
       cursor: default;
       color: var(--breadcrumb-current);
@@ -48,7 +48,7 @@
   }
 }
 
-.tl-breadcrumbs__item-link {
+.tl-breadcrumbs__breadcrumb-link {
   @include detail-02;
 
   color: var(--breadcrumb-label);

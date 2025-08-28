@@ -16,14 +16,14 @@ const Template = () =>
     -->
     <nav class="tl-breadcrumbs">
       <ol class="tl-breadcrumbs__list">
-        <li class="tl-breadcrumbs__item">
-          <a class="tl-breadcrumbs__item-link" href="#">Home</a>
+        <li class="tl-breadcrumbs__breadcrumb">
+          <a class="tl-breadcrumbs__breadcrumb-link" href="#">Home</a>
         </li>
-        <li class="tl-breadcrumbs__item">
-          <a class="tl-breadcrumbs__item-link" href="#">Products</a>
+        <li class="tl-breadcrumbs__breadcrumb">
+          <a class="tl-breadcrumbs__breadcrumb-link" href="#">Products</a>
         </li>
-        <li class="tl-breadcrumbs__item tl-breadcrumbs__item--current">
-          <a class="tl-breadcrumbs__item-link" href="#" aria-current="page">Current Page</a>
+        <li class="tl-breadcrumbs__breadcrumb tl-breadcrumbs__breadcrumb--current">
+          <a class="tl-breadcrumbs__breadcrumb-link" href="#" aria-current="page">Current Page</a>
         </li>
       </ol>
     </nav>
