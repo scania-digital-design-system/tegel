@@ -93,6 +93,6 @@ Default.args = {
   variant: 'default',
   header: 'This is a banner',
   subheader: 'This is a subheader',
-  actions: '<tds-link><a href="/">Link example</a></tds-link>',
+  actions: '<a class="tl-link tl-link--underline" href="/">Link example</a>',
   showClose: true,
 };
