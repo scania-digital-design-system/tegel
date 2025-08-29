@@ -61,7 +61,7 @@ export default {
     header: 'Message header',
     subheader: 'Short subheader',
     actions:
-      '<tds-link><a href="https://tegel.scania.com/home" target="_blank">Link example</a></tds-link>',
+      '<a class="tl-link tl-link--underline" href="https://tegel.scania.com/home" target="_blank">Link example</a>',
     hidden: false,
     closable: true,
   },
