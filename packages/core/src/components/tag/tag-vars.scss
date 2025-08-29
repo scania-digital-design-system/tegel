@@ -1,0 +1,30 @@
+:root,
+.tds-mode-light {
+  --tds-tag-success-background: var(--tds-green-100);
+  --tds-tag-success-color: var(--tds-green-700);
+  --tds-tag-warning-background: var(--tds-yellow-50);
+  --tds-tag-warning-color: var(--tds-yellow-700);
+  --tds-tag-new-background: var(--tds-blue-100);
+  --tds-tag-new-color: var(--tds-blue-700);
+  --tds-tag-neutral-background: var(--tds-grey-150);
+  --tds-tag-neutral-color: var(--tds-grey-700);
+  --tds-tag-information-background: var(--tds-blue-200);
+  --tds-tag-information-color: var(--tds-blue-800);
+  --tds-tag-error-background: var(--tds-red-100);
+  --tds-tag-error-color: var(--tds-red-700);
+}
+
+.tds-mode-dark {
+  --tds-tag-success-background: var(--tds-green-200);
+  --tds-tag-success-color: var(--tds-green-800);
+  --tds-tag-warning-background: var(--tds-yellow-100);
+  --tds-tag-warning-color: var(--tds-yellow-800);
+  --tds-tag-new-background: var(--tds-blue-100);
+  --tds-tag-new-color: var(--tds-blue-800);
+  --tds-tag-neutral-background: var(--tds-grey-200);
+  --tds-tag-neutral-color: var(--tds-grey-800);
+  --tds-tag-information-background: var(--tds-blue-200);
+  --tds-tag-information-color: var(--tds-blue-800);
+  --tds-tag-error-background: var(--tds-red-200);
+  --tds-tag-error-color: var(--tds-red-800);
+}

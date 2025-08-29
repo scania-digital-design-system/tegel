@@ -1,0 +1,84 @@
+@import './tag-vars';
+@import '../../mixins/box-sizing';
+
+:host {
+  @include tds-box-sizing;
+
+  display: inline-block;
+}
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--tds-grey-400);
+  color: var(--tds-grey-958);
+  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+
+  // Size variants
+  &.tds-tag-large {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  &.tds-tag-small {
+    border-radius: 2px;
+    gap: 4px;
+    padding: 2px 4px;
+  }
+
+  // Variant mode colors
+  &.tds-tag-success {
+    background-color: var(--tds-tag-success-background);
+    color: var(--tds-tag-success-color);
+  }
+
+  &.tds-tag-warning {
+    background-color: var(--tds-tag-warning-background);
+    color: var(--tds-tag-warning-color);
+  }
+
+  &.tds-tag-new {
+    background-color: var(--tds-tag-new-background);
+    color: var(--tds-tag-new-color);
+  }
+
+  &.tds-tag-neutral {
+    background-color: var(--tds-tag-neutral-background);
+    color: var(--tds-tag-neutral-color);
+  }
+
+  &.tds-tag-information {
+    background-color: var(--tds-tag-information-background);
+    color: var(--tds-tag-information-color);
+  }
+
+  &.tds-tag-error {
+    background-color: var(--tds-tag-error-background);
+    color: var(--tds-tag-error-color);
+  }
+
+  // Dark mode text color
+  &.tds-mode-dark {
+    color: var(--tds-grey-100);
+  }
+}
+
+.tds-tag-content {
+  display: flex;
+  align-items: center;
+  gap: inherit;
+}
+
+.tds-tag-title {
+  font-weight: 500;
+}
+
+.tds-tag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
