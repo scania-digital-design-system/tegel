@@ -218,6 +218,10 @@
       "import": "./dist/components/tds-navigation-tabs.js",
       "types": "./dist/components/tds-navigation-tabs.d.ts"
     },
+    "./tds-tag": {
+      "import": "./dist/components/tds-tag.js",
+      "types": "./dist/components/tds-tag.d.ts"
+    },
     "./tds-popover-canvas": {
       "import": "./dist/components/tds-popover-canvas.js",
       "types": "./dist/components/tds-popover-canvas.d.ts"
