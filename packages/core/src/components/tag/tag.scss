@@ -11,11 +11,6 @@
   display: inline-flex;
   align-items: center;
   border-radius: 4px;
-  background-color: var(--tds-grey-400);
-  color: var(--tds-grey-958);
-  font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 1.2;
 
   // Size variants
   &.tds-tag-large {
@@ -76,7 +71,8 @@
   font-weight: 500;
 }
 
-.tds-tag-icon {
+// Icon slot styling
+::slotted(tds-icon) {
   display: flex;
   align-items: center;
   justify-content: center;

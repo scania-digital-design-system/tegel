@@ -56,24 +56,21 @@ export default {
     },
     icon: {
       name: 'Icon',
-      description: 'Sets icon to be displayed on the Button. Choose "none" to exclude the icon.',
+      description: 'Sets icon to be displayed in the Tag. Choose "none" to exclude the icon.',
       control: {
         type: 'select',
       },
       options: ['none', ...iconsNames],
-      if: { arg: 'size', neq: 'Extra small' },
     },
   },
   args: {
     text: 'Tag Label',
     size: 'Large',
     modeVariant: 'Inherit from parent',
-    icon: undefined,
-    iconPrefix: false,
   },
 };
 
-const Template = ({ text, size, modeVariant, icon, iconPrefix }) =>
+const Template = ({ text, size, modeVariant, icon }) =>
   formatHtmlPreview(
     `
     <style>
@@ -90,9 +87,12 @@ const Template = ({ text, size, modeVariant, icon, iconPrefix }) =>
         size="${size}"
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+        }>
+        ${
+          icon && icon !== 'none'
+            ? `<tds-icon slot="icon" name="${icon}" size="16px"></tds-icon>`
+            : ''
         }
-        ${icon ? `icon="${icon}"` : ''}
-        ${iconPrefix ? 'icon-prefix' : ''}>
       </tds-tag>
     </div>
     `,
@@ -103,6 +103,4 @@ Default.args = {
   text: 'Label',
   size: 'Large',
   modeVariant: 'Inherit from parent',
-  icon: undefined,
-  iconPrefix: false,
 };

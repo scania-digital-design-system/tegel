@@ -1,6 +1,9 @@
-import { Component, h, Prop, Host } from '@stencil/core';
-import { IconNames } from '../../types/Icons';
+import { Component, h, Prop, Host, Element } from '@stencil/core';
+import hasSlot from '../../utils/hasSlot';
 
+/**
+ * @slot icon - Slot used to display an Icon in the Tag.
+ */
 @Component({
   tag: 'tds-tag',
   styleUrl: 'tag.scss',
@@ -8,6 +11,9 @@ import { IconNames } from '../../types/Icons';
   scoped: true,
 })
 export class TdsTag {
+  /** The element host */
+  @Element() host: HTMLElement;
+
   /** The title text to display in the tag */
   @Prop() text: string = '';
 
@@ -15,13 +21,17 @@ export class TdsTag {
   @Prop() size: 'Large' | 'Small' = 'Large';
 
   /** Sets the variant mode of the tag */
-  @Prop() modeVariant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' =
-    'Neutral';
-
-  /** The icon name to display */
-  @Prop() icon?: IconNames;
+  @Prop() modeVariant:
+    | 'Inherit from parent'
+    | 'Success'
+    | 'Warning'
+    | 'New'
+    | 'Neutral'
+    | 'Information'
+    | 'Error' = 'Neutral';
 
   render() {
+    const hasIconSlot = hasSlot('icon', this.host);
     return (
       <Host
         class={{
@@ -31,9 +41,7 @@ export class TdsTag {
         }}
       >
         <div class="tds-tag-content">
-          {this.icon && (
-            <tds-icon name={this.icon} size="16px" class="tds-tag-icon tds-tag-icon-prefix" />
-          )}
+          {hasIconSlot && <slot name="icon" />}
           <span class="tds-tag-title">{this.text}</span>
         </div>
       </Host>
