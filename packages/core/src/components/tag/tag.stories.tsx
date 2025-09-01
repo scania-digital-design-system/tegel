@@ -71,7 +71,7 @@ const Template = ({ text, size, variant, icon }) =>
       <tds-tag
         text="${text}"
         size="${size}"
-        ${variant !== 'Inherit from parent' ? `mode-variant="${variant.toLowerCase()}"` : ''}>
+        ${variant !== 'Inherit from parent' ? `variant="${variant}"` : ''}>
         ${
           icon && icon !== 'none'
             ? `<tds-icon slot="icon" name="${icon}" size="16px"></tds-icon>`
