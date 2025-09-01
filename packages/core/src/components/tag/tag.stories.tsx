@@ -28,22 +28,14 @@ export default {
         defaultValue: { summary: 'Large' },
       },
     },
-    modeVariant: {
-      name: 'Mode variant',
+    variant: {
+      name: 'Variant',
       description:
-        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+        'Variant adjusts component colors to have better visibility depending on global mode and background.',
       control: {
         type: 'radio',
       },
-      options: [
-        'Inherit from parent',
-        'Success',
-        'Warning',
-        'New',
-        'Neutral',
-        'Information',
-        'Error',
-      ],
+      options: ['Neutral', 'Success', 'Warning', 'New', 'Information', 'Error'],
       table: {
         defaultValue: { summary: 'Inherit from parent' },
       },
@@ -60,11 +52,11 @@ export default {
   args: {
     text: 'Tag Label',
     size: 'Large',
-    modeVariant: 'Inherit from parent',
+    variant: 'Neutral',
   },
 };
 
-const Template = ({ text, size, modeVariant, icon }) =>
+const Template = ({ text, size, variant, icon }) =>
   formatHtmlPreview(
     `
     <style>
@@ -79,9 +71,7 @@ const Template = ({ text, size, modeVariant, icon }) =>
       <tds-tag
         text="${text}"
         size="${size}"
-        ${
-          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-        }>
+        ${variant !== 'Inherit from parent' ? `mode-variant="${variant.toLowerCase()}"` : ''}>
         ${
           icon && icon !== 'none'
             ? `<tds-icon slot="icon" name="${icon}" size="16px"></tds-icon>`
@@ -96,5 +86,5 @@ export const Default = Template.bind({});
 Default.args = {
   text: 'Label',
   size: 'Large',
-  modeVariant: 'Inherit from parent',
+  variant: 'Neutral',
 };

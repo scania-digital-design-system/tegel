@@ -11,6 +11,8 @@
   display: inline-flex;
   align-items: center;
   border-radius: 4px;
+  background-color: var(--tds-tag-neutral-background);
+  color: var(--tds-tag-neutral-color);
 
   // Size variants
   &.tds-tag-large {

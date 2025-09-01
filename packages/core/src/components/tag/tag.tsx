@@ -21,8 +21,7 @@ export class TdsTag {
   @Prop() size: 'Large' | 'Small' = 'Large';
 
   /** Sets the variant mode of the tag */
-  @Prop() modeVariant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' =
-    'Neutral';
+  @Prop() variant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' = 'Neutral';
 
   render() {
     const hasIconSlot = hasSlot('icon', this.host);
@@ -31,7 +30,7 @@ export class TdsTag {
         class={{
           'tds-tag': true,
           [`tds-tag-${this.size.toLowerCase()}`]: true,
-          [`tds-tag-${this.modeVariant.toLowerCase()}`]: true,
+          [`tds-tag-${this.variant.toLowerCase()}`]: true,
         }}
       >
         <div class="tds-tag-content">
