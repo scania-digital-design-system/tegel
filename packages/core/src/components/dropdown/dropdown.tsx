@@ -276,7 +276,6 @@ export class TdsDropdown {
     this.handleFocus({});
   }
 
-
   /** Method for closing the Dropdown. */
   @Method()
   async close() {
@@ -614,12 +613,6 @@ export class TdsDropdown {
     const form = this.host.closest('form');
     if (form) {
       form.removeEventListener('reset', this.resetInput);
-    }
-  }
-
-  connectedCallback() {
-    if (!this.tdsAriaLabel) {
-      console.warn('Tegel Dropdown component: tdsAriaLabel prop is missing');
     }
   }
 
