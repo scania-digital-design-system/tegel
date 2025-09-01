@@ -33,11 +33,8 @@ const Template = ({ outerModeVariant, componentTag }) =>
       "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-block.css"
     -->
-    <div class="tl-block${
-      outerModeVariant !== 'Primary' ? ` tl-block--${outerModeVariant.toLowerCase()}` : ''
-    }">
-      <div class="tl-block tl-block--even">
-        <${componentTag}>
+    <div class="tl-block tl-block--${outerModeVariant.toLowerCase()}">
+        <${componentTag} class="tl-block tl-block--even">
           <h2>Outer Block (${componentTag})</h2>
           <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code>.</p>
           <div class="tl-block tl-block--odd tl-block--nested">
@@ -53,7 +50,6 @@ const Template = ({ outerModeVariant, componentTag }) =>
             </aside>
           </div>
         </${componentTag}>
-      </div>
     </div>
   `);
 

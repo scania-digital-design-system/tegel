@@ -21,20 +21,27 @@
 
   // Mode variants
   &--primary {
-    background-color: var(--block-background-primary);
+    background-color: var(--block-background-mode-primary);
+
+    .tl-block--even {
+      background-color: var(--block-background-even);
+    }
+
+    .tl-block--odd {
+      background-color: var(--block-background-odd);
+    }
   }
 
   &--secondary {
-    background-color: var(--block-background-secondary);
-  }
+    background-color: var(--block-background-mode-secondary);
 
-  // Alternating backgrounds
-  &--even {
-    background-color: var(--block-background-even);
-  }
+    .tl-block--even {
+      background-color: var(--block-background-odd);
+    }
 
-  &--odd {
-    background-color: var(--block-background-odd);
+    .tl-block--odd {
+      background-color: var(--block-background-even);
+    }
   }
 
   // Nested block modifiers
