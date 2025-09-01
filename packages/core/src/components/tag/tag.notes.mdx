@@ -1,26 +1,11 @@
-import { Meta, Story, Canvas } from '@storybook/blocks';
-import * as TagStories from './tag.stories';
+import { Meta } from '@storybook/blocks';
+import Markdown from 'markdown-to-jsx';
+import readme from './readme.md?raw';
 
-<Meta of={TagStories} />
+<Meta title="Components/Tag/Notes" />
 
-# Tag
+### 📘 Stencil Notes
 
-The Tag component is used to display short, descriptive labels or categories.
+<br />
 
-## Usage
-
-<Canvas>
-  <Story of={TagStories.Default} />
-</Canvas>
-
-## Props
-
-The Tag component supports the following props which can be configured using the Controls panel:
-
-- **text**: The text content of the tag
-- **size**: Sets the size of the tag (Large, Small)
-- **variantMode**: Sets the variant mode (Success, Warning, New, Neutral, Information, Error)
-- **icon**: Sets icon to be displayed on the tag
-- **iconPrefix**: Whether to show the icon as a prefix (left side)
-
-Use the Controls panel in Storybook to interactively modify these props and see the changes in real-time.
+<Markdown>{readme}</Markdown>{' '}
