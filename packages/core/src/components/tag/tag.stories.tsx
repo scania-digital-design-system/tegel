@@ -5,12 +5,6 @@ export default {
   title: 'Components/Tag',
   parameters: {
     layout: 'centered',
-    docs: {
-      description: {
-        component:
-          'The Tag component is used to categorize, organize, or label content. It provides visual indicators for different types of information and can include icons for enhanced visual communication.',
-      },
-    },
     design: [
       {
         name: 'Figma',
