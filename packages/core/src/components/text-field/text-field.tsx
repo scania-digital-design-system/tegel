@@ -266,8 +266,6 @@ export class TdsTextField {
             )}
           </div>
 
-          <div class="text-field-bar"></div>
-
           {usesSuffixSlot && (
             <div
               class={{
