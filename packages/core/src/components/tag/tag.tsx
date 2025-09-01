@@ -21,14 +21,8 @@ export class TdsTag {
   @Prop() size: 'Large' | 'Small' = 'Large';
 
   /** Sets the variant mode of the tag */
-  @Prop() modeVariant:
-    | 'Inherit from parent'
-    | 'Success'
-    | 'Warning'
-    | 'New'
-    | 'Neutral'
-    | 'Information'
-    | 'Error' = 'Neutral';
+  @Prop() modeVariant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' =
+    'Neutral';
 
   render() {
     const hasIconSlot = hasSlot('icon', this.host);
