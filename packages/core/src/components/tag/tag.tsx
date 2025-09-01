@@ -15,7 +15,7 @@ export class TdsTag {
   @Prop() size: 'Large' | 'Small' = 'Large';
 
   /** Sets the variant mode of the tag */
-  @Prop() variantMode: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' =
+  @Prop() modeVariant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' =
     'Neutral';
 
   /** The icon name to display */
@@ -27,7 +27,7 @@ export class TdsTag {
         class={{
           'tds-tag': true,
           [`tds-tag-${this.size.toLowerCase()}`]: true,
-          [`tds-tag-${this.variantMode.toLowerCase()}`]: true,
+          [`tds-tag-${this.modeVariant.toLowerCase()}`]: true,
         }}
       >
         <div class="tds-tag-content">

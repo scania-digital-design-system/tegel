@@ -34,15 +34,24 @@ export default {
         defaultValue: { summary: 'Large' },
       },
     },
-    variantMode: {
-      name: 'Variant Mode',
-      description: 'Sets the variant mode of the tag.',
+    modeVariant: {
+      name: 'Mode variant',
+      description:
+        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
       control: {
-        type: 'select',
+        type: 'radio',
       },
-      options: ['Success', 'Warning', 'New', 'Neutral', 'Information', 'Error'],
+      options: [
+        'Inherit from parent',
+        'Success',
+        'Warning',
+        'New',
+        'Neutral',
+        'Information',
+        'Error',
+      ],
       table: {
-        defaultValue: { summary: 'Neutral' },
+        defaultValue: { summary: 'Inherit from parent' },
       },
     },
     icon: {
@@ -54,27 +63,17 @@ export default {
       options: ['none', ...iconsNames],
       if: { arg: 'size', neq: 'Extra small' },
     },
-    iconPrefix: {
-      name: 'Icon Prefix',
-      description: 'Whether to show the icon as a prefix (left side).',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
   },
   args: {
     text: 'Tag Label',
     size: 'Large',
-    variantMode: 'Neutral',
+    modeVariant: 'Inherit from parent',
     icon: undefined,
     iconPrefix: false,
   },
 };
 
-const Template = ({ text, size, variantMode, icon, iconPrefix }) =>
+const Template = ({ text, size, modeVariant, icon, iconPrefix }) =>
   formatHtmlPreview(
     `
     <style>
@@ -89,7 +88,9 @@ const Template = ({ text, size, variantMode, icon, iconPrefix }) =>
       <tds-tag
         text="${text}"
         size="${size}"
-        variant-mode="${variantMode}"
+        ${
+          modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
+        }
         ${icon ? `icon="${icon}"` : ''}
         ${iconPrefix ? 'icon-prefix' : ''}>
       </tds-tag>
@@ -101,7 +102,7 @@ export const Default = Template.bind({});
 Default.args = {
   text: 'Label',
   size: 'Large',
-  variantMode: 'Neutral',
+  modeVariant: 'Inherit from parent',
   icon: undefined,
   iconPrefix: false,
 };
