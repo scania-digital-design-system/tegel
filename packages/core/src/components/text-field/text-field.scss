@@ -64,6 +64,7 @@
   box-sizing: border-box;
   background-color: var(--tds-text-field-background);
   border-bottom: 1px solid var(--tds-text-field-border-bottom);
+  border-top: 1px solid transparent; // this is to force input within not shift when focus
   transition: border-bottom-color 200ms ease;
 
   &:hover {
@@ -76,6 +77,11 @@
 
   .form-text-field-sm & {
     height: 40px;
+  }
+
+  &:focus-within {
+    border: 2px solid var(--tds-focus-outline-color);
+    margin: 0 -2px;
   }
 }
 
@@ -205,44 +211,6 @@
   }
 }
 
-//text-field bottom bar when in focus
-.text-field-bar {
-  position: absolute;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    height: 2px;
-    top: 54px;
-    width: 0;
-    position: absolute;
-    background: var(--tds-text-field-bar);
-    transition: 0.35s ease all;
-
-    .form-text-field-md & {
-      top: 46px;
-    }
-
-    .form-text-field-sm & {
-      top: 40px;
-    }
-  }
-
-  &::before {
-    left: 50%;
-  }
-
-  &::after {
-    right: 50%;
-  }
-
-  .text-field-focus &::before,
-  .text-field-focus &::after {
-    width: 50%;
-  }
-}
-
 //Helper text
 .text-field-helper {
   font: var(--tds-detail-05);
@@ -344,13 +312,6 @@
 
   .text-field-container {
     border-bottom-color: var(--tds-text-field-border-bottom-error);
-  }
-
-  .text-field-bar {
-    &::before,
-    &::after {
-      background: var(--tds-text-field-bar-error);
-    }
   }
 }
 
