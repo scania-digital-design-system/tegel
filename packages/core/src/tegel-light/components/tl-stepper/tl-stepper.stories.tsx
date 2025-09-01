@@ -87,12 +87,18 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
     orientation === 'Vertical'
       ? 'tl-stepper__content--vertical'
       : 'tl-stepper__content--horizontal';
-  const textFlag =
-    orientation === 'Horizontal'
-      ? labelPosition === 'Aside'
-        ? 'tl-stepper__content--text-aside'
-        : 'tl-stepper__content--text-below'
-      : '';
+
+  const getTextFlag = () => {
+    if (orientation !== 'Horizontal') {
+      return '';
+    }
+    if (labelPosition === 'Aside') {
+      return 'tl-stepper__content--text-aside';
+    }
+    return 'tl-stepper__content--text-below';
+  };
+  const textFlag = getTextFlag();
+
   const hideFlag = hideLabels ? 'tl-stepper__content--hide-labels' : '';
 
   const steps = [
@@ -141,7 +147,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
             <div class="tl-stepper__label ${labelSizeClass} ${labelUpcoming}">${label}</div>
           </div>
         </li>
-    `;
+      `;
     })
     .join('');
 
