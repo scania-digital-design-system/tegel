@@ -30,9 +30,10 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 20px;
-    bottom: 20px;
+    top: 3px;
+    bottom: 3px;
     outline: 2px solid var(--tds-blue-400);
+    @include tds-focus-state;
   }
 
   .inline-tab-item:not(.selected)::after {
