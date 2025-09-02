@@ -29,9 +29,9 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 26px;
-    bottom: 26px;
-    outline: 2px solid var(--tds-blue-400);
+    top: 3px;
+    bottom: 3px;
+    @include tds-focus-state;
   }
 
   .navigation-tab-item:not(.selected)::after {
