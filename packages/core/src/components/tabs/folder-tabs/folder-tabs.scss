@@ -69,6 +69,10 @@
       right: 3px;
     }
 
+    &:focus {
+      outline: 0;
+    }
+
     svg {
       fill: var(--tds-folder-tabs-scroll-btn-color);
     }
