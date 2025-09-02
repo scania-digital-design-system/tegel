@@ -10,68 +10,51 @@
   color: var(--tds-tag-neutral-color);
 
   // Size variants
-  &.tds-tag-lg {
+  &.--lg {
     padding: 4px;
     gap: 4px;
   }
 
-  &.tds-tag-sm {
+  &.--sm {
     border-radius: 2px;
     gap: 4px;
     padding: 2px 4px;
   }
 
   // Variant mode colors
-  &.tds-tag-success {
+  &.--success {
     background-color: var(--tds-tag-success-background);
     color: var(--tds-tag-success-color);
   }
 
-  &.tds-tag-warning {
+  &.--warning {
     background-color: var(--tds-tag-warning-background);
     color: var(--tds-tag-warning-color);
   }
 
-  &.tds-tag-new {
+  &.--new {
     background-color: var(--tds-tag-new-background);
     color: var(--tds-tag-new-color);
   }
 
-  &.tds-tag-neutral {
+  &.--neutral {
     background-color: var(--tds-tag-neutral-background);
     color: var(--tds-tag-neutral-color);
   }
 
-  &.tds-tag-information {
+  &.--information {
     background-color: var(--tds-tag-information-background);
     color: var(--tds-tag-information-color);
   }
 
-  &.tds-tag-error {
+  &.--error {
     background-color: var(--tds-tag-error-background);
     color: var(--tds-tag-error-color);
   }
-
-  // Dark mode text color
-  &.tds-mode-dark {
-    color: var(--tds-grey-100);
-  }
 }
 
-.tds-tag-content {
+.tds-tag__content {
   display: flex;
   align-items: center;
   gap: inherit;
-}
-
-.tds-tag-title {
-  font-weight: 500;
-}
-
-// Icon slot styling
-::slotted(tds-icon) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
 }

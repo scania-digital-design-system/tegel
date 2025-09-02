@@ -27,16 +27,15 @@ export class TdsTag {
     const hasIconSlot = hasSlot('icon', this.host);
 
     const getTagClasses = () => ({
-      'tds-tag': true,
-      [`tds-tag-${this.size.toLowerCase()}`]: true,
-      [`tds-tag-${this.variant.toLowerCase()}`]: true,
+      [`--${this.size.toLowerCase()}`]: true,
+      [`--${this.variant.toLowerCase()}`]: true,
     });
 
     return (
       <Host class={getTagClasses()}>
-        <div class="tds-tag-content">
+        <div class="tds-tag__content">
           {hasIconSlot && <slot name="icon" />}
-          <span class="tds-tag-title">{this.text}</span>
+          <span>{this.text}</span>
         </div>
       </Host>
     );

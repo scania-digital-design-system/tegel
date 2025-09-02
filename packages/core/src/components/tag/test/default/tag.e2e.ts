@@ -43,16 +43,15 @@ test.describe.parallel(componentName, () => {
 
   test('Check that tag has correct default classes', async ({ page }) => {
     const tag = page.getByTestId('tds-tag-testid');
-    await expect(tag).toHaveClass(/tds-tag/);
-    await expect(tag).toHaveClass(/tds-tag-large/);
-    await expect(tag).toHaveClass(/tds-tag-neutral/);
+    await expect(tag).toHaveClass(/--lg/);
+    await expect(tag).toHaveClass(/--neutral/);
   });
 
   test('Check that tag content structure is correct', async ({ page }) => {
-    const tagContent = page.locator('tds-tag .tds-tag-content');
+    const tagContent = page.locator('tds-tag .tds-tag__content');
     await expect(tagContent).toHaveCount(1);
 
-    const tagTitle = page.locator('tds-tag .tds-tag-title');
+    const tagTitle = page.locator('tds-tag span');
     await expect(tagTitle).toHaveCount(1);
     await expect(tagTitle).toHaveText('Tag Label');
   });
