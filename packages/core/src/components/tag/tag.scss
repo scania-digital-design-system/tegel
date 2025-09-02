@@ -10,12 +10,12 @@
   color: var(--tds-tag-neutral-color);
 
   // Size variants
-  &.tds-tag-large {
+  &.tds-tag-lg {
     padding: 4px;
     gap: 4px;
   }
 
-  &.tds-tag-small {
+  &.tds-tag-sm {
     border-radius: 2px;
     gap: 4px;
     padding: 2px 4px;

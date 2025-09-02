@@ -31,11 +31,11 @@ export default {
         type: 'radio',
       },
       options: {
-        Large: 'Large',
-        Small: 'Small',
+        Large: 'lg',
+        Small: 'sm',
       },
       table: {
-        defaultValue: { summary: 'Large' },
+        defaultValue: { summary: 'lg' },
       },
     },
     variant: {
@@ -61,7 +61,7 @@ export default {
   },
   args: {
     text: 'Tag Label',
-    size: 'Large',
+    size: 'lg',
     variant: 'Neutral',
   },
 };
@@ -95,6 +95,6 @@ const Template = ({ text, size, variant, icon }) =>
 export const Default = Template.bind({});
 Default.args = {
   text: 'Label',
-  size: 'Large',
+  size: 'lg',
   variant: 'Neutral',
 };

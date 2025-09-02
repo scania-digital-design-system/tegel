@@ -9,7 +9,7 @@
 
 | Property            | Attribute | Description                          | Type                                                                       | Default     |
 | ------------------- | --------- | ------------------------------------ | -------------------------------------------------------------------------- | ----------- |
-| `size`              | `size`    | Sets the size of the tag             | `"Large" \| "Small"`                                                       | `'Large'`   |
+| `size`              | `size`    | Sets the size of the tag             | `"lg" \| "sm"`                                                             | `'lg'`      |
 | `text` _(required)_ | `text`    | The title text to display in the tag | `string`                                                                   | `undefined` |
 | `variant`           | `variant` | Sets the variant mode of the tag     | `"Error" \| "Information" \| "Neutral" \| "New" \| "Success" \| "Warning"` | `'Neutral'` |
 

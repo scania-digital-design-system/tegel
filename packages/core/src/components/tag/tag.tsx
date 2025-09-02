@@ -18,7 +18,7 @@ export class TdsTag {
   @Prop() text!: string;
 
   /** Sets the size of the tag */
-  @Prop() size: 'Large' | 'Small' = 'Large';
+  @Prop() size: 'lg' | 'sm' = 'lg';
 
   /** Sets the variant mode of the tag */
   @Prop() variant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' = 'Neutral';
