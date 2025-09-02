@@ -60,7 +60,6 @@
       color: var(--accordion-icon-disabled);
     }
 
-    /* Disable hover and active effects when disabled */
     &:hover,
     &:active {
       background-color: transparent;
@@ -119,7 +118,7 @@
   }
 }
 
-/* Element styles */
+/* Elements */
 
 .tl-accordion__header-icon-start,
 .tl-accordion__header-icon-end {
@@ -156,7 +155,6 @@
     outline: none;
   }
 
-  /* Remove focus styles from header elements since we handle it on the accordion item */
   &:focus,
   &:focus-visible,
   &:focus-within {
