@@ -50,9 +50,10 @@ export default {
         defaultValue: { summary: 'Neutral' },
       },
     },
-    icon: {
-      name: 'Icon',
-      description: 'Sets icon to be displayed in the Tag. Choose "none" to exclude the icon.',
+    prefix: {
+      name: 'Prefix',
+      description:
+        'Sets icon or other content to be displayed before the tag text. Choose "none" to exclude the prefix content.',
       control: {
         type: 'select',
       },
@@ -66,7 +67,7 @@ export default {
   },
 };
 
-const Template = ({ text, size, variant, icon }) =>
+const Template = ({ text, size, variant, prefix }) =>
   formatHtmlPreview(
     `
     <style>
@@ -83,8 +84,8 @@ const Template = ({ text, size, variant, icon }) =>
         size="${size}"
         variant="${variant}">
         ${
-          icon && icon !== 'none'
-            ? `<tds-icon slot="icon" name="${icon}" size="16px"></tds-icon>`
+          prefix && prefix !== 'none'
+            ? `<tds-icon slot="prefix" name="${prefix}" size="16px"></tds-icon>`
             : ''
         }
       </tds-tag>

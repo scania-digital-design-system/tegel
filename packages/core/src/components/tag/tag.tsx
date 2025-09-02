@@ -2,7 +2,7 @@ import { Component, h, Prop, Host, Element } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 
 /**
- * @slot icon - Slot used to display an Icon in the Tag.
+ * @slot prefix - Slot used to display an icon or other content before the tag text.
  */
 @Component({
   tag: 'tds-tag',
@@ -24,7 +24,7 @@ export class TdsTag {
   @Prop() variant: 'Success' | 'Warning' | 'New' | 'Neutral' | 'Information' | 'Error' = 'Neutral';
 
   render() {
-    const hasIconSlot = hasSlot('icon', this.host);
+    const hasPrefixSlot = hasSlot('prefix', this.host);
 
     const getTagClasses = () => ({
       [`--${this.size.toLowerCase()}`]: true,
@@ -34,7 +34,7 @@ export class TdsTag {
     return (
       <Host class={getTagClasses()}>
         <div class="tds-tag__content">
-          {hasIconSlot && <slot name="icon" />}
+          {hasPrefixSlot && <slot name="prefix" />}
           <span>{this.text}</span>
         </div>
       </Host>

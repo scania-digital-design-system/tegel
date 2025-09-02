@@ -16,9 +16,9 @@
 
 ## Slots
 
-| Slot     | Description                              |
-| -------- | ---------------------------------------- |
-| `"icon"` | Slot used to display an Icon in the Tag. |
+| Slot       | Description                                                        |
+| ---------- | ------------------------------------------------------------------ |
+| `"prefix"` | Slot used to display an icon or other content before the tag text. |
 
 
 ----------------------------------------------
