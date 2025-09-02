@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property  | Attribute | Description                          | Type                                                                       | Default     |
-| --------- | --------- | ------------------------------------ | -------------------------------------------------------------------------- | ----------- |
-| `size`    | `size`    | Sets the size of the tag             | `"Large" \| "Small"`                                                       | `'Large'`   |
-| `text`    | `text`    | The title text to display in the tag | `string`                                                                   | `''`        |
-| `variant` | `variant` | Sets the variant mode of the tag     | `"Error" \| "Information" \| "Neutral" \| "New" \| "Success" \| "Warning"` | `'Neutral'` |
+| Property            | Attribute | Description                          | Type                                                                       | Default     |
+| ------------------- | --------- | ------------------------------------ | -------------------------------------------------------------------------- | ----------- |
+| `size`              | `size`    | Sets the size of the tag             | `"Large" \| "Small"`                                                       | `'Large'`   |
+| `text` _(required)_ | `text`    | The title text to display in the tag | `string`                                                                   | `undefined` |
+| `variant`           | `variant` | Sets the variant mode of the tag     | `"Error" \| "Information" \| "Neutral" \| "New" \| "Success" \| "Warning"` | `'Neutral'` |
 
 
 ## Slots

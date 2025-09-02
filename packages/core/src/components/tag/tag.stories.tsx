@@ -14,6 +14,16 @@ export default {
     ],
   },
   argTypes: {
+    text: {
+      name: 'Text',
+      description: 'The text content to display in the tag.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'Tag Label' },
+      },
+    },
     size: {
       name: 'Size',
       description: 'Sets the size of the tag.',
@@ -37,7 +47,7 @@ export default {
       },
       options: ['Neutral', 'Success', 'Warning', 'New', 'Information', 'Error'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Neutral' },
       },
     },
     icon: {
@@ -71,7 +81,7 @@ const Template = ({ text, size, variant, icon }) =>
       <tds-tag
         text="${text}"
         size="${size}"
-        ${variant !== 'Inherit from parent' ? `variant="${variant}"` : ''}>
+        variant="${variant}">
         ${
           icon && icon !== 'none'
             ? `<tds-icon slot="icon" name="${icon}" size="16px"></tds-icon>`

@@ -15,7 +15,7 @@ export class TdsTag {
   @Element() host: HTMLElement;
 
   /** The title text to display in the tag */
-  @Prop() text: string = '';
+  @Prop() text!: string;
 
   /** Sets the size of the tag */
   @Prop() size: 'Large' | 'Small' = 'Large';
