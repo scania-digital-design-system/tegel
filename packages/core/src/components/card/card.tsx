@@ -6,6 +6,7 @@ import hasSlot from '../../utils/hasSlot';
  * @slot header - Slot for the Card header.
  * @slot subheader - Slot for the Card subheader.
  * @slot thumbnail - Slot for the Card thumbnail.
+ * @slot header-icon - Slot for an icon in the top right corner of the header.
  * @slot body - Slot for the body section of the Card.
  * @slot body-image - Slot for the body section of the Card, used for image.
  * @slot actions - Slot for the bottom section of the Card, used for buttons .
@@ -72,6 +73,7 @@ export class TdsCard {
     const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesThumbnailSlot = hasSlot('thumbnail', this.host);
+    const usesHeaderIconSlot = hasSlot('header-icon', this.host);
     return (
       <div class="card-header">
         {usesThumbnailSlot && <slot name="thumbnail"></slot>}
@@ -81,6 +83,11 @@ export class TdsCard {
           {this.subheader && <span class="subheader">{this.subheader}</span>}
           {usesSubheaderSlot && <slot name="subheader"></slot>}
         </div>
+        {usesHeaderIconSlot && (
+          <div class="header-icon-container">
+            <slot name="header-icon"></slot>
+          </div>
+        )}
       </div>
     );
   };
