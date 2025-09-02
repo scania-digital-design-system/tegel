@@ -22,7 +22,6 @@
     text-align: left;
     outline: none;
     border: none;
-    border-left-color: transparent;
   }
 
   ::slotted(*:focus-within)::before {
@@ -38,7 +37,17 @@
 
   div:not(.selected) {
     background-color: var(--tds-folder-tab-background);
-    border-left: 1px solid var(--tds-folder-tab-divider-color);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: var(--tds-folder-tab-divider-color);
+    }
 
     ::slotted(*) {
       border-top: 2px solid transparent;
@@ -109,9 +118,11 @@
 }
 
 :host(.first) {
-  :not(.selected) {
-    ::slotted(*) {
-      border-left-color: transparent;
-    }
+  ::slotted(*) {
+    border-left-color: transparent;
+  }
+
+  .selected {
+    border-left: none;
   }
 }
