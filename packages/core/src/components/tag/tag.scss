@@ -10,45 +10,43 @@
   color: var(--tds-tag-neutral-color);
 
   // Size variants
-  &.--lg {
+  &.lg {
     padding: 4px;
-    gap: 4px;
   }
 
-  &.--sm {
+  &.sm {
     border-radius: 2px;
-    gap: 4px;
     padding: 2px 4px;
     font: var(--tds-detail-05);
   }
 
   // Variant mode colors
-  &.--success {
+  &.success {
     background-color: var(--tds-tag-success-background);
     color: var(--tds-tag-success-color);
   }
 
-  &.--warning {
+  &.warning {
     background-color: var(--tds-tag-warning-background);
     color: var(--tds-tag-warning-color);
   }
 
-  &.--new {
+  &.new {
     background-color: var(--tds-tag-new-background);
     color: var(--tds-tag-new-color);
   }
 
-  &.--neutral {
+  &.neutral {
     background-color: var(--tds-tag-neutral-background);
     color: var(--tds-tag-neutral-color);
   }
 
-  &.--information {
+  &.information {
     background-color: var(--tds-tag-information-background);
     color: var(--tds-tag-information-color);
   }
 
-  &.--error {
+  &.error {
     background-color: var(--tds-tag-error-background);
     color: var(--tds-tag-error-color);
   }

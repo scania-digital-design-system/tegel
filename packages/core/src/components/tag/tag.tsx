@@ -27,8 +27,8 @@ export class TdsTag {
     const hasPrefixSlot = hasSlot('prefix', this.host);
 
     const getTagClasses = () => ({
-      [`--${this.size.toLowerCase()}`]: true,
-      [`--${this.variant.toLowerCase()}`]: true,
+      [`${this.size.toLowerCase()}`]: true,
+      [`${this.variant.toLowerCase()}`]: true,
     });
 
     return (
