@@ -17,7 +17,7 @@ testConfigurations.withModeVariants.forEach((config) => {
     });
 
     test('renders default tag correctly', async ({ page }) => {
-      const tag = page.getByTestId('tds-tag-testid');
+      const tag = page.getByTestId('tds-tag-testid-default');
       await expect(tag).toHaveCount(1);
 
       /* Check diff on screenshot */
@@ -32,27 +32,28 @@ test.describe.parallel(componentName, () => {
   });
 
   test('component renders with correct text', async ({ page }) => {
-    const tag = page.getByTestId('tds-tag-testid');
+    const tag = page.getByTestId('tds-tag-testid-default');
     await expect(tag).toHaveCount(1);
   });
 
   test('Text is displayed correctly', async ({ page }) => {
-    const tagText = page.getByText('Tag Label', { exact: true });
+    const tagText = page.getByText('Default', { exact: true });
     await expect(tagText).toBeVisible();
   });
 
   test('Check that tag has correct default classes', async ({ page }) => {
-    const tag = page.getByTestId('tds-tag-testid');
+    const tag = page.getByTestId('tds-tag-testid-default');
     await expect(tag).toHaveClass(/lg/);
     await expect(tag).toHaveClass(/neutral/);
   });
 
   test('Check that tag content structure is correct', async ({ page }) => {
-    const tagContent = page.locator('tds-tag .tds-tag__content');
+    const tag = page.getByTestId('tds-tag-testid-default');
+    const tagContent = tag.locator('.tds-tag__content');
     await expect(tagContent).toHaveCount(1);
 
-    const tagTitle = page.locator('tds-tag span');
+    const tagTitle = tag.locator('span');
     await expect(tagTitle).toHaveCount(1);
-    await expect(tagTitle).toHaveText('Tag Label');
+    await expect(tagTitle).toHaveText('Default');
   });
 });
