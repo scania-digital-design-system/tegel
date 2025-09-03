@@ -43,8 +43,8 @@ test.describe.parallel(componentName, () => {
 
   test('Check that tag has correct default classes', async ({ page }) => {
     const tag = page.getByTestId('tds-tag-testid');
-    await expect(tag).toHaveClass(/--lg/);
-    await expect(tag).toHaveClass(/--neutral/);
+    await expect(tag).toHaveClass(/lg/);
+    await expect(tag).toHaveClass(/neutral/);
   });
 
   test('Check that tag content structure is correct', async ({ page }) => {
