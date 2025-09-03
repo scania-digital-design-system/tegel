@@ -95,7 +95,16 @@ const Template = ({ text, size, variant, prefix }) =>
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Label',
+  text: 'Default',
   size: 'lg',
   variant: 'Neutral',
+  prefix: 'placeholder',
+};
+Default.parameters = {
+  docs: {
+    description: {
+      story:
+        'The default neutral tag variant. Text and icon will automatically update when you change the variant.',
+    },
+  },
 };
