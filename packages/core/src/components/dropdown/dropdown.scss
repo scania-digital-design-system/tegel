@@ -24,7 +24,7 @@
   .dropdown-select {
     position: relative;
 
-    button:focus {
+    button:focus-visible {
       @include tds-focus-state;
 
       border-radius: 0;
@@ -47,7 +47,7 @@
       border-bottom-color: var(--tds-dropdown-error);
     }
 
-    button.error:focus {
+    button.error:focus-visible {
       border-bottom-color: transparent;
     }
 
