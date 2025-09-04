@@ -4,18 +4,6 @@ export default {
   title: 'Tegel Light (CSS)/Toggle',
   parameters: {
     layout: 'centered',
-    design: [
-      {
-        name: 'Figma',
-        type: 'figma',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=2479%3A108951&t=Ne6myqwca5m00de7-1',
-      },
-      {
-        name: 'Link',
-        type: 'link',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=2479%3A108951&t=Ne6myqwca5m00de7-1',
-      },
-    ],
   },
   argTypes: {
     size: {
@@ -75,26 +63,23 @@ export default {
 
 const Template = ({ size, headline, label, checked, disabled }) =>
   formatHtmlPreview(`
+    <!-- Required stylesheet 
+      "@scania/tegel-light/tl-toggle.css";
+    -->
+
       <div class="tl-toggle">
-        <div class="toggle-headline">
+        <div class="tl-toggle__headline ${
+            disabled ? 'tl-toggle__headline--disabled' : ''}">
              ${headline}
           </div>
         <input
           type="checkbox"
-          class="${size === 'Large' ? 'lg' : 'sm'}"
+          class="${size === 'Large' ? 'tl-toggle--lg' : 'tl-toggle--sm'}"
           ${checked ? 'checked' : ''}
           ${disabled ? 'disabled' : ''}
         />
-        <label class="tl-toggle__label">${label}</label>
+        <label class="tl-toggle__label ${
+            disabled ? 'tl-toggle__label--disabled' : ''}">${label}</label>
     </div>
-
-    <!-- Script tag with eventlistener for demo purposes. -->
-    <script>
-      toggleElement = document.querySelector('tds-toggle')
-
-      toggleElement.addEventListener('tdsToggle', (event)=> {
-        console.log(event)
-      })
-    </script>
   `);
 export const Default = Template.bind({});

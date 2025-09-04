@@ -3,21 +3,6 @@
 @import './tl-toggle-vars';
 
 .tl-toggle {
-  .disabled {
-    pointer-events: none;
-  }
-
-  .toggle-headline {
-    @include detail-02;
-
-    color: var(--toggle-text);
-    margin-bottom: 12px;
-
-    &.disabled {
-      color: var(--toggle-disabled);
-      user-select: none;
-    }
-  }
 
   input[type='checkbox'] {
     appearance: initial;
@@ -57,7 +42,7 @@
       height: 16px;
     }
 
-    &:focus {
+    &:focus-visible {
       @include tds-focus-state;
 
       border-radius: 16px;
@@ -105,7 +90,7 @@
       }
     }
 
-    &.sm {
+    &.tl-toggle--sm {
       width: 28px;
       height: 16px;
 
@@ -140,8 +125,21 @@
       }
     }
   }
+}
 
-  label {
+.tl-toggle__headline {
+    @include detail-02;
+
+    color: var(--toggle-text);
+    margin-bottom: 12px;
+
+    &--disabled {
+      color: var(--toggle-disabled);
+      user-select: none;
+    }
+  }
+
+  .tl-toggle__label {
     @include detail-02;
 
     color: var(--toggle-text);
@@ -151,9 +149,8 @@
     vertical-align: middle;
     padding-left: 8px;
 
-    &.disabled {
+    &--disabled {
       color: var(--toggle-disabled);
       pointer-events: none;
     }
   }
-}
