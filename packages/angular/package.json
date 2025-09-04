@@ -11,7 +11,7 @@
     "build": "npx -p @angular/cli ng build components"
   },
   "dependencies": {
-    "@scania/tegel": "^1.37.0",
+    "@scania/tegel": "file:../../core-tarball/scania-tegel-1.37.1.tgz",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
