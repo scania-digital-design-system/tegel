@@ -2,7 +2,6 @@
 @import '../../../mixins/focus-state';
 @import './tl-toggle-vars';
 
-.tl-toggle {
 
   input[type='checkbox'] {
     appearance: initial;
@@ -90,7 +89,7 @@
       }
     }
 
-    &.tl-toggle--sm {
+    &.tl-toggle__input--sm {
       width: 28px;
       height: 16px;
 
@@ -125,7 +124,6 @@
       }
     }
   }
-}
 
 .tl-toggle__headline {
     @include detail-02;

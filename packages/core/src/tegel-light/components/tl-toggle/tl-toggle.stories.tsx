@@ -74,7 +74,7 @@ const Template = ({ size, headline, label, checked, disabled }) =>
           </div>
         <input
           type="checkbox"
-          class="${size === 'Large' ? 'tl-toggle--lg' : 'tl-toggle--sm'}"
+          class="${size === 'Large' ? 'tl-toggle__input--lg' : 'tl-toggle__input--sm'}"
           ${checked ? 'checked' : ''}
           ${disabled ? 'disabled' : ''}
         />
