@@ -17,6 +17,10 @@
 }
 
 :host(.tds-table__row:hover) {
+  border-bottom: 1px solid var(--tds-table-divider-hover);
+}
+
+:host(.tds-table__row:hover) {
   background-color: var(--tds-table-body-row-background-hover);
 }
 
