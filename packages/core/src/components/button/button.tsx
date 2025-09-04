@@ -49,14 +49,6 @@ export class TdsButton {
 
   @State() onlyIcon: boolean = false;
 
-  connectedCallback() {
-    if (this.onlyIcon && !this.tdsAriaLabel) {
-      console.warn(
-        'Tegel button component: please specify the tdsAriaLabel prop when you have the onlyIcon attribute set to true',
-      );
-    }
-  }
-
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter' && !this.disabled) {

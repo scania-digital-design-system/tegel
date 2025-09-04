@@ -155,12 +155,6 @@ export class TdsChip {
     };
   }
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel) {
-      console.warn('Tegel Chip component: tdsAriaLabel prop is missing');
-    }
-  }
-
   render() {
     const inputAttributes = this.renderInputAttributes();
     const hasPrefixSlot = hasSlot('prefix', this.host);

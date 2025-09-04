@@ -146,14 +146,6 @@ export class TdsTextarea {
     return modeVariant;
   }
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel && !this.label) {
-      console.warn(
-        'Tegel Textarea component: specify label or tdsAriaLabel prop for accessibility',
-      );
-    }
-  }
-
   render() {
     return (
       <div
