@@ -12,12 +12,6 @@ export class TdsHeaderHamburger {
   /** Value to be used by the aria-label attribute */
   @Prop() tdsAriaLabel: string;
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel) {
-      console.warn('Tegel Header Hamburger component: missing tdsAriaLabel prop');
-    }
-  }
-
   render() {
     const inheritedButtonProps = {
       ...inheritAriaAttributes(this.host),

@@ -200,14 +200,6 @@ export class TdsDatetime {
     this.value = value;
   }
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel && !this.label) {
-      console.warn(
-        'Tegel Datetime component: provide the label or tdsAriaLabel prop for improved accessibility',
-      );
-    }
-  }
-
   render() {
     let className = ' tds-datetime-input';
     if (this.size === 'md') {
