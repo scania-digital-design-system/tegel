@@ -1,0 +1,67 @@
+@import './_tl-block-vars';
+@import '../../../mixins/box-sizing';
+@import '../../../../../../typography/mixins/type-styles';
+
+.tl-block {
+  @include tds-box-sizing;
+  @include detail-01;
+
+  h2 {
+    @include headline-02;
+  }
+
+  p {
+    @include body-01;
+  }
+
+  background-color: var(--block-background);
+  color: var(--block-text-color);
+  border-radius: var(--block-border-radius);
+  padding: var(--block-padding);
+
+  // Mode variants
+  &--primary {
+    background-color: var(--block-background-mode-primary);
+
+    .tl-block--even {
+      background-color: var(--block-background-even);
+    }
+
+    .tl-block--odd {
+      background-color: var(--block-background-odd);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--block-background-mode-secondary);
+
+    .tl-block--even {
+      background-color: var(--block-background-odd);
+    }
+
+    .tl-block--odd {
+      background-color: var(--block-background-even);
+    }
+  }
+
+  // Nested block modifiers
+  &--nested {
+    h3 {
+      @include headline-04;
+    }
+
+    p {
+      @include detail-03;
+    }
+  }
+
+  &--nested-inner {
+    h4 {
+      @include headline-06;
+    }
+
+    p {
+      @include detail-03;
+    }
+  }
+}

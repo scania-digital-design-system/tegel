@@ -1,0 +1,17 @@
+.tl-block {
+  // Colors
+  --block-background: var(--color-background-layer-01);
+  --block-text-color: var(--color-foreground-text-strong);
+
+  // Mode variants
+  --block-background-mode-primary: var(--color-background-layer-01);
+  --block-background-mode-secondary: var(--color-background-layer-02);
+
+  // Alternating backgrounds
+  --block-background-even: var(--color-background-layer-01);
+  --block-background-odd: var(--color-background-layer-02);
+
+  // Spacing
+  --block-padding: 16px;
+  --block-border-radius: 4px;
+}

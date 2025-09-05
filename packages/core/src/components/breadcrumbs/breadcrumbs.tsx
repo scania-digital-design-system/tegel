@@ -14,12 +14,6 @@ export class TdsBreadcrumbs {
   /** The value to be used for the aria-label attribute */
   @Prop() tdsAriaLabel: string;
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel) {
-      console.warn('Tegel Breadcrumbs component: missing tdsAriaLabel prop');
-    }
-  }
-
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');
 
