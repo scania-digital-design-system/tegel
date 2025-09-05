@@ -71,7 +71,7 @@ test.describe.parallel(componentName, () => {
     // Check helper text color for specific shade of red
     await expect(page.locator('.tds-datetime-helper .tds-helper')).toHaveCSS(
       'color',
-      'rgb(234, 72, 81)',
+      'rgb(209, 0, 27)',
     );
 
     const errorIcon = page.locator('tds-icon[name="error"]');
