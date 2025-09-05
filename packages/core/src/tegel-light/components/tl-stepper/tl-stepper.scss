@@ -1,0 +1,67 @@
+@import '../../../mixins/box-sizing';
+@import './tl-stepper-vars';
+
+.tl-stepper {
+  @include tds-box-sizing;
+
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  list-style: none;
+
+  &:not(.tl-stepper--label-aside) &__list {
+    width: 100%;
+  }
+
+  &--horizontal:not(.tl-stepper--label-aside) &__list {
+    justify-content: flex-start;
+  }
+
+  &--horizontal:not(.tl-stepper--label-aside) &__list > .tl-stepper__step {
+    flex: 1 1 0;
+    min-inline-size: 0;
+  }
+
+  &--horizontal.tl-stepper--label-aside &__list {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 100%;
+  }
+
+  &--horizontal.tl-stepper--label-aside &__list > .tl-stepper__step {
+    display: flex;
+    flex: 0 0 auto;
+    min-inline-size: auto;
+  }
+
+  &--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels &__list {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels &__list > .tl-stepper__step {
+    min-inline-size: 0;
+  }
+
+  &--vertical &__list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 52px;
+    min-width: 0;
+  }
+
+  &--vertical.tl-stepper--sm &__list {
+    gap: 36px;
+  }
+}
+
+.tl-stepper__list {
+  display: flex;
+  justify-content: space-evenly;
+  min-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
