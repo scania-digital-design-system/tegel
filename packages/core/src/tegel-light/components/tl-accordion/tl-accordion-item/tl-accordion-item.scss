@@ -1,0 +1,194 @@
+@import '../../../../mixins/focus-state';
+@import '../../../../mixins/disabled-style';
+@import '../../../../mixins/box-sizing';
+@import '../../../../../../../typography/utilities/typography-utility';
+
+.tl-accordion-item {
+  @include tds-box-sizing;
+
+  list-style: none;
+  color: var(--accordion-text);
+  position: relative;
+  border-top: 1px solid var(--accordion-border);
+  width: 100%;
+
+  button {
+    border: none;
+  }
+
+  &:last-child {
+    margin-bottom: -1px;
+    border-bottom: 1px solid var(--accordion-border);
+  }
+
+  &:hover:not(&--expanded):not(&--disabled) {
+    .tl-accordion__header-icon-start,
+    .tl-accordion__header-icon-end {
+      background-color: var(--accordion-background-hover);
+    }
+  }
+
+  &:active:not(&--disabled) {
+    .tl-accordion__header-icon-start,
+    .tl-accordion__header-icon-end {
+      background-color: var(--accordion-background-active);
+    }
+  }
+
+  /* Focus state  */
+  &:has(.tl-accordion__header-icon-start:focus-visible),
+  &:has(.tl-accordion__header-icon-end:focus-visible) {
+    outline: 2px solid var(--color-foreground-border-accent-focus);
+    outline-offset: 1px;
+    background-color: var(--accordion-background-focus);
+  }
+
+  &--disabled {
+    &,
+    .tl-accordion__header-icon-end,
+    .tl-accordion__header-icon-start,
+    .tl-accordion__panel {
+      color: var(--accordion-text-disabled);
+      cursor: not-allowed;
+    }
+
+    .tl-accordion__title {
+      color: var(--accordion-text-disabled);
+    }
+
+    .tl-accordion__icon {
+      color: var(--accordion-icon-disabled);
+    }
+
+    &:hover,
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &--expanded {
+    .tl-accordion__header-icon-start,
+    .tl-accordion__header-icon-end {
+      background-color: var(--color-background-surface-100);
+    }
+
+    .tl-accordion__panel {
+      display: block;
+      padding-bottom: 31px;
+    }
+
+    .tl-accordion__icon {
+      transform: rotate(180deg);
+    }
+
+    .tl-accordion__header-icon-end {
+      .tl-accordion__icon {
+        margin-right: 0;
+        margin-left: var(--tds-spacing-element-32);
+      }
+    }
+
+    .tl-accordion__header-icon-start {
+      .tl-accordion__icon {
+        margin-left: 0;
+        margin-right: var(--tds-spacing-element-16);
+      }
+    }
+  }
+
+  &--icon-start {
+    .tl-accordion__header-icon-start {
+      .tl-accordion__title {
+        order: 1;
+      }
+
+      .tl-accordion__icon {
+        order: 0;
+        margin: 0 var(--tds-spacing-element-16) 0 0;
+      }
+    }
+  }
+
+  &--icon-end {
+    .tl-accordion__header-icon-end {
+      .tl-accordion__icon {
+        margin: 0 0 0 var(--tds-spacing-element-32);
+      }
+    }
+  }
+}
+
+/* Elements */
+
+.tl-accordion__header-icon-start,
+.tl-accordion__header-icon-end {
+  @include tds-box-sizing;
+  @include headline-07;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--tds-spacing-element-16);
+  background-color: var(--accordion-background);
+
+  button {
+    all: unset;
+    @include tds-box-sizing;
+    @include headline-07;
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--tds-spacing-element-16);
+    background-color: var(--accordion-background);
+  }
+
+  .tl-accordion__icon {
+    transform-origin: center;
+    transition: transform 0.15s ease-in-out;
+    color: var(--accordion-icon);
+  }
+
+  &:active {
+    outline: none;
+  }
+
+  &:focus,
+  &:focus-visible,
+  &:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
+.tl-accordion__title {
+  flex-grow: 2;
+  text-align: left;
+  color: var(--color-foreground-text-strong);
+}
+
+.tl-accordion__panel {
+  cursor: default;
+  padding: var(--tds-spacing-element-8) var(--tds-spacing-layout-64) var(--tds-spacing-element-32)
+    var(--tds-spacing-element-16);
+  display: none;
+  @include detail-03;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  &--padding-reset {
+    padding-right: var(--tds-spacing-element-16);
+  }
+}
+
+.tl-accordion__icon {
+  transform-origin: center;
+  transition: transform 0.15s ease-in-out;
+  color: var(--accordion-icon);
+}
