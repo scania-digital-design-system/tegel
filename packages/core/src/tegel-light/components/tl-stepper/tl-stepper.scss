@@ -4,7 +4,10 @@
 .tl-stepper {
   @include tds-box-sizing;
 
-  display: block;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  list-style: none;
 
   &:not(.tl-stepper--label-aside) &__list {
     width: 100%;
@@ -20,15 +23,19 @@
   }
 
   &--horizontal.tl-stepper--label-aside &__list {
+    display: flex;
     justify-content: flex-start;
+    min-width: 100%;
   }
 
   &--horizontal.tl-stepper--label-aside &__list > .tl-stepper__step {
+    display: flex;
     flex: 0 0 auto;
     min-inline-size: auto;
   }
 
   &--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels &__list {
+    display: flex;
     justify-content: flex-start;
   }
 
