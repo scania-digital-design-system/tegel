@@ -1,6 +1,8 @@
 // What is this document for:
 // This file imports all Scania-specific tokens and primitives
 
+$local-assets: './assets' !default;
+
 /* Scania primitive tokens */
 @import '../../../../tokens/scss/scania/primitive';
 
