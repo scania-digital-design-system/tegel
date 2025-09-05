@@ -556,12 +556,11 @@ export class TdsDropdown {
   };
 
   private handleFilterReset = () => {
-    this.reset();
+    // Only clear the input text and filter, don't reset the selected option
     this.inputElement.value = '';
     this.handleFilter({ target: { value: '' } });
     this.inputElement.focus();
-    // Add this line to ensure internal value is cleared
-    this.internalValue = '';
+    // Don't clear internalValue or call reset() - preserve the selected option
   };
 
   private handleFocus = (event) => {
