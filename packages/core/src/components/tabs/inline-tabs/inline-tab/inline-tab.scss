@@ -22,7 +22,7 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    padding: 20px 4px;
+    padding: 20px 0;
   }
 
   ::slotted(*:focus-visible)::before {
@@ -43,7 +43,6 @@
 
   .inline-tab-item {
     position: relative;
-    margin-right: 32px;
 
     &:hover {
       cursor: pointer;
@@ -66,6 +65,10 @@
     height: 2px;
     background-color: var(--tds-inline-tabs-tab-indicator-background-hover);
     z-index: 1;
+  }
+
+  .inline-tab-item:focus-within::after {
+    bottom: 3px;
   }
 
   .selected {
