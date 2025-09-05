@@ -30,14 +30,15 @@
 
 ## Slots
 
-| Slot           | Description                                                 |
-| -------------- | ----------------------------------------------------------- |
-| `"actions"`    | Slot for the bottom section of the Card, used for buttons . |
-| `"body"`       | Slot for the body section of the Card.                      |
-| `"body-image"` | Slot for the body section of the Card, used for image.      |
-| `"header"`     | Slot for the Card header.                                   |
-| `"subheader"`  | Slot for the Card subheader.                                |
-| `"thumbnail"`  | Slot for the Card thumbnail.                                |
+| Slot            | Description                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `"actions"`     | Slot for the bottom section of the Card, used for buttons . |
+| `"body"`        | Slot for the body section of the Card.                      |
+| `"body-image"`  | Slot for the body section of the Card, used for image.      |
+| `"header"`      | Slot for the Card header.                                   |
+| `"header-icon"` | Slot for an icon in the top right corner of the header.     |
+| `"subheader"`   | Slot for the Card subheader.                                |
+| `"thumbnail"`   | Slot for the Card thumbnail.                                |
 
 
 ## Dependencies

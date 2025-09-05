@@ -1,6 +1,7 @@
 import CardPlaceholder from '../../stories/assets/image/card-placeholder.png';
 import CardBodyImage from '../../stories/assets/image/card-img.png';
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
+import { iconsNames } from '../icon/iconsArray';
 
 export default {
   title: 'Components/Card',
@@ -97,6 +98,15 @@ export default {
         type: 'text',
       },
     },
+    headerIcon: {
+      name: 'Icon',
+      description:
+        'Sets icon to be displayed on the Card header. Choose "none" to exclude the icon.',
+      control: {
+        type: 'select',
+      },
+      options: ['none', ...iconsNames],
+    },
     clickable: {
       name: 'Clickable',
       description: 'Toggles if the Card is clickable or not.',
@@ -129,6 +139,7 @@ export default {
     bodyContent: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
     bodyDivider: false,
     cardActions: `<tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>`,
+    headerIcon: ``,
     clickable: false,
     stretch: false,
   },
@@ -144,6 +155,7 @@ const Template = ({
   bodyContent,
   bodyDivider,
   cardActions,
+  headerIcon,
   clickable,
   stretch,
 }) =>
@@ -170,6 +182,7 @@ const Template = ({
         ? `<img slot="thumbnail" src="${CardPlaceholder}" alt="Thumbnail for the card."/>`
         : ''
     }
+    ${headerIcon ? `<tds-icon slot="header-icon" size="20px" name="${headerIcon}"></tds-icon>` : ''}
   ${
     bodyContent
       ? `
