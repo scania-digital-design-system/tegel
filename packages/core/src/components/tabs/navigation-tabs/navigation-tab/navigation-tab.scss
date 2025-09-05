@@ -65,6 +65,10 @@
     z-index: 1;
   }
 
+  .navigation-tab-item:focus-within::after {
+    bottom: 3px;
+  }
+
   .selected {
     ::slotted(*) {
       color: var(--tds-navigation-tabs-tab-color-selected);
