@@ -45,6 +45,10 @@
     &:hover {
       cursor: pointer;
 
+      ::slotted(*) {
+        color: var(--tds-navigation-tabs-tab-color-hover);
+      }
+
       &::after {
         width: 100%;
       }
@@ -91,6 +95,7 @@
 
     ::slotted(*:hover) {
       cursor: not-allowed;
+      color: var(--tds-navigation-tabs-tab-color-disabled);
     }
 
     ::slotted(*:focus-visible) {
