@@ -25,7 +25,7 @@
     width: 100%;
     overflow-x: scroll;
     scrollbar-width: none;
-    gap: 16px; // Adds a gap between the tab items
+    gap: 16px;
 
     &::-webkit-scrollbar {
       display: none;

@@ -21,7 +21,7 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    padding: 26px 4px;
+    padding: 26px 0;
   }
 
   ::slotted(*:focus-visible)::before {
@@ -41,7 +41,6 @@
 
   .navigation-tab-item {
     position: relative;
-    margin-right: 32px;
 
     &:hover {
       cursor: pointer;
