@@ -26,6 +26,12 @@ testConfigurations.withModeVariants.forEach((config) => {
 test.describe.parallel(componentName, () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(componentTestPath);
+
+    // Programmatically add helper text (it was removed from the index.html file
+    // as we don't want the the axe test to consider it when the component is disabled):
+    await page.evaluate(() => {
+      document.getElementsByTagName('tds-datetime')[0].setAttribute('helper', 'Helper text');
+    });
   });
 
   test('when in disabled state all but helper text should have pointer events none', async ({
