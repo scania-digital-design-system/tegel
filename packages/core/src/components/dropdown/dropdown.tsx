@@ -358,13 +358,18 @@ export class TdsDropdown {
 
   @Listen('focusout')
   onFocusOut(event: FocusEvent) {
-    // Use setTimeout to check if focus moved to another element within the dropdown
-    setTimeout(() => {
-      if (this.hasFocus && !this.host.contains(document.activeElement)) {
-        this.hasFocus = false;
-        this.tdsBlur.emit(event);
-      }
-    }, 0);
+    // Only emit blur if focus is actually leaving the entire dropdown component
+    // Check if the related target (where focus is going) is outside the component
+    const relatedTarget = event.relatedTarget as Node;
+
+    if (this.hasFocus && relatedTarget && !this.host.contains(relatedTarget)) {
+      this.hasFocus = false;
+      this.tdsBlur.emit(event);
+    } else if (this.hasFocus && !relatedTarget) {
+      // If relatedTarget is null (focus going to body or window), emit blur
+      this.hasFocus = false;
+      this.tdsBlur.emit(event);
+    }
   }
 
   @Listen('keydown')
