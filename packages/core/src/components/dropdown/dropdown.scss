@@ -5,6 +5,7 @@
 @import '../../mixins/focus-state';
 
 :host {
+  background-color: red;
   display: block;
   position: relative;
   font: var(--tds-detail-02);

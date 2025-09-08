@@ -275,7 +275,7 @@ export class TdsDropdown {
       }
     }
     // Always trigger the focus event to open the dropdown
-    this.handleFocus({});
+    this.handleFocus();
   }
 
   /** Method for closing the Dropdown. */
@@ -588,7 +588,7 @@ export class TdsDropdown {
     this.internalValue = '';
   };
 
-  private handleFocus = (event) => {
+  private handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
     if (this.multiselect && this.inputElement) {
@@ -600,7 +600,7 @@ export class TdsDropdown {
     }
   };
 
-  private handleBlur = (event) => {
+  private handleBlur = () => {
     // Blur event is now handled by focusout listener
     // Only handle internal state changes here
     this.filterFocus = false;
@@ -722,10 +722,10 @@ export class TdsDropdown {
                   value={this.multiselect && this.filterFocus ? '' : this.getValue()}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
-                  onBlur={(event) => {
-                    this.handleBlur(event);
+                  onBlur={() => {
+                    this.handleBlur();
                   }}
-                  onFocus={(event) => this.handleFocus(event)}
+                  onFocus={() => this.handleFocus()}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
                       this.open = false;
