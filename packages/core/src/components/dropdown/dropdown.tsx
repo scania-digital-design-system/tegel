@@ -359,15 +359,12 @@ export class TdsDropdown {
   @Listen('focusout')
   onFocusOut(event: FocusEvent) {
     // Only emit blur if focus is actually leaving the entire dropdown component
-    // Check if the related target (where focus is going) is outside the component
     const relatedTarget = event.relatedTarget as Node;
 
-    if (this.hasFocus && relatedTarget && !this.host.contains(relatedTarget)) {
+    // If relatedTarget is null (focus going to body/window) or outside the component, emit blur
+    if (this.hasFocus && (!relatedTarget || !this.host.contains(relatedTarget))) {
       this.hasFocus = false;
-      this.tdsBlur.emit(event);
-    } else if (this.hasFocus && !relatedTarget) {
-      // If relatedTarget is null (focus going to body or window), emit blur
-      this.hasFocus = false;
+      this.handleBlur();
       this.tdsBlur.emit(event);
     }
   }
@@ -606,8 +603,7 @@ export class TdsDropdown {
   };
 
   private handleBlur = () => {
-    // Blur event is now handled by focusout listener
-    // Only handle internal state changes here
+    // Handle internal state changes when component loses focus
     this.filterFocus = false;
     if (this.multiselect && this.inputElement) {
       this.inputElement.value = this.getValue();
@@ -727,9 +723,6 @@ export class TdsDropdown {
                   value={this.multiselect && this.filterFocus ? '' : this.getValue()}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
-                  onBlur={() => {
-                    this.handleBlur();
-                  }}
                   onFocus={() => this.handleFocus()}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {

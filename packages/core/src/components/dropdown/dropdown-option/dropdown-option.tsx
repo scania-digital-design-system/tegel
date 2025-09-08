@@ -160,8 +160,6 @@ export class TdsDropdownOption {
     if (!this.parentElement) {
       this.tdsBlur.emit(event);
     }
-    // Always prevent the event from bubbling up to avoid interference
-    event.stopPropagation();
   };
 
   render() {
