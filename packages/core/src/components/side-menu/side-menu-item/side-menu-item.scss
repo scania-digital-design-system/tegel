@@ -1,7 +1,7 @@
 //@import '../theme/core/spacing/vars';
 @import '../../../../../../grid-deprecated/vars';
-
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
@@ -11,36 +11,40 @@
     ::slotted(button) {
       all: unset;
       box-sizing: border-box;
-      height: 68px;
+      height: var(--side-menu-single-item-height);
       width: 100%;
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 0 22px;
+      padding: var(--component-side-menu-space-sub-menu-item-top-and-bottom)
+        var(--component-side-menu-space-sub-menu-item-chevron-right-padding)
+        var(--component-side-menu-space-sub-menu-item-top-and-bottom)
+        var(--component-side-menu-space-sub-menu-item-left);
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
-      color: var(--tds-sidebar-side-menu-single-item-color);
+      color: var(--side-menu-single-item-color);
       cursor: pointer;
+      border-radius: var(--component-side-menu-radius-corner);
     }
 
     ::slotted(tds-side-menu-user),
     &-has-user ::slotted(button) {
       all: unset;
       box-sizing: border-box;
-      height: 68px;
+      height: var(--side-menu-single-item-height);
       width: 100%;
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 0 22px 0 16px;
+      gap: var(--component-side-menu-space-sub-menu-item-profile-gap);
+      padding: var(--component-side-menu-space-sub-menu-item-profile-top-bottom)
+        var(--component-side-menu-space-sub-menu-item-chevron-right-padding)
+        var(--component-side-menu-space-sub-menu-item-profile-top-bottom)
+        var(--component-side-menu-space-sub-menu-item-profile-left);
       border: none;
       background-color: var(--tds-sidebar-side-menu-background-cover);
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
-      color: var(--tds-sidebar-side-menu-single-item-color);
+      color: var(--side-menu-single-item-color);
       cursor: pointer;
+      border-radius: var(--component-side-menu-radius-corner);
     }
 
     tds-icon {
@@ -49,27 +53,27 @@
 
     ::slotted(a:focus-visible),
     ::slotted(button:focus-visible) {
-      @include tds-focus-state;
+      @include tds-focus-state-side-menu;
     }
 
     &:hover {
       ::slotted(a),
       ::slotted(button) {
-        background-color: var(--tds-sidebar-item-state-hover);
+        background-color: var(--side-menu-item-state-hover);
       }
     }
 
     &:active {
       ::slotted(a),
       ::slotted(button) {
-        background-color: var(--tds-sidemenu-item-state-active);
+        background-color: var(--side-menu-item-state-active);
       }
     }
 
     &-collapsed {
       ::slotted(a),
       ::slotted(button) {
-        padding: 0;
+        padding: var(--component-side-menu-space-collapsed-item-left-right-inner-icon-padding);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -82,16 +86,18 @@
       ::slotted(button),
       ::slotted(tds-side-menu-user) {
         position: relative;
-        background-color: var(--tds-sidebar-item-state-selected);
+        background-color: var(--side-menu-item-state-selected);
 
         &::before {
           content: '';
           position: absolute;
           top: 0;
           left: 0;
-          width: 4px;
-          height: 100%;
-          background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+          width: var(--component-side-menu-space-sub-page-selected-marker-width);
+          height: var(--component-side-menu-space-sub-menu-item-selected-marker-height);
+          background-color: var(--side-menu-single-subitem-selected-border-color);
+          border-radius: var(--component-side-menu-radius-corner) 0 0
+            var(--component-side-menu-radius-corner);
         }
       }
     }

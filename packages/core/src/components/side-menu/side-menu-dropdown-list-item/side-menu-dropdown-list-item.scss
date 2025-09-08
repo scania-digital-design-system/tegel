@@ -1,10 +1,16 @@
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
   box-sizing: border-box;
-  height: 48px;
+  height: var(--side-menu-dropdown-list-item-height);
   width: 100%;
+  font-family: var(--text-component-text-01-font-family);
+  font-size: var(--text-component-text-01-font-size);
+  font-weight: var(--text-component-text-01-font-weight);
+  line-height: var(--text-component-text-01-line-height);
+  letter-spacing: var(--text-component-text-01-letter-spacing);
 
   .component {
     height: 100%;
@@ -18,45 +24,69 @@
       display: flex;
       align-items: center;
       height: 100%;
-      padding: 0 24px;
+      padding: 0 var(--component-side-menu-space-sub-page-left-no-icon);
       width: 100%;
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
-      background-color: var(--tds-header-nav-item-dropdown-opened-background);
-      color: var(--header-nav-item-dropdown-opened);
+      background-color: var(--side-menu-dropdown-list-item-custom-background);
+      color: var(--side-menu-dropdown-list-item-color);
       border: none;
+      border-radius: var(--component-side-menu-radius-corner);
     }
 
     ::slotted(a:hover),
     ::slotted(button:hover) {
-      background-color: var(--tds-header-nav-item-dropdown-opened-background-hover);
+      background-color: var(--side-menu-dropdown-list-item-custom-background-hover);
       cursor: pointer;
     }
 
     ::slotted(a:active),
     ::slotted(button:active) {
-      background-color: var(--tds-header-nav-item-dropdown-opened-background-active) !important;
+      background-color: var(--side-menu-dropdown-list-item-custom-background-active);
       cursor: pointer;
     }
 
     ::slotted(a:focus-visible) {
-      @include tds-focus-state;
+      @include tds-focus-state-side-menu;
     }
   }
 
   .component.component-selected {
     ::slotted(a),
     ::slotted(button) {
-      box-shadow: inset 4px 0 0 var(--header-nav-item-border-active);
-      background-color: var(--tds-header-nav-item-dropdown-opened-background-selected);
+      background-color: var(--side-menu-dropdown-list-item-custom-background-selected);
+      color: var(--color-foreground-text-strong);
+      font-family: var(--text-component-title-01-font-family);
+      font-size: var(--text-component-title-01-font-size);
+      font-weight: var(--text-component-title-01-font-weight);
+      line-height: var(--text-component-title-01-line-height);
+      letter-spacing: var(--text-component-title-01-letter-spacing);
     }
+  }
+
+  .slot-wrapper {
+    position: relative;
+    height: 100%;
+  }
+
+  .component.component-selected .slot-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--component-side-menu-space-sub-page-selected-marker-width);
+    height: var(--component-side-menu-space-sub-page-selected-marker-height);
+    background-color: var(--side-menu-single-subitem-selected-border-color);
+    border-radius: var(--component-side-menu-radius-corner) 0 0
+      var(--component-side-menu-radius-corner);
   }
 
   .component.component-dropdown-has-icon {
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 58px;
+        padding: var(--component-side-menu-space-sub-page-top-bottom) 48px
+          var(--component-side-menu-space-sub-page-top-bottom)
+          var(--component-side-menu-space-sub-page-left-with-icon);
       }
     }
   }
@@ -65,7 +95,9 @@
     &:not(.component-collapsed) {
       ::slotted(a),
       ::slotted(button) {
-        padding: 16px 48px 16px 64px;
+        padding: var(--component-side-menu-space-sub-page-top-bottom) 48px
+          var(--component-side-menu-space-sub-page-top-bottom)
+          var(--component-side-menu-space-sub-page-left-profile);
       }
     }
   }

@@ -1,6 +1,7 @@
 :host {
   display: block;
   width: 190px;
+  margin-top: var(--component-side-menu-space-sub-page-top-group);
 
   [role='list'] {
     padding: 0;
@@ -10,9 +11,15 @@
     background-color: var(--tds-header-app-launcher-menu-bg);
   }
 
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--component-side-menu-space-top-level-vertical-gap-padding);
+  }
+
   .state-collapsed {
     ::slotted(*) {
-      border-bottom: 1px solid var(--tds-sidebar-side-menu-bottom-menu-border-top);
+      border-bottom: var(--side-menu-bottom-menu-border-top-collapsed);
     }
   }
 }
