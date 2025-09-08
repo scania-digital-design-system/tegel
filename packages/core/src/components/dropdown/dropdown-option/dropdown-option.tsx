@@ -185,6 +185,9 @@ export class TdsDropdownOption {
                 onTdsChange={(event) => {
                   this.handleMultiselect(event);
                 }}
+                onTdsBlur={(event) => {
+                  event.stopPropagation();
+                }}
                 disabled={this.disabled}
                 checked={this.selected}
                 tdsAriaLabel={this.tdsAriaLabel}
