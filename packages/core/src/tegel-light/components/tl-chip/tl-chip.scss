@@ -8,10 +8,10 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  border-radius: var(--chips-border-radius);
+  border-radius: var(--chip-border-radius);
   border: none;
-  background-color: var(--chips-background);
-  color: var(--chips-text);
+  background-color: var(--chip-background);
+  color: var(--chip-text);
   cursor: pointer;
   white-space: nowrap;
   user-select: none;
@@ -20,14 +20,14 @@
     outline-color 0.15s ease-in-out;
 
   &:hover {
-    background-color: var(--chips-background-hover);
+    background-color: var(--chip-background-hover);
   }
 
   &:focus-visible {
     outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
     box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
     outline-offset: 1px;
-    background-color: var(--chips-background-focus);
+    background-color: var(--chip-background-focus);
   }
 
   &--sm {
@@ -43,11 +43,11 @@
   }
 
   &--selected {
-    background-color: var(--chips-background-active);
-    color: var(--chips-text-active);
+    background-color: var(--chip-background-active);
+    color: var(--chip-text-active);
 
     &:hover {
-      background-color: var(--chips-background-active-hover);
+      background-color: var(--chip-background-active-hover);
     }
 
     &:focus-visible {
@@ -61,8 +61,8 @@
   &--disabled {
     cursor: not-allowed;
     pointer-events: none;
-    background-color: var(--chips-background-disabled);
-    color: var(--chips-text-disabled);
+    background-color: var(--chip-background-disabled);
+    color: var(--chip-text-disabled);
   }
 
   &--lg.tl-chip--prefix:not(.tl-chip--suffix) {
@@ -91,8 +91,8 @@
 }
 
 .tl-chip--disabled.tl-chip--selected {
-  background-color: var(--chips-background-active);
-  color: var(--chips-text-checked-disabled);
+  background-color: var(--chip-background-active);
+  color: var(--chip-text-checked-disabled);
 }
 
 .tl-chip__label {

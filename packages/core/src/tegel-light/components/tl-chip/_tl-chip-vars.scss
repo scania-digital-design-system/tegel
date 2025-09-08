@@ -1,14 +1,14 @@
 .tl-chip {
-  --chips-text: var(--color-foreground-text-strong);
-  --chips-text-active: var(--component-chip-foreground-inverse);
-  --chips-background: var(--component-chip-color-default);
-  --chips-background-active: var(--component-chip-color-selected);
-  --chips-background-disabled: var(--component-chip-color-disabled);
-  --chips-text-disabled: var(--color-foreground-text-disabled);
-  --chips-text-checked-disabled: var(--component-chip-foreground-foreground-disabled-selected);
-  --chips-background-active-hover: var(--component-chip-color-hover-on-selected);
-  --chips-background-hover: var(--component-chip-color-hover);
-  --chips-background-focus: var(--component-chip-color-focused);
-  --chips-border-radius: var(--component-chip-border-radius);
+  --chip-text: var(--color-foreground-text-strong);
+  --chip-text-active: var(--component-chip-foreground-inverse);
+  --chip-background: var(--component-chip-color-default);
+  --chip-background-active: var(--component-chip-color-selected);
+  --chip-background-disabled: var(--component-chip-color-disabled);
+  --chip-text-disabled: var(--color-foreground-text-disabled);
+  --chip-text-checked-disabled: var(--component-chip-foreground-foreground-disabled-selected);
+  --chip-background-active-hover: var(--component-chip-color-hover-on-selected);
+  --chip-background-hover: var(--component-chip-color-hover);
+  --chip-background-focus: var(--component-chip-color-focused);
+  --chip-border-radius: var(--component-chip-border-radius);
   --chip-focused-on-selected: var(--component-chip-color-focused-on-selected);
 }
