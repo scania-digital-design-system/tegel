@@ -103,6 +103,8 @@ export class TdsDropdown {
 
   private inputElement: HTMLInputElement;
 
+  private hasFocus: boolean = false;
+
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
     // Normalize to array
@@ -343,6 +345,28 @@ export class TdsDropdown {
     }
   }
 
+  @Listen('focusin')
+  onFocusIn(event: FocusEvent) {
+    // Check if the focus is within this dropdown component
+    if (this.host.contains(event.target as Node)) {
+      if (!this.hasFocus) {
+        this.hasFocus = true;
+        this.tdsFocus.emit(event);
+      }
+    }
+  }
+
+  @Listen('focusout')
+  onFocusOut(event: FocusEvent) {
+    // Use setTimeout to check if focus moved to another element within the dropdown
+    setTimeout(() => {
+      if (this.hasFocus && !this.host.contains(document.activeElement)) {
+        this.hasFocus = false;
+        this.tdsBlur.emit(event);
+      }
+    }, 0);
+  }
+
   @Listen('keydown')
   async onKeyDown(event: KeyboardEvent) {
     // Get the active element
@@ -570,14 +594,19 @@ export class TdsDropdown {
     if (this.multiselect && this.inputElement) {
       this.inputElement.value = '';
     }
-    this.tdsFocus.emit(event);
+    // Focus event is now handled by focusin listener
     if (this.filter) {
       this.handleFilter({ target: { value: '' } });
     }
   };
 
   private handleBlur = (event) => {
-    this.tdsBlur.emit(event);
+    // Blur event is now handled by focusout listener
+    // Only handle internal state changes here
+    this.filterFocus = false;
+    if (this.multiselect && this.inputElement) {
+      this.inputElement.value = this.getValue();
+    }
   };
 
   /**
@@ -694,10 +723,6 @@ export class TdsDropdown {
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onBlur={(event) => {
-                    this.filterFocus = false;
-                    if (this.multiselect) {
-                      this.inputElement.value = this.getValue();
-                    }
                     this.handleBlur(event);
                   }}
                   onFocus={(event) => this.handleFocus(event)}

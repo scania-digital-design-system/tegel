@@ -147,11 +147,21 @@ export class TdsDropdownOption {
   };
 
   handleFocus = (event) => {
-    this.tdsFocus.emit(event);
+    // Focus events are now handled by the parent dropdown component
+    // Only emit if this is a standalone option (not within a dropdown)
+    if (!this.parentElement) {
+      this.tdsFocus.emit(event);
+    }
   };
 
   handleBlur = (event) => {
-    this.tdsBlur.emit(event);
+    // Blur events are now handled by the parent dropdown component
+    // Only emit if this is a standalone option (not within a dropdown)
+    if (!this.parentElement) {
+      this.tdsBlur.emit(event);
+    }
+    // Always prevent the event from bubbling up to avoid interference
+    event.stopPropagation();
   };
 
   render() {
