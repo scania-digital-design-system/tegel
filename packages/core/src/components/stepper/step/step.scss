@@ -1,7 +1,9 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 @mixin divider {
   content: ' ';
   position: absolute;
-  background-color: var(--tds-stepper-divider-line);
+  background-color: var(--stepper-divider-line);
 }
 
 :host {
@@ -21,20 +23,11 @@
 
     &.lg {
       padding: 0 20px;
-      font: var(--tds-detail-01);
-      letter-spacing: var(--tds-detail-01-ls);
+      @include detail-01;
 
       .content-container {
         height: 30px;
         min-width: 30px;
-
-        tds-icon {
-          vertical-align: bottom;
-        }
-
-        .index-container {
-          vertical-align: sub;
-        }
       }
 
       &.vertical {
@@ -55,7 +48,7 @@
           height: 1px;
           left: calc(50% + 24px);
           right: 0;
-          top: 18px;
+          top: 16px;
         }
 
         &::before {
@@ -64,7 +57,7 @@
           height: 1px;
           right: calc(50% + 24px);
           left: 0;
-          top: 18px;
+          top: 16px;
         }
 
         &.text-aside {
@@ -95,8 +88,7 @@
 
     &.sm {
       padding: 0 20px;
-      font: var(--tds-detail-05);
-      letter-spacing: var(--tds-detail-05-ls);
+      @include detail-05;
 
       .index-container {
         vertical-align: -webkit-baseline-middle;
@@ -180,31 +172,33 @@
     }
 
     .content-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
       border-radius: 100px;
-      border: 1px solid var(--tds-stepper-icon-background);
+      border-width: 1px;
+      border-style: solid;
       text-align: center;
       position: relative;
 
       &.error {
-        border-color: var(--tds-stepper-icon-step-border-color-warning);
-        color: var(--tds-stepper-icon-step-border-color-warning);
+        border-color: var(--stepper-icon-step-border-warning);
+        color: var(--stepper-icon-step-border-warning);
       }
 
       &.success {
-        background-color: var(--tds-stepper-icon-step-border-color-success);
-        border-color: var(--tds-stepper-icon-step-border-color-success);
-        color: var(--tds-white);
+        background-color: var(--stepper-icon-step-border-success);
+        border-color: var(--stepper-icon-step-border-success);
+        color: var(--steper-icon-step-checkmark);
       }
 
       &.current {
-        background-color: var(--tds-stepper-background);
-        color: var(--tds-stepper-color);
+        color: var(--stepper-current-number-with-border);
       }
 
       &.upcoming {
-        background-color: transparent;
-        border-color: var(--tds-stepper-label-border-color-upcoming);
-        color: var(--tds-stepper-label-text-color-upcoming);
+        border-color: var(--stepper-label-border-upcoming);
+        color: var(--stepper-label-text-upcoming);
       }
     }
 
@@ -212,17 +206,15 @@
       text-align: center;
 
       &.lg {
-        font: var(--tds-detail-01);
-        letter-spacing: var(--tds-detail-01-ls);
+        @include detail-01;
       }
 
       &.sm {
-        font: var(--tds-detail-05);
-        letter-spacing: var(--tds-detail-05-ls);
+        @include detail-05;
       }
 
       &.upcoming {
-        color: var(--tds-stepper-label-text-color-upcoming);
+        color: var(--stepper-label-text-upcoming);
         opacity: var(--tds-stepper-label-text-opacity-upcoming);
       }
     }

@@ -1,36 +1,29 @@
-:root,
-.tds-mode-light {
-  --tds-dropdown-option-color: var(--tds-grey-850);
-  --tds-dropdown-option-color-disabled: var(--tds-grey-250);
-  --tds-dropdown-option-background: var(--tds-grey-50);
-  --tds-dropdown-option-background-selected: var(--tds-grey-150);
-  --tds-dropdown-option-border: var(--tds-grey-200);
-  --tds-dropdown-option-border-hover: var(--tds-grey-850);
-  --tds-dropdown-option-focus: var(--tds-blue-400);
+tds-dropdown-option {
+  --dropdown-text: var(--color-foreground-text-strong);
+  --dropdown-option-disabled: var(--color-foreground-text-disabled);
+  --dropdown-option-background: var(--color-background-layer-01);
+  --dropdown-option-background-hover: var(--component-dropdown-hover);
+  --dropdown-option-background-selected: var(--component-dropdown-focus);
+  --dropdown-option-border: var(--color-foreground-border-discrete);
+  --dropdown-helper-text: var(--color-foreground-text-defined);
+  --dropdown-placeholder: var(--color-foreground-text-subtle);
+}
 
-  .tds-mode-variant-primary {
-    --tds-dropdown-option-background: var(--tds-grey-50);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-dropdown-option-background: var(--tds-white);
+.tds-mode-variant-primary {
+  tds-dropdown-option {
+    --dropdown-option-background: var(--color-background-layer-01);
   }
 }
 
-.tds-mode-dark {
-  --tds-dropdown-option-color: var(--tds-grey-50);
-  --tds-dropdown-option-color-disabled: var(--tds-grey-500);
-  --tds-dropdown-option-background: var(--tds-grey-850);
-  --tds-dropdown-option-background-selected: var(--tds-grey-700);
-  --tds-dropdown-option-border: var(--tds-grey-600);
-  --tds-dropdown-option-border-hover: var(--tds-grey-50);
-  --tds-dropdown-option-focus: var(--tds-blue-300);
-
-  .tds-mode-variant-primary {
-    --tds-dropdown-option-background: var(--tds-grey-850);
+.tds-mode-variant-secondary {
+  tds-dropdown-option {
+    --dropdown-option-background: var(--color-background-layer-02);
   }
+}
 
-  .tds-mode-variant-secondary {
-    --tds-dropdown-option-background: var(--tds-grey-900);
-  }
+tds-table-footer {
+  --dropdown-option-border: var(--color-foreground-border-discrete);
+  --dropdown-option-background: var(--color-background-layer-01);
+  --dropdown-option-background-hover: var(--color-background-surface-100);
+  --dropdown-option-background-selected: var(--color-background-surface-300);
 }

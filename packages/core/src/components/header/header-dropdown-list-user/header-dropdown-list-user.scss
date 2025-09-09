@@ -1,5 +1,7 @@
+@import '../../../../../../typography/utilities/typography-utility';
+
 :host {
-  background-color: var(--tds-header-avatar-item-background);
+  background-color: var(--header-avatar-item-background);
   display: flex;
   height: 84px;
 
@@ -9,7 +11,7 @@
     padding: 0 16px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--tds-nav-dropdown-item-border-color);
+    border-bottom: 1px solid var(--header-nav-dropdown-item-border);
   }
 
   img,
@@ -24,14 +26,13 @@
     gap: 4px;
 
     .header {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
+      @include headline-07;
     }
 
     .subheader {
-      font: var(--tds-headline-07);
-      letter-spacing: var(--tds-headline-07-ls);
-      color: var(--tds-header-avatar-item-color);
+      @include headline-07;
+
+      color: var(--header-avatar-item);
     }
   }
 }

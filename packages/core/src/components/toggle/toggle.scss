@@ -1,16 +1,21 @@
+@import '../../../../../typography/utilities/typography-utility';
+@import '../../mixins/focus-state';
+@import './toggle-vars';
+
 .tds-toggle {
   .disabled {
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   .toggle-headline {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
-    color: var(--tds-toggle-headline);
+    @include detail-02;
+
+    color: var(--toggle-text);
     margin-bottom: 12px;
 
     &.disabled {
-      color: var(--tds-toggle-headline-disabled);
+      color: var(--toggle-disabled);
+      user-select: none;
     }
   }
 
@@ -26,68 +31,51 @@
 
     &::after,
     &::before {
+      transition: all var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
       content: '';
       position: absolute;
       box-sizing: border-box;
-      transition: all var(--tds-motion-duration-moderate-01) var(--tds-motion-easing-scania);
     }
 
     &::before {
       /* Slider */
-      width: 44px;
-      height: 24px;
+      background-color: var(--toggle-background-off);
+      border: 2px solid transparent;
       border-radius: 16px;
-      background-color: var(--tds-toggle-off-slider);
       left: 0;
-      border: 1px solid transparent;
+      height: 24px;
+      width: 44px;
     }
 
     /* Switch */
     &::after {
-      width: 16px;
-      height: 16px;
-      background-color: var(--tds-toggle-switch);
+      background-color: var(--toggle-switch);
       border-radius: 50%;
       left: 4px;
       top: 4px;
+      width: 16px;
+      height: 16px;
     }
 
-    &:focus-visible {
-      outline: none;
-      outline: 2px solid var(--tds-toggle-border-outline);
+    &:focus {
+      @include tds-focus-state;
+
       border-radius: 16px;
-      outline-offset: 0;
 
       &::before {
-        background-color: var(--tds-toggle-off-slider-focus);
-        border: 1px solid var(--tds-toggle-off-border-focus);
+        background-color: var(--toggle-disabled);
       }
     }
 
     &:hover {
       &::before {
-        background-color: var(--tds-toggle-off-slider-hover);
-        border: 1px solid var(--tds-toggle-off-border-focus);
+        background-color: var(--toggle-background-off);
       }
     }
 
     &:checked {
       &::before {
-        background-color: var(--tds-toggle-on-slider);
-      }
-
-      &:focus-visible {
-        &::before {
-          background-color: var(--tds-toggle-on-slider-focus);
-          border: 1px solid var(--tds-toggle-off-border-focus);
-        }
-      }
-
-      &:hover {
-        &::before {
-          background-color: var(--tds-toggle-on-slider-hover);
-          border: 1px solid var(--tds-toggle-off-border-focus);
-        }
+        background-color: var(--toggle-background-on);
       }
 
       &::after {
@@ -96,26 +84,24 @@
     }
 
     &:disabled {
-      cursor: not-allowed;
+      pointer-events: none;
 
       &::before {
-        background-color: var(--tds-toggle-slider-disabled);
-        border: 1px solid var(--tds-toggle-slider-disabled);
+        background-color: var(--toggle-disabled);
       }
 
       &::after {
-        background-color: var(--tds-toggle-switch-disabled);
+        background-color: var(--toggle-switch);
       }
     }
 
     &:disabled:checked {
       &::before {
-        background-color: var(--tds-toggle-on-slider-disabled);
-        border: 1px solid var(--tds-toggle-on-slider-disabled);
+        background-color: var(--toggle-disabled);
       }
 
       &::after {
-        background-color: var(--tds-toggle-switch-disabled);
+        background-color: var(--toggle-switch);
       }
     }
 
@@ -135,7 +121,7 @@
 
       &:checked {
         &::before {
-          background-color: var(--tds-toggle-on-slider);
+          background-color: var(--toggle-background-on);
         }
 
         &::after {
@@ -145,28 +131,29 @@
 
       &:disabled {
         &::before {
-          background-color: var(--tds-toggle-slider-disabled);
-          border: 1px solid var(--tds-toggle-slider-disabled);
+          background-color: var(--toggle-disabled);
         }
 
         &::after {
-          background-color: var(--tds-toggle-switch-disabled);
+          background-color: var(--toggle-switch);
         }
       }
     }
   }
 
   label {
+    @include detail-02;
+
+    color: var(--toggle-text);
+    cursor: pointer;
+    user-select: none;
     display: inline-block;
     vertical-align: middle;
-    font: var(--tds-detail-01);
-    letter-spacing: var(--tds-detail-01-ls);
-    color: var(--tds-toggle-label-color);
     padding-left: 8px;
-    cursor: pointer;
 
     &.disabled {
-      color: var(--tds-toggle-label-color-disabled);
+      color: var(--toggle-disabled);
+      pointer-events: none;
     }
   }
 }

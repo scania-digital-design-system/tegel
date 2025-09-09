@@ -1,12 +1,13 @@
 @import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   display: block;
 
   .footer-top-title {
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
-    color: var(--tds-footer-top-links-header);
+    @include headline-07;
+
+    color: var(--footer-top-links-desktop);
     padding-bottom: 8px;
 
     *,
@@ -16,28 +17,24 @@
   }
 
   button.footer-top-title-button {
+    @include headline-07;
+
     border: none;
     width: 100%;
-    font: var(--tds-headline-07);
-    letter-spacing: var(--tds-headline-07-ls);
-    color: var(--tds-footer-top-links);
+    color: var(--footer-top-links);
     background-color: transparent;
     text-align: left;
     padding: 19px 24px;
     justify-content: space-between;
-    border-bottom: 1px solid var(--tds-footer-top-divider);
+    border-bottom: 1px solid var(--footer-top-divider);
 
     *,
     ::slotted(*) {
       margin: 0;
     }
 
-    &.expanded {
-      border-bottom: none;
-
-      tds-icon {
-        transform: rotateZ(180deg);
-      }
+    &.expanded tds-icon {
+      transform: rotateZ(180deg);
     }
 
     &:hover {
@@ -45,7 +42,7 @@
     }
 
     &:active {
-      background-color: var(--tds-footer-top-button-active);
+      background-color: var(--footer-top-button-active);
     }
 
     &:focus-visible {

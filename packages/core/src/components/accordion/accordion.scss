@@ -18,8 +18,12 @@
   .tds-accordion-item {
     .tds-accordion-header-icon-start,
     .tds-accordion-header-icon-end {
-      background-color: var(--tds-accordion-background-active);
+      background-color: var(--accordion-background-focus);
       outline: none;
+
+      &::after {
+        border-color: var(--accordion-border-focus);
+      }
     }
   }
 
@@ -28,8 +32,20 @@
   }
 }
 
+:host(:active) {
+  .tds-accordion-header-icon-start,
+  .tds-accordion-header-icon-end {
+    background-color: var(--accordion-background-active);
+    outline: none;
+  }
+
+  .disabled {
+    @include tds-disabled-style;
+  }
+}
+
 :host(:last-child) {
-  border-bottom: 1px solid var(--tds-accordion-border);
+  border-bottom: 1px solid var(--accordion-border);
 }
 
 :host(.hide-last-border:last-child) {
@@ -37,9 +53,9 @@
 }
 
 :host(.tds-mode-variant-secondary) {
-  background-color: var(--tds-accordion-background);
+  background-color: var(--accordion-background);
 }
 
 :host(.tds-mode-variant-primary) {
-  background-color: var(--tds-accordion-background);
+  background-color: var(--accordion-background);
 }

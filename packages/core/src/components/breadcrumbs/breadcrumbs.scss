@@ -1,13 +1,14 @@
 @import '../../mixins/box-sizing';
+@import '../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
 
   [role='list'] {
+    @include detail-02;
+
     padding: 0;
     margin: 0;
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
     display: flex;
     flex-wrap: wrap;
     list-style-type: none;

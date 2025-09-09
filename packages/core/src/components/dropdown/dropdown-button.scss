@@ -1,14 +1,22 @@
+@import '../../../../../typography/utilities/typography-utility';
+@import '../../mixins/mixins';
+
 :host {
+  // compensate for box shadow
+  padding-bottom: 1px;
+
   button {
     all: unset;
+    @include box-shadow('dropdown');
+
     height: 100%;
     width: 100%;
-    background-color: var(--tds-dropdown-bg);
-    border-bottom: 1px solid var(--tds-dropdown-border-bottom);
-    border-radius: var(--tds-dropdown-border-radius);
+    background-color: var(--dropdown-background);
+    border-radius: var(--dropdown-border-radius);
+    transition: box-shadow var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &:hover {
-      border-bottom: 1px solid var(--tds-dropdown-border-bottom-hover);
+      @include box-shadow('dropdown', 'hover');
     }
 
     .value-wrapper {
@@ -19,45 +27,44 @@
     }
 
     &.placeholder {
-      color: var(--tds-dropdown-placeholder-color);
+      color: var(--dropdown-placeholder);
       line-height: 1.3;
     }
 
     &.value {
-      color: var(--tds-dropdown-value-color);
-      font: var(--tds-detail-02);
-      letter-spacing: var(--tds-detail-02-ls);
+      @include detail-02;
 
-      /** Needed to not get be affected by overflow:hidden 
+      color: var(--dropdown-text);
+
+      /** Needed to not get be affected by overflow:hidden
       The original line-height is 1.14 */
       line-height: 1.3;
     }
 
     &:focus {
-      border-bottom: 0;
+      @include box-shadow('dropdown', 'focus');
+    }
+
+    &:active {
+      @include box-shadow('dropdown', 'active');
     }
 
     &.error {
-      border-bottom: 1px solid var(--tds-dropdown-error);
+      @include box-shadow('dropdown', 'error');
+
+      &:hover {
+        @include box-shadow('dropdown', 'error-hover');
+      }
 
       &:focus {
-        border-bottom-color: transparent;
-
-        &::before {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 1px;
-          background: var(--tds-dropdown-error);
-        }
+        @include box-shadow('dropdown', 'error-focus');
       }
     }
 
     &:disabled {
-      color: var(--tds-dropdown-disabled-color);
-      border-bottom: 1px solid transparent;
+      @include box-shadow('dropdown', 'disabled');
+
+      color: var(--dropdown-disabled);
     }
 
     .menu-icon {

@@ -1,31 +1,28 @@
 @import '../../../mixins/focus-state';
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
 
   display: block;
-  background-color: var(--tds-dropdown-option-background);
+  background-color: var(--dropdown-option-background);
 
   .dropdown-option {
-    color: var(--tds-dropdown-option-color);
-    border-bottom: 1px solid var(--tds-dropdown-option-border);
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
+    @include detail-02;
+
+    color: var(--dropdown-text);
+    border-bottom: 1px solid var(--dropdown-option-border);
     overflow-wrap: anywhere;
     transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-scania);
 
     &.selected {
-      background-color: var(--tds-dropdown-option-background-selected);
-    }
-
-    &.disabled {
-      color: var(--tds-dropdown-option-color-disabled);
+      background-color: var(--dropdown-option-background-selected);
     }
 
     & button:focus {
-      outline: 2px solid var(--tds-dropdown-option-focus);
-      box-shadow: inset 0 0 0 3px var(--tds-white);
+      @include tds-focus-state;
+
       outline-offset: -2px;
     }
 
@@ -85,12 +82,12 @@
     }
 
     &:hover {
-      border-bottom-color: var(--tds-dropdown-option-border-hover);
+      background-color: var(--dropdown-option-background-hover);
       cursor: pointer;
     }
 
     &:hover.disabled {
-      border-bottom-color: var(--tds-dropdown-option-border-hover);
+      background-color: var(--dropdown-option-background);
       cursor: not-allowed;
     }
   }

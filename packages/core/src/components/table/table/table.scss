@@ -3,9 +3,10 @@
 
 :host,
 .tds-table {
+  @include tds-box-sizing;
+
   border-collapse: collapse;
   display: table;
-  @include tds-box-sizing;
 }
 
 :host(.tds-table--responsive),
@@ -14,10 +15,11 @@
 }
 
 .tds-table--horizontal-scroll {
+  @include tds-scrollbar(horizontal);
+
   display: block;
   overflow-x: scroll;
   white-space: nowrap;
-  @include tds-scrollbar(horizontal);
 }
 
 .tds-table--horizontal-scroll-toolbar {

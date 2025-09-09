@@ -5,13 +5,12 @@
   @include tds-box-sizing;
 
   display: flex;
-  background-color: var(--tds-inline-tabs-background);
   position: relative;
 
   &::after {
+    border-bottom: 1px solid var(--inline-tabs-horizontal-divider);
     content: ' ';
     display: block;
-    border-bottom: 1px solid var(--tds-inline-tabs-horizontal-divider-background);
     left: 0;
     right: 0;
     bottom: 0;
@@ -44,11 +43,11 @@
 
   .scroll-right-button,
   .scroll-left-button {
-    color: var(--tds-folder-tabs-scroll-btn-color);
+    background-color: var(--inline-tabs-scroll-button);
+    color: var(--inline-tabs-scroll-button-text);
     cursor: pointer;
     border: 0;
     width: 0;
-    background-color: var(--tds-inline-tabs-scroll-btn-background);
     display: none;
     justify-content: center;
     align-items: center;
@@ -63,20 +62,8 @@
       pointer-events: all;
     }
 
-    &:hover {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-hover);
-    }
-
-    &:active {
-      background-color: var(--tds-folder-tabs-scroll-btn-background-active);
-    }
-
-    &:focus {
-      @include tds-focus-state;
-    }
-
     svg {
-      fill: var(--tds-folder-tabs-scroll-btn-color);
+      fill: var(--inline-tabs-scroll-button-text);
     }
   }
 }

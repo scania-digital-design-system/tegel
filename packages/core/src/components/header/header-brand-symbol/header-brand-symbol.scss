@@ -3,13 +3,13 @@
   // (tegel.scania.com, 2023-03-01)
   tds-header-item {
     display: none;
+    width: var(--header-brand-item-width);
   }
 
   tds-header-item {
     ::slotted(*) {
-      background-image: var(--tds-background-image-scania-symbol-svg-local),
-        var(--tds-background-image-scania-symbol-svg);
-      background-size: 30px auto;
+      background-image: var(--header-logotype-local), var(--header-logotype-cdn);
+      background-size: var(--header-brand-logo-size) auto;
       background-position: center;
       background-repeat: no-repeat;
     }

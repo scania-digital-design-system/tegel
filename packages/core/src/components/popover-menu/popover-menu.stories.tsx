@@ -70,8 +70,7 @@ export default {
     },
     modeVariant: {
       name: 'Mode variant',
-      description:
-        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+      description: 'Mode variant of the component.',
       control: {
         type: 'radio',
       },
@@ -128,34 +127,33 @@ const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) =
       ${fluidWidth ? 'fluid-width' : ''}
       ${modeVariantValue ? `mode-variant="${modeVariantValue}"` : ''}
       selector="#my-popover-button"
+       ${modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''}
       >
         <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+          <a href="#"> ${icons ? '<tds-icon name="share"/>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-divider></tds-divider>
         <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} ${
+          <a href="#"> ${icons ? '<tds-icon name="share"/>' : ''} ${
       fluidWidth ? 'The menu width adjusts to the widest word' : 'Action'
     } </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+          <a href="#"> ${icons ? '<tds-icon name="share"/>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item disabled>
-          <button> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Disabled action </button>
+          <button> ${icons ? '<tds-icon name="share"/>' : ''} Disabled action </button>
         </tds-popover-menu-item>
         <tds-divider></tds-divider>
         <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+          <a href="#"> ${icons ? '<tds-icon name="share"/>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-divider></tds-divider>
         <tds-popover-menu-item>
-          <a href="#"> ${icons ? '<tds-icon name="share"></tds-icon>' : ''} Action </a>
+          <a href="#"> ${icons ? '<tds-icon name="share"/>' : ''} Action </a>
         </tds-popover-menu-item>
         <tds-popover-menu-item>
-          <button id="action-button"> ${
-            icons ? '<tds-icon name="share"></tds-icon>' : ''
-          } Close </button>
+          <button id="action-button"> ${icons ? '<tds-icon name="share"/>' : ''} Close </button>
         </tds-popover-menu-item>
     </tds-popover-menu>
  
@@ -165,7 +163,7 @@ const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) =
       <span class="tds-u-mr2">Click icon for Popover Menu</span>
       
       <tds-button aria-label="menu button" only-icon id="my-popover-button" type="ghost" size="sm">
-        <tds-icon tds-aria-hidden="true" svg-title="menu icon" slot="icon" size="16px" name="kebab"></tds-icon>
+        <tds-icon tds-aria-hidden="true" svg-title="menu icon" slot="icon" size="16px" name="truck"/>
       </tds-button>
     </div>
 

@@ -1,4 +1,5 @@
 @import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
 
 :host {
   @include tds-box-sizing;
@@ -6,9 +7,9 @@
   display: block;
 
   .wrapper {
-    font: var(--tds-detail-02);
-    letter-spacing: var(--tds-detail-02-ls);
-    color: var(--tds-popover-menu-color);
+    @include detail-02;
+
+    color: var(--popover-menu-text);
     position: relative;
     width: 100%;
     display: flex;
@@ -17,19 +18,19 @@
 
     &:hover {
       cursor: pointer;
-      background-color: var(--tds-popover-menu-background-hover);
+      background-color: var(--popover-menu-background-hover);
     }
 
     &.disabled {
       cursor: not-allowed;
-      color: var(--tds-popover-menu-divider-disabled-color);
+      color: var(--popover-menu-item-disabled);
 
       &:hover {
         background-color: inherit;
       }
 
       ::slotted(tds-icon) {
-        color: var(--tds-popover-menu-divider-disabled-icon-color);
+        color: var(--popover-menu-item-icon-disabled);
       }
 
       ::slotted(*) {
@@ -58,7 +59,7 @@
       height: 100%;
       top: 0;
       left: 2px;
-      outline: 1px solid var(--tds-blue-400);
+      outline: 1px solid var(--popover-menu-item-outline-focus);
       outline-offset: 1px;
     }
   }

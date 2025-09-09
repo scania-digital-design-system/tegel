@@ -15,7 +15,7 @@ html,
 tds-header {
   display: block;
   height: var(--tds-header-height);
-  background-color: var(--tds-header-background);
+  background-color: var(--header-background);
   width: 100%;
   z-index: tds-z-index(header);
 
@@ -32,7 +32,7 @@ tds-header {
 nav {
   @include tds-box-sizing;
 
-  background-color: var(--tds-header-background);
+  background-color: var(--header-background);
   width: 100%;
   display: block;
 
@@ -52,7 +52,7 @@ nav {
     display: block;
     flex-grow: 1;
     height: var(--tds-header-height);
-    border-right: 1px solid var(--tds-header--basic-element-border);
+    border-right: 1px solid var(--header-basic-element-border);
   }
 
   @media screen and (min-width: $grid-lg) {
@@ -65,6 +65,6 @@ nav {
   tds-header-item:nth-child(3),
   tds-header-dropdown:nth-child(3) {
     /* Adds a left border to the button after the title, if any */
-    border-left: 1px solid var(--tds-header--basic-element-border);
+    border-left: 1px solid var(--header-basic-element-border);
   }
 }

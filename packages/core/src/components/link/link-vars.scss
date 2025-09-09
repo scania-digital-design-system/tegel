@@ -1,48 +1,26 @@
-:root,
-.tds-mode-light {
-  --tds-link: var(--tds-blue-400);
-  --tds-link-hover: var(--tds-blue-400);
-  --tds-link-focus: var(--tds-blue-400);
-  --tds-link-visited: var(--tds-blue-600);
-  --tds-link-disabled: var(--tds-grey-250);
-
-  tds-toast {
-    --tds-link: var(--tds-grey-50);
-    --tds-link-hover: var(--tds-blue-400);
-    --tds-link-focus: var(--tds-blue-400);
-    --tds-link-visited: var(--tds-blue-700);
-    --tds-link-disabled: var(--tds-grey-250);
-  }
-
-  tds-banner {
-    --tds-link: var(--tds-grey-950);
-  }
-}
-
-.tds-mode-dark {
-  --tds-link: var(--tds-blue-300);
-  --tds-link-hover: var(--tds-blue-300);
-  --tds-link-focus: var(--tds-blue-300);
-  --tds-link-visited: var(--tds-blue-100);
-  --tds-link-disabled: var(--tds-grey-500);
-
-  tds-toast {
-    --tds-link: var(--tds-grey-950);
-    --tds-link-hover: var(--tds-blue-300);
-    --tds-link-focus: var(--tds-blue-300);
-    --tds-link-visited: var(--tds-blue-100);
-    --tds-link-disabled: var(--tds-grey-500);
-  }
-
-  tds-banner {
-    --tds-link: var(--tds-grey-50);
-  }
-}
-
-//TODO: Consider making global nesting override css file for scenarios like this
 tds-link {
-  tds-icon {
-    padding-bottom: 4px;
-    padding-left: 5px;
+  --link: var(--color-foreground-text-accent-default);
+  --link-hover: var(--color-foreground-text-accent-default);
+  --link-focus-outline-width: 2px;
+  --link-visited: var(--color-foreground-text-accent-default);
+  --link-disabled: var(--color-foreground-text-disabled);
+}
+
+tds-banner {
+  tds-link {
+    --link: var(--color-system-info-default);
+  }
+}
+
+tds-toast {
+  tds-link {
+    --link: var(--color-system-info-default);
+    --link-hover: var(--color-foreground-text-accent-default);
+  }
+}
+
+.traton {
+  tds-link {
+    --link-focus-outline-width: 4px;
   }
 }

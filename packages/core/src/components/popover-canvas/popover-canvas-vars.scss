@@ -1,10 +1,21 @@
-:root,
-.tds-mode-light {
-  --tds-popover-canvas-color: var(--tds-grey-950);
-  --tds-popover-canvas-background: var(--tds-white);
+tds-popover-canvas {
+  --popover-canvas-text: var(--color-foreground-text-strong);
+  --popover-canvas-background: var(--color-background-layer-01);
+
+  &.tds-mode-variant-primary {
+    --popover-canvas-background: var(--color-background-layer-01);
+  }
+
+  &.tds-mode-variant-secondary {
+    --popover-canvas-background: var(--color-background-layer-02);
+  }
 }
 
-.tds-mode-dark {
-  --tds-popover-canvas-color: var(--tds-grey-50);
-  --tds-popover-canvas-background: var(--tds-grey-850);
+:root,
+.scania {
+  --popover-canvas-box-shadow: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 10%);
+}
+
+.traton {
+  --popover-canvas-box-shadow: none;
 }

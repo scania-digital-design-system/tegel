@@ -54,16 +54,22 @@ export default {
 };
 
 //Standalone Link
-const standaloneLinkTemplate = ({ disabled, underline, icon }) =>
+const standaloneLinkTemplate = ({ disabled, underline, icon, iconEnabled }) =>
   formatHtmlPreview(`
   <tds-link
     ${disabled ? 'disabled' : ''}
     ${underline ? '' : 'underline="false"'}
     standalone
   >
-    <a href="https://tegel.scania.com" target='_blank'>Tegel
-      <tds-icon name="${icon}" size="16px"></tds-icon>
-    </a>     
+
+  ${
+    iconEnabled && icon
+      ? `<a href="https://tegel.scania.com" target='_blank'>Link
+      <tds-icon name="${icon}" size="14px"/>
+    </a>   `
+      : `<a href="https://tegel.scania.com" target='_blank'>Link</a>`
+  }
+      
   </tds-link>`);
 
 //Link within text
@@ -74,7 +80,7 @@ const linkWithinTextTemplate = ({ disabled, underline }) =>
       ${disabled ? 'disabled' : ''}
       ${underline ? '' : 'underline="false"'}    
     >
-      <a href="https://tegel.scania.com" target='_blank'>Tegel</a>     
+      <a href="https://tegel.scania.com" target='_blank'>Link</a>     
     </tds-link> 
     Design System is for digital products and services at Scania.
     It enables an efficient development process and ensures a premium experience across all of Scania's digital touchpoints.    
@@ -85,7 +91,7 @@ StandaloneLink.args = {
   underline: false,
   disabled: false,
   iconEnabled: true,
-  icon: 'redirect',
+  icon: 'placeholder',
 };
 
 // Additional argTypes for Standalone Link only

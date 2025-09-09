@@ -1,6 +1,9 @@
 // What is this document for:
 // This file imports all Scania-specific tokens and primitives
 
+/* Global variables. Needed for local assets path. */
+$local-assets: '../dist/tegel/assets' !default;
+
 /* Scania primitive tokens */
 @import '../../../../tokens/scss/scania/primitive';
 
@@ -21,7 +24,6 @@
 @import '../../../../typography/tokens/typography-scania';
 
 // Typography
-@import '../../../../typography/tokens/typography-scania';
 @import '../../../../typography/scania-fonts';
 @import '../../../../typography/scania-fonts-vars';
 @import '../../../../typography/scania-fonts-selectors';

@@ -1,80 +1,58 @@
-:root,
-.tds-mode-light {
-  // Label
-  --tds-slider-label-color: var(--tds-grey-950);
-  --tds-slider-label-disabled: var(--tds-grey-250);
+tds-slider {
+  /* Label */
+  --slider-label: var(--color-foreground-text-strong);
 
-  // Value
-  --tds-slider-input-value-color: var(--tds-grey-950);
-  --tds-slider-input-value-disabled: var(--tds-grey-250);
+  /* Thumb and Control */
+  --slider-thumb: var(--color-foreground-icon-strong);
+  --slider-controls: var(--color-foreground-icon-strong);
 
-  // Thumb
-  --tds-slider-thumb-color: var(--tds-grey-950);
-  --tds-slider-thumb-disabled: var(--tds-grey-200);
+  /* Track and Divider */
+  --slider-track: var(--color-background-surface-300);
+  --slider-track-fill: var(--color-foreground-icon-strong);
+  --slider-divider: var(--color-background-surface-300);
+  --slider-divider-values: var(--color-foreground-text-defined);
 
-  // Track
-  --tds-slider-track-color: var(--tds-grey-350);
-  --tds-slider-track-fill-color: var(--tds-grey-950);
-  --tds-slider-track-disabled: var(--tds-grey-200);
+  /* Input Field Styling */
+  --slider-inputfield-background: var(--color-background-layer-01);
+  --slider-inputfield-background-secondary: var(--color-background-layer-02);
+  --slider-inputfield-box-shadow: var(--color-foreground-border-discrete);
+  --slider-input-inputfield: var(--color-foreground-text-strong);
+  --slider-input-focused: var(--color-foreground-border-accent-focus);
+  --slider-input-value: var(--color-foreground-text-defined);
+  --slider-input-hover: var(--color-foreground-border-subtle);
+  --slider-input-success-border: var(--color-foreground-border-defined);
+  --slider-input-success-text: var(--color-foreground-text-strong);
 
-  // Divider
-  --tds-slider-divider-color: var(--tds-grey-350);
-  --tds-slider-divider-values-color: var(--tds-grey-650);
-  --tds-slider-divider-disabled: var(--tds-grey-200);
-  --tds-slider-divider-values-disabled: var(--tds-grey-250);
+  /* Disabled State */
+  --slider-disabled: var(--color-background-surface-300);
+  --slider-disabled-text: var(--color-foreground-text-disabled);
 
-  // Controls
-  --tds-slider-controls-color: var(--tds-grey-650);
-  --tds-slider-controls-disabled: var(--tds-grey-250);
-
-  // Inputfield
-  --tds-slider-inputfield-number-color: var(--tds-grey-950);
-  --tds-slider-inputfield-background: var(--tds-white);
-  --tds-slider-inputfield-box-shadow: var(--tds-grey-800);
-  --tds-slider-inputfield-number-disabled: var(--tds-grey-250);
-  --tds-slider-inputfield-background-disabled: var(--tds-grey-50);
-
-  // Tooltip
-  --tds-slider-value-tooltip-background: var(--tds-grey-700);
-  --tds-slider-value-tooltip-color: var(--tds-grey-50);
+  /* Tooltip */
+  --slider-value-tooltip-background: var(--color-background-inverse-layer-03);
+  --slider-value-tooltip: var(--color-foreground-text-inverse-strong);
 }
 
-.tds-mode-dark {
-  // Label
-  --tds-slider-label-color: var(--tds-grey-50);
-  --tds-slider-label-disabled: var(--tds-grey-500);
+tds-slider,
+.scania tds-slider {
+  /* Slider: Scania Units */
+  --slider-border-radius: 4px 4px 0 0;
+  --slider-border-outline: 0;
 
-  // Value
-  --tds-slider-input-value-color: var(--tds-grey-200);
-  --tds-slider-input-value-disabled: var(--tds-grey-500);
+  /* Slider: input field */
+  --slider-input-field-box-shadow: 0 1px 0 0 var(--color-foreground-border-soft);
+  --slider-input-field-box-shadow-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --slider-input-field-box-shadow-focus: inset 0 -2px 0 var(--color-foreground-border-accent-focus);
+  --slider-input-field-box-shadow-success: inset 0 -1px 0 var(--slider-input-success-border);
+}
 
-  // Thumb
-  --tds-slider-thumb-color: var(--tds-grey-50);
-  --tds-slider-thumb-disabled: var(--tds-grey-600);
+.traton tds-slider {
+  /* Slider: Traton Units */
+  --slider-border-radius: 4px 4px 4px 4px;
+  --slider-border-outline: none;
 
-  // Track
-  --tds-slider-track-color: var(--tds-grey-400);
-  --tds-slider-track-fill-color: var(--tds-grey-50);
-  --tds-slider-track-disabled: var(--tds-grey-600);
-
-  // Divider
-  --tds-slider-divider-color: var(--tds-grey-400);
-  --tds-slider-divider-values-color: var(--tds-grey-200);
-  --tds-slider-divider-disabled: var(--tds-grey-600);
-  --tds-slider-divider-values-disabled: var(--tds-grey-500);
-
-  // Controls
-  --tds-slider-controls-color: var(--tds-grey-200);
-  --tds-slider-controls-disabled: var(--tds-grey-500);
-
-  // Inputfield
-  --tds-slider-inputfield-number-color: var(--tds-grey-300);
-  --tds-slider-inputfield-background: var(--tds-grey-850);
-  --tds-slider-inputfield-box-shadow: var(--tds-grey-400);
-  --tds-slider-inputfield-number-disabled: var(--tds-grey-500);
-  --tds-slider-inputfield-background-disabled: var(--tds-grey-850);
-
-  // Tooltip
-  --tds-slider-value-tooltip-background: var(--tds-grey-150);
-  --tds-slider-value-tooltip-color: var(--tds-grey-950);
+  /* Slider: Input field */
+  --slider-input-field-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --slider-input-field-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --slider-input-field-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --slider-input-field-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
 }

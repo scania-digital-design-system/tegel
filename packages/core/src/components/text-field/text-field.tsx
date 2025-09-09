@@ -252,7 +252,10 @@ export class TdsTextField {
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
               <label
-                class="text-field-label-inside"
+                class={{
+                  'text-field-label-inside': true,
+                  'text-field-label-inside-placeholder': this.placeholder === '',
+                }}
                 htmlFor={`text-field-input-element-${this.uuid}`}
               >
                 {this.label}
@@ -285,6 +288,7 @@ export class TdsTextField {
             </span>
           )}
         </div>
+        <div class="text-field-bar" />
 
         <div aria-live="assertive">
           {(this.helper || this.maxLength > 0) && (
