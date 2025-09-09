@@ -71,7 +71,7 @@
     z-index: 1;
   }
 
-  .inline-tab-item:focus-within::after {
+  .inline-tab-item:focus-visible::after {
     bottom: 3px;
   }
 
