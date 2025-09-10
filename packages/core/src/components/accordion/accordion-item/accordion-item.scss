@@ -99,12 +99,20 @@
     &.active {
       @include tds-disabled-style;
     }
+
+    // Override expanded cursor when disabled
+    &.expanded {
+      .tds-accordion-panel {
+        cursor: not-allowed;
+      }
+    }
   }
 
   &.expanded {
     .tds-accordion-panel {
       display: block;
       padding-bottom: 31px;
+      cursor: pointer;
     }
 
     .tds-accordion-icon {

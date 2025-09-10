@@ -80,6 +80,12 @@ export class TdsAccordionItem {
     expanded: boolean;
   }>;
 
+  private handlePanelClick = () => {
+    if (!this.disabled) {
+      this.toggleAccordionItem();
+    }
+  };
+
   render() {
     const primaryElementId = generateUniqueId();
     const secondaryElementId = generateUniqueId();
@@ -125,6 +131,7 @@ export class TdsAccordionItem {
             class={`tds-accordion-panel
             ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
             `}
+            onClick={this.handlePanelClick}
           >
             <slot></slot>
           </div>
