@@ -1,6 +1,7 @@
 //@import '../theme/core/spacing/vars';
 @import '../../../../../../grid-deprecated/vars';
 @import '../../../global/_variables';
+@import '../../../mixins/focus-state';
 
 :host {
   position: sticky;
@@ -25,6 +26,10 @@
       left: 50%;
     }
   }
+}
+
+:host(:focus-visible) {
+  @include tds-focus-state-side-menu;
 }
 
 @media (min-width: $grid-lg) {
