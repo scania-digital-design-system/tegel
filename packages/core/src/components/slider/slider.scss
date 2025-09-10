@@ -93,12 +93,10 @@ tds-slider {
         padding: 12px;
         text-align: center;
         appearance: textfield;
-        appearance: textfield;
       }
 
       tds-text-field .text-field-input[type='number']::-webkit-outer-spin-button,
       tds-text-field .text-field-input[type='number']::-webkit-inner-spin-button {
-        appearance: none;
         appearance: none;
         margin: 0;
       }
