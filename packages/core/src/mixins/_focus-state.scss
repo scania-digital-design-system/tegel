@@ -4,3 +4,10 @@
   outline-offset: 1px;
   z-index: 1;
 }
+
+@mixin tds-focus-state-datetime {
+  outline: 2px solid var(--tds-focus-outline-color);
+  box-shadow: inset 0 0 0 3px var(--tds-white);
+  outline-offset: -2px;
+  z-index: 1;
+}
