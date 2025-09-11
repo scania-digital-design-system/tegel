@@ -19,7 +19,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
 
 function hasValueChanged(newValue: string[], currentValue: string[]): boolean {
   if (newValue.length !== currentValue.length) return true;
-  return newValue.some((val) => !currentValue.includes(val));
+  return newValue.some((val, i) => val !== currentValue[i]);
 }
 
 /**
