@@ -138,12 +138,6 @@ export class TdsCheckbox {
     }
   }
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel) {
-      console.warn('Tegel Checkbox component: tdsAriaLabel prop is missing');
-    }
-  }
-
   render() {
     return (
       <div class="tds-checkbox">

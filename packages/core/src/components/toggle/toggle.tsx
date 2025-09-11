@@ -83,12 +83,6 @@ export class TdsToggle {
     this.labelSlot = this.host.querySelector("[slot='label']");
   }
 
-  connectedCallback() {
-    if (!this.tdsAriaLabel) {
-      console.warn('Tegel Toggle component: tdsAriaLabel prop is missing');
-    }
-  }
-
   render() {
     return (
       <div class="tds-toggle">
@@ -103,7 +97,9 @@ export class TdsToggle {
           </div>
         )}
         <input
-          ref={(inputEl) => (this.inputElement = inputEl)}
+          ref={(inputEl) => {
+            this.inputElement = inputEl;
+          }}
           aria-label={this.tdsAriaLabel}
           aria-describedby={this.host.getAttribute('aria-describedby')}
           aria-labelledby={this.host.getAttribute('aria-labelledby')}

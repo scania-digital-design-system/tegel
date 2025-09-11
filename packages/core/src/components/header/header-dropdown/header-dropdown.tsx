@@ -1,6 +1,5 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import generateUniqueId from '../../../utils/generateUniqueId';
-import hasSlot from '../../../utils/hasSlot';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For injecting a dropdown list.
@@ -37,7 +36,7 @@ export class TdsHeaderDropdown {
   @Listen('click', { target: 'document' })
   onAnyClick(event: MouseEvent) {
     // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-    const isClickOutside = !event.composedPath().includes(this.host as any);
+    const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
     if (isClickOutside) {
       this.open = false;
     }
@@ -74,14 +73,6 @@ export class TdsHeaderDropdown {
       this.open = false;
     }
   };
-
-  connectedCallback() {
-    const hasLabelSlot = hasSlot('label', this.host);
-
-    if (!this.tdsAriaLabel && !hasLabelSlot) {
-      console.warn('Tegel Header Dropdown component: use label slot or specify tdsAriaLabel prop');
-    }
-  }
 
   render() {
     return (

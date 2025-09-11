@@ -1,0 +1,51 @@
+.tl-accordion {
+  /* Border & Background */
+  --accordion-border: var(--color-foreground-border-discrete);
+  --accordion-background: transparent;
+
+  /* Hover backgrounds */
+  --accordion-background-hover-primary: var(--color-background-layer-01);
+  --accordion-background-hover-secondary: var(--color-background-layer-02);
+  --accordion-background-hover: var(--accordion-background-hover-primary);
+
+  /* Focus & Active states */
+  --accordion-background-focus: var(--color-background-layer-01);
+  --accordion-background-active: var(--color-background-layer-02);
+
+  /* Text & Icon colours */
+  --accordion-text: var(--color-foreground-text-strong);
+  --accordion-icon: var(--color-foreground-icon-strong);
+
+  /* Borders & Disabled */
+  --accordion-border-focus: var(--color-foreground-border-strong);
+  --accordion-text-disabled: var(--color-foreground-text-disabled);
+}
+
+/* Mode variants */
+.tds-mode-light .tl-accordion--mode-variant-primary,
+.tds-mode-light .tl-accordion .tl-accordion--mode-variant-primary {
+  background-color: var(--accordion-background-hover-secondary);
+
+  --accordion-background-hover: var(--accordion-background-hover-primary);
+}
+
+.tds-mode-light .tl-accordion--mode-variant-secondary,
+.tds-mode-light .tl-accordion .tl-accordion--mode-variant-secondary {
+  background-color: var(--accordion-background-hover-primary);
+
+  --accordion-background-hover: var(--accordion-background-hover-secondary);
+}
+
+.tds-mode-dark .tl-accordion--mode-variant-primary,
+.tds-mode-dark .tl-accordion .tl-accordion--mode-variant-primary {
+  background-color: var(--accordion-background-hover-secondary);
+
+  --accordion-background-hover: var(--accordion-background-hover-primary);
+}
+
+.tds-mode-dark .tl-accordion--mode-variant-secondary,
+.tds-mode-dark .tl-accordion .tl-accordion--mode-variant-secondary {
+  background-color: var(--accordion-background-hover-primary);
+
+  --accordion-background-hover: var(--accordion-background-hover-secondary);
+}

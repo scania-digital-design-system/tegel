@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop, State } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 
 /**
@@ -49,11 +49,17 @@ export class TdsButton {
 
   @State() onlyIcon: boolean = false;
 
-  connectedCallback() {
-    if (this.onlyIcon && !this.tdsAriaLabel) {
-      console.warn(
-        'Tegel button component: please specify the tdsAriaLabel prop when you have the onlyIcon attribute set to true',
-      );
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !this.disabled) {
+      this.host.querySelector('button').classList.add('active');
+    }
+  }
+
+  @Listen('keyup')
+  handleKeyUp(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !this.disabled) {
+      this.host.querySelector('button').classList.remove('active');
     }
   }
 

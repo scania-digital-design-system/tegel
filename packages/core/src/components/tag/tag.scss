@@ -1,0 +1,60 @@
+@import '../../mixins/box-sizing';
+
+:host {
+  @include tds-box-sizing;
+
+  display: inline-flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--tds-tag-neutral-background);
+  color: var(--tds-tag-neutral-color);
+  gap: 4px;
+
+  // Size variants
+  &.lg {
+    padding: 4px;
+  }
+
+  &.sm {
+    border-radius: 2px;
+    padding: 2px 4px;
+    font: var(--tds-detail-05);
+  }
+
+  // Variant mode colors
+  &.success {
+    background-color: var(--tds-tag-success-background);
+    color: var(--tds-tag-success-color);
+  }
+
+  &.warning {
+    background-color: var(--tds-tag-warning-background);
+    color: var(--tds-tag-warning-color);
+  }
+
+  &.new {
+    background-color: var(--tds-tag-new-background);
+    color: var(--tds-tag-new-color);
+  }
+
+  &.neutral {
+    background-color: var(--tds-tag-neutral-background);
+    color: var(--tds-tag-neutral-color);
+  }
+
+  &.information {
+    background-color: var(--tds-tag-information-background);
+    color: var(--tds-tag-information-color);
+  }
+
+  &.error {
+    background-color: var(--tds-tag-error-background);
+    color: var(--tds-tag-error-color);
+  }
+}
+
+.tds-tag__content {
+  display: flex;
+  align-items: center;
+  gap: inherit;
+}

@@ -1,0 +1,24 @@
+@import './tl-accordion-vars';
+@import './tl-accordion-item/tl-accordion-item';
+@import '../../../mixins/focus-state';
+@import '../../../mixins/disabled-style';
+@import '../../../mixins/box-sizing';
+
+.tl-accordion {
+  display: block;
+  @include tds-box-sizing;
+
+  width: 100%;
+  background-color: var(--accordion-background);
+
+  &--hide-last-border {
+    .tl-accordion-item:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.tl-accordion__header-icon-start,
+.tl-accordion__header-icon-end {
+  position: relative;
+}

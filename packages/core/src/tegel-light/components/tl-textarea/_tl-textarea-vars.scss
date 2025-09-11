@@ -1,0 +1,91 @@
+.tl-textarea {
+  // Background
+  --textarea-background-primary: var(--color-background-layer-01);
+  --textarea-background-secondary: var(--color-background-layer-02);
+  --textarea-background: var(--textarea-background-primary);
+  --textarea-text: var(--color-foreground-text-strong);
+  --textarea-disabled-background: var(--textarea-background-primary);
+
+  // Disabled
+  --textarea-disabled-text: var(--color-foreground-text-disabled);
+  --textarea-disabled-placeholder: var(--color-foreground-text-disabled);
+  --textarea-disabled-label: var(--color-foreground-text-disabled);
+  --textarea-helper-disabled: var(--color-foreground-text-disabled);
+  --textarea-textcounter-disabled: var(--color-foreground-text-disabled);
+
+  // Label
+  --textarea-label: var(--color-foreground-text-strong);
+  --textarea-label-inside: var(--color-foreground-text-strong);
+
+  // Placeholder
+  --textarea-placeholder: var(--color-foreground-text-subtle);
+
+  // Helper
+  --textarea-helper: var(--color-foreground-text-defined);
+  --textarea-helper-error: var(--color-system-danger-default);
+
+  // Textcounter
+  --textarea-textcounter: var(--color-foreground-text-defined);
+  --textarea-textcounter-divider: var(--color-foreground-text-subtle);
+
+  // Textarea: focus outline
+  --textarea-focus-outline: none;
+  --textarea-focus-outline-error: none;
+  --textarea-focus-outline-offset: 0;
+
+  // Resize
+  --textarea-resize-icon: var(--color-foreground-text-subtle);
+
+  &--primary {
+    --textarea-background: var(--textarea-background-primary);
+    --textarea-disabled-background: var(--textarea-background-primary);
+  }
+
+  &--secondary {
+    --textarea-background: var(--textarea-background-secondary);
+    --textarea-disabled-background: var(--textarea-background-secondary);
+  }
+}
+
+.tl-textarea,
+.scania .tl-textarea {
+  // Border radius
+  --textarea-border-radius: 4px 4px 0 0;
+
+  // Textarea: box shadow
+  --textarea-box-shadow: 0 1px 0 0 var(--color-foreground-border-soft);
+  --textarea-box-shadow-error: 0 1px 0 0 var(--color-system-danger-default);
+  --textarea-box-shadow-success: 0 1px 0 0 var(--color-foreground-border-strong);
+  --textarea-box-shadow-read-only: 0 1px 0 0 var(--color-foreground-border-subtle);
+  --textarea-box-shadow-disabled: none;
+
+  // Textarea: focus outline
+  --textarea-focus-outline: none;
+  --textarea-focus-outline-error: none;
+  --textarea-focus-outline-offset: 0;
+
+  // Highlight bar
+  --textarea-bar: var(--color-foreground-border-accent-focus);
+  --textarea-bar-error: var(--color-system-danger-default);
+}
+
+.traton .tl-textarea {
+  // Border radius
+  --textarea-border-radius: 4px;
+
+  // Textarea: box shadow
+  --textarea-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --textarea-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+  --textarea-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
+  --textarea-box-shadow-read-only: 0 0 0 1px var(--color-foreground-border-subtle);
+  --textarea-box-shadow-disabled: none;
+
+  // Textarea: focus outline
+  --textarea-focus-outline: 2px solid var(--color-foreground-border-accent-focus);
+  --textarea-focus-outline-error: 2px solid var(--color-system-danger-default);
+  --textarea-focus-outline-offset: 0;
+
+  // Highlight bar
+  --textarea-bar: transparent;
+  --textarea-bar-error: transparent;
+}
