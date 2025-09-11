@@ -11,6 +11,8 @@
   // Thumb
   --tds-slider-thumb-color: var(--tds-grey-950);
   --tds-slider-thumb-disabled: var(--tds-grey-200);
+  --tds-slider-thumb-hover: rgba(48, 60, 97, 0.17); // transparent 200
+  --tds-slider-thumb-pressed: rgba(58, 81, 124, 0.35); // transparent 250
 
   // Track
   --tds-slider-track-color: var(--tds-grey-350);
@@ -51,6 +53,8 @@
   // Thumb
   --tds-slider-thumb-color: var(--tds-grey-50);
   --tds-slider-thumb-disabled: var(--tds-grey-600);
+  --tds-slider-thumb-hover: rgba(164, 199, 245, 0.4); // transparent inverse 600
+  --tds-slider-thumb-pressed: rgba(174, 208, 255, 0.49); // transparent inverse 500
 
   // Track
   --tds-slider-track-color: var(--tds-grey-400);

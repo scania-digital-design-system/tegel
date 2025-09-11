@@ -413,6 +413,29 @@ export class TdsSlider {
     this.forceValueUpdate(rounded.toString());
   }
 
+  /** Updates the slider value when using tds-text-field (reads value from host element) */
+  private updateSliderValueFromTextField(event: CustomEvent) {
+    const hostEl = event.target as any; // tds-text-field host element exposes a value prop
+    const raw = hostEl && typeof hostEl.value !== 'undefined' ? hostEl.value : '';
+    let newValue = parseFloat(raw);
+
+    if (Number.isNaN(newValue)) {
+      return;
+    }
+
+    const minNum = parseFloat(this.min);
+    const maxNum = parseFloat(this.max);
+
+    if (newValue < minNum) {
+      newValue = minNum;
+    } else if (newValue > maxNum) {
+      newValue = maxNum;
+    }
+
+    const rounded = this.roundToStep(newValue);
+    this.forceValueUpdate(rounded.toString());
+  }
+
   /** Updates the slider value based on the current input value when enter is pressed */
   private handleInputFieldEnterPress(event: KeyboardEvent) {
     event.stopPropagation();
@@ -435,7 +458,15 @@ export class TdsSlider {
   }
 
   private calculateInputSizeFromMax() {
-    return this.max.length;
+    const input = this.host.querySelector('tds-text-field input[type="number"]');
+    if (input) {
+      if (this.readOnly) {
+        // explicit size to fit suffix icon
+        (input as HTMLElement).style.width = `${52 + this.max.length * 8}px`;
+      } else {
+        input.setAttribute('size', `${this.max.length}`);
+      }
+    }
   }
 
   private controlsStep(delta: number, event: KeyboardEvent) {
@@ -531,6 +562,7 @@ export class TdsSlider {
   }
 
   componentDidLoad() {
+    this.calculateInputSizeFromMax();
     if (!this.resizeObserverAdded) {
       this.resizeObserverAdded = true;
 
@@ -729,18 +761,20 @@ export class TdsSlider {
                 {this.max}
               </div>
               <div class="tds-slider__input-field-wrapper">
-                <input
-                  size={this.calculateInputSizeFromMax()}
-                  class="tds-slider__input-field"
-                  value={this.value}
-                  aria-label={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
-                  onBlur={(event) => this.updateSliderValueOnInputChange(event)}
-                  onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
+                <tds-text-field
+                  noMinWidth
+                  size="sm"
                   type="number"
+                  value={this.value}
                   min={this.min}
                   max={this.max}
-                  step={this.step}
-                />
+                  readOnly={this.readOnly}
+                  disabled={this.disabled}
+                  onTdsChange={(e) => console.log(e)}
+                  tdsAriaLabel={this.readOnly ? this.tdsReadOnlyAriaLabel : undefined}
+                  onTdsBlur={(event) => this.updateSliderValueFromTextField(event as CustomEvent)}
+                  onKeyDown={(event) => this.handleInputFieldEnterPress(event)}
+                ></tds-text-field>
               </div>
             </div>
           )}
