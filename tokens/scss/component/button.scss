@@ -3,6 +3,17 @@
  */
 
 .tl-button,
-tds-button {
+tds-button,
+.tds-mode-light tds-button {
   --component-button-primary-text: var(--color-brand-neutral-white);
+}
+
+.scania .tds-mode-dark tds-button,
+.scania .tds-mode-dark .tl-button {
+  --component-button-primary-text: var(--color-brand-neutral-white);
+}
+
+.tds-mode-dark tds-button,
+.tds-mode-dark .tl-button {
+  --component-button-primary-text: var(--color-brand-neutral-black);
 }

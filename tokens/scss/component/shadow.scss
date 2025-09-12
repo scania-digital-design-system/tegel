@@ -2,12 +2,34 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-shadow,
-tds-shadow {
+:root,
+.tds-mode-light,
+.scania .tds-mode-light {
+  --component-shadow-hover: var(--scania-color-transparent-shadow-250);
+  --component-shadow-default: var(--scania-color-transparent-shadow-150);
+  --component-shadow-pressed: var(--scania-color-transparent-shadow-250);
+  --component-shadow-dragged: var(--scania-color-transparent-shadow-200);
+  --component-shadow-base-modifier: var(--scania-color-transparent-shadow-100);
+  --component-shadow-focus: var(--scania-color-transparent-shadow-350);
+}
+
+.tds-mode-dark,
+.scania .tds-mode-dark {
   --component-shadow-hover: var(--scania-color-transparent-invisible-dark);
   --component-shadow-default: var(--scania-color-transparent-invisible-dark);
   --component-shadow-pressed: var(--scania-color-transparent-invisible-dark);
   --component-shadow-dragged: var(--scania-color-transparent-invisible-dark);
   --component-shadow-base-modifier: var(--scania-color-transparent-invisible-dark);
   --component-shadow-focus: var(--scania-color-transparent-invisible-dark);
+}
+
+.traton,
+.traton .tds-mode-light,
+.traton .tds-mode-dark {
+  --component-shadow-hover: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-default: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-pressed: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-dragged: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-base-modifier: var(--traton-color-transparent-invisible-dark);
+  --component-shadow-focus: var(--traton-color-transparent-invisible-dark);
 }
