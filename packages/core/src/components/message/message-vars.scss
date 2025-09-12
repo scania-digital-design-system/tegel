@@ -24,3 +24,46 @@ tds-message {
   --message-warning-border-color: var(--color-system-warning-subtle);
   --message-warning-icon-color: var(--color-system-warning-subtle);
 }
+
+:root,
+.tds-mode-light {
+  /* Default values */
+  --tds-message-background: var(--tds-grey-50);
+  --tds-message-background-error: var(--tds-red-50);
+  --tds-message-background-warning: var(--tds-grey-50);
+  --tds-message-background-success: var(--tds-grey-50);
+
+  /* Variant values */
+  .tds-mode-variant-primary {
+    --tds-message-background: var(--tds-grey-50);
+    --tds-message-background-warning: var(--tds-grey-50);
+    --tds-message-background-success: var(--tds-grey-50);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--tds-white);
+    --tds-message-background-warning: var(--tds-white);
+    --tds-message-background-success: var(--tds-white);
+  }
+}
+
+.tds-mode-dark {
+  /* Default values */
+  --tds-message-background: var(--tds-grey-900);
+  --tds-message-background-error: var(--tds-red-900);
+  --tds-message-background-warning: var(--tds-grey-900);
+  --tds-message-background-success: var(--tds-grey-900);
+
+  /* Variant values */
+  .tds-mode-variant-primary {
+    --tds-message-background: var(--tds-grey-900);
+    --tds-message-background-warning: var(--tds-grey-900);
+    --tds-message-background-success: var(--tds-grey-900);
+  }
+
+  .tds-mode-variant-secondary {
+    --tds-message-background: var(--tds-grey-850);
+    --tds-message-background-warning: var(--tds-grey-850);
+    --tds-message-background-success: var(--tds-grey-850);
+  }
+}
