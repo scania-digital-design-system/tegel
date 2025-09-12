@@ -28,10 +28,6 @@
   }
 }
 
-:host(:focus-visible) {
-  @include tds-focus-state-side-menu;
-}
-
 @media (min-width: $grid-lg) {
   :host {
     display: block;

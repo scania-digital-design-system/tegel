@@ -26,7 +26,9 @@ testConfigurations.basic.forEach((config) => {
     });
 
     test('click collapse button to close the menu', async ({ page }) => {
-      const sideMenuCollapseButton = page.getByRole('button').filter({ hasText: /Collapse/ });
+      const sideMenuCollapseButton = page
+        .locator('tds-side-menu-collapse-button')
+        .getByRole('button');
       await sideMenuCollapseButton.click();
       await expect(sideMenuCollapseButton).toHaveCount(1);
       await expect(sideMenuCollapseButton).toBeVisible();
@@ -43,7 +45,9 @@ test.describe.parallel(componentName, () => {
   });
 
   test('collapse button exists on the bottom of side menu', async ({ page }) => {
-    const sideMenuCollapseButton = page.getByRole('button').filter({ hasText: /Collapse/ });
+    const sideMenuCollapseButton = page
+      .locator('tds-side-menu-collapse-button')
+      .getByRole('button');
     await expect(sideMenuCollapseButton).toHaveCount(1);
     await expect(sideMenuCollapseButton).toBeVisible();
   });
