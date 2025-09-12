@@ -49,7 +49,7 @@ export class TdsMessage {
 
   private getAriaLabel(): string | undefined {
     if (this.header) {
-      return this.header
+      return this.header;
     }
     const variantLabel = `${this.variant} message`;
     return this.tdsAriaLabel || variantLabel;
@@ -64,13 +64,13 @@ export class TdsMessage {
         role={this.tdsAlertDialog}
         aria-describedby={contentId}
         aria-label={this.getAriaLabel()}
+        class={{ [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null }}
       >
         <div
           class={{
             wrapper: true,
             [this.variant]: true,
             minimal: this.minimal,
-            [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
           }}
         >
           {!this.noIcon && (
