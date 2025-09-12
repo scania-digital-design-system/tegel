@@ -49,20 +49,78 @@
 
     ::slotted(a:focus-visible),
     ::slotted(button:focus-visible) {
-      @include tds-focus-state;
+      @include tds-focus-state-side-menu;
     }
 
     &:hover {
       ::slotted(a),
-      ::slotted(button) {
+      ::slotted(button),
+      ::slotted(tds-side-menu-user) {
         background-color: var(--tds-sidebar-item-state-hover);
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background-color: var(--tds-side-menu-item-hover-indicator);
+        }
+      }
+
+      ::slotted(a:focus-visible),
+      ::slotted(button:focus-visible),
+      ::slotted(tds-side-menu-user:focus-visible) {
+        background-color: var(--tds-sidebar-item-state-hover);
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 4px;
+          height: calc(100% - calc(3px + 3px));
+          background-color: var(--tds-side-menu-item-hover-indicator);
+        }
       }
     }
 
     &:active {
       ::slotted(a),
-      ::slotted(button) {
+      ::slotted(button),
+      ::slotted(tds-side-menu-user) {
         background-color: var(--tds-sidemenu-item-state-active);
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 100%;
+          background-color: var(--tds-side-menu-item-pressed-indicator);
+        }
+      }
+
+      ::slotted(a:focus-visible),
+      ::slotted(button:focus-visible),
+      ::slotted(tds-side-menu-user:focus-visible) {
+        background-color: var(--tds-sidemenu-item-state-active);
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 4px;
+          height: calc(100% - calc(3px + 3px));
+          background-color: var(--tds-side-menu-item-pressed-indicator);
+        }
       }
     }
 
@@ -81,8 +139,8 @@
       ::slotted(a),
       ::slotted(button),
       ::slotted(tds-side-menu-user) {
-        position: relative;
         background-color: var(--tds-sidebar-item-state-selected);
+        position: relative;
 
         &::before {
           content: '';
@@ -91,6 +149,23 @@
           left: 0;
           width: 4px;
           height: 100%;
+          background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
+        }
+      }
+
+      ::slotted(a:focus-visible),
+      ::slotted(button:focus-visible),
+      ::slotted(tds-side-menu-user:focus-visible) {
+        background-color: var(--tds-sidebar-item-state-selected);
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 4px;
+          height: calc(100% - calc(3px + 3px));
           background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
         }
       }
