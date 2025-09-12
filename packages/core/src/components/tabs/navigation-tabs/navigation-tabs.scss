@@ -25,7 +25,7 @@
     width: 100%;
     overflow-x: scroll;
     scrollbar-width: none;
-    gap: 16px; // Adds a gap between the tab items
+    gap: 16px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -71,8 +71,18 @@
       background-color: var(--tds-folder-tabs-scroll-btn-background-active);
     }
 
-    &:focus {
+    &:focus::before {
+      content: '';
+      position: absolute;
+      left: 3px;
+      right: 3px;
+      top: 3px;
+      bottom: 3px;
       @include tds-focus-state;
+    }
+
+    &:focus {
+      outline: 0;
     }
 
     svg {
