@@ -80,9 +80,16 @@ export class TdsAccordionItem {
     expanded: boolean;
   }>;
 
-  private handlePanelClick = () => {
+  private readonly handlePanelClick = () => {
     if (!this.disabled) {
       this.toggleAccordionItem();
+    }
+  };
+
+  private readonly handlePanelKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.handlePanelClick();
     }
   };
 
@@ -132,6 +139,7 @@ export class TdsAccordionItem {
             ${this.paddingReset ? 'tds-accordion-panel--padding-reset ' : ''}
             `}
             onClick={this.handlePanelClick}
+            onKeyDown={this.handlePanelKeyDown}
           >
             <slot></slot>
           </div>
