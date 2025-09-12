@@ -14,6 +14,7 @@
     "build:all": "npm run build && (cd packages/angular && npm i && npm run build) && (cd packages/angular-17 && npm i && npm run build) && (cd packages/react && npm i && npm run build)",
     "test": "cd packages/core && npm run test",
     "test:axe": "cd packages/core && npm run test:axe",
+    "test:lte": "cd packages/tegel-light && npm run test",
     "commit": "cz",
     "prepare": "husky install",
     "reinstall": "./reinstall.sh",

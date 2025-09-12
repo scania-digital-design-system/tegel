@@ -9,7 +9,7 @@ const dirName = path.dirname(fileName);
 
 // Define paths for component styles and output directories
 const componentsDir = path.resolve(dirName, '../src/tegel-light/components'); // Source SCSS directory
-const outputCssDir = path.resolve(dirName, '../../tegel-light/dist/components'); // Output compiled CSS directory
+const outputCssDir = path.resolve(dirName, '../../tegel-light/dist'); // Output compiled CSS directory
 // Define paths for global styles
 const globalScss = path.resolve(dirName, '../src/global/core.scss'); // Source global SCSS
 const globalCss = path.resolve(dirName, '../../tegel-light/dist/global.css'); // Output compiled global CSS
@@ -43,9 +43,16 @@ const tratonVarsResult = sass.compile(tratonVarsScss, { style: 'expanded' });
 fs.writeFileSync(tratonVarsCss, tratonVarsResult.css);
 
 // Compile Each Component's SCSS into CSS
-fs.readdirSync(componentsDir).forEach((component) => {
-  const componentDir = path.join(componentsDir, component);
-  const files = fs.readdirSync(componentDir);
+const componentEntries = fs.readdirSync(componentsDir, { withFileTypes: true });
+
+componentEntries.forEach((entry) => {
+  // Only process directories; skip files like .DS_Store
+  if (!entry.isDirectory()) return;
+
+  const componentDir = path.join(componentsDir, entry.name);
+  const files = fs.readdirSync(componentDir, { withFileTypes: true })
+    .filter((e) => e.isFile())
+    .map((e) => e.name);
 
   files.forEach((file) => {
     // Ignore partials (_filename.scss)
