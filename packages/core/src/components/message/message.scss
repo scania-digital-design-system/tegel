@@ -1,27 +1,6 @@
 @import '../../../../../typography/utilities/typography-utility';
 
 :host {
-  /* Default values */
-  --tds-message-background: var(--background-elevation-layer-03);
-  --tds-message-background-error: var(--system-danger-subtle-03);
-  --tds-message-background-warning: var(--background-elevation-layer-03);
-  --tds-message-background-success: var(--background-elevation-layer-03);
-
-  /* Variant values */
-  .tds-mode-variant-primary {
-    --tds-message-background: var(--background-elevation-layer-03);
-    --tds-message-background-error: var(--system-danger-subtle-03);
-    --tds-message-background-warning: var(--background-elevation-layer-03);
-    --tds-message-background-success: var(--background-elevation-layer-03);
-  }
-
-  .tds-mode-variant-secondary {
-    --tds-message-background: var(--background-elevation-layer-02);
-    --tds-message-background-error: var(--system-danger-subtle-02);
-    --tds-message-background-warning: var(--background-elevation-layer-02);
-    --tds-message-background-success: var(--background-elevation-layer-02);
-  }
-
   .wrapper {
     display: flex;
     padding: 16px;
