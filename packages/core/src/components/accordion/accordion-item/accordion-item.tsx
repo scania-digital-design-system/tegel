@@ -80,16 +80,20 @@ export class TdsAccordionItem {
     expanded: boolean;
   }>;
 
-  private readonly handlePanelClick = () => {
+  private readonly handlePanelClick = (e: MouseEvent) => {
+    if (e.target !== e.currentTarget) return;
     if (!this.disabled) {
       this.toggleAccordionItem();
     }
   };
 
   private readonly handlePanelKeyDown = (e: KeyboardEvent) => {
+    if (e.target !== e.currentTarget) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      this.handlePanelClick();
+      if (!this.disabled) {
+        this.toggleAccordionItem();
+      }
     }
   };
 
