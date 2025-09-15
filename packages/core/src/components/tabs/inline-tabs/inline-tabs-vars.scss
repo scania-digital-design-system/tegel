@@ -16,13 +16,12 @@
 
   /* Tab */
   --tds-inline-tabs-tab-color: rgba(0 21 51 /60%); // blue-900
-  --tds-inline-tabs-tab-color-selected: var(--tds-grey-958);
-  --tds-inline-tabs-tab-color-disabled: var(--tds-blue-900);
-  --tds-inline-tabs-tab-color-opacity-disabled: 0.38;
-  --tds-inline-tabs-tab-indicator-background-hover: var(--tds-grey-400);
-  --tds-inline-tabs-tab-color-hover: var(--tds-grey-958);
-  --tds-inline-tabs-tab-color-focus: var(--tds-grey-958);
-  --tds-inline-tabs-tab-color-active: var(--tds-grey-958);
+  --tds-inline-tabs-tab-color-selected: var(--tds-grey-950);
+  --tds-inline-tabs-tab-color-disabled: var(--tds-grey-250);
+  --tds-inline-tabs-tab-indicator-background-hover: var(--tds-grey-850);
+  --tds-inline-tabs-tab-color-hover: var(--tds-grey-950);
+  --tds-inline-tabs-tab-color-focus: var(--tds-grey-950);
+  --tds-inline-tabs-tab-color-active: var(--tds-grey-950);
   --tds-inline-tabs-tab-indicator-background-active: var(--tds-blue-400);
 
   .tds-mode-variant-primary {
@@ -51,17 +50,16 @@
   --tds-inline-tabs-scroll-btn-secondary: var(--tds-grey-800);
 
   /* Tab */
-  --tds-inline-tab-color-opacity: 0.6;
-  --tds-inline-tab-color-opacity-selected: 1;
-  --tds-inline-tabs-tab-color: var(--tds-blue-50);
+
+  --tds-inline-tabs-tab-color: var(--tds-grey-50);
   --tds-inline-tabs-tab-color-selected: var(--tds-grey-50);
-  --tds-inline-tabs-tab-color-disabled: var(--tds-blue-50);
+  --tds-inline-tabs-tab-color-disabled: var(--tds-grey-500);
   --tds-inline-tabs-tab-color-opacity-disabled: 0.38;
   --tds-inline-tab-color-opacity-selected: 1;
   --tds-inline-tabs-tab-color: rgba(228 233 241/60%); //blue-50
   --tds-inline-tabs-tab-color-selected: var(--tds-grey-50);
-  --tds-inline-tabs-tab-color-disabled: var(--tds-blue-50);
-  --tds-inline-tabs-tab-indicator-background-hover: #373d46;
+  --tds-inline-tabs-tab-color-disabled: var(--tds-grey-500);
+  --tds-inline-tabs-tab-indicator-background-hover: var(--tds-grey-50);
   --tds-inline-tabs-tab-color-hover: var(--tds-grey-50);
   --tds-inline-tabs-tab-color-focus: var(--tds-grey-50);
   --tds-inline-tabs-tab-color-active: var(--tds-grey-50);

@@ -22,20 +22,35 @@
     text-align: left;
     outline: none;
     border: none;
-    border-left: 1px solid;
-    border-left-color: transparent;
   }
 
-  ::slotted(*:focus-visible) {
+  ::slotted(*:focus-within)::before {
     @include tds-focus-state;
+
+    content: '';
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
   }
 
   div:not(.selected) {
     background-color: var(--tds-folder-tab-background);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: var(--tds-folder-tab-divider-color);
+    }
 
     ::slotted(*) {
-      border-left-color: var(--tds-folder-tab-divider-color);
-      border-top: 2px solid var(--tds-folder-tab-background);
+      border-top: 2px solid transparent;
       color: var(--tds-folder-tab-item-color);
     }
 
@@ -44,12 +59,14 @@
       cursor: pointer;
 
       ::slotted(*) {
-        border-top-color: var(--tds-folder-tab-background-hover);
+        border-top: 2px solid var(--tds-folder-tab-top-border-hover);
         color: var(--tds-folder-tab-color);
       }
     }
 
     &.disabled {
+      background-color: var(--tds-folder-tab-item-background-disabled);
+
       ::slotted(*) {
         color: var(--tds-folder-tab-item-color-disabled);
       }
@@ -74,7 +91,7 @@
 
     &::after {
       content: ' ';
-      background-color: var(--tds-folder-tab-background-selected);
+      background-color: var(--tds-folder-tab-divider-color);
       width: 1px;
       top: 0;
       bottom: 0;
@@ -87,13 +104,25 @@
     ::slotted(*) {
       color: var(--tds-folder-tab-color);
     }
+
+    // Hover
+    &:hover:not(.disabled) {
+      background-color: var(--tds-folder-tab-background-hover);
+      cursor: pointer;
+
+      ::slotted(*) {
+        color: var(--tds-folder-tab-color);
+      }
+    }
   }
 }
 
 :host(.first) {
-  :not(.selected) {
-    ::slotted(*) {
-      border-left-color: transparent;
-    }
+  ::slotted(*) {
+    border-left-color: transparent;
+  }
+
+  .selected {
+    border-left: none;
   }
 }

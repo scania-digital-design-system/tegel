@@ -12,7 +12,7 @@
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
     font: var(--tds-headline-07) !important;
     letter-spacing: var(--tds-headline-07-ls) !important;
-    color: var(--tds-navigation-tabs-tab-color) !important;
+    color: var(--tds-navigation-tabs-tab-color);
     text-decoration: none;
     display: block;
     position: relative;
@@ -21,7 +21,7 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    padding: 26px 4px;
+    padding: 26px 0;
   }
 
   ::slotted(*:focus-visible)::before {
@@ -29,9 +29,9 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 26px;
-    bottom: 26px;
-    outline: 2px solid var(--tds-blue-400);
+    top: 3px;
+    bottom: 3px;
+    @include tds-focus-state;
   }
 
   .navigation-tab-item:not(.selected)::after {
@@ -41,10 +41,13 @@
 
   .navigation-tab-item {
     position: relative;
-    margin-right: 32px;
 
     &:hover {
       cursor: pointer;
+
+      ::slotted(*) {
+        color: var(--tds-navigation-tabs-tab-color-hover);
+      }
 
       &::after {
         width: 100%;
@@ -66,6 +69,10 @@
     z-index: 1;
   }
 
+  .navigation-tab-item:focus-visible::after {
+    bottom: 3px;
+  }
+
   .selected {
     ::slotted(*) {
       color: var(--tds-navigation-tabs-tab-color-selected);
@@ -78,10 +85,8 @@
   }
 
   .disabled {
-    color: var(--tds-navigation-tabs-tab-color-disabled);
-
     ::slotted(*) {
-      opacity: var(--tds-navigation-tabs-tab-color-opacity-disabled);
+      color: var(--tds-navigation-tabs-tab-color-disabled);
     }
 
     &::after {
@@ -90,6 +95,7 @@
 
     ::slotted(*:hover) {
       cursor: not-allowed;
+      color: var(--tds-navigation-tabs-tab-color-disabled);
     }
 
     ::slotted(*:focus-visible) {
