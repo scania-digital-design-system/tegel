@@ -1,8 +1,10 @@
 /*
 * This file is used for generating the global styles for the Tegel Light package.
 * It is a copy of the global.scss file in the core package, buwithout the web component styles.
-* Once the Web Components imports are removed from the global.scss file, that file can be used for Tegel Light as well. 
+* Once the Web Components imports are removed from the global.scss file, that file can be used for Tegel Light as well.
 */
+
+$local-assets: './assets' !default;
 
 /* Multibrand tokens: Scania colors */
 @import '../../../../color/scania-color-primitives';
@@ -39,7 +41,6 @@
 // Vars
 @import '_variables';
 @import 'scrollbar-vars';
-@import 'focus-vars';
 
 // Utility classes
 @import '_utility-classes';
