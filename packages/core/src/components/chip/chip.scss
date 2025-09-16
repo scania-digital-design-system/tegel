@@ -25,7 +25,7 @@
       letter-spacing: var(--tds-detail-02-ls);
       display: inline-flex;
       align-items: center;
-      border-radius: 16px;
+      border-radius: 32px;
       border: 1px solid var(--tds-chips-border);
       cursor: pointer;
       white-space: nowrap;
@@ -62,56 +62,39 @@
       }
     }
 
-    &.lg {
-      label {
-        height: 32px;
-        padding: 0 16px;
-        gap: 8px;
-      }
+    // Base size styles
+    &.lg label {
+      height: 16px;
+      padding: 8px 16px;
+      gap: 6px;
     }
 
-    &.sm {
-      label {
-        height: 24px;
-        padding: 0 12px;
-        gap: 6px;
-      }
+    &.sm label {
+      height: 16px;
+      padding: 4px 12px;
+      gap: 4px;
     }
 
-    &.sm.prefix {
-      label {
-        padding: 0 12px 0 6px;
-      }
+    // Prefix/suffix overrides
+    &.sm.prefix label {
+      padding: 4px 12px 4px 8px;
+    }
+    &.sm.suffix label {
+      padding: 4px 8px 4px 12px;
+    }
+    &.lg.prefix label {
+      padding: 8px 16px 8px 10px;
+    }
+    &.lg.suffix label {
+      padding: 8px 10px 8px 16px;
     }
 
-    &.sm.suffix {
-      label {
-        padding: 0 6px 0 12px;
-      }
+    // Combined prefix + suffix
+    &.sm.prefix.suffix label {
+      padding: 4px 8px;
     }
-
-    &.lg.prefix {
-      label {
-        padding: 0 16px 0 8px;
-      }
-    }
-
-    &.lg.suffix {
-      label {
-        padding: 0 8px 0 16px;
-      }
-    }
-
-    &.lg.prefix.suffix {
-      label {
-        padding: 0 8px;
-      }
-    }
-
-    &.sm.prefix.suffix {
-      label {
-        padding: 0 6px;
-      }
+    &.lg.prefix.suffix label {
+      padding: 8px 10px;
     }
 
     input {
