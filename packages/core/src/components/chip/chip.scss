@@ -26,11 +26,13 @@
       display: inline-flex;
       align-items: center;
       border-radius: 16px;
+      border: 1px solid var(--tds-chips-border);
       cursor: pointer;
       white-space: nowrap;
 
       &:hover {
         background-color: var(--tds-chips-background-hover);
+        border-color: var(--tds-chips-border-hover);
       }
     }
 
@@ -38,6 +40,7 @@
       label {
         background-color: var(--tds-chips-background-disabled);
         color: var(--tds-chips-text-disabled);
+        border-color: transparent;
         cursor: default;
         pointer-events: none;
       }
@@ -49,11 +52,13 @@
       input[type='radio']:checked:disabled + label {
         background-color: var(--tds-chips-background-active-disabled);
         color: var(--tds-chips-text-checked-disabled);
+        border-color: transparent;
       }
 
       input[type='checkbox']:checked:disabled + label {
         background-color: var(--tds-chips-background-active-disabled);
         color: var(--tds-chips-text-checked-disabled);
+        border-color: transparent;
       }
     }
 
@@ -119,14 +124,17 @@
       @include tds-focus-state;
 
       background-color: var(--tds-chips-background-focus);
+      border-color: transparent;
     }
 
     input:checked + label {
       background-color: var(--tds-chips-background-active);
       color: var(--tds-chips-color-active);
+      border-color: var(--tds-chips-background-active);
 
       &:hover {
         background-color: var(--tds-chips-background-active-hover);
+        border-color: var(--tds-chips-border-selected-hover);
       }
     }
   }
