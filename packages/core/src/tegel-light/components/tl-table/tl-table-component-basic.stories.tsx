@@ -1,0 +1,247 @@
+import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+
+export default {
+  title: 'Tegel Light (CSS)/Table/Basic',
+  argTypes: {
+    compact: {
+      name: 'Compact design',
+      description: 'Enables compact table styling with reduced padding.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    modeVariant: {
+      name: 'Mode variant',
+      description:
+        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
+    verticalDividers: {
+      name: 'Vertical dividers',
+      description: 'Shows vertical dividers between columns.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    responsive: {
+      name: 'Responsive',
+      description: 'Makes table take full width.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    headerTextAlign: {
+      name: 'Header text alignment',
+      description: 'Sets text alignment for header cells only.',
+      control: {
+        type: 'select',
+      },
+      options: ['none', 'left', 'start', 'center', 'right', 'end'],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
+    cellTextAlign: {
+      name: 'Cell text alignment',
+      description: 'Sets text alignment for body cells only.',
+      control: {
+        type: 'select',
+      },
+      options: ['none', 'left', 'start', 'center', 'right', 'end'],
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
+    clickable: {
+      name: 'Clickable',
+      description: 'Makes table rows clickable with pointer cursor.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    noMinWidth: {
+      name: 'No minimum width',
+      description:
+        'Resets min-width rule and enables setting column width value to less than 192px which is the default.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    disablePadding: {
+      name: 'Disable cell padding',
+      description:
+        'By default each cell comes with padding. Disabling padding rule can be useful when a users want to insert another HTML element in cell, eg. input.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    disableHeaderPadding: {
+      name: 'Disable header cell padding',
+      description:
+        'By default each header cell comes with padding. Disabling padding rule can be useful when a users want to insert another HTML element in a header cell, eg. input.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    horizontalScrollWidth: {
+      name: 'Horizontal scrolling table width',
+      description:
+        'Used to set the boundary width of horizontal scrolling. When set, the table will have a fixed width and enable horizontal scrolling.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        defaultValue: { summary: 'none' },
+      },
+    },
+  },
+  args: {
+    modeVariant: 'Inherit from parent',
+    compact: false,
+    verticalDividers: false,
+    responsive: false,
+    headerTextAlign: 'none',
+    cellTextAlign: 'none',
+    clickable: false,
+    noMinWidth: false,
+    disablePadding: false,
+    disableHeaderPadding: false,
+    horizontalScrollWidth: '',
+  },
+};
+
+const Template = ({
+  compact,
+  modeVariant,
+  verticalDividers,
+  responsive,
+  headerTextAlign,
+  cellTextAlign,
+  clickable,
+  noMinWidth,
+  disablePadding,
+  disableHeaderPadding,
+  horizontalScrollWidth,
+}) => {
+  const compactClass = compact ? 'tl-table--compact' : '';
+  const modeVariantClass =
+    modeVariant !== 'Inherit from parent'
+      ? `tl-table--mode-variant-${modeVariant.toLowerCase()}`
+      : '';
+  const verticalDividersClass = verticalDividers ? 'tl-table--vertical-dividers' : '';
+  const responsiveClass = responsive ? 'tl-table--responsive' : '';
+  const headerTextAlignClass =
+    headerTextAlign !== 'none' ? `tl-table--header-text-align-${headerTextAlign}` : '';
+  const cellTextAlignClass =
+    cellTextAlign !== 'none' ? `tl-table--cell-text-align-${cellTextAlign}` : '';
+  const clickableClass = clickable ? 'tl-table--clickable' : '';
+  const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';
+  const disablePaddingClass = disablePadding ? 'tl-table--no-padding' : '';
+  const disableHeaderPaddingClass = disableHeaderPadding ? 'tl-table--no-header-padding' : '';
+  const horizontalScrollClass = horizontalScrollWidth ? 'tl-table--horizontal-scroll' : '';
+
+  // Create inline style for horizontal scroll width
+  const horizontalScrollStyle = horizontalScrollWidth
+    ? `style="width: ${horizontalScrollWidth}px;"`
+    : '';
+
+  return formatHtmlPreview(`
+    <!-- Required stylesheet 
+      "@scania/tegel-light/tl-table.css"
+    -->
+    <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
+        <thead class="tl-table__header">
+          <tr class="tl-table__row">
+            <th class="tl-table__header-cell" data-column="0">Truck Type</th>
+            <th class="tl-table__header-cell" data-column="1">Driver Name</th>
+            <th class="tl-table__header-cell" data-column="2">Country</th>
+            <th class="tl-table__header-cell" data-column="3">Mileage</th>
+          </tr>
+        </thead>
+        <tbody class="tl-table__body">
+          <tr class="tl-table__row">
+            <td class="tl-table__body-cell" data-column="0">Test value 1</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 2</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 3</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 4</td>
+          </tr>
+          <tr class="tl-table__row">
+            <td class="tl-table__body-cell" data-column="0">Test value 5</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 6</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 7</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 8</td>
+          </tr>
+          <tr class="tl-table__row">
+            <td class="tl-table__body-cell" data-column="0">Test value 1</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 2</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 3</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 4</td>
+          </tr>
+          <tr class="tl-table__row">
+            <td class="tl-table__body-cell" data-column="0">Test value 5</td>
+            <td class="tl-table__body-cell" data-column="1">Test value 6</td>
+            <td class="tl-table__body-cell" data-column="2">Test value 7</td>
+            <td class="tl-table__body-cell" data-column="3">Test value 8</td>
+          </tr>
+        </tbody>
+    </table>
+
+    <!-- Script tag for demo purposes -->
+    <script>
+      (function() {
+        const table = document.querySelector('.tl-table');
+        if (!table) return;
+
+        const headerCells = table.querySelectorAll('.tl-table__header-cell');
+        const bodyCells = table.querySelectorAll('.tl-table__body-cell');
+
+        headerCells.forEach(headerCell => {
+          const columnIndex = headerCell.getAttribute('data-column');
+          
+          headerCell.addEventListener('mouseenter', () => {
+            bodyCells.forEach(cell => {
+              if (cell.getAttribute('data-column') === columnIndex) {
+                cell.classList.add('tl-table__body-cell--hover');
+              }
+            });
+          });
+
+          headerCell.addEventListener('mouseleave', () => {
+            bodyCells.forEach(cell => {
+              cell.classList.remove('tl-table__body-cell--hover');
+            });
+          });
+        });
+      })();
+    </script>
+  `);
+};
+
+export const Default = Template.bind({});
