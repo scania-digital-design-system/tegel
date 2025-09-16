@@ -40,6 +40,15 @@ tds-slider {
     width: 100%;
     height: 20px;
     position: relative;
+
+    &:focus-within {
+      .tds-slider__thumb-inner {
+        outline: var(--tds-slider-thumb-focus-outline);
+        box-shadow: var(--tds-slider-thumb-fucus-box-shadow);
+        outline-offset: var(--tds-slider-thumb-focus-outline-offset);
+        z-index: 1;
+      }
+    }
   }
 
   .tds-slider__controls {
