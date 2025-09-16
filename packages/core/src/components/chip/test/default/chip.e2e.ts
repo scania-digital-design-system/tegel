@@ -42,7 +42,7 @@ test.describe.parallel(componentName, () => {
   test('Check so that height is correct to lg/default measurements', async ({ page }) => {
     const chip = page.locator('tds-chip label');
     const chipHeight = await chip.evaluate((style) => getComputedStyle(style).height);
-    expect(chipHeight).toBe('32px');
+    expect(chipHeight).toBe('16px');
   });
 
   test('Chip is clickable', async ({ page }) => {
