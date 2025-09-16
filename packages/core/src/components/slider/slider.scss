@@ -44,7 +44,7 @@ tds-slider {
     &:focus-within {
       .tds-slider__thumb-inner {
         outline: var(--tds-slider-thumb-focus-outline);
-        box-shadow: var(--tds-slider-thumb-fucus-box-shadow);
+        box-shadow: var(--tds-slider-thumb-focus-box-shadow);
         outline-offset: var(--tds-slider-thumb-focus-outline-offset);
         z-index: 1;
       }
@@ -387,7 +387,7 @@ tds-slider {
 .tds-slider {
   .tds-slider__controls {
     .tds-slider__control {
-      cursor: default;
+      cursor: pointer;
 
       &.tds-slider__control-minus,
       &.tds-slider__control-plus {
