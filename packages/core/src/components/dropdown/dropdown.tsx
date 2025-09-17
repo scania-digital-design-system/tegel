@@ -328,7 +328,10 @@ export class TdsDropdown {
     bubbles: true,
     cancelable: false,
   })
-  tdsInput: EventEmitter<InputEvent>;
+  tdsInput: EventEmitter<{
+    value: string;
+    originalEvent: InputEvent;
+  }>;
 
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
@@ -527,8 +530,16 @@ export class TdsDropdown {
   };
 
   private handleFilter = (event) => {
-    this.tdsInput.emit(event);
-    const query = event.target.value.toLowerCase();
+    const inputEl = event.target as HTMLInputElement;
+    const inputValue = inputEl.value;
+
+    // Emit the tdsInput event with the input value
+    this.tdsInput.emit({
+      value: inputValue,
+      originalEvent: event,
+    });
+
+    const query = inputValue.toLowerCase();
     /* Check if the query is empty, and if so, show all options */
     const children = this.getChildren();
 
