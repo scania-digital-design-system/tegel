@@ -103,6 +103,8 @@ export class TdsDropdown {
 
   private inputElement: HTMLInputElement;
 
+  private hasFocus: boolean = false;
+
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
     // Normalize to array
@@ -273,7 +275,7 @@ export class TdsDropdown {
       }
     }
     // Always trigger the focus event to open the dropdown
-    this.handleFocus({});
+    this.handleFocus();
   }
 
   /** Method for closing the Dropdown. */
@@ -340,6 +342,30 @@ export class TdsDropdown {
       if (isClickOutside) {
         this.open = false;
       }
+    }
+  }
+
+  @Listen('focusin')
+  onFocusIn(event: FocusEvent) {
+    // Check if the focus is within this dropdown component
+    if (this.host.contains(event.target as Node)) {
+      if (!this.hasFocus) {
+        this.hasFocus = true;
+        this.tdsFocus.emit(event);
+      }
+    }
+  }
+
+  @Listen('focusout')
+  onFocusOut(event: FocusEvent) {
+    // Only emit blur if focus is actually leaving the entire dropdown component
+    const relatedTarget = event.relatedTarget as Node;
+
+    // If relatedTarget is null (focus going to body/window) or outside the component, emit blur
+    if (this.hasFocus && (!relatedTarget || !this.host.contains(relatedTarget))) {
+      this.hasFocus = false;
+      this.handleBlur();
+      this.tdsBlur.emit(event);
     }
   }
 
@@ -564,20 +590,24 @@ export class TdsDropdown {
     this.internalValue = '';
   };
 
-  private handleFocus = (event) => {
+  private handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
     if (this.multiselect && this.inputElement) {
       this.inputElement.value = '';
     }
-    this.tdsFocus.emit(event);
+    // Focus event is now handled by focusin listener
     if (this.filter) {
       this.handleFilter({ target: { value: '' } });
     }
   };
 
-  private handleBlur = (event) => {
-    this.tdsBlur.emit(event);
+  private handleBlur = () => {
+    // Handle internal state changes when component loses focus
+    this.filterFocus = false;
+    if (this.multiselect && this.inputElement) {
+      this.inputElement.value = this.getValue();
+    }
   };
 
   /**
@@ -693,14 +723,7 @@ export class TdsDropdown {
                   value={this.multiselect && this.filterFocus ? '' : this.getValue()}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
-                  onBlur={(event) => {
-                    this.filterFocus = false;
-                    if (this.multiselect) {
-                      this.inputElement.value = this.getValue();
-                    }
-                    this.handleBlur(event);
-                  }}
-                  onFocus={(event) => this.handleFocus(event)}
+                  onFocus={() => this.handleFocus()}
                   onKeyDown={(event) => {
                     if (event.key === 'Escape') {
                       this.open = false;
