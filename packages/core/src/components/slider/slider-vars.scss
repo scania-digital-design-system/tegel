@@ -11,6 +11,13 @@
   // Thumb
   --tds-slider-thumb-color: var(--tds-grey-950);
   --tds-slider-thumb-disabled: var(--tds-grey-200);
+  --tds-slider-thumb-hover: rgba(48, 60, 97, 0.17); // transparent 200
+  --tds-slider-thumb-pressed: rgba(58, 81, 124, 0.35); // transparent 250
+
+  // Thumb focus
+  --tds-slider-thumb-focus-outline: 2px solid var(--tds-focus-outline-color);
+  --tds-slider-thumb-fucus-box-shadow: 0 0 0 1px var(--tds-white);
+  --tds-slider-thumb-focus-outline-offset: 1px;
 
   // Track
   --tds-slider-track-color: var(--tds-grey-350);
@@ -51,6 +58,13 @@
   // Thumb
   --tds-slider-thumb-color: var(--tds-grey-50);
   --tds-slider-thumb-disabled: var(--tds-grey-600);
+  --tds-slider-thumb-hover: rgba(164, 199, 245, 0.4); // transparent inverse 600
+  --tds-slider-thumb-pressed: rgba(174, 208, 255, 0.49); // transparent inverse 500
+
+  // Thumb focus
+  --tds-slider-thumb-focus-outline: 1px solid var(--tds-white);
+  --tds-slider-thumb-focus-box-shadow: 0 0 0 2px var(--tds-focus-outline-color);
+  --tds-slider-thumb-focus-outline-offset: 2px;
 
   // Track
   --tds-slider-track-color: var(--tds-grey-400);

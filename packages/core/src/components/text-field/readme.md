@@ -63,6 +63,10 @@ Type: `Promise<void>`
 
 ## Dependencies
 
+### Used by
+
+ - [tds-slider](../slider)
+
 ### Depends on
 
 - [tds-tooltip](../tooltip)
@@ -74,6 +78,7 @@ graph TD;
   tds-text-field --> tds-tooltip
   tds-text-field --> tds-icon
   tds-tooltip --> tds-popover-core
+  tds-slider --> tds-text-field
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
