@@ -99,6 +99,8 @@ export class TdsDropdown {
 
   @State() private selectedOptions: string[] = [];
 
+  @State() filterQuery: string = '';
+
   private dropdownList: HTMLDivElement;
 
   private inputElement: HTMLInputElement;
@@ -555,6 +557,7 @@ export class TdsDropdown {
   private handleFilter = (event) => {
     this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
+    this.filterQuery = query;
     /* Check if the query is empty, and if so, show all options */
     const children = this.getChildren();
 
@@ -582,7 +585,10 @@ export class TdsDropdown {
   };
 
   private handleFilterReset = () => {
-    this.reset();
+    // only reset selected values when filterquery is blank
+    if (!this.filterQuery.length) {
+      this.reset();
+    }
     this.inputElement.value = '';
     this.handleFilter({ target: { value: '' } });
     this.inputElement.focus();
@@ -593,7 +599,7 @@ export class TdsDropdown {
   private handleFocus = () => {
     this.open = true;
     this.filterFocus = true;
-    if (this.multiselect && this.inputElement) {
+    if (this.inputElement) {
       this.inputElement.value = '';
     }
     // Focus event is now handled by focusin listener
@@ -605,7 +611,7 @@ export class TdsDropdown {
   private handleBlur = () => {
     // Handle internal state changes when component loses focus
     this.filterFocus = false;
-    if (this.multiselect && this.inputElement) {
+    if (this.inputElement) {
       this.inputElement.value = this.getValue();
     }
   };
@@ -720,7 +726,7 @@ export class TdsDropdown {
                   }}
                   type="text"
                   placeholder={this.filterFocus ? '' : this.placeholder}
-                  value={this.multiselect && this.filterFocus ? '' : this.getValue()}
+                  value={this.multiselect && this.filterFocus ? this.filterQuery : this.getValue()}
                   disabled={this.disabled}
                   onInput={(event) => this.handleFilter(event)}
                   onFocus={() => this.handleFocus()}
