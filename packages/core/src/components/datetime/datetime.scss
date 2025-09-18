@@ -93,7 +93,8 @@
   position: relative;
   height: 56px;
   box-sizing: border-box;
-  background-color: var(--tds-datetime-background);
+  background-color: unset;
+
   border-bottom: 1px solid var(--tds-datetime-border-bottom);
   transition: border-bottom-color 200ms ease;
 
