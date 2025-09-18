@@ -155,7 +155,8 @@
 .tds-form-datetime {
   display: block;
   min-width: 208px;
-  background: unset;
+  // background: unset;
+  background-color: var(--tds-datetime-background);
 
   &-nomin {
     min-width: auto;
