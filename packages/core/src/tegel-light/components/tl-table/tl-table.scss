@@ -69,26 +69,24 @@
   }
 
   &--zebra-rows-odd {
-    .tl-table__row:nth-child(odd) {
+    .tl-table__body .tl-table__row:nth-child(odd) {
       background-color: var(--table-zebra-mode);
     }
   }
 
   &--zebra-rows-even {
-    .tl-table__row:nth-child(even) {
+    .tl-table__body .tl-table__row:nth-child(even) {
       background-color: var(--table-zebra-mode);
     }
   }
 
   &--zebra-columns-odd {
-    .tl-table__header-cell:nth-child(odd),
     .tl-table__body-cell:nth-child(odd) {
       background-color: var(--table-zebra-mode);
     }
   }
 
   &--zebra-columns-even {
-    .tl-table__header-cell:nth-child(even),
     .tl-table__body-cell:nth-child(even) {
       background-color: var(--table-zebra-mode);
     }
