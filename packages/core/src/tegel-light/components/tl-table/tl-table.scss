@@ -62,8 +62,8 @@
   }
 
   &--vertical-dividers {
-    .tl-table__header-cell,
-    .tl-table__body-cell {
+    .tl-table__header-cell:not(:last-child),
+    .tl-table__body-cell:not(:last-child) {
       border-right: 1px solid var(--table-divider);
     }
   }
@@ -247,6 +247,14 @@
 
   &:hover {
     background-color: var(--table-header-hover);
+  }
+
+  &:first-of-type {
+    border-top-left-radius: 4px;
+  }
+
+  &:last-of-type {
+    border-top-right-radius: 4px;
   }
 
   &--checkbox {

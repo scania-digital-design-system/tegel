@@ -179,8 +179,8 @@ const Template = ({
     <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
         <thead class="tl-table__header">
           <tr class="tl-table__row">
-            <th class="tl-table__header-cell" data-column="0">Truck Type</th>
-            <th class="tl-table__header-cell" data-column="1">Driver Name</th>
+            <th class="tl-table__header-cell" data-column="0">Truck type</th>
+            <th class="tl-table__header-cell" data-column="1">Driver name</th>
             <th class="tl-table__header-cell" data-column="2">Country</th>
             <th class="tl-table__header-cell" data-column="3">Mileage</th>
           </tr>
