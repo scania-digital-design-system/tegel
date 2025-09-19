@@ -97,7 +97,7 @@
 
 .tl-card__divider {
   display: block;
-  margin: 16px 16px 0;
+  margin: var(--card-divider-margin);
   background-color: var(--card-divider);
   block-size: 1px;
 }

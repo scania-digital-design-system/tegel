@@ -3,8 +3,6 @@
   --card-background-primary: var(--component-card-primary);
   --card-background-secondary: var(--component-card-secondary);
   --card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-
-  // --card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
   --card-box: var(--card-box-primary); //box shadow
   --card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
@@ -21,6 +19,7 @@
   --card-body-padding: 0 16px;
   --card-header-padding: 16px;
   --card-slotted-padding: 16px;
+  --card-divider-margin: 16px 16px 0;
 
   &.tl-card--mode-variant-primary {
     --card-box: var(--card-box-primary);
@@ -64,10 +63,11 @@
   --card-box-hover: none;
   --card-box-pressed: none;
 
-  /* Paddings */
+  /* Paddings and margins */
   --card-body-padding: 0;
   --card-header-padding: 16px 16px 16px 0;
   --card-slotted-padding: 16px 16px 16px 0;
+  --card-divider-margin: 16px 0 0;
 
   &.tl-card--mode-variant-primary {
     --card-box: none;
