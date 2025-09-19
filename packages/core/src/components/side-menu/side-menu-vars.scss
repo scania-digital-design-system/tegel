@@ -4,9 +4,9 @@
   --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
   --tds-sidebar-item-state-focus: var(--tds-grey-50);
   --tds-sidebar-item-state-border-focus: var(--tds-blue-400);
-  --tds-sidebar-item-state-hover: var(--tds-grey-100);
+  --tds-sidebar-item-state-hover: var(--tds-grey-50);
   --tds-sidebar-item-state-active: var(--tds-grey-300);
-  --tds-sidemenu-item-state-active: var(--tds-grey-300);
+  --tds-sidemenu-item-state-active: var(--tds-grey-150);
   --tds-sidebar-item-state-selected: var(--tds-grey-100);
 
   // TODO - Not sure why this was black before?
@@ -15,7 +15,7 @@
   --tds-sidebar-side-menu-background-cover: var(--tds-white);
   --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-300);
   --tds-sidebar-side-menu-bottom-menu-background: var(--tds-white);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-300);
+  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-250);
   --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-300);
   --tds-sidebar-side-menu-single-item-color: var(--tds-grey-958);
   --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-100);
@@ -27,6 +27,8 @@
   --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-300);
   --tds-sidebar-side-menu-subnav-background: var(--tds-white);
   --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
+  --tds-side-menu-item-hover-indicator: var(--tds-grey-350);
+  --tds-side-menu-item-pressed-indicator: var(--tds-grey-850);
 }
 
 .tds-mode-dark {
@@ -43,7 +45,7 @@
   --tds-sidebar-side-menu-background-cover: var(--tds-grey-958);
   --tds-sidebar-side-menu-mobile-header-border-bottom: var(--tds-grey-850);
   --tds-sidebar-side-menu-bottom-menu-background: var(--tds-grey-958);
-  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-850);
+  --tds-sidebar-side-menu-bottom-menu-border-top: var(--tds-grey-600);
   --tds-sidebar-side-menu-single-item-border-bottom: var(--tds-grey-850);
   --tds-sidebar-side-menu-single-item-color: var(--tds-grey-50);
   --tds-sidebar-side-menu-single-item-background-selected: var(--tds-grey-850);
@@ -55,4 +57,6 @@
   --tds-sidebar-side-menu-single-subitem-divider: var(--tds-grey-700);
   --tds-sidebar-side-menu-subnav-background: var(--tds-grey-958);
   --tds-sidebar-side-menu-single-subitem-selected-border-color: var(--tds-blue-400);
+  --tds-side-menu-item-hover-indicator: var(--tds-grey-400);
+  --tds-side-menu-item-pressed-indicator: var(--tds-grey-50);
 }

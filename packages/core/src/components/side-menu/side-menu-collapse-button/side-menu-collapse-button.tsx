@@ -64,26 +64,21 @@ export class TdsSideMenuCollapseButton {
 
   render() {
     return (
-      <Host
-        role="button"
-        tabindex="0"
-        aria-expanded={!this.collapsed ? 'true' : 'false'}
-        onClick={() => {
-          this.handleClick();
-        }}
-      >
+      <Host>
         <div
           class={{
             'wrapper': true,
             'state-collapsed': this.collapsed,
           }}
         >
-          <tds-side-menu-item
-            class={{
-              button: true,
-            }}
-          >
-            <a>
+          <tds-side-menu-item class={{ button: true }}>
+            <button
+              type="button"
+              aria-expanded={!this.collapsed ? 'true' : 'false'}
+              onClick={() => {
+                this.handleClick();
+              }}
+            >
               <svg
                 class="icon"
                 slot="icon"
@@ -99,7 +94,7 @@ export class TdsSideMenuCollapseButton {
                 />
               </svg>
               {!this.collapsed && <slot></slot>}
-            </a>
+            </button>
           </tds-side-menu-item>
         </div>
       </Host>
