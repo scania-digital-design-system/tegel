@@ -1,0 +1,83 @@
+.tl-header {
+  /* Base background & text */
+  --header-background: var(--component-header-color-background);
+  --header-nav-item: var(--component-header-color-foreground-strong);
+
+  /* Nav-item states */
+  --header-nav-item-background-hover: var(--color-background-surface-100);
+  --header-nav-item-background-selected: var(--color-background-surface-100);
+  --header-nav-item-border-pressed: var(--color-foreground-border-accent-focus);
+  --header-item-hover: var(--component-header-color-background-hover);
+
+  /* Dropdown menu items */
+  --header-nav-dropdown-item-background: var(--component-header-dropdown-item-background);
+  --header-nav-dropdown-item-border: var(--color-foreground-border-discrete);
+
+  /* Dropdown “opened” state */
+  --tds-header-nav-item-dropdown-opened-background: var(--tds-white);
+  --tds-header-nav-item-dropdown-opened-background-hover: var(--tds-grey-100);
+  --tds-header-nav-item-dropdown-opened-background-selected: var(--tds-grey-100);
+  --tds-header-nav-item-dropdown-opened-background-pressed: var(--tds-grey-300);
+  --header-nav-item-dropdown-opened: var(--component-header-color-foreground-selected);
+
+  /* Basic element (“Bento”) separators & backgrounds */
+  --header-basic-element-border: var(--component-header-color-background-border);
+  --header-basic-element-border-open: var(--component-header-color-background-open);
+  --header-basic-element-background-pressed: var(--component-header-color-background-pressed);
+  --header-basic-element-background-selected: var(--component-header-color-background-selected);
+
+  /* Avatar dropdown */
+  --header-avatar-item-background: var(--component-header-avatar-item-background);
+  --header-avatar-item: var(--color-foreground-text-soft);
+
+  /* App launcher (list) */
+  --header-app-launcher-menu-background: var(--component-header-app-launcher-meny-background);
+  --header-app-launcher-category-title: var(--color-foreground-text-soft);
+  --header-app-launcher-item: var(--color-foreground-text-defined);
+
+  /* App launcher (grid) */
+  --header-app-launcher-grid-category-title: var(--color-foreground-text-soft);
+  --header-app-launcher-grid-hover-background: var(--color-background-surface-200);
+
+  /* Brand symbol */
+  --header-brand-item-width: var(--component-header-item-width);
+
+  /* Brand logo */
+  --header-brand-logo-size: var(--component-header-brand-logo-size);
+
+  /* Header item */
+  --header-item-image-left: var(--component-header-item-image-left);
+  --header-item-image-size: var(--component-header-item-image-size);
+  --header-item-border-right: var(--component-header-item-border-right);
+
+  /* Header title */
+  --header-font-weight: var(--component-header-font-weight);
+  --header-font-family-headline: var(--component-header-font-family-headline);
+  --header-text-transform: var(--component-header-text-transform);
+  --header-dropdown-box-shadow: var(--component-header-dropdown-box-shadow);
+}
+
+.scania .tl-header {
+  /* Brand logo */
+  --header-logotype-local: var(--tds-background-image-scania-symbol-svg-local);
+  --header-logotype-cdn: var(--tds-background-image-scania-symbol-svg);
+  --component-header-space-profile-padding: 16px;
+}
+
+.traton {
+  .tds-mode-dark .tl-header {
+    /* Brand logo */
+    --header-logotype-local: var(--traton-logotype-white-svg-local);
+    --header-logotype-cdn: var(--traton-logotype-white-svg);
+  }
+
+  .tds-mode-light .tl-header {
+    /* Brand logo */
+    --header-logotype-local: var(--traton-logotype-black-svg-local);
+    --header-logotype-cdn: var(--traton-logotype-black-svg);
+  }
+
+  .tl-header {
+    --component-header-space-profile-padding: 20px;
+  }
+}
