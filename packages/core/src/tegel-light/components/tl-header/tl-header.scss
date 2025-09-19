@@ -1,11 +1,12 @@
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/flex-center';
 @import '../../../mixins/z-index';
+@import './tl-header-vars';
 
 .tl-header {
   display: block;
   height: var(--tds-header-height);
-  background-color: var(--component-header-color-background);
+  background-color: var(--header-background);
   width: 100%;
   z-index: var(--tds-z-index-header);
 }
@@ -13,7 +14,7 @@
 .tl-header__nav {
   @include tds-box-sizing;
 
-  background-color: var(--component-header-color-background);
+  background-color: var(--header-background);
   width: 100%;
   display: block;
 }
@@ -25,11 +26,38 @@
   list-style: none;
   padding: 0;
   margin: 0;
+
+  .tl-header-item {
+    display: none;
+
+    &.tl-header-item--hamburger {
+      display: block;
+    }
+  }
+
+  .tl-header-dropdown {
+    display: none;
+
+    &.tl-header-dropdown__launcher-grid,
+    &.tl-header-dropdown__launcher-list {
+      display: block;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .tl-header-item {
+      display: block;
+    }
+
+    .tl-header-dropdown {
+      display: block;
+    }
+  }
 }
 
 .tl-header__middle-spacer {
   display: block;
   flex-grow: 1;
   height: var(--tds-header-height);
-  border-right: 1px solid var(--tds-header--basic-element-border);
+  border-right: 1px solid var(--header-basic-element-border);
 }
