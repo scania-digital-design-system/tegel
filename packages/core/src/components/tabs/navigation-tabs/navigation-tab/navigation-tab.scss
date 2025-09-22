@@ -69,7 +69,7 @@
     z-index: 1;
   }
 
-  .navigation-tab-item:focus-visible::after {
+  .navigation-tab-item:hover:focus-within::after {
     bottom: 3px;
   }
 
