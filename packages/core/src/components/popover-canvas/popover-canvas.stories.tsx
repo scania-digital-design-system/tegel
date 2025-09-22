@@ -42,14 +42,27 @@ export default {
         defaultValue: { summary: 'none' },
       },
     },
+    modeVariant: {
+      name: 'Mode variant',
+      description:
+        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
   },
   args: {
+    modeVariant: 'Inherit from parent',
     canvasPosition: 'Auto',
     animation: 'none',
   },
 };
 
-const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
+const ComponentPopoverCanvas = ({ canvasPosition, animation, modeVariant }) => {
   const canvasPosLookup = {
     'Bottom': 'bottom',
     'Bottom start': 'bottom-start',
@@ -65,6 +78,8 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
     'Right end': 'right-end',
     'Auto': 'auto',
   };
+
+  const modeVariantValue = modeVariant === 'Inherit from parent' ? '' : modeVariant.toLowerCase();
 
   return formatHtmlPreview(
     `
@@ -89,7 +104,9 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation }) => {
         placement="${canvasPosLookup[canvasPosition]}"
         animation="${animation}"
         selector="#trigger"
-        class="tds-u-p2">
+        class="tds-u-p2"
+        ${modeVariantValue ? `mode-variant="${modeVariantValue}"` : ''}
+      >
         <h2 class="tds-headline-02 tds-u-mt0">A Popover Canvas!</h2>
         <p class="tds-body-01">
           Where you can put anything you want!
