@@ -223,7 +223,7 @@
   .tds-datetime-input-md,
   .tds-datetime-input-sm {
     border-radius: 0;
-    @include tds-focus-state-datetime;
+    @include tds-focus-state-inset;
   }
 
   .tds-datetime-container {
