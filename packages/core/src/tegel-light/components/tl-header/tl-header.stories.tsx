@@ -9,27 +9,27 @@ export default {
   argTypes: {
     includeTitle: {
       control: 'boolean',
-      name: 'Include title?',
+      name: 'Include title',
     },
     includeHamburger: {
       control: 'boolean',
-      name: 'Include hamburger?',
+      name: 'Include hamburger',
     },
     includeBentoGrid: {
       control: 'boolean',
-      name: 'Include bento? (Grid)',
+      name: 'Include bento (Grid)',
     },
     includeBentoList: {
       control: 'boolean',
-      name: 'Include bento? (List)',
+      name: 'Include bento (List)',
     },
     includeHeaderItem: {
       control: 'boolean',
-      name: 'Include header item?',
+      name: 'Include header item',
     },
     includeHeaderItemIconOnly: {
       control: 'boolean',
-      name: 'Include header item(icon only)?',
+      name: 'Include header item(icon only)',
     },
     icon: {
       name: 'Icon',
@@ -50,11 +50,11 @@ export default {
     },
     includeDropdown: {
       control: 'boolean',
-      name: 'Include dropdown?',
+      name: 'Include dropdown',
     },
     isDropdownSelected: {
       control: 'boolean',
-      name: 'Dropdown selected?',
+      name: 'Dropdown selected',
       if: {
         arg: 'includeDropdown',
         truthy: true,
@@ -62,15 +62,15 @@ export default {
     },
     includeUserProfile: {
       control: 'boolean',
-      name: 'Include user profile?',
+      name: 'Include user profile',
     },
     includeBrandSymbol: {
       control: 'boolean',
-      name: 'Include brand symbol?',
+      name: 'Include brand symbol',
     },
     isHamburgerPressed: {
       control: 'boolean',
-      name: 'Hamburger pressed?',
+      name: 'Hamburger pressed',
       if: {
         arg: 'includeHamburger',
         truthy: true,
@@ -78,7 +78,7 @@ export default {
     },
     isHamburgerSelected: {
       control: 'boolean',
-      name: 'Hamburger selected?',
+      name: 'Hamburger selected',
       if: {
         arg: 'includeHamburger',
         truthy: true,
