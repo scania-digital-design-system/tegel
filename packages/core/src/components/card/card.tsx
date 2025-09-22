@@ -51,6 +51,17 @@ export class TdsCard {
    */
   @Prop() cardId: string = generateUniqueId();
 
+  /**
+   * Enables expandable behaviour.
+   * When true, clicking the header toggles content visibility.
+   */
+  @Prop() expandable: boolean = false;
+
+  /**
+   * Tracks the current expanded state when expandable is enabled.
+   */
+  @Prop({ mutable: true, reflect: true }) expanded: boolean = false;
+
   /** Sends unique Card identifier when the Card is clicked, if clickable=true */
   @Event({
     eventName: 'tdsClick',
@@ -61,6 +72,13 @@ export class TdsCard {
   tdsClick: EventEmitter<{
     cardId: string;
   }>;
+
+  private toggleExpand = () => {
+    if (this.expandable) {
+      this.expanded = !this.expanded;
+      console.log(this.expanded);
+    }
+  };
 
   handleClick = () => {
     this.tdsClick.emit({
@@ -73,7 +91,9 @@ export class TdsCard {
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesThumbnailSlot = hasSlot('thumbnail', this.host);
     return (
-      <div class="card-header">
+      <div
+        class={{ 'card-header': true, 'expandable': this.expandable, 'expanded': this.expanded }}
+      >
         {usesThumbnailSlot && <slot name="thumbnail"></slot>}
         <div class="header-subheader" id={`header-${this.cardId}`}>
           {this.header && <span class="header">{this.header}</span>}
@@ -81,6 +101,14 @@ export class TdsCard {
           {this.subheader && <span class="subheader">{this.subheader}</span>}
           {usesSubheaderSlot && <slot name="subheader"></slot>}
         </div>
+        {this.expandable && (
+          <tds-icon
+            name="chevron_down"
+            size="16px"
+            class={{ 'chevron-icon': true, 'rotated': this.expanded }}
+            onClick={this.toggleExpand}
+          ></tds-icon>
+        )}
       </div>
     );
   };

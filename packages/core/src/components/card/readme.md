@@ -14,6 +14,8 @@
 | `bodyImgAlt`     | `body-img-alt`    | Alt text for the body image                                                                                                                                                                           | `string`                           | `undefined`          |
 | `cardId`         | `card-id`         | ID for the Card, must be unique.  **NOTE**: If you're listening for Card events, you need to set this ID yourself to identify the Card, as the default ID is random and will be different every time. | `string`                           | `generateUniqueId()` |
 | `clickable`      | `clickable`       | Makes the Card clickable.                                                                                                                                                                             | `boolean`                          | `false`              |
+| `expandable`     | `expandable`      | Enables expandable behaviour. When true, clicking the header toggles content visibility.                                                                                                              | `boolean`                          | `false`              |
+| `expanded`       | `expanded`        | Tracks the current expanded state when expandable is enabled.                                                                                                                                         | `boolean`                          | `false`              |
 | `header`         | `header`          | Text in the header                                                                                                                                                                                    | `string`                           | `undefined`          |
 | `imagePlacement` | `image-placement` | Placement of the header                                                                                                                                                                               | `"above-header" \| "below-header"` | `'below-header'`     |
 | `modeVariant`    | `mode-variant`    | Variant of the Card based on the theme used.                                                                                                                                                          | `"primary" \| "secondary"`         | `null`               |
@@ -44,11 +46,13 @@
 
 ### Depends on
 
+- [tds-icon](../icon)
 - [tds-divider](../divider)
 
 ### Graph
 ```mermaid
 graph TD;
+  tds-card --> tds-icon
   tds-card --> tds-divider
   style tds-card fill:#f9f,stroke:#333,stroke-width:4px
 ```
