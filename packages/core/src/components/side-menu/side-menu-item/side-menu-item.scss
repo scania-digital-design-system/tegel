@@ -49,7 +49,7 @@
 
     ::slotted(a:focus-visible),
     ::slotted(button:focus-visible) {
-      @include tds-focus-state-side-menu;
+      @include tds-focus-state-inset;
     }
 
     &:hover {
