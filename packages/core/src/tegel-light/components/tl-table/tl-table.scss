@@ -266,7 +266,7 @@
     width: 48px;
     padding: 0;
     text-align: center;
-    background-color: var(--table-header) !important;
+    background-color: var(--table-header);
   }
 }
 
@@ -285,7 +285,7 @@
   }
 
   &--column-highlight {
-    background-color: var(--table-body-cell-hover) !important;
+    background-color: var(--table-body-cell-hover);
   }
 
   &--checkbox {
@@ -293,6 +293,6 @@
     width: 48px;
     padding: 0;
     text-align: center;
-    background-color: inherit !important;
+    background-color: inherit;
   }
 }
