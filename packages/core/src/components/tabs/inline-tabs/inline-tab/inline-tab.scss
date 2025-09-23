@@ -13,7 +13,7 @@
     /* !important is needed here to prevent this from being overwritten by our CSS-reset. */
     font: var(--tds-headline-07) !important;
     letter-spacing: var(--tds-headline-07-ls) !important;
-    color: var(--tds-navigation-tabs-tab-color);
+    color: var(--tds-inline-tabs-tab-color);
     text-decoration: none;
     display: block;
     position: relative;
@@ -22,18 +22,18 @@
     background-color: transparent;
     border: 0;
     width: 100%;
-    padding: 20px 4px;
+    padding: 20px 0;
   }
 
   ::slotted(*:focus-visible)::before {
-    @include tds-focus-state;
-
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     top: 3px;
     bottom: 3px;
+    outline: 2px solid var(--tds-blue-400);
+    @include tds-focus-state;
   }
 
   .inline-tab-item:not(.selected)::after {
@@ -43,14 +43,13 @@
 
   .inline-tab-item {
     position: relative;
-    margin-right: 32px;
 
     &:hover {
+      cursor: pointer;
+
       ::slotted(*) {
         color: var(--tds-inline-tabs-tab-color-hover);
       }
-
-      cursor: pointer;
 
       &::after {
         width: 100%;
@@ -72,6 +71,10 @@
     z-index: 1;
   }
 
+  .inline-tab-item:hover:focus-within::after {
+    bottom: 3px;
+  }
+
   .selected {
     ::slotted(*) {
       color: var(--tds-inline-tabs-tab-color-selected);
@@ -84,22 +87,21 @@
   }
 
   .disabled {
-    &::after {
-      content: none;
-    }
-
     ::slotted(*) {
       color: var(--tds-inline-tabs-tab-color-disabled);
     }
 
+    &::after {
+      content: none;
+    }
+
     ::slotted(*:hover) {
-      color: var(--tds-inline-tabs-tab-color-disabled);
       cursor: not-allowed;
+      color: var(--tds-inline-tabs-tab-color-disabled);
     }
 
     ::slotted(*:focus-visible) {
       outline: none;
-      box-shadow: none;
     }
   }
 }
