@@ -105,7 +105,7 @@ export class TdsCard {
             type="button"
             variant="ghost"
             size="sm"
-            tds-aria-label="Icon button"
+            tds-aria-label="Toggle card content"
             onClick={this.toggleExpand}
           >
             <tds-icon
