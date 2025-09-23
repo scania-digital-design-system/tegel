@@ -76,7 +76,6 @@ export class TdsCard {
   private toggleExpand = () => {
     if (this.expandable) {
       this.expanded = !this.expanded;
-      console.log(this.expanded);
     }
   };
 
