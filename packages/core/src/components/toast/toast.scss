@@ -16,31 +16,31 @@
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--tds-toast-icon-color-info);
+      border-left: 4px solid var(--tds-toast-color-info);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-info);
+        color: var(--tds-toast-color-info);
       }
     }
 
     &.success {
-      border-left: 4px solid var(--tds-toast-icon-color-success);
+      border-left: 4px solid var(--tds-toast-color-success);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-success);
+        color: var(--tds-toast-color-success);
       }
     }
 
     &.error {
-      border-left: 4px solid var(--tds-toast-icon-color-error);
+      border-left: 4px solid var(--tds-toast-color-error);
 
       tds-icon {
-        color: var(--tds-toast-icon-color-error);
+        color: var(--tds-toast-color-error);
       }
     }
 
     &.warning {
-      border-left: 4px solid var(--tds-toast-icon-color-warning);
+      border-left: 4px solid var(--tds-toast-color-warning);
 
       tds-icon {
         color: var(--tds-toast-icon-color-warning);
