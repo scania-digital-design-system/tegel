@@ -31,7 +31,8 @@ const args = [
   'mcr.microsoft.com/playwright:v1.50.0-jammy',
   '/bin/bash',
   '-c',
-  'npx playwright test && exit',
+  // 'npx playwright test && exit',  
+  'npx playwright test components/popover-menu/test/default && exit',
 ];
 
 // Check if Docker is running

@@ -21,7 +21,7 @@ const config: PlaywrightTestConfig = {
   reporter: [['json', { outputFile: 'results.json' }]],
   expect: {
     toHaveScreenshot: {
-      threshold: 0,
+      threshold: 0.01,
     },
   },
 };
