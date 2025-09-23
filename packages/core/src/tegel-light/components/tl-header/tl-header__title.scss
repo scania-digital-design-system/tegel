@@ -1,7 +1,7 @@
 @import './tl-header-vars';
 @import '../../../mixins/box-sizing';
 
-.tl-header-title {
+.tl-header__title {
   all: unset;
 
   @include tds-box-sizing;
@@ -10,7 +10,7 @@
   height: 100%;
 }
 
-.tl-header-title__text {
+.tl-header__title-text {
   font-size: 14px;
   padding: 4px 32px 0 16px;
   color: var(--header-nav-item);

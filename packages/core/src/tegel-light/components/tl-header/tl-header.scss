@@ -27,29 +27,29 @@
   padding: 0;
   margin: 0;
 
-  .tl-header-item {
+  .tl-header__item {
     display: none;
 
-    &.tl-header-item--hamburger {
+    &.tl-header__item-hamburger {
       display: block;
     }
   }
 
-  .tl-header-dropdown {
+  .tl-header__dropdown {
     display: none;
 
-    &.tl-header-dropdown__launcher-grid,
-    &.tl-header-dropdown__launcher-list {
+    &.tl-header__dropdown-launcher-grid,
+    &.tl-header__dropdown-launcher-list {
       display: block;
     }
   }
 
   @media (min-width: 992px) {
-    .tl-header-item {
+    .tl-header__item {
       display: block;
     }
 
-    .tl-header-dropdown {
+    .tl-header__dropdown {
       display: block;
     }
   }

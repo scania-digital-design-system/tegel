@@ -3,11 +3,11 @@
 @import './tl-header-vars';
 @import '../../../../../../typography/utilities/typography-utility';
 
-.tl-header-item {
+.tl-header__item {
   height: 100%;
 
   &--pressed {
-    .tl-header-item__wrapper {
+    .tl-header__item-wrapper {
       padding-top: 2px;
       padding-bottom: 2px;
       background-color: var(--header-basic-element-background-selected);
@@ -16,7 +16,7 @@
   }
 
   &--selected:not(&--pressed) {
-    .tl-header-item__wrapper {
+    .tl-header__item-wrapper {
       padding-top: 4px;
       border-bottom-style: solid;
       border-bottom-width: 4px;
@@ -25,7 +25,7 @@
   }
 }
 
-.tl-header-item__wrapper {
+.tl-header__item-wrapper {
   all: unset;
   @include tds-box-sizing;
   @include headline-07;
@@ -41,7 +41,7 @@
   align-items: center;
   gap: 8px;
 
-  &:has(.tl-header-brand-symbol) {
+  &:has(.tl-header__brand-symbol) {
     padding: 0 19px;
   }
 
