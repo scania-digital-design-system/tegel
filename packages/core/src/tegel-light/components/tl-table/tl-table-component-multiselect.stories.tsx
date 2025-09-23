@@ -4,6 +4,12 @@ export default {
   title: 'Tegel Light (CSS)/Table/Multiselect',
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component:
+          'Multiselect table component with checkbox selection. <br> ⚠️ Note: Interactive effects like column hover highlighting and multiselect functionality require JavaScript for full functionality.',
+      },
+    },
   },
   argTypes: {
     modeVariant: {
@@ -232,7 +238,7 @@ const MultiselectTemplate = ({
       </tbody>
     </table>
 
-    <!-- Script tag for demo purposes -->
+    <!-- Script tag for demo purposes - Multiselect functionality and column hover highlighting require JavaScript -->
     <script>
     function setupMultiselectDemo() {
       const table = document.querySelector('.tl-table');

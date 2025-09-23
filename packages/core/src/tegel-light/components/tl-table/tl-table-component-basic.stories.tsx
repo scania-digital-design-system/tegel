@@ -2,6 +2,14 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: 'Tegel Light (CSS)/Table/Basic',
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Basic table component with various styling options. <br>⚠️ Note: Interactive effects like column hover highlighting require JavaScript for full functionality.',
+      },
+    },
+  },
   argTypes: {
     compact: {
       name: 'Compact design',
@@ -213,7 +221,7 @@ const Template = ({
         </tbody>
     </table>
 
-    <!-- Script tag for demo purposes -->
+    <!-- Script tag for demo purposes - Column hover highlighting requires JavaScript -->
     <script>
       (function() {
         const table = document.querySelector('.tl-table');

@@ -2,7 +2,14 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: 'Tegel Light (CSS)/Table/Zebra',
-
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Zebra table component with alternating row/column patterns. <br> ⚠️ Note: Interactive effects like column hover highlighting require JavaScript for full functionality.',
+      },
+    },
+  },
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
@@ -240,7 +247,7 @@ const Template = ({
         </tbody>
     </table>
 
-    <!-- Script tag for demo purposes -->
+    <!-- Script tag for demo purposes - Column hover highlighting requires JavaScript -->
     <script>
       (function() {
         const table = document.querySelector('.tl-table');
