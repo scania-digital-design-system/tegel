@@ -280,6 +280,10 @@
     width: 48px;
     padding: 0;
     text-align: center;
+
+    &:hover {
+      background-color: var(--table-header) !important;
+    }
   }
 }
 
@@ -306,5 +310,9 @@
     width: 48px;
     padding: 0;
     text-align: center;
+
+    &:hover {
+      background-color: var(--table-body-row) !important;
+    }
   }
 }
