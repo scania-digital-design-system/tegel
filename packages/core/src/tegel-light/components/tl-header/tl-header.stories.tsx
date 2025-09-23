@@ -120,32 +120,12 @@ const Template = ({
   formatHtmlPreview(`
 
 <!-- Required stylesheet 
-    "@scania/tegel-light/tl-header.css";
-    ${includeTitle ? '@scania/tegel-light/tl-header__title.css' : ''}
-    ${
-      includeHamburger ||
-      includeBentoGrid ||
-      includeBrandSymbol ||
-      includeHeaderItem ||
-      includeHeaderItemIconOnly
-        ? '@scania/tegel-light/tl-header__item.css'
-        : ''
-    }
-    ${includeBrandSymbol ? '@scania/tegel-light/tl-header__brand-symbol.css' : ''}
-    ${
-      includeDropdown || includeBentoGrid || includeBentoList || includeUserProfile
-        ? '@scania/tegel-light/tl-header__dropdown.css'
-        : ''
-    }
-    ${
-      includeDropdown ||
-      includeBentoGrid ||
-      includeBentoList ||
-      includeUserProfile ||
-      includeHeaderItemIconOnly
-        ? '@scania/tegel-light/tl-icon.css'
-        : ''
-    }
+    "@scania/tegel-light/tl-header.css"
+    ${includeHeaderItemIconOnly ? '"@scania/tegel-light/tl-icon.css"' : ''}
+-->
+
+<!-- Optional stylesheets 
+    "@scania/tegel-light/tl-icon.css"
 -->
     
     <header class="tl-header">

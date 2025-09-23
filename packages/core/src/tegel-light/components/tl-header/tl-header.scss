@@ -3,6 +3,12 @@
 @import '../../../mixins/z-index';
 @import './tl-header-vars';
 
+/* Header Elements */
+@import 'item';
+@import 'dropdown';
+@import 'title';
+@import 'brand-symbol';
+
 .tl-header {
   display: block;
   height: var(--tds-header-height);
