@@ -92,6 +92,19 @@
     }
   }
 
+  &--zebra-rows-odd,
+  &--zebra-rows-even,
+  &--zebra-columns-odd,
+  &--zebra-columns-even {
+    .tl-table__body .tl-table__row:hover {
+      background-color: var(--table-body-row-hover) !important;
+
+      .tl-table__body-cell {
+        background-color: var(--table-body-row-hover) !important;
+      }
+    }
+  }
+
   &--mode-variant-primary {
     --table-body-row: var(--component-table-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
@@ -260,6 +273,10 @@
     width: 48px;
     padding: 0;
     text-align: center;
+
+    &:hover {
+      background-color: var(--table-header) !important;
+    }
   }
 }
 
@@ -276,7 +293,7 @@
   }
 
   &--hover {
-    background-color: var(--table-body-cell-hover);
+    background-color: var(--table-body-cell-hover) !important;
   }
 
   &--checkbox {
@@ -284,5 +301,9 @@
     width: 48px;
     padding: 0;
     text-align: center;
+
+    &:hover {
+      background-color: var(--table-body-row) !important;
+    }
   }
 }
