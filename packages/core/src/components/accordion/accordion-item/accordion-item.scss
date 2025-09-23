@@ -134,6 +134,16 @@
     @include tds-focus-state;
 
     background-color: var(--tds-accordion-background-focus);
+    margin-bottom: -1px;
+    border-bottom: 1px solid var(--tds-accordion-border);
+
+    &:hover {
+      background-color: var(--tds-accordion-background-hover);
+    }
+
+    &:active {
+      background-color: var(--tds-accordion-background-active);
+    }
   }
 
   &[disabled='true']:focus-visible {
