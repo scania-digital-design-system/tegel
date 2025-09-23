@@ -171,7 +171,12 @@ const Template = ({
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
         max-width: 600px;
-        ${expandable ? 'width: 368px;' : ''}
+        ${
+          expandable
+            ? `width: 368px;
+        height: 416px;`
+            : ''
+        }
     }
     </style>
     <div class="demo-wrapper">
