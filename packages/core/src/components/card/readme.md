@@ -46,12 +46,14 @@
 
 ### Depends on
 
+- [tds-button](../button)
 - [tds-icon](../icon)
 - [tds-divider](../divider)
 
 ### Graph
 ```mermaid
 graph TD;
+  tds-card --> tds-button
   tds-card --> tds-icon
   tds-card --> tds-divider
   style tds-card fill:#f9f,stroke:#333,stroke-width:4px
