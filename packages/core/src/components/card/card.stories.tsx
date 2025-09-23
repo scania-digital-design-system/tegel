@@ -143,7 +143,7 @@ export default {
     bodyImg: false,
     bodyContent: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
     bodyDivider: false,
-    cardActions: `<div slot="actions" style="display: flex; gap: 16px;"><tds-button type="button" variant="primary" size="sm" text="Button text" animation="none" tds-aria-label="undefined" name="" value=""></tds-button><tds-button type="button" variant="secondary" size="sm" text="Button text" animation="none" tds-aria-label="undefined" name="" value=""></tds-button></div>`,
+    cardActions: `<div slot="actions" style="display: flex; gap: 16px;"><tds-button type="button" variant="primary" size="sm" text="Button text" animation="none" tds-aria-label="A button component" name="" value=""></tds-button><tds-button type="button" variant="secondary" size="sm" text="Button text" animation="none" tds-aria-label="A button component" name="" value=""></tds-button></div>`,
     clickable: false,
     stretch: false,
     expandable: false,

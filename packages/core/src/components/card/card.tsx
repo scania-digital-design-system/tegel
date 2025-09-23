@@ -101,12 +101,20 @@ export class TdsCard {
           {usesSubheaderSlot && <slot name="subheader"></slot>}
         </div>
         {this.expandable && (
-          <tds-icon
-            name="chevron_down"
-            size="16px"
-            class={{ 'chevron-icon': true, 'rotated': this.expanded }}
+          <tds-button
+            type="button"
+            variant="ghost"
+            size="sm"
+            tds-aria-label="Icon button"
             onClick={this.toggleExpand}
-          ></tds-icon>
+          >
+            <tds-icon
+              slot="icon"
+              size="16px"
+              name="chevron_down"
+              class={{ rotated: this.expanded }}
+            ></tds-icon>
+          </tds-button>
         )}
       </div>
     );
