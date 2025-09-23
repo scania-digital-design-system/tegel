@@ -47,7 +47,7 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Text', 'Password', 'Number'],
+      options: ['Text', 'Password', 'Number', 'Email', 'Tel'],
       table: {
         defaultValue: { summary: 'text' },
       },
@@ -203,6 +203,24 @@ export default {
         type: 'text',
       },
     },
+    required: {
+      name: 'Required',
+      description: 'Value to be used for the required attribute',
+      control: {
+        type: 'boolean',
+      },
+      options: [true, false],
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    autocomplete: {
+      name: 'Auto complete',
+      description: 'Value to be used for the autocomplete attribute',
+      control: {
+        type: 'text',
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -225,6 +243,8 @@ export default {
     hideReadonlyIcon: false,
     disabled: false,
     tdsAriaLabel: 'A text field component',
+    required: false,
+    autocomplete: 'off',
   },
 };
 
@@ -249,6 +269,8 @@ const Template = ({
   hideReadonlyIcon,
   disabled,
   tdsAriaLabel,
+  required,
+  autocomplete,
 }) => {
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
   const minAttr = min != null ? `min="${min}"` : '';
@@ -287,6 +309,8 @@ const Template = ({
       ${noMinWidth ? 'no-min-width' : ''}
       placeholder="${placeholderText}"
       tds-aria-label="${tdsAriaLabel}"
+      required="${required}"
+      autocomplete="${autocomplete}"
     >
         ${
           prefix || suffix

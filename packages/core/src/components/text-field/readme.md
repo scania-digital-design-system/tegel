@@ -7,27 +7,29 @@
 
 ## Properties
 
-| Property           | Attribute             | Description                                                                                                  | Type                                  | Default      |
-| ------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------- | ------------ |
-| `autofocus`        | `autofocus`           | Autofocus for input                                                                                          | `boolean`                             | `false`      |
-| `disabled`         | `disabled`            | Set input in disabled state                                                                                  | `boolean`                             | `false`      |
-| `helper`           | `helper`              | Helper text                                                                                                  | `string`                              | `undefined`  |
-| `hideReadOnlyIcon` | `hide-read-only-icon` | Hides the read-only icon in the Text Field. Requires Read Only to be enabled.                                | `boolean`                             | `false`      |
-| `label`            | `label`               | Label text                                                                                                   | `string`                              | `''`         |
-| `labelPosition`    | `label-position`      | Position of the label for the Text Field.                                                                    | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
-| `max`              | `max`                 | Max allowed value for input type number                                                                      | `number \| string`                    | `undefined`  |
-| `maxLength`        | `max-length`          | Max length of input                                                                                          | `number`                              | `undefined`  |
-| `min`              | `min`                 | Min allowed value for input type number                                                                      | `number \| string`                    | `undefined`  |
-| `modeVariant`      | `mode-variant`        | Mode variant of the Text Field                                                                               | `"primary" \| "secondary"`            | `null`       |
-| `name`             | `name`                | Name property                                                                                                | `string`                              | `''`         |
-| `noMinWidth`       | `no-min-width`        | Unset minimum width of 208px.                                                                                | `boolean`                             | `false`      |
-| `placeholder`      | `placeholder`         | Placeholder text                                                                                             | `string`                              | `''`         |
-| `readOnly`         | `read-only`           | Set input in readonly state                                                                                  | `boolean`                             | `false`      |
-| `size`             | `size`                | Size of the input                                                                                            | `"lg" \| "md" \| "sm"`                | `'lg'`       |
-| `state`            | `state`               | Error state of input                                                                                         | `"default" \| "error" \| "success"`   | `'default'`  |
-| `tdsAriaLabel`     | `tds-aria-label`      | Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. | `string`                              | `undefined`  |
-| `type`             | `type`                | Which input type, text, password or similar                                                                  | `"number" \| "password" \| "text"`    | `'text'`     |
-| `value`            | `value`               | Value of the input text                                                                                      | `string`                              | `''`         |
+| Property           | Attribute             | Description                                                                                                  | Type                                                   | Default      |
+| ------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------ | ------------ |
+| `autocomplete`     | `autocomplete`        | Value to be used for the text field's autocomplete attribute                                                 | `string`                                               | `'off'`      |
+| `autofocus`        | `autofocus`           | Autofocus for input                                                                                          | `boolean`                                              | `false`      |
+| `disabled`         | `disabled`            | Set input in disabled state                                                                                  | `boolean`                                              | `false`      |
+| `helper`           | `helper`              | Helper text                                                                                                  | `string`                                               | `undefined`  |
+| `hideReadOnlyIcon` | `hide-read-only-icon` | Hides the read-only icon in the Text Field. Requires Read Only to be enabled.                                | `boolean`                                              | `false`      |
+| `label`            | `label`               | Label text                                                                                                   | `string`                                               | `''`         |
+| `labelPosition`    | `label-position`      | Position of the label for the Text Field.                                                                    | `"inside" \| "no-label" \| "outside"`                  | `'no-label'` |
+| `max`              | `max`                 | Max allowed value for input type number                                                                      | `number \| string`                                     | `undefined`  |
+| `maxLength`        | `max-length`          | Max length of input                                                                                          | `number`                                               | `undefined`  |
+| `min`              | `min`                 | Min allowed value for input type number                                                                      | `number \| string`                                     | `undefined`  |
+| `modeVariant`      | `mode-variant`        | Mode variant of the Text Field                                                                               | `"primary" \| "secondary"`                             | `null`       |
+| `name`             | `name`                | Name property                                                                                                | `string`                                               | `''`         |
+| `noMinWidth`       | `no-min-width`        | Unset minimum width of 208px.                                                                                | `boolean`                                              | `false`      |
+| `placeholder`      | `placeholder`         | Placeholder text                                                                                             | `string`                                               | `''`         |
+| `readOnly`         | `read-only`           | Set input in readonly state                                                                                  | `boolean`                                              | `false`      |
+| `required`         | `required`            | Makes the text field required                                                                                | `boolean`                                              | `false`      |
+| `size`             | `size`                | Size of the input                                                                                            | `"lg" \| "md" \| "sm"`                                 | `'lg'`       |
+| `state`            | `state`               | Error state of input                                                                                         | `"default" \| "error" \| "success"`                    | `'default'`  |
+| `tdsAriaLabel`     | `tds-aria-label`      | Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. | `string`                                               | `undefined`  |
+| `type`             | `type`                | Which input type, text, password or similar                                                                  | `"email" \| "number" \| "password" \| "tel" \| "text"` | `'text'`     |
+| `value`            | `value`               | Value of the input text                                                                                      | `string`                                               | `''`         |
 
 
 ## Events
@@ -65,6 +67,8 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [tds-date-picker](../_beta/date-picker/date-picker-single)
+ - [tds-date-range-picker](../_beta/date-picker/date-range-picker)
  - [tds-slider](../slider)
 
 ### Depends on
@@ -78,6 +82,8 @@ graph TD;
   tds-text-field --> tds-tooltip
   tds-text-field --> tds-icon
   tds-tooltip --> tds-popover-core
+  tds-date-picker --> tds-text-field
+  tds-date-range-picker --> tds-text-field
   tds-slider --> tds-text-field
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
