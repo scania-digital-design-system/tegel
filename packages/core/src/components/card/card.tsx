@@ -106,12 +106,14 @@ export class TdsCard {
             variant="ghost"
             size="sm"
             tds-aria-label="Toggle card content"
+            aria-expanded={this.expanded ? 'true' : 'false'}
             onClick={this.toggleExpand}
           >
             <tds-icon
               slot="icon"
               size="16px"
               name="chevron_down"
+              svgTitle="Chevron Down"
               class={{ rotated: this.expanded }}
             ></tds-icon>
           </tds-button>
