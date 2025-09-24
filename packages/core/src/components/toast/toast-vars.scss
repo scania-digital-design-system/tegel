@@ -5,10 +5,11 @@
   --tds-toast-subheadline-color: var(--tds-grey-50);
   --tds-toast-link-color: var(--tds-grey-50);
   --tds-toast-dissmiss-color: var(--tds-grey-50);
-  --tds-toast-icon-color-error: var(--tds-red-300);
-  --tds-toast-icon-color-success: var(--tds-green-300);
+  --tds-toast-color-error: var(--tds-red-300);
+  --tds-toast-color-success: var(--tds-green-300);
+  --tds-toast-color-warning: var(--tds-yellow-300);
   --tds-toast-icon-color-warning: var(--tds-yellow-300);
-  --tds-toast-icon-color-info: var(--tds-blue-300);
+  --tds-toast-color-info: var(--tds-blue-300);
 }
 
 .tds-mode-dark {
@@ -17,8 +18,9 @@
   --tds-toast-subheadline-color: var(--tds-grey-950);
   --tds-toast-link-color: var(--tds-grey-950);
   --tds-toast-dissmiss-color: var(--tds-grey-950);
-  --tds-toast-icon-color-error: var(--tds-red-400);
-  --tds-toast-icon-color-success: var(--tds-green-400);
-  --tds-toast-icon-color-warning: var(--tds-yellow-400);
-  --tds-toast-icon-color-info: var(--tds-blue-400);
+  --tds-toast-color-error: var(--tds-red-400);
+  --tds-toast-color-success: var(--tds-green-400);
+  --tds-toast-color-warning: var(--tds-yellow-400);
+  --tds-toast-icon-color-warning: var(--tds-yellow-500);
+  --tds-toast-color-info: var(--tds-blue-400);
 }
