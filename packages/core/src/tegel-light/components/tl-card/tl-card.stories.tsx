@@ -1,4 +1,5 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+import { iconsNames } from '../../../components/icon/iconsArray';
 
 const thumbSVG =
   `data:image/svg+xml;utf8,` +
@@ -140,6 +141,24 @@ export default {
       if: { arg: 'expandable', eq: true },
       table: { defaultValue: { summary: false } },
     },
+    showIcon: {
+      name: 'Show icon',
+      description: 'Enable to show an icon inside the Card',
+      control: { type: 'boolean' },
+      table: { defaultValue: { summary: false } },
+    },
+    icon: {
+      name: 'Icon',
+      description: 'Sets icon to be displayed on the Card.',
+      control: {
+        type: 'select',
+      },
+      if: { arg: 'showIcon', eq: true },
+      options: iconsNames,
+      table: {
+        defaultValue: { summary: 'placeholder' },
+      },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -156,6 +175,8 @@ export default {
     stretch: false,
     expandable: false,
     expanded: false,
+    showIcon: true,
+    icon: 'placeholder',
   },
 };
 
@@ -173,6 +194,8 @@ const Template = ({
   stretch,
   expandable,
   expanded,
+  showIcon,
+  icon,
 }) => {
   const modeClass =
     modeVariant !== 'Inherit from parent'
@@ -225,7 +248,10 @@ const Template = ({
     </div>`;
 
   const actionsHtml = cardActions
-    ? `<div class="tl-card__actions" style="gap: 16px;">${cardActions}</div>`
+    ? `<div class="tl-card__bottom-row">
+   <div class="tl-card__actions" style="gap: 16px;">${cardActions}</div> 
+   ${showIcon ? `<span class="tl-icon tl-icon--${icon} tl-icon--20"></span>` : ''}
+ </div>`
     : '';
 
   const wrapperClasses =
@@ -252,6 +278,7 @@ const Template = ({
       "@scania/tegel-light/tl-icon.css";`
           : ''
       }
+      ${showIcon && !expandable ? `"@scania/tegel-light/tl-icon.css";` : ''}
     -->
     <style>
       .demo-wrapper { 

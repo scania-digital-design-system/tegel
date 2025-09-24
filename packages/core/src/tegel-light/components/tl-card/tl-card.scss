@@ -141,10 +141,22 @@
   max-inline-size: 336px;
 }
 
-.tl-card__actions {
+.tl-card__bottom-row {
   display: flex;
   padding: var(--card-slotted-padding);
-  color: var(--card-icon-color);
+  align-items: flex-end;
+  align-self: stretch;
+
+  .tl-icon {
+    color: var(--card-icon-color);
+  }
+}
+
+.tl-card__actions {
+  display: flex;
+  align-items: flex-end;
+  flex: 1 0 0;
+  align-self: stretch;
 }
 
 .tl-card__stretch {
