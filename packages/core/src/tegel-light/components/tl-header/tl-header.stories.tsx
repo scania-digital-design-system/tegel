@@ -73,13 +73,10 @@ const Template = ({
 }) =>
   formatHtmlPreview(`
 
-<!-- Required stylesheet -->
-<link rel="stylesheet" href="@scania/tegel-light/tl-header.css" />
-${
-  includeHeaderItemIconOnly
-    ? '<link rel="stylesheet" href="@scania/tegel-light/tl-icon.css" />'
-    : ''
-}
+<!-- Required stylesheet 
+      "@scania/tegel-light/tl-header.css"
+      "@scania/tegel-light/tl-icon.css";
+    -->
 
 <header class="tl-header">
   <nav class="tl-header__nav">
@@ -211,7 +208,7 @@ ${
   </nav>
 </header>
 
-
+    <!-- The script below is just for demo purposes -->
         <script>
       // Get all header items
       const headerItems = document.querySelectorAll('.tl-header__item');
