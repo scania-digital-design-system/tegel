@@ -31,28 +31,10 @@
     outline-offset: 1px;
     z-index: 10;
   }
-}
 
-.tl-header__dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--tds-header-app-launcher-menu-background);
-  box-shadow: var(--header-dropdown-box-shadow);
-  min-width: 190px;
-  max-height: calc(100vh - var(--tds-header-height));
-  overflow-y: auto;
-  z-index: var(--tds-z-index-header);
-  @include tds-scrollbar;
-
-  @media all and (max-width: $media-fullwidth) {
-    width: 100vw;
+  &--user {
+    padding: var(--component-header-space-profile-padding);
   }
-}
-
-.tl-header__dropdown-icon {
-  transition: transform 0.2s ease;
 }
 
 .tl-header__dropdown {
@@ -86,7 +68,7 @@
   }
 
   &--pressed:not(&--open) {
-    .tl-header__dropdown--wrapper {
+    .tl-header__dropdown-wrapper {
       padding-top: 2px;
       padding-bottom: 2px;
       background-color: var(--header-basic-element-background-selected);
@@ -95,81 +77,56 @@
   }
 }
 
-.tl-header__dropdown-user {
-  .tl-header__dropdown-wrapper {
-    padding: var(--component-header-space-profile-padding);
-  }
+.tl-header__dropdown-icon {
+  transition: transform 0.2s ease;
+}
 
-  .tl-header__dropdown-menu {
+.tl-header__dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--tds-header-app-launcher-menu-background);
+  box-shadow: var(--header-dropdown-box-shadow);
+  min-width: 190px;
+  max-height: calc(100vh - var(--tds-header-height));
+  overflow-y: auto;
+  z-index: var(--tds-z-index-header);
+  @include tds-scrollbar;
+
+  &--user {
     position: fixed;
     top: var(--tds-header-height);
     right: 0;
     left: auto;
     min-width: 290px;
     max-height: calc(100vh - var(--tds-header-height));
-
-    @media all and (max-width: $media-fullwidth) {
-      width: 100vw;
-    }
   }
-}
 
-.tl-header__dropdown-launcher-list {
-  .tl-header__dropdown-menu {
-    position: fixed;
-    top: var(--tds-header-height); // show just under header
-    right: 0; // flush with viewport right
-    left: auto;
-    min-width: 320px;
-    max-height: calc(100vh - var(--tds-header-height));
-
-    @media all and (max-width: $media-fullwidth) {
-      width: 100vw;
-    }
-
-    .tl-header__dropdown-menu-launcher-title {
-      all: unset;
-      background-color: var(--header-nav-dropdown-item-background);
-      box-sizing: border-box;
-      @include detail-06;
-
-      color: var(--header-app-launcher-category-title);
-      text-transform: uppercase;
-      height: 48px;
-      padding: 0 16px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid var(--header-nav-dropdown-item-border);
-      margin: 0;
-    }
-
-    .tl-header__dropdown-menu-item {
-      height: var(--tds-header-height);
-
-      a,
-      button {
-        padding: 0 16px;
-        color: var(--header-app-launcher-item);
-      }
-    }
-  }
-}
-
-.tl-header__dropdown-launcher-grid {
-  .tl-header__dropdown-menu {
+  &--launcher-list {
     position: fixed;
     top: var(--tds-header-height);
     right: 0;
     left: auto;
     min-width: 320px;
     max-height: calc(100vh - var(--tds-header-height));
+  }
 
-    @media all and (max-width: $media-fullwidth) {
-      width: 100vw;
-    }
+  &--launcher-grid {
+    position: fixed;
+    top: var(--tds-header-height);
+    right: 0;
+    left: auto;
+    min-width: 320px;
+    max-height: calc(100vh - var(--tds-header-height));
+  }
+
+  @media all and (max-width: $media-fullwidth) {
+    width: 100vw;
   }
 }
 
+/* Menu items */
 .tl-header__dropdown-menu-item {
   display: block;
   box-sizing: border-box;
@@ -184,7 +141,6 @@
   button {
     all: unset;
     box-sizing: border-box;
-    border: none;
     display: flex;
     align-items: center;
     height: 100%;
@@ -217,6 +173,7 @@
   }
 }
 
+/* User profile section */
 .tl-header__dropdown-menu-user {
   background-color: var(--header-avatar-item-background);
   display: flex;
@@ -263,6 +220,7 @@
   color: var(--header-avatar-item);
 }
 
+/* Launcher grid */
 .tl-header__dropdown-menu-launcher {
   box-sizing: border-box;
   padding: 12px;
@@ -272,7 +230,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 4px;
-  border-radius: none;
   background-color: var(--header-nav-dropdown-item-background);
 }
 
@@ -285,10 +242,8 @@
   button {
     all: unset;
     box-sizing: border-box;
-    border-right: 1px solid var(--tds-nav-item-border-color);
     width: 100%;
     height: 100%;
-    border: none;
     padding: 0 12px;
     display: flex;
     text-align: center;
