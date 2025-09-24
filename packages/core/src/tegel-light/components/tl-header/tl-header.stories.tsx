@@ -21,6 +21,11 @@ export default {
       if: { arg: 'includeHeaderItemIconOnly', truthy: true },
     },
     includeDropdown: { control: 'boolean', name: 'Include dropdown' },
+    isDropdownOpen: {
+      control: 'boolean',
+      name: 'Dropdown open',
+      if: { arg: 'includeDropdown', truthy: true },
+    },
     isDropdownSelected: {
       control: 'boolean',
       name: 'Dropdown selected',
@@ -48,6 +53,7 @@ export default {
     includeBentoList: false,
     includeBrandSymbol: false,
     includeDropdown: false,
+    isDropdownOpen: false,
     isDropdownSelected: false,
     includeUserProfile: false,
     includeHeaderItem: false,
@@ -65,6 +71,7 @@ const Template = ({
   isHamburgerPressed,
   isHamburgerSelected,
   includeDropdown,
+  isDropdownOpen,
   isDropdownSelected,
   includeUserProfile,
   includeHeaderItem,
@@ -73,10 +80,9 @@ const Template = ({
 }) =>
   formatHtmlPreview(`
 
-<!-- Required stylesheet 
-      "@scania/tegel-light/tl-header.css"
-      "@scania/tegel-light/tl-icon.css";
-    -->
+<!-- Required stylesheet -->
+<link rel="stylesheet" href="@scania/tegel-light/tl-header.css" />
+<link rel="stylesheet" href="@scania/tegel-light/tl-icon.css" />
 
 <header class="tl-header">
   <nav class="tl-header__nav">
@@ -108,16 +114,20 @@ const Template = ({
 
       ${
         includeDropdown
-          ? `<div class="tl-header__dropdown ${
-              isDropdownSelected ? 'tl-header__dropdown--selected' : ''
-            }">
-              <button class="tl-header__dropdown-wrapper">
+          ? `<div class="tl-header__dropdown">
+              <button class="tl-header__dropdown-wrapper ${
+                isDropdownOpen ? 'tl-header__dropdown-wrapper--open' : ''
+              } ${isDropdownSelected ? 'tl-header__dropdown-wrapper--selected' : ''}">
                 <span>Dropdown</span>
-                <div class="tl-header__dropdown-icon">
+                <div class="tl-header__dropdown-icon ${
+                  isDropdownOpen ? 'tl-header__dropdown-icon--rotated' : ''
+                }">
                   <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
                 </div>
               </button>
-              <div class="tl-header__dropdown-menu">
+              <div class="tl-header__dropdown-menu ${
+                isDropdownOpen ? 'tl-header__dropdown-menu--open' : ''
+              }">
                 <li class="tl-header__dropdown-menu-item"><a href="#">Menu Item</a></li>
                 <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a href="#">Selected</a></li>
               </div>
@@ -210,81 +220,48 @@ const Template = ({
 
     <!-- The script below is just for demo purposes -->
         <script>
-      // Get all header items
-      const headerItems = document.querySelectorAll('.tl-header__item');
-      
-      // Add event listeners to each header item
-      headerItems.forEach(item => {
-        item.addEventListener('mousedown', () => {
-          item.classList.add('tl-header__item--pressed');
-        });
-        
-        item.addEventListener('mouseup', () => {
-          item.classList.remove('tl-header__item--pressed');
-        });
-        
-        // Handle case when mouse leaves the element while pressed
-        item.addEventListener('mouseleave', () => {
-          item.classList.remove('tl-header__item--pressed');
-        });
-      });
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdowns = document.querySelectorAll('.tl-header__dropdown');
 
-
-
-
-
-
-      document.addEventListener('DOMContentLoaded', () => {
-  const dropdowns = document.querySelectorAll('.tl-header__dropdown');
-
-  dropdowns.forEach(dropdown => {
-    const button = dropdown.querySelector('.tl-header__dropdown-wrapper');
-
-    // Toggle dropdown
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = dropdown.classList.contains('tl-header__dropdown--open');
-      
-      // Close all other dropdowns
-      dropdowns.forEach(d => d.classList.remove('tl-header__dropdown--open'));
-      
-      // Toggle current dropdown
-      dropdown.classList.toggle('tl-header__dropdown--open', !isOpen);
-    });
-
-    // Handle pressed state
-    button.addEventListener('mousedown', () => {
-      dropdown.classList.add('tl-header__dropdown--pressed');
-    });
-
-    button.addEventListener('mouseup', () => {
-      dropdown.classList.remove('tl-header__dropdown--pressed');
-    });
-
-    button.addEventListener('mouseleave', () => {
-      dropdown.classList.remove('tl-header__dropdown--pressed');
-    });
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
     dropdowns.forEach(dropdown => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('tl-header__dropdown--open');
+      const wrapper = dropdown.querySelector('.tl-header__dropdown-wrapper');
+      const menu = dropdown.querySelector('.tl-header__dropdown-menu');
+      const icon = dropdown.querySelector('.tl-header__dropdown-icon');
+
+      wrapper.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = wrapper.classList.contains('tl-header__dropdown-wrapper--open');
+
+        // close all dropdowns
+        document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
+        document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
+        document.querySelectorAll('.tl-header__dropdown-icon--rotated').forEach(i => i.classList.remove('tl-header__dropdown-icon--rotated'));
+
+        if (!isOpen) {
+          wrapper.classList.add('tl-header__dropdown-wrapper--open');
+          menu.classList.add('tl-header__dropdown-menu--open');
+          icon.classList.add('tl-header__dropdown-icon--rotated');
+        }
+      });
+    });
+
+    // close on outside click
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
+      document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
+      document.querySelectorAll('.tl-header__dropdown-icon--rotated').forEach(i => i.classList.remove('tl-header__dropdown-icon--rotated'));
+    });
+
+    // close on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
+        document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
+        document.querySelectorAll('.tl-header__dropdown-icon--rotated').forEach(i => i.classList.remove('tl-header__dropdown-icon--rotated'));
       }
     });
   });
-
-  // Handle Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      dropdowns.forEach(dropdown => {
-        dropdown.classList.remove('tl-header__dropdown--open');
-      });
-    }
-  });
-});
-    </script>
+</script>
 `);
 
 export const Default = Template.bind({});
