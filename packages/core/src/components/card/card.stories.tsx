@@ -103,6 +103,7 @@ export default {
       control: {
         type: 'boolean',
       },
+      if: { arg: 'expandable', eq: false },
       table: {
         defaultValue: { summary: false },
       },
@@ -117,6 +118,20 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    expandable: {
+      name: 'Expandable',
+      description: 'Toggles if the Card can expand/collapse its content.',
+      control: 'boolean',
+      if: { arg: 'clickable', eq: false },
+      table: { defaultValue: { summary: false } },
+    },
+    expanded: {
+      name: 'Expanded',
+      description: 'Controls the initial expanded state when expandable is enabled.',
+      control: 'boolean',
+      if: { arg: 'expandable', eq: true },
+      table: { defaultValue: { summary: false } },
+    },
   },
 
   args: {
@@ -128,9 +143,11 @@ export default {
     bodyImg: false,
     bodyContent: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
     bodyDivider: false,
-    cardActions: `<tds-icon slot="actions" size="20px" name="arrow_right"></tds-icon>`,
+    cardActions: `<div slot="actions" style="display: flex; gap: 16px;"><tds-button type="button" variant="primary" size="sm" text="Button text" animation="none" tds-aria-label="A button component" name="" value=""></tds-button><tds-button type="button" variant="secondary" size="sm" text="Button text" animation="none" tds-aria-label="A button component" name="" value=""></tds-button></div>`,
     clickable: false,
     stretch: false,
+    expandable: false,
+    expanded: true,
   },
 };
 
@@ -146,12 +163,20 @@ const Template = ({
   cardActions,
   clickable,
   stretch,
+  expandable,
+  expanded,
 }) =>
   formatHtmlPreview(
     `<style>
     /* demo-wrapper is for demonstration purposes only*/
     .demo-wrapper {
         max-width: 600px;
+        ${
+          expandable
+            ? `width: 368px;
+        height: 416px;`
+            : ''
+        }
     }
     </style>
     <div class="demo-wrapper">
@@ -164,6 +189,8 @@ const Template = ({
     ${clickable ? 'clickable' : ''}
     ${bodyDivider ? 'body-divider' : ''}
     ${stretch ? 'stretch' : ''}
+    ${expandable ? 'expandable' : ''}
+    ${expanded ? 'expanded' : ''}
     >
     ${
       thumbnail

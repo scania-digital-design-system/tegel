@@ -30,6 +30,19 @@
 | `"label"` | Slot for the text injection. Serves as alternative to text prop. |
 
 
+## Dependencies
+
+### Used by
+
+ - [tds-card](../card)
+
+### Graph
+```mermaid
+graph TD;
+  tds-card --> tds-button
+  style tds-button fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
