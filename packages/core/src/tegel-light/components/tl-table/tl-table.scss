@@ -1,6 +1,7 @@
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/scrollbar';
 @import './_tl-table-vars';
+@import '../../../../../../typography/utilities/typography-utility';
 
 .tl-table {
   @include tds-box-sizing;
@@ -255,17 +256,14 @@
   padding: 16px;
   background-color: var(--table-header);
   border-bottom: 1px solid var(--table-divider);
-  font-size: var(--text-component-title-01-font-size);
-  font-family: var(--text-component-title-01-font-family);
-  line-height: var(--text-component-title-01-line-height);
-  letter-spacing: var(--text-component-title-01-letter-spacing);
-  font-weight: bold;
+  @include headline-07;
+
   color: var(--table-text);
   text-align: left;
   transition: background-color 200ms ease;
   min-width: 192px;
 
-  &:hover {
+  &:hover:not(&--checkbox) {
     background-color: var(--table-header-hover);
   }
 
@@ -282,10 +280,6 @@
     width: 48px;
     padding: 0;
     text-align: center;
-
-    &:hover {
-      background-color: var(--table-header) !important;
-    }
   }
 }
 
@@ -294,10 +288,12 @@
   padding: 16px;
   background-color: transparent;
   color: var(--table-text);
+  @include detail-02;
+
   transition: background-color 200ms ease;
   min-width: 192px;
 
-  &:hover {
+  &:hover:not(&--checkbox) {
     background-color: var(--table-body-cell-hover);
   }
 
@@ -310,9 +306,5 @@
     width: 48px;
     padding: 0;
     text-align: center;
-
-    &:hover {
-      background-color: var(--table-body-row) !important;
-    }
   }
 }
