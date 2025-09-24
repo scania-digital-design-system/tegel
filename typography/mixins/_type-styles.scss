@@ -28,12 +28,12 @@
 }
 
 @mixin display-04 {
-  font-family: var(--expressive-headline-01-font-family);
-  font-size: var(--expressive-headline-01-font-size);
-  line-height: var(--expressive-headline-01-line-height);
-  font-weight: var(--expressive-headline-01-font-weight);
-  letter-spacing: var(--expressive-headline-01-letter-spacing);
-  text-transform: var(--expressive-headline-01-text-transform);
+  font-family: var(--display-03-font-family);
+  font-size: var(--display-03-font-size);
+  line-height: var(--display-03-line-height);
+  font-weight: var(--display-03-font-weight);
+  letter-spacing: var(--display-03-letter-spacing);
+  text-transform: var(--display-03-text-transform);
 }
 
 @mixin display-05 {
