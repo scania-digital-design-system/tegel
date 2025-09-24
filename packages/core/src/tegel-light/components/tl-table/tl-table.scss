@@ -93,7 +93,16 @@
   }
 
   &--zebra-rows-odd,
-  &--zebra-rows-even,
+  &--zebra-rows-even {
+    .tl-table__body .tl-table__row:hover {
+      background-color: var(--table-body-row-hover) !important;
+
+      .tl-table__body-cell {
+        background-color: var(--table-body-row-hover) !important;
+      }
+    }
+  }
+
   &--zebra-columns-odd,
   &--zebra-columns-even {
     .tl-table__body .tl-table__row:hover {

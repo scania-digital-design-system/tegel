@@ -169,71 +169,71 @@ const MultiselectTemplate = ({
   }">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
-          <th class="tl-table__header-cell tl-table__header-cell--checkbox">
+          <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input ${
                 allIndeterminate ? 'tl-checkbox__input--indeterminate' : ''
               }" ${allSelected ? 'checked' : ''} ${allDisabled ? 'disabled' : ''} />
             </div>
           </th>
-          <th class="tl-table__header-cell" ${
+          <th class="tl-table__header-cell" data-column="1" ${
             column1Width ? `style="width: ${column1Width}"` : ''
           }>Truck type</th>
-          <th class="tl-table__header-cell" ${
+          <th class="tl-table__header-cell" data-column="2" ${
             column2Width ? `style="width: ${column2Width}"` : ''
           }>Driver name</th>
-          <th class="tl-table__header-cell" ${
+          <th class="tl-table__header-cell" data-column="3" ${
             column3Width ? `style="width: ${column3Width}"` : ''
           }>Country</th>
-          <th class="tl-table__header-cell" ${
+          <th class="tl-table__header-cell" data-column="4" ${
             column4Width ? `style="width: ${column4Width}"` : ''
           }>Mileage</th>
         </tr>
       </thead>
       <tbody class="tl-table__body">
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox">
+          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
           </td>
-          <td class="tl-table__body-cell">L-series</td>
-          <td class="tl-table__body-cell">Sonya Bruce</td>
-          <td class="tl-table__body-cell">Brazil</td>
-          <td class="tl-table__body-cell">123987</td>
+          <td class="tl-table__body-cell" data-column="1">L-series</td>
+          <td class="tl-table__body-cell" data-column="2">Sonya Bruce</td>
+          <td class="tl-table__body-cell" data-column="3">Brazil</td>
+          <td class="tl-table__body-cell" data-column="4">123987</td>
         </tr>
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox">
+          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
           </td>
-          <td class="tl-table__body-cell">P-series</td>
-          <td class="tl-table__body-cell">Guerra Bowman</td>
-          <td class="tl-table__body-cell">Sweden</td>
-          <td class="tl-table__body-cell">2000852</td>
+          <td class="tl-table__body-cell" data-column="1">P-series</td>
+          <td class="tl-table__body-cell" data-column="2">Guerra Bowman</td>
+          <td class="tl-table__body-cell" data-column="3">Sweden</td>
+          <td class="tl-table__body-cell" data-column="4">2000852</td>
         </tr>
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox">
+          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
           </td>
-          <td class="tl-table__body-cell">G-series</td>
-          <td class="tl-table__body-cell">Ferrell Wallace</td>
-          <td class="tl-table__body-cell">Germany</td>
-          <td class="tl-table__body-cell">564</td>
+          <td class="tl-table__body-cell" data-column="1">G-series</td>
+          <td class="tl-table__body-cell" data-column="2">Ferrell Wallace</td>
+          <td class="tl-table__body-cell" data-column="3">Germany</td>
+          <td class="tl-table__body-cell" data-column="4">564</td>
         </tr>
         <tr class="tl-table__row">
-          <td class="tl-table__body-cell tl-table__body-cell--checkbox">
+          <td class="tl-table__body-cell tl-table__body-cell--checkbox" data-column="0">
             <div class="tl-checkbox">
               <input type="checkbox" class="tl-checkbox__input" />
             </div>
           </td>
-          <td class="tl-table__body-cell">R-series</td>
-          <td class="tl-table__body-cell">Cox Burris</td>
-          <td class="tl-table__body-cell">Spain</td>
-          <td class="tl-table__body-cell">1789357</td>
+          <td class="tl-table__body-cell" data-column="1">R-series</td>
+          <td class="tl-table__body-cell" data-column="2">Cox Burris</td>
+          <td class="tl-table__body-cell" data-column="3">Spain</td>
+          <td class="tl-table__body-cell" data-column="4">1789357</td>
         </tr>
       </tbody>
     </table>
@@ -274,39 +274,37 @@ const MultiselectTemplate = ({
       });
     }
 
-    function setupColumnHover() {
+    // Column hover functionality
+    (function() {
       const table = document.querySelector('.tl-table');
-      const headerCells = table.querySelectorAll('thead .tl-table__header-cell');
-      const bodyRows = table.querySelectorAll('tbody .tl-table__row');
-      
-      headerCells.forEach((headerCell, columnIndex) => {
-        // Skip the checkbox column (index 0) - no hover effect for checkbox column
-        if (columnIndex === 0) return;
+      if (!table) return;
+
+      const headerCells = table.querySelectorAll('.tl-table__header-cell');
+      const bodyCells = table.querySelectorAll('.tl-table__body-cell');
+
+      headerCells.forEach(headerCell => {
+        const columnIndex = headerCell.getAttribute('data-column');
         
-        headerCell.addEventListener('mouseenter', function() {
-          // Add hover class to all body cells in this column
-          bodyRows.forEach((row) => {
-            const bodyCells = row.querySelectorAll('.tl-table__body-cell:not(.tl-table__body-cell--checkbox)');
-            // Map header column to body cell: header index 1 -> body index 0, header index 2 -> body index 1, etc.
-            const targetCellIndex = columnIndex - 1;
-            if (bodyCells[targetCellIndex]) {
-              bodyCells[targetCellIndex].classList.add('tl-table__body-cell--hover');
+        // Skip the checkbox column (data-column="0") - no hover effect for checkbox column
+        if (columnIndex === '0') return;
+        
+        headerCell.addEventListener('mouseenter', () => {
+          bodyCells.forEach(cell => {
+            if (cell.getAttribute('data-column') === columnIndex) {
+              cell.classList.add('tl-table__body-cell--hover');
             }
           });
         });
-        
-        headerCell.addEventListener('mouseleave', function() {
-          // Remove hover class from all body cells
-          const allBodyCells = table.querySelectorAll('tbody .tl-table__body-cell');
-          allBodyCells.forEach(bodyCell => {
-            bodyCell.classList.remove('tl-table__body-cell--hover');
+
+        headerCell.addEventListener('mouseleave', () => {
+          bodyCells.forEach(cell => {
+            cell.classList.remove('tl-table__body-cell--hover');
           });
         });
       });
-    }
+    })();
     
     setupMultiselectDemo();
-    setupColumnHover();
     </script>
   `);
 

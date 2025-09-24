@@ -11,16 +11,6 @@ export default {
     },
   },
   argTypes: {
-    compact: {
-      name: 'Compact design',
-      description: 'Enables compact table styling with reduced padding.',
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
     modeVariant: {
       name: 'Mode variant',
       description:
@@ -31,6 +21,16 @@ export default {
       options: ['Inherit from parent', 'Primary', 'Secondary'],
       table: {
         defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
+    compact: {
+      name: 'Compact design',
+      description: 'Enables compact table styling with reduced padding.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
       },
     },
     verticalDividers: {
