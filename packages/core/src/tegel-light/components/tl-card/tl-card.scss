@@ -43,6 +43,30 @@
     display: flex;
     flex-direction: column;
   }
+
+  &--expandable {
+    .tl-card__body {
+      .tl-card__header {
+        .tl-icon {
+          transition: transform 160ms ease-in-out, opacity 120ms ease-in-out;
+        }
+      }
+    }
+  }
+
+  &--expanded {
+    .tl-card__body {
+      .tl-card__header {
+        .tl-icon {
+          transform: rotate(180deg);
+        }
+      }
+
+      .tl-card__content {
+        display: none;
+      }
+    }
+  }
 }
 
 .tl-card__header {

@@ -108,6 +108,7 @@ export default {
       control: {
         type: 'boolean',
       },
+      if: { arg: 'expandable', eq: false },
       table: {
         defaultValue: {
           summary: false,
@@ -125,6 +126,20 @@ export default {
         },
       },
     },
+    expandable: {
+      name: 'Expandable',
+      description: 'Toggles if the Card can expand/collapse its content.',
+      control: 'boolean',
+      if: { arg: 'clickable', eq: false },
+      table: { defaultValue: { summary: false } },
+    },
+    expanded: {
+      name: 'Expanded',
+      description: 'Controls the initial expanded state when expandable is enabled.',
+      control: 'boolean',
+      if: { arg: 'expandable', eq: true },
+      table: { defaultValue: { summary: false } },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -139,6 +154,8 @@ export default {
       '<button class="tl-button tl-button--primary tl-button--md"><span class="tl-button__label">Button text</span></button><button class="tl-button tl-button--secondary tl-button--md"><span class="tl-button__label">Button text</span></button>',
     clickable: false,
     stretch: false,
+    expandable: false,
+    expanded: false,
   },
 };
 
@@ -154,6 +171,8 @@ const Template = ({
   cardActions,
   clickable,
   stretch,
+  expandable,
+  expanded,
 }) => {
   const modeClass =
     modeVariant !== 'Inherit from parent'
@@ -170,6 +189,8 @@ const Template = ({
 
   const clickableClass = clickable ? 'tl-card--clickable' : '';
   const stretchClass = stretch ? 'tl-card--stretch' : '';
+  const expandableClass = expandable ? 'tl-card--expandable' : '';
+  const expandedClass = expandable && expanded ? 'tl-card--expanded' : '';
 
   const headerHtml = `
     <div class="tl-card__header">
@@ -180,6 +201,14 @@ const Template = ({
         ${header ? `<div class="tl-card__title">${header}</div>` : ''}
         ${subheader ? `<div class="tl-card__subtitle">${subheader}</div>` : ''}
       </div>
+      ${
+        expandable
+          ? `<button
+  class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon">
+  <span class="tl-icon tl-icon--chevron_down tl-icon--16"></span>
+</button>`
+          : ''
+      }
     </div>`;
 
   const imageHtml = bodyImg
@@ -199,9 +228,10 @@ const Template = ({
     ? `<div class="tl-card__actions" style="gap: 16px;">${cardActions}</div>`
     : '';
 
-  const wrapperClasses = `tl-card ${modeClass} ${placementClass} ${clickableClass} ${stretchClass}`
-    .replace(/\s+/g, ' ')
-    .trim();
+  const wrapperClasses =
+    `tl-card ${modeClass} ${placementClass} ${clickableClass} ${stretchClass} ${expandableClass} ${expandedClass}`
+      .replace(/\s+/g, ' ')
+      .trim();
 
   const hasInnerInteractive = /<button|<a\s/i.test(cardActions);
 
@@ -216,11 +246,38 @@ const Template = ({
   return formatHtmlPreview(`
     <!-- Required stylesheet 
       "@scania/tegel-light/tl-card.css";
+      ${
+        expandable
+          ? `"@scania/tegel-light/tl-button.css"; 
+      "@scania/tegel-light/tl-icon.css";`
+          : ''
+      }
     -->
     <style>
-      .demo-wrapper { max-width: 600px; }
+      .demo-wrapper { 
+        max-width: 600px; 
+        ${
+          expandable
+            ? `width: 336px;
+        height: 220px;`
+            : ''
+        }
+      }
     </style>
     <div class="demo-wrapper">${markup}</div>
+
+  <!-- The script below is just for demo purposes -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const btn = e.target.closest('.tl-button--only-icon');
+      if (btn) {
+        const card = btn.closest('.tl-card');
+        if (card) {
+          card.classList.toggle('tl-card--expanded');
+        }
+      }
+    });
+  </script>
   `);
 };
 
