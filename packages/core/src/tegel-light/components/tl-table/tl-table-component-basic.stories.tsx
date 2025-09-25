@@ -236,14 +236,14 @@ const Template = ({
           headerCell.addEventListener('mouseenter', () => {
             bodyCells.forEach(cell => {
               if (cell.getAttribute('data-column') === columnIndex) {
-                cell.classList.add('tl-table__body-cell--hover');
+                cell.classList.add('tl-table__body-cell--column-highlight');
               }
             });
           });
 
           headerCell.addEventListener('mouseleave', () => {
             bodyCells.forEach(cell => {
-              cell.classList.remove('tl-table__body-cell--hover');
+              cell.classList.remove('tl-table__body-cell--column-highlight');
             });
           });
         });
