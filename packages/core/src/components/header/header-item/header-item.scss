@@ -21,11 +21,19 @@
   ::slotted(button:hover),
   ::slotted(a:hover) {
     background-color: var(--tds-header-item-hover);
+    box-shadow: inset 0 -2px 0 0 var(--tds-header-item-border-hover);
+  }
+
+  ::slotted(button:active),
+  ::slotted(a:active) {
+    background-color: var(--tds-header-item-active);
+    box-shadow: inset 0 -2px 0 0 var(--tds-header-item-border-active);
   }
 
   ::slotted(button:focus-visible),
   ::slotted(a:focus-visible) {
     border: none;
+    margin-right: 1px; // otherwise it moves right
     @include tds-focus-state-side-menu;
   }
 
@@ -39,13 +47,9 @@
   }
 
   .component-selected:not(.component-active) {
-    ::slotted(button),
-    ::slotted(a) {
-      background-color: var(--tds-header--basic-element-background-selected);
-      padding-top: 4px;
-      border-bottom-style: solid;
-      border-bottom-width: 4px;
-      border-bottom-color: var(--tds-nav-item-border-color-active);
+    ::slotted(button:not(:focus-visible)),
+    ::slotted(a:not(:focus-visible)) {
+      box-shadow: inset 0 -4px 0 0 var(--tds-header-item-border-hover);
     }
   }
 }
