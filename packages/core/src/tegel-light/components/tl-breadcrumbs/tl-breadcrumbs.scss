@@ -5,16 +5,16 @@
 
 .tl-breadcrumbs {
   @include tds-box-sizing;
+}
 
-  &__list {
-    @include detail-02;
+.tl-breadcrumbs__list {
+  @include detail-02;
 
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-  }
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
 }
 
 .tl-breadcrumbs__breadcrumb {
