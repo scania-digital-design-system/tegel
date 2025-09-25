@@ -9,6 +9,25 @@
     text-decoration: underline;
   }
 
+  ::slotted(*:hover) {
+    color: var(--tds-link-hover);
+    text-decoration: none;
+  }
+
+  .no-underline {
+    ::slotted(*) {
+      text-decoration: none;
+    }
+  }
+
+  .no-underline {
+    ::slotted(*:hover) {
+      color: var(--tds-link-hover);
+      text-decoration: underline;
+      text-decoration-color: var(--tds-link-hover);
+    }
+  }
+
   ::slotted(*:focus-visible) {
     color: var(--tds-link-focus);
     text-decoration: none;
@@ -20,12 +39,6 @@
     color: var(--tds-link);
     text-decoration: underline;
     text-decoration-color: var(--tds-link);
-  }
-
-  ::slotted(*:hover) {
-    color: var(--tds-link-hover);
-    text-decoration: underline;
-    text-decoration-color: var(--tds-link-hover);
   }
 
   ::slotted(*:visited) {
@@ -40,20 +53,6 @@
     color: var(--tds-link-disabled);
     text-decoration-color: var(--tds-link-disabled);
     pointer-events: none;
-  }
-}
-
-.no-underline {
-  ::slotted(*) {
-    text-decoration: none;
-  }
-}
-
-.no-underline {
-  &:hover {
-    ::slotted(*) {
-      text-decoration: none;
-    }
   }
 }
 
