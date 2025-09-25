@@ -41,6 +41,7 @@ export default {
 const Template = ({ label, checked, disabled, indeterminate }) => {
   return formatHtmlPreview(`
 		<!-- Required stylesheet 
+      "@scania/tegel-light/global.css"
     	"@scania/tegel-light/tl-checkbox.css";
 		-->
     <div class="tl-checkbox">
