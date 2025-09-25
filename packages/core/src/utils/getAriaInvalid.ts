@@ -16,11 +16,6 @@ export const getAriaInvalid = (host: HTMLElement, state: string): string => {
   const hostAriaInvalid = host.getAttribute('aria-invalid');
 
   if (hostAriaInvalid !== null) {
-    // Handle boolean values from React (true/false as strings)
-    if (hostAriaInvalid === 'true' || hostAriaInvalid === 'false') {
-      return hostAriaInvalid;
-    }
-
     // Handle other string values (convert to string for consistency)
     return String(hostAriaInvalid);
   }
