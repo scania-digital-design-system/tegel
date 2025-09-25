@@ -84,7 +84,7 @@ export class TdsBanner {
   };
 
   render() {
-    const usesHeaderSlot = hasSlot('subheader', this.host);
+    const usesHeaderSlot = hasSlot('header', this.host);
     const usesSubheaderSlot = hasSlot('subheader', this.host);
     const usesActionsSlot = hasSlot('actions', this.host);
 
