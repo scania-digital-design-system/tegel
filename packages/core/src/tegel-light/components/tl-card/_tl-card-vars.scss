@@ -3,7 +3,7 @@
   --card-background-primary: var(--component-card-primary);
   --card-background-secondary: var(--component-card-secondary);
   --card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --card-box: var(--card-box-primary); //box shadow
+  --card-box: var(--card-box-primary);
   --card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
   --card-headline: var(--color-foreground-text-strong);
@@ -11,49 +11,35 @@
   --card-body-color: var(--color-foreground-text-defined);
   --card-divider: var(--color-foreground-border-discrete);
   --card-icon-color: var(--color-foreground-icon-strong);
-}
 
-.tl-card,
-.scania tl-card {
   /* Paddings */
   --card-body-padding: 0 16px;
   --card-header-padding: 16px;
   --card-slotted-padding: 16px;
   --card-divider-margin: 16px 16px 0;
 
-  &.tl-card--mode-variant-primary {
+  &--primary {
     --card-box: var(--card-box-primary);
   }
 
-  &.tl-card--mode-variant-secondary {
+  &--secondary {
     --card-box: var(--card-box-primary);
   }
 }
 
-.tds-mode-dark {
-  --card-background-primary: var(--tds-grey-900);
-  --card-background-secondary: var(--tds-grey-850);
+.scania .tl-card {
+  /* Paddings */
+  --card-body-padding: 0 16px;
+  --card-header-padding: 16px;
+  --card-slotted-padding: 16px;
+  --card-divider-margin: 16px 16px 0;
 
-  .tl-card {
-    --card-background: var(--card-background-primary);
-  }
-
-  .tl-card--mode-variant-primary {
+  &--primary {
     --card-box: var(--card-box-primary);
-    --card-background: var(--card-background-primary);
   }
 
-  .tl-card--mode-variant-secondary {
+  &--secondary {
     --card-box: var(--card-box-primary);
-    --card-background: var(--card-background-secondary);
-  }
-}
-
-.traton {
-  .tds-mode-dark .tl-card {
-    &.tl-card--mode-variant-primary {
-      --card-background: var(--color-background-base);
-    }
   }
 }
 
@@ -69,13 +55,39 @@
   --card-slotted-padding: 16px 16px 16px 0;
   --card-divider-margin: 16px 0 0;
 
-  &.tl-card--mode-variant-primary {
+  &--primary {
     --card-box: none;
     --card-background: var(--card-background-secondary);
   }
 
-  &.tl-card--mode-variant-secondary {
+  &--secondary {
     --card-box: none;
     --card-background: var(--card-background-primary);
+  }
+}
+
+/* Dark mode */
+.tds-mode-dark {
+  --card-background-primary: var(--tds-grey-900);
+  --card-background-secondary: var(--tds-grey-850);
+
+  .tl-card {
+    --card-background: var(--card-background-primary);
+  }
+
+  .tl-card--primary {
+    --card-box: var(--card-box-primary);
+    --card-background: var(--card-background-primary);
+  }
+
+  .tl-card--secondary {
+    --card-box: var(--card-box-primary);
+    --card-background: var(--card-background-secondary);
+  }
+}
+
+.traton .tds-mode-dark .tl-card {
+  &--primary {
+    --card-background: var(--color-background-base);
   }
 }
