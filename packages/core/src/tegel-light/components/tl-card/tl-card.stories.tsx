@@ -198,9 +198,7 @@ const Template = ({
   icon,
 }) => {
   const modeClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-card--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
+    modeVariant !== 'Inherit from parent' ? `tl-card--${modeVariant.toLowerCase()}` : '';
 
   let placementClass = '';
   if (imagePlacement === 'Above') {
@@ -270,7 +268,8 @@ const Template = ({
     `</${wrapperEl}>`;
 
   return formatHtmlPreview(`
-    <!-- Required stylesheet 
+    <!-- Required stylesheets:
+      "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-card.css";
       ${
         expandable
