@@ -12,7 +12,7 @@
   background-color: var(--accordion-background);
 
   &--hide-last-border {
-    .tl-accordion-item:last-child {
+    .tl-accordion__item:last-child {
       border-bottom: none;
     }
   }
