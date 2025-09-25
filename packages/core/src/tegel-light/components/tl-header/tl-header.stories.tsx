@@ -102,7 +102,7 @@ const Template = ({
 
       ${
         includeTitle
-          ? `<div class="tl-header__title"><h4 class="tl-header__title-text">Application Name</h4></div>`
+          ? `<li class="tl-header__title"><h4 class="tl-header__title-text">Application Name</h4></li>`
           : ''
       }
 
@@ -114,7 +114,7 @@ const Template = ({
 
       ${
         includeDropdown
-          ? `<div class="tl-header__dropdown">
+          ? `<li class="tl-header__dropdown">
               <button class="tl-header__dropdown-wrapper ${
                 isDropdownOpen ? 'tl-header__dropdown-wrapper--open' : ''
               } ${isDropdownSelected ? 'tl-header__dropdown-wrapper--selected' : ''}">
@@ -125,13 +125,13 @@ const Template = ({
                   <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
                 </div>
               </button>
-              <div class="tl-header__dropdown-menu ${
+              <ul class="tl-header__dropdown-menu ${
                 isDropdownOpen ? 'tl-header__dropdown-menu--open' : ''
               }">
                 <li class="tl-header__dropdown-menu-item"><a href="#">Menu Item</a></li>
                 <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a href="#">Selected</a></li>
-              </div>
-            </div>`
+              </ul>
+            </li>`
           : ''
       }
 
@@ -149,62 +149,62 @@ const Template = ({
 
       ${
         includeBentoGrid
-          ? `<div class="tl-header__dropdown" style="display: block;">
+          ? `<li class="tl-header__dropdown" style="display: block;">
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
-              <div class="tl-header__dropdown-menu tl-header__dropdown-menu--launcher-grid">
-                <div class="tl-header__dropdown-menu-launcher-title">title</div>
-                <div class="tl-header__dropdown-menu-launcher">
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--profile tl-icon--32" aria-hidden="true"></span>My Profile</a></li>
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--settings tl-icon--32" aria-hidden="true"></span>My Settings</a></li>
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--message tl-icon--32" aria-hidden="true"></span>Support</a></li>
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--truck tl-icon--32" aria-hidden="true"></span>My Truck</a></li>
-                </div>
-              </div>
-            </div>`
+              <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--launcher-grid">
+                <li class="tl-header__dropdown-menu-launcher-title">title</li>
+                <ul class="tl-header__dropdown-menu-launcher">
+                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--profile tl-icon--32"></span>My Profile</a></li>
+                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--settings tl-icon--32"></span>My Settings</a></li>
+                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--message tl-icon--32"></span>Support</a></li>
+                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--truck tl-icon--32"></span>My Truck</a></li>
+                </ul>
+              </ul>
+            </li>`
           : ''
       }
 
       ${
         includeBentoList
-          ? `<div class="tl-header__dropdown" style="display: block;">
+          ? `<li class="tl-header__dropdown" style="display: block;">
               <button class="tl-header__dropdown-wrapper">
-                <span class="tl-icon tl-icon--bento tl-icon--16" aria-hidden="true"></span>
+                <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
-              <div class="tl-header__dropdown-menu tl-header__dropdown-menu--launcher-list">
-                <div class="tl-header__dropdown-menu-launcher-title">title</div>
+              <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--launcher-list">
+                <li class="tl-header__dropdown-menu-launcher-title">title</li>
                 <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a href="#">My Profile</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My settings</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">Support</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My truck</a></li>
-              </div>
-            </div>`
+              </ul>
+            </li>`
           : ''
       }
 
       ${
         includeUserProfile
-          ? `<div class="tl-header__dropdown">
+          ? `<li class="tl-header__dropdown">
               <button class="tl-header__dropdown-wrapper tl-header__dropdown-wrapper--user">
                 <div class="tl-header__dropdown-menu-user-image">
                   <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User avatar" />
                 </div>
               </button>
-              <div class="tl-header__dropdown-menu tl-header__dropdown-menu--user">
-                <div class="tl-header__dropdown-menu-user">
+              <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--user">
+                <li class="tl-header__dropdown-menu-user">
                   <div class="tl-header__dropdown-menu-user-box">
                     <div class="tl-header__dropdown-menu-user-content">
                       <span class="tl-header__dropdown-menu-user-header">User Name</span>
                       <span class="tl-header__dropdown-menu-user-subheader">user@example.com</span>
                     </div>
                   </div>
-                </div>
+                </li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My Profile</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My Settings</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">Log out</a></li>
-              </div>
-            </div>`
+              </ul>
+            </li>`
           : ''
       }
 
