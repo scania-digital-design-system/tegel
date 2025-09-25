@@ -81,6 +81,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
 
   return formatHtmlPreview(`
     <!-- Required stylesheets: 
+    "@scania/tegel-light/global.css"
     "@scania/tegel-light/tl-accordion.css"
     "@scania/tegel-light/tl-icon.css"
     -->
