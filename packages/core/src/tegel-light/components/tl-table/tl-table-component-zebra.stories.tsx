@@ -189,6 +189,7 @@ const Template = ({
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
+      "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-table.css"
     -->
     <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${zebraClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>

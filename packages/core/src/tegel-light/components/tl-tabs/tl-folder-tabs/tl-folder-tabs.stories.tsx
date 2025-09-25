@@ -80,6 +80,7 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
 
   return formatHtmlPreview(`
     <!-- Required stylesheets
+      "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-folder-tab.css";
       "@scania/tegel-light/tl-folder-tabs.css";
       "@scania/tegel-light/tl-icon.css"
