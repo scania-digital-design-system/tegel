@@ -8,7 +8,7 @@
   }
 
   .toggle-headline {
-    @include detail-02;
+    @include text-02;
 
     color: var(--toggle-text);
     margin-bottom: 12px;
