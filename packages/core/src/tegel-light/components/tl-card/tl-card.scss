@@ -5,9 +5,13 @@
 .tl-card {
   @include tds-box-sizing;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
   box-shadow: var(--card-box);
   background-color: var(--card-background);
-  display: block;
   border-radius: 4px;
   overflow: hidden;
 

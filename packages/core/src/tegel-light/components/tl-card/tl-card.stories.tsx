@@ -286,7 +286,7 @@ const Template = ({
         ${
           expandable
             ? `width: 336px;
-        height: 220px;`
+        max-height: 152px;`
             : ''
         }
       }
