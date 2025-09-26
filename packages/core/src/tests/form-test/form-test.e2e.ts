@@ -109,4 +109,33 @@ test.describe.parallel('form-test', () => {
     expect(resetFormData).toEqual(defaultFormValues);
     await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
   });
+
+  test('click-submit-with-missing-required-inputs', async ({ page }) => {
+    await page.goto(componentTestPath);
+    const submitButton = page.locator('tds-button[type="submit"]');
+
+    await submitButton.click();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+    await page.locator('tds-checkbox').first().click();
+    await submitButton.click();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+    await page.locator('tds-radio-button').first().locator('input').first().click();
+    await submitButton.click();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+    await page
+      .locator('tds-text-field')
+      .first()
+      .locator('input')
+      .first()
+      .fill(newFormValues['tds-text-field']);
+    await submitButton.click();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+
+    await page.locator('tds-toggle').first().locator('input').first().check();
+    await submitButton.click();
+    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+  });
 });
