@@ -25,6 +25,20 @@ $typography-map: (
   'text-02': text-02,
   'label-01': label-01,
   'label-02': label-02,
+  // Legacy typography names for backward compatibility
+  'supertype-01': supertype-01,
+  'supertype-02': supertype-02,
+  'supertype-03': supertype-03,
+  'expressive-headline-01': expressive-headline-01,
+  'expressive-headline-02': expressive-headline-02,
+  'headline-07': headline-07,
+  'detail-01': detail-01,
+  'detail-02': detail-02,
+  'detail-03': detail-03,
+  'detail-04': detail-04,
+  'detail-05': detail-05,
+  'detail-06': detail-06,
+  'detail-07': detail-07,
 );
 
 /* Utility mixin */

@@ -24,8 +24,8 @@
   @include headline-06;
 }
 
-.tds-headline-07 {
-  @include headline-07;
+.tds-title-01 {
+  @include title-01;
 }
 
 .tds-paragraph-01 {
@@ -42,6 +42,80 @@
 
 .tds-body-02 {
   @include body-02;
+}
+
+.tds-text-01 {
+  @include text-01;
+}
+
+.tds-text-02 {
+  @include text-02;
+}
+
+.tds-title-02 {
+  @include title-02;
+}
+
+.tds-body-link-01 {
+  @include body-link-01;
+}
+
+.tds-body-link-02 {
+  @include body-link-02;
+}
+
+.tds-display-01 {
+  @include display-01;
+}
+
+.tds-display-02 {
+  @include display-02;
+}
+
+.tds-display-03 {
+  @include display-03;
+}
+
+.tds-display-04 {
+  @include display-04;
+}
+
+.tds-display-05 {
+  @include display-05;
+}
+
+// New typography classes
+.tds-label-01 {
+  @include label-01;
+}
+
+.tds-label-02 {
+  @include label-02;
+}
+
+// Legacy classes for backward compatibility
+.tds-supertype-01 {
+  @include supertype-01;
+}
+
+.tds-supertype-02 {
+  @include supertype-02;
+}
+
+.tds-supertype-03 {
+  @include supertype-03;
+}
+
+.tds-expressive-headline-01 {
+  @include expressive-headline-01;
+}
+
+.tds-expressive-headline-02 {
+  @include expressive-headline-02;
+}
+
+.tds-headline-07 {
+  @include headline-07;
 }
 
 .tds-detail-01 {
@@ -72,14 +146,6 @@
   @include detail-07;
 }
 
-.tds-expressive-headline-01 {
-  @include expressive-headline-01;
-}
-
-.tds-expressive-headline-02 {
-  @include expressive-headline-02;
-}
-
 h1 {
   @include headline-01;
 }
@@ -105,5 +171,5 @@ h6 {
 }
 
 .h7 {
-  @include headline-07;
+  @include title-01;
 }
