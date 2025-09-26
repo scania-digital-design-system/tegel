@@ -84,6 +84,8 @@ const inputToForm = async (page: Page) => {
   });
 };
 
+const checkValueMissing = (el: HTMLInputElement) => el.validity.valueMissing;
+
 test.describe.parallel('form-test', () => {
   test('fill-form-and-reset', async ({ page }) => {
     await page.goto(componentTestPath);
@@ -113,29 +115,43 @@ test.describe.parallel('form-test', () => {
   test('click-submit-with-missing-required-inputs', async ({ page }) => {
     await page.goto(componentTestPath);
     const submitButton = page.locator('tds-button[type="submit"]');
-
     await submitButton.click();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 
-    await page.locator('tds-checkbox').first().click();
+    // Test value missing on required checkbox:
+    const checkbox = page.locator('tds-checkbox').first();
+    const checkboxInput = checkbox.locator('input').first();
+    let valueMissing = await checkboxInput.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(true);
+    await checkbox.click();
     await submitButton.click();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    valueMissing = await checkboxInput.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(false);
 
-    await page.locator('tds-radio-button').first().locator('input').first().click();
+    // Test value missing on required radio-button:
+    const radioButton = page.locator('tds-radio-button').first().locator('input').first();
+    valueMissing = await radioButton.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(true);
+    await radioButton.click();
     await submitButton.click();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    valueMissing = await radioButton.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(false);
 
-    await page
-      .locator('tds-text-field')
-      .first()
-      .locator('input')
-      .first()
-      .fill(newFormValues['tds-text-field']);
+    // Test value missing on required text-field:
+    const textField = page.locator('tds-text-field').first().locator('input').first();
+    valueMissing = await textField.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(true);
+    await textField.fill(newFormValues['tds-text-field']);
     await submitButton.click();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    valueMissing = await textField.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(false);
 
-    await page.locator('tds-toggle').first().locator('input').first().check();
+    // Test value missing on required toggle:
+    const toggle = page.locator('tds-toggle').first().locator('input').first();
+    valueMissing = await toggle.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(true);
+    await toggle.check();
     await submitButton.click();
-    await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    valueMissing = await toggle.evaluate(checkValueMissing);
+    expect(valueMissing).toBe(false);
   });
 });
