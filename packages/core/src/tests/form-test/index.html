@@ -15,7 +15,7 @@
     <section class="test-section">
       <form id="testForm" onsubmit="handleFormSubmit(event)">
         <div>
-          <tds-checkbox name="tds-checkbox" value="checkbox-1" checkbox-id="checkbox-1">
+          <tds-checkbox name="tds-checkbox" value="checkbox-1" checkbox-id="checkbox-1" required>
             <div slot="label">Checkbox 1</div>
           </tds-checkbox>
 
@@ -69,6 +69,7 @@
             name="tds-radio-button"
             value="radio-button-1"
             radio-id="radio-button-1"
+            required
           >
             <div slot="label">Radio button 1</div>
           </tds-radio-button>
@@ -95,7 +96,7 @@
         </div>
 
         <div>
-          <tds-text-field name="tds-text-field" type="text"></tds-text-field>
+          <tds-text-field name="tds-text-field" type="text" required></tds-text-field>
         </div>
 
         <div>
@@ -103,7 +104,7 @@
         </div>
 
         <div>
-          <tds-toggle name="tds-toggle">
+          <tds-toggle name="tds-toggle" required>
             <div slot="label">Toggle</div>
           </tds-toggle>
         </div>
@@ -112,6 +113,15 @@
           <tds-button type="submit" variant="primary" text="Submit" animation="none"></tds-button>
           <tds-button type="reset" variant="secondary" text="Reset" animation="none"></tds-button>
         </div>
+
+        <!-- <tds-text-field
+          name="tds-text-field-required"
+          type="text"
+          label="Text field required"
+          required
+        ></tds-text-field>
+
+        <input type="text" name="native-input" required /> -->
       </form>
     </section>
 
