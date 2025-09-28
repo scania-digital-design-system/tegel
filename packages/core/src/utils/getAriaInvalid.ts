@@ -12,11 +12,9 @@
  *
  */
 export const getAriaInvalid = (host: HTMLElement, state: string): string => {
-  // Check if aria-invalid is explicitly set on the host element
   const hostAriaInvalid = host.getAttribute('aria-invalid');
 
   if (hostAriaInvalid !== null) {
-    // Handle other string values (convert to string for consistency)
     return String(hostAriaInvalid);
   }
 
