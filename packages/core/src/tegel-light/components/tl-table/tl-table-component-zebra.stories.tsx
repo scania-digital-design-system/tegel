@@ -173,9 +173,7 @@ const Template = ({
 }) => {
   const compactClass = compact ? 'tl-table--compact' : '';
   const modeVariantClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-table--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
+    modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : '';
   const verticalDividersClass = verticalDividers ? 'tl-table--vertical-dividers' : '';
   const zebraClass = `tl-table--zebra-${zebraMode}`;
   const responsiveClass = responsive ? 'tl-table--responsive' : '';

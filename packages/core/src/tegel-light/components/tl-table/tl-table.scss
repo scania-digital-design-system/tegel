@@ -93,13 +93,13 @@
     }
   }
 
-  &--mode-variant-primary {
+  &--primary {
     --table-body-row: var(--component-table-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-secondary-cell);
   }
 
-  &--mode-variant-secondary {
+  &--secondary {
     --table-body-row: var(--component-table-secondary-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-cell);

@@ -162,11 +162,7 @@ const MultiselectTemplate = ({
     responsive ? 'tl-table--responsive' : ''
   } ${verticalDividers ? 'tl-table--vertical-dividers' : ''} ${
     noMinWidth ? 'tl-table--no-min-width' : ''
-  } ${
-    modeVariant !== 'Inherit from parent'
-      ? `tl-table--mode-variant-${modeVariant.toLowerCase()}`
-      : ''
-  }">
+  } ${modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : ''}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">
