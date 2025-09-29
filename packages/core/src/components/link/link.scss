@@ -18,9 +18,6 @@
     ::slotted(*) {
       text-decoration: none;
     }
-  }
-
-  .no-underline {
     ::slotted(*:hover) {
       color: var(--tds-link-hover);
       text-decoration: underline;
