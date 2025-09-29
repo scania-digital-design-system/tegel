@@ -2,7 +2,6 @@
 @import '../../../mixins/z-index';
 @import '../../../mixins/box-sizing';
 @import './tl-header-vars';
-@import '../../../mixins/focus-state';
 @import '../../../../../../typography/utilities/typography-utility';
 @import '../../../global/_variables';
 
@@ -26,10 +25,8 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-foreground-border-accent-focus);
-    box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-    outline-offset: 1px;
-    z-index: 10;
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
   &--user {
@@ -155,7 +152,8 @@
     }
 
     &:focus-visible {
-      @include tds-focus-state;
+      outline: none;
+      box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
     }
   }
 
@@ -260,7 +258,8 @@
     }
 
     &:focus-visible {
-      @include tds-focus-state;
+      outline: none;
+      box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
     }
   }
 }
