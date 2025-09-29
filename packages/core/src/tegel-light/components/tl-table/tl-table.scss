@@ -93,28 +93,6 @@
     }
   }
 
-  &--zebra-rows-odd,
-  &--zebra-rows-even {
-    .tl-table__body .tl-table__row:hover {
-      background-color: var(--table-body-row-hover) !important;
-
-      .tl-table__body-cell {
-        background-color: var(--table-body-row-hover) !important;
-      }
-    }
-  }
-
-  &--zebra-columns-odd,
-  &--zebra-columns-even {
-    .tl-table__body .tl-table__row:hover {
-      background-color: var(--table-body-row-hover) !important;
-
-      .tl-table__body-cell {
-        background-color: var(--table-body-row-hover) !important;
-      }
-    }
-  }
-
   &--mode-variant-primary {
     --table-body-row: var(--component-table-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
@@ -231,6 +209,10 @@
   &:hover {
     background-color: var(--table-body-row-hover);
     border-bottom-color: var(--table-divider);
+
+    .tl-table__body-cell {
+      background-color: var(--table-body-row-hover);
+    }
   }
 
   &--selected {
@@ -238,6 +220,10 @@
 
     &:hover {
       background-color: var(--table-body-row-selected-hover);
+
+      .tl-table__body-cell {
+        background-color: var(--table-body-row-selected-hover);
+      }
     }
   }
 
