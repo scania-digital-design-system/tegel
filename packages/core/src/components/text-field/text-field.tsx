@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { getAriaInvalid } from '../../utils/getAriaInvalid';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -244,6 +245,7 @@ export class TdsTextField {
                   this.handleBlur(event);
                 }
               }}
+              aria-invalid={getAriaInvalid(this.host, this.state)}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
               aria-describedby={`text-field-helper-element-${this.uuid}`}
               aria-readonly={this.readOnly}
