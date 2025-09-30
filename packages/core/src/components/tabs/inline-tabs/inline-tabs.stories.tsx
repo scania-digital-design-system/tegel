@@ -90,7 +90,7 @@ const Template = ({ modeVariant, selectedIndex, defaultSelectedIndex, leftPaddin
       <button>Third tab</button>
     </tds-inline-tab>
     <tds-inline-tab disabled>
-      <button>Fourth tab</button>
+      <button disabled>Fourth tab</button>
     </tds-inline-tab>
   </tds-inline-tabs>
 
