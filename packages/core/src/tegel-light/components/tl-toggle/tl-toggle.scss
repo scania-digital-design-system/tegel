@@ -88,7 +88,7 @@
     }
   }
 
-  &.tl-toggle__input--sm {
+  &--sm {
     width: 28px;
     height: 16px;
 
@@ -122,6 +122,24 @@
       }
     }
   }
+}
+
+.tl-toggle__headline {
+  @include detail-02;
+
+  color: var(--toggle-text);
+  margin-bottom: 12px;
+}
+
+.tl-toggle__label {
+  @include detail-02;
+
+  color: var(--toggle-text);
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 8px;
 }
 
 .tl-toggle__headline {
