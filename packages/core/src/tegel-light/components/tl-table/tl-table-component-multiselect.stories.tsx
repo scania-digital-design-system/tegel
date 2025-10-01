@@ -153,6 +153,7 @@ const MultiselectTemplate = ({
 }) =>
   formatHtmlPreview(`
     <!-- Required stylesheets: 
+    "@scania/tegel-light/tl-global.css"
     "@scania/tegel-light/tl-table.css"
     "@scania/tegel-light/tl-checkbox.css"
     -->
