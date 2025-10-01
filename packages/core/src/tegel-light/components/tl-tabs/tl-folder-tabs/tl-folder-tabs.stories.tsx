@@ -37,9 +37,7 @@ export default {
 
 const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex }) => {
   const modeClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-folder-tabs--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
+    modeVariant !== 'Inherit from parent' ? `tl-folder-tabs--${modeVariant.toLowerCase()}` : '';
 
   const labels = ['First tab', 'Second tab is muuuuuuch longer', 'Third tab', 'Fourth tab'];
 
