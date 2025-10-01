@@ -31,10 +31,10 @@
     }
 
     ::slotted(a:focus-visible) {
-      @include tds-focus-state;
+      @include tds-focus-state-dropdown-option;
     }
 
-    &-selected {
+    &-selected:not(::slotted(a:focus-visible)) {
       background-color: var(--tds-nav-item-background-selected);
       padding-right: 4px;
       border-left-width: 4px;
