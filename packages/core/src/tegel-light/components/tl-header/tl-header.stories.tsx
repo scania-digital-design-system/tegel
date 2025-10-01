@@ -88,7 +88,7 @@ const Template = ({
 
 <header class="tl-header">
   <nav class="tl-header__nav">
-    <ul class="tl-header__component-list">
+    <ul class="tl-header__list">
 
       ${
         includeHamburger
