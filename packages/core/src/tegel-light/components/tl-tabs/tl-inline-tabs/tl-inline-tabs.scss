@@ -31,31 +31,31 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
 
-  .tl-inline-tabs__scroll-btn {
-    background-color: var(--inline-tabs-scroll-button);
-    color: var(--inline-tabs-scroll-button-text);
-    cursor: pointer;
-    min-width: 48px;
-    border: 0;
-    display: block;
-    justify-content: center;
-    align-items: center;
-    opacity: 1;
-    position: sticky;
+.tl-inline-tabs__scroll-btn {
+  background-color: var(--inline-tabs-scroll-button);
+  color: var(--inline-tabs-scroll-button-text);
+  cursor: pointer;
+  min-width: 48px;
+  border: 0;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  position: sticky;
 
-    svg {
-      fill: var(--inline-tabs-scroll-button-text);
-    }
+  svg {
+    fill: var(--inline-tabs-scroll-button-text);
   }
+}
 
-  .tl-inline-tabs__scroll-btn--right {
-    right: 0;
-    z-index: 1;
-  }
+.tl-inline-tabs__scroll-btn--right {
+  right: 0;
+  z-index: 1;
+}
 
-  .tl-inline-tabs__scroll-btn--left {
-    left: 0;
-    z-index: 1;
-  }
+.tl-inline-tabs__scroll-btn--left {
+  left: 0;
+  z-index: 1;
 }
