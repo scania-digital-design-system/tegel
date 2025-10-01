@@ -1,6 +1,7 @@
 import { Component, Element, Event, EventEmitter, h, Method, Prop, State } from '@stencil/core';
 import hasSlot from '../../utils/hasSlot';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { handlePasteEvent } from '../../utils/handlePasteEvent';
 
 /**
  * @slot prefix - Slot for the prefix in the component.
@@ -126,6 +127,36 @@ export class TdsTextField {
     this.tdsInput.emit(event);
   }
 
+  // Handle paste events to ensure input events are triggered
+  handlePaste(event: ClipboardEvent): void {
+    const inputEl = event.target as HTMLInputElement;
+
+    // Create a value processor for number inputs with min/max validation
+    const valueProcessor = (value: string): string => {
+      if (this.type === 'number') {
+        const numericValue = Number(value);
+
+        if (this.min !== undefined && numericValue < Number(this.min)) {
+          return String(this.min);
+        }
+
+        if (this.max !== undefined && numericValue > Number(this.max)) {
+          return String(this.max);
+        }
+      }
+      return value;
+    };
+
+    // Create a callback to handle the synthetic input event
+    const onInputCallback = (syntheticEvent: InputEvent) => {
+      this.value = inputEl.value;
+      this.tdsInput.emit(syntheticEvent);
+    };
+
+    // Use the utility function
+    handlePasteEvent(inputEl, onInputCallback, valueProcessor);
+  }
+
   /** Focus event for the Text Field */
   @Event({
     eventName: 'tdsFocus',
@@ -234,6 +265,7 @@ export class TdsTextField {
               max={this.max}
               onInput={(event) => this.handleInput(event)}
               onChange={(event) => this.handleChange(event)}
+              onPaste={(event) => this.handlePaste(event)}
               onFocus={(event) => {
                 if (!this.readOnly) {
                   this.handleFocus(event);
@@ -244,6 +276,7 @@ export class TdsTextField {
                   this.handleBlur(event);
                 }
               }}
+              aria-invalid={this.state === 'error' ? 'true' : 'false'}
               aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
               aria-describedby={`text-field-helper-element-${this.uuid}`}
               aria-readonly={this.readOnly}

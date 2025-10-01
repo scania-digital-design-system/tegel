@@ -1,5 +1,6 @@
-import { Component, h, Prop, State, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter, Method, Element } from '@stencil/core';
 import generateUniqueId from '../../utils/generateUniqueId';
+import { handlePasteEvent } from '../../utils/handlePasteEvent';
 
 @Component({
   tag: 'tds-textarea',
@@ -8,6 +9,8 @@ import generateUniqueId from '../../utils/generateUniqueId';
   scoped: true,
 })
 export class TdsTextarea {
+  @Element() host: HTMLElement;
+
   /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
 
@@ -111,6 +114,22 @@ export class TdsTextarea {
     }
   }
 
+  // Handle paste events to ensure input events are triggered
+  handlePaste(event: ClipboardEvent): void {
+    if (event.target instanceof HTMLTextAreaElement) {
+      const textareaEl = event.target;
+
+      // Create a callback to handle the synthetic input event
+      const onInputCallback = (syntheticEvent: InputEvent) => {
+        this.value = textareaEl.value;
+        this.tdsInput.emit(syntheticEvent);
+      };
+
+      // Use the utility function (no value processor needed for textarea)
+      handlePasteEvent(textareaEl, onInputCallback);
+    }
+  }
+
   /** Focus event for the Textarea */
   @Event({
     eventName: 'tdsFocus',
@@ -194,6 +213,7 @@ export class TdsTextarea {
             }}
             onInput={(event) => this.handleInput(event)}
             onChange={(event) => this.handleChange(event)}
+            onPaste={(event) => this.handlePaste(event)}
             aria-invalid={this.state === 'error' ? 'true' : 'false'}
             aria-readonly={this.readOnly ? 'true' : 'false'}
             aria-label={this.tdsAriaLabel ? this.tdsAriaLabel : this.label}
