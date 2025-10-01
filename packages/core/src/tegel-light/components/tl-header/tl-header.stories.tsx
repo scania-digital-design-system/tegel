@@ -80,9 +80,11 @@ const Template = ({
 }) =>
   formatHtmlPreview(`
 
-<!-- Required stylesheet -->
-<link rel="stylesheet" href="@scania/tegel-light/tl-header.css" />
-<link rel="stylesheet" href="@scania/tegel-light/tl-icon.css" />
+<!-- Required stylesheet 
+  "@scania/tegel-light/global.css";
+  "@scania/tegel-light/tl-header.css";
+  "@scania/tegel-light/tl-icon.css";
+-->
 
 <header class="tl-header">
   <nav class="tl-header__nav">
