@@ -8,37 +8,37 @@
     border-radius: 4px;
 
     &.information {
-      border-left: 4px solid var(--system-info-default);
+      border-left: 4px solid var(--tds-message-border-info);
 
       tds-icon {
-        color: var(--system-info-default);
+        color: var(--tds-message-icon-info);
       }
     }
 
     &.success {
       background-color: var(--tds-message-background-success);
-      border-left: 4px solid var(--system-success-default);
+      border-left: 4px solid var(--tds-message-border-success);
 
       tds-icon {
-        color: var(--system-success-default);
+        color: var(--tds-message-icon-success);
       }
     }
 
     &.error {
       background-color: var(--tds-message-background-error);
-      border-left: 4px solid var(--system-danger-default);
+      border-left: 4px solid var(--tds-message-border-error);
 
       tds-icon {
-        color: var(--system-danger-default);
+        color: var(--tds-message-icon-error);
       }
     }
 
     &.warning {
       background-color: var(--tds-message-background-warning);
-      border-left: 4px solid var(--system-warning-default);
+      border-left: 4px solid var(--tds-message-border-warning);
 
       tds-icon {
-        color: var(--system-warning-default);
+        color: var(--tds-message-icon-warning);
       }
     }
 
@@ -53,7 +53,7 @@
 
       &.error {
         .header {
-          color: var(--system-danger-default);
+          color: var(--tds-message-minimal-header-error);
         }
       }
     }
