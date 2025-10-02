@@ -50,15 +50,25 @@
   --table-icon: var(--color-foreground-icon-strong);
   --table-icon-disabled: var(--color-foreground-icon-disabled);
 
-  &.tl-table--mode-variant-primary {
+  &.tl-table--primary {
     --table-body-row: var(--component-table-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
+    --table-body-cell-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-secondary-cell);
   }
 
-  &.tl-table--mode-variant-secondary {
+  &.tl-table--secondary {
     --table-body-row: var(--component-table-secondary-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
+    --table-body-cell-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-cell);
+  }
+}
+
+// Dark mode variant secondary
+.tds-mode-dark .tl-table {
+  &.tl-table--secondary {
+    --table-body-cell-hover: var(--color-background-surface-300);
+    --table-body-row-hover: var(--color-background-surface-300);
   }
 }

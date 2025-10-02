@@ -1,6 +1,7 @@
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/scrollbar';
 @import './_tl-table-vars';
+@import '../../../../../../typography/utilities/typography-utility';
 
 .tl-table {
   @include tds-box-sizing;
@@ -92,13 +93,13 @@
     }
   }
 
-  &--mode-variant-primary {
+  &--primary {
     --table-body-row: var(--component-table-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-secondary-cell);
   }
 
-  &--mode-variant-secondary {
+  &--secondary {
     --table-body-row: var(--component-table-secondary-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-cell);
@@ -208,6 +209,10 @@
   &:hover {
     background-color: var(--table-body-row-hover);
     border-bottom-color: var(--table-divider);
+
+    .tl-table__body-cell {
+      background-color: var(--table-body-row-hover);
+    }
   }
 
   &--selected {
@@ -215,6 +220,10 @@
 
     &:hover {
       background-color: var(--table-body-row-selected-hover);
+
+      .tl-table__body-cell {
+        background-color: var(--table-body-row-selected-hover);
+      }
     }
   }
 
@@ -233,17 +242,14 @@
   padding: 16px;
   background-color: var(--table-header);
   border-bottom: 1px solid var(--table-divider);
-  font-size: var(--text-component-title-01-font-size);
-  font-family: var(--text-component-title-01-font-family);
-  line-height: var(--text-component-title-01-line-height);
-  letter-spacing: var(--text-component-title-01-letter-spacing);
-  font-weight: bold;
+  @include headline-07;
+
   color: var(--table-text);
   text-align: left;
   transition: background-color 200ms ease;
   min-width: 192px;
 
-  &:hover {
+  &:hover:not(&--checkbox) {
     background-color: var(--table-header-hover);
   }
 
@@ -260,6 +266,7 @@
     width: 48px;
     padding: 0;
     text-align: center;
+    background-color: var(--table-header);
   }
 }
 
@@ -268,14 +275,16 @@
   padding: 16px;
   background-color: transparent;
   color: var(--table-text);
+  @include detail-02;
+
   transition: background-color 200ms ease;
   min-width: 192px;
 
-  &:hover {
+  &:hover:not(&--checkbox) {
     background-color: var(--table-body-cell-hover);
   }
 
-  &--hover {
+  &--column-highlight {
     background-color: var(--table-body-cell-hover);
   }
 
@@ -284,5 +293,6 @@
     width: 48px;
     padding: 0;
     text-align: center;
+    background-color: inherit;
   }
 }

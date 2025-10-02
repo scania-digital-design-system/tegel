@@ -2,7 +2,14 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: 'Tegel Light (CSS)/Table/Zebra',
-
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'Zebra table component with alternating row/column patterns. <br> ⚠️ Note: Interactive effects like column hover highlighting require JavaScript for full functionality.',
+      },
+    },
+  },
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
@@ -166,9 +173,7 @@ const Template = ({
 }) => {
   const compactClass = compact ? 'tl-table--compact' : '';
   const modeVariantClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-table--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
+    modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : '';
   const verticalDividersClass = verticalDividers ? 'tl-table--vertical-dividers' : '';
   const zebraClass = `tl-table--zebra-${zebraMode}`;
   const responsiveClass = responsive ? 'tl-table--responsive' : '';
@@ -188,7 +193,8 @@ const Template = ({
     : '';
 
   return formatHtmlPreview(`
-    <!-- Required stylesheet 
+    <!-- Required stylesheet
+      "@scania/tegel-light/tl-global.css"
       "@scania/tegel-light/tl-table.css"
     -->
     <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${zebraClass} ${responsiveClass} ${headerTextAlignClass} ${cellTextAlignClass} ${clickableClass} ${noMinWidthClass} ${disablePaddingClass} ${disableHeaderPaddingClass} ${horizontalScrollClass}" ${horizontalScrollStyle}>
@@ -240,7 +246,7 @@ const Template = ({
         </tbody>
     </table>
 
-    <!-- Script tag for demo purposes -->
+    <!-- Script tag for demo purposes - Column hover highlighting requires JavaScript -->
     <script>
       (function() {
         const table = document.querySelector('.tl-table');
@@ -255,14 +261,14 @@ const Template = ({
           headerCell.addEventListener('mouseenter', () => {
             bodyCells.forEach(cell => {
               if (cell.getAttribute('data-column') === columnIndex) {
-                cell.classList.add('tl-table__body-cell--hover');
+                cell.classList.add('tl-table__body-cell--column-highlight');
               }
             });
           });
 
           headerCell.addEventListener('mouseleave', () => {
             bodyCells.forEach(cell => {
-              cell.classList.remove('tl-table__body-cell--hover');
+              cell.classList.remove('tl-table__body-cell--column-highlight');
             });
           });
         });
