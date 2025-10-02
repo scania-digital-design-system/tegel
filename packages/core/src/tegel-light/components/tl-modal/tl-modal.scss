@@ -1,6 +1,7 @@
 @import '../../../mixins/z-index';
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/focus-state';
+@import '../../../mixins/scrollbar';
 @import '../../../../../../typography/utilities/typography-utility';
 @import './tl-modal-vars';
 
@@ -54,19 +55,7 @@ $modals: (
 /* MIXINS */
 
 @mixin modal-scrollbar {
-  &::-webkit-scrollbar {
-    width: $scrollbar-width;
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--modal-scroll-bar-thumb);
-    border-radius: $scrollbar-radius;
-  }
+  @include tds-scrollbar;
 }
 
 .tl-modal {

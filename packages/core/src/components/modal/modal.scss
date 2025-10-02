@@ -1,6 +1,7 @@
 @import '../../mixins/z-index';
 @import '../../mixins/box-sizing';
 @import '../../mixins/focus-state';
+@import '../../mixins/scrollbar';
 @import '../../../../../typography/utilities/typography-utility';
 
 // Screen breakpoints
@@ -51,19 +52,7 @@ $modals: (
 /* MIXINS */
 
 @mixin modal-scrollbar {
-  &::-webkit-scrollbar {
-    width: $scrollbar-width;
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--foreground-elements-transparparent-discrete);
-    border-radius: $scrollbar-radius;
-  }
+  @include tds-scrollbar;
 }
 
 @mixin modal-header {
