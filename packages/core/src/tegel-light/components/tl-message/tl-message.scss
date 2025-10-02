@@ -1,11 +1,11 @@
 @import '../../../../../../typography/utilities/typography-utility';
 
 .tl-message {
-  &--mode-variant-primary {
+  &--primary {
     --message-main-background: var(--message-mode-primary-background);
   }
 
-  &--mode-variant-secondary {
+  &--secondary {
     --message-main-background: var(--message-mode-secondary-background);
   }
 }

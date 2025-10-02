@@ -3,7 +3,7 @@
 @import '../../../../mixins/box-sizing';
 @import '../../../../../../../typography/utilities/typography-utility';
 
-.tl-accordion-item {
+.tl-accordion__item {
   @include tds-box-sizing;
 
   list-style: none;
@@ -182,7 +182,7 @@
     padding: 0;
   }
 
-  &--padding-reset {
+  &--less-padding {
     padding-right: var(--tds-spacing-element-16);
   }
 }
