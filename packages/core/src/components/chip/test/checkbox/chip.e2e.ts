@@ -45,15 +45,15 @@ test.describe.parallel(componentName, () => {
   test('Check so that height is correct to lg/default measurements', async ({ page }) => {
     const chip1 = page.locator('tds-chip label').filter({ hasText: `Label 1` });
     const chipHeight1 = await chip1.evaluate((style) => getComputedStyle(style).height);
-    expect(chipHeight1).toBe('32px');
+    expect(chipHeight1).toBe('16px');
 
     const chip2 = page.locator('tds-chip label').filter({ hasText: `Label 2` });
     const chipHeight2 = await chip2.evaluate((style) => getComputedStyle(style).height);
-    expect(chipHeight2).toBe('32px');
+    expect(chipHeight2).toBe('16px');
 
     const chip3 = page.locator('tds-chip label').filter({ hasText: `Label 3` });
     const chipHeight3 = await chip3.evaluate((style) => getComputedStyle(style).height);
-    expect(chipHeight3).toBe('32px');
+    expect(chipHeight3).toBe('16px');
   });
 
   test('Chip 1 is clickable', async ({ page }) => {
