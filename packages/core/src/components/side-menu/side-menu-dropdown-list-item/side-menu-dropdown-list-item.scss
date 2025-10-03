@@ -96,7 +96,7 @@
     }
 
     ::slotted(a:focus-visible) {
-      @include tds-focus-state-side-menu;
+      @include tds-focus-state-inset;
     }
   }
 

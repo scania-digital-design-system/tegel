@@ -26,7 +26,7 @@
   ::slotted(button:focus-visible),
   ::slotted(a:focus-visible) {
     border: none;
-    @include tds-focus-state-side-menu;
+    @include tds-focus-state-inset;
   }
 
   .component-active {

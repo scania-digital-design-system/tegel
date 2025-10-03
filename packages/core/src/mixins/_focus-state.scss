@@ -5,8 +5,9 @@
   z-index: 1;
 }
 
-@mixin tds-focus-state-side-menu {
+@mixin tds-focus-state-inset {
   outline: 2px solid var(--tds-focus-outline-color);
   box-shadow: inset 0 0 0 3px var(--tds-white);
   outline-offset: -2px;
+  z-index: 1;
 }
