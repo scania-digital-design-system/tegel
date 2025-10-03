@@ -37,14 +37,8 @@
   }
 
   &--stretch {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &--below-header-stretch,
-  &--above-header-stretch {
-    display: flex;
-    flex-direction: column;
+    height: 100%;
+    width: 100%;
   }
 
   &--expandable {
@@ -169,9 +163,7 @@
   inline-size: 100%;
 }
 
-.tl-card--stretch .tl-card__body,
-.tl-card--below-header-stretch .tl-card__body,
-.tl-card--above-header-stretch .tl-card__body {
+.tl-card--stretch .tl-card__body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
