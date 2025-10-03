@@ -158,8 +158,11 @@
   }
 }
 
-.tds-accordion-item:has(:hover) {
+.tds-accordion-item:hover {
   background-color: var(--tds-accordion-background-hover);
+  border-top-color: var(--tds-accordion-border-hover);
+  border-bottom-color: var(--tds-accordion-border-hover);
+  z-index: 1;
 }
 
 .tds-accordion-item:has(.tds-accordion-header-icon-start:active),
