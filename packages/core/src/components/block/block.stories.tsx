@@ -25,12 +25,9 @@ const SingleTemplate = ({ modeVariant, componentTag }) =>
       <tds-block 
         ${
           modeVariant !== 'Inherit from parent' ? `mode-variant="${modeVariant.toLowerCase()}"` : ''
-        } 
+        }
         component-tag="${componentTag}">
-        <section>
-          <h2 class="tds-headline-02">Semantic Block</h2>
-          <p class="tds-body-01">This block is now structured using a <code>&lt;section&gt;</code> element for better accessibility.</p>
-        </section>
+        <div style="height: 150px"></div>
       </tds-block>
     `,
   );
