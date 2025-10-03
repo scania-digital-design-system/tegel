@@ -18,7 +18,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
     test('is basic message rendered correctly', async ({ page }) => {
       /* Check diff on screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0, threshold: 0 });
     });
   });
 });
