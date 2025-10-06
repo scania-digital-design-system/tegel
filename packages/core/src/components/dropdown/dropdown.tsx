@@ -334,6 +334,15 @@ export class TdsDropdown {
   })
   tdsInput: EventEmitter<InputEvent>;
 
+  /** Clear event for the Dropdown. */
+  @Event({
+    eventName: 'tdsClear',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsClear: EventEmitter<void>;
+
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     if (this.open) {
@@ -594,6 +603,8 @@ export class TdsDropdown {
     this.inputElement.focus();
     // Add this line to ensure internal value is cleared
     this.internalValue = '';
+
+    this.tdsClear.emit(null);
   };
 
   private handleFocus = () => {
