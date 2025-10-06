@@ -104,6 +104,25 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(resetButton).toBeHidden(); // Reset button should hide again after clearing the input
     });
 
+    test('tdsClear event is emitted when reset button is clicked', async ({ page }) => {
+      const inputElement = page.getByRole('textbox');
+      const resetButton = page.locator('tds-icon[name="cross"]');
+
+      // Set up event spy
+      const clearEventSpy = await page.spyOnEvent('tdsClear');
+
+      // Type to show reset button
+      await inputElement.click();
+      await inputElement.fill('test');
+      await expect(resetButton).toBeVisible();
+
+      // Click reset button
+      await resetButton.click();
+
+      // Verify event was emitted
+      expect(clearEventSpy).toHaveReceivedEventTimes(1);
+    });
+
     test('toggle dropdown visibility and select option two', async ({ page }) => {
       const inputElement = page.getByRole('textbox');
       const dropdownListElementTwoButton = page
