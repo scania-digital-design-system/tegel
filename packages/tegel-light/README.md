@@ -157,6 +157,20 @@ You will now be able to import Tegel Light components in your app.
 These conventions define a clear, maintainable, and scalable SCSS structure for the Tegel Light design system, using BEM principles and Sass features to support consistency and readability.
 
 
+## JavaScript Requirements for Styling Effects
+
+Some Tegel Light components require JavaScript to achieve certain styling effects that cannot be accomplished with pure CSS. These components need special handling to ensure their visual effects work correctly.
+
+### Rules for JavaScript-Dependent Styling
+
+1. **Documentation Requirement**: Components that need JavaScript for certain styles must clearly communicate this requirement in their documentation and stories.
+
+2. **Graceful Degradation**: Components should never be completely broken without JavaScript. They should provide a basic, functional state even without JS.
+
+3. **Demo Examples**: Stories must include working JavaScript examples that demonstrate the styling effects.
+
+---
+
 ### BEM Structure & Naming
 
 We use strict BEM naming for class structure:
