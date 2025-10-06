@@ -1,19 +1,36 @@
 {
-    "color": {
-      "background": {
-        "base": {
-          "$type": "color",
-          "$value": "{scania.color.grey.00}"
-        },
-        "accent": {
-          "primary": {
+  "color": {
+    "background": {
+      "base": {
+        "$type": "color",
+        "$value": "{scania.color.grey.00}"
+      },
+      "accent": {
+        "primary": {
+          "default": {
+            "$type": "color",
+            "$value": "{scania.color.blue.600}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.grey.50}"
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{scania.color.blue.500}"
+          },
+          "pressed": {
+            "$type": "color",
+            "$value": "{scania.color.blue.700}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
+          },
+          "inverse": {
             "default": {
               "$type": "color",
-              "$value": "{scania.color.blue.600}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.grey.50}"
+              "$value": "{scania.color.blue.400}"
             },
             "hover": {
               "$type": "color",
@@ -21,212 +38,16 @@
             },
             "pressed": {
               "$type": "color",
-              "$value": "{scania.color.blue.700}"
+              "$value": "{scania.color.blue.300}"
             },
             "focus": {
               "$type": "color",
-              "$value": "{scania.color.blue.400}"
-            },
-            "inverse": {
-              "default": {
-                "$type": "color",
-                "$value": "{scania.color.blue.400}"
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{scania.color.blue.500}"
-              },
-              "pressed": {
-                "$type": "color",
-                "$value": "{scania.color.blue.300}"
-              },
-              "focus": {
-                "$type": "color",
-                "$value": "{scania.color.blue.600}"
-              },
-              "disabled": {
-                "$type": "color",
-                "$value": "{scania.color.grey.850}"
-              }
-            }
-          },
-          "danger": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.red.400}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{scania.color.red.600}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.red.700}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.red.400}"
+              "$value": "{scania.color.blue.600}"
             },
             "disabled": {
               "$type": "color",
-              "$value": "{scania.color.grey.50}"
+              "$value": "{scania.color.grey.850}"
             }
-          }
-        },
-        "layer-01": {
-          "$type": "color",
-          "$value": "{scania.color.grey.50}"
-        },
-        "layer-02": {
-          "$type": "color",
-          "$value": "{scania.color.grey.00}"
-        },
-        "layer-03": {
-          "$type": "color",
-          "$value": "{scania.color.grey.50}"
-        },
-        "overlay": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.scrim.light}"
-        },
-        "inverse": {
-          "base": {
-            "$type": "color",
-            "$value": "{scania.color.grey.950}"
-          },
-          "layer-01": {
-            "$type": "color",
-            "$value": "{scania.color.grey.900}"
-          },
-          "layer-02": {
-            "$type": "color",
-            "$value": "{scania.color.grey.850}"
-          },
-          "layer-03": {
-            "$type": "color",
-            "$value": "{scania.color.grey.800}"
-          },
-          "top": {
-            "$type": "color",
-            "$value": "{scania.color.grey.900}"
-          },
-          "overlay": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.scrim.light}"
-          }
-        },
-        "surface": {
-          "100": {
-            "$type": "color",
-            "$value": "{scania.color.grey.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{scania.color.grey.150}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{scania.color.grey.200}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{scania.color.grey.250}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{scania.color.grey.350}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{scania.color.grey.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{scania.color.grey.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{scania.color.grey.750}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{scania.color.grey.800}"
-          },
-          "1000": {
-            "$type": "color",
-            "$value": "{scania.color.grey.850}"
-          }
-        },
-        "top": {
-          "$type": "color",
-          "$value": "{scania.color.grey.00}"
-        }
-      },
-      "system": {
-        "warning": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.yellow.500}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.yellow.50}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.yellow.900}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.yellow.600}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.yellow.400}"
-          }
-        },
-        "success": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.green.300}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.green.50}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.green.800}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.green.500}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.green.200}"
-          }
-        },
-        "info": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.blue.400}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.blue.50}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.blue.800}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.blue.600}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.blue.300}"
           }
         },
         "danger": {
@@ -234,870 +55,566 @@
             "$type": "color",
             "$value": "{scania.color.red.400}"
           },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.red.50}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.red.800}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.red.500}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.red.300}"
-          }
-        }
-      },
-      "foreground": {
-        "text": {
-          "accent": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.400}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            },
-            "brand-inverse": {
-              "$type": "color",
-              "$value": "{scania.color.grey.950}"
-            },
-            "visited": {
-              "$type": "color",
-              "$value": "{scania.color.blue.700}"
-            }
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.950}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.650}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.350}"
-          },
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.50}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.300}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.400}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.200}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.500}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            }
-          },
-          "brand": {
-            "$type": "color",
-            "$value": "{scania.color.blue.800}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.250}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.500}"
-          }
-        },
-        "border": {
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.50}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.300}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.400}"
-            },
-            "discrete": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.600}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.200}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.500}"
-            }
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.950}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.500}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.350}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.200}"
-          },
-          "accent": {
-            "link": {
-              "$type": "color",
-              "$value": "{scania.color.blue.400}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.400}"
-            }
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.650}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.250}"
-          }
-        },
-        "icon": {
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.950}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.650}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.500}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.350}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.250}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.200}"
-          },
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.50}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.200}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.300}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.400}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.500}"
-            },
-            "discrete": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.inverse.600}"
-            }
-          },
-          "accent": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.400}"
-            },
-            "visited": {
-              "$type": "color",
-              "$value": "{scania.color.blue.700}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            },
-            "brand-inverse": {
-              "$type": "color",
-              "$value": "{scania.color.grey.950}"
-            }
-          }
-        }
-      },
-      "brand": {
-        "neutral": {
-          "white": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "black": {
-            "$type": "color",
-            "$value": "{scania.color.grey.1000}"
-          }
-        },
-        "primary": {
-          "50": {
-            "$type": "color",
-            "$value": "{scania.color.blue.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{scania.color.blue.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{scania.color.blue.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{scania.color.blue.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{scania.color.blue.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{scania.color.blue.500}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{scania.color.blue.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{scania.color.blue.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{scania.color.blue.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{scania.color.blue.900}"
-          }
-        },
-        "secondary": {
-          "50": {
-            "$type": "color",
-            "$value": "{scania.color.red.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{scania.color.red.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{scania.color.red.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{scania.color.red.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{scania.color.red.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{scania.color.red.500}"
-          },
-          "600": {
+          "hover": {
             "$type": "color",
             "$value": "{scania.color.red.600}"
           },
-          "700": {
+          "pressed": {
             "$type": "color",
             "$value": "{scania.color.red.700}"
           },
-          "800": {
+          "focus": {
             "$type": "color",
-            "$value": "{scania.color.red.800}"
+            "$value": "{scania.color.red.400}"
           },
-          "900": {
+          "disabled": {
             "$type": "color",
-            "$value": "{scania.color.red.900}"
+            "$value": "{scania.color.grey.50}"
+          }
+        }
+      },
+      "layer-01": {
+        "$type": "color",
+        "$value": "{scania.color.grey.50}"
+      },
+      "layer-02": {
+        "$type": "color",
+        "$value": "{scania.color.grey.00}"
+      },
+      "layer-03": {
+        "$type": "color",
+        "$value": "{scania.color.grey.50}"
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.scrim.light}"
+      },
+      "inverse": {
+        "base": {
+          "$type": "color",
+          "$value": "{scania.color.grey.950}"
+        },
+        "layer-01": {
+          "$type": "color",
+          "$value": "{scania.color.grey.900}"
+        },
+        "layer-02": {
+          "$type": "color",
+          "$value": "{scania.color.grey.850}"
+        },
+        "layer-03": {
+          "$type": "color",
+          "$value": "{scania.color.grey.800}"
+        },
+        "top": {
+          "$type": "color",
+          "$value": "{scania.color.grey.900}"
+        },
+        "overlay": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.scrim.light}"
+        }
+      },
+      "surface": {
+        "100": {
+          "$type": "color",
+          "$value": "{scania.color.grey.100}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{scania.color.grey.150}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{scania.color.grey.200}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{scania.color.grey.250}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{scania.color.grey.350}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{scania.color.grey.600}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{scania.color.grey.700}"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{scania.color.grey.750}"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{scania.color.grey.800}"
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "{scania.color.grey.850}"
+        }
+      },
+      "top": {
+        "$type": "color",
+        "$value": "{scania.color.grey.00}"
+      }
+    },
+    "system": {
+      "warning": {
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.500}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.50}"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.900}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.600}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.400}"
+        }
+      },
+      "success": {
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.green.300}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.green.50}"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.green.800}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.green.500}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.green.200}"
+        }
+      },
+      "info": {
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.blue.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.blue.50}"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.blue.800}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.blue.600}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.blue.300}"
+        }
+      },
+      "danger": {
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.red.400}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.red.50}"
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.red.800}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.red.500}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.red.300}"
+        }
+      }
+    },
+    "foreground": {
+      "text": {
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{scania.color.grey.950}"
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{scania.color.blue.700}"
+          }
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.950}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.650}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.350}"
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.50}"
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.300}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.400}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.200}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.500}"
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
+          }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{scania.color.blue.800}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.250}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.500}"
+        }
+      },
+      "border": {
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.50}"
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.300}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.400}"
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.600}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.200}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.500}"
+          }
+        },
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.950}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.500}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.350}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.200}"
+        },
+        "accent": {
+          "link": {
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.650}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.250}"
+        }
+      },
+      "icon": {
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.950}"
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.650}"
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.500}"
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.350}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.250}"
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.200}"
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.50}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.200}"
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.300}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.400}"
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.500}"
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.600}"
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{scania.color.blue.700}"
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{scania.color.grey.950}"
           }
         }
       }
     },
-    "component": {
-      "🔴🔵 header": {
-        "color": {
-          "expressive mobile menu": {
-            "primary": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.blue.700}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            },
-            "selected expressive": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            }
-          },
-          "background": {
-            "$type": "color",
-            "$value": "{scania.color.blue.800}",
-            "border": {
-              "$type": "color",
-              "$value": "{scania.color.blue.700}"
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{scania.color.blue.700}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.blue.700}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            }
-          },
-          "dropdown": {
-            "hover": {
-              "$type": "color",
-              "$value": "{color.background.surface.100}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.blue.1000}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            }
-          },
-          "foreground": {
-            "strong": {
-              "$type": "color",
-              "$value": "{color.brand.neutral.white}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{color.foreground.icon.strong}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{color.foreground.text.inverse.defined}"
-            }
-          }
-        },
-        "text": {
-          "component title 01 menu": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            }
-          },
-          "application name": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.display}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            }
-          }
-        }
-      },
-      "🔴🔵 side menu": {
-        "states": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{scania.color.grey.50}"
-          },
-          "pressed": {
-            "$type": "color",
-            "$value": "{scania.color.grey.100}"
-          },
-          "focus": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "selected": {
-            "$type": "color",
-            "$value": "{scania.color.grey.50}"
-          }
-        },
-        "dividers": {
-          "default": {
-            "$type": "color",
-            "$value": "{color.foreground.border.discrete}"
-          }
-        },
-        "icons": {
-          "icon size": {
-            "$type": "dimension",
-            "$value": "{scania.unit.16}"
-          },
-          "close icon size": {
-            "$type": "dimension",
-            "$value": "{scania.unit.20}"
-          }
-        },
-        "padding": {
-          "sub menu item": {
-            "top and bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.12}"
-            },
-            "chevron right padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "profile": {
-              "left": {
-                "$type": "dimension",
-                "$value": "{scania.unit.4}"
-              },
-              "gap": {
-                "$type": "dimension",
-                "$value": "{scania.unit.12}"
-              },
-              "top + bottom": {
-                "$type": "dimension",
-                "$value": "{scania.unit.4}"
-              }
-            },
-            "selected marker height": {
-              "$type": "dimension",
-              "$value": "{traton.unit.40}"
-            }
-          },
-          "top level": {
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.16}"
-            },
-            "horizontal gap padding": {
-              "$type": "dimension",
-              "$value": "{scania.unit.4}"
-            },
-            "top": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "bottom collapsible": {
-              "$type": "dimension",
-              "$value": "{scania.unit.16}"
-            }
-          },
-          "collapsed item": {
-            "left + right inner icon padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "top + bottom inner icon padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            }
-          },
-          "sub page": {
-            "top + bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
-            },
-            "left with icon": {
-              "$type": "dimension",
-              "$value": "{scania.unit.40}"
-            },
-            "left no icon": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "left profile": {
-              "$type": "dimension",
-              "$value": "{scania.unit.48}"
-            },
-            "top group": {
-              "$type": "dimension",
-              "$value": "{scania.unit.4}"
-            },
-            "selected marker height": {
-              "$type": "dimension",
-              "$value": "34px"
-            },
-            "selected marker width": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
-            }
-          }
-        },
-        "radius": {
-          "corner radius": {
-            "$type": "dimension",
-            "$value": "{scania.unit.8}"
-          }
-        }
-      },
-      "table": {
-        "secondary": {
-          "cell": {
-            "$type": "color",
-            "$value": "{color.background.layer-02}"
-          }
-        },
-        "pagination": {
-          "dropdown": {
-            "$type": "color",
-            "$value": "{color.background.base}"
-          },
-          "base": {
-            "$type": "color",
-            "$value": "{color.background.surface.200}"
-          }
-        },
-        "cell-hover": {
+    "brand": {
+      "neutral": {
+        "white": {
           "$type": "color",
-          "$value": "{color.background.surface.100}"
+          "$value": "{scania.color.grey.00}"
         },
-        "cell": {
+        "black": {
           "$type": "color",
-          "$value": "{color.background.layer-01}"
+          "$value": "{scania.color.grey.1000}"
         }
       },
-      "stepper": {
-        "success": {
+      "primary": {
+        "50": {
           "$type": "color",
-          "$value": "{color.system.success.default}"
-        }
-      },
-      "spinner": {
-        "color": {
-          "$type": "color",
-          "$value": "{color.system.info.default}"
-        }
-      },
-      "footer": {
-        "text color": {
-          "copyright": {
-            "$type": "color",
-            "$value": "{color.foreground.text.inverse.soft}"
-          },
-          "link-text": {
-            "$type": "color",
-            "$value": "{color.foreground.text.brand}"
-          }
+          "$value": "{scania.color.blue.50}"
         },
-        "primary": {
+        "100": {
+          "$type": "color",
+          "$value": "{scania.color.blue.100}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{scania.color.blue.200}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{scania.color.blue.300}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{scania.color.blue.400}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{scania.color.blue.500}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{scania.color.blue.600}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{scania.color.blue.700}"
+        },
+        "800": {
           "$type": "color",
           "$value": "{scania.color.blue.800}"
         },
-        "border": {
+        "900": {
           "$type": "color",
-          "$value": "{scania.color.blue.700}"
+          "$value": "{scania.color.blue.900}"
         }
       },
-      "dropdown": {
-        "list item": {
-          "secondary": {
-            "hover": {
-              "$type": "color",
-              "$value": "{color.background.surface.100}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{color.background.surface.100}"
-            }
+      "secondary": {
+        "50": {
+          "$type": "color",
+          "$value": "{scania.color.red.50}"
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{scania.color.red.100}"
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{scania.color.red.200}"
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{scania.color.red.300}"
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{scania.color.red.400}"
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{scania.color.red.500}"
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{scania.color.red.600}"
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{scania.color.red.700}"
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{scania.color.red.800}"
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{scania.color.red.900}"
+        }
+      }
+    }
+  },
+  "component": {
+    "🔴🔵 header": {
+      "color": {
+        "expressive mobile menu": {
+          "primary": {
+            "$type": "color",
+            "$value": "{scania.color.blue.800}"
           },
           "focus": {
             "$type": "color",
-            "$value": "{color.background.surface.100}"
+            "$value": "{scania.color.blue.800}"
           },
-          "hover": {
+          "pressed": {
             "$type": "color",
-            "$value": "{color.background.surface.100}"
-          }
-        },
-        "secondary": {
-          "hover": {
-            "$type": "color",
-            "$value": "{color.background.surface.100}"
-          },
-          "focus": {
-            "$type": "color",
-            "$value": "{color.background.surface.100}"
-          }
-        },
-        "focus": {
-          "$type": "color",
-          "$value": "{color.background.surface.100}"
-        },
-        "hover": {
-          "$type": "color",
-          "$value": "{color.background.surface.100}"
-        }
-      },
-      "badge": {
-        "text": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{color.system.danger.default}"
-        }
-      },
-      "button": {
-        "primary-text": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        }
-      },
-      "🔵 card": {
-        "secondary": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        },
-        "primary": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        },
-        "padding": {
-          "padding": {
-            "$type": "dimension",
-            "$value": "{scania.unit.16}"
-          }
-        }
-      },
-      "chip": {
-        "color": {
-          "focused on selected": {
-            "$type": "color",
-            "$value": "{color.system.info.subtle}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{color.background.surface.200}"
-          },
-          "focused": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.background.surface.300}"
+            "$value": "{scania.color.blue.700}"
           },
           "selected": {
             "$type": "color",
-            "$value": "{color.brand.primary.500}"
+            "$value": "{scania.color.grey.00}"
           },
-          "disabled selected": {
+          "selected expressive": {
             "$type": "color",
-            "$value": "{color.brand.primary.500}"
-          },
-          "hover on selected": {
+            "$value": "{scania.color.blue.800}"
+          }
+        },
+        "background": {
+          "border": {
             "$type": "color",
-            "$value": "{color.system.info.defined}"
+            "$value": "{scania.color.blue.700}"
           },
           "default": {
             "$type": "color",
-            "$value": "{color.background.surface.200}"
-          }
-        },
-        "foreground": {
-          "inverse": {
+            "$value": "{scania.color.blue.800}"
+          },
+          "hover": {
             "$type": "color",
-            "$value": "{color.foreground.text.inverse.strong}"
+            "$value": "{scania.color.blue.700}"
           },
-          "foreground disabled selected": {
+          "focus": {
             "$type": "color",
-            "$value": "{color.foreground.text.inverse.subtle}"
-          }
-        },
-        "border": {
-          "selected focus border": {
+            "$value": "{scania.color.blue.800}"
+          },
+          "pressed": {
             "$type": "color",
-            "$value": "{color.system.info.defined}"
-          }
-        }
-      },
-      "logo": {
-        "fill": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        },
-        "visibility": {
-          "Footer Right Logo": {
-            "$type": "boolean",
-            "$value": "true"
+            "$value": "{scania.color.blue.700}"
           },
-          "TRA Left Logo": {
-            "$type": "boolean",
-            "$value": "false"
+          "selected": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
           },
-          "TDS Right Logo": {
-            "$type": "boolean",
-            "$value": "true"
+          "$type": "color",
+          "$value": "{scania.color.blue.800}"
+        },
+        "dropdown": {
+          "hover": {
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
-          "TRA Right Logo": {
-            "$type": "boolean",
-            "$value": "false"
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.1000}"
           },
-          "TDS Left Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          }
-        },
-        "string": {
-          "wordmark": {
-            "$type": "text",
-            "$value": "Scania"
-          }
-        }
-      },
-      "shadow": {
-        "hover": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.shadow.250}"
-        },
-        "default": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.shadow.150}"
-        },
-        "pressed": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.shadow.250}"
-        },
-        "dragged": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.shadow.200}"
-        },
-        "base-modifier": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.shadow.100}"
-        },
-        "focus": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.shadow.350}"
-        }
-      },
-      "cookie": {
-        "primary-text inverse": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        }
-      },
-      "text": {
-        "detail 01 bold": {
           "text-transform": {
             "$type": "text",
             "$value": "none"
@@ -1106,6 +623,82 @@
             "$type": "text",
             "$value": "{scania.font.family.semi condensed}"
           },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "-0.14px"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "16px"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
+          }
+        },
+        "foreground": {
+          "strong": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
+          },
+          "selected": {
+            "$type": "color",
+            "$value": "{color.foreground.icon.strong}"
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.defined}"
+          }
+        }
+      },
+      "text": {
+        "component title 01 menu": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "16px"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "-0.14px"
+          }
+        },
+        "application name": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{scania.font.family.display}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
           "line-height": {
             "$type": "dimension",
             "$value": "16px"
@@ -1113,348 +706,1008 @@
           "letter-spacing": {
             "$type": "dimension",
             "$value": "0px"
+          }
+        }
+      }
+    },
+    "🔴🔵 side menu": {
+      "states": {
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.grey.00}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        },
+        "pressed": {
+          "$type": "color",
+          "$value": "{scania.color.grey.100}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{scania.color.grey.00}"
+        },
+        "selected": {
+          "$type": "color",
+          "$value": "{scania.color.grey.50}"
+        }
+      },
+      "dividers": {
+        "default": {
+          "$type": "color",
+          "$value": "{color.foreground.border.discrete}"
+        }
+      },
+      "icons": {
+        "icon size": {
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
+        },
+        "close icon size": {
+          "$type": "dimension",
+          "$value": "{scania.unit.20}"
+        }
+      },
+      "padding": {
+        "sub menu item": {
+          "top and bottom": {
+            "$type": "dimension",
+            "$value": "{scania.unit.8}"
+          },
+          "left": {
+            "$type": "dimension",
+            "$value": "{scania.unit.12}"
+          },
+          "chevron right padding": {
+            "$type": "dimension",
+            "$value": "12px"
+          },
+          "profile": {
+            "left": {
+              "$type": "dimension",
+              "$value": "{scania.unit.4}"
+            },
+            "gap": {
+              "$type": "dimension",
+              "$value": "{scania.unit.12}"
+            },
+            "top + bottom": {
+              "$type": "dimension",
+              "$value": "{scania.unit.4}"
+            }
+          },
+          "selected marker height": {
+            "$type": "dimension",
+            "$value": "{traton.unit.40}"
+          }
+        },
+        "top level": {
+          "left": {
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
+          },
+          "horizontal gap padding": {
+            "$type": "dimension",
+            "$value": "{scania.unit.4}"
+          },
+          "top": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "bottom collapsible": {
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
+          }
+        },
+        "collapsed item": {
+          "left + right inner icon padding": {
+            "$type": "dimension",
+            "$value": "12px"
+          },
+          "top + bottom inner icon padding": {
+            "$type": "dimension",
+            "$value": "12px"
+          }
+        },
+        "sub page": {
+          "top + bottom": {
+            "$type": "dimension",
+            "$value": "{scania.unit.8}"
+          },
+          "left with icon": {
+            "$type": "dimension",
+            "$value": "{scania.unit.40}"
+          },
+          "left no icon": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "left profile": {
+            "$type": "dimension",
+            "$value": "{scania.unit.48}"
+          },
+          "top group": {
+            "$type": "dimension",
+            "$value": "{scania.unit.4}"
+          },
+          "selected marker height": {
+            "$type": "dimension",
+            "$value": "34px"
+          },
+          "selected marker width": {
+            "$type": "dimension",
+            "$value": "{scania.unit.8}"
+          }
+        }
+      },
+      "radius": {
+        "corner radius": {
+          "$type": "dimension",
+          "$value": "{scania.unit.8}"
+        }
+      }
+    },
+    "table": {
+      "secondary": {
+        "cell": {
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
+        }
+      },
+      "pagination": {
+        "dropdown": {
+          "$type": "color",
+          "$value": "{color.background.base}"
+        },
+        "base": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        }
+      },
+      "cell-hover": {
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
+      },
+      "cell": {
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
+      }
+    },
+    "stepper": {
+      "success": {
+        "$type": "color",
+        "$value": "{color.system.success.default}"
+      }
+    },
+    "spinner": {
+      "color": {
+        "$type": "color",
+        "$value": "{color.system.info.default}"
+      }
+    },
+    "footer": {
+      "text color": {
+        "copyright": {
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.soft}"
+        },
+        "link-text": {
+          "$type": "color",
+          "$value": "{color.foreground.text.brand}"
+        }
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{scania.color.blue.800}"
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{scania.color.blue.700}"
+      }
+    },
+    "dropdown": {
+      "list item": {
+        "secondary": {
+          "hover": {
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
+          }
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
+        }
+      },
+      "secondary": {
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
+        },
+        "focus": {
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
+        }
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
+      },
+      "hover": {
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
+      }
+    },
+    "badge": {
+      "text": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      },
+      "background": {
+        "$type": "color",
+        "$value": "{color.system.danger.default}"
+      }
+    },
+    "button": {
+      "primary-text": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      }
+    },
+    "🔵 card": {
+      "secondary": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      },
+      "primary": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      },
+      "padding": {
+        "padding": {
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
+        }
+      }
+    },
+    "chip": {
+      "color": {
+        "focused on selected": {
+          "$type": "color",
+          "$value": "{color.system.info.subtle}"
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        },
+        "focused": {
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
+        },
+        "hover": {
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
+        },
+        "selected": {
+          "$type": "color",
+          "$value": "{color.brand.primary.500}"
+        },
+        "disabled selected": {
+          "$type": "color",
+          "$value": "{color.brand.primary.500}"
+        },
+        "hover on selected": {
+          "$type": "color",
+          "$value": "{color.system.info.defined}"
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
+        }
+      },
+      "foreground": {
+        "inverse": {
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.strong}"
+        },
+        "foreground disabled selected": {
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.subtle}"
+        }
+      },
+      "border": {
+        "selected focus border": {
+          "$type": "color",
+          "$value": "{color.system.info.defined}"
+        }
+      }
+    },
+    "logo": {
+      "fill": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      },
+      "visibility": {
+        "Footer Right Logo": {
+          "$type": "boolean",
+          "$value": "true"
+        },
+        "TRA Left Logo": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "TDS Right Logo": {
+          "$type": "boolean",
+          "$value": "true"
+        },
+        "TRA Right Logo": {
+          "$type": "boolean",
+          "$value": "false"
+        },
+        "TDS Left Logo": {
+          "$type": "boolean",
+          "$value": "true"
+        }
+      },
+      "string": {
+        "wordmark": {
+          "$type": "text",
+          "$value": "Scania"
+        }
+      }
+    },
+    "shadow": {
+      "hover": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.250}"
+      },
+      "default": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.150}"
+      },
+      "pressed": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.250}"
+      },
+      "dragged": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.200}"
+      },
+      "base-modifier": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.100}"
+      },
+      "focus": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.350}"
+      }
+    },
+    "cookie": {
+      "primary-text inverse": {
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
+      }
+    },
+    "text": {
+      "detail 01 bold": {
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.semi condensed}"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "12px"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        }
+      }
+    },
+    "🔵  input-field": {
+      "radius": {
+        "top-left": {
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
+        },
+        "top-right": {
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
+        },
+        "bottom-left": {
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
+        },
+        "bottom-right": {
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
+        }
+      },
+      "border": {
+        "width": {
+          "top": {
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
+          },
+          "right": {
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
+          },
+          "bottom": {
+            "$type": "dimension",
+            "$value": "{scania.unit.1}"
+          },
+          "left": {
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
+          }
+        },
+        "focus": {
+          "top": {
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
+          },
+          "right": {
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
+          },
+          "bottom": {
+            "$type": "dimension",
+            "$value": "{scania.unit.2}"
+          },
+          "left": {
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
+          }
+        }
+      }
+    }
+  },
+  "text": {
+    "display": {
+      "01": {
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "216px"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "183px"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "156px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "148px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "03": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "112px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "106px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "04": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "80px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "80px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "05": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "56px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "56px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      }
+    },
+    "headline": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "40px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "40px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "0px"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "32px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "32px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-1.28px"
+        }
+      },
+      "03": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.72px"
+        }
+      },
+      "04": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.4px"
+        }
+      },
+      "05": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.32px"
+        }
+      },
+      "06": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "uppercase"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.28px"
+        }
+      }
+    },
+    "paragraph": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "32px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.72px"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.2px"
+        }
+      }
+    },
+    "body": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "16px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "24px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.32px"
+        }
+      },
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
+        },
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
+        },
+        "font-size": {
+          "$type": "dimension",
+          "$value": "14px"
+        },
+        "line-height": {
+          "$type": "dimension",
+          "$value": "20px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.14px"
+        }
+      }
+    },
+    "component": {
+      "text": {
+        "01": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "16px"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "-0.14px"
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "line-height": {
+            "$type": "dimension",
+            "$value": "20px"
+          },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "-0.14px"
+          }
+        }
+      },
+      "label": {
+        "01": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
+          },
+          "text-transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
             "$type": "dimension",
             "$value": "12px"
           },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          }
-        }
-      },
-      "🔵  input-field": {
-        "radius": {
-          "top-left": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "top-right": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "bottom-left": {
-            "$type": "dimension",
-            "$value": "{scania.unit.0}"
-          },
-          "bottom-right": {
-            "$type": "dimension",
-            "$value": "{scania.unit.0}"
-          }
-        },
-        "border": {
-          "width": {
-            "top": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "right": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.1}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            }
-          },
-          "focus": {
-            "top": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "right": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.2}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            }
-          }
-        }
-      }
-    },
-    "text": {
-      "display": {
-        "01": {
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "216px"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
           "line-height": {
-            "$type": "dimension",
-            "$value": "183px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "156px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "148px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "03": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "112px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "106px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "04": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "80px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "80px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "05": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "56px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "56px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        }
-      },
-      "headline": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "40px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "40px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-1.28px"
-          }
-        },
-        "03": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.72px"
-          }
-        },
-        "04": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.4px"
-          }
-        },
-        "05": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
             "$type": "dimension",
             "$value": "16px"
           },
+          "letter-spacing": {
+            "$type": "dimension",
+            "$value": "0px"
+          }
+        },
+        "02": {
+          "font-family": {
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
+          },
+          "transform": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-weight": {
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
+          },
+          "font-size": {
+            "$type": "dimension",
+            "$value": "10px"
+          },
           "line-height": {
             "$type": "dimension",
-            "$value": "24px"
+            "$value": "8px"
           },
           "letter-spacing": {
             "$type": "dimension",
-            "$value": "-0.32px"
+            "$value": "0px"
           }
-        },
-        "06": {
+        }
+      },
+      "title": {
+        "01": {
           "font-family": {
             "$type": "text",
-            "$value": "{scania.font.family.default}"
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
             "$type": "text",
-            "$value": "uppercase"
+            "$value": "none"
+          },
+          "text-transform 2": {
+            "$type": "text",
+            "$value": "none"
+          },
+          "font-family 2": {
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "font-weight": {
             "$type": "dimension",
@@ -1467,334 +1720,26 @@
           "line-height": {
             "$type": "dimension",
             "$value": "16px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.28px"
-          }
-        }
-      },
-      "paragraph": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.72px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.2px"
-          }
-        }
-      },
-      "body": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.32px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "20px"
           },
           "letter-spacing": {
             "$type": "dimension",
             "$value": "-0.14px"
-          }
-        }
-      },
-      "component": {
-        "text": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            }
           },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "20px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            }
-          }
-        },
-        "label": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            }
-          },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "10px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "8px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            }
-          }
-        },
-        "title": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "text-transform 2": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-family 2": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            },
-            "letter-spacing 2": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            },
-            "font-size 2": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height 2": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "font-weight 2": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            }
-          },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "uppercase"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "10px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0.8px"
-            }
-          }
-        }
-      },
-      "link": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
+          "letter-spacing 2": {
             "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
+            "$value": "-0.14px"
           },
-          "font-size": {
+          "font-size 2": {
+            "$type": "dimension",
+            "$value": "14px"
+          },
+          "line-height 2": {
             "$type": "dimension",
             "$value": "16px"
           },
-          "line-height": {
+          "font-weight 2": {
             "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.32px"
+            "$value": "{scania.font.weight.bold}"
           }
         },
         "02": {
@@ -1804,95 +1749,150 @@
           },
           "text-transform": {
             "$type": "text",
-            "$value": "none"
+            "$value": "uppercase"
           },
           "font-weight": {
             "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
             "$type": "dimension",
-            "$value": "14px"
+            "$value": "10px"
           },
           "line-height": {
             "$type": "dimension",
-            "$value": "20px"
+            "$value": "16px"
           },
           "letter-spacing": {
             "$type": "dimension",
-            "$value": "-0.14px"
+            "$value": "0.8px"
           }
         }
       }
     },
-    "dimension": {
-      "space": {
-        "tiny": {
-          "$type": "dimension",
-          "$value": "{scania.unit.4}"
+    "link": {
+      "01": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
-        "small": {
-          "$type": "dimension",
-          "$value": "{scania.unit.16}"
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
         },
-        "medium": {
+        "font-weight": {
           "$type": "dimension",
-          "$value": "{scania.unit.24}"
+          "$value": "{scania.font.weight.regular}"
         },
-        "large": {
+        "font-size": {
           "$type": "dimension",
-          "$value": "{scania.unit.48}"
+          "$value": "16px"
         },
-        "huge": {
+        "line-height": {
           "$type": "dimension",
-          "$value": "{scania.unit.80}"
+          "$value": "24px"
+        },
+        "letter-spacing": {
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
-      "radius": {
-        "for-surface": {
-          "clickable": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "field": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "inverse": {
-            "$type": "dimension",
-            "$value": "{scania.unit.9999}"
-          }
+      "02": {
+        "font-family": {
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
-        "narrow": {
+        "text-transform": {
+          "$type": "text",
+          "$value": "none"
+        },
+        "font-weight": {
           "$type": "dimension",
-          "$value": "{scania.unit.4}"
+          "$value": "{scania.font.weight.regular}"
         },
-        "soft": {
+        "font-size": {
           "$type": "dimension",
-          "$value": "{scania.unit.8}"
+          "$value": "14px"
         },
-        "rounded": {
+        "line-height": {
           "$type": "dimension",
-          "$value": "{scania.unit.32}"
+          "$value": "20px"
         },
-        "circle": {
+        "letter-spacing": {
           "$type": "dimension",
-          "$value": "{scania.unit.9999}"
-        },
-        "for-area": {
-          "large": {
-            "$type": "dimension",
-            "$value": "{scania.unit.16}"
-          },
-          "small": {
-            "$type": "dimension",
-            "$value": "{scania.unit.2}"
-          }
-        },
-        "focus-width": {
-          "$type": "dimension",
-          "$value": "{scania.unit.2}"
+          "$value": "-0.14px"
         }
       }
     }
+  },
+  "dimension": {
+    "space": {
+      "tiny": {
+        "$type": "dimension",
+        "$value": "{scania.unit.4}"
+      },
+      "small": {
+        "$type": "dimension",
+        "$value": "{scania.unit.16}"
+      },
+      "medium": {
+        "$type": "dimension",
+        "$value": "{scania.unit.24}"
+      },
+      "large": {
+        "$type": "dimension",
+        "$value": "{scania.unit.48}"
+      },
+      "huge": {
+        "$type": "dimension",
+        "$value": "{scania.unit.80}"
+      }
+    },
+    "radius": {
+      "for-surface": {
+        "clickable": {
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
+        },
+        "field": {
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
+        },
+        "inverse": {
+          "$type": "dimension",
+          "$value": "{scania.unit.9999}"
+        }
+      },
+      "narrow": {
+        "$type": "dimension",
+        "$value": "{scania.unit.4}"
+      },
+      "soft": {
+        "$type": "dimension",
+        "$value": "{scania.unit.8}"
+      },
+      "rounded": {
+        "$type": "dimension",
+        "$value": "{scania.unit.32}"
+      },
+      "circle": {
+        "$type": "dimension",
+        "$value": "{scania.unit.9999}"
+      },
+      "for-area": {
+        "large": {
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
+        },
+        "small": {
+          "$type": "dimension",
+          "$value": "{scania.unit.2}"
+        }
+      },
+      "focus-width": {
+        "$type": "dimension",
+        "$value": "{scania.unit.2}"
+      }
+    }
   }
+}
