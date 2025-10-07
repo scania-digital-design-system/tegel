@@ -30,7 +30,7 @@ $iconProps: (fill, color);
   cursor: pointer;
 }
 
-button {
+:host(tds-button) {
   @include button-base;
 
   height: $btn-lg-height;
@@ -168,61 +168,49 @@ button {
   }
 }
 
-:host(tds-button) {
-  display: inline-flex;
-  align-items: center;
+::slotted([slot='icon']) {
+  width: var(--tds-spacing-element-20);
+  height: var(--tds-spacing-element-20);
+}
 
+&.sm {
   ::slotted([slot='icon']) {
-    width: var(--tds-spacing-element-20);
-    height: var(--tds-spacing-element-20);
+    width: var(--tds-spacing-element-16);
+    height: var(--tds-spacing-element-16);
   }
+}
 
-  .sm {
-    ::slotted([slot='icon']) {
-      width: var(--tds-spacing-element-16);
-      height: var(--tds-spacing-element-16);
-    }
-  }
+&.sm::slotted([slot='icon']) {
+  margin-left: var(--tds-spacing-element-12);
+  width: var(--tds-spacing-element-16);
+  height: var(--tds-spacing-element-16);
+}
+
+&.md::slotted([slot='icon']) {
+  margin-left: var(--tds-spacing-element-16);
+  width: var(--tds-spacing-element-20);
+  height: var(--tds-spacing-element-20);
+}
+
+&.lg::slotted([slot='icon']) {
+  margin-left: var(--tds-spacing-element-20);
+  width: var(--tds-spacing-element-20);
+  height: var(--tds-spacing-element-20);
+}
+
+&.only-icon::slotted([slot='icon']) {
+  margin-left: 0;
 }
 
 :host(.disabled:active) {
   pointer-events: none;
 }
 
-:host(.disabled) button {
+:host(.disabled) {
   cursor: not-allowed;
 }
 
 :host(.fullbleed) {
   width: 100%;
   justify-content: center;
-}
-
-tds-button {
-  button {
-    display: inline-flex;
-    align-items: center;
-
-    &.sm::slotted([slot='icon']) {
-      margin-left: var(--tds-spacing-element-12);
-      width: var(--tds-spacing-element-16);
-      height: var(--tds-spacing-element-16);
-    }
-
-    &.md::slotted([slot='icon']) {
-      margin-left: var(--tds-spacing-element-16);
-      width: var(--tds-spacing-element-20);
-      height: var(--tds-spacing-element-20);
-    }
-
-    &.lg::slotted([slot='icon']) {
-      margin-left: var(--tds-spacing-element-20);
-      width: var(--tds-spacing-element-20);
-      height: var(--tds-spacing-element-20);
-    }
-
-    &.only-icon::slotted([slot='icon']) {
-      margin-left: 0;
-    }
-  }
 }

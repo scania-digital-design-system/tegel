@@ -47,20 +47,73 @@ export class TdsButton {
   /** The value attribute can be used when handling a form submission */
   @Prop() value: string;
 
+  /** Whether the button is in a pressed state (for toggle buttons) */
+  @Prop() pressed: boolean = false;
+
   @State() onlyIcon: boolean = false;
+
+  @State() isActive: boolean = false;
 
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'Enter' && !this.disabled) {
-      this.host.querySelector('button').classList.add('active');
+    if (this.disabled) return;
+
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.isActive = true;
+
+      if (event.key === 'Enter') {
+        this.handleClick();
+      }
     }
   }
 
   @Listen('keyup')
   handleKeyUp(event: KeyboardEvent) {
-    if (event.key === 'Enter' && !this.disabled) {
-      this.host.querySelector('button').classList.remove('active');
+    if (this.disabled) return;
+
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.isActive = false;
+
+      if (event.key === ' ') {
+        this.handleClick();
+      }
     }
+  }
+
+  @Listen('click')
+  handleClick() {
+    if (this.disabled) return;
+
+    // Dispatch custom event for form submission or other handlers
+    const clickEvent = new CustomEvent('tdsClick', {
+      bubbles: true,
+      detail: {
+        type: this.type,
+        name: this.name,
+        value: this.value,
+      },
+    });
+
+    this.host.dispatchEvent(clickEvent);
+  }
+
+  @Listen('mousedown')
+  handleMouseDown() {
+    if (!this.disabled) {
+      this.isActive = true;
+    }
+  }
+
+  @Listen('mouseup')
+  handleMouseUp() {
+    this.isActive = false;
+  }
+
+  @Listen('mouseleave')
+  handleMouseLeave() {
+    this.isActive = false;
   }
 
   render() {
@@ -71,36 +124,63 @@ export class TdsButton {
       this.onlyIcon = true;
     }
 
+    // Build ARIA attributes
+    const ariaAttributes: Record<string, string | number | boolean> = {
+      'role': 'button',
+      'aria-disabled': this.disabled,
+      'tabindex': this.disabled ? -1 : 0,
+    };
+
+    // Add aria-pressed for toggle buttons
+    if (this.pressed !== undefined) {
+      ariaAttributes['aria-pressed'] = this.pressed;
+    }
+
+    // Add aria-label for icon-only buttons
+    if (this.onlyIcon && this.tdsAriaLabel) {
+      ariaAttributes['aria-label'] = this.tdsAriaLabel;
+    }
+
+    // Add data attributes for styling and form handling
+    const dataAttributes: Record<string, string> = {
+      'data-type': this.type,
+    };
+
+    if (this.name) {
+      dataAttributes['data-name'] = this.name;
+    }
+
+    if (this.value) {
+      dataAttributes['data-value'] = this.value;
+    }
+
     return (
       <Host
         class={{
           [`tds-mode-variant-${this.modeVariant}`]: Boolean(this.modeVariant),
-          disabled: Boolean(this.disabled),
-          fullbleed: Boolean(this.fullbleed),
+          'disabled': Boolean(this.disabled),
+          'fullbleed': Boolean(this.fullbleed),
+          'primary': this.variant === 'primary',
+          'secondary': this.variant === 'secondary',
+          'ghost': this.variant === 'ghost',
+          'danger': this.variant === 'danger',
+          'lg': this.size === 'lg',
+          'md': this.size === 'md',
+          'sm': this.size === 'sm',
+          'xs': this.size === 'xs',
+          'icon': hasIconSlot,
+          'only-icon': this.onlyIcon,
+          'active': this.isActive,
+          [`animation-${this.animation}`]: this.animation !== 'none',
         }}
-        disabled={this.disabled}
+        {...ariaAttributes}
+        {...dataAttributes}
       >
         <button
-          type={this.type}
-          name={this.name ? this.name : undefined}
-          value={this.value ? this.value : undefined}
-          disabled={this.disabled}
-          class={{
-            'primary': this.variant === 'primary',
-            'secondary': this.variant === 'secondary',
-            'ghost': this.variant === 'ghost',
-            'danger': this.variant === 'danger',
-            'lg': this.size === 'lg',
-            'md': this.size === 'md',
-            'sm': this.size === 'sm',
-            'xs': this.size === 'xs',
-            'disabled': this.disabled,
-            'fullbleed': this.fullbleed,
-            'icon': hasIconSlot,
-            'only-icon': this.onlyIcon,
-            [`animation-${this.animation}`]: this.animation !== 'none',
-          }}
-          {...(this.onlyIcon && this.tdsAriaLabel && { 'aria-label': this.tdsAriaLabel })}
+          role="presentation"
+          aria-hidden="true"
+          tabindex="-1"
+          style={{ display: 'contents' }}
         >
           {this.text}
           {hasLabelSlot && !this.onlyIcon && <slot name="label" />}
