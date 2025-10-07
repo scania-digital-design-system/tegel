@@ -63,7 +63,7 @@
   .subheader,
   slot[name='subheader'] {
     display: block;
-    @include detail-02;
+    @include text-02;
   }
 
   slot[name='actions'] {

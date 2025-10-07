@@ -1,23 +1,161 @@
 .traton {
   /* Font size tokens */
-  --super-type-01-font-size: 216px;
-  --super-type-02-font-size: 156px;
-  --super-type-03-font-size: 112px;
-  --expressive-headline-01-font-size: 80px;
-  --expressive-headline-02-font-size: 56px;
+  --display-01-font-size: 216px;
+  --display-02-font-size: 156px;
+  --display-03-font-size: 112px;
+  --display-04-font-size: 80px;
+  --display-05-font-size: 56px;
   --headline-01-font-size: 40px;
   --headline-02-font-size: 32px;
   --headline-03-font-size: 24px;
   --headline-04-font-size: 20px;
   --headline-05-font-size: 16px;
   --headline-06-font-size: 14px;
-  --headline-07-font-size: 14px;
+  --title-01-font-size: 14px;
+  --title-02-font-size: 10px;
   --paragraph-01-font-size: 24px;
   --paragraph-02-font-size: 20px;
   --body-01-font-size: 16px;
   --body-02-font-size: 14px;
   --body-link-01-font-size: 16px;
   --body-link-02-font-size: 14px;
+  --text-01-font-size: 14px;
+  --text-02-font-size: 14px;
+  --label-01-font-size: 12px;
+  --label-02-font-size: 10px;
+
+  /* Line Height Tokens */
+  --display-01-line-height: 227px;
+  --display-02-line-height: 164px;
+  --display-03-line-height: 118px;
+  --display-04-line-height: 84px;
+  --display-05-line-height: 59px;
+  --headline-01-line-height: 42px;
+  --headline-02-line-height: 40px;
+  --headline-03-line-height: 30px;
+  --headline-04-line-height: 25px;
+  --headline-05-line-height: 22px;
+  --headline-06-line-height: 20px;
+  --title-01-line-height: 18px;
+  --title-02-line-height: 14px;
+  --paragraph-01-line-height: 30px;
+  --paragraph-02-line-height: 25px;
+  --body-01-line-height: 22px;
+  --body-02-line-height: 20px;
+  --body-link-01-line-height: 22px;
+  --body-link-02-line-height: 20px;
+  --text-01-line-height: 16px;
+  --text-02-line-height: 20px;
+  --label-01-line-height: 17px;
+  --label-02-line-height: 14px;
+
+  /* Font Family Tokens */
+  --display-01-font-family: 'TRATON Type Display', verdana;
+  --display-02-font-family: 'TRATON Type Display', verdana;
+  --display-03-font-family: 'TRATON Type Display', verdana;
+  --display-04-font-family: 'TRATON Type Display', verdana;
+  --display-05-font-family: 'TRATON Type Display', verdana;
+  --headline-01-font-family: 'TRATON Type Display', verdana;
+  --headline-02-font-family: 'TRATON Type Display', verdana;
+  --headline-03-font-family: 'TRATON Type Display', verdana;
+  --headline-04-font-family: 'TRATON Type Display', verdana;
+  --headline-05-font-family: 'TRATON Type Text', verdana;
+  --headline-06-font-family: 'TRATON Type Text', verdana;
+  --title-01-font-family: 'TRATON Type Text', verdana;
+  --title-02-font-family: 'TRATON Type Text', verdana;
+  --paragraph-01-font-family: 'TRATON Type Display', verdana;
+  --paragraph-02-font-family: 'TRATON Type Display', verdana;
+  --body-01-font-family: 'TRATON Type Text', verdana;
+  --body-02-font-family: 'TRATON Type Text', verdana;
+  --body-link-01-font-family: 'TRATON Type Text', verdana;
+  --body-link-02-font-family: 'TRATON Type Text', verdana;
+  --text-01-font-family: 'TRATON Type Text', verdana;
+  --text-02-font-family: 'TRATON Type Text', verdana;
+  --label-01-font-family: 'TRATON Type Text', verdana;
+  --label-02-font-family: 'TRATON Type Text', verdana;
+
+  /* Font Weight Tokens */
+  --display-01-font-weight: 500;
+  --display-02-font-weight: 500;
+  --display-03-font-weight: 500;
+  --display-04-font-weight: 500;
+  --display-05-font-weight: 500;
+  --headline-01-font-weight: 500;
+  --headline-02-font-weight: 500;
+  --headline-03-font-weight: 500;
+  --headline-04-font-weight: 500;
+  --headline-05-font-weight: 600;
+  --headline-06-font-weight: 600;
+  --title-01-font-weight: 600;
+  --title-02-font-weight: 600;
+  --paragraph-01-font-weight: 500;
+  --paragraph-02-font-weight: 500;
+  --body-01-font-weight: 400;
+  --body-02-font-weight: 400;
+  --body-link-01-font-weight: 400;
+  --body-link-02-font-weight: 400;
+  --label-01-font-weight: 500;
+  --label-02-font-weight: 500;
+  --text-01-font-weight: 400;
+  --text-02-font-weight: 400;
+
+  /* Letter-Spacing Tokens */
+  --display-01-letter-spacing: 1.08px;
+  --display-02-letter-spacing: 0.78px;
+  --display-03-letter-spacing: 0.56px;
+  --display-04-letter-spacing: 0.4px;
+  --display-05-letter-spacing: 0.28px;
+  --headline-01-letter-spacing: 0;
+  --headline-02-letter-spacing: 0;
+  --headline-03-letter-spacing: 0;
+  --headline-04-letter-spacing: 0;
+  --headline-05-letter-spacing: 0;
+  --headline-06-letter-spacing: 0;
+  --title-01-letter-spacing: 0;
+  --title-02-letter-spacing: 0.4;
+  --paragraph-01-letter-spacing: 0;
+  --paragraph-02-letter-spacing: 0;
+  --body-01-letter-spacing: 0;
+  --body-02-letter-spacing: 0;
+  --body-link-01-letter-spacing: 0;
+  --body-link-02-letter-spacing: 0;
+  --text-01-letter-spacing: 0;
+  --text-02-letter-spacing: 0;
+  --label-01-letter-spacing: 0;
+  --label-02-letter-spacing: 0;
+
+  /* Text transform tokens */
+  --display-01-text-transform: uppercase;
+  --display-02-text-transform: uppercase;
+  --display-03-text-transform: uppercase;
+  --display-04-text-transform: uppercase;
+  --display-05-text-transform: uppercase;
+  --headline-01-text-transform: none;
+  --headline-02-text-transform: none;
+  --headline-03-text-transform: none;
+  --headline-04-text-transform: none;
+  --headline-05-text-transform: none;
+  --headline-06-text-transform: none;
+  --title-01-text-transform: none;
+  --paragraph-01-text-transform: none;
+  --paragraph-02-text-transform: none;
+  --body-01-text-transform: none;
+  --body-02-text-transform: none;
+  --body-link-01-text-transform: none;
+  --body-link-02-text-transform: none;
+  --title-01-text-transform: none;
+  --title-02-text-transform: uppercase;
+  --label-01-text-transform: none;
+  --label-02-text-transform: none;
+  --text-01-text-transform: none;
+  --text-02-text-transform: none;
+
+  /* Legacy tokens for backward compatibility */
+  --super-type-01-font-size: 216px;
+  --super-type-02-font-size: 156px;
+  --super-type-03-font-size: 112px;
+  --expressive-headline-01-font-size: 80px;
+  --expressive-headline-02-font-size: 56px;
   --detail-01-font-size: 16px;
   --detail-02-font-size: 14px;
   --detail-03-font-size: 14px;
@@ -25,26 +163,11 @@
   --detail-05-font-size: 12px;
   --detail-06-font-size: 10px;
   --detail-07-font-size: 10px;
-
-  /* Typography Line Height Tokens */
   --super-type-01-line-height: 227px;
   --super-type-02-line-height: 164px;
   --super-type-03-line-height: 106px;
   --expressive-headline-01-line-height: 84px;
   --expressive-headline-02-line-height: 59px;
-  --headline-01-line-height: 42px;
-  --headline-02-line-height: 40px;
-  --headline-03-line-height: 30px;
-  --headline-04-line-height: 25px;
-  --headline-05-line-height: 22px;
-  --headline-06-line-height: 20px;
-  --headline-07-line-height: 18px;
-  --paragraph-01-line-height: 30px;
-  --paragraph-02-line-height: 25px;
-  --body-01-line-height: 22px;
-  --body-02-line-height: 20px;
-  --body-link-01-line-height: 22px;
-  --body-link-02-line-height: 20px;
   --detail-01-line-height: 22px;
   --detail-02-line-height: 16px;
   --detail-03-line-height: 20px;
@@ -52,26 +175,12 @@
   --detail-05-line-height: 17px;
   --detail-06-line-height: 14px;
   --detail-07-line-height: 14px;
-
-  /* Typography Font Family Tokens */
   --super-type-01-font-family: 'TRATON Type Display', verdana;
   --super-type-02-font-family: 'TRATON Type Display', verdana;
   --super-type-03-font-family: 'TRATON Type Display', verdana;
   --expressive-headline-01-font-family: 'TRATON Type Display', verdana;
   --expressive-headline-02-font-family: 'TRATON Type Display', verdana;
-  --headline-01-font-family: 'TRATON Type Display', verdana;
-  --headline-02-font-family: 'TRATON Type Display', verdana;
-  --headline-03-font-family: 'TRATON Type Display', verdana;
-  --headline-04-font-family: 'TRATON Type Display', verdana;
-  --headline-05-font-family: 'TRATON Type Text', verdana;
-  --headline-06-font-family: 'TRATON Type Text', verdana;
   --headline-07-font-family: 'TRATON Type Text', verdana;
-  --paragraph-01-font-family: 'TRATON Type Display', verdana;
-  --paragraph-02-font-family: 'TRATON Type Display', verdana;
-  --body-01-font-family: 'TRATON Type Text', verdana;
-  --body-02-font-family: 'TRATON Type Text', verdana;
-  --body-link-01-font-family: 'TRATON Type Text', verdana;
-  --body-link-02-font-family: 'TRATON Type Text', verdana;
   --detail-01-font-family: 'TRATON Type Text', verdana;
   --detail-02-font-family: 'TRATON Type Text', verdana;
   --detail-03-font-family: 'TRATON Type Text', verdana;
@@ -79,26 +188,12 @@
   --detail-05-font-family: 'TRATON Type Text', verdana;
   --detail-06-font-family: 'TRATON Type Text', verdana;
   --detail-07-font-family: 'TRATON Type Text', verdana;
-
-  /* Typography Font Weight Tokens */
   --super-type-01-font-weight: normal;
   --super-type-02-font-weight: normal;
   --super-type-03-font-weight: normal;
   --expressive-headline-01-font-weight: normal;
   --expressive-headline-02-font-weight: normal;
-  --headline-01-font-weight: normal;
-  --headline-02-font-weight: normal;
-  --headline-03-font-weight: normal;
-  --headline-04-font-weight: normal;
-  --headline-05-font-weight: 600;
-  --headline-06-font-weight: 600;
   --headline-07-font-weight: 600;
-  --paragraph-01-font-weight: normal;
-  --paragraph-02-font-weight: normal;
-  --body-01-font-weight: normal;
-  --body-02-font-weight: normal;
-  --body-link-01-font-weight: normal;
-  --body-link-02-font-weight: normal;
   --detail-01-font-weight: normal;
   --detail-02-font-weight: normal;
   --detail-03-font-weight: normal;
@@ -106,26 +201,12 @@
   --detail-05-font-weight: normal;
   --detail-06-font-weight: 600;
   --detail-07-font-weight: normal;
-
-  /* Typography Letter-Spacing (Kerning) Tokens */
   --super-type-01-letter-spacing: 1.08px;
   --super-type-02-letter-spacing: 0.78px;
   --super-type-03-letter-spacing: 0.56px;
   --expressive-headline-01-letter-spacing: 0.4px;
   --expressive-headline-02-letter-spacing: 0.28px;
-  --headline-01-letter-spacing: 0;
-  --headline-02-letter-spacing: 0;
-  --headline-03-letter-spacing: 0;
-  --headline-04-letter-spacing: 0;
-  --headline-05-letter-spacing: 0;
-  --headline-06-letter-spacing: 0;
   --headline-07-letter-spacing: 0;
-  --paragraph-01-letter-spacing: 0;
-  --paragraph-02-letter-spacing: 0;
-  --body-01-letter-spacing: 0;
-  --body-02-letter-spacing: 0;
-  --body-link-01-letter-spacing: 0;
-  --body-link-02-letter-spacing: 0;
   --detail-01-letter-spacing: 0;
   --detail-02-letter-spacing: 0;
   --detail-03-letter-spacing: 0;
@@ -133,26 +214,12 @@
   --detail-05-letter-spacing: 0;
   --detail-06-letter-spacing: 0.4px;
   --detail-07-letter-spacing: 0;
-
-  /* Text transform tokens */
   --super-type-01-text-transform: uppercase;
   --super-type-02-text-transform: uppercase;
   --super-type-03-text-transform: uppercase;
   --expressive-headline-01-text-transform: uppercase;
   --expressive-headline-02-text-transform: uppercase;
-  --headline-01-text-transform: none;
-  --headline-02-text-transform: none;
-  --headline-03-text-transform: none;
-  --headline-04-text-transform: none;
-  --headline-05-text-transform: none;
-  --headline-06-text-transform: none;
   --headline-07-text-transform: none;
-  --paragraph-01-text-transform: none;
-  --paragraph-02-text-transform: none;
-  --body-01-text-transform: none;
-  --body-02-text-transform: none;
-  --body-link-01-text-transform: none;
-  --body-link-02-text-transform: none;
   --detail-01-text-transform: none;
   --detail-02-text-transform: none;
   --detail-03-text-transform: none;
