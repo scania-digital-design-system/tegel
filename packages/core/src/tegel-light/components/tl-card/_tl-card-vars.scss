@@ -3,7 +3,8 @@
   --card-background-primary: var(--component-card-primary);
   --card-background-secondary: var(--component-card-secondary);
   --card-box-primary: 0 3px 3px rgb(0 0 0 / 15%), 0 -1px 1px rgb(0 0 0 / 1%);
-  --card-box: var(--card-box-primary);
+  --card-box-secondary: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 10%);
+  --card-box: var(--card-box-primary); //box shadow
   --card-box-hover: 0 -1px 1px rgb(0 0 0 / 5%), 0 3px 3px rgb(0 0 0 / 20%);
   --card-box-pressed: 0 -1px 1px rgb(0 0 0 / 5%), 0 1px 3px rgb(0 0 0 / 20%);
   --card-headline: var(--color-foreground-text-strong);
@@ -22,8 +23,8 @@
     --card-box: var(--card-box-primary);
   }
 
-  &--secondary {
-    --card-box: var(--card-box-primary);
+  &.tl-card--mode-variant-secondary {
+    --card-box: var(--card-box-secondary);
   }
 }
 
