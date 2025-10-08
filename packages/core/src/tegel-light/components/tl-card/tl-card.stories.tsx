@@ -247,7 +247,7 @@ const Template = ({
 
   const actionsHtml = cardActions
     ? `<div class="tl-card__bottom-row">
-   <div class="tl-card__actions">${cardActions}</div> 
+   <div class="tl-card__actions" style="gap: 16px;">${cardActions}</div> 
    ${showIcon ? `<span class="tl-icon tl-icon--${icon} tl-icon--20"></span>` : ''}
  </div>`
     : '';
