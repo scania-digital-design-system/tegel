@@ -18,7 +18,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
     test('is success message rendered correctly', async ({ page }) => {
       /* Take screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0, threshold: 0 });
     });
   });
 });
