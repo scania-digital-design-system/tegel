@@ -54,8 +54,9 @@ const Template = () => {
         <p class="tds-body-01">
             The icons displayed here provide an easy overview of all available icons in the library. 
             Each icon is shown at 48px for presentation purposes only; we do not recommend using this size in the product. 
-            To get the source files for icons, you can find them under <code>/assets/icons/scania/</code> or <code>/assets/icons/traton/</code>. 
-            Alternatively, you can right-click on any icon in this gallery and select "Save image as..." to download it.
+        </p>
+        <p class="tds-body-01">
+        To get the source files for icons, you can find them under <code>/assets/icons/scania/</code> or <code>/assets/icons/traton/</code>. 
         </p>
         <div style="width: 256px;">
             <tds-text-field
