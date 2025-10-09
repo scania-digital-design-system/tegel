@@ -391,15 +391,15 @@
       },
       "weight": {
         "semi-bold": {
-          "$type": "number",
+          "$type": "fontWeights",
           "$value": 600
         },
         "medium": {
-          "$type": "number",
+          "$type": "fontWeights",
           "$value": 500
         },
         "regular": {
-          "$type": "number",
+          "$type": "fontWeights",
           "$value": 400
         }
       }
@@ -847,11 +847,11 @@
       },
       "weight": {
         "regular": {
-          "$type": "number",
+          "$type": "fontWeights",
           "$value": 400
         },
         "bold": {
-          "$type": "number",
+          "$type": "fontWeights",
           "$value": 700
         }
       }
