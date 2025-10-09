@@ -2,6 +2,8 @@
 @import '../../mixins/focus-state';
 
 @mixin datetime-base {
+  all: unset;
+
   @include tds-box-sizing;
 
   border-radius: 4px 4px 0 0;
@@ -241,7 +243,7 @@
   color: var(--tds-datetime-helper);
 
   .tds-helper {
-    display: inline-flex;
+    display: flex;
     gap: 8px;
   }
 }
