@@ -30,6 +30,11 @@
 .tds-datetime-input,
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
+  // placeholder text
+  &:not(:focus)::-webkit-datetime-edit {
+    color: var(--tds-datetime-placeholder-color);
+  }
+
   &[type='datetime-local'] {
     ~ .icon-time {
       display: none;
