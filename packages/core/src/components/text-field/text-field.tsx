@@ -22,7 +22,7 @@ export class TdsTextField {
   textInput?: HTMLInputElement;
 
   /** Which input type, text, password or similar */
-  @Prop({ reflect: true }) type: 'text' | 'password' | 'number' = 'text';
+  @Prop({ reflect: true }) type: 'text' | 'password' | 'number' | 'email' | 'tel' = 'text';
 
   /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
@@ -77,6 +77,12 @@ export class TdsTextField {
 
   /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
   @Prop() tdsAriaLabel: string;
+
+  /** Makes the text field required */
+  @Prop() required: boolean = false;
+
+  /** Value to be used for the text field's autocomplete attribute */
+  @Prop() autocomplete: string = 'off';
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
@@ -250,6 +256,8 @@ export class TdsTextField {
               aria-describedby={`text-field-helper-element-${this.uuid}`}
               aria-readonly={this.readOnly}
               id={`text-field-input-element-${this.uuid}`}
+              required={this.required}
+              autocomplete={this.autocomplete}
             />
 
             {this.labelPosition === 'inside' && this.size !== 'sm' && (
