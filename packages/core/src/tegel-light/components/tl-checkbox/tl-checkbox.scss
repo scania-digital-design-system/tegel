@@ -54,7 +54,7 @@
     background-color: var(--checkbox-border-hover);
   }
 
-  &:focus::before {
+  &:focus-visible::before {
     background-color: var(--checkbox-border-focus);
     transition: opacity 0.2s ease-in-out;
   }
@@ -95,6 +95,14 @@
       background-color: var(--checkbox-border);
       background-repeat: no-repeat;
       background-position: center;
+    }
+
+    &:focus-visible::before {
+      width: 22px;
+      height: 22px;
+      left: 1px;
+      top: 1px;
+      border: 0;
     }
   }
 
