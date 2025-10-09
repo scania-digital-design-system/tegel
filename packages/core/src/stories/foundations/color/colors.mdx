@@ -21,6 +21,20 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
   .color-item.light-text {
     color: #000;
   }
+  .depricated-summary {
+    cursor: pointer;
+    font-family: "Nunito Sans", -apple-system, ".SFNSText-Regular", "San Francisco", BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 20px 0px 8px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    padding: 0px 0px 4px;
+    cursor: text;
+    position: relative;
+    color: rgb(46, 52, 56);
+    border-bottom: 1px solid rgba(38, 85, 115, 0.15);
+  }
 `}
 </style>
 
@@ -117,7 +131,7 @@ These are our core brand colors.
 </div>
 
 <details style={{ color: 'black' }}>
-  <summary style={{ cursor: 'pointer' }}>Deprecated colors</summary>
+  <summary class="depricated-summary">Deprecated colors</summary>
   <div style={{ marginTop: '16px', marginBottom: '16px' }}>
     <p>The following colors will be removed in the future. For the latest color documentation and specifications, please refer to:</p>
     <ul>
