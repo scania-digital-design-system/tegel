@@ -391,7 +391,9 @@
     "build:tegel-light": "npm run compile:scss && npm run update:tegel-light-exports && npm run copy:assets-tegel-light",
     "compile:scss": "node scripts/compile-tegel-light-components.js",
     "update:tegel-light-exports": "node scripts/update-tegel-light-exports.js",
-    "copy:assets-tegel-light": "node scripts/copy-tegel-light-assets.js"
+    "copy:assets-tegel-light": "node scripts/copy-tegel-light-assets.js",
+    "lint:css:tl": "stylelint \"src/tegel-light/**/*.scss\"",
+    "lint:css:tl:fix": "stylelint \"src/tegel-light/**/*.scss\" --fix"
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",

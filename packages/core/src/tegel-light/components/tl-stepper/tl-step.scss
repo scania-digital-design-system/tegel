@@ -125,7 +125,7 @@
     padding: 0 20px;
     @include detail-05;
 
-    .index-container {
+    .tl-stepper__index-container {
       vertical-align: -webkit-baseline-middle;
       vertical-align: -moz-middle-with-baseline;
     }
@@ -224,7 +224,7 @@
     &--success {
       background-color: var(--stepper-icon-step-border-success);
       border-color: var(--stepper-icon-step-border-success);
-      color: var(--steper-icon-step-checkmark);
+      color: var(--stepper-icon-step-checkmark);
     }
 
     &--current {
@@ -237,7 +237,6 @@
     }
   }
 
-  .label,
   .tl-stepper__label {
     text-align: center;
 
@@ -270,13 +269,7 @@
     white-space: nowrap;
   }
 
-  .tl-stepper__content {
-    gap: 0;
-  }
-}
-
-.tl-stepper__content {
-  .tl-stepper__content--hide-labels {
+  &--hide-labels {
     gap: 0;
 
     .tl-stepper__label {

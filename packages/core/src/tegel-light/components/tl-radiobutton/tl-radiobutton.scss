@@ -1,5 +1,5 @@
 @import '../../../mixins/box-sizing';
-@import './_tl-radiobutton-vars';
+@import './tl-radiobutton-vars';
 @import '../../../../../../typography/utilities/typography-utility';
 
 /* Block */
@@ -13,9 +13,7 @@
   margin-left: -4px;
 }
 
-/* ─────────────────────────────
-   Elements (top-level)
-   ───────────────────────────── */
+/* Elements */
 
 /* INPUT — semantic control (hidden visually) */
 .tl-radiobutton__input {
@@ -153,9 +151,7 @@
   }
 }
 
-/* ─────────────────────────────
-   Focus animation (same as WC)
-   ───────────────────────────── */
+/* Focus animation */
 @keyframes rb-focus {
   0% {
     transform: scale(0);

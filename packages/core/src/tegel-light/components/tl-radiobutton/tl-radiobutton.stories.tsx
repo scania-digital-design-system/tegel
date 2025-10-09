@@ -62,8 +62,9 @@ export default {
 
 const Template = ({ label, checkedIndex, disabled, name }) =>
   formatHtmlPreview(`
-<!-- Required stylesheet 
-  "@scania/tegel-light/tl-radiobutton.css";
+<!-- Required stylesheets:
+  "@scania/tegel-light/global.css"
+  "@scania/tegel-light/tl-radiobutton.css"
 -->
 
 <style>

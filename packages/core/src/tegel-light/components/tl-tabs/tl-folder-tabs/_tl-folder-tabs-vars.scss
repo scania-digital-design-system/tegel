@@ -5,11 +5,11 @@
   --folder-tab-text: var(--color-foreground-text-soft);
 }
 
-.tl-folder-tabs--mode-variant-primary .tl-folder-tabs__tab {
+.tl-folder-tabs--primary .tl-folder-tabs__tab {
   --folder-tab-surface-selected: var(--color-background-layer-01);
 }
 
-.tl-folder-tabs--mode-variant-secondary .tl-folder-tabs__tab {
+.tl-folder-tabs--secondary .tl-folder-tabs__tab {
   --folder-tab-surface-selected: var(--color-background-layer-02);
 }
 

@@ -55,9 +55,7 @@ export default {
 
 const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
   const modeClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-message--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
+    modeVariant !== 'Inherit from parent' ? `tl-message--${modeVariant.toLowerCase()}` : '';
 
   const variantClass = `tl-message__wrapper--${messageVariant.toLowerCase()}`;
   const minimalClass = minimal ? 'tl-message__wrapper--minimal' : '';

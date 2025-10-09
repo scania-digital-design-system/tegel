@@ -1,20 +1,20 @@
-@import './_tl-breadcrumbs-vars';
+@import './tl-breadcrumbs-vars';
 @import '../../../mixins/box-sizing';
 @import '../../../mixins/focus-state';
 @import '../../../../../../typography/mixins/type-styles';
 
 .tl-breadcrumbs {
   @include tds-box-sizing;
+}
 
-  &__list {
-    @include detail-02;
+.tl-breadcrumbs__list {
+  @include detail-02;
 
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-  }
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
 }
 
 .tl-breadcrumbs__breadcrumb {

@@ -73,15 +73,16 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
     : '';
 
   return formatHtmlPreview(`
-    <!-- Required stylesheet 
-      "@scania/tegel-light/tl-chip.css";
+    <!-- Required stylesheets:
+      "@scania/tegel-light/global.css"
+      "@scania/tegel-light/tl-chip.css"
     -->
 
     <!-- Optional stylesheet (only if you showcase icons)
       "@scania/tegel-light/tl-icon.css"
     -->
 
-    <div class="tl-chip-group">
+    <div class="demo-wrapper" style="display: flex; gap: 8px; flex-wrap: wrap;">
       <button class="tl-chip ${sizeClass}${disabledClass}${selectedClass}${prefixMod}${suffixMod}">
         ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}
         <span class="tl-chip__label">${label} 1</span>
@@ -102,11 +103,10 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
     <!-- The script below is just for demo purposes -->
     <script>
       (function () {
-        const groups = document.querySelectorAll(".tl-chip-group");
-        const group = groups[groups.length - 1];
-        if (!group) return;
+        const wrapper = document.querySelector('.demo-wrapper');
+        if (!wrapper) return;
 
-        const chips = group.querySelectorAll(".tl-chip");
+        const chips = wrapper.querySelectorAll(".tl-chip");
         chips.forEach((chip) => {
           chip.addEventListener("click", () => {
             if (chip.classList.contains("tl-chip--disabled")) return;
