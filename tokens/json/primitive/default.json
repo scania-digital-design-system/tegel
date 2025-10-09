@@ -391,16 +391,16 @@
       },
       "weight": {
         "semi-bold": {
-          "value": "600px",
-          "type": "dimension"
+          "value": "600",
+          "type": "fontWeights"
         },
         "medium": {
-          "value": "500px",
-          "type": "dimension"
+          "value": "500",
+          "type": "fontWeights"
         },
         "regular": {
-          "value": "400px",
-          "type": "dimension"
+          "value": "400",
+          "type": "fontWeights"
         }
       }
     },
@@ -847,12 +847,12 @@
       },
       "weight": {
         "regular": {
-          "value": "400px",
-          "type": "dimension"
+          "value": "400",
+          "type": "fontWeights"
         },
         "bold": {
-          "value": "700px",
-          "type": "dimension"
+          "value": "700",
+          "type": "fontWeights"
         }
       }
     },
