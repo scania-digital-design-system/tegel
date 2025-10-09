@@ -9,10 +9,6 @@
 
   &--no-min-width {
     min-width: auto;
-
-    .tl-textarea__wrapper {
-      min-width: auto;
-    }
   }
 
   &--label-inside {
@@ -25,159 +21,6 @@
     // Size-specific positioning when focused or has content
     @include focus-input-state {
       top: 8px;
-    }
-
-    .tl-textarea__label-inside {
-      @include detail-02;
-
-      transition: 0.1s ease all;
-      color: var(--textarea-label-inside);
-      position: absolute;
-      top: var(--tds-spacing-element-20);
-      left: var(--tds-spacing-element-16);
-      z-index: 1;
-    }
-
-    .tl-textarea__input {
-      @include placeholder-label;
-
-      padding-top: var(--tds-spacing-element-24);
-      padding-bottom: 15px;
-    }
-
-    &.tl-textarea--disabled {
-      .tl-textarea__label-inside {
-        color: var(--textarea-disabled-label);
-      }
-    }
-  }
-
-  // Focus state
-  .tl-textarea__content:has(.tl-textarea__input:focus):not(.tl-textarea--disabled) {
-    .tl-textarea__wrapper {
-      outline: var(--textarea-focus-outline);
-      outline-offset: var(--textarea-focus-outline-offset);
-    }
-  }
-
-  // Bar animation on focus
-  .tl-textarea__content:has(.tl-textarea__input:focus):not(.tl-textarea--disabled)
-  ~ .tl-textarea__bar::after {
-    transform: scaleX(1);
-  }
-
-  // Error state bar animation on focus
-  &.tl-textarea--error
-  .tl-textarea__content:has(.tl-textarea__input:focus):not(.tl-textarea--disabled)
-  ~ .tl-textarea__bar::after {
-    background: var(--textarea-bar-error);
-    transform: scaleX(1);
-  }
-
-  // Disabled state
-  &--disabled {
-    cursor: not-allowed;
-
-    .tl-textarea__wrapper {
-      pointer-events: none;
-    }
-
-    .tl-textarea__input {
-      @include box-shadow('disabled');
-
-      pointer-events: none;
-      user-select: none;
-      background-color: var(--textarea-disabled-background);
-      box-shadow: none !important;
-      border-bottom: none !important;
-    }
-
-    .tl-textarea__label,
-    .tl-textarea__label-outside > * {
-      color: var(--textarea-disabled-label);
-    }
-
-    .tl-textarea__helper {
-      color: var(--textarea-helper-disabled);
-    }
-
-    .tl-textarea__textcounter {
-      color: var(--textarea-textcounter-disabled);
-
-      & .textfield-textcounter-divider {
-        color: var(--textarea-textcounter-disabled);
-      }
-    }
-
-    .tl-textarea__icon-readonly {
-      color: var(--textarea-disabled-label);
-    }
-
-    // Label inside behavior when disabled
-    &.tl-textarea--label-inside {
-      .tl-textarea__label-inside {
-        transform: translateY(0);
-        color: var(--textarea-disabled-label);
-      }
-
-      .tl-textarea__input::placeholder {
-        visibility: hidden;
-      }
-    }
-  }
-
-  // Read only state
-  &--readonly {
-    .tl-textarea__icon-readonly {
-      display: block;
-    }
-
-    .tl-textarea__input {
-      @include box-shadow('read-only');
-    }
-
-    .tl-textarea__wrapper {
-      background-color: transparent;
-    }
-
-    &:has(.tl-textarea__icon-readonly) .tl-textarea__input {
-      padding-right: 54px;
-    }
-  }
-
-  // Success state
-  &--success:not(.tl-textarea--readonly):not(.tl-textarea--disabled) {
-    .tl-textarea__input {
-      @include box-shadow('success');
-    }
-  }
-
-  // Error State
-  &--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) {
-    .tl-textarea__helper {
-      color: var(--textarea-helper-error);
-    }
-
-    .tl-textarea__input {
-      @include box-shadow('error');
-    }
-
-    .tl-textarea__wrapper::after {
-      background: var(--textarea-bar-error) !important;
-    }
-
-    .tl-textarea__bar::after {
-      background: var(--textarea-bar-error) !important;
-    }
-  }
-
-  // Error state focus
-  .tl-textarea__content:has(.tl-textarea__input:focus).tl-textarea--error:not(
-  .tl-textarea--disabled
-) {
-    .tl-textarea__wrapper {
-      outline: var(--textarea-focus-outline-error);
-      outline-offset: var(--textarea-focus-outline-offset);
     }
   }
 }
@@ -223,10 +66,6 @@
   flex: 1;
   order: 2;
   position: relative;
-
-  &:hover {
-    @include box-shadow('hover');
-  }
 
   &::-webkit-resizer {
     display: none;
@@ -285,12 +124,6 @@
   flex-basis: 100%;
   text-align: right;
   padding-top: var(--tds-spacing-element-4);
-
-  & .textfield-textcounter-divider {
-    @include detail-05;
-
-    color: var(--textarea-textcounter-divider);
-  }
 }
 
 .tl-textarea__resizer-icon {
@@ -318,4 +151,180 @@
   right: 18px;
   top: 18px;
   z-index: 1;
+}
+
+// Focus state
+.tl-textarea__content:has(.tl-textarea__input:focus):not(.tl-textarea--disabled)
+.tl-textarea__wrapper {
+  outline: var(--textarea-focus-outline);
+  outline-offset: var(--textarea-focus-outline-offset);
+}
+
+// Bar animation on focus
+.tl-textarea__content:has(.tl-textarea__input:focus):not(.tl-textarea--disabled)
+~ .tl-textarea__bar::after {
+  transform: scaleX(1);
+}
+
+// Error state bar animation on focus
+.tl-textarea--error
+.tl-textarea__content:has(.tl-textarea__input:focus):not(.tl-textarea--disabled)
+~ .tl-textarea__bar::after {
+  background: var(--textarea-bar-error);
+  transform: scaleX(1);
+}
+
+// Error state focus
+.tl-textarea__content:has(.tl-textarea__input:focus).tl-textarea--error:not(.tl-textarea--disabled)
+.tl-textarea__wrapper {
+  outline: var(--textarea-focus-outline-error);
+  outline-offset: var(--textarea-focus-outline-offset);
+}
+
+// No min width modifier - affects wrapper
+.tl-textarea__wrapper {
+  .tl-textarea--no-min-width & {
+    min-width: auto;
+  }
+}
+
+// Label inside modifier - affects elements
+.tl-textarea__label-inside {
+  .tl-textarea--label-inside & {
+    @include detail-02;
+
+    transition: 0.1s ease all;
+    color: var(--textarea-label-inside);
+    position: absolute;
+    top: var(--tds-spacing-element-20);
+    left: var(--tds-spacing-element-16);
+    z-index: 1;
+  }
+}
+
+.tl-textarea__input {
+  .tl-textarea--label-inside & {
+    @include placeholder-label;
+
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+  }
+}
+
+// Disabled state - modifier styles in affected elements
+.tl-textarea {
+  .tl-textarea--disabled & {
+    cursor: not-allowed;
+  }
+}
+
+.tl-textarea__wrapper {
+  .tl-textarea--disabled & {
+    pointer-events: none;
+  }
+}
+
+.tl-textarea__input {
+  .tl-textarea--disabled & {
+    @include box-shadow('disabled');
+
+    pointer-events: none;
+    user-select: none;
+    background-color: var(--textarea-disabled-background);
+    box-shadow: none !important;
+    border-bottom: none !important;
+  }
+}
+
+.tl-textarea__label,
+.tl-textarea__label-outside > * {
+  .tl-textarea--disabled & {
+    color: var(--textarea-disabled-label);
+  }
+}
+
+.tl-textarea__helper {
+  .tl-textarea--disabled & {
+    color: var(--textarea-helper-disabled);
+  }
+}
+
+.tl-textarea__textcounter {
+  .tl-textarea--disabled & {
+    color: var(--textarea-textcounter-disabled);
+  }
+}
+
+.tl-textarea__icon-readonly {
+  .tl-textarea--disabled & {
+    color: var(--textarea-disabled-label);
+  }
+}
+
+.tl-textarea__label-inside {
+  .tl-textarea--disabled.tl-textarea--label-inside & {
+    transform: translateY(0);
+    color: var(--textarea-disabled-label);
+  }
+}
+
+.tl-textarea__input::placeholder {
+  .tl-textarea--disabled.tl-textarea--label-inside & {
+    visibility: hidden;
+  }
+}
+
+// Read only state - modifier styles in affected elements
+.tl-textarea__icon-readonly {
+  .tl-textarea--readonly & {
+    display: block;
+  }
+}
+
+.tl-textarea__input {
+  .tl-textarea--readonly & {
+    @include box-shadow('read-only');
+  }
+
+  .tl-textarea--readonly:has(.tl-textarea__icon-readonly) & {
+    padding-right: 54px;
+  }
+}
+
+.tl-textarea__wrapper {
+  .tl-textarea--readonly & {
+    background-color: transparent;
+  }
+}
+
+// Success state - modifier styles in affected elements
+.tl-textarea__input {
+  .tl-textarea--success:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
+    @include box-shadow('success');
+  }
+}
+
+// Error state - modifier styles in affected elements
+.tl-textarea__helper {
+  .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
+    color: var(--textarea-helper-error);
+  }
+}
+
+.tl-textarea__input {
+  .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
+    @include box-shadow('error');
+  }
+}
+
+.tl-textarea__wrapper::after {
+  .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
+    background: var(--textarea-bar-error) !important;
+  }
+}
+
+.tl-textarea__bar::after {
+  .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
+    background: var(--textarea-bar-error) !important;
+  }
 }

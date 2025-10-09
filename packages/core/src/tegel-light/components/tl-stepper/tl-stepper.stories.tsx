@@ -153,6 +153,7 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
   return formatHtmlPreview(`
     <!-- Required stylesheets
+      "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-step.css";
       "@scania/tegel-light/tl-stepper.css";
     -->

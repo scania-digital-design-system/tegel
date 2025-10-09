@@ -27,11 +27,28 @@ tds-message {
 
 :root,
 .tds-mode-light {
-  /* Default values */
+  /* Background values */
   --tds-message-background: var(--tds-grey-50);
   --tds-message-background-error: var(--tds-red-50);
   --tds-message-background-warning: var(--tds-grey-50);
   --tds-message-background-success: var(--tds-grey-50);
+
+  /* Info */
+  --tds-message-border-info: var(--tds-blue-400);
+  --tds-message-icon-info: var(--tds-blue-400);
+
+  /* Success */
+  --tds-message-border-success: var(--tds-green-400);
+  --tds-message-icon-success: var(--tds-green-400);
+
+  /* Error */
+  --tds-message-border-error: var(--tds-red-400);
+  --tds-message-icon-error: var(--tds-red-400);
+  --tds-message-minimal-header-error: var(--tds-red-400);
+
+  /* Warning */
+  --tds-message-border-warning: var(--tds-yellow-400);
+  --tds-message-icon-warning: var(--tds-yellow-500);
 
   /* Variant values */
   .tds-mode-variant-primary {
@@ -48,11 +65,28 @@ tds-message {
 }
 
 .tds-mode-dark {
-  /* Default values */
+  /* Background values */
   --tds-message-background: var(--tds-grey-900);
   --tds-message-background-error: var(--tds-red-900);
   --tds-message-background-warning: var(--tds-grey-900);
   --tds-message-background-success: var(--tds-grey-900);
+
+  /* Info */
+  --tds-message-border-info: var(--tds-blue-300);
+  --tds-message-icon-info: var(--tds-blue-300);
+
+  /* Success */
+  --tds-message-border-success: var(--tds-green-300);
+  --tds-message-icon-success: var(--tds-green-300);
+
+  /* Error */
+  --tds-message-border-error: var(--tds-red-300);
+  --tds-message-icon-error: var(--tds-red-300);
+  --tds-message-minimal-header-error: var(--tds-red-300);
+
+  /* Warning */
+  --tds-message-border-warning: var(--tds-yellow-300);
+  --tds-message-icon-warning: var(--tds-yellow-300);
 
   /* Variant values */
   .tds-mode-variant-primary {
