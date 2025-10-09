@@ -1,0 +1,1948 @@
+{
+  "color": {
+    "background": {
+      "base": {
+        "value": "{traton.color.grey.50}",
+        "type": "color"
+      },
+      "accent": {
+        "primary": {
+          "default": {
+            "value": "{traton.color.blue.800}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{traton.color.blue.100}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{traton.color.blue.850}",
+            "type": "color"
+          },
+          "pressed": {
+            "value": "{traton.color.blue.900}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{traton.color.blue.850}",
+            "type": "color"
+          },
+          "inverse": {
+            "default": {
+              "value": "{traton.color.grey.300}",
+              "type": "color"
+            },
+            "hover": {
+              "value": "{traton.color.grey.200}",
+              "type": "color"
+            },
+            "pressed": {
+              "value": "{traton.color.grey.400}",
+              "type": "color"
+            },
+            "focus": {
+              "value": "{traton.color.grey.100}",
+              "type": "color"
+            },
+            "disabled": {
+              "value": "{traton.color.grey.900}",
+              "type": "color"
+            }
+          }
+        },
+        "danger": {
+          "default": {
+            "value": "{traton.color.red.300}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{traton.color.red.400}",
+            "type": "color"
+          },
+          "pressed": {
+            "value": "{traton.color.red.600}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{traton.color.red.400}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{traton.color.red.50}",
+            "type": "color"
+          }
+        }
+      },
+      "layer-01": {
+        "value": "{traton.color.grey.100}",
+        "type": "color"
+      },
+      "layer-02": {
+        "value": "{traton.color.grey.50}",
+        "type": "color"
+      },
+      "layer-03": {
+        "value": "{traton.color.grey.100}",
+        "type": "color"
+      },
+      "overlay": {
+        "value": "{traton.color.transparent.scrim.light}",
+        "type": "color"
+      },
+      "inverse": {
+        "base": {
+          "value": "{traton.color.grey.1000}",
+          "type": "color"
+        },
+        "layer-01": {
+          "value": "{traton.color.grey.950}",
+          "type": "color"
+        },
+        "layer-02": {
+          "value": "{traton.color.grey.900}",
+          "type": "color"
+        },
+        "layer-03": {
+          "value": "{traton.color.grey.850}",
+          "type": "color"
+        },
+        "top": {
+          "value": "{traton.color.grey.900}",
+          "type": "color"
+        },
+        "overlay": {
+          "value": "{traton.color.transparent.scrim.light}",
+          "type": "color"
+        }
+      },
+      "surface": {
+        "100": {
+          "value": "{traton.color.grey.150}",
+          "type": "color"
+        },
+        "200": {
+          "value": "{traton.color.grey.200}",
+          "type": "color"
+        },
+        "300": {
+          "value": "{traton.color.grey.300}",
+          "type": "color"
+        },
+        "400": {
+          "value": "{traton.color.grey.400}",
+          "type": "color"
+        },
+        "500": {
+          "value": "{traton.color.grey.500}",
+          "type": "color"
+        },
+        "600": {
+          "value": "{traton.color.grey.600}",
+          "type": "color"
+        },
+        "700": {
+          "value": "{traton.color.grey.700}",
+          "type": "color"
+        },
+        "800": {
+          "value": "{traton.color.grey.800}",
+          "type": "color"
+        },
+        "900": {
+          "value": "{traton.color.grey.900}",
+          "type": "color"
+        },
+        "1000": {
+          "value": "{traton.color.grey.950}",
+          "type": "color"
+        }
+      },
+      "top": {
+        "value": "{traton.color.grey.50}",
+        "type": "color"
+      }
+    },
+    "system": {
+      "warning": {
+        "default": {
+          "value": "{traton.color.yellow.300}",
+          "type": "color"
+        },
+        "discrete": {
+          "value": "{traton.color.yellow.100}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{traton.color.yellow.800}",
+          "type": "color"
+        },
+        "defined": {
+          "value": "{traton.color.yellow.600}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.yellow.200}",
+          "type": "color"
+        }
+      },
+      "success": {
+        "default": {
+          "value": "{traton.color.green.300}",
+          "type": "color"
+        },
+        "discrete": {
+          "value": "{traton.color.green.50}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{traton.color.green.850}",
+          "type": "color"
+        },
+        "defined": {
+          "value": "{traton.color.green.500}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.green.200}",
+          "type": "color"
+        }
+      },
+      "info": {
+        "default": {
+          "value": "{traton.color.blue.500}",
+          "type": "color"
+        },
+        "discrete": {
+          "value": "{traton.color.blue.150}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{traton.color.blue.800}",
+          "type": "color"
+        },
+        "defined": {
+          "value": "{traton.color.blue.800}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.blue.400}",
+          "type": "color"
+        }
+      },
+      "danger": {
+        "default": {
+          "value": "{traton.color.red.300}",
+          "type": "color"
+        },
+        "discrete": {
+          "value": "{traton.color.red.50}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{traton.color.red.850}",
+          "type": "color"
+        },
+        "defined": {
+          "value": "{traton.color.red.500}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.red.200}",
+          "type": "color"
+        }
+      }
+    },
+    "foreground": {
+      "text": {
+        "accent": {
+          "default": {
+            "value": "{traton.color.blue.700}",
+            "type": "color"
+          },
+          "brand": {
+            "value": "{traton.color.blue.950}",
+            "type": "color"
+          },
+          "brand-inverse": {
+            "value": "{traton.color.blue.700}",
+            "type": "color"
+          },
+          "visited": {
+            "value": "{traton.color.blue.950}",
+            "type": "color"
+          }
+        },
+        "strong": {
+          "value": "{traton.color.transparent.950}",
+          "type": "color"
+        },
+        "defined": {
+          "value": "{traton.color.transparent.700}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.transparent.500}",
+          "type": "color"
+        },
+        "inverse": {
+          "strong": {
+            "value": "{traton.color.transparent.inverse.950}",
+            "type": "color"
+          },
+          "soft": {
+            "value": "{traton.color.transparent.inverse.600}",
+            "type": "color"
+          },
+          "subtle": {
+            "value": "{traton.color.transparent.inverse.500}",
+            "type": "color"
+          },
+          "defined": {
+            "value": "{traton.color.transparent.inverse.700}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{traton.color.transparent.inverse.400}",
+            "type": "color"
+          },
+          "brand": {
+            "value": "{traton.color.base.neutral-white}",
+            "type": "color"
+          }
+        },
+        "brand": {
+          "value": "{traton.color.blue.950}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{traton.color.transparent.400}",
+          "type": "color"
+        },
+        "soft": {
+          "value": "{traton.color.transparent.600}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "inverse": {
+          "strong": {
+            "value": "{traton.color.transparent.inverse.950}",
+            "type": "color"
+          },
+          "soft": {
+            "value": "{traton.color.transparent.inverse.600}",
+            "type": "color"
+          },
+          "subtle": {
+            "value": "{traton.color.transparent.inverse.500}",
+            "type": "color"
+          },
+          "discrete": {
+            "value": "{traton.color.transparent.inverse.200}",
+            "type": "color"
+          },
+          "defined": {
+            "value": "{traton.color.transparent.inverse.700}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{traton.color.transparent.inverse.400}",
+            "type": "color"
+          }
+        },
+        "strong": {
+          "value": "{traton.color.transparent.950}",
+          "type": "color"
+        },
+        "soft": {
+          "value": "{traton.color.transparent.600}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.transparent.500}",
+          "type": "color"
+        },
+        "discrete": {
+          "value": "{traton.color.transparent.200}",
+          "type": "color"
+        },
+        "accent": {
+          "link": {
+            "value": "{traton.color.yellow.300}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{traton.color.blue.500}",
+            "type": "color"
+          }
+        },
+        "defined": {
+          "value": "{traton.color.transparent.700}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{traton.color.transparent.400}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "strong": {
+          "value": "{traton.color.transparent.950}",
+          "type": "color"
+        },
+        "defined": {
+          "value": "{traton.color.transparent.700}",
+          "type": "color"
+        },
+        "soft": {
+          "value": "{traton.color.transparent.600}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{traton.color.transparent.500}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{traton.color.transparent.400}",
+          "type": "color"
+        },
+        "discrete": {
+          "value": "{traton.color.transparent.200}",
+          "type": "color"
+        },
+        "inverse": {
+          "strong": {
+            "value": "{traton.color.transparent.inverse.950}",
+            "type": "color"
+          },
+          "defined": {
+            "value": "{traton.color.transparent.inverse.700}",
+            "type": "color"
+          },
+          "soft": {
+            "value": "{traton.color.transparent.inverse.600}",
+            "type": "color"
+          },
+          "subtle": {
+            "value": "{traton.color.transparent.inverse.500}",
+            "type": "color"
+          },
+          "disabled": {
+            "value": "{traton.color.transparent.inverse.400}",
+            "type": "color"
+          },
+          "discrete": {
+            "value": "{traton.color.transparent.inverse.200}",
+            "type": "color"
+          }
+        },
+        "accent": {
+          "default": {
+            "value": "{traton.color.blue.700}",
+            "type": "color"
+          },
+          "visited": {
+            "value": "{traton.color.blue.950}",
+            "type": "color"
+          },
+          "brand": {
+            "value": "{traton.color.blue.950}",
+            "type": "color"
+          },
+          "brand-inverse": {
+            "value": "{traton.color.blue.700}",
+            "type": "color"
+          }
+        }
+      }
+    },
+    "brand": {
+      "neutral": {
+        "white": {
+          "value": "{traton.color.base.neutral-white}",
+          "type": "color"
+        },
+        "black": {
+          "value": "{traton.color.base.neutral-black}",
+          "type": "color"
+        }
+      },
+      "primary": {
+        "50": {
+          "value": "{traton.color.blue.50}",
+          "type": "color"
+        },
+        "100": {
+          "value": "{traton.color.blue.100}",
+          "type": "color"
+        },
+        "200": {
+          "value": "{traton.color.blue.200}",
+          "type": "color"
+        },
+        "300": {
+          "value": "{traton.color.blue.300}",
+          "type": "color"
+        },
+        "400": {
+          "value": "{traton.color.blue.400}",
+          "type": "color"
+        },
+        "500": {
+          "value": "{traton.color.blue.500}",
+          "type": "color"
+        },
+        "600": {
+          "value": "{traton.color.blue.600}",
+          "type": "color"
+        },
+        "700": {
+          "value": "{traton.color.blue.700}",
+          "type": "color"
+        },
+        "800": {
+          "value": "{traton.color.blue.800}",
+          "type": "color"
+        },
+        "900": {
+          "value": "{traton.color.blue.900}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "50": {
+          "value": "{traton.color.yellow.50}",
+          "type": "color"
+        },
+        "100": {
+          "value": "{traton.color.yellow.100}",
+          "type": "color"
+        },
+        "200": {
+          "value": "{traton.color.yellow.200}",
+          "type": "color"
+        },
+        "300": {
+          "value": "{traton.color.yellow.300}",
+          "type": "color"
+        },
+        "400": {
+          "value": "{traton.color.yellow.400}",
+          "type": "color"
+        },
+        "500": {
+          "value": "{traton.color.yellow.500}",
+          "type": "color"
+        },
+        "600": {
+          "value": "{traton.color.yellow.600}",
+          "type": "color"
+        },
+        "700": {
+          "value": "{traton.color.yellow.700}",
+          "type": "color"
+        },
+        "800": {
+          "value": "{traton.color.yellow.800}",
+          "type": "color"
+        },
+        "900": {
+          "value": "{traton.color.yellow.900}",
+          "type": "color"
+        }
+      }
+    }
+  },
+  "component": {
+    "header": {
+      "color": {
+        "expressive mobile menu": {
+          "primary": {
+            "value": "{color.background.base}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{color.background.base}",
+            "type": "color"
+          },
+          "pressed": {
+            "value": "{color.background.surface.100}",
+            "type": "color"
+          },
+          "selected": {
+            "value": "{traton.color.base.neutral-white}",
+            "type": "color"
+          },
+          "selected expressive": {
+            "value": "{traton.color.base.neutral-white}",
+            "type": "color"
+          }
+        },
+        "popovers": {
+          "value": "{color.background.layer-01}",
+          "type": "color"
+        },
+        "background": {
+          "border": {
+            "value": "{traton.color.transparent.invisible.light}",
+            "type": "color"
+          },
+          "default": {
+            "value": "{traton.color.transparent.invisible.light}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{color.background.layer-01}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{color.background.base}",
+            "type": "color"
+          },
+          "pressed": {
+            "value": "{color.background.layer-01}",
+            "type": "color"
+          },
+          "selected": {
+            "value": "{color.background.base}",
+            "type": "color"
+          },
+          "profile": {
+            "value": "{color.background.surface.100}",
+            "type": "color"
+          }
+        },
+        "foreground": {
+          "strong": {
+            "value": "{color.foreground.icon.strong}",
+            "type": "color"
+          },
+          "selected": {
+            "value": "{color.foreground.icon.strong}",
+            "type": "color"
+          },
+          "defined": {
+            "value": "{color.foreground.icon.defined}",
+            "type": "color"
+          }
+        }
+      },
+      "text": {
+        "sub item selected": {
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "18px",
+            "type": "dimension"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.semi-bold}",
+            "type": "dimension"
+          }
+        },
+        "items": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "profile text": {
+            "font-family": {
+              "value": "{traton.font.family.default}",
+              "type": "text"
+            },
+            "text-transform": {
+              "value": "none",
+              "type": "text"
+            },
+            "font-weight": {
+              "value": "{traton.font.weight.semi-bold}",
+              "type": "dimension"
+            },
+            "font-size": {
+              "value": "12px",
+              "type": "dimension"
+            },
+            "line-height": {
+              "value": "18px",
+              "type": "dimension"
+            },
+            "letter-spacing": {
+              "value": "0px",
+              "type": "dimension"
+            }
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.medium}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "16px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        },
+        "application name": {
+          "font-family": {
+            "value": "{traton.font.family.display}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.medium}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "16px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        }
+      },
+      "space": {
+        "profile padding": {
+          "value": "{traton.unit.20}",
+          "type": "dimension"
+        },
+        "profile size": {
+          "value": "{traton.unit.24}",
+          "type": "dimension"
+        }
+      }
+    },
+    "side-menu": {
+      "color": {
+        "divider": {
+          "value": "{traton.color.transparent.invisible.light}",
+          "type": "color"
+        }
+      },
+      "text": {
+        "items": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.medium}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "18px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        }
+      },
+      "size": {
+        "icon": {
+          "value": "{traton.unit.16}",
+          "type": "dimension"
+        },
+        "close icon size": {
+          "value": "{traton.unit.20}",
+          "type": "dimension"
+        }
+      },
+      "space": {
+        "sub menu item": {
+          "top and bottom": {
+            "value": "{traton.unit.8}",
+            "type": "dimension"
+          },
+          "left": {
+            "value": "{traton.unit.12}",
+            "type": "dimension"
+          },
+          "chevron right padding": {
+            "value": "{traton.unit.12}",
+            "type": "dimension"
+          },
+          "profile": {
+            "left": {
+              "value": "{traton.unit.8}",
+              "type": "dimension"
+            },
+            "gap": {
+              "value": "{traton.unit.8}",
+              "type": "dimension"
+            },
+            "top + bottom": {
+              "value": "{traton.unit.4}",
+              "type": "dimension"
+            }
+          },
+          "selected marker height": {
+            "value": "{traton.unit.40}",
+            "type": "dimension"
+          }
+        },
+        "top level": {
+          "left": {
+            "value": "{traton.unit.16}",
+            "type": "dimension"
+          },
+          "horizontal gap padding": {
+            "value": "{traton.unit.16}",
+            "type": "dimension"
+          },
+          "top": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "bottom collapsible": {
+            "value": "{traton.unit.16}",
+            "type": "dimension"
+          },
+          "vertical gap padding": {
+            "value": "{traton.unit.16}",
+            "type": "dimension"
+          }
+        },
+        "collapsed item": {
+          "left + right inner icon padding": {
+            "value": "{traton.unit.12}",
+            "type": "dimension"
+          },
+          "top + bottom inner icon padding": {
+            "value": "{traton.unit.12}",
+            "type": "dimension"
+          }
+        },
+        "sub page": {
+          "top + bottom": {
+            "value": "{traton.unit.8}",
+            "type": "dimension"
+          },
+          "left with icon": {
+            "value": "{traton.unit.40}",
+            "type": "dimension"
+          },
+          "left no icon": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "left profile": {
+            "value": "{traton.unit.48}",
+            "type": "dimension"
+          },
+          "top group": {
+            "value": "{traton.unit.4}",
+            "type": "dimension"
+          },
+          "selected marker height": {
+            "value": "34px",
+            "type": "dimension"
+          },
+          "selected marker width": {
+            "value": "{traton.unit.8}",
+            "type": "dimension"
+          }
+        }
+      },
+      "radius": {
+        "corner": {
+          "value": "{traton.unit.8}",
+          "type": "dimension"
+        }
+      }
+    },
+    "table": {
+      "secondary": {
+        "cell": {
+          "value": "{color.background.layer-02}",
+          "type": "color"
+        }
+      },
+      "pagination": {
+        "dropdown": {
+          "value": "{color.background.base}",
+          "type": "color"
+        },
+        "base": {
+          "value": "{color.background.surface.200}",
+          "type": "color"
+        }
+      },
+      "cell-hover": {
+        "value": "{color.background.surface.200}",
+        "type": "color"
+      },
+      "cell": {
+        "value": "{color.background.layer-01}",
+        "type": "color"
+      }
+    },
+    "stepper": {
+      "success": {
+        "value": "{color.system.success.default}",
+        "type": "color"
+      }
+    },
+    "spinner": {
+      "color": {
+        "value": "{traton.color.blue.800}",
+        "type": "color"
+      }
+    },
+    "footer": {
+      "text color": {
+        "copyright": {
+          "value": "{traton.color.transparent.600}",
+          "type": "color"
+        },
+        "link-text": {
+          "value": "{color.foreground.text.strong}",
+          "type": "color"
+        }
+      },
+      "primary": {
+        "value": "{traton.color.grey.50}",
+        "type": "color"
+      },
+      "border": {
+        "value": "{traton.color.transparent.invisible.light}",
+        "type": "color"
+      }
+    },
+    "dropdown": {
+      "list item": {
+        "secondary": {
+          "hover": {
+            "value": "{color.background.surface.100}",
+            "type": "color"
+          },
+          "focus": {
+            "value": "{color.background.layer-02}",
+            "type": "color"
+          }
+        },
+        "focus": {
+          "value": "{color.background.layer-01}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{color.background.surface.100}",
+          "type": "color"
+        }
+      },
+      "secondary": {
+        "hover": {
+          "value": "{color.background.surface.100}",
+          "type": "color"
+        },
+        "focus": {
+          "value": "{color.background.layer-02}",
+          "type": "color"
+        }
+      },
+      "focus": {
+        "value": "{color.background.layer-01}",
+        "type": "color"
+      },
+      "hover": {
+        "value": "{color.background.surface.100}",
+        "type": "color"
+      }
+    },
+    "badge": {
+      "text": {
+        "value": "{color.brand.neutral.black}",
+        "type": "color"
+      },
+      "background": {
+        "value": "{traton.color.yellow.300}",
+        "type": "color"
+      }
+    },
+    "button": {
+      "primary-text": {
+        "value": "{color.brand.neutral.white}",
+        "type": "color"
+      }
+    },
+    "card": {
+      "secondary": {
+        "value": "{traton.color.transparent.invisible.light}",
+        "type": "color"
+      },
+      "primary": {
+        "value": "{traton.color.transparent.invisible.light}",
+        "type": "color"
+      },
+      "padding": {
+        "padding": {
+          "value": "{traton.unit.0}",
+          "type": "dimension"
+        }
+      },
+      "radius": {
+        "corner": {
+          "value": "{traton.unit.0}",
+          "type": "dimension"
+        }
+      }
+    },
+    "chip": {
+      "color": {
+        "focused on selected": {
+          "value": "{color.background.surface.200}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{color.background.surface.100}",
+          "type": "color"
+        },
+        "focused": {
+          "value": "{color.background.base}",
+          "type": "color"
+        },
+        "hover": {
+          "value": "{color.background.surface.400}",
+          "type": "color"
+        },
+        "selected": {
+          "value": "{color.background.surface.300}",
+          "type": "color"
+        },
+        "disabled selected": {
+          "value": "{color.background.surface.200}",
+          "type": "color"
+        },
+        "hover on selected": {
+          "value": "{color.background.surface.400}",
+          "type": "color"
+        },
+        "default": {
+          "value": "{color.background.surface.200}",
+          "type": "color"
+        }
+      },
+      "foreground": {
+        "inverse": {
+          "value": "{color.foreground.text.strong}",
+          "type": "color"
+        },
+        "foreground disabled selected": {
+          "value": "{color.foreground.text.disabled}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "selected focus border": {
+          "value": "{color.foreground.border.accent.focus}",
+          "type": "color"
+        }
+      }
+    },
+    "logo": {
+      "fill": {
+        "value": "{traton.color.base.neutral-black}",
+        "type": "color"
+      },
+      "visibility": {
+        "Footer Right Logo": {
+          "value": "true",
+          "type": "boolean"
+        },
+        "TRA Left Logo": {
+          "value": "true",
+          "type": "boolean"
+        },
+        "TDS Right Logo": {
+          "value": "false",
+          "type": "boolean"
+        },
+        "TRA Right Logo": {
+          "value": "true",
+          "type": "boolean"
+        },
+        "TDS Left Logo": {
+          "value": "false",
+          "type": "boolean"
+        }
+      },
+      "string": {
+        "wordmark": {
+          "value": "Traton",
+          "type": "text"
+        }
+      }
+    },
+    "shadow": {
+      "hover": {
+        "value": "{traton.color.transparent.invisible.dark}",
+        "type": "color"
+      },
+      "default": {
+        "value": "{traton.color.transparent.invisible.dark}",
+        "type": "color"
+      },
+      "pressed": {
+        "value": "{traton.color.transparent.invisible.dark}",
+        "type": "color"
+      },
+      "dragged": {
+        "value": "{traton.color.transparent.invisible.dark}",
+        "type": "color"
+      },
+      "base-modifier": {
+        "value": "{traton.color.transparent.invisible.dark}",
+        "type": "color"
+      },
+      "focus": {
+        "value": "{traton.color.transparent.invisible.dark}",
+        "type": "color"
+      }
+    },
+    "cookie": {
+      "primary-text inverse": {
+        "value": "{color.brand.neutral.black}",
+        "type": "color"
+      }
+    },
+    "text": {
+      "detail 01 bold": {
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "line-height": {
+          "value": "17px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "12px",
+          "type": "dimension"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.semi-bold}",
+          "type": "dimension"
+        }
+      }
+    },
+    "input-field": {
+      "radius": {
+        "top-left": {
+          "value": "{traton.unit.4}",
+          "type": "dimension"
+        },
+        "top-right": {
+          "value": "{traton.unit.4}",
+          "type": "dimension"
+        },
+        "bottom-left": {
+          "value": "{traton.unit.4}",
+          "type": "dimension"
+        },
+        "bottom-right": {
+          "value": "{traton.unit.4}",
+          "type": "dimension"
+        }
+      },
+      "border": {
+        "width": {
+          "top": {
+            "value": "{traton.unit.1}",
+            "type": "dimension"
+          },
+          "right": {
+            "value": "{traton.unit.1}",
+            "type": "dimension"
+          },
+          "bottom": {
+            "value": "{traton.unit.1}",
+            "type": "dimension"
+          },
+          "left": {
+            "value": "{traton.unit.1}",
+            "type": "dimension"
+          }
+        },
+        "focus": {
+          "top": {
+            "value": "{traton.unit.2}",
+            "type": "dimension"
+          },
+          "right": {
+            "value": "{traton.unit.2}",
+            "type": "dimension"
+          },
+          "bottom": {
+            "value": "{traton.unit.2}",
+            "type": "dimension"
+          },
+          "left": {
+            "value": "{traton.unit.2}",
+            "type": "dimension"
+          }
+        }
+      }
+    }
+  },
+  "text": {
+    "display": {
+      "01": {
+        "text-transform": {
+          "value": "uppercase",
+          "type": "text"
+        },
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "letter-spacing": {
+          "value": "1.08px",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "216px",
+          "type": "dimension"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "227px",
+          "type": "dimension"
+        }
+      },
+      "02": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "uppercase",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "156px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "164px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0.78px",
+          "type": "dimension"
+        }
+      },
+      "03": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "uppercase",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "112px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "118px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0.56px",
+          "type": "dimension"
+        }
+      },
+      "04": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "uppercase",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "80px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "84px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0.4px",
+          "type": "dimension"
+        }
+      },
+      "05": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "uppercase",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "56px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "59px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0.28px",
+          "type": "dimension"
+        }
+      }
+    },
+    "headline": {
+      "01": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "40px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "42px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "02": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "32px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "40px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "03": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "24px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "30px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "04": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "20px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "25px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "05": {
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.semi-bold}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "16px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "22px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "06": {
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.semi-bold}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "14px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "20px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      }
+    },
+    "paragraph": {
+      "01": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "24px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "30px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "02": {
+        "font-family": {
+          "value": "{traton.font.family.display}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.medium}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "20px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "25px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      }
+    },
+    "body": {
+      "01": {
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.regular}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "16px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "22px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "02": {
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.regular}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "14px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "20px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      }
+    },
+    "component": {
+      "body": {
+        "01": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.regular}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "16px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        },
+        "02": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.regular}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "20px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        }
+      },
+      "label": {
+        "01": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.medium}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "12px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "17px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        },
+        "02": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.medium}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "10px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          }
+        }
+      },
+      "title": {
+        "01": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "text-transform 2": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-family 2": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.semi-bold}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "18px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0px",
+            "type": "dimension"
+          },
+          "letter-spacing 2": {
+            "value": "0px",
+            "type": "dimension"
+          },
+          "font-size 2": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "line-height 2": {
+            "value": "18px",
+            "type": "dimension"
+          },
+          "font-weight 2": {
+            "value": "{traton.font.weight.semi-bold}",
+            "type": "dimension"
+          }
+        },
+        "02": {
+          "font-family": {
+            "value": "{traton.font.family.default}",
+            "type": "text"
+          },
+          "text-transform": {
+            "value": "none",
+            "type": "text"
+          },
+          "font-weight": {
+            "value": "{traton.font.weight.semi-bold}",
+            "type": "dimension"
+          },
+          "font-size": {
+            "value": "10px",
+            "type": "dimension"
+          },
+          "line-height": {
+            "value": "14px",
+            "type": "dimension"
+          },
+          "letter-spacing": {
+            "value": "0.4px",
+            "type": "dimension"
+          }
+        }
+      }
+    },
+    "link": {
+      "01": {
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.regular}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "16px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "22px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      },
+      "02": {
+        "font-family": {
+          "value": "{traton.font.family.default}",
+          "type": "text"
+        },
+        "text-transform": {
+          "value": "none",
+          "type": "text"
+        },
+        "font-weight": {
+          "value": "{traton.font.weight.regular}",
+          "type": "dimension"
+        },
+        "font-size": {
+          "value": "14px",
+          "type": "dimension"
+        },
+        "line-height": {
+          "value": "20px",
+          "type": "dimension"
+        },
+        "letter-spacing": {
+          "value": "0px",
+          "type": "dimension"
+        }
+      }
+    }
+  },
+  "dimension": {
+    "space": {
+      "tiny": {
+        "value": "{traton.unit.4}",
+        "type": "dimension"
+      },
+      "small": {
+        "value": "{traton.unit.16}",
+        "type": "dimension"
+      },
+      "medium": {
+        "value": "{traton.unit.24}",
+        "type": "dimension"
+      },
+      "large": {
+        "value": "{traton.unit.48}",
+        "type": "dimension"
+      },
+      "huge": {
+        "value": "{traton.unit.80}",
+        "type": "dimension"
+      }
+    },
+    "radius": {
+      "for-surface": {
+        "clickable": {
+          "value": "{traton.unit.9999}",
+          "type": "dimension"
+        },
+        "field": {
+          "value": "{traton.unit.2}",
+          "type": "dimension"
+        },
+        "inverse": {
+          "value": "{traton.unit.2}",
+          "type": "dimension"
+        }
+      },
+      "narrow": {
+        "value": "{traton.unit.4}",
+        "type": "dimension"
+      },
+      "soft": {
+        "value": "{traton.unit.8}",
+        "type": "dimension"
+      },
+      "rounded": {
+        "value": "{traton.unit.32}",
+        "type": "dimension"
+      },
+      "circle": {
+        "value": "{traton.unit.9999}",
+        "type": "dimension"
+      },
+      "for-area": {
+        "large": {
+          "value": "{traton.unit.8}",
+          "type": "dimension"
+        },
+        "small": {
+          "value": "{traton.unit.4}",
+          "type": "dimension"
+        }
+      },
+      "focus-width": {
+        "value": "{traton.unit.4}",
+        "type": "dimension"
+      }
+    }
+  }
+}
