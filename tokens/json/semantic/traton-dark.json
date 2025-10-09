@@ -2,253 +2,253 @@
   "color": {
     "background": {
       "base": {
-        "value": "{traton.color.blue.1000}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.blue.1000}"
       },
       "accent": {
         "primary": {
           "default": {
-            "value": "{traton.color.grey.300}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.grey.300}"
           },
           "disabled": {
-            "value": "{traton.color.grey.900}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.grey.900}"
           },
           "hover": {
-            "value": "{traton.color.grey.200}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.grey.200}"
           },
           "pressed": {
-            "value": "{traton.color.grey.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.grey.400}"
           },
           "focus": {
-            "value": "{traton.color.grey.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.grey.100}"
           },
           "inverse": {
             "default": {
-              "value": "{traton.color.blue.800}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{traton.color.blue.800}"
             },
             "hover": {
-              "value": "{traton.color.blue.850}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{traton.color.blue.850}"
             },
             "pressed": {
-              "value": "{traton.color.blue.900}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{traton.color.blue.900}"
             },
             "focus": {
-              "value": "{traton.color.blue.850}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{traton.color.blue.850}"
             },
             "disabled": {
-              "value": "{traton.color.blue.100}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{traton.color.blue.100}"
             }
           }
         },
         "danger": {
           "default": {
-            "value": "{traton.color.red.300}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.red.300}"
           },
           "hover": {
-            "value": "{traton.color.red.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.red.400}"
           },
           "pressed": {
-            "value": "{traton.color.red.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.red.600}"
           },
           "focus": {
-            "value": "{traton.color.red.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.red.400}"
           },
           "disabled": {
-            "value": "{traton.color.red.900}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.red.900}"
           }
         }
       },
       "layer-01": {
-        "value": "{traton.color.blue.950}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.blue.950}"
       },
       "layer-02": {
-        "value": "{traton.color.blue.900}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.blue.900}"
       },
       "layer-03": {
-        "value": "{traton.color.blue.850}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.blue.850}"
       },
       "overlay": {
-        "value": "{traton.color.transparent.scrim.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.scrim.dark}"
       },
       "inverse": {
         "base": {
-          "value": "{traton.color.blue.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
         },
         "layer-01": {
-          "value": "{traton.color.blue.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
         },
         "layer-02": {
-          "value": "{traton.color.blue.150}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.150}"
         },
         "layer-03": {
-          "value": "{traton.color.blue.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.200}"
         },
         "top": {
-          "value": "{traton.color.blue.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
         },
         "overlay": {
-          "value": "{traton.color.transparent.scrim.dark}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.scrim.dark}"
         }
       },
       "surface": {
         "100": {
-          "value": "{traton.color.blue.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.900}"
         },
         "200": {
-          "value": "{traton.color.blue.850}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.850}"
         },
         "300": {
-          "value": "{traton.color.blue.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.800}"
         },
         "400": {
-          "value": "{traton.color.blue.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.700}"
         },
         "500": {
-          "value": "{traton.color.blue.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.600}"
         },
         "600": {
-          "value": "{traton.color.blue.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.500}"
         },
         "700": {
-          "value": "{traton.color.blue.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.400}"
         },
         "800": {
-          "value": "{traton.color.blue.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.300}"
         },
         "900": {
-          "value": "{traton.color.blue.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.200}"
         },
         "1000": {
-          "value": "{traton.color.blue.150}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.150}"
         }
       },
       "top": {
-        "value": "{traton.color.blue.900}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.blue.900}"
       }
     },
     "system": {
       "warning": {
         "default": {
-          "value": "{traton.color.yellow.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}"
         },
         "discrete": {
-          "value": "{traton.color.yellow.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.800}"
         },
         "strong": {
-          "value": "{traton.color.yellow.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.100}"
         },
         "defined": {
-          "value": "{traton.color.yellow.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.200}"
         },
         "subtle": {
-          "value": "{traton.color.yellow.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.400}"
         }
       },
       "success": {
         "default": {
-          "value": "{traton.color.green.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.green.300}"
         },
         "discrete": {
-          "value": "{traton.color.green.850}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.green.850}"
         },
         "strong": {
-          "value": "{traton.color.green.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.green.50}"
         },
         "defined": {
-          "value": "{traton.color.green.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.green.200}"
         },
         "subtle": {
-          "value": "{traton.color.green.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.green.400}"
         }
       },
       "info": {
         "default": {
-          "value": "{traton.color.blue.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.500}"
         },
         "discrete": {
-          "value": "{traton.color.blue.850}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.850}"
         },
         "strong": {
-          "value": "{traton.color.blue.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
         },
         "defined": {
-          "value": "{traton.color.blue.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
         },
         "subtle": {
-          "value": "{traton.color.blue.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.600}"
         }
       },
       "danger": {
         "default": {
-          "value": "{traton.color.red.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.red.300}"
         },
         "discrete": {
-          "value": "{traton.color.red.850}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.red.850}"
         },
         "strong": {
-          "value": "{traton.color.red.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.red.50}"
         },
         "defined": {
-          "value": "{traton.color.red.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.red.100}"
         },
         "subtle": {
-          "value": "{traton.color.red.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.red.500}"
         }
       }
     },
@@ -256,202 +256,202 @@
       "text": {
         "accent": {
           "default": {
-            "value": "{traton.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.400}"
           },
           "brand": {
-            "value": "{traton.color.blue.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.50}"
           },
           "brand-inverse": {
-            "value": "{traton.color.blue.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.500}"
           },
           "visited": {
-            "value": "{traton.color.blue.150}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.150}"
           }
         },
         "strong": {
-          "value": "{traton.color.transparent.inverse.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.950}"
         },
         "defined": {
-          "value": "{traton.color.transparent.inverse.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.700}"
         },
         "subtle": {
-          "value": "{traton.color.transparent.inverse.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.500}"
         },
         "inverse": {
           "strong": {
-            "value": "{traton.color.transparent.950}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.950}"
           },
           "soft": {
-            "value": "{traton.color.transparent.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.600}"
           },
           "subtle": {
-            "value": "{traton.color.transparent.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.500}"
           },
           "defined": {
-            "value": "{traton.color.transparent.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.700}"
           },
           "disabled": {
-            "value": "{traton.color.transparent.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.400}"
           },
           "brand": {
-            "value": "{traton.color.transparent.950}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.950}"
           }
         },
         "brand": {
-          "value": "{traton.color.base.neutral-white}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-white}"
         },
         "disabled": {
-          "value": "{traton.color.transparent.inverse.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.400}"
         },
         "soft": {
-          "value": "{traton.color.transparent.inverse.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.600}"
         }
       },
       "border": {
         "inverse": {
           "strong": {
-            "value": "{traton.color.transparent.950}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.950}"
           },
           "soft": {
-            "value": "{traton.color.transparent.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.600}"
           },
           "subtle": {
-            "value": "{traton.color.transparent.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.500}"
           },
           "discrete": {
-            "value": "{traton.color.transparent.200}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.200}"
           },
           "defined": {
-            "value": "{traton.color.transparent.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.700}"
           },
           "disabled": {
-            "value": "{traton.color.transparent.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.400}"
           }
         },
         "strong": {
-          "value": "{traton.color.transparent.inverse.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.950}"
         },
         "soft": {
-          "value": "{traton.color.transparent.inverse.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.600}"
         },
         "subtle": {
-          "value": "{traton.color.transparent.inverse.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.500}"
         },
         "discrete": {
-          "value": "{traton.color.transparent.inverse.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.200}"
         },
         "accent": {
           "link": {
-            "value": "{traton.color.yellow.300}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.yellow.300}"
           },
           "focus": {
-            "value": "{traton.color.yellow.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.yellow.400}"
           }
         },
         "defined": {
-          "value": "{traton.color.transparent.inverse.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.700}"
         },
         "disabled": {
-          "value": "{traton.color.transparent.inverse.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.400}"
         }
       },
       "icon": {
         "strong": {
-          "value": "{traton.color.transparent.inverse.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.950}"
         },
         "defined": {
-          "value": "{traton.color.transparent.inverse.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.700}"
         },
         "soft": {
-          "value": "{traton.color.transparent.inverse.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.600}"
         },
         "subtle": {
-          "value": "{traton.color.transparent.inverse.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.500}"
         },
         "disabled": {
-          "value": "{traton.color.transparent.inverse.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.400}"
         },
         "discrete": {
-          "value": "{traton.color.transparent.inverse.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.200}"
         },
         "inverse": {
           "strong": {
-            "value": "{traton.color.transparent.950}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.950}"
           },
           "defined": {
-            "value": "{traton.color.transparent.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.700}"
           },
           "soft": {
-            "value": "{traton.color.transparent.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.600}"
           },
           "subtle": {
-            "value": "{traton.color.transparent.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.500}"
           },
           "disabled": {
-            "value": "{traton.color.transparent.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.400}"
           },
           "discrete": {
-            "value": "{traton.color.transparent.200}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.200}"
           }
         },
         "accent": {
           "default": {
-            "value": "{traton.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.400}"
           },
           "visited": {
-            "value": "{traton.color.blue.150}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.150}"
           },
           "brand": {
-            "value": "{traton.color.blue.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.50}"
           },
           "brand-inverse": {
-            "value": "{traton.color.blue.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.blue.500}"
           }
         }
       }
@@ -459,96 +459,96 @@
     "brand": {
       "neutral": {
         "white": {
-          "value": "{traton.color.base.neutral-white}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-white}"
         },
         "black": {
-          "value": "{traton.color.base.neutral-black}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-black}"
         }
       },
       "primary": {
         "50": {
-          "value": "{traton.color.blue.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.50}"
         },
         "100": {
-          "value": "{traton.color.blue.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.100}"
         },
         "200": {
-          "value": "{traton.color.blue.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.200}"
         },
         "300": {
-          "value": "{traton.color.blue.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.300}"
         },
         "400": {
-          "value": "{traton.color.blue.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.400}"
         },
         "500": {
-          "value": "{traton.color.blue.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.500}"
         },
         "600": {
-          "value": "{traton.color.blue.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.600}"
         },
         "700": {
-          "value": "{traton.color.blue.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.700}"
         },
         "800": {
-          "value": "{traton.color.blue.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.800}"
         },
         "900": {
-          "value": "{traton.color.blue.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.blue.900}"
         }
       },
       "secondary": {
         "50": {
-          "value": "{traton.color.yellow.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.50}"
         },
         "100": {
-          "value": "{traton.color.yellow.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.100}"
         },
         "200": {
-          "value": "{traton.color.yellow.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.200}"
         },
         "300": {
-          "value": "{traton.color.yellow.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}"
         },
         "400": {
-          "value": "{traton.color.yellow.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.400}"
         },
         "500": {
-          "value": "{traton.color.yellow.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.500}"
         },
         "600": {
-          "value": "{traton.color.yellow.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.600}"
         },
         "700": {
-          "value": "{traton.color.yellow.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.700}"
         },
         "800": {
-          "value": "{traton.color.yellow.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.800}"
         },
         "900": {
-          "value": "{traton.color.yellow.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.900}"
         }
       }
     }
@@ -558,646 +558,646 @@
       "color": {
         "expressive mobile menu": {
           "primary": {
-            "value": "{color.background.base}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.base}"
           },
           "focus": {
-            "value": "{color.background.base}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.base}"
           },
           "pressed": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
           "selected": {
-            "value": "{traton.color.base.neutral-white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}"
           },
           "selected expressive": {
-            "value": "{traton.color.base.neutral-white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}"
           }
         },
         "popovers": {
-          "value": "{color.background.layer-01}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
         },
         "background": {
           "border": {
-            "value": "{traton.color.transparent.invisible.light}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
           },
           "default": {
-            "value": "{traton.color.transparent.invisible.light}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}"
           },
           "hover": {
-            "value": "{color.background.layer-01}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
           },
           "focus": {
-            "value": "{color.background.base}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.base}"
           },
           "pressed": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
           "selected": {
-            "value": "{color.background.base}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.base}"
           },
           "profile": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           }
         },
         "foreground": {
           "strong": {
-            "value": "{color.foreground.icon.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.icon.strong}"
           },
           "selected": {
-            "value": "{color.foreground.icon.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.icon.strong}"
           },
           "defined": {
-            "value": "{color.foreground.icon.defined}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.icon.defined}"
           }
         }
       },
       "text": {
         "sub item selected": {
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           }
         },
         "items": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "profile text": {
             "font-family": {
-              "value": "{traton.font.family.default}",
-              "type": "text"
+              "$type": "text",
+              "$value": "{traton.font.family.default}"
             },
             "text-transform": {
-              "value": "none",
-              "type": "text"
+              "$type": "text",
+              "$value": "none"
             },
             "font-weight": {
-              "value": "{traton.font.weight.semi-bold}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.font.weight.semi-bold}"
             },
             "font-size": {
-              "value": "12px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "12px"
             },
             "line-height": {
-              "value": "18px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "18px"
             },
             "letter-spacing": {
-              "value": "0px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "0px"
             }
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "application name": {
           "font-family": {
-            "value": "{traton.font.family.display}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.display}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "sub-item-selected": {
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           }
         },
         "item": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "profile-text": {
             "font-family": {
-              "value": "{traton.font.family.default}",
-              "type": "text"
+              "$type": "text",
+              "$value": "{traton.font.family.default}"
             },
             "text-transform": {
-              "value": "none",
-              "type": "text"
+              "$type": "text",
+              "$value": "none"
             },
             "font-weight": {
-              "value": "{traton.font.weight.semi-bold}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.font.weight.semi-bold}"
             },
             "font-size": {
-              "value": "12px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "12px"
             },
             "line-height": {
-              "value": "18px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "18px"
             },
             "letter-spacing": {
-              "value": "0px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "0px"
             }
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "application-name": {
           "font-family": {
-            "value": "{traton.font.family.display}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.display}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "space": {
         "profile padding": {
-          "value": "{traton.unit.20}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.20}"
         },
         "profile size": {
-          "value": "{traton.unit.24}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.24}"
         },
         "profile-padding": {
-          "value": "{traton.unit.20}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.20}"
         },
         "profile-size": {
-          "value": "{traton.unit.24}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.24}"
         }
       }
     },
     "side-menu": {
       "color": {
         "divider": {
-          "value": "{traton.color.transparent.invisible.dark}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.invisible.dark}"
         }
       },
       "text": {
         "items": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "item": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "size": {
         "icon": {
-          "value": "{traton.unit.16}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.16}"
         },
         "close icon size": {
-          "value": "{traton.unit.20}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.20}"
         }
       },
       "space": {
         "sub menu item": {
           "top and bottom": {
-            "value": "{traton.unit.8}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.8}"
           },
           "left": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           },
           "chevron right padding": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           },
           "profile": {
             "left": {
-              "value": "{traton.unit.8}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.unit.8}"
             },
             "gap": {
-              "value": "{traton.unit.8}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.unit.8}"
             },
             "top + bottom": {
-              "value": "{traton.unit.4}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.unit.4}"
             }
           },
           "selected marker height": {
-            "value": "{traton.unit.40}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.40}"
           }
         },
         "top level": {
           "left": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "horizontal gap padding": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "top": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "bottom collapsible": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "vertical gap padding": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           }
         },
         "collapsed item": {
           "left + right inner icon padding": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           },
           "top + bottom inner icon padding": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           }
         },
         "sub page": {
           "top + bottom": {
-            "value": "{traton.unit.8}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.8}"
           },
           "left with icon": {
-            "value": "{traton.unit.40}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.40}"
           },
           "left no icon": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "left profile": {
-            "value": "{traton.unit.48}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.48}"
           },
           "top group": {
-            "value": "{traton.unit.4}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.4}"
           },
           "selected marker height": {
-            "value": "34px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "34px"
           },
           "selected marker width": {
-            "value": "{traton.unit.8}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.8}"
           }
         },
         "sub-menu-item": {
           "top and bottom": {
-            "value": "{traton.unit.8}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.8}"
           },
           "left": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           },
           "chevron right padding": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           },
           "profile": {
             "left": {
-              "value": "{traton.unit.8}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.unit.8}"
             },
             "gap": {
-              "value": "{traton.unit.8}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.unit.8}"
             },
             "top + bottom": {
-              "value": "{traton.unit.4}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{traton.unit.4}"
             }
           },
           "selected marker height": {
-            "value": "{traton.unit.40}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.40}"
           }
         },
         "top-level": {
           "left": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "horizontal gap padding": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "top": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "bottom collapsible": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           },
           "vertical gap padding": {
-            "value": "{traton.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.16}"
           }
         },
         "collapsed-item": {
           "left + right inner icon padding": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           },
           "top + bottom inner icon padding": {
-            "value": "{traton.unit.12}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.12}"
           }
         },
         "sub-page": {
           "top + bottom": {
-            "value": "{traton.unit.8}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.8}"
           },
           "left with icon": {
-            "value": "{traton.unit.40}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.40}"
           },
           "left no icon": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "left profile": {
-            "value": "{traton.unit.48}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.48}"
           },
           "top group": {
-            "value": "{traton.unit.4}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.4}"
           },
           "selected marker height": {
-            "value": "34px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "34px"
           },
           "selected marker width": {
-            "value": "{traton.unit.8}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.8}"
           }
         }
       },
       "radius": {
         "corner": {
-          "value": "{traton.unit.8}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.8}"
         },
         "default": {
-          "value": "{traton.unit.8}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.8}"
         }
       }
     },
     "table": {
       "secondary": {
         "cell": {
-          "value": "{color.background.layer-02}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
         }
       },
       "pagination": {
         "dropdown": {
-          "value": "{color.background.layer-01}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
         },
         "base": {
-          "value": "{color.background.surface.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
         }
       },
       "cell-hover": {
-        "value": "{color.background.surface.200}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.surface.200}"
       },
       "cell": {
-        "value": "{color.background.layer-01}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
       }
     },
     "stepper": {
       "success": {
-        "value": "{color.system.success.default}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.system.success.default}"
       }
     },
     "spinner": {
       "color": {
-        "value": "{traton.color.grey.300}",
-        "type": "color",
+        "$type": "color",
+        "$value": "{traton.color.grey.300}",
         "primary": {
-          "value": "{traton.color.grey.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.grey.300}"
         }
       }
     },
     "footer": {
       "text color": {
         "copyright": {
-          "value": "{traton.color.transparent.inverse.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.transparent.inverse.600}"
         },
         "link-text": {
-          "value": "{color.foreground.text.strong}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.strong}"
         }
       },
       "primary": {
-        "value": "{traton.color.blue.1000}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.blue.1000}"
       },
       "border": {
-        "value": "{traton.color.transparent.invisible.light}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.light}"
       },
       "color": {
         "text": {
           "copyright": {
-            "value": "{traton.color.transparent.inverse.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.600}"
           },
           "link": {
-            "value": "{color.foreground.text.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.strong}"
           }
         }
       }
@@ -1206,170 +1206,170 @@
       "list item": {
         "secondary": {
           "hover": {
-            "value": "{color.background.layer-03}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-03}"
           },
           "focus": {
-            "value": "{color.background.layer-02}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
           }
         },
         "focus": {
-          "value": "{color.background.layer-01}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
         },
         "hover": {
-          "value": "{color.background.layer-02}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
         }
       },
       "secondary": {
         "hover": {
-          "value": "{color.background.layer-03}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-03}"
         },
         "focus": {
-          "value": "{color.background.layer-02}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
         },
         "list-item": {
           "hover": {
-            "value": "{color.background.layer-03}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-03}"
           },
           "focus": {
-            "value": "{color.background.layer-02}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
           }
         }
       },
       "focus": {
-        "value": "{color.background.layer-01}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
       },
       "hover": {
-        "value": "{color.background.layer-02}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.layer-02}"
       },
       "primary": {
         "list-item": {
           "focus": {
-            "value": "{color.background.layer-01}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
           },
           "hover": {
-            "value": "{color.background.layer-02}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
           }
         },
         "focus": {
-          "value": "{color.background.layer-01}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
         },
         "hover": {
-          "value": "{color.background.layer-02}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
         }
       }
     },
     "badge": {
       "text": {
-        "value": "{color.brand.neutral.black}",
-        "type": "color",
+        "$type": "color",
+        "$value": "{color.brand.neutral.black}",
         "label": {
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "line-height": {
-            "value": "{text.system.label.01.line-height}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{text.system.label.01.line-height}"
           },
           "letter-spacing": {
-            "value": "{text.system.label.01.letter-spacing}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{text.system.label.01.letter-spacing}"
           },
           "font-size": {
-            "value": "{text.system.label.01.font-size}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{text.system.label.01.font-size}"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           }
         }
       },
       "background": {
-        "value": "{traton.color.yellow.300}",
-        "type": "color",
+        "$type": "color",
+        "$value": "{traton.color.yellow.300}",
         "default": {
-          "value": "{traton.color.yellow.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}"
         }
       }
     },
     "button": {
       "primary-text": {
-        "value": "{color.brand.neutral.black}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.black}"
       },
       "color": {
         "text": {
           "primary": {
-            "value": "{color.brand.neutral.black}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.black}"
           }
         }
       }
     },
     "card": {
       "secondary": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "primary": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "padding": {
         "padding": {
-          "value": "{traton.unit.0}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.0}"
         }
       },
       "radius": {
         "corner": {
-          "value": "{traton.unit.0}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.0}"
         }
       },
       "color": {
         "background": {
           "secondary": {
-            "value": "{traton.color.transparent.invisible.dark}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.dark}"
           },
           "primary": {
-            "value": "{traton.color.transparent.invisible.dark}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.dark}"
           }
         }
       },
       "dimension": {
         "space": {
           "default": {
-            "value": "{traton.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.0}"
           }
         },
         "radius": {
           "default": {
-            "value": "{traton.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.0}"
           }
         }
       }
@@ -1377,141 +1377,141 @@
     "chip": {
       "color": {
         "focused on selected": {
-          "value": "{color.background.surface.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.700}"
         },
         "disabled": {
-          "value": "{color.background.surface.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
         },
         "focused": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         },
         "hover": {
-          "value": "{color.background.surface.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.500}"
         },
         "selected": {
-          "value": "{color.background.surface.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.700}"
         },
         "disabled selected": {
-          "value": "{color.background.surface.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.600}"
         },
         "hover on selected": {
-          "value": "{color.background.surface.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.800}"
         },
         "default": {
-          "value": "{color.background.surface.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
         },
         "text": {
           "inverse": {
-            "value": "{color.foreground.text.inverse.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.strong}"
           },
           "disabled selected": {
-            "value": "{color.foreground.text.inverse.subtle}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.subtle}"
           }
         },
         "border": {
           "selected focus": {
-            "value": "{color.foreground.border.accent.focus}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.border.accent.focus}"
           }
         }
       },
       "foreground": {
         "inverse": {
-          "value": "{color.foreground.text.inverse.strong}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.strong}"
         },
         "foreground disabled selected": {
-          "value": "{color.foreground.text.inverse.subtle}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.subtle}"
         }
       },
       "border": {
         "selected focus border": {
-          "value": "{color.foreground.border.accent.focus}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.border.accent.focus}"
         }
       }
     },
     "logo": {
       "fill": {
-        "value": "{traton.color.base.neutral-white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.base.neutral-white}"
       },
       "visibility": {
         "Footer Right Logo": {
-          "value": "true",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "true"
         },
         "TRA Left Logo": {
-          "value": "true",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "true"
         },
         "TDS Right Logo": {
-          "value": "false",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "false"
         },
         "TRA Right Logo": {
-          "value": "true",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "true"
         },
         "TDS Left Logo": {
-          "value": "false",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "false"
         }
       },
       "string": {
         "wordmark": {
-          "value": "Traton",
-          "type": "text"
+          "$type": "text",
+          "$value": "Traton"
         }
       }
     },
     "shadow": {
       "hover": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "default": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "pressed": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "dragged": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "base-modifier": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       },
       "focus": {
-        "value": "{traton.color.transparent.invisible.dark}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{traton.color.transparent.invisible.dark}"
       }
     },
     "cookie": {
       "primary-text inverse": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
       },
       "text": {
         "inverse": {
           "primary": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           }
         }
       }
@@ -1519,85 +1519,85 @@
     "text": {
       "detail 01 bold": {
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "line-height": {
-          "value": "17px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "17px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         },
         "font-size": {
-          "value": "12px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "12px"
         },
         "font-weight": {
-          "value": "{traton.font.weight.semi-bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.semi-bold}"
         }
       }
     },
     "input-field": {
       "radius": {
         "top-left": {
-          "value": "{traton.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         },
         "top-right": {
-          "value": "{traton.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         },
         "bottom-left": {
-          "value": "{traton.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         },
         "bottom-right": {
-          "value": "{traton.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         }
       },
       "border": {
         "width": {
           "top": {
-            "value": "{traton.unit.1}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           },
           "right": {
-            "value": "{traton.unit.1}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           },
           "bottom": {
-            "value": "{traton.unit.1}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           },
           "left": {
-            "value": "{traton.unit.1}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.1}"
           }
         },
         "focus": {
           "top": {
-            "value": "{traton.unit.2}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           },
           "right": {
-            "value": "{traton.unit.2}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           },
           "bottom": {
-            "value": "{traton.unit.2}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           },
           "left": {
-            "value": "{traton.unit.2}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.unit.2}"
           }
         }
       }
@@ -1606,28 +1606,28 @@
       "text": {
         "label": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "value": "12px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "value": "17px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "17px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       }
@@ -1637,398 +1637,398 @@
     "display": {
       "01": {
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "letter-spacing": {
-          "value": "1.08px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "1.08px"
         },
         "font-size": {
-          "value": "216px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "216px"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "line-height": {
-          "value": "227px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "227px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "156px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "156px"
         },
         "line-height": {
-          "value": "164px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "164px"
         },
         "letter-spacing": {
-          "value": "0.78px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0.78px"
         }
       },
       "03": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "112px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "112px"
         },
         "line-height": {
-          "value": "118px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "118px"
         },
         "letter-spacing": {
-          "value": "0.56px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0.56px"
         }
       },
       "04": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "80px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "80px"
         },
         "line-height": {
-          "value": "84px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "84px"
         },
         "letter-spacing": {
-          "value": "0.4px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0.4px"
         }
       },
       "05": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "56px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "56px"
         },
         "line-height": {
-          "value": "59px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "59px"
         },
         "letter-spacing": {
-          "value": "0.28px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0.28px"
         }
       }
     },
     "headline": {
       "01": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "40px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "40px"
         },
         "line-height": {
-          "value": "42px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "42px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "32px"
         },
         "line-height": {
-          "value": "40px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "40px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "03": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "value": "30px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "30px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "04": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "value": "25px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "25px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "05": {
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.semi-bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.semi-bold}"
         },
         "font-size": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "value": "22px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "22px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "06": {
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.semi-bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.semi-bold}"
         },
         "font-size": {
-          "value": "14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
     "paragraph": {
       "01": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "value": "30px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "30px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{traton.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.display}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.medium}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.medium}"
         },
         "font-size": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "value": "25px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "25px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
     "body": {
       "01": {
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "value": "22px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "22px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "value": "14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
@@ -2036,186 +2036,186 @@
       "body": {
         "01": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "20px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "20px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "label": {
         "01": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "12px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "value": "17px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "17px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "title": {
         "01": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "text-transform 2": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family 2": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           },
           "letter-spacing 2": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           },
           "font-size 2": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height 2": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "font-weight 2": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           }
         },
         "02": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "letter-spacing": {
-            "value": "0.4px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0.4px"
           }
         }
       }
@@ -2223,54 +2223,54 @@
     "link": {
       "01": {
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "value": "22px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "22px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{traton.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{traton.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{traton.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.font.weight.regular}"
         },
         "font-size": {
-          "value": "14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
@@ -2278,162 +2278,162 @@
       "caption": {
         "01": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "20px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "20px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "label": {
         "01": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "12px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "value": "17px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "17px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.medium}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.medium}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "title": {
         "01": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "18px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "18px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{traton.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{traton.font.family.default}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{traton.font.weight.semi-bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{traton.font.weight.semi-bold}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "letter-spacing": {
-            "value": "0.4px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0.4px"
           }
         }
       }
@@ -2442,100 +2442,100 @@
   "dimension": {
     "space": {
       "tiny": {
-        "value": "{traton.unit.4}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.4}"
       },
       "small": {
-        "value": "{traton.unit.16}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.16}"
       },
       "medium": {
-        "value": "{traton.unit.24}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.24}"
       },
       "large": {
-        "value": "{traton.unit.48}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.48}"
       },
       "huge": {
-        "value": "{traton.unit.80}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.80}"
       }
     },
     "radius": {
       "for-surface": {
         "clickable": {
-          "value": "{traton.unit.9999}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.9999}"
         },
         "field": {
-          "value": "{traton.unit.2}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.2}"
         },
         "inverse": {
-          "value": "{traton.unit.2}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.2}"
         }
       },
       "narrow": {
-        "value": "{traton.unit.4}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.4}"
       },
       "soft": {
-        "value": "{traton.unit.8}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.8}"
       },
       "rounded": {
-        "value": "{traton.unit.32}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.32}"
       },
       "circle": {
-        "value": "{traton.unit.9999}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.9999}"
       },
       "for-area": {
         "large": {
-          "value": "{traton.unit.8}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.8}"
         },
         "small": {
-          "value": "{traton.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{traton.unit.4}"
         }
       },
       "focus-width": {
-        "value": "{traton.unit.4}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{traton.unit.4}"
       }
     }
   },
   "__content": {
     "visibility": {
       "__logo--footer-right": {
-        "value": "true",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "true"
       },
       "__logo--left-traton": {
-        "value": "true",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "true"
       },
       "__logo--right-scania": {
-        "value": "false",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "false"
       },
       "__logo--right-traton": {
-        "value": "true",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "true"
       },
       "__logo--left-scania": {
-        "value": "false",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "false"
       }
     },
     "string": {
       "__logo--wordmark": {
-        "value": "Traton",
-        "type": "text"
+        "$type": "text",
+        "$value": "Traton"
       }
     }
   }

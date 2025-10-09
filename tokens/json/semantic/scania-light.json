@@ -2,253 +2,253 @@
   "color": {
     "background": {
       "base": {
-        "value": "{scania.color.grey.00}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.grey.00}"
       },
       "accent": {
         "primary": {
           "default": {
-            "value": "{scania.color.blue.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.600}"
           },
           "disabled": {
-            "value": "{scania.color.grey.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.50}"
           },
           "hover": {
-            "value": "{scania.color.blue.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.500}"
           },
           "pressed": {
-            "value": "{scania.color.blue.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.700}"
           },
           "focus": {
-            "value": "{scania.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
           },
           "inverse": {
             "default": {
-              "value": "{scania.color.blue.400}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{scania.color.blue.400}"
             },
             "hover": {
-              "value": "{scania.color.blue.500}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{scania.color.blue.500}"
             },
             "pressed": {
-              "value": "{scania.color.blue.300}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{scania.color.blue.300}"
             },
             "focus": {
-              "value": "{scania.color.blue.600}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{scania.color.blue.600}"
             },
             "disabled": {
-              "value": "{scania.color.grey.850}",
-              "type": "color"
+              "$type": "color",
+              "$value": "{scania.color.grey.850}"
             }
           }
         },
         "danger": {
           "default": {
-            "value": "{scania.color.red.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.red.400}"
           },
           "hover": {
-            "value": "{scania.color.red.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.red.600}"
           },
           "pressed": {
-            "value": "{scania.color.red.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.red.700}"
           },
           "focus": {
-            "value": "{scania.color.red.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.red.400}"
           },
           "disabled": {
-            "value": "{scania.color.grey.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.50}"
           }
         }
       },
       "layer-01": {
-        "value": "{scania.color.grey.50}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.grey.50}"
       },
       "layer-02": {
-        "value": "{scania.color.grey.00}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.grey.00}"
       },
       "layer-03": {
-        "value": "{scania.color.grey.50}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.grey.50}"
       },
       "overlay": {
-        "value": "{scania.color.transparent.scrim.light}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.scrim.light}"
       },
       "inverse": {
         "base": {
-          "value": "{scania.color.grey.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.950}"
         },
         "layer-01": {
-          "value": "{scania.color.grey.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.900}"
         },
         "layer-02": {
-          "value": "{scania.color.grey.850}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.850}"
         },
         "layer-03": {
-          "value": "{scania.color.grey.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.800}"
         },
         "top": {
-          "value": "{scania.color.grey.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.900}"
         },
         "overlay": {
-          "value": "{scania.color.transparent.scrim.light}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.scrim.light}"
         }
       },
       "surface": {
         "100": {
-          "value": "{scania.color.grey.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.100}"
         },
         "200": {
-          "value": "{scania.color.grey.150}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.150}"
         },
         "300": {
-          "value": "{scania.color.grey.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.200}"
         },
         "400": {
-          "value": "{scania.color.grey.250}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.250}"
         },
         "500": {
-          "value": "{scania.color.grey.350}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.350}"
         },
         "600": {
-          "value": "{scania.color.grey.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.600}"
         },
         "700": {
-          "value": "{scania.color.grey.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.700}"
         },
         "800": {
-          "value": "{scania.color.grey.750}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.750}"
         },
         "900": {
-          "value": "{scania.color.grey.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.800}"
         },
         "1000": {
-          "value": "{scania.color.grey.850}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.850}"
         }
       },
       "top": {
-        "value": "{scania.color.grey.00}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.grey.00}"
       }
     },
     "system": {
       "warning": {
         "default": {
-          "value": "{scania.color.yellow.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.yellow.500}"
         },
         "discrete": {
-          "value": "{scania.color.yellow.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.yellow.50}"
         },
         "strong": {
-          "value": "{scania.color.yellow.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.yellow.900}"
         },
         "defined": {
-          "value": "{scania.color.yellow.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.yellow.600}"
         },
         "subtle": {
-          "value": "{scania.color.yellow.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.yellow.400}"
         }
       },
       "success": {
         "default": {
-          "value": "{scania.color.green.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.green.300}"
         },
         "discrete": {
-          "value": "{scania.color.green.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.green.50}"
         },
         "strong": {
-          "value": "{scania.color.green.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.green.800}"
         },
         "defined": {
-          "value": "{scania.color.green.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.green.500}"
         },
         "subtle": {
-          "value": "{scania.color.green.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.green.200}"
         }
       },
       "info": {
         "default": {
-          "value": "{scania.color.blue.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.400}"
         },
         "discrete": {
-          "value": "{scania.color.blue.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.50}"
         },
         "strong": {
-          "value": "{scania.color.blue.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.800}"
         },
         "defined": {
-          "value": "{scania.color.blue.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.600}"
         },
         "subtle": {
-          "value": "{scania.color.blue.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.300}"
         }
       },
       "danger": {
         "default": {
-          "value": "{scania.color.red.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.400}"
         },
         "discrete": {
-          "value": "{scania.color.red.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.50}"
         },
         "strong": {
-          "value": "{scania.color.red.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.800}"
         },
         "defined": {
-          "value": "{scania.color.red.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.500}"
         },
         "subtle": {
-          "value": "{scania.color.red.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.300}"
         }
       }
     },
@@ -256,202 +256,202 @@
       "text": {
         "accent": {
           "default": {
-            "value": "{scania.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
           },
           "brand": {
-            "value": "{scania.color.grey.00}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
           },
           "brand-inverse": {
-            "value": "{scania.color.grey.950}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.950}"
           },
           "visited": {
-            "value": "{scania.color.blue.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.700}"
           }
         },
         "strong": {
-          "value": "{scania.color.transparent.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.950}"
         },
         "defined": {
-          "value": "{scania.color.transparent.650}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.650}"
         },
         "subtle": {
-          "value": "{scania.color.transparent.350}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.350}"
         },
         "inverse": {
           "strong": {
-            "value": "{scania.color.transparent.inverse.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.50}"
           },
           "soft": {
-            "value": "{scania.color.transparent.inverse.300}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.300}"
           },
           "subtle": {
-            "value": "{scania.color.transparent.inverse.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.400}"
           },
           "defined": {
-            "value": "{scania.color.transparent.inverse.200}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.200}"
           },
           "disabled": {
-            "value": "{scania.color.transparent.inverse.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.500}"
           },
           "brand": {
-            "value": "{scania.color.grey.00}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
           }
         },
         "brand": {
-          "value": "{scania.color.blue.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.800}"
         },
         "disabled": {
-          "value": "{scania.color.transparent.250}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.250}"
         },
         "soft": {
-          "value": "{scania.color.transparent.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.500}"
         }
       },
       "border": {
         "inverse": {
           "strong": {
-            "value": "{scania.color.transparent.inverse.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.50}"
           },
           "soft": {
-            "value": "{scania.color.transparent.inverse.300}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.300}"
           },
           "subtle": {
-            "value": "{scania.color.transparent.inverse.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.400}"
           },
           "discrete": {
-            "value": "{scania.color.transparent.inverse.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.600}"
           },
           "defined": {
-            "value": "{scania.color.transparent.inverse.200}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.200}"
           },
           "disabled": {
-            "value": "{scania.color.transparent.inverse.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.500}"
           }
         },
         "strong": {
-          "value": "{scania.color.transparent.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.950}"
         },
         "soft": {
-          "value": "{scania.color.transparent.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.500}"
         },
         "subtle": {
-          "value": "{scania.color.transparent.350}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.350}"
         },
         "discrete": {
-          "value": "{scania.color.transparent.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.200}"
         },
         "accent": {
           "link": {
-            "value": "{scania.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
           },
           "focus": {
-            "value": "{scania.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
           }
         },
         "defined": {
-          "value": "{scania.color.transparent.650}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.650}"
         },
         "disabled": {
-          "value": "{scania.color.transparent.250}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.250}"
         }
       },
       "icon": {
         "strong": {
-          "value": "{scania.color.transparent.950}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.950}"
         },
         "defined": {
-          "value": "{scania.color.transparent.650}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.650}"
         },
         "soft": {
-          "value": "{scania.color.transparent.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.500}"
         },
         "subtle": {
-          "value": "{scania.color.transparent.350}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.350}"
         },
         "disabled": {
-          "value": "{scania.color.transparent.250}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.250}"
         },
         "discrete": {
-          "value": "{scania.color.transparent.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.transparent.200}"
         },
         "inverse": {
           "strong": {
-            "value": "{scania.color.transparent.inverse.50}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.50}"
           },
           "defined": {
-            "value": "{scania.color.transparent.inverse.200}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.200}"
           },
           "soft": {
-            "value": "{scania.color.transparent.inverse.300}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.300}"
           },
           "subtle": {
-            "value": "{scania.color.transparent.inverse.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.400}"
           },
           "disabled": {
-            "value": "{scania.color.transparent.inverse.500}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.500}"
           },
           "discrete": {
-            "value": "{scania.color.transparent.inverse.600}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.transparent.inverse.600}"
           }
         },
         "accent": {
           "default": {
-            "value": "{scania.color.blue.400}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.400}"
           },
           "visited": {
-            "value": "{scania.color.blue.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.blue.700}"
           },
           "brand": {
-            "value": "{scania.color.grey.00}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.00}"
           },
           "brand-inverse": {
-            "value": "{scania.color.grey.950}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{scania.color.grey.950}"
           }
         }
       }
@@ -459,96 +459,96 @@
     "brand": {
       "neutral": {
         "white": {
-          "value": "{scania.color.grey.00}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.00}"
         },
         "black": {
-          "value": "{scania.color.grey.1000}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.grey.1000}"
         }
       },
       "primary": {
         "50": {
-          "value": "{scania.color.blue.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.50}"
         },
         "100": {
-          "value": "{scania.color.blue.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.100}"
         },
         "200": {
-          "value": "{scania.color.blue.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.200}"
         },
         "300": {
-          "value": "{scania.color.blue.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.300}"
         },
         "400": {
-          "value": "{scania.color.blue.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.400}"
         },
         "500": {
-          "value": "{scania.color.blue.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.500}"
         },
         "600": {
-          "value": "{scania.color.blue.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.600}"
         },
         "700": {
-          "value": "{scania.color.blue.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.700}"
         },
         "800": {
-          "value": "{scania.color.blue.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.800}"
         },
         "900": {
-          "value": "{scania.color.blue.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.blue.900}"
         }
       },
       "secondary": {
         "50": {
-          "value": "{scania.color.red.50}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.50}"
         },
         "100": {
-          "value": "{scania.color.red.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.100}"
         },
         "200": {
-          "value": "{scania.color.red.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.200}"
         },
         "300": {
-          "value": "{scania.color.red.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.300}"
         },
         "400": {
-          "value": "{scania.color.red.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.400}"
         },
         "500": {
-          "value": "{scania.color.red.500}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.500}"
         },
         "600": {
-          "value": "{scania.color.red.600}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.600}"
         },
         "700": {
-          "value": "{scania.color.red.700}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.700}"
         },
         "800": {
-          "value": "{scania.color.red.800}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.800}"
         },
         "900": {
-          "value": "{scania.color.red.900}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{scania.color.red.900}"
         }
       }
     }
@@ -558,646 +558,646 @@
       "color": {
         "expressive mobile menu": {
           "primary": {
-            "value": "{color.brand.primary.800}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.800}"
           },
           "focus": {
-            "value": "{color.brand.primary.800}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.800}"
           },
           "pressed": {
-            "value": "{color.brand.primary.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.700}"
           },
           "selected": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           },
           "selected expressive": {
-            "value": "{color.brand.primary.800}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.800}"
           }
         },
         "popovers": {
-          "value": "{color.background.layer-02}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
         },
         "background": {
           "border": {
-            "value": "{color.brand.primary.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.700}"
           },
           "default": {
-            "value": "{color.brand.primary.800}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.800}"
           },
           "hover": {
-            "value": "{color.brand.primary.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.700}"
           },
           "focus": {
-            "value": "{color.brand.primary.800}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.800}"
           },
           "pressed": {
-            "value": "{color.brand.primary.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.700}"
           },
           "selected": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           },
           "profile": {
-            "value": "{color.brand.primary.700}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.primary.700}"
           }
         },
         "foreground": {
           "strong": {
-            "value": "{color.foreground.icon.inverse.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.icon.inverse.strong}"
           },
           "selected": {
-            "value": "{color.foreground.icon.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.icon.strong}"
           },
           "defined": {
-            "value": "{color.foreground.text.inverse.defined}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.defined}"
           }
         }
       },
       "text": {
         "sub item selected": {
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           }
         },
         "items": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "profile text": {
             "font-family": {
-              "value": "{scania.font.family.semi condensed}",
-              "type": "text"
+              "$type": "text",
+              "$value": "{scania.font.family.semi condensed}"
             },
             "text-transform": {
-              "value": "none",
-              "type": "text"
+              "$type": "text",
+              "$value": "none"
             },
             "font-weight": {
-              "value": "{scania.font.weight.bold}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{scania.font.weight.bold}"
             },
             "font-size": {
-              "value": "14px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "14px"
             },
             "line-height": {
-              "value": "16px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "16px"
             },
             "letter-spacing": {
-              "value": "-0.14px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "-0.14px"
             }
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "application name": {
           "font-family": {
-            "value": "{scania.font.family.display}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.display}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "sub-item-selected": {
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           }
         },
         "item": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "profile-text": {
             "font-family": {
-              "value": "{scania.font.family.semi-condensed}",
-              "type": "text"
+              "$type": "text",
+              "$value": "{scania.font.family.semi-condensed}"
             },
             "text-transform": {
-              "value": "none",
-              "type": "text"
+              "$type": "text",
+              "$value": "none"
             },
             "font-weight": {
-              "value": "{scania.font.weight.bold}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{scania.font.weight.bold}"
             },
             "font-size": {
-              "value": "14px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "14px"
             },
             "line-height": {
-              "value": "16px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "16px"
             },
             "letter-spacing": {
-              "value": "-0.14px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "-0.14px"
             }
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "application-name": {
           "font-family": {
-            "value": "{scania.font.family.display}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.display}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "space": {
         "profile padding": {
-          "value": "{scania.unit.16}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
         },
         "profile size": {
-          "value": "{scania.unit.32}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.32}"
         },
         "profile-padding": {
-          "value": "{scania.unit.16}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
         },
         "profile-size": {
-          "value": "{scania.unit.32}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.32}"
         }
       }
     },
     "side-menu": {
       "color": {
         "divider": {
-          "value": "{color.foreground.border.discrete}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.border.discrete}"
         }
       },
       "text": {
         "items": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "item": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         }
       },
       "size": {
         "icon": {
-          "value": "{scania.unit.24}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.24}"
         },
         "close icon size": {
-          "value": "{scania.unit.20}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.20}"
         }
       },
       "space": {
         "sub menu item": {
           "top and bottom": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           },
           "left": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           },
           "chevron right padding": {
-            "value": "{scania.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
           },
           "profile": {
             "left": {
-              "value": "{scania.unit.16}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{scania.unit.16}"
             },
             "gap": {
-              "value": "{scania.unit.16}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{scania.unit.16}"
             },
             "top + bottom": {
-              "value": "18px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "18px"
             }
           },
           "selected marker height": {
-            "value": "68px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "68px"
           }
         },
         "top level": {
           "left": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "horizontal gap padding": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "top": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "bottom collapsible": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "vertical gap padding": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           }
         },
         "collapsed item": {
           "left + right inner icon padding": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           },
           "top + bottom inner icon padding": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           }
         },
         "sub page": {
           "top + bottom": {
-            "value": "{scania.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
           },
           "left with icon": {
-            "value": "58px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "58px"
           },
           "left no icon": {
-            "value": "{scania.unit.24}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.24}"
           },
           "left profile": {
-            "value": "{scania.unit.64}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.64}"
           },
           "top group": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "selected marker height": {
-            "value": "{scania.unit.48}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.48}"
           },
           "selected marker width": {
-            "value": "{scania.unit.4}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.4}"
           }
         },
         "sub-menu-item": {
           "top and bottom": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           },
           "left": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           },
           "chevron right padding": {
-            "value": "{scania.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
           },
           "profile": {
             "left": {
-              "value": "{scania.unit.16}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{scania.unit.16}"
             },
             "gap": {
-              "value": "{scania.unit.16}",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "{scania.unit.16}"
             },
             "top + bottom": {
-              "value": "18px",
-              "type": "dimension"
+              "$type": "dimension",
+              "$value": "18px"
             }
           },
           "selected marker height": {
-            "value": "68px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "68px"
           }
         },
         "top-level": {
           "left": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "horizontal gap padding": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "top": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "bottom collapsible": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "vertical gap padding": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           }
         },
         "collapsed-item": {
           "left + right inner icon padding": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           },
           "top + bottom inner icon padding": {
-            "value": "22px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "22px"
           }
         },
         "sub-page": {
           "top + bottom": {
-            "value": "{scania.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
           },
           "left with icon": {
-            "value": "58px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "58px"
           },
           "left no icon": {
-            "value": "{scania.unit.24}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.24}"
           },
           "left profile": {
-            "value": "{scania.unit.64}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.64}"
           },
           "top group": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "selected marker height": {
-            "value": "{scania.unit.48}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.48}"
           },
           "selected marker width": {
-            "value": "{scania.unit.4}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.4}"
           }
         }
       },
       "radius": {
         "corner": {
-          "value": "{scania.unit.0}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
         },
         "default": {
-          "value": "{scania.unit.0}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
         }
       }
     },
     "table": {
       "secondary": {
         "cell": {
-          "value": "{color.background.layer-02}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-02}"
         }
       },
       "pagination": {
         "dropdown": {
-          "value": "{color.background.base}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.base}"
         },
         "base": {
-          "value": "{color.background.surface.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
         }
       },
       "cell-hover": {
-        "value": "{color.background.surface.100}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
       },
       "cell": {
-        "value": "{color.background.layer-01}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.layer-01}"
       }
     },
     "stepper": {
       "success": {
-        "value": "{color.system.success.default}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.system.success.default}"
       }
     },
     "spinner": {
       "color": {
-        "value": "{color.system.info.default}",
-        "type": "color",
+        "$type": "color",
+        "$value": "{color.system.info.default}",
         "primary": {
-          "value": "{color.system.info.default}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.system.info.default}"
         }
       }
     },
     "footer": {
       "text color": {
         "copyright": {
-          "value": "{color.foreground.text.inverse.soft}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.soft}"
         },
         "link-text": {
-          "value": "{color.foreground.text.brand}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.brand}"
         }
       },
       "primary": {
-        "value": "{scania.color.blue.800}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.blue.800}"
       },
       "border": {
-        "value": "{scania.color.blue.700}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.blue.700}"
       },
       "color": {
         "text": {
           "copyright": {
-            "value": "{color.foreground.text.inverse.soft}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.soft}"
           },
           "link": {
-            "value": "{color.foreground.text.brand}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.brand}"
           }
         }
       }
@@ -1206,170 +1206,170 @@
       "list item": {
         "secondary": {
           "hover": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
           "focus": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           }
         },
         "focus": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         },
         "hover": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         }
       },
       "secondary": {
         "hover": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         },
         "focus": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         },
         "list-item": {
           "hover": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
           "focus": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           }
         }
       },
       "focus": {
-        "value": "{color.background.surface.100}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
       },
       "hover": {
-        "value": "{color.background.surface.100}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.background.surface.100}"
       },
       "primary": {
         "list-item": {
           "focus": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
           "hover": {
-            "value": "{color.background.surface.100}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           }
         },
         "focus": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         },
         "hover": {
-          "value": "{color.background.surface.100}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.100}"
         }
       }
     },
     "badge": {
       "text": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color",
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}",
         "label": {
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family": {
-            "value": "{text.system.label.01.font-family}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{text.system.label.01.font-family}"
           },
           "line-height": {
-            "value": "{text.system.label.01.line-height}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{text.system.label.01.line-height}"
           },
           "letter-spacing": {
-            "value": "{text.system.label.01.letter-spacing}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{text.system.label.01.letter-spacing}"
           },
           "font-size": {
-            "value": "{text.system.label.01.font-size}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{text.system.label.01.font-size}"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           }
         }
       },
       "background": {
-        "value": "{color.system.danger.default}",
-        "type": "color",
+        "$type": "color",
+        "$value": "{color.system.danger.default}",
         "default": {
-          "value": "{color.system.danger.default}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.system.danger.default}"
         }
       }
     },
     "button": {
       "primary-text": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
       },
       "color": {
         "text": {
           "primary": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           }
         }
       }
     },
     "card": {
       "secondary": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
       },
       "primary": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
       },
       "padding": {
         "padding": {
-          "value": "{scania.unit.16}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
         }
       },
       "radius": {
         "corner": {
-          "value": "{scania.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         }
       },
       "color": {
         "background": {
           "secondary": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           },
           "primary": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           }
         }
       },
       "dimension": {
         "space": {
           "default": {
-            "value": "{scania.unit.16}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.16}"
           }
         },
         "radius": {
           "default": {
-            "value": "{scania.unit.4}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.4}"
           }
         }
       }
@@ -1377,141 +1377,141 @@
     "chip": {
       "color": {
         "focused on selected": {
-          "value": "{color.system.info.subtle}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.system.info.subtle}"
         },
         "disabled": {
-          "value": "{color.background.surface.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
         },
         "focused": {
-          "value": "{color.background.layer-01}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.layer-01}"
         },
         "hover": {
-          "value": "{color.background.surface.300}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.300}"
         },
         "selected": {
-          "value": "{color.brand.primary.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.brand.primary.400}"
         },
         "disabled selected": {
-          "value": "{color.brand.primary.400}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.brand.primary.400}"
         },
         "hover on selected": {
-          "value": "{color.system.info.defined}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.system.info.defined}"
         },
         "default": {
-          "value": "{color.background.surface.200}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.background.surface.200}"
         },
         "text": {
           "inverse": {
-            "value": "{color.foreground.text.inverse.strong}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.strong}"
           },
           "disabled selected": {
-            "value": "{color.foreground.text.inverse.subtle}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.foreground.text.inverse.subtle}"
           }
         },
         "border": {
           "selected focus": {
-            "value": "{color.system.info.defined}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.system.info.defined}"
           }
         }
       },
       "foreground": {
         "inverse": {
-          "value": "{color.foreground.text.inverse.strong}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.strong}"
         },
         "foreground disabled selected": {
-          "value": "{color.foreground.text.inverse.subtle}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.foreground.text.inverse.subtle}"
         }
       },
       "border": {
         "selected focus border": {
-          "value": "{color.system.info.defined}",
-          "type": "color"
+          "$type": "color",
+          "$value": "{color.system.info.defined}"
         }
       }
     },
     "logo": {
       "fill": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
       },
       "visibility": {
         "Footer Right Logo": {
-          "value": "true",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "true"
         },
         "TRA Left Logo": {
-          "value": "false",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "false"
         },
         "TDS Right Logo": {
-          "value": "true",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "true"
         },
         "TRA Right Logo": {
-          "value": "false",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "false"
         },
         "TDS Left Logo": {
-          "value": "true",
-          "type": "boolean"
+          "$type": "boolean",
+          "$value": "true"
         }
       },
       "string": {
         "wordmark": {
-          "value": "Scania",
-          "type": "text"
+          "$type": "text",
+          "$value": "Scania"
         }
       }
     },
     "shadow": {
       "hover": {
-        "value": "{scania.color.transparent.shadow.250}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.250}"
       },
       "default": {
-        "value": "{scania.color.transparent.shadow.150}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.150}"
       },
       "pressed": {
-        "value": "{scania.color.transparent.shadow.250}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.250}"
       },
       "dragged": {
-        "value": "{scania.color.transparent.shadow.200}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.200}"
       },
       "base-modifier": {
-        "value": "{scania.color.transparent.shadow.100}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.100}"
       },
       "focus": {
-        "value": "{scania.color.transparent.shadow.350}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{scania.color.transparent.shadow.350}"
       }
     },
     "cookie": {
       "primary-text inverse": {
-        "value": "{color.brand.neutral.white}",
-        "type": "color"
+        "$type": "color",
+        "$value": "{color.brand.neutral.white}"
       },
       "text": {
         "inverse": {
           "primary": {
-            "value": "{color.brand.neutral.white}",
-            "type": "color"
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
           }
         }
       }
@@ -1519,85 +1519,85 @@
     "text": {
       "detail 01 bold": {
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-family": {
-          "value": "{scania.font.family.semi condensed}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.semi condensed}"
         },
         "line-height": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         },
         "font-size": {
-          "value": "12px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "12px"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         }
       }
     },
     "input-field": {
       "radius": {
         "top-left": {
-          "value": "{scania.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         },
         "top-right": {
-          "value": "{scania.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         },
         "bottom-left": {
-          "value": "{scania.unit.0}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
         },
         "bottom-right": {
-          "value": "{scania.unit.0}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.0}"
         }
       },
       "border": {
         "width": {
           "top": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "right": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "bottom": {
-            "value": "{scania.unit.1}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.1}"
           },
           "left": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           }
         },
         "focus": {
           "top": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "right": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           },
           "bottom": {
-            "value": "{scania.unit.2}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.2}"
           },
           "left": {
-            "value": "{scania.unit.0}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.unit.0}"
           }
         }
       }
@@ -1606,28 +1606,28 @@
       "text": {
         "label": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "12px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       }
@@ -1637,398 +1637,398 @@
     "display": {
       "01": {
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-family": {
-          "value": "{scania.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         },
         "font-size": {
-          "value": "216px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "216px"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "line-height": {
-          "value": "183px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "183px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{scania.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "156px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "156px"
         },
         "line-height": {
-          "value": "148px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "148px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "03": {
         "font-family": {
-          "value": "{scania.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "112px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "112px"
         },
         "line-height": {
-          "value": "106px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "106px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "04": {
         "font-family": {
-          "value": "{scania.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "80px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "80px"
         },
         "line-height": {
-          "value": "80px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "80px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "05": {
         "font-family": {
-          "value": "{scania.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "56px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "56px"
         },
         "line-height": {
-          "value": "56px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "56px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       }
     },
     "headline": {
       "01": {
         "font-family": {
-          "value": "{scania.font.family.display}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.display}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "40px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "40px"
         },
         "line-height": {
-          "value": "40px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "40px"
         },
         "letter-spacing": {
-          "value": "0px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "0px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "32px"
         },
         "line-height": {
-          "value": "32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "32px"
         },
         "letter-spacing": {
-          "value": "-1.28px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-1.28px"
         }
       },
       "03": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "value": "-0.72px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.72px"
         }
       },
       "04": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "value": "-0.4px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.4px"
         }
       },
       "05": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "value": "-0.32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
       "06": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "uppercase",
-          "type": "text"
+          "$type": "text",
+          "$value": "uppercase"
         },
         "font-weight": {
-          "value": "{scania.font.weight.bold}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.bold}"
         },
         "font-size": {
-          "value": "14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "letter-spacing": {
-          "value": "-0.28px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.28px"
         }
       }
     },
     "paragraph": {
       "01": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "line-height": {
-          "value": "32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "32px"
         },
         "letter-spacing": {
-          "value": "-0.72px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.72px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "line-height": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "value": "-0.2px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.2px"
         }
       }
     },
     "body": {
       "01": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "value": "-0.32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "value": "14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "value": "-0.14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.14px"
         }
       }
     },
@@ -2036,186 +2036,186 @@
       "body": {
         "01": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "20px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "20px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         }
       },
       "label": {
         "01": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "12px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "8px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "8px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "title": {
         "01": {
           "font-family": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "text-transform 2": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-family 2": {
-            "value": "{scania.font.family.semi condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi condensed}"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           },
           "letter-spacing 2": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           },
           "font-size 2": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height 2": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "font-weight 2": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           }
         },
         "02": {
           "font-family": {
-            "value": "{scania.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.default}"
           },
           "text-transform": {
-            "value": "uppercase",
-            "type": "text"
+            "$type": "text",
+            "$value": "uppercase"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0.8px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0.8px"
           }
         }
       }
@@ -2223,54 +2223,54 @@
     "link": {
       "01": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "value": "16px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "16px"
         },
         "line-height": {
-          "value": "24px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "24px"
         },
         "letter-spacing": {
-          "value": "-0.32px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.32px"
         }
       },
       "02": {
         "font-family": {
-          "value": "{scania.font.family.default}",
-          "type": "text"
+          "$type": "text",
+          "$value": "{scania.font.family.default}"
         },
         "text-transform": {
-          "value": "none",
-          "type": "text"
+          "$type": "text",
+          "$value": "none"
         },
         "font-weight": {
-          "value": "{scania.font.weight.regular}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.font.weight.regular}"
         },
         "font-size": {
-          "value": "14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "14px"
         },
         "line-height": {
-          "value": "20px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "20px"
         },
         "letter-spacing": {
-          "value": "-0.14px",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "-0.14px"
         }
       }
     },
@@ -2278,162 +2278,162 @@
       "caption": {
         "01": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "20px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "20px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         }
       },
       "label": {
         "01": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "12px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "12px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.regular}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.regular}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "8px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "8px"
           },
           "letter-spacing": {
-            "value": "0px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0px"
           }
         }
       },
       "title": {
         "01": {
           "font-family": {
-            "value": "{scania.font.family.semi-condensed}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.semi-condensed}"
           },
           "text-transform": {
-            "value": "none",
-            "type": "text"
+            "$type": "text",
+            "$value": "none"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "14px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "-0.14px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "-0.14px"
           }
         },
         "02": {
           "font-family": {
-            "value": "{scania.font.family.default}",
-            "type": "text"
+            "$type": "text",
+            "$value": "{scania.font.family.default}"
           },
           "text-transform": {
-            "value": "uppercase",
-            "type": "text"
+            "$type": "text",
+            "$value": "uppercase"
           },
           "font-weight": {
-            "value": "{scania.font.weight.bold}",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "{scania.font.weight.bold}"
           },
           "font-size": {
-            "value": "10px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "10px"
           },
           "line-height": {
-            "value": "16px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "16px"
           },
           "letter-spacing": {
-            "value": "0.8px",
-            "type": "dimension"
+            "$type": "dimension",
+            "$value": "0.8px"
           }
         }
       }
@@ -2442,100 +2442,100 @@
   "dimension": {
     "space": {
       "tiny": {
-        "value": "{scania.unit.4}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.4}"
       },
       "small": {
-        "value": "{scania.unit.16}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.16}"
       },
       "medium": {
-        "value": "{scania.unit.24}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.24}"
       },
       "large": {
-        "value": "{scania.unit.48}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.48}"
       },
       "huge": {
-        "value": "{scania.unit.80}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.80}"
       }
     },
     "radius": {
       "for-surface": {
         "clickable": {
-          "value": "{scania.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         },
         "field": {
-          "value": "{scania.unit.4}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.4}"
         },
         "inverse": {
-          "value": "{scania.unit.9999}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.9999}"
         }
       },
       "narrow": {
-        "value": "{scania.unit.4}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.4}"
       },
       "soft": {
-        "value": "{scania.unit.8}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.8}"
       },
       "rounded": {
-        "value": "{scania.unit.32}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.32}"
       },
       "circle": {
-        "value": "{scania.unit.9999}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.9999}"
       },
       "for-area": {
         "large": {
-          "value": "{scania.unit.16}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.16}"
         },
         "small": {
-          "value": "{scania.unit.2}",
-          "type": "dimension"
+          "$type": "dimension",
+          "$value": "{scania.unit.2}"
         }
       },
       "focus-width": {
-        "value": "{scania.unit.2}",
-        "type": "dimension"
+        "$type": "dimension",
+        "$value": "{scania.unit.2}"
       }
     }
   },
   "__content": {
     "visibility": {
       "__logo--footer-right": {
-        "value": "true",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "true"
       },
       "__logo--left-traton": {
-        "value": "false",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "false"
       },
       "__logo--right-scania": {
-        "value": "true",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "true"
       },
       "__logo--right-traton": {
-        "value": "false",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "false"
       },
       "__logo--left-scania": {
-        "value": "true",
-        "type": "boolean"
+        "$type": "boolean",
+        "$value": "true"
       }
     },
     "string": {
       "__logo--wordmark": {
-        "value": "Scania",
-        "type": "text"
+        "$type": "text",
+        "$value": "Scania"
       }
     }
   }
