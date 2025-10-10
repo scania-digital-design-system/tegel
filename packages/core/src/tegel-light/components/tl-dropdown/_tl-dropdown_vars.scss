@@ -1,82 +1,116 @@
-/* Base component variables */
-.tl-dropdown {
+tds-dropdown {
+  &.tds-mode-variant-primary {
+    --dropdown-background: var(--color-background-layer-01);
+  }
+
+  &.tds-mode-variant-secondary {
+    --dropdown-background: var(--color-background-layer-02);
+  }
+
+  // Colors - Base
   --dropdown-background: var(--color-background-layer-01);
+
+  // Colors - Label/Placeholder/Helper
   --dropdown-text: var(--color-foreground-text-strong);
   --dropdown-helper-text: var(--color-foreground-text-defined);
   --dropdown-placeholder: var(--color-foreground-text-subtle);
   --dropdown-disabled: var(--color-foreground-text-disabled);
-  --dropdown-icon: var(--color-foreground-icon-strong);
-  --dropdown-icon-size: 1rem;
-  --dropdown-icon-offset: var(--dropdown-spacing-inline);
-  --dropdown-clear-icon: var(--color-foreground-icon-subtle);
-  --dropdown-error: var(--color-system-danger-default);
-  --dropdown-error-focus: var(--color-system-danger-subtle);
-  --dropdown-bar-color: var(--color-foreground-border-accent-focus);
   --dropdown-option-text: var(--dropdown-text);
   --dropdown-option-disabled: var(--color-foreground-text-disabled);
   --dropdown-option-background: var(--dropdown-background);
-  --dropdown-option-background-hover: var(
-    --component-dropdown-hover,
-    var(--color-background-layer-02)
-  );
-  --dropdown-option-background-selected: var(
-    --component-dropdown-focus,
-    var(--color-background-layer-02)
-  );
+  --dropdown-option-background-hover: var(--component-dropdown-hover);
+  --dropdown-option-background-selected: var(--component-dropdown-focus);
   --dropdown-option-border: var(--color-foreground-border-discrete);
-  --dropdown-spacing-4: var(--tds-spacing-element-4);
-  --dropdown-spacing-8: var(--tds-spacing-element-8);
-  --dropdown-spacing-inline: var(--tds-spacing-element-16);
-  --dropdown-border-radius: var(--dropdown-spacing-4);
-  --dropdown-label-inside-top: var(--tds-spacing-element-12);
-  --dropdown-label-inside-left: var(--tds-spacing-element-16);
-  --dropdown-height-multiselect: 64px;
 
-  &--primary {
-    --dropdown-background: var(--color-background-layer-01);
-    --dropdown-option-background: var(--color-background-layer-01);
-  }
+  // Colors - Icon
+  --dropdown-icon: var(--color-foreground-icon-strong);
+  --dropdown-clear-icon: var(--color-foreground-icon-subtle);
 
-  &--secondary {
-    --dropdown-background: var(--color-background-layer-02);
-    --dropdown-option-background: var(--color-background-layer-02);
-    --dropdown-option-background-hover: var(
-      --color-background-layer-03,
-      var(--color-background-layer-02)
-    );
-  }
+  // Colors - Error
+  --dropdown-error: var(--color-system-danger-default);
+  --dropdown-error-focus: var(--color-system-danger-subtle);
 }
 
-.tl-dropdown,
-.scania .tl-dropdown {
+tds-dropdown,
+.scania tds-dropdown {
+  // Colors - Border - Scania
   --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
   --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 1px 0 0 var(--dropdown-bar-color);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
   --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
   --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
   --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: 0 1px 0 0 var(--dropdown-error);
-  --dropdown-option-background-hover: var(
-    --component-dropdown-hover,
-    var(--color-background-layer-02)
-  );
-  --dropdown-option-background-selected: var(
-    --component-dropdown-focus,
-    var(--color-background-layer-02)
-  );
+  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
+  --dropdown-border-disabled: 0 1px 0 0 var(--color-foreground-border-soft);
+
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
+  --dropdown-list-border-radius-down: 0 0 var(--dropdown-spacing-4) var(--dropdown-spacing-4);
+  --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
 }
 
-.traton .tl-dropdown {
+traton tds-dropdown {
+  // Colors - Border - Traton
   --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
   --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 0 0 1px var(--dropdown-bar-color);
+  --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
   --dropdown-border-active: 0 0 0 1px var(--color-foreground-border-strong);
   --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
   --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error);
-  --dropdown-bar-color: var(--color-foreground-border-accent-focus);
-  --dropdown-icon-size: 1rem;
-  --dropdown-icon-offset: var(--dropdown-spacing-inline);
+  --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error-focus);
+
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-border-radius: var(--dropdown-spacing-4) var(--dropdown-spacing-4)
+    var(--dropdown-spacing-4) var(--dropdown-spacing-4);
+}
+
+tds-table-footer {
+  // Colors - Base
+  --dropdown-background: var(--component-table-pagination-dropdown);
+  --dropdown-option-background: var(--color-brand-neutral-white);
+
+  // Colors - Border
+  --dropdown-border: none;
+  --dropdown-border-hover: none;
+  --dropdown-border-focus: none;
+  --dropdown-border-error: none;
+
+  // Units
+  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
+  --dropdown-spacing-8: 8px; // should be replaced when introducing units tokens
+  --placeholder-margin: var(--dropdown-spacing-8);
+  --dropdown-border-radius: var(--dropdown-spacing-4);
+  --dropdown-list-border-radius-down: var(--dropdown-spacing-4);
+  --dropdown-list-border-radius-up: var(--dropdown-spacing-4);
+
+  // Option overrides
+  --dropdown-option-border: var(--color-foreground-border-discrete);
+  --dropdown-option-background: var(--color-background-layer-01);
   --dropdown-option-background-hover: var(--color-background-surface-100);
   --dropdown-option-background-selected: var(--color-background-surface-300);
+}
+
+tds-dropdown-option {
+  --dropdown-text: var(--color-foreground-text-strong);
+  --dropdown-option-disabled: var(--color-foreground-text-disabled);
+  --dropdown-option-background: var(--color-background-layer-01);
+  --dropdown-option-background-hover: var(--component-dropdown-hover);
+  --dropdown-option-background-selected: var(--component-dropdown-focus);
+  --dropdown-option-border: var(--color-foreground-border-discrete);
+  --dropdown-helper-text: var(--color-foreground-text-defined);
+  --dropdown-placeholder: var(--color-foreground-text-subtle);
+}
+
+.tds-mode-variant-primary {
+  tds-dropdown-option {
+    --dropdown-option-background: var(--color-background-layer-01);
+  }
+}
+
+.tds-mode-variant-secondary {
+  tds-dropdown-option {
+    --dropdown-option-background: var(--color-background-layer-02);
+  }
 }
