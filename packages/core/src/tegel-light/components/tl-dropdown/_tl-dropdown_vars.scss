@@ -1,9 +1,9 @@
-tds-dropdown {
-  &.tds-mode-variant-primary {
+.tl-dropdown {
+  &.tl-dropdown--primary {
     --dropdown-background: var(--color-background-layer-01);
   }
 
-  &.tds-mode-variant-secondary {
+  &.tl-dropdown--secondary {
     --dropdown-background: var(--color-background-layer-02);
   }
 
@@ -31,8 +31,8 @@ tds-dropdown {
   --dropdown-error-focus: var(--color-system-danger-subtle);
 }
 
-tds-dropdown,
-.scania tds-dropdown {
+.tl-dropdown,
+.scania .tl-dropdown {
   // Colors - Border - Scania
   --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
   --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
@@ -50,7 +50,7 @@ tds-dropdown,
   --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
 }
 
-traton tds-dropdown {
+.traton .tl-dropdown {
   // Colors - Border - Traton
   --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
   --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
@@ -66,33 +66,7 @@ traton tds-dropdown {
     var(--dropdown-spacing-4) var(--dropdown-spacing-4);
 }
 
-tds-table-footer {
-  // Colors - Base
-  --dropdown-background: var(--component-table-pagination-dropdown);
-  --dropdown-option-background: var(--color-brand-neutral-white);
-
-  // Colors - Border
-  --dropdown-border: none;
-  --dropdown-border-hover: none;
-  --dropdown-border-focus: none;
-  --dropdown-border-error: none;
-
-  // Units
-  --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
-  --dropdown-spacing-8: 8px; // should be replaced when introducing units tokens
-  --placeholder-margin: var(--dropdown-spacing-8);
-  --dropdown-border-radius: var(--dropdown-spacing-4);
-  --dropdown-list-border-radius-down: var(--dropdown-spacing-4);
-  --dropdown-list-border-radius-up: var(--dropdown-spacing-4);
-
-  // Option overrides
-  --dropdown-option-border: var(--color-foreground-border-discrete);
-  --dropdown-option-background: var(--color-background-layer-01);
-  --dropdown-option-background-hover: var(--color-background-surface-100);
-  --dropdown-option-background-selected: var(--color-background-surface-300);
-}
-
-tds-dropdown-option {
+.tl-dropdown-option {
   --dropdown-text: var(--color-foreground-text-strong);
   --dropdown-option-disabled: var(--color-foreground-text-disabled);
   --dropdown-option-background: var(--color-background-layer-01);
@@ -103,14 +77,14 @@ tds-dropdown-option {
   --dropdown-placeholder: var(--color-foreground-text-subtle);
 }
 
-.tds-mode-variant-primary {
-  tds-dropdown-option {
+.tl-mode-variant-primary {
+  .tl-dropdown-option {
     --dropdown-option-background: var(--color-background-layer-01);
   }
 }
 
-.tds-mode-variant-secondary {
-  tds-dropdown-option {
+.tl-mode-variant-secondary {
+  .tl-dropdown-option {
     --dropdown-option-background: var(--color-background-layer-02);
   }
 }
