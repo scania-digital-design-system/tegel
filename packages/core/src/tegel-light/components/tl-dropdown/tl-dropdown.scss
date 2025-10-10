@@ -1,4 +1,4 @@
-@import './_tl-dropdown_vars';
+@import './tl-dropdown_vars';
 @import '../tl-icon/tl-icon';
 @import '../../../../../../typography/mixins/type-styles';
 
@@ -21,29 +21,17 @@
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: contain;
-    mask-image: var(--icon-chevron_down-svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
+    /* stylelint-disable property-no-vendor-prefix */
+    -webkit-mask-image: var(--icon-chevron_down-svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    /* stylelint-enable property-no-vendor-prefix */
   }
 
   // Modifier: remove min-width restriction
   &--no-min-width {
     min-width: auto;
-  }
-
-  &--primary {
-    --dropdown-background: var(--color-background-layer-01);
-    --dropdown-option-background: var(--color-background-layer-01);
-  }
-
-  &--secondary {
-    --dropdown-background: var(--color-background-layer-02);
-    --dropdown-option-background: var(--color-background-layer-02);
-    --dropdown-option-background-hover: var(
-      --color-background-layer-03,
-      var(--color-background-layer-02)
-    );
   }
 
   // Disabled state
@@ -190,7 +178,9 @@
   position: absolute;
   pointer-events: none;
   transform-origin: top left;
+  top: var(--tds-spacing-element-8);
   left: var(--tds-spacing-element-16);
+  transform: translateY(calc(var(--tds-spacing-element-20) - var(--tds-spacing-element-8)));
   transition: transform 0.1s ease, font-size 0.1s ease, color 0.1s ease;
 }
 
@@ -201,7 +191,7 @@
   @include detail-07;
 
   transform: translateY(0);
-  top: var(--tds-spacing-element-4);
+  top: calc(var(--tds-spacing-element-8) - var(--tds-spacing-element-4));
   left: var(--tds-spacing-element-16);
 }
 
