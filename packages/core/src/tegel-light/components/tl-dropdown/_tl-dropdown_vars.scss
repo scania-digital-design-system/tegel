@@ -1,9 +1,85 @@
+:root,
+.tds-mode-light {
+  --tds-dropdown-bg: var(--tds-grey-50);
+  --tds-dropdown-border-bottom: var(--tds-grey-350);
+  --tds-dropdown-border-bottom-hover: var(--tds-grey-850);
+  --tds-dropdown-value-color: var(--tds-grey-950);
+  --tds-dropdown-label-color: var(--tds-grey-950);
+  --tds-dropdown-label-inside-color: var(--tds-grey-950);
+  --tds-dropdown-helper-color: var(--tds-grey-500);
+  --tds-dropdown-placeholder-color: var(--tds-grey-500);
+  --tds-dropdown-disabled-color: var(--tds-grey-250);
+  --tds-dropdown-filter-input-color: var(--tds-grey-950);
+  --tds-dropdown-border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
+  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
+    var(--tds-spacing-element-4);
+  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
+    0;
+  --tds-dropdown-error: var(--tds-red-400);
+  --tds-dropdown-menu-icon-color: var(--tds-grey-950);
+  --tds-dropdown-clear-icon-color: var(--tds-grey-350);
+  --tds-dropdown-clear-icon-hover-color: var(--tds-grey-350);
+
+  .tl-dropdown--primary {
+    --tds-dropdown-bg: var(--tds-grey-50);
+  }
+
+  .tl-dropdown--secondary {
+    --tds-dropdown-bg: var(--tds-white);
+  }
+
+  tds-table-footer {
+    --tds-dropdown-bg: white;
+    --tds-placeholder-margin: var(--tds-spacing-element-8);
+    --tds-dropdown-border-bottom: transparent;
+    --tds-dropdown-border-bottom-hover: transparent;
+    --tds-dropdown-border-radius: var(--tds-spacing-element-4);
+    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
+    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
+  }
+}
+
+.tds-mode-dark {
+  --tds-dropdown-bg: var(--tds-grey-868);
+  --tds-dropdown-border-bottom: var(--tds-grey-350);
+  --tds-dropdown-border-bottom-hover: var(--tds-grey-50);
+  --tds-dropdown-value-color: var(--tds-grey-50);
+  --tds-dropdown-label-color: var(--tds-grey-50);
+  --tds-dropdown-label-inside-color: var(--tds-grey-50);
+  --tds-dropdown-helper-color: var(--tds-grey-300);
+  --tds-dropdown-placeholder-color: var(--tds-grey-300);
+  --tds-dropdown-disabled-color: var(--tds-grey-500);
+  --tds-dropdown-list-border-radius-down: 0 0 var(--tds-spacing-element-4)
+    var(--tds-spacing-element-4);
+  --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0
+    0;
+  --tds-dropdown-filter-input-color: var(--tds-grey-50);
+  --tds-dropdown-error: var(--tds-red-300);
+  --tds-dropdown-menu-icon-color: var(--tds-grey-50);
+  --tds-dropdown-clear-icon-color: var(--tds-grey-400);
+  --tds-dropdown-clear-icon-hover-color: var(--tds-grey-400);
+
+  .tl-dropdown--primary {
+    --tds-dropdown-bg: var(--tds-grey-850);
+  }
+
+  .tl-dropdown--secondary {
+    --tds-dropdown-bg: var(--tds-grey-900);
+  }
+
+  tds-table-footer {
+    --tds-dropdown-bg: var(--tds-grey-850);
+    --tds-dropdown-list-border-radius-down: var(--tds-spacing-element-4);
+    --tds-dropdown-list-border-radius-up: var(--tds-spacing-element-4);
+  }
+}
+
 .tl-dropdown {
-  &.tl-dropdown--primary {
+  &--primary {
     --dropdown-background: var(--color-background-layer-01);
   }
 
-  &.tl-dropdown--secondary {
+  &--secondary {
     --dropdown-background: var(--color-background-layer-02);
   }
 
@@ -66,7 +142,7 @@
     var(--dropdown-spacing-4) var(--dropdown-spacing-4);
 }
 
-.tl-dropdown-option {
+.tl-dropdown__option {
   --dropdown-text: var(--color-foreground-text-strong);
   --dropdown-option-disabled: var(--color-foreground-text-disabled);
   --dropdown-option-background: var(--color-background-layer-01);
@@ -75,16 +151,12 @@
   --dropdown-option-border: var(--color-foreground-border-discrete);
   --dropdown-helper-text: var(--color-foreground-text-defined);
   --dropdown-placeholder: var(--color-foreground-text-subtle);
-}
 
-.tl-mode-variant-primary {
-  .tl-dropdown-option {
+  .tl-dropdown--primary & {
     --dropdown-option-background: var(--color-background-layer-01);
   }
-}
 
-.tl-mode-variant-secondary {
-  .tl-dropdown-option {
+  .tl-dropdown--secondary & {
     --dropdown-option-background: var(--color-background-layer-02);
   }
 }
