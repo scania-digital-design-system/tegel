@@ -149,7 +149,7 @@ const Template = ({
           <option value="5">Option 5</option>
         </select>`;
 
-  const barMarkup = useNativeSelect ? '' : '<div class="tl-dropdown__bar"></div>';
+  const barMarkup = '<div class="tl-dropdown__bar"></div>';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
