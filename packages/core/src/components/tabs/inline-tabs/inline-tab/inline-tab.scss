@@ -71,10 +71,6 @@
     z-index: 1;
   }
 
-  .inline-tab-item:hover:focus-within::after {
-    bottom: 3px;
-  }
-
   .selected {
     ::slotted(*) {
       color: var(--tds-inline-tabs-tab-color-selected);
