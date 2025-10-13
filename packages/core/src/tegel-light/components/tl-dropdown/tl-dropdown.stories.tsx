@@ -9,7 +9,7 @@ export default {
     modeVariant: {
       name: 'Mode variant',
       control: { type: 'radio' },
-      options: ['Primary', 'Secondary'],
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
     },
     label: {
       name: 'Label',
@@ -23,6 +23,10 @@ export default {
       name: 'Helper text',
       control: 'text',
     },
+    showHelper: {
+      name: 'Show helper',
+      control: 'boolean',
+    },
     disabled: {
       name: 'Disabled',
       control: 'boolean',
@@ -34,17 +38,30 @@ export default {
     size: {
       name: 'Size',
       control: { type: 'radio' },
-      options: ['Large', 'Medium', 'Small', 'Xsmall'],
+      options: ['Large', 'Medium', 'Small'],
+    },
+    labelPlacement: {
+      name: 'Label placement',
+      control: { type: 'radio' },
+      options: ['Outside', 'Inside', 'No label'],
+    },
+    fieldType: {
+      name: 'Field type',
+      control: { type: 'radio' },
+      options: ['Custom input', 'Native select'],
     },
   },
   args: {
-    modeVariant: 'Primary',
+    modeVariant: 'Inherit from parent',
     label: 'Label',
     placeholder: 'Placeholder',
     helper: 'Helper text',
+    showHelper: true,
     disabled: false,
     error: false,
     size: 'Large',
+    labelPlacement: 'Outside',
+    fieldType: 'Custom input',
   },
 };
 
@@ -53,60 +70,86 @@ const Template = ({
   label,
   placeholder,
   helper,
+  showHelper,
   disabled,
   error,
   size,
   labelPlacement,
+  fieldType,
 }) => {
-  const sizeClassMap = {
-    Large: 'lg',
-    Medium: 'md',
-    Small: 'sm',
-  };
-
-  const normalizedSize = sizeClassMap[size] ?? 'lg';
+  const normalizedSize =
+    {
+      Large: 'lg',
+      Medium: 'md',
+      Small: 'sm',
+    }[size] ?? 'lg';
   const isLabelInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const hasInitialPlaceholder = isLabelInside || Boolean(placeholder);
+  const useNativeSelect = fieldType === 'Native select';
 
   const classes = [
     'tl-dropdown',
     `tl-dropdown--${normalizedSize}`,
+    modeVariant === 'Primary' && 'tl-dropdown--primary',
     modeVariant === 'Secondary' && 'tl-dropdown--secondary',
     disabled && 'tl-dropdown--disabled',
     error && 'tl-dropdown--error',
-    placeholder && 'tl-dropdown--placeholder',
+    isLabelInside && 'tl-dropdown--label-inside',
+    !showLabel && 'tl-dropdown--no-label',
   ].filter(Boolean);
 
   const dropdownClasses = classes.join(' ');
 
   const labelId = showLabel ? 'tl-dropdown-story-label' : '';
-  const labelClassNames = ['tl-dropdown__label'];
-  if (isLabelInside) labelClassNames.push('tl-dropdown__label--inside');
-  const labelMarkup = showLabel
-    ? `<label class="${labelClassNames.join(' ')}"${
-        labelId ? ` id="${labelId}"` : ''
-      }>${label}</label>`
-    : '';
-  const placeholderOption = !hasInitialPlaceholder
-    ? ''
-    : isLabelInside
-    ? '<option value="" hidden selected></option>'
-    : `<option value="" disabled selected>${placeholder}</option>`;
-  const ariaLabelAttr =
-    showLabel && labelId
-      ? `aria-labelledby="${labelId}"`
-      : !showLabel && label
-      ? `aria-label="${label}"`
-      : '';
+  const labelClasses = ['tl-dropdown__label'];
+  if (isLabelInside) {
+    labelClasses.push('tl-dropdown__label--inside');
+  }
+
+  let labelMarkup = '';
+  if (showLabel) {
+    const labelIdAttr = labelId ? ` id="${labelId}"` : '';
+    labelMarkup = `<label class="${labelClasses.join(' ')}"${labelIdAttr}>${label}</label>`;
+  }
+
+  let placeholderOption = '';
+  if (hasInitialPlaceholder) {
+    placeholderOption = isLabelInside
+      ? '<option value="" hidden selected></option>'
+      : `<option value="" disabled selected>${placeholder}</option>`;
+  }
+
+  let ariaLabelAttr = '';
+  if (showLabel && labelId) {
+    ariaLabelAttr = `aria-labelledby="${labelId}"`;
+  } else if (!showLabel && label) {
+    ariaLabelAttr = `aria-label="${label}"`;
+  }
+
+  const selectAttributes = [ariaLabelAttr, disabled ? 'disabled' : ''].filter(Boolean).join(' ');
+
+  const helperText = showHelper ? helper : '';
 
   let helperMarkup = '';
-  if (helper) {
+  if (helperText) {
     const helperIcon = error
       ? '<span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>'
       : '';
-    helperMarkup = `<div class="tl-dropdown__helper">${helperIcon}${helper}</div>`;
+    helperMarkup = `<div class="tl-dropdown__helper">${helperIcon}${helperText}</div>`;
   }
+
+  const fieldClass = useNativeSelect ? 'tl-dropdown__select' : 'tl-dropdown__input';
+  const fieldMarkup = `<select class="${fieldClass}" ${selectAttributes}>
+          ${placeholderOption}
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+        </select>`;
+
+  const barMarkup = useNativeSelect ? '' : '<div class="tl-dropdown__bar"></div>';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
@@ -117,18 +160,11 @@ const Template = ({
     -->
 
     <div class="demo-wrapper" style="max-width: 208px; height: 150px;">
-      <div class="${classes.join(' ')}">
+      <div class="${dropdownClasses}">
         ${labelMarkup}
 
-        <select class="tl-dropdown__input" ${ariaLabelAttr} ${disabled ? 'disabled' : ''}>
-          ${placeholderOption}
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
-        </select>
-        <div class="tl-dropdown__bar"></div>
+        ${fieldMarkup}
+        ${barMarkup}
         ${helperMarkup}
       </div>
     </div>
