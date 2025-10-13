@@ -54,7 +54,7 @@ const Template = () => {
         <p class="tds-body-01">
             The icons displayed here provide an easy overview of all available icons in the library. 
             Each icon is shown at 48px for presentation purposes only; we do not recommend using this size in the product. 
-            To get the source files for icons, you can find them under <code>/assets/icons/*</code>. 
+            To get the source files for icons, you can find them under <code>/assets/icons/*</code> <a target="_blank" href="https://github.com/scania-digital-design-system/tegel/tree/develop/assets/icons">in our repository</a>.
         </p>
         <div style="width: 256px;">
             <tds-text-field
