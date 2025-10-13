@@ -23,6 +23,10 @@ export default {
       name: 'Helper text',
       control: 'text',
     },
+    showHelper: {
+      name: 'Show helper',
+      control: 'boolean',
+    },
     disabled: {
       name: 'Disabled',
       control: 'boolean',
@@ -41,16 +45,23 @@ export default {
       control: { type: 'radio' },
       options: ['Outside', 'Inside', 'No label'],
     },
+    fieldType: {
+      name: 'Field type',
+      control: { type: 'radio' },
+      options: ['Custom input', 'Native select'],
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     label: 'Label',
     placeholder: 'Placeholder',
     helper: 'Helper text',
+    showHelper: true,
     disabled: false,
     error: false,
     size: 'Large',
     labelPlacement: 'Outside',
+    fieldType: 'Custom input',
   },
 };
 
@@ -59,10 +70,12 @@ const Template = ({
   label,
   placeholder,
   helper,
+  showHelper,
   disabled,
   error,
   size,
   labelPlacement,
+  fieldType,
 }) => {
   const normalizedSize =
     {
@@ -73,6 +86,7 @@ const Template = ({
   const isLabelInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const hasInitialPlaceholder = isLabelInside || Boolean(placeholder);
+  const useNativeSelect = fieldType === 'Native select';
 
   const classes = [
     'tl-dropdown',
@@ -115,13 +129,27 @@ const Template = ({
 
   const selectAttributes = [ariaLabelAttr, disabled ? 'disabled' : ''].filter(Boolean).join(' ');
 
+  const helperText = showHelper ? helper : '';
+
   let helperMarkup = '';
-  if (helper) {
+  if (helperText) {
     const helperIcon = error
       ? '<span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>'
       : '';
-    helperMarkup = `<div class="tl-dropdown__helper">${helperIcon}${helper}</div>`;
+    helperMarkup = `<div class="tl-dropdown__helper">${helperIcon}${helperText}</div>`;
   }
+
+  const fieldClass = useNativeSelect ? 'tl-dropdown__select' : 'tl-dropdown__input';
+  const fieldMarkup = `<select class="${fieldClass}" ${selectAttributes}>
+          ${placeholderOption}
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+          <option value="4">Option 4</option>
+          <option value="5">Option 5</option>
+        </select>`;
+
+  const barMarkup = useNativeSelect ? '' : '<div class="tl-dropdown__bar"></div>';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
@@ -135,15 +163,8 @@ const Template = ({
       <div class="${dropdownClasses}">
         ${labelMarkup}
 
-        <select class="tl-dropdown__input" ${selectAttributes}>
-          ${placeholderOption}
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
-        </select>
-        <div class="tl-dropdown__bar"></div>
+        ${fieldMarkup}
+        ${barMarkup}
         ${helperMarkup}
       </div>
     </div>
