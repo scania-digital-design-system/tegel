@@ -58,7 +58,7 @@ export default {
         type: 'number',
       },
       table: {
-        defaultValue: { summary: 32 },
+        defaultValue: { summary: 0 },
       },
     },
   },
@@ -66,7 +66,7 @@ export default {
     modeVariant: 'Inherit from parent',
     defaultSelectedIndex: 'None',
     selectedIndex: 'None',
-    leftPadding: 32, // Default value for left padding
+    leftPadding: 0,
   },
 };
 
