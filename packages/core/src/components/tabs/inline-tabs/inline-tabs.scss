@@ -71,8 +71,15 @@
       background-color: var(--tds-folder-tabs-scroll-btn-background-active);
     }
 
-    &:focus {
+    &:focus-visible::before {
+      content: '';
+      position: absolute;
+      inset: 3px;
       @include tds-focus-state;
+    }
+
+    &:focus-visible {
+      outline: 0;
     }
 
     svg {
