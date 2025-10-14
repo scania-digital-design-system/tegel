@@ -26,13 +26,15 @@
 }
 
 // icons
-
 .tds-datetime-input,
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
-  // placeholder text
-  &:not(:focus)::-webkit-datetime-edit {
-    color: var(--tds-datetime-placeholder-color);
+  // only apply styling if browser supports
+  @supports selector(input::-webkit-datetime-edit) {
+    // placeholder text
+    &:not(:focus)::-webkit-datetime-edit {
+      color: var(--tds-datetime-placeholder-color);
+    }
   }
 
   &[type='datetime-local'] {
