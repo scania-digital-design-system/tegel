@@ -15,7 +15,7 @@
   --tds-header-mob-menu-open-border: var(--tds-grey-300);
   --tds-nav-item-background: var(--tds-white);
   --tds-nav-item-background-active: var(--tds-grey-100);
-  --tds-nav-item-background-hover: var(--tds-grey-100);
+  --tds-nav-item-background-hover: var(--tds-grey-50);
   --tds-nav-item-background-selected: var(--tds-grey-100);
   --tds-nav-item-border-color: var(--tds-blue-700);
   --tds-nav-item-border-color-active: var(--tds-blue-400);
@@ -24,14 +24,19 @@
   --tds-header-nav-item-color: var(--tds-white);
   --tds-header-nav-item-background-active: var(--tds-blue-700);
   --tds-nav-dropdown-item-background: var(--tds-white);
-  --tds-nav-dropdown-item-border-color: var(--tds-grey-300);
+  --tds-nav-dropdown-item-border-color: var(--tds-grey-200);
   --tds-header-nav-item-dropdown-opened-background: var(--tds-white);
   --tds-header-nav-item-dropdown-opened-background-hover: var(--tds-grey-100);
   --tds-header-nav-item-dropdown-opened-background-selected: var(--tds-grey-100);
   --tds-header-nav-item-dropdown-opened-background-active: var(--tds-grey-300);
   --tds-header-nav-item-dropdown-opened-color: var(--tds-grey-958);
   --tds-header-nav-item-dropdown-hover-color: var(--tds-grey-300);
+
+  // header item
   --tds-header-item-hover: var(--tds-blue-700);
+  --tds-header-item-active: var(--tds-blue-600);
+  --tds-header-item-border-hover: var(--tds-blue-300);
+  --tds-header-item-border-active: var(--tds-grey-50);
 
   // tds-nav__basic-element-style
   --tds-header--basic-element-border: var(--tds-blue-700);
@@ -143,19 +148,24 @@
   --tds-nav-item-core-color-active: var(--tds-grey-50);
   --tds-header-nav-item-color: var(--tds-white);
   --tds-header-nav-item-background-active: var(--tds-blue-800);
-  --tds-nav-dropdown-item-background: var(--tds-grey-800);
-  --tds-nav-dropdown-item-border-color: var(--tds-grey-700);
+  --tds-nav-dropdown-item-background: var(--tds-grey-750);
+  --tds-nav-dropdown-item-border-color: var(--tds-grey-600);
   --tds-header-nav-item-dropdown-opened-background: var(--tds-grey-958);
   --tds-header-nav-item-dropdown-opened-background-hover: var(--tds-grey-800);
   --tds-header-nav-item-dropdown-opened-background-selected: var(--tds-grey-868);
   --tds-header-nav-item-dropdown-opened-background-active: var(--tds-grey-800);
   --tds-header-nav-item-dropdown-opened-color: var(--tds-white);
+
+  // header item
   --tds-header-item-hover: var(--tds-blue-800);
+  --tds-header-item-active: var(--tds-blue-700);
+  --tds-header-item-border-hover: var(--tds-blue-300);
+  --tds-header-item-border-active: var(--tds-grey-50);
 
   // tds-nav__basic-element-style
   --tds-header--basic-element-border: var(--tds-blue-700);
   --tds-header--basic-element-border-open: var(--tds-blue-700);
-  --tds-header--basic-element-background-open: var(--tds-blue-800);
+  --tds-header--basic-element-background-open: var(--tds-grey-750);
   --tds-header--basic-element-background-hover: var(--tds-blue-800);
   --tds-header--basic-element-background-selected: var(--tds-blue-800);
 
@@ -200,7 +210,7 @@
   --tds-header-avatar-item-btn-background: var(--tds-grey-800);
 
   // /* App Launcher */
-  --tds-header-app-launcher-menu-background: var(--tds-grey-800);
+  --tds-header-app-launcher-menu-background: var(--tds-grey-750);
   --tds-header-app-launcher-btn-background: var(--tds-grey-800);
   --tds-header-app-launcher-btn-color: var(--tds-white);
   --tds-header-app-launcher-open-btn-color: var(--tds-white);
