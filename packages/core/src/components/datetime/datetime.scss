@@ -1,4 +1,5 @@
 @import '../../mixins/box-sizing';
+@import '../../mixins/focus-state';
 
 @mixin datetime-base {
   @include tds-box-sizing;
@@ -13,23 +14,10 @@
   color: var(--tds-datetime-color);
   background-color: var(--tds-datetime-background);
 
-  &::placeholder {
-    opacity: 1;
-    color: var(--tds-datetime-placeholder);
-  }
-
-  &:focus::placeholder {
-    color: var(--tds-datetime-placeholder-color-focus);
-  }
-
   &:disabled {
     background-color: var(--tds-datetime-background-disabled);
     color: var(--tds-datetime-color-disabled);
     cursor: not-allowed;
-
-    &::placeholder {
-      color: var(--tds-datetime-placeholder-disabled);
-    }
 
     ~ .tds-datetime-label-inside {
       color: var(--tds-datetime-label-disabled);
@@ -38,10 +26,17 @@
 }
 
 // icons
-
 .tds-datetime-input,
 .tds-datetime-input-md,
 .tds-datetime-input-sm {
+  // only apply styling if browser supports
+  @supports selector(input::-webkit-datetime-edit) {
+    // placeholder text
+    &:not(:focus)::-webkit-datetime-edit {
+      color: var(--tds-datetime-placeholder-color);
+    }
+  }
+
   &[type='datetime-local'] {
     ~ .icon-time {
       display: none;
@@ -159,22 +154,6 @@
   }
 }
 
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  //Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--tds-datetime-placeholder-color-focus);
-  }
-}
-
 @mixin label-inside-transition {
   transition: 0.1s ease all;
 }
@@ -200,8 +179,6 @@
     ~ .tds-datetime-label-inside {
       top: 20px;
     }
-
-    @include placeholder-label;
   }
 
   .tds-datetime-input-md {
@@ -211,8 +188,6 @@
     ~ .tds-datetime-label-inside {
       top: 16px;
     }
-
-    @include placeholder-label;
   }
 
   .tds-datetime-input-sm {
@@ -222,8 +197,6 @@
     ~ .tds-datetime-label-inside {
       top: 16px;
     }
-
-    @include placeholder-label;
   }
 
   .tds-datetime-input-sm ~ .tds-datetime-label-inside {
@@ -251,41 +224,17 @@
   }
 }
 
-//Datetime bottom bar when in focus
-.tds-datetime-bar {
-  position: absolute;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    height: 2px;
-    top: 54px;
-    width: 0;
-    position: absolute;
-    background: var(--tds-datetime-bar);
-    transition: 0.35s ease all;
-
-    .tds-form-datetime-md & {
-      top: 46px;
-    }
-
-    .tds-form-datetime-sm & {
-      top: 40px;
-    }
+// Focus
+.tds-datetime-focus {
+  .tds-datetime-input,
+  .tds-datetime-input-md,
+  .tds-datetime-input-sm {
+    border-radius: 0;
+    @include tds-focus-state-inset;
   }
 
-  &::before {
-    left: 50%;
-  }
-
-  &::after {
-    right: 50%;
-  }
-
-  .tds-datetime-focus &::before,
-  .tds-datetime-focus &::after {
-    width: 50%;
+  .tds-datetime-container {
+    border-bottom: none;
   }
 }
 
@@ -320,6 +269,10 @@
     color: var(--tds-datetime-label-disabled);
     cursor: not-allowed;
   }
+
+  .tds-datetime-helper {
+    color: var(--tds-datetime-helper-disabled);
+  }
 }
 
 //Success state
@@ -327,13 +280,6 @@
   .tds-datetime-container {
     border-bottom-color: var(--tds-datetime-border-bottom-success);
     color: var(--tds-datetime-color-success);
-  }
-
-  .tds-datetime-bar {
-    &::before,
-    &::after {
-      background: var(--tds-datetime-bar-sucess);
-    }
   }
 }
 
@@ -345,19 +291,6 @@
 
   .tds-datetime-container {
     border-bottom-color: var(--tds-datetime-border-bottom-error);
-  }
-
-  .tds-datetime-bar {
-    &::before,
-    &::after {
-      background: var(--tds-datetime-bar-error);
-    }
-  }
-
-  .datetime-icon {
-    tds-icon {
-      color: var(--tds-datetime-icon-error);
-    }
   }
 }
 

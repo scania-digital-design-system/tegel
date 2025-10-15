@@ -5,6 +5,14 @@
 .tds-accordion-item {
   @include tds-box-sizing;
 
+  &:hover {
+    background-color: var(--tds-accordion-background-hover);
+    border-bottom: 1px solid var(--tds-accordion-border-hover);
+    border-top: 1px solid var(--tds-accordion-border-hover);
+    margin-bottom: -1px;
+    z-index: 1;
+  }
+
   list-style: none;
   color: var(--tds-accordion-color);
   position: relative;
@@ -129,54 +137,13 @@
   border-top: 1px solid var(--tds-accordion-border);
 
   // Apply focus ring to the whole item when header is focused via keyboard
-  &:has(.tds-accordion-header-icon-start:focus-visible),
-  &:has(.tds-accordion-header-icon-end:focus-visible) {
+  &:has(:focus-visible) {
     @include tds-focus-state;
 
-    background-color: var(--tds-accordion-background-focus);
-    margin-bottom: -1px;
-    border-bottom: 1px solid var(--tds-accordion-border);
-
-    &:hover {
-      background-color: var(--tds-accordion-background-hover);
-    }
-
-    &:active {
-      background-color: var(--tds-accordion-background-active);
-    }
+    z-index: 2;
   }
 
   &[disabled='true']:focus-visible {
     border-color: var(--tds-accordion-border);
   }
-}
-
-:host(:hover) {
-  .tds-accordion-header-icon-start,
-  .tds-accordion-header-icon-end {
-    background-color: var(--tds-accordion-background-hover);
-  }
-}
-
-.tds-accordion-item:has(:hover) {
-  background-color: var(--tds-accordion-background-hover);
-}
-
-.tds-accordion-item:has(.tds-accordion-header-icon-start:active),
-.tds-accordion-item:has(.tds-accordion-header-icon-end:active) {
-  background-color: var(--tds-accordion-background-active);
-}
-
-:host(:hover)
-.tds-accordion-item:has(.tds-accordion-header-icon-start:active)
-.tds-accordion-header-icon-start,
-:host(:hover)
-.tds-accordion-item:has(.tds-accordion-header-icon-end:active)
-.tds-accordion-header-icon-end {
-  background-color: var(--tds-accordion-background-active);
-}
-
-.tds-accordion-header-icon-start:active,
-.tds-accordion-header-icon-end:active {
-  outline: none;
 }

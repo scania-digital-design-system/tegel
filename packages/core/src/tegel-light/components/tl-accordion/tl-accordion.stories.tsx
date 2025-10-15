@@ -71,25 +71,24 @@ export default {
 
 const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastBorder }) => {
   const modeVariantClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-accordion--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
+    modeVariant !== 'Inherit from parent' ? `tl-accordion--${modeVariant.toLowerCase()}` : '';
   const hideLastBorderClass = hideLastBorder ? 'tl-accordion--hide-last-border' : '';
   const iconPositionClass =
-    iconPosition === 'start' ? 'tl-accordion-item--icon-start' : 'tl-accordion-item--icon-end';
-  const disabledClass = disabled ? 'tl-accordion-item--disabled' : '';
-  const paddingResetClass = paddingReset ? 'tl-accordion__panel--padding-reset' : '';
-  const expandedClass = 'tl-accordion-item--expanded';
+    iconPosition === 'start' ? 'tl-accordion__item--icon-start' : 'tl-accordion__item--icon-end';
+  const disabledClass = disabled ? 'tl-accordion__item--disabled' : '';
+  const paddingClass = paddingReset ? 'tl-accordion__panel--less-padding' : '';
+  const expandedClass = 'tl-accordion__item--expanded';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets: 
+    "@scania/tegel-light/global.css"
     "@scania/tegel-light/tl-accordion.css"
     "@scania/tegel-light/tl-icon.css"
     -->
     
     <div style="width: 100%; margin: 0 auto;">
       <div class="tl-accordion ${modeVariantClass} ${hideLastBorderClass}">
-        <div class="tl-accordion-item ${iconPositionClass} ${disabledClass}">
+        <div class="tl-accordion__item ${iconPositionClass} ${disabledClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
             ${
               iconPosition === 'start'
@@ -103,13 +102,13 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
                 : ''
             }
           </button>
-          <div class="tl-accordion__panel ${paddingResetClass}">
+          <div class="tl-accordion__panel ${paddingClass}">
             This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
             Lorem ipsum doler sit amet.
           </div>
         </div>
         
-        <div class="tl-accordion-item ${iconPositionClass} ${disabledClass} ${expandedClass}">
+        <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${expandedClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
             ${
               iconPosition === 'start'
@@ -123,7 +122,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
                 : ''
             }
           </button>
-          <div class="tl-accordion__panel ${paddingResetClass}">
+          <div class="tl-accordion__panel ${paddingClass}">
             This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet vestibulum fermentum.
           </div>
@@ -135,7 +134,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
     <script>
       function setupAccordion() {
         try {
-          const accordionItems = document.querySelectorAll('.tl-accordion-item');
+          const accordionItems = document.querySelectorAll('.tl-accordion__item');
           
           accordionItems.forEach((item, index) => {
             const button = item.querySelector('button');
@@ -152,16 +151,16 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
               e.preventDefault();
               e.stopPropagation();
               
-              if (item.classList.contains('tl-accordion-item--disabled')) return;
+              if (item.classList.contains('tl-accordion__item--disabled')) return;
               
-              const isExpanded = item.classList.contains('tl-accordion-item--expanded');
+              const isExpanded = item.classList.contains('tl-accordion__item--expanded');
               
               if (isExpanded) {
-                item.classList.remove('tl-accordion-item--expanded');
+                item.classList.remove('tl-accordion__item--expanded');
                 panel.style.display = 'none';
                 icon.style.transform = 'rotate(0deg)';
               } else {
-                item.classList.add('tl-accordion-item--expanded');
+                item.classList.add('tl-accordion__item--expanded');
                 panel.style.display = 'block';
                 icon.style.transform = 'rotate(180deg)';
               }

@@ -77,7 +77,7 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
     <div class="tl-banner ${variantClass}">
       ${iconElement}
       <div class="tl-banner__content">
-        <div class="tl-banner__header-subheader">
+        <div class="tl-banner__text">
           ${header ? `<div class="tl-banner__header">${header}</div>` : ''}
           ${subheader ? `<div class="tl-banner__subheader">${subheader}</div>` : ''}
         </div>

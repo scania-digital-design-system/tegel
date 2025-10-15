@@ -1,0 +1,12 @@
+{
+  "extends": ["../../../../.stylelintrc.json"],
+  "rules": {
+    "selector-class-pattern": [
+      "^(tl-[a-z0-9]+(?:-[a-z0-9]+)*(?:__(?:[a-z0-9]+(?:-[a-z0-9]+)*))?(?:--[a-z0-9]+(?:-[a-z0-9]+)*)?)$",
+      {
+        "resolveNestedSelectors": true,
+        "message": "Use BEM: .tl-block, .tl-block__element, .tl-block--modifier"
+      }
+    ]
+  }
+}

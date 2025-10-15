@@ -57,7 +57,7 @@ const Template = () =>
   </tds-header>
   
   <main class="tds-u-w-100 tds-u-p3" style="box-sizing: border-box;">
-    <p>Find complete examples under the <a href="/?path=/story/patterns-navigation--basic">Patterns section</a>.</p>
+    <p>Find complete examples under the <a href="/?path=/story/patterns-navigation-basic--basic">Patterns section</a>.</p>
   </main>
   `,
   );
