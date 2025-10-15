@@ -382,7 +382,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "copy:assets": "node scripts/copy-assets.mjs",
-    "build-stencil:watch": "stencil build --docs-readme --watch",
+    "build-stencil:watch": "stencil build --watch",
     "commit": "npm run --prefix ../ commit",
     "start:storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build --quiet",
