@@ -54,7 +54,6 @@
     }
   }
 
-  /* Checked + disabled tweaks (scoped to element) */
   .tl-radiobutton--disabled & {
     &:checked + .tl-radiobutton__control {
       &::before {
@@ -96,7 +95,7 @@
     box-sizing: border-box;
   }
 
-  /* focus “pulse” background holder */
+  /* focus "pulse" background holder */
   &::before {
     inline-size: 22px;
     block-size: 22px;
