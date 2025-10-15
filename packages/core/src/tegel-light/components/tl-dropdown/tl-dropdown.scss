@@ -1,3 +1,152 @@
+
+.tl-dropdown__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--tds-dropdown-bg, #fff);
+  border: 1px solid var(--tds-dropdown-border-bottom, #ccc);
+  border-radius: var(--tds-dropdown-border-radius, 4px);
+  box-shadow: 0 2px 8px #0001;
+  max-height: 240px;
+  overflow-y: auto;
+  display: block;
+  width: 100%;
+}
+
+.tl-dropdown__list[style*="display: none"] {
+  display: none !important;
+}
+
+.tl-dropdown__option[aria-disabled="true"] {
+  color: var(--dropdown-option-disabled, #aaa);
+  cursor: not-allowed;
+  background: none;
+}
+
+// Tegel Light custom dropdown (button-based)
+.tl-dropdown__button {
+  @include detail-02;
+
+  width: 100%;
+  background: var(--tds-dropdown-bg);
+  color: var(--tds-dropdown-value-color);
+  border: none;
+  border-bottom: 1px solid var(--tds-dropdown-border-bottom);
+  border-radius: var(--tds-dropdown-border-radius);
+  box-shadow: none;
+  padding: 0 var(--tds-spacing-element-16);
+  padding-right: 40px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-bottom-color 0.2s;
+  position: relative;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+
+  .tl-icon--chevron_down {
+    position: absolute;
+    right: 16px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: 16px;
+    pointer-events: none;
+    transform: none;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.tl-dropdown--lg .tl-dropdown__button {
+  min-height: 56px;
+  font-size: 1rem;
+}
+
+.tl-dropdown--md .tl-dropdown__button {
+  min-height: 48px;
+  font-size: 0.9375rem;
+}
+
+.tl-dropdown--sm .tl-dropdown__button {
+  min-height: 40px;
+  font-size: 0.875rem;
+}
+
+.tl-dropdown__button:focus,
+.tl-dropdown__button:focus-visible {
+  border-bottom-color: var(--tds-dropdown-border-bottom-hover);
+}
+
+.tl-dropdown--error .tl-dropdown__button {
+  border-bottom-color: var(--tds-dropdown-error);
+}
+
+.tl-dropdown--disabled .tl-dropdown__button {
+  color: var(--tds-dropdown-disabled-color);
+  background: var(--tds-dropdown-bg);
+  border-bottom-color: transparent;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tl-dropdown__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: var(--tds-dropdown-bg, #fff);
+  border: 1px solid var(--tds-dropdown-border-bottom, #ccc);
+  border-radius: var(--tds-dropdown-border-radius, 4px);
+  box-shadow: 0 2px 8px #0001;
+  max-height: 240px;
+  overflow-y: auto;
+  display: block;
+}
+
+.tl-dropdown__option {
+  @include detail-02;
+
+  padding: 12px var(--tds-spacing-element-16);
+  cursor: pointer;
+  color: var(--tds-dropdown-value-color);
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.tl-dropdown__option:hover,
+.tl-dropdown__option:focus {
+  background: var(--dropdown-option-background-hover, #f3f3f3);
+}
+
+.tl-dropdown__option[aria-disabled="true"] {
+  color: var(--dropdown-option-disabled, #aaa);
+  cursor: not-allowed;
+  background: none;
+}
+
+.tl-dropdown__option[aria-selected="true"] {
+  background: var(--dropdown-option-background-selected, #e6f0fa);
+  color: var(--tds-dropdown-value-color);
+}
 @import './tl-dropdown_vars';
 @import '../tl-icon/tl-icon';
 @import '../../../../../../typography/mixins/type-styles';
