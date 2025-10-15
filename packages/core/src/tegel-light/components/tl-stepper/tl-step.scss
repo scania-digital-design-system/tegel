@@ -12,36 +12,19 @@
   position: relative;
   display: table-cell;
 
-  &:last-of-type {
-    .tl-stepper__content--horizontal {
-      padding-right: 0;
-    }
-
-    .tl-stepper__content--sm,
-    .tl-stepper__content--lg {
-      &::after {
-        display: none;
-      }
-    }
-
-    .tl-stepper__content--sm.tl-stepper__content--vertical {
-      &::before {
-        display: none;
-      }
-    }
+  .tl-stepper--horizontal:not(.tl-stepper--label-aside) .tl-stepper__list > & {
+    flex: 1 1 0;
+    min-inline-size: 0;
   }
 
-  &:first-of-type {
-    .tl-stepper__content--horizontal {
-      padding-left: 0;
-    }
+  .tl-stepper--horizontal.tl-stepper--label-aside .tl-stepper__list > & {
+    display: flex;
+    flex: 0 0 auto;
+    min-inline-size: auto;
+  }
 
-    .tl-stepper__content--sm,
-    .tl-stepper__content--lg {
-      &::before {
-        display: none;
-      }
-    }
+  .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels .tl-stepper__list > & {
+    min-inline-size: 0;
   }
 }
 
@@ -59,16 +42,52 @@
   &--lg {
     padding: 0 20px;
     @include detail-01;
+  }
 
-    .tl-stepper__node {
-      height: 30px;
-      min-width: 30px;
+  &--sm {
+    padding: 0 20px;
+    @include detail-05;
+  }
+
+  .tl-stepper__step:last-of-type &--horizontal {
+    padding-right: 0;
+  }
+
+  .tl-stepper__step:last-of-type &--sm,
+  .tl-stepper__step:last-of-type &--lg {
+    &::after {
+      display: none;
+    }
+  }
+
+  .tl-stepper__step:last-of-type &--sm.tl-stepper__content--vertical {
+    &::before {
+      display: none;
+    }
+  }
+
+  .tl-stepper__step:first-of-type &--horizontal {
+    padding-left: 0;
+  }
+
+  .tl-stepper__step:first-of-type &--sm,
+  .tl-stepper__step:first-of-type &--lg {
+    &::before {
+      display: none;
+    }
+  }
+
+  &--lg {
+    &::after {
+      @include divider;
+    }
+
+    &::before {
+      @include divider;
     }
 
     &.tl-stepper__content--vertical {
       &::after {
-        @include divider;
-
         height: 36px;
         width: 1px;
         top: 40px;
@@ -78,8 +97,6 @@
 
     &.tl-stepper__content--horizontal {
       &::after {
-        @include divider;
-
         height: 1px;
         left: calc(50% + 24px);
         right: 0;
@@ -87,8 +104,6 @@
       }
 
       &::before {
-        @include divider;
-
         height: 1px;
         right: calc(50% + 24px);
         left: 0;
@@ -98,8 +113,6 @@
       &.tl-stepper__content--text-aside {
         &:not(.tl-stepper__content--hide-labels) {
           &::after {
-            @include divider;
-
             height: 1px;
             top: 16px;
             width: 10px;
@@ -108,8 +121,6 @@
           }
 
           &::before {
-            @include divider;
-
             height: 1px;
             top: 16px;
             width: 10px;
@@ -122,25 +133,6 @@
   }
 
   &--sm {
-    padding: 0 20px;
-    @include detail-05;
-
-    .tl-stepper__index-container {
-      vertical-align: -webkit-baseline-middle;
-      vertical-align: -moz-middle-with-baseline;
-    }
-
-    .tl-stepper__node {
-      height: 24px;
-      min-width: 24px;
-    }
-
-    .tl-icon {
-      vertical-align: -webkit-baseline-middle;
-      vertical-align: -moz-middle-with-baseline;
-      margin-top: -2px;
-    }
-
     &.tl-stepper__content--vertical {
       &::after {
         @include divider;
@@ -205,58 +197,81 @@
       }
     }
   }
+}
 
-  .tl-stepper__node {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 100px;
-    border-width: 1px;
-    border-style: solid;
-    text-align: center;
-    position: relative;
+.tl-stepper__node {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 100px;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+  position: relative;
 
-    &--error {
-      border-color: var(--stepper-icon-step-border-warning);
-      color: var(--stepper-icon-step-border-warning);
-    }
-
-    &--success {
-      background-color: var(--stepper-icon-step-border-success);
-      border-color: var(--stepper-icon-step-border-success);
-      color: var(--stepper-icon-step-checkmark);
-    }
-
-    &--current {
-      color: var(--stepper-current-number-with-border);
-    }
-
-    &--upcoming {
-      border-color: var(--stepper-label-border-upcoming);
-      color: var(--stepper-label-text-upcoming);
-    }
+  &--error {
+    border-color: var(--stepper-icon-step-border-warning);
+    color: var(--stepper-icon-step-border-warning);
   }
 
-  .tl-stepper__label {
-    text-align: center;
+  &--success {
+    background-color: var(--stepper-icon-step-border-success);
+    border-color: var(--stepper-icon-step-border-success);
+    color: var(--stepper-icon-step-checkmark);
+  }
 
-    &--lg {
-      @include detail-01;
-    }
+  &--current {
+    color: var(--stepper-current-number-with-border);
+  }
 
-    &--sm {
-      @include detail-05;
-    }
+  &--upcoming {
+    border-color: var(--stepper-label-border-upcoming);
+    color: var(--stepper-label-text-upcoming);
+  }
 
-    &--upcoming {
-      color: var(--stepper-label-text-upcoming);
-      opacity: var(--tds-stepper-label-text-opacity-upcoming);
-    }
+  .tl-stepper__content--lg & {
+    height: 30px;
+    min-width: 30px;
+  }
+
+  .tl-stepper__content--sm & {
+    height: 24px;
+    min-width: 24px;
   }
 }
 
-.tl-stepper--hide-labels {
-  .tl-stepper__label {
+.tl-stepper__index-container {
+  .tl-stepper__content--sm & {
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: -moz-middle-with-baseline;
+  }
+}
+
+.tl-icon {
+  .tl-stepper__content--sm & {
+    vertical-align: -webkit-baseline-middle;
+    vertical-align: -moz-middle-with-baseline;
+    margin-top: -2px;
+  }
+}
+
+.tl-stepper__label {
+  text-align: center;
+
+  &--lg {
+    @include detail-01;
+  }
+
+  &--sm {
+    @include detail-05;
+  }
+
+  &--upcoming {
+    color: var(--stepper-label-text-upcoming);
+    opacity: var(--tds-stepper-label-text-opacity-upcoming);
+  }
+
+  .tl-stepper--hide-labels & {
     position: absolute;
     inline-size: 1px;
     block-size: 1px;
@@ -267,22 +282,5 @@
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     white-space: nowrap;
-  }
-
-  &--hide-labels {
-    gap: 0;
-
-    .tl-stepper__label {
-      position: absolute;
-      inline-size: 1px;
-      block-size: 1px;
-      margin: -1px;
-      padding: 0;
-      border: 0;
-      overflow: hidden;
-      clip: rect(0 0 0 0);
-      clip-path: inset(50%);
-      white-space: nowrap;
-    }
   }
 }
