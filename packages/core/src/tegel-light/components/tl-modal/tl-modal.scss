@@ -93,16 +93,6 @@ $modals: (
     overflow: hidden;
     display: flex;
     flex-direction: column;
-
-    .tl-modal__body {
-      max-height: calc(#{$modal-max-height} - #{$modal-actions-height});
-      overflow-y: auto;
-    }
-
-    .tl-modal__actions {
-      position: sticky;
-      bottom: 0;
-    }
   }
 }
 
@@ -148,6 +138,11 @@ $modals: (
   color: var(--modal-text);
   padding: 0 16px 16px;
   @include modal-scrollbar;
+
+  .tl-modal--sticky & {
+    max-height: calc(#{$modal-max-height} - #{$modal-actions-height});
+    overflow-y: auto;
+  }
 }
 
 .tl-modal__actions {
@@ -155,6 +150,11 @@ $modals: (
   padding: 24px 16px 16px;
   display: flex;
   gap: 16px;
+
+  .tl-modal--sticky & {
+    position: sticky;
+    bottom: 0;
+  }
 }
 
 .tl-modal__close {
@@ -186,7 +186,7 @@ $modals: (
   z-index: 1000;
   display: none;
 
-  &.tl-modal--show {
+  .tl-modal--show & {
     display: block;
   }
 }
