@@ -11,6 +11,28 @@
   &--no-min-width {
     min-width: auto;
   }
+
+  &--label-inside {
+    @include focus-input-state {
+      @include detail-07;
+
+      transition: 0.1s ease all;
+    }
+
+    // Size-specific positioning when focused or has content
+    &.tl-text-field--lg {
+      @include focus-input-state {
+        top: 9px;
+      }
+    }
+
+    &.tl-text-field--md,
+    &.tl-text-field--sm {
+      @include focus-input-state {
+        top: 8px;
+      }
+    }
+  }
 }
 
 // Elements
@@ -109,27 +131,6 @@
   left: var(--text-field-label-inside-left, 16px);
   transition: all 0.1s ease;
   z-index: 1;
-
-  .tl-text-field--label-inside & {
-    @include focus-input-state {
-      @include detail-07;
-
-      transition: 0.1s ease all;
-    }
-  }
-
-  .tl-text-field--label-inside.tl-text-field--lg & {
-    @include focus-input-state {
-      top: 9px;
-    }
-  }
-
-  .tl-text-field--label-inside.tl-text-field--md &,
-  .tl-text-field--label-inside.tl-text-field--sm & {
-    @include focus-input-state {
-      top: 8px;
-    }
-  }
 }
 
 .tl-text-field__bar {

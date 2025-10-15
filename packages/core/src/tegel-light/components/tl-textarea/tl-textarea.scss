@@ -10,6 +10,19 @@
   &--no-min-width {
     min-width: auto;
   }
+
+  &--label-inside {
+    @include focus-input-state {
+      @include detail-07;
+
+      transition: 0.1s ease all;
+    }
+
+    // Size-specific positioning when focused or has content
+    @include focus-input-state {
+      top: 8px;
+    }
+  }
 }
 
 // Elements
@@ -316,21 +329,5 @@ svg {
     display: block;
     width: 100%;
     height: 100%;
-  }
-}
-
-.tl-textarea__label-inside {
-  .tl-textarea--label-inside & {
-    @include focus-input-state {
-      @include detail-07;
-
-      transition: 0.1s ease all;
-    }
-  }
-
-  .tl-textarea--label-inside & {
-    @include focus-input-state {
-      top: 8px;
-    }
   }
 }
