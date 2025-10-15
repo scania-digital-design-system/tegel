@@ -45,10 +45,10 @@ export default {
       control: { type: 'radio' },
       options: ['Outside', 'Inside', 'No label'],
     },
-    fieldType: {
-      name: 'Field type',
+    elementType: {
+      name: 'Element type',
       control: { type: 'radio' },
-      options: ['Custom input', 'Native select'],
+      options: ['Button', 'Select'],
     },
   },
   args: {
@@ -61,7 +61,7 @@ export default {
     error: false,
     size: 'Large',
     labelPlacement: 'Outside',
-    fieldType: 'Custom input',
+    elementType: 'Button',
   },
 };
 
@@ -75,7 +75,7 @@ const Template = ({
   error,
   size,
   labelPlacement,
-  fieldType,
+  elementType,
 }) => {
   const normalizedSize =
     {
@@ -86,7 +86,7 @@ const Template = ({
   const isLabelInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const hasInitialPlaceholder = isLabelInside || Boolean(placeholder);
-  const useNativeSelect = fieldType === 'Native select';
+  const useNativeSelect = elementType === 'Select';
 
   const classes = [
     'tl-dropdown',
@@ -140,14 +140,18 @@ const Template = ({
   }
 
   const fieldClass = useNativeSelect ? 'tl-dropdown__select' : 'tl-dropdown__input';
-  const fieldMarkup = `<select class="${fieldClass}" ${selectAttributes}>
-          ${placeholderOption}
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-          <option value="4">Option 4</option>
-          <option value="5">Option 5</option>
-        </select>`;
+  const fieldMarkup = `
+    <div style="position: relative; display: flex; align-items: center;">
+      <select class="${fieldClass}" ${selectAttributes} style="width: 100%;">
+        ${placeholderOption}
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </select>
+      <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true" style="position: absolute; right: 12px; pointer-events: none;"></span>
+    </div>`;
 
   const barMarkup = '<div class="tl-dropdown__bar"></div>';
 
