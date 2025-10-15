@@ -31,17 +31,6 @@
   }
 
   &--current {
-    .tl-breadcrumbs__breadcrumb-link {
-      pointer-events: none;
-      cursor: default;
-      color: var(--breadcrumb-current);
-
-      &:hover {
-        text-decoration: none;
-        cursor: not-allowed;
-      }
-    }
-
     &::after {
       display: none;
     }
@@ -62,5 +51,16 @@
 
   &:focus-visible {
     @include tds-focus-state;
+  }
+
+  .tl-breadcrumbs__breadcrumb--current & {
+    pointer-events: none;
+    cursor: default;
+    color: var(--breadcrumb-current);
+
+    &:hover {
+      text-decoration: none;
+      cursor: not-allowed;
+    }
   }
 }
