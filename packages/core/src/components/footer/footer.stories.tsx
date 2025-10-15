@@ -44,9 +44,9 @@ export default {
         type: 'boolean',
       },
     },
-    endSlot: {
-      name: 'End slot',
-      description: 'Adds content to the end slot of the Footer (social media links).',
+    extraLinks: {
+      name: 'Extra links',
+      description: 'Adds more links to the top slot of the Footer in the Storybook example.',
       control: {
         type: 'boolean',
       },
@@ -57,10 +57,11 @@ export default {
     topSlot: true,
     startSlot: true,
     endSlot: true,
+    extraLinks: false,
   },
 };
 
-const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
+const Template = ({ topSlot, startSlot, endSlot, modeVariant, extraLinks }) =>
   formatHtmlPreview(
     `
     <main>
@@ -128,6 +129,69 @@ const Template = ({ topSlot, startSlot, endSlot, modeVariant }) =>
             <a href="#"> Link text</a>
           </tds-footer-item>
         </tds-footer-group>
+
+
+        ${
+          extraLinks
+            ? `
+        <tds-footer-group tds-list-aria-label="Links 5">
+          <h6 slot="title">Title 5</h6>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+        </tds-footer-group>
+
+        <tds-footer-group tds-list-aria-label="Links 6">
+          <h6 slot="title">Title 6</h6>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+        </tds-footer-group>
+
+        <tds-footer-group tds-list-aria-label="Links 7">
+          <h6 slot="title">Title 7</h6>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+        </tds-footer-group>
+
+        <tds-footer-group tds-list-aria-label="Links 8">
+          <h6 slot="title">Title 8</h6>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+          <tds-footer-item >
+            <a href="#"> Link text</a>
+          </tds-footer-item>
+        </tds-footer-group>`
+            : ''
+        }
+
+
+
+
+
       </div>
       `
           : ''

@@ -33,8 +33,6 @@
     }
 
     &.expanded {
-      border-bottom: none;
-
       tds-icon {
         transform: rotateZ(180deg);
       }
@@ -62,7 +60,7 @@
     padding: 0;
     margin: 0;
     display: flex;
-    gap: 8px;
+    gap: 12px;
 
     &.start,
     &.end {

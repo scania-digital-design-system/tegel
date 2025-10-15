@@ -46,10 +46,10 @@
       font-weight: normal;
     }
 
-    ::slotted(a:hover),
-    ::slotted(button:hover) {
+    ::slotted(a:active),
+    ::slotted(button:active) {
       text-decoration: underline;
-      background-color: var(--tds-footer-top-links-background-hover);
+      background-color: var(--tds-footer-top-links-background-active);
     }
 
     ::slotted(a:focus-visible),
