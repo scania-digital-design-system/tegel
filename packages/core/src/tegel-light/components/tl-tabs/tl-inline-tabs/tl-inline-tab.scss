@@ -8,11 +8,6 @@
   position: relative;
 }
 
-.tl-inline-tabs__tab-item:not(.tl-inline-tabs__tab-item--selected)::after {
-  width: 0%;
-  transition: width 0.15s ease-in-out 0s;
-}
-
 .tl-inline-tabs__tab-item {
   all: unset;
   margin-right: 32px;
@@ -54,6 +49,11 @@
     margin-right: auto;
     height: 2px;
     z-index: 1;
+    transition: width 0.15s ease-in-out 0s;
+  }
+
+  &:not(&--selected)::after {
+    width: 0%;
   }
 
   &:hover {
