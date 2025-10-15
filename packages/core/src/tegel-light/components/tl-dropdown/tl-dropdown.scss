@@ -16,27 +16,27 @@
   --dropdown-icon-size: 16px;
 
   // Chevron icon rendered via CSS mask to avoid extra markup
-  &::after {
-    content: '';
-    position: absolute;
-    inset-block-start: 50%;
-    inset-inline-end: var(--tds-spacing-element-16);
-    width: var(--dropdown-icon-size);
-    height: var(--dropdown-icon-size);
-    pointer-events: none;
-    transform: translateY(var(--dropdown-chevron-offset));
-    background-color: var(--dropdown-icon);
-    mask-image: var(--icon-chevron_down-svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
-    /* stylelint-disable property-no-vendor-prefix */
-    -webkit-mask-image: var(--icon-chevron_down-svg);
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: contain;
-    /* stylelint-enable property-no-vendor-prefix */
-  }
+  // &::after {
+  //   content: '';
+  //   position: absolute;
+  //   inset-block-start: 50%;
+  //   inset-inline-end: var(--tds-spacing-element-16);
+  //   width: var(--dropdown-icon-size);
+  //   height: var(--dropdown-icon-size);
+  //   pointer-events: none;
+  //   transform: translateY(var(--dropdown-chevron-offset));
+  //   background-color: var(--dropdown-icon);
+  //   mask-image: var(--icon-chevron_down-svg);
+  //   mask-repeat: no-repeat;
+  //   mask-position: center;
+  //   mask-size: contain;
+  //   /* stylelint-disable property-no-vendor-prefix */
+  //   -webkit-mask-image: var(--icon-chevron_down-svg);
+  //   -webkit-mask-repeat: no-repeat;
+  //   -webkit-mask-position: center;
+  //   -webkit-mask-size: contain;
+  //   /* stylelint-enable property-no-vendor-prefix */
+  // }
 
   // Size modifiers handled within element blocks
 }
@@ -59,14 +59,158 @@
 .tl-dropdown--disabled {
   pointer-events: none;
 
-  --dropdown-text: var(--color-foreground-text-disabled);
-  --dropdown-helper-text: var(--color-foreground-text-disabled);
-  --dropdown-placeholder: var(--color-foreground-text-disabled);
-  --dropdown-icon: var(--color-foreground-icon-disabled);
+  --dropdown-text: var(--tds-dropdown-disabled-color);
+  --dropdown-helper-text: var(--tds-dropdown-disabled-color);
+  --dropdown-placeholder: var(--tds-dropdown-disabled-color);
+  --dropdown-icon: var(--tds-dropdown-disabled-color);
   --dropdown-bar-color: transparent;
   --dropdown-bar-base-color: var(--color-foreground-border-soft);
   --dropdown-border: var(--dropdown-border-disabled);
   --dropdown-border-hover: var(--dropdown-border-disabled);
+}
+
+/* TDS-like appearance modifier: boxed input like the webcomponent tds-dropdown */
+.tl-dropdown--tds {
+  --dropdown-bar-color: transparent;
+  --dropdown-bar-base-color: transparent;
+
+  /* Use a full rectangle border instead of underline */
+  --dropdown-border: 0 0 0 1px var(--tds-dropdown-border-bottom);
+  --dropdown-border-hover: 0 0 0 1px var(--tds-dropdown-border-bottom-hover);
+  --dropdown-border-focus: 0 0 0 2px var(--dropdown-bar-color);
+  --dropdown-border-active: 0 0 0 1px var(--tds-dropdown-border-bottom-hover);
+
+  /* Slightly more rounded for boxed appearance */
+  --dropdown-border-radius: var(--tds-dropdown-border-radius);
+
+  /* Shift chevron vertically to center inside box */
+  --dropdown-chevron-offset: calc(-50%);
+
+  /* Ensure icon color matches token */
+  --dropdown-icon: var(--tds-dropdown-menu-icon-color);
+
+  /* Hide the CSS-generated chevron icon for the TDS boxed variant (we render an icon element instead) */
+  &::after {
+    display: none;
+  }
+
+  /* Extra safety: if a .menu-icon or an input exists inside the dropdown, hide the CSS chevron */
+  &.tl-dropdown--tds::after,
+  &:has(.menu-icon)::after,
+  &:has(input)::after {
+    display: none !important;
+  }
+
+  .tl-dropdown__bar::before,
+  .tl-dropdown__bar::after {
+    display: none;
+  }
+
+  /* Field adjustments for boxed look */
+
+  /* Make the .filter wrapper the visible box so icons can sit inside it */
+  .filter {
+    background-color: var(--tds-dropdown-bg);
+    border: none;
+    box-shadow: var(--dropdown-border);
+    border-radius: var(--dropdown-border-radius);
+    min-height: 48px;
+    height: auto;
+    padding-inline-start: var(--tds-spacing-element-16);
+    padding-inline-end: calc(
+      var(--tds-spacing-element-16) + var(--dropdown-icon-size) + var(--tds-spacing-element-8)
+    );
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Value wrapper should fill the left area and not include the icon padding */
+  .filter .value-wrapper {
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Input inside the value-wrapper should be transparent and full width */
+  .value-wrapper input {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    line-height: normal !important;
+  }
+
+  &.tl-dropdown--label-inside :is(.tl-dropdown__input, .tl-dropdown__select) {
+    padding-top: calc(var(--tds-spacing-element-12));
+  }
+
+  &:has(:is(.tl-dropdown__input, .tl-dropdown__select):focus):not(.tl-dropdown--disabled)
+  :is(.tl-dropdown__input, .tl-dropdown__select) {
+    box-shadow: var(--dropdown-border-focus);
+  }
+
+  /* Icon & filter layout: position icons inside the field to the right */
+  .filter {
+    position: relative;
+    display: block;
+  }
+
+  .filter .value-wrapper {
+    /* ensure input/value takes full width but leaves room for icons */
+    padding-right: calc(var(--dropdown-icon-size) * 2 + var(--tds-spacing-element-24));
+    display: flex;
+    align-items: center;
+  }
+
+  /* tds-icon elements inside the .filter should be absolutely positioned */
+  .filter tds-icon.menu-icon {
+    position: absolute !important;
+    right: var(--tds-spacing-element-16) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: var(--tds-dropdown-menu-icon-color) !important;
+    pointer-events: auto !important;
+    z-index: 3 !important;
+    width: var(--dropdown-icon-size) !important;
+    height: var(--dropdown-icon-size) !important;
+    display: block !important;
+  }
+
+  .filter tds-icon.clear-icon {
+    position: absolute !important;
+
+    /* place to the left of the menu icon */
+    right: calc(
+      var(--tds-spacing-element-16) + var(--dropdown-icon-size) + var(--tds-spacing-element-8)
+    ) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: var(--tds-dropdown-clear-icon-color) !important;
+    pointer-events: auto !important;
+    z-index: 3 !important;
+    width: var(--dropdown-icon-size) !important;
+    height: var(--dropdown-icon-size) !important;
+    display: block !important;
+  }
+
+  /* Ensure the input fills the wrapper but doesn't overlap the icons */
+  .value-wrapper input,
+  .value-wrapper .placeholder,
+  .value-wrapper .placeholder * {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    z-index: 1 !important;
+  }
+
+  /* Make the filter wrapper show pointer to indicate dropdown behaviour; keep caret for text input on focus */
+  .filter {
+    cursor: pointer;
+  }
 }
 
 .tl-dropdown--error:not(.tl-dropdown--disabled) {
@@ -153,16 +297,18 @@
 
   width: 100%;
   appearance: none;
-  background-color: var(--dropdown-background);
-  color: var(--dropdown-text);
+  background-color: var(--tds-dropdown-bg);
+  color: var(--tds-dropdown-value-color);
   border: none;
-  border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
+  border-bottom: 1px solid var(--tds-dropdown-border-bottom);
+  border-radius: var(--tds-dropdown-border-radius);
   box-shadow: none;
   min-height: 56px;
   height: 56px;
   line-height: 56px;
   padding: 0 var(--tds-spacing-element-16);
   padding-right: calc(var(--tds-spacing-element-16) + var(--dropdown-icon-size));
+  transition: border-bottom-color 0.2s ease;
 
   .tl-dropdown--lg.tl-dropdown--label-inside & {
     padding-top: var(--tds-spacing-element-24);
@@ -207,16 +353,32 @@
     line-height: 40px;
   }
 
+  &:hover {
+    border-bottom-color: var(--tds-dropdown-border-bottom-hover);
+  }
+
   &:focus,
   &:focus-visible {
     outline: none;
     box-shadow: none;
+    border-bottom-color: var(--tds-dropdown-border-bottom-hover);
   }
 
   &:disabled {
-    background-color: var(--dropdown-background);
-    color: var(--color-foreground-text-disabled);
+    background-color: var(--tds-dropdown-bg);
+    color: var(--tds-dropdown-disabled-color);
+    border-bottom-color: transparent;
     cursor: not-allowed;
+  }
+
+  .tl-dropdown--error & {
+    border-bottom-color: var(--tds-dropdown-error);
+  }
+
+  .tl-dropdown--disabled & {
+    color: var(--tds-dropdown-disabled-color);
+    border-bottom-color: transparent;
+    pointer-events: none;
   }
 
   //  Option styling reference (works on some browsers, e.g. Windows Chromium/Firefox)
@@ -253,11 +415,25 @@
   &::placeholder {
     color: var(--dropdown-placeholder);
   }
+
+  /* The input as a whole should show pointer for dropdown behaviour; when focused, caret appears */
+  cursor: pointer;
+
+  &:focus {
+    cursor: text;
+  }
 }
 
 // Native <select> aligned with custom styling
 .tl-dropdown__select {
   @extend %tl-dropdown-field;
+
+  cursor: pointer;
+}
+
+/* Also ensure the dropdown wrapper/button shows pointer */
+.tl-dropdown {
+  cursor: pointer;
 }
 
 // Focus state - animate underline when input is focused
