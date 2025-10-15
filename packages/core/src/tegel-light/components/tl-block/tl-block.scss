@@ -6,6 +6,11 @@
   @include tds-box-sizing;
   @include detail-01;
 
+  background-color: var(--block-background);
+  color: var(--block-text-color);
+  border-radius: var(--block-border-radius);
+  padding: var(--block-padding);
+
   h2 {
     @include headline-02;
   }
@@ -14,54 +19,50 @@
     @include body-01;
   }
 
-  background-color: var(--block-background);
-  color: var(--block-text-color);
-  border-radius: var(--block-border-radius);
-  padding: var(--block-padding);
-
-  // Mode variants
   &--primary {
     background-color: var(--block-background-mode-primary);
-
-    .tl-block--even {
-      background-color: var(--block-background-even);
-    }
-
-    .tl-block--odd {
-      background-color: var(--block-background-odd);
-    }
   }
 
   &--secondary {
     background-color: var(--block-background-mode-secondary);
+  }
 
-    .tl-block--even {
+  &--even {
+    .tl-block--primary & {
+      background-color: var(--block-background-even);
+    }
+
+    .tl-block--secondary & {
+      background-color: var(--block-background-odd);
+    }
+  }
+
+  &--odd {
+    .tl-block--primary & {
       background-color: var(--block-background-odd);
     }
 
-    .tl-block--odd {
+    .tl-block--secondary & {
       background-color: var(--block-background-even);
     }
   }
+}
 
-  // Nested block modifiers
-  &--nested {
-    h3 {
-      @include headline-04;
-    }
-
-    p {
-      @include detail-03;
-    }
+h3 {
+  .tl-block--nested & {
+    @include headline-04;
   }
+}
 
-  &--nested-inner {
-    h4 {
-      @include headline-06;
-    }
+h4 {
+  .tl-block--nested-inner & {
+    @include headline-06;
+  }
+}
 
-    p {
-      @include detail-03;
-    }
+p {
+  .tl-block--nested &,
+  .tl-block--nested-inner & {
+    @include detail-03;
   }
 }
