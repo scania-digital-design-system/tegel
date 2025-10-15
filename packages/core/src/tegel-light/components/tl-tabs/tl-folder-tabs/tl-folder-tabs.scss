@@ -40,10 +40,6 @@
   &:active {
     background-color: var(--folder-tabs-scroll-button-surface-active);
   }
-
-  svg {
-    fill: var(--folder-tabs-scroll-button-text);
-  }
 }
 
 /* left/right anchoring over the track */
@@ -55,4 +51,10 @@
 .tl-folder-tabs__scroll-btn--right {
   right: 0;
   z-index: 1;
+}
+
+svg {
+  .tl-folder-tabs__scroll-btn & {
+    fill: var(--folder-tabs-scroll-button-text);
+  }
 }

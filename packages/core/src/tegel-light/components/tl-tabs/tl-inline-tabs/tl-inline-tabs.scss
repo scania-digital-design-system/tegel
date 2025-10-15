@@ -44,10 +44,6 @@
   align-items: center;
   opacity: 1;
   position: sticky;
-
-  svg {
-    fill: var(--inline-tabs-scroll-button-text);
-  }
 }
 
 .tl-inline-tabs__scroll-btn--right {
@@ -58,4 +54,10 @@
 .tl-inline-tabs__scroll-btn--left {
   left: 0;
   z-index: 1;
+}
+
+svg {
+  .tl-inline-tabs__scroll-btn & {
+    fill: var(--inline-tabs-scroll-button-text);
+  }
 }
