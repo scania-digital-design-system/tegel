@@ -14,7 +14,10 @@ export class TdsFooterItem {
   private parentIsTopPart: boolean = false;
 
   connectedCallback() {
-    this.parentIsTopPart = this.host.closest('tds-footer-group').parentElement.slot === 'top';
+    const closestGroup = this.host.closest('tds-footer-group');
+    if (closestGroup) {
+      this.parentIsTopPart = closestGroup.parentElement?.slot === 'top';
+    }
   }
 
   render() {

@@ -58,7 +58,7 @@ export class TdsTextField {
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Mode variant of the Text Field */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Unset minimum width of 208px. */
   @Prop() noMinWidth: boolean = false;
@@ -144,7 +144,7 @@ export class TdsTextField {
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleFocus(event: FocusEvent): void {
-    this.textInput.focus();
+    this.textInput?.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
   }
@@ -204,7 +204,7 @@ export class TdsTextField {
             <label htmlFor={`text-field-input-element-${this.uuid}`}>{this.label}</label>
           </div>
         )}
-        <div onClick={() => this.textInput.focus()} class="text-field-container">
+        <div onClick={() => this.textInput?.focus()} class="text-field-container">
           {usesPrefixSlot && (
             <div
               class={{

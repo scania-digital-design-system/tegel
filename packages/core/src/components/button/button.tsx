@@ -33,7 +33,7 @@ export class TdsButton {
   @Prop() fullbleed: boolean = false;
 
   /** Set the mode variant of the Button. */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Determines if and how the button should animate. */
   @Prop() animation: 'none' | 'fade' = 'none';
@@ -52,14 +52,14 @@ export class TdsButton {
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Enter' && !this.disabled) {
-      this.host.querySelector('button').classList.add('active');
+      this.host.querySelector('button')?.classList.add('active');
     }
   }
 
   @Listen('keyup')
   handleKeyUp(event: KeyboardEvent) {
     if (event.key === 'Enter' && !this.disabled) {
-      this.host.querySelector('button').classList.remove('active');
+      this.host.querySelector('button')?.classList.remove('active');
     }
   }
 

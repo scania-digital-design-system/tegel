@@ -19,7 +19,7 @@ export class TdsCard {
   @Element() host: HTMLElement;
 
   /** Variant of the Card based on the theme used. */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Placement of the header */
   @Prop() imagePlacement: 'above-header' | 'below-header' = 'below-header';
@@ -128,7 +128,7 @@ export class TdsCard {
     const usesActionsSlot = hasSlot('actions', this.host);
     const bodyId = `body-${this.cardId}`;
     return (
-      <div class={this.stretch && 'stretch'} aria-describedby={usesBodySlot ? bodyId : null}>
+      <div class={{ 'stretch': this.stretch }} aria-describedby={usesBodySlot ? bodyId : null}>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
         <div class="card-body" id={bodyId}>
           {usesBodyImageSlot && <slot name="body-image"></slot>}
@@ -153,7 +153,7 @@ export class TdsCard {
     const ariaLabel = this.header ? this.header : `Card ${this.cardId}`;
 
     return (
-      <Host class={this.modeVariant && `tds-mode-variant-${this.modeVariant}`}>
+      <Host class={{ [`tds-mode-variant-${this.modeVariant}`]: !!this.modeVariant }}>
         {this.clickable ? (
           <button
             class={cardStyle}

@@ -88,7 +88,7 @@ export class TdsSideMenu {
   }
 
   componentDidLoad() {
-    const upperSlot = this.host.shadowRoot.querySelector('slot:not([name])') as HTMLSlotElement;
+    const upperSlot = this.host.shadowRoot?.querySelector('slot:not([name])') as HTMLSlotElement;
     const upperSlotElements = upperSlot.assignedElements();
     const hasUpperSlotElements = upperSlotElements?.length > 0;
 
@@ -149,15 +149,16 @@ export class TdsSideMenu {
     ].join(',');
 
     const focusableInShadowRoot = Array.from(
-      this.host.shadowRoot.querySelectorAll<HTMLElement>(focusableSelectors),
+      this.host.shadowRoot?.querySelectorAll<HTMLElement>(focusableSelectors) ?? [],
     );
     const focusableInSlots = Array.from(
       this.host.querySelectorAll<HTMLElement>(focusableSelectors),
     );
 
-    const closeBtn = this.host
-      .querySelector<HTMLElement>('[slot="close-button"]')
-      ?.shadowRoot.querySelector('button');
+    const slottedBtn = this.host.querySelector<HTMLElement>('[slot="close-button"]');
+    let closeBtn;
+
+    if (slottedBtn) closeBtn = slottedBtn.shadowRoot?.querySelector('button');
 
     let focusableElements = [...focusableInShadowRoot, ...focusableInSlots];
     if (closeBtn) focusableElements.push(closeBtn);

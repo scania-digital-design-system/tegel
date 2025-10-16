@@ -41,7 +41,7 @@ export class TdsPopoverCore {
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean = null;
+  @Prop() show: boolean = false;
 
   /** Decides the placement of the Popover Menu */
   @Prop() placement: Placement = 'auto';
@@ -216,7 +216,7 @@ export class TdsPopoverCore {
     referenceEl,
     trigger,
   }: {
-    referenceEl: HTMLElement | null;
+    referenceEl: HTMLElement | undefined | null;
     trigger: 'click' | 'hover' | 'hover-popover';
   }) {
     this.cleanUp();
@@ -248,9 +248,9 @@ export class TdsPopoverCore {
     }
 
     if (trigger === 'click' && this.show === null) {
-      this.target.addEventListener('click', this.onClickTarget);
+      this.target?.addEventListener('click', this.onClickTarget);
       // Also handle keyboard activation via Enter and Space
-      this.target.addEventListener('keydown', (e: KeyboardEvent) => {
+      this.target?.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           this.openedByKeyboard = true;
@@ -261,12 +261,12 @@ export class TdsPopoverCore {
 
     if (trigger === 'hover' || trigger === 'hover-popover') {
       // For tabbing over element
-      this.target.addEventListener('focusin', this.handleShow);
-      this.target.addEventListener('focusout', this.handleHide);
+      this.target?.addEventListener('focusin', this.handleShow);
+      this.target?.addEventListener('focusout', this.handleHide);
 
       // For hovering over element with selector
-      this.target.addEventListener('mouseenter', this.handleShow);
-      this.target.addEventListener('mouseleave', this.handleHide);
+      this.target?.addEventListener('mouseenter', this.handleShow);
+      this.target?.addEventListener('mouseleave', this.handleHide);
 
       // For hovering over Popover itself
       if (trigger === 'hover-popover') {
@@ -318,7 +318,7 @@ export class TdsPopoverCore {
     if (this.isShown && !this.renderedShowValue && !this.disableLogic) {
       // Here we update the popper position since its position is wrong
       // before it is rendered.
-      this.popperInstance.update();
+      this.popperInstance?.update();
     }
     this.renderedShowValue = this.isShown;
   }
