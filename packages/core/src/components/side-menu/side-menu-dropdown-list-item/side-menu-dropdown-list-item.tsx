@@ -21,7 +21,7 @@ export class TdsSideMenuDropdownListItem {
 
   @State() collapsed: boolean = false;
 
-  private sideMenuEl: HTMLTdsSideMenuElement;
+  private sideMenuEl: HTMLTdsSideMenuElement | null;
 
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })
   collapseSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {
@@ -30,17 +30,23 @@ export class TdsSideMenuDropdownListItem {
 
   connectedCallback() {
     this.sideMenuEl = this.host.closest('tds-side-menu');
-    this.collapsed = this.sideMenuEl?.collapsed;
+    this.collapsed = !!this.sideMenuEl?.collapsed;
   }
 
   componentDidLoad() {
     const dropdownEl = this.host.closest('tds-side-menu-dropdown');
-    const hasUserMenu = dropdownEl?.querySelector('tds-side-menu-user');
-    const dropdownBtnIconSlotEl = dropdownEl.shadowRoot.querySelector(
-      'slot[name="icon"]',
-    ) as HTMLSlotElement;
-    const btnIconSlottedEls = dropdownBtnIconSlotEl.assignedElements();
-    const hasBtnIcon = btnIconSlottedEls?.length > 0;
+    let hasUserMenu: HTMLTdsSideMenuUserElement | null = null;
+    let dropdownBtnIconSlotEl: HTMLSlotElement | null = null;
+
+    if (dropdownEl) {
+      hasUserMenu = dropdownEl.querySelector('tds-side-menu-user');
+      dropdownBtnIconSlotEl = dropdownEl.shadowRoot?.querySelector(
+        'slot[name="icon"]',
+      ) as HTMLSlotElement;
+    }
+
+    const btnIconSlottedEls = dropdownBtnIconSlotEl?.assignedElements();
+    const hasBtnIcon = btnIconSlottedEls ? btnIconSlottedEls?.length > 0 : false;
     const btnIconIsUserImage =
       btnIconSlottedEls?.[0]?.tagName.toLowerCase() === 'tds-side-menu-user-image';
 

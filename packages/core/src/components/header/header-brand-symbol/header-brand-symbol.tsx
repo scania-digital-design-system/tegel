@@ -14,7 +14,7 @@ export class TdsHeaderBrandSymbol {
   render() {
     const aTag = this.host.querySelector('a');
 
-    if (!aTag.hasAttribute('aria-label')) {
+    if (!aTag?.hasAttribute('aria-label')) {
       console.warn(
         'Tegel Header Brand Symbol component: missing aria-label attribute for <a> tag inside slot',
       );

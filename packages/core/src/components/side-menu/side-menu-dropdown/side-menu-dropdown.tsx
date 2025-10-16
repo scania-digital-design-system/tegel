@@ -31,7 +31,7 @@ export class TdsSideMenuDropdown {
 
   @State() collapsed: boolean = false;
 
-  private sideMenuEl: HTMLTdsSideMenuElement;
+  private sideMenuEl: HTMLTdsSideMenuElement | null;
 
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })
   collapsedSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {
@@ -86,7 +86,7 @@ export class TdsSideMenuDropdown {
 
   connectedCallback() {
     this.sideMenuEl = this.host.closest('tds-side-menu');
-    this.collapsed = this.sideMenuEl.collapsed;
+    this.collapsed = !!this.sideMenuEl?.collapsed;
     this.open = this.defaultOpen;
   }
 
@@ -125,7 +125,7 @@ export class TdsSideMenuDropdown {
               )}
             </button>
           </tds-side-menu-item>
-          <div class="menu" tabindex={this.collapsed ? '0' : null}>
+          <div class="menu" tabindex={this.collapsed ? '0' : undefined}>
             {this.collapsed && (
               <h3 class="heading-collapsed">
                 {this.buttonLabel}

@@ -72,7 +72,9 @@ export class TdsRadioButton {
     return (
       <div class="tds-radio-button">
         <input
-          ref={(inputEl) => (this.inputElement = inputEl)}
+          ref={(inputEl) => {
+            if (inputEl) this.inputElement = inputEl;
+          }}
           aria-label={this.tdsAriaLabel}
           class="tds-form-input"
           type="radio"

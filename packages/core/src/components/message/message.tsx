@@ -15,7 +15,7 @@ export class TdsMessage {
   @Prop() header: string;
 
   /** Variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Variant of Message. */
   @Prop() variant: 'information' | 'error' | 'warning' | 'success' = 'information';
