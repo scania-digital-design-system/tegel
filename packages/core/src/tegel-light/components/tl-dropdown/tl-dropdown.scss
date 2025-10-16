@@ -1,0 +1,329 @@
+@import './tl-dropdown_vars';
+@import '../tl-icon/tl-icon';
+@import '../../../../../../typography/mixins/type-styles';
+
+.tl-dropdown {
+  display: block;
+  min-width: 208px;
+  position: relative;
+
+  --dropdown-chevron-offset: calc(-50%);
+  --dropdown-bar-color: var(--color-foreground-border-accent-focus);
+  --dropdown-bar-base-color: var(--tds-grey-850);
+  --dropdown-label-top: 50%;
+  --dropdown-label-left: var(--tds-spacing-element-16);
+  --dropdown-label-transform: translateY(var(--dropdown-chevron-offset));
+  --dropdown-icon-size: 16px;
+
+  // Chevron icon rendered via CSS mask to avoid extra markup
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: var(--tds-spacing-element-16);
+    width: var(--dropdown-icon-size);
+    height: var(--dropdown-icon-size);
+    pointer-events: none;
+    transform: translateY(var(--dropdown-chevron-offset));
+    background-color: var(--dropdown-icon);
+    mask-image: var(--icon-chevron_down-svg);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    /* stylelint-disable property-no-vendor-prefix */
+    -webkit-mask-image: var(--icon-chevron_down-svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    /* stylelint-enable property-no-vendor-prefix */
+  }
+
+  // Size modifiers handled within element blocks
+}
+
+.tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
+:has(.tl-dropdown__helper)
+) {
+  --dropdown-chevron-offset: calc(-50% + 10px);
+}
+
+.tl-dropdown--no-label:has(.tl-dropdown__helper),
+.tl-dropdown--label-inside:has(.tl-dropdown__helper) {
+  --dropdown-chevron-offset: calc(-50% - 10px);
+}
+
+.tl-dropdown--no-min-width {
+  min-width: auto;
+}
+
+.tl-dropdown--disabled {
+  pointer-events: none;
+
+  --dropdown-text: var(--color-foreground-text-disabled);
+  --dropdown-helper-text: var(--color-foreground-text-disabled);
+  --dropdown-placeholder: var(--color-foreground-text-disabled);
+  --dropdown-icon: var(--color-foreground-icon-disabled);
+  --dropdown-bar-color: transparent;
+  --dropdown-bar-base-color: var(--color-foreground-border-soft);
+  --dropdown-border: var(--dropdown-border-disabled);
+  --dropdown-border-hover: var(--dropdown-border-disabled);
+}
+
+.tl-dropdown--error:not(.tl-dropdown--disabled) {
+  --dropdown-border: var(--dropdown-border-error);
+  --dropdown-border-hover: var(--dropdown-border-error-hover);
+  --dropdown-helper-text: var(--dropdown-error);
+  --dropdown-bar-color: var(--dropdown-error);
+  --dropdown-bar-base-color: var(--dropdown-error);
+}
+
+.tl-dropdown--label-inside {
+  position: relative;
+}
+
+// Label element
+.tl-dropdown__label {
+  @include detail-05;
+
+  color: var(--dropdown-text);
+  display: block;
+  margin-bottom: var(--tds-spacing-element-4);
+}
+
+.tl-dropdown__label--inside {
+  @include detail-02;
+
+  position: absolute;
+  pointer-events: none;
+  transform-origin: top left;
+  top: var(--dropdown-label-top);
+  left: var(--dropdown-label-left);
+  transform: var(--dropdown-label-transform, translateY(var(--dropdown-chevron-offset)));
+  transition: transform 0.1s ease, font-size 0.1s ease, color 0.1s ease, top 0.1s ease;
+  z-index: 1;
+  color: var(--dropdown-label-inside);
+}
+
+.tl-dropdown--disabled .tl-dropdown__label {
+  color: var(--color-foreground-text-disabled);
+}
+
+.tl-dropdown--sm {
+  --dropdown-label-left: var(--tds-spacing-element-12);
+}
+
+.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked) {
+  --dropdown-label-transform: translateY(0);
+  --dropdown-label-top: calc(var(--tds-spacing-element-8) - var(--tds-spacing-element-4));
+  --dropdown-label-left: var(--tds-spacing-element-16);
+}
+
+.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked)
+.tl-dropdown__label--inside {
+  @include detail-07;
+}
+
+.tl-dropdown--lg:has(
+:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+) {
+  --dropdown-label-top: calc(var(--tds-spacing-element-16) - var(--tds-spacing-element-4));
+}
+
+.tl-dropdown--md:has(
+:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+) {
+  --dropdown-label-top: calc(var(--tds-spacing-element-12) - var(--tds-spacing-element-4));
+}
+
+.tl-dropdown--sm:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked)
+.tl-dropdown__label--inside {
+  display: none;
+}
+
+// Input adjustments when label is displayed inside the field
+.tl-dropdown--label-inside :is(.tl-dropdown__input, .tl-dropdown__select) {
+  padding-top: var(--tds-spacing-element-20);
+  padding-bottom: 12px;
+  line-height: calc(56px - var(--tds-spacing-element-20) - 12px);
+}
+
+// Shared base styles for dropdown fields
+%tl-dropdown-field {
+  @include detail-02;
+
+  width: 100%;
+  appearance: none;
+  background-color: var(--dropdown-background);
+  color: var(--dropdown-text);
+  border: none;
+  border-radius: var(--tds-spacing-element-4) var(--tds-spacing-element-4) 0 0;
+  box-shadow: none;
+  min-height: 56px;
+  height: 56px;
+  line-height: 56px;
+  padding: 0 var(--tds-spacing-element-16);
+  padding-right: calc(var(--tds-spacing-element-16) + var(--dropdown-icon-size));
+
+  .tl-dropdown--lg.tl-dropdown--label-inside & {
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+    line-height: calc(56px - var(--tds-spacing-element-24) - 15px);
+  }
+
+  .tl-dropdown--md & {
+    min-height: 48px;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 var(--tds-spacing-element-16);
+    padding-right: calc(var(--tds-spacing-element-16) + var(--dropdown-icon-size));
+  }
+
+  .tl-dropdown--md.tl-dropdown--label-inside & {
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+    line-height: calc(48px - var(--tds-spacing-element-20) - 11px);
+  }
+
+  .tl-dropdown--sm & {
+    min-height: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 var(--tds-spacing-element-12);
+    padding-right: calc(var(--tds-spacing-element-12) + var(--dropdown-icon-size));
+  }
+
+  .tl-dropdown--sm.tl-dropdown--label-inside & {
+    padding-top: var(--tds-spacing-element-16);
+    padding-bottom: var(--tds-spacing-element-8);
+    line-height: calc(40px - var(--tds-spacing-element-16) - var(--tds-spacing-element-8));
+  }
+
+  .tl-dropdown--sm.tl-dropdown--label-inside:has(
+  :is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+)
+  & {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 40px;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: var(--dropdown-background);
+    color: var(--color-foreground-text-disabled);
+    cursor: not-allowed;
+  }
+
+  //  Option styling reference (works on some browsers, e.g. Windows Chromium/Firefox)
+  option {
+    color: var(--dropdown-option-text);
+    background-color: var(--dropdown-option-background);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-align: left;
+    padding-inline: var(--tds-spacing-element-16);
+    padding-block: var(--tds-spacing-element-4);
+  }
+
+  option:checked,
+  option[selected] {
+    background-color: var(--dropdown-option-background-selected);
+  }
+
+  option:disabled {
+    color: var(--dropdown-option-disabled);
+    background-color: var(--dropdown-option-background);
+  }
+
+  option:hover {
+    background-color: var(--dropdown-option-background-hover);
+  }
+}
+
+// Custom dropdown input (styled <select>)
+.tl-dropdown__input {
+  @extend %tl-dropdown-field;
+
+  &::placeholder {
+    color: var(--dropdown-placeholder);
+  }
+}
+
+// Native <select> aligned with custom styling
+.tl-dropdown__select {
+  @extend %tl-dropdown-field;
+}
+
+// Focus state - animate underline when input is focused
+.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select):focus):not(.tl-dropdown--disabled)
+.tl-dropdown__bar::after {
+  transform: scaleX(1);
+}
+
+// Disabled icon
+.tl-dropdown--disabled::after {
+  background-color: var(--color-foreground-icon-disabled);
+}
+
+// Disabled underline
+.tl-dropdown--disabled .tl-dropdown__bar::after {
+  transform: scaleX(0) !important;
+}
+
+.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option[value='']:checked)
+:is(.tl-dropdown__input, .tl-dropdown__select) {
+  color: var(--dropdown-placeholder);
+}
+
+// Animated underline
+.tl-dropdown__bar {
+  position: relative;
+  width: 100%;
+  height: 0;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    height: 1px;
+    inline-size: 100%;
+    background-color: var(--dropdown-bar-base-color);
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    height: 2px;
+    background-color: var(--dropdown-bar-color);
+    inline-size: 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s ease;
+    z-index: 1;
+  }
+}
+
+.tl-dropdown__helper {
+  @include detail-05;
+
+  color: var(--dropdown-helper-text);
+  padding-top: var(--tds-spacing-element-4);
+  display: flex;
+  gap: 8px;
+  flex-basis: 100%;
+
+  .tl-dropdown--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
+}
