@@ -16,7 +16,7 @@ The `tds-block` component can be nested to create more complex layouts. When nes
 | Property       | Attribute       | Description                                                  | Type                                                                                    | Default |
 | -------------- | --------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------- |
 | `componentTag` | `component-tag` | Specifies the HTML tag to be used for the component wrapper. | `"article" \| "aside" \| "div" \| "footer" \| "header" \| "main" \| "nav" \| "section"` | `'div'` |
-| `modeVariant`  | `mode-variant`  | Mode variant of the component, based on current mode.        | `"primary" \| "secondary"`                                                              | `null`  |
+| `modeVariant`  | `mode-variant`  | Mode variant of the component, based on current mode.        | `"primary" \| "secondary" \| null`                                                      | `null`  |
 
 
 ## Slots

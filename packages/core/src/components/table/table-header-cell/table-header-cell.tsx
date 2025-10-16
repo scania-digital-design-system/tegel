@@ -66,13 +66,13 @@ export class TdsTableHeaderCell {
 
   @State() enableToolbarDesign: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
   @State() expandableRows: boolean = false;
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   /** Sends unique Table identifier, column key and sorting direction to the tds-table-body component,
    * can also be listened to implement custom-sorting logic. */
@@ -83,8 +83,8 @@ export class TdsTableHeaderCell {
     bubbles: true,
   })
   tdsSort: EventEmitter<{
-    tableId: string;
-    columnKey: string;
+    tableId: string | undefined;
+    columnKey: string | undefined;
     sortingDirection: 'asc' | 'desc';
   }>;
 
@@ -97,8 +97,8 @@ export class TdsTableHeaderCell {
     bubbles: true,
   })
   internalSortButtonClicked: EventEmitter<{
-    tableId: string;
-    key: string;
+    tableId: string | undefined;
+    key: string | undefined;
   }>;
 
   /** @internal Sends unique Table identifier,
@@ -119,7 +119,7 @@ export class TdsTableHeaderCell {
     bubbles: true,
   })
   internalTdsHover: EventEmitter<{
-    tableId: string;
+    tableId: string | undefined;
     key: string;
   }>;
 
@@ -158,12 +158,12 @@ export class TdsTableHeaderCell {
 
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = this.tableEl?.[tablePropName];
     });
   }
 
@@ -176,8 +176,11 @@ export class TdsTableHeaderCell {
     // To enable body cells text align per rules set in head cell
     this.internalTdsTextAlign.emit([this.tableId, this.cellKey, this.textAlignState]);
 
-    this.enableToolbarDesign =
-      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+    const closesetTable = this.host.closest('tds-table');
+    if (closesetTable) {
+      this.enableToolbarDesign =
+        closesetTable.getElementsByTagName('tds-table-toolbar').length >= 1;
+    }
   }
 
   sortButtonClick = () => {

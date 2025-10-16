@@ -45,11 +45,11 @@ export class TdsTableBodyRow {
 
   @State() noMinWidth: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   /** Event emitted when a row is selected/deselected. */
   @Event({
@@ -59,9 +59,9 @@ export class TdsTableBodyRow {
     bubbles: true,
   })
   tdsSelect: EventEmitter<{
-    tableId: string;
+    tableId: string | undefined;
     checked: boolean;
-    selectedRows: any[];
+    selectedRows: any[] | undefined;
   }>;
 
   /** Event emitted when a row is clicked. */
@@ -74,7 +74,7 @@ export class TdsTableBodyRow {
   // return clickevent
   tdsClick: EventEmitter<{
     event: MouseEvent;
-    tableId: string;
+    tableId: string | undefined;
     rowIndex: number;
   }>;
 
@@ -83,13 +83,13 @@ export class TdsTableBodyRow {
     this.tdsSelect.emit({
       tableId: this.tableId,
       checked: this.selected,
-      selectedRows: await this.tableEl.getSelectedRows(),
+      selectedRows: await this.tableEl?.getSelectedRows(),
     });
   }
 
   handleRowClick(e) {
     if (!this.clickable) return;
-    let rowIndex = Array.from(this.host.parentElement.children).indexOf(this.host);
+    let rowIndex = Array.from(this.host?.parentElement?.children ?? []).indexOf(this.host);
 
     this.tdsClick.emit({
       event: e,
@@ -127,7 +127,7 @@ export class TdsTableBodyRow {
   componentWillLoad() {
     if (this.tableEl) {
       relevantTableProps.forEach((tablePropName) => {
-        this[tablePropName] = this.tableEl[tablePropName];
+        this[tablePropName] = this.tableEl?.[tablePropName];
       });
     }
   }

@@ -58,11 +58,11 @@ export class TdsTableHeaderRow {
 
   @State() enableToolbarDesign: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   /** Event emitted when the status of the select all checkbox changes. */
   @Event({
@@ -72,9 +72,9 @@ export class TdsTableHeaderRow {
     bubbles: true,
   })
   tdsSelectAll: EventEmitter<{
-    tableId: string;
+    tableId: string | undefined;
     checked: boolean;
-    selectedRows: any[];
+    selectedRows: any[] | undefined;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -102,34 +102,40 @@ export class TdsTableHeaderRow {
   }
 
   bodyExpandClicked() {
-    const numberOfExtendRowsActive = this.host.parentElement
-      .querySelector('tds-table-body')
-      .getElementsByClassName('tds-table__row-extend--active').length;
-    const numberOfExtendRows = this.host.parentElement
-      .querySelector('tds-table-body')
-      .getElementsByTagName('tds-table-body-row-expendable').length;
+    const parentBody = this.host.parentElement?.querySelector('tds-table-body');
+    if (parentBody) {
+      const numberOfExtendRowsActive = parentBody.getElementsByClassName(
+        'tds-table__row-extend--active',
+      ).length;
+      const numberOfExtendRows = parentBody.getElementsByTagName(
+        'tds-table-body-row-expendable',
+      ).length;
 
-    if (numberOfExtendRows === numberOfExtendRowsActive) {
-      this.mainExpendSelected = true;
-    } else {
-      this.mainExpendSelected = false;
+      if (numberOfExtendRows === numberOfExtendRowsActive) {
+        this.mainExpendSelected = true;
+      } else {
+        this.mainExpendSelected = false;
+      }
     }
   }
 
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = this.tableEl?.[tablePropName];
     });
   }
 
   componentWillRender() {
-    this.enableToolbarDesign =
-      this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+    const closestTable = this.host.closest('tds-table');
+    if (closestTable) {
+      this.enableToolbarDesign =
+        closestTable?.getElementsByTagName('tds-table-toolbar').length >= 1;
+    }
   }
 
   async handleCheckboxChange(event) {
@@ -137,7 +143,7 @@ export class TdsTableHeaderRow {
     this.tdsSelectAll.emit({
       tableId: this.tableId,
       checked: event.detail.checked,
-      selectedRows: await this.tableEl.getSelectedRows(),
+      selectedRows: await this.tableEl?.getSelectedRows(),
     });
   }
 

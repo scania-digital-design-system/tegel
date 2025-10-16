@@ -37,11 +37,11 @@ export class TdsTableBodyCell {
 
   @State() noMinWidth: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   @Listen('internalTdsPropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -95,7 +95,7 @@ export class TdsTableBodyCell {
   componentWillLoad() {
     if (this.tableEl) {
       relevantTableProps.forEach((tablePropName) => {
-        this[tablePropName] = this.tableEl[tablePropName];
+        this[tablePropName] = this.tableEl?.[tablePropName];
       });
     }
 
