@@ -1,5 +1,33 @@
 {
   "compilerOptions": {
+    // Master switch
+    // "strict": true,
+
+    // Prevent using values that might be null/undefined
+    "strictNullChecks": true,
+
+    // Class properties must be initialized or marked as possibly undefined
+    // "strictPropertyInitialization": true,
+
+    // Enable rules one by one:
+    // Report error on implicit 'any' types
+    // "noImplicitAny": true,
+
+    // Report error on 'this' with implicit 'any'
+    // "noImplicitThis": true,
+
+    // Ensure every file is in strict mode and add "use strict" at top
+    // "alwaysStrict": true,
+
+    // Ensure .bind, .call, .apply are used correctly
+    // "strictBindCallApply": true,
+
+    // Function type compatibility is stricter
+    // "strictFunctionTypes": true,
+
+    // Catch clause variable defaults to unknown instead of any
+    // "useUnknownInCatchVariables": true
+
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "declaration": false,
@@ -15,4 +43,6 @@
     "jsx": "react",
     "jsxFactory": "h",
   },
+  "exclude": ["packages/core/src/components/**/test/*", "**/*.d.ts", "**/*.stories.*", "**/*.axe.ts", "**/*.e2e.ts", "packages/core/src/stories/**", "packages/core/src/components/_beta/**"],
+  "include": ["packages/core/**/*"]
 }

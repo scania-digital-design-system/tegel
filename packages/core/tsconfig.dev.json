@@ -11,8 +11,8 @@
     "target": "es2017",
     "jsx": "react",
     "jsxFactory": "h",
-    "types": ["node", "jest", "react"]
+    "types": ["node", "jest", "react", "@playwright/test"]
   },
-  "exclude": ["src/components/**/test/*", "**/**.stories.*", "src/stories/**"],
-  "include": ["src/**/*"]
+  "exclude": ["**/**.stories.*", "src/stories/**", "src/components/_beta/**"],
+  "include": ["src/**/*", "types/**/*.d.ts"]
 }
