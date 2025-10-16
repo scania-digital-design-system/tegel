@@ -45,10 +45,6 @@
   align-items: center;
   opacity: 1;
   position: sticky;
-
-  svg {
-    fill: var(--navigation-tabs-scroll-button-color);
-  }
 }
 
 .tl-navigation-tabs__scroll-btn--right {
@@ -59,4 +55,10 @@
 .tl-navigation-tabs__scroll-btn--left {
   left: 0;
   z-index: 1;
+}
+
+svg {
+  .tl-navigation-tabs__scroll-btn & {
+    fill: var(--navigation-tabs-scroll-button-color);
+  }
 }

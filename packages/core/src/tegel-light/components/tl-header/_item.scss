@@ -2,28 +2,6 @@
 @import './tl-header-vars';
 @import '../../../../../../typography/utilities/typography-utility';
 
-.tl-header__item {
-  height: 100%;
-
-  &--pressed {
-    .tl-header__item-wrapper {
-      padding-top: 2px;
-      padding-bottom: 2px;
-      background-color: var(--header-basic-element-background-selected);
-      box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
-    }
-  }
-
-  &--selected:not(&--pressed) {
-    .tl-header__item-wrapper {
-      padding-top: 4px;
-      border-bottom-style: solid;
-      border-bottom-width: 4px;
-      border-bottom-color: var(--header-nav-item-border-pressed);
-    }
-  }
-}
-
 .tl-header__item-wrapper {
   all: unset;
   @include tds-box-sizing;
@@ -53,7 +31,24 @@
     box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
   }
 
-  .tl-link__icon {
+  .tl-header__item--pressed & {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: var(--header-basic-element-background-selected);
+    box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+  }
+
+  .tl-header__item--selected:not(.tl-header__item--pressed) & {
+    padding-top: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: var(--header-nav-item-border-pressed);
+  }
+}
+
+// Modifier styles in affected elements
+.tl-link__icon {
+  .tl-header__item-wrapper & {
     position: relative;
     margin-left: -6px;
     left: 3px;

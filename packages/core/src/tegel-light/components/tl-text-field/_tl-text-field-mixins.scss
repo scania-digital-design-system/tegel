@@ -26,10 +26,6 @@
     &::placeholder {
       color: var(--text-field-placeholder-disabled);
     }
-
-    ~ .tl-text-field__label--inside {
-      color: var(--text-field-label-disabled);
-    }
   }
 }
 
@@ -83,22 +79,6 @@
   $label-inside-padding-top,
   $label-inside-padding-bottom
 ) {
-  .tl-text-field__wrapper {
-    height: $height;
-  }
-
-  .tl-text-field__input {
-    padding: $input-padding;
-  }
-
-  .tl-text-field__label-inside {
-    top: $label-top;
-  }
-
-  &.tl-text-field--label-inside .tl-text-field__input {
-    @include placeholder-label;
-
-    padding-top: $label-inside-padding-top;
-    padding-bottom: $label-inside-padding-bottom;
-  }
+  // This mixin is used in modifiers and affects other elements
+  // The actual styles are applied in the affected element selectors
 }
