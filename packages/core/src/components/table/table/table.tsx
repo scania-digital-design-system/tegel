@@ -112,13 +112,15 @@ export class TdsTable {
   /** Returns all selected rows data. */
   @Method()
   async getSelectedRows() {
-    type RowCell = { cellKey: any; cellValue: string | number };
+    type RowCell = { cellKey: string; cellValue: string | number };
     let selectedRowsData: RowCell[][] = [];
 
     const tableBody = this.host.querySelector('tds-table-body');
-    const selectedRows = (Array.from(
-      tableBody?.querySelectorAll('tds-table-body-row') ?? [],
-    ) as Array<HTMLTdsTableBodyRowElement>).filter((element) => element.selected);
+    const selectedRows = (
+      Array.from(
+        tableBody?.querySelectorAll('tds-table-body-row') ?? [],
+      ) as Array<HTMLTdsTableBodyRowElement>
+    ).filter((element) => element.selected);
 
     selectedRows.forEach((row) => {
       let selectedRow: RowCell[] = [];
@@ -190,13 +192,13 @@ export class TdsTable {
 
   componentWillRender() {
     if (this.horizontalScrollWidth) {
-      const closestTable = this.host.closest('tds-table')
-      if(closestTable) {
+      const closestTable = this.host.closest('tds-table');
+      if (closestTable) {
         this.enableHorizontalScrollToolbarDesign =
-        closestTable.getElementsByTagName('tds-table-toolbar').length >= 1;
-        
+          closestTable.getElementsByTagName('tds-table-toolbar').length >= 1;
+
         this.enableHorizontalScrollFooterDesign =
-        closestTable.getElementsByTagName('tds-table-footer').length >= 1;
+          closestTable.getElementsByTagName('tds-table-footer').length >= 1;
       }
     }
   }
