@@ -289,7 +289,7 @@ export class TdsSlider {
     }
   }
 
-  private announcementDebounceTimeout: any = null;
+  private announcementDebounceTimeout: NodeJS.Timeout;
 
   private announceValueChange() {
     if (!this.ariaLiveElement) return;
@@ -420,7 +420,7 @@ export class TdsSlider {
 
   /** Updates the slider value when using tds-text-field (reads value from host element) */
   private updateSliderValueFromTextField(event: CustomEvent) {
-    const hostEl = event.target as any; // tds-text-field host element exposes a value prop
+    const hostEl = event.target as HTMLTdsTextFieldElement; // tds-text-field host element exposes a value prop
     const raw = hostEl && typeof hostEl.value !== 'undefined' ? hostEl.value : '';
     let newValue = parseFloat(raw);
 

@@ -61,7 +61,7 @@ export class TdsTableBodyRow {
   tdsSelect: EventEmitter<{
     tableId: string | undefined;
     checked: boolean;
-    selectedRows: any[] | undefined;
+    selectedRows: object[] | undefined;
   }>;
 
   /** Event emitted when a row is clicked. */
@@ -89,7 +89,7 @@ export class TdsTableBodyRow {
 
   handleRowClick(e) {
     if (!this.clickable) return;
-    let rowIndex = Array.from(this.host?.parentElement?.children ?? []).indexOf(this.host);
+    const rowIndex = Array.from(this.host?.parentElement?.children ?? []).indexOf(this.host);
 
     this.tdsClick.emit({
       event: e,

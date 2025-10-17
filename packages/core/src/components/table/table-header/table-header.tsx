@@ -74,7 +74,7 @@ export class TdsTableHeaderRow {
   tdsSelectAll: EventEmitter<{
     tableId: string | undefined;
     checked: boolean;
-    selectedRows: any[] | undefined;
+    selectedRows: object[] | undefined;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -92,7 +92,7 @@ export class TdsTableHeaderRow {
   }
 
   @Listen('internalTdsRowExpanded', { target: 'body' })
-  internalTdsRowExpandedListener(event: CustomEvent<any>) {
+  internalTdsRowExpandedListener(event: CustomEvent<object>) {
     if (this.tableId === event.detail[0]) {
       // TODO: Improve this logic. Why we get late repose in DOM?
       setTimeout(() => {

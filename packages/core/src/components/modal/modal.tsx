@@ -95,7 +95,7 @@ export class TdsModal {
     cancelable: true,
     bubbles: true,
   })
-  tdsClose: EventEmitter<any>;
+  tdsClose: EventEmitter<object>;
 
   /** Emits just before Modal is opened. */
   @Event({
@@ -160,7 +160,7 @@ export class TdsModal {
   }
 
   private returnFocusOnClose() {
-    let referenceElement =
+    const referenceElement =
       this.referenceEl ?? (document.querySelector(this.selector) as HTMLElement);
 
     if (!referenceElement) {

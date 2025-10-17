@@ -19,7 +19,7 @@ export class TdsTableBodyCell {
   @Prop({ reflect: true }) cellValue: string | number;
 
   /** Passing the same cell key for all body cells which is used in head cell enables features of text align and hovering */
-  @Prop({ reflect: true }) cellKey: any;
+  @Prop({ reflect: true }) cellKey: string;
 
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
@@ -59,7 +59,7 @@ export class TdsTableBodyCell {
 
   // Listen to headKey from table-header-element
   @Listen('internalTdsHover', { target: 'body' })
-  internalTdsHoverListener(event: CustomEvent<any>) {
+  internalTdsHoverListener(event: CustomEvent<{ tableId: string | undefined; key: string }>) {
     const { tableId, key } = event.detail;
 
     if (tableId === this.tableId) {
@@ -69,7 +69,7 @@ export class TdsTableBodyCell {
 
   // Listen to internalTdsTextAlign from table-header-element
   @Listen('internalTdsTextAlign', { target: 'body' })
-  internalTdsTextAlignListener(event: CustomEvent<any>) {
+  internalTdsTextAlignListener(event: CustomEvent<string[]>) {
     const [receivedID, receivedKey, receivedTextAlign] = event.detail;
 
     if (this.tableId === receivedID) {
