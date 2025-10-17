@@ -1,12 +1,35 @@
-// Restore correct label top for selected inside label in md and lg
-.tl-dropdown--lg:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked),
-.tl-dropdown--md:has(
-  :is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
-) {
-  --dropdown-label-top: 8px;
+// Inside label: with helper text and value selected (all variants)
+.tl-dropdown--label-inside.tl-dropdown--has-value:has(.tl-dropdown__helper)
+.tl-dropdown__label--inside {
+  top: calc(50% - 26px) !important;
 }
 
-// Hide placeholder when value is selected (button version)
+// Button variant: inside label, selected, no helper
+.tl-dropdown--label-inside.tl-dropdown--has-value.tl-dropdown--lg:not(:has(.tl-dropdown__helper))
+.tl-dropdown__label--inside {
+  top: 12px !important;
+}
+
+.tl-dropdown--label-inside.tl-dropdown--has-value.tl-dropdown--md:not(:has(.tl-dropdown__helper))
+.tl-dropdown__label--inside {
+  top: 8px !important;
+}
+
+// Inside label: select variant, selected, no helper
+.tl-dropdown--label-inside:not(:has(.tl-dropdown__helper)):has(
+.tl-dropdown__select option:not([value='']):checked
+)
+.tl-dropdown__label--inside {
+  top: calc(50% - 12px) !important;
+}
+
+// Restore correct label top for selected inside label in md and lg
+.tl-dropdown--lg:has(.tl-dropdown__select option:not([value='']):checked),
+.tl-dropdown--md:has(.tl-dropdown__select option:not([value='']):checked) {
+  --dropdown-label-top: var(--tds-spacing-element-8: );
+}
+
+// Hide placeholder when value is selected
 .tl-dropdown--has-value .tl-dropdown__button-placeholder {
   display: none;
 }
@@ -21,8 +44,7 @@
   display: none;
 }
 
-// Correct label float-up for select variant (lg, md)
-// For select version, float label to calc(50% - 24px) when selected (lg, md)
+// Select: label float-up for md/lg
 // Removed custom label top for inside label; will use default (same as outside/no label)
 //}
 
@@ -34,9 +56,9 @@
   left: 0;
   right: 0;
   z-index: 10;
-  background: var(--tds-dropdown-bg, #fff);
-  border: 1px solid var(--tds-dropdown-border-bottom, #ccc);
-  border-radius: var(--tds-dropdown-border-radius, 4px);
+  background: var(--tds-dropdown-bg);
+  border: 1px solid var(--tds-dropdown-border-bottom);
+  border-radius: var(--tds-dropdown-border-radius);
   box-shadow: 0 2px 8px #0001;
   max-height: 240px;
   overflow-y: auto;
@@ -76,8 +98,6 @@
   cursor: pointer;
   transition: border-bottom-color 0.2s;
   position: relative;
-
-  // Font handled by mixin
   outline: none;
 
   .tl-icon--chevron_down {
@@ -96,20 +116,14 @@
 
 .tl-dropdown--lg .tl-dropdown__button {
   min-height: 56px;
-
-  // Font handled by mixin
 }
 
 .tl-dropdown--md .tl-dropdown__button {
   min-height: 48px;
-
-  // Font handled by mixin
 }
 
 .tl-dropdown--sm .tl-dropdown__button {
   min-height: 40px;
-
-  // Font handled by mixin
 }
 
 .tl-dropdown__button:focus,
@@ -137,9 +151,9 @@
   left: 0;
   right: 0;
   z-index: 10;
-  background: var(--tds-dropdown-bg, #fff);
-  border: 1px solid var(--tds-dropdown-border-bottom, #ccc);
-  border-radius: var(--tds-dropdown-border-radius, 4px);
+  background: var(--tds-dropdown-bg);
+  border: 1px solid var(--tds-dropdown-border-bottom);
+  border-radius: var(--tds-dropdown-border-radius);
   box-shadow: 0 2px 8px #0001;
   max-height: 240px;
   overflow-y: auto;
@@ -149,7 +163,7 @@
 .tl-dropdown__option {
   @include detail-02;
 
-  padding: 12px var(--tds-spacing-element-16);
+  padding: var(--tds-spacing-element-12) var(--tds-spacing-element-16);
   cursor: pointer;
   color: var(--tds-dropdown-value-color);
   background: none;
@@ -159,23 +173,21 @@
   box-sizing: border-box;
   transition: background 0.15s, color 0.15s;
   outline: none;
-
-  // Font handled by mixin
 }
 
 .tl-dropdown__option:hover,
 .tl-dropdown__option:focus {
-  background: var(--dropdown-option-background-hover, #f3f3f3);
+  background: var(--dropdown-option-background-hover);
 }
 
 .tl-dropdown__option[aria-disabled='true'] {
-  color: var(--dropdown-option-disabled, #aaa);
+  color: var(--dropdown-option-disabled);
   cursor: not-allowed;
   background: none;
 }
 
 .tl-dropdown__option[aria-selected='true'] {
-  background: var(--dropdown-option-background-selected, #e6f0fa);
+  background: var(--dropdown-option-background-selected);
   color: var(--tds-dropdown-value-color);
 }
 @import './tl-dropdown_vars';
@@ -195,30 +207,7 @@
   --dropdown-label-transform: translateY(var(--dropdown-chevron-offset));
   --dropdown-icon-size: 16px;
 
-  // Chevron icon rendered via CSS mask to avoid extra markup
-  // &::after {
-  //   content: '';
-  //   position: absolute;
-  //   inset-block-start: 50%;
-  //   inset-inline-end: var(--tds-spacing-element-16);
-  //   width: var(--dropdown-icon-size);
-  //   height: var(--dropdown-icon-size);
-  //   pointer-events: none;
-  //   transform: translateY(var(--dropdown-chevron-offset));
-  //   background-color: var(--dropdown-icon);
-  //   mask-image: var(--icon-chevron_down-svg);
-  //   mask-repeat: no-repeat;
-  //   mask-position: center;
-  //   mask-size: contain;
-  //   /* stylelint-disable property-no-vendor-prefix */
-  //   -webkit-mask-image: var(--icon-chevron_down-svg);
-  //   -webkit-mask-repeat: no-repeat;
-  //   -webkit-mask-position: center;
-  //   -webkit-mask-size: contain;
-  //   /* stylelint-enable property-no-vendor-prefix */
-  // }
-
-  // Size modifiers handled within element blocks
+  transition: transform 0.15s, color 0.15s, top 0.15s;
 }
 
 .tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
@@ -249,150 +238,6 @@
   --dropdown-border-hover: var(--dropdown-border-disabled);
 }
 
-/* TDS-like appearance modifier: boxed input like the webcomponent tds-dropdown */
-.tl-dropdown--tds {
-  --dropdown-bar-color: transparent;
-  --dropdown-bar-base-color: transparent;
-
-  /* Use a full rectangle border instead of underline */
-  --dropdown-border: 0 0 0 1px var(--tds-dropdown-border-bottom);
-  --dropdown-border-hover: 0 0 0 1px var(--tds-dropdown-border-bottom-hover);
-  --dropdown-border-focus: 0 0 0 2px var(--dropdown-bar-color);
-  --dropdown-border-active: 0 0 0 1px var(--tds-dropdown-border-bottom-hover);
-
-  /* Slightly more rounded for boxed appearance */
-  --dropdown-border-radius: var(--tds-dropdown-border-radius);
-
-  /* Shift chevron vertically to center inside box */
-  --dropdown-chevron-offset: calc(-50%);
-
-  /* Ensure icon color matches token */
-  --dropdown-icon: var(--tds-dropdown-menu-icon-color);
-
-  /* Hide the CSS-generated chevron icon for the TDS boxed variant (we render an icon element instead) */
-  &::after {
-    display: none;
-  }
-
-  /* Extra safety: if a .menu-icon or an input exists inside the dropdown, hide the CSS chevron */
-  &.tl-dropdown--tds::after,
-  &:has(.menu-icon)::after,
-  &:has(input)::after {
-    display: none !important;
-  }
-
-  .tl-dropdown__bar::before,
-  .tl-dropdown__bar::after {
-    display: none;
-  }
-
-  /* Field adjustments for boxed look */
-
-  /* Make the .filter wrapper the visible box so icons can sit inside it */
-  .filter {
-    background-color: var(--tds-dropdown-bg);
-    border: none;
-    box-shadow: var(--dropdown-border);
-    border-radius: var(--dropdown-border-radius);
-    min-height: 48px;
-    height: auto;
-    padding-inline-start: var(--tds-spacing-element-16);
-    padding-inline-end: calc(
-      var(--tds-spacing-element-16) + var(--dropdown-icon-size) + var(--tds-spacing-element-8)
-    );
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-
-  /* Value wrapper should fill the left area and not include the icon padding */
-  .filter .value-wrapper {
-    padding-right: 0;
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-
-  /* Input inside the value-wrapper should be transparent and full width */
-  .value-wrapper input {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    line-height: normal !important;
-  }
-
-  &.tl-dropdown--label-inside :is(.tl-dropdown__input, .tl-dropdown__select) {
-    padding-top: calc(var(--tds-spacing-element-12));
-  }
-
-  &:has(:is(.tl-dropdown__input, .tl-dropdown__select):focus):not(.tl-dropdown--disabled)
-  :is(.tl-dropdown__input, .tl-dropdown__select) {
-    box-shadow: var(--dropdown-border-focus);
-  }
-
-  /* Icon & filter layout: position icons inside the field to the right */
-  .filter {
-    position: relative;
-    display: block;
-  }
-
-  .filter .value-wrapper {
-    /* ensure input/value takes full width but leaves room for icons */
-    padding-right: calc(var(--dropdown-icon-size) * 2 + var(--tds-spacing-element-24));
-    display: flex;
-    align-items: center;
-  }
-
-  /* tds-icon elements inside the .filter should be absolutely positioned */
-  .filter tds-icon.menu-icon {
-    position: absolute !important;
-    right: var(--tds-spacing-element-16) !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    color: var(--tds-dropdown-menu-icon-color) !important;
-    pointer-events: auto !important;
-    z-index: 3 !important;
-    width: var(--dropdown-icon-size) !important;
-    height: var(--dropdown-icon-size) !important;
-    display: block !important;
-  }
-
-  .filter tds-icon.clear-icon {
-    position: absolute !important;
-
-    /* place to the left of the menu icon */
-    right: calc(
-      var(--tds-spacing-element-16) + var(--dropdown-icon-size) + var(--tds-spacing-element-8)
-    ) !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-    color: var(--tds-dropdown-clear-icon-color) !important;
-    pointer-events: auto !important;
-    z-index: 3 !important;
-    width: var(--dropdown-icon-size) !important;
-    height: var(--dropdown-icon-size) !important;
-    display: block !important;
-  }
-
-  /* Ensure the input fills the wrapper but doesn't overlap the icons */
-  .value-wrapper input,
-  .value-wrapper .placeholder,
-  .value-wrapper .placeholder * {
-    box-sizing: border-box !important;
-    width: 100% !important;
-    z-index: 1 !important;
-  }
-
-  /* Make the filter wrapper show pointer to indicate dropdown behaviour; keep caret for text input on focus */
-  .filter {
-    cursor: pointer;
-  }
-}
-
 .tl-dropdown--error:not(.tl-dropdown--disabled) {
   --dropdown-border: var(--dropdown-border-error);
   --dropdown-border-hover: var(--dropdown-border-error-hover);
@@ -405,7 +250,6 @@
   position: relative;
 }
 
-// Label element
 .tl-dropdown__label {
   @include detail-05;
 
@@ -416,7 +260,7 @@
 
 .tl-dropdown__label--inside {
   position: absolute;
-  left: var(--dropdown-label-left);
+  left: var(--tds-spacing-element-16);
   width: auto;
   pointer-events: none;
   background: transparent;
@@ -426,64 +270,48 @@
   color: var(--dropdown-label-inside);
   @include detail-02;
 
-  // Vertikalt centrerad när inget är valt, men flytta upp 10px om helper text finns
-  top: 50%;
+  top: var(--dropdown-label-top);
   transform: translateY(-50%);
 }
 
-// Om helper text finns: flytta label upp 10px när inget är valt
-// Om helper text finns: flytta label upp 10px när inget är valt, annars 24px vid select selected
 .tl-dropdown--label-inside:has(.tl-dropdown__helper):not(.tl-dropdown--has-value)
 .tl-dropdown__label--inside {
   top: calc(50% - 10px);
 }
 
-// Set custom label top for inside label with helper and selected value
 .tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
-:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+.tl-dropdown__select option:not([value='']):checked
 ) {
   --dropdown-label-top: calc(50% - 22px);
 }
 
 .tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
-:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+.tl-dropdown__select option:not([value='']):checked
 )
 .tl-dropdown__label--inside {
   top: var(--dropdown-label-top);
 }
 
-// Hide in sm
 .tl-dropdown--sm.tl-dropdown--label-inside .tl-dropdown__label--inside {
   display: block;
 }
 
-// Dölj labeln i small när något är valt
 .tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
   display: none;
 }
 
-// När något är valt: labeln flyttas upp och blir detail-07
-// Both button and select: label floats up and gets detail-07
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
   @include detail-07;
 
   color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
-  top: 8px;
+  top: var(--dropdown-label-top, 8px);
   transform: none;
 }
 
-.tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
-  top: 12px;
-}
-
-// Dölj value/option-text när inget är valt och inside label används
 .tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__button-value {
   display: none;
 }
 
-// Visa value/option-text när något är valt
-// Visa value/option-text när något är valt
-// Visa value/option-text när något är valt
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
   position: relative;
   display: inline;
@@ -498,10 +326,6 @@
   top: 0;
 }
 
-//}
-
-// Ingen typografi-mixin här, endast labeln styrs
-
 .tl-dropdown--disabled .tl-dropdown__label {
   color: var(--color-foreground-text-disabled);
 }
@@ -510,30 +334,27 @@
   --dropdown-label-left: var(--tds-spacing-element-12);
 }
 
-.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked) {
+.tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) {
   --dropdown-label-transform: translateY(0);
   --dropdown-label-top: 8px;
   --dropdown-label-left: var(--tds-spacing-element-16);
 }
 
-.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked)
-.tl-dropdown__label--inside {
+.tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label--inside {
   @include detail-07;
 }
 
-.tl-dropdown--lg:has(
-:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
-) {
+.tl-dropdown--lg:has(.tl-dropdown__select option:not([value='']):checked) {
   --dropdown-label-top: 8px;
 }
 
-.tl-dropdown--sm:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked)
+.tl-dropdown--sm:has(.tl-dropdown__select option:not([value='']):checked)
 .tl-dropdown__label--inside {
   display: none;
 }
 
 // Input adjustments when label is displayed inside the field
-.tl-dropdown--label-inside :is(.tl-dropdown__input, .tl-dropdown__select) {
+.tl-dropdown--label-inside .tl-dropdown__select {
   padding-top: var(--tds-spacing-element-20);
   padding-bottom: 12px;
   line-height: calc(56px - var(--tds-spacing-element-20) - 12px);
@@ -593,7 +414,7 @@
   }
 
   .tl-dropdown--sm.tl-dropdown--label-inside:has(
-  :is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+  .tl-dropdown__select option:not([value='']):checked
 )
   & {
     padding-top: 0;
@@ -655,22 +476,6 @@
   }
 }
 
-// Custom dropdown input (styled <select>)
-.tl-dropdown__input {
-  @extend %tl-dropdown-field;
-
-  &::placeholder {
-    color: var(--dropdown-placeholder);
-  }
-
-  /* The input as a whole should show pointer for dropdown behaviour; when focused, caret appears */
-  cursor: pointer;
-
-  &:focus {
-    cursor: text;
-  }
-}
-
 // Native <select> aligned with custom styling
 .tl-dropdown__select {
   @extend %tl-dropdown-field;
@@ -683,9 +488,8 @@
   cursor: pointer;
 }
 
-// Focus state - animate underline when input is focused
-.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select):focus):not(.tl-dropdown--disabled)
-.tl-dropdown__bar::after {
+// Focus state - animate underline when select is focused
+.tl-dropdown:has(.tl-dropdown__select:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after {
   transform: scaleX(1);
 }
 
@@ -699,8 +503,7 @@
   transform: scaleX(0) !important;
 }
 
-.tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option[value='']:checked)
-:is(.tl-dropdown__input, .tl-dropdown__select) {
+.tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
   color: var(--dropdown-placeholder);
 }
 
