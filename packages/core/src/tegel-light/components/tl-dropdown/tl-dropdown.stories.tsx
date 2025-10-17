@@ -46,89 +46,10 @@ export const ButtonDropdown = ({
           error ? '<span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>' : ''
         }${helper}</div>`
       : '';
-  /*   const script = `
-    (() => {
-      const dropdown = document.querySelector('.tl-dropdown__button-demo');
-      if (!dropdown) return;
-      const button = dropdown.querySelector('.tl-dropdown__button');
-      const chevron = button.querySelector('.tl-icon--chevron_down');
-      const list = dropdown.querySelector('.tl-dropdown__list');
-      let open = false;
-      function setChevron(open) {
-        if (chevron) {
-          chevron.style.transition = 'transform 0.2s';
-          chevron.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
-        }
-      }
-      function setListDisplay(open) {
-        list.style.display = open ? 'block' : 'none';
-      }
-      function close() {
-        setListDisplay(false);
-        button.setAttribute('aria-expanded', 'false');
-        setChevron(false);
-        open = false;
-      }
-      function openList() {
-        setListDisplay(true);
-        button.setAttribute('aria-expanded', 'true');
-        setChevron(true);
-        open = true;
-        // Focus first option
-        const first = list.querySelector('.tl-dropdown__option:not([aria-disabled="true"])');
-        if (first) first.focus();
-      }
-      button.addEventListener('click', e => {
-        open ? close() : openList();
-      });
-      button.addEventListener('keydown', e => {
-        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openList();
-        }
-      });
-      list.addEventListener('keydown', e => {
-        const options = Array.from(list.querySelectorAll('.tl-dropdown__option'));
-        const idx = options.indexOf(document.activeElement);
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-          const next = options[idx+1] || options[0];
-          next.focus();
-        } else if (e.key === 'ArrowUp') {
-          e.preventDefault();
-          const prev = options[idx-1] || options[options.length-1];
-          prev.focus();
-        } else if (e.key === 'Escape') {
-          close();
-          button.focus();
-        } else if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          if (document.activeElement.classList.contains('tl-dropdown__option')) {
-            button.innerHTML = document.activeElement.innerHTML + '<span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>';
-            setChevron(false);
-            close();
-            button.focus();
-          }
-        }
-      });
-      // Option click
-      list.querySelectorAll('.tl-dropdown__option').forEach(opt => {
-        opt.addEventListener('click', e => {
-          button.innerHTML = opt.innerHTML + '<span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>';
-          setChevron(false);
-          close();
-        });
-      });
-      // Click outside
-      document.addEventListener('mousedown', e => {
-        if (!dropdown.contains(e.target)) close();
-      });
-      close();
-    })();
-  `; */
+  // JS for open/close and keyboard navigation is injected in the <script> tag below
   return formatHtmlPreview(`
     <!-- JS required for open/close and keyboard navigation -->
-    <div style="max-width: 208px; width: 100%;">
+  <div>
       <div class="${dropdownClasses}">
         ${labelMarkup}
         <button type="button" class="tl-dropdown__button" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="${labelId}" ${
@@ -157,23 +78,31 @@ export const ButtonDropdown = ({
         const valueSpan = button.querySelector('.tl-dropdown__button-value');
         let open = false;
         let selectedValue = '';
-        function setChevron(open) {
+        function setChevron(isOpen) {
           if (chevron) {
             chevron.style.transition = 'transform 0.2s';
-            chevron.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+            chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
           }
         }
-        function setListDisplay(open) {
-          list.style.display = open ? 'block' : 'none';
+        function setListOpen(isOpen) {
+          if (isOpen) {
+            list.classList.add('open');
+            list.classList.remove('closed');
+            list.style.display = '';
+          } else {
+            list.classList.remove('open');
+            list.classList.add('closed');
+            list.style.display = '';
+          }
         }
         function close() {
-          setListDisplay(false);
+          setListOpen(false);
           button.setAttribute('aria-expanded', 'false');
           setChevron(false);
           open = false;
         }
         function openList() {
-          setListDisplay(true);
+          setListOpen(true);
           button.setAttribute('aria-expanded', 'true');
           setChevron(true);
           open = true;
@@ -183,6 +112,10 @@ export const ButtonDropdown = ({
         }
         function setHasValueClass(hasValue) {
           dropdown.classList.toggle('tl-dropdown--has-value', hasValue);
+          const placeholder = button.querySelector('.tl-dropdown__button-placeholder');
+          if (placeholder) {
+            placeholder.style.display = hasValue ? 'none' : '';
+          }
         }
         // Option click
         list.querySelectorAll('.tl-dropdown__option').forEach(opt => {
@@ -219,7 +152,7 @@ export const ButtonDropdown = ({
           }
         });
         // Init: no value selected
-  setHasValueClass(false);
+        setHasValueClass(false);
         close();
       })();
       </script>
@@ -360,11 +293,11 @@ const Template = ({
     <div style="position: relative; display: flex; align-items: center;">
       <select class="${fieldClass}" ${selectAttributes} style="width: 100%;">
         ${placeholderOption}
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
+  <option class="tl-dropdown__option" value="1">Option 1</option>
+  <option class="tl-dropdown__option" value="2">Option 2</option>
+  <option class="tl-dropdown__option" value="3">Option 3</option>
+  <option class="tl-dropdown__option" value="4">Option 4</option>
+  <option class="tl-dropdown__option" value="5">Option 5</option>
       </select>
       <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true" style="position: absolute; right: 12px; pointer-events: none;"></span>
     </div>`;

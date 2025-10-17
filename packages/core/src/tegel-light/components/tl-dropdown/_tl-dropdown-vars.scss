@@ -1,6 +1,8 @@
 // Tegel Light Dropdown Variables
 
+// Option-specific (for overrides)
 .tl-dropdown-option {
+  // Option background, hover, selected, disabled
   --dropdown-option-background: var(--color-background-layer-01);
   --dropdown-option-background-hover: var(--component-dropdown-hover);
   --dropdown-option-background-selected: var(--component-dropdown-focus);
@@ -38,14 +40,13 @@
 .tl-dropdown,
 .scania .tl-dropdown {
   // Colors - Border - Scania
-  //Changed to inset and negative values to work with box-shadow. Negative values for bottom shadow to work.
-  --dropdown-border: inset 0 -1px 0 0 var(--color-foreground-border-soft);
-  --dropdown-border-hover: inset 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: inset 0 -2px 0 0 var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: inset 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-error: inset 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-hover: inset 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: inset 0 -2px 0 0 var(--dropdown-error-focus);
+  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
 
   // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
@@ -53,8 +54,6 @@
   --dropdown-list-border-radius-down: 0 0 var(--dropdown-spacing-4) var(--dropdown-spacing-4);
   --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
   --dropdown-text: var(--color-foreground-text-strong);
-
-  //option
   --dropdown-option-disabled: var(--color-foreground-text-disabled);
   --dropdown-option-background: var(--color-background-layer-01);
   --dropdown-option-background-hover: var(--component-dropdown-hover);
@@ -64,15 +63,14 @@
   --dropdown-placeholder: var(--color-foreground-text-subtle);
 }
 
-// Traton theme: full border on all sides
-//Changed to inset  to work with box-shadow
 .traton .tl-dropdown {
-  --dropdown-border: inset 0 0 0 1px var(--color-foreground-border-soft);
-  --dropdown-border-hover: inset 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-focus: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: inset 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-error: inset 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-hover: inset 0 0 0 1px var(--dropdown-error);
+  // Colors - Border - Traton
+  --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 0 0 1px var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
+  --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
   --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error-focus);
 
   // Units
