@@ -26,12 +26,13 @@ const newFormValues = {
 };
 
 const getFormData = async (page: Page) =>
-  page.evaluate(() => {
-    const form = document.querySelector('form');
+  page.evaluate<Record<string, string>>(() => {
+    const form = document.querySelector('form') as HTMLFormElement | null;
+    const data: Record<string, string> = {};
+    if (!form) return data;
     const newFormData = new FormData(form);
-    const data = {};
     newFormData.forEach((value, key) => {
-      data[key] = value;
+      data[key] = typeof value === 'string' ? value : value.name;
     });
     return data;
   });
@@ -66,18 +67,18 @@ const inputToForm = async (page: Page) => {
   await page.locator('tds-toggle').first().locator('input').first().check();
 
   await page.evaluate(() => {
-    const firstDropdown = document?.getElementsByTagName('tds-dropdown')?.[0]
+    const firstDropdown = document?.getElementsByTagName('tds-dropdown')?.[0];
     firstDropdown.shadowRoot?.querySelectorAll('button')[0].click();
   });
 
   await page.evaluate(() => {
-    const firstOption = document?.getElementsByTagName('tds-dropdown-option')?.[0]
-    
+    const firstOption = document?.getElementsByTagName('tds-dropdown-option')?.[0];
+
     firstOption.shadowRoot?.querySelectorAll('button')[0].click();
   });
 
   await page.evaluate(() => {
-    const firstSlider = document?.getElementsByTagName('tds-slider')?.[0]
+    const firstSlider = document?.getElementsByTagName('tds-slider')?.[0];
     firstSlider.value = '50';
   });
 };
