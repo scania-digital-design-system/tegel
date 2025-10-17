@@ -1,3 +1,30 @@
+// Restore correct label top for selected inside label in md and lg
+.tl-dropdown--lg:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked),
+.tl-dropdown--md:has(
+  :is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+) {
+  --dropdown-label-top: 8px;
+}
+
+// Hide placeholder when value is selected (button version)
+.tl-dropdown--has-value .tl-dropdown__button-placeholder {
+  display: none;
+}
+
+// Show value when selected
+.tl-dropdown--has-value .tl-dropdown__button-value {
+  display: inline;
+}
+
+// Hide value when not selected
+.tl-dropdown__button-value {
+  display: none;
+}
+
+// Correct label float-up for select variant (lg, md)
+// For select version, float label to calc(50% - 24px) when selected (lg, md)
+// Removed custom label top for inside label; will use default (same as outside/no label)
+//}
 
 .tl-dropdown__list {
   margin: 0;
@@ -15,19 +42,20 @@
   overflow-y: auto;
   display: block;
   width: 100%;
+
+  --dropdown-label-top: 8px;
 }
 
-.tl-dropdown__list[style*="display: none"] {
+.tl-dropdown__list[style*='display: none'] {
   display: none !important;
 }
 
-.tl-dropdown__option[aria-disabled="true"] {
+.tl-dropdown__option[aria-disabled='true'] {
   color: var(--dropdown-option-disabled, #aaa);
   cursor: not-allowed;
   background: none;
 }
 
-// Tegel Light custom dropdown (button-based)
 .tl-dropdown__button {
   @include detail-02;
 
@@ -48,8 +76,8 @@
   cursor: pointer;
   transition: border-bottom-color 0.2s;
   position: relative;
-  font-family: inherit;
-  font-size: inherit;
+
+  // Font handled by mixin
   outline: none;
 
   .tl-icon--chevron_down {
@@ -68,17 +96,20 @@
 
 .tl-dropdown--lg .tl-dropdown__button {
   min-height: 56px;
-  font-size: 1rem;
+
+  // Font handled by mixin
 }
 
 .tl-dropdown--md .tl-dropdown__button {
   min-height: 48px;
-  font-size: 0.9375rem;
+
+  // Font handled by mixin
 }
 
 .tl-dropdown--sm .tl-dropdown__button {
   min-height: 40px;
-  font-size: 0.875rem;
+
+  // Font handled by mixin
 }
 
 .tl-dropdown__button:focus,
@@ -128,8 +159,8 @@
   box-sizing: border-box;
   transition: background 0.15s, color 0.15s;
   outline: none;
-  font-family: inherit;
-  font-size: inherit;
+
+  // Font handled by mixin
 }
 
 .tl-dropdown__option:hover,
@@ -137,13 +168,13 @@
   background: var(--dropdown-option-background-hover, #f3f3f3);
 }
 
-.tl-dropdown__option[aria-disabled="true"] {
+.tl-dropdown__option[aria-disabled='true'] {
   color: var(--dropdown-option-disabled, #aaa);
   cursor: not-allowed;
   background: none;
 }
 
-.tl-dropdown__option[aria-selected="true"] {
+.tl-dropdown__option[aria-selected='true'] {
   background: var(--dropdown-option-background-selected, #e6f0fa);
   color: var(--tds-dropdown-value-color);
 }
@@ -384,18 +415,92 @@
 }
 
 .tl-dropdown__label--inside {
+  position: absolute;
+  left: var(--dropdown-label-left);
+  width: auto;
+  pointer-events: none;
+  background: transparent;
+  z-index: 1;
+  transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
+  transform-origin: top left;
+  color: var(--dropdown-label-inside);
   @include detail-02;
 
-  position: absolute;
-  pointer-events: none;
-  transform-origin: top left;
-  top: var(--dropdown-label-top);
-  left: var(--dropdown-label-left);
-  transform: var(--dropdown-label-transform, translateY(var(--dropdown-chevron-offset)));
-  transition: transform 0.1s ease, font-size 0.1s ease, color 0.1s ease, top 0.1s ease;
-  z-index: 1;
-  color: var(--dropdown-label-inside);
+  // Vertikalt centrerad när inget är valt, men flytta upp 10px om helper text finns
+  top: 50%;
+  transform: translateY(-50%);
 }
+
+// Om helper text finns: flytta label upp 10px när inget är valt
+// Om helper text finns: flytta label upp 10px när inget är valt, annars 24px vid select selected
+.tl-dropdown--label-inside:has(.tl-dropdown__helper):not(.tl-dropdown--has-value)
+.tl-dropdown__label--inside {
+  top: calc(50% - 10px);
+}
+
+// Set custom label top for inside label with helper and selected value
+.tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
+:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+) {
+  --dropdown-label-top: calc(50% - 22px);
+}
+
+.tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
+:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
+)
+.tl-dropdown__label--inside {
+  top: var(--dropdown-label-top);
+}
+
+// Hide in sm
+.tl-dropdown--sm.tl-dropdown--label-inside .tl-dropdown__label--inside {
+  display: block;
+}
+
+// Dölj labeln i small när något är valt
+.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
+  display: none;
+}
+
+// När något är valt: labeln flyttas upp och blir detail-07
+// Both button and select: label floats up and gets detail-07
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
+  @include detail-07;
+
+  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
+  top: 8px;
+  transform: none;
+}
+
+.tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
+  top: 12px;
+}
+
+// Dölj value/option-text när inget är valt och inside label används
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__button-value {
+  display: none;
+}
+
+// Visa value/option-text när något är valt
+// Visa value/option-text när något är valt
+// Visa value/option-text när något är valt
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+  position: relative;
+  display: inline;
+}
+
+.tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value,
+.tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+  top: 6px;
+}
+
+.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+  top: 0;
+}
+
+//}
+
+// Ingen typografi-mixin här, endast labeln styrs
 
 .tl-dropdown--disabled .tl-dropdown__label {
   color: var(--color-foreground-text-disabled);
@@ -407,7 +512,7 @@
 
 .tl-dropdown:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked) {
   --dropdown-label-transform: translateY(0);
-  --dropdown-label-top: calc(var(--tds-spacing-element-8) - var(--tds-spacing-element-4));
+  --dropdown-label-top: 8px;
   --dropdown-label-left: var(--tds-spacing-element-16);
 }
 
@@ -419,13 +524,7 @@
 .tl-dropdown--lg:has(
 :is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
 ) {
-  --dropdown-label-top: calc(var(--tds-spacing-element-16) - var(--tds-spacing-element-4));
-}
-
-.tl-dropdown--md:has(
-:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked
-) {
-  --dropdown-label-top: calc(var(--tds-spacing-element-12) - var(--tds-spacing-element-4));
+  --dropdown-label-top: 8px;
 }
 
 .tl-dropdown--sm:has(:is(.tl-dropdown__input, .tl-dropdown__select) option:not([value='']):checked)
@@ -532,11 +631,10 @@
 
   //  Option styling reference (works on some browsers, e.g. Windows Chromium/Firefox)
   option {
+    @include detail-02;
+
     color: var(--dropdown-option-text);
     background-color: var(--dropdown-option-background);
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
     text-align: left;
     padding-inline: var(--tds-spacing-element-16);
     padding-block: var(--tds-spacing-element-4);
