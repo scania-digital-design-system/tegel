@@ -11,6 +11,7 @@
 }
 
 .tl-dropdown {
+  // Border bottom for select/button now uses --dropdown-border and related variables only
   &--primary {
     --dropdown-background: var(--color-background-layer-01);
   }
@@ -39,6 +40,11 @@
 
 .tl-dropdown,
 .scania .tl-dropdown {
+  /* Textfield: bar colors */
+  --dropdown-bar-focus: var(--color-foreground-border-accent-focus);
+  --dropdown-bar-error: var(--color-system-danger-default);
+  --dropdown-bar-base-color: var(--color-foreground-border-strong);
+
   // Colors - Border - Scania
   --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
   --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
