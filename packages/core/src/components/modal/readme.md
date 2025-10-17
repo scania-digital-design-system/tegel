@@ -141,10 +141,10 @@ This pattern avoids rendering hidden content upfront, improves performance and g
 
 ## Events
 
-| Event      | Description                        | Type                |
-| ---------- | ---------------------------------- | ------------------- |
-| `tdsClose` | Emits when the Modal is closed.    | `CustomEvent<any>`  |
-| `tdsOpen`  | Emits just before Modal is opened. | `CustomEvent<void>` |
+| Event      | Description                        | Type                  |
+| ---------- | ---------------------------------- | --------------------- |
+| `tdsClose` | Emits when the Modal is closed.    | `CustomEvent<object>` |
+| `tdsOpen`  | Emits just before Modal is opened. | `CustomEvent<void>`   |
 
 
 ## Methods

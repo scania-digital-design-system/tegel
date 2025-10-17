@@ -1,5 +1,4 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-// @ts-expect-error: handled by Storybook MD loader; typed via local *.md module
 import readme from './readme.md';
 
 export const SliderArgTypes = ({ storyName }: { storyName: 'Default' | 'Decimal' }) => ({

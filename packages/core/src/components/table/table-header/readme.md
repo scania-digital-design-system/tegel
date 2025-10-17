@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event          | Description                                                       | Type                                                                                                 |
-| -------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `tdsSelectAll` | Event emitted when the status of the select all checkbox changes. | `CustomEvent<{ tableId: string \| undefined; checked: boolean; selectedRows: any[] \| undefined; }>` |
+| Event          | Description                                                       | Type                                                                                                    |
+| -------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `tdsSelectAll` | Event emitted when the status of the select all checkbox changes. | `CustomEvent<{ tableId: string \| undefined; checked: boolean; selectedRows: object[] \| undefined; }>` |
 
 
 ## Slots

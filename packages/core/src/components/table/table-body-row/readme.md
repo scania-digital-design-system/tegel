@@ -16,10 +16,10 @@
 
 ## Events
 
-| Event       | Description                                      | Type                                                                                                 |
-| ----------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------- |
-| `tdsClick`  | Event emitted when a row is clicked.             | `CustomEvent<{ event: MouseEvent; tableId: string \| undefined; rowIndex: number; }>`                |
-| `tdsSelect` | Event emitted when a row is selected/deselected. | `CustomEvent<{ tableId: string \| undefined; checked: boolean; selectedRows: any[] \| undefined; }>` |
+| Event       | Description                                      | Type                                                                                                    |
+| ----------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| `tdsClick`  | Event emitted when a row is clicked.             | `CustomEvent<{ event: MouseEvent; tableId: string \| undefined; rowIndex: number; }>`                   |
+| `tdsSelect` | Event emitted when a row is selected/deselected. | `CustomEvent<{ tableId: string \| undefined; checked: boolean; selectedRows: object[] \| undefined; }>` |
 
 
 ## Slots
