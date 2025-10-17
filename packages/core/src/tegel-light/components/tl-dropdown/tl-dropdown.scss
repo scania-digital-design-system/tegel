@@ -10,6 +10,7 @@
 .traton .tl-dropdown__button:hover,
 .traton .tl-dropdown__select:hover {
   border-color: var(--dropdown-bar-focus);
+  border-width: 2px;
 }
 
 .traton .tl-dropdown__button:focus,
@@ -17,6 +18,7 @@
 .traton .tl-dropdown__button:focus-visible,
 .traton .tl-dropdown__select:focus-visible {
   border-color: var(--dropdown-bar-focus);
+  border-width: 2px;
   outline: none;
   box-shadow: none;
 }
@@ -24,6 +26,7 @@
 .traton .tl-dropdown--error .tl-dropdown__button,
 .traton .tl-dropdown--error .tl-dropdown__select {
   border-color: var(--dropdown-bar-error);
+  border-width: 2px;
 }
 
 .traton .tl-dropdown__button:disabled,
@@ -42,7 +45,7 @@
 @import './tl-dropdown-vars';
 
 .tl-dropdown__button-placeholder {
-  color: var(--dropdown-placeholder-color);
+  color: var(--dropdown-placeholder);
   border: 1px solid var(--dropdown-border);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
@@ -366,7 +369,7 @@
 }
 
 .tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
-  color: var(--dropdown-placeholder-color);
+  color: var(--dropdown-placeholder);
 }
 
 // --- HELPER ---
@@ -820,7 +823,7 @@
 }
 
 .tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
-  color: var(--dropdown-placeholder-color);
+  color: var(--dropdown-placeholder);
 }
 
 // Animated underline
