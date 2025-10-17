@@ -34,6 +34,7 @@ export const ButtonDropdown = ({
     'tl-dropdown__button-demo',
   ]
     .filter(Boolean)
+
     .join(' ');
   const labelMarkup = showLabel
     ? `<label class="tl-dropdown__label${
@@ -66,6 +67,7 @@ export const ButtonDropdown = ({
           <li class="tl-dropdown__option" role="option" tabindex="0" aria-disabled="true">Option disabled</li>
           <li class="tl-dropdown__option" role="option" tabindex="0">Option 4</li>
         </ul>
+        <div class="tl-dropdown__bar"></div>
         ${helperMarkup}
       </div>
       <script>

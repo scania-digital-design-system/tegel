@@ -23,7 +23,7 @@
   background-color: var(--dropdown-background);
   color: var(--dropdown-text);
   border: none;
-  border-bottom: 1px solid var(--dropdown-border-bottom);
+  border-bottom: 1px solid var(--dropdown-border);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
   min-height: 56px;
@@ -77,14 +77,14 @@
   }
 
   &:hover {
-    border-bottom-color: var(--dropdown-border-bottom-hover);
+    border-bottom-color: var(--dropdown-border-hover);
   }
 
   &:focus,
   &:focus-visible {
     outline: none;
     box-shadow: none;
-    border-bottom-color: var(--dropdown-border-bottom-hover);
+    border-bottom-color: var(--dropdown-border-hover);
   }
 
   &:disabled {
@@ -165,8 +165,7 @@
   --dropdown-border: var(--dropdown-border-error);
   --dropdown-border-hover: var(--dropdown-border-error-hover);
   --dropdown-helper-text: var(--dropdown-error);
-  --dropdown-bar-color: var(--dropdown-error);
-  --dropdown-bar-base-color: var(--dropdown-error);
+  --dropdown-bar-focus: var(--dropdown-bar-error);
 }
 
 .tl-dropdown--no-label:has(.tl-dropdown__helper),
@@ -268,9 +267,23 @@
   cursor: pointer;
 }
 
-.tl-dropdown:has(.tl-dropdown__select:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after {
+// Animated bar for both select and button variants
+.tl-dropdown:has(.tl-dropdown__select:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after,
+.tl-dropdown:has(.tl-dropdown__button:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after {
   transform: scaleX(1);
 }
+
+// NOTE: For animated underline, .tl-dropdown__bar must be present in both select and button variant markup, directly after .tl-dropdown__select or .tl-dropdown__button:
+// <div class="tl-dropdown">
+//   <select class="tl-dropdown__select">...</select>
+//   <div class="tl-dropdown__bar"></div>
+//   ...
+// </div>
+// <div class="tl-dropdown">
+//   <button class="tl-dropdown__button">...</button>
+//   <div class="tl-dropdown__bar"></div>
+//   ...
+// </div>
 
 .tl-dropdown--disabled::after {
   background-color: var(--color-foreground-icon-disabled);
@@ -355,7 +368,7 @@
   background: var(--dropdown-background);
   color: var(--dropdown-text);
   border: none;
-  border-bottom: 1px solid var(--dropdown-border-bottom);
+  border-bottom: 1px solid var(--dropdown-border);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
   padding: 0 var(--tds-spacing-element-16);
@@ -398,7 +411,7 @@
 
 .tl-dropdown__button:focus,
 .tl-dropdown__button:focus-visible {
-  border-bottom-color: var(--dropdown-border-bottom-hover);
+  border-bottom-color: var(--dropdown-border-hover);
 }
 
 .tl-dropdown--error .tl-dropdown__button {
@@ -480,8 +493,7 @@
   --dropdown-border: var(--dropdown-border-error);
   --dropdown-border-hover: var(--dropdown-border-error-hover);
   --dropdown-helper-text: var(--dropdown-error);
-  --dropdown-bar-color: var(--dropdown-error);
-  --dropdown-bar-base-color: var(--dropdown-error);
+  --dropdown-bar-base-color: var(--dropdown-bar-error);
 }
 
 .tl-dropdown--label-inside {
@@ -607,7 +619,7 @@
   background-color: var(--dropdown-background);
   color: var(--dropdown-text);
   border: none;
-  border-bottom: 1px solid var(--dropdown-border-bottom);
+  border-bottom: 1px solid var(--dropdown-border);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
   min-height: 56px;
@@ -661,14 +673,14 @@
   }
 
   &:hover {
-    border-bottom-color: var(--dropdown-border-bottom-hover);
+    border-bottom-color: var(--dropdown-border-hover);
   }
 
   &:focus,
   &:focus-visible {
     outline: none;
     box-shadow: none;
-    border-bottom-color: var(--dropdown-border-bottom-hover);
+    border-bottom-color: var(--dropdown-border-hover);
   }
 
   &:disabled {
@@ -767,12 +779,17 @@
     inset-block-end: 0;
     inset-inline-start: 0;
     height: 2px;
-    background-color: var(--dropdown-bar-color);
+    background-color: var(--dropdown-bar-focus);
     inline-size: 100%;
     transform: scaleX(0);
     transform-origin: center;
     transition: transform 0.35s ease;
     z-index: 1;
+  }
+
+  .tl-dropdown--error:not(.tl-dropdown--disabled) &::before,
+  .tl-dropdown--error:not(.tl-dropdown--disabled) &::after {
+    background-color: var(--dropdown-bar-error);
   }
 }
 
