@@ -44,5 +44,8 @@
     "jsxFactory": "h",
   },
   "exclude": ["packages/core/src/components/**/test/*", "**/*.d.ts", "**/*.stories.*", "**/*.axe.ts", "**/*.e2e.ts", "packages/core/src/stories/**", "packages/core/src/components/_beta/**"],
-  "include": ["packages/core/**/*"]
+  "include": ["packages/core/**/*"],
+  "files": [
+    "packages/core/src/global.d.ts"
+  ]
 }
