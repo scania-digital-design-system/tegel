@@ -56,7 +56,7 @@ export class TdsTextarea {
   @Prop() maxLength: number;
 
   /** Mode variant of the Textarea */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Control of autofocus */
   @Prop() autofocus: boolean = false;
@@ -125,7 +125,7 @@ export class TdsTextarea {
 
   /* Set the input as focus when clicking the whole textarea with suffix/prefix */
   handleFocus(event: FocusEvent): void {
-    this.textEl.focus();
+    this.textEl?.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
   }
@@ -139,7 +139,7 @@ export class TdsTextarea {
     }
   }
 
-  setModeVariant(modeVariant: 'primary' | 'secondary'): string | null {
+  setModeVariant(modeVariant: 'primary' | 'secondary' | null): string | null {
     if (this.readOnly && modeVariant === 'primary') {
       return 'secondary';
     }

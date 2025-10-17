@@ -34,7 +34,7 @@ export class TdsTooltip {
   @Prop() trigger: 'click' | 'hover' = 'hover';
 
   /** Prop in control of showing and hiding prop. Takes precedence over `defaultOpen` prop. */
-  @Prop({ mutable: true }) show: boolean = null;
+  @Prop({ mutable: true }) show: boolean = false;
 
   /** Placement of Tooltip. */
   @Prop() placement: Placement = 'bottom';
@@ -112,11 +112,9 @@ export class TdsTooltip {
           show={this.show}
           placement={this.placement}
           autoHide={false}
-          // @ts-ignore
           onInternalTdsShow={() => {
             this.show = true;
           }}
-          // @ts-ignore
           onInternalTdsClose={() => {
             this.show = false;
           }}

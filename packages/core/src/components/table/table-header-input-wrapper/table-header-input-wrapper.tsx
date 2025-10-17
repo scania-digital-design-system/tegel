@@ -21,7 +21,7 @@ export class TdsTableHeaderInputWrapper {
 
   @Prop() compactDesign: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | null = '';
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {

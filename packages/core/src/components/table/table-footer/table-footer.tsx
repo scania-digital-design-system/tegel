@@ -39,10 +39,10 @@ export class TdsTableFooter {
   @Prop() rowsPerPageValues: number[] = [10, 25, 50];
 
   /** Sets the number of pages. */
-  @Prop({ reflect: true }) pages: number = null;
+  @Prop({ reflect: true }) pages: number = 0;
 
   /** <b>Client override</b> Used to set the column span of the footer. Use as fallback if the automatic count of columns fails. */
-  @Prop() cols: number = null;
+  @Prop() cols: number | null = null;
 
   /** State that memorize number of columns to display colSpan correctly - set from parent level */
   @State() columnsNumber: number = 0;
@@ -52,9 +52,9 @@ export class TdsTableFooter {
 
   @State() lastCorrectValue: number;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
-  @State() horizontalScrollWidth: string = null;
+  @State() horizontalScrollWidth: string | null = null;
 
   @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
 
@@ -64,7 +64,7 @@ export class TdsTableFooter {
   private inputElement: HTMLInputElement;
 
   /* The footer parent Table. */
-  private tableEl: HTMLTdsTableElement;
+  private tableEl: HTMLTdsTableElement | null;
 
   /** Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic. */
   @Event({
@@ -74,7 +74,7 @@ export class TdsTableFooter {
     bubbles: true,
   })
   tdsPagination: EventEmitter<{
-    tableId: string;
+    tableId: string | undefined;
     paginationValue: number;
     rowsPerPage?: number;
   }>;
@@ -95,19 +95,19 @@ export class TdsTableFooter {
 
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = this.tableEl?.[tablePropName];
     });
 
     this.storeLastCorrectValue(this.paginationValue);
 
     /** Get the number of columns. */
     const numberOfColumns =
-      this.host.parentElement.querySelector('tds-table-header').childElementCount;
+      this.host.parentElement?.querySelector('tds-table-header')?.childElementCount ?? 0;
     if (this.cols) {
       this.columnsNumber = this.cols;
     } else {
@@ -150,7 +150,7 @@ export class TdsTableFooter {
   private nextPage = () => {
     /** If pages and greater or equal to the number of pages, increase pagination value.
      * This is to not get above the number of pages in pagination value.  */
-    if (this.paginationValue <= this.pages) {
+    if (this.pages && this.paginationValue <= this.pages) {
       this.paginationValue++;
     }
     this.emitTdsPagination();
@@ -236,7 +236,11 @@ export class TdsTableFooter {
                 </div>
                 <div class="tds-table__page-selector">
                   <input
-                    ref={(element) => (this.inputElement = element)}
+                    ref={(element) => {
+                      if (element) {
+                        this.inputElement = element;
+                      }
+                    }}
                     class="tds-table__page-selector-input"
                     type="number"
                     min="1"
