@@ -1,6 +1,8 @@
 // Tegel Light Dropdown Variables
 
+// Option-specific (for overrides)
 .tl-dropdown-option {
+  // Option background, hover, selected, disabled
   --dropdown-option-background: var(--color-background-layer-01);
   --dropdown-option-background-hover: var(--component-dropdown-hover);
   --dropdown-option-background-selected: var(--component-dropdown-focus);
@@ -38,24 +40,13 @@
 .tl-dropdown,
 .scania .tl-dropdown {
   // Colors - Border - Scania
-
-  /* Changed box shadow variables to work with bottom inside border design. Remove comments when a11y changes are applied */
-  // --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
-  // --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
-  // --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
-  // --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
-  // --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
-  // --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
-  // --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
-
-  /* Changed box shadow variables to work with bottom inside border design. Can be removed when a11y changes are applied */
-  --dropdown-border: 0 -1px 0 0 var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-hover: 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: 0 -2px 0 0 var(--dropdown-error-focus);
+  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
 
   // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
@@ -63,8 +54,6 @@
   --dropdown-list-border-radius-down: 0 0 var(--dropdown-spacing-4) var(--dropdown-spacing-4);
   --dropdown-list-border-radius-up: var(--dropdown-spacing-4) var(--dropdown-spacing-4) 0 0;
   --dropdown-text: var(--color-foreground-text-strong);
-
-  //option
   --dropdown-option-disabled: var(--color-foreground-text-disabled);
   --dropdown-option-background: var(--color-background-layer-01);
   --dropdown-option-background-hover: var(--component-dropdown-hover);
@@ -74,8 +63,8 @@
   --dropdown-placeholder: var(--color-foreground-text-subtle);
 }
 
-// Traton theme: full border on all sides
 .traton .tl-dropdown {
+  // Colors - Border - Traton
   --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
   --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
   --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
