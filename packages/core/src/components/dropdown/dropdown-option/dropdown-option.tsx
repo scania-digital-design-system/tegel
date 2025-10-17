@@ -101,8 +101,8 @@ export class TdsDropdownOption {
     }
     this.parentElement =
       this.host.parentElement?.tagName === 'TDS-DROPDOWN'
-        ? (this.host.parentElement as HTMLTdsDropdownElement)
-        : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
+        ? (this.host.parentElement as unknown as HTMLTdsDropdownElement)
+        : ((this.host.getRootNode() as ShadowRoot).host as unknown as HTMLTdsDropdownElement);
 
     if (this.parentElement) {
       this.multiselect = this.parentElement.multiselect ?? false;

@@ -101,7 +101,7 @@ export class TdsHeaderLauncher {
             <tds-popover-canvas
               id={`tds-launcher-${this.uuid}`}
               class="menu"
-              referenceEl={this.buttonEl}
+              referenceEl={this.buttonEl as unknown as HTMLElement}
               placement="bottom-start"
               show={this.open}
               offsetDistance={0}

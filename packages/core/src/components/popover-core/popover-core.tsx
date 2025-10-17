@@ -228,7 +228,7 @@ export class TdsPopoverCore {
     }
 
     this.popperInstance = this.target
-      ? createPopper(this.target, this.host, {
+      ? createPopper(this.target, this.host as unknown as HTMLElement, {
           strategy: 'fixed',
           placement: this.placement,
           modifiers: [
