@@ -21,7 +21,7 @@
 
 ## Methods
 
-### `getSelectedRows() => Promise<{ cellKey: any; cellValue: string | number; }[][]>`
+### `getSelectedRows() => Promise<{ cellKey: string; cellValue: string | number; }[][]>`
 
 Returns all selected rows data.
 
