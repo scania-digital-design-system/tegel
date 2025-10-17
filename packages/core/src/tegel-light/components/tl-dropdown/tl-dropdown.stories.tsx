@@ -291,7 +291,7 @@ const Template = ({
   error,
   size,
   labelPlacement,
-  elementType,
+  // ...existing code...
 }) => {
   const normalizedSize =
     {
@@ -302,7 +302,7 @@ const Template = ({
   const isLabelInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const hasInitialPlaceholder = isLabelInside || Boolean(placeholder);
-  const useNativeSelect = elementType === 'Select';
+  // ...existing code...
 
   const classes = [
     'tl-dropdown',
@@ -355,7 +355,7 @@ const Template = ({
     helperMarkup = `<div class="tl-dropdown__helper">${helperIcon}${helperText}</div>`;
   }
 
-  const fieldClass = useNativeSelect ? 'tl-dropdown__select' : 'tl-dropdown__input';
+  const fieldClass = 'tl-dropdown__select';
   const fieldMarkup = `
     <div style="position: relative; display: flex; align-items: center;">
       <select class="${fieldClass}" ${selectAttributes} style="width: 100%;">
