@@ -1,7 +1,75 @@
+// Traton: full border instead of underline
+.traton .tl-dropdown__button,
+.traton .tl-dropdown__select {
+  border: 1px solid var(--dropdown-bar-base-color);
+  border-radius: var(--dropdown-border-radius);
+  box-shadow: none;
+  transition: border-color 0.2s;
+}
+
+.traton .tl-dropdown__button:hover,
+.traton .tl-dropdown__select:hover {
+  border-color: var(--dropdown-bar-focus);
+}
+
+.traton .tl-dropdown__button:focus,
+.traton .tl-dropdown__select:focus,
+.traton .tl-dropdown__button:focus-visible,
+.traton .tl-dropdown__select:focus-visible {
+  border-color: var(--dropdown-bar-focus);
+  outline: none;
+  box-shadow: none;
+}
+
+.traton .tl-dropdown--error .tl-dropdown__button,
+.traton .tl-dropdown--error .tl-dropdown__select {
+  border-color: var(--dropdown-bar-error);
+}
+
+.traton .tl-dropdown__button:disabled,
+.traton .tl-dropdown__select:disabled {
+  border-color: transparent;
+  background-color: var(--dropdown-background);
+  color: var(--dropdown-disabled-color);
+  cursor: not-allowed;
+}
+
+// Remove underline bar for Traton variant
+// Remove underline bar for Traton variant
+.traton .tl-dropdown__bar {
+  display: none;
+}
 @import './tl-dropdown-vars';
 
 .tl-dropdown__button-placeholder {
   color: var(--dropdown-placeholder-color);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--dropdown-border-radius);
+  box-shadow: none;
+  border-bottom: none;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--dropdown-border-hover);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--dropdown-border-focus);
+    outline: none;
+    box-shadow: none;
+  }
+
+  &.tl-dropdown--error {
+    border-color: var(--dropdown-border-error);
+  }
+
+  &:disabled {
+    border-color: transparent;
+    background-color: var(--dropdown-background);
+    color: var(--dropdown-disabled-color);
+    cursor: not-allowed;
+  }
 }
 
 .tl-dropdown__list.open {
