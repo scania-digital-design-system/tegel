@@ -109,7 +109,7 @@ export class TdsTableHeaderCell {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsTextAlign: EventEmitter<any>;
+  internalTdsTextAlign: EventEmitter<object>;
 
   /** @internal Sends unique Table identifier, column key so the body cells with the same key change background when user hovers over header cell */
   @Event({

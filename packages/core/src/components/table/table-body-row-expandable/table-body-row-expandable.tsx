@@ -82,7 +82,7 @@ export class TdsTableBodyRowExpandable {
     cancelable: false,
     composed: true,
   })
-  internalTdsRowExpanded: EventEmitter<any>;
+  internalTdsRowExpanded: EventEmitter<object>;
 
   /** Sends unique table row identifier and isExpanded status when it is expanded/collapsed. */
   @Event({
@@ -170,7 +170,8 @@ export class TdsTableBodyRowExpandable {
     if (this.colSpan !== null) {
       this.columnsNumber = this.colSpan;
     } else {
-      this.columnsNumber = this.tableEl?.querySelector('tds-table-header')?.childElementCount ?? 0 + 1;
+      this.columnsNumber =
+        this.tableEl?.querySelector('tds-table-header')?.childElementCount ?? 0 + 1;
     }
   }
 

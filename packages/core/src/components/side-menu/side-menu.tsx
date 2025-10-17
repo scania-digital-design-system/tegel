@@ -160,7 +160,7 @@ export class TdsSideMenu {
 
     if (slottedBtn) closeBtn = slottedBtn.shadowRoot?.querySelector('button');
 
-    let focusableElements = [...focusableInShadowRoot, ...focusableInSlots];
+    const focusableElements = [...focusableInShadowRoot, ...focusableInSlots];
     if (closeBtn) focusableElements.push(closeBtn);
 
     /** Focusable elements */

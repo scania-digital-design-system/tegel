@@ -237,7 +237,9 @@ export class TdsTableFooter {
                 <div class="tds-table__page-selector">
                   <input
                     ref={(element) => {
-                      if (element) this.inputElement = element;
+                      if (element) {
+                        this.inputElement = element;
+                      }
                     }}
                     class="tds-table__page-selector-input"
                     type="number"
