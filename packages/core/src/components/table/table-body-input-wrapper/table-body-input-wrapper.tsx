@@ -95,7 +95,9 @@ export class TdsTableBodyInputWrapper {
       document.querySelectorAll('tds-table-body-input-wrapper'),
     ) as HTMLTdsTableBodyInputWrapperElement[];
 
-    const currentIndex = allEditableCells.indexOf(this.host as HTMLTdsTableBodyInputWrapperElement);
+    const currentIndex = allEditableCells.indexOf(
+      this.host as unknown as HTMLTdsTableBodyInputWrapperElement,
+    );
 
     if (currentIndex !== -1 && currentIndex < allEditableCells.length - 1) {
       const nextCell = allEditableCells[currentIndex + 1];
