@@ -46,13 +46,22 @@
   --dropdown-bar-base-color: var(--color-foreground-border-strong);
 
   // Colors - Border - Scania
-  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
+  --dropdown-border: var(--color-foreground-border-soft);
+  --dropdown-border-hover: var(--color-foreground-border-strong);
+  --dropdown-border-focus: var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: var(--color-foreground-border-strong);
+  --dropdown-border-error: var(--dropdown-error);
+  --dropdown-border-error-hover: var(--dropdown-error);
+  --dropdown-border-error-focus: var(--dropdown-error-focus);
+
+  // Border thickness variables (use these in SCSS for border-width)
+  --dropdown-border-thickness: 1px;
+  --dropdown-border-hover-thickness: 1px;
+  --dropdown-border-focus-thickness: 2px;
+  --dropdown-border-active-thickness: 1px;
+  --dropdown-border-error-thickness: 1px;
+  --dropdown-border-error-hover-thickness: 1px;
+  --dropdown-border-error-focus-thickness: 2px;
 
   // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
@@ -71,13 +80,20 @@
 
 .traton .tl-dropdown {
   // Colors - Border - Traton
-  --dropdown-border: 0 0 0 1px var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 0 0 1px var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-hover: 0 0 0 1px var(--dropdown-error);
-  --dropdown-border-error-focus: 0 0 0 1px var(--dropdown-error-focus);
+  --dropdown-border: var(--color-foreground-border-soft);
+  --dropdown-border-hover: var(--color-foreground-border-strong);
+  --dropdown-border-focus: var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: var(--color-foreground-border-strong);
+  --dropdown-border-error: var(--dropdown-error);
+  --dropdown-border-error-hover: var(--dropdown-error);
+  --dropdown-border-error-focus: var(--dropdown-error-focus);
+  --dropdown-border-thickness: 1px;
+  --dropdown-border-hover-thickness: 1px;
+  --dropdown-border-focus-thickness: 2px;
+  --dropdown-border-active-thickness: 1px;
+  --dropdown-border-error-thickness: 1px;
+  --dropdown-border-error-hover-thickness: 1px;
+  --dropdown-border-error-focus-thickness: 2px;
 
   // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
