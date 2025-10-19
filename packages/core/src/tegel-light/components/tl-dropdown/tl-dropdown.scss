@@ -1,3 +1,9 @@
+// Vertically center inside label when no value is selected
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 // Force placeholder and value color to match label when disabled
 .tl-dropdown--disabled .tl-dropdown__select,
 .tl-dropdown--disabled .tl-dropdown__button {
