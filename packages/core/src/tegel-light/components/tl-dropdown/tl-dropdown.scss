@@ -1,3 +1,10 @@
+.tl-dropdown__button-value,
+.tl-dropdown__button-placeholder {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 // Vertically center inside label when no value is selected
 .tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__label--inside {
   top: 50%;
