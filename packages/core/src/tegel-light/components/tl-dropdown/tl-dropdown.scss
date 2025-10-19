@@ -37,46 +37,6 @@
   line-height: 40px;
 }
 
-// Traton: full border instead of underline
-.traton .tl-dropdown__button,
-.traton .tl-dropdown__select {
-  border: 1px solid var(--dropdown-bar-base-color);
-  border-radius: var(--dropdown-border-radius);
-  box-shadow: none;
-  transition: border-color 0.2s;
-}
-
-.traton .tl-dropdown__button:hover,
-.traton .tl-dropdown__select:hover {
-  border-color: var(--dropdown-bar-focus);
-  border-width: 2px;
-}
-
-.traton .tl-dropdown__button:focus-visible,
-.traton .tl-dropdown__select:focus-visible {
-  border-color: var(--dropdown-bar-focus);
-  border-width: 2px;
-  outline: none;
-  box-shadow: none;
-}
-
-.traton .tl-dropdown--error .tl-dropdown__button,
-.traton .tl-dropdown--error .tl-dropdown__select {
-  border-color: var(--dropdown-bar-error);
-  border-width: 2px;
-}
-
-.traton .tl-dropdown__button:disabled,
-.traton .tl-dropdown__select:disabled {
-  border-color: transparent;
-  background-color: var(--dropdown-background);
-  color: var(--dropdown-disabled);
-  cursor: not-allowed;
-}
-
-.traton .tl-dropdown__bar {
-  display: none;
-}
 @import './tl-dropdown-vars';
 
 .tl-dropdown__button-placeholder {
@@ -241,8 +201,9 @@
   width: 100%;
   background: var(--dropdown-background);
   color: var(--dropdown-text);
-  border: none;
-  border-bottom: 1px solid var(--dropdown-border);
+  border-style: solid;
+  border-color: var(--dropdown-border);
+  border-width: var(--dropdown-border-width, 0 0 1px 0);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
   padding: 0 var(--tds-spacing-element-16);
@@ -253,7 +214,7 @@
   justify-content: space-between;
   gap: 8px;
   cursor: pointer;
-  transition: border-bottom-color 0.2s;
+  transition: border-color 0.2s, border-width 0.2s;
   position: relative;
   outline: none;
 }
@@ -289,8 +250,31 @@
   min-height: 48px;
 }
 
+.tl-dropdown__button:hover {
+  border-color: var(--dropdown-border-hover);
+  border-width: var(--dropdown-border-width-hover, 0 0 2px 0);
+}
+
+.tl-dropdown__button:focus,
 .tl-dropdown__button:focus-visible {
-  border-bottom-color: var(--dropdown-border-hover);
+  border-color: var(--dropdown-border-focus);
+  border-width: var(--dropdown-border-focus-width, var(--dropdown-border-width-hover, 0 0 2px 0));
+  outline: none;
+  box-shadow: none;
+}
+
+.tl-dropdown--error .tl-dropdown__button {
+  border-color: var(--dropdown-border-error);
+  border-width: var(--dropdown-border-error-width, var(--dropdown-border-width-hover, 0 0 2px 0));
+}
+
+.tl-dropdown--disabled .tl-dropdown__button {
+  color: var(--dropdown-disabled);
+  background: var(--dropdown-background);
+  border-color: var(--dropdown-border-disabled, transparent);
+  border-width: var(--dropdown-border-width, 0 0 1px 0);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .tl-dropdown--disabled .tl-dropdown__button {
