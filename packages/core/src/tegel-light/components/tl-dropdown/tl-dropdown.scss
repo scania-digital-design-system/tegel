@@ -1,3 +1,5 @@
+@import './tl-dropdown-vars';
+
 .tl-dropdown__button-value,
 .tl-dropdown__button-placeholder {
   overflow: hidden;
@@ -5,39 +7,423 @@
   white-space: nowrap;
 }
 
-// Vertically center inside label when no value is selected
-.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__label--inside {
-  top: 50%;
-  transform: translateY(-50%);
+// Disabled state
+.tl-dropdown--disabled {
+  pointer-events: none;
+
+  --dropdown-text: var(--dropdown-disabled);
+  --dropdown-helper-text: var(--dropdown-disabled);
+  --dropdown-placeholder: var(--dropdown-disabled);
+  --dropdown-icon: var(--dropdown-disabled);
+  --dropdown-bar-color: transparent;
+  --dropdown-bar-base-color: var(--color-foreground-border-soft);
+  --dropdown-border: var(--dropdown-border-disabled);
+  --dropdown-border-hover: var(--dropdown-border-disabled);
 }
 
-// Force placeholder and value color to match label when disabled
-.tl-dropdown--disabled .tl-dropdown__select,
 .tl-dropdown--disabled .tl-dropdown__button {
-  color: var(--dropdown-label-disabled, var(--dropdown-disabled)) !important;
+  background: var(--dropdown-background);
+  border-color: var(--dropdown-border-disabled, transparent);
+  border-width: var(--dropdown-border-width, 0 0 1px 0);
+  cursor: not-allowed;
 }
 
-.tl-dropdown--disabled .tl-dropdown__button-placeholder {
-  color: var(--dropdown-label-disabled, var(--dropdown-disabled)) !important;
+// Error state
+.tl-dropdown--error:not(.tl-dropdown--disabled) {
+  --dropdown-border: var(--dropdown-border-error);
+  --dropdown-border-hover: var(--dropdown-border-error-hover);
+  --dropdown-helper-text: var(--dropdown-error);
+  --dropdown-bar-base-color: var(--dropdown-bar-error);
 }
 
-// Chevron color matches label when disabled
-.tl-dropdown--disabled .tl-icon--chevron_down {
-  color: var(--dropdown-label-disabled, var(--dropdown-disabled));
+.tl-dropdown--error .tl-dropdown__button {
+  border-color: var(--dropdown-border-error);
+  border-width: var(--dropdown-border-error-width, var(--dropdown-border-width-hover, 0 0 2px 0));
 }
 
-// Hide bar for all disabled dropdowns
-.tl-dropdown--disabled .tl-dropdown__bar {
-  display: none !important;
+// Select field
+
+.tl-dropdown__select {
+  @extend %tl-dropdown-field;
+
+  cursor: pointer;
+  text-align: left;
 }
 
-// --- Small size: vertical centering for select ---
 .tl-dropdown--sm .tl-dropdown__select {
   height: 40px;
   line-height: 40px;
 }
 
-@import './tl-dropdown-vars';
+.tl-dropdown__button {
+  @extend %tl-dropdown-field;
+  @include detail-02;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding-right: 40px;
+  outline: none;
+  position: relative;
+  text-align: left;
+}
+
+.tl-dropdown__button:hover {
+  border-color: var(--dropdown-border-hover);
+  border-width: var(--dropdown-border-width-hover, 0 0 2px 0);
+}
+
+.tl-dropdown__button:focus,
+.tl-dropdown__button:focus-visible {
+  border-color: var(--dropdown-border-focus);
+  border-width: var(--dropdown-border-focus-width, var(--dropdown-border-width-hover, 0 0 2px 0));
+  outline: none;
+  box-shadow: none;
+}
+
+// Placeholder
+.tl-dropdown__button-placeholder {
+  color: var(--dropdown-placeholder);
+  border: none;
+  border-radius: var(--dropdown-border-radius);
+  box-shadow: none;
+  border-bottom: none;
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--dropdown-border-hover);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--dropdown-border-focus);
+    outline: none;
+    box-shadow: none;
+  }
+
+  &.tl-dropdown--error {
+    border-color: var(--dropdown-border-error);
+  }
+
+  &:disabled {
+    border-color: transparent;
+    background-color: var(--dropdown-background);
+    color: var(--dropdown-disabled);
+    cursor: not-allowed;
+  }
+}
+
+// Chevron
+.tl-icon--chevron_down {
+  position: absolute;
+  right: var(--tds-spacing-element-16);
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  height: var(--tds-spacing-element-16);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s;
+  transform: rotate(0deg);
+}
+
+.tl-dropdown.open .tl-icon--chevron_down,
+.tl-dropdown__button[aria-expanded='true'] .tl-icon--chevron_down {
+  transform: rotate(180deg);
+}
+
+// List
+.tl-dropdown__list {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 9999;
+  width: 100%;
+  background: var(--dropdown-background);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: var(--dropdown-border-radius, 8px);
+  margin: 0 !important;
+  padding: 0;
+  list-style: none;
+  max-height: 320px;
+  overflow-y: auto;
+  transform-origin: top;
+  transform: scaleY(0);
+  pointer-events: none;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tl-dropdown__list.open {
+  display: block !important;
+  visibility: visible !important;
+  transform: scaleY(1);
+  pointer-events: auto;
+}
+
+.tl-dropdown__list.closed {
+  transform: scaleY(0);
+  pointer-events: none;
+}
+
+.tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__list,
+.tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__list.open {
+  transform: translateY(-20px) scaleY(1);
+}
+
+// Option
+.tl-dropdown__option,
+option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16px;
+  padding-right: var(--tds-spacing-element-16);
+  gap: 8px;
+  height: 48px;
+  line-height: 48px;
+  cursor: pointer;
+  color: var(--dropdown-text);
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background 0.15s, color 0.15s;
+  outline: none;
+  list-style: none;
+  border-bottom: 1px solid var(--dropdown-option-border);
+}
+
+.tl-dropdown__option[aria-disabled='true'],
+option:disabled {
+  color: var(--dropdown-option-disabled, #aaa);
+  cursor: not-allowed;
+  background: none;
+}
+
+.tl-dropdown__option:hover,
+option:hover {
+  background: var(--dropdown-option-background-hover);
+}
+
+.tl-dropdown__option[aria-selected='true'],
+option:checked,
+option[selected] {
+  background: var(--dropdown-option-background-selected);
+  color: var(--dropdown-text);
+}
+
+.tl-dropdown__option[aria-selected='true'] {
+  position: relative;
+}
+
+.tl-icon--tick {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  color: var(--dropdown-icon);
+  vertical-align: middle;
+  position: absolute;
+  right: var(--tds-spacing-element-16);
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  pointer-events: none;
+}
+
+// Helper
+.tl-dropdown__helper {
+  @include detail-05;
+
+  color: var(--dropdown-helper-text);
+  padding-top: var(--tds-spacing-element-4);
+  display: flex;
+  gap: 8px;
+  flex-basis: 100%;
+  z-index: 1;
+
+  .tl-dropdown--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
+}
+
+// Label inside logic (deduplicated)
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tl-dropdown--label-inside:has(.tl-dropdown__helper):not(.tl-dropdown--has-value)
+.tl-dropdown__label--inside {
+  top: calc(50% - 10px);
+}
+
+.tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
+.tl-dropdown__select option:not([value='']):checked
+) {
+  --dropdown-label-top: calc(50% - 22px);
+}
+
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
+  @include detail-07;
+
+  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
+  top: var(--dropdown-label-top, 8px);
+  transform: none;
+}
+
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__button-value {
+  display: none;
+}
+
+.tl-dropdown__label--inside {
+  position: absolute;
+  left: var(--tds-spacing-element-16);
+  width: auto;
+  pointer-events: none;
+  background: transparent;
+  z-index: 1;
+  transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
+  transform-origin: top left;
+  color: var(--dropdown-label-inside);
+  @include detail-02;
+
+  top: var(--dropdown-label-top);
+  transform: translateY(-50%);
+}
+
+// Misc (deduplicated)
+.tl-dropdown {
+  min-width: 208px;
+  position: relative;
+}
+
+.tl-dropdown--no-min-width {
+  min-width: auto;
+}
+
+.tl-dropdown__label {
+  color: var(--dropdown-text);
+  display: block;
+  margin-bottom: var(--tds-spacing-element-4);
+}
+
+.tl-dropdown__label--outside {
+  @include detail-05;
+}
+
+.tl-dropdown--label-inside {
+  position: relative;
+}
+
+.tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
+.tl-dropdown__select option:not([value='']):checked
+)
+.tl-dropdown__label--inside {
+  top: var(--dropdown-label-top);
+}
+
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+  position: relative;
+  display: inline;
+}
+
+.tl-checkbox {
+  justify-content: start;
+}
+
+.tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value,
+.tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+  top: var(--tds-spacing-element-4);
+}
+
+.tl-dropdown--disabled .tl-dropdown__label {
+  color: var(--color-foreground-text-disabled);
+}
+
+.tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) {
+  --dropdown-label-transform: translateY(0);
+  --dropdown-label-top: 8px;
+}
+
+.tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label--inside {
+  @include detail-07;
+}
+
+.tl-dropdown--lg:has(.tl-dropdown__select option:not([value='']):checked) {
+  --dropdown-label-top: 8px;
+}
+
+.tl-dropdown--lg .tl-dropdown__button {
+  min-height: 56px;
+}
+
+.tl-dropdown--md .tl-dropdown__button {
+  min-height: 48px;
+}
+
+.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
+  display: none;
+}
+
+// Animated underline (deduplicated)
+.tl-dropdown__bar {
+  position: relative;
+  width: 100%;
+  height: 0;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    height: 1px;
+    inline-size: 100%;
+    background-color: var(--dropdown-bar-base-color);
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    height: 2px;
+    background-color: var(--dropdown-bar-focus);
+    inline-size: 100%;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s ease;
+    z-index: 1;
+  }
+
+  .tl-dropdown--error:not(.tl-dropdown--disabled) &::before,
+  .tl-dropdown--error:not(.tl-dropdown--disabled) &::after {
+    background-color: var(--dropdown-bar-error);
+  }
+}
+
+.tl-dropdown:has(.tl-dropdown__select:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after,
+.tl-dropdown:has(.tl-dropdown__button:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after {
+  transform: scaleX(1);
+}
+
+.tl-dropdown--disabled .tl-dropdown__bar::after {
+  transform: scaleX(0) !important;
+}
+
+.tl-dropdown--disabled::after {
+  background-color: var(--color-foreground-icon-disabled);
+}
+
+.tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
+  color: var(--dropdown-placeholder);
+}
 
 .tl-dropdown__button-placeholder {
   color: var(--dropdown-placeholder);
@@ -90,9 +476,6 @@
   transform: translateY(-20px) scaleY(1);
 }
 
-// Hide helper when dropdown is open
-
-// --- STATE MODIFIERS ---
 .tl-dropdown--error .tl-dropdown__button {
   border-bottom-color: var(--dropdown-error);
 }
@@ -112,7 +495,6 @@
   transform-origin: top left;
   color: var(--dropdown-label-inside);
 
-  // Typography for inside label before value is selected
   @include detail-02;
 
   top: var(--dropdown-label-top);
@@ -131,7 +513,6 @@
 }
 
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
-  // Typography for inside label after value is selected
   @include detail-07;
 
   color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
@@ -153,7 +534,6 @@
   /* vertical centering handled by line-height = height */
 }
 
-// Animated bar for both select and button variants
 .tl-dropdown:has(.tl-dropdown__select:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after,
 .tl-dropdown:has(.tl-dropdown__button:focus):not(.tl-dropdown--disabled) .tl-dropdown__bar::after {
   transform: scaleX(1);
@@ -237,7 +617,6 @@
   transform: rotate(180deg);
 }
 
-// Also rotate chevron if aria-expanded is true on the button
 .tl-dropdown__button[aria-expanded='true'] .tl-icon--chevron_down {
   transform: rotate(180deg);
 }
@@ -285,7 +664,6 @@
   pointer-events: none;
 }
 
-// Remove default list-item display and bullets
 .tl-dropdown__option,
 option {
   display: flex;
@@ -308,6 +686,7 @@ option {
   outline: none;
   list-style: none;
   border-bottom: 1px solid var(--dropdown-option-border);
+  position: relative;
 }
 
 .tl-dropdown__option:hover,
@@ -321,7 +700,6 @@ option:hover {
   background: none;
 }
 
-// Selected option styling for both li and option
 .tl-dropdown__option[aria-selected='true'],
 option:checked,
 option[selected] {
@@ -329,7 +707,6 @@ option[selected] {
   color: var(--dropdown-text);
 }
 
-// Tick icon only for custom li options
 .tl-dropdown__option[aria-selected='true'] {
   position: relative;
 }
@@ -340,23 +717,6 @@ option[selected] {
   height: 16px;
   color: var(--dropdown-icon);
   vertical-align: middle;
-}
-
-.tl-dropdown__option[aria-selected='true']::after {
-  content: '';
-  display: inline-block;
-  position: absolute;
-  right: var(--tds-spacing-element-16);
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  width: 16px;
-  height: 16px;
-  background: no-repeat center/contain;
-
-  /* Replace with your tick SVG as background-image */
-  background-image: url('data:image/svg+xml;utf8,<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8.5L7 11.5L12 6.5" stroke="%23007A5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-  pointer-events: none;
 }
 
 .tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
@@ -463,108 +823,53 @@ option[selected] {
   appearance: none;
   background-color: var(--dropdown-background);
   color: var(--dropdown-text);
-  border: none;
-  border-bottom: 1px solid var(--dropdown-option-border);
+  border-style: solid;
+  border-color: var(--dropdown-border);
+  border-width: var(--dropdown-border-width, 0 0 1px 0);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
-  height: 56px;
-  line-height: 56px;
-  padding-left: var(--tds-spacing-element-16);
-  padding-right: calc(var(--tds-spacing-element-16) + var(--dropdown-icon-size));
-  transition: border-bottom-color 0.2s ease;
   min-width: 208px;
   position: relative;
+  padding-left: var(--tds-spacing-element-16);
+  padding-right: calc(var(--tds-spacing-element-16) + var(--dropdown-icon-size));
+  transition: border-color 0.2s, border-width 0.2s, border-bottom-color 0.2s ease;
+}
 
-  .tl-dropdown--lg.tl-dropdown--label-inside & {
-    padding-top: var(--tds-spacing-element-24);
-    padding-bottom: 15px;
-    line-height: calc(56px - var(--tds-spacing-element-24) - 15px);
-  }
+// Size variants for field
+.tl-dropdown--lg %tl-dropdown-field {
+  height: 56px;
+  line-height: 56px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
-  .tl-dropdown--md & {
-    height: 48px;
-    line-height: 48px;
-  }
+.tl-dropdown--md %tl-dropdown-field {
+  height: 48px;
+  line-height: 48px;
+}
 
-  .tl-dropdown--md.tl-dropdown--label-inside & {
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-    line-height: calc(48px - var(--tds-spacing-element-20) - 11px);
-  }
+.tl-dropdown--md.tl-dropdown--label-inside %tl-dropdown-field {
+  padding-top: var(--tds-spacing-element-20);
+  padding-bottom: 11px;
+  line-height: calc(48px - var(--tds-spacing-element-20) - 11px);
+}
 
-  .tl-dropdown--sm & {
-    height: 40px;
-  }
+.tl-dropdown--sm %tl-dropdown-field {
+  height: 40px;
+  min-height: 40px;
+}
 
-  .tl-dropdown--sm.tl-dropdown--label-inside & {
-    padding-top: var(--tds-spacing-element-16);
-    padding-bottom: var(--tds-spacing-element-8);
-    line-height: calc(40px - var(--tds-spacing-element-16) - var(--tds-spacing-element-8));
-  }
+.tl-dropdown--sm.tl-dropdown--label-inside %tl-dropdown-field {
+  padding-top: var(--tds-spacing-element-16);
+  padding-bottom: var(--tds-spacing-element-8);
+  line-height: calc(40px - var(--tds-spacing-element-16) - var(--tds-spacing-element-8));
+}
 
-  .tl-dropdown--sm.tl-dropdown--label-inside:has(
-  .tl-dropdown__select option:not([value='']):checked
-)
-  & {
-    padding-top: 0;
-    padding-bottom: 0;
-    line-height: 40px;
-  }
-
-  &:hover {
-    border-bottom-color: var(--dropdown-border-hover);
-  }
-
-  &:focus,
-  &:focus-visible {
-    outline: none;
-    box-shadow: none;
-    border-bottom-color: var(--dropdown-border-hover);
-  }
-
-  &:disabled {
-    background-color: var(--dropdown-background);
-    color: var(--dropdown-disabled);
-    border-bottom-color: transparent;
-    cursor: not-allowed;
-  }
-
-  .tl-dropdown--error & {
-    border-bottom-color: var(--dropdown-error);
-  }
-
-  .tl-dropdown--disabled & {
-    color: var(--dropdown-disabled);
-    border-bottom-color: transparent;
-    pointer-events: none;
-  }
-
-  //  Option styling reference (works on some browsers, e.g. Windows Chromium/Firefox)
-  option {
-    @include detail-02;
-
-    color: var(--dropdown-option-text);
-    background-color: var(--dropdown-option-background);
-    text-align: left;
-
-    /* vertical centering handled by line-height = height in select */
-    padding-inline: var(--tds-spacing-element-16);
-    padding-block: var(--tds-spacing-element-4);
-  }
-
-  option:checked,
-  option[selected] {
-    background-color: var(--dropdown-option-background-selected);
-  }
-
-  option:disabled {
-    color: var(--dropdown-option-disabled);
-    background-color: var(--dropdown-option-background);
-  }
-
-  option:hover {
-    background-color: var(--dropdown-option-background-hover);
-  }
+.tl-dropdown--sm.tl-dropdown--label-inside:has(.tl-dropdown__select option:not([value='']):checked)
+%tl-dropdown-field {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 40px;
 }
 
 // Disabled underline
@@ -633,8 +938,4 @@ option[selected] {
 // Hide inside label for small size when a value is selected
 .tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
   display: none;
-}
-
-.tl-dropdown--sm .tl-dropdown__button {
-  min-height: 40px;
 }
