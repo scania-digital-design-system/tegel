@@ -140,7 +140,6 @@ const Template = ({
                 <label class="tl-checkbox__label" for="${checkboxId}" aria-label="${opt}">${opt}</label>
               </div>
             </span>
-            <!-- Removed .tl-dropdown__option-label, use only checkbox label for text -->
           </li>`;
       })
       .join('');
@@ -266,11 +265,11 @@ const Template = ({
         <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
       </button>
       <ul class="tl-dropdown__list" id="${dropdownId}" role="listbox" tabindex="-1" style="display: none;">
-  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 1">Option 1</li>
-  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 2">Option 2</li>
-  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 3">Option 3</li>
+  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 1">Option 1<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>
+  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 2">Option 2<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>
+  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 3">Option 3<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>
   <li class="tl-dropdown__option" role="option" tabindex="0" aria-disabled="true" data-value="Option disabled">Option disabled</li>
-  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 4">Option 4</li>
+  <li class="tl-dropdown__option" role="option" tabindex="0" data-value="Option 4">Option 4<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>
       </ul>
       <script id="script-${dropdownId}">
         (function() {
@@ -327,16 +326,11 @@ const Template = ({
                     Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach(function(o) {
                       o.removeAttribute('aria-selected');
                       var tick = o.querySelector('.tl-icon--tick');
-                      if (tick) tick.remove();
+                      if (tick) tick.style.display = 'none';
                     });
                     opt.setAttribute('aria-selected', 'true');
-                    // Insert tick icon
-                    if (!opt.querySelector('.tl-icon--tick')) {
-                      var tick = document.createElement('span');
-                      tick.className = 'tl-icon tl-icon--tick';
-                      tick.setAttribute('aria-hidden', 'true');
-                      opt.appendChild(tick);
-                    }
+                    var tick = opt.querySelector('.tl-icon--tick');
+                    if (tick) tick.style.display = '';
               // Reset to placeholder if dropdown is reopened and no value selected
               btn.addEventListener('click', function() {
                 var valueSpan = btn.querySelector('.tl-dropdown__button-value');
