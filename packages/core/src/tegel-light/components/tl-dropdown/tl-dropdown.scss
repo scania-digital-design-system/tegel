@@ -1,3 +1,23 @@
+// Force placeholder and value color to match label when disabled
+.tl-dropdown--disabled .tl-dropdown__select,
+.tl-dropdown--disabled .tl-dropdown__button {
+  color: var(--dropdown-label-disabled, var(--dropdown-disabled)) !important;
+}
+
+.tl-dropdown--disabled .tl-dropdown__button-placeholder {
+  color: var(--dropdown-label-disabled, var(--dropdown-disabled)) !important;
+}
+
+// Chevron color matches label when disabled
+.tl-dropdown--disabled .tl-icon--chevron_down {
+  color: var(--dropdown-label-disabled, var(--dropdown-disabled));
+}
+
+// Hide bar for all disabled dropdowns
+.tl-dropdown--disabled .tl-dropdown__bar {
+  display: none !important;
+}
+
 // --- Small size: vertical centering for select ---
 .tl-dropdown--sm .tl-dropdown__select {
   height: 40px;
@@ -37,7 +57,7 @@
 .traton .tl-dropdown__select:disabled {
   border-color: transparent;
   background-color: var(--dropdown-background);
-  color: var(--dropdown-disabled-color);
+  color: var(--dropdown-disabled);
   cursor: not-allowed;
 }
 
@@ -72,7 +92,7 @@
   &:disabled {
     border-color: transparent;
     background-color: var(--dropdown-background);
-    color: var(--dropdown-disabled-color);
+    color: var(--dropdown-disabled);
     cursor: not-allowed;
   }
 }
@@ -261,7 +281,7 @@
 }
 
 .tl-dropdown--disabled .tl-dropdown__button {
-  color: var(--dropdown-disabled-color);
+  color: var(--dropdown-disabled);
   background: var(--dropdown-background);
   border-bottom-color: transparent;
   cursor: not-allowed;
@@ -271,12 +291,15 @@
 // Remove default list-item display and bullets
 .tl-dropdown__option,
 option {
-  display: block;
-  @include detail-02;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 16px;
+  padding-right: var(--tds-spacing-element-16);
+  gap: 8px;
   height: 48px;
   line-height: 48px;
-  padding: 0 var(--tds-spacing-element-16);
   cursor: pointer;
   color: var(--dropdown-text);
   background: none;
@@ -288,8 +311,6 @@ option {
   outline: none;
   list-style: none;
   border-bottom: 1px solid var(--dropdown-option-border);
-
-  /* Remove flex, align-items, justify-content, gap for button version */
 }
 
 .tl-dropdown__option:hover,
@@ -314,6 +335,14 @@ option[selected] {
 // Tick icon only for custom li options
 .tl-dropdown__option[aria-selected='true'] {
   position: relative;
+}
+
+.tl-icon--tick {
+  display: inline-flex;
+  width: 16px;
+  height: 16px;
+  color: var(--dropdown-icon);
+  vertical-align: middle;
 }
 
 .tl-dropdown__option[aria-selected='true']::after {
@@ -351,10 +380,10 @@ option[selected] {
 .tl-dropdown--disabled {
   pointer-events: none;
 
-  --dropdown-text: var(--dropdown-disabled-color);
-  --dropdown-helper-text: var(--dropdown-disabled-color);
-  --dropdown-placeholder: var(--dropdown-disabled-color);
-  --dropdown-icon: var(--dropdown-disabled-color);
+  --dropdown-text: var(--dropdown-disabled);
+  --dropdown-helper-text: var(--dropdown-disabled);
+  --dropdown-placeholder: var(--dropdown-disabled);
+  --dropdown-icon: var(--dropdown-disabled);
   --dropdown-bar-color: transparent;
   --dropdown-bar-base-color: var(--color-foreground-border-soft);
   --dropdown-border: var(--dropdown-border-disabled);
@@ -392,6 +421,10 @@ option[selected] {
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
   position: relative;
   display: inline;
+}
+
+.tl-checkbox {
+  justify-content: start;
 }
 
 .tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value,
@@ -494,7 +527,7 @@ option[selected] {
 
   &:disabled {
     background-color: var(--dropdown-background);
-    color: var(--dropdown-disabled-color);
+    color: var(--dropdown-disabled);
     border-bottom-color: transparent;
     cursor: not-allowed;
   }
@@ -504,7 +537,7 @@ option[selected] {
   }
 
   .tl-dropdown--disabled & {
-    color: var(--dropdown-disabled-color);
+    color: var(--dropdown-disabled);
     border-bottom-color: transparent;
     pointer-events: none;
   }
