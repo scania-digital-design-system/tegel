@@ -30,7 +30,7 @@ export class TdsHeaderLauncher {
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-    const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
+    const isClickOutside = !event.composedPath().includes(this.host);
     if (isClickOutside) {
       this.open = false;
     }
@@ -101,7 +101,7 @@ export class TdsHeaderLauncher {
             <tds-popover-canvas
               id={`tds-launcher-${this.uuid}`}
               class="menu"
-              referenceEl={this.buttonEl as unknown as HTMLElement}
+              referenceEl={this.buttonEl}
               placement="bottom-start"
               show={this.open}
               offsetDistance={0}
