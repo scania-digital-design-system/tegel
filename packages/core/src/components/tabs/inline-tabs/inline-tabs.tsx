@@ -164,17 +164,17 @@ export class TdsInlineTabs {
         }
       };
       item.addEventListener('click', clickHandler);
-      this.clickHandlers.set(item as unknown as HTMLElement, clickHandler); // Store the handler in WeakMap
+      this.clickHandlers.set(item, clickHandler); // Store the handler in WeakMap
       return item;
     });
   };
 
   private removeEventListenerFromTabs = (): void => {
     this.children.forEach((item) => {
-      const clickHandler = this.clickHandlers.get(item as unknown as HTMLElement);
+      const clickHandler = this.clickHandlers.get(item);
       if (clickHandler) {
         item.removeEventListener('click', clickHandler);
-        this.clickHandlers.delete(item as unknown as HTMLElement);
+        this.clickHandlers.delete(item);
       }
     });
   };

@@ -82,10 +82,7 @@ export class TdsTooltip {
   inheritedAttributes: Attributes = [];
 
   componentWillLoad() {
-    this.inheritedAttributes = inheritAttributes(this.host as unknown as HTMLElement, [
-      'style',
-      'class',
-    ]);
+    this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
   }
 
   determineTrigger() {
