@@ -541,9 +541,9 @@ option[selected] {
   --dropdown-placeholder: var(--dropdown-disabled);
   --dropdown-icon: var(--dropdown-disabled);
   --dropdown-bar-color: transparent;
-  --dropdown-bar-base-color: var(--color-foreground-border-soft);
-  --dropdown-border: var(--dropdown-border-disabled);
-  --dropdown-border-hover: var(--dropdown-border-disabled);
+  --dropdown-bar-base-color: transparent;
+  --dropdown-border: transparent;
+  --dropdown-border-hover: transparent;
 }
 
 .tl-dropdown--error:not(.tl-dropdown--disabled) {
@@ -717,13 +717,14 @@ option[selected] {
     z-index: 1;
   }
 
-  .tl-dropdown--error:not(.tl-dropdown--disabled) &::before {
-    background-color: var(--dropdown-bar-error);
-  }
-
   .tl-dropdown--error:not(.tl-dropdown--disabled) &::after {
     background-color: var(--dropdown-bar-error);
   }
+}
+
+// Make the static underline transparent when disabled
+.tl-dropdown--disabled .tl-dropdown__bar::before {
+  background-color: transparent !important;
 }
 
 .tl-dropdown__helper {
