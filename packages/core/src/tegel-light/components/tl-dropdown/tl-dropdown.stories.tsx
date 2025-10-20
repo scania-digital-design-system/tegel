@@ -1,49 +1,40 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
+// --- Dropdown Scripts ---
+
+// Handles label-inside logic for native select
 function dropdownSelectScript(dropdownId: string): void {
   const wrapper = document.getElementById(`${dropdownId}-wrapper`);
-  if (!wrapper) {
-    return;
-  }
-  const select = wrapper.querySelector('.tl-dropdown__select');
-  if (!select) {
-    return;
-  }
-  const selectEl = select as HTMLSelectElement;
-  selectEl.addEventListener('change', () => {
-    const parent = wrapper.closest('.tl-dropdown');
-    if (!parent) {
-      return;
-    }
-    if (selectEl.value) {
-      parent.classList.add('tl-dropdown--has-value');
-    } else {
-      parent.classList.remove('tl-dropdown--has-value');
-    }
-  });
-  // Initial state
+  if (!wrapper) return;
+  const select = wrapper.querySelector('.tl-dropdown__select') as HTMLSelectElement | null;
+  if (!select) return;
   const parent = wrapper.closest('.tl-dropdown');
-  if (parent) {
-    if (selectEl.value) {
+  function update() {
+    if (!parent) return;
+    if (select.value) {
       parent.classList.add('tl-dropdown--has-value');
     } else {
       parent.classList.remove('tl-dropdown--has-value');
     }
   }
+  select.addEventListener('change', update);
+  update();
 }
+
+// Handles open/close, value, and multiselect logic for button/multiselect
 function dropdownScript(dropdownId: string, isMulti: boolean) {
   let btn: HTMLElement | null;
   let list: HTMLElement | null;
-  // Use checkboxes as source of truth for selected values
+
+  // Update button value and label-inside state
   function updateButtonValue() {
-    const valueSpan = btn.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
-    const placeholderSpan = btn.querySelector(
+    const valueSpan = btn?.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
+    const placeholderSpan = btn?.querySelector(
       '.tl-dropdown__button-placeholder',
     ) as HTMLElement | null;
-    const parent = btn.closest('.tl-dropdown');
+    const parent = btn?.closest('.tl-dropdown');
     if (isMulti) {
-      // Get all checked checkboxes in the dropdown
-      const checkedBoxes = list.querySelectorAll('.tl-checkbox__input:checked');
+      const checkedBoxes = list?.querySelectorAll('.tl-checkbox__input:checked') || [];
       const selectedValues = Array.from(checkedBoxes)
         .map((cb) => {
           const li = cb.closest('.tl-dropdown__option');
@@ -55,10 +46,8 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
           valueSpan.textContent = selectedValues.join(', ');
           valueSpan.style.display = '';
         }
-        if (placeholderSpan) {
-          placeholderSpan.style.display = 'none';
-        }
-        if (parent && parent.classList.contains('tl-dropdown--label-inside')) {
+        if (placeholderSpan) placeholderSpan.style.display = 'none';
+        if (parent?.classList.contains('tl-dropdown--label-inside')) {
           parent.classList.add('tl-dropdown--has-value');
         }
       } else {
@@ -66,66 +55,62 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
           valueSpan.textContent = '';
           valueSpan.style.display = 'none';
         }
-        if (placeholderSpan) {
-          placeholderSpan.style.display = '';
-        }
-        if (parent && parent.classList.contains('tl-dropdown--label-inside')) {
+        if (placeholderSpan) placeholderSpan.style.display = '';
+        if (parent?.classList.contains('tl-dropdown--label-inside')) {
           parent.classList.remove('tl-dropdown--has-value');
         }
       }
     }
   }
-  function toggleOption(opt) {
-    const checkbox =
-      opt && typeof opt.querySelector === 'function'
-        ? (opt.querySelector('.tl-checkbox__input') as HTMLInputElement)
-        : null;
+
+  // Toggle option selection (single/multi)
+  function toggleOption(opt: HTMLElement) {
+    const checkbox = opt.querySelector?.('.tl-checkbox__input') as HTMLInputElement | null;
     if (isMulti) {
       if (checkbox) {
         checkbox.checked = !checkbox.checked;
         if (checkbox.checked) {
-          if (typeof opt.setAttribute === 'function') opt.setAttribute('aria-selected', 'true');
-          if (typeof opt.classList?.add === 'function')
-            opt.classList.add('tl-dropdown__option--selected');
+          opt.setAttribute('aria-selected', 'true');
+          opt.classList.add('tl-dropdown__option--selected');
         } else {
-          if (typeof opt.removeAttribute === 'function') opt.removeAttribute('aria-selected');
-          if (typeof opt.classList?.remove === 'function')
-            opt.classList.remove('tl-dropdown__option--selected');
+          opt.removeAttribute('aria-selected');
+          opt.classList.remove('tl-dropdown__option--selected');
         }
       }
       updateButtonValue();
     } else {
       // Single select
-      const valueSpan = btn.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
-      const placeholderSpan = btn.querySelector(
+      const valueSpan = btn?.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
+      const placeholderSpan = btn?.querySelector(
         '.tl-dropdown__button-placeholder',
       ) as HTMLElement | null;
-      const parent = btn.closest('.tl-dropdown');
+      const parent = btn?.closest('.tl-dropdown');
       if (valueSpan) {
         valueSpan.textContent = opt.textContent;
         valueSpan.style.display = '';
       }
-      if (placeholderSpan && !btn.classList.contains('tl-dropdown--label-inside')) {
+      if (placeholderSpan && !btn?.classList.contains('tl-dropdown--label-inside')) {
         placeholderSpan.style.display = 'none';
       }
-      if (parent && parent.classList.contains('tl-dropdown--label-inside')) {
+      if (parent?.classList.contains('tl-dropdown--label-inside')) {
         parent.classList.add('tl-dropdown--has-value');
       }
-      btn.setAttribute('aria-expanded', 'false');
-      list.style.display = 'none';
-      list.classList.remove('open');
-      Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((o) => {
-        const elem = o as HTMLElement;
-        if (elem) {
+      btn?.setAttribute('aria-expanded', 'false');
+      if (list) {
+        list.style.display = 'none';
+        list.classList.remove('open');
+        Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((o) => {
+          const elem = o as HTMLElement;
           elem.removeAttribute('aria-selected');
           const tick = elem.querySelector('.tl-icon--tick') as HTMLElement | null;
           if (tick) tick.style.display = 'none';
-        }
-      });
-      if (typeof opt.setAttribute === 'function') opt.setAttribute('aria-selected', 'true');
-      const tick =
-        typeof opt.querySelector === 'function' ? opt.querySelector('.tl-icon--tick') : null;
+        });
+      }
+      opt.setAttribute('aria-selected', 'true');
+      const tick = opt.querySelector?.('.tl-icon--tick') as HTMLElement | null;
       if (tick) tick.style.display = '';
+
+      // Attach event listeners
     }
   }
   function attach() {
@@ -157,9 +142,7 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
       });
       Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((el) => {
         const elem = el as HTMLElement;
-        if (elem.getAttribute('aria-disabled') === 'true') {
-          return;
-        }
+        if (elem.getAttribute('aria-disabled') === 'true') return;
         elem.addEventListener('click', (ev: Event) => {
           ev.stopPropagation();
           toggleOption(elem);
@@ -174,15 +157,14 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
       });
     }
   }
-  // Use a WeakMap to track observers instead of assigning to DOM
+
+  // Use WeakMap to track MutationObservers
   type ObserverMap = WeakMap<Element, MutationObserver>;
   interface TegelWindow extends Window {
     dropdownObserverMap?: ObserverMap;
   }
   const win = window as TegelWindow;
-  if (!win.dropdownObserverMap) {
-    win.dropdownObserverMap = new WeakMap();
-  }
+  if (!win.dropdownObserverMap) win.dropdownObserverMap = new WeakMap();
   const scriptEl = document.getElementById(`script-${dropdownId}`);
   const observerMap = win.dropdownObserverMap;
   if (scriptEl && !observerMap.has(scriptEl)) {
@@ -196,11 +178,15 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
     setTimeout(attach, 0);
   }
 }
+
+// --- Dropdown Option Data ---
 // ...existing code...
 
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 
-function getLabelMarkup(label, labelId, isLabelInside) {
+// --- Markup Helpers ---
+
+function getLabelMarkup(label: string, labelId: string, isLabelInside: boolean): string {
   if (!label) return '';
   const labelClasses = ['tl-dropdown__label'];
   if (isLabelInside) labelClasses.push('tl-dropdown__label--inside');
@@ -209,7 +195,7 @@ function getLabelMarkup(label, labelId, isLabelInside) {
   }>${label}</label>`;
 }
 
-function getHelperMarkup(helper, error) {
+function getHelperMarkup(helper: string, error: boolean): string {
   if (!helper) return '';
   const helperIcon = error
     ? '<span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>'
@@ -294,8 +280,7 @@ function getButtonMarkup({ isLabelInside, placeholder, disabled }) {
   `;
 }
 
-// Shared dropdown open/close logic for both button and multiselect
-// (TypeScript-safe: cast unknowns, use WeakMap for observer tracking)
+// --- Storybook Meta ---
 
 export default {
   title: 'Tegel Light (CSS)/Dropdown',
@@ -345,6 +330,9 @@ export default {
       name: 'Multiselect',
       control: { type: 'boolean' },
       defaultValue: false,
+
+      // --- Storybook Template ---
+
       description: 'Enable multiselect for button variant',
     },
   },
@@ -358,6 +346,7 @@ export default {
     helper: 'Helper text',
     showHelper: true,
     error: false,
+    // --- Normalize and prepare props ---
     disabled: false,
     multiselect: false,
   },
@@ -365,6 +354,8 @@ export default {
 
 const Template = ({
   variant,
+
+  // --- Field and script markup ---
   label,
   placeholder,
   helper,
@@ -378,6 +369,8 @@ const Template = ({
 }) => {
   const normalizedSize = { Large: 'lg', Medium: 'md', Small: 'sm' }[size] ?? 'lg';
   const isLabelInside = labelPlacement === 'Inside';
+
+  // --- Final HTML ---
   const showLabel = labelPlacement !== 'No label';
   const modeClass = modeVariant === 'Secondary' ? 'tl-dropdown--secondary' : 'tl-dropdown--primary';
   const labelId = showLabel ? 'tl-dropdown-story-label' : '';
