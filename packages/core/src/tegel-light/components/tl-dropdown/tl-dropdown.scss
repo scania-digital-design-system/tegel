@@ -1,50 +1,48 @@
 @import './tl-dropdown-vars';
 
-.tl-dropdown__button-value,
-.tl-dropdown__button-placeholder {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: calc(100% - 32px);
-  margin-right: 8px;
+//tl-dropdown
+.tl-dropdown {
+  min-width: 208px;
+  position: relative;
 }
 
-.tl-dropdown__button-value {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  flex: 1 1 auto;
-  min-width: 0;
-  max-width: calc(100% - 32px);
-  margin-right: 8px;
-}
+// --- Dropdown Button & Select ---
 
-.tl-dropdown--disabled .tl-dropdown__button {
-  background: var(--dropdown-background);
-  border-color: var(--dropdown-border-disabled, transparent);
-  border-width: var(--dropdown-border-width, 0 0 1px 0);
-  cursor: not-allowed;
-}
-
-// Error state
-.tl-dropdown--error:not(.tl-dropdown--disabled) {
-  --dropdown-border: var(--dropdown-border-error);
-  --dropdown-border-hover: var(--dropdown-border-error-hover);
-  --dropdown-helper-text: var(--dropdown-error);
-  --dropdown-bar-base-color: var(--dropdown-bar-error);
-}
-
-// Select field
-
+.tl-dropdown__button,
 .tl-dropdown__select {
   @extend %tl-dropdown-field;
+  @include detail-02;
 
-  cursor: pointer;
-  text-align: left;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: var(--dropdown-background);
   color: var(--dropdown-text);
+  border-style: solid;
+  border-color: var(--dropdown-border);
+  border-width: var(--dropdown-border-width, 0 0 1px 0);
+  border-radius: var(--dropdown-border-radius);
   box-shadow: none;
+  padding: 0 var(--tds-spacing-element-16);
+  padding-right: 40px;
+  text-align: left;
+  gap: 0;
+  cursor: pointer;
+  transition: border-color 0.2s, border-width 0.2s;
+  position: relative;
+  outline: none;
+}
+
+// --- Size variants ---
+.tl-dropdown--lg .tl-dropdown__button,
+.tl-dropdown--lg .tl-dropdown__select {
+  min-height: 56px;
+}
+
+.tl-dropdown--md .tl-dropdown__button,
+.tl-dropdown--md .tl-dropdown__select {
+  min-height: 48px;
 }
 
 .tl-dropdown--sm .tl-dropdown__select {
@@ -52,31 +50,86 @@
   line-height: 40px;
 }
 
-.tl-dropdown__button {
-  @extend %tl-dropdown-field;
-  @include detail-02;
-
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0;
-  padding-right: 0;
-  outline: none;
-  position: relative;
-  text-align: left;
+// --- State: Disabled ---
+.tl-dropdown--disabled .tl-dropdown__button,
+.tl-dropdown--disabled .tl-dropdown__select {
+  color: var(--dropdown-disabled);
+  background: var(--dropdown-background);
+  border-color: var(--dropdown-border-disabled, transparent);
+  border-width: var(--dropdown-border-width, 0 0 1px 0);
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
-.tl-dropdown__button:hover {
+// --- State: Error ---
+.tl-dropdown--error .tl-dropdown__button:focus,
+.tl-dropdown--error .tl-dropdown__button:focus-visible,
+.tl-dropdown--error .tl-dropdown__select:focus,
+.tl-dropdown--error .tl-dropdown__select:focus-visible {
+  border-color: var(--dropdown-border-error-focus) !important;
+  border-width: var(
+    --dropdown-border-error-focus-width,
+    var(--dropdown-border-focus-width, 0 0 2px 0)
+  ) !important;
+  outline: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.tl-dropdown--error .tl-dropdown__button {
+  border-bottom-color: var(--dropdown-error);
+}
+
+// --- State: Hover ---
+.tl-dropdown__button:hover,
+.tl-dropdown__select:hover {
   border-color: var(--dropdown-border-hover);
   border-width: var(--dropdown-border-width-hover, 0 0 2px 0);
 }
 
+// --- State: Focus ---
 .tl-dropdown__button:focus,
-.tl-dropdown__button:focus-visible {
+.tl-dropdown__button:focus-visible,
+.tl-dropdown__select:focus,
+.tl-dropdown__select:focus-visible {
   border-color: var(--dropdown-border-focus);
   border-width: var(--dropdown-border-focus-width, var(--dropdown-border-width-hover, 0 0 2px 0));
   outline: none;
   box-shadow: none;
+}
+
+// --- Placeholder color for select ---
+.tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
+  color: var(--dropdown-placeholder);
+}
+
+// --- Special padding for sm/label-inside ---
+.tl-dropdown--sm:has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown--label-inside
+.tl-dropdown__select {
+  padding-top: var(--tds-spacing-element-20);
+  padding-bottom: 12px;
+  line-height: calc(56px - var(--tds-spacing-element-20) - 12px);
+}
+
+//dropdown value and placeholder
+
+.tl-dropdown__button-value,
+.tl-dropdown__button-placeholder {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 40px);
+  margin-right: 8px;
+}
+
+.tl-dropdown--error:not(.tl-dropdown--disabled) {
+  --dropdown-border: var(--dropdown-border-error);
+  --dropdown-border-hover: var(--dropdown-border-error-hover);
+  --dropdown-helper-text: var(--dropdown-error);
+  --dropdown-bar-base-color: var(--dropdown-bar-error);
 }
 
 // Placeholder
@@ -179,20 +232,6 @@
   transform: translateY(-20px) scaleY(1);
 }
 
-.tl-dropdown--error .tl-dropdown__button:focus,
-.tl-dropdown--error .tl-dropdown__button:focus-visible,
-.tl-dropdown--error .tl-dropdown__select:focus,
-.tl-dropdown--error .tl-dropdown__select:focus-visible {
-  border-color: var(--dropdown-border-error-focus) !important;
-  border-width: var(
-    --dropdown-border-error-focus-width,
-    var(--dropdown-border-error-focus-thickness, 0 0 2px 0)
-  ) !important;
-  outline: none;
-  box-shadow: none;
-  cursor: not-allowed;
-}
-
 .tl-dropdown__option:hover,
 option:hover {
   background: var(--dropdown-option-background-hover);
@@ -252,17 +291,14 @@ option[selected] {
 
 .tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: var(--tds-spacing-element-16);
+  right: 32px;
   top: 50%;
   transform: translateY(-50%);
-  height: 40px;
-  display: flex;
-  align-items: center;
-  padding-left: var(--tds-spacing-element-16);
-  padding-right: 40px;
   background: transparent;
-  z-index: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .tl-dropdown--label-inside:has(.tl-dropdown__helper):not(.tl-dropdown--has-value)
@@ -308,14 +344,6 @@ option[selected] {
   transform: translateY(-50%);
 }
 
-.tl-dropdown--lg .tl-dropdown__button {
-  min-height: 56px;
-}
-
-.tl-dropdown--md .tl-dropdown__button {
-  min-height: 48px;
-}
-
 .tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
   display: none;
 }
@@ -333,20 +361,11 @@ option[selected] {
   background-color: var(--color-foreground-icon-disabled);
 }
 
-.tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
-  color: var(--dropdown-placeholder);
-}
-
 .tl-dropdown__list.open {
   display: block !important;
   visibility: visible !important;
   transform: scaleY(1);
   pointer-events: auto;
-}
-
-.tl-dropdown {
-  min-width: 208px;
-  position: relative;
 }
 
 .tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__list {
@@ -357,10 +376,6 @@ option[selected] {
   transform: translateY(-20px) scaleY(1);
 }
 
-.tl-dropdown--error .tl-dropdown__button {
-  border-bottom-color: var(--dropdown-error);
-}
-
 .tl-dropdown--disabled {
   pointer-events: none;
 }
@@ -369,31 +384,6 @@ option[selected] {
   color: var(--dropdown-option-disabled, #aaa);
   cursor: not-allowed;
   background: none;
-}
-
-.tl-dropdown__button,
-.tl-dropdown__select {
-  @include detail-02;
-
-  width: 100%;
-  background: var(--dropdown-background);
-  color: var(--dropdown-text);
-  border-style: solid;
-  border-color: var(--dropdown-border);
-  border-width: var(--dropdown-border-width, 0 0 1px 0);
-  border-radius: var(--dropdown-border-radius);
-  box-shadow: none;
-  padding: 0 var(--tds-spacing-element-16);
-  padding-right: 40px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0;
-  cursor: pointer;
-  transition: border-color 0.2s, border-width 0.2s;
-  position: relative;
-  outline: none;
 }
 
 .tl-icon--chevron_down {
@@ -410,57 +400,6 @@ option[selected] {
 .tl-dropdown.open .tl-icon--chevron_down,
 .tl-dropdown__button[aria-expanded='true'] .tl-icon--chevron_down {
   transform: rotate(180deg);
-}
-
-.tl-dropdown--lg .tl-dropdown__button,
-.tl-dropdown--lg .tl-dropdown__select {
-  min-height: 56px;
-}
-
-.tl-dropdown--md .tl-dropdown__button,
-.tl-dropdown--md .tl-dropdown__select {
-  min-height: 48px;
-}
-
-.tl-dropdown__button:hover,
-.tl-dropdown__select:hover {
-  border-color: var(--dropdown-border-hover);
-  border-width: var(--dropdown-border-width-hover, 0 0 2px 0);
-}
-
-.tl-dropdown__button:focus,
-.tl-dropdown__button:focus-visible,
-.tl-dropdown__select:focus,
-.tl-dropdown__select:focus-visible {
-  border-color: var(--dropdown-border-focus);
-  border-width: var(--dropdown-border-focus-width, var(--dropdown-border-width-hover, 0 0 2px 0));
-  outline: none;
-  box-shadow: none;
-}
-
-.tl-dropdown--error .tl-dropdown__button:focus,
-.tl-dropdown--error .tl-dropdown__button:focus-visible,
-.tl-dropdown--error .tl-dropdown__select:focus,
-.tl-dropdown--error .tl-dropdown__select:focus-visible {
-  border-color: var(--dropdown-border-error-focus);
-  outline: none;
-  box-shadow: none;
-
-  // Scania: exakt samma border-width som vanlig focus, ändra bara färg. Traton: styrs av variabel.
-  border-width: var(
-    --dropdown-border-error-focus-width,
-    var(--dropdown-border-focus-width, 0 0 2px 0)
-  ) !important;
-}
-
-.tl-dropdown--disabled .tl-dropdown__button,
-.tl-dropdown--disabled .tl-dropdown__select {
-  color: var(--dropdown-disabled);
-  background: var(--dropdown-background);
-  border-color: var(--dropdown-border-disabled, transparent);
-  border-width: var(--dropdown-border-width, 0 0 1px 0);
-  cursor: not-allowed;
-  pointer-events: none;
 }
 
 .tl-dropdown__option,
@@ -606,14 +545,6 @@ option[selected] {
   --dropdown-label-top: 8px;
 }
 
-.tl-dropdown--sm:has(.tl-dropdown__select option:not([value='']):checked)
-.tl-dropdown--label-inside
-.tl-dropdown__select {
-  padding-top: var(--tds-spacing-element-20);
-  padding-bottom: 12px;
-  line-height: calc(56px - var(--tds-spacing-element-20) - 12px);
-}
-
 // Shared base styles for dropdown fields
 %tl-dropdown-field {
   @include detail-02;
@@ -679,10 +610,6 @@ option[selected] {
 
 .tl-dropdown--disabled .tl-dropdown__bar::after {
   transform: scaleX(0) !important;
-}
-
-.tl-dropdown:has(.tl-dropdown__select option[value='']:checked) .tl-dropdown__select {
-  color: var(--dropdown-placeholder);
 }
 
 // Animated underline
