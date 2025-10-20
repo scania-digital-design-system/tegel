@@ -1,7 +1,5 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
-// Script for select variant to toggle .tl-dropdown--has-value
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function dropdownSelectScript(dropdownId: string): void {
   const wrapper = document.getElementById(`${dropdownId}-wrapper`);
   if (!wrapper) {
@@ -33,18 +31,10 @@ function dropdownSelectScript(dropdownId: string): void {
     }
   }
 }
-
-// Shared dropdown open/close logic for both button and multiselect
-// Removed duplicate definition of dropdownScript
-// Script for select variant to toggle .tl-dropdown--has-value
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// Removed unused dropdownSelectScript function
-
-// Shared dropdown open/close logic for both button and multiselect
 function dropdownScript(dropdownId: string, isMulti: boolean) {
   let btn: HTMLElement | null;
   let list: HTMLElement | null;
-  const selected: string[] = [];
+  // Use checkboxes as source of truth for selected values
   function updateButtonValue() {
     const valueSpan = btn.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
     const placeholderSpan = btn.querySelector(
@@ -52,9 +42,17 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
     ) as HTMLElement | null;
     const parent = btn.closest('.tl-dropdown');
     if (isMulti) {
-      if (selected.length) {
+      // Get all checked checkboxes in the dropdown
+      const checkedBoxes = list.querySelectorAll('.tl-checkbox__input:checked');
+      const selectedValues = Array.from(checkedBoxes)
+        .map((cb) => {
+          const li = cb.closest('.tl-dropdown__option');
+          return li ? li.getAttribute('data-value') : '';
+        })
+        .filter(Boolean);
+      if (selectedValues.length) {
         if (valueSpan) {
-          valueSpan.textContent = selected.join(', ');
+          valueSpan.textContent = selectedValues.join(', ');
           valueSpan.style.display = '';
         }
         if (placeholderSpan) {
@@ -78,26 +76,22 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
     }
   }
   function toggleOption(opt) {
-    const value =
-      opt && typeof opt.getAttribute === 'function' ? opt.getAttribute('data-value') ?? '' : '';
-    const idx = selected.indexOf(value);
     const checkbox =
       opt && typeof opt.querySelector === 'function'
         ? (opt.querySelector('.tl-checkbox__input') as HTMLInputElement)
         : null;
     if (isMulti) {
-      if (idx === -1) {
-        selected.push(value);
-        if (typeof opt.setAttribute === 'function') opt.setAttribute('aria-selected', 'true');
-        if (typeof opt.classList?.add === 'function')
-          opt.classList.add('tl-dropdown__option--selected');
-        if (checkbox) checkbox.checked = true;
-      } else {
-        selected.splice(idx, 1);
-        if (typeof opt.removeAttribute === 'function') opt.removeAttribute('aria-selected');
-        if (typeof opt.classList?.remove === 'function')
-          opt.classList.remove('tl-dropdown__option--selected');
-        if (checkbox) checkbox.checked = false;
+      if (checkbox) {
+        checkbox.checked = !checkbox.checked;
+        if (checkbox.checked) {
+          if (typeof opt.setAttribute === 'function') opt.setAttribute('aria-selected', 'true');
+          if (typeof opt.classList?.add === 'function')
+            opt.classList.add('tl-dropdown__option--selected');
+        } else {
+          if (typeof opt.removeAttribute === 'function') opt.removeAttribute('aria-selected');
+          if (typeof opt.classList?.remove === 'function')
+            opt.classList.remove('tl-dropdown__option--selected');
+        }
       }
       updateButtonValue();
     } else {
@@ -230,7 +224,7 @@ function getSelectMarkup({ isLabelInside, placeholder, showLabel, labelId, disab
     ? `<option value="" disabled selected>${placeholder}</option>`
     : '';
   const ariaLabelAttr = showLabel && labelId ? `aria-labelledby="${labelId}"` : '';
-  const selectId = `tl-dropdown-select-${Math.random().toString(36).slice(2, 8)}`;
+  const selectId = 'tl-dropdown-select-demo';
   return `
     <div style="position: relative; display: flex; align-items: center;" id="${selectId}-wrapper">
       <select class="tl-dropdown__select" ${ariaLabelAttr}${
@@ -243,14 +237,11 @@ function getSelectMarkup({ isLabelInside, placeholder, showLabel, labelId, disab
       </select>
       <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true" style="position: absolute; right: 16px; pointer-events: none;"></span>
     </div>
-    <script id="script-${selectId}">
-      (${dropdownSelectScript.toString()})('${selectId}');
-    </script>`;
-  // Script for select variant to toggle .tl-dropdown--has-value
+  `;
 }
 
 function getMultiselectMarkup({ isLabelInside, placeholder, disabled }) {
-  const multiId = `tl-dropdown-list-${Math.random().toString(36).slice(2, 8)}`;
+  const multiId = 'tl-dropdown-multiselect-demo';
   const optionsMarkup = OPTIONS.map((opt, i) => {
     const checkboxId = `tl-checkbox-${multiId}-${i}`;
     return `
@@ -276,14 +267,11 @@ function getMultiselectMarkup({ isLabelInside, placeholder, disabled }) {
     <ul class="tl-dropdown__list" id="${multiId}" role="listbox" tabindex="-1" style="display: none;">
       ${optionsMarkup}
     </ul>
-    <script id="script-${multiId}">
-      (${dropdownScript.toString()})('${multiId}', true);
-    </script>
   `;
 }
 
 function getButtonMarkup({ isLabelInside, placeholder, disabled }) {
-  const buttonId = `tl-dropdown-list-${Math.random().toString(36).slice(2, 8)}`;
+  const buttonId = 'tl-dropdown-button-demo';
   const optionsMarkup =
     OPTIONS.map(
       (opt) =>
@@ -303,9 +291,6 @@ function getButtonMarkup({ isLabelInside, placeholder, disabled }) {
     <ul class="tl-dropdown__list" id="${buttonId}" role="listbox" tabindex="-1" style="display: none;">
       ${optionsMarkup}
     </ul>
-    <script id="script-${buttonId}">
-      (${dropdownScript.toString()})('${buttonId}', false);
-    </script>
   `;
 }
 
@@ -399,12 +384,16 @@ const Template = ({
   const labelMarkup = showLabel ? getLabelMarkup(label, labelId, isLabelInside) : '';
   const helperMarkup = showHelper && helper ? getHelperMarkup(helper, error) : '';
   let fieldMarkup = '';
+  let scriptMarkup = '';
   if (variant === 'Select') {
     fieldMarkup = getSelectMarkup({ isLabelInside, placeholder, showLabel, labelId, disabled });
+    scriptMarkup = `<script id="script-tl-dropdown-select-demo">(${dropdownSelectScript.toString()})('tl-dropdown-select-demo');</script>`;
   } else if (multiselect) {
     fieldMarkup = getMultiselectMarkup({ isLabelInside, placeholder, disabled });
+    scriptMarkup = `<script id="script-tl-dropdown-multiselect-demo">(${dropdownScript.toString()})('tl-dropdown-multiselect-demo', true);</script>`;
   } else {
     fieldMarkup = getButtonMarkup({ isLabelInside, placeholder, disabled });
+    scriptMarkup = `<script id="script-tl-dropdown-button-demo">(${dropdownScript.toString()})('tl-dropdown-button-demo', false);</script>`;
   }
   const barMarkup = '<div class="tl-dropdown__bar"></div>';
   return formatHtmlPreview(`
@@ -419,6 +408,7 @@ const Template = ({
         ${barMarkup}
         ${helperMarkup}
       </div>
+      ${scriptMarkup}
     </div>
   `);
 };
