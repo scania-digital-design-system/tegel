@@ -97,13 +97,7 @@
     padding-bottom: 15px;
   }
 
-  .tl-text-field--label-inside.tl-text-field--md & {
-    @include placeholder-label;
-
-    padding-top: var(--tds-spacing-element-20);
-    padding-bottom: 11px;
-  }
-
+  .tl-text-field--label-inside.tl-text-field--md &,
   .tl-text-field--label-inside.tl-text-field--sm & {
     @include placeholder-label;
 
