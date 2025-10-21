@@ -177,6 +177,7 @@
     overflow-y: auto;
     transform: scaleY(0);
     pointer-events: none;
+    background-color: var(--tds-dropdown-bg);
     @include tds-scrollbar;
 
     &.lg {
