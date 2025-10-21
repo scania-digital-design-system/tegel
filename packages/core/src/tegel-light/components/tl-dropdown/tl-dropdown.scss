@@ -1,3 +1,65 @@
+// Hide tick icon by default, show only for selected option
+.tl-icon--tick {
+  display: none;
+}
+
+.tl-dropdown__option--selected .tl-icon--tick {
+  display: inline-flex;
+}
+
+// --- Filter/Input Variant Layout ---
+.tl-dropdown__field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.tl-dropdown__clear {
+  display: none;
+}
+
+.tl-dropdown__clear--visible {
+  display: flex !important;
+  position: absolute;
+  right: 48px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+  color: var(--dropdown-clear-icon);
+}
+
+.tl-dropdown__divider {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  height: 16px;
+  transform: translateY(-50%);
+  bottom: unset;
+  width: 1px;
+  background: var(--dropdown-clear-icon, #e0e0e0);
+  z-index: 1;
+  display: none;
+}
+
+.tl-dropdown__divider--visible {
+  display: block !important;
+}
+
+.tl-dropdown__chevron {
+  position: absolute;
+  right: 16px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  pointer-events: auto;
+  cursor: pointer;
+  z-index: 2;
+}
+
 // Inside label jumps up for input when focused or has value
 .tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside {
   @include detail-07;
@@ -82,6 +144,19 @@
     transition: transform 0.2s;
     transform: rotate(0deg);
   }
+
+  &.focus::placeholder {
+    color: transparent !important;
+  }
+}
+
+// Hide inside label when input has .focus (filter variant, no wrapper)
+.tl-dropdown--label-inside .tl-dropdown__input.focus ~ .tl-dropdown__label--inside {
+  @include detail-07;
+
+  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
+  top: var(--dropdown-label-top, 7px);
+  transform: none;
 }
 
 // Input should not use flex layout or chevron padding
@@ -269,6 +344,14 @@
 }
 
 // --- LABEL INSIDE ---
+.tl-dropdown--label-inside .tl-dropdown__input.focus ~ .tl-dropdown__label--inside {
+  @include detail-07;
+
+  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
+  top: var(--dropdown-label-top, 7px);
+  transform: none;
+}
+
 .tl-dropdown__label--inside {
   position: absolute;
   left: var(--tds-spacing-element-16);
@@ -291,6 +374,15 @@
 .tl-dropdown__label--inside {
   top: 50%;
   transform: translateY(-50%);
+}
+
+// Input: label jumps up on focus regardless of value
+.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside {
+  @include detail-07;
+
+  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
+  top: var(--dropdown-label-top, 7px);
+  transform: none;
 }
 
 // Helper shifts label up

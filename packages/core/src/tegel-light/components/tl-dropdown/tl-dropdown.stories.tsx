@@ -421,26 +421,29 @@ const Template = ({
       optionsMarkup =
         OPTIONS.map(
           (opt) =>
-            `<li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>`,
+            `<li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true"></span></li>`,
         ).join('') +
         '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option" tabindex="-1" data-value="Option disabled">Option disabled</li>';
     }
     fieldMarkup = `
-      <div style="position: relative; display: flex; align-items: center;" id="${filterId}-wrapper">
+      <div class="tl-dropdown__field-wrapper" id="${filterId}-wrapper">
         <input class="tl-dropdown__input" type="text" placeholder="${placeholder}"${
       disabled ? ' disabled' : ''
     } data-dropdown-toggle="${filterId}" />
-        <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true" style="position: absolute; right: 16px; pointer-events: auto; cursor: pointer;"></span>
+        <span class="tl-icon tl-icon--cross tl-icon--16 tl-dropdown__clear" aria-hidden="true"></span>
+        <span class="tl-dropdown__divider"></span>
+        <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-dropdown__chevron" aria-hidden="true"></span>
       </div>
-      <ul class="tl-dropdown__list" id="${filterId}" role="listbox" tabindex="-1" style="display: none;">
+      <ul class="tl-dropdown__list" id="${filterId}" role="listbox" tabindex="-1">
         ${optionsMarkup}
       </ul>
     `;
     scriptMarkup = `<script id="script-${filterId}">
       (() => {
-        const input = document.querySelector('[data-dropdown-toggle="${filterId}"]');
-        const list = document.getElementById('${filterId}');
-        const chevron = input?.parentElement?.querySelector('.tl-icon--chevron_down');
+  const input = document.querySelector('[data-dropdown-toggle="${filterId}"]');
+  const list = document.getElementById('${filterId}');
+  const chevron = input?.parentElement?.querySelector('.tl-icon--chevron_down');
+  const clearIcon = input?.parentElement?.querySelector('.tl-icon--cross');
         let isOpen = false;
         let lastFilter = '';
         let optionHasFocus = false;
@@ -456,11 +459,17 @@ const Template = ({
           chevron.classList.remove('tl-icon--chevron_down--rotated');
           isOpen = false;
         }
-        function setHasValueClass() {
+        let selectedValue = '';
+        function setHasValueClass(forceAdd = false) {
+          const dropdown = input.parentElement?.parentElement;
+          if (forceAdd) {
+            dropdown?.classList.add('tl-dropdown--has-value');
+            return;
+          }
           if (input.value) {
-            input.parentElement?.parentElement?.classList.add('tl-dropdown--has-value');
+            dropdown?.classList.add('tl-dropdown--has-value');
           } else {
-            input.parentElement?.parentElement?.classList.remove('tl-dropdown--has-value');
+            dropdown?.classList.remove('tl-dropdown--has-value');
           }
         }
         function filterOptions() {
@@ -486,23 +495,64 @@ const Template = ({
               return li ? li.getAttribute('data-value') : '';
             })
             .filter(Boolean);
-          input.value = selectedValues.join(', ');
+          selectedValue = selectedValues.join(', ');
+          input.value = selectedValue;
           setHasValueClass();
         }
         if (input && list && chevron) {
-          input.addEventListener('focus', openDropdown);
+          if (clearIcon) {
+            clearIcon.addEventListener('mousedown', (e) => {
+              e.preventDefault();
+              input.value = '';
+              input.focus();
+              updateClearIcon();
+              setHasValueClass();
+              filterOptions();
+            });
+          }
+          function updateClearIcon() {
+            if (!clearIcon) return;
+            const divider = input.parentElement?.querySelector('.tl-dropdown__divider');
+            if (input.value) {
+              clearIcon.classList.add('tl-dropdown__clear--visible');
+              if (divider) divider.classList.add('tl-dropdown__divider--visible');
+            } else {
+              clearIcon.classList.remove('tl-dropdown__clear--visible');
+              if (divider) divider.classList.remove('tl-dropdown__divider--visible');
+            }
+          }
+          input.addEventListener('focus', () => {
+            openDropdown();
+            input.classList.add('focus');
+            setHasValueClass(true); // Always add class on focus
+            updateClearIcon();
+            if (selectedValue) {
+              input.value = '';
+              updateClearIcon();
+            }
+          });
           input.addEventListener('blur', () => {
             setTimeout(() => {
               const active = document.activeElement;
               if (!list.contains(active) && active !== input) {
                 closeDropdown();
+                input.classList.remove('focus');
+                input.parentElement?.parentElement?.classList.remove('tl-dropdown--has-value');
+                if (selectedValue) {
+                  input.value = selectedValue;
+                  updateClearIcon();
+                } else {
+                  updateClearIcon();
+                }
               }
             }, 100);
           });
           input.addEventListener('input', () => {
             filterOptions();
             setHasValueClass();
+            updateClearIcon();
           });
+          updateClearIcon();
           chevron.addEventListener('mousedown', (e) => {
             e.preventDefault();
             if (isOpen) {
@@ -524,6 +574,10 @@ const Template = ({
                 const active = document.activeElement;
                 if (!list.contains(active) && active !== input) {
                   closeDropdown();
+                  if (selectedValue) {
+                    input.value = selectedValue;
+                    setHasValueClass();
+                  }
                 }
               }, 100);
             });
@@ -566,22 +620,35 @@ const Template = ({
             } else {
               elem.addEventListener('mousedown', (ev) => {
                 ev.preventDefault();
+                selectOption(elem);
+              });
+
+              elem.addEventListener('keydown', (ev) => {
+                if (ev.key === 'Enter' || ev.key === ' ') {
+                  ev.preventDefault();
+                  selectOption(elem);
+                }
+              });
+
+              function selectOption(optionElem) {
                 Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((o) => {
                   o.classList.remove('tl-dropdown__option--selected');
                   const tick = o.querySelector('.tl-icon--tick');
                   if (tick) tick.style.display = 'none';
                 });
-                elem.classList.add('tl-dropdown__option--selected');
-                const tick = elem.querySelector('.tl-icon--tick');
+                optionElem.classList.add('tl-dropdown__option--selected');
+                const tick = optionElem.querySelector('.tl-icon--tick');
                 if (tick) tick.style.display = '';
-                input.value = elem.getAttribute('data-value') || '';
+                selectedValue = optionElem.getAttribute('data-value') || '';
+                input.value = selectedValue;
                 setHasValueClass();
                 closeDropdown();
                 input.blur();
-              });
+              }
             }
           });
           // Also set class on initial render
+          selectedValue = '';
           setHasValueClass();
         }
       })();
