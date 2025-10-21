@@ -133,7 +133,6 @@
   line-height: calc(56px - var(--tds-spacing-element-20) - 12px);
 }
 
-//dropdown value and placeholder
 // --- Dropdown value & placeholder ---
 .tl-dropdown__button-value,
 .tl-dropdown__button-placeholder {
@@ -142,8 +141,7 @@
   white-space: nowrap;
   flex: 1 1 auto;
   min-width: 0;
-  max-width: calc(100% - var(--dropdown-chevron-gap, 40px));
-  margin-right: var(--dropdown-value-gap, 8px);
+  margin-right: var(--dropdown-value-gap);
 }
 
 // Special case: sm + label-inside + has-value
