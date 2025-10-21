@@ -8,6 +8,7 @@ import {
   EventEmitter,
   Prop,
   Element,
+  Watch,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
 
@@ -56,7 +57,7 @@ export class TdsTableFooter {
 
   @State() horizontalScrollWidth: string = null;
 
-  @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
+  @State() rowsPerPageValue: number = 10;
 
   @Element() host: HTMLElement;
 
@@ -78,6 +79,16 @@ export class TdsTableFooter {
     paginationValue: number;
     rowsPerPage?: number;
   }>;
+
+  @Watch('rowsPerPageValues')
+  handleRowsPerPageValuesChange(newValues: number[]): void {
+    if (newValues && newValues.length > 0) {
+      const [firstValue] = newValues;
+      this.rowsPerPageValue = firstValue;
+    } else {
+      this.rowsPerPageValue = 10;
+    }
+  }
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -102,6 +113,11 @@ export class TdsTableFooter {
     relevantTableProps.forEach((tablePropName) => {
       this[tablePropName] = this.tableEl[tablePropName];
     });
+
+    if (this.rowsPerPageValues && this.rowsPerPageValues.length > 0) {
+      const [firstValue] = this.rowsPerPageValues;
+      this.rowsPerPageValue = firstValue;
+    }
 
     this.storeLastCorrectValue(this.paginationValue);
 
@@ -225,18 +241,18 @@ export class TdsTableFooter {
                         defaultValue={`${this.rowsPerPageValues[0]}`}
                         onTdsChange={(event) => this.rowsPerPageChange(event)}
                       >
-                        {this.rowsPerPageValues.map((value) => {
-                          return (
-                            <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
-                          );
-                        })}
+                        {this.rowsPerPageValues.map((value) => (
+                          <tds-dropdown-option value={`${value}`}>{value}</tds-dropdown-option>
+                        ))}
                       </tds-dropdown>
                     </div>
                   )}
                 </div>
                 <div class="tds-table__page-selector">
                   <input
-                    ref={(element) => (this.inputElement = element)}
+                    ref={(element) => {
+                      this.inputElement = element;
+                    }}
                     class="tds-table__page-selector-input"
                     type="number"
                     min="1"
