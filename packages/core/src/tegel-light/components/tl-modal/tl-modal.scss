@@ -186,7 +186,7 @@ $modals: (
   z-index: 1000;
   display: none;
 
-  .tl-modal--show & {
+  &.tl-modal--show {
     display: block;
   }
 }
