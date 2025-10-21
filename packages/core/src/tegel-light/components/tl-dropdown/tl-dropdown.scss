@@ -431,6 +431,12 @@ option {
   position: relative;
 }
 
+// Option focus (accessibility)
+.tl-dropdown__option:focus-visible {
+  border: 2px solid var(--dropdown-border-focus);
+  z-index: 2;
+}
+
 // Option hover
 .tl-dropdown__option:hover,
 option:hover {
@@ -438,7 +444,8 @@ option:hover {
 }
 
 // Option selected
-.tl-dropdown__option[aria-selected='true'],
+// Option selected (BEM)
+.tl-dropdown__option--selected,
 option:checked,
 option[selected] {
   background: var(--dropdown-option-background-selected);
@@ -451,10 +458,14 @@ option[selected] {
 }
 
 // Option disabled
-.tl-dropdown__option[aria-disabled='true'] {
-  color: var(--dropdown-option-disabled, #aaa);
+// Option disabled (BEM)
+.tl-dropdown__option--disabled {
+  color: var(--dropdown-disabled);
   cursor: not-allowed;
-  background: none;
+  background: var(--dropdown-background);
+  border-color: var(--dropdown-border-disabled, transparent);
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .tl-dropdown__option .tl-icon--tick {
