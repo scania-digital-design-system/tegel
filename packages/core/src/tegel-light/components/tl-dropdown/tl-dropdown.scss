@@ -1,3 +1,17 @@
+// Inside label jumps up for input when focused or has value
+.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside {
+  @include detail-07;
+
+  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
+  top: var(--dropdown-label-top, 7px);
+  transform: none;
+}
+
+// Hide placeholder when label-inside is present (like tl-text-field)
+.tl-dropdown--label-inside .tl-dropdown__input::placeholder,
+.tl-dropdown--label-inside .tl-dropdown__button::placeholder {
+  color: transparent;
+}
 @import './tl-dropdown-vars';
 
 //tl-dropdown
@@ -19,7 +33,8 @@
   border-width: var(--dropdown-border-width, 0 0 1px 0);
   border-radius: var(--dropdown-border-radius);
   box-shadow: none;
-  min-width: 208px;
+
+  // min-width removed to prevent input from exceeding wrapper width
   position: relative;
   padding-left: var(--tds-spacing-element-16);
   padding-right: calc(var(--tds-spacing-element-16) + var(--dropdown-icon-size));
@@ -27,7 +42,8 @@
 }
 
 .tl-dropdown__button,
-.tl-dropdown__select {
+.tl-dropdown__select,
+.tl-dropdown__input {
   @extend %tl-dropdown-field;
   @include detail-02;
 
@@ -50,6 +66,35 @@
   transition: border-color 0.2s, border-width 0.2s;
   position: relative;
   outline: none;
+
+  // Chevron should be positioned absolutely, same as for button/select
+  & ~ .tl-icon--chevron_down {
+    position: absolute;
+    right: var(--tds-spacing-element-16);
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    height: var(--tds-spacing-element-16);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    transition: transform 0.2s;
+    transform: rotate(0deg);
+  }
+}
+
+// Input should not use flex layout or chevron padding
+.tl-dropdown__input {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  align-items: unset;
+  justify-content: unset;
+  padding-right: var(--tds-spacing-element-16);
+  cursor: text;
 }
 
 // --- Size variants ---
@@ -73,7 +118,8 @@
 
 // --- State: Disabled ---
 .tl-dropdown--disabled .tl-dropdown__button,
-.tl-dropdown--disabled .tl-dropdown__select {
+.tl-dropdown--disabled .tl-dropdown__select,
+.tl-dropdown--disabled .tl-dropdown__input {
   color: var(--dropdown-disabled);
   background: var(--dropdown-background);
   border-color: var(--dropdown-border-disabled, transparent);
@@ -86,7 +132,9 @@
 .tl-dropdown--error .tl-dropdown__button:focus,
 .tl-dropdown--error .tl-dropdown__button:focus-visible,
 .tl-dropdown--error .tl-dropdown__select:focus,
-.tl-dropdown--error .tl-dropdown__select:focus-visible {
+.tl-dropdown--error .tl-dropdown__select:focus-visible,
+.tl-dropdown--error .tl-dropdown__input:focus,
+.tl-dropdown--error .tl-dropdown__input:focus-visible {
   border-color: var(--dropdown-border-error-focus) !important;
   border-width: var(
     --dropdown-border-error-focus-width,
@@ -97,13 +145,16 @@
   cursor: not-allowed;
 }
 
-.tl-dropdown--error .tl-dropdown__button {
+.tl-dropdown--error .tl-dropdown__button,
+.tl-dropdown--error .tl-dropdown__input,
+.tl-dropdown--error .tl-dropdown__select {
   border-bottom-color: var(--dropdown-error);
 }
 
 // --- State: Hover ---
 .tl-dropdown__button:hover,
-.tl-dropdown__select:hover {
+.tl-dropdown__select:hover,
+.tl-dropdown__input:hover {
   border-color: var(--dropdown-border-hover);
   border-width: var(--dropdown-border-width-hover, 0 0 2px 0);
 }
@@ -112,7 +163,9 @@
 .tl-dropdown__button:focus,
 .tl-dropdown__button:focus-visible,
 .tl-dropdown__select:focus,
-.tl-dropdown__select:focus-visible {
+.tl-dropdown__select:focus-visible,
+.tl-dropdown__input:focus,
+.tl-dropdown__input:focus-visible {
   border-color: var(--dropdown-border-focus);
   border-width: var(--dropdown-border-focus-width, var(--dropdown-border-width-hover, 0 0 2px 0));
   outline: none;
@@ -135,7 +188,9 @@
 
 // --- Dropdown value & placeholder ---
 .tl-dropdown__button-value,
-.tl-dropdown__button-placeholder {
+.tl-dropdown__button-placeholder,
+.tl-dropdown__input-value,
+.tl-dropdown__input-placeholder {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -145,7 +200,8 @@
 }
 
 // Special case: sm + label-inside + has-value
-.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value,
+.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__input-value {
   position: absolute;
   left: var(--tds-spacing-element-16);
   right: 32px;
@@ -155,12 +211,14 @@
 }
 
 // Hide value if label-inside and no value
-.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__button-value {
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__button-value,
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__input-value {
   display: none;
 }
 
 // Placeholder styles
-.tl-dropdown__button-placeholder {
+.tl-dropdown__button-placeholder,
+.tl-dropdown__input-placeholder {
   color: var(--dropdown-placeholder);
   border: none;
   border-radius: var(--dropdown-border-radius);
@@ -196,7 +254,8 @@
 }
 
 // Special case: label-inside + has-value
-.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value,
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__input-value {
   position: relative;
   display: inline;
 }
@@ -254,12 +313,23 @@
 }
 
 // Label active state (has value)
+
+// Label transforms and shrinks above input/select/button when value is present or field is focused
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside {
   @include detail-07;
 
   color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
   top: var(--dropdown-label-top, 7px);
   transform: none;
+}
+
+// In sm, label disappears completely when value is present or input is focused
+.tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label--inside,
+.tl-dropdown--sm.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside,
+.tl-dropdown--sm.tl-dropdown--label-inside
+.tl-dropdown__input:not(:placeholder-shown)
+~ .tl-dropdown__label--inside {
+  display: none;
 }
 
 // Hide label for sm+inside+has-value
@@ -273,7 +343,9 @@
 }
 
 // Field padding for label-inside
-.tl-dropdown--md.tl-dropdown--label-inside %tl-dropdown-field {
+
+.tl-dropdown--md.tl-dropdown--label-inside .tl-dropdown__button,
+.tl-dropdown--md.tl-dropdown--label-inside .tl-dropdown__select {
   padding-top: var(--tds-spacing-element-20);
   padding-bottom: 8px;
   line-height: calc(48px - var(--tds-spacing-element-20) - 11px);
@@ -444,10 +516,11 @@ option:hover {
 // Option selected
 // Option selected (BEM)
 .tl-dropdown__option--selected,
+.tl-dropdown__option--selected,
 option:checked,
 option[selected] {
-  background: var(--dropdown-option-background-selected);
-  color: var(--dropdown-text);
+  background: var(--dropdown-option-background-selected) !important;
+  color: var(--dropdown-text) !important;
 }
 
 // Option selected position
@@ -552,6 +625,8 @@ option[selected] {
 
 // Bar animation states
 .tl-dropdown:has(:is(.tl-dropdown__select, .tl-dropdown__button):focus):not(.tl-dropdown--disabled)
+.tl-dropdown__bar::after,
+.tl-dropdown:has(:is(.tl-dropdown__select, .tl-dropdown__input):focus):not(.tl-dropdown--disabled)
 .tl-dropdown__bar::after {
   transform: scaleX(1);
 }
