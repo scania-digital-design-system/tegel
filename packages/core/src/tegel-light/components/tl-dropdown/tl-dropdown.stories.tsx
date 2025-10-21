@@ -65,10 +65,8 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
       if (checkbox) {
         checkbox.checked = !checkbox.checked;
         if (checkbox.checked) {
-          opt.setAttribute('aria-selected', 'true');
           opt.classList.add('tl-dropdown__option--selected');
         } else {
-          opt.removeAttribute('aria-selected');
           opt.classList.remove('tl-dropdown__option--selected');
         }
       }
@@ -97,12 +95,14 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
         list.classList.remove('tl-dropdown__list--open');
         Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((o) => {
           const elem = o as HTMLElement;
-          elem.removeAttribute('aria-selected');
-          const tick = elem.querySelector('.tl-icon--tick') as HTMLElement | null;
-          if (tick) tick.style.display = 'none';
+          if (elem !== opt) {
+            elem.classList.remove('tl-dropdown__option--selected');
+            const tick = elem.querySelector('.tl-icon--tick') as HTMLElement | null;
+            if (tick) tick.style.display = 'none';
+          }
         });
       }
-      opt.setAttribute('aria-selected', 'true');
+      opt.classList.add('tl-dropdown__option--selected');
       const tick = opt.querySelector?.('.tl-icon--tick') as HTMLElement | null;
       if (tick) tick.style.display = '';
     }
@@ -145,10 +145,16 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
         });
         Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((el) => {
           const elem = el as HTMLElement;
-          if (elem.getAttribute('aria-disabled') === 'true') return;
+          if (elem.classList.contains('tl-dropdown__option--disabled')) return;
           elem.addEventListener('click', (ev: Event) => {
             ev.stopPropagation();
             toggleOption(elem);
+          });
+          elem.addEventListener('keydown', (ev: KeyboardEvent) => {
+            if (ev.key === 'Enter' || ev.key === ' ') {
+              ev.preventDefault();
+              toggleOption(elem);
+            }
           });
           const checkbox = elem.querySelector('.tl-checkbox__input') as HTMLInputElement | null;
           if (checkbox) {
@@ -232,7 +238,7 @@ function getMultiselectMarkup({ isLabelInside, placeholder, disabled }) {
       <li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">
         <span class="tl-dropdown__option-checkbox">
           <div class="tl-checkbox">
-            <input type="checkbox" class="tl-checkbox__input" id="${checkboxId}" tabindex="0" />
+            <input type="checkbox" class="tl-checkbox__input" id="${checkboxId}" tabindex="-1" />
             <label class="tl-checkbox__label" for="${checkboxId}" aria-label="${opt}">${opt}</label>
           </div>
         </span>
@@ -261,7 +267,7 @@ function getButtonMarkup({ isLabelInside, placeholder, disabled }) {
       (opt) =>
         `<li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>`,
     ).join('') +
-    '<li class="tl-dropdown__option" role="option" tabindex="0" aria-disabled="true" data-value="Option disabled">Option disabled</li>';
+    '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option" tabindex="-1" data-value="Option disabled">Option disabled</li>';
   return `
     <button type="button" class="tl-dropdown__button" aria-haspopup="listbox" aria-expanded="false"${
       disabled ? ' disabled' : ''
