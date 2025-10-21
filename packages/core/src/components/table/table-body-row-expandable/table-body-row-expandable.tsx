@@ -170,8 +170,10 @@ export class TdsTableBodyRowExpandable {
     if (this.colSpan !== null) {
       this.columnsNumber = this.colSpan;
     } else {
-      this.columnsNumber =
-        this.tableEl?.querySelector('tds-table-header')?.childElementCount ?? 0 + 1;
+      const header = this.tableEl?.querySelector('tds-table-header');
+      if (header) {
+        this.columnsNumber = header.childElementCount + 1;
+      }
     }
   }
 

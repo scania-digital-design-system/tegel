@@ -28,7 +28,7 @@ export class TdsPopoverCanvas {
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean = false;
+  @Prop() show: boolean | null = null;
 
   /** Decides the placement of the Popover Canvas. See https://popper.js.org/docs/v2/constructors/#placement */
   @Prop() placement: Placement = 'auto';

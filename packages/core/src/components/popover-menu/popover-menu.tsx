@@ -25,7 +25,7 @@ export class TdsPopoverMenu {
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean = false;
+  @Prop() show: boolean | null = null;
 
   /** Decides if the component should be visible from the start. */
   @Prop() defaultShow: boolean = false;
