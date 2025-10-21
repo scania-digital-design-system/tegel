@@ -1,8 +1,5 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
-// --- Dropdown Scripts ---
-
-// Handles label-inside logic for native select
 function dropdownSelectScript(dropdownId: string): void {
   const wrapper = document.getElementById(`${dropdownId}-wrapper`);
   if (!wrapper) return;
@@ -21,13 +18,11 @@ function dropdownSelectScript(dropdownId: string): void {
   update();
 }
 
-// Handles open/close, value, and multiselect logic for button/multiselect
 function dropdownScript(dropdownId: string, isMulti: boolean) {
   let btn: HTMLElement | null;
   let list: HTMLElement | null;
   let chevron: HTMLElement | null;
 
-  // Update button value and label-inside state
   function updateButtonValue() {
     const valueSpan = btn?.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
     const placeholderSpan = btn?.querySelector(
@@ -64,7 +59,6 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
     }
   }
 
-  // Toggle option selection (single/multi)
   function toggleOption(opt: HTMLElement) {
     const checkbox = opt.querySelector?.('.tl-checkbox__input') as HTMLInputElement | null;
     if (isMulti) {
@@ -80,7 +74,6 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
       }
       updateButtonValue();
     } else {
-      // Single select
       const valueSpan = btn?.querySelector('.tl-dropdown__button-value') as HTMLElement | null;
       const placeholderSpan = btn?.querySelector(
         '.tl-dropdown__button-placeholder',
@@ -119,7 +112,6 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
     list = document.getElementById(dropdownId);
     chevron = btn?.querySelector('.tl-icon--chevron_down') as HTMLElement | null;
     if (btn && list && chevron) {
-      // Prevent duplicate listeners with a local flag
       if (!btn.hasAttribute('data-dropdown-listener')) {
         btn.setAttribute('data-dropdown-listener', 'true');
         btn.addEventListener('click', (e) => {
@@ -170,7 +162,6 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
     }
   }
 
-  // Use WeakMap to track MutationObservers
   type ObserverMap = WeakMap<Element, MutationObserver>;
   interface TegelWindow extends Window {
     dropdownObserverMap?: ObserverMap;
@@ -191,12 +182,7 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
   }
 }
 
-// --- Dropdown Option Data ---
-// ...existing code...
-
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
-
-// --- Markup Helpers ---
 
 function getLabelMarkup(label: string, labelId: string, isLabelInside: boolean): string {
   if (!label) return '';
@@ -292,8 +278,6 @@ function getButtonMarkup({ isLabelInside, placeholder, disabled }) {
   `;
 }
 
-// --- Storybook Meta ---
-
 export default {
   title: 'Tegel Light (CSS)/Dropdown',
   parameters: {
@@ -320,6 +304,12 @@ export default {
       defaultValue: 'Select',
       description: 'Toggle between select and button variant',
     },
+    multiselect: {
+      name: 'Multiselect',
+      control: { type: 'boolean' },
+      defaultValue: false,
+      description: 'Enable multiselect for button variant',
+    },
     size: {
       name: 'Size',
       control: { type: 'radio' },
@@ -338,19 +328,11 @@ export default {
     showHelper: { name: 'Show helper', control: 'boolean' },
     error: { name: 'Error', control: 'boolean' },
     disabled: { name: 'Disabled', control: 'boolean' },
-    multiselect: {
-      name: 'Multiselect',
-      control: { type: 'boolean' },
-      defaultValue: false,
-
-      // --- Storybook Template ---
-
-      description: 'Enable multiselect for button variant',
-    },
   },
   args: {
     modeVariant: 'Primary',
     variant: 'Select',
+    multiselect: false,
     size: 'Large',
     label: 'Label',
     labelPlacement: 'Outside',
@@ -358,16 +340,12 @@ export default {
     helper: 'Helper text',
     showHelper: true,
     error: false,
-    // --- Normalize and prepare props ---
     disabled: false,
-    multiselect: false,
   },
 };
 
 const Template = ({
   variant,
-
-  // --- Field and script markup ---
   label,
   placeholder,
   helper,
@@ -381,8 +359,6 @@ const Template = ({
 }) => {
   const normalizedSize = { Large: 'lg', Medium: 'md', Small: 'sm' }[size] ?? 'lg';
   const isLabelInside = labelPlacement === 'Inside';
-
-  // --- Final HTML ---
   const showLabel = labelPlacement !== 'No label';
   const modeClass = modeVariant === 'Secondary' ? 'tl-dropdown--secondary' : 'tl-dropdown--primary';
   const labelId = showLabel ? 'tl-dropdown-story-label' : '';
