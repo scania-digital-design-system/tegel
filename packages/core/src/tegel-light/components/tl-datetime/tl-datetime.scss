@@ -1,0 +1,282 @@
+@import './tl-datetime-vars';
+@import '../../../mixins/box-sizing';
+@import '../../../../../../typography/utilities/typography-utility';
+
+.tl-datetime {
+  display: block;
+  min-width: 208px;
+  background: unset;
+
+  &--no-min-width {
+    min-width: auto;
+  }
+
+  /* Native picker visuals */
+  input[type='datetime-local'],
+  input[type='date'],
+  input[type='month'],
+  input[type='week'],
+  input[type='time'] {
+    &::-webkit-inner-spin-button,
+    &::-webkit-calendar-picker-indicator {
+      opacity: 0;
+    }
+  }
+}
+
+/* Firefox-specific icon hiding for date/datetime */
+@supports (-moz-appearance: none) {
+  .tl-datetime__icon--datetime {
+    .tl-datetime.type-datetime-local &,
+    .tl-datetime.type-date & {
+      display: none;
+    }
+  }
+}
+
+.tl-datetime__label {
+  @include detail-05;
+
+  display: block;
+  margin-bottom: var(--tds-spacing-element-8);
+  color: var(--datetime-label);
+
+  .tl-datetime--disabled & {
+    color: var(--datetime-label-disabled);
+    cursor: not-allowed;
+  }
+}
+
+.tl-datetime__container {
+  border-radius: var(--datetime-border-radius);
+  position: relative;
+  height: 56px;
+  box-sizing: border-box;
+  background-color: var(--datetime-background);
+  transition: border-bottom-color 200ms ease;
+  border-left: 1px solid var(--datetime-border-color-left);
+  border-right: 1px solid var(--datetime-border-color-right);
+  border-bottom: 1px solid var(--datetime-border-color-bottom);
+  border-top: 1px solid var(--datetime-border-color-top);
+
+  &:hover {
+    border-left: 1px solid var(--datetime-border-color-left-hover);
+    border-right: 1px solid var(--datetime-border-color-right-hover);
+    border-bottom: 1px solid var(--datetime-border-color-bottom-hover);
+    border-top: 1px solid var(--datetime-border-color-top-hover);
+  }
+
+  .tl-datetime--md & {
+    height: 48px;
+  }
+
+  .tl-datetime--sm & {
+    height: 40px;
+  }
+
+  .tl-datetime--focus & {
+    border-left: 1px solid var(--datetime-border-color-left-focus);
+    border-right: 1px solid var(--datetime-border-color-right-focus);
+    border-bottom: 1px solid var(--datetime-border-color-bottom-focus);
+    border-top: 1px solid var(--datetime-border-color-top-focus);
+    outline: 2px solid var(--datetime-outline-color-focus);
+    outline-offset: -1px;
+  }
+
+  .tl-datetime--disabled & {
+    cursor: not-allowed;
+    border-color: transparent;
+  }
+
+  .tl-datetime--success & {
+    border-left: 1px solid var(--datetime-border-color-left-success);
+    border-right: 1px solid var(--datetime-border-color-right-success);
+    border-bottom: 1px solid var(--datetime-border-color-bottom-success);
+    border-top: 1px solid var(--datetime-border-color-top-success);
+    color: var(--tds-datetime-color-success);
+  }
+
+  .tl-datetime--error & {
+    border-left: 1px solid var(--datetime-border-color-left-error);
+    border-right: 1px solid var(--datetime-border-color-right-error);
+    border-bottom: 1px solid var(--datetime-border-color-bottom-error);
+    border-top: 1px solid var(--datetime-border-color-top-error);
+  }
+}
+
+.tl-datetime__input-container {
+  position: relative;
+  width: 100%;
+}
+
+.tl-datetime__input {
+  @include tds-box-sizing;
+  @include detail-02;
+
+  border-radius: var(--datetime-border-radius);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+  height: 100%;
+  color: var(--datetime-text);
+  background-color: var(--datetime-background);
+  padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+
+  &::placeholder {
+    opacity: 1;
+    color: var(--datetime-placeholder);
+  }
+
+  &:focus::placeholder {
+    color: var(--datetime-placeholder-focus);
+  }
+
+  &:disabled {
+    background-color: var(--datetime-background-disabled);
+    color: var(--datetime-text-disabled);
+    cursor: not-allowed;
+
+    &::placeholder {
+      color: var(--datetime-placeholder-disabled);
+    }
+
+    ~ .tl-datetime__label-inside {
+      color: var(--datetime-label-disabled);
+    }
+  }
+
+  /* Type-based icon toggling */
+  &[type='datetime-local'],
+  &[type='date'],
+  &[type='month'],
+  &[type='week'] {
+    ~ .tl-datetime__icon--time {
+      display: none;
+    }
+  }
+
+  &[type='time'] {
+    ~ .tl-datetime__icon--datetime {
+      display: none;
+    }
+  }
+
+  .tl-datetime--label-inside & {
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+  }
+
+  .tl-datetime--md.tl-datetime--label-inside & {
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+  }
+
+  .tl-datetime--sm & {
+    padding: var(--tds-spacing-element-16);
+  }
+}
+
+.tl-datetime__icon {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 18px;
+  pointer-events: none;
+  color: var(--datetime-icon);
+
+  .tl-datetime--disabled & {
+    color: var(--datetime-icon-disabled);
+  }
+
+  .tl-datetime--error & {
+    color: var(--datetime-icon-error);
+  }
+}
+
+.tl-datetime__label-inside {
+  @include detail-07;
+
+  position: absolute;
+  pointer-events: none;
+  color: var(--datetime-label-inside);
+  left: 16px;
+  transition: 0.1s ease all;
+
+  .tl-datetime--lg & {
+    top: 12px;
+  }
+
+  .tl-datetime--md & {
+    top: 8px;
+  }
+
+  .tl-datetime--sm & {
+    display: none;
+  }
+}
+
+.tl-datetime__bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  left: 0;
+  z-index: 1;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--datetime-highlight);
+    transform: scaleX(0);
+    transition: 0.35s ease transform;
+  }
+}
+
+.tl-datetime__helper {
+  @include detail-05;
+
+  display: inline-flex;
+  gap: 8px;
+  padding-top: var(--tds-spacing-element-4);
+  color: var(--datetime-helper);
+
+  .tl-icon--error {
+    display: none;
+  }
+
+  .tl-datetime--error & {
+    color: var(--datetime-helper-error);
+  }
+
+  .tl-datetime--error & .tl-icon--error {
+    display: inline-flex;
+  }
+}
+
+.tl-datetime__container:has(.tl-datetime__input:focus) {
+  outline: 2px solid var(--datetime-outline-color-focus);
+  outline-offset: -1px;
+}
+
+.tl-datetime__container:has(.tl-datetime__input:focus) .tl-datetime__bar::after {
+  transform: scaleX(1);
+}
+
+.tl-datetime--disabled .tl-datetime__bar::after {
+  transform: scaleX(0) !important;
+}
+
+.tl-datetime--success .tl-datetime__bar::after {
+  background: var(--tds-datetime-bar-sucess);
+}
+
+.tl-datetime--error .tl-datetime__bar::after {
+  background: var(--datetime-highlight-error);
+}
