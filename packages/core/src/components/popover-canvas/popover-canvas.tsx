@@ -58,7 +58,7 @@ export class TdsPopoverCanvas {
 
   @State() childRef?: HTMLTdsPopoverCoreElement;
 
-  inheritedAttributes: Attributes = [];
+  inheritedAttributes: Attributes = {};
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);
