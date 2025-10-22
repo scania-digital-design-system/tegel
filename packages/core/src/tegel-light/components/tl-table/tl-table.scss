@@ -2,6 +2,7 @@
 @import '../../../mixins/scrollbar';
 @import './tl-table-vars';
 @import '../../../../../../typography/utilities/typography-utility';
+@import 'footer';
 
 .tl-table {
   @include tds-box-sizing;
