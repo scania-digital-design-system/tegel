@@ -10,6 +10,7 @@ import {
   Element,
 } from '@stencil/core';
 import { InternalTdsTablePropChange } from '../table/table';
+import { TdsDropdownCustomEvent } from '../../../components';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'compactDesign',
@@ -19,6 +20,8 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 function removeShakeAnimation(e: AnimationEvent & { target: HTMLElement }) {
   e.target.classList.remove('tds-table__page-selector-input--shake');
 }
+
+type RowsPerPageEvent = TdsDropdownCustomEvent<{ name: string; value: string | null }>;
 
 @Component({
   tag: 'tds-table-footer',
@@ -55,8 +58,6 @@ export class TdsTableFooter {
   @State() tableId: string = '';
 
   @State() horizontalScrollWidth: string = null;
-
-  @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
 
   @Element() host: HTMLElement;
 
@@ -115,19 +116,18 @@ export class TdsTableFooter {
     }
   }
 
-  private emitTdsPagination = () => {
-    if (this.rowsperpage) {
-      this.tdsPagination.emit({
-        tableId: this.tableId,
-        paginationValue: Number(this.paginationValue),
-        rowsPerPage: this.rowsPerPageValue,
-      });
-    } else {
-      this.tdsPagination.emit({
-        tableId: this.tableId,
-        paginationValue: Number(this.paginationValue),
-      });
+  private emitTdsPagination = (event?: RowsPerPageEvent) => {
+    let rowsPerPage;
+
+    if (event?.detail?.value) {
+      rowsPerPage = parseInt(event.detail.value);
     }
+
+    this.tdsPagination.emit({
+      tableId: this.tableId,
+      paginationValue: Number(this.paginationValue),
+      rowsPerPage,
+    });
   };
 
   /* Function to store last valid input */
@@ -184,12 +184,11 @@ export class TdsTableFooter {
     this.storeLastCorrectValue(this.paginationValue);
   }
 
-  private rowsPerPageChange(event) {
-    this.rowsPerPageValue = parseInt(event.detail.value);
+  private rowsPerPageChange(event: RowsPerPageEvent) {
     if (this.paginationValue > this.pages) {
       this.paginationValue = this.pages;
     }
-    this.emitTdsPagination();
+    this.emitTdsPagination(event);
   }
 
   private getStyles(): Record<string, string> {
