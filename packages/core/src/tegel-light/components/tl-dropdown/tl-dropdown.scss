@@ -1,38 +1,20 @@
-// Hide tick icon by default, show only for selected option
-.tl-icon--tick {
-  display: none;
-}
-
 .tl-dropdown__option--selected .tl-icon--tick {
   display: inline-flex;
 }
 
 // --- Filter/Input Variant Layout ---
-.tl-dropdown__field-wrapper {
+.tl-dropdown__input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.tl-dropdown__clear {
+.tl-dropdown__icon--cross {
   display: none;
 }
 
-.tl-dropdown__clear--visible {
-  display: flex !important;
-  position: absolute;
-  right: 48px;
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 2;
-  color: var(--dropdown-clear-icon);
-}
-
-.tl-dropdown__divider {
+.tl-dropdown__input--divider {
   position: absolute;
   right: 40px;
   top: 50%;
@@ -45,8 +27,35 @@
   display: none;
 }
 
-.tl-dropdown__divider--visible {
+.tl-dropdown__input--divider--visible {
+  display: block;
+}
+
+// Show clear and divider only when input is focused and has content
+.tl-dropdown__input:focus:not(:placeholder-shown) ~ .tl-dropdown__icon--cross {
+  display: flex !important;
+  position: absolute;
+  right: 48px;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+  color: var(--dropdown-clear-icon);
+}
+
+.tl-dropdown__input:focus:not(:placeholder-shown) ~ .tl-dropdown__input--divider {
   display: block !important;
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  height: 16px;
+  transform: translateY(-50%);
+  bottom: unset;
+  width: 1px;
+  background: var(--dropdown-clear-icon, #e0e0e0);
+  z-index: 1;
 }
 
 .tl-dropdown__chevron {
@@ -55,9 +64,14 @@
   top: 0;
   bottom: 0;
   margin: auto 0;
-  pointer-events: auto;
-  cursor: pointer;
-  z-index: 2;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 20 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 100%;
 }
 
 // Inside label jumps up for input when focused or has value
@@ -145,13 +159,13 @@
     transform: rotate(0deg);
   }
 
-  &.focus::placeholder {
+  &:focus::placeholder {
     color: transparent !important;
   }
 }
 
-// Hide inside label when input has .focus (filter variant, no wrapper)
-.tl-dropdown--label-inside .tl-dropdown__input.focus ~ .tl-dropdown__label--inside {
+// Hide inside label when input has focus (filter variant, no wrapper)
+.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside {
   @include detail-07;
 
   color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
@@ -168,8 +182,16 @@
   box-sizing: border-box;
   align-items: unset;
   justify-content: unset;
-  padding-right: var(--tds-spacing-element-16);
+  padding-right: 40px; // Default: 8px gap + 32px chevron width
   cursor: text;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// When clear icon is visible, add more padding for clear icon + divider + chevron
+.tl-dropdown__input:focus:not(:placeholder-shown) {
+  padding-right: 72px; // 8px gap + 16px clear + 8px gap + 1px divider + 8px gap + 32px chevron
 }
 
 // --- Size variants ---
@@ -210,11 +232,11 @@
 .tl-dropdown--error .tl-dropdown__select:focus-visible,
 .tl-dropdown--error .tl-dropdown__input:focus,
 .tl-dropdown--error .tl-dropdown__input:focus-visible {
-  border-color: var(--dropdown-border-error-focus) !important;
+  border-color: var(--dropdown-border-error-focus);
   border-width: var(
     --dropdown-border-error-focus-width,
     var(--dropdown-border-focus-width, 0 0 2px 0)
-  ) !important;
+  );
   outline: none;
   box-shadow: none;
   cursor: not-allowed;
@@ -344,13 +366,7 @@
 }
 
 // --- LABEL INSIDE ---
-.tl-dropdown--label-inside .tl-dropdown__input.focus ~ .tl-dropdown__label--inside {
-  @include detail-07;
-
-  color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
-  top: var(--dropdown-label-top, 7px);
-  transform: none;
-}
+// This rule is already covered by the :focus rule above, removing duplicate
 
 .tl-dropdown__label--inside {
   position: absolute;
@@ -611,8 +627,8 @@ option:hover {
 .tl-dropdown__option--selected,
 option:checked,
 option[selected] {
-  background: var(--dropdown-option-background-selected) !important;
-  color: var(--dropdown-text) !important;
+  background: var(--dropdown-option-background-selected);
+  color: var(--dropdown-text);
 }
 
 // Option selected position
@@ -749,4 +765,47 @@ option[selected] {
   --dropdown-border-hover: var(--dropdown-border-error-hover);
   --dropdown-helper-text: var(--dropdown-error);
   --dropdown-bar-base-color: var(--dropdown-bar-error);
+}
+
+// Additional BEM classes for pure CSS-driven functionality
+
+// Demo wrapper
+.demo-wrapper {
+  max-width: 208px;
+  height: 150px;
+}
+
+// Option visibility
+.tl-dropdown__option--visible {
+  display: flex;
+}
+
+.tl-dropdown__option:not(.tl-dropdown__option--visible) {
+  display: none;
+}
+
+// Button value/placeholder visibility
+.tl-dropdown__button-value--visible {
+  display: inline;
+}
+
+.tl-dropdown__button-value:not(.tl-dropdown__button-value--visible) {
+  display: none;
+}
+
+.tl-dropdown__button-placeholder--visible {
+  display: inline;
+}
+
+.tl-dropdown__button-placeholder:not(.tl-dropdown__button-placeholder--visible) {
+  display: none;
+}
+
+// Tick icon visibility
+.tl-icon--tick--visible {
+  display: inline-flex;
+}
+
+.tl-icon--tick:not(.tl-icon--tick--visible) {
+  display: none;
 }

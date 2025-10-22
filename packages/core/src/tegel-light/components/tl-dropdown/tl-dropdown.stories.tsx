@@ -1,11 +1,12 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 function dropdownSelectScript(dropdownId: string): void {
-  const wrapper = document.getElementById(`${dropdownId}-wrapper`);
-  if (!wrapper) return;
-  const select = wrapper.querySelector('.tl-dropdown__select') as HTMLSelectElement | null;
+  const select = document.getElementById(dropdownId) as HTMLSelectElement | null;
   if (!select) return;
-  const parent = wrapper.closest('.tl-dropdown');
+
+  const parent = select.closest('.tl-dropdown');
+  const chevron = parent?.querySelector('.tl-icon--chevron_down') as HTMLElement | null;
+
   function update() {
     if (!parent) return;
     if (select.value) {
@@ -14,7 +15,20 @@ function dropdownSelectScript(dropdownId: string): void {
       parent.classList.remove('tl-dropdown--has-value');
     }
   }
+
+  // Handle native select change
   select.addEventListener('change', update);
+
+  // Handle focus/blur for chevron rotation (visual feedback)
+  select.addEventListener('focus', () => {
+    if (chevron) chevron.classList.add('tl-icon--chevron_down--rotated');
+  });
+
+  select.addEventListener('blur', () => {
+    if (chevron) chevron.classList.remove('tl-icon--chevron_down--rotated');
+  });
+
+  // Initial update
   update();
 }
 
@@ -40,18 +54,20 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
       if (selectedValues.length) {
         if (valueSpan) {
           valueSpan.textContent = selectedValues.join(', ');
-          valueSpan.style.display = '';
+          valueSpan.classList.add('tl-dropdown__button-value--visible');
         }
-        if (placeholderSpan) placeholderSpan.style.display = 'none';
+        if (placeholderSpan)
+          placeholderSpan.classList.remove('tl-dropdown__button-placeholder--visible');
         if (parent?.classList.contains('tl-dropdown--label-inside')) {
           parent.classList.add('tl-dropdown--has-value');
         }
       } else {
         if (valueSpan) {
           valueSpan.textContent = '';
-          valueSpan.style.display = 'none';
+          valueSpan.classList.remove('tl-dropdown__button-value--visible');
         }
-        if (placeholderSpan) placeholderSpan.style.display = '';
+        if (placeholderSpan)
+          placeholderSpan.classList.add('tl-dropdown__button-placeholder--visible');
         if (parent?.classList.contains('tl-dropdown--label-inside')) {
           parent.classList.remove('tl-dropdown--has-value');
         }
@@ -79,32 +95,30 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
       const parent = btn?.closest('.tl-dropdown');
       if (valueSpan) {
         valueSpan.textContent = opt.textContent;
-        valueSpan.style.display = '';
+        valueSpan.classList.add('tl-dropdown__button-value--visible');
       }
       if (placeholderSpan && !btn?.classList.contains('tl-dropdown--label-inside')) {
-        placeholderSpan.style.display = 'none';
+        placeholderSpan.classList.remove('tl-dropdown__button-placeholder--visible');
       }
       if (parent?.classList.contains('tl-dropdown--label-inside')) {
         parent.classList.add('tl-dropdown--has-value');
       }
-      btn?.setAttribute('aria-expanded', 'false');
-      btn?.classList.remove('tl-dropdown__button--open');
+      btn?.classList.remove('tl-dropdown__button--expanded');
       if (chevron) chevron.classList.remove('tl-icon--chevron_down--rotated');
       if (list) {
-        list.style.display = 'none';
         list.classList.remove('tl-dropdown__list--open');
         Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((o) => {
           const elem = o as HTMLElement;
           if (elem !== opt) {
             elem.classList.remove('tl-dropdown__option--selected');
             const tick = elem.querySelector('.tl-icon--tick') as HTMLElement | null;
-            if (tick) tick.style.display = 'none';
+            if (tick) tick.classList.remove('tl-icon--tick--visible');
           }
         });
       }
       opt.classList.add('tl-dropdown__option--selected');
       const tick = opt.querySelector?.('.tl-icon--tick') as HTMLElement | null;
-      if (tick) tick.style.display = '';
+      if (tick) tick.classList.add('tl-icon--tick--visible');
     }
   }
   function attach() {
@@ -116,18 +130,15 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
         btn.setAttribute('data-dropdown-listener', 'true');
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
-          const expanded = btn.getAttribute('aria-expanded') === 'true';
-          btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+          const expanded = btn.classList.contains('tl-dropdown__button--expanded');
           if (!expanded) {
-            btn.classList.add('tl-dropdown__button--open');
+            btn.classList.add('tl-dropdown__button--expanded');
             list.classList.add('tl-dropdown__list--open');
             chevron.classList.add('tl-icon--chevron_down--rotated');
-            list.style.display = 'block';
           } else {
-            btn.classList.remove('tl-dropdown__button--open');
+            btn.classList.remove('tl-dropdown__button--expanded');
             list.classList.remove('tl-dropdown__list--open');
             chevron.classList.remove('tl-icon--chevron_down--rotated');
-            list.style.display = 'none';
           }
         });
       }
@@ -136,11 +147,9 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
         document.addEventListener('click', (e) => {
           const target = e.target as Node;
           if (!btn.contains(target) && !list.contains(target)) {
-            btn.setAttribute('aria-expanded', 'false');
-            btn.classList.remove('tl-dropdown__button--open');
+            btn.classList.remove('tl-dropdown__button--expanded');
             list.classList.remove('tl-dropdown__list--open');
             chevron.classList.remove('tl-icon--chevron_down--rotated');
-            list.style.display = 'none';
           }
         });
         Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((el) => {
@@ -160,11 +169,9 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
             setTimeout(() => {
               const active = document.activeElement;
               if (!list.contains(active) && active !== btn) {
-                btn.setAttribute('aria-expanded', 'false');
-                btn.classList.remove('tl-dropdown__button--open');
+                btn.classList.remove('tl-dropdown__button--expanded');
                 list.classList.remove('tl-dropdown__list--open');
                 chevron.classList.remove('tl-icon--chevron_down--rotated');
-                list.style.display = 'none';
               }
             }, 100);
           });
@@ -179,11 +186,9 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
               setTimeout(() => {
                 const active = document.activeElement;
                 if (!list.contains(active) && active !== btn) {
-                  btn.setAttribute('aria-expanded', 'false');
-                  btn.classList.remove('tl-dropdown__button--open');
+                  btn.classList.remove('tl-dropdown__button--expanded');
                   list.classList.remove('tl-dropdown__list--open');
                   chevron.classList.remove('tl-icon--chevron_down--rotated');
-                  list.style.display = 'none';
                 }
               }, 100);
             });
@@ -241,17 +246,13 @@ function getSelectMarkup({ isLabelInside, placeholder, showLabel, labelId, disab
   const ariaLabelAttr = showLabel && labelId ? `aria-labelledby="${labelId}"` : '';
   const selectId = 'tl-dropdown-select-demo';
   return `
-    <div style="position: relative; display: flex; align-items: center;" id="${selectId}-wrapper">
-      <select class="tl-dropdown__select" ${ariaLabelAttr}${
+    <select class="tl-dropdown__select" ${ariaLabelAttr}${
     disabled ? ' disabled' : ''
-  } style="width: 100%;">
-        ${placeholderOption}
-        ${OPTIONS.map(
-          (opt) => `<option class="tl-dropdown__option" value="${opt}">${opt}</option>`,
-        ).join('')}
-      </select>
-      <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true" style="position: absolute; right: 16px; pointer-events: none;"></span>
-    </div>
+  } id="${selectId}">
+      ${placeholderOption}
+      ${OPTIONS.map((opt) => `<option value="${opt}">${opt}</option>`).join('')}
+    </select>
+    <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
   `;
 }
 
@@ -260,7 +261,7 @@ function getMultiselectMarkup({ isLabelInside, placeholder, disabled }) {
   const optionsMarkup = OPTIONS.map((opt, i) => {
     const checkboxId = `tl-checkbox-${multiId}-${i}`;
     return `
-      <li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">
+      <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0" data-value="${opt}">
         <span class="tl-dropdown__option-checkbox">
           <div class="tl-checkbox">
             <input type="checkbox" class="tl-checkbox__input" id="${checkboxId}" tabindex="-1" />
@@ -270,16 +271,16 @@ function getMultiselectMarkup({ isLabelInside, placeholder, disabled }) {
       </li>`;
   }).join('');
   return `
-    <button type="button" class="tl-dropdown__button" aria-haspopup="listbox" aria-expanded="false"${
+    <button type="button" class="tl-dropdown__button" aria-haspopup="listbox"${
       disabled ? ' disabled' : ''
     } data-dropdown-toggle="${multiId}">
-      <span class="tl-dropdown__button-placeholder" style="${
-        isLabelInside ? 'display:none' : ''
+      <span class="tl-dropdown__button-placeholder${
+        !isLabelInside ? ' tl-dropdown__button-placeholder--visible' : ''
       }">${!isLabelInside ? placeholder : ''}</span>
-      <span class="tl-dropdown__button-value" style="display:none"></span>
+      <span class="tl-dropdown__button-value"></span>
       <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
     </button>
-    <ul class="tl-dropdown__list" id="${multiId}" role="listbox" tabindex="-1" style="display: none;">
+    <ul class="tl-dropdown__list" id="${multiId}" role="listbox" tabindex="-1">
       ${optionsMarkup}
     </ul>
   `;
@@ -290,20 +291,20 @@ function getButtonMarkup({ isLabelInside, placeholder, disabled }) {
   const optionsMarkup =
     OPTIONS.map(
       (opt) =>
-        `<li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true" style="display:none"></span></li>`,
+        `<li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true"></span></li>`,
     ).join('') +
-    '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option" tabindex="-1" data-value="Option disabled">Option disabled</li>';
+    '<li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" tabindex="-1" data-value="Option disabled">Option disabled</li>';
   return `
-    <button type="button" class="tl-dropdown__button" aria-haspopup="listbox" aria-expanded="false"${
+    <button type="button" class="tl-dropdown__button" aria-haspopup="listbox"${
       disabled ? ' disabled' : ''
     } data-dropdown-toggle="${buttonId}">
-      <span class="tl-dropdown__button-placeholder" style="${
-        isLabelInside ? 'display:none' : ''
+      <span class="tl-dropdown__button-placeholder${
+        !isLabelInside ? ' tl-dropdown__button-placeholder--visible' : ''
       }">${!isLabelInside ? placeholder : ''}</span>
-      <span class="tl-dropdown__button-value" style="display:none"></span>
+      <span class="tl-dropdown__button-value"></span>
       <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
     </button>
-    <ul class="tl-dropdown__list" id="${buttonId}" role="listbox" tabindex="-1" style="display: none;">
+    <ul class="tl-dropdown__list" id="${buttonId}" role="listbox" tabindex="-1">
       ${optionsMarkup}
     </ul>
   `;
@@ -408,7 +409,7 @@ const Template = ({
       optionsMarkup = OPTIONS.map((opt, i) => {
         const checkboxId = `tl-checkbox-${filterId}-${i}`;
         return `
-          <li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">
+          <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0" data-value="${opt}">
             <span class="tl-dropdown__option-checkbox">
               <div class="tl-checkbox">
                 <input type="checkbox" class="tl-checkbox__input" id="${checkboxId}" tabindex="-1" />
@@ -421,40 +422,41 @@ const Template = ({
       optionsMarkup =
         OPTIONS.map(
           (opt) =>
-            `<li class="tl-dropdown__option" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true"></span></li>`,
+            `<li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0" data-value="${opt}">${opt}<span class="tl-icon tl-icon--tick" aria-hidden="true"></span></li>`,
         ).join('') +
-        '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option" tabindex="-1" data-value="Option disabled">Option disabled</li>';
+        '<li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" tabindex="-1" data-value="Option disabled">Option disabled</li>';
     }
     fieldMarkup = `
-      <div class="tl-dropdown__field-wrapper" id="${filterId}-wrapper">
+      <div class="tl-dropdown__input-wrapper" id="${filterId}-wrapper">
         <input class="tl-dropdown__input" type="text" placeholder="${placeholder}"${
       disabled ? ' disabled' : ''
     } data-dropdown-toggle="${filterId}" />
-        <span class="tl-icon tl-icon--cross tl-icon--16 tl-dropdown__clear" aria-hidden="true"></span>
-        <span class="tl-dropdown__divider"></span>
+        <span class="tl-icon tl-icon--cross tl-icon--16 tl-dropdown__icon--cross" aria-hidden="true"></span>
+        <span class="tl-dropdown__input--divider"></span>
         <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-dropdown__chevron" aria-hidden="true"></span>
       </div>
       <ul class="tl-dropdown__list" id="${filterId}" role="listbox" tabindex="-1">
         ${optionsMarkup}
+        <li class="tl-dropdown__option tl-dropdown__option--no-result" role="option" tabindex="-1" data-value="No result">No result</li>
       </ul>
     `;
     scriptMarkup = `<script id="script-${filterId}">
       (() => {
   const input = document.querySelector('[data-dropdown-toggle="${filterId}"]');
   const list = document.getElementById('${filterId}');
-  const chevron = input?.parentElement?.querySelector('.tl-icon--chevron_down');
+  const chevron = input?.parentElement?.querySelector('.tl-dropdown__chevron');
   const clearIcon = input?.parentElement?.querySelector('.tl-icon--cross');
         let isOpen = false;
         let lastFilter = '';
         let optionHasFocus = false;
+        let chevronClicked = false;
+        let preventBlurClose = false;
         function openDropdown() {
-          list.style.display = 'block';
           list.classList.add('tl-dropdown__list--open');
           chevron.classList.add('tl-icon--chevron_down--rotated');
           isOpen = true;
         }
         function closeDropdown() {
-          list.style.display = 'none';
           list.classList.remove('tl-dropdown__list--open');
           chevron.classList.remove('tl-icon--chevron_down--rotated');
           isOpen = false;
@@ -475,17 +477,27 @@ const Template = ({
         function filterOptions() {
           const filterValue = input.value.toLowerCase();
           lastFilter = filterValue;
-          Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((el) => {
+          let matchCount = 0;
+          Array.from(list.querySelectorAll('.tl-dropdown__option:not(.tl-dropdown__option--no-result)')).forEach((el) => {
             const elem = el;
             const value = elem.getAttribute('data-value')?.toLowerCase() || '';
             if (!filterValue || value.includes(filterValue)) {
-              elem.style.display = '';
+              elem.classList.add('tl-dropdown__option--visible');
               elem.setAttribute('tabindex', '0');
+              matchCount++;
             } else {
-              elem.style.display = 'none';
+              elem.classList.remove('tl-dropdown__option--visible');
               elem.setAttribute('tabindex', '-1');
             }
           });
+          const noResult = list.querySelector('.tl-dropdown__option--no-result');
+          if (noResult) {
+            if (filterValue && matchCount === 0) {
+              noResult.classList.add('tl-dropdown__option--visible');
+            } else {
+              noResult.classList.remove('tl-dropdown__option--visible');
+            }
+          }
         }
         function updateInputValue() {
           const checkedBoxes = list.querySelectorAll('.tl-checkbox__input:checked');
@@ -505,44 +517,33 @@ const Template = ({
               e.preventDefault();
               input.value = '';
               input.focus();
-              updateClearIcon();
               setHasValueClass();
               filterOptions();
             });
           }
-          function updateClearIcon() {
-            if (!clearIcon) return;
-            const divider = input.parentElement?.querySelector('.tl-dropdown__divider');
-            if (input.value) {
-              clearIcon.classList.add('tl-dropdown__clear--visible');
-              if (divider) divider.classList.add('tl-dropdown__divider--visible');
-            } else {
-              clearIcon.classList.remove('tl-dropdown__clear--visible');
-              if (divider) divider.classList.remove('tl-dropdown__divider--visible');
-            }
-          }
+
           input.addEventListener('focus', () => {
-            openDropdown();
-            input.classList.add('focus');
+            if (!chevronClicked) {
+              openDropdown();
+            }
+            chevronClicked = false; // Reset flag
             setHasValueClass(true); // Always add class on focus
-            updateClearIcon();
             if (selectedValue) {
               input.value = '';
-              updateClearIcon();
             }
           });
           input.addEventListener('blur', () => {
-            setTimeout(() => {
+              setTimeout(() => {
+              if (preventBlurClose) {
+                preventBlurClose = false;
+                return;
+              }
               const active = document.activeElement;
               if (!list.contains(active) && active !== input) {
                 closeDropdown();
-                input.classList.remove('focus');
                 input.parentElement?.parentElement?.classList.remove('tl-dropdown--has-value');
                 if (selectedValue) {
                   input.value = selectedValue;
-                  updateClearIcon();
-                } else {
-                  updateClearIcon();
                 }
               }
             }, 100);
@@ -550,19 +551,24 @@ const Template = ({
           input.addEventListener('input', () => {
             filterOptions();
             setHasValueClass();
-            updateClearIcon();
           });
-          updateClearIcon();
           chevron.addEventListener('mousedown', (e) => {
+            console.log('Filter chevron clicked, isOpen:', isOpen);
             e.preventDefault();
+            e.stopPropagation();
+            chevronClicked = true;
             if (isOpen) {
+              console.log('Closing filter dropdown');
+              preventBlurClose = true; // Prevent blur from closing dropdown
               closeDropdown();
               input.blur();
             } else {
+              console.log('Opening filter dropdown');
               openDropdown();
               input.focus();
             }
           });
+
           Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((el) => {
             const elem = el;
             if (elem.classList.contains('tl-dropdown__option--disabled')) return;
@@ -634,11 +640,11 @@ const Template = ({
                 Array.from(list.querySelectorAll('.tl-dropdown__option')).forEach((o) => {
                   o.classList.remove('tl-dropdown__option--selected');
                   const tick = o.querySelector('.tl-icon--tick');
-                  if (tick) tick.style.display = 'none';
+                  if (tick) tick.classList.remove('tl-icon--tick--visible');
                 });
                 optionElem.classList.add('tl-dropdown__option--selected');
                 const tick = optionElem.querySelector('.tl-icon--tick');
-                if (tick) tick.style.display = '';
+                if (tick) tick.classList.add('tl-icon--tick--visible');
                 selectedValue = optionElem.getAttribute('data-value') || '';
                 input.value = selectedValue;
                 setHasValueClass();
@@ -662,7 +668,7 @@ const Template = ({
   }
   const barMarkup = '<div class="tl-dropdown__bar"></div>';
   return formatHtmlPreview(`
-    <div class="demo-wrapper" style="max-width: 208px; height: 150px;">
+    <div class="demo-wrapper">
       <div class="tl-dropdown tl-dropdown--${normalizedSize}${error ? ' tl-dropdown--error' : ''}${
     disabled ? ' tl-dropdown--disabled' : ''
   }${isLabelInside ? ' tl-dropdown--label-inside' : ''}${
