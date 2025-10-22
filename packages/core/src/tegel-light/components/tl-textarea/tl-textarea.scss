@@ -97,6 +97,10 @@
     position: absolute;
     transform: scaleX(0);
     transition: 0.35s ease transform;
+
+    .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
+      background: var(--textarea-bar-error) !important;
+    }
   }
 }
 
@@ -110,10 +114,6 @@
   color: var(--textarea-helper);
   flex-grow: 2;
   flex-basis: auto;
-
-  ~ .tl-textarea__textcounter {
-    flex-basis: auto;
-  }
 }
 
 .tl-textarea__textcounter {
@@ -137,12 +137,6 @@
   pointer-events: none;
   background-color: var(--textarea-background);
   z-index: 1;
-
-  svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .tl-textarea__icon-readonly {
@@ -323,8 +317,17 @@
   }
 }
 
-.tl-textarea__bar::after {
-  .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
-    background: var(--textarea-bar-error) !important;
+// Modifier styles in affected elements
+.tl-textarea__helper {
+  ~ .tl-textarea__textcounter {
+    flex-basis: auto;
+  }
+}
+
+svg {
+  .tl-textarea__resizer-icon & {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 }

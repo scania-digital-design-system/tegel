@@ -54,45 +54,6 @@
     }
   }
 
-  &--compact {
-    .tl-table__header-cell,
-    .tl-table__body-cell {
-      height: 32px;
-      padding: 8px 16px;
-    }
-  }
-
-  &--vertical-dividers {
-    .tl-table__header-cell:not(:last-child),
-    .tl-table__body-cell:not(:last-child) {
-      border-right: 1px solid var(--table-divider);
-    }
-  }
-
-  &--zebra-rows-odd {
-    .tl-table__body .tl-table__row:nth-child(odd) {
-      background-color: var(--table-zebra-mode);
-    }
-  }
-
-  &--zebra-rows-even {
-    .tl-table__body .tl-table__row:nth-child(even) {
-      background-color: var(--table-zebra-mode);
-    }
-  }
-
-  &--zebra-columns-odd {
-    .tl-table__body-cell:nth-child(odd) {
-      background-color: var(--table-zebra-mode);
-    }
-  }
-
-  &--zebra-columns-even {
-    .tl-table__body-cell:nth-child(even) {
-      background-color: var(--table-zebra-mode);
-    }
-  }
-
   &--primary {
     --table-body-row: var(--component-table-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
@@ -103,91 +64,6 @@
     --table-body-row: var(--component-table-secondary-cell);
     --table-body-row-hover: var(--component-table-cell-hover);
     --table-zebra-mode: var(--component-table-cell);
-  }
-
-  &--header-text-align-left {
-    .tl-table__header-cell {
-      text-align: left;
-    }
-  }
-
-  &--header-text-align-start {
-    .tl-table__header-cell {
-      text-align: start;
-    }
-  }
-
-  &--header-text-align-center {
-    .tl-table__header-cell {
-      text-align: center;
-    }
-  }
-
-  &--header-text-align-right {
-    .tl-table__header-cell {
-      text-align: right;
-    }
-  }
-
-  &--header-text-align-end {
-    .tl-table__header-cell {
-      text-align: end;
-    }
-  }
-
-  &--cell-text-align-left {
-    .tl-table__body-cell {
-      text-align: left;
-    }
-  }
-
-  &--cell-text-align-start {
-    .tl-table__body-cell {
-      text-align: start;
-    }
-  }
-
-  &--cell-text-align-center {
-    .tl-table__body-cell {
-      text-align: center;
-    }
-  }
-
-  &--cell-text-align-right {
-    .tl-table__body-cell {
-      text-align: right;
-    }
-  }
-
-  &--cell-text-align-end {
-    .tl-table__body-cell {
-      text-align: end;
-    }
-  }
-
-  &--clickable {
-    .tl-table__row {
-      cursor: pointer;
-    }
-  }
-
-  &--no-min-width {
-    .tl-table__header-cell,
-    .tl-table__body-cell {
-      min-width: unset;
-    }
-  }
-
-  &--no-padding {
-    .tl-table__body-cell {
-      padding: 0;
-    }
-  }
-
-  &--no-header-padding {
-    .tl-table__header-cell {
-      padding: 0;
-    }
   }
 }
 
@@ -209,10 +85,6 @@
   &:hover {
     background-color: var(--table-body-row-hover);
     border-bottom-color: var(--table-divider);
-
-    .tl-table__body-cell {
-      background-color: var(--table-body-row-hover);
-    }
   }
 
   &--selected {
@@ -220,10 +92,6 @@
 
     &:hover {
       background-color: var(--table-body-row-selected-hover);
-
-      .tl-table__body-cell {
-        background-color: var(--table-body-row-selected-hover);
-      }
     }
   }
 
@@ -234,6 +102,18 @@
   &--clickable:focus-visible {
     outline: 2px solid var(--table-header-button-focus);
     outline-offset: -2px;
+  }
+
+  .tl-table--zebra-rows-odd .tl-table__body &:nth-child(odd) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--zebra-rows-even .tl-table__body &:nth-child(even) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--clickable & {
+    cursor: pointer;
   }
 }
 
@@ -268,6 +148,43 @@
     text-align: center;
     background-color: var(--table-header);
   }
+
+  .tl-table--compact & {
+    height: 32px;
+    padding: 8px 16px;
+  }
+
+  .tl-table--vertical-dividers &:not(:last-child) {
+    border-right: 1px solid var(--table-divider);
+  }
+
+  .tl-table--header-text-align-left & {
+    text-align: left;
+  }
+
+  .tl-table--header-text-align-start & {
+    text-align: start;
+  }
+
+  .tl-table--header-text-align-center & {
+    text-align: center;
+  }
+
+  .tl-table--header-text-align-right & {
+    text-align: right;
+  }
+
+  .tl-table--header-text-align-end & {
+    text-align: end;
+  }
+
+  .tl-table--no-min-width & {
+    min-width: unset;
+  }
+
+  .tl-table--no-header-padding & {
+    padding: 0;
+  }
 }
 
 .tl-table__body-cell {
@@ -294,5 +211,58 @@
     padding: 0;
     text-align: center;
     background-color: inherit;
+  }
+
+  .tl-table--compact & {
+    height: 32px;
+    padding: 8px 16px;
+  }
+
+  .tl-table--vertical-dividers &:not(:last-child) {
+    border-right: 1px solid var(--table-divider);
+  }
+
+  .tl-table--zebra-columns-odd &:nth-child(odd) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--zebra-columns-even &:nth-child(even) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--cell-text-align-left & {
+    text-align: left;
+  }
+
+  .tl-table--cell-text-align-start & {
+    text-align: start;
+  }
+
+  .tl-table--cell-text-align-center & {
+    text-align: center;
+  }
+
+  .tl-table--cell-text-align-right & {
+    text-align: right;
+  }
+
+  .tl-table--cell-text-align-end & {
+    text-align: end;
+  }
+
+  .tl-table--no-min-width & {
+    min-width: unset;
+  }
+
+  .tl-table--no-padding & {
+    padding: 0;
+  }
+
+  .tl-table__row:hover & {
+    background-color: var(--table-body-row-hover);
+  }
+
+  .tl-table__row--selected:hover & {
+    background-color: var(--table-body-row-selected-hover);
   }
 }

@@ -8,37 +8,6 @@
   display: block;
   min-width: 208px;
 
-  // Size modifiers
-  &--lg {
-    @include size-variant(
-      56px,
-      var(--tds-spacing-element-20) var(--tds-spacing-element-16),
-      20px,
-      var(--tds-spacing-element-24),
-      15px
-    );
-  }
-
-  &--md {
-    @include size-variant(
-      48px,
-      var(--tds-spacing-element-16),
-      16px,
-      var(--tds-spacing-element-20),
-      11px
-    );
-  }
-
-  &--sm {
-    @include size-variant(
-      40px,
-      var(--tds-spacing-element-16),
-      12px,
-      var(--tds-spacing-element-20),
-      11px
-    );
-  }
-
   &--no-min-width {
     min-width: auto;
   }
@@ -79,6 +48,18 @@
   &:hover {
     box-shadow: var(--text-field-box-shadow-hover);
   }
+
+  .tl-text-field--lg & {
+    height: 56px;
+  }
+
+  .tl-text-field--md & {
+    height: 48px;
+  }
+
+  .tl-text-field--sm & {
+    height: 40px;
+  }
 }
 
 .tl-text-field__content {
@@ -96,14 +77,43 @@
   color: var(--text-field-text);
   flex: 1;
   order: 2;
+
+  .tl-text-field--lg & {
+    padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--md & {
+    padding: var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--sm & {
+    padding: var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--label-inside.tl-text-field--lg & {
+    @include placeholder-label;
+
+    padding-top: var(--tds-spacing-element-24);
+    padding-bottom: 15px;
+  }
+
+  .tl-text-field--label-inside.tl-text-field--md &,
+  .tl-text-field--label-inside.tl-text-field--sm & {
+    @include placeholder-label;
+
+    padding-top: var(--tds-spacing-element-20);
+    padding-bottom: 11px;
+  }
 }
 
-.tl-text-field__label-outside > * {
-  @include detail-05;
+.tl-text-field__label-outside {
+  > * {
+    @include detail-05;
 
-  display: block;
-  margin-bottom: var(--tds-spacing-element-8);
-  color: var(--text-field-label);
+    display: block;
+    margin-bottom: var(--tds-spacing-element-8);
+    color: var(--text-field-label);
+  }
 }
 
 .tl-text-field__label-inside {
@@ -239,8 +249,10 @@
 }
 
 // Helper text counter positioning
-.tl-text-field__helper .tl-text-field__textcounter {
-  margin-left: auto;
+.tl-text-field__helper {
+  .tl-text-field__textcounter {
+    margin-left: auto;
+  }
 }
 
 // Disabled state - modifier styles in affected elements

@@ -2,6 +2,7 @@
 @import '../../../mixins/flex-center';
 @import '../../../mixins/z-index';
 @import './tl-header-vars';
+@import '../../../../../../typography/utilities/typography-utility';
 
 /* Header Elements */
 @import 'item';
@@ -34,9 +35,21 @@
   margin: 0;
 }
 
-.tl-header__item,
+.tl-header__item {
+  display: none;
+  height: 100%;
+
+  @media (min-width: 992px) {
+    display: block;
+  }
+}
+
 .tl-header__dropdown {
   display: none;
+  @include headline-07;
+
+  height: 100%;
+  position: relative;
 
   @media (min-width: 992px) {
     display: block;
