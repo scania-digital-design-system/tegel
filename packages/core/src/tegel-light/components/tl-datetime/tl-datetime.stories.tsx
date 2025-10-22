@@ -99,11 +99,11 @@ const Template = ({
   classesArray.push(`tl-datetime--${sizeLookup[size]}`);
 
   if (stateLookup[state]) {
-    classesArray.push(`tl-datetime--state-${stateLookup[state]}`);
+    classesArray.push(`tl-datetime--${stateLookup[state]}`);
   }
 
   if (noMinWidth) {
-    classesArray.push('tl-datetime--nomin');
+    classesArray.push('tl-datetime--no-min-width');
   }
 
   if (labelPosition === 'Inside') {

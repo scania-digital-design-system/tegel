@@ -7,7 +7,7 @@
   min-width: 208px;
   background: unset;
 
-  &--nomin {
+  &--no-min-width {
     min-width: auto;
   }
 
@@ -88,7 +88,7 @@
     border-color: transparent;
   }
 
-  .tl-datetime--state-success & {
+  .tl-datetime--success & {
     border-left: 1px solid var(--datetime-border-color-left-success);
     border-right: 1px solid var(--datetime-border-color-right-success);
     border-bottom: 1px solid var(--datetime-border-color-bottom-success);
@@ -96,7 +96,7 @@
     color: var(--tds-datetime-color-success);
   }
 
-  .tl-datetime--state-error & {
+  .tl-datetime--error & {
     border-left: 1px solid var(--datetime-border-color-left-error);
     border-right: 1px solid var(--datetime-border-color-right-error);
     border-bottom: 1px solid var(--datetime-border-color-bottom-error);
@@ -192,7 +192,7 @@
     color: var(--datetime-icon-disabled);
   }
 
-  .tl-datetime--state-error & {
+  .tl-datetime--error & {
     color: var(--datetime-icon-error);
   }
 }
@@ -251,11 +251,11 @@
     display: none;
   }
 
-  .tl-datetime--state-error & {
+  .tl-datetime--error & {
     color: var(--datetime-helper-error);
   }
 
-  .tl-datetime--state-error & .tl-icon--error {
+  .tl-datetime--error & .tl-icon--error {
     display: inline-flex;
   }
 }
@@ -273,10 +273,10 @@
   transform: scaleX(0) !important;
 }
 
-.tl-datetime--state-success .tl-datetime__bar::after {
+.tl-datetime--success .tl-datetime__bar::after {
   background: var(--tds-datetime-bar-sucess);
 }
 
-.tl-datetime--state-error .tl-datetime__bar::after {
+.tl-datetime--error .tl-datetime__bar::after {
   background: var(--datetime-highlight-error);
 }
