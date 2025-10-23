@@ -142,9 +142,8 @@ export class TdsCheckbox {
     return (
       <div class="tds-checkbox">
         <input
-          // eslint-disable-next-line no-return-assign
           ref={(inputElement) => {
-            if(inputElement) this.inputElement = inputElement
+            if (inputElement) this.inputElement = inputElement;
           }}
           indeterminate={this.indeterminate}
           aria-checked={this.checked}
