@@ -181,7 +181,7 @@
 }
 
 .tl-dropdown__input:focus:not(:placeholder-shown) {
-  padding-right: 73px;
+  padding-right: 100px;
 }
 
 .tl-dropdown__icon--cross {
@@ -192,7 +192,7 @@
   display: flex;
   position: absolute;
   right: 49px;
-  top: 0;
+  top: 1px;
   bottom: 0;
   margin: auto 0;
   cursor: pointer;
@@ -204,9 +204,10 @@
 .tl-dropdown__input--divider {
   position: absolute;
   right: 40px;
-  top: 50%;
+  top: 1px;
+  bottom: 0;
+  margin: auto 0;
   height: 16px;
-  transform: translateY(-50%);
   width: 1px;
   background: var(--dropdown-clear-icon, #e0e0e0);
   z-index: 1;
@@ -217,10 +218,10 @@
   display: block;
   position: absolute;
   right: 40px;
-  top: 50%;
+  top: 1px;
+  bottom: 0;
+  margin: auto 0;
   height: 16px;
-  transform: translateY(-50%);
-  bottom: unset;
   width: 1px;
   background: var(--dropdown-clear-icon, #e0e0e0);
   z-index: 1;
