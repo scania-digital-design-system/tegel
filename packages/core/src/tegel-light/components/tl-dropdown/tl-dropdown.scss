@@ -70,18 +70,66 @@
   transform-origin: center;
 }
 
+.tl-dropdown__select ~ .tl-dropdown__chevron {
+  transform: translateY(0);
+}
+
+// Adjust chevron position for select with outside label without helper text (better centering)
+// Adjust chevron position for large dropdown with helper text
+.tl-dropdown.tl-dropdown--lg:is(.tl-dropdown--no-label, .tl-dropdown--label-inside):has(
+.tl-dropdown__helper
+)
+.tl-dropdown__select
+~ .tl-icon--chevron_down {
+  top: calc(-25% - 1px);
+}
+
+// Adjust chevron position for large dropdown with outside label and helper text
+.tl-dropdown.tl-dropdown--lg:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):has(
+.tl-dropdown__helper
+)
+.tl-dropdown__select
+~ .tl-dropdown__chevron {
+  transform: translateY(2px);
+}
+
+:is(.tl-dropdown__button) ~ .tl-dropdown__chevron {
+  transform: translateY(1px);
+}
+
+.tl-dropdown:has(.tl-dropdown__helper):has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown__select
+~ .tl-dropdown__chevron {
+  transform: translateY(1px);
+}
+
+.tl-dropdown__select ~ .tl-dropdown__chevron.tl-dropdown__chevron--rotated {
+  transform: translateY(0) rotate(180deg);
+}
+
+:is(.tl-dropdown__button, .tl-dropdown__input)
+~ .tl-dropdown__chevron.tl-dropdown__chevron--rotated {
+  transform: translateY(1px) rotate(180deg);
+}
+
+.tl-dropdown:has(.tl-dropdown__helper):has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown__select
+~ .tl-dropdown__chevron.tl-dropdown__chevron--rotated {
+  transform: translateY(1px) rotate(180deg);
+}
+
 .tl-dropdown__input ~ .tl-dropdown__chevron {
   pointer-events: auto;
   cursor: pointer;
 }
 
 .tl-dropdown__chevron--rotated {
-  transform: rotate(180deg) !important;
+  transform: rotate(180deg);
   transform-origin: center;
 }
 
 .tl-dropdown__button .tl-dropdown__chevron.tl-dropdown__chevron--rotated {
-  transform: translateY(-50%) rotate(180deg) !important;
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
@@ -89,7 +137,7 @@
 )
 .tl-dropdown__select
 ~ .tl-dropdown__chevron.tl-dropdown__chevron--rotated {
-  transform: translateY(-50%) rotate(180deg) !important;
+  transform: translateY(calc(-50% + 16px)) rotate(180deg);
 }
 
 .tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
@@ -97,7 +145,7 @@
 )
 :is(.tl-dropdown__button, .tl-dropdown__input)
 ~ .tl-dropdown__chevron.tl-dropdown__chevron--rotated {
-  transform: translateY(-50%) rotate(180deg) !important;
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside {
@@ -176,17 +224,45 @@
 // --- Size variants ---
 .tl-dropdown--lg %tl-dropdown-field {
   height: 56px;
-  line-height: 56px;
+
+  //line-height: normal;
 }
 
 .tl-dropdown--md %tl-dropdown-field {
   height: 48px;
-  line-height: 48px;
+
+  //line-height: normal;
 }
 
 .tl-dropdown--sm %tl-dropdown-field {
   height: 40px;
-  line-height: 40px;
+
+  //line-height: normal;
+}
+
+// Adjust medium and large button and input placeholder vertical position - removed translateY(1px) as it made text too high
+
+// Adjust small and medium button with outside label text position
+:is(.tl-dropdown--sm, .tl-dropdown--md):not(.tl-dropdown--label-inside)
+.tl-dropdown__button
+:is(.tl-dropdown__button-placeholder, .tl-dropdown__button-value) {
+  padding-top: calc(var(--tds-spacing-element-16) + 1px);
+  padding-bottom: calc(var(--tds-spacing-element-16) - 1px);
+}
+
+// Adjust small and medium filter (input) with outside label text position
+:is(.tl-dropdown--sm, .tl-dropdown--md):not(.tl-dropdown--label-inside) .tl-dropdown__input {
+  padding-top: calc(var(--tds-spacing-element-16) + 1px);
+  padding-bottom: calc(var(--tds-spacing-element-16) - 1px);
+}
+
+// Adjust select with outside label placeholder text position (1px down) - only without helper
+:is(.tl-dropdown--md, .tl-dropdown--lg):not(.tl-dropdown--label-inside):not(
+:has(.tl-dropdown__helper)
+)
+.tl-dropdown__select {
+  padding-top: calc(var(--tds-spacing-element-16) + 1px);
+  padding-bottom: calc(var(--tds-spacing-element-16) - 1px);
 }
 
 .tl-dropdown--disabled :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input) {
@@ -213,14 +289,25 @@
   border-bottom-color: var(--dropdown-error);
 }
 
-:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input):hover {
+:is(.tl-dropdown__button, .tl-dropdown__input):hover {
   border-color: var(--dropdown-border-hover);
-  border-width: var(--dropdown-border-width-hover, 0 0 2px 0);
+  box-shadow: 0 1px 0 0 var(--dropdown-border-hover);
 }
 
-:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input):focus {
+.tl-dropdown__select:hover {
+  border-color: var(--dropdown-border-hover);
+  box-shadow: 0 1px 0 0 var(--dropdown-border-hover);
+}
+
+:is(.tl-dropdown__button, .tl-dropdown__input):focus {
   border-color: var(--dropdown-border-focus);
-  border-width: var(--dropdown-border-focus-width, var(--dropdown-border-width-hover, 0 0 2px 0));
+  box-shadow: 0 1px 0 0 var(--dropdown-border-focus);
+  outline: none;
+}
+
+.tl-dropdown__select:focus {
+  border-color: var(--dropdown-border-focus);
+  border-width: 0 0 2px;
   outline: none;
   box-shadow: none;
 }
@@ -231,8 +318,8 @@
 
 .tl-dropdown--sm.tl-dropdown--label-inside:has(.tl-dropdown__select option:not([value='']):checked)
 .tl-dropdown__select {
-  padding-top: var(--tds-spacing-element-20);
-  padding-bottom: 12px;
+  padding-top: calc(var(--tds-spacing-element-20) + 1px);
+  padding-bottom: 11px;
   line-height: calc(56px - var(--tds-spacing-element-20) - 12px);
 }
 
@@ -247,6 +334,9 @@
   white-space: nowrap;
   flex: 1 1 auto;
   min-width: 0;
+  display: flex;
+  align-items: center;
+  line-height: normal;
 }
 
 .tl-dropdown--sm.tl-dropdown--label-inside.tl-dropdown--has-value
@@ -255,7 +345,7 @@
   left: var(--tds-spacing-element-16);
   right: 32px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(calc(-50% + 1px));
   background: transparent;
 }
 
@@ -350,6 +440,63 @@
   transform: translateY(-50%);
 }
 
+// Adjust button inside label position when no value (1px up) - all sizes - only without helper
+:is(.tl-dropdown--sm, .tl-dropdown--lg, .tl-dropdown--md).tl-dropdown--label-inside:not(
+.tl-dropdown--has-value
+):not(:has(.tl-dropdown__helper)):has(.tl-dropdown__button)
+.tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(calc(-50% + 1px));
+}
+
+// Adjust sm inside label input position when no value (1px down) - only without helper
+.tl-dropdown--sm.tl-dropdown--label-inside:not(.tl-dropdown--has-value):not(
+:has(.tl-dropdown__helper)
+):has(.tl-dropdown__input)
+.tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(calc(-50% + 1px));
+}
+
+// Adjust sm inside label select position when no value (1px down) - only without helper
+.tl-dropdown--sm.tl-dropdown--label-inside:not(.tl-dropdown--has-value):not(
+:has(.tl-dropdown__helper)
+):has(.tl-dropdown__select)
+.tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(calc(-50% + 1px));
+}
+
+// Adjust md and lg inside label input position when no value (1px down) - only without helper
+:is(.tl-dropdown--md, .tl-dropdown--lg).tl-dropdown--label-inside:not(.tl-dropdown--has-value):not(
+:has(.tl-dropdown__helper)
+):has(.tl-dropdown__input)
+.tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(calc(-50% + 1px));
+}
+
+// Adjust md and lg inside label select position when no value (1px down) - only without helper
+:is(.tl-dropdown--md, .tl-dropdown--lg).tl-dropdown--label-inside:not(.tl-dropdown--has-value):not(
+:has(.tl-dropdown__helper)
+):has(.tl-dropdown__select)
+.tl-dropdown__label--inside {
+  top: 50%;
+  transform: translateY(calc(-50% + 1px));
+}
+
+// Adjust chevron position for all button inside label variants
+.tl-dropdown--label-inside .tl-dropdown__button .tl-dropdown__chevron {
+  transform: translateY(calc(-50% + 1px));
+}
+
+// Adjust chevron position for sm inside label select with helper text (1px up)
+.tl-dropdown--sm.tl-dropdown--label-inside:has(.tl-dropdown__helper)
+.tl-dropdown__select
+~ .tl-dropdown__chevron {
+  transform: translateY(-1px);
+}
+
 .tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label--inside {
   @include detail-07;
 
@@ -365,7 +512,15 @@
 
 .tl-dropdown--label-inside:has(.tl-dropdown__helper):not(.tl-dropdown--has-value)
 .tl-dropdown__label--inside {
-  top: calc(50% - 10px);
+  top: calc(50% - 9px);
+}
+
+// Adjust sm inside label with helper when no value (1px down) - for filter and select
+.tl-dropdown--sm.tl-dropdown--label-inside:has(.tl-dropdown__helper):not(
+.tl-dropdown--has-value
+):is(:has(.tl-dropdown__input), :has(.tl-dropdown__select))
+.tl-dropdown__label--inside {
+  top: calc(50% - 9px);
 }
 
 .tl-dropdown--label-inside:has(.tl-dropdown__helper):has(
@@ -408,6 +563,21 @@
   line-height: calc(48px - var(--tds-spacing-element-20) - 11px);
 }
 
+// Adjust button value position for md inside label (1px up)
+:is(.tl-dropdown--md, .tl-dropdown--lg).tl-dropdown--label-inside.tl-dropdown--has-value
+.tl-dropdown__button
+:is(.tl-dropdown__button-value, .tl-dropdown__button-placeholder) {
+  padding-top: calc(var(--tds-spacing-element-20) - 1px);
+  padding-bottom: 20px;
+}
+
+// Adjust input value position for md and lg inside label (1px up)
+:is(.tl-dropdown--md, .tl-dropdown--lg).tl-dropdown--label-inside.tl-dropdown--has-value
+.tl-dropdown__input:is(:focus, :not(:placeholder-shown)) {
+  padding-top: calc(var(--tds-spacing-element-20) - 1px);
+  padding-bottom: 9px;
+}
+
 .tl-dropdown--sm.tl-dropdown--label-inside %tl-dropdown-field {
   padding-top: var(--tds-spacing-element-16);
   padding-bottom: var(--tds-spacing-element-8);
@@ -436,6 +606,38 @@
 .tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) {
   --dropdown-label-transform: translateY(0);
   --dropdown-label-top: 8px;
+}
+
+// Adjust label position for sm inside label select with selected option (1px lower)
+.tl-dropdown.tl-dropdown--sm.tl-dropdown--label-inside:has(
+.tl-dropdown__select option:not([value='']):checked
+) {
+  --dropdown-label-top: 9px;
+}
+
+// Adjust label position for md and lg inside label select with selected option (4px up)
+.tl-dropdown.tl-dropdown--md.tl-dropdown--label-inside:has(
+.tl-dropdown__select option:not([value='']):checked
+) {
+  --dropdown-label-top: 9px;
+}
+
+.tl-dropdown.tl-dropdown--lg.tl-dropdown--label-inside:has(
+.tl-dropdown__select option:not([value='']):checked
+) {
+  --dropdown-label-top: 12px;
+}
+
+// Adjust label position for md inside label button with value (1px lower)
+.tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value:has(.tl-dropdown__button)
+.tl-dropdown__label--inside {
+  top: 8px;
+}
+
+// Adjust label position for md inside label input with value (1px lower)
+.tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value:has(.tl-dropdown__input)
+.tl-dropdown__label--inside {
+  top: 8px;
 }
 
 .tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label--inside {
@@ -585,16 +787,6 @@ option[selected] {
 .tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
 :has(.tl-dropdown__helper)
 )
-.tl-dropdown__select
-~ .tl-icon--chevron_down {
-  top: calc(50% + 12px);
-  bottom: auto;
-  transform: translateY(-50%);
-}
-
-.tl-dropdown:not(.tl-dropdown--no-label):not(.tl-dropdown--label-inside):not(
-:has(.tl-dropdown__helper)
-)
 :is(.tl-dropdown__button, .tl-dropdown__input)
 ~ .tl-icon--chevron_down {
   top: 50%;
@@ -605,7 +797,7 @@ option[selected] {
 :is(.tl-dropdown--no-label, .tl-dropdown--label-inside):has(.tl-dropdown__helper)
 .tl-dropdown__select
 ~ .tl-icon--chevron_down {
-  top: -25%;
+  top: calc(-25% - 2px);
 }
 
 // --- Animated underline bar ---
