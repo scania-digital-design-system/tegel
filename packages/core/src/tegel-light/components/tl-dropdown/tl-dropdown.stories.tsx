@@ -336,7 +336,7 @@ export default {
     size: {
       name: 'Size',
       control: { type: 'radio' },
-      options: ['Large', 'Medium', 'Small'],
+      options: ['Small', 'Medium', 'Large'],
       defaultValue: 'Large',
     },
     label: { name: 'Label', control: 'text' },
@@ -380,7 +380,7 @@ const Template = ({
   multiselect,
   modeVariant,
 }) => {
-  const normalizedSize = { Large: 'lg', Medium: 'md', Small: 'sm' }[size] ?? 'lg';
+  const normalizedSize = { Small: 'sm', Medium: 'md', Large: 'lg' }[size] ?? 'lg';
   const isLabelInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const modeClass = modeVariant === 'Secondary' ? 'tl-dropdown--secondary' : 'tl-dropdown--primary';
