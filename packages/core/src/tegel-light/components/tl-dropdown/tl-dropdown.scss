@@ -55,6 +55,11 @@
   cursor: pointer;
 }
 
+// Adjust chevron position for no-label button (1px down)
+.tl-dropdown--no-label .tl-dropdown__button .tl-dropdown__chevron {
+  transform: translateY(calc(-50% + 1px));
+}
+
 :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input) ~ .tl-dropdown__chevron {
   position: absolute;
   right: var(--tds-spacing-element-16);
