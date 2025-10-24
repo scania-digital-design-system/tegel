@@ -68,7 +68,8 @@
     flex-direction: column;
     gap: 4px;
     color: var(--foreground-text-strong);
-    padding: 2px 0;
+    padding: 2px 24px 2px 0;
+    overflow-wrap: anywhere;
 
     .header {
       @include headline-07;
