@@ -32,7 +32,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       }
 
       /* Check diff of screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });
