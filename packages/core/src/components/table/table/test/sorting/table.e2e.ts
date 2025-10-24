@@ -25,7 +25,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(tableComponent).toHaveCount(1);
 
       /* Check for diffs in screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
     test('column headers are clickable', async ({ page }) => {
@@ -47,7 +47,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await mileageHeader.waitFor({ state: 'visible' });
       await page.waitForTimeout(250);
 
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
     test('hover on column header', async ({ page }) => {
@@ -55,7 +55,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await mileageHeader.hover();
 
       /* Check diff of screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });

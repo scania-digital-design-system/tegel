@@ -22,7 +22,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(tdsTableToolbarSearchInput).toHaveCSS('width', '208px');
 
       /* Check diff of screenshot after click */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
     test('clicking on search button opens field for entering data', async ({ page }) => {
@@ -43,7 +43,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       expect(activeStateClasses).toBeTruthy();
 
       /* Check diff of screenshot after filled */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });
