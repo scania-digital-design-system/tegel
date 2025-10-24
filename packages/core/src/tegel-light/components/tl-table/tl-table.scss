@@ -18,40 +18,7 @@
     display: block;
     overflow-x: auto;
     white-space: nowrap;
-
-    &::-webkit-scrollbar {
-      height: 10px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: var(--color-background-layer-01);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 40px;
-      background: var(--color-foreground-icon-subtle);
-      border: 3px solid transparent;
-      background-clip: padding-box;
-    }
-
-    &::-webkit-scrollbar-button {
-      height: 0;
-      width: 0;
-    }
-
-    &:hover {
-      &::-webkit-scrollbar-thumb {
-        border: 2px solid transparent;
-        background: var(--color-foreground-icon-soft);
-        background-clip: padding-box;
-      }
-    }
-
-    // Firefox support
-    @supports not selector(::-webkit-scrollbar) {
-      scrollbar-color: var(--color-foreground-icon-subtle) var(--color-background-layer-01);
-      scrollbar-width: thin;
-    }
+    @include tds-scrollbar(horizontal);
   }
 
   &--primary {
