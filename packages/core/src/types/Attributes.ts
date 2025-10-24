@@ -1,1 +1,1 @@
-export type Attributes = { [key: string]: any };
+export type Attributes = { [key: string]: string | null };

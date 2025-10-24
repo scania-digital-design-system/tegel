@@ -24,15 +24,17 @@ export class TdsSideMenuItem {
 
   @State() hasUserComponent: boolean = false;
 
-  private sideMenuEl: HTMLTdsSideMenuElement;
+  private sideMenuEl: HTMLTdsSideMenuElement | null;
 
-  private slotEl: HTMLSlotElement;
+  private slotEl: HTMLSlotElement | null;
 
   findSlottedAndExecute(
     searchPredicate: (element: HTMLElement) => boolean,
     callback: (element: HTMLElement) => void,
   ) {
-    const assignedElements = this.slotEl.assignedElements({ flatten: true });
+    const assignedElements = this.slotEl?.assignedElements({ flatten: true });
+    if (!assignedElements?.length) return;
+
     const firstSlottedElement = assignedElements[0] as HTMLElement;
     if (firstSlottedElement) {
       const foundElement = dfs(firstSlottedElement, searchPredicate);
@@ -78,18 +80,20 @@ export class TdsSideMenuItem {
     // closest() will return null if side-menu-item is inside a shadowRoot that
     // does not contain a side-menu. This is the case for the side-menu-dropdown.
     this.sideMenuEl = this.host.closest('tds-side-menu');
-    this.collapsed = this.sideMenuEl?.collapsed;
+    this.collapsed = !!this.sideMenuEl?.collapsed;
   }
 
   componentDidLoad() {
-    this.slotEl = this.host.shadowRoot.querySelector('slot');
+    this.slotEl = this.host.shadowRoot?.querySelector('slot') ?? null;
     this.updateSlottedElements();
     this.updateHasUserComponent();
 
-    this.slotEl.addEventListener('slotchange', () => {
-      this.updateSlottedElements();
-      this.updateHasUserComponent();
-    });
+    if (this.slotEl) {
+      this.slotEl.addEventListener('slotchange', () => {
+        this.updateSlottedElements();
+        this.updateHasUserComponent();
+      });
+    }
   }
 
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })

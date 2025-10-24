@@ -40,7 +40,8 @@ export class TdsHeaderLauncher {
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.open) {
       this.open = false;
-      this.buttonEl.shadowRoot.querySelector('button').focus();
+      const btnShadow = this.buttonEl?.shadowRoot?.querySelector('button');
+      if (btnShadow) btnShadow.focus();
     }
   }
 
@@ -57,7 +58,7 @@ export class TdsHeaderLauncher {
         const selectors = "a, [tabindex='0']";
 
         const firstFocusableElement =
-          this.host.shadowRoot.querySelector(selectors) || this.host.querySelector(selectors);
+          this.host.shadowRoot?.querySelector(selectors) || this.host.querySelector(selectors);
 
         if (firstFocusableElement instanceof HTMLElement) {
           firstFocusableElement.focus();

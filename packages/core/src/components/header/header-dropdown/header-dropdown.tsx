@@ -46,7 +46,7 @@ export class TdsHeaderDropdown {
   handleKeyDown(event: KeyboardEvent) {
     if (event.key === 'Escape' && this.open) {
       this.open = false;
-      this.buttonEl.focus();
+      this.buttonEl?.focus();
     }
   }
 
@@ -58,7 +58,7 @@ export class TdsHeaderDropdown {
         const selectors = "a, [tabindex='0']";
 
         const firstFocusableElement =
-          this.host.shadowRoot.querySelector(selectors) || this.host.querySelector(selectors);
+          this.host.shadowRoot?.querySelector(selectors) || this.host.querySelector(selectors);
 
         if (firstFocusableElement instanceof HTMLElement) {
           firstFocusableElement.focus();

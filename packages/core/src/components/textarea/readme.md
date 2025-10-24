@@ -17,7 +17,7 @@
 | `label`            | `label`               | Label text                                                                                                   | `string`                              | `''`         |
 | `labelPosition`    | `label-position`      | Position of the label for the Textarea.                                                                      | `"inside" \| "no-label" \| "outside"` | `'no-label'` |
 | `maxLength`        | `max-length`          | Max length of input                                                                                          | `number`                              | `undefined`  |
-| `modeVariant`      | `mode-variant`        | Mode variant of the Textarea                                                                                 | `"primary" \| "secondary"`            | `null`       |
+| `modeVariant`      | `mode-variant`        | Mode variant of the Textarea                                                                                 | `"primary" \| "secondary" \| null`    | `null`       |
 | `name`             | `name`                | Name attribute                                                                                               | `string`                              | `''`         |
 | `noMinWidth`       | `no-min-width`        | Unset minimum width of 208px.                                                                                | `boolean`                             | `false`      |
 | `placeholder`      | `placeholder`         | Placeholder text                                                                                             | `string`                              | `''`         |

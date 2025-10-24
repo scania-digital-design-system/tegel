@@ -9,7 +9,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
 })
 export class TdsDatetime {
   /** Text-input for focus state */
-  textInput?: HTMLInputElement;
+  private textInput: HTMLInputElement;
 
   /** Sets an input type */
   @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'month' | 'week' | 'time' =
@@ -37,7 +37,7 @@ export class TdsDatetime {
   @Prop() noMinWidth: boolean = false;
 
   /** Set the variant of the Datetime component. */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Name property. Uses a unique ID as fallback if not specified. */
   @Prop() name = `datetime-${generateUniqueId()}`;
@@ -218,8 +218,11 @@ export class TdsDatetime {
       [`tds-form-datetime-${this.size}`]: ['md', 'sm'].includes(this.size),
       [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(this.state),
       [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
-      'tds-datetime-container-label-inside':
-        this.label && this.labelPosition === 'inside' && this.size !== 'sm',
+      'tds-datetime-container-label-inside': !!(
+        this.label &&
+        this.labelPosition === 'inside' &&
+        this.size !== 'sm'
+      ),
     };
 
     const iphone = navigator.userAgent.toLowerCase().includes('iphone');
@@ -246,7 +249,7 @@ export class TdsDatetime {
           <div class={`tds-datetime-input-container type-${this.type}`}>
             <input
               ref={(inputEl: HTMLInputElement) => {
-                this.textInput = inputEl;
+                if (inputEl) this.textInput = inputEl;
               }}
               class={className}
               type={this.type}

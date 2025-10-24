@@ -35,13 +35,15 @@ export class TdsStep {
 
   @Element() el: HTMLElement;
 
-  private stepperEl: HTMLTdsStepperElement;
+  private stepperEl: HTMLTdsStepperElement | null;
 
   private stepperId: string;
 
   /* Needs to be onload to do this on any updates. */
   componentWillLoad() {
     this.stepperEl = this.el.closest('tds-stepper');
+    if (!this.stepperEl) return;
+
     this.orientation = this.stepperEl.orientation;
     this.labelPosition = this.stepperEl.labelPosition;
     this.size = this.stepperEl.size;
