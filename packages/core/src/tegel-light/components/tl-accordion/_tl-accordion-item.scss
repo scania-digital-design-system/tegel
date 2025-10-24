@@ -97,8 +97,10 @@
   transition: transform 0.15s ease-in-out;
   color: var(--accordion-icon);
 
-  .tl-accordion__item--disabled & {
-    color: var(--accordion-icon-disabled);
+  .tl-icon {
+    .tl-accordion__item--disabled & {
+      color: var(--accordion-text-disabled);
+    }
   }
 
   .tl-accordion__item--expanded & {
