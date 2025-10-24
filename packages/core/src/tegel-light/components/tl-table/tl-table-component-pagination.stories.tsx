@@ -6,7 +6,7 @@ export default {
     docs: {
       description: {
         component:
-          'Table with a CSS-only pagination footer. ⚠️ Note: The controls below are demo-only — real pagination requires app logic. The script below demonstrates an example of pagination logic.',
+          'Table with a CSS-only pagination footer. <br /> ⚠️ Note: The controls below are demo-only — real pagination requires app logic. The script below demonstrates an example of pagination logic. <br /> ⚠️ Note 2: Interactive effects like column hover highlighting require JavaScript for full functionality.',
       },
     },
     layout: 'padded',
@@ -284,6 +284,33 @@ const PaginationTemplate = ({
     var initPage = Number(currentPageEl.value) || 1;
     updateButtonStates(initPage);
   })();
+
+
+  (function () {
+  const table = document.querySelector(".tl-table");
+  if (!table) return;
+
+  const headerCells = table.querySelectorAll(".tl-table__header-cell");
+  const bodyCells = table.querySelectorAll(".tl-table__body-cell");
+
+  headerCells.forEach((headerCell) => {
+    const columnIndex = headerCell.getAttribute("data-column");
+
+    headerCell.addEventListener("mouseenter", () => {
+      bodyCells.forEach((cell) => {
+        if (cell.getAttribute("data-column") === columnIndex) {
+          cell.classList.add("tl-table__body-cell--column-highlight");
+        }
+      });
+    });
+
+    headerCell.addEventListener("mouseleave", () => {
+      bodyCells.forEach((cell) => {
+        cell.classList.remove("tl-table__body-cell--column-highlight");
+      });
+    });
+  });
+})();
 </script>
 
   `);
