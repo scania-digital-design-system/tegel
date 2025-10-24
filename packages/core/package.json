@@ -378,7 +378,7 @@
     "start": "concurrently --raw \"npm:build-stencil:watch\" \"npm:watch:css\" \"npm:start:storybook\"",
     "test": "node docker-test-runner.js",
     "test:axe": "npx playwright test --config 'playwright-axe.config.ts'",
-    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.50.0-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
+    "update:snapshots": "docker run --rm --network host -v $(pwd):/work/ -w /work/ mcr.microsoft.com/playwright:v1.56.1-jammy /bin/bash -c 'npm install && npx playwright test --update-snapshots && exit'",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "copy:assets": "node scripts/copy-assets.mjs",
