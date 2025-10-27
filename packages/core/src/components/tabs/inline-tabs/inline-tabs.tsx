@@ -55,7 +55,7 @@ export class TdsInlineTabs {
 
   private children: Array<HTMLTdsInlineTabElement>;
 
-  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
+  private clickHandlers = new WeakMap<HTMLTdsInlineTabElement, EventListener>();
 
   /** Event emitted when the selected Tab is changed. */
   @Event({

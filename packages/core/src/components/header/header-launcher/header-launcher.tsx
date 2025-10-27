@@ -16,7 +16,7 @@ export class TdsHeaderLauncher {
 
   @State() open: boolean = false;
 
-  @State() buttonEl?: HTMLTdsHeaderLauncherButtonElement;
+  @State() buttonEl?: HTMLElement | null;
 
   @State() hasListTypeMenu = false;
 
@@ -79,7 +79,7 @@ export class TdsHeaderLauncher {
         this.toggleLauncher();
       },
       'ref': (el: HTMLTdsHeaderLauncherButtonElement) => {
-        this.buttonEl = el;
+        this.buttonEl = el as unknown as HTMLElement;
       },
     };
 

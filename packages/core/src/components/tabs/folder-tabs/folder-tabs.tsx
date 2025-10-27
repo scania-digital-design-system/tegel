@@ -54,7 +54,7 @@ export class TdsFolderTabs {
 
   private children: Array<HTMLTdsFolderTabElement>;
 
-  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
+  private clickHandlers = new WeakMap<HTMLTdsFolderTabElement, EventListener>();
 
   /** Event emitted when the selected Tab is changed. */
   @Event({
