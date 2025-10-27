@@ -23,7 +23,7 @@ import { generateClassList } from '../../utils/classList';
   scoped: true,
 })
 export class TdsPopoverCore {
-  @Element() host!: HTMLTdsPopoverCoreElement;
+  @Element() host!: HTMLElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
   @Prop() selector: string;
@@ -53,7 +53,7 @@ export class TdsPopoverCore {
   @Prop() offsetDistance: number = 8;
 
   /** Array of modifier objects to pass to popper.js. See https://popper.js.org/docs/v2/modifiers/ */
-  @Prop() modifiers: Object[] = [];
+  @Prop() modifiers: object[] = [];
 
   /** What triggers the popover to show */
   @Prop() trigger: 'click' | 'hover' | 'hover-popover' = 'click';
@@ -90,7 +90,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsShow: EventEmitter<{}>;
+  internalTdsShow: EventEmitter<object>;
 
   /** @internal Close event. */
   @Event({
@@ -99,13 +99,13 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: false,
   })
-  internalTdsClose: EventEmitter<{}>;
+  internalTdsClose: EventEmitter<object>;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     if (this.trigger === 'click' && this.isShown && this.show === null) {
       // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
-      const isClickOutside = !event.composedPath().includes(this.host as any);
+      const isClickOutside = !event.composedPath().includes(this.host);
       if (isClickOutside) {
         this.setIsShown(false);
       }
@@ -278,7 +278,7 @@ export class TdsPopoverCore {
 
   private cleanUp() {
     this.target?.removeEventListener('click', this.onClickTarget);
-    this.target?.removeEventListener('keydown', this.onClickTarget as any);
+    this.target?.removeEventListener('keydown', this.onClickTarget);
     this.target?.removeEventListener('focusin', this.handleShow);
     this.target?.removeEventListener('focusout', this.handleHide);
     this.target?.removeEventListener('mouseenter', this.handleShow);
