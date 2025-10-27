@@ -84,7 +84,7 @@ test.describe.parallel(componentName, () => {
     // Call the reset() method on the dropdown component
     await page.evaluate(() => {
       const dropdownnew = document.querySelector('tds-dropdown');
-      dropdownnew.reset();
+      dropdownnew?.reset();
     });
 
     // Verify that the dropdown has been reset to its initial state

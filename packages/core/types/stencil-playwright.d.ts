@@ -11,3 +11,20 @@ declare module 'stencil-playwright' {
   // Using a broad type here is fine for editor tooling and avoids strict coupling.
   export const matchers: Record<string, (...args: any[]) => any>;
 }
+
+// Augment Playwright types with helpers provided by stencil-playwright at runtime.
+declare module '@playwright/test' {
+  interface Page {
+    /** Spy on a DOM CustomEvent or standard event dispatched in the page. */
+    spyOnEvent(eventName: string): Promise<any>;
+    /** Wait for Stencil changes to flush; provided by stencil-playwright. */
+    waitForChanges(): Promise<void>;
+  }
+
+  interface Matchers<R, T = unknown> {
+    /** Asserts that the event spy received at least one event. */
+    toHaveReceivedEvent(): R;
+    /** Asserts that the event spy received a specific number of events. */
+    toHaveReceivedEventTimes(count: number): R;
+  }
+}

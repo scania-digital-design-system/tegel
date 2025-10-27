@@ -35,7 +35,7 @@ test.describe.parallel(componentName, () => {
   test('all side menu buttons to be visible', async ({ page }) => {
     const sideMenuButtons = page.getByRole('button');
     await expect(sideMenuButtons).toHaveCount(4);
-    const promises = [];
+    const promises: Promise<void>[] = [];
 
     for (let i = 0; i < 4; i++) {
       promises.push(expect(sideMenuButtons.nth(i)).toBeVisible());

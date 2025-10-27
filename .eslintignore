@@ -3,13 +3,9 @@
 **/node_modules
 **/dist
 **/*.d.ts
-**/*.e2e.ts
-**/*.axe.ts
 **/compile.js
 **/conf.js
 **/.www
-**/*.stories.tsx
-**/*.stories.ts
 **/*.config.js
 **/*.config.ts
 **/_beta
@@ -25,6 +21,7 @@ packages/core/scripts
 packages/angular
 packages/angular-17
 packages/react
+packages/tegel-light
 
 **/www
 
