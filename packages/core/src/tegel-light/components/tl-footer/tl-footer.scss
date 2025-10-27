@@ -1,0 +1,139 @@
+@import '../../../../../../typography/utilities/typography-utility';
+@import '../../../mixins/focus-state';
+@import './tl-footer-vars';
+
+/* Footer elements */
+@import 'footer-group';
+@import 'footer-item';
+
+.tl-footer {
+  display: block;
+}
+
+.tl-footer__top {
+    box-sizing: border-box;
+    background-color: var(--footer-top-background);
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    width: 100%;
+}
+
+.tl-footer__main {
+    background-color: var(--footer-main-background);
+    padding: 0 40px;
+}
+
+.tl-footer__main-top {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tl-footer__main-top--start,
+.tl-footer__main-top--end {
+    display: flex;
+
+    /*&::slotted(*) {
+        display: flex;
+        column-gap: 24px;
+    }*/
+}
+
+.tl-footer__main-top--end {
+    margin-left: auto;
+}
+
+.tl-footer__main-bottom {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--footer-main-divider);
+}
+
+small.tl-footer__copyright {
+    @include detail-02;
+    margin: 0;
+    color: var(--footer-main-copyright);
+}
+
+.tl-footer__brand {
+    background-image: var(--component-footer-logotype-cdn), var(--component-footer-logotype-local);
+    background-repeat: no-repeat;
+    background-size: 117px;
+    background-position: right;
+    width: 117px;
+    height: 20px;
+
+    p {
+    color: transparent;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    visibility: hidden;
+    }
+}
+
+.tl-footer__group {
+    display: block;
+
+    &--mobile-view {
+        display: none;
+    }
+}   
+  
+  
+
+  @media all and (max-width: 992px) {
+    .tl-footer__top {
+      display: block;
+      width: 100%;
+      padding: 0;
+    }
+
+    .tl-footer__group {
+    
+        &--mobile-view {
+            display: block;
+        }
+    }
+
+    .tl-footer__main {
+      padding: 0 24px;
+    }
+
+    .tl-footer__main-top {
+      flex-direction: column;
+      row-gap: 48px;
+      padding: 24px 0;
+    }
+
+    .tl-footer__main-top--end {
+        flex-direction: row;
+        gap: 8px;
+        margin-left: unset;
+      
+    }
+
+    .tl-footer__main-bottom {
+      flex-direction: column;
+      padding-bottom: 32px;
+
+      p.tl-footer__copyright {
+        padding-bottom: 96px;
+      }
+
+      .tl-footer__brand {
+        width: 100%;
+      }
+    }
+
+    .tl-footer__copyright-text {
+      display: none;
+    }
+
+    .tl-footer__copyright-last-part {
+      display: inline-block;
+    }
+  }

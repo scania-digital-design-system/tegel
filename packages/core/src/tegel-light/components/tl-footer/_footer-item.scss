@@ -1,0 +1,61 @@
+@import '../../../mixins/focus-state';
+@import '../../../../../../typography/utilities/typography-utility';
+
+:host([role='listitem']) div {
+  ::slotted(a),
+  ::slotted(button) {
+    @include headline-07;
+
+    color: var(--footer-main-links);
+    text-decoration: none;
+  }
+
+  ::slotted(a:focus-visible),
+  ::slotted(button:focus-visible) {
+    @include tds-focus-state;
+  }
+
+  ::slotted(a:hover),
+  ::slotted(button:hover) {
+    text-decoration: underline;
+  }
+
+  &.top-part-child {
+    ::slotted(a),
+    ::slotted(button) {
+      @include headline-07;
+
+      color: var(--footer-top-links);
+    }
+
+    ::slotted(a:focus-visible),
+    ::slotted(button:focus-visible) {
+      @include tds-focus-state;
+    }
+  }
+}
+
+@media all and (max-width: 992px) {
+  :host([role='listitem']) div.top-part-child {
+    border-bottom: 1px solid var(--footer-top-divider);
+
+    ::slotted(a),
+    ::slotted(button) {
+      display: block;
+      height: 100%;
+      padding: 19px 40px;
+      font-weight: normal;
+    }
+
+    ::slotted(a:hover),
+    ::slotted(button:hover) {
+      text-decoration: underline;
+      background-color: var(--footer-top-links-background-hover);
+    }
+
+    ::slotted(a:focus-visible),
+    ::slotted(button:focus-visible) {
+      @include tds-focus-state;
+    }
+  }
+}
