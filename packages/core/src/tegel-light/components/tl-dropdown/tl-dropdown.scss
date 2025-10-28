@@ -13,7 +13,7 @@
 }
 
 // --- Dropdown Button & Select ---
-%tl-dropdown-field {
+@mixin tl-dropdown-field {
   @include detail-02;
 
   width: 100%;
@@ -38,7 +38,7 @@
 }
 
 :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input) {
-  @extend %tl-dropdown-field;
+  @include tl-dropdown-field;
 }
 
 .tl-dropdown__button {
@@ -147,21 +147,32 @@
   }
 }
 
-:is(.tl-dropdown__button, .tl-dropdown__input, .tl-dropdown__select) {
+@mixin tl-dropdown-interactive {
   &:hover {
     border-color: var(--dropdown-border-hover);
-    box-shadow: 0 1px 0 0 var(--dropdown-border-hover);
+    border-width: var(--dropdown-border-width-hover, var(--dropdown-border-width, 0 0 2px 0));
+
+    //box-shadow: 0 1px 0 0 var(--dropdown-border-hover);
   }
 
   &:focus {
     border-color: var(--dropdown-border-focus);
     outline: none;
+    border-width: var(--dropdown-border-width-hover, var(--dropdown-border-width, 0 0 2px 0));
   }
 }
 
-:is(.tl-dropdown__button, .tl-dropdown__input):focus {
-  box-shadow: 0 1px 0 0 var(--dropdown-border-focus);
+:is(.tl-dropdown__button, .tl-dropdown__input, .tl-dropdown__select) {
+  @include tl-dropdown-interactive;
 }
+
+//  @mixin tl-dropdown-focus-shadow {
+//   box-shadow:  2px var(--dropdown-border-focus);
+// }
+
+//  :is(.tl-dropdown__button, .tl-dropdown__input):focus {
+//   @include tl-dropdown-focus-shadow;
+//  }
 
 .tl-dropdown__select:focus {
   border-bottom-width: 2px;
@@ -777,12 +788,10 @@ option[selected] {
   color: var(--dropdown-placeholder);
 }
 
-:is(
 .tl-dropdown__button-value,
 .tl-dropdown__button-placeholder,
 .tl-dropdown__input-value,
-.tl-dropdown__input-placeholder
-) {
+.tl-dropdown__input-placeholder {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -793,12 +802,10 @@ option[selected] {
   display: none;
 }
 
-:is(
 .tl-dropdown__button-value--visible,
 .tl-dropdown__button-placeholder--visible,
 .tl-dropdown__input-value--visible,
-.tl-dropdown__input-placeholder--visible
-) {
+.tl-dropdown__input-placeholder--visible {
   display: inline;
 }
 
