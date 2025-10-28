@@ -330,11 +330,23 @@ const Template = ({
     </div>
 
     <script>
-      document.querySelector('tds-dropdown').addEventListener('tdsChange', (event) => {
+      const dropdown = document.querySelector('tds-dropdown');
+  
+      dropdown.addEventListener('tdsChange', (event) => {
         console.log(event);
       });
-    </script>
-        
+  
+      // Only listen to tdsClear when filter is enabled
+      ${
+        filter
+          ? `
+      dropdown.addEventListener('tdsClear', (event) => {
+        console.log('tdsClear', event.detail);
+      });
+      `
+          : ''
+      }
+    </script>    
   `);
 
 export const Default = Template.bind({});

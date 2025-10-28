@@ -50,6 +50,7 @@ dropdown.updateDisplay();
 | ----------- | ------------------------------ | ----------------------------------------------- |
 | `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                       |
 | `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
+| `tdsClear`  | Clear event for the Dropdown.  | `CustomEvent<{ clearedValue: string; }>`        |
 | `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                       |
 | `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                       |
 
