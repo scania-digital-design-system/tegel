@@ -380,7 +380,7 @@ const Template = ({
   multiselect,
   modeVariant,
 }) => {
-  const normalizedSize = { Small: 'sm', Medium: 'md', Large: 'lg' }[size] ?? 'lg';
+  const normalizedSize = { Small: 'sm', Medium: 'md', Large: 'lg' }[size];
   const isLabelInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const modeClass = modeVariant === 'Secondary' ? 'tl-dropdown--secondary' : 'tl-dropdown--primary';
@@ -654,7 +654,6 @@ const Template = ({
     fieldMarkup = getButtonMarkup({ isLabelInside, placeholder, disabled });
     scriptMarkup = `<script id="script-tl-dropdown-button-demo">(${dropdownScript.toString()})('tl-dropdown-button-demo', false);</script>`;
   }
-  const barMarkup = '<div class="tl-dropdown__bar"></div>';
   return formatHtmlPreview(`
     <div class="demo-wrapper">
       <div class="tl-dropdown tl-dropdown--${normalizedSize}${error ? ' tl-dropdown--error' : ''}${
@@ -664,7 +663,6 @@ const Template = ({
   }${multiselect ? ' tl-dropdown--multiselect' : ''} ${modeClass}">
         ${labelMarkup}
         ${fieldMarkup}
-        ${barMarkup}
         ${helperMarkup}
       </div>
       ${scriptMarkup}
