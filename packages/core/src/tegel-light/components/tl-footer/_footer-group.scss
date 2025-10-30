@@ -1,24 +1,18 @@
 @import '../../../mixins/focus-state';
 @import '../../../../../../typography/utilities/typography-utility';
 
-:host {
+.tl-footer__group {
   display: block;
 
   .tl-footer__top-title {
     @include headline-07;
-
     color: var(--footer-top-links-desktop);
     padding-bottom: 8px;
-
-    *,
-    ::slotted(*) {
-      margin: 0;
-    }
+    margin: 0;
   }
 
-  button.tl-footer__top-title-button {
+  .tl-footer__top-title-button {
     @include headline-07;
-
     border: none;
     width: 100%;
     color: var(--footer-top-links);
@@ -54,20 +48,21 @@
     }
   }
 
-  [role='list'] {
+  .tl-footer__top-list {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
+    flex-direction: column;
     gap: 8px;
+
+    &.--closed {
+      display: none;
+    }
 
     &.start,
     &.end {
       gap: 24px;
-    }
-
-    &.top-part-child {
-      flex-direction: column;
     }
   }
 
@@ -94,4 +89,8 @@
       align-items: center;
     }
   }
+}
+
+@media all and (max-width: 992px) {
+  
 }
