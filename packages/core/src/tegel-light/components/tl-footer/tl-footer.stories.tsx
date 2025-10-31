@@ -58,16 +58,16 @@ export default {
         type: 'boolean',
       },
     },
-    isFooterGroupOpen: {
-      name: 'Is footer group open',
-      description: 'Indicates if the footer group is open.',
+    mobileView: {
+      name: 'Mobile view',
+      description: 'Indicates if the footer group is in mobile view.',
       control: {
         type: 'boolean',
       },
     },
-    mobileView: {
-      name: 'Mobile view',
-      description: 'Indicates if the footer group is in mobile view.',
+    isFooterGroupOpen: {
+      name: 'Open mobile footer group',
+      description: 'Indicates if the mobile footer group is open.',
       control: {
         type: 'boolean',
       },
@@ -79,8 +79,8 @@ export default {
     includeFooterStart: true,
     includeFooterEnd: true,
     includeFooterCopyright: true,
+    mobileView: true,
     isFooterGroupOpen: false,
-    mobileView: false,
   },
 };
 
@@ -187,21 +187,21 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                     </div>
                   ` :
                   `
-                  <div class="tl-footer__group">
-                    <h6 class="tl-footer__top-title">Title 1</h6>
-                    <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                    </div>
-                    <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                    </div>
-                    <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                    </div>
-                  </div>`
+                  `
                 }
               
-
+              <div class="tl-footer__group">
+                <h6 class="tl-footer__top-title">Title 1</h6>
+                <div class="tl-footer__item">
+                  <a href="#"> Link text</a>
+                </div>
+                <div class="tl-footer__item">
+                  <a href="#"> Link text</a>
+                </div>
+                <div class="tl-footer__item">
+                  <a href="#"> Link text</a>
+                </div>
+              </div>
               <div class="tl-footer__group">
                 <h6 class="tl-footer__top-title">Title 2</h6>
                 <div class="tl-footer__item">
