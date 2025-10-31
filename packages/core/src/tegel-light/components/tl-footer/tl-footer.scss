@@ -33,12 +33,13 @@
 
 .tl-footer__main-top--start,
 .tl-footer__main-top--end {
+  display: flex;
+  
+  .tl-footer__group {
     display: flex;
-
-    /*&::slotted(*) {
-        display: flex;
-        column-gap: 24px;
-    }*/
+    column-gap: 24px;
+  }
+    
 }
 
 .tl-footer__main-top--end {

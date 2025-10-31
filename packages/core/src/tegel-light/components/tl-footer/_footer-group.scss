@@ -3,6 +3,10 @@
 
 .tl-footer__group {
   display: block;
+
+  &.tl-footer__main-top--start {
+    display: flex;
+  }
 }  
 
 .tl-footer__top-title {

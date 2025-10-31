@@ -243,6 +243,32 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
             </div>`
           : ''
       }
+
+      <div class="tl-footer__main">
+        <div class="tl-footer__main-top">
+          ${
+            includeFooterStart
+              ? `<div class="tl-footer__main-top--start">
+                    <div class="tl-footer__group">
+                      <div class="tl-footer__item">
+                          <a href="#"> Link text</a>
+                      </div>
+                      <div class="tl-footer__item">
+                          <a href="#"> Link text</a>
+                      </div>
+                      <div class="tl-footer__item">
+                          <a href="#"> Link text</a>
+                      </div>
+                      <div class="tl-footer__item">
+                          <a href="#"> Link text</a>
+                      </div>
+                    </div>
+                  </div>`
+              : ''
+          }
+          
+        </div>
+      </div>
     </footer>
 
 
