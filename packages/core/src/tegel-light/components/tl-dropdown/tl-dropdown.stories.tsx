@@ -219,7 +219,7 @@ const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 function getLabelMarkup(label: string, labelId: string, isLabelInside: boolean): string {
   if (!label) return '';
   const labelClasses = ['tl-dropdown__label'];
-  if (isLabelInside) labelClasses.push('tl-dropdown__label--inside');
+  if (isLabelInside) labelClasses.push('tl-dropdown__label-inside');
   return `<label class="${labelClasses.join(' ')}"${
     labelId ? ` id="${labelId}"` : ''
   }>${label}</label>`;
