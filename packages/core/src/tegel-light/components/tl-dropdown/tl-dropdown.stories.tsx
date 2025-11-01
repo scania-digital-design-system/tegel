@@ -216,10 +216,16 @@ function dropdownScript(dropdownId: string, isMulti: boolean) {
 
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 
-function getLabelMarkup(label: string, labelId: string, isLabelInside: boolean): string {
+function getLabelMarkup(
+  label: string,
+  labelId: string,
+  isLabelInside: boolean,
+  isLabelOutside: boolean,
+): string {
   if (!label) return '';
   const labelClasses = ['tl-dropdown__label'];
   if (isLabelInside) labelClasses.push('tl-dropdown__label-inside');
+  if (isLabelOutside) labelClasses.push('tl-dropdown__label-outside');
   return `<label class="${labelClasses.join(' ')}"${
     labelId ? ` id="${labelId}"` : ''
   }>${label}</label>`;
@@ -382,10 +388,13 @@ const Template = ({
 }) => {
   const normalizedSize = { Small: 'sm', Medium: 'md', Large: 'lg' }[size];
   const isLabelInside = labelPlacement === 'Inside';
+  const isLabelOutside = labelPlacement === 'Outside';
   const showLabel = labelPlacement !== 'No label';
   const modeClass = modeVariant === 'Secondary' ? 'tl-dropdown--secondary' : 'tl-dropdown--primary';
   const labelId = showLabel ? 'tl-dropdown-story-label' : '';
-  const labelMarkup = showLabel ? getLabelMarkup(label, labelId, isLabelInside) : '';
+  const labelMarkup = showLabel
+    ? getLabelMarkup(label, labelId, isLabelInside, isLabelOutside)
+    : '';
   const helperMarkup = showHelper && helper ? getHelperMarkup(helper, error) : '';
   let fieldMarkup = '';
   let scriptMarkup = '';
@@ -654,13 +663,15 @@ const Template = ({
     fieldMarkup = getButtonMarkup({ isLabelInside, placeholder, disabled });
     scriptMarkup = `<script id="script-tl-dropdown-button-demo">(${dropdownScript.toString()})('tl-dropdown-button-demo', false);</script>`;
   }
+
+  const labelOutsideClass = labelPlacement === 'Outside' ? ' tl-dropdown--label-outside' : '';
   return formatHtmlPreview(`
     <div class="demo-wrapper">
       <div class="tl-dropdown tl-dropdown--${normalizedSize}${error ? ' tl-dropdown--error' : ''}${
     disabled ? ' tl-dropdown--disabled' : ''
   }${isLabelInside ? ' tl-dropdown--label-inside' : ''}${
     !showLabel ? ' tl-dropdown--no-label' : ''
-  }${multiselect ? ' tl-dropdown--multiselect' : ''} ${modeClass}">
+  }${labelOutsideClass}${multiselect ? ' tl-dropdown--multiselect' : ''} ${modeClass}">
         ${labelMarkup}
         ${fieldMarkup}
         ${helperMarkup}
