@@ -365,6 +365,11 @@
 .tl-dropdown__option--disabled {
   color: var(--dropdown-disabled);
   cursor: not-allowed;
+  background: var(--dropdown-background);
+
+  &:hover {
+    background: var(--dropdown-background);
+  }
 }
 
 .tl-dropdown__option--no-result {
