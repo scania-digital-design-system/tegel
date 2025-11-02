@@ -1,0 +1,65 @@
+@import './_tl-tooltip-vars';
+
+.tl-tooltip {
+  --tl-tooltip-offset: 8px;
+}
+
+.tl-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tl-tooltip__inner {
+  color: var(--tooltip-text);
+  background: var(--tooltip-background);
+  border-radius: 4px;
+  padding: 8px;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: 204px;
+  white-space: normal;
+  word-wrap: break-word;
+  position: absolute;
+  z-index: var(--tds-z-index-tooltip, 1000);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease-in, visibility 200ms ease-in;
+  pointer-events: none;
+}
+
+.tl-tooltip--visible .tl-tooltip__inner {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.tl-tooltip--top-start .tl-tooltip__inner {
+  bottom: calc(100% + var(--tl-tooltip-offset));
+  right: 0;
+  border-radius: 4px 4px 0;
+}
+
+.tl-tooltip--top-end .tl-tooltip__inner {
+  bottom: calc(100% + var(--tl-tooltip-offset));
+  left: 0;
+  border-radius: 4px 4px 4px 0;
+}
+
+.tl-tooltip--bottom-start .tl-tooltip__inner {
+  top: calc(100% + var(--tl-tooltip-offset));
+  right: 0;
+  border-radius: 4px 0 4px 4px;
+}
+
+.tl-tooltip--bottom-end .tl-tooltip__inner {
+  top: calc(100% + var(--tl-tooltip-offset));
+  left: 0;
+  border-radius: 0 4px 4px;
+}
+
+.tl-tooltip--center .tl-tooltip__inner {
+  bottom: calc(100% + var(--tl-tooltip-offset));
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 4px;
+}

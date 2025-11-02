@@ -50,7 +50,14 @@
     "./tl-toast.css": "./dist/tl-toast.css",
     "./tl-toggle.css": "./dist/tl-toggle.css",
     "./tl-card.css": "./dist/tl-card.css",
-    "./tl-table.css": "./dist/tl-table.css"
+    "./tl-table.css": "./dist/tl-table.css",
+    "./tl-datetime.css": "./dist/tl-datetime.css",
+    "./tl-dropdown-button.css": "./dist/tl-dropdown-button.css",
+    "./tl-dropdown-field.css": "./dist/tl-dropdown-field.css",
+    "./tl-dropdown-input.css": "./dist/tl-dropdown-input.css",
+    "./tl-dropdown-select.css": "./dist/tl-dropdown-select.css",
+    "./tl-dropdown.css": "./dist/tl-dropdown.css",
+    "./tl-tooltip.css": "./dist/tl-tooltip.css"
   },
   "files": [
     "dist/"
