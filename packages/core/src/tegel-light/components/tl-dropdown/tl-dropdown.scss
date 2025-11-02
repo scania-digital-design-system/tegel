@@ -1,5 +1,16 @@
 @import './tl-dropdown-vars';
 
+/* Changed box shadow variables to work with bottom inside border design */
+.scania .tl-dropdown {
+  --dropdown-border: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 -1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-hover: 0 -1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 -2px 0 0 var(--dropdown-error-focus);
+}
+
 /* Container & layout */
 .tl-dropdown {
   width: 208px;
@@ -39,7 +50,7 @@
   appearance: none;
   background: var(--dropdown-background);
   color: var(--dropdown-text);
-  box-shadow: var(--dropdown-border);
+  box-shadow: inset var(--dropdown-border);
   border-radius: var(--dropdown-border-radius);
   position: relative;
   outline: none;
@@ -55,32 +66,32 @@
 
 /* Control states (hover/focus/active/error/disabled) */
 :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input):hover {
-  box-shadow: var(--dropdown-border-hover);
+  box-shadow: inset var(--dropdown-border-hover);
 }
 
 :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input):focus-visible,
 .tl-dropdown:has(:focus-visible)
 :is(.tl-dropdown__button, .tl-dropdown__input, .tl-dropdown__select) {
-  box-shadow: var(--dropdown-border-focus);
+  box-shadow: inset var(--dropdown-border-focus);
 }
 
 .tl-dropdown:has(.tl-dropdown__list--open) .tl-dropdown__button {
-  box-shadow: var(--dropdown-border-active);
+  box-shadow: inset var(--dropdown-border-active);
 }
 
 .tl-dropdown--error :is(.tl-dropdown__button, .tl-dropdown__input, .tl-dropdown__select) {
-  box-shadow: var(--dropdown-border-error);
+  box-shadow: inset var(--dropdown-border-error);
 }
 
 .tl-dropdown--error
 :is(.tl-dropdown__button, .tl-dropdown__input, .tl-dropdown__select):focus-visible {
-  box-shadow: var(--dropdown-border-error-focus);
+  box-shadow: inset var(--dropdown-border-error-focus);
 }
 
 .tl-dropdown--disabled :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input) {
   color: var(--dropdown-disabled);
   background: var(--dropdown-background);
-  box-shadow: var(--dropdown-border-disabled);
+  box-shadow: inset var(--dropdown-border-disabled);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -358,7 +369,7 @@
 }
 
 .tl-dropdown__option:focus-visible {
-  box-shadow: var(--dropdown-border-focus);
+  box-shadow: inset var(--dropdown-border-focus);
   z-index: 2;
 }
 
