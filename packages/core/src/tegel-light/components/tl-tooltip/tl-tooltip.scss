@@ -1,7 +1,8 @@
 @import './_tl-tooltip-vars';
 
 .tl-tooltip {
-  --tl-tooltip-offset: 8px;
+  --tl-tooltip-offset-x: 0;
+  --tl-tooltip-offset-y: 8px;
 }
 
 .tl-tooltip {
@@ -33,33 +34,33 @@
   pointer-events: auto;
 }
 
-.tl-tooltip--top-start .tl-tooltip__inner {
-  bottom: calc(100% + var(--tl-tooltip-offset));
-  right: 0;
+.tl-tooltip--top-end .tl-tooltip__inner {
+  bottom: calc(100% + var(--tl-tooltip-offset-y));
+  right: var(--tl-tooltip-offset-x);
   border-radius: 4px 4px 0;
 }
 
-.tl-tooltip--top-end .tl-tooltip__inner {
-  bottom: calc(100% + var(--tl-tooltip-offset));
-  left: 0;
+.tl-tooltip--top-start .tl-tooltip__inner {
+  bottom: calc(100% + var(--tl-tooltip-offset-y));
+  left: var(--tl-tooltip-offset-x);
   border-radius: 4px 4px 4px 0;
 }
 
-.tl-tooltip--bottom-start .tl-tooltip__inner {
-  top: calc(100% + var(--tl-tooltip-offset));
-  right: 0;
+.tl-tooltip--bottom-end .tl-tooltip__inner {
+  top: calc(100% + var(--tl-tooltip-offset-y));
+  right: var(--tl-tooltip-offset-x);
   border-radius: 4px 0 4px 4px;
 }
 
-.tl-tooltip--bottom-end .tl-tooltip__inner {
-  top: calc(100% + var(--tl-tooltip-offset));
-  left: 0;
+.tl-tooltip--bottom-start .tl-tooltip__inner {
+  top: calc(100% + var(--tl-tooltip-offset-y));
+  left: var(--tl-tooltip-offset-x);
   border-radius: 0 4px 4px;
 }
 
 .tl-tooltip--center .tl-tooltip__inner {
-  bottom: calc(100% + var(--tl-tooltip-offset));
+  bottom: calc(100% + var(--tl-tooltip-offset-y));
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(var(--tl-tooltip-offset-x));
   border-radius: 4px;
 }
