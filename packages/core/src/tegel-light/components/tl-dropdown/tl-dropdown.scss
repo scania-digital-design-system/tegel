@@ -120,7 +120,7 @@
 }
 
 .tl-dropdown__select {
-  padding-top: 2px;
+  padding-top: 3px;
 }
 
 /* Clear icon & divider (filter) */
@@ -265,6 +265,11 @@
   transform: none;
 }
 
+.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label-inside,
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside {
+  top: 8.5px;
+}
+
 .tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__label-inside {
   top: 50%;
   transform: translateY(-50%);
@@ -293,9 +298,9 @@
   display: none;
 }
 
-.tl-dropdown--lg.tl-dropdown--label-inside,
-.tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside {
-  top: 11.5px;
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside,
+.tl-dropdown--lg.tl-dropdown--label-inside .tl-dropdown__label-inside {
+  top: 12.5px;
 }
 
 /* Label inside extra rules (button/select/value) */
@@ -304,6 +309,10 @@
 }
 
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__select,
+.tl-dropdown--lg.tl-dropdown--has-value .tl-dropdown__select {
+  padding-top: 12.5px;
+}
+
 .tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
   padding-top: 10px;
 }
