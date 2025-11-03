@@ -76,6 +76,11 @@ const renderTrigger = (type: string, isClick: boolean) => {
 
 const Template = ({ position, label, trigger, triggerElement, offsetX, offsetY }) =>
   formatHtmlPreview(`
+      <!-- Required stylesheets
+      "@scania/tegel-light/global.css"
+      "@scania/tegel-light/tl-tooltip.css"
+      "@scania/tegel-light/tl-icon.css"
+    -->
     <div style="height:240px;display:flex;align-items:center;justify-content:center;">
       <div class="tl-tooltip">
         ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
