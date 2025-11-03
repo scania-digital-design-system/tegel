@@ -265,11 +265,6 @@
   transform: none;
 }
 
-.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label-inside,
-.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside {
-  top: 8.5px;
-}
-
 .tl-dropdown--label-inside:not(.tl-dropdown--has-value) .tl-dropdown__label-inside {
   top: 50%;
   transform: translateY(-50%);
@@ -303,7 +298,6 @@
   top: 12.5px;
 }
 
-/* Label inside extra rules (button/select/value) */
 .tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
   padding-top: 10px;
 }
@@ -311,6 +305,11 @@
 .tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__select,
 .tl-dropdown--lg.tl-dropdown--has-value .tl-dropdown__select {
   padding-top: 12.5px;
+}
+
+.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label-inside,
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside {
+  top: 8.5px;
 }
 
 .tl-dropdown--lg.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__button-value {
@@ -382,13 +381,14 @@
   transition: background 0.15s, color 0.15s;
   outline: none;
   position: relative;
+  border-bottom: 1px solid var(--dropdown-option-border);
 
   &:hover {
     background: var(--dropdown-option-background-hover);
   }
 
   &:focus-visible {
-    box-shadow: inset var(--dropdown-border-focus);
+    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
     z-index: 2;
   }
 
