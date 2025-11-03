@@ -133,7 +133,24 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
     list.setAttribute('data-bound', '1');
 
     list.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      const options = Array.from(
+        list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
+      );
+      const active = document.activeElement as HTMLElement;
+      let idx = options.findIndex((el) => el === active);
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (options.length) {
+          idx = idx < 0 ? 0 : Math.min(idx + 1, options.length - 1);
+          options[idx].focus();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (options.length) {
+          idx = idx < 0 ? options.length - 1 : Math.max(idx - 1, 0);
+          options[idx].focus();
+        }
+      } else if (e.key === 'Escape') {
         e.preventDefault();
         close();
         btn?.focus();
@@ -141,6 +158,7 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
     });
 
     list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((li) => {
+      li.setAttribute('tabindex', '0');
       if (li.classList.contains('tl-dropdown__option--disabled')) {
         return;
       }
