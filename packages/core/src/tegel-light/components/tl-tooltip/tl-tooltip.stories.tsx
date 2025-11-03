@@ -6,39 +6,48 @@ export default {
   argTypes: {
     position: {
       name: 'Position',
-      description: 'Tooltip position (relative to the trigger)',
       control: { type: 'radio' },
       options: ['Top-start', 'Top-end', 'Bottom-start', 'Bottom-end', 'Center'],
       table: { defaultValue: { summary: 'Top-start' } },
     },
     label: {
-      name: 'Tooltip text',
-      description: 'Text displayed inside the tooltip',
+      name: 'Tooltip Text',
       control: 'text',
-      table: { defaultValue: { summary: 'Tooltip text' } },
+      table: { defaultValue: { summary: 'Tooltip content' } },
     },
     trigger: {
-      name: 'Type of trigger event',
-      description: 'How the tooltip should open',
+      name: 'Trigger Type',
       control: { type: 'radio' },
       options: ['Hover', 'Click'],
       table: { defaultValue: { summary: 'Hover' } },
     },
+    triggerElement: {
+      name: 'Trigger Element',
+      control: { type: 'radio' },
+      options: ['tl-button', 'tl-link', 'tl-icon'],
+      table: { defaultValue: { summary: 'tl-button' } },
+    },
     offsetX: {
       name: 'Offset X',
-      description: 'Horizontal offset (px)',
-      control: { type: 'number', min: -64, max: 64, step: 1 },
+      control: { type: 'number', min: -64, max: 64 },
       table: { defaultValue: { summary: 0 } },
     },
     offsetY: {
       name: 'Offset Y',
-      description: 'Vertical offset (px)',
-      control: { type: 'number', min: 0, max: 64, step: 1 },
+      control: { type: 'number', min: 0, max: 64 },
       table: { defaultValue: { summary: 8 } },
     },
   },
-  args: { position: 'Top-start', label: 'Tooltip text', trigger: 'hover', offsetX: 0, offsetY: 8 },
+  args: {
+    position: 'Top-start',
+    label: 'Tooltip content',
+    trigger: 'Hover',
+    triggerElement: 'tl-button',
+    offsetX: 0,
+    offsetY: 8,
+  },
 };
+
 const positionLookup = {
   'Bottom-start': 'bottom-start',
   'Bottom-end': 'bottom-end',
@@ -47,50 +56,79 @@ const positionLookup = {
   'Center': 'center',
 };
 
-const Template = ({ position, label, trigger, offsetX, offsetY }) =>
+const renderTrigger = (type: string, isClick: boolean) => {
+  const label = isClick ? 'Click me' : 'Hover me';
+  const normalized = type.toLowerCase();
+
+  switch (normalized) {
+    case 'tl-link':
+      return `<a href="#" class="tl-link tl-tooltip-trigger" aria-describedby="tooltip-id">${label}</a>`;
+    case 'tl-icon':
+      return `
+        <div class="tl-tooltip-trigger" role="button" tabindex="0" aria-describedby="tooltip-id" style="display:inline-flex;align-items:center;">
+          <span class="tl-icon tl-icon--info" ></span>
+        </div>`;
+    case 'tl-button':
+    default:
+      return `<button type="button" class="tl-button tl-button--sm tl-button--primary tl-tooltip-trigger" aria-describedby="tooltip-id">${label}</button>`;
+  }
+};
+
+const Template = ({ position, label, trigger, triggerElement, offsetX, offsetY }) =>
   formatHtmlPreview(`
     <div style="height:240px;display:flex;align-items:center;justify-content:center;">
-      <span id="tl-tooltip" class="tl-tooltip tl-tooltip--${positionLookup[position]}">
-        <button id="tl-tooltip-btn" class="tl-button tl-button--primary tl-button--sm" type="button">
-          ${trigger.toLowerCase() === 'hover' ? 'Hover me' : 'Click me'}
-        </button>
-        <span class="tl-tooltip__inner" role="tooltip">${label}</span>
-      </span>
+      <div class="tl-tooltip">
+        ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
+        <div
+          id="tooltip-id"
+          class="tl-tooltip__popup tl-tooltip__popup--${positionLookup[position]}"
+          role="tooltip"
+        >
+          ${label}
+        </div>
+      </div>
     </div>
+
     <style>
-      .tl-tooltip {
+      .tl-tooltip__popup {
         --tl-tooltip-offset-x: ${offsetX}px;
         --tl-tooltip-offset-y: ${offsetY}px;
       }
     </style>
+
     <script>
-      (function () {
-        const wrap = document.getElementById('tl-tooltip');
-        const btn = document.getElementById('tl-tooltip-btn');
-        if (!wrap || !btn) return;
+      setTimeout(function () {
+        const wrapper = document.querySelector('.tl-tooltip');
+        const trigger = wrapper?.querySelector('.tl-tooltip-trigger');
+        const tooltip = wrapper?.querySelector('.tl-tooltip__popup');
 
-        const show = () => wrap.classList.add('tl-tooltip--visible');
-        const hide = () => wrap.classList.remove('tl-tooltip--visible');
+        if (!wrapper || !trigger || !tooltip) return;
 
-        if ("${trigger}".toLowerCase() === "hover") {
-          btn.addEventListener('mouseenter', show);
-          btn.addEventListener('mouseleave', hide);
-          btn.addEventListener('focus', show);
-          btn.addEventListener('blur', hide);
-        } else {
+        const show = () => tooltip.classList.add('tl-tooltip__popup--visible');
+        const hide = () => tooltip.classList.remove('tl-tooltip__popup--visible');
+
+        const isClick = "${trigger}".toLowerCase() === "click";
+
+        if (isClick) {
           let open = false;
-          btn.addEventListener('click', () => {
+          trigger.addEventListener('click', (e) => {
+            e.preventDefault?.();
             open = !open;
-            wrap.classList.toggle('tl-tooltip--visible', open);
+            tooltip.classList.toggle('tl-tooltip__popup--visible', open);
           });
           document.addEventListener('click', (e) => {
-            if (!btn.contains(e.target) && !wrap.contains(e.target)) {
+            if (!wrapper.contains(e.target)) {
               open = false;
               hide();
             }
           });
+        } else {
+          trigger.addEventListener('mouseenter', show);
+          trigger.addEventListener('mouseleave', hide);
+          trigger.addEventListener('focus', show);
+          trigger.addEventListener('blur', hide);
         }
-      })();
+      }, 0);
     </script>
   `);
 
