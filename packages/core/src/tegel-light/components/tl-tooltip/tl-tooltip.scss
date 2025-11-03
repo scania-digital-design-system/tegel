@@ -51,7 +51,7 @@
 
   &--center {
     bottom: calc(100% + var(--tl-tooltip-offset-y, 8px));
-    left: calc(50% + var(--tl-tooltip-offset-x, 0));
+    left: calc(50% + var(--tl-tooltip-offset-x, 0px));
     transform: translateX(-50%);
     border-radius: 4px;
   }
