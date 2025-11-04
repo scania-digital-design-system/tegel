@@ -28,34 +28,79 @@
     pointer-events: auto;
   }
 
-  &--top-start {
-    bottom: calc(100% + var(--tl-tooltip-offset-y, 8px));
-    left: var(--tl-tooltip-offset-x, 0);
-    border-radius: 4px 4px 4px 0;
-  }
-
-  &--top-end {
-    bottom: calc(100% + var(--tl-tooltip-offset-y, 8px));
-    right: var(--tl-tooltip-offset-x, 0);
-    border-radius: 4px 4px 0;
-  }
-
-  &--bottom-start {
-    top: calc(100% + var(--tl-tooltip-offset-y, 8px));
-    left: var(--tl-tooltip-offset-x, 0);
-    border-radius: 0 4px 4px;
+  &--bottom {
+    top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
   }
 
   &--bottom-end {
-    top: calc(100% + var(--tl-tooltip-offset-y, 8px));
-    right: var(--tl-tooltip-offset-x, 0);
+    top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    right: var(--tl-tooltip-offset-skidding, 0);
     border-radius: 4px 0 4px 4px;
   }
 
-  &--center {
-    bottom: calc(100% + var(--tl-tooltip-offset-y, 8px));
-    left: calc(50% + var(--tl-tooltip-offset-x, 0px));
+  &--bottom-start {
+    top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    left: var(--tl-tooltip-offset-skidding, 0);
+    border-radius: 0 4px 4px;
+  }
+
+  &--left {
+    right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+  }
+
+  &--left-end {
+    right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    bottom: 0;
+    border-radius: 4px 4px 0;
+  }
+
+  &--left-start {
+    right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    top: 0;
+    border-radius: 4px 0 4px 4px;
+  }
+
+  &--right {
+    left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+  }
+
+  &--right-end {
+    left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    bottom: 0;
+    border-radius: 4px 4px 4px 0;
+  }
+
+  &--right-start {
+    left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    top: 0;
+    border-radius: 0 4px 4px;
+  }
+
+  &--top {
+    bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    left: 50%;
     transform: translateX(-50%);
     border-radius: 4px;
+  }
+
+  &--top-end {
+    bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    right: var(--tl-tooltip-offset-skidding, 0);
+    border-radius: 4px 4px 0;
+  }
+
+  &--top-start {
+    bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
+    left: var(--tl-tooltip-offset-skidding, 0);
+    border-radius: 4px 4px 4px 0;
   }
 }

@@ -6,8 +6,21 @@ export default {
   argTypes: {
     position: {
       name: 'Position',
-      control: { type: 'radio' },
-      options: ['Top-start', 'Top-end', 'Bottom-start', 'Bottom-end', 'Center'],
+      control: { type: 'select' },
+      options: [
+        'Bottom-start',
+        'Bottom',
+        'Bottom-end',
+        'Top-start',
+        'Top',
+        'Top-end',
+        'Left-start',
+        'Left',
+        'Left-end',
+        'Right-start',
+        'Right',
+        'Right-end',
+      ],
       table: { defaultValue: { summary: 'Top-start' } },
     },
     label: {
@@ -27,33 +40,41 @@ export default {
       options: ['tl-button', 'tl-link', 'tl-icon'],
       table: { defaultValue: { summary: 'tl-button' } },
     },
-    offsetX: {
-      name: 'Offset X',
+    offsetSkidding: {
+      name: 'Offset Skidding',
       control: { type: 'number', min: -64, max: 64 },
       table: { defaultValue: { summary: 0 } },
     },
-    offsetY: {
-      name: 'Offset Y',
+    offsetDistance: {
+      name: 'Offset Distance',
       control: { type: 'number', min: 0, max: 64 },
       table: { defaultValue: { summary: 8 } },
     },
   },
   args: {
     position: 'Top-start',
-    label: 'Tooltip content',
+    label:
+      'Multiple lines of tooltip - This is a tooltip that need a set of words to be able to formulate a sentence, that will be placed on multiple rows.',
     trigger: 'Hover',
     triggerElement: 'tl-button',
-    offsetX: 0,
-    offsetY: 8,
+    offsetSkidding: 0,
+    offsetDistance: 8,
   },
 };
 
 const positionLookup = {
   'Bottom-start': 'bottom-start',
+  'Bottom': 'bottom',
   'Bottom-end': 'bottom-end',
   'Top-start': 'top-start',
+  'Top': 'top',
   'Top-end': 'top-end',
-  'Center': 'center',
+  'Left-start': 'left-start',
+  'Left': 'left',
+  'Left-end': 'left-end',
+  'Right-start': 'right-start',
+  'Right': 'right',
+  'Right-end': 'right-end',
 };
 
 const renderTrigger = (type: string, isClick: boolean) => {
@@ -65,7 +86,7 @@ const renderTrigger = (type: string, isClick: boolean) => {
       return `<a href="#" class="tl-link tl-tooltip-trigger" aria-describedby="tooltip-id">${label}</a>`;
     case 'tl-icon':
       return `
-        <div class="tl-tooltip-trigger" role="button" tabindex="0" aria-describedby="tooltip-id" style="display:inline-flex;align-items:center;">
+        <div class="tl-tooltip-trigger" role="button" tabindex="0" aria-describedby="tooltip-id"> 
           <span class="tl-icon tl-icon--info" ></span>
         </div>`;
     case 'tl-button':
@@ -74,14 +95,14 @@ const renderTrigger = (type: string, isClick: boolean) => {
   }
 };
 
-const Template = ({ position, label, trigger, triggerElement, offsetX, offsetY }) =>
+const Template = ({ position, label, trigger, triggerElement, offsetSkidding, offsetDistance }) =>
   formatHtmlPreview(`
       <!-- Required stylesheets
       "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-tooltip.css"
       "@scania/tegel-light/tl-icon.css"
     -->
-    <div style="height:240px;display:flex;align-items:center;justify-content:center;">
+    <div>
       <div class="tl-tooltip">
         ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
         <div
@@ -96,8 +117,8 @@ const Template = ({ position, label, trigger, triggerElement, offsetX, offsetY }
 
     <style>
       .tl-tooltip__popup {
-        --tl-tooltip-offset-x: ${offsetX}px;
-        --tl-tooltip-offset-y: ${offsetY}px;
+  --tl-tooltip-offset-skidding: ${offsetSkidding}px;
+  --tl-tooltip-offset-distance: ${offsetDistance}px;
       }
     </style>
 
