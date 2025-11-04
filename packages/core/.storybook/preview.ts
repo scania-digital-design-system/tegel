@@ -13,12 +13,12 @@ const applyBackgroundColor = (brand: string, modeVariant: string, isDarkMode: bo
   const backgrounds = {
     scania: {
       light: {
-        primary: '#FFFFFF',
-        secondary: '#F6F7F9',
+        primary: '#FFFFFF', // grey-00
+        secondary: '#F6F7F9', // grey-50
       },
       dark: {
-        primary: '#0E1013',
-        secondary: '#15181D',
+        primary: '#0B0C0F', // grey-950
+        secondary: '#15181D', // grey-900
       },
     },
     traton: {

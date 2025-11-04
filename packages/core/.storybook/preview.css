@@ -44,11 +44,11 @@ a:not(tds-link *) {
 
 :root,
 .tds-mode-light .docs-story {
-  color: var(--tds-grey-958);
+  color: var(--tds-grey-950);
   background-color: var(--tds-white);
 }
 
 .tds-mode-dark .docs-story {
   color: var(--tds-grey-100);
-  background-color: var(--tds-grey-958);
+  background-color: var(--tds-grey-950);
 }
