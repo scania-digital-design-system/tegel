@@ -143,17 +143,15 @@
     .tl-side-menu--persistent & {
       width: 272px;
     }
+
+    .tl-side-menu--collapsed & {
+      width: var(--side-menu-collapsed-button-size);
+    }
   }
 
   .tl-side-menu--collapsed {
     width: calc(var(--side-menu-collapsed-button-size) + 1px); /* +1px for border */
     box-sizing: border-box;
-  }
-
-  .tl-side-menu__aside {
-    .tl-side-menu--collapsed & {
-      width: var(--side-menu-collapsed-button-size);
-    }
   }
 
   .tl-side-menu__dropdown-icon {

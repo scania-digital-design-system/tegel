@@ -8,6 +8,12 @@
   --side-menu-subnav-background: var(--color-background-layer-01);
   --side-menu-single-item-color: var(--color-foreground-text-strong);
   --side-menu-bottom-menu-border-top: var(--component-side-menu-color-divider);
+
+  // Custom variables for dropdown colors when not collapsed:
+  --side-menu-dropdown-list-item-custom-background: var(--side-menu-background-cover);
+  --side-menu-dropdown-list-item-custom-background-hover: var(--side-menu-item-state-hover);
+  --side-menu-dropdown-list-item-custom-background-active: var(--side-menu-item-state-active);
+  --side-menu-dropdown-list-item-custom-background-selected: var(--side-menu-item-state-selected);
 }
 
 .scania {
@@ -44,14 +50,6 @@
     --side-menu-subnav-border-radius: 4px;
     --side-menu-subnav-box-shadow: none;
   }
-}
-
-.tl-side-menu {
-  // Custom variables for dropdown colors when not collapsed:
-  --side-menu-dropdown-list-item-custom-background: var(--side-menu-background-cover);
-  --side-menu-dropdown-list-item-custom-background-hover: var(--side-menu-item-state-hover);
-  --side-menu-dropdown-list-item-custom-background-active: var(--side-menu-item-state-active);
-  --side-menu-dropdown-list-item-custom-background-selected: var(--side-menu-item-state-selected);
 }
 
 .tl-side-menu--collapsed {
