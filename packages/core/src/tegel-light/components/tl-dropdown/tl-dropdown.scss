@@ -72,24 +72,61 @@
   box-shadow: inset var(--dropdown-border-active);
 }
 
-.tl-dropdown--error :is(.tl-dropdown__button, .tl-dropdown__input, .tl-dropdown__select) {
-  box-shadow: inset var(--dropdown-border-error);
+/* Button */
+.tl-dropdown__button {
+  .tl-dropdown--error & {
+    box-shadow: inset var(--dropdown-border-error);
+  }
+
+  .tl-dropdown--error &:focus-visible {
+    box-shadow: inset var(--dropdown-border-error-focus);
+  }
+
+  .tl-dropdown--disabled & {
+    color: var(--dropdown-disabled);
+    background: var(--dropdown-background);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
-.tl-dropdown--error:is(
-.tl-dropdown__button,
-.tl-dropdown__input,
-.tl-dropdown__select
-):focus-visible {
-  box-shadow: inset var(--dropdown-border-error-focus);
+/* Input */
+.tl-dropdown__input {
+  .tl-dropdown--error & {
+    box-shadow: inset var(--dropdown-border-error);
+  }
+
+  .tl-dropdown--error &:focus-visible {
+    box-shadow: inset var(--dropdown-border-error-focus);
+  }
+
+  .tl-dropdown--disabled & {
+    color: var(--dropdown-disabled);
+    background: var(--dropdown-background);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
-.tl-dropdown--disabled :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input) {
-  color: var(--dropdown-disabled);
-  background: var(--dropdown-background);
-  box-shadow: none;
-  cursor: not-allowed;
-  pointer-events: none;
+/* Select */
+.tl-dropdown__select {
+  .tl-dropdown--error & {
+    box-shadow: inset var(--dropdown-border-error);
+  }
+
+  .tl-dropdown--error &:focus-visible {
+    box-shadow: inset var(--dropdown-border-error-focus);
+  }
+
+  .tl-dropdown--disabled & {
+    color: var(--dropdown-disabled);
+    background: var(--dropdown-background);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
 }
 
 /* Input & select specifics */
@@ -216,8 +253,10 @@
   margin-bottom: var(--tds-spacing-element-4);
 }
 
-.tl-dropdown--disabled .tl-dropdown__label {
-  color: var(--color-foreground-text-disabled);
+.tl-dropdown__label {
+  .tl-dropdown--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
 }
 
 /* Label inside */
@@ -436,8 +475,10 @@
   gap: 8px;
 }
 
-.tl-dropdown--disabled .tl-dropdown__helper {
-  color: var(--dropdown-disabled);
+.tl-dropdown__helper {
+  .tl-dropdown--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
 }
 
 .tl-dropdown--error:not(.tl-dropdown--disabled) {
