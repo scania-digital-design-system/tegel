@@ -1,17 +1,6 @@
 @import './tl-dropdown-vars';
 @import '../../../../../../typography/utilities/typography-utility';
 
-/* Changed box shadow variables to work with bottom inside border design */
-.scania .tl-dropdown {
-  --dropdown-border: 0 -1px 0 0 var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 -1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-hover: 0 -1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: 0 -2px 0 0 var(--dropdown-error-focus);
-}
-
 /* Container & layout */
 .tl-dropdown {
   width: 208px;
@@ -140,7 +129,7 @@
   color: var(--dropdown-clear-icon);
 }
 
-.tl-dropdown__input--divider {
+.tl-dropdown__input-divider {
   position: absolute;
   right: 40px;
   top: 1px;
@@ -153,7 +142,7 @@
   display: none;
 }
 
-.tl-dropdown__input:focus:not(:placeholder-shown) ~ .tl-dropdown__input--divider {
+.tl-dropdown__input:focus:not(:placeholder-shown) ~ .tl-dropdown__input-divider {
   display: block;
 }
 

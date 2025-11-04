@@ -38,13 +38,22 @@
 .tl-dropdown,
 .scania .tl-dropdown {
   // Colors - Border - Scania
-  --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
-  --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
-  --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
-  --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
-  --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
+  // --dropdown-border: 0 1px 0 0 var(--color-foreground-border-soft);
+  // --dropdown-border-hover: 0 1px 0 0 var(--color-foreground-border-strong);
+  // --dropdown-border-focus: 0 2px 0 0 var(--color-foreground-border-accent-focus);
+  // --dropdown-border-active: 0 1px 0 0 var(--color-foreground-border-strong);
+  // --dropdown-border-error: 0 1px 0 0 var(--dropdown-error);
+  // --dropdown-border-error-hover: 0 1px 0 0 var(--dropdown-error);
+  // --dropdown-border-error-focus: 0 2px 0 0 var(--dropdown-error-focus);
+
+  /* Changed box shadow variables to work with bottom inside border design. Can be changed back when a11y changes are applied */
+  --dropdown-border: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --dropdown-border-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --dropdown-border-active: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --dropdown-border-error: 0 -1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-hover: 0 -1px 0 0 var(--dropdown-error);
+  --dropdown-border-error-focus: 0 -2px 0 0 var(--dropdown-error-focus);
 
   // Units
   --dropdown-spacing-4: 4px; // should be replaced when introducing units tokens
