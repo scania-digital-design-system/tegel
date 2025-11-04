@@ -560,7 +560,7 @@ function getFilterMarkup(
     IDS.filterList
   }" aria-expanded="false" ${labelled ? `aria-labelledby="${IDS.label}"` : ''}/>
       <span class="tl-icon tl-icon--cross tl-icon--16 tl-dropdown__icon--cross"></span>
-      <span class="tl-dropdown__input--divider"></span>
+      <span class="tl-dropdown__input-divider"></span>
       <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-dropdown__chevron" aria-hidden="true"></span>
     </div>
     <ul class="tl-dropdown__list" id="${IDS.filterList}" role="listbox" ${
