@@ -91,7 +91,8 @@
     }
 
     &:focus  {
-      @include tds-focus-state-side-menu;
+      outline: 2px solid var(--color-foreground-border-accent-focus);
+      outline-offset: -2px;
     }
   }
 
