@@ -90,7 +90,7 @@
       cursor: pointer;
     }
 
-    &:focus-visible  {
+    &:focus  {
       @include tds-focus-state-side-menu;
     }
   }
