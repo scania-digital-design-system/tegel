@@ -55,7 +55,7 @@ export class TdsNavigationTabs {
 
   private children: Array<HTMLTdsNavigationTabElement>;
 
-  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
+  private clickHandlers = new WeakMap<HTMLTdsNavigationTabElement, EventListener>();
 
   /** Event emitted when the selected Tab is changed. */
   @Event({
