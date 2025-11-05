@@ -111,15 +111,8 @@
 }
 
 /* Select */
+
 .tl-dropdown__select {
-  .tl-dropdown--error & {
-    box-shadow: inset var(--dropdown-border-error);
-  }
-
-  .tl-dropdown--error &:focus-visible {
-    box-shadow: inset var(--dropdown-border-error-focus);
-  }
-
   .tl-dropdown--disabled & {
     color: var(--dropdown-disabled);
     background: var(--dropdown-background);
@@ -234,10 +227,6 @@
   transform: translateY(2px);
 }
 
-.tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__select ~ .tl-dropdown__chevron {
-  transform: translateY(-50%);
-}
-
 .tl-dropdown:is(.tl-dropdown--label-inside, .tl-dropdown--no-label):not(:has(.tl-dropdown__helper))
 .tl-dropdown__select
 ~ .tl-dropdown__chevron {
@@ -330,13 +319,18 @@
   padding-top: 10px;
 }
 
-.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__select,
-.tl-dropdown--lg.tl-dropdown--has-value .tl-dropdown__select {
+.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__select {
   padding-top: 12.5px;
 }
 
-.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label-inside,
-.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside {
+.tl-dropdown--label-inside:not(.tl-dropdown--has-value):not(:has(.tl-dropdown__helper))
+.tl-dropdown__label-inside {
+  top: 50%;
+  transform: translateY(calc(-50% + 1px));
+}
+
+.tl-dropdown--md.tl-dropdown--label-inside .tl-dropdown__input:focus ~ .tl-dropdown__label-inside,
+.tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value .tl-dropdown__label-inside {
   top: 8.5px;
 }
 
@@ -352,10 +346,10 @@
   @include detail-07;
 }
 
-.tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked),
+// .tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked),
 .tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value:is(
-  :has(.tl-dropdown__button),
-  :has(.tl-dropdown__input)
+:has(.tl-dropdown__button),
+:has(.tl-dropdown__input)
 ) {
   top: 8px;
 }
@@ -538,52 +532,56 @@
 }
 
 /* Brand variants (select borders) */
-.traton .tl-dropdown__select {
-  box-shadow: none;
-  border: 1px solid var(--color-foreground-border-soft);
+.traton {
+  .tl-dropdown__select {
+    box-shadow: none;
+    border: 1px solid var(--color-foreground-border-soft);
 
-  &:hover {
-    border: 1px solid var(--color-foreground-border-strong);
+    &:hover {
+      border: 1px solid var(--color-foreground-border-strong);
+    }
+
+    &:focus-visible {
+      border: 2px solid var(--color-foreground-border-accent-focus);
+    }
+
+    &:active {
+      border: 1px solid var(--color-foreground-border-strong);
+    }
   }
 
-  &:focus-visible {
-    border: 2px solid var(--color-foreground-border-accent-focus);
-  }
-
-  &:active {
-    border: 1px solid var(--color-foreground-border-strong);
-  }
-
-  .tl-dropdown--error & {
+  .tl-dropdown--error .tl-dropdown__select {
     border: 1px solid var(--dropdown-error);
   }
 
-  .tl-dropdown--error &:focus-visible {
+  .tl-dropdown--error .tl-dropdown__select:focus-visible {
     border: 2px solid var(--dropdown-error-focus);
   }
 }
 
-.scania .tl-dropdown__select {
-  box-shadow: none;
-  border-bottom: 1px solid var(--color-foreground-border-soft);
+.scania {
+  .tl-dropdown__select {
+    box-shadow: none;
+    border-bottom: 1px solid var(--color-foreground-border-soft);
 
-  &:hover {
-    border-bottom: 1px solid var(--color-foreground-border-strong);
+    &:hover {
+      border-bottom: 1px solid var(--color-foreground-border-strong);
+    }
+
+    &:focus-visible {
+      border-bottom: 2px solid var(--color-foreground-border-accent-focus);
+    }
+
+    &:active {
+      border-bottom: 1px solid var(--color-foreground-border-strong);
+    }
   }
 
-  &:focus-visible {
-    border-bottom: 2px solid var(--color-foreground-border-accent-focus);
-  }
-
-  &:active {
-    border-bottom: 1px solid var(--color-foreground-border-strong);
-  }
-
-  .tl-dropdown--error & {
+  .tl-dropdown--error .tl-dropdown__select {
     border-bottom: 1px solid var(--dropdown-error);
   }
 
-  .tl-dropdown--error &:focus-visible {
+  .tl-dropdown--error .tl-dropdown__select:focus-visible {
     border-bottom: 2px solid var(--dropdown-error-focus);
   }
 }
