@@ -21,7 +21,7 @@ function loadStories() {
 let addons = ['@storybook/blocks', '@vueless/storybook-dark-mode', '@storybook/addon-docs'];
 
 if (process.env.VITE_STORYBOOK_ENV === 'dev') {
-  addons = [...addons, '@storybook/addon-designs', '@storybook/addon-a11y'];
+  addons = [...addons, '@storybook/addon-a11y'];
 }
 
 const config: StorybookConfig = {
