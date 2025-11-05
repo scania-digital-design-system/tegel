@@ -1,5 +1,5 @@
 import React from 'react';
-import { addons, types } from '@storybook/manager-api';
+import { addons, types } from 'storybook/internal/manager-api';
 import { PackageVersion } from './components/PackageVersion';
 import { version } from '../package.json';
 

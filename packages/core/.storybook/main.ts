@@ -18,12 +18,7 @@ function loadStories() {
       );
 }
 
-let addons = [
-  '@storybook/addon-essentials',
-  '@storybook/addon-interactions',
-  '@storybook/blocks',
-  'storybook-dark-mode',
-];
+let addons = ['@storybook/blocks', '@vueless/storybook-dark-mode', '@storybook/addon-docs'];
 
 if (process.env.VITE_STORYBOOK_ENV === 'dev') {
   addons = [...addons, '@storybook/addon-designs', '@storybook/addon-a11y'];
