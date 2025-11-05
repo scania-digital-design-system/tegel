@@ -663,9 +663,7 @@ const Template = ({
   if (currentVariant === 'Select') {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.select) : ''}
-      <div class="tl-dropdown__input-wrapper">
-        ${getSelectMarkup(isInside, placeholder, disabled, labelled)}
-      </div>`;
+      ${getSelectMarkup(isInside, placeholder, disabled, labelled)}`;
     scriptMarkup = `<script>(${dropdownSelectScript.toString()})('${IDS.select}');</script>`;
   } else if (currentVariant === 'Button' && multiselect) {
     fieldMarkup = `
@@ -684,7 +682,9 @@ const Template = ({
   } else {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.filterInput) : ''}
-      ${getFilterMarkup(placeholder, disabled, Boolean(multiselect), labelled)}`;
+      <div class="tl-dropdown__input-wrapper">
+        ${getFilterMarkup(placeholder, disabled, Boolean(multiselect), labelled)}
+      </div>`;
     scriptMarkup = `<script>(${dropdownFilterScript.toString()})('${IDS.filterList}', '${
       IDS.filterInput
     }', ${Boolean(multiselect)});</script>`;
