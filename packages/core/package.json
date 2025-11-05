@@ -408,7 +408,6 @@
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.4",
     "@storybook/addon-a11y": "9.1.16",
-    "@storybook/addon-designs": "^8.2.1",
     "@storybook/addon-docs": "9.1.16",
     "@storybook/html-vite": "9.1.16",
     "@types/jest": "^29.5.12",
