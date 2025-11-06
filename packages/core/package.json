@@ -404,8 +404,8 @@
   "devDependencies": {
     "@axe-core/playwright": "4.10.1",
     "@playwright/test": "1.50.1",
-    "@stencil/angular-output-target": "0.8.4",
-    "@stencil/react-output-target": "0.5.3",
+    "@stencil/angular-output-target": "1.1.1",
+    "@stencil/react-output-target": "1.2.0",
     "@stencil/sass": "3.0.4",
     "storybook": "^8.6.12",
     "storybook-dark-mode": "^4.0.2",
