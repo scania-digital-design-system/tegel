@@ -23,7 +23,8 @@ packages/angular-17
 packages/react
 packages/tegel-light
 
-**/www
+packages/core/www
+packages/core/storybook-static
 
 icons/gulpfile.js
 

@@ -46,13 +46,13 @@ dropdown.updateDisplay();
 
 ## Events
 
-| Event       | Description                    | Type                                            |
-| ----------- | ------------------------------ | ----------------------------------------------- |
-| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                       |
-| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string; }>` |
-| `tdsClear`  | Clear event for the Dropdown.  | `CustomEvent<{ clearedValue: string; }>`        |
-| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                       |
-| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                       |
+| Event       | Description                    | Type                                                    |
+| ----------- | ------------------------------ | ------------------------------------------------------- |
+| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                               |
+| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string \| null; }>` |
+| `tdsClear`  | Clear event for the Dropdown.  | `CustomEvent<{ clearedValue: string; }>`                |
+| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                               |
+| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                               |
 
 
 ## Methods
@@ -103,7 +103,7 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | number | string[] | number[], label?: string) => Promise<{ value: string | number; label: string | undefined; }[]>`
+### `setValue(value: string | number | string[] | number[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
 
 Method for setting the selected value of the Dropdown.
 
@@ -128,7 +128,7 @@ dropdown.setValue(['option-1', 'option-2']);
 
 #### Returns
 
-Type: `Promise<{ value: string | number; label: string | undefined; }[]>`
+Type: `Promise<{ value: string | number; label: string; }[]>`
 
 
 
