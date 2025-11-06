@@ -73,13 +73,3 @@
     var(--component-side-menu-radius-corner);
 }
 
-// .tl-side-menu__item--selected button:focus-visible::before,
-// .tl-side-menu__item--selected a:focus-visible::before {
-//           content: '';
-//           position: absolute;
-//           top: 3px;
-//           left: 3px;
-//           width: 4px;
-//           height: calc(100% - calc(3px + 3px));
-//           background-color: var(--tds-sidebar-side-menu-single-subitem-selected-border-color);
-// }
