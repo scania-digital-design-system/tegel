@@ -346,7 +346,6 @@
   @include detail-07;
 }
 
-// .tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked),
 .tl-dropdown--md.tl-dropdown--label-inside.tl-dropdown--has-value:is(
 :has(.tl-dropdown__button),
 :has(.tl-dropdown__input)
@@ -416,10 +415,6 @@
 
   &--selected {
     background: var(--dropdown-option-background-selected);
-
-    .tl-icon--tick {
-      display: inline-flex;
-    }
   }
 
   &--visible {
@@ -442,6 +437,10 @@
 
   &--no-result {
     color: var(--dropdown-disabled);
+  }
+
+  .tl-icon--tick.tl-icon--tick--visible {
+    display: inline-flex;
   }
 
   .tl-icon--tick {
