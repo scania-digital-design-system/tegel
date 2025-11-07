@@ -1,75 +1,91 @@
 <!-- .storybook/manager-head.html -->
 
-<script
-  defer
-  data-domain="tds-storybook.tegel.scania.com"
-  src="https://plausible.io/js/script.manual.js"
-></script>
-
-<!-- 1. define the `plausible` function to manually trigger events -->
-<script>
-  window.plausible =
-    window.plausible ||
-    function () {
-      (window.plausible.q = window.plausible.q || []).push(arguments);
-    };
-</script>
-
-<!-- 2. script to help trigger Plausible tracking based on url changes -->
+<!-- Only load Plausible on production domain to avoid CORS issues on PR previews -->
 <script>
   (function () {
-    const pushState = history.pushState;
-    const replaceState = history.replaceState;
-    let lastTrackedTime = 0;
-    const THROTTLE_MS = 1000; // Only track once per second
+    // Only initialize Plausible on the production domain
+    const isProduction = window.location.hostname === 'tds-storybook.tegel.scania.com';
+    
+    if (isProduction) {
+      // Load Plausible script only on production
+      const script = document.createElement('script');
+      script.defer = true;
+      script.setAttribute('data-domain', 'tds-storybook.tegel.scania.com');
+      script.src = 'https://plausible.io/js/script.manual.js';
+      document.head.appendChild(script);
 
-    function trackPageView() {
-      const now = Date.now();
-      if (now - lastTrackedTime >= THROTTLE_MS) {
-        lastTrackedTime = now;
-        plausible('pageview', { u: prepareUrl(['path', 'args']) });
+      // 1. Define the `plausible` function to manually trigger events
+      window.plausible =
+        window.plausible ||
+        function () {
+          (window.plausible.q = window.plausible.q || []).push(arguments);
+        };
+
+      // Helper function for URL preparation
+      function prepareUrl(params) {
+        const url = new URL(location.href);
+        const queryParams = new URLSearchParams(location.search);
+        let customUrl = url.protocol + '//' + url.hostname + url.pathname.replace(/\/$/, '');
+        for (const paramName of params) {
+          const paramValue = queryParams.get(paramName);
+          if (paramValue) customUrl = customUrl + '/' + paramValue;
+        }
+        return customUrl;
       }
+
+      // 2. Script to help trigger Plausible tracking based on url changes
+      const pushState = history.pushState;
+      const replaceState = history.replaceState;
+      let lastTrackedTime = 0;
+      const THROTTLE_MS = 1000; // Only track once per second
+
+      function trackPageView() {
+        const now = Date.now();
+        if (now - lastTrackedTime >= THROTTLE_MS && window.plausible) {
+          lastTrackedTime = now;
+          window.plausible('pageview', { u: prepareUrl(['path', 'args']) });
+        }
+      }
+
+      history.pushState = function () {
+        pushState.apply(history, arguments);
+        window.dispatchEvent(new Event('pushstate'));
+        window.dispatchEvent(new Event('locationchange'));
+        trackPageView();
+      };
+
+      history.replaceState = function () {
+        replaceState.apply(history, arguments);
+        window.dispatchEvent(new Event('replacestate'));
+        window.dispatchEvent(new Event('locationchange'));
+        trackPageView();
+      };
+
+      window.addEventListener('popstate', function () {
+        window.dispatchEvent(new Event('locationchange'));
+        trackPageView();
+      });
+
+      // 3. Initial pageview tracking (wait for script to load)
+      script.addEventListener('load', function () {
+        if (window.plausible) {
+          window.plausible('pageview', { u: prepareUrl(['path', 'args']) });
+        }
+      });
+
+      // 4. Trigger Plausible script on event
+      window.addEventListener('locationchange', function () {
+        if (window.plausible) {
+          window.plausible('pageview', { u: prepareUrl(['path', 'args']) });
+        }
+      });
+    } else {
+      // On non-production domains, create a no-op function to prevent errors
+      window.plausible = function () {
+        // No-op: don't track on PR previews or localhost
+      };
     }
-
-    history.pushState = function () {
-      pushState.apply(history, arguments);
-      window.dispatchEvent(new Event('pushstate'));
-      window.dispatchEvent(new Event('locationchange'));
-      trackPageView();
-    };
-
-    history.replaceState = function () {
-      replaceState.apply(history, arguments);
-      window.dispatchEvent(new Event('replacestate'));
-      window.dispatchEvent(new Event('locationchange'));
-      trackPageView();
-    };
-
-    window.addEventListener('popstate', function () {
-      window.dispatchEvent(new Event('locationchange'));
-      trackPageView();
-    });
   })();
-</script>
-
-<!-- 3. Plausible manual script -->
-<script>
-  function prepareUrl(params) {
-    const url = new URL(location.href);
-    const queryParams = new URLSearchParams(location.search);
-    let customUrl = url.protocol + '//' + url.hostname + url.pathname.replace(/\/$/, '');
-    for (const paramName of params) {
-      const paramValue = queryParams.get(paramName);
-      if (paramValue) customUrl = customUrl + '/' + paramValue;
-    }
-    return customUrl;
-  }
-  plausible('pageview', { u: prepareUrl(['path', 'args']) });
-
-  /* 4. trigger Plausible script on event */
-  window.addEventListener('locationchange', function () {
-    plausible('pageview', { u: prepareUrl(['path', 'args']) });
-  });
 </script>
 
 <title>Tegel Design System</title>
