@@ -404,11 +404,9 @@
   "devDependencies": {
     "@axe-core/playwright": "4.10.1",
     "@playwright/test": "1.50.1",
-    "@stencil/angular-output-target": "^1.0.0",
+    "@stencil/angular-output-target": "^1.1.1",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.4",
-    "storybook": "^8.6.12",
-    "storybook-dark-mode": "^4.0.2",
     "@storybook/addon-a11y": "^8.6.12",
     "@storybook/addon-designs": "^8.2.1",
     "@storybook/addon-essentials": "^8.6.12",
@@ -427,9 +425,11 @@
     "jest": "^29.7.0",
     "markdown-to-jsx": "^7.7.6",
     "prettier": "2.7.1",
+    "sass": "^1.87.0",
     "serve": "^14.2.4",
     "stencil-playwright": "0.3.0",
-    "sass": "^1.87.0"
+    "storybook": "^8.6.12",
+    "storybook-dark-mode": "^4.0.2"
   },
   "license": "MIT"
 }
