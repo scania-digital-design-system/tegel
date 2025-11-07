@@ -2,7 +2,15 @@ import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
   title: 'Tegel Light (CSS)/Popover Canvas',
-  parameters: { layout: 'centered' },
+  parameters: {
+    layout: 'centered',
+    docs: {
+      description: {
+        component:
+          '<br> ⚠️ Note: In the Tegel Web Component, positioning of the Popover Canvas is handled by Popper.js. In Tegel Lite, positioning is left for the consuming application to define.',
+      },
+    },
+  },
   argTypes: {
     modeVariant: {
       name: 'Mode variant',
