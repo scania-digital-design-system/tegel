@@ -11,7 +11,8 @@
     "target": "es2017",
     "jsx": "react",
     "jsxFactory": "h",
-    "types": ["node", "jest", "react"]
+    "types": ["node", "jest", "react"],
+    "skipLibCheck": true
   },
   "exclude": ["src/components/**/test/*", "**/**.stories.*", "src/stories/**"],
   "include": ["src/**/*"]

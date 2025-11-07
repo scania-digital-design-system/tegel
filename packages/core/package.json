@@ -429,6 +429,7 @@
     "prettier": "2.7.1",
     "serve": "^14.2.4",
     "stencil-playwright": "0.3.0",
+    "typescript": "5.4.2",
     "sass": "^1.87.0"
   },
   "license": "MIT"
