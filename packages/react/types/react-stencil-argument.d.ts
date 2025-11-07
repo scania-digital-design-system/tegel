@@ -11,6 +11,8 @@ declare global {
     // Use a wide return type so it remains assignable to Promise<this>
     // in the local constraint used by the generated proxy.
     componentOnReady?: () => Promise<any>;
+
+    autocorrect?: string | boolean;
   }
 }
 
