@@ -50,7 +50,10 @@
     "./tl-toast.css": "./dist/tl-toast.css",
     "./tl-toggle.css": "./dist/tl-toggle.css",
     "./tl-card.css": "./dist/tl-card.css",
-    "./tl-table.css": "./dist/tl-table.css"
+    "./tl-table.css": "./dist/tl-table.css",
+    "./tl-datetime.css": "./dist/tl-datetime.css",
+    "./tl-dropdown.css": "./dist/tl-dropdown.css",
+    "./tl-tooltip.css": "./dist/tl-tooltip.css"
   },
   "files": [
     "dist/"

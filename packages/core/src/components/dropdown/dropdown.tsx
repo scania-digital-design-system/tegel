@@ -334,6 +334,15 @@ export class TdsDropdown {
   })
   tdsInput: EventEmitter<InputEvent>;
 
+  /** Clear event for the Dropdown. */
+  @Event({
+    eventName: 'tdsClear',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsClear: EventEmitter<{ clearedValue: string }>;
+
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     if (this.open) {
@@ -342,6 +351,10 @@ export class TdsDropdown {
       const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
 
       if (isClickOutside) {
+        // Emit clear event if there's a filter query when clicking outside
+        if (this.filter && this.filterQuery) {
+          this.tdsClear.emit({ clearedValue: this.filterQuery });
+        }
         this.open = false;
       }
     }
@@ -585,6 +598,9 @@ export class TdsDropdown {
   };
 
   private handleFilterReset = () => {
+    // Store the current filter query before clearing
+    const clearedValue = this.filterQuery;
+
     // only reset selected values when filterquery is blank
     if (!this.filterQuery.length) {
       this.reset();
@@ -594,6 +610,8 @@ export class TdsDropdown {
     this.inputElement.focus();
     // Add this line to ensure internal value is cleared
     this.internalValue = '';
+
+    this.tdsClear.emit({ clearedValue });
   };
 
   private handleFocus = () => {

@@ -13,7 +13,7 @@ import inheritAttributes from '../../utils/inheritAttributes';
   scoped: true,
 })
 export class TdsPopoverMenu {
-  @Element() host: HTMLTdsPopoverMenuElement;
+  @Element() host: HTMLElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
   @Prop() selector: string;
