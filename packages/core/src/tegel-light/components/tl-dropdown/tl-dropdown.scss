@@ -142,21 +142,38 @@
   padding-top: 3px;
 }
 
-/* Clear icon & divider (filter) */
-.tl-dropdown__icon--cross {
+.tl-dropdown__input-clear {
   display: none;
+  position: absolute;
+  top: calc(50% + 1px);
+  right: 45px;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  color: var(--dropdown-clear-icon);
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
 }
 
-.tl-dropdown__input:focus:not(:placeholder-shown) ~ .tl-dropdown__icon--cross {
-  display: flex;
-  position: absolute;
-  right: 49px;
-  top: 1px;
-  bottom: 0;
-  margin: auto 0;
-  cursor: pointer;
-  z-index: 2;
-  color: var(--dropdown-clear-icon);
+.tl-dropdown__input-clear .tl-icon--cross {
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.tl-dropdown:has(.tl-dropdown__list--open)
+.tl-dropdown__input:not(:placeholder-shown)
+~ .tl-dropdown__input-clear {
+  display: inline-flex;
+}
+
+.tl-dropdown__input-clear:focus,
+.tl-dropdown__input-clear:focus-visible {
+  border: 2px solid var(--color-foreground-border-accent-focus);
 }
 
 .tl-dropdown__input-divider {
@@ -172,7 +189,9 @@
   display: none;
 }
 
-.tl-dropdown__input:focus:not(:placeholder-shown) ~ .tl-dropdown__input-divider {
+.tl-dropdown:has(.tl-dropdown__list--open)
+.tl-dropdown__input:not(:placeholder-shown)
+~ .tl-dropdown__input-divider {
   display: block;
 }
 
@@ -190,6 +209,7 @@
   top: 50%;
   bottom: auto;
   transform: translateY(-50%);
+  color: var(--dropdown-icon);
 
   .tl-dropdown--disabled & {
     color: var(--dropdown-disabled);
@@ -415,6 +435,10 @@
 
   &--selected {
     background: var(--dropdown-option-background-selected);
+
+    .tl-icon--tick {
+      display: inline-flex;
+    }
   }
 
   &--visible {
