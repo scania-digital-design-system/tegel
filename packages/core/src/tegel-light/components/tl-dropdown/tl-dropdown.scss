@@ -51,7 +51,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0;
 }
 
 /* Control states (hover/focus/active/error/disabled) */
@@ -93,6 +92,8 @@
 
 /* Input */
 .tl-dropdown__input {
+  cursor: text;
+
   .tl-dropdown--error & {
     box-shadow: inset var(--dropdown-border-error);
   }
@@ -111,8 +112,10 @@
 }
 
 /* Select */
-
 .tl-dropdown__select {
+  padding-top: 3px;
+  cursor: pointer;
+
   .tl-dropdown--disabled & {
     color: var(--dropdown-disabled);
     background: var(--dropdown-background);
@@ -126,7 +129,6 @@
 .tl-dropdown__input,
 .tl-dropdown__select {
   box-sizing: border-box;
-  cursor: text;
   width: 100%;
   padding-right: 36px;
   overflow: hidden;
@@ -136,10 +138,6 @@
   &:focus {
     padding-right: 69px;
   }
-}
-
-.tl-dropdown__select {
-  padding-top: 3px;
 }
 
 .tl-dropdown__input-clear {
@@ -402,12 +400,36 @@
   }
 }
 
+.tl-dropdown--dropup {
+  .tl-dropdown__list {
+    top: auto;
+    bottom: 100%;
+    border-radius: var(--dropdown-list-border-radius-up, var(--dropdown-border-radius-up));
+  }
+}
+
 .tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__list {
   transform: translateY(-20px) scaleY(0);
 }
 
 .tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__list--open {
   transform: translateY(-20px) scaleY(1);
+}
+
+.tl-dropdown.tl-dropdown--dropup .tl-dropdown__list {
+  transform: translateY(-2px) scaleY(0);
+}
+
+.tl-dropdown.tl-dropdown--dropup .tl-dropdown__list--open {
+  transform: translateY(-2px) scaleY(1);
+}
+
+.tl-dropdown.tl-dropdown--dropup.tl-dropdown--label-outside .tl-dropdown__list {
+  transform: translateY(18px) scaleY(0);
+}
+
+.tl-dropdown.tl-dropdown--dropup.tl-dropdown--label-outside .tl-dropdown__list--open {
+  transform: translateY(18px) scaleY(1);
 }
 
 /* Dropdown options */
@@ -457,6 +479,10 @@
     &:hover {
       background: var(--dropdown-background);
     }
+
+    .tl-checkbox__label {
+      color: var(--dropdown-disabled);
+    }
   }
 
   &--no-result {
@@ -479,6 +505,10 @@
 
   .tl-checkbox {
     pointer-events: none;
+  }
+
+  &:not(.tl-dropdown__option--disabled) .tl-checkbox__label {
+    color: var(--dropdown-text);
   }
 }
 

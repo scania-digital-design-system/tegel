@@ -26,7 +26,7 @@ function dropdownSelectScript(selectId: string): void {
   if (!select.hasAttribute('data-bound')) {
     select.setAttribute('data-bound', '1');
     select.addEventListener('change', setHasValue);
-    select.addEventListener('focus', () => {
+    select.addEventListener('active', () => {
       chev?.classList.add('tl-dropdown__chevron--rotated');
     });
     select.addEventListener('blur', () => {
@@ -85,27 +85,28 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
     setHasValue(!!text);
   };
 
-  const chooseSingle = (opt: HTMLElement) => {
-    list.querySelectorAll('.tl-dropdown__option').forEach((o) => {
-      o.classList.remove('tl-dropdown__option--selected');
-      o.querySelector('.tl-icon--tick')?.classList.remove('tl-icon--tick--visible');
-    });
-
-    opt.classList.add('tl-dropdown__option--selected');
-    opt.querySelector('.tl-icon--tick')?.classList.add('tl-icon--tick--visible');
-
-    const text = (opt.getAttribute('data-value') || opt.textContent || '').trim();
-    if (valueSpan) {
-      valueSpan.textContent = text;
-      valueSpan.classList.add('tl-dropdown__button-value--visible');
-    }
-    if (placeholderSpan) {
-      placeholderSpan.classList.remove('tl-dropdown__button-placeholder--visible');
-    }
-    setHasValue(!!text);
-    close();
-    btn.focus();
-  };
+  let chooseSingle: ((opt: HTMLElement) => void) | undefined;
+  if (!isMulti) {
+    chooseSingle = (opt: HTMLElement) => {
+      list.querySelectorAll('.tl-dropdown__option').forEach((o) => {
+        o.classList.remove('tl-dropdown__option--selected');
+        o.querySelector('.tl-icon--tick')?.classList.remove('tl-icon--tick--visible');
+      });
+      opt.classList.add('tl-dropdown__option--selected');
+      opt.querySelector('.tl-icon--tick')?.classList.add('tl-icon--tick--visible');
+      const text = (opt.getAttribute('data-value') || opt.textContent || '').trim();
+      if (valueSpan) {
+        valueSpan.textContent = text;
+        valueSpan.classList.add('tl-dropdown__button-value--visible');
+      }
+      if (placeholderSpan) {
+        placeholderSpan.classList.remove('tl-dropdown__button-placeholder--visible');
+      }
+      setHasValue(!!text);
+      close();
+      btn.focus();
+    };
+  }
 
   if (!btn.hasAttribute('data-bound')) {
     btn.setAttribute('data-bound', '1');
@@ -129,23 +130,63 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
   if (!list.hasAttribute('data-bound')) {
     list.setAttribute('data-bound', '1');
 
+    const computeOrdered = () => {
+      const raw = Array.from(
+        list.querySelectorAll<HTMLElement>(
+          '.tl-dropdown__option.tl-dropdown__option--visible:not(.tl-dropdown__option--disabled)',
+        ),
+      );
+      const isDropUp = root?.classList.contains('tl-dropdown--dropup');
+      if (!isDropUp) return raw;
+      return raw.slice().reverse();
+    };
+
+    const focusByLinearIndex = (current: HTMLElement, forward: boolean, shift: boolean) => {
+      const ordered = computeOrdered();
+      const idx = ordered.findIndex((o) => o === current);
+      if (idx < 0) return false;
+      const nextIdx = shift ? idx - 1 : idx + 1;
+      if (forward) {
+        if (nextIdx >= ordered.length) return false;
+        ordered[nextIdx].focus();
+        return true;
+      }
+      if (nextIdx < 0) return false;
+      ordered[nextIdx].focus();
+      return true;
+    };
+
     list.addEventListener('keydown', (e: KeyboardEvent) => {
-      const options = Array.from(
-        list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
+      const optionsDom = Array.from(
+        list.querySelectorAll<HTMLElement>(
+          '.tl-dropdown__option.tl-dropdown__option--visible:not(.tl-dropdown__option--disabled)',
+        ),
       );
       const active = document.activeElement as HTMLElement;
-      let idx = options.findIndex((el) => el === active);
+      let idx = optionsDom.findIndex((el) => el === active);
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        if (options.length) {
-          idx = idx < 0 ? 0 : Math.min(idx + 1, options.length - 1);
-          options[idx].focus();
+        if (optionsDom.length) {
+          idx = idx < 0 ? 0 : Math.min(idx + 1, optionsDom.length - 1);
+          optionsDom[idx].focus();
         }
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
-        if (options.length) {
-          idx = idx < 0 ? options.length - 1 : Math.max(idx - 1, 0);
-          options[idx].focus();
+        if (optionsDom.length) {
+          idx = idx < 0 ? optionsDom.length - 1 : Math.max(idx - 1, 0);
+          optionsDom[idx].focus();
+        }
+      } else if (e.key === 'Tab') {
+        const forward = !e.shiftKey;
+        e.preventDefault();
+        const moved = focusByLinearIndex(active, forward, e.shiftKey);
+        if (!moved) {
+          if (forward) {
+            close();
+            btn?.focus();
+          } else {
+            btn?.focus();
+          }
         }
       } else if (e.key === 'Escape') {
         e.preventDefault();
@@ -158,33 +199,107 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
       btn.setAttribute('data-arrow-bound', '1');
       btn.addEventListener('keydown', (e) => {
         const options = Array.from(
+          list.querySelectorAll<HTMLElement>(
+            '.tl-dropdown__option.tl-dropdown__option--visible:not(.tl-dropdown__option--disabled)',
+          ),
+        );
+        const isDropUp = root.classList.contains('tl-dropdown--dropup');
+        const lastIdx = options.length - 1;
+        const firstIdx = 0;
+        const ensureOpen = () => {
+          if (!list.classList.contains('tl-dropdown__list--open')) {
+            open();
+          }
+        };
+
+        if (
+          (e.key === 'ArrowDown' || e.key === 'ArrowUp') &&
+          !list.classList.contains('tl-dropdown__list--open') &&
+          options.length
+        ) {
+          e.preventDefault();
+          ensureOpen();
+          (isDropUp ? options[lastIdx] : options[firstIdx]).focus();
+          return;
+        }
+        if (
+          e.key === 'ArrowDown' &&
+          options.length &&
+          list.classList.contains('tl-dropdown__list--open')
+        ) {
+          e.preventDefault();
+          (isDropUp ? options[lastIdx] : options[firstIdx]).focus();
+          return;
+        }
+        if (
+          e.key === 'ArrowUp' &&
+          options.length &&
+          list.classList.contains('tl-dropdown__list--open')
+        ) {
+          e.preventDefault();
+          (isDropUp ? options[firstIdx] : options[lastIdx]).focus();
+          return;
+        }
+        if (e.key === 'Enter' && !list.classList.contains('tl-dropdown__list--open')) {
+          e.preventDefault();
+          ensureOpen();
+          (isDropUp ? options[lastIdx] : options[firstIdx])?.focus();
+          return;
+        }
+        if (e.key === 'Tab' && !e.shiftKey) {
+          if (!list.classList.contains('tl-dropdown__list--open') && options.length) {
+            e.preventDefault();
+            ensureOpen();
+            (isDropUp ? options[lastIdx] : options[firstIdx]).focus();
+          } else if (
+            list.classList.contains('tl-dropdown__list--open') &&
+            isDropUp &&
+            options.length
+          ) {
+            e.preventDefault();
+            options[lastIdx].focus();
+          }
+        }
+      });
+    }
+    if (root && !root.hasAttribute('data-focusout-bound')) {
+      root.setAttribute('data-focusout-bound', '1');
+      root.addEventListener('focusout', (ev: FocusEvent) => {
+        setTimeout(() => {
+          const next =
+            (ev.relatedTarget as HTMLElement | null) ??
+            (document.activeElement as HTMLElement | null);
+
+          const keepOpen =
+            (!!next && !!root?.contains(next)) ||
+            !list.classList.contains('tl-dropdown__list--open');
+
+          if (!keepOpen) {
+            close();
+          }
+        }, 20);
+      });
+    }
+
+    if (!list.hasAttribute('data-roving-bound')) {
+      list.setAttribute('data-roving-bound', '1');
+      list.addEventListener('focusin', (ev: FocusEvent) => {
+        const target = ev.target as HTMLElement | null;
+        if (!target) return;
+        if (!target.classList.contains('tl-dropdown__option')) return;
+        const all = Array.from(
           list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
         );
-        if (e.key === 'ArrowDown' && options.length) {
-          e.preventDefault();
-          options[0].focus();
-        }
-        if (e.key === 'ArrowUp' && options.length) {
-          e.preventDefault();
-          options[options.length - 1].focus();
-        }
+        all.forEach((el) => el.setAttribute('tabindex', el === target ? '0' : '-1'));
       });
     }
 
     list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((li) => {
-      li.setAttribute('tabindex', '0');
       if (li.classList.contains('tl-dropdown__option--disabled')) {
+        li.setAttribute('tabindex', '-1');
         return;
       }
-
-      li.addEventListener('blur', () => {
-        setTimeout(() => {
-          const active = document.activeElement;
-          if (!list.contains(active) && active !== btn) {
-            close();
-          }
-        }, 10);
-      });
+      li.setAttribute('tabindex', '-1');
 
       if (isMulti) {
         const cb = li.querySelector<HTMLInputElement>('.tl-checkbox__input');
@@ -212,9 +327,9 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
           ev.stopPropagation();
           toggle();
         });
-      } else {
+      } else if (chooseSingle) {
         const select = () => {
-          chooseSingle(li);
+          chooseSingle!(li);
         };
         li.addEventListener('mousedown', (ev) => {
           ev.preventDefault();
@@ -241,6 +356,7 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
   }
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
+  const dropUp = !!root && root.classList.contains('tl-dropdown--dropup');
   const chev = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
   const clearIcon = input.parentElement?.querySelector(
     '.tl-dropdown__input-clear',
@@ -248,9 +364,6 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
   const noResult = list.querySelector('.tl-dropdown__option--no-result') as HTMLElement | null;
 
   let selectedCache = '';
-  let chevronToggle = false;
-  let tabbingToClear = false;
-
   const isClearVisible = () => {
     if (!clearIcon) return false;
     const layoutVisible = (clearIcon as HTMLElement).offsetParent !== null;
@@ -292,6 +405,52 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     });
   }
 
+  const computeOrderedVisible = () => {
+    const raw = Array.from(
+      list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
+    ).filter((li) => !li.classList.contains('tl-dropdown__option--no-result'));
+    return dropUp ? raw.slice().reverse() : raw;
+  };
+
+  if (!list.hasAttribute('data-nav-bound')) {
+    list.setAttribute('data-nav-bound', '1');
+    list.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (!list.classList.contains('tl-dropdown__list--open')) return;
+      const ordered = computeOrderedVisible();
+      if (!ordered.length) return;
+      const active = document.activeElement as HTMLElement | null;
+      let idx = active ? ordered.findIndex((o) => o === active) : -1;
+      const isDropUp = dropUp;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (isDropUp) {
+          idx = idx < 0 ? 0 : Math.max(idx - 1, 0);
+        } else {
+          idx = idx < 0 ? 0 : Math.min(idx + 1, ordered.length - 1);
+        }
+        ordered[idx].focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (isDropUp) {
+          idx = idx < 0 ? ordered.length - 1 : Math.min(idx + 1, ordered.length - 1);
+        } else {
+          idx = idx < 0 ? ordered.length - 1 : Math.max(idx - 1, 0);
+        }
+        ordered[idx].focus();
+      } else if (e.key === 'Tab') {
+        e.preventDefault();
+        const nextIdx = e.shiftKey ? idx - 1 : idx + 1;
+        if (nextIdx < 0 || nextIdx >= ordered.length) {
+          close();
+          input.focus();
+        } else {
+          ordered[nextIdx].focus();
+        }
+      }
+    });
+  }
+
   const filterOptions = () => {
     const q = (input.value || '').toLowerCase().trim();
     let matches = 0;
@@ -317,19 +476,18 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     if (document.activeElement === input) {
       if (e.key === 'Tab' && clearIcon && isClearVisible()) {
         e.preventDefault();
-        tabbingToClear = true;
         clearIcon.focus();
         return;
       }
       if (list.classList.contains('tl-dropdown__list--open')) {
         if (e.key === 'Tab' && visibleOptions.length) {
           e.preventDefault();
-          visibleOptions[0].focus();
+          (dropUp ? visibleOptions[visibleOptions.length - 1] : visibleOptions[0]).focus();
           return;
         }
         if (e.key === 'ArrowDown' && visibleOptions.length) {
           e.preventDefault();
-          visibleOptions[0].focus();
+          (dropUp ? visibleOptions[visibleOptions.length - 1] : visibleOptions[0]).focus();
           return;
         }
         if (e.key === 'ArrowUp' && visibleOptions.length) {
@@ -345,13 +503,21 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       if (visibleOptions.length) {
-        idx = idx < 0 ? 0 : Math.min(idx + 1, visibleOptions.length - 1);
+        if (dropUp) {
+          idx = idx <= 0 ? 0 : idx - 1;
+        } else {
+          idx = idx < 0 ? 0 : Math.min(idx + 1, visibleOptions.length - 1);
+        }
         visibleOptions[idx].focus();
       }
     } else if (e.key === 'ArrowUp') {
       e.preventDefault();
       if (visibleOptions.length) {
-        idx = idx < 0 ? visibleOptions.length - 1 : Math.max(idx - 1, 0);
+        if (dropUp) {
+          idx = idx < 0 ? 0 : Math.min(idx + 1, visibleOptions.length - 1);
+        } else {
+          idx = idx < 0 ? visibleOptions.length - 1 : Math.max(idx - 1, 0);
+        }
         visibleOptions[idx].focus();
       }
     } else if (e.key === 'Escape') {
@@ -382,7 +548,6 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     });
     clearIcon.addEventListener('focus', () => {
       open();
-      tabbingToClear = false;
     });
     clearIcon.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Enter' || e.key === ' ') {
@@ -408,7 +573,6 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     chev.addEventListener('mousedown', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      chevronToggle = true;
       const isOpen = list.classList.contains('tl-dropdown__list--open');
       if (isOpen) {
         close();
@@ -418,9 +582,6 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
         input.focus();
         filterOptions();
       }
-      window.setTimeout(() => {
-        chevronToggle = false;
-      }, 0);
     });
   }
 
@@ -437,31 +598,6 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
       updateClearTabIndex();
     });
 
-    input.addEventListener('blur', () => {
-      window.setTimeout(() => {
-        const active = document.activeElement;
-        if (active && root && root.contains(active)) {
-          return;
-        }
-        if (tabbingToClear) {
-          return;
-        }
-        if (chevronToggle) {
-          return;
-        }
-        if (active !== input) {
-          close();
-          if (selectedCache) {
-            input.value = selectedCache;
-            setHasValue(true);
-          } else {
-            setHasValue(!!input.value);
-          }
-          updateClearTabIndex();
-        }
-      }, 100);
-    });
-
     input.addEventListener('input', () => {
       filterOptions();
       setHasValue(!!input.value || !!selectedCache);
@@ -473,50 +609,11 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     list.setAttribute('data-bound', '1');
 
     const optionArr = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option'));
-    optionArr.forEach((li, i, arr) => {
+    optionArr.forEach((li) => {
       if (li.classList.contains('tl-dropdown__option--no-result')) return;
-      if (li.classList.contains('tl-dropdown__option--disabled')) {
-        return;
-      }
+      if (li.classList.contains('tl-dropdown__option--disabled')) return;
 
-      li.addEventListener('keydown', (ev) => {
-        if (ev.key === 'ArrowDown') {
-          ev.preventDefault();
-          const next =
-            arr[i + 1] && arr[i + 1].classList.contains('tl-dropdown__option--visible')
-              ? arr[i + 1]
-              : arr
-                  .slice(i + 1)
-                  .find((el) => el.classList.contains('tl-dropdown__option--visible')) ||
-                arr.find((el) => el.classList.contains('tl-dropdown__option--visible'));
-          if (next) next.focus();
-        }
-        if (ev.key === 'ArrowUp') {
-          ev.preventDefault();
-          const prev =
-            arr[i - 1] && arr[i - 1].classList.contains('tl-dropdown__option--visible')
-              ? arr[i - 1]
-              : arr
-                  .slice(0, i)
-                  .reverse()
-                  .find((el) => el.classList.contains('tl-dropdown__option--visible')) ||
-                arr
-                  .slice()
-                  .reverse()
-                  .find((el) => el.classList.contains('tl-dropdown__option--visible'));
-          if (prev) prev.focus();
-        }
-      });
-
-      li.addEventListener('blur', () => {
-        setTimeout(() => {
-          const active = document.activeElement;
-          if (!list.contains(active) && active !== input && active !== clearIcon) {
-            close();
-            setHasValue(false);
-          }
-        }, 10);
-      });
+      // removed no-op keydown handler
 
       if (multiselect) {
         const cb = li.querySelector<HTMLInputElement>('.tl-checkbox__input');
@@ -567,7 +664,7 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
           input.value = selectedCache;
           setHasValue(!!selectedCache);
           updateClearTabIndex();
-          close();
+          selectedCache = (li.getAttribute('data-value') || '').trim();
           input.blur();
         };
 
@@ -582,6 +679,39 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
           }
         });
       }
+    });
+  }
+
+  if (root && !root.hasAttribute('data-focusout-bound')) {
+    root.setAttribute('data-focusout-bound', '1');
+    root.addEventListener('focusout', (ev: FocusEvent) => {
+      setTimeout(() => {
+        const next =
+          (ev.relatedTarget as HTMLElement) || (document.activeElement as HTMLElement | null);
+        if (!next || !root.contains(next)) {
+          close();
+          if (selectedCache) {
+            input.value = selectedCache;
+            setHasValue(true);
+          } else {
+            setHasValue(!!input.value);
+          }
+          updateClearTabIndex();
+        }
+      }, 20);
+    });
+  }
+
+  if (!list.hasAttribute('data-roving-bound')) {
+    list.setAttribute('data-roving-bound', '1');
+    list.addEventListener('focusin', (ev: FocusEvent) => {
+      const target = ev.target as HTMLElement | null;
+      if (!target) return;
+      if (!target.classList.contains('tl-dropdown__option')) return;
+      const all = Array.from(
+        list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
+      );
+      all.forEach((el) => el.setAttribute('tabindex', el === target ? '0' : '-1'));
     });
   }
 
@@ -635,14 +765,22 @@ function getButtonMarkup(
   disabled: boolean,
   labelled: boolean,
   listId: string,
+  opts: readonly string[],
+  dropUp: boolean,
 ) {
-  const items = `${OPTIONS.map(
-    (o) => `
+  const optionLis = opts
+    .map(
+      (o) => `
     <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
       ${o}<span class="tl-icon tl-icon--tick"></span>
     </li>`,
-  ).join('')}
-    <li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true">Option disabled</li>`;
+    )
+    .join('');
+
+  const disabledLi =
+    '<li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true">Option disabled</li>';
+
+  const items = dropUp ? `${disabledLi}${optionLis}` : `${optionLis}${disabledLi}`;
 
   return `
     <button type="button" class="tl-dropdown__button" ${
@@ -666,18 +804,27 @@ function getMultiselectMarkup(
   placeholder: string,
   disabled: boolean,
   labelled: boolean,
+  opts: readonly string[],
 ) {
-  const items = OPTIONS.map(
-    (o, i) => `
+  const items = opts
+    .map(
+      (o, i) => `
     <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
-      <span class="tl-dropdown__option-checkbox">
-        <div class="tl-checkbox">
-          <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.multi}-${i}" tabindex="-1" />
-          <label class="tl-checkbox__label" for="cb-${IDS.multi}-${i}">${o}</label>
-        </div>
-      </span>
+      <div class="tl-checkbox">
+        <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.multi}-${i}" tabindex="-1" />
+        <label class="tl-checkbox__label" for="cb-${IDS.multi}-${i}">${o}</label>
+      </div>
     </li>`,
-  ).join('');
+    )
+    .join('');
+
+  const disabledItem = `
+    <li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true" data-value="Option disabled">
+      <div class="tl-checkbox">
+        <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.multi}-disabled" tabindex="-1" disabled />
+        <label class="tl-checkbox__label" for="cb-${IDS.multi}-disabled">Option disabled</label>
+      </div>
+    </li>`;
 
   return `
     <button type="button" class="tl-dropdown__button" ${
@@ -693,6 +840,7 @@ function getMultiselectMarkup(
     </button>
     <ul class="tl-dropdown__list" id="${IDS.multi}" role="listbox" aria-multiselectable="true">
       ${items}
+      ${disabledItem}
     </ul>`;
 }
 
@@ -701,25 +849,28 @@ function getFilterMarkup(
   disabled: boolean,
   multiselect: boolean,
   labelled: boolean,
+  opts: readonly string[],
 ) {
   const baseItems = multiselect
-    ? OPTIONS.map(
-        (o, i) => `
+    ? opts
+        .map(
+          (o, i) => `
         <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
-          <span class="tl-dropdown__option-checkbox">
-            <div class="tl-checkbox">
-              <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.filterList}-${i}" tabindex="-1" />
-              <label class="tl-checkbox__label" for="cb-${IDS.filterList}-${i}">${o}</label>
-            </div>
-          </span>
+          <div class="tl-checkbox">
+            <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.filterList}-${i}" tabindex="-1" />
+            <label class="tl-checkbox__label" for="cb-${IDS.filterList}-${i}">${o}</label>
+          </div>
         </li>`,
-      ).join('')
-    : OPTIONS.map(
-        (o) => `
+        )
+        .join('')
+    : opts
+        .map(
+          (o) => `
         <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
           ${o}<span class="tl-icon tl-icon--tick"></span>
         </li>`,
-      ).join('');
+        )
+        .join('');
 
   const noResult = multiselect
     ? ''
@@ -751,6 +902,7 @@ export default {
   title: 'Tegel Light (CSS)/Dropdown',
   parameters: { layout: 'centered' },
   argTypes: {
+    select: { name: 'Select', control: { type: 'boolean' }, defaultValue: false },
     filter: {
       name: 'Filter',
       control: { type: 'boolean' },
@@ -781,7 +933,12 @@ export default {
     helper: { name: 'Helper', control: 'text' },
     error: { name: 'Error', control: 'boolean' },
     disabled: { name: 'Disabled', control: 'boolean' },
-    select: { name: 'Select', control: { type: 'boolean' }, defaultValue: false },
+    direction: {
+      name: 'Open direction',
+      control: { type: 'radio' },
+      options: ['Down', 'Up'],
+      defaultValue: 'Down',
+    },
   },
   args: {
     filter: false,
@@ -794,11 +951,13 @@ export default {
     helper: 'Helper text',
     error: false,
     disabled: false,
+    direction: 'Down',
     select: false,
   },
 };
 
 type TemplateProps = {
+  direction: 'Down' | 'Up';
   select: boolean;
   filter: boolean;
   label: string;
@@ -812,24 +971,28 @@ type TemplateProps = {
   multiselect: boolean;
 };
 
-const Template = ({
-  select,
-  filter,
-  label,
-  placeholder,
-  showHelper,
-  helper,
-  disabled,
-  error,
-  size,
-  labelPlacement,
-  multiselect,
-}: TemplateProps): string => {
+function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[]): string {
+  const {
+    select,
+    filter,
+    label,
+    placeholder,
+    showHelper,
+    helper,
+    disabled,
+    error,
+    size,
+    labelPlacement,
+    multiselect,
+    direction,
+  } = props;
+
   const sizeMap = { Small: 'sm', Medium: 'md', Large: 'lg' } as const;
   const sizeClass = sizeMap[size] || 'lg';
   const isInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
   const labelled = showLabel;
+  const dropUp = direction === 'Up';
 
   let currentVariant: 'Select' | 'Filter' | 'Button' = 'Button';
   if (select) {
@@ -839,35 +1002,23 @@ const Template = ({
   }
 
   let fieldMarkup = '';
-  let scriptMarkup = '';
-
   if (currentVariant === 'Select') {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.select) : ''}
       ${getSelectMarkup(isInside, placeholder, disabled, labelled)}`;
-    scriptMarkup = `<script>(${dropdownSelectScript.toString()})('${IDS.select}');</script>`;
   } else if (currentVariant === 'Button' && multiselect) {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside') : ''}
-      ${getMultiselectMarkup(isInside, placeholder, disabled, labelled)}`;
-    scriptMarkup = `<script>(${dropdownMenuScript.toString()})('${IDS.multi}', true, '${
-      IDS.multiBtn
-    }');</script>`;
+      ${getMultiselectMarkup(isInside, placeholder, disabled, labelled, optionOrder)}`;
   } else if (currentVariant === 'Button') {
     const listId = IDS.btnList;
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside') : ''}
-      ${getButtonMarkup(isInside, placeholder, disabled, labelled, listId)}`;
-    scriptMarkup = `<script>(${dropdownMenuScript.toString()})('${listId}', false, '${
-      IDS.btn
-    }');</script>`;
+      ${getButtonMarkup(isInside, placeholder, disabled, labelled, listId, optionOrder, dropUp)}`;
   } else {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.filterInput) : ''}
-      ${getFilterMarkup(placeholder, disabled, Boolean(multiselect), labelled)}`;
-    scriptMarkup = `<script>(${dropdownFilterScript.toString()})('${IDS.filterList}', '${
-      IDS.filterInput
-    }', ${Boolean(multiselect)});</script>`;
+      ${getFilterMarkup(placeholder, disabled, multiselect, labelled, optionOrder)}`;
   }
 
   const classesList: string[] = ['tl-dropdown', `tl-dropdown--${sizeClass}`];
@@ -886,18 +1037,50 @@ const Template = ({
   if (disabled) {
     classesList.push('tl-dropdown--disabled');
   }
-  // (Multiselect specific class additions could go here if needed in future)
+  if (direction === 'Up') {
+    classesList.push('tl-dropdown--dropup');
+  }
   const classes = classesList.join(' ');
 
-  return formatHtmlPreview(`
+  return `
     <div class="demo-wrapper" style="width:200px;height:200px;max-width:960px;">
       <div class="${classes}">
         ${fieldMarkup}
         ${showHelper ? getHelper(helper, showHelper, error) : ''}
       </div>
-      ${scriptMarkup}
     </div>
-  `);
+  `;
+}
+
+function getDropdownScript(props: TemplateProps): string {
+  const { select, filter, multiselect } = props;
+
+  let scriptMarkup = '';
+  if (select) {
+    scriptMarkup = `<script>(${dropdownSelectScript.toString()})('${IDS.select}');</script>`;
+  } else if (!filter && multiselect) {
+    scriptMarkup = `<script>(${dropdownMenuScript.toString()})('${IDS.multi}', true, '${
+      IDS.multiBtn
+    }');</script>`;
+  } else if (!filter) {
+    const listId = IDS.btnList;
+    scriptMarkup = `<script>(${dropdownMenuScript.toString()})('${listId}', false, '${
+      IDS.btn
+    }');</script>`;
+  } else {
+    scriptMarkup = `<script>(${dropdownFilterScript.toString()})('${IDS.filterList}', '${
+      IDS.filterInput
+    }', ${multiselect});</script>`;
+  }
+  return scriptMarkup;
+}
+
+const Template = (props: TemplateProps): string => {
+  const dropUp = props.direction === 'Up';
+  const optionOrder = dropUp ? [...OPTIONS].reverse() : [...OPTIONS];
+  const markup = getDropdownMarkup(props, optionOrder);
+  const script = getDropdownScript(props);
+  return formatHtmlPreview(`${markup}\n${script}`);
 };
 
 export const Default = Template.bind({});
