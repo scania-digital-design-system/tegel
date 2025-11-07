@@ -78,7 +78,6 @@ export const config: Config = {
     },
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
-      outputType: 'component',
       directivesProxyFile: '../angular/projects/components/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular/projects/components/src/lib/stencil-generated/index.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
@@ -89,7 +88,6 @@ export const config: Config = {
     }),
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
-      outputType: 'component',
       directivesProxyFile:
         '../angular-17/projects/components/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular-17/projects/components/src/lib/stencil-generated/index.ts',
