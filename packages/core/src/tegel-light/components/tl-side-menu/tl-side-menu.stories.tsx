@@ -64,10 +64,18 @@ const Template = ({ persistent, collapsible, collapsed }) => {
   const isTraton =
     typeof document !== 'undefined' && document.documentElement.classList.contains('traton');
 
-  // swap 20→16 for TRATON
-  const icon24 = isTraton ? 'tl-icon--16' : 'tl-icon--24';
+  const iconSize = isTraton ? 'tl-icon--16' : 'tl-icon--24';
 
   return formatHtmlPreview(`
+<!-- Required stylesheets:
+  "@scania/tegel-light/global.css"
+  "@scania/tegel-light/tl-side-menu.css"
+-->
+
+<!-- Optional stylesheets:
+  "@scania/tegel-light/tl-icon.css"
+-->
+
   <script>window.demoSideMenu = null;</script>
   <style>
     :root { --app-bar-height: 64px; }
@@ -149,18 +157,18 @@ const Template = ({ persistent, collapsible, collapsed }) => {
 
               <div class="tl-side-menu__list-wrapper">
                 <ul class="tl-side-menu__list tl-side-menu__list--upper">
-                  <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item tl-side-menu__item--selected"><button><span class="tl-icon tl-icon--info ${icon24}" aria-hidden="true"></span>About us</button></div></div></li>
-                  <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item"><button><span class="tl-icon tl-icon--truck ${icon24}" aria-hidden="true"></span>Trucks</button></div></div></li>
+                  <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item tl-side-menu__item--selected"><button><span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>About us</button></div></div></li>
+                  <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item"><button><span class="tl-icon tl-icon--truck ${iconSize}" aria-hidden="true"></span>Trucks</button></div></div></li>
 
-                  <li><div class="tl-side-menu__dropdown-wrapper"><div class="tl-side-menu__dropdown" id="dropdown"><div class="tl-side-menu__item tl-side-menu__item--selected"><button id="dropdown-trigger"><span class="tl-icon tl-icon--info ${icon24}" aria-hidden="true"></span>Dropdown<span class="tl-side-menu__dropdown-icon tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></button></div><div class="tl-side-menu__dropdown-menu"><div class="tl-side-menu__dropdown-header"><span>Dropdown</span></div><div class="tl-side-menu__dropdown-list"><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item"><button>dropdown list här</button></div></div><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item tl-side-menu__dropdown-list-item--selected"><button>dropdown list här</button></div></div></div></div></div></div></li>
+                  <li><div class="tl-side-menu__dropdown-wrapper"><div class="tl-side-menu__dropdown" id="dropdown"><div class="tl-side-menu__item tl-side-menu__item--selected"><button id="dropdown-trigger"><span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>Dropdown<span class="tl-side-menu__dropdown-icon tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></button></div><div class="tl-side-menu__dropdown-menu"><div class="tl-side-menu__dropdown-header"><span>Dropdown</span></div><div class="tl-side-menu__dropdown-list"><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item"><button>Dropdown list item</button></div></div><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item tl-side-menu__dropdown-list-item--selected"><button>Dropdown list item</button></div></div></div></div></div></div></li>
 
 
-                  <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item"><button><span class="tl-icon tl-icon--star ${icon24}" aria-hidden="true"></span>Values</button></div></div></li>
+                  <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item"><button><span class="tl-icon tl-icon--star ${iconSize}" aria-hidden="true"></span>Values</button></div></div></li>
                 </ul>
 
                 <ul class="tl-side-menu__list tl-side-menu__list--end">
                   <li><div class="tl-side-menu__item-wrapper"><div class="tl-side-menu__item"><button><div class="tl-side-menu__user"><div class="tl-side-menu__user-image"><img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"></div><div class="tl-side-menu__user-label">Name Namesson<div class="subheader">Company name</div></div></div></button></div></div></li>
-                  <li><div class="tl-side-menu__dropdown-wrapper"><div class="tl-side-menu__dropdown" id="dropdown"><div class="tl-side-menu__item"><button id="dropdown-trigger"><div class="tl-side-menu__user"><div class="tl-side-menu__user-image"><img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"></div><div class="tl-side-menu__user-label">Name Namesson<div class="subheader">Company name</div></div></div><span class="tl-side-menu__dropdown-icon tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></button></div><div class="tl-side-menu__dropdown-menu"><div class="tl-side-menu__dropdown-header"><span>Dropdown</span></div><div class="tl-side-menu__dropdown-list"><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item"><button>dropdown list här</button></div></div><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item tl-side-menu__dropdown-list-item--selected"><button>dropdown list här</button></div></div></div></div></div></div></li>
+                  <li><div class="tl-side-menu__dropdown-wrapper"><div class="tl-side-menu__dropdown" id="dropdown"><div class="tl-side-menu__item"><button id="dropdown-trigger"><div class="tl-side-menu__user"><div class="tl-side-menu__user-image"><img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"></div><div class="tl-side-menu__user-label">Name Namesson<div class="subheader">Company name</div></div></div><span class="tl-side-menu__dropdown-icon tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></button></div><div class="tl-side-menu__dropdown-menu"><div class="tl-side-menu__dropdown-header"><span>Dropdown</span></div><div class="tl-side-menu__dropdown-list"><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item"><button>Dropdown list item</button></div></div><div class="tl-side-menu__dropdown-item-wrapper"><div class="tl-side-menu__dropdown-list-item tl-side-menu__dropdown-list-item--selected"><button>Dropdown list item</button></div></div></div></div></div></div></li>
                 </ul>
               </div>
             </div>
