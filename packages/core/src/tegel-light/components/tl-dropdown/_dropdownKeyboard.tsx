@@ -1,144 +1,106 @@
-// ============================================================================
-// Dropdown Keyboard Navigation
-// Handles arrow keys, Enter, Space, Tab, and Escape for all dropdown variants
-// ============================================================================
-
 let initialized = false;
 
 export function initDropdownKeyboard() {
   if (initialized) return;
   initialized = true;
 
-  // ============================================================================
-  // Handler for when dropdown list is open
-  // ============================================================================
   const handleOpenListKeydown = (e: KeyboardEvent) => {
-    const openTrigger = document.querySelector(
-      '.tl-dropdown__button[aria-expanded="true"], .tl-dropdown__input[aria-expanded="true"]',
-    );
-    if (!openTrigger) return;
-
-    const root = openTrigger.closest('.tl-dropdown');
-    const openList = root?.querySelector('.tl-dropdown__list');
+    const openList = document.querySelector('.tl-dropdown__list--open');
     if (!openList) return;
-    const isDropUp = root?.classList.contains('tl-dropdown--dropup');
-    const isMultiSelect = openList.getAttribute('aria-multiselectable') === 'true';
-    const isFilterDropdown = !!root?.querySelector('.tl-dropdown__input');
 
-    const options = Array.from(openList.querySelectorAll('.tl-dropdown__option')).filter(
-      (option) => {
-        const el = option as HTMLElement;
-        return (
-          !el.classList.contains('tl-dropdown__option--disabled') &&
-          !el.classList.contains('tl-dropdown__option--no-result') &&
-          el.style.display !== 'none'
-        );
-      },
-    );
+    const root = openList.closest('.tl-dropdown');
+    const trigger =
+      root?.querySelector('[data-dropdown-toggle]') || root?.querySelector('.tl-dropdown__input');
+
+    const isDropUp = root?.classList.contains('tl-dropdown--dropup');
+    const isMulti = openList.getAttribute('aria-multiselectable') === 'true';
+
+    const options = Array.from(
+      openList.querySelectorAll('.tl-dropdown__option.tl-dropdown__option--visible'),
+    ).filter((li) => !(li as HTMLElement).classList.contains('tl-dropdown__option--disabled'));
 
     if (!options.length) return;
+    const active = document.activeElement;
+    const currentIdx = options.findIndex((o) => o === active);
 
-    const { activeElement } = document;
-    const currentIndex = options.findIndex((option) => option === activeElement);
-
-    const focusOption = (index: number) => {
-      if (index < 0 || index >= options.length) return;
-      (options[index] as HTMLElement).focus();
+    const focusOption = (idx: number) => {
+      if (idx < 0 || idx >= options.length) return;
+      options.forEach((opt, i) => {
+        (opt as HTMLElement).setAttribute('tabindex', i === idx ? '0' : '-1');
+      });
+      (options[idx] as HTMLElement).focus();
     };
 
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       e.preventDefault();
 
-      if (isFilterDropdown && activeElement === openTrigger) {
-        const isArrowDown = e.key === 'ArrowDown';
-        const firstIndex = isArrowDown
-          ? isDropUp
-            ? options.length - 1
-            : 0
-          : isDropUp
-          ? 0
-          : options.length - 1;
-        focusOption(firstIndex);
-        return;
-      }
-
       const direction = e.key === 'ArrowDown' ? 1 : -1;
-      let nextIndex = currentIndex;
+      let nextIdx = currentIdx;
 
-      if (currentIndex === -1) {
-        const isArrowDown = e.key === 'ArrowDown';
-        nextIndex = isArrowDown
-          ? isDropUp
-            ? options.length - 1
-            : 0
-          : isDropUp
-          ? 0
-          : options.length - 1;
-      } else {
-        nextIndex = currentIndex + (isDropUp ? -direction : direction);
-      }
-
-      if (nextIndex >= options.length) nextIndex = 0;
-      if (nextIndex < 0) nextIndex = options.length - 1;
-
-      focusOption(nextIndex);
-      return;
-    }
-
-    if (e.key === 'Enter' || e.key === ' ') {
-      const focusedOption = options[currentIndex];
-      if (!focusedOption) return;
-
-      if (isMultiSelect) return;
-
-      e.preventDefault();
-      (focusedOption as HTMLElement).click();
-      if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
-
-      if (!isFilterDropdown) {
-        (openTrigger as HTMLElement | null)?.focus();
-      }
-      return;
-    }
-
-    if (e.key === 'Tab') {
-      if (isFilterDropdown) {
-        const inputWrapper = openTrigger.parentElement;
-        const clearButton = inputWrapper?.querySelector(
-          '.tl-dropdown__input-clear',
-        ) as HTMLButtonElement | null;
-        const clearButtonTabindex = clearButton?.getAttribute('tabindex');
-        const canFocusClearButton = clearButton && clearButtonTabindex === '0';
-
-        if (currentIndex >= 0) {
-          if (!e.shiftKey && canFocusClearButton) {
-            e.preventDefault();
-            clearButton?.focus();
-            return;
-          }
-          return;
+      if (currentIdx === -1) {
+        if (e.key === 'ArrowDown') {
+          nextIdx = isDropUp ? options.length - 1 : 0;
+        } else {
+          nextIdx = isDropUp ? 0 : options.length - 1;
         }
-        return;
+      } else {
+        nextIdx = currentIdx + (isDropUp ? -direction : direction);
       }
 
-      e.preventDefault();
-      const movingForward = isDropUp ? e.shiftKey : !e.shiftKey;
-      const nextIndex = movingForward ? currentIndex + 1 : currentIndex - 1;
+      if (nextIdx >= options.length) nextIdx = 0;
+      if (nextIdx < 0) nextIdx = options.length - 1;
 
-      if (nextIndex >= options.length || nextIndex < 0) {
-        if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
-        (openTrigger as HTMLElement | null)?.focus();
-        return;
-      }
-
-      focusOption(nextIndex);
+      focusOption(nextIdx);
       return;
     }
 
+    /* Enter or Space = select/toggle */
+    if (e.key === 'Enter' || e.key === ' ') {
+      const option = options[currentIdx];
+      if (!option) return;
+
+      e.preventDefault();
+
+      if (isMulti) {
+        const checkbox = option.querySelector('.tl-checkbox__input') as HTMLInputElement | null;
+        if (checkbox) {
+          checkbox.checked = !checkbox.checked;
+          option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+          checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      } else {
+        (option as HTMLElement).click();
+        openList.classList.remove('tl-dropdown__list--open');
+        (trigger as HTMLElement | null)?.focus();
+      }
+      return;
+    }
+
+    /* Tab / Shift+Tab */
+    if (e.key === 'Tab') {
+      e.preventDefault();
+
+      const forward = isDropUp ? e.shiftKey : !e.shiftKey;
+      const nextIdx = forward ? currentIdx + 1 : currentIdx - 1;
+
+      if (nextIdx >= options.length) {
+        openList.classList.remove('tl-dropdown__list--open');
+        (trigger as HTMLElement | null)?.focus();
+        return;
+      }
+      if (nextIdx < 0) {
+        (trigger as HTMLElement | null)?.focus();
+        return;
+      }
+      focusOption(nextIdx);
+      return;
+    }
+
+    /* Escape = close */
     if (e.key === 'Escape') {
       e.preventDefault();
-      if (openTrigger) openTrigger.setAttribute('aria-expanded', 'false');
-      (openTrigger as HTMLElement | null)?.focus();
+      openList.classList.remove('tl-dropdown__list--open');
+      (trigger as HTMLElement | null)?.focus();
     }
   };
 
@@ -153,71 +115,32 @@ export function initDropdownKeyboard() {
     if (!list) return;
 
     const isDropUp = root?.classList.contains('tl-dropdown--dropup');
-    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
-    const options = Array.from(list.querySelectorAll('.tl-dropdown__option')).filter((option) => {
-      const el = option as HTMLElement;
-      return !el.classList.contains('tl-dropdown__option--disabled') && el.style.display !== 'none';
-    });
+    const options = Array.from(
+      list.querySelectorAll('.tl-dropdown__option.tl-dropdown__option--visible'),
+    ).filter((li) => !li.classList.contains('tl-dropdown__option--disabled'));
 
     if (!options.length) return;
 
-    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isOpen) {
+    if (
+      (e.key === 'ArrowDown' || e.key === 'ArrowUp') &&
+      !list.classList.contains('tl-dropdown__list--open')
+    ) {
       e.preventDefault();
-      (trigger as HTMLElement).setAttribute('aria-expanded', 'true');
-      const firstIndex = isDropUp ? options.length - 1 : 0;
-      (options[firstIndex] as HTMLElement).focus();
-    }
-  };
+      list.classList.add('tl-dropdown__list--open');
 
-  const handleClearButtonKeydown = (e: KeyboardEvent) => {
-    const target = e.target as HTMLElement;
-    if (!target.classList.contains('tl-dropdown__input-clear')) return;
-
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      e.stopPropagation();
-      target.click();
-    }
-
-    if (e.key === 'Tab' && e.shiftKey) {
-      const root = target.closest('.tl-dropdown');
-      const list = root?.querySelector('.tl-dropdown__list');
-
-      if (list) {
-        const options = Array.from(list.querySelectorAll('.tl-dropdown__option')).filter(
-          (option) => {
-            const el = option as HTMLElement;
-            return (
-              !el.classList.contains('tl-dropdown__option--disabled') &&
-              !el.classList.contains('tl-dropdown__option--no-result') &&
-              el.style.display !== 'none'
-            );
-          },
-        );
-
-        if (options.length > 0) {
-          e.preventDefault();
-          (options[options.length - 1] as HTMLElement).focus();
-        }
+      let firstIdx = 0;
+      if (isDropUp) {
+        firstIdx = options.length - 1;
       }
-    }
-  };
 
-  const handleClearButtonFocus = (e: FocusEvent) => {
-    const target = e.target as HTMLElement;
-    if (!target.classList.contains('tl-dropdown__input-clear')) return;
-
-    const input = target
-      .closest('.tl-dropdown__input-wrapper')
-      ?.querySelector('.tl-dropdown__input') as HTMLInputElement;
-    if (input) {
-      input.setAttribute('aria-expanded', 'true');
+      options.forEach((opt, i) => {
+        (opt as HTMLElement).setAttribute('tabindex', i === firstIdx ? '0' : '-1');
+      });
+      (options[firstIdx] as HTMLElement).focus();
     }
   };
 
   document.addEventListener('keydown', handleOpenListKeydown);
   document.addEventListener('keydown', handleTriggerKeydown);
-  document.addEventListener('keydown', handleClearButtonKeydown);
-  document.addEventListener('focus', handleClearButtonFocus, true);
 }
