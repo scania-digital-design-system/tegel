@@ -149,12 +149,6 @@ jobs:
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: npm run build
 
-      ## Consider to remove this step after bumping stencil
-      - name: Core - Run build 2
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-        run: npm run build
-        ##
-
       - name: Core - Pack tarball (dry run only)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         id: pack
