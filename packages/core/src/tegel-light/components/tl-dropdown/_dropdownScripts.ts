@@ -95,6 +95,84 @@ function setupClearButton(clearButton: HTMLButtonElement | null, callback: () =>
   });
 }
 
+function createUpdateClearButtonTabindex(
+  input: HTMLInputElement,
+  clearButton: HTMLButtonElement | null,
+) {
+  return () => {
+    const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
+    clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
+  };
+}
+
+function setupInputEvents(
+  input: HTMLInputElement,
+  openDropdown: () => void,
+  filterOptions: () => void,
+  updateClearButtonTabindex: () => void,
+  getInitialValue?: () => string,
+) {
+  input.addEventListener('focus', () => {
+    openDropdown();
+    const initialValue = getInitialValue?.();
+    if (initialValue) input.value = '';
+    filterOptions();
+    updateClearButtonTabindex();
+  });
+
+  input.addEventListener('input', () => {
+    filterOptions();
+    updateClearButtonTabindex();
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') updateClearButtonTabindex();
+  });
+}
+
+function setupListClickHandler(
+  list: HTMLElement,
+  selector: string,
+  callback: (option: HTMLElement) => void,
+  preventDefault = false,
+) {
+  list.addEventListener('click', (e) => {
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(selector);
+    if (clickedOption) {
+      if (preventDefault) e.preventDefault();
+      callback(clickedOption);
+    }
+  });
+}
+
+function createCheckboxToggleHandler(updateDisplay: () => void) {
+  return (option: HTMLElement) => {
+    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      checkbox.checked = !checkbox.checked;
+      option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+      updateDisplay();
+
+      const changeEvent = new Event('change', { bubbles: true });
+      checkbox.dispatchEvent(changeEvent);
+    }
+  };
+}
+
+function setupButtonDropdownEvents(
+  button: HTMLElement,
+  toggleDropdown: () => void,
+  root: HTMLElement,
+  closeDropdown: () => void,
+) {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown();
+  });
+
+  setupClickOutside(root, closeDropdown);
+}
+
 export function tlDropdownSingleScript(menuId: string): void {
   const list = document.getElementById(menuId);
   if (!list) return;
@@ -121,19 +199,13 @@ export function tlDropdownSingleScript(menuId: string): void {
     button.focus();
   };
 
-  button.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDropdown();
-  });
+  setupButtonDropdownEvents(button, toggleDropdown, root, closeDropdown);
 
-  setupClickOutside(root, closeDropdown);
-
-  list.addEventListener('click', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    );
-    if (clickedOption) selectOption(clickedOption);
-  });
+  setupListClickHandler(
+    list,
+    '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    selectOption,
+  );
 
   list.addEventListener('keydown', (e) =>
     handleKeyboardSelection(
@@ -162,34 +234,16 @@ export function tlDropdownMultiScript(menuId: string): void {
     if (textDisplay) textDisplay.textContent = getSelectedCheckboxLabels(list);
   };
 
-  const handleOptionToggle = (option: HTMLElement) => {
-    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      checkbox.checked = !checkbox.checked;
-      option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
-      updateDisplay();
+  const handleOptionToggle = createCheckboxToggleHandler(updateDisplay);
 
-      const changeEvent = new Event('change', { bubbles: true });
-      checkbox.dispatchEvent(changeEvent);
-    }
-  };
+  setupButtonDropdownEvents(button, toggleDropdown, root, closeDropdown);
 
-  button.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDropdown();
-  });
-
-  setupClickOutside(root, closeDropdown);
-
-  list.addEventListener('click', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    );
-    if (clickedOption) {
-      e.preventDefault();
-      handleOptionToggle(clickedOption);
-    }
-  });
+  setupListClickHandler(
+    list,
+    '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    handleOptionToggle,
+    true,
+  );
 
   list.addEventListener('keydown', (e) =>
     handleKeyboardSelection(
@@ -226,10 +280,7 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
   const closeDropdown = createCloseDropdown(input);
 
-  const updateClearButtonTabindex = () => {
-    const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
-    clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
-  };
+  const updateClearButtonTabindex = createUpdateClearButtonTabindex(input, clearButton);
 
   const filterOptions = () => {
     const searchQuery = input.value.toLowerCase().trim();
@@ -269,32 +320,20 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
 
   setupClearButton(clearButton, handleClearButton);
   setupInputWrapperToggle(inputWrapper, input, openDropdown, closeDropdown, filterOptions);
+  setupInputEvents(
+    input,
+    openDropdown,
+    filterOptions,
+    updateClearButtonTabindex,
+    () => selectedValue,
+  );
 
-  input.addEventListener('focus', () => {
-    openDropdown();
-    if (selectedValue) input.value = '';
-    filterOptions();
-    updateClearButtonTabindex();
-  });
-
-  input.addEventListener('input', () => {
-    filterOptions();
-    updateClearButtonTabindex();
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') updateClearButtonTabindex();
-  });
-
-  list.addEventListener('click', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
-      '.tl-dropdown__option:not(.tl-dropdown__option--no-result):not(.tl-dropdown__option--disabled)',
-    );
-    if (clickedOption) {
-      e.preventDefault();
-      selectOption(clickedOption);
-    }
-  });
+  setupListClickHandler(
+    list,
+    '.tl-dropdown__option:not(.tl-dropdown__option--no-result):not(.tl-dropdown__option--disabled)',
+    selectOption,
+    true,
+  );
 
   root?.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {
@@ -330,10 +369,7 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
   const closeDropdown = createCloseDropdown(input);
 
-  const updateClearButtonTabindex = () => {
-    const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
-    clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
-  };
+  const updateClearButtonTabindex = createUpdateClearButtonTabindex(input, clearButton);
 
   const getSelectedValues = () => getSelectedCheckboxLabels(list);
 
@@ -362,47 +398,24 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
     updateClearButtonTabindex();
   };
 
-  const handleOptionToggle = (option: HTMLElement) => {
-    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      checkbox.checked = !checkbox.checked;
-      option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
-      updateDisplay();
-
-      const changeEvent = new Event('change', { bubbles: true });
-      checkbox.dispatchEvent(changeEvent);
-    }
-  };
+  const handleOptionToggle = createCheckboxToggleHandler(updateDisplay);
 
   setupClearButton(clearButton, handleClearButton);
   setupInputWrapperToggle(inputWrapper, input, openDropdown, closeDropdown, filterOptions);
+  setupInputEvents(
+    input,
+    openDropdown,
+    filterOptions,
+    updateClearButtonTabindex,
+    getSelectedValues,
+  );
 
-  input.addEventListener('focus', () => {
-    openDropdown();
-    const selectedText = getSelectedValues();
-    if (selectedText) input.value = '';
-    filterOptions();
-    updateClearButtonTabindex();
-  });
-
-  input.addEventListener('input', () => {
-    filterOptions();
-    updateClearButtonTabindex();
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') updateClearButtonTabindex();
-  });
-
-  list.addEventListener('click', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    );
-    if (clickedOption) {
-      e.preventDefault();
-      handleOptionToggle(clickedOption);
-    }
-  });
+  setupListClickHandler(
+    list,
+    '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    handleOptionToggle,
+    true,
+  );
 
   list.addEventListener('keydown', (e) =>
     handleKeyboardSelection(
