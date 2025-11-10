@@ -1,7 +1,45 @@
-// ============================================================================
-// Single-select button dropdown
-// Note: Requires additional SCSS for styling
-// ============================================================================
+function setupOptionTabindex(
+  container: HTMLElement,
+  selector = '.tl-dropdown__option',
+  disableCheckboxes = false,
+) {
+  container.querySelectorAll<HTMLElement>(selector).forEach((option) => {
+    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
+    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
+
+    if (disableCheckboxes) {
+      const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
+      if (checkbox) checkbox.setAttribute('tabindex', '-1');
+    }
+  });
+}
+
+function setupClickOutside(root: HTMLElement, closeCallback: () => void) {
+  document.addEventListener('click', (e) => {
+    if (!root.contains(e.target as Node)) closeCallback();
+  });
+
+  root.addEventListener('focusout', (e: FocusEvent) => {
+    setTimeout(() => {
+      if (!root.contains(e.relatedTarget as Node)) closeCallback();
+    }, 20);
+  });
+}
+
+function handleKeyboardSelection(
+  e: KeyboardEvent,
+  selector: string,
+  callback: (option: HTMLElement) => void,
+) {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const focusedOption = document.activeElement?.closest<HTMLElement>(selector);
+    if (focusedOption) {
+      e.preventDefault();
+      callback(focusedOption);
+    }
+  }
+}
+
 export function tlDropdownSingleScript(menuId: string): void {
   const list = document.getElementById(menuId);
   if (!list) return;
@@ -11,19 +49,14 @@ export function tlDropdownSingleScript(menuId: string): void {
   const textDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__text');
   if (!root || !button) return;
 
-  list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((option) => {
-    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
-    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
-  });
+  setupOptionTabindex(list);
 
   const toggleDropdown = () => {
     const isOpen = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
   };
 
-  const closeDropdown = () => {
-    button.setAttribute('aria-expanded', 'false');
-  };
+  const closeDropdown = () => button.setAttribute('aria-expanded', 'false');
 
   const selectOption = (selectedOption: HTMLElement) => {
     list.querySelectorAll('.tl-dropdown__option').forEach((option) => {
@@ -42,15 +75,7 @@ export function tlDropdownSingleScript(menuId: string): void {
     toggleDropdown();
   });
 
-  document.addEventListener('click', (e) => {
-    if (!root.contains(e.target as Node)) closeDropdown();
-  });
-
-  root.addEventListener('focusout', (e: FocusEvent) => {
-    setTimeout(() => {
-      if (!root.contains(e.relatedTarget as Node)) closeDropdown();
-    }, 20);
-  });
+  setupClickOutside(root, closeDropdown);
 
   list.addEventListener('click', (e) => {
     const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
@@ -59,18 +84,13 @@ export function tlDropdownSingleScript(menuId: string): void {
     if (clickedOption) selectOption(clickedOption);
   });
 
-  list.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const focusedOption = document.activeElement?.closest<HTMLElement>(
-        '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-      );
-      if (focusedOption) {
-        e.preventDefault();
-        selectOption(focusedOption);
-        closeDropdown();
-      }
-    }
-  });
+  list.addEventListener('keydown', (e) =>
+    handleKeyboardSelection(
+      e,
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+      selectOption,
+    ),
+  );
 }
 
 export function tlDropdownMultiScript(menuId: string): void {
@@ -82,24 +102,14 @@ export function tlDropdownMultiScript(menuId: string): void {
   const textDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__text');
   if (!root || !button) return;
 
-  list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((option) => {
-    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
-    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
-
-    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      checkbox.setAttribute('tabindex', '-1');
-    }
-  });
+  setupOptionTabindex(list, '.tl-dropdown__option', true);
 
   const toggleDropdown = () => {
     const isOpen = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
   };
 
-  const closeDropdown = () => {
-    button.setAttribute('aria-expanded', 'false');
-  };
+  const closeDropdown = () => button.setAttribute('aria-expanded', 'false');
 
   const updateDisplay = () => {
     const selectedLabels = Array.from(
@@ -133,15 +143,7 @@ export function tlDropdownMultiScript(menuId: string): void {
     toggleDropdown();
   });
 
-  document.addEventListener('click', (e) => {
-    if (!root.contains(e.target as Node)) closeDropdown();
-  });
-
-  root.addEventListener('focusout', (e: FocusEvent) => {
-    setTimeout(() => {
-      if (!root.contains(e.relatedTarget as Node)) closeDropdown();
-    }, 20);
-  });
+  setupClickOutside(root, closeDropdown);
 
   list.addEventListener('click', (e) => {
     const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
@@ -153,23 +155,15 @@ export function tlDropdownMultiScript(menuId: string): void {
     }
   });
 
-  list.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const focusedOption = document.activeElement?.closest<HTMLElement>(
-        '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-      );
-      if (focusedOption) {
-        e.preventDefault();
-        handleOptionToggle(focusedOption);
-      }
-    }
-  });
+  list.addEventListener('keydown', (e) =>
+    handleKeyboardSelection(
+      e,
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+      handleOptionToggle,
+    ),
+  );
 }
 
-// ============================================================================
-// Single-select filter dropdown
-// Note: Requires additional SCSS for styling
-// ============================================================================
 export function tlDropdownFilterSingleScript(listId: string, inputId: string): void {
   const list = document.getElementById(listId) as HTMLElement | null;
   const input = document.getElementById(inputId) as HTMLInputElement | null;
@@ -188,13 +182,8 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     list.querySelectorAll<HTMLElement>('.tl-dropdown__option:not(.tl-dropdown__option--no-result)'),
   );
 
-  options.forEach((option) => {
-    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
-    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
-  });
-  if (noResultMessage) {
-    noResultMessage.setAttribute('tabindex', '-1');
-  }
+  setupOptionTabindex(list, '.tl-dropdown__option:not(.tl-dropdown__option--no-result)');
+  if (noResultMessage) noResultMessage.setAttribute('tabindex', '-1');
 
   let selectedValue = '';
 
@@ -279,9 +268,7 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
   });
 
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-      updateClearButtonTabindex();
-    }
+    if (e.key === 'Tab') updateClearButtonTabindex();
   });
 
   list.addEventListener('click', (e) => {
@@ -310,10 +297,6 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
   updateClearButtonTabindex();
 }
 
-// ============================================================================
-// Multi-select filter dropdown
-// Note: Requires additional SCSS for styling (tl-checkbox)
-// ============================================================================
 export function tlDropdownFilterMultiScript(listId: string, inputId: string): void {
   const list = document.getElementById(listId) as HTMLElement | null;
   const input = document.getElementById(inputId) as HTMLInputElement | null;
@@ -327,15 +310,7 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
 
   const options = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option'));
 
-  options.forEach((option) => {
-    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
-    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
-
-    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      checkbox.setAttribute('tabindex', '-1');
-    }
-  });
+  setupOptionTabindex(list, '.tl-dropdown__option', true);
 
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
   const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
@@ -434,9 +409,7 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
   });
 
   input.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') {
-      updateClearButtonTabindex();
-    }
+    if (e.key === 'Tab') updateClearButtonTabindex();
   });
 
   list.addEventListener('click', (e) => {
@@ -449,17 +422,13 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
     }
   });
 
-  list.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      const focusedOption = document.activeElement?.closest<HTMLElement>(
-        '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-      );
-      if (focusedOption) {
-        e.preventDefault();
-        handleOptionToggle(focusedOption);
-      }
-    }
-  });
+  list.addEventListener('keydown', (e) =>
+    handleKeyboardSelection(
+      e,
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+      handleOptionToggle,
+    ),
+  );
 
   root?.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {

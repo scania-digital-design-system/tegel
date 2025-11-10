@@ -571,6 +571,7 @@
   white-space: nowrap;
   max-width: calc(100% - 52px);
   position: relative;
+  top: 1px;
 
   &:empty::before {
     content: attr(data-placeholder);
