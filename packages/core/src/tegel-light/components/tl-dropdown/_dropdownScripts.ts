@@ -1,77 +1,227 @@
-function setupOptionTabindex(
-  container: HTMLElement,
-  selector = '.tl-dropdown__option',
-  disableCheckboxes = false,
-) {
-  container.querySelectorAll<HTMLElement>(selector).forEach((option) => {
-    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
-    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
+// ============================================================================
+// Single-select button dropdown
+// Note: Requires additional SCSS for styling
+// ============================================================================
+export function tlDropdownSingleScript(menuId: string): void {
+  const list = document.getElementById(menuId);
+  if (!list) return;
 
-    if (disableCheckboxes) {
-      const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
-      if (checkbox) checkbox.setAttribute('tabindex', '-1');
-    }
+  const root = list.closest('.tl-dropdown') as HTMLElement | null;
+  const button = root?.querySelector<HTMLElement>('.tl-dropdown__button');
+  const valueDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__button-value');
+  if (!root || !button) return;
+
+  // State management
+  const toggleDropdown = () => {
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  };
+
+  const closeDropdown = () => {
+    button.setAttribute('aria-expanded', 'false');
+  };
+
+  const selectOption = (selectedOption: HTMLElement) => {
+    list.querySelectorAll('.tl-dropdown__option').forEach((option) => {
+      option.classList.remove('tl-dropdown__option--selected');
+    });
+
+    selectedOption.classList.add('tl-dropdown__option--selected');
+
+    if (valueDisplay) valueDisplay.textContent = selectedOption.textContent?.trim() || '';
+
+    closeDropdown();
+    button.focus();
+  };
+
+  // Event listeners
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown();
   });
-}
 
-function setupClickOutside(root: HTMLElement, closeCallback: () => void) {
   document.addEventListener('click', (e) => {
-    if (!root.contains(e.target as Node)) closeCallback();
+    if (!root.contains(e.target as Node)) closeDropdown();
   });
 
   root.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {
-      if (!root.contains(e.relatedTarget as Node)) closeCallback();
+      if (!root.contains(e.relatedTarget as Node)) closeDropdown();
     }, 20);
+  });
+
+  list.addEventListener('mousedown', (e) => {
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    );
+    if (clickedOption) {
+      e.preventDefault();
+      selectOption(clickedOption);
+    }
+  });
+
+  list.addEventListener('click', (e) => {
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    );
+    if (clickedOption) selectOption(clickedOption);
   });
 }
 
-function handleKeyboardSelection(
-  e: KeyboardEvent,
-  selector: string,
-  callback: (option: HTMLElement) => void,
-) {
-  if (e.key === 'Enter' || e.key === ' ') {
-    const focusedOption = document.activeElement?.closest<HTMLElement>(selector);
-    if (focusedOption) {
-      e.preventDefault();
-      callback(focusedOption);
-    }
-  }
-}
+// ============================================================================
+// Multi-select button dropdown
+// Note: Requires additional SCSS for styling (tl-checkbox)
+// ============================================================================
+export function tlDropdownMultiScript(menuId: string): void {
+  const list = document.getElementById(menuId);
+  if (!list) return;
 
-function createToggleDropdown(trigger: HTMLElement) {
-  return () => {
-    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-    trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  const root = list.closest('.tl-dropdown') as HTMLElement | null;
+  const button = root?.querySelector<HTMLElement>('.tl-dropdown__button');
+  const valueDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__button-value');
+  if (!root || !button) return;
+
+  // State management
+  const toggleDropdown = () => {
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
   };
+
+  const closeDropdown = () => {
+    button.setAttribute('aria-expanded', 'false');
+  };
+
+  const updateDisplay = () => {
+    const selectedLabels = Array.from(
+      list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'),
+    )
+      .map((checkbox) => {
+        const label = checkbox
+          .closest('.tl-dropdown__option')
+          ?.querySelector('.tl-checkbox__label');
+        return label?.textContent?.trim() || '';
+      })
+      .filter(Boolean);
+
+    if (valueDisplay) valueDisplay.textContent = selectedLabels.join(', ');
+  };
+
+  // Event listeners
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!root.contains(e.target as Node)) closeDropdown();
+  });
+
+  root.addEventListener('focusout', (e: FocusEvent) => {
+    setTimeout(() => {
+      if (!root.contains(e.relatedTarget as Node)) closeDropdown();
+    }, 20);
+  });
+
+  list.addEventListener('mousedown', (e) => {
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    );
+    const checkbox = clickedOption?.querySelector<HTMLInputElement>('.tl-checkbox__input');
+
+    if (checkbox) {
+      e.preventDefault();
+      checkbox.checked = !checkbox.checked;
+      clickedOption.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+      updateDisplay();
+    }
+  });
+
+  list.addEventListener('click', (e) => {
+    const checkbox = (e.target as HTMLElement).closest<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      e.stopPropagation();
+      updateDisplay();
+    }
+  });
 }
 
-function createCloseDropdown(trigger: HTMLElement) {
-  return () => trigger.setAttribute('aria-expanded', 'false');
-}
+// ============================================================================
+// Single-select filter dropdown
+// Note: Requires additional SCSS for styling
+// ============================================================================
+export function tlDropdownFilterSingleScript(listId: string, inputId: string): void {
+  // Get elements
+  const list = document.getElementById(listId) as HTMLElement | null;
+  const input = document.getElementById(inputId) as HTMLInputElement | null;
+  if (!list || !input) return;
 
-function getSelectedCheckboxLabels(container: HTMLElement): string {
-  return Array.from(container.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'))
-    .map((checkbox) => {
-      const label = checkbox.closest('.tl-dropdown__option')?.querySelector('.tl-checkbox__label');
-      return label?.textContent?.trim() || '';
-    })
-    .filter(Boolean)
-    .join(', ');
-}
+  const root = list.closest('.tl-dropdown') as HTMLElement | null;
+  const chevron = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
+  const clearButton = input.parentElement?.querySelector(
+    '.tl-dropdown__input-clear',
+  ) as HTMLElement | null;
+  const noResultMessage = list.querySelector(
+    '.tl-dropdown__option--no-result',
+  ) as HTMLElement | null;
+  const options = Array.from(
+    list.querySelectorAll<HTMLElement>('.tl-dropdown__option:not(.tl-dropdown__option--no-result)'),
+  );
 
-function setupInputWrapperToggle(
-  inputWrapper: HTMLElement | null,
-  input: HTMLInputElement,
-  openDropdown: () => void,
-  closeDropdown: () => void,
-  filterOptions: () => void,
-) {
-  inputWrapper?.addEventListener('mousedown', (e) => {
-    const target = e.target as HTMLElement;
-    if (target === input || target.closest('.tl-dropdown__input-clear') || input.disabled) return;
+  // State
+  let selectedValue = '';
 
+  // Helper functions
+  const openDropdown = () => input.setAttribute('aria-expanded', 'true');
+  const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
+
+  const updateClearButtonState = () => {
+    const hasContent = input.value.trim() || selectedValue;
+    const isVisible = clearButton?.offsetParent !== null;
+    clearButton?.setAttribute('tabindex', isVisible && hasContent ? '0' : '-1');
+  };
+
+  const filterOptions = () => {
+    const searchQuery = input.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    options.forEach((option) => {
+      const optionText = option.textContent?.trim() || '';
+      const isVisible = !searchQuery || optionText.toLowerCase().includes(searchQuery);
+      option.classList.toggle('tl-dropdown__option--visible', isVisible);
+      if (isVisible) visibleCount++;
+    });
+
+    // Show "no results" message if searching with no matches
+    const showNoResults = !!searchQuery && visibleCount === 0;
+    noResultMessage?.classList.toggle('tl-dropdown__option--visible', showNoResults);
+  };
+
+  const selectOption = (selectedOption: HTMLElement) => {
+    options.forEach((option) => {
+      option.classList.remove('tl-dropdown__option--selected');
+    });
+
+    selectedOption.classList.add('tl-dropdown__option--selected');
+
+    selectedValue = selectedOption.textContent?.trim() || '';
+    input.value = selectedValue;
+    updateClearButtonState();
+    input.blur();
+  };
+
+  // Event listeners - Clear button
+  clearButton?.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    selectedValue = '';
+    input.value = '';
+    input.focus();
+    filterOptions();
+    updateClearButtonState();
+  });
+
+  // Event listeners - Chevron
+  chevron?.addEventListener('mousedown', (e) => {
     e.preventDefault();
     e.stopPropagation();
     const isOpen = input.getAttribute('aria-expanded') === 'true';
@@ -85,309 +235,103 @@ function setupInputWrapperToggle(
       filterOptions();
     }
   });
-}
 
-function setupClearButton(clearButton: HTMLButtonElement | null, callback: () => void) {
-  clearButton?.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    callback();
-  });
-}
-
-function createUpdateClearButtonTabindex(
-  input: HTMLInputElement,
-  clearButton: HTMLButtonElement | null,
-) {
-  return () => {
-    const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
-    clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
-  };
-}
-
-function setupInputEvents(
-  input: HTMLInputElement,
-  openDropdown: () => void,
-  filterOptions: () => void,
-  updateClearButtonTabindex: () => void,
-  getInitialValue?: () => string,
-) {
+  // Event listeners - Input
   input.addEventListener('focus', () => {
     openDropdown();
-    const initialValue = getInitialValue?.();
-    if (initialValue) input.value = '';
+    if (selectedValue) input.value = ''; // Clear to allow filtering
     filterOptions();
-    updateClearButtonTabindex();
+    updateClearButtonState();
   });
 
   input.addEventListener('input', () => {
     filterOptions();
-    updateClearButtonTabindex();
+    updateClearButtonState();
   });
 
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Tab') updateClearButtonTabindex();
-  });
-}
-
-function setupListClickHandler(
-  list: HTMLElement,
-  selector: string,
-  callback: (option: HTMLElement) => void,
-  preventDefault = false,
-) {
-  list.addEventListener('click', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(selector);
+  // Event listeners - Options
+  list.addEventListener('mousedown', (e) => {
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
+      '.tl-dropdown__option:not(.tl-dropdown__option--no-result):not(.tl-dropdown__option--disabled)',
+    );
     if (clickedOption) {
-      if (preventDefault) e.preventDefault();
-      callback(clickedOption);
+      e.preventDefault();
+      selectOption(clickedOption);
     }
   });
-}
 
-function createCheckboxToggleHandler(updateDisplay: () => void) {
-  return (option: HTMLElement) => {
-    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      checkbox.checked = !checkbox.checked;
-      option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
-      updateDisplay();
-
-      const changeEvent = new Event('change', { bubbles: true });
-      checkbox.dispatchEvent(changeEvent);
-    }
-  };
-}
-
-function setupButtonDropdownEvents(
-  button: HTMLElement,
-  toggleDropdown: () => void,
-  root: HTMLElement,
-  closeDropdown: () => void,
-) {
-  button.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDropdown();
-  });
-
-  setupClickOutside(root, closeDropdown);
-}
-
-export function tlDropdownSingleScriptDemo(menuId: string): void {
-  const list = document.getElementById(menuId);
-  if (!list) return;
-
-  const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const button = root?.querySelector<HTMLElement>('.tl-dropdown__button');
-  const textDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__text');
-  if (!root || !button) return;
-
-  setupOptionTabindex(list);
-
-  const toggleDropdown = createToggleDropdown(button);
-  const closeDropdown = createCloseDropdown(button);
-
-  const selectOption = (selectedOption: HTMLElement) => {
-    list.querySelectorAll('.tl-dropdown__option').forEach((option) => {
-      option.classList.remove('tl-dropdown__option--selected');
-    });
-
-    selectedOption.classList.add('tl-dropdown__option--selected');
-    if (textDisplay) textDisplay.textContent = selectedOption.textContent?.trim() || '';
-
-    closeDropdown();
-    button.focus();
-  };
-
-  setupButtonDropdownEvents(button, toggleDropdown, root, closeDropdown);
-
-  setupListClickHandler(
-    list,
-    '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    selectOption,
-  );
-
-  list.addEventListener('keydown', (e) =>
-    handleKeyboardSelection(
-      e,
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-      selectOption,
-    ),
-  );
-}
-
-export function tlDropdownMultiScriptDemo(menuId: string): void {
-  const list = document.getElementById(menuId);
-  if (!list) return;
-
-  const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const button = root?.querySelector<HTMLElement>('.tl-dropdown__button');
-  const textDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__text');
-  if (!root || !button) return;
-
-  setupOptionTabindex(list, '.tl-dropdown__option', true);
-
-  const toggleDropdown = createToggleDropdown(button);
-  const closeDropdown = createCloseDropdown(button);
-
-  const updateDisplay = () => {
-    if (textDisplay) textDisplay.textContent = getSelectedCheckboxLabels(list);
-  };
-
-  const handleOptionToggle = createCheckboxToggleHandler(updateDisplay);
-
-  setupButtonDropdownEvents(button, toggleDropdown, root, closeDropdown);
-
-  setupListClickHandler(
-    list,
-    '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    handleOptionToggle,
-    true,
-  );
-
-  list.addEventListener('keydown', (e) =>
-    handleKeyboardSelection(
-      e,
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-      handleOptionToggle,
-    ),
-  );
-}
-
-export function tlDropdownFilterSingleScriptDemo(listId: string, inputId: string): void {
-  const list = document.getElementById(listId) as HTMLElement | null;
-  const input = document.getElementById(inputId) as HTMLInputElement | null;
-  if (!list || !input) return;
-
-  const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const inputWrapper = input.parentElement;
-  const clearButton = inputWrapper?.querySelector(
-    '.tl-dropdown__input-clear',
-  ) as HTMLButtonElement | null;
-
-  const noResultMessage = list.querySelector(
-    '.tl-dropdown__option--no-result',
-  ) as HTMLElement | null;
-  const options = Array.from(
-    list.querySelectorAll<HTMLElement>('.tl-dropdown__option:not(.tl-dropdown__option--no-result)'),
-  );
-
-  setupOptionTabindex(list, '.tl-dropdown__option:not(.tl-dropdown__option--no-result)');
-  if (noResultMessage) noResultMessage.setAttribute('tabindex', '-1');
-
-  let selectedValue = '';
-
-  const openDropdown = () => input.setAttribute('aria-expanded', 'true');
-  const closeDropdown = createCloseDropdown(input);
-
-  const updateClearButtonTabindex = createUpdateClearButtonTabindex(input, clearButton);
-
-  const filterOptions = () => {
-    const searchQuery = input.value.toLowerCase().trim();
-    let visibleCount = 0;
-
-    options.forEach((option) => {
-      const optionText = option.textContent?.trim() || '';
-      const isVisible = !searchQuery || optionText.toLowerCase().includes(searchQuery);
-      option.style.display = isVisible ? '' : 'none';
-      if (isVisible) visibleCount++;
-    });
-
-    const showNoResults = !!searchQuery && visibleCount === 0;
-    if (noResultMessage) {
-      noResultMessage.style.display = showNoResults ? '' : 'none';
-    }
-  };
-
-  const selectOption = (selectedOption: HTMLElement) => {
-    options.forEach((option) => {
-      option.classList.remove('tl-dropdown__option--selected');
-    });
-
-    selectedOption.classList.add('tl-dropdown__option--selected');
-    selectedValue = selectedOption.textContent?.trim() || '';
-    input.value = selectedValue;
-    input.blur();
-  };
-
-  const handleClearButton = () => {
-    selectedValue = '';
-    input.value = '';
-    input.focus();
-    filterOptions();
-    updateClearButtonTabindex();
-  };
-
-  setupClearButton(clearButton, handleClearButton);
-  setupInputWrapperToggle(inputWrapper, input, openDropdown, closeDropdown, filterOptions);
-  setupInputEvents(
-    input,
-    openDropdown,
-    filterOptions,
-    updateClearButtonTabindex,
-    () => selectedValue,
-  );
-
-  setupListClickHandler(
-    list,
-    '.tl-dropdown__option:not(.tl-dropdown__option--no-result):not(.tl-dropdown__option--disabled)',
-    selectOption,
-    true,
-  );
-
+  // Event listeners - Focus management
   root?.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {
       const newFocus = (e.relatedTarget as Node) || document.activeElement;
-      const isClearButton = clearButton && newFocus === clearButton;
-
-      if (!root.contains(newFocus) && !isClearButton) {
+      if (!root.contains(newFocus)) {
         closeDropdown();
-        if (selectedValue) input.value = selectedValue;
+        if (selectedValue) input.value = selectedValue; // Restore selected value
+        updateClearButtonState();
       }
     }, 20);
   });
 
+  // Initialize
   filterOptions();
-  updateClearButtonTabindex();
 }
 
-export function tlDropdownFilterMultiScriptDemo(listId: string, inputId: string): void {
+// ============================================================================
+// Multi-select filter dropdown
+// Note: Requires additional SCSS for styling (tl-checkbox)
+// ============================================================================
+export function tlDropdownFilterMultiScript(listId: string, inputId: string): void {
   const list = document.getElementById(listId) as HTMLElement | null;
   const input = document.getElementById(inputId) as HTMLInputElement | null;
   if (!list || !input) return;
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const inputWrapper = input.parentElement;
-  const clearButton = inputWrapper?.querySelector(
+  const chevron = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
+  const clearButton = input.parentElement?.querySelector(
     '.tl-dropdown__input-clear',
-  ) as HTMLButtonElement | null;
-
+  ) as HTMLElement | null;
   const options = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option'));
 
-  setupOptionTabindex(list, '.tl-dropdown__option', true);
-
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
-  const closeDropdown = createCloseDropdown(input);
+  const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
 
-  const updateClearButtonTabindex = createUpdateClearButtonTabindex(input, clearButton);
+  const getSelectedValues = () => {
+    const selectedLabels = Array.from(
+      list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'),
+    )
+      .map((checkbox) => {
+        const label = checkbox
+          .closest('.tl-dropdown__option')
+          ?.querySelector('.tl-checkbox__label');
+        return label?.textContent?.trim() || '';
+      })
+      .filter(Boolean);
+    return selectedLabels.join(', ');
+  };
 
-  const getSelectedValues = () => getSelectedCheckboxLabels(list);
+  const updateClearButtonState = () => {
+    const hasContent = input.value.trim() || getSelectedValues();
+    const isVisible = clearButton?.offsetParent !== null;
+    clearButton?.setAttribute('tabindex', isVisible && hasContent ? '0' : '-1');
+  };
 
   const filterOptions = () => {
     const searchQuery = input.value.toLowerCase().trim();
     options.forEach((option) => {
       const optionText = option.textContent?.trim() || '';
       const isVisible = !searchQuery || optionText.toLowerCase().includes(searchQuery);
-      option.style.display = isVisible ? '' : 'none';
+      option.classList.toggle('tl-dropdown__option--visible', isVisible);
     });
   };
 
   const updateDisplay = () => {
     input.value = getSelectedValues();
-    updateClearButtonTabindex();
+    updateClearButtonState();
   };
 
-  const handleClearButton = () => {
+  clearButton?.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked').forEach((cb) => {
       cb.checked = false;
       cb.closest('.tl-dropdown__option')?.classList.remove('tl-dropdown__option--selected');
@@ -395,48 +339,69 @@ export function tlDropdownFilterMultiScriptDemo(listId: string, inputId: string)
     input.value = '';
     input.focus();
     filterOptions();
-    updateClearButtonTabindex();
-  };
+    updateClearButtonState();
+  });
 
-  const handleOptionToggle = createCheckboxToggleHandler(updateDisplay);
+  chevron?.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const isOpen = input.getAttribute('aria-expanded') === 'true';
 
-  setupClearButton(clearButton, handleClearButton);
-  setupInputWrapperToggle(inputWrapper, input, openDropdown, closeDropdown, filterOptions);
-  setupInputEvents(
-    input,
-    openDropdown,
-    filterOptions,
-    updateClearButtonTabindex,
-    getSelectedValues,
-  );
+    if (isOpen) {
+      closeDropdown();
+      input.blur();
+    } else {
+      openDropdown();
+      input.focus();
+      filterOptions();
+    }
+  });
 
-  setupListClickHandler(
-    list,
-    '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    handleOptionToggle,
-    true,
-  );
+  input.addEventListener('focus', () => {
+    openDropdown();
+    const selectedText = getSelectedValues();
+    if (selectedText) input.value = '';
+    filterOptions();
+    updateClearButtonState();
+  });
 
-  list.addEventListener('keydown', (e) =>
-    handleKeyboardSelection(
-      e,
+  input.addEventListener('input', () => {
+    filterOptions();
+    updateClearButtonState();
+  });
+
+  list.addEventListener('mousedown', (e) => {
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
       '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-      handleOptionToggle,
-    ),
-  );
+    );
+    const checkbox = clickedOption?.querySelector<HTMLInputElement>('.tl-checkbox__input');
+
+    if (checkbox) {
+      e.preventDefault();
+      checkbox.checked = !checkbox.checked;
+      clickedOption.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+      updateDisplay();
+    }
+  });
+
+  list.addEventListener('click', (e) => {
+    const checkbox = (e.target as HTMLElement).closest<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      e.stopPropagation();
+      updateDisplay();
+    }
+  });
 
   root?.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {
       const newFocus = (e.relatedTarget as Node) || document.activeElement;
-      const isClearButton = clearButton && newFocus === clearButton;
-
-      if (!root.contains(newFocus) && !isClearButton) {
+      if (!root.contains(newFocus)) {
         closeDropdown();
         input.value = getSelectedValues();
+        updateClearButtonState();
       }
     }, 20);
   });
 
   filterOptions();
-  updateClearButtonTabindex();
 }
