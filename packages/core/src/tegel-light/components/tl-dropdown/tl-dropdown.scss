@@ -212,12 +212,10 @@
   .tl-dropdown--disabled & {
     color: var(--dropdown-disabled);
   }
-}
 
-.tl-dropdown__chevron--rotated {
-  transform: translateY(-50%) rotate(180deg);
-  transform-origin: center;
-  cursor: pointer;
+  .tl-dropdown:has(.tl-dropdown__list--open) & {
+    transform: translateY(-50%) rotate(180deg);
+  }
 }
 
 .tl-dropdown:is(.tl-dropdown--label-inside, .tl-dropdown--no-label)

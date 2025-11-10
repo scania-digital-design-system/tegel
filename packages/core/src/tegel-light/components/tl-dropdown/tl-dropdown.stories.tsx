@@ -1,4 +1,9 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+import { initDropdownKeyboard } from './_dropdownKeyboard';
+
+if (typeof window !== 'undefined') {
+  requestAnimationFrame(() => initDropdownKeyboard());
+}
 
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'] as const;
 
@@ -13,107 +18,49 @@ const IDS = {
   filterList: 'tl-dropdown-filter-list',
 } as const;
 
-function dropdownSelectScript(selectId: string): void {
-  const select = document.getElementById(selectId) as HTMLSelectElement | null;
-  if (!select) {
-    return;
-  }
-
-  const root = select.closest('.tl-dropdown') as HTMLElement | null;
-  const chev = root?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
-  const setHasValue = () => root?.classList.toggle('tl-dropdown--has-value', !!select.value);
-
-  if (!select.hasAttribute('data-bound')) {
-    select.setAttribute('data-bound', '1');
-    select.addEventListener('change', setHasValue);
-    select.addEventListener('active', () => {
-      chev?.classList.add('tl-dropdown__chevron--rotated');
-    });
-    select.addEventListener('blur', () => {
-      chev?.classList.remove('tl-dropdown__chevron--rotated');
-    });
-  }
-  setHasValue();
-}
-
-function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string): void {
-  const list = document.getElementById(menuId) as HTMLElement | null;
-  if (!list) {
-    return;
-  }
+function dropdownSingleScript(menuId: string): void {
+  const list = document.getElementById(menuId);
+  if (!list) return;
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
   const btn = root?.querySelector<HTMLElement>(`[data-dropdown-toggle="${menuId}"]`);
-  const chev = root?.querySelector<HTMLElement>('.tl-dropdown__chevron');
   const valueSpan = root?.querySelector<HTMLElement>('.tl-dropdown__button-value');
   const placeholderSpan = root?.querySelector<HTMLElement>('.tl-dropdown__button-placeholder');
-  if (!root || !btn) {
-    return;
-  }
-
-  btn.id = controlId;
-  btn.setAttribute('aria-controls', menuId);
-  btn.setAttribute('aria-expanded', 'false');
+  if (!root || !btn) return;
 
   const setHasValue = (v: boolean) => root.classList.toggle('tl-dropdown--has-value', v);
   const open = () => {
     list.classList.add('tl-dropdown__list--open');
-    chev?.classList.add('tl-dropdown__chevron--rotated');
     btn.setAttribute('aria-expanded', 'true');
   };
   const close = () => {
     list.classList.remove('tl-dropdown__list--open');
-    chev?.classList.remove('tl-dropdown__chevron--rotated');
     btn.setAttribute('aria-expanded', 'false');
   };
 
-  const updateMulti = () => {
-    const checks = list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked');
-    const text = Array.from(checks)
-      .map((cb) => cb.closest('.tl-dropdown__option')?.getAttribute('data-value') || '')
-      .filter(Boolean)
-      .join(', ');
-
+  const chooseSingle = (opt: HTMLElement) => {
+    list.querySelectorAll('.tl-dropdown__option').forEach((o) => {
+      o.classList.remove('tl-dropdown__option--selected');
+      o.querySelector('.tl-icon--tick')?.classList.remove('tl-icon--tick--visible');
+    });
+    opt.classList.add('tl-dropdown__option--selected');
+    opt.querySelector('.tl-icon--tick')?.classList.add('tl-icon--tick--visible');
+    const text = (opt.dataset.value || opt.textContent || '').trim();
     if (valueSpan) {
       valueSpan.textContent = text;
-      valueSpan.classList.toggle('tl-dropdown__button-value--visible', !!text);
+      valueSpan.classList.add('tl-dropdown__button-value--visible');
     }
-    if (placeholderSpan) {
-      const showPlaceholder = !text;
-      placeholderSpan.classList.toggle('tl-dropdown__button-placeholder--visible', showPlaceholder);
-    }
+    placeholderSpan?.classList.remove('tl-dropdown__button-placeholder--visible');
     setHasValue(!!text);
+    close();
+    btn.focus();
   };
-
-  let chooseSingle: ((opt: HTMLElement) => void) | undefined;
-  if (!isMulti) {
-    chooseSingle = (opt: HTMLElement) => {
-      list.querySelectorAll('.tl-dropdown__option').forEach((o) => {
-        o.classList.remove('tl-dropdown__option--selected');
-        o.querySelector('.tl-icon--tick')?.classList.remove('tl-icon--tick--visible');
-      });
-      opt.classList.add('tl-dropdown__option--selected');
-      opt.querySelector('.tl-icon--tick')?.classList.add('tl-icon--tick--visible');
-      const text = (opt.getAttribute('data-value') || opt.textContent || '').trim();
-      if (valueSpan) {
-        valueSpan.textContent = text;
-        valueSpan.classList.add('tl-dropdown__button-value--visible');
-      }
-      if (placeholderSpan) {
-        placeholderSpan.classList.remove('tl-dropdown__button-placeholder--visible');
-      }
-      setHasValue(!!text);
-      close();
-      btn.focus();
-    };
-  }
 
   if (!btn.hasAttribute('data-bound')) {
     btn.setAttribute('data-bound', '1');
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const isOpen = list.classList.contains('tl-dropdown__list--open');
-      if (isOpen) {
+      if (list.classList.contains('tl-dropdown__list--open')) {
         close();
       } else {
         open();
@@ -127,236 +74,122 @@ function dropdownMenuScript(menuId: string, isMulti: boolean, controlId: string)
     }
   });
 
-  if (!list.hasAttribute('data-bound')) {
-    list.setAttribute('data-bound', '1');
-
-    const computeOrdered = () => {
-      const raw = Array.from(
-        list.querySelectorAll<HTMLElement>(
-          '.tl-dropdown__option.tl-dropdown__option--visible:not(.tl-dropdown__option--disabled)',
-        ),
-      );
-      const isDropUp = root?.classList.contains('tl-dropdown--dropup');
-      if (!isDropUp) return raw;
-      return raw.slice().reverse();
-    };
-
-    const focusByLinearIndex = (current: HTMLElement, forward: boolean, shift: boolean) => {
-      const ordered = computeOrdered();
-      const idx = ordered.findIndex((o) => o === current);
-      if (idx < 0) return false;
-      const nextIdx = shift ? idx - 1 : idx + 1;
-      if (forward) {
-        if (nextIdx >= ordered.length) return false;
-        ordered[nextIdx].focus();
-        return true;
-      }
-      if (nextIdx < 0) return false;
-      ordered[nextIdx].focus();
-      return true;
-    };
-
-    list.addEventListener('keydown', (e: KeyboardEvent) => {
-      const optionsDom = Array.from(
-        list.querySelectorAll<HTMLElement>(
-          '.tl-dropdown__option.tl-dropdown__option--visible:not(.tl-dropdown__option--disabled)',
-        ),
-      );
-      const active = document.activeElement as HTMLElement;
-      let idx = optionsDom.findIndex((el) => el === active);
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (optionsDom.length) {
-          idx = idx < 0 ? 0 : Math.min(idx + 1, optionsDom.length - 1);
-          optionsDom[idx].focus();
-        }
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (optionsDom.length) {
-          idx = idx < 0 ? optionsDom.length - 1 : Math.max(idx - 1, 0);
-          optionsDom[idx].focus();
-        }
-      } else if (e.key === 'Tab') {
-        const forward = !e.shiftKey;
-        e.preventDefault();
-        const moved = focusByLinearIndex(active, forward, e.shiftKey);
-        if (!moved) {
-          if (forward) {
-            close();
-            btn?.focus();
-          } else {
-            btn?.focus();
-          }
-        }
-      } else if (e.key === 'Escape') {
-        e.preventDefault();
-        close();
-        btn?.focus();
-      }
-    });
-
-    if (btn && !btn.hasAttribute('data-arrow-bound')) {
-      btn.setAttribute('data-arrow-bound', '1');
-      btn.addEventListener('keydown', (e) => {
-        const options = Array.from(
-          list.querySelectorAll<HTMLElement>(
-            '.tl-dropdown__option.tl-dropdown__option--visible:not(.tl-dropdown__option--disabled)',
-          ),
-        );
-        const isDropUp = root.classList.contains('tl-dropdown--dropup');
-        const lastIdx = options.length - 1;
-        const firstIdx = 0;
-        const ensureOpen = () => {
-          if (!list.classList.contains('tl-dropdown__list--open')) {
-            open();
-          }
-        };
-
-        if (
-          (e.key === 'ArrowDown' || e.key === 'ArrowUp') &&
-          !list.classList.contains('tl-dropdown__list--open') &&
-          options.length
-        ) {
-          e.preventDefault();
-          ensureOpen();
-          (isDropUp ? options[lastIdx] : options[firstIdx]).focus();
-          return;
-        }
-        if (
-          e.key === 'ArrowDown' &&
-          options.length &&
-          list.classList.contains('tl-dropdown__list--open')
-        ) {
-          e.preventDefault();
-          (isDropUp ? options[lastIdx] : options[firstIdx]).focus();
-          return;
-        }
-        if (
-          e.key === 'ArrowUp' &&
-          options.length &&
-          list.classList.contains('tl-dropdown__list--open')
-        ) {
-          e.preventDefault();
-          (isDropUp ? options[firstIdx] : options[lastIdx]).focus();
-          return;
-        }
-        if (e.key === 'Enter' && !list.classList.contains('tl-dropdown__list--open')) {
-          e.preventDefault();
-          ensureOpen();
-          (isDropUp ? options[lastIdx] : options[firstIdx])?.focus();
-          return;
-        }
-        if (e.key === 'Tab' && !e.shiftKey) {
-          if (!list.classList.contains('tl-dropdown__list--open') && options.length) {
-            e.preventDefault();
-            ensureOpen();
-            (isDropUp ? options[lastIdx] : options[firstIdx]).focus();
-          } else if (
-            list.classList.contains('tl-dropdown__list--open') &&
-            isDropUp &&
-            options.length
-          ) {
-            e.preventDefault();
-            options[lastIdx].focus();
-          }
-        }
-      });
-    }
-    if (root && !root.hasAttribute('data-focusout-bound')) {
-      root.setAttribute('data-focusout-bound', '1');
-      root.addEventListener('focusout', (ev: FocusEvent) => {
-        setTimeout(() => {
-          const next =
-            (ev.relatedTarget as HTMLElement | null) ??
-            (document.activeElement as HTMLElement | null);
-
-          const keepOpen =
-            (!!next && !!root?.contains(next)) ||
-            !list.classList.contains('tl-dropdown__list--open');
-
-          if (!keepOpen) {
-            close();
-          }
-        }, 20);
-      });
-    }
-
-    if (!list.hasAttribute('data-roving-bound')) {
-      list.setAttribute('data-roving-bound', '1');
-      list.addEventListener('focusin', (ev: FocusEvent) => {
-        const target = ev.target as HTMLElement | null;
-        if (!target) return;
-        if (!target.classList.contains('tl-dropdown__option')) return;
-        const all = Array.from(
-          list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
-        );
-        all.forEach((el) => el.setAttribute('tabindex', el === target ? '0' : '-1'));
-      });
-    }
-
-    list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((li) => {
-      if (li.classList.contains('tl-dropdown__option--disabled')) {
-        li.setAttribute('tabindex', '-1');
-        return;
-      }
-      li.setAttribute('tabindex', '-1');
-
-      if (isMulti) {
-        const cb = li.querySelector<HTMLInputElement>('.tl-checkbox__input');
-        if (!cb) {
-          return;
-        }
-
-        const toggle = () => {
-          cb.checked = !cb.checked;
-          li.classList.toggle('tl-dropdown__option--selected', cb.checked);
-          updateMulti();
-        };
-
-        li.addEventListener('mousedown', (ev) => {
-          ev.preventDefault();
-          toggle();
-        });
-        li.addEventListener('keydown', (ev) => {
-          if (ev.key === 'Enter' || ev.key === ' ') {
-            ev.preventDefault();
-            toggle();
-          }
-        });
-        cb.addEventListener('click', (ev) => {
-          ev.stopPropagation();
-          toggle();
-        });
-      } else if (chooseSingle) {
-        const select = () => {
-          chooseSingle!(li);
-        };
-        li.addEventListener('mousedown', (ev) => {
-          ev.preventDefault();
-          select();
-        });
-        li.addEventListener('keydown', (ev) => {
-          if (ev.key === 'Enter' || ev.key === ' ') {
-            ev.preventDefault();
-            select();
-          }
-        });
-      }
+  if (root && !root.hasAttribute('data-focusout-bound')) {
+    root.setAttribute('data-focusout-bound', '1');
+    root.addEventListener('focusout', (ev: FocusEvent) => {
+      setTimeout(() => {
+        const next = ev.relatedTarget as HTMLElement | null;
+        if (!next || !root.contains(next)) close();
+      }, 20);
     });
   }
+
+  list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((li) => {
+    if (li.classList.contains('tl-dropdown__option--disabled')) return;
+
+    li.addEventListener('mousedown', (ev) => {
+      ev.preventDefault();
+      chooseSingle(li);
+    });
+    li.addEventListener('click', () => {
+      chooseSingle(li);
+    });
+  });
 
   setHasValue(false);
 }
 
-function dropdownFilterScript(listId: string, inputId: string, multiselect: boolean): void {
-  const list = document.getElementById(listId) as HTMLElement | null;
-  const input = document.getElementById(inputId) as HTMLInputElement | null;
-  if (!list || !input) {
-    return;
-  }
+function dropdownMultiScript(menuId: string): void {
+  const list = document.getElementById(menuId);
+  if (!list) return;
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const dropUp = !!root && root.classList.contains('tl-dropdown--dropup');
+  const btn = root?.querySelector<HTMLElement>(`[data-dropdown-toggle="${menuId}"]`);
+  const valueSpan = root?.querySelector<HTMLElement>('.tl-dropdown__button-value');
+  const placeholderSpan = root?.querySelector<HTMLElement>('.tl-dropdown__button-placeholder');
+  if (!root || !btn) return;
+
+  const setHasValue = (v: boolean) => root.classList.toggle('tl-dropdown--has-value', v);
+  const open = () => {
+    list.classList.add('tl-dropdown__list--open');
+    btn.setAttribute('aria-expanded', 'true');
+  };
+  const close = () => {
+    list.classList.remove('tl-dropdown__list--open');
+    btn.setAttribute('aria-expanded', 'false');
+  };
+
+  const updateMulti = () => {
+    const selected = Array.from(
+      list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'),
+    );
+    const text = selected
+      .map((cb) => (cb.closest('.tl-dropdown__option') as HTMLElement | null)?.dataset.value || '')
+      .filter(Boolean)
+      .join(', ');
+    if (valueSpan) {
+      valueSpan.textContent = text;
+      valueSpan.classList.toggle('tl-dropdown__button-value--visible', !!text);
+    }
+    if (placeholderSpan) {
+      placeholderSpan.classList.toggle('tl-dropdown__button-placeholder--visible', !text);
+    }
+    setHasValue(!!text);
+  };
+
+  if (!btn.hasAttribute('data-bound')) {
+    btn.setAttribute('data-bound', '1');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (list.classList.contains('tl-dropdown__list--open')) {
+        close();
+      } else {
+        open();
+      }
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (root && !root.contains(e.target as Node)) {
+      close();
+    }
+  });
+
+  if (root && !root.hasAttribute('data-focusout-bound')) {
+    root.setAttribute('data-focusout-bound', '1');
+    root.addEventListener('focusout', (ev: FocusEvent) => {
+      setTimeout(() => {
+        const next = ev.relatedTarget as HTMLElement | null;
+        if (!next || !root.contains(next)) close();
+      }, 20);
+    });
+  }
+
+  list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((li) => {
+    if (li.classList.contains('tl-dropdown__option--disabled')) return;
+
+    const cb = li.querySelector<HTMLInputElement>('.tl-checkbox__input');
+    li.addEventListener('mousedown', (ev) => {
+      ev.preventDefault();
+      if (!cb) return;
+      cb.checked = !cb.checked;
+      li.classList.toggle('tl-dropdown__option--selected', cb.checked);
+      updateMulti();
+    });
+    cb?.addEventListener('click', (ev) => {
+      ev.stopPropagation();
+    });
+  });
+
+  setHasValue(false);
+}
+
+function dropdownFilterSingleScript(listId: string, inputId: string): void {
+  const list = document.getElementById(listId) as HTMLElement | null;
+  const input = document.getElementById(inputId) as HTMLInputElement | null;
+  if (!list || !input) return;
+
+  const root = list.closest('.tl-dropdown') as HTMLElement | null;
   const chev = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
   const clearIcon = input.parentElement?.querySelector(
     '.tl-dropdown__input-clear',
@@ -382,74 +215,16 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
   };
   const open = () => {
     list.classList.add('tl-dropdown__list--open');
-    chev?.classList.add('tl-dropdown__chevron--rotated');
     input.setAttribute('aria-expanded', 'true');
   };
   const close = () => {
     list.classList.remove('tl-dropdown__list--open');
-    chev?.classList.remove('tl-dropdown__chevron--rotated');
     input.setAttribute('aria-expanded', 'false');
   };
 
   const options = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option')).filter(
     (li) => !li.classList.contains('tl-dropdown__option--no-result'),
   );
-
-  function updateTabIndexes() {
-    options.forEach((li) => {
-      if (li.classList.contains('tl-dropdown__option--visible')) {
-        li.setAttribute('tabindex', '0');
-      } else {
-        li.setAttribute('tabindex', '-1');
-      }
-    });
-  }
-
-  const computeOrderedVisible = () => {
-    const raw = Array.from(
-      list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
-    ).filter((li) => !li.classList.contains('tl-dropdown__option--no-result'));
-    return dropUp ? raw.slice().reverse() : raw;
-  };
-
-  if (!list.hasAttribute('data-nav-bound')) {
-    list.setAttribute('data-nav-bound', '1');
-    list.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (!list.classList.contains('tl-dropdown__list--open')) return;
-      const ordered = computeOrderedVisible();
-      if (!ordered.length) return;
-      const active = document.activeElement as HTMLElement | null;
-      let idx = active ? ordered.findIndex((o) => o === active) : -1;
-      const isDropUp = dropUp;
-
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        if (isDropUp) {
-          idx = idx < 0 ? 0 : Math.max(idx - 1, 0);
-        } else {
-          idx = idx < 0 ? 0 : Math.min(idx + 1, ordered.length - 1);
-        }
-        ordered[idx].focus();
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        if (isDropUp) {
-          idx = idx < 0 ? ordered.length - 1 : Math.min(idx + 1, ordered.length - 1);
-        } else {
-          idx = idx < 0 ? ordered.length - 1 : Math.max(idx - 1, 0);
-        }
-        ordered[idx].focus();
-      } else if (e.key === 'Tab') {
-        e.preventDefault();
-        const nextIdx = e.shiftKey ? idx - 1 : idx + 1;
-        if (nextIdx < 0 || nextIdx >= ordered.length) {
-          close();
-          input.focus();
-        } else {
-          ordered[nextIdx].focus();
-        }
-      }
-    });
-  }
 
   const filterOptions = () => {
     const q = (input.value || '').toLowerCase().trim();
@@ -466,71 +241,8 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
       const show = !!q && matches === 0;
       noResult.classList.toggle('tl-dropdown__option--visible', show);
     }
-    updateTabIndexes();
   };
 
-  input.addEventListener('keydown', (e) => {
-    const visibleOptions = options.filter((o) =>
-      o.classList.contains('tl-dropdown__option--visible'),
-    );
-    if (document.activeElement === input) {
-      if (e.key === 'Tab' && clearIcon && isClearVisible()) {
-        e.preventDefault();
-        clearIcon.focus();
-        return;
-      }
-      if (list.classList.contains('tl-dropdown__list--open')) {
-        if (e.key === 'Tab' && visibleOptions.length) {
-          e.preventDefault();
-          (dropUp ? visibleOptions[visibleOptions.length - 1] : visibleOptions[0]).focus();
-          return;
-        }
-        if (e.key === 'ArrowDown' && visibleOptions.length) {
-          e.preventDefault();
-          (dropUp ? visibleOptions[visibleOptions.length - 1] : visibleOptions[0]).focus();
-          return;
-        }
-        if (e.key === 'ArrowUp' && visibleOptions.length) {
-          e.preventDefault();
-          visibleOptions[visibleOptions.length - 1].focus();
-          return;
-        }
-      }
-    }
-    if (!list.classList.contains('tl-dropdown__list--open')) return;
-    const active = document.activeElement as HTMLElement;
-    let idx = visibleOptions.findIndex((el) => el === active);
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (visibleOptions.length) {
-        if (dropUp) {
-          idx = idx <= 0 ? 0 : idx - 1;
-        } else {
-          idx = idx < 0 ? 0 : Math.min(idx + 1, visibleOptions.length - 1);
-        }
-        visibleOptions[idx].focus();
-      }
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (visibleOptions.length) {
-        if (dropUp) {
-          idx = idx < 0 ? 0 : Math.min(idx + 1, visibleOptions.length - 1);
-        } else {
-          idx = idx < 0 ? visibleOptions.length - 1 : Math.max(idx - 1, 0);
-        }
-        visibleOptions[idx].focus();
-      }
-    } else if (e.key === 'Escape') {
-      e.preventDefault();
-      close();
-      input.blur();
-    } else if ((e.key === 'Enter' || e.key === ' ') && idx >= 0) {
-      if (visibleOptions.length) {
-        e.preventDefault();
-        visibleOptions[idx].click();
-      }
-    }
-  });
   if (clearIcon && !clearIcon.hasAttribute('data-bound')) {
     clearIcon.setAttribute('data-bound', '1');
     const clearInputValue = () => {
@@ -548,23 +260,6 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     });
     clearIcon.addEventListener('focus', () => {
       open();
-    });
-    clearIcon.addEventListener('keydown', (e: KeyboardEvent) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        clearInputValue();
-      } else if (e.key === 'Tab' && !e.shiftKey) {
-        const visibleOptions = options.filter((o) =>
-          o.classList.contains('tl-dropdown__option--visible'),
-        );
-        if (visibleOptions.length) {
-          e.preventDefault();
-          visibleOptions[0].focus();
-        }
-      } else if (e.key === 'Tab' && e.shiftKey) {
-        e.preventDefault();
-        input.focus();
-      }
     });
   }
 
@@ -613,72 +308,27 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
       if (li.classList.contains('tl-dropdown__option--no-result')) return;
       if (li.classList.contains('tl-dropdown__option--disabled')) return;
 
-      // removed no-op keydown handler
-
-      if (multiselect) {
-        const cb = li.querySelector<HTMLInputElement>('.tl-checkbox__input');
-        if (!cb) {
-          return;
-        }
-
-        const apply = () => {
-          cb.checked = !cb.checked;
-          li.classList.toggle('tl-dropdown__option--selected', cb.checked);
-
-          const checks = list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked');
-          selectedCache = Array.from(checks)
-            .map((c) => c.closest('.tl-dropdown__option')?.getAttribute('data-value') || '')
-            .filter(Boolean)
-            .join(', ');
-
-          input.value = selectedCache;
-          setHasValue(!!selectedCache);
-          updateClearTabIndex();
-        };
-
-        li.addEventListener('mousedown', (ev) => {
-          ev.preventDefault();
-          apply();
+      const choose = () => {
+        options.forEach((o) => {
+          o.classList.remove('tl-dropdown__option--selected');
+          o.querySelector('.tl-icon--tick')?.classList.remove('tl-icon--tick--visible');
         });
-        li.addEventListener('keydown', (ev) => {
-          if (ev.key === 'Enter' || ev.key === ' ') {
-            ev.preventDefault();
-            apply();
-          }
-        });
-        cb.addEventListener('click', (ev) => {
-          ev.stopPropagation();
-          apply();
-        });
-      } else {
-        const choose = () => {
-          options.forEach((o) => {
-            o.classList.remove('tl-dropdown__option--selected');
-            o.querySelector('.tl-icon--tick')?.classList.remove('tl-icon--tick--visible');
-          });
 
-          li.classList.add('tl-dropdown__option--selected');
-          li.querySelector('.tl-icon--tick')?.classList.add('tl-icon--tick--visible');
+        li.classList.add('tl-dropdown__option--selected');
+        li.querySelector('.tl-icon--tick')?.classList.add('tl-icon--tick--visible');
 
-          selectedCache = (li.getAttribute('data-value') || li.textContent || '').trim();
-          input.value = selectedCache;
-          setHasValue(!!selectedCache);
-          updateClearTabIndex();
-          selectedCache = (li.getAttribute('data-value') || '').trim();
-          input.blur();
-        };
+        selectedCache = (li.getAttribute('data-value') || li.textContent || '').trim();
+        input.value = selectedCache;
+        setHasValue(!!selectedCache);
+        updateClearTabIndex();
+        selectedCache = (li.getAttribute('data-value') || '').trim();
+        input.blur();
+      };
 
-        li.addEventListener('mousedown', (ev) => {
-          ev.preventDefault();
-          choose();
-        });
-        li.addEventListener('keydown', (ev) => {
-          if (ev.key === 'Enter' || ev.key === ' ') {
-            ev.preventDefault();
-            choose();
-          }
-        });
-      }
+      li.addEventListener('mousedown', (ev) => {
+        ev.preventDefault();
+        choose();
+      });
     });
   }
 
@@ -702,16 +352,170 @@ function dropdownFilterScript(listId: string, inputId: string, multiselect: bool
     });
   }
 
-  if (!list.hasAttribute('data-roving-bound')) {
-    list.setAttribute('data-roving-bound', '1');
-    list.addEventListener('focusin', (ev: FocusEvent) => {
-      const target = ev.target as HTMLElement | null;
-      if (!target) return;
-      if (!target.classList.contains('tl-dropdown__option')) return;
-      const all = Array.from(
-        list.querySelectorAll<HTMLElement>('.tl-dropdown__option.tl-dropdown__option--visible'),
-      );
-      all.forEach((el) => el.setAttribute('tabindex', el === target ? '0' : '-1'));
+  selectedCache = '';
+  setHasValue(false);
+  filterOptions();
+}
+
+function dropdownFilterMultiScript(listId: string, inputId: string): void {
+  const list = document.getElementById(listId) as HTMLElement | null;
+  const input = document.getElementById(inputId) as HTMLInputElement | null;
+  if (!list || !input) return;
+
+  const root = list.closest('.tl-dropdown') as HTMLElement | null;
+  const chev = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
+  const clearIcon = input.parentElement?.querySelector(
+    '.tl-dropdown__input-clear',
+  ) as HTMLElement | null;
+
+  let selectedCache = '';
+  const isClearVisible = () => {
+    if (!clearIcon) return false;
+    const layoutVisible = (clearIcon as HTMLElement).offsetParent !== null;
+    const hasText = (input.value || '').trim().length > 0 || !!selectedCache;
+    return layoutVisible && hasText;
+  };
+
+  const updateClearTabIndex = () => {
+    if (!clearIcon) return;
+    clearIcon.setAttribute('tabindex', isClearVisible() ? '0' : '-1');
+  };
+
+  const setHasValue = (v: boolean) => {
+    root?.classList.toggle('tl-dropdown--has-value', v);
+    updateClearTabIndex();
+  };
+  const open = () => {
+    list.classList.add('tl-dropdown__list--open');
+    input.setAttribute('aria-expanded', 'true');
+  };
+  const close = () => {
+    list.classList.remove('tl-dropdown__list--open');
+    input.setAttribute('aria-expanded', 'false');
+  };
+
+  const options = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option'));
+
+  const filterOptions = () => {
+    const q = (input.value || '').toLowerCase().trim();
+
+    options.forEach((li) => {
+      const val = (li.getAttribute('data-value') || li.textContent || '').toLowerCase();
+      const visible = !q || val.includes(q);
+      li.classList.toggle('tl-dropdown__option--visible', visible);
+    });
+  };
+
+  if (clearIcon && !clearIcon.hasAttribute('data-bound')) {
+    clearIcon.setAttribute('data-bound', '1');
+    const clearInputValue = () => {
+      selectedCache = '';
+      input.value = '';
+      setHasValue(false);
+      input.focus();
+      filterOptions();
+      updateClearTabIndex();
+    };
+    clearIcon.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      clearInputValue();
+    });
+    clearIcon.addEventListener('focus', () => {
+      open();
+    });
+  }
+
+  if (chev && !chev.hasAttribute('data-bound')) {
+    chev.setAttribute('data-bound', '1');
+    chev.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = list.classList.contains('tl-dropdown__list--open');
+      if (isOpen) {
+        close();
+        input.blur();
+      } else {
+        open();
+        input.focus();
+        filterOptions();
+      }
+    });
+  }
+
+  if (!input.hasAttribute('data-bound')) {
+    input.setAttribute('data-bound', '1');
+
+    input.addEventListener('focus', () => {
+      open();
+      if (selectedCache) {
+        input.value = '';
+      }
+      filterOptions();
+      setHasValue(true);
+      updateClearTabIndex();
+    });
+
+    input.addEventListener('input', () => {
+      filterOptions();
+      setHasValue(!!input.value || !!selectedCache);
+      updateClearTabIndex();
+    });
+  }
+
+  if (!list.hasAttribute('data-bound')) {
+    list.setAttribute('data-bound', '1');
+
+    const optionArr = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option'));
+    optionArr.forEach((li) => {
+      if (li.classList.contains('tl-dropdown__option--disabled')) return;
+
+      const cb = li.querySelector<HTMLInputElement>('.tl-checkbox__input');
+      if (!cb) return;
+
+      const apply = () => {
+        cb.checked = !cb.checked;
+        li.classList.toggle('tl-dropdown__option--selected', cb.checked);
+
+        const checks = list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked');
+        selectedCache = Array.from(checks)
+          .map((c) => c.closest('.tl-dropdown__option')?.getAttribute('data-value') || '')
+          .filter(Boolean)
+          .join(', ');
+
+        input.value = selectedCache;
+        setHasValue(!!selectedCache);
+        updateClearTabIndex();
+      };
+
+      li.addEventListener('mousedown', (ev) => {
+        ev.preventDefault();
+        apply();
+      });
+      cb.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        apply();
+      });
+    });
+  }
+
+  if (root && !root.hasAttribute('data-focusout-bound')) {
+    root.setAttribute('data-focusout-bound', '1');
+    root.addEventListener('focusout', (ev: FocusEvent) => {
+      setTimeout(() => {
+        const next =
+          (ev.relatedTarget as HTMLElement) || (document.activeElement as HTMLElement | null);
+        if (!next || !root.contains(next)) {
+          close();
+          if (selectedCache) {
+            input.value = selectedCache;
+            setHasValue(true);
+          } else {
+            setHasValue(!!input.value);
+          }
+          updateClearTabIndex();
+        }
+      }, 20);
     });
   }
 
@@ -771,7 +575,7 @@ function getButtonMarkup(
   const optionLis = opts
     .map(
       (o) => `
-    <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
+    <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}" tabindex="0">
       ${o}<span class="tl-icon tl-icon--tick"></span>
     </li>`,
     )
@@ -809,7 +613,7 @@ function getMultiselectMarkup(
   const items = opts
     .map(
       (o, i) => `
-    <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
+    <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}" tabindex="0">
       <div class="tl-checkbox">
         <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.multi}-${i}" tabindex="-1" />
         <label class="tl-checkbox__label" for="cb-${IDS.multi}-${i}">${o}</label>
@@ -855,7 +659,7 @@ function getFilterMarkup(
     ? opts
         .map(
           (o, i) => `
-        <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
+        <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}" tabindex="0">
           <div class="tl-checkbox">
             <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.filterList}-${i}" tabindex="-1" />
             <label class="tl-checkbox__label" for="cb-${IDS.filterList}-${i}">${o}</label>
@@ -866,7 +670,7 @@ function getFilterMarkup(
     : opts
         .map(
           (o) => `
-        <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}">
+        <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" data-value="${o}" tabindex="0">
           ${o}<span class="tl-icon tl-icon--tick"></span>
         </li>`,
         )
@@ -1057,20 +861,19 @@ function getDropdownScript(props: TemplateProps): string {
 
   let scriptMarkup = '';
   if (select) {
-    scriptMarkup = `<script>(${dropdownSelectScript.toString()})('${IDS.select}');</script>`;
-  } else if (!filter && multiselect) {
-    scriptMarkup = `<script>(${dropdownMenuScript.toString()})('${IDS.multi}', true, '${
-      IDS.multiBtn
-    }');</script>`;
-  } else if (!filter) {
-    const listId = IDS.btnList;
-    scriptMarkup = `<script>(${dropdownMenuScript.toString()})('${listId}', false, '${
-      IDS.btn
-    }');</script>`;
-  } else {
-    scriptMarkup = `<script>(${dropdownFilterScript.toString()})('${IDS.filterList}', '${
+    scriptMarkup = '';
+  } else if (filter && multiselect) {
+    scriptMarkup = `<script>(${dropdownFilterMultiScript.toString()})('${IDS.filterList}', '${
       IDS.filterInput
-    }', ${multiselect});</script>`;
+    }');</script>`;
+  } else if (filter) {
+    scriptMarkup = `<script>(${dropdownFilterSingleScript.toString()})('${IDS.filterList}', '${
+      IDS.filterInput
+    }');</script>`;
+  } else if (multiselect) {
+    scriptMarkup = `<script>(${dropdownMultiScript.toString()})('${IDS.multi}');</script>`;
+  } else {
+    scriptMarkup = `<script>(${dropdownSingleScript.toString()})('${IDS.btnList}');</script>`;
   }
   return scriptMarkup;
 }
