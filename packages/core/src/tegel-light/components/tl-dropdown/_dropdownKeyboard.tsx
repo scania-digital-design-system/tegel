@@ -1,102 +1,133 @@
+// ============================================================================
+// Dropdown Keyboard Navigation
+// Handles arrow keys, Enter, Space, Tab, and Escape for all dropdown variants
+// ============================================================================
+
 let initialized = false;
 
 export function initDropdownKeyboard() {
   if (initialized) return;
   initialized = true;
 
+  // ============================================================================
+  // Handler for when dropdown list is open
+  // ============================================================================
   const handleOpenListKeydown = (e: KeyboardEvent) => {
     const openList = document.querySelector('.tl-dropdown__list--open');
     if (!openList) return;
 
+    // Get context
     const root = openList.closest('.tl-dropdown');
     const trigger =
       root?.querySelector('[data-dropdown-toggle]') || root?.querySelector('.tl-dropdown__input');
-
     const isDropUp = root?.classList.contains('tl-dropdown--dropup');
-    const isMulti = openList.getAttribute('aria-multiselectable') === 'true';
+    const isMultiSelect = openList.getAttribute('aria-multiselectable') === 'true';
+    const isFilterDropdown = !!root?.querySelector('.tl-dropdown__input');
 
+    // Get all visible, enabled options
     const options = Array.from(
       openList.querySelectorAll('.tl-dropdown__option.tl-dropdown__option--visible'),
-    ).filter((li) => !(li as HTMLElement).classList.contains('tl-dropdown__option--disabled'));
+    ).filter(
+      (option) => !(option as HTMLElement).classList.contains('tl-dropdown__option--disabled'),
+    );
 
     if (!options.length) return;
-    const active = document.activeElement;
-    const currentIdx = options.findIndex((o) => o === active);
 
-    const focusOption = (idx: number) => {
-      if (idx < 0 || idx >= options.length) return;
-      options.forEach((opt, i) => {
-        (opt as HTMLElement).setAttribute('tabindex', i === idx ? '0' : '-1');
+    const { activeElement } = document;
+    const currentIndex = options.findIndex((option) => option === activeElement);
+
+    // Helper to focus a specific option
+    const focusOption = (index: number) => {
+      if (index < 0 || index >= options.length) return;
+
+      options.forEach((option, i) => {
+        (option as HTMLElement).setAttribute('tabindex', i === index ? '0' : '-1');
       });
-      (options[idx] as HTMLElement).focus();
+      (options[index] as HTMLElement).focus();
     };
 
+    // Arrow Up/Down - Navigate between options
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
       e.preventDefault();
 
       const direction = e.key === 'ArrowDown' ? 1 : -1;
-      let nextIdx = currentIdx;
+      let nextIndex = currentIndex;
 
-      if (currentIdx === -1) {
-        if (e.key === 'ArrowDown') {
-          nextIdx = isDropUp ? options.length - 1 : 0;
-        } else {
-          nextIdx = isDropUp ? 0 : options.length - 1;
-        }
+      // If no option focused, start at first or last
+      if (currentIndex === -1) {
+        const isArrowDown = e.key === 'ArrowDown';
+        nextIndex = isArrowDown
+          ? isDropUp
+            ? options.length - 1
+            : 0
+          : isDropUp
+          ? 0
+          : options.length - 1;
       } else {
-        nextIdx = currentIdx + (isDropUp ? -direction : direction);
+        // Move in direction (reverse for dropup)
+        nextIndex = currentIndex + (isDropUp ? -direction : direction);
       }
 
-      if (nextIdx >= options.length) nextIdx = 0;
-      if (nextIdx < 0) nextIdx = options.length - 1;
+      // Wrap around
+      if (nextIndex >= options.length) nextIndex = 0;
+      if (nextIndex < 0) nextIndex = options.length - 1;
 
-      focusOption(nextIdx);
+      focusOption(nextIndex);
       return;
     }
 
-    /* Enter or Space = select/toggle */
+    // Enter or Space - Select/toggle option
     if (e.key === 'Enter' || e.key === ' ') {
-      const option = options[currentIdx];
-      if (!option) return;
+      const focusedOption = options[currentIndex];
+      if (!focusedOption) return;
 
       e.preventDefault();
 
-      if (isMulti) {
-        const checkbox = option.querySelector('.tl-checkbox__input') as HTMLInputElement | null;
+      if (isMultiSelect) {
+        // Toggle checkbox
+        const checkbox = focusedOption.querySelector(
+          '.tl-checkbox__input',
+        ) as HTMLInputElement | null;
         if (checkbox) {
           checkbox.checked = !checkbox.checked;
-          option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+          focusedOption.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
           checkbox.dispatchEvent(new Event('change', { bubbles: true }));
         }
       } else {
-        (option as HTMLElement).click();
+        // Select and close
+        (focusedOption as HTMLElement).click();
         openList.classList.remove('tl-dropdown__list--open');
         (trigger as HTMLElement | null)?.focus();
       }
       return;
     }
 
-    /* Tab / Shift+Tab */
+    // Tab - Move to next focusable element
     if (e.key === 'Tab') {
+      if (isFilterDropdown) {
+        // Filter dropdowns: close and let Tab work naturally
+        openList.classList.remove('tl-dropdown__list--open');
+        return; // Don't prevent default
+      }
+
+      // Button dropdowns: navigate within dropdown or close
       e.preventDefault();
 
-      const forward = isDropUp ? e.shiftKey : !e.shiftKey;
-      const nextIdx = forward ? currentIdx + 1 : currentIdx - 1;
+      const movingForward = isDropUp ? e.shiftKey : !e.shiftKey;
+      const nextIndex = movingForward ? currentIndex + 1 : currentIndex - 1;
 
-      if (nextIdx >= options.length) {
+      if (nextIndex >= options.length || nextIndex < 0) {
+        // Exit dropdown
         openList.classList.remove('tl-dropdown__list--open');
         (trigger as HTMLElement | null)?.focus();
         return;
       }
-      if (nextIdx < 0) {
-        (trigger as HTMLElement | null)?.focus();
-        return;
-      }
-      focusOption(nextIdx);
+
+      focusOption(nextIndex);
       return;
     }
 
-    /* Escape = close */
+    // Escape - Close dropdown
     if (e.key === 'Escape') {
       e.preventDefault();
       openList.classList.remove('tl-dropdown__list--open');
@@ -104,6 +135,9 @@ export function initDropdownKeyboard() {
     }
   };
 
+  // ============================================================================
+  // Handler for when trigger is focused (button or input)
+  // ============================================================================
   const handleTriggerKeydown = (e: KeyboardEvent) => {
     const trigger = (e.target as Element | null)?.closest(
       '.tl-dropdown__button, .tl-dropdown__input',
@@ -115,32 +149,70 @@ export function initDropdownKeyboard() {
     if (!list) return;
 
     const isDropUp = root?.classList.contains('tl-dropdown--dropup');
+    const isOpen = list.classList.contains('tl-dropdown__list--open');
 
+    // Get all visible, enabled options
     const options = Array.from(
       list.querySelectorAll('.tl-dropdown__option.tl-dropdown__option--visible'),
-    ).filter((li) => !li.classList.contains('tl-dropdown__option--disabled'));
+    ).filter((option) => !option.classList.contains('tl-dropdown__option--disabled'));
 
     if (!options.length) return;
 
-    if (
-      (e.key === 'ArrowDown' || e.key === 'ArrowUp') &&
-      !list.classList.contains('tl-dropdown__list--open')
-    ) {
+    // Arrow Up/Down - Open dropdown and focus first option
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isOpen) {
       e.preventDefault();
       list.classList.add('tl-dropdown__list--open');
 
-      let firstIdx = 0;
-      if (isDropUp) {
-        firstIdx = options.length - 1;
-      }
+      // Focus first option (last if dropup)
+      const firstIndex = isDropUp ? options.length - 1 : 0;
 
-      options.forEach((opt, i) => {
-        (opt as HTMLElement).setAttribute('tabindex', i === firstIdx ? '0' : '-1');
+      options.forEach((option, i) => {
+        (option as HTMLElement).setAttribute('tabindex', i === firstIndex ? '0' : '-1');
       });
-      (options[firstIdx] as HTMLElement).focus();
+      (options[firstIndex] as HTMLElement).focus();
     }
   };
 
+  // ============================================================================
+  // Handler for clear button keyboard interaction
+  // ============================================================================
+  const handleClearButtonKeydown = (e: KeyboardEvent) => {
+    const target = e.target as HTMLElement;
+
+    // Only handle if target is the clear button
+    if (!target.classList.contains('tl-dropdown__input-clear')) return;
+
+    // Enter or Space - Clear the input
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Trigger click to reuse existing clear logic
+      target.click();
+    }
+  };
+
+  // ============================================================================
+  // Handler for clear button focus - opens dropdown
+  // ============================================================================
+  const handleClearButtonFocus = (e: FocusEvent) => {
+    const target = e.target as HTMLElement;
+
+    // Only handle if target is the clear button
+    if (!target.classList.contains('tl-dropdown__input-clear')) return;
+
+    // Find the input and open dropdown
+    const input = target
+      .closest('.tl-dropdown__input-wrapper')
+      ?.querySelector('.tl-dropdown__input') as HTMLInputElement;
+    if (input) {
+      input.setAttribute('aria-expanded', 'true');
+    }
+  };
+
+  // Register event listeners
   document.addEventListener('keydown', handleOpenListKeydown);
   document.addEventListener('keydown', handleTriggerKeydown);
+  document.addEventListener('keydown', handleClearButtonKeydown);
+  document.addEventListener('focus', handleClearButtonFocus, true);
 }
