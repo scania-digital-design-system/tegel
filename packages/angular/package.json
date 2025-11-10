@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "ng": "ng",
-    "build": "npx -p @angular/cli ng build components"
+    "build": "npx -p @angular/cli ng build components",
+    "postinstall": "node scripts/patch-stencil-types.js"
   },
   "dependencies": {
     "@scania/tegel": "^1.41.0",
@@ -33,7 +34,6 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^14",
     "rxjs": "~7.8.0",
-    "typescript": "4.8.4",
     "zone.js": "~0.12.0"
   }
 }
