@@ -40,6 +40,61 @@ function handleKeyboardSelection(
   }
 }
 
+function createToggleDropdown(trigger: HTMLElement) {
+  return () => {
+    const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+    trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  };
+}
+
+function createCloseDropdown(trigger: HTMLElement) {
+  return () => trigger.setAttribute('aria-expanded', 'false');
+}
+
+function getSelectedCheckboxLabels(container: HTMLElement): string {
+  return Array.from(container.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'))
+    .map((checkbox) => {
+      const label = checkbox.closest('.tl-dropdown__option')?.querySelector('.tl-checkbox__label');
+      return label?.textContent?.trim() || '';
+    })
+    .filter(Boolean)
+    .join(', ');
+}
+
+function setupInputWrapperToggle(
+  inputWrapper: HTMLElement | null,
+  input: HTMLInputElement,
+  openDropdown: () => void,
+  closeDropdown: () => void,
+  filterOptions: () => void,
+) {
+  inputWrapper?.addEventListener('mousedown', (e) => {
+    const target = e.target as HTMLElement;
+    if (target === input || target.closest('.tl-dropdown__input-clear')) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+    const isOpen = input.getAttribute('aria-expanded') === 'true';
+
+    if (isOpen) {
+      closeDropdown();
+      input.blur();
+    } else {
+      openDropdown();
+      input.focus();
+      filterOptions();
+    }
+  });
+}
+
+function setupClearButton(clearButton: HTMLButtonElement | null, callback: () => void) {
+  clearButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    callback();
+  });
+}
+
 export function tlDropdownSingleScript(menuId: string): void {
   const list = document.getElementById(menuId);
   if (!list) return;
@@ -51,12 +106,8 @@ export function tlDropdownSingleScript(menuId: string): void {
 
   setupOptionTabindex(list);
 
-  const toggleDropdown = () => {
-    const isOpen = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-  };
-
-  const closeDropdown = () => button.setAttribute('aria-expanded', 'false');
+  const toggleDropdown = createToggleDropdown(button);
+  const closeDropdown = createCloseDropdown(button);
 
   const selectOption = (selectedOption: HTMLElement) => {
     list.querySelectorAll('.tl-dropdown__option').forEach((option) => {
@@ -104,26 +155,11 @@ export function tlDropdownMultiScript(menuId: string): void {
 
   setupOptionTabindex(list, '.tl-dropdown__option', true);
 
-  const toggleDropdown = () => {
-    const isOpen = button.getAttribute('aria-expanded') === 'true';
-    button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-  };
-
-  const closeDropdown = () => button.setAttribute('aria-expanded', 'false');
+  const toggleDropdown = createToggleDropdown(button);
+  const closeDropdown = createCloseDropdown(button);
 
   const updateDisplay = () => {
-    const selectedLabels = Array.from(
-      list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'),
-    )
-      .map((checkbox) => {
-        const label = checkbox
-          .closest('.tl-dropdown__option')
-          ?.querySelector('.tl-checkbox__label');
-        return label?.textContent?.trim() || '';
-      })
-      .filter(Boolean);
-
-    if (textDisplay) textDisplay.textContent = selectedLabels.join(', ');
+    if (textDisplay) textDisplay.textContent = getSelectedCheckboxLabels(list);
   };
 
   const handleOptionToggle = (option: HTMLElement) => {
@@ -188,7 +224,7 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
   let selectedValue = '';
 
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
-  const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
+  const closeDropdown = createCloseDropdown(input);
 
   const updateClearButtonTabindex = () => {
     const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
@@ -231,29 +267,8 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     updateClearButtonTabindex();
   };
 
-  clearButton?.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    handleClearButton();
-  });
-
-  inputWrapper?.addEventListener('mousedown', (e) => {
-    const target = e.target as HTMLElement;
-    if (target === input || target.closest('.tl-dropdown__input-clear')) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-    const isOpen = input.getAttribute('aria-expanded') === 'true';
-
-    if (isOpen) {
-      closeDropdown();
-      input.blur();
-    } else {
-      openDropdown();
-      input.focus();
-      filterOptions();
-    }
-  });
+  setupClearButton(clearButton, handleClearButton);
+  setupInputWrapperToggle(inputWrapper, input, openDropdown, closeDropdown, filterOptions);
 
   input.addEventListener('focus', () => {
     openDropdown();
@@ -313,26 +328,14 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
   setupOptionTabindex(list, '.tl-dropdown__option', true);
 
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
-  const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
+  const closeDropdown = createCloseDropdown(input);
 
   const updateClearButtonTabindex = () => {
     const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
     clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
   };
 
-  const getSelectedValues = () => {
-    const selectedLabels = Array.from(
-      list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked'),
-    )
-      .map((checkbox) => {
-        const label = checkbox
-          .closest('.tl-dropdown__option')
-          ?.querySelector('.tl-checkbox__label');
-        return label?.textContent?.trim() || '';
-      })
-      .filter(Boolean);
-    return selectedLabels.join(', ');
-  };
+  const getSelectedValues = () => getSelectedCheckboxLabels(list);
 
   const filterOptions = () => {
     const searchQuery = input.value.toLowerCase().trim();
@@ -371,29 +374,8 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
     }
   };
 
-  clearButton?.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    handleClearButton();
-  });
-
-  inputWrapper?.addEventListener('mousedown', (e) => {
-    const target = e.target as HTMLElement;
-    if (target === input || target.closest('.tl-dropdown__input-clear')) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-    const isOpen = input.getAttribute('aria-expanded') === 'true';
-
-    if (isOpen) {
-      closeDropdown();
-      input.blur();
-    } else {
-      openDropdown();
-      input.focus();
-      filterOptions();
-    }
-  });
+  setupClearButton(clearButton, handleClearButton);
+  setupInputWrapperToggle(inputWrapper, input, openDropdown, closeDropdown, filterOptions);
 
   input.addEventListener('focus', () => {
     openDropdown();
