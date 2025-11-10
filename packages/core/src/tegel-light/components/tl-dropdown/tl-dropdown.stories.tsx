@@ -45,76 +45,52 @@ export const IDS = {
 // ============================================================================
 // Markup functions
 // ============================================================================
-export const getLabel = (label: string, placement: 'Outside' | 'Inside', forId?: string) => {
-  const cls =
-    placement === 'Inside'
-      ? 'tl-dropdown__label tl-dropdown__label-inside'
-      : 'tl-dropdown__label tl-dropdown__label-outside';
+const getLabel = (label: string, placement: 'Outside' | 'Inside', forId?: string) => {
   const forAttr = placement === 'Outside' && forId ? ` for="${forId}"` : '';
-  return `<label class="${cls}" id="${IDS.label}"${forAttr}>${label}</label>`;
+  return `<label class="tl-dropdown__label" id="${IDS.label}"${forAttr}>${label}</label>`;
 };
 
-export const getHelper = (helper: string, show: boolean, error: boolean) => {
-  if (!show || !helper) {
-    return '';
-  }
-  const icon = error ? '<span class="tl-icon tl-icon--info tl-icon--16"></span>' : '';
-  return `<div class="tl-dropdown__helper">${icon}${helper}</div>`;
-};
+const getHelper = (helper: string) => `<div class="tl-dropdown__helper">${helper}</div>`;
 
-export function getSelectMarkup(
-  isInside: boolean,
-  placeholder: string,
-  disabled: boolean,
-  labelled: boolean,
-) {
-  let ph = '';
-  if (isInside) {
-    ph = '<option value="" hidden selected></option>';
-  } else if (placeholder) {
-    ph = `<option value="" disabled selected>${placeholder}</option>`;
-  }
+function getSelectMarkup(isInside: boolean, placeholder: string, disabled: boolean) {
+  const ph = isInside
+    ? '<option value="" hidden selected></option>'
+    : placeholder
+    ? `<option value="" disabled selected>${placeholder}</option>`
+    : '';
+
   return `
-    <select class="tl-dropdown__select" id="${IDS.select}" ${disabled ? 'disabled' : ''} ${
-    labelled ? `aria-labelledby="${IDS.label}"` : ''
-  }>
+    <select class="tl-dropdown__select" id="${IDS.select}" ${disabled ? 'disabled' : ''}>
       ${ph}
       ${OPTIONS.map((o) => `<option value="${o}">${o}</option>`).join('')}
       <option value="disabled" disabled>Option disabled</option>
-    </select>
-    <span class="tl-icon tl-icon--chevron_down tl-dropdown__chevron tl-icon--16" aria-hidden="true"></span>`;
+    </select>`;
 }
 
 export function getButtonMarkup(
   isInside: boolean,
   placeholder: string,
   disabled: boolean,
-  labelled: boolean,
   listId: string,
   opts: readonly string[],
   dropUp: boolean,
 ) {
-  const optionLis = opts
+  const optionItems = opts
     .map(
       (o) => `
-    <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0">
-      ${o}<span class="tl-icon tl-icon--tick"></span>
-    </li>`,
+    <li class="tl-dropdown__option" role="option">${o}</li>`,
     )
     .join('');
 
-  const disabledLi =
-    '<li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true">Option disabled</li>';
-
-  const items = dropUp ? `${disabledLi}${optionLis}` : `${optionLis}${disabledLi}`;
+  const disabledItem =
+    '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">Option disabled</li>';
+  const items = dropUp ? `${disabledItem}${optionItems}` : `${optionItems}${disabledItem}`;
 
   return `
-    <button type="button" class="tl-dropdown__button" ${disabled ? 'disabled' : ''} ${
-    labelled ? `aria-labelledby="${IDS.label}"` : ''
-  } aria-expanded="false" aria-controls="${listId}">
-      ${!isInside ? `<span class="tl-dropdown__button-placeholder">${placeholder}</span>` : ''}
-      <span class="tl-dropdown__button-value"></span>
-      <span class="tl-icon tl-icon--chevron_down tl-dropdown__chevron tl-icon--16" aria-hidden="true"></span>
+    <button type="button" class="tl-dropdown__button" ${
+      disabled ? 'disabled' : ''
+    } aria-expanded="false">
+      <span class="tl-dropdown__text"${isInside ? '' : ` data-placeholder="${placeholder}"`}></span>
     </button>
     <ul class="tl-dropdown__list" id="${listId}" role="listbox">
       ${items}
@@ -125,36 +101,28 @@ export function getMultiselectMarkup(
   isInside: boolean,
   placeholder: string,
   disabled: boolean,
-  labelled: boolean,
   opts: readonly string[],
 ) {
-  const items = opts
-    .map(
-      (o, i) => `
-    <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0">
+  const checkboxItem = (label: string, id: string, isDisabled = false) => `
+    <li class="tl-dropdown__option${
+      isDisabled ? ' tl-dropdown__option--disabled' : ''
+    }" role="option">
       <div class="tl-checkbox">
-        <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.multi}-${i}" tabindex="-1" />
-        <label class="tl-checkbox__label" for="cb-${IDS.multi}-${i}">${o}</label>
-      </div>
-    </li>`,
-    )
-    .join('');
-
-  const disabledItem = `
-    <li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true">
-      <div class="tl-checkbox">
-        <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.multi}-disabled" tabindex="-1" disabled />
-        <label class="tl-checkbox__label" for="cb-${IDS.multi}-disabled">Option disabled</label>
+        <input type="checkbox" class="tl-checkbox__input" id="${id}" ${
+    isDisabled ? 'disabled' : ''
+  }/>
+        <label class="tl-checkbox__label" for="${id}">${label}</label>
       </div>
     </li>`;
 
+  const items = opts.map((o, i) => checkboxItem(o, `cb-${IDS.multi}-${i}`)).join('');
+  const disabledItem = checkboxItem('Option disabled', `cb-${IDS.multi}-disabled`, true);
+
   return `
-    <button type="button" class="tl-dropdown__button" ${disabled ? 'disabled' : ''} ${
-    labelled ? `aria-labelledby="${IDS.label}"` : ''
-  } aria-expanded="false" aria-controls="${IDS.multi}">
-      ${!isInside ? `<span class="tl-dropdown__button-placeholder">${placeholder}</span>` : ''}
-      <span class="tl-dropdown__button-value"></span>
-      <span class="tl-icon tl-icon--chevron_down tl-dropdown__chevron tl-icon--16" aria-hidden="true"></span>
+    <button type="button" class="tl-dropdown__button" ${
+      disabled ? 'disabled' : ''
+    } aria-expanded="false">
+      <span class="tl-dropdown__text"${isInside ? '' : ` data-placeholder="${placeholder}"`}></span>
     </button>
     <ul class="tl-dropdown__list" id="${IDS.multi}" role="listbox" aria-multiselectable="true">
       ${items}
@@ -166,58 +134,43 @@ export function getFilterMarkup(
   placeholder: string,
   disabled: boolean,
   multiselect: boolean,
-  labelled: boolean,
   opts: readonly string[],
 ) {
+  const checkboxItem = (label: string, id: string, isDisabled = false) => `
+    <li class="tl-dropdown__option${
+      isDisabled ? ' tl-dropdown__option--disabled' : ''
+    }" role="option">
+      <div class="tl-checkbox">
+        <input type="checkbox" class="tl-checkbox__input" id="${id}" ${
+    isDisabled ? 'disabled' : ''
+  }/>
+        <label class="tl-checkbox__label" for="${id}">${label}</label>
+      </div>
+    </li>`;
+
   const baseItems = multiselect
-    ? opts
-        .map(
-          (o, i) => `
-        <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0">
-          <div class="tl-checkbox">
-            <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.filterList}-${i}" tabindex="-1" />
-            <label class="tl-checkbox__label" for="cb-${IDS.filterList}-${i}">${o}</label>
-          </div>
-        </li>`,
-        )
-        .join('')
-    : opts
-        .map(
-          (o) => `
-        <li class="tl-dropdown__option tl-dropdown__option--visible" role="option" tabindex="0">
-          ${o}<span class="tl-icon tl-icon--tick"></span>
-        </li>`,
-        )
-        .join('');
+    ? opts.map((o, i) => checkboxItem(o, `cb-${IDS.filterList}-${i}`)).join('')
+    : opts.map((o) => `<li class="tl-dropdown__option" role="option">${o}</li>`).join('');
 
   const disabledItem = multiselect
-    ? `<li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true">
-      <div class="tl-checkbox">
-        <input type="checkbox" class="tl-checkbox__input" id="cb-${IDS.filterList}-disabled" tabindex="-1" disabled />
-        <label class="tl-checkbox__label" for="cb-${IDS.filterList}-disabled">Option disabled</label>
-      </div>
-    </li>`
-    : '<li class="tl-dropdown__option tl-dropdown__option--disabled tl-dropdown__option--visible" role="option" aria-disabled="true">Option disabled<span class="tl-icon tl-icon--tick"></span></li>';
+    ? checkboxItem('Option disabled', `cb-${IDS.filterList}-disabled`, true)
+    : '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">Option disabled</li>';
 
   const noResult = multiselect
     ? ''
-    : '<li class="tl-dropdown__option tl-dropdown__option--no-result" role="option" aria-disabled="true" tabindex="-1">No result</li>';
+    : '<li class="tl-dropdown__option tl-dropdown__option--no-result" role="option">No result</li>';
 
   return `
     <div class="tl-dropdown__input-wrapper">
       <input class="tl-dropdown__input" id="${
         IDS.filterInput
-      }" type="text" placeholder="${placeholder}" ${disabled ? 'disabled' : ''} aria-controls="${
-    IDS.filterList
-  }" aria-expanded="false" ${labelled ? `aria-labelledby="${IDS.label}"` : ''}/>
-  <button type="button" class="tl-dropdown__input-clear" aria-label="Clear input" tabindex="-1">
-        <span class="tl-icon tl-icon--cross tl-icon--16" aria-hidden="true"></span>
-      </button>
-      <span class="tl-dropdown__input-divider"></span>
-      <span class="tl-icon tl-icon--chevron_down tl-icon--16 tl-dropdown__chevron" aria-hidden="true"></span>
+      }" type="text" placeholder="${placeholder}" ${
+    disabled ? 'disabled' : ''
+  } aria-expanded="false" />
+      <button type="button" class="tl-dropdown__input-clear" tabindex="-1"></button>
     </div>
-    <ul class="tl-dropdown__list" id="${IDS.filterList}" role="listbox" ${
-    multiselect ? 'aria-multiselectable="true"' : ''
+    <ul class="tl-dropdown__list" id="${IDS.filterList}" role="listbox"${
+    multiselect ? ' aria-multiselectable="true"' : ''
   }>
       ${baseItems}
       ${disabledItem}
@@ -263,7 +216,6 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   const sizeClass = sizeMap[size] || 'lg';
   const isInside = labelPlacement === 'Inside';
   const showLabel = labelPlacement !== 'No label';
-  const labelled = showLabel;
   const dropUp = direction === 'Up';
 
   let currentVariant: 'Select' | 'Filter' | 'Button' = 'Button';
@@ -277,20 +229,20 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   if (currentVariant === 'Select') {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.select) : ''}
-      ${getSelectMarkup(isInside, placeholder, disabled, labelled)}`;
+      ${getSelectMarkup(isInside, placeholder, disabled)}`;
   } else if (currentVariant === 'Button' && multiselect) {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside') : ''}
-      ${getMultiselectMarkup(isInside, placeholder, disabled, labelled, optionOrder)}`;
+      ${getMultiselectMarkup(isInside, placeholder, disabled, optionOrder)}`;
   } else if (currentVariant === 'Button') {
     const listId = IDS.btnList;
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside') : ''}
-      ${getButtonMarkup(isInside, placeholder, disabled, labelled, listId, optionOrder, dropUp)}`;
+      ${getButtonMarkup(isInside, placeholder, disabled, listId, optionOrder, dropUp)}`;
   } else {
     fieldMarkup = `
       ${showLabel ? getLabel(label, isInside ? 'Inside' : 'Outside', IDS.filterInput) : ''}
-      ${getFilterMarkup(placeholder, disabled, multiselect, labelled, optionOrder)}`;
+      ${getFilterMarkup(placeholder, disabled, multiselect, optionOrder)}`;
   }
 
   const classesList: string[] = ['tl-dropdown', `tl-dropdown--${sizeClass}`];
@@ -299,8 +251,6 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
     classesList.push('tl-dropdown--label-inside');
   } else if (showLabel) {
     classesList.push('tl-dropdown--label-outside');
-  } else {
-    classesList.push('tl-dropdown--no-label');
   }
 
   if (error) {
@@ -315,12 +265,7 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   const classes = classesList.join(' ');
 
   // Generate required stylesheets comment
-  const stylesheets = [
-    '@scania/tegel-light/global.css',
-    '@scania/tegel-light/tl-dropdown.css',
-    '@scania/tegel-light/tl-icon.css',
-  ];
-
+  const stylesheets = ['@scania/tegel-light/global.css', '@scania/tegel-light/tl-dropdown.css'];
   if (multiselect || (filter && multiselect)) {
     stylesheets.push('@scania/tegel-light/tl-checkbox.css');
   }
@@ -330,13 +275,11 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
     .join(';\n  ')}\n-->`;
 
   return `
-    ${stylesheetsComment}
-    <div class="demo-wrapper" style="width:200px;height:200px;max-width:960px;">
-      <div class="${classes}">
-        ${fieldMarkup}
-        ${showHelper ? getHelper(helper, showHelper, error) : ''}
-      </div>
-    </div>
+${stylesheetsComment}
+<div class="${classes}" style="width: 208px;">
+  ${fieldMarkup}
+  ${showHelper && helper ? getHelper(helper) : ''}
+</div>
   `;
 }
 
@@ -346,28 +289,39 @@ function getDropdownScript(props: {
   multiselect: boolean;
 }): string {
   const { select, filter, multiselect } = props;
-
   if (select) return '';
 
-  let script = '';
-  let comment = '';
+  const scripts = {
+    filterMulti: {
+      fn: `tlDropdownFilterMultiScript('${IDS.filterList}', '${IDS.filterInput}');`,
+      comment:
+        '// Adds search/filter functionality and checkbox handling for selecting multiple items',
+    },
+    filterSingle: {
+      fn: `tlDropdownFilterSingleScript('${IDS.filterList}', '${IDS.filterInput}');`,
+      comment: '// Adds search/filter functionality for selecting a single option',
+    },
+    multi: {
+      fn: `tlDropdownMultiScript('${IDS.multi}');`,
+      comment: '// Adds click handlers for selecting multiple options with checkboxes',
+    },
+    single: {
+      fn: `tlDropdownSingleScript('${IDS.btnList}');`,
+      comment: '// Adds click handlers and state management for selecting a single option',
+    },
+  };
 
-  if (filter && multiselect) {
-    script = `tlDropdownFilterMultiScript('${IDS.filterList}', '${IDS.filterInput}');`;
-    comment =
-      '// Adds search/filter functionality and checkbox handling for selecting multiple items';
-  } else if (filter) {
-    script = `tlDropdownFilterSingleScript('${IDS.filterList}', '${IDS.filterInput}');`;
-    comment = '// Adds search/filter functionality for selecting a single option';
-  } else if (multiselect) {
-    script = `tlDropdownMultiScript('${IDS.multi}');`;
-    comment = '// Adds click handlers for selecting multiple options with checkboxes';
-  } else {
-    script = `tlDropdownSingleScript('${IDS.btnList}');`;
-    comment = '// Adds click handlers and state management for selecting a single option';
-  }
+  const scriptType =
+    filter && multiselect
+      ? 'filterMulti'
+      : filter
+      ? 'filterSingle'
+      : multiselect
+      ? 'multi'
+      : 'single';
 
-  return `<script>\n  ${comment}\n  ${script}\n</script>`;
+  const { fn, comment } = scripts[scriptType];
+  return `<script>\n  ${comment}\n  ${fn}\n</script>`;
 }
 
 const Template = (props: TemplateProps): string => {
@@ -380,8 +334,8 @@ const Template = (props: TemplateProps): string => {
 
 export default {
   title: 'Tegel Light (CSS)/Dropdown',
+  includeStories: ['Default'],
   parameters: { layout: 'centered' },
-  includeStories: /^Default$/,
   argTypes: {
     select: { name: 'Select', control: { type: 'boolean' }, defaultValue: false },
     filter: {
