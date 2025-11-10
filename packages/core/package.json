@@ -397,7 +397,7 @@
   },
   "dependencies": {
     "@popperjs/core": "2.11.8",
-    "@stencil/core": "4.35.0",
+    "@stencil/core": "4.36.0",
     "date-fns": "2.30.0",
     "vite": "^6.3.4"
   },
