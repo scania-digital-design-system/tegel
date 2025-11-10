@@ -8,10 +8,14 @@ export function tlDropdownSingleScript(menuId: string): void {
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
   const button = root?.querySelector<HTMLElement>('.tl-dropdown__button');
-  const valueDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__button-value');
+  const textDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__text');
   if (!root || !button) return;
 
-  // State management
+  list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((option) => {
+    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
+    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
+  });
+
   const toggleDropdown = () => {
     const isOpen = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
@@ -27,14 +31,12 @@ export function tlDropdownSingleScript(menuId: string): void {
     });
 
     selectedOption.classList.add('tl-dropdown__option--selected');
-
-    if (valueDisplay) valueDisplay.textContent = selectedOption.textContent?.trim() || '';
+    if (textDisplay) textDisplay.textContent = selectedOption.textContent?.trim() || '';
 
     closeDropdown();
     button.focus();
   };
 
-  // Event listeners
   button.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleDropdown();
@@ -50,38 +52,46 @@ export function tlDropdownSingleScript(menuId: string): void {
     }, 20);
   });
 
-  list.addEventListener('mousedown', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    );
-    if (clickedOption) {
-      e.preventDefault();
-      selectOption(clickedOption);
-    }
-  });
-
   list.addEventListener('click', (e) => {
     const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
       '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
     );
     if (clickedOption) selectOption(clickedOption);
   });
+
+  list.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const focusedOption = document.activeElement?.closest<HTMLElement>(
+        '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+      );
+      if (focusedOption) {
+        e.preventDefault();
+        selectOption(focusedOption);
+        closeDropdown();
+      }
+    }
+  });
 }
 
-// ============================================================================
-// Multi-select button dropdown
-// Note: Requires additional SCSS for styling (tl-checkbox)
-// ============================================================================
 export function tlDropdownMultiScript(menuId: string): void {
   const list = document.getElementById(menuId);
   if (!list) return;
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
   const button = root?.querySelector<HTMLElement>('.tl-dropdown__button');
-  const valueDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__button-value');
+  const textDisplay = root?.querySelector<HTMLElement>('.tl-dropdown__text');
   if (!root || !button) return;
 
-  // State management
+  list.querySelectorAll<HTMLElement>('.tl-dropdown__option').forEach((option) => {
+    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
+    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
+
+    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      checkbox.setAttribute('tabindex', '-1');
+    }
+  });
+
   const toggleDropdown = () => {
     const isOpen = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
@@ -103,10 +113,21 @@ export function tlDropdownMultiScript(menuId: string): void {
       })
       .filter(Boolean);
 
-    if (valueDisplay) valueDisplay.textContent = selectedLabels.join(', ');
+    if (textDisplay) textDisplay.textContent = selectedLabels.join(', ');
   };
 
-  // Event listeners
+  const handleOptionToggle = (option: HTMLElement) => {
+    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      checkbox.checked = !checkbox.checked;
+      option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+      updateDisplay();
+
+      const changeEvent = new Event('change', { bubbles: true });
+      checkbox.dispatchEvent(changeEvent);
+    }
+  };
+
   button.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleDropdown();
@@ -122,25 +143,25 @@ export function tlDropdownMultiScript(menuId: string): void {
     }, 20);
   });
 
-  list.addEventListener('mousedown', (e) => {
+  list.addEventListener('click', (e) => {
     const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
       '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
     );
-    const checkbox = clickedOption?.querySelector<HTMLInputElement>('.tl-checkbox__input');
-
-    if (checkbox) {
+    if (clickedOption) {
       e.preventDefault();
-      checkbox.checked = !checkbox.checked;
-      clickedOption.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
-      updateDisplay();
+      handleOptionToggle(clickedOption);
     }
   });
 
-  list.addEventListener('click', (e) => {
-    const checkbox = (e.target as HTMLElement).closest<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      e.stopPropagation();
-      updateDisplay();
+  list.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const focusedOption = document.activeElement?.closest<HTMLElement>(
+        '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+      );
+      if (focusedOption) {
+        e.preventDefault();
+        handleOptionToggle(focusedOption);
+      }
     }
   });
 }
@@ -150,16 +171,16 @@ export function tlDropdownMultiScript(menuId: string): void {
 // Note: Requires additional SCSS for styling
 // ============================================================================
 export function tlDropdownFilterSingleScript(listId: string, inputId: string): void {
-  // Get elements
   const list = document.getElementById(listId) as HTMLElement | null;
   const input = document.getElementById(inputId) as HTMLInputElement | null;
   if (!list || !input) return;
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const chevron = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
-  const clearButton = input.parentElement?.querySelector(
+  const inputWrapper = input.parentElement;
+  const clearButton = inputWrapper?.querySelector(
     '.tl-dropdown__input-clear',
-  ) as HTMLElement | null;
+  ) as HTMLButtonElement | null;
+
   const noResultMessage = list.querySelector(
     '.tl-dropdown__option--no-result',
   ) as HTMLElement | null;
@@ -167,17 +188,22 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     list.querySelectorAll<HTMLElement>('.tl-dropdown__option:not(.tl-dropdown__option--no-result)'),
   );
 
-  // State
+  options.forEach((option) => {
+    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
+    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
+  });
+  if (noResultMessage) {
+    noResultMessage.setAttribute('tabindex', '-1');
+  }
+
   let selectedValue = '';
 
-  // Helper functions
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
   const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
 
-  const updateClearButtonState = () => {
-    const hasContent = input.value.trim() || selectedValue;
-    const isVisible = clearButton?.offsetParent !== null;
-    clearButton?.setAttribute('tabindex', isVisible && hasContent ? '0' : '-1');
+  const updateClearButtonTabindex = () => {
+    const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
+    clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
   };
 
   const filterOptions = () => {
@@ -187,13 +213,14 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     options.forEach((option) => {
       const optionText = option.textContent?.trim() || '';
       const isVisible = !searchQuery || optionText.toLowerCase().includes(searchQuery);
-      option.classList.toggle('tl-dropdown__option--visible', isVisible);
+      option.style.display = isVisible ? '' : 'none';
       if (isVisible) visibleCount++;
     });
 
-    // Show "no results" message if searching with no matches
     const showNoResults = !!searchQuery && visibleCount === 0;
-    noResultMessage?.classList.toggle('tl-dropdown__option--visible', showNoResults);
+    if (noResultMessage) {
+      noResultMessage.style.display = showNoResults ? '' : 'none';
+    }
   };
 
   const selectOption = (selectedOption: HTMLElement) => {
@@ -202,26 +229,29 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     });
 
     selectedOption.classList.add('tl-dropdown__option--selected');
-
     selectedValue = selectedOption.textContent?.trim() || '';
     input.value = selectedValue;
-    updateClearButtonState();
     input.blur();
   };
 
-  // Event listeners - Clear button
-  clearButton?.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleClearButton = () => {
     selectedValue = '';
     input.value = '';
     input.focus();
     filterOptions();
-    updateClearButtonState();
+    updateClearButtonTabindex();
+  };
+
+  clearButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleClearButton();
   });
 
-  // Event listeners - Chevron
-  chevron?.addEventListener('mousedown', (e) => {
+  inputWrapper?.addEventListener('mousedown', (e) => {
+    const target = e.target as HTMLElement;
+    if (target === input || target.closest('.tl-dropdown__input-clear')) return;
+
     e.preventDefault();
     e.stopPropagation();
     const isOpen = input.getAttribute('aria-expanded') === 'true';
@@ -236,21 +266,25 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     }
   });
 
-  // Event listeners - Input
   input.addEventListener('focus', () => {
     openDropdown();
-    if (selectedValue) input.value = ''; // Clear to allow filtering
+    if (selectedValue) input.value = '';
     filterOptions();
-    updateClearButtonState();
+    updateClearButtonTabindex();
   });
 
   input.addEventListener('input', () => {
     filterOptions();
-    updateClearButtonState();
+    updateClearButtonTabindex();
   });
 
-  // Event listeners - Options
-  list.addEventListener('mousedown', (e) => {
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      updateClearButtonTabindex();
+    }
+  });
+
+  list.addEventListener('click', (e) => {
     const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
       '.tl-dropdown__option:not(.tl-dropdown__option--no-result):not(.tl-dropdown__option--disabled)',
     );
@@ -260,20 +294,20 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
     }
   });
 
-  // Event listeners - Focus management
   root?.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {
       const newFocus = (e.relatedTarget as Node) || document.activeElement;
-      if (!root.contains(newFocus)) {
+      const isClearButton = clearButton && newFocus === clearButton;
+
+      if (!root.contains(newFocus) && !isClearButton) {
         closeDropdown();
-        if (selectedValue) input.value = selectedValue; // Restore selected value
-        updateClearButtonState();
+        if (selectedValue) input.value = selectedValue;
       }
     }, 20);
   });
 
-  // Initialize
   filterOptions();
+  updateClearButtonTabindex();
 }
 
 // ============================================================================
@@ -286,14 +320,30 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
   if (!list || !input) return;
 
   const root = list.closest('.tl-dropdown') as HTMLElement | null;
-  const chevron = input.parentElement?.querySelector('.tl-dropdown__chevron') as HTMLElement | null;
-  const clearButton = input.parentElement?.querySelector(
+  const inputWrapper = input.parentElement;
+  const clearButton = inputWrapper?.querySelector(
     '.tl-dropdown__input-clear',
-  ) as HTMLElement | null;
+  ) as HTMLButtonElement | null;
+
   const options = Array.from(list.querySelectorAll<HTMLElement>('.tl-dropdown__option'));
+
+  options.forEach((option) => {
+    const isDisabled = option.classList.contains('tl-dropdown__option--disabled');
+    option.setAttribute('tabindex', isDisabled ? '-1' : '0');
+
+    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      checkbox.setAttribute('tabindex', '-1');
+    }
+  });
 
   const openDropdown = () => input.setAttribute('aria-expanded', 'true');
   const closeDropdown = () => input.setAttribute('aria-expanded', 'false');
+
+  const updateClearButtonTabindex = () => {
+    const isVisible = input.getAttribute('aria-expanded') === 'true' && input.value.trim() !== '';
+    clearButton?.setAttribute('tabindex', isVisible ? '0' : '-1');
+  };
 
   const getSelectedValues = () => {
     const selectedLabels = Array.from(
@@ -309,29 +359,21 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
     return selectedLabels.join(', ');
   };
 
-  const updateClearButtonState = () => {
-    const hasContent = input.value.trim() || getSelectedValues();
-    const isVisible = clearButton?.offsetParent !== null;
-    clearButton?.setAttribute('tabindex', isVisible && hasContent ? '0' : '-1');
-  };
-
   const filterOptions = () => {
     const searchQuery = input.value.toLowerCase().trim();
     options.forEach((option) => {
       const optionText = option.textContent?.trim() || '';
       const isVisible = !searchQuery || optionText.toLowerCase().includes(searchQuery);
-      option.classList.toggle('tl-dropdown__option--visible', isVisible);
+      option.style.display = isVisible ? '' : 'none';
     });
   };
 
   const updateDisplay = () => {
     input.value = getSelectedValues();
-    updateClearButtonState();
+    updateClearButtonTabindex();
   };
 
-  clearButton?.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleClearButton = () => {
     list.querySelectorAll<HTMLInputElement>('.tl-checkbox__input:checked').forEach((cb) => {
       cb.checked = false;
       cb.closest('.tl-dropdown__option')?.classList.remove('tl-dropdown__option--selected');
@@ -339,10 +381,31 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
     input.value = '';
     input.focus();
     filterOptions();
-    updateClearButtonState();
+    updateClearButtonTabindex();
+  };
+
+  const handleOptionToggle = (option: HTMLElement) => {
+    const checkbox = option.querySelector<HTMLInputElement>('.tl-checkbox__input');
+    if (checkbox) {
+      checkbox.checked = !checkbox.checked;
+      option.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
+      updateDisplay();
+
+      const changeEvent = new Event('change', { bubbles: true });
+      checkbox.dispatchEvent(changeEvent);
+    }
+  };
+
+  clearButton?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    handleClearButton();
   });
 
-  chevron?.addEventListener('mousedown', (e) => {
+  inputWrapper?.addEventListener('mousedown', (e) => {
+    const target = e.target as HTMLElement;
+    if (target === input || target.closest('.tl-dropdown__input-clear')) return;
+
     e.preventDefault();
     e.stopPropagation();
     const isOpen = input.getAttribute('aria-expanded') === 'true';
@@ -362,46 +425,54 @@ export function tlDropdownFilterMultiScript(listId: string, inputId: string): vo
     const selectedText = getSelectedValues();
     if (selectedText) input.value = '';
     filterOptions();
-    updateClearButtonState();
+    updateClearButtonTabindex();
   });
 
   input.addEventListener('input', () => {
     filterOptions();
-    updateClearButtonState();
+    updateClearButtonTabindex();
   });
 
-  list.addEventListener('mousedown', (e) => {
-    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
-      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
-    );
-    const checkbox = clickedOption?.querySelector<HTMLInputElement>('.tl-checkbox__input');
-
-    if (checkbox) {
-      e.preventDefault();
-      checkbox.checked = !checkbox.checked;
-      clickedOption.classList.toggle('tl-dropdown__option--selected', checkbox.checked);
-      updateDisplay();
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      updateClearButtonTabindex();
     }
   });
 
   list.addEventListener('click', (e) => {
-    const checkbox = (e.target as HTMLElement).closest<HTMLInputElement>('.tl-checkbox__input');
-    if (checkbox) {
-      e.stopPropagation();
-      updateDisplay();
+    const clickedOption = (e.target as HTMLElement).closest<HTMLElement>(
+      '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+    );
+    if (clickedOption) {
+      e.preventDefault();
+      handleOptionToggle(clickedOption);
+    }
+  });
+
+  list.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      const focusedOption = document.activeElement?.closest<HTMLElement>(
+        '.tl-dropdown__option:not(.tl-dropdown__option--disabled)',
+      );
+      if (focusedOption) {
+        e.preventDefault();
+        handleOptionToggle(focusedOption);
+      }
     }
   });
 
   root?.addEventListener('focusout', (e: FocusEvent) => {
     setTimeout(() => {
       const newFocus = (e.relatedTarget as Node) || document.activeElement;
-      if (!root.contains(newFocus)) {
+      const isClearButton = clearButton && newFocus === clearButton;
+
+      if (!root.contains(newFocus) && !isClearButton) {
         closeDropdown();
         input.value = getSelectedValues();
-        updateClearButtonState();
       }
     }, 20);
   });
 
   filterOptions();
+  updateClearButtonTabindex();
 }
