@@ -13,7 +13,7 @@ import inheritAttributes from '../../utils/inheritAttributes';
   scoped: true,
 })
 export class TdsTooltip {
-  @Element() host: HTMLTdsTooltipElement;
+  @Element() host: HTMLElement;
 
   /** In case Tooltip contains only text, no HTML, a text can be passed by this prop */
   @Prop() text: string = '';
@@ -112,11 +112,9 @@ export class TdsTooltip {
           show={this.show}
           placement={this.placement}
           autoHide={false}
-          // @ts-ignore
           onInternalTdsShow={() => {
             this.show = true;
           }}
-          // @ts-ignore
           onInternalTdsClose={() => {
             this.show = false;
           }}

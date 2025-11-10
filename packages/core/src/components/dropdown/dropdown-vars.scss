@@ -40,7 +40,7 @@
 }
 
 .tds-mode-dark {
-  --tds-dropdown-bg: var(--tds-grey-850);
+  --tds-dropdown-bg: var(--tds-grey-900);
   --tds-dropdown-border-bottom: var(--tds-grey-350);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-50);
   --tds-dropdown-value-color: var(--tds-grey-50);
@@ -60,11 +60,11 @@
   --tds-dropdown-clear-icon-hover-color: var(--tds-grey-400);
 
   .tds-mode-variant-primary {
-    --tds-dropdown-bg: var(--tds-grey-850);
+    --tds-dropdown-bg: var(--tds-grey-900);
   }
 
   .tds-mode-variant-secondary {
-    --tds-dropdown-bg: var(--tds-grey-900);
+    --tds-dropdown-bg: var(--tds-grey-850);
   }
 
   tds-table-footer {
