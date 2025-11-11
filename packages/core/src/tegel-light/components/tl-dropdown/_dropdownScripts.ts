@@ -70,7 +70,7 @@ function setupInputWrapperToggle(
 ) {
   inputWrapper?.addEventListener('mousedown', (e) => {
     const target = e.target as HTMLElement;
-    if (target === input || target.closest('.tl-dropdown__input-clear')) return;
+    if (target === input || target.closest('.tl-dropdown__input-clear') || input.disabled) return;
 
     e.preventDefault();
     e.stopPropagation();
