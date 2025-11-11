@@ -4,7 +4,8 @@
   "description": "Angular wrappers for Tegel package",
   "main": "dist",
   "files": [
-    "dist"
+    "dist",
+    "scripts"
   ],
   "scripts": {
     "ng": "ng",
