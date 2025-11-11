@@ -1,10 +1,10 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 import { initDropdownKeyboard } from './_dropdownKeyboard';
 import {
-  tlDropdownSingleScript as _tlDropdownSingleScript,
-  tlDropdownMultiScript as _tlDropdownMultiScript,
-  tlDropdownFilterSingleScript as _tlDropdownFilterSingleScript,
-  tlDropdownFilterMultiScript as _tlDropdownFilterMultiScript,
+  tlDropdownSingleScriptDemo as _tlDropdownSingleScriptDemo,
+  tlDropdownMultiScriptDemo as _tlDropdownMultiScriptDemo,
+  tlDropdownFilterSingleScriptDemo as _tlDropdownFilterSingleScriptDemo,
+  tlDropdownFilterMultiScriptDemo as _tlDropdownFilterMultiScriptDemo,
 } from './_dropdownScripts';
 
 if (typeof window !== 'undefined') {
@@ -12,21 +12,22 @@ if (typeof window !== 'undefined') {
 }
 
 // Re-export scripts for use in stories
-export const tlDropdownSingleScript = _tlDropdownSingleScript;
-export const tlDropdownMultiScript = _tlDropdownMultiScript;
-export const tlDropdownFilterSingleScript = _tlDropdownFilterSingleScript;
-export const tlDropdownFilterMultiScript = _tlDropdownFilterMultiScript;
+export const tlDropdownSingleScriptDemo = _tlDropdownSingleScriptDemo;
+export const tlDropdownMultiScriptDemo = _tlDropdownMultiScriptDemo;
+export const tlDropdownFilterSingleScriptDemo = _tlDropdownFilterSingleScriptDemo;
+export const tlDropdownFilterMultiScriptDemo = _tlDropdownFilterMultiScriptDemo;
 
 // Make functions globally available for script tags
 if (typeof window !== 'undefined') {
-  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownSingleScript =
-    _tlDropdownSingleScript;
-  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownMultiScript =
-    _tlDropdownMultiScript;
-  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownFilterSingleScript =
-    _tlDropdownFilterSingleScript;
-  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownFilterMultiScript =
-    _tlDropdownFilterMultiScript;
+  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownSingleScriptDemo =
+    _tlDropdownSingleScriptDemo;
+  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownMultiScriptDemo =
+    _tlDropdownMultiScriptDemo;
+  (
+    window as Window & typeof globalThis & Record<string, unknown>
+  ).tlDropdownFilterSingleScriptDemo = _tlDropdownFilterSingleScriptDemo;
+  (window as Window & typeof globalThis & Record<string, unknown>).tlDropdownFilterMultiScriptDemo =
+    _tlDropdownFilterMultiScriptDemo;
 }
 
 export const OPTIONS = ['Option 1', 'Option 2'] as const;
@@ -293,21 +294,24 @@ function getDropdownScript(props: {
 
   const scripts = {
     filterMulti: {
-      fn: `tlDropdownFilterMultiScript('${IDS.filterList}', '${IDS.filterInput}');`,
+      fn: `tlDropdownFilterMultiScriptDemo('${IDS.filterList}', '${IDS.filterInput}');`,
       comment:
-        '// Adds search/filter functionality and checkbox handling for selecting multiple items',
+        '// For demo purposes. Adds search/filter functionality and checkbox handling for selecting multiple items',
     },
     filterSingle: {
-      fn: `tlDropdownFilterSingleScript('${IDS.filterList}', '${IDS.filterInput}');`,
-      comment: '// Adds search/filter functionality for selecting a single option',
+      fn: `tlDropdownFilterSingleScriptDemo('${IDS.filterList}', '${IDS.filterInput}');`,
+      comment:
+        '// For demo purposes: Adds search/filter functionality for selecting a single option',
     },
     multi: {
-      fn: `tlDropdownMultiScript('${IDS.multi}');`,
-      comment: '// Adds click handlers for selecting multiple options with checkboxes',
+      fn: `tlDropdownMultiScriptDemo('${IDS.multi}');`,
+      comment:
+        '// For demo purposes: Adds click handlers for selecting multiple options with checkboxes',
     },
     single: {
-      fn: `tlDropdownSingleScript('${IDS.btnList}');`,
-      comment: '// Adds click handlers and state management for selecting a single option',
+      fn: `tlDropdownSingleScriptDemo('${IDS.btnList}');`,
+      comment:
+        '// For demo purposes. Adds click handlers and state management for selecting a single option',
     },
   };
 

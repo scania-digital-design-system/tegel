@@ -173,7 +173,7 @@ function setupButtonDropdownEvents(
   setupClickOutside(root, closeDropdown);
 }
 
-export function tlDropdownSingleScript(menuId: string): void {
+export function tlDropdownSingleScriptDemo(menuId: string): void {
   const list = document.getElementById(menuId);
   if (!list) return;
 
@@ -216,7 +216,7 @@ export function tlDropdownSingleScript(menuId: string): void {
   );
 }
 
-export function tlDropdownMultiScript(menuId: string): void {
+export function tlDropdownMultiScriptDemo(menuId: string): void {
   const list = document.getElementById(menuId);
   if (!list) return;
 
@@ -254,7 +254,7 @@ export function tlDropdownMultiScript(menuId: string): void {
   );
 }
 
-export function tlDropdownFilterSingleScript(listId: string, inputId: string): void {
+export function tlDropdownFilterSingleScriptDemo(listId: string, inputId: string): void {
   const list = document.getElementById(listId) as HTMLElement | null;
   const input = document.getElementById(inputId) as HTMLInputElement | null;
   if (!list || !input) return;
@@ -351,7 +351,7 @@ export function tlDropdownFilterSingleScript(listId: string, inputId: string): v
   updateClearButtonTabindex();
 }
 
-export function tlDropdownFilterMultiScript(listId: string, inputId: string): void {
+export function tlDropdownFilterMultiScriptDemo(listId: string, inputId: string): void {
   const list = document.getElementById(listId) as HTMLElement | null;
   const input = document.getElementById(inputId) as HTMLInputElement | null;
   if (!list || !input) return;
