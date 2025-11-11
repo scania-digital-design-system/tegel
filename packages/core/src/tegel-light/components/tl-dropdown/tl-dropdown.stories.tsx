@@ -115,8 +115,8 @@ export function getMultiselectMarkup(
       </div>
     </li>`;
 
-  const items = opts.map((o, i) => checkboxItem(o, `cb-${IDS.multi}-${i}`)).join('');
-  const disabledItem = checkboxItem('Option disabled', `cb-${IDS.multi}-disabled`, true);
+  const items = opts.map((o, i) => checkboxItem(o, `${IDS.multi}-${i}`)).join('');
+  const disabledItem = checkboxItem('Option disabled', `${IDS.multi}-disabled`, true);
 
   return `
     <button type="button" class="tl-dropdown__button" ${
@@ -149,11 +149,11 @@ export function getFilterMarkup(
     </li>`;
 
   const baseItems = multiselect
-    ? opts.map((o, i) => checkboxItem(o, `cb-${IDS.filterList}-${i}`)).join('')
+    ? opts.map((o, i) => checkboxItem(o, `${IDS.filterList}-${i}`)).join('')
     : opts.map((o) => `<li class="tl-dropdown__option" role="option">${o}</li>`).join('');
 
   const disabledItem = multiselect
-    ? checkboxItem('Option disabled', `cb-${IDS.filterList}-disabled`, true)
+    ? checkboxItem('Option disabled', `${IDS.filterList}-disabled`, true)
     : '<li class="tl-dropdown__option tl-dropdown__option--disabled" role="option">Option disabled</li>';
 
   const noResult = multiselect
