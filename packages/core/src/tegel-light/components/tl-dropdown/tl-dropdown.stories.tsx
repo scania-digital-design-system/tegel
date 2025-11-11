@@ -337,7 +337,7 @@ export default {
   includeStories: ['Default'],
   parameters: { layout: 'centered' },
   argTypes: {
-    select: { name: 'Select', control: { type: 'boolean' }, defaultValue: false },
+    select: { name: 'Select', control: { type: 'boolean' } },
     filter: {
       name: 'Filter',
       control: { type: 'boolean' },
@@ -372,10 +372,12 @@ export default {
       name: 'Open direction',
       control: { type: 'radio' },
       options: ['Down', 'Up'],
+      if: { arg: 'select', eq: false },
       defaultValue: 'Down',
     },
   },
   args: {
+    select: false,
     filter: false,
     multiselect: false,
     size: 'Large',
@@ -387,7 +389,6 @@ export default {
     error: false,
     disabled: false,
     direction: 'Down',
-    select: false,
   },
 };
 
