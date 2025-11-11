@@ -301,7 +301,8 @@
 )
 )
 .tl-dropdown__label,
-.tl-dropdown:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label {
+.tl-dropdown--label-inside:has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown__label {
   @include detail-07;
 
   color: var(--dropdown-label-inside-active, var(--dropdown-label-inside));
@@ -317,7 +318,8 @@
 )
 )
 .tl-dropdown__label,
-.tl-dropdown--lg:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label {
+.tl-dropdown--lg.tl-dropdown--label-inside:has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown__label {
   top: 12.5px;
 }
 
@@ -329,7 +331,8 @@
 )
 )
 .tl-dropdown__label,
-.tl-dropdown--md:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label {
+.tl-dropdown--md.tl-dropdown--label-inside:has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown__label {
   top: 8.5px;
 }
 
@@ -341,7 +344,8 @@
 )
 )
 .tl-dropdown__label,
-.tl-dropdown--sm:has(.tl-dropdown__select option:not([value='']):checked) .tl-dropdown__label {
+.tl-dropdown--sm.tl-dropdown--label-inside:has(.tl-dropdown__select option:not([value='']):checked)
+.tl-dropdown__label {
   display: none;
 }
 
@@ -419,6 +423,13 @@
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.2s;
+
+  .tl-dropdown--dropup & {
+    top: auto;
+    bottom: 100%;
+    border-radius: var(--dropdown-list-border-radius-up, var(--dropdown-border-radius-up));
+    transform-origin: bottom;
+  }
 }
 
 .tl-dropdown:has(.tl-dropdown__button[aria-expanded='true']) .tl-dropdown__list,
@@ -427,15 +438,6 @@
   transform: scaleY(1);
   pointer-events: auto;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0s;
-}
-
-.tl-dropdown--dropup {
-  .tl-dropdown__list {
-    top: auto;
-    bottom: 100%;
-    border-radius: var(--dropdown-list-border-radius-up, var(--dropdown-border-radius-up));
-    transform-origin: bottom;
-  }
 }
 
 .tl-dropdown:has(.tl-dropdown__helper) .tl-dropdown__list {
