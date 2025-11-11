@@ -183,7 +183,10 @@
   pointer-events: none;
   transition: transform 0.2s;
 
-  .tl-dropdown--disabled & {
+  .tl-dropdown--disabled &,
+  .tl-dropdown:has(.tl-dropdown__select:disabled) &,
+  .tl-dropdown:has(.tl-dropdown__button:disabled) &,
+  .tl-dropdown:has(.tl-dropdown__input:disabled) & {
     background-color: var(--dropdown-disabled);
   }
 }
@@ -553,7 +556,9 @@
   position: relative;
 
   .tl-dropdown--disabled &,
-  .tl-dropdown:has(.tl-dropdown__select:disabled) & {
+  .tl-dropdown:has(.tl-dropdown__select:disabled) &,
+  .tl-dropdown:has(.tl-dropdown__button:disabled) &,
+  .tl-dropdown:has(.tl-dropdown__input:disabled) & {
     color: var(--color-foreground-text-disabled);
   }
 
@@ -572,7 +577,9 @@
   }
 
   .tl-dropdown--error.tl-dropdown--disabled &::before,
-  .tl-dropdown--error:has(.tl-dropdown__select:disabled) &::before {
+  .tl-dropdown--error:has(.tl-dropdown__select:disabled) &::before,
+  .tl-dropdown--error:has(.tl-dropdown__button:disabled) &::before,
+  .tl-dropdown--error:has(.tl-dropdown__input:disabled) &::before {
     background-color: var(--color-foreground-text-disabled);
   }
 
