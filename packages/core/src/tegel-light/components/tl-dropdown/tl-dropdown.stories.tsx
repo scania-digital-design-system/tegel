@@ -296,22 +296,19 @@ function getDropdownScript(props: {
     filterMulti: {
       fn: `tlDropdownFilterMultiScriptDemo('${IDS.filterList}', '${IDS.filterInput}');`,
       comment:
-        '// For demo purposes. Adds search/filter functionality and checkbox handling for selecting multiple items',
+        '//Adds search/filter functionality and checkbox handling for selecting multiple items',
     },
     filterSingle: {
       fn: `tlDropdownFilterSingleScriptDemo('${IDS.filterList}', '${IDS.filterInput}');`,
-      comment:
-        '// For demo purposes: Adds search/filter functionality for selecting a single option',
+      comment: '//Adds search/filter functionality for selecting a single option',
     },
     multi: {
       fn: `tlDropdownMultiScriptDemo('${IDS.multi}');`,
-      comment:
-        '// For demo purposes: Adds click handlers for selecting multiple options with checkboxes',
+      comment: '//Adds click handlers for selecting multiple options with checkboxes',
     },
     single: {
       fn: `tlDropdownSingleScriptDemo('${IDS.btnList}');`,
-      comment:
-        '// For demo purposes. Adds click handlers and state management for selecting a single option',
+      comment: '//Adds click handlers and state management for selecting a single option',
     },
   };
 
@@ -325,7 +322,7 @@ function getDropdownScript(props: {
       : 'single';
 
   const { fn, comment } = scripts[scriptType];
-  return `<script>\n  ${comment}\n  ${fn}\n</script>`;
+  return `<!-- Script tag for demo purposes -->\n<script>\n  ${comment}\n  ${fn}\n</script>`;
 }
 
 const Template = (props: TemplateProps): string => {
