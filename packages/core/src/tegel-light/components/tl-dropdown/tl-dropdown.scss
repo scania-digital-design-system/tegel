@@ -688,4 +688,8 @@
   &:focus-visible {
     border-color: var(--dropdown-error-focus);
   }
+
+  &:disabled {
+    border-color: transparent;
+  }
 }
