@@ -9,7 +9,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesig
   shadow: true,
 })
 export class TdsTableBodyInputWrapper {
-  @Element() host: HTMLTdsTableBodyInputWrapperElement;
+  @Element() host: HTMLElement;
 
   /** Controls if the edit icon is shown */
   @Prop() showIcon: boolean = true;
@@ -63,8 +63,8 @@ export class TdsTableBodyInputWrapper {
 
   private validateSlot() {
     const children = Array.from(this.host.children).filter(
-      (element): element is HTMLInputElement => element.tagName === 'INPUT',
-    );
+      (element) => element.tagName === 'INPUT',
+    ) as HTMLInputElement[];
 
     if (children.length !== 1) {
       console.warn('TABLE-BODY-INPUT-WRAPPER: Wrapper only accepts input as children.');
@@ -92,16 +92,14 @@ export class TdsTableBodyInputWrapper {
 
   private moveToNextEditableCell() {
     const allEditableCells = Array.from(
-      document.querySelectorAll<HTMLTdsTableBodyInputWrapperElement>(
-        'tds-table-body-input-wrapper',
-      ),
-    );
+      document.querySelectorAll('tds-table-body-input-wrapper'),
+    ) as HTMLTdsTableBodyInputWrapperElement[];
 
-    const currentIndex = allEditableCells.indexOf(this.host);
+    const currentIndex = allEditableCells.indexOf(this.host as HTMLTdsTableBodyInputWrapperElement);
 
     if (currentIndex !== -1 && currentIndex < allEditableCells.length - 1) {
       const nextCell = allEditableCells[currentIndex + 1];
-      const nextInput = nextCell.querySelector<HTMLInputElement>('input');
+      const nextInput = nextCell.querySelector('input') as HTMLInputElement;
       if (nextInput) {
         nextInput.focus();
       }
