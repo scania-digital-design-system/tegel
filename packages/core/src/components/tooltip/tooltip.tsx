@@ -112,11 +112,9 @@ export class TdsTooltip {
           show={this.show}
           placement={this.placement}
           autoHide={false}
-          // @ts-ignore
           onInternalTdsShow={() => {
             this.show = true;
           }}
-          // @ts-ignore
           onInternalTdsClose={() => {
             this.show = false;
           }}
