@@ -33,7 +33,7 @@ on:
         description: 'Dry version'
         required: false
         type: boolean
-        default: false
+        default: true
 
   schedule:
     - cron: '0 3 * * 1-5' #3AM every weekday
