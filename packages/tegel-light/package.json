@@ -32,6 +32,7 @@
     "./tl-checkbox.css": "./dist/tl-checkbox.css",
     "./tl-chip.css": "./dist/tl-chip.css",
     "./tl-divider.css": "./dist/tl-divider.css",
+    "./tl-dropdown.css": "./dist/tl-dropdown.css",
     "./tl-header-brand-symbol.css": "./dist/tl-header-brand-symbol.css",
     "./tl-header-item.css": "./dist/tl-header-item.css",
     "./tl-header-title.css": "./dist/tl-header-title.css",
@@ -50,7 +51,9 @@
     "./tl-toast.css": "./dist/tl-toast.css",
     "./tl-toggle.css": "./dist/tl-toggle.css",
     "./tl-card.css": "./dist/tl-card.css",
-    "./tl-table.css": "./dist/tl-table.css"
+    "./tl-table.css": "./dist/tl-table.css",
+    "./tl-datetime.css": "./dist/tl-datetime.css",
+    "./tl-tooltip.css": "./dist/tl-tooltip.css"
   },
   "files": [
     "dist/"
