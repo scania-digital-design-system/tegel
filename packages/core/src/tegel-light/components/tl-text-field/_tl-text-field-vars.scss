@@ -52,11 +52,12 @@
   /* Textfield: border radius */
   --text-field-border-radius: 4px 4px 0 0;
 
-  /* Textfield: box shadow */
+  /* Textfield: box-shadow (inset border) */
   --text-field-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
   --text-field-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
   --text-field-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
   --text-field-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
+  --text-field-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
   --text-field-box-shadow-error-focus: 0 -2px 0 0 var(--color-system-danger-default);
   --text-field-box-shadow-success: 0 -1px 0 0 var(--color-foreground-border-strong);
 
@@ -74,12 +75,13 @@
   /* Textfield: units */
   --text-field-border-radius: 4px 4px 4px 4px;
 
-  /* Textfield: box shadow */
+  /* Textfield: box-shadow (inset border all sides) */
   --text-field-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
   --text-field-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
   --text-field-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
   --text-field-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
   --text-field-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+  --text-field-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
   --text-field-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
 
   /* Textfield: focus outline */

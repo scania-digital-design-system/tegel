@@ -153,15 +153,15 @@ const Template = ({
 
   const prefixContent = prefix
     ? prefixType === 'Text'
-      ? '<div class="tl-text-field__prefix--text">$</div>'
-      : '<div class="tl-text-field__prefix--icon"><span class="tl-icon tl-icon--info tl-icon--20"></span></div>'
+      ? '<span class="tl-text-field__prefix--text">$</span>'
+      : '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__prefix--icon"></span>'
     : '';
 
   const suffixContent =
     suffix && !readonly
       ? suffixType === 'Text'
-        ? '<div class="tl-text-field__suffix--text">$</div>'
-        : '<div class="tl-text-field__suffix--icon"><span class="tl-icon tl-icon--info tl-icon--20"></span></div>'
+        ? '<span class="tl-text-field__suffix--text">$</span>'
+        : '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__suffix--icon"></span>'
       : '';
 
   const readonlyIcon =

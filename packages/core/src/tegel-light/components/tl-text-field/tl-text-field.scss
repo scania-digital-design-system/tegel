@@ -12,13 +12,8 @@
   width: 100%;
   box-sizing: border-box;
   background-color: var(--text-field-background);
-  box-shadow: inset var(--text-field-box-shadow), 0 1px 0 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s;
   height: 56px;
-
-  &:hover {
-    box-shadow: inset var(--text-field-box-shadow-hover), 0 1px 0 0 rgba(0, 0, 0, 0.2);
-  }
 
   &--no-min-width {
     min-width: auto;
@@ -66,6 +61,33 @@
   color: var(--text-field-text);
   flex: 1;
   order: 2;
+  box-shadow: inset var(--text-field-box-shadow);
+  transition: box-shadow 0.2s;
+
+  .tl-text-field:hover & {
+    box-shadow: inset var(--text-field-box-shadow-hover);
+  }
+
+  &:focus {
+    box-shadow: inset var(--text-field-box-shadow-focus);
+  }
+
+  .tl-text-field--error & {
+    box-shadow: inset var(--text-field-box-shadow-error);
+
+    &:focus {
+      box-shadow: inset var(--text-field-box-shadow-error-focus);
+    }
+  }
+
+  .tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
+    box-shadow: inset var(--text-field-box-shadow-success);
+  }
+
+  .tl-text-field--disabled & {
+    box-shadow: none;
+    background-color: var(--text-field-background-disabled);
+  }
 
   .tl-text-field--lg & {
     padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
@@ -95,20 +117,40 @@
   }
 
   // Padding adjustments for prefix
-  .tl-text-field:has(.tl-text-field__prefix--icon) & {
-    padding-left: calc(16px + 24px + 8px);
+  .tl-text-field--lg:has(.tl-text-field__prefix--icon) & {
+    padding-left: calc(16px + 20px + 8px);
   }
 
-  .tl-text-field:has(.tl-text-field__prefix--text) & {
+  .tl-text-field--md:has(.tl-text-field__prefix--icon) &,
+  .tl-text-field--sm:has(.tl-text-field__prefix--icon) & {
+    padding-left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--lg:has(.tl-text-field__prefix--text) & {
+    padding-left: calc(16px + var(--text-field-prefix-width-text) + 8px);
+  }
+
+  .tl-text-field--md:has(.tl-text-field__prefix--text) &,
+  .tl-text-field--sm:has(.tl-text-field__prefix--text) & {
     padding-left: calc(16px + var(--text-field-prefix-width-text) + 8px);
   }
 
   // Padding adjustments for suffix
-  .tl-text-field:has(.tl-text-field__suffix--icon) & {
-    padding-right: calc(16px + 24px + 8px);
+  .tl-text-field--lg:has(.tl-text-field__suffix--icon) & {
+    padding-right: calc(16px + 20px + 8px);
   }
 
-  .tl-text-field:has(.tl-text-field__suffix--text) & {
+  .tl-text-field--md:has(.tl-text-field__suffix--icon) &,
+  .tl-text-field--sm:has(.tl-text-field__suffix--icon) & {
+    padding-right: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--lg:has(.tl-text-field__suffix--text) & {
+    padding-right: calc(16px + var(--text-field-prefix-width-text) + 8px);
+  }
+
+  .tl-text-field--md:has(.tl-text-field__suffix--text) &,
+  .tl-text-field--sm:has(.tl-text-field__suffix--text) & {
     padding-right: calc(16px + var(--text-field-prefix-width-text) + 8px);
   }
 }
@@ -141,22 +183,20 @@
   padding-top: var(--tds-spacing-element-4);
   display: flex;
   gap: 8px;
-  flex-basis: 100%;
+  position: relative;
 }
 
 .tl-text-field__textcounter {
-  @include detail-02;
+  @include detail-05;
 
   color: var(--text-field-textcounter);
-  float: right;
+  margin-left: auto;
 
   &--disabled {
     color: var(--text-field-textcounter-disabled);
   }
 
   &--divider {
-    @include detail-05;
-
     color: var(--text-field-textcounter-divider);
 
     &--disabled {
@@ -199,16 +239,6 @@
   transform: translateY(-50%);
 }
 
-// Focus state
-.tl-text-field:not(.tl-text-field--disabled):has(.tl-text-field__input:focus) {
-  box-shadow: inset var(--text-field-box-shadow-focus), 0 1px 0 0 rgba(0, 0, 0, 0.2);
-}
-
-// Error state focus
-.tl-text-field--error:not(.tl-text-field--disabled):has(.tl-text-field__input:focus) {
-  box-shadow: inset var(--text-field-box-shadow-error-focus), 0 1px 0 0 rgba(0, 0, 0, 0.2);
-}
-
 // Prefix-based label positioning
 .tl-text-field__prefix--icon ~ .tl-text-field__label-inside {
   left: calc(var(--text-field-label-inside-left) + var(--text-field-prefix-width-icon));
@@ -231,16 +261,8 @@
   top: 12px;
 }
 
-// Helper text counter positioning
-.tl-text-field__helper {
-  .tl-text-field__textcounter {
-    margin-left: auto;
-  }
-}
-
 // Disabled state - modifier styles in affected elements
 .tl-text-field--disabled {
-  box-shadow: none;
   pointer-events: none;
 }
 
@@ -263,12 +285,6 @@
 .tl-text-field__icon-readonly {
   .tl-text-field--disabled & {
     color: var(--text-field-label-disabled);
-  }
-}
-
-.tl-text-field__input {
-  .tl-text-field--disabled & {
-    background-color: var(--text-field-background-disabled);
   }
 }
 
@@ -317,19 +333,10 @@
   }
 }
 
-// Success state - modifier styles in affected elements
-.tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled) {
-  box-shadow: inset var(--text-field-box-shadow-success), 0 1px 0 0 rgba(0, 0, 0, 0.2);
-}
-
-// Error state - modifier styles in affected elements
+// Error state - modifier styles for helper text
 .tl-text-field__helper,
 .tl-text-field__textcounter {
   .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
     color: var(--text-field-helper-error);
   }
-}
-
-.tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) {
-  box-shadow: inset var(--text-field-box-shadow-error), 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
