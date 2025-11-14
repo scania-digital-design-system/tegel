@@ -7,9 +7,33 @@
   padding-bottom: 1px;
   display: block;
   min-width: 208px;
+  border-radius: var(--text-field-border-radius);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--text-field-background);
+  box-shadow: inset var(--text-field-box-shadow), 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s;
+  height: 56px;
+
+  &:hover {
+    box-shadow: inset var(--text-field-box-shadow-hover), 0 1px 0 0 rgba(0, 0, 0, 0.2);
+  }
 
   &--no-min-width {
     min-width: auto;
+  }
+
+  &--lg {
+    height: 56px;
+  }
+
+  &--md {
+    height: 48px;
+  }
+
+  &--sm {
+    height: 40px;
   }
 
   &--label-inside {
@@ -33,41 +57,6 @@
       }
     }
   }
-}
-
-// Elements
-.tl-text-field__wrapper {
-  box-shadow: var(--text-field-box-shadow), 0 1px 0 0 rgba(0, 0, 0, 0.2);
-  border-radius: var(--text-field-border-radius);
-  position: relative;
-  height: 56px;
-  box-sizing: border-box;
-  background-color: var(--text-field-background);
-  transition: box-shadow 200ms ease;
-
-  &:hover {
-    box-shadow: var(--text-field-box-shadow-hover);
-  }
-
-  .tl-text-field--lg & {
-    height: 56px;
-  }
-
-  .tl-text-field--md & {
-    height: 48px;
-  }
-
-  .tl-text-field--sm & {
-    height: 40px;
-  }
-}
-
-.tl-text-field__content {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  height: 100%;
 }
 
 .tl-text-field__input {
@@ -104,6 +93,24 @@
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
   }
+
+  // Padding adjustments for prefix
+  .tl-text-field:has(.tl-text-field__prefix--icon) & {
+    padding-left: calc(16px + 24px + 8px);
+  }
+
+  .tl-text-field:has(.tl-text-field__prefix--text) & {
+    padding-left: calc(16px + var(--text-field-prefix-width-text) + 8px);
+  }
+
+  // Padding adjustments for suffix
+  .tl-text-field:has(.tl-text-field__suffix--icon) & {
+    padding-right: calc(16px + 24px + 8px);
+  }
+
+  .tl-text-field:has(.tl-text-field__suffix--text) & {
+    padding-right: calc(16px + var(--text-field-prefix-width-text) + 8px);
+  }
 }
 
 .tl-text-field__label-outside {
@@ -125,24 +132,6 @@
   left: var(--text-field-label-inside-left, 16px);
   transition: all 0.1s ease;
   z-index: 1;
-}
-
-.tl-text-field__bar {
-  position: relative;
-  width: 100%;
-  left: 0;
-  z-index: 1;
-
-  &::after {
-    background: var(--text-field-bar-focus);
-    content: '';
-    height: 2px;
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    transform: scaleX(0);
-    transition: 0.35s ease transform;
-  }
 }
 
 .tl-text-field__helper {
@@ -181,8 +170,11 @@
 
   &--text,
   &--icon {
-    margin: 0 0 0 16px;
-    order: 1;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
   }
 }
 
@@ -191,8 +183,11 @@
 
   &--text,
   &--icon {
-    margin: 0 14px 0 0;
-    order: 3;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
   }
 }
 
@@ -205,25 +200,13 @@
 }
 
 // Focus state
-.tl-text-field__content:has(.tl-text-field__input:focus):not(.tl-text-field--disabled)
-.tl-text-field__wrapper {
-  outline: var(--text-field-focus-outline);
-  outline-offset: var(--text-field-focus-outline-offset);
-}
-
-// Bar animation on focus
-.tl-text-field__content:has(.tl-text-field__input:focus):not(.tl-text-field--disabled)
-~ .tl-text-field__bar::after {
-  transform: scaleX(1);
+.tl-text-field:not(.tl-text-field--disabled):has(.tl-text-field__input:focus) {
+  box-shadow: inset var(--text-field-box-shadow-focus), 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
 // Error state focus
-.tl-text-field__content:has(.tl-text-field__input:focus).tl-text-field--error:not(
-.tl-text-field--disabled
-)
-.tl-text-field__wrapper {
-  outline: var(--text-field-focus-outline-error);
-  outline-offset: var(--text-field-focus-outline-offset);
+.tl-text-field--error:not(.tl-text-field--disabled):has(.tl-text-field__input:focus) {
+  box-shadow: inset var(--text-field-box-shadow-error-focus), 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
 // Prefix-based label positioning
@@ -256,11 +239,9 @@
 }
 
 // Disabled state - modifier styles in affected elements
-.tl-text-field__wrapper {
-  .tl-text-field--disabled & {
-    box-shadow: none;
-    pointer-events: none;
-  }
+.tl-text-field--disabled {
+  box-shadow: none;
+  pointer-events: none;
 }
 
 .tl-text-field__prefix--text,
@@ -297,12 +278,6 @@
   }
 }
 
-.tl-text-field__bar::after {
-  .tl-text-field--disabled & {
-    transform: scaleX(0) !important;
-  }
-}
-
 .tl-text-field__label-inside {
   .tl-text-field--disabled.tl-text-field--label-inside & {
     @include detail-07;
@@ -319,17 +294,16 @@
 }
 
 // Read only state - modifier styles in affected elements
-.tl-text-field {
+.tl-text-field__input {
   .tl-text-field--readonly & {
     user-select: auto;
     caret-color: transparent;
     cursor: default;
+    background-color: transparent;
   }
-}
 
-.tl-text-field__wrapper {
-  .tl-text-field--readonly & {
-    border-bottom-color: var(--text-field-border-bottom-readonly);
+  .tl-text-field--readonly:has(.tl-text-field__icon-readonly) & {
+    padding-right: 54px;
   }
 }
 
@@ -343,21 +317,9 @@
   }
 }
 
-.tl-text-field__input {
-  .tl-text-field--readonly & {
-    background-color: transparent;
-  }
-
-  .tl-text-field--readonly:has(.tl-text-field__icon-readonly) & {
-    padding-right: 54px;
-  }
-}
-
 // Success state - modifier styles in affected elements
-.tl-text-field__wrapper {
-  .tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    box-shadow: var(--text-field-box-shadow-success);
-  }
+.tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled) {
+  box-shadow: inset var(--text-field-box-shadow-success), 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }
 
 // Error state - modifier styles in affected elements
@@ -368,15 +330,6 @@
   }
 }
 
-.tl-text-field__wrapper {
-  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    box-shadow: var(--text-field-box-shadow-error);
-  }
-}
-
-.tl-text-field__bar::before,
-.tl-text-field__bar::after {
-  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    background: var(--text-field-bar-error);
-  }
+.tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) {
+  box-shadow: inset var(--text-field-box-shadow-error), 0 1px 0 0 rgba(0, 0, 0, 0.2);
 }

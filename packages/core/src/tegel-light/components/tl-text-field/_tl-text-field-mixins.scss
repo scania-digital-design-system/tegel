@@ -64,9 +64,8 @@
 
 // Mixin for focus/input state selectors
 @mixin focus-input-state {
-  .tl-text-field__content:has(.tl-text-field__input:focus) .tl-text-field__label-inside,
-  .tl-text-field__content:has(.tl-text-field__input:not(:placeholder-shown))
-  .tl-text-field__label-inside {
+  .tl-text-field:has(.tl-text-field__input:focus) .tl-text-field__label-inside,
+  .tl-text-field:has(.tl-text-field__input:not(:placeholder-shown)) .tl-text-field__label-inside {
     @content;
   }
 }

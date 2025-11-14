@@ -198,16 +198,11 @@ const Template = ({
     <div class="demo-wrapper" style="max-width: 200px; height: 150px;">
       <div class="${componentClasses}">
         ${labelOutside}
-        <div class="tl-text-field__wrapper">
-          <div class="tl-text-field__content">
-            <input class="tl-text-field__input" ${inputAttrs} />
-            ${prefixContent}
-            ${suffixContent}
-            ${readonlyIcon}
-            ${labelInside}
-          </div>
-          <div class="tl-text-field__bar"></div>
-        </div>
+        <input class="tl-text-field__input" ${inputAttrs} />
+        ${prefixContent}
+        ${suffixContent}
+        ${readonlyIcon}
+        ${labelInside}
         ${helperContent}
       </div>
     </div>
