@@ -40,7 +40,7 @@
 | ----------- | ------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `tdsBlur`   | Blur event for the Text Field                                             | `CustomEvent<FocusEvent>`                                                               |
 | `tdsChange` | Change event for the Text Field                                           | `CustomEvent<any>`                                                                      |
-| `tdsError`  | Error event for the Text Field - emitted when value is clamped to min/max | `CustomEvent<{ originalValue: string; clampedValue: string; reason: "min" \| "max"; }>` |
+| `tdsError`  | Error event for the Text Field - emitted when value is clamped to min/max | `CustomEvent<{ originalValue: string; clampedValue: string; reason: "max" \| "min"; }>` |
 | `tdsFocus`  | Focus event for the Text Field                                            | `CustomEvent<FocusEvent>`                                                               |
 | `tdsInput`  | Input event for the Text Field                                            | `CustomEvent<InputEvent>`                                                               |
 

@@ -159,24 +159,31 @@ export class TdsTextField {
   tdsError: EventEmitter<{ originalValue: string; clampedValue: string; reason: 'min' | 'max' }>;
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
-  handleBlur(event): void {
+  handleBlur(event: FocusEvent): void {
     this.focusInput = false;
 
     /** Custom handling of number inputs when min/max are set */
     if (this.type === 'number' && this.textInput) {
-      const numericValue = Number(this.textInput.value);
+      const numericValue = this.textInput.valueAsNumber;
+      const minNum = this.min !== undefined ? Number(this.min) : undefined;
+      const maxNum = this.max !== undefined ? Number(this.max) : undefined;
 
-      if (!isNaN(numericValue) && this.textInput.value.trim() !== '') {
+      if (minNum !== undefined && maxNum !== undefined && minNum > maxNum) {
+        console.warn('tds-text-field: min value is greater than max value');
+        return;
+      }
+
+      if (!isNaN(numericValue)) {
         const originalValue = this.textInput.value;
         let clampedValue = originalValue;
         let clampReason: 'min' | 'max' | null = null;
 
-        if (this.min !== undefined && numericValue < Number(this.min)) {
+        if (minNum !== undefined && numericValue < minNum) {
           clampedValue = String(this.min);
           clampReason = 'min';
         }
 
-        if (this.max !== undefined && numericValue > Number(this.max)) {
+        if (maxNum !== undefined && numericValue > maxNum) {
           clampedValue = String(this.max);
           clampReason = 'max';
         }
