@@ -11,7 +11,6 @@
   position: relative;
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--text-field-background);
   transition: box-shadow 0.2s;
   height: 56px;
 
@@ -30,28 +29,6 @@
   &--sm {
     height: 40px;
   }
-
-  &--label-inside {
-    @include focus-input-state {
-      @include detail-07;
-
-      transition: 0.1s ease all;
-    }
-
-    // Size-specific positioning when focused or has content
-    &.tl-text-field--lg {
-      @include focus-input-state {
-        top: 9px;
-      }
-    }
-
-    &.tl-text-field--md,
-    &.tl-text-field--sm {
-      @include focus-input-state {
-        top: 8px;
-      }
-    }
-  }
 }
 
 .tl-text-field__input {
@@ -64,7 +41,7 @@
   box-shadow: inset var(--text-field-box-shadow);
   transition: box-shadow 0.2s;
 
-  .tl-text-field:hover & {
+  .tl-text-field:hover &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -80,7 +57,12 @@
     }
   }
 
-  .tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
+  .tl-text-field--error:hover &:not(:focus) {
+    box-shadow: inset var(--text-field-box-shadow-error-hover);
+  }
+
+  .tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled)
+  &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
@@ -102,16 +84,12 @@
   }
 
   .tl-text-field--label-inside.tl-text-field--lg & {
-    @include placeholder-label;
-
     padding-top: var(--tds-spacing-element-24);
     padding-bottom: 15px;
   }
 
   .tl-text-field--label-inside.tl-text-field--md &,
   .tl-text-field--label-inside.tl-text-field--sm & {
-    @include placeholder-label;
-
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
   }
@@ -127,12 +105,12 @@
   }
 
   .tl-text-field--lg:has(.tl-text-field__prefix--text) & {
-    padding-left: calc(16px + var(--text-field-prefix-width-text) + 8px);
+    padding-left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   .tl-text-field--md:has(.tl-text-field__prefix--text) &,
   .tl-text-field--sm:has(.tl-text-field__prefix--text) & {
-    padding-left: calc(16px + var(--text-field-prefix-width-text) + 8px);
+    padding-left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   // Padding adjustments for suffix
@@ -146,44 +124,73 @@
   }
 
   .tl-text-field--lg:has(.tl-text-field__suffix--text) & {
-    padding-right: calc(16px + var(--text-field-prefix-width-text) + 8px);
+    padding-right: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   .tl-text-field--md:has(.tl-text-field__suffix--text) &,
   .tl-text-field--sm:has(.tl-text-field__suffix--text) & {
-    padding-right: calc(16px + var(--text-field-prefix-width-text) + 8px);
+    padding-right: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 }
 
-.tl-text-field__label-outside {
-  > * {
+.tl-text-field__label {
+  .tl-text-field--label-outside & {
     @include detail-05;
 
     display: block;
     margin-bottom: var(--tds-spacing-element-8);
     color: var(--text-field-label);
   }
-}
 
-.tl-text-field__label-inside {
-  @include detail-02;
+  .tl-text-field--label-inside & {
+    @include detail-02;
 
-  position: absolute;
-  pointer-events: none;
-  color: var(--text-field-label-inside);
-  left: var(--text-field-label-inside-left, 16px);
-  transition: all 0.1s ease;
-  z-index: 1;
+    position: absolute;
+    pointer-events: none;
+    color: var(--text-field-label-inside);
+    left: var(--text-field-label-inside-left, 16px);
+    transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
+    transform-origin: top left;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .tl-text-field__helper {
   @include detail-05;
 
   color: var(--text-field-helper);
-  padding-top: var(--tds-spacing-element-4);
+  padding-top: 4px;
   display: flex;
   gap: 8px;
   position: relative;
+
+  .tl-text-field--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
+
+  .tl-text-field--error &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--text-field-error);
+    mask-image: var(--icon-info-svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+  }
+
+  .tl-text-field--error.tl-text-field--disabled &::before {
+    background-color: var(--color-foreground-text-disabled);
+  }
+
+  .tl-text-field--error & {
+    padding-left: 24px;
+  }
 }
 
 .tl-text-field__textcounter {
@@ -191,18 +198,6 @@
 
   color: var(--text-field-textcounter);
   margin-left: auto;
-
-  &--disabled {
-    color: var(--text-field-textcounter-disabled);
-  }
-
-  &--divider {
-    color: var(--text-field-textcounter-divider);
-
-    &--disabled {
-      color: var(--text-field-textcounter-divider);
-    }
-  }
 }
 
 .tl-text-field__prefix {
@@ -240,25 +235,32 @@
 }
 
 // Prefix-based label positioning
-.tl-text-field__prefix--icon ~ .tl-text-field__label-inside {
-  left: calc(var(--text-field-label-inside-left) + var(--text-field-prefix-width-icon));
+.tl-text-field__prefix--icon ~ .tl-text-field__label {
+  left: calc(var(--text-field-label-inside-left) + var(--text-field-affix-width-icon));
 }
 
-.tl-text-field__prefix--text ~ .tl-text-field__label-inside {
-  left: calc(var(--text-field-label-inside-left) + var(--text-field-prefix-width-text));
+.tl-text-field__prefix--text ~ .tl-text-field__label {
+  left: calc(var(--text-field-label-inside-left) + var(--text-field-affix-width-text));
 }
 
-// Size-specific label positioning
-.tl-text-field--lg .tl-text-field__label-inside {
-  top: 20px;
+// Focus/input state - label goes up and becomes smaller
+@include focus-input-state {
+  @include detail-07;
+
+  top: 7.5px;
+  transform: none;
 }
 
-.tl-text-field--md .tl-text-field__label-inside {
-  top: 16px;
+// Size-specific positioning when focused or has content
+.tl-text-field--lg {
+  @include focus-input-state {
+    top: 12.5px;
+  }
 }
 
-.tl-text-field--sm .tl-text-field__label-inside {
-  top: 12px;
+// Placeholder should always be transparent when label-inside is used
+.tl-text-field--label-inside .tl-text-field__input::placeholder {
+  color: transparent;
 }
 
 // Disabled state - modifier styles in affected elements
@@ -279,8 +281,7 @@
   }
 }
 
-.tl-text-field__label-outside > *,
-.tl-text-field__label-inside,
+.tl-text-field__label,
 .tl-text-field__helper,
 .tl-text-field__icon-readonly {
   .tl-text-field--disabled & {
@@ -290,11 +291,11 @@
 
 .tl-text-field__textcounter {
   .tl-text-field--disabled & {
-    color: var(--text-field-textcounter-disabled);
+    color: var(--color-foreground-text-disabled);
   }
 }
 
-.tl-text-field__label-inside {
+.tl-text-field__label {
   .tl-text-field--disabled.tl-text-field--label-inside & {
     @include detail-07;
 
@@ -337,6 +338,6 @@
 .tl-text-field__helper,
 .tl-text-field__textcounter {
   .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    color: var(--text-field-helper-error);
+    color: var(--text-field-error);
   }
 }

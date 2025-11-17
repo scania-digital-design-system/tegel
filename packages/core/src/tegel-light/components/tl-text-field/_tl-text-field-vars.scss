@@ -10,8 +10,8 @@
   --text-field-label: var(--color-foreground-text-strong);
   --text-field-label-inside: var(--color-foreground-text-strong);
   --text-field-label-inside-left: 16px;
-  --text-field-prefix-width-icon: 35px;
-  --text-field-prefix-width-text: 25px;
+  --text-field-affix-width-icon: 35px;
+  --text-field-affix-width-text: 8px;
 
   // Colors - Border
   --text-field-border-bottom-readonly: var(--color-foreground-border-strong);
@@ -20,7 +20,7 @@
   --text-field-helper: var(--color-foreground-text-defined);
 
   // Colors - Error state
-  --text-field-helper-error: var(--color-system-danger-default);
+  --text-field-error: var(--color-system-danger-default);
   --text-field-affix-error: var(--color-foreground-text-defined);
 
   // Colors - Disabled state
@@ -32,8 +32,6 @@
 
   // Colors - Text counter
   --text-field-textcounter: var(--color-foreground-text-defined);
-  --text-field-textcounter-disabled: var(--color-foreground-text-disabled);
-  --text-field-textcounter-divider: var(--color-foreground-text-disabled);
 
   // Mode variants
   &--primary {
