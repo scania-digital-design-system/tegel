@@ -63,9 +63,14 @@ export default {
       options: ['Icon', 'Text'],
       if: { arg: 'suffix', eq: true },
     },
+    charCounter: {
+      name: 'Character counter',
+      control: { type: 'boolean' },
+    },
     maxLength: {
       name: 'Max length',
       control: { type: 'number' },
+      if: { arg: 'charCounter', eq: true },
     },
     noMinWidth: {
       name: 'No minimum width',
@@ -98,7 +103,8 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
-    maxLength: 0,
+    charCounter: false,
+    maxLength: 12,
     noMinWidth: false,
     disabled: false,
     readonly: false,
@@ -119,6 +125,7 @@ const Template = ({
   prefixType,
   suffix,
   suffixType,
+  charCounter,
   maxLength,
   noMinWidth,
   disabled,
@@ -144,46 +151,48 @@ const Template = ({
   const inputAttrs = [
     `type="${type.toLowerCase()}"`,
     `placeholder="${placeholderText}"`,
-    maxLength > 0 && `maxlength="${maxLength}"`,
+    charCounter && maxLength > 0 && `maxlength="${maxLength}"`,
     disabled && 'disabled',
     readonly && 'readonly',
   ]
     .filter(Boolean)
     .join(' ');
 
-  const prefixContent = prefix
-    ? prefixType === 'Text'
-      ? '<span class="tl-text-field__prefix--text">$</span>'
-      : '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__prefix--icon"></span>'
-    : '';
+  let prefixContent = '';
+  if (prefix) {
+    if (prefixType === 'Text') {
+      prefixContent = '<span class="tl-text-field__prefix--text">$</span>';
+    } else {
+      prefixContent =
+        '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__prefix--icon"></span>';
+    }
+  }
 
-  const suffixContent =
-    suffix && !readonly
-      ? suffixType === 'Text'
-        ? '<span class="tl-text-field__suffix--text">$</span>'
-        : '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__suffix--icon"></span>'
-      : '';
+  let suffixContent = '';
+  if (suffix && !readonly) {
+    if (suffixType === 'Text') {
+      suffixContent = '<span class="tl-text-field__suffix--text">$</span>';
+    } else {
+      suffixContent =
+        '<span class="tl-icon tl-icon--info tl-icon--20 tl-text-field__suffix--icon"></span>';
+    }
+  }
 
   const readonlyIcon =
     readonly && !hideReadonlyIcon
       ? '<div class="tl-text-field__icon-readonly"><span class="tl-icon tl-icon--edit_inactive tl-icon--20"></span></div>'
       : '';
 
-  const labelOutside =
-    labelPosition === 'Outside'
-      ? `<div class="tl-text-field__label-outside"><label>${label}</label></div>`
+  const labelContent =
+    labelPosition === 'Outside' || labelPosition === 'Inside'
+      ? `<label class="tl-text-field__label">${label}</label>`
       : '';
 
-  const labelInside =
-    labelPosition === 'Inside' ? `<label class="tl-text-field__label-inside">${label}</label>` : '';
-
   const helperContent = helper
-    ? `<div class="tl-text-field__helper">${
-        state === 'Error'
-          ? '<span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>'
+    ? `<div class="tl-text-field__helper">${helper}${
+        charCounter && maxLength > 0
+          ? ` <span class="tl-text-field__textcounter">0/${maxLength}</span>`
           : ''
-      }${helper} ${
-        maxLength > 0 ? `<span class="tl-text-field__textcounter">0/${maxLength}</span>` : ''
       }</div>`
     : '';
 
@@ -197,24 +206,24 @@ const Template = ({
     -->
     <div class="demo-wrapper" style="max-width: 200px; height: 150px;">
       <div class="${componentClasses}">
-        ${labelOutside}
+        ${labelContent}
         <input class="tl-text-field__input" ${inputAttrs} />
         ${prefixContent}
         ${suffixContent}
         ${readonlyIcon}
-        ${labelInside}
         ${helperContent}
       </div>
     </div>
 
-  <!-- Script tag for demo purposes -->
+  ${
+    charCounter && maxLength > 0
+      ? `<!-- Script tag for demo purposes -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const textElement = document.querySelector('.tl-text-field__input');
-        const container = document.querySelector('.tl-text-field');
         const counterElement = document.querySelector('.tl-text-field__textcounter');
         
-        if (textElement && container) {
+        if (textElement && counterElement) {
           textElement.addEventListener('input', (event) => {
             const currentLength = event.target.value.length;
             const maxLength = ${maxLength};
@@ -223,14 +232,13 @@ const Template = ({
               event.target.value = event.target.value.slice(0, maxLength);
             }
             
-            if (counterElement && maxLength > 0) {
-              const actualLength = event.target.value.length;
-              counterElement.textContent = actualLength + '/' + maxLength;
-            }
+            counterElement.textContent = event.target.value.length + '/' + maxLength;
           });
         }
       });
-    </script>
+    </script>`
+      : ''
+  }
   `);
 };
 
