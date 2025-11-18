@@ -19,7 +19,7 @@
 | `max`              | `max`                 | Max allowed value for input type number                                                                      | `number \| string`                                     | `undefined`  |
 | `maxLength`        | `max-length`          | Max length of input                                                                                          | `number`                                               | `undefined`  |
 | `min`              | `min`                 | Min allowed value for input type number                                                                      | `number \| string`                                     | `undefined`  |
-| `modeVariant`      | `mode-variant`        | Mode variant of the Text Field                                                                               | `"primary" \| "secondary" \| null`                     | `null`       |
+| `modeVariant`      | `mode-variant`        | Mode variant of the Text Field                                                                               | `"primary" \| "secondary"`                             | `null`       |
 | `name`             | `name`                | Name property                                                                                                | `string`                                               | `''`         |
 | `noMinWidth`       | `no-min-width`        | Unset minimum width of 208px.                                                                                | `boolean`                                              | `false`      |
 | `placeholder`      | `placeholder`         | Placeholder text                                                                                             | `string`                                               | `''`         |
@@ -67,6 +67,8 @@ Type: `Promise<void>`
 
 ### Used by
 
+ - [tds-date-picker](../_beta/date-picker/date-picker-single)
+ - [tds-date-range-picker](../_beta/date-picker/date-range-picker)
  - [tds-slider](../slider)
 
 ### Depends on
@@ -80,6 +82,8 @@ graph TD;
   tds-text-field --> tds-tooltip
   tds-text-field --> tds-icon
   tds-tooltip --> tds-popover-core
+  tds-date-picker --> tds-text-field
+  tds-date-range-picker --> tds-text-field
   tds-slider --> tds-text-field
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
