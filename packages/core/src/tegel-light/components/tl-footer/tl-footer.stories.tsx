@@ -266,155 +266,33 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                   </div>`
               : ''
           }
+          ${
+            includeFooterEnd
+              ? `<div class="tl-footer__main-top--end">
+                    <div class="tl-footer__group" tds-list-aria-label="End slot links">
+                    <div class="tl-footer__item">
+                        <a href="#"> <span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
+                    </div>
+                    <div class="tl-footer__item">
+                        <a href="#"> <span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
+                    </div>
+                    <div class="tl-footer__item">
+                        <a href="#"> <span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
+                    </div>
+                    </div>
+                </div>`
+              : ''
+          }
           
         </div>
-      </div>
-    </footer>
-
-
-    <!-- footer.tsx 
-  <footer class="tl-footer ${modeVariantClass}">
-    ${
-      includeFooterTop
-        ? `<div class="tl-footer__top">
-              <div class="tl-footer__group" tds-list-aria-label="Links 1">
-
-              ${
-                  mobileView
-                    ? `<div class="tl-footer__group--mobile-view">
-                <button class="tl-footer__top-title-button ${isFooterGroupOpen ? '--expanded' : '--closed'}"
-                >
-                  <h6>Title 1</h6>
-                  <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
-                </button>
-                </div>` :
-                `<div class="tl-footer__top-title">
-                  <h6>Title 1</h6>
-                </div>`
-                }
-
-                  <nav>
-                      <div role="list" class="top-part-child">
-                      <div class="tl-footer__item" >
-                              <a href="#"> Link text</a>
-                          </div>
-                          <div class="tl-footer__item" >
-                              <a href="#"> Link text</a>
-                          </div>
-                          <div class="tl-footer__item" >
-                              <a href="#"> Link text</a>
-                          </div>
-                      </div>
-                  </nav>
-              </div>
-          </div>
-          
-
-              <div class="tl-footer__group" tds-list-aria-label="Links 1">
-                  <h6 slot="title">Title 1</h6>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-              </div>
-
-              <div class="tl-footer__group" tds-list-aria-label="Links 2">
-                  <h6 slot="title">Title 2</h6>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-              </div>
-
-              <div class="tl-footer__group" tds-list-aria-label="Links 3">
-                  <h6 slot="title">Title 3</h6>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                  </div>
-              </div>
-
-              <div class="tl-footer__group" tds-list-aria-label="Links 4">
-                  <h6 slot="title">Title 4</h6>
-                  <div class="tl-footer__item" >
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                  </div>
-                  <div class="tl-footer__item">
-                      <a href="#"> Link text</a>
-                  </div>
-              </div>
-          `
-        : ''
-      }
-        
-
-          <div class="tl-footer__main">
-              <div class="tl-footer__main-top">
-              ${
-                includeFooterStart
-                  ? `<div class="tl-footer__main-top--start">
-                        <div class="tl-footer__group" tds-list-aria-label="Start slot links">
-                            <div class="tl-footer__item">
-                                <a href="#"> Link text</a>
-                            </div>
-                            <div class="tl-footer__item">
-                                <a href="#"> Link text</a>
-                            </div>
-                            <div class="tl-footer__item">
-                                <a href="#"> Link text</a>
-                            </div>
-                            <div class="tl-footer__item">
-                                <a href="#"> Link text</a>
-                            </div>
-                        </div>
-                    </div>`
-                  : ''
-              }
-                 ${
-                includeFooterEnd
-                  ? `<div class="tl-footer__main-top--end">
-                        <div class="tl-footer__group" tds-list-aria-label="End slot links">
-                        <div class="tl-footer__item">
-                            <a href="#"> <tds-icon name="truck" svg-title="Truck"></tds-icon></a>
-                        </div>
-                        <div class="tl-footer__item">
-                            <a href="#"> <tds-icon name="truck" svg-title="Truck"></tds-icon></a>
-                        </div>
-                        <div class="tl-footer__item">
-                            <a href="#"> <tds-icon name="truck" svg-title="Truck"></tds-icon></a>
-                        </div>
-                        </div>
-                    </div>`
-                  : ''
-              }
-              </div>
-            
-            <div class="tl-footer__main-bottom">
+        <div class="tl-footer__main-bottom">
               
                ${
                 includeFooterCopyright
                   ? `
                     <small class="tl-footer__copyright"><div>
                         <div>
-                        © <span class="tl-footer__copyright-text">Copyright</span> {new Date().getFullYear()}
+                         © <span class="tl-footer__copyright-text">Copyright </span>2025
                         </div>
                         <div class="tl-footer__copyright-last-part">All rights reserved</div>
                         </div>
@@ -425,10 +303,9 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
               <div class="tl-footer__brand">
                 <p>Scania</p>
               </div>
-            </div>
-          </div>
-  </footer>
-  -->
+        </div>
+      </div>
+    </footer>
   `,
   );
 };

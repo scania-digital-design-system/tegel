@@ -77,7 +77,11 @@ small.tl-footer__copyright {
 }
 
 .tl-footer__group {
-    display: block;
+  .tl-footer__top & {  
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
 
     &--mobile-view {
         display: none;
@@ -94,9 +98,17 @@ small.tl-footer__copyright {
     }
 
     .tl-footer__group {
+      .tl-footer__top & {  
+        display: none;
+      }
     
         &--mobile-view {
             display: block;
+        }
+
+        .tl-footer__main-top--start & {
+          flex-direction: column;
+          gap: 8px;
         }
     }
 
