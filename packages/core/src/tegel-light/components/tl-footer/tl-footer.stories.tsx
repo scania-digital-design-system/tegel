@@ -30,6 +30,20 @@ export default {
         defaultValue: { summary: 'Inherit from parent' },
       },
     },
+    mobileView: {
+      name: 'Mobile view',
+      description: 'Indicates if the footer group is in mobile view.',
+      control: {
+        type: 'boolean',
+      },
+    },
+    isFooterGroupOpen: {
+      name: 'Open mobile footer group',
+      description: 'Indicates if the mobile footer group is open.',
+      control: {
+        type: 'boolean',
+      },
+    },
     includeFooterTop: {
       name: 'Include footer top',
       description: 'Adds content to the top slot of the Footer (page links).',
@@ -58,33 +72,19 @@ export default {
         type: 'boolean',
       },
     },
-    mobileView: {
-      name: 'Mobile view',
-      description: 'Indicates if the footer group is in mobile view.',
-      control: {
-        type: 'boolean',
-      },
-    },
-    isFooterGroupOpen: {
-      name: 'Open mobile footer group',
-      description: 'Indicates if the mobile footer group is open.',
-      control: {
-        type: 'boolean',
-      },
-    },
   },
   args: {
     modeVariant: 'Inherit from parent',
+    mobileView: true,
+    isFooterGroupOpen: false,
     includeFooterTop: true,
     includeFooterStart: true,
     includeFooterEnd: true,
     includeFooterCopyright: true,
-    mobileView: true,
-    isFooterGroupOpen: false,
   },
 };
 
-const Template = ({ includeFooterTop, isFooterGroupOpen, mobileView, includeFooterStart, includeFooterEnd, includeFooterCopyright, modeVariant }) => {
+const Template = ({ modeVariant, mobileView, isFooterGroupOpen, includeFooterTop, includeFooterStart, includeFooterEnd, includeFooterCopyright }) => {
     const modeVariantClass =
 modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}` : '';
   return formatHtmlPreview(
@@ -96,7 +96,7 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
     <main>
       <div class="tds-u-p3 ">
         <div class="tds-body-01">
-          Resize the window to see how the Footer behaves on smaller/bigger screens.
+          Make sure "Mobile view" is set to true and resize the window to see how the Footer behaves on smaller/bigger screens.
         </div>
       </div>
     </main>
