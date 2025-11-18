@@ -8,25 +8,23 @@
   margin: 0;
   border: none;
   outline: none;
-  height: 100%;
 
   &::placeholder {
     color: var(--textarea-placeholder);
   }
 
   &:disabled {
-    background-color: var(--textarea-disabled-background);
-    color: var(--textarea-disabled-text);
+    background-color: var(--textarea-background-disabled);
+    color: var(--textarea-text-disabled);
     user-select: none;
     pointer-events: none;
 
     &::placeholder {
-      color: var(--textarea-disabled-placeholder);
+      color: var(--textarea-placeholder-disabled);
     }
   }
 }
 
-// Mixin for focus/input state selectors
 @mixin focus-input-state {
   .tl-textarea--label-inside:has(.tl-textarea__input:focus) .tl-textarea__label,
   .tl-textarea--label-inside:has(.tl-textarea__input:not(:placeholder-shown)) .tl-textarea__label {

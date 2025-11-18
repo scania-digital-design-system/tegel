@@ -4,15 +4,14 @@
 @import '../../../../../../typography/mixins/type-styles';
 
 .tl-text-field {
-  padding-bottom: 1px;
   display: block;
-  min-width: 208px;
-  border-radius: var(--text-field-border-radius);
   position: relative;
   width: 100%;
-  box-sizing: border-box;
-  transition: box-shadow 0.2s;
+  min-width: 208px;
   height: 56px;
+  padding-bottom: 1px;
+  border-radius: var(--text-field-border-radius);
+  box-sizing: border-box;
 
   &--no-min-width {
     min-width: auto;
@@ -30,12 +29,10 @@
     height: 40px;
   }
 
-  // Readonly icon - only visible when readonly and not hidden
   &--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
     content: '';
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     right: 16px;
     width: 20px;
     height: 20px;
@@ -44,7 +41,12 @@
     mask-size: contain;
     mask-repeat: no-repeat;
     mask-position: center;
+    transform: translateY(-50%);
     z-index: 1;
+  }
+
+  &--disabled {
+    pointer-events: none;
   }
 }
 
@@ -58,12 +60,12 @@
   box-shadow: inset var(--text-field-box-shadow);
   transition: box-shadow 0.2s;
 
-  .tl-text-field:hover &:not(:focus) {
-    box-shadow: inset var(--text-field-box-shadow-hover);
-  }
-
   &:focus {
     box-shadow: inset var(--text-field-box-shadow-focus);
+  }
+
+  .tl-text-field:hover &:not(:focus) {
+    box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
   .tl-text-field--error & {
@@ -88,14 +90,22 @@
     background-color: var(--text-field-background-disabled);
   }
 
+  .tl-text-field--readonly & {
+    user-select: auto;
+    caret-color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .tl-text-field--readonly:not(.tl-text-field--disabled):not(.tl-text-field--hide-readonly-icon) & {
+    padding-right: 54px;
+  }
+
   .tl-text-field--lg & {
     padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   }
 
-  .tl-text-field--md & {
-    padding: var(--tds-spacing-element-16);
-  }
-
+  .tl-text-field--md &,
   .tl-text-field--sm & {
     padding: var(--tds-spacing-element-16);
   }
@@ -111,42 +121,28 @@
     padding-bottom: 11px;
   }
 
-  // Padding adjustments for prefix
-  .tl-text-field--lg:has(.tl-text-field__prefix--icon) & {
+  .tl-text-field:has(.tl-text-field__prefix--icon) & {
     padding-left: calc(16px + 20px + 8px);
   }
 
-  .tl-text-field--md:has(.tl-text-field__prefix--icon) &,
-  .tl-text-field--sm:has(.tl-text-field__prefix--icon) & {
-    padding-left: calc(16px + 20px + 8px);
-  }
-
-  .tl-text-field--lg:has(.tl-text-field__prefix--text) & {
+  .tl-text-field:has(.tl-text-field__prefix--text) & {
     padding-left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
-  .tl-text-field--md:has(.tl-text-field__prefix--text) &,
-  .tl-text-field--sm:has(.tl-text-field__prefix--text) & {
-    padding-left: calc(16px + var(--text-field-affix-width-text) + 8px);
-  }
-
-  // Padding adjustments for suffix
-  .tl-text-field--lg:has(.tl-text-field__suffix--icon) & {
+  .tl-text-field:has(.tl-text-field__suffix--icon) & {
     padding-right: calc(16px + 20px + 8px);
   }
 
-  .tl-text-field--md:has(.tl-text-field__suffix--icon) &,
-  .tl-text-field--sm:has(.tl-text-field__suffix--icon) & {
-    padding-right: calc(16px + 20px + 8px);
-  }
-
-  .tl-text-field--lg:has(.tl-text-field__suffix--text) & {
+  .tl-text-field:has(.tl-text-field__suffix--text) & {
     padding-right: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
-  .tl-text-field--md:has(.tl-text-field__suffix--text) &,
-  .tl-text-field--sm:has(.tl-text-field__suffix--text) & {
-    padding-right: calc(16px + var(--text-field-affix-width-text) + 8px);
+  .tl-text-field--label-inside &::placeholder {
+    color: transparent;
+  }
+
+  .tl-text-field--disabled.tl-text-field--label-inside &::placeholder {
+    color: var(--text-field-placeholder) !important;
   }
 }
 
@@ -155,7 +151,7 @@
     @include detail-05;
 
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     color: var(--text-field-label);
   }
 
@@ -163,58 +159,86 @@
     @include detail-02;
 
     position: absolute;
-    pointer-events: none;
-    color: var(--text-field-label-inside);
-    left: var(--text-field-label-inside-left, 16px);
-    transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
-    transform-origin: top left;
-    z-index: 1;
     top: 50%;
+    left: var(--text-field-label-inside-left, 16px);
+    color: var(--text-field-label-inside);
+    pointer-events: none;
     transform: translateY(-50%);
+    transform-origin: top left;
+    transition: transform 0.15s, font-size 0.15s, color 0.15s, top 0.15s;
+    z-index: 1;
+  }
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
+    left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--text) & {
+    left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  .tl-text-field--label-inside.tl-text-field--disabled & {
+    @include detail-07;
+
+    top: 8px;
+    color: var(--text-field-label-disabled);
+    transform: translateY(0);
+  }
+
+  .tl-text-field--label-outside.tl-text-field--disabled & {
+    color: var(--text-field-label-disabled);
   }
 }
 
 .tl-text-field__helper {
   @include detail-05;
 
-  color: var(--text-field-helper);
-  padding-top: 4px;
   display: flex;
   gap: 8px;
+  padding-top: 4px;
+  color: var(--text-field-helper);
   position: relative;
 
-  .tl-text-field--disabled & {
-    color: var(--color-foreground-text-disabled);
+  .tl-text-field--error & {
+    padding-left: 24px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      background-color: var(--text-field-error);
+      mask-image: var(--icon-info-svg);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+    }
   }
 
-  .tl-text-field--error &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 4px;
-    width: 16px;
-    height: 16px;
-    background-color: var(--text-field-error);
-    mask-image: var(--icon-info-svg);
-    mask-size: contain;
-    mask-repeat: no-repeat;
-    mask-position: center;
+  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
+    color: var(--text-field-error);
   }
 
   .tl-text-field--error.tl-text-field--disabled &::before {
     background-color: var(--color-foreground-text-disabled);
-  }
-
-  .tl-text-field--error & {
-    padding-left: 24px;
   }
 }
 
 .tl-text-field__textcounter {
   @include detail-05;
 
-  color: var(--text-field-textcounter);
   margin-left: auto;
+  color: var(--text-field-textcounter);
+
+  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
+    display: none;
+  }
+}
+
+.tl-text-field__textcounter-divider {
+  color: var(--color-foreground-text-disabled);
 }
 
 .tl-text-field__prefix {
@@ -229,10 +253,22 @@
     z-index: 1;
   }
 
-  // Move down when outside label
   .tl-text-field--label-outside &--text,
   .tl-text-field--label-outside &--icon {
     transform: translateY(calc(-50% + 20px));
+  }
+
+  .tl-text-field--disabled &--text,
+  .tl-text-field--disabled &--icon {
+    color: var(--text-field-affix-disabled);
+
+    > * {
+      color: var(--text-field-affix-disabled);
+    }
+
+    .tl-icon {
+      background-color: var(--text-field-affix-disabled);
+    }
   }
 }
 
@@ -248,30 +284,32 @@
     z-index: 1;
   }
 
-  // Move down when outside label
   .tl-text-field--label-outside &--text,
   .tl-text-field--label-outside &--icon {
     transform: translateY(calc(-50% + 20px));
   }
+
+  .tl-text-field--disabled &--text,
+  .tl-text-field--disabled &--icon {
+    color: var(--text-field-affix-disabled);
+
+    > * {
+      color: var(--text-field-affix-disabled);
+    }
+
+    .tl-icon {
+      background-color: var(--text-field-affix-disabled);
+    }
+  }
 }
 
-// Prefix-based label positioning - for centered state (initial)
-.tl-text-field--label-inside:has(.tl-text-field__prefix--icon) .tl-text-field__label {
-  left: calc(16px + 20px + 8px);
-}
-
-.tl-text-field--label-inside:has(.tl-text-field__prefix--text) .tl-text-field__label {
-  left: calc(16px + var(--text-field-affix-width-text) + 8px);
-}
-
-// Focus/input state - label goes up and becomes smaller
 @include focus-input-state {
   @include detail-07;
 
   top: 7.5px;
+  left: var(--text-field-label-inside-left, 16px);
   transform: none;
 
-  // Keep the shifted position when focused/filled if there's a prefix
   .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
     left: calc(16px + 20px + 8px);
   }
@@ -281,88 +319,9 @@
   }
 }
 
-// Size-specific positioning when focused or has content
 .tl-text-field--lg {
   @include focus-input-state {
     top: 12.5px;
-  }
-}
-
-// Placeholder should always be transparent when label-inside is used
-.tl-text-field--label-inside .tl-text-field__input::placeholder {
-  color: transparent;
-}
-
-// Disabled state - modifier styles in affected elements
-.tl-text-field--disabled {
-  pointer-events: none;
-}
-
-.tl-text-field__prefix--text,
-.tl-text-field__prefix--icon,
-.tl-text-field__suffix--text,
-.tl-text-field__suffix--icon {
-  .tl-text-field--disabled & {
-    color: var(--text-field-affix-disabled);
-
-    > * {
-      color: var(--text-field-affix-disabled);
-    }
-
-    // Override tl-icon background-color in disabled state
-    .tl-icon {
-      background-color: var(--text-field-affix-disabled);
-    }
-  }
-}
-
-.tl-text-field__label,
-.tl-text-field__helper {
-  .tl-text-field--disabled & {
-    color: var(--text-field-label-disabled);
-  }
-}
-
-.tl-text-field__textcounter {
-  .tl-text-field--disabled & {
-    color: var(--color-foreground-text-disabled);
-  }
-}
-
-.tl-text-field__label {
-  .tl-text-field--disabled.tl-text-field--label-inside & {
-    @include detail-07;
-
-    top: 8px;
-    transform: translateY(0);
-  }
-}
-
-.tl-text-field__input::placeholder {
-  .tl-text-field--disabled.tl-text-field--label-inside & {
-    color: var(--text-field-placeholder) !important;
-  }
-}
-
-// Read only state - modifier styles in affected elements
-.tl-text-field__input {
-  .tl-text-field--readonly & {
-    user-select: auto;
-    caret-color: transparent;
-    cursor: default;
-    pointer-events: none;
-  }
-
-  .tl-text-field--readonly:not(.tl-text-field--disabled):not(.tl-text-field--hide-readonly-icon) & {
-    padding-right: 54px;
-  }
-}
-
-// Error state - modifier styles for helper text
-.tl-text-field__helper,
-.tl-text-field__textcounter {
-  .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    color: var(--text-field-error);
   }
 }
 

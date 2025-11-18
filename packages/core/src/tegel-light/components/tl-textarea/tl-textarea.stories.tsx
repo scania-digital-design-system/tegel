@@ -6,7 +6,6 @@ export default {
     layout: 'centered',
   },
   argTypes: {
-    // Appearance
     modeVariant: {
       name: 'Mode Variant',
       control: { type: 'radio' },
@@ -20,7 +19,6 @@ export default {
       description: 'Visual state of the component',
     },
 
-    // Content
     label: {
       name: 'Label Text',
       control: { type: 'text' },
@@ -43,7 +41,6 @@ export default {
       description: 'Additional help text below the field',
     },
 
-    // Input Configuration
     rows: {
       name: 'Rows',
       control: { type: 'number' },
@@ -66,7 +63,6 @@ export default {
       description: 'Remove minimum width constraint',
     },
 
-    // States
     disabled: {
       name: 'Disabled',
       control: { type: 'boolean' },
@@ -78,7 +74,6 @@ export default {
       description: 'Make the field read-only',
     },
 
-    // Read Only Options
     hideReadonlyIcon: {
       name: 'Hide Read Only Icon',
       control: { type: 'boolean' },
@@ -87,23 +82,19 @@ export default {
     },
   },
   args: {
-    // Appearance
     modeVariant: 'Inherit from parent',
     state: 'Default',
 
-    // Content
     label: 'Label',
     labelPosition: 'No label',
     placeholder: 'Placeholder',
     helper: '',
 
-    // Input Configuration
     rows: 5,
     charCounter: false,
     maxLength: 12,
     noMinWidth: false,
 
-    // States
     disabled: false,
     readonly: false,
     hideReadonlyIcon: false,
@@ -130,6 +121,7 @@ const Template = ({
     modeVariant !== 'Inherit from parent' && `tl-textarea--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-textarea--${state.toLowerCase()}`,
     labelPosition === 'Inside' && 'tl-textarea--label-inside',
+    labelPosition === 'Outside' && 'tl-textarea--label-outside',
     disabled && 'tl-textarea--disabled',
     readonly && 'tl-textarea--readonly',
     readonly && hideReadonlyIcon && 'tl-textarea--hide-readonly-icon',
@@ -157,7 +149,7 @@ const Template = ({
     helper || (charCounter && maxLength > 0)
       ? `<div class="tl-textarea__helper">${helper}${
           charCounter && maxLength > 0
-            ? ` <span class="tl-textarea__textcounter">0/${maxLength}</span>`
+            ? ` <span class="tl-textarea__textcounter">0 <span class="tl-textarea__textcounter-divider">/</span> ${maxLength}</span>`
             : ''
         }</div>`
       : '';
@@ -182,14 +174,12 @@ ${
         const counterElement = document.querySelector('.tl-textarea__textcounter');
         
         if (textElement && counterElement) {
-          // Update counter on initial load
           const initialLength = textElement.value.length;
-          counterElement.textContent = initialLength + '/' + ${maxLength};
+          counterElement.innerHTML = initialLength + ' <span class="tl-textarea__textcounter-divider">/</span> ' + ${maxLength};
           
-          // Update counter on input
           textElement.addEventListener('input', (event) => {
             const currentLength = event.target.value.length;
-            counterElement.textContent = currentLength + '/' + ${maxLength};
+            counterElement.innerHTML = currentLength + ' <span class="tl-textarea__textcounter-divider">/</span> ' + ${maxLength};
           });
         }
       });

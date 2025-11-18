@@ -188,7 +188,7 @@ const Template = ({
     helper || (charCounter && maxLength > 0)
       ? `<div class="tl-text-field__helper">${helper}${
           charCounter && maxLength > 0
-            ? ` <span class="tl-text-field__textcounter">0/${maxLength}</span>`
+            ? ` <span class="tl-text-field__textcounter">0 <span class="tl-text-field__textcounter-divider">/</span> ${maxLength}</span>`
             : ''
         }</div>`
       : '';
@@ -226,7 +226,7 @@ const Template = ({
               event.target.value = event.target.value.slice(0, maxLength);
             }
             
-            counterElement.textContent = event.target.value.length + '/' + maxLength;
+            counterElement.innerHTML = event.target.value.length + ' <span class="tl-text-field__textcounter-divider">/</span> ' + maxLength;
           });
         }
       });
