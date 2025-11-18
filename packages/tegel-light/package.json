@@ -53,7 +53,9 @@
     "./tl-card.css": "./dist/tl-card.css",
     "./tl-table.css": "./dist/tl-table.css",
     "./tl-datetime.css": "./dist/tl-datetime.css",
-    "./tl-tooltip.css": "./dist/tl-tooltip.css"
+    "./tl-tooltip.css": "./dist/tl-tooltip.css",
+    "./tl-popover-canvas.css": "./dist/tl-popover-canvas.css",
+    "./tl-side-menu.css": "./dist/tl-side-menu.css"
   },
   "files": [
     "dist/"
