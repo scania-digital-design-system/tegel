@@ -9,7 +9,7 @@ export default {
     modeVariant: {
       name: 'Mode Variant',
       control: { type: 'radio' },
-      options: ['Primary', 'Secondary'],
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
     },
     state: {
       name: 'State',
@@ -91,7 +91,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Primary',
+    modeVariant: 'Inherit from parent',
     state: 'Default',
     type: 'Text',
     size: 'Large',
@@ -134,16 +134,17 @@ const Template = ({
 }) => {
   const componentClasses = [
     'tl-text-field',
-    modeVariant === 'Secondary' && 'tl-text-field--secondary',
-    state === 'Success' && 'tl-text-field--success',
-    state === 'Error' && 'tl-text-field--error',
+    modeVariant !== 'Inherit from parent' && `tl-text-field--${modeVariant.toLowerCase()}`,
+    state !== 'Default' && `tl-text-field--${state.toLowerCase()}`,
     size === 'Large' && 'tl-text-field--lg',
     size === 'Medium' && 'tl-text-field--md',
     size === 'Small' && 'tl-text-field--sm',
     labelPosition === 'Inside' && 'tl-text-field--label-inside',
+    labelPosition === 'Outside' && 'tl-text-field--label-outside',
     noMinWidth && 'tl-text-field--no-min-width',
     disabled && 'tl-text-field--disabled',
     readonly && 'tl-text-field--readonly',
+    hideReadonlyIcon && 'tl-text-field--hide-readonly-icon',
   ]
     .filter(Boolean)
     .join(' ');
@@ -178,23 +179,19 @@ const Template = ({
     }
   }
 
-  const readonlyIcon =
-    readonly && !hideReadonlyIcon
-      ? '<div class="tl-text-field__icon-readonly"><span class="tl-icon tl-icon--edit_inactive tl-icon--20"></span></div>'
-      : '';
-
   const labelContent =
     labelPosition === 'Outside' || labelPosition === 'Inside'
       ? `<label class="tl-text-field__label">${label}</label>`
       : '';
 
-  const helperContent = helper
-    ? `<div class="tl-text-field__helper">${helper}${
-        charCounter && maxLength > 0
-          ? ` <span class="tl-text-field__textcounter">0/${maxLength}</span>`
-          : ''
-      }</div>`
-    : '';
+  const helperContent =
+    helper || (charCounter && maxLength > 0)
+      ? `<div class="tl-text-field__helper">${helper}${
+          charCounter && maxLength > 0
+            ? ` <span class="tl-text-field__textcounter">0/${maxLength}</span>`
+            : ''
+        }</div>`
+      : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
@@ -204,15 +201,12 @@ const Template = ({
     <!-- Optional stylesheets:
       "@scania/tegel-light/tl-icon.css"
     -->
-    <div class="demo-wrapper" style="max-width: 200px; height: 150px;">
-      <div class="${componentClasses}">
-        ${labelContent}
-        <input class="tl-text-field__input" ${inputAttrs} />
-        ${prefixContent}
-        ${suffixContent}
-        ${readonlyIcon}
-        ${helperContent}
-      </div>
+    <div class="${componentClasses}" style="width: 208px;">
+      ${labelContent}
+      <input class="tl-text-field__input" ${inputAttrs} />
+      ${prefixContent}
+      ${suffixContent}
+      ${helperContent}
     </div>
 
   ${

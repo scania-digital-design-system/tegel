@@ -29,6 +29,23 @@
   &--sm {
     height: 40px;
   }
+
+  // Readonly icon - only visible when readonly and not hidden
+  &--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--text-field-text);
+    mask-image: var(--icon-edit_inactive-svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    z-index: 1;
+  }
 }
 
 .tl-text-field__input {
@@ -138,7 +155,7 @@
     @include detail-05;
 
     display: block;
-    margin-bottom: var(--tds-spacing-element-8);
+    margin-bottom: 5px;
     color: var(--text-field-label);
   }
 
@@ -208,8 +225,14 @@
     position: absolute;
     left: 16px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% - 1px));
     z-index: 1;
+  }
+
+  // Move down when outside label
+  .tl-text-field--label-outside &--text,
+  .tl-text-field--label-outside &--icon {
+    transform: translateY(calc(-50% + 20px));
   }
 }
 
@@ -221,26 +244,24 @@
     position: absolute;
     right: 16px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(calc(-50% - 1px));
     z-index: 1;
+  }
+
+  // Move down when outside label
+  .tl-text-field--label-outside &--text,
+  .tl-text-field--label-outside &--icon {
+    transform: translateY(calc(-50% + 20px));
   }
 }
 
-.tl-text-field__icon-readonly {
-  display: none;
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
+// Prefix-based label positioning - for centered state (initial)
+.tl-text-field--label-inside:has(.tl-text-field__prefix--icon) .tl-text-field__label {
+  left: calc(16px + 20px + 8px);
 }
 
-// Prefix-based label positioning
-.tl-text-field__prefix--icon ~ .tl-text-field__label {
-  left: calc(var(--text-field-label-inside-left) + var(--text-field-affix-width-icon));
-}
-
-.tl-text-field__prefix--text ~ .tl-text-field__label {
-  left: calc(var(--text-field-label-inside-left) + var(--text-field-affix-width-text));
+.tl-text-field--label-inside:has(.tl-text-field__prefix--text) .tl-text-field__label {
+  left: calc(16px + var(--text-field-affix-width-text) + 8px);
 }
 
 // Focus/input state - label goes up and becomes smaller
@@ -249,6 +270,15 @@
 
   top: 7.5px;
   transform: none;
+
+  // Keep the shifted position when focused/filled if there's a prefix
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--icon) & {
+    left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--label-inside:has(.tl-text-field__prefix--text) & {
+    left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
 }
 
 // Size-specific positioning when focused or has content
@@ -278,12 +308,16 @@
     > * {
       color: var(--text-field-affix-disabled);
     }
+
+    // Override tl-icon background-color in disabled state
+    .tl-icon {
+      background-color: var(--text-field-affix-disabled);
+    }
   }
 }
 
 .tl-text-field__label,
-.tl-text-field__helper,
-.tl-text-field__icon-readonly {
+.tl-text-field__helper {
   .tl-text-field--disabled & {
     color: var(--text-field-label-disabled);
   }
@@ -316,21 +350,11 @@
     user-select: auto;
     caret-color: transparent;
     cursor: default;
-    background-color: transparent;
+    pointer-events: none;
   }
 
-  .tl-text-field--readonly:has(.tl-text-field__icon-readonly) & {
+  .tl-text-field--readonly:not(.tl-text-field--disabled):not(.tl-text-field--hide-readonly-icon) & {
     padding-right: 54px;
-  }
-}
-
-.tl-text-field__icon-readonly {
-  .tl-text-field--readonly & {
-    display: block;
-
-    &:hover ~ .tl-text-field__icon-readonly-label {
-      display: block;
-    }
   }
 }
 
@@ -340,4 +364,8 @@
   .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
     color: var(--text-field-error);
   }
+}
+
+.tl-icon {
+  background-color: var(--text-field-affix);
 }
