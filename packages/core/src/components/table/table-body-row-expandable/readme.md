@@ -56,7 +56,7 @@ We recommend fitting your content within the table’s natural size whenever pos
 | Property                   | Attribute                      | Description                                                                                                                               | Type                              | Default              |
 | -------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | -------------------- |
 | `autoCollapse`             | `auto-collapse`                | Enables auto-collapse of other expandable rows when one row is expanded                                                                   | `boolean`                         | `false`              |
-| `colSpan`                  | `col-span`                     | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `number`                          | `null`               |
+| `colSpan`                  | `col-span`                     | In case that automatic count of columns does not work, user can manually set this one. Take in mind that expandable control is column too | `null \| number`                  | `null`               |
 | `expanded`                 | `expanded`                     | Sets isExpanded state to true or false externally                                                                                         | `boolean`                         | `undefined`          |
 | `overflow`                 | `overflow`                     | Controls the overflow behavior of the expandable row content                                                                              | `"auto" \| "hidden" \| "visible"` | `'auto'`             |
 | `rowId`                    | `row-id`                       | ID for the table row. Randomly generated if not specified.                                                                                | `string`                          | `generateUniqueId()` |
@@ -65,9 +65,9 @@ We recommend fitting your content within the table’s natural size whenever pos
 
 ## Events
 
-| Event       | Description                                                                            | Type                                                                    |
-| ----------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `tdsChange` | Sends unique table row identifier and isExpanded status when it is expanded/collapsed. | `CustomEvent<{ rowId: string; isExpanded: boolean; tableId: string; }>` |
+| Event       | Description                                                                            | Type                                                                                 |
+| ----------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `tdsChange` | Sends unique table row identifier and isExpanded status when it is expanded/collapsed. | `CustomEvent<{ rowId: string; isExpanded: boolean; tableId: string \| undefined; }>` |
 
 
 ## Methods

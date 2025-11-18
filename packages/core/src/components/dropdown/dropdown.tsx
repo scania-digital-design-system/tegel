@@ -49,7 +49,7 @@ export class TdsDropdown {
   @Prop() labelPosition: 'inside' | 'outside';
 
   /** Mode variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** The direction the Dropdown should open, auto if not specified. */
   @Prop() openDirection: 'up' | 'down' | 'auto' = 'auto';
@@ -82,7 +82,7 @@ export class TdsDropdown {
   @Prop() defaultValue: string | number;
 
   /** Value of the dropdown. For multiselect, provide array of strings/numbers. For single select, provide a string/number. */
-  @Prop({ mutable: true }) value: string | number | (string | number)[] = null;
+  @Prop({ mutable: true }) value: string | number | (string | number)[] | null = null;
 
   /** Defines aria-label attribute for input */
   @Prop() tdsAriaLabel: string;
@@ -91,7 +91,7 @@ export class TdsDropdown {
 
   @State() internalValue: string;
 
-  @State() filterResult: number;
+  @State() filterResult: number | null;
 
   @State() filterFocus: boolean;
 
@@ -248,7 +248,7 @@ export class TdsDropdown {
     this.updateDropdownStateFromUser(normalizedValue);
     return this.getSelectedChildren().map((element: HTMLTdsDropdownOptionElement) => ({
       value: element.value,
-      label: element.textContent.trim(),
+      label: element.textContent?.trim(),
     }));
   }
 
@@ -271,7 +271,7 @@ export class TdsDropdown {
       this.focusInputElement();
     } else {
       // For non-filter mode, focus the button element
-      const button = this.host.shadowRoot.querySelector('button');
+      const button = this.host.shadowRoot?.querySelector('button');
       if (button) {
         button.focus();
       }
@@ -304,7 +304,7 @@ export class TdsDropdown {
   })
   tdsChange: EventEmitter<{
     name: string;
-    value: string;
+    value: string | null;
   }>;
 
   /** Focus event for the Dropdown. */
@@ -401,8 +401,11 @@ export class TdsDropdown {
         ? children.findIndex((element) => element === activeElement.nextElementSibling)
         : 0;
 
-      const elementIndex = findNextFocusableElement(children, startingIndex);
-      children[elementIndex].focus();
+      if (children.length > 0) {
+        const elementIndex = findNextFocusableElement(children, startingIndex);
+        const target = typeof elementIndex === 'number' ? children[elementIndex] : children[0];
+        target?.focus();
+      }
     } else if (event.key === 'ArrowUp') {
       /* Get the index of the current focus index, if there is no
       previousElementSibling return the index for the first last in our Dropdown.  */
@@ -412,15 +415,19 @@ export class TdsDropdown {
           )
         : 0;
 
-      const elementIndex = findPreviousFocusableElement(children, startingIndex);
-      children[elementIndex].focus();
+      if (children.length > 0) {
+        const elementIndex = findPreviousFocusableElement(children, startingIndex);
+        const target =
+          typeof elementIndex === 'number' ? children[elementIndex] : children[children.length - 1];
+        target?.focus();
+      }
     } else if (event.key === 'Escape') {
       this.open = false;
       // Return focus to input/button when Escape key is used
       if (this.filter) {
         this.inputElement?.focus();
       } else {
-        const button = this.host.shadowRoot.querySelector('button');
+        const button = this.host.shadowRoot?.querySelector('button');
         button?.focus();
       }
     }
@@ -515,7 +522,7 @@ export class TdsDropdown {
 
   private getSelectedChildrenLabels = () =>
     this.getSelectedChildren()?.map((element: HTMLTdsDropdownOptionElement) =>
-      element.textContent.trim(),
+      element.textContent?.trim(),
     );
 
   private getValue = () => {
@@ -554,7 +561,7 @@ export class TdsDropdown {
         if (this.filter) {
           this.focusInputElement();
         } else {
-          const button = this.host.shadowRoot.querySelector('button');
+          const button = this.host.shadowRoot?.querySelector('button');
           if (button) {
             button.focus();
           }
@@ -584,7 +591,7 @@ export class TdsDropdown {
     } else {
       this.filterResult = children.filter((element) => {
         if (
-          !this.normalizeString(element.textContent)
+          !this.normalizeString(element?.textContent ?? '')
             .toLowerCase()
             .includes(this.normalizeString(query).toLowerCase())
         ) {
@@ -848,13 +855,13 @@ export class TdsDropdown {
           aria-orientation="vertical"
           aria-multiselectable={this.multiselect}
           ref={(element) => {
-            this.dropdownList = element;
+            if (element) this.dropdownList = element;
           }}
           class={{
             'dropdown-list': true,
             [this.size]: true,
             [this.getOpenDirection()]: true,
-            'label-outside': this.label && this.labelPosition === 'outside',
+            'label-outside': !!(this.label && this.labelPosition === 'outside'),
             'open': this.open,
             'closed': !this.open,
             [`animation-enter-${this.animation}`]: this.animation !== 'none' && this.open,

@@ -26,7 +26,7 @@ export class TdsHeaderDropdownList {
 
     // Set the size prop for each child, if they have such a property
     for (let i = 0; i < children.length; i++) {
-      const child = children[i] as any;
+      const child = children[i] as HTMLElement;
 
       if ('size' in child) {
         child.size = this.size;
@@ -34,7 +34,7 @@ export class TdsHeaderDropdownList {
     }
 
     let listRoot = this.host;
-    if (this.host.parentElement.tagName.toLowerCase() === 'tds-header-launcher-list') {
+    if (this.host?.parentElement?.tagName.toLowerCase() === 'tds-header-launcher-list') {
       listRoot = this.host.parentElement;
     }
 
@@ -48,7 +48,7 @@ export class TdsHeaderDropdownList {
   }
 
   componentDidLoad() {
-    this.host.shadowRoot.querySelectorAll('slot').forEach((slot: HTMLSlotElement) => {
+    this.host.shadowRoot?.querySelectorAll('slot').forEach((slot: HTMLSlotElement) => {
       // Add the slotchange event listener.
       const onSlotChange: EventListener = (e: Event) => {
         this.processAssignedElements(e.target as HTMLSlotElement);

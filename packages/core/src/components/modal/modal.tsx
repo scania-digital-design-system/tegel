@@ -95,7 +95,7 @@ export class TdsModal {
     cancelable: true,
     bubbles: true,
   })
-  tdsClose: EventEmitter<any>;
+  tdsClose: EventEmitter<object>;
 
   /** Emits just before Modal is opened. */
   @Event({
@@ -160,7 +160,8 @@ export class TdsModal {
   }
 
   private returnFocusOnClose() {
-    let referenceElement = this.referenceEl ?? document.querySelector(this.selector);
+    const referenceElement =
+      this.referenceEl ?? (document.querySelector(this.selector) as HTMLElement);
 
     if (!referenceElement) {
       return; // no element to return focus to
@@ -194,7 +195,7 @@ export class TdsModal {
     ].join(',');
 
     const focusableInShadowRoot = Array.from(
-      this.host.shadowRoot.querySelectorAll<HTMLElement>(focusableSelectors),
+      this.host.shadowRoot?.querySelectorAll<HTMLElement>(focusableSelectors) ?? [],
     );
     const focusableInSlots = Array.from(
       this.host.querySelectorAll<HTMLElement>(focusableSelectors),
@@ -284,7 +285,8 @@ export class TdsModal {
   /** Check if there is a referenceElement or selector and adds event listener to them if so. */
   setShowButton = () => {
     if (this.selector || this.referenceEl) {
-      const referenceEl = this.referenceEl ?? document.querySelector(this.selector);
+      const referenceEl =
+        this.referenceEl ?? (document.querySelector(this.selector) as HTMLElement);
       if (referenceEl) {
         this.initializeReferenceElement(referenceEl);
       }

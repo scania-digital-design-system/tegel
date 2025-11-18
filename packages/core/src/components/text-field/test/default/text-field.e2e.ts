@@ -47,7 +47,7 @@ test.describe.parallel(componentName, () => {
   test('should have correct height', async ({ page }) => {
     const height = await page.evaluate((textField) => {
       const element = document.querySelector(textField);
-      return element.getBoundingClientRect().height;
+      return element?.getBoundingClientRect().height;
     }, 'tds-text-field');
     expect(height).toBe(56);
   });
@@ -80,7 +80,7 @@ test.describe.parallel(componentName, () => {
   test('should have width greater than 200px', async ({ page }) => {
     const width = await page.evaluate((textField) => {
       const element = document.querySelector(textField);
-      return element.getBoundingClientRect().width;
+      return element?.getBoundingClientRect().width;
     }, 'tds-text-field');
     expect(width).toBeGreaterThan(200);
   });

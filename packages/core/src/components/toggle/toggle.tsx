@@ -37,7 +37,7 @@ export class TdsToggle {
   /** Defines aria-label attribute for input */
   @Prop() tdsAriaLabel: string;
 
-  private labelSlot: HTMLElement;
+  private labelSlot: HTMLElement | null;
 
   private inputElement: HTMLInputElement;
 
@@ -98,7 +98,7 @@ export class TdsToggle {
         )}
         <input
           ref={(inputEl) => {
-            this.inputElement = inputEl;
+            if (inputEl) this.inputElement = inputEl;
           }}
           aria-label={this.tdsAriaLabel}
           aria-describedby={this.host.getAttribute('aria-describedby')}

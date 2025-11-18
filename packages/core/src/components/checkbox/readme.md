@@ -22,11 +22,11 @@
 
 ## Events
 
-| Event       | Description                                                                       | Type                                                                                             |
-| ----------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `tdsBlur`   | Blur event for the Checkbox                                                       | `CustomEvent<FocusEvent>`                                                                        |
-| `tdsChange` | Sends unique Checkbox identifier and checked status when it is checked/unchecked. | `CustomEvent<{ checkboxId: string; checked: boolean; indeterminate: boolean; value?: string; }>` |
-| `tdsFocus`  | Focus event for the Checkbox                                                      | `CustomEvent<FocusEvent>`                                                                        |
+| Event       | Description                                                                       | Type                                                                                                          |
+| ----------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `tdsBlur`   | Blur event for the Checkbox                                                       | `CustomEvent<FocusEvent>`                                                                                     |
+| `tdsChange` | Sends unique Checkbox identifier and checked status when it is checked/unchecked. | `CustomEvent<{ checkboxId: string; checked: boolean; indeterminate: boolean; value?: string \| undefined; }>` |
+| `tdsFocus`  | Focus event for the Checkbox                                                      | `CustomEvent<FocusEvent>`                                                                                     |
 
 
 ## Methods

@@ -70,7 +70,7 @@ testConfigurations.withModeVariants.forEach((config) => {
 
       await page.evaluate(() => {
         const dropdownnew = document.querySelector('tds-dropdown');
-        dropdownnew.focusElement();
+        dropdownnew?.focusElement();
       });
 
       /* before clicking dropdownlist should not be visible, the button should be */
