@@ -92,6 +92,7 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
     <!-- Required stylesheet 
   "@scania/tegel-light/global.css";
   "@scania/tegel-light/tl-footer.css";
+  "@scania/tegel-light/tl-icon.css";
 -->
     <main>
       <div class="tds-u-p3 ">
