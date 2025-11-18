@@ -1,7 +1,5 @@
 import formatHtmlPreview from '../../stories/formatHtmlPreview';
-import { ComponentsFolder } from '../../utils/constants';
 import { processHtmlForScreenReader } from '../../utils/accessibility';
-import readme from './readme.md';
 
 export default {
   title: 'Components/Tooltip',

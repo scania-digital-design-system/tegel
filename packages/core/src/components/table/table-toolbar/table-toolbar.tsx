@@ -45,13 +45,13 @@ export class TdsTableToolbar {
 
   @State() whiteBackground: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
-  @State() horizontalScrollWidth: string = null;
+  @State() horizontalScrollWidth: string | null = null;
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   /** Used for sending users' input to the main parent tds-table the component,
    * can also be listened to in order to implement custom sorting logic. */
@@ -62,7 +62,7 @@ export class TdsTableToolbar {
     bubbles: true,
   })
   tdsFilter: EventEmitter<{
-    tableId: string;
+    tableId: string | undefined;
     query: string;
   }>;
 
@@ -82,7 +82,7 @@ export class TdsTableToolbar {
 
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
 
     if (!this.tdsSearchAriaLabel) {
       console.warn('tds-table-toolbar: tdsSearchAriaLabel is highly recommended for accessibility');
@@ -91,7 +91,7 @@ export class TdsTableToolbar {
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = this.tableEl?.[tablePropName];
     });
   }
 

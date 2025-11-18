@@ -4,7 +4,10 @@
  * @param items List of focusable elements, element with a attribute of disabled that is true will be skipped over.
  * @param nextItemIndex The index in the list to start the search on.
  */
-const findPreviousFocusableElement = (items: any[], previousItemIndex: number) => {
+const findPreviousFocusableElement = (
+  items: HTMLTdsDropdownOptionElement[],
+  previousItemIndex: number,
+) => {
   if (items[previousItemIndex] === undefined) {
     return items.length - 1;
   }

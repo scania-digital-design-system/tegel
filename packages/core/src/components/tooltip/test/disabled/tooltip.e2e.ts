@@ -34,10 +34,12 @@ testConfigurations.basic.forEach((config) => {
 
       const buttonBox = await button.boundingBox();
       // Move the mouse to a position slightly outside the button's bounding box
-      await page.mouse.move(
-        buttonBox.x + buttonBox.width + 10,
-        buttonBox.y + buttonBox.height + 10,
-      );
+      if (buttonBox) {
+        await page.mouse.move(
+          buttonBox.x + buttonBox.width + 10,
+          buttonBox.y + buttonBox.height + 10,
+        );
+      }
 
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
 

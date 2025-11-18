@@ -9,8 +9,8 @@
 | ----------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | -------------------- |
 | `compactDesign`         | `compact-design`          | Enables style where Table toolbar, rows and footer are less high                                                                                                                                                                            | `boolean`                                                                | `false`              |
 | `expandableRows`        | `expandable-rows`         | Enables extended row feature of Table                                                                                                                                                                                                       | `boolean`                                                                | `false`              |
-| `horizontalScrollWidth` | `horizontal-scroll-width` | Width of the table, used as the constraint for horizontal scrolling. **NOTE**: this will disable usage of the responsive flag                                                                                                               | `string`                                                                 | `null`               |
-| `modeVariant`           | `mode-variant`            | Variant of the component, based on current mode.                                                                                                                                                                                            | `"primary" \| "secondary"`                                               | `null`               |
+| `horizontalScrollWidth` | `horizontal-scroll-width` | Width of the table, used as the constraint for horizontal scrolling. **NOTE**: this will disable usage of the responsive flag                                                                                                               | `null \| string \| undefined`                                            | `null`               |
+| `modeVariant`           | `mode-variant`            | Variant of the component, based on current mode.                                                                                                                                                                                            | `"primary" \| "secondary" \| null`                                       | `null`               |
 | `multiselect`           | `multiselect`             | Enables multiselect feature of Table                                                                                                                                                                                                        | `boolean`                                                                | `false`              |
 | `noMinWidth`            | `no-min-width`            | Enables to customize width on Table columns                                                                                                                                                                                                 | `boolean`                                                                | `undefined`          |
 | `responsive`            | `responsive`              | Enables Table to take 100% available width with equal spacing of columns                                                                                                                                                                    | `boolean`                                                                | `false`              |
@@ -21,13 +21,13 @@
 
 ## Methods
 
-### `getSelectedRows() => Promise<any[]>`
+### `getSelectedRows() => Promise<{ cellKey: string; cellValue: string | number; }[][]>`
 
 Returns all selected rows data.
 
 #### Returns
 
-Type: `Promise<any[]>`
+Type: `Promise<RowCell[][]>`
 
 
 

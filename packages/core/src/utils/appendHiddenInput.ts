@@ -20,13 +20,15 @@ const appendHiddenInput = (
     input = element.ownerDocument!.createElement('input');
     input.type = 'hidden';
     if (additionalAttributes) {
-      additionalAttributes.forEach((attr) => input.setAttribute(attr.key, attr.value));
+      additionalAttributes.forEach((attr) => input?.setAttribute(attr.key, attr.value));
     }
     element.appendChild(input);
   }
-  input.disabled = disabled;
-  input.name = name;
-  input.value = value || '';
+  if(input) {
+    input.disabled = disabled;
+    input.name = name;
+    input.value = value || '';
+  }
 };
 
 export default appendHiddenInput;

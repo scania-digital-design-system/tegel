@@ -45,7 +45,7 @@ export class TdsInlineTabs {
 
   @State() showRightScroll: boolean = false;
 
-  private navWrapperElement: HTMLElement = null; // reference to container with nav buttons
+  private navWrapperElement: HTMLElement | null = null; // reference to container with nav buttons
 
   private componentWidth: number = 0; // visible width of this component
 
@@ -55,7 +55,7 @@ export class TdsInlineTabs {
 
   private children: Array<HTMLTdsInlineTabElement>;
 
-  private clickHandlers = new WeakMap<HTMLTdsInlineTabElement, EventListener>();
+  private clickHandlers = new WeakMap<HTMLElement, EventListener>();
 
   /** Event emitted when the selected Tab is changed. */
   @Event({
@@ -106,20 +106,25 @@ export class TdsInlineTabs {
   }
 
   private scrollRight(): void {
+    if (!this.navWrapperElement) return;
+
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
     this.evaluateScrollButtons();
   }
 
   private scrollLeft(): void {
+    if (!this.navWrapperElement) return;
+
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
     this.evaluateScrollButtons();
   }
 
   private evaluateScrollButtons(): void {
-    const scroll = this.navWrapperElement.scrollLeft;
+    if (!this.navWrapperElement) return;
 
+    const scroll = this.navWrapperElement.scrollLeft;
     this.showRightScroll = scroll <= this.scrollWidth;
     this.showLeftScroll = scroll > 0;
   }
@@ -145,7 +150,7 @@ export class TdsInlineTabs {
       });
     });
 
-    resizeObserver.observe(this.navWrapperElement);
+    if (this.navWrapperElement) resizeObserver.observe(this.navWrapperElement);
   };
 
   private addEventListenerToTabs = (): void => {

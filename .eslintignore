@@ -6,15 +6,25 @@
 **/compile.js
 **/conf.js
 **/.www
+**/*.config.js
+**/*.config.ts
+**/_beta
+
+build-tokens.js
+build-css.js
 
 
 packages/core/components
 packages/core/loader
 packages/core/stencil.config.ts
+packages/core/scripts
 packages/angular
+packages/angular-17
 packages/react
+packages/tegel-light
 
-**/www
+packages/core/www
+packages/core/storybook-static
 
 icons/gulpfile.js
 

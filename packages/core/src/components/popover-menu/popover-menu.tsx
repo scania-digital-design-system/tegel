@@ -13,7 +13,7 @@ import inheritAttributes from '../../utils/inheritAttributes';
   scoped: true,
 })
 export class TdsPopoverMenu {
-  @Element() host: HTMLElement;
+  @Element() host: HTMLTdsPopoverMenuElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
   @Prop() selector: string;
@@ -25,7 +25,7 @@ export class TdsPopoverMenu {
    * will be decided by this prop and will need to be controlled from the outside. This
    * also means that clicking outside of the popover won't close it. Takes precedence over `defaultShow` prop.
    */
-  @Prop() show: boolean = null;
+  @Prop() show: boolean | null = null;
 
   /** Decides if the component should be visible from the start. */
   @Prop() defaultShow: boolean = false;
@@ -46,7 +46,7 @@ export class TdsPopoverMenu {
   @Prop() fluidWidth: boolean = false;
 
   /** Mode variant of the component, based on current mode. */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Property for closing popover programmatically */
   @Method() async close() {
@@ -55,7 +55,7 @@ export class TdsPopoverMenu {
 
   @State() childRef?: HTMLTdsPopoverCoreElement;
 
-  inheritedAttributes: Attributes = [];
+  inheritedAttributes: Attributes = {};
 
   componentWillLoad() {
     this.inheritedAttributes = inheritAttributes(this.host, ['style', 'class']);

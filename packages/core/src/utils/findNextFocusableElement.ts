@@ -4,7 +4,7 @@
  * @param nextItemIndex The index in the list to start the search on.
  */
 
-const findNextFocusableElement = (items: any[], nextItemIndex: number) => {
+const findNextFocusableElement = (items: HTMLTdsDropdownOptionElement[], nextItemIndex: number) => {
   if (items[nextItemIndex] === undefined) {
     return 0;
   }

@@ -19,7 +19,7 @@ export class TdsHeaderItem {
   /** If the button should appear selected. */
   @Prop() selected: boolean = false;
 
-  private slotEl: HTMLSlotElement;
+  private slotEl: HTMLSlotElement | null | undefined;
 
   private mutationObserver: MutationObserver;
 
@@ -27,7 +27,9 @@ export class TdsHeaderItem {
     searchPredicate: (element: HTMLElement) => boolean,
     mutationCallback: (element: HTMLElement) => void,
   ) {
-    const assignedElements = this.slotEl.assignedElements({ flatten: true });
+    const assignedElements = this.slotEl?.assignedElements({ flatten: true });
+    if (!assignedElements?.length) return;
+
     const firstSlottedElement = assignedElements[0] as HTMLElement;
     if (firstSlottedElement) {
       const foundElement = dfs(firstSlottedElement, searchPredicate);
@@ -72,9 +74,9 @@ export class TdsHeaderItem {
   }
 
   componentDidLoad() {
-    this.slotEl = this.host.shadowRoot.querySelector('slot');
+    this.slotEl = this.host.shadowRoot?.querySelector('slot');
     this.updateSlottedElements();
-    this.slotEl.addEventListener('slotchange', this.updateSlottedElements);
+    this.slotEl?.addEventListener('slotchange', this.updateSlottedElements);
 
     // Set the order on initial load.
     this.updateOrder();

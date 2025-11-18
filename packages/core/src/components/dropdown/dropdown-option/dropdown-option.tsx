@@ -12,7 +12,6 @@ import {
 } from '@stencil/core';
 import { TdsCheckboxCustomEvent } from '../../../components';
 import { convertToString } from '../../../utils/convertToString';
-import { closestByTag, isTag } from '../../../utils/dom';
 
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the option label text.
@@ -97,19 +96,13 @@ export class TdsDropdownOption {
   }
 
   componentWillRender = () => {
-    if (!this.host.parentElement) return;
-
-    const directParent = this.host.parentElement;
-    if (isTag<HTMLTdsDropdownElement>(directParent, 'tds-dropdown')) {
-      this.parentElement = directParent;
-    } else {
-      const root = this.host.getRootNode();
-      if (root instanceof ShadowRoot) {
-        this.parentElement = closestByTag<HTMLTdsDropdownElement>(root.host, 'tds-dropdown');
-      } else {
-        this.parentElement = null;
-      }
+    if (!this.host.parentElement) {
+      return;
     }
+    this.parentElement =
+      this.host.parentElement?.tagName === 'TDS-DROPDOWN'
+        ? (this.host.parentElement as HTMLTdsDropdownElement)
+        : ((this.host.getRootNode() as ShadowRoot).host as HTMLTdsDropdownElement);
 
     if (this.parentElement) {
       this.multiselect = this.parentElement.multiselect ?? false;
@@ -121,8 +114,8 @@ export class TdsDropdownOption {
   handleSingleSelect = () => {
     if (!this.disabled) {
       this.selected = true;
-      this.parentElement.appendValue(this.internalValue);
-      this.parentElement.close();
+      this.parentElement?.appendValue(this.internalValue);
+      this.parentElement?.close();
       this.tdsSelect.emit({
         value: this.internalValue,
         selected: this.selected,
@@ -135,14 +128,14 @@ export class TdsDropdownOption {
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
-        this.parentElement.appendValue(this.internalValue);
+        this.parentElement?.appendValue(this.internalValue);
         this.selected = true;
         this.tdsSelect.emit({
           value: this.internalValue,
           selected: this.selected,
         });
       } else {
-        this.parentElement.removeValue(this.internalValue);
+        this.parentElement?.removeValue(this.internalValue);
         this.selected = false;
         this.tdsSelect.emit({
           value: this.internalValue,
@@ -184,7 +177,7 @@ export class TdsDropdownOption {
               class="multiselect"
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
-                  this.parentElement.close();
+                  this.parentElement?.close();
                 }
               }}
             >

@@ -73,15 +73,15 @@ export class TdsSlider {
   /** Sets the read only aria label for the input field */
   @Prop() tdsReadOnlyAriaLabel: string = '';
 
-  private wrapperElement: HTMLElement = null;
+  private wrapperElement: HTMLElement | null = null;
 
-  private thumbElement: HTMLElement = null;
+  private thumbElement: HTMLElement | null = null;
 
-  private thumbInnerElement: HTMLElement = null;
+  private thumbInnerElement: HTMLElement | null = null;
 
-  private trackElement: HTMLElement = null;
+  private trackElement: HTMLElement | null = null;
 
-  private trackFillElement: HTMLElement = null;
+  private trackFillElement: HTMLElement | null = null;
 
   private thumbGrabbed: boolean = false;
 
@@ -105,9 +105,9 @@ export class TdsSlider {
 
   private resetEventListenerAdded: boolean = false;
 
-  private formElement: HTMLFormElement;
+  private formElement: HTMLFormElement | null = null;
 
-  private ariaLiveElement: HTMLElement = null;
+  private ariaLiveElement: HTMLElement | null = null;
 
   private roundToStep(val: number): number {
     const stepNum = parseFloat(this.step);
@@ -188,20 +188,20 @@ export class TdsSlider {
 
       if (clickedOnTrack) {
         this.thumbCore(event);
-        this.trackElement.focus();
+        this.trackElement?.focus();
       }
 
       return;
     }
 
     this.thumbGrabbed = false;
-    this.thumbInnerElement.classList.remove('pressed');
+    this.thumbInnerElement?.classList.remove('pressed');
     if (this.thumbElement) {
       this.thumbElement.setAttribute('aria-grabbed', 'false');
     }
     this.updateValue(event);
 
-    this.trackElement.focus();
+    this.trackElement?.focus();
   }
 
   @Listen('mousemove', { target: 'window' })
@@ -257,7 +257,9 @@ export class TdsSlider {
 
   private thumbCore(event) {
     const numTicks = parseInt(this.ticks);
-    const trackRect = this.trackElement.getBoundingClientRect();
+    const trackRect = this.trackElement?.getBoundingClientRect();
+    if (!trackRect) return;
+
     let localLeft = 0;
     if (event.type === 'mousemove' || event.type === 'mouseup') {
       localLeft = event.clientX - trackRect.left;
@@ -272,7 +274,9 @@ export class TdsSlider {
     }
 
     this.thumbLeft = this.constrainThumb(localLeft);
-    this.thumbElement.style.left = `${this.thumbLeft}px`;
+    if (this.thumbElement) {
+      this.thumbElement.style.left = `${this.thumbLeft}px`;
+    }
 
     this.updateValue(event);
   }
@@ -285,7 +289,7 @@ export class TdsSlider {
     }
   }
 
-  private announcementDebounceTimeout: any = null;
+  private announcementDebounceTimeout: NodeJS.Timeout;
 
   private announceValueChange() {
     if (!this.ariaLiveElement) return;
@@ -293,6 +297,7 @@ export class TdsSlider {
     // Debounce announcements to prevent too many rapid announcements
     clearTimeout(this.announcementDebounceTimeout);
     this.announcementDebounceTimeout = setTimeout(() => {
+      if (!this.ariaLiveElement) return;
       this.ariaLiveElement.textContent = `${this.label ? this.label + ' ' : ''}${this.value} of ${
         this.max
       }`;
@@ -415,7 +420,7 @@ export class TdsSlider {
 
   /** Updates the slider value when using tds-text-field (reads value from host element) */
   private updateSliderValueFromTextField(event: CustomEvent) {
-    const hostEl = event.target as any; // tds-text-field host element exposes a value prop
+    const hostEl = event.target as HTMLTdsTextFieldElement; // tds-text-field host element exposes a value prop
     const raw = hostEl && typeof hostEl.value !== 'undefined' ? hostEl.value : '';
     let newValue = parseFloat(raw);
 
@@ -451,7 +456,7 @@ export class TdsSlider {
       return;
     }
     this.thumbGrabbed = true;
-    this.thumbInnerElement.classList.add('pressed');
+    this.thumbInnerElement?.classList.add('pressed');
     if (this.thumbElement) {
       this.thumbElement.setAttribute('aria-grabbed', 'true');
     }
@@ -571,7 +576,7 @@ export class TdsSlider {
         this.updateTrack();
       });
 
-      resizeObserver.observe(this.wrapperElement);
+      if (this.wrapperElement) resizeObserver.observe(this.wrapperElement);
     }
 
     this.calculateThumbLeftFromValue(this.value);
@@ -653,7 +658,7 @@ export class TdsSlider {
           }}
           aria-disabled={this.disabled ? 'true' : 'false'}
         >
-          <label id={`${this.sliderId}-label`} class={this.showTickNumbers && 'offset'}>
+          <label id={`${this.sliderId}-label`} class={{ offset: this.showTickNumbers }}>
             {this.label}
           </label>
 
