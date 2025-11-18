@@ -50,7 +50,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
   return formatHtmlPreview(`
     <!-- Required stylesheet 
       "@scania/tegel-light/tl-global.css"
-      "@scania/tegel-light/tl-message.css"
+      "@scania/tegel-light/tl-popover-canvas.css"
   -->
 
     <style>

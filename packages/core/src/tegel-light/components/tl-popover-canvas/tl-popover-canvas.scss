@@ -6,11 +6,13 @@
   background-color: var(--popover-canvas-background);
   box-shadow: var(--popover-canvas-box-shadow);
   border-radius: 4px;
+  pointer-events: none;
   z-index: 1000;
   visibility: hidden;
 
   &--visible {
     visibility: visible;
+    pointer-events: auto;
   }
 
   &--animation-fade {
