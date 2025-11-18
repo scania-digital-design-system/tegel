@@ -114,8 +114,8 @@ export class TdsDropdownOption {
   handleSingleSelect = () => {
     if (!this.disabled) {
       this.selected = true;
-      this.parentElement.appendValue(this.internalValue);
-      this.parentElement.close();
+      this.parentElement?.appendValue(this.internalValue);
+      this.parentElement?.close();
       this.tdsSelect.emit({
         value: this.internalValue,
         selected: this.selected,
@@ -128,14 +128,14 @@ export class TdsDropdownOption {
   ) => {
     if (!this.disabled) {
       if (event.detail.checked) {
-        this.parentElement.appendValue(this.internalValue);
+        this.parentElement?.appendValue(this.internalValue);
         this.selected = true;
         this.tdsSelect.emit({
           value: this.internalValue,
           selected: this.selected,
         });
       } else {
-        this.parentElement.removeValue(this.internalValue);
+        this.parentElement?.removeValue(this.internalValue);
         this.selected = false;
         this.tdsSelect.emit({
           value: this.internalValue,
@@ -177,7 +177,7 @@ export class TdsDropdownOption {
               class="multiselect"
               onKeyDown={(event) => {
                 if (event.key === 'Escape') {
-                  this.parentElement.close();
+                  this.parentElement?.close();
                 }
               }}
             >

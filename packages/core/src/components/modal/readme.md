@@ -126,25 +126,25 @@ This pattern avoids rendering hidden content upfront, improves performance and g
 
 ## Properties
 
-| Property          | Attribute          | Description                                                                                                                                                 | Type                           | Default     |
-| ----------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ----------- |
-| `actionsPosition` | `actions-position` | Changes the position behaviour of the actions slot.                                                                                                         | `"static" \| "sticky"`         | `'static'`  |
-| `closable`        | `closable`         | Shows or hides the close [X] button.                                                                                                                        | `boolean`                      | `true`      |
-| `header`          | `header`           | Sets the header of the Modal.                                                                                                                               | `string`                       | `undefined` |
-| `prevent`         | `prevent`          | Disables closing Modal on clicking on overlay area.                                                                                                         | `boolean`                      | `false`     |
-| `referenceEl`     | --                 | Element that will show the Modal (takes priority over selector)                                                                                             | `HTMLElement`                  | `undefined` |
-| `selector`        | `selector`         | CSS selector for the element that will show the Modal.                                                                                                      | `string`                       | `undefined` |
-| `show`            | `show`             | Controls whether the Modal is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                      | `undefined` |
-| `size`            | `size`             | Size of Modal                                                                                                                                               | `"lg" \| "md" \| "sm" \| "xs"` | `'md'`      |
-| `tdsAlertDialog`  | `tds-alert-dialog` | Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages.         | `"alertdialog" \| "dialog"`    | `'dialog'`  |
+| Property          | Attribute          | Description                                                                                                                                                 | Type                               | Default     |
+| ----------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- | ----------- |
+| `actionsPosition` | `actions-position` | Changes the position behaviour of the actions slot.                                                                                                         | `"static" \| "sticky"`             | `'static'`  |
+| `closable`        | `closable`         | Shows or hides the close [X] button.                                                                                                                        | `boolean`                          | `true`      |
+| `header`          | `header`           | Sets the header of the Modal.                                                                                                                               | `string`                           | `undefined` |
+| `prevent`         | `prevent`          | Disables closing Modal on clicking on overlay area.                                                                                                         | `boolean`                          | `false`     |
+| `referenceEl`     | --                 | Element that will show the Modal (takes priority over selector)                                                                                             | `HTMLElement \| null \| undefined` | `undefined` |
+| `selector`        | `selector`         | CSS selector for the element that will show the Modal.                                                                                                      | `string`                           | `undefined` |
+| `show`            | `show`             | Controls whether the Modal is shown or not. If this is set hiding and showing will be decided by this prop and will need to be controlled from the outside. | `boolean`                          | `undefined` |
+| `size`            | `size`             | Size of Modal                                                                                                                                               | `"lg" \| "md" \| "sm" \| "xs"`     | `'md'`      |
+| `tdsAlertDialog`  | `tds-alert-dialog` | Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages.         | `"alertdialog" \| "dialog"`        | `'dialog'`  |
 
 
 ## Events
 
-| Event      | Description                        | Type                |
-| ---------- | ---------------------------------- | ------------------- |
-| `tdsClose` | Emits when the Modal is closed.    | `CustomEvent<any>`  |
-| `tdsOpen`  | Emits just before Modal is opened. | `CustomEvent<void>` |
+| Event      | Description                        | Type                  |
+| ---------- | ---------------------------------- | --------------------- |
+| `tdsClose` | Emits when the Modal is closed.    | `CustomEvent<object>` |
+| `tdsOpen`  | Emits just before Modal is opened. | `CustomEvent<void>`   |
 
 
 ## Methods

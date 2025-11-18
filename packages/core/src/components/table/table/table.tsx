@@ -64,7 +64,7 @@ export class TdsTable {
   @Prop({ reflect: true }) responsive: boolean = false;
 
   /** Variant of the component, based on current mode. */
-  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' = null;
+  @Prop({ reflect: true }) modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Enables zebra stripe mode on the table rows or columns. */
   @Prop({ reflect: true }) zebraMode:
@@ -77,7 +77,7 @@ export class TdsTable {
   /** Width of the table, used as the constraint for horizontal scrolling.
    * **NOTE**: this will disable usage of the responsive flag
    * */
-  @Prop() horizontalScrollWidth?: string = null;
+  @Prop() horizontalScrollWidth?: string | null = null;
 
   /** ID used for internal Table functionality and events, must be unique.
    *
@@ -112,24 +112,27 @@ export class TdsTable {
   /** Returns all selected rows data. */
   @Method()
   async getSelectedRows() {
-    let selectedRowsData = [];
+    type RowCell = { cellKey: string; cellValue: string | number };
+    let selectedRowsData: RowCell[][] = [];
+
     const tableBody = this.host.querySelector('tds-table-body');
-    const selectedRows = Array.from(tableBody.querySelectorAll('tds-table-body-row')).filter(
-      (element) => element.selected,
-    );
+    const selectedRows = (
+      Array.from(
+        tableBody?.querySelectorAll('tds-table-body-row') ?? [],
+      ) as Array<HTMLTdsTableBodyRowElement>
+    ).filter((element) => element.selected);
 
     selectedRows.forEach((row) => {
-      let selectedRow = [];
-      const rowCells = Array.from(row.getElementsByTagName('tds-body-cell'));
+      let selectedRow: RowCell[] = [];
+      const rowCells = Array.from(
+        row.getElementsByTagName('tds-body-cell'),
+      ) as Array<HTMLTdsBodyCellElement>;
 
       rowCells.forEach((cell) => {
-        const cellObject = {
-          cellKey: null,
-          cellValue: null,
+        const cellObject: RowCell = {
+          cellKey: cell.cellKey,
+          cellValue: (cell.cellValue ?? cell.innerText) as string | number,
         };
-
-        cellObject.cellKey = cell.cellKey;
-        cellObject.cellValue = cell.cellValue ?? cell.innerText;
 
         selectedRow = [...selectedRow, cellObject];
       });
@@ -189,11 +192,14 @@ export class TdsTable {
 
   componentWillRender() {
     if (this.horizontalScrollWidth) {
-      this.enableHorizontalScrollToolbarDesign =
-        this.host.closest('tds-table').getElementsByTagName('tds-table-toolbar').length >= 1;
+      const closestTable = this.host.closest('tds-table');
+      if (closestTable) {
+        this.enableHorizontalScrollToolbarDesign =
+          closestTable.getElementsByTagName('tds-table-toolbar').length >= 1;
 
-      this.enableHorizontalScrollFooterDesign =
-        this.host.closest('tds-table').getElementsByTagName('tds-table-footer').length >= 1;
+        this.enableHorizontalScrollFooterDesign =
+          closestTable.getElementsByTagName('tds-table-footer').length >= 1;
+      }
     }
   }
 

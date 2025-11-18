@@ -27,7 +27,7 @@ export class TdsFooterGroup {
 
   /** If the group is placed in the main part of the Footer,
    * it can have either start or end as a slot position otherwise undefined. */
-  private slotPosition: 'start' | 'end' = null;
+  private slotPosition: 'start' | 'end' | null = null;
 
   /** Indicates if a group is part of the top part of the Footer. */
   private topPartGroup: boolean = false;
@@ -39,9 +39,9 @@ export class TdsFooterGroup {
   connectedCallback() {
     this.updateIsMobile();
 
-    this.topPartGroup = this.host.parentElement.slot === 'top';
+    this.topPartGroup = this.host.parentElement?.slot === 'top';
     if (!this.topPartGroup) {
-      this.slotPosition = this.host.parentElement.slot === 'end' ? 'end' : 'start';
+      this.slotPosition = this.host.parentElement?.slot === 'end' ? 'end' : 'start';
     }
 
     if (!this.tdsListAriaLabel) {

@@ -17,8 +17,10 @@ test.describe.parallel('TdsTextField - Focus', () => {
     // Ensure that the component is rendered and interactable
     await expect(textField).toBeVisible();
 
-    // Trigger focus programmatically
-    await textField.evaluate((element: any) => element.focusElement());
+    // Trigger focus programmatically on the host element
+    await textField.evaluate((el) =>
+      (el as Element & { focusElement?: () => void }).focusElement?.(),
+    );
 
     // Wait for any visual changes due to the focus action to take effect
     await page.waitForTimeout(100);
@@ -34,8 +36,10 @@ test.describe.parallel('TdsTextField - Focus', () => {
     // Ensure the component is visible and ready
     await expect(textField).toBeVisible();
 
-    // Trigger focus programmatically
-    await textField.evaluate((element: any) => element.focusElement());
+    // Trigger focus programmatically on the host element
+    await textField.evaluate((el) =>
+      (el as Element & { focusElement?: () => void }).focusElement?.(),
+    );
 
     // Wait for any visual changes due to the focus action to take effect
     await page.waitForTimeout(100);

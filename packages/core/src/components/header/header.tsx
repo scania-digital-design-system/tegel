@@ -34,12 +34,14 @@ export class TdsHeader {
     const hostElement = this.host;
     const navElement = hostElement.querySelector('.tds-header-component-list');
 
-    this.observer.observe(navElement, {
-      childList: true,
-      subtree: false,
-    });
+    if (navElement) {
+      this.observer.observe(navElement, {
+        childList: true,
+        subtree: false,
+      });
 
-    updateListChildrenRoles(navElement);
+      updateListChildrenRoles(navElement);
+    }
   }
 
   disconnectedCallback() {
