@@ -12,6 +12,7 @@
       "target": "es2017",
       "skipLibCheck": true,
       "jsx": "react-jsx",
+      "jsxFactory": null,
       "allowSyntheticDefaultImports": true,
       "declaration": true,
       "declarationDir": "./dist/types",
