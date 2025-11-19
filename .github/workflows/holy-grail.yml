@@ -51,7 +51,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: fix/react-wrapper-ts-error
+          ref: develop
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"

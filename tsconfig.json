@@ -40,7 +40,6 @@
     "target": "es2017",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "jsx": "react",
   },
   "exclude": ["**/*.d.ts", "packages/core/src/components/_beta/**"],
   "include": ["packages/core/**/*"],
