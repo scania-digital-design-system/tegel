@@ -1,6 +1,12 @@
 {
-  "extends": "../../tsconfig.json",
     "compilerOptions": {
+      "strictNullChecks": true,
+      "allowUnreachableCode": false,
+      "experimentalDecorators": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
       "baseUrl": "./",
       "paths": {
         "components": ["dist/components"]
@@ -12,7 +18,6 @@
       "target": "es2017",
       "skipLibCheck": true,
       "jsx": "react-jsx",
-      "jsxFactory": null,
       "allowSyntheticDefaultImports": true,
       "declaration": true,
       "declarationDir": "./dist/types",
