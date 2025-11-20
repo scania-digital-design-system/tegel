@@ -67,8 +67,6 @@ Type: `Promise<void>`
 
 ### Used by
 
- - [tds-date-picker](../_beta/date-picker/date-picker-single)
- - [tds-date-range-picker](../_beta/date-picker/date-range-picker)
  - [tds-slider](../slider)
 
 ### Depends on
@@ -82,8 +80,6 @@ graph TD;
   tds-text-field --> tds-tooltip
   tds-text-field --> tds-icon
   tds-tooltip --> tds-popover-core
-  tds-date-picker --> tds-text-field
-  tds-date-range-picker --> tds-text-field
   tds-slider --> tds-text-field
   style tds-text-field fill:#f9f,stroke:#333,stroke-width:4px
 ```
