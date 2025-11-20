@@ -1,4 +1,4 @@
-@import '../../../mixins/focus-state';
+@use '../../../mixins/focus-state' as *;
 
 :host([role='listitem']) {
   div {

@@ -1,4 +1,4 @@
-@import '../../../global/_variables';
+@use '../../../global/_variables' as *;
 
 :host {
   display: block;

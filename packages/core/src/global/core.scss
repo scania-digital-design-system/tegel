@@ -1,77 +1,79 @@
 /* Component tokens */
-@import '../../../../tokens/scss/component/badge';
-@import '../../../../tokens/scss/component/button';
-@import '../../../../tokens/scss/component/card';
-@import '../../../../tokens/scss/component/chip';
-@import '../../../../tokens/scss/component/cookie';
-@import '../../../../tokens/scss/component/dropdown';
-@import '../../../../tokens/scss/component/footer';
-@import '../../../../tokens/scss/component/header';
-@import '../../../../tokens/scss/component/input-field';
-@import '../../../../tokens/scss/component/logo';
-@import '../../../../tokens/scss/component/shadow';
-@import '../../../../tokens/scss/component/side-menu';
-@import '../../../../tokens/scss/component/spinner';
-@import '../../../../tokens/scss/component/stepper';
-@import '../../../../tokens/scss/component/table';
-@import '../../../../tokens/scss/component/tag';
-@import '../../../../tokens/scss/component/text';
+@use '../../../../tokens/scss/component/badge' as *;
+@use '../../../../tokens/scss/component/button' as *;
+@use '../../../../tokens/scss/component/card' as *;
+@use '../../../../tokens/scss/component/chip' as *;
+@use '../../../../tokens/scss/component/cookie' as *;
+@use '../../../../tokens/scss/component/dropdown' as *;
+@use '../../../../tokens/scss/component/footer' as *;
+@use '../../../../tokens/scss/component/header' as *;
+@use '../../../../tokens/scss/component/input-field' as *;
+@use '../../../../tokens/scss/component/logo' as *;
+@use '../../../../tokens/scss/component/shadow' as *;
+@use '../../../../tokens/scss/component/side-menu' as *;
+@use '../../../../tokens/scss/component/spinner' as *;
+@use '../../../../tokens/scss/component/stepper' as *;
+@use '../../../../tokens/scss/component/table' as *;
+@use '../../../../tokens/scss/component/tag' as *;
+@use '../../../../tokens/scss/component/text' as *;
 
 // Motion
-@import '../../../../motion';
+@use '../../../../motion' as *;
 
 // Grid (Deprecated - will be removed in version 2.0)
-@import '../../../../grid-deprecated/grid-deprecated';
+@use '../../../../grid-deprecated/grid-deprecated' as *;
 
 // Grid new
-@import '../../../../grid/grid';
+@use '../../../../grid/grid' as *;
 
 // Vars
-@import '_variables';
-@import 'scrollbar-vars';
+@use '_variables' as *;
+@use 'scrollbar-vars' as *;
 
 // Utility classes
-@import '_utility-classes';
+@use '_utility-classes' as *;
 
 //Web component theme variables
-@import '../components/accordion/accordion-vars';
-@import '../components/banner/banner-vars';
-@import '../components/block/block-vars';
-@import '../components/breadcrumbs/breadcrumbs-vars';
-@import '../components/button/button-vars';
-@import '../components/card/card-vars';
-@import '../components/checkbox/checkbox-vars';
-@import '../components/chip/chip-vars';
-@import '../components/table/table-vars';
-@import '../components/datetime/datetime-vars';
-@import '../components/divider/divider-vars';
-@import '../components/dropdown/dropdown-vars';
-@import '../components/dropdown/dropdown-option/dropdown-option-vars';
-@import '../components/footer/footer-vars';
-@import '../components/header/header-item/header-item-global';
-@import '../components/header/header-vars';
-@import '../components/link/link-vars';
-@import '../components/message/message-vars';
-@import '../components/modal/modal-vars';
-@import '../components/popover-canvas/popover-canvas-vars';
-@import '../components/popover-menu/popover-menu-vars';
-@import '../components/radio-button/radio-button-vars';
-@import '../components/side-menu/side-menu-item/side-menu-item-global';
-@import '../components/side-menu/side-menu-vars';
-@import '../components/slider/slider-vars';
-@import '../components/stepper/stepper-vars';
-@import '../components/tag/tag-vars';
-@import '../components/tabs/folder-tabs/folder-tabs-vars';
-@import '../components/tabs/inline-tabs/inline-tabs-vars';
-@import '../components/tabs/navigation-tabs/navigation-tabs-vars';
-@import '../components/textarea/textarea-vars';
-@import '../components/text-field/text-field-vars';
-@import '../components/toast/toast-vars';
-@import '../components/toggle/toggle-vars';
-@import '../components/tooltip/tooltip-vars';
+@use '../components/accordion/accordion-vars' as *;
+@use '../components/banner/banner-vars' as *;
+@use '../components/block/block-vars' as *;
+@use '../components/breadcrumbs/breadcrumbs-vars' as *;
+@use '../components/button/button-vars' as *;
+@use '../components/card/card-vars' as *;
+@use '../components/checkbox/checkbox-vars' as *;
+@use '../components/chip/chip-vars' as *;
+@use '../components/table/table-vars' as *;
+@use '../components/datetime/datetime-vars' as *;
+@use '../components/divider/divider-vars' as *;
+@use '../components/dropdown/dropdown-vars' as *;
+@use '../components/dropdown/dropdown-option/dropdown-option-vars' as *;
+@use '../components/footer/footer-vars' as *;
+@use '../components/header/header-item/header-item-global' as *;
+@use '../components/header/header-vars' as *;
+@use '../components/link/link-vars' as *;
+@use '../components/message/message-vars' as *;
+@use '../components/modal/modal-vars' as *;
+@use '../components/popover-canvas/popover-canvas-vars' as *;
+@use '../components/popover-menu/popover-menu-vars' as *;
+@use '../components/radio-button/radio-button-vars' as *;
+@use '../components/side-menu/side-menu-item/side-menu-item-global' as *;
+@use '../components/side-menu/side-menu-vars' as *;
+@use '../components/slider/slider-vars' as *;
+@use '../components/stepper/stepper-vars' as *;
+@use '../components/tag/tag-vars' as *;
+@use '../components/tabs/folder-tabs/folder-tabs-vars' as *;
+@use '../components/tabs/inline-tabs/inline-tabs-vars' as *;
+@use '../components/tabs/navigation-tabs/navigation-tabs-vars' as *;
+@use '../components/textarea/textarea-vars' as *;
+@use '../components/text-field/text-field-vars' as *;
+@use '../components/toast/toast-vars' as *;
+@use '../components/toggle/toggle-vars' as *;
+@use '../components/tooltip/tooltip-vars' as *;
 
 // Beta components
-@import '../components/_beta/date-picker/date-picker-single/date-picker-vars';
+@use '../components/_beta/date-picker/date-picker-single/date-picker-vars' as *;
+
+@use 'shame' as *;
 
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
@@ -124,5 +126,3 @@ body {
     background-color: transparent;
   }
 }
-
-@import 'shame';

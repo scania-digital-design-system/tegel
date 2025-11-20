@@ -1,5 +1,5 @@
-@import '../../../mixins/box-sizing';
-@import './tl-divider-vars';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-divider-vars' as *;
 
 .tl-divider {
   @include tds-box-sizing;

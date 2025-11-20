@@ -1,4 +1,4 @@
-@import './tl-button-mixins';
+@use './tl-button-mixins' as *;
 
 .tl-button {
   // Base variables

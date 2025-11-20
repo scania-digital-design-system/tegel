@@ -1,5 +1,5 @@
-@import '../../../../mixins/box-sizing';
-@import '../../../../../../../typography/utilities/typography-utility';
+@use '../../../../mixins/box-sizing' as *;
+@use '../../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-inline-tabs__tab {
   @include tds-box-sizing;

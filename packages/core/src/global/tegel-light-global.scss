@@ -7,46 +7,46 @@
 $local-assets: './assets' !default;
 
 /* Multibrand tokens: Scania colors */
-@import '../../../../color/scania-color-primitives';
-@import '../../../../color/scania-brand-usage';
+@use '../../../../color/scania-color-primitives' as *;
+@use '../../../../color/scania-brand-usage' as *;
 
 /* Multibrand tokens: Scania typography */
-@import '../../../../typography/tokens/typography-scania';
+@use '../../../../typography/tokens/typography-scania' as *;
 
 /* Multibrand tokens: Scania spacing */
-@import '../../../../spacing/units';
-@import '../../../../spacing/radius';
-@import '../../../../spacing/scania-units';
+@use '../../../../spacing/units' as *;
+@use '../../../../spacing/radius' as *;
+@use '../../../../spacing/scania-units' as *;
 
 // Motion
-@import '../../../../motion/';
+@use '../../../../motion' as *;
 
 // Colors
-@import '../../../../color/color';
+@use '../../../../color/color' as *;
 
 // Grid (Deprecated - will be removed in version 2.0)
-@import '../../../../grid-deprecated/grid-deprecated';
+@use '../../../../grid-deprecated/grid-deprecated' as *;
 
 // Grid new
-@import '../../../../grid/grid';
+@use '../../../../grid/grid' as *;
 
 // Typography
-@import '../../../../typography/scania-fonts';
-@import '../../../../typography/scania-fonts-vars';
-@import '../../../../typography/scania-fonts-selectors';
+@use '../../../../typography/scania-fonts' as *;
+@use '../../../../typography/scania-fonts-vars' as *;
+@use '../../../../typography/scania-fonts-selectors' as *;
 
 // Logos
-@import '../../../../logotype/logotype-scania';
+@use '../../../../logotype/logotype-scania' as *;
 
 // Vars
-@import '_variables';
-@import 'scrollbar-vars';
+@use '_variables' as *;
+@use 'scrollbar-vars' as *;
 
 // Utility classes
-@import '_utility-classes';
+@use '_utility-classes' as *;
 
 // Beta components
-@import '../components/_beta/date-picker/date-picker-single/date-picker-vars';
+@use '../components/_beta/date-picker/date-picker-single/date-picker-vars' as *;
 
 body {
   font-family: 'Scania Sans Semi Condensed', 'Scania Sans Condensed', Arial, Helvetica, sans-serif;
@@ -90,4 +90,4 @@ body {
   }
 }
 
-@import 'shame';
+@use 'shame' as *;

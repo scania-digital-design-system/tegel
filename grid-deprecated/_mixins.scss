@@ -1,6 +1,6 @@
 @use 'sass:math';
-@import '../globals';
-@import 'breakpoints';
+@use '../globals' as *;
+@use 'breakpoints' as *;
 
 // Container
 @mixin grid-container($prefix) {

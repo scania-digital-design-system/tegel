@@ -1,9 +1,9 @@
-@import '../../../mixins/scrollbar';
-@import '../../../mixins/z-index';
-@import '../../../mixins/box-sizing';
-@import './tl-header-vars';
-@import '../../../../../../typography/utilities/typography-utility';
-@import '../../../global/_variables';
+@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/z-index' as *;
+@use '../../../mixins/box-sizing' as *;
+@use './tl-header-vars' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../global/_variables' as *;
 
 .tl-header__dropdown-wrapper {
   all: unset;

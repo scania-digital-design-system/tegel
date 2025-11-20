@@ -1,6 +1,6 @@
-@import '../../../mixins/box-sizing';
-@import './tl-header-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-header-vars' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-header__item-wrapper {
   all: unset;

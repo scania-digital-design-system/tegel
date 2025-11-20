@@ -1,14 +1,14 @@
-@import '../../../mixins/box-sizing';
-@import '../../../mixins/flex-center';
-@import '../../../mixins/z-index';
-@import './tl-header-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/flex-center' as *;
+@use '../../../mixins/z-index' as *;
+@use './tl-header-vars' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 /* Header Elements */
-@import 'item';
-@import 'dropdown';
-@import 'title';
-@import 'brand-symbol';
+@use 'item' as *;
+@use 'dropdown' as *;
+@use 'title' as *;
+@use 'brand-symbol' as *;
 
 .tl-header {
   display: block;

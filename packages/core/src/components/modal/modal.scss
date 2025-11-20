@@ -1,8 +1,8 @@
-@import '../../mixins/z-index';
-@import '../../mixins/box-sizing';
-@import '../../mixins/focus-state';
-@import '../../mixins/scrollbar';
-@import '../../../../../typography/utilities/typography-utility';
+@use '../../mixins/z-index' as *;
+@use '../../mixins/box-sizing' as *;
+@use '../../mixins/focus-state' as *;
+@use '../../mixins/scrollbar' as *;
+@use '../../../../../typography/utilities/typography-utility' as *;
 
 // Screen breakpoints
 $screen-s: 320px;

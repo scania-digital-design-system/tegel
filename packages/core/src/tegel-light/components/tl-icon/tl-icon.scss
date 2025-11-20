@@ -1,5 +1,5 @@
-@import './icon-list';
-@import './icon-sizes';
+@use './icon-list' as *;
+@use './icon-sizes' as *;
 
 .tl-icon {
   display: inline-block;

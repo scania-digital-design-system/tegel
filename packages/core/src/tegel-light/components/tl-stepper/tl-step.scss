@@ -1,6 +1,6 @@
-@import '../../../mixins/box-sizing';
-@import '../../../../../../typography/utilities/typography-utility';
-@import './tl-stepper-vars';
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
+@use './tl-stepper-vars' as *;
 
 @mixin divider {
   content: ' ';

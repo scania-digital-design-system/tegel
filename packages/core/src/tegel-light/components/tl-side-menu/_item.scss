@@ -1,5 +1,5 @@
-@import '../../../../../../grid-deprecated/vars';
-@import './tl-side-menu-vars';
+@use '../../../../../../grid-deprecated/vars' as *;
+@use './tl-side-menu-vars' as *;
 
 .tl-side-menu__item-wrapper {
   display: block;
@@ -72,4 +72,3 @@
   border-radius: var(--component-side-menu-radius-corner) 0 0
     var(--component-side-menu-radius-corner);
 }
-

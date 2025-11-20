@@ -1,6 +1,6 @@
-@import './tl-button-vars'; // Import global variables
-@import '../../../mixins/box-sizing';
-@import '../../../../../../typography/mixins/type-styles';
+@use './tl-button-vars' as *; // Import global variables
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 /* Base button styles */
 .tl-button {

@@ -1,7 +1,7 @@
-@import './tl-toast-vars';
-@import '../../../mixins/focus-state';
-@import '../../../mixins/z-index';
-@import '../../../../../../typography/utilities/typography-utility';
+@use './tl-toast-vars' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/z-index' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-toast {
   z-index: tds-z-index(toast);

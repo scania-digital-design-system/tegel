@@ -1,6 +1,6 @@
-@import '../../../mixins/box-sizing';
-@import './tl-card-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-card-vars' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-card {
   @include tds-box-sizing;

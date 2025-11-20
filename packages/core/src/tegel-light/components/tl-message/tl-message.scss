@@ -1,4 +1,4 @@
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-message {
   &--primary {

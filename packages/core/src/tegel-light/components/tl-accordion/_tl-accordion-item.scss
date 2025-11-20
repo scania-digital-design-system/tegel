@@ -1,7 +1,7 @@
-@import '../../../mixins/focus-state';
-@import '../../../mixins/disabled-style';
-@import '../../../mixins/box-sizing';
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/disabled-style' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-accordion__item {
   @include tds-box-sizing;

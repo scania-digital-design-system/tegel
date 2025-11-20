@@ -1,5 +1,5 @@
-@import './tl-dropdown-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use './tl-dropdown-vars' as *;
+@use '../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-dropdown {
   width: 208px;

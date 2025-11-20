@@ -1,7 +1,6 @@
-//@import '../theme/core/spacing/vars';
-@import '../../../../../../grid-deprecated/vars';
+@use '../../../../../../grid-deprecated/vars' as *;
 
-@import '../../../mixins/focus-state';
+@use '../../../mixins/focus-state' as *;
 
 :host {
   display: block;

@@ -1,7 +1,7 @@
-@import '../../../../mixins/box-sizing';
-@import '../../../../mixins/focus-state';
-@import './tl-folder-tabs-vars';
-@import '../../../../../../../typography/utilities/typography-utility';
+@use '../../../../mixins/box-sizing' as *;
+@use '../../../../mixins/focus-state' as *;
+@use './tl-folder-tabs-vars' as *;
+@use '../../../../../../../typography/utilities/typography-utility' as *;
 
 .tl-folder-tabs__tab {
   all: unset;
