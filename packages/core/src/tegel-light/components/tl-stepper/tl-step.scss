@@ -1,5 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-stepper-vars' as *;
 
 @mixin divider {

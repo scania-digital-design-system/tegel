@@ -2,7 +2,7 @@
 @use '../../../mixins/flex-center' as *;
 @use '../../../mixins/z-index' as *;
 @use './tl-header-vars' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 /* Header Elements */
 @use 'item' as *;

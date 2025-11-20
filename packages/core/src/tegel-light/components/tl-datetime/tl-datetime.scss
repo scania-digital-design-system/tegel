@@ -1,6 +1,6 @@
 @use './tl-datetime-vars' as *;
 @use '../../../mixins/box-sizing' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-datetime {
   display: block;

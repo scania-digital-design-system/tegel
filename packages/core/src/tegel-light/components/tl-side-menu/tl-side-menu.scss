@@ -3,7 +3,7 @@
 @use '../../../mixins/z-index' as *;
 @use '../../../global/variables' as *;
 @use './tl-side-menu-vars' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 @use 'item' as *;
 @use 'dropdown' as *;

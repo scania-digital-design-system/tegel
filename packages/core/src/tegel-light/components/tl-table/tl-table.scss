@@ -1,7 +1,7 @@
 @use '../../../mixins/box-sizing' as *;
 @use '../../../mixins/scrollbar' as *;
 @use './tl-table-vars' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 @use 'footer' as *;
 
 // Mixin for text alignment modifiers

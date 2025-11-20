@@ -1,5 +1,5 @@
 @use './tl-side-menu-vars' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-side-menu__user {
   display: flex;

@@ -2,7 +2,7 @@
 @use '../../mixins/box-sizing' as *;
 @use '../../mixins/focus-state' as *;
 @use '../../mixins/scrollbar' as *;
-@use '../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../typography/mixins/type-styles' as *;
 
 // Screen breakpoints
 $screen-s: 320px;

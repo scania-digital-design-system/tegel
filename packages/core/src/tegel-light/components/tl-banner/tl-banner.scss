@@ -1,6 +1,6 @@
 @use './tl-banner-vars' as *;
 @use '../../../mixins/focus-state' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-banner {
   display: flex;

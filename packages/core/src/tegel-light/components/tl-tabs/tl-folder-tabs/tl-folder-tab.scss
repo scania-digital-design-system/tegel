@@ -1,7 +1,7 @@
 @use '../../../../mixins/box-sizing' as *;
 @use '../../../../mixins/focus-state' as *;
 @use './tl-folder-tabs-vars' as *;
-@use '../../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../../typography/mixins/type-styles' as *;
 
 .tl-folder-tabs__tab {
   all: unset;

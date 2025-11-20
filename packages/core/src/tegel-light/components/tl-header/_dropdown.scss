@@ -2,7 +2,7 @@
 @use '../../../mixins/z-index' as *;
 @use '../../../mixins/box-sizing' as *;
 @use './tl-header-vars' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 @use '../../../global/_variables' as *;
 
 .tl-header__dropdown-wrapper {

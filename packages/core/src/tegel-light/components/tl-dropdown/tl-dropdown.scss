@@ -1,5 +1,5 @@
 @use './tl-dropdown-vars' as *;
-@use '../../../../../../typography/utilities/typography-utility' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-dropdown {
   width: 208px;
