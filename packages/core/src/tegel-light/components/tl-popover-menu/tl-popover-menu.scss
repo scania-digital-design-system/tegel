@@ -1,0 +1,39 @@
+@import './tl-popover-menu-vars';
+@import '../../../mixins/box-sizing';
+@import '../../../mixins/z-index';
+
+@import 'item';
+
+.tl-popover-menu {
+  @include tds-box-sizing;
+
+  overflow: hidden;
+  width: 160px;
+  background-color: var(--popover-menu-background);
+  box-shadow: var(--popover-menu-box-shadow);
+  border-radius: 4px;
+  z-index: tds-z-index('tooltip');
+  pointer-events: none;
+  visibility: hidden;
+
+  &--visible {
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &--fluid {
+    width: max-content;
+    display: inline-block;
+  }
+
+  &--animation-fade {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 120ms ease-out, transform 120ms ease-out;
+  }
+
+  &--visible.tl-popover-menu--animation-fade {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
