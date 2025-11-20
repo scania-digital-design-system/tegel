@@ -290,7 +290,11 @@ const Template = ({
       
       <div class="tl-slider__slider-controls-row">
         ${
-          showControls && !showInput
+          showInput
+            ? `
+        <div class="tl-slider__input-value tl-slider__input-value--min">${min}</div>
+        `
+            : showControls
             ? `
         <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--minus" type="button" aria-label="Decrease value" ${
           disabled ? 'disabled' : ''
@@ -321,23 +325,31 @@ const Template = ({
             </div>
           </div>
           
-          ${generateTicks()}
+          ${showInput ? '' : generateTicks()}
         </div>
         
         ${
           showInput
             ? `
-        <input 
-          type="number" 
-          class="tl-slider__input-field" 
-          value="${initialValue}"
-          min="${min}"
-          max="${max}"
-          step="${step}"
-          ${disabled ? 'disabled' : ''}
-          ${readonly ? 'readonly' : ''}
-          aria-label="Slider value input"
-        />
+        <div class="tl-slider__input-value tl-slider__input-value--max">${max}</div>
+        <div class="tl-slider__input-wrapper">
+          <input 
+            type="number" 
+            class="tl-slider__input-field" 
+            value="${initialValue}"
+            min="${min}"
+            max="${max}"
+            step="${step}"
+            ${disabled ? 'disabled' : ''}
+            ${readonly ? 'readonly' : ''}
+            aria-label="Slider value input"
+          />
+          ${
+            readonly
+              ? '<span class="tl-icon tl-icon--padlock tl-icon--16 tl-slider__input-icon" aria-hidden="true"></span>'
+              : ''
+          }
+        </div>
         `
             : showControls
             ? `
