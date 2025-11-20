@@ -4,18 +4,6 @@ export default {
   title: 'Tegel Light (CSS)/Footer',
   parameters: {
     layout: 'fullscreen',
-    design: [
-      {
-        name: 'Figma',
-        type: 'figma',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=7568%3A298118&t=Ne6myqwca5m00de7-1',
-      },
-      {
-        name: 'Link',
-        type: 'link',
-        url: 'https://www.figma.com/file/d8bTgEx7h694MSesi2CTLF/Tegel-UI-Library?node-id=7568%3A298118&t=Ne6myqwca5m00de7-1',
-      },
-    ],
   },
   argTypes: {
     modeVariant: {
@@ -294,8 +282,8 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                     <small class="tl-footer__copyright"><div>
                         <div>
                          © <span class="tl-footer__copyright-text">Copyright </span>2025
+                         <span class="tl-footer__copyright-last-part">All rights reserved</span>
                         </div>
-                        <div class="tl-footer__copyright-last-part">All rights reserved</div>
                         </div>
                     </small>
                     `

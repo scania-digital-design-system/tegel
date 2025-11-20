@@ -29,6 +29,10 @@
     padding: 40px 0;
     display: flex;
     justify-content: space-between;
+
+    &--end {
+      margin-left: auto;
+    }
 }
 
 .tl-footer__main-top--start,
@@ -40,10 +44,6 @@
     column-gap: 24px;
   }
     
-}
-
-.tl-footer__main-top--end {
-    margin-left: auto;
 }
 
 .tl-footer__main-bottom {
@@ -147,6 +147,6 @@ small.tl-footer__copyright {
     }
 
     .tl-footer__copyright-last-part {
-      display: inline-block;
+      display: block;
     }
   }
