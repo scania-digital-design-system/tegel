@@ -105,9 +105,12 @@
     padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
   }
 
-  .tl-text-field--md &,
-  .tl-text-field--sm & {
+  .tl-text-field--md & {
     padding: var(--tds-spacing-element-16);
+  }
+
+  .tl-text-field--sm & {
+    padding: var(--tds-spacing-element-12) var(--tds-spacing-element-16);
   }
 
   .tl-text-field--label-inside.tl-text-field--lg & {
@@ -115,10 +118,14 @@
     padding-bottom: 15px;
   }
 
-  .tl-text-field--label-inside.tl-text-field--md &,
-  .tl-text-field--label-inside.tl-text-field--sm & {
+  .tl-text-field--label-inside.tl-text-field--md & {
     padding-top: var(--tds-spacing-element-20);
     padding-bottom: 11px;
+  }
+
+  .tl-text-field--label-inside.tl-text-field--sm &:not(:focus):placeholder-shown {
+    padding-top: var(--tds-spacing-element-16);
+    padding-bottom: 7px;
   }
 
   .tl-text-field:has(.tl-text-field__prefix--icon) & {
@@ -175,6 +182,67 @@
 
   .tl-text-field--label-inside:has(.tl-text-field__prefix--text) & {
     left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  // Focus and filled state for lg and md
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:focus) &,
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:not(:placeholder-shown))
+  &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:focus) &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:not(:placeholder-shown))
+  & {
+    @include detail-07;
+
+    top: 8px;
+    transform: translateY(0);
+    transition: 0.1s ease all;
+  }
+
+  // Keep prefix offset when focused for lg and md
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
+  .tl-text-field__input:focus
+)
+  &,
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
+  .tl-text-field__input:focus
+)
+  &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  & {
+    left: calc(16px + 20px + 8px);
+  }
+
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
+  .tl-text-field__input:focus
+)
+  &,
+  .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
+  .tl-text-field__input:focus
+)
+  &,
+  .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
+  .tl-text-field__input:not(:placeholder-shown)
+)
+  & {
+    left: calc(16px + var(--text-field-affix-width-text) + 8px);
+  }
+
+  // Focus and filled state for sm - label disappears
+  .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:focus) &,
+  .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:not(:placeholder-shown))
+  & {
+    opacity: 0;
+    visibility: hidden;
   }
 
   .tl-text-field--label-inside.tl-text-field--disabled & {
