@@ -98,13 +98,13 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                 ${
                     mobileView
                       ? `<div class="tl-footer__group--mobile-view">
-                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? '--expanded' : '--closed'}"
+                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? 'tl-footer__top-title-button--expanded' : 'tl-footer__top-title-button--closed'}"
                       >
                         <h6>Title 1</h6>
                         <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
                       </button>
                       <nav>
-                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? 'tl-footer__top-list--expanded' : 'tl-footer__top-list--closed'}">
                           <div class="tl-footer__item--mobile-view">
                                   <a href="#"> Link text</a>
                               </div>
@@ -118,12 +118,12 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                       </nav>
                     </div>
                     <div class="tl-footer__group--mobile-view">
-                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? 'tl-footer__top-title-button--expanded' : 'tl-footer__top-title-button--closed'}">
                         <h6>Title 2</h6>
                         <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
                       </button>
                       <nav>
-                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? 'tl-footer__top-list--expanded' : 'tl-footer__top-list--closed'}">
                           <div class="tl-footer__item--mobile-view">
                                   <a href="#"> Link text</a>
                               </div>
@@ -137,12 +137,12 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                       </nav>
                     </div>
                     <div class="tl-footer__group--mobile-view">  
-                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? 'tl-footer__top-title-button--expanded' : 'tl-footer__top-title-button--closed'}">
                         <h6>Title 3</h6>
                         <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
                       </button>
                       <nav>
-                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? 'tl-footer__top-list--expanded' : 'tl-footer__top-list--closed'}">
                           <div class="tl-footer__item--mobile-view">
                                   <a href="#"> Link text</a>
                               </div>
@@ -156,12 +156,12 @@ modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}
                       </nav>
                     </div>  
                     <div class="tl-footer__group--mobile-view">
-                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                      <button class="tl-footer__top-title-button ${isFooterGroupOpen ? 'tl-footer__top-title-button--expanded' : 'tl-footer__top-title-button--closed'}">
                         <h6>Title 4</h6>
                         <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
                       </button>
                       <nav>
-                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? '--expanded' : '--closed'}">
+                          <div role="list" class="tl-footer__top-list ${isFooterGroupOpen ? 'tl-footer__top-list--expanded' : 'tl-footer__top-list--closed'}">
                           <div class="tl-footer__item--mobile-view">
                                   <a href="#"> Link text</a>
                               </div>
