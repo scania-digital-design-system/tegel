@@ -1,5 +1,5 @@
-@use '../../../../../../grid-deprecated/vars';
-@use '../../../mixins/focus-state';
+@use '../../../../../../grid-deprecated/vars' as *;
+@use '../../../mixins/focus-state' as *;
 @use './tl-side-menu-vars' as *;
 
 .tl-side-menu__dropdown-wrapper {
