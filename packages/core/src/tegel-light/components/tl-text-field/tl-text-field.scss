@@ -146,11 +146,11 @@
   }
 
   .tl-text-field--label-inside &::placeholder {
-    color: transparent;
+    color: transparent !important;
   }
 
-  .tl-text-field--disabled.tl-text-field--label-inside &::placeholder {
-    color: var(--text-field-placeholder) !important;
+  .tl-text-field--label-outside &:disabled::placeholder {
+    color: var(--text-field-placeholder-disabled) !important;
   }
 }
 
@@ -246,12 +246,9 @@
     visibility: hidden;
   }
 
+  // Disabled label gets disabled color but keeps same behavior
   .tl-text-field--label-inside.tl-text-field--disabled & {
-    @include detail-07;
-
-    top: 8px;
     color: var(--text-field-label-disabled);
-    transform: translateY(0);
   }
 
   .tl-text-field--label-outside.tl-text-field--disabled & {
@@ -267,6 +264,10 @@
   padding-top: 4px;
   color: var(--text-field-helper);
   position: relative;
+
+  .tl-text-field--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
 
   .tl-text-field--error & {
     padding-left: 24px;
@@ -300,6 +301,10 @@
 
   margin-left: auto;
   color: var(--text-field-textcounter);
+
+  .tl-text-field--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
 
   .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
     display: none;
@@ -399,12 +404,12 @@
 
     .tl-icon,
     > .tl-icon {
-      background-color: var(--text-field-affix-disabled) !important;
+      background-color: var(--text-field-affix-disabled);
     }
   }
 
   .tl-text-field--disabled &--icon.tl-icon {
-    background-color: var(--text-field-affix-disabled) !important;
+    background-color: var(--text-field-affix-disabled);
   }
 }
 

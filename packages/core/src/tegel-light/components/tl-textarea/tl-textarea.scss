@@ -76,6 +76,10 @@
   .traton &--label-outside:has(.tl-textarea__helper)::after {
     bottom: 27px;
   }
+
+  &--disabled::after {
+    background-color: var(--color-foreground-text-disabled);
+  }
 }
 
 .tl-textarea__input {
@@ -199,6 +203,10 @@
   color: var(--textarea-helper);
   position: relative;
 
+  .tl-textarea--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
+
   .tl-textarea--error & {
     padding-left: 24px;
 
@@ -231,6 +239,10 @@
 
   margin-left: auto;
   color: var(--textarea-textcounter);
+
+  .tl-textarea--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
 
   .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
     display: none;
