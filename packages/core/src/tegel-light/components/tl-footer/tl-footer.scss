@@ -84,7 +84,7 @@ small.tl-footer__copyright {
   
   
 
-  @media all and (max-width: 992px) {
+  @media (max-width: $grid-lg) {
     .tl-footer__top {
       display: block;
       width: 100%;

@@ -41,7 +41,7 @@
   }
 
 
-@media all and (max-width: 992px) {
+@media (max-width: $grid-lg) {
   .tl-footer__item--mobile-view {
       border-bottom: 1px solid var(--footer-top-divider);
   

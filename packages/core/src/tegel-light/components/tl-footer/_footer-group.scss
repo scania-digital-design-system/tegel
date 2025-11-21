@@ -15,7 +15,7 @@
 }
 
 
-@media all and (max-width: 992px) {
+@media (max-width: $grid-lg) {
 
   .tl-footer__top-title-button {
     @include headline-07;
