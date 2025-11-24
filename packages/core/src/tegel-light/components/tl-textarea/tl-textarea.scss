@@ -151,6 +151,7 @@
     user-select: auto;
     caret-color: transparent;
     cursor: default;
+    pointer-events: none;
   }
 
   .tl-textarea--readonly:not(.tl-textarea--disabled):not(.tl-textarea--hide-readonly-icon) & {

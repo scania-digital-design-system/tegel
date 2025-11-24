@@ -159,7 +159,7 @@ const Template = ({
       "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-textarea.css"
     -->
-    <div class="${componentClasses}" style="width: 350px;">
+    <div class="${componentClasses}" style="width: calc(100vw - 40px); max-width: 400px;">
       ${labelContent}
       <textarea class="tl-textarea__input" ${inputAttrs}></textarea>
       ${helperContent}

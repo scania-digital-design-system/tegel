@@ -201,7 +201,7 @@ const Template = ({
     <!-- Optional stylesheets:
       "@scania/tegel-light/tl-icon.css"
     -->
-    <div class="${componentClasses}" style="width: 208px;">
+    <div class="${componentClasses}" style="width: calc(100vw - 40px); max-width: 400px;">
       ${labelContent}
       <input class="tl-text-field__input" ${inputAttrs} />
       ${prefixContent}
