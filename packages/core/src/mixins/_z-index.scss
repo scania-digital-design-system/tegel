@@ -7,6 +7,6 @@
     @return ($value - 1) * 100;
   }
 
-  @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+  @warn 'There is no item "#{$element}" in this list; choose one of: #{$z-index}';
   @return null;
 }
