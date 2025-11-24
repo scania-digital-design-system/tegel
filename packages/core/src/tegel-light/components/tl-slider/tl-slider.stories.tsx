@@ -254,6 +254,7 @@ const Template = ({
               ? `<span class="tl-slider__value-divider-label">${Math.round(tickValue)}</span>`
               : ''
           }
+          <div class="tl-slider__value-divider-line"></div>
         </div>
       `);
     }
@@ -273,20 +274,21 @@ const Template = ({
       "@scania/tegel-light/tl-icon.css"
     -->
 
-    <div class="${sliderClasses}" style="width: 600px; margin: 0 auto;">
-      <input 
-        type="range" 
-        class="tl-slider__native-input" 
-        min="${min}" 
-        max="${max}" 
-        value="${initialValue}"
-        step="${step}"
-        ${disabled ? 'disabled' : ''}
-        ${readonly ? 'readonly' : ''}
+    <div style="display: flex; align-items: center; justify-content: center; padding: 80px 40px;">
+      <div class="${sliderClasses}" style="width: 600px;">
+        ${showLabel ? `<label class="tl-slider__label">${labelText}</label>` : ''}
+        
+        <input 
+          type="range" 
+          class="tl-slider__native-input" 
+          min="${min}" 
+          max="${max}" 
+          value="${initialValue}"
+          step="${step}"
+          ${disabled ? 'disabled' : ''}
+          ${readonly ? 'readonly' : ''}
         aria-label="${showLabel ? labelText : 'Slider'}"
       />
-      
-      ${showLabel ? `<label class="tl-slider__label">${labelText}</label>` : ''}
       
       <div class="tl-slider__slider-controls-row">
         ${
@@ -306,6 +308,7 @@ const Template = ({
         }
         
         <div class="tl-slider__track" tabindex="0" role="slider" aria-valuenow="${initialValue}" aria-valuemin="${min}" aria-valuemax="${max}">
+          ${showInput ? '' : generateTicks()}
           <div class="tl-slider__track-fill" style="width: ${percentage}%;"></div>
           
           <div class="tl-slider__thumb" style="left: ${percentage}%;">
@@ -324,8 +327,6 @@ const Template = ({
               }
             </div>
           </div>
-          
-          ${showInput ? '' : generateTicks()}
         </div>
         
         ${
@@ -366,6 +367,7 @@ const Template = ({
       <span class="tl-slider__sr-only" role="status" aria-live="polite" aria-atomic="true">
         Value: ${initialValue}
       </span>
+      </div>
     </div>
   `;
 
