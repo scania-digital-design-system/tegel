@@ -136,18 +136,6 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
 
         // Clicks inside the popover shouldn't close it
         popover.addEventListener('click', (e) => e.stopPropagation());
-
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-          if (isOpen() && !trigger.contains(e.target) && !popover.contains(e.target)) {
-            closePopover();
-          }
-        });
-
-        // Close on ESC
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && isOpen()) closePopover();
-        });
       })();
     </script>
   `);
