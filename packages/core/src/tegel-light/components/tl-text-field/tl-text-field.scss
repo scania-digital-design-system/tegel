@@ -45,6 +45,10 @@
     z-index: 1;
   }
 
+  &--label-outside#{&}--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
+    top: calc(50% + 24px);
+  }
+
   &--disabled {
     pointer-events: none;
   }
