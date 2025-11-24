@@ -300,7 +300,7 @@
   }
 }
 
-.tl-text-field__textcounter {
+.tl-text-field__charcounter {
   @include detail-05;
 
   margin-left: auto;
@@ -315,7 +315,7 @@
   }
 }
 
-.tl-text-field__textcounter-divider {
+.tl-text-field__charcounter-divider {
   color: var(--color-foreground-text-disabled);
 }
 

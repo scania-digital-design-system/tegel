@@ -188,7 +188,7 @@ const Template = ({
     helper || (charCounter && maxLength > 0)
       ? `<div class="tl-text-field__helper">${helper}${
           charCounter && maxLength > 0
-            ? ` <span class="tl-text-field__textcounter">0 <span class="tl-text-field__textcounter-divider">/</span> ${maxLength}</span>`
+            ? ` <span class="tl-text-field__charcounter">0 <span class="tl-text-field__charcounter-divider">/</span> ${maxLength}</span>`
             : ''
         }</div>`
       : '';
@@ -215,7 +215,7 @@ const Template = ({
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const textElement = document.querySelector('.tl-text-field__input');
-        const counterElement = document.querySelector('.tl-text-field__textcounter');
+        const counterElement = document.querySelector('.tl-text-field__charcounter');
         
         if (textElement && counterElement) {
           textElement.addEventListener('input', (event) => {
@@ -226,7 +226,7 @@ const Template = ({
               event.target.value = event.target.value.slice(0, maxLength);
             }
             
-            counterElement.innerHTML = event.target.value.length + ' <span class="tl-text-field__textcounter-divider">/</span> ' + maxLength;
+            counterElement.innerHTML = event.target.value.length + ' <span class="tl-text-field__charcounter-divider">/</span> ' + maxLength;
           });
         }
       });

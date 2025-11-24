@@ -149,7 +149,7 @@ const Template = ({
     helper || (charCounter && maxLength > 0)
       ? `<div class="tl-textarea__helper">${helper}${
           charCounter && maxLength > 0
-            ? ` <span class="tl-textarea__textcounter">0 <span class="tl-textarea__textcounter-divider">/</span> ${maxLength}</span>`
+            ? ` <span class="tl-textarea__charcounter">0 <span class="tl-textarea__charcounter-divider">/</span> ${maxLength}</span>`
             : ''
         }</div>`
       : '';
@@ -171,15 +171,15 @@ ${
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const textElement = document.querySelector('.tl-textarea__input');
-        const counterElement = document.querySelector('.tl-textarea__textcounter');
+        const counterElement = document.querySelector('.tl-textarea__charcounter');
         
         if (textElement && counterElement) {
           const initialLength = textElement.value.length;
-          counterElement.innerHTML = initialLength + ' <span class="tl-textarea__textcounter-divider">/</span> ' + ${maxLength};
+          counterElement.innerHTML = initialLength + ' <span class="tl-textarea__charcounter-divider">/</span> ' + ${maxLength};
           
           textElement.addEventListener('input', (event) => {
             const currentLength = event.target.value.length;
-            counterElement.innerHTML = currentLength + ' <span class="tl-textarea__textcounter-divider">/</span> ' + ${maxLength};
+            counterElement.innerHTML = currentLength + ' <span class="tl-textarea__charcounter-divider">/</span> ' + ${maxLength};
           });
         }
       });

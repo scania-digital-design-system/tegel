@@ -234,7 +234,7 @@
   }
 }
 
-.tl-textarea__textcounter {
+.tl-textarea__charcounter {
   @include detail-05;
 
   margin-left: auto;
@@ -249,7 +249,7 @@
   }
 }
 
-.tl-textarea__textcounter-divider {
+.tl-textarea__charcounter-divider {
   color: var(--color-foreground-text-disabled);
 }
 
