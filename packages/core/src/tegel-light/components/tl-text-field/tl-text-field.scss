@@ -260,12 +260,15 @@
   }
 }
 
-.tl-text-field__helper {
-  @include detail-05;
-
+.tl-text-field__bottom {
   display: flex;
   gap: 8px;
   padding-top: 4px;
+}
+
+.tl-text-field__helper {
+  @include detail-05;
+
   color: var(--text-field-helper);
   position: relative;
 
@@ -280,7 +283,7 @@
       content: '';
       position: absolute;
       left: 0;
-      top: 4px;
+      top: 0;
       width: 16px;
       height: 16px;
       background-color: var(--text-field-error);

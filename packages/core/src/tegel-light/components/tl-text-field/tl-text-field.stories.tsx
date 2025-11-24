@@ -184,13 +184,16 @@ const Template = ({
       ? `<label class="tl-text-field__label">${label}</label>`
       : '';
 
-  const helperContent =
-    helper || (charCounter && maxLength > 0)
-      ? `<div class="tl-text-field__helper">${helper}${
-          charCounter && maxLength > 0
-            ? ` <span class="tl-text-field__charcounter">0 <span class="tl-text-field__charcounter-divider">/</span> ${maxLength}</span>`
-            : ''
-        }</div>`
+  const helperContent = helper ? `<div class="tl-text-field__helper">${helper}</div>` : '';
+
+  const charCounterContent =
+    charCounter && maxLength > 0
+      ? `<span class="tl-text-field__charcounter">0 <span class="tl-text-field__charcounter-divider">/</span> ${maxLength}</span>`
+      : '';
+
+  const helperWrapperContent =
+    helperContent || charCounterContent
+      ? `<div class="tl-text-field__bottom">${helperContent}${charCounterContent}</div>`
       : '';
 
   return formatHtmlPreview(`
@@ -206,7 +209,7 @@ const Template = ({
       <input class="tl-text-field__input" ${inputAttrs} />
       ${prefixContent}
       ${suffixContent}
-      ${helperContent}
+      ${helperWrapperContent}
     </div>
 
   ${

@@ -145,13 +145,16 @@ const Template = ({
       ? `<label class="tl-textarea__label">${label}</label>`
       : '';
 
-  const helperContent =
-    helper || (charCounter && maxLength > 0)
-      ? `<div class="tl-textarea__helper">${helper}${
-          charCounter && maxLength > 0
-            ? ` <span class="tl-textarea__charcounter">0 <span class="tl-textarea__charcounter-divider">/</span> ${maxLength}</span>`
-            : ''
-        }</div>`
+  const helperContent = helper ? `<div class="tl-textarea__helper">${helper}</div>` : '';
+
+  const charCounterContent =
+    charCounter && maxLength > 0
+      ? `<span class="tl-textarea__charcounter">0 <span class="tl-textarea__charcounter-divider">/</span> ${maxLength}</span>`
+      : '';
+
+  const helperWrapperContent =
+    helperContent || charCounterContent
+      ? `<div class="tl-textarea__bottom">${helperContent}${charCounterContent}</div>`
       : '';
 
   return formatHtmlPreview(`
@@ -162,7 +165,7 @@ const Template = ({
     <div class="${componentClasses}" style="width: calc(100vw - 40px); max-width: 400px;">
       ${labelContent}
       <textarea class="tl-textarea__input" ${inputAttrs}></textarea>
-      ${helperContent}
+      ${helperWrapperContent}
     </div>
 ${
   charCounter && maxLength > 0
