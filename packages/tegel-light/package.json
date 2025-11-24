@@ -54,10 +54,7 @@
     "./tl-table.css": "./dist/tl-table.css",
     "./tl-datetime.css": "./dist/tl-datetime.css",
     "./tl-tooltip.css": "./dist/tl-tooltip.css",
-    "./tl-dropdown-button.css": "./dist/tl-dropdown-button.css",
-    "./tl-dropdown-field.css": "./dist/tl-dropdown-field.css",
-    "./tl-dropdown-input.css": "./dist/tl-dropdown-input.css",
-    "./tl-dropdown-select.css": "./dist/tl-dropdown-select.css",
+    "./tl-popover-canvas.css": "./dist/tl-popover-canvas.css",
     "./tl-side-menu.css": "./dist/tl-side-menu.css"
   },
   "files": [
