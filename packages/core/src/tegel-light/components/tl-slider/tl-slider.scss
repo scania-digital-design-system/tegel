@@ -23,7 +23,19 @@
   user-select: none;
   color: var(--slider-label);
   display: block;
-  margin-bottom: 0;
+  margin-bottom: 18px;
+
+  .tl-slider:has(.tl-slider__value-divider-label) & {
+    margin-bottom: 36px;
+  }
+
+  .tl-slider:has(.tl-slider__control--minus, .tl-slider__control--plus) & {
+    margin-bottom: 2px;
+  }
+
+  .tl-slider:has(.tl-slider__input-wrapper) & {
+    margin-bottom: 2px;
+  }
 
   .tl-slider--disabled & {
     color: var(--slider-disabled-text);
@@ -31,8 +43,9 @@
 }
 
 .tl-slider__slider-controls-row {
+  position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 5px;
 
   &:has(.tl-slider__input-wrapper) {
@@ -220,6 +233,7 @@
   color: var(--slider-value-tooltip);
   display: none;
   white-space: nowrap;
+  z-index: 10;
 
   .tl-slider__thumb:hover & {
     display: block;
@@ -253,6 +267,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   cursor: pointer;
+  overflow: visible;
 
   &::before {
     content: ' ';
@@ -318,10 +333,21 @@
 }
 
 .tl-slider__value-divider {
-  transform: translateY(-50%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 16px;
+}
+
+.tl-slider__value-divider-line {
+  position: absolute;
+  width: 1px;
   height: 16px;
   background-color: var(--slider-divider);
-  width: 1px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   .tl-slider--disabled & {
     background-color: var(--slider-disabled);
@@ -329,17 +355,18 @@
 }
 
 .tl-slider__value-divider-label {
-  display: block;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
   user-select: none;
   color: var(--slider-divider-values);
   @include detail-05;
 
-  position: relative;
-  top: -7px;
-  left: 50%;
-  transform: translate(-50%, -100%);
+  margin-bottom: 16px;
   width: 50px;
   text-align: center;
+  white-space: nowrap;
 
   .tl-slider--disabled & {
     color: var(--slider-disabled-text);
