@@ -32,21 +32,15 @@ jobs:
           BASE_COMMIT=$(git rev-parse origin/${BASE_BRANCH})
           HEAD_COMMIT=$(git rev-parse origin/${HEAD_BRANCH})
 
-          # Check if HEAD is behind BASE
-          if git merge-base --is-ancestor ${HEAD_COMMIT} ${BASE_COMMIT}; then
-            # HEAD is ancestor of BASE, meaning HEAD is behind
-            BEHIND_COUNT=$(git rev-list --count ${HEAD_COMMIT}..${BASE_COMMIT})
-            if [ "$BEHIND_COUNT" -gt 0 ]; then
-              echo "needs_rebase=true" >> $GITHUB_OUTPUT
-              echo "behind_count=${BEHIND_COUNT}" >> $GITHUB_OUTPUT
-              echo "⚠️ PR is ${BEHIND_COUNT} commit(s) behind ${BASE_BRANCH}"
-            else
-              echo "needs_rebase=false" >> $GITHUB_OUTPUT
-              echo "✅ PR is up to date"
-            fi
+          # Check if BASE has commits that HEAD doesn't have (needs rebase)
+          BEHIND_COUNT=$(git rev-list --count ${HEAD_COMMIT}..${BASE_COMMIT})
+          if [ "$BEHIND_COUNT" -gt 0 ]; then
+            echo "needs_rebase=true" >> $GITHUB_OUTPUT
+            echo "behind_count=${BEHIND_COUNT}" >> $GITHUB_OUTPUT
+            echo "⚠️ PR is ${BEHIND_COUNT} commit(s) behind ${BASE_BRANCH}"
           else
             echo "needs_rebase=false" >> $GITHUB_OUTPUT
-            echo "✅ PR is not behind base branch"
+            echo "✅ PR is up to date"
           fi
 
       - name: Check for existing @dependabot rebase comment
