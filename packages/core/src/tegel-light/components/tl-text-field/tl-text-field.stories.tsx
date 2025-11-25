@@ -196,6 +196,8 @@ const Template = ({
       ? `<div class="tl-text-field__bottom">${helperContent}${charCounterContent}</div>`
       : '';
 
+  const styleAttr = noMinWidth ? ' style="width: calc(100vw - 40px); max-width: 208px;"' : '';
+
   return formatHtmlPreview(`
     <!-- Required stylesheets:
       "@scania/tegel-light/global.css"
@@ -204,7 +206,7 @@ const Template = ({
     <!-- Optional stylesheets:
       "@scania/tegel-light/tl-icon.css"
     -->
-    <div class="${componentClasses}" style="width: calc(100vw - 40px); max-width: 400px;">
+    <div class="${componentClasses}"${styleAttr}>
       ${labelContent}
       <input class="tl-text-field__input" ${inputAttrs} />
       ${prefixContent}
