@@ -8,8 +8,8 @@ export default {
     docs: {
       description: {
         component: `
-          <br> ⚠️ Note: In the Tegel Web Component, positioning of the Popover Menu is handled by Popper.js.
-          In Tegel Lite, positioning is left for the consuming application to define.
+          ⚠️ Note: In the Tegel Web Component, positioning of the Popover Menu is handled by Popper.js.
+             In Tegel Lite, positioning is left for the consuming application to define.
         `,
       },
     },
