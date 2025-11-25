@@ -26,7 +26,7 @@ export default {
     },
     icon: {
       name: 'Icon',
-      description: 'Sets icon to be displayed on the Link.',
+      description: 'Sets icon to be displayed on the Button.',
       control: { type: 'select' },
       options: iconsNames,
       table: {
