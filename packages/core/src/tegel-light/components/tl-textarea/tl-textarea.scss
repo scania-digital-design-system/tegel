@@ -128,6 +128,18 @@
     box-shadow: inset var(--textarea-box-shadow-success);
   }
 
+  .tl-textarea--readonly & {
+    box-shadow: inset var(--textarea-box-shadow);
+
+    &:focus {
+      box-shadow: inset var(--textarea-box-shadow-focus);
+    }
+  }
+
+  .tl-textarea--readonly:hover &:not(:focus) {
+    box-shadow: inset var(--textarea-box-shadow-hover);
+  }
+
   .tl-textarea--disabled & {
     box-shadow: none;
     color: var(--textarea-text-disabled);
@@ -226,6 +238,14 @@
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
+    }
+  }
+
+  .tl-textarea--error.tl-textarea--readonly & {
+    padding-left: 0;
+
+    &::before {
+      display: none;
     }
   }
 

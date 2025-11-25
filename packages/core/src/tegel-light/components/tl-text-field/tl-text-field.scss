@@ -89,6 +89,18 @@
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
+  .tl-text-field--readonly & {
+    box-shadow: inset var(--text-field-box-shadow);
+
+    &:focus {
+      box-shadow: inset var(--text-field-box-shadow-focus);
+    }
+  }
+
+  .tl-text-field--readonly:hover &:not(:focus) {
+    box-shadow: inset var(--text-field-box-shadow-hover);
+  }
+
   .tl-text-field--disabled & {
     box-shadow: none;
     background-color: var(--text-field-background-disabled);
@@ -291,6 +303,14 @@
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
+    }
+  }
+
+  .tl-text-field--error.tl-text-field--readonly & {
+    padding-left: 0;
+
+    &::before {
+      display: none;
     }
   }
 
