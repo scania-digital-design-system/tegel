@@ -188,7 +188,7 @@ async function generateIcons() {
       ...iconsNamesArray.map((icon) => {
         const safeName = icon.replace(/\s+/g, '-');
         const safeFile = icon.replace(/\s+/g, '%20');
-        return `  --${brand}-icon-${safeName}-svg: url(./assets/icons/${brand}/${safeFile}.svg);`;
+        return `  --${brand}-icon-${safeName}-svg: url(#{$local-assets}/icons/${brand}/${safeFile}.svg);`;
       }),
       '}',
       '',
