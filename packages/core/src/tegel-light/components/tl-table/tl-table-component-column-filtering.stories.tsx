@@ -6,7 +6,7 @@ export default {
     docs: {
       description: {
         component:
-          'Table with column filtering inputs in header cells. ⚠️ Note: Interactive effects like column hover highlighting and filtering functionality require JavaScript for full functionality.',
+          'Table with column filtering inputs in header cells. ⚠️ Note: Interactive effects like column hover highlighting require JavaScript. Input fields allow text entry but do not filter table rows.',
       },
     },
   },
@@ -159,7 +159,6 @@ const ColumnFilteringTemplate = ({
                 type="text"
                 class="tl-table__header-input"
                 placeholder="Search..."
-                data-filter-column="0"
               />
             </div>
           </th>
@@ -170,7 +169,6 @@ const ColumnFilteringTemplate = ({
                 type="text"
                 class="tl-table__header-input"
                 placeholder="Search..."
-                data-filter-column="1"
               />
             </div>
           </th>
@@ -181,7 +179,6 @@ const ColumnFilteringTemplate = ({
                 type="text"
                 class="tl-table__header-input"
                 placeholder="Search..."
-                data-filter-column="2"
               />
             </div>
           </th>
@@ -192,7 +189,6 @@ const ColumnFilteringTemplate = ({
                 type="text"
                 class="tl-table__header-input"
                 placeholder="Search..."
-                data-filter-column="3"
               />
             </div>
           </th>
@@ -238,7 +234,7 @@ const ColumnFilteringTemplate = ({
       </tbody>
     </table>
 
-    <!-- Script tag for demo purposes - Column filtering and hover highlighting require JavaScript -->
+    <!-- Script tag for demo purposes - Column hover highlighting requires JavaScript -->
     <script>
       (function() {
         const table = document.querySelector('.tl-table');
@@ -246,8 +242,6 @@ const ColumnFilteringTemplate = ({
 
         const headerCells = table.querySelectorAll('.tl-table__header-cell:not([style*="padding: 0"])');
         const bodyCells = table.querySelectorAll('.tl-table__body-cell');
-        const filterInputs = table.querySelectorAll('.tl-table__header-input');
-        const rows = table.querySelectorAll('.tl-table__row[data-row]');
 
         // Column hover highlighting
         headerCells.forEach(headerCell => {
@@ -264,26 +258,6 @@ const ColumnFilteringTemplate = ({
           headerCell.addEventListener('mouseleave', () => {
             bodyCells.forEach(cell => {
               cell.classList.remove('tl-table__body-cell--column-highlight');
-            });
-          });
-        });
-
-        // Column filtering functionality
-        filterInputs.forEach(input => {
-          input.addEventListener('input', (e) => {
-            const filterValue = e.target.value.toLowerCase();
-            const columnIndex = e.target.getAttribute('data-filter-column');
-
-            rows.forEach(row => {
-              const cell = row.querySelector(\`[data-column="\${columnIndex}"]\`);
-              if (cell) {
-                const cellText = cell.textContent.toLowerCase();
-                if (cellText.includes(filterValue)) {
-                  row.style.display = '';
-                } else {
-                  row.style.display = 'none';
-                }
-              }
             });
           });
         });
