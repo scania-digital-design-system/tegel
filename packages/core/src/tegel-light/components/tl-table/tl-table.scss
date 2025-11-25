@@ -109,7 +109,8 @@
     border-top-right-radius: 4px;
   }
 
-  .tl-table:has(.tl-table__toolbar) & {
+  .tl-table:has(.tl-table__toolbar) &,
+  &:has(.tl-table__header-input-wrapper) {
     &:first-of-type {
       border-top-left-radius: 0;
     }
@@ -289,4 +290,49 @@
   display: flex;
   align-self: center;
   column-gap: 8px;
+}
+
+.tl-table__header-input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .tl-icon {
+    color: var(--table-input-header-icon);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.tl-table__header-input {
+  box-sizing: border-box;
+  @include detail-02;
+
+  color: var(--table-text);
+  padding: 0 var(--tds-spacing-element-16);
+  padding-left: 35px;
+  height: 48px;
+  width: 100%;
+  border-radius: 0;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  outline: none;
+
+  &::placeholder {
+    color: var(--table-input-header-placeholder);
+  }
+
+  &:focus {
+    background-color: var(--table-input-header-focus);
+    border-bottom: 2px solid var(--color-foreground-border-accent-focus);
+  }
+
+  .tl-table--compact & {
+    height: 32px;
+  }
 }
