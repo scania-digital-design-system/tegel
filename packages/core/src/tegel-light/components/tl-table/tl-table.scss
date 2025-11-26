@@ -4,6 +4,40 @@
 @import '../../../../../../typography/utilities/typography-utility';
 @import 'footer';
 
+// Mixin for text alignment modifiers
+@mixin text-align-modifiers($prefix) {
+  .tl-table--#{$prefix}-text-align-left & {
+    text-align: left;
+  }
+
+  .tl-table--#{$prefix}-text-align-start & {
+    text-align: start;
+  }
+
+  .tl-table--#{$prefix}-text-align-center & {
+    text-align: center;
+  }
+
+  .tl-table--#{$prefix}-text-align-right & {
+    text-align: right;
+  }
+
+  .tl-table--#{$prefix}-text-align-end & {
+    text-align: end;
+  }
+}
+
+// Mixin for zebra striping
+@mixin zebra-striping($type) {
+  .tl-table--zebra-#{$type}-odd &:nth-child(odd) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--zebra-#{$type}-even &:nth-child(even) {
+    background-color: var(--table-zebra-mode);
+  }
+}
+
 .tl-table {
   @include tds-box-sizing;
 
@@ -143,25 +177,7 @@
     border-right: 1px solid var(--table-divider);
   }
 
-  .tl-table--header-text-align-left & {
-    text-align: left;
-  }
-
-  .tl-table--header-text-align-start & {
-    text-align: start;
-  }
-
-  .tl-table--header-text-align-center & {
-    text-align: center;
-  }
-
-  .tl-table--header-text-align-right & {
-    text-align: right;
-  }
-
-  .tl-table--header-text-align-end & {
-    text-align: end;
-  }
+  @include text-align-modifiers('header');
 
   .tl-table--no-min-width & {
     min-width: unset;
@@ -280,33 +296,9 @@
     border-right: 1px solid var(--table-divider);
   }
 
-  .tl-table--zebra-columns-odd &:nth-child(odd) {
-    background-color: var(--table-zebra-mode);
-  }
+  @include zebra-striping('columns');
 
-  .tl-table--zebra-columns-even &:nth-child(even) {
-    background-color: var(--table-zebra-mode);
-  }
-
-  .tl-table--cell-text-align-left & {
-    text-align: left;
-  }
-
-  .tl-table--cell-text-align-start & {
-    text-align: start;
-  }
-
-  .tl-table--cell-text-align-center & {
-    text-align: center;
-  }
-
-  .tl-table--cell-text-align-right & {
-    text-align: right;
-  }
-
-  .tl-table--cell-text-align-end & {
-    text-align: end;
-  }
+  @include text-align-modifiers('cell');
 
   .tl-table--no-min-width & {
     min-width: unset;
