@@ -111,6 +111,8 @@
 
   .tl-table:has(.tl-table__toolbar) &,
   &:has(.tl-table__header-input-wrapper) {
+    padding: 0;
+
     &:first-of-type {
       border-top-left-radius: 0;
     }
@@ -131,6 +133,10 @@
   .tl-table--compact & {
     height: 32px;
     padding: 8px 16px;
+
+    &:has(.tl-table__header-input-wrapper) {
+      padding: 0;
+    }
   }
 
   .tl-table--vertical-dividers &:not(:last-child) {
