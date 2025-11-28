@@ -210,7 +210,9 @@
   color: var(--table-text);
   text-align: left;
 
-  &:focus-visible {
+  &:focus-visible,
+  &:focus,
+  &:active {
     outline: 2px solid var(--table-header-button-focus);
     outline-offset: -2px;
 
