@@ -370,3 +370,16 @@
     margin: 0 2px 0 0;
   }
 }
+
+// Hide native number input arrows
+.text-field-input-no-arrows {
+  // Chrome, Safari, Edge, Opera
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  // Firefox
+  appearance: textfield;
+}
