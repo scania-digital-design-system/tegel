@@ -1,60 +1,33 @@
 @mixin textarea-base {
+  all: unset;
+  border-radius: var(--textarea-border-radius);
+  background-color: var(--textarea-background);
+  color: var(--textarea-text);
   width: 100%;
   box-sizing: border-box;
   margin: 0;
   border: none;
   outline: none;
-  height: 100%;
-  color: var(--textarea-text);
-  background-color: var(--textarea-background);
 
   &::placeholder {
-    opacity: 1;
     color: var(--textarea-placeholder);
   }
 
   &:disabled {
-    background-color: var(--textarea-disabled-background);
-    color: var(--textarea-disabled-text);
-    cursor: not-allowed;
+    background-color: var(--textarea-background-disabled);
+    color: var(--textarea-text-disabled);
+    user-select: none;
+    pointer-events: none;
 
     &::placeholder {
-      color: var(--textarea-disabled-placeholder);
+      color: var(--textarea-placeholder-disabled);
     }
   }
 }
 
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  // Input field in focus
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--textarea-placeholder);
-  }
-}
-
-@mixin textarea-focus {
-  border-bottom: 2px solid var(--textarea-bar);
-}
-
-@mixin box-shadow($state: '') {
-  $suffix: if($state != '', '-#{$state}', '');
-
-  box-shadow: var(--textarea-box-shadow#{$suffix});
-}
-
-// Mixin for focus/input state selectors
 @mixin focus-input-state {
-  .tl-textarea__content:has(.tl-textarea__input:focus) .tl-textarea__label-inside,
-  .tl-textarea__content:has(.tl-textarea__input:not(:placeholder-shown))
-  .tl-textarea__label-inside {
+  .tl-textarea--label-inside:has(.tl-textarea__input:focus) .tl-textarea__label,
+  .tl-textarea--label-inside:has(.tl-textarea__input:not(:placeholder-shown)) .tl-textarea__label {
     @content;
   }
 }
