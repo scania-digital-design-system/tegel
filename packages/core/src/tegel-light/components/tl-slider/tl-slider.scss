@@ -1,6 +1,7 @@
 @import '../../../mixins/box-sizing';
 @import '../../../../../../typography/utilities/typography-utility';
 @import './tl-slider-vars';
+@import '../tl-text-field/tl-text-field';
 
 .tl-slider {
   @include tds-box-sizing;
@@ -118,27 +119,6 @@
   }
 }
 
-.tl-slider__input-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-}
-
-.tl-slider__input-value {
-  user-select: none;
-  color: var(--slider-input-value);
-  @include detail-02;
-
-  .tl-slider--disabled & {
-    color: var(--slider-disabled-text);
-  }
-}
-
-.tl-slider__spacer {
-  flex: 1;
-}
-
 .tl-slider__input-value {
   user-select: none;
   color: var(--slider-input-value);
@@ -152,42 +132,26 @@
   }
 }
 
+.tl-slider__spacer {
+  flex: 1;
+}
+
 .tl-slider__input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: var(--slider-inputfield-background);
-  border-radius: var(--slider-border-radius);
-  box-shadow: var(--slider-input-field-box-shadow);
   flex-shrink: 0;
   margin-left: 8px;
-  top: -8px;
+  width: auto;
+  align-self: center;
 
-  &:hover {
-    box-shadow: var(--slider-input-field-box-shadow-hover);
-  }
-
-  &:focus-within {
-    box-shadow: var(--slider-input-field-box-shadow-focus);
-  }
-
-  .tl-slider--disabled & {
-    box-shadow: none;
-    background: var(--slider-disabled);
-  }
+  // Override text-field defaults for slider context
+  min-width: auto;
+  height: auto;
 }
 
 .tl-slider__input-field {
   width: auto;
   padding: 12px;
-  text-align: center;
+  text-align: center !important;
   appearance: textfield;
-  border: none;
-  background: transparent;
-  color: var(--slider-input-inputfield);
-  box-shadow: none;
-  border-radius: var(--slider-border-radius);
-  margin: 0;
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -195,27 +159,10 @@
     margin: 0;
   }
 
-  &:hover,
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
-
   &[readonly] {
-    text-align: left;
-    padding-right: 32px;
+    text-align: center !important;
+    padding-right: 12px !important;
   }
-
-  .tl-slider--disabled & {
-    color: var(--slider-disabled-text);
-  }
-}
-
-.tl-slider__input-icon {
-  position: absolute;
-  right: 12px;
-  pointer-events: none;
-  color: var(--slider-input-inputfield);
 }
 
 .tl-slider__value-tooltip {
