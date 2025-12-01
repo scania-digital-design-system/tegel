@@ -7,26 +7,6 @@ export default {
     backgrounds: {
       default: 'white',
     },
-    docs: {
-      description: {
-        component: `
-## JavaScript Requirements
-
-The Slider component requires JavaScript to handle:
-- Thumb dragging and positioning
-- Track click interactions
-- Value updates
-- Keyboard navigation (arrow keys)
-- Input field synchronization
-- Control buttons (+/-) functionality
-- Tooltip positioning on hover
-
-### Implementation Note
-This component provides the styling foundation but needs JavaScript for interactive functionality.
-See the example code for a basic implementation pattern.
-        `,
-      },
-    },
   },
   argTypes: {
     min: {
@@ -218,7 +198,6 @@ const Template = ({
   showTicks,
   numTicks,
   showTickNumbers,
-  snapToTicks,
   showTooltip,
   showControls,
   showInput,
@@ -274,7 +253,7 @@ const Template = ({
       "@scania/tegel-light/tl-icon.css"
     -->
 
-    <div style="display: flex; align-items: center; justify-content: center; padding: 80px 40px;">
+    <div class="demo" style="display: flex; align-items: center; justify-content: center; padding: 80px 40px;">
       <div class="${sliderClasses}" style="width: 600px;">
         ${showLabel ? `<label class="tl-slider__label">${labelText}</label>` : ''}
         
@@ -308,7 +287,7 @@ const Template = ({
         }
         
         <div class="tl-slider__track" tabindex="0" role="slider" aria-valuenow="${initialValue}" aria-valuemin="${min}" aria-valuemax="${max}">
-          ${showInput ? '' : generateTicks()}
+          ${generateTicks()}
           <div class="tl-slider__track-fill" style="width: ${percentage}%;"></div>
           
           <div class="tl-slider__thumb" style="left: ${percentage}%;">
@@ -333,10 +312,12 @@ const Template = ({
           showInput
             ? `
         <div class="tl-slider__input-value tl-slider__input-value--max">${max}</div>
-        <div class="tl-slider__input-wrapper">
+        <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-text-field--hide-readonly-icon${
+          readonly ? ' tl-text-field--readonly' : ''
+        }${disabled ? ' tl-text-field--disabled' : ''} tl-slider__input-wrapper">
           <input 
             type="number" 
-            class="tl-slider__input-field" 
+            class="tl-text-field__input tl-slider__input-field" 
             value="${initialValue}"
             min="${min}"
             max="${max}"
@@ -345,11 +326,6 @@ const Template = ({
             ${readonly ? 'readonly' : ''}
             aria-label="Slider value input"
           />
-          ${
-            readonly
-              ? '<span class="tl-icon tl-icon--padlock tl-icon--16 tl-slider__input-icon" aria-hidden="true"></span>'
-              : ''
-          }
         </div>
         `
             : showControls
@@ -385,42 +361,13 @@ const Template = ({
         const nativeInput = slider.querySelector('.tl-slider__native-input');
         const minusBtn = slider.querySelector('.tl-slider__control--minus');
         const plusBtn = slider.querySelector('.tl-slider__control--plus');
-        const srStatus = slider.querySelector('.tl-slider__sr-only');
         const tooltip = slider.querySelector('.tl-slider__value-tooltip');
         
         const min = ${min};
         const max = ${max};
         const step = ${step};
-        const snapToTicks = ${snapToTicks};
-        const numTicks = ${numTicks};
         let currentValue = ${initialValue};
         let isDragging = false;
-        
-        // Calculate tick values for snapping
-        const tickValues = [];
-        if (snapToTicks && numTicks >= 2) {
-          const tickStep = (max - min) / (numTicks - 1);
-          for (let i = 0; i < numTicks; i++) {
-            tickValues.push(min + tickStep * i);
-          }
-        }
-        
-        function snapToClosestTick(value) {
-          if (!snapToTicks || tickValues.length === 0) return value;
-          
-          let closest = tickValues[0];
-          let minDiff = Math.abs(value - closest);
-          
-          for (const tickValue of tickValues) {
-            const diff = Math.abs(value - tickValue);
-            if (diff < minDiff) {
-              minDiff = diff;
-              closest = tickValue;
-            }
-          }
-          
-          return closest;
-        }
         
         function updateValue(newValue) {
           currentValue = Math.max(min, Math.min(max, newValue));
@@ -431,7 +378,6 @@ const Template = ({
           if (inputField) inputField.value = currentValue;
           if (nativeInput) nativeInput.value = currentValue;
           if (tooltip) tooltip.childNodes[0].textContent = currentValue;
-          if (srStatus) srStatus.textContent = 'Value: ' + currentValue;
           track.setAttribute('aria-valuenow', currentValue);
         }
         
@@ -439,8 +385,7 @@ const Template = ({
           const rect = track.getBoundingClientRect();
           const percentage = (clientX - rect.left) / rect.width;
           const rawValue = min + percentage * (max - min);
-          const steppedValue = Math.round(rawValue / step) * step;
-          return snapToClosestTick(steppedValue);
+          return Math.round(rawValue / step) * step;
         }
         
         // Track click
@@ -469,7 +414,7 @@ const Template = ({
           }
         });
         
-        // Input field change
+        // Input field
         if (inputField) {
           inputField.addEventListener('change', (e) => {
             updateValue(parseFloat(e.target.value));
@@ -478,42 +423,11 @@ const Template = ({
         
         // Control buttons
         if (minusBtn) {
-          minusBtn.addEventListener('click', () => {
-            updateValue(currentValue - step);
-          });
+          minusBtn.addEventListener('click', () => updateValue(currentValue - step));
         }
-        
         if (plusBtn) {
-          plusBtn.addEventListener('click', () => {
-            updateValue(currentValue + step);
-          });
+          plusBtn.addEventListener('click', () => updateValue(currentValue + step));
         }
-        
-        // Keyboard support
-        track.addEventListener('keydown', (e) => {
-          if (slider.classList.contains('tl-slider--read-only')) return;
-          
-          switch(e.key) {
-            case 'ArrowLeft':
-            case 'ArrowDown':
-              e.preventDefault();
-              updateValue(currentValue - step);
-              break;
-            case 'ArrowRight':
-            case 'ArrowUp':
-              e.preventDefault();
-              updateValue(currentValue + step);
-              break;
-            case 'Home':
-              e.preventDefault();
-              updateValue(min);
-              break;
-            case 'End':
-              e.preventDefault();
-              updateValue(max);
-              break;
-          }
-        });
       })();
     </script>
   `;
