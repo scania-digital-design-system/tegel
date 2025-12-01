@@ -226,11 +226,13 @@ const Template = ({
 
     for (let i = 0; i < numTicks; i++) {
       const tickValue = min + tickStep * i;
+      // Remove unnecessary trailing zeros
+      const formattedValue = tickValue.toString().replace(/\.?0+$/, '');
       ticks.push(`
         <div class="tl-slider__value-divider">
           ${
             showTickNumbers
-              ? `<span class="tl-slider__value-divider-label">${Math.round(tickValue)}</span>`
+              ? `<span class="tl-slider__value-divider-label">${formattedValue}</span>`
               : ''
           }
           <div class="tl-slider__value-divider-line"></div>
@@ -369,8 +371,17 @@ const Template = ({
         let currentValue = ${initialValue};
         let isDragging = false;
         
+        // Determine decimal precision from step
+        const stepStr = step.toString();
+        const decimalPlaces = (stepStr.split('.')[1] || '').length;
+        
+        function formatValue(value) {
+          return parseFloat(value.toFixed(decimalPlaces));
+        }
+        
         function updateValue(newValue) {
           currentValue = Math.max(min, Math.min(max, newValue));
+          currentValue = formatValue(currentValue);
           const percentage = ((currentValue - min) / (max - min)) * 100;
           
           trackFill.style.width = percentage + '%';
@@ -385,7 +396,8 @@ const Template = ({
           const rect = track.getBoundingClientRect();
           const percentage = (clientX - rect.left) / rect.width;
           const rawValue = min + percentage * (max - min);
-          return Math.round(rawValue / step) * step;
+          const steppedValue = Math.round(rawValue / step) * step;
+          return formatValue(steppedValue);
         }
         
         // Track click

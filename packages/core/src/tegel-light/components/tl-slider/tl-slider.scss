@@ -2,6 +2,8 @@
 @import '../../../../../../typography/utilities/typography-utility';
 @import './tl-slider-vars';
 @import '../tl-text-field/tl-text-field';
+@import '../tl-button/tl-button';
+@import '../tl-icon/tl-icon';
 
 .tl-slider {
   @include tds-box-sizing;
