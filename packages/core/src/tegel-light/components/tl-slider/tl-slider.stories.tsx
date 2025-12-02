@@ -467,7 +467,7 @@ const Template = ({
             : ''
         }
         ${
-          showInput
+          showInput && !readonly
             ? `
         inputField.addEventListener('change', (e) => {
           updateValue(parseFloat(e.target.value));
@@ -475,7 +475,7 @@ const Template = ({
             : ''
         }
         ${
-          showControls
+          showControls && !readonly
             ? `
         minusBtn.addEventListener('click', () => {
           const newValue = parseFloat((currentValue - step).toFixed(decimalPlaces));
