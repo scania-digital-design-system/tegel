@@ -214,7 +214,6 @@
   @include table-cell-modifiers;
 
   @include text-align-modifiers('header');
-
 }
 
 .tl-table__header-button {
@@ -297,6 +296,10 @@
 
   transition: background-color 200ms ease;
   min-width: 192px;
+
+  &:focus {
+    background-color: var(--table-input-focus);
+  }
 
   &:hover:not(&--checkbox) {
     background-color: var(--table-body-cell-hover);
@@ -434,6 +437,7 @@
 
     &:focus {
       box-shadow: inset var(--text-field-box-shadow-focus);
+      background-color: var(--table-input-focus);
     }
 
     .tl-table--compact & {
@@ -457,5 +461,4 @@
   &.tl-text-field--disabled .tl-text-field__suffix--icon {
     display: inline-block;
   }
-
 }
