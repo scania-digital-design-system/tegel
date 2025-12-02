@@ -4,6 +4,40 @@
 @import '../../../../../../typography/utilities/typography-utility';
 @import 'footer';
 
+// Mixin for text alignment modifiers
+@mixin text-align-modifiers($prefix) {
+  .tl-table--#{$prefix}-text-align-left & {
+    text-align: left;
+  }
+
+  .tl-table--#{$prefix}-text-align-start & {
+    text-align: start;
+  }
+
+  .tl-table--#{$prefix}-text-align-center & {
+    text-align: center;
+  }
+
+  .tl-table--#{$prefix}-text-align-right & {
+    text-align: right;
+  }
+
+  .tl-table--#{$prefix}-text-align-end & {
+    text-align: end;
+  }
+}
+
+// Mixin for zebra striping
+@mixin zebra-striping($type) {
+  .tl-table--zebra-#{$type}-odd &:nth-child(odd) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--zebra-#{$type}-even &:nth-child(even) {
+    background-color: var(--table-zebra-mode);
+  }
+}
+
 .tl-table {
   @include tds-box-sizing;
 
@@ -109,6 +143,19 @@
     border-top-right-radius: 4px;
   }
 
+  .tl-table:has(.tl-table__toolbar) &,
+  &:has(.tl-table__header-input-wrapper) {
+    padding: 0;
+
+    &:first-of-type {
+      border-top-left-radius: 0;
+    }
+
+    &:last-of-type {
+      border-top-right-radius: 0;
+    }
+  }
+
   &--checkbox {
     min-width: 48px;
     width: 48px;
@@ -120,31 +167,17 @@
   .tl-table--compact & {
     height: 32px;
     padding: 8px 16px;
+
+    &:has(.tl-table__header-input-wrapper) {
+      padding: 0;
+    }
   }
 
   .tl-table--vertical-dividers &:not(:last-child) {
     border-right: 1px solid var(--table-divider);
   }
 
-  .tl-table--header-text-align-left & {
-    text-align: left;
-  }
-
-  .tl-table--header-text-align-start & {
-    text-align: start;
-  }
-
-  .tl-table--header-text-align-center & {
-    text-align: center;
-  }
-
-  .tl-table--header-text-align-right & {
-    text-align: right;
-  }
-
-  .tl-table--header-text-align-end & {
-    text-align: end;
-  }
+  @include text-align-modifiers('header');
 
   .tl-table--no-min-width & {
     min-width: unset;
@@ -152,6 +185,81 @@
 
   .tl-table--no-header-padding & {
     padding: 0;
+  }
+
+  &--sortable {
+    padding: 0;
+  }
+}
+
+.tl-table__header-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: start;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  @include headline-07;
+
+  color: var(--table-text);
+  text-align: left;
+
+  &:focus-visible,
+  &:focus,
+  &:active {
+    outline: 2px solid var(--table-header-button-focus);
+    outline-offset: -2px;
+
+    .tl-table__header-button-icon {
+      opacity: 1;
+    }
+  }
+
+  &:hover {
+    .tl-table__header-button-icon {
+      opacity: 1;
+    }
+  }
+
+  .tl-table--compact & {
+    padding: 0;
+  }
+}
+
+.tl-table__header-button-text {
+  color: var(--table-text);
+  text-align: left;
+}
+
+.tl-table__header-button-icon {
+  flex: 0 0 16px;
+  height: 16px;
+  width: 16px;
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 200ms ease-in, transform 200ms ease;
+  color: var(--table-text);
+}
+
+.tl-table__header-cell--is-sorted {
+  background-color: var(--table-header-button);
+
+  &:hover {
+    background-color: var(--table-header-button-hover);
+  }
+
+  .tl-table__header-button-icon {
+    opacity: 1;
+  }
+
+  .tl-table__header-button-icon--rotate {
+    transform: rotate(180deg);
   }
 }
 
@@ -190,33 +298,9 @@
     border-right: 1px solid var(--table-divider);
   }
 
-  .tl-table--zebra-columns-odd &:nth-child(odd) {
-    background-color: var(--table-zebra-mode);
-  }
+  @include zebra-striping('columns');
 
-  .tl-table--zebra-columns-even &:nth-child(even) {
-    background-color: var(--table-zebra-mode);
-  }
-
-  .tl-table--cell-text-align-left & {
-    text-align: left;
-  }
-
-  .tl-table--cell-text-align-start & {
-    text-align: start;
-  }
-
-  .tl-table--cell-text-align-center & {
-    text-align: center;
-  }
-
-  .tl-table--cell-text-align-right & {
-    text-align: right;
-  }
-
-  .tl-table--cell-text-align-end & {
-    text-align: end;
-  }
+  @include text-align-modifiers('cell');
 
   .tl-table--no-min-width & {
     min-width: unset;
@@ -232,5 +316,96 @@
 
   .tl-table__row--selected:hover & {
     background-color: var(--table-body-row-selected-hover);
+  }
+}
+
+.tl-table__toolbar {
+  @include tds-box-sizing;
+
+  display: table-caption;
+  position: relative;
+  background-color: var(--table-toolbar);
+  color: var(--table-text);
+  padding: 0 var(--tds-spacing-element-16);
+  height: 64px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+
+  .tl-table--compact & {
+    height: 56px;
+  }
+}
+
+.tl-table__upper-bar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tl-table__actionbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.tl-table__title {
+  @include headline-07;
+
+  display: flex;
+  align-self: baseline;
+  text-align: left;
+  letter-spacing: var(--tds-headline-07-ls);
+  padding-top: var(--tds-spacing-element-16);
+  margin-right: var(--tds-spacing-element-8);
+}
+
+.tl-table__actionbar-right {
+  display: flex;
+  align-self: center;
+  column-gap: 8px;
+}
+
+.tl-table__header-input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .tl-icon {
+    color: var(--table-input-header-icon);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.tl-table__header-input {
+  box-sizing: border-box;
+  @include detail-02;
+
+  color: var(--table-text);
+  padding: 0 var(--tds-spacing-element-16);
+  padding-left: 35px;
+  height: 48px;
+  width: 100%;
+  border-radius: 0;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  outline: none;
+
+  &::placeholder {
+    color: var(--table-input-header-placeholder);
+  }
+
+  &:focus {
+    background-color: var(--table-input-header-focus);
+    border-bottom: 2px solid var(--color-foreground-border-accent-focus);
+  }
+
+  .tl-table--compact & {
+    height: 32px;
   }
 }

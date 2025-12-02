@@ -6,7 +6,14 @@ import { iconsCollection as tratonIcons } from './tratonIconsArray';
 import { IconNames } from '../../types/Icons';
 
 // Map of brand classes to their respective icon collections
-const brandIconMap = {
+type IconDefinition = {
+  name: string;
+  definition: string;
+};
+const brandIconMap: {
+  scania: IconDefinition[];
+  traton: IconDefinition[];
+} = {
   scania: scaniaIcons,
   traton: tratonIcons,
   // Add new brands here in the future
@@ -64,7 +71,7 @@ export class Icon {
   }
 
   setIcons = () =>
-    this.arrayOfIcons.map((element) => {
+    this.arrayOfIcons.map((element: IconDefinition) => {
       if (element.name === this.name) {
         return (
           <svg

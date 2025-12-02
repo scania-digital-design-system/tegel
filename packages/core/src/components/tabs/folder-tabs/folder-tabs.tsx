@@ -23,7 +23,7 @@ export class TdsFolderTabs {
   @Element() host: HTMLElement;
 
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Sets the default selected Tab. */
   @Prop() defaultSelectedIndex: number = 0;
@@ -44,7 +44,7 @@ export class TdsFolderTabs {
 
   @State() showRightScroll: boolean = false;
 
-  private navWrapperElement: HTMLElement = null; // reference to container with nav buttons
+  private navWrapperElement: HTMLElement | null = null; // reference to container with nav buttons
 
   private componentWidth: number = 0; // visible width of this component
 
@@ -103,20 +103,25 @@ export class TdsFolderTabs {
   }
 
   private scrollRight(): void {
+    if (!this.navWrapperElement) return;
+
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll + this.buttonsWidth;
     this.evaluateScrollButtons();
   }
 
   private scrollLeft(): void {
+    if (!this.navWrapperElement) return;
+
     const scroll = this.navWrapperElement.scrollLeft;
     this.navWrapperElement.scrollLeft = scroll - this.buttonsWidth;
     this.evaluateScrollButtons();
   }
 
   private evaluateScrollButtons(): void {
-    const scroll = this.navWrapperElement.scrollLeft;
+    if (!this.navWrapperElement) return;
 
+    const scroll = this.navWrapperElement.scrollLeft;
     this.showRightScroll = scroll <= this.scrollWidth;
     this.showLeftScroll = scroll > 0;
   }
@@ -142,7 +147,7 @@ export class TdsFolderTabs {
       });
     });
 
-    resizeObserver.observe(this.navWrapperElement);
+    if (this.navWrapperElement) resizeObserver.observe(this.navWrapperElement);
   };
 
   private addEventListenerToTabs = (): void => {

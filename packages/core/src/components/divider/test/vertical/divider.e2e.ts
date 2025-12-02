@@ -19,7 +19,7 @@ testConfigurations.basic.forEach((config) => {
       // expect height to be greater than width
       const divider = page.getByTestId('divider').locator('div.divider').first();
       const box = await divider.boundingBox();
-      expect(box.height).toBeGreaterThan(box.width);
+      if (box) expect(box.height).toBeGreaterThan(box.width);
 
       /* Check diff on screenshot */
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });

@@ -1,41 +1,24 @@
-/* Base component styles */
 .tl-text-field {
-  // Colors - Base
   --text-field-background: var(--color-background-layer-01);
   --text-field-text: var(--color-foreground-text-strong);
   --text-field-placeholder: var(--color-foreground-text-subtle);
   --text-field-affix: var(--color-foreground-text-defined);
-
-  // Colors - Label
   --text-field-label: var(--color-foreground-text-strong);
   --text-field-label-inside: var(--color-foreground-text-strong);
   --text-field-label-inside-left: 16px;
-  --text-field-prefix-width-icon: 35px;
-  --text-field-prefix-width-text: 25px;
-
-  // Colors - Border
+  --text-field-affix-width-icon: 35px;
+  --text-field-affix-width-text: 8px;
   --text-field-border-bottom-readonly: var(--color-foreground-border-strong);
-
-  // Colors - Helper text
   --text-field-helper: var(--color-foreground-text-defined);
-
-  // Colors - Error state
-  --text-field-helper-error: var(--color-system-danger-default);
+  --text-field-error: var(--color-system-danger-default);
   --text-field-affix-error: var(--color-foreground-text-defined);
-
-  // Colors - Disabled state
   --text-field-background-disabled: var(--color-background-layer-01);
-  --text-field-text-disabled: var(--color-foreground-text-subtle);
-  --text-field-placeholder-disabled: var(--color-foreground-text-subtle);
-  --text-field-label-disabled: var(--color-foreground-text-subtle);
+  --text-field-text-disabled: var(--color-foreground-text-disabled);
+  --text-field-placeholder-disabled: var(--color-foreground-text-disabled);
+  --text-field-label-disabled: var(--color-foreground-text-disabled);
   --text-field-affix-disabled: var(--color-foreground-text-disabled);
-
-  // Colors - Text counter
   --text-field-textcounter: var(--color-foreground-text-defined);
-  --text-field-textcounter-disabled: var(--color-foreground-text-disabled);
-  --text-field-textcounter-divider: var(--color-foreground-text-disabled);
 
-  // Mode variants
   &--primary {
     --text-field-background: var(--color-background-layer-01);
     --text-field-background-disabled: var(--color-background-layer-01);
@@ -49,41 +32,33 @@
 
 .tl-text-field,
 .scania .tl-text-field {
-  /* Textfield: border radius */
   --text-field-border-radius: 4px 4px 0 0;
-
-  /* Textfield: box shadow */
-  --text-field-box-shadow: 0 1px 0 0 var(--color-foreground-border-soft);
-  --text-field-box-shadow-hover: 0 1px 0 0 var(--color-foreground-border-strong);
-  --text-field-box-shadow-error: 0 1px 0 0 var(--color-system-danger-default);
-  --text-field-box-shadow-success: 0 1px 0 0 var(--color-foreground-border-strong);
-
-  /* Textfield: bar colors */
+  --text-field-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --text-field-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --text-field-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --text-field-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
+  --text-field-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
+  --text-field-box-shadow-error-focus: 0 -2px 0 0 var(--color-system-danger-default);
+  --text-field-box-shadow-success: 0 -1px 0 0 var(--color-foreground-border-strong);
   --text-field-bar-focus: var(--color-foreground-border-accent-focus);
   --text-field-bar-error: var(--color-system-danger-default);
-
-  /* Textfield: focus outline */
   --text-field-focus-outline: none;
   --text-field-focus-outline-error: none;
   --text-field-focus-outline-offset: 0;
 }
 
 .traton .tl-text-field {
-  /* Textfield: units */
   --text-field-border-radius: 4px 4px 4px 4px;
-
-  /* Textfield: box shadow */
   --text-field-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
   --text-field-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --text-field-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
   --text-field-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
   --text-field-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
-
-  /* Textfield: focus outline */
+  --text-field-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
+  --text-field-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
   --text-field-focus-outline: 2px solid var(--color-foreground-border-accent-focus);
   --text-field-focus-outline-error: 2px solid var(--color-system-danger-default);
   --text-field-focus-outline-offset: 0;
-
-  /* Textfield: bar colors */
   --text-field-bar-focus: transparent;
   --text-field-bar-error: transparent;
 }

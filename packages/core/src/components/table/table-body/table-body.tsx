@@ -35,9 +35,9 @@ export class TdsTableBody {
 
   @State() zebraMode: 'rows-odd' | 'rows-even' | 'columns-odd' | 'columns-even' | 'none' = 'none';
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -71,18 +71,18 @@ export class TdsTableBody {
 
   connectedCallback() {
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = this.tableEl?.[tablePropName];
     });
   }
 
   componentWillRender() {
-    const headerColumnsNo =
-      this.host.parentElement.querySelector('tds-table-header').children.length;
+    const headrColumn = this.host.parentElement?.querySelector('tds-table-header');
+    const headerColumnsNo = headrColumn?.children.length ?? 0;
 
     // multiselect and expended features requires one extra column for controls...
     if (this.multiselect || this.expandableRows) {

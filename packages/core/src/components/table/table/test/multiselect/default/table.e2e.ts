@@ -69,7 +69,7 @@ test.describe.parallel(componentName, () => {
     await expect(tableBodyRowCheckboxes).toHaveCount(5);
 
     /* Check if each checkbox is visible */
-    const promises = [];
+    const promises: Promise<void>[] = [];
     for (let i = 0; i < 5; i++) {
       promises.push(expect(tableBodyRowCheckboxes.nth(i)).toBeVisible());
     }

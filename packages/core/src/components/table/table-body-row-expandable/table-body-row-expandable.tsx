@@ -38,7 +38,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 export class TdsTableBodyRowExpandable {
   /** In case that automatic count of columns does not work, user can manually set this one.
    *  Take in mind that expandable control is column too */
-  @Prop() colSpan: number = null;
+  @Prop() colSpan: number | null = null;
 
   /** ID for the table row. Randomly generated if not specified. */
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
@@ -59,9 +59,9 @@ export class TdsTableBodyRowExpandable {
   /** Sets isExpanded state to true or fals internally */
   @State() isExpanded: boolean = false;
 
-  @State() tableId: string = '';
+  @State() tableId: string | undefined = '';
 
-  @State() columnsNumber: number = null;
+  @State() columnsNumber: number | null = null;
 
   @State() verticalDividers: boolean = false;
 
@@ -69,11 +69,11 @@ export class TdsTableBodyRowExpandable {
 
   @State() noMinWidth: boolean = false;
 
-  @State() modeVariant: 'primary' | 'secondary' = null;
+  @State() modeVariant: 'primary' | 'secondary' | null = null;
 
   @Element() host: HTMLElement;
 
-  tableEl: HTMLTdsTableElement;
+  tableEl: HTMLTdsTableElement | null;
 
   /** @internal Sends out expanded status which is used by the Table header component */
   @Event({
@@ -82,7 +82,7 @@ export class TdsTableBodyRowExpandable {
     cancelable: false,
     composed: true,
   })
-  internalTdsRowExpanded: EventEmitter<any>;
+  internalTdsRowExpanded: EventEmitter<object>;
 
   /** Sends unique table row identifier and isExpanded status when it is expanded/collapsed. */
   @Event({
@@ -94,7 +94,7 @@ export class TdsTableBodyRowExpandable {
   tdsChange: EventEmitter<{
     rowId: string;
     isExpanded: boolean;
-    tableId: string;
+    tableId: string | undefined;
   }>;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
@@ -157,12 +157,12 @@ export class TdsTableBodyRowExpandable {
     }
 
     this.tableEl = this.host.closest('tds-table');
-    this.tableId = this.tableEl.tableId;
+    this.tableId = this.tableEl?.tableId;
   }
 
   componentWillLoad() {
     relevantTableProps.forEach((tablePropName) => {
-      this[tablePropName] = this.tableEl[tablePropName];
+      this[tablePropName] = this.tableEl?.[tablePropName];
     });
   }
 
@@ -170,7 +170,10 @@ export class TdsTableBodyRowExpandable {
     if (this.colSpan !== null) {
       this.columnsNumber = this.colSpan;
     } else {
-      this.columnsNumber = this.tableEl.querySelector('tds-table-header').childElementCount + 1;
+      const header = this.tableEl?.querySelector('tds-table-header');
+      if (header) {
+        this.columnsNumber = header.childElementCount + 1;
+      }
     }
   }
 
@@ -246,7 +249,7 @@ export class TdsTableBodyRowExpandable {
               'tds-table__cell-expand--overflow-visible': this.overflow === 'visible',
             }}
             part="expand-row-cell"
-            colSpan={this.columnsNumber}
+            colSpan={this.columnsNumber ?? undefined}
           >
             <div
               style={{

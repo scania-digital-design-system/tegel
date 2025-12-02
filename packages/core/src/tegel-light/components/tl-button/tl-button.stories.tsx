@@ -1,4 +1,5 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
+import { iconsNames } from '../../../components/icon/iconsArray';
 // import readme from './readme.md';
 
 export default {
@@ -24,10 +25,13 @@ export default {
       if: { arg: 'size', neq: 'xs' },
     },
     icon: {
+      name: 'Icon',
+      description: 'Sets icon to be displayed on the Button.',
       control: { type: 'select' },
-      options: ['none', 'placeholder', 'arrow_right', 'arrow_left', 'close'],
-      description: 'Icon to display in the button - not available for xs size',
-      if: { arg: 'size', neq: 'xs' },
+      options: iconsNames,
+      table: {
+        defaultValue: { summary: 'placeholder' },
+      },
     },
   },
   args: {
@@ -44,12 +48,13 @@ const Template = ({ variant, size, fullwidth, disabled, onlyIcon, icon }) => {
   // Disable icon functionality for xs size
   const isXs = size === 'xs';
   const iconClass = !isXs && icon !== 'none' ? `tl-button--icon` : '';
+  const iconSize = size === 'lg' || size === 'md' ? 20 : 16;
   const onlyIconClass = !isXs && onlyIcon ? 'tl-button--only-icon' : '';
   const iconElement =
     !isXs && icon !== 'none'
-      ? `<span class="tl-icon tl-icon--${icon} tl-icon--16" aria-hidden="true"></span>`
+      ? `<span class="tl-icon tl-icon--${icon} tl-icon--${iconSize}" aria-hidden="true"></span>`
       : '';
-  const labelElement = !onlyIcon || isXs ? '<span class="tl-button__label">Button Text</span>' : '';
+  const labelElement = !onlyIcon || isXs ? '<span class="tl-button__label">Button</span>' : '';
   const ariaLabel = !isXs && onlyIcon ? ' aria-label="Button"' : '';
 
   return formatHtmlPreview(`

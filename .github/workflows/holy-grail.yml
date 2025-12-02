@@ -4,6 +4,12 @@ name: Holy Grail
 on:
   workflow_dispatch:
     inputs:
+      branch:
+        description: 'Branch to create release from'
+        required: true
+        default: 'develop'
+        type: string
+
       version:
         description: 'Release type'
         required: true
@@ -51,7 +57,7 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v4
         with:
-          ref: develop
+          ref: ${{ github.event.inputs.branch || 'develop' }}
 
       - name: Set Tegel user
         run: git config --global user.name "Tegel - Scania" && git config --global user.email "tegel.design.system@gmail.com"

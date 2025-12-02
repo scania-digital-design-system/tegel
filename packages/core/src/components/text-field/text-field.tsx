@@ -36,6 +36,9 @@ export class TdsTextField {
   /** Max allowed value for input type number */
   @Prop() max: string | number;
 
+  /** Step value for input type number */
+  @Prop() step: string | number;
+
   /** Helper text */
   @Prop() helper: string;
 
@@ -58,7 +61,7 @@ export class TdsTextField {
   @Prop() size: 'sm' | 'md' | 'lg' = 'lg';
 
   /** Mode variant of the Text Field */
-  @Prop() modeVariant: 'primary' | 'secondary' = null;
+  @Prop() modeVariant: 'primary' | 'secondary' | null = null;
 
   /** Unset minimum width of 208px. */
   @Prop() noMinWidth: boolean = false;
@@ -83,6 +86,9 @@ export class TdsTextField {
 
   /** Value to be used for the text field's autocomplete attribute */
   @Prop() autocomplete: string = 'off';
+
+  /** Hides the native arrows on number input type */
+  @Prop() hideNumberArrows: boolean = false;
 
   /** Listen to the focus state of the input */
   @State() focusInput: boolean = false;
@@ -109,25 +115,10 @@ export class TdsTextField {
   })
   tdsInput: EventEmitter<InputEvent>;
 
-  // Data input event in value prop
+  /** Data input event in value prop */
   handleInput(event: InputEvent): void {
     const inputEl = event.target as HTMLInputElement;
-    let { value } = inputEl;
-
-    // Custom handling of number inputs when min/max are set
-    if (this.type === 'number') {
-      const numericValue = Number(value);
-
-      if (this.min !== undefined && numericValue < Number(this.min)) {
-        value = String(this.min);
-      }
-
-      if (this.max !== undefined && numericValue > Number(this.max)) {
-        value = String(this.max);
-      }
-
-      inputEl.value = value;
-    }
+    const { value } = inputEl;
 
     this.value = value;
     this.tdsInput.emit(event);
@@ -144,7 +135,7 @@ export class TdsTextField {
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleFocus(event: FocusEvent): void {
-    this.textInput.focus();
+    this.textInput?.focus();
     this.focusInput = true;
     this.tdsFocus.emit(event);
   }
@@ -158,9 +149,57 @@ export class TdsTextField {
   })
   tdsBlur: EventEmitter<FocusEvent>;
 
+  /** Error event for the Text Field - emitted when value is clamped to min/max */
+  @Event({
+    eventName: 'tdsError',
+    composed: true,
+    bubbles: true,
+    cancelable: false,
+  })
+  tdsError: EventEmitter<{ originalValue: string; clampedValue: string; reason: 'min' | 'max' }>;
+
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
-  handleBlur(event): void {
+  handleBlur(event: FocusEvent): void {
     this.focusInput = false;
+
+    /** Custom handling of number inputs when min/max are set */
+    if (this.type === 'number' && this.textInput) {
+      const numericValue = this.textInput.valueAsNumber;
+      const minNum = this.min !== undefined ? Number(this.min) : undefined;
+      const maxNum = this.max !== undefined ? Number(this.max) : undefined;
+
+      if (minNum !== undefined && maxNum !== undefined && minNum > maxNum) {
+        console.warn('tds-text-field: min value is greater than max value');
+        return;
+      }
+
+      if (!isNaN(numericValue)) {
+        const originalValue = this.textInput.value;
+        let clampedValue = originalValue;
+        let clampReason: 'min' | 'max' | null = null;
+
+        if (minNum !== undefined && numericValue < minNum) {
+          clampedValue = String(this.min);
+          clampReason = 'min';
+        }
+
+        if (maxNum !== undefined && numericValue > maxNum) {
+          clampedValue = String(this.max);
+          clampReason = 'max';
+        }
+
+        if (clampedValue !== originalValue && clampReason) {
+          this.textInput.value = clampedValue;
+          this.value = clampedValue;
+          this.tdsError.emit({
+            originalValue,
+            clampedValue,
+            reason: clampReason,
+          });
+        }
+      }
+    }
+
     this.tdsBlur.emit(event);
   }
 
@@ -204,7 +243,7 @@ export class TdsTextField {
             <label htmlFor={`text-field-input-element-${this.uuid}`}>{this.label}</label>
           </div>
         )}
-        <div onClick={() => this.textInput.focus()} class="text-field-container">
+        <div onClick={() => this.textInput?.focus()} class="text-field-container">
           {usesPrefixSlot && (
             <div
               class={{
@@ -228,6 +267,7 @@ export class TdsTextField {
                 'text-field-input-sm': this.size === 'sm',
                 'text-field-input-md': this.size === 'md',
                 'text-field-input-lg': this.size === 'lg',
+                'text-field-input-no-arrows': this.hideNumberArrows,
               }}
               type={this.type}
               disabled={this.disabled}
@@ -239,6 +279,7 @@ export class TdsTextField {
               name={this.name}
               min={this.min}
               max={this.max}
+              step={this.step}
               onInput={(event) => this.handleInput(event)}
               onChange={(event) => this.handleChange(event)}
               onFocus={(event) => {

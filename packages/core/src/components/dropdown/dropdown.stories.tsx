@@ -330,22 +330,26 @@ const Template = ({
     </div>
 
     <script>
-      const dropdown = document.querySelector('tds-dropdown');
+      (function() {
+        const dropdown = document.querySelector('tds-dropdown');
+        
+        if (dropdown) {
+          dropdown.addEventListener('tdsChange', (event) => {
+            console.log(event);
+          });
   
-      dropdown.addEventListener('tdsChange', (event) => {
-        console.log(event);
-      });
-  
-      // Only listen to tdsClear when filter is enabled
-      ${
-        filter
-          ? `
-      dropdown.addEventListener('tdsClear', (event) => {
-        console.log('tdsClear', event.detail);
-      });
-      `
-          : ''
-      }
+          // Only listen to tdsClear when filter is enabled
+          ${
+            filter
+              ? `
+          dropdown.addEventListener('tdsClear', (event) => {
+            console.log('tdsClear', event.detail);
+          });
+          `
+              : ''
+          }
+        }
+      })();
     </script>    
   `);
 

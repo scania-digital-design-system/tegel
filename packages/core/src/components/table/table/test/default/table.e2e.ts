@@ -52,7 +52,7 @@ test.describe.parallel(componentName, () => {
 
   test('table has the correct text inside each cell', async ({ page }) => {
     /* Checks all rows to see that they have the correct amount of tds-body-cells with values provided */
-    const promises = [];
+    const promises: Promise<void>[] = [];
     for (let i = 1; i <= 8; i++) {
       const tableBodyCellHasText = page
         .locator('tds-body-cell')
