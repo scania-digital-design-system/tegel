@@ -15,6 +15,7 @@ export default {
       control: {
         type: 'number',
       },
+      if: { arg: 'useDecimals', eq: false },
       table: {
         defaultValue: { summary: 0 },
       },
@@ -25,6 +26,7 @@ export default {
       control: {
         type: 'number',
       },
+      if: { arg: 'useDecimals', eq: false },
       table: {
         defaultValue: { summary: 100 },
       },
@@ -78,7 +80,7 @@ export default {
       control: {
         type: 'boolean',
       },
-      if: { arg: 'showTicks', eq: true },
+      if: { arg: 'showInput', eq: false },
       table: {
         defaultValue: { summary: false },
       },
@@ -121,6 +123,7 @@ export default {
         type: 'number',
         min: 0,
       },
+      if: { arg: 'useDecimals', eq: false },
       table: {
         defaultValue: { summary: 1 },
       },
@@ -131,7 +134,6 @@ export default {
       control: {
         type: 'boolean',
       },
-      if: { arg: 'showControls', eq: false },
       table: {
         defaultValue: { summary: false },
       },
@@ -167,8 +169,19 @@ export default {
         defaultValue: { summary: false },
       },
     },
+    useDecimals: {
+      name: 'Use decimals',
+      description: 'Automatically sets min to 0, max to 1, and step to 0.01 for decimal values.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
   },
   args: {
+    useDecimals: false,
     min: 0,
     max: 100,
     initialValue: 50,
@@ -189,6 +202,7 @@ export default {
 };
 
 const Template = ({
+  useDecimals,
   min,
   max,
   initialValue,
@@ -198,6 +212,7 @@ const Template = ({
   showTicks,
   numTicks,
   showTickNumbers,
+  snapToTicks,
   showTooltip,
   showControls,
   showInput,
@@ -205,33 +220,49 @@ const Template = ({
   readonly,
   disabled,
 }) => {
+  const actualMin = useDecimals ? 0 : min;
+  const actualMax = useDecimals ? 1 : max;
+  const actualStep = useDecimals ? 0.01 : step;
+  const clampedInitialValue = Math.max(actualMin, Math.min(actualMax, initialValue));
+  const actualInitialValue = useDecimals ? 0.5 : clampedInitialValue;
+
   const sliderClasses = [
     'tl-slider',
     thumbSize === 'Small' ? 'tl-slider--small' : '',
     disabled ? 'tl-slider--disabled' : '',
     readonly ? 'tl-slider--read-only' : '',
+    useDecimals ? 'tl-slider--decimal' : '',
   ]
     .filter(Boolean)
     .join(' ');
 
-  // Calculate thumb position percentage
-  const percentage = ((initialValue - min) / (max - min)) * 100;
+  const percentage = ((actualInitialValue - actualMin) / (actualMax - actualMin)) * 100;
 
-  // Generate tick marks if enabled
+  const formatTickValue = (tickValue: number): string => {
+    if (tickValue % 1 === 0) {
+      return Math.round(tickValue).toString();
+    }
+
+    const stepStr = actualStep.toString();
+    const decimalPlaces = (stepStr.split('.')[1] || '').length;
+    const rounded = parseFloat(tickValue.toFixed(Math.max(decimalPlaces, 10)));
+    return rounded.toString().replace(/\.?0+$/, '');
+  };
+
   const generateTicks = () => {
     if (!showTicks || numTicks < 2) return '';
 
     const ticks: string[] = [];
-    const tickStep = (max - min) / (numTicks - 1);
+    const tickStep = (actualMax - actualMin) / (numTicks - 1);
 
     for (let i = 0; i < numTicks; i++) {
-      const tickValue = min + tickStep * i;
-      // Remove unnecessary trailing zeros
-      const formattedValue = tickValue.toString().replace(/\.?0+$/, '');
+      const tickValue = actualMin + tickStep * i;
+      const formattedValue = formatTickValue(tickValue);
+
       ticks.push(`
         <div class="tl-slider__value-divider">
           ${
-            showTickNumbers
+            showTickNumbers && !showInput
               ? `<span class="tl-slider__value-divider-label">${formattedValue}</span>`
               : ''
           }
@@ -248,47 +279,39 @@ const Template = ({
   };
 
   const markup = `
-    <!-- Required stylesheets
-      "@scania/tegel-light/global.css"
-      "@scania/tegel-light/tl-slider.css"
-      "@scania/tegel-light/tl-button.css"
-      "@scania/tegel-light/tl-icon.css"
-    -->
-
-    <div class="demo" style="display: flex; align-items: center; justify-content: center; padding: 80px 40px;">
-      <div class="${sliderClasses}" style="width: 600px;">
+    <div class="demo-wrapper" style="max-width: 600px; padding: 80px 40px; margin: 0 auto;">
+      <div class="${sliderClasses}">
         ${showLabel ? `<label class="tl-slider__label">${labelText}</label>` : ''}
         
         <input 
           type="range" 
           class="tl-slider__native-input" 
-          min="${min}" 
-          max="${max}" 
-          value="${initialValue}"
-          step="${step}"
+          min="${actualMin}" 
+          max="${actualMax}" 
+          value="${actualInitialValue}"
+          step="${actualStep}"
           ${disabled ? 'disabled' : ''}
           ${readonly ? 'readonly' : ''}
-        aria-label="${showLabel ? labelText : 'Slider'}"
       />
       
-      <div class="tl-slider__slider-controls-row">
+      <div class="tl-slider__controls-row">
         ${
           showInput
             ? `
-        <div class="tl-slider__input-value tl-slider__input-value--min">${min}</div>
+        <div class="tl-slider__value tl-slider__value--min">${actualMin}</div>
         `
             : showControls
             ? `
-        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--minus" type="button" aria-label="Decrease value" ${
+        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--minus" type="button" ${
           disabled ? 'disabled' : ''
         }>
-          <span class="tl-icon tl-icon--minus tl-icon--16" aria-hidden="true"></span>
+          <span class="tl-icon tl-icon--minus tl-icon--16"></span>
         </button>
         `
             : ''
         }
         
-        <div class="tl-slider__track" tabindex="0" role="slider" aria-valuenow="${initialValue}" aria-valuemin="${min}" aria-valuemax="${max}">
+        <div class="tl-slider__track">
           ${generateTicks()}
           <div class="tl-slider__track-fill" style="width: ${percentage}%;"></div>
           
@@ -298,10 +321,7 @@ const Template = ({
                 showTooltip
                   ? `
               <div class="tl-slider__value-tooltip">
-                ${initialValue}
-                <svg class="tl-slider__value-tooltip-arrow" width="12" height="6" viewBox="0 0 12 6" fill="currentColor">
-                  <path d="M6 6L0 0h12L6 6z"/>
-                </svg>
+                ${actualInitialValue}
               </div>
               `
                   : ''
@@ -313,38 +333,33 @@ const Template = ({
         ${
           showInput
             ? `
-        <div class="tl-slider__input-value tl-slider__input-value--max">${max}</div>
-        <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-text-field--hide-readonly-icon${
+        <div class="tl-slider__value tl-slider__value--max">${actualMax}</div>
+        <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width${
           readonly ? ' tl-text-field--readonly' : ''
         }${disabled ? ' tl-text-field--disabled' : ''} tl-slider__input-wrapper">
           <input 
             type="number" 
             class="tl-text-field__input tl-slider__input-field" 
-            value="${initialValue}"
-            min="${min}"
-            max="${max}"
-            step="${step}"
+            value="${actualInitialValue}"
+            min="${actualMin}"
+            max="${actualMax}"
+            step="${actualStep}"
             ${disabled ? 'disabled' : ''}
             ${readonly ? 'readonly' : ''}
-            aria-label="Slider value input"
           />
         </div>
         `
             : showControls
             ? `
-        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--plus" type="button" aria-label="Increase value" ${
+        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--plus" type="button" ${
           disabled ? 'disabled' : ''
         }>
-          <span class="tl-icon tl-icon--plus tl-icon--16" aria-hidden="true"></span>
+          <span class="tl-icon tl-icon--plus tl-icon--16"></span>
         </button>
         `
             : ''
         }
       </div>
-      
-      <span class="tl-slider__sr-only" role="status" aria-live="polite" aria-atomic="true">
-        Value: ${initialValue}
-      </span>
       </div>
     </div>
   `;
@@ -359,19 +374,22 @@ const Template = ({
         const thumb = slider.querySelector('.tl-slider__thumb');
         const thumbInner = slider.querySelector('.tl-slider__thumb-inner');
         const trackFill = slider.querySelector('.tl-slider__track-fill');
-        const inputField = slider.querySelector('.tl-slider__input-field');
+        ${showInput ? "const inputField = slider.querySelector('.tl-slider__input-field');" : ''}
         const nativeInput = slider.querySelector('.tl-slider__native-input');
-        const minusBtn = slider.querySelector('.tl-slider__control--minus');
-        const plusBtn = slider.querySelector('.tl-slider__control--plus');
-        const tooltip = slider.querySelector('.tl-slider__value-tooltip');
+        ${
+          showControls ? "const minusBtn = slider.querySelector('.tl-slider__control--minus');" : ''
+        }
+        ${showControls ? "const plusBtn = slider.querySelector('.tl-slider__control--plus');" : ''}
+        ${showTooltip ? "const tooltip = slider.querySelector('.tl-slider__value-tooltip');" : ''}
         
-        const min = ${min};
-        const max = ${max};
-        const step = ${step};
-        let currentValue = ${initialValue};
-        let isDragging = false;
+        const min = ${actualMin};
+        const max = ${actualMax};
+        const step = ${actualStep};
+        ${showTicks && snapToTicks ? `const snapToTicks = true;` : ''}
+        ${showTicks && snapToTicks ? `const numTicks = ${numTicks};` : ''}
+        let currentValue = ${actualInitialValue};
+        ${!readonly ? 'let isDragging = false;' : ''}
         
-        // Determine decimal precision from step
         const stepStr = step.toString();
         const decimalPlaces = (stepStr.split('.')[1] || '').length;
         
@@ -386,29 +404,50 @@ const Template = ({
           
           trackFill.style.width = percentage + '%';
           thumb.style.left = percentage + '%';
-          if (inputField) inputField.value = currentValue;
+          ${showInput ? 'if (inputField) inputField.value = currentValue;' : ''}
           if (nativeInput) nativeInput.value = currentValue;
-          if (tooltip) tooltip.childNodes[0].textContent = currentValue;
-          track.setAttribute('aria-valuenow', currentValue);
+          ${showTooltip ? 'if (tooltip) tooltip.childNodes[0].textContent = currentValue;' : ''}
         }
+        ${
+          !readonly
+            ? `
         
         function getValueFromPosition(clientX) {
           const rect = track.getBoundingClientRect();
           const percentage = (clientX - rect.left) / rect.width;
           const rawValue = min + percentage * (max - min);
-          const steppedValue = Math.round(rawValue / step) * step;
-          return formatValue(steppedValue);
+          
+          ${
+            showTicks && snapToTicks
+              ? `if (snapToTicks && numTicks >= 2) {
+            const tickStep = (max - min) / (numTicks - 1);
+            const tickIndex = Math.round((rawValue - min) / tickStep);
+            const tickValue = min + (tickIndex * tickStep);
+            return formatValue(tickValue);
+          } else {
+            const steppedValue = Math.round(rawValue / step) * step;
+            return formatValue(steppedValue);
+          }`
+              : `const steppedValue = Math.round(rawValue / step) * step;
+          return formatValue(steppedValue);`
+          }
+        }`
+            : ''
         }
         
-        // Track click
+        ${
+          !readonly
+            ? `
         track.addEventListener('click', (e) => {
-          if (slider.classList.contains('tl-slider--read-only')) return;
           updateValue(getValueFromPosition(e.clientX));
-        });
+        });`
+            : ''
+        }
+        ${
+          !readonly
+            ? `
         
-        // Thumb drag
         thumbInner.addEventListener('mousedown', (e) => {
-          if (slider.classList.contains('tl-slider--read-only')) return;
           isDragging = true;
           thumbInner.classList.add('tl-slider__thumb-inner--pressed');
           e.preventDefault();
@@ -424,21 +463,29 @@ const Template = ({
             isDragging = false;
             thumbInner.classList.remove('tl-slider__thumb-inner--pressed');
           }
+        });`
+            : ''
+        }
+        ${
+          showInput
+            ? `
+        inputField.addEventListener('change', (e) => {
+          updateValue(parseFloat(e.target.value));
+        });`
+            : ''
+        }
+        ${
+          showControls
+            ? `
+        minusBtn.addEventListener('click', () => {
+          const newValue = parseFloat((currentValue - step).toFixed(decimalPlaces));
+          updateValue(newValue);
         });
-        
-        // Input field
-        if (inputField) {
-          inputField.addEventListener('change', (e) => {
-            updateValue(parseFloat(e.target.value));
-          });
-        }
-        
-        // Control buttons
-        if (minusBtn) {
-          minusBtn.addEventListener('click', () => updateValue(currentValue - step));
-        }
-        if (plusBtn) {
-          plusBtn.addEventListener('click', () => updateValue(currentValue + step));
+        plusBtn.addEventListener('click', () => {
+          const newValue = parseFloat((currentValue + step).toFixed(decimalPlaces));
+          updateValue(newValue);
+        });`
+            : ''
         }
       })();
     </script>
