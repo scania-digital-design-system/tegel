@@ -281,11 +281,12 @@ const Template = ({
   const markup = `
     <div class="demo-wrapper" style="max-width: 600px; padding: 80px 40px; margin: 0 auto;">
       <div class="${sliderClasses}">
-        ${showLabel ? `<label class="tl-slider__label">${labelText}</label>` : ''}
+        ${showLabel ? `<label class="tl-slider__label" for="tl-slider-input">${labelText}</label>` : ''}
         
         <input 
           type="range" 
           class="tl-slider__native-input" 
+          id="tl-slider-input"
           min="${actualMin}" 
           max="${actualMax}" 
           value="${actualInitialValue}"
