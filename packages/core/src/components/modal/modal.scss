@@ -233,6 +233,10 @@ button.tds-modal-close {
   overflow: hidden;
 }
 
+.tds-modal-overflow-visible {
+  overflow-y: visible;
+}
+
 /* WEB COMPONENT STUFF */
 
 :host {

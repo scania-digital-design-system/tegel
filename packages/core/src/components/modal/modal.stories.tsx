@@ -79,6 +79,16 @@ export default {
         defaultValue: { summary: true },
       },
     },
+    makeOverflowVisible: {
+      name: 'Make overflow visible',
+      description: 'Makes overflow visible if this is true.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     tdsAlertDialog: {
       name: 'Alert Dialog Role',
       description: 'Sets the ARIA role of the message component.',
@@ -100,6 +110,7 @@ export default {
     showModal: true,
     prevent: false,
     closable: true,
+    makeOverflowVisible: false,
     tdsAlertDialog: 'dialog',
   },
 };
@@ -119,6 +130,7 @@ const ModalTemplate = ({
   showModal,
   prevent,
   closable,
+  makeOverflowVisible,
   tdsAlertDialog,
 }) =>
   formatHtmlPreview(`
@@ -133,6 +145,7 @@ const ModalTemplate = ({
       actions-position="${actionsPosition.toLowerCase()}"
       prevent="${prevent}"
       closable="${closable ? 'true' : 'false'}"
+      make-overflow-visible="${makeOverflowVisible ? 'true' : 'false'}"
       tds-alert-dialog="${tdsAlertDialog}"
     >
       <span slot="body">

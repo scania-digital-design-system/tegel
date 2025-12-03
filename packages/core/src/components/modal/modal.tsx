@@ -51,6 +51,9 @@ export class TdsModal {
   /** Shows or hides the close [X] button. */
   @Prop() closable: boolean = true;
 
+  /** Make overflow visible if this is true */
+  @Prop() makeOverflowVisible: boolean = false;
+
   /** Role of the modal component. Can be either 'alertdialog' for important messages that require immediate attention, or 'dialog' for regular messages. */
   @Prop() tdsAlertDialog: 'alertdialog' | 'dialog' = 'dialog';
 
@@ -327,7 +330,11 @@ export class TdsModal {
         onClick={(event: PointerEvent) => this.handleOverlayClick(event)}
       >
         <div class="tds-modal-backdrop" />
-        <div class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size}`}>
+        <div
+          class={`tds-modal tds-modal__actions-${this.actionsPosition} tds-modal-${this.size} ${
+            this.makeOverflowVisible ? 'tds-modal-overflow-visible' : ''
+          }`}
+        >
           <div id={headerId} class="header">
             {this.header && <div class="header-text">{this.header}</div>}
             {usesHeaderSlot && <slot name="header" />}
