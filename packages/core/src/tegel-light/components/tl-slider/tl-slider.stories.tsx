@@ -231,7 +231,6 @@ const Template = ({
     thumbSize === 'Small' ? 'tl-slider--small' : '',
     disabled ? 'tl-slider--disabled' : '',
     readonly ? 'tl-slider--read-only' : '',
-    useDecimals ? 'tl-slider--decimal' : '',
   ]
     .filter(Boolean)
     .join(' ');
@@ -339,7 +338,9 @@ const Template = ({
         }${disabled ? ' tl-text-field--disabled' : ''} tl-slider__input-wrapper">
           <input 
             type="number" 
-            class="tl-text-field__input tl-slider__input-field" 
+            class="tl-text-field__input tl-slider__input-field${
+              useDecimals ? ' tl-slider__input-field--decimal' : ''
+            }" 
             value="${actualInitialValue}"
             min="${actualMin}"
             max="${actualMax}"

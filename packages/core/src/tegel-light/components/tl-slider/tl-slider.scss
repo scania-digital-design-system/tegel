@@ -169,7 +169,7 @@
   text-align: center;
   appearance: textfield;
 
-  .tl-slider--decimal & {
+  &--decimal {
     width: 56px;
   }
 
@@ -178,13 +178,13 @@
     appearance: none;
     margin: 0;
   }
-}
 
-.tl-slider__input-wrapper.tl-text-field--readonly .tl-slider__input-field[readonly] {
-  width: var(--slider-input-width-readonly, 74px);
-  text-align: left;
-  padding-left: 16px;
-  padding-right: 40px;
+  &[readonly] {
+    width: var(--slider-input-width-readonly, 74px);
+    text-align: left;
+    padding-left: 16px;
+    padding-right: 40px;
+  }
 }
 
 .tl-slider__value-tooltip {
