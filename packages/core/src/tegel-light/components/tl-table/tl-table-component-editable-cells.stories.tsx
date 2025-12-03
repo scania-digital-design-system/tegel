@@ -199,7 +199,7 @@ const EditableCellsTemplate = ({
     : '';
 
   // Helper function to create editable cell
-  const createEditableCell = (inputId, label, value, columnIndex, colStyle, disabled = false) => {
+  const createEditableCell = (inputId, value, columnIndex, colStyle, disabled = false) => {
     const cellStyle = colStyle || '';
     const iconClass = disabled ? 'tl-icon--edit_inactive' : 'tl-icon--edit';
     const textFieldDisabledClass = disabled ? 'tl-text-field--disabled' : '';
@@ -208,7 +208,6 @@ const EditableCellsTemplate = ({
     return `
       <td class="tl-table__body-cell" data-column="${columnIndex}" ${cellStyle}>
         <div class="tl-text-field ${textFieldSizeClass} tl-text-field--no-min-width ${textFieldDisabledClass}">
-          <label for="${inputId}" style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); border: 0;">${label}</label>
           <input id="${inputId}" class="tl-text-field__input" type="text" value="${value}" ${
       disabled ? 'disabled' : ''
     } />
@@ -237,82 +236,40 @@ const EditableCellsTemplate = ({
       </thead>
       <tbody class="tl-table__body">
         <tr class="tl-table__row" data-row="0">
-          ${createEditableCell('truck-input-1', 'Truck type', 'Test value 1', 0, col1Style, false)}
-          ${createEditableCell(
-            'driver-input-1',
-            'Driver name',
-            'Test value 2',
-            1,
-            col2Style,
-            false,
-          )}
-          ${createEditableCell('country-input-1', 'Country', 'Test value 3', 2, col3Style, false)}
-          ${createEditableCell('mileage-input-1', 'Mileage', 'Test value 4', 3, col4Style, false)}
+          ${createEditableCell('truck-input-1', 'Test value 1', 0, col1Style, false)}
+          ${createEditableCell('driver-input-1', 'Test value 2', 1, col2Style, false)}
+          ${createEditableCell('country-input-1', 'Test value 3', 2, col3Style, false)}
+          ${createEditableCell('mileage-input-1', 'Test value 4', 3, col4Style, false)}
         </tr>
         <tr class="tl-table__row" data-row="1">
-          ${createEditableCell('truck-input-2', 'Truck type', 'Test value 5', 0, col1Style, false)}
-          ${createEditableCell(
-            'driver-input-2',
-            'Driver name',
-            'Test value 6',
-            1,
-            col2Style,
-            false,
-          )}
-          ${createEditableCell('country-input-2', 'Country', 'Test value 7', 2, col3Style, false)}
-          ${createEditableCell('mileage-input-2', 'Mileage', 'Test value 8', 3, col4Style, false)}
+          ${createEditableCell('truck-input-2', 'Test value 5', 0, col1Style, false)}
+          ${createEditableCell('driver-input-2', 'Test value 6', 1, col2Style, false)}
+          ${createEditableCell('country-input-2', 'Test value 7', 2, col3Style, false)}
+          ${createEditableCell('mileage-input-2', 'Test value 8', 3, col4Style, false)}
         </tr>
         <tr class="tl-table__row" data-row="2">
-          ${createEditableCell('truck-input-3', 'Truck type', 'Test value 1', 0, col1Style, true)}
-          ${createEditableCell(
-            'driver-input-3',
-            'Driver name',
-            'Test value 2',
-            1,
-            col2Style,
-            false,
-          )}
-          ${createEditableCell('country-input-3', 'Country', 'Test value 3', 2, col3Style, false)}
-          ${createEditableCell('mileage-input-3', 'Mileage', 'Test value 4', 3, col4Style, false)}
+          ${createEditableCell('truck-input-3', 'Test value 1', 0, col1Style, true)}
+          ${createEditableCell('driver-input-3', 'Test value 2', 1, col2Style, false)}
+          ${createEditableCell('country-input-3', 'Test value 3', 2, col3Style, false)}
+          ${createEditableCell('mileage-input-3', 'Test value 4', 3, col4Style, false)}
         </tr>
         <tr class="tl-table__row" data-row="3">
-          ${createEditableCell('truck-input-4', 'Truck type', 'Test value 5', 0, col1Style, false)}
-          ${createEditableCell(
-            'driver-input-4',
-            'Driver name',
-            'Test value 6',
-            1,
-            col2Style,
-            false,
-          )}
-          ${createEditableCell('country-input-4', 'Country', 'Test value 7', 2, col3Style, false)}
-          ${createEditableCell('mileage-input-4', 'Mileage', 'Test value 8', 3, col4Style, false)}
+          ${createEditableCell('truck-input-4', 'Test value 5', 0, col1Style, false)}
+          ${createEditableCell('driver-input-4', 'Test value 6', 1, col2Style, false)}
+          ${createEditableCell('country-input-4', 'Test value 7', 2, col3Style, false)}
+          ${createEditableCell('mileage-input-4', 'Test value 8', 3, col4Style, false)}
         </tr>
         <tr class="tl-table__row" data-row="4">
-          ${createEditableCell('truck-input-5', 'Truck type', 'Test value 1', 0, col1Style, false)}
-          ${createEditableCell(
-            'driver-input-5',
-            'Driver name',
-            'Test value 2',
-            1,
-            col2Style,
-            false,
-          )}
-          ${createEditableCell('country-input-5', 'Country', 'Test value 3', 2, col3Style, false)}
-          ${createEditableCell('mileage-input-5', 'Mileage', 'Test value 4', 3, col4Style, false)}
+          ${createEditableCell('truck-input-5', 'Test value 1', 0, col1Style, false)}
+          ${createEditableCell('driver-input-5', 'Test value 2', 1, col2Style, false)}
+          ${createEditableCell('country-input-5', 'Test value 3', 2, col3Style, false)}
+          ${createEditableCell('mileage-input-5', 'Test value 4', 3, col4Style, false)}
         </tr>
         <tr class="tl-table__row" data-row="5">
-          ${createEditableCell('truck-input-6', 'Truck type', 'Test value 5', 0, col1Style, false)}
-          ${createEditableCell(
-            'driver-input-6',
-            'Driver name',
-            'Test value 6',
-            1,
-            col2Style,
-            false,
-          )}
-          ${createEditableCell('country-input-6', 'Country', 'Test value 7', 2, col3Style, false)}
-          ${createEditableCell('mileage-input-6', 'Mileage', 'Test value 8', 3, col4Style, false)}
+          ${createEditableCell('truck-input-6', 'Test value 5', 0, col1Style, false)}
+          ${createEditableCell('driver-input-6', 'Test value 6', 1, col2Style, false)}
+          ${createEditableCell('country-input-6', 'Test value 7', 2, col3Style, false)}
+          ${createEditableCell('mileage-input-6', 'Test value 8', 3, col4Style, false)}
         </tr>
       </tbody>
     </table>
