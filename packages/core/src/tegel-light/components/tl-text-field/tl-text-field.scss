@@ -456,10 +456,12 @@
   }
 }
 
-.tl-icon {
-  background-color: var(--text-field-affix);
+.tl-text-field {
+  .tl-icon {
+    background-color: var(--text-field-affix);
+  }
 
-  .tl-text-field--disabled & {
+  &--disabled .tl-icon {
     background-color: var(--text-field-affix-disabled);
   }
 }

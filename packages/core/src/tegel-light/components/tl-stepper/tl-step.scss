@@ -1,6 +1,7 @@
 @import '../../../mixins/box-sizing';
 @import '../../../../../../typography/utilities/typography-utility';
 @import './tl-stepper-vars';
+@import '../tl-icon/tl-icon';
 
 @mixin divider {
   content: ' ';
@@ -202,7 +203,7 @@
 .tl-stepper__node {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   border-radius: 100px;
   border-width: 1px;
   border-style: solid;
@@ -232,11 +233,18 @@
   .tl-stepper__content--lg & {
     height: 30px;
     min-width: 30px;
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: 1;
   }
 
   .tl-stepper__content--sm & {
     height: 24px;
     min-width: 24px;
+    font-size: 0.875rem;
+    font-weight: normal;
+    line-height: 1;
+    padding-top: 1px;
   }
 }
 
@@ -259,7 +267,7 @@
   text-align: center;
 
   &--lg {
-    @include detail-01;
+    @include detail-05;
   }
 
   &--sm {
