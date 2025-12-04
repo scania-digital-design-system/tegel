@@ -14,7 +14,7 @@
     // "noImplicitAny": true,
 
     // Report error on 'this' with implicit 'any'
-    // "noImplicitThis": true,
+    "noImplicitThis": true,
 
     // Ensure every file is in strict mode and add "use strict" at top
     // "alwaysStrict": true,
@@ -26,7 +26,7 @@
     // "strictFunctionTypes": true,
 
     // Catch clause variable defaults to unknown instead of any
-    // "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
 
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,

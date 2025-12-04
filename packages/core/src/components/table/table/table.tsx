@@ -132,7 +132,7 @@ export class TdsTable {
 
       rowCells.forEach((cell) => {
         const cellObject: RowCell = {
-          cellKey: cell.cellKey,
+          cellKey: cell.cellKey ?? '',
           cellValue: (cell.cellValue ?? cell.innerText) as string | number,
         };
 
