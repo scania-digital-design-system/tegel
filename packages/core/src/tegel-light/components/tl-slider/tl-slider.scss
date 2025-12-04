@@ -1,9 +1,9 @@
-@import '../../../mixins/box-sizing';
-@import '../../../../../../typography/utilities/typography-utility';
-@import './tl-slider-vars';
-@import '../tl-text-field/tl-text-field';
-@import '../tl-button/tl-button';
-@import '../tl-icon/tl-icon';
+@use '../../../mixins/box-sizing';
+@use '../../../../../../typography/utilities/typography-utility';
+@use './tl-slider-vars';
+@use '../tl-text-field/tl-text-field';
+@use '../tl-button/tl-button';
+@use '../tl-icon/tl-icon';
 
 .tl-slider {
   @include tds-box-sizing;
