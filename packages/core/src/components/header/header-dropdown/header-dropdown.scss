@@ -1,5 +1,5 @@
-@import '../../../mixins/scrollbar';
-@import '../../../mixins/z-index';
+@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/z-index' as *;
 
 :host {
   height: var(--tds-header-height);

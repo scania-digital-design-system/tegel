@@ -1,5 +1,5 @@
-@import './tl-header-vars';
-@import '../../../mixins/box-sizing';
+@use './tl-header-vars' as *;
+@use '../../../mixins/box-sizing' as *;
 
 .tl-header__title {
   all: unset;

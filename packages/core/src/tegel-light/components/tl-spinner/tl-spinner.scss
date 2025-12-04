@@ -1,5 +1,5 @@
-@import '../../../mixins/box-sizing';
-@import './tl-spinner-vars';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-spinner-vars' as *;
 
 .tl-spinner {
   @include tds-box-sizing;

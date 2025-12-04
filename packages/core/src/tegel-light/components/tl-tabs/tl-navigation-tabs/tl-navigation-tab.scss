@@ -1,6 +1,6 @@
-@import '../../../../mixins/box-sizing';
-@import '../../../../../../../typography/utilities/typography-utility';
-@import './tl-navigation-tabs-vars';
+@use '../../../../mixins/box-sizing' as *;
+@use '../../../../../../../typography/mixins/type-styles' as *;
+@use './tl-navigation-tabs-vars' as *;
 
 .tl-navigation-tabs__tab {
   @include tds-box-sizing;

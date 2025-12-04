@@ -1,6 +1,6 @@
-@import '../../../../../../grid-deprecated/vars';
-@import '../../../mixins/focus-state';
-@import './tl-side-menu-vars';
+@use '../../../../../../grid-deprecated/vars' as *;
+@use '../../../mixins/focus-state' as *;
+@use './tl-side-menu-vars' as *;
 
 .tl-side-menu__dropdown-wrapper {
   display: block;

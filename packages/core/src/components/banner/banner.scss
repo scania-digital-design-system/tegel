@@ -1,6 +1,6 @@
-@import '../../mixins/z-index';
-@import '../../mixins/box-sizing';
-@import '../../mixins/focus-state';
+@use '../../mixins/z-index' as *;
+@use '../../mixins/box-sizing' as *;
+@use '../../mixins/focus-state' as *;
 
 :host(.hide) {
   display: none;

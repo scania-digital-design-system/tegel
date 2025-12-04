@@ -1,35 +1,35 @@
-$local-assets: './assets' !default;
-
 /* Spacing */
-@import '../../../../spacing/traton-units';
+@use '../../../../spacing/traton-units' as *;
 
 /* Typography */
-@import '../../../../typography/traton-fonts';
-@import '../../../../typography/tokens/typography-traton';
+@use '../../../../typography/traton-fonts' as *;
+@use '../../../../typography/tokens/typography-traton' as *;
 
 /* Traton primitive tokens */
-@import '../../../../tokens/scss/traton/primitive';
+@use '../../../../tokens/scss/traton/primitive' as *;
 
 /* Traton color tokens */
-@import '../../../../tokens/scss/traton/color-light';
-@import '../../../../tokens/scss/traton/color-dark';
+@use '../../../../tokens/scss/traton/color-light' as *;
+@use '../../../../tokens/scss/traton/color-dark' as *;
 
 /* Traton logotype tokens */
-@import '../../../../logotype/logotype-traton';
+@use '../../../../logotype/logotype-traton' as *;
 
 /* Traton dimension tokens */
-@import '../../../../tokens/scss/traton/dimension';
+@use '../../../../tokens/scss/traton/dimension' as *;
 
 /* Traton typography tokens */
-@import '../../../../tokens/scss/traton/typography';
+@use '../../../../tokens/scss/traton/typography' as *;
 
 /* Traton specific imports */
-@import '../../../../typography/tokens/typography-traton';
-@import '../../../../spacing/traton-units';
-@import '../../../../typography/traton-fonts';
+@use '../../../../typography/tokens/typography-traton' as *;
+@use '../../../../spacing/traton-units' as *;
+@use '../../../../typography/traton-fonts' as *;
 
 /* Traton primitive icon tokens */
-@import '../../../../tokens/scss/traton/traton-icons-primitive';
+@use '../../../../tokens/scss/traton/traton-icons-primitive' with (
+  $local-assets: './assets'
+);
 
 /* Traton icon tokens */
-@import '../../../../tokens/scss/traton/traton-icons';
+@use '../../../../tokens/scss/traton/traton-icons' as *;

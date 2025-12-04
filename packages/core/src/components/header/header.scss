@@ -1,9 +1,9 @@
 //@import '../theme/core/spacing/vars';
-@import '../../../../../grid-deprecated/vars';
-@import '../../mixins/box-sizing';
-@import '../../mixins/flex-center';
-@import '../../mixins/scrollbar';
-@import '../../mixins/z-index';
+@use '../../../../../grid-deprecated/vars' as *;
+@use '../../mixins/box-sizing' as *;
+@use '../../mixins/flex-center' as *;
+@use '../../mixins/scrollbar' as *;
+@use '../../mixins/z-index' as *;
 
 html,
 :root {

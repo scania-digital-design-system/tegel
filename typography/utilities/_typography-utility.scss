@@ -1,4 +1,4 @@
-@import '../mixins/type-styles';
+@forward '../mixins/type-styles';
 
 /* Centralized map of typography types */
 $typography-map: (
@@ -32,7 +32,7 @@ $typography-map: (
 /* Utility mixin */
 @mixin typography($type) {
   @if map-has-key($typography-map, $type) {
-    @include map-get($typography-map, $type);
+    @include map.get($typography-map, $type);
   } @else {
     @warn "Unknown typography type: #{$type}";
   }

@@ -1,6 +1,6 @@
-@import '../../../mixins/box-sizing';
-@import '../../../../../../typography/utilities/typography-utility';
-@import './tl-checkbox-vars';
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use './tl-checkbox-vars' as *;
 
 .tl-checkbox {
   @include tds-box-sizing;

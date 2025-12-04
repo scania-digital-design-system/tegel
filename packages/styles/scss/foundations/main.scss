@@ -1,7 +1,7 @@
-@import 'colors';
-@import 'grid';
-@import 'logotype';
-@import 'typography';
-@import 'spacing';
-@import 'motion';
-@import 'animation';
+@forward 'colors';
+@forward 'grid';
+@forward 'logotype';
+@forward 'typography';
+@forward 'spacing';
+@forward 'motion';
+@forward 'animation';
