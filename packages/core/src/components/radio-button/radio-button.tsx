@@ -11,13 +11,13 @@ import generateUniqueId from '../../utils/generateUniqueId';
   scoped: true,
 })
 export class TdsRadioButton {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Name of Radio Button, used for reference. */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /** Value of input. */
-  @Prop() value: string;
+  @Prop() value?: string;
 
   /** Unique Radio Button identifier. */
   @Prop() radioId: string = generateUniqueId();
@@ -32,12 +32,12 @@ export class TdsRadioButton {
   @Prop() disabled: boolean = false;
 
   /** Provides an accessible name for the component */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** Provides a tabindex used when radio buttons are grouped */
-  @Prop() tdsTabIndex: number;
+  @Prop() tdsTabIndex?: number;
 
-  private inputElement: HTMLInputElement;
+  private inputElement!: HTMLInputElement;
 
   /** Method to programmatically focus the radio button element */
   @Method()
@@ -56,9 +56,9 @@ export class TdsRadioButton {
     cancelable: false,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     radioId: string;
-    value: string;
+    value: string | undefined;
   }>;
 
   handleChange = () => {

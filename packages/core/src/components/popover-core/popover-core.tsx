@@ -26,7 +26,7 @@ export class TdsPopoverCore {
   @Element() host!: HTMLTdsPopoverCoreElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector: string;
+  @Prop() selector?: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -64,7 +64,7 @@ export class TdsPopoverCore {
 
   @State() renderedShowValue: boolean = false;
 
-  @State() popperInstance: Instance | null;
+  @State() popperInstance: Instance | null = null;
 
   @State() target?: HTMLElement | null;
 
@@ -90,7 +90,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsShow: EventEmitter<object>;
+  internalTdsShow!: EventEmitter<object>;
 
   /** @internal Close event. */
   @Event({
@@ -99,7 +99,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: false,
   })
-  internalTdsClose: EventEmitter<object>;
+  internalTdsClose!: EventEmitter<object>;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {

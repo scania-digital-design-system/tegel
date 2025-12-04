@@ -22,7 +22,7 @@ export type InternalTdsStepperPropChange = {
   shadow: true,
 })
 export class TdsStepper {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** The orientation the Steps */
   @Prop() orientation: 'horizontal' | 'vertical' = 'horizontal';
@@ -59,7 +59,7 @@ export class TdsStepper {
     bubbles: true,
     cancelable: false,
   })
-  internalTdsPropsChange: EventEmitter<InternalTdsStepperPropChange>;
+  internalTdsPropsChange!: EventEmitter<InternalTdsStepperPropChange>;
 
   @Watch('orientation')
   handleDirectionChange() {

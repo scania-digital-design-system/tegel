@@ -21,10 +21,10 @@ import generateUniqueId from '../../utils/generateUniqueId';
   scoped: true,
 })
 export class TdsCheckbox {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Name for the Checkbox's input element. */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /** ID for the Checkbox's input element. Randomly generated if not specified. */
   @Prop() checkboxId: string = generateUniqueId();
@@ -42,15 +42,15 @@ export class TdsCheckbox {
   @Prop({ mutable: true }) indeterminate: boolean = false;
 
   /** Value for the Checkbox */
-  @Prop() value: string;
+  @Prop() value?: string;
 
   /** Value to be used for the aria-label attribute */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** Value to be used for the aria-describedby attribute */
-  @Prop() tdsAriaDescribedby: string;
+  @Prop() tdsAriaDescribedby?: string;
 
-  private inputElement: HTMLInputElement;
+  private inputElement!: HTMLInputElement;
 
   /** Toggles the checked value of the component. */
   @Method()
@@ -83,7 +83,7 @@ export class TdsCheckbox {
     cancelable: false,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     checkboxId: string;
     checked: boolean;
     indeterminate: boolean;
@@ -108,7 +108,7 @@ export class TdsCheckbox {
     bubbles: true,
     cancelable: false,
   })
-  tdsFocus: EventEmitter<FocusEvent>;
+  tdsFocus!: EventEmitter<FocusEvent>;
 
   /** Set the input as focus when clicking the component */
   handleFocus(event): void {
@@ -122,7 +122,7 @@ export class TdsCheckbox {
     bubbles: true,
     cancelable: false,
   })
-  tdsBlur: EventEmitter<FocusEvent>;
+  tdsBlur!: EventEmitter<FocusEvent>;
 
   /** Set the input as blur when clicking outside the component */
   handleBlur(event: FocusEvent): void {

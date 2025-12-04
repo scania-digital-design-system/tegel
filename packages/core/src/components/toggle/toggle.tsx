@@ -11,7 +11,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
   scoped: true,
 })
 export class TdsToggle {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Sets the Toggle as checked */
   @Prop({ reflect: true }) checked: boolean = false;
@@ -23,10 +23,10 @@ export class TdsToggle {
   @Prop() size: 'sm' | 'lg' = 'lg';
 
   /** Name of the toggle's input element */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /** Headline for the Toggle */
-  @Prop() headline: string;
+  @Prop() headline?: string;
 
   /** Sets the Toggle in a disabled state */
   @Prop() disabled: boolean = false;
@@ -35,11 +35,11 @@ export class TdsToggle {
   @Prop() toggleId: string = generateUniqueId();
 
   /** Defines aria-label attribute for input */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
-  private labelSlot: HTMLElement | null;
+  private labelSlot!: HTMLElement | null;
 
-  private inputElement: HTMLInputElement;
+  private inputElement!: HTMLInputElement;
 
   /** Toggles the Toggle. */
   @Method()
@@ -66,7 +66,7 @@ export class TdsToggle {
     cancelable: false,
     bubbles: true,
   })
-  tdsToggle: EventEmitter<{
+  tdsToggle!: EventEmitter<{
     toggleId: string;
     checked: boolean;
   }>;

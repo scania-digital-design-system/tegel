@@ -13,16 +13,16 @@ import hasSlot from '../../utils/hasSlot';
   shadow: true,
 })
 export class TdsToast {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** ID for the Toast. Randomly generated if not specified. */
   @Prop() toastId: string = generateUniqueId();
 
   /** Header text for the component. */
-  @Prop() header: string;
+  @Prop() header?: string;
 
   /** Subheader text for the component. */
-  @Prop() subheader: string;
+  @Prop() subheader?: string;
 
   /** Type of Toast. */
   @Prop() variant: 'information' | 'error' | 'warning' | 'success' = 'information';
@@ -37,7 +37,7 @@ export class TdsToast {
   @Prop() toastRole: 'alert' | 'log' | 'status' = 'alert';
 
   /** Provides an accessible name for the components close button */
-  @Prop() tdsCloseAriaLabel: string;
+  @Prop() tdsCloseAriaLabel?: string;
 
   /** ARIA live for the Toast. */
   @Prop() tdsAriaLive: 'polite' | 'assertive' = 'polite';
@@ -61,7 +61,7 @@ export class TdsToast {
     cancelable: true,
     bubbles: true,
   })
-  tdsClose: EventEmitter<{
+  tdsClose!: EventEmitter<{
     toastId: string;
   }>;
 

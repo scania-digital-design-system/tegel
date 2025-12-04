@@ -9,7 +9,7 @@ import { Component, Element, h, Host } from '@stencil/core';
   shadow: true,
 })
 export class TdsFooterItem {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   private parentIsTopPart: boolean = false;
 

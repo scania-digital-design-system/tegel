@@ -39,7 +39,7 @@ const GRID_LG_BREAKPOINT: number = 992;
   shadow: true,
 })
 export class TdsSideMenu {
-  @Element() host: HTMLTdsSideMenuElement;
+  @Element() host!: HTMLTdsSideMenuElement;
 
   /** Applicable only for mobile. If the Side Menu is open or not. */
   @Prop({ mutable: true }) open: boolean = false;
@@ -61,7 +61,7 @@ export class TdsSideMenu {
   /** @internal Tracks the currently focused element index for keyboard navigation */
   @State() activeElementIndex: number = 0;
 
-  private matchesLgBreakpointMq: MediaQueryList;
+  private matchesLgBreakpointMq!: MediaQueryList;
 
   handleMatchesLgBreakpointChange: (e: MediaQueryListEvent) => void = (e) => {
     const isBelowLg = !e.matches;
@@ -210,7 +210,7 @@ export class TdsSideMenu {
     composed: true,
     cancelable: true,
   })
-  tdsCollapse: EventEmitter<CollapseEvent>;
+  tdsCollapse!: EventEmitter<CollapseEvent>;
 
   /** @internal Broadcasts collapsed state to child components. */
   @Event({
@@ -219,7 +219,7 @@ export class TdsSideMenu {
     cancelable: false,
     composed: true,
   })
-  internalTdsCollapse: EventEmitter<CollapseEvent>;
+  internalTdsCollapse!: EventEmitter<CollapseEvent>;
 
   /** @internal Broadcasts collapsed state to child components. */
   @Event({
@@ -228,7 +228,7 @@ export class TdsSideMenu {
     cancelable: false,
     composed: true,
   })
-  internalTdsSideMenuPropChange: EventEmitter<InternalTdsSideMenuPropChange>;
+  internalTdsSideMenuPropChange!: EventEmitter<InternalTdsSideMenuPropChange>;
 
   @Listen('internalTdsCollapse', { target: 'body' })
   collapsedSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {

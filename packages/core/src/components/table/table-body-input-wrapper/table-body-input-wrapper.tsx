@@ -9,7 +9,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesig
   shadow: true,
 })
 export class TdsTableBodyInputWrapper {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Controls if the edit icon is shown */
   @Prop() showIcon: boolean = true;

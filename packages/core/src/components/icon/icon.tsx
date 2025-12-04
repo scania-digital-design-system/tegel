@@ -26,7 +26,7 @@ const brandIconMap: {
   shadow: true,
 })
 export class Icon {
-  @Element() host: HTMLTdsIconElement;
+  @Element() host!: HTMLTdsIconElement;
 
   /** Pass the name of the icon.
    * For icon names, refer to Storybook Icon controls dropdown or https://tegel.scania.com/foundations/icons/icon-library */
@@ -44,7 +44,7 @@ export class Icon {
   /** Set description for the svg. Also used by aria-describedby. */
   @Prop() svgDescription?: string;
 
-  @State() icons_object: string;
+  @State() icons_object: string = '';
 
   @State() arrayOfIcons = [];
 
