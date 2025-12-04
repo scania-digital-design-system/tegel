@@ -48,7 +48,7 @@
 
 // Mixin for common table cell modifiers
 @mixin table-cell-modifiers {
-  .tl-table--vertical-dividers &:not(:last-child) {
+  .tl-table--vertical-dividers &:not(:last-child):not(&--expand) {
     border-right: 1px solid var(--table-divider);
   }
 
@@ -122,7 +122,7 @@
   transition: background-color 200ms ease;
   color: var(--table-text);
 
-  &:hover {
+  &:hover:not(&--expanded) {
     background-color: var(--table-body-row-hover);
     border-bottom-color: var(--table-divider);
   }
@@ -166,7 +166,7 @@
   transition: background-color 200ms ease;
   min-width: 192px;
 
-  &:hover:not(&--checkbox) {
+  &:hover:not(&--checkbox):not(&--expand) {
     background-color: var(--table-header-hover);
   }
 
@@ -196,7 +196,8 @@
     padding: 0;
   }
 
-  &--checkbox {
+  &--checkbox,
+  &--expand {
     @include checkbox-cell;
 
     background-color: var(--table-header);
@@ -206,6 +207,8 @@
     height: 32px;
     padding: 8px 16px;
 
+    &--checkbox,
+    &--expand,
     &:has(.tl-table__header-input-wrapper) {
       padding: 0;
     }
@@ -239,16 +242,6 @@
   &:active {
     outline: 2px solid var(--table-header-button-focus);
     outline-offset: -2px;
-
-    .tl-table__header-button-icon {
-      opacity: 1;
-    }
-  }
-
-  &:hover {
-    .tl-table__header-button-icon {
-      opacity: 1;
-    }
   }
 
   .tl-table--compact & {
@@ -271,20 +264,27 @@
   color: var(--table-text);
 }
 
+.tl-table__header-button:focus-visible .tl-table__header-button-icon,
+.tl-table__header-button:focus .tl-table__header-button-icon,
+.tl-table__header-button:active .tl-table__header-button-icon,
+.tl-table__header-button:hover .tl-table__header-button-icon {
+  opacity: 1;
+}
+
 .tl-table__header-cell--is-sorted {
   background-color: var(--table-header-button);
+}
 
-  &:hover {
-    background-color: var(--table-header-button-hover);
-  }
+.tl-table__header-cell--is-sorted:hover {
+  background-color: var(--table-header-button-hover);
+}
 
-  .tl-table__header-button-icon {
-    opacity: 1;
-  }
+.tl-table__header-cell--is-sorted .tl-table__header-button-icon {
+  opacity: 1;
+}
 
-  .tl-table__header-button-icon--rotate {
-    transform: rotate(180deg);
-  }
+.tl-table__header-cell--is-sorted .tl-table__header-button-icon--rotate {
+  transform: rotate(180deg);
 }
 
 .tl-table__body-cell {
@@ -305,11 +305,16 @@
     background-color: var(--table-body-cell-hover);
   }
 
+  .tl-table__row--expanded &:hover:not(&--checkbox) {
+    background-color: var(--table-body-row-selected);
+  }
+
   &--column-highlight {
     background-color: var(--table-body-cell-hover);
   }
 
-  &--checkbox {
+  &--checkbox,
+  &--expand {
     @include checkbox-cell;
 
     background-color: inherit;
@@ -330,12 +335,16 @@
     padding: 0;
   }
 
-  .tl-table__row:hover & {
+  .tl-table__row:hover:not(.tl-table__row--expanded) & {
     background-color: var(--table-body-row-hover);
   }
 
-  .tl-table__row--selected:hover & {
+  .tl-table__row--selected:hover:not(.tl-table__row--expanded) & {
     background-color: var(--table-body-row-selected-hover);
+  }
+
+  .tl-table__row--expanded & {
+    background-color: var(--table-body-row-selected);
   }
 }
 
@@ -389,16 +398,16 @@
   position: relative;
   width: 100%;
   height: 100%;
+}
 
-  .tl-icon {
-    color: var(--table-input-header-icon);
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    pointer-events: none;
-  }
+.tl-table__header-input-wrapper .tl-icon {
+  color: var(--table-input-header-icon);
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .tl-table__header-input {
@@ -423,42 +432,133 @@
   min-width: auto;
   padding-bottom: 0;
   cursor: pointer;
+}
+
+.tl-table--compact .tl-table__body-cell .tl-text-field {
+  height: 32px;
+}
+
+.tl-table__body-cell .tl-text-field .tl-text-field__input {
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.tl-table__body-cell .tl-text-field .tl-text-field__input:hover {
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.tl-table__body-cell .tl-text-field .tl-text-field__input:focus {
+  box-shadow: inset var(--text-field-box-shadow-focus);
+  background-color: var(--table-input-focus);
+}
+
+.tl-table--compact .tl-table__body-cell .tl-text-field .tl-text-field__input {
+  height: 32px;
+}
+
+// Hide suffix icon by default, show on hover and focus
+.tl-table__body-cell .tl-text-field .tl-text-field__suffix--icon {
+  display: none;
+}
+
+.tl-table__body-cell .tl-text-field:hover .tl-text-field__suffix--icon,
+.tl-table__body-cell .tl-text-field:has(.tl-text-field__input:focus) .tl-text-field__suffix--icon {
+  display: inline-block;
+}
+
+// Always show icon when disabled (edit_inactive icon)
+.tl-table__body-cell .tl-text-field.tl-text-field--disabled .tl-text-field__suffix--icon {
+  display: inline-block;
+}
+
+// Expandable rows
+.tl-table__body-cell--expand {
+  position: relative;
 
   .tl-table--compact & {
-    height: 32px;
+    padding: 0;
   }
 
-  .tl-text-field__input {
-    box-shadow: 0 0 0 0 transparent;
+  &:has(.tl-table__expand-input:focus),
+  &:has(.tl-table__expand-input:focus-visible),
+  &:has(.tl-table__expand-input:active) {
+    outline: 2px solid var(--table-header-button-focus);
+    box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
+    outline-offset: -1px;
+    z-index: 1;
+  }
+}
 
-    &:hover {
-      box-shadow: 0 0 0 0 transparent;
-    }
+.tl-table__expand-control-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  cursor: pointer;
+  padding: 0 16px;
+  position: relative;
 
-    &:focus {
-      box-shadow: inset var(--text-field-box-shadow-focus);
-      background-color: var(--table-input-focus);
-    }
+  .tl-table--compact & {
+    height: 30px;
+  }
+}
 
-    .tl-table--compact & {
-      height: 32px;
-    }
+.tl-table__expand-input {
+  all: unset;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  cursor: pointer;
+}
+
+.tl-table__expand-icon {
+  height: 16px;
+  width: 16px;
+  transition: transform 200ms ease;
+  transform: rotate(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--table-text);
+}
+
+.tl-table__row--expanded {
+  background-color: var(--table-body-row-selected);
+  border-bottom: none;
+}
+
+.tl-table__row--expanded .tl-table__expand-icon {
+  transform: rotate(180deg);
+}
+
+.tl-table__expand-row {
+  display: none;
+  transition: background-color 200ms ease;
+  background-color: var(--table-body-row-selected);
+  border-bottom: 1px solid var(--table-divider);
+
+  &--expanded {
+    display: table-row;
+  }
+}
+
+.tl-table__expand-row-cell {
+  max-width: 1px;
+  overflow: auto;
+  padding: 16px 16px 16px 66px;
+  color: var(--table-text);
+  background-color: var(--table-body-row-selected);
+
+  .tl-table--compact & {
+    padding: 8px 16px 8px 66px;
   }
 
-  // Hide suffix icon by default, show on hover and focus
-  .tl-text-field__suffix--icon {
-    display: none;
+  &--overflow-visible {
+    overflow: visible;
   }
 
-  &:hover,
-  &:has(.tl-text-field__input:focus) {
-    .tl-text-field__suffix--icon {
-      display: inline-block;
-    }
-  }
-
-  // Always show icon when disabled (edit_inactive icon)
-  &.tl-text-field--disabled .tl-text-field__suffix--icon {
-    display: inline-block;
+  &--overflow-hidden {
+    overflow: hidden;
   }
 }
