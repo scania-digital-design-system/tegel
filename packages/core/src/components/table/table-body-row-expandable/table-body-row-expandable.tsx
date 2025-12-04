@@ -44,7 +44,7 @@ export class TdsTableBodyRowExpandable {
   @Prop({ reflect: true }) rowId: string = generateUniqueId();
 
   /** Sets isExpanded state to true or false externally */
-  @Prop({ reflect: true }) expanded: boolean;
+  @Prop({ reflect: true }) expanded?: boolean;
 
   /** Controls the overflow behavior of the expandable row content */
   @Prop({ reflect: true }) overflow: 'auto' | 'hidden' | 'visible' = 'auto';
@@ -71,9 +71,9 @@ export class TdsTableBodyRowExpandable {
 
   @State() modeVariant: 'primary' | 'secondary' | null = null;
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   /** @internal Sends out expanded status which is used by the Table header component */
   @Event({
@@ -82,7 +82,7 @@ export class TdsTableBodyRowExpandable {
     cancelable: false,
     composed: true,
   })
-  internalTdsRowExpanded: EventEmitter<object>;
+  internalTdsRowExpanded!: EventEmitter<object>;
 
   /** Sends unique table row identifier and isExpanded status when it is expanded/collapsed. */
   @Event({
@@ -91,7 +91,7 @@ export class TdsTableBodyRowExpandable {
     cancelable: false,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     rowId: string;
     isExpanded: boolean;
     tableId: string | undefined;

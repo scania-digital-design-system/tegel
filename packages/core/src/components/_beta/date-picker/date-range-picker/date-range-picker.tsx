@@ -27,39 +27,39 @@ import generateUniqueId from '../../../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsDateRangePicker {
-  @Element() host: HTMLTdsDatePickerElement;
+  @Element() host!: HTMLTdsDatePickerElement;
 
   private format = 'yyyy-MM-dd';
 
   /** Set the variant of the Datepicker. */
-  @Prop() modeVariant: 'primary' | 'secondary';
+  @Prop() modeVariant?: 'primary' | 'secondary';
 
   /** The selected start date for the Date Range Picker */
   @Prop({ mutable: true }) startValue: string = null;
 
   /** The selected end date for the Date Range Picker */
-  @Prop({ mutable: true }) endValue: string;
+  @Prop({ mutable: true }) endValue?: string;
 
   /** Label text for the Start Date */
   @Prop() startDateLabel: string = format(startOfToday(), this.format);
 
   /** Label text for the End Date */
-  @Prop() endDateLabel: string;
+  @Prop() endDateLabel?: string;
 
   /** Position of the label for the Text Fields. TODO: Should it be granular enough to chose differnet for each Text Field */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
 
   /** Helper text for the Start Date */
-  @Prop() startDateHelper: string;
+  @Prop() startDateHelper?: string;
 
   /** Helper text for the End Date */
-  @Prop() endDateHelper: string;
+  @Prop() endDateHelper?: string;
 
   /** Minimum selectable date. */
-  @Prop() min: string;
+  @Prop() min?: string;
 
   /** Maximim selectable date. */
-  @Prop() max: string;
+  @Prop() max?: string;
 
   /** ID used for internal Date Range Picker functionality and events, must be unique. */
   @Prop() datePickerId: string = generateUniqueId();
@@ -101,7 +101,7 @@ export class TdsDateRangePicker {
     cancelable: true,
     bubbles: true,
   })
-  tdsSelect: EventEmitter<{
+  tdsSelect!: EventEmitter<{
     date: string;
     id: string;
   }>;
@@ -113,7 +113,7 @@ export class TdsDateRangePicker {
     cancelable: true,
     bubbles: true,
   })
-  internalTdsInRange: EventEmitter<{
+  internalTdsInRange!: EventEmitter<{
     datePickerId: string;
     startValue: Date;
     endValue: Date;
@@ -126,7 +126,7 @@ export class TdsDateRangePicker {
     cancelable: true,
     bubbles: true,
   })
-  internalTdsSelection: EventEmitter<{
+  internalTdsSelection!: EventEmitter<{
     datePickerId: string;
     selectionIsMade: boolean;
   }>;

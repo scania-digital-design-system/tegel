@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property               | Attribute    | Description          | Type     | Default     |
-| ---------------------- | ------------ | -------------------- | -------- | ----------- |
-| `heading` _(required)_ | `heading`    | The heading text.    | `string` | `undefined` |
-| `imgAlt`               | `img-alt`    | The image alt text.  | `string` | `undefined` |
-| `imgSrc`               | `img-src`    | The image source.    | `string` | `undefined` |
-| `subheading`           | `subheading` | The subheading text. | `string` | `undefined` |
+| Property               | Attribute    | Description          | Type                  | Default     |
+| ---------------------- | ------------ | -------------------- | --------------------- | ----------- |
+| `heading` _(required)_ | `heading`    | The heading text.    | `string`              | `undefined` |
+| `imgAlt`               | `img-alt`    | The image alt text.  | `string \| undefined` | `undefined` |
+| `imgSrc`               | `img-src`    | The image source.    | `string \| undefined` | `undefined` |
+| `subheading`           | `subheading` | The subheading text. | `string \| undefined` | `undefined` |
 
 
 ## Slots

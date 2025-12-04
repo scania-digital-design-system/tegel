@@ -31,22 +31,22 @@ function hasValueChanged(newValue: string[], currentValue: string[]): boolean {
   shadow: true,
 })
 export class TdsDropdown {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Name for the Dropdowns input element. */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /** Sets the Dropdown in a disabled state */
   @Prop() disabled: boolean = false;
 
   /** Helper text for the Dropdown. */
-  @Prop() helper: string;
+  @Prop() helper?: string;
 
   /** Label text for the Dropdown. */
-  @Prop() label: string;
+  @Prop() label?: string;
 
   /** Label text position */
-  @Prop() labelPosition: 'inside' | 'outside';
+  @Prop() labelPosition?: 'inside' | 'outside';
 
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' | null = null;
@@ -55,7 +55,7 @@ export class TdsDropdown {
   @Prop() openDirection: 'up' | 'down' | 'auto' = 'auto';
 
   /** Placeholder text for the Dropdown. */
-  @Prop() placeholder: string;
+  @Prop() placeholder?: string;
 
   /** The size of the Dropdown. */
   @Prop() size: 'xs' | 'sm' | 'md' | 'lg' = 'lg';
@@ -79,31 +79,31 @@ export class TdsDropdown {
   @Prop() noResultText?: string = 'No result';
 
   /** Default value selected in the Dropdown. */
-  @Prop() defaultValue: string | number;
+  @Prop() defaultValue?: string | number;
 
   /** Value of the dropdown. For multiselect, provide array of strings/numbers. For single select, provide a string/number. */
   @Prop({ mutable: true }) value: string | number | (string | number)[] | null = null;
 
   /** Defines aria-label attribute for input */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   @State() open: boolean = false;
 
-  @State() internalValue: string;
+  @State() internalValue: string = '';
 
-  @State() filterResult: number | null;
+  @State() filterResult: number | null = null;
 
-  @State() filterFocus: boolean;
+  @State() filterFocus: boolean = false;
 
-  @State() internalDefaultValue: string;
+  @State() internalDefaultValue: string = '';
 
   @State() private selectedOptions: string[] = [];
 
   @State() filterQuery: string = '';
 
-  private dropdownList: HTMLDivElement;
+  private dropdownList!: HTMLDivElement;
 
-  private inputElement: HTMLInputElement;
+  private inputElement!: HTMLInputElement;
 
   private hasFocus: boolean = false;
 
@@ -302,8 +302,8 @@ export class TdsDropdown {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange: EventEmitter<{
-    name: string;
+  tdsChange!: EventEmitter<{
+    name: string | undefined;
     value: string | null;
   }>;
 
@@ -314,7 +314,7 @@ export class TdsDropdown {
     bubbles: true,
     cancelable: false,
   })
-  tdsFocus: EventEmitter<FocusEvent>;
+  tdsFocus!: EventEmitter<FocusEvent>;
 
   /** Blur event for the Dropdown. */
   @Event({
@@ -323,7 +323,7 @@ export class TdsDropdown {
     bubbles: true,
     cancelable: false,
   })
-  tdsBlur: EventEmitter<FocusEvent>;
+  tdsBlur!: EventEmitter<FocusEvent>;
 
   /** Input event for the Dropdown. */
   @Event({
@@ -332,7 +332,7 @@ export class TdsDropdown {
     bubbles: true,
     cancelable: false,
   })
-  tdsInput: EventEmitter<InputEvent>;
+  tdsInput!: EventEmitter<InputEvent>;
 
   /** Clear event for the Dropdown. */
   @Event({
@@ -341,7 +341,7 @@ export class TdsDropdown {
     bubbles: true,
     cancelable: false,
   })
-  tdsClear: EventEmitter<{ clearedValue: string }>;
+  tdsClear!: EventEmitter<{ clearedValue: string }>;
 
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {

@@ -10,7 +10,7 @@ import { CollapseEvent } from '../side-menu';
   shadow: true,
 })
 export class TdsSideMenuDropdownListItem {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** If the item should appear selected. */
   @Prop() selected: boolean = false;
@@ -21,7 +21,7 @@ export class TdsSideMenuDropdownListItem {
 
   @State() collapsed: boolean = false;
 
-  private sideMenuEl: HTMLTdsSideMenuElement | null;
+  private sideMenuEl!: HTMLTdsSideMenuElement | null;
 
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })
   collapseSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {

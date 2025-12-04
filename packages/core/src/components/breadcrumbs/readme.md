@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property       | Attribute        | Description                                       | Type     | Default     |
-| -------------- | ---------------- | ------------------------------------------------- | -------- | ----------- |
-| `tdsAriaLabel` | `tds-aria-label` | The value to be used for the aria-label attribute | `string` | `undefined` |
+| Property       | Attribute        | Description                                       | Type                  | Default     |
+| -------------- | ---------------- | ------------------------------------------------- | --------------------- | ----------- |
+| `tdsAriaLabel` | `tds-aria-label` | The value to be used for the aria-label attribute | `string \| undefined` | `undefined` |
 
 
 ## Slots

@@ -47,9 +47,9 @@ export class TdsTableBodyRow {
 
   @State() tableId: string | undefined = '';
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   /** Event emitted when a row is selected/deselected. */
   @Event({
@@ -58,7 +58,7 @@ export class TdsTableBodyRow {
     cancelable: false,
     bubbles: true,
   })
-  tdsSelect: EventEmitter<{
+  tdsSelect!: EventEmitter<{
     tableId: string | undefined;
     checked: boolean;
     selectedRows: object[] | undefined;
@@ -72,7 +72,7 @@ export class TdsTableBodyRow {
     bubbles: true,
   })
   // return clickevent
-  tdsClick: EventEmitter<{
+  tdsClick!: EventEmitter<{
     event: MouseEvent;
     tableId: string | undefined;
     rowIndex: number;

@@ -30,7 +30,7 @@ import generateUniqueId from '../../../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsDatePicker {
-  @Element() host: HTMLTdsDatePickerElement;
+  @Element() host!: HTMLTdsDatePickerElement;
 
   private getFormat = (): string => {
     switch (this.variant) {
@@ -46,16 +46,16 @@ export class TdsDatePicker {
   };
 
   /** Set the variant of the Datepicker. */
-  @Prop() modeVariant: 'primary' | 'secondary';
+  @Prop() modeVariant?: 'primary' | 'secondary';
 
   /** The selected date of the Datepicker */
   @Prop({ mutable: true }) value: string = null;
 
   /** Minimum selectable date. */
-  @Prop() min: string;
+  @Prop() min?: string;
 
   /** Maximim selectable date. */
-  @Prop() max: string;
+  @Prop() max?: string;
 
   /** The variant of the Datepicker */
   @Prop() variant: 'day' | 'month' | 'year' = 'day';
@@ -67,10 +67,10 @@ export class TdsDatePicker {
   @Prop() state: 'error' | 'success' | 'default' = 'default';
 
   /** Helper text for the Date Picker */
-  @Prop() helper: string;
+  @Prop() helper?: string;
 
   /** Label text */
-  @Prop() label: string;
+  @Prop() label?: string;
 
   /** Position of the label for the Text Field. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
@@ -136,7 +136,7 @@ export class TdsDatePicker {
     cancelable: false,
     bubbles: true,
   })
-  tdsSelect: EventEmitter<{
+  tdsSelect!: EventEmitter<{
     value: string;
     id: string;
   }>;

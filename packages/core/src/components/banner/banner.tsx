@@ -14,16 +14,16 @@ import { IconNames } from '../../types/Icons';
   shadow: true,
 })
 export class TdsBanner {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Name of the icon for the component. For error and information variant, the icon is predefined. */
-  @Prop() icon: IconNames;
+  @Prop() icon?: IconNames;
 
   /** Header text. */
-  @Prop() header: string;
+  @Prop() header?: string;
 
   /** Subheader text. */
-  @Prop() subheader: string;
+  @Prop() subheader?: string;
 
   /** Variant of Banner */
   @Prop() variant: 'error' | 'information' | 'default' = 'default';
@@ -50,7 +50,7 @@ export class TdsBanner {
     cancelable: true,
     bubbles: true,
   })
-  tdsClose: EventEmitter<{
+  tdsClose!: EventEmitter<{
     bannerId: string;
   }>;
 

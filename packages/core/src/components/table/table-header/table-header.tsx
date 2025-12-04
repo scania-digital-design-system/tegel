@@ -32,7 +32,7 @@ export class TdsTableHeaderRow {
   @Prop({ reflect: true, mutable: true }) allSelected: boolean = false;
 
   /** Prop for controlling the checked/unchecked state of the "All selected"-checkbox. */
-  @Prop({ reflect: true, mutable: true }) selected: boolean;
+  @Prop({ reflect: true, mutable: true }) selected?: boolean;
 
   /** Prop for controlling the enabled/disabled state of the "All selected"-checkbox. */
   @Prop({ reflect: true, mutable: true }) disabled?: boolean = false;
@@ -60,9 +60,9 @@ export class TdsTableHeaderRow {
 
   @State() tableId: string | undefined = '';
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   /** Event emitted when the status of the select all checkbox changes. */
   @Event({
@@ -71,7 +71,7 @@ export class TdsTableHeaderRow {
     cancelable: false,
     bubbles: true,
   })
-  tdsSelectAll: EventEmitter<{
+  tdsSelectAll!: EventEmitter<{
     tableId: string | undefined;
     checked: boolean;
     selectedRows: object[] | undefined;

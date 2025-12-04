@@ -12,14 +12,14 @@ import { CollapseEvent } from '../side-menu';
   shadow: true,
 })
 export class TdsSideMenuDropdown {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** If the dropdown should be open from the start. */
   @Prop() defaultOpen: boolean = false;
 
   /** The label of the button that opens the dropdown.
    * This is an alternative to the label slot. */
-  @Prop() buttonLabel: string;
+  @Prop() buttonLabel?: string;
 
   /** If the button that opens the dropdown should appear selected. */
   @Prop() selected: boolean = false;
@@ -27,11 +27,14 @@ export class TdsSideMenuDropdown {
   /** Toggle open state programmatically */
   @Prop() open: boolean = false;
 
-  @State() hoverState: { isHovered: boolean; updatedAt: number };
+  @State() hoverState: { isHovered: boolean; updatedAt: number } = {
+    isHovered: false,
+    updatedAt: 0,
+  };
 
   @State() collapsed: boolean = false;
 
-  private sideMenuEl: HTMLTdsSideMenuElement | null;
+  private sideMenuEl!: HTMLTdsSideMenuElement | null;
 
   @Listen('internalTdsSideMenuPropChange', { target: 'body' })
   collapsedSideMenuEventHandler(event: CustomEvent<CollapseEvent>) {

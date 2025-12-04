@@ -13,7 +13,7 @@
 | `defaultSelectedIndex`    | `default-selected-index`      | Sets the default selected Tab.                                                         | `number`                   | `0`              |
 | `leftPadding`             | `left-padding`                | Custom left padding value for the wrapper element.                                     | `number`                   | `32`             |
 | `modeVariant`             | `mode-variant`                | Variant of the Tabs, primary= on white, secondary= on grey50                           | `"primary" \| "secondary"` | `'primary'`      |
-| `selectedIndex`           | `selected-index`              | Sets the selected Tab. If this is set, all Tab changes need to be handled by the user. | `number`                   | `undefined`      |
+| `selectedIndex`           | `selected-index`              | Sets the selected Tab. If this is set, all Tab changes need to be handled by the user. | `number \| undefined`      | `undefined`      |
 | `tdsScrollLeftAriaLabel`  | `tds-scroll-left-aria-label`  | Defines aria-label on left scroll button                                               | `string`                   | `'Scroll left'`  |
 | `tdsScrollRightAriaLabel` | `tds-scroll-right-aria-label` | Defines aria-label on right scroll button                                              | `string`                   | `'Scroll right'` |
 
@@ -37,7 +37,7 @@ Type: `Promise<void>`
 
 
 
-### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number; }>`
+### `selectTab(tabIndex: number) => Promise<{ selectedTabIndex: number | undefined; }>`
 
 Sets the passed tabindex as the selected Tab.
 
@@ -49,7 +49,7 @@ Sets the passed tabindex as the selected Tab.
 
 #### Returns
 
-Type: `Promise<{ selectedTabIndex: number; }>`
+Type: `Promise<{ selectedTabIndex: number | undefined; }>`
 
 
 

@@ -13,7 +13,7 @@ import hasSlot from '../../utils/hasSlot';
   shadow: true,
 })
 export class TdsFooter {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Mode variant of the component, based on current mode. */
   @Prop() modeVariant: 'primary' | 'secondary' | null = null;

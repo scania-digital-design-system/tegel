@@ -13,13 +13,13 @@ import inheritAttributes from '../../utils/inheritAttributes';
   scoped: true,
 })
 export class TdsTooltip {
-  @Element() host: HTMLTdsTooltipElement;
+  @Element() host!: HTMLTdsTooltipElement;
 
   /** In case Tooltip contains only text, no HTML, a text can be passed by this prop */
   @Prop() text: string = '';
 
   /** The CSS-selector for an element that will trigger the Tooltip */
-  @Prop() selector: string;
+  @Prop() selector?: string;
 
   /** Element that will trigger the Tooltip (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -46,7 +46,7 @@ export class TdsTooltip {
   @Prop() offsetDistance: number = 8;
 
   /** Sets the aria-describedby attribute */
-  @Prop() tdsAriaDescribedby: string;
+  @Prop() tdsAriaDescribedby?: string;
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent) {
@@ -55,7 +55,7 @@ export class TdsTooltip {
     }
   }
 
-  border: string;
+  border: string = '';
 
   popperjsExtraModifiers = [
     {

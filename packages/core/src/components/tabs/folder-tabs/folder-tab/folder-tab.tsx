@@ -9,14 +9,14 @@ import { Component, Host, h, Method, State, Prop, Element } from '@stencil/core'
   shadow: true,
 })
 export class TdsFolderTab {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Disables the Tab. */
   @Prop() disabled: boolean = false;
 
   @State() selected: boolean = false;
 
-  @State() tabWidth: number;
+  @State() tabWidth?: number;
 
   /** @internal Method to set the width of the tab. Used by the <tds-folder-tabs> */
   @Method()

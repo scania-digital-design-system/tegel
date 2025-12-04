@@ -14,7 +14,7 @@ import hasSlot from '../../utils/hasSlot';
   scoped: true,
 })
 export class TdsChip {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Type of Chip, depends on usage */
   @Prop() type: 'button' | 'radio' | 'checkbox' = 'button';
@@ -33,16 +33,16 @@ export class TdsChip {
   @Prop({ reflect: true, mutable: true }) checked: boolean = false;
 
   /** Name for the checkbox or radio input element. Also creates a reference between label and input. Valid only for type checkbox and radio. */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /** Value of input. Valid only for type checkbox and radio. */
-  @Prop() value: string;
+  @Prop() value?: string;
 
   /** Sets the Chip in a disabled state */
   @Prop() disabled: boolean = false;
 
   /** Value to be used for the aria-label attribute */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** Sends unique Chip identifier and value when it is changed (checked/unchecked).
    * Valid only for type checkbox and radio.
@@ -54,9 +54,9 @@ export class TdsChip {
     cancelable: false,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     chipId: string;
-    value: string;
+    value: string | undefined;
     checked?: boolean;
   }>;
 
@@ -67,10 +67,10 @@ export class TdsChip {
     cancelable: false,
     bubbles: true,
   })
-  internalRadioOnChange: EventEmitter<{
+  internalRadioOnChange!: EventEmitter<{
     chipId: string;
     checked: boolean;
-    groupName: string;
+    groupName: string | undefined;
   }>;
 
   private handleChange = () => {
@@ -122,7 +122,7 @@ export class TdsChip {
     cancelable: false,
     bubbles: true,
   })
-  tdsClick: EventEmitter<{
+  tdsClick!: EventEmitter<{
     chipId: string;
   }>;
 

@@ -11,19 +11,19 @@ import hasSlot from '../../../utils/hasSlot';
   shadow: true,
 })
 export class TdsFooterGroup {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Title text for the link group, only valid on top part of Footer. */
-  @Prop() titleText: string;
+  @Prop() titleText?: string;
 
   /** Value to be used for the aria-label attribute for the nav element wrapping the list. Should be unique for accessibility. */
-  @Prop() tdsListAriaLabel: string;
+  @Prop() tdsListAriaLabel?: string;
 
   /** In mobile, this indicates when the group (if it's in the top part) is opened/closed. */
   @State() open: boolean = false;
 
   /** Indicates if the component is in mobile view. */
-  @State() isMobile: boolean;
+  @State() isMobile: boolean = false;
 
   /** If the group is placed in the main part of the Footer,
    * it can have either start or end as a slot position otherwise undefined. */

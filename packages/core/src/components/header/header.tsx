@@ -14,7 +14,7 @@ import inheritAriaAttributes from '../../utils/inheritAriaAttributes';
   shadow: false,
 })
 export class TdsHeader {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   private observer: MutationObserver;
 

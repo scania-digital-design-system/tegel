@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property           | Attribute             | Description                                                                                                              | Type     | Default     |
-| ------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------- | ----------- |
-| `tdsListAriaLabel` | `tds-list-aria-label` | Value to be used for the aria-label attribute for the nav element wrapping the list. Should be unique for accessibility. | `string` | `undefined` |
-| `titleText`        | `title-text`          | Title text for the link group, only valid on top part of Footer.                                                         | `string` | `undefined` |
+| Property           | Attribute             | Description                                                                                                              | Type                  | Default     |
+| ------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------- | ----------- |
+| `tdsListAriaLabel` | `tds-list-aria-label` | Value to be used for the aria-label attribute for the nav element wrapping the list. Should be unique for accessibility. | `string \| undefined` | `undefined` |
+| `titleText`        | `title-text`          | Title text for the link group, only valid on top part of Footer.                                                         | `string \| undefined` | `undefined` |
 
 
 ## Slots
