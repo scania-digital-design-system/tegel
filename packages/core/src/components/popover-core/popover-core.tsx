@@ -175,7 +175,7 @@ export class TdsPopoverCore {
     }
   }
 
-  private setIsShown = function setIsShown(isShown: boolean | ((s: boolean) => void)) {
+  private setIsShown = (isShown: boolean | ((s: boolean) => boolean)) => {
     if (typeof isShown === 'function') {
       this.isShown = isShown(this.isShown);
     } else {
@@ -188,9 +188,9 @@ export class TdsPopoverCore {
       this.internalTdsClose.emit();
       this.openedByKeyboard = false;
     }
-  }.bind(this);
+  };
 
-  private onClickTarget = function onClickTarget(event: Event) {
+  private onClickTarget = (event: Event) => {
     event.stopPropagation();
     // Check if event was triggered by keyboard (Enter or Space)
     this.openedByKeyboard =
@@ -198,19 +198,19 @@ export class TdsPopoverCore {
       (event as KeyboardEvent).key === 'Enter' ||
       (event as KeyboardEvent).key === ' ';
     this.setIsShown((isShown: boolean) => !isShown);
-  }.bind(this);
+  };
 
-  private handleShow = function handleShow(event) {
+  private handleShow = (event: FocusEvent | MouseEvent) => {
     event.stopPropagation();
     // Check if event was triggered by keyboard (tab focus)
     this.openedByKeyboard = event.type === 'focusin';
     this.setIsShown(true);
-  }.bind(this);
+  };
 
-  private handleHide = function handleHide(event) {
+  private handleHide = (event: FocusEvent | MouseEvent) => {
     event.stopPropagation();
     this.setIsShown(false);
-  }.bind(this);
+  };
 
   private initialize({
     referenceEl,
