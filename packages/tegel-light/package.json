@@ -57,7 +57,8 @@
     "./tl-popover-canvas.css": "./dist/tl-popover-canvas.css",
     "./tl-popover-menu.css": "./dist/tl-popover-menu.css",
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
-    "./tl-footer.css": "./dist/tl-footer.css"
+    "./tl-footer.css": "./dist/tl-footer.css",
+    "./tl-slider.css": "./dist/tl-slider.css"
   },
   "files": [
     "dist/"
