@@ -85,17 +85,6 @@ export default {
         defaultValue: { summary: false },
       },
     },
-    snapToTicks: {
-      name: 'Snap to ticks',
-      description: 'Snaps the thumb to the closest tick when dragging.',
-      control: {
-        type: 'boolean',
-      },
-      if: { arg: 'showTicks', eq: true },
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
     showTooltip: {
       name: 'Show tooltip',
       description: 'Toggles if the tooltip should be shown or hidden.',
@@ -190,7 +179,6 @@ export default {
     showTicks: true,
     numTicks: 3,
     showTickNumbers: true,
-    snapToTicks: false,
     showTooltip: true,
     showControls: true,
     step: 1,
@@ -212,7 +200,6 @@ const Template = ({
   showTicks,
   numTicks,
   showTickNumbers,
-  snapToTicks,
   showTooltip,
   showControls,
   showInput,
@@ -386,8 +373,6 @@ const Template = ({
         const min = ${actualMin};
         const max = ${actualMax};
         const step = ${actualStep};
-        ${showTicks && snapToTicks ? `const snapToTicks = true;` : ''}
-        ${showTicks && snapToTicks ? `const numTicks = ${numTicks};` : ''}
         let currentValue = ${actualInitialValue};
         ${!readonly ? 'let isDragging = false;' : ''}
         
@@ -418,20 +403,8 @@ const Template = ({
           const percentage = (clientX - rect.left) / rect.width;
           const rawValue = min + percentage * (max - min);
           
-          ${
-            showTicks && snapToTicks
-              ? `if (snapToTicks && numTicks >= 2) {
-            const tickStep = (max - min) / (numTicks - 1);
-            const tickIndex = Math.round((rawValue - min) / tickStep);
-            const tickValue = min + (tickIndex * tickStep);
-            return formatValue(tickValue);
-          } else {
-            const steppedValue = Math.round(rawValue / step) * step;
-            return formatValue(steppedValue);
-          }`
-              : `const steppedValue = Math.round(rawValue / step) * step;
-          return formatValue(steppedValue);`
-          }
+          const steppedValue = Math.round(rawValue / step) * step;
+          return formatValue(steppedValue);
         }`
             : ''
         }
