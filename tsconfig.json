@@ -35,6 +35,8 @@
     "lib": ["dom", "es2017"],
     "moduleResolution": "node",
     "module": "esnext",
+    "jsx": "react",
+    "jsxFactory": "h",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "target": "es2017",
