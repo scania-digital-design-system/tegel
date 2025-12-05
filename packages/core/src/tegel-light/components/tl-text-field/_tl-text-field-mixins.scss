@@ -1,4 +1,4 @@
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 @mixin text-field-base {
   all: unset;

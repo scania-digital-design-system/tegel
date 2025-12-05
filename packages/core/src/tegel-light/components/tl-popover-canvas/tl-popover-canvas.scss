@@ -1,4 +1,4 @@
-@import './tl-popover-canvas-vars';
+@use './tl-popover-canvas-vars' as *;
 
 .tl-popover-canvas {
   display: inline-block;

@@ -1,7 +1,7 @@
-@import './tl-text-field-vars';
-@import './tl-text-field-mixins';
-@import '../tl-icon/tl-icon';
-@import '../../../../../../typography/mixins/type-styles';
+@use './tl-text-field-vars' as *;
+@use './tl-text-field-mixins' as *;
+@use '../tl-icon/tl-icon' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-text-field {
   display: block;

@@ -1,4 +1,4 @@
-@import '../../mixins/focus-state';
+@use '../../mixins/focus-state' as *;
 
 /* Styling for slotted content */
 ::slotted(*) {
@@ -79,12 +79,15 @@
     &.sm.prefix label {
       padding: 4px 12px 4px 8px;
     }
+
     &.sm.suffix label {
       padding: 4px 8px 4px 12px;
     }
+
     &.lg.prefix label {
       padding: 8px 16px 8px 10px;
     }
+
     &.lg.suffix label {
       padding: 8px 10px 8px 16px;
     }
@@ -93,6 +96,7 @@
     &.sm.prefix.suffix label {
       padding: 4px 8px;
     }
+
     &.lg.prefix.suffix label {
       padding: 8px 10px;
     }

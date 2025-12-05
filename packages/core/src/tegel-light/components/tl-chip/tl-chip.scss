@@ -1,5 +1,5 @@
-@import '../../../../../../typography/utilities/typography-utility';
-@import './tl-chip-vars';
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use './tl-chip-vars' as *;
 
 .tl-chip {
   @include detail-02;

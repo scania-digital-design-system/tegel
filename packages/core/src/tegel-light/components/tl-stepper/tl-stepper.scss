@@ -1,5 +1,5 @@
-@import '../../../mixins/box-sizing';
-@import './tl-stepper-vars';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-stepper-vars' as *;
 
 .tl-stepper {
   @include tds-box-sizing;

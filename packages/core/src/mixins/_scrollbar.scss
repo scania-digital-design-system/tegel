@@ -40,7 +40,8 @@
   }
 }
 
-:host {
+:host,
+:root {
   // Firefox variables
   --tds-scrollbar-width-standard: thin; //  auto | thin | none
   // Webkit values

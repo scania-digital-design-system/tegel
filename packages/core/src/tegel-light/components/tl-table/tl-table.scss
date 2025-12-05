@@ -1,8 +1,8 @@
-@import '../../../mixins/box-sizing';
-@import '../../../mixins/scrollbar';
-@import './tl-table-vars';
-@import '../../../../../../typography/utilities/typography-utility';
-@import 'footer';
+@use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/scrollbar' as *;
+@use './tl-table-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use 'footer' as *;
 
 // Mixin for text alignment modifiers
 @mixin text-align-modifiers($prefix) {

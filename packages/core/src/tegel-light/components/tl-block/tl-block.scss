@@ -1,6 +1,6 @@
-@import './tl-block-vars';
-@import '../../../mixins/box-sizing';
-@import '../../../../../../typography/mixins/type-styles';
+@use './tl-block-vars' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-block {
   @include tds-box-sizing;

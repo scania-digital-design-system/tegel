@@ -1,6 +1,6 @@
-@import './tl-textarea-mixins';
-@import './tl-textarea-vars';
-@import '../../../../../../typography/mixins/type-styles';
+@use './tl-textarea-mixins' as *;
+@use './tl-textarea-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-textarea {
   display: block;
