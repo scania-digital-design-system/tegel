@@ -105,15 +105,15 @@
 
   &:focus {
     outline: 0;
+  }
 
-    .tl-slider__thumb-inner {
-      width: 24px;
-      height: 24px;
+  &:focus .tl-slider__thumb-inner {
+    width: 24px;
+    height: 24px;
 
-      &::before {
-        display: block;
-        opacity: 0.08;
-      }
+    &::before {
+      display: block;
+      opacity: 0.08;
     }
   }
 
