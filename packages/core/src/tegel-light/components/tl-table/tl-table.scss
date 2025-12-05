@@ -48,10 +48,6 @@
 
 // Mixin for common table cell modifiers
 @mixin table-cell-modifiers {
-  .tl-table--vertical-dividers &:not(:last-child):not(&--expand) {
-    border-right: 1px solid var(--table-divider);
-  }
-
   .tl-table--no-min-width & {
     min-width: unset;
   }
@@ -326,6 +322,10 @@
   }
 
   @include table-cell-modifiers;
+
+  .tl-table--vertical-dividers &:not(:last-child):not(&--expand) {
+    border-right: 1px solid var(--table-divider);
+  }
 
   @include zebra-striping('columns');
 
