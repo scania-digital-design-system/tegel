@@ -1,7 +1,7 @@
-@import './tl-breadcrumbs-vars';
-@import '../../../mixins/box-sizing';
-@import '../../../mixins/focus-state';
-@import '../../../../../../typography/mixins/type-styles';
+@use './tl-breadcrumbs-vars' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-breadcrumbs {
   @include tds-box-sizing;

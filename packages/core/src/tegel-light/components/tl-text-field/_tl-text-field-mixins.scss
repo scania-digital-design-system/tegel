@@ -1,6 +1,5 @@
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../../../../typography/mixins/type-styles' as *;
 
-// Mixins
 @mixin text-field-base {
   all: unset;
   border-radius: var(--text-field-border-radius);
@@ -11,7 +10,6 @@
   margin: 0;
   border: none;
   outline: none;
-  height: 100%;
 
   &::placeholder {
     color: var(--text-field-placeholder);
@@ -29,27 +27,6 @@
   }
 }
 
-@mixin placeholder-label {
-  &::placeholder {
-    color: transparent;
-  }
-
-  ::placeholder {
-    color: transparent;
-  }
-
-  &:focus::placeholder {
-    transition: color 0.35s ease;
-    color: var(--text-field-placeholder);
-  }
-}
-
-@mixin box-shadow($state: '') {
-  $suffix: if($state != '', '-#{$state}', '');
-
-  box-shadow: var(--text-field-box-shadow#{$suffix});
-}
-
 @mixin affix-base {
   @include detail-02;
 
@@ -58,27 +35,13 @@
   display: flex;
   align-items: center;
   z-index: 1;
-  height: 100%;
   position: relative;
 }
 
-// Mixin for focus/input state selectors
 @mixin focus-input-state {
-  .tl-text-field__content:has(.tl-text-field__input:focus) .tl-text-field__label-inside,
-  .tl-text-field__content:has(.tl-text-field__input:not(:placeholder-shown))
-  .tl-text-field__label-inside {
+  .tl-text-field--label-inside:has(.tl-text-field__input:focus) .tl-text-field__label,
+  .tl-text-field--label-inside:has(.tl-text-field__input:not(:placeholder-shown))
+    .tl-text-field__label {
     @content;
   }
-}
-
-// Mixin for size variants
-@mixin size-variant(
-  $height,
-  $input-padding,
-  $label-top,
-  $label-inside-padding-top,
-  $label-inside-padding-bottom
-) {
-  // This mixin is used in modifiers and affects other elements
-  // The actual styles are applied in the affected element selectors
 }

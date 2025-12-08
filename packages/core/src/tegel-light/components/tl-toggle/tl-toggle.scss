@@ -1,6 +1,6 @@
-@import '../../../../../../typography/utilities/typography-utility';
-@import '../../../mixins/focus-state';
-@import './tl-toggle-vars';
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/focus-state' as *;
+@use './tl-toggle-vars' as *;
 
 .tl-toggle__input {
   appearance: initial;

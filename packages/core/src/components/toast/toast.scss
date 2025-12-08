@@ -1,5 +1,5 @@
-@import '../../mixins/focus-state';
-@import '../../mixins/z-index';
+@use '../../mixins/focus-state' as *;
+@use '../../mixins/z-index' as *;
 
 :host(.hide) {
   display: none;

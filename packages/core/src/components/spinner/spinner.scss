@@ -1,4 +1,4 @@
-@import '../../mixins/box-sizing';
+@use '../../mixins/box-sizing' as *;
 
 /* Component variables aka overrides */
 :root {

@@ -1,4 +1,4 @@
-@import '../../../mixins/box-sizing';
+@use '../../../mixins/box-sizing' as *;
 
 :host {
   font: var(--tds-headline-07);

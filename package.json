@@ -24,6 +24,7 @@
     "pack:angular": "cd packages/angular && npm install $(ls -t ../core/*.tgz | head -1) && npm pack",
     "pack:angular-17": "cd packages/angular-17 && npm install $(ls -t ../core/*.tgz | head -1) && cd dist/components && npm pack",
     "pack:all": "npm run pack-core && npm run pack-react && npm run pack-angular && npm run pack-angular-17",
+    "lint:css": "stylelint \"**/*.scss\" --quiet",
     "lint:css:tl": "stylelint \"packages/core/src/tegel-light/**/*.scss\"",
     "lint:css:tl:fix": "stylelint \"packages/core/src/tegel-light/**/*.scss\" --fix",
     "lint": "npx eslint ./",

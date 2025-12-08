@@ -1,4 +1,4 @@
-@import '../../mixins/box-sizing';
+@use '../../mixins/box-sizing' as *;
 
 .tds-radio-button {
   @include tds-box-sizing;
@@ -23,8 +23,9 @@
     flex-shrink: 0;
     align-self: flex-start;
 
-    +label {
-      padding: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4) var(--tds-spacing-element-4);
+    + label {
+      padding: var(--tds-spacing-element-4) 0 var(--tds-spacing-element-4)
+        var(--tds-spacing-element-4);
       cursor: pointer;
     }
 
@@ -78,7 +79,7 @@
         background-color: var(--tds-radio-button-interaction-02);
       }
 
-      +label {
+      + label {
         color: var(--tds-radio-button-disabled);
         cursor: not-allowed;
       }

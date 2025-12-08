@@ -1,5 +1,5 @@
-@import './tl-tooltip-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use './tl-tooltip-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-tooltip {
   position: relative;

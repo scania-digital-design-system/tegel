@@ -1,8 +1,80 @@
-@import '../../../mixins/box-sizing';
-@import '../../../mixins/scrollbar';
-@import './tl-table-vars';
-@import '../../../../../../typography/utilities/typography-utility';
-@import 'footer';
+@use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/scrollbar' as *;
+@use './tl-table-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use 'footer' as *;
+
+// Mixin for text alignment modifiers
+@mixin text-align-modifiers($prefix) {
+  .tl-table--#{$prefix}-text-align-left & {
+    text-align: left;
+  }
+
+  .tl-table--#{$prefix}-text-align-start & {
+    text-align: start;
+  }
+
+  .tl-table--#{$prefix}-text-align-center & {
+    text-align: center;
+  }
+
+  .tl-table--#{$prefix}-text-align-right & {
+    text-align: right;
+  }
+
+  .tl-table--#{$prefix}-text-align-end & {
+    text-align: end;
+  }
+}
+
+// Mixin for zebra striping
+@mixin zebra-striping($type) {
+  .tl-table--zebra-#{$type}-odd &:nth-child(odd) {
+    background-color: var(--table-zebra-mode);
+  }
+
+  .tl-table--zebra-#{$type}-even &:nth-child(even) {
+    background-color: var(--table-zebra-mode);
+  }
+}
+
+// Mixin for checkbox cell styles
+@mixin checkbox-cell {
+  min-width: 48px;
+  width: 48px;
+  padding: 0;
+  text-align: center;
+}
+
+// Mixin for common table cell modifiers
+@mixin table-cell-modifiers {
+  .tl-table--vertical-dividers &:not(:last-child) {
+    border-right: 1px solid var(--table-divider);
+  }
+
+  .tl-table--no-min-width & {
+    min-width: unset;
+  }
+}
+
+// Mixin for input base styles
+@mixin table-input-base {
+  box-sizing: border-box;
+  @include detail-02;
+
+  color: var(--table-text);
+  padding: 0 var(--tds-spacing-element-16);
+  width: 100%;
+  border-radius: 0;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  outline: none;
+
+  .tl-table--compact & {
+    height: 32px;
+  }
+}
 
 .tl-table {
   @include tds-box-sizing;
@@ -63,6 +135,7 @@
     }
   }
 
+  .tl-table--clickable &,
   &--clickable {
     cursor: pointer;
   }
@@ -78,10 +151,6 @@
 
   .tl-table--zebra-rows-even .tl-table__body &:nth-child(even) {
     background-color: var(--table-zebra-mode);
-  }
-
-  .tl-table--clickable & {
-    cursor: pointer;
   }
 }
 
@@ -109,7 +178,9 @@
     border-top-right-radius: 4px;
   }
 
-  .tl-table:has(.tl-table__toolbar) & {
+  // Remove border-radius when toolbar is present
+  .tl-table:has(.tl-table__toolbar) &,
+  &:has(.tl-table__header-input-wrapper) {
     &:first-of-type {
       border-top-left-radius: 0;
     }
@@ -119,49 +190,100 @@
     }
   }
 
-  &--checkbox {
-    min-width: 48px;
-    width: 48px;
+  &:has(.tl-table__header-input-wrapper),
+  .tl-table--no-header-padding &,
+  &--sortable {
     padding: 0;
-    text-align: center;
+  }
+
+  &--checkbox {
+    @include checkbox-cell;
+
     background-color: var(--table-header);
   }
 
   .tl-table--compact & {
     height: 32px;
     padding: 8px 16px;
+
+    &:has(.tl-table__header-input-wrapper) {
+      padding: 0;
+    }
   }
 
-  .tl-table--vertical-dividers &:not(:last-child) {
-    border-right: 1px solid var(--table-divider);
+  @include table-cell-modifiers;
+
+  @include text-align-modifiers('header');
+}
+
+.tl-table__header-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: start;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 200ms ease;
+  @include headline-07;
+
+  color: var(--table-text);
+  text-align: left;
+
+  &:focus-visible,
+  &:focus,
+  &:active {
+    outline: 2px solid var(--table-header-button-focus);
+    outline-offset: -2px;
+
+    .tl-table__header-button-icon {
+      opacity: 1;
+    }
   }
 
-  .tl-table--header-text-align-left & {
-    text-align: left;
+  &:hover {
+    .tl-table__header-button-icon {
+      opacity: 1;
+    }
   }
 
-  .tl-table--header-text-align-start & {
-    text-align: start;
-  }
-
-  .tl-table--header-text-align-center & {
-    text-align: center;
-  }
-
-  .tl-table--header-text-align-right & {
-    text-align: right;
-  }
-
-  .tl-table--header-text-align-end & {
-    text-align: end;
-  }
-
-  .tl-table--no-min-width & {
-    min-width: unset;
-  }
-
-  .tl-table--no-header-padding & {
+  .tl-table--compact & {
     padding: 0;
+  }
+}
+
+.tl-table__header-button-text {
+  color: var(--table-text);
+  text-align: left;
+}
+
+.tl-table__header-button-icon {
+  flex: 0 0 16px;
+  height: 16px;
+  width: 16px;
+  opacity: 0;
+  transform-origin: center;
+  transition: opacity 200ms ease-in, transform 200ms ease;
+  color: var(--table-text);
+}
+
+.tl-table__header-cell--is-sorted {
+  background-color: var(--table-header-button);
+
+  &:hover {
+    background-color: var(--table-header-button-hover);
+  }
+
+  .tl-table__header-button-icon {
+    opacity: 1;
+  }
+
+  .tl-table__header-button-icon--rotate {
+    transform: rotate(180deg);
   }
 }
 
@@ -175,6 +297,10 @@
   transition: background-color 200ms ease;
   min-width: 192px;
 
+  &:focus {
+    background-color: var(--table-input-focus);
+  }
+
   &:hover:not(&--checkbox) {
     background-color: var(--table-body-cell-hover);
   }
@@ -184,10 +310,8 @@
   }
 
   &--checkbox {
-    min-width: 48px;
-    width: 48px;
-    padding: 0;
-    text-align: center;
+    @include checkbox-cell;
+
     background-color: inherit;
   }
 
@@ -196,41 +320,11 @@
     padding: 8px 16px;
   }
 
-  .tl-table--vertical-dividers &:not(:last-child) {
-    border-right: 1px solid var(--table-divider);
-  }
+  @include table-cell-modifiers;
 
-  .tl-table--zebra-columns-odd &:nth-child(odd) {
-    background-color: var(--table-zebra-mode);
-  }
+  @include zebra-striping('columns');
 
-  .tl-table--zebra-columns-even &:nth-child(even) {
-    background-color: var(--table-zebra-mode);
-  }
-
-  .tl-table--cell-text-align-left & {
-    text-align: left;
-  }
-
-  .tl-table--cell-text-align-start & {
-    text-align: start;
-  }
-
-  .tl-table--cell-text-align-center & {
-    text-align: center;
-  }
-
-  .tl-table--cell-text-align-right & {
-    text-align: right;
-  }
-
-  .tl-table--cell-text-align-end & {
-    text-align: end;
-  }
-
-  .tl-table--no-min-width & {
-    min-width: unset;
-  }
+  @include text-align-modifiers('cell');
 
   .tl-table--no-padding & {
     padding: 0;
@@ -289,4 +383,82 @@
   display: flex;
   align-self: center;
   column-gap: 8px;
+}
+
+.tl-table__header-input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .tl-icon {
+    color: var(--table-input-header-icon);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.tl-table__header-input {
+  @include table-input-base;
+
+  padding-left: 35px;
+  height: 48px;
+
+  &::placeholder {
+    color: var(--table-input-header-placeholder);
+  }
+
+  &:focus {
+    background-color: var(--table-input-header-focus);
+    border-bottom: 2px solid var(--color-foreground-border-accent-focus);
+  }
+}
+
+// Text field within table cells - override height and min-width
+.tl-table__body-cell .tl-text-field {
+  height: 48px;
+  min-width: auto;
+  padding-bottom: 0;
+  cursor: pointer;
+
+  .tl-table--compact & {
+    height: 32px;
+  }
+
+  .tl-text-field__input {
+    box-shadow: 0 0 0 0 transparent;
+
+    &:hover {
+      box-shadow: 0 0 0 0 transparent;
+    }
+
+    &:focus {
+      box-shadow: inset var(--text-field-box-shadow-focus);
+      background-color: var(--table-input-focus);
+    }
+
+    .tl-table--compact & {
+      height: 32px;
+    }
+  }
+
+  // Hide suffix icon by default, show on hover and focus
+  .tl-text-field__suffix--icon {
+    display: none;
+  }
+
+  &:hover,
+  &:has(.tl-text-field__input:focus) {
+    .tl-text-field__suffix--icon {
+      display: inline-block;
+    }
+  }
+
+  // Always show icon when disabled (edit_inactive icon)
+  &.tl-text-field--disabled .tl-text-field__suffix--icon {
+    display: inline-block;
+  }
 }

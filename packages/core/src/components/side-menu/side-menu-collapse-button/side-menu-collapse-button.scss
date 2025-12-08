@@ -1,7 +1,6 @@
-//@import '../theme/core/spacing/vars';
-@import '../../../../../../grid-deprecated/vars';
-@import '../../../global/_variables';
-@import '../../../mixins/focus-state';
+@use '../../../../../../grid-deprecated/vars' as *;
+@use '../../../global/_variables' as *;
+@use '../../../mixins/focus-state' as *;
 
 :host {
   position: sticky;

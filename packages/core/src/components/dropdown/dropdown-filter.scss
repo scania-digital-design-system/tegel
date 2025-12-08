@@ -1,5 +1,5 @@
-@import '../../mixins/z-index';
-@import '../../mixins/focus-state';
+@use '../../mixins/z-index' as *;
+@use '../../mixins/focus-state' as *;
 
 :host {
   .dropdown-select {

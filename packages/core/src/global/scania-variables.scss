@@ -1,35 +1,35 @@
 // What is this document for:
 // This file imports all Scania-specific tokens and primitives
 
-$local-assets: './assets' !default;
-
 /* Scania primitive tokens */
-@import '../../../../tokens/scss/scania/primitive';
+@use '../../../../tokens/scss/scania/primitive' as *;
 
 /* Scania color tokens */
-@import '../../../../tokens/scss/scania/color-light';
-@import '../../../../tokens/scss/scania/color-dark';
+@use '../../../../tokens/scss/scania/color-light' as *;
+@use '../../../../tokens/scss/scania/color-dark' as *;
 
 /* Scania dimension tokens */
-@import '../../../../tokens/scss/scania/dimension';
+@use '../../../../tokens/scss/scania/dimension' as *;
 
 /* Scania logotype tokens */
-@import '../../../../logotype/logotype-scania';
+@use '../../../../logotype/logotype-scania' as *;
 
 /* Scania typography tokens */
-@import '../../../../tokens/scss/scania/typography';
+@use '../../../../tokens/scss/scania/typography' as *;
 
 /* Multibrand tokens: Scania typography */
-@import '../../../../typography/tokens/typography-scania';
+@use '../../../../typography/tokens/typography-scania' as *;
 
 // Typography
-@import '../../../../typography/tokens/typography-scania';
-@import '../../../../typography/scania-fonts';
-@import '../../../../typography/scania-fonts-vars';
-@import '../../../../typography/scania-fonts-selectors';
+@use '../../../../typography/tokens/typography-scania' as *;
+@use '../../../../typography/scania-fonts' as *;
+@use '../../../../typography/scania-fonts-vars' as *;
+@use '../../../../typography/scania-fonts-selectors' as *;
 
 /* Scania primitive icon tokens */
-@import '../../../../tokens/scss/scania/scania-icons-primitive';
+@use '../../../../tokens/scss/scania/scania-icons-primitive' with (
+  $local-assets: './assets'
+);
 
 /* Scania icon tokens */
-@import '../../../../tokens/scss/scania/scania-icons';
+@use '../../../../tokens/scss/scania/scania-icons' as *;

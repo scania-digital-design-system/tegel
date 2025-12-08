@@ -1,5 +1,5 @@
-@import '../../../mixins/box-sizing';
-@import './tl-header-vars';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-header-vars' as *;
 
 .tl-header__brand-symbol {
   display: block;

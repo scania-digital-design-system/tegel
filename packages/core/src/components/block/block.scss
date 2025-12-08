@@ -1,4 +1,4 @@
-@import '../../mixins/box-sizing';
+@use '../../mixins/box-sizing' as *;
 
 .tds-block {
   @include tds-box-sizing;

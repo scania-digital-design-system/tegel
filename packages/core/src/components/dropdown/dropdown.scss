@@ -1,8 +1,8 @@
-@import '../../mixins/z-index';
-@import './dropdown-button';
-@import './dropdown-filter';
-@import '../../mixins/scrollbar';
-@import '../../mixins/focus-state';
+@use '../../mixins/z-index' as *;
+@use './dropdown-button' as *;
+@use './dropdown-filter' as *;
+@use '../../mixins/scrollbar' as *;
+@use '../../mixins/focus-state' as *;
 
 :host {
   display: block;

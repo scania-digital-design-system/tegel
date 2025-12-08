@@ -1,7 +1,7 @@
 /* tl-folder-tabs.scss (overlay buttons, no JS) */
-@import '../../../../mixins/box-sizing';
-@import '../../../../mixins/focus-state';
-@import './tl-folder-tabs-vars';
+@use '../../../../mixins/box-sizing' as *;
+@use '../../../../mixins/focus-state' as *;
+@use './tl-folder-tabs-vars' as *;
 
 .tl-folder-tabs {
   @include tds-box-sizing;
