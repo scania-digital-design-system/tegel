@@ -162,7 +162,7 @@ $modals: (
   }
 }
 
-.tl-modal__backdrop {
+.tl-modal__overlay {
   @include tds-box-sizing;
 
   position: fixed;
@@ -175,7 +175,7 @@ $modals: (
   z-index: 1000;
   display: none;
 
-  .tl-modal--show & {
+  &.tl-modal--show {
     display: block;
   }
 }

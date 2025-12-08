@@ -111,8 +111,8 @@ const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showMod
       </>
     </>
 
-    <!-- Backdrop -->
-    <div class="tl-modal__backdrop ${showClass}"></>
+    <!-- Overlay -->
+    <div class="tl-modal__overlay ${showClass}"></>
 
     <!-- Demo wrapper styles -->
     <style>
