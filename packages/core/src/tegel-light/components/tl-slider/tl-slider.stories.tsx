@@ -280,7 +280,7 @@ const Template = ({
           ${readonly ? 'readonly' : ''}
       />
       
-      <div class="tl-slider__controls-row">
+      <div class="tl-slider__track-container">
         ${
           showInput
             ? `
@@ -356,13 +356,42 @@ const Template = ({
     <script>
       (function() {
         const slider = document.querySelector('.tl-slider');
-        if (!slider || slider.classList.contains('tl-slider--disabled')) return;
+        if (!slider) return;
+        
+        ${showInput ? "const inputField = slider.querySelector('.tl-slider__input-field');" : ''}
+        
+        ${
+          showInput
+            ? `
+        // Calculate input field width based on max value length
+        if (inputField) {
+          const isDisabled = ${disabled};
+          const isReadonly = ${readonly};
+          
+          const maxLength = Math.max(
+            Math.abs(${actualMin}).toString().length,
+            Math.abs(${actualMax}).toString().length
+          );
+          
+          // When disabled, ignore readonly width adjustments
+          const baseWidth = (!isDisabled && isReadonly) ? 58 : 44;
+          const charWidth = 8;
+          const readonlyExtra = (!isDisabled && isReadonly) ? 12 : 0;
+          
+          const calculatedWidth = baseWidth + (Math.max(0, maxLength - 2) * charWidth) + readonlyExtra;
+          inputField.style.width = calculatedWidth + 'px';
+        }
+        `
+            : ''
+        }
+        
+        // Exit early if disabled (but after setting width)
+        if (slider.classList.contains('tl-slider--disabled')) return;
         
         const track = slider.querySelector('.tl-slider__track');
         const thumb = slider.querySelector('.tl-slider__thumb');
         const thumbInner = slider.querySelector('.tl-slider__thumb-inner');
         const trackFill = slider.querySelector('.tl-slider__track-fill');
-        ${showInput ? "const inputField = slider.querySelector('.tl-slider__input-field');" : ''}
         const nativeInput = slider.querySelector('.tl-slider__native-input');
         ${
           showControls ? "const minusBtn = slider.querySelector('.tl-slider__control--minus');" : ''
@@ -378,6 +407,8 @@ const Template = ({
         
         const stepStr = step.toString();
         const decimalPlaces = (stepStr.split('.')[1] || '').length;
+        
+        ${showInput ? '' : ''}
         
         function formatValue(value) {
           return parseFloat(value.toFixed(decimalPlaces));
