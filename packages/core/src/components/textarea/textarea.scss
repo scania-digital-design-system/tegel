@@ -1,4 +1,4 @@
-@import '../../mixins/focus-state';
+@use '../../mixins/focus-state' as *;
 
 @mixin textfield-base {
   border-radius: 4px 4px 0 0;

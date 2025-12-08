@@ -1,8 +1,8 @@
 // TODO: Refactor this code so it is more readable and easy to maintain
 
-@import './button-vars';
-@import '../../mixins/box-sizing';
-@import '../../mixins/focus-state';
+@use './button-vars' as *;
+@use '../../mixins/box-sizing' as *;
+@use '../../mixins/focus-state' as *;
 
 $btn-lg-height: 56px;
 $btn-md-height: 48px;

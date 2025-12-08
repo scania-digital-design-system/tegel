@@ -1,6 +1,6 @@
-@import '../../../../../../typography/utilities/typography-utility';
-@import '../../../mixins/focus-state';
-@import './tl-link-vars';
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../mixins/focus-state' as *;
+@use './tl-link-vars' as *;
 
 .tl-link {
   display: inline-flex;

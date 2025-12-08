@@ -1,13 +1,13 @@
-@import '../../../../../../grid-deprecated/vars';
-@import '../../../mixins/scrollbar';
-@import '../../../mixins/z-index';
-@import '../../../global/variables';
-@import './tl-side-menu-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../../../../grid-deprecated/vars' as *;
+@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/z-index' as *;
+@use '../../../global/variables' as *;
+@use './tl-side-menu-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
-@import 'item';
-@import 'dropdown';
-@import 'user';
+@use 'item' as *;
+@use 'dropdown' as *;
+@use 'user' as *;
 
 .tl-side-menu {
   pointer-events: none;

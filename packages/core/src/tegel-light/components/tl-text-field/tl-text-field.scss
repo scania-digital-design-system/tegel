@@ -1,7 +1,7 @@
-@import './tl-text-field-vars';
-@import './tl-text-field-mixins';
-@import '../tl-icon/tl-icon';
-@import '../../../../../../typography/mixins/type-styles';
+@use './tl-text-field-vars' as *;
+@use './tl-text-field-mixins' as *;
+@use '../tl-icon/tl-icon' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-text-field {
   display: block;
@@ -52,6 +52,14 @@
   &--disabled {
     pointer-events: none;
   }
+
+  .tl-icon {
+    background-color: var(--text-field-affix);
+
+    .tl-text-field--disabled & {
+      background-color: var(--text-field-affix-disabled);
+    }
+  }
 }
 
 .tl-text-field__input {
@@ -85,7 +93,7 @@
   }
 
   .tl-text-field--success:not(.tl-text-field--readonly):not(.tl-text-field--disabled)
-  &:not(:focus) {
+    &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
@@ -204,10 +212,10 @@
   // Focus and filled state for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__input:not(:placeholder-shown))
-  &,
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__input:not(:placeholder-shown))
-  & {
+    & {
     @include detail-07;
 
     top: 8px;
@@ -217,47 +225,47 @@
 
   // Keep prefix offset when focused for lg and md
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  &,
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--icon):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  & {
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
     left: calc(16px + 20px + 8px);
   }
 
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--lg:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  &,
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:focus
-)
-  &,
+      .tl-text-field__input:focus
+    )
+    &,
   .tl-text-field--label-inside.tl-text-field--md:has(.tl-text-field__prefix--text):has(
-  .tl-text-field__input:not(:placeholder-shown)
-)
-  & {
+      .tl-text-field__input:not(:placeholder-shown)
+    )
+    & {
     left: calc(16px + var(--text-field-affix-width-text) + 8px);
   }
 
   // Focus and filled state for sm - label disappears
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:focus) &,
   .tl-text-field--label-inside.tl-text-field--sm:has(.tl-text-field__input:not(:placeholder-shown))
-  & {
+    & {
     opacity: 0;
     visibility: hidden;
   }
@@ -453,13 +461,5 @@
 
   .tl-text-field--label-inside:has(.tl-text-field__prefix--text) & {
     left: calc(16px + var(--text-field-affix-width-text) + 8px);
-  }
-}
-
-.tl-icon {
-  background-color: var(--text-field-affix);
-
-  .tl-text-field--disabled & {
-    background-color: var(--text-field-affix-disabled);
   }
 }

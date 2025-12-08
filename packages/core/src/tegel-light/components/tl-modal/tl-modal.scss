@@ -1,9 +1,9 @@
-@import '../../../mixins/z-index';
-@import '../../../mixins/box-sizing';
-@import '../../../mixins/focus-state';
-@import '../../../mixins/scrollbar';
-@import '../../../../../../typography/utilities/typography-utility';
-@import './tl-modal-vars';
+@use '../../../mixins/z-index' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/scrollbar' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use './tl-modal-vars' as *;
 
 // Screen breakpoints
 $screen-s: 320px;

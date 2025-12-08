@@ -1,4 +1,4 @@
-@import '../../../../../../grid-deprecated/vars';
+@use '../../../../../../grid-deprecated/vars' as *;
 
 :host {
   color: var(--tds-white);

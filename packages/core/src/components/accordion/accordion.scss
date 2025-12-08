@@ -1,6 +1,6 @@
-@import '../../mixins/focus-state';
-@import '../../mixins/disabled-style';
-@import '../../mixins/box-sizing';
+@use '../../mixins/focus-state' as *;
+@use '../../mixins/disabled-style' as *;
+@use '../../mixins/box-sizing' as *;
 
 :host {
   display: block;

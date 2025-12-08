@@ -1,6 +1,6 @@
-@import '../../../mixins/box-sizing';
-@import './tl-radiobutton-vars';
-@import '../../../../../../typography/utilities/typography-utility';
+@use '../../../mixins/box-sizing' as *;
+@use './tl-radiobutton-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 /* Block */
 .tl-radiobutton {

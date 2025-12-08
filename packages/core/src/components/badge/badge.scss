@@ -1,4 +1,4 @@
-@import '../../mixins/box-sizing';
+@use '../../mixins/box-sizing' as *;
 
 // This component does not have dark version so all css is in this file
 

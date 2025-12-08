@@ -62,15 +62,7 @@
     "no-useless-escape": "warn",
     "no-await-in-loop": "warn",
     "curly": "warn",
-    "no-unused-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
-      {
-        "varsIgnorePattern": "^h$",
-        "argsIgnorePattern": "^_",
-        "caughtErrorsIgnorePattern": "^_"
-      }
-    ],
+    "no-unused-vars": ["warn", { "varsIgnorePattern": "^h$" }],
     "no-nested-ternary": "warn",
     "import/order": "warn",
     "no-restricted-syntax": "warn", // TODO: check this - disables for-in related error
@@ -89,6 +81,7 @@
     "function-paren-newline": "off",
     "dot-notation": "off",
     "no-plusplus": "off",
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^h$" }]
   }
 }

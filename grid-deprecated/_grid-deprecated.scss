@@ -1,7 +1,7 @@
-@import '../globals';
-@import 'breakpoints';
-@import 'mixins';
-@import './spacing-vars';
+@use '../globals' as *;
+@use 'breakpoints' as *;
+@use 'mixins' as *;
+@use './spacing-vars' as *;
 
 /*
   Mixin file for create grid layout, container, rows and columns
