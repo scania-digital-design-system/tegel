@@ -74,7 +74,7 @@ $modals: (
 
   display: none;
 
-  &--show {
+  &--visible {
     display: block;
   }
 
@@ -175,7 +175,7 @@ $modals: (
   z-index: 1000;
   display: none;
 
-  &.tl-modal--show {
+  &.tl-modal--visible {
     display: block;
   }
 }

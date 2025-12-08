@@ -74,7 +74,7 @@ export default {
 
 const ModalTemplate = ({ actionsPosition, size, headerText, bodyContent, showModal, closable }) => {
   const actionsClass = actionsPosition === 'sticky' ? 'tl-modal--sticky' : '';
-  const showClass = showModal ? 'tl-modal--show' : '';
+  const showClass = showModal ? 'tl-modal--visible' : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
