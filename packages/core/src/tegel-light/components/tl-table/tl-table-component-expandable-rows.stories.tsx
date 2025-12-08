@@ -183,7 +183,7 @@ const ExpandableRowTemplate = ({
     <table class="tl-table ${compactClass} ${modeVariantClass} ${verticalDividersClass} ${responsiveClass} ${noMinWidthClass}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
-          <th class="tl-table__header-cell tl-table__header-cell--expand" ${col1Style}></th>
+          <th class="tl-table__header-cell tl-table__header-cell--expand"></th>
           <th class="tl-table__header-cell" data-column="0" ${col1Style}>Truck type</th>
           <th class="tl-table__header-cell" data-column="1" ${col2Style}>Driver name</th>
           <th class="tl-table__header-cell" data-column="2" ${col3Style}>Country</th>
