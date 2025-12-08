@@ -549,6 +549,7 @@
   padding: 16px 16px 16px 66px;
   color: var(--table-text);
   background-color: var(--table-body-row-selected);
+  @include tds-scrollbar(horizontal);
 
   .tl-table--compact & {
     padding: 8px 16px 8px 66px;
