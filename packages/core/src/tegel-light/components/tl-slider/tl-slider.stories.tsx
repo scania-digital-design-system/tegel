@@ -265,6 +265,15 @@ const Template = ({
   };
 
   const markup = `
+    <!-- Required stylesheets:
+      "@scania/tegel-light/global.css"
+      "@scania/tegel-light/tl-slider.css"
+    -->
+    <!-- Optional stylesheets:
+      "@scania/tegel-light/tl-button.css"
+      "@scania/tegel-light/tl-icon.css"
+      "@scania/tegel-light/tl-text-field.css"
+    -->
     <div class="demo-wrapper" style="max-width: 600px; padding: 80px 40px; margin: 0 auto;">
       <div class="${sliderClasses}">
         ${showLabel ? `<label class="tl-slider__label">${labelText}</label>` : ''}
