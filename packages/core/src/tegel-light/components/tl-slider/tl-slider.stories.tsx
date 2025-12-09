@@ -280,7 +280,7 @@ const Template = ({
           ${readonly ? 'readonly' : ''}
       />
       
-      <div class="tl-slider__track-container">
+      <div class="tl-slider__track-wrapper">
         ${
           showInput
             ? `
