@@ -58,7 +58,7 @@
   }
 }
 
-.tl-slider__track-container {
+.tl-slider__track-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@
   background-color: var(--slider-track);
   border-radius: var(--slider-border-radius);
 
-  .tl-slider__track-container:has(.tl-slider__input-wrapper) & {
+  .tl-slider__track-wrapper:has(.tl-slider__input-wrapper) & {
     height: 2px;
     align-self: center;
   }
