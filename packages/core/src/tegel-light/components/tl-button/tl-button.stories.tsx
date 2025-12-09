@@ -54,8 +54,7 @@ const Template = ({ variant, size, fullwidth, disabled, onlyIcon, icon }) => {
     !isXs && icon !== 'none'
       ? `<span class="tl-icon tl-icon--${icon} tl-icon--${iconSize}" aria-hidden="true"></span>`
       : '';
-  const labelElement = !onlyIcon || isXs ? '<span class="tl-button__label">Button</span>' : '';
-  const ariaLabel = !isXs && onlyIcon ? ' aria-label="Button"' : '';
+  const buttonText = !onlyIcon || isXs ? 'Button' : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
@@ -67,8 +66,8 @@ const Template = ({ variant, size, fullwidth, disabled, onlyIcon, icon }) => {
         ${fullwidth ? 'tl-button--fullwidth' : ''} 
         ${disabled ? 'tl-button--disabled' : ''}
         ${iconClass}"
-        ${disabled ? 'disabled' : ''}${ariaLabel}>
-        ${labelElement}
+        ${disabled ? 'disabled' : ''}>
+        ${buttonText}
         ${iconElement}
       </button>
     `);

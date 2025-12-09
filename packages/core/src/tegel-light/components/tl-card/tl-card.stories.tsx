@@ -170,7 +170,7 @@ export default {
     bodyContent: 'Lorem ipsum dummy text for printing; standard filler ever since 1500s',
     bodyDivider: false,
     cardActions:
-      '<button class="tl-button tl-button--primary tl-button--md"><span class="tl-button__label">Button text</span></button><button class="tl-button tl-button--secondary tl-button--md"><span class="tl-button__label">Button text</span></button>',
+      '<button class="tl-button tl-button--primary tl-button--md">Button text</button><button class="tl-button tl-button--secondary tl-button--md">Button text</button>',
     clickable: false,
     stretch: false,
     expandable: false,
