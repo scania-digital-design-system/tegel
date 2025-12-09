@@ -51,10 +51,10 @@
   }
 }
 
-.tl-side-menu__close-button {
+.tl-side-menu__close {
   margin: 0 var(--component-side-menu-space-top-level-left);
   border-bottom: 1px solid var(--side-menu-bottom-menu-border-top);
-  height: var(--side-menu-close-button-wrapper-height);
+  height: var(--side-menu-close-wrapper-height);
   opacity: 0;
 
   .tl-side-menu__wrapper--open & {
@@ -133,7 +133,7 @@
     }
   }
 
-  .tl-side-menu__close-button {
+  .tl-side-menu__close {
     .tl-side-menu--persistent & {
       display: none;
     }

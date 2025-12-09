@@ -19,7 +19,7 @@
 .scania {
   .tl-side-menu {
     --side-menu-bottom-menu-border-top-collapsed: 1px solid var(--color-foreground-border-discrete);
-    --side-menu-close-button-wrapper-height: auto;
+    --side-menu-close-wrapper-height: auto;
     --side-menu-collapsed-button-size: 68px;
     --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-100);
     --side-menu-collapsed-dropdown-background-hover: var(--color-background-layer-01);
@@ -37,7 +37,7 @@
 .traton {
   .tl-side-menu {
     --side-menu-bottom-menu-border-top-collapsed: none;
-    --side-menu-close-button-wrapper-height: 64px;
+    --side-menu-close-wrapper-height: 64px;
     --side-menu-collapsed-button-size: 72px;
     --side-menu-collapsed-dropdown-background-active: var(--color-background-surface-200);
     --side-menu-collapsed-dropdown-background-hover: var(--color-background-surface-100);
