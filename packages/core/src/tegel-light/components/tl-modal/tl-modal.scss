@@ -78,10 +78,13 @@ $modals: (
     display: block;
   }
 
-  &--sticky {
-    overflow: hidden;
+  &--visible#{&}--sticky {
     display: flex;
     flex-direction: column;
+  }
+
+  &--sticky {
+    overflow: hidden;
   }
 }
 
