@@ -13,7 +13,7 @@ export default {
       control: { type: 'select' },
       options: ['xs', 'sm', 'md', 'lg'],
     },
-    fullwidth: {
+    fullWidth: {
       control: { type: 'boolean' },
     },
     disabled: {
@@ -37,14 +37,14 @@ export default {
   args: {
     variant: 'primary',
     size: 'md',
-    fullwidth: false,
+    fullWidth: false,
     disabled: false,
     onlyIcon: false,
     icon: 'none',
   },
 };
 
-const Template = ({ variant, size, fullwidth, disabled, onlyIcon, icon }) => {
+const Template = ({ variant, size, fullWidth, disabled, onlyIcon, icon }) => {
   // Disable icon functionality for xs size
   const isXs = size === 'xs';
   const iconClass = !isXs && icon !== 'none' ? `tl-button--icon` : '';
@@ -64,7 +64,7 @@ const Template = ({ variant, size, fullwidth, disabled, onlyIcon, icon }) => {
       "@scania/tegel-light/tl-icon.css";
     -->
       <button class="tl-button ${onlyIconClass} tl-button--${variant} tl-button--${size} 
-        ${fullwidth ? 'tl-button--fullwidth' : ''} 
+        ${fullWidth ? 'tl-button--full-width' : ''} 
         ${disabled ? 'tl-button--disabled' : ''}
         ${iconClass}"
         ${disabled ? 'disabled' : ''}${ariaLabel}>
