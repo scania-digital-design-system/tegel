@@ -189,7 +189,7 @@ const SortingTemplate = ({
     if (sortable) {
       return `
         <th class="tl-table__header-cell tl-table__header-cell--sortable" data-column="${columnIndex}" data-sort-key="col${columnIndex}" ${colStyle}>
-          <button class="tl-table__header-button" aria-label="Sort by ${text}">
+          <button class="tl-table__header-button">
             <span class="tl-table__header-button-text">${text}</span>
             <span class="tl-table__header-button-icon tl-icon tl-icon--sorting tl-icon--16" aria-hidden="true"></span>
           </button>
