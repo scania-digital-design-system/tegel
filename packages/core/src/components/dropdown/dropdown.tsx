@@ -109,10 +109,10 @@ export class TdsDropdown {
 
   @Watch('value')
   handleValueChange(newValue: string | number | (string | number)[]) {
-    // Normalize to array
+    /** Normalize to array */
     const normalizedValue = this.normalizeValue(newValue);
 
-    // Only update if actually changed
+    /** Only update if actually changed */
     if (hasValueChanged(normalizedValue, this.selectedOptions)) {
       this.updateDropdownStateFromUser(normalizedValue);
     }
@@ -121,21 +121,21 @@ export class TdsDropdown {
   private normalizeValue(value: string | number | (string | number)[] | null): string[] {
     if (value === null || value === undefined || value === '') return [];
 
-    // For single select, ensure we handle both string and array inputs
+    /** For single select, ensure we handle both string and array inputs */
     if (!this.multiselect) {
-      // If array is passed to single select, take first value
+      /** If array is passed to single select, take first value */
       if (Array.isArray(value)) {
         return [convertToString(value[0])];
       }
       return [convertToString(value)];
     }
 
-    // For multiselect
+    /** For multiselect */
     if (Array.isArray(value)) {
       return convertArrayToStrings(value);
     }
 
-    // Handle comma-separated string for multiselect
+    /** Handle comma-separated string for multiselect */
     return value
       .toString()
       .split(',')
@@ -151,37 +151,37 @@ export class TdsDropdown {
   }
 
   private updateDropdownState(values: string[], emitChange: boolean = true) {
-    // Validate the values first
+    /** Validate the values first */
     const validValues = this.validateValues(values);
 
-    // Update internal state
+    /** Update internal state */
     this.selectedOptions = [...validValues];
 
-    // Update the value prop
+    /** Update the value prop */
     this.value = this.multiselect ? this.selectedOptions : this.selectedOptions[0] || null;
 
-    // Update internal value for display
+    /** Update internal value for display */
     this.internalValue = this.getValue();
 
-    // Update DOM
+    /** Update DOM */
     this.updateOptionElements();
 
-    // Update display value
+    /** Update display value */
     this.updateDisplayValue();
 
-    // Emit change event only if value has changed by user
+    /** Emit change event only if value has changed by user */
     if (emitChange) this.emitChange();
 
-    // Update value attribute
+    /** Update value attribute */
     this.setValueAttribute();
   }
 
   private validateValues(values: string[]): string[] {
-    // Make sure we have children before validation
+    /** Make sure we have children before validation */
     const children = this.getChildren();
     if (!children || children.length === 0) {
       console.warn('No dropdown options found');
-      return values; // Return original values if no children yet
+      return values; /** Return original values if no children yet */
     }
 
     return values.filter((val) => {
@@ -197,7 +197,7 @@ export class TdsDropdown {
 
   private updateOptionElements() {
     this.getChildren()?.forEach((element) => {
-      // Convert element.value to string for comparison
+      /** Convert element.value to string for comparison */
       element.setSelected(this.selectedOptions.includes(convertToString(element.value)));
     });
   }
@@ -267,16 +267,16 @@ export class TdsDropdown {
   @Method()
   async focusElement() {
     if (this.filter) {
-      // For filter mode, focus the input element
+      /** For filter mode, focus the input element */
       this.focusInputElement();
     } else {
-      // For non-filter mode, focus the button element
+      /** For non-filter mode, focus the button element */
       const button = this.host.shadowRoot?.querySelector('button');
       if (button) {
         button.focus();
       }
     }
-    // Always trigger the focus event to open the dropdown
+    /** Always trigger the focus event to open the dropdown */
     this.handleFocus();
   }
 
@@ -346,12 +346,12 @@ export class TdsDropdown {
   @Listen('mousedown', { target: 'window' })
   onAnyClick(event: MouseEvent) {
     if (this.open) {
-      // Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/
+      /** Source: https://lamplightdev.com/blog/2021/04/10/how-to-detect-clicks-outside-of-a-web-component/ */
 
       const isClickOutside = !event.composedPath().includes(this.host as EventTarget);
 
       if (isClickOutside) {
-        // Emit clear event if there's a filter query when clicking outside
+        /** Emit clear event if there's a filter query when clicking outside */
         if (this.filter && this.filterQuery) {
           this.tdsClear.emit({ clearedValue: this.filterQuery });
         }
@@ -362,7 +362,7 @@ export class TdsDropdown {
 
   @Listen('focusin')
   onFocusIn(event: FocusEvent) {
-    // Check if the focus is within this dropdown component
+    /** Check if the focus is within this dropdown component */
     if (this.host.contains(event.target as Node)) {
       if (!this.hasFocus) {
         this.hasFocus = true;
@@ -373,10 +373,10 @@ export class TdsDropdown {
 
   @Listen('focusout')
   onFocusOut(event: FocusEvent) {
-    // Only emit blur if focus is actually leaving the entire dropdown component
+    /** Only emit blur if focus is actually leaving the entire dropdown component */
     const relatedTarget = event.relatedTarget as Node;
 
-    // If relatedTarget is null (focus going to body/window) or outside the component, emit blur
+    /** If relatedTarget is null (focus going to body/window) or outside the component, emit blur */
     if (this.hasFocus && (!relatedTarget || !this.host.contains(relatedTarget))) {
       this.hasFocus = false;
       this.handleBlur();
@@ -386,7 +386,7 @@ export class TdsDropdown {
 
   @Listen('keydown')
   async onKeyDown(event: KeyboardEvent) {
-    // Get the active element
+    /** Get the active element */
     const { activeElement } = document;
     if (!activeElement) {
       return;
@@ -394,7 +394,7 @@ export class TdsDropdown {
 
     const children = this.getChildren();
     if (event.key === 'ArrowDown') {
-      /* Get the index of the current focus index, if there is no
+      /** Get the index of the current focus index, if there is no
       nextElementSibling return the index for the first child in our Dropdown.  */
 
       const startingIndex = activeElement.nextElementSibling
@@ -407,7 +407,7 @@ export class TdsDropdown {
         target?.focus();
       }
     } else if (event.key === 'ArrowUp') {
-      /* Get the index of the current focus index, if there is no
+      /** Get the index of the current focus index, if there is no
       previousElementSibling return the index for the first last in our Dropdown.  */
       const startingIndex = activeElement.nextElementSibling
         ? this.getChildren().findIndex(
@@ -423,7 +423,7 @@ export class TdsDropdown {
       }
     } else if (event.key === 'Escape') {
       this.open = false;
-      // Return focus to input/button when Escape key is used
+      /** Return focus to input/button when Escape key is used */
       if (this.filter) {
         this.inputElement?.focus();
       } else {
@@ -433,8 +433,8 @@ export class TdsDropdown {
     }
   }
 
-  // If the Dropdown gets closed,
-  // this sets the value of the dropdown to the current selection labels or null if no selection is made.
+  /** If the Dropdown gets closed,
+  this sets the value of the dropdown to the current selection labels or null if no selection is made. */
   @Watch('open')
   handleOpenState() {
     if (this.filter && this.multiselect) {
@@ -443,7 +443,7 @@ export class TdsDropdown {
       }
     }
 
-    // Update the inert state of dropdown list when open state changes
+    /** Update the inert state of dropdown list when open state changes */
     this.updateDropdownListInertState();
   }
 
@@ -456,14 +456,14 @@ export class TdsDropdown {
   }
 
   componentWillLoad() {
-    // First handle the value prop if it exists
+    /** First handle the value prop if it exists */
     if (this.value !== null && this.value !== undefined) {
       const normalizedValue = this.normalizeValue(this.value);
       this.updateDropdownStateInternal(normalizedValue);
-      return; // Exit early if we handled the value prop
+      return; /** Exit early if we handled the value prop */
     }
 
-    // Only use defaultValue if no value prop was provided
+    /** Only use defaultValue if no value prop was provided */
     if (this.defaultValue !== null && this.defaultValue !== undefined) {
       const defaultValueStr = convertToString(this.defaultValue);
       const initialValue = this.multiselect
@@ -485,7 +485,7 @@ export class TdsDropdown {
 
   private setDefaultOption = () => {
     if (this.internalDefaultValue) {
-      // Convert the internal default value to an array if it's not already
+      /** Convert the internal default value to an array if it's not already */
       const defaultValues = this.multiselect
         ? this.internalDefaultValue.split(',')
         : [this.internalDefaultValue];
@@ -578,7 +578,7 @@ export class TdsDropdown {
     this.tdsInput.emit(event);
     const query = event.target.value.toLowerCase();
     this.filterQuery = query;
-    /* Check if the query is empty, and if so, show all options */
+    /** Check if the query is empty, and if so, show all options */
     const children = this.getChildren();
 
     if (query === '') {
@@ -587,7 +587,7 @@ export class TdsDropdown {
         return element;
       });
       this.filterResult = null;
-      /* Hide the options that do not match the query */
+      /** Hide the options that do not match the query */
     } else {
       this.filterResult = children.filter((element) => {
         if (
@@ -605,20 +605,24 @@ export class TdsDropdown {
   };
 
   private handleFilterReset = () => {
-    // Store the current filter query before clearing
-    const clearedValue = this.filterQuery;
-
-    // only reset selected values when filterquery is blank
-    if (!this.filterQuery.length) {
-      this.reset();
+    /** If a filter is present, clear only the filter text */
+    if (this.filterQuery.length > 0) {
+      const clearedValue = this.filterQuery;
+      this.filterQuery = '';
+      this.inputElement.value = '';
+      this.handleFilter({ target: { value: '' } });
+      this.inputElement.focus();
+      this.tdsClear.emit({ clearedValue });
+    } else if (this.selectedOptions.length > 0) {
+      /** If no filter but selections exist, clear all selected values */
+      const clearedValue = this.selectedOptions.join(',');
+      this.updateDropdownStateFromUser([]);
+      if (this.inputElement) {
+        this.inputElement.value = '';
+        this.inputElement.focus();
+      }
+      this.tdsClear.emit({ clearedValue });
     }
-    this.inputElement.value = '';
-    this.handleFilter({ target: { value: '' } });
-    this.inputElement.focus();
-    // Add this line to ensure internal value is cleared
-    this.internalValue = '';
-
-    this.tdsClear.emit({ clearedValue });
   };
 
   private handleFocus = () => {
@@ -627,14 +631,14 @@ export class TdsDropdown {
     if (this.inputElement) {
       this.inputElement.value = '';
     }
-    // Focus event is now handled by focusin listener
+    /** Focus event is now handled by focusin listener */
     if (this.filter) {
       this.handleFilter({ target: { value: '' } });
     }
   };
 
   private handleBlur = () => {
-    // Handle internal state changes when component loses focus
+    /** Handle internal state changes when component loses focus */
     this.filterFocus = false;
     if (this.inputElement) {
       this.inputElement.value = this.getValue();
@@ -666,7 +670,7 @@ export class TdsDropdown {
       form.addEventListener('reset', this.resetInput);
     }
 
-    // Initialize inert state after rendering
+    /** Initialize inert state after rendering */
     this.updateDropdownListInertState();
   }
 
@@ -690,7 +694,7 @@ export class TdsDropdown {
   render() {
     appendHiddenInput(this.host, this.name, this.selectedOptions.join(','), this.disabled);
 
-    // Generate unique IDs for associating labels and helpers with the input/button
+    /** Generate unique IDs for associating labels and helpers with the input/button */
     const labelId = this.label ? `dropdown-label-${this.name || generateUniqueId()}` : undefined;
     const helperId = this.helper ? `dropdown-helper-${this.name || generateUniqueId()}` : undefined;
 
@@ -765,8 +769,8 @@ export class TdsDropdown {
               <tds-icon
                 tabIndex={0}
                 role="button"
-                aria-label="Clear filter"
-                svgTitle="Clear filter"
+                aria-label={this.filterQuery.length > 0 ? 'Clear filter' : 'Clear selection'}
+                svgTitle={this.filterQuery.length > 0 ? 'Clear filter' : 'Clear selection'}
                 onClick={this.handleFilterReset}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter') {
@@ -775,7 +779,7 @@ export class TdsDropdown {
                 }}
                 class={{
                   'clear-icon': true,
-                  'hide': !(this.open && this.inputElement.value !== ''),
+                  'hide': !(this.filterQuery.length > 0 || this.selectedOptions.length > 0),
                 }}
                 name="cross"
                 size="16px"
