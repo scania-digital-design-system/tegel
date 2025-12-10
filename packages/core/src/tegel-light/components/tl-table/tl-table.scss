@@ -402,8 +402,9 @@
   transform: translateY(-50%);
   cursor: pointer;
   width: 40px;
+  min-width: 40px;
+  max-width: 40px;
   height: 40px;
-  overflow: visible;
 }
 
 .tl-table__actionbar-right .tl-text-field:not(.tl-text-field--input-visible) .tl-text-field__input {
@@ -431,6 +432,7 @@
   top: 50%;
   transform: translateY(calc(-50% - 1px));
   z-index: 1;
+  pointer-events: none;
 }
 
 .tl-table__actionbar-right .tl-text-field:not(.tl-text-field--input-visible):hover::before {
