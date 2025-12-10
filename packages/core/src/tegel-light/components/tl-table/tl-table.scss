@@ -392,6 +392,46 @@
   display: flex;
   align-self: center;
   column-gap: 8px;
+  position: relative;
+}
+
+.tl-table__actionbar-right .tl-text-field:not(.tl-text-field--input-visible) {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.tl-table__actionbar-right .tl-text-field:not(.tl-text-field--input-visible) .tl-text-field__input {
+  display: none;
+}
+
+.tl-table__actionbar-right .tl-text-field:not(.tl-text-field--input-visible)::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px 4px 0 0;
+  background-color: transparent;
+  transition: background-color 250ms ease;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tl-table__actionbar-right
+.tl-text-field:not(.tl-text-field--input-visible)
+.tl-text-field__suffix--icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(calc(-50% - 1px));
+  z-index: 1;
+}
+
+.tl-table__actionbar-right .tl-text-field:not(.tl-text-field--input-visible):hover::before {
+  background-color: var(--table-toolbar-searchbar-hover);
 }
 
 .tl-table__header-input-wrapper {
