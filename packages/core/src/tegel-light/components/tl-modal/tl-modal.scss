@@ -74,14 +74,17 @@ $modals: (
 
   display: none;
 
-  &--show {
+  &--visible {
     display: block;
+  }
+
+  &--visible#{&}--sticky {
+    display: flex;
+    flex-direction: column;
   }
 
   &--sticky {
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
   }
 }
 
@@ -162,7 +165,7 @@ $modals: (
   }
 }
 
-.tl-modal__backdrop {
+.tl-modal__overlay {
   @include tds-box-sizing;
 
   position: fixed;
@@ -175,7 +178,7 @@ $modals: (
   z-index: 1000;
   display: none;
 
-  .tl-modal--show & {
+  &.tl-modal--visible {
     display: block;
   }
 }
