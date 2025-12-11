@@ -141,6 +141,7 @@ const PaginationTemplate = ({
       "@scania/tegel-light/global.css"
       "@scania/tegel-light/tl-table.css"
       "@scania/tegel-light/tl-icon.css"
+      "@scania/tegel-light/tl-dropdown.css"
     -->
     <table class="tl-table ${modeClass} ${compactClass} ${responsiveClass} ${verticalDividersClass} ${noMinWidthClass}">
       <thead class="tl-table__header">
@@ -188,7 +189,12 @@ const PaginationTemplate = ({
                                   ? `
                   <div class="tl-table__rows-per-page">
                    <p class="tl-table__rows-per-page-label">Rows per page</p>
-                   <select id="tl-rows-per-page" class="tl-table__rows-per-page-select"></select>
+                   <div class="tl-dropdown tl-dropdown--sm tl-dropdown--dropdown" style="width:70px;" id="tl-rows-per-page-dropdown">
+                     <button type="button" class="tl-dropdown__button" aria-expanded="false" id="tl-rows-per-page-button">
+                       <span class="tl-dropdown__text" id="tl-rows-per-page-text"></span>
+                     </button>
+                     <ul class="tl-dropdown__list" id="tl-rows-per-page-list" role="listbox"></ul>
+                   </div>
                   </div>
               `
                                   : ''
@@ -215,12 +221,24 @@ const PaginationTemplate = ({
     var totalPages = Number(${pages}) || 1;
     var currentPageEl = document.getElementById('tl-current-page');
     var totalPagesEl = document.getElementById('tl-total-pages');
-    var rowsPerPageEl = document.getElementById('tl-rows-per-page');
+    var rowsPerPageDropdown = document.getElementById('tl-rows-per-page-dropdown');
+    var rowsPerPageButton = document.getElementById('tl-rows-per-page-button');
+    var rowsPerPageText = document.getElementById('tl-rows-per-page-text');
+    var rowsPerPageList = document.getElementById('tl-rows-per-page-list');
 
     var values = [];
     try { values = JSON.parse('${rowsPerPageValues}'.replace(/'/g, '"')); } catch (e) {}
-    if (rowsPerPageEl && Array.isArray(values)) {
-      rowsPerPageEl.innerHTML = values.map(v => '<option value="'+v+'">'+v+'</option>').join('');
+    
+    var selectedValue = values && values.length > 0 ? values[0] : '';
+    
+    if (rowsPerPageList && Array.isArray(values) && values.length > 0) {
+      rowsPerPageList.innerHTML = values.map((v, index) => 
+        '<li class="tl-dropdown__option' + (index === 0 ? ' tl-dropdown__option--selected' : '') + '" role="option" data-value="' + v + '">' + v + '</li>'
+      ).join('');
+      
+      if (rowsPerPageText) {
+        rowsPerPageText.textContent = String(selectedValue);
+      }
     }
 
     totalPagesEl.textContent = String(totalPages);
@@ -275,10 +293,50 @@ const PaginationTemplate = ({
       });
     });
 
-    if (rowsPerPageEl) {
-      rowsPerPageEl.addEventListener('change', function() {
-        emit('tlRowsPerPageChange', { rowsPerPage: Number(this.value) });
+    // Dropdown functionality
+    if (rowsPerPageButton && rowsPerPageList) {
+      rowsPerPageButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isExpanded = rowsPerPageButton.getAttribute('aria-expanded') === 'true';
+        rowsPerPageButton.setAttribute('aria-expanded', !isExpanded);
+        rowsPerPageDropdown.classList.toggle('tl-dropdown--open', !isExpanded);
       });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (rowsPerPageDropdown && !rowsPerPageDropdown.contains(e.target)) {
+          rowsPerPageButton.setAttribute('aria-expanded', 'false');
+          rowsPerPageDropdown.classList.remove('tl-dropdown--open');
+        }
+      });
+
+      // Handle option selection
+      if (rowsPerPageList) {
+        rowsPerPageList.addEventListener('click', function(e) {
+          var option = e.target.closest('.tl-dropdown__option');
+          if (option && !option.classList.contains('tl-dropdown__option--disabled')) {
+            var value = option.getAttribute('data-value');
+            if (value) {
+              selectedValue = value;
+              if (rowsPerPageText) {
+                rowsPerPageText.textContent = String(value);
+              }
+              
+              // Update selected state
+              rowsPerPageList.querySelectorAll('.tl-dropdown__option').forEach(function(opt) {
+                opt.classList.remove('tl-dropdown__option--selected');
+              });
+              option.classList.add('tl-dropdown__option--selected');
+              
+              // Close dropdown
+              rowsPerPageButton.setAttribute('aria-expanded', 'false');
+              rowsPerPageDropdown.classList.remove('tl-dropdown--open');
+              
+              emit('tlRowsPerPageChange', { rowsPerPage: Number(value) });
+            }
+          }
+        });
+      }
     }
 
     var initPage = Number(currentPageEl.value) || 1;
