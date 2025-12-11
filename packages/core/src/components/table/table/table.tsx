@@ -33,6 +33,8 @@ export type InternalTdsTablePropChange = {
   changed: Array<keyof Props>;
 } & Partial<Props>;
 
+export type TextAlign = 'left' | 'start' | 'right' | 'end' | 'center';
+
 /**
  * @slot <default> - <b>Unnamed slot.</b> For the table contents.
  */
@@ -49,7 +51,7 @@ export class TdsTable {
   @Prop({ reflect: true }) compactDesign: boolean = false;
 
   /** Enables to customize width on Table columns */
-  @Prop({ reflect: true }) noMinWidth: boolean;
+  @Prop({ reflect: true }) noMinWidth?: boolean;
   // TODO: Due to unknown reason, one of this items has to be left as is.
   //  If all are false, it seems like emitting is not properly done and it affects other events in Table.
   //  Try setting it and observe text-align set on header cell
@@ -90,7 +92,7 @@ export class TdsTable {
 
   @State() enableHorizontalScrollFooterDesign: boolean = false;
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** @internal Broadcasts changes to the Table props */
   @Event({
@@ -99,7 +101,7 @@ export class TdsTable {
     composed: true,
     cancelable: false,
   })
-  internalTdsTablePropChange: EventEmitter<InternalTdsTablePropChange>;
+  internalTdsTablePropChange!: EventEmitter<InternalTdsTablePropChange>;
 
   emitInternalTdsPropChange(changedValueName: keyof Props, changedValue: Props[keyof Props]) {
     this.internalTdsTablePropChange.emit({
@@ -130,7 +132,7 @@ export class TdsTable {
 
       rowCells.forEach((cell) => {
         const cellObject: RowCell = {
-          cellKey: cell.cellKey,
+          cellKey: cell.cellKey ?? '',
           cellValue: (cell.cellValue ?? cell.innerText) as string | number,
         };
 
@@ -218,7 +220,7 @@ export class TdsTable {
             'tds-table': true,
             'tds-table--compact': this.compactDesign,
             'tds-table--divider': this.verticalDividers,
-            'tds-table--no-min-width': this.noMinWidth,
+            'tds-table--no-min-width': !!this.noMinWidth,
             'tds-table--responsive': this.responsive,
             'tds-table--horizontal-scroll': !!this.horizontalScrollWidth,
             'tds-table--horizontal-scroll-toolbar':

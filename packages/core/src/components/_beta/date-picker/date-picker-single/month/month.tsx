@@ -10,7 +10,7 @@ import { enGB, sv, de } from 'date-fns/locale';
 })
 export class DatepickerMonth {
   /** The Month that should be displayed. */
-  @Prop() month: Date;
+  @Prop() month?: Date;
 
   /** Marks the Month as selected. */
   @Prop() selected: boolean = false;

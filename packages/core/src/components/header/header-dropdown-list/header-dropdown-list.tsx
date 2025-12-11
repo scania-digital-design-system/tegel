@@ -11,7 +11,7 @@ import getPreviousNestedChildOfSiblingsMatching from '../../../utils/getPrevious
   shadow: true,
 })
 export class TdsHeaderDropdownList {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   // A Map to store the slots and their associated slotchange listeners.
   private slotListeners: Map<HTMLSlotElement, EventListener> = new Map();
@@ -19,7 +19,7 @@ export class TdsHeaderDropdownList {
   /** The size of the component. */
   @Prop({ reflect: true }) size: 'lg' | 'md' = 'md';
 
-  @State() headingElement: HTMLElement;
+  @State() headingElement!: HTMLElement;
 
   componentWillLoad() {
     const { children } = this.host;

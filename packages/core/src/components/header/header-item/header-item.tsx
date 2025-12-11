@@ -10,7 +10,7 @@ import dfs from '../../../utils/dfs';
   shadow: true,
 })
 export class TdsHeaderItem {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** If the button should appear active. Can be used when the button is
    * triggering a dropdown, and the dropdown is open, for example. */
@@ -21,7 +21,7 @@ export class TdsHeaderItem {
 
   private slotEl: HTMLSlotElement | null | undefined;
 
-  private mutationObserver: MutationObserver;
+  private mutationObserver!: MutationObserver;
 
   updateSlotted(
     searchPredicate: (element: HTMLElement) => boolean,

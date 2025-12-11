@@ -9,7 +9,7 @@ import { Component, h, Prop, Element } from '@stencil/core';
   shadow: true,
 })
 export class TdsLink {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Disables the Link */
   @Prop() disabled: boolean = false;

@@ -14,7 +14,7 @@ import { getAriaInvalid } from '../../utils/getAriaInvalid';
   scoped: true,
 })
 export class TdsTextField {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   private uuid: string = generateUniqueId();
 
@@ -31,16 +31,16 @@ export class TdsTextField {
   @Prop() label: string = '';
 
   /** Min allowed value for input type number */
-  @Prop() min: string | number;
+  @Prop() min?: string | number;
 
   /** Max allowed value for input type number */
-  @Prop() max: string | number;
+  @Prop() max?: string | number;
 
   /** Step value for input type number */
-  @Prop() step: string | number;
+  @Prop() step?: string | number;
 
   /** Helper text */
-  @Prop() helper: string;
+  @Prop() helper?: string;
 
   /** Placeholder text */
   @Prop() placeholder: string = '';
@@ -73,13 +73,13 @@ export class TdsTextField {
   @Prop() state: 'error' | 'success' | 'default' = 'default';
 
   /** Max length of input */
-  @Prop() maxLength: number;
+  @Prop() maxLength?: number;
 
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
 
   /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** Makes the text field required */
   @Prop() required: boolean = false;
@@ -100,7 +100,7 @@ export class TdsTextField {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange: EventEmitter;
+  tdsChange!: EventEmitter;
 
   handleChange(event: Event): void {
     this.tdsChange.emit(event);
@@ -113,7 +113,7 @@ export class TdsTextField {
     bubbles: true,
     cancelable: false,
   })
-  tdsInput: EventEmitter<InputEvent>;
+  tdsInput!: EventEmitter<InputEvent>;
 
   /** Data input event in value prop */
   handleInput(event: InputEvent): void {
@@ -131,7 +131,7 @@ export class TdsTextField {
     bubbles: true,
     cancelable: false,
   })
-  tdsFocus: EventEmitter<FocusEvent>;
+  tdsFocus!: EventEmitter<FocusEvent>;
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleFocus(event: FocusEvent): void {
@@ -147,7 +147,7 @@ export class TdsTextField {
     bubbles: true,
     cancelable: false,
   })
-  tdsBlur: EventEmitter<FocusEvent>;
+  tdsBlur!: EventEmitter<FocusEvent>;
 
   /** Error event for the Text Field - emitted when value is clamped to min/max */
   @Event({
@@ -156,7 +156,7 @@ export class TdsTextField {
     bubbles: true,
     cancelable: false,
   })
-  tdsError: EventEmitter<{ originalValue: string; clampedValue: string; reason: 'min' | 'max' }>;
+  tdsError!: EventEmitter<{ originalValue: string; clampedValue: string; reason: 'min' | 'max' }>;
 
   /** Set the input as focus when clicking the whole Text Field with suffix/prefix */
   handleBlur(event: FocusEvent): void {
@@ -338,7 +338,7 @@ export class TdsTextField {
         </div>
 
         <div aria-live="assertive">
-          {(this.helper || this.maxLength > 0) && (
+          {(this.helper || (this.maxLength ?? 0) > 0) && (
             <div class="text-field-helper" id={`text-field-helper-element-${this.uuid}`}>
               {this.state === 'error' && (
                 <div class="text-field-helper-error-state">
@@ -348,14 +348,14 @@ export class TdsTextField {
               )}
               {this.state !== 'error' && this.helper}
 
-              {!this.readOnly && this.maxLength > 0 && (
+              {!this.readOnly && (this.maxLength ?? 0) > 0 && (
                 <span
                   class={{
                     'text-field-textcounter-divider': true,
                     'text-field-textcounter-disabled': this.disabled,
                   }}
                 >
-                  {this.value === null ? 0 : this.value?.length} / {this.maxLength}
+                  {this.value === null ? 0 : this.value?.length} / {this.maxLength ?? 0}
                 </span>
               )}
             </div>

@@ -11,7 +11,7 @@ import dfs from '../../../utils/dfs';
   shadow: true,
 })
 export class TdsSideMenuItem {
-  @Element() host: HTMLTdsSideMenuItemElement;
+  @Element() host!: HTMLTdsSideMenuItemElement;
 
   /** If the item should appear selected. */
   @Prop() selected: boolean = false;
@@ -24,9 +24,9 @@ export class TdsSideMenuItem {
 
   @State() hasUserComponent: boolean = false;
 
-  private sideMenuEl: HTMLTdsSideMenuElement | null;
+  private sideMenuEl!: HTMLTdsSideMenuElement | null;
 
-  private slotEl: HTMLSlotElement | null;
+  private slotEl!: HTMLSlotElement | null;
 
   findSlottedAndExecute(
     searchPredicate: (element: HTMLElement) => boolean,

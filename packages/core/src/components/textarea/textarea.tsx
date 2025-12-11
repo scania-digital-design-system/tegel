@@ -9,7 +9,7 @@ import { getAriaInvalid } from '../../utils/getAriaInvalid';
   scoped: true,
 })
 export class TdsTextarea {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Text input for focus state */
   textEl?: HTMLTextAreaElement;
@@ -23,13 +23,13 @@ export class TdsTextarea {
   @Prop() name: string = '';
 
   /** Helper text */
-  @Prop() helper: string;
+  @Prop() helper?: string;
 
   /** Textarea cols attribute */
-  @Prop() cols: number;
+  @Prop() cols?: number;
 
   /** Textarea rows attribute */
-  @Prop() rows: number;
+  @Prop() rows?: number;
 
   /** Position of the label for the Textarea. */
   @Prop() labelPosition: 'inside' | 'outside' | 'no-label' = 'no-label';
@@ -53,7 +53,7 @@ export class TdsTextarea {
   @Prop() state: 'error' | 'success' | 'default' = 'default';
 
   /** Max length of input */
-  @Prop() maxLength: number;
+  @Prop() maxLength?: number;
 
   /** Mode variant of the Textarea */
   @Prop() modeVariant: 'primary' | 'secondary' | null = null;
@@ -65,10 +65,10 @@ export class TdsTextarea {
   @Prop() noMinWidth: boolean = false;
 
   /** Value to be used for the aria-label attribute. Can be used for announcing that readOnly prop is set to true. */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** Listen to the focus state of the input */
-  @State() focusInput: boolean;
+  @State() focusInput: boolean = false;
 
   /** Change event for the Textarea */
   @Event({
@@ -77,7 +77,7 @@ export class TdsTextarea {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange: EventEmitter;
+  tdsChange!: EventEmitter;
 
   handleChange(event): void {
     this.tdsChange.emit(event);
@@ -90,7 +90,7 @@ export class TdsTextarea {
     bubbles: true,
     cancelable: false,
   })
-  tdsBlur: EventEmitter<FocusEvent>;
+  tdsBlur!: EventEmitter<FocusEvent>;
 
   handleBlur(event: FocusEvent): void {
     this.tdsBlur.emit(event);
@@ -104,7 +104,7 @@ export class TdsTextarea {
     bubbles: true,
     cancelable: false,
   })
-  tdsInput: EventEmitter<InputEvent>;
+  tdsInput!: EventEmitter<InputEvent>;
 
   // Data input event in value prop
   handleInput(event: InputEvent): void {
@@ -121,7 +121,7 @@ export class TdsTextarea {
     bubbles: true,
     cancelable: false,
   })
-  tdsFocus: EventEmitter<FocusEvent>;
+  tdsFocus!: EventEmitter<FocusEvent>;
 
   /* Set the input as focus when clicking the whole textarea with suffix/prefix */
   handleFocus(event: FocusEvent): void {
@@ -241,7 +241,7 @@ export class TdsTextarea {
           {this.helper}
         </span>
 
-        {this.maxLength > 0 && (
+        {(this.maxLength ?? 0) > 0 && (
           <div class={'textarea-textcounter'}>
             {this.value === null ? 0 : this.value?.length}
             <span class="textfield-textcounter-divider"> / </span> {this.maxLength}

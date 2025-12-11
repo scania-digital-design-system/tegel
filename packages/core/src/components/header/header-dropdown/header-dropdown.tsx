@@ -12,11 +12,11 @@ import generateUniqueId from '../../../utils/generateUniqueId';
   shadow: true,
 })
 export class TdsHeaderDropdown {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** The label of the button that opens the dropdown.
    * This is an alternative to the label slot. */
-  @Prop() label: string;
+  @Prop() label?: string;
 
   /** If the dropdown icon (downwards chevron) should be hidden. */
   @Prop() noDropdownIcon: boolean = false;
@@ -25,7 +25,7 @@ export class TdsHeaderDropdown {
   @Prop() selected: boolean = false;
 
   /** Value to be used by the aria-label attribute */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   @State() open: boolean = false;
 

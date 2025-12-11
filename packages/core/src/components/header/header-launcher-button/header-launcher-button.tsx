@@ -8,16 +8,16 @@ import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
   shadow: true,
 })
 export class TdsHeaderLauncherButton {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** If the button should appear active. Can be used when the button is
    * triggering a dropdown, and the dropdown is open, for example. */
   @Prop() active = false;
 
   /** Value to be used by the aria-label attribute */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
-  private ariaAttributes: Attributes;
+  private ariaAttributes!: Attributes;
 
   render() {
     this.ariaAttributes = { ...this.ariaAttributes, ...inheritAriaAttributes(this.host) };

@@ -18,26 +18,26 @@ const propToStateMap = {
 })
 export class TdsStep {
   /** Index of the step. Will be displayed in the step if the state is current/upcoming. */
-  @Prop() index: string;
+  @Prop() index?: string;
 
   /** State of the Step */
   @Prop() state: 'current' | 'error' | 'success' | 'upcoming' = 'upcoming';
 
-  @Prop() tdsAriaCurrent: string;
+  @Prop() tdsAriaCurrent?: string;
 
-  @State() hideLabels: boolean;
+  @State() hideLabels?: boolean;
 
-  @State() size: 'sm' | 'lg';
+  @State() size?: 'sm' | 'lg';
 
-  @State() orientation: 'horizontal' | 'vertical';
+  @State() orientation?: 'horizontal' | 'vertical';
 
-  @State() labelPosition: 'aside' | 'below';
+  @State() labelPosition?: 'aside' | 'below';
 
-  @Element() el: HTMLElement;
+  @Element() el!: HTMLElement;
 
-  private stepperEl: HTMLTdsStepperElement | null;
+  private stepperEl!: HTMLTdsStepperElement | null;
 
-  private stepperId: string;
+  private stepperId!: string;
 
   /* Needs to be onload to do this on any updates. */
   componentWillLoad() {

@@ -20,7 +20,7 @@ import {
   shadow: true,
 })
 export class TdsFolderTabs {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' | null = null;
@@ -30,7 +30,7 @@ export class TdsFolderTabs {
 
   /** Sets the selected Tab.
    * If this is set, all Tab changes need to be handled by the user. */
-  @Prop({ reflect: true }) selectedIndex: number;
+  @Prop({ reflect: true }) selectedIndex?: number;
 
   /** Defines aria-label on left scroll button */
   @Prop() tdsScrollLeftAriaLabel: string = 'Scroll left';
@@ -52,7 +52,7 @@ export class TdsFolderTabs {
 
   private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLTdsFolderTabElement>;
+  private children: Array<HTMLTdsFolderTabElement> = [];
 
   private clickHandlers = new WeakMap<HTMLElement, EventListener>();
 
@@ -63,13 +63,13 @@ export class TdsFolderTabs {
     cancelable: true,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     selectedTabIndex: number;
   }>;
 
   /** Sets the passed tabindex as the selected Tab. */
   @Method()
-  async selectTab(tabIndex: number): Promise<{ selectedTabIndex: number }> {
+  async selectTab(tabIndex: number): Promise<{ selectedTabIndex: number | undefined }> {
     if (tabIndex < 0 || tabIndex >= this.children.length) {
       throw new Error('Tab index out of bounds');
     }
@@ -95,11 +95,16 @@ export class TdsFolderTabs {
 
   @Watch('selectedIndex')
   handleSelectedIndexUpdate(): void {
-    this.children = Array.from(this.host.children).map((tabElement: HTMLTdsFolderTabElement) => {
+    const tabs = Array.from(this.host.children) as Array<HTMLTdsFolderTabElement>;
+
+    this.children = tabs.map((tabElement: HTMLTdsFolderTabElement) => {
       tabElement.setSelected(false);
       return tabElement;
     });
-    this.children[this.selectedIndex].setSelected(true);
+
+    if (this.selectedIndex) {
+      this.children[this.selectedIndex].setSelected(true);
+    }
   }
 
   private scrollRight(): void {

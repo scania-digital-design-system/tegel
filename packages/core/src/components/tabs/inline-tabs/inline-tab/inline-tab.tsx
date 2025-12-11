@@ -9,7 +9,7 @@ import { Component, Host, h, Prop, Method, State, Element } from '@stencil/core'
   shadow: true,
 })
 export class TdsInlineTab {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Disables the Tab. */
   @Prop() disabled: boolean = false;

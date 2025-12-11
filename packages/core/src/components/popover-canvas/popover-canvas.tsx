@@ -13,10 +13,10 @@ import inheritAttributes from '../../utils/inheritAttributes';
   scoped: true,
 })
 export class TdsPopoverCanvas {
-  @Element() host: HTMLTdsPopoverCanvasElement;
+  @Element() host!: HTMLTdsPopoverCanvasElement;
 
   /** The CSS-selector for an element that will trigger the Popover */
-  @Prop() selector: string;
+  @Prop() selector?: string;
 
   /** Element that will trigger the Popover (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;

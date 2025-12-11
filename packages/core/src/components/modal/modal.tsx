@@ -24,10 +24,10 @@ import generateUniqueId from '../../utils/generateUniqueId';
   shadow: true,
 })
 export class TdsModal {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Sets the header of the Modal. */
-  @Prop() header: string;
+  @Prop() header?: string;
 
   /** Disables closing Modal on clicking on overlay area. */
   @Prop() prevent: boolean = false;
@@ -39,14 +39,14 @@ export class TdsModal {
   @Prop() actionsPosition: 'sticky' | 'static' = 'static';
 
   /** CSS selector for the element that will show the Modal. */
-  @Prop() selector: string;
+  @Prop() selector?: string;
 
   /** Element that will show the Modal (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
 
   /** Controls whether the Modal is shown or not. If this is set hiding and showing
    * will be decided by this prop and will need to be controlled from the outside. */
-  @Prop() show: boolean;
+  @Prop() show?: boolean;
 
   /** Shows or hides the close [X] button. */
   @Prop() closable: boolean = true;
@@ -95,7 +95,7 @@ export class TdsModal {
     cancelable: true,
     bubbles: true,
   })
-  tdsClose: EventEmitter<object>;
+  tdsClose!: EventEmitter<object>;
 
   /** Emits just before Modal is opened. */
   @Event({
@@ -104,7 +104,7 @@ export class TdsModal {
     cancelable: true,
     bubbles: true,
   })
-  tdsOpen: EventEmitter<void>;
+  tdsOpen!: EventEmitter<void>;
 
   connectedCallback() {
     if (this.closable === undefined) {
@@ -148,7 +148,9 @@ export class TdsModal {
   @Method()
   async cleanupModal() {
     if (this.selector || this.referenceEl) {
-      const referenceEl = this.referenceEl ?? document.querySelector(this.selector);
+      const referenceEl =
+        this.referenceEl ??
+        (this.selector ? document.querySelector<HTMLElement>(this.selector) : null);
       if (referenceEl) {
         referenceEl.removeEventListener('click', this.handleReferenceElementClick);
       }
@@ -161,7 +163,8 @@ export class TdsModal {
 
   private returnFocusOnClose() {
     const referenceElement =
-      this.referenceEl ?? (document.querySelector(this.selector) as HTMLElement);
+      this.referenceEl ??
+      (this.selector ? document.querySelector<HTMLElement>(this.selector) : null);
 
     if (!referenceElement) {
       return; // no element to return focus to
@@ -286,7 +289,8 @@ export class TdsModal {
   setShowButton = () => {
     if (this.selector || this.referenceEl) {
       const referenceEl =
-        this.referenceEl ?? (document.querySelector(this.selector) as HTMLElement);
+        this.referenceEl ??
+        (this.selector ? document.querySelector<HTMLElement>(this.selector) : null);
       if (referenceEl) {
         this.initializeReferenceElement(referenceEl);
       }

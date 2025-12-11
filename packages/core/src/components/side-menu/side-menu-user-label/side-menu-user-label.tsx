@@ -10,7 +10,7 @@ export class TdsSideMenuUserLabel {
   @Prop() heading!: string;
 
   /** The subheading text. */
-  @Prop() subheading: string;
+  @Prop() subheading?: string;
 
   render() {
     return (

@@ -10,7 +10,7 @@
  */
 const appendHiddenInput = (
   element: HTMLElement,
-  name: string,
+  name: string | undefined,
   value: string | undefined | null,
   disabled: boolean,
   additionalAttributes?: Array<{ key: string; value: string }>,
@@ -24,9 +24,9 @@ const appendHiddenInput = (
     }
     element.appendChild(input);
   }
-  if(input) {
+  if (input) {
     input.disabled = disabled;
-    input.name = name;
+    input.name = name || '';
     input.value = value || '';
   }
 };

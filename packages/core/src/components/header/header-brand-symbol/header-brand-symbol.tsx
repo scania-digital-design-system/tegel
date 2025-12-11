@@ -9,7 +9,7 @@ import { Component, Element, h, Host } from '@stencil/core';
   shadow: true,
 })
 export class TdsHeaderBrandSymbol {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   render() {
     const aTag = this.host.querySelector('a');

@@ -9,10 +9,10 @@ import { Component, h, Element, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsBreadcrumbs {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** The value to be used for the aria-label attribute */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   render() {
     this.host.children[this.host.children.length - 1]?.classList.add('last');

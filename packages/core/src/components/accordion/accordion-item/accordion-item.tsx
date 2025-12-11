@@ -76,7 +76,7 @@ export class TdsAccordionItem {
     cancelable: true,
     bubbles: true,
   })
-  tdsToggle: EventEmitter<{
+  tdsToggle!: EventEmitter<{
     expanded: boolean;
   }>;
 

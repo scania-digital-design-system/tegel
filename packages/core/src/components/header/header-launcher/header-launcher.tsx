@@ -12,7 +12,7 @@ import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
   shadow: true,
 })
 export class TdsHeaderLauncher {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   @State() open: boolean = false;
 
@@ -21,11 +21,11 @@ export class TdsHeaderLauncher {
   @State() hasListTypeMenu = false;
 
   /** Value to be used by the aria-label attribute of the launcher button */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   private uuid: string = generateUniqueId();
 
-  private ariaAttributes: Attributes;
+  private ariaAttributes!: Attributes;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {

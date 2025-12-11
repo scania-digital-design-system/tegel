@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute   | Description                                              | Type     | Default     |
-| ----------- | ----------- | -------------------------------------------------------- | -------- | ----------- |
-| `header`    | `header`    | Header text, usually the users first name and last name. | `string` | `undefined` |
-| `imgAlt`    | `img-alt`   | Image alt text.                                          | `string` | `undefined` |
-| `imgUrl`    | `img-url`   | Image URL.                                               | `string` | `undefined` |
-| `subheader` | `subheader` | Subheader text.                                          | `string` | `undefined` |
+| Property    | Attribute   | Description                                              | Type                  | Default     |
+| ----------- | ----------- | -------------------------------------------------------- | --------------------- | ----------- |
+| `header`    | `header`    | Header text, usually the users first name and last name. | `string \| undefined` | `undefined` |
+| `imgAlt`    | `img-alt`   | Image alt text.                                          | `string \| undefined` | `undefined` |
+| `imgUrl`    | `img-url`   | Image URL.                                               | `string \| undefined` | `undefined` |
+| `subheader` | `subheader` | Subheader text.                                          | `string \| undefined` | `undefined` |
 
 
 ## Slots

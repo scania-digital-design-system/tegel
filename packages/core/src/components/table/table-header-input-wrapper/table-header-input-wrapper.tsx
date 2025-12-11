@@ -10,7 +10,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = ['compactDesig
   shadow: true,
 })
 export class TdsTableHeaderInputWrapper {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Controls if the search icon is shown */
   @Prop() showIcon: boolean = true;
