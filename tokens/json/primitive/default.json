@@ -392,15 +392,15 @@
       "weight": {
         "semi-bold": {
           "$type": "fontWeights",
-          "$value": "600"
+          "$value": 600
         },
         "medium": {
           "$type": "fontWeights",
-          "$value": "500"
+          "$value": 500
         },
         "regular": {
           "$type": "fontWeights",
-          "$value": "400"
+          "$value": 400
         }
       }
     },
@@ -832,27 +832,27 @@
     },
     "font": {
       "family": {
+        "semi-condensed": {
+          "$type": "text",
+          "$value": "scania sans cy semi condensed"
+        },
         "display": {
           "$type": "text",
-          "$value": "scania sans headline"
+          "$value": "scania sans cy headline"
         },
         "default": {
           "$type": "text",
-          "$value": "scania sans"
-        },
-        "semi condensed": {
-          "$type": "text",
-          "$value": "scania sans semi condensed"
+          "$value": "scania sans cy"
         }
       },
       "weight": {
         "regular": {
           "$type": "fontWeights",
-          "$value": "400"
+          "$value": 400
         },
         "bold": {
           "$type": "fontWeights",
-          "$value": "700"
+          "$value": 700
         }
       }
     },
