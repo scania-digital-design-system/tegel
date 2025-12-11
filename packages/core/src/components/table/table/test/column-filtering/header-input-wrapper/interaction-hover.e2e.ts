@@ -29,7 +29,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       expect(color).toBe('rgba(0, 0, 0, 0)');
 
       /* Check diff of screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });

@@ -38,7 +38,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(tableBodyRowButton).toBeVisible();
 
       /* check input screenshot diff */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });
