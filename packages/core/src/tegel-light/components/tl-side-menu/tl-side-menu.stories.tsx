@@ -144,7 +144,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
             <div class="tl-side-menu__overlay" id="tl-overlay"></div>
             <aside class="tl-side-menu__aside">
                <div class="tl-side-menu__navigation">
-                  <div class="tl-side-menu__close-button">
+                  <div class="tl-side-menu__close">
                      <div class="tl-side-menu__item">
                         <button id="tl-close" aria-label="Close drawer menu">
                         <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
