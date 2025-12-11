@@ -6,8 +6,6 @@ set -e
 # Array of directories to go into
 directories=(
   "./packages/core"
-  "./packages/angular"
-  "./packages/angular/projects/components"
   "./packages/angular-17"
   "./packages/angular-17/projects/components"
   "./packages/react"

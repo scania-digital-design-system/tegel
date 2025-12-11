@@ -2,6 +2,35 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="Getting Started/Angular" />
 
+**Published: 2025-12-11**
+
+# Deprecated Angular wrapper
+
+Our Angular wrapper package can no longer be built or maintained in a sustainable way. After evaluating potential workarounds, it became clear that continuing support would slow down progress for the majority of users who are already on modern versions of Angular or React.
+
+### What this means
+- We will no longer update the Angular wrapper package.
+- The [Angular](https://www.npmjs.com/package/@scania/tegel-angular) package will remain published as-is for any projects that still rely on it.
+- We will create a maintenance branch to preserve the final state of the Angular wrapper.
+- The [Angular (17+)](https://www.npmjs.com/package/@scania/tegel-angular-17) and [React](https://www.npmjs.com/package/@scania/tegel-react) wrapper packages will continue to be actively maintained and improved.
+
+### Why we made this decision
+
+We want to be transparent about the factors behind this change:
+
+**Keeping pace with modern tooling**<br/>
+The ecosystem is rapidly standardizing around TypeScript 5+. Continuing to support older TypeScript versions would hold back improvements for the entire community.
+
+**Sustainable maintenance**<br/>
+Older Angular versions require significant overhead, custom patches, divergent build processes, and manual workarounds. This creates unnecessary technical debt.
+
+**Supporting an EOL framework version**<br/>
+Angular 17 and prior versions are no longer receiving security patches, bug fixes, or official support from the Angular team. Prioritizing actively supported versions.
+
+<br/>
+---
+<br/>
+
 **Published: 2023-10-11**
 
 # Using Tegel in Angular
