@@ -143,13 +143,6 @@
   align-self: stretch;
 }
 
-.tl-card__stretch {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  inline-size: 100%;
-}
-
 .tl-icon {
   .tl-card--expandable .tl-card__body .tl-card__header & {
     transition: transform 160ms ease-in-out, opacity 120ms ease-in-out;
