@@ -60,17 +60,17 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
     })
     .join('');
 
-  const leftBtn = showLeftButton
+  const leftButton = showLeftButton
     ? `
-        <button class="tl-folder-tabs__scroll-btn tl-folder-tabs__scroll-btn--left">
+        <button class="tl-folder-tabs__scroll-button tl-folder-tabs__scroll-button--left">
           <span class="tl-icon tl-icon--chevron_left tl-icon--20"></span>
         </button>
       `
     : '';
 
-  const rightBtn = showRightButton
+  const rightButton = showRightButton
     ? `
-        <button class="tl-folder-tabs__scroll-btn tl-folder-tabs__scroll-btn--right">
+        <button class="tl-folder-tabs__scroll-button tl-folder-tabs__scroll-button--right">
           <span class="tl-icon tl-icon--chevron_right tl-icon--20"></span>
         </button>
       `
@@ -86,9 +86,9 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
 
     <div class="tl-folder-tabs ${modeClass}">
       <div class="tl-folder-tabs__wrapper">
-        ${leftBtn}
+        ${leftButton}
         ${tabsHtml}
-        ${rightBtn}
+        ${rightButton}
       </div>
     </div>
 

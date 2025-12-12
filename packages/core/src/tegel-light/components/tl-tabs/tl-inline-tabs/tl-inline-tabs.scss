@@ -33,7 +33,7 @@
   }
 }
 
-.tl-inline-tabs__scroll-btn {
+.tl-inline-tabs__scroll-button {
   background-color: var(--inline-tabs-scroll-button);
   color: var(--inline-tabs-scroll-button-text);
   cursor: pointer;
@@ -46,18 +46,18 @@
   position: sticky;
 }
 
-.tl-inline-tabs__scroll-btn--right {
+.tl-inline-tabs__scroll-button--right {
   right: 0;
   z-index: 1;
 }
 
-.tl-inline-tabs__scroll-btn--left {
+.tl-inline-tabs__scroll-button--left {
   left: 0;
   z-index: 1;
 }
 
 svg {
-  .tl-inline-tabs__scroll-btn & {
+  .tl-inline-tabs__scroll-button & {
     fill: var(--inline-tabs-scroll-button-text);
   }
 }
