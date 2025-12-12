@@ -247,35 +247,35 @@ const PaginationTemplate = ({
       console.log(name, detail);
     }
 
-    var btns = document.querySelectorAll('.tl-table__footer-button');
-    var btnFirst = document.querySelector('.tl-table__footer-button[data-action="first"]');
-    var btnPrev = document.querySelector('.tl-table__footer-button[data-action="prev"]');
-    var btnNext = document.querySelector('.tl-table__footer-button[data-action="next"]');
-    var btnLast = document.querySelector('.tl-table__footer-button[data-action="last"]');
+    var buttons = document.querySelectorAll('.tl-table__footer-button');
+    var buttonFirst = document.querySelector('.tl-table__footer-button[data-action="first"]');
+    var buttonPrev = document.querySelector('.tl-table__footer-button[data-action="prev"]');
+    var buttonNext = document.querySelector('.tl-table__footer-button[data-action="next"]');
+    var buttonLast = document.querySelector('.tl-table__footer-button[data-action="last"]');
 
     function updateButtonStates(current) {
-      if (!btnFirst || !btnPrev || !btnNext || !btnLast) return;
+      if (!buttonFirst || !buttonPrev || !buttonNext || !buttonLast) return;
 
       if (current <= 1) {
-        btnFirst.disabled = true;
-        btnPrev.disabled = true;
+        buttonFirst.disabled = true;
+        buttonPrev.disabled = true;
       } else {
-        btnFirst.disabled = false;
-        btnPrev.disabled = false;
+        buttonFirst.disabled = false;
+        buttonPrev.disabled = false;
       }
 
       if (current >= totalPages) {
-        btnNext.disabled = true;
-        btnLast.disabled = true;
+        buttonNext.disabled = true;
+        buttonLast.disabled = true;
       } else {
-        btnNext.disabled = false;
-        btnLast.disabled = false;
+        buttonNext.disabled = false;
+        buttonLast.disabled = false;
       }
     }
 
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var action = btn.getAttribute('data-action');
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var action = button.getAttribute('data-action');
         var current = Number(currentPageEl.value) || 1;
         var next = current;
 
