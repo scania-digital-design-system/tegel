@@ -12,6 +12,17 @@
   }
 }
 
+.tl-table__footer .tl-dropdown__text {
+  max-width: calc(100% - 20px);
+}
+
+.tl-table__footer
+.tl-dropdown--sm
+:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
+.tl-table__footer .tl-dropdown__option {
+  height: 29px;
+}
+
 .tl-table__footer-row {
   display: table-row;
   border-bottom: 1px solid var(--table-divider);
