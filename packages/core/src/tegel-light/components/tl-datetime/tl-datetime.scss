@@ -53,18 +53,6 @@
   height: 56px;
   box-sizing: border-box;
   background-color: var(--datetime-background);
-  transition: border-bottom-color 200ms ease;
-  border-left: 1px solid var(--datetime-border-color-left);
-  border-right: 1px solid var(--datetime-border-color-right);
-  border-bottom: 1px solid var(--datetime-border-color-bottom);
-  border-top: 1px solid var(--datetime-border-color-top);
-
-  &:hover {
-    border-left: 1px solid var(--datetime-border-color-left-hover);
-    border-right: 1px solid var(--datetime-border-color-right-hover);
-    border-bottom: 1px solid var(--datetime-border-color-bottom-hover);
-    border-top: 1px solid var(--datetime-border-color-top-hover);
-  }
 
   .tl-datetime--md & {
     height: 48px;
@@ -74,33 +62,8 @@
     height: 40px;
   }
 
-  .tl-datetime--focus & {
-    border-left: 1px solid var(--datetime-border-color-left-focus);
-    border-right: 1px solid var(--datetime-border-color-right-focus);
-    border-bottom: 1px solid var(--datetime-border-color-bottom-focus);
-    border-top: 1px solid var(--datetime-border-color-top-focus);
-    outline: 2px solid var(--datetime-outline-color-focus);
-    outline-offset: -1px;
-  }
-
   .tl-datetime--disabled & {
     cursor: not-allowed;
-    border-color: transparent;
-  }
-
-  .tl-datetime--success & {
-    border-left: 1px solid var(--datetime-border-color-left-success);
-    border-right: 1px solid var(--datetime-border-color-right-success);
-    border-bottom: 1px solid var(--datetime-border-color-bottom-success);
-    border-top: 1px solid var(--datetime-border-color-top-success);
-    color: var(--tds-datetime-color-success);
-  }
-
-  .tl-datetime--error & {
-    border-left: 1px solid var(--datetime-border-color-left-error);
-    border-right: 1px solid var(--datetime-border-color-right-error);
-    border-bottom: 1px solid var(--datetime-border-color-bottom-error);
-    border-top: 1px solid var(--datetime-border-color-top-error);
   }
 }
 
@@ -123,6 +86,28 @@
   color: var(--datetime-text);
   background-color: var(--datetime-background);
   padding: var(--tds-spacing-element-20) var(--tds-spacing-element-16);
+  box-shadow: inset var(--datetime-box-shadow);
+  transition: box-shadow 0.2s;
+
+  &:focus {
+    box-shadow: inset var(--datetime-box-shadow-focus);
+  }
+
+  .tl-datetime:hover &:not(:focus) {
+    box-shadow: inset var(--datetime-box-shadow-hover);
+  }
+
+  .tl-datetime--error & {
+    box-shadow: inset var(--datetime-box-shadow-error);
+
+    &:focus {
+      box-shadow: inset var(--datetime-box-shadow-error-focus);
+    }
+  }
+
+  .tl-datetime--error:hover &:not(:focus) {
+    box-shadow: inset var(--datetime-box-shadow-error-hover);
+  }
 
   &::placeholder {
     opacity: 1;
@@ -219,26 +204,6 @@
   }
 }
 
-.tl-datetime__bar {
-  position: relative;
-  display: block;
-  width: 100%;
-  left: 0;
-  z-index: 1;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: var(--datetime-highlight);
-    transform: scaleX(0);
-    transition: 0.35s ease transform;
-  }
-}
-
 .tl-datetime__helper {
   @include detail-05;
 
@@ -258,25 +223,4 @@
   .tl-datetime--error & .tl-icon--error {
     display: inline-flex;
   }
-}
-
-.tl-datetime__container:has(.tl-datetime__input:focus) {
-  outline: 2px solid var(--datetime-outline-color-focus);
-  outline-offset: -1px;
-}
-
-.tl-datetime__container:has(.tl-datetime__input:focus) .tl-datetime__bar::after {
-  transform: scaleX(1);
-}
-
-.tl-datetime--disabled .tl-datetime__bar::after {
-  transform: scaleX(0) !important;
-}
-
-.tl-datetime--success .tl-datetime__bar::after {
-  background: var(--tds-datetime-bar-sucess);
-}
-
-.tl-datetime--error .tl-datetime__bar::after {
-  background: var(--datetime-highlight-error);
 }
