@@ -67,11 +67,6 @@
   }
 }
 
-.tl-datetime__input-container {
-  position: relative;
-  width: 100%;
-}
-
 .tl-datetime__input {
   @include tds-box-sizing;
   @include detail-02;
