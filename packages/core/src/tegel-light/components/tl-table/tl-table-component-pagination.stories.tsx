@@ -204,10 +204,10 @@ const PaginationTemplate = ({
               <div class="tl-table__page-selector">
                 <input class="tl-table__page-selector-input" id="tl-current-page" value="1" type="number" min="1" max="4" pattern="[0-9]+" dir="rtl">
                 <p class="tl-table__footer-text">of <span id="tl-total-pages">${pages}</span> pages</p>
-                <button class="tl-table__footer-btn" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--20"></span></button>
-                <button class="tl-table__footer-btn" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--20"></span></button>
-                <button class="tl-table__footer-btn" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--20"></span></button>
-                <button class="tl-table__footer-btn" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--20"></span></button>
               </div>
             </div>
           </td>
@@ -247,35 +247,35 @@ const PaginationTemplate = ({
       console.log(name, detail);
     }
 
-    var btns = document.querySelectorAll('.tl-table__footer-btn');
-    var btnFirst = document.querySelector('.tl-table__footer-btn[data-action="first"]');
-    var btnPrev = document.querySelector('.tl-table__footer-btn[data-action="prev"]');
-    var btnNext = document.querySelector('.tl-table__footer-btn[data-action="next"]');
-    var btnLast = document.querySelector('.tl-table__footer-btn[data-action="last"]');
+    var buttons = document.querySelectorAll('.tl-table__footer-button');
+    var buttonFirst = document.querySelector('.tl-table__footer-button[data-action="first"]');
+    var buttonPrev = document.querySelector('.tl-table__footer-button[data-action="prev"]');
+    var buttonNext = document.querySelector('.tl-table__footer-button[data-action="next"]');
+    var buttonLast = document.querySelector('.tl-table__footer-button[data-action="last"]');
 
     function updateButtonStates(current) {
-      if (!btnFirst || !btnPrev || !btnNext || !btnLast) return;
+      if (!buttonFirst || !buttonPrev || !buttonNext || !buttonLast) return;
 
       if (current <= 1) {
-        btnFirst.disabled = true;
-        btnPrev.disabled = true;
+        buttonFirst.disabled = true;
+        buttonPrev.disabled = true;
       } else {
-        btnFirst.disabled = false;
-        btnPrev.disabled = false;
+        buttonFirst.disabled = false;
+        buttonPrev.disabled = false;
       }
 
       if (current >= totalPages) {
-        btnNext.disabled = true;
-        btnLast.disabled = true;
+        buttonNext.disabled = true;
+        buttonLast.disabled = true;
       } else {
-        btnNext.disabled = false;
-        btnLast.disabled = false;
+        buttonNext.disabled = false;
+        buttonLast.disabled = false;
       }
     }
 
-    btns.forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var action = btn.getAttribute('data-action');
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var action = button.getAttribute('data-action');
         var current = Number(currentPageEl.value) || 1;
         var next = current;
 

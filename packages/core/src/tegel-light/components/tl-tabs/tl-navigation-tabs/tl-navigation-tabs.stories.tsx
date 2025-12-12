@@ -53,7 +53,7 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
       const isDisabled = i === 3;
       const isSelected = i === Number(selectedIndex) && !isDisabled;
 
-      const btnClasses = [
+      const buttonClasses = [
         'tl-navigation-tabs__tab-item',
         isSelected ? 'tl-navigation-tabs__tab-item--selected' : '',
         isDisabled ? 'tl-navigation-tabs__tab-item--disabled' : '',
@@ -63,20 +63,20 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
 
       return `
         <div class="tl-navigation-tabs__tab">
-          <button class="${btnClasses}">${label}</button>
+          <button class="${buttonClasses}">${label}</button>
         </div>
       `;
     })
     .join('');
 
-  const leftBtn = showLeftButton
-    ? `<button class="tl-navigation-tabs__scroll-btn tl-navigation-tabs__scroll-btn--left">
+  const leftButton = showLeftButton
+    ? `<button class="tl-navigation-tabs__scroll-button tl-navigation-tabs__scroll-button--left">
          <span class="tl-icon tl-icon--chevron_left tl-icon--20"></span>
        </button>`
     : '';
 
-  const rightBtn = showRightButton
-    ? `<button class="tl-navigation-tabs__scroll-btn tl-navigation-tabs__scroll-btn--right">
+  const rightButton = showRightButton
+    ? `<button class="tl-navigation-tabs__scroll-button tl-navigation-tabs__scroll-button--right">
          <span class="tl-icon tl-icon--chevron_right tl-icon--20"></span>
        </button>`
     : '';
@@ -91,9 +91,9 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
 
     <div class="tl-navigation-tabs ${modeClass}" style="padding-left: ${leftPadding}px;">
       <div class="tl-navigation-tabs__wrapper">
-        ${leftBtn}
+        ${leftButton}
         ${tabsHtml}
-        ${rightBtn}
+        ${rightButton}
       </div>
     </div>
 
