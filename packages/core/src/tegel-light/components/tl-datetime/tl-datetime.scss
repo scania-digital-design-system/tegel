@@ -216,6 +216,10 @@
     display: none;
   }
 
+  .tl-datetime--disabled & {
+    color: var(--color-foreground-text-disabled);
+  }
+
   .tl-datetime--error & {
     color: var(--datetime-helper-error);
   }
