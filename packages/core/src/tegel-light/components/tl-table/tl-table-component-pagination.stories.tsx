@@ -204,10 +204,10 @@ const PaginationTemplate = ({
               <div class="tl-table__page-selector">
                 <input class="tl-table__page-selector-input" id="tl-current-page" value="1" type="number" min="1" max="4" pattern="[0-9]+" dir="rtl">
                 <p class="tl-table__footer-text">of <span id="tl-total-pages">${pages}</span> pages</p>
-                <button class="tl-table__footer-btn" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--20"></span></button>
-                <button class="tl-table__footer-btn" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--20"></span></button>
-                <button class="tl-table__footer-btn" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--20"></span></button>
-                <button class="tl-table__footer-btn" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="first"><span class="tl-icon tl-icon--skip_backwards tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="prev"><span class="tl-icon tl-icon--chevron_left tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="next"><span class="tl-icon tl-icon--chevron_right tl-icon--20"></span></button>
+                <button class="tl-table__footer-button" data-action="last"><span class="tl-icon tl-icon--skip_forward tl-icon--20"></span></button>
               </div>
             </div>
           </td>
@@ -247,11 +247,11 @@ const PaginationTemplate = ({
       console.log(name, detail);
     }
 
-    var btns = document.querySelectorAll('.tl-table__footer-btn');
-    var btnFirst = document.querySelector('.tl-table__footer-btn[data-action="first"]');
-    var btnPrev = document.querySelector('.tl-table__footer-btn[data-action="prev"]');
-    var btnNext = document.querySelector('.tl-table__footer-btn[data-action="next"]');
-    var btnLast = document.querySelector('.tl-table__footer-btn[data-action="last"]');
+    var btns = document.querySelectorAll('.tl-table__footer-button');
+    var btnFirst = document.querySelector('.tl-table__footer-button[data-action="first"]');
+    var btnPrev = document.querySelector('.tl-table__footer-button[data-action="prev"]');
+    var btnNext = document.querySelector('.tl-table__footer-button[data-action="next"]');
+    var btnLast = document.querySelector('.tl-table__footer-button[data-action="last"]');
 
     function updateButtonStates(current) {
       if (!btnFirst || !btnPrev || !btnNext || !btnLast) return;
