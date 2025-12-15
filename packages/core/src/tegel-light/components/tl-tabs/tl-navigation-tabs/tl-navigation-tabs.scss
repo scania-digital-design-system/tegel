@@ -34,7 +34,7 @@
   }
 }
 
-.tl-navigation-tabs__scroll-btn {
+.tl-navigation-tabs__scroll-button {
   background-color: transparent;
   color: var(--navigation-tabs-scroll-button-icon);
   cursor: pointer;
@@ -47,18 +47,18 @@
   position: sticky;
 }
 
-.tl-navigation-tabs__scroll-btn--right {
+.tl-navigation-tabs__scroll-button--right {
   right: 0;
   z-index: 1;
 }
 
-.tl-navigation-tabs__scroll-btn--left {
+.tl-navigation-tabs__scroll-button--left {
   left: 0;
   z-index: 1;
 }
 
 svg {
-  .tl-navigation-tabs__scroll-btn & {
+  .tl-navigation-tabs__scroll-button & {
     fill: var(--navigation-tabs-scroll-button-color);
   }
 }
