@@ -15,7 +15,7 @@ export default {
       control: { type: 'select' },
       options: ['xs', 'sm', 'md', 'lg'],
     },
-    fullwidth: {
+    fullWidth: {
       name: 'Full width',
       control: { type: 'boolean' },
     },
