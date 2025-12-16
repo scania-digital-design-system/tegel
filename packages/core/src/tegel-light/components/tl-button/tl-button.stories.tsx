@@ -6,20 +6,25 @@ export default {
   title: 'Tegel Light (CSS)/Button',
   argTypes: {
     variant: {
+      name: 'Variant',
       control: { type: 'select' },
       options: ['primary', 'secondary', 'ghost', 'danger'],
     },
     size: {
+      name: 'Size',
       control: { type: 'select' },
       options: ['xs', 'sm', 'md', 'lg'],
     },
     fullWidth: {
+      name: 'Full width',
       control: { type: 'boolean' },
     },
     disabled: {
+      name: 'Disabled',
       control: { type: 'boolean' },
     },
     onlyIcon: {
+      name: 'Only icon',
       control: { type: 'boolean' },
       description: 'Button with only an icon (no text) - not available for xs size',
       if: { arg: 'size', neq: 'xs' },

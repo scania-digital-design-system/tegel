@@ -160,7 +160,6 @@ const Template = ({
         />
         <span class="tl-datetime__icon tl-datetime__icon--datetime"><span class="tl-icon tl-icon--calendar tl-icon--20"></span></span>
         <span class="tl-datetime__icon tl-datetime__icon--time"><span class="tl-icon tl-icon--clock tl-icon--20"></span></span>
-        <span class="tl-datetime__bar"></span>
         ${labelInside}
       </div>
       ${helperHtml}

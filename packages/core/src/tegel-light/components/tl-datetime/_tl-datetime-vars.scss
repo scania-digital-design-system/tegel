@@ -46,6 +46,14 @@
 .scania .tl-datetime {
   /* Datetime: units */
   --datetime-border-radius: 4px 4px 0 0;
+
+  /* Datetime: box-shadow */
+  --datetime-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --datetime-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --datetime-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --datetime-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
+  --datetime-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
+  --datetime-box-shadow-error-focus: 0 -2px 0 0 var(--color-system-danger-default);
   --datetime-highlight: var(--datetime-highlight-bar);
   --datetime-highlight-error: var(--color-system-danger-default);
 
@@ -91,6 +99,14 @@
 .traton .tl-datetime {
   /* Datetime: units */
   --datetime-border-radius: 4px 4px 4px 4px;
+
+  /* Datetime: box-shadow */
+  --datetime-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --datetime-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --datetime-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --datetime-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+  --datetime-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
+  --datetime-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
   --datetime-highlight: transparent;
   --datetime-highlight-error: transparent;
 
