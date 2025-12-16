@@ -103,7 +103,7 @@ const Template = ({ variant, header, subheader, actions, hidden, closable }) => 
     <div class="tl-toast ${variantClass} ${hiddenClass}">
       ${iconElement}
       <div class="tl-toast__content">
-        <div class="tl-toast__header-subheader">
+        <div class="tl-toast__text">
           ${header ? `<div class="tl-toast__header">${header}</div>` : ''}
           ${subheader ? `<div class="tl-toast__subheader">${subheader}</div>` : ''}
         </div>
