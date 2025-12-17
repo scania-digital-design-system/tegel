@@ -8,12 +8,11 @@
 .tl-folder-tabs__tab {
   --folder-tab-surface: var(--color-background-surface-200);
   --folder-tab-surface-selected: var(--color-background-layer-01);
-  --folder-tab-text: var(--color-foreground-text-soft);
   --folder-tab-surface-hover: var(--color-background-surface-300);
   --folder-tab-border-selected: var(--color-foreground-border-accent-focus);
-  --folder-tab-divider-text: var(--color-foreground-icon-discrete);
-  --folder-tab-item-text: var(--color-foreground-text-soft);
-  --folder-tab-item-text-disabled: var(--color-foreground-text-disabled);
+  --folder-tab-divider: var(--color-foreground-icon-discrete);
+  --folder-tab-text: var(--color-foreground-text-soft);
+  --folder-tab-text-disabled: var(--color-foreground-text-disabled);
 }
 
 .tl-folder-tabs--primary .tl-folder-tabs__tab {

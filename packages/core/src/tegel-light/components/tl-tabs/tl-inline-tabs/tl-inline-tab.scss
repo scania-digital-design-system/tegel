@@ -2,15 +2,9 @@
 @use '../../../../../../../typography/mixins/type-styles' as *;
 
 .tl-inline-tabs__tab {
-  @include tds-box-sizing;
-
-  display: block;
-  position: relative;
-}
-
-.tl-inline-tabs__tab-item {
   all: unset;
   margin-right: 32px;
+  @include tds-box-sizing;
   @include headline-07;
 
   color: var(--inline-tabs-tab);
