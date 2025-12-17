@@ -127,12 +127,11 @@ export default {
       <div class="tl-table__actionbar-right">
         <button
           class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon"
-          aria-label="Button"
         >
           <span class="tl-icon tl-icon--settings tl-icon--16" aria-hidden="true"></span>
         </button>
         <button class="tl-button tl-button--primary tl-button--sm">
-          <span class="tl-button__label">Download</span>
+          Download
         </button>
       </div>`,
     ),
