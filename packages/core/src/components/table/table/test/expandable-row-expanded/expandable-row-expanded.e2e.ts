@@ -26,7 +26,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(tableBodyRowFirstInput).toHaveCount(1);
       await expect(tableBodyExpandableRowSlot).toHaveCount(1);
       await expect(tableBodyExpandableRowSlot).toBeVisible();
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.05 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
     test('click on expand-input -> should become unchecked for row-id 1', async ({ page }) => {
