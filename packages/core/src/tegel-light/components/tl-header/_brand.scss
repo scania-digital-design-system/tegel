@@ -1,7 +1,7 @@
 @use '../../../mixins/box-sizing' as *;
 @use './tl-header-vars' as *;
 
-.tl-header__brand-symbol {
+.tl-header__brand {
   display: block;
   width: var(--header-brand-item-width);
   height: 30px;

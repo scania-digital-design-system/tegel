@@ -130,7 +130,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
             <li class="tl-header__middle-spacer"></li>
             <li class="tl-header__item">
                <a class="tl-header__item-wrapper">
-                  <div class="tl-header__brand-symbol"></div>
+                  <div class="tl-header__brand"></div>
                </a>
             </li>
          </ul>

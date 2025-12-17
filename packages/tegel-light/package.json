@@ -33,7 +33,7 @@
     "./tl-chip.css": "./dist/tl-chip.css",
     "./tl-divider.css": "./dist/tl-divider.css",
     "./tl-dropdown.css": "./dist/tl-dropdown.css",
-    "./tl-header-brand-symbol.css": "./dist/tl-header-brand-symbol.css",
+    "./tl-header-brand.css": "./dist/tl-header-brand.css",
     "./tl-header-item.css": "./dist/tl-header-item.css",
     "./tl-header-title.css": "./dist/tl-header-title.css",
     "./tl-header.css": "./dist/tl-header.css",
