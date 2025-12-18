@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property       | Attribute        | Description                                  | Type     | Default     |
-| -------------- | ---------------- | -------------------------------------------- | -------- | ----------- |
-| `tdsAriaLabel` | `tds-aria-label` | Value to be used by the aria-label attribute | `string` | `undefined` |
+| Property       | Attribute        | Description                                  | Type                  | Default     |
+| -------------- | ---------------- | -------------------------------------------- | --------------------- | ----------- |
+| `tdsAriaLabel` | `tds-aria-label` | Value to be used by the aria-label attribute | `string \| undefined` | `undefined` |
 
 
 ## Dependencies

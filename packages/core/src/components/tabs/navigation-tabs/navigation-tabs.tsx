@@ -20,7 +20,7 @@ import {
   shadow: true,
 })
 export class TdsNavigationTabs {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
@@ -30,7 +30,7 @@ export class TdsNavigationTabs {
 
   /** Sets the selected Tab.
    * If this is set, all Tab changes need to be handled by the user. */
-  @Prop({ reflect: true }) selectedIndex: number;
+  @Prop({ reflect: true }) selectedIndex?: number;
 
   /** Custom left padding value for the wrapper element. */
   @Prop({ reflect: true }) leftPadding: number = 32;
@@ -53,7 +53,7 @@ export class TdsNavigationTabs {
 
   private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLTdsNavigationTabElement>;
+  private children: Array<HTMLTdsNavigationTabElement> = [];
 
   private clickHandlers = new WeakMap<HTMLElement, EventListener>();
 
@@ -64,7 +64,7 @@ export class TdsNavigationTabs {
     cancelable: true,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     selectedTabIndex: number;
   }>;
 
@@ -100,7 +100,9 @@ export class TdsNavigationTabs {
         return tabElement;
       },
     );
-    this.children[this.selectedIndex].setSelected(true);
+    if (this.selectedIndex) {
+      this.children[this.selectedIndex].setSelected(true);
+    }
   }
 
   private scrollRight(): void {

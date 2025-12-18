@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property         | Attribute          | Description                                                                                | Type      | Default     |
-| ---------------- | ------------------ | ------------------------------------------------------------------------------------------ | --------- | ----------- |
-| `label`          | `label`            | The label of the button that opens the dropdown. This is an alternative to the label slot. | `string`  | `undefined` |
-| `noDropdownIcon` | `no-dropdown-icon` | If the dropdown icon (downwards chevron) should be hidden.                                 | `boolean` | `false`     |
-| `selected`       | `selected`         | If the button that opens the dropdown should appear selected.                              | `boolean` | `false`     |
-| `tdsAriaLabel`   | `tds-aria-label`   | Value to be used by the aria-label attribute                                               | `string`  | `undefined` |
+| Property         | Attribute          | Description                                                                                | Type                  | Default     |
+| ---------------- | ------------------ | ------------------------------------------------------------------------------------------ | --------------------- | ----------- |
+| `label`          | `label`            | The label of the button that opens the dropdown. This is an alternative to the label slot. | `string \| undefined` | `undefined` |
+| `noDropdownIcon` | `no-dropdown-icon` | If the dropdown icon (downwards chevron) should be hidden.                                 | `boolean`             | `false`     |
+| `selected`       | `selected`         | If the button that opens the dropdown should appear selected.                              | `boolean`             | `false`     |
+| `tdsAriaLabel`   | `tds-aria-label`   | Value to be used by the aria-label attribute                                               | `string \| undefined` | `undefined` |
 
 
 ## Slots

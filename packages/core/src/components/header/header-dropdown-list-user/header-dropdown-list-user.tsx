@@ -11,18 +11,18 @@ import { Component, h, Prop, Element, Host } from '@stencil/core';
 })
 export class TdsHeaderDropdownListLgUser {
   /** Image URL. */
-  @Prop() imgUrl: string;
+  @Prop() imgUrl?: string;
 
   /** Image alt text. */
-  @Prop() imgAlt: string;
+  @Prop() imgAlt?: string;
 
   /** Header text, usually the users first name and last name. */
-  @Prop() header: string;
+  @Prop() header?: string;
 
   /** Subheader text. */
-  @Prop() subheader: string;
+  @Prop() subheader?: string;
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   render() {
     return (

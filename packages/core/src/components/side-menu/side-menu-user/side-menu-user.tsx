@@ -14,13 +14,13 @@ export class TdsSideMenuUser {
   @Prop() heading!: string;
 
   /** The subheading text. */
-  @Prop() subheading: string;
+  @Prop() subheading?: string;
 
   /** The image source. */
-  @Prop() imgSrc: string;
+  @Prop() imgSrc?: string;
 
   /** The image alt text. */
-  @Prop() imgAlt: string;
+  @Prop() imgAlt?: string;
 
   render() {
     return (

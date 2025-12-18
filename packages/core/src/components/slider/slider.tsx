@@ -17,7 +17,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
   shadow: false,
 })
 export class TdsSlider {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Text for label */
   @Prop() label: string = '';
@@ -101,7 +101,7 @@ export class TdsSlider {
 
   private resizeObserverAdded: boolean = false;
 
-  private initialValue: string;
+  private initialValue: string = '0';
 
   private resetEventListenerAdded: boolean = false;
 
@@ -126,7 +126,7 @@ export class TdsSlider {
     cancelable: false,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     value: string;
   }>;
 
@@ -137,7 +137,7 @@ export class TdsSlider {
     cancelable: false,
     bubbles: true,
   })
-  tdsInput: EventEmitter<{
+  tdsInput!: EventEmitter<{
     value: string;
   }>;
 
@@ -289,7 +289,7 @@ export class TdsSlider {
     }
   }
 
-  private announcementDebounceTimeout: NodeJS.Timeout;
+  private announcementDebounceTimeout!: NodeJS.Timeout;
 
   private announceValueChange() {
     if (!this.ariaLiveElement) return;

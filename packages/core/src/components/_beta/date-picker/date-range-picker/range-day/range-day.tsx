@@ -7,13 +7,13 @@ import { isBefore, isSameDay, isWithinInterval, isToday, format } from 'date-fns
   shadow: true,
 })
 export class DatepickerDate {
-  @Element() host: HTMLDatePickerDayElement;
+  @Element() host!: HTMLDatePickerDayElement;
 
   /** Marks the date as not part of the currently displayed month. */
-  @Prop() notCurrentMonth: boolean;
+  @Prop() notCurrentMonth?: boolean;
 
   /** The Date. */
-  @Prop() date: Date;
+  @Prop() date?: Date;
 
   /** Marks the Date as selected. */
   @Prop() selected: boolean = false;
