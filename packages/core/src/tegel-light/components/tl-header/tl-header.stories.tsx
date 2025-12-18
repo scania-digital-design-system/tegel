@@ -32,7 +32,7 @@ export default {
       if: { arg: 'includeDropdown', truthy: true },
     },
     includeUserProfile: { control: 'boolean', name: 'Include user profile' },
-    includeBrandSymbol: { control: 'boolean', name: 'Include brand symbol' },
+    includeBrand: { control: 'boolean', name: 'Include brand symbol' },
     isHamburgerPressed: {
       control: 'boolean',
       name: 'Hamburger pressed',
@@ -51,7 +51,7 @@ export default {
     isHamburgerSelected: false,
     includeBentoGrid: false,
     includeBentoList: false,
-    includeBrandSymbol: true,
+    includeBrand: true,
     includeDropdown: false,
     isDropdownOpen: false,
     isDropdownSelected: false,
@@ -67,7 +67,7 @@ const Template = ({
   includeHamburger,
   includeBentoGrid,
   includeBentoList,
-  includeBrandSymbol,
+  includeBrand,
   isHamburgerPressed,
   isHamburgerSelected,
   includeDropdown,
@@ -211,8 +211,8 @@ const Template = ({
       }
 
       ${
-        includeBrandSymbol
-          ? `<li class="tl-header__item"><a class="tl-header__item-wrapper"><div class="tl-header__brand-symbol"></div></a></li>`
+        includeBrand
+          ? `<li class="tl-header__item"><a class="tl-header__item-wrapper"><div class="tl-header__brand"></div></a></li>`
           : ''
       }
 
