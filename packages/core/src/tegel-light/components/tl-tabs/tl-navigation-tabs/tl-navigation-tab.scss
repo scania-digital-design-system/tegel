@@ -3,15 +3,9 @@
 @use './tl-navigation-tabs-vars' as *;
 
 .tl-navigation-tabs__tab {
-  @include tds-box-sizing;
-
-  display: block;
-  position: relative;
-}
-
-.tl-navigation-tabs__tab-item {
   all: unset;
   margin-right: 32px;
+  @include tds-box-sizing;
   @include headline-07;
 
   color: var(--navigation-tabs-tab);

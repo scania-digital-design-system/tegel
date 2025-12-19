@@ -21,10 +21,10 @@
   border-left: 1px solid transparent;
   border-top: 2px solid var(--folder-tab-surface);
   background-color: var(--folder-tab-surface);
-  color: var(--folder-tab-item-text);
+  color: var(--folder-tab-text);
 
   & + .tl-folder-tabs__tab {
-    border-left-color: var(--folder-tab-divider-text);
+    border-left-color: var(--folder-tab-divider);
   }
 
   &:focus-visible {
@@ -57,7 +57,7 @@
   }
 
   &--disabled {
-    color: var(--folder-tab-item-text-disabled);
+    color: var(--folder-tab-text-disabled);
     cursor: not-allowed;
     user-select: none;
 
