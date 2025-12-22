@@ -1,6 +1,6 @@
 @use './tl-popover-menu-vars';
-@use '../../../mixins/box-sizing';
-@use '../../../mixins/z-index';
+@use '../../../mixins/box-sizing' as *;
+@use '../../../mixins/z-index' as *;
 @use '../../../../../../typography/mixins/type-styles';
 
 .tl-popover-menu__item-wrapper {
