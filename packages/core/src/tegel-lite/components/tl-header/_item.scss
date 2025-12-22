@@ -1,0 +1,47 @@
+@use '../../../mixins/box-sizing' as *;
+@use './tl-header-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-header__item-wrapper {
+  all: unset;
+  @include tds-box-sizing;
+  @include headline-07;
+
+  background-color: var(--header-background);
+  border-right: 1px solid var(--header-basic-element-border);
+  color: var(--header-nav-item);
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:has(.tl-header__brand) {
+    padding: 0 19px;
+  }
+
+  &:hover {
+    background-color: var(--header-item-hover);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--color-foreground-border-accent-focus);
+  }
+
+  .tl-header__item--pressed & {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: var(--header-basic-element-background-selected);
+    box-shadow: inset 0 0 0 2px var(--header-nav-item-border-pressed);
+  }
+
+  .tl-header__item--selected:not(.tl-header__item--pressed) & {
+    padding-top: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 4px;
+    border-bottom-color: var(--header-nav-item-border-pressed);
+  }
+}
