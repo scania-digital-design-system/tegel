@@ -42,6 +42,11 @@
   @media (min-width: 992px) {
     display: block;
   }
+
+  &:has(.tl-icon--burger),
+  &:has(.tl-header__brand) {
+    display: block;
+  }
 }
 
 .tl-header__dropdown {
@@ -52,6 +57,10 @@
   position: relative;
 
   @media (min-width: 992px) {
+    display: block;
+  }
+
+  &:has(.tl-icon--bento) {
     display: block;
   }
 }
