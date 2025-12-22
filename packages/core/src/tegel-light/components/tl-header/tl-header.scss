@@ -43,16 +43,7 @@
     display: block;
   }
 
-  // Hamburger only visible on mobile
-  &:has(.tl-icon--burger) {
-    display: block;
-
-    @media (min-width: 992px) {
-      display: none;
-    }
-  }
-
-  // Brand always visible
+  &:has(.tl-icon--burger),
   &:has(.tl-header__brand) {
     display: block;
   }

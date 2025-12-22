@@ -81,7 +81,6 @@ const Template = ({ persistent, collapsible, collapsed }) => {
     :root { --app-bar-height: 64px; }
     .demo-layout { min-height: 100%; display: flex; flex-direction: column; }
     .demo-wrap-side-menu-and-main { display: flex; flex-grow: 1; }
-    .demo-main { box-sizing: border-box; flex: 1; }
 
     ${
       persistent
@@ -98,10 +97,20 @@ const Template = ({ persistent, collapsible, collapsed }) => {
         : ''
     }
 
+    @media (min-width: 992px) {
+          .tl-header__item {
+        display: none!important;
+      }
+        }
+
     .demo-hide { display: none; }
     @media (min-width: 375px) {
       .demo-xs-hide { display: none; }
       .demo-xs-show { display: block; }
+    }
+
+    .tl-header__item {
+    display: block;
     }
   </style>
 
@@ -229,7 +238,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
             </aside>
          </div>
       </div>
-      <main class="tds-u-h-100 tds-u-p3 demo-main">
+      <main class="tds-u-h-100 tds-u-p3" style="box-sizing: border-box; flex:1;">
          <p>If there are more than a few buttons and/or links in the Header, they might not fit on medium size screens.
             <br/>In that case they should be placed in a persistent Side Menu — which is always visible on large screens.
          </p>
