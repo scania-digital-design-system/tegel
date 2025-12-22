@@ -1,0 +1,27 @@
+@use './tl-side-menu-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-side-menu__user {
+  display: flex;
+  align-items: center;
+  gap: var(--component-side-menu-space-sub-menu-item-profile-gap);
+}
+
+.tl-side-menu__user-image {
+  height: var(--side-menu-profile-user-image-size);
+
+  * {
+    width: var(--side-menu-profile-user-image-size);
+    height: var(--side-menu-profile-user-image-size);
+    border-radius: 50%;
+  }
+}
+
+.tl-side-menu__user-label {
+  display: block;
+  color: var(--side-menu-single-item-color);
+
+  .subheader {
+    color: var(--color-foreground-text-subtle);
+  }
+}
