@@ -8,6 +8,21 @@ export default {
   },
   argTypes: {
     includeTitle: { control: 'boolean', name: 'Include title' },
+    includeHamburger: {
+      control: 'boolean',
+      name: 'Include hamburger (only visible on mobile)',
+      description: 'Hamburger menu is automatically hidden on desktop (≥992px)',
+    },
+    isHamburgerPressed: {
+      control: 'boolean',
+      name: 'Hamburger pressed',
+      if: { arg: 'includeHamburger', truthy: true },
+    },
+    isHamburgerSelected: {
+      control: 'boolean',
+      name: 'Hamburger selected',
+      if: { arg: 'includeHamburger', truthy: true },
+    },
     includeBentoGrid: { control: 'boolean', name: 'Include bento (Grid)' },
     includeBentoList: { control: 'boolean', name: 'Include bento (List)' },
     includeHeaderItem: { control: 'boolean', name: 'Include header item' },
@@ -35,6 +50,9 @@ export default {
   },
   args: {
     includeTitle: true,
+    includeHamburger: true,
+    isHamburgerPressed: false,
+    isHamburgerSelected: false,
     includeBentoGrid: false,
     includeBentoList: false,
     includeBrand: true,
@@ -50,6 +68,7 @@ export default {
 
 const Template = ({
   includeTitle,
+  includeHamburger,
   includeBentoGrid,
   includeBentoList,
   includeBrand,
@@ -73,11 +92,15 @@ const Template = ({
   <nav class="tl-header__nav">
     <ul class="tl-header__list">
 
-      <li class="tl-header__item">
+      ${
+        includeHamburger
+          ? `<li class="tl-header__item">
         <button class="tl-header__item-wrapper">
           <span class="tl-icon tl-icon--burger tl-icon--20" aria-hidden="true"></span>
         </button>
-      </li>
+      </li>`
+          : ''
+      }
 
       ${
         includeTitle
