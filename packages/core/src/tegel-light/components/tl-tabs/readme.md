@@ -45,14 +45,6 @@ The Tabs component provides tabbed navigation with multiple style variants.
 @scania/tegel-lite/tl-tabs.css
 ```
 
-## JavaScript Required
-
-The Tabs component requires JavaScript to handle:
-- Active tab state management
-- Tab switching and content display
-- Scroll button functionality (for inline tabs)
-- Keyboard navigation (Arrow keys)
-
 ## Elements
 
 ### Inline Tabs Elements
@@ -107,6 +99,14 @@ Apply these classes to `.tl-navigation-tab` elements.
 | ------------------------------ | ------------------------------ |
 | `.tl-navigation-tab--active`   | Active/selected tab            |
 | `.tl-navigation-tab--disabled` | Disabled tab                   |
+
+## JavaScript Required
+
+The Tabs component requires JavaScript to handle:
+- Active tab state management
+- Tab switching and content display
+- Scroll button functionality (for inline tabs)
+- Keyboard navigation (Arrow keys)
 
 ----------------------------------------------
 

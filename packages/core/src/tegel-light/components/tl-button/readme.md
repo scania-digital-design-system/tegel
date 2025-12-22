@@ -4,9 +4,28 @@ The Button component triggers actions or navigates users to different pages.
 
 ## Usage
 
+### Basic Button
+
 ```html
 <button class="tl-button tl-button--primary tl-button--md">
   Button text
+</button>
+```
+
+### Button with Icon
+
+```html
+<button class="tl-button tl-button--primary tl-button--md tl-button--icon">
+  Button text
+  <span class="tl-icon tl-icon--arrow-right tl-icon--20" aria-hidden="true"></span>
+</button>
+```
+
+### Button with Only Icon
+
+```html
+<button class="tl-button tl-button--primary tl-button--md tl-button--only-icon" aria-label="Delete">
+  <span class="tl-icon tl-icon--trash tl-icon--20" aria-hidden="true"></span>
 </button>
 ```
 
@@ -17,6 +36,7 @@ The Button component triggers actions or navigates users to different pages.
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-button.css
+@scania/tegel-lite/tl-icon.css (when using icons)
 ```
 
 ## Elements
@@ -24,6 +44,7 @@ The Button component triggers actions or navigates users to different pages.
 | Element      | HTML Element | Description               |
 | ------------ | ------------ | ------------------------- |
 | `.tl-button` | `<button>`/`<a>` | Main button element   |
+| `.tl-icon`   | `<span>`     | Icon element inside button (optional) |
 
 ## Modifiers
 
@@ -56,7 +77,9 @@ Apply these classes to the `.tl-button` element when using icons.
 | Modifier                | Description                              |
 | ----------------------- | ---------------------------------------- |
 | `.tl-button--icon`      | Button with text and icon                |
-| `.tl-button--only-icon` | Button with only an icon (no text)       |
+| `.tl-button--only-icon` | Button with only an icon (no text). Not available for `--xs` size. |
+
+**Note:** When using `.tl-button--only-icon`, always include an `aria-label` attribute for accessibility.
 
 ### Button State Modifiers
 

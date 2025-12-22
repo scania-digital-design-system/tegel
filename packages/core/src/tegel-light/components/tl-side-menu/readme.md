@@ -38,16 +38,8 @@ The Side Menu component provides a navigation sidebar with collapsible sections 
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-side-menu.css
+@scania/tegel-lite/tl-icon.css
 ```
-
-## JavaScript Required
-
-The Side Menu component requires JavaScript to handle:
-- Open/close menu (toggle wrapper state classes)
-- Collapse/expand functionality
-- Dropdown menu interactions
-- Click outside to close (overlay)
-- Keyboard navigation
 
 ## Elements
 
@@ -63,14 +55,20 @@ The Side Menu component requires JavaScript to handle:
 | `.tl-side-menu__list`                 | `<ul>`       | List container                     |
 | `.tl-side-menu__list--upper`          | `<ul>`       | Upper section list                 |
 | `.tl-side-menu__list--end`            | `<ul>`       | Bottom section list                |
-| `.tl-side-menu__item-wrapper`         | `<li>`       | Item wrapper                       |
-| `.tl-side-menu__item`                 | `<a>`/`<button>` | Menu item link/button          |
-| `.tl-side-menu__dropdown-wrapper`     | `<li>`       | Dropdown container                 |
-| `.tl-side-menu__dropdown-header`      | `<button>`   | Dropdown header button             |
-| `.tl-side-menu__dropdown-menu`        | `<ul>`       | Dropdown submenu                   |
-| `.tl-side-menu__dropdown-item-wrapper`| `<li>`       | Dropdown item wrapper              |
-| `.tl-side-menu__dropdown-icon`        | `<i>`        | Dropdown chevron icon              |
+| `.tl-side-menu__item-wrapper`         | `<div>`      | Item wrapper                       |
+| `.tl-side-menu__item`                 | `<div>`      | Menu item container                |
+| `.tl-side-menu__dropdown-wrapper`     | `<div>`      | Dropdown container                 |
+| `.tl-side-menu__dropdown`             | `<div>`      | Dropdown control wrapper           |
+| `.tl-side-menu__dropdown-header`      | `<div>`      | Dropdown header/title              |
+| `.tl-side-menu__dropdown-menu`        | `<div>`      | Dropdown submenu container         |
+| `.tl-side-menu__dropdown-list`        | `<div>`      | Dropdown list container            |
+| `.tl-side-menu__dropdown-item-wrapper`| `<div>`      | Dropdown item wrapper              |
+| `.tl-side-menu__dropdown-list-item`   | `<div>`      | Dropdown list item                 |
+| `.tl-side-menu__dropdown-icon`        | `<span>`     | Dropdown chevron icon              |
 | `.tl-side-menu__user`                 | `<div>`      | User profile section               |
+| `.tl-side-menu__user-image`           | `<div>`      | User profile image container       |
+| `.tl-side-menu__user-label`           | `<div>`      | User profile label/text            |
+| `.tl-icon`                            | `<span>`     | Icon element (optional)            |
 
 ## Modifiers
 
@@ -92,6 +90,39 @@ Apply these classes to the `.tl-side-menu__wrapper` element.
 | `.tl-side-menu__wrapper--open`    | Menu is open (mobile)          |
 | `.tl-side-menu__wrapper--closed`  | Menu is closed                 |
 | `.tl-side-menu__wrapper--empty`   | Empty state (no upper items)   |
+
+### Side Menu Item Modifiers
+
+Apply these classes to `.tl-side-menu__item` elements.
+
+| Modifier                          | Description                    |
+| --------------------------------- | ------------------------------ |
+| `.tl-side-menu__item--selected`   | Selected/active item           |
+
+### Side Menu Dropdown Modifiers
+
+Apply these classes to `.tl-side-menu__dropdown` elements.
+
+| Modifier                          | Description                    |
+| --------------------------------- | ------------------------------ |
+| `.tl-side-menu__dropdown--open`   | Dropdown is expanded           |
+
+### Side Menu Dropdown List Item Modifiers
+
+Apply these classes to `.tl-side-menu__dropdown-list-item` elements.
+
+| Modifier                                      | Description                    |
+| --------------------------------------------- | ------------------------------ |
+| `.tl-side-menu__dropdown-list-item--selected`| Selected dropdown list item    |
+
+## JavaScript Required
+
+The Side Menu component requires JavaScript to handle:
+- Open/close menu (toggle wrapper state classes)
+- Collapse/expand functionality
+- Dropdown menu interactions
+- Click outside to close (overlay)
+- Keyboard navigation
 
 ----------------------------------------------
 

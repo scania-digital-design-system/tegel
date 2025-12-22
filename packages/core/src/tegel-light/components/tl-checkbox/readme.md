@@ -5,10 +5,10 @@ The Checkbox component allows users to select one or more options from a set.
 ## Usage
 
 ```html
-<label class="tl-checkbox">
-  <input type="checkbox" class="tl-checkbox__input" />
-  <span class="tl-checkbox__label">Checkbox label</span>
-</label>
+<div class="tl-checkbox">
+  <input type="checkbox" class="tl-checkbox__input" id="checkbox-1" />
+  <label class="tl-checkbox__label" for="checkbox-1">Checkbox label</label>
+</div>
 ```
 
 <br />
@@ -24,19 +24,35 @@ The Checkbox component allows users to select one or more options from a set.
 
 | Element                | HTML Element      | Description                    |
 | ---------------------- | ----------------- | ------------------------------ |
-| `.tl-checkbox`         | `<label>`         | Main checkbox container        |
+| `.tl-checkbox`         | `<div>`           | Main checkbox container        |
 | `.tl-checkbox__input`  | `<input type="checkbox">` | Checkbox input element  |
-| `.tl-checkbox__label`  | `<span>`          | Label text for the checkbox    |
+| `.tl-checkbox__label`  | `<label>`         | Label text for the checkbox    |
 
 ## Modifiers
 
-### Checkbox Modifiers
+### Checkbox Container Modifiers
 
 Apply these classes to the `.tl-checkbox` element.
 
 | Modifier                  | Description                        |
 | ------------------------- | ---------------------------------- |
 | `.tl-checkbox--disabled`  | Disabled state styling             |
+
+### Checkbox Input Modifiers
+
+Apply these classes to the `.tl-checkbox__input` element.
+
+| Modifier                            | Description                                |
+| ----------------------------------- | ------------------------------------------ |
+| `.tl-checkbox__input--indeterminate`| Indeterminate state (mixed/partial state)  |
+
+### Checkbox Label Modifiers
+
+Apply these classes to the `.tl-checkbox__label` element.
+
+| Modifier                         | Description                     |
+| -------------------------------- | ------------------------------- |
+| `.tl-checkbox__label--disabled`  | Disabled label styling          |
 
 ----------------------------------------------
 

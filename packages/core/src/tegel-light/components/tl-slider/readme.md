@@ -31,17 +31,6 @@ The Slider component provides an interactive range input control with optional v
 @scania/tegel-lite/tl-slider.css
 ```
 
-## JavaScript Required
-
-The Slider component requires JavaScript to handle:
-- Slider thumb dragging and positioning
-- Value updates and synchronization
-- Track fill width updates
-- Tooltip display
-- Increment/decrement button functionality
-- Input field synchronization
-- Keyboard navigation (Arrow keys)
-
 ## Elements
 
 | Element                          | HTML Element | Description                        |
@@ -92,6 +81,17 @@ Apply these classes to the `.tl-slider__thumb-inner` element.
 | Modifier                           | Description                |
 | ---------------------------------- | -------------------------- |
 | `.tl-slider__thumb-inner--pressed` | Pressed/dragging state     |
+
+## JavaScript Required
+
+The Slider component requires JavaScript to handle:
+- Slider thumb dragging and positioning
+- Value updates and synchronization
+- Track fill width updates
+- Tooltip display
+- Increment/decrement button functionality
+- Input field synchronization
+- Keyboard navigation (Arrow keys)
 
 ----------------------------------------------
 

@@ -11,8 +11,8 @@ The Banner component displays important messages or notifications at the top of 
   </span>
   <div class="tl-banner__content">
     <div class="tl-banner__text">
-      <h6 class="tl-banner__header">Banner header</h6>
-      <span class="tl-banner__subheader">Banner subheader text</span>
+      <div class="tl-banner__header">Banner header</div>
+      <div class="tl-banner__subheader">Banner subheader text</div>
     </div>
     <div class="tl-banner__actions">
       <!-- Action buttons or links -->
@@ -42,21 +42,23 @@ The Banner component displays important messages or notifications at the top of 
 | `.tl-banner__icon`      | `<span>`     | Container for the prefix icon              |
 | `.tl-banner__content`   | `<div>`      | Main content area                          |
 | `.tl-banner__text`      | `<div>`      | Text content wrapper                       |
-| `.tl-banner__header`    | `<h6>`       | Banner header text                         |
-| `.tl-banner__subheader` | `<span>`     | Banner subheader text                      |
+| `.tl-banner__header`    | `<div>`      | Banner header text                         |
+| `.tl-banner__subheader` | `<div>`      | Banner subheader text                      |
 | `.tl-banner__actions`   | `<div>`      | Container for action buttons or links      |
 | `.tl-banner__close`     | `<div>`      | Close button container                     |
+| `.tl-icon`              | `<span>`     | Icon element (optional)                    |
 
 ## Modifiers
 
 ### Banner Variant Modifiers
 
-Apply these classes to the `.tl-banner` element.
+Apply these classes to the `.tl-banner` element to change the banner's appearance.
 
-| Modifier                  | Description                              |
-| ------------------------- | ---------------------------------------- |
-| `.tl-banner--error`       | Error variant with error styling         |
-| `.tl-banner--information` | Information variant with info styling    |
+| Modifier                  | Description                                        |
+| ------------------------- | -------------------------------------------------- |
+| (none)                    | Default variant with standard background           |
+| `.tl-banner--error`       | Error variant with danger background and icon      |
+| `.tl-banner--information` | Information variant with info background and icon  |
 
 ----------------------------------------------
 

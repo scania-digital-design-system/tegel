@@ -26,16 +26,8 @@ The Dropdown component provides a select/filter input with customizable options 
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-dropdown.css
+@scania/tegel-lite/tl-checkbox.css (when using multiselect)
 ```
-
-## JavaScript Required
-
-The Dropdown component requires JavaScript to handle:
-- Toggle dropdown list visibility (aria-expanded)
-- Keyboard navigation
-- Option selection
-- Filter functionality (for input variant)
-- Clear button functionality
 
 ## Elements
 
@@ -51,7 +43,8 @@ The Dropdown component requires JavaScript to handle:
 | `.tl-dropdown__text`          | `<span>`     | Selected text display                 |
 | `.tl-dropdown__list`          | `<ul>`       | Options list container                |
 | `.tl-dropdown__option`        | `<li>`       | Individual option item                |
-| `.tl-dropdown__helper`        | `<span>`     | Helper text below dropdown            |
+| `.tl-dropdown__helper`        | `<div>`      | Helper text container below dropdown  |
+| `.tl-checkbox`                | `<div>`      | Checkbox wrapper (for multiselect)    |
 
 ## Modifiers
 
@@ -102,6 +95,15 @@ Apply these classes to `.tl-dropdown__option` elements.
 | `.tl-dropdown__option--selected` | Selected/active option          |
 | `.tl-dropdown__option--disabled` | Disabled option                 |
 | `.tl-dropdown__option--no-result`| No results found state          |
+
+## JavaScript Required
+
+The Dropdown component requires JavaScript to handle:
+- Toggle dropdown list visibility (aria-expanded)
+- Keyboard navigation
+- Option selection
+- Filter functionality (for input variant)
+- Clear button functionality
 
 ----------------------------------------------
 

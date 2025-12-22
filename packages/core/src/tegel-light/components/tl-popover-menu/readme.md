@@ -8,16 +8,16 @@ The Popover Menu component displays a dropdown menu with interactive items.
 <div class="tl-popover-menu tl-popover-menu--visible">
   <div class="tl-popover-menu__item-wrapper">
     <button class="tl-popover-menu__item">
-      <i class="tl-icon tl-icon--edit"></i>
+      <span class="tl-icon tl-icon--edit"></span>
       Edit
     </button>
     <button class="tl-popover-menu__item">
-      <i class="tl-icon tl-icon--delete"></i>
+      <span class="tl-icon tl-icon--delete"></span>
       Delete
     </button>
     <div class="tl-divider"></div>
     <button class="tl-popover-menu__item tl-popover-menu__item--disabled">
-      <i class="tl-icon tl-icon--settings"></i>
+      <span class="tl-icon tl-icon--settings"></span>
       Settings
     </button>
   </div>
@@ -31,16 +31,9 @@ The Popover Menu component displays a dropdown menu with interactive items.
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-popover-menu.css
+@scania/tegel-lite/tl-icon.css
+@scania/tegel-lite/tl-divider.css
 ```
-
-## JavaScript Required
-
-The Popover Menu component requires JavaScript to handle:
-- Show/hide menu (toggle `tl-popover-menu--visible` class)
-- Positioning relative to trigger element
-- Click outside to close
-- Keyboard navigation (Arrow keys, Escape)
-- Item selection and actions
 
 ## Elements
 
@@ -49,6 +42,8 @@ The Popover Menu component requires JavaScript to handle:
 | `.tl-popover-menu`                | `<div>`      | Main popover menu container  |
 | `.tl-popover-menu__item-wrapper`  | `<div>`      | Wrapper for menu items       |
 | `.tl-popover-menu__item`          | `<button>`   | Menu item button             |
+| `.tl-divider`                     | `<div>`      | Divider between items (optional) |
+| `.tl-icon`                        | `<span>`     | Icon element (optional)      |
 
 ## Modifiers
 
@@ -76,6 +71,15 @@ Apply these classes to `.tl-popover-menu__item` elements.
 | Modifier                          | Description                     |
 | --------------------------------- | ------------------------------- |
 | `.tl-popover-menu__item--disabled`| Disabled menu item              |
+
+## JavaScript Required
+
+The Popover Menu component requires JavaScript to handle:
+- Show/hide menu (toggle `tl-popover-menu--visible` class)
+- Positioning relative to trigger element
+- Click outside to close
+- Keyboard navigation (Arrow keys, Escape)
+- Item selection and actions
 
 ----------------------------------------------
 

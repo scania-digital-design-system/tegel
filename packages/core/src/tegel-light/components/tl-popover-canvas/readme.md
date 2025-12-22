@@ -24,15 +24,8 @@ The Popover Canvas component displays contextual content in a floating container
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-popover-canvas.css
+@scania/tegel-lite/tl-button.css
 ```
-
-## JavaScript Required
-
-The Popover Canvas component requires JavaScript to handle:
-- Show/hide popover (toggle `tl-popover-canvas--visible` class)
-- Positioning relative to trigger element
-- Click outside to close
-- Keyboard navigation (Escape key)
 
 ## Elements
 
@@ -60,6 +53,14 @@ Apply these classes to the `.tl-popover-canvas` element.
 | Modifier                             | Description                      |
 | ------------------------------------ | -------------------------------- |
 | `.tl-popover-canvas--animation-fade` | Fade-in animation with slide up  |
+
+## JavaScript Required
+
+The Popover Canvas component requires JavaScript to handle:
+- Show/hide popover (toggle `tl-popover-canvas--visible` class)
+- Positioning relative to trigger element
+- Click outside to close
+- Keyboard navigation (Escape key)
 
 ----------------------------------------------
 

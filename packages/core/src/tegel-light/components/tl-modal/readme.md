@@ -10,7 +10,7 @@ The Modal component displays content in a layer above the main page with an over
   <div class="tl-modal__header">
     <h2 class="tl-modal__title">Modal Title</h2>
     <button class="tl-modal__close">
-      <i class="tl-icon tl-icon--cross"></i>
+      <span class="tl-icon tl-icon--cross"></span>
     </button>
   </div>
   <div class="tl-modal__body">
@@ -30,15 +30,9 @@ The Modal component displays content in a layer above the main page with an over
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-modal.css
+@scania/tegel-lite/tl-icon.css
+@scania/tegel-lite/tl-button.css
 ```
-
-## JavaScript Required
-
-The Modal component requires JavaScript to handle:
-- Show/hide modal and overlay (toggle `tl-modal--visible` class)
-- Close button functionality
-- Focus management and keyboard navigation (Escape key)
-- Click outside to close (overlay click)
 
 ## Elements
 
@@ -51,6 +45,7 @@ The Modal component requires JavaScript to handle:
 | `.tl-modal__close`    | `<button>`   | Close button                       |
 | `.tl-modal__body`     | `<div>`      | Main content area                  |
 | `.tl-modal__actions`  | `<div>`      | Action buttons container           |
+| `.tl-icon`            | `<span>`     | Icon element (optional)            |
 
 ## Modifiers
 
@@ -73,6 +68,14 @@ Apply these classes to the `.tl-modal` and `.tl-modal__overlay` elements.
 | --------------------- | ------------------------------ |
 | `.tl-modal--visible`  | Shows the modal/overlay        |
 | `.tl-modal--sticky`   | Sticky header and footer       |
+
+## JavaScript Required
+
+The Modal component requires JavaScript to handle:
+- Show/hide modal and overlay (toggle `tl-modal--visible` class)
+- Close button functionality
+- Focus management and keyboard navigation (Escape key)
+- Click outside to close (overlay click)
 
 ----------------------------------------------
 

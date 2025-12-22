@@ -5,8 +5,8 @@ The Icon component displays SVG icons using mask images with customizable sizes.
 ## Usage
 
 ```html
-<i class="tl-icon tl-icon--check"></i>
-<i class="tl-icon tl-icon--close tl-icon--24"></i>
+<span class="tl-icon tl-icon--check"></span>
+<span class="tl-icon tl-icon--close tl-icon--24"></span>
 ```
 
 <br />
@@ -22,7 +22,7 @@ The Icon component displays SVG icons using mask images with customizable sizes.
 
 | Element    | HTML Element | Description          |
 | ---------- | ------------ | -------------------- |
-| `.tl-icon` | `<i>`/`<span>` | Icon element       |
+| `.tl-icon` | `<span>`     | Icon element         |
 
 ## Modifiers
 
@@ -32,17 +32,11 @@ Apply these classes to the `.tl-icon` element to select an icon. The available i
 
 | Modifier             | Description                  |
 | -------------------- | ---------------------------- |
-| `.tl-icon--check`    | Checkmark icon               |
-| `.tl-icon--close`    | Close/X icon                 |
-| `.tl-icon--info`     | Information icon             |
-| `.tl-icon--error`    | Error icon                   |
-| `.tl-icon--burger`   | Hamburger menu icon          |
-| `.tl-icon--bento`    | Bento/grid menu icon         |
-| `.tl-icon--tick`     | Tick mark icon               |
-| `.tl-icon--cross`    | Cross icon                   |
-| `.tl-icon--chevron_down` | Chevron down icon        |
+| `.tl-icon--{icon_name}` | Icon from Tegel icon set  |
 
-**Note:** See the full icon list in the Tegel design system documentation.
+**Examples:** `.tl-icon--check`, `.tl-icon--close`, `.tl-icon--info`, `.tl-icon--error`, `.tl-icon--burger`, `.tl-icon--bento`, `.tl-icon--tick`, `.tl-icon--cross`, `.tl-icon--chevron_down`
+
+**Note:** See the [full icon list in Storybook](http://localhost:6006/?path=/story/foundations-icons-gallery--default).
 
 ### Icon Size Modifiers
 
@@ -50,12 +44,7 @@ Apply these classes to the `.tl-icon` element to change size. Default size is 20
 
 | Modifier          | Description              |
 | ----------------- | ------------------------ |
-| `.tl-icon--16`    | 16px × 16px              |
-| `.tl-icon--20`    | 20px × 20px (default)    |
-| `.tl-icon--24`    | 24px × 24px              |
-| `.tl-icon--32`    | 32px × 32px              |
-
-**Note:** Additional size modifiers may be available. Check icon-sizes configuration.
+| `.tl-icon--{size}` | {size}px × {size}px (12-96, even numbers) |
 
 ----------------------------------------------
 

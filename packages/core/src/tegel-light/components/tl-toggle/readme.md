@@ -6,11 +6,9 @@ The Toggle component provides a switch input for binary on/off selections.
 
 ```html
 <div class="tl-toggle">
-  <h4 class="tl-toggle__headline">Settings</h4>
-  <label>
-    <input type="checkbox" class="tl-toggle__input" />
-    <span class="tl-toggle__label">Enable feature</span>
-  </label>
+  <div class="tl-toggle__headline">Settings</div>
+  <input type="checkbox" class="tl-toggle__input tl-toggle__input--lg" />
+  <label class="tl-toggle__label">Enable feature</label>
 </div>
 ```
 
@@ -28,9 +26,9 @@ The Toggle component provides a switch input for binary on/off selections.
 | Element                | HTML Element | Description                  |
 | ---------------------- | ------------ | ---------------------------- |
 | `.tl-toggle`           | `<div>`      | Main container               |
-| `.tl-toggle__headline` | `<h4>`       | Headline text (optional)     |
+| `.tl-toggle__headline` | `<div>`      | Headline text (optional)     |
 | `.tl-toggle__input`    | `<input>`    | Checkbox input (styled)      |
-| `.tl-toggle__label`    | `<span>`     | Label text                   |
+| `.tl-toggle__label`    | `<label>`    | Label text                   |
 
 ## Modifiers
 
@@ -38,9 +36,10 @@ The Toggle component provides a switch input for binary on/off selections.
 
 Apply these classes to the `.tl-toggle__input` element.
 
-| Modifier               | Description                    |
-| ---------------------- | ------------------------------ |
-| `.tl-toggle__input--sm`| Small toggle (28px × 16px)     |
+| Modifier                 | Description                    |
+| ------------------------ | ------------------------------ |
+| `.tl-toggle__input--lg`  | Large toggle (44px × 24px, default) |
+| `.tl-toggle__input--sm`  | Small toggle (28px × 16px)     |
 
 ### Toggle State Modifiers
 

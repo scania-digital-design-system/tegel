@@ -15,7 +15,7 @@ The Textarea component provides a multi-line text input field with labels, helpe
   ></textarea>
   <div class="tl-textarea__bottom">
     <span class="tl-textarea__helper">Helper text</span>
-    <span class="tl-textarea__counter">0/200</span>
+    <span class="tl-textarea__charcounter">0 <span class="tl-textarea__charcounter-divider">/</span> 200</span>
   </div>
 </div>
 ```
@@ -31,14 +31,15 @@ The Textarea component provides a multi-line text input field with labels, helpe
 
 ## Elements
 
-| Element                   | HTML Element | Description                     |
-| ------------------------- | ------------ | ------------------------------- |
-| `.tl-textarea`            | `<div>`      | Main container                  |
-| `.tl-textarea__label`     | `<label>`    | Label for the textarea          |
-| `.tl-textarea__input`     | `<textarea>` | Textarea element                |
-| `.tl-textarea__helper`    | `<span>`     | Helper text                     |
-| `.tl-textarea__counter`   | `<span>`     | Character counter               |
-| `.tl-textarea__bottom`    | `<div>`      | Bottom section container        |
+| Element                              | HTML Element | Description                     |
+| ------------------------------------ | ------------ | ------------------------------- |
+| `.tl-textarea`                       | `<div>`      | Main container                  |
+| `.tl-textarea__label`                | `<label>`    | Label for the textarea          |
+| `.tl-textarea__input`                | `<textarea>` | Textarea element                |
+| `.tl-textarea__helper`               | `<div>`      | Helper text                     |
+| `.tl-textarea__bottom`               | `<div>`      | Bottom section container        |
+| `.tl-textarea__charcounter`          | `<span>`     | Character counter               |
+| `.tl-textarea__charcounter-divider`  | `<span>`     | Divider in character counter    |
 
 ## Modifiers
 

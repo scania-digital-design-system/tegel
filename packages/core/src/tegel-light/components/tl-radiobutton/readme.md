@@ -5,18 +5,18 @@ The Radiobutton component provides a radio button input for selecting one option
 ## Usage
 
 ```html
-<div class="tl-radiobutton">
+<label class="tl-radiobutton">
   <input 
     type="radio" 
     id="radio1" 
     name="radio-group" 
     class="tl-radiobutton__input"
   />
-  <div class="tl-radiobutton__control"></div>
-  <label for="radio1" class="tl-radiobutton__label">
+  <span class="tl-radiobutton__control"></span>
+  <span class="tl-radiobutton__label">
     Option 1
-  </label>
-</div>
+  </span>
+</label>
 ```
 
 <br />
@@ -32,10 +32,10 @@ The Radiobutton component provides a radio button input for selecting one option
 
 | Element                     | HTML Element | Description                  |
 | --------------------------- | ------------ | ---------------------------- |
-| `.tl-radiobutton`           | `<div>`      | Main container               |
+| `.tl-radiobutton`           | `<label>`    | Main container               |
 | `.tl-radiobutton__input`    | `<input>`    | Native radio input (hidden)  |
-| `.tl-radiobutton__control`  | `<div>`      | Visual radio control         |
-| `.tl-radiobutton__label`    | `<label>`    | Label text                   |
+| `.tl-radiobutton__control`  | `<span>`     | Visual radio control         |
+| `.tl-radiobutton__label`    | `<span>`     | Label text                   |
 
 ## Modifiers
 

@@ -25,6 +25,8 @@ The Card component is a container that groups related content and actions.
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-card.css
+@scania/tegel-lite/tl-button.css (when using expandable cards)
+@scania/tegel-lite/tl-icon.css (when using icons)
 ```
 
 ## Elements
@@ -43,6 +45,7 @@ The Card component is a container that groups related content and actions.
 | `.tl-card__content`    | `<p>`        | Card text content                       |
 | `.tl-card__bottom-row` | `<div>`      | Bottom row container for actions        |
 | `.tl-card__actions`    | `<div>`      | Container for action buttons            |
+| `.tl-icon`             | `<span>`     | Icon element (optional)                 |
 
 ## Modifiers
 
@@ -73,6 +76,15 @@ Apply these classes to the `.tl-card__header` element.
 | Modifier                  | Description                           |
 | ------------------------- | ------------------------------------- |
 | `.tl-card__header--below` | Positions header below the image      |
+
+### Card Image Placement Modifiers
+
+Apply these classes to the `.tl-card` element when using images.
+
+| Modifier                           | Description                                |
+| ---------------------------------- | ------------------------------------------ |
+| `.tl-card--image-above-header`     | Positions image above the header           |
+| `.tl-card--image-below-header`     | Positions image below the header           |
 
 ----------------------------------------------
 

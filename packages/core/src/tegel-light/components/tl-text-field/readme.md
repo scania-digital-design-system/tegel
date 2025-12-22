@@ -28,14 +28,19 @@ The Text Field component provides a single-line input field with labels, helper 
 
 ## Elements
 
-| Element                      | HTML Element | Description                     |
-| ---------------------------- | ------------ | ------------------------------- |
-| `.tl-text-field`             | `<div>`      | Main container                  |
-| `.tl-text-field__label`      | `<label>`    | Label for the input             |
-| `.tl-text-field__input`      | `<input>`    | Input element                   |
-| `.tl-text-field__helper`     | `<span>`     | Helper text below input         |
-| `.tl-text-field__prefix`     | `<span>`     | Prefix content (icon/text)      |
-| `.tl-text-field__suffix`     | `<span>`     | Suffix content (icon/text)      |
+| Element                              | HTML Element | Description                     |
+| ------------------------------------ | ------------ | ------------------------------- |
+| `.tl-text-field`                     | `<div>`      | Main container                  |
+| `.tl-text-field__label`              | `<label>`    | Label for the input             |
+| `.tl-text-field__input`              | `<input>`    | Input element                   |
+| `.tl-text-field__helper`             | `<div>`      | Helper text below input         |
+| `.tl-text-field__bottom`             | `<div>`      | Bottom wrapper for helper/counter |
+| `.tl-text-field__prefix--text`       | `<span>`     | Prefix text content             |
+| `.tl-text-field__prefix--icon`       | `<span>`     | Prefix icon content             |
+| `.tl-text-field__suffix--text`       | `<span>`     | Suffix text content             |
+| `.tl-text-field__suffix--icon`       | `<span>`     | Suffix icon content             |
+| `.tl-text-field__charcounter`        | `<span>`     | Character counter               |
+| `.tl-text-field__charcounter-divider`| `<span>`     | Divider in character counter    |
 
 ## Modifiers
 

@@ -8,7 +8,7 @@ The Link component provides styled hyperlinks with support for icons and differe
 <a href="#" class="tl-link">
   Link text
   <span class="tl-link__icon">
-    <i class="tl-icon tl-icon--arrow_right"></i>
+    <span class="tl-icon tl-icon--arrow_right"></span>
   </span>
 </a>
 ```
@@ -20,6 +20,7 @@ The Link component provides styled hyperlinks with support for icons and differe
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-link.css
+@scania/tegel-lite/tl-icon.css
 ```
 
 ## Elements
@@ -28,6 +29,7 @@ The Link component provides styled hyperlinks with support for icons and differe
 | ----------------- | ------------ | ---------------------------- |
 | `.tl-link`        | `<a>`/`<button>` | Link element             |
 | `.tl-link__icon`  | `<span>`     | Icon container for link      |
+| `.tl-icon`        | `<span>`     | Icon element (optional)      |
 
 ## Modifiers
 

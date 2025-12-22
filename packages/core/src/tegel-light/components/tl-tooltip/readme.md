@@ -6,8 +6,8 @@ The Tooltip component displays informational text in a popup when hovering or fo
 
 ```html
 <div class="tl-tooltip">
-  <button>Hover me</button>
-  <div class="tl-tooltip__popup tl-tooltip__popup--top tl-tooltip__popup--visible">
+  <button type="button" aria-describedby="tooltip-id">Hover me</button>
+  <div id="tooltip-id" class="tl-tooltip__popup tl-tooltip__popup--top tl-tooltip__popup--visible" role="tooltip">
     Tooltip text goes here
   </div>
 </div>
@@ -21,14 +21,6 @@ The Tooltip component displays informational text in a popup when hovering or fo
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-tooltip.css
 ```
-
-## JavaScript Required
-
-The Tooltip component requires JavaScript to handle:
-- Show/hide tooltip on hover/focus (toggle `tl-tooltip__popup--visible` class)
-- Position calculation and adjustment
-- Delay timers
-- Accessibility (aria attributes)
 
 ## Elements
 
@@ -65,6 +57,14 @@ Apply these classes to the `.tl-tooltip__popup` element.
 | Modifier                       | Description                    |
 | ------------------------------ | ------------------------------ |
 | `.tl-tooltip__popup--visible`  | Shows the tooltip              |
+
+## JavaScript Required
+
+The Tooltip component requires JavaScript to handle:
+- Show/hide tooltip on hover/focus (toggle `tl-tooltip__popup--visible` class)
+- Position calculation and adjustment
+- Delay timers
+- Accessibility (aria attributes)
 
 ----------------------------------------------
 

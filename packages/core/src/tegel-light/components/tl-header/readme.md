@@ -31,7 +31,86 @@ The Header component provides a consistent navigation header with items, dropdow
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-header.css
+@scania/tegel-lite/tl-icon.css
 ```
+
+## Elements
+
+| Element                                   | HTML Element | Description                        |
+| ----------------------------------------- | ------------ | ---------------------------------- |
+| `.tl-header`                              | `<header>`   | Main header container              |
+| `.tl-header__nav`                         | `<nav>`      | Navigation wrapper                 |
+| `.tl-header__list`                        | `<ul>`       | List container for header items    |
+| `.tl-header__item`                        | `<li>`       | Individual header item             |
+| `.tl-header__item-wrapper`                | `<button>`/`<a>` | Wrapper for header item content |
+| `.tl-header__item-text`                   | `<span>`     | Text content for header item       |
+| `.tl-header__dropdown`                    | `<li>`       | Dropdown menu container            |
+| `.tl-header__dropdown-wrapper`            | `<button>`   | Wrapper for dropdown trigger       |
+| `.tl-header__dropdown-icon`               | `<div>`      | Icon container for dropdown        |
+| `.tl-header__dropdown-menu`               | `<ul>`       | Dropdown menu list                 |
+| `.tl-header__dropdown-menu-item`          | `<li>`       | Dropdown menu item                 |
+| `.tl-header__dropdown-menu-launcher`      | `<ul>`       | Launcher grid menu container       |
+| `.tl-header__dropdown-menu-launcher-item` | `<li>`       | Launcher grid item                 |
+| `.tl-header__dropdown-menu-launcher-title`| `<li>`       | Launcher menu title                |
+| `.tl-header__dropdown-menu-user`          | `<li>`       | User profile menu item             |
+| `.tl-header__dropdown-menu-user-image`    | `<div>`      | User profile image container       |
+| `.tl-header__dropdown-menu-user-box`      | `<div>`      | User profile content box           |
+| `.tl-header__dropdown-menu-user-content`  | `<div>`      | User profile text content          |
+| `.tl-header__dropdown-menu-user-header`   | `<span>`     | User profile header text           |
+| `.tl-header__middle-spacer`               | `<li>`       | Spacer element for layout          |
+| `.tl-header__brand`                       | `<div>`      | Brand/logo container               |
+| `.tl-header__title`                       | `<li>`       | Title container                    |
+| `.tl-header__title-text`                  | `<h4>`       | Title text element                 |
+| `.tl-icon`                                | `<span>`     | Icon element (optional)            |
+
+## Modifiers
+
+### Header Item Modifiers
+
+Apply these classes to `.tl-header__item` elements.
+
+| Modifier                     | Description                        |
+| ---------------------------- | ---------------------------------- |
+| `.tl-header__item--pressed`  | Pressed state for header item      |
+| `.tl-header__item--selected` | Selected/active state              |
+
+### Header Dropdown Wrapper Modifiers
+
+Apply these classes to `.tl-header__dropdown-wrapper` elements.
+
+| Modifier                               | Description                        |
+| -------------------------------------- | ---------------------------------- |
+| `.tl-header__dropdown-wrapper--open`   | Dropdown is open                   |
+| `.tl-header__dropdown-wrapper--user`   | User profile dropdown styling      |
+| `.tl-header__dropdown-wrapper--selected` | Selected dropdown state          |
+| `.tl-header__dropdown-wrapper--pressed` | Pressed dropdown state            |
+
+### Header Dropdown Icon Modifiers
+
+Apply these classes to `.tl-header__dropdown-icon` elements.
+
+| Modifier                                | Description                       |
+| --------------------------------------- | --------------------------------- |
+| `.tl-header__dropdown-icon--rotated`    | Rotated icon state (180deg)       |
+
+### Header Dropdown Menu Modifiers
+
+Apply these classes to `.tl-header__dropdown-menu` elements.
+
+| Modifier                                      | Description                        |
+| --------------------------------------------- | ---------------------------------- |
+| `.tl-header__dropdown-menu--open`             | Menu is visible                    |
+| `.tl-header__dropdown-menu--user`             | User profile menu styling          |
+| `.tl-header__dropdown-menu--launcher-list`    | Launcher list menu styling         |
+| `.tl-header__dropdown-menu--launcher-grid`    | Launcher grid menu styling         |
+
+### Header Dropdown Menu Item Modifiers
+
+Apply these classes to `.tl-header__dropdown-menu-item` elements.
+
+| Modifier                                       | Description                       |
+| ---------------------------------------------- | --------------------------------- |
+| `.tl-header__dropdown-menu-item--selected`     | Selected menu item                |
 
 ## JavaScript Required
 
@@ -40,22 +119,6 @@ The Header component requires JavaScript to handle:
 - Mobile navigation (hamburger menu)
 - Active/selected state management
 - Keyboard navigation
-
-## Elements
-
-| Element                         | HTML Element | Description                        |
-| ------------------------------- | ------------ | ---------------------------------- |
-| `.tl-header`                    | `<header>`   | Main header container              |
-| `.tl-header__nav`               | `<nav>`      | Navigation wrapper                 |
-| `.tl-header__list`              | `<ul>`       | List container for header items    |
-| `.tl-header__item`              | `<li>`       | Individual header item             |
-| `.tl-header__item-link`         | `<a>`        | Link element for header item       |
-| `.tl-header__item-text`         | `<span>`     | Text content for header item       |
-| `.tl-header__dropdown`          | `<li>`       | Dropdown menu container            |
-| `.tl-header__dropdown-button`   | `<button>`   | Button trigger for dropdown        |
-| `.tl-header__middle-spacer`     | `<li>`       | Spacer element for layout          |
-| `.tl-header__brand`             | `<div>`      | Brand/logo container               |
-| `.tl-header__title`             | `<div>`      | Title container                    |
 
 ----------------------------------------------
 
