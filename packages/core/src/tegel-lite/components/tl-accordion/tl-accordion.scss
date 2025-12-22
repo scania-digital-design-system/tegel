@@ -1,0 +1,24 @@
+@use './tl-accordion-vars' as *;
+@use './tl-accordion-item' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/disabled-style' as *;
+@use '../../../mixins/box-sizing' as *;
+
+.tl-accordion {
+  display: block;
+  @include tds-box-sizing;
+
+  width: 100%;
+  background-color: var(--accordion-background);
+
+  &--hide-last-border {
+    .tl-accordion__item:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.tl-accordion__header-icon-start,
+.tl-accordion__header-icon-end {
+  position: relative;
+}
