@@ -7,9 +7,9 @@ const fileName = fileURLToPath(import.meta.url);
 const dirName = path.dirname(fileName);
 
 // Define paths for the distribution folder and package.json
-const distDir = path.resolve(dirName, '../../tegel-light/dist'); // The main dist directory
+const distDir = path.resolve(dirName, '../../tegel-lite/dist'); // The main dist directory
 const componentsCssDir = path.resolve(distDir); // Directory for component-specific CSS files
-const packageJsonPath = path.resolve(dirName, '../../tegel-light/package.json'); // Path to package.json
+const packageJsonPath = path.resolve(dirName, '../../tegel-lite/package.json'); // Path to package.json
 
 // Read and parse the existing package.json file
 const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
