@@ -1,0 +1,135 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Getting Started/Tegel Lite (CSS)" />
+
+**Published: 2024-12-22**
+
+# Using Tegel Lite (CSS)
+
+Tegel Lite is a pure CSS alternative to Tegel's component library, providing the same design system without relying on Web Components or Stencil. It's a styles-only component system built using SCSS and compiled to CSS files, aligned to the same design tokens and variables as the original Tegel.
+
+## Prerequisites
+
+- Node version 18+
+
+## Installing `@scania/tegel-lite`
+
+Install the `@scania/tegel-lite` package via npm.
+
+```bash
+npm install @scania/tegel-lite
+```
+
+## Theming
+
+Tegel Lite supports both **Scania** and **Traton** themes. Set the theme by adding a class to the `<html>` element (or any parent element):
+
+```html
+<!-- Scania (default) -->
+<html class="scania">
+
+<!-- Traton -->
+<html class="traton">
+```
+
+## Setup
+
+Import the global styles in your CSS file:
+
+```css
+@import '@scania/tegel-lite/global.css';
+```
+
+Import only the component styles you need:
+
+```css
+@import '@scania/tegel-lite/tl-button.css';
+@import '@scania/tegel-lite/tl-header.css';
+```
+
+## Usage
+
+Tegel Lite components use BEM naming conventions with `tl-` prefix:
+
+```html
+<button class="tl-button tl-button--primary tl-button--md">
+  <span class="tl-button__label">Click me!</span>
+</button>
+```
+
+## React/Next.js Example
+
+```tsx
+// app/layout.tsx
+import '@scania/tegel-lite/global.css';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className="scania">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+```tsx
+// components/Button.tsx
+import '@scania/tegel-lite/tl-button.css';
+
+export function Button({ variant = 'primary', children }: ButtonProps) {
+  return (
+    <button className={`tl-button tl-button--${variant}`}>
+      <span className="tl-button__label">{children}</span>
+    </button>
+  );
+}
+```
+
+## HTML/JavaScript Example
+
+For vanilla HTML projects, link to the CSS files:
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="scania">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tegel Lite</title>
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/global.css">
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/tl-button.css">
+</head>
+<body>
+  <button class="tl-button tl-button--primary tl-button--md">
+    <span class="tl-button__label">Click me!</span>
+  </button>
+</body>
+</html>
+```
+
+## BEM Naming
+
+- **Block**: `.tl-button`
+- **Element**: `.tl-button__label`
+- **Modifier**: `.tl-button--primary`
+
+## Icons
+
+Tegel Lite includes the same icon library as Tegel. Use icons with the `tl-icon` class:
+
+```html
+<span class="tl-icon tl-icon--truck tl-icon--16" aria-hidden="true"></span>
+```
+
+## Component Documentation
+
+Detailed documentation for all components is available in the **Tegel Light (CSS)** section in Storybook, including:
+
+- Usage examples with HTML structure
+- Available elements and modifiers
+- Required stylesheets
+- JavaScript integration examples (when needed)
+
+## JavaScript Requirements
+
+Some components (Accordion, Dropdown, Modal, Tabs, Tooltip) require JavaScript for interactive behavior. Check component documentation in the **Tegel Light (CSS)** section for examples.
