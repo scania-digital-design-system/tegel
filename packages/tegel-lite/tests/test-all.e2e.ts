@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Root of component test folders
-const testsRoot = __dirname; // packages/tegel-light/tests
+const testsRoot = __dirname; // packages/tegel-lite/tests
 
 // Find component folders that contain an index.html
 const components = fs
@@ -16,12 +16,10 @@ const components = fs
   .map((e) => e.name)
   .filter((name) => fs.existsSync(path.join(testsRoot, name, 'index.html')));
 
-
 for (const name of components) {
   const pagePath = `tests/${name}/index.html`;
 
   test.describe(`${name}`, () => {
-
     // Scania light & dark
     test('Should render Scania light mode', async ({ page }) => {
       await page.goto(pagePath);

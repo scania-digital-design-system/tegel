@@ -1,0 +1,8 @@
+.tl-toggle {
+  --toggle-switch: var(--color-brand-neutral-white);
+  --toggle-text: var(--color-foreground-text-strong);
+  --toggle-disabled: var(--color-foreground-icon-disabled);
+  --toggle-background-on: var(--color-system-success-default);
+  --toggle-background-off: var(--color-foreground-icon-subtle);
+  --toggle-border-focus: var(--color-foreground-border-accent-focus);
+}

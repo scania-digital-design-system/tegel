@@ -1,5 +1,5 @@
 {
-  "name": "@scania/tegel-light",
+  "name": "@scania/tegel-lite",
   "version": "1.0.0",
   "description": "Styles-only library for Tegel Design System",
   "type": "module",

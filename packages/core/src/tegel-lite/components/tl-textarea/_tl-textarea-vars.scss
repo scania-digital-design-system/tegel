@@ -1,0 +1,51 @@
+.tl-textarea {
+  --textarea-background-primary: var(--color-background-layer-01);
+  --textarea-background-secondary: var(--color-background-layer-02);
+  --textarea-background: var(--textarea-background-primary);
+  --textarea-text: var(--color-foreground-text-strong);
+  --textarea-background-disabled: var(--textarea-background-primary);
+  --textarea-text-disabled: var(--color-foreground-text-disabled);
+  --textarea-placeholder-disabled: var(--color-foreground-text-disabled);
+  --textarea-label-disabled: var(--color-foreground-text-disabled);
+  --textarea-label: var(--color-foreground-text-strong);
+  --textarea-label-inside: var(--color-foreground-text-strong);
+  --textarea-label-inside-left: 16px;
+  --textarea-placeholder: var(--color-foreground-text-subtle);
+  --textarea-helper: var(--color-foreground-text-defined);
+  --textarea-error: var(--color-system-danger-default);
+  --textarea-textcounter: var(--color-foreground-text-defined);
+  --textarea-resize-icon: var(--color-foreground-text-subtle);
+
+  &--primary {
+    --textarea-background: var(--textarea-background-primary);
+    --textarea-background-disabled: var(--textarea-background-primary);
+  }
+
+  &--secondary {
+    --textarea-background: var(--textarea-background-secondary);
+    --textarea-background-disabled: var(--textarea-background-secondary);
+  }
+}
+
+.tl-textarea,
+.scania .tl-textarea {
+  --textarea-border-radius: 4px 4px 0 0;
+  --textarea-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
+  --textarea-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
+  --textarea-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --textarea-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
+  --textarea-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
+  --textarea-box-shadow-error-focus: 0 -2px 0 0 var(--color-system-danger-default);
+  --textarea-box-shadow-success: 0 -1px 0 0 var(--color-foreground-border-strong);
+}
+
+.traton .tl-textarea {
+  --textarea-border-radius: 4px;
+  --textarea-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
+  --textarea-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
+  --textarea-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --textarea-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
+  --textarea-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
+  --textarea-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
+  --textarea-box-shadow-success: 0 0 0 1px var(--color-foreground-border-strong);
+}

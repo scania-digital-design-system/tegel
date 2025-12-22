@@ -1,10 +1,10 @@
-## **Tegel Light (POC)**
+## **Tegel Lite (POC)**
 
-Tegel Light is a pure CSS alternative to Tegel’s component library, providing the same design system without relying on Web Components or Stencil.
+Tegel Lite is a pure CSS alternative to Tegel’s component library, providing the same design system without relying on Web Components or Stencil.
 
 ### What It Is
 
-Tegel Light is:
+Tegel Lite is:
 
 - A **styles-only** component system.
 - Built using **SCSS**, compiled to **CSS** files.
@@ -12,9 +12,9 @@ Tegel Light is:
 
 ### How It Works
 
-Tegel Light’s styles reside in the Tegel Core package, ensuring consistency with existing global styles and enabling Storybook documentation. 
+Tegel Lite’s styles reside in the Tegel Core package, ensuring consistency with existing global styles and enabling Storybook documentation. 
 
-To **generate** the `@scania/tegel-light` library, first navigate to project root and run: 
+To **generate** the `@scania/tegel-lite` library, first navigate to project root and run: 
 
 ```bash
 npm i
@@ -26,31 +26,31 @@ npm i
 ```
 
 ```bash
-npm run build:tegel-light
+npm run build:tegel-lite
 ```
 
-This command will compile all scss files related to Tegel Light and output the compiled css to the `packages/tegel-light/dist` folder. It will also copy assets that are needed and add neccessary exports to the `packages/tegel-light/package.json` .
+This command will compile all scss files related to Tegel Lite and output the compiled css to the `packages/tegel-lite/dist` folder. It will also copy assets that are needed and add neccessary exports to the `packages/tegel-lite/package.json` .
 
-The files used as source for `@scania/tegel-light` library are located in `packages/core/src` and are structured as follows:
+The files used as source for `@scania/tegel-lite` library are located in `packages/core/src` and are structured as follows:
 
-- **packages/core/src/global/tegel-light-components.scss**: All Tegel Light component styles are imported here. This file is imported in the `packages/core/global/global.scss` file and thus enables Storybook documentation for tegel light components.
+- **packages/core/src/global/tegel-lite-components.scss**: All Tegel Lite component styles are imported here. This file is imported in the `packages/core/global/global.scss` file and thus enables Storybook documentation for Tegel Lite components.
 
-- **packages/core/src/global/tegel-light-global.scss**: All global styles and variables are imported here. This file is compiled into a single `global.css` file in the `packages/tegel-light/dist` folder.
+- **packages/core/src/global/tegel-lite-global.scss**: All global styles and variables are imported here. This file is compiled into a single `global.css` file in the `packages/tegel-lite/dist` folder.
 
-- **packages/core/src/tegel-light/components**: Each component (e.g., tl-button, tl-header) lives in its own folder with `.scss` files. Each component will be compiled into a separate CSS file in the `packages/tegel-light/dist` folder. An export will be added to the `packages/tegel-light/package.json` file to enable importing of the components in the consuming project.
+- **packages/core/src/tegel-lite/components**: Each component (e.g., tl-button, tl-header) lives in its own folder with `.scss` files. Each component will be compiled into a separate CSS file in the `packages/tegel-lite/dist` folder. An export will be added to the `packages/tegel-lite/package.json` file to enable importing of the components in the consuming project.
 
-The following scripts are used during build of `Tegel Light`:
+The following scripts are used during build of `Tegel Lite`:
 
-- **packages/core/scripts/compile-tegel-light-components.js**: Handling compilation of scss files & output css to `packages/tegel-light/dist`.
+- **packages/core/scripts/compile-tegel-lite-components.js**: Handling compilation of scss files & output css to `packages/tegel-lite/dist`.
 
-- **packages/core/scripts/update-tegel-light-exports.js**: Handling update of exports in `packages/tegel-light/package.json`
+- **packages/core/scripts/update-tegel-lite-exports.js**: Handling update of exports in `packages/tegel-lite/package.json`
 
-- **packages/core/scripts/copy-tegel-light-assets.js**: Handling copy and output of assets neccessary for the `Tegel Light` library.
+- **packages/core/scripts/copy-tegel-lite-assets.js**: Handling copy and output of assets neccessary for the `Tegel Lite` library.
 
 - All global styles, variables etc are compiled into a single `global.css` file.
 - Each component (e.g., tl-button, tl-header) lives in its own folder with `.scss` files and is compiled into a separate CSS file.
 - Components classes are prefixed with `tl-` to avoid conflicts with other styles.
-- Classes follow BEM convention: `tl-button`, `tl-button__label`, `tl-button--primary` etc. [Read more about Tegel Light **Scss** conventions here](#tegel-light-scss-conventions)
+- Classes follow BEM convention: `tl-button`, `tl-button__label`, `tl-button--primary` etc. [Read more about Tegel Lite **Scss** conventions here](#tegel-lite-scss-conventions)
 
 
 ### Example usage in consumer app (Examples from Next.js application)
@@ -59,7 +59,7 @@ The following scripts are used during build of `Tegel Light`:
 
   ```tsx
   // layout.tsx
-  import "@scania/tegel-light/global.css"
+  import "@scania/tegel-lite/global.css"
   ```
 
 - For components you import only the styles you need:
@@ -67,7 +67,7 @@ The following scripts are used during build of `Tegel Light`:
   ```tsx
     // TegelButton.tsx
   import clsx from "clsx"
-  import "@scania/tegel-light/tl-button.css"
+  import "@scania/tegel-lite/tl-button.css"
 
   const TegelButton = ({
     type = "primary",
@@ -110,7 +110,7 @@ Checkout the Tegel Storybook documentation for more examples and usage.
 If published to NPM:
 
 ```bash
-npm install @scania/tegel-light
+npm install @scania/tegel-lite
 ```
 
 Otherwise, symlink the local package directly into your app:
@@ -121,7 +121,7 @@ In the root of your app, create a `link.config.json` file with the following con
 
 ```json
 {
-  "packages": ["../tegel/packages/tegel-light"] // Make sure to add the correct path to the Tegel Light package on your machine
+  "packages": ["../tegel/packages/tegel-lite"] // Make sure to add the correct path to the Tegel Lite package on your machine
 }
 ```
 
@@ -135,7 +135,7 @@ npx link
 
 Using npm link:
 
-In the `tegel/packages/tegel-light` package:
+In the `tegel/packages/tegel-lite` package:
 
 ```bash
 npm link
@@ -144,22 +144,22 @@ npm link
 In your app:
 
 ```bash
-npm link @scania/tegel-light
+npm link @scania/tegel-lite
 ```
 
-The above command will symlink the Tegel Light package into your app. Check node_modules to see if the package is linked correctly.
-You will now be able to import Tegel Light components in your app.
+The above command will symlink the Tegel Lite package into your app. Check node_modules to see if the package is linked correctly.
+You will now be able to import Tegel Lite components in your app.
 
 ---
 
-## Tegel Light SCSS Conventions
+## Tegel Lite SCSS Conventions
 
-These conventions define a clear, maintainable, and scalable SCSS structure for the Tegel Light design system, using BEM principles and Sass features to support consistency and readability.
+These conventions define a clear, maintainable, and scalable SCSS structure for the Tegel Lite design system, using BEM principles and Sass features to support consistency and readability.
 
 
 ## JavaScript Requirements for Styling Effects
 
-Some Tegel Light components require JavaScript to achieve certain styling effects that cannot be accomplished with pure CSS. These components need special handling to ensure their visual effects work correctly.
+Some Tegel Lite components require JavaScript to achieve certain styling effects that cannot be accomplished with pure CSS. These components need special handling to ensure their visual effects work correctly.
 
 ### Rules for JavaScript-Dependent Styling
 
@@ -322,20 +322,20 @@ This keeps side effects localized and improves traceability.
 
 ---
 
-This convention aims to ensure SCSS is maintainable, consistent, and intuitive across all of Tegel Light.
+This convention aims to ensure SCSS is maintainable, consistent, and intuitive across all of Tegel Lite.
 
 
 Let us know if you find edge cases that challenge these conventions — this is a living document.
 
-## Creating a New Tegel Light Component
+## Creating a New Tegel Lite Component
 
-Follow these steps to create a new component in Tegel Light.
+Follow these steps to create a new component in Tegel Lite.
 
 ### 1. Set Up SCSS
-Inside `packages/core/src/tegel-light/components/`, create a folder matching your component name (use kebab-case and prefix with `tl-`). Add the main SCSS file and any optional partials:
+Inside `packages/core/src/tegel-lite/components/`, create a folder matching your component name (use kebab-case and prefix with `tl-`). Add the main SCSS file and any optional partials:
 
 <pre>
-packages/core/src/tegel-light/components/ 
+packages/core/src/tegel-lite/components/ 
 
 └── tl-alert/
     ├── tl-alert.scss # main entrypoint (includes partials) 
@@ -348,7 +348,7 @@ All **partial files** (helpers) should be prefixed with an underscore (`_`) and 
 Example main file:
 
 ```scss
-// packages/core/src/tegel-light/components/tl-alert/tl-alert.scss
+// packages/core/src/tegel-lite/components/tl-alert/tl-alert.scss
 
 @import './variables';
 
@@ -366,10 +366,10 @@ Example main file:
 ```
 
 ### 2. Register SCSS to components folder
-Open `core/src/global/tegel-light-components.scss` and import your new SCSS file there to include it in the build and Storybook.
+Open `core/src/global/tegel-lite-components.scss` and import your new SCSS file there to include it in the build and Storybook.
 
 ```scss
-@import '../tegel-light/components/tl-alert/tl-alert';
+@import '../tegel-lite/components/tl-alert/tl-alert';
 ```
 
 This ensures your component is available in Storybook.
@@ -383,7 +383,7 @@ To document and test the component, create a `.stories.tsx` file in inside the c
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Light (CSS)/Alert',
+  title: 'Tegel Lite (CSS)/Alert',
   parameters: {
     layout: 'centered',
   },
@@ -417,7 +417,7 @@ export default {
 const Template = ({ variant, message }) =>
   formatHtmlPreview(`
       <!-- Required stylesheet 
-    "@scania/tegel-light/tl-alert.css"
+    "@scania/tegel-lite/tl-alert.css"
   -->
 
     <span class="tl-alert tl-alert--${variant}">${message}</span>
@@ -433,18 +433,18 @@ Once your SCSS are in place, verify that the component compiles correctly.
 In the `packages/core` directory, run:
 
 ```bash
-npm run build:tegel-light
+npm run build:tegel-lite
 ```
 
 This will:
 
-- Compile all Tegel Light SCSS files.
+- Compile all Tegel Lite SCSS files.
 
-- Output the compiled .css files into the packages/tegel-light/dist directory.
+- Output the compiled .css files into the packages/tegel-lite/dist directory.
 
-- Automatically copy required assets and update the exports in `packages/tegel-light/package.json`.
+- Automatically copy required assets and update the exports in `packages/tegel-lite/package.json`.
 
-After the build, check `packages/tegel-light/dist/components/`: You should see a CSS file for your new component.
+After the build, check `packages/tegel-lite/dist/components/`: You should see a CSS file for your new component.
 
 
 

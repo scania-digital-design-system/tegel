@@ -1,0 +1,33 @@
+@mixin textarea-base {
+  all: unset;
+  border-radius: var(--textarea-border-radius);
+  background-color: var(--textarea-background);
+  color: var(--textarea-text);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--textarea-placeholder);
+  }
+
+  &:disabled {
+    background-color: var(--textarea-background-disabled);
+    color: var(--textarea-text-disabled);
+    user-select: none;
+    pointer-events: none;
+
+    &::placeholder {
+      color: var(--textarea-placeholder-disabled);
+    }
+  }
+}
+
+@mixin focus-input-state {
+  .tl-textarea--label-inside:has(.tl-textarea__input:focus) .tl-textarea__label,
+  .tl-textarea--label-inside:has(.tl-textarea__input:not(:placeholder-shown)) .tl-textarea__label {
+    @content;
+  }
+}
