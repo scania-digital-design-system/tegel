@@ -1,5 +1,5 @@
-@use '../../../../../../typography/mixins/type-styles';
-@use '../../../../../../grid-deprecated/vars';
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../../../../grid-deprecated/vars' as *;
 @use './tl-footer-vars';
 
 /* Footer elements */

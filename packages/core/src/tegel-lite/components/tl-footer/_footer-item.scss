@@ -1,4 +1,5 @@
-@use '../../../../../../typography/mixins/type-styles';
+@use '../../../../../../typography/mixins/type-styles' as *;
+@use '../../../../../../grid-deprecated/vars' as *;
 
 .tl-footer__item {
   a,

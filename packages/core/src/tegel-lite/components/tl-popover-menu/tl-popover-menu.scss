@@ -1,7 +1,7 @@
 @use './tl-popover-menu-vars';
 @use '../../../mixins/box-sizing' as *;
 @use '../../../mixins/z-index' as *;
-@use '../../../../../../typography/mixins/type-styles';
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-popover-menu__item-wrapper {
   @include tds-box-sizing;
