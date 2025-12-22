@@ -8,7 +8,6 @@ export default {
   },
   argTypes: {
     includeTitle: { control: 'boolean', name: 'Include title' },
-    includeHamburger: { control: 'boolean', name: 'Include hamburger' },
     includeBentoGrid: { control: 'boolean', name: 'Include bento (Grid)' },
     includeBentoList: { control: 'boolean', name: 'Include bento (List)' },
     includeHeaderItem: { control: 'boolean', name: 'Include header item' },
@@ -33,22 +32,9 @@ export default {
     },
     includeUserProfile: { control: 'boolean', name: 'Include user profile' },
     includeBrand: { control: 'boolean', name: 'Include brand symbol' },
-    isHamburgerPressed: {
-      control: 'boolean',
-      name: 'Hamburger pressed',
-      if: { arg: 'includeHamburger', truthy: true },
-    },
-    isHamburgerSelected: {
-      control: 'boolean',
-      name: 'Hamburger selected',
-      if: { arg: 'includeHamburger', truthy: true },
-    },
   },
   args: {
     includeTitle: true,
-    includeHamburger: true,
-    isHamburgerPressed: false,
-    isHamburgerSelected: false,
     includeBentoGrid: false,
     includeBentoList: false,
     includeBrand: true,
@@ -64,12 +50,9 @@ export default {
 
 const Template = ({
   includeTitle,
-  includeHamburger,
   includeBentoGrid,
   includeBentoList,
   includeBrand,
-  isHamburgerPressed,
-  isHamburgerSelected,
   includeDropdown,
   isDropdownOpen,
   isDropdownSelected,
@@ -90,17 +73,11 @@ const Template = ({
   <nav class="tl-header__nav">
     <ul class="tl-header__list">
 
-      ${
-        includeHamburger
-          ? `<li class="tl-header__item ${isHamburgerPressed ? 'tl-header__item--pressed' : ''} ${
-              isHamburgerSelected ? 'tl-header__item--selected' : ''
-            }">
-              <button class="tl-header__item-wrapper">
-                <span class="tl-icon tl-icon--burger tl-icon--20" aria-hidden="true"></span>
-              </button>
-            </li>`
-          : ''
-      }
+      <li class="tl-header__item">
+        <button class="tl-header__item-wrapper">
+          <span class="tl-icon tl-icon--burger tl-icon--20" aria-hidden="true"></span>
+        </button>
+      </li>
 
       ${
         includeTitle
