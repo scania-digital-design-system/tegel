@@ -152,7 +152,7 @@ const Template = ({
   <div class="demo-wrapper">
     <div class="${classes}">
       ${labelOutside}
-      <div class="tl-datetime__container">
+      <div class="tl-datetime__wrapper">
         <input
           class="tl-datetime__input"
           type="${typeLookup[type]}"
