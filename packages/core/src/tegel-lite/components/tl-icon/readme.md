@@ -1,6 +1,6 @@
 # tl-icon
 
-The Icon component displays SVG icons using mask images with customizable sizes.
+The Icon component displays SVG icons using mask images with customizable sizes and inherits color from parent.
 
 ## Usage
 
@@ -20,9 +20,9 @@ The Icon component displays SVG icons using mask images with customizable sizes.
 
 ## Elements
 
-| Element    | HTML Element | Description          |
-| ---------- | ------------ | -------------------- |
-| `.tl-icon` | `<span>`     | Icon element         |
+| Element    | HTML Element | Description                       |
+| ---------- | ------------ | --------------------------------- |
+| `.tl-icon` | `<span>`     | Icon element (20px default)       |
 
 ## Modifiers
 

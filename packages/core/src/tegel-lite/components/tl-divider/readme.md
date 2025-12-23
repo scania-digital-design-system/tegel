@@ -27,12 +27,12 @@ The Divider component creates a visual separator between content sections.
 
 ### Divider Modifiers
 
-Apply these classes to the `.tl-divider` element.
+Apply these classes to the `.tl-divider` element. An orientation modifier is required.
 
 | Modifier                  | Description                     |
 | ------------------------- | ------------------------------- |
-| `.tl-divider--horizontal` | Horizontal divider (full width) |
-| `.tl-divider--vertical`   | Vertical divider (full height)  |
+| `.tl-divider--horizontal` | Horizontal divider (full width, 1px height) |
+| `.tl-divider--vertical`   | Vertical divider (full height, 1px width)  |
 
 ----------------------------------------------
 

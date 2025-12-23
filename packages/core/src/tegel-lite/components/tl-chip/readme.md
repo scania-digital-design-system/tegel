@@ -38,13 +38,13 @@ The Chip component represents small blocks of information or actions, often used
 | `.tl-chip`        | `<button>`/`<a>` | Main chip element            |
 | `.tl-chip__label` | `<span>`     | Text label inside chip           |
 | `.tl-chip__icon`  | `<span>`     | Icon container (optional)        |
-| `.tl-icon`        | `<span>`     | Icon element (optional)          |
+| `.tl-icon`        | `<span>`     | Icon element (16px, optional)    |
 
 ## Modifiers
 
 ### Chip Size Modifiers
 
-Apply these classes to the `.tl-chip` element.
+Apply these classes to the `.tl-chip` element. A size modifier is required.
 
 | Modifier        | Description              |
 | --------------- | ------------------------ |
@@ -58,7 +58,7 @@ Apply these classes to the `.tl-chip` element.
 | Modifier              | Description                    |
 | --------------------- | ------------------------------ |
 | `.tl-chip--selected`  | Selected/active state          |
-| `.tl-chip--disabled`  | Disabled state                 |
+| `.tl-chip--disabled`  | Disabled state. Prevents interaction |
 
 ### Chip Icon Modifiers
 
@@ -70,6 +70,12 @@ Apply these classes to the `.tl-chip` element when using icons.
 | `.tl-chip--suffix` | Chip has a suffix icon (adjusts padding) |
 
 **Note:** Both `--prefix` and `--suffix` can be used together for chips with icons on both sides.
+
+## JavaScript Required
+
+The Chip component requires JavaScript to handle:
+- Toggle `.tl-chip--selected` class when clicked
+- Optional: Implement single-selection behavior (deselect other chips in group when one is selected)
 
 ----------------------------------------------
 

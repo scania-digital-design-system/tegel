@@ -50,7 +50,7 @@ The Button component triggers actions or navigates users to different pages.
 
 ### Button Variant Modifiers
 
-Apply these classes to the `.tl-button` element.
+Apply these classes to the `.tl-button` element. A variant modifier is required.
 
 | Modifier               | Description                              |
 | ---------------------- | ---------------------------------------- |
@@ -61,14 +61,14 @@ Apply these classes to the `.tl-button` element.
 
 ### Button Size Modifiers
 
-Apply these classes to the `.tl-button` element.
+Apply these classes to the `.tl-button` element. A size modifier is required.
 
 | Modifier           | Description                    |
 | ------------------ | ------------------------------ |
 | `.tl-button--xs`   | Extra small button (24px)      |
-| `.tl-button--sm`   | Small button (40px)            |
-| `.tl-button--md`   | Medium button (48px)           |
-| `.tl-button--lg`   | Large button (56px)            |
+| `.tl-button--sm`   | Small button (40px). Use 16px icons |
+| `.tl-button--md`   | Medium button (48px). Use 20px icons |
+| `.tl-button--lg`   | Large button (56px). Use 20px icons |
 
 ### Button Icon Modifiers
 
@@ -77,9 +77,7 @@ Apply these classes to the `.tl-button` element when using icons.
 | Modifier                | Description                              |
 | ----------------------- | ---------------------------------------- |
 | `.tl-button--icon`      | Button with text and icon                |
-| `.tl-button--only-icon` | Button with only an icon (no text). Not available for `--xs` size. |
-
-**Note:** When using `.tl-button--only-icon`, always include an `aria-label` attribute for accessibility.
+| `.tl-button--only-icon` | Button with only an icon (no text). Not available for `--xs` size |
 
 ### Button State Modifiers
 
@@ -87,7 +85,7 @@ Apply these classes to the `.tl-button` element.
 
 | Modifier               | Description                     |
 | ---------------------- | ------------------------------- |
-| `.tl-button--disabled` | Disabled state (alternative to `disabled` attribute) |
+| `.tl-button--disabled` | Disabled state. Use together with the `disabled` attribute |
 | `.tl-button--full-width` | Button spans full width of container |
 
 ----------------------------------------------

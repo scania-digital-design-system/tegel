@@ -8,13 +8,13 @@ The Breadcrumbs component displays the user's current location within the applic
 <nav class="tl-breadcrumbs">
   <ol class="tl-breadcrumbs__list">
     <li class="tl-breadcrumbs__breadcrumb">
-      <a href="#" class="tl-breadcrumbs__breadcrumb-link">Home</a>
+      <a class="tl-breadcrumbs__breadcrumb-link" href="#">Home</a>
     </li>
     <li class="tl-breadcrumbs__breadcrumb">
-      <a href="#" class="tl-breadcrumbs__breadcrumb-link">Category</a>
+      <a class="tl-breadcrumbs__breadcrumb-link" href="#">Products</a>
     </li>
     <li class="tl-breadcrumbs__breadcrumb tl-breadcrumbs__breadcrumb--current">
-      <span class="tl-breadcrumbs__breadcrumb-link">Current Page</span>
+      <a class="tl-breadcrumbs__breadcrumb-link" href="#" aria-current="page">Current Page</a>
     </li>
   </ol>
 </nav>
@@ -35,8 +35,8 @@ The Breadcrumbs component displays the user's current location within the applic
 | ---------------------------------- | ------------ | ----------------------------------- |
 | `.tl-breadcrumbs`                  | `<nav>`      | Main breadcrumbs container          |
 | `.tl-breadcrumbs__list`            | `<ol>`       | Ordered list of breadcrumb items    |
-| `.tl-breadcrumbs__breadcrumb`      | `<li>`       | Individual breadcrumb item          |
-| `.tl-breadcrumbs__breadcrumb-link` | `<a>`/`<span>` | Link or text for breadcrumb item  |
+| `.tl-breadcrumbs__breadcrumb`      | `<li>`       | Individual breadcrumb item. Separator (›) is added automatically via CSS |
+| `.tl-breadcrumbs__breadcrumb-link` | `<a>`        | Link for breadcrumb item. Use `aria-current="page"` on current page |
 
 ## Modifiers
 
@@ -46,7 +46,7 @@ Apply these classes to `.tl-breadcrumbs__breadcrumb` elements.
 
 | Modifier                              | Description                              |
 | ------------------------------------- | ---------------------------------------- |
-| `.tl-breadcrumbs__breadcrumb--current`| Indicates the current page breadcrumb    |
+| `.tl-breadcrumbs__breadcrumb--current`| Indicates the current page. Removes separator and disables link interaction |
 
 ----------------------------------------------
 

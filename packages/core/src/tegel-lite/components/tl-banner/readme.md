@@ -42,11 +42,10 @@ The Banner component displays important messages or notifications at the top of 
 | `.tl-banner__icon`      | `<span>`     | Container for the prefix icon              |
 | `.tl-banner__content`   | `<div>`      | Main content area                          |
 | `.tl-banner__text`      | `<div>`      | Text content wrapper                       |
-| `.tl-banner__header`    | `<div>`      | Banner header text                         |
-| `.tl-banner__subheader` | `<div>`      | Banner subheader text                      |
-| `.tl-banner__actions`   | `<div>`      | Container for action buttons or links      |
-| `.tl-banner__close`     | `<div>`      | Close button container                     |
-| `.tl-icon`              | `<span>`     | Icon element (optional)                    |
+| `.tl-banner__header`    | `<div>`      | Banner header text (required)              |
+| `.tl-banner__subheader` | `<div>`      | Banner subheader text (optional)           |
+| `.tl-banner__actions`   | `<div>`      | Container for action buttons or links (optional) |
+| `.tl-banner__close`     | `<div>`      | Close button container (optional)          |
 
 ## Modifiers
 
@@ -59,6 +58,13 @@ Apply these classes to the `.tl-banner` element to change the banner's appearanc
 | (none)                    | Default variant with standard background           |
 | `.tl-banner--error`       | Error variant with danger background and icon      |
 | `.tl-banner--information` | Information variant with info background and icon  |
+
+## JavaScript Required
+
+The Banner component requires JavaScript to handle:
+- Close button functionality (remove or hide banner when `.tl-banner__close` is clicked)
+- Keyboard accessibility for close button
+- Optional: Animation when closing banner
 
 ----------------------------------------------
 
