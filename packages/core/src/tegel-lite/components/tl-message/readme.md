@@ -5,8 +5,8 @@ The Message component displays contextual feedback messages with different sever
 ## Usage
 
 ```html
-<div class="tl-message">
-  <div class="tl-message__wrapper tl-message__wrapper--information">
+<div class="tl-message tl-message--information">
+  <div class="tl-message__wrapper">
     <div class="tl-message__content">
       <div class="tl-message__header">Information</div>
       <div class="tl-message__extended-message">
@@ -49,23 +49,23 @@ Apply these classes to the `.tl-message` element.
 
 ### Message Variant Modifiers
 
-Apply these classes to the `.tl-message__wrapper` element.
+A variant modifier is required. Apply these classes to the `.tl-message` element.
 
-| Modifier                           | Description                           |
-| ---------------------------------- | ------------------------------------- |
-| `.tl-message__wrapper--information`| Information message (blue)            |
-| `.tl-message__wrapper--success`    | Success message (green)               |
-| `.tl-message__wrapper--warning`    | Warning message (yellow)              |
-| `.tl-message__wrapper--error`      | Error message (red)                   |
+| Modifier                      | Description                           |
+| ----------------------------- | ------------------------------------- |
+| `.tl-message--information`    | Information message (blue)            |
+| `.tl-message--success`        | Success message (green)               |
+| `.tl-message--warning`        | Warning message (yellow)              |
+| `.tl-message--error`          | Error message (red)                   |
 
 ### Message Display Modifiers
 
-Apply these classes to the `.tl-message__wrapper` element.
+Apply these classes to the `.tl-message` element.
 
-| Modifier                        | Description                          |
-| ------------------------------- | ------------------------------------ |
-| `.tl-message__wrapper--no-icon` | Hides the variant icon               |
-| `.tl-message__wrapper--minimal` | Minimal styling without border/background |
+| Modifier                   | Description                          |
+| -------------------------- | ------------------------------------ |
+| `.tl-message--no-icon`     | Hides the variant icon               |
+| `.tl-message--minimal`     | Minimal styling without border/background |
 
 ----------------------------------------------
 
