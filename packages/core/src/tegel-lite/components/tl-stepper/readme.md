@@ -5,26 +5,26 @@ The Stepper component displays progress through a multi-step process with visual
 ## Usage
 
 ```html
-<div class="tl-stepper tl-stepper--horizontal">
+<div class="tl-stepper tl-stepper--horizontal tl-stepper--lg">
   <ol class="tl-stepper__list">
-    <li class="tl-stepper__step">
-      <div class="tl-stepper__content tl-stepper__content--lg tl-stepper__content--horizontal tl-stepper__content--text-below">
-        <div class="tl-stepper__node tl-stepper__node--success">
+    <li class="tl-stepper__step tl-stepper__step--success">
+      <div class="tl-stepper__content">
+        <div class="tl-stepper__node">
           <span class="tl-icon tl-icon--tick tl-icon--20"></span>
         </div>
-        <div class="tl-stepper__label tl-stepper__label--lg">Step 1</div>
+        <div class="tl-stepper__label">Step 1</div>
       </div>
     </li>
-    <li class="tl-stepper__step">
-      <div class="tl-stepper__content tl-stepper__content--lg tl-stepper__content--horizontal tl-stepper__content--text-below">
-        <div class="tl-stepper__node tl-stepper__node--current">2</div>
-        <div class="tl-stepper__label tl-stepper__label--lg">Step 2</div>
+    <li class="tl-stepper__step tl-stepper__step--current">
+      <div class="tl-stepper__content">
+        <div class="tl-stepper__node">2</div>
+        <div class="tl-stepper__label">Step 2</div>
       </div>
     </li>
-    <li class="tl-stepper__step">
-      <div class="tl-stepper__content tl-stepper__content--lg tl-stepper__content--horizontal tl-stepper__content--text-below">
-        <div class="tl-stepper__node tl-stepper__node--upcoming">3</div>
-        <div class="tl-stepper__label tl-stepper__label--lg tl-stepper__label--upcoming">Step 3</div>
+    <li class="tl-stepper__step tl-stepper__step--upcoming">
+      <div class="tl-stepper__content">
+        <div class="tl-stepper__node">3</div>
+        <div class="tl-stepper__label">Step 3</div>
       </div>
     </li>
   </ol>
@@ -76,40 +76,16 @@ Apply these classes to the `.tl-stepper` element.
 | `.tl-stepper--sm`   | Small size variant             |
 | `.tl-stepper--lg`   | Large size variant             |
 
-### Stepper Content Modifiers
+### Stepper Step State Modifiers
 
-Apply these classes to `.tl-stepper__content` elements.
-
-| Modifier                              | Description                           |
-| ------------------------------------- | ------------------------------------- |
-| `.tl-stepper__content--lg`            | Large content size                    |
-| `.tl-stepper__content--sm`            | Small content size                    |
-| `.tl-stepper__content--horizontal`    | Horizontal layout                     |
-| `.tl-stepper__content--vertical`      | Vertical layout                       |
-| `.tl-stepper__content--text-below`    | Text positioned below                 |
-| `.tl-stepper__content--text-aside`    | Text positioned aside                 |
-| `.tl-stepper__content--hide-labels`   | Hide labels (accessibility)           |
-
-### Stepper Node State Modifiers
-
-Apply these classes to `.tl-stepper__node` elements.
+Apply these classes to `.tl-stepper__step` elements.
 
 | Modifier                       | Description                     |
 | ------------------------------ | ------------------------------- |
-| `.tl-stepper__node--success`   | Success/completed step state    |
-| `.tl-stepper__node--error`     | Error step state                |
-| `.tl-stepper__node--current`   | Current/active step state       |
-| `.tl-stepper__node--upcoming`  | Upcoming/inactive step state    |
-
-### Stepper Label Modifiers
-
-Apply these classes to `.tl-stepper__label` elements.
-
-| Modifier                        | Description                     |
-| ------------------------------- | ------------------------------- |
-| `.tl-stepper__label--lg`        | Large label size                |
-| `.tl-stepper__label--sm`        | Small label size                |
-| `.tl-stepper__label--upcoming`  | Upcoming step label styling     |
+| `.tl-stepper__step--success`   | Success/completed step state    |
+| `.tl-stepper__step--error`     | Error step state                |
+| `.tl-stepper__step--current`   | Current/active step state       |
+| `.tl-stepper__step--upcoming`  | Upcoming/inactive step state    |
 
 ----------------------------------------------
 

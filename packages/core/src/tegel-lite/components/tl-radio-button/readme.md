@@ -1,19 +1,19 @@
-# tl-radiobutton
+# tl-radio-button
 
-The Radiobutton component provides a radio button input for selecting one option from a group.
+The Radio Button component provides a radio button input for selecting one option from a group.
 
 ## Usage
 
 ```html
-<label class="tl-radiobutton">
+<label class="tl-radio-button">
   <input 
     type="radio" 
     id="radio1" 
     name="radio-group" 
-    class="tl-radiobutton__input"
+    class="tl-radio-button__input"
   />
-  <span class="tl-radiobutton__control"></span>
-  <span class="tl-radiobutton__label">
+  <span class="tl-radio-button__control"></span>
+  <span class="tl-radio-button__label">
     Option 1
   </span>
 </label>
@@ -25,27 +25,27 @@ The Radiobutton component provides a radio button input for selecting one option
 
 ```
 @scania/tegel-lite/global.css
-@scania/tegel-lite/tl-radiobutton.css
+@scania/tegel-lite/tl-radio-button.css
 ```
 
 ## Elements
 
-| Element                     | HTML Element | Description                  |
-| --------------------------- | ------------ | ---------------------------- |
-| `.tl-radiobutton`           | `<label>`    | Main container               |
-| `.tl-radiobutton__input`    | `<input>`    | Native radio input (hidden)  |
-| `.tl-radiobutton__control`  | `<span>`     | Visual radio control         |
-| `.tl-radiobutton__label`    | `<span>`     | Label text                   |
+| Element                      | HTML Element | Description                  |
+| ---------------------------- | ------------ | ---------------------------- |
+| `.tl-radio-button`           | `<label>`    | Main container               |
+| `.tl-radio-button__input`    | `<input>`    | Native radio input (hidden)  |
+| `.tl-radio-button__control`  | `<span>`     | Visual radio control         |
+| `.tl-radio-button__label`    | `<span>`     | Label text                   |
 
 ## Modifiers
 
-### Radiobutton State Modifiers
+### Radio Button State Modifiers
 
-Apply these classes to the `.tl-radiobutton` element.
+Apply these classes to the `.tl-radio-button` element.
 
-| Modifier                    | Description                    |
-| --------------------------- | ------------------------------ |
-| `.tl-radiobutton--disabled` | Disabled state                 |
+| Modifier                     | Description                                      |
+| ---------------------------- | ------------------------------------------------ |
+| `.tl-radio-button--disabled` | Disabled state (use together with `disabled` attribute on input) |
 
 ----------------------------------------------
 

@@ -75,22 +75,13 @@ Apply these classes to `.tl-accordion__panel` elements.
 
 ## JavaScript Required
 
-This is a CSS-only component. JavaScript is required to toggle the `.tl-accordion__item--expanded` class and manage the accordion behavior.
-
-Example:
-```javascript
-const accordionButtons = document.querySelectorAll('.tl-accordion__header-icon-start, .tl-accordion__header-icon-end');
-
-accordionButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    const item = button.closest('.tl-accordion__item');
-    
-    if (item.classList.contains('tl-accordion__item--disabled')) return;
-    
-    item.classList.toggle('tl-accordion__item--expanded');
-  });
-});
-```
+The Accordion component requires JavaScript to handle:
+- Toggle `.tl-accordion__item--expanded` class on accordion items
+- Update `aria-expanded` attribute on header buttons
+- Handle click events on `.tl-accordion__header-icon-start` and `.tl-accordion__header-icon-end` buttons
+- Prevent interaction with disabled items (`.tl-accordion__item--disabled`)
+- Keyboard support (Enter and Space keys)
+- Optional: Single-open behavior (close other items when opening one)
 
 ----------------------------------------------
 
