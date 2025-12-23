@@ -113,17 +113,6 @@ Apply these classes to `.tl-header__dropdown-menu-item` elements.
 | ---------------------------------------------- | --------------------------------- |
 | `.tl-header__dropdown-menu-item--selected`     | Selected menu item                |
 
-## Specifications
-
-- **Header height**: 64px (var(--tds-header-height))
-- **Brand width**: Dynamic (var(--header-brand-item-width))
-- **Brand logo height**: 30px
-- **Icon size**: 20px
-- **Dropdown wrapper padding**: 0 24px (standard), custom for user profile
-- **User dropdown height**: 84px
-- **Dropdown min-width**: 190px (standard), 290px (user), 320px (launcher)
-- **Desktop breakpoint**: 992px (min-width for full navigation)
-
 ## JavaScript Required
 
 The Header component requires JavaScript to handle:

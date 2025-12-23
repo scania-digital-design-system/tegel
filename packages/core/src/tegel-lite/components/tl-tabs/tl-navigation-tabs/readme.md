@@ -1,6 +1,6 @@
 # tl-navigation-tabs
 
-The Navigation Tabs component provides tab-style navigation links with scrollable functionality.
+The Navigation Tabs component provides tab-style navigation.
 
 ## Usage
 
@@ -29,8 +29,6 @@ The Navigation Tabs component provides tab-style navigation links with scrollabl
 | `.tl-navigation-tabs`                          | `<nav>`      | Navigation tabs container    |
 | `.tl-navigation-tabs__tab`                     | `<button>`   | Individual navigation tab    |
 | `.tl-navigation-tabs__scroll-button`           | `<button>`   | Scroll button                |
-| `.tl-navigation-tabs__scroll-button--left`     | `<button>`   | Left scroll button           |
-| `.tl-navigation-tabs__scroll-button--right`    | `<button>`   | Right scroll button          |
 
 ## Modifiers
 
@@ -42,6 +40,15 @@ Apply these classes to `.tl-navigation-tabs__tab` elements.
 | --------------------------------------- | ------------------------------ |
 | `.tl-navigation-tabs__tab--selected`    | Active/selected tab            |
 | `.tl-navigation-tabs__tab--disabled`    | Disabled tab                   |
+
+### Tab Scroll Button Modifiers
+
+Apply these classes to `.tl-navigation-tabs__scroll-button` elements.
+
+| Modifier                                | Description                    |
+| --------------------------------------- | ------------------------------ |
+| `.tl-navigation-tabs__scroll-button--left`     | Left scroll button           |
+| `.tl-navigation-tabs__scroll-button--right`    | Right scroll button          |
 
 ## JavaScript Required
 

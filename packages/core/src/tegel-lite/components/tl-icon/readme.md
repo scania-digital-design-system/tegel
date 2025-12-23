@@ -22,7 +22,7 @@ The Icon component displays SVG icons using mask images with customizable sizes 
 
 | Element    | HTML Element | Description                       |
 | ---------- | ------------ | --------------------------------- |
-| `.tl-icon` | `<span>`     | Icon element (20px default)       |
+| `.tl-icon` | `<span>`     | Icon element                      |
 
 ## Modifiers
 

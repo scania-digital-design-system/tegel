@@ -45,7 +45,7 @@ The Modal component displays content in a layer above the main page with an over
 | `.tl-modal__close`    | `<button>`   | Close button                       |
 | `.tl-modal__body`     | `<div>`      | Main content area                  |
 | `.tl-modal__actions`  | `<div>`      | Action buttons container           |
-| `.tl-icon`            | `<span>`     | Icon element (20px for close)      |
+| `.tl-icon`            | `<span>`     | Icon element                       |
 
 ## Modifiers
 
