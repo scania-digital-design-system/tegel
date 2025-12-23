@@ -10,11 +10,6 @@
   padding: 16px 0;
 }
 
-.tl-popover-menu .tl-divider {
-  width: calc(100% - 12px);
-  margin: 6px;
-}
-
 .tl-popover-menu__item {
   @include detail-02;
 
@@ -97,5 +92,10 @@
   &--visible.tl-popover-menu--animation-fade {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .tl-divider {
+    width: calc(100% - 12px);
+    margin: 6px;
   }
 }
