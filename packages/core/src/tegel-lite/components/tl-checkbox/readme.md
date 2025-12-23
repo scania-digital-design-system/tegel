@@ -47,10 +47,19 @@ Use the native `disabled` attribute on the `<input>` element. The container auto
 
 The indeterminate state (mixed/partial) cannot be set via HTML attribute. It must be set via JavaScript:
 
-```javascript
-const checkbox = document.getElementById('checkbox-1');
-checkbox.indeterminate = true;
-```
+Apply these classes to the `.tl-checkbox__input` element.
+
+| Modifier                            | Description                                |
+| ----------------------------------- | ------------------------------------------ |
+| `.tl-checkbox__input--indeterminate`| Indeterminate state (mixed/partial state)  |
+
+**Note:** Use the native `disabled` attributes on the `<input>` element for disabled state. The component will automatically style this state.
+
+## JavaScript Required
+
+The Checkbox component requires JavaScript to handle:
+- Indeterminate state functionality
+- Toggle `.tl-checkbox__input--indeterminate` class for indeterminate state
 
 ----------------------------------------------
 

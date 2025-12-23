@@ -83,6 +83,12 @@ The Card component requires JavaScript to handle:
 - Toggle `.tl-card--expanded` class for expandable cards
 - Rotate chevron icon when expanding/collapsing (handled by CSS when class is toggled)
 
+## JavaScript Required
+
+The Card component requires JavaScript to handle:
+- Toggle `.tl-card--expanded` class for expandable cards
+- Rotate chevron icon when expanding/collapsing (handled by CSS when class is toggled)
+
 ----------------------------------------------
 
 *Part of Tegel Lite (CSS) Design System*

@@ -39,6 +39,13 @@ Apply these classes to the `.tl-badge` element.
 | `.tl-badge--pill`  | Pill-shaped large badge for multi-digit numbers (2+ digits). Automatically adjusts width |
 | `.tl-badge--hidden`| Hides the badge                                |
 
+## Usage Notes
+
+- For values of 100 or more, use `99+` as the displayed text with `.tl-badge--pill` modifier
+- Small badges (`.tl-badge--sm`) should not contain text - they are used as dot indicators only
+- When using badges for notification counts, ensure the actual count is communicated to screen readers via `aria-label` on the parent element
+- Position badges using `position: absolute` on the badge and `position: relative` on the parent container
+
 ----------------------------------------------
 
 *Part of Tegel Lite (CSS) Design System*

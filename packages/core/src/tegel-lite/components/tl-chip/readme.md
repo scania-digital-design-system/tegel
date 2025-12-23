@@ -37,7 +37,7 @@ The Chip component represents small blocks of information or actions, often used
 | Element           | HTML Element     | Description                      |
 | ----------------- | ---------------- | -------------------------------- |
 | `.tl-chip`        | `<button>`/`<a>` | Main chip element                |
-| `.tl-icon`        | `<span>`         | Icon element (16px, optional)    |
+| `.tl-icon`        | `<span>`         | Icon element (optional)          |
 
 ## Modifiers
 
