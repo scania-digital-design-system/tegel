@@ -46,7 +46,7 @@ export default {
   },
   args: {
     includeTitle: true,
-    includeHamburger: true,
+    includeHamburger: false,
     isHamburgerPressed: false,
     isHamburgerSelected: false,
     includeBentoGrid: false,
@@ -151,7 +151,7 @@ const Template = ({
 
       ${
         includeBentoGrid
-          ? `<li class="tl-header__dropdown" style="display: block;">
+          ? `<li class="tl-header__dropdown">
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
@@ -170,7 +170,7 @@ const Template = ({
 
       ${
         includeBentoList
-          ? `<li class="tl-header__dropdown" style="display: block;">
+          ? `<li class="tl-header__dropdown">
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>

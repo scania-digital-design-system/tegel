@@ -45,3 +45,13 @@
     border-bottom-color: var(--header-nav-item-border-pressed);
   }
 }
+
+// Modifier styles in affected elements
+.tl-link__icon {
+  .tl-header__item-wrapper & {
+    position: relative;
+    margin-left: -6px;
+    left: 3px;
+    transition: background 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+}
