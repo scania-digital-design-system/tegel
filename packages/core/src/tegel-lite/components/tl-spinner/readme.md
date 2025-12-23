@@ -33,7 +33,7 @@ The Spinner component displays a loading indicator for ongoing processes.
 
 ### Spinner Size Modifiers
 
-Apply these classes to the `.tl-spinner` element.
+A size modifier is required. Apply these classes to the `.tl-spinner` element.
 
 | Modifier            | Description                |
 | ------------------- | -------------------------- |
@@ -44,7 +44,7 @@ Apply these classes to the `.tl-spinner` element.
 
 ### Spinner Variant Modifiers
 
-Apply these classes to the `.tl-spinner` element.
+A variant modifier is required. Apply these classes to the `.tl-spinner` element.
 
 | Modifier                | Description                              |
 | ----------------------- | ---------------------------------------- |

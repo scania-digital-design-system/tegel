@@ -45,13 +45,13 @@ The Modal component displays content in a layer above the main page with an over
 | `.tl-modal__close`    | `<button>`   | Close button                       |
 | `.tl-modal__body`     | `<div>`      | Main content area                  |
 | `.tl-modal__actions`  | `<div>`      | Action buttons container           |
-| `.tl-icon`            | `<span>`     | Icon element (optional)            |
+| `.tl-icon`            | `<span>`     | Icon element (20px for close)      |
 
 ## Modifiers
 
 ### Modal Size Modifiers
 
-Apply these classes to the `.tl-modal` element. Responsive widths adjust based on screen size.
+A size modifier is required. Apply these classes to the `.tl-modal` element. Responsive widths adjust based on screen size.
 
 | Modifier           | Description                           |
 | ------------------ | ------------------------------------- |
@@ -72,10 +72,13 @@ Apply these classes to the `.tl-modal` and `.tl-modal__overlay` elements.
 ## JavaScript Required
 
 The Modal component requires JavaScript to handle:
-- Show/hide modal and overlay (toggle `tl-modal--visible` class)
-- Close button functionality
-- Focus management and keyboard navigation (Escape key)
-- Click outside to close (overlay click)
+
+- Toggle visibility by adding/removing `tl-modal--visible` class on modal and overlay
+- Close button click handler
+- Escape key to close modal
+- Click outside modal (overlay click) to close
+- Focus trap and focus management
+- Body scroll lock when modal is open
 
 ----------------------------------------------
 

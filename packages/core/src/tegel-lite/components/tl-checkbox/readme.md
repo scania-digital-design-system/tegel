@@ -52,7 +52,13 @@ Apply these classes to the `.tl-checkbox__label` element.
 
 | Modifier                         | Description                     |
 | -------------------------------- | ------------------------------- |
-| `.tl-checkbox__label--disabled`  | Disabled label styling          |
+| `.tl-checkbox__label--disabled`  | Disabled label styling. Use together with `disabled` attribute on input |
+
+## JavaScript Required
+
+The Checkbox component requires JavaScript to handle:
+- Set indeterminate state (cannot be set via HTML attribute alone)
+- Toggle `.tl-checkbox__input--indeterminate` class for indeterminate state
 
 ----------------------------------------------
 
