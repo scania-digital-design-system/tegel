@@ -41,7 +41,7 @@
     "./tl-link.css": "./dist/tl-link.css",
     "./tl-message.css": "./dist/tl-message.css",
     "./tl-modal.css": "./dist/tl-modal.css",
-    "./tl-radiobutton.css": "./dist/tl-radiobutton.css",
+    "./tl-radio-button.css": "./dist/tl-radio-button.css",
     "./tl-spinner.css": "./dist/tl-spinner.css",
     "./tl-step.css": "./dist/tl-step.css",
     "./tl-stepper.css": "./dist/tl-stepper.css",
@@ -58,7 +58,8 @@
     "./tl-popover-menu.css": "./dist/tl-popover-menu.css",
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
     "./tl-footer.css": "./dist/tl-footer.css",
-    "./tl-slider.css": "./dist/tl-slider.css"
+    "./tl-slider.css": "./dist/tl-slider.css",
+    "./tl-radiobutton.css": "./dist/tl-radiobutton.css"
   },
   "files": [
     "dist/"
