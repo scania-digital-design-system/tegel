@@ -26,6 +26,26 @@
   .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels .tl-stepper__list > & {
     min-inline-size: 0;
   }
+
+  &--error .tl-stepper__node {
+    border-color: var(--stepper-icon-step-border-warning);
+    color: var(--stepper-icon-step-border-warning);
+  }
+
+  &--success .tl-stepper__node {
+    background-color: var(--stepper-icon-step-border-success);
+    border-color: var(--stepper-icon-step-border-success);
+    color: var(--stepper-icon-step-checkmark);
+  }
+
+  &--current .tl-stepper__node {
+    color: var(--stepper-current-number-with-border);
+  }
+
+  &--upcoming .tl-stepper__node {
+    border-color: var(--stepper-label-border-upcoming);
+    color: var(--stepper-label-text-upcoming);
+  }
 }
 
 .tl-stepper__content {
@@ -203,26 +223,6 @@
   text-align: center;
   position: relative;
 
-  &--error {
-    border-color: var(--stepper-icon-step-border-warning);
-    color: var(--stepper-icon-step-border-warning);
-  }
-
-  &--success {
-    background-color: var(--stepper-icon-step-border-success);
-    border-color: var(--stepper-icon-step-border-success);
-    color: var(--stepper-icon-step-checkmark);
-  }
-
-  &--current {
-    color: var(--stepper-current-number-with-border);
-  }
-
-  &--upcoming {
-    border-color: var(--stepper-label-border-upcoming);
-    color: var(--stepper-label-text-upcoming);
-  }
-
   .tl-stepper--lg .tl-stepper__content & {
     height: 30px;
     min-width: 30px;
@@ -253,7 +253,7 @@
     @include detail-05;
   }
 
-  &--upcoming {
+  .tl-stepper__step--upcoming & {
     color: var(--stepper-label-text-upcoming);
     opacity: var(--tds-stepper-label-text-opacity-upcoming);
   }
