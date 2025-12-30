@@ -81,26 +81,6 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
     .filter(Boolean)
     .join(' ');
 
-  const sizeFlag = size === 'Large' ? 'tl-stepper__content--lg' : 'tl-stepper__content--sm';
-  const sizeFlagLabel = size === 'Large' ? 'tl-stepper__label--lg' : 'tl-stepper__label--sm';
-  const orientFlag =
-    orientation === 'Vertical'
-      ? 'tl-stepper__content--vertical'
-      : 'tl-stepper__content--horizontal';
-
-  const getTextFlag = () => {
-    if (orientation !== 'Horizontal') {
-      return '';
-    }
-    if (labelPosition === 'Aside') {
-      return 'tl-stepper__content--text-aside';
-    }
-    return 'tl-stepper__content--text-below';
-  };
-  const textFlag = getTextFlag();
-
-  const hideFlag = hideLabels ? 'tl-stepper__content--hide-labels' : '';
-
   const steps = [
     {
       label: 'Success step',
@@ -128,8 +108,6 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
   const items = steps
     .map(({ label, state, index }) => {
-      const contentFlags = [sizeFlag, orientFlag, textFlag, hideFlag].filter(Boolean).join(' ');
-      const labelSizeClass = sizeFlagLabel;
       const labelUpcoming =
         state === 'tl-stepper__node--upcoming' ? 'tl-stepper__label--upcoming' : '';
 
@@ -142,9 +120,9 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
       return `
         <li class="tl-stepper__step">
-          <div class="tl-stepper__content ${contentFlags}">
+          <div class="tl-stepper__content">
             <div class="tl-stepper__node ${state || ''}">${nodeInner}</div>
-            <div class="tl-stepper__label ${labelSizeClass} ${labelUpcoming}">${label}</div>
+            <div class="tl-stepper__label ${labelUpcoming}">${label}</div>
           </div>
         </li>
       `;
