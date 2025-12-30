@@ -35,49 +35,49 @@
   align-items: center;
   gap: 8px;
 
-  &--text-below {
+  .tl-stepper--label-below & {
     flex-direction: column;
   }
 
-  &--lg {
+  .tl-stepper--lg & {
     padding: 0 20px;
     @include detail-01;
   }
 
-  &--sm {
+  .tl-stepper--sm & {
     padding: 0 20px;
     @include detail-05;
   }
 
-  .tl-stepper__step:last-of-type &--horizontal {
+  .tl-stepper--horizontal .tl-stepper__step:last-of-type & {
     padding-right: 0;
   }
 
-  .tl-stepper__step:last-of-type &--sm,
-  .tl-stepper__step:last-of-type &--lg {
+  .tl-stepper--lg .tl-stepper__step:last-of-type &,
+  .tl-stepper--sm .tl-stepper__step:last-of-type & {
     &::after {
       display: none;
     }
   }
 
-  .tl-stepper__step:last-of-type &--sm.tl-stepper__content--vertical {
+  .tl-stepper--vertical.tl-stepper--sm .tl-stepper__step:last-of-type & {
     &::before {
       display: none;
     }
   }
 
-  .tl-stepper__step:first-of-type &--horizontal {
+  .tl-stepper--horizontal .tl-stepper__step:first-of-type & {
     padding-left: 0;
   }
 
-  .tl-stepper__step:first-of-type &--sm,
-  .tl-stepper__step:first-of-type &--lg {
+  .tl-stepper--lg .tl-stepper__step:first-of-type &,
+  .tl-stepper--sm .tl-stepper__step:first-of-type & {
     &::before {
       display: none;
     }
   }
 
-  &--lg {
+  .tl-stepper--lg & {
     &::after {
       @include divider;
     }
@@ -85,116 +85,110 @@
     &::before {
       @include divider;
     }
+  }
 
-    &.tl-stepper__content--vertical {
-      &::after {
-        height: 36px;
-        width: 1px;
-        top: 40px;
-        left: 36px;
-      }
-    }
-
-    &.tl-stepper__content--horizontal {
-      &::after {
-        height: 1px;
-        left: calc(50% + 24px);
-        right: 0;
-        top: 16px;
-      }
-
-      &::before {
-        height: 1px;
-        right: calc(50% + 24px);
-        left: 0;
-        top: 16px;
-      }
-
-      &.tl-stepper__content--text-aside {
-        &:not(.tl-stepper__content--hide-labels) {
-          &::after {
-            height: 1px;
-            top: 16px;
-            width: 10px;
-            left: auto;
-            right: -10px;
-          }
-
-          &::before {
-            height: 1px;
-            top: 16px;
-            width: 10px;
-            left: -10px;
-            right: auto;
-          }
-        }
-      }
+  .tl-stepper--lg.tl-stepper--vertical & {
+    &::after {
+      height: 36px;
+      width: 1px;
+      top: 40px;
+      left: 36px;
     }
   }
 
-  &--sm {
-    &.tl-stepper__content--vertical {
-      &::after {
-        @include divider;
-
-        height: 20px;
-        width: 1px;
-        top: 34px;
-        left: 32px;
-      }
-
-      &::before {
-        @include divider;
-
-        height: 20px;
-        width: 1px;
-        top: 34px;
-        left: 32px;
-      }
+  .tl-stepper--lg.tl-stepper--horizontal & {
+    &::after {
+      height: 1px;
+      left: calc(50% + 24px);
+      right: 0;
+      top: 16px;
     }
 
-    &.tl-stepper__content--horizontal {
-      &::after {
-        @include divider;
+    &::before {
+      height: 1px;
+      right: calc(50% + 24px);
+      left: 0;
+      top: 16px;
+    }
+  }
 
-        height: 1px;
-        left: calc(50% + 16px + 8px);
-        right: 0;
-        top: 13px;
-      }
+  .tl-stepper--lg.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
+    &::after {
+      height: 1px;
+      top: 16px;
+      width: 10px;
+      left: auto;
+      right: -10px;
+    }
 
-      &::before {
-        @include divider;
+    &::before {
+      height: 1px;
+      top: 16px;
+      width: 10px;
+      left: -10px;
+      right: auto;
+    }
+  }
 
-        height: 1px;
-        left: 0;
-        right: calc(50% + 24px);
-        top: 13px;
-      }
+  .tl-stepper--sm.tl-stepper--vertical & {
+    &::after {
+      @include divider;
 
-      &.tl-stepper__content--text-aside {
-        &:not(.tl-stepper__content--hide-labels) {
-          &::after {
-            @include divider;
+      height: 20px;
+      width: 1px;
+      top: 34px;
+      left: 32px;
+    }
 
-            height: 1px;
-            top: 13px;
-            width: 10px;
-            left: auto;
-            right: -10px;
-          }
+    &::before {
+      @include divider;
 
-          &::before {
-            @include divider;
+      height: 20px;
+      width: 1px;
+      top: 34px;
+      left: 32px;
+    }
+  }
 
-            height: 1px;
-            top: 13px;
-            width: 10px;
-            left: -10px;
-            right: auto;
-          }
-        }
-      }
+  .tl-stepper--sm.tl-stepper--horizontal & {
+    &::after {
+      @include divider;
+
+      height: 1px;
+      left: calc(50% + 16px + 8px);
+      right: 0;
+      top: 13px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      left: 0;
+      right: calc(50% + 24px);
+      top: 13px;
+    }
+  }
+
+  .tl-stepper--sm.tl-stepper--horizontal.tl-stepper--label-aside:not(.tl-stepper--hide-labels) & {
+    &::after {
+      @include divider;
+
+      height: 1px;
+      top: 13px;
+      width: 10px;
+      left: auto;
+      right: -10px;
+    }
+
+    &::before {
+      @include divider;
+
+      height: 1px;
+      top: 13px;
+      width: 10px;
+      left: -10px;
+      right: auto;
     }
   }
 }
@@ -229,19 +223,19 @@
     color: var(--stepper-label-text-upcoming);
   }
 
-  .tl-stepper__content--lg & {
+  .tl-stepper--lg .tl-stepper__content & {
     height: 30px;
     min-width: 30px;
   }
 
-  .tl-stepper__content--sm & {
+  .tl-stepper--sm .tl-stepper__content & {
     height: 24px;
     min-width: 24px;
   }
 }
 
 .tl-icon {
-  .tl-stepper__content--sm & {
+  .tl-stepper--sm .tl-stepper__content & {
     vertical-align: -webkit-baseline-middle;
     vertical-align: -moz-middle-with-baseline;
     margin-top: -2px;
@@ -251,11 +245,11 @@
 .tl-stepper__label {
   text-align: center;
 
-  &--lg {
+  .tl-stepper--lg & {
     @include detail-01;
   }
 
-  &--sm {
+  .tl-stepper--sm & {
     @include detail-05;
   }
 
