@@ -84,22 +84,22 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
   const steps = [
     {
       label: 'Success step',
-      state: 'tl-stepper__node--success',
+      state: 'tl-stepper__step--success',
       index: 1,
     },
     {
       label: 'Error step',
-      state: 'tl-stepper__node--error',
+      state: 'tl-stepper__step--error',
       index: 2,
     },
     {
       label: 'Current step',
-      state: 'tl-stepper__node--current',
+      state: 'tl-stepper__step--current',
       index: 3,
     },
     {
       label: 'Upcoming step',
-      state: 'tl-stepper__node--upcoming',
+      state: 'tl-stepper__step--upcoming',
       index: 4,
     },
   ];
@@ -108,21 +108,18 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
   const items = steps
     .map(({ label, state, index }) => {
-      const labelUpcoming =
-        state === 'tl-stepper__node--upcoming' ? 'tl-stepper__label--upcoming' : '';
-
       const nodeInner =
-        state === 'tl-stepper__node--success' || state === 'tl-stepper__node--error'
+        state === 'tl-stepper__step--success' || state === 'tl-stepper__step--error'
           ? `<span class="tl-icon tl-icon--${
-              state === 'tl-stepper__node--success' ? 'tick' : 'warning'
+              state === 'tl-stepper__step--success' ? 'tick' : 'warning'
             } ${iconSizeClass}"></span>`
           : String(index);
 
       return `
-        <li class="tl-stepper__step">
+        <li class="tl-stepper__step ${state || ''}">
           <div class="tl-stepper__content">
-            <div class="tl-stepper__node ${state || ''}">${nodeInner}</div>
-            <div class="tl-stepper__label ${labelUpcoming}">${label}</div>
+            <div class="tl-stepper__node">${nodeInner}</div>
+            <div class="tl-stepper__label">${label}</div>
           </div>
         </li>
       `;
