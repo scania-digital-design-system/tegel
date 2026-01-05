@@ -26,26 +26,6 @@
   .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels .tl-stepper__list > & {
     min-inline-size: 0;
   }
-
-  &--error .tl-stepper__node {
-    border-color: var(--stepper-icon-step-border-warning);
-    color: var(--stepper-icon-step-border-warning);
-  }
-
-  &--success .tl-stepper__node {
-    background-color: var(--stepper-icon-step-border-success);
-    border-color: var(--stepper-icon-step-border-success);
-    color: var(--stepper-icon-step-checkmark);
-  }
-
-  &--current .tl-stepper__node {
-    color: var(--stepper-current-number-with-border);
-  }
-
-  &--upcoming .tl-stepper__node {
-    border-color: var(--stepper-label-border-upcoming);
-    color: var(--stepper-label-text-upcoming);
-  }
 }
 
 .tl-stepper__content {
@@ -222,6 +202,26 @@
   border-style: solid;
   text-align: center;
   position: relative;
+
+  .tl-stepper__step--error & {
+    border-color: var(--stepper-icon-step-border-warning);
+    color: var(--stepper-icon-step-border-warning);
+  }
+
+  .tl-stepper__step--success & {
+    background-color: var(--stepper-icon-step-border-success);
+    border-color: var(--stepper-icon-step-border-success);
+    color: var(--stepper-icon-step-checkmark);
+  }
+
+  .tl-stepper__step--current & {
+    color: var(--stepper-current-number-with-border);
+  }
+
+  .tl-stepper__step--upcoming & {
+    border-color: var(--stepper-label-border-upcoming);
+    color: var(--stepper-label-text-upcoming);
+  }
 
   .tl-stepper--lg .tl-stepper__content & {
     height: 30px;
