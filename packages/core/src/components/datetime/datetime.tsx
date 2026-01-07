@@ -9,7 +9,7 @@ import generateUniqueId from '../../utils/generateUniqueId';
 })
 export class TdsDatetime {
   /** Text-input for focus state */
-  private textInput: HTMLInputElement;
+  private textInput!: HTMLInputElement;
 
   /** Sets an input type */
   @Prop({ reflect: true }) type: 'datetime-local' | 'date' | 'month' | 'week' | 'time' =
@@ -19,10 +19,10 @@ export class TdsDatetime {
   @Prop({ reflect: true, mutable: true }) value = '';
 
   /** Sets min value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
-  @Prop() min: string;
+  @Prop() min?: string;
 
   /** Sets max value. Example for different types: datetime="2023-01-31T00:00" date="2023-01-01" time="15:00" */
-  @Prop() max: string;
+  @Prop() max?: string;
 
   /** Default value of the component. Format for time: HH-MM. Format for date: YY-MM-DD. Format for month: YY-MM. Format for week: YY-Www  Format for date-time: YY-MM-DDTHH-MM */
   @Prop() defaultValue: string | 'none' = 'none';
@@ -43,7 +43,7 @@ export class TdsDatetime {
   @Prop() name = `datetime-${generateUniqueId()}`;
 
   /** Error state of input */
-  @Prop() state: string;
+  @Prop() state?: string;
 
   /** Autofocus for input */
   @Prop() autofocus: boolean = false;
@@ -58,10 +58,10 @@ export class TdsDatetime {
   @Prop() helper: string = '';
 
   /** Value for the aria-label attribute */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** Listen to the focus state of the input */
-  @State() focusInput: boolean;
+  @State() focusInput: boolean = false;
 
   /** Change event for the Datetime */
   @Event({
@@ -70,7 +70,7 @@ export class TdsDatetime {
     bubbles: true,
     cancelable: false,
   })
-  tdsChange: EventEmitter;
+  tdsChange!: EventEmitter;
 
   /** Blur event for the Datetime */
   @Event({
@@ -79,7 +79,7 @@ export class TdsDatetime {
     bubbles: true,
     cancelable: false,
   })
-  tdsBlur: EventEmitter<FocusEvent>;
+  tdsBlur!: EventEmitter<FocusEvent>;
 
   /** Focus event for the Datetime */
   @Event({
@@ -88,7 +88,7 @@ export class TdsDatetime {
     bubbles: true,
     cancelable: false,
   })
-  tdsFocus: EventEmitter<FocusEvent>;
+  tdsFocus!: EventEmitter<FocusEvent>;
 
   /** Input event for the Datetime */
   @Event({
@@ -97,7 +97,7 @@ export class TdsDatetime {
     bubbles: true,
     cancelable: false,
   })
-  tdsInput: EventEmitter<InputEvent>;
+  tdsInput!: EventEmitter<InputEvent>;
 
   /** Method that resets the value of the Datetime, using defaultValue if is not 'none' */
   @Method()
@@ -216,7 +216,7 @@ export class TdsDatetime {
       'tds-datetime-data': this.value.length > 0,
       'tds-form-datetime-disabled': this.disabled,
       [`tds-form-datetime-${this.size}`]: ['md', 'sm'].includes(this.size),
-      [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(this.state),
+      [`tds-form-datetime-${this.state}`]: ['error', 'success'].includes(`${this.state}`),
       [`tds-mode-variant-${this.modeVariant}`]: this.modeVariant !== null,
       'tds-datetime-container-label-inside': !!(
         this.label &&

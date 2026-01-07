@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Listen, Prop, State } from '@stencil/core';
-import { InternalTdsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange, TextAlign } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'verticalDividers',
@@ -16,18 +16,18 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
 })
 export class TdsTableBodyCell {
   /** Value that will be presented as text inside a cell */
-  @Prop({ reflect: true }) cellValue: string | number;
+  @Prop({ reflect: true }) cellValue?: string | number;
 
   /** Passing the same cell key for all body cells which is used in head cell enables features of text align and hovering */
-  @Prop({ reflect: true }) cellKey: string;
+  @Prop({ reflect: true }) cellKey?: string;
 
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
 
   /** Setting for text align, default value "left". Other accepted values are "left", "start", "right", "end" or "center". */
-  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center';
+  @Prop({ reflect: true }) textAlign?: TextAlign;
 
-  @State() textAlignState: string;
+  @State() textAlignState: TextAlign | undefined = undefined;
 
   @State() activeSorting: boolean = false;
 
@@ -39,9 +39,9 @@ export class TdsTableBodyCell {
 
   @State() tableId: string | undefined = '';
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   @Listen('internalTdsPropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {
@@ -77,11 +77,11 @@ export class TdsTableBodyCell {
         if (this.textAlign) {
           this.textAlignState = this.textAlign;
         } else {
-          this.textAlignState = ['left', 'start', 'center', 'right', 'end'].includes(
-            receivedTextAlign,
-          )
-            ? receivedTextAlign
-            : 'left';
+          this.textAlignState = (
+            ['left', 'start', 'right', 'end', 'center'].includes(receivedTextAlign)
+              ? receivedTextAlign
+              : 'left'
+          ) as TextAlign;
         }
       }
     }

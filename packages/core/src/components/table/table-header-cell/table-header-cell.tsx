@@ -9,7 +9,7 @@ import {
   Listen,
   Element,
 } from '@stencil/core';
-import { InternalTdsTablePropChange } from '../table/table';
+import { InternalTdsTablePropChange, TextAlign } from '../table/table';
 
 const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   'multiselect',
@@ -42,7 +42,7 @@ export class TdsTableHeaderCell {
   @Prop() sortable: boolean = false;
 
   /** Setting for text align, default is "left". Other accepted values are "left", "start", "right" or "end". */
-  @Prop({ reflect: true }) textAlign: 'left' | 'start' | 'right' | 'end' | 'center' = 'left';
+  @Prop({ reflect: true }) textAlign: TextAlign = 'left';
 
   /** Disables internal padding. Useful when passing other components to cell. */
   @Prop({ reflect: true }) disablePadding: boolean = false;
@@ -50,7 +50,7 @@ export class TdsTableHeaderCell {
   /** Aria label for the sort button, providing an accessible description */
   @Prop({ reflect: true }) tdsAriaLabelSortButton?: string = '';
 
-  @State() textAlignState: string;
+  @State() textAlignState: TextAlign = 'left';
 
   @State() sortingDirection: 'asc' | 'desc' | undefined;
 
@@ -70,9 +70,9 @@ export class TdsTableHeaderCell {
 
   @State() expandableRows: boolean = false;
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   /** Sends unique Table identifier, column key and sorting direction to the tds-table-body component,
    * can also be listened to implement custom-sorting logic. */
@@ -82,7 +82,7 @@ export class TdsTableHeaderCell {
     cancelable: true,
     bubbles: true,
   })
-  tdsSort: EventEmitter<{
+  tdsSort!: EventEmitter<{
     tableId: string | undefined;
     columnKey: string | undefined;
     sortingDirection: 'asc' | 'desc';
@@ -96,7 +96,7 @@ export class TdsTableHeaderCell {
     cancelable: false,
     bubbles: true,
   })
-  internalSortButtonClicked: EventEmitter<{
+  internalSortButtonClicked!: EventEmitter<{
     tableId: string | undefined;
     key: string | undefined;
   }>;
@@ -109,7 +109,7 @@ export class TdsTableHeaderCell {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsTextAlign: EventEmitter<object>;
+  internalTdsTextAlign!: EventEmitter<object>;
 
   /** @internal Sends unique Table identifier, column key so the body cells with the same key change background when user hovers over header cell */
   @Event({
@@ -118,7 +118,7 @@ export class TdsTableHeaderCell {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsHover: EventEmitter<{
+  internalTdsHover!: EventEmitter<{
     tableId: string | undefined;
     key: string;
   }>;

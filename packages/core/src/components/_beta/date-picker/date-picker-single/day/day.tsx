@@ -8,10 +8,10 @@ import { isToday, format } from 'date-fns';
 })
 export class DatepickerDate {
   /** Marks the date as not part of the currently displayed month. */
-  @Prop() notCurrentMonth: boolean;
+  @Prop() notCurrentMonth?: boolean;
 
   /** The Date. */
-  @Prop() date: Date;
+  @Prop() date?: Date;
 
   /** Marks the Date as selected. */
   @Prop() selected: boolean = false;

@@ -1,0 +1,69 @@
+@use '../../../../mixins/box-sizing' as *;
+@use '../../../../mixins/focus-state' as *;
+@use './tl-folder-tabs-vars' as *;
+@use '../../../../../../../typography/mixins/type-styles' as *;
+
+.tl-folder-tabs__tab {
+  all: unset;
+  @include headline-07;
+
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-inline-size: 142px;
+  inline-size: auto;
+  flex: 0 0 auto;
+  white-space: nowrap;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  border-left: 1px solid transparent;
+  border-top: 2px solid var(--folder-tab-surface);
+  background-color: var(--folder-tab-surface);
+  color: var(--folder-tab-text);
+
+  & + .tl-folder-tabs__tab {
+    border-left-color: var(--folder-tab-divider);
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentcolor;
+    outline-offset: -4px;
+    box-shadow: none;
+  }
+
+  &:hover:not(.tl-folder-tabs__tab--disabled):not(.tl-folder-tabs__tab--selected) {
+    background-color: var(--folder-tab-surface-hover);
+    border-top-color: var(--folder-tab-surface-hover);
+    color: var(--folder-tab-text);
+  }
+
+  &--selected {
+    background-color: var(--folder-tab-surface-selected);
+    border-top-color: var(--folder-tab-border-selected);
+    color: var(--folder-tab-text);
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -1px;
+      bottom: 0;
+      width: 1px;
+      background-color: var(--folder-tab-surface-selected);
+      z-index: 1;
+    }
+  }
+
+  &--disabled {
+    color: var(--folder-tab-text-disabled);
+    cursor: not-allowed;
+    user-select: none;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}

@@ -47,6 +47,10 @@
       padding: 0;
       background-color: transparent;
 
+      tds-icon {
+        padding-right: 8px;
+      }
+
       .header {
         @include detail-02;
       }

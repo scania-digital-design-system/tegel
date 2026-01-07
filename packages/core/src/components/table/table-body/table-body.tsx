@@ -17,7 +17,7 @@ const relevantTableProps: InternalTdsTablePropChange['changed'] = [
   shadow: false,
 })
 export class TdsTableBody {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   @State() multiselect: boolean = false;
 
@@ -27,7 +27,7 @@ export class TdsTableBody {
 
   @State() multiselectArray = [];
 
-  @State() multiselectArrayJSON: string;
+  @State() multiselectArrayJSON: string = '';
 
   @State() mainCheckboxStatus: boolean = false;
 
@@ -37,7 +37,7 @@ export class TdsTableBody {
 
   @State() tableId: string | undefined = '';
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   @Listen('internalTdsTablePropChange', { target: 'body' })
   internalTdsPropChangeListener(event: CustomEvent<InternalTdsTablePropChange>) {

@@ -1,0 +1,60 @@
+/* tl-folder-tabs.scss (overlay buttons, no JS) */
+@use '../../../../mixins/box-sizing' as *;
+@use '../../../../mixins/focus-state' as *;
+@use './tl-folder-tabs-vars' as *;
+
+.tl-folder-tabs {
+  @include tds-box-sizing;
+
+  overflow: hidden; /* clip the track beneath the overlay buttons */
+  outline: 0;
+}
+
+/* The scrolling track */
+.tl-folder-tabs__wrapper {
+  display: flex;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Overlay buttons (optional in markup; visible via media query) */
+.tl-folder-tabs__scroll-button {
+  background-color: var(--folder-tab-surface);
+  color: var(--folder-tabs-scroll-button-text);
+  min-width: 48px;
+  border: 0;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--folder-tabs-scroll-button-surface-hover);
+  }
+
+  &:active {
+    background-color: var(--folder-tabs-scroll-button-surface-active);
+  }
+}
+
+/* left/right anchoring over the track */
+.tl-folder-tabs__scroll-button--left {
+  left: 0;
+  z-index: 1;
+}
+
+.tl-folder-tabs__scroll-button--right {
+  right: 0;
+  z-index: 1;
+}
+
+svg {
+  .tl-folder-tabs__scroll-button & {
+    fill: var(--folder-tabs-scroll-button-text);
+  }
+}

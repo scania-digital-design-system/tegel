@@ -10,23 +10,18 @@ function loadStories() {
   );
 
   // If in development environment, return all story files
-  // Otherwise, exclude stories from the _beta and tegel-light folders
+  // Otherwise, exclude stories from the _beta and tegel-lite folders
   return process.env.VITE_STORYBOOK_ENV === 'dev'
     ? storyFiles
     : storyFiles.filter(
-        (file: string | string[]) => !file.includes('/_beta/') && !file.includes('/tegel-light/'),
+        (file: string | string[]) => !file.includes('/_beta/') && !file.includes('/tegel-lite/'),
       );
 }
 
-let addons = [
-  '@storybook/addon-essentials',
-  '@storybook/addon-interactions',
-  '@storybook/blocks',
-  'storybook-dark-mode',
-];
+let addons = ['@vueless/storybook-dark-mode', '@storybook/addon-docs'];
 
 if (process.env.VITE_STORYBOOK_ENV === 'dev') {
-  addons = [...addons, '@storybook/addon-designs', '@storybook/addon-a11y'];
+  addons = [...addons, '@storybook/addon-a11y'];
 }
 
 const config: StorybookConfig = {

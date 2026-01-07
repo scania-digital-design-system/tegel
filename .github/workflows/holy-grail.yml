@@ -22,7 +22,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '22.11.0'
+        default: '22.20.0'
         type: string
 
       tags:
@@ -46,7 +46,7 @@ on:
 
 env:
   VERSION: patch
-  NODE_VERSION: '22.11.0'
+  NODE_VERSION: '22.20.0'
   TAG: latest
 
 jobs:

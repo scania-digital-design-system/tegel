@@ -11,9 +11,9 @@ import isHeadingElement from '../../../utils/isHeadingElement';
   shadow: false,
 })
 export class TdsHeaderLauncherGrid {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  @State() headingElement: HTMLElement;
+  @State() headingElement?: HTMLElement;
 
   componentWillLoad() {
     const listRoot = this.host;
