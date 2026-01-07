@@ -64,8 +64,8 @@ jobs:
         env:
           INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
         run: |
-          if ! echo "$INPUT_BETA_VERSION_SUFFIX" | grep -qE '^[a-zA-Z0-9.\-]{1,50}$'; then
-            echo "Error: betaVersionSuffix must contain only alphanumeric characters, dots, and hyphens, and be 1-50 characters long"
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
             exit 1
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
@@ -143,8 +143,8 @@ jobs:
         env:
           INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
         run: |
-          if ! echo "$INPUT_BETA_VERSION_SUFFIX" | grep -qE '^[a-zA-Z0-9.\-]{1,50}$'; then
-            echo "Error: betaVersionSuffix must contain only alphanumeric characters, dots, and hyphens, and be 1-50 characters long"
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
             exit 1
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
@@ -242,8 +242,8 @@ jobs:
         env:
           INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
         run: |
-          if ! echo "$INPUT_BETA_VERSION_SUFFIX" | grep -qE '^[a-zA-Z0-9.\-]{1,50}$'; then
-            echo "Error: betaVersionSuffix must contain only alphanumeric characters, dots, and hyphens, and be 1-50 characters long"
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
             exit 1
           fi
           echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
