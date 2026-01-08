@@ -50,7 +50,7 @@ export class TdsTableFooter {
   /* Sets the footer to use compact design. */
   @State() compactDesign: boolean = false;
 
-  @State() lastCorrectValue: number;
+  @State() lastCorrectValue: number = 1;
 
   @State() tableId: string | undefined = '';
 
@@ -58,13 +58,13 @@ export class TdsTableFooter {
 
   @State() rowsPerPageValue: number = this.rowsPerPageValues[0];
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /* A reference for the input element used for pagination in the footer. */
-  private inputElement: HTMLInputElement;
+  private inputElement!: HTMLInputElement;
 
   /* The footer parent Table. */
-  private tableEl: HTMLTdsTableElement | null;
+  private tableEl!: HTMLTdsTableElement | null;
 
   /** Event to send current page value to tds-table-body component, can also be listened to in order to implement custom pagination logic. */
   @Event({
@@ -73,7 +73,7 @@ export class TdsTableFooter {
     cancelable: true,
     bubbles: true,
   })
-  tdsPagination: EventEmitter<{
+  tdsPagination!: EventEmitter<{
     tableId: string | undefined;
     paginationValue: number;
     rowsPerPage?: number;

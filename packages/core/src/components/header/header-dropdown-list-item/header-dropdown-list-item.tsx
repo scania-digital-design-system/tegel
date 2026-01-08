@@ -9,7 +9,7 @@ import { Component, Element, h, Host, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TdsHeaderDropdownListItem {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** If the link should appear selected. */
   @Prop() selected: boolean = false;

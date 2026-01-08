@@ -20,7 +20,7 @@ import {
   shadow: true,
 })
 export class TdsInlineTabs {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Variant of the Tabs, primary= on white, secondary= on grey50 */
   @Prop() modeVariant: 'primary' | 'secondary' = 'primary';
@@ -30,7 +30,7 @@ export class TdsInlineTabs {
 
   /** Sets the selected Tab.
    * If this is set, all Tab changes need to be handled by the user. */
-  @Prop({ reflect: true }) selectedIndex: number;
+  @Prop({ reflect: true }) selectedIndex?: number;
 
   /** Defines aria-label on left scroll button */
   @Prop() tdsScrollLeftAriaLabel: string = 'Scroll left';
@@ -53,7 +53,7 @@ export class TdsInlineTabs {
 
   private scrollWidth: number = 0; // total amount that is possible to scroll in the nav wrapper
 
-  private children: Array<HTMLTdsInlineTabElement>;
+  private children: Array<HTMLTdsInlineTabElement> = [];
 
   private clickHandlers = new WeakMap<HTMLElement, EventListener>();
 
@@ -64,13 +64,13 @@ export class TdsInlineTabs {
     cancelable: true,
     bubbles: true,
   })
-  tdsChange: EventEmitter<{
+  tdsChange!: EventEmitter<{
     selectedTabIndex: number;
   }>;
 
   /** Selects a Tab based on tabindex, will not select a disabled Tab. */
   @Method()
-  async selectTab(tabIndex: number): Promise<{ selectedTabIndex: number }> {
+  async selectTab(tabIndex: number): Promise<{ selectedTabIndex: number | undefined }> {
     if (tabIndex < 0 || tabIndex >= this.children.length) {
       throw new Error('Tab index out of bounds');
     }
@@ -102,7 +102,10 @@ export class TdsInlineTabs {
       tabElement.setSelected(false);
       return tabElement;
     });
-    this.children[this.selectedIndex].setSelected(true);
+
+    if (this.selectedIndex) {
+      this.children[this.selectedIndex].setSelected(true);
+    }
   }
 
   private scrollRight(): void {

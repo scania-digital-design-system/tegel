@@ -7,7 +7,7 @@ import inheritAriaAttributes from '../../../utils/inheritAriaAttributes';
   shadow: true,
 })
 export class TdsSideMenuCloseButton {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   private static handleClick() {
     const hamburgerButton = document.querySelector('tds-header-hamburger');

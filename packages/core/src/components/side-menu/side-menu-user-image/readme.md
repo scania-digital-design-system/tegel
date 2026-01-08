@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description         | Type     | Default     |
-| -------- | --------- | ------------------- | -------- | ----------- |
-| `alt`    | `alt`     | The image alt text. | `string` | `undefined` |
-| `src`    | `src`     | The image source.   | `string` | `undefined` |
+| Property | Attribute | Description         | Type                  | Default     |
+| -------- | --------- | ------------------- | --------------------- | ----------- |
+| `alt`    | `alt`     | The image alt text. | `string \| undefined` | `undefined` |
+| `src`    | `src`     | The image source.   | `string \| undefined` | `undefined` |
 
 
 ## Slots

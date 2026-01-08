@@ -16,7 +16,7 @@ import hasSlot from '../../utils/hasSlot';
   shadow: true,
 })
 export class TdsCard {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Variant of the Card based on the theme used. */
   @Prop() modeVariant: 'primary' | 'secondary' | null = null;
@@ -25,16 +25,16 @@ export class TdsCard {
   @Prop() imagePlacement: 'above-header' | 'below-header' = 'below-header';
 
   /** Text in the header */
-  @Prop() header: string;
+  @Prop() header?: string;
 
   /** Subheader text in the header */
-  @Prop() subheader: string;
+  @Prop() subheader?: string;
 
   /** Body image src */
-  @Prop() bodyImg: string;
+  @Prop() bodyImg?: string;
 
   /** Alt text for the body image */
-  @Prop() bodyImgAlt: string;
+  @Prop() bodyImgAlt?: string;
 
   /** Divider for the body */
   @Prop() bodyDivider: boolean = false;
@@ -69,7 +69,7 @@ export class TdsCard {
     cancelable: false,
     bubbles: true,
   })
-  tdsClick: EventEmitter<{
+  tdsClick!: EventEmitter<{
     cardId: string;
   }>;
 
@@ -128,7 +128,7 @@ export class TdsCard {
     const usesActionsSlot = hasSlot('actions', this.host);
     const bodyId = `body-${this.cardId}`;
     return (
-      <div class={{ 'stretch': this.stretch }} aria-describedby={usesBodySlot ? bodyId : null}>
+      <div class={{ stretch: this.stretch }} aria-describedby={usesBodySlot ? bodyId : null}>
         {this.imagePlacement === 'below-header' && this.getCardHeader()}
         <div class="card-body" id={bodyId}>
           {usesBodyImageSlot && <slot name="body-image"></slot>}

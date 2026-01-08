@@ -26,7 +26,7 @@ export class TdsPopoverCore {
   @Element() host!: HTMLTdsPopoverCoreElement;
 
   /** The CSS-selector for an element that will trigger the pop-over */
-  @Prop() selector: string;
+  @Prop() selector?: string;
 
   /** Element that will trigger the pop-over (takes priority over selector) */
   @Prop() referenceEl?: HTMLElement | null;
@@ -64,7 +64,7 @@ export class TdsPopoverCore {
 
   @State() renderedShowValue: boolean = false;
 
-  @State() popperInstance: Instance | null;
+  @State() popperInstance: Instance | null = null;
 
   @State() target?: HTMLElement | null;
 
@@ -90,7 +90,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: true,
   })
-  internalTdsShow: EventEmitter<object>;
+  internalTdsShow!: EventEmitter<object>;
 
   /** @internal Close event. */
   @Event({
@@ -99,7 +99,7 @@ export class TdsPopoverCore {
     cancelable: false,
     bubbles: false,
   })
-  internalTdsClose: EventEmitter<object>;
+  internalTdsClose!: EventEmitter<object>;
 
   @Listen('click', { target: 'window' })
   onAnyClick(event: MouseEvent) {
@@ -175,7 +175,7 @@ export class TdsPopoverCore {
     }
   }
 
-  private setIsShown = function setIsShown(isShown: boolean | ((s: boolean) => void)) {
+  private setIsShown = (isShown: boolean | ((s: boolean) => boolean)) => {
     if (typeof isShown === 'function') {
       this.isShown = isShown(this.isShown);
     } else {
@@ -188,9 +188,9 @@ export class TdsPopoverCore {
       this.internalTdsClose.emit();
       this.openedByKeyboard = false;
     }
-  }.bind(this);
+  };
 
-  private onClickTarget = function onClickTarget(event: Event) {
+  private onClickTarget = (event: Event) => {
     event.stopPropagation();
     // Check if event was triggered by keyboard (Enter or Space)
     this.openedByKeyboard =
@@ -198,19 +198,19 @@ export class TdsPopoverCore {
       (event as KeyboardEvent).key === 'Enter' ||
       (event as KeyboardEvent).key === ' ';
     this.setIsShown((isShown: boolean) => !isShown);
-  }.bind(this);
+  };
 
-  private handleShow = function handleShow(event) {
+  private handleShow = (event: FocusEvent | MouseEvent) => {
     event.stopPropagation();
     // Check if event was triggered by keyboard (tab focus)
     this.openedByKeyboard = event.type === 'focusin';
     this.setIsShown(true);
-  }.bind(this);
+  };
 
-  private handleHide = function handleHide(event) {
+  private handleHide = (event: FocusEvent | MouseEvent) => {
     event.stopPropagation();
     this.setIsShown(false);
-  }.bind(this);
+  };
 
   private initialize({
     referenceEl,
