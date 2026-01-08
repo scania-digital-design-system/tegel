@@ -64,7 +64,7 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
   formatHtmlPreview(`
 <!-- Required stylesheets:
   "@scania/tegel-lite/global.css"
-  "@scania/tegel-lite/tl-radiobutton.css"
+  "@scania/tegel-lite/tl-radio-button.css"
 -->
 
 <style>
@@ -72,30 +72,30 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
 </style>
 
 <fieldset class="demo-fieldset-reset">
-    <label class="tl-radiobutton ${disabled ? 'tl-radiobutton--disabled' : ''}">
+    <label class="tl-radio-button ${disabled ? 'tl-radio-button--disabled' : ''}">
       <input
-        class="tl-radiobutton__input"
+        class="tl-radio-button__input"
         type="radio"
         name="${name}"
         value="option-1"
         ${checkedIndex === 0 ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
       />
-      <span class="tl-radiobutton__control"></span>
-      <span class="tl-radiobutton__label">${label} 1</span>
+      <span class="tl-radio-button__control"></span>
+      <span class="tl-radio-button__label">${label} 1</span>
     </label>
 
-    <label class="tl-radiobutton ${disabled ? 'tl-radiobutton--disabled' : ''}">
+    <label class="tl-radio-button ${disabled ? 'tl-radio-button--disabled' : ''}">
       <input
-        class="tl-radiobutton__input"
+        class="tl-radio-button__input"
         type="radio"
         name="${name}"
         value="option-2"
         ${checkedIndex === 1 ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
       />
-      <span class="tl-radiobutton__control"></span>
-      <span class="tl-radiobutton__label">${label} 2</span>
+      <span class="tl-radio-button__control"></span>
+      <span class="tl-radio-button__label">${label} 2</span>
     </label>
 </fieldset>
 `);
