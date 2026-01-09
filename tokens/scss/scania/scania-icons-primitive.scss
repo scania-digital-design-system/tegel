@@ -2,9 +2,6 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-// @use '.../scania-icons-primitive' with ($local-assets: '...').
-$local-assets: './assets' !default;
-
 :root {
   --scania-icon-24v_battery_inactive-svg: url(#{$local-assets}/icons/scania/24v_battery_inactive.svg);
   --scania-icon-24v_battery-svg: url(#{$local-assets}/icons/scania/24v_battery.svg);

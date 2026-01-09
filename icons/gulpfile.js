@@ -184,9 +184,6 @@ async function generateIcons() {
       ` * Do not edit directly, this file was auto-generated.`,
       ` */`,
       '',
-      `// @use '.../scania-icons-primitive' with ($local-assets: '...').`,
-      `$local-assets: './assets' !default;`,
-      '',
       ':root {',
       ...iconsNamesArray.map((icon) => {
         const safeName = icon.replace(/\s+/g, '-');
