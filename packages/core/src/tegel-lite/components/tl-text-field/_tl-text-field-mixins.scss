@@ -41,7 +41,7 @@
 @mixin focus-input-state {
   .tl-text-field--label-inside:has(.tl-text-field__input:focus) .tl-text-field__label,
   .tl-text-field--label-inside:has(.tl-text-field__input:not(:placeholder-shown))
-  .tl-text-field__label {
+    .tl-text-field__label {
     @content;
   }
 }

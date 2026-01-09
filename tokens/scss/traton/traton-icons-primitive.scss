@@ -2,8 +2,7 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-// `@use '.../traton-icons-primitive' with ($local-assets: '...')`.
-$local-assets: './assets' !default;
+$local-assets: null !default;
 
 :root {
   --traton-icon-arrow_diagonal-svg: url(#{$local-assets}/icons/traton/arrow_diagonal.svg);
