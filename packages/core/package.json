@@ -423,7 +423,7 @@
     "sass": "^1.87.0",
     "serve": "^14.2.4",
     "stencil-playwright": "0.3.0",
-    "storybook": "9.1.16"
+    "storybook": "9.1.17"
   },
   "license": "MIT"
 }
