@@ -60,11 +60,21 @@ jobs:
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
 
+      - name: Validate beta version suffix
+        env:
+          INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
+        run: |
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
+            exit 1
+          fi
+          echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
+
       - name: Core - Update version with beta name
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
           current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
-          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          beta_version_suffix="$BETA_VERSION_SUFFIX"
           new_version="${current_version}-${beta_version_suffix}"
           echo "Updating package.json version to $new_version"
           jq ".version = \"$new_version\"" package.json > package.tmp.json
@@ -129,6 +139,16 @@ jobs:
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
 
+      - name: Validate beta version suffix
+        env:
+          INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
+        run: |
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
+            exit 1
+          fi
+          echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
+
       - name: Install dependencies in root
         run: npm install
 
@@ -157,7 +177,7 @@ jobs:
         run: |
           echo "Updating @scania/tegel to version ${{ needs.beta-release-core.outputs.version }} and setting package version"
           current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
-          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          beta_version_suffix="$BETA_VERSION_SUFFIX"
           NEW_VERSION="${current_version}-${beta_version_suffix}"
           echo "Setting new version: $NEW_VERSION"
           jq ".peerDependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\" | .version = \"$NEW_VERSION\"" package.json > package.tmp.json
@@ -218,6 +238,16 @@ jobs:
           git config --global user.name "Tegel - Scania"
           git config --global user.email "tegel.design.system@gmail.com"
 
+      - name: Validate beta version suffix
+        env:
+          INPUT_BETA_VERSION_SUFFIX: ${{ inputs.betaVersionSuffix }}
+        run: |
+          if ! printf '%s' "$INPUT_BETA_VERSION_SUFFIX" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9.\-]{0,20}$'; then
+            echo "Invalid betaVersionSuffix: $INPUT_BETA_VERSION_SUFFIX" >&2
+            exit 1
+          fi
+          echo "BETA_VERSION_SUFFIX=$INPUT_BETA_VERSION_SUFFIX" >> $GITHUB_ENV
+
       - name: Install root dependencies
         run: npm install
 
@@ -231,7 +261,7 @@ jobs:
         run: |
           echo "Updating React package version and dependency"
           current_version=$(jq -r '.version' package.json | sed 's/-[a-zA-Z0-9.\-]*$//')
-          beta_version_suffix="${{ inputs.betaVersionSuffix }}"
+          beta_version_suffix="$BETA_VERSION_SUFFIX"
           new_version="${current_version}-${beta_version_suffix}"
           echo "Setting new version: $new_version"
           jq ".version = \"$new_version\" | .dependencies[\"@scania/tegel\"] = \"${{ needs.beta-release-core.outputs.version }}\"" package.json > package.tmp.json
