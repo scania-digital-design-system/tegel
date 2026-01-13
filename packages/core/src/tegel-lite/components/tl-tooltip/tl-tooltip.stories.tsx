@@ -102,18 +102,16 @@ const Template = ({ position, label, trigger, triggerElement, offsetSkidding, of
       "@scania/tegel-lite/tl-tooltip.css"
       "@scania/tegel-lite/tl-icon.css"
     -->
-    <div>
-      <div class="tl-tooltip">
+      <div class="tl-tooltip tl-tooltip--${positionLookup[position]}">
         ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
         <div
           id="tooltip-id"
-          class="tl-tooltip__popup tl-tooltip__popup--${positionLookup[position]}"
+          class="tl-tooltip__popup"
           role="tooltip"
         >
           ${label}
         </div>
       </div>
-    </div>
 
     <style>
       .tl-tooltip__popup {
