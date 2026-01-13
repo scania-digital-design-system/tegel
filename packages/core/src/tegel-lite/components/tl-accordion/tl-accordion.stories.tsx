@@ -76,7 +76,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
   const iconPositionClass =
     iconPosition === 'start' ? 'tl-accordion__item--icon-start' : 'tl-accordion__item--icon-end';
   const disabledClass = disabled ? 'tl-accordion__item--disabled' : '';
-  const paddingClass = paddingReset ? 'tl-accordion__panel--less-padding' : '';
+  const paddingClass = paddingReset ? 'tl-accordion__item--less-padding' : '';
   const expandedClass = 'tl-accordion__item--expanded';
 
   return formatHtmlPreview(`
@@ -88,7 +88,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
     
     <div style="width: 100%; margin: 0 auto;">
       <div class="tl-accordion ${modeVariantClass} ${hideLastBorderClass}">
-        <div class="tl-accordion__item ${iconPositionClass} ${disabledClass}">
+        <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${paddingClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
             ${
               iconPosition === 'start'
@@ -102,13 +102,13 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
                 : ''
             }
           </button>
-          <div class="tl-accordion__panel ${paddingClass}">
+          <div class="tl-accordion__panel">
             This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
             Lorem ipsum doler sit amet.
           </div>
         </div>
         
-        <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${expandedClass}">
+        <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${expandedClass} ${paddingClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
             ${
               iconPosition === 'start'
@@ -122,7 +122,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
                 : ''
             }
           </button>
-          <div class="tl-accordion__panel ${paddingClass}">
+          <div class="tl-accordion__panel">
             This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis laoreet vestibulum fermentum.
           </div>
