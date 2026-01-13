@@ -55,7 +55,7 @@ Apply these classes to the `.tl-banner` element to change the banner's appearanc
 
 | Modifier                  | Description                                        |
 | ------------------------- | -------------------------------------------------- |
-| (none)                    | Default variant with standard background           |
+| No modifier                  | Default variant with standard background           |
 | `.tl-banner--error`       | Error variant with danger background and icon      |
 | `.tl-banner--information` | Information variant with info background and icon  |
 
@@ -64,7 +64,6 @@ Apply these classes to the `.tl-banner` element to change the banner's appearanc
 The Banner component requires JavaScript to handle:
 - Close button functionality (remove or hide banner when `.tl-banner__close` is clicked)
 - Keyboard accessibility for close button
-- Optional: Animation when closing banner
 
 ----------------------------------------------
 
