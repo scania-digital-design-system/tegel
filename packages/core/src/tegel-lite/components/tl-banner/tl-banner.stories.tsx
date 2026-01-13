@@ -9,12 +9,12 @@ export default {
     variant: {
       name: 'Variant',
       description: 'Changes the variant of the component.',
-      options: ['default', 'error', 'information'],
+      options: ['Default', 'Error', 'Information'],
       control: {
         type: 'radio',
       },
       table: {
-        defaultValue: { summary: 'default' },
+        defaultValue: { summary: 'Default' },
       },
     },
     header: {
@@ -52,13 +52,14 @@ export default {
 };
 
 const Template = ({ variant, header, subheader, actions, showClose }) => {
-  const variantClass = variant !== 'default' ? `tl-banner--${variant}` : '';
+  const variantLower = variant.toLowerCase();
+  const variantClass = variantLower !== 'default' ? `tl-banner--${variantLower}` : '';
 
   // Determine icon based on variant
   let iconName = '';
-  if (variant === 'error') {
+  if (variantLower === 'error') {
     iconName = 'error';
-  } else if (variant === 'information') {
+  } else if (variantLower === 'information') {
     iconName = 'info';
   } else {
     iconName = 'placeholder';
@@ -90,7 +91,7 @@ const Template = ({ variant, header, subheader, actions, showClose }) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  variant: 'default',
+  variant: 'Default',
   header: 'This is a banner',
   subheader: 'This is a subheader',
   actions: '<a class="tl-link tl-link--underline" href="/">Link example</a>',
