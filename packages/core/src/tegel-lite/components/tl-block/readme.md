@@ -65,9 +65,9 @@ Apply these classes to the `.tl-block` element to set the mode variant.
 
 | Modifier              | Description                                                    |
 | --------------------- | -------------------------------------------------------------- |
-| (none)                | Inherits background from parent (default)                      |
-| `.tl-block--primary`  | Primary mode variant with layer 01 background                  |
-| `.tl-block--secondary`| Secondary mode variant with layer 02 background                |
+| No modifier           | Inherits background from parent (default)                      |
+| `.tl-block--primary`  | Applies primary mode variant styling                |
+| `.tl-block--secondary`| Applies secondary mode variant styling               |
 
 ### Block Alternating Background Modifiers
 
@@ -75,8 +75,8 @@ Apply these classes to the `.tl-block` element for alternating backgrounds. The 
 
 | Modifier          | In Primary Parent                | In Secondary Parent              |
 | ----------------- | -------------------------------- | -------------------------------- |
-| `.tl-block--even` | Uses layer 01 background (even)  | Uses layer 02 background (odd)   |
-| `.tl-block--odd`  | Uses layer 02 background (odd)   | Uses layer 01 background (even)  |
+| `.tl-block--even` | Uses layer 01 background         | Uses layer 02 background         |
+| `.tl-block--odd`  | Uses layer 02 background         | Uses layer 01 background         |
 
 **Note:** Stripe modifiers only work when nested inside a block with `--primary` or `--secondary` modifier.
 

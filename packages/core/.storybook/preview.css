@@ -53,11 +53,8 @@ a:not(tds-link *) {
   background-color: var(--tds-grey-950);
 }
 
-/* Force code examples to always use dark background with light text */
-pre,
-pre code,
-pre code.hljs {
+/* Force code examples in markdown (readme/notes) to use white background with dark text */
+.sbdocs-content pre code {
   background-color: white !important;
   color: var(--tds-grey-950) !important;
 }
-
