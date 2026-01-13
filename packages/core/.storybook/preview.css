@@ -52,3 +52,12 @@ a:not(tds-link *, tds-breadcrumb *) {
   color: var(--tds-grey-100);
   background-color: var(--tds-grey-950);
 }
+
+/* Force code examples to always use dark background with light text */
+pre,
+pre code,
+pre code.hljs {
+  background-color: white !important;
+  color: var(--tds-grey-950) !important;
+}
+
