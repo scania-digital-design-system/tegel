@@ -17,27 +17,21 @@ The Block component provides a container with background styling for content sec
 
 ### Nested Blocks
 
-When nesting blocks, use the `--nested` and `--nested-inner` modifiers along with `--even` and `--odd` for alternating backgrounds:
+Blocks automatically adjust their backgrounds and typography when nested. No additional modifiers needed:
 
 ```html
 <div class="tl-block tl-block--primary">
-  <section class="tl-block tl-block--even">
-    <h2>Outer Block</h2>
-    <p>Outer content.</p>
+  <h2>Outer Block</h2>
+  <p>Outer content.</p>
+  
+  <section class="tl-block">
+    <h3>Middle Block</h3>
+    <p>Nested content.</p>
     
-    <div class="tl-block tl-block--odd tl-block--nested">
-      <aside>
-        <h3>Middle Block</h3>
-        <p>Nested content.</p>
-        
-        <div class="tl-block tl-block--even tl-block--nested-inner">
-          <section>
-            <h4>Inner Block</h4>
-            <p>Deeply nested content.</p>
-          </section>
-        </div>
-      </aside>
-    </div>
+    <article class="tl-block">
+      <h4>Inner Block</h4>
+      <p>Deeply nested content.</p>
+    </article>
   </section>
 </div>
 ```
@@ -66,37 +60,16 @@ Apply these classes to the `.tl-block` element to set the mode variant.
 | Modifier              | Description                                                    |
 | --------------------- | -------------------------------------------------------------- |
 | No modifier           | Inherits background from parent (default)                      |
-| `.tl-block--primary`  | Applies primary mode variant styling                |
-| `.tl-block--secondary`| Applies secondary mode variant styling               |
-
-### Block Alternating Background Modifiers
-
-Apply these classes to the `.tl-block` element for alternating backgrounds. The behavior depends on the parent mode:
-
-| Modifier          | In Primary Parent                | In Secondary Parent              |
-| ----------------- | -------------------------------- | -------------------------------- |
-| `.tl-block--even` | Uses layer 01 background         | Uses layer 02 background         |
-| `.tl-block--odd`  | Uses layer 02 background         | Uses layer 01 background         |
-
-**Note:** Stripe modifiers only work when nested inside a block with `--primary` or `--secondary` modifier.
-
-### Block Nesting Modifiers
-
-Apply these classes to the `.tl-block` element for nested content. These modifiers adjust typography for nested blocks.
-
-| Modifier                   | Description                      |
-| -------------------------- | -------------------------------- |
-| `.tl-block--nested`        | Styling for nested blocks        |
-| `.tl-block--nested-inner`  | Styling for inner nested blocks  |
+| `.tl-block--primary`  | Primary mode variant with layer 01 background. Nested child blocks automatically alternate between layer 02 and layer 01 backgrounds. |
+| `.tl-block--secondary`| Secondary mode variant with layer 02 background. Nested child blocks automatically alternate between layer 01 and layer 02 backgrounds. |
 
 ## Typography
 
-The Block component automatically applies typography styles to heading and paragraph elements:
+The Block component automatically applies typography styles to heading and paragraph elements based on nesting level:
 
-- `h2` elements receive `headline-02` styling
-- `h3` elements inside `.tl-block--nested` receive `headline-04` styling
-- `h4` elements inside `.tl-block--nested-inner` receive `headline-06` styling
-- `p` elements receive `body-01` styling (or `detail-03` in nested blocks)
+- **Top level**: `h2` receives `headline-02` styling, `p` receives `body-01`
+- **First nested level**: `h3` receives `headline-04` styling, `p` receives `detail-03`
+- **Second nested level**: `h4` receives `headline-06` styling, `p` receives `detail-03`
 
 ----------------------------------------------
 
