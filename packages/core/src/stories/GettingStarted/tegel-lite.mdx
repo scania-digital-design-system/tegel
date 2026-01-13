@@ -2,15 +2,22 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Getting Started/Tegel Lite (CSS)" />
 
-**Published: 2024-12-22**
+**Published: 2026-02-01**
 
 # Using Tegel Lite (CSS)
 
 Tegel Lite is a pure CSS alternative to Tegel's component library, providing the same design system without relying on Web Components or Stencil. It's a styles-only component system built using SCSS and compiled to CSS files, aligned to the same design tokens and variables as the original Tegel.
 
-## Prerequisites
+## When to Use Tegel Lite
 
-- Node version 18+
+Use Tegel Lite when you:
+- Want to avoid JavaScript frameworks
+- Need a lightweight, CSS-only solution
+- Are building server-rendered applications
+- Prefer full control over HTML structure and behavior
+
+Tegel Lite works with any framework or vanilla JavaScript. However, for React or Angular applications, we recommend using the framework-specific packages (`@scania/tegel-react` or `@scania/tegel-angular`) which provide a better developer experience with web component wrappers.
+
 
 ## Installing `@scania/tegel-lite`
 
@@ -57,35 +64,7 @@ Tegel Lite components use BEM naming conventions with `tl-` prefix:
 </button>
 ```
 
-## React/Next.js Example
-
-```tsx
-// app/layout.tsx
-import '@scania/tegel-lite/global.css';
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className="scania">
-      <body>{children}</body>
-    </html>
-  );
-}
-```
-
-```tsx
-// components/Button.tsx
-import '@scania/tegel-lite/tl-button.css';
-
-export function Button({ variant = 'primary', children }: ButtonProps) {
-  return (
-    <button className={`tl-button tl-button--${variant}`}>
-      <span className="tl-button__label">{children}</span>
-    </button>
-  );
-}
-```
-
-## HTML/JavaScript Example
+## HTML Example
 
 For vanilla HTML projects, link to the CSS files:
 
@@ -109,17 +88,32 @@ For vanilla HTML projects, link to the CSS files:
 
 ## BEM Naming
 
+Tegel Lite uses BEM (Block Element Modifier) naming conventions:
+
 - **Block**: `.tl-button`
 - **Element**: `.tl-button__label`
 - **Modifier**: `.tl-button--primary`
 
-## Icons
+### Important: Correct Class Usage
 
-Tegel Lite includes the same icon library as Tegel. Use icons with the `tl-icon` class:
+BEM modifiers like `.tl-button--primary` are **not standalone** — they must always be used together with the base class.
 
+**Correct:**
 ```html
-<span class="tl-icon tl-icon--truck tl-icon--16" aria-hidden="true"></span>
+<button class="tl-button tl-button--primary tl-button--md">
+  <span class="tl-button__label">Click me!</span>
+</button>
 ```
+
+**Incorrect:**
+```html
+<!-- Missing base class -->
+<button class="tl-button--primary">
+  <span class="tl-button__label">Click me!</span>
+</button>
+```
+
+Always include the base class (`.tl-button`) when using modifiers like `--primary`, `--disabled`, `--lg`, etc. Modifiers extend the base styling, they don't replace it.
 
 ## Component Documentation
 
@@ -132,4 +126,28 @@ Detailed documentation for all components is available in the **Tegel Light (CSS
 
 ## JavaScript Requirements
 
-Some components (Accordion, Dropdown, Modal, Tabs, Tooltip) require JavaScript for interactive behavior. Check component documentation in the **Tegel Light (CSS)** section for examples.
+Some components (Accordion, Dropdown, Modal, Tabs, Tooltip) require JavaScript for interactive behavior such as:
+- Toggling visibility states
+- Handling user interactions (clicks, keyboard events)
+- Managing ARIA attributes for accessibility
+- Position calculations
+
+These components provide the base styling and structure, but you need to implement the interactive behavior yourself. Check the component documentation in the **Tegel Light (CSS)** section for detailed requirements and examples.
+
+## Local Development Setup
+
+If you want to use a local version of Tegel Lite during development, you can link the package:
+
+### Using npm link
+
+In the `tegel/packages/tegel-lite` directory:
+
+```bash
+npm link
+```
+
+In your project:
+
+```bash
+npm link @scania/tegel-lite
+```
