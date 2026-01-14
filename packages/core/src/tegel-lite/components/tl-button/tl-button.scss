@@ -33,8 +33,7 @@
       background-color: var(--button-primary-background-hover);
     }
 
-    &:disabled,
-    &--disabled {
+    &:disabled {
       background-color: var(--button-primary-background-disabled);
       color: var(--button-primary-color-disabled);
       border-color: var(--button-primary-border-color-disabled);
@@ -69,8 +68,7 @@
       border-color: var(--button-secondary-border-color-hover);
     }
 
-    &:disabled,
-    &--disabled {
+    &:disabled {
       background-color: var(--button-secondary-background-disabled);
       color: var(--button-secondary-color-disabled);
       border-color: var(--button-secondary-border-color-disabled);
@@ -103,8 +101,7 @@
       border-color: var(--button-ghost-border-color-hover);
     }
 
-    &:disabled,
-    &--disabled {
+    &:disabled {
       color: var(--button-ghost-color-disabled);
       cursor: not-allowed;
       opacity: 0.6;
@@ -135,8 +132,7 @@
       background-color: var(--button-danger-background-hover);
     }
 
-    &:disabled,
-    &--disabled {
+    &:disabled {
       background-color: var(--button-danger-background-disabled);
       color: var(--button-danger-color-disabled);
       border-color: var(--button-danger-border-color-disabled);
