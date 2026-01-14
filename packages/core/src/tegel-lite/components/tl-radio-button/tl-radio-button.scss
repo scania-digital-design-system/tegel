@@ -10,7 +10,11 @@
   color: var(--radio-button-label);
   display: flex;
   align-items: center;
-  margin-left: -4px;
+  gap: var(--radio-button-spacing-8);
+
+  &:has(:disabled) {
+    cursor: not-allowed;
+  }
 }
 
 /* Elements */
@@ -29,7 +33,7 @@
   border-radius: 50%;
 
   /* Focus: pulse + thin outline on visual control */
-  &:focus + .tl-radio-button__control {
+  &:focus ~ .tl-radio-button__label .tl-radio-button__control {
     &::before {
       background-color: var(--radio-button-focus);
       animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
@@ -41,37 +45,36 @@
   }
 
   /* Checked: thicker border to create dot effect */
-  &:checked + .tl-radio-button__control {
+  &:checked ~ .tl-radio-button__label .tl-radio-button__control {
     &::after {
       border: 4px solid var(--radio-button-border);
     }
   }
 
   /* Checked + focus: thicker outline on inner circle */
-  &:checked:focus + .tl-radio-button__control {
+  &:checked:focus ~ .tl-radio-button__label .tl-radio-button__control {
     &::after {
       outline: 4px solid var(--radio-button-focus);
     }
   }
 
-  .tl-radio-button--disabled & {
-    &:checked + .tl-radio-button__control {
-      &::before {
-        border: 1px solid var(--radio-button-border-disabled);
-        display: block;
-        inline-size: 16px;
-        block-size: 16px;
-        left: 3px;
-        top: 3px;
-        box-sizing: content-box;
-      }
+  /* Disabled + checked */
+  &:disabled:checked ~ .tl-radio-button__label .tl-radio-button__control {
+    &::before {
+      border: 1px solid var(--radio-button-border-disabled);
+      display: block;
+      inline-size: 16px;
+      block-size: 16px;
+      left: 3px;
+      top: 3px;
+      box-sizing: content-box;
+    }
 
-      &::after {
-        border: 4px solid var(--radio-button-background-disabled);
-        background-color: var(--radio-button-checked-disabled);
-        left: 4px;
-        top: 4px;
-      }
+    &::after {
+      border: 4px solid var(--radio-button-background-disabled);
+      background-color: var(--radio-button-checked-disabled);
+      left: 4px;
+      top: 4px;
     }
   }
 }
@@ -114,14 +117,14 @@
   }
 
   /* Hover outline (only when not disabled) */
-  .tl-radio-button:not(.tl-radio-button--disabled):hover & {
+  .tl-radio-button:not(:has(:disabled)):hover & {
     &::after {
       outline: 2px solid var(--radio-button-background-hover);
     }
   }
 
   /* Disabled visuals */
-  .tl-radio-button--disabled & {
+  .tl-radio-button:has(:disabled) & {
     cursor: not-allowed;
 
     &::before {
@@ -139,14 +142,16 @@
   }
 }
 
-/* LABEL — spacing & disabled color */
+/* LABEL — wrapper for control + text */
 .tl-radio-button__label {
-  padding: var(--radio-button-spacing-4);
+  display: flex;
+  align-items: center;
+  gap: var(--radio-button-spacing-8);
   cursor: pointer;
 
-  .tl-radio-button--disabled & {
-    color: var(--radio-button-label-disabled);
+  .tl-radio-button:has(:disabled) & {
     cursor: not-allowed;
+    color: var(--radio-button-label-disabled);
   }
 }
 

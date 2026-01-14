@@ -72,31 +72,37 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
 </style>
 
 <fieldset class="demo-fieldset-reset">
-    <label class="tl-radio-button ${disabled ? 'tl-radio-button--disabled' : ''}">
+    <div class="tl-radio-button">
       <input
         class="tl-radio-button__input"
         type="radio"
         name="${name}"
+        id="${name}-1"
         value="option-1"
         ${checkedIndex === 0 ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
       />
-      <span class="tl-radio-button__control"></span>
-      <span class="tl-radio-button__label">${label} 1</span>
-    </label>
+      <label class="tl-radio-button__label" for="${name}-1">
+        <span class="tl-radio-button__control"></span>
+        ${label} 1
+      </label>
+    </div>
 
-    <label class="tl-radio-button ${disabled ? 'tl-radio-button--disabled' : ''}">
+    <div class="tl-radio-button">
       <input
         class="tl-radio-button__input"
         type="radio"
         name="${name}"
+        id="${name}-2"
         value="option-2"
         ${checkedIndex === 1 ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
       />
-      <span class="tl-radio-button__control"></span>
-      <span class="tl-radio-button__label">${label} 2</span>
-    </label>
+      <label class="tl-radio-button__label" for="${name}-2">
+        <span class="tl-radio-button__control"></span>
+        ${label} 2
+      </label>
+    </div>
 </fieldset>
 `);
 
