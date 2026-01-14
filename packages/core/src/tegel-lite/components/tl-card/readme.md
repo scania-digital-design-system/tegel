@@ -62,29 +62,14 @@ Apply these classes to the `.tl-card` element.
 
 Apply these classes to the `.tl-card` element.
 
-| Modifier               | Description                                    |
-| ---------------------- | ---------------------------------------------- |
-| `.tl-card--clickable`  | Makes the entire card clickable                |
-| `.tl-card--stretch`    | Card stretches to full height and width        |
-| `.tl-card--expandable` | Card can be expanded/collapsed                 |
-| `.tl-card--expanded`   | Card is in expanded state                      |
-
-### Card Header Modifiers
-
-Apply these classes to the `.tl-card__header` element.
-
-| Modifier                  | Description                           |
-| ------------------------- | ------------------------------------- |
-| `.tl-card__header--below` | Positions header below the image      |
-
-### Card Image Placement Modifiers
-
-Apply these classes to the `.tl-card` element when using images.
-
-| Modifier                           | Description                                |
-| ---------------------------------- | ------------------------------------------ |
-| `.tl-card--image-above-header`     | Positions image above the header           |
-| `.tl-card--image-below-header`     | Positions image below the header           |
+| Modifier                           | Description                                    |
+| ---------------------------------- | ---------------------------------------------- |
+| `.tl-card--clickable`              | Makes the entire card clickable                |
+| `.tl-card--stretch`                | Card stretches to full height and width        |
+| `.tl-card--expandable`             | Card can be expanded/collapsed                 |
+| `.tl-card--expanded`               | Card is in expanded state                      |
+| `.tl-card--image-above-header`     | Positions image above the header               |
+| `.tl-card--image-below-header`     | Positions image below the header               |
 
 ## JavaScript Required
 
