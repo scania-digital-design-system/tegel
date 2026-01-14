@@ -18,7 +18,7 @@
       @include tds-focus-state;
 
       // Overrides the offset of the tds-focus-state to align with design.
-      outline-offset: -0;
+      // outline-offset: -0;
     }
 
     &.current,
