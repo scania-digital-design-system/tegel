@@ -33,7 +33,7 @@ The Card component is a container that groups related content and actions.
 
 | Element                | HTML Element | Description                             |
 | ---------------------- | ------------ | --------------------------------------- |
-| `.tl-card`             | `<div>`/`<button>` | Main card container               |
+| `.tl-card`             | `<div>`      | Main card container                     |
 | `.tl-card__header`     | `<div>`      | Card header section                     |
 | `.tl-card__thumbnail`  | `<img>`      | Circular thumbnail image                |
 | `.tl-card__headings`   | `<div>`      | Container for title and subtitle        |
