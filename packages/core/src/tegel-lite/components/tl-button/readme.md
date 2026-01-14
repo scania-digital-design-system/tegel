@@ -17,7 +17,7 @@ The Button component triggers actions or navigates users to different pages.
 ```html
 <button class="tl-button tl-button--primary tl-button--md tl-button--icon">
   Button text
-  <span class="tl-icon tl-icon--arrow-right tl-icon--20" aria-hidden="true"></span>
+  <span class="tl-icon tl-icon--arrow-right tl-icon--20"></span>
 </button>
 ```
 
@@ -25,7 +25,7 @@ The Button component triggers actions or navigates users to different pages.
 
 ```html
 <button class="tl-button tl-button--primary tl-button--md tl-button--only-icon" aria-label="Delete">
-  <span class="tl-icon tl-icon--trash tl-icon--20" aria-hidden="true"></span>
+  <span class="tl-icon tl-icon--trash tl-icon--20"></span>
 </button>
 ```
 
@@ -43,7 +43,7 @@ The Button component triggers actions or navigates users to different pages.
 
 | Element      | HTML Element | Description               |
 | ------------ | ------------ | ------------------------- |
-| `.tl-button` | `<button>`/`<a>` | Main button element   |
+| `.tl-button` | `<button>`   | Main button element       |
 | `.tl-icon`   | `<span>`     | Icon element inside button (optional) |
 
 ## Modifiers
@@ -65,10 +65,10 @@ Apply these classes to the `.tl-button` element. A size modifier is required.
 
 | Modifier           | Description                    |
 | ------------------ | ------------------------------ |
-| `.tl-button--xs`   | Extra small button (24px)      |
-| `.tl-button--sm`   | Small button (40px). Use 16px icons |
-| `.tl-button--md`   | Medium button (48px). Use 20px icons |
-| `.tl-button--lg`   | Large button (56px). Use 20px icons |
+| `.tl-button--xs`   | Extra small button. Cannot be used with icons |
+| `.tl-button--sm`   | Small button. Use with 16px icons |
+| `.tl-button--md`   | Medium button. Use with 20px icons |
+| `.tl-button--lg`   | Large button. Use with 20px icons |
 
 ### Button Icon Modifiers
 
