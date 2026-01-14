@@ -67,7 +67,12 @@
     &:hover {
       &::before {
         background-color: var(--tds-toggle-off-slider-hover);
-        border: 1px solid var(--tds-toggle-off-border-focus);
+      }
+    }
+
+    &:active {
+      &::before {
+        background-color: var(--tds-toggle-off-slider-pressed);
       }
     }
 
@@ -79,14 +84,19 @@
       &:focus-visible {
         &::before {
           background-color: var(--tds-toggle-on-slider-focus);
-          border: 1px solid var(--tds-toggle-off-border-focus);
+          border: 1px solid var(--tds-toggle-on-border-focus);
         }
       }
 
       &:hover {
         &::before {
           background-color: var(--tds-toggle-on-slider-hover);
-          border: 1px solid var(--tds-toggle-off-border-focus);
+        }
+      }
+
+      &:active {
+        &::before {
+          background-color: var(--tds-toggle-on-slider-pressed);
         }
       }
 
@@ -136,6 +146,18 @@
       &:checked {
         &::before {
           background-color: var(--tds-toggle-on-slider);
+        }
+
+        &:hover {
+          &::before {
+            background-color: var(--tds-toggle-on-slider-hover);
+          }
+        }
+
+        &:active {
+          &::before {
+            background-color: var(--tds-toggle-on-slider-pressed);
+          }
         }
 
         &::after {
