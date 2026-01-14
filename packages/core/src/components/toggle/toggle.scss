@@ -148,6 +148,13 @@
           background-color: var(--tds-toggle-on-slider);
         }
 
+        &:focus-visible {
+          &::before {
+            background-color: var(--tds-toggle-on-slider-focus);
+            border: 1px solid var(--tds-toggle-on-border-focus);
+          }
+        }
+
         &:hover {
           &::before {
             background-color: var(--tds-toggle-on-slider-hover);
