@@ -22,7 +22,7 @@ on:
       nodeVersion:
         description: 'Node version'
         required: true
-        default: '22.11.0'
+        default: '22.20.0'
         type: string
 
       tags:
@@ -46,7 +46,7 @@ on:
 
 env:
   VERSION: patch
-  NODE_VERSION: '22.11.0'
+  NODE_VERSION: '22.20.0'
   TAG: latest
 
 jobs:
@@ -65,11 +65,6 @@ jobs:
       - name: Core - Bump version
         id: core-version
         working-directory: packages/core
-        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
-
-      - name: Angular - Bump version
-        id: angular-version
-        working-directory: packages/angular
         run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
       - name: Angular 17 - Bump version
@@ -223,12 +218,6 @@ jobs:
           path: core-tarball
           extract: true
 
-      - name: Angular wrapper – install Core tarball (dry run)
-        if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
-        working-directory: packages/angular
-        run: |
-          npm install ../../core-tarball/*.tgz
-
       - name: Angular 17 wrapper – install Core tarball (dry run)
         if: github.event.inputs.dryVersion == 'true' || github.event_name == 'schedule'
         working-directory: packages/angular-17
@@ -246,11 +235,6 @@ jobs:
         working-directory: packages/react
         run: |
           npm install ../../core-tarball/*.tgz
-
-      - name: Angular - Install latest tegel package
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
-        working-directory: packages/angular
-        run: npm install @scania/tegel@${{ needs.create-release-branch.outputs.version }}
 
       - name: Angular 17 - Install latest tegel package
         if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
@@ -276,46 +260,6 @@ jobs:
           else
             echo "No changes to commit"
           fi
-
-  #RELEASE ANGULAR
-  release-angular:
-    needs: [create-release-branch, release-core, bump-wrappers-to-new-version]
-    runs-on: ubuntu-latest
-    env:
-      WORKING_DIRECTORY: packages/angular
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.create-release-branch.outputs.branch }}
-          fetch-depth: 1 # Fetch just the release branch
-
-      - name: Set up node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies in root
-        run: npm ci
-
-      - name: Core - Install
-        working-directory: packages/core
-        run: npm ci
-
-      - name: Angular - Install
-        working-directory: packages/angular
-        run: npm ci
-
-      - name: Angular - Run build
-        run: npm run build:angular
-
-      - name: Angular - Publish
-        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
-        working-directory: packages/angular
-        run: npm publish --tag ${{ github.event.inputs.tags }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   #RELEASE ANGULAR 17
   release-angular-17:
@@ -408,9 +352,9 @@ jobs:
 
   #ON FAILURE
   on-failure:
-    needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
+    needs: [create-release-branch, release-core, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
     steps:
       - name: Download version
         uses: actions/download-artifact@v4
@@ -423,9 +367,9 @@ jobs:
 
   #MERGE RELEASE BRANCH TO DEVELOP
   merge-release-branch-into-develop:
-    needs: [create-release-branch, release-core, release-angular, release-angular-17, release-react]
+    needs: [create-release-branch, release-core, release-angular-17, release-react]
     runs-on: ubuntu-latest
-    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'success' && needs.release-core.result == 'success' && needs.release-angular-17.result == 'success' && needs.release-react.result == 'success')
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -523,7 +467,6 @@ jobs:
         create-release-branch,
         release-core,
         bump-wrappers-to-new-version,
-        release-angular,
         release-angular-17,
         release-react,
       ]
@@ -539,7 +482,6 @@ jobs:
           if [ "${{ needs.create-release-branch.result }}" == "failure" ] || \
              [ "${{ needs.release-core.result }}" == "failure" ] || \
              [ "${{ needs.bump-wrappers-to-new-version.result }}" == "failure" ] || \
-             [ "${{ needs.release-angular.result }}" == "failure" ] || \
              [ "${{ needs.release-angular-17.result }}" == "failure" ] || \
              [ "${{ needs.release-react.result }}" == "failure" ]; then
             status="🔴 *Tegel Release ${version}* failed"

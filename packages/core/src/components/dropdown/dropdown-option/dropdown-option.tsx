@@ -24,19 +24,19 @@ import { convertToString } from '../../../utils/convertToString';
   },
 })
 export class TdsDropdownOption {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Value of the dropdown option */
-  @Prop() value: string | number;
+  @Prop() value?: string | number;
 
   /** Internal value storage that's always a string */
-  @State() internalValue: string;
+  @State() internalValue: string = '';
 
   /** Sets the option as disabled. */
   @Prop() disabled: boolean = false;
 
   /** Defines aria-label attribute for the option */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   @State() selected: boolean = false;
 
@@ -63,7 +63,7 @@ export class TdsDropdownOption {
     cancelable: false,
     bubbles: true,
   })
-  tdsSelect: EventEmitter<{
+  tdsSelect!: EventEmitter<{
     selected: boolean;
     value: string;
   }>;
@@ -75,7 +75,7 @@ export class TdsDropdownOption {
     bubbles: true,
     cancelable: false,
   })
-  tdsFocus: EventEmitter<FocusEvent>;
+  tdsFocus!: EventEmitter<FocusEvent>;
 
   /** Blur event for the Dropdown option. */
   @Event({
@@ -84,7 +84,7 @@ export class TdsDropdownOption {
     bubbles: true,
     cancelable: false,
   })
-  tdsBlur: EventEmitter<FocusEvent>;
+  tdsBlur!: EventEmitter<FocusEvent>;
 
   @Watch('value')
   valueWatcher(newValue: string | number) {

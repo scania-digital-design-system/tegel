@@ -1,5 +1,5 @@
-@import '../../mixins/box-sizing';
-@import '../../mixins/z-index';
+@use '../../mixins/box-sizing' as *;
+@use '../../mixins/z-index' as *;
 
 .tds-popover-canvas {
   @include tds-box-sizing;

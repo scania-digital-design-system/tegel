@@ -1,10 +1,11 @@
-@import './tokens';
-@import '../globals.scss';
+@use './tokens' as *;
+@use '../globals.scss' as *;
 
 :root,
 html {
   @each $key, $value in $all-colors {
     $keyval: '' + $key;
+
     --#{$prefix}-#{$keyval}: #{$value};
   }
 }

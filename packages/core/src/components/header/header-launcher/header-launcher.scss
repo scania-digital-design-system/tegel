@@ -1,6 +1,6 @@
-@import '../../../mixins/scrollbar';
-@import '../../../mixins/z-index';
-@import '../../../global/_variables';
+@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/z-index' as *;
+@use '../../../global/_variables' as *;
 
 :host {
   .wrapper {

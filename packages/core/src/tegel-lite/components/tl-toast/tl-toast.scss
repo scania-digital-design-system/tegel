@@ -1,0 +1,105 @@
+@use './tl-toast-vars' as *;
+@use '../../../mixins/focus-state' as *;
+@use '../../../mixins/z-index' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-toast {
+  z-index: tds-z-index(toast);
+  display: flex;
+  width: calc(352px - 4px);
+  background-color: var(--toast-background);
+  border-radius: 4px;
+
+  &--information {
+    border-left: 4px solid var(--toast-icon-info);
+  }
+
+  &--success {
+    border-left: 4px solid var(--toast-icon-success);
+  }
+
+  &--error {
+    border-left: 4px solid var(--toast-icon-error);
+  }
+
+  &--warning {
+    border-left: 4px solid var(--toast-icon-warning);
+  }
+
+  &--hide {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+// Flattened element selectors
+.tl-toast__icon {
+  padding: 14px 0 0 12px;
+  color: var(--toast-icon-info);
+  flex-shrink: 0;
+}
+
+.tl-toast__content {
+  padding: 16px 0 16px 10px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 250px;
+  word-break: break-word;
+}
+
+.tl-toast__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tl-toast__header {
+  @include headline-07;
+
+  color: var(--toast-headline);
+  margin: 0;
+}
+
+.tl-toast__subheader {
+  @include detail-02;
+
+  color: var(--toast-subheadline);
+  margin: 0;
+}
+
+.tl-toast__actions {
+  padding-top: 12px;
+}
+
+.tl-toast__close {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 14px 14px 0 22px;
+  border: none;
+  background: transparent;
+  color: var(--toast-dismiss);
+  cursor: pointer;
+
+  &:focus-visible {
+    @include tds-focus-state;
+  }
+}
+
+// Modifier styles in affected elements
+.tl-toast__icon {
+  .tl-toast--error & {
+    color: var(--toast-icon-error);
+  }
+
+  .tl-toast--success & {
+    color: var(--toast-icon-success);
+  }
+
+  .tl-toast--warning & {
+    color: var(--toast-icon-warning);
+  }
+}

@@ -12,10 +12,10 @@ import hasSlot from '../../utils/hasSlot';
   scoped: true,
 })
 export class TdsButton {
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
   /** Text displayed inside the Button */
-  @Prop() text: string;
+  @Prop() text?: string;
 
   /** Button's type */
   @Prop() type: 'button' | 'submit' | 'reset' = 'button';
@@ -39,13 +39,13 @@ export class TdsButton {
   @Prop() animation: 'none' | 'fade' = 'none';
 
   /** The value to be used for the aria-label attribute if onlyIcon is set to true */
-  @Prop() tdsAriaLabel: string;
+  @Prop() tdsAriaLabel?: string;
 
   /** The name attribute allows for different ways of accessing the button element */
-  @Prop() name: string;
+  @Prop() name?: string;
 
   /** The value attribute can be used when handling a form submission */
-  @Prop() value: string;
+  @Prop() value?: string;
 
   @State() onlyIcon: boolean = false;
 

@@ -6,14 +6,14 @@
  */
 
 /* global one is needed for now , later one it can be removed, while core should remain */
-@import 'global';
+@use 'global' as *;
 
-@import 'scania-variables';
-@import 'traton-variables';
-@import 'core';
+@use 'scania-variables' as *;
+@use 'traton-variables' as *;
+@use 'core' as *;
 
 /*
-* Import the tegel light components style sheets to be bale to use tegel light in Storybook
+* Import the Tegel Lite components style sheets to be bale to use Tegel Lite in Storybook
 */
 
-@import 'tegel-light-components';
+@use 'tegel-lite-components' as *;

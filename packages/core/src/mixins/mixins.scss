@@ -1,7 +1,7 @@
-@import 'box-sizing';
-@import 'disabled-style';
-@import 'flex-center';
-@import 'focus-state';
-@import 'scrollbar';
-@import 'shake-animation';
-@import 'z-index';
+@use 'box-sizing' as *;
+@use 'disabled-style' as *;
+@use 'flex-center' as *;
+@use 'focus-state' as *;
+@use 'scrollbar' as *;
+@use 'shake-animation' as *;
+@use 'z-index' as *;

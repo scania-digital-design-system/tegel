@@ -1,0 +1,88 @@
+name: Dependabot PR Rebase
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  check-rebase-needed:
+    runs-on: ubuntu-latest
+    # Only run for Dependabot PRs
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check if PR needs rebasing
+        id: check-rebase
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          HEAD_BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          # Fetch base branch
+          git fetch origin ${BASE_BRANCH}:${BASE_BRANCH}
+
+          # Check if HEAD branch is behind base branch
+          BASE_COMMIT=$(git rev-parse origin/${BASE_BRANCH})
+          HEAD_COMMIT=$(git rev-parse origin/${HEAD_BRANCH})
+
+          # Check if BASE has commits that HEAD doesn't have (needs rebase)
+          BEHIND_COUNT=$(git rev-list --count ${HEAD_COMMIT}..${BASE_COMMIT})
+          if [ "$BEHIND_COUNT" -gt 0 ]; then
+            echo "needs_rebase=true" >> $GITHUB_OUTPUT
+            echo "behind_count=${BEHIND_COUNT}" >> $GITHUB_OUTPUT
+            echo "⚠️ PR is ${BEHIND_COUNT} commit(s) behind ${BASE_BRANCH}"
+          else
+            echo "needs_rebase=false" >> $GITHUB_OUTPUT
+            echo "✅ PR is up to date"
+          fi
+
+      - name: Check for existing @dependabot rebase comment
+        if: steps.check-rebase.outputs.needs_rebase == 'true'
+        id: check-comment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Fetch all comments on the PR
+          COMMENTS=$(curl -s -H "Authorization: token ${GITHUB_TOKEN}" \
+            "https://api.github.com/repos/${REPO}/issues/${PR_NUMBER}/comments")
+
+          # Check if API call was successful
+          if [ $? -ne 0 ] || [ -z "$COMMENTS" ]; then
+            echo "⚠️ Failed to fetch comments, proceeding to comment anyway"
+            echo "comment_exists=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          # Check if @dependabot rebase comment already exists
+          if echo "$COMMENTS" | jq -r '.[].body' 2>/dev/null | grep -q "@dependabot rebase"; then
+            echo "comment_exists=true" >> $GITHUB_OUTPUT
+            echo "⚠️ @dependabot rebase comment already exists, skipping"
+          else
+            echo "comment_exists=false" >> $GITHUB_OUTPUT
+            echo "✅ No existing @dependabot rebase comment found"
+          fi
+
+      - name: Comment @dependabot rebase
+        if: steps.check-rebase.outputs.needs_rebase == 'true' && steps.check-comment.outputs.comment_exists == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          # Comment @dependabot rebase command
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${GITHUB_TOKEN}" \
+            "https://api.github.com/repos/${REPO}/issues/${PR_NUMBER}/comments" \
+            -d '{"body":"@dependabot rebase"}'
+
+          echo "✅ Commented @dependabot rebase on PR #${PR_NUMBER}"

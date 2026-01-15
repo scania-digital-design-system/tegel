@@ -1,0 +1,47 @@
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+@mixin text-field-base {
+  all: unset;
+  border-radius: var(--text-field-border-radius);
+  background-color: var(--text-field-background);
+  color: var(--text-field-text);
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--text-field-placeholder);
+  }
+
+  &:disabled {
+    background-color: var(--text-field-background-disabled);
+    color: var(--text-field-text-disabled);
+    user-select: none;
+    pointer-events: none;
+
+    &::placeholder {
+      color: var(--text-field-placeholder-disabled);
+    }
+  }
+}
+
+@mixin affix-base {
+  @include detail-02;
+
+  color: var(--text-field-affix);
+  align-self: center;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+}
+
+@mixin focus-input-state {
+  .tl-text-field--label-inside:has(.tl-text-field__input:focus) .tl-text-field__label,
+  .tl-text-field--label-inside:has(.tl-text-field__input:not(:placeholder-shown))
+    .tl-text-field__label {
+    @content;
+  }
+}

@@ -1,0 +1,42 @@
+@use './tl-badge-vars' as *;
+@use '../../../mixins/box-sizing' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-badge {
+  @include tds-box-sizing;
+
+  display: block;
+  border-radius: 12px;
+  background-color: var(--badge-background-color);
+  text-align: center;
+
+  &--sm {
+    height: 8px;
+    width: 8px;
+    line-height: 8px;
+  }
+
+  &--lg {
+    height: 20px;
+    line-height: 20px;
+    width: 20px;
+  }
+
+  &--pill {
+    display: inline-block;
+    width: unset;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.tl-badge__text {
+  font-size: 12px;
+  color: var(--badge-color-text);
+  font-family: var(--detail-01-font-family);
+  font-weight: bold;
+}

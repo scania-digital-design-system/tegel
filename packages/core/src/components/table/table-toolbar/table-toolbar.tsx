@@ -49,9 +49,9 @@ export class TdsTableToolbar {
 
   @State() horizontalScrollWidth: string | null = null;
 
-  @Element() host: HTMLElement;
+  @Element() host!: HTMLElement;
 
-  tableEl: HTMLTdsTableElement | null;
+  tableEl!: HTMLTdsTableElement | null;
 
   /** Used for sending users' input to the main parent tds-table the component,
    * can also be listened to in order to implement custom sorting logic. */
@@ -61,7 +61,7 @@ export class TdsTableToolbar {
     cancelable: true,
     bubbles: true,
   })
-  tdsFilter: EventEmitter<{
+  tdsFilter!: EventEmitter<{
     tableId: string | undefined;
     query: string;
   }>;

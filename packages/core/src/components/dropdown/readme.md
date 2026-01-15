@@ -25,34 +25,34 @@ dropdown.updateDisplay();
 | Property        | Attribute        | Description                                                                                                                                                | Type                                               | Default       |
 | --------------- | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------------- |
 | `animation`     | `animation`      |                                                                                                                                                            | `"none" \| "slide"`                                | `'slide'`     |
-| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `number \| string`                                 | `undefined`   |
+| `defaultValue`  | `default-value`  | Default value selected in the Dropdown.                                                                                                                    | `number \| string \| undefined`                    | `undefined`   |
 | `disabled`      | `disabled`       | Sets the Dropdown in a disabled state                                                                                                                      | `boolean`                                          | `false`       |
 | `error`         | `error`          | Sets the Dropdown in an error state                                                                                                                        | `boolean`                                          | `false`       |
 | `filter`        | `filter`         | Enables filtration in the Dropdown.                                                                                                                        | `boolean`                                          | `false`       |
-| `helper`        | `helper`         | Helper text for the Dropdown.                                                                                                                              | `string`                                           | `undefined`   |
-| `label`         | `label`          | Label text for the Dropdown.                                                                                                                               | `string`                                           | `undefined`   |
-| `labelPosition` | `label-position` | Label text position                                                                                                                                        | `"inside" \| "outside"`                            | `undefined`   |
+| `helper`        | `helper`         | Helper text for the Dropdown.                                                                                                                              | `string \| undefined`                              | `undefined`   |
+| `label`         | `label`          | Label text for the Dropdown.                                                                                                                               | `string \| undefined`                              | `undefined`   |
+| `labelPosition` | `label-position` | Label text position                                                                                                                                        | `"inside" \| "outside" \| undefined`               | `undefined`   |
 | `modeVariant`   | `mode-variant`   | Mode variant of the component, based on current mode.                                                                                                      | `"primary" \| "secondary" \| null`                 | `null`        |
 | `multiselect`   | `multiselect`    | Enables multiselect in the Dropdown.                                                                                                                       | `boolean`                                          | `false`       |
-| `name`          | `name`           | Name for the Dropdowns input element.                                                                                                                      | `string`                                           | `undefined`   |
+| `name`          | `name`           | Name for the Dropdowns input element.                                                                                                                      | `string \| undefined`                              | `undefined`   |
 | `noResultText`  | `no-result-text` | Text that is displayed if filter is used and there are no options that matches the search. Setting it to an empty string disables message from showing up. | `string \| undefined`                              | `'No result'` |
 | `normalizeText` | `normalize-text` | Normalizes input text for fuzzier search                                                                                                                   | `boolean`                                          | `true`        |
 | `openDirection` | `open-direction` | The direction the Dropdown should open, auto if not specified.                                                                                             | `"auto" \| "down" \| "up"`                         | `'auto'`      |
-| `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                                                                                         | `string`                                           | `undefined`   |
+| `placeholder`   | `placeholder`    | Placeholder text for the Dropdown.                                                                                                                         | `string \| undefined`                              | `undefined`   |
 | `size`          | `size`           | The size of the Dropdown.                                                                                                                                  | `"lg" \| "md" \| "sm" \| "xs"`                     | `'lg'`        |
-| `tdsAriaLabel`  | `tds-aria-label` | Defines aria-label attribute for input                                                                                                                     | `string`                                           | `undefined`   |
+| `tdsAriaLabel`  | `tds-aria-label` | Defines aria-label attribute for input                                                                                                                     | `string \| undefined`                              | `undefined`   |
 | `value`         | `value`          | Value of the dropdown. For multiselect, provide array of strings/numbers. For single select, provide a string/number.                                      | `(string \| number)[] \| null \| number \| string` | `null`        |
 
 
 ## Events
 
-| Event       | Description                    | Type                                                    |
-| ----------- | ------------------------------ | ------------------------------------------------------- |
-| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                               |
-| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string; value: string \| null; }>` |
-| `tdsClear`  | Clear event for the Dropdown.  | `CustomEvent<{ clearedValue: string; }>`                |
-| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                               |
-| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                               |
+| Event       | Description                    | Type                                                                 |
+| ----------- | ------------------------------ | -------------------------------------------------------------------- |
+| `tdsBlur`   | Blur event for the Dropdown.   | `CustomEvent<FocusEvent>`                                            |
+| `tdsChange` | Change event for the Dropdown. | `CustomEvent<{ name: string \| undefined; value: string \| null; }>` |
+| `tdsClear`  | Clear event for the Dropdown.  | `CustomEvent<{ clearedValue: string; }>`                             |
+| `tdsFocus`  | Focus event for the Dropdown.  | `CustomEvent<FocusEvent>`                                            |
+| `tdsInput`  | Input event for the Dropdown.  | `CustomEvent<InputEvent>`                                            |
 
 
 ## Methods
@@ -103,7 +103,7 @@ Type: `Promise<void>`
 
 
 
-### `setValue(value: string | number | string[] | number[], label?: string) => Promise<{ value: string | number; label: string; }[]>`
+### `setValue(value: string | number | string[] | number[], label?: string) => Promise<{ value: string | number | undefined; label: string | undefined; }[]>`
 
 Method for setting the selected value of the Dropdown.
 
@@ -128,7 +128,7 @@ dropdown.setValue(['option-1', 'option-2']);
 
 #### Returns
 
-Type: `Promise<{ value: string | number; label: string; }[]>`
+Type: `Promise<{ value: string | number | undefined; label: string | undefined; }[]>`
 
 
 

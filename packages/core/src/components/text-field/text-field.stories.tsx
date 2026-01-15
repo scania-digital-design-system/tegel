@@ -74,6 +74,31 @@ export default {
         eq: 'Number',
       },
     },
+    step: {
+      name: 'Step',
+      description: 'Step value for input type number',
+      control: {
+        type: 'number',
+      },
+      if: {
+        arg: 'type',
+        eq: 'Number',
+      },
+    },
+    hideNumberArrows: {
+      name: 'Hide Number Arrows',
+      description: 'Hides the native arrows on number input type',
+      control: {
+        type: 'boolean',
+      },
+      if: {
+        arg: 'type',
+        eq: 'Number',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
     size: {
       name: 'Size',
       description: 'Switches between different sizes.',
@@ -237,6 +262,8 @@ export default {
     suffixType: 'Icon',
     min: '0',
     max: '10',
+    step: '0.1',
+    hideNumberArrows: false,
     maxLength: 0,
     noMinWidth: 'Default',
     readonly: false,
@@ -254,6 +281,8 @@ const Template = ({
   type,
   min,
   max,
+  step,
+  hideNumberArrows,
   size,
   label,
   labelPosition,
@@ -275,6 +304,7 @@ const Template = ({
   const maxlength = maxLength > 0 ? `max-length="${maxLength}"` : '';
   const minAttr = min != null ? `min="${min}"` : '';
   const maxAttr = max ? `max="${max}"` : '';
+  const stepAttr = step ? `step="${step}"` : '';
   const stateValue = state.toLowerCase();
   const sizeLookUp = {
     Large: 'lg',
@@ -303,6 +333,8 @@ const Template = ({
       ${maxlength}
       ${minAttr}
       ${maxAttr}
+      ${stepAttr}
+      ${hideNumberArrows ? 'hide-number-arrows' : ''}
       ${disabled ? 'disabled' : ''}
       ${readonly ? 'read-only' : ''}
       ${hideReadonlyIcon ? 'hide-read-only-icon' : ''}

@@ -1,0 +1,89 @@
+@use './tl-button-mixins' as *;
+
+.tl-button {
+  // Base variables
+  --button-transparent: transparent;
+  --button-white: var(--color-brand-neutral-white);
+  --button-black: var(--color-brand-neutral-black);
+  --button-radius: var(--dimension-radius-for-surface-clickable);
+
+  // Only-icon padding variables
+  --button-sm-only-icon-padding: 11px;
+  --button-md-only-icon-padding: 13px;
+  --button-lg-only-icon-padding: 17px;
+
+  // Primary
+  --button-primary-background: var(--color-background-accent-primary-default);
+  --button-primary-background-hover: var(--color-background-accent-primary-hover);
+  --button-primary-background-active: var(--color-background-accent-primary-pressed);
+  --button-primary-background-disabled: var(--color-background-accent-primary-disabled);
+  --button-primary-color: var(--component-button-primary-text);
+  --button-primary-color-disabled: var(--color-foreground-text-disabled);
+  --button-primary-border-color: var(--button-transparent);
+  --button-primary-border-color-disabled: var(--button-transparent);
+  --button-primary-background-focus: var(--color-background-accent-primary-focus);
+  --button-primary-color-focus: var(--component-button-primary-text);
+  --button-primary-border-color-focus: var(--color-foreground-border-accent-focus);
+  --button-primary-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  // Secondary
+  --button-secondary-background: var(--button-transparent);
+  --button-secondary-color: var(--color-foreground-text-strong);
+  --button-secondary-border-color: var(--color-foreground-border-soft);
+  --button-secondary-border-color-hover: var(--color-foreground-border-subtle);
+  --button-secondary-border-color-active: var(--color-foreground-border-strong);
+  --button-secondary-background-disabled: var(--button-transparent);
+  --button-secondary-color-disabled: var(--color-foreground-text-disabled);
+  --button-secondary-border-color-disabled: var(--color-foreground-border-discrete);
+  --button-secondary-background-focus: var(--button-transparent);
+  --button-secondary-color-focus: var(--color-foreground-text-strong);
+  --button-secondary-border-color-focus: var(--color-foreground-border-accent-focus);
+  --button-secondary-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  // Ghost
+  --button-ghost-background: var(--button-transparent);
+  --button-ghost-color: var(--color-foreground-text-strong);
+  --button-ghost-border-color: var(--button-transparent);
+  --button-ghost-border-color-hover: var(--color-foreground-border-subtle);
+  --button-ghost-border-color-active: var(--color-foreground-border-strong);
+  --button-ghost-color-disabled: var(--color-foreground-text-disabled);
+  --button-ghost-border-color-disabled: var(--button-transparent);
+  --button-ghost-background-focus: var(--button-transparent);
+  --button-ghost-color-focus: var(--color-foreground-text-strong);
+  --button-ghost-border-color-focus: var(--color-foreground-border-accent-focus);
+  --button-ghost-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  // Danger
+  --button-danger-background: var(--color-background-accent-danger-default);
+  --button-danger-color: var(--button-white);
+  --button-danger-border-color: var(--button-transparent);
+  --button-danger-background-hover: var(--color-background-accent-danger-hover);
+  --button-danger-background-active: var(--color-background-accent-danger-pressed);
+  --button-danger-background-disabled: var(--color-background-accent-danger-disabled);
+  --button-danger-color-disabled: var(--color-foreground-text-disabled);
+  --button-danger-border-color-disabled: var(--button-transparent);
+  --button-danger-border-color-active: var(--color-background-accent-danger-pressed);
+  --button-danger-background-focus: var(--color-background-accent-danger-focus);
+  --button-danger-color-focus: var(--button-white);
+  --button-danger-border-color-focus: var(--button-transparent);
+  --button-danger-outline-color-focus: var(--color-foreground-border-accent-focus);
+
+  @include mode-variant(
+    'primary',
+    --color-background-accent-primary-disabled,
+    --color-background-accent-danger-disabled
+  );
+  @include mode-variant('secondary', --button-white, --button-white);
+}
+
+.scania {
+  .tl-button {
+    --button-outline-width: 2px;
+  }
+}
+
+.traton {
+  .tl-button {
+    --button-outline-width: 4px;
+  }
+}

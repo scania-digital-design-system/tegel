@@ -1,4 +1,4 @@
-@import '../../../../../typography/utilities/typography-utility';
+@use '../../../../../typography/mixins/type-styles' as *;
 
 :host {
   .wrapper {
@@ -46,6 +46,10 @@
       border: none;
       padding: 0;
       background-color: transparent;
+
+      tds-icon {
+        padding-right: 8px;
+      }
 
       .header {
         @include detail-02;

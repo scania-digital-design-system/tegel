@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 })
 export class DatepickerYear {
   /** The Year that should be displayed. */
-  @Prop() year: Date;
+  @Prop() year?: Date;
 
   /** Marks the Year as selected. */
   @Prop() selected: boolean = false;

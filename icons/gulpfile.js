@@ -15,7 +15,7 @@ const iconFolders = brands.map((brand) => `./src/svg/${brand}/*.svg`); // Paths 
 const tempFolder = 'temp'; // Temporary folder for processing SVGs
 const iconComponentFolder = '../packages/core/src/components/icon/'; // Output folder for icon components
 const typesFolder = '../packages/core/src/types/'; // Output folder for TypeScript types
-const tegelLightIconFolder = '../packages/core/src/tegel-light/components/tl-icon/'; // Output folder for Tegel Light icons
+const tegelLiteIconFolder = '../packages/core/src/tegel-lite/components/tl-icon/'; // Output folder for Tegel Lite icons
 
 const runTimestamp = Math.round(Date.now() / 1000);
 // Brand-specific font names
@@ -184,11 +184,13 @@ async function generateIcons() {
       ` * Do not edit directly, this file was auto-generated.`,
       ` */`,
       '',
+      '$local-assets: null !default;',
+      '',
       ':root {',
       ...iconsNamesArray.map((icon) => {
         const safeName = icon.replace(/\s+/g, '-');
         const safeFile = icon.replace(/\s+/g, '%20');
-        return `  --${brand}-icon-${safeName}-svg: url(./assets/icons/${brand}/${safeFile}.svg);`;
+        return `  --${brand}-icon-${safeName}-svg: url(#{$local-assets}/icons/${brand}/${safeFile}.svg);`;
       }),
       '}',
       '',
@@ -223,7 +225,7 @@ async function generateIcons() {
       new Set(brands.flatMap((brand) => allIconNames[brand])),
     ).sort(); // Optional: sort for consistency
 
-    // Generate SCSS variable list for Tegel Light
+    // Generate SCSS variable list for Tegel Lite
     const allIconsScss = [
       `/**`,
       ` * Do not edit directly, this file was auto-generated.`,
@@ -234,10 +236,10 @@ async function generateIcons() {
     ].join('\n');
 
     // Ensure the folder exists
-    fs.mkdirSync(tegelLightIconFolder, { recursive: true });
+    fs.mkdirSync(tegelLiteIconFolder, { recursive: true });
 
     // Write the SCSS list file
-    fs.writeFileSync(`${tegelLightIconFolder}/_icon-list.scss`, allIconsScss);
+    fs.writeFileSync(`${tegelLiteIconFolder}/_icon-list.scss`, allIconsScss);
   }
 
   // Create combined type definition for all brands

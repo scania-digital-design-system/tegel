@@ -6,13 +6,3 @@
   }
   @return $collection;
 }
-
-@function get-color-original($token) {
-  @return map-get($original-colors, $token);
-}
-
-// to get color token from scss
-
-@function get-color($token) {
-  @return map-get($all-colors, $token);
-} ;

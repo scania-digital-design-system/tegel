@@ -1,4 +1,4 @@
-@import '../../mixins/box-sizing';
+@use '../../mixins/box-sizing' as *;
 
 :host {
   // If the user sets a custom height on the checkbox
@@ -36,7 +36,7 @@
     flex-shrink: 0;
     align-self: flex-start;
 
-    +label {
+    + label {
       color: var(--tds-checkbox-color);
       padding-left: var(--tds-spacing-element-4);
       padding-top: var(--tds-spacing-element-4);
@@ -104,7 +104,7 @@
         border-color: var(--tds-checkbox-border-color-disabled-after);
       }
 
-      +label {
+      + label {
         color: var(--tds-checkbox-disabled);
         cursor: not-allowed;
       }

@@ -1,0 +1,113 @@
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+.tl-message {
+  &--primary {
+    --message-main-background: var(--message-mode-primary-background);
+  }
+
+  &--secondary {
+    --message-main-background: var(--message-mode-secondary-background);
+  }
+}
+
+.tl-message__wrapper {
+  display: flex;
+  padding: 16px;
+  background-color: var(--message-main-background);
+  border-radius: 4px;
+  position: relative;
+
+  .tl-message--information & {
+    border-left: 4px solid var(--message-info-border-color);
+  }
+
+  .tl-message--success & {
+    border-left: 4px solid var(--message-success-border-color);
+  }
+
+  .tl-message--warning & {
+    border-left: 4px solid var(--message-warning-border-color);
+  }
+
+  .tl-message--error & {
+    background-color: var(--message-error-background);
+    border-left: 4px solid var(--message-error-border-color);
+  }
+
+  .tl-message--minimal & {
+    border: none;
+    padding: 0;
+    background-color: transparent;
+  }
+}
+
+.tl-message__wrapper::before {
+  content: '';
+  display: inline-block;
+  margin-right: 16px;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  background-color: currentcolor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+
+  .tl-message--information & {
+    mask-image: var(--icon-info-svg);
+    color: var(--message-info-icon-color);
+  }
+
+  .tl-message--success & {
+    mask-image: var(--icon-tick-svg);
+    color: var(--message-success-icon-color);
+  }
+
+  .tl-message--warning & {
+    mask-image: var(--icon-warning-svg);
+    color: var(--message-warning-icon-color);
+  }
+
+  .tl-message--error & {
+    mask-image: var(--icon-error-svg);
+    color: var(--message-error-icon-color);
+  }
+
+  .tl-message--minimal & {
+    margin-right: 8px;
+  }
+
+  .tl-message--no-icon & {
+    display: none;
+  }
+}
+
+.tl-message__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--message-main-text-color);
+  padding: 2px 0;
+}
+
+.tl-message__header {
+  @include headline-07;
+
+  .tl-message--minimal & {
+    @include detail-02;
+  }
+
+  .tl-message--error.tl-message--minimal & {
+    color: var(--message-error-header-text-color);
+  }
+}
+
+.tl-message__extended-message {
+  @include detail-02;
+
+  color: var(--message-main-text-color);
+
+  .tl-message--minimal & {
+    display: none;
+  }
+}

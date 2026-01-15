@@ -1,6 +1,6 @@
-@import './tokens';
-@import '../globals';
-@import './vars';
+@use './tokens' as *;
+@use '../globals' as *;
+@use './vars' as *;
 
 // generate color class for background (.tds-background-{token-name})
 @each $key, $value in $all-colors {
