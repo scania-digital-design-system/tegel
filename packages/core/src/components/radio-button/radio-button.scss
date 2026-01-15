@@ -15,7 +15,7 @@
     outline: none;
     margin: 0;
     border: 0;
-    width: 24px;
+    width: 20px;
     height: 24px;
     border-radius: 50%;
     position: relative;
@@ -38,10 +38,9 @@
     }
 
     &::before {
-      width: 22px;
-      height: 22px;
-      left: 1px;
-      top: 1px;
+      width: 20px;
+      height: 20px;
+      top: 2px;
     }
 
     &::after {
@@ -49,8 +48,9 @@
       background-color: var(--tds-radio-button-interaction-02);
       width: 16px;
       height: 16px;
-      left: 4px;
-      top: 4px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
 
     &:hover {
@@ -62,7 +62,10 @@
     &:focus-visible {
       &::before {
         background-color: var(--tds-radio-button-background-focus);
-        animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
+
+        // animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
+        animation: rb-focus var(--tds-motion-duration-moderate-02) var(--tds-motion-easing-enter)
+          forwards;
       }
 
       &::after {
