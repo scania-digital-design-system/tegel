@@ -197,7 +197,7 @@
       }
 
       &.current {
-        background-color: var(--tds-stepper-background);
+        background-color: var(--tds-stepper-icon-step-border-color-current);
         color: var(--tds-stepper-color);
       }
 
@@ -232,6 +232,7 @@
 :host(:last-of-type) {
   [role='listitem'].horizontal {
     padding-right: 0;
+    padding-left: 0;
   }
 
   [role='listitem'] {
@@ -258,6 +259,7 @@
   [role='listitem'] {
     &.horizontal {
       padding-left: 0;
+      padding-right: 0;
     }
 
     &.sm,
