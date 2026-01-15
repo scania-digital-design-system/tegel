@@ -137,6 +137,12 @@ const Template = ({
 
   const disabledAttr = disabled ? 'disabled' : '';
 
+  // Show calendar icon for date-related types, clock icon for time
+  const iconHtml =
+    type === 'Time'
+      ? '<span class="tl-datetime__icon tl-datetime__icon--time"><span class="tl-icon tl-icon--clock tl-icon--20"></span></span>'
+      : '<span class="tl-datetime__icon tl-datetime__icon--datetime"><span class="tl-icon tl-icon--calendar tl-icon--20"></span></span>';
+
   return formatHtmlPreview(`
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
@@ -158,8 +164,7 @@ const Template = ({
           type="${typeLookup[type]}"
           ${disabledAttr}
         />
-        <span class="tl-datetime__icon tl-datetime__icon--datetime"><span class="tl-icon tl-icon--calendar tl-icon--20"></span></span>
-        <span class="tl-datetime__icon tl-datetime__icon--time"><span class="tl-icon tl-icon--clock tl-icon--20"></span></span>
+        ${iconHtml}
         ${labelInside}
       </div>
       ${helperHtml}
