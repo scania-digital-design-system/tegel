@@ -82,10 +82,7 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
         ${checkedIndex === 0 ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
       />
-      <label class="tl-radio-button__label" for="${name}-1">
-        <span class="tl-radio-button__control"></span>
-        ${label} 1
-      </label>
+      <label class="tl-radio-button__label" for="${name}-1">${label} 1</label>
     </div>
 
     <div class="tl-radio-button">
@@ -98,10 +95,7 @@ const Template = ({ label, checkedIndex, disabled, name }) =>
         ${checkedIndex === 1 ? 'checked' : ''}
         ${disabled ? 'disabled' : ''}
       />
-      <label class="tl-radio-button__label" for="${name}-2">
-        <span class="tl-radio-button__control"></span>
-        ${label} 2
-      </label>
+      <label class="tl-radio-button__label" for="${name}-2">${label} 2</label>
     </div>
 </fieldset>
 `);
