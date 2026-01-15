@@ -58,8 +58,7 @@
     "./tl-popover-menu.css": "./dist/tl-popover-menu.css",
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
     "./tl-footer.css": "./dist/tl-footer.css",
-    "./tl-slider.css": "./dist/tl-slider.css",
-    "./tl-radiobutton.css": "./dist/tl-radiobutton.css"
+    "./tl-slider.css": "./dist/tl-slider.css"
   },
   "files": [
     "dist/"
