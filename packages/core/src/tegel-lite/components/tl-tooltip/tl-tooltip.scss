@@ -28,77 +28,77 @@
     pointer-events: auto;
   }
 
-  &--bottom {
+  .tl-tooltip--bottom & {
     top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     left: 50%;
     transform: translateX(-50%);
     border-radius: 4px;
   }
 
-  &--bottom-end {
+  .tl-tooltip--bottom-end & {
     top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     right: var(--tl-tooltip-offset-skidding, 0);
     border-radius: 4px 0 4px 4px;
   }
 
-  &--bottom-start {
+  .tl-tooltip--bottom-start & {
     top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     left: var(--tl-tooltip-offset-skidding, 0);
     border-radius: 0 4px 4px;
   }
 
-  &--left {
+  .tl-tooltip--left & {
     right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     top: 50%;
     transform: translateY(-50%);
     border-radius: 4px;
   }
 
-  &--left-end {
+  .tl-tooltip--left-end & {
     right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     bottom: 0;
     border-radius: 4px 4px 0;
   }
 
-  &--left-start {
+  .tl-tooltip--left-start & {
     right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     top: 0;
     border-radius: 4px 0 4px 4px;
   }
 
-  &--right {
+  .tl-tooltip--right & {
     left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     top: 50%;
     transform: translateY(-50%);
     border-radius: 4px;
   }
 
-  &--right-end {
+  .tl-tooltip--right-end & {
     left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     bottom: 0;
     border-radius: 4px 4px 4px 0;
   }
 
-  &--right-start {
+  .tl-tooltip--right-start & {
     left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     top: 0;
     border-radius: 0 4px 4px;
   }
 
-  &--top {
+  .tl-tooltip--top & {
     bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     left: 50%;
     transform: translateX(-50%);
     border-radius: 4px;
   }
 
-  &--top-end {
+  .tl-tooltip--top-end & {
     bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     right: var(--tl-tooltip-offset-skidding, 0);
     border-radius: 4px 4px 0;
   }
 
-  &--top-start {
+  .tl-tooltip--top-start & {
     bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
     left: var(--tl-tooltip-offset-skidding, 0);
     border-radius: 4px 4px 4px 0;

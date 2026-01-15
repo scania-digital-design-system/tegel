@@ -57,9 +57,9 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
   const modeClass =
     modeVariant !== 'Inherit from parent' ? `tl-message--${modeVariant.toLowerCase()}` : '';
 
-  const variantClass = `tl-message__wrapper--${messageVariant.toLowerCase()}`;
-  const minimalClass = minimal ? 'tl-message__wrapper--minimal' : '';
-  const noIconClass = noIcon ? 'tl-message__wrapper--no-icon' : '';
+  const variantClass = `tl-message--${messageVariant.toLowerCase()}`;
+  const minimalClass = minimal ? 'tl-message--minimal' : '';
+  const noIconClass = noIcon ? 'tl-message--no-icon' : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
@@ -71,8 +71,8 @@ const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
       }
     </style>
     <div class="demo-wrapper">
-      <div class="tl-message ${modeClass}">
-        <div class="tl-message__wrapper ${variantClass} ${minimalClass} ${noIconClass}">
+      <div class="tl-message ${modeClass} ${variantClass} ${minimalClass} ${noIconClass}">
+        <div class="tl-message__wrapper">
           <div class="tl-message__content">
             <div class="tl-message__header">Message header</div>
             ${

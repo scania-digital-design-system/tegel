@@ -114,8 +114,12 @@
     flex-grow: 1;
   }
 
-  .tl-card--expanded .tl-card__body & {
+  .tl-card--expandable .tl-card__body & {
     display: none;
+  }
+
+  .tl-card--expanded .tl-card__body & {
+    display: block;
   }
 }
 
