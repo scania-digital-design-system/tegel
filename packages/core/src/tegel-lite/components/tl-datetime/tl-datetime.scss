@@ -24,16 +24,6 @@
   }
 }
 
-/* Firefox-specific icon hiding for date/datetime */
-@supports (-moz-appearance: none) {
-  .tl-datetime__icon--datetime {
-    .tl-datetime.type-datetime-local &,
-    .tl-datetime.type-date & {
-      display: none;
-    }
-  }
-}
-
 .tl-datetime__label {
   @include detail-05;
 
@@ -41,7 +31,7 @@
   margin-bottom: var(--tds-spacing-element-8);
   color: var(--datetime-label);
 
-  .tl-datetime--disabled & {
+  .tl-datetime:has(input:disabled) & {
     color: var(--datetime-label-disabled);
     cursor: not-allowed;
   }
@@ -62,8 +52,41 @@
     height: 40px;
   }
 
-  .tl-datetime--disabled & {
+  .tl-datetime:has(input:disabled) & {
     cursor: not-allowed;
+  }
+
+  /* CSS-generated icon */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 18px;
+    width: 20px;
+    height: 20px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    background-color: var(--datetime-icon);
+    pointer-events: none;
+
+    /* Default: calendar icon for date/datetime inputs */
+    mask-image: var(--icon-calendar-svg);
+  }
+
+  /* Change to clock icon for time input */
+  &:has(input[type='time'])::after {
+    mask-image: var(--icon-clock-svg);
+  }
+
+  .tl-datetime--error &::after {
+    background-color: var(--datetime-icon-error);
+  }
+
+  /* Disabled state (should not override error state) */
+  .tl-datetime:has(input:disabled):not(.tl-datetime--error) &::after {
+    background-color: var(--datetime-icon-disabled);
   }
 }
 
@@ -127,22 +150,6 @@
     }
   }
 
-  /* Type-based icon toggling */
-  &[type='datetime-local'],
-  &[type='date'],
-  &[type='month'],
-  &[type='week'] {
-    ~ .tl-datetime__icon--time {
-      display: none;
-    }
-  }
-
-  &[type='time'] {
-    ~ .tl-datetime__icon--datetime {
-      display: none;
-    }
-  }
-
   .tl-datetime--label-inside & {
     padding-top: var(--tds-spacing-element-24);
     padding-bottom: 15px;
@@ -155,25 +162,6 @@
 
   .tl-datetime--sm & {
     padding: var(--tds-spacing-element-16);
-  }
-}
-
-.tl-datetime__icon {
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 18px;
-  pointer-events: none;
-  color: var(--datetime-icon);
-
-  .tl-datetime--disabled & {
-    color: var(--datetime-icon-disabled);
-  }
-
-  .tl-datetime--error & {
-    color: var(--datetime-icon-error);
   }
 }
 
@@ -207,19 +195,30 @@
   padding-top: var(--tds-spacing-element-4);
   color: var(--datetime-helper);
 
-  .tl-icon--error {
+  /* CSS-generated error icon */
+  &::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    flex-shrink: 0;
     display: none;
-  }
-
-  .tl-datetime--disabled & {
-    color: var(--color-foreground-text-disabled);
   }
 
   .tl-datetime--error & {
     color: var(--datetime-helper-error);
+
+    &::before {
+      display: inline-flex;
+      mask-image: var(--icon-error-svg);
+      background-color: var(--datetime-helper-error);
+    }
   }
 
-  .tl-datetime--error & .tl-icon--error {
-    display: inline-flex;
+  /* Disabled state (should not override error text/icon color) */
+  .tl-datetime:has(input:disabled):not(.tl-datetime--error) & {
+    color: var(--color-foreground-text-disabled);
   }
 }
