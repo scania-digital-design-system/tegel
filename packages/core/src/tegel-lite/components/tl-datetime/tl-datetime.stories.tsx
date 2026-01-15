@@ -137,19 +137,17 @@ const Template = ({
       "@scania/tegel-lite/tl-datetime.css"
     -->
 
-  <div style="width: calc(100vw - 40px); max-width: 400px;">
-    <div class="${classes}">
-      ${labelOutside}
-      <div class="tl-datetime__wrapper">
-        <input
-          class="tl-datetime__input"
-          type="${typeLookup[type]}"
-          ${disabledAttr}
-        />
-        ${labelInside}
-      </div>
-      ${helperHtml}
+  <div class="${classes}" style="width: calc(100vw - 40px); max-width: 400px;">
+    ${labelOutside}
+    <div class="tl-datetime__wrapper">
+      <input
+        class="tl-datetime__input"
+        type="${typeLookup[type]}"
+        ${disabledAttr}
+      />
+      ${labelInside}
     </div>
+    ${helperHtml}
   </div>
   `);
 };
