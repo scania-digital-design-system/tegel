@@ -19,9 +19,6 @@ The DateTime component provides a form input for date and time selection with su
     <span class="tl-datetime__icon tl-datetime__icon--datetime">
       <span class="tl-icon tl-icon--calendar tl-icon--20" aria-hidden="true"></span>
     </span>
-    <span class="tl-datetime__icon tl-datetime__icon--time">
-      <span class="tl-icon tl-icon--clock tl-icon--20" aria-hidden="true"></span>
-    </span>
   </div>
   <div class="tl-datetime__helper">
     <span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>
@@ -47,12 +44,12 @@ The DateTime component provides a form input for date and time selection with su
 | `.tl-datetime`               | `<div>`      | Main container (min-width 208px unless `--no-min-width`) |
 | `.tl-datetime__label`        | `<label>`    | Label for the input                   |
 | `.tl-datetime__wrapper`      | `<div>`      | Wrapper for input and icon            |
-| `.tl-datetime__input`        | `<input>`    | Input element (date/datetime/time). Icon shown automatically based on type |
-| `.tl-datetime__icon`         | `<span>`     | Icon container (20px icons)           |
-| `.tl-datetime__icon--datetime` | `<span>`   | Calendar icon container (shown for date/datetime/month/week inputs) |
-| `.tl-datetime__icon--time`   | `<span>`     | Clock icon container (shown for time inputs) |
-| `.tl-datetime__label-inside` | `<label>`    | Label inside the input wrapper (not shown for sm size) |
-| `.tl-datetime__helper`       | `<div>`      | Helper text container below input (16px icons) |
+| `.tl-datetime__input`        | `<input>`    | Input element (date/datetime/time)    |
+| `.tl-datetime__icon`         | `<span>`     | Icon container                        |
+| `.tl-datetime__icon--datetime` | `<span>`   | Calendar icon container (for date/datetime) |
+| `.tl-datetime__icon--time`   | `<span>`     | Clock icon container (for time)       |
+| `.tl-datetime__label-inside` | `<label>`    | Label inside the input wrapper        |
+| `.tl-datetime__helper`       | `<div>`      | Helper text container below input     |
 | `.tl-icon`                   | `<span>`     | Icon element (optional)               |
 
 ## Modifiers
