@@ -59,18 +59,13 @@ export default {
 
 const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selected }) => {
   const sizeClass = size === 'Small' ? 'tl-chip--sm' : 'tl-chip--lg';
-  const disabledClass = disabled ? ' tl-chip--disabled' : '';
   const selectedClass = selected ? ' tl-chip--selected' : '';
 
   const hasIcon = Boolean(showIcon && icon && icon !== 'none');
   const prefixMod = hasIcon && iconPosition === 'Prefix' ? ' tl-chip--prefix' : '';
   const suffixMod = hasIcon && iconPosition === 'Suffix' ? ' tl-chip--suffix' : '';
 
-  const iconHtml = hasIcon
-    ? `<span class="tl-chip__icon">
-         <span class="tl-icon tl-icon--${icon} tl-icon--16"></span>
-       </span>`
-    : '';
+  const iconHtml = hasIcon ? `<span class="tl-icon tl-icon--${icon} tl-icon--16"></span>` : '';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
@@ -83,20 +78,22 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
     -->
 
     <div class="demo-wrapper" style="display: flex; gap: 8px; flex-wrap: wrap;">
-      <button class="tl-chip ${sizeClass}${disabledClass}${selectedClass}${prefixMod}${suffixMod}">
-        ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}
-        <span class="tl-chip__label">${label} 1</span>
-        ${hasIcon && iconPosition === 'Suffix' ? iconHtml : ''}
+      <button class="tl-chip ${sizeClass}${selectedClass}${prefixMod}${suffixMod}" ${
+    disabled ? 'disabled' : ''
+  }>
+        ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}${label} 1${
+    hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
+  }
       </button>
-      <button class="tl-chip ${sizeClass}${disabledClass}${prefixMod}${suffixMod}">
-        ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}
-        <span class="tl-chip__label">${label} 2</span>
-        ${hasIcon && iconPosition === 'Suffix' ? iconHtml : ''}
+      <button class="tl-chip ${sizeClass}${prefixMod}${suffixMod}" ${disabled ? 'disabled' : ''}>
+        ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}${label} 2${
+    hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
+  }
       </button>
-      <button class="tl-chip ${sizeClass}${disabledClass}${prefixMod}${suffixMod}">
-        ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}
-        <span class="tl-chip__label">${label} 3</span>
-        ${hasIcon && iconPosition === 'Suffix' ? iconHtml : ''}
+      <button class="tl-chip ${sizeClass}${prefixMod}${suffixMod}" ${disabled ? 'disabled' : ''}>
+        ${hasIcon && iconPosition === 'Prefix' ? iconHtml : ''}${label} 3${
+    hasIcon && iconPosition === 'Suffix' ? iconHtml : ''
+  }
       </button>
     </div>
 
@@ -109,7 +106,7 @@ const Template = ({ size, label, showIcon, icon, iconPosition, disabled, selecte
         const chips = wrapper.querySelectorAll(".tl-chip");
         chips.forEach((chip) => {
           chip.addEventListener("click", () => {
-            if (chip.classList.contains("tl-chip--disabled")) return;
+            if (chip.disabled) return;
             chips.forEach((c) => {
               c.classList.remove("tl-chip--selected");
             });
