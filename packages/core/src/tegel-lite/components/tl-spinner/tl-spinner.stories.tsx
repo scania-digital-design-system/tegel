@@ -23,15 +23,15 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Standard', 'Inverted'],
+      options: ['Default', 'Inverted'],
       table: {
-        defaultValue: { summary: 'Standard' },
+        defaultValue: { summary: 'Default' },
       },
     },
   },
   args: {
     size: 'Large',
-    variant: 'Standard',
+    variant: 'Default',
   },
 };
 
@@ -43,7 +43,7 @@ const Template = ({ size, variant }) => {
     'Extra small': 'xs',
   };
   const variantMap = {
-    Standard: 'standard',
+    Default: 'default',
     Inverted: 'inverted',
   };
   const sizeClass = size ? `tl-spinner--${sizeMap[size]}` : '';
