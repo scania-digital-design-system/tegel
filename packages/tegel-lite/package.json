@@ -60,7 +60,7 @@
     "./tl-side-menu.css": "./dist/tl-side-menu.css",
     "./tl-footer.css": "./dist/tl-footer.css",
     "./tl-slider.css": "./dist/tl-slider.css",
-    "./tl-radiobutton.css": "./dist/tl-radiobutton.css",
+    "./tl-radio-button.css": "./dist/tl-radio-button.css",
     "./tl-folder-tabs.css": "./dist/tl-folder-tabs.css",
     "./tl-inline-tabs.css": "./dist/tl-inline-tabs.css",
     "./tl-navigation-tabs.css": "./dist/tl-navigation-tabs.css",
