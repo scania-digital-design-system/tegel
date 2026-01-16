@@ -6,16 +6,10 @@ The Breadcrumbs component displays the user's current location within the applic
 
 ```html
 <nav class="tl-breadcrumbs">
-  <ol class="tl-breadcrumbs__list">
-    <li class="tl-breadcrumbs__breadcrumb">
-      <a class="tl-breadcrumbs__breadcrumb-link" href="#">Home</a>
-    </li>
-    <li class="tl-breadcrumbs__breadcrumb">
-      <a class="tl-breadcrumbs__breadcrumb-link" href="#">Products</a>
-    </li>
-    <li class="tl-breadcrumbs__breadcrumb tl-breadcrumbs__breadcrumb--current">
-      <a class="tl-breadcrumbs__breadcrumb-link" href="#" aria-current="page">Current Page</a>
-    </li>
+  <ol>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Products</a></li>
+    <li><a href="#" aria-current="page">Current Page</a></li>
   </ol>
 </nav>
 ```
@@ -31,22 +25,19 @@ The Breadcrumbs component displays the user's current location within the applic
 
 ## Elements
 
-| Element                            | HTML Element | Description                         |
-| ---------------------------------- | ------------ | ----------------------------------- |
-| `.tl-breadcrumbs`                  | `<nav>`      | Main breadcrumbs container          |
-| `.tl-breadcrumbs__list`            | `<ol>`       | Ordered list of breadcrumb items    |
-| `.tl-breadcrumbs__breadcrumb`      | `<li>`       | Individual breadcrumb item. Separator (›) is added automatically via CSS |
-| `.tl-breadcrumbs__breadcrumb-link` | `<a>`        | Link for breadcrumb item. Use `aria-current="page"` on current page |
+| Element            | HTML Element | Description                         |
+| ------------------ | ------------ | ----------------------------------- |
+| `.tl-breadcrumbs`  | `<nav>`      | Main breadcrumbs container          |
+| `ol`               | `<ol>`       | Ordered list of breadcrumb items (no class needed) |
+| `li`               | `<li>`       | Individual breadcrumb item (no class needed). Separator (›) is added automatically via CSS |
+| `a`                | `<a>`        | Link for breadcrumb item (no class needed). Use `aria-current="page"` on current page link |
 
-## Modifiers
+## Usage Notes
 
-### Breadcrumb Item Modifiers
-
-Apply these classes to `.tl-breadcrumbs__breadcrumb` elements.
-
-| Modifier                              | Description                              |
-| ------------------------------------- | ---------------------------------------- |
-| `.tl-breadcrumbs__breadcrumb--current`| Indicates the current page. Removes separator and disables link interaction |
+- The component uses native HTML elements without additional BEM classes on `ol`, `li`, and `a` elements
+- Separators (›) are automatically added between items via CSS
+- The current page is indicated using `aria-current="page"` on the link element
+- Links with `aria-current="page"` automatically receive disabled styling and have pointer events removed
 
 ----------------------------------------------
 
