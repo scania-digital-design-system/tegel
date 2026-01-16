@@ -34,22 +34,16 @@ const Template = ({ outerModeVariant, componentTag }) =>
       "@scania/tegel-lite/tl-block.css"
     -->
     <div class="tl-block tl-block--${outerModeVariant.toLowerCase()}">
-        <${componentTag} class="tl-block tl-block--even">
-          <h2>Outer Block (${componentTag})</h2>
-          <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code>.</p>
-          <div class="tl-block tl-block--odd tl-block--nested">
-            <aside>
-              <h3>Middle Block (Aside)</h3>
-              <p>Nested content inside an <code>&lt;aside&gt;</code> element.</p>
-              <div class="tl-block tl-block--even tl-block--nested-inner">
-                <${componentTag}>
-                  <h4>Inner Block (Section)</h4>
-                  <p>Ensuring meaningful content structure with semantic HTML.</p>
-                </${componentTag}>
-              </div>
-            </aside>
-          </div>
-        </${componentTag}>
+      <h2>Outer Block</h2>
+      <p>Nested blocks automatically alternate backgrounds and adjust typography.</p>
+      <${componentTag} class="tl-block">
+        <h3>Middle Block (${componentTag})</h3>
+        <p>Nested content inside a <code>&lt;${componentTag}&gt;</code> element.</p>
+        <article class="tl-block">
+          <h4>Inner Block (Article)</h4>
+          <p>Ensuring meaningful content structure with semantic HTML.</p>
+        </article>
+      </${componentTag}>
     </div>
   `);
 
