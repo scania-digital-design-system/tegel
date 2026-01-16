@@ -10,12 +10,16 @@
   color: var(--radio-button-label);
   display: flex;
   align-items: center;
-  margin-left: -4px;
+  gap: var(--radio-button-spacing-8);
+
+  &:has(:disabled) {
+    cursor: not-allowed;
+  }
 }
 
 /* Elements */
 
-/* INPUT — semantic control (hidden visually) */
+/* INPUT — visible radio circle */
 .tl-radio-button__input {
   appearance: none;
   outline: none;
@@ -23,69 +27,10 @@
   border: 0;
   inline-size: 24px;
   block-size: 24px;
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  border-radius: 50%;
-
-  /* Focus: pulse + thin outline on visual control */
-  &:focus + .tl-radio-button__control {
-    &::before {
-      background-color: var(--radio-button-focus);
-      animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
-    }
-
-    &::after {
-      outline: 1px solid var(--tds-radio-button-interaction-outline);
-    }
-  }
-
-  /* Checked: thicker border to create dot effect */
-  &:checked + .tl-radio-button__control {
-    &::after {
-      border: 4px solid var(--radio-button-border);
-    }
-  }
-
-  /* Checked + focus: thicker outline on inner circle */
-  &:checked:focus + .tl-radio-button__control {
-    &::after {
-      outline: 4px solid var(--radio-button-focus);
-    }
-  }
-
-  .tl-radio-button--disabled & {
-    &:checked + .tl-radio-button__control {
-      &::before {
-        border: 1px solid var(--radio-button-border-disabled);
-        display: block;
-        inline-size: 16px;
-        block-size: 16px;
-        left: 3px;
-        top: 3px;
-        box-sizing: content-box;
-      }
-
-      &::after {
-        border: 4px solid var(--radio-button-background-disabled);
-        background-color: var(--radio-button-checked-disabled);
-        left: 4px;
-        top: 4px;
-      }
-    }
-  }
-}
-
-/* CONTROL — visual ring + inner circle */
-.tl-radio-button__control {
-  inline-size: 24px;
-  block-size: 24px;
-  border-radius: 50%;
   position: relative;
   cursor: pointer;
   flex-shrink: 0;
-  align-self: flex-start;
-  box-sizing: border-box;
+  border-radius: 50%;
 
   &::before,
   &::after {
@@ -113,15 +58,39 @@
     top: 4px;
   }
 
-  /* Hover outline (only when not disabled) */
-  .tl-radio-button:not(.tl-radio-button--disabled):hover & {
+  /* Focus */
+  &:focus {
+    &::before {
+      background-color: var(--radio-button-focus);
+      animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
+    }
+
     &::after {
-      outline: 2px solid var(--radio-button-background-hover);
+      outline: 1px solid var(--tds-radio-button-interaction-outline);
     }
   }
 
-  /* Disabled visuals */
-  .tl-radio-button--disabled & {
+  /* Checked */
+  &:checked {
+    &::after {
+      border: 4px solid var(--radio-button-border);
+    }
+  }
+
+  /* Checked + focus */
+  &:checked:focus {
+    &::after {
+      outline: 4px solid var(--radio-button-focus);
+    }
+  }
+
+  /* Hover */
+  .tl-radio-button:not(:has(:disabled)):hover &::after {
+    outline: 2px solid var(--radio-button-background-hover);
+  }
+
+  /* Disabled */
+  &:disabled {
     cursor: not-allowed;
 
     &::before {
@@ -132,21 +101,38 @@
     &::after {
       background-color: var(--radio-button-background-disabled);
       border-color: var(--radio-button-background-disabled);
-
-      /* prevent hover outline when disabled */
       outline: none;
+    }
+
+    &:checked {
+      &::before {
+        border: 1px solid var(--radio-button-border-disabled);
+        display: block;
+        inline-size: 16px;
+        block-size: 16px;
+        left: 3px;
+        top: 3px;
+        box-sizing: content-box;
+      }
+
+      &::after {
+        border: 4px solid var(--radio-button-background-disabled);
+        background-color: var(--radio-button-checked-disabled);
+        left: 4px;
+        top: 4px;
+      }
     }
   }
 }
 
-/* LABEL — spacing & disabled color */
+/* LABEL — text only */
 .tl-radio-button__label {
-  padding: var(--radio-button-spacing-4);
   cursor: pointer;
+  padding-left: 4px;
 
-  .tl-radio-button--disabled & {
-    color: var(--radio-button-label-disabled);
+  .tl-radio-button:has(:disabled) & {
     cursor: not-allowed;
+    color: var(--radio-button-label-disabled);
   }
 }
 
