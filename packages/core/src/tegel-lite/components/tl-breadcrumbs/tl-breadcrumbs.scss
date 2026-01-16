@@ -5,62 +5,62 @@
 
 .tl-breadcrumbs {
   @include tds-box-sizing;
-}
 
-.tl-breadcrumbs__list {
-  @include detail-02;
+  ol {
+    @include detail-02;
 
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-}
-
-.tl-breadcrumbs__breadcrumb {
-  display: inline-block;
-
-  &::after {
-    content: '\203A';
-    color: var(--breadcrumb-separator-color);
-    margin-right: var(--breadcrumb-separator-margin);
-    margin-left: var(--breadcrumb-separator-margin);
-    display: inline-block;
-    width: var(--breadcrumb-separator-width);
-    height: var(--breadcrumb-separator-height);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
   }
 
-  &--current {
+  li {
+    display: inline-block;
+
     &::after {
-      display: none;
+      content: '\203A';
+      color: var(--breadcrumb-separator-color);
+      margin-right: var(--breadcrumb-separator-margin);
+      margin-left: var(--breadcrumb-separator-margin);
+      display: inline-block;
+      width: var(--breadcrumb-separator-width);
+      height: var(--breadcrumb-separator-height);
+    }
+
+    &:has([aria-current]) {
+      &::after {
+        display: none;
+      }
     }
   }
-}
 
-.tl-breadcrumbs__breadcrumb-link {
-  @include detail-02;
+  a {
+    @include detail-02;
 
-  color: var(--breadcrumb-label);
-  text-decoration: none;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--breadcrumb-hover);
-    text-decoration: underline;
-  }
-
-  &:focus-visible {
-    @include tds-focus-state;
-  }
-
-  .tl-breadcrumbs__breadcrumb--current & {
-    pointer-events: none;
-    cursor: default;
-    color: var(--breadcrumb-current);
+    color: var(--breadcrumb-label);
+    text-decoration: none;
+    transition: color 0.2s ease;
 
     &:hover {
-      text-decoration: none;
-      cursor: not-allowed;
+      color: var(--breadcrumb-hover);
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      @include tds-focus-state;
+    }
+
+    &[aria-current='page'] {
+      pointer-events: none;
+      cursor: default;
+      color: var(--breadcrumb-current);
+
+      &:hover {
+        text-decoration: none;
+        cursor: not-allowed;
+      }
     }
   }
 }
