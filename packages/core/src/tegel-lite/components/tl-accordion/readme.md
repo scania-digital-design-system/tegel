@@ -64,14 +64,7 @@ Apply these classes to `.tl-accordion__item` elements.
 | `.tl-accordion__item--disabled`      | Disables the accordion item                                |
 | `.tl-accordion__item--icon-start`    | Positions the expand icon at the start of the header       |
 | `.tl-accordion__item--icon-end`      | Positions the expand icon at the end of the header         |
-
-### Accordion Panel Modifiers
-
-Apply these classes to `.tl-accordion__panel` elements.
-
-| Modifier                             | Description                                                |
-| ------------------------------------ | ---------------------------------------------------------- |
-| `.tl-accordion__panel--less-padding` | Reduces right padding inside the panel                     |
+| `.tl-accordion__item--less-padding`  | Reduces right padding inside the panel                     |
 
 ## JavaScript Required
 
