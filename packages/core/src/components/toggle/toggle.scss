@@ -68,12 +68,6 @@
       }
     }
 
-    &:focus-visible:active {
-      &::before {
-        border: 1px solid var(--tds-toggle-off-border-focus);
-      }
-    }
-
     &:hover {
       &::before {
         background-color: var(--tds-toggle-off-slider-hover);
@@ -83,7 +77,6 @@
     &:active {
       &::before {
         background-color: var(--tds-toggle-off-slider-pressed);
-        border: 1px solid var(--tds-toggle-off-border-pressed);
       }
     }
 
@@ -99,12 +92,6 @@
         }
       }
 
-      &:focus-visible:active {
-        &::before {
-          border: 1px solid var(--tds-toggle-on-border-focus);
-        }
-      }
-
       &:hover {
         &::before {
           background-color: var(--tds-toggle-on-slider-hover);
@@ -114,7 +101,6 @@
       &:active {
         &::before {
           background-color: var(--tds-toggle-on-slider-pressed);
-          border: 1px solid var(--tds-toggle-on-border-pressed);
         }
       }
 
@@ -175,14 +161,12 @@
       &:focus-visible:active {
         &::before {
           background-color: var(--tds-toggle-off-slider-pressed);
-          border: 1px solid var(--tds-toggle-off-border-focus);
         }
       }
 
       &:active {
         &::before {
           background-color: var(--tds-toggle-off-slider-pressed);
-          border: 1px solid var(--tds-toggle-off-border-pressed);
         }
       }
 
@@ -198,12 +182,6 @@
           }
         }
 
-        &:focus-visible:active {
-          &::before {
-            border: 1px solid var(--tds-toggle-on-border-focus);
-          }
-        }
-
         &:hover {
           &::before {
             background-color: var(--tds-toggle-on-slider-hover);
@@ -213,7 +191,6 @@
         &:active {
           &::before {
             background-color: var(--tds-toggle-on-slider-pressed);
-            border: 1px solid var(--tds-toggle-on-border-pressed);
           }
         }
 
