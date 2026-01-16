@@ -49,6 +49,12 @@
       background-color: transparent;
     }
   }
+
+  &--less-padding {
+    .tl-accordion__panel {
+      padding-right: var(--tds-spacing-element-16);
+    }
+  }
 }
 
 .tl-accordion__title {
@@ -75,10 +81,6 @@
   p {
     margin: 0;
     padding: 0;
-  }
-
-  &--less-padding {
-    padding-right: var(--tds-spacing-element-16);
   }
 
   .tl-accordion__item--disabled & {

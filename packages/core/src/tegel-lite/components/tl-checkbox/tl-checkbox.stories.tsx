@@ -52,10 +52,8 @@ const Template = ({ label, checked, disabled, indeterminate }) => {
         ${disabled ? 'disabled' : ''}
 				${checked ? 'checked' : ''}
       />
-      <label class="tl-checkbox__label ${
-        disabled ? 'tl-checkbox__label--disabled' : ''
-      }" for="tl-checkbox">${label}</>
-    </>
+      <label class="tl-checkbox__label" for="tl-checkbox">${label}</label>
+    </div>
   `);
 };
 

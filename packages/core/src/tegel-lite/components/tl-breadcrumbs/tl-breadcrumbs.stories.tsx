@@ -15,16 +15,10 @@ const Template = () =>
       "@scania/tegel-lite/tl-breadcrumbs.css"
     -->
     <nav class="tl-breadcrumbs">
-      <ol class="tl-breadcrumbs__list">
-        <li class="tl-breadcrumbs__breadcrumb">
-          <a class="tl-breadcrumbs__breadcrumb-link" href="#">Home</a>
-        </li>
-        <li class="tl-breadcrumbs__breadcrumb">
-          <a class="tl-breadcrumbs__breadcrumb-link" href="#">Products</a>
-        </li>
-        <li class="tl-breadcrumbs__breadcrumb tl-breadcrumbs__breadcrumb--current">
-          <a class="tl-breadcrumbs__breadcrumb-link" href="#" aria-current="page">Current Page</a>
-        </li>
+      <ol>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#" aria-current="page">Current Page</a></li>
       </ol>
     </nav>
       `,

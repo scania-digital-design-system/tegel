@@ -21,7 +21,7 @@ testConfigurations.withModeVariants.forEach((config) => {
       await expect(tableComponent).toHaveCount(1);
 
       /* Check diff of screenshot */
-      await expect(page).toHaveScreenshot({ maxDiffPixels: 0.01 });
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
   });
 });

@@ -131,14 +131,14 @@ export default {
       name: 'Expandable',
       description: 'Toggles if the Card can expand/collapse its content.',
       control: 'boolean',
-      if: { arg: 'clickable', eq: false },
+      if: { arg: 'imagePlacement', neq: 'Below' },
       table: { defaultValue: { summary: false } },
     },
     expanded: {
       name: 'Expanded',
       description: 'Controls the initial expanded state when expandable is enabled.',
       control: 'boolean',
-      if: { arg: 'expandable', eq: true },
+      if: { arg: 'imagePlacement', neq: 'Below' },
       table: { defaultValue: { summary: false } },
     },
     showIcon: {
@@ -208,10 +208,13 @@ const Template = ({
     placementClass = 'tl-card--image-below-header';
   }
 
-  const clickableClass = clickable ? 'tl-card--clickable' : '';
   const stretchClass = stretch ? 'tl-card--stretch' : '';
-  const expandableClass = expandable ? 'tl-card--expandable' : '';
-  const expandedClass = expandable && expanded ? 'tl-card--expanded' : '';
+  const effectiveClickable = clickable && !expandable;
+  const clickableClass = effectiveClickable ? 'tl-card--clickable' : '';
+  const isExpandableDisabled = effectiveClickable || (bodyImg && imagePlacement === 'Below');
+  const effectiveExpandable = expandable && !isExpandableDisabled;
+  const expandableClass = effectiveExpandable ? 'tl-card--expandable' : '';
+  const expandedClass = effectiveExpandable && expanded ? 'tl-card--expanded' : '';
 
   const headerHtml = `
     <div class="tl-card__header">
@@ -223,7 +226,7 @@ const Template = ({
         ${subheader ? `<div class="tl-card__subtitle">${subheader}</div>` : ''}
       </div>
       ${
-        expandable
+        effectiveExpandable
           ? `<button
   class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon">
   <span class="tl-icon tl-icon--chevron_down tl-icon--16"></span>
@@ -272,18 +275,18 @@ const Template = ({
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-card.css";
       ${
-        expandable
+        effectiveExpandable
           ? `"@scania/tegel-lite/tl-button.css"; 
       "@scania/tegel-lite/tl-icon.css";`
           : ''
       }
-      ${showIcon && !expandable ? `"@scania/tegel-lite/tl-icon.css";` : ''}
+      ${showIcon && !effectiveExpandable ? `"@scania/tegel-lite/tl-icon.css";` : ''}
     -->
     <style>
       .demo-wrapper { 
         max-width: 600px; 
         ${
-          expandable
+          effectiveExpandable
             ? `width: 336px;
         max-height: 152px;`
             : ''

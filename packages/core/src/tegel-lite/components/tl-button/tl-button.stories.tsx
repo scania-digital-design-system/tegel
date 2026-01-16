@@ -5,43 +5,86 @@ import { iconsNames } from '../../../components/icon/iconsArray';
 export default {
   title: 'Tegel Lite (CSS)/Button',
   argTypes: {
+    modeVariant: {
+      name: 'Mode variant',
+      description:
+        'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Inherit from parent' },
+      },
+    },
     variant: {
       name: 'Variant',
-      control: { type: 'select' },
-      options: ['primary', 'secondary', 'ghost', 'danger'],
+      description:
+        'Four different Button variants to help the user to distinguish the level of importance of the task they represent.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Primary', 'Secondary', 'Ghost', 'Danger'],
+      table: {
+        defaultValue: { summary: 'Primary' },
+      },
     },
     size: {
       name: 'Size',
-      control: { type: 'select' },
-      options: ['xs', 'sm', 'md', 'lg'],
+      description: 'Sets the size of the Button.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Large', 'Medium', 'Small', 'Extra small'],
+      table: {
+        defaultValue: { summary: 'Medium' },
+      },
     },
     fullWidth: {
       name: 'Full width',
-      control: { type: 'boolean' },
+      description: 'Sets a fluid width on the Button.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
     },
     disabled: {
       name: 'Disabled',
-      control: { type: 'boolean' },
+      description: 'Disables the Button.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
     },
     onlyIcon: {
-      name: 'Only icon',
-      control: { type: 'boolean' },
-      description: 'Button with only an icon (no text) - not available for xs size',
-      if: { arg: 'size', neq: 'xs' },
+      name: 'Only Icon',
+      description: 'Displays only the icon and excludes any text from the Button.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        defaultValue: { summary: false },
+      },
+      if: { arg: 'size', neq: 'Extra small' },
     },
     icon: {
       name: 'Icon',
-      description: 'Sets icon to be displayed on the Button.',
-      control: { type: 'select' },
-      options: iconsNames,
-      table: {
-        defaultValue: { summary: 'placeholder' },
+      description: 'Sets icon to be displayed on the Button. Choose "none" to exclude the icon.',
+      control: {
+        type: 'select',
       },
+      options: ['none', ...iconsNames],
+      if: { arg: 'size', neq: 'Extra small' },
     },
   },
   args: {
-    variant: 'primary',
-    size: 'md',
+    modeVariant: 'Inherit from parent',
+    variant: 'Primary',
+    size: 'Medium',
     fullWidth: false,
     disabled: false,
     onlyIcon: false,
@@ -49,11 +92,26 @@ export default {
   },
 };
 
-const Template = ({ variant, size, fullWidth, disabled, onlyIcon, icon }) => {
-  // Disable icon functionality for xs size
-  const isXs = size === 'xs';
+const Template = ({ modeVariant, variant, size, fullWidth, disabled, onlyIcon, icon }) => {
+  // Convert display values to CSS values
+  const sizeMap = {
+    'Large': 'lg',
+    'Medium': 'md',
+    'Small': 'sm',
+    'Extra small': 'xs',
+  };
+  const variantMap = {
+    Primary: 'primary',
+    Secondary: 'secondary',
+    Ghost: 'ghost',
+    Danger: 'danger',
+  };
+
+  const sizeValue = sizeMap[size];
+  const variantValue = variantMap[variant];
+  const isXs = sizeValue === 'xs';
   const iconClass = !isXs && icon !== 'none' ? `tl-button--icon` : '';
-  const iconSize = size === 'lg' || size === 'md' ? 20 : 16;
+  const iconSize = sizeValue === 'lg' || sizeValue === 'md' ? 20 : 16;
   const onlyIconClass = !isXs && onlyIcon ? 'tl-button--only-icon' : '';
   const iconElement =
     !isXs && icon !== 'none'
@@ -61,15 +119,21 @@ const Template = ({ variant, size, fullWidth, disabled, onlyIcon, icon }) => {
       : '';
   const buttonText = !onlyIcon || isXs ? 'Button' : '';
 
+  const modeClass =
+    modeVariant === 'Primary'
+      ? 'tl-mode-variant-primary'
+      : modeVariant === 'Secondary'
+      ? 'tl-mode-variant-secondary'
+      : '';
+
   return formatHtmlPreview(`
     <!-- Required stylesheet 
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-button.css";
       "@scania/tegel-lite/tl-icon.css";
     -->
-      <button class="tl-button ${onlyIconClass} tl-button--${variant} tl-button--${size} 
+      <button class="tl-button ${onlyIconClass} ${modeClass} tl-button--${variantValue} tl-button--${sizeValue} 
         ${fullWidth ? 'tl-button--full-width' : ''} 
-        ${disabled ? 'tl-button--disabled' : ''}
         ${iconClass}"
         ${disabled ? 'disabled' : ''}>
         ${buttonText}
