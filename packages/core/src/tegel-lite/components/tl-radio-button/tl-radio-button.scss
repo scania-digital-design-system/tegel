@@ -1,0 +1,149 @@
+@use '../../../mixins/box-sizing' as *;
+@use './tl-radio-button-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
+
+/* Block */
+.tl-radio-button {
+  @include tds-box-sizing;
+  @include detail-02;
+
+  color: var(--radio-button-label);
+  display: flex;
+  align-items: center;
+  gap: var(--radio-button-spacing-8);
+
+  &:has(:disabled) {
+    cursor: not-allowed;
+  }
+}
+
+/* Elements */
+
+/* INPUT — visible radio circle */
+.tl-radio-button__input {
+  appearance: none;
+  outline: none;
+  margin: 0;
+  border: 0;
+  inline-size: 24px;
+  block-size: 24px;
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+  border-radius: 50%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  /* focus "pulse" background holder */
+  &::before {
+    inline-size: 22px;
+    block-size: 22px;
+    left: 1px;
+    top: 1px;
+  }
+
+  /* base inner circle + ring */
+  &::after {
+    background-color: var(--radio-button-background-inverse);
+    border: 1px solid var(--radio-button-border);
+    inline-size: 16px;
+    block-size: 16px;
+    left: 4px;
+    top: 4px;
+  }
+
+  /* Focus */
+  &:focus {
+    &::before {
+      background-color: var(--radio-button-focus);
+      animation: rb-focus 0.4s cubic-bezier(0.65, 0.05, 0.38, 0.95) forwards;
+    }
+
+    &::after {
+      outline: 1px solid var(--tds-radio-button-interaction-outline);
+    }
+  }
+
+  /* Checked */
+  &:checked {
+    &::after {
+      border: 4px solid var(--radio-button-border);
+    }
+  }
+
+  /* Checked + focus */
+  &:checked:focus {
+    &::after {
+      outline: 4px solid var(--radio-button-focus);
+    }
+  }
+
+  /* Hover */
+  .tl-radio-button:not(:has(:disabled)):hover &::after {
+    outline: 2px solid var(--radio-button-background-hover);
+  }
+
+  /* Disabled */
+  &:disabled {
+    cursor: not-allowed;
+
+    &::before {
+      outline: 1px solid var(--radio-button-border-disabled);
+      outline-offset: -4px;
+    }
+
+    &::after {
+      background-color: var(--radio-button-background-disabled);
+      border-color: var(--radio-button-background-disabled);
+      outline: none;
+    }
+
+    &:checked {
+      &::before {
+        border: 1px solid var(--radio-button-border-disabled);
+        display: block;
+        inline-size: 16px;
+        block-size: 16px;
+        left: 3px;
+        top: 3px;
+        box-sizing: content-box;
+      }
+
+      &::after {
+        border: 4px solid var(--radio-button-background-disabled);
+        background-color: var(--radio-button-checked-disabled);
+        left: 4px;
+        top: 4px;
+      }
+    }
+  }
+}
+
+/* LABEL — text only */
+.tl-radio-button__label {
+  cursor: pointer;
+  padding-left: 4px;
+
+  .tl-radio-button:has(:disabled) & {
+    cursor: not-allowed;
+    color: var(--radio-button-label-disabled);
+  }
+}
+
+/* Focus animation */
+@keyframes rb-focus {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

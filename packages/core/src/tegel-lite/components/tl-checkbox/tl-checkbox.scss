@@ -8,8 +8,11 @@
 
   display: flex;
   align-items: center;
-  justify-content: center;
   color: var(--checkbox-label);
+
+  &:has(:disabled) {
+    cursor: not-allowed;
+  }
 }
 
 .tl-checkbox__input {
@@ -121,12 +124,12 @@
   padding-left: var(--tds-spacing-element-4);
   padding-top: var(--tds-spacing-element-4);
   padding-bottom: var(--tds-spacing-element-4);
-  cursor: pointer;
   display: flex;
   align-items: center;
   position: relative;
+  cursor: pointer;
 
-  &--disabled {
+  .tl-checkbox:has(:disabled) & {
     color: var(--checkbox-label-disabled);
     cursor: not-allowed;
   }

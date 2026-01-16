@@ -6,8 +6,17 @@ The Checkbox component allows users to select one or more options from a set.
 
 ```html
 <div class="tl-checkbox">
-  <input type="checkbox" class="tl-checkbox__input" id="checkbox-1" />
-  <label class="tl-checkbox__label" for="checkbox-1">Checkbox label</label>
+  <input type="checkbox" id="checkbox-1" />
+  <label for="checkbox-1">Checkbox label</label>
+</div>
+```
+
+### Disabled State
+
+```html
+<div class="tl-checkbox">
+  <input type="checkbox" id="checkbox-disabled" disabled />
+  <label for="checkbox-disabled">Disabled checkbox</label>
 </div>
 ```
 
@@ -22,43 +31,26 @@ The Checkbox component allows users to select one or more options from a set.
 
 ## Elements
 
-| Element                | HTML Element      | Description                    |
-| ---------------------- | ----------------- | ------------------------------ |
-| `.tl-checkbox`         | `<div>`           | Main checkbox container        |
-| `.tl-checkbox__input`  | `<input type="checkbox">` | Checkbox input element  |
-| `.tl-checkbox__label`  | `<label>`         | Label text for the checkbox    |
+| Element         | HTML Element              | Description                    |
+| --------------- | ------------------------- | ------------------------------ |
+| `.tl-checkbox`  | `<div>`                   | Main checkbox container        |
+| `input`         | `<input type="checkbox">` | Checkbox input element (no class needed) |
+| `label`         | `<label>`                 | Label text for the checkbox (no class needed) |
 
-## Modifiers
+## States
 
-### Checkbox Container Modifiers
+### Disabled State
 
-Apply these classes to the `.tl-checkbox` element.
+Use the native `disabled` attribute on the `<input>` element. The container automatically detects disabled state using `:has(:disabled)` and applies appropriate styling to both the checkbox and label.
 
-| Modifier                  | Description                        |
-| ------------------------- | ---------------------------------- |
-| `.tl-checkbox--disabled`  | Disabled state styling             |
+### Indeterminate State
 
-### Checkbox Input Modifiers
+The indeterminate state (mixed/partial) cannot be set via HTML attribute. It must be set via JavaScript:
 
-Apply these classes to the `.tl-checkbox__input` element.
-
-| Modifier                            | Description                                |
-| ----------------------------------- | ------------------------------------------ |
-| `.tl-checkbox__input--indeterminate`| Indeterminate state (mixed/partial state)  |
-
-### Checkbox Label Modifiers
-
-Apply these classes to the `.tl-checkbox__label` element.
-
-| Modifier                         | Description                     |
-| -------------------------------- | ------------------------------- |
-| `.tl-checkbox__label--disabled`  | Disabled label styling. Use together with `disabled` attribute on input |
-
-## JavaScript Required
-
-The Checkbox component requires JavaScript to handle:
-- Set indeterminate state (cannot be set via HTML attribute alone)
-- Toggle `.tl-checkbox__input--indeterminate` class for indeterminate state
+```javascript
+const checkbox = document.getElementById('checkbox-1');
+checkbox.indeterminate = true;
+```
 
 ----------------------------------------------
 

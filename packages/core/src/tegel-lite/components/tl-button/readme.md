@@ -79,14 +79,23 @@ Apply these classes to the `.tl-button` element when using icons.
 | `.tl-button--icon`      | Button with text and icon                |
 | `.tl-button--only-icon` | Button with only an icon (no text). Not available for `--xs` size |
 
-### Button State Modifiers
+### Button Layout Modifiers
 
-Apply these classes to the `.tl-button` element.
+| Modifier                 | Description                              |
+| ------------------------ | ---------------------------------------- |
+| `.tl-button--full-width` | Button spans full width of container     |
 
-| Modifier               | Description                     |
-| ---------------------- | ------------------------------- |
-| `.tl-button--disabled` | Disabled state. Use together with the `disabled` attribute |
-| `.tl-button--full-width` | Button spans full width of container |
+## States
+
+### Disabled State
+
+Use the native `disabled` attribute on the `<button>` element. The button automatically applies disabled styling and prevents interaction.
+
+```html
+<button class="tl-button tl-button--primary tl-button--md" disabled>
+  Disabled Button
+</button>
+```
 
 ----------------------------------------------
 
