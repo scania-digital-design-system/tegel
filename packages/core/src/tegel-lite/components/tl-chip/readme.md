@@ -6,7 +6,7 @@ The Chip component represents small blocks of information or actions, often used
 
 ```html
 <button class="tl-chip tl-chip--lg">
-  <span class="tl-chip__label">Chip label</span>
+  Chip label
 </button>
 ```
 
@@ -14,16 +14,12 @@ The Chip component represents small blocks of information or actions, often used
 
 ```html
 <button class="tl-chip tl-chip--lg tl-chip--prefix">
-  <span class="tl-chip__icon">
-    <span class="tl-icon tl-icon--placeholder tl-icon--16" aria-hidden="true"></span>
-  </span>
-  <span class="tl-chip__label">Chip label</span>
+  <span class="tl-icon tl-icon--placeholder tl-icon--16"></span>
+  Chip label
 </button>
 ```
 
-<br />
-
-### Required Stylesheets
+## Required Stylesheets
 
 ```
 @scania/tegel-lite/global.css
@@ -33,12 +29,10 @@ The Chip component represents small blocks of information or actions, often used
 
 ## Elements
 
-| Element           | HTML Element | Description                      |
-| ----------------- | ------------ | -------------------------------- |
-| `.tl-chip`        | `<button>`/`<a>` | Main chip element            |
-| `.tl-chip__label` | `<span>`     | Text label inside chip           |
-| `.tl-chip__icon`  | `<span>`     | Icon container (optional)        |
-| `.tl-icon`        | `<span>`     | Icon element (16px, optional)    |
+| Element           | HTML Element     | Description                      |
+| ----------------- | ---------------- | -------------------------------- |
+| `.tl-chip`        | `<button>`/`<a>` | Main chip element                |
+| `.tl-icon`        | `<span>`         | Icon element (16px, optional)    |
 
 ## Modifiers
 
@@ -48,8 +42,8 @@ Apply these classes to the `.tl-chip` element. A size modifier is required.
 
 | Modifier        | Description              |
 | --------------- | ------------------------ |
-| `.tl-chip--sm`  | Small chip (24px)        |
-| `.tl-chip--lg`  | Large chip (32px)        |
+| `.tl-chip--sm`  | Small chip               |
+| `.tl-chip--lg`  | Large chip               |
 
 ### Chip State Modifiers
 
@@ -58,7 +52,8 @@ Apply these classes to the `.tl-chip` element.
 | Modifier              | Description                    |
 | --------------------- | ------------------------------ |
 | `.tl-chip--selected`  | Selected/active state          |
-| `.tl-chip--disabled`  | Disabled state. Prevents interaction |
+
+**Note:** Use the native `disabled` attribute on the `<button>` element for disabled state.
 
 ### Chip Icon Modifiers
 
@@ -76,7 +71,3 @@ Apply these classes to the `.tl-chip` element when using icons.
 The Chip component requires JavaScript to handle:
 - Toggle `.tl-chip--selected` class when clicked
 - Optional: Implement single-selection behavior (deselect other chips in group when one is selected)
-
-----------------------------------------------
-
-*Part of Tegel Lite (CSS) Design System*

@@ -6,35 +6,19 @@ The DateTime component provides a form input for date and time selection with su
 
 ```html
 <div class="tl-datetime tl-datetime--lg">
-  <label class="tl-datetime__label" for="datetime-input">
-    Select date
-  </label>
+  <label class="tl-datetime__label">Select date</label>
   <div class="tl-datetime__wrapper">
-    <input 
-      class="tl-datetime__input" 
-      type="date" 
-      id="datetime-input"
-      placeholder="YYYY-MM-DD"
-    />
-    <span class="tl-datetime__icon tl-datetime__icon--datetime">
-      <span class="tl-icon tl-icon--calendar tl-icon--20" aria-hidden="true"></span>
-    </span>
+    <input class="tl-datetime__input" type="date" />
   </div>
-  <div class="tl-datetime__helper">
-    <span class="tl-icon tl-icon--info tl-icon--16" aria-hidden="true"></span>
-    Helper text
-  </div>
+  <div class="tl-datetime__helper">Helper text</div>
 </div>
 ```
 
-<br />
-
-### Required Stylesheets
+## Required Stylesheets
 
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-datetime.css
-@scania/tegel-lite/tl-icon.css
 ```
 
 ## Elements
@@ -43,14 +27,10 @@ The DateTime component provides a form input for date and time selection with su
 | ---------------------------- | ------------ | ------------------------------------- |
 | `.tl-datetime`               | `<div>`      | Main container (min-width 208px unless `--no-min-width`) |
 | `.tl-datetime__label`        | `<label>`    | Label for the input                   |
-| `.tl-datetime__wrapper`      | `<div>`      | Wrapper for input and icon            |
-| `.tl-datetime__input`        | `<input>`    | Input element (date/datetime/time)    |
-| `.tl-datetime__icon`         | `<span>`     | Icon container                        |
-| `.tl-datetime__icon--datetime` | `<span>`   | Calendar icon container (for date/datetime) |
-| `.tl-datetime__icon--time`   | `<span>`     | Clock icon container (for time)       |
+| `.tl-datetime__wrapper`      | `<div>`      | Wrapper for input (icon generated via CSS) |
+| `.tl-datetime__input`        | `<input>`    | Input element (date/datetime-local/time) |
 | `.tl-datetime__label-inside` | `<label>`    | Label inside the input wrapper        |
 | `.tl-datetime__helper`       | `<div>`      | Helper text container below input     |
-| `.tl-icon`                   | `<span>`     | Icon element (optional)               |
 
 ## Modifiers
 
@@ -69,18 +49,19 @@ Apply these classes to the `.tl-datetime` element.
 
 | Modifier              | Description                   |
 | --------------------- | ----------------------------- |
-| `.tl-datetime--sm`    | Small datetime (40px height)  |
-| `.tl-datetime--md`    | Medium datetime (48px height) |
-| `.tl-datetime--lg`    | Large datetime (56px height, default) |
+| `.tl-datetime--sm`    | Small datetime                |
+| `.tl-datetime--md`    | Medium datetime               |
+| `.tl-datetime--lg`    | Large datetime                |
 
 ### DateTime State Modifiers
 
 Apply these classes to the `.tl-datetime` element.
 
-| Modifier                 | Description                           |
-| ------------------------ | ------------------------------------- |
-| `.tl-datetime--disabled` | Disabled state. Use together with `disabled` attribute on input |
-| `.tl-datetime--error`    | Error state with error styling        |
+| Modifier              | Description                    |
+| --------------------- | ------------------------------ |
+| `.tl-datetime--error` | Error state with error styling |
+
+**Note:** Use the native `disabled` attribute on the `<input>` element for disabled state.
 
 ### DateTime Layout Modifiers
 
@@ -89,9 +70,6 @@ Apply these classes to the `.tl-datetime` element.
 | Modifier                      | Description                          |
 | ----------------------------- | ------------------------------------ |
 | `.tl-datetime--label-inside`  | Positions label inside input wrapper (not available for sm size) |
-| `.tl-datetime--label-outside` | Positions label outside input wrapper (default) |
 | `.tl-datetime--no-min-width`  | Removes minimum width constraint (208px) |
 
-----------------------------------------------
-
-*Part of Tegel Lite (CSS) Design System*
+**Note:** Label is positioned outside the input wrapper by default. Unlike text-field and dropdown components, datetime does not have a `--label-outside` CSS class since this is the default behavior.

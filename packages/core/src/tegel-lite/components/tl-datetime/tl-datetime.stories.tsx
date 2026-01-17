@@ -110,12 +110,6 @@ const Template = ({
     classesArray.push('tl-datetime--label-inside');
   } else if (labelPosition === 'Outside') {
     classesArray.push('tl-datetime--label-outside');
-  } else {
-    classesArray.push('tl-datetime--label-none');
-  }
-
-  if (disabled) {
-    classesArray.push('tl-datetime--disabled');
   }
 
   const classes = classesArray.join(' ');
@@ -132,43 +126,28 @@ const Template = ({
 
   let helperHtml = '';
   if (helper) {
-    helperHtml = `<div class="tl-datetime__helper"><span class="tl-icon tl-icon--error tl-icon--16"></span>${helper}</div>`;
+    helperHtml = `<div class="tl-datetime__helper">${helper}</div>`;
   }
 
   const disabledAttr = disabled ? 'disabled' : '';
-
-  // Show calendar icon for date-related types, clock icon for time
-  const iconHtml =
-    type === 'Time'
-      ? '<span class="tl-datetime__icon tl-datetime__icon--time"><span class="tl-icon tl-icon--clock tl-icon--20"></span></span>'
-      : '<span class="tl-datetime__icon tl-datetime__icon--datetime"><span class="tl-icon tl-icon--calendar tl-icon--20"></span></span>';
 
   return formatHtmlPreview(`
     <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-datetime.css"
-      "@scania/tegel-lite/tl-icon.css"
     -->
 
-
-  <style>
-    .demo-wrapper { width: calc(100vw - 40px); max-width: 400px; }
-  </style>
-
-  <div class="demo-wrapper">
-    <div class="${classes}">
-      ${labelOutside}
-      <div class="tl-datetime__wrapper">
-        <input
-          class="tl-datetime__input"
-          type="${typeLookup[type]}"
-          ${disabledAttr}
-        />
-        ${iconHtml}
-        ${labelInside}
-      </div>
-      ${helperHtml}
+  <div class="${classes}" style="width: calc(100vw - 40px); max-width: 400px;">
+    ${labelOutside}
+    <div class="tl-datetime__wrapper">
+      <input
+        class="tl-datetime__input"
+        type="${typeLookup[type]}"
+        ${disabledAttr}
+      />
+      ${labelInside}
     </div>
+    ${helperHtml}
   </div>
   `);
 };
