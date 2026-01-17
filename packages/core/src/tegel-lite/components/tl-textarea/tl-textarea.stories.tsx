@@ -27,7 +27,7 @@ export default {
     labelPosition: {
       name: 'Label Position',
       control: { type: 'radio' },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'No label'],
       description: 'Where to position the label',
     },
     placeholder: {
@@ -86,7 +86,7 @@ export default {
     state: 'Default',
 
     label: 'Label',
-    labelPosition: 'No label',
+    labelPosition: 'Outside',
     placeholder: 'Placeholder',
     helper: '',
 
@@ -121,7 +121,7 @@ const Template = ({
     modeVariant !== 'Inherit from parent' && `tl-textarea--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-textarea--${state.toLowerCase()}`,
     labelPosition === 'Inside' && 'tl-textarea--label-inside',
-    labelPosition === 'Outside' && 'tl-textarea--label-outside',
+    // Note: label-outside is now the default behavior, no class needed
     disabled && 'tl-textarea--disabled',
     readonly && 'tl-textarea--readonly',
     readonly && hideReadonlyIcon && 'tl-textarea--hide-readonly-icon',

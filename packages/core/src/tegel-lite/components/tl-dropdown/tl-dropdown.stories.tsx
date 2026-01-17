@@ -266,9 +266,8 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
 
   if (isInside) {
     classesList.push('tl-dropdown--label-inside');
-  } else if (showLabel) {
-    classesList.push('tl-dropdown--label-outside');
   }
+  // Note: label-outside is now the default behavior, no class needed
 
   if (error) {
     classesList.push('tl-dropdown--error');
@@ -293,7 +292,7 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
 
   return `
 ${stylesheetsComment}
-<div class="${classes}" style="width: 208px;">
+<div class="${classes}">
   ${fieldMarkup}
   ${showHelper && helper ? getHelper(helper) : ''}
 </div>
