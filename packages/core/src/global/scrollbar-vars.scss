@@ -10,3 +10,15 @@
   --tds-scrollbar-thumb-color: var(--tds-grey-500);
   --tds-scrollbar-hover-thumb-color: var(--tds-grey-400);
 }
+
+.traton {
+  .tds-mode-light {
+    --tds-scrollbar-track-color: transparent;
+    --tds-scrollbar-thumb-color: #1a1a1926;
+  }
+
+  .tds-mode-dark {
+    --tds-scrollbar-track-color: transparent;
+    --tds-scrollbar-thumb-color: #d9edf054;
+  }
+}
