@@ -26,6 +26,45 @@ testConfigurations.basic.forEach((config) => {
       await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
     });
 
+    test('Renders pressed state correctly(unchecked)', async ({ page }) => {
+      const toggle = page.locator('tds-toggle input');
+
+      // Ensure initial state
+      let isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
+      expect(isChecked).toBe(false);
+
+      // Simulate press (mouse down) to trigger pressed/active state
+      const toggleBox = await toggle.boundingBox();
+      if (!toggleBox) {
+        throw new Error('Toggle bounding box not found');
+      }
+
+      await page.mouse.move(toggleBox.x + toggleBox.width / 2, toggleBox.y + toggleBox.height / 2);
+      await page.mouse.down();
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
+    test('Renders pressed state correctly(checked)', async ({ page }) => {
+      const toggle = page.locator('tds-toggle input');
+
+      // Click the toggle input to check it
+      await toggle.click();
+      let isChecked = await toggle.evaluate((element: HTMLInputElement) => element.checked);
+      expect(isChecked).toBe(true);
+
+      // Simulate press (mouse down) to trigger pressed/active state
+      const toggleBox = await toggle.boundingBox();
+      if (!toggleBox) {
+        throw new Error('Toggle bounding box not found');
+      }
+
+      await page.mouse.move(toggleBox.x + toggleBox.width / 2, toggleBox.y + toggleBox.height / 2);
+      await page.mouse.down();
+
+      await expect(page).toHaveScreenshot({ maxDiffPixels: 0 });
+    });
+
     test('Click on toggle -> should become checked', async ({ page }) => {
       const toggle = page.locator('tds-toggle input');
 
