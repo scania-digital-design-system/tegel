@@ -12,9 +12,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     variant: {
@@ -82,7 +82,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     variant: 'Primary',
     size: 'Medium',
     fullWidth: false,
@@ -119,12 +119,7 @@ const Template = ({ modeVariant, variant, size, fullWidth, disabled, onlyIcon, i
       : '';
   const buttonText = !onlyIcon || isXs ? 'Button' : '';
 
-  const modeClass =
-    modeVariant === 'Primary'
-      ? 'tl-mode-variant-primary'
-      : modeVariant === 'Secondary'
-      ? 'tl-mode-variant-secondary'
-      : '';
+  const modeClass = modeVariant === 'Primary' ? 'tl-button--primary' : 'tl-button--secondary';
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
