@@ -34,7 +34,7 @@
 }
 
 .tl-footer__main-bottom {
-  padding: 40px 0 32px;
+  padding: 40px 0;
   display: flex;
   border-top: 1px solid var(--footer-main-divider);
 
@@ -141,7 +141,7 @@
 
   .tl-footer__main-bottom {
     align-items: flex-start;
-    padding: 40px 0 32px;
+    padding: 24px 0 40px;
 
     .tl-footer__copyright br {
       display: block;

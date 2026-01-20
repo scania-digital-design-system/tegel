@@ -59,7 +59,7 @@ export default {
       control: {
         type: 'number',
         min: 1,
-        max: 6,
+        max: 8,
       },
     },
   },
