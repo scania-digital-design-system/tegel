@@ -7,8 +7,8 @@ export default {
     modeVariant: {
       name: 'Mode variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
     },
     showLeftButton: {
       name: 'Show left scroll button',
@@ -34,7 +34,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     showLeftButton: false,
     showRightButton: false,
     selectedIndex: 0,
@@ -43,8 +43,7 @@ export default {
 };
 
 const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tds-mode-variant-${modeVariant.toLowerCase()}` : '';
+  const modeClass = `tds-mode-variant-${modeVariant.toLowerCase()}`;
 
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 
