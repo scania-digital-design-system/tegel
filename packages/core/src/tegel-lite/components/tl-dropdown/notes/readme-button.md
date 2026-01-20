@@ -74,8 +74,8 @@ Apply these classes to the `.tl-dropdown` container element.
 | `.tl-dropdown--disabled`       | Disabled state styling            |
 | `.tl-dropdown--error`          | Error state with error styling    |
 | `.tl-dropdown--label-inside`   | Positions label inside dropdown   |
-| `.tl-dropdown--label-outside`  | Positions label outside dropdown  |
 | `.tl-dropdown--dropup`         | Shows options above the button    |
+
 
 ### Option Modifiers
 

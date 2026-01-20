@@ -70,7 +70,6 @@ Apply these classes to the `.tl-textarea` element.
 | Modifier                             | Description                          |
 | ------------------------------------ | ------------------------------------ |
 | `.tl-textarea--label-inside`         | Positions label inside textarea      |
-| `.tl-textarea--label-outside`        | Positions label outside (default)    |
 | `.tl-textarea--no-min-width`         | Removes minimum width constraint     |
 | `.tl-textarea--hide-readonly-icon`   | Hides readonly edit icon             |
 
