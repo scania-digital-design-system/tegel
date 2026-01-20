@@ -18,13 +18,6 @@ export default {
         defaultValue: { summary: 'Primary' },
       },
     },
-    mobileView: {
-      name: 'Mobile view',
-      description: 'Indicates if the footer group is in mobile view.',
-      control: {
-        type: 'boolean',
-      },
-    },
     isFooterGroupOpen: {
       name: 'Expanded mobile footer group',
       description: 'Indicates if the mobile footer group is expanded.',
@@ -72,7 +65,6 @@ export default {
   },
   args: {
     modeVariant: 'Primary',
-    mobileView: true,
     isFooterGroupOpen: false,
     includeFooterTop: true,
     includeFooterStart: true,
