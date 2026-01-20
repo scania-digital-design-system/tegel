@@ -81,9 +81,9 @@ Apply these classes to the `.tl-text-field` element.
 | Modifier                            | Description                          |
 | ----------------------------------- | ------------------------------------ |
 | `.tl-text-field--label-inside`      | Positions label inside input         |
-| `.tl-text-field--label-outside`     | Positions label outside (default)    |
 | `.tl-text-field--no-min-width`      | Removes minimum width constraint     |
 | `.tl-text-field--hide-readonly-icon`| Hides readonly edit icon             |
+
 
 ----------------------------------------------
 
