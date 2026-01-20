@@ -93,7 +93,7 @@ const Template = ({
         `<div class="tl-footer__group ${
           isFooterGroupOpen ? 'tl-footer__group--expanded' : ''
         }" role="list">
-                <h6 class="tl-footer__top-title" tabindex="0">Title ${i + 1}</h6>
+                <button class="tl-footer__top-title" type="button">Title ${i + 1}</button>
                 <a href="#" class="tl-footer__link">Link text</a>
                 <a href="#" class="tl-footer__link">Link text</a>
                 <a href="#" class="tl-footer__link">Link text</a>

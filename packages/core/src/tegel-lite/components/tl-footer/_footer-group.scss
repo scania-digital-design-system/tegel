@@ -10,10 +10,23 @@
 }
 
 .tl-footer__top-title {
+  // Reset button styles
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  width: auto;
+
   @include headline-07;
 
   color: var(--footer-top-links-desktop);
-  margin: 0;
+  cursor: default;
+
+  // Not focusable on desktop
+  &:focus {
+    outline: none;
+  }
 }
 
 .tl-footer__link {
@@ -62,6 +75,13 @@
     position: relative;
     border-bottom: 1px solid var(--footer-top-divider);
     cursor: pointer;
+
+    // Reset inherited desktop styles for mobile
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    text-align: left;
 
     &::after {
       content: '';
