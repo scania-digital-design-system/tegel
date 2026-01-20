@@ -33,7 +33,7 @@ export default {
     labelPosition: {
       name: 'Label position',
       control: { type: 'radio' },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'No label'],
     },
     placeholderText: {
       name: 'Placeholder',
@@ -96,7 +96,7 @@ export default {
     type: 'Text',
     size: 'Large',
     label: 'Label',
-    labelPosition: 'No label',
+    labelPosition: 'Outside',
     placeholderText: 'Placeholder',
     helper: 'Helper text',
     prefix: false,
@@ -140,7 +140,7 @@ const Template = ({
     size === 'Medium' && 'tl-text-field--md',
     size === 'Small' && 'tl-text-field--sm',
     labelPosition === 'Inside' && 'tl-text-field--label-inside',
-    labelPosition === 'Outside' && 'tl-text-field--label-outside',
+    // Note: label-outside is now the default behavior, no class needed
     noMinWidth && 'tl-text-field--no-min-width',
     disabled && 'tl-text-field--disabled',
     readonly && 'tl-text-field--readonly',
