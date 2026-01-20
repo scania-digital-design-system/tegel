@@ -199,6 +199,7 @@ export function getFilterMarkup(
 // Helper functions
 // ============================================================================
 type TemplateProps = {
+  modeVariant: 'Primary' | 'Secondary';
   direction: 'Down' | 'Up';
   select: boolean;
   filter: boolean;
@@ -263,6 +264,8 @@ function getDropdownMarkup(props: TemplateProps, optionOrder: readonly string[])
   }
 
   const classesList: string[] = ['tl-dropdown', `tl-dropdown--${sizeClass}`];
+
+  classesList.push(`tl-dropdown--${props.modeVariant.toLowerCase()}`);
 
   if (isInside) {
     classesList.push('tl-dropdown--label-inside');
@@ -354,6 +357,15 @@ export default {
   includeStories: ['Default'],
   parameters: { layout: 'centered' },
   argTypes: {
+    modeVariant: {
+      name: 'Mode variant',
+      description: 'Sets the visual mode variant of the dropdown.',
+      control: { type: 'radio' },
+      options: ['Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Primary' },
+      },
+    },
     select: { name: 'Select', control: { type: 'boolean' } },
     filter: {
       name: 'Filter',
@@ -394,6 +406,7 @@ export default {
     },
   },
   args: {
+    modeVariant: 'Primary',
     select: false,
     filter: false,
     multiselect: false,
