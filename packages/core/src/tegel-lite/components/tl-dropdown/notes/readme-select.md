@@ -36,16 +36,16 @@ The Native Select variant uses the standard `<select>` element for simple dropdo
 
 Apply these classes to the `.tl-dropdown` container element.
 
-| Modifier                       | Description                       |
-| ------------------------------ | --------------------------------- |
-| `.tl-dropdown--sm`             | Small dropdown                    |
-| `.tl-dropdown--md`             | Medium dropdown                   |
-| `.tl-dropdown--lg`             | Large dropdown                    |
-| `.tl-dropdown--primary`        | Primary mode variant              |
-| `.tl-dropdown--secondary`      | Secondary mode variant            |
-| `.tl-dropdown--error`          | Error state with error styling    |
-| `.tl-dropdown--label-inside`   | Positions label inside dropdown   |
-| `.tl-dropdown--label-outside`  | Positions label outside dropdown  |
+| Modifier                     | Description                     |
+| ---------------------------- | ------------------------------- |
+| `.tl-dropdown--sm`           | Small dropdown                  |
+| `.tl-dropdown--md`           | Medium dropdown                 |
+| `.tl-dropdown--lg`           | Large dropdown                  |
+| `.tl-dropdown--primary`      | Primary mode variant            |
+| `.tl-dropdown--secondary`    | Secondary mode variant          |
+| `.tl-dropdown--error`        | Error state with error styling  |
+| `.tl-dropdown--label-inside` | Positions label inside dropdown |
+
 
 ## JavaScript
 
