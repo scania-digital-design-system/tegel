@@ -106,7 +106,7 @@
     &:focus-visible {
       outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
       box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-      outline-offset: 1px;
+      outline-offset: -2px;
       z-index: 1;
     }
   }
