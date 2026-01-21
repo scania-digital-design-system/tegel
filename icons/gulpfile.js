@@ -184,11 +184,13 @@ async function generateIcons() {
       ` * Do not edit directly, this file was auto-generated.`,
       ` */`,
       '',
+      `$local-assets: null !default;`,
+      '',
       ':root {',
       ...iconsNamesArray.map((icon) => {
         const safeName = icon.replace(/\s+/g, '-');
         const safeFile = icon.replace(/\s+/g, '%20');
-        return `  --${brand}-icon-${safeName}-svg: url(./assets/icons/${brand}/${safeFile}.svg);`;
+        return `  --${brand}-icon-${safeName}-svg: url(#{$local-assets}/icons/${brand}/${safeFile}.svg);`;
       }),
       '}',
       '',
@@ -199,6 +201,8 @@ async function generateIcons() {
 
     // Generate agnostic SCSS file (aliasing root/brand vars)
     const isDefaultBrand = brand === 'scania';
+    // Scania (default): :root, .scania (available globally and scoped)
+    // Traton (non-default): .traton (only scoped, falls back to :root for missing icons)
     const selector = isDefaultBrand ? ':root,\n.' + brand : '.' + brand;
 
     const agnosticScss = [

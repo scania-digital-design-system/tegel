@@ -2,6 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
+$local-assets: null !default;
+
 :root {
   --traton-icon-arrow_diagonal-svg: url(#{$local-assets}/icons/traton/arrow_diagonal.svg);
   --traton-icon-arrow_down-svg: url(#{$local-assets}/icons/traton/arrow_down.svg);
@@ -16,6 +18,7 @@
   --traton-icon-chevron_right-svg: url(#{$local-assets}/icons/traton/chevron_right.svg);
   --traton-icon-chevron_up-svg: url(#{$local-assets}/icons/traton/chevron_up.svg);
   --traton-icon-cross-svg: url(#{$local-assets}/icons/traton/cross.svg);
+  --traton-icon-edit_inactive-svg: url(#{$local-assets}/icons/traton/edit_inactive.svg);
   --traton-icon-edit-svg: url(#{$local-assets}/icons/traton/edit.svg);
   --traton-icon-error-svg: url(#{$local-assets}/icons/traton/error.svg);
   --traton-icon-info-svg: url(#{$local-assets}/icons/traton/info.svg);
@@ -26,6 +29,8 @@
   --traton-icon-refresh-svg: url(#{$local-assets}/icons/traton/refresh.svg);
   --traton-icon-search-svg: url(#{$local-assets}/icons/traton/search.svg);
   --traton-icon-share-svg: url(#{$local-assets}/icons/traton/share.svg);
+  --traton-icon-skip_backwards-svg: url(#{$local-assets}/icons/traton/skip_backwards.svg);
+  --traton-icon-skip_forward-svg: url(#{$local-assets}/icons/traton/skip_forward.svg);
   --traton-icon-sorting-svg: url(#{$local-assets}/icons/traton/sorting.svg);
   --traton-icon-star-svg: url(#{$local-assets}/icons/traton/star.svg);
   --traton-icon-tick-svg: url(#{$local-assets}/icons/traton/tick.svg);

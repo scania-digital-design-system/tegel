@@ -2,6 +2,8 @@
  * Do not edit directly, this file was auto-generated.
  */
 
+$local-assets: null !default;
+
 :root {
   --scania-icon-24v_battery_inactive-svg: url(#{$local-assets}/icons/scania/24v_battery_inactive.svg);
   --scania-icon-24v_battery-svg: url(#{$local-assets}/icons/scania/24v_battery.svg);
@@ -43,6 +45,7 @@
   --scania-icon-chevron_up-svg: url(#{$local-assets}/icons/scania/chevron_up.svg);
   --scania-icon-clock_inactive-svg: url(#{$local-assets}/icons/scania/clock_inactive.svg);
   --scania-icon-clock-svg: url(#{$local-assets}/icons/scania/clock.svg);
+  --scania-icon-configurator-svg: url(#{$local-assets}/icons/scania/configurator.svg);
   --scania-icon-contact_inactive-svg: url(#{$local-assets}/icons/scania/contact_inactive.svg);
   --scania-icon-contact-svg: url(#{$local-assets}/icons/scania/contact.svg);
   --scania-icon-cookie_inactive-svg: url(#{$local-assets}/icons/scania/cookie_inactive.svg);
@@ -74,6 +77,9 @@
   --scania-icon-dollar-svg: url(#{$local-assets}/icons/scania/dollar.svg);
   --scania-icon-doner-svg: url(#{$local-assets}/icons/scania/doner.svg);
   --scania-icon-double_kebab-svg: url(#{$local-assets}/icons/scania/double_kebab.svg);
+  --scania-icon-download-svg: url(#{$local-assets}/icons/scania/download.svg);
+  --scania-icon-driving_licence_inactive-svg: url(#{$local-assets}/icons/scania/driving_licence_inactive.svg);
+  --scania-icon-driving_licence-svg: url(#{$local-assets}/icons/scania/driving_licence.svg);
   --scania-icon-drop_inactive-svg: url(#{$local-assets}/icons/scania/drop_inactive.svg);
   --scania-icon-drop-svg: url(#{$local-assets}/icons/scania/drop.svg);
   --scania-icon-edit_inactive-svg: url(#{$local-assets}/icons/scania/edit_inactive.svg);
