@@ -45,7 +45,8 @@
     z-index: 1;
   }
 
-  &--label-outside#{&}--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
+  // Default behavior (label outside) - readonly icon position adjustment
+  &:not(&--label-inside)#{&}--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
     top: calc(50% + 24px);
   }
 
@@ -174,13 +175,15 @@
     color: transparent !important;
   }
 
-  .tl-text-field--label-outside &:disabled::placeholder {
+  // Default behavior (label outside) - disabled placeholder color
+  .tl-text-field:not(.tl-text-field--label-inside) &:disabled::placeholder {
     color: var(--text-field-placeholder-disabled) !important;
   }
 }
 
 .tl-text-field__label {
-  .tl-text-field--label-outside & {
+  // Default behavior (label outside)
+  .tl-text-field:not(.tl-text-field--label-inside) & {
     @include detail-05;
 
     display: block;
@@ -276,7 +279,8 @@
     color: var(--text-field-label-disabled);
   }
 
-  .tl-text-field--label-outside.tl-text-field--disabled & {
+  // Default behavior (label outside) - disabled state
+  .tl-text-field:not(.tl-text-field--label-inside).tl-text-field--disabled & {
     color: var(--text-field-label-disabled);
   }
 }
@@ -363,8 +367,9 @@
     z-index: 1;
   }
 
-  .tl-text-field--label-outside &--text,
-  .tl-text-field--label-outside &--icon {
+  // Default behavior (label outside) - prefix position adjustment
+  .tl-text-field:not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:not(.tl-text-field--label-inside) &--icon {
     transform: translateY(calc(-50% + 24px));
   }
 
@@ -398,8 +403,9 @@
     z-index: 1;
   }
 
-  .tl-text-field--label-outside &--text,
-  .tl-text-field--label-outside &--icon {
+  // Default behavior (label outside) - suffix position adjustment
+  .tl-text-field:not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:not(.tl-text-field--label-inside) &--icon {
     transform: translateY(calc(-50% + 24px));
   }
 
@@ -425,8 +431,9 @@
   padding-right: 0;
   z-index: 1;
 
-  .tl-text-field--label-outside &--text,
-  .tl-text-field--label-outside &--icon {
+  // Default behavior (label outside) - suffix position adjustment
+  .tl-text-field:not(.tl-text-field--label-inside) &--text,
+  .tl-text-field:not(.tl-text-field--label-inside) &--icon {
     transform: translateY(calc(-50% + 24px));
   }
 
