@@ -1,0 +1,57 @@
+//Scrollbar mixin for tegel lite
+
+@mixin tl-scrollbar($orientation: vertical) {
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      border: var(--tl-scrollbar-thumb-border-hover-width) solid transparent;
+      background-clip: padding-box;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    @if $orientation == vertical {
+      width: var(--tl-scrollbar-width);
+    } @else {
+      height: var(--tl-scrollbar-height);
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--tl-scrollbar-track-color);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 40px;
+    background: var(--tl-scrollbar-thumb-color);
+    border: var(--tl-scrollbar-thumb-border-width) solid transparent;
+    background-clip: padding-box;
+  }
+
+  &::-webkit-scrollbar-button {
+    height: 0;
+    width: 0;
+  }
+
+  // Standard version, not webkit (Firefox only for now)
+  @supports not selector(::-webkit-scrollbar) {
+    scrollbar-color: var(--tl-scrollbar-thumb-color) var(--tl-scrollbar-track-color);
+
+    // Yes, there is no way to set a specific width
+    scrollbar-width: var(--tl-scrollbar-width-standard);
+  }
+}
+
+:host,
+:root {
+  // Firefox variables
+  --tl-scrollbar-width-standard: thin; //  auto | thin | none
+  // Webkit values
+  --tl-scrollbar-width: 10px;
+  --tl-scrollbar-height: 10px;
+  --tl-scrollbar-thumb-border-width: 3px; // => thumb thickness: 4px(10-2*3)
+  --tl-scrollbar-thumb-border-hover-width: 2px; // => thumb thickness: 6px(10-2*2)
+}
+
+body {
+  scrollbar-width: thin;
+}

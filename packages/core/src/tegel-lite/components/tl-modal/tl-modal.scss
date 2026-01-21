@@ -1,7 +1,7 @@
 @use '../../../mixins/z-index' as *;
 @use '../../../mixins/box-sizing' as *;
 @use '../../../mixins/focus-state' as *;
-@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/tl-scrollbar' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use './tl-modal-vars' as *;
 
@@ -55,7 +55,7 @@ $modals: (
 /* MIXINS */
 
 @mixin modal-scrollbar {
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 }
 
 .tl-modal {
