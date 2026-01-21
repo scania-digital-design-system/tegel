@@ -1,913 +1,2338 @@
 {
-    "color": {
-      "background": {
-        "base": {
+  "color": {
+    "foreground": {
+      "border": {
+        "strong": {
           "$type": "color",
-          "$value": "{scania.color.grey.950}"
+          "$value": "{scania.color.transparent.inverse.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/50"
+            }
+          }
         },
-        "accent": {
-          "primary": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.400}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.grey.850}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{scania.color.blue.500}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.blue.300}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.600}"
-            },
-            "inverse": {
-              "default": {
-                "$type": "color",
-                "$value": "{scania.color.blue.600}"
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{scania.color.blue.500}"
-              },
-              "pressed": {
-                "$type": "color",
-                "$value": "{scania.color.blue.700}"
-              },
-              "focus": {
-                "$type": "color",
-                "$value": "{scania.color.blue.400}"
-              },
-              "disabled": {
-                "$type": "color",
-                "$value": "{scania.color.grey.50}"
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/200"
+            }
+          }
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/400"
+            }
+          }
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/500"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/600"
+            }
+          }
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/950"
               }
             }
           },
-          "danger": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.red.400}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{scania.color.red.600}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.red.700}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.red.400}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.grey.900}"
+          "defined": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.650}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/650"
+              }
+            }
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/500"
+              }
+            }
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.350}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/350"
+              }
+            }
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.250}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/250"
+              }
+            }
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.200}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/200"
+              }
+            }
+          }
+        },
+        "accent": {
+          "link": {
+            "$type": "color",
+            "$value": "{scania.color.blue.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/300"
+              }
+            }
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{scania.color.blue.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/300"
+              }
+            }
+          }
+        }
+      },
+      "icon": {
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/50"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/200"
+            }
+          }
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/400"
+            }
+          }
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/500"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/600"
+            }
+          }
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/950"
+              }
+            }
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.650}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/650"
+              }
+            }
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/500"
+              }
+            }
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.350}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/350"
+              }
+            }
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.250}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/250"
+              }
+            }
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.200}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/200"
+              }
+            }
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{scania.color.blue.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/300"
+              }
+            }
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{scania.color.blue.100}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/100"
+              }
+            }
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/grey/00"
+              }
+            }
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/grey/00"
+              }
+            }
+          }
+        }
+      },
+      "text": {
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/50"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/200"
+            }
+          }
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/400"
+            }
+          }
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{scania.color.transparent.inverse.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/inverse/500"
+            }
+          }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{scania.color.grey.00}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/00"
+            }
+          }
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/950"
+              }
+            }
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.650}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/650"
+              }
+            }
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/500"
+              }
+            }
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.350}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/350"
+              }
+            }
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.250}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/250"
+              }
+            }
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{scania.color.blue.800}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/800"
+              }
+            }
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{scania.color.blue.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/300"
+              }
+            }
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{scania.color.blue.100}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/100"
+              }
+            }
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/grey/00"
+              }
+            }
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{scania.color.grey.00}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/grey/00"
+              }
+            }
+          }
+        }
+      }
+    },
+    "background": {
+      "base": {
+        "$type": "color",
+        "$value": "{scania.color.grey.950}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/color/grey/950"
+          }
+        }
+      },
+      "layer-01": {
+        "$type": "color",
+        "$value": "{scania.color.grey.900}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/color/grey/900"
+          }
+        }
+      },
+      "layer-02": {
+        "$type": "color",
+        "$value": "{scania.color.grey.850}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/color/grey/850"
+          }
+        }
+      },
+      "layer-03": {
+        "$type": "color",
+        "$value": "{scania.color.grey.800}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/color/grey/800"
+          }
+        }
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "{scania.color.transparent.scrim.dark}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/color/transparent/scrim/dark"
+          }
+        }
+      },
+      "top": {
+        "$type": "color",
+        "$value": "{scania.color.grey.900}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/color/grey/900"
+          }
+        }
+      },
+      "inverse": {
+        "base": {
+          "$type": "color",
+          "$value": "{scania.color.grey.00}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/00"
             }
           }
         },
         "layer-01": {
           "$type": "color",
-          "$value": "{scania.color.grey.900}"
+          "$value": "{scania.color.grey.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/50"
+            }
+          }
         },
         "layer-02": {
           "$type": "color",
-          "$value": "{scania.color.grey.850}"
+          "$value": "{scania.color.grey.00}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/00"
+            }
+          }
         },
         "layer-03": {
           "$type": "color",
-          "$value": "{scania.color.grey.800}"
+          "$value": "{scania.color.grey.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/50"
+            }
+          }
         },
         "overlay": {
           "$type": "color",
-          "$value": "{scania.color.transparent.scrim.dark}"
-        },
-        "inverse": {
-          "base": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "layer-01": {
-            "$type": "color",
-            "$value": "{scania.color.grey.50}"
-          },
-          "layer-02": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "layer-03": {
-            "$type": "color",
-            "$value": "{scania.color.grey.50}"
-          },
-          "top": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "overlay": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.scrim.dark}"
-          }
-        },
-        "surface": {
-          "100": {
-            "$type": "color",
-            "$value": "{scania.color.grey.850}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{scania.color.grey.800}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{scania.color.grey.750}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{scania.color.grey.700}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{scania.color.grey.600}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{scania.color.grey.350}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{scania.color.grey.250}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{scania.color.grey.200}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{scania.color.grey.150}"
-          },
-          "1000": {
-            "$type": "color",
-            "$value": "{scania.color.grey.100}"
+          "$value": "{scania.color.transparent.scrim.dark}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/transparent/scrim/dark"
+            }
           }
         },
         "top": {
           "$type": "color",
-          "$value": "{scania.color.grey.900}"
+          "$value": "{scania.color.grey.00}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/00"
+            }
+          }
         }
       },
-      "system": {
-        "warning": {
+      "accent": {
+        "primary": {
           "default": {
             "$type": "color",
-            "$value": "{traton.color.yellow.300}"
+            "$value": "{scania.color.blue.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/400"
+              }
+            }
           },
-          "discrete": {
+          "hover": {
             "$type": "color",
-            "$value": "{scania.color.yellow.800}"
+            "$value": "{scania.color.blue.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/500"
+              }
+            }
           },
-          "strong": {
+          "pressed": {
             "$type": "color",
-            "$value": "{traton.color.yellow.50}"
+            "$value": "{scania.color.blue.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/300"
+              }
+            }
           },
-          "defined": {
+          "focus": {
             "$type": "color",
-            "$value": "{scania.color.yellow.100}"
+            "$value": "{scania.color.blue.600}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/600"
+              }
+            }
           },
-          "subtle": {
+          "disabled": {
             "$type": "color",
-            "$value": "{scania.color.yellow.400}"
-          }
-        },
-        "success": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.green.200}"
+            "$value": "{scania.color.grey.850}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/grey/850"
+              }
+            }
           },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.green.700}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.green.50}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.green.100}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.green.300}"
-          }
-        },
-        "info": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.blue.300}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.blue.700}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.blue.50}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.blue.200}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.blue.400}"
+          "inverse": {
+            "default": {
+              "$type": "color",
+              "$value": "{scania.color.blue.600}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/color/blue/600"
+                }
+              }
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{scania.color.blue.500}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/color/blue/500"
+                }
+              }
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{scania.color.blue.700}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/color/blue/700"
+                }
+              }
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{scania.color.blue.400}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/color/blue/400"
+                }
+              }
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{scania.color.grey.50}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/color/grey/50"
+                }
+              }
+            }
           }
         },
         "danger": {
           "default": {
             "$type": "color",
-            "$value": "{scania.color.red.300}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.red.800}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.red.50}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.red.100}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.red.400}"
-          }
-        }
-      },
-      "foreground": {
-        "text": {
-          "accent": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.300}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            },
-            "brand-inverse": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            },
-            "visited": {
-              "$type": "color",
-              "$value": "{scania.color.blue.100}"
+            "$value": "{scania.color.red.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/red/400"
+              }
             }
           },
-          "strong": {
+          "hover": {
             "$type": "color",
-            "$value": "{scania.color.transparent.inverse.50}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.200}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.400}"
-          },
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.950}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.500}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.350}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.650}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.250}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
+            "$value": "{scania.color.red.600}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/red/600"
+              }
             }
           },
-          "brand": {
+          "pressed": {
             "$type": "color",
-            "$value": "{scania.color.grey.00}"
+            "$value": "{scania.color.red.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/red/700"
+              }
+            }
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{scania.color.red.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/red/400"
+              }
+            }
           },
           "disabled": {
             "$type": "color",
-            "$value": "{scania.color.transparent.inverse.500}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.300}"
-          }
-        },
-        "border": {
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.950}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.500}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.350}"
-            },
-            "discrete": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.200}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.650}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.250}"
-            }
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.50}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.300}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.400}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.600}"
-          },
-          "accent": {
-            "link": {
-              "$type": "color",
-              "$value": "{scania.color.blue.300}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.300}"
-            }
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.200}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.500}"
-          }
-        },
-        "icon": {
-          "strong": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.50}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.200}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.300}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.400}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.500}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{scania.color.transparent.inverse.600}"
-          },
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.950}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.650}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.500}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.350}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.250}"
-            },
-            "discrete": {
-              "$type": "color",
-              "$value": "{scania.color.transparent.200}"
-            }
-          },
-          "accent": {
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.300}"
-            },
-            "visited": {
-              "$type": "color",
-              "$value": "{scania.color.blue.100}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
-            },
-            "brand-inverse": {
-              "$type": "color",
-              "$value": "{scania.color.grey.00}"
+            "$value": "{scania.color.grey.900}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/grey/900"
+              }
             }
           }
         }
       },
-      "brand": {
-        "neutral": {
-          "white": {
-            "$type": "color",
-            "$value": "{scania.color.grey.00}"
-          },
-          "black": {
-            "$type": "color",
-            "$value": "{scania.color.grey.1000}"
+      "surface": {
+        "100": {
+          "$type": "color",
+          "$value": "{scania.color.grey.850}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/850"
+            }
           }
         },
-        "primary": {
-          "50": {
-            "$type": "color",
-            "$value": "{scania.color.blue.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{scania.color.blue.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{scania.color.blue.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{scania.color.blue.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{scania.color.blue.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{scania.color.blue.500}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{scania.color.blue.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{scania.color.blue.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{scania.color.blue.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{scania.color.blue.900}"
+        "200": {
+          "$type": "color",
+          "$value": "{scania.color.grey.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/800"
+            }
           }
         },
-        "secondary": {
-          "50": {
-            "$type": "color",
-            "$value": "{scania.color.red.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{scania.color.red.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{scania.color.red.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{scania.color.red.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{scania.color.red.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{scania.color.red.500}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{scania.color.red.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{scania.color.red.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{scania.color.red.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{scania.color.red.900}"
+        "300": {
+          "$type": "color",
+          "$value": "{scania.color.grey.750}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/750"
+            }
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{scania.color.grey.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/700"
+            }
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{scania.color.grey.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/600"
+            }
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{scania.color.grey.350}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/350"
+            }
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{scania.color.grey.250}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/250"
+            }
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{scania.color.grey.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/200"
+            }
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{scania.color.grey.150}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/150"
+            }
+          }
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "{scania.color.grey.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/100"
+            }
           }
         }
       }
     },
-    "component": {
-      "🔴🔵 header": {
-        "color": {
-          "expressive mobile menu": {
-            "primary": {
-              "$type": "color",
-              "$value": "{scania.color.blue.900}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.900}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "selected expressive": {
-              "$type": "color",
-              "$value": "{scania.color.blue.900}"
-            }
-          },
-          "background": {
-            "$type": "color",
-            "$value": "{scania.color.blue.900}",
-            "border": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{scania.color.blue.900}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{scania.color.blue.900}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{scania.color.blue.800}"
-            }
-          },
-          "dropdown": {
-            "hover": {
-              "$type": "color",
-              "$value": "{traton.color.blue.900}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.blue.1000}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            }
-          },
-          "foreground": {
-            "strong": {
-              "$type": "color",
-              "$value": "{color.brand.neutral.white}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{color.foreground.icon.strong}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{color.foreground.text.defined}"
+    "system": {
+      "info": {
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.blue.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/50"
             }
           }
         },
-        "text": {
-          "component title 01 menu": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.blue.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/200"
             }
-          },
-          "application name": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.display}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.blue.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.blue.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/400"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.blue.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/700"
             }
           }
         }
       },
-      "🔴🔵 side menu": {
-        "states": {
-          "default": {
-            "$type": "color",
-            "$value": "{scania.color.grey.950}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{scania.color.grey.900}"
-          },
-          "pressed": {
-            "$type": "color",
-            "$value": "{scania.color.grey.850}"
-          },
-          "focus": {
-            "$type": "color",
-            "$value": "{scania.color.grey.950}"
-          },
-          "selected": {
-            "$type": "color",
-            "$value": "{scania.color.grey.900}"
+      "success": {
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.green.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/green/50"
+            }
           }
         },
-        "dividers": {
-          "default": {
-            "$type": "color",
-            "$value": "{color.foreground.border.discrete}"
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.green.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/green/100"
+            }
           }
         },
-        "icons": {
-          "icon size": {
-            "$type": "dimension",
-            "$value": "{scania.unit.16}"
-          },
-          "close icon size": {
-            "$type": "dimension",
-            "$value": "{scania.unit.20}"
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.green.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/green/200"
+            }
           }
         },
-        "padding": {
-          "sub menu item": {
-            "top and bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.12}"
-            },
-            "chevron right padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "profile": {
-              "left": {
-                "$type": "dimension",
-                "$value": "{scania.unit.4}"
-              },
-              "gap": {
-                "$type": "dimension",
-                "$value": "{scania.unit.12}"
-              },
-              "top + bottom": {
-                "$type": "dimension",
-                "$value": "{scania.unit.4}"
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.green.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/green/300"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.green.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/green/700"
+            }
+          }
+        }
+      },
+      "warning": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/50"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/yellow/100"
+            }
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/yellow/400"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.yellow.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/yellow/800"
+            }
+          }
+        }
+      },
+      "danger": {
+        "strong": {
+          "$type": "color",
+          "$value": "{scania.color.red.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/50"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{scania.color.red.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/100"
+            }
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{scania.color.red.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{scania.color.red.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/400"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{scania.color.red.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/800"
+            }
+          }
+        }
+      }
+    },
+    "brand": {
+      "neutral": {
+        "white": {
+          "$type": "color",
+          "$value": "{scania.color.grey.00}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/00"
+            }
+          }
+        },
+        "black": {
+          "$type": "color",
+          "$value": "{scania.color.grey.1000}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/grey/1000"
+            }
+          }
+        }
+      },
+      "primary": {
+        "50": {
+          "$type": "color",
+          "$value": "{scania.color.blue.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/50"
+            }
+          }
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{scania.color.blue.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/100"
+            }
+          }
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{scania.color.blue.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/200"
+            }
+          }
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{scania.color.blue.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/300"
+            }
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{scania.color.blue.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/400"
+            }
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{scania.color.blue.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/500"
+            }
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{scania.color.blue.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/600"
+            }
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{scania.color.blue.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/700"
+            }
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{scania.color.blue.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/800"
+            }
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{scania.color.blue.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/blue/900"
+            }
+          }
+        }
+      },
+      "secondary": {
+        "50": {
+          "$type": "color",
+          "$value": "{scania.color.red.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/50"
+            }
+          }
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{scania.color.red.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/100"
+            }
+          }
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{scania.color.red.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/200"
+            }
+          }
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{scania.color.red.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/300"
+            }
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{scania.color.red.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/400"
+            }
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{scania.color.red.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/500"
+            }
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{scania.color.red.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/600"
+            }
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{scania.color.red.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/700"
+            }
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{scania.color.red.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/800"
+            }
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{scania.color.red.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/color/red/900"
+            }
+          }
+        }
+      }
+    }
+  },
+  "dimension": {
+    "radius": {
+      "focus-width": {
+        "$type": "number",
+        "$value": "{traton.unit.2}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/2"
+          }
+        }
+      },
+      "narrow": {
+        "$type": "number",
+        "$value": "{scania.unit.4}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/4"
+          }
+        }
+      },
+      "soft": {
+        "$type": "number",
+        "$value": "{scania.unit.8}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/8"
+          }
+        }
+      },
+      "rounded": {
+        "$type": "number",
+        "$value": "{scania.unit.32}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/32"
+          }
+        }
+      },
+      "circle": {
+        "$type": "number",
+        "$value": "{scania.unit.9999}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/9999"
+          }
+        }
+      },
+      "for-surface": {
+        "clickable": {
+          "$type": "number",
+          "$value": "{scania.unit.4}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/unit/4"
+            }
+          }
+        },
+        "field": {
+          "$type": "number",
+          "$value": "{scania.unit.4}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/unit/4"
+            }
+          }
+        },
+        "inverse": {
+          "$type": "number",
+          "$value": "{scania.unit.9999}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/unit/9999"
+            }
+          }
+        }
+      },
+      "for-area": {
+        "large": {
+          "$type": "number",
+          "$value": "{scania.unit.16}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/unit/16"
+            }
+          }
+        },
+        "small": {
+          "$type": "number",
+          "$value": "{scania.unit.2}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "scania/unit/2"
+            }
+          }
+        }
+      }
+    },
+    "space": {
+      "tiny": {
+        "$type": "number",
+        "$value": "{scania.unit.4}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/4"
+          }
+        }
+      },
+      "small": {
+        "$type": "number",
+        "$value": "{scania.unit.16}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/16"
+          }
+        }
+      },
+      "medium": {
+        "$type": "number",
+        "$value": "{scania.unit.24}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/24"
+          }
+        }
+      },
+      "large": {
+        "$type": "number",
+        "$value": "{scania.unit.48}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/48"
+          }
+        }
+      },
+      "huge": {
+        "$type": "number",
+        "$value": "{scania.unit.80}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "scania/unit/80"
+          }
+        }
+      }
+    }
+  },
+  "text": {
+    "scania": {
+      "dark": {
+        "display": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/display"
+                }
               }
             },
-            "selected marker height": {
-              "$type": "dimension",
-              "$value": "40px"
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 216
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 183
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
             }
           },
-          "top level": {
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.16}"
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/display"
+                }
+              }
             },
-            "horizontal gap padding": {
-              "$type": "dimension",
-              "$value": "{scania.unit.4}"
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
             },
-            "top": {
-              "$type": "dimension",
-              "$value": "14px"
+            "font-size": {
+              "$type": "number",
+              "$value": 156
             },
-            "bottom collapsible": {
-              "$type": "dimension",
-              "$value": "{scania.unit.16}"
+            "line-height": {
+              "$type": "number",
+              "$value": 148
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
             }
           },
-          "collapsed item": {
-            "left + right inner icon padding": {
-              "$type": "dimension",
-              "$value": "12px"
+          "03": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/display"
+                }
+              }
             },
-            "top + bottom inner icon padding": {
-              "$type": "dimension",
-              "$value": "12px"
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 112
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 106
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
             }
           },
-          "sub page": {
-            "top + bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
+          "04": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/display"
+                }
+              }
             },
-            "left with icon": {
-              "$type": "dimension",
-              "$value": "{scania.unit.40}"
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
             },
-            "left no icon": {
-              "$type": "dimension",
-              "$value": "14px"
+            "font-size": {
+              "$type": "number",
+              "$value": 80
             },
-            "left profile": {
-              "$type": "dimension",
-              "$value": "{scania.unit.48}"
+            "line-height": {
+              "$type": "number",
+              "$value": 80
             },
-            "top group": {
-              "$type": "dimension",
-              "$value": "{scania.unit.4}"
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
             },
-            "selected marker height": {
-              "$type": "dimension",
-              "$value": "34px"
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          },
+          "05": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/display"
+                }
+              }
             },
-            "selected marker width": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 56
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 56
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
             }
           }
         },
-        "radius": {
-          "corner radius": {
-            "$type": "dimension",
-            "$value": "{scania.unit.8}"
+        "headline": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 40
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 40
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 32
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 32
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -1.2799999713897705
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "03": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 24
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 24
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.7200000286102295
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "04": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 20
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 24
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.4000000059604645
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "05": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 16
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 24
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.3199999928474426
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "06": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 14
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 16
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.2800000011920929
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          }
+        },
+        "paragraph": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 24
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 32
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.7200000286102295
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 20
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 24
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.20000000298023224
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "body": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 16
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 24
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.3199999928474426
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 14
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 20
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.14000000059604645
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "link": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 16
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 24
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.3199999928474426
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{scania.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 14
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 20
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": -0.14000000059604645
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "component": {
+          "title": {
+            "01": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              },
+              "font-family 2": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight 2": {
+                "$type": "number",
+                "$value": "{scania.font.weight.bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/bold"
+                  }
+                }
+              },
+              "font-size 2": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height 2": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing 2": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform 2": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "02": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 10
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0.800000011920929
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "uppercase"
+              }
+            }
+          },
+          "label": {
+            "01": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 12
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "02": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 10
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 8
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          },
+          "body": {
+            "01": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "02": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 20
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
           }
         }
-      },
-      "table": {
-        "secondary": {
-          "cell": {
+      }
+    }
+  },
+  "component": {
+    "scania": {
+      "dark": {
+        "accordion": {
+          "placeholder-fill": {
             "$type": "color",
-            "$value": "{color.background.layer-02}"
+            "$value": "#eeff0c"
           }
         },
-        "pagination": {
-          "dropdown": {
+        "badge": {
+          "background": {
+            "$type": "color",
+            "$value": "{color.system.danger.subtle}"
+          },
+          "text": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
+          }
+        },
+        "button": {
+          "primary-text": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
+          }
+        },
+        "cookie": {
+          "primary-text inverse": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
+          }
+        },
+        "card": {
+          "primary": {
             "$type": "color",
             "$value": "{color.background.layer-01}"
           },
-          "base": {
+          "secondary": {
             "$type": "color",
-            "$value": "{color.background.surface.200}"
-          }
-        },
-        "cell-hover": {
-          "$type": "color",
-          "$value": "{color.background.surface.100}"
-        },
-        "cell": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        }
-      },
-      "stepper": {
-        "success": {
-          "$type": "color",
-          "$value": "{color.system.success.default}"
-        }
-      },
-      "spinner": {
-        "color": {
-          "$type": "color",
-          "$value": "{color.system.info.default}"
-        }
-      },
-      "footer": {
-        "text color": {
-          "copyright": {
-            "$type": "color",
-            "$value": "{color.foreground.text.soft}"
+            "$value": "{color.background.layer-02}"
           },
-          "link-text": {
-            "$type": "color",
-            "$value": "{color.brand.primary.50}"
+          "padding": {
+            "padding": {
+              "$type": "number",
+              "$value": "{scania.unit.16}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/16"
+                }
+              }
+            }
+          },
+          "radius": {
+            "corner": {
+              "$type": "number",
+              "$value": "{scania.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/4"
+                }
+              }
+            }
           }
         },
-        "primary": {
-          "$type": "color",
-          "$value": "{scania.color.blue.900}"
+        "chip": {
+          "border": {
+            "selected focus border": {
+              "$type": "color",
+              "$value": "{color.system.info.default}"
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.background.surface.400}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.background.surface.600}"
+            },
+            "focused": {
+              "$type": "color",
+              "$value": "{color.background.layer-01}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{color.brand.primary.400}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{color.background.surface.400}"
+            },
+            "disabled selected": {
+              "$type": "color",
+              "$value": "{color.brand.primary.400}"
+            },
+            "focused on selected": {
+              "$type": "color",
+              "$value": "{color.system.info.discrete}"
+            },
+            "hover on selected": {
+              "$type": "color",
+              "$value": "{color.system.info.default}"
+            }
+          },
+          "foreground": {
+            "inverse": {
+              "$type": "color",
+              "$value": "{color.foreground.text.strong}"
+            },
+            "foreground disabled selected": {
+              "$type": "color",
+              "$value": "{color.foreground.text.subtle}"
+            }
+          }
         },
-        "border": {
-          "$type": "color",
-          "$value": "{scania.color.blue.800}"
-        }
-      },
-      "dropdown": {
-        "list item": {
+        "dropdown": {
+          "hover": {
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{color.background.layer-02}"
+          },
           "secondary": {
             "hover": {
               "$type": "color",
@@ -918,985 +2343,972 @@
               "$value": "{color.background.layer-03}"
             }
           },
-          "focus": {
-            "$type": "color",
-            "$value": "{color.background.layer-02}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.background.layer-02}"
+          "list item": {
+            "hover": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}"
+            },
+            "secondary": {
+              "hover": {
+                "$type": "color",
+                "$value": "{color.background.layer-03}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{color.background.layer-03}"
+              }
+            }
           }
         },
-        "secondary": {
-          "hover": {
+        "footer": {
+          "border": {
             "$type": "color",
-            "$value": "{color.background.layer-03}"
+            "$value": "{scania.color.blue.800}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/800"
+              }
+            }
           },
-          "focus": {
+          "primary": {
             "$type": "color",
-            "$value": "{color.background.layer-03}"
+            "$value": "{scania.color.blue.900}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/blue/900"
+              }
+            }
+          },
+          "text color": {
+            "link-text": {
+              "$type": "color",
+              "$value": "{color.brand.primary.50}"
+            },
+            "copyright": {
+              "$type": "color",
+              "$value": "{color.foreground.text.soft}"
+            }
           }
         },
-        "focus": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
-        },
-        "hover": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
-        }
-      },
-      "badge": {
-        "text": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{color.system.danger.subtle}"
-        }
-      },
-      "button": {
-        "primary-text": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        }
-      },
-      "🔵 card": {
-        "secondary": {
-          "$type": "color",
-          "$value": "{color.background.layer-02}"
-        },
-        "primary": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "padding": {
-          "padding": {
-            "$type": "dimension",
-            "$value": "{scania.unit.16}"
+        "header": {
+          "color": {
+            "popovers": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}"
+            },
+            "foreground": {
+              "strong": {
+                "$type": "color",
+                "$value": "{color.foreground.icon.strong}"
+              },
+              "defined": {
+                "$type": "color",
+                "$value": "{color.foreground.text.defined}"
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{color.foreground.icon.strong}"
+              }
+            },
+            "background": {
+              "default": {
+                "$type": "color",
+                "$value": "{color.brand.primary.900}"
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{color.brand.primary.800}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{color.brand.primary.900}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{color.brand.primary.800}"
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{color.brand.primary.800}"
+              },
+              "border": {
+                "$type": "color",
+                "$value": "{color.brand.primary.800}"
+              },
+              "profile": {
+                "$type": "color",
+                "$value": "{color.brand.primary.800}"
+              }
+            },
+            "expressive mobile menu": {
+              "primary": {
+                "$type": "color",
+                "$value": "{scania.color.blue.900}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/color/blue/900"
+                  }
+                }
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{scania.color.blue.900}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/color/blue/900"
+                  }
+                }
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{scania.color.blue.800}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/color/blue/800"
+                  }
+                }
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{color.brand.primary.800}"
+              },
+              "selected expressive": {
+                "$type": "color",
+                "$value": "{color.brand.primary.900}"
+              }
+            }
+          },
+          "text": {
+            "application name": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.display}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/display"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "items": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              },
+              "profile text": {
+                "font-family": {
+                  "$type": "string",
+                  "$value": "{scania.font.family.semi condensed}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "scania/font/family/semi condensed"
+                    }
+                  }
+                },
+                "font-weight": {
+                  "$type": "number",
+                  "$value": "{scania.font.weight.bold}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "scania/font/weight/bold"
+                    }
+                  }
+                },
+                "font-size": {
+                  "$type": "number",
+                  "$value": 14
+                },
+                "line-height": {
+                  "$type": "number",
+                  "$value": 16
+                },
+                "letter-spacing": {
+                  "$type": "number",
+                  "$value": -0.14000000059604645
+                },
+                "text-transform": {
+                  "$type": "string",
+                  "$value": "none"
+                }
+              }
+            },
+            "sub item selected": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          },
+          "space": {
+            "profile padding": {
+              "$type": "number",
+              "$value": "{scania.unit.16}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/16"
+                }
+              }
+            },
+            "profile size": {
+              "$type": "number",
+              "$value": "{scania.unit.32}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/32"
+                }
+              }
+            }
           }
-        }
-      },
-      "chip": {
-        "color": {
-          "focused on selected": {
-            "$type": "color",
-            "$value": "{color.system.info.discrete}"
+        },
+        "input-field": {
+          "radius": {
+            "top-left": {
+              "$type": "number",
+              "$value": "{scania.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/4"
+                }
+              }
+            },
+            "top-right": {
+              "$type": "number",
+              "$value": "{scania.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/4"
+                }
+              }
+            },
+            "bottom-left": {
+              "$type": "number",
+              "$value": "{scania.unit.0}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/0"
+                }
+              }
+            },
+            "bottom-right": {
+              "$type": "number",
+              "$value": "{scania.unit.0}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/0"
+                }
+              }
+            }
           },
-          "disabled": {
+          "border": {
+            "width": {
+              "top": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "right": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "bottom": {
+                "$type": "number",
+                "$value": "{scania.unit.1}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/1"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              }
+            },
+            "focus": {
+              "top": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "right": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "bottom": {
+                "$type": "number",
+                "$value": "{scania.unit.2}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/2"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "logo": {
+          "fill": {
             "$type": "color",
-            "$value": "{color.background.surface.400}"
+            "$value": "{color.brand.neutral.white}"
           },
-          "focused": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
+          "string": {
+            "wordmark": {
+              "$type": "string",
+              "$value": "Scania"
+            }
           },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.background.surface.600}"
+          "visibility": {
+            "TDS Left Logo": {
+              "$type": "number",
+              "$value": 1
+            },
+            "TDS Right Logo": {
+              "$type": "number",
+              "$value": 1
+            },
+            "TRA Left Logo": {
+              "$type": "number",
+              "$value": 0
+            },
+            "TRA Right Logo": {
+              "$type": "number",
+              "$value": 0
+            },
+            "Footer Right Logo": {
+              "$type": "number",
+              "$value": 1
+            }
+          }
+        },
+        "side-menu": {
+          "color": {
+            "divider": {
+              "$type": "color",
+              "$value": "{color.foreground.border.discrete}"
+            }
           },
-          "selected": {
-            "$type": "color",
-            "$value": "{color.brand.primary.400}"
+          "size": {
+            "icon": {
+              "$type": "number",
+              "$value": "{scania.unit.24}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/24"
+                }
+              }
+            },
+            "close icon size": {
+              "$type": "number",
+              "$value": "{scania.unit.20}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/20"
+                }
+              }
+            }
           },
-          "disabled selected": {
-            "$type": "color",
-            "$value": "{color.brand.primary.400}"
+          "space": {
+            "top level": {
+              "top": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "bottom collapsible": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "horizontal gap padding": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "vertical gap padding": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              }
+            },
+            "sub menu item": {
+              "top and bottom": {
+                "$type": "number",
+                "$value": 22
+              },
+              "left": {
+                "$type": "number",
+                "$value": 22
+              },
+              "chevron right padding": {
+                "$type": "number",
+                "$value": "{scania.unit.16}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/16"
+                  }
+                }
+              },
+              "selected marker height": {
+                "$type": "number",
+                "$value": 68
+              },
+              "profile": {
+                "left": {
+                  "$type": "number",
+                  "$value": "{scania.unit.16}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "scania/unit/16"
+                    }
+                  }
+                },
+                "gap": {
+                  "$type": "number",
+                  "$value": "{scania.unit.16}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "scania/unit/16"
+                    }
+                  }
+                },
+                "top + bottom": {
+                  "$type": "number",
+                  "$value": 18
+                }
+              }
+            },
+            "sub page": {
+              "top + bottom": {
+                "$type": "number",
+                "$value": "{scania.unit.16}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/16"
+                  }
+                }
+              },
+              "left with icon": {
+                "$type": "number",
+                "$value": 58
+              },
+              "left no icon": {
+                "$type": "number",
+                "$value": "{scania.unit.24}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/24"
+                  }
+                }
+              },
+              "left profile": {
+                "$type": "number",
+                "$value": "{scania.unit.64}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/64"
+                  }
+                }
+              },
+              "top group": {
+                "$type": "number",
+                "$value": "{scania.unit.0}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/0"
+                  }
+                }
+              },
+              "selected marker height": {
+                "$type": "number",
+                "$value": "{scania.unit.48}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/48"
+                  }
+                }
+              },
+              "selected marker width": {
+                "$type": "number",
+                "$value": "{scania.unit.4}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/unit/4"
+                  }
+                }
+              }
+            },
+            "collapsed item": {
+              "left + right inner icon padding": {
+                "$type": "number",
+                "$value": 22
+              },
+              "top + bottom inner icon padding": {
+                "$type": "number",
+                "$value": 22
+              }
+            }
           },
-          "hover on selected": {
+          "radius": {
+            "corner": {
+              "$type": "number",
+              "$value": "{scania.unit.0}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/unit/0"
+                }
+              }
+            }
+          },
+          "text": {
+            "items": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{scania.font.family.semi condensed}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/family/semi condensed"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{scania.font.weight.bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "scania/font/weight/bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": -0.14000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          }
+        },
+        "shadow": {
+          "base-modifier": {
             "$type": "color",
-            "$value": "{color.system.info.default}"
+            "$value": "{scania.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/invisible/dark"
+              }
+            }
           },
           "default": {
             "$type": "color",
-            "$value": "{color.background.surface.400}"
-          }
-        },
-        "foreground": {
-          "inverse": {
+            "$value": "{scania.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/invisible/dark"
+              }
+            }
+          },
+          "hover": {
             "$type": "color",
-            "$value": "{color.foreground.text.strong}"
+            "$value": "{scania.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/invisible/dark"
+              }
+            }
           },
-          "foreground disabled selected": {
+          "pressed": {
             "$type": "color",
-            "$value": "{color.foreground.text.subtle}"
-          }
-        },
-        "border": {
-          "selected focus border": {
-            "$type": "color",
-            "$value": "{color.system.info.default}"
-          }
-        }
-      },
-      "logo": {
-        "fill": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        },
-        "visibility": {
-          "Footer Right Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          },
-          "TRA Left Logo": {
-            "$type": "boolean",
-            "$value": "false"
-          },
-          "TDS Right Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          },
-          "TRA Right Logo": {
-            "$type": "boolean",
-            "$value": "false"
-          },
-          "TDS Left Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          }
-        },
-        "string": {
-          "wordmark": {
-            "$type": "text",
-            "$value": "Scania"
-          }
-        }
-      },
-      "shadow": {
-        "hover": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.invisible.dark}"
-        },
-        "default": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.invisible.dark}"
-        },
-        "pressed": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.invisible.dark}"
-        },
-        "dragged": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.invisible.dark}"
-        },
-        "base-modifier": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.invisible.dark}"
-        },
-        "focus": {
-          "$type": "color",
-          "$value": "{scania.color.transparent.invisible.dark}"
-        }
-      },
-      "cookie": {
-        "primary-text inverse": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        }
-      },
-      "text": {
-        "detail 01 bold": {
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.semi condensed}"
-          }
-        }
-      },
-      "🔵  input-field": {
-        "radius": {
-          "top-left": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "top-right": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "bottom-left": {
-            "$type": "dimension",
-            "$value": "{scania.unit.0}"
-          },
-          "bottom-right": {
-            "$type": "dimension",
-            "$value": "{scania.unit.0}"
-          }
-        },
-        "border": {
-          "width": {
-            "top": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "right": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.1}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
+            "$value": "{scania.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/invisible/dark"
+              }
             }
           },
           "focus": {
-            "top": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "right": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
-            },
-            "bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.2}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.0}"
+            "$type": "color",
+            "$value": "{scania.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/invisible/dark"
+              }
+            }
+          },
+          "dragged": {
+            "$type": "color",
+            "$value": "{scania.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "scania/color/transparent/invisible/dark"
+              }
             }
           }
-        }
-      },
-      "❓ text": {
-        "detail 01 bold": {
-          "line-height": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "12px"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          }
-        }
-      }
-    },
-    "text": {
-      "display": {
-        "01": {
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "216px"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "183px"
+        },
+        "spinner": {
+          "color": {
+            "$type": "color",
+            "$value": "{color.system.info.default}"
           }
         },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "156px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "148px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
+        "stepper": {
+          "success": {
+            "$type": "color",
+            "$value": "{color.system.success.default}"
           }
         },
-        "03": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
+        "table": {
+          "cell": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
           },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
+          "cell-hover": {
+            "$type": "color",
+            "$value": "{color.background.surface.100}"
           },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
+          "pagination": {
+            "base": {
+              "$type": "color",
+              "$value": "{color.background.surface.200}"
+            },
+            "dropdown": {
+              "$type": "color",
+              "$value": "{color.background.layer-01}"
+            }
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "112px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "106px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
+          "secondary": {
+            "cell": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}"
+            }
           }
         },
-        "04": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "80px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "80px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "05": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "56px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "56px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        }
-      },
-      "headline": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "40px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "40px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-1.28px"
-          }
-        },
-        "03": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.72px"
-          }
-        },
-        "04": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.4px"
-          }
-        },
-        "05": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.32px"
-          }
-        },
-        "06": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.28px"
-          }
-        }
-      },
-      "paragraph": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.72px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.2px"
-          }
-        }
-      },
-      "body": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.32px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.14px"
-          }
-        }
-      },
-      "component": {
         "text": {
-          "01": {
+          "detail 01 bold": {
             "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
+              "$type": "string",
+              "$value": "{scania.font.family.semi condensed}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/family/semi condensed"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{scania.font.weight.bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "scania/font/weight/bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 12
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 16
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
             },
             "text-transform": {
-              "$type": "text",
+              "$type": "string",
               "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            }
-          },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "20px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
             }
           }
         },
-        "label": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
+        "__comp-init": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "banner": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "block": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "breadcrumbs": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "checkbox": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "divider": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "icon": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "link": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "message": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "modal": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "popover": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          },
+          "core": {
+            "placeholder-fill": {
+              "$type": "color",
+              "$value": "#eeff0c"
             }
           },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "10px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "8px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
+          "menu": {
+            "placeholder-fill": {
+              "$type": "color",
+              "$value": "#eeff0c"
+            }
+          },
+          "canvas": {
+            "placeholder-fill": {
+              "$type": "color",
+              "$value": "#eeff0c"
             }
           }
         },
-        "title": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "text-transform 2": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-family 2": {
-              "$type": "text",
-              "$value": "{scania.font.family.semi condensed}"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            },
-            "letter-spacing 2": {
-              "$type": "dimension",
-              "$value": "-0.14px"
-            },
-            "font-size 2": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height 2": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "font-weight 2": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            }
-          },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{scania.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "uppercase"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{scania.font.weight.bold}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "10px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0.8px"
-            }
-          }
-        }
-      },
-      "link": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.32px"
+        "radio-button": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
           }
         },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{scania.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{scania.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "-0.14px"
-          }
-        }
-      }
-    },
-    "dimension": {
-      "space": {
-        "tiny": {
-          "$type": "dimension",
-          "$value": "{scania.unit.4}"
-        },
-        "small": {
-          "$type": "dimension",
-          "$value": "{scania.unit.16}"
-        },
-        "medium": {
-          "$type": "dimension",
-          "$value": "{scania.unit.24}"
-        },
-        "large": {
-          "$type": "dimension",
-          "$value": "{scania.unit.48}"
-        },
-        "huge": {
-          "$type": "dimension",
-          "$value": "{scania.unit.80}"
-        }
-      },
-      "radius": {
-        "for-surface": {
-          "clickable": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "field": {
-            "$type": "dimension",
-            "$value": "{scania.unit.4}"
-          },
-          "inverse": {
-            "$type": "dimension",
-            "$value": "{scania.unit.9999}"
+        "slider": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
           }
         },
-        "narrow": {
-          "$type": "dimension",
-          "$value": "{scania.unit.4}"
-        },
-        "soft": {
-          "$type": "dimension",
-          "$value": "{scania.unit.8}"
-        },
-        "rounded": {
-          "$type": "dimension",
-          "$value": "{scania.unit.32}"
-        },
-        "circle": {
-          "$type": "dimension",
-          "$value": "{scania.unit.9999}"
-        },
-        "for-area": {
-          "large": {
-            "$type": "dimension",
-            "$value": "{scania.unit.16}"
-          },
-          "small": {
-            "$type": "dimension",
-            "$value": "{scania.unit.2}"
+        "tabs": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
           }
         },
-        "focus-width": {
-          "$type": "dimension",
-          "$value": "{traton.unit.2}"
+        "text-field": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "textarea": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "toast": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
+        },
+        "toggle": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#ffffff"
+          }
+        },
+        "tooltip": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#eeff0c"
+          }
         }
       }
     }
   }
+}

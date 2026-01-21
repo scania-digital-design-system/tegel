@@ -1,913 +1,2353 @@
 {
-    "color": {
-      "background": {
-        "base": {
+  "color": {
+    "foreground": {
+      "border": {
+        "strong": {
           "$type": "color",
-          "$value": "{traton.color.grey.50}"
+          "$value": "{traton.color.transparent.950}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/950"
+            }
+          }
         },
-        "accent": {
-          "primary": {
-            "default": {
-              "$type": "color",
-              "$value": "{traton.color.blue.800}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{traton.color.blue.100}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{traton.color.blue.850}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{traton.color.blue.900}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.blue.850}"
-            },
-            "inverse": {
-              "default": {
-                "$type": "color",
-                "$value": "{traton.color.grey.300}"
-              },
-              "hover": {
-                "$type": "color",
-                "$value": "{traton.color.grey.200}"
-              },
-              "pressed": {
-                "$type": "color",
-                "$value": "{traton.color.grey.400}"
-              },
-              "focus": {
-                "$type": "color",
-                "$value": "{traton.color.grey.100}"
-              },
-              "disabled": {
-                "$type": "color",
-                "$value": "{traton.color.grey.900}"
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/700"
+            }
+          }
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/600"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/500"
+            }
+          }
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/400"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/200"
+            }
+          }
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/950"
               }
             }
           },
-          "danger": {
-            "default": {
-              "$type": "color",
-              "$value": "{traton.color.red.300}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{traton.color.red.400}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{traton.color.red.600}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.red.400}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{traton.color.red.50}"
+          "defined": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/700"
+              }
+            }
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.600}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/600"
+              }
+            }
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/500"
+              }
+            }
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/400"
+              }
+            }
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.200}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/200"
+              }
+            }
+          }
+        },
+        "accent": {
+          "link": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/yellow/300"
+              }
+            }
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.blue.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/500"
+              }
+            }
+          }
+        }
+      },
+      "icon": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.950}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/950"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/700"
+            }
+          }
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/600"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/500"
+            }
+          }
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/400"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/200"
+            }
+          }
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/950"
+              }
+            }
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/700"
+              }
+            }
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.600}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/600"
+              }
+            }
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/500"
+              }
+            }
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/400"
+              }
+            }
+          },
+          "discrete": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.200}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/200"
+              }
+            }
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.blue.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/700"
+              }
+            }
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{traton.color.blue.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/950"
+              }
+            }
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{traton.color.blue.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/950"
+              }
+            }
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{traton.color.blue.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/700"
+              }
+            }
+          }
+        }
+      },
+      "text": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.950}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/950"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/700"
+            }
+          }
+        },
+        "soft": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/600"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/500"
+            }
+          }
+        },
+        "disabled": {
+          "$type": "color",
+          "$value": "{traton.color.transparent.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/400"
+            }
+          }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{traton.color.blue.950}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/950"
+            }
+          }
+        },
+        "inverse": {
+          "strong": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/950"
+              }
+            }
+          },
+          "defined": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/700"
+              }
+            }
+          },
+          "soft": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.600}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/600"
+              }
+            }
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.500}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/500"
+              }
+            }
+          },
+          "disabled": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.inverse.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/inverse/400"
+              }
+            }
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{traton.color.base.neutral-white}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/base/neutral-white"
+              }
+            }
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{traton.color.blue.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/700"
+              }
+            }
+          },
+          "visited": {
+            "$type": "color",
+            "$value": "{traton.color.blue.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/950"
+              }
+            }
+          },
+          "brand": {
+            "$type": "color",
+            "$value": "{traton.color.blue.950}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/950"
+              }
+            }
+          },
+          "brand-inverse": {
+            "$type": "color",
+            "$value": "{traton.color.blue.700}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/700"
+              }
+            }
+          }
+        }
+      }
+    },
+    "background": {
+      "base": {
+        "$type": "color",
+        "$value": "{traton.color.grey.50}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/color/grey/50"
+          }
+        }
+      },
+      "layer-01": {
+        "$type": "color",
+        "$value": "{traton.color.grey.100}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/color/grey/100"
+          }
+        }
+      },
+      "layer-02": {
+        "$type": "color",
+        "$value": "{traton.color.grey.50}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/color/grey/50"
+          }
+        }
+      },
+      "layer-03": {
+        "$type": "color",
+        "$value": "{traton.color.grey.100}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/color/grey/100"
+          }
+        }
+      },
+      "overlay": {
+        "$type": "color",
+        "$value": "{traton.color.transparent.scrim.light}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/color/transparent/scrim/light"
+          }
+        }
+      },
+      "top": {
+        "$type": "color",
+        "$value": "{traton.color.grey.50}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/color/grey/50"
+          }
+        }
+      },
+      "inverse": {
+        "base": {
+          "$type": "color",
+          "$value": "{traton.color.grey.1000}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/1000"
             }
           }
         },
         "layer-01": {
           "$type": "color",
-          "$value": "{traton.color.grey.100}"
+          "$value": "{traton.color.grey.950}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/950"
+            }
+          }
         },
         "layer-02": {
           "$type": "color",
-          "$value": "{traton.color.grey.50}"
+          "$value": "{traton.color.grey.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/900"
+            }
+          }
         },
         "layer-03": {
           "$type": "color",
-          "$value": "{traton.color.grey.100}"
+          "$value": "{traton.color.grey.850}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/850"
+            }
+          }
         },
         "overlay": {
           "$type": "color",
-          "$value": "{traton.color.transparent.scrim.light}"
-        },
-        "inverse": {
-          "base": {
-            "$type": "color",
-            "$value": "{traton.color.grey.1000}"
-          },
-          "layer-01": {
-            "$type": "color",
-            "$value": "{traton.color.grey.950}"
-          },
-          "layer-02": {
-            "$type": "color",
-            "$value": "{traton.color.grey.900}"
-          },
-          "layer-03": {
-            "$type": "color",
-            "$value": "{traton.color.grey.850}"
-          },
-          "top": {
-            "$type": "color",
-            "$value": "{traton.color.grey.900}"
-          },
-          "overlay": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.scrim.light}"
-          }
-        },
-        "surface": {
-          "100": {
-            "$type": "color",
-            "$value": "{traton.color.grey.150}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{traton.color.grey.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{traton.color.grey.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{traton.color.grey.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{traton.color.grey.500}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{traton.color.grey.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{traton.color.grey.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{traton.color.grey.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{traton.color.grey.900}"
-          },
-          "1000": {
-            "$type": "color",
-            "$value": "{traton.color.grey.950}"
+          "$value": "{traton.color.transparent.scrim.light}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/transparent/scrim/light"
+            }
           }
         },
         "top": {
           "$type": "color",
-          "$value": "{traton.color.grey.50}"
+          "$value": "{traton.color.grey.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/900"
+            }
+          }
         }
       },
-      "system": {
-        "warning": {
+      "accent": {
+        "primary": {
           "default": {
             "$type": "color",
-            "$value": "{traton.color.yellow.300}"
+            "$value": "{traton.color.blue.800}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/800"
+              }
+            }
           },
-          "discrete": {
+          "hover": {
             "$type": "color",
-            "$value": "{traton.color.yellow.100}"
+            "$value": "{traton.color.blue.850}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/850"
+              }
+            }
           },
-          "strong": {
+          "pressed": {
             "$type": "color",
-            "$value": "{traton.color.yellow.800}"
+            "$value": "{traton.color.blue.900}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/900"
+              }
+            }
           },
-          "defined": {
+          "focus": {
             "$type": "color",
-            "$value": "{traton.color.yellow.600}"
+            "$value": "{traton.color.blue.850}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/850"
+              }
+            }
           },
-          "subtle": {
+          "disabled": {
             "$type": "color",
-            "$value": "{traton.color.yellow.200}"
-          }
-        },
-        "success": {
-          "default": {
-            "$type": "color",
-            "$value": "{traton.color.green.300}"
+            "$value": "{traton.color.blue.100}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/100"
+              }
+            }
           },
-          "discrete": {
-            "$type": "color",
-            "$value": "{traton.color.green.50}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{traton.color.green.850}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{traton.color.green.500}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{traton.color.green.200}"
-          }
-        },
-        "info": {
-          "default": {
-            "$type": "color",
-            "$value": "{traton.color.blue.500}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{traton.color.blue.150}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{traton.color.blue.800}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{traton.color.blue.800}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{traton.color.blue.400}"
+          "inverse": {
+            "default": {
+              "$type": "color",
+              "$value": "{traton.color.grey.300}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/grey/300"
+                }
+              }
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{traton.color.grey.200}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/grey/200"
+                }
+              }
+            },
+            "pressed": {
+              "$type": "color",
+              "$value": "{traton.color.grey.400}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/grey/400"
+                }
+              }
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{traton.color.grey.100}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/grey/100"
+                }
+              }
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{traton.color.grey.900}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/grey/900"
+                }
+              }
+            }
           }
         },
         "danger": {
           "default": {
             "$type": "color",
-            "$value": "{traton.color.red.300}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{traton.color.red.50}"
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{traton.color.red.850}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{traton.color.red.500}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{traton.color.red.200}"
-          }
-        }
-      },
-      "foreground": {
-        "text": {
-          "accent": {
-            "default": {
-              "$type": "color",
-              "$value": "{traton.color.blue.700}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{traton.color.blue.950}"
-            },
-            "brand-inverse": {
-              "$type": "color",
-              "$value": "{traton.color.blue.700}"
-            },
-            "visited": {
-              "$type": "color",
-              "$value": "{traton.color.blue.950}"
+            "$value": "{traton.color.red.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/red/300"
+              }
             }
           },
-          "strong": {
+          "hover": {
             "$type": "color",
-            "$value": "{traton.color.transparent.950}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.700}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.500}"
-          },
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.950}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.600}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.500}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.700}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.400}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{traton.color.base.neutral-white}"
+            "$value": "{traton.color.red.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/red/400"
+              }
             }
           },
-          "brand": {
+          "pressed": {
             "$type": "color",
-            "$value": "{traton.color.blue.950}"
+            "$value": "{traton.color.red.600}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/red/600"
+              }
+            }
+          },
+          "focus": {
+            "$type": "color",
+            "$value": "{traton.color.red.400}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/red/400"
+              }
+            }
           },
           "disabled": {
             "$type": "color",
-            "$value": "{traton.color.transparent.400}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.600}"
-          }
-        },
-        "border": {
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.950}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.600}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.500}"
-            },
-            "discrete": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.200}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.700}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.400}"
-            }
-          },
-          "strong": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.950}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.600}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.500}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.200}"
-          },
-          "accent": {
-            "link": {
-              "$type": "color",
-              "$value": "{traton.color.yellow.300}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.blue.500}"
-            }
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.700}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.400}"
-          }
-        },
-        "icon": {
-          "strong": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.950}"
-          },
-          "defined": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.700}"
-          },
-          "soft": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.600}"
-          },
-          "subtle": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.500}"
-          },
-          "disabled": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.400}"
-          },
-          "discrete": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.200}"
-          },
-          "inverse": {
-            "strong": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.950}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.700}"
-            },
-            "soft": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.600}"
-            },
-            "subtle": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.500}"
-            },
-            "disabled": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.400}"
-            },
-            "discrete": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.inverse.200}"
-            }
-          },
-          "accent": {
-            "default": {
-              "$type": "color",
-              "$value": "{traton.color.blue.700}"
-            },
-            "visited": {
-              "$type": "color",
-              "$value": "{traton.color.blue.950}"
-            },
-            "brand": {
-              "$type": "color",
-              "$value": "{traton.color.blue.950}"
-            },
-            "brand-inverse": {
-              "$type": "color",
-              "$value": "{traton.color.blue.700}"
+            "$value": "{traton.color.red.50}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/red/50"
+              }
             }
           }
         }
       },
-      "brand": {
-        "neutral": {
-          "white": {
-            "$type": "color",
-            "$value": "{traton.color.base.neutral-white}"
-          },
-          "black": {
-            "$type": "color",
-            "$value": "{traton.color.base.neutral-black}"
+      "surface": {
+        "100": {
+          "$type": "color",
+          "$value": "{traton.color.grey.150}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/150"
+            }
           }
         },
-        "primary": {
-          "50": {
-            "$type": "color",
-            "$value": "{traton.color.blue.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{traton.color.blue.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{traton.color.blue.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{traton.color.blue.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{traton.color.blue.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{traton.color.blue.500}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{traton.color.blue.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{traton.color.blue.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{traton.color.blue.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{traton.color.blue.900}"
+        "200": {
+          "$type": "color",
+          "$value": "{traton.color.grey.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/200"
+            }
           }
         },
-        "secondary": {
-          "50": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.50}"
-          },
-          "100": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.100}"
-          },
-          "200": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.200}"
-          },
-          "300": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.300}"
-          },
-          "400": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.400}"
-          },
-          "500": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.500}"
-          },
-          "600": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.600}"
-          },
-          "700": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.700}"
-          },
-          "800": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.800}"
-          },
-          "900": {
-            "$type": "color",
-            "$value": "{traton.color.yellow.900}"
+        "300": {
+          "$type": "color",
+          "$value": "{traton.color.grey.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/300"
+            }
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{traton.color.grey.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/400"
+            }
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{traton.color.grey.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/500"
+            }
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{traton.color.grey.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/600"
+            }
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{traton.color.grey.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/700"
+            }
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{traton.color.grey.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/800"
+            }
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{traton.color.grey.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/900"
+            }
+          }
+        },
+        "1000": {
+          "$type": "color",
+          "$value": "{traton.color.grey.950}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/grey/950"
+            }
           }
         }
       }
     },
-    "component": {
-      "🔴🔵 header": {
-        "color": {
-          "expressive mobile menu": {
-            "primary": {
-              "$type": "color",
-              "$value": "{traton.color.grey.50}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.grey.50}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{traton.color.grey.150}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{traton.color.base.neutral-white}"
-            },
-            "selected expressive": {
-              "$type": "color",
-              "$value": "{traton.color.base.neutral-white}"
+    "system": {
+      "info": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.blue.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/800"
             }
-          },
-          "background": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.invisible.light}",
-            "border": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.invisible.light}"
-            },
-            "default": {
-              "$type": "color",
-              "$value": "{traton.color.transparent.invisible.light}"
-            },
-            "hover": {
-              "$type": "color",
-              "$value": "{traton.color.grey.100}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.grey.50}"
-            },
-            "pressed": {
-              "$type": "color",
-              "$value": "{traton.color.grey.100}"
-            },
-            "selected": {
-              "$type": "color",
-              "$value": "{traton.color.grey.50}"
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.blue.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/800"
             }
-          },
-          "dropdown": {
-            "hover": {
-              "$type": "color",
-              "$value": "{traton.color.grey.150}"
-            },
-            "focus": {
-              "$type": "color",
-              "$value": "{traton.color.grey.50}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.blue.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/500"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.blue.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/400"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.blue.150}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/150"
+            }
+          }
+        }
+      },
+      "success": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.green.850}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/green/850"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.green.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/green/500"
+            }
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.green.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/green/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.green.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/green/200"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.green.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/green/50"
+            }
+          }
+        }
+      },
+      "warning": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/800"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/600"
+            }
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/200"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/100"
+            }
+          }
+        }
+      },
+      "danger": {
+        "strong": {
+          "$type": "color",
+          "$value": "{traton.color.red.850}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/red/850"
+            }
+          }
+        },
+        "defined": {
+          "$type": "color",
+          "$value": "{traton.color.red.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/red/500"
+            }
+          }
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{traton.color.red.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/red/300"
+            }
+          }
+        },
+        "subtle": {
+          "$type": "color",
+          "$value": "{traton.color.red.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/red/200"
+            }
+          }
+        },
+        "discrete": {
+          "$type": "color",
+          "$value": "{traton.color.red.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/red/50"
+            }
+          }
+        }
+      }
+    },
+    "brand": {
+      "neutral": {
+        "white": {
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-white}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/base/neutral-white"
+            }
+          }
+        },
+        "black": {
+          "$type": "color",
+          "$value": "{traton.color.base.neutral-black}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/base/neutral-black"
+            }
+          }
+        }
+      },
+      "primary": {
+        "50": {
+          "$type": "color",
+          "$value": "{traton.color.blue.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/50"
+            }
+          }
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{traton.color.blue.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/100"
+            }
+          }
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{traton.color.blue.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/200"
+            }
+          }
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{traton.color.blue.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/300"
+            }
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{traton.color.blue.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/400"
+            }
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{traton.color.blue.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/500"
+            }
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{traton.color.blue.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/600"
+            }
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{traton.color.blue.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/700"
+            }
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{traton.color.blue.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/800"
+            }
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{traton.color.blue.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/blue/900"
+            }
+          }
+        }
+      },
+      "secondary": {
+        "50": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.50}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/50"
+            }
+          }
+        },
+        "100": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.100}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/100"
+            }
+          }
+        },
+        "200": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.200}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/200"
+            }
+          }
+        },
+        "300": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.300}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/300"
+            }
+          }
+        },
+        "400": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.400}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/400"
+            }
+          }
+        },
+        "500": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.500}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/500"
+            }
+          }
+        },
+        "600": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.600}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/600"
+            }
+          }
+        },
+        "700": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.700}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/700"
+            }
+          }
+        },
+        "800": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.800}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/800"
+            }
+          }
+        },
+        "900": {
+          "$type": "color",
+          "$value": "{traton.color.yellow.900}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/color/yellow/900"
+            }
+          }
+        }
+      }
+    }
+  },
+  "dimension": {
+    "radius": {
+      "focus-width": {
+        "$type": "number",
+        "$value": "{traton.unit.4}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/4"
+          }
+        }
+      },
+      "narrow": {
+        "$type": "number",
+        "$value": "{traton.unit.4}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/4"
+          }
+        }
+      },
+      "soft": {
+        "$type": "number",
+        "$value": "{traton.unit.8}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/8"
+          }
+        }
+      },
+      "rounded": {
+        "$type": "number",
+        "$value": "{traton.unit.32}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/32"
+          }
+        }
+      },
+      "circle": {
+        "$type": "number",
+        "$value": "{traton.unit.9999}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/9999"
+          }
+        }
+      },
+      "for-surface": {
+        "clickable": {
+          "$type": "number",
+          "$value": "{traton.unit.9999}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/unit/9999"
+            }
+          }
+        },
+        "field": {
+          "$type": "number",
+          "$value": "{traton.unit.2}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/unit/2"
+            }
+          }
+        },
+        "inverse": {
+          "$type": "number",
+          "$value": "{traton.unit.2}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/unit/2"
+            }
+          }
+        }
+      },
+      "for-area": {
+        "large": {
+          "$type": "number",
+          "$value": "{traton.unit.8}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/unit/8"
+            }
+          }
+        },
+        "small": {
+          "$type": "number",
+          "$value": "{traton.unit.4}",
+          "$extensions": {
+            "com.figma.aliasData": {
+              "targetVariableName": "traton/unit/4"
+            }
+          }
+        }
+      }
+    },
+    "space": {
+      "tiny": {
+        "$type": "number",
+        "$value": "{traton.unit.4}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/4"
+          }
+        }
+      },
+      "small": {
+        "$type": "number",
+        "$value": "{traton.unit.16}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/16"
+          }
+        }
+      },
+      "medium": {
+        "$type": "number",
+        "$value": "{traton.unit.24}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/24"
+          }
+        }
+      },
+      "large": {
+        "$type": "number",
+        "$value": "{traton.unit.48}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/48"
+          }
+        }
+      },
+      "huge": {
+        "$type": "number",
+        "$value": "{traton.unit.80}",
+        "$extensions": {
+          "com.figma.aliasData": {
+            "targetVariableName": "traton/unit/80"
+          }
+        }
+      }
+    }
+  },
+  "text": {
+    "traton": {
+      "light": {
+        "display": {
+          "01": {
             "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "18px"
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
             },
             "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.semi-bold}"
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 216
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 227
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 1.0800000429153442
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 156
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 164
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0.7799999713897705
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          },
+          "03": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 112
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 118
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0.5600000023841858
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          },
+          "04": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 80
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 84
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0.4000000059604645
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          },
+          "05": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 56
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 59
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0.2800000011920929
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "uppercase"
+            }
+          }
+        },
+        "headline": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 40
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 42
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 32
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 40
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "03": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 24
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 30
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "04": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 20
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 25
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "05": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.semi-bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/semi-bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 16
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 22
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "06": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.semi-bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/semi-bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 14
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 20
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "paragraph": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 24
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 30
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.display}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/display"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.medium}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/medium"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 20
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 25
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "body": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 16
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 22
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 14
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 20
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "link": {
+          "01": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 16
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 22
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          },
+          "02": {
+            "font-family": {
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.regular}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/regular"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 14
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 20
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
+            },
+            "text-transform": {
+              "$type": "string",
+              "$value": "none"
+            }
+          }
+        },
+        "component": {
+          "title": {
+            "01": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.semi-bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/semi-bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 18
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              },
+              "font-family 2": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight 2": {
+                "$type": "number",
+                "$value": "{traton.font.weight.semi-bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/semi-bold"
+                  }
+                }
+              },
+              "font-size 2": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height 2": {
+                "$type": "number",
+                "$value": 18
+              },
+              "letter-spacing 2": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform 2": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "02": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.semi-bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/semi-bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 10
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 14
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0.4000000059604645
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          },
+          "label": {
+            "01": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.medium}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/medium"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 12
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 17
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "02": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.medium}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/medium"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 10
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 14
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          },
+          "body": {
+            "01": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "02": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.regular}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/regular"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 20
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "component": {
+    "traton": {
+      "light": {
+        "accordion": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "badge": {
+          "background": {
+            "$type": "color",
+            "$value": "{traton.color.yellow.300}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/yellow/300"
+              }
+            }
+          },
+          "text": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.black}"
+          }
+        },
+        "button": {
+          "primary-text": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.white}"
+          }
+        },
+        "cookie": {
+          "primary-text inverse": {
+            "$type": "color",
+            "$value": "{color.brand.neutral.black}"
+          }
+        },
+        "card": {
+          "primary": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/light"
+              }
+            }
+          },
+          "secondary": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.light}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/light"
+              }
+            }
+          },
+          "padding": {
+            "padding": {
+              "$type": "number",
+              "$value": "{traton.unit.0}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/0"
+                }
+              }
+            }
+          },
+          "radius": {
+            "corner": {
+              "$type": "number",
+              "$value": "{traton.unit.0}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/0"
+                }
+              }
+            }
+          }
+        },
+        "chip": {
+          "border": {
+            "selected focus border": {
+              "$type": "color",
+              "$value": "{color.foreground.border.accent.focus}"
+            }
+          },
+          "color": {
+            "default": {
+              "$type": "color",
+              "$value": "{color.background.surface.200}"
+            },
+            "hover": {
+              "$type": "color",
+              "$value": "{color.background.surface.400}"
+            },
+            "focused": {
+              "$type": "color",
+              "$value": "{color.background.base}"
+            },
+            "selected": {
+              "$type": "color",
+              "$value": "{color.background.surface.300}"
+            },
+            "disabled": {
+              "$type": "color",
+              "$value": "{color.background.surface.100}"
+            },
+            "disabled selected": {
+              "$type": "color",
+              "$value": "{color.background.surface.200}"
+            },
+            "focused on selected": {
+              "$type": "color",
+              "$value": "{color.background.surface.200}"
+            },
+            "hover on selected": {
+              "$type": "color",
+              "$value": "{color.background.surface.400}"
             }
           },
           "foreground": {
-            "strong": {
+            "inverse": {
               "$type": "color",
-              "$value": "{color.foreground.icon.strong}"
+              "$value": "{color.foreground.text.strong}"
             },
-            "selected": {
+            "foreground disabled selected": {
               "$type": "color",
-              "$value": "{color.foreground.icon.strong}"
-            },
-            "defined": {
-              "$type": "color",
-              "$value": "{color.foreground.icon.defined}"
+              "$value": "{color.foreground.text.disabled}"
             }
           }
         },
-        "text": {
-          "component title 01 menu": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.medium}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "18px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            }
-          },
-          "application name": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.display}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.medium}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            }
-          }
-        }
-      },
-      "🔴🔵 side menu": {
-        "states": {
-          "default": {
-            "$type": "color",
-            "$value": "{traton.color.grey.50}"
-          },
+        "dropdown": {
           "hover": {
             "$type": "color",
-            "$value": "{traton.color.grey.100}"
-          },
-          "pressed": {
-            "$type": "color",
-            "$value": "{traton.color.grey.150}"
+            "$value": "{color.background.surface.100}"
           },
           "focus": {
             "$type": "color",
-            "$value": "{traton.color.grey.50}"
+            "$value": "{color.background.layer-01}"
           },
-          "selected": {
-            "$type": "color",
-            "$value": "{traton.color.grey.100}"
-          }
-        },
-        "dividers": {
-          "default": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.invisible.light}"
-          }
-        },
-        "icons": {
-          "icon size": {
-            "$type": "dimension",
-            "$value": "{traton.unit.16}"
-          },
-          "close icon size": {
-            "$type": "dimension",
-            "$value": "{traton.unit.20}"
-          }
-        },
-        "padding": {
-          "sub menu item": {
-            "top and bottom": {
-              "$type": "dimension",
-              "$value": "{scania.unit.8}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{scania.unit.12}"
-            },
-            "chevron right padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "profile": {
-              "left": {
-                "$type": "dimension",
-                "$value": "{traton.unit.4}"
-              },
-              "gap": {
-                "$type": "dimension",
-                "$value": "{traton.unit.12}"
-              },
-              "top + bottom": {
-                "$type": "dimension",
-                "$value": "{traton.unit.4}"
-              }
-            },
-            "selected marker height": {
-              "$type": "dimension",
-              "$value": "{traton.unit.40}"
-            }
-          },
-          "top level": {
-            "left": {
-              "$type": "dimension",
-              "$value": "{traton.unit.16}"
-            },
-            "horizontal gap padding": {
-              "$type": "dimension",
-              "$value": "{traton.unit.16}"
-            },
-            "top": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "bottom collapsible": {
-              "$type": "dimension",
-              "$value": "{traton.unit.16}"
-            }
-          },
-          "collapsed item": {
-            "left + right inner icon padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "top + bottom inner icon padding": {
-              "$type": "dimension",
-              "$value": "12px"
-            }
-          },
-          "sub page": {
-            "top + bottom": {
-              "$type": "dimension",
-              "$value": "{traton.unit.8}"
-            },
-            "left with icon": {
-              "$type": "dimension",
-              "$value": "{traton.unit.40}"
-            },
-            "left no icon": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "left profile": {
-              "$type": "dimension",
-              "$value": "{traton.unit.48}"
-            },
-            "top group": {
-              "$type": "dimension",
-              "$value": "{traton.unit.4}"
-            },
-            "selected marker height": {
-              "$type": "dimension",
-              "$value": "34px"
-            },
-            "selected marker width": {
-              "$type": "dimension",
-              "$value": "{traton.unit.8}"
-            }
-          }
-        },
-        "radius": {
-          "corner radius": {
-            "$type": "dimension",
-            "$value": "{traton.unit.8}"
-          }
-        }
-      },
-      "table": {
-        "secondary": {
-          "cell": {
-            "$type": "color",
-            "$value": "{color.background.layer-02}"
-          }
-        },
-        "pagination": {
-          "dropdown": {
-            "$type": "color",
-            "$value": "{color.background.base}"
-          },
-          "base": {
-            "$type": "color",
-            "$value": "{color.background.surface.200}"
-          }
-        },
-        "cell-hover": {
-          "$type": "color",
-          "$value": "{color.background.surface.200}"
-        },
-        "cell": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        }
-      },
-      "stepper": {
-        "success": {
-          "$type": "color",
-          "$value": "{color.system.success.default}"
-        }
-      },
-      "spinner": {
-        "color": {
-          "$type": "color",
-          "$value": "{traton.color.blue.800}"
-        }
-      },
-      "footer": {
-        "text color": {
-          "copyright": {
-            "$type": "color",
-            "$value": "{traton.color.transparent.600}"
-          },
-          "link-text": {
-            "$type": "color",
-            "$value": "{color.foreground.text.strong}"
-          }
-        },
-        "primary": {
-          "$type": "color",
-          "$value": "{traton.color.grey.50}"
-        },
-        "border": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.light}"
-        }
-      },
-      "dropdown": {
-        "list item": {
           "secondary": {
             "hover": {
               "$type": "color",
@@ -918,981 +2358,1017 @@
               "$value": "{color.background.layer-02}"
             }
           },
-          "focus": {
-            "$type": "color",
-            "$value": "{color.background.layer-01}"
-          },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.background.surface.100}"
+          "list item": {
+            "hover": {
+              "$type": "color",
+              "$value": "{color.background.surface.100}"
+            },
+            "focus": {
+              "$type": "color",
+              "$value": "{color.background.layer-01}"
+            },
+            "secondary": {
+              "hover": {
+                "$type": "color",
+                "$value": "{color.background.surface.100}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{color.background.layer-02}"
+              }
+            }
           }
         },
-        "secondary": {
-          "hover": {
+        "footer": {
+          "border": {
             "$type": "color",
-            "$value": "{color.background.surface.100}"
+            "$value": "{traton.color.transparent.invisible.light}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/light"
+              }
+            }
           },
-          "focus": {
+          "primary": {
             "$type": "color",
-            "$value": "{color.background.layer-02}"
+            "$value": "{traton.color.grey.50}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/grey/50"
+              }
+            }
+          },
+          "text color": {
+            "link-text": {
+              "$type": "color",
+              "$value": "{color.foreground.text.strong}"
+            },
+            "copyright": {
+              "$type": "color",
+              "$value": "{traton.color.transparent.600}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/transparent/600"
+                }
+              }
+            }
           }
         },
-        "focus": {
-          "$type": "color",
-          "$value": "{color.background.layer-01}"
-        },
-        "hover": {
-          "$type": "color",
-          "$value": "{color.background.surface.100}"
-        }
-      },
-      "badge": {
-        "text": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.black}"
-        },
-        "background": {
-          "$type": "color",
-          "$value": "{traton.color.yellow.300}"
-        }
-      },
-      "button": {
-        "primary-text": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.white}"
-        }
-      },
-      "🔵 card": {
-        "secondary": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.light}"
-        },
-        "primary": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.light}"
-        },
-        "padding": {
-          "padding": {
-            "$type": "dimension",
-            "$value": "{traton.unit.0}"
+        "header": {
+          "color": {
+            "popovers": {
+              "$type": "color",
+              "$value": "{color.background.layer-01}"
+            },
+            "foreground": {
+              "strong": {
+                "$type": "color",
+                "$value": "{color.foreground.icon.strong}"
+              },
+              "defined": {
+                "$type": "color",
+                "$value": "{color.foreground.icon.defined}"
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{color.foreground.icon.strong}"
+              }
+            },
+            "background": {
+              "default": {
+                "$type": "color",
+                "$value": "{traton.color.transparent.invisible.light}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/color/transparent/invisible/light"
+                  }
+                }
+              },
+              "hover": {
+                "$type": "color",
+                "$value": "{color.background.layer-01}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{color.background.base}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{color.background.layer-01}"
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{color.background.base}"
+              },
+              "border": {
+                "$type": "color",
+                "$value": "{traton.color.transparent.invisible.light}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/color/transparent/invisible/light"
+                  }
+                }
+              },
+              "profile": {
+                "$type": "color",
+                "$value": "{color.background.surface.100}"
+              }
+            },
+            "expressive mobile menu": {
+              "primary": {
+                "$type": "color",
+                "$value": "{color.background.base}"
+              },
+              "focus": {
+                "$type": "color",
+                "$value": "{color.background.base}"
+              },
+              "pressed": {
+                "$type": "color",
+                "$value": "{color.background.surface.100}"
+              },
+              "selected": {
+                "$type": "color",
+                "$value": "{traton.color.base.neutral-white}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/color/base/neutral-white"
+                  }
+                }
+              },
+              "selected expressive": {
+                "$type": "color",
+                "$value": "{traton.color.base.neutral-white}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/color/base/neutral-white"
+                  }
+                }
+              }
+            }
+          },
+          "text": {
+            "application name": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.display}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/display"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.medium}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/medium"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            },
+            "items": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.medium}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/medium"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 16
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              },
+              "profile text": {
+                "font-family": {
+                  "$type": "string",
+                  "$value": "{traton.font.family.default}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "traton/font/family/default"
+                    }
+                  }
+                },
+                "font-weight": {
+                  "$type": "number",
+                  "$value": "{traton.font.weight.semi-bold}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "traton/font/weight/semi-bold"
+                    }
+                  }
+                },
+                "font-size": {
+                  "$type": "number",
+                  "$value": 12
+                },
+                "line-height": {
+                  "$type": "number",
+                  "$value": 18
+                },
+                "letter-spacing": {
+                  "$type": "number",
+                  "$value": 0
+                },
+                "text-transform": {
+                  "$type": "string",
+                  "$value": "none"
+                }
+              }
+            },
+            "sub item selected": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.semi-bold}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/semi-bold"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 18
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          },
+          "space": {
+            "profile padding": {
+              "$type": "number",
+              "$value": "{traton.unit.20}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/20"
+                }
+              }
+            },
+            "profile size": {
+              "$type": "number",
+              "$value": "{traton.unit.24}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/24"
+                }
+              }
+            }
           }
-        }
-      },
-      "chip": {
-        "color": {
-          "focused on selected": {
-            "$type": "color",
-            "$value": "{color.background.surface.200}"
+        },
+        "input-field": {
+          "radius": {
+            "top-left": {
+              "$type": "number",
+              "$value": "{traton.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/4"
+                }
+              }
+            },
+            "top-right": {
+              "$type": "number",
+              "$value": "{traton.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/4"
+                }
+              }
+            },
+            "bottom-left": {
+              "$type": "number",
+              "$value": "{traton.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/4"
+                }
+              }
+            },
+            "bottom-right": {
+              "$type": "number",
+              "$value": "{traton.unit.4}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/4"
+                }
+              }
+            }
           },
-          "disabled": {
+          "border": {
+            "width": {
+              "top": {
+                "$type": "number",
+                "$value": "{traton.unit.1}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/1"
+                  }
+                }
+              },
+              "right": {
+                "$type": "number",
+                "$value": "{traton.unit.1}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/1"
+                  }
+                }
+              },
+              "bottom": {
+                "$type": "number",
+                "$value": "{traton.unit.1}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/1"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{traton.unit.1}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/1"
+                  }
+                }
+              }
+            },
+            "focus": {
+              "top": {
+                "$type": "number",
+                "$value": "{traton.unit.2}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/2"
+                  }
+                }
+              },
+              "right": {
+                "$type": "number",
+                "$value": "{traton.unit.2}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/2"
+                  }
+                }
+              },
+              "bottom": {
+                "$type": "number",
+                "$value": "{traton.unit.2}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/2"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{traton.unit.2}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "logo": {
+          "fill": {
             "$type": "color",
-            "$value": "{color.background.surface.100}"
+            "$value": "{traton.color.base.neutral-black}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/base/neutral-black"
+              }
+            }
           },
-          "focused": {
-            "$type": "color",
-            "$value": "{color.background.base}"
+          "string": {
+            "wordmark": {
+              "$type": "string",
+              "$value": "Traton"
+            }
           },
-          "hover": {
-            "$type": "color",
-            "$value": "{color.background.surface.400}"
+          "visibility": {
+            "TDS Left Logo": {
+              "$type": "number",
+              "$value": 0
+            },
+            "TDS Right Logo": {
+              "$type": "number",
+              "$value": 0
+            },
+            "TRA Left Logo": {
+              "$type": "number",
+              "$value": 1
+            },
+            "TRA Right Logo": {
+              "$type": "number",
+              "$value": 1
+            },
+            "Footer Right Logo": {
+              "$type": "number",
+              "$value": 1
+            }
+          }
+        },
+        "side-menu": {
+          "color": {
+            "divider": {
+              "$type": "color",
+              "$value": "{traton.color.transparent.invisible.light}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/color/transparent/invisible/light"
+                }
+              }
+            }
           },
-          "selected": {
-            "$type": "color",
-            "$value": "{color.background.surface.300}"
+          "size": {
+            "icon": {
+              "$type": "number",
+              "$value": "{traton.unit.16}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/16"
+                }
+              }
+            },
+            "close icon size": {
+              "$type": "number",
+              "$value": "{traton.unit.20}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/20"
+                }
+              }
+            }
           },
-          "disabled selected": {
-            "$type": "color",
-            "$value": "{color.background.surface.200}"
+          "space": {
+            "top level": {
+              "top": {
+                "$type": "number",
+                "$value": 14
+              },
+              "bottom collapsible": {
+                "$type": "number",
+                "$value": "{traton.unit.16}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/16"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{traton.unit.16}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/16"
+                  }
+                }
+              },
+              "horizontal gap padding": {
+                "$type": "number",
+                "$value": "{traton.unit.16}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/16"
+                  }
+                }
+              },
+              "vertical gap padding": {
+                "$type": "number",
+                "$value": "{traton.unit.16}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/16"
+                  }
+                }
+              }
+            },
+            "sub menu item": {
+              "top and bottom": {
+                "$type": "number",
+                "$value": "{traton.unit.8}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/8"
+                  }
+                }
+              },
+              "left": {
+                "$type": "number",
+                "$value": "{traton.unit.12}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/12"
+                  }
+                }
+              },
+              "chevron right padding": {
+                "$type": "number",
+                "$value": "{traton.unit.12}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/12"
+                  }
+                }
+              },
+              "selected marker height": {
+                "$type": "number",
+                "$value": "{traton.unit.40}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/40"
+                  }
+                }
+              },
+              "profile": {
+                "left": {
+                  "$type": "number",
+                  "$value": "{traton.unit.8}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "traton/unit/8"
+                    }
+                  }
+                },
+                "gap": {
+                  "$type": "number",
+                  "$value": "{traton.unit.8}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "traton/unit/8"
+                    }
+                  }
+                },
+                "top + bottom": {
+                  "$type": "number",
+                  "$value": "{traton.unit.4}",
+                  "$extensions": {
+                    "com.figma.aliasData": {
+                      "targetVariableName": "traton/unit/4"
+                    }
+                  }
+                }
+              }
+            },
+            "sub page": {
+              "top + bottom": {
+                "$type": "number",
+                "$value": "{traton.unit.8}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/8"
+                  }
+                }
+              },
+              "left with icon": {
+                "$type": "number",
+                "$value": "{traton.unit.40}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/40"
+                  }
+                }
+              },
+              "left no icon": {
+                "$type": "number",
+                "$value": 14
+              },
+              "left profile": {
+                "$type": "number",
+                "$value": "{traton.unit.48}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/48"
+                  }
+                }
+              },
+              "top group": {
+                "$type": "number",
+                "$value": "{traton.unit.4}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/4"
+                  }
+                }
+              },
+              "selected marker height": {
+                "$type": "number",
+                "$value": 34
+              },
+              "selected marker width": {
+                "$type": "number",
+                "$value": "{traton.unit.8}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/8"
+                  }
+                }
+              }
+            },
+            "collapsed item": {
+              "left + right inner icon padding": {
+                "$type": "number",
+                "$value": "{traton.unit.12}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/12"
+                  }
+                }
+              },
+              "top + bottom inner icon padding": {
+                "$type": "number",
+                "$value": "{traton.unit.12}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/unit/12"
+                  }
+                }
+              }
+            }
           },
-          "hover on selected": {
+          "radius": {
+            "corner": {
+              "$type": "number",
+              "$value": "{traton.unit.8}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/unit/8"
+                }
+              }
+            }
+          },
+          "text": {
+            "items": {
+              "font-family": {
+                "$type": "string",
+                "$value": "{traton.font.family.default}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/family/default"
+                  }
+                }
+              },
+              "font-weight": {
+                "$type": "number",
+                "$value": "{traton.font.weight.medium}",
+                "$extensions": {
+                  "com.figma.aliasData": {
+                    "targetVariableName": "traton/font/weight/medium"
+                  }
+                }
+              },
+              "font-size": {
+                "$type": "number",
+                "$value": 14
+              },
+              "line-height": {
+                "$type": "number",
+                "$value": 18
+              },
+              "letter-spacing": {
+                "$type": "number",
+                "$value": 0
+              },
+              "text-transform": {
+                "$type": "string",
+                "$value": "none"
+              }
+            }
+          }
+        },
+        "shadow": {
+          "base-modifier": {
             "$type": "color",
-            "$value": "{color.background.surface.400}"
+            "$value": "{traton.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/dark"
+              }
+            }
           },
           "default": {
             "$type": "color",
-            "$value": "{color.background.surface.200}"
-          }
-        },
-        "foreground": {
-          "inverse": {
+            "$value": "{traton.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/dark"
+              }
+            }
+          },
+          "hover": {
             "$type": "color",
-            "$value": "{color.foreground.text.strong}"
+            "$value": "{traton.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/dark"
+              }
+            }
           },
-          "foreground disabled selected": {
+          "pressed": {
             "$type": "color",
-            "$value": "{color.foreground.text.disabled}"
-          }
-        },
-        "border": {
-          "selected focus border": {
-            "$type": "color",
-            "$value": "{color.foreground.border.accent.focus}"
-          }
-        }
-      },
-      "logo": {
-        "fill": {
-          "$type": "color",
-          "$value": "{traton.color.base.neutral-black}"
-        },
-        "visibility": {
-          "Footer Right Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          },
-          "TRA Left Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          },
-          "TDS Right Logo": {
-            "$type": "boolean",
-            "$value": "false"
-          },
-          "TRA Right Logo": {
-            "$type": "boolean",
-            "$value": "true"
-          },
-          "TDS Left Logo": {
-            "$type": "boolean",
-            "$value": "false"
-          }
-        },
-        "string": {
-          "wordmark": {
-            "$type": "text",
-            "$value": "Traton"
-          }
-        }
-      },
-      "shadow": {
-        "hover": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        },
-        "default": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        },
-        "pressed": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        },
-        "dragged": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        },
-        "base-modifier": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        },
-        "focus": {
-          "$type": "color",
-          "$value": "{traton.color.transparent.invisible.dark}"
-        }
-      },
-      "cookie": {
-        "primary-text inverse": {
-          "$type": "color",
-          "$value": "{color.brand.neutral.black}"
-        }
-      },
-      "text": {
-        "detail 01 bold": {
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "17px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "12px"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.semi-bold}"
-          }
-        }
-      },
-      "🔵  input-field": {
-        "radius": {
-          "top-left": {
-            "$type": "dimension",
-            "$value": "{traton.unit.4}"
-          },
-          "top-right": {
-            "$type": "dimension",
-            "$value": "{traton.unit.4}"
-          },
-          "bottom-left": {
-            "$type": "dimension",
-            "$value": "{traton.unit.4}"
-          },
-          "bottom-right": {
-            "$type": "dimension",
-            "$value": "{traton.unit.4}"
-          }
-        },
-        "border": {
-          "width": {
-            "top": {
-              "$type": "dimension",
-              "$value": "{traton.unit.1}"
-            },
-            "right": {
-              "$type": "dimension",
-              "$value": "{traton.unit.1}"
-            },
-            "bottom": {
-              "$type": "dimension",
-              "$value": "{traton.unit.1}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{traton.unit.1}"
+            "$value": "{traton.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/dark"
+              }
             }
           },
           "focus": {
-            "top": {
-              "$type": "dimension",
-              "$value": "{traton.unit.2}"
-            },
-            "right": {
-              "$type": "dimension",
-              "$value": "{traton.unit.2}"
-            },
-            "bottom": {
-              "$type": "dimension",
-              "$value": "{traton.unit.2}"
-            },
-            "left": {
-              "$type": "dimension",
-              "$value": "{traton.unit.2}"
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/dark"
+              }
+            }
+          },
+          "dragged": {
+            "$type": "color",
+            "$value": "{traton.color.transparent.invisible.dark}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/transparent/invisible/dark"
+              }
             }
           }
-        }
-      }
-    },
-    "text": {
-      "display": {
-        "01": {
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "1.08px"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "216px"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "227px"
+        },
+        "spinner": {
+          "color": {
+            "$type": "color",
+            "$value": "{traton.color.blue.800}",
+            "$extensions": {
+              "com.figma.aliasData": {
+                "targetVariableName": "traton/color/blue/800"
+              }
+            }
           }
         },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "156px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "164px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0.78px"
+        "stepper": {
+          "success": {
+            "$type": "color",
+            "$value": "{color.system.success.default}"
           }
         },
-        "03": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
+        "table": {
+          "cell": {
+            "$type": "color",
+            "$value": "{color.background.layer-01}"
           },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
+          "cell-hover": {
+            "$type": "color",
+            "$value": "{color.background.surface.200}"
           },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
+          "pagination": {
+            "base": {
+              "$type": "color",
+              "$value": "{color.background.surface.200}"
+            },
+            "dropdown": {
+              "$type": "color",
+              "$value": "{color.background.base}"
+            }
           },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "112px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "118px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0.56px"
+          "secondary": {
+            "cell": {
+              "$type": "color",
+              "$value": "{color.background.layer-02}"
+            }
           }
         },
-        "04": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "80px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "84px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0.4px"
-          }
-        },
-        "05": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "uppercase"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "56px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "59px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0.28px"
-          }
-        }
-      },
-      "headline": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "40px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "42px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "32px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "40px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "03": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "30px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "04": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "25px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "05": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.semi-bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "22px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "06": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.semi-bold}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        }
-      },
-      "paragraph": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "24px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "30px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.display}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.medium}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "25px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        }
-      },
-      "body": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "22px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        }
-      },
-      "component": {
         "text": {
-          "01": {
+          "detail 01 bold": {
             "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
+              "$type": "string",
+              "$value": "{traton.font.family.default}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/family/default"
+                }
+              }
+            },
+            "font-weight": {
+              "$type": "number",
+              "$value": "{traton.font.weight.semi-bold}",
+              "$extensions": {
+                "com.figma.aliasData": {
+                  "targetVariableName": "traton/font/weight/semi-bold"
+                }
+              }
+            },
+            "font-size": {
+              "$type": "number",
+              "$value": 12
+            },
+            "line-height": {
+              "$type": "number",
+              "$value": 17
+            },
+            "letter-spacing": {
+              "$type": "number",
+              "$value": 0
             },
             "text-transform": {
-              "$type": "text",
+              "$type": "string",
               "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "16px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            }
-          },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.regular}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "20px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
             }
           }
         },
-        "label": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.medium}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "12px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "17px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
+        "__comp-init": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "banner": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "block": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "breadcrumbs": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "checkbox": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "divider": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "icon": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "link": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "message": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "modal": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "popover": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          },
+          "core": {
+            "placeholder-fill": {
+              "$type": "color",
+              "$value": "#c0ffee"
             }
           },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.medium}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "10px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
+          "menu": {
+            "placeholder-fill": {
+              "$type": "color",
+              "$value": "#c0ffee"
+            }
+          },
+          "canvas": {
+            "placeholder-fill": {
+              "$type": "color",
+              "$value": "#c0ffee"
             }
           }
         },
-        "title": {
-          "01": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "text-transform 2": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-family 2": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.semi-bold}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "18px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0px"
-            },
-            "letter-spacing 2": {
-              "$type": "dimension",
-              "$value": "0px"
-            },
-            "font-size 2": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "line-height 2": {
-              "$type": "dimension",
-              "$value": "18px"
-            },
-            "font-weight 2": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.semi-bold}"
-            }
-          },
-          "02": {
-            "font-family": {
-              "$type": "text",
-              "$value": "{traton.font.family.default}"
-            },
-            "text-transform": {
-              "$type": "text",
-              "$value": "none"
-            },
-            "font-weight": {
-              "$type": "dimension",
-              "$value": "{traton.font.weight.semi-bold}"
-            },
-            "font-size": {
-              "$type": "dimension",
-              "$value": "10px"
-            },
-            "line-height": {
-              "$type": "dimension",
-              "$value": "14px"
-            },
-            "letter-spacing": {
-              "$type": "dimension",
-              "$value": "0.4px"
-            }
-          }
-        }
-      },
-      "link": {
-        "01": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "16px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "22px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
+        "radio-button": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
           }
         },
-        "02": {
-          "font-family": {
-            "$type": "text",
-            "$value": "{traton.font.family.default}"
-          },
-          "text-transform": {
-            "$type": "text",
-            "$value": "none"
-          },
-          "font-weight": {
-            "$type": "dimension",
-            "$value": "{traton.font.weight.regular}"
-          },
-          "font-size": {
-            "$type": "dimension",
-            "$value": "14px"
-          },
-          "line-height": {
-            "$type": "dimension",
-            "$value": "20px"
-          },
-          "letter-spacing": {
-            "$type": "dimension",
-            "$value": "0px"
-          }
-        }
-      }
-    },
-    "dimension": {
-      "space": {
-        "tiny": {
-          "$type": "dimension",
-          "$value": "{traton.unit.4}"
-        },
-        "small": {
-          "$type": "dimension",
-          "$value": "{traton.unit.16}"
-        },
-        "medium": {
-          "$type": "dimension",
-          "$value": "{traton.unit.24}"
-        },
-        "large": {
-          "$type": "dimension",
-          "$value": "{traton.unit.48}"
-        },
-        "huge": {
-          "$type": "dimension",
-          "$value": "{traton.unit.80}"
-        }
-      },
-      "radius": {
-        "for-surface": {
-          "clickable": {
-            "$type": "dimension",
-            "$value": "{traton.unit.9999}"
-          },
-          "field": {
-            "$type": "dimension",
-            "$value": "{traton.unit.2}"
-          },
-          "inverse": {
-            "$type": "dimension",
-            "$value": "{traton.unit.2}"
+        "slider": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
           }
         },
-        "narrow": {
-          "$type": "dimension",
-          "$value": "{traton.unit.4}"
-        },
-        "soft": {
-          "$type": "dimension",
-          "$value": "{traton.unit.8}"
-        },
-        "rounded": {
-          "$type": "dimension",
-          "$value": "{traton.unit.32}"
-        },
-        "circle": {
-          "$type": "dimension",
-          "$value": "{traton.unit.9999}"
-        },
-        "for-area": {
-          "large": {
-            "$type": "dimension",
-            "$value": "{traton.unit.8}"
-          },
-          "small": {
-            "$type": "dimension",
-            "$value": "{traton.unit.4}"
+        "tabs": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
           }
         },
-        "focus-width": {
-          "$type": "dimension",
-          "$value": "{traton.unit.4}"
+        "text-field": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "textarea": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "toast": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "toggle": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
+        },
+        "tooltip": {
+          "placeholder-fill": {
+            "$type": "color",
+            "$value": "#c0ffee"
+          }
         }
       }
     }
   }
+}
