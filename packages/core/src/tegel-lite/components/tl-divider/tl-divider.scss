@@ -6,6 +6,14 @@
 
   background-color: var(--divider-background);
 
+  &--strong {
+    background-color: var(--divider-background-strong);
+  }
+
+  &--discrete {
+    background-color: var(--divider-background-discrete);
+  }
+
   &--horizontal {
     width: 100%;
     height: 1px;

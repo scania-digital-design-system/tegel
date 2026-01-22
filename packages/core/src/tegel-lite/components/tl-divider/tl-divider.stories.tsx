@@ -6,6 +6,17 @@ export default {
     layout: 'centered',
   },
   argTypes: {
+    variant: {
+      name: 'Variant',
+      description: 'Choose Divider color variant.',
+      control: {
+        type: 'radio',
+      },
+      options: ['Discrete', 'Expressive'],
+      table: {
+        defaultValue: { summary: 'Discrete' },
+      },
+    },
     orientation: {
       name: 'Orientation',
       description: 'Choose Divider orientation.',
@@ -35,22 +46,24 @@ export default {
     },
   },
   args: {
+    variant: 'Discrete',
     orientation: 'Horizontal',
     width: 150,
     height: 150,
   },
 };
 
-const Template = ({ orientation, width, height }) => {
+const Template = ({ orientation, variant, width, height }) => {
   const orientationClass = orientation === 'Horizontal' ? 'horizontal' : 'vertical';
+  const variantClass = variant === 'Expressive' ? 'strong' : 'discrete';
   const style = orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`;
 
   return formatHtmlPreview(`
     <!-- Required stylesheet 
       "@scania/tegel-lite/tl-divider.css"
     -->
-        <div style="${style}"->
-          <div class="tl-divider tl-divider--${orientationClass}"/>
+        <div style="${style}">
+          <div class="tl-divider tl-divider--${variantClass} tl-divider--${orientationClass}"/>
         </div>
   `);
 };
