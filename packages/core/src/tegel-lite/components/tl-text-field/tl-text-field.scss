@@ -347,7 +347,11 @@
   }
 
   .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    display: none;
+    color: var(--text-field-error);
+
+    .tl-text-field__charcounter-divider {
+      color: var(--text-field-error);
+    }
   }
 }
 
