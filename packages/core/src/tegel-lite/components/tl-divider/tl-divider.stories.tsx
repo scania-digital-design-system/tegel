@@ -55,7 +55,7 @@ export default {
 
 const Template = ({ orientation, variant, width, height }) => {
   const orientationClass = orientation === 'Horizontal' ? 'horizontal' : 'vertical';
-  const variantClass = variant === 'Expressive' ? 'strong' : 'discrete';
+  const variantClass = variant === 'Expressive' ? 'expressive' : 'discrete';
   const style = orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`;
 
   return formatHtmlPreview(`
