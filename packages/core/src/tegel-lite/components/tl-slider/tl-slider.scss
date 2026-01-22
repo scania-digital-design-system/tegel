@@ -74,10 +74,7 @@
 .tl-slider__control-minus,
 .tl-slider__control-plus {
   flex-shrink: 0;
-
-  &:hover {
-    border: none;
-  }
+  border: none !important;
 }
 
 .tl-slider__track {
