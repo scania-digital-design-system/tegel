@@ -129,11 +129,15 @@ const ComponentPopoverCanvas = ({ canvasPosition, animation, modeVariant }) => {
       </div>
 
       <script>
-        const actionButton = document.getElementById('action-button');
-        const popoverCanvas = document.getElementById('my-popover-canvas');
-        actionButton.addEventListener('click', () => {
-          popoverCanvas.close();
-        });
+        (function() {
+          const actionButton = document.getElementById('action-button');
+          const popoverCanvas = document.getElementById('my-popover-canvas');
+          if (actionButton && popoverCanvas) {
+            actionButton.addEventListener('click', () => {
+              popoverCanvas.close();
+            });
+          }
+        })();
       </script>
     `,
   );

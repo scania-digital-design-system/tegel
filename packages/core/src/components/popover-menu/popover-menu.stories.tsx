@@ -170,11 +170,15 @@ const Template = ({ menuPosition, icons, fluidWidth, animation, modeVariant }) =
     </div>
 
     <script>
-      const actionButton = document.getElementById('action-button');
-      const popoverMenu = document.getElementById('my-popover-menu');
-      actionButton.addEventListener('click', () => {
-        popoverMenu.close();
-      });
+      (function() {
+        const actionButton = document.getElementById('action-button');
+        const popoverMenu = document.getElementById('my-popover-menu');
+        if (actionButton && popoverMenu) {
+          actionButton.addEventListener('click', () => {
+            popoverMenu.close();
+          });
+        }
+      })();
     </script>
     `,
   );
