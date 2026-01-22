@@ -119,9 +119,8 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
           accordionItems.forEach((item, index) => {
             const button = item.querySelector('button');
             const panel = item.querySelector('.tl-accordion__panel');
-            const icon = item.querySelector('.tl-accordion__icon');
             
-            if (!button || !panel || !icon) return;
+            if (!button || !panel) return;
             
             if (button._accordionHandler) {
               button.removeEventListener('click', button._accordionHandler);
@@ -138,11 +137,9 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
               if (isExpanded) {
                 item.classList.remove('tl-accordion__item--expanded');
                 panel.style.display = 'none';
-                icon.style.transform = 'rotate(0deg)';
               } else {
                 item.classList.add('tl-accordion__item--expanded');
                 panel.style.display = 'block';
-                icon.style.transform = 'rotate(180deg)';
               }
             };
             
