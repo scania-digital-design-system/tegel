@@ -145,91 +145,84 @@ const Template = ({ persistent, collapsible, collapsed }) => {
             <aside class="tl-side-menu__aside">
                <div class="tl-side-menu__navigation">
                   <div class="tl-side-menu__close">
-                     <div class="tl-side-menu__item">
-                        <button id="tl-close">
+                     <button class="tl-side-menu__item" id="tl-close">
                         <span class="tl-icon tl-icon--cross tl-icon--20" aria-hidden="true"></span>
-                        </button>
-                     </div>
+                     </button>
                   </div>
                   <div class="tl-side-menu__list-wrapper">
-                     <ul class="tl-side-menu__list tl-side-menu__list--upper">
+                     <ul class="tl-side-menu__upper-list">
                         <li>
-                           <div class="tl-side-menu__item-wrapper">
-                              <div class="tl-side-menu__item tl-side-menu__item--selected"><button><span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>About us</button></div>
+                           <button class="tl-side-menu__item tl-side-menu__item--selected">
+                              <span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>
+                              About us
+                           </button>
+                        </li>
+                        <li>
+                           <button class="tl-side-menu__item">
+                              <span class="tl-icon tl-icon--truck ${iconSize}" aria-hidden="true"></span>
+                              Trucks
+                           </button>
+                        </li>
+                        <li class="tl-side-menu__dropdown" id="dropdown">
+                           <button class="tl-side-menu__item tl-side-menu__item--selected" id="dropdown-trigger">
+                              <span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>
+                              Dropdown
+                           </button>
+                           <div class="tl-side-menu__dropdown-menu">
+                              <span class="tl-side-menu__dropdown-header">Dropdown</span>
+                              <ul class="tl-side-menu__dropdown-list">
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown list item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Dropdown list item</button>
+                                 </li>
+                              </ul>
                            </div>
                         </li>
                         <li>
-                           <div class="tl-side-menu__item-wrapper">
-                              <div class="tl-side-menu__item"><button><span class="tl-icon tl-icon--truck ${iconSize}" aria-hidden="true"></span>Trucks</button></div>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="tl-side-menu__dropdown-wrapper">
-                              <div class="tl-side-menu__dropdown" id="dropdown">
-                                 <div class="tl-side-menu__item tl-side-menu__item--selected"><button id="dropdown-trigger"><span class="tl-icon tl-icon--info ${iconSize}" aria-hidden="true"></span>Dropdown<span class="tl-side-menu__dropdown-icon tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></button></div>
-                                 <div class="tl-side-menu__dropdown-menu">
-                                    <div class="tl-side-menu__dropdown-header"><span>Dropdown</span></div>
-                                    <div class="tl-side-menu__dropdown-list">
-                                       <div class="tl-side-menu__dropdown-item-wrapper">
-                                          <div class="tl-side-menu__dropdown-list-item"><button>Dropdown list item</button></div>
-                                       </div>
-                                       <div class="tl-side-menu__dropdown-item-wrapper">
-                                          <div class="tl-side-menu__dropdown-list-item tl-side-menu__dropdown-list-item--selected"><button>Dropdown list item</button></div>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </li>
-                        <li>
-                           <div class="tl-side-menu__item-wrapper">
-                              <div class="tl-side-menu__item"><button><span class="tl-icon tl-icon--star ${iconSize}" aria-hidden="true"></span>Values</button></div>
-                           </div>
+                           <button class="tl-side-menu__item">
+                              <span class="tl-icon tl-icon--star ${iconSize}" aria-hidden="true"></span>
+                              Values
+                           </button>
                         </li>
                      </ul>
-                     <ul class="tl-side-menu__list tl-side-menu__list--end">
+                     <ul class="tl-side-menu__end-list">
                         <li>
-                           <div class="tl-side-menu__item-wrapper">
-                              <div class="tl-side-menu__item">
-                                 <button>
-                                    <div class="tl-side-menu__user">
-                                       <div class="tl-side-menu__user-image"><img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"></div>
-                                       <div class="tl-side-menu__user-label">
-                                          Name Namesson
-                                          <div class="subheader">Company name</div>
-                                       </div>
-                                    </div>
-                                 </button>
+                           <button class="tl-side-menu__item">
+                              <div class="tl-side-menu__user">
+                                 <div class="tl-side-menu__user-image">
+                                    <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg">
+                                 </div>
+                                 <div class="tl-side-menu__user-label">
+                                    Name Namesson
+                                    <div class="subheader">Company name</div>
+                                 </div>
                               </div>
-                           </div>
+                           </button>
                         </li>
-                        <li>
-                           <div class="tl-side-menu__dropdown-wrapper">
-                              <div class="tl-side-menu__dropdown" id="dropdown">
-                                 <div class="tl-side-menu__item">
-                                    <button id="dropdown-trigger">
-                                       <div class="tl-side-menu__user">
-                                          <div class="tl-side-menu__user-image"><img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg"></div>
-                                          <div class="tl-side-menu__user-label">
-                                             Name Namesson
-                                             <div class="subheader">Company name</div>
-                                          </div>
-                                       </div>
-                                       <span class="tl-side-menu__dropdown-icon tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
-                                    </button>
+                        <li class="tl-side-menu__dropdown" id="dropdown2">
+                           <button class="tl-side-menu__item" id="dropdown-trigger2">
+                              <div class="tl-side-menu__user">
+                                 <div class="tl-side-menu__user-image">
+                                    <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg">
                                  </div>
-                                 <div class="tl-side-menu__dropdown-menu">
-                                    <div class="tl-side-menu__dropdown-header"><span>Dropdown</span></div>
-                                    <div class="tl-side-menu__dropdown-list">
-                                       <div class="tl-side-menu__dropdown-item-wrapper">
-                                          <div class="tl-side-menu__dropdown-list-item"><button>Dropdown list item</button></div>
-                                       </div>
-                                       <div class="tl-side-menu__dropdown-item-wrapper">
-                                          <div class="tl-side-menu__dropdown-list-item tl-side-menu__dropdown-list-item--selected"><button>Dropdown list item</button></div>
-                                       </div>
-                                    </div>
+                                 <div class="tl-side-menu__user-label">
+                                    Name Namesson
+                                    <div class="subheader">Company name</div>
                                  </div>
                               </div>
+                           </button>
+                           <div class="tl-side-menu__dropdown-menu">
+                              <span class="tl-side-menu__dropdown-header">Dropdown</span>
+                              <ul class="tl-side-menu__dropdown-list">
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item">Dropdown list item</button>
+                                 </li>
+                                 <li>
+                                    <button class="tl-side-menu__dropdown-item tl-side-menu__dropdown-item--selected">Dropdown list item</button>
+                                 </li>
+                              </ul>
                            </div>
                         </li>
                      </ul>
@@ -294,8 +287,7 @@ const Template = ({ persistent, collapsible, collapsed }) => {
     function toggleDropdown(dd) {
       if (!dd) return;
 
-      const triggerItem = dd.querySelector('.tl-side-menu__item');
-      const btn = triggerItem?.querySelector('button');
+      const btn = dd.querySelector('.tl-side-menu__item');
 
       dd.classList.toggle('tl-side-menu__dropdown--open');
       const isOpen = dd.classList.contains('tl-side-menu__dropdown--open');
@@ -303,20 +295,20 @@ const Template = ({ persistent, collapsible, collapsed }) => {
       btn?.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 
       if (isOpen) {
-        if (triggerItem?.classList.contains('tl-side-menu__item--selected')) {
-          triggerItem.dataset.wasSelected = 'true';
-          triggerItem.classList.remove('tl-side-menu__item--selected');
+        if (btn?.classList.contains('tl-side-menu__item--selected')) {
+          btn.dataset.wasSelected = 'true';
+          btn.classList.remove('tl-side-menu__item--selected');
         }
       } else {
-        if (triggerItem?.dataset.wasSelected === 'true') {
-          triggerItem.classList.add('tl-side-menu__item--selected');
-          delete triggerItem.dataset.wasSelected;
+        if (btn?.dataset.wasSelected === 'true') {
+          btn.classList.add('tl-side-menu__item--selected');
+          delete btn.dataset.wasSelected;
         }
       }
     }
 
     dropdowns.forEach((dd) => {
-      const trigger = dd.querySelector('.tl-side-menu__item > button');
+      const trigger = dd.querySelector('.tl-side-menu__item');
       if (trigger) {
         trigger.setAttribute('aria-haspopup', 'true');
         trigger.setAttribute('aria-expanded', 'false');
