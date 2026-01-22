@@ -2,6 +2,8 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-tooltip {
+  @include detail-05;
+
   position: relative;
   display: inline-block;
 }
