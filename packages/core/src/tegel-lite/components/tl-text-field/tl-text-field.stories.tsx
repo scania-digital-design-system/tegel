@@ -76,10 +76,6 @@ export default {
       name: 'No minimum width',
       control: { type: 'boolean' },
     },
-    disabled: {
-      name: 'Disabled',
-      control: { type: 'boolean' },
-    },
     readonly: {
       name: 'Read only',
       control: { type: 'boolean' },
@@ -88,6 +84,10 @@ export default {
       name: 'Hide read only icon',
       control: { type: 'boolean' },
       if: { arg: 'readonly', eq: true },
+    },
+    disabled: {
+      name: 'Disabled',
+      control: { type: 'boolean' },
     },
   },
   args: {
@@ -106,9 +106,9 @@ export default {
     charCounter: false,
     maxLength: 12,
     noMinWidth: false,
-    disabled: false,
     readonly: false,
     hideReadonlyIcon: false,
+    disabled: false,
   },
 };
 
@@ -128,9 +128,9 @@ const Template = ({
   charCounter,
   maxLength,
   noMinWidth,
-  disabled,
   readonly,
   hideReadonlyIcon,
+  disabled,
 }) => {
   const componentClasses = [
     'tl-text-field',
