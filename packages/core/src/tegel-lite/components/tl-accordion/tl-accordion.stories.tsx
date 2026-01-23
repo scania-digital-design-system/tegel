@@ -90,17 +90,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
       <div class="tl-accordion ${modeVariantClass} ${hideLastBorderClass}">
         <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${paddingClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
-            ${
-              iconPosition === 'start'
-                ? '<span class="tl-accordion__icon"><span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></span>'
-                : ''
-            }
             <span class="tl-accordion__title">First item</span>
-            ${
-              iconPosition === 'end'
-                ? '<span class="tl-accordion__icon"><span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></span>'
-                : ''
-            }
           </button>
           <div class="tl-accordion__panel">
             This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
@@ -110,17 +100,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
         
         <div class="tl-accordion__item ${iconPositionClass} ${disabledClass} ${expandedClass} ${paddingClass}">
           <button class="tl-accordion__header-icon-${iconPosition}">
-            ${
-              iconPosition === 'start'
-                ? '<span class="tl-accordion__icon"><span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></span>'
-                : ''
-            }
             <span class="tl-accordion__title">Second item</span>
-            ${
-              iconPosition === 'end'
-                ? '<span class="tl-accordion__icon"><span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span></span>'
-                : ''
-            }
           </button>
           <div class="tl-accordion__panel">
             This is the panel, which contains associated information with the header. Usually it contains text, set in the same size as the header.
@@ -139,9 +119,8 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
           accordionItems.forEach((item, index) => {
             const button = item.querySelector('button');
             const panel = item.querySelector('.tl-accordion__panel');
-            const icon = item.querySelector('.tl-accordion__icon');
             
-            if (!button || !panel || !icon) return;
+            if (!button || !panel) return;
             
             if (button._accordionHandler) {
               button.removeEventListener('click', button._accordionHandler);
@@ -158,11 +137,9 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
               if (isExpanded) {
                 item.classList.remove('tl-accordion__item--expanded');
                 panel.style.display = 'none';
-                icon.style.transform = 'rotate(0deg)';
               } else {
                 item.classList.add('tl-accordion__item--expanded');
                 panel.style.display = 'block';
-                icon.style.transform = 'rotate(180deg)';
               }
             };
             
