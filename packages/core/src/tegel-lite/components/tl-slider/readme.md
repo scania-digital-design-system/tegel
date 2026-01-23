@@ -44,8 +44,8 @@ The Slider component provides an interactive range input control with optional v
 | `.tl-slider__thumb-inner`        | `<div>`      | Thumb visual element               |
 | `.tl-slider__value`              | `<span>`     | Value display                      |
 | `.tl-slider__value-tooltip`      | `<div>`      | Tooltip on hover                   |
-| `.tl-slider__control--minus`     | `<button>`   | Decrement button                   |
-| `.tl-slider__control--plus`      | `<button>`   | Increment button                   |
+| `.tl-slider__control-minus`      | `<button>`   | Decrement button                   |
+| `.tl-slider__control-plus`       | `<button>`   | Increment button                   |
 | `.tl-slider__input-wrapper`      | `<div>`      | Input field wrapper                |
 | `.tl-slider__input-field`        | `<input>`    | Number input field                 |
 | `.tl-slider__value-dividers`     | `<div>`      | Container for divider marks        |
