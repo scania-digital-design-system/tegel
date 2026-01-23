@@ -6,6 +6,7 @@
 
   position: relative;
   display: inline-block;
+  line-height: var(--tl-tooltip-line-height);
 }
 
 .tl-tooltip__popup {
