@@ -155,9 +155,7 @@ const Template = ({
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
-              <ul class="tl-header__launcher-menu-grid ${
-                isDropdownOpen ? 'tl-header__launcher-menu-grid--open' : ''
-              }">
+              <ul class="tl-header__launcher-menu-grid">
                 <li class="tl-header__launcher-menu-title">title</li>
                 <ul class="tl-header__launcher-menu-list">
                   <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--profile tl-icon--32"></span>My Profile</a></li>
@@ -176,9 +174,7 @@ const Template = ({
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
-              <ul class="tl-header__launcher-menu ${
-                isDropdownOpen ? 'tl-header__launcher-menu--open' : ''
-              }">
+              <ul class="tl-header__launcher-menu">
                 <li class="tl-header__launcher-menu-title">title</li>
                 <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a href="#">My Profile</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My settings</a></li>
@@ -197,9 +193,7 @@ const Template = ({
                   <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User avatar" />
                 </div>
               </button>
-              <ul class="tl-header__user-menu ${
-                isDropdownOpen ? 'tl-header__user-menu--open' : ''
-              }">
+              <ul class="tl-header__user-menu">
                 <li class="tl-header__user-menu-item">
                   <div class="tl-header__user-menu-box">
                     <div class="tl-header__user-menu-content">
