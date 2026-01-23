@@ -9,9 +9,6 @@ The Accordion component allows users to show and hide sections of related conten
   <div class="tl-accordion__item">
     <button class="tl-accordion__header-icon-end">
       <span class="tl-accordion__title">Accordion item</span>
-      <span class="tl-accordion__icon">
-        <span class="tl-icon tl-icon--chevron_down tl-icon--16" aria-hidden="true"></span>
-      </span>
     </button>
     <div class="tl-accordion__panel">
       This is the panel content.
@@ -27,7 +24,6 @@ The Accordion component allows users to show and hide sections of related conten
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-accordion.css
-@scania/tegel-lite/tl-icon.css
 ```
 
 ## Elements
@@ -39,7 +35,6 @@ The Accordion component allows users to show and hide sections of related conten
 | `.tl-accordion__header-icon-end`   | `<button>`   | Button element for accordion header with icon positioned at the end   |
 | `.tl-accordion__header-icon-start` | `<button>`   | Button element for accordion header with icon positioned at the start |
 | `.tl-accordion__title`             | `<span>`     | Title text element inside the header                                  |
-| `.tl-accordion__icon`              | `<span>`     | Container for the chevron icon                                        |
 | `.tl-accordion__panel`             | `<div>`      | Content panel that expands/collapses                                  |
 
 ## Modifiers
