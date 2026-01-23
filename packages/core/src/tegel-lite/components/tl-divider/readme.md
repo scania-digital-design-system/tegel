@@ -29,7 +29,9 @@ The Divider component creates a visual separator between content sections.
 
 ### Divider Modifiers
 
-Apply these classes to the `.tl-divider` element. An orientation modifier is required.
+Apply these classes to the `.tl-divider` element.
+
+**Orientation Modifiers (Required):**
 
 **Orientation Modifiers (Required):**
 
