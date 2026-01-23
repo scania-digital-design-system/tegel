@@ -271,7 +271,11 @@
   }
 
   .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
-    display: none;
+    color: var(--textarea-error);
+
+    .tl-textarea__charcounter-divider {
+      color: var(--textarea-error);
+    }
   }
 }
 
