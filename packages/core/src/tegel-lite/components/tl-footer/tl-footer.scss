@@ -43,10 +43,7 @@
 
     margin: 0;
     color: var(--footer-main-copyright);
-
-    br {
-      display: none;
-    }
+    max-width: calc(100% - 117px - 16px);
   }
 
   .tl-footer__brand {
@@ -142,10 +139,6 @@
   .tl-footer__main-bottom {
     align-items: flex-start;
     padding: 24px 0 40px;
-
-    .tl-footer__copyright br {
-      display: block;
-    }
 
     .tl-footer__brand {
       background-position: right;

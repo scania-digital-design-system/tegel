@@ -159,7 +159,7 @@ const Template = ({
         <div class="tl-footer__main-bottom">
                ${
                  includeFooterCopyright
-                   ? `<small class="tl-footer__copyright">© 2025 Scania<br>All rights reserved</small>`
+                   ? `<small class="tl-footer__copyright">© Copyright 2026 All rights reserved.</small>`
                    : ''
                }
               <p class="tl-footer__brand">Scania</p>
