@@ -198,26 +198,29 @@
   background-color: var(--dropdown-disabled);
 }
 
-.tl-dropdown--label-outside:has(.tl-dropdown__select):not(:has(.tl-dropdown__helper))::after {
-  top: calc(50% + 12.5px);
-  transform: translateY(-50%);
-}
-
-.tl-dropdown--lg.tl-dropdown--label-outside:has(.tl-dropdown__select):not(
+// Default behavior (label outside) for select without helper
+.tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
 :has(.tl-dropdown__helper)
 )::after {
   top: calc(50% + 12.5px);
   transform: translateY(-50%);
 }
 
-.tl-dropdown--md.tl-dropdown--label-outside:has(.tl-dropdown__select):not(
+.tl-dropdown--lg:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
+:has(.tl-dropdown__helper)
+)::after {
+  top: calc(50% + 12.5px);
+  transform: translateY(-50%);
+}
+
+.tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
 :has(.tl-dropdown__helper)
 )::after {
   top: calc(50% + 10px);
   transform: translateY(-50%);
 }
 
-.tl-dropdown--sm.tl-dropdown--label-outside:has(.tl-dropdown__select):not(
+.tl-dropdown--sm:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):not(
 :has(.tl-dropdown__helper)
 )::after {
   top: calc(50% + 10px);
@@ -230,26 +233,28 @@
   transform: translateY(-50%);
 }
 
-.tl-dropdown:not(.tl-dropdown--label-outside):has(.tl-dropdown__select):has(
-.tl-dropdown__helper
-)::after {
+// Label inside with helper
+.tl-dropdown--label-inside:has(.tl-dropdown__select):has(.tl-dropdown__helper)::after {
   top: calc(50% - 10px);
   transform: translateY(-50%);
 }
 
-.tl-dropdown--label-outside:has(.tl-dropdown__select):has(.tl-dropdown__helper)::after {
+// Default behavior (label outside) for select with helper
+.tl-dropdown:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):has(
+.tl-dropdown__helper
+)::after {
   top: calc(50% + 2.5px);
   transform: translateY(-50%);
 }
 
-.tl-dropdown--md.tl-dropdown--label-outside:has(.tl-dropdown__select):has(
+.tl-dropdown--md:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):has(
 .tl-dropdown__helper
 )::after {
   top: 50%;
   transform: translateY(-50%);
 }
 
-.tl-dropdown--sm.tl-dropdown--label-outside:has(.tl-dropdown__select):has(
+.tl-dropdown--sm:not(.tl-dropdown--label-inside):has(.tl-dropdown__select):has(
 .tl-dropdown__helper
 )::after {
   top: 50%;
@@ -269,7 +274,8 @@
     color: var(--color-foreground-text-disabled);
   }
 
-  .tl-dropdown--label-outside & {
+  // Default behavior: label outside
+  .tl-dropdown:not(.tl-dropdown--label-inside) & {
     @include detail-05;
 
     color: var(--dropdown-text);
@@ -462,15 +468,16 @@
   transform: translateY(-2px) scaleY(1);
 }
 
-.tl-dropdown.tl-dropdown--dropup.tl-dropdown--label-outside .tl-dropdown__list {
+// Default behavior (label outside) for dropup
+.tl-dropdown.tl-dropdown--dropup:not(.tl-dropdown--label-inside) .tl-dropdown__list {
   transform: translateY(18px) scaleY(0);
 }
 
-.tl-dropdown.tl-dropdown--dropup.tl-dropdown--label-outside:has(
+.tl-dropdown.tl-dropdown--dropup:not(.tl-dropdown--label-inside):has(
 .tl-dropdown__button[aria-expanded='true']
 )
 .tl-dropdown__list,
-.tl-dropdown.tl-dropdown--dropup.tl-dropdown--label-outside:has(
+.tl-dropdown.tl-dropdown--dropup:not(.tl-dropdown--label-inside):has(
 .tl-dropdown__input[aria-expanded='true']
 )
 .tl-dropdown__list {
@@ -478,6 +485,8 @@
 }
 
 .tl-dropdown__option {
+  @include detail-02;
+
   display: flex;
   align-items: center;
   padding-inline: var(--tds-spacing-element-16);
