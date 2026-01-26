@@ -4,11 +4,24 @@ The Spinner component displays a loading indicator for ongoing processes.
 
 ## Usage
 
+### Basic Usage
+
 ```html
-<div class="tl-spinner tl-spinner--lg tl-spinner--standard">
-  <svg class="tl-spinner__svg">
+<svg class="tl-spinner tl-spinner--lg tl-spinner--default" aria-hidden="true">
+  <circle class="tl-spinner__circle"></circle>
+</svg>
+```
+
+### Accessible Usage (Recommended)
+
+For better accessibility, wrap the spinner with a visually hidden label:
+
+```html
+<div>
+  <svg class="tl-spinner tl-spinner--lg tl-spinner--default" aria-hidden="true">
     <circle class="tl-spinner__circle"></circle>
   </svg>
+  <span class="tds-u-visually-hidden">Loading...</span>
 </div>
 ```
 
@@ -25,8 +38,7 @@ The Spinner component displays a loading indicator for ongoing processes.
 
 | Element              | HTML Element | Description                    |
 | -------------------- | ------------ | ------------------------------ |
-| `.tl-spinner`        | `<div>`      | Main spinner container         |
-| `.tl-spinner__svg`   | `<svg>`      | SVG element for the spinner    |
+| `.tl-spinner`        | `<svg>`      | Main spinner SVG element       |
 | `.tl-spinner__circle`| `<circle>`   | Circle element inside the SVG  |
 
 ## Modifiers
@@ -48,7 +60,7 @@ A variant modifier is required. Apply these classes to the `.tl-spinner` element
 
 | Modifier                | Description                              |
 | ----------------------- | ---------------------------------------- |
-| `.tl-spinner--standard` | Standard variant for light backgrounds   |
+| `.tl-spinner--default`  | Default variant for light backgrounds    |
 | `.tl-spinner--inverted` | Inverted variant for dark backgrounds    |
 
 ----------------------------------------------
