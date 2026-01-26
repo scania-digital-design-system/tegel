@@ -20,10 +20,8 @@
     border-style: solid;
     border-color: transparent;
     background-clip: padding-box;
-  }
 
-  &:hover {
-    &::-webkit-scrollbar-thumb {
+    &:hover {
       border-width: var(--tl-scrollbar-thumb-border-hover-width);
     }
   }
