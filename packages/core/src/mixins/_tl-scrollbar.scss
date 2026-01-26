@@ -1,13 +1,6 @@
 //Scrollbar mixin for tegel lite
 
 @mixin tl-scrollbar($orientation: vertical) {
-  &:hover {
-    &::-webkit-scrollbar-thumb {
-      border: var(--tl-scrollbar-thumb-border-hover-width) solid transparent;
-      background-clip: padding-box;
-    }
-  }
-
   &::-webkit-scrollbar {
     @if $orientation == vertical {
       width: var(--tl-scrollbar-width);
@@ -23,8 +16,16 @@
   &::-webkit-scrollbar-thumb {
     border-radius: 40px;
     background: var(--tl-scrollbar-thumb-color);
-    border: var(--tl-scrollbar-thumb-border-width) solid transparent;
+    border-width: var(--tl-scrollbar-thumb-border-width);
+    border-style: solid;
+    border-color: transparent;
     background-clip: padding-box;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      border-width: var(--tl-scrollbar-thumb-border-hover-width);
+    }
   }
 
   &::-webkit-scrollbar-button {
