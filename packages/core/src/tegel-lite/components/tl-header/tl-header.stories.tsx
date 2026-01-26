@@ -188,7 +188,7 @@ const Template = ({
       ${
         includeUserProfile
           ? `<li class="tl-header__dropdown">
-              <button class="tl-header__dropdown-wrapper_user">
+              <button class="tl-header__dropdown-wrapper-user">
                 <div class="tl-header__user-menu-image">
                   <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User avatar" />
                 </div>
@@ -226,7 +226,7 @@ const Template = ({
     const dropdowns = document.querySelectorAll('.tl-header__dropdown');
 
     dropdowns.forEach(dropdown => {
-      const wrapper = dropdown.querySelector('.tl-header__dropdown-wrapper, .tl-header__dropdown-wrapper_user');
+      const wrapper = dropdown.querySelector('.tl-header__dropdown-wrapper, .tl-header__dropdown-wrapper-user');
       const menu = dropdown.querySelector('.tl-header__dropdown-menu, .tl-header__user-menu, .tl-header__launcher-menu, .tl-header__launcher-menu-grid');
       const icon = dropdown.querySelector('.tl-header__dropdown-icon');
 
@@ -235,11 +235,11 @@ const Template = ({
       wrapper.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = wrapper.classList.contains('tl-header__dropdown-wrapper--open') || 
-                       wrapper.classList.contains('tl-header__dropdown-wrapper_user--open');
+                       wrapper.classList.contains('tl-header__dropdown-wrapper-user--open');
 
         // close all dropdowns
         document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
-        document.querySelectorAll('.tl-header__dropdown-wrapper_user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper_user--open'));
+        document.querySelectorAll('.tl-header__dropdown-wrapper-user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper-user--open'));
         document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
         document.querySelectorAll('.tl-header__user-menu--open').forEach(m => m.classList.remove('tl-header__user-menu--open'));
         document.querySelectorAll('.tl-header__launcher-menu--open').forEach(m => m.classList.remove('tl-header__launcher-menu--open'));
@@ -248,8 +248,8 @@ const Template = ({
 
         if (!isOpen) {
           // Add --open to the appropriate wrapper type
-          if (wrapper.classList.contains('tl-header__dropdown-wrapper_user')) {
-            wrapper.classList.add('tl-header__dropdown-wrapper_user--open');
+          if (wrapper.classList.contains('tl-header__dropdown-wrapper-user')) {
+            wrapper.classList.add('tl-header__dropdown-wrapper-user--open');
           } else {
             wrapper.classList.add('tl-header__dropdown-wrapper--open');
           }
@@ -275,7 +275,7 @@ const Template = ({
     // close on outside click
     document.addEventListener('click', () => {
       document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
-      document.querySelectorAll('.tl-header__dropdown-wrapper_user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper_user--open'));
+      document.querySelectorAll('.tl-header__dropdown-wrapper-user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper-user--open'));
       document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
       document.querySelectorAll('.tl-header__user-menu--open').forEach(m => m.classList.remove('tl-header__user-menu--open'));
       document.querySelectorAll('.tl-header__launcher-menu--open').forEach(m => m.classList.remove('tl-header__launcher-menu--open'));
@@ -287,7 +287,7 @@ const Template = ({
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
-        document.querySelectorAll('.tl-header__dropdown-wrapper_user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper_user--open'));
+        document.querySelectorAll('.tl-header__dropdown-wrapper-user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper-user--open'));
         document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
         document.querySelectorAll('.tl-header__user-menu--open').forEach(m => m.classList.remove('tl-header__user-menu--open'));
         document.querySelectorAll('.tl-header__launcher-menu--open').forEach(m => m.classList.remove('tl-header__launcher-menu--open'));
