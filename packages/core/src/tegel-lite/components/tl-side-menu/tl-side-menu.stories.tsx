@@ -225,6 +225,16 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                               </ul>
                            </div>
                         </li>
+                        ${
+                          collapsible
+                            ? `<li class="tl-side-menu__collapse">
+                           <button class="tl-side-menu__item" id="collapse-toggle">
+                              <span class="tl-icon tl-icon--arrow_left ${iconSize}" aria-hidden="true"></span>
+                              <span class="tl-side-menu__collapse-text">Collapse</span>
+                           </button>
+                        </li>`
+                            : ''
+                        }
                      </ul>
                   </div>
                </div>
@@ -279,8 +289,22 @@ const Template = ({ persistent, collapsible, collapsed }) => {
       if (!(isPersistent && isCollapsible)) return;
       sideMenu.classList.toggle('tl-side-menu--collapsed');
       console.log('tdsCollapse', { collapsed: sideMenu.classList.contains('tl-side-menu--collapsed') });
+      
+      // Update collapse button icon
+      const collapseBtn = document.getElementById('collapse-toggle');
+      const collapseIcon = collapseBtn?.querySelector('.tl-icon');
+      if (collapseIcon) {
+        if (sideMenu.classList.contains('tl-side-menu--collapsed')) {
+          collapseIcon.classList.remove('tl-icon--arrow_left');
+          collapseIcon.classList.add('tl-icon--arrow_right');
+        } else {
+          collapseIcon.classList.remove('tl-icon--arrow_right');
+          collapseIcon.classList.add('tl-icon--arrow_left');
+        }
+      }
     }
     document.getElementById('test')?.addEventListener('click', toggleCollapsed);
+    document.getElementById('collapse-toggle')?.addEventListener('click', toggleCollapsed);
 
     const dropdowns = sideMenu.querySelectorAll('.tl-side-menu__dropdown');
 
