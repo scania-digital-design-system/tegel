@@ -18,9 +18,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     zebraMode: {
@@ -142,7 +142,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     zebraMode: 'rows-odd',
     compact: false,
     verticalDividers: false,
@@ -172,8 +172,7 @@ const Template = ({
   horizontalScrollWidth,
 }) => {
   const compactClass = compact ? 'tl-table--compact' : '';
-  const modeVariantClass =
-    modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : '';
+  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDividers ? 'tl-table--vertical-dividers' : '';
   const zebraClass = `tl-table--zebra-${zebraMode}`;
   const responsiveClass = responsive ? 'tl-table--responsive' : '';

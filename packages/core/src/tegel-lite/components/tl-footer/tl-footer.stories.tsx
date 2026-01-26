@@ -13,9 +13,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     mobileView: {
@@ -62,7 +62,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     mobileView: true,
     isFooterGroupOpen: false,
     includeFooterTop: true,
@@ -81,8 +81,8 @@ const Template = ({
   includeFooterEnd,
   includeFooterCopyright,
 }) => {
-  const modeVariantClass =
-    modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}` : '';
+  const modeVariantClass = `tl-footer--${modeVariant.toLowerCase()}`;
+
   return formatHtmlPreview(
     `
     <!-- Required stylesheet 

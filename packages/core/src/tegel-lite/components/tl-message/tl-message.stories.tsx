@@ -13,9 +13,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     messageVariant: {
@@ -46,7 +46,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     messageVariant: 'Information',
     minimal: false,
     noIcon: false,
@@ -54,9 +54,7 @@ export default {
 };
 
 const Template = ({ modeVariant, messageVariant, minimal, noIcon }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tl-message--${modeVariant.toLowerCase()}` : '';
-
+  const modeClass = `tl-message--${modeVariant.toLowerCase()}`;
   const variantClass = `tl-message--${messageVariant.toLowerCase()}`;
   const minimalClass = minimal ? 'tl-message--minimal' : '';
   const noIconClass = noIcon ? 'tl-message--no-icon' : '';

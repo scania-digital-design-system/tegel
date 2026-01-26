@@ -26,10 +26,10 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
         defaultValue: {
-          summary: 'Inherit from parent',
+          summary: 'Primary',
         },
       },
     },
@@ -161,7 +161,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     header: 'Header text',
     subheader: 'Subheader text',
     thumbnail: true,
@@ -197,8 +197,7 @@ const Template = ({
   showIcon,
   icon,
 }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tl-card--${modeVariant.toLowerCase()}` : '';
+  const modeClass = `tl-card--${modeVariant.toLowerCase()}`;
 
   let placementClass = '';
   if (imagePlacement === 'Above') {

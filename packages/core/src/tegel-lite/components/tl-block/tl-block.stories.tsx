@@ -14,7 +14,10 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Primary' },
+      },
     },
     componentTag: {
       name: 'Component Tag',
@@ -27,7 +30,7 @@ export default {
   },
 
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     componentTag: 'section',
   },
 };
@@ -39,9 +42,7 @@ const Template = ({ modeVariant, componentTag }) =>
         "@scania/tegel-lite/global.css"
         "@scania/tegel-lite/tl-block.css"
       -->
-      <div class="tl-block${
-        modeVariant !== 'Inherit from parent' ? ` tl-block--${modeVariant.toLowerCase()}` : ''
-      }">
+      <div class="tl-block tl-block--${modeVariant.toLowerCase()}">
         <${componentTag}>
           <h2>Semantic Block</h2>
           <p>This block is now structured using a <code>&lt;${componentTag}&gt;</code> element for better accessibility.</p>

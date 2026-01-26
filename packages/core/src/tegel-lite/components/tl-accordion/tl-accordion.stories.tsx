@@ -13,9 +13,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     iconPosition: {
@@ -61,7 +61,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     iconPosition: 'end',
     paddingReset: false,
     disabled: false,
@@ -70,8 +70,7 @@ export default {
 };
 
 const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastBorder }) => {
-  const modeVariantClass =
-    modeVariant !== 'Inherit from parent' ? `tl-accordion--${modeVariant.toLowerCase()}` : '';
+  const modeVariantClass = `tl-accordion--${modeVariant.toLowerCase()}`;
   const hideLastBorderClass = hideLastBorder ? 'tl-accordion--hide-last-border' : '';
   const iconPositionClass =
     iconPosition === 'start' ? 'tl-accordion__item--icon-start' : 'tl-accordion__item--icon-end';
@@ -151,7 +150,7 @@ const Template = ({ disabled, iconPosition, paddingReset, modeVariant, hideLastB
       } 
         
       setupAccordion();
-      
+
     </script>
   `);
 };

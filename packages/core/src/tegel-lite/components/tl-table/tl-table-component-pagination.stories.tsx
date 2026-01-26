@@ -17,8 +17,10 @@ export default {
       description:
         'Mode variant adjusts component colors to have better visibility depending on global mode and background.',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
+      options: ['Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Primary' },
+      },
     },
     compactDesign: {
       name: 'Compact design',
@@ -94,7 +96,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
@@ -123,8 +125,7 @@ const PaginationTemplate = ({
   column3Width,
   column4Width,
 }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : '';
+  const modeClass = `tl-table--${modeVariant.toLowerCase()}`;
   const compactClass = compactDesign ? 'tl-table--compact' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';

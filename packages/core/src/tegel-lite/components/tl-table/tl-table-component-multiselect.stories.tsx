@@ -19,9 +19,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     allSelected: {
@@ -122,7 +122,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     allSelected: false,
     allIndeterminate: false,
     allDisabled: false,
@@ -163,7 +163,7 @@ const MultiselectTemplate = ({
     responsive ? 'tl-table--responsive' : ''
   } ${verticalDividers ? 'tl-table--vertical-dividers' : ''} ${
     noMinWidth ? 'tl-table--no-min-width' : ''
-  } ${modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : ''}">
+  } tl-table--${modeVariant.toLowerCase()}">
       <thead class="tl-table__header">
         <tr class="tl-table__row">
           <th class="tl-table__header-cell tl-table__header-cell--checkbox" data-column="0">
