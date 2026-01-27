@@ -4,12 +4,6 @@ export default {
   title: 'Tegel Lite (CSS)/Tabs/Inline Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
-    modeVariant: {
-      name: 'Mode variant',
-      control: { type: 'radio' },
-      options: ['Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Primary' } },
-    },
     showLeftButton: {
       name: 'Show left scroll button',
       control: { type: 'boolean' },
@@ -34,7 +28,6 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Primary',
     showLeftButton: false,
     showRightButton: false,
     selectedIndex: 0,
@@ -42,9 +35,7 @@ export default {
   },
 };
 
-const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
-  const modeClass = `tds-mode-variant-${modeVariant.toLowerCase()}`;
-
+const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 
   const tabsHtml = labels
@@ -86,7 +77,7 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
       "@scania/tegel-lite/tl-icon.css"
     -->
 
-    <div class="tl-inline-tabs ${modeClass}" style="padding-left: ${leftPadding}px;">
+    <div class="tl-inline-tabs" style="padding-left: ${leftPadding}px;">
       <div class="tl-inline-tabs__wrapper">
         ${leftButton}
         ${tabsHtml}
