@@ -213,11 +213,7 @@ const Template = ({
   const clampedInitialValue = Math.max(actualMin, Math.min(actualMax, initialValue));
   const actualInitialValue = useDecimals ? 0.5 : clampedInitialValue;
 
-  const sliderClasses = [
-    'tl-slider',
-    thumbSize === 'Small' ? 'tl-slider--small' : '',
-    readonly ? 'tl-slider--read-only' : '',
-  ]
+  const sliderClasses = ['tl-slider', thumbSize === 'Small' ? 'tl-slider--small' : '']
     .filter(Boolean)
     .join(' ');
 

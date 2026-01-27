@@ -29,7 +29,9 @@
     height: 40px;
   }
 
-  &--readonly:not(:has(.tl-text-field__input:disabled)):not(&--hide-readonly-icon)::before {
+  &:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+  &--hide-readonly-icon
+)::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -46,9 +48,9 @@
   }
 
   // Default behavior (label outside) - readonly icon position adjustment
-  &:not(&--label-inside)#{&}--readonly:not(:has(.tl-text-field__input:disabled)):not(
-  &--hide-readonly-icon
-)::before {
+  &:not(&--label-inside):has(.tl-text-field__input[readonly]):not(
+  :has(.tl-text-field__input:disabled)
+):not(&--hide-readonly-icon)::before {
     top: calc(50% + 24px);
   }
 
@@ -96,12 +98,14 @@
     box-shadow: inset var(--text-field-box-shadow-error-hover);
   }
 
-  .tl-text-field--success:not(.tl-text-field--readonly):not(:has(.tl-text-field__input:disabled))
+  .tl-text-field--success:not(:has(.tl-text-field__input[readonly])):not(
+  :has(.tl-text-field__input:disabled)
+)
   &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
-  .tl-text-field--readonly & {
+  :has(.tl-text-field__input[readonly]) & {
     box-shadow: inset var(--text-field-box-shadow);
 
     &:focus {
@@ -109,7 +113,7 @@
     }
   }
 
-  .tl-text-field--readonly:hover &:not(:focus) {
+  :has(.tl-text-field__input[readonly]):hover &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -119,15 +123,15 @@
     color: var(--text-field-text-disabled);
   }
 
-  .tl-text-field--readonly & {
+  :has(.tl-text-field__input[readonly]) & {
     user-select: auto;
     caret-color: transparent;
     cursor: default;
     pointer-events: none;
   }
 
-  .tl-text-field--readonly:not(:has(.tl-text-field__input:disabled)):not(
-  .tl-text-field--hide-readonly-icon
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+  &--hide-readonly-icon
 )
   & {
     padding-right: 54px;
@@ -324,7 +328,7 @@
     }
   }
 
-  .tl-text-field--error.tl-text-field--readonly & {
+  .tl-text-field--error:has(.tl-text-field__input[readonly]) & {
     padding-left: 0;
 
     &::before {
@@ -332,7 +336,10 @@
     }
   }
 
-  .tl-text-field--error:not(.tl-text-field--readonly):not(:has(.tl-text-field__input:disabled)) & {
+  .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
+  :has(.tl-text-field__input:disabled)
+)
+  & {
     color: var(--text-field-error);
   }
 
@@ -351,7 +358,10 @@
     color: var(--color-foreground-text-disabled);
   }
 
-  .tl-text-field--error:not(.tl-text-field--readonly):not(:has(.tl-text-field__input:disabled)) & {
+  .tl-text-field--error:not(:has(.tl-text-field__input[readonly])):not(
+  :has(.tl-text-field__input:disabled)
+)
+  & {
     color: var(--text-field-error);
 
     .tl-text-field__charcounter-divider {

@@ -15,7 +15,7 @@
     pointer-events: none;
   }
 
-  &--read-only {
+  &:has(input[type='range'][readonly]) {
     pointer-events: none;
   }
 }
