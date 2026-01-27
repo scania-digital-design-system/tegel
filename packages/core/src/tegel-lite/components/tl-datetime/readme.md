@@ -72,4 +72,4 @@ Apply these classes to the `.tl-datetime` element.
 | `.tl-datetime--label-inside`  | Positions label inside input wrapper (not available for sm size) |
 | `.tl-datetime--no-min-width`  | Removes minimum width constraint (208px) |
 
-**Note:** Label is positioned outside the input wrapper by default. Unlike text-field and dropdown components, datetime does not have a `--label-outside` CSS class since this is the default behavior.
+**Note:** Label is positioned outside the input wrapper by default.
