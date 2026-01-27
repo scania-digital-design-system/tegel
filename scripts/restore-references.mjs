@@ -15,8 +15,8 @@
  * Usage:
  *   node scripts/restore-references.mjs
  * 
- * Note: This is a recovery tool. Normally, clean-figma-tokens.mjs handles
- * reference restoration automatically during the build process.
+ * Note: This is a recovery tool. JSON files from Figma should be used
+ * directly as the source of truth without modification.
  */
 
 import { readFileSync, writeFileSync } from 'fs';
