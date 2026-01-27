@@ -21,6 +21,7 @@
   },
   "style": "dist/global.css",
   "exports": {
+    ".": "./dist/global.css",
     "./package.json": "./package.json",
     "./global.css": "./dist/global.css",
     "./scania-variables.css": "./dist/scania-variables.css",

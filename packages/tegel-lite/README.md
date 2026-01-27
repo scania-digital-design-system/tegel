@@ -15,25 +15,29 @@ npm install @scania/tegel-lite
 
 ## Quick Start
 
-**Import brand variables + components:**
+### Option 1: Import Everything (Easiest)
 
 ```javascript
-// Scania
+// All components + Scania variables
+import '@scania/tegel-lite';
+```
+
+This imports `global.css` which includes all 35 components and Scania brand variables (fonts, colors, tokens).
+
+### Option 2: Import Specific Components (Tree-shaking)
+
+```javascript
+// Scania brand
 import '@scania/tegel-lite/scania-variables.css';
 import '@scania/tegel-lite/tl-button.css';
+import '@scania/tegel-lite/tl-card.css';
 
-// TRATON
+// TRATON brand
 import '@scania/tegel-lite/traton-variables.css';
 import '@scania/tegel-lite/tl-button.css';
 ```
 
-> **Important:** Always import a brand variables file (`scania-variables.css` or `traton-variables.css`) for design tokens and fonts.
-
-**Or import all styles:**
-
-```javascript
-import '@scania/tegel-lite/global.css';
-```
+> **Important:** Always import a brand variables file (`scania-variables.css` or `traton-variables.css`) first for design tokens and fonts.
 
 **HTML Usage:**
 
@@ -54,6 +58,21 @@ import '@scania/tegel-lite/global.css';
 ## Framework Examples
 
 ### React/Next.js
+
+**Option A: Import everything**
+```jsx
+import '@scania/tegel-lite';
+
+export default function App() {
+  return (
+    <button className="tl-button tl-button--primary">
+      <span className="tl-button__label">Click me</span>
+    </button>
+  );
+}
+```
+
+**Option B: Import specific components**
 ```jsx
 import '@scania/tegel-lite/scania-variables.css';
 import '@scania/tegel-lite/tl-button.css';
@@ -68,6 +87,21 @@ export default function Button() {
 ```
 
 ### Vue
+
+**Option A: Import everything**
+```vue
+<template>
+  <button class="tl-button tl-button--primary">
+    <span class="tl-button__label">Click me</span>
+  </button>
+</template>
+
+<style>
+@import '@scania/tegel-lite';
+</style>
+```
+
+**Option B: Import specific components**
 ```vue
 <template>
   <button class="tl-button tl-button--primary">
@@ -82,8 +116,14 @@ export default function Button() {
 ```
 
 ### Angular
-```typescript
-// In styles.css
+
+**Option A: Import everything in styles.css**
+```css
+@import '@scania/tegel-lite';
+```
+
+**Option B: Import specific components in styles.css**
+```css
 @import '@scania/tegel-lite/scania-variables.css';
 @import '@scania/tegel-lite/tl-button.css';
 ```
