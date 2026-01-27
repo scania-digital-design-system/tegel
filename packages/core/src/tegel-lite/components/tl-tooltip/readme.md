@@ -5,13 +5,15 @@ The Tooltip component displays informational text in a popup when hovering or fo
 ## Usage
 
 ```html
-<div class="tl-tooltip">
+<div class="tl-tooltip tl-tooltip--top">
   <button type="button" aria-describedby="tooltip-id">Hover me</button>
-  <div id="tooltip-id" class="tl-tooltip__popup tl-tooltip__popup--top tl-tooltip__popup--visible" role="tooltip">
+  <div id="tooltip-id" class="tl-tooltip__popup tl-tooltip__popup--visible" role="tooltip">
     Tooltip text goes here
   </div>
 </div>
 ```
+
+**Note:** The trigger element (button, link, icon, etc.) should be wrapped inside the `.tl-tooltip` container element.
 
 <br />
 
@@ -33,22 +35,22 @@ The Tooltip component displays informational text in a popup when hovering or fo
 
 ### Tooltip Position Modifiers
 
-Apply ONE of these classes to the `.tl-tooltip__popup` element to set position.
+Apply ONE of these classes to the `.tl-tooltip` element to set position.
 
-| Modifier                        | Description                           |
-| ------------------------------- | ------------------------------------- |
-| `.tl-tooltip__popup--top`       | Position above, centered              |
-| `.tl-tooltip__popup--top-start` | Position above, aligned to start      |
-| `.tl-tooltip__popup--top-end`   | Position above, aligned to end        |
-| `.tl-tooltip__popup--bottom`    | Position below, centered              |
-| `.tl-tooltip__popup--bottom-start` | Position below, aligned to start   |
-| `.tl-tooltip__popup--bottom-end`| Position below, aligned to end        |
-| `.tl-tooltip__popup--left`      | Position to left, centered            |
-| `.tl-tooltip__popup--left-start`| Position to left, aligned to start    |
-| `.tl-tooltip__popup--left-end`  | Position to left, aligned to end      |
-| `.tl-tooltip__popup--right`     | Position to right, centered           |
-| `.tl-tooltip__popup--right-start` | Position to right, aligned to start |
-| `.tl-tooltip__popup--right-end` | Position to right, aligned to end     |
+| Modifier                     | Description                           |
+| ---------------------------- | ------------------------------------- |
+| `.tl-tooltip--top`           | Position above, centered              |
+| `.tl-tooltip--top-start`     | Position above, aligned to start      |
+| `.tl-tooltip--top-end`       | Position above, aligned to end        |
+| `.tl-tooltip--bottom`        | Position below, centered              |
+| `.tl-tooltip--bottom-start`  | Position below, aligned to start      |
+| `.tl-tooltip--bottom-end`    | Position below, aligned to end        |
+| `.tl-tooltip--left`          | Position to left, centered            |
+| `.tl-tooltip--left-start`    | Position to left, aligned to start    |
+| `.tl-tooltip--left-end`      | Position to left, aligned to end      |
+| `.tl-tooltip--right`         | Position to right, centered           |
+| `.tl-tooltip--right-start`   | Position to right, aligned to start   |
+| `.tl-tooltip--right-end`     | Position to right, aligned to end     |
 
 ### Tooltip State Modifiers
 
