@@ -38,8 +38,8 @@ Apply these classes to the `.tl-toggle__input` element.
 
 | Modifier                 | Description                    |
 | ------------------------ | ------------------------------ |
-| `.tl-toggle__input--lg`  | Large toggle (44px × 24px, default) |
-| `.tl-toggle__input--sm`  | Small toggle (28px × 16px)     |
+| `.tl-toggle__input--lg`  | Large toggle (default)         |
+| `.tl-toggle__input--sm`  | Small toggle                   |
 
 ### Toggle State Modifiers
 
