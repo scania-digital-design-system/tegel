@@ -97,10 +97,14 @@ const renderTrigger = (type: string, isClick: boolean) => {
 
 const Template = ({ position, label, trigger, triggerElement, offsetSkidding, offsetDistance }) =>
   formatHtmlPreview(`
-      <!-- Required stylesheets
+      <!-- Required stylesheets:
       "@scania/tegel-lite/global.css"
       "@scania/tegel-lite/tl-tooltip.css"
-      "@scania/tegel-lite/tl-icon.css"
+    -->
+      <!-- Optional stylesheets:
+      "@scania/tegel-lite/tl-icon.css" (if using icon as trigger)
+      "@scania/tegel-lite/tl-button.css" (if using button as trigger)
+      "@scania/tegel-lite/tl-link.css" (if using link as trigger)
     -->
       <div class="tl-tooltip tl-tooltip--${positionLookup[position]}">
         ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
