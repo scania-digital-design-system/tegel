@@ -5,69 +5,65 @@ The Tooltip component displays informational text in a popup when hovering or fo
 ## Usage
 
 ```html
-<div class="tl-tooltip tl-tooltip--top">
-  <button type="button" aria-describedby="tooltip-id">Hover me</button>
-  <div id="tooltip-id" class="tl-tooltip__popup tl-tooltip__popup--visible" role="tooltip">
-    Tooltip text goes here
+  <div 
+    id="my-tooltip" 
+    class="tl-tooltip tl-tooltip--top" 
+    role="tooltip">
+    Helpful information here
   </div>
-</div>
+
 ```
-
-**Note:** The trigger element (button, link, icon, etc.) should be wrapped inside the `.tl-tooltip` container element.
-
-<br />
 
 ### Required Stylesheets
 
-```
-@scania/tegel-lite/global.css
-@scania/tegel-lite/tl-tooltip.css
+```javascript
+import '@scania/tegel-lite/global.scss';
+import '@scania/tegel-lite/tl-tooltip.css';
 ```
 
-## Elements
+## Structure
 
-| Element               | HTML Element | Description                  |
-| --------------------- | ------------ | ---------------------------- |
-| `.tl-tooltip`         | `<div>`      | Main tooltip container       |
-| `.tl-tooltip__popup`  | `<div>`      | Tooltip popup content        |
+| Element          | HTML Element | CSS Position | Description                    |
+| ---------------- | ------------ | ------------ | ------------------------------ |
+| `.tl-tooltip`    | `<div>`      | `fixed`      | The tooltip popup itself       |
 
 ## Modifiers
 
-### Tooltip Position Modifiers
+### Border Radius Modifiers
 
-Apply ONE of these classes to the `.tl-tooltip` element to set position.
+Position modifiers **only control border-radius**. Users handle positioning with their own CSS.
 
-| Modifier                     | Description                           |
-| ---------------------------- | ------------------------------------- |
-| `.tl-tooltip--top`           | Position above, centered              |
-| `.tl-tooltip--top-start`     | Position above, aligned to start      |
-| `.tl-tooltip--top-end`       | Position above, aligned to end        |
-| `.tl-tooltip--bottom`        | Position below, centered              |
-| `.tl-tooltip--bottom-start`  | Position below, aligned to start      |
-| `.tl-tooltip--bottom-end`    | Position below, aligned to end        |
-| `.tl-tooltip--left`          | Position to left, centered            |
-| `.tl-tooltip--left-start`    | Position to left, aligned to start    |
-| `.tl-tooltip--left-end`      | Position to left, aligned to end      |
-| `.tl-tooltip--right`         | Position to right, centered           |
-| `.tl-tooltip--right-start`   | Position to right, aligned to start   |
-| `.tl-tooltip--right-end`     | Position to right, aligned to end     |
+| Modifier                   | Cut Corner    | Border Radius         |
+| -------------------------- | ------------- | --------------------- |
+| *(none)*                   | None          | `4px` (all rounded)   |
+| `.tl-tooltip--top-start`   | Bottom-left   | `4px 4px 4px 0`       |
+| `.tl-tooltip--top-end`     | Bottom-right  | `4px 4px 0`           |
+| `.tl-tooltip--bottom-start` | Top-left     | `0 4px 4px`           |
+| `.tl-tooltip--bottom-end`  | Top-right     | `4px 0 4px 4px`       |
+| `.tl-tooltip--left-start`  | Top-right     | `4px 0 4px 4px`       |
+| `.tl-tooltip--left-end`    | Bottom-right  | `4px 4px 0`           |
+| `.tl-tooltip--right-start` | Top-left      | `0 4px 4px`           |
+| `.tl-tooltip--right-end`   | Bottom-left   | `4px 4px 4px 0`       |
 
-### Tooltip State Modifiers
 
-Apply these classes to the `.tl-tooltip__popup` element.
+### Visibility Modifier
 
-| Modifier                       | Description                    |
-| ------------------------------ | ------------------------------ |
-| `.tl-tooltip__popup--visible`  | Shows the tooltip              |
+| Modifier                  | Description                    |
+| ------------------------- | ------------------------------ |
+| `.tl-tooltip--visible`    | Shows tooltip (opacity: 1)     |
+
+**Default:** `opacity: 0`, `visibility: hidden`, `pointer-events: none`
+
 
 ## JavaScript Required
 
-The Tooltip component requires JavaScript to handle:
-- Show/hide tooltip on hover/focus (toggle `tl-tooltip__popup--visible` class)
-- Position calculation and adjustment
-- Delay timers
-- Accessibility (aria attributes)
+The component requires JavaScript for:
+
+- Position calculation (top, left coordinates)
+- Show/hide logic (add/remove `.tl-tooltip--visible` class)
+- Event handling (mouseenter, mouseleave, focus, blur)
+- Accessibility (aria attributes, keyboard support)
 
 ----------------------------------------------
 
-*Part of Tegel Lite (CSS) Design System*
+*Part of Tegel Lite (Beta) - CSS Design System*
