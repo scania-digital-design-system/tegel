@@ -59,9 +59,9 @@ Apply these classes to the `.tl-text-field` element.
 
 | Modifier                | Description                          |
 | ----------------------- | ------------------------------------ |
-| `.tl-text-field--sm`    | Small text field (40px height)       |
-| `.tl-text-field--md`    | Medium text field (48px height)      |
-| `.tl-text-field--lg`    | Large text field (56px height, default) |
+| `.tl-text-field--sm`    | Small text field        |
+| `.tl-text-field--md`    | Medium text field     |
+| `.tl-text-field--lg`    | Large text field (default) |
 
 ### Text Field State Modifiers
 
@@ -84,6 +84,7 @@ Apply these classes to the `.tl-text-field` element.
 | `.tl-text-field--no-min-width`      | Removes minimum width constraint     |
 | `.tl-text-field--hide-readonly-icon`| Hides readonly edit icon             |
 
+**Note:** Label is positioned outside the input by default.
 
 ----------------------------------------------
 

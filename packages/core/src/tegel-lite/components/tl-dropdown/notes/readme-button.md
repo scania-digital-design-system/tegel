@@ -76,6 +76,7 @@ Apply these classes to the `.tl-dropdown` container element.
 | `.tl-dropdown--label-inside`   | Positions label inside dropdown   |
 | `.tl-dropdown--dropup`         | Shows options above the button    |
 
+**Note:** Label is positioned outside the dropdown by default.
 
 ### Option Modifiers
 
