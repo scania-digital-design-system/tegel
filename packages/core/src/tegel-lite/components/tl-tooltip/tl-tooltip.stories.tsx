@@ -8,222 +8,154 @@ export default {
       name: 'Position',
       control: { type: 'select' },
       options: [
-        'Bottom-start',
-        'Bottom',
-        'Bottom-end',
-        'Top-start',
         'Top',
+        'Top-start',
         'Top-end',
-        'Left-start',
+        'Bottom',
+        'Bottom-start',
+        'Bottom-end',
         'Left',
+        'Left-start',
         'Left-end',
-        'Right-start',
         'Right',
+        'Right-start',
         'Right-end',
       ],
-      table: { defaultValue: { summary: 'Top-start' } },
+      table: { defaultValue: { summary: 'Top' } },
     },
     label: {
       name: 'Tooltip Text',
       control: 'text',
       table: { defaultValue: { summary: 'Tooltip content' } },
     },
-    trigger: {
-      name: 'Trigger Type',
-      control: { type: 'radio' },
-      options: ['Hover', 'Click'],
-      table: { defaultValue: { summary: 'Hover' } },
-    },
-    triggerElement: {
-      name: 'Trigger Element',
-      control: { type: 'radio' },
-      options: ['tl-button', 'tl-link', 'tl-icon'],
-      table: { defaultValue: { summary: 'tl-button' } },
-    },
-    offsetSkidding: {
-      name: 'Offset Skidding',
-      control: { type: 'number', min: -64, max: 64 },
-      table: { defaultValue: { summary: 0 } },
-    },
-    offsetDistance: {
-      name: 'Offset Distance',
-      control: { type: 'number', min: 0, max: 64 },
-      table: { defaultValue: { summary: 8 } },
-    },
   },
   args: {
-    position: 'Top-start',
-    label:
-      'Multiple lines of tooltip - This is a tooltip that need a set of words to be able to formulate a sentence, that will be placed on multiple rows.',
-    trigger: 'Hover',
-    triggerElement: 'tl-button',
-    offsetSkidding: 0,
-    offsetDistance: 8,
+    position: 'Top',
+    label: 'This is a helpful tooltip with information',
   },
 };
 
-const positionLookup = {
-  'Bottom-start': 'bottom-start',
-  'Bottom': 'bottom',
-  'Bottom-end': 'bottom-end',
-  'Top-start': 'top-start',
+const positionMap = {
   'Top': 'top',
+  'Top-start': 'top-start',
   'Top-end': 'top-end',
-  'Left-start': 'left-start',
+  'Bottom': 'bottom',
+  'Bottom-start': 'bottom-start',
+  'Bottom-end': 'bottom-end',
   'Left': 'left',
+  'Left-start': 'left-start',
   'Left-end': 'left-end',
-  'Right-start': 'right-start',
   'Right': 'right',
+  'Right-start': 'right-start',
   'Right-end': 'right-end',
 };
 
-const renderTrigger = (type: string, isClick: boolean) => {
-  const label = isClick ? 'Click me' : 'Hover me';
-  const normalized = type.toLowerCase();
+const Template = ({ position, label }) => {
+  const posClass = positionMap[position];
 
-  switch (normalized) {
-    case 'tl-link':
-      return `<a href="#" class="tl-link tl-tooltip-trigger" aria-describedby="tooltip-id">${label}</a>`;
-    case 'tl-icon':
-      return `
-        <div class="tl-tooltip-trigger" role="button" tabindex="0" aria-describedby="tooltip-id"> 
-          <span class="tl-icon tl-icon--info" ></span>
-        </div>`;
-    case 'tl-button':
-    default:
-      return `<button type="button" class="tl-button tl-button--sm tl-button--primary tl-tooltip-trigger" aria-describedby="tooltip-id">${label}</button>`;
+  return formatHtmlPreview(
+    `<style>
+  .demo-wrapper {
+    position: relative;
+    display: inline-block;
   }
+</style>
+
+<div class="demo-wrapper">
+  <!-- Tooltip popup -->
+  <div 
+    id="demo-tooltip" 
+    class="tl-tooltip${posClass ? ` tl-tooltip--${posClass}` : ''}" 
+    role="tooltip"
+  >
+    ${label}
+  </div>
+
+  <!-- Trigger button -->
+  <button 
+    type="button" 
+    class="tl-button tl-button--variant-primary" 
+    aria-describedby="demo-tooltip"
+    id="demo-trigger"
+  >
+    Hover me
+  </button>
+</div>
+
+<script>
+(function() {
+  const trigger = document.getElementById('demo-trigger');
+  const tooltip = document.getElementById('demo-tooltip');
+  
+  if (!trigger || !tooltip) return;
+
+  function positionTooltip() {
+    const triggerRect = trigger.getBoundingClientRect();
+    const tooltipRect = tooltip.getBoundingClientRect();
+    const gap = 8;
+    const pos = '${posClass}';
+    
+    let top = 0;
+    let left = 0;
+
+    if (pos.startsWith('top')) {
+      top = triggerRect.top - tooltipRect.height - gap;
+      if (pos === 'top') {
+        left = triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2);
+      } else if (pos === 'top-start') {
+        left = triggerRect.left;
+      } else if (pos === 'top-end') {
+        left = triggerRect.right - tooltipRect.width;
+      }
+    } else if (pos.startsWith('bottom')) {
+      top = triggerRect.bottom + gap;
+      if (pos === 'bottom') {
+        left = triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2);
+      } else if (pos === 'bottom-start') {
+        left = triggerRect.left;
+      } else if (pos === 'bottom-end') {
+        left = triggerRect.right - tooltipRect.width;
+      }
+    } else if (pos.startsWith('left')) {
+      left = triggerRect.left - tooltipRect.width - gap;
+      if (pos === 'left') {
+        top = triggerRect.top + (triggerRect.height / 2) - (tooltipRect.height / 2);
+      } else if (pos === 'left-start') {
+        top = triggerRect.top;
+      } else if (pos === 'left-end') {
+        top = triggerRect.bottom - tooltipRect.height;
+      }
+    } else if (pos.startsWith('right')) {
+      left = triggerRect.right + gap;
+      if (pos === 'right') {
+        top = triggerRect.top + (triggerRect.height / 2) - (tooltipRect.height / 2);
+      } else if (pos === 'right-start') {
+        top = triggerRect.top;
+      } else if (pos === 'right-end') {
+        top = triggerRect.bottom - tooltipRect.height;
+      }
+    }
+
+    tooltip.style.top = top + 'px';
+    tooltip.style.left = left + 'px';
+  }
+
+  function show() {
+    positionTooltip();
+    tooltip.classList.add('tl-tooltip--visible');
+  }
+
+  function hide() {
+    tooltip.classList.remove('tl-tooltip--visible');
+  }
+
+  trigger.addEventListener('mouseenter', show);
+  trigger.addEventListener('mouseleave', hide);
+  trigger.addEventListener('focus', show);
+  trigger.addEventListener('blur', hide);
+})();
+</script>`,
+  );
 };
-
-const Template = ({ position, label, trigger, triggerElement, offsetSkidding, offsetDistance }) =>
-  formatHtmlPreview(`
-      <!-- Required stylesheets:
-      "@scania/tegel-lite/global.css"
-      "@scania/tegel-lite/tl-tooltip.css"
-    -->
-      <!-- Optional stylesheets:
-      "@scania/tegel-lite/tl-icon.css" (if using icon as trigger)
-      "@scania/tegel-lite/tl-button.css" (if using button as trigger)
-      "@scania/tegel-lite/tl-link.css" (if using link as trigger)
-    -->
-      
-      ${renderTrigger(triggerElement, trigger.toLowerCase() === 'click')}
-      
-      <div
-        id="tooltip-id"
-        class="tl-tooltip tl-tooltip--${positionLookup[position]}"
-        role="tooltip"
-      >
-        ${label}
-      </div>
-
-    <!-- Example JavaScript for positioning and showing/hiding tooltip -->
-    <script>
-      setTimeout(function () {
-        const trigger = document.querySelector('.tl-tooltip-trigger');
-        const tooltip = document.getElementById('tooltip-id');
-
-        if (!trigger || !tooltip) return;
-
-        // Simple positioning function
-        const positionTooltip = () => {
-          const triggerRect = trigger.getBoundingClientRect();
-          const tooltipRect = tooltip.getBoundingClientRect();
-          const position = '${positionLookup[position]}';
-          const offset = ${offsetDistance};
-          const skidding = ${offsetSkidding};
-          
-          let top = 0;
-          let left = 0;
-
-          // Calculate position based on modifier
-          if (position.startsWith('top')) {
-            top = triggerRect.top - tooltipRect.height - offset;
-            if (position === 'top') {
-              left = triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2);
-            } else if (position === 'top-start') {
-              left = triggerRect.left + skidding;
-            } else if (position === 'top-end') {
-              left = triggerRect.right - tooltipRect.width + skidding;
-            }
-          } else if (position.startsWith('bottom')) {
-            top = triggerRect.bottom + offset;
-            if (position === 'bottom') {
-              left = triggerRect.left + (triggerRect.width / 2) - (tooltipRect.width / 2);
-            } else if (position === 'bottom-start') {
-              left = triggerRect.left + skidding;
-            } else if (position === 'bottom-end') {
-              left = triggerRect.right - tooltipRect.width + skidding;
-            }
-          } else if (position.startsWith('left')) {
-            left = triggerRect.left - tooltipRect.width - offset;
-            if (position === 'left') {
-              top = triggerRect.top + (triggerRect.height / 2) - (tooltipRect.height / 2);
-            } else if (position === 'left-start') {
-              top = triggerRect.top + skidding;
-            } else if (position === 'left-end') {
-              top = triggerRect.bottom - tooltipRect.height + skidding;
-            }
-          } else if (position.startsWith('right')) {
-            left = triggerRect.right + offset;
-            if (position === 'right') {
-              top = triggerRect.top + (triggerRect.height / 2) - (tooltipRect.height / 2);
-            } else if (position === 'right-start') {
-              top = triggerRect.top + skidding;
-            } else if (position === 'right-end') {
-              top = triggerRect.bottom - tooltipRect.height + skidding;
-            }
-          }
-
-          tooltip.style.top = top + 'px';
-          tooltip.style.left = left + 'px';
-        };
-
-        const show = () => {
-          positionTooltip();
-          tooltip.classList.add('tl-tooltip--visible');
-        };
-        const hide = () => tooltip.classList.remove('tl-tooltip--visible');
-
-        const isClick = "${trigger}".toLowerCase() === "click";
-
-        if (isClick) {
-          let open = false;
-          trigger.addEventListener('click', (e) => {
-            e.preventDefault?.();
-            open = !open;
-            if (open) {
-              show();
-            } else {
-              hide();
-            }
-          });
-          document.addEventListener('click', (e) => {
-            if (!trigger.contains(e.target) && !tooltip.contains(e.target)) {
-              open = false;
-              hide();
-            }
-          });
-        } else {
-          trigger.addEventListener('mouseenter', show);
-          trigger.addEventListener('mouseleave', hide);
-          trigger.addEventListener('focus', show);
-          trigger.addEventListener('blur', hide);
-        }
-
-        // Reposition on scroll/resize
-        window.addEventListener('scroll', () => {
-          if (tooltip.classList.contains('tl-tooltip--visible')) {
-            positionTooltip();
-          }
-        });
-        window.addEventListener('resize', () => {
-          if (tooltip.classList.contains('tl-tooltip--visible')) {
-            positionTooltip();
-          }
-        });
-      }, 0);
-    </script>
-  `);
 
 export const Default = Template.bind({});
