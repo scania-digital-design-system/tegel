@@ -13,21 +13,14 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
-      },
-    },
-    mobileView: {
-      name: 'Mobile view',
-      description: 'Indicates if the footer group is in mobile view.',
-      control: {
-        type: 'boolean',
+        defaultValue: { summary: 'Primary' },
       },
     },
     isFooterGroupOpen: {
-      name: 'Open mobile footer group',
-      description: 'Indicates if the mobile footer group is open.',
+      name: 'Expanded mobile footer group',
+      description: 'Indicates if the mobile footer group is expanded.',
       control: {
         type: 'boolean',
       },
@@ -60,31 +53,55 @@ export default {
         type: 'boolean',
       },
     },
+    numberOfLinks: {
+      name: 'Number of footer groups',
+      description: 'Number of groups to display in the footer top section.',
+      control: {
+        type: 'number',
+        min: 1,
+        max: 8,
+      },
+    },
   },
   args: {
-    modeVariant: 'Inherit from parent',
-    mobileView: true,
+    modeVariant: 'Primary',
     isFooterGroupOpen: false,
     includeFooterTop: true,
     includeFooterStart: true,
     includeFooterEnd: true,
     includeFooterCopyright: true,
+    numberOfLinks: 4,
   },
 };
 
 const Template = ({
   modeVariant,
-  mobileView,
   isFooterGroupOpen,
   includeFooterTop,
   includeFooterStart,
   includeFooterEnd,
   includeFooterCopyright,
+  numberOfLinks,
 }) => {
-  const modeVariantClass =
-    modeVariant !== 'Inherit from parent' ? `tl-footer--${modeVariant.toLowerCase()}` : '';
-  return formatHtmlPreview(
-    `
+  const modeVariantClass = `tl-footer--${modeVariant.toLowerCase()}`;
+
+  // Generate groups based on numberOfLinks (actually number of groups)
+  const generateGroups = () => {
+    return Array.from(
+      { length: numberOfLinks },
+      (_, i) =>
+        `<div class="tl-footer__group ${
+          isFooterGroupOpen ? 'tl-footer__group--expanded' : ''
+        }" role="list">
+                <button class="tl-footer__top-title" type="button">Title ${i + 1}</button>
+                <a href="#" class="tl-footer__link">Link text</a>
+                <a href="#" class="tl-footer__link">Link text</a>
+                <a href="#" class="tl-footer__link">Link text</a>
+              </div>`,
+    ).join('\n              ');
+  };
+
+  const footerMarkup = `
     <!-- Required stylesheet 
   "@scania/tegel-lite/global.css";
   "@scania/tegel-lite/tl-footer.css";
@@ -103,194 +120,23 @@ const Template = ({
         includeFooterTop
           ? `
             <div class="tl-footer__top">
-                ${
-                  mobileView
-                    ? `<div class="tl-footer__group--mobile-view">
-                      <button class="tl-footer__top-title-button ${
-                        isFooterGroupOpen
-                          ? 'tl-footer__top-title-button--expanded'
-                          : 'tl-footer__top-title-button--closed'
-                      }"
-                      >
-                        <h6>Title 1</h6>
-                        <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
-                      </button>
-                      <nav>
-                          <div role="list" class="tl-footer__top-list ${
-                            isFooterGroupOpen
-                              ? 'tl-footer__top-list--expanded'
-                              : 'tl-footer__top-list--closed'
-                          }">
-                          <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                          </div>
-                      </nav>
-                    </div>
-                    <div class="tl-footer__group--mobile-view">
-                      <button class="tl-footer__top-title-button ${
-                        isFooterGroupOpen
-                          ? 'tl-footer__top-title-button--expanded'
-                          : 'tl-footer__top-title-button--closed'
-                      }">
-                        <h6>Title 2</h6>
-                        <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
-                      </button>
-                      <nav>
-                          <div role="list" class="tl-footer__top-list ${
-                            isFooterGroupOpen
-                              ? 'tl-footer__top-list--expanded'
-                              : 'tl-footer__top-list--closed'
-                          }">
-                          <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                          </div>
-                      </nav>
-                    </div>
-                    <div class="tl-footer__group--mobile-view">  
-                      <button class="tl-footer__top-title-button ${
-                        isFooterGroupOpen
-                          ? 'tl-footer__top-title-button--expanded'
-                          : 'tl-footer__top-title-button--closed'
-                      }">
-                        <h6>Title 3</h6>
-                        <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
-                      </button>
-                      <nav>
-                          <div role="list" class="tl-footer__top-list ${
-                            isFooterGroupOpen
-                              ? 'tl-footer__top-list--expanded'
-                              : 'tl-footer__top-list--closed'
-                          }">
-                          <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                          </div>
-                      </nav>
-                    </div>  
-                    <div class="tl-footer__group--mobile-view">
-                      <button class="tl-footer__top-title-button ${
-                        isFooterGroupOpen
-                          ? 'tl-footer__top-title-button--expanded'
-                          : 'tl-footer__top-title-button--closed'
-                      }">
-                        <h6>Title 4</h6>
-                        <span class="tl-icon tl-icon--chevron_down tl-icon--24" aria-hidden="true"></span>
-                      </button>
-                      <nav>
-                          <div role="list" class="tl-footer__top-list ${
-                            isFooterGroupOpen
-                              ? 'tl-footer__top-list--expanded'
-                              : 'tl-footer__top-list--closed'
-                          }">
-                          <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                              <div class="tl-footer__item--mobile-view">
-                                  <a href="#"> Link text</a>
-                              </div>
-                          </div>
-                      </nav>
-                    </div>
-                  `
-                    : `
-                  `
-                }
-              
-              <div class="tl-footer__group">
-                <h6 class="tl-footer__top-title">Title 1</h6>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-              </div>
-              <div class="tl-footer__group">
-                <h6 class="tl-footer__top-title">Title 2</h6>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-              </div>
-
-              <div class="tl-footer__group">
-                <h6 class="tl-footer__top-title">Title 3</h6>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-              </div>
-
-              <div class="tl-footer__group">
-                <h6 class="tl-footer__top-title">Title 4</h6>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-                <div class="tl-footer__item">
-                  <a href="#"> Link text</a>
-                </div>
-              </div>
+              ${generateGroups()}
             </div>`
           : ''
       }
 
       <div class="tl-footer__main">
-        <div class="tl-footer__main-top">
+        ${
+          includeFooterStart || includeFooterEnd
+            ? `<div class="tl-footer__main-top">
           ${
             includeFooterStart
               ? `<div class="tl-footer__main-top--start">
-                    <div class="tl-footer__group">
-                      <div class="tl-footer__item">
-                          <a href="#"> Link text</a>
-                      </div>
-                      <div class="tl-footer__item">
-                          <a href="#"> Link text</a>
-                      </div>
-                      <div class="tl-footer__item">
-                          <a href="#"> Link text</a>
-                      </div>
-                      <div class="tl-footer__item">
-                          <a href="#"> Link text</a>
-                      </div>
+                    <div class="tl-footer__group" role="list">
+                      <a href="#" class="tl-footer__link">Link text</a>
+                      <a href="#" class="tl-footer__link">Link text</a>
+                      <a href="#" class="tl-footer__link">Link text</a>
+                      <a href="#" class="tl-footer__link">Link text</a>
                     </div>
                   </div>`
               : ''
@@ -298,45 +144,31 @@ const Template = ({
           ${
             includeFooterEnd
               ? `<div class="tl-footer__main-top--end">
-                    <div class="tl-footer__group" tds-list-aria-label="End slot links">
-                    <div class="tl-footer__item">
-                        <a href="#"> <span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
-                    </div>
-                    <div class="tl-footer__item">
-                        <a href="#"> <span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
-                    </div>
-                    <div class="tl-footer__item">
-                        <a href="#"> <span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
-                    </div>
+                    <div class="tl-footer__group" role="list">
+                      <a href="#" class="tl-footer__link"><span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
+                      <a href="#" class="tl-footer__link"><span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
+                      <a href="#" class="tl-footer__link"><span class="tl-icon tl-icon--truck tl-icon--16" svg-title="Truck"></span></a>
                     </div>
                 </div>`
               : ''
           }
           
-        </div>
+        </div>`
+            : ''
+        }
         <div class="tl-footer__main-bottom">
-              
                ${
                  includeFooterCopyright
-                   ? `
-                    <small class="tl-footer__copyright"><div>
-                        <div>
-                         © <span class="tl-footer__copyright-text">Copyright </span>2025
-                         <span class="tl-footer__copyright-last-part">All rights reserved</span>
-                        </div>
-                        </div>
-                    </small>
-                    `
+                   ? `<small class="tl-footer__copyright">© Copyright 2026 All rights reserved.</small>`
                    : ''
                }
-              <div class="tl-footer__brand">
-                <p>Scania</p>
-              </div>
+              <p class="tl-footer__brand">Scania</p>
         </div>
       </div>
     </footer>
-  `,
-  );
+  `;
+
+  return formatHtmlPreview(footerMarkup);
 };
 
 export const Default = Template.bind({});
