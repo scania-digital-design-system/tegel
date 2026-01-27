@@ -22,6 +22,11 @@ The Inline Tabs component provides a horizontal tabbed navigation with scrollabl
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-inline-tab.css
 @scania/tegel-lite/tl-inline-tabs.css
+```
+
+### Optional Stylesheets
+
+```
 @scania/tegel-lite/tl-icon.css (if using scroll buttons)
 ```
 
