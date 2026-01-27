@@ -73,6 +73,8 @@ Apply these classes to the `.tl-textarea` element.
 | `.tl-textarea--no-min-width`         | Removes minimum width constraint     |
 | `.tl-textarea--hide-readonly-icon`   | Hides readonly edit icon             |
 
+**Note:** Label is positioned outside the textarea by default.
+
 ----------------------------------------------
 
 *Part of Tegel Lite (CSS) Design System*
