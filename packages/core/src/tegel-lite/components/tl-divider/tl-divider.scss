@@ -10,8 +10,12 @@
     background-color: var(--divider-background-strong);
   }
 
-  &--discrete {
-    background-color: var(--divider-background-discrete);
+  &--discrete-light {
+    background-color: var(--divider-background-discrete-light);
+  }
+
+  &--discrete-dark {
+    background-color: var(--divider-background-discrete-dark);
   }
 
   &--horizontal {

@@ -12,9 +12,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Discrete', 'Expressive'],
+      options: ['Discrete Light', 'Discrete Dark', 'Expressive'],
       table: {
-        defaultValue: { summary: 'Discrete' },
+        defaultValue: { summary: 'Discrete Light' },
       },
     },
     orientation: {
@@ -46,7 +46,7 @@ export default {
     },
   },
   args: {
-    variant: 'Discrete',
+    variant: 'Discrete Light',
     orientation: 'Horizontal',
     width: 150,
     height: 150,
@@ -55,7 +55,12 @@ export default {
 
 const Template = ({ orientation, variant, width, height }) => {
   const orientationClass = orientation === 'Horizontal' ? 'horizontal' : 'vertical';
-  const variantClass = variant === 'Expressive' ? 'expressive' : 'discrete';
+  let variantClass = 'discrete-light';
+  if (variant === 'Expressive') {
+    variantClass = 'expressive';
+  } else if (variant === 'Discrete Dark') {
+    variantClass = 'discrete-dark';
+  }
   const style = orientation === 'Horizontal' ? `width: ${width}px;` : `height: ${height}px;`;
 
   return formatHtmlPreview(`
