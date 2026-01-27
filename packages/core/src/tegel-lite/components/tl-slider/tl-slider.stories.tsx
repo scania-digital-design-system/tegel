@@ -216,7 +216,6 @@ const Template = ({
   const sliderClasses = [
     'tl-slider',
     thumbSize === 'Small' ? 'tl-slider--small' : '',
-    disabled ? 'tl-slider--disabled' : '',
     readonly ? 'tl-slider--read-only' : '',
   ]
     .filter(Boolean)
@@ -331,7 +330,7 @@ const Template = ({
         <div class="tl-slider__value tl-slider__value--max">${actualMax}</div>
         <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width${
           readonly ? ' tl-text-field--readonly' : ''
-        }${disabled ? ' tl-text-field--disabled' : ''} tl-slider__input-wrapper">
+        } tl-slider__input-wrapper">
           <input 
             type="number" 
             class="tl-text-field__input tl-slider__input-field${
@@ -394,14 +393,15 @@ const Template = ({
             : ''
         }
         
+        const nativeInput = slider.querySelector('.tl-slider__native-input');
+        
         // Exit early if disabled (but after setting width)
-        if (slider.classList.contains('tl-slider--disabled')) return;
+        if (nativeInput && nativeInput.disabled) return;
         
         const track = slider.querySelector('.tl-slider__track');
         const thumb = slider.querySelector('.tl-slider__thumb');
         const thumbInner = slider.querySelector('.tl-slider__thumb-inner');
         const trackFill = slider.querySelector('.tl-slider__track-fill');
-        const nativeInput = slider.querySelector('.tl-slider__native-input');
         ${showControls ? "const minusBtn = slider.querySelector('.tl-slider__control-minus');" : ''}
         ${showControls ? "const plusBtn = slider.querySelector('.tl-slider__control-plus');" : ''}
         ${showTooltip ? "const tooltip = slider.querySelector('.tl-slider__value-tooltip');" : ''}
