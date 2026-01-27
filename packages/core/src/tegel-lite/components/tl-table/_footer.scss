@@ -1,5 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
-@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/tl-scrollbar' as *;
 @use './tl-table-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 
@@ -17,8 +17,8 @@
 }
 
 .tl-table__footer
-  .tl-dropdown--sm
-  :is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
+.tl-dropdown--sm
+:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input),
 .tl-table__footer .tl-dropdown__option {
   height: 29px;
 }
