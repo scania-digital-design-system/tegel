@@ -1,24 +1,27 @@
 {
   "name": "@scania/tegel-lite",
-  "version": "1.0.0",
-  "description": "Styles-only library for Tegel Design System",
+  "version": "1.0.0-beta.0",
+  "description": "Styles-only library for Tegel Design System (Beta)",
   "type": "module",
   "keywords": [
     "tegel",
     "scania",
-    "design",
-    "system"
+    "design-system",
+    "css",
+    "styles",
+    "components",
+    "ui",
+    "design-tokens",
+    "lite",
+    "no-js"
   ],
   "homepage": "https://tegel.scania.com",
   "bugs": {
     "url": "https://github.com/scania-digital-design-system/tegel/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/scania-digital-design-system/tegel.git"
-  },
   "style": "dist/global.css",
   "exports": {
+    "./package.json": "./package.json",
     "./global.css": "./dist/global.css",
     "./scania-variables.css": "./dist/scania-variables.css",
     "./traton-variables.css": "./dist/traton-variables.css",
@@ -33,9 +36,6 @@
     "./tl-chip.css": "./dist/tl-chip.css",
     "./tl-divider.css": "./dist/tl-divider.css",
     "./tl-dropdown.css": "./dist/tl-dropdown.css",
-    "./tl-header-brand.css": "./dist/tl-header-brand.css",
-    "./tl-header-item.css": "./dist/tl-header-item.css",
-    "./tl-header-title.css": "./dist/tl-header-title.css",
     "./tl-header.css": "./dist/tl-header.css",
     "./tl-icon.css": "./dist/tl-icon.css",
     "./tl-link.css": "./dist/tl-link.css",
@@ -61,10 +61,19 @@
     "./tl-slider.css": "./dist/tl-slider.css",
     "./tl-radiobutton.css": "./dist/tl-radiobutton.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scania-digital-design-system/tegel.git"
+  },
   "files": [
-    "dist/"
+    "dist/",
+    "README.md"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
+    "prepublishOnly": "echo 'Warning: Run npm run build:lte from root before publishing'",
     "test": "npx playwright test"
   },
   "devDependencies": {

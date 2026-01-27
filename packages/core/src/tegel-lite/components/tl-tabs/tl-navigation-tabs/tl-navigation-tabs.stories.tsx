@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Tabs/Navigation Tabs',
+  title: 'Tegel Lite (Beta)/Tabs/Navigation Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
     modeVariant: {

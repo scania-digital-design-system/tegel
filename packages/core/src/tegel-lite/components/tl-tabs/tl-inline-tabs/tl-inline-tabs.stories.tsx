@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Tabs/Inline Tabs',
+  title: 'Tegel Lite (Beta)/Tabs/Inline Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
     modeVariant: {

@@ -1,7 +1,7 @@
 import formatHtmlPreview from '../../../stories/formatHtmlPreview';
 
 export default {
-  title: 'Tegel Lite (CSS)/Slider',
+  title: 'Tegel Lite (Beta)/Slider',
   parameters: {
     layout: 'padded',
     backgrounds: {
