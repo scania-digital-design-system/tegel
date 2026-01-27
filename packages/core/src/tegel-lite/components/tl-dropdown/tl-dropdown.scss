@@ -6,7 +6,7 @@
   width: 208px;
   position: relative;
 
-  &--disabled {
+  &:has(:is(.tl-dropdown__button, .tl-dropdown__select, .tl-dropdown__input):disabled) {
     cursor: not-allowed;
   }
 }
@@ -64,7 +64,7 @@
     }
   }
 
-  .tl-dropdown--disabled & {
+  &:disabled {
     color: var(--dropdown-disabled);
     background: var(--dropdown-background);
     box-shadow: none;
@@ -184,7 +184,6 @@
   pointer-events: none;
   transition: transform 0.2s;
 
-  .tl-dropdown--disabled &,
   .tl-dropdown:has(.tl-dropdown__select:disabled) &,
   .tl-dropdown:has(.tl-dropdown__button:disabled) &,
   .tl-dropdown:has(.tl-dropdown__input:disabled) & {
@@ -267,7 +266,6 @@
 }
 
 .tl-dropdown__label {
-  .tl-dropdown--disabled &,
   .tl-dropdown:has(.tl-dropdown__select:disabled) &,
   .tl-dropdown:has(.tl-dropdown__button:disabled) &,
   .tl-dropdown:has(.tl-dropdown__input:disabled) & {
@@ -568,7 +566,6 @@
   gap: 8px;
   position: relative;
 
-  .tl-dropdown--disabled &,
   .tl-dropdown:has(.tl-dropdown__select:disabled) &,
   .tl-dropdown:has(.tl-dropdown__button:disabled) &,
   .tl-dropdown:has(.tl-dropdown__input:disabled) & {
@@ -589,7 +586,6 @@
     mask-position: center;
   }
 
-  .tl-dropdown--error.tl-dropdown--disabled &::before,
   .tl-dropdown--error:has(.tl-dropdown__select:disabled) &::before,
   .tl-dropdown--error:has(.tl-dropdown__button:disabled) &::before,
   .tl-dropdown--error:has(.tl-dropdown__input:disabled) &::before {
@@ -601,7 +597,9 @@
   }
 }
 
-.tl-dropdown--error:not(.tl-dropdown--disabled) {
+.tl-dropdown--error:not(
+:has(:is(.tl-dropdown__select, .tl-dropdown__button, .tl-dropdown__input):disabled)
+) {
   --dropdown-border: var(--dropdown-border-error);
   --dropdown-border-hover: var(--dropdown-border-error-hover);
   --dropdown-helper-text: var(--dropdown-error);
@@ -630,7 +628,8 @@
   padding-top: 10px;
 }
 
-.tl-dropdown--disabled .tl-dropdown__text:empty::before {
+:has(:is(.tl-dropdown__select, .tl-dropdown__button, .tl-dropdown__input):disabled)
+.tl-dropdown__text:empty::before {
   color: var(--dropdown-disabled);
   cursor: not-allowed;
 }
