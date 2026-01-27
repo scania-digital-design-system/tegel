@@ -9,12 +9,12 @@ export default {
     variant: {
       name: 'Variant',
       description: 'Changes the variant of the component.',
-      options: ['information', 'success', 'warning', 'error'],
+      options: ['Information', 'Success', 'Warning', 'Error'],
       control: {
         type: 'radio',
       },
       table: {
-        defaultValue: { summary: 'information' },
+        defaultValue: { summary: 'Information' },
       },
     },
     header: {
@@ -57,7 +57,7 @@ export default {
     },
   },
   args: {
-    variant: 'information',
+    variant: 'Information',
     header: 'Message header',
     subheader: 'Short subheader',
     actions:
@@ -68,12 +68,12 @@ export default {
 };
 
 const Template = ({ variant, header, subheader, actions, hidden, closable }) => {
-  const variantClass = `tl-toast--${variant}`;
+  const variantClass = `tl-toast--${variant.toLowerCase()}`;
   const hiddenClass = hidden ? 'tl-toast--hide' : '';
 
   // Determine icon based on variant
   let iconName = '';
-  switch (variant) {
+  switch (variant.toLowerCase()) {
     case 'error':
       iconName = 'error';
       break;

@@ -31,6 +31,13 @@ The Toast component displays temporary notification messages with different seve
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-toast.css
+@scania/tegel-lite/tl-icon.css
+```
+
+### Optional Stylesheets
+
+```
+@scania/tegel-lite/tl-link.css (if using links in actions slot)
 ```
 
 ## Elements
@@ -74,7 +81,7 @@ The Toast component requires JavaScript to handle:
 - Auto-dismiss timer
 - Close button functionality
 - Toast queue management
-- Animation timing
+- Positioning and stacking of multiple toasts
 
 ----------------------------------------------
 

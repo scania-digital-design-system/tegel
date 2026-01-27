@@ -24,7 +24,12 @@ The Chip component represents small blocks of information or actions, often used
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-chip.css
-@scania/tegel-lite/tl-icon.css (when using icons)
+```
+
+## Optional Stylesheets
+
+```
+@scania/tegel-lite/tl-icon.css (if using icons)
 ```
 
 ## Elements

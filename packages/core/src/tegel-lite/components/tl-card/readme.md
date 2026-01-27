@@ -25,8 +25,14 @@ The Card component is a container that groups related content and actions.
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-card.css
-@scania/tegel-lite/tl-button.css (when using expandable cards)
-@scania/tegel-lite/tl-icon.css (when using icons)
+```
+
+### Optional Stylesheets
+
+```
+@scania/tegel-lite/tl-button.css (if using buttons in actions)
+@scania/tegel-lite/tl-link.css (if using links in actions)
+@scania/tegel-lite/tl-icon.css (if using icons)
 ```
 
 ## Elements
