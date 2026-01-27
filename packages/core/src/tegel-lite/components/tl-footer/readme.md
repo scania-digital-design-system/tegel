@@ -7,28 +7,37 @@ The Footer component provides a consistent footer structure with top section, ma
 ```html
 <footer class="tl-footer">
   <div class="tl-footer__top">
-    <div class="tl-footer__group">
-      <!-- Footer items for top section -->
+    <div class="tl-footer__group" role="list">
+      <button class="tl-footer__top-title" type="button">Title 1</button>
+      <a href="#" class="tl-footer__link">Link text</a>
+      <a href="#" class="tl-footer__link">Link text</a>
+      <a href="#" class="tl-footer__link">Link text</a>
+    </div>
+    <div class="tl-footer__group" role="list">
+      <button class="tl-footer__top-title" type="button">Title 2</button>
+      <a href="#" class="tl-footer__link">Link text</a>
+      <a href="#" class="tl-footer__link">Link text</a>
     </div>
   </div>
   <div class="tl-footer__main">
     <div class="tl-footer__main-top">
       <div class="tl-footer__main-top--start">
-        <div class="tl-footer__group">
-          <!-- Footer items for main top start -->
+        <div class="tl-footer__group" role="list">
+          <a href="#" class="tl-footer__link">Link text</a>
+          <a href="#" class="tl-footer__link">Link text</a>
         </div>
       </div>
       <div class="tl-footer__main-top--end">
-        <div class="tl-footer__group">
-          <!-- Footer items for main top end -->
+        <div class="tl-footer__group" role="list">
+          <a href="#" class="tl-footer__link">
+            <span class="tl-icon tl-icon--truck tl-icon--16"></span>
+          </a>
         </div>
       </div>
     </div>
     <div class="tl-footer__main-bottom">
-      <small class="tl-footer__copyright">© Copyright text</small>
-      <div class="tl-footer__brand">
-        <p>Brand</p>
-      </div>
+      <small class="tl-footer__copyright">© Copyright 2026 All rights reserved.</small>
+      <p class="tl-footer__brand">Scania</p>
     </div>
   </div>
 </footer>
@@ -41,7 +50,7 @@ The Footer component provides a consistent footer structure with top section, ma
 ```
 @scania/tegel-lite/global.css
 @scania/tegel-lite/tl-footer.css
-@scania/tegel-lite/tl-icon.css (when using mobile view)
+@scania/tegel-lite/tl-icon.css 
 ```
 
 ## Elements
@@ -55,13 +64,11 @@ The Footer component provides a consistent footer structure with top section, ma
 | `.tl-footer__main-top--start`  | `<div>`      | Start (left) area in main top      |
 | `.tl-footer__main-top--end`    | `<div>`      | End (right) area in main top       |
 | `.tl-footer__main-bottom`      | `<div>`      | Bottom part of main section        |
-| `.tl-footer__group`            | `<div>`      | Group container for footer items   |
-| `.tl-footer__top-title`        | `<h6>`       | Title for footer top groups        |
-| `.tl-footer__top-title-button` | `<button>`   | Expandable title button (mobile)   |
-| `.tl-footer__top-list`         | `<div>`      | List container for top links (mobile) |
-| `.tl-footer__item`             | `<div>`      | Individual footer item container   |
+| `.tl-footer__group`            | `<div>`      | Group container for footer links   |
+| `.tl-footer__top-title`        | `<button>`   | Title button for footer top groups |
+| `.tl-footer__link`             | `<a>`        | Footer link                        |
 | `.tl-footer__copyright`        | `<small>`    | Copyright text                     |
-| `.tl-footer__brand`            | `<div>`      | Brand logo display                 |
+| `.tl-footer__brand`            | `<p>`        | Brand logo display                 |
 | `.tl-icon`                     | `<span>`     | Icon element (optional)            |
 
 ## Modifiers
@@ -81,33 +88,7 @@ Apply these classes to `.tl-footer__group` elements.
 
 | Modifier                         | Description                               |
 | -------------------------------- | ----------------------------------------- |
-| `.tl-footer__group--mobile-view` | Display group only in mobile view         |
-
-### Footer Item Modifiers
-
-Apply these classes to `.tl-footer__item` elements.
-
-| Modifier                          | Description                              |
-| --------------------------------- | ---------------------------------------- |
-| `.tl-footer__item--mobile-view`   | Mobile view styling for footer items     |
-
-### Footer Button Modifiers
-
-Apply these classes to `.tl-footer__top-title-button` elements.
-
-| Modifier                                      | Description                         |
-| --------------------------------------------- | ----------------------------------- |
-| `.tl-footer__top-title-button--expanded`      | Expanded state for mobile accordion |
-| `.tl-footer__top-title-button--closed`        | Closed state for mobile accordion   |
-
-### Footer List Modifiers
-
-Apply these classes to `.tl-footer__top-list` elements.
-
-| Modifier                              | Description                    |
-| ------------------------------------- | ------------------------------ |
-| `.tl-footer__top-list--expanded`      | Expanded list state (mobile)   |
-| `.tl-footer__top-list--closed`        | Closed list state (mobile)     |
+| `.tl-footer__group--expanded`    | Expanded state for mobile accordion       |
 
 ----------------------------------------------
 
