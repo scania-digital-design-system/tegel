@@ -46,6 +46,7 @@ Apply these classes to the `.tl-dropdown` container element.
 | `.tl-dropdown--error`        | Error state with error styling  |
 | `.tl-dropdown--label-inside` | Positions label inside dropdown |
 
+**Note:** Label is positioned outside the dropdown by default.
 
 ## JavaScript
 
