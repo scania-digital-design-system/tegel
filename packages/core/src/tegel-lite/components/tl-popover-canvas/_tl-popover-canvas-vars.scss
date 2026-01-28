@@ -2,11 +2,11 @@
   --popover-canvas-text: var(--color-foreground-text-strong);
   --popover-canvas-background: var(--color-background-layer-01);
 
-  &--mode-variant-primary {
+  &--primary {
     --popover-canvas-background: var(--color-background-layer-01);
   }
 
-  &--mode-variant-secondary {
+  &--secondary {
     --popover-canvas-background: var(--color-background-layer-02);
   }
 }

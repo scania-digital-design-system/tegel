@@ -39,7 +39,7 @@ export default {
 };
 
 const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
-  const modeClass = `tl-popover-canvas--mode-variant-${modeVariant.toLowerCase()}`;
+  const modeClass = `tl-popover-canvas--${modeVariant.toLowerCase()}`;
   const animationClass = animation === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
   const showPopoverClass = showPopoverCanvas ? 'tl-popover-canvas--visible' : '';
 

@@ -65,7 +65,7 @@ export default {
 };
 
 const Template = ({ modeVariant, fluidWidth, showPopoverMenu, animation, showIcon, icon }) => {
-  const modeClass = `tl-popover-menu--mode-variant-${modeVariant.toLowerCase()}`;
+  const modeClass = `tl-popover-menu--${modeVariant.toLowerCase()}`;
   const fluidClass = fluidWidth ? 'tl-popover-menu--fluid' : '';
   const animationClass = animation === 'fade' ? 'tl-popover-menu--animation-fade' : '';
   const showPopoverClass = showPopoverMenu ? 'tl-popover-menu--visible' : '';
