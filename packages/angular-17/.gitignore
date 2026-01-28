@@ -41,5 +41,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Describe and double check
+# Stencil generated components
 /projects/components/src/lib/stencil-generated/
