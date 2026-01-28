@@ -16,6 +16,7 @@
   }
 
   :has(.tl-textarea__input:disabled) {
+    cursor: not-allowed;
     pointer-events: none;
   }
 
@@ -36,18 +37,18 @@
     z-index: 1;
   }
 
-  // Default behavior (label outside) - readonly icon position adjustment
-  &:not(&--label-inside):has(.tl-textarea__input[readonly]):not(
-  :has(.tl-textarea__input:disabled)
-):not(&--hide-readonly-icon)::before {
-    top: 44px;
+  .traton &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
+  &--hide-readonly-icon
+)::before {
+    top: 21px;
+    right: 16px;
   }
 
   &::after {
     content: '';
     position: absolute;
-    bottom: 5px;
-    right: 2px;
+    bottom: 3px;
+    right: 3px;
     width: 12px;
     height: 12px;
     background-color: var(--textarea-resize-icon);
@@ -60,17 +61,17 @@
   }
 
   .traton &::after {
-    bottom: 7px;
+    bottom: 5px;
     right: 4px;
   }
 
   // Default behavior (label outside) - resize icon position adjustment
   &:not(&--label-inside)::after {
-    bottom: 7px;
+    bottom: 5px;
   }
 
   .traton &:not(&--label-inside)::after {
-    bottom: 9px;
+    bottom: 5px;
   }
 
   &:has(.tl-textarea__bottom)::after {
@@ -112,7 +113,7 @@
     display: none;
   }
 
-  .tl-textarea:hover &:not(:focus) {
+  .tl-textarea:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--textarea-box-shadow-hover);
   }
 
@@ -124,7 +125,7 @@
     }
   }
 
-  .tl-textarea--error:hover &:not(:focus) {
+  .tl-textarea--error:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--textarea-box-shadow-error-hover);
   }
 
@@ -135,7 +136,13 @@
     box-shadow: inset var(--textarea-box-shadow-success);
   }
 
-  :has(.tl-textarea__input[readonly]) & {
+  &:disabled {
+    box-shadow: none;
+    color: var(--textarea-text-disabled);
+    cursor: not-allowed;
+  }
+
+  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
     box-shadow: inset var(--textarea-box-shadow);
 
     &:focus {
@@ -143,13 +150,8 @@
     }
   }
 
-  :has(.tl-textarea__input[readonly]):hover &:not(:focus) {
+  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):hover &:not(:focus) {
     box-shadow: inset var(--textarea-box-shadow-hover);
-  }
-
-  &:disabled {
-    box-shadow: none;
-    color: var(--textarea-text-disabled);
   }
 
   .tl-textarea--label-inside & {
@@ -163,10 +165,10 @@
   }
 
   .tl-textarea--label-inside &:disabled::placeholder {
-    color: var(--textarea-placeholder) !important;
+    color: var(--textarea-placeholder-disabled) !important;
   }
 
-  :has(.tl-textarea__input[readonly]) & {
+  :has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)) & {
     user-select: auto;
     caret-color: transparent;
     cursor: default;

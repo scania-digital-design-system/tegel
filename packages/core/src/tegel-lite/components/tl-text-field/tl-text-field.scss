@@ -82,7 +82,7 @@
     box-shadow: inset var(--text-field-box-shadow-focus);
   }
 
-  .tl-text-field:hover &:not(:focus) {
+  .tl-text-field:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -94,7 +94,7 @@
     }
   }
 
-  .tl-text-field--error:hover &:not(:focus) {
+  .tl-text-field--error:hover &:not(:focus):not(:disabled) {
     box-shadow: inset var(--text-field-box-shadow-error-hover);
   }
 
@@ -105,7 +105,14 @@
     box-shadow: inset var(--text-field-box-shadow-success);
   }
 
-  :has(.tl-text-field__input[readonly]) & {
+  &:disabled {
+    box-shadow: none;
+    background-color: var(--text-field-background-disabled);
+    color: var(--text-field-text-disabled);
+    cursor: not-allowed;
+  }
+
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
     box-shadow: inset var(--text-field-box-shadow);
 
     &:focus {
@@ -113,27 +120,18 @@
     }
   }
 
-  :has(.tl-text-field__input[readonly]):hover &:not(:focus) {
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
-  &:disabled {
-    box-shadow: none;
-    background-color: var(--text-field-background-disabled);
-    color: var(--text-field-text-disabled);
-  }
-
-  :has(.tl-text-field__input[readonly]) & {
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)) & {
     user-select: auto;
     caret-color: transparent;
     cursor: default;
     pointer-events: none;
   }
 
-  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
-  &--hide-readonly-icon
-)
-  & {
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(.tl-text-field--hide-readonly-icon) & {
     padding-right: 54px;
   }
 

@@ -324,9 +324,7 @@ const Template = ({
           showInput
             ? `
         <div class="tl-slider__value tl-slider__value--max">${actualMax}</div>
-        <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width${
-          readonly ? ' tl-text-field--readonly' : ''
-        } tl-slider__input-wrapper">
+        <div class="tl-text-field tl-text-field--sm tl-text-field--no-min-width tl-slider__input-wrapper">
           <input 
             type="number" 
             class="tl-text-field__input tl-slider__input-field${

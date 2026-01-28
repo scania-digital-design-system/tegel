@@ -66,7 +66,7 @@
 
   &:disabled {
     color: var(--dropdown-disabled);
-    background: var(--dropdown-background);
+    background: var(--dropdown-background-disabled, var(--dropdown-background));
     box-shadow: none;
     cursor: not-allowed;
     pointer-events: none;
@@ -85,6 +85,10 @@
   padding-top: 3px;
   cursor: pointer;
   display: block;
+
+  &:disabled {
+    background: var(--dropdown-background) !important;
+  }
 }
 
 .tl-dropdown__input,
@@ -675,6 +679,8 @@
 
   &:disabled {
     border-color: transparent;
+    -webkit-text-fill-color: var(--dropdown-disabled);
+    opacity: 1;
   }
 }
 
