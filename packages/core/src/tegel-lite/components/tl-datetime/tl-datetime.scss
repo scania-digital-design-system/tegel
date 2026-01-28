@@ -67,12 +67,17 @@
     height: 20px;
     mask-repeat: no-repeat;
     mask-position: center;
-    mask-size: contain;
+    mask-size: 20px 20px;
     background-color: var(--datetime-icon);
     pointer-events: none;
 
     /* Default: calendar icon for date/datetime inputs */
     mask-image: var(--icon-calendar-svg);
+
+    /* Firefox - hide our custom icon since Firefox shows its own */
+    @supports (-moz-appearance: none) {
+      display: none;
+    }
   }
 
   /* Change to clock icon for time input */
@@ -136,9 +141,47 @@
     color: var(--datetime-placeholder-focus);
   }
 
+  /* WebKit datetime fields */
+  &::-webkit-datetime-edit-text {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-month-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-day-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-year-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-hour-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-minute-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-second-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-millisecond-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
+  &::-webkit-datetime-edit-meridiem-field {
+    -webkit-text-fill-color: var(--datetime-text);
+  }
+
   &:disabled {
     background-color: var(--datetime-background-disabled);
     color: var(--datetime-text-disabled);
+    box-shadow: inset var(--datetime-box-shadow-disabled);
     cursor: not-allowed;
 
     &::placeholder {
@@ -147,6 +190,43 @@
 
     ~ .tl-datetime__label-inside {
       color: var(--datetime-label-disabled);
+    }
+
+    /* WebKit datetime fields - disabled state */
+    &::-webkit-datetime-edit-text {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-month-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-day-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-year-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-hour-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-minute-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-second-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-millisecond-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
+    }
+
+    &::-webkit-datetime-edit-meridiem-field {
+      -webkit-text-fill-color: var(--datetime-text-disabled);
     }
   }
 

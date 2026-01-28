@@ -11,10 +11,10 @@
   --datetime-background-disabled-primary: var(--color-background-layer-01);
   --datetime-background-disabled-secondary: var(--color-background-layer-02);
   --datetime-background-disabled: var(--datetime-background-disabled-primary);
-  --datetime-text-disabled: var(--color-foreground-text-subtle);
-  --datetime-placeholder-disabled: var(--color-foreground-text-subtle);
-  --datetime-label-disabled: var(--color-foreground-text-subtle);
-  --datetime-icon-disabled: var(--color-foreground-text-subtle);
+  --datetime-text-disabled: var(--color-foreground-text-disabled);
+  --datetime-placeholder-disabled: var(--color-foreground-text-disabled);
+  --datetime-label-disabled: var(--color-foreground-text-disabled);
+  --datetime-icon-disabled: var(--color-foreground-text-disabled);
 
   // Label
   --datetime-label: var(--color-foreground-text-strong);
@@ -51,6 +51,7 @@
   --datetime-box-shadow: 0 -1px 0 0 var(--color-foreground-border-soft);
   --datetime-box-shadow-hover: 0 -1px 0 0 var(--color-foreground-border-strong);
   --datetime-box-shadow-focus: 0 -2px 0 0 var(--color-foreground-border-accent-focus);
+  --datetime-box-shadow-disabled: none;
   --datetime-box-shadow-error: 0 -1px 0 0 var(--color-system-danger-default);
   --datetime-box-shadow-error-hover: 0 -1px 0 0 var(--color-system-danger-default);
   --datetime-box-shadow-error-focus: 0 -2px 0 0 var(--color-system-danger-default);
@@ -104,6 +105,7 @@
   --datetime-box-shadow: 0 0 0 1px var(--color-foreground-border-soft);
   --datetime-box-shadow-hover: 0 0 0 1px var(--color-foreground-border-strong);
   --datetime-box-shadow-focus: 0 0 0 2px var(--color-foreground-border-accent-focus);
+  --datetime-box-shadow-disabled: none;
   --datetime-box-shadow-error: 0 0 0 1px var(--color-system-danger-default);
   --datetime-box-shadow-error-hover: 0 0 0 1px var(--color-system-danger-default);
   --datetime-box-shadow-error-focus: 0 0 0 2px var(--color-system-danger-default);
