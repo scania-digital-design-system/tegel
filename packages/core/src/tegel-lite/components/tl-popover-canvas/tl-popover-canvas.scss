@@ -1,4 +1,5 @@
 @use './tl-popover-canvas-vars' as *;
+@use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-popover-canvas {
   display: inline-block;
@@ -28,10 +29,14 @@
 }
 
 .tl-popover-canvas__content {
+  @include body-01;
+
   padding: 16px;
 }
 
 .tl-popover-canvas__header {
+  @include headline-05;
+
   margin: 0 0 8px;
 }
 

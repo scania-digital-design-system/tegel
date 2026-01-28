@@ -69,7 +69,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
           <p>Where you can put anything you want!</p>
           <div class="tl-popover-canvas__actions">
             <a
-              class="tds-link"
+              class="tl-link tl-link--standalone tl-link--underline"
               href="https://tegel.scania.com"
               target="_blank"
               rel="noopener noreferrer"
