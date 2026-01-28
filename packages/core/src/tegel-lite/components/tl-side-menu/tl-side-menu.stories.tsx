@@ -226,10 +226,12 @@ const Template = ({ persistent, collapsible, collapsed }) => {
                            </div>
                         </li>
                         ${
-                          collapsible
+                          persistent && collapsible
                             ? `<li class="tl-side-menu__collapse">
                            <button class="tl-side-menu__item" id="collapse-toggle">
-                              <span class="tl-icon tl-icon--arrow_left ${iconSize}" aria-hidden="true"></span>
+                              <span class="tl-icon ${
+                                collapsed ? 'tl-icon--arrow_right' : 'tl-icon--arrow_left'
+                              } ${iconSize}" aria-hidden="true"></span>
                               <span class="tl-side-menu__collapse-text">Collapse</span>
                            </button>
                         </li>`
