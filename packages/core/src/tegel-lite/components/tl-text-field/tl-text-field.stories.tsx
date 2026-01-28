@@ -63,14 +63,10 @@ export default {
       options: ['Icon', 'Text'],
       if: { arg: 'suffix', eq: true },
     },
-    charCounter: {
-      name: 'Character counter',
-      control: { type: 'boolean' },
-    },
     maxLength: {
       name: 'Max length',
       control: { type: 'number' },
-      if: { arg: 'charCounter', eq: true },
+      description: 'Maximum number of characters allowed. When > 0 the character counter is shown.',
     },
     noMinWidth: {
       name: 'No minimum width',
@@ -103,8 +99,7 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
-    charCounter: false,
-    maxLength: 12,
+    maxLength: 0,
     noMinWidth: false,
     readonly: false,
     hideReadonlyIcon: false,
@@ -125,7 +120,6 @@ const Template = ({
   prefixType,
   suffix,
   suffixType,
-  charCounter,
   maxLength,
   noMinWidth,
   readonly,
@@ -152,7 +146,7 @@ const Template = ({
   const inputAttrs = [
     `type="${type.toLowerCase()}"`,
     `placeholder="${placeholderText}"`,
-    charCounter && maxLength > 0 && `maxlength="${maxLength}"`,
+    maxLength > 0 && `maxlength="${maxLength}"`,
     disabled && 'disabled',
     readonly && 'readonly',
   ]
@@ -187,10 +181,9 @@ const Template = ({
   const helperContent = helper ? `<div class="tl-text-field__helper">${helper}</div>` : '';
 
   const charCounterContent =
-    charCounter && maxLength > 0
+    maxLength > 0
       ? `<span class="tl-text-field__charcounter">0 <span class="tl-text-field__charcounter-divider">/</span> ${maxLength}</span>`
       : '';
-
   const helperWrapperContent =
     helperContent || charCounterContent
       ? `<div class="tl-text-field__bottom">${helperContent}${charCounterContent}</div>`
@@ -215,7 +208,7 @@ const Template = ({
     </div>
 
   ${
-    charCounter && maxLength > 0
+    maxLength > 0
       ? `<!-- Script tag for demo purposes -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
