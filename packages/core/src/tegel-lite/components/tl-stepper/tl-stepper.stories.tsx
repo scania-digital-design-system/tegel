@@ -104,23 +104,17 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
     },
   ];
 
-  const iconSizeClass = size === 'Large' ? 'tl-icon--20' : 'tl-icon--16';
-
   const items = steps
     .map(({ label, state, index }) => {
       const nodeInner =
         state === 'tl-stepper__step--success' || state === 'tl-stepper__step--error'
-          ? `<span class="tl-icon tl-icon--${
-              state === 'tl-stepper__step--success' ? 'tick' : 'warning'
-            } ${iconSizeClass}"></span>`
+          ? '' // Icon rendered via ::after pseudo-element
           : String(index);
 
       return `
         <li class="tl-stepper__step ${state || ''}">
-          <div class="tl-stepper__content">
-            <div class="tl-stepper__node">${nodeInner}</div>
-            <div class="tl-stepper__label">${label}</div>
-          </div>
+          <div class="tl-stepper__node">${nodeInner}</div>
+          <div class="tl-stepper__label">${label}</div>
         </li>
       `;
     })
@@ -129,12 +123,8 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
   return formatHtmlPreview(`
     <!-- Required stylesheets
       "@scania/tegel-lite/global.css"
-      "@scania/tegel-lite/tl-step.css";
+      "@scania/tegel-lite/scania-variables.css" (or traton-variables.css)
       "@scania/tegel-lite/tl-stepper.css";
-    -->
-
-    <!-- Optional stylesheet
-      "@scania/tegel-lite/tl-icon.css"
     -->
 
     <div class="${containerClasses}">
