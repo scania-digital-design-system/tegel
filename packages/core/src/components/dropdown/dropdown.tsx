@@ -650,6 +650,16 @@ export class TdsDropdown {
    */
   @Method()
   async appendValue(value: string) {
+    /** Clear filter query when an option is selected */
+    if (this.filter && this.filterQuery.length > 0) {
+      this.filterQuery = '';
+      if (this.inputElement) {
+        this.inputElement.value = '';
+      }
+      /** Reset filter to show all options */
+      this.handleFilter({ target: { value: '' } });
+    }
+
     if (this.multiselect) {
       this.updateDropdownStateFromUser([...this.selectedOptions, value]);
     } else {
