@@ -78,22 +78,30 @@ const sizeLookUp = {
 };
 const Template = ({ size, orientation, labelPosition, hideLabels }) =>
   formatHtmlPreview(
-    `<tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
+    `
+    <style>
+      .demo-wrapper {
+        max-width: 680px;
+      }
+    </style>
+    <div class="demo-wrapper">
+      <tds-stepper ${hideLabels ? 'hide-labels' : ''} size="${sizeLookUp[size]}" ${
       orientation === 'Horizontal' ? `label-position="${labelPosition?.toLowerCase()}"` : ''
     } orientation="${orientation.toLowerCase()}">
-    <tds-step state="success" index="1">
-      <div slot="label">Success step</div>
-    </tds-step>
-    <tds-step state="error" index="2">
-      <div slot="label">Error step</div>
-    </tds-step>
-    <tds-step state="current" index="3" tds-aria-current="step">
-      <div slot="label">Current step</div>
-    </tds-step>
-    <tds-step index="4">
-      <div slot="label">Upcoming step</div>
-    </tds-step>
-  </tds-stepper>
+        <tds-step state="success" index="1">
+          <div slot="label">Success step</div>
+        </tds-step>
+        <tds-step state="error" index="2">
+          <div slot="label">Error step</div>
+        </tds-step>
+        <tds-step state="current" index="3" tds-aria-current="step">
+          <div slot="label">Current step</div>
+        </tds-step>
+        <tds-step index="4">
+          <div slot="label">Upcoming step</div>
+        </tds-step>
+      </tds-stepper>
+    </div>
         `,
   );
 export const Default = Template.bind({});
