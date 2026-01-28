@@ -155,13 +155,13 @@ const Template = ({
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
-              <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--launcher-grid">
-                <li class="tl-header__dropdown-menu-launcher-title">title</li>
-                <ul class="tl-header__dropdown-menu-launcher">
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--profile tl-icon--32"></span>My Profile</a></li>
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--settings tl-icon--32"></span>My Settings</a></li>
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--message tl-icon--32"></span>Support</a></li>
-                  <li class="tl-header__dropdown-menu-launcher-item"><a href="#"><span class="tl-icon tl-icon--truck tl-icon--32"></span>My Truck</a></li>
+              <ul class="tl-header__launcher-menu-grid">
+                <li class="tl-header__launcher-menu-title">title</li>
+                <ul class="tl-header__launcher-menu-list">
+                  <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--profile tl-icon--32"></span>My Profile</a></li>
+                  <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--settings tl-icon--32"></span>My Settings</a></li>
+                  <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--message tl-icon--32"></span>Support</a></li>
+                  <li class="tl-header__launcher-menu-item"><a href="#"><span class="tl-icon tl-icon--truck tl-icon--32"></span>My Truck</a></li>
                 </ul>
               </ul>
             </li>`
@@ -174,8 +174,8 @@ const Template = ({
               <button class="tl-header__dropdown-wrapper">
                 <span class="tl-icon tl-icon--bento tl-icon--16"></span>
               </button>
-              <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--launcher-list">
-                <li class="tl-header__dropdown-menu-launcher-title">title</li>
+              <ul class="tl-header__launcher-menu">
+                <li class="tl-header__launcher-menu-title">title</li>
                 <li class="tl-header__dropdown-menu-item tl-header__dropdown-menu-item--selected"><a href="#">My Profile</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">My settings</a></li>
                 <li class="tl-header__dropdown-menu-item"><a href="#">Support</a></li>
@@ -188,17 +188,17 @@ const Template = ({
       ${
         includeUserProfile
           ? `<li class="tl-header__dropdown">
-              <button class="tl-header__dropdown-wrapper tl-header__dropdown-wrapper--user">
-                <div class="tl-header__dropdown-menu-user-image">
+              <button class="tl-header__dropdown-wrapper-user">
+                <div class="tl-header__user-menu-image">
                   <img src="https://www.svgrepo.com/show/384676/account-avatar-profile-user-6.svg" alt="User avatar" />
                 </div>
               </button>
-              <ul class="tl-header__dropdown-menu tl-header__dropdown-menu--user">
-                <li class="tl-header__dropdown-menu-user">
-                  <div class="tl-header__dropdown-menu-user-box">
-                    <div class="tl-header__dropdown-menu-user-content">
-                      <span class="tl-header__dropdown-menu-user-header">User Name</span>
-                      <span class="tl-header__dropdown-menu-user-subheader">user@example.com</span>
+              <ul class="tl-header__user-menu">
+                <li class="tl-header__user-menu-item">
+                  <div class="tl-header__user-menu-box">
+                    <div class="tl-header__user-menu-content">
+                      <span class="tl-header__user-menu-header">User Name</span>
+                      <span class="tl-header__user-menu-subheader">user@example.com</span>
                     </div>
                   </div>
                 </li>
@@ -226,23 +226,48 @@ const Template = ({
     const dropdowns = document.querySelectorAll('.tl-header__dropdown');
 
     dropdowns.forEach(dropdown => {
-      const wrapper = dropdown.querySelector('.tl-header__dropdown-wrapper');
-      const menu = dropdown.querySelector('.tl-header__dropdown-menu');
+      const wrapper = dropdown.querySelector('.tl-header__dropdown-wrapper, .tl-header__dropdown-wrapper-user');
+      const menu = dropdown.querySelector('.tl-header__dropdown-menu, .tl-header__user-menu, .tl-header__launcher-menu, .tl-header__launcher-menu-grid');
       const icon = dropdown.querySelector('.tl-header__dropdown-icon');
+
+      if (!wrapper || !menu) return;
 
       wrapper.addEventListener('click', (e) => {
         e.stopPropagation();
-        const isOpen = wrapper.classList.contains('tl-header__dropdown-wrapper--open');
+        const isOpen = wrapper.classList.contains('tl-header__dropdown-wrapper--open') || 
+                       wrapper.classList.contains('tl-header__dropdown-wrapper-user--open');
 
         // close all dropdowns
         document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
+        document.querySelectorAll('.tl-header__dropdown-wrapper-user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper-user--open'));
         document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
+        document.querySelectorAll('.tl-header__user-menu--open').forEach(m => m.classList.remove('tl-header__user-menu--open'));
+        document.querySelectorAll('.tl-header__launcher-menu--open').forEach(m => m.classList.remove('tl-header__launcher-menu--open'));
+        document.querySelectorAll('.tl-header__launcher-menu-grid--open').forEach(m => m.classList.remove('tl-header__launcher-menu-grid--open'));
         document.querySelectorAll('.tl-header__dropdown-icon--rotated').forEach(i => i.classList.remove('tl-header__dropdown-icon--rotated'));
 
         if (!isOpen) {
-          wrapper.classList.add('tl-header__dropdown-wrapper--open');
-          menu.classList.add('tl-header__dropdown-menu--open');
-          icon.classList.add('tl-header__dropdown-icon--rotated');
+          // Add --open to the appropriate wrapper type
+          if (wrapper.classList.contains('tl-header__dropdown-wrapper-user')) {
+            wrapper.classList.add('tl-header__dropdown-wrapper-user--open');
+          } else {
+            wrapper.classList.add('tl-header__dropdown-wrapper--open');
+          }
+          
+          // Add the appropriate --open class based on menu type
+          if (menu.classList.contains('tl-header__user-menu')) {
+            menu.classList.add('tl-header__user-menu--open');
+          } else if (menu.classList.contains('tl-header__launcher-menu')) {
+            menu.classList.add('tl-header__launcher-menu--open');
+          } else if (menu.classList.contains('tl-header__launcher-menu-grid')) {
+            menu.classList.add('tl-header__launcher-menu-grid--open');
+          } else {
+            menu.classList.add('tl-header__dropdown-menu--open');
+          }
+          
+          if (icon) {
+            icon.classList.add('tl-header__dropdown-icon--rotated');
+          }
         }
       });
     });
@@ -250,7 +275,11 @@ const Template = ({
     // close on outside click
     document.addEventListener('click', () => {
       document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
+      document.querySelectorAll('.tl-header__dropdown-wrapper-user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper-user--open'));
       document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
+      document.querySelectorAll('.tl-header__user-menu--open').forEach(m => m.classList.remove('tl-header__user-menu--open'));
+      document.querySelectorAll('.tl-header__launcher-menu--open').forEach(m => m.classList.remove('tl-header__launcher-menu--open'));
+      document.querySelectorAll('.tl-header__launcher-menu-grid--open').forEach(m => m.classList.remove('tl-header__launcher-menu-grid--open'));
       document.querySelectorAll('.tl-header__dropdown-icon--rotated').forEach(i => i.classList.remove('tl-header__dropdown-icon--rotated'));
     });
 
@@ -258,7 +287,11 @@ const Template = ({
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.tl-header__dropdown-wrapper--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper--open'));
+        document.querySelectorAll('.tl-header__dropdown-wrapper-user--open').forEach(w => w.classList.remove('tl-header__dropdown-wrapper-user--open'));
         document.querySelectorAll('.tl-header__dropdown-menu--open').forEach(m => m.classList.remove('tl-header__dropdown-menu--open'));
+        document.querySelectorAll('.tl-header__user-menu--open').forEach(m => m.classList.remove('tl-header__user-menu--open'));
+        document.querySelectorAll('.tl-header__launcher-menu--open').forEach(m => m.classList.remove('tl-header__launcher-menu--open'));
+        document.querySelectorAll('.tl-header__launcher-menu-grid--open').forEach(m => m.classList.remove('tl-header__launcher-menu-grid--open'));
         document.querySelectorAll('.tl-header__dropdown-icon--rotated').forEach(i => i.classList.remove('tl-header__dropdown-icon--rotated'));
       }
     });
