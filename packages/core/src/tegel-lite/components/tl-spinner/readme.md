@@ -12,19 +12,6 @@ The Spinner component displays a loading indicator for ongoing processes.
 </svg>
 ```
 
-### Accessible Usage (Recommended)
-
-For better accessibility, wrap the spinner with a visually hidden label:
-
-```html
-<div>
-  <svg class="tl-spinner tl-spinner--lg tl-spinner--default" aria-hidden="true">
-    <circle class="tl-spinner__circle"></circle>
-  </svg>
-  <span class="tds-u-visually-hidden">Loading...</span>
-</div>
-```
-
 <br />
 
 ### Required Stylesheets
