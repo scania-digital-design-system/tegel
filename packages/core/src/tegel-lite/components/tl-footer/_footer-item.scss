@@ -1,70 +1,22 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
-@use '../../../../../../grid-deprecated/vars' as *;
 
-.tl-footer__item {
-  a,
-  button {
+.tl-footer__main {
+  .tl-footer__link {
     @include headline-07;
 
+    display: inline-block;
     color: var(--footer-main-links);
     text-decoration: none;
-  }
 
-  a:focus-visible,
-  button:focus-visible {
-    outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
-    box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-    outline-offset: 1px;
-    z-index: 1;
-  }
-
-  a:hover,
-  button:hover {
-    text-decoration: underline;
-  }
-}
-
-.tl-footer__top {
-  a,
-  button {
-    @include headline-07;
-
-    color: var(--footer-top-links);
-  }
-
-  a:focus-visible,
-  button:focus-visible {
-    outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
-    box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
-    outline-offset: 1px;
-    z-index: 1;
-  }
-}
-
-@media (max-width: $grid-lg) {
-  .tl-footer__item--mobile-view {
-    border-bottom: 1px solid var(--footer-top-divider);
-
-    a,
-    button {
-      display: block;
-      height: 100%;
-      padding: 19px 40px;
-      font-weight: normal;
-    }
-
-    a:hover,
-    button:hover {
-      text-decoration: underline;
-      background-color: var(--footer-top-links-background-hover);
-    }
-
-    a:focus-visible,
-    button:focus-visible {
+    &:focus-visible {
       outline: var(--dimension-radius-focus-width) solid var(--color-foreground-border-accent-focus);
       box-shadow: 0 0 0 1px var(--color-brand-neutral-white);
       outline-offset: 1px;
       z-index: 1;
+    }
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

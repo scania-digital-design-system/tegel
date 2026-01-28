@@ -33,7 +33,7 @@ export default {
     labelPosition: {
       name: 'Label position',
       control: { type: 'radio' },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'No label'],
     },
     placeholderText: {
       name: 'Placeholder',
@@ -76,10 +76,6 @@ export default {
       name: 'No minimum width',
       control: { type: 'boolean' },
     },
-    disabled: {
-      name: 'Disabled',
-      control: { type: 'boolean' },
-    },
     readonly: {
       name: 'Read only',
       control: { type: 'boolean' },
@@ -89,6 +85,10 @@ export default {
       control: { type: 'boolean' },
       if: { arg: 'readonly', eq: true },
     },
+    disabled: {
+      name: 'Disabled',
+      control: { type: 'boolean' },
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
@@ -96,7 +96,7 @@ export default {
     type: 'Text',
     size: 'Large',
     label: 'Label',
-    labelPosition: 'No label',
+    labelPosition: 'Outside',
     placeholderText: 'Placeholder',
     helper: 'Helper text',
     prefix: false,
@@ -106,9 +106,9 @@ export default {
     charCounter: false,
     maxLength: 12,
     noMinWidth: false,
-    disabled: false,
     readonly: false,
     hideReadonlyIcon: false,
+    disabled: false,
   },
 };
 
@@ -128,9 +128,9 @@ const Template = ({
   charCounter,
   maxLength,
   noMinWidth,
-  disabled,
   readonly,
   hideReadonlyIcon,
+  disabled,
 }) => {
   const componentClasses = [
     'tl-text-field',
@@ -140,7 +140,7 @@ const Template = ({
     size === 'Medium' && 'tl-text-field--md',
     size === 'Small' && 'tl-text-field--sm',
     labelPosition === 'Inside' && 'tl-text-field--label-inside',
-    labelPosition === 'Outside' && 'tl-text-field--label-outside',
+    // Note: label-outside is now the default behavior, no class needed
     noMinWidth && 'tl-text-field--no-min-width',
     disabled && 'tl-text-field--disabled',
     readonly && 'tl-text-field--readonly',

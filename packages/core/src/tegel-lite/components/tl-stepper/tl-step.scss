@@ -226,6 +226,7 @@
   .tl-stepper--lg .tl-stepper__content & {
     height: 30px;
     min-width: 30px;
+    font-size: 14px;
   }
 
   .tl-stepper--sm .tl-stepper__content & {
@@ -247,6 +248,8 @@
 
   .tl-stepper--lg & {
     @include detail-01;
+
+    font-size: 14px;
   }
 
   .tl-stepper--sm & {

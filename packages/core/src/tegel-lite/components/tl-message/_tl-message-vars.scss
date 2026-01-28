@@ -1,0 +1,24 @@
+.tl-message {
+  --message-main-background: var(--color-background-layer-01);
+  --message-mode-primary-background: var(--color-background-layer-01);
+  --message-mode-secondary-background: var(--color-background-layer-02);
+  --message-main-text-color: var(--color-foreground-text-strong);
+
+  /* Info */
+  --message-info-border-color: var(--color-system-info-subtle);
+  --message-info-icon-color: var(--color-system-info-default);
+
+  /* Success */
+  --message-success-border-color: var(--color-system-success-subtle);
+  --message-success-icon-color: var(--color-system-success-default);
+
+  /* Error */
+  --message-error-background: var(--color-system-danger-discrete);
+  --message-error-border-color: var(--color-system-danger-subtle);
+  --message-error-icon-color: var(--color-system-danger-default);
+  --message-error-header-text-color: var(--color-system-danger-default);
+
+  /* Warning */
+  --message-warning-border-color: var(--color-system-warning-subtle);
+  --message-warning-icon-color: var(--color-system-warning-default);
+}

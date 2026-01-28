@@ -34,7 +34,8 @@
     z-index: 1;
   }
 
-  &--label-outside#{&}--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
+  // Default behavior (label outside) - readonly icon position adjustment
+  &:not(&--label-inside)#{&}--readonly:not(&--disabled):not(&--hide-readonly-icon)::before {
     top: 44px;
   }
 
@@ -59,21 +60,20 @@
     right: 4px;
   }
 
-  &--label-outside::after {
+  // Default behavior (label outside) - resize icon position adjustment
+  &:not(&--label-inside)::after {
     bottom: 7px;
   }
 
-  .traton &--label-outside::after {
+  .traton &:not(&--label-inside)::after {
     bottom: 9px;
   }
 
-  &:has(.tl-textarea__bottom)::after,
-  &--label-outside:has(.tl-textarea__bottom)::after {
+  &:has(.tl-textarea__bottom)::after {
     bottom: 25px;
   }
 
-  .traton &:has(.tl-textarea__bottom)::after,
-  .traton &--label-outside:has(.tl-textarea__bottom)::after {
+  .traton &:has(.tl-textarea__bottom)::after {
     bottom: 27px;
   }
 
@@ -172,7 +172,8 @@
 }
 
 .tl-textarea__label {
-  .tl-textarea--label-outside & {
+  // Default behavior (label outside)
+  .tl-textarea:not(.tl-textarea--label-inside) & {
     @include detail-05;
 
     display: block;
@@ -202,7 +203,8 @@
     transform: translateY(0);
   }
 
-  .tl-textarea--label-outside.tl-textarea--disabled & {
+  // Default behavior (label outside) - disabled state
+  .tl-textarea:not(.tl-textarea--label-inside).tl-textarea--disabled & {
     color: var(--textarea-label-disabled);
   }
 }
@@ -234,7 +236,7 @@
       width: 16px;
       height: 16px;
       background-color: var(--textarea-error);
-      mask-image: var(--icon-info-svg);
+      mask-image: var(--icon-error-svg);
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
@@ -269,7 +271,11 @@
   }
 
   .tl-textarea--error:not(.tl-textarea--readonly):not(.tl-textarea--disabled) & {
-    display: none;
+    color: var(--textarea-error);
+
+    .tl-textarea__charcounter-divider {
+      color: var(--textarea-error);
+    }
   }
 }
 

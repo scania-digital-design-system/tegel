@@ -27,7 +27,7 @@ export default {
     labelPosition: {
       name: 'Label Position',
       control: { type: 'radio' },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'No label'],
       description: 'Where to position the label',
     },
     placeholder: {
@@ -62,12 +62,6 @@ export default {
       control: { type: 'boolean' },
       description: 'Remove minimum width constraint',
     },
-
-    disabled: {
-      name: 'Disabled',
-      control: { type: 'boolean' },
-      description: 'Disable the textarea',
-    },
     readonly: {
       name: 'Read Only',
       control: { type: 'boolean' },
@@ -80,24 +74,26 @@ export default {
       if: { arg: 'readonly', eq: true },
       description: 'Hide the read-only indicator icon',
     },
+    disabled: {
+      name: 'Disabled',
+      control: { type: 'boolean' },
+      description: 'Disable the textarea',
+    },
   },
   args: {
     modeVariant: 'Inherit from parent',
     state: 'Default',
-
     label: 'Label',
-    labelPosition: 'No label',
+    labelPosition: 'Outside',
     placeholder: 'Placeholder',
     helper: '',
-
     rows: 5,
     charCounter: false,
     maxLength: 12,
     noMinWidth: false,
-
-    disabled: false,
     readonly: false,
     hideReadonlyIcon: false,
+    disabled: false,
   },
 };
 
@@ -121,7 +117,7 @@ const Template = ({
     modeVariant !== 'Inherit from parent' && `tl-textarea--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-textarea--${state.toLowerCase()}`,
     labelPosition === 'Inside' && 'tl-textarea--label-inside',
-    labelPosition === 'Outside' && 'tl-textarea--label-outside',
+    // Note: label-outside is now the default behavior, no class needed
     disabled && 'tl-textarea--disabled',
     readonly && 'tl-textarea--readonly',
     readonly && hideReadonlyIcon && 'tl-textarea--hide-readonly-icon',
