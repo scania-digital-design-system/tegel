@@ -3,6 +3,21 @@ import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 
+const BETA_COMPONENTS = [
+  'tds-date-picker-single',
+  'tds-date-picker-single-day',
+  'tds-date-picker-single-month',
+  'tds-date-picker-single-year',
+  'tds-date-range-picker',
+  'tds-date-range-picker-day',
+  'tds-date-range-picker-month',
+  'tds-date-range-picker-year',
+] as const;
+
+function getExcludedComponents(): string[] {
+  return [...BETA_COMPONENTS];
+}
+
 function getTsConfigFile() {
   if (process.env.VITE_STORYBOOK_ENV === 'dev') {
     return 'tsconfig.dev.json';
@@ -79,6 +94,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@scania/tegel',
       proxiesFile: '../react/lib/components/stencil-generated/index.ts',
+      excludeComponents: getExcludedComponents(),
     }),
     angularOutputTarget({
       componentCorePackage: '@scania/tegel',
@@ -87,6 +103,7 @@ export const config: Config = {
         '../angular-17/projects/components/src/lib/stencil-generated/components.ts',
       directivesArrayFile: '../angular-17/projects/components/src/lib/stencil-generated/index.ts',
       valueAccessorConfigs: angularValueAccessorBindings,
+      excludeComponents: getExcludedComponents(),
     }),
     {
       type: 'dist-custom-elements',
