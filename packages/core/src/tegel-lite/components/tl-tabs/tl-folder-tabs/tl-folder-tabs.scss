@@ -6,16 +6,11 @@
 .tl-folder-tabs {
   @include tds-box-sizing;
 
-  overflow: hidden; /* clip the track beneath the overlay buttons */
-  outline: 0;
-}
-
-/* The scrolling track */
-.tl-folder-tabs__wrapper {
   display: flex;
   overflow-x: scroll;
   scrollbar-width: none;
   position: relative;
+  outline: 0;
 
   &::-webkit-scrollbar {
     display: none;
