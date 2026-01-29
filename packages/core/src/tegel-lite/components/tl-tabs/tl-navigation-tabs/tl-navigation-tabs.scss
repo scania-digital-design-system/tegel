@@ -5,7 +5,7 @@
 .tl-navigation-tabs {
   @include tds-box-sizing;
 
-  background-color: var(--navigation-tabs);
+  background-color: transparent;
   display: flex;
   position: relative;
 

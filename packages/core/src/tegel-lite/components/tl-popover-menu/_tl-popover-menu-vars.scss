@@ -6,12 +6,12 @@
   --popover-menu-item-disabled: var(--color-foreground-text-disabled);
   --popover-menu-item-icon-disabled: var(--color-foreground-icon-disabled);
 
-  &--mode-variant-primary {
+  &--primary {
     --popover-menu-background: var(--color-background-layer-01);
     --popover-menu-background-hover: var(--color-background-layer-02);
   }
 
-  &--mode-variant-secondary {
+  &--secondary {
     --popover-menu-background: var(--color-background-layer-02);
     --popover-menu-background-hover: var(--color-background-layer-01);
   }

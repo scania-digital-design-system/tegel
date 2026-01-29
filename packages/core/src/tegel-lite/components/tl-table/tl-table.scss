@@ -605,3 +605,13 @@
     overflow: hidden;
   }
 }
+
+.tl-text-field__input {
+  .tl-table.tl-table--primary & {
+    background-color: var(--component-table-cell);
+  }
+
+  .tl-table.tl-table--secondary & {
+    background-color: var(--component-table-secondary-cell);
+  }
+}
