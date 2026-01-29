@@ -147,7 +147,7 @@
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
   z-index: var(--tds-z-index-header);
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 
   &--open {
     display: block;
@@ -168,7 +168,7 @@
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
   z-index: var(--tds-z-index-header);
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 
   &--open {
     display: block;
@@ -189,7 +189,7 @@
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
   z-index: var(--tds-z-index-header);
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 
   &--open {
     display: block;
