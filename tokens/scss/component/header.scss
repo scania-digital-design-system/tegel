@@ -31,7 +31,9 @@
 
   /* ── Light-mode overrides ───────────────────── */
   .tds-mode-light tds-header,
-  .tds-mode-light .tl-header {
+  .tds-mode-light .tl-header,
+  .tl-mode-light tds-header,
+  .tl-mode-light .tl-header {
     --component-header-color-background: var(--color-brand-primary-800);
     --component-header-color-foreground-strong: var(--color-foreground-icon-inverse-strong);
     --component-header-color-background-hover: var(--color-brand-primary-700);
@@ -42,7 +44,9 @@
 
   /* ── Dark-mode overrides ───────────────────── */
   .tds-mode-dark tds-header,
-  .tds-mode-dark .tl-header {
+  .tds-mode-dark .tl-header,
+  .tl-mode-dark tds-header,
+  .tl-mode-dark .tl-header {
     --component-header-color-background: var(--color-brand-primary-900);
     --component-header-color-foreground-strong: var(--color-foreground-icon-strong);
     --component-header-color-background-hover: var(--color-brand-primary-800);
@@ -88,13 +92,17 @@
 
   /* ── Light-mode overrides ───────────────────── */
   .tds-mode-light tds-header,
-  .tds-mode-light .tl-header {
+  .tds-mode-light .tl-header,
+  .tl-mode-light tds-header,
+  .tl-mode-light .tl-header {
     --component-header-color-background-selected: var(--color-background-layer-01);
   }
 
   /* ── Dark-mode overrides ───────────────────── */
   .tds-mode-dark tds-header,
-  .tds-mode-dark .tl-header {
+  .tds-mode-dark .tl-header,
+  .tl-mode-dark tds-header,
+  .tl-mode-dark .tl-header {
     --component-header-color-background-selected: var(--color-background-surface-100);
   }
 }
