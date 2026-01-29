@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-chips-color: var(--tds-grey-950);
   --tds-chips-color-active: var(--tds-white);
   --tds-chips-background: var(--tds-grey-150);
@@ -18,7 +19,8 @@
   --tds-chips-icon-fill-active: var(--tds-white);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-chips-color: var(--tds-white);
   --tds-chips-color-active: var(--tds-white);
   --tds-chips-background: var(--tds-grey-800);

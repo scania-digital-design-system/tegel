@@ -3,7 +3,8 @@
  */
 
 .traton,
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   --color-background-base: var(--traton-color-grey-50);
   --color-background-accent-primary-default: var(--traton-color-blue-800);
   --color-background-accent-primary-disabled: var(--traton-color-blue-100);

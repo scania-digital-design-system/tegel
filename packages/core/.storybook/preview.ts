@@ -44,10 +44,13 @@ try {
   channel.on('DARK_MODE', (isDarkMode) => {
     const body = document.body;
     const brand = document.documentElement.classList.contains('traton') ? 'traton' : 'scania';
-    const modeVariant = body.classList.contains('tds-mode-secondary') ? 'secondary' : 'primary';
+    const modeVariant = body.classList.contains('tl-mode-variant-secondary')
+      ? 'secondary'
+      : 'primary';
 
-    body.classList.remove('tds-mode-light', 'tds-mode-dark');
-    body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+    // TESTING: Only tl-mode-* prefixes
+    body.classList.remove('tds-mode-light', 'tds-mode-dark', 'tl-mode-light', 'tl-mode-dark');
+    body.classList.add(`tl-mode-${isDarkMode ? 'dark' : 'light'}`);
 
     applyBackgroundColor(brand, modeVariant, isDarkMode);
   });
@@ -104,10 +107,16 @@ const toggleBrandDecorator: Decorator = (StoryFn, context) => {
   html.classList.remove('scania', 'traton');
   html.classList.add(brand);
 
-  document.body.classList.remove('tds-mode-primary', 'tds-mode-secondary');
-  document.body.classList.add(`tds-mode-${modeVariant}`);
+  // TESTING: Only tl-mode-variant prefixes
+  document.body.classList.remove(
+    'tds-mode-variant-primary',
+    'tds-mode-variant-secondary',
+    'tl-mode-variant-primary',
+    'tl-mode-variant-secondary',
+  );
+  document.body.classList.add(`tl-mode-variant-${modeVariant}`);
 
-  const isDarkMode = document.body.classList.contains('tds-mode-dark');
+  const isDarkMode = document.body.classList.contains('tl-mode-dark');
   applyBackgroundColor(brand, modeVariant, isDarkMode);
 
   return StoryFn();
@@ -185,9 +194,9 @@ const preview: Preview = {
     darkMode: {
       current: 'light',
       dark: ScaniaDark,
-      darkClass: 'tds-mode-dark',
+      darkClass: 'tl-mode-dark',
       light: ScaniaLight,
-      lightClass: 'tds-mode-light',
+      lightClass: 'tl-mode-light',
     },
     options: {
       showPanel: true,

@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-radio-button-color: var(--tds-grey-950);
   --tds-radio-button-interaction-01: var(--tds-blue-800);
   --tds-radio-button-interaction-02: var(--tds-white);
@@ -12,7 +13,8 @@
   --tds-radio-button-color-disabled-before: var(--tds-grey-250);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-radio-button-color: var(--tds-white);
   --tds-radio-button-interaction-01: var(--tds-white);
   --tds-radio-button-interaction-02: var(--tds-grey-950);

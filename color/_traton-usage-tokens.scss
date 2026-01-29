@@ -2,7 +2,8 @@
 
 /* Light mode tokens (applied to .traton .tds-mode-light) */
 .traton,
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   /* Foreground - Text */
   --foreground-text-strong: var(--traton-transparent-950);
   --foreground-text-defined: var(--traton-transparent-700);
@@ -143,7 +144,8 @@
 }
 
 /* Dark mode tokens (applied to .traton .tds-mode-dark) */
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton .tl-mode-dark {
   /* Foreground - Text */
   --foreground-text-strong: var(--traton-transparent-inverse-950);
   --foreground-text-defined: var(--traton-transparent-inverse-700);

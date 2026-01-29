@@ -71,7 +71,8 @@
     --header-logotype-cdn: var(--traton-logotype-white-svg);
   }
 
-  .tds-mode-light .tl-header {
+  .tds-mode-light .tl-header,
+  .tl-mode-light .tl-header {
     /* Brand logo */
     --header-logotype-local: var(--traton-logotype-black-svg-local);
     --header-logotype-cdn: var(--traton-logotype-black-svg);

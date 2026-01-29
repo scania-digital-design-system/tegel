@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-dropdown-bg: var(--tds-grey-50);
   --tds-dropdown-border-bottom: var(--tds-grey-350);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-850);
@@ -20,11 +21,13 @@
   --tds-dropdown-clear-icon-color: var(--tds-grey-350);
   --tds-dropdown-clear-icon-hover-color: var(--tds-grey-350);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-dropdown-bg: var(--tds-grey-50);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-dropdown-bg: var(--tds-white);
   }
 
@@ -39,7 +42,8 @@
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-dropdown-bg: var(--tds-grey-900);
   --tds-dropdown-border-bottom: var(--tds-grey-350);
   --tds-dropdown-border-bottom-hover: var(--tds-grey-50);
@@ -59,11 +63,13 @@
   --tds-dropdown-clear-icon-color: var(--tds-grey-400);
   --tds-dropdown-clear-icon-hover-color: var(--tds-grey-400);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-dropdown-bg: var(--tds-grey-900);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-dropdown-bg: var(--tds-grey-850);
   }
 

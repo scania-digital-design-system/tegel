@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   //Primary
 
   // Mapped these to the new variables in _tegel-brand-usage.scss -->
@@ -109,18 +110,21 @@
   --tds-btn-icon-danger-fill: var(--tds-grey-50);
   --tds-btn-icon-danger-color: var(--tds-grey-50);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);
     --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-secondary);
     --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-secondary);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   //Primary
   --tds-btn-primary-background: var(--scania-blue-400);
   --tds-btn-primary-background-hover: var(--scania-blue-500);
@@ -211,12 +215,14 @@
   --tds-btn-icon-danger-fill: var(--tds-white);
   --tds-btn-icon-danger-color: var(--tds-white);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-primary);
     --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-btn-danger-background-disabled: var(--tds-btn-danger-background-disabled-secondary);
     --tds-btn-primary-background-disabled: var(--tds-btn-primary-background-disabled-secondary);
   }

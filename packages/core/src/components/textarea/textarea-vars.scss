@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-textarea-background-primary: var(--tds-grey-50);
   --tds-textarea-background-secondary: var(--tds-white);
   --tds-textarea-background: var(--tds-textarea-background-primary);
@@ -45,14 +46,16 @@
   // Resize
   --tds-textarea-resize-icon: var(--tds-grey-500);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: vrer(--tds-white);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-textarea-background: var(--tds-textarea-background-secondary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
@@ -60,7 +63,8 @@
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-textarea-background-primary: var(--tds-grey-900);
   --tds-textarea-background-secondary: var(--tds-grey-850);
   --tds-textarea-background: var(--tds-textarea-background-primary);
@@ -105,14 +109,16 @@
   // Resize
   --tds-textarea-resize-icon: var(--tds-grey-300);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-textarea-background: var(--tds-textarea-background-primary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-primary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);
     --tds-textarea-read-only-background: var(--tds-grey-900);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-textarea-background: var(--tds-textarea-background-secondary);
     --tds-textarea-disabled-background: var(--tds-textarea-disabled-background-secondary);
     --tds-textarea-border-bottom-read-only-color: var(--tds-textarea-border-bottom-success);

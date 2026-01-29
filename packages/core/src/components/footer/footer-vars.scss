@@ -1,6 +1,7 @@
 // TODO - Check hover states
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-footer-top-background-primary: var(--tds-grey-50);
   --tds-footer-top-background-secondary: var(--tds-white);
   --tds-footer-top-background: var(--tds-footer-top-background-primary);
@@ -14,16 +15,19 @@
   --tds-footer-main-divider: var(--tds-blue-700);
   --tds-footer-main-copyright: var(--tds-grey-300);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-footer-top-background: var(--tds-footer-top-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-footer-top-background: var(--tds-footer-top-background-secondary);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-footer-top-background-primary: var(--tds-grey-850);
   --tds-footer-top-background: var(--tds-footer-top-background-primary);
   --tds-footer-top-divider: var(--tds-grey-600);
@@ -37,7 +41,8 @@
   --tds-footer-main-copyright: var(--tds-grey-300);
 
   .tds-mode-variant-primary,
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-footer-top-background: var(--tds-footer-top-background-primary);
   }
 }

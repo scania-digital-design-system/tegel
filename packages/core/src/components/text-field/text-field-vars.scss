@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-text-field-background-primary: var(--tds-grey-50);
   --tds-text-field-background-secondary: var(--tds-white);
   --tds-text-field-background: var(--tds-text-field-background-primary);
@@ -55,18 +56,21 @@
   --tds-text-field-icon-read-only-color: var(--tds-grey-958);
   --tds-text-field-icon-read-only-label-color: var(--tds-grey-958);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-text-field-background: var(--tds-text-field-background-primary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-text-field-background: var(--tds-text-field-background-secondary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-text-field-background-primary: var(--tds-grey-900);
   --tds-text-field-background: var(--tds-text-field-background-primary);
   --tds-text-field-background-secondary: var(--tds-grey-850);
@@ -123,12 +127,14 @@
   --tds-text-field-icon-read-only-color: var(--tds-grey-100);
   --tds-text-field-icon-read-only-label-color: var(--tds-grey-50);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-text-field-background: var(--tds-text-field-background-primary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-text-field-background: var(--tds-text-field-background-secondary);
     --tds-text-field-background-disabled: var(--tds-text-field-background-disabled-secondary);
   }

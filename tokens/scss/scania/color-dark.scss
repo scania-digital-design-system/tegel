@@ -3,7 +3,9 @@
  */
 
 .tds-mode-dark,
-.scania .tds-mode-dark {
+.tl-mode-dark,
+.scania .tds-mode-dark,
+.scania .tl-mode-dark {
   --color-background-base: var(--scania-color-grey-950);
   --color-background-accent-primary-default: var(--scania-color-blue-400);
   --color-background-accent-primary-disabled: var(--scania-color-grey-850);

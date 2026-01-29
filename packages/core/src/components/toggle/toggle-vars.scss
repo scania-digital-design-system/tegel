@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-toggle-switch: var(--tds-white);
   --tds-toggle-switch-disabled: var(--tds-grey-300);
   --tds-toggle-headline: var(--tds-grey-950);
@@ -21,7 +22,8 @@
   --tds-toggle-off-border-focus: var(--tds-white);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-toggle-switch: var(--tds-white);
   --tds-toggle-switch-disabled: var(--tds-grey-350);
   --tds-toggle-headline: var(--tds-grey-50);

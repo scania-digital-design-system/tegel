@@ -68,7 +68,8 @@
 }
 
 /* Dark mode */
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --card-background-primary: var(--tds-grey-900);
   --card-background-secondary: var(--tds-grey-850);
 
@@ -87,7 +88,8 @@
   }
 }
 
-.traton .tds-mode-dark .tl-card {
+.traton .tds-mode-dark .tl-card,
+.traton .tl-mode-dark .tl-card {
   &--primary {
     --card-background: var(--color-background-base);
   }

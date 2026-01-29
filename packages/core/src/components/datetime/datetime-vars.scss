@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-datetime-color: var(--tds-grey-950);
   --tds-datetime-background-primary: var(--tds-grey-50);
   --tds-datetime-background-secondary: var(--tds-white);
@@ -31,18 +32,21 @@
   --tds-datetime-border-bottom-error: var(--tds-red-400);
   --tds-datetime-helper-error: var(--tds-red-400);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-datetime-background: var(--tds-datetime-background-primary);
     --tds-datetime-helper-disabled: var(--tds-grey-250);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-datetime-background: var(--tds-datetime-background-secondary);
     --tds-datetime-helper-disabled: var(--tds-grey-500);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-datetime-color: var(--tds-grey-50);
   --tds-datetime-background-primary: var(--tds-grey-900);
   --tds-datetime-background-secondary: var(--tds-grey-850);
@@ -74,11 +78,13 @@
   --tds-datetime-border-bottom-error: var(--tds-red-300);
   --tds-datetime-helper-error: var(--tds-red-300);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-datetime-background: var(--tds-datetime-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-datetime-background: var(--tds-datetime-background-secondary);
   }
 }

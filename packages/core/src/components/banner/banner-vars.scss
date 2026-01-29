@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   // Banner text color
   --tds-banner-text-color: var(--tds-grey-950);
 
@@ -19,7 +20,8 @@
   --tds-banner-prefix-error-color: var(--tds-red-400);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   // Banner text color
   --tds-banner-text-color: var(--tds-grey-50);
 

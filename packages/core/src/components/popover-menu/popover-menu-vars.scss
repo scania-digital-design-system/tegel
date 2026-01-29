@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-popover-menu-color: var(--tds-grey-950);
   --tds-popover-menu-background: var(--tds-white);
   --tds-popover-menu-background-hover: var(--tds-grey-100);
@@ -8,7 +9,8 @@
   --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-950);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-popover-menu-color: var(--tds-white);
   --tds-popover-menu-background: var(--tds-grey-850);
   --tds-popover-menu-background-hover: var(--tds-grey-700);
@@ -16,11 +18,13 @@
   --tds-popover-menu-divider-disabled-color: var(--tds-grey-500);
   --tds-popover-menu-divider-disabled-icon-color: var(--tds-grey-50);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-popover-menu-background: var(--tds-grey-850);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-popover-menu-background: var(--tds-grey-800);
   }
 }

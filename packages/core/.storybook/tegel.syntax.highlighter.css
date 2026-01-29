@@ -14,7 +14,8 @@ code.hljs {
   background: var(--tds-grey-958);
 }
 
-.tds-mode-dark .hljs {
+.tds-mode-dark .hljs,
+.tl-mode-dark .hljs {
   color: var(--tds-grey-958);
   background: var(--tds-grey-50);
 }
@@ -31,7 +32,9 @@ code.hljs {
 }
 
 .tds-mode-dark .hljs-comment,
-.tds-mode-dark .hljs-tag {
+.tl-mode-dark .hljs-comment,
+.tds-mode-dark .hljs-tag,
+.tl-mode-dark .hljs-tag {
   color: var(--tds-blue-400)
 }
 
@@ -70,8 +73,11 @@ code.hljs {
 }
 
 .tds-mode-dark .hljs-class .hljs-title,
+.tl-mode-dark .hljs-class .hljs-title,
 .tds-mode-dark .hljs-title,
-.tds-mode-dark .hljs-title.class_ {
+.tl-mode-dark .hljs-title,
+.tds-mode-dark .hljs-title.class_,
+.tl-mode-dark .hljs-title.class_ {
   color: var(--tds-blue-400)
 }
 
@@ -88,9 +94,13 @@ code.hljs {
 }
 
 .tds-mode-dark .hljs-addition,
+.tl-mode-dark .hljs-addition,
 .tds-mode-dark .hljs-code,
+.tl-mode-dark .hljs-code,
 .tds-mode-dark .hljs-string,
-.tds-mode-dark .hljs-title.class_.inherited__ {
+.tl-mode-dark .hljs-string,
+.tds-mode-dark .hljs-title.class_.inherited__,
+.tl-mode-dark .hljs-title.class_.inherited__ {
   color: var(--tds-blue-400)
 }
 
@@ -111,10 +121,15 @@ code.hljs {
 }
 
 .tds-mode-dark .hljs-attribute,
+.tl-mode-dark .hljs-attribute,
 .tds-mode-dark .hljs-function .hljs-title,
+.tl-mode-dark .hljs-function .hljs-title,
 .tds-mode-dark .hljs-section,
+.tl-mode-dark .hljs-section,
 .tds-mode-dark .hljs-title.function_,
-.tds-mode-dark .ruby .hljs-property {
+.tl-mode-dark .hljs-title.function_,
+.tds-mode-dark .ruby .hljs-property,
+.tl-mode-dark .ruby .hljs-property {
   color: var(--tds-blue-400)
 }
 

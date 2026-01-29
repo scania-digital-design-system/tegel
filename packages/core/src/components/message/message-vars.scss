@@ -25,7 +25,8 @@ tds-message {
 }
 
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   /* Background values */
   --tds-message-background: var(--tds-grey-50);
   --tds-message-background-error: var(--tds-red-50);
@@ -50,20 +51,23 @@ tds-message {
   --tds-message-icon-warning: var(--tds-yellow-500);
 
   /* Variant values */
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-message-background: var(--tds-grey-50);
     --tds-message-background-warning: var(--tds-grey-50);
     --tds-message-background-success: var(--tds-grey-50);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-message-background: var(--tds-white);
     --tds-message-background-warning: var(--tds-white);
     --tds-message-background-success: var(--tds-white);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   /* Background values */
   --tds-message-background: var(--tds-grey-900);
   --tds-message-background-error: var(--tds-red-900);
@@ -88,13 +92,15 @@ tds-message {
   --tds-message-icon-warning: var(--tds-yellow-300);
 
   /* Variant values */
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-message-background: var(--tds-grey-900);
     --tds-message-background-warning: var(--tds-grey-900);
     --tds-message-background-success: var(--tds-grey-900);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-message-background: var(--tds-grey-850);
     --tds-message-background-warning: var(--tds-grey-850);
     --tds-message-background-success: var(--tds-grey-850);

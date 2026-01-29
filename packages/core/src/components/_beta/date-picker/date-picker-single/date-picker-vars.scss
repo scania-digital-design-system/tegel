@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   // Input Icon - Default
   --tds-date-picker-input-icon: var(--tds-grey-700);
 
@@ -36,16 +37,19 @@
   // Date - In range Hover
   --tds-date-range-picker-date-bg-in-range-hover: var(--tds-blue-200);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-date-picker-calendar-bg: var(--tds-blue-200);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-date-picker-calendar-bg: var(--tds-white);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   // Input Icon - Default
   --tds-date-picker-input-icon: var(--tds-grey-50);
 
@@ -82,11 +86,13 @@
   // Date - In range Hover
   --tds-date-picker-date-bg-in-range-hover: var(--tds-blue-500);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-date-picker-calendar-bg: var(--tds-grey-900);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-date-picker-calendar-bg: var(--tds-grey-868);
   }
 }

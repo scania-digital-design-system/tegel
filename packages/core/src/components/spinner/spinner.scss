@@ -7,20 +7,24 @@
 
 :root,
 .scania,
-.scania .tds-mode-light {
+.scania .tds-mode-light,
+.scania .tl-mode-light {
   --spinner-background: var(--tds-blue-400);
 }
 
-.scania .tds-mode-dark {
+.scania .tds-mode-dark,
+.scania .tl-mode-dark {
   --spinner-background: var(--tds-blue-400);
 }
 
 .traton,
-.traton .tds-mode-light {
+.traton .tds-mode-light,
+.traton .tl-mode-light {
   --spinner-background: rgba(0, 72, 82, 1);
 }
 
-.traton .tds-mode-dark {
+.traton .tds-mode-dark,
+.traton .tl-mode-dark {
   --spinner-background: rgba(194, 191, 182, 1);
 }
 

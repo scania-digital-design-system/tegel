@@ -4,7 +4,8 @@
 }
 
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-header-overlay: var(--tds-black);
   --tds-header-app-name-color: var(--tds-white);
   --tds-header-background: var(--tds-blue-800);
@@ -132,7 +133,8 @@
   --tds-header-mobile-avatar--item-btn-color: var(--tds-grey-958);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-header-background: var(--tds-blue-900);
   --tds-header-mob-menu-open-color: var(--tds-white);
   --tds-header-mob-menu-open-background: var(--tds-grey-958);

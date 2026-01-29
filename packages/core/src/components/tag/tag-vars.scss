@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   //* Success *//
   --tds-tag-success-background: var(--tds-green-100);
   --tds-tag-success-color: var(--tds-green-700);
@@ -25,7 +26,8 @@
   --tds-tag-error-color: var(--tds-red-700);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   //* Success *//
   --tds-tag-success-background: var(--tds-green-200);
   --tds-tag-success-color: var(--tds-green-800);

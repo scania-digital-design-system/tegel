@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-toast-background-color: var(--tds-grey-950);
   --tds-toast-headline-color: var(--tds-grey-50);
   --tds-toast-subheadline-color: var(--tds-grey-50);
@@ -12,7 +13,8 @@
   --tds-toast-color-info: var(--tds-blue-300);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-toast-background-color: var(--tds-grey-50);
   --tds-toast-headline-color: var(--tds-grey-950);
   --tds-toast-subheadline-color: var(--tds-grey-950);

@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   /* NEW THEME VARS */
   --tds-folder-tab-background-selected: var(--tds-white);
   --tds-folder-tab-background: var(--tds-grey-100);
@@ -26,18 +27,21 @@
   --tds-folder-tab-item-color-disabled: var(--tds-grey-300);
   --tds-folder-tab-item-background-disabled: var(--tds-grey-100);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-primary);
     --tds-folder-tab-background: var(--tds-folder-tab-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-secondary);
     --tds-folder-tab-background: var(--tds-folder-tab-background-secondary);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   /* NEW THEME VARS */
   --tds-folder-tab-background-selected: var(--tds-grey-850);
   --tds-folder-tab-background: var(--tds-grey-800);
@@ -63,14 +67,16 @@
   --tds-folder-tab-item-color: var(--tds-grey-200);
   --tds-folder-tab-item-background-disabled: var(--tds-grey-800);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-primary);
     --tds-folder-tab-background: var(--tds-folder-tab-background-primary);
     --tds-folder-tab-item-background-disabled: var(--tds-grey-850);
     --tds-folder-tab-item-color-disabled: var(--tds-grey-300);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-folder-tab-background-selected: var(--tds-folder-tab-background-selected-secondary);
     --tds-folder-tab-background: var(--tds-folder-tab-background-secondary);
     --tds-folder-tab-item-background-disabled: var(--tds-grey-800);

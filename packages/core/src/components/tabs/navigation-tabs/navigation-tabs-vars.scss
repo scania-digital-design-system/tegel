@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   /* Horizontal divider */
   --tds-navigation-tabs-horizontal-divider-background: var(--tds-grey-350);
   --tds-navigation-tabs-tab-background-primary: var(--tds-white);
@@ -14,17 +15,22 @@
   --tds-navigation-tabs-tab-indicator-background-hover: var(--tds-grey-850);
   --tds-navigation-tabs-tab-indicator-background-active: var(--tds-blue-400);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-secondary);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-navigation-tabs-horizontal-divider-background: var(--tds-grey-400);
+  --tds-navigation-tabs-tab-background-primary: var(--tds-grey-900);
+  --tds-navigation-tabs-tab-background-secondary: var(--tds-grey-850);
   --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
 
   /* Tab */
@@ -35,11 +41,13 @@
   --tds-navigation-tabs-tab-indicator-background-hover: var(--tds-grey-50);
   --tds-navigation-tabs-tab-indicator-background-active: var(--tds-blue-300);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-navigation-tabs-background: var(--tds-navigation-tabs-tab-background-secondary);
   }
 }

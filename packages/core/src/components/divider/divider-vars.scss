@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-divider-background-discrete: var(--tds-grey-200);
   --tds-divider-background-subtle: var(--tds-grey-350);
   --tds-divider-background-soft: var(--tds-grey-500);
@@ -10,7 +11,8 @@
   --tds-divider-background: var(--tds-divider-background-subtle);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-divider-background-discrete: var(--tds-grey-600);
   --tds-divider-background-subtle: var(--tds-grey-400);
   --tds-divider-background-soft: var(--tds-grey-300);

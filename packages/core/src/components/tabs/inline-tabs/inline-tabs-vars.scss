@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   /* Horizontal divider */
   --tds-inline-tabs-horizontal-divider-background: var(--tds-grey-200);
   --tds-inline-tabs-tab-background-primary: var(--tds-white);
@@ -24,18 +25,21 @@
   --tds-inline-tabs-tab-color-active: var(--tds-grey-950);
   --tds-inline-tabs-tab-indicator-background-active: var(--tds-blue-400);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
     --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-secondary);
     --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-secondary);
   }
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-inline-tabs-horizontal-divider-background: var(--tds-grey-800);
   --tds-inline-tabs-tab-background-primary: var(--tds-grey-900);
   --tds-inline-tabs-tab-background-secondary: var(--tds-grey-868);
@@ -62,12 +66,14 @@
   --tds-inline-tabs-tab-color-active: var(--tds-grey-50);
   --tds-inline-tabs-tab-indicator-background-active: var(--tds-blue-300);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-primary);
     --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-primary);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-inline-tabs-background: var(--tds-inline-tabs-tab-background-secondary);
     --tds-inline-tabs-scroll-btn-background: var(--tds-inline-tabs-scroll-btn-secondary);
   }

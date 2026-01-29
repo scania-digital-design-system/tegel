@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
   --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
   --tds-sidebar-item-state-focus: var(--tds-grey-50);
@@ -31,7 +32,8 @@
   --tds-side-menu-item-pressed-indicator: var(--tds-grey-850);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   --tds-sidebar-mobile-menu-btn-hover: var(--tds-blue-700);
   --tds-sidebar-mobile-menu-btn-icon: var(--tds-white);
   --tds-sidebar-item-state-focus: var(--tds-grey-958);

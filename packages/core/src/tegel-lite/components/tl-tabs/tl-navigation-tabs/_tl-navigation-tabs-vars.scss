@@ -20,12 +20,14 @@
   --navigation-tabs-scroll-button-hover: var(--navigation-tabs-tab-primary);
   --navigation-tabs-scroll-button-active: var(--navigation-tabs-tab-primary);
 
-  &.tds-mode-variant-primary {
+  &.tds-mode-variant-primary,
+  &.tl-mode-variant-primary {
     --navigation-tabs: var(--navigation-tabs-tab-primary);
     --navigation-tabs-scroll-button: var(--navigation-tabs-tab-primary);
   }
 
-  &.tds-mode-variant-secondary {
+  &.tds-mode-variant-secondary,
+  &.tl-mode-variant-secondary {
     --navigation-tabs: var(--navigation-tabs-tab-secondary);
     --navigation-tabs-scroll-button: var(--navigation-tabs-tab-secondary);
   }

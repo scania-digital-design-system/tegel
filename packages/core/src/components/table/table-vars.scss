@@ -1,5 +1,6 @@
 :root,
-.tds-mode-light {
+.tds-mode-light,
+.tl-mode-light {
   /* Table-color */
   --tds-table-color: var(--tds-grey-950);
 
@@ -11,13 +12,15 @@
   --tds-table-body-row-background-hover: var(--tds-grey-200);
   --tds-table-zebra-mode-backround: var(--tds-white);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-table-body-row-background: var(--tds-grey-50);
     --tds-table-zebra-mode-backround: var(--tds-white);
     --tds-table-body-row-background-selected: var(--tds-grey-50);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-white);
     --tds-table-zebra-mode-backround: var(--tds-grey-50);
     --tds-table-body-row-background-selected: var(--tds-white);
@@ -63,7 +66,8 @@
   --tds-table-divider-hover: var(--tds-grey-350);
 }
 
-.tds-mode-dark {
+.tds-mode-dark,
+.tl-mode-dark {
   /* Table-body */
   --tds-table-color: var(--tds-grey-50);
 
@@ -76,12 +80,14 @@
   --tds-table-zebra-mode-backround: var(--tds-grey-900);
   --tds-table-body-row-background-hover: var(--tds-grey-750);
 
-  .tds-mode-variant-primary {
+  .tds-mode-variant-primary,
+  .tl-mode-variant-primary {
     --tds-table-body-row-background: var(--tds-grey-850);
     --tds-table-zebra-mode-backround: var(--tds-grey-900);
   }
 
-  .tds-mode-variant-secondary {
+  .tds-mode-variant-secondary,
+  .tl-mode-variant-secondary {
     --tds-table-body-row-background: var(--tds-grey-900);
     --tds-table-zebra-mode-backround: var(--tds-grey-850);
   }

@@ -43,12 +43,14 @@ a:not(tds-link *, tds-breadcrumb *) {
 /* TODO: Find a way to apply dark mode to the docs story and notes that will cover all its elements, toolbars and controls*/
 
 :root,
-.tds-mode-light .docs-story {
+.tds-mode-light .docs-story,
+.tl-mode-light .docs-story {
   color: var(--tds-grey-950);
   background-color: var(--tds-white);
 }
 
-.tds-mode-dark .docs-story {
+.tds-mode-dark .docs-story,
+.tl-mode-dark .docs-story {
   color: var(--tds-grey-100);
   background-color: var(--tds-grey-950);
 }
