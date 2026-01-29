@@ -297,7 +297,7 @@ const Template = ({
         `
             : showControls
             ? `
-        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--minus" type="button" ${
+        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-minus" type="button" ${
           disabled ? 'disabled' : ''
         }>
           <span class="tl-icon tl-icon--minus tl-icon--16"></span>
@@ -348,7 +348,7 @@ const Template = ({
         `
             : showControls
             ? `
-        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control--plus" type="button" ${
+        <button class="tl-button tl-button--only-icon tl-button--ghost tl-button--sm tl-button--icon tl-slider__control-plus" type="button" ${
           disabled ? 'disabled' : ''
         }>
           <span class="tl-icon tl-icon--plus tl-icon--16"></span>
@@ -402,10 +402,8 @@ const Template = ({
         const thumbInner = slider.querySelector('.tl-slider__thumb-inner');
         const trackFill = slider.querySelector('.tl-slider__track-fill');
         const nativeInput = slider.querySelector('.tl-slider__native-input');
-        ${
-          showControls ? "const minusBtn = slider.querySelector('.tl-slider__control--minus');" : ''
-        }
-        ${showControls ? "const plusBtn = slider.querySelector('.tl-slider__control--plus');" : ''}
+        ${showControls ? "const minusBtn = slider.querySelector('.tl-slider__control-minus');" : ''}
+        ${showControls ? "const plusBtn = slider.querySelector('.tl-slider__control-plus');" : ''}
         ${showTooltip ? "const tooltip = slider.querySelector('.tl-slider__value-tooltip');" : ''}
         
         const min = ${actualMin};

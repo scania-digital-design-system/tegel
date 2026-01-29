@@ -2,6 +2,10 @@
 @use '../../../mixins/focus-state' as *;
 @use './tl-link-vars' as *;
 
+.tl-link-text {
+  @include detail-02;
+}
+
 .tl-link {
   display: inline-flex;
   color: var(--link);
@@ -15,9 +19,8 @@
   font: inherit;
 
   &:focus-visible {
-    @include tds-focus-state;
-
-    outline-width: var(--link-focus-outline-width);
+    outline: var(--link-focus-outline-width) solid var(--link-focus-outline-color);
+    outline-offset: 1px;
     text-decoration: none;
   }
 

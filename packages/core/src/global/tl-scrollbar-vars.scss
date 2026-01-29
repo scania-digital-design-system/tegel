@@ -1,0 +1,21 @@
+.tds-mode-light {
+  --tl-scrollbar-track-color: transparent;
+  --tl-scrollbar-thumb-color: #303c612b;
+}
+
+.tds-mode-dark {
+  --tl-scrollbar-track-color: transparent;
+  --tl-scrollbar-thumb-color: #a4c7f5;
+}
+
+.traton {
+  .tds-mode-light {
+    --tl-scrollbar-track-color: transparent;
+    --tl-scrollbar-thumb-color: #1a1a1926;
+  }
+
+  .tds-mode-dark {
+    --tl-scrollbar-track-color: transparent;
+    --tl-scrollbar-thumb-color: #d9edf054;
+  }
+}

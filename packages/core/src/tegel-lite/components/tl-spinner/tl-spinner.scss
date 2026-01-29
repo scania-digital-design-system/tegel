@@ -5,6 +5,9 @@
   @include tds-box-sizing;
 
   display: block;
+  width: calc(var(--tl-spinner-radius) * 2);
+  height: calc(var(--tl-spinner-radius) * 2);
+  transform: scale(-1, 1) rotate(-90deg);
 
   &--xs {
     --tl-spinner-radius: var(--tl-spinner-radius-xs);
@@ -37,13 +40,6 @@
   &--inverted {
     stroke: var(--tl-spinner-background-inverted);
   }
-}
-
-.tl-spinner__svg {
-  display: block;
-  width: calc(var(--tl-spinner-radius) * 2);
-  height: calc(var(--tl-spinner-radius) * 2);
-  transform: scale(-1, 1) rotate(-90deg);
 }
 
 .tl-spinner__circle {

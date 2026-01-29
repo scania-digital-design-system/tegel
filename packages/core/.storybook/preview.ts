@@ -37,18 +37,24 @@ const applyBackgroundColor = (brand: string, modeVariant: string, isDarkMode: bo
   body.style.backgroundColor = brandColors?.[modeVariant] || '';
 };
 
-const channel = addons.getChannel();
+// Initialize dark mode listener after Storybook is ready
+try {
+  const channel = addons.getChannel();
 
-channel.on('DARK_MODE', (isDarkMode) => {
-  const body = document.body;
-  const brand = document.documentElement.classList.contains('traton') ? 'traton' : 'scania';
-  const modeVariant = body.classList.contains('tds-mode-secondary') ? 'secondary' : 'primary';
+  channel.on('DARK_MODE', (isDarkMode) => {
+    const body = document.body;
+    const brand = document.documentElement.classList.contains('traton') ? 'traton' : 'scania';
+    const modeVariant = body.classList.contains('tds-mode-secondary') ? 'secondary' : 'primary';
 
-  body.classList.remove('tds-mode-light', 'tds-mode-dark');
-  body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
+    body.classList.remove('tds-mode-light', 'tds-mode-dark');
+    body.classList.add(`tds-mode-${isDarkMode ? 'dark' : 'light'}`);
 
-  applyBackgroundColor(brand, modeVariant, isDarkMode);
-});
+    applyBackgroundColor(brand, modeVariant, isDarkMode);
+  });
+} catch (error) {
+  // Channel might not be available during initial load
+  console.warn('Storybook channel not available:', error);
+}
 
 // DEV env for traton styles
 const isDev = import.meta.env.VITE_STORYBOOK_ENV === 'dev';

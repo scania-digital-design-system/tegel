@@ -59,11 +59,9 @@ const Template = ({ size, variant }) => {
       }
     </style>
     <div class="demo-wrapper">
-      <div class="tl-spinner ${sizeClass} ${variantClass}">
-        <svg class="tl-spinner__svg">
-          <circle class="tl-spinner__circle"/>
-        </svg>
-      </div>
+      <svg class="tl-spinner ${sizeClass} ${variantClass}">
+        <circle class="tl-spinner__circle"/>
+      </svg>
     </div>
   `);
 };

@@ -3,10 +3,14 @@
   --breadcrumb-label: var(--color-foreground-text-strong);
   --breadcrumb-hover: var(--color-foreground-text-strong);
   --breadcrumb-current: var(--color-foreground-text-subtle);
-  --breadcrumb-separator-color: var(--color-foreground-text-subtle);
+  --breadcrumb-separator-color: var(--color-foreground-text-strong);
 
   // Spacing
   --breadcrumb-separator-margin: 4px;
   --breadcrumb-separator-width: 4px;
   --breadcrumb-separator-height: 8px;
+
+  // Focus
+  --breadcrumb-focus-outline-color: var(--color-foreground-border-accent-focus);
+  --breadcrumb-focus-outline-width: 2px;
 }

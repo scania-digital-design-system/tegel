@@ -1,5 +1,5 @@
 @use '../../../../../../grid-deprecated/vars' as *;
-@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/tl-scrollbar' as *;
 @use '../../../mixins/z-index' as *;
 @use '../../../global/variables' as *;
 @use './tl-side-menu-vars' as *;
@@ -137,7 +137,7 @@
   flex-direction: column;
   flex-grow: 1;
   overflow-y: auto;
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 }
 
 .tl-side-menu__navigation {

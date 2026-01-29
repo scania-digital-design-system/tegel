@@ -1,6 +1,6 @@
 @use './tl-dropdown-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
-@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/tl-scrollbar' as *;
 
 .tl-dropdown {
   width: 208px;
@@ -430,7 +430,7 @@
   transform: scaleY(0);
   transform-origin: top;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.2s;
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 
   .tl-dropdown--dropup & {
     top: auto;
