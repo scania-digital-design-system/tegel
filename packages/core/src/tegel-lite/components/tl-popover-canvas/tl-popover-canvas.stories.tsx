@@ -82,7 +82,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
       <button id="trigger" class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon">
         <span id="trigger-label" class="tl-icon tl-icon--kebab tl-icon--16"></span>
       </button>
-      <span class="click-icon">Click icon to toggle Popover Canvas</span>
+      <span class="tl-link-text">Click icon to toggle Popover Canvas</span>
     </div>
 
     <!-- The script below is just for demo purposes -->
