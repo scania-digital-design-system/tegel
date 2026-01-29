@@ -9,7 +9,10 @@ export default {
     modeVariant: {
       name: 'Mode variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
+      table: {
+        defaultValue: { summary: 'Primary' },
+      },
     },
     state: {
       name: 'State',
@@ -37,7 +40,7 @@ export default {
     labelPosition: {
       name: 'Label position',
       control: { type: 'radio' },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'No label'],
     },
     helper: {
       name: 'Helper text',
@@ -49,7 +52,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     state: 'None',
     type: 'Datetime',
     size: 'Large',
@@ -90,13 +93,11 @@ const Template = ({
     Error: 'error',
   };
 
-  const classesArray = ['tl-datetime'];
-
-  if (modeVariant !== 'Inherit from parent') {
-    classesArray.push(`tl-datetime--${modeVariant.toLowerCase()}`);
-  }
-
-  classesArray.push(`tl-datetime--${sizeLookup[size]}`);
+  const classesArray = [
+    'tl-datetime',
+    `tl-datetime--${modeVariant.toLowerCase()}`,
+    `tl-datetime--${sizeLookup[size]}`,
+  ];
 
   if (stateLookup[state]) {
     classesArray.push(`tl-datetime--${stateLookup[state]}`);

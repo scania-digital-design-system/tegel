@@ -100,7 +100,7 @@
 
     &::after {
       background-color: var(--radio-button-background-disabled);
-      border-color: var(--radio-button-background-disabled);
+      border: 1px solid var(--radio-button-border-disabled);
       outline: none;
     }
 

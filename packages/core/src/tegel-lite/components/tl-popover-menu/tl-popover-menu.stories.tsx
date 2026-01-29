@@ -18,8 +18,8 @@ export default {
     modeVariant: {
       name: 'Mode variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
     },
     showPopoverMenu: {
       name: 'Show Popover Menu',
@@ -55,7 +55,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     showPopoverMenu: false,
     fluidWidth: false,
     animation: 'none',
@@ -65,11 +65,7 @@ export default {
 };
 
 const Template = ({ modeVariant, fluidWidth, showPopoverMenu, animation, showIcon, icon }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-popover-menu--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
-
+  const modeClass = `tl-popover-menu--${modeVariant.toLowerCase()}`;
   const fluidClass = fluidWidth ? 'tl-popover-menu--fluid' : '';
   const animationClass = animation === 'fade' ? 'tl-popover-menu--animation-fade' : '';
   const showPopoverClass = showPopoverMenu ? 'tl-popover-menu--visible' : '';
@@ -79,7 +75,6 @@ const Template = ({ modeVariant, fluidWidth, showPopoverMenu, animation, showIco
     : '';
 
   const firstItemLabel = fluidWidth ? 'The menu width adjusts to the widest word' : 'Action';
-
   const otherItemLabel = 'Action';
 
   return formatHtmlPreview(`

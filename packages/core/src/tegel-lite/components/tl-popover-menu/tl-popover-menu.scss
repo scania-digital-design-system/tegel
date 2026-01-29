@@ -11,8 +11,6 @@
 }
 
 .tl-popover-menu__item {
-  @include detail-02;
-
   all: unset;
   width: 100%;
   display: flex;
@@ -22,6 +20,7 @@
   color: var(--popover-menu-text);
   position: relative;
   transition: background-color var(--tds-motion-duration-fast-02) var(--tds-motion-easing-easy);
+  @include detail-02;
 
   &:hover {
     cursor: pointer;

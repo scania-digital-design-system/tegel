@@ -20,9 +20,9 @@ export default {
       control: {
         type: 'radio',
       },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       table: {
-        defaultValue: { summary: 'Inherit from parent' },
+        defaultValue: { summary: 'Primary' },
       },
     },
     compactDesign: {
@@ -113,7 +113,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     compactDesign: false,
     responsiveDesign: false,
     verticalDivider: false,
@@ -139,8 +139,7 @@ const HorizontalScrollTemplate = ({
   column4Width,
 }) => {
   const compactClass = compactDesign ? 'tl-table--compact' : '';
-  const modeVariantClass =
-    modeVariant !== 'Inherit from parent' ? `tl-table--${modeVariant.toLowerCase()}` : '';
+  const modeVariantClass = `tl-table--${modeVariant.toLowerCase()}`;
   const verticalDividersClass = verticalDivider ? 'tl-table--vertical-dividers' : '';
   const responsiveClass = responsiveDesign ? 'tl-table--responsive' : '';
   const noMinWidthClass = noMinWidth ? 'tl-table--no-min-width' : '';

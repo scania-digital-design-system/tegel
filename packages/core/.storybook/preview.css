@@ -15,7 +15,7 @@ h5,
 h6,
 p,
 ul > li,
-a:not(tds-link *) {
+a:not(tds-link *, tds-breadcrumb *) {
   font-family: 'Scania Sans', arial, helvetica, sans-serif;
 }
 
