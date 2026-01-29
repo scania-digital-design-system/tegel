@@ -47,16 +47,10 @@ export default {
       control: { type: 'number' },
       description: 'Number of visible rows',
     },
-    charCounter: {
-      name: 'Character Counter',
-      control: { type: 'boolean' },
-      description: 'Show character counter',
-    },
     maxLength: {
       name: 'Max Length',
       control: { type: 'number' },
-      description: 'Maximum number of characters allowed',
-      if: { arg: 'charCounter', eq: true },
+      description: 'Maximum number of characters allowed. When > 0 the character counter is shown.',
     },
     noMinWidth: {
       name: 'No Minimum Width',
@@ -89,8 +83,7 @@ export default {
     placeholder: 'Placeholder',
     helper: '',
     rows: 5,
-    charCounter: false,
-    maxLength: 12,
+    maxLength: 0,
     noMinWidth: false,
     readonly: false,
     hideReadonlyIcon: false,
@@ -106,7 +99,6 @@ const Template = ({
   placeholder,
   helper,
   rows,
-  charCounter,
   maxLength,
   noMinWidth,
   readonly,
@@ -130,7 +122,7 @@ const Template = ({
   const inputAttrs = [
     `rows="${rows}"`,
     `placeholder="${placeholder}"`,
-    charCounter && maxLength > 0 && `maxlength="${maxLength}"`,
+    maxLength > 0 && `maxlength="${maxLength}"`,
     disabled && 'disabled',
     readonly && 'readonly',
   ]
@@ -145,7 +137,7 @@ const Template = ({
   const helperContent = helper ? `<div class="tl-textarea__helper">${helper}</div>` : '';
 
   const charCounterContent =
-    charCounter && maxLength > 0
+    maxLength > 0
       ? `<span class="tl-textarea__charcounter">0 <span class="tl-textarea__charcounter-divider">/</span> ${maxLength}</span>`
       : '';
 
@@ -163,29 +155,28 @@ const Template = ({
       ${labelContent}
       <textarea class="tl-textarea__input" ${inputAttrs}></textarea>
       ${helperWrapperContent}
-    </div>
-${
-  charCounter && maxLength > 0
-    ? `
-  <!-- Script tag for demo purposes -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const textElement = document.querySelector('.tl-textarea__input');
-        const counterElement = document.querySelector('.tl-textarea__charcounter');
+    ${
+      maxLength > 0
+        ? `
+      <!-- Script tag for demo purposes -->
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            const textElement = document.querySelector('.tl-textarea__input');
+            const counterElement = document.querySelector('.tl-textarea__charcounter');
         
-        if (textElement && counterElement) {
-          const initialLength = textElement.value.length;
-          counterElement.innerHTML = initialLength + ' <span class="tl-textarea__charcounter-divider">/</span> ' + ${maxLength};
+            if (textElement && counterElement) {
+              const initialLength = textElement.value.length;
+              counterElement.innerHTML = initialLength + ' <span class="tl-textarea__charcounter-divider">/</span> ' + ${maxLength};
           
-          textElement.addEventListener('input', (event) => {
-            const currentLength = event.target.value.length;
-            counterElement.innerHTML = currentLength + ' <span class="tl-textarea__charcounter-divider">/</span> ' + ${maxLength};
+              textElement.addEventListener('input', (event) => {
+                const currentLength = event.target.value.length;
+                counterElement.innerHTML = currentLength + ' <span class="tl-textarea__charcounter-divider">/</span> ' + ${maxLength};
+              });
+            }
           });
-        }
-      });
-    </script>`
-    : ''
-}
+        </script>`
+        : ''
+    }
   `);
 };
 
