@@ -2,12 +2,9 @@
 @use '../../../../../../typography/mixins/type-styles' as *;
 
 .tl-tooltip {
-  position: relative;
-  display: inline-block;
-}
+  @include detail-05;
 
-.tl-tooltip__popup {
-  position: absolute;
+  position: fixed;
   z-index: var(--tds-z-index-tooltip, 1000);
   padding: 8px;
   max-width: 204px;
@@ -17,10 +14,12 @@
   background-color: var(--tooltip-background, #333);
   color: var(--tooltip-text, #fff);
   box-sizing: border-box;
+  line-height: var(--tl-tooltip-line-height);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.2s ease, visibility 0.2s ease;
+  border-radius: 4px;
 
   &--visible {
     opacity: 1;
@@ -28,79 +27,36 @@
     pointer-events: auto;
   }
 
-  .tl-tooltip--bottom & {
-    top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 4px;
+  // Position modifiers - remove border-radius at corner pointing to trigger
+  &--top-start {
+    border-radius: 4px 4px 4px 0; // sharp corner at bottom-left
   }
 
-  .tl-tooltip--bottom-end & {
-    top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    right: var(--tl-tooltip-offset-skidding, 0);
-    border-radius: 4px 0 4px 4px;
+  &--top-end {
+    border-radius: 4px 4px 0; // sharp corner at bottom-right
   }
 
-  .tl-tooltip--bottom-start & {
-    top: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    left: var(--tl-tooltip-offset-skidding, 0);
-    border-radius: 0 4px 4px;
+  &--bottom-start {
+    border-radius: 0 4px 4px; // sharp corner at top-left
   }
 
-  .tl-tooltip--left & {
-    right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
+  &--bottom-end {
+    border-radius: 4px 0 4px 4px; // sharp corner at top-right
   }
 
-  .tl-tooltip--left-end & {
-    right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    bottom: 0;
-    border-radius: 4px 4px 0;
+  &--left-start {
+    border-radius: 4px 0 4px 4px; // sharp corner at top-right
   }
 
-  .tl-tooltip--left-start & {
-    right: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    top: 0;
-    border-radius: 4px 0 4px 4px;
+  &--left-end {
+    border-radius: 4px 4px 0; // sharp corner at bottom-right
   }
 
-  .tl-tooltip--right & {
-    left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 4px;
+  &--right-start {
+    border-radius: 0 4px 4px; // sharp corner at top-left
   }
 
-  .tl-tooltip--right-end & {
-    left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    bottom: 0;
-    border-radius: 4px 4px 4px 0;
-  }
-
-  .tl-tooltip--right-start & {
-    left: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    top: 0;
-    border-radius: 0 4px 4px;
-  }
-
-  .tl-tooltip--top & {
-    bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 4px;
-  }
-
-  .tl-tooltip--top-end & {
-    bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    right: var(--tl-tooltip-offset-skidding, 0);
-    border-radius: 4px 4px 0;
-  }
-
-  .tl-tooltip--top-start & {
-    bottom: calc(100% + var(--tl-tooltip-offset-distance, 8px));
-    left: var(--tl-tooltip-offset-skidding, 0);
-    border-radius: 4px 4px 4px 0;
+  &--right-end {
+    border-radius: 4px 4px 4px 0; // sharp corner at bottom-left
   }
 }

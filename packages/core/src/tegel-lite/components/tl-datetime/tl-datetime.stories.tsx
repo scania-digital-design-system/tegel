@@ -40,7 +40,7 @@ export default {
     labelPosition: {
       name: 'Label position',
       control: { type: 'radio' },
-      options: ['No label', 'Inside', 'Outside'],
+      options: ['Outside', 'Inside', 'No label'],
     },
     helper: {
       name: 'Helper text',

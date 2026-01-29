@@ -1,5 +1,5 @@
 @use '../../../mixins/box-sizing' as *;
-@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/tl-scrollbar' as *;
 @use './tl-table-vars' as *;
 @use '../../../../../../typography/mixins/type-styles' as *;
 @use 'footer' as *;
@@ -87,7 +87,7 @@
     display: block;
     overflow-x: auto;
     white-space: nowrap;
-    @include tds-scrollbar(horizontal);
+    @include tl-scrollbar(horizontal);
   }
 
   &--primary {
@@ -591,7 +591,7 @@
   padding: 16px 16px 16px 66px;
   color: var(--table-text);
   background-color: var(--table-body-row-selected);
-  @include tds-scrollbar(horizontal);
+  @include tl-scrollbar(horizontal);
 
   .tl-table--compact & {
     padding: 8px 16px 8px 66px;
