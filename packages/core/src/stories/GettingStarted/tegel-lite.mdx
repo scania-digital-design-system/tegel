@@ -1,10 +1,12 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Getting Started/Tegel Lite (CSS)" />
+<Meta title="Getting Started/Tegel Lite (Beta)" />
 
 **Published: 2026-02-01**
 
-# Using Tegel Lite (CSS)
+# Using Tegel Lite (Beta)
+
+> **⚠️ Beta Status:** This package is currently in beta. The API may change before stable 1.0.0. Report issues at [GitHub](https://github.com/scania-digital-design-system/tegel/issues).
 
 Tegel Lite is a pure CSS alternative to Tegel's component library, providing the same design system without relying on Web Components or Stencil. It's a styles-only component system built using SCSS and compiled to CSS files, aligned to the same design tokens and variables as the original Tegel.
 
@@ -26,9 +28,49 @@ Install the `@scania/tegel-lite` package via npm.
 npm install @scania/tegel-lite
 ```
 
+## Quick Start
+
+**Important:** You must import brand variables separately - `global.css` only contains component styles, not design tokens.
+
+### Scania Brand
+
+```javascript
+import '@scania/tegel-lite/scania-variables.css'; // Brand variables (required)
+import '@scania/tegel-lite'; // All 35 components
+```
+
+### TRATON Brand
+
+```javascript
+import '@scania/tegel-lite/traton-variables.css'; // Brand variables (required)
+import '@scania/tegel-lite'; // All 35 components
+```
+
+### Tree-shaking (Import Specific Components)
+
+Import only what you need for better performance:
+
+```javascript
+// Scania
+import '@scania/tegel-lite/scania-variables.css';
+import '@scania/tegel-lite/tl-button.css';
+import '@scania/tegel-lite/tl-card.css';
+
+// TRATON
+import '@scania/tegel-lite/traton-variables.css';
+import '@scania/tegel-lite/tl-button.css';
+import '@scania/tegel-lite/tl-card.css';
+```
+
+> **Important:** Always import a brand variables file first (`scania-variables.css` or `traton-variables.css`) before any components. The variables file contains colors, fonts, and design tokens that components depend on.
+
 ## Theming
 
-Tegel Lite supports both **Scania** and **Traton** themes. Set the theme by adding a class to the `<html>` element (or any parent element):
+Tegel Lite supports both **Scania** and **Traton** themes. 
+
+You must import the appropriate variables file (`scania-variables.css` or `traton-variables.css`) to get the brand-specific colors, fonts, and tokens.
+
+Set the active theme by adding a class to the `<html>` element:
 
 ```html
 <!-- Scania (default) -->
@@ -36,21 +78,6 @@ Tegel Lite supports both **Scania** and **Traton** themes. Set the theme by addi
 
 <!-- Traton -->
 <html class="traton">
-```
-
-## Setup
-
-Import the global styles in your CSS file:
-
-```css
-@import '@scania/tegel-lite/global.css';
-```
-
-Import only the component styles you need:
-
-```css
-@import '@scania/tegel-lite/tl-button.css';
-@import '@scania/tegel-lite/tl-header.css';
 ```
 
 ## Usage
@@ -74,8 +101,8 @@ For vanilla HTML projects, link to the CSS files:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tegel Lite</title>
+  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/scania-variables.css">
   <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/global.css">
-  <link rel="stylesheet" href="./node_modules/@scania/tegel-lite/tl-button.css">
 </head>
 <body>
   <button class="tl-button tl-button--primary tl-button--md">

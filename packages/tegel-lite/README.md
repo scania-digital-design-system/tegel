@@ -15,29 +15,31 @@ npm install @scania/tegel-lite
 
 ## Quick Start
 
-### Option 1: Import Everything (Easiest)
+**You must import brand variables separately** - `global.css` only contains component styles.
+
+### Scania Brand
 
 ```javascript
-// All components + Scania variables
-import '@scania/tegel-lite';
+import '@scania/tegel-lite/scania-variables.css';
+import '@scania/tegel-lite'; // All components
 ```
 
-This imports `global.css` which includes all 35 components and Scania brand variables (fonts, colors, tokens).
-
-### Option 2: Import Specific Components (Tree-shaking)
+### TRATON Brand
 
 ```javascript
-// Scania brand
-import '@scania/tegel-lite/scania-variables.css';
+import '@scania/tegel-lite/traton-variables.css';
+import '@scania/tegel-lite'; // All components
+```
+
+### Tree-shaking (Import Specific Components)
+
+```javascript
+import '@scania/tegel-lite/scania-variables.css'; // or traton-variables.css
 import '@scania/tegel-lite/tl-button.css';
 import '@scania/tegel-lite/tl-card.css';
-
-// TRATON brand
-import '@scania/tegel-lite/traton-variables.css';
-import '@scania/tegel-lite/tl-button.css';
 ```
 
-> **Important:** Always import a brand variables file (`scania-variables.css` or `traton-variables.css`) first for design tokens and fonts.
+> **Important:** Always import a brand variables file first (`scania-variables.css` or `traton-variables.css`) before any components.
 
 **HTML Usage:**
 
@@ -55,92 +57,21 @@ import '@scania/tegel-lite/tl-button.css';
 **Display:** card, table, accordion, stepper, step, badge, divider, block, icon  
 **Overlays:** modal, toast, banner, message, tooltip, popover-menu, popover-canvas, spinner
 
-## Framework Examples
-
-### React/Next.js
-
-**Option A: Import everything**
-```jsx
-import '@scania/tegel-lite';
-
-export default function App() {
-  return (
-    <button className="tl-button tl-button--primary">
-      <span className="tl-button__label">Click me</span>
-    </button>
-  );
-}
-```
-
-**Option B: Import specific components**
-```jsx
-import '@scania/tegel-lite/scania-variables.css';
-import '@scania/tegel-lite/tl-button.css';
-
-export default function Button() {
-  return (
-    <button className="tl-button tl-button--primary">
-      <span className="tl-button__label">Click me</span>
-    </button>
-  );
-}
-```
-
-### Vue
-
-**Option A: Import everything**
-```vue
-<template>
-  <button class="tl-button tl-button--primary">
-    <span class="tl-button__label">Click me</span>
-  </button>
-</template>
-
-<style>
-@import '@scania/tegel-lite';
-</style>
-```
-
-**Option B: Import specific components**
-```vue
-<template>
-  <button class="tl-button tl-button--primary">
-    <span class="tl-button__label">Click me</span>
-  </button>
-</template>
-
-<style>
-@import '@scania/tegel-lite/scania-variables.css';
-@import '@scania/tegel-lite/tl-button.css';
-</style>
-```
-
-### Angular
-
-**Option A: Import everything in styles.css**
-```css
-@import '@scania/tegel-lite';
-```
-
-**Option B: Import specific components in styles.css**
-```css
-@import '@scania/tegel-lite/scania-variables.css';
-@import '@scania/tegel-lite/tl-button.css';
-```
-
 ## Package Contents
 
 ```
 dist/
-├── global.css               # All components + variables
-├── scania-variables.css     # Scania tokens + fonts
-├── traton-variables.css     # TRATON tokens + fonts
-├── tl-*.css                 # 35 individual components
+├── global.css               # All 35 components (no variables)
+├── scania-variables.css     # Scania brand (colors, fonts, tokens)
+├── traton-variables.css     # TRATON brand (colors, fonts, tokens)
+├── tl-*.css                 # Individual components
 └── assets/
     ├── fonts/               # Latin & Cyrillic fonts
     ├── icons/               # SVG icons
     └── logos/               # Brand logos
 ```
+
+**Important:** `global.css` does NOT include brand variables. You must import `scania-variables.css` or `traton-variables.css` separately.
 
 ## BEM Naming Convention
 

@@ -2,6 +2,7 @@
 .gitignore
 playwright.config.ts
 tests/
+README.dev.md
 
 # Build artifacts
 *.log

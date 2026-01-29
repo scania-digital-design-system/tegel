@@ -77,6 +77,11 @@ jobs:
         working-directory: packages/react
         run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
 
+      - name: Tegel Lite - Bump version
+        id: tegel-lite-version
+        working-directory: packages/tegel-lite
+        run: npm version ${{ github.event.inputs.version || env.VERSION }} --no-git-tag-version
+
       - name: Core - Read package.json Version
         id: version
         working-directory: packages/core
@@ -350,11 +355,53 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+  #RELEASE TEGEL LITE
+  release-tegel-lite:
+    needs: [create-release-branch, release-core]
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIRECTORY: packages/tegel-lite
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-release-branch.outputs.branch }}
+          fetch-depth: 1 # Fetch just the release branch
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ github.event.inputs.nodeVersion || env.NODE_VERSION }}
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Tegel Lite - Read package.json Version
+        id: version
+        working-directory: packages/tegel-lite
+        run: echo "PACKAGE_VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Install dependencies in root
+        run: npm ci
+
+      - name: Core - Install
+        working-directory: packages/core
+        run: npm ci
+
+      - name: Tegel Lite - Build
+        run: npm run build:lte
+
+      - name: Tegel Lite - Publish
+        if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule'
+        working-directory: packages/tegel-lite
+        run: npm publish --tag ${{ github.event.inputs.tags }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
   #ON FAILURE
   on-failure:
-    needs: [create-release-branch, release-core, release-angular-17, release-react]
+    needs:
+      [create-release-branch, release-core, release-angular-17, release-react, release-tegel-lite]
     runs-on: ubuntu-latest
-    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure')
+    if: github.event.inputs.dryVersion != 'true' && github.event_name != 'schedule' && (needs.create-release-branch.result == 'failure' || needs.release-core.result == 'failure' || needs.release-angular-17.result == 'failure' || needs.release-react.result == 'failure' || needs.release-tegel-lite.result == 'failure')
     steps:
       - name: Download version
         uses: actions/download-artifact@v4
