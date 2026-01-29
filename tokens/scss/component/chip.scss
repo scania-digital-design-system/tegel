@@ -2,7 +2,6 @@
  * Do not edit directly, this file was auto-generated.
  */
 
-.tl-chip,
 tds-chip {
   --component-chip-color-focused-on-selected: var(--color-system-info-discrete);
   --component-chip-color-disabled: var(--color-background-surface-400);
@@ -17,7 +16,6 @@ tds-chip {
   --component-chip-border-selected-focus-border: var(--color-system-info-default);
 }
 
-.tl-chip,
 tds-chip {
   --component-chip-color-focused-on-selected: var(--color-system-info-subtle);
   --component-chip-color-disabled: var(--color-background-surface-400);
@@ -37,12 +35,10 @@ tds-chip {
 
 :root,
 .scania {
-  .tl-chip,
   tds-chip {
     --component-chip-border-radius: 16px;
   }
 
-  .tds-mode-light .tl-chip,
   .tds-mode-light tds-chip {
     --component-chip-color-hover: var(--color-background-surface-300);
     --component-chip-foreground-foreground-disabled-selected: var(
@@ -50,7 +46,6 @@ tds-chip {
     );
   }
 
-  .tds-mode-dark .tl-chip,
   .tds-mode-dark tds-chip {
     --component-chip-color-default: var(--color-background-surface-400);
     --component-chip-color-focused-on-selected: var(--color-system-info-discrete);
@@ -61,12 +56,10 @@ tds-chip {
 }
 
 .traton {
-  .tl-chip,
   tds-chip {
     --component-chip-border-radius: 2px;
   }
 
-  .tds-mode-light .tl-chip,
   .tds-mode-light tds-chip {
     --component-chip-color-default: var(--color-background-surface-200);
     --component-chip-color-selected: var(--color-background-surface-300);
@@ -76,7 +69,6 @@ tds-chip {
     --component-chip-foreground-foreground-disabled-selected: var(--color-background-surface-200);
   }
 
-  .tds-mode-dark .tl-chip,
   .tds-mode-dark tds-chip {
     --component-chip-color-default: var(--color-background-surface-300);
     --component-chip-color-disabled: var(--color-background-surface-200);
