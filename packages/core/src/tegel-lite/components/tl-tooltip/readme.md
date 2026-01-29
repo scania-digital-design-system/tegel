@@ -37,12 +37,12 @@ Position modifiers **only control border-radius**. Users handle positioning with
 | -------------------------- | ------------- | --------------------- |
 | *(none)*                   | None          | `4px` (all rounded)   |
 | `.tl-tooltip--top-start`   | Bottom-left   | `4px 4px 4px 0`       |
-| `.tl-tooltip--top-end`     | Bottom-right  | `4px 4px 0`           |
-| `.tl-tooltip--bottom-start` | Top-left     | `0 4px 4px`           |
+| `.tl-tooltip--top-end`     | Bottom-right  | `4px 4px 0 4px`       |
+| `.tl-tooltip--bottom-start` | Top-left     | `0 4px 4px 4px`       |
 | `.tl-tooltip--bottom-end`  | Top-right     | `4px 0 4px 4px`       |
 | `.tl-tooltip--left-start`  | Top-right     | `4px 0 4px 4px`       |
-| `.tl-tooltip--left-end`    | Bottom-right  | `4px 4px 0`           |
-| `.tl-tooltip--right-start` | Top-left      | `0 4px 4px`           |
+| `.tl-tooltip--left-end`    | Bottom-right  | `4px 4px 0 4px`       |
+| `.tl-tooltip--right-start` | Top-left      | `0 4px 4px 4px`       |
 | `.tl-tooltip--right-end`   | Bottom-left   | `4px 4px 4px 0`       |
 
 
