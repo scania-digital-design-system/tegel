@@ -6,11 +6,9 @@ The Inline Tabs component provides a horizontal tabbed navigation with scrollabl
 
 ```html
 <div class="tl-inline-tabs">
-  <div class="tl-inline-tabs__wrapper">
-    <button class="tl-inline-tabs__tab tl-inline-tabs__tab--selected">Tab 1</button>
-    <button class="tl-inline-tabs__tab">Tab 2</button>
-    <button class="tl-inline-tabs__tab">Tab 3</button>
-  </div>
+  <button class="tl-inline-tabs__tab tl-inline-tabs__tab--selected">Tab 1</button>
+  <button class="tl-inline-tabs__tab">Tab 2</button>
+  <button class="tl-inline-tabs__tab">Tab 3</button>
 </div>
 ```
 
@@ -35,7 +33,6 @@ The Inline Tabs component provides a horizontal tabbed navigation with scrollabl
 | Element                                     | HTML Element | Description                  |
 | ------------------------------------------- | ------------ | ---------------------------- |
 | `.tl-inline-tabs`                           | `<div>`      | Inline tabs container        |
-| `.tl-inline-tabs__wrapper`                  | `<div>`      | Scrollable tabs wrapper      |
 | `.tl-inline-tabs__tab`                      | `<button>`   | Individual inline tab        |
 | `.tl-inline-tabs__scroll-button`            | `<button>`   | Scroll button                |
 | `.tl-inline-tabs__scroll-button--left`      | `<button>`   | Left scroll button           |
