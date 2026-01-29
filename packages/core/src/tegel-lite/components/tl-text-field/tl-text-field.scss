@@ -312,7 +312,7 @@
       width: 16px;
       height: 16px;
       background-color: var(--text-field-error);
-      mask-image: var(--icon-info-svg);
+      mask-image: var(--icon-error-svg);
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
@@ -347,7 +347,11 @@
   }
 
   .tl-text-field--error:not(.tl-text-field--readonly):not(.tl-text-field--disabled) & {
-    display: none;
+    color: var(--text-field-error);
+
+    .tl-text-field__charcounter-divider {
+      color: var(--text-field-error);
+    }
   }
 }
 

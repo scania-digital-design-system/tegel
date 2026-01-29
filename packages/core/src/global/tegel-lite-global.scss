@@ -40,7 +40,7 @@ $local-assets: './assets' !default;
 
 // Vars
 @use '_variables' as *;
-@use 'scrollbar-vars' as *;
+@use 'tl-scrollbar-vars' as *;
 
 // Utility classes
 @use '_utility-classes' as *;

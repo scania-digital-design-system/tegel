@@ -9,7 +9,8 @@ export default {
     modeVariant: {
       name: 'Mode Variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
     },
     state: {
       name: 'State',
@@ -63,21 +64,13 @@ export default {
       options: ['Icon', 'Text'],
       if: { arg: 'suffix', eq: true },
     },
-    charCounter: {
-      name: 'Character counter',
-      control: { type: 'boolean' },
-    },
     maxLength: {
       name: 'Max length',
       control: { type: 'number' },
-      if: { arg: 'charCounter', eq: true },
+      description: 'Maximum number of characters allowed. When > 0 the character counter is shown.',
     },
     noMinWidth: {
       name: 'No minimum width',
-      control: { type: 'boolean' },
-    },
-    disabled: {
-      name: 'Disabled',
       control: { type: 'boolean' },
     },
     readonly: {
@@ -89,9 +82,13 @@ export default {
       control: { type: 'boolean' },
       if: { arg: 'readonly', eq: true },
     },
+    disabled: {
+      name: 'Disabled',
+      control: { type: 'boolean' },
+    },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     state: 'Default',
     type: 'Text',
     size: 'Large',
@@ -103,12 +100,11 @@ export default {
     prefixType: 'Icon',
     suffix: false,
     suffixType: 'Icon',
-    charCounter: false,
-    maxLength: 12,
+    maxLength: 0,
     noMinWidth: false,
-    disabled: false,
     readonly: false,
     hideReadonlyIcon: false,
+    disabled: false,
   },
 };
 
@@ -125,16 +121,15 @@ const Template = ({
   prefixType,
   suffix,
   suffixType,
-  charCounter,
   maxLength,
   noMinWidth,
-  disabled,
   readonly,
   hideReadonlyIcon,
+  disabled,
 }) => {
   const componentClasses = [
     'tl-text-field',
-    modeVariant !== 'Inherit from parent' && `tl-text-field--${modeVariant.toLowerCase()}`,
+    `tl-text-field--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-text-field--${state.toLowerCase()}`,
     size === 'Large' && 'tl-text-field--lg',
     size === 'Medium' && 'tl-text-field--md',
@@ -152,7 +147,7 @@ const Template = ({
   const inputAttrs = [
     `type="${type.toLowerCase()}"`,
     `placeholder="${placeholderText}"`,
-    charCounter && maxLength > 0 && `maxlength="${maxLength}"`,
+    maxLength > 0 && `maxlength="${maxLength}"`,
     disabled && 'disabled',
     readonly && 'readonly',
   ]
@@ -187,10 +182,9 @@ const Template = ({
   const helperContent = helper ? `<div class="tl-text-field__helper">${helper}</div>` : '';
 
   const charCounterContent =
-    charCounter && maxLength > 0
+    maxLength > 0
       ? `<span class="tl-text-field__charcounter">0 <span class="tl-text-field__charcounter-divider">/</span> ${maxLength}</span>`
       : '';
-
   const helperWrapperContent =
     helperContent || charCounterContent
       ? `<div class="tl-text-field__bottom">${helperContent}${charCounterContent}</div>`
@@ -215,7 +209,7 @@ const Template = ({
     </div>
 
   ${
-    charCounter && maxLength > 0
+    maxLength > 0
       ? `<!-- Script tag for demo purposes -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {

@@ -1,4 +1,4 @@
-@use '../../../mixins/scrollbar' as *;
+@use '../../../mixins/tl-scrollbar' as *;
 @use '../../../mixins/z-index' as *;
 @use '../../../mixins/box-sizing' as *;
 @use './tl-header-vars' as *;
@@ -122,7 +122,7 @@
   max-height: calc(100vh - var(--tds-header-height));
   overflow-y: auto;
   z-index: var(--tds-z-index-header);
-  @include tds-scrollbar;
+  @include tl-scrollbar;
 
   @media all and (max-width: $media-fullwidth) {
     width: 100vw;

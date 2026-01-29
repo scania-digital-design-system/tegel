@@ -2,7 +2,6 @@
   &:hover {
     &::-webkit-scrollbar-thumb {
       border: var(--tds-scrollbar-thumb-border-hover-width) solid transparent;
-      background: var(--tds-scrollbar-hover-thumb-color);
       background-clip: padding-box;
     }
   }

@@ -94,41 +94,6 @@
   }
 }
 
-.tl-accordion__icon {
-  transform-origin: center;
-  transition: transform 0.15s ease-in-out;
-  color: var(--accordion-icon);
-
-  .tl-icon {
-    .tl-accordion__item--disabled & {
-      color: var(--accordion-text-disabled);
-    }
-  }
-
-  .tl-accordion__item--expanded & {
-    transform: rotate(180deg);
-  }
-
-  .tl-accordion__item--expanded .tl-accordion__header-icon-end & {
-    margin-right: 0;
-    margin-left: var(--tds-spacing-element-32);
-  }
-
-  .tl-accordion__item--expanded .tl-accordion__header-icon-start & {
-    margin-left: 0;
-    margin-right: var(--tds-spacing-element-16);
-  }
-
-  .tl-accordion__item--icon-start .tl-accordion__header-icon-start & {
-    order: 0;
-    margin: 0 var(--tds-spacing-element-16) 0 0;
-  }
-
-  .tl-accordion__item--icon-end .tl-accordion__header-icon-end & {
-    margin: 0 0 0 var(--tds-spacing-element-32);
-  }
-}
-
 .tl-accordion__header-icon-start,
 .tl-accordion__header-icon-end {
   @include tds-box-sizing;
@@ -140,6 +105,29 @@
   width: 100%;
   padding: var(--tds-spacing-element-16);
   background-color: var(--accordion-background);
+  position: relative;
+
+  &::after {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background-color: var(--accordion-icon);
+    mask-image: var(--icon-chevron_down-svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transform-origin: center;
+    transition: transform 0.15s ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .tl-accordion__item--disabled &::after {
+    background-color: var(--accordion-text-disabled);
+  }
+
+  .tl-accordion__item--expanded &::after {
+    transform: rotate(180deg);
+  }
 
   button {
     all: unset;
@@ -179,5 +167,28 @@
     outline: none !important;
     box-shadow: none !important;
     border: none !important;
+  }
+}
+
+.tl-accordion__header-icon-start {
+  &::after {
+    order: 0;
+    margin-right: var(--tds-spacing-element-16);
+  }
+
+  .tl-accordion__item--expanded &::after {
+    margin-left: 0;
+    margin-right: var(--tds-spacing-element-16);
+  }
+}
+
+.tl-accordion__header-icon-end {
+  &::after {
+    margin-left: var(--tds-spacing-element-32);
+  }
+
+  .tl-accordion__item--expanded &::after {
+    margin-right: 0;
+    margin-left: var(--tds-spacing-element-32);
   }
 }
