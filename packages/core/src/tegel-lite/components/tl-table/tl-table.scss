@@ -425,8 +425,8 @@
 }
 
 .tl-table__actionbar-right
-.tl-text-field:not(.tl-text-field--input-visible)
-.tl-text-field__suffix--icon {
+  .tl-text-field:not(.tl-text-field--input-visible)
+  .tl-text-field__suffix--icon {
   position: absolute;
   right: 16px;
   top: 50%;
@@ -603,5 +603,15 @@
 
   &--overflow-hidden {
     overflow: hidden;
+  }
+}
+
+.tl-text-field__input {
+  .tl-table.tl-table--primary & {
+    background-color: var(--component-table-cell);
+  }
+
+  .tl-table.tl-table--secondary & {
+    background-color: var(--component-table-secondary-cell);
   }
 }
