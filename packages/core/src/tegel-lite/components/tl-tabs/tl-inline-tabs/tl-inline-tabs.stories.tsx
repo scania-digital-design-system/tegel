@@ -4,6 +4,12 @@ export default {
   title: 'Tegel Lite (CSS)/Tabs/Inline Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
+    modeVariant: {
+      name: 'Mode variant',
+      control: { type: 'radio' },
+      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Inherit from parent' } },
+    },
     showLeftButton: {
       name: 'Show left scroll button',
       control: { type: 'boolean' },
@@ -22,12 +28,13 @@ export default {
     },
     leftPadding: {
       name: 'Left Padding',
-      description: 'Sets the custom left padding for the wrapper element. Accepts a numeric value.',
+      description: 'Sets the custom left padding for the tabs container. Accepts a numeric value.',
       control: { type: 'number' },
       table: { defaultValue: { summary: 32 } },
     },
   },
   args: {
+    modeVariant: 'Inherit from parent',
     showLeftButton: false,
     showRightButton: false,
     selectedIndex: 0,
@@ -35,7 +42,10 @@ export default {
   },
 };
 
-const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
+const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
+  const modeClass =
+    modeVariant !== 'Inherit from parent' ? `tds-mode-variant-${modeVariant.toLowerCase()}` : '';
+
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 
   const tabsHtml = labels
@@ -77,12 +87,10 @@ const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton 
       "@scania/tegel-lite/tl-icon.css"
     -->
 
-    <div class="tl-inline-tabs" style="padding-left: ${leftPadding}px;">
-      <div class="tl-inline-tabs__wrapper">
-        ${leftButton}
-        ${tabsHtml}
-        ${rightButton}
-      </div>
+    <div class="tl-inline-tabs ${modeClass}" style="padding-left: ${leftPadding}px;">
+      ${leftButton}
+      ${tabsHtml}
+      ${rightButton}
     </div>
 
     <!-- The script below is just for demo purposes -->

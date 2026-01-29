@@ -84,11 +84,9 @@ const Template = ({ modeVariant, showLeftButton, showRightButton, selectedIndex 
     -->
 
     <div class="tl-folder-tabs ${modeClass}">
-      <div class="tl-folder-tabs__wrapper">
-        ${leftButton}
-        ${tabsHtml}
-        ${rightButton}
-      </div>
+      ${leftButton}
+      ${tabsHtml}
+      ${rightButton}
     </div>
 
     <!-- The script below is just for demo purposes -->
