@@ -6,11 +6,9 @@ The Folder Tabs component provides a folder-style tabbed navigation with primary
 
 ```html
 <div class="tl-folder-tabs">
-  <div class="tl-folder-tabs__wrapper">
-    <button class="tl-folder-tabs__tab tl-folder-tabs__tab--selected">Tab 1</button>
-    <button class="tl-folder-tabs__tab">Tab 2</button>
-    <button class="tl-folder-tabs__tab">Tab 3</button>
-  </div>
+  <button class="tl-folder-tabs__tab tl-folder-tabs__tab--selected">Tab 1</button>
+  <button class="tl-folder-tabs__tab">Tab 2</button>
+  <button class="tl-folder-tabs__tab">Tab 3</button>
 </div>
 ```
 
@@ -35,7 +33,6 @@ The Folder Tabs component provides a folder-style tabbed navigation with primary
 | Element                                     | HTML Element | Description                  |
 | ------------------------------------------- | ------------ | ---------------------------- |
 | `.tl-folder-tabs`                           | `<div>`      | Folder tabs container        |
-| `.tl-folder-tabs__wrapper`                  | `<div>`      | Scrollable tabs wrapper      |
 | `.tl-folder-tabs__tab`                      | `<button>`   | Individual folder tab        |
 | `.tl-folder-tabs__scroll-button`            | `<button>`   | Scroll button                |
 | `.tl-folder-tabs__scroll-button--left`      | `<button>`   | Left scroll button           |
