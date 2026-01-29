@@ -15,8 +15,8 @@ export default {
     modeVariant: {
       name: 'Mode variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
     },
     showPopoverCanvas: {
       name: 'Show Popover Canvas',
@@ -27,29 +27,20 @@ export default {
       name: 'Animation',
       description: 'Sets the animation style of the Popover Canvas.',
       control: { type: 'radio' },
-      options: ['None', 'Fade'],
-      table: { defaultValue: { summary: 'None' } },
+      options: ['none', 'fade'],
+      table: { defaultValue: { summary: 'none' } },
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     showPopoverCanvas: true,
-    animation: 'Fade',
+    animation: 'fade',
   },
 };
 
 const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent'
-      ? `tl-popover-canvas--mode-variant-${modeVariant.toLowerCase()}`
-      : '';
-
-  const animationMap = {
-    None: 'none',
-    Fade: 'fade',
-  };
-  const animationClass =
-    animationMap[animation] === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
+  const modeClass = `tl-popover-canvas--${modeVariant.toLowerCase()}`;
+  const animationClass = animation === 'fade' ? 'tl-popover-canvas--animation-fade' : '';
   const showPopoverClass = showPopoverCanvas ? 'tl-popover-canvas--visible' : '';
 
   return formatHtmlPreview(`
@@ -74,7 +65,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
           <p>Where you can put anything you want!</p>
           <div class="tl-popover-canvas__actions">
             <a
-              class="tds-link"
+              class="tl-link tl-link--standalone tl-link--underline"
               href="https://tegel.scania.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -87,7 +78,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
       <button id="trigger" class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon">
         <span id="trigger-label" class="tl-icon tl-icon--kebab tl-icon--16"></span>
       </button>
-      <span class="click-icon">Click icon to toggle Popover Canvas</span>
+      <span class="tl-link-text">Click icon to toggle Popover Canvas</span>
     </div>
 
     <!-- The script below is just for demo purposes -->
