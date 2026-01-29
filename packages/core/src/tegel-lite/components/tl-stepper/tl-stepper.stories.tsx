@@ -106,14 +106,14 @@ const Template = ({ size, orientation, labelPosition, hideLabels }) => {
 
   const items = steps
     .map(({ label, state, index }) => {
-      const nodeInner =
+      const nodeContent =
         state === 'tl-stepper__step--success' || state === 'tl-stepper__step--error'
-          ? '' // Icon rendered via ::after pseudo-element
+          ? '' // Icons are rendered via ::after pseudo-element
           : String(index);
 
       return `
         <li class="tl-stepper__step ${state || ''}">
-          <div class="tl-stepper__node">${nodeInner}</div>
+          <div class="tl-stepper__node">${nodeContent}</div>
           <div class="tl-stepper__label">${label}</div>
         </li>
       `;
