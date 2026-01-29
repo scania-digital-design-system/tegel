@@ -46,6 +46,15 @@ Apply these classes to the `.tl-popover-canvas` element.
 | ------------------------------- | ------------------------------------- |
 | `.tl-popover-canvas--visible`   | Shows the popover                     |
 
+### Popover Mode Modifiers
+
+Apply these classes to the `.tl-popover-canvas` element to change the background color.
+
+| Modifier                        | Description                           |
+| ------------------------------- | ------------------------------------- |
+| `.tl-popover-canvas--primary`   | Primary background (layer-01)         |
+| `.tl-popover-canvas--secondary` | Secondary background (layer-02)       |
+
 ### Popover Animation Modifiers
 
 Apply these classes to the `.tl-popover-canvas` element.
