@@ -65,7 +65,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
           <p>Where you can put anything you want!</p>
           <div class="tl-popover-canvas__actions">
             <a
-              class="tds-link"
+              class="tl-link tl-link--standalone tl-link--underline"
               href="https://tegel.scania.com"
               target="_blank"
               rel="noopener noreferrer"
@@ -78,7 +78,7 @@ const Template = ({ modeVariant, showPopoverCanvas, animation }) => {
       <button id="trigger" class="tl-button tl-button--only-icon tl-button--primary tl-button--sm tl-button--icon">
         <span id="trigger-label" class="tl-icon tl-icon--kebab tl-icon--16"></span>
       </button>
-      <span class="click-icon">Click icon to toggle Popover Canvas</span>
+      <span class="tl-link-text">Click icon to toggle Popover Canvas</span>
     </div>
 
     <!-- The script below is just for demo purposes -->
