@@ -4,12 +4,6 @@ export default {
   title: 'Tegel Lite (CSS)/Tabs/Navigation Tabs',
   parameters: { backgrounds: { default: 'white' } },
   argTypes: {
-    modeVariant: {
-      name: 'Mode variant',
-      control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
-      table: { defaultValue: { summary: 'Inherit from parent' } },
-    },
     showLeftButton: {
       name: 'Show left scroll button',
       control: { type: 'boolean' },
@@ -34,7 +28,6 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
     showLeftButton: false,
     showRightButton: false,
     selectedIndex: 0,
@@ -42,10 +35,7 @@ export default {
   },
 };
 
-const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
-  const modeClass =
-    modeVariant !== 'Inherit from parent' ? `tds-mode-variant-${modeVariant.toLowerCase()}` : '';
-
+const Template = ({ selectedIndex, leftPadding, showLeftButton, showRightButton }) => {
   const labels = ['First tab', 'Second tab is much longer', 'Third tab', 'Fourth tab'];
 
   const tabsHtml = labels
@@ -87,7 +77,7 @@ const Template = ({ modeVariant, selectedIndex, leftPadding, showLeftButton, sho
       "@scania/tegel-lite/tl-icon.css"
     -->
 
-    <div class="tl-navigation-tabs ${modeClass}" style="padding-left: ${leftPadding}px;">
+    <div class="tl-navigation-tabs" style="padding-left: ${leftPadding}px;">
       <div class="tl-navigation-tabs__wrapper">
         ${leftButton}
         ${tabsHtml}

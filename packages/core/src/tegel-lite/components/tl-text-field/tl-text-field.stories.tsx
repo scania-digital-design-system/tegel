@@ -9,7 +9,8 @@ export default {
     modeVariant: {
       name: 'Mode Variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
+      table: { defaultValue: { summary: 'Primary' } },
     },
     state: {
       name: 'State',
@@ -91,7 +92,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     state: 'Default',
     type: 'Text',
     size: 'Large',
@@ -134,7 +135,7 @@ const Template = ({
 }) => {
   const componentClasses = [
     'tl-text-field',
-    modeVariant !== 'Inherit from parent' && `tl-text-field--${modeVariant.toLowerCase()}`,
+    `tl-text-field--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-text-field--${state.toLowerCase()}`,
     size === 'Large' && 'tl-text-field--lg',
     size === 'Medium' && 'tl-text-field--md',

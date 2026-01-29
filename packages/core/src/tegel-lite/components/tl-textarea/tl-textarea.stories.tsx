@@ -9,8 +9,9 @@ export default {
     modeVariant: {
       name: 'Mode Variant',
       control: { type: 'radio' },
-      options: ['Inherit from parent', 'Primary', 'Secondary'],
+      options: ['Primary', 'Secondary'],
       description: 'Primary or secondary visual style',
+      table: { defaultValue: { summary: 'Primary' } },
     },
     state: {
       name: 'State',
@@ -81,7 +82,7 @@ export default {
     },
   },
   args: {
-    modeVariant: 'Inherit from parent',
+    modeVariant: 'Primary',
     state: 'Default',
     label: 'Label',
     labelPosition: 'Outside',
@@ -114,7 +115,7 @@ const Template = ({
 }) => {
   const componentClasses = [
     'tl-textarea',
-    modeVariant !== 'Inherit from parent' && `tl-textarea--${modeVariant.toLowerCase()}`,
+    `tl-textarea--${modeVariant.toLowerCase()}`,
     state !== 'Default' && `tl-textarea--${state.toLowerCase()}`,
     labelPosition === 'Inside' && 'tl-textarea--label-inside',
     // Note: label-outside is now the default behavior, no class needed
