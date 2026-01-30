@@ -47,8 +47,8 @@
     z-index: 1;
   }
 
-  // Default behavior (label outside) - readonly icon position adjustment
-  &:not(&--label-inside):has(.tl-text-field__input[readonly]):not(
+  // Outside label - readonly icon position adjustment (only when label exists)
+  &:not(&--label-inside):has(.tl-text-field__label):has(.tl-text-field__input[readonly]):not(
   :has(.tl-text-field__input:disabled)
 ):not(&--hide-readonly-icon)::before {
     top: calc(50% + 24px);
@@ -120,7 +120,8 @@
     }
   }
 
-  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover &:not(:focus) {
+  :has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):hover
+  &:not(:focus) {
     box-shadow: inset var(--text-field-box-shadow-hover);
   }
 
@@ -131,7 +132,10 @@
     pointer-events: none;
   }
 
-  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(.tl-text-field--hide-readonly-icon) & {
+  .tl-text-field:has(.tl-text-field__input[readonly]):not(:has(.tl-text-field__input:disabled)):not(
+  .tl-text-field--hide-readonly-icon
+)
+  & {
     padding-right: 54px;
   }
 

@@ -20,12 +20,13 @@
     pointer-events: none;
   }
 
+  // Readonly icon (on wrapper because ::before doesn't work on textarea element)
   &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
   &--hide-readonly-icon
 )::before {
     content: '';
     position: absolute;
-    top: 19px;
+    top: 18px;
     right: 18px;
     width: 16px;
     height: 16px;
@@ -37,11 +38,44 @@
     z-index: 1;
   }
 
-  .traton &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
-  &--hide-readonly-icon
-)::before {
-    top: 21px;
+  .traton
+  &:has(.tl-textarea__input[readonly]):not(:has(.tl-textarea__input:disabled)):not(
+    &--hide-readonly-icon
+  )::before {
+    top: 20px;
     right: 16px;
+  }
+
+  // Outside label - readonly icon position adjustment (only when label exists)
+  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(
+  :has(.tl-textarea__input:disabled)
+):not(&--hide-readonly-icon)::before {
+    top: calc(
+      18px + 24px
+    ); // 18px (base position - 1px) + 16px (label line-height) + 8px (margin-bottom)
+  }
+
+  .traton
+  &:not(&--label-inside):has(.tl-textarea__label):has(.tl-textarea__input[readonly]):not(
+    :has(.tl-textarea__input:disabled)
+  ):not(&--hide-readonly-icon)::before {
+    top: calc(
+      20px + 24px
+    ); // 20px (base position - 1px) + 16px (label line-height) + 8px (margin-bottom)
+  }
+
+  // No label - readonly icon position adjustment (adjust for different padding)
+  &:not(&--label-inside):not(:has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(
+  :has(.tl-textarea__input:disabled)
+):not(&--hide-readonly-icon)::before {
+    top: 17px; // 19px - 2px adjustment
+  }
+
+  .traton
+  &:not(&--label-inside):not(:has(.tl-textarea__label)):has(.tl-textarea__input[readonly]):not(
+    :has(.tl-textarea__input:disabled)
+  ):not(&--hide-readonly-icon)::before {
+    top: 19px; // 21px - 2px adjustment
   }
 
   &::after {
