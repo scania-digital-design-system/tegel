@@ -35,7 +35,6 @@
     box-sizing: border-box;
   }
 
-  /* Interaction layer (hover/focus halo) */
   &::before {
     width: 22px;
     height: 22px;
@@ -44,7 +43,6 @@
     border-radius: 4px;
   }
 
-  /* The visible box */
   &::after {
     border: 1px solid var(--checkbox-border);
     background-color: var(--checkbox-fill);
@@ -55,18 +53,15 @@
     border-radius: 2px;
   }
 
-  /* Hover (unchecked default) */
   &:not(:disabled):hover::before {
     background-color: var(--checkbox-border-hover);
   }
 
-  /* Focus */
   &:focus-visible::before {
     background-color: var(--checkbox-border-focus);
     transition: opacity 0.2s ease-in-out;
   }
 
-  /* Disabled */
   &:disabled {
     cursor: not-allowed;
 
@@ -80,19 +75,15 @@
     }
   }
 
-  /* =========================
-     CHECKED
-     ========================= */
   &:checked {
     &::after {
       background-image: var(--checkbox-background-img);
       background-color: var(--checkbox-border);
       background-repeat: no-repeat;
       background-position: center;
-      border-color: var(--checkbox-border); /* keep explicit */
+      border-color: var(--checkbox-border);
     }
 
-    /* ✅ THIS is what you actually see, so hover must change ::after */
     &:not(:disabled):hover::after {
       border-color: var(--checkbox-border-hover);
     }
@@ -103,15 +94,11 @@
       border-color: var(--checkbox-border-disabled);
     }
 
-    /* keep focus halo big */
     &:focus-visible::before {
       background-color: var(--checkbox-border-focus);
     }
   }
 
-  /* =========================
-     INDETERMINATE (modifier class)
-     ========================= */
   &--indeterminate {
     &::after {
       background-image: var(--checkbox-background-img-indeterminate);
@@ -121,7 +108,6 @@
       border-color: var(--checkbox-border);
     }
 
-    /* ✅ Hover border on the visible layer */
     &:not(:disabled):hover::after {
       border-color: var(--checkbox-border-hover);
     }
@@ -154,9 +140,6 @@
   }
 }
 
-/* Modifier: input indeterminate + disabled (supports your existing class usage)
-   If your markup uses .tl-checkbox__input--indeterminate instead of --indeterminate on the base,
-   this keeps it working. */
 .tl-checkbox__input--indeterminate {
   &::after {
     background-image: var(--checkbox-background-img-indeterminate);
