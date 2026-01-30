@@ -36,10 +36,10 @@
   }
 
   &::before {
-    width: 22px;
-    height: 22px;
-    left: 1px;
-    top: 1px;
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
     border-radius: 4px;
   }
 
@@ -60,6 +60,18 @@
   &:focus-visible::before {
     background-color: var(--checkbox-border-focus);
     transition: opacity 0.2s ease-in-out;
+    width: var(--checkbox-focus-width);
+    height: var(--checkbox-focus-height);
+    left: var(--checkbox-focus-left);
+    top: var(--checkbox-focus-top);
+  }
+
+  &:hover:focus-visible::before {
+    width: 20px;
+    height: 20px;
+    left: 2px;
+    top: 2px;
+    background-color: var(--checkbox-border-hover);
   }
 
   &:disabled {
