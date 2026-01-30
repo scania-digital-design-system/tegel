@@ -26,3 +26,21 @@
     --checkbox-background-img-indeterminate-disabled: url("data:image/svg+xml;utf8,<svg width='8' height='2' viewBox='0 0 8 2' fill='none' xmlns='http://www.w3.org/2000/svg'><rect y='0.5' width='8' height='1' rx='0.5' fill='%2356657A'/></svg>");
   }
 }
+
+.scania {
+  .tl-checkbox {
+    --checkbox-focus-width: 20px;
+    --checkbox-focus-height: 20px;
+    --checkbox-focus-left: 2px;
+    --checkbox-focus-top: 2px;
+  }
+}
+
+.traton {
+  .tl-checkbox {
+    --checkbox-focus-width: 22px;
+    --checkbox-focus-height: 22px;
+    --checkbox-focus-left: 1px;
+    --checkbox-focus-top: 1px;
+  }
+}

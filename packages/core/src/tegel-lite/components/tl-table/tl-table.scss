@@ -615,3 +615,17 @@
     background-color: var(--component-table-secondary-cell);
   }
 }
+
+.tl-table--compact {
+  .tl-table__header-cell--checkbox {
+    padding-left: 16px;
+  }
+}
+
+.tl-table__header-cell--checkbox {
+  padding: 16px;
+}
+
+.tl-table__body-cell--checkbox {
+  padding: 16px;
+}
