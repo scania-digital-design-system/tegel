@@ -9,8 +9,8 @@ export default {
   argTypes: {
     includeTitle: { control: 'boolean', name: 'Include title' },
     includeHamburger: { control: 'boolean', name: 'Include hamburger' },
-    includeBentoGrid: { control: 'boolean', name: 'Include bento (Grid)' },
-    includeBentoList: { control: 'boolean', name: 'Include bento (List)' },
+    includeBentoGrid: { control: 'boolean', name: 'Include bento menu' },
+    includeBentoList: { control: 'boolean', name: 'Include list menu' },
     includeHeaderItem: { control: 'boolean', name: 'Include header item' },
     includeHeaderItemIconOnly: { control: 'boolean', name: 'Include header item (icon only)' },
     icon: {
@@ -33,22 +33,10 @@ export default {
     },
     includeUserProfile: { control: 'boolean', name: 'Include user profile' },
     includeBrand: { control: 'boolean', name: 'Include brand symbol' },
-    isHamburgerPressed: {
-      control: 'boolean',
-      name: 'Hamburger pressed',
-      if: { arg: 'includeHamburger', truthy: true },
-    },
-    isHamburgerSelected: {
-      control: 'boolean',
-      name: 'Hamburger selected',
-      if: { arg: 'includeHamburger', truthy: true },
-    },
   },
   args: {
     includeTitle: true,
     includeHamburger: false,
-    isHamburgerPressed: false,
-    isHamburgerSelected: false,
     includeBentoGrid: false,
     includeBentoList: false,
     includeBrand: true,
@@ -68,8 +56,6 @@ const Template = ({
   includeBentoGrid,
   includeBentoList,
   includeBrand,
-  isHamburgerPressed,
-  isHamburgerSelected,
   includeDropdown,
   isDropdownOpen,
   isDropdownSelected,
@@ -92,9 +78,7 @@ const Template = ({
 
       ${
         includeHamburger
-          ? `<li class="tl-header__item ${isHamburgerPressed ? 'tl-header__item--pressed' : ''} ${
-              isHamburgerSelected ? 'tl-header__item--selected' : ''
-            }">
+          ? `<li class="tl-header__item">
               <button class="tl-header__item-wrapper">
                 <span class="tl-icon tl-icon--burger tl-icon--20" aria-hidden="true"></span>
               </button>
@@ -172,7 +156,7 @@ const Template = ({
         includeBentoList
           ? `<li class="tl-header__dropdown">
               <button class="tl-header__dropdown-wrapper">
-                <span class="tl-icon tl-icon--bento tl-icon--16"></span>
+                <span class="tl-icon tl-icon--burger tl-icon--16"></span>
               </button>
               <ul class="tl-header__launcher-menu">
                 <li class="tl-header__launcher-menu-title">title</li>
