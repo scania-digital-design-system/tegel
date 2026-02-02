@@ -3,6 +3,7 @@ import { sass } from '@stencil/sass';
 import { ValueAccessorConfig, angularOutputTarget } from '@stencil/angular-output-target';
 import { reactOutputTarget } from '@stencil/react-output-target';
 
+// These components are in beta because they are not finalized yet.
 const BETA_COMPONENTS = [
   'tds-date-picker-single',
   'tds-date-picker-single-day',
