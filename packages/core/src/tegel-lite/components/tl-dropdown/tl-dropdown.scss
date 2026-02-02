@@ -543,6 +543,10 @@
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s 0.2s;
   @include tl-scrollbar;
 
+  .tds-mode-dark & {
+    box-shadow: none;
+  }
+
   .tl-dropdown--dropup & {
     top: auto;
     bottom: 100%;

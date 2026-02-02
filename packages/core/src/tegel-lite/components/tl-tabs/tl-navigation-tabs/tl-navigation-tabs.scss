@@ -5,9 +5,19 @@
 .tl-navigation-tabs {
   @include tds-box-sizing;
 
-  background-color: var(--navigation-tabs);
+  background-color: transparent;
   display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  width: 100%;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  gap: 16px;
   position: relative;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &::after {
     border-bottom: 1px solid var(--navigation-tabs-horizontal-divider);
@@ -17,20 +27,6 @@
     right: 0;
     bottom: 0;
     position: absolute;
-  }
-}
-
-.tl-navigation-tabs__wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  width: 100%;
-  overflow-x: scroll;
-  scrollbar-width: none;
-  gap: 16px;
-
-  &::-webkit-scrollbar {
-    display: none;
   }
 }
 

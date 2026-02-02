@@ -10,25 +10,6 @@
 
 .tl-stepper__step {
   position: relative;
-  display: table-cell;
-
-  .tl-stepper--horizontal:not(.tl-stepper--label-aside) .tl-stepper__list > & {
-    flex: 1 1 0;
-    min-inline-size: 0;
-  }
-
-  .tl-stepper--horizontal.tl-stepper--label-aside .tl-stepper__list > & {
-    display: flex;
-    flex: 0 0 auto;
-    min-inline-size: auto;
-  }
-
-  .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels .tl-stepper__list > & {
-    min-inline-size: 0;
-  }
-}
-
-.tl-stepper__content {
   display: flex;
   justify-content: start;
   flex-direction: row;
@@ -40,49 +21,57 @@
   }
 
   .tl-stepper--lg & {
-    padding: 0 20px;
     @include detail-01;
+
+    padding: 0 20px;
   }
 
   .tl-stepper--sm & {
-    padding: 0 20px;
     @include detail-05;
+
+    padding: 0 20px;
   }
 
-  .tl-stepper--horizontal .tl-stepper__step:last-of-type & {
-    padding-right: 0;
+  .tl-stepper--horizontal:not(.tl-stepper--label-aside) .tl-stepper__list > & {
+    flex: 1 1 0;
+    min-inline-size: 60px; // Prevent overlap: node (30px) + label + spacing
   }
 
-  .tl-stepper--lg .tl-stepper__step:last-of-type &,
-  .tl-stepper--sm .tl-stepper__step:last-of-type & {
+  .tl-stepper--horizontal.tl-stepper--label-aside .tl-stepper__list > & {
+    flex: 0 0 auto;
+    min-inline-size: auto;
+  }
+
+  .tl-stepper--horizontal.tl-stepper--label-aside.tl-stepper--hide-labels .tl-stepper__list > & {
+    min-inline-size: 40px;
+  }
+
+  .tl-stepper--horizontal.tl-stepper--sm:not(.tl-stepper--label-aside) .tl-stepper__list > & {
+    min-inline-size: 40px;
+  }
+
+  .tl-stepper--horizontal.tl-stepper--sm.tl-stepper--label-aside.tl-stepper--hide-labels
+  .tl-stepper__list
+  > & {
+    min-inline-size: 48px;
+  }
+
+  .tl-stepper--lg &:last-of-type,
+  .tl-stepper--sm &:last-of-type {
     &::after {
       display: none;
     }
   }
 
-  .tl-stepper--vertical.tl-stepper--sm .tl-stepper__step:last-of-type & {
-    &::before {
-      display: none;
-    }
-  }
-
-  .tl-stepper--horizontal .tl-stepper__step:first-of-type & {
-    padding-left: 0;
-  }
-
-  .tl-stepper--lg .tl-stepper__step:first-of-type &,
-  .tl-stepper--sm .tl-stepper__step:first-of-type & {
-    &::before {
+  .tl-stepper--vertical.tl-stepper--lg &:last-of-type,
+  .tl-stepper--vertical.tl-stepper--sm &:last-of-type {
+    &::after {
       display: none;
     }
   }
 
   .tl-stepper--lg & {
     &::after {
-      @include divider;
-    }
-
-    &::before {
       @include divider;
     }
   }
@@ -99,15 +88,8 @@
   .tl-stepper--lg.tl-stepper--horizontal & {
     &::after {
       height: 1px;
-      left: calc(50% + 24px);
-      right: 0;
-      top: 16px;
-    }
-
-    &::before {
-      height: 1px;
-      right: calc(50% + 24px);
-      left: 0;
+      left: calc(50% + 15px + 8px);
+      right: calc(-100% + 50% + 15px + 8px);
       top: 16px;
     }
   }
@@ -120,27 +102,10 @@
       left: auto;
       right: -10px;
     }
-
-    &::before {
-      height: 1px;
-      top: 16px;
-      width: 10px;
-      left: -10px;
-      right: auto;
-    }
   }
 
   .tl-stepper--sm.tl-stepper--vertical & {
     &::after {
-      @include divider;
-
-      height: 20px;
-      width: 1px;
-      top: 34px;
-      left: 32px;
-    }
-
-    &::before {
       @include divider;
 
       height: 20px;
@@ -155,17 +120,8 @@
       @include divider;
 
       height: 1px;
-      left: calc(50% + 16px + 8px);
-      right: 0;
-      top: 13px;
-    }
-
-    &::before {
-      @include divider;
-
-      height: 1px;
-      left: 0;
-      right: calc(50% + 24px);
+      left: calc(50% + 12px + 8px);
+      right: calc(-100% + 50% + 12px + 8px);
       top: 13px;
     }
   }
@@ -180,16 +136,6 @@
       left: auto;
       right: -10px;
     }
-
-    &::before {
-      @include divider;
-
-      height: 1px;
-      top: 13px;
-      width: 10px;
-      left: -10px;
-      right: auto;
-    }
   }
 }
 
@@ -202,6 +148,17 @@
   border-style: solid;
   text-align: center;
   position: relative;
+
+  .tl-stepper--lg & {
+    height: 30px;
+    min-width: 30px;
+    font-size: 14px;
+  }
+
+  .tl-stepper--sm & {
+    height: 24px;
+    min-width: 24px;
+  }
 
   .tl-stepper__step--error & {
     border-color: var(--stepper-icon-step-border-warning);
@@ -223,24 +180,36 @@
     color: var(--stepper-label-text-upcoming);
   }
 
-  .tl-stepper--lg .tl-stepper__content & {
-    height: 30px;
-    min-width: 30px;
-    font-size: 14px;
+  .tl-stepper__step--success &,
+  .tl-stepper__step--error & {
+    justify-content: center;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 20px; // Default to lg size
+      height: 20px;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      background-color: currentcolor;
+    }
   }
 
-  .tl-stepper--sm .tl-stepper__content & {
-    height: 24px;
-    min-width: 24px;
+  .tl-stepper__step--success &::after {
+    mask-image: var(--icon-tick-svg);
+  }
+
+  .tl-stepper__step--error &::after {
+    mask-image: var(--icon-warning-svg);
   }
 }
 
-.tl-icon {
-  .tl-stepper--sm .tl-stepper__content & {
-    vertical-align: -webkit-baseline-middle;
-    vertical-align: -moz-middle-with-baseline;
-    margin-top: -2px;
-  }
+// Override icon size for small variant
+.tl-stepper--sm .tl-stepper__step--success .tl-stepper__node::after,
+.tl-stepper--sm .tl-stepper__step--error .tl-stepper__node::after {
+  width: 16px;
+  height: 16px;
 }
 
 .tl-stepper__label {

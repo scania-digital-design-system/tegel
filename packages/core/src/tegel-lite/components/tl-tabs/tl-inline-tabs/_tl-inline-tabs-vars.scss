@@ -7,14 +7,6 @@
   --inline-tabs-scroll-button: transparent;
   --inline-tabs-scroll-button-hover: transparent;
   --inline-tabs-scroll-button-active: transparent;
-
-  &.tds-mode-variant-primary {
-    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-primary);
-  }
-
-  &.tds-mode-variant-secondary {
-    --inline-tabs-scroll-button: var(--inline-tabs-scroll-button-secondary);
-  }
 }
 
 .tl-inline-tabs__tab {
